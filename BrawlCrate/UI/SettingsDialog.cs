@@ -92,6 +92,10 @@ namespace BrawlCrate
         private TextBox txtBoxPythonPath;
         private CheckBox chkBoxRenderARC;
         private CheckBox chkBoxRenderBRRES;
+        private GroupBox groupBox1;
+        private TextBox txtBoxDefaultBuildPath;
+        private Label lblManagerDefaultPath;
+        private Button btnManagerPathBrowse;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -291,6 +295,7 @@ namespace BrawlCrate
             chkBoxAPIEnableLoaders.Checked = Properties.Settings.Default.APILoadersEnabled;
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
+            txtBoxDefaultBuildPath.Text = Properties.Settings.Default.BuildPath;
 
             chkBoxAPIEnableLoaders.Enabled = chkBoxEnableAPI.Checked;
             grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
@@ -299,8 +304,8 @@ namespace BrawlCrate
             DiscordSettings.LoadSettings();
             grpBoxDiscordRPCType.Enabled = DiscordSettings.DiscordRPCEnabled;
             chkBoxEnableDiscordRPC.Checked = DiscordSettings.DiscordRPCEnabled;
-            DiscordSettings.ModNameType? modnametype = Properties.Settings.Default.DiscordRPCNameType;
-            switch (modnametype)
+            DiscordSettings.ModNameType? modNameType = Properties.Settings.Default.DiscordRPCNameType;
+            switch (modNameType)
             {
                 case DiscordSettings.ModNameType.Disabled:
                     rdoDiscordRPCNameDisabled.Checked = true;
@@ -363,548 +368,597 @@ namespace BrawlCrate
 
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("ARChive Pack (*.pac)");
-            ListViewItem listViewItem2 = new ListViewItem("Compressed ARChive Pack (*.pcs)");
-            ListViewItem listViewItem3 = new ListViewItem("ARChive (*.arc)");
-            ListViewItem listViewItem4 = new ListViewItem("Compressed ARChive (*.szs)");
-            ListViewItem listViewItem5 = new ListViewItem("Resource Pack (*.brres)");
-            ListViewItem listViewItem6 = new ListViewItem("Model Pack (*.brmdl)");
-            ListViewItem listViewItem7 = new ListViewItem("Texture Pack (*.brtex)");
-            ListViewItem listViewItem8 = new ListViewItem("MSBin Message List (*.msbin)");
-            ListViewItem listViewItem9 = new ListViewItem("Sound Archive (*.brsar)");
-            ListViewItem listViewItem10 = new ListViewItem("Sound Stream (*.brstm)");
-            ListViewItem listViewItem11 = new ListViewItem("Texture (*.tex0)");
-            ListViewItem listViewItem12 = new ListViewItem("Palette (*.plt0)");
-            ListViewItem listViewItem13 = new ListViewItem("Model (*.mdl0)");
-            ListViewItem listViewItem14 = new ListViewItem("Model Animation (*.chr0)");
-            ListViewItem listViewItem15 = new ListViewItem("Texture Animation (*.srt0)");
-            ListViewItem listViewItem16 = new ListViewItem("Vertex Morph (*.shp0)");
-            ListViewItem listViewItem17 = new ListViewItem("Texture Pattern (*.pat0)");
-            ListViewItem listViewItem18 = new ListViewItem("Bone Visibility (*.vis0)");
-            ListViewItem listViewItem19 = new ListViewItem("Scene Settings (*.scn0)");
-            ListViewItem listViewItem20 = new ListViewItem("Color Sequence (*.clr0)");
-            ListViewItem listViewItem21 = new ListViewItem("Effect List (*.efls)");
-            ListViewItem listViewItem22 = new ListViewItem("Effect Parameters (*.breff)");
-            ListViewItem listViewItem23 = new ListViewItem("Effect Textures (*.breft)");
-            ListViewItem listViewItem24 = new ListViewItem("Sound Stream (*.brwsd)");
-            ListViewItem listViewItem25 = new ListViewItem("Sound Bank (*.brbnk)");
-            ListViewItem listViewItem26 = new ListViewItem("Sound Sequence (*.brseq)");
-            ListViewItem listViewItem27 = new ListViewItem("Static Module (*.dol)");
-            ListViewItem listViewItem28 = new ListViewItem("Relocatable Module (*.rel)");
-            ListViewItem listViewItem29 = new ListViewItem("Texture Archive (*.tpl)");
-            chkShowPropDesc = new CheckBox();
-            chkShowHex = new CheckBox();
-            chkDocUpdates = new CheckBox();
-            chkCanary = new CheckBox();
-            tabControl1 = new TabControl();
-            tabGeneral = new TabPage();
-            grpBoxMDL0General = new GroupBox();
-            chkBoxRenderARC = new CheckBox();
-            chkBoxRenderBRRES = new CheckBox();
-            chkBoxMDL0Compatibility = new CheckBox();
-            grpBoxAudioGeneral = new GroupBox();
-            chkBoxAutoPlayAudio = new CheckBox();
-            grpBoxMainFormGeneral = new GroupBox();
-            lblRecentFiles = new Label();
-            recentFileCountBox = new NumericInputBox();
-            grpBoxFileNameDisplayGeneral = new GroupBox();
-            rdoShowShortName = new RadioButton();
-            rdoShowFullPath = new RadioButton();
-            tabCompression = new TabPage();
-            groupBoxModuleCompression = new GroupBox();
-            chkBoxModuleCompress = new CheckBox();
-            groupBoxStageCompression = new GroupBox();
-            chkBoxStageCompress = new CheckBox();
-            groupBoxFighterCompression = new GroupBox();
-            chkBoxFighterPacDecompress = new CheckBox();
-            chkBoxFighterPcsCompress = new CheckBox();
-            tabFileAssociations = new TabPage();
-            genericFileAssociationBox = new GroupBox();
-            binFileAssociation = new CheckBox();
-            datFileAssociation = new CheckBox();
-            lblAdminApproval = new Label();
-            btnApply = new Button();
-            associatiedFilesBox = new GroupBox();
-            checkBox1 = new CheckBox();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            tabBrawlAPI = new TabPage();
-            grpBoxFSharpAPI = new GroupBox();
-            txtBoxFSharpPath = new TextBox();
-            btnFSharpBrowse = new Button();
-            btnFSharpDetect = new Button();
-            label2 = new Label();
-            grpBoxPythonAPI = new GroupBox();
-            txtBoxPythonPath = new TextBox();
-            btnPythonBrowse = new Button();
-            btnPythonDetect = new Button();
-            label1 = new Label();
-            grpBoxAPIGeneral = new GroupBox();
-            chkBoxAPIEnableLoaders = new CheckBox();
-            chkBoxEnableAPI = new CheckBox();
-            tabDiscord = new TabPage();
-            grpBoxDiscordRPC = new GroupBox();
-            chkBoxEnableDiscordRPC = new CheckBox();
-            grpBoxDiscordRPCType = new GroupBox();
-            DiscordRPCCustomName = new TextBox();
-            rdoDiscordRPCNameCustom = new RadioButton();
-            rdoDiscordRPCNameExternal = new RadioButton();
-            rdoDiscordRPCNameInternal = new RadioButton();
-            rdoDiscordRPCNameDisabled = new RadioButton();
-            tabUpdater = new TabPage();
-            grpBoxCanary = new GroupBox();
-            updaterBehaviorGroupbox = new GroupBox();
-            rdoAutoUpdate = new RadioButton();
-            rdoCheckManual = new RadioButton();
-            rdoCheckStartup = new RadioButton();
-            tabControl1.SuspendLayout();
-            tabGeneral.SuspendLayout();
-            grpBoxMDL0General.SuspendLayout();
-            grpBoxAudioGeneral.SuspendLayout();
-            grpBoxMainFormGeneral.SuspendLayout();
-            grpBoxFileNameDisplayGeneral.SuspendLayout();
-            tabCompression.SuspendLayout();
-            groupBoxModuleCompression.SuspendLayout();
-            groupBoxStageCompression.SuspendLayout();
-            groupBoxFighterCompression.SuspendLayout();
-            tabFileAssociations.SuspendLayout();
-            genericFileAssociationBox.SuspendLayout();
-            associatiedFilesBox.SuspendLayout();
-            tabBrawlAPI.SuspendLayout();
-            grpBoxFSharpAPI.SuspendLayout();
-            grpBoxPythonAPI.SuspendLayout();
-            grpBoxAPIGeneral.SuspendLayout();
-            tabDiscord.SuspendLayout();
-            grpBoxDiscordRPC.SuspendLayout();
-            grpBoxDiscordRPCType.SuspendLayout();
-            tabUpdater.SuspendLayout();
-            grpBoxCanary.SuspendLayout();
-            updaterBehaviorGroupbox.SuspendLayout();
-            SuspendLayout();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("ARChive Pack (*.pac)");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Compressed ARChive Pack (*.pcs)");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("ARChive (*.arc)");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Compressed ARChive (*.szs)");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Resource Pack (*.brres)");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Model Pack (*.brmdl)");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Texture Pack (*.brtex)");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("MSBin Message List (*.msbin)");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Sound Archive (*.brsar)");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Sound Stream (*.brstm)");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Texture (*.tex0)");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Palette (*.plt0)");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Model (*.mdl0)");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Model Animation (*.chr0)");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Texture Animation (*.srt0)");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Vertex Morph (*.shp0)");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Texture Pattern (*.pat0)");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Bone Visibility (*.vis0)");
+            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Scene Settings (*.scn0)");
+            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Color Sequence (*.clr0)");
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Effect List (*.efls)");
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("Effect Parameters (*.breff)");
+            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Effect Textures (*.breft)");
+            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Sound Stream (*.brwsd)");
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Sound Bank (*.brbnk)");
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Sound Sequence (*.brseq)");
+            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Static Module (*.dol)");
+            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Relocatable Module (*.rel)");
+            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Texture Archive (*.tpl)");
+            this.chkShowPropDesc = new System.Windows.Forms.CheckBox();
+            this.chkShowHex = new System.Windows.Forms.CheckBox();
+            this.chkDocUpdates = new System.Windows.Forms.CheckBox();
+            this.chkCanary = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnManagerPathBrowse = new System.Windows.Forms.Button();
+            this.txtBoxDefaultBuildPath = new System.Windows.Forms.TextBox();
+            this.lblManagerDefaultPath = new System.Windows.Forms.Label();
+            this.grpBoxMDL0General = new System.Windows.Forms.GroupBox();
+            this.chkBoxRenderARC = new System.Windows.Forms.CheckBox();
+            this.chkBoxRenderBRRES = new System.Windows.Forms.CheckBox();
+            this.chkBoxMDL0Compatibility = new System.Windows.Forms.CheckBox();
+            this.grpBoxAudioGeneral = new System.Windows.Forms.GroupBox();
+            this.chkBoxAutoPlayAudio = new System.Windows.Forms.CheckBox();
+            this.grpBoxMainFormGeneral = new System.Windows.Forms.GroupBox();
+            this.lblRecentFiles = new System.Windows.Forms.Label();
+            this.recentFileCountBox = new System.Windows.Forms.NumericInputBox();
+            this.grpBoxFileNameDisplayGeneral = new System.Windows.Forms.GroupBox();
+            this.rdoShowShortName = new System.Windows.Forms.RadioButton();
+            this.rdoShowFullPath = new System.Windows.Forms.RadioButton();
+            this.tabCompression = new System.Windows.Forms.TabPage();
+            this.groupBoxModuleCompression = new System.Windows.Forms.GroupBox();
+            this.chkBoxModuleCompress = new System.Windows.Forms.CheckBox();
+            this.groupBoxStageCompression = new System.Windows.Forms.GroupBox();
+            this.chkBoxStageCompress = new System.Windows.Forms.CheckBox();
+            this.groupBoxFighterCompression = new System.Windows.Forms.GroupBox();
+            this.chkBoxFighterPacDecompress = new System.Windows.Forms.CheckBox();
+            this.chkBoxFighterPcsCompress = new System.Windows.Forms.CheckBox();
+            this.tabFileAssociations = new System.Windows.Forms.TabPage();
+            this.genericFileAssociationBox = new System.Windows.Forms.GroupBox();
+            this.binFileAssociation = new System.Windows.Forms.CheckBox();
+            this.datFileAssociation = new System.Windows.Forms.CheckBox();
+            this.lblAdminApproval = new System.Windows.Forms.Label();
+            this.btnApply = new System.Windows.Forms.Button();
+            this.associatiedFilesBox = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabBrawlAPI = new System.Windows.Forms.TabPage();
+            this.grpBoxFSharpAPI = new System.Windows.Forms.GroupBox();
+            this.txtBoxFSharpPath = new System.Windows.Forms.TextBox();
+            this.btnFSharpBrowse = new System.Windows.Forms.Button();
+            this.btnFSharpDetect = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grpBoxPythonAPI = new System.Windows.Forms.GroupBox();
+            this.txtBoxPythonPath = new System.Windows.Forms.TextBox();
+            this.btnPythonBrowse = new System.Windows.Forms.Button();
+            this.btnPythonDetect = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.grpBoxAPIGeneral = new System.Windows.Forms.GroupBox();
+            this.chkBoxAPIEnableLoaders = new System.Windows.Forms.CheckBox();
+            this.chkBoxEnableAPI = new System.Windows.Forms.CheckBox();
+            this.tabDiscord = new System.Windows.Forms.TabPage();
+            this.grpBoxDiscordRPC = new System.Windows.Forms.GroupBox();
+            this.chkBoxEnableDiscordRPC = new System.Windows.Forms.CheckBox();
+            this.grpBoxDiscordRPCType = new System.Windows.Forms.GroupBox();
+            this.DiscordRPCCustomName = new System.Windows.Forms.TextBox();
+            this.rdoDiscordRPCNameCustom = new System.Windows.Forms.RadioButton();
+            this.rdoDiscordRPCNameExternal = new System.Windows.Forms.RadioButton();
+            this.rdoDiscordRPCNameInternal = new System.Windows.Forms.RadioButton();
+            this.rdoDiscordRPCNameDisabled = new System.Windows.Forms.RadioButton();
+            this.tabUpdater = new System.Windows.Forms.TabPage();
+            this.grpBoxCanary = new System.Windows.Forms.GroupBox();
+            this.updaterBehaviorGroupbox = new System.Windows.Forms.GroupBox();
+            this.rdoAutoUpdate = new System.Windows.Forms.RadioButton();
+            this.rdoCheckManual = new System.Windows.Forms.RadioButton();
+            this.rdoCheckStartup = new System.Windows.Forms.RadioButton();
+            this.tabControl1.SuspendLayout();
+            this.tabGeneral.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.grpBoxMDL0General.SuspendLayout();
+            this.grpBoxAudioGeneral.SuspendLayout();
+            this.grpBoxMainFormGeneral.SuspendLayout();
+            this.grpBoxFileNameDisplayGeneral.SuspendLayout();
+            this.tabCompression.SuspendLayout();
+            this.groupBoxModuleCompression.SuspendLayout();
+            this.groupBoxStageCompression.SuspendLayout();
+            this.groupBoxFighterCompression.SuspendLayout();
+            this.tabFileAssociations.SuspendLayout();
+            this.genericFileAssociationBox.SuspendLayout();
+            this.associatiedFilesBox.SuspendLayout();
+            this.tabBrawlAPI.SuspendLayout();
+            this.grpBoxFSharpAPI.SuspendLayout();
+            this.grpBoxPythonAPI.SuspendLayout();
+            this.grpBoxAPIGeneral.SuspendLayout();
+            this.tabDiscord.SuspendLayout();
+            this.grpBoxDiscordRPC.SuspendLayout();
+            this.grpBoxDiscordRPCType.SuspendLayout();
+            this.tabUpdater.SuspendLayout();
+            this.grpBoxCanary.SuspendLayout();
+            this.updaterBehaviorGroupbox.SuspendLayout();
+            this.SuspendLayout();
             // 
             // chkShowPropDesc
             // 
-            chkShowPropDesc.AutoSize = true;
-            chkShowPropDesc.Location = new System.Drawing.Point(10, 22);
-            chkShowPropDesc.Name = "chkShowPropDesc";
-            chkShowPropDesc.Size = new System.Drawing.Size(242, 17);
-            chkShowPropDesc.TabIndex = 7;
-            chkShowPropDesc.Text = "Show property description box when available";
-            chkShowPropDesc.UseVisualStyleBackColor = true;
-            chkShowPropDesc.CheckedChanged += new EventHandler(ChkShowPropDesc_CheckedChanged);
+            this.chkShowPropDesc.AutoSize = true;
+            this.chkShowPropDesc.Location = new System.Drawing.Point(10, 22);
+            this.chkShowPropDesc.Name = "chkShowPropDesc";
+            this.chkShowPropDesc.Size = new System.Drawing.Size(242, 17);
+            this.chkShowPropDesc.TabIndex = 7;
+            this.chkShowPropDesc.Text = "Show property description box when available";
+            this.chkShowPropDesc.UseVisualStyleBackColor = true;
+            this.chkShowPropDesc.CheckedChanged += new System.EventHandler(this.ChkShowPropDesc_CheckedChanged);
             // 
             // chkShowHex
             // 
-            chkShowHex.AutoSize = true;
-            chkShowHex.Location = new System.Drawing.Point(10, 45);
-            chkShowHex.Name = "chkShowHex";
-            chkShowHex.Size = new System.Drawing.Size(233, 17);
-            chkShowHex.TabIndex = 9;
-            chkShowHex.Text = "Show hexadecimal for files without previews";
-            chkShowHex.UseVisualStyleBackColor = true;
-            chkShowHex.CheckedChanged += new EventHandler(ChkShowHex_CheckedChanged);
+            this.chkShowHex.AutoSize = true;
+            this.chkShowHex.Location = new System.Drawing.Point(10, 45);
+            this.chkShowHex.Name = "chkShowHex";
+            this.chkShowHex.Size = new System.Drawing.Size(233, 17);
+            this.chkShowHex.TabIndex = 9;
+            this.chkShowHex.Text = "Show hexadecimal for files without previews";
+            this.chkShowHex.UseVisualStyleBackColor = true;
+            this.chkShowHex.CheckedChanged += new System.EventHandler(this.ChkShowHex_CheckedChanged);
             // 
             // chkDocUpdates
             // 
-            chkDocUpdates.AutoSize = true;
-            chkDocUpdates.Location = new System.Drawing.Point(10, 91);
-            chkDocUpdates.Name = "chkDocUpdates";
-            chkDocUpdates.Size = new System.Drawing.Size(180, 17);
-            chkDocUpdates.TabIndex = 11;
-            chkDocUpdates.Text = "Receive documentation updates";
-            chkDocUpdates.UseVisualStyleBackColor = true;
-            chkDocUpdates.CheckedChanged += new EventHandler(ChkDocUpdates_CheckedChanged);
+            this.chkDocUpdates.AutoSize = true;
+            this.chkDocUpdates.Location = new System.Drawing.Point(10, 91);
+            this.chkDocUpdates.Name = "chkDocUpdates";
+            this.chkDocUpdates.Size = new System.Drawing.Size(180, 17);
+            this.chkDocUpdates.TabIndex = 11;
+            this.chkDocUpdates.Text = "Receive documentation updates";
+            this.chkDocUpdates.UseVisualStyleBackColor = true;
+            this.chkDocUpdates.CheckedChanged += new System.EventHandler(this.ChkDocUpdates_CheckedChanged);
             // 
             // chkCanary
             // 
-            chkCanary.AutoSize = true;
-            chkCanary.Location = new System.Drawing.Point(10, 22);
-            chkCanary.Name = "chkCanary";
-            chkCanary.Size = new System.Drawing.Size(263, 17);
-            chkCanary.TabIndex = 13;
-            chkCanary.Text = "Opt into BrawlCrate Canary (Experimental) updates";
-            chkCanary.UseVisualStyleBackColor = true;
-            chkCanary.CheckedChanged += new EventHandler(ChkCanary_CheckedChanged);
+            this.chkCanary.AutoSize = true;
+            this.chkCanary.Location = new System.Drawing.Point(10, 22);
+            this.chkCanary.Name = "chkCanary";
+            this.chkCanary.Size = new System.Drawing.Size(263, 17);
+            this.chkCanary.TabIndex = 13;
+            this.chkCanary.Text = "Opt into BrawlCrate Canary (Experimental) updates";
+            this.chkCanary.UseVisualStyleBackColor = true;
+            this.chkCanary.CheckedChanged += new System.EventHandler(this.ChkCanary_CheckedChanged);
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabGeneral);
-            tabControl1.Controls.Add(tabCompression);
-            tabControl1.Controls.Add(tabFileAssociations);
-            tabControl1.Controls.Add(tabBrawlAPI);
-            tabControl1.Controls.Add(tabDiscord);
-            tabControl1.Controls.Add(tabUpdater);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new System.Drawing.Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(373, 478);
-            tabControl1.TabIndex = 48;
+            this.tabControl1.Controls.Add(this.tabGeneral);
+            this.tabControl1.Controls.Add(this.tabCompression);
+            this.tabControl1.Controls.Add(this.tabFileAssociations);
+            this.tabControl1.Controls.Add(this.tabBrawlAPI);
+            this.tabControl1.Controls.Add(this.tabDiscord);
+            this.tabControl1.Controls.Add(this.tabUpdater);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(373, 478);
+            this.tabControl1.TabIndex = 48;
             // 
             // tabGeneral
             // 
-            tabGeneral.BackColor = System.Drawing.SystemColors.Control;
-            tabGeneral.Controls.Add(grpBoxMDL0General);
-            tabGeneral.Controls.Add(grpBoxAudioGeneral);
-            tabGeneral.Controls.Add(grpBoxMainFormGeneral);
-            tabGeneral.Location = new System.Drawing.Point(4, 22);
-            tabGeneral.Name = "tabGeneral";
-            tabGeneral.Padding = new Padding(3);
-            tabGeneral.Size = new System.Drawing.Size(365, 452);
-            tabGeneral.TabIndex = 0;
-            tabGeneral.Text = "General";
+            this.tabGeneral.BackColor = System.Drawing.SystemColors.Control;
+            this.tabGeneral.Controls.Add(this.groupBox1);
+            this.tabGeneral.Controls.Add(this.grpBoxMDL0General);
+            this.tabGeneral.Controls.Add(this.grpBoxAudioGeneral);
+            this.tabGeneral.Controls.Add(this.grpBoxMainFormGeneral);
+            this.tabGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tabGeneral.Name = "tabGeneral";
+            this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGeneral.Size = new System.Drawing.Size(365, 452);
+            this.tabGeneral.TabIndex = 0;
+            this.tabGeneral.Text = "General";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnManagerPathBrowse);
+            this.groupBox1.Controls.Add(this.txtBoxDefaultBuildPath);
+            this.groupBox1.Controls.Add(this.lblManagerDefaultPath);
+            this.groupBox1.Location = new System.Drawing.Point(8, 341);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(349, 73);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Managers";
+            // 
+            // btnManagerPathBrowse
+            // 
+            this.btnManagerPathBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnManagerPathBrowse.Location = new System.Drawing.Point(319, 36);
+            this.btnManagerPathBrowse.Name = "btnManagerPathBrowse";
+            this.btnManagerPathBrowse.Size = new System.Drawing.Size(24, 24);
+            this.btnManagerPathBrowse.TabIndex = 22;
+            this.btnManagerPathBrowse.Text = "...";
+            this.btnManagerPathBrowse.UseVisualStyleBackColor = true;
+            this.btnManagerPathBrowse.Click += new System.EventHandler(this.BtnManagerPathBrowse_Click);
+            // 
+            // txtBoxDefaultBuildPath
+            // 
+            this.txtBoxDefaultBuildPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxDefaultBuildPath.Location = new System.Drawing.Point(11, 38);
+            this.txtBoxDefaultBuildPath.Name = "txtBoxDefaultBuildPath";
+            this.txtBoxDefaultBuildPath.Size = new System.Drawing.Size(302, 20);
+            this.txtBoxDefaultBuildPath.TabIndex = 3;
+            this.txtBoxDefaultBuildPath.Text = "(none)";
+            this.txtBoxDefaultBuildPath.TextChanged += new System.EventHandler(this.txtBoxDefaultBuildPath_TextChanged);
+            // 
+            // lblManagerDefaultPath
+            // 
+            this.lblManagerDefaultPath.AutoSize = true;
+            this.lblManagerDefaultPath.Location = new System.Drawing.Point(8, 22);
+            this.lblManagerDefaultPath.Name = "lblManagerDefaultPath";
+            this.lblManagerDefaultPath.Size = new System.Drawing.Size(95, 13);
+            this.lblManagerDefaultPath.TabIndex = 13;
+            this.lblManagerDefaultPath.Text = "Default Build Path:";
             // 
             // grpBoxMDL0General
             // 
-            grpBoxMDL0General.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                        | AnchorStyles.Right;
-            grpBoxMDL0General.Controls.Add(chkBoxRenderARC);
-            grpBoxMDL0General.Controls.Add(chkBoxRenderBRRES);
-            grpBoxMDL0General.Controls.Add(chkBoxMDL0Compatibility);
-            grpBoxMDL0General.Location = new System.Drawing.Point(8, 241);
-            grpBoxMDL0General.Name = "grpBoxMDL0General";
-            grpBoxMDL0General.Size = new System.Drawing.Size(349, 94);
-            grpBoxMDL0General.TabIndex = 19;
-            grpBoxMDL0General.TabStop = false;
-            grpBoxMDL0General.Text = "Models";
+            this.grpBoxMDL0General.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxMDL0General.Controls.Add(this.chkBoxRenderARC);
+            this.grpBoxMDL0General.Controls.Add(this.chkBoxRenderBRRES);
+            this.grpBoxMDL0General.Controls.Add(this.chkBoxMDL0Compatibility);
+            this.grpBoxMDL0General.Location = new System.Drawing.Point(8, 241);
+            this.grpBoxMDL0General.Name = "grpBoxMDL0General";
+            this.grpBoxMDL0General.Size = new System.Drawing.Size(349, 94);
+            this.grpBoxMDL0General.TabIndex = 19;
+            this.grpBoxMDL0General.TabStop = false;
+            this.grpBoxMDL0General.Text = "Models";
             // 
             // chkBoxRenderARC
             // 
-            chkBoxRenderARC.AutoSize = true;
-            chkBoxRenderARC.Location = new System.Drawing.Point(10, 68);
-            chkBoxRenderARC.Name = "chkBoxRenderARC";
-            chkBoxRenderARC.Size = new System.Drawing.Size(146, 17);
-            chkBoxRenderARC.TabIndex = 9;
-            chkBoxRenderARC.Text = "Render previews for ARC";
-            chkBoxRenderARC.UseVisualStyleBackColor = true;
-            chkBoxRenderARC.CheckedChanged += new EventHandler(ChkBoxRenderARC_CheckedChanged);
+            this.chkBoxRenderARC.AutoSize = true;
+            this.chkBoxRenderARC.Location = new System.Drawing.Point(10, 68);
+            this.chkBoxRenderARC.Name = "chkBoxRenderARC";
+            this.chkBoxRenderARC.Size = new System.Drawing.Size(146, 17);
+            this.chkBoxRenderARC.TabIndex = 9;
+            this.chkBoxRenderARC.Text = "Render previews for ARC";
+            this.chkBoxRenderARC.UseVisualStyleBackColor = true;
+            this.chkBoxRenderARC.CheckedChanged += new System.EventHandler(this.ChkBoxRenderARC_CheckedChanged);
             // 
             // chkBoxRenderBRRES
             // 
-            chkBoxRenderBRRES.AutoSize = true;
-            chkBoxRenderBRRES.Location = new System.Drawing.Point(10, 45);
-            chkBoxRenderBRRES.Name = "chkBoxRenderBRRES";
-            chkBoxRenderBRRES.Size = new System.Drawing.Size(161, 17);
-            chkBoxRenderBRRES.TabIndex = 8;
-            chkBoxRenderBRRES.Text = "Render previews for BRRES";
-            chkBoxRenderBRRES.UseVisualStyleBackColor = true;
-            chkBoxRenderBRRES.CheckedChanged += new EventHandler(ChkBoxRenderBRRES_CheckedChanged);
+            this.chkBoxRenderBRRES.AutoSize = true;
+            this.chkBoxRenderBRRES.Location = new System.Drawing.Point(10, 45);
+            this.chkBoxRenderBRRES.Name = "chkBoxRenderBRRES";
+            this.chkBoxRenderBRRES.Size = new System.Drawing.Size(161, 17);
+            this.chkBoxRenderBRRES.TabIndex = 8;
+            this.chkBoxRenderBRRES.Text = "Render previews for BRRES";
+            this.chkBoxRenderBRRES.UseVisualStyleBackColor = true;
+            this.chkBoxRenderBRRES.CheckedChanged += new System.EventHandler(this.ChkBoxRenderBRRES_CheckedChanged);
             // 
             // chkBoxMDL0Compatibility
             // 
-            chkBoxMDL0Compatibility.AutoSize = true;
-            chkBoxMDL0Compatibility.Location = new System.Drawing.Point(10, 22);
-            chkBoxMDL0Compatibility.Name = "chkBoxMDL0Compatibility";
-            chkBoxMDL0Compatibility.Size = new System.Drawing.Size(134, 17);
-            chkBoxMDL0Compatibility.TabIndex = 7;
-            chkBoxMDL0Compatibility.Text = "Use compatibility mode";
-            chkBoxMDL0Compatibility.UseVisualStyleBackColor = true;
-            chkBoxMDL0Compatibility.CheckedChanged += new EventHandler(ChkBoxMDL0Compatibility_CheckedChanged);
+            this.chkBoxMDL0Compatibility.AutoSize = true;
+            this.chkBoxMDL0Compatibility.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxMDL0Compatibility.Name = "chkBoxMDL0Compatibility";
+            this.chkBoxMDL0Compatibility.Size = new System.Drawing.Size(134, 17);
+            this.chkBoxMDL0Compatibility.TabIndex = 7;
+            this.chkBoxMDL0Compatibility.Text = "Use compatibility mode";
+            this.chkBoxMDL0Compatibility.UseVisualStyleBackColor = true;
+            this.chkBoxMDL0Compatibility.CheckedChanged += new System.EventHandler(this.ChkBoxMDL0Compatibility_CheckedChanged);
             // 
             // grpBoxAudioGeneral
             // 
-            grpBoxAudioGeneral.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                         | AnchorStyles.Right;
-            grpBoxAudioGeneral.Controls.Add(chkBoxAutoPlayAudio);
-            grpBoxAudioGeneral.Location = new System.Drawing.Point(8, 182);
-            grpBoxAudioGeneral.Name = "grpBoxAudioGeneral";
-            grpBoxAudioGeneral.Size = new System.Drawing.Size(349, 53);
-            grpBoxAudioGeneral.TabIndex = 18;
-            grpBoxAudioGeneral.TabStop = false;
-            grpBoxAudioGeneral.Text = "Audio";
+            this.grpBoxAudioGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxAudioGeneral.Controls.Add(this.chkBoxAutoPlayAudio);
+            this.grpBoxAudioGeneral.Location = new System.Drawing.Point(8, 182);
+            this.grpBoxAudioGeneral.Name = "grpBoxAudioGeneral";
+            this.grpBoxAudioGeneral.Size = new System.Drawing.Size(349, 53);
+            this.grpBoxAudioGeneral.TabIndex = 18;
+            this.grpBoxAudioGeneral.TabStop = false;
+            this.grpBoxAudioGeneral.Text = "Audio";
             // 
             // chkBoxAutoPlayAudio
             // 
-            chkBoxAutoPlayAudio.AutoSize = true;
-            chkBoxAutoPlayAudio.Location = new System.Drawing.Point(10, 22);
-            chkBoxAutoPlayAudio.Name = "chkBoxAutoPlayAudio";
-            chkBoxAutoPlayAudio.Size = new System.Drawing.Size(171, 17);
-            chkBoxAutoPlayAudio.TabIndex = 7;
-            chkBoxAutoPlayAudio.Text = "Automatically play audio nodes";
-            chkBoxAutoPlayAudio.UseVisualStyleBackColor = true;
-            chkBoxAutoPlayAudio.CheckedChanged += new EventHandler(ChkBoxAutoPlayAudio_CheckedChanged);
+            this.chkBoxAutoPlayAudio.AutoSize = true;
+            this.chkBoxAutoPlayAudio.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxAutoPlayAudio.Name = "chkBoxAutoPlayAudio";
+            this.chkBoxAutoPlayAudio.Size = new System.Drawing.Size(171, 17);
+            this.chkBoxAutoPlayAudio.TabIndex = 7;
+            this.chkBoxAutoPlayAudio.Text = "Automatically play audio nodes";
+            this.chkBoxAutoPlayAudio.UseVisualStyleBackColor = true;
+            this.chkBoxAutoPlayAudio.CheckedChanged += new System.EventHandler(this.ChkBoxAutoPlayAudio_CheckedChanged);
             // 
             // grpBoxMainFormGeneral
             // 
-            grpBoxMainFormGeneral.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                            | AnchorStyles.Right);
-            grpBoxMainFormGeneral.Controls.Add(lblRecentFiles);
-            grpBoxMainFormGeneral.Controls.Add(recentFileCountBox);
-            grpBoxMainFormGeneral.Controls.Add(grpBoxFileNameDisplayGeneral);
-            grpBoxMainFormGeneral.Controls.Add(chkShowPropDesc);
-            grpBoxMainFormGeneral.Controls.Add(chkShowHex);
-            grpBoxMainFormGeneral.Location = new System.Drawing.Point(8, 6);
-            grpBoxMainFormGeneral.Name = "grpBoxMainFormGeneral";
-            grpBoxMainFormGeneral.Size = new System.Drawing.Size(349, 170);
-            grpBoxMainFormGeneral.TabIndex = 15;
-            grpBoxMainFormGeneral.TabStop = false;
-            grpBoxMainFormGeneral.Text = "Main Form";
+            this.grpBoxMainFormGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxMainFormGeneral.Controls.Add(this.lblRecentFiles);
+            this.grpBoxMainFormGeneral.Controls.Add(this.recentFileCountBox);
+            this.grpBoxMainFormGeneral.Controls.Add(this.grpBoxFileNameDisplayGeneral);
+            this.grpBoxMainFormGeneral.Controls.Add(this.chkShowPropDesc);
+            this.grpBoxMainFormGeneral.Controls.Add(this.chkShowHex);
+            this.grpBoxMainFormGeneral.Location = new System.Drawing.Point(8, 6);
+            this.grpBoxMainFormGeneral.Name = "grpBoxMainFormGeneral";
+            this.grpBoxMainFormGeneral.Size = new System.Drawing.Size(349, 170);
+            this.grpBoxMainFormGeneral.TabIndex = 15;
+            this.grpBoxMainFormGeneral.TabStop = false;
+            this.grpBoxMainFormGeneral.Text = "Main Form";
             // 
             // lblRecentFiles
             // 
-            lblRecentFiles.AutoSize = true;
-            lblRecentFiles.Location = new System.Drawing.Point(8, 68);
-            lblRecentFiles.Name = "lblRecentFiles";
-            lblRecentFiles.Size = new System.Drawing.Size(120, 13);
-            lblRecentFiles.TabIndex = 12;
-            lblRecentFiles.Text = "Max Recent Files Count";
+            this.lblRecentFiles.AutoSize = true;
+            this.lblRecentFiles.Location = new System.Drawing.Point(8, 68);
+            this.lblRecentFiles.Name = "lblRecentFiles";
+            this.lblRecentFiles.Size = new System.Drawing.Size(120, 13);
+            this.lblRecentFiles.TabIndex = 12;
+            this.lblRecentFiles.Text = "Max Recent Files Count";
             // 
             // recentFileCountBox
             // 
-            recentFileCountBox.Integer = true;
-            recentFileCountBox.Integral = true;
-            recentFileCountBox.Location = new System.Drawing.Point(134, 65);
-            recentFileCountBox.MaximumValue = 3.402823E+38F;
-            recentFileCountBox.MinimumValue = -3.402823E+38F;
-            recentFileCountBox.Name = "recentFileCountBox";
-            recentFileCountBox.Size = new System.Drawing.Size(100, 20);
-            recentFileCountBox.TabIndex = 11;
-            recentFileCountBox.Text = "0";
-            recentFileCountBox.TextChanged += new EventHandler(RecentFileCountBox_TextChanged);
+            this.recentFileCountBox.Integer = true;
+            this.recentFileCountBox.Integral = true;
+            this.recentFileCountBox.Location = new System.Drawing.Point(134, 65);
+            this.recentFileCountBox.MaximumValue = 3.402823E+38F;
+            this.recentFileCountBox.MinimumValue = -3.402823E+38F;
+            this.recentFileCountBox.Name = "recentFileCountBox";
+            this.recentFileCountBox.Size = new System.Drawing.Size(100, 20);
+            this.recentFileCountBox.TabIndex = 11;
+            this.recentFileCountBox.Text = "0";
+            this.recentFileCountBox.TextChanged += new System.EventHandler(this.RecentFileCountBox_TextChanged);
             // 
             // grpBoxFileNameDisplayGeneral
             // 
-            grpBoxFileNameDisplayGeneral.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
-                                                                                      | AnchorStyles.Right);
-            grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowShortName);
-            grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowFullPath);
-            grpBoxFileNameDisplayGeneral.Location = new System.Drawing.Point(6, 89);
-            grpBoxFileNameDisplayGeneral.Name = "grpBoxFileNameDisplayGeneral";
-            grpBoxFileNameDisplayGeneral.Size = new System.Drawing.Size(337, 75);
-            grpBoxFileNameDisplayGeneral.TabIndex = 10;
-            grpBoxFileNameDisplayGeneral.TabStop = false;
-            grpBoxFileNameDisplayGeneral.Text = "Filename Display";
+            this.grpBoxFileNameDisplayGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxFileNameDisplayGeneral.Controls.Add(this.rdoShowShortName);
+            this.grpBoxFileNameDisplayGeneral.Controls.Add(this.rdoShowFullPath);
+            this.grpBoxFileNameDisplayGeneral.Location = new System.Drawing.Point(6, 89);
+            this.grpBoxFileNameDisplayGeneral.Name = "grpBoxFileNameDisplayGeneral";
+            this.grpBoxFileNameDisplayGeneral.Size = new System.Drawing.Size(337, 75);
+            this.grpBoxFileNameDisplayGeneral.TabIndex = 10;
+            this.grpBoxFileNameDisplayGeneral.TabStop = false;
+            this.grpBoxFileNameDisplayGeneral.Text = "Filename Display";
             // 
             // rdoShowShortName
             // 
-            rdoShowShortName.AutoSize = true;
-            rdoShowShortName.Location = new System.Drawing.Point(10, 45);
-            rdoShowShortName.Name = "rdoShowShortName";
-            rdoShowShortName.Size = new System.Drawing.Size(94, 17);
-            rdoShowShortName.TabIndex = 1;
-            rdoShowShortName.TabStop = true;
-            rdoShowShortName.Text = "Show filename";
-            rdoShowShortName.UseVisualStyleBackColor = true;
-            rdoShowShortName.CheckedChanged += new EventHandler(RdoPathDisplay_CheckedChanged);
+            this.rdoShowShortName.AutoSize = true;
+            this.rdoShowShortName.Location = new System.Drawing.Point(10, 45);
+            this.rdoShowShortName.Name = "rdoShowShortName";
+            this.rdoShowShortName.Size = new System.Drawing.Size(94, 17);
+            this.rdoShowShortName.TabIndex = 1;
+            this.rdoShowShortName.TabStop = true;
+            this.rdoShowShortName.Text = "Show filename";
+            this.rdoShowShortName.UseVisualStyleBackColor = true;
+            this.rdoShowShortName.CheckedChanged += new System.EventHandler(this.RdoPathDisplay_CheckedChanged);
             // 
             // rdoShowFullPath
             // 
-            rdoShowFullPath.AutoSize = true;
-            rdoShowFullPath.Location = new System.Drawing.Point(10, 22);
-            rdoShowFullPath.Name = "rdoShowFullPath";
-            rdoShowFullPath.Size = new System.Drawing.Size(92, 17);
-            rdoShowFullPath.TabIndex = 0;
-            rdoShowFullPath.TabStop = true;
-            rdoShowFullPath.Text = "Show full path";
-            rdoShowFullPath.UseVisualStyleBackColor = true;
-            rdoShowFullPath.CheckedChanged += new EventHandler(RdoPathDisplay_CheckedChanged);
+            this.rdoShowFullPath.AutoSize = true;
+            this.rdoShowFullPath.Location = new System.Drawing.Point(10, 22);
+            this.rdoShowFullPath.Name = "rdoShowFullPath";
+            this.rdoShowFullPath.Size = new System.Drawing.Size(92, 17);
+            this.rdoShowFullPath.TabIndex = 0;
+            this.rdoShowFullPath.TabStop = true;
+            this.rdoShowFullPath.Text = "Show full path";
+            this.rdoShowFullPath.UseVisualStyleBackColor = true;
+            this.rdoShowFullPath.CheckedChanged += new System.EventHandler(this.RdoPathDisplay_CheckedChanged);
             // 
             // tabCompression
             // 
-            tabCompression.BackColor = System.Drawing.SystemColors.Control;
-            tabCompression.Controls.Add(groupBoxModuleCompression);
-            tabCompression.Controls.Add(groupBoxStageCompression);
-            tabCompression.Controls.Add(groupBoxFighterCompression);
-            tabCompression.Location = new System.Drawing.Point(4, 22);
-            tabCompression.Name = "tabCompression";
-            tabCompression.Padding = new Padding(3);
-            tabCompression.Size = new System.Drawing.Size(365, 452);
-            tabCompression.TabIndex = 3;
-            tabCompression.Text = "Compression";
+            this.tabCompression.BackColor = System.Drawing.SystemColors.Control;
+            this.tabCompression.Controls.Add(this.groupBoxModuleCompression);
+            this.tabCompression.Controls.Add(this.groupBoxStageCompression);
+            this.tabCompression.Controls.Add(this.groupBoxFighterCompression);
+            this.tabCompression.Location = new System.Drawing.Point(4, 22);
+            this.tabCompression.Name = "tabCompression";
+            this.tabCompression.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCompression.Size = new System.Drawing.Size(365, 452);
+            this.tabCompression.TabIndex = 3;
+            this.tabCompression.Text = "Compression";
             // 
             // groupBoxModuleCompression
             // 
-            groupBoxModuleCompression.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                                | AnchorStyles.Right);
-            groupBoxModuleCompression.Controls.Add(chkBoxModuleCompress);
-            groupBoxModuleCompression.Location = new System.Drawing.Point(8, 146);
-            groupBoxModuleCompression.Name = "groupBoxModuleCompression";
-            groupBoxModuleCompression.Size = new System.Drawing.Size(349, 53);
-            groupBoxModuleCompression.TabIndex = 18;
-            groupBoxModuleCompression.TabStop = false;
-            groupBoxModuleCompression.Text = "Modules";
+            this.groupBoxModuleCompression.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxModuleCompression.Controls.Add(this.chkBoxModuleCompress);
+            this.groupBoxModuleCompression.Location = new System.Drawing.Point(8, 146);
+            this.groupBoxModuleCompression.Name = "groupBoxModuleCompression";
+            this.groupBoxModuleCompression.Size = new System.Drawing.Size(349, 53);
+            this.groupBoxModuleCompression.TabIndex = 18;
+            this.groupBoxModuleCompression.TabStop = false;
+            this.groupBoxModuleCompression.Text = "Modules";
             // 
             // chkBoxModuleCompress
             // 
-            chkBoxModuleCompress.AutoSize = true;
-            chkBoxModuleCompress.Location = new System.Drawing.Point(10, 22);
-            chkBoxModuleCompress.Name = "chkBoxModuleCompress";
-            chkBoxModuleCompress.Size = new System.Drawing.Size(251, 17);
-            chkBoxModuleCompress.TabIndex = 7;
-            chkBoxModuleCompress.Text = "Automatically compress files (not recommended)";
-            chkBoxModuleCompress.UseVisualStyleBackColor = true;
-            chkBoxModuleCompress.CheckedChanged += new EventHandler(ChkBoxModuleCompress_CheckedChanged);
+            this.chkBoxModuleCompress.AutoSize = true;
+            this.chkBoxModuleCompress.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxModuleCompress.Name = "chkBoxModuleCompress";
+            this.chkBoxModuleCompress.Size = new System.Drawing.Size(251, 17);
+            this.chkBoxModuleCompress.TabIndex = 7;
+            this.chkBoxModuleCompress.Text = "Automatically compress files (not recommended)";
+            this.chkBoxModuleCompress.UseVisualStyleBackColor = true;
+            this.chkBoxModuleCompress.CheckedChanged += new System.EventHandler(this.ChkBoxModuleCompress_CheckedChanged);
             // 
             // groupBoxStageCompression
             // 
-            groupBoxStageCompression.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                               | AnchorStyles.Right);
-            groupBoxStageCompression.Controls.Add(chkBoxStageCompress);
-            groupBoxStageCompression.Location = new System.Drawing.Point(8, 87);
-            groupBoxStageCompression.Name = "groupBoxStageCompression";
-            groupBoxStageCompression.Size = new System.Drawing.Size(349, 53);
-            groupBoxStageCompression.TabIndex = 17;
-            groupBoxStageCompression.TabStop = false;
-            groupBoxStageCompression.Text = "Stages";
+            this.groupBoxStageCompression.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxStageCompression.Controls.Add(this.chkBoxStageCompress);
+            this.groupBoxStageCompression.Location = new System.Drawing.Point(8, 87);
+            this.groupBoxStageCompression.Name = "groupBoxStageCompression";
+            this.groupBoxStageCompression.Size = new System.Drawing.Size(349, 53);
+            this.groupBoxStageCompression.TabIndex = 17;
+            this.groupBoxStageCompression.TabStop = false;
+            this.groupBoxStageCompression.Text = "Stages";
             // 
             // chkBoxStageCompress
             // 
-            chkBoxStageCompress.AutoSize = true;
-            chkBoxStageCompress.Location = new System.Drawing.Point(10, 22);
-            chkBoxStageCompress.Name = "chkBoxStageCompress";
-            chkBoxStageCompress.Size = new System.Drawing.Size(157, 17);
-            chkBoxStageCompress.TabIndex = 7;
-            chkBoxStageCompress.Text = "Automatically compress files";
-            chkBoxStageCompress.UseVisualStyleBackColor = true;
-            chkBoxStageCompress.CheckedChanged += new EventHandler(ChkBoxStageCompress_CheckedChanged);
+            this.chkBoxStageCompress.AutoSize = true;
+            this.chkBoxStageCompress.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxStageCompress.Name = "chkBoxStageCompress";
+            this.chkBoxStageCompress.Size = new System.Drawing.Size(157, 17);
+            this.chkBoxStageCompress.TabIndex = 7;
+            this.chkBoxStageCompress.Text = "Automatically compress files";
+            this.chkBoxStageCompress.UseVisualStyleBackColor = true;
+            this.chkBoxStageCompress.CheckedChanged += new System.EventHandler(this.ChkBoxStageCompress_CheckedChanged);
             // 
             // groupBoxFighterCompression
             // 
-            groupBoxFighterCompression.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                                 | AnchorStyles.Right);
-            groupBoxFighterCompression.Controls.Add(chkBoxFighterPacDecompress);
-            groupBoxFighterCompression.Controls.Add(chkBoxFighterPcsCompress);
-            groupBoxFighterCompression.Location = new System.Drawing.Point(8, 6);
-            groupBoxFighterCompression.Name = "groupBoxFighterCompression";
-            groupBoxFighterCompression.Size = new System.Drawing.Size(349, 75);
-            groupBoxFighterCompression.TabIndex = 16;
-            groupBoxFighterCompression.TabStop = false;
-            groupBoxFighterCompression.Text = "Fighters";
+            this.groupBoxFighterCompression.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFighterCompression.Controls.Add(this.chkBoxFighterPacDecompress);
+            this.groupBoxFighterCompression.Controls.Add(this.chkBoxFighterPcsCompress);
+            this.groupBoxFighterCompression.Location = new System.Drawing.Point(8, 6);
+            this.groupBoxFighterCompression.Name = "groupBoxFighterCompression";
+            this.groupBoxFighterCompression.Size = new System.Drawing.Size(349, 75);
+            this.groupBoxFighterCompression.TabIndex = 16;
+            this.groupBoxFighterCompression.TabStop = false;
+            this.groupBoxFighterCompression.Text = "Fighters";
             // 
             // chkBoxFighterPacDecompress
             // 
-            chkBoxFighterPacDecompress.AutoSize = true;
-            chkBoxFighterPacDecompress.Location = new System.Drawing.Point(10, 22);
-            chkBoxFighterPacDecompress.Name = "chkBoxFighterPacDecompress";
-            chkBoxFighterPacDecompress.Size = new System.Drawing.Size(193, 17);
-            chkBoxFighterPacDecompress.TabIndex = 7;
-            chkBoxFighterPacDecompress.Text = "Automatically decompress PAC files";
-            chkBoxFighterPacDecompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPacDecompress.CheckedChanged += new EventHandler(ChkBoxFighterPacDecompress_CheckedChanged);
+            this.chkBoxFighterPacDecompress.AutoSize = true;
+            this.chkBoxFighterPacDecompress.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxFighterPacDecompress.Name = "chkBoxFighterPacDecompress";
+            this.chkBoxFighterPacDecompress.Size = new System.Drawing.Size(193, 17);
+            this.chkBoxFighterPacDecompress.TabIndex = 7;
+            this.chkBoxFighterPacDecompress.Text = "Automatically decompress PAC files";
+            this.chkBoxFighterPacDecompress.UseVisualStyleBackColor = true;
+            this.chkBoxFighterPacDecompress.CheckedChanged += new System.EventHandler(this.ChkBoxFighterPacDecompress_CheckedChanged);
             // 
             // chkBoxFighterPcsCompress
             // 
-            chkBoxFighterPcsCompress.AutoSize = true;
-            chkBoxFighterPcsCompress.Location = new System.Drawing.Point(10, 45);
-            chkBoxFighterPcsCompress.Name = "chkBoxFighterPcsCompress";
-            chkBoxFighterPcsCompress.Size = new System.Drawing.Size(181, 17);
-            chkBoxFighterPcsCompress.TabIndex = 9;
-            chkBoxFighterPcsCompress.Text = "Automatically compress PCS files";
-            chkBoxFighterPcsCompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPcsCompress.CheckedChanged += new EventHandler(ChkBoxFighterPcsCompress_CheckedChanged);
+            this.chkBoxFighterPcsCompress.AutoSize = true;
+            this.chkBoxFighterPcsCompress.Location = new System.Drawing.Point(10, 45);
+            this.chkBoxFighterPcsCompress.Name = "chkBoxFighterPcsCompress";
+            this.chkBoxFighterPcsCompress.Size = new System.Drawing.Size(181, 17);
+            this.chkBoxFighterPcsCompress.TabIndex = 9;
+            this.chkBoxFighterPcsCompress.Text = "Automatically compress PCS files";
+            this.chkBoxFighterPcsCompress.UseVisualStyleBackColor = true;
+            this.chkBoxFighterPcsCompress.CheckedChanged += new System.EventHandler(this.ChkBoxFighterPcsCompress_CheckedChanged);
             // 
             // tabFileAssociations
             // 
-            tabFileAssociations.Controls.Add(genericFileAssociationBox);
-            tabFileAssociations.Controls.Add(lblAdminApproval);
-            tabFileAssociations.Controls.Add(btnApply);
-            tabFileAssociations.Controls.Add(associatiedFilesBox);
-            tabFileAssociations.Location = new System.Drawing.Point(4, 22);
-            tabFileAssociations.Name = "tabFileAssociations";
-            tabFileAssociations.Size = new System.Drawing.Size(365, 452);
-            tabFileAssociations.TabIndex = 2;
-            tabFileAssociations.Text = "File Associations";
+            this.tabFileAssociations.Controls.Add(this.genericFileAssociationBox);
+            this.tabFileAssociations.Controls.Add(this.lblAdminApproval);
+            this.tabFileAssociations.Controls.Add(this.btnApply);
+            this.tabFileAssociations.Controls.Add(this.associatiedFilesBox);
+            this.tabFileAssociations.Location = new System.Drawing.Point(4, 22);
+            this.tabFileAssociations.Name = "tabFileAssociations";
+            this.tabFileAssociations.Size = new System.Drawing.Size(365, 452);
+            this.tabFileAssociations.TabIndex = 2;
+            this.tabFileAssociations.Text = "File Associations";
             // 
             // genericFileAssociationBox
             // 
-            genericFileAssociationBox.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
-                                                                                   | AnchorStyles.Right);
-            genericFileAssociationBox.Controls.Add(binFileAssociation);
-            genericFileAssociationBox.Controls.Add(datFileAssociation);
-            genericFileAssociationBox.Location = new System.Drawing.Point(8, 341);
-            genericFileAssociationBox.Name = "genericFileAssociationBox";
-            genericFileAssociationBox.Size = new System.Drawing.Size(349, 75);
-            genericFileAssociationBox.TabIndex = 6;
-            genericFileAssociationBox.TabStop = false;
-            genericFileAssociationBox.Text = "Generic File Types";
+            this.genericFileAssociationBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.genericFileAssociationBox.Controls.Add(this.binFileAssociation);
+            this.genericFileAssociationBox.Controls.Add(this.datFileAssociation);
+            this.genericFileAssociationBox.Location = new System.Drawing.Point(8, 341);
+            this.genericFileAssociationBox.Name = "genericFileAssociationBox";
+            this.genericFileAssociationBox.Size = new System.Drawing.Size(349, 75);
+            this.genericFileAssociationBox.TabIndex = 6;
+            this.genericFileAssociationBox.TabStop = false;
+            this.genericFileAssociationBox.Text = "Generic File Types";
             // 
             // binFileAssociation
             // 
-            binFileAssociation.AutoSize = true;
-            binFileAssociation.Location = new System.Drawing.Point(10, 45);
-            binFileAssociation.Name = "binFileAssociation";
-            binFileAssociation.Size = new System.Drawing.Size(135, 17);
-            binFileAssociation.TabIndex = 9;
-            binFileAssociation.Text = "Associate with .bin files";
-            binFileAssociation.UseVisualStyleBackColor = true;
-            binFileAssociation.CheckedChanged += new EventHandler(BinFileAssociation_CheckedChanged);
+            this.binFileAssociation.AutoSize = true;
+            this.binFileAssociation.Location = new System.Drawing.Point(10, 45);
+            this.binFileAssociation.Name = "binFileAssociation";
+            this.binFileAssociation.Size = new System.Drawing.Size(135, 17);
+            this.binFileAssociation.TabIndex = 9;
+            this.binFileAssociation.Text = "Associate with .bin files";
+            this.binFileAssociation.UseVisualStyleBackColor = true;
+            this.binFileAssociation.CheckedChanged += new System.EventHandler(this.BinFileAssociation_CheckedChanged);
             // 
             // datFileAssociation
             // 
-            datFileAssociation.AutoSize = true;
-            datFileAssociation.Location = new System.Drawing.Point(10, 22);
-            datFileAssociation.Name = "datFileAssociation";
-            datFileAssociation.Size = new System.Drawing.Size(136, 17);
-            datFileAssociation.TabIndex = 8;
-            datFileAssociation.Text = "Associate with .dat files";
-            datFileAssociation.UseVisualStyleBackColor = true;
-            datFileAssociation.CheckedChanged += new EventHandler(DatFileAssociation_CheckedChanged);
+            this.datFileAssociation.AutoSize = true;
+            this.datFileAssociation.Location = new System.Drawing.Point(10, 22);
+            this.datFileAssociation.Name = "datFileAssociation";
+            this.datFileAssociation.Size = new System.Drawing.Size(136, 17);
+            this.datFileAssociation.TabIndex = 8;
+            this.datFileAssociation.Text = "Associate with .dat files";
+            this.datFileAssociation.UseVisualStyleBackColor = true;
+            this.datFileAssociation.CheckedChanged += new System.EventHandler(this.DatFileAssociation_CheckedChanged);
             // 
             // lblAdminApproval
             // 
-            lblAdminApproval.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
-                                                                          | AnchorStyles.Right);
-            lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F,
-                System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte) 0);
-            lblAdminApproval.ForeColor = System.Drawing.Color.Red;
-            lblAdminApproval.Location = new System.Drawing.Point(3, 426);
-            lblAdminApproval.Name = "lblAdminApproval";
-            lblAdminApproval.Size = new System.Drawing.Size(359, 18);
-            lblAdminApproval.TabIndex = 5;
-            lblAdminApproval.Text = "Administrator access required to make changes";
-            lblAdminApproval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAdminApproval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminApproval.ForeColor = System.Drawing.Color.Red;
+            this.lblAdminApproval.Location = new System.Drawing.Point(3, 426);
+            this.lblAdminApproval.Name = "lblAdminApproval";
+            this.lblAdminApproval.Size = new System.Drawing.Size(359, 18);
+            this.lblAdminApproval.TabIndex = 5;
+            this.lblAdminApproval.Text = "Administrator access required to make changes";
+            this.lblAdminApproval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnApply
             // 
-            btnApply.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Right);
-            btnApply.Location = new System.Drawing.Point(287, 424);
-            btnApply.Name = "btnApply";
-            btnApply.Size = new System.Drawing.Size(75, 23);
-            btnApply.TabIndex = 4;
-            btnApply.Text = "Apply";
-            btnApply.UseVisualStyleBackColor = true;
-            btnApply.Click += new EventHandler(BtnApply_Click);
+            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApply.Location = new System.Drawing.Point(287, 424);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(75, 23);
+            this.btnApply.TabIndex = 4;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.BtnApply_Click);
             // 
             // associatiedFilesBox
             // 
-            associatiedFilesBox.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                          | AnchorStyles.Left
-                                                                          | AnchorStyles.Right);
-            associatiedFilesBox.Controls.Add(checkBox1);
-            associatiedFilesBox.Controls.Add(listView1);
-            associatiedFilesBox.Location = new System.Drawing.Point(8, 6);
-            associatiedFilesBox.Name = "associatiedFilesBox";
-            associatiedFilesBox.Size = new System.Drawing.Size(349, 329);
-            associatiedFilesBox.TabIndex = 1;
-            associatiedFilesBox.TabStop = false;
-            associatiedFilesBox.Text = "Wii File Types";
+            this.associatiedFilesBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.associatiedFilesBox.Controls.Add(this.checkBox1);
+            this.associatiedFilesBox.Controls.Add(this.listView1);
+            this.associatiedFilesBox.Location = new System.Drawing.Point(8, 6);
+            this.associatiedFilesBox.Name = "associatiedFilesBox";
+            this.associatiedFilesBox.Size = new System.Drawing.Size(349, 329);
+            this.associatiedFilesBox.TabIndex = 1;
+            this.associatiedFilesBox.TabStop = false;
+            this.associatiedFilesBox.Text = "Wii File Types";
             // 
             // checkBox1
             // 
-            checkBox1.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Right);
-            checkBox1.Location = new System.Drawing.Point(242, 303);
-            checkBox1.Name = "checkBox1";
-            checkBox1.RightToLeft = RightToLeft.Yes;
-            checkBox1.Size = new System.Drawing.Size(104, 20);
-            checkBox1.TabIndex = 5;
-            checkBox1.Text = "Check All";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += new EventHandler(CheckBox1_CheckedChanged);
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox1.Location = new System.Drawing.Point(242, 303);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox1.Size = new System.Drawing.Size(104, 20);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Check All";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // listView1
             // 
-            listView1.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                | AnchorStyles.Left
-                                                                | AnchorStyles.Right);
-            listView1.AutoArrange = false;
-            listView1.BorderStyle = BorderStyle.FixedSingle;
-            listView1.CheckBoxes = true;
-            listView1.Columns.AddRange(new ColumnHeader[]
-            {
-                columnHeader1
-            });
-            listView1.HeaderStyle = ColumnHeaderStyle.None;
-            listView1.HideSelection = false;
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.AutoArrange = false;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listView1.CheckBoxes = true;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView1.HideSelection = false;
             listViewItem1.StateImageIndex = 0;
             listViewItem1.Tag = "";
             listViewItem2.StateImageIndex = 0;
@@ -938,447 +992,447 @@ namespace BrawlCrate
             listViewItem27.StateImageIndex = 0;
             listViewItem28.StateImageIndex = 0;
             listViewItem29.StateImageIndex = 0;
-            listView1.Items.AddRange(new ListViewItem[]
-            {
-                listViewItem1,
-                listViewItem2,
-                listViewItem3,
-                listViewItem4,
-                listViewItem5,
-                listViewItem6,
-                listViewItem7,
-                listViewItem8,
-                listViewItem9,
-                listViewItem10,
-                listViewItem11,
-                listViewItem12,
-                listViewItem13,
-                listViewItem14,
-                listViewItem15,
-                listViewItem16,
-                listViewItem17,
-                listViewItem18,
-                listViewItem19,
-                listViewItem20,
-                listViewItem21,
-                listViewItem22,
-                listViewItem23,
-                listViewItem24,
-                listViewItem25,
-                listViewItem26,
-                listViewItem27,
-                listViewItem28,
-                listViewItem29
-            });
-            listView1.Location = new System.Drawing.Point(6, 19);
-            listView1.MultiSelect = false;
-            listView1.Name = "listView1";
-            listView1.Size = new System.Drawing.Size(337, 278);
-            listView1.TabIndex = 6;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.ItemChecked += new ItemCheckedEventHandler(ListView1_ItemChecked);
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20,
+            listViewItem21,
+            listViewItem22,
+            listViewItem23,
+            listViewItem24,
+            listViewItem25,
+            listViewItem26,
+            listViewItem27,
+            listViewItem28,
+            listViewItem29});
+            this.listView1.Location = new System.Drawing.Point(6, 19);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(337, 278);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.ListView1_ItemChecked);
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Name";
-            columnHeader1.Width = 300;
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 300;
             // 
             // tabBrawlAPI
             // 
-            tabBrawlAPI.BackColor = System.Drawing.SystemColors.Control;
-            tabBrawlAPI.Controls.Add(grpBoxFSharpAPI);
-            tabBrawlAPI.Controls.Add(grpBoxPythonAPI);
-            tabBrawlAPI.Controls.Add(grpBoxAPIGeneral);
-            tabBrawlAPI.Location = new System.Drawing.Point(4, 22);
-            tabBrawlAPI.Name = "tabBrawlAPI";
-            tabBrawlAPI.Padding = new Padding(3);
-            tabBrawlAPI.Size = new System.Drawing.Size(365, 452);
-            tabBrawlAPI.TabIndex = 5;
-            tabBrawlAPI.Text = "BrawlAPI";
+            this.tabBrawlAPI.BackColor = System.Drawing.SystemColors.Control;
+            this.tabBrawlAPI.Controls.Add(this.grpBoxFSharpAPI);
+            this.tabBrawlAPI.Controls.Add(this.grpBoxPythonAPI);
+            this.tabBrawlAPI.Controls.Add(this.grpBoxAPIGeneral);
+            this.tabBrawlAPI.Location = new System.Drawing.Point(4, 22);
+            this.tabBrawlAPI.Name = "tabBrawlAPI";
+            this.tabBrawlAPI.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBrawlAPI.Size = new System.Drawing.Size(365, 452);
+            this.tabBrawlAPI.TabIndex = 5;
+            this.tabBrawlAPI.Text = "BrawlAPI";
             // 
             // grpBoxFSharpAPI
             // 
-            grpBoxFSharpAPI.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                      | AnchorStyles.Right);
-            grpBoxFSharpAPI.Controls.Add(txtBoxFSharpPath);
-            grpBoxFSharpAPI.Controls.Add(btnFSharpBrowse);
-            grpBoxFSharpAPI.Controls.Add(btnFSharpDetect);
-            grpBoxFSharpAPI.Controls.Add(label2);
-            grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 166);
-            grpBoxFSharpAPI.Name = "grpBoxFSharpAPI";
-            grpBoxFSharpAPI.Size = new System.Drawing.Size(349, 73);
-            grpBoxFSharpAPI.TabIndex = 23;
-            grpBoxFSharpAPI.TabStop = false;
-            grpBoxFSharpAPI.Text = "F#";
+            this.grpBoxFSharpAPI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxFSharpAPI.Controls.Add(this.txtBoxFSharpPath);
+            this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpBrowse);
+            this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpDetect);
+            this.grpBoxFSharpAPI.Controls.Add(this.label2);
+            this.grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 166);
+            this.grpBoxFSharpAPI.Name = "grpBoxFSharpAPI";
+            this.grpBoxFSharpAPI.Size = new System.Drawing.Size(349, 73);
+            this.grpBoxFSharpAPI.TabIndex = 23;
+            this.grpBoxFSharpAPI.TabStop = false;
+            this.grpBoxFSharpAPI.Text = "F#";
             // 
             // txtBoxFSharpPath
             // 
-            txtBoxFSharpPath.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                       | AnchorStyles.Right);
-            txtBoxFSharpPath.Location = new System.Drawing.Point(11, 38);
-            txtBoxFSharpPath.Name = "txtBoxFSharpPath";
-            txtBoxFSharpPath.Size = new System.Drawing.Size(219, 20);
-            txtBoxFSharpPath.TabIndex = 3;
-            txtBoxFSharpPath.Text = "(none)";
-            txtBoxFSharpPath.TextChanged += new EventHandler(TxtBoxFSharpPath_TextChanged);
+            this.txtBoxFSharpPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxFSharpPath.Location = new System.Drawing.Point(11, 38);
+            this.txtBoxFSharpPath.Name = "txtBoxFSharpPath";
+            this.txtBoxFSharpPath.Size = new System.Drawing.Size(219, 20);
+            this.txtBoxFSharpPath.TabIndex = 3;
+            this.txtBoxFSharpPath.Text = "(none)";
+            this.txtBoxFSharpPath.TextChanged += new System.EventHandler(this.TxtBoxFSharpPath_TextChanged);
             // 
             // btnFSharpBrowse
             // 
-            btnFSharpBrowse.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                      | AnchorStyles.Right);
-            btnFSharpBrowse.Location = new System.Drawing.Point(236, 36);
-            btnFSharpBrowse.Name = "btnFSharpBrowse";
-            btnFSharpBrowse.Size = new System.Drawing.Size(24, 24);
-            btnFSharpBrowse.TabIndex = 21;
-            btnFSharpBrowse.Text = "...";
-            btnFSharpBrowse.UseVisualStyleBackColor = true;
-            btnFSharpBrowse.Click += new EventHandler(BtnFSharpBrowse_Click);
+            this.btnFSharpBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFSharpBrowse.Location = new System.Drawing.Point(236, 36);
+            this.btnFSharpBrowse.Name = "btnFSharpBrowse";
+            this.btnFSharpBrowse.Size = new System.Drawing.Size(24, 24);
+            this.btnFSharpBrowse.TabIndex = 21;
+            this.btnFSharpBrowse.Text = "...";
+            this.btnFSharpBrowse.UseVisualStyleBackColor = true;
+            this.btnFSharpBrowse.Click += new System.EventHandler(this.BtnFSharpBrowse_Click);
             // 
             // btnFSharpDetect
             // 
-            btnFSharpDetect.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                      | AnchorStyles.Right);
-            btnFSharpDetect.Location = new System.Drawing.Point(266, 36);
-            btnFSharpDetect.Name = "btnFSharpDetect";
-            btnFSharpDetect.Size = new System.Drawing.Size(75, 24);
-            btnFSharpDetect.TabIndex = 22;
-            btnFSharpDetect.Text = "Auto-Detect";
-            btnFSharpDetect.UseVisualStyleBackColor = true;
-            btnFSharpDetect.Click += new EventHandler(BtnFSharpDetect_Click);
+            this.btnFSharpDetect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFSharpDetect.Location = new System.Drawing.Point(266, 36);
+            this.btnFSharpDetect.Name = "btnFSharpDetect";
+            this.btnFSharpDetect.Size = new System.Drawing.Size(75, 24);
+            this.btnFSharpDetect.TabIndex = 22;
+            this.btnFSharpDetect.Text = "Auto-Detect";
+            this.btnFSharpDetect.UseVisualStyleBackColor = true;
+            this.btnFSharpDetect.Click += new System.EventHandler(this.BtnFSharpDetect_Click);
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(8, 22);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(85, 13);
-            label2.TabIndex = 13;
-            label2.Text = "Installation Path:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Installation Path:";
             // 
             // grpBoxPythonAPI
             // 
-            grpBoxPythonAPI.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                      | AnchorStyles.Right);
-            grpBoxPythonAPI.Controls.Add(txtBoxPythonPath);
-            grpBoxPythonAPI.Controls.Add(btnPythonBrowse);
-            grpBoxPythonAPI.Controls.Add(btnPythonDetect);
-            grpBoxPythonAPI.Controls.Add(label1);
-            grpBoxPythonAPI.Location = new System.Drawing.Point(8, 87);
-            grpBoxPythonAPI.Name = "grpBoxPythonAPI";
-            grpBoxPythonAPI.Size = new System.Drawing.Size(349, 73);
-            grpBoxPythonAPI.TabIndex = 20;
-            grpBoxPythonAPI.TabStop = false;
-            grpBoxPythonAPI.Text = "Python";
+            this.grpBoxPythonAPI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxPythonAPI.Controls.Add(this.txtBoxPythonPath);
+            this.grpBoxPythonAPI.Controls.Add(this.btnPythonBrowse);
+            this.grpBoxPythonAPI.Controls.Add(this.btnPythonDetect);
+            this.grpBoxPythonAPI.Controls.Add(this.label1);
+            this.grpBoxPythonAPI.Location = new System.Drawing.Point(8, 87);
+            this.grpBoxPythonAPI.Name = "grpBoxPythonAPI";
+            this.grpBoxPythonAPI.Size = new System.Drawing.Size(349, 73);
+            this.grpBoxPythonAPI.TabIndex = 20;
+            this.grpBoxPythonAPI.TabStop = false;
+            this.grpBoxPythonAPI.Text = "Python";
             // 
             // txtBoxPythonPath
             // 
-            txtBoxPythonPath.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                       | AnchorStyles.Right);
-            txtBoxPythonPath.Location = new System.Drawing.Point(11, 38);
-            txtBoxPythonPath.Name = "txtBoxPythonPath";
-            txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
-            txtBoxPythonPath.TabIndex = 3;
-            txtBoxPythonPath.Text = "(none)";
-            txtBoxPythonPath.TextChanged += new EventHandler(TxtBoxPythonPath_TextChanged);
+            this.txtBoxPythonPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxPythonPath.Location = new System.Drawing.Point(11, 38);
+            this.txtBoxPythonPath.Name = "txtBoxPythonPath";
+            this.txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
+            this.txtBoxPythonPath.TabIndex = 3;
+            this.txtBoxPythonPath.Text = "(none)";
+            this.txtBoxPythonPath.TextChanged += new System.EventHandler(this.TxtBoxPythonPath_TextChanged);
             // 
             // btnPythonBrowse
             // 
-            btnPythonBrowse.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                      | AnchorStyles.Right);
-            btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
-            btnPythonBrowse.Name = "btnPythonBrowse";
-            btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
-            btnPythonBrowse.TabIndex = 21;
-            btnPythonBrowse.Text = "...";
-            btnPythonBrowse.UseVisualStyleBackColor = true;
-            btnPythonBrowse.Click += new EventHandler(BtnPythonBrowse_Click);
+            this.btnPythonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
+            this.btnPythonBrowse.Name = "btnPythonBrowse";
+            this.btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
+            this.btnPythonBrowse.TabIndex = 21;
+            this.btnPythonBrowse.Text = "...";
+            this.btnPythonBrowse.UseVisualStyleBackColor = true;
+            this.btnPythonBrowse.Click += new System.EventHandler(this.BtnPythonBrowse_Click);
             // 
             // btnPythonDetect
             // 
-            btnPythonDetect.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
-                                                                      | AnchorStyles.Right);
-            btnPythonDetect.Location = new System.Drawing.Point(266, 36);
-            btnPythonDetect.Name = "btnPythonDetect";
-            btnPythonDetect.Size = new System.Drawing.Size(75, 24);
-            btnPythonDetect.TabIndex = 22;
-            btnPythonDetect.Text = "Auto-Detect";
-            btnPythonDetect.UseVisualStyleBackColor = true;
-            btnPythonDetect.Click += new EventHandler(BtnPythonDetect_Click);
+            this.btnPythonDetect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPythonDetect.Location = new System.Drawing.Point(266, 36);
+            this.btnPythonDetect.Name = "btnPythonDetect";
+            this.btnPythonDetect.Size = new System.Drawing.Size(75, 24);
+            this.btnPythonDetect.TabIndex = 22;
+            this.btnPythonDetect.Text = "Auto-Detect";
+            this.btnPythonDetect.UseVisualStyleBackColor = true;
+            this.btnPythonDetect.Click += new System.EventHandler(this.BtnPythonDetect_Click);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(8, 22);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(85, 13);
-            label1.TabIndex = 13;
-            label1.Text = "Installation Path:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Installation Path:";
             // 
             // grpBoxAPIGeneral
             // 
-            grpBoxAPIGeneral.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                       | AnchorStyles.Right);
-            grpBoxAPIGeneral.Controls.Add(chkBoxAPIEnableLoaders);
-            grpBoxAPIGeneral.Controls.Add(chkBoxEnableAPI);
-            grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
-            grpBoxAPIGeneral.Name = "grpBoxAPIGeneral";
-            grpBoxAPIGeneral.Size = new System.Drawing.Size(349, 75);
-            grpBoxAPIGeneral.TabIndex = 19;
-            grpBoxAPIGeneral.TabStop = false;
-            grpBoxAPIGeneral.Text = "BrawlAPI";
+            this.grpBoxAPIGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxAPIGeneral.Controls.Add(this.chkBoxAPIEnableLoaders);
+            this.grpBoxAPIGeneral.Controls.Add(this.chkBoxEnableAPI);
+            this.grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
+            this.grpBoxAPIGeneral.Name = "grpBoxAPIGeneral";
+            this.grpBoxAPIGeneral.Size = new System.Drawing.Size(349, 75);
+            this.grpBoxAPIGeneral.TabIndex = 19;
+            this.grpBoxAPIGeneral.TabStop = false;
+            this.grpBoxAPIGeneral.Text = "BrawlAPI";
             // 
             // chkBoxAPIEnableLoaders
             // 
-            chkBoxAPIEnableLoaders.AutoSize = true;
-            chkBoxAPIEnableLoaders.Location = new System.Drawing.Point(10, 45);
-            chkBoxAPIEnableLoaders.Name = "chkBoxAPIEnableLoaders";
-            chkBoxAPIEnableLoaders.Size = new System.Drawing.Size(100, 17);
-            chkBoxAPIEnableLoaders.TabIndex = 8;
-            chkBoxAPIEnableLoaders.Text = "Enable Loaders";
-            chkBoxAPIEnableLoaders.UseVisualStyleBackColor = true;
-            chkBoxAPIEnableLoaders.CheckedChanged += new EventHandler(ChkBoxAPIEnableLoaders_CheckedChanged);
+            this.chkBoxAPIEnableLoaders.AutoSize = true;
+            this.chkBoxAPIEnableLoaders.Location = new System.Drawing.Point(10, 45);
+            this.chkBoxAPIEnableLoaders.Name = "chkBoxAPIEnableLoaders";
+            this.chkBoxAPIEnableLoaders.Size = new System.Drawing.Size(100, 17);
+            this.chkBoxAPIEnableLoaders.TabIndex = 8;
+            this.chkBoxAPIEnableLoaders.Text = "Enable Loaders";
+            this.chkBoxAPIEnableLoaders.UseVisualStyleBackColor = true;
+            this.chkBoxAPIEnableLoaders.CheckedChanged += new System.EventHandler(this.ChkBoxAPIEnableLoaders_CheckedChanged);
             // 
             // chkBoxEnableAPI
             // 
-            chkBoxEnableAPI.AutoSize = true;
-            chkBoxEnableAPI.Location = new System.Drawing.Point(10, 22);
-            chkBoxEnableAPI.Name = "chkBoxEnableAPI";
-            chkBoxEnableAPI.Size = new System.Drawing.Size(105, 17);
-            chkBoxEnableAPI.TabIndex = 7;
-            chkBoxEnableAPI.Text = "Enable BrawlAPI";
-            chkBoxEnableAPI.UseVisualStyleBackColor = true;
-            chkBoxEnableAPI.CheckedChanged += new EventHandler(ChkBoxEnableAPI_CheckedChanged);
+            this.chkBoxEnableAPI.AutoSize = true;
+            this.chkBoxEnableAPI.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxEnableAPI.Name = "chkBoxEnableAPI";
+            this.chkBoxEnableAPI.Size = new System.Drawing.Size(105, 17);
+            this.chkBoxEnableAPI.TabIndex = 7;
+            this.chkBoxEnableAPI.Text = "Enable BrawlAPI";
+            this.chkBoxEnableAPI.UseVisualStyleBackColor = true;
+            this.chkBoxEnableAPI.CheckedChanged += new System.EventHandler(this.ChkBoxEnableAPI_CheckedChanged);
             // 
             // tabDiscord
             // 
-            tabDiscord.BackColor = System.Drawing.SystemColors.Control;
-            tabDiscord.Controls.Add(grpBoxDiscordRPC);
-            tabDiscord.Location = new System.Drawing.Point(4, 22);
-            tabDiscord.Name = "tabDiscord";
-            tabDiscord.Padding = new Padding(3);
-            tabDiscord.Size = new System.Drawing.Size(365, 452);
-            tabDiscord.TabIndex = 4;
-            tabDiscord.Text = "Discord";
+            this.tabDiscord.BackColor = System.Drawing.SystemColors.Control;
+            this.tabDiscord.Controls.Add(this.grpBoxDiscordRPC);
+            this.tabDiscord.Location = new System.Drawing.Point(4, 22);
+            this.tabDiscord.Name = "tabDiscord";
+            this.tabDiscord.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDiscord.Size = new System.Drawing.Size(365, 452);
+            this.tabDiscord.TabIndex = 4;
+            this.tabDiscord.Text = "Discord";
             // 
             // grpBoxDiscordRPC
             // 
-            grpBoxDiscordRPC.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                       | AnchorStyles.Right);
-            grpBoxDiscordRPC.Controls.Add(chkBoxEnableDiscordRPC);
-            grpBoxDiscordRPC.Controls.Add(grpBoxDiscordRPCType);
-            grpBoxDiscordRPC.Location = new System.Drawing.Point(8, 6);
-            grpBoxDiscordRPC.Name = "grpBoxDiscordRPC";
-            grpBoxDiscordRPC.Size = new System.Drawing.Size(349, 172);
-            grpBoxDiscordRPC.TabIndex = 0;
-            grpBoxDiscordRPC.TabStop = false;
-            grpBoxDiscordRPC.Text = "Rich Presence";
+            this.grpBoxDiscordRPC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxDiscordRPC.Controls.Add(this.chkBoxEnableDiscordRPC);
+            this.grpBoxDiscordRPC.Controls.Add(this.grpBoxDiscordRPCType);
+            this.grpBoxDiscordRPC.Location = new System.Drawing.Point(8, 6);
+            this.grpBoxDiscordRPC.Name = "grpBoxDiscordRPC";
+            this.grpBoxDiscordRPC.Size = new System.Drawing.Size(349, 172);
+            this.grpBoxDiscordRPC.TabIndex = 0;
+            this.grpBoxDiscordRPC.TabStop = false;
+            this.grpBoxDiscordRPC.Text = "Rich Presence";
             // 
             // chkBoxEnableDiscordRPC
             // 
-            chkBoxEnableDiscordRPC.AutoSize = true;
-            chkBoxEnableDiscordRPC.Location = new System.Drawing.Point(10, 22);
-            chkBoxEnableDiscordRPC.Name = "chkBoxEnableDiscordRPC";
-            chkBoxEnableDiscordRPC.Size = new System.Drawing.Size(171, 17);
-            chkBoxEnableDiscordRPC.TabIndex = 1;
-            chkBoxEnableDiscordRPC.Text = "Enable Discord Rich Presence";
-            chkBoxEnableDiscordRPC.UseVisualStyleBackColor = true;
-            chkBoxEnableDiscordRPC.CheckedChanged += new EventHandler(ChkBoxEnableDiscordRPC_CheckedChanged);
+            this.chkBoxEnableDiscordRPC.AutoSize = true;
+            this.chkBoxEnableDiscordRPC.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxEnableDiscordRPC.Name = "chkBoxEnableDiscordRPC";
+            this.chkBoxEnableDiscordRPC.Size = new System.Drawing.Size(171, 17);
+            this.chkBoxEnableDiscordRPC.TabIndex = 1;
+            this.chkBoxEnableDiscordRPC.Text = "Enable Discord Rich Presence";
+            this.chkBoxEnableDiscordRPC.UseVisualStyleBackColor = true;
+            this.chkBoxEnableDiscordRPC.CheckedChanged += new System.EventHandler(this.ChkBoxEnableDiscordRPC_CheckedChanged);
             // 
             // grpBoxDiscordRPCType
             // 
-            grpBoxDiscordRPCType.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
-                                                                              | AnchorStyles.Right);
-            grpBoxDiscordRPCType.Controls.Add(DiscordRPCCustomName);
-            grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameCustom);
-            grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameExternal);
-            grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameInternal);
-            grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameDisabled);
-            grpBoxDiscordRPCType.Location = new System.Drawing.Point(6, 45);
-            grpBoxDiscordRPCType.Name = "grpBoxDiscordRPCType";
-            grpBoxDiscordRPCType.Size = new System.Drawing.Size(337, 119);
-            grpBoxDiscordRPCType.TabIndex = 0;
-            grpBoxDiscordRPCType.TabStop = false;
-            grpBoxDiscordRPCType.Text = "Mod Name Detection";
+            this.grpBoxDiscordRPCType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxDiscordRPCType.Controls.Add(this.DiscordRPCCustomName);
+            this.grpBoxDiscordRPCType.Controls.Add(this.rdoDiscordRPCNameCustom);
+            this.grpBoxDiscordRPCType.Controls.Add(this.rdoDiscordRPCNameExternal);
+            this.grpBoxDiscordRPCType.Controls.Add(this.rdoDiscordRPCNameInternal);
+            this.grpBoxDiscordRPCType.Controls.Add(this.rdoDiscordRPCNameDisabled);
+            this.grpBoxDiscordRPCType.Location = new System.Drawing.Point(6, 45);
+            this.grpBoxDiscordRPCType.Name = "grpBoxDiscordRPCType";
+            this.grpBoxDiscordRPCType.Size = new System.Drawing.Size(337, 119);
+            this.grpBoxDiscordRPCType.TabIndex = 0;
+            this.grpBoxDiscordRPCType.TabStop = false;
+            this.grpBoxDiscordRPCType.Text = "Mod Name Detection";
             // 
             // DiscordRPCCustomName
             // 
-            DiscordRPCCustomName.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                           | AnchorStyles.Right);
-            DiscordRPCCustomName.Location = new System.Drawing.Point(30, 88);
-            DiscordRPCCustomName.Name = "DiscordRPCCustomName";
-            DiscordRPCCustomName.Size = new System.Drawing.Size(301, 20);
-            DiscordRPCCustomName.TabIndex = 2;
-            DiscordRPCCustomName.Text = "My Mod";
-            DiscordRPCCustomName.TextChanged += new EventHandler(DiscordRPCCustomName_TextChanged);
+            this.DiscordRPCCustomName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DiscordRPCCustomName.Location = new System.Drawing.Point(30, 88);
+            this.DiscordRPCCustomName.Name = "DiscordRPCCustomName";
+            this.DiscordRPCCustomName.Size = new System.Drawing.Size(301, 20);
+            this.DiscordRPCCustomName.TabIndex = 2;
+            this.DiscordRPCCustomName.Text = "My Mod";
+            this.DiscordRPCCustomName.TextChanged += new System.EventHandler(this.DiscordRPCCustomName_TextChanged);
             // 
             // rdoDiscordRPCNameCustom
             // 
-            rdoDiscordRPCNameCustom.AutoSize = true;
-            rdoDiscordRPCNameCustom.Location = new System.Drawing.Point(10, 91);
-            rdoDiscordRPCNameCustom.Name = "rdoDiscordRPCNameCustom";
-            rdoDiscordRPCNameCustom.Size = new System.Drawing.Size(14, 13);
-            rdoDiscordRPCNameCustom.TabIndex = 3;
-            rdoDiscordRPCNameCustom.TabStop = true;
-            rdoDiscordRPCNameCustom.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameCustom.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            this.rdoDiscordRPCNameCustom.AutoSize = true;
+            this.rdoDiscordRPCNameCustom.Location = new System.Drawing.Point(10, 91);
+            this.rdoDiscordRPCNameCustom.Name = "rdoDiscordRPCNameCustom";
+            this.rdoDiscordRPCNameCustom.Size = new System.Drawing.Size(14, 13);
+            this.rdoDiscordRPCNameCustom.TabIndex = 3;
+            this.rdoDiscordRPCNameCustom.TabStop = true;
+            this.rdoDiscordRPCNameCustom.UseVisualStyleBackColor = true;
+            this.rdoDiscordRPCNameCustom.CheckedChanged += new System.EventHandler(this.DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameExternal
             // 
-            rdoDiscordRPCNameExternal.AutoSize = true;
-            rdoDiscordRPCNameExternal.Location = new System.Drawing.Point(10, 68);
-            rdoDiscordRPCNameExternal.Name = "rdoDiscordRPCNameExternal";
-            rdoDiscordRPCNameExternal.Size = new System.Drawing.Size(126, 17);
-            rdoDiscordRPCNameExternal.TabIndex = 2;
-            rdoDiscordRPCNameExternal.TabStop = true;
-            rdoDiscordRPCNameExternal.Text = "Use external filename";
-            rdoDiscordRPCNameExternal.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameExternal.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            this.rdoDiscordRPCNameExternal.AutoSize = true;
+            this.rdoDiscordRPCNameExternal.Location = new System.Drawing.Point(10, 68);
+            this.rdoDiscordRPCNameExternal.Name = "rdoDiscordRPCNameExternal";
+            this.rdoDiscordRPCNameExternal.Size = new System.Drawing.Size(126, 17);
+            this.rdoDiscordRPCNameExternal.TabIndex = 2;
+            this.rdoDiscordRPCNameExternal.TabStop = true;
+            this.rdoDiscordRPCNameExternal.Text = "Use external filename";
+            this.rdoDiscordRPCNameExternal.UseVisualStyleBackColor = true;
+            this.rdoDiscordRPCNameExternal.CheckedChanged += new System.EventHandler(this.DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameInternal
             // 
-            rdoDiscordRPCNameInternal.AutoSize = true;
-            rdoDiscordRPCNameInternal.Location = new System.Drawing.Point(10, 45);
-            rdoDiscordRPCNameInternal.Name = "rdoDiscordRPCNameInternal";
-            rdoDiscordRPCNameInternal.Size = new System.Drawing.Size(123, 17);
-            rdoDiscordRPCNameInternal.TabIndex = 1;
-            rdoDiscordRPCNameInternal.TabStop = true;
-            rdoDiscordRPCNameInternal.Text = "Use internal filename";
-            rdoDiscordRPCNameInternal.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameInternal.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            this.rdoDiscordRPCNameInternal.AutoSize = true;
+            this.rdoDiscordRPCNameInternal.Location = new System.Drawing.Point(10, 45);
+            this.rdoDiscordRPCNameInternal.Name = "rdoDiscordRPCNameInternal";
+            this.rdoDiscordRPCNameInternal.Size = new System.Drawing.Size(123, 17);
+            this.rdoDiscordRPCNameInternal.TabIndex = 1;
+            this.rdoDiscordRPCNameInternal.TabStop = true;
+            this.rdoDiscordRPCNameInternal.Text = "Use internal filename";
+            this.rdoDiscordRPCNameInternal.UseVisualStyleBackColor = true;
+            this.rdoDiscordRPCNameInternal.CheckedChanged += new System.EventHandler(this.DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameDisabled
             // 
-            rdoDiscordRPCNameDisabled.AutoSize = true;
-            rdoDiscordRPCNameDisabled.Location = new System.Drawing.Point(10, 22);
-            rdoDiscordRPCNameDisabled.Name = "rdoDiscordRPCNameDisabled";
-            rdoDiscordRPCNameDisabled.Size = new System.Drawing.Size(66, 17);
-            rdoDiscordRPCNameDisabled.TabIndex = 0;
-            rdoDiscordRPCNameDisabled.TabStop = true;
-            rdoDiscordRPCNameDisabled.Text = "Disabled";
-            rdoDiscordRPCNameDisabled.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameDisabled.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            this.rdoDiscordRPCNameDisabled.AutoSize = true;
+            this.rdoDiscordRPCNameDisabled.Location = new System.Drawing.Point(10, 22);
+            this.rdoDiscordRPCNameDisabled.Name = "rdoDiscordRPCNameDisabled";
+            this.rdoDiscordRPCNameDisabled.Size = new System.Drawing.Size(66, 17);
+            this.rdoDiscordRPCNameDisabled.TabIndex = 0;
+            this.rdoDiscordRPCNameDisabled.TabStop = true;
+            this.rdoDiscordRPCNameDisabled.Text = "Disabled";
+            this.rdoDiscordRPCNameDisabled.UseVisualStyleBackColor = true;
+            this.rdoDiscordRPCNameDisabled.CheckedChanged += new System.EventHandler(this.DiscordRPCNameSettings_CheckedChanged);
             // 
             // tabUpdater
             // 
-            tabUpdater.Controls.Add(grpBoxCanary);
-            tabUpdater.Controls.Add(updaterBehaviorGroupbox);
-            tabUpdater.Location = new System.Drawing.Point(4, 22);
-            tabUpdater.Name = "tabUpdater";
-            tabUpdater.Padding = new Padding(3);
-            tabUpdater.Size = new System.Drawing.Size(365, 452);
-            tabUpdater.TabIndex = 1;
-            tabUpdater.Text = "Updater";
+            this.tabUpdater.Controls.Add(this.grpBoxCanary);
+            this.tabUpdater.Controls.Add(this.updaterBehaviorGroupbox);
+            this.tabUpdater.Location = new System.Drawing.Point(4, 22);
+            this.tabUpdater.Name = "tabUpdater";
+            this.tabUpdater.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUpdater.Size = new System.Drawing.Size(365, 452);
+            this.tabUpdater.TabIndex = 1;
+            this.tabUpdater.Text = "Updater";
             // 
             // grpBoxCanary
             // 
-            grpBoxCanary.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                   | AnchorStyles.Right);
-            grpBoxCanary.Controls.Add(chkCanary);
-            grpBoxCanary.Location = new System.Drawing.Point(8, 132);
-            grpBoxCanary.Name = "grpBoxCanary";
-            grpBoxCanary.Size = new System.Drawing.Size(349, 53);
-            grpBoxCanary.TabIndex = 15;
-            grpBoxCanary.TabStop = false;
-            grpBoxCanary.Text = "BrawlCrate Canary";
+            this.grpBoxCanary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxCanary.Controls.Add(this.chkCanary);
+            this.grpBoxCanary.Location = new System.Drawing.Point(8, 132);
+            this.grpBoxCanary.Name = "grpBoxCanary";
+            this.grpBoxCanary.Size = new System.Drawing.Size(349, 53);
+            this.grpBoxCanary.TabIndex = 15;
+            this.grpBoxCanary.TabStop = false;
+            this.grpBoxCanary.Text = "BrawlCrate Canary";
             // 
             // updaterBehaviorGroupbox
             // 
-            updaterBehaviorGroupbox.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
-                                                                              | AnchorStyles.Right);
-            updaterBehaviorGroupbox.Controls.Add(rdoAutoUpdate);
-            updaterBehaviorGroupbox.Controls.Add(rdoCheckManual);
-            updaterBehaviorGroupbox.Controls.Add(rdoCheckStartup);
-            updaterBehaviorGroupbox.Controls.Add(chkDocUpdates);
-            updaterBehaviorGroupbox.Location = new System.Drawing.Point(8, 6);
-            updaterBehaviorGroupbox.Name = "updaterBehaviorGroupbox";
-            updaterBehaviorGroupbox.Size = new System.Drawing.Size(349, 120);
-            updaterBehaviorGroupbox.TabIndex = 14;
-            updaterBehaviorGroupbox.TabStop = false;
-            updaterBehaviorGroupbox.Text = "Updater Behavior";
+            this.updaterBehaviorGroupbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.updaterBehaviorGroupbox.Controls.Add(this.rdoAutoUpdate);
+            this.updaterBehaviorGroupbox.Controls.Add(this.rdoCheckManual);
+            this.updaterBehaviorGroupbox.Controls.Add(this.rdoCheckStartup);
+            this.updaterBehaviorGroupbox.Controls.Add(this.chkDocUpdates);
+            this.updaterBehaviorGroupbox.Location = new System.Drawing.Point(8, 6);
+            this.updaterBehaviorGroupbox.Name = "updaterBehaviorGroupbox";
+            this.updaterBehaviorGroupbox.Size = new System.Drawing.Size(349, 120);
+            this.updaterBehaviorGroupbox.TabIndex = 14;
+            this.updaterBehaviorGroupbox.TabStop = false;
+            this.updaterBehaviorGroupbox.Text = "Updater Behavior";
             // 
             // rdoAutoUpdate
             // 
-            rdoAutoUpdate.AutoSize = true;
-            rdoAutoUpdate.Location = new System.Drawing.Point(10, 22);
-            rdoAutoUpdate.Name = "rdoAutoUpdate";
-            rdoAutoUpdate.Size = new System.Drawing.Size(72, 17);
-            rdoAutoUpdate.TabIndex = 2;
-            rdoAutoUpdate.TabStop = true;
-            rdoAutoUpdate.Text = "Automatic";
-            rdoAutoUpdate.UseVisualStyleBackColor = true;
-            rdoAutoUpdate.CheckedChanged += new EventHandler(UpdaterBehavior_CheckedChanged);
+            this.rdoAutoUpdate.AutoSize = true;
+            this.rdoAutoUpdate.Location = new System.Drawing.Point(10, 22);
+            this.rdoAutoUpdate.Name = "rdoAutoUpdate";
+            this.rdoAutoUpdate.Size = new System.Drawing.Size(72, 17);
+            this.rdoAutoUpdate.TabIndex = 2;
+            this.rdoAutoUpdate.TabStop = true;
+            this.rdoAutoUpdate.Text = "Automatic";
+            this.rdoAutoUpdate.UseVisualStyleBackColor = true;
+            this.rdoAutoUpdate.CheckedChanged += new System.EventHandler(this.UpdaterBehavior_CheckedChanged);
             // 
             // rdoCheckManual
             // 
-            rdoCheckManual.AutoSize = true;
-            rdoCheckManual.Location = new System.Drawing.Point(10, 68);
-            rdoCheckManual.Name = "rdoCheckManual";
-            rdoCheckManual.Size = new System.Drawing.Size(60, 17);
-            rdoCheckManual.TabIndex = 1;
-            rdoCheckManual.TabStop = true;
-            rdoCheckManual.Text = "Manual";
-            rdoCheckManual.UseVisualStyleBackColor = true;
+            this.rdoCheckManual.AutoSize = true;
+            this.rdoCheckManual.Location = new System.Drawing.Point(10, 68);
+            this.rdoCheckManual.Name = "rdoCheckManual";
+            this.rdoCheckManual.Size = new System.Drawing.Size(60, 17);
+            this.rdoCheckManual.TabIndex = 1;
+            this.rdoCheckManual.TabStop = true;
+            this.rdoCheckManual.Text = "Manual";
+            this.rdoCheckManual.UseVisualStyleBackColor = true;
             // 
             // rdoCheckStartup
             // 
-            rdoCheckStartup.AutoSize = true;
-            rdoCheckStartup.Location = new System.Drawing.Point(10, 45);
-            rdoCheckStartup.Name = "rdoCheckStartup";
-            rdoCheckStartup.Size = new System.Drawing.Size(220, 17);
-            rdoCheckStartup.TabIndex = 0;
-            rdoCheckStartup.TabStop = true;
-            rdoCheckStartup.Text = "Manual, but check for updates on startup";
-            rdoCheckStartup.UseVisualStyleBackColor = true;
+            this.rdoCheckStartup.AutoSize = true;
+            this.rdoCheckStartup.Location = new System.Drawing.Point(10, 45);
+            this.rdoCheckStartup.Name = "rdoCheckStartup";
+            this.rdoCheckStartup.Size = new System.Drawing.Size(220, 17);
+            this.rdoCheckStartup.TabIndex = 0;
+            this.rdoCheckStartup.TabStop = true;
+            this.rdoCheckStartup.Text = "Manual, but check for updates on startup";
+            this.rdoCheckStartup.UseVisualStyleBackColor = true;
             // 
             // SettingsDialog
             // 
-            ClientSize = new System.Drawing.Size(373, 478);
-            Controls.Add(tabControl1);
-            FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            Icon = BrawlLib.Properties.Resources.Icon;
-            Name = "SettingsDialog";
-            Text = "Settings";
-            Shown += new EventHandler(SettingsDialog_Shown);
-            tabControl1.ResumeLayout(false);
-            tabGeneral.ResumeLayout(false);
-            grpBoxMDL0General.ResumeLayout(false);
-            grpBoxMDL0General.PerformLayout();
-            grpBoxAudioGeneral.ResumeLayout(false);
-            grpBoxAudioGeneral.PerformLayout();
-            grpBoxMainFormGeneral.ResumeLayout(false);
-            grpBoxMainFormGeneral.PerformLayout();
-            grpBoxFileNameDisplayGeneral.ResumeLayout(false);
-            grpBoxFileNameDisplayGeneral.PerformLayout();
-            tabCompression.ResumeLayout(false);
-            groupBoxModuleCompression.ResumeLayout(false);
-            groupBoxModuleCompression.PerformLayout();
-            groupBoxStageCompression.ResumeLayout(false);
-            groupBoxStageCompression.PerformLayout();
-            groupBoxFighterCompression.ResumeLayout(false);
-            groupBoxFighterCompression.PerformLayout();
-            tabFileAssociations.ResumeLayout(false);
-            genericFileAssociationBox.ResumeLayout(false);
-            genericFileAssociationBox.PerformLayout();
-            associatiedFilesBox.ResumeLayout(false);
-            tabBrawlAPI.ResumeLayout(false);
-            grpBoxFSharpAPI.ResumeLayout(false);
-            grpBoxFSharpAPI.PerformLayout();
-            grpBoxPythonAPI.ResumeLayout(false);
-            grpBoxPythonAPI.PerformLayout();
-            grpBoxAPIGeneral.ResumeLayout(false);
-            grpBoxAPIGeneral.PerformLayout();
-            tabDiscord.ResumeLayout(false);
-            grpBoxDiscordRPC.ResumeLayout(false);
-            grpBoxDiscordRPC.PerformLayout();
-            grpBoxDiscordRPCType.ResumeLayout(false);
-            grpBoxDiscordRPCType.PerformLayout();
-            tabUpdater.ResumeLayout(false);
-            grpBoxCanary.ResumeLayout(false);
-            grpBoxCanary.PerformLayout();
-            updaterBehaviorGroupbox.ResumeLayout(false);
-            updaterBehaviorGroupbox.PerformLayout();
-            ResumeLayout(false);
+            this.ClientSize = new System.Drawing.Size(373, 478);
+            this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Name = "SettingsDialog";
+            this.Text = "Settings";
+            this.Shown += new System.EventHandler(this.SettingsDialog_Shown);
+            this.tabControl1.ResumeLayout(false);
+            this.tabGeneral.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.grpBoxMDL0General.ResumeLayout(false);
+            this.grpBoxMDL0General.PerformLayout();
+            this.grpBoxAudioGeneral.ResumeLayout(false);
+            this.grpBoxAudioGeneral.PerformLayout();
+            this.grpBoxMainFormGeneral.ResumeLayout(false);
+            this.grpBoxMainFormGeneral.PerformLayout();
+            this.grpBoxFileNameDisplayGeneral.ResumeLayout(false);
+            this.grpBoxFileNameDisplayGeneral.PerformLayout();
+            this.tabCompression.ResumeLayout(false);
+            this.groupBoxModuleCompression.ResumeLayout(false);
+            this.groupBoxModuleCompression.PerformLayout();
+            this.groupBoxStageCompression.ResumeLayout(false);
+            this.groupBoxStageCompression.PerformLayout();
+            this.groupBoxFighterCompression.ResumeLayout(false);
+            this.groupBoxFighterCompression.PerformLayout();
+            this.tabFileAssociations.ResumeLayout(false);
+            this.genericFileAssociationBox.ResumeLayout(false);
+            this.genericFileAssociationBox.PerformLayout();
+            this.associatiedFilesBox.ResumeLayout(false);
+            this.tabBrawlAPI.ResumeLayout(false);
+            this.grpBoxFSharpAPI.ResumeLayout(false);
+            this.grpBoxFSharpAPI.PerformLayout();
+            this.grpBoxPythonAPI.ResumeLayout(false);
+            this.grpBoxPythonAPI.PerformLayout();
+            this.grpBoxAPIGeneral.ResumeLayout(false);
+            this.grpBoxAPIGeneral.PerformLayout();
+            this.tabDiscord.ResumeLayout(false);
+            this.grpBoxDiscordRPC.ResumeLayout(false);
+            this.grpBoxDiscordRPC.PerformLayout();
+            this.grpBoxDiscordRPCType.ResumeLayout(false);
+            this.grpBoxDiscordRPCType.PerformLayout();
+            this.tabUpdater.ResumeLayout(false);
+            this.grpBoxCanary.ResumeLayout(false);
+            this.grpBoxCanary.PerformLayout();
+            this.updaterBehaviorGroupbox.ResumeLayout(false);
+            this.updaterBehaviorGroupbox.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -1669,12 +1723,12 @@ namespace BrawlCrate
         private void BtnPythonBrowse_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog())
+            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
             using (FolderBrowserDialog f = new FolderBrowserDialog())
 #endif
             {
-                f.Description = "Python Installation Path (2.7 preferred)";
+                f.Description = "Python Installation Path";
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     txtBoxPythonPath.Text = f.SelectedPath;
@@ -1764,6 +1818,33 @@ namespace BrawlCrate
             {
                 MainForm.Instance.ShowARCPreviews = chkBoxRenderARC.Checked;
             }
+        }
+
+        private void BtnManagerPathBrowse_Click(object sender, EventArgs e)
+        {
+#if !MONO
+            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+#else
+            using (FolderBrowserDialog f = new FolderBrowserDialog())
+#endif
+            {
+                f.Description = "Open Build Directory";
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    txtBoxDefaultBuildPath.Text = f.SelectedPath;
+                }
+            }
+        }
+
+        private void txtBoxDefaultBuildPath_TextChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            Properties.Settings.Default.BuildPath = txtBoxDefaultBuildPath.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -445,11 +445,12 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog()
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
             {
+                dlg.Description = "Open Folder";
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
         }
@@ -461,11 +462,14 @@ namespace BrawlCrate.API
         /// </summary>
         /// <param name="description">
         ///     The description of the folder dialog.
+        ///
+        ///     For Windows-based devices, this will appear as the title of the window.
+        ///     For others, this will appear as a description box.
         /// </param>
         public static string OpenFolderDialog(string description)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif

@@ -278,12 +278,7 @@ namespace BrawlCrate.API
             {
                 searchPaths.Add(Directory.Exists($"{settingPath}\\Lib") ? $"{settingPath}\\Lib" : settingPath);
             }
-            // Then check for Python 2.7 (The recommended version for iron python) in its default installation directory
-            else if (Directory.Exists("C:\\Python27\\Lib"))
-            {
-                searchPaths.Add("C:\\Python27\\Lib");
-            }
-            // Finally, search for any other Python installations in their default directories
+            // Search for any other Python installations in their default directories
             else
             {
                 // Search the new installation path for Python
@@ -349,18 +344,19 @@ namespace BrawlCrate.API
                         }
 
                         MessageBox.Show(
-                            "Python installation could not be automatically detected. Install the latest version of Python 2.7 and try again, or browse manually to your Python installation directory.",
+                            "Python installation could not be automatically detected. Reinstall Python and try again, or browse manually to your Python installation directory.",
                             "BrawlAPI");
                     }
                     else
                     {
 #if !MONO
                         using (Ookii.Dialogs.VistaFolderBrowserDialog dlg
-                            = new Ookii.Dialogs.VistaFolderBrowserDialog())
+                            = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
                         using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
                         {
+                            dlg.Description = "Python Installation Path";
                             if (MessageBox.Show(
                                     "Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.",
                                     "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes

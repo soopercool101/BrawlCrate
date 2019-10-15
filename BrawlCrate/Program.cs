@@ -114,10 +114,11 @@ Full changelog can be viewed from the help menu.";
             MultiFileOpenDlg = new OpenFileDialog { Title = "Open Files", Multiselect = true };
             SaveDlg = new SaveFileDialog();
 #if !MONO
-            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderDlg = new FolderBrowserDialog();
 #endif
+            FolderDlg.Description = "Open Folder";
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
@@ -140,6 +141,12 @@ Full changelog can be viewed from the help menu.";
             {
                 Properties.Settings.Default.ViewerSettings = ModelEditorSettings.Default();
                 Properties.Settings.Default.ViewerSettingsSet = true;
+                Properties.Settings.Default.Save();
+            }
+
+            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.BuildPath))
+            {
+                Properties.Settings.Default.BuildPath = AppPath;
                 Properties.Settings.Default.Save();
             }
         }
