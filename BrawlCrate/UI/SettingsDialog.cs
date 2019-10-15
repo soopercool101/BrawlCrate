@@ -38,8 +38,8 @@ namespace BrawlCrate
         private TabPage tabFileAssociations;
         private Button btnApply;
         private GroupBox associatiedFilesBox;
-        private CheckBox checkBox1;
-        private ListView listView1;
+        private CheckBox chkBoxAssociateAll;
+        private ListView lstViewFileAssociations;
         private ColumnHeader columnHeader1;
         private GroupBox grpBoxCanary;
         private RadioButton rdoAutoUpdate;
@@ -125,14 +125,14 @@ namespace BrawlCrate
                 tabControl1.TabPages.Remove(tabDiscord);
             }
 
-            listView1.Items.Clear();
+            lstViewFileAssociations.Items.Clear();
             foreach (SupportedFileInfo info in SupportedFilesHandler.Files)
             {
                 if (info.Associatable)
                 {
                     foreach (string s in info.Extensions)
                     {
-                        listView1.Items.Add(new ListViewItem {Text = $"{info.Name} (*.{s})"});
+                        lstViewFileAssociations.Items.Add(new ListViewItem {Text = $"{info.Name} (*.{s})"});
                     }
                 }
             }
@@ -143,7 +143,7 @@ namespace BrawlCrate
             try
             {
                 int index = 0;
-                foreach (ListViewItem i in listView1.Items)
+                foreach (ListViewItem i in lstViewFileAssociations.Items)
                 {
                     bool check = i.Checked;
                     if (check != (bool) i.Tag)
@@ -165,7 +165,7 @@ namespace BrawlCrate
                     index++;
                 }
 
-                listView1.Sort();
+                lstViewFileAssociations.Sort();
                 if (datFileAssociation.Checked)
                 {
                     FileAssociation.Get(".dat").FileType = FileType.Get("SSBB.DAT");
@@ -216,7 +216,7 @@ namespace BrawlCrate
         {
             int index = 0;
             string cmd;
-            foreach (ListViewItem i in listView1.Items)
+            foreach (ListViewItem i in lstViewFileAssociations.Items)
             {
                 try
                 {
@@ -372,35 +372,6 @@ namespace BrawlCrate
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("ARChive Pack (*.pac)");
-            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Compressed ARChive Pack (*.pcs)");
-            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("ARChive (*.arc)");
-            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Compressed ARChive (*.szs)");
-            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Resource Pack (*.brres)");
-            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Model Pack (*.brmdl)");
-            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Texture Pack (*.brtex)");
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("MSBin Message List (*.msbin)");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Sound Archive (*.brsar)");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Sound Stream (*.brstm)");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Texture (*.tex0)");
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Palette (*.plt0)");
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("Model (*.mdl0)");
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("Model Animation (*.chr0)");
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("Texture Animation (*.srt0)");
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem("Vertex Morph (*.shp0)");
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem("Texture Pattern (*.pat0)");
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem("Bone Visibility (*.vis0)");
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem("Scene Settings (*.scn0)");
-            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem("Color Sequence (*.clr0)");
-            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem("Effect List (*.efls)");
-            System.Windows.Forms.ListViewItem listViewItem51 = new System.Windows.Forms.ListViewItem("Effect Parameters (*.breff)");
-            System.Windows.Forms.ListViewItem listViewItem52 = new System.Windows.Forms.ListViewItem("Effect Textures (*.breft)");
-            System.Windows.Forms.ListViewItem listViewItem53 = new System.Windows.Forms.ListViewItem("Sound Stream (*.brwsd)");
-            System.Windows.Forms.ListViewItem listViewItem54 = new System.Windows.Forms.ListViewItem("Sound Bank (*.brbnk)");
-            System.Windows.Forms.ListViewItem listViewItem55 = new System.Windows.Forms.ListViewItem("Sound Sequence (*.brseq)");
-            System.Windows.Forms.ListViewItem listViewItem56 = new System.Windows.Forms.ListViewItem("Static Module (*.dol)");
-            System.Windows.Forms.ListViewItem listViewItem57 = new System.Windows.Forms.ListViewItem("Relocatable Module (*.rel)");
-            System.Windows.Forms.ListViewItem listViewItem58 = new System.Windows.Forms.ListViewItem("Texture Archive (*.tpl)");
             this.chkShowPropDesc = new System.Windows.Forms.CheckBox();
             this.chkShowHex = new System.Windows.Forms.CheckBox();
             this.chkDocUpdates = new System.Windows.Forms.CheckBox();
@@ -438,10 +409,14 @@ namespace BrawlCrate
             this.lblAdminApproval = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Button();
             this.associatiedFilesBox = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.chkBoxAssociateAll = new System.Windows.Forms.CheckBox();
+            this.lstViewFileAssociations = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabBrawlAPI = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.grpBoxLoaders = new System.Windows.Forms.GroupBox();
+            this.lstViewLoaders = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpBoxFSharpAPI = new System.Windows.Forms.GroupBox();
             this.txtBoxFSharpPath = new System.Windows.Forms.TextBox();
             this.btnFSharpBrowse = new System.Windows.Forms.Button();
@@ -470,10 +445,6 @@ namespace BrawlCrate
             this.rdoAutoUpdate = new System.Windows.Forms.RadioButton();
             this.rdoCheckManual = new System.Windows.Forms.RadioButton();
             this.rdoCheckStartup = new System.Windows.Forms.RadioButton();
-            this.grpBoxLoaders = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lstViewLoaders = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -489,6 +460,7 @@ namespace BrawlCrate
             this.genericFileAssociationBox.SuspendLayout();
             this.associatiedFilesBox.SuspendLayout();
             this.tabBrawlAPI.SuspendLayout();
+            this.grpBoxLoaders.SuspendLayout();
             this.grpBoxFSharpAPI.SuspendLayout();
             this.grpBoxPythonAPI.SuspendLayout();
             this.grpBoxAPIGeneral.SuspendLayout();
@@ -498,7 +470,6 @@ namespace BrawlCrate
             this.tabUpdater.SuspendLayout();
             this.grpBoxCanary.SuspendLayout();
             this.updaterBehaviorGroupbox.SuspendLayout();
-            this.grpBoxLoaders.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkShowPropDesc
@@ -935,8 +906,8 @@ namespace BrawlCrate
             this.associatiedFilesBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.associatiedFilesBox.Controls.Add(this.checkBox1);
-            this.associatiedFilesBox.Controls.Add(this.listView1);
+            this.associatiedFilesBox.Controls.Add(this.chkBoxAssociateAll);
+            this.associatiedFilesBox.Controls.Add(this.lstViewFileAssociations);
             this.associatiedFilesBox.Location = new System.Drawing.Point(8, 6);
             this.associatiedFilesBox.Name = "associatiedFilesBox";
             this.associatiedFilesBox.Size = new System.Drawing.Size(349, 329);
@@ -944,101 +915,38 @@ namespace BrawlCrate
             this.associatiedFilesBox.TabStop = false;
             this.associatiedFilesBox.Text = "Wii File Types";
             // 
-            // checkBox1
+            // chkBoxAssociateAll
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox1.Location = new System.Drawing.Point(242, 303);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(104, 20);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Check All";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            this.chkBoxAssociateAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxAssociateAll.Location = new System.Drawing.Point(242, 303);
+            this.chkBoxAssociateAll.Name = "chkBoxAssociateAll";
+            this.chkBoxAssociateAll.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkBoxAssociateAll.Size = new System.Drawing.Size(104, 20);
+            this.chkBoxAssociateAll.TabIndex = 5;
+            this.chkBoxAssociateAll.Text = "Check All";
+            this.chkBoxAssociateAll.UseVisualStyleBackColor = true;
+            this.chkBoxAssociateAll.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
-            // listView1
+            // lstViewFileAssociations
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lstViewFileAssociations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.AutoArrange = false;
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listView1.CheckBoxes = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstViewFileAssociations.AutoArrange = false;
+            this.lstViewFileAssociations.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstViewFileAssociations.CheckBoxes = true;
+            this.lstViewFileAssociations.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView1.HideSelection = false;
-            listViewItem30.StateImageIndex = 0;
-            listViewItem30.Tag = "";
-            listViewItem31.StateImageIndex = 0;
-            listViewItem31.Tag = "";
-            listViewItem32.StateImageIndex = 0;
-            listViewItem33.StateImageIndex = 0;
-            listViewItem34.StateImageIndex = 0;
-            listViewItem34.Tag = "";
-            listViewItem35.StateImageIndex = 0;
-            listViewItem36.StateImageIndex = 0;
-            listViewItem37.StateImageIndex = 0;
-            listViewItem37.Tag = "";
-            listViewItem38.StateImageIndex = 0;
-            listViewItem39.StateImageIndex = 0;
-            listViewItem40.StateImageIndex = 0;
-            listViewItem41.StateImageIndex = 0;
-            listViewItem42.StateImageIndex = 0;
-            listViewItem43.StateImageIndex = 0;
-            listViewItem44.StateImageIndex = 0;
-            listViewItem45.StateImageIndex = 0;
-            listViewItem46.StateImageIndex = 0;
-            listViewItem47.StateImageIndex = 0;
-            listViewItem48.StateImageIndex = 0;
-            listViewItem49.StateImageIndex = 0;
-            listViewItem50.StateImageIndex = 0;
-            listViewItem51.StateImageIndex = 0;
-            listViewItem52.StateImageIndex = 0;
-            listViewItem53.StateImageIndex = 0;
-            listViewItem54.StateImageIndex = 0;
-            listViewItem55.StateImageIndex = 0;
-            listViewItem56.StateImageIndex = 0;
-            listViewItem57.StateImageIndex = 0;
-            listViewItem58.StateImageIndex = 0;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem30,
-            listViewItem31,
-            listViewItem32,
-            listViewItem33,
-            listViewItem34,
-            listViewItem35,
-            listViewItem36,
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40,
-            listViewItem41,
-            listViewItem42,
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46,
-            listViewItem47,
-            listViewItem48,
-            listViewItem49,
-            listViewItem50,
-            listViewItem51,
-            listViewItem52,
-            listViewItem53,
-            listViewItem54,
-            listViewItem55,
-            listViewItem56,
-            listViewItem57,
-            listViewItem58});
-            this.listView1.Location = new System.Drawing.Point(6, 19);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(337, 278);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.ListView1_ItemChecked);
+            this.lstViewFileAssociations.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lstViewFileAssociations.HideSelection = false;
+            this.lstViewFileAssociations.Location = new System.Drawing.Point(6, 19);
+            this.lstViewFileAssociations.MultiSelect = false;
+            this.lstViewFileAssociations.Name = "lstViewFileAssociations";
+            this.lstViewFileAssociations.Size = new System.Drawing.Size(337, 278);
+            this.lstViewFileAssociations.TabIndex = 6;
+            this.lstViewFileAssociations.UseCompatibleStateImageBehavior = false;
+            this.lstViewFileAssociations.View = System.Windows.Forms.View.Details;
+            this.lstViewFileAssociations.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.ListView1_ItemChecked);
             // 
             // columnHeader1
             // 
@@ -1059,6 +967,57 @@ namespace BrawlCrate
             this.tabBrawlAPI.Size = new System.Drawing.Size(365, 452);
             this.tabBrawlAPI.TabIndex = 5;
             this.tabBrawlAPI.Text = "BrawlAPI";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(8, 426);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(349, 18);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Program restart needed to apply changes";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // grpBoxLoaders
+            // 
+            this.grpBoxLoaders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxLoaders.Controls.Add(this.lstViewLoaders);
+            this.grpBoxLoaders.Location = new System.Drawing.Point(8, 245);
+            this.grpBoxLoaders.Name = "grpBoxLoaders";
+            this.grpBoxLoaders.Size = new System.Drawing.Size(349, 175);
+            this.grpBoxLoaders.TabIndex = 24;
+            this.grpBoxLoaders.TabStop = false;
+            this.grpBoxLoaders.Text = "Loaders";
+            // 
+            // lstViewLoaders
+            // 
+            this.lstViewLoaders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstViewLoaders.AutoArrange = false;
+            this.lstViewLoaders.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstViewLoaders.CheckBoxes = true;
+            this.lstViewLoaders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.lstViewLoaders.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lstViewLoaders.HideSelection = false;
+            this.lstViewLoaders.Location = new System.Drawing.Point(6, 19);
+            this.lstViewLoaders.MultiSelect = false;
+            this.lstViewLoaders.Name = "lstViewLoaders";
+            this.lstViewLoaders.Size = new System.Drawing.Size(337, 150);
+            this.lstViewLoaders.TabIndex = 7;
+            this.lstViewLoaders.UseCompatibleStateImageBehavior = false;
+            this.lstViewLoaders.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            this.columnHeader2.Width = 300;
             // 
             // grpBoxFSharpAPI
             // 
@@ -1394,57 +1353,6 @@ namespace BrawlCrate
             this.rdoCheckStartup.Text = "Manual, but check for updates on startup";
             this.rdoCheckStartup.UseVisualStyleBackColor = true;
             // 
-            // grpBoxLoaders
-            // 
-            this.grpBoxLoaders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxLoaders.Controls.Add(this.lstViewLoaders);
-            this.grpBoxLoaders.Location = new System.Drawing.Point(8, 245);
-            this.grpBoxLoaders.Name = "grpBoxLoaders";
-            this.grpBoxLoaders.Size = new System.Drawing.Size(349, 175);
-            this.grpBoxLoaders.TabIndex = 24;
-            this.grpBoxLoaders.TabStop = false;
-            this.grpBoxLoaders.Text = "Loaders";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(8, 426);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(349, 18);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Program restart needed to apply changes";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lstViewLoaders
-            // 
-            this.lstViewLoaders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstViewLoaders.AutoArrange = false;
-            this.lstViewLoaders.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lstViewLoaders.CheckBoxes = true;
-            this.lstViewLoaders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2});
-            this.lstViewLoaders.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lstViewLoaders.HideSelection = false;
-            this.lstViewLoaders.Location = new System.Drawing.Point(6, 19);
-            this.lstViewLoaders.MultiSelect = false;
-            this.lstViewLoaders.Name = "lstViewLoaders";
-            this.lstViewLoaders.Size = new System.Drawing.Size(337, 150);
-            this.lstViewLoaders.TabIndex = 7;
-            this.lstViewLoaders.UseCompatibleStateImageBehavior = false;
-            this.lstViewLoaders.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Name";
-            this.columnHeader2.Width = 300;
-            // 
             // SettingsDialog
             // 
             this.ClientSize = new System.Drawing.Size(373, 478);
@@ -1477,6 +1385,7 @@ namespace BrawlCrate
             this.genericFileAssociationBox.PerformLayout();
             this.associatiedFilesBox.ResumeLayout(false);
             this.tabBrawlAPI.ResumeLayout(false);
+            this.grpBoxLoaders.ResumeLayout(false);
             this.grpBoxFSharpAPI.ResumeLayout(false);
             this.grpBoxFSharpAPI.PerformLayout();
             this.grpBoxPythonAPI.ResumeLayout(false);
@@ -1493,7 +1402,6 @@ namespace BrawlCrate
             this.grpBoxCanary.PerformLayout();
             this.updaterBehaviorGroupbox.ResumeLayout(false);
             this.updaterBehaviorGroupbox.PerformLayout();
-            this.grpBoxLoaders.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1504,8 +1412,8 @@ namespace BrawlCrate
         {
             if (!_updating)
             {
-                bool check = checkBox1.Checked;
-                foreach (ListViewItem i in listView1.Items)
+                bool check = chkBoxAssociateAll.Checked;
+                foreach (ListViewItem i in lstViewFileAssociations.Items)
                 {
                     i.Checked = check;
                 }
