@@ -369,7 +369,7 @@ Full changelog can be viewed from the help menu.";
             }
 
             _rootNode = Activator.CreateInstance<T>();
-            _rootNode.Name = "NewTree";
+            _rootNode.Name = $"New{typeof(T).Name}";
             MainForm.Instance.Reset();
 
             return true;

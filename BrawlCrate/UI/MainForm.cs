@@ -1164,12 +1164,6 @@ namespace BrawlCrate
 
         #endregion
 
-        private void fileResizerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //using (FileResizer res = new FileResizer())
-            //    res.ShowDialog();
-        }
-
         private void settingsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Settings.ShowDialog();
