@@ -1732,7 +1732,7 @@ namespace BrawlCrate
         {
             using (OpenFileDialog f = new OpenFileDialog())
             {
-                f.Filter = "F# Executable (*.exe)|*.exe";
+                f.Filter = "F# Executable (fsi.exe)|fsi.exe";
                 f.Title = "F# Installation";
                 try
                 {

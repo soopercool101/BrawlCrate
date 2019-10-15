@@ -279,41 +279,57 @@ namespace BrawlCrate.API
                 searchPaths.Add(Directory.Exists($"{settingPath}\\Lib") ? $"{settingPath}\\Lib" : settingPath);
             }
             // Search for any other Python installations in their default directories
-            else
+            else if(force || !settingPath.Equals("(none)"))
             {
-                string python3InstallDir =
-                    $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Programs";
-                // Search the new installation path for Python
-                foreach (DirectoryInfo d in Directory.CreateDirectory(python3InstallDir).GetDirectories().Reverse())
+                // Search the PATH environment variable
+                string[] paths = Environment.GetEnvironmentVariable("PATH").Trim(';').Split(';');
+                bool found = false;
+                foreach (string s in paths)
                 {
-                    if (d.Name.StartsWith("Python"))
+                    if (s.Contains("Python") && Directory.Exists($"{s}Lib"))
                     {
-                        if (Directory.Exists($"{d.FullName}\\Lib"))
-                        {
-                            searchPaths.Add($"{d.FullName}\\Lib");
-                            break;
-                        }
+                        searchPaths.Add($"{s}Lib");
+                        found = true;
+                        break;
+                    }
+                }
 
-                        bool found = false;
-                        foreach (DirectoryInfo d2 in d.GetDirectories().Reverse())
+                // Search the new installation path for Python
+                if (!found)
+                {
+                    string python3InstallDir =
+                        $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Programs";
+                    foreach (DirectoryInfo d in Directory.CreateDirectory(python3InstallDir).GetDirectories().Reverse())
+                    {
+                        if (d.Name.StartsWith("Python"))
                         {
-                            if (d2.Name.StartsWith("Python") && Directory.Exists($"{d2.FullName}\\Lib"))
+                            if (Directory.Exists($"{d.FullName}\\Lib"))
                             {
-                                searchPaths.Add($"{d2.FullName}\\Lib");
+                                searchPaths.Add($"{d.FullName}\\Lib");
                                 found = true;
                                 break;
                             }
-                        }
 
-                        if (found)
-                        {
-                            break;
+                            foreach (DirectoryInfo d2 in d.GetDirectories().Reverse())
+                            {
+                                if (d2.Name.StartsWith("Python") && Directory.Exists($"{d2.FullName}\\Lib"))
+                                {
+                                    searchPaths.Add($"{d2.FullName}\\Lib");
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (found)
+                            {
+                                break;
+                            }
                         }
                     }
                 }
 
                 // Search the old installation path for Python
-                if (searchPaths.Count == 0)
+                if (!found)
                 {
                     foreach (DirectoryInfo d in Directory.CreateDirectory("C:\\").GetDirectories().Reverse())
                     {
