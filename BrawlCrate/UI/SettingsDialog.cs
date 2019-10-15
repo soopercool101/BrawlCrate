@@ -96,7 +96,7 @@ namespace BrawlCrate
         private TextBox txtBoxDefaultBuildPath;
         private Label lblManagerDefaultPath;
         private Button btnManagerPathBrowse;
-        private Label label3;
+        private Label lblAPIRestartNeeded;
         private GroupBox grpBoxLoaders;
         private ListView lstViewLoaders;
         private ColumnHeader columnHeader2;
@@ -110,6 +110,7 @@ namespace BrawlCrate
             tabUpdater.Visible = true;
             tabDiscord.Enabled = true;
             tabDiscord.Visible = true;
+            lblAPIRestartNeeded.Visible = false;
 
             if (!Program.CanRunGithubApp(false, out _))
             {
@@ -413,7 +414,7 @@ namespace BrawlCrate
             this.lstViewFileAssociations = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabBrawlAPI = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblAPIRestartNeeded = new System.Windows.Forms.Label();
             this.grpBoxLoaders = new System.Windows.Forms.GroupBox();
             this.lstViewLoaders = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -956,7 +957,7 @@ namespace BrawlCrate
             // tabBrawlAPI
             // 
             this.tabBrawlAPI.BackColor = System.Drawing.SystemColors.Control;
-            this.tabBrawlAPI.Controls.Add(this.label3);
+            this.tabBrawlAPI.Controls.Add(this.lblAPIRestartNeeded);
             this.tabBrawlAPI.Controls.Add(this.grpBoxLoaders);
             this.tabBrawlAPI.Controls.Add(this.grpBoxFSharpAPI);
             this.tabBrawlAPI.Controls.Add(this.grpBoxPythonAPI);
@@ -968,18 +969,18 @@ namespace BrawlCrate
             this.tabBrawlAPI.TabIndex = 5;
             this.tabBrawlAPI.Text = "BrawlAPI";
             // 
-            // label3
+            // lblAPIRestartNeeded
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblAPIRestartNeeded.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(8, 426);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(349, 18);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Program restart needed to apply changes";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAPIRestartNeeded.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAPIRestartNeeded.ForeColor = System.Drawing.Color.Red;
+            this.lblAPIRestartNeeded.Location = new System.Drawing.Point(8, 426);
+            this.lblAPIRestartNeeded.Name = "lblAPIRestartNeeded";
+            this.lblAPIRestartNeeded.Size = new System.Drawing.Size(349, 18);
+            this.lblAPIRestartNeeded.TabIndex = 25;
+            this.lblAPIRestartNeeded.Text = "Program restart needed to apply changes";
+            this.lblAPIRestartNeeded.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // grpBoxLoaders
             // 
@@ -1678,6 +1679,7 @@ namespace BrawlCrate
             chkBoxAPIEnableLoaders.Enabled = chkBoxEnableAPI.Checked;
             grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
+            lblAPIRestartNeeded.Visible = true;
         }
 
         private void TxtBoxPythonPath_TextChanged(object sender, EventArgs e)
@@ -1689,6 +1691,7 @@ namespace BrawlCrate
 
             Properties.Settings.Default.PythonInstallationPath = txtBoxPythonPath.Text;
             Properties.Settings.Default.Save();
+            lblAPIRestartNeeded.Visible = true;
         }
 
         private void BtnPythonBrowse_Click(object sender, EventArgs e)
@@ -1709,10 +1712,8 @@ namespace BrawlCrate
 
         private void BtnPythonDetect_Click(object sender, EventArgs e)
         {
-            _updating = true;
             API.BrawlAPI.PythonInstall(true, true);
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
-            _updating = false;
         }
 
         private void TxtBoxFSharpPath_TextChanged(object sender, EventArgs e)
@@ -1724,6 +1725,7 @@ namespace BrawlCrate
 
             Properties.Settings.Default.FSharpInstallationPath = txtBoxFSharpPath.Text;
             Properties.Settings.Default.Save();
+            lblAPIRestartNeeded.Visible = true;
         }
 
         private void BtnFSharpBrowse_Click(object sender, EventArgs e)
@@ -1754,10 +1756,8 @@ namespace BrawlCrate
 
         private void BtnFSharpDetect_Click(object sender, EventArgs e)
         {
-            _updating = true;
             API.BrawlAPI.FSharpInstall(true, true);
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
-            _updating = false;
         }
 
         private void ChkBoxAPIEnableLoaders_CheckedChanged(object sender, EventArgs e)
@@ -1767,12 +1767,10 @@ namespace BrawlCrate
                 return;
             }
 
-            bool value = chkBoxAPIEnableLoaders.Checked;
-
-            Properties.Settings.Default.APILoadersEnabled = value;
+            Properties.Settings.Default.APILoadersEnabled = chkBoxAPIEnableLoaders.Checked;
             Properties.Settings.Default.Save();
 
-            MessageBox.Show("Please re-open the program for changes to be applied.");
+            lblAPIRestartNeeded.Visible = true;
         }
 
         private void ChkBoxRenderBRRES_CheckedChanged(object sender, EventArgs e)
