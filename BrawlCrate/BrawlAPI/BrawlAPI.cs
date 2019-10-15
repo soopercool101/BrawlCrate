@@ -281,17 +281,34 @@ namespace BrawlCrate.API
             // Search for any other Python installations in their default directories
             else
             {
+                string python3InstallDir =
+                    $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Programs";
                 // Search the new installation path for Python
-                foreach (DirectoryInfo d in Directory
-                                            .CreateDirectory(Environment.SpecialFolder.ApplicationData.ToString())
-                                            .GetDirectories().Reverse())
+                foreach (DirectoryInfo d in Directory.CreateDirectory(python3InstallDir).GetDirectories().Reverse())
                 {
-                    if (d.FullName.StartsWith(
-                            $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Python") &&
-                        Directory.Exists($"{d.FullName}\\Lib"))
+                    if (d.Name.StartsWith("Python"))
                     {
-                        searchPaths.Add($"{d.FullName}\\Lib");
-                        break;
+                        if (Directory.Exists($"{d.FullName}\\Lib"))
+                        {
+                            searchPaths.Add($"{d.FullName}\\Lib");
+                            break;
+                        }
+
+                        bool found = false;
+                        foreach (DirectoryInfo d2 in d.GetDirectories().Reverse())
+                        {
+                            if (d2.Name.StartsWith("Python") && Directory.Exists($"{d2.FullName}\\Lib"))
+                            {
+                                searchPaths.Add($"{d2.FullName}\\Lib");
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if (found)
+                        {
+                            break;
+                        }
                     }
                 }
 
