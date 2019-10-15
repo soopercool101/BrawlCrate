@@ -96,6 +96,10 @@ namespace BrawlCrate
         private TextBox txtBoxDefaultBuildPath;
         private Label lblManagerDefaultPath;
         private Button btnManagerPathBrowse;
+        private Label label3;
+        private GroupBox grpBoxLoaders;
+        private ListView lstViewLoaders;
+        private ColumnHeader columnHeader2;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -466,6 +470,10 @@ namespace BrawlCrate
             this.rdoAutoUpdate = new System.Windows.Forms.RadioButton();
             this.rdoCheckManual = new System.Windows.Forms.RadioButton();
             this.rdoCheckStartup = new System.Windows.Forms.RadioButton();
+            this.grpBoxLoaders = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lstViewLoaders = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -490,6 +498,7 @@ namespace BrawlCrate
             this.tabUpdater.SuspendLayout();
             this.grpBoxCanary.SuspendLayout();
             this.updaterBehaviorGroupbox.SuspendLayout();
+            this.grpBoxLoaders.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkShowPropDesc
@@ -903,9 +912,9 @@ namespace BrawlCrate
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdminApproval.ForeColor = System.Drawing.Color.Red;
-            this.lblAdminApproval.Location = new System.Drawing.Point(3, 426);
+            this.lblAdminApproval.Location = new System.Drawing.Point(8, 426);
             this.lblAdminApproval.Name = "lblAdminApproval";
-            this.lblAdminApproval.Size = new System.Drawing.Size(359, 18);
+            this.lblAdminApproval.Size = new System.Drawing.Size(349, 18);
             this.lblAdminApproval.TabIndex = 5;
             this.lblAdminApproval.Text = "Administrator access required to make changes";
             this.lblAdminApproval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1039,6 +1048,8 @@ namespace BrawlCrate
             // tabBrawlAPI
             // 
             this.tabBrawlAPI.BackColor = System.Drawing.SystemColors.Control;
+            this.tabBrawlAPI.Controls.Add(this.label3);
+            this.tabBrawlAPI.Controls.Add(this.grpBoxLoaders);
             this.tabBrawlAPI.Controls.Add(this.grpBoxFSharpAPI);
             this.tabBrawlAPI.Controls.Add(this.grpBoxPythonAPI);
             this.tabBrawlAPI.Controls.Add(this.grpBoxAPIGeneral);
@@ -1383,6 +1394,57 @@ namespace BrawlCrate
             this.rdoCheckStartup.Text = "Manual, but check for updates on startup";
             this.rdoCheckStartup.UseVisualStyleBackColor = true;
             // 
+            // grpBoxLoaders
+            // 
+            this.grpBoxLoaders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxLoaders.Controls.Add(this.lstViewLoaders);
+            this.grpBoxLoaders.Location = new System.Drawing.Point(8, 245);
+            this.grpBoxLoaders.Name = "grpBoxLoaders";
+            this.grpBoxLoaders.Size = new System.Drawing.Size(349, 175);
+            this.grpBoxLoaders.TabIndex = 24;
+            this.grpBoxLoaders.TabStop = false;
+            this.grpBoxLoaders.Text = "Loaders";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(8, 426);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(349, 18);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Administrator access required to make changes";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lstViewLoaders
+            // 
+            this.lstViewLoaders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstViewLoaders.AutoArrange = false;
+            this.lstViewLoaders.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstViewLoaders.CheckBoxes = true;
+            this.lstViewLoaders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.lstViewLoaders.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lstViewLoaders.HideSelection = false;
+            this.lstViewLoaders.Location = new System.Drawing.Point(6, 19);
+            this.lstViewLoaders.MultiSelect = false;
+            this.lstViewLoaders.Name = "lstViewLoaders";
+            this.lstViewLoaders.Size = new System.Drawing.Size(337, 150);
+            this.lstViewLoaders.TabIndex = 7;
+            this.lstViewLoaders.UseCompatibleStateImageBehavior = false;
+            this.lstViewLoaders.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            this.columnHeader2.Width = 300;
+            // 
             // SettingsDialog
             // 
             this.ClientSize = new System.Drawing.Size(373, 478);
@@ -1431,6 +1493,7 @@ namespace BrawlCrate
             this.grpBoxCanary.PerformLayout();
             this.updaterBehaviorGroupbox.ResumeLayout(false);
             this.updaterBehaviorGroupbox.PerformLayout();
+            this.grpBoxLoaders.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
