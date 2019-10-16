@@ -688,7 +688,7 @@ namespace BrawlCrate
                     }
                 }
                 else if (node is CollisionNode || node is CollisionObject || !CompatibilityMode &&
-                         (node is IRenderedObject ||
+                         (node is IRenderedObject io && io.DrawCalls.Count > 0 ||
                           ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
                           ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0))
                 {
