@@ -434,7 +434,7 @@ Full changelog can be viewed from the help menu.";
                 return false;
             }
 
-            if (path.EndsWith("\\"))
+            if (path.EndsWith("\\") || path.EndsWith("/"))
             {
                 return OpenFolder(path, showErrors);
             }

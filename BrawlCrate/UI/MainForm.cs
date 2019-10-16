@@ -546,21 +546,7 @@ namespace BrawlCrate
                 propertyGrid1.SelectedObject = node;
                 setScrollOffset?.Invoke();
 
-#if DEBUG
-                if(ShowHex && !(node is RELEntryNode || node is RELNode) && node.WorkingUncompressed.Length > 0)
-                {
-                    hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
-                            (byte*)node.WorkingUncompressed.Address,
-                            node.WorkingUncompressed.Length,
-                            node.WorkingUncompressed.Length,
-                            FileAccess.ReadWrite))
-                        { _supportsInsDel = false };
-                    newControl = hexBox1;
-                }
-                else if (ShowHex && node is IBufferNode d)
-#else
                 if (ShowHex && node is IBufferNode d)
-#endif
                 {
                     if (d.IsValid())
                     {
@@ -573,6 +559,18 @@ namespace BrawlCrate
                         newControl = hexBox1;
                     }
                 }
+#if DEBUG
+                else if (ShowHex && !(node is RELEntryNode || node is RELNode) && node.WorkingUncompressed.Length > 0)
+                {
+                    hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
+                            (byte*)node.WorkingUncompressed.Address,
+                            node.WorkingUncompressed.Length,
+                            node.WorkingUncompressed.Length,
+                            FileAccess.ReadWrite))
+                        { _supportsInsDel = false };
+                    newControl = hexBox1;
+                }
+#endif
                 else if (node is RSARGroupNode groupNode)
                 {
                     rsarGroupEditor.LoadGroup(groupNode);
