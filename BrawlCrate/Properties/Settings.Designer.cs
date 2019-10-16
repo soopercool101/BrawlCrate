@@ -132,30 +132,6 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ContextualLoop {
-            get {
-                return ((bool)(this["ContextualLoop"]));
-            }
-            set {
-                this["ContextualLoop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoPlayAudio {
-            get {
-                return ((bool)(this["AutoPlayAudio"]));
-            }
-            set {
-                this["AutoPlayAudio"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool APIEnabled {
             get {
                 return ((bool)(this["APIEnabled"]));

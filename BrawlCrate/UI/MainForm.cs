@@ -73,7 +73,7 @@ namespace BrawlCrate
             _autoCompressPCS = BrawlLib.Properties.Settings.Default.AutoCompressFighterPCS;
             _autoDecompressPAC = BrawlLib.Properties.Settings.Default.AutoDecompressFighterPAC;
             _autoCompressStages = BrawlLib.Properties.Settings.Default.AutoCompressStages;
-            _autoPlayAudio = Properties.Settings.Default.AutoPlayAudio;
+            _autoPlayAudio = BrawlLib.Properties.Settings.Default.AutoPlayAudio;
             _showFullPath = Properties.Settings.Default.ShowFullPath;
             _showBRRESPreviews = Properties.Settings.Default.PreviewBRRESModels;
             _showARCPreviews = Properties.Settings.Default.PreviewARCModels;
@@ -300,8 +300,8 @@ namespace BrawlCrate
             {
                 _autoPlayAudio = value;
 
-                Properties.Settings.Default.AutoPlayAudio = _autoPlayAudio;
-                Properties.Settings.Default.Save();
+                BrawlLib.Properties.Settings.Default.AutoPlayAudio = _autoPlayAudio;
+                BrawlLib.Properties.Settings.Default.Save();
             }
         }
 

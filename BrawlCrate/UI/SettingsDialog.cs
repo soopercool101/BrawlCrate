@@ -100,6 +100,7 @@ namespace BrawlCrate
         private GroupBox grpBoxLoaders;
         private ListView lstViewLoaders;
         private ColumnHeader columnHeader2;
+        private CheckBox chkBoxContextualLoop;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -295,6 +296,7 @@ namespace BrawlCrate
             chkBoxMDL0Compatibility.Checked = MainForm.Instance.CompatibilityMode;
             chkBoxRenderBRRES.Checked = MainForm.Instance.ShowBRRESPreviews;
             chkBoxRenderARC.Checked = MainForm.Instance.ShowARCPreviews;
+            chkBoxContextualLoop.Checked = BrawlLib.Properties.Settings.Default.ContextualLoopAudio;
             recentFileCountBox.Value = Properties.Settings.Default.RecentFilesMax;
             chkBoxEnableAPI.Checked = Properties.Settings.Default.APIEnabled;
             chkBoxAPIEnableLoaders.Checked = Properties.Settings.Default.APILoadersEnabled;
@@ -446,6 +448,7 @@ namespace BrawlCrate
             this.rdoAutoUpdate = new System.Windows.Forms.RadioButton();
             this.rdoCheckManual = new System.Windows.Forms.RadioButton();
             this.rdoCheckStartup = new System.Windows.Forms.RadioButton();
+            this.chkBoxContextualLoop = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -553,7 +556,7 @@ namespace BrawlCrate
             this.groupBox1.Controls.Add(this.btnManagerPathBrowse);
             this.groupBox1.Controls.Add(this.txtBoxDefaultBuildPath);
             this.groupBox1.Controls.Add(this.lblManagerDefaultPath);
-            this.groupBox1.Location = new System.Drawing.Point(8, 341);
+            this.groupBox1.Location = new System.Drawing.Point(8, 363);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(349, 73);
             this.groupBox1.TabIndex = 21;
@@ -599,7 +602,7 @@ namespace BrawlCrate
             this.grpBoxMDL0General.Controls.Add(this.chkBoxRenderARC);
             this.grpBoxMDL0General.Controls.Add(this.chkBoxRenderBRRES);
             this.grpBoxMDL0General.Controls.Add(this.chkBoxMDL0Compatibility);
-            this.grpBoxMDL0General.Location = new System.Drawing.Point(8, 241);
+            this.grpBoxMDL0General.Location = new System.Drawing.Point(8, 263);
             this.grpBoxMDL0General.Name = "grpBoxMDL0General";
             this.grpBoxMDL0General.Size = new System.Drawing.Size(349, 94);
             this.grpBoxMDL0General.TabIndex = 19;
@@ -643,10 +646,11 @@ namespace BrawlCrate
             // 
             this.grpBoxAudioGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxAudioGeneral.Controls.Add(this.chkBoxContextualLoop);
             this.grpBoxAudioGeneral.Controls.Add(this.chkBoxAutoPlayAudio);
             this.grpBoxAudioGeneral.Location = new System.Drawing.Point(8, 182);
             this.grpBoxAudioGeneral.Name = "grpBoxAudioGeneral";
-            this.grpBoxAudioGeneral.Size = new System.Drawing.Size(349, 53);
+            this.grpBoxAudioGeneral.Size = new System.Drawing.Size(349, 75);
             this.grpBoxAudioGeneral.TabIndex = 18;
             this.grpBoxAudioGeneral.TabStop = false;
             this.grpBoxAudioGeneral.Text = "Audio";
@@ -654,7 +658,7 @@ namespace BrawlCrate
             // chkBoxAutoPlayAudio
             // 
             this.chkBoxAutoPlayAudio.AutoSize = true;
-            this.chkBoxAutoPlayAudio.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxAutoPlayAudio.Location = new System.Drawing.Point(10, 45);
             this.chkBoxAutoPlayAudio.Name = "chkBoxAutoPlayAudio";
             this.chkBoxAutoPlayAudio.Size = new System.Drawing.Size(171, 17);
             this.chkBoxAutoPlayAudio.TabIndex = 7;
@@ -1354,6 +1358,17 @@ namespace BrawlCrate
             this.rdoCheckStartup.Text = "Manual, but check for updates on startup";
             this.rdoCheckStartup.UseVisualStyleBackColor = true;
             // 
+            // chkBoxContextualLoop
+            // 
+            this.chkBoxContextualLoop.AutoSize = true;
+            this.chkBoxContextualLoop.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxContextualLoop.Name = "chkBoxContextualLoop";
+            this.chkBoxContextualLoop.Size = new System.Drawing.Size(211, 17);
+            this.chkBoxContextualLoop.TabIndex = 8;
+            this.chkBoxContextualLoop.Text = "Loop preview for looping audio sources";
+            this.chkBoxContextualLoop.UseVisualStyleBackColor = true;
+            this.chkBoxContextualLoop.CheckedChanged += new System.EventHandler(this.chkBoxContextualLoop_CheckedChanged);
+            // 
             // SettingsDialog
             // 
             this.ClientSize = new System.Drawing.Size(373, 478);
@@ -1814,6 +1829,17 @@ namespace BrawlCrate
 
             Properties.Settings.Default.BuildPath = txtBoxDefaultBuildPath.Text;
             Properties.Settings.Default.Save();
+        }
+
+        private void chkBoxContextualLoop_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.ContextualLoopAudio = chkBoxContextualLoop.Checked;
+            BrawlLib.Properties.Settings.Default.Save();
         }
     }
 }
