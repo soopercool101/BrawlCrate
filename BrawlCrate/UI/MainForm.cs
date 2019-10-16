@@ -55,6 +55,15 @@ namespace BrawlCrate
             _interpolationForm = null;
         }
 
+        private void _enableEditMenu(object sender, EventArgs e)
+        {
+            BaseWrapper w = resourceTree.SelectedNode as BaseWrapper;
+            editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
+                                                Instance.resourceTree.SelectedNodes.Count > 1
+                                                    ? Instance.resourceTree.GetMultiSelectMenuStrip()
+                                                    : w?.ContextMenuStrip) != null;
+        }
+
         private void _disableEditMenu(object sender, EventArgs e)
         {
             editToolStripMenuItem.DropDown = null;
@@ -80,7 +89,7 @@ namespace BrawlCrate
             _showBRRESPreviews = Properties.Settings.Default.PreviewBRRESModels;
             _showARCPreviews = Properties.Settings.Default.PreviewARCModels;
 
-            Activated += resourceTree_SelectionChanged;
+            Activated += _enableEditMenu;
             Deactivate += _disableEditMenu;
 
 #if !DEBUG //Don't need to see this every time a debug build is compiled
@@ -752,11 +761,7 @@ namespace BrawlCrate
                         newControl = hexBox1;
                     }
                 }
-
-                editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
-                                                    Instance.resourceTree.SelectedNodes.Count > 1
-                                                        ? Instance.resourceTree.GetMultiSelectMenuStrip()
-                                                        : w?.ContextMenuStrip) != null;
+                _enableEditMenu(this, null);
             }
             else
             {
