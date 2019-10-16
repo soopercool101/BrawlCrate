@@ -66,6 +66,11 @@ Full changelog can be viewed from the help menu.";
         internal static string _rootPath;
 
         public static string AppPath;
+
+        public static string ApiPath;
+        public static string ApiPluginPath;
+        public static string ApiLoaderPath;
+
         public static string RootPath => _rootPath;
 
         static Program()
@@ -119,7 +124,10 @@ Full changelog can be viewed from the help menu.";
             FolderDlg = new FolderBrowserDialog();
 #endif
             FolderDlg.Description = "Open Folder";
-
+            
+            ApiPath = Path.Combine(AppPath, "BrawlAPI");
+            ApiPluginPath = Path.Combine(ApiPath, "Plugins");
+            ApiLoaderPath = Path.Combine(ApiPath, "Loaders");
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);

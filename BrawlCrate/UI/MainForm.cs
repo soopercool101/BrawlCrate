@@ -8,8 +8,10 @@ using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using IronPython.Runtime;
 using System;
 using System.Audio;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -112,20 +114,24 @@ namespace BrawlCrate
             {
                 BrawlAPI.Plugins.Clear();
                 BrawlAPI.ResourceParsers.Clear();
-                string plugins = $"{Program.AppPath}\\BrawlAPI\\Plugins";
-                string loaders = $"{Program.AppPath}\\BrawlAPI\\Loaders";
 
                 pluginToolStripMenuItem.DropDown.Items.Clear();
-                if (Directory.Exists(plugins))
+                if (Directory.Exists(Program.ApiPluginPath))
                 {
                     reloadPluginsToolStripMenuItem_Click(null, null);
                 }
 
-                if (Directory.Exists(loaders) && Properties.Settings.Default.APILoadersEnabled)
+                if (Directory.Exists(Program.ApiLoaderPath) && Properties.Settings.Default.APILoadersEnabled)
                 {
-                    foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
+                    foreach (FileInfo f in GetScripts(Program.ApiLoaderPath))
                     {
-                        BrawlAPI.CreatePlugin(str, true);
+                        // Only load loaders that aren't disabled by settings
+                        if (!(Properties.Settings.Default.DisabledAPILoadersList?.Contains(
+                                  f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
+                              false))
+                        {
+                            BrawlAPI.CreatePlugin(f.FullName, true);
+                        }
                     }
                 }
             }
@@ -1164,6 +1170,7 @@ namespace BrawlCrate
 
         private void settingsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            Settings._updating = true;
             Settings.ShowDialog();
         }
 
@@ -1331,7 +1338,29 @@ namespace BrawlCrate
         {
             BrawlAPI.Plugins.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
-            AddPlugins(pluginToolStripMenuItem, $"{Program.AppPath}\\BrawlAPI\\Plugins");
+            AddPlugins(pluginToolStripMenuItem, Program.ApiPluginPath);
+        }
+
+        public static List<FileInfo> GetScripts(string path)
+        {
+            DirectoryInfo dir = Directory.CreateDirectory(path);
+            List<FileInfo> scripts = new List<FileInfo>();
+
+            foreach (DirectoryInfo d in dir.GetDirectories())
+            {
+                ToolStripMenuItem folder = new ToolStripMenuItem();
+                folder.Name = folder.Text = d.Name;
+                scripts.AddRange(GetScripts(d.FullName));
+            }
+
+            foreach (FileInfo script in dir.GetFiles().Where(f =>
+                f.Extension.Equals(".py", StringComparison.OrdinalIgnoreCase) ||
+                f.Extension.Equals(".fsx", StringComparison.OrdinalIgnoreCase)))
+            {
+                scripts.Add(script);
+            }
+
+            return scripts;
         }
 
         private void AddPlugins(ToolStripMenuItem menu, string path)

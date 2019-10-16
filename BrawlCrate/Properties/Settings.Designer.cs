@@ -286,12 +286,12 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection DisabledLoaders {
+        public global::System.Collections.Specialized.StringCollection DisabledAPILoadersList {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["DisabledLoaders"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["DisabledAPILoadersList"]));
             }
             set {
-                this["DisabledLoaders"] = value;
+                this["DisabledAPILoadersList"] = value;
             }
         }
     }

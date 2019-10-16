@@ -2,6 +2,7 @@
 using BrawlLib.SSBB;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Windows.Forms;
 
@@ -9,7 +10,7 @@ namespace BrawlCrate
 {
     internal class SettingsDialog : Form
     {
-        private bool _updating;
+        public bool _updating;
 
         static SettingsDialog()
         {
@@ -106,6 +107,7 @@ namespace BrawlCrate
         public SettingsDialog()
         {
             InitializeComponent();
+            _updating = true;
 
             tabUpdater.Enabled = true;
             tabUpdater.Visible = true;
@@ -128,6 +130,7 @@ namespace BrawlCrate
             }
 
             lstViewFileAssociations.Items.Clear();
+            lstViewLoaders.Items.Clear();
             foreach (SupportedFileInfo info in SupportedFilesHandler.Files)
             {
                 if (info.Associatable)
@@ -138,6 +141,15 @@ namespace BrawlCrate
                     }
                 }
             }
+
+            foreach (FileInfo script in MainForm.GetScripts(Program.ApiLoaderPath))
+            {
+                ListViewItem i = new ListViewItem();
+                i.Text = script.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\');
+                lstViewLoaders.Items.Add(i);
+            }
+
+            _updating = false;
         }
 
         private void Apply()
@@ -240,6 +252,11 @@ namespace BrawlCrate
                 }
 
                 index++;
+            }
+
+            foreach (ListViewItem i in lstViewLoaders.Items)
+            {
+                i.Checked = !(Properties.Settings.Default.DisabledAPILoadersList?.Contains(i.Text) ?? false);
             }
 
             try
@@ -1516,11 +1533,13 @@ namespace BrawlCrate
 
         private void UpdaterBehavior_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_updating)
+            if (_updating)
             {
-                MainForm.Instance.UpdateAutomatically = rdoAutoUpdate.Checked;
-                MainForm.Instance.CheckUpdatesOnStartup = rdoAutoUpdate.Checked || rdoCheckStartup.Checked;
+                return;
             }
+
+            MainForm.Instance.UpdateAutomatically = rdoAutoUpdate.Checked;
+            MainForm.Instance.CheckUpdatesOnStartup = rdoAutoUpdate.Checked || rdoCheckStartup.Checked;
         }
 
         private void BtnCanaryBranch_Click(object sender, EventArgs e)
@@ -1576,23 +1595,25 @@ namespace BrawlCrate
 
         private void ChkBoxModuleCompress_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_updating)
+            if (_updating)
             {
-                if (chkBoxModuleCompress.Checked)
-                {
-                    if (MessageBox.Show(
-                            "Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?",
-                            "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
-                    {
-                        _updating = true;
-                        chkBoxModuleCompress.Checked = false;
-                        _updating = false;
-                        return;
-                    }
-                }
-
-                MainForm.Instance.AutoCompressModules = chkBoxModuleCompress.Checked;
+                return;
             }
+
+            if (chkBoxModuleCompress.Checked)
+            {
+                if (MessageBox.Show(
+                        "Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?",
+                        "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    _updating = true;
+                    chkBoxModuleCompress.Checked = false;
+                    _updating = false;
+                    return;
+                }
+            }
+
+            MainForm.Instance.AutoCompressModules = chkBoxModuleCompress.Checked;
         }
 
         private void ChkBoxMDL0Compatibility_CheckedChanged(object sender, EventArgs e)
@@ -1608,41 +1629,45 @@ namespace BrawlCrate
 
         private void ChkBoxEnableDiscordRPC_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_updating)
+            if (_updating)
             {
-                Properties.Settings.Default.DiscordRPCEnabled = chkBoxEnableDiscordRPC.Checked;
-                Properties.Settings.Default.Save();
-                grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked;
-                DiscordSettings.LoadSettings(true);
+                return;
             }
+
+            Properties.Settings.Default.DiscordRPCEnabled = chkBoxEnableDiscordRPC.Checked;
+            Properties.Settings.Default.Save();
+            grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked;
+            DiscordSettings.LoadSettings(true);
         }
 
         private void DiscordRPCNameSettings_CheckedChanged(object sender, EventArgs e)
         {
-            if (!_updating)
+            if (_updating)
             {
-                if (rdoDiscordRPCNameDisabled.Checked)
-                {
-                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.Disabled;
-                }
-                else if (rdoDiscordRPCNameInternal.Checked)
-                {
-                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.AutoInternal;
-                }
-                else if (rdoDiscordRPCNameExternal.Checked)
-                {
-                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.AutoExternal;
-                }
-                else if (rdoDiscordRPCNameCustom.Checked)
-                {
-                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.UserDefined;
-                }
-
-                DiscordRPCCustomName.Enabled = rdoDiscordRPCNameCustom.Checked;
-                DiscordRPCCustomName.ReadOnly = !rdoDiscordRPCNameCustom.Checked;
-                Properties.Settings.Default.Save();
-                DiscordSettings.LoadSettings(true);
+                return;
             }
+
+            if (rdoDiscordRPCNameDisabled.Checked)
+            {
+                Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.Disabled;
+            }
+            else if (rdoDiscordRPCNameInternal.Checked)
+            {
+                Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.AutoInternal;
+            }
+            else if (rdoDiscordRPCNameExternal.Checked)
+            {
+                Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.AutoExternal;
+            }
+            else if (rdoDiscordRPCNameCustom.Checked)
+            {
+                Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.UserDefined;
+            }
+
+            DiscordRPCCustomName.Enabled = rdoDiscordRPCNameCustom.Checked;
+            DiscordRPCCustomName.ReadOnly = !rdoDiscordRPCNameCustom.Checked;
+            Properties.Settings.Default.Save();
+            DiscordSettings.LoadSettings(true);
         }
 
         private void DiscordRPCCustomName_TextChanged(object sender, EventArgs e)
@@ -1859,12 +1884,28 @@ namespace BrawlCrate
             BrawlLib.Properties.Settings.Default.Save();
         }
 
-        private void LstViewLoaders_ItemChecked(object sender, EventArgs e)
+        private void LstViewLoaders_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             if (_updating)
             {
                 return;
             }
+
+            if (!e.Item.Checked)
+            {
+                if (Properties.Settings.Default.DisabledAPILoadersList == null)
+                {
+                    Properties.Settings.Default.DisabledAPILoadersList = new StringCollection();
+                }
+                Properties.Settings.Default.DisabledAPILoadersList.Add(e.Item.Text);
+            }
+            else if (Properties.Settings.Default.DisabledAPILoadersList?.Contains(e.Item.Text) ?? false)
+            {
+                Properties.Settings.Default.DisabledAPILoadersList.Remove(e.Item.Text);
+            }
+            Properties.Settings.Default.Save();
+
+            lblAPIRestartNeeded.Visible = true;
         }
     }
 }
