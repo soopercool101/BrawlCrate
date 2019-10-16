@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,7 +117,9 @@ namespace BrawlCrate.UI
             this.lstSubs.Name = "lstSubs";
             this.lstSubs.Size = new System.Drawing.Size(369, 299);
             this.lstSubs.TabIndex = 0;
+            this.lstSubs.MultiSelect = false;
             this.lstSubs.UseCompatibleStateImageBehavior = false;
+            this.lstSubs.ItemSelectionChanged += new ListViewItemSelectionChangedEventHandler(LstSubs_ItemChanged);
             // 
             // tabsSubInfo
             // 
@@ -151,6 +154,7 @@ namespace BrawlCrate.UI
             this.txtReadMe.Size = new System.Drawing.Size(368, 135);
             this.txtReadMe.TabIndex = 0;
             this.txtReadMe.Text = "";
+            this.txtReadMe.ReadOnly = true;
             // 
             // tabScripts
             // 
@@ -197,6 +201,7 @@ namespace BrawlCrate.UI
             this.txtLicense.Size = new System.Drawing.Size(374, 94);
             this.txtLicense.TabIndex = 3;
             this.txtLicense.Text = "";
+            this.txtLicense.ReadOnly = true;
             // 
             // lblLastUpdated
             // 
@@ -241,6 +246,7 @@ namespace BrawlCrate.UI
             // APISubscriptionManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.Shown += new System.EventHandler(this.APISubscriptionManager_Shown);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 529);
             this.Controls.Add(this.btnAddSub);
@@ -286,6 +292,46 @@ namespace BrawlCrate.UI
             InitializeComponent();
         }
 
+        private void APISubscriptionManager_Shown(object sender, EventArgs e)
+        {
+            lstSubs.Clear();
+            if (Directory.Exists(Program.ApiPath))
+            {
+                foreach (FileInfo repo in Directory.CreateDirectory(Program.ApiPath).GetFiles()
+                                                   .Where(f => string.IsNullOrWhiteSpace(f.Extension)))
+                {
+                    string[] repoInfo = repo.Name.Split(' ');
+                    if (repoInfo.Length == 2)
+                    {
+                        lstSubs.Items.Add(new APISubscription(repoInfo[0], repoInfo[1], repo.FullName)
+                            {Text = $"{repoInfo[0]}/{repoInfo[1]}"});
+                    }
+                }
+            }
+            splitContainer1.Panel2Collapsed = lstSubs.SelectedItems.Count < 1;
+        }
+
+        private void LstSubs_ItemChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            splitContainer1.Panel2Collapsed = lstSubs.SelectedItems.Count < 1;
+            txtLicense.Text = "";
+            txtReadMe.Text = "";
+            lblVersion.Text = "Version:";
+            lblLastUpdated.Text = "Last Updated:";
+            lstScripts.Clear();
+            if (e.Item is APISubscription a)
+            {
+                txtLicense.Text = a.License;
+                txtReadMe.Text = a.License;
+                lblVersion.Text = $"Version: {a.Version}";
+                lblLastUpdated.Text = $"Last Updated: {a.LastUpdateDate}";
+                foreach (string s in a.ManagedScripts)
+                {
+                    lstScripts.Items.Add(s);
+                }
+            }
+        }
+
         private void BtnAddSub_Click(object sender, EventArgs e)
         {
 
@@ -299,6 +345,50 @@ namespace BrawlCrate.UI
         private void BtnUninstall_Click(object sender, EventArgs e)
         {
 
+        }
+    }
+
+    public class APISubscription : ListViewItem
+    {
+        public string Version { get; }
+        public string LastUpdateDate { get; }
+        public List<string> ManagedScripts { get; }
+        public string ReadMe { get; }
+        public string License { get; }
+
+        public APISubscription(string repoOwner, string repoName, string path)
+        {
+            Name = $"{repoOwner}/{repoName}";
+            ReadMe = "";
+            License = "";
+            if (File.Exists($"{path} README.txt"))
+            {
+                ReadMe = File.ReadAllText($"{path} README.txt");
+            }
+            if (File.Exists($"{path} LICENSE.txt"))
+            {
+                License = File.ReadAllText($"{path} LICENSE.txt");
+            }
+
+            string[] lines = File.ReadAllLines(path);
+            // Line 0:  Release Tag. This is checked against to see if there is a new update for the repo.
+            // Line 1:  Release Target Commitish. Used to allow continuous integration repos to work.
+            // Line 2:  Update date (not used by updater, used instead to view info)
+            // Line 3+: Each line is a relative path to a file from the installation.
+            //          This is used to delete relevant files when updating,
+            //          in case a file is moved or deleted by the update intentionally.
+            Version = lines[0];
+            LastUpdateDate = lines[2];
+            ManagedScripts = new List<string>();
+            for (int i = 3; i < lines.Length; i++)
+            {
+                ManagedScripts.Add(lines[i]);
+            }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }
