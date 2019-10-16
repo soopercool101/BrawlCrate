@@ -666,7 +666,7 @@ namespace Updater
                             // Get the file's contents. API updater files are generated automatically in the following format:
                             // Line 0:  Release Tag. This is checked against to see if there is a new update for the repo.
                             // Line 1:  Release Target Commitish. Used to allow continuous integration repos to work.
-                            // Line 2:  Blank Line for readability
+                            // Line 2:  Update date (not used by updater, used instead to view info)
                             // Line 3+: Each line is a relative path to a file from the installation.
                             //          This is used to delete relevant files when updating,
                             //          in case a file is moved or deleted by the update intentionally.
@@ -696,6 +696,20 @@ namespace Updater
                     {
                         // Errors are ignored, move on to the next file
                     }
+                }
+                
+                // Print success message
+                if (updated.Count > 0)
+                {
+                    string updateMessage = "";
+                    foreach (string s in updated)
+                    {
+                        updateMessage += s;
+                        updateMessage += '\n';
+                    }
+
+                    updateMessage.Trim();
+                    MessageBox.Show(updateMessage, "BrawlAPI Updater");
                 }
             }
         }
@@ -752,8 +766,8 @@ namespace Updater
                         sw.WriteLine(release.TagName);
                         // Line 1:  Release Target Commitish. Used to allow continuous integration repos to work.
                         sw.WriteLine(release.TargetCommitish);
-                        // Line 2:  Blank Line for readability
-                        sw.WriteLine();
+                        // Line 2:  Update date (not used by updater, used instead to view info)
+                        sw.WriteLine(DateTime.Now);
                         // Line 3+: Each line is a relative path to a file from the installation.
                         //          This is used to delete relevant files when updating,
                         //          in case a file is moved or deleted by the update intentionally.

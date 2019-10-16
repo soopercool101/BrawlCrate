@@ -54,9 +54,12 @@ they be held accountable for the manner in which it is used.
  . Add "All Files" filter when opening or saving files
  . bboxapi changed to BrawlAPI
    - Python is no longer included in the installation. Path will be automatically searched for on first boot.
+   - Plugins and loaders are now subdirectories in a BrawlAPI folder
+   - Loaders can now be blacklisted or whitelisted
    - F# path is now saved to a setting, greatly reducing runtime for F# scripts
    - Plugin-created dropdown items now appear in a Plugins submenu
    - Plugins now are sorted into submenus based on subfolders
+   - Loaders can now be loaded from subfolders
    - Add various additional exposed members for API and extensive documentation (found at https://github.com/soopercool101/BrawlCrateNext/blob/master/BrawlCrate/BrawlAPI/ExposedMembers.cs)
      . SelectedNodes
      . NodeList

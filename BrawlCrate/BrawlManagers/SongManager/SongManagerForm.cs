@@ -134,7 +134,10 @@ namespace BrawlCrate.SongManager
 
             if (autoplay && autoplayNext)
             {
-                songPanel1.Play();
+                if (!BrawlLib.Properties.Settings.Default.AutoPlayAudio)
+                {
+                    songPanel1.Play();
+                }
             }
 
             autoplayNext = false;

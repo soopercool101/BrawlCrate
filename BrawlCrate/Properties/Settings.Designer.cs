@@ -305,5 +305,17 @@ namespace BrawlCrate.Properties {
                 this["APIOnlyAllowLoadersFromWhitelist"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool APIAutoUpdate {
+            get {
+                return ((bool)(this["APIAutoUpdate"]));
+            }
+            set {
+                this["APIAutoUpdate"] = value;
+            }
+        }
     }
 }

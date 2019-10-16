@@ -104,6 +104,7 @@ namespace BrawlCrate
         private GroupBox grpBoxLoaderBehavior;
         private RadioButton rdoAPILoaderWhitelist;
         private RadioButton rdoAPILoaderBlacklist;
+        private Button btnManageSubscriptions;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -467,6 +468,7 @@ namespace BrawlCrate
             this.btnPythonDetect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.grpBoxAPIGeneral = new System.Windows.Forms.GroupBox();
+            this.btnManageSubscriptions = new System.Windows.Forms.Button();
             this.grpBoxLoaderBehavior = new System.Windows.Forms.GroupBox();
             this.rdoAPILoaderWhitelist = new System.Windows.Forms.RadioButton();
             this.rdoAPILoaderBlacklist = new System.Windows.Forms.RadioButton();
@@ -1198,6 +1200,7 @@ namespace BrawlCrate
             // 
             this.grpBoxAPIGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxAPIGeneral.Controls.Add(this.btnManageSubscriptions);
             this.grpBoxAPIGeneral.Controls.Add(this.grpBoxLoaderBehavior);
             this.grpBoxAPIGeneral.Controls.Add(this.chkBoxEnableAPI);
             this.grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
@@ -1206,6 +1209,18 @@ namespace BrawlCrate
             this.grpBoxAPIGeneral.TabIndex = 19;
             this.grpBoxAPIGeneral.TabStop = false;
             this.grpBoxAPIGeneral.Text = "BrawlAPI";
+            // 
+            // btnManageSubscriptions
+            // 
+            this.btnManageSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnManageSubscriptions.Location = new System.Drawing.Point(201, 15);
+            this.btnManageSubscriptions.Name = "btnManageSubscriptions";
+            this.btnManageSubscriptions.Size = new System.Drawing.Size(140, 24);
+            this.btnManageSubscriptions.TabIndex = 23;
+            this.btnManageSubscriptions.Text = "Manage Subscriptions";
+            this.btnManageSubscriptions.UseVisualStyleBackColor = true;
+            this.btnManageSubscriptions.Click += new System.EventHandler(this.BtnManageSubscriptions_Click);
             // 
             // grpBoxLoaderBehavior
             // 
@@ -1442,6 +1457,7 @@ namespace BrawlCrate
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "SettingsDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
             this.Shown += new System.EventHandler(this.SettingsDialog_Shown);
             this.tabControl1.ResumeLayout(false);
@@ -1970,6 +1986,11 @@ namespace BrawlCrate
             Properties.Settings.Default.Save();
 
             lblAPIRestartNeeded.Visible = true;
+        }
+
+        private void BtnManageSubscriptions_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
