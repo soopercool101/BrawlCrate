@@ -24,8 +24,19 @@ they be held accountable for the manner in which it is used.
  . OpenTK updated from v1.1.0 to v3.1.0
  . Add "Show Changelog" button to the help menu
  . Add ports of BrawlManagers from https://github.com/libertyernie/BrawlManagers
+   - All:
+     . Add setting for default build path. A build in this path will be handled by all managers by default.
+	 . Use BrawlCrateLib instead of BrawlLib, with relevant improvements
+	 . Use BrawlCrate name and iconography
+   - Costume Manager:
+     . Remove functionality which removes and hides objects and materials. Implementation for this made too many assumptions that are no longer generally true
+   - Song Manager:
+	 . Fix issue where a volume of "0" muted playback, instead of playing the sound at full volume (as appears to be the case in-game)
+	 . Auto-play audio and Contextual loop settings are used during playback
+   - Stage Manager:
+	 . External BrawlBox integration replaced with internal BrawlCrate integration. Opening files via this method will now open them in the main window
  . Add Moveset framework from v0.68b
- . Add Folder opening support
+ . Add support to open folders
  . New Color Smash method: Multi-select nodes and right-click to Color Smash
  . Panning on the modelviewer freezes the mouse to allow for smoother movement
  . Add MainForm previewing of Models for BRRES and ARC nodes (check the settings)
@@ -94,6 +105,7 @@ they be held accountable for the manner in which it is used.
  . Add ability to resize Stage Data Tables
  . Add support for multi-file importing for BRRES and ARC
  . Add "Export Selected" toolstrip for multi-selection
+ . Add new setting to toggle context-based looping for audio sources
  . Temp files are now opened using default OS functionality, rather than in a dedicated per-install folder
  . Duplicate now works for most node types
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
