@@ -539,7 +539,7 @@ namespace BrawlCrate
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(373, 478);
             this.tabControl1.TabIndex = 48;
-            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(thisToggleUpdateOn);
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.ToggleUpdateOn);
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.ToggleUpdateOff);
             // 
             // tabGeneral
