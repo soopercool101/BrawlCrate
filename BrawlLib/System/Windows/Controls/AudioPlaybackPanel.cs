@@ -390,6 +390,7 @@ namespace System.Windows.Forms
                 _provider?.Attach(this);
             }
 
+            chkLoop.Checked = false;
             chkLoop.Checked = BrawlLib.Properties.Settings.Default.ContextualLoopAudio && (_targetSource?.IsLooped ?? false);
 
             //Create buffer for stream
