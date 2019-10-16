@@ -32,13 +32,15 @@ namespace BrawlCrate.StageManager
         private FileInfo[] pacFiles;
 
         /// <summary>
-        /// Same as System.Environment.CurrentDirectory.
+        ///     Replacement for Environment.CurrentDirectory to be more localized and not break functionality of other open managers.
         /// </summary>
         private string CurrentDirectory
         {
-            get => Environment.CurrentDirectory;
-            set => Environment.CurrentDirectory = value;
+            get => curDir;
+            set => curDir = value;
         }
+
+        private string curDir;
 
         /// <summary>
         /// Location of the folder with .rel files, relative to the current directory.
@@ -110,14 +112,19 @@ namespace BrawlCrate.StageManager
         {
             if (!string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
             {
-                Environment.CurrentDirectory = Properties.Settings.Default.BuildPath;
+                CurrentDirectory = Properties.Settings.Default.BuildPath;
+            }
+
+            if (string.IsNullOrEmpty(CurrentDirectory))
+            {
+                CurrentDirectory = Environment.CurrentDirectory;
             }
 
             InitializeComponent();
 
             try
             {
-                path = path ?? Environment.CurrentDirectory;
+                path = path ?? CurrentDirectory;
             }
             catch (Exception e)
             {
@@ -538,7 +545,7 @@ namespace BrawlCrate.StageManager
             Console.WriteLine(songPanel1.findInfoFile());
             songPanel1.CustomSongTitles = portraitViewer1.BestSSS.CNMT.Map;
 
-            portraitViewer1.UpdateDirectory();
+            portraitViewer1.UpdateDirectory(CurrentDirectory);
 
             if (useAFixedStageListToolStripMenuItem.Checked)
             {

@@ -33,13 +33,15 @@ namespace BrawlCrate.SongManager
         private FileInfo[] brstmFiles;
 
         /// <summary>
-        /// Same as System.Environment.CurrentDirectory.
+        ///     Replacement for Environment.CurrentDirectory to be more localized and not break functionality of other open managers.
         /// </summary>
         private string CurrentDirectory
         {
-            get => Environment.CurrentDirectory;
-            set => Environment.CurrentDirectory = value;
+            get => curDir;
+            set => curDir = value;
         }
+
+        private string curDir;
 
         private string FallbackDirectory;
         private CustomSongVolumeCodeset csv;
@@ -77,10 +79,15 @@ namespace BrawlCrate.SongManager
         {
             if (path == null && !string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
             {
-                Environment.CurrentDirectory = Properties.Settings.Default.BuildPath;
+                CurrentDirectory = Properties.Settings.Default.BuildPath;
             }
 
-            path = path ?? Environment.CurrentDirectory;
+            if (string.IsNullOrEmpty(CurrentDirectory))
+            {
+                CurrentDirectory = Environment.CurrentDirectory;
+            }
+
+            path = path ?? CurrentDirectory;
 
             InitializeComponent();
 
@@ -463,7 +470,7 @@ namespace BrawlCrate.SongManager
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            songPanel1.Rename();
+            songPanel1.Rename(CurrentDirectory);
             refreshDirectory();
         }
 

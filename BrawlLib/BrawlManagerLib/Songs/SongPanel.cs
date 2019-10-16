@@ -190,7 +190,7 @@ namespace BrawlManagerLib
             }
         }
 
-        public void Rename()
+        public void Rename(string dir)
         {
             using (NameDialog nd = new NameDialog())
             {
@@ -204,7 +204,7 @@ namespace BrawlManagerLib
 
                     string from = RootPath;
                     Close();
-                    FileOperations.Rename(from, Environment.CurrentDirectory + "\\" + nd.EntryText);
+                    FileOperations.Rename(from, dir + "\\" + nd.EntryText);
                 }
             }
         }

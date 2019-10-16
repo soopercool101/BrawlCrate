@@ -17,11 +17,27 @@ namespace BrawlCrate.CostumeManager
 
         public bool Swap_Wario;
 
+        /// <summary>
+        ///     Replacement for Environment.CurrentDirectory to be more localized and not break functionality of other open managers.
+        /// </summary>
+        private string CurrentDirectory
+        {
+            get => curDir;
+            set => curDir = value;
+        }
+
+        private string curDir;
+
         public CostumeManagerForm()
         {
             if (!string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
             {
-                Environment.CurrentDirectory = Properties.Settings.Default.BuildPath;
+                CurrentDirectory = Properties.Settings.Default.BuildPath;
+            }
+            
+            if(string.IsNullOrWhiteSpace(CurrentDirectory))
+            {
+                CurrentDirectory = Environment.CurrentDirectory;
             }
 
             _title = "BrawlCrate Costume Manager" +
@@ -34,19 +50,19 @@ namespace BrawlCrate.CostumeManager
                 {cssPortraitViewer1, resultPortraitViewer1, battlePortraitViewer1, infoStockIconViewer1};
 
 
-            if (!new DirectoryInfo("fighter").Exists)
+            if (!new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter")).Exists)
             {
-                if (new DirectoryInfo("/private/wii/app/RSBE/pf/fighter").Exists)
+                if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/fighter")).Exists)
                 {
-                    Environment.CurrentDirectory = "/private/wii/app/RSBE/pf";
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/");
                 }
-                else if (new DirectoryInfo("/projectm/pf/fighter").Exists)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/projectm/pf/fighter")).Exists)
                 {
-                    Environment.CurrentDirectory = "/projectm/pf";
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "/projectm/pf/");
                 }
-                else if (new DirectoryInfo("/pf/fighter").Exists)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/pf/fighter")).Exists)
                 {
-                    Environment.CurrentDirectory = "/pf";
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "/pf/");
                 }
             }
 
@@ -58,7 +74,7 @@ namespace BrawlCrate.CostumeManager
 
         private void readDir()
         {
-            if (!Directory.Exists("mario"))
+            if (!Directory.Exists(Path.Combine(CurrentDirectory, "mario")))
             {
                 foreach (string path in new[]
                 {
@@ -67,9 +83,9 @@ namespace BrawlCrate.CostumeManager
                     "/fighter"
                 })
                 {
-                    if (Directory.Exists(Environment.CurrentDirectory + path))
+                    if (Directory.Exists(CurrentDirectory + path))
                     {
-                        Environment.CurrentDirectory += path;
+                        CurrentDirectory += path;
                         readDir();
                         return;
                     }
@@ -101,16 +117,16 @@ namespace BrawlCrate.CostumeManager
                     return null;
                 }
 
-                string fighterDir = findFighterFolder(Environment.CurrentDirectory);
+                string fighterDir = findFighterFolder(CurrentDirectory);
                 if (fighterDir != null)
                 {
-                    Environment.CurrentDirectory = Path.GetDirectoryName(fighterDir);
+                    CurrentDirectory = Path.GetDirectoryName(fighterDir);
                     readDir();
                     return;
                 }
             }
 
-            Text = _title + " - " + Environment.CurrentDirectory;
+            Text = _title + " - " + CurrentDirectory;
 
             pmap.ClearAll();
             pmap.BrawlExScan("../BrawlEx");
@@ -198,7 +214,7 @@ namespace BrawlCrate.CostumeManager
             listBox2.Items.Clear();
             if (charname == "-")
             {
-                foreach (FileInfo f in new DirectoryInfo(".").EnumerateFiles())
+                foreach (FileInfo f in new DirectoryInfo(CurrentDirectory).EnumerateFiles())
                 {
                     string name = f.Name.ToLower();
                     if (name.EndsWith(".pac") || name.EndsWith(".pcs"))
@@ -213,7 +229,7 @@ namespace BrawlCrate.CostumeManager
                 int upperBound = 12;
                 for (int i = 0; i < upperBound; i++)
                 {
-                    string pathNoExt = charname + "/fit" + charname + i.ToString("D2");
+                    string pathNoExt = CurrentDirectory + '\\' + charname + "/fit" + charname + i.ToString("D2");
                     listBox2.Items.Add(new FighterFile(pathNoExt + ".pac", charNum, i));
                     listBox2.Items.Add(new FighterFile(pathNoExt + ".pcs", charNum, i));
                     if (charname.ToLower() == "kirby")
@@ -240,7 +256,7 @@ namespace BrawlCrate.CostumeManager
             //			fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                Environment.CurrentDirectory = fbd.SelectedPath;
+                CurrentDirectory = fbd.SelectedPath;
                 readDir();
             }
         }

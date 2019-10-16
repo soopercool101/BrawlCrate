@@ -235,9 +235,8 @@ namespace BrawlCrate.StageManager
             }
         }
 
-        public void UpdateDirectory()
+        public void UpdateDirectory(string dir)
         {
-            Console.WriteLine(Environment.CurrentDirectory);
             sc_selmap?.Dispose();
 
             common5?.Dispose();
@@ -295,7 +294,7 @@ namespace BrawlCrate.StageManager
 
             // Find and load GCT, if it exists
             AutoSSS = null;
-            DirectoryInfo directory = new DirectoryInfo(Environment.CurrentDirectory);
+            DirectoryInfo directory = new DirectoryInfo(dir);
             while (directory != null)
             {
                 if (File.Exists(directory.FullName + "/data/gecko/codes/RSBE01.gct"))
