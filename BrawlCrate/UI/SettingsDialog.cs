@@ -104,7 +104,9 @@ namespace BrawlCrate
         private GroupBox grpBoxLoaderBehavior;
         private RadioButton rdoAPILoaderWhitelist;
         private RadioButton rdoAPILoaderBlacklist;
+        private GroupBox grpBoxAPIUpdate;
         private Button btnManageSubscriptions;
+        private CheckBox chkBoxUpdateAPI;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -468,7 +470,6 @@ namespace BrawlCrate
             this.btnPythonDetect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.grpBoxAPIGeneral = new System.Windows.Forms.GroupBox();
-            this.btnManageSubscriptions = new System.Windows.Forms.Button();
             this.grpBoxLoaderBehavior = new System.Windows.Forms.GroupBox();
             this.rdoAPILoaderWhitelist = new System.Windows.Forms.RadioButton();
             this.rdoAPILoaderBlacklist = new System.Windows.Forms.RadioButton();
@@ -483,6 +484,9 @@ namespace BrawlCrate
             this.rdoDiscordRPCNameInternal = new System.Windows.Forms.RadioButton();
             this.rdoDiscordRPCNameDisabled = new System.Windows.Forms.RadioButton();
             this.tabUpdater = new System.Windows.Forms.TabPage();
+            this.grpBoxAPIUpdate = new System.Windows.Forms.GroupBox();
+            this.btnManageSubscriptions = new System.Windows.Forms.Button();
+            this.chkBoxUpdateAPI = new System.Windows.Forms.CheckBox();
             this.grpBoxCanary = new System.Windows.Forms.GroupBox();
             this.updaterBehaviorGroupbox = new System.Windows.Forms.GroupBox();
             this.rdoAutoUpdate = new System.Windows.Forms.RadioButton();
@@ -512,6 +516,7 @@ namespace BrawlCrate
             this.grpBoxDiscordRPC.SuspendLayout();
             this.grpBoxDiscordRPCType.SuspendLayout();
             this.tabUpdater.SuspendLayout();
+            this.grpBoxAPIUpdate.SuspendLayout();
             this.grpBoxCanary.SuspendLayout();
             this.updaterBehaviorGroupbox.SuspendLayout();
             this.SuspendLayout();
@@ -1200,7 +1205,6 @@ namespace BrawlCrate
             // 
             this.grpBoxAPIGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxAPIGeneral.Controls.Add(this.btnManageSubscriptions);
             this.grpBoxAPIGeneral.Controls.Add(this.grpBoxLoaderBehavior);
             this.grpBoxAPIGeneral.Controls.Add(this.chkBoxEnableAPI);
             this.grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
@@ -1209,18 +1213,6 @@ namespace BrawlCrate
             this.grpBoxAPIGeneral.TabIndex = 19;
             this.grpBoxAPIGeneral.TabStop = false;
             this.grpBoxAPIGeneral.Text = "BrawlAPI";
-            // 
-            // btnManageSubscriptions
-            // 
-            this.btnManageSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnManageSubscriptions.Location = new System.Drawing.Point(201, 15);
-            this.btnManageSubscriptions.Name = "btnManageSubscriptions";
-            this.btnManageSubscriptions.Size = new System.Drawing.Size(140, 24);
-            this.btnManageSubscriptions.TabIndex = 23;
-            this.btnManageSubscriptions.Text = "Manage Subscriptions";
-            this.btnManageSubscriptions.UseVisualStyleBackColor = true;
-            this.btnManageSubscriptions.Click += new System.EventHandler(this.BtnManageSubscriptions_Click);
             // 
             // grpBoxLoaderBehavior
             // 
@@ -1381,6 +1373,7 @@ namespace BrawlCrate
             // 
             // tabUpdater
             // 
+            this.tabUpdater.Controls.Add(this.grpBoxAPIUpdate);
             this.tabUpdater.Controls.Add(this.grpBoxCanary);
             this.tabUpdater.Controls.Add(this.updaterBehaviorGroupbox);
             this.tabUpdater.Location = new System.Drawing.Point(4, 22);
@@ -1389,6 +1382,40 @@ namespace BrawlCrate
             this.tabUpdater.Size = new System.Drawing.Size(365, 452);
             this.tabUpdater.TabIndex = 1;
             this.tabUpdater.Text = "Updater";
+            // 
+            // grpBoxAPIUpdate
+            // 
+            this.grpBoxAPIUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxAPIUpdate.Controls.Add(this.btnManageSubscriptions);
+            this.grpBoxAPIUpdate.Controls.Add(this.chkBoxUpdateAPI);
+            this.grpBoxAPIUpdate.Location = new System.Drawing.Point(8, 191);
+            this.grpBoxAPIUpdate.Name = "grpBoxAPIUpdate";
+            this.grpBoxAPIUpdate.Size = new System.Drawing.Size(349, 82);
+            this.grpBoxAPIUpdate.TabIndex = 15;
+            this.grpBoxAPIUpdate.TabStop = false;
+            this.grpBoxAPIUpdate.Text = "BrawlAPI Scripts";
+            // 
+            // btnManageSubscriptions
+            // 
+            this.btnManageSubscriptions.Location = new System.Drawing.Point(10, 45);
+            this.btnManageSubscriptions.Name = "btnManageSubscriptions";
+            this.btnManageSubscriptions.Size = new System.Drawing.Size(140, 24);
+            this.btnManageSubscriptions.TabIndex = 24;
+            this.btnManageSubscriptions.Text = "Manage Subscriptions";
+            this.btnManageSubscriptions.UseVisualStyleBackColor = true;
+            this.btnManageSubscriptions.Click += new System.EventHandler(this.BtnManageSubscriptions_Click);
+            // 
+            // chkBoxUpdateAPI
+            // 
+            this.chkBoxUpdateAPI.AutoSize = true;
+            this.chkBoxUpdateAPI.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxUpdateAPI.Name = "chkBoxUpdateAPI";
+            this.chkBoxUpdateAPI.Size = new System.Drawing.Size(200, 17);
+            this.chkBoxUpdateAPI.TabIndex = 11;
+            this.chkBoxUpdateAPI.Text = "Update API Scripts on update check";
+            this.chkBoxUpdateAPI.UseVisualStyleBackColor = true;
+            this.chkBoxUpdateAPI.CheckedChanged += new System.EventHandler(this.ChkBoxUpdateAPI_CheckedChanged);
             // 
             // grpBoxCanary
             // 
@@ -1499,6 +1526,8 @@ namespace BrawlCrate
             this.grpBoxDiscordRPCType.ResumeLayout(false);
             this.grpBoxDiscordRPCType.PerformLayout();
             this.tabUpdater.ResumeLayout(false);
+            this.grpBoxAPIUpdate.ResumeLayout(false);
+            this.grpBoxAPIUpdate.PerformLayout();
             this.grpBoxCanary.ResumeLayout(false);
             this.grpBoxCanary.PerformLayout();
             this.updaterBehaviorGroupbox.ResumeLayout(false);
@@ -1989,6 +2018,11 @@ namespace BrawlCrate
         }
 
         private void BtnManageSubscriptions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChkBoxUpdateAPI_CheckedChanged(object sender, EventArgs e)
         {
 
         }
