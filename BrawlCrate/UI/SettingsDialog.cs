@@ -218,6 +218,7 @@ namespace BrawlCrate
         {
             int index = 0;
             string cmd;
+            _updating = true;
             foreach (ListViewItem i in lstViewFileAssociations.Items)
             {
                 try
@@ -241,7 +242,6 @@ namespace BrawlCrate
                 index++;
             }
 
-            _updating = true;
             try
             {
                 datFileAssociation.Checked = !string.IsNullOrEmpty(cmd = FileType.Get("SSBB.DAT").GetCommand("open")) &&
@@ -363,6 +363,11 @@ namespace BrawlCrate
 
         private void ListView1_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
+            if (_updating)
+            {
+                return;
+            }
+
             btnApply.Enabled = true;
         }
 
@@ -390,6 +395,7 @@ namespace BrawlCrate
             this.chkBoxRenderBRRES = new System.Windows.Forms.CheckBox();
             this.chkBoxMDL0Compatibility = new System.Windows.Forms.CheckBox();
             this.grpBoxAudioGeneral = new System.Windows.Forms.GroupBox();
+            this.chkBoxContextualLoop = new System.Windows.Forms.CheckBox();
             this.chkBoxAutoPlayAudio = new System.Windows.Forms.CheckBox();
             this.grpBoxMainFormGeneral = new System.Windows.Forms.GroupBox();
             this.lblRecentFiles = new System.Windows.Forms.Label();
@@ -448,7 +454,6 @@ namespace BrawlCrate
             this.rdoAutoUpdate = new System.Windows.Forms.RadioButton();
             this.rdoCheckManual = new System.Windows.Forms.RadioButton();
             this.rdoCheckStartup = new System.Windows.Forms.RadioButton();
-            this.chkBoxContextualLoop = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -534,6 +539,8 @@ namespace BrawlCrate
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(373, 478);
             this.tabControl1.TabIndex = 48;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(thisToggleUpdateOn);
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.ToggleUpdateOff);
             // 
             // tabGeneral
             // 
@@ -584,7 +591,7 @@ namespace BrawlCrate
             this.txtBoxDefaultBuildPath.Size = new System.Drawing.Size(302, 20);
             this.txtBoxDefaultBuildPath.TabIndex = 3;
             this.txtBoxDefaultBuildPath.Text = "(none)";
-            this.txtBoxDefaultBuildPath.TextChanged += new System.EventHandler(this.txtBoxDefaultBuildPath_TextChanged);
+            this.txtBoxDefaultBuildPath.TextChanged += new System.EventHandler(this.TxtBoxDefaultBuildPath_TextChanged);
             // 
             // lblManagerDefaultPath
             // 
@@ -654,6 +661,17 @@ namespace BrawlCrate
             this.grpBoxAudioGeneral.TabIndex = 18;
             this.grpBoxAudioGeneral.TabStop = false;
             this.grpBoxAudioGeneral.Text = "Audio";
+            // 
+            // chkBoxContextualLoop
+            // 
+            this.chkBoxContextualLoop.AutoSize = true;
+            this.chkBoxContextualLoop.Location = new System.Drawing.Point(10, 22);
+            this.chkBoxContextualLoop.Name = "chkBoxContextualLoop";
+            this.chkBoxContextualLoop.Size = new System.Drawing.Size(211, 17);
+            this.chkBoxContextualLoop.TabIndex = 8;
+            this.chkBoxContextualLoop.Text = "Loop preview for looping audio sources";
+            this.chkBoxContextualLoop.UseVisualStyleBackColor = true;
+            this.chkBoxContextualLoop.CheckedChanged += new System.EventHandler(this.ChkBoxContextualLoop_CheckedChanged);
             // 
             // chkBoxAutoPlayAudio
             // 
@@ -1018,6 +1036,7 @@ namespace BrawlCrate
             this.lstViewLoaders.TabIndex = 7;
             this.lstViewLoaders.UseCompatibleStateImageBehavior = false;
             this.lstViewLoaders.View = System.Windows.Forms.View.Details;
+            this.lstViewLoaders.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstViewLoaders_ItemChecked);
             // 
             // columnHeader2
             // 
@@ -1358,17 +1377,6 @@ namespace BrawlCrate
             this.rdoCheckStartup.Text = "Manual, but check for updates on startup";
             this.rdoCheckStartup.UseVisualStyleBackColor = true;
             // 
-            // chkBoxContextualLoop
-            // 
-            this.chkBoxContextualLoop.AutoSize = true;
-            this.chkBoxContextualLoop.Location = new System.Drawing.Point(10, 22);
-            this.chkBoxContextualLoop.Name = "chkBoxContextualLoop";
-            this.chkBoxContextualLoop.Size = new System.Drawing.Size(211, 17);
-            this.chkBoxContextualLoop.TabIndex = 8;
-            this.chkBoxContextualLoop.Text = "Loop preview for looping audio sources";
-            this.chkBoxContextualLoop.UseVisualStyleBackColor = true;
-            this.chkBoxContextualLoop.CheckedChanged += new System.EventHandler(this.chkBoxContextualLoop_CheckedChanged);
-            // 
             // SettingsDialog
             // 
             this.ClientSize = new System.Drawing.Size(373, 478);
@@ -1423,6 +1431,15 @@ namespace BrawlCrate
         }
 
         #endregion
+
+        private void ToggleUpdateOn(object sender, EventArgs e)
+        {
+            _updating = true;
+        }
+        private void ToggleUpdateOff(object sender, EventArgs e)
+        {
+            _updating = false;
+        }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -1820,7 +1837,7 @@ namespace BrawlCrate
             }
         }
 
-        private void txtBoxDefaultBuildPath_TextChanged(object sender, EventArgs e)
+        private void TxtBoxDefaultBuildPath_TextChanged(object sender, EventArgs e)
         {
             if (_updating)
             {
@@ -1831,7 +1848,7 @@ namespace BrawlCrate
             Properties.Settings.Default.Save();
         }
 
-        private void chkBoxContextualLoop_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxContextualLoop_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
             {
@@ -1840,6 +1857,14 @@ namespace BrawlCrate
 
             BrawlLib.Properties.Settings.Default.ContextualLoopAudio = chkBoxContextualLoop.Checked;
             BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void LstViewLoaders_ItemChecked(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
         }
     }
 }
