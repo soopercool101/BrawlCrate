@@ -32,9 +32,6 @@
     <Setting Name="APIEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="APILoadersEnabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="PythonInstallationPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -68,8 +65,14 @@
     <Setting Name="BuildPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="DisabledAPILoadersList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+    <Setting Name="APILoadersBlacklist" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="APILoadersWhitelist" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="APIOnlyAllowLoadersFromWhitelist" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

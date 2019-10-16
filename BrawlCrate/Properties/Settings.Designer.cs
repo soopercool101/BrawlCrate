@@ -143,18 +143,6 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool APILoadersEnabled {
-            get {
-                return ((bool)(this["APILoadersEnabled"]));
-            }
-            set {
-                this["APILoadersEnabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PythonInstallationPath {
             get {
@@ -286,12 +274,35 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection DisabledAPILoadersList {
+        public global::System.Collections.Specialized.StringCollection APILoadersBlacklist {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["DisabledAPILoadersList"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["APILoadersBlacklist"]));
             }
             set {
-                this["DisabledAPILoadersList"] = value;
+                this["APILoadersBlacklist"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection APILoadersWhitelist {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["APILoadersWhitelist"]));
+            }
+            set {
+                this["APILoadersWhitelist"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool APIOnlyAllowLoadersFromWhitelist {
+            get {
+                return ((bool)(this["APIOnlyAllowLoadersFromWhitelist"]));
+            }
+            set {
+                this["APIOnlyAllowLoadersFromWhitelist"] = value;
             }
         }
     }

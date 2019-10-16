@@ -79,7 +79,6 @@ namespace BrawlCrate
         private NumericInputBox recentFileCountBox;
         private TabPage tabBrawlAPI;
         private GroupBox grpBoxAPIGeneral;
-        private CheckBox chkBoxAPIEnableLoaders;
         private CheckBox chkBoxEnableAPI;
         private GroupBox grpBoxFSharpAPI;
         private Button btnFSharpBrowse;
@@ -102,6 +101,9 @@ namespace BrawlCrate
         private ListView lstViewLoaders;
         private ColumnHeader columnHeader2;
         private CheckBox chkBoxContextualLoop;
+        private GroupBox grpBoxLoaderBehavior;
+        private RadioButton rdoAPILoaderWhitelist;
+        private RadioButton rdoAPILoaderBlacklist;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -254,11 +256,6 @@ namespace BrawlCrate
                 index++;
             }
 
-            foreach (ListViewItem i in lstViewLoaders.Items)
-            {
-                i.Checked = !(Properties.Settings.Default.DisabledAPILoadersList?.Contains(i.Text) ?? false);
-            }
-
             try
             {
                 datFileAssociation.Checked = !string.IsNullOrEmpty(cmd = FileType.Get("SSBB.DAT").GetCommand("open")) &&
@@ -316,14 +313,16 @@ namespace BrawlCrate
             chkBoxContextualLoop.Checked = BrawlLib.Properties.Settings.Default.ContextualLoopAudio;
             recentFileCountBox.Value = Properties.Settings.Default.RecentFilesMax;
             chkBoxEnableAPI.Checked = Properties.Settings.Default.APIEnabled;
-            chkBoxAPIEnableLoaders.Checked = Properties.Settings.Default.APILoadersEnabled;
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
             txtBoxDefaultBuildPath.Text = Properties.Settings.Default.BuildPath;
-
-            chkBoxAPIEnableLoaders.Enabled = chkBoxEnableAPI.Checked;
+            rdoAPILoaderWhitelist.Checked = Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
+            rdoAPILoaderBlacklist.Checked = !Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
+            RefreshLoaderList();
+            grpBoxLoaderBehavior.Enabled = chkBoxEnableAPI.Checked;
             grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
+            grpBoxLoaders.Enabled = chkBoxEnableAPI.Checked;
 
             DiscordSettings.LoadSettings();
             grpBoxDiscordRPCType.Enabled = DiscordSettings.DiscordRPCEnabled;
@@ -376,6 +375,20 @@ namespace BrawlCrate
                 associatiedFilesBox.Enabled = false;
                 return false;
             }
+        }
+
+        private void RefreshLoaderList()
+        {
+            bool isUpdating = _updating;
+            _updating = true;
+            foreach (ListViewItem i in lstViewLoaders.Items)
+            {
+                i.Checked = Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist ?
+                    Properties.Settings.Default.APILoadersWhitelist?.Contains(i.Text) ?? false :
+                    !Properties.Settings.Default.APILoadersBlacklist?.Contains(i.Text) ?? true;
+            }
+
+            _updating = isUpdating;
         }
 
         private void ListView1_ItemChecked(object sender, ItemCheckedEventArgs e)
@@ -454,7 +467,9 @@ namespace BrawlCrate
             this.btnPythonDetect = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.grpBoxAPIGeneral = new System.Windows.Forms.GroupBox();
-            this.chkBoxAPIEnableLoaders = new System.Windows.Forms.CheckBox();
+            this.grpBoxLoaderBehavior = new System.Windows.Forms.GroupBox();
+            this.rdoAPILoaderWhitelist = new System.Windows.Forms.RadioButton();
+            this.rdoAPILoaderBlacklist = new System.Windows.Forms.RadioButton();
             this.chkBoxEnableAPI = new System.Windows.Forms.CheckBox();
             this.tabDiscord = new System.Windows.Forms.TabPage();
             this.grpBoxDiscordRPC = new System.Windows.Forms.GroupBox();
@@ -490,6 +505,7 @@ namespace BrawlCrate
             this.grpBoxFSharpAPI.SuspendLayout();
             this.grpBoxPythonAPI.SuspendLayout();
             this.grpBoxAPIGeneral.SuspendLayout();
+            this.grpBoxLoaderBehavior.SuspendLayout();
             this.tabDiscord.SuspendLayout();
             this.grpBoxDiscordRPC.SuspendLayout();
             this.grpBoxDiscordRPCType.SuspendLayout();
@@ -556,8 +572,8 @@ namespace BrawlCrate
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(373, 478);
             this.tabControl1.TabIndex = 48;
-            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.ToggleUpdateOn);
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.ToggleUpdateOff);
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.ToggleUpdateOn);
             // 
             // tabGeneral
             // 
@@ -1027,9 +1043,9 @@ namespace BrawlCrate
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBoxLoaders.Controls.Add(this.lstViewLoaders);
-            this.grpBoxLoaders.Location = new System.Drawing.Point(8, 245);
+            this.grpBoxLoaders.Location = new System.Drawing.Point(8, 297);
             this.grpBoxLoaders.Name = "grpBoxLoaders";
-            this.grpBoxLoaders.Size = new System.Drawing.Size(349, 175);
+            this.grpBoxLoaders.Size = new System.Drawing.Size(349, 126);
             this.grpBoxLoaders.TabIndex = 24;
             this.grpBoxLoaders.TabStop = false;
             this.grpBoxLoaders.Text = "Loaders";
@@ -1049,7 +1065,7 @@ namespace BrawlCrate
             this.lstViewLoaders.Location = new System.Drawing.Point(6, 19);
             this.lstViewLoaders.MultiSelect = false;
             this.lstViewLoaders.Name = "lstViewLoaders";
-            this.lstViewLoaders.Size = new System.Drawing.Size(337, 150);
+            this.lstViewLoaders.Size = new System.Drawing.Size(337, 101);
             this.lstViewLoaders.TabIndex = 7;
             this.lstViewLoaders.UseCompatibleStateImageBehavior = false;
             this.lstViewLoaders.View = System.Windows.Forms.View.Details;
@@ -1068,7 +1084,7 @@ namespace BrawlCrate
             this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpBrowse);
             this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpDetect);
             this.grpBoxFSharpAPI.Controls.Add(this.label2);
-            this.grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 166);
+            this.grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 218);
             this.grpBoxFSharpAPI.Name = "grpBoxFSharpAPI";
             this.grpBoxFSharpAPI.Size = new System.Drawing.Size(349, 73);
             this.grpBoxFSharpAPI.TabIndex = 23;
@@ -1127,7 +1143,7 @@ namespace BrawlCrate
             this.grpBoxPythonAPI.Controls.Add(this.btnPythonBrowse);
             this.grpBoxPythonAPI.Controls.Add(this.btnPythonDetect);
             this.grpBoxPythonAPI.Controls.Add(this.label1);
-            this.grpBoxPythonAPI.Location = new System.Drawing.Point(8, 87);
+            this.grpBoxPythonAPI.Location = new System.Drawing.Point(8, 139);
             this.grpBoxPythonAPI.Name = "grpBoxPythonAPI";
             this.grpBoxPythonAPI.Size = new System.Drawing.Size(349, 73);
             this.grpBoxPythonAPI.TabIndex = 20;
@@ -1182,25 +1198,51 @@ namespace BrawlCrate
             // 
             this.grpBoxAPIGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxAPIGeneral.Controls.Add(this.chkBoxAPIEnableLoaders);
+            this.grpBoxAPIGeneral.Controls.Add(this.grpBoxLoaderBehavior);
             this.grpBoxAPIGeneral.Controls.Add(this.chkBoxEnableAPI);
             this.grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
             this.grpBoxAPIGeneral.Name = "grpBoxAPIGeneral";
-            this.grpBoxAPIGeneral.Size = new System.Drawing.Size(349, 75);
+            this.grpBoxAPIGeneral.Size = new System.Drawing.Size(349, 127);
             this.grpBoxAPIGeneral.TabIndex = 19;
             this.grpBoxAPIGeneral.TabStop = false;
             this.grpBoxAPIGeneral.Text = "BrawlAPI";
             // 
-            // chkBoxAPIEnableLoaders
+            // grpBoxLoaderBehavior
             // 
-            this.chkBoxAPIEnableLoaders.AutoSize = true;
-            this.chkBoxAPIEnableLoaders.Location = new System.Drawing.Point(10, 45);
-            this.chkBoxAPIEnableLoaders.Name = "chkBoxAPIEnableLoaders";
-            this.chkBoxAPIEnableLoaders.Size = new System.Drawing.Size(100, 17);
-            this.chkBoxAPIEnableLoaders.TabIndex = 8;
-            this.chkBoxAPIEnableLoaders.Text = "Enable Loaders";
-            this.chkBoxAPIEnableLoaders.UseVisualStyleBackColor = true;
-            this.chkBoxAPIEnableLoaders.CheckedChanged += new System.EventHandler(this.ChkBoxAPIEnableLoaders_CheckedChanged);
+            this.grpBoxLoaderBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxLoaderBehavior.Controls.Add(this.rdoAPILoaderWhitelist);
+            this.grpBoxLoaderBehavior.Controls.Add(this.rdoAPILoaderBlacklist);
+            this.grpBoxLoaderBehavior.Location = new System.Drawing.Point(6, 45);
+            this.grpBoxLoaderBehavior.Name = "grpBoxLoaderBehavior";
+            this.grpBoxLoaderBehavior.Size = new System.Drawing.Size(337, 75);
+            this.grpBoxLoaderBehavior.TabIndex = 11;
+            this.grpBoxLoaderBehavior.TabStop = false;
+            this.grpBoxLoaderBehavior.Text = "Loader Behavior";
+            // 
+            // rdoAPILoaderWhitelist
+            // 
+            this.rdoAPILoaderWhitelist.AutoSize = true;
+            this.rdoAPILoaderWhitelist.Location = new System.Drawing.Point(10, 45);
+            this.rdoAPILoaderWhitelist.Name = "rdoAPILoaderWhitelist";
+            this.rdoAPILoaderWhitelist.Size = new System.Drawing.Size(269, 17);
+            this.rdoAPILoaderWhitelist.TabIndex = 1;
+            this.rdoAPILoaderWhitelist.TabStop = true;
+            this.rdoAPILoaderWhitelist.Text = "Whitelist wanted loaders (Loaders are off by default)";
+            this.rdoAPILoaderWhitelist.UseVisualStyleBackColor = true;
+            this.rdoAPILoaderWhitelist.CheckedChanged += new System.EventHandler(this.ChkBoxAPILoaderBehavior_CheckedChanged);
+            // 
+            // rdoAPILoaderBlacklist
+            // 
+            this.rdoAPILoaderBlacklist.AutoSize = true;
+            this.rdoAPILoaderBlacklist.Location = new System.Drawing.Point(10, 22);
+            this.rdoAPILoaderBlacklist.Name = "rdoAPILoaderBlacklist";
+            this.rdoAPILoaderBlacklist.Size = new System.Drawing.Size(280, 17);
+            this.rdoAPILoaderBlacklist.TabIndex = 0;
+            this.rdoAPILoaderBlacklist.TabStop = true;
+            this.rdoAPILoaderBlacklist.Text = "Blacklist unwanted loaders (Loaders are on by default)";
+            this.rdoAPILoaderBlacklist.UseVisualStyleBackColor = true;
+            this.rdoAPILoaderBlacklist.CheckedChanged += new System.EventHandler(this.ChkBoxAPILoaderBehavior_CheckedChanged);
             // 
             // chkBoxEnableAPI
             // 
@@ -1433,6 +1475,8 @@ namespace BrawlCrate
             this.grpBoxPythonAPI.PerformLayout();
             this.grpBoxAPIGeneral.ResumeLayout(false);
             this.grpBoxAPIGeneral.PerformLayout();
+            this.grpBoxLoaderBehavior.ResumeLayout(false);
+            this.grpBoxLoaderBehavior.PerformLayout();
             this.tabDiscord.ResumeLayout(false);
             this.grpBoxDiscordRPC.ResumeLayout(false);
             this.grpBoxDiscordRPC.PerformLayout();
@@ -1726,17 +1770,17 @@ namespace BrawlCrate
 
         private void ChkBoxEnableAPI_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating)
+            if (!_updating)
             {
-                return;
+                Properties.Settings.Default.APIEnabled = chkBoxEnableAPI.Checked;
+                Properties.Settings.Default.Save();
+                lblAPIRestartNeeded.Visible = true;
             }
 
-            Properties.Settings.Default.APIEnabled = chkBoxEnableAPI.Checked;
-            Properties.Settings.Default.Save();
-            chkBoxAPIEnableLoaders.Enabled = chkBoxEnableAPI.Checked;
+            grpBoxLoaderBehavior.Enabled = chkBoxEnableAPI.Checked;
             grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
-            lblAPIRestartNeeded.Visible = true;
+            grpBoxLoaders.Enabled = chkBoxEnableAPI.Checked;
         }
 
         private void TxtBoxPythonPath_TextChanged(object sender, EventArgs e)
@@ -1817,15 +1861,17 @@ namespace BrawlCrate
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
         }
 
-        private void ChkBoxAPIEnableLoaders_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxAPILoaderBehavior_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
             {
                 return;
             }
 
-            Properties.Settings.Default.APILoadersEnabled = chkBoxAPIEnableLoaders.Checked;
+            Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist = rdoAPILoaderWhitelist.Checked;
             Properties.Settings.Default.Save();
+
+            RefreshLoaderList();
 
             lblAPIRestartNeeded.Visible = true;
         }
@@ -1893,15 +1939,33 @@ namespace BrawlCrate
 
             if (!e.Item.Checked)
             {
-                if (Properties.Settings.Default.DisabledAPILoadersList == null)
+                if (!Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist)
                 {
-                    Properties.Settings.Default.DisabledAPILoadersList = new StringCollection();
+                    if (Properties.Settings.Default.APILoadersBlacklist == null && !(Properties.Settings.Default.APILoadersBlacklist?.Contains(e.Item.Text) ?? false))
+                    {
+                        Properties.Settings.Default.APILoadersBlacklist = new StringCollection();
+                    }
+                    Properties.Settings.Default.APILoadersBlacklist.Add(e.Item.Text);
                 }
-                Properties.Settings.Default.DisabledAPILoadersList.Add(e.Item.Text);
+                else if (Properties.Settings.Default.APILoadersWhitelist?.Contains(e.Item.Text) ?? false)
+                {
+                    Properties.Settings.Default.APILoadersWhitelist.Remove(e.Item.Text);
+                }
             }
-            else if (Properties.Settings.Default.DisabledAPILoadersList?.Contains(e.Item.Text) ?? false)
+            else
             {
-                Properties.Settings.Default.DisabledAPILoadersList.Remove(e.Item.Text);
+                if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist && !(Properties.Settings.Default.APILoadersWhitelist?.Contains(e.Item.Text) ?? false))
+                {
+                    if (Properties.Settings.Default.APILoadersWhitelist == null)
+                    {
+                        Properties.Settings.Default.APILoadersWhitelist = new StringCollection();
+                    }
+                    Properties.Settings.Default.APILoadersWhitelist.Add(e.Item.Text);
+                }
+                else if (Properties.Settings.Default.APILoadersBlacklist?.Contains(e.Item.Text) ?? false)
+                {
+                    Properties.Settings.Default.APILoadersBlacklist.Remove(e.Item.Text);
+                }
             }
             Properties.Settings.Default.Save();
 

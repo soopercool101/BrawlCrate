@@ -121,14 +121,20 @@ namespace BrawlCrate
                     reloadPluginsToolStripMenuItem_Click(null, null);
                 }
 
-                if (Directory.Exists(Program.ApiLoaderPath) && Properties.Settings.Default.APILoadersEnabled)
+                if (Directory.Exists(Program.ApiLoaderPath))
                 {
                     foreach (FileInfo f in GetScripts(Program.ApiLoaderPath))
                     {
-                        // Only load loaders that aren't disabled by settings
-                        if (!(Properties.Settings.Default.DisabledAPILoadersList?.Contains(
-                                  f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
-                              false))
+                        // Only load loaders that should be loaded.
+                        //  If blacklist behavior is on, load all scripts excluding those blacklisted
+                        //  If whitelist behavior is on, load only whitelisted scripts
+                        if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist
+                            ? Properties.Settings.Default.APILoadersWhitelist?.Contains(
+                                    f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
+                                false
+                            : !Properties.Settings.Default.APILoadersBlacklist?.Contains(
+                                    f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
+                                true)
                         {
                             BrawlAPI.CreatePlugin(f.FullName, true);
                         }
