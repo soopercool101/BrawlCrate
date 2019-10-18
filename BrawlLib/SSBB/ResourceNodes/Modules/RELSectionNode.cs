@@ -95,8 +95,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            _parser.Parse();
-            _parser.Populate();
+            _parser?.Parse();
+            _parser?.Populate();
         }
 
         public override int OnCalculateSize(bool force)

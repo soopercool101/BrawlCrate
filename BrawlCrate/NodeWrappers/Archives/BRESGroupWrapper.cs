@@ -35,6 +35,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(MoveDownToolStripMenuItem);
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripMenuItem("&Default Name", null, DefaultAction, Keys.Control | Keys.D));
+            _menu.Items.Add(new ToolStripMenuItem("Sort &Items", null, SortAction, Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(DeleteToolStripMenuItem);
             _menu.Opening += MenuOpening;
