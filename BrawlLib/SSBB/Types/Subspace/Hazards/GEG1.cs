@@ -12,9 +12,6 @@ namespace BrawlLib.SSBBTypes
         public bint _count;
         public bint _DataOffset;
 
-        //private GDOR* Address { get { fixed (GDOR* ptr = &this)return ptr; } }
-        //public byte* Data { get { return (byte*)(Address + _DataOffset); } }
-
         public VoidPtr this[int index] => (byte*) Address + Offsets(index);
 
         public uint Offsets(int index)
