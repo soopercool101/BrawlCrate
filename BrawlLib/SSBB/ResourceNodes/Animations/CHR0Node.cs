@@ -403,7 +403,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (external.FrameCount != FrameCount && MessageBox.Show(null,
                     "Frame counts are not equal; the shorter animation will end early. Do you still wish to continue?",
-                    "", MessageBoxButtons.YesNo) == DialogResult.No)
+                    "Merge Animations", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
