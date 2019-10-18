@@ -7,7 +7,7 @@ import struct
 # Font node parser
 class RFNTNode(PluginResourceParser):
     # Set our resource type (Dictates nodewrapper and icon)
-    def get_ResourceType(self):
+    def get_ResourceFileType(self):
         return ResourceType.NoEditFolder
 
     # Called by super class to check if this loader matches the data

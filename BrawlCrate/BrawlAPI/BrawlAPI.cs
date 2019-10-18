@@ -88,26 +88,13 @@ namespace BrawlCrate.API
         ///
         ///     This allows for maximum compatibility with little room for user error.
         /// </summary>
-        internal static readonly string[] DepreciatedStrings = new[]
+        internal static readonly Dictionary<string, string> DepreciatedReplacementStrings = new Dictionary<string, string>
         {
-            "BrawlBox",     // BrawlBox namespace is "BrawlCrate" in this program
-            "bboxapi",      // API system is now named "BrawlAPI"
-            "PluginLoader", // Renamed to better reflect what it does (loaders do not have to be parsers)
-            "AddLoader"     // Renamed to better reflect what it does (loaders do not have to be parsers)
-        };
-
-        /// <summary>
-        ///     Contains the new names of anything defined in the DepreciatedStrings array.
-        ///     Corresponds 1:1 with DepreciatedStrings.
-        ///
-        ///     This allows for maximum compatibility with little room for user error.
-        /// </summary>
-        internal static readonly string[] ReplacementStrings = new[]
-        {
-            "BrawlCrate",           // BrawlBox namespace is "BrawlCrate" in this program
-            "BrawlAPI",             // API system is now named "BrawlAPI"
-            "PluginResourceParser", // Renamed to better reflect what it does (loaders do not have to be parsers)
-            "AddResourceParser"     // Renamed to better reflect what it does (loaders do not have to be parsers)
+            { "BrawlBox", "BrawlCrate" },                   // Update program name and default namespace
+            { "bboxapi", "BrawlAPI" },                      // Update API system name
+            { "PluginLoader", "PluginResourceParser" },     // Loaders aren't necessarily parsers (and vice-versa)
+            { "AddLoader", "AddResourceParser" },           // Loaders aren't necessarily parsers (and vice-versa)
+            { "get_ResourceType", "get_ResourceFileType" }  // Changed to not conflict/confuse with the enum
         };
 
         internal static void RunScript(string path)
@@ -190,7 +177,7 @@ namespace BrawlCrate.API
                 }
                 catch (Exception e)
                 {
-                    if (DepreciatedStrings.Any(s => e.Message.Contains(s)))
+                    if (DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
                     {
                         ConvertPlugin(path);
                         RunScript(path);
@@ -244,7 +231,7 @@ namespace BrawlCrate.API
             }
             catch (Exception e)
             {
-                if (DepreciatedStrings.Any(s => e.Message.Contains(s)))
+                if (DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
                 {
                     ConvertPlugin(path);
                     return CreatePlugin(path, loader);
@@ -260,9 +247,10 @@ namespace BrawlCrate.API
         internal static void ConvertPlugin(string path)
         {
             string text = File.ReadAllText(path);
-            for (int i = 0; i < DepreciatedStrings.Length; i++)
+            for (int i = 0; i < DepreciatedReplacementStrings.Count; i++)
             {
-                text = text.Replace(DepreciatedStrings[i], ReplacementStrings[i]);
+                text = text.Replace(DepreciatedReplacementStrings.Keys.ElementAt(i),
+                    DepreciatedReplacementStrings.Values.ElementAt(i));
             }
 
             File.WriteAllText(path, text);
