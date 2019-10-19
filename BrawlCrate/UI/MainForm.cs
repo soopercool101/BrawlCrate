@@ -483,8 +483,11 @@ namespace BrawlCrate
         {
             if (Program.RootPath != null)
             {
+                string fileName = ShowFullPath
+                    ? Program.RootPath
+                    : Program.RootPath.TrimEnd('\\').Substring(Program.RootPath.TrimEnd('\\').LastIndexOf('\\') + 1);
                 Text =
-                    $"{Program.AssemblyTitleShort} - {(ShowFullPath ? Program.RootPath : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1))}";
+                    $"{Program.AssemblyTitleShort} - {fileName}";
             }
             else
             {
