@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes.Archives
@@ -9,6 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
 
         public List<ResourceNode> _list;
 
+        [Browsable(false)]
         public string FolderPath => Parent != null && Parent is FolderNode f ? $"{f.FolderPath}\\{Name}" : _origPath;
 
         private string[] _directories;
