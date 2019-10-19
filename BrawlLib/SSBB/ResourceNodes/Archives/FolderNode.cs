@@ -68,7 +68,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             {
                 if (c.IsDirty || !outPath.Equals(FolderPath))
                 {
-                    c.Export($"{outPath}\\{c.OrigFileName}");
+                    c.Export($"{outPath}\\{c.FileName}");
                 }
             }
 

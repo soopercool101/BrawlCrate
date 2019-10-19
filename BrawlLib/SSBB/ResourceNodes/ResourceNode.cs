@@ -122,11 +122,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public string _name, _origPath;
 
-        [Category("DEBUG")]
-#if !DEBUG
-        [Browsable(false)]
-#endif
-        public string OrigFileName => Path.GetFileName(_origPath);
 
         public ResourceNode _parent;
         public List<ResourceNode> _children = new List<ResourceNode>();
@@ -145,7 +140,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Properties
 
-        [Browsable(false)] public string FilePath => _origPath;
+        public string FilePath => _origPath;
+        public string FileName => Path.GetFileName(_origPath);
 
 #if !DEBUG
         [Browsable(false)]

@@ -537,8 +537,8 @@ namespace BrawlCrate
             ResourceNode node = null;
             bool disable2nd = false;
             if (!(sender != null && sender.ToString().Equals("Saving File")) &&
-                resourceTree.SelectedNode is BaseWrapper &&
-                (node = (w = resourceTree.SelectedNode as BaseWrapper).Resource) != null)
+                resourceTree.SelectedNode is BaseWrapper b &&
+                (node = (w = b).Resource) != null)
             {
                 Action setScrollOffset = null;
                 if (selectedType == resourceTree.SelectedNode.GetType())

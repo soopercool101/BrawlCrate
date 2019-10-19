@@ -838,7 +838,7 @@ Full changelog can be viewed from the help menu.";
                         RootNode._origPath = path;
                         if (w is FolderWrapper)
                         {
-                            w.Resource.Name = w.Resource.OrigFileName;
+                            w.Resource.Name = w.Resource.FileName;
                             w.Text = w.Resource.Name;
                         }
 
