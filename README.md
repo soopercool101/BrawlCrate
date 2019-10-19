@@ -11,7 +11,7 @@ BrawlCrate is a BrawlBox fork with a variety of features aiming to improve ease 
 
 BrawlBox and BrawlLib were developed initially by [Kryal](https://code.google.com/p/brawltools/), then by [BlackJax96](https://code.google.com/p/brawltools2/), and currently by [libertyernie](https://github.com/libertyernie/brawltools).
 
-BrawlCrate also incorporates [Sawndz by agoaj and Jaklub](https://code.google.com/archive/p/super-sawndz/), a modified version of the [Color Smash tool originally by Peter Hatch](https://github.com/PeterHatch/color-smash), and modifed versions of the [BrawlManagers by libertyernie](https://github.com/libertyernie/BrawlManagers).
+BrawlCrate also incorporates a modified version of the [Color Smash tool originally by Peter Hatch](https://github.com/PeterHatch/color-smash) and modifed versions of the [BrawlManagers by libertyernie](https://github.com/libertyernie/BrawlManagers).
 
 Current BrawlCrate contributors: soopercool101
 
