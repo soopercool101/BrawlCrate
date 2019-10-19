@@ -3,13 +3,13 @@ using System.Runtime.InteropServices;
 
 namespace BrawlLib.Wii.Animations
 {
-    //Format	Keys	Total	Size
+    //Format    Keys    Total    Size
 
-    //F3F	    100	    200	    1208
-    //F1F	    200	    200	    800
-    //F6B	    100	    200	    616
-    //F4B       100	    200	    416
-    //F1B	    200	    200	    208
+    //F3F        100        200        1208
+    //F1F        200        200        800
+    //F6B        100        200        616
+    //F4B       100        200        416
+    //F1B        200        200        208
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct I12Header

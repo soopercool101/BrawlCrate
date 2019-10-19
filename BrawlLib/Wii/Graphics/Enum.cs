@@ -295,7 +295,7 @@
         //GX_MAX_TEXMAP,
 
         //GX_TEXMAP_NULL = 0xff,
-        //GX_TEX_DISABLE = 0x100	// mask : disables texture look up
+        //GX_TEX_DISABLE = 0x100    // mask : disables texture look up
     }
 
     public enum ColorSelChan
@@ -325,13 +325,13 @@
     public enum TexCoordID
     {
         TexCoord0, //GX_TEXCOORD0 = 0x0, // generated texture coordinate 0
-        TexCoord1, //GX_TEXCOORD1, 		// generated texture coordinate 1
-        TexCoord2, //GX_TEXCOORD2, 		// generated texture coordinate 2
-        TexCoord3, //GX_TEXCOORD3, 		// generated texture coordinate 3
-        TexCoord4, //GX_TEXCOORD4, 		// generated texture coordinate 4
-        TexCoord5, //GX_TEXCOORD5, 		// generated texture coordinate 5
-        TexCoord6, //GX_TEXCOORD6, 		// generated texture coordinate 6
-        TexCoord7, //GX_TEXCOORD7, 		// generated texture coordinate 7
+        TexCoord1, //GX_TEXCOORD1,         // generated texture coordinate 1
+        TexCoord2, //GX_TEXCOORD2,         // generated texture coordinate 2
+        TexCoord3, //GX_TEXCOORD3,         // generated texture coordinate 3
+        TexCoord4, //GX_TEXCOORD4,         // generated texture coordinate 4
+        TexCoord5, //GX_TEXCOORD5,         // generated texture coordinate 5
+        TexCoord6, //GX_TEXCOORD6,         // generated texture coordinate 6
+        TexCoord7, //GX_TEXCOORD7,         // generated texture coordinate 7
         //GX_MAX_TEXCOORD = 8,
         //GX_TEXCOORD_NULL = 0xff
     }
@@ -426,10 +426,10 @@
 
     public enum IndTexFormat
     {
-        F_8_Bit_Offsets, //GX_ITF_8,		// 8 bit texture offsets.
-        F_5_Bit_Offsets, //GX_ITF_5,		// 5 bit texture offsets.
-        F_4_Bit_Offsets, //GX_ITF_4,		// 4 bit texture offsets.
-        F_3_Bit_Offsets, //GX_ITF_3		// 3 bit texture offsets.
+        F_8_Bit_Offsets, //GX_ITF_8,        // 8 bit texture offsets.
+        F_5_Bit_Offsets, //GX_ITF_5,        // 5 bit texture offsets.
+        F_4_Bit_Offsets, //GX_ITF_4,        // 4 bit texture offsets.
+        F_3_Bit_Offsets, //GX_ITF_3        // 3 bit texture offsets.
     }
 
     public enum IndTexBiasSel
@@ -460,26 +460,26 @@
 
     public enum IndTexWrap
     {
-        NoWrap,  //GX_ITW_OFF,		// no wrapping
-        Wrap256, //GX_ITW_256,		// wrap 256
-        Wrap128, //GX_ITW_128,		// wrap 128
-        Wrap64,  //GX_ITW_64, 		// wrap 64
-        Wrap32,  //GX_ITW_32, 		// wrap 32
-        Wrap16,  //GX_ITW_16, 		// wrap 16
-        Wrap0,   //GX_ITW_0, 		    // wrap 0
+        NoWrap,  //GX_ITW_OFF,        // no wrapping
+        Wrap256, //GX_ITW_256,        // wrap 256
+        Wrap128, //GX_ITW_128,        // wrap 128
+        Wrap64,  //GX_ITW_64,         // wrap 64
+        Wrap32,  //GX_ITW_32,         // wrap 32
+        Wrap16,  //GX_ITW_16,         // wrap 16
+        Wrap0,   //GX_ITW_0,             // wrap 0
     }
 
     public enum IndTexScale
     {
-        DivideBy1,   //GX_ITS_1,		// Scale by 1.
-        DivideBy2,   //GX_ITS_2,		// Scale by 1/2.
-        DivideBy4,   //GX_ITS_4,		// Scale by 1/4.
-        DivideBy8,   //GX_ITS_8,		// Scale by 1/8.
-        DivideBy16,  //GX_ITS_16,		// Scale by 1/16.
-        DivideBy32,  //GX_ITS_32,		// Scale by 1/32.
-        DivideBy64,  //GX_ITS_64,		// Scale by 1/64.
+        DivideBy1,   //GX_ITS_1,        // Scale by 1.
+        DivideBy2,   //GX_ITS_2,        // Scale by 1/2.
+        DivideBy4,   //GX_ITS_4,        // Scale by 1/4.
+        DivideBy8,   //GX_ITS_8,        // Scale by 1/8.
+        DivideBy16,  //GX_ITS_16,        // Scale by 1/16.
+        DivideBy32,  //GX_ITS_32,        // Scale by 1/32.
+        DivideBy64,  //GX_ITS_64,        // Scale by 1/64.
         DivideBy128, //GX_ITS_128,   // Scale by 1/128.
-        DivideBy256, //GX_ITS_256	// Scale by 1/256.
+        DivideBy256, //GX_ITS_256    // Scale by 1/256.
     }
 
     public enum PosNrmMtx
@@ -621,10 +621,10 @@
         OrthographicRevExp2 = 0x0F,
 
         ////For compatibility with former versions
-        //GX_FOG_LIN 		= GX_FOG_PERSP_LIN,
-        //GX_FOG_EXP		= GX_FOG_PERSP_EXP,
-        //GX_FOG_EXP2		= GX_FOG_PERSP_EXP2,
-        //GX_FOG_REVEXP  	= GX_FOG_PERSP_REVEXP,
-        //GX_FOG_REVEXP2 	= GX_FOG_PERSP_REVEXP2
+        //GX_FOG_LIN         = GX_FOG_PERSP_LIN,
+        //GX_FOG_EXP        = GX_FOG_PERSP_EXP,
+        //GX_FOG_EXP2        = GX_FOG_PERSP_EXP2,
+        //GX_FOG_REVEXP      = GX_FOG_PERSP_REVEXP,
+        //GX_FOG_REVEXP2     = GX_FOG_PERSP_REVEXP2
     }
 }

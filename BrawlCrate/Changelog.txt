@@ -64,9 +64,11 @@ they be held accountable for the manner in which it is used.
    - Add various additional exposed members for API and extensive documentation (found at https://github.com/soopercool101/BrawlCrateNext/blob/master/BrawlCrate/BrawlAPI/ExposedMembers.cs)
      . SelectedNodes
      . NodeList
+     . NodeListOfType
      . RootNodeWrapper
      . SelectedNodesWrappers
      . NodeWrapperList
+     . NodeWrapperListOfType
      . ShowWarning
      . ShowError
      . ShowYesNoWarning
