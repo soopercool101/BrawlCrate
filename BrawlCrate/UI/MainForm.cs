@@ -535,7 +535,7 @@ namespace BrawlCrate
             BaseWrapper w;
             ResourceNode node = null;
             bool disable2nd = false;
-            if (!(sender != null && sender.ToString().Equals("Saving File")) &&
+            if (!(sender?.ToString().Equals("Saving File") ?? false) &&
                 resourceTree.SelectedNode is BaseWrapper b &&
                 (node = (w = b).Resource) != null)
             {
