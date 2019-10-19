@@ -97,13 +97,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node.Initialize(parent, source);
                         }
                     }
-#if DEBUG
                     else
                     {
-                        node = new RawDataNode(Path.GetFileNameWithoutExtension(path));
+                        node = new RawDataNode(Path.GetFileName(path));
                         node.Initialize(parent, source);
                     }
-#endif
                 }
             }
             finally

@@ -85,7 +85,10 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             foreach (string s in _files)
             {
                 ResourceNode node = NodeFactory.FromFile(this, s);
-                node._origPath = s;
+                if (node != null)
+                {
+                    node._origPath = s;
+                }
             }
 
             base.OnPopulate();
