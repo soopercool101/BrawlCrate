@@ -22,6 +22,7 @@ they be held accountable for the manner in which it is used.
  . .NET Framework updated from 4.0 to 4.7.2 for BrawlCrate and BrawlLib
  . .NET Framework updated from 4.5.2 to 4.7.2 for the Updater
  . OpenTK updated from v1.1.0 to v3.1.0
+ . Octokit updated to v0.32.0 to v0.36.0
  . Add "Show Changelog" button to the help menu
  . Add ports of BrawlManagers from https://github.com/libertyernie/BrawlManagers
    - All:
@@ -53,6 +54,7 @@ they be held accountable for the manner in which it is used.
  . ".txt" GCTs can now be directly opened
  . Add "All Files" filter when opening or saving files
  . bboxapi changed to BrawlAPI
+   - IronPython updated from v2.7.5 to v2.7.9
    - Loaders and Plugins are now contained in a BrawlAPI subdirectory
    - Python is no longer included in the installation. Path will be automatically searched for on first boot.
    - F# path is now saved to a setting, greatly reducing runtime for F# scripts

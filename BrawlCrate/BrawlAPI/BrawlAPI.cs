@@ -125,7 +125,7 @@ namespace BrawlCrate.API
 
                     Process p = Process.Start(new ProcessStartInfo
                     {
-                        FileName = fsi_path,
+                        FileName = FSIPath,
                         Arguments = $"--noninteractive \"{tempPath}\"",
                         UseShellExecute = false,
                         CreateNoWindow = true,
