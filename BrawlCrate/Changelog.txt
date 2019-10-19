@@ -53,10 +53,12 @@ they be held accountable for the manner in which it is used.
  . ".txt" GCTs can now be directly opened
  . Add "All Files" filter when opening or saving files
  . bboxapi changed to BrawlAPI
+   - Loaders and Plugins are now contained in a BrawlAPI subdirectory
    - Python is no longer included in the installation. Path will be automatically searched for on first boot.
    - F# path is now saved to a setting, greatly reducing runtime for F# scripts
    - Plugin-created dropdown items now appear in a Plugins submenu
    - Plugins now are sorted into submenus based on subfolders
+   - Loaders can now be loaded from subfolders for easier sorting
    - Add various additional exposed members for API and extensive documentation (found at https://github.com/soopercool101/BrawlCrateNext/blob/master/BrawlCrate/BrawlAPI/ExposedMembers.cs)
      . SelectedNodes
      . NodeList
@@ -106,6 +108,7 @@ they be held accountable for the manner in which it is used.
  . Add support for multi-file importing for BRRES and ARC
  . Add "Export Selected" toolstrip for multi-selection
  . Add new setting to toggle context-based looping for audio sources
+ . Unsupported and unrecognized file types can now be opened as raw data files
  . Temp files are now opened using default OS functionality, rather than in a dedicated per-install folder
  . Duplicate now works for most node types
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
@@ -117,6 +120,7 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which opening a GCT directly would crash the program
  . Fix bug in which GCTs made with Code Manager would incorrectly detect the first line of code as a code title, breaking the codeset
  . Fix unintended behavior in which context menu hotkeys could be pressed when the main window is not in focus
+ . Fix bug in which settings would be saved more often than intended
  . Sped up booting and removed splash screen accordingly
  
  - BrawlCrate v0.26b Hotfix 2 - (10/11/2019)
