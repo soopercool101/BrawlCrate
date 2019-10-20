@@ -2238,7 +2238,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 foreach (MDL0TextureNode t in _texList)
                 {
-                    t.Reload();
+                    t.Reload(this, t.Parent?.Name.EndsWith("_ExtMtl") ?? false);
                 }
             }
         }

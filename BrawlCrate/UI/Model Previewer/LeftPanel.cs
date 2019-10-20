@@ -1566,7 +1566,8 @@ namespace System.Windows.Forms
                     if (dlg.ShowDialog(this, node) == DialogResult.OK)
                     {
                         _updating = true;
-                        _selectedTexture.Reload();
+                        _selectedTexture.Reload(_selectedTexture.Model,
+                            _selectedTexture.Parent?.Name.EndsWith("_ExtMtl") ?? false);
                         lstTextures.SetItemCheckState(index, CheckState.Checked);
                         lstTextures.SetSelected(index, false);
                         _updating = false;
@@ -1645,7 +1646,8 @@ namespace System.Windows.Forms
         {
             if (_selectedTexture != null)
             {
-                _selectedTexture.Reload();
+                _selectedTexture.Reload(_selectedTexture.Model,
+                    _selectedTexture.Parent?.Name.EndsWith("_ExtMtl") ?? false);
                 _mainWindow.ModelPanel.Invalidate();
             }
         }

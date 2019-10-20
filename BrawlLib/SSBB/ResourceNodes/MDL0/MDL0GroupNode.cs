@@ -18,7 +18,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public int _entryIndex;
 
+#if !DEBUG
         [Browsable(false)]
+#endif
         public MDL0Node Model
         {
             get
@@ -33,7 +35,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+#if !DEBUG
         [Browsable(false)]
+#endif
         public BRRESNode BRESNode
         {
             get
