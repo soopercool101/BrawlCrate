@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Media.Converters;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -99,8 +100,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        private short _unknown;
         [Category("Custom My Music")]
-        public short Unknown { get; set; }
+        public short Unknown {
+            get => _unknown;
+            set
+            {
+                _unknown = value;
+                SignalPropertyChange();
+            }
+        }
 
 #if !DEBUG
         [Browsable(false)]
@@ -108,9 +117,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Custom My Music")]
         public byte TrackListID { get; set; }
 
+        private byte _sliderSetting;
         [Category("Custom My Music")]
         [Description("Between 0-64, the slider setting to use for My Music")]
-        public byte SliderSetting { get; set; }
+        public byte SliderSetting
+        {
+            get => _sliderSetting;
+            set
+            {
+                _sliderSetting = value;
+                SignalPropertyChange();
+            }
+        }
 
 
         public override int OnCalculateSize(bool force)
@@ -121,10 +139,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             _songID = Header->_songID;
-            Unknown = Header->_unknown;
+            _unknown = Header->_unknown;
             // Get the Tracklist ID here, but only set it from the parent entry
             TrackListID = Header->_trackListID;
-            SliderSetting = Header->_sliderSetting;
+            _sliderSetting = Header->_sliderSetting;
 
             _name = SongID;
 
