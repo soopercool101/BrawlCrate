@@ -202,9 +202,10 @@
         RSTCGroup,
         SLTC,
 
-        // Project M
+        // Brawl Mods
         MASQ,
         MASQEntry,
+        CMM,
 
         // Items
         ItemFreqNode,

@@ -8,7 +8,6 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlCrate
 {

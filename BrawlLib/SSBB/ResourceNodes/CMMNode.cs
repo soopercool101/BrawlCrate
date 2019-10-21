@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
         public override Type[] AllowedChildTypes => new[] { typeof(CMMEntryNode) };
-        public override ResourceType ResourceFileType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.CMM;
 
         [Category("Custom My Music")]
         public string TracklistID
