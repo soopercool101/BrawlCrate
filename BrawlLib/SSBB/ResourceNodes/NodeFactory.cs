@@ -24,7 +24,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {"MRGC", typeof(MRGNode)}, //Compressed MRG
             {"DOL", typeof(DOLNode)},
             {"REL", typeof(RELNode)},
-            {"MASQ", typeof(MasqueradeNode)}
+            {"MASQ", typeof(MasqueradeNode)},
+            {"CMM", typeof(CMMNode)}
         };
 
         static NodeFactory()

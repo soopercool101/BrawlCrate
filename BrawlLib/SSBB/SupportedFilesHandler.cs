@@ -107,6 +107,7 @@ namespace BrawlLib.SSBB
             //Brawl Mod Files
             new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
             new SupportedFileInfo(true, "BrawlEx Configuration", "bx"),
+            new SupportedFileInfo(true, "Custom My Music Tracklist", "cmm"),
 
             //The following files are not for direct editing
 
