@@ -48,8 +48,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 offset += CMMEntry.Size;
             }
             CMMEntryNode end = new CMMEntryNode { TrackListID = 0xFF };
-            int size = OnCalculateSize(false);
-            while (offset < size)
+            while (offset < length)
             {
                 end.Rebuild(address + offset, CMMEntry.Size, true);
                 offset += CMMEntry.Size;
