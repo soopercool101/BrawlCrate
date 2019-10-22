@@ -46,18 +46,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Bitmap bmp = GetImage(0);
                 bool disableRevert = false;
                 TEX0Node t = PrevSibling() as TEX0Node;
-                if (!_revertingCS && !value && t != null)
+                if (!_revertingCS && !value)
                 {
                     if (MessageBox.Show(
-                            "This will revert color smashing for the node and all nodes that share data above it, would you like to continue?",
+                            "Would you like to revert color smashing for the node and all nodes that share data above it? (If your preview looks correct now, say yes. If your preview looks bugged, say no)",
                             "Warning", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
+                        _sharesData = value;
+                        SignalPropertyChange();
                         return;
                     }
                     _revertingCS = true;
                     disableRevert = true;
                 }
                 _sharesData = value;
+                SignalPropertyChange();
                 if (!value)
                 {
                     if (t != null && t.SharesData)
@@ -73,7 +76,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                         dlg.ShowDialog(null, this);
                     }
                 }
-                SignalPropertyChange();
                 if (disableRevert)
                 {
                     _revertingCS = false;
