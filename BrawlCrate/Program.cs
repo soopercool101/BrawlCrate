@@ -64,11 +64,11 @@ Full changelog can be viewed from the help menu.";
 
         internal static string _rootPath;
 
-        public static string AppPath;
-
-        public static string ApiPath;
-        public static string ApiPluginPath;
-        public static string ApiLoaderPath;
+        public static readonly string AppPath;
+        
+        public static readonly string ApiPath;
+        public static readonly string ApiPluginPath;
+        public static readonly string ApiLoaderPath;
 
         public static string RootPath => _rootPath;
 
