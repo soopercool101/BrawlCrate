@@ -518,6 +518,21 @@ namespace System.Windows.Forms
             return false;
         }
 
+        private bool HotkeyOverlays()
+        {
+            if (ModelPanel.Focused)
+            {
+                chkAllOverlays.Checked = !chkAllOverlays.Checked;
+                chkItems.Checked = chkAllOverlays.Checked;
+                chkSpawns.Checked = chkAllOverlays.Checked;
+                chkBoundaries.Checked = chkAllOverlays.Checked;
+                ModelPanel.Invalidate();
+                return true;
+            }
+
+            return false;
+        }
+
         public override void InitHotkeyList()
         {
             base.InitHotkeyList();
@@ -535,6 +550,7 @@ namespace System.Windows.Forms
                 new HotKeyInfo(Keys.T, false, false, false, HotkeyTranslateTool),
                 new HotKeyInfo(Keys.D0, false, false, false, HotkeyVertexEditor),
                 new HotKeyInfo(Keys.D9, false, false, false, HotkeyWeightEditor),
+                new HotKeyInfo(Keys.D5, false, false, false, HotkeyOverlays),
             };
             _hotkeyList.AddRange(temp);
         }
@@ -560,9 +576,9 @@ namespace System.Windows.Forms
                     {
                         foreach (CollisionPlane plane in obj._planes)
                         {
-                            if (plane._type == CollisionPlaneType.Floor)
+                            if (plane._type == CollisionPlaneType.Floor && plane.IsCharacters)
                             {
-                                if (plane.PointLeft._x < v2._x && plane.PointRight._x > v2._x)
+                                if (plane.PointLeft._x <= v2._x && plane.PointRight._x >= v2._x)
                                 {
                                     float x = v2._x;
                                     float m = (plane.PointLeft._y - plane.PointRight._y)
