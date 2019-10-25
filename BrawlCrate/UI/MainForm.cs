@@ -57,6 +57,10 @@ namespace BrawlCrate
 
         private void _enableEditMenu(object sender, EventArgs e)
         {
+            if (editToolStripMenuItem == null)
+            {
+                return;
+            }
             BaseWrapper w = resourceTree?.SelectedNode as BaseWrapper;
             if (w == null)
             {
@@ -71,6 +75,11 @@ namespace BrawlCrate
 
         private void _disableEditMenu(object sender, EventArgs e)
         {
+            if (editToolStripMenuItem == null)
+            {
+                return;
+            }
+
             editToolStripMenuItem.DropDown = null;
             editToolStripMenuItem.Enabled = false;
         }
