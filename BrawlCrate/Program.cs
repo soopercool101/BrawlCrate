@@ -542,11 +542,17 @@ Full changelog can be viewed from the help menu.";
             {
                 return false;
             }
-
+#if !MONO
             if (!path.EndsWith("\\"))
             {
                 path += "\\";
             }
+#else
+            if (!path.EndsWith("/"))
+            {
+                path += "/";
+            }
+#endif
 
             if (!Directory.Exists(path))
             {
