@@ -80,7 +80,7 @@ namespace BrawlCrate
                 return;
             }
 
-            editToolStripMenuItem.DropDown = null;
+            editToolStripMenuItem.DropDown = new ToolStripDropDownMenu();
             editToolStripMenuItem.Enabled = false;
         }
 
