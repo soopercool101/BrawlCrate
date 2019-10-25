@@ -66,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!string.IsNullOrEmpty(value) && Directory.Exists(value))
                 {
-                    _folderWatcher.Path = value + "\\";
+                    _folderWatcher.Path = Path.GetFullPath(value);
                 }
                 else
                 {
