@@ -58,6 +58,11 @@ namespace BrawlCrate
         private void _enableEditMenu(object sender, EventArgs e)
         {
             BaseWrapper w = resourceTree?.SelectedNode as BaseWrapper;
+            if (w == null)
+            {
+                editToolStripMenuItem.Enabled = false;
+                return;
+            }
             editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
                                                 Instance.resourceTree.SelectedNodes.Count > 1
                                                     ? Instance.resourceTree.GetMultiSelectMenuStrip()
