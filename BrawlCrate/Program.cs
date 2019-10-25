@@ -542,7 +542,6 @@ Full changelog can be viewed from the help menu.";
             {
                 return false;
             }
-            
 #if !MONO
             if (!path.EndsWith("\\"))
             {

@@ -63,26 +63,12 @@ namespace BrawlLib.IO
         {
             FileStream stream;
             FileMap map;
-#if MONO
-            try
-            {
-                stream = new FileStream(path, FileMode.Open,
-                    prot == FileMapProtect.ReadWrite ? FileAccess.ReadWrite : FileAccess.Read, FileShare.Read, 8,
-                    options);
-            }
-            catch //File is currently in use, but we can copy it to a temp location and read that
-            {
-                string tempPath = Path.GetTempFileName();
-                File.Copy(path, tempPath, true);
-                stream = new FileStream(tempPath, FileMode.Open, FileAccess.ReadWrite, FileShare.Read, 8, options | FileOptions.DeleteOnClose);
-            }
-#else
+
             // Use a temp file in order to prevent writelocks
             string tempPath = Path.GetTempFileName();
             File.Copy(path, tempPath, true);
             stream = new FileStream(tempPath, FileMode.Open, FileAccess.ReadWrite, FileShare.Read, 8,
                 options | FileOptions.DeleteOnClose);
-#endif
 
             try
             {
