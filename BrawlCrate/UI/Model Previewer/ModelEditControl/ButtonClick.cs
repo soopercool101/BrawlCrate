@@ -415,6 +415,7 @@ namespace System.Windows.Forms
             chkItems.Checked = chkAllOverlays.Checked;
             chkSpawns.Checked = chkAllOverlays.Checked;
             chkBoundaries.Checked = chkAllOverlays.Checked;
+            ModelPanel.Invalidate();
         }
 
         private void chkBoundaries_Click(object sender, EventArgs e)
