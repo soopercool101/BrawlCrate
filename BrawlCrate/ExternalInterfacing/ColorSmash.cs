@@ -281,13 +281,38 @@ namespace BrawlCrate.ExternalInterfacing
             }
             finally
             {
+                // Clear the directories
+                foreach (FileInfo f in outputDir.GetFiles())
+                {
+                    try
+                    {
+                        f.Delete();
+                    }
+                    catch
+                    {
+                        // ignored
+                    }
+                }
+
                 try
                 {
-                    Directory.Delete(inputDir.FullName);
+                    outputDir.Delete();
                 }
                 catch
                 {
                     // ignored
+                }
+
+                foreach (FileInfo f in inputDir.GetFiles())
+                {
+                    try
+                    {
+                        f.Delete();
+                    }
+                    catch
+                    {
+                        // ignored
+                    }
                 }
 
                 try
