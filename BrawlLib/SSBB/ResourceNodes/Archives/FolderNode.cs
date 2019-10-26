@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes.Archives
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public class FolderNode : ResourceNode
     {
@@ -9,6 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
 
         public List<ResourceNode> _list;
 
+        [Browsable(false)]
         public string FolderPath => Parent != null && Parent is FolderNode f ? $"{f.FolderPath}\\{Name}" : _origPath;
 
         private string[] _directories;
@@ -68,7 +70,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             {
                 if (c.IsDirty || !outPath.Equals(FolderPath))
                 {
-                    c.Export($"{outPath}\\{c.OrigFileName}");
+                    c.Export($"{outPath}\\{c.FileName}");
                 }
             }
 
@@ -85,7 +87,10 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             foreach (string s in _files)
             {
                 ResourceNode node = NodeFactory.FromFile(this, s);
-                node._origPath = s;
+                if (node != null)
+                {
+                    node._origPath = s;
+                }
             }
 
             base.OnPopulate();

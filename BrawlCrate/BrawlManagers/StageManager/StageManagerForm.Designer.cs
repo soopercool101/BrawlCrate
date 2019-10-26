@@ -1,28 +1,28 @@
 ﻿namespace BrawlCrate.StageManager {
-	partial class StageManagerForm {
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class StageManagerForm {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing) {
-			if (disposing && (components != null)) {
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent() {
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ModelPanelViewport modelPanelViewport1 = new System.Windows.Forms.ModelPanelViewport();
             BrawlLib.OpenGL.GLCamera glCamera1 = new BrawlLib.OpenGL.GLCamera();
@@ -1001,104 +1001,104 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.ListBox listBox1;
-		private StageInfoControl stageInfoControl1;
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem changeDirectoryToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem moduleFileDirectoryToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem sameToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem moduleToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem useFullrelNamesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-		private System.Windows.Forms.ModelPanel modelPanel1;
-		private System.Windows.Forms.ToolStripMenuItem texturesToolStripMenuItem;
-		private System.Windows.Forms.Panel msBinPanel;
-		private PortraitViewer portraitViewer1;
-		private System.Windows.Forms.ToolStripMenuItem prevbaseSize;
-		private System.Windows.Forms.ToolStripMenuItem prevbaseOriginalSizeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem x128ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem x88ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem frontstnameSizeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem frontstnameOriginalSizeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem x56ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem renderModels;
-		private System.Windows.Forms.ToolStripMenuItem exportAllToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkSizeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkOriginalSizeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem x56ToolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem resizeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkPreviewToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem useAFixedStageListToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem addmissingPAT0EntriesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem addMenSelmapMarksToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem updateScselcharacter2ToolStripMenuItem;
-		private System.Windows.Forms.ContextMenuStrip stageContextMenu;
-		private System.Windows.Forms.ToolStripMenuItem exportpacrelToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkFormat;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatIA4;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatI4;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatAuto;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatCMPR;
-		private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatExisting;
-		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem listMenSelmapMarkUsageToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem frontStnameGenerationFontToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator separator1;
-		private System.Windows.Forms.ToolStripSeparator separator2;
-		private System.Windows.Forms.ToolStripSeparator separator3;
-		private System.Windows.Forms.ToolStripSeparator separator4;
-		private System.Windows.Forms.ToolStripMenuItem backgroundColorToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem updateMumenumainToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem snapshotPortraiticonToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem repaintIconBorderToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem resizeAllPrevbasesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem customPrevbaseSizeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem useTextureConverterToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
-		private System.Windows.Forms.SplitContainer splitContainerLeft;
-		private System.Windows.Forms.CheckedListBox clbTextures;
+        private System.Windows.Forms.ListBox listBox1;
+        private StageInfoControl stageInfoControl1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moduleFileDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moduleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem useFullrelNamesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ModelPanel modelPanel1;
+        private System.Windows.Forms.ToolStripMenuItem texturesToolStripMenuItem;
+        private System.Windows.Forms.Panel msBinPanel;
+        private PortraitViewer portraitViewer1;
+        private System.Windows.Forms.ToolStripMenuItem prevbaseSize;
+        private System.Windows.Forms.ToolStripMenuItem prevbaseOriginalSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x128ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x88ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem frontstnameSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem frontstnameOriginalSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x56ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renderModels;
+        private System.Windows.Forms.ToolStripMenuItem exportAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkOriginalSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x56ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem resizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkPreviewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem useAFixedStageListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addmissingPAT0EntriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addMenSelmapMarksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateScselcharacter2ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip stageContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem exportpacrelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkFormat;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatIA4;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatI4;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatAuto;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatCMPR;
+        private System.Windows.Forms.ToolStripMenuItem selmapMarkFormatExisting;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listMenSelmapMarkUsageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem frontStnameGenerationFontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator separator1;
+        private System.Windows.Forms.ToolStripSeparator separator2;
+        private System.Windows.Forms.ToolStripSeparator separator3;
+        private System.Windows.Forms.ToolStripSeparator separator4;
+        private System.Windows.Forms.ToolStripMenuItem backgroundColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateMumenumainToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem snapshotPortraiticonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem repaintIconBorderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resizeAllPrevbasesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customPrevbaseSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem useTextureConverterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.SplitContainer splitContainerLeft;
+        private System.Windows.Forms.CheckedListBox clbTextures;
         private System.Windows.Forms.ToolStripMenuItem deletepacrelToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem loadbrstmsToolStripMenuItem;
-		private BrawlManagerLib.SongPanel songPanel1;
-		private System.Windows.Forms.ToolStripMenuItem exportbrstmToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem deletebrstmToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem currentStageToolStripMenuItem;
-		private System.Windows.Forms.Panel songContainerPanel;
-		private System.Windows.Forms.ListBox listBoxSongs;
-		private System.Windows.Forms.ToolStripMenuItem currentSongToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-		private System.Windows.Forms.ContextMenuStrip songContextMenu;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-		private System.Windows.Forms.ToolStripMenuItem saveCommon5scselmapToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem saveInfopacToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem common5scselmapToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exportAllMiscData80ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadbrstmsToolStripMenuItem;
+        private BrawlManagerLib.SongPanel songPanel1;
+        private System.Windows.Forms.ToolStripMenuItem exportbrstmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deletebrstmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem currentStageToolStripMenuItem;
+        private System.Windows.Forms.Panel songContainerPanel;
+        private System.Windows.Forms.ListBox listBoxSongs;
+        private System.Windows.Forms.ToolStripMenuItem currentSongToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ContextMenuStrip songContextMenu;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem saveCommon5scselmapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveInfopacToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem common5scselmapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportAllMiscData80ToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.ToolStripMenuItem brawlCrateToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem brawlCrateStageToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem brawlCrateCommon5scselmapToolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem loadCustomSSSToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-		private System.Windows.Forms.ToolStripMenuItem loadStagepacsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brawlCrateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brawlCrateStageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brawlCrateCommon5scselmapToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem loadCustomSSSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem loadStagepacsToolStripMenuItem;
         private BrawlManagerLib.BrawlSplitter brawlSplitter1;
         private BrawlManagerLib.BrawlSplitter brawlSplitter2;
-		private BrawlManagerLib.BrawlSplitter brawlSplitter5;
+        private BrawlManagerLib.BrawlSplitter brawlSplitter5;
         private BrawlManagerLib.BrawlSplitter brawlSplitter3;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.ToolStripMenuItem differentrelsForAlternateStagesPM36ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem x96ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem use16ptFontToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem differentrelsForAlternateStagesPM36ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem x96ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem use16ptFontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customSoundEngineDirectoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cse2xToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cse3xToolStripMenuItem;

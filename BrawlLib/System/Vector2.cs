@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Globalization;
 using System.Runtime.InteropServices;
 
 namespace System
@@ -227,7 +228,9 @@ namespace System
 
         public override string ToString()
         {
-            return $"({_x},{_y})";
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({_x} {_y})"
+                : $"({_x},{_y})";
         }
 
         public bool Contained(Vector2 start, Vector2 end, float expansion)
@@ -299,9 +302,9 @@ namespace System
 
         public override bool Equals(object obj)
         {
-            if (obj is Vector2)
+            if (obj is Vector2 vector2)
             {
-                return this == (Vector2) obj;
+                return this == vector2;
             }
 
             return false;

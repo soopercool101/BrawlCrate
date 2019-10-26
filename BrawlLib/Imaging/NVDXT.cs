@@ -142,7 +142,7 @@ namespace BrawlLib.Imaging
             block._root1._data = color0;
             block._lookup = computeIndices3(pBlock, &maxColor, &minColor);
 
-            //	optimizeEndPoints(block, dxtBlock);
+            //    optimizeEndPoints(block, dxtBlock);
 
             return block;
         }

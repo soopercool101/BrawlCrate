@@ -827,7 +827,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     System.Diagnostics.Debug.WriteLine((IntPtr) Header);
                     _keyframes = AnimationConverter.DecodeKeyframes(Header,
-                        Parent != null ? Parent.Parent as SRT0Node : null, 5, 1, 1);
+                        Parent?.Parent as SRT0Node, 5, 1, 1);
                 }
 
                 return _keyframes;

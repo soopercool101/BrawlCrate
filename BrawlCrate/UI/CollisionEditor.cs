@@ -1452,13 +1452,9 @@ namespace System.Windows.Forms
                     cboMaterial.DataSource =
                         CollisionTerrain.Terrains.ToList(); // Get the expanded collisions if they're used
                 }
-                else if (cboMaterial.Items.Count > 32)
-                {
-                    cboMaterial.DataSource =
-                        CollisionTerrain.Terrains.Take(0x20).ToList(); // Take unexpanded collisions
-                }
 
                 cboMaterial.SelectedItem = cboMaterial.Items[p._material];
+
                 //Type
                 cboType.SelectedItem = p.Type;
                 //Flags

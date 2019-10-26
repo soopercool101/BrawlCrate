@@ -189,7 +189,10 @@ namespace BrawlLib
             SupportedFilesHandler.GetCompleteFilter("dat", "bx");
 
         public static string MASQ =
-            SupportedFilesHandler.GetCompleteFilter("masq", "bin", "dat", "*");
+            SupportedFilesHandler.GetCompleteFilter("masq");
+
+        public static string CMM =
+            SupportedFilesHandler.GetCompleteFilter("cmm");
 
         public static string MDef =
             SupportedFilesHandler.GetCompleteFilter("moveset");

@@ -1167,9 +1167,9 @@ namespace System
 
         public override bool Equals(object obj)
         {
-            if (obj is Matrix34)
+            if (obj is Matrix34 matrix34)
             {
-                return (Matrix34) obj == this;
+                return matrix34 == this;
             }
 
             return base.Equals(obj);
@@ -1184,12 +1184,9 @@ namespace System
         {
             fixed (float* p = _data)
             {
-                if (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(","))
-                {
-                    return $"({p[0]} {p[1]} {p[2]} {p[3]})({p[4]} {p[5]} {p[6]} {p[7]})({p[8]} {p[9]} {p[10]} {p[11]})";
-                }
-
-                return $"({p[0]},{p[1]},{p[2]},{p[3]})({p[4]},{p[5]},{p[6]},{p[7]})({p[8]},{p[9]},{p[10]},{p[11]})";
+                return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                    ? $"({p[0]} {p[1]} {p[2]} {p[3]})({p[4]} {p[5]} {p[6]} {p[7]})({p[8]} {p[9]} {p[10]} {p[11]})"
+                    : $"({p[0]},{p[1]},{p[2]},{p[3]})({p[4]},{p[5]},{p[6]},{p[7]})({p[8]},{p[9]},{p[10]},{p[11]})";
             }
         }
     }

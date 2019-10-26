@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace System
 {
@@ -343,7 +344,9 @@ namespace System
 
         public override string ToString()
         {
-            return $"({(float) _x}, {(float) _y})";
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({(float) _x} {(float) _y})"
+                : $"({(float) _x}, {(float) _y})";
         }
 
         public static implicit operator Vector2(BVec2 v)
@@ -373,7 +376,9 @@ namespace System
 
         public override string ToString()
         {
-            return $"({(float) _x}, {(float) _y}, {(float) _z})";
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({(float) _x} {(float) _y} {(float) _z})"
+                : $"({(float) _x}, {(float) _y}, {(float) _z})";
         }
 
         public static implicit operator Vector3(BVec3 v)
@@ -415,7 +420,9 @@ namespace System
 
         public override string ToString()
         {
-            return $"({(float) _x}, {(float) _y}, {(float) _z}, {(float) _w})";
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({(float) _x} {(float) _y} {(float) _z} {(float) _w})"
+                : $"({(float) _x}, {(float) _y}, {(float) _z}, {(float) _w})";
         }
 
         public static implicit operator Vector4(BVec4 v)
@@ -459,8 +466,9 @@ namespace System
 
         public override string ToString()
         {
-            return
-                $"({this[0]},{this[1]},{this[2]},{this[3]})({this[4]},{this[5]},{this[6]},{this[7]})({this[8]},{this[9]},{this[10]},{this[11]})";
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({this[0]} {this[1]} {this[2]} {this[3]})({this[4]} {this[5]} {this[6]} {this[7]})({this[8]} {this[9]} {this[10]} {this[11]})"
+                : $"({this[0]},{this[1]},{this[2]},{this[3]})({this[4]},{this[5]},{this[6]},{this[7]})({this[8]},{this[9]},{this[10]},{this[11]})";
         }
 
         public static implicit operator Matrix(bMatrix43 bm)
@@ -570,8 +578,9 @@ namespace System
 
         public override string ToString()
         {
-            return
-                $"({this[0]},{this[1]},{this[2]},{this[3]})({this[4]},{this[5]},{this[6]},{this[7]})({this[8]},{this[9]},{this[10]},{this[11]})({this[12]},{this[13]},{this[14]},{this[15]})";
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({this[0]} {this[1]} {this[2]} {this[3]})({this[4]} {this[5]} {this[6]} {this[7]})({this[8]} {this[9]} {this[10]} {this[11]})({this[12]} {this[13]} {this[14]} {this[15]})"
+                : $"({this[0]},{this[1]},{this[2]},{this[3]})({this[4]},{this[5]},{this[6]},{this[7]})({this[8]},{this[9]},{this[10]},{this[11]})({this[12]},{this[13]},{this[14]},{this[15]})";
         }
 
         public static implicit operator Matrix(bMatrix bm)

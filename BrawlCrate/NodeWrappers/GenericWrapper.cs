@@ -102,6 +102,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().Rename();
         }
 
+        protected static void SortAction(object sender, EventArgs e)
+        {
+            GetInstance<GenericWrapper>().Sort();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DuplicateToolStripMenuItem.Enabled = true;
@@ -139,6 +144,12 @@ namespace BrawlCrate.NodeWrappers
         }
 
         public virtual ContextMenuStrip MultiSelectMenuStrip => MultiSelectMenu;
+
+        public virtual void Sort()
+        {
+            _resource.SortChildren();
+            RefreshView(_resource);
+        }
 
         public void MoveUp()
         {

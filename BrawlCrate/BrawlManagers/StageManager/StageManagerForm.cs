@@ -349,7 +349,7 @@ namespace BrawlCrate.StageManager
 
                 if (renderModels.Checked)
                 {
-                    modelPanel1.SetCamWithBox(new Vector3("-100,-100,-100"), new Vector3("100,100,100"));
+                    modelPanel1.SetCamWithBox(new Vector3(-100, -100, -100), new Vector3(100, 100, 100));
 
                     // Update textures list
                     CheckedListBox.ObjectCollection items = clbTextures.Items;
@@ -1336,7 +1336,7 @@ namespace BrawlCrate.StageManager
             if (!string.IsNullOrEmpty(filepath))
             {
                 Program.Open(filepath);
-                BrawlCrate.MainForm.Instance.Focus();
+                MainForm.Instance.Focus();
             }
         }
 
@@ -1352,7 +1352,7 @@ namespace BrawlCrate.StageManager
             else
             {
                 Program.Open(new FileInfo(portraitViewer1.OpenFilePath).FullName);
-                BrawlCrate.MainForm.Instance.Focus();
+                MainForm.Instance.Focus();
             }
         }
 

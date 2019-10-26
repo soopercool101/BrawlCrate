@@ -784,8 +784,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     prev = next;
                 }
 
-                PAT0Texture = prev.Texture;
-                PAT0Palette = prev.Palette;
+                PAT0Texture = prev?.Texture;
+                PAT0Palette = prev?.Palette;
                 if (PAT0Texture != null && !PAT0Textures.ContainsKey(PAT0Texture))
                 {
                     TEX0Node texture = RootNode.FindChildByType(PAT0Texture, true, ResourceType.TEX0) as TEX0Node;
@@ -800,13 +800,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         };
                     }
                 }
-
                 return;
             }
-            else
-            {
-                PAT0Texture = PAT0Palette = null;
-            }
+            PAT0Texture = PAT0Palette = null;
         }
 
         public void SetEffectMatrix(SCN0Node node, ModelPanelViewport v, float frame)

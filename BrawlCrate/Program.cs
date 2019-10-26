@@ -8,7 +8,6 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlCrate
 {
@@ -65,11 +64,11 @@ Full changelog can be viewed from the help menu.";
 
         internal static string _rootPath;
 
-        public static string AppPath;
-
-        public static string ApiPath;
-        public static string ApiPluginPath;
-        public static string ApiLoaderPath;
+        public static readonly string AppPath;
+        
+        public static readonly string ApiPath;
+        public static readonly string ApiPluginPath;
+        public static readonly string ApiLoaderPath;
 
         public static string RootPath => _rootPath;
 
@@ -77,7 +76,7 @@ Full changelog can be viewed from the help menu.";
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
-            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe", StringComparison.OrdinalIgnoreCase));
+            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1);
 #if CANARY
             AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
@@ -543,11 +542,18 @@ Full changelog can be viewed from the help menu.";
             {
                 return false;
             }
-
+            
+#if !MONO
             if (!path.EndsWith("\\"))
             {
                 path += "\\";
             }
+#else
+            if (!path.EndsWith("/"))
+            {
+                path += "/";
+            }
+#endif
 
             if (!Directory.Exists(path))
             {
@@ -838,7 +844,7 @@ Full changelog can be viewed from the help menu.";
                         RootNode._origPath = path;
                         if (w is FolderWrapper)
                         {
-                            w.Resource.Name = w.Resource.OrigFileName;
+                            w.Resource.Name = w.Resource.FileName;
                             w.Text = w.Resource.Name;
                         }
 

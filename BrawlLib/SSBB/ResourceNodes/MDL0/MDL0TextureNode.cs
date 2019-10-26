@@ -66,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!string.IsNullOrEmpty(value) && Directory.Exists(value))
                 {
-                    _folderWatcher.Path = value + "\\";
+                    _folderWatcher.Path = Path.GetFullPath(value);
                 }
                 else
                 {
@@ -202,7 +202,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Source = BRESNode?.FindChild("Textures(NW4R)/" + Name, true, StringComparison.Ordinal) as TEX0Node;
         }
 
-        public void Reload()
+        public void Reload(MDL0Node model, bool isMetal)
         {
             if (TKContext.CurrentContext == null)
             {
@@ -210,18 +210,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TKContext.CurrentContext.Capture();
-            Load(_index, _program, Model, _isMetal);
+            Load(_index, _program, model, isMetal);
         }
 
         private int _index = -1;
         private int _program = -1;
-        private bool _isMetal;
 
         private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
         {
             _index = index;
             _program = program;
-            _isMetal = isMetal;
             if (TKContext.CurrentContext == null)
             {
                 return;

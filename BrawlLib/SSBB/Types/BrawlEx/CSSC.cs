@@ -14,10 +14,9 @@ namespace BrawlLib.SSBBTypes
         public byte _editFlag1; // 0x0C - Unused?
         public byte _editFlag2; // 0x0D - Unused?
         public byte _editFlag3; // 0X0E - Unused?
-
-        public byte
-            _editFlag4; // 0x0F - 0x01 = Set Primary Character/Secondary Character; 0x02 = Set Cosmetic Slot; 0x03 = Set both; Use Booleans for both?
-
+        public byte _editFlag4; // 0x0F - 0x01 = Set Primary Character/Secondary Character;
+                                //        0x02 = Set Cosmetic Slot; 0x03 = Set both
+                                //        Use Booleans for both?
         public byte _primaryCharSlot;   // 0x10 - Primary Character Slot: Only used when set in _editFlag4
         public byte _secondaryCharSlot; // 0x11 - Secondary Character Slot: Only used when set in _editFlag4
         public byte _recordSlot;        // 0x12 - Record Bank

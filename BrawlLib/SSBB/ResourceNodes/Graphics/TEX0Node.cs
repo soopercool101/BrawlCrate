@@ -3,10 +3,12 @@ using BrawlLib.IO;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Textures;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -41,10 +43,46 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _sharesData;
             set
             {
+                Bitmap bmp = GetImage(0);
+                bool disableRevert = false;
+                TEX0Node t = PrevSibling() as TEX0Node;
+                if (!_revertingCS && !value)
+                {
+                    if (MessageBox.Show(
+                            "Would you like to revert color smashing for the node and all nodes that share data above it? (If your preview looks correct now, say yes. If your preview looks bugged, say no)",
+                            "Warning", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    {
+                        _sharesData = value;
+                        SignalPropertyChange();
+                        return;
+                    }
+                    _revertingCS = true;
+                    disableRevert = true;
+                }
                 _sharesData = value;
                 SignalPropertyChange();
+                if (!value)
+                {
+                    if (t != null && t.SharesData)
+                    {
+                        t.SharesData = false;
+                    }
+
+                    using (TextureConverterDialog dlg = new TextureConverterDialog())
+                    {
+                        dlg.Automatic = true;
+                        dlg.cboFormat.SelectedItem = 
+                        dlg.LoadImages(bmp);
+                        dlg.ShowDialog(null, this);
+                    }
+                }
+                if (disableRevert)
+                {
+                    _revertingCS = false;
+                }
             }
         }
+        private static bool _revertingCS = false;
 
         [Category("G3D Texture")] public int Width => SharesData ? SourceNode.Width : _width;
         [Category("G3D Texture")] public int Height => SharesData ? SourceNode.Height : _height;

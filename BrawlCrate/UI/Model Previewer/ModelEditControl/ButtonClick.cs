@@ -409,6 +409,14 @@ namespace System.Windows.Forms
             ModelPanel.Camera.ZoomExtents(SelectedBone.Matrix.GetPoint(), 27.0f);
             ModelPanel.Invalidate();
         }
+        
+        private void chkAllOverlays_CheckedChanged(object sender, EventArgs e)
+        {
+            chkItems.Checked = chkAllOverlays.Checked;
+            chkSpawns.Checked = chkAllOverlays.Checked;
+            chkBoundaries.Checked = chkAllOverlays.Checked;
+            ModelPanel.Invalidate();
+        }
 
         private void chkBoundaries_Click(object sender, EventArgs e)
         {

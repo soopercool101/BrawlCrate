@@ -268,7 +268,7 @@ namespace BrawlCrate.CostumeManager
                         }
 
                         /* All other characters in PM 3.6 follow a pattern: the portraits start out in the same order Brawl has them,
-						   and any additional portraits are in order after the highest-numbered original portrait. */
+                           and any additional portraits are in order after the highest-numbered original portrait. */
                         int[] arr1 = PortraitToCostumeMappings[key];
                         int max = arr1.Max();
                         int[] arr2 = new int[12];

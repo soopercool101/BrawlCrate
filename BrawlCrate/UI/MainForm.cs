@@ -57,7 +57,16 @@ namespace BrawlCrate
 
         private void _enableEditMenu(object sender, EventArgs e)
         {
-            BaseWrapper w = resourceTree.SelectedNode as BaseWrapper;
+            if (editToolStripMenuItem == null)
+            {
+                return;
+            }
+            BaseWrapper w = resourceTree?.SelectedNode as BaseWrapper;
+            if (w == null)
+            {
+                editToolStripMenuItem.Enabled = false;
+                return;
+            }
             editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
                                                 Instance.resourceTree.SelectedNodes.Count > 1
                                                     ? Instance.resourceTree.GetMultiSelectMenuStrip()
@@ -66,7 +75,12 @@ namespace BrawlCrate
 
         private void _disableEditMenu(object sender, EventArgs e)
         {
-            editToolStripMenuItem.DropDown = null;
+            if (editToolStripMenuItem == null)
+            {
+                return;
+            }
+
+            editToolStripMenuItem.DropDown = new ToolStripDropDownMenu();
             editToolStripMenuItem.Enabled = false;
         }
 
@@ -483,8 +497,10 @@ namespace BrawlCrate
         {
             if (Program.RootPath != null)
             {
-                Text =
-                    $"{Program.AssemblyTitleShort} - {(ShowFullPath ? Program.RootPath : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1))}";
+                string fileName = ShowFullPath
+                    ? Program.RootPath
+                    : Program.RootPath.TrimEnd('\\').Substring(Program.RootPath.TrimEnd('\\').LastIndexOf('\\') + 1);
+                Text = $"{Program.AssemblyTitleShort} - {fileName}";
             }
             else
             {
@@ -533,9 +549,9 @@ namespace BrawlCrate
             BaseWrapper w;
             ResourceNode node = null;
             bool disable2nd = false;
-            if (!(sender != null && sender.ToString().Equals("Saving File")) &&
-                resourceTree.SelectedNode is BaseWrapper &&
-                (node = (w = resourceTree.SelectedNode as BaseWrapper).Resource) != null)
+            if (!(sender?.ToString().Equals("Saving File") ?? false) &&
+                resourceTree.SelectedNode is BaseWrapper b &&
+                (node = (w = b).Resource) != null)
             {
                 Action setScrollOffset = null;
                 if (selectedType == resourceTree.SelectedNode.GetType())

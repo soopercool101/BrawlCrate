@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

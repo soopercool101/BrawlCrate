@@ -403,7 +403,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (external.FrameCount != FrameCount && MessageBox.Show(null,
                     "Frame counts are not equal; the shorter animation will end early. Do you still wish to continue?",
-                    "", MessageBoxButtons.YesNo) == DialogResult.No)
+                    "Merge Animations", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
@@ -545,46 +545,89 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// </summary>
         public void Append(CHR0Node external)
         {
-            KeyframeEntry kfe;
+            Append(external, 1);
+        }
 
-            int origIntCount = FrameCount;
+        public void Append(CHR0Node external, int timesToAppend)
+        {
             int extCount = external.FrameCount;
-            FrameCount += extCount;
 
-            foreach (CHR0EntryNode extEntry in external.Children)
+            for (int appendCount = 0; appendCount < timesToAppend; appendCount++)
             {
-                CHR0EntryNode intEntry = null;
-                if ((intEntry = (CHR0EntryNode) FindChild(extEntry.Name, false)) == null)
+                int origIntCount = FrameCount;
+                FrameCount += extCount;
+
+                foreach (CHR0EntryNode extEntry in external.Children)
                 {
-                    CHR0EntryNode newIntEntry = new CHR0EntryNode {Name = extEntry.Name};
-                    newIntEntry.SetSize(extEntry.FrameCount + origIntCount, Loop);
-                    for (int x = 0; x < extEntry.FrameCount; x++)
+                    CHR0EntryNode intEntry = null;
+                    KeyframeEntry kfe;
+                    if ((intEntry = (CHR0EntryNode)FindChild(extEntry.Name, false)) == null)
+                    {
+                        CHR0EntryNode newIntEntry = new CHR0EntryNode { Name = extEntry.Name };
+                        newIntEntry.SetSize(extEntry.FrameCount + origIntCount, Loop);
+                        for (int x = 0; x < extEntry.FrameCount; x++)
+                        {
+                            for (int i = 0; i < 9; i++)
+                            {
+                                if ((kfe = extEntry.GetKeyframe(i, x)) != null)
+                                {
+                                    newIntEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent =
+                                        kfe._tangent;
+                                }
+                            }
+                        }
+
+                        AddChild(newIntEntry);
+                    }
+                    else
+                    {
+                        for (int x = 0; x < extEntry.FrameCount; x++)
+                        {
+                            for (int i = 0; i < 9; i++)
+                            {
+                                if ((kfe = extEntry.GetKeyframe(i, x)) != null)
+                                {
+                                    intEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent =
+                                        kfe._tangent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public void Reverse(bool appendReverse)
+        {
+            using (CHR0Node tempReversedCHR0 = new CHR0Node
+                {Name = Name, Loop = Loop, FrameCount = FrameCount})
+            {
+                KeyframeEntry kfe;
+                foreach (CHR0EntryNode tempEntry in Children)
+                {
+                    CHR0EntryNode newIntEntry = new CHR0EntryNode() { Name = tempEntry.Name };
+                    newIntEntry.SetSize(tempEntry.FrameCount, Loop);
+                    for (int x = 0; x < tempEntry.FrameCount; x++)
                     {
                         for (int i = 0; i < 9; i++)
                         {
-                            if ((kfe = extEntry.GetKeyframe(i, x)) != null)
+                            if ((kfe = tempEntry.GetKeyframe(i, x)) != null)
                             {
-                                newIntEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent =
+                                newIntEntry.Keyframes.SetFrameValue(i, FrameCount - (x + (Loop ? 0 : 1)), kfe._value)._tangent =
                                     kfe._tangent;
                             }
                         }
                     }
 
-                    AddChild(newIntEntry);
+                    tempReversedCHR0.AddChild(newIntEntry);
+                }
+
+                if (appendReverse)
+                {
+                    Append(tempReversedCHR0);
                 }
                 else
                 {
-                    for (int x = 0; x < extEntry.FrameCount; x++)
-                    {
-                        for (int i = 0; i < 9; i++)
-                        {
-                            if ((kfe = extEntry.GetKeyframe(i, x)) != null)
-                            {
-                                intEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent =
-                                    kfe._tangent;
-                            }
-                        }
-                    }
+                    Replace(tempReversedCHR0);
                 }
             }
         }

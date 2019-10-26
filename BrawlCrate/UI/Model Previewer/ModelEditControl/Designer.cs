@@ -140,6 +140,7 @@ namespace System.Windows.Forms
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripComboBox cboToolSelect;
         private ToolStripDropDownButton dropdownOverlays;
+        private ToolStripMenuItem chkAllOverlays;
         private ToolStripMenuItem chkBoundaries;
         private ToolStripMenuItem chkSpawns;
         private ToolStripMenuItem chkItems;
@@ -313,6 +314,7 @@ namespace System.Windows.Forms
             chkVertices = new ToolStripButton();
             chkCollisions = new ToolStripButton();
             dropdownOverlays = new ToolStripDropDownButton();
+            chkAllOverlays = new ToolStripMenuItem();
             chkBoundaries = new ToolStripMenuItem();
             chkSpawns = new ToolStripMenuItem();
             chkItems = new ToolStripMenuItem();
@@ -1636,6 +1638,7 @@ namespace System.Windows.Forms
             dropdownOverlays.DisplayStyle = ToolStripItemDisplayStyle.Text;
             dropdownOverlays.DropDownItems.AddRange(new ToolStripItem[]
             {
+                chkAllOverlays,
                 chkBoundaries,
                 chkSpawns,
                 chkItems
@@ -1645,8 +1648,19 @@ namespace System.Windows.Forms
             dropdownOverlays.Size = new Drawing.Size(79, 23);
             dropdownOverlays.Text = "Overlays";
             // 
+            // chkAllOverlays
+            // 
+            chkAllOverlays.Checked = true;
+            chkAllOverlays.CheckOnClick = true;
+            chkAllOverlays.CheckState = CheckState.Checked;
+            chkAllOverlays.Name = "chkAllOverlays";
+            chkAllOverlays.Size = new System.Drawing.Size(171, 22);
+            chkAllOverlays.Text = "All";
+            chkAllOverlays.CheckedChanged += new EventHandler(chkAllOverlays_CheckedChanged);
+            // 
             // chkBoundaries
             // 
+            chkBoundaries.Checked = true;
             chkBoundaries.CheckOnClick = true;
             chkBoundaries.Name = "chkBoundaries";
             chkBoundaries.Size = new Drawing.Size(206, 26);
@@ -1655,6 +1669,7 @@ namespace System.Windows.Forms
             // 
             // chkSpawns
             // 
+            chkSpawns.Checked = true;
             chkSpawns.CheckOnClick = true;
             chkSpawns.Name = "chkSpawns";
             chkSpawns.Size = new Drawing.Size(206, 26);
@@ -1663,6 +1678,7 @@ namespace System.Windows.Forms
             // 
             // chkItems
             // 
+            chkItems.Checked = true;
             chkItems.CheckOnClick = true;
             chkItems.Name = "chkItems";
             chkItems.Size = new Drawing.Size(206, 26);
