@@ -113,7 +113,6 @@ namespace BrawlCrate
 #if DEBUG
             chkShowHex.Text = "Prioritize hex preview for nodes";
 #endif
-
             tabUpdater.Enabled = true;
             tabUpdater.Visible = true;
             tabDiscord.Enabled = true;
