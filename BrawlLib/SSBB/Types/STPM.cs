@@ -7,7 +7,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct Parameter
     {
         public const string TagSTPM = "STPM";
-        public const string TagADPM = "STPM";
+        public const string TagADPM = "ADPM";
         public const int Size = 0x10;
 
         public BinTag _tag;

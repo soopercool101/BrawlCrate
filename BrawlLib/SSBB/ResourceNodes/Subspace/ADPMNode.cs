@@ -5,10 +5,10 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class STPMNode : ARCEntryNode
+    public unsafe class ADPMNode : ARCEntryNode
     {
         internal Parameter* Header => (Parameter*) WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.STPM;
+        public override ResourceType ResourceFileType => ResourceType.ADPM;
 
         public override bool OnInitialize()
         {
@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected override string GetName()
         {
-            return base.GetName("Stage Parameters");
+            return base.GetName("Adventure Parameters");
         }
 
         private const int _entrySize = 260;
@@ -28,7 +28,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Header->_count; i++)
             {
-                new STPMEntryNode().Initialize(this, new DataSource((*Header)[i], _entrySize));
+                new ADPMEntryNode().Initialize(this, new DataSource((*Header)[i], _entrySize));
             }
         }
 
@@ -40,7 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             Parameter* header = (Parameter*) address;
-            *header = new Parameter(Parameter.TagSTPM, Children.Count);
+            *header = new Parameter(Parameter.TagADPM, Children.Count);
             uint offset = (uint) (0x10 + Children.Count * 4);
             for (int i = 0; i < Children.Count; i++)
             {
@@ -53,11 +53,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((Parameter*) source.Address)->_tag == Parameter.TagSTPM ? new STPMNode() : null;
+            return ((Parameter*) source.Address)->_tag == Parameter.TagADPM ? new ADPMNode() : null;
         }
     }
 
-    public unsafe class STPMEntryNode : ResourceNode
+    public unsafe class ADPMEntryNode : ResourceNode
     {
         internal ParameterEntry* Header => (ParameterEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
@@ -67,7 +67,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public ParameterValueManager _values = new ParameterValueManager(null);
 
-        [Category("STPM Data")]
+        [Category("ADPM Data")]
         public byte Echo
         {
             get => echo;
@@ -78,7 +78,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Data")]
+        [Category("ADPM Data")]
         public ushort Id1
         {
             get => id;
@@ -89,7 +89,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Data")]
+        [Category("ADPM Data")]
         public byte Id2
         {
             get => id2;
@@ -100,7 +100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
+        [Category("ADPM Values")]
         public float Value1
         {
             get => _values.GetFloat(0);
@@ -111,7 +111,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
+        [Category("ADPM Values")]
         public float Value2
         {
             get => _values.GetFloat(1);
@@ -122,7 +122,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
+        [Category("ADPM Values")]
         public float Value3
         {
             get => _values.GetFloat(2);
@@ -133,7 +133,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
+        [Category("ADPM Values")]
         public float Value4
         {
             get => _values.GetFloat(3);
@@ -144,19 +144,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public RGBAPixel Value5
+        [Category("ADPM Values")]
+        public float Value5
         {
-            get => _values.GetRGBA(4);
+            get => _values.GetFloat(4);
             set
             {
-                _values.SetRGBA(4, value);
+                _values.SetFloat(4, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float ShadowPitch
+        [Category("ADPM Values")]
+        public float Value6
         {
             get => _values.GetFloat(5);
             set
@@ -166,8 +166,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float ShadowYaw
+        [Category("ADPM Values")]
+        public float Value7
         {
             get => _values.GetFloat(6);
             set
@@ -177,7 +177,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
+        [Category("ADPM Values")]
         public float Value8
         {
             get => _values.GetFloat(7);
@@ -188,7 +188,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
+        [Category("ADPM Values")]
         public float Value9
         {
             get => _values.GetFloat(8);
@@ -199,8 +199,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float CameraFOV
+        [Category("ADPM Values")]
+        public float Value10
         {
             get => _values.GetFloat(9);
             set
@@ -210,8 +210,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float MinimumZ
+        [Category("ADPM Values")]
+        public float Value11
         {
             get => _values.GetFloat(10);
             set
@@ -221,8 +221,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float MaximumZ
+        [Category("ADPM Values")]
+        public float Value12
         {
             get => _values.GetFloat(11);
             set
@@ -232,8 +232,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float MinimumTilt
+        [Category("ADPM Values")]
+        public float Value13
         {
             get => _values.GetFloat(12);
             set
@@ -243,8 +243,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float MaximumTilt
+        [Category("ADPM Values")]
+        public float Value14
         {
             get => _values.GetFloat(13);
             set
@@ -254,8 +254,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float HorizontalRotationFactor
+        [Category("ADPM Values")]
+        public float Value15
         {
             get => _values.GetFloat(14);
             set
@@ -265,8 +265,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float VerticalRotationFactor
+        [Category("ADPM Values")]
+        public float Value16
         {
             get => _values.GetFloat(15);
             set
@@ -276,8 +276,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float CharacterBubbleBufferMultiplier
+        [Category("ADPM Values")]
+        public float Value17
         {
             get => _values.GetFloat(16);
             set
@@ -287,7 +287,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
+        [Category("ADPM Values")]
         public float Value18
         {
             get => _values.GetFloat(17);
@@ -298,8 +298,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float CameraSpeed
+        [Category("ADPM Values")]
+        public float Value19
         {
             get => _values.GetFloat(18);
             set
@@ -309,8 +309,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float StarKOCamTilt
+        [Category("ADPM Values")]
+        public float Value20
         {
             get => _values.GetFloat(19);
             set
@@ -320,8 +320,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float FinalSmashCamTilt
+        [Category("ADPM Values")]
+        public float Value21
         {
             get => _values.GetFloat(20);
             set
@@ -331,8 +331,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float CameraRight
+        [Category("ADPM Values")]
+        public float Value22
         {
             get => _values.GetFloat(21);
             set
@@ -342,8 +342,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float CameraLeft
+        [Category("ADPM Values")]
+        public float Value23
         {
             get => _values.GetFloat(22);
             set
@@ -353,8 +353,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamX
+        [Category("ADPM Values")]
+        public float Value24
         {
             get => _values.GetFloat(23);
             set
@@ -364,8 +364,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamY
+        [Category("ADPM Values")]
+        public float Value25
         {
             get => _values.GetFloat(24);
             set
@@ -375,8 +375,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamZ
+        [Category("ADPM Values")]
+        public float Value26
         {
             get => _values.GetFloat(25);
             set
@@ -386,8 +386,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamAngle
+        [Category("ADPM Values")]
+        public float Value27
         {
             get => _values.GetFloat(26);
             set
@@ -397,8 +397,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamZoomIn
+        [Category("ADPM Values")]
+        public float Value28
         {
             get => _values.GetFloat(27);
             set
@@ -408,8 +408,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamZoomDefault
+        [Category("ADPM Values")]
+        public float Value29
         {
             get => _values.GetFloat(28);
             set
@@ -419,8 +419,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamZoomOut
+        [Category("ADPM Values")]
+        public float Value30
         {
             get => _values.GetFloat(29);
             set
@@ -430,8 +430,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamRotYMin
+        [Category("ADPM Values")]
+        public float Value31
         {
             get => _values.GetFloat(30);
             set
@@ -441,140 +441,140 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamRotYMax
+        [Category("ADPM Values")]
+        public string Value32
         {
-            get => _values.GetFloat(31);
+            get => _values.GetHex(31);
             set
             {
-                _values.SetFloat(31, value);
+                _values.SetHex(31, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamRotXMin
+        [Category("ADPM Values")]
+        public string Value33
         {
-            get => _values.GetFloat(32);
+            get => _values.GetHex(32);
             set
             {
-                _values.SetFloat(32, value);
+                _values.SetHex(32, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float PauseCamRotXMax
+        [Category("ADPM Values")]
+        public string Value34
         {
-            get => _values.GetFloat(33);
+            get => _values.GetHex(33);
             set
             {
-                _values.SetFloat(33, value);
+                _values.SetHex(33, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float FixedCamX
+        [Category("ADPM Values")]
+        public string Value35
         {
-            get => _values.GetFloat(34);
+            get => _values.GetHex(34);
             set
             {
-                _values.SetFloat(34, value);
+                _values.SetHex(34, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float FixedCamY
+        [Category("ADPM Values")]
+        public string Value36
         {
-            get => _values.GetFloat(35);
+            get => _values.GetHex(35);
             set
             {
-                _values.SetFloat(35, value);
+                _values.SetHex(35, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float FixedCamZ
+        [Category("ADPM Values")]
+        public string Value37
         {
-            get => _values.GetFloat(36);
+            get => _values.GetHex(36);
             set
             {
-                _values.SetFloat(36, value);
+                _values.SetHex(36, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float FixedCamAngle
+        [Category("ADPM Values")]
+        public string Value38
         {
-            get => _values.GetFloat(37);
+            get => _values.GetHex(37);
             set
             {
-                _values.SetFloat(37, value);
+                _values.SetHex(37, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float FixedHorizontalAngle
+        [Category("ADPM Values")]
+        public string Value39
         {
-            get => _values.GetFloat(38);
+            get => _values.GetHex(38);
             set
             {
-                _values.SetFloat(38, value);
+                _values.SetHex(38, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float FixedVerticalAngle
+        [Category("ADPM Values")]
+        public string Value40
         {
-            get => _values.GetFloat(39);
+            get => _values.GetHex(39);
             set
             {
-                _values.SetFloat(39, value);
+                _values.SetHex(39, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float Value41
+        [Category("ADPM Values")]
+        public string Value41
         {
-            get => _values.GetFloat(40);
+            get => _values.GetHex(40);
             set
             {
-                _values.SetFloat(40, value);
+                _values.SetHex(40, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float OlimarFinalCamAngle
+        [Category("ADPM Values")]
+        public string Value42
         {
-            get => _values.GetFloat(41);
+            get => _values.GetHex(41);
             set
             {
-                _values.SetFloat(41, value);
+                _values.SetHex(41, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float IceClimbersFinalPosX
+        [Category("ADPM Values")]
+        public string Value43
         {
-            get => _values.GetFloat(42);
+            get => _values.GetHex(42);
             set
             {
-                _values.SetFloat(42, value);
+                _values.SetHex(42, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float IceClimbersFinalPosY
+        [Category("ADPM Values")]
+        public float Value44
         {
             get => _values.GetFloat(43);
             set
@@ -584,8 +584,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float IceClimbersFinalPosZ
+        [Category("ADPM Values")]
+        public float Value45
         {
             get => _values.GetFloat(44);
             set
@@ -595,8 +595,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float IceClimbersFinalScaleX
+        [Category("ADPM Values")]
+        public float Value46
         {
             get => _values.GetFloat(45);
             set
@@ -606,19 +606,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float IceClimbersFinalScaleY
+        [Category("ADPM Values")]
+        public string Value47
         {
-            get => _values.GetFloat(46);
+            get => _values.GetHex(46);
             set
             {
-                _values.SetFloat(46, value);
+                _values.SetHex(46, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float PitFinalPalutenaScale
+        [Category("ADPM Values")]
+        public float Value48
         {
             get => _values.GetFloat(47);
             set
@@ -628,74 +628,41 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float Value49
+        [Category("ADPM Values")]
+        public int Value49
         {
-            get => _values.GetFloat(48);
+            get => _values.GetInt(48);
             set
             {
-                _values.SetFloat(48, value);
+                _values.SetInt(48, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public byte StageWindEnabled
+        [Category("ADPM Values")]
+        public string Value50
         {
-            get => _values.GetByte(49, 0);
+            get => _values.GetHex(49);
             set
             {
-                _values.SetByte(49, 0, value);
+                _values.SetHex(49, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public bool CharacterWindEnabled
+        [Category("ADPM Values")]
+        public int Value51
         {
-            get => _values.GetByte(49, 1) != 0;
+            get => _values.GetInt(50);
             set
             {
-                _values.SetByte(49, 1, (byte) (value ? 1 : 0));
+                _values.SetInt(50, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public byte Value50c
-        {
-            get => _values.GetByte(49, 2);
-            set
-            {
-                _values.SetByte(49, 2, value);
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("STPM Values")]
-        public byte Value50d
-        {
-            get => _values.GetByte(49, 3);
-            set
-            {
-                _values.SetByte(49, 3, value);
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("STPM Values")]
-        public float WindStrength
-        {
-            get => _values.GetFloat(50);
-            set
-            {
-                _values.SetFloat(50, value);
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("STPM Values")]
-        public float HorizontalWindRotation
+        [Category("ADPM Values")]
+        public float Value52
         {
             get => _values.GetFloat(51);
             set
@@ -705,134 +672,134 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("STPM Values")]
-        public float VerticalWindRotation
+        [Category("ADPM Values")]
+        public int Value53
         {
-            get => _values.GetFloat(52);
+            get => _values.GetInt(52);
             set
             {
-                _values.SetFloat(52, value);
+                _values.SetInt(52, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public float Value54
+        [Category("ADPM Values")]
+        public string Value54
         {
-            get => _values.GetFloat(53);
+            get => _values.GetHex(53);
             set
             {
-                _values.SetFloat(53, value);
+                _values.SetHex(53, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public RGBAPixel Value55
+        [Category("ADPM Values")]
+        public int Value55
         {
-            get => _values.GetRGBA(54);
+            get => _values.GetInt(54);
             set
             {
-                _values.SetRGBA(54, value);
+                _values.SetInt(54, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value56
+        [Category("ADPM Values")]
+        public string Value56
         {
-            get => _values.GetInt(55);
+            get => _values.GetHex(55);
             set
             {
-                _values.SetInt(55, value);
+                _values.SetHex(55, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value57
+        [Category("ADPM Values")]
+        public string Value57
         {
-            get => _values.GetInt(56);
+            get => _values.GetHex(56);
             set
             {
-                _values.SetInt(56, value);
+                _values.SetHex(56, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value58
+        [Category("ADPM Values")]
+        public string Value58
         {
-            get => _values.GetInt(57);
+            get => _values.GetHex(57);
             set
             {
-                _values.SetInt(57, value);
+                _values.SetHex(57, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int EchoMultiplier
+        [Category("ADPM Values")]
+        public string Value59
         {
-            get => _values.GetInt(58);
+            get => _values.GetHex(58);
             set
             {
-                _values.SetInt(58, value);
+                _values.SetHex(58, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value60
+        [Category("ADPM Values")]
+        public float Value60
         {
-            get => _values.GetInt(59);
+            get => _values.GetFloat(59);
             set
             {
-                _values.SetInt(59, value);
+                _values.SetFloat(59, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value61
+        [Category("ADPM Values")]
+        public float Value61
         {
-            get => _values.GetInt(60);
+            get => _values.GetFloat(60);
             set
             {
-                _values.SetInt(60, value);
+                _values.SetFloat(60, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value62
+        [Category("ADPM Values")]
+        public float Value62
         {
-            get => _values.GetInt(61);
+            get => _values.GetFloat(61);
             set
             {
-                _values.SetInt(61, value);
+                _values.SetFloat(61, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value63
+        [Category("ADPM Values")]
+        public float Value63
         {
-            get => _values.GetInt(62);
+            get => _values.GetFloat(62);
             set
             {
-                _values.SetInt(62, value);
+                _values.SetFloat(62, value);
                 SignalPropertyChange();
             }
         }
 
-        [Category("STPM Values")]
-        public int Value64
+        [Category("ADPM Values")]
+        public float Value64
         {
-            get => _values.GetInt(63);
+            get => _values.GetFloat(63);
             set
             {
-                _values.SetInt(63, value);
+                _values.SetFloat(63, value);
                 SignalPropertyChange();
             }
         }
@@ -845,7 +812,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = "STPMEntry " + id;
+                _name = "ADPMEntry " + id;
             }
 
             _values = new ParameterValueManager((VoidPtr) Header + 4);
