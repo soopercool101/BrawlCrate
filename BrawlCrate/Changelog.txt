@@ -103,7 +103,7 @@ they be held accountable for the manner in which it is used.
      . AddContextMenuItem
        - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
    - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a folder
-   - Example Loader (REFF) Renamed to better explain what it does, uncomments important code, and is now disabled by default
+   - Example Loader (RFNT) Renamed to better explain what it does, uncomments actual parsing logic, and adds "Do Something" to RFNTWrapper instead of ARCWrapper
    - Added Example Loader that dumps CSPs as RSPs
  . Add ability to directly import materials and shaders to an MDL0
  . Add new iconography for Canary builds
