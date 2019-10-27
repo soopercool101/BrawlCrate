@@ -60,8 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = "Swimmable Water";
             }
-
-            _count = Header->_count;
+            
             return Header->_count > 0;
         }
 
