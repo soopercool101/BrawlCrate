@@ -12,8 +12,8 @@ namespace BrawlLib.SSBBTypes
 
         public uint _tag;
         public bint _count;
-        public bint _unk0;
-        public int _pad1;
+        public bint _version;
+        public int _extParam;
 
         public VoidPtr this[int index] => (byte*) Address + Offsets(index);
 

@@ -1,4 +1,4 @@
-﻿using BrawlLib.SSBBTypes;
+﻿﻿using BrawlLib.SSBBTypes;
 using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -8,9 +8,35 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.BLOC;
         internal BLOC* Header => (BLOC*) WorkingUncompressed.Address;
 
+        public int Version
+        {
+            get => _version;
+            set
+            {
+                _version = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _version = 0x80;
+
+        public int ExtParam
+        {
+            get => _extParam;
+            set
+            {
+                _extParam = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _extParam = 0;
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
+            _version = Header->_version;
+            _extParam = Header->_extParam;
             return Header->_count > 0;
         }
 
@@ -54,7 +80,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             BLOC* header = (BLOC*) address;
-            *header = new BLOC(Children.Count);
+            *header = new BLOC();
+            header->_tag = BLOC.Tag;
+            header->_count = Children.Count;
+            header->_version = Version;
+            header->_extParam = ExtParam;
+
             uint offset = (uint) (0x10 + Children.Count * 4);
             for (int i = 0; i < Children.Count; i++)
             {
