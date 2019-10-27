@@ -113,6 +113,7 @@ they be held accountable for the manner in which it is used.
  . Add "Export Selected" toolstrip for multi-selection
  . Add new setting to toggle context-based looping for audio sources
  . Add support for parsing and editing of Custom My Music (CMM) files
+ . Add basic support to parse and edit Adventure Parameter (ADPM) files found in Subspace Emissary stages
  . Update documentation to v0.30.0
  . Unsupported and unrecognized file types can now be opened as raw data files
  . Temp files are now opened using default OS functionality, rather than in a dedicated per-install folder

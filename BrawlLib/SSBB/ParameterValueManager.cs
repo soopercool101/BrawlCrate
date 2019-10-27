@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Imaging;
 using System;
 
-namespace BrawlLib
+namespace BrawlLib.SSBB
 {
     public unsafe class ParameterValueManager
     {
