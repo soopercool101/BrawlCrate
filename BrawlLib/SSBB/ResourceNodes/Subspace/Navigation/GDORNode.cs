@@ -8,9 +8,8 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal GDOR* Header => (GDOR*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GDOR;
-
-        public int _doors;
-        [Category("GDOR")] public int Doors => _doors;
+        
+        [Category("GDOR")] public int Doors => Children?.Count ?? 0;
 
         public override void OnPopulate()
         {
@@ -39,8 +38,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = "Adventure Doors";
             }
-
-            _doors = Header->_count;
 
             return Header->_count > 0;
         }

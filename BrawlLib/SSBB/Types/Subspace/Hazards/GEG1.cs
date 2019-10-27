@@ -187,23 +187,5 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
-
-        public enum EnemyType : short
-        {
-            Spaak = 0x0F,
-            Prim = 0x17,
-            BoxerPrim = 0x14,
-            BoomPrim = 0x20,
-            SwordPrim = 0x23
-        }
-
-        internal static EnemyType[] _KnownEnemies =
-        {
-            EnemyType.Spaak,
-            EnemyType.Prim,
-            EnemyType.BoxerPrim,
-            EnemyType.BoomPrim,
-            EnemyType.SwordPrim
-        };
     }
 }

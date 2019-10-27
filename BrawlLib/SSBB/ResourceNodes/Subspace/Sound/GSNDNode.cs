@@ -8,11 +8,10 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal GSND* Header => (GSND*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GSND;
-        public int _count;
 
         [Category("GSND")]
         [DisplayName("Entries")]
-        public int Count => _count;
+        public int Count => Children?.Count ?? 0;
 
         public override void OnPopulate()
         {

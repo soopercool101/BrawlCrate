@@ -11,9 +11,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("GCAM")]
         [DisplayName("Entry Count")]
-        public int Count => _count;
+        public int EntryCount => Children?.Count ?? 0;
 
-        public int _count;
         private const int _entrySize = 0x23; // The constant size of a child entry
 
         public override void OnPopulate()
@@ -61,8 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = "Animated Camera";
             }
-
-            _count = Header->_count;
+            
             return Header->_count > 0;
         }
 

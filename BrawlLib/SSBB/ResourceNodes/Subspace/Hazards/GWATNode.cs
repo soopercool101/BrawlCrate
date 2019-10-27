@@ -11,9 +11,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("GWAT")]
         [DisplayName("Entry Count")]
-        public int Count => _count;
-
-        public int _count;
+        public int Count => Children?.Count ?? 0;
+        
         private const int _entrySize = 0x38; // The constant size of a child entry
 
         public override void OnPopulate()

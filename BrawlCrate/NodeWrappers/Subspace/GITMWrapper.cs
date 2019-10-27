@@ -55,7 +55,6 @@ namespace BrawlCrate.NodeWrappers
         {
             GITMEntryNode node = new GITMEntryNode {Name = "Trophy [0]"};
             _resource.AddChild(node);
-            ((GITMNode) _resource)._count += 1;
         }
 
         public GITMWrapper()

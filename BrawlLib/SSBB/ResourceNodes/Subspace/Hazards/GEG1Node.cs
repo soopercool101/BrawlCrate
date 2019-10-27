@@ -8,12 +8,10 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal GEG1* Header => (GEG1*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GEG1;
-
-        private int _count;
-
+        
         [Category("GEG1")]
         [DisplayName("Enemy Count")]
-        public int count => _count;
+        public int EnemyCount => Children?.Count ?? 0;
 
         private const int _entrySize = 0x84; // The constant size of a child entry
 
@@ -62,8 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = "GEG1";
             }
-
-            _count = Header->_count;
+            
             return Header->_count > 0;
         }
 
