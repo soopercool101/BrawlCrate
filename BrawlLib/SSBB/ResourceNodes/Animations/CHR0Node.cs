@@ -604,7 +604,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 KeyframeEntry kfe;
                 foreach (CHR0EntryNode tempEntry in Children)
                 {
-                    CHR0EntryNode newIntEntry = new CHR0EntryNode() { Name = tempEntry.Name };
+                    CHR0EntryNode newIntEntry = new CHR0EntryNode { Name = tempEntry.Name };
                     newIntEntry.SetSize(tempEntry.FrameCount, Loop);
                     for (int x = 0; x < tempEntry.FrameCount; x++)
                     {
