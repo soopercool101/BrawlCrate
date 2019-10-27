@@ -107,7 +107,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class BLOCEntryNode : ResourceNode
     {
-        internal BLOCEntry* Header => (BLOCEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         public int Entries { get; private set; }
 
@@ -117,7 +116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             byte* _NumFiles = (byte*) WorkingUncompressed.Address + 0x07;
             if (_name == null)
             {
-                _name = new string((sbyte*) Header);
+                _name = new string((sbyte*) WorkingUncompressed.Address);
             }
 
             Entries = *(int*) _NumFiles;

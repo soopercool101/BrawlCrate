@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal GDOR* Header => (GDOR*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GDOR;
 
-        private int _doors;
+        public int _doors;
         [Category("GDOR")] public int Doors => _doors;
 
         public override void OnPopulate()

@@ -91,7 +91,7 @@ namespace BrawlCrate.NodeWrappers
                 DoorID = "00000000"
             };
             _resource.AddChild(node);
-            ((GDORNode) _resource)._doors += 1;
+            ((GDORNode) _resource)._doors++;
         }
 
         public GDORWrapper()
