@@ -76,7 +76,7 @@ Full changelog can be viewed from the help menu.";
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
-            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1);
+            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe", StringComparison.OrdinalIgnoreCase));
 #if CANARY
             AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
