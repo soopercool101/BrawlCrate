@@ -2323,6 +2323,108 @@ For example, if the shader has two stages but this number is 1, the second stage
         }
 
         #endregion
+        
+        #region Special Materials
+        
+        public void GenerateShadowMaterial()
+        {
+            //HardcodedFiles.CreateShadowMaterial();
+            //ReplaceRaw(FileMap.FromFile(ShadowMaterial.Name));
+            Name = "MShadow1";
+
+            EnableBlend = true;
+            LightChannel0.MaterialColor = new Vector4(255 * 255, 255 * 255, 255 * 255, 255 * 255);
+            LightChannel0.Color.Enabled = false;
+            LightChannel0.Color.MaterialSource = (GXColorSrc) 1;
+            LightChannel0.Alpha.Enabled = false;
+            LightChannel0.Alpha.MaterialSource = (GXColorSrc) 1;
+            XLUMaterial = true;
+            LightSetIndex = -1;
+            _tevColorBlock.TevReg1Lo.AG = 70;
+            CompareBeforeTexture = true;
+            EnableDepthUpdate = false;
+
+            Children?.Clear();
+
+            addShadowReference();
+        }
+        
+        private void addShadowReference()
+        {
+            MDL0MaterialRefNode mr = new MDL0MaterialRefNode();
+            AddChild(mr);
+            mr.Name = "TShadow1";
+            mr.SCN0RefCamera = 7;
+            mr.MapMode = MappingMethod.Projection;
+            mr.UWrapMode = MatWrapMode.Clamp;
+            mr.VWrapMode = MatWrapMode.Clamp;
+            mr.Projection = TexProjection.STQ;
+            mr.InputForm = TexInputForm.ABC1;
+            mr.EmbossSource = 5;
+
+
+            UserDataClass shadowData = new UserDataClass
+            {
+                _name = "shadow",
+                DataType = UserValueType.Int,
+                Entries = new string[1]
+            };
+            shadowData.Entries[0] = Children.Count.ToString();
+            UserEntries.Add(shadowData);
+        }
+
+        public void GenerateSpyMaterial()
+        {
+            //HardcodedFiles.CreateSpyMaterial();
+            //ReplaceRaw(FileMap.FromFile(SpyMaterial.Name));
+            Name = "Spycloak";
+
+            LightSetIndex = -1;
+            FogIndex = -1;
+            _tevColorBlock.TevReg1Lo.RB = 255;
+            _tevColorBlock.TevReg1Hi0.RB = 255;
+            _tevColorBlock.TevReg1Hi0.AG = 255;
+            IndirectShaderStages = 1;
+
+            LightChannel1._matColor.Red = 255;
+            LightChannel1._matColor.Blue = 255;
+            LightChannel1._matColor.Green = 255;
+
+            LightChannel0.Color.Enabled = false;
+            LightChannel0.Alpha.Enabled = false;
+
+            CompareBeforeTexture = true;
+
+            Children?.Clear();
+
+            addSpyReferences();
+        }
+        
+        private void addSpyReferences()
+        {
+            MDL0MaterialRefNode fbref = new MDL0MaterialRefNode();
+            MDL0MaterialRefNode spycloakref = new MDL0MaterialRefNode();
+            AddChild(fbref);
+            AddChild(spycloakref);
+            fbref.Name = "FB";
+            spycloakref.Name = "spycloak00";
+            fbref.HasTextureMatrix = spycloakref.HasTextureMatrix = true;
+            fbref.Projection = spycloakref.Projection = TexProjection.STQ;
+            fbref.UWrapMode = spycloakref.UWrapMode = fbref.VWrapMode = spycloakref.VWrapMode = MatWrapMode.Clamp;
+            fbref.SCN0RefCamera = 0;
+            fbref.MapMode = MappingMethod.Projection;
+            spycloakref.Scale = new Vector2(1, (float) 0.125);
+            spycloakref.MapMode = MappingMethod.EnvCamera;
+            spycloakref.MinFilter = MatTextureMinFilter.Linear_Mipmap_Linear;
+            fbref.LODBias = -1;
+            spycloakref.LODBias = -4;
+            fbref.InputForm = spycloakref.InputForm = TexInputForm.ABC1;
+            fbref.Coordinates = TexSourceRow.Geometry;
+            spycloakref.Coordinates = TexSourceRow.Normals;
+            spycloakref.Normalize = true;
+        }
+        
+        #endregion
 
         public override unsafe void Replace(string fileName)
         {

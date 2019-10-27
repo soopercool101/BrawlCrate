@@ -1300,6 +1300,591 @@ namespace BrawlLib.SSBB.ResourceNodes
             Influences.Sort();
         }
 
+        public void ConvertToShadowModel()
+        {
+            if (_matGroup == null)
+            {
+                Populate();
+                if (_matGroup == null || _boneGroup == null || _objGroup == null)
+                {
+                    return;
+                }
+            }
+
+            // Implementation with support for multiple culling types
+            MDL0MaterialNode mat1 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat1);
+            mat1.GenerateShadowMaterial();
+            //mat1.Name += "_CullNone";
+            mat1.CullMode = CullMode.Cull_None;
+
+            MDL0MaterialNode mat2 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat2);
+            mat2.GenerateShadowMaterial();
+            //mat2.Name += "_CullInside";
+            mat2.CullMode = CullMode.Cull_Inside;
+
+            MDL0MaterialNode mat3 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat3);
+            mat3.GenerateShadowMaterial();
+            //mat3.Name += "_CullOutside";
+            mat3.CullMode = CullMode.Cull_Outside;
+
+            MDL0MaterialNode mat4 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat4);
+            mat4.GenerateShadowMaterial();
+            //mat4.Name += "_CullAll";
+            mat4.CullMode = CullMode.Cull_All;
+
+            // Properly remove all shaders
+            if (ShaderList != null)
+            {
+                int shaderNum = ShaderGroup.Children.Count;
+                for (int i = 0; i < shaderNum; i++)
+                {
+                    ResourceNode s = ShaderGroup.Children[0];
+                    ShaderGroup.RemoveChild(s);
+                }
+
+                //Children.Remove(ShaderGroup);
+            }
+
+            // Add a new shader
+            if (_shadGroup == null)
+            {
+                MDL0GroupNode g = _shadGroup;
+                if (g == null)
+                {
+                    AddChild(g = new MDL0GroupNode(MDLResourceType.Shaders), true);
+                    _shadGroup = g;
+                    _shadList = g.Children;
+                }
+            }
+
+            if (_shadList.Count == 0)
+            {
+                if (_shadList != null && _matList != null && _shadList.Count < _matList.Count)
+                {
+                    MDL0ShaderNode shader = new MDL0ShaderNode();
+                    _shadGroup.AddChild(shader);
+                    shader.DefaultAsShadow();
+                    shader.Rebuild(true);
+                }
+            }
+
+            mat1.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat2.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat3.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat4.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat1.Rebuild(true);
+            mat2.Rebuild(true);
+            mat3.Rebuild(true);
+            mat4.Rebuild(true);
+
+            if (_objGroup == null)
+            {
+                return;
+            }
+
+            bool usesCullOutside = false;
+            bool usesCullInside = false;
+            bool usesCullNone = false;
+            bool usesCullAll = false;
+            foreach (MDL0ObjectNode m in _objGroup.Children)
+            {
+                m.TextureMatrix0Enabled = false;
+                m.TextureMatrix1Enabled = false;
+                m.TextureMatrix2Enabled = false;
+                m.TextureMatrix3Enabled = false;
+                m.TextureMatrix4Enabled = false;
+                m.TextureMatrix5Enabled = false;
+                m.TextureMatrix6Enabled = false;
+                m.TextureMatrix7Enabled = false;
+
+                m.TextureMatrix0Identity = false;
+                m.TextureMatrix1Identity = false;
+                m.TextureMatrix2Identity = false;
+                m.TextureMatrix3Identity = false;
+                m.TextureMatrix4Identity = false;
+                m.TextureMatrix5Identity = false;
+                m.TextureMatrix6Identity = false;
+                m.TextureMatrix7Identity = false;
+
+                foreach (DrawCall c in m.DrawCalls)
+                {
+                    CullMode cullToUse = c.MaterialNode.CullMode;
+
+                    switch (cullToUse)
+                    {
+                        case CullMode.Cull_None:
+                            c.MaterialNode = mat1;
+                            usesCullNone = true;
+                            break;
+                        case CullMode.Cull_Inside:
+                            c.MaterialNode = mat2;
+                            usesCullInside = true;
+                            break;
+                        case CullMode.Cull_Outside:
+                            c.MaterialNode = mat3;
+                            usesCullOutside = true;
+                            break;
+                        case CullMode.Cull_All:
+                            c.MaterialNode = mat4;
+                            usesCullAll = true;
+                            break;
+                        default: break;
+                    }
+
+                    c.DrawPass = DrawCall.DrawPassType.Transparent;
+                }
+            }
+
+            // Delete unused materials
+            while (MaterialGroup.Children.Count > 4)
+            {
+                MaterialGroup.RemoveChild(MaterialGroup.Children[0]);
+            }
+
+            if (!usesCullAll)
+            {
+                MaterialGroup.RemoveChild(mat4);
+            }
+
+            if (!usesCullOutside)
+            {
+                MaterialGroup.RemoveChild(mat3);
+            }
+
+            if (!usesCullInside)
+            {
+                MaterialGroup.RemoveChild(mat2);
+            }
+
+            if (!usesCullNone)
+            {
+                MaterialGroup.RemoveChild(mat1);
+            }
+
+            if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
+            {
+                MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
+                    .Substring(0, MaterialGroup.Children[0].Name.IndexOf("_"));
+            }
+
+            if (BoneGroup == null)
+            {
+                Populate();
+            }
+
+            MDL0BoneNode b = (MDL0BoneNode) BoneGroup.Children[0];
+            b.Name = b.Name + "_NShadow";
+            b.Scale = new Vector3(b.Scale._x * 1.01f, b.Scale._y * 1.01f, b.Scale._z * 1.01f);
+
+            if (Name.Length > 4)
+            {
+                if (Name.Substring(Name.Length - 4) == " (2)")
+                {
+                    Name = Name.Substring(0, Name.Length - 4);
+                }
+            }
+
+            Name = Name + "_Shadow";
+        }
+
+        public static bool MultiTypeWorks = false;
+
+        public void ConvertToSpyModel()
+        {
+            if (_matGroup == null)
+            {
+                return;
+            }
+
+            Name = Name + "Spy";
+
+            if (MultiTypeWorks)
+            {
+                ConvertToSpyModelMultiType();
+                return;
+            }
+
+            // Material only works properly with the name SpyCloak, so it needs to select the correct culling type
+            MDL0MaterialNode mat1 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat1);
+            mat1.GenerateSpyMaterial();
+            mat1.CullMode = CullMode.Cull_None;
+
+            MDL0MaterialNode matCulled = new MDL0MaterialNode();
+            _matGroup.AddChild(matCulled);
+            matCulled.GenerateSpyMaterial();
+            matCulled.Name += "_CullAll";
+            matCulled.CullMode = CullMode.Cull_All;
+
+            // Properly remove all shaders
+            if (ShaderList != null)
+            {
+                int shaderNum = ShaderGroup.Children.Count;
+                for (int i = 0; i < shaderNum; i++)
+                {
+                    ResourceNode s = ShaderGroup.Children[0];
+                    ShaderGroup.RemoveChild(s);
+                }
+
+                //Children.Remove(ShaderGroup);
+            }
+
+            // Add a new shader
+            if (_shadGroup == null)
+            {
+                MDL0GroupNode g = _shadGroup;
+                if (g == null)
+                {
+                    AddChild(g = new MDL0GroupNode(MDLResourceType.Shaders), true);
+                    _shadGroup = g;
+                    _shadList = g.Children;
+                }
+            }
+
+            if (_shadList.Count == 0)
+            {
+                if (_shadList != null && _matList != null && _shadList.Count < _matList.Count)
+                {
+                    MDL0ShaderNode shader = new MDL0ShaderNode();
+                    _shadGroup.AddChild(shader);
+                    shader.DefaultAsSpy();
+                    shader.Rebuild(true);
+                }
+            }
+
+            // Add the color
+            MDL0GroupNode colorG = _colorGroup;
+            if (colorG == null)
+            {
+                AddChild(colorG = new MDL0GroupNode(MDLResourceType.Colors), true);
+                _colorGroup = colorG;
+                _colorList = colorG.Children;
+            }
+
+            MDL0ColorNode colorNode = new MDL0ColorNode
+            {
+                Name = Name + "_BodyM__" + Name + "_Spycloak",
+                Colors = new RGBAPixel[] {new RGBAPixel() {A = 255, R = 132, G = 130, B = 132}}
+            };
+            colorG.AddChild(colorNode, true);
+
+            mat1.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat1.Rebuild(true);
+
+            if (_objGroup == null)
+            {
+                return;
+            }
+
+            bool usesCullOutside = false;
+            bool usesCullInside = false;
+            bool usesCullNone = false;
+            bool usesCullAll = false;
+            foreach (MDL0ObjectNode m in _objGroup.Children)
+            {
+                foreach (DrawCall c in m.DrawCalls)
+                {
+                    CullMode cullToUse = c.MaterialNode.CullMode;
+                    c.MaterialNode = mat1;
+                    switch (cullToUse)
+                    {
+                        case CullMode.Cull_None:
+                            usesCullNone = true;
+                            break;
+                        case CullMode.Cull_Inside:
+                            usesCullInside = true;
+                            break;
+                        case CullMode.Cull_Outside:
+                            usesCullOutside = true;
+                            break;
+                        case CullMode.Cull_All:
+                            c.MaterialNode = matCulled;
+                            usesCullAll = true;
+                            break;
+                        default: break;
+                    }
+
+                    c.DrawPass = DrawCall.DrawPassType.Opaque;
+                }
+
+                for (int i = 0; i < 8; i++)
+                {
+                    m.SetUVs(i, null, true);
+                }
+
+                m.SetColors(0, colorNode.Name, true);
+                m.SetColors(1, null, true);
+
+                m.TextureMatrix0Enabled = true;
+                m.TextureMatrix1Enabled = true;
+                m.TextureMatrix2Enabled = false;
+                m.TextureMatrix3Enabled = false;
+                m.TextureMatrix4Enabled = false;
+                m.TextureMatrix5Enabled = false;
+                m.TextureMatrix6Enabled = false;
+                m.TextureMatrix7Enabled = false;
+
+                m.TextureMatrix0Identity = true;
+                m.TextureMatrix1Identity = false;
+                m.TextureMatrix2Identity = false;
+                m.TextureMatrix3Identity = false;
+                m.TextureMatrix4Identity = false;
+                m.TextureMatrix5Identity = false;
+                m.TextureMatrix6Identity = false;
+                m.TextureMatrix7Identity = false;
+            }
+
+            // Delete Unused Colors
+            while (ColorGroup.Children.Count > 1)
+            {
+                ColorGroup.RemoveChild(ColorGroup.Children[0]);
+            }
+
+
+            // Delete unused materials
+            while (MaterialGroup.Children.Count > 2)
+            {
+                MaterialGroup.RemoveChild(MaterialGroup.Children[0]);
+            }
+
+            // Choose proper culling based on best usage
+            if (usesCullNone || usesCullInside && usesCullOutside)
+            {
+                mat1.CullMode = CullMode.Cull_None;
+            }
+            else if (usesCullInside)
+            {
+                mat1.CullMode = CullMode.Cull_Inside;
+            }
+            else if (usesCullOutside)
+            {
+                mat1.CullMode = CullMode.Cull_Outside;
+            }
+
+            if (!usesCullAll)
+            {
+                MaterialGroup.RemoveChild(matCulled);
+            }
+
+            foreach (MDL0MaterialNode mat in _matGroup.Children)
+            {
+                foreach (MDL0MaterialRefNode matref in mat.Children)
+                {
+                    matref.HasTextureMatrix = true;
+                }
+            }
+        }
+
+        public void ConvertToSpyModelMultiType()
+        {
+            if (_matGroup == null)
+            {
+                return;
+            }
+
+            // Implementation with support for multiple culling types
+            // Will all be named the same as the material appears to need to be named "Spycloak"
+            MDL0MaterialNode mat1 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat1);
+            mat1.GenerateSpyMaterial();
+            //mat1.Name += "_CullNone";
+            mat1.CullMode = CullMode.Cull_None;
+
+            MDL0MaterialNode mat2 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat2);
+            mat2.GenerateSpyMaterial();
+            //mat2.Name += "_CullInside";
+            mat2.CullMode = CullMode.Cull_Inside;
+
+            MDL0MaterialNode mat3 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat3);
+            mat3.GenerateSpyMaterial();
+            //mat3.Name += "_CullOutside";
+            mat3.CullMode = CullMode.Cull_Outside;
+
+            MDL0MaterialNode mat4 = new MDL0MaterialNode();
+            _matGroup.AddChild(mat4);
+            mat4.GenerateSpyMaterial();
+            //mat4.Name += "_CullAll";
+            mat4.CullMode = CullMode.Cull_All;
+
+            // Properly remove all shaders
+            if (ShaderList != null)
+            {
+                int shaderNum = ShaderGroup.Children.Count;
+                for (int i = 0; i < shaderNum; i++)
+                {
+                    ResourceNode s = ShaderGroup.Children[0];
+                    ShaderGroup.RemoveChild(s);
+                }
+
+                //Children.Remove(ShaderGroup);
+            }
+
+            // Add a new shader
+            if (_shadGroup == null)
+            {
+                MDL0GroupNode g = _shadGroup;
+                if (g == null)
+                {
+                    AddChild(g = new MDL0GroupNode(MDLResourceType.Shaders), true);
+                    _shadGroup = g;
+                    _shadList = g.Children;
+                }
+            }
+
+            if (_shadList.Count == 0)
+            {
+                if (_shadList != null && _matList != null && _shadList.Count < _matList.Count)
+                {
+                    MDL0ShaderNode shader = new MDL0ShaderNode();
+                    _shadGroup.AddChild(shader);
+                    shader.DefaultAsSpy();
+                    shader.Rebuild(true);
+                }
+            }
+
+            // Add the color
+            MDL0GroupNode colorG = _colorGroup;
+            if (colorG == null)
+            {
+                AddChild(colorG = new MDL0GroupNode(MDLResourceType.Colors), true);
+                _colorGroup = colorG;
+                _colorList = colorG.Children;
+            }
+
+            MDL0ColorNode colorNode = new MDL0ColorNode
+            {
+                Name = Name + "_BodyM__" + Name + "_Spycloak",
+                Colors = new RGBAPixel[] {new RGBAPixel() {A = 255, R = 132, G = 130, B = 132}}
+            };
+            colorG.AddChild(colorNode, true);
+
+            mat1.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat2.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat3.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat4.ShaderNode = (MDL0ShaderNode) _shadList[0];
+            mat1.Rebuild(true);
+            mat2.Rebuild(true);
+            mat3.Rebuild(true);
+            mat4.Rebuild(true);
+
+            if (_objGroup == null)
+            {
+                return;
+            }
+
+            bool usesCullOutside = false;
+            bool usesCullInside = false;
+            bool usesCullNone = false;
+            bool usesCullAll = false;
+            foreach (MDL0ObjectNode m in _objGroup.Children)
+            {
+                foreach (DrawCall c in m.DrawCalls)
+                {
+                    CullMode cullToUse = c.MaterialNode.CullMode;
+                    switch (cullToUse)
+                    {
+                        case CullMode.Cull_None:
+                            c.MaterialNode = mat1;
+                            usesCullNone = true;
+                            break;
+                        case CullMode.Cull_Inside:
+                            c.MaterialNode = mat2;
+                            usesCullInside = true;
+                            break;
+                        case CullMode.Cull_Outside:
+                            c.MaterialNode = mat3;
+                            usesCullOutside = true;
+                            break;
+                        case CullMode.Cull_All:
+                            c.MaterialNode = mat4;
+                            usesCullAll = true;
+                            break;
+                        default: break;
+                    }
+
+                    c.DrawPass = DrawCall.DrawPassType.Opaque;
+                }
+
+                for (int i = 0; i < 8; i++)
+                {
+                    m.SetUVs(i, null, true);
+                }
+
+                m.SetColors(0, colorNode.Name, true);
+                m.SetColors(1, null, true);
+
+                m.TextureMatrix0Enabled = true;
+                m.TextureMatrix1Enabled = true;
+                m.TextureMatrix2Enabled = false;
+                m.TextureMatrix3Enabled = false;
+                m.TextureMatrix4Enabled = false;
+                m.TextureMatrix5Enabled = false;
+                m.TextureMatrix6Enabled = false;
+                m.TextureMatrix7Enabled = false;
+
+                m.TextureMatrix0Identity = true;
+                m.TextureMatrix1Identity = false;
+                m.TextureMatrix2Identity = false;
+                m.TextureMatrix3Identity = false;
+                m.TextureMatrix4Identity = false;
+                m.TextureMatrix5Identity = false;
+                m.TextureMatrix6Identity = false;
+                m.TextureMatrix7Identity = false;
+            }
+
+            // Delete Unused Colors
+            while (ColorGroup.Children.Count > 1)
+            {
+                ColorGroup.RemoveChild(ColorGroup.Children[0]);
+            }
+
+            // Delete unused materials
+            while (MaterialGroup.Children.Count > 4)
+            {
+                MaterialGroup.RemoveChild(MaterialGroup.Children[0]);
+            }
+
+            if (!usesCullAll)
+            {
+                MaterialGroup.RemoveChild(mat4);
+            }
+
+            if (!usesCullOutside)
+            {
+                MaterialGroup.RemoveChild(mat3);
+            }
+
+            if (!usesCullInside)
+            {
+                MaterialGroup.RemoveChild(mat2);
+            }
+
+            if (!usesCullNone)
+            {
+                MaterialGroup.RemoveChild(mat1);
+            }
+
+            if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
+            {
+                MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
+                    .Substring(0, MaterialGroup.Children[0].Name.IndexOf("_"));
+            }
+
+            foreach (MDL0MaterialNode mat in _matGroup.Children)
+            {
+                foreach (MDL0MaterialRefNode matref in mat.Children)
+                {
+                    matref.HasTextureMatrix = true;
+                }
+            }
+        }
+        
         #endregion
 
         #region Linking

@@ -533,6 +533,46 @@ namespace BrawlLib.SSBB.ResourceNodes
                 s.DefaultAsMetal(texcount - 1);
             }
         }
+        
+        public void DefaultAsShadow()
+        {
+            Default(true);
+            TextureRef0 = true;
+            ((MDL0TEVStageNode) Children[0]).TextureEnabled = true;
+            ((MDL0TEVStageNode) Children[0]).TextureMapID = TexMapID.TexMap0;
+            ((MDL0TEVStageNode) Children[0]).TextureCoordID = TexCoordID.TexCoord0;
+            ((MDL0TEVStageNode) Children[0]).ConstantColorSelection = TevKColorSel.ConstantColor0_RGB;
+            ((MDL0TEVStageNode) Children[0]).ColorSelectionA = ColorArg.One;
+            ((MDL0TEVStageNode) Children[0]).ColorSelectionC = ColorArg.One;
+            ((MDL0TEVStageNode) Children[0]).ColorSelectionD = ColorArg.Color0;
+            ((MDL0TEVStageNode) Children[0]).ColorOperation = TevColorOp.Subtract;
+            ((MDL0TEVStageNode) Children[0]).ConstantAlphaSelection = TevKAlphaSel.ConstantColor0_Alpha;
+            ((MDL0TEVStageNode) Children[0]).AlphaSelectionB = AlphaArg.Alpha0;
+            ((MDL0TEVStageNode) Children[0]).AlphaSelectionC = AlphaArg.TextureAlpha;
+            ((MDL0TEVStageNode) Children[0]).AlphaRegister = TevAlphaRegID.Alpha1;
+        }
+
+        public void DefaultAsSpy()
+        {
+            Default(true);
+            TextureRef0 = true;
+            TextureRef1 = true;
+            IndTex0MapID = TexMapID.TexMap1;
+            IndTex0Coord = TexCoordID.TexCoord1;
+            ((MDL0TEVStageNode) Children[0]).TextureEnabled = true;
+            ((MDL0TEVStageNode) Children[0]).TextureMapID = TexMapID.TexMap0;
+            ((MDL0TEVStageNode) Children[0]).TextureCoordID = TexCoordID.TexCoord0;
+            ((MDL0TEVStageNode) Children[0]).RasterColor = ColorSelChan.LightChannel0;
+            ((MDL0TEVStageNode) Children[0]).ConstantColorSelection = TevKColorSel.ConstantColor0_RGB;
+            ((MDL0TEVStageNode) Children[0]).ColorSelectionB = ColorArg.TextureColor;
+            ((MDL0TEVStageNode) Children[0]).ColorSelectionC = ColorArg.RasterColor;
+            ((MDL0TEVStageNode) Children[0]).ColorScale = TevScale.MultiplyBy2;
+            ((MDL0TEVStageNode) Children[0]).ConstantAlphaSelection = TevKAlphaSel.ConstantColor0_Alpha;
+            ((MDL0TEVStageNode) Children[0]).AlphaSelectionB = AlphaArg.TextureAlpha;
+            ((MDL0TEVStageNode) Children[0]).AlphaSelectionC = AlphaArg.RasterAlpha;
+            ((MDL0TEVStageNode) Children[0]).Bias = IndTexBiasSel.STU;
+            ((MDL0TEVStageNode) Children[0]).Matrix = IndTexMtxID.Matrix0;
+        }
 
         internal override void GetStrings(StringTable table)
         {
