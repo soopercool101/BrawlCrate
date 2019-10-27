@@ -65,6 +65,7 @@ namespace BrawlCrate.NodeWrappers
                 _header2 = GEG1EntryNode.Header2
             };
             _resource.AddChild(node);
+            node.RegenName();
         }
 
         public GEG1Wrapper()

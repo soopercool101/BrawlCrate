@@ -70,7 +70,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public enum EnemyList
+    public enum EnemyList : byte
     {
         Goomba = 0,
         Poppant = 1,
@@ -139,6 +139,11 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal GEG1Entry* Header => (GEG1Entry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ENEMY;
+
+        public void RegenName()
+        {
+            Name = EnemyNameList();
+        }
 
         // I believe these are constant values for the Header
         public const uint Header1 = 0x0000803F; // 0x00
@@ -301,7 +306,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 _enemyID = (byte) value;
-                Name = EnemyNameList();
+                RegenName();
                 SignalPropertyChange();
             }
         }
@@ -816,7 +821,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private string EnemyNameList()
         {
-            if (Enum.IsDefined(typeof(EnemyList), Index))
+            if (Enum.IsDefined(typeof(EnemyList), _enemyID))
             {
                 switch (_enemyID)
                 {
