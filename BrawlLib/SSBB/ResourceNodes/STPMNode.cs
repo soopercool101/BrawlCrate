@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class STPMNode : ARCEntryNode
     {
-        internal STPM* Header => (STPM*) WorkingUncompressed.Address;
+        internal Parameter* Header => (Parameter*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.STPM;
 
         public override bool OnInitialize()
@@ -39,8 +39,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            STPM* header = (STPM*) address;
-            *header = new STPM(Children.Count);
+            Parameter* header = (Parameter*) address;
+            *header = new Parameter(Parameter.TagSTPM, Children.Count);
             uint offset = (uint) (0x10 + Children.Count * 4);
             for (int i = 0; i < Children.Count; i++)
             {
@@ -53,13 +53,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((STPM*) source.Address)->_tag == STPM.Tag ? new STPMNode() : null;
+            return ((Parameter*) source.Address)->_tag == Parameter.TagSTPM ? new STPMNode() : null;
         }
     }
 
     public unsafe class STPMEntryNode : ResourceNode
     {
-        internal STPMEntry* Header => (STPMEntry*) WorkingUncompressed.Address;
+        internal ParameterEntry* Header => (ParameterEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public byte echo, id2;
@@ -927,8 +927,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            STPMEntry* header = (STPMEntry*) address;
-            *header = new STPMEntry(id, echo, id2);
+            ParameterEntry* header = (ParameterEntry*) address;
+            *header = new ParameterEntry(id, echo, id2);
             byte* pOut = (byte*) header + 4;
             byte* pIn = (byte*) _values._values.Address;
             for (int i = 0; i < 64 * 4; i++)
