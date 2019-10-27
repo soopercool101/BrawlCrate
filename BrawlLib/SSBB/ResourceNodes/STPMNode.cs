@@ -62,10 +62,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ParameterEntry* Header => (ParameterEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        public byte echo, id2;
-        public ushort id;
+        private byte echo;
+        private byte id2;
+        private ushort id;
 
-        public ParameterValueManager _values = new ParameterValueManager(null);
+        private ParameterValueManager _values = new ParameterValueManager(null);
 
         [Category("STPM Data")]
         public byte Echo
