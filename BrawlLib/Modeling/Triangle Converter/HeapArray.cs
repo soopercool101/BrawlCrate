@@ -10,7 +10,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
     internal enum CompareType
     {
         Greater,
-        Less,
+        Less
     }
 
     internal class HeapArray

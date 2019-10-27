@@ -57,7 +57,7 @@ namespace BrawlLib.Wii.Models
             typeof(MDL0TextureNode), //9, special handling
             typeof(MDL0TextureNode), //10, special handling
             typeof(MDL0FurVecNode),
-            typeof(MDL0FurPosNode),
+            typeof(MDL0FurPosNode)
         };
 
         internal static readonly MR[] OrderBank = new MR[]
@@ -74,7 +74,7 @@ namespace BrawlLib.Wii.Models
             MR.Vertices,
             MR.Normals,
             MR.Colors,
-            MR.UVs,
+            MR.UVs
         };
 
         public static readonly List<MR>[] IndexBank = new List<MR>[]

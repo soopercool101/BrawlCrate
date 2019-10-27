@@ -390,7 +390,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Unknown = 1,
             Independent = 2,
             ModuleControlled = 4,
-            SSEUnknown = 8,
+            SSEUnknown = 8
         }
 
         public List<CollisionLink> _points = new List<CollisionLink>();

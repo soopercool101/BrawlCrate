@@ -177,7 +177,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             TextureMinFilter.Nearest, TextureMinFilter.Linear, TextureMinFilter.NearestMipmapNearest,
             TextureMinFilter.NearestMipmapLinear, TextureMinFilter.LinearMipmapNearest,
-            TextureMinFilter.LinearMipmapLinear,
+            TextureMinFilter.LinearMipmapLinear
         };
 
         public static readonly TextureWrapMode[] _wraps =

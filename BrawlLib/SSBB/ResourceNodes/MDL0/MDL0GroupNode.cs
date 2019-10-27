@@ -406,7 +406,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 _drawOrder = pData[6],
                                 _isXLU = isXLU,
                                 MaterialNode = mat,
-                                VisibilityBoneNode = visBone,
+                                VisibilityBoneNode = visBone
                             });
 
                             //Increment pointer

@@ -53,7 +53,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            GCAMEntryNode node = new GCAMEntryNode {Name = "Camera [0]",};
+            GCAMEntryNode node = new GCAMEntryNode {Name = "Camera [0]"};
             _resource.AddChild(node);
             ((GCAMNode) _resource)._count += 1;
         }

@@ -237,7 +237,7 @@ namespace BrawlLib
             [typeof(STPMNode)] = "stpm",
             [typeof(STDTNode)] = "stdt",
             [typeof(SCLANode)] = "scla",
-            [typeof(HavokNode)] = "hkx",
+            [typeof(HavokNode)] = "hkx"
         };
 
         public static string GetDefaultExportAllExtension(Type type)

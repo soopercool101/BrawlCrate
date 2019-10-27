@@ -13,7 +13,7 @@
         CI8 = 9,
 
         //CI14X2 = 10,
-        CMPR = 14,
+        CMPR = 14
 
         //A8 = 0x21,
         //Z8 = 0x11,
@@ -50,7 +50,7 @@
         GX_CTF_Z4 = 0x30,
         GX_CTF_Z8M = 0x39,
         GX_CTF_Z8L = 0x3A,
-        GX_CTF_Z16L = 0x3C,
+        GX_CTF_Z16L = 0x3C
     }
 
     public enum WiiPaletteFormat : uint

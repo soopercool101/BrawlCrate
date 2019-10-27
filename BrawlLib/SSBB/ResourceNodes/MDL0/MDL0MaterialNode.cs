@@ -1411,7 +1411,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                             TexGenType = TexTexgenType.Regular,
                             SourceRow = TexSourceRow.Normals,
                             EmbossSource = 5,
-                            EmbossLight = 0,
+                            EmbossLight = 0
                         };
 
                         if (i == MetalMaterial.Children.Count)
@@ -2753,7 +2753,7 @@ For example, if the shader has two stages but this number is 1, the second stage
         Light4 = 0x10,
         Light5 = 0x20,
         Light6 = 0x40,
-        Light7 = 0x80,
+        Light7 = 0x80
     }
 
     public enum GXDiffuseFn

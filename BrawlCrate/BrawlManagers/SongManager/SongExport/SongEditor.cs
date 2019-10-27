@@ -13,7 +13,7 @@ namespace BrawlCrate.SongManager.SongExport
             "RSBE01.gct",
             "/data/gecko/codes/RSBE01.gct",
             "/codes/RSBE01.gct",
-            "../../../../codes/RSBE01.gct",
+            "../../../../codes/RSBE01.gct"
         };
 
         private static readonly string[] MUM_PATHS =

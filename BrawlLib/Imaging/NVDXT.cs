@@ -703,7 +703,7 @@ namespace BrawlLib.Imaging
             {0x1F, 0x1E},
             {0x1F, 0x1E},
             {0x1F, 0x1F},
-            {0x1F, 0x1F},
+            {0x1F, 0x1F}
         };
 
 
@@ -964,7 +964,7 @@ namespace BrawlLib.Imaging
             {0x3E, 0x3F},
             {0x3F, 0x3E},
             {0x3F, 0x3F},
-            {0x3F, 0x3F},
+            {0x3F, 0x3F}
         };
 
         #endregion

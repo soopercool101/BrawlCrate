@@ -200,7 +200,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             typeof(cmStringNode),
             typeof(cmULongPtrNode),
             typeof(cmEnumNode),
-            null, //max
+            null //max
         };
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)

@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             XYZ = 0,
             NBT = 1,  // one index per NBT
-            NBT3 = 2, // one index per each of N/B/T
+            NBT3 = 2 // one index per each of N/B/T
         }
 
         [Category("Normal Data")] public int ID => _hdr._index;

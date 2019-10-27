@@ -22,7 +22,7 @@ namespace BrawlLib.Modeling
 
         public enum ImportType
         {
-            MDL0, //Wii SDK
+            MDL0 //Wii SDK
             //BMD, //GameCube SDK
             //LM, //Luigi's Mansion
             //FMDL, //Wii U SDK
@@ -97,7 +97,7 @@ namespace BrawlLib.Modeling
                                 Ref4 = -1,
                                 Ref5 = -1,
                                 Ref6 = -1,
-                                Ref7 = -1,
+                                Ref7 = -1
                             };
 
                             shadNode._parent = m._shadGroup;
@@ -745,7 +745,7 @@ namespace BrawlLib.Modeling
                         Scale = Vector3.One,
                         Translation = (box.Max + box.Min) / 2.0f,
                         _name = "TransN_" + poly.Name,
-                        Parent = TempRootBone,
+                        Parent = TempRootBone
                     };
 
                     poly.DeferUpdateAssets();
@@ -807,12 +807,12 @@ namespace BrawlLib.Modeling
             Error = "There was a problem creating a default material and shader.";
             if (model._matList.Count == 0 && model._objList.Count != 0)
             {
-                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default",};
+                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default"};
                 (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
                 {
                     RasterColor = ColorSelChan.LightChannel0,
                     AlphaSelectionD = AlphaArg.RasterAlpha,
-                    ColorSelectionD = ColorArg.RasterColor,
+                    ColorSelectionD = ColorArg.RasterColor
                 });
 
                 model._shadGroup.AddChild(mat.ShaderNode);

@@ -386,7 +386,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         _updating = true,
                         Name = n.Name + "_ExtMtl",
-                        _activeStages = 4,
+                        _activeStages = 4
                     };
 
                     _matGroup.AddChild(node);
@@ -412,7 +412,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 TexGenType = TexTexgenType.Regular,
                                 SourceRow = TexSourceRow.Normals,
                                 EmbossSource = 5,
-                                EmbossLight = 0,
+                                EmbossLight = 0
                             };
 
                             mr.Normalize = true;

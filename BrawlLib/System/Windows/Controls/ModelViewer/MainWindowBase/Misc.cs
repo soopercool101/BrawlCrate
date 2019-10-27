@@ -23,12 +23,12 @@ namespace System.Windows.Forms
             {
                 ApplyTranslation,
                 ApplyAngle,
-                ApplyScale,
+                ApplyScale
             };
             _mouseMoveTargetType = new MouseMoveTargetType[]
             {
                 MouseMoveTargetBone,
-                MouseMoveTargetVertex,
+                MouseMoveTargetVertex
             };
         }
 

@@ -16,7 +16,7 @@ namespace System
         tif,
         bmp,
         jpg,
-        gif,
+        gif
     }
 
     [Serializable]
@@ -96,11 +96,11 @@ namespace System
 
                 _viewports = new List<ModelPanelViewportInfo>
                 {
-                    ModelPanelViewport.DefaultPerspective.GetInfo(),
+                    ModelPanelViewport.DefaultPerspective.GetInfo()
                     //ModelPanelViewport.DefaultFront.GetInfo(),
                     //ModelPanelViewport.DefaultLeft.GetInfo(),
                     //ModelPanelViewport.DefaultTop.GetInfo(),
-                },
+                }
             };
             foreach (ModelPanelViewportInfo v in s._viewports)
             {

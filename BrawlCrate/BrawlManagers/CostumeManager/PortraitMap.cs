@@ -83,7 +83,7 @@ namespace BrawlCrate.CostumeManager
             new Fighter("toonlink", 40),
             new Fighter("wolf", 43),
             new Fighter("snake", 45),
-            new Fighter("sonic", 46),
+            new Fighter("sonic", 46)
         };
 
         // Fighter, CSSSlot, Cosmetic
@@ -128,7 +128,7 @@ namespace BrawlCrate.CostumeManager
             new int[] {0x29, 0x24, 0x25},
             new int[] {0x2C, 0x25, 0x27},
             new int[] {0x2E, 0x26, 0x28},
-            new int[] {0x2F, 0x27, 0x29},
+            new int[] {0x2F, 0x27, 0x29}
         };
 
         private static int? GetCSSSlot(int fighterIndex)
@@ -208,7 +208,7 @@ namespace BrawlCrate.CostumeManager
             {40, new int[] {0, 1, 3, 4, 5, 6}},
             {43, new int[] {0, 1, 4, 2, 3, 5}},
             {45, new int[] {0, 1, 3, 4, 2, 5}},
-            {46, new int[] {0, 5, 4, 2, 1}},
+            {46, new int[] {0, 5, 4, 2, 1}}
         };
 
         private static Dictionary<int, int[]> PM35Mappings = CompilePM35Mappings();

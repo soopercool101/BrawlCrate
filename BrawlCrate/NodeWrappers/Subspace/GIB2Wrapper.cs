@@ -53,7 +53,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            GIB2EntryNode node = new GIB2EntryNode {Name = "Item Box [0]",};
+            GIB2EntryNode node = new GIB2EntryNode {Name = "Item Box [0]"};
             _resource.AddChild(node);
             ((GIB2Node) _resource)._count += 1;
         }

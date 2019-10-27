@@ -550,7 +550,7 @@ namespace System.Windows.Forms
                 new HotKeyInfo(Keys.T, false, false, false, HotkeyTranslateTool),
                 new HotKeyInfo(Keys.D0, false, false, false, HotkeyVertexEditor),
                 new HotKeyInfo(Keys.D9, false, false, false, HotkeyWeightEditor),
-                new HotKeyInfo(Keys.D5, false, false, false, HotkeyOverlays),
+                new HotKeyInfo(Keys.D5, false, false, false, HotkeyOverlays)
             };
             _hotkeyList.AddRange(temp);
         }
@@ -664,7 +664,7 @@ namespace System.Windows.Forms
                 _screenCapPath = ScreenCapBgLocText.Text,
                 _liveTexFolderPath = LiveTextureFolderPath.Text,
 
-                _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList(),
+                _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList()
             };
             return settings;
         }

@@ -173,7 +173,7 @@ namespace System.Windows.Forms
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
-                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0)
                 };
                 annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
                                            bytes[1].ToString("X2") + bytes[0].ToString("X2"));
@@ -229,7 +229,7 @@ namespace System.Windows.Forms
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 3),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 2),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 1),
-                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 0),
+                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 0)
                                 };
                                 annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") +
                                                            bytes[2].ToString("X2") + bytes[1].ToString("X2") +
@@ -281,7 +281,7 @@ namespace System.Windows.Forms
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
-                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0)
                 };
                 annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
                                            bytes[1].ToString("X2") + bytes[0].ToString("X2"));
@@ -456,7 +456,7 @@ namespace System.Windows.Forms
                         hexBox1.ByteProvider.ReadByte(t + 3),
                         hexBox1.ByteProvider.ReadByte(t + 2),
                         hexBox1.ByteProvider.ReadByte(t + 1),
-                        hexBox1.ByteProvider.ReadByte(t + 0),
+                        hexBox1.ByteProvider.ReadByte(t + 0)
                     };
 
                     //Reverse byte order to big endian
@@ -513,7 +513,7 @@ namespace System.Windows.Forms
                     {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 1),
-                        hexBox1.ByteProvider.ReadByte(t + 0),
+                        hexBox1.ByteProvider.ReadByte(t + 0)
                     };
                     //Reverse byte order to big endian
                     txtByte1.Text = bytes[1].ToString("X2");

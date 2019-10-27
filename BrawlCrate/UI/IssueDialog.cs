@@ -88,7 +88,7 @@ namespace System.Windows.Forms
                 {
                     FileName = path,
                     WindowStyle = ProcessWindowStyle.Hidden,
-                    Arguments = args,
+                    Arguments = args
                 });
             }
             else

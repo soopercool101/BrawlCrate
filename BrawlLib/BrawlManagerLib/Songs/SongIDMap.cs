@@ -315,7 +315,7 @@ namespace BrawlManagerLib
             new Song("???", "Z55", 0x2868, null, null),
             new Song("???", "Z56", 0x2869, null, null),
             new Song("???", "Z57", 0x286A, null, null),
-            new Song("???", "Z58", 0x286B, null, null),
+            new Song("???", "Z58", 0x286B, null, null)
         };
     }
 }

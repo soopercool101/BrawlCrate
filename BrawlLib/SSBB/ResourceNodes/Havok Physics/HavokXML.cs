@@ -180,7 +180,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 {"hkSkeleton", new KeyValuePair<string, string>("hkaSkeleton", "0xfec1cedb")},
                 {"hkAnimationContainer", new KeyValuePair<string, string>("hkaAnimationContainer", "0x26859f4c")},
-                {"hkBone", new KeyValuePair<string, string>("hkaBone", "0")},
+                {"hkBone", new KeyValuePair<string, string>("hkaBone", "0")}
             };
     }
 }

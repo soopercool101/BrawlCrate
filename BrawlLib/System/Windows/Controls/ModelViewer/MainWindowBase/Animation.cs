@@ -699,7 +699,7 @@ namespace System.Windows.Forms
             ResourceType.PAT0,
             ResourceType.VIS0,
             ResourceType.CLR0,
-            ResourceType.SCN0,
+            ResourceType.SCN0
         };
 
         public virtual void SetCorrespondingAnimation(NW4RAnimType focusType, NW4RAnimType targetType)

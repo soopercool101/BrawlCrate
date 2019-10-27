@@ -194,7 +194,7 @@ namespace BrawlLib.SSBBTypes
             Prim = 0x17,
             BoxerPrim = 0x14,
             BoomPrim = 0x20,
-            SwordPrim = 0x23,
+            SwordPrim = 0x23
         }
 
         internal static EnemyType[] _KnownEnemies =

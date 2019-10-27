@@ -1431,7 +1431,7 @@ namespace BrawlCrate
             Process.Start(new ProcessStartInfo
             {
                 FileName = $"{Application.StartupPath}\\Changelog.txt",
-                WindowStyle = ProcessWindowStyle.Hidden,
+                WindowStyle = ProcessWindowStyle.Hidden
             });
 #endif
         }

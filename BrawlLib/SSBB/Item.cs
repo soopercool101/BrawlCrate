@@ -208,7 +208,7 @@
             new Item(0x7D2, "Unknown"),
             new Item(0x7D3, "Unknown"),
             new Item(0x7D4, "Unknown"),
-            new Item(0x7D5, "Unknown"),
+            new Item(0x7D5, "Unknown")
         };
     }
 }

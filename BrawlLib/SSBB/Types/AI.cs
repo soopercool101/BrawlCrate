@@ -131,7 +131,7 @@ namespace BrawlLib.SSBBTypes
     {
         SetReaction = 0x1,
         If = 0x6,
-        EndIf = 0x9,
+        EndIf = 0x9
     }
 
     public unsafe struct CEString
@@ -1003,6 +1003,6 @@ namespace BrawlLib.SSBBTypes
         Lose = 0x1CA,
         DamageFace = 0x1CB,
         Dark = 0x1CC,
-        Spycloak = 0x1CD,
+        Spycloak = 0x1CD
     }
 }

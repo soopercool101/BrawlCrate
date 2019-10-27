@@ -63,7 +63,7 @@ namespace System.Windows.Forms
                 _ortho = _camera._ortho,
                 _restrictXRot = _camera._restrictXRot,
                 _restrictYRot = _camera._restrictYRot,
-                _restrictZRot = _camera._restrictZRot,
+                _restrictZRot = _camera._restrictZRot
             };
         }
 
@@ -1161,7 +1161,7 @@ namespace System.Windows.Forms
         {
             _type = ViewportProjection.Perspective,
             _camera = new GLCamera(),
-            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f)
         };
 
         private new static ModelPanelViewport BaseOrtho => new ModelPanelViewport
@@ -1172,9 +1172,9 @@ namespace System.Windows.Forms
                 _ortho = true,
                 _nearZ = -10000.0f,
                 _farZ = 10000.0f,
-                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f),
+                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f)
             },
-            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f)
         };
 
         public new static ModelPanelViewport DefaultOrtho
@@ -1368,7 +1368,7 @@ namespace System.Windows.Forms
                 _ortho = _ortho,
                 _restrictXRot = _restrictXRot,
                 _restrictYRot = _restrictYRot,
-                _restrictZRot = _restrictZRot,
+                _restrictZRot = _restrictZRot
             };
             v.SetPercentages(_percentages);
             v.LightPosition = _lightPosition;

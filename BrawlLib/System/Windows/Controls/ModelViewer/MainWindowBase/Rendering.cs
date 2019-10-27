@@ -296,7 +296,7 @@ namespace System.Windows.Forms
         {
             CoordinateType.Local, //T
             CoordinateType.Local, //R
-            CoordinateType.Local, //S
+            CoordinateType.Local //S
         };
 
         #region Transform Control Rendering

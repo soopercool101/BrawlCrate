@@ -30,7 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             "AmbLights(NW4R)",
             "Lights(NW4R)",
             "Fogs(NW4R)",
-            "Cameras(NW4R)",
+            "Cameras(NW4R)"
         };
 
         public static readonly Type[] _types =
@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             typeof(SCN0AmbientLightNode),
             typeof(SCN0LightNode),
             typeof(SCN0FogNode),
-            typeof(SCN0CameraNode),
+            typeof(SCN0CameraNode)
         };
 
 

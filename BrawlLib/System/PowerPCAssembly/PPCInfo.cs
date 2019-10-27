@@ -966,6 +966,6 @@ namespace System.PowerPcAssembly
         stfdu = 0xDC000000,
         ld = 0xE8000000,
         std = 0xF8000000,
-        fcmpu = 0xFC000000,
+        fcmpu = 0xFC000000
     }
 }

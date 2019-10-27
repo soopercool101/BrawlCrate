@@ -145,7 +145,7 @@ namespace BrawlLib.Modeling
             RightHanded = 1,
 
             //XNA standard coordinate system
-            LeftHanded = -1,
+            LeftHanded = -1
         }
 
         #endregion

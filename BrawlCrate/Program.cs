@@ -895,7 +895,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlStable {RootPath}",
+                        Arguments = $"-dlStable {RootPath}"
                     });
                     git?.WaitForExit();
                 }
@@ -916,7 +916,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlCanary {RootPath}",
+                        Arguments = $"-dlCanary {RootPath}"
                     });
                     git?.WaitForExit();
                 }
