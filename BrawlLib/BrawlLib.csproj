@@ -192,6 +192,14 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <EmbeddedResource Include="CustomLists\FighterList.txt" />
     <EmbeddedResource Include="CustomLists\StageList.txt" />
     <EmbeddedResource Include="HardcodedFiles\Textures\metal00.tex0" />
+    <None Remove="HardcodedFiles\Textures\TShadow1.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Textures\TShadow1.tex0" />
+    <None Remove="HardcodedFiles\Textures\spycloak00.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Textures\spycloak00.tex0" />
+    <None Remove="HardcodedFiles\Textures\FB.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Textures\FB.tex0" />
+    <None Remove="HardcodedFiles\Static\Static.mdl0" />
+    <EmbeddedResource Include="HardcodedFiles\Models\Static.mdl0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Modeling\Collada\ColladaImportDialog.cs">

@@ -1,9 +1,12 @@
 ﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlManagerLib;
+using IronPython.Modules;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -57,7 +60,13 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Color Sequence", null, ImportClrAction),
                 new ToolStripMenuItem("Scene Settings", null, ImportScnAction),
                 new ToolStripMenuItem("Folder", null, ImportFolderAction),
-                new ToolStripMenuItem("Animated GIF", null, ImportGIFAction)
+                new ToolStripMenuItem("Animated GIF", null, ImportGIFAction),
+                new ToolStripMenuItem("Special", null,
+                    new ToolStripMenuItem("Static (Empty) Model", null, ImportCommonModelStaticAction),
+                    new ToolStripMenuItem("Character Spy Textures", null, ImportCommonTextureSpyAction),
+                    new ToolStripMenuItem("Character Metal Texture", null, ImportCommonTextureSpyAction),
+                    new ToolStripMenuItem("Stage Shadow Texture", null, ImportCommonTextureShadowAction)
+                )
             ));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Preview All Models", null, PreviewAllAction));
@@ -192,6 +201,27 @@ namespace BrawlCrate.NodeWrappers
         protected static void ImportGIFAction(object sender, EventArgs e)
         {
             GetInstance<BRESWrapper>().ImportGIF();
+        }
+        
+        protected static void ImportCommonModelStaticAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportCommonResource<MDL0Node>("BrawlLib.HardcodedFiles.Models.Static.mdl0");
+        }
+
+        protected static void ImportCommonTextureSpyAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportCommonResource<TEX0Node>("BrawlLib.HardcodedFiles.Textures.FB.tex0");
+            GetInstance<BRESWrapper>().ImportCommonResource<TEX0Node>("BrawlLib.HardcodedFiles.Textures.spycloak00.tex0");
+        }
+
+        protected static void ImportCommonTextureShadowAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportCommonResource<TEX0Node>("BrawlLib.HardcodedFiles.Textures.TShadow1.tex0");
+        }
+        
+        protected static void ImportCommonTextureMetalsction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportCommonResource<TEX0Node>("BrawlLib.HardcodedFiles.Textures.metal00.tex0");
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -580,6 +610,29 @@ namespace BrawlCrate.NodeWrappers
         public void PreviewAll()
         {
             new ModelForm().Show(_owner, ModelPanel.CollectModels(_resource));
+        }
+        
+        public void ImportCommonResource<T>(string resourceName) where T : BRESEntryNode
+        {
+            Assembly assembly = Assembly.GetAssembly(typeof(ResourceNode));
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                {
+                    return;
+                }
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    stream.CopyTo(ms);
+                    ResourceNode node = NodeFactory.FromSource(null, new DataSource(ms), typeof(T));
+                    ((BRRESNode)_resource).GetOrCreateFolder<T>().AddChild(node);
+
+                    BaseWrapper w = FindResource(node, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
+            }
         }
     }
 }
