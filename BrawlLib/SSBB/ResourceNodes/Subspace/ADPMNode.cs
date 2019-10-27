@@ -68,7 +68,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public ParameterValueManager _values = new ParameterValueManager(null);
 
         [Category("ADPM Data")]
-        public byte Echo
+        public byte Unknown
         {
             get => echo;
             set
