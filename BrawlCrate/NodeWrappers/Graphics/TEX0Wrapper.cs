@@ -146,16 +146,47 @@ namespace BrawlCrate.NodeWrappers
 
         public void ReEncode()
         {
+            PLT0Node plt = null;
+            if (((TEX0Node)_resource).HasPalette)
+            {
+                plt = ((TEX0Node) _resource).GetPaletteNode();
+            }
+
             using (TextureConverterDialog dlg = new TextureConverterDialog())
             {
                 dlg.LoadImages((Resource as TEX0Node).GetImage(0));
                 dlg.ShowDialog(MainForm.Instance, Resource as TEX0Node);
+            }
+
+            if (plt != null && !((TEX0Node) _resource).HasPalette)
+            {
+                plt.Dispose();
+                plt.Remove();
             }
         }
 
         protected internal override void OnPropertyChanged(ResourceNode node)
         {
             RefreshView(node);
+        }
+
+        public override void Delete()
+        {
+            if (Parent == null)
+            {
+                return;
+            }
+            
+            PLT0Node p = ((TEX0Node) _resource).GetPaletteNode();
+            if (((TEX0Node) _resource).HasPalette && p != null &&
+                MessageBox.Show("Would you like to delete the associated PLT0?", "Deleting TEX0",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                p.Dispose();
+                p.Remove();
+            }
+            
+            base.Delete();
         }
     }
 }
