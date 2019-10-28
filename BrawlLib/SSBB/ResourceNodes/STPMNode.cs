@@ -55,6 +55,63 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             return ((Parameter*) source.Address)->_tag == Parameter.TagSTPM ? new STPMNode() : null;
         }
+
+        public void ReplaceCamera(STPMNode external)
+        {
+            for (int i = 0; i < Children.Count && i < external.Children.Count; i++)
+            {
+                STPMEntryNode ext = external.Children[i] as STPMEntryNode;
+                if (ext == null || !(Children[i] is STPMEntryNode cur))
+                {
+                    continue;
+                }
+                
+                // In-game camera
+                cur.CameraFOV = ext.CameraFOV;
+                
+                cur.MinimumZ = ext.MinimumZ;
+                cur.MaximumZ = ext.MaximumZ;
+
+                cur.MinimumTilt = ext.MinimumTilt;
+                cur.MaximumTilt = ext.MaximumTilt;
+
+                cur.HorizontalRotationFactor = ext.HorizontalRotationFactor;
+                cur.VerticalRotationFactor = ext.VerticalRotationFactor;
+
+                cur.CharacterBubbleBufferMultiplier = ext.CharacterBubbleBufferMultiplier;
+                
+                cur.CameraSpeed = ext.CameraSpeed;
+
+                cur.StarKOCamTilt = ext.StarKOCamTilt;
+                cur.FinalSmashCamTilt = ext.FinalSmashCamTilt;
+
+                cur.CameraRight = ext.CameraRight;
+                cur.CameraLeft = ext.CameraLeft;
+                
+                // Pause camera
+                cur.PauseCamX = ext.PauseCamX;
+                cur.PauseCamY = ext.PauseCamY;
+                cur.PauseCamZ = ext.PauseCamZ;
+                cur.PauseCamAngle = ext.PauseCamAngle;
+                
+                cur.PauseCamZoomIn = ext.PauseCamZoomIn;
+                cur.PauseCamZoomOut = ext.PauseCamZoomOut;
+                cur.PauseCamZoomDefault = ext.PauseCamZoomDefault;
+
+                cur.PauseCamRotYMin = ext.PauseCamRotYMin;
+                cur.PauseCamRotYMax = ext.PauseCamRotYMax;
+                cur.PauseCamRotXMin = ext.PauseCamRotXMin;
+                cur.PauseCamRotXMax = ext.PauseCamRotXMax;
+                
+                // Fixed camera
+                cur.FixedCamX = ext.FixedCamX;
+                cur.FixedCamY = ext.FixedCamY;
+                cur.FixedCamZ = ext.FixedCamZ;
+                cur.FixedCamAngle = ext.FixedCamAngle;
+                cur.FixedHorizontalAngle = ext.FixedHorizontalAngle;
+                cur.FixedVerticalAngle = ext.FixedVerticalAngle;
+            }
+        }
     }
 
     public unsafe class STPMEntryNode : ResourceNode
