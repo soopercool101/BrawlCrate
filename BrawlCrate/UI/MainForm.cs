@@ -1908,7 +1908,7 @@ namespace BrawlCrate
             // 
             this.runScriptToolStripMenuItem.Name = "runScriptToolStripMenuItem";
             this.runScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.runScriptToolStripMenuItem.Text = "Run Script..";
+            this.runScriptToolStripMenuItem.Text = "Run Script...";
             this.runScriptToolStripMenuItem.Click += new System.EventHandler(this.runScriptToolStripMenuItem_Click);
             // 
             // reloadPluginsToolStripMenuItem
