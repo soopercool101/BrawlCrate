@@ -18,7 +18,7 @@
  . Added module annotations for:
    - Link (Section [1])
    - Wario (Section [1])
-   - Halberd (Section [4]
+   - Halberd (Section [4])
  . Added STDT documentation for:
    - Mario Circuit
    - Port Town: Aero Dive
@@ -83,7 +83,7 @@
  . Documentation system introduced
  . Added module annotations for:
    - 75m (Section [1] and [4])
-   - Pokémon Stadium (Section [4]
+   - Pokémon Stadium (Section [4])
    - Target Test (Section [4])
  . Added STDT documentation for:
    - 75m
