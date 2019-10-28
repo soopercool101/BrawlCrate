@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -819,22 +820,22 @@ namespace BrawlCrate.API
         /// <summary>
         ///     The folder in which the BrawlCrate installation is located.
         /// </summary>
-        public static string AppPath => Program.AppPath;
+        public static string AppPath => Path.GetFullPath(Program.AppPath);
         
         /// <summary>
         ///     The folder in which the API folders are located.
         /// </summary>
-        public static string APIPath => Program.ApiPath;
+        public static string APIPath => Path.GetFullPath(Program.ApiPath);
         
         /// <summary>
         ///     The folder in which plugins are located.
         /// </summary>
-        public static string PluginPath => Program.ApiPluginPath;
+        public static string PluginPath => Path.GetFullPath(Program.ApiPluginPath);
         
         /// <summary>
         ///     The folder in which loaders are located.
         /// </summary>
-        public static string LoaderPath => Program.ApiLoaderPath;
+        public static string LoaderPath => Path.GetFullPath(Program.ApiLoaderPath);
 
         /// <summary>
         ///     Attempts to open the file using a given path.
