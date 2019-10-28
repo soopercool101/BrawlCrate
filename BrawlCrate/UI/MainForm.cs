@@ -1135,6 +1135,14 @@ namespace BrawlCrate
                 Program.Open(inFile);
             }
         }
+        
+        private void openTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile))
+            {
+                Program.OpenTemplate(inFile);
+            }
+        }
 
         #region File Menu
 
@@ -1490,6 +1498,7 @@ namespace BrawlCrate
             this.rEFFParticlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rEFTParticleTexturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1620,6 +1629,7 @@ namespace BrawlCrate
             {
                 this.newToolStripMenuItem,
                 this.openToolStripMenuItem,
+                this.openTemplateToolStripMenuItem,
                 this.openFolderToolStripMenuItem,
                 this.saveToolStripMenuItem,
                 this.saveAsToolStripMenuItem,
@@ -1743,7 +1753,17 @@ namespace BrawlCrate
             this.openToolStripMenuItem.Text = "&Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // openFolerToolStripMenuItem
+            // openTemplateToolStripMenuItem
+            // 
+            this.openTemplateToolStripMenuItem.Name = "openTemplateToolStripMenuItem";
+            this.openTemplateToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt |
+                                               System.Windows.Forms.Keys.O)));
+            this.openTemplateToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.openTemplateToolStripMenuItem.Text = "&Open Template...";
+            this.openTemplateToolStripMenuItem.Click += new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
+            // 
+            // openFolderToolStripMenuItem
             // 
             this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
             this.openFolderToolStripMenuItem.ShortcutKeys =
@@ -2306,6 +2326,7 @@ namespace BrawlCrate
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem openTemplateToolStripMenuItem;
         private ToolStripMenuItem openFolderToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem exitToolStripMenuItem;

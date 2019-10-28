@@ -38,6 +38,7 @@ they be held accountable for the manner in which it is used.
      . External BrawlBox integration replaced with internal BrawlCrate integration. Opening files via this method will now open them in the main window
  . Add Moveset framework from v0.68b
  . Add support to open folders
+ . Add support to open files as templates, which doesn't set the save path automatically
  . New Color Smash method: Multi-select nodes and right-click to Color Smash
  . Panning on the modelviewer freezes the mouse to allow for smoother movement
  . Add MainForm previewing of Models for BRRES and ARC nodes (check the settings)
@@ -76,9 +77,15 @@ they be held accountable for the manner in which it is used.
      . ShowOKCancelWarning
      . ShowOKCancelError
      . AddMultiSelectContextMenuItem
+	 . AppPath
+	 . APIPath
+	 . PluginPath
+	 . LoaderPath
      . OpenMultiFileDialog
      . OpenFile
      . OpenFileNoErrors
+	 . OpenTemplate
+	 . OpenTemplateNoErrors
      . SaveFile
      . SaveFileAs
      . CloseFile
@@ -122,6 +129,7 @@ they be held accountable for the manner in which it is used.
  . Speed up rendering logic
  . Folder select dialog now uses the Vista and later styled folder select when on Windows
  . No longer use "lib" folder to improve compatibility
+ . Common files now are embedded into the program and no longer require internet
  . Fix bug in which certain collision planes would be ignored on object population (fixes New Pork City issues)
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program

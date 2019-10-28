@@ -817,6 +817,26 @@ namespace BrawlCrate.API
         #region Program
 
         /// <summary>
+        ///     The folder in which the BrawlCrate installation is located.
+        /// </summary>
+        public static string AppPath => Program.AppPath;
+        
+        /// <summary>
+        ///     The folder in which the API folders are located.
+        /// </summary>
+        public static string APIPath => Program.ApiPath;
+        
+        /// <summary>
+        ///     The folder in which plugins are located.
+        /// </summary>
+        public static string PluginPath => Program.ApiPluginPath;
+        
+        /// <summary>
+        ///     The folder in which loaders are located.
+        /// </summary>
+        public static string LoaderPath => Program.ApiLoaderPath;
+
+        /// <summary>
         ///     Attempts to open the file using a given path.
         ///
         ///     Returns true if the file is successfully loaded, and false otherwise.
@@ -841,6 +861,37 @@ namespace BrawlCrate.API
         public static bool OpenFileNoErrors(string path)
         {
             return Program.Open(path, false);
+        }
+        
+        /// <summary>
+        ///     Attempts to open the file as a template using a given path.
+        ///
+        ///     Templates do not set the save path, meaning that the user will be prompted for "Save As" on first save.
+        ///
+        ///     Returns true if the file is successfully loaded, and false otherwise.
+        /// </summary>
+        /// <param name="path">
+        ///     The path of the template file that is to be opened.
+        /// </param>
+        public static bool OpenTemplate(string path)
+        {
+            return Program.OpenTemplate(path);
+        }
+
+        /// <summary>
+        ///     Attempts to open the file using a given path.
+        ///     Any error messages (including "file not found") are not shown to the user.
+        ///
+        ///     Templates do not set the save path, meaning that the user will be prompted for "Save As" on first save.
+        ///
+        ///     Returns true if the file is successfully loaded, and false otherwise.
+        /// </summary>
+        /// <param name="path">
+        ///     The path of the template file that is to be opened.
+        /// </param>
+        public static bool OpenTemplateNoErrors(string path)
+        {
+            return Program.OpenTemplate(path, false);
         }
 
         /// <summary>
