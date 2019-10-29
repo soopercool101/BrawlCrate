@@ -1,4 +1,6 @@
-﻿using BrawlLib.Imaging;
+﻿using BrawlCrate;
+using BrawlCrate.NodeWrappers;
+using BrawlLib.Imaging;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
@@ -704,7 +706,10 @@ namespace System.Windows.Forms
             MDL0BoneNode.DefaultLineColor = (Color) settings._lineColor;
             MDL0BoneNode.DefaultLineDeselectedColor = (Color) settings._lineDeselectedColor;
             _floorHue = (Color) settings._floorColor;
-
+            foreach (ModelPanelViewportInfo v in settings._viewports)
+            {
+                v._backColor = (Program.RootNode is ARCNode a && a.IsStage ? settings._stgBgColor : settings._bgColor);
+            }
             int w = (int) settings._rightPanelWidth;
             if (w >= 50)
             {
