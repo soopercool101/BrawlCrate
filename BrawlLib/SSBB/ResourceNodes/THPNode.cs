@@ -33,6 +33,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("THP Header Data")] public float FrameRate => hdr._frameRate;
         [Category("THP Header Data")] public uint NumFrames => hdr._numFrames;
+        
+        [Browsable(false)] public bool Loop => false;
 
         public THPFrame[] _frames;
         public List<byte> _componentTypes;
