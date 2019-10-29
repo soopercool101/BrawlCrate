@@ -1318,7 +1318,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             if (_nodeColor != Color.Transparent && viewport != null)
             {
                 Vector3 screenPos = viewport.Camera.Project(_frameMatrix.GetPoint());
-                viewport.ScreenText[Name] = new Vector3(screenPos._x, screenPos._y - 9.0f, screenPos._z);
+                viewport.SettingsScreenText[Name] = new Vector3(screenPos._x, screenPos._y - 9.0f, screenPos._z);
             }
 
             float alpha = targetModel ? 1.0f : 0.45f;

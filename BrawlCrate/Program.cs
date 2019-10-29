@@ -734,6 +734,7 @@ Full changelog can be viewed from the help menu.";
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message);
+                    _rootNode.SignalPropertyChange();
                 }
 #endif
             }

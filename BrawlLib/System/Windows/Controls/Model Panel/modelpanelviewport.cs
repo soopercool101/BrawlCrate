@@ -15,7 +15,8 @@ namespace System.Windows.Forms
     {
         public ModelPanelViewport()
         {
-            _text = new ScreenTextHandler(this);
+            _settingsText = new ScreenTextHandler(this);
+            _noSettingsText = new ScreenTextHandler(this);
             _camera = new GLCamera();
             LightPosition = new Vector4(100.0f, 45.0f, 45.0f, 1.0f);
 
@@ -96,7 +97,8 @@ namespace System.Windows.Forms
         public bool _shiftSelecting;
         public Drawing.Point _selStart, _selEnd;
 
-        private readonly ScreenTextHandler _text;
+        private readonly ScreenTextHandler _settingsText;
+        private readonly ScreenTextHandler _noSettingsText;
 
         public bool _textEnabled;
         public bool _allowSelection;
@@ -125,7 +127,10 @@ namespace System.Windows.Forms
         public bool Selecting => _selecting;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ScreenTextHandler ScreenText => _text;
+        public ScreenTextHandler SettingsScreenText => _settingsText;
+        
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public ScreenTextHandler NoSettingsScreenText => _noSettingsText;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Drawing.Point SelectionStart
@@ -532,12 +537,13 @@ namespace System.Windows.Forms
             {
                 Vector3 point = Camera.GetPoint().Round(3);
                 Vector3 rot = Camera._rotation.Round(3);
-                _text[
+                _settingsText[
                     $"Position\nX: {point._x}\nY: {point._y}\nZ: {point._z}\n\nRotation\nX: {rot._x}\nY: {rot._y}\nZ: {rot._z}"] = new Vector3(5.0f, 5.0f, 0.5f);
             }
 
             //Render selection overlay and/or text overlays
-            if (_selecting && _allowSelection || _text.Count != 0 && _textEnabled || !only)
+            if (_selecting && _allowSelection || _settingsText.Count != 0 && _textEnabled ||
+                _noSettingsText.Count != 0 || !only)
             {
                 GL.PushAttrib(AttribMask.AllAttribBits);
                 {
@@ -571,9 +577,15 @@ namespace System.Windows.Forms
                             }
 
                             GL.Color4(Color.White);
-                            if (_text.Count != 0 && _textEnabled)
+                            
+                            if (_settingsText?.Count != 0 && _textEnabled)
                             {
-                                _text.Draw();
+                                _settingsText?.Draw();
+                            }
+                            
+                            if (_noSettingsText?.Count != 0)
+                            {
+                                _noSettingsText?.Draw();
                             }
 
                             if (_selecting && _allowSelection)
@@ -590,7 +602,8 @@ namespace System.Windows.Forms
 
                 //Clear text values
                 //This will be filled until the next render
-                _text.Clear();
+                _settingsText.Clear();
+                _noSettingsText.Clear();
             }
         }
 
