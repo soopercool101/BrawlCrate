@@ -2387,7 +2387,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             catch (Exception ex)
             {
-                _errors.Add("Something went wrong parsing the model: " + ex.ToString());
+                _errors.Add("Something went wrong parsing the model: " + ex);
             }
             finally //Clean up!
             {
@@ -2405,7 +2405,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (!SupportedVersions.Contains(_version))
                     {
-                        MessageBox.Show("The model " + _name + " has a version of " + _version.ToString() +
+                        MessageBox.Show("The model " + _name + " has a version of " + _version +
                                         " which is not supported. The model may be corrupt and data maybe be lost if you save the model.");
                     }
                     else
@@ -2596,7 +2596,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 index = 0;
                 foreach (VertexCodec c in _linker._uvs)
                 {
-                    table.Add("#" + (index++).ToString());
+                    table.Add("#" + (index++));
                 }
             }
         }

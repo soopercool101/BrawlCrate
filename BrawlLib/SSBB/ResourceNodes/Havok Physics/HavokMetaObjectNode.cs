@@ -160,7 +160,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (m == null)
             {
-                Console.WriteLine("Problem creating class member instance of " + type.ToString());
+                Console.WriteLine("Problem creating class member instance of " + type);
             }
 
             return m;

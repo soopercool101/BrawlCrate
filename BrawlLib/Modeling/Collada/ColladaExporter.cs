@@ -569,11 +569,11 @@ namespace BrawlLib.Modeling
 
             //Position source
             writer.WriteStartElement("source");
-            writer.WriteAttributeString("id", name + "_Colors" + set.ToString());
+            writer.WriteAttributeString("id", name + "_Colors" + set);
 
             //Array start
             writer.WriteStartElement("float_array");
-            writer.WriteAttributeString("id", name + "_ColorArr" + set.ToString());
+            writer.WriteAttributeString("id", name + "_ColorArr" + set);
             writer.WriteAttributeString("count", (count * 4).ToString());
 
             for (int i = 0; i < count; i++)
@@ -599,7 +599,7 @@ namespace BrawlLib.Modeling
             writer.WriteStartElement("technique_common");
 
             writer.WriteStartElement("accessor");
-            writer.WriteAttributeString("source", "#" + name + "_ColorArr" + set.ToString());
+            writer.WriteAttributeString("source", "#" + name + "_ColorArr" + set);
             writer.WriteAttributeString("count", count.ToString());
             writer.WriteAttributeString("stride", "4");
 
@@ -644,11 +644,11 @@ namespace BrawlLib.Modeling
 
             //Position source
             writer.WriteStartElement("source");
-            writer.WriteAttributeString("id", name + "_UVs" + set.ToString());
+            writer.WriteAttributeString("id", name + "_UVs" + set);
 
             //Array start
             writer.WriteStartElement("float_array");
-            writer.WriteAttributeString("id", name + "_UVArr" + set.ToString());
+            writer.WriteAttributeString("id", name + "_UVArr" + set);
             writer.WriteAttributeString("count", (count * 2).ToString());
 
             for (int i = 0; i < count; i++)
@@ -675,7 +675,7 @@ namespace BrawlLib.Modeling
             writer.WriteStartElement("technique_common");
 
             writer.WriteStartElement("accessor");
-            writer.WriteAttributeString("source", "#" + name + "_UVArr" + set.ToString());
+            writer.WriteAttributeString("source", "#" + name + "_UVArr" + set);
             writer.WriteAttributeString("count", count.ToString());
             writer.WriteAttributeString("stride", "2");
 
@@ -759,14 +759,14 @@ namespace BrawlLib.Modeling
                     case 3:
                         set = i - 2;
                         writer.WriteAttributeString("semantic", "COLOR");
-                        writer.WriteAttributeString("source", "#" + poly._name + "_Colors" + set.ToString());
+                        writer.WriteAttributeString("source", "#" + poly._name + "_Colors" + set);
                         writer.WriteAttributeString("set", set.ToString());
                         break;
 
                     default:
                         set = i - 4;
                         writer.WriteAttributeString("semantic", "TEXCOORD");
-                        writer.WriteAttributeString("source", "#" + poly._name + "_UVs" + set.ToString());
+                        writer.WriteAttributeString("source", "#" + poly._name + "_UVs" + set);
                         writer.WriteAttributeString("set", set.ToString());
                         break;
                 }

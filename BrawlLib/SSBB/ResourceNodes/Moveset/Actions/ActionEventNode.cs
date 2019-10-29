@@ -103,7 +103,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             s += Helpers.Hex8(EventID) + "|";
             foreach (MoveDefEventParameterNode p in Children)
             {
-                s += ((int) p._type).ToString() + "\\";
+                s += ((int) p._type) + "\\";
                 if (p._type == ArgVarType.Offset)
                 {
                     MoveDefEventOffsetNode o = p as MoveDefEventOffsetNode;

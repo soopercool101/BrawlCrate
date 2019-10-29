@@ -1134,7 +1134,7 @@ namespace System.Windows.Forms
             string s = "";
             foreach (int i in EventList.SelectedIndices)
             {
-                s += EventList.Items[i].ToString() + Environment.NewLine;
+                s += EventList.Items[i] + Environment.NewLine;
             }
 
             if (!string.IsNullOrEmpty(s))

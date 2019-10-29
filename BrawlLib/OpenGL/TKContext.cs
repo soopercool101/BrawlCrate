@@ -82,8 +82,8 @@ namespace BrawlLib.OpenGL
             {
                 // Check for GLSL support
                 string[] version = GL.GetString(StringName.Version).Split('.', ' ');
-                _versionMax = int.Parse(version[0].ToString());
-                _versionMin = int.Parse(version[1].ToString());
+                _versionMax = int.Parse(version[0]);
+                _versionMin = int.Parse(version[1]);
 
                 //Need OpenGL 2.1 to use GLSL 120
                 _shadersSupported = !(_versionMax < 2 || _versionMax == 2 && _versionMin < 1);

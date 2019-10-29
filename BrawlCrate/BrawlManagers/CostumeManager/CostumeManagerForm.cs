@@ -393,7 +393,7 @@ namespace BrawlCrate.CostumeManager
                 g.DrawImage(screenshot, x, y);
             }
 
-            string iconFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".png";
+            string iconFile = Path.GetTempPath() + Guid.NewGuid() + ".png";
 
             BitmapUtilities.Resize(rect, new Size(128, 160)).Save(iconFile);
             cssPortraitViewer1.ReplaceMain(iconFile, false);

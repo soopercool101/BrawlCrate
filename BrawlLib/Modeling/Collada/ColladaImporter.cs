@@ -396,7 +396,7 @@ namespace BrawlLib.Modeling
                 catch (Exception x)
                 {
                     MessageBox.Show("Cannot continue importing this model.\n" + Error + "\n\nException:\n" +
-                                    x.ToString());
+                                    x);
                     model = null;
                     Close();
                 }

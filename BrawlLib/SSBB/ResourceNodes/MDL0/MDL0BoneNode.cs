@@ -162,7 +162,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Bone")]
         [Description("These draw calls use this bone to control their visibility.")]
         public string[] VisibilityDrawCalls =>
-            _visDrawCalls.Select(x => x._parentObject.ToString() + " " + x.ToString()).ToArray();
+            _visDrawCalls.Select(x => x._parentObject + " " + x).ToArray();
 
         [Category("Bone")]
         [Description("These objects use this bone as a single-bind influence (the only bone they're rigged to).")]

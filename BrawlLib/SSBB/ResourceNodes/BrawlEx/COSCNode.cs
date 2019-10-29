@@ -108,7 +108,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _cosmeticID.ToString("X2");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _cosmeticID = Convert.ToByte(field0, fromBase);
                 SignalPropertyChange();
@@ -135,7 +135,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _announcerSFX.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _announcerSFX = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();

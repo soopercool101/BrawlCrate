@@ -35,7 +35,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _infoIndex.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 int intValue = Convert.ToInt32(field0, fromBase);
                 int i = 0;
@@ -95,7 +95,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public VoidPtr _rebuildBase;
         public int _rebuildIndex, _rebuildStringId;
         
-        public static int _soundbankCalc = 331;
+        private static int _soundbankCalc = 331;
 
         [Category("JOJI Soundbank Expansion")]
         [DisplayName("SawndID (For Calculation Purposes Only)")]
@@ -110,24 +110,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                int a5mult = 0;
-                if (_soundbankCalc > 331 && _soundbankCalc < 587)
+                int a5Mult = 0;
+                if (_soundbankCalc >= 331 && _soundbankCalc <= 587)
                 {
-                    a5mult = _soundbankCalc - 331;
+                    a5Mult = _soundbankCalc - 331;
                 }
 
                 if (_infoIndex >= 0xA34 && _infoIndex <= 0xA62)
                 {
-                    return "0x" + (_infoIndex + 0x35CC + 0xA5 * a5mult).ToString("X8");
+                    return "0x" + (_infoIndex + 0x35CC + 0xA5 * a5Mult).ToString("X8");
                 }
-                else if (_infoIndex >= 0x18D8 && _infoIndex <= 0x194D)
+
+                if (_infoIndex >= 0x18D8 && _infoIndex <= 0x194D)
                 {
-                    return "0x" + (_infoIndex + 0x2757 + 0xA5 * a5mult).ToString("X8");
+                    return "0x" + (_infoIndex + 0x2757 + 0xA5 * a5Mult).ToString("X8");
                 }
-                else
-                {
-                    return "N/A";
-                }
+
+                return "N/A";
             }
         }
 
