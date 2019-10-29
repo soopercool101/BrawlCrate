@@ -30,11 +30,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 #endif
         public virtual int StringId => 0;
 
-        public int InfoIndex
+        public string InfoIndex
         {
-            get => _infoIndex;
+            get => "0x" + _infoIndex.ToString("X8");
             set
             {
+                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
+                int intValue = Convert.ToInt32(field0, fromBase);
                 int i = 0;
                 Type t = GetType();
                 switch (t.Name)
@@ -55,7 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 System.Collections.Generic.List<RSAREntryNode> list = RSARNode._infoCache[i];
                 int prevIndex = _infoIndex;
-                _infoIndex = value.Clamp(0, list.Count - 1);
+                _infoIndex = intValue.Clamp(0, list.Count - 1);
                 if (_infoIndex == prevIndex)
                 {
                     return;
@@ -65,6 +68,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 temp._infoIndex = prevIndex;
                 list[_infoIndex] = this;
                 list[prevIndex] = temp;
+                SignalPropertyChange();
             }
         }
 

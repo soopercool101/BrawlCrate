@@ -869,6 +869,10 @@ namespace BrawlCrate.NodeWrappers
         {
             if (_resource is MDL0Node mdl)
             {
+                if (mdl.MaterialList == null)
+                {
+                    return;
+                }
                 foreach (MDL0MaterialNode mat in mdl.MaterialList)
                 {
                     if (mat.CullMode == CullMode.Cull_Inside)
@@ -887,6 +891,10 @@ namespace BrawlCrate.NodeWrappers
         {
             if (_resource is MDL0Node mdl)
             {
+                if (mdl.MaterialList == null)
+                {
+                    return;
+                }
                 foreach (MDL0MaterialNode mat in mdl.MaterialList)
                 {
                     mat.CullMode = mode;
