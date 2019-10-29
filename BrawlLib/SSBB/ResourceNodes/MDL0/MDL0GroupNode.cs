@@ -555,5 +555,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                 e.Unbind();
             }
         }
+
+        public override void SortChildren()
+        {
+            if (Children == null || Children.Count <= 0 || !(Children[0] is MDL0MaterialNode))
+            {
+                base.SortChildren();
+                return;
+            }
+
+            _children = _children.OrderBy(o => ((MDL0MaterialNode)o).IsMetal).ThenBy(o => o.Name).ToList();
+            SignalPropertyChange();
+        }
     }
 }

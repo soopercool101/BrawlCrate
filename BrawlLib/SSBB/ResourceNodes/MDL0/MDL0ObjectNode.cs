@@ -197,8 +197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Object Data")] public int ID => _entryIndex;
         [Category("Object Data")] public int FacepointCount => _numFacepoints;
 
-        [Category("Object Data")]
-        public int VertexCount => _manager?._vertices == null ? 0 : _manager._vertices.Count;
+        [Category("Object Data")] public int VertexCount => _manager?._vertices == null ? 0 : _manager._vertices.Count;
 
         [Category("Object Data")] public int FaceCount => _numFaces;
 
@@ -337,8 +336,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (string.IsNullOrEmpty(value))
             {
                 if (oldNode != null && (skipDialog || MessageBox.Show(RootNode._mainForm,
-                        "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) ==
-                    DialogResult.OK))
+                                            "Are you sure you want to remove this reference?", "Continue?",
+                                            MessageBoxButtons.OKCancel) ==
+                                        DialogResult.OK))
                 {
                     if (oldNode._objects.Contains(this))
                     {
@@ -418,15 +418,16 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             SetUVs(id, value, false);
         }
-        
+
         public void SetUVs(int id, string value, bool skipDialog)
         {
             MDL0UVNode oldNode = _uvSet[id];
             if (string.IsNullOrEmpty(value))
             {
                 if (oldNode != null && (skipDialog || MessageBox.Show(RootNode._mainForm,
-                        "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) ==
-                    DialogResult.OK))
+                                            "Are you sure you want to remove this reference?", "Continue?",
+                                            MessageBoxButtons.OKCancel) ==
+                                        DialogResult.OK))
                 {
                     if (oldNode._objects.Contains(this))
                     {
@@ -1976,6 +1977,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _uvSet[7] != null && _uvSet[7]._objects.Count == 1 &&
                 MessageBox.Show("Do you want to remove this object's uv node 8?", "", MessageBoxButtons.YesNo) ==
                 DialogResult.Yes);
+        }
+
+        public void Remove(bool removeAttached)
+        {
+            Remove(removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached,
+                removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached);
         }
 
         #endregion

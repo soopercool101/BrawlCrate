@@ -2323,9 +2323,9 @@ For example, if the shader has two stages but this number is 1, the second stage
         }
 
         #endregion
-        
+
         #region Special Materials
-        
+
         public void GenerateShadowMaterial()
         {
             //HardcodedFiles.CreateShadowMaterial();
@@ -2348,7 +2348,7 @@ For example, if the shader has two stages but this number is 1, the second stage
 
             addShadowReference();
         }
-        
+
         private void addShadowReference()
         {
             MDL0MaterialRefNode mr = new MDL0MaterialRefNode();
@@ -2399,7 +2399,7 @@ For example, if the shader has two stages but this number is 1, the second stage
 
             addSpyReferences();
         }
-        
+
         private void addSpyReferences()
         {
             MDL0MaterialRefNode fbref = new MDL0MaterialRefNode();
@@ -2423,7 +2423,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             spycloakref.Coordinates = TexSourceRow.Normals;
             spycloakref.Normalize = true;
         }
-        
+
         #endregion
 
         public override unsafe void Replace(string fileName)
@@ -2435,8 +2435,20 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         public override void Remove()
         {
+            Remove(ShaderNode != null && ShaderNode.Materials.Length == 1 &&
+                   MessageBox.Show("Do you want to remove this material's shader?", "", MessageBoxButtons.YesNo) ==
+                   DialogResult.Yes);
+        }
+
+        public void Remove(bool removeAttached)
+        {
             if (Parent != null)
             {
+                if (removeAttached)
+                {
+                    ShaderNode?.Remove();
+                }
+
                 ShaderNode = null;
 
                 foreach (MDL0MaterialRefNode r in Children)

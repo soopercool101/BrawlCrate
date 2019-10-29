@@ -114,6 +114,8 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("&Recalculate Bounding Boxes", null, RecalcBBsOption));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(DeleteToolStripMenuItem);
+            _menu.Items.Add(new ToolStripMenuItem("Delete All But Bones", null, StripAction,
+                Keys.Control | Keys.Shift | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -272,7 +274,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GetInstance<MDL0Wrapper>().SortTexture();
         }
-        
+
         protected static void InvertMaterialsAction(object sender, EventArgs e)
         {
             GetInstance<MDL0Wrapper>().InvertMaterials();
@@ -312,6 +314,12 @@ namespace BrawlCrate.NodeWrappers
         protected static void SpyConvertAction(object sender, EventArgs e)
         {
             GetInstance<MDL0Wrapper>().SpyConvert();
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void StripAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().StripModel();
             MainForm.Instance.resourceTree_SelectionChanged(sender, e);
         }
 
@@ -854,7 +862,7 @@ namespace BrawlCrate.NodeWrappers
             MDL0Node model = _resource as MDL0Node;
             model?.CalculateBoundingBoxes();
         }
-        
+
         public void ShadowConvert()
         {
             ((MDL0Node) _resource).ConvertToShadowModel();
@@ -864,7 +872,7 @@ namespace BrawlCrate.NodeWrappers
         {
             ((MDL0Node) _resource).ConvertToSpyModel();
         }
-        
+
         public void InvertMaterials()
         {
             if (_resource is MDL0Node mdl)
@@ -873,6 +881,7 @@ namespace BrawlCrate.NodeWrappers
                 {
                     return;
                 }
+
                 foreach (MDL0MaterialNode mat in mdl.MaterialList)
                 {
                     if (mat.CullMode == CullMode.Cull_Inside)
@@ -895,10 +904,20 @@ namespace BrawlCrate.NodeWrappers
                 {
                     return;
                 }
+
                 foreach (MDL0MaterialNode mat in mdl.MaterialList)
                 {
                     mat.CullMode = mode;
                 }
+            }
+        }
+
+        private void StripModel()
+        {
+            MDL0Node model = _resource as MDL0Node;
+            if (model != null)
+            {
+                model.StripModel();
             }
         }
     }

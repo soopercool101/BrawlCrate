@@ -1468,7 +1468,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
             {
                 MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
-                    .Substring(0, MaterialGroup.Children[0].Name.IndexOf("_"));
+                                                              .Substring(0,
+                                                                  MaterialGroup.Children[0].Name.IndexOf("_"));
             }
 
             if (BoneGroup == null)
@@ -1873,7 +1874,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
             {
                 MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
-                    .Substring(0, MaterialGroup.Children[0].Name.IndexOf("_"));
+                                                              .Substring(0,
+                                                                  MaterialGroup.Children[0].Name.IndexOf("_"));
             }
 
             foreach (MDL0MaterialNode mat in _matGroup.Children)
@@ -1884,7 +1886,51 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-        
+
+        public void StripModel()
+        {
+            Populate();
+            while (_objGroup != null && _objGroup.HasChildren)
+            {
+                ((MDL0ObjectNode) _objGroup.Children[0]).Remove(true);
+            }
+
+            while (_matGroup != null && _matGroup.HasChildren)
+            {
+                ((MDL0MaterialNode) _matGroup.Children[0]).Remove(true);
+            }
+
+            while (_shadGroup != null && _shadGroup.HasChildren)
+            {
+                _shadGroup.Children[0].Remove();
+            }
+
+            while (_uvGroup != null && _uvGroup.HasChildren)
+            {
+                _uvGroup.Children[0].Remove();
+            }
+
+            while (_normGroup != null && _normGroup.HasChildren)
+            {
+                _normGroup.Children[0].Remove();
+            }
+
+            while (_vertGroup != null && _vertGroup.HasChildren)
+            {
+                _vertGroup.Children[0].Remove();
+            }
+
+            while (_colorGroup != null && _colorGroup.HasChildren)
+            {
+                _colorGroup.Children[0].Remove();
+            }
+
+            while (_pltGroup != null && _pltGroup.HasChildren)
+            {
+                _pltGroup.Children[0].Remove();
+            }
+        }
+
         #endregion
 
         #region Linking

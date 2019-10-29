@@ -841,14 +841,17 @@ namespace BrawlCrate
 
             if (_currentControl is MDL0ObjectControl)
             {
-                mdL0ObjectControl1.SetTarget(node as MDL0ObjectNode);
+                if (!mdL0ObjectControl1.SetTarget(node as MDL0ObjectNode))
+                {
+                    _currentControl = null;
+                }
             }
             else if (_currentControl is TexCoordControl)
             {
                 texCoordControl1.TargetNode = (MDL0MaterialRefNode) node;
             }
 
-            selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
+            selectedType = resourceTree.SelectedNode?.GetType();
         }
 
         #region Rendering
