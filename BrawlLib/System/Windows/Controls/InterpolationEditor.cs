@@ -105,6 +105,7 @@ namespace System.Windows.Forms
 
         public void SetTarget(IKeyframeSource node)
         {
+            int selectedCB = cbTransform.SelectedIndex;
             if ((_targetNode = node) != null)
             {
                 panel1.Enabled = true;
@@ -238,7 +239,11 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (cbTransform.Items.Count > 0)
+                if (cbTransform.Items.Count > selectedCB && selectedCB >= 0)
+                {
+                    cbTransform.SelectedIndex = selectedCB;
+                }
+                else if (cbTransform.Items.Count > 0)
                 {
                     cbTransform.SelectedIndex = 0;
                 }
