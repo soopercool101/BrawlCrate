@@ -665,6 +665,9 @@ namespace System.Windows.Forms
 
                 _screenCapPath = ScreenCapBgLocText.Text,
                 _liveTexFolderPath = LiveTextureFolderPath.Text,
+				
+				_bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._bgColor,
+				_stgBgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._stgBgColor,
 
                 _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList()
             };
