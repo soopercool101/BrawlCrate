@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    internal class SoundPathChanger : Form
+    internal class SoundPathChanger : ThemedForm
     {
         #region Designer
 

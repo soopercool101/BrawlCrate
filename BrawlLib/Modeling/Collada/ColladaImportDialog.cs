@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.Modeling
 {
-    public unsafe partial class Collada : Form
+    public unsafe partial class Collada : ThemedForm
     {
         public Collada()
         {

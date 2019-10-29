@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    public partial class FormEventList : Form
+    public partial class FormEventList : ThemedForm
     {
         public DialogResult status;
         public long eventEvent;

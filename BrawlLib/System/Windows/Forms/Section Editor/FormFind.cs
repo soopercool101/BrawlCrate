@@ -6,7 +6,7 @@ namespace System.Windows.Forms
     /// <summary>
     /// Summary description for FormFind.
     /// </summary>
-    public class FormFind : Form
+    public class FormFind : ThemedForm
     {
         private HexBox hexFind;
         private TextBox txtFind;

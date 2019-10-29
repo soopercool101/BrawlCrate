@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class AskNameDialog : Form
+    public partial class AskNameDialog : ThemedForm
     {
         public AskNameDialog(Bitmap bg)
         {

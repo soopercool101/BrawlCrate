@@ -1,6 +1,6 @@
 ﻿﻿﻿namespace System.Windows.Forms
 {
-    public partial class PAT0OffsetControl : Form
+    public partial class PAT0OffsetControl : ThemedForm
     {
         public static readonly string Title = "PAT0 Offset";
 

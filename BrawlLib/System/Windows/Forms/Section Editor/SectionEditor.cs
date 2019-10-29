@@ -10,7 +10,7 @@ using System.PowerPcAssembly;
 
 namespace System.Windows.Forms
 {
-    public unsafe partial class SectionEditor : Form
+    public unsafe partial class SectionEditor : ThemedForm
     {
         public ModuleSectionNode _section;
         public RelocationManager _manager;

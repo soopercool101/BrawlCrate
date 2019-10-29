@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class ConfirmIconReplaceDialog : Form
+    public partial class ConfirmIconReplaceDialog : ThemedForm
     {
         public Bitmap CurrentImage;
         public Bitmap NewImage;

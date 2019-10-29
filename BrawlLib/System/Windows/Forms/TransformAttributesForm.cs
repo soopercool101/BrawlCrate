@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    public partial class TransformAttributesForm : Form
+    public partial class TransformAttributesForm : ThemedForm
     {
         public TransformAttributesForm()
         {

@@ -7,7 +7,7 @@ using System.Text;
 namespace System.Windows.Forms
 {
     //Class coded by libertyernie.
-    public class StageModuleConverter : Form
+    public class StageModuleConverter : ThemedForm
     {
         public const string FILTER = "Module files (*.rel)|*.rel";
 

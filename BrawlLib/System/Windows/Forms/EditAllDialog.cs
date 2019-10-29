@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace System.Windows.Forms
 {
-    public class EditAllDialog : Form
+    public class EditAllDialog : ThemedForm
     {
         private CHR0Node[] _nodes;
         private CHR0EntryNode[] _entries;

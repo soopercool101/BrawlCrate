@@ -2,7 +2,7 @@
 
 namespace BrawlCrate.StageManager.SingleUseDialogs
 {
-    public partial class BatchAddPAT0Dialog : Form
+    public partial class BatchAddPAT0Dialog : ThemedForm
     {
         public bool UseSameSelchrMarksForAll => radioCopyFromPrevious.Checked;
 

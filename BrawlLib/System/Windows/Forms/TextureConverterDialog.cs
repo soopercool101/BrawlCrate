@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 
 namespace System.Windows.Forms
 {
-    public partial class TextureConverterDialog : Form
+    public partial class TextureConverterDialog : ThemedForm
     {
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]

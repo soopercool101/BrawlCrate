@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.StageManager.SingleUseDialogs
 {
-    public partial class RandomSelectEditNamesDialog : Form
+    public partial class RandomSelectEditNamesDialog : ThemedForm
     {
         public RandomSelectEditNamesDialog(IList<string> names, IList<Image> icons, IList<Image> frontstnames)
         {

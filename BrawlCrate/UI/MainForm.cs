@@ -21,7 +21,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate
 {
-    public class MainForm : Form
+    public class MainForm : ThemedForm
     {
         private static MainForm _instance;
         public static MainForm Instance => _instance ?? (_instance = new MainForm());

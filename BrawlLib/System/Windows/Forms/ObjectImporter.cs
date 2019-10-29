@@ -4,7 +4,7 @@ using BrawlLib.Wii.Models;
 
 namespace System.Windows.Forms
 {
-    public class ObjectImporter : Form
+    public class ObjectImporter : ThemedForm
     {
         private MDL0Node _internalModel;
         private Label label1;

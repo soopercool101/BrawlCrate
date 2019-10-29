@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate
 {
-    internal class CloneSoundDialog : Form
+    internal class CloneSoundDialog : ThemedForm
     {
         #region Designer
 

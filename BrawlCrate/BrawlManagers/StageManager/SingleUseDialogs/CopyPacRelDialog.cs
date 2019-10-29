@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class CopyPacRelDialog : Form
+    public partial class CopyPacRelDialog : ThemedForm
     {
         public CopyPacRelDialog(string pacNew, string pacExisting, string relNew, string relExisting)
         {

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BrawlManagerLib
 {
-    public partial class CopyDialog : Form
+    public partial class CopyDialog : ThemedForm
     {
         public CopyDialog(string pacNew, string pacExisting)
         {

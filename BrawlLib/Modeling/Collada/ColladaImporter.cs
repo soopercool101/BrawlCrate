@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.Modeling
 {
-    public unsafe partial class Collada : Form
+    public unsafe partial class Collada : ThemedForm
     {
         public static string Error;
         public static IModel CurrentModel;

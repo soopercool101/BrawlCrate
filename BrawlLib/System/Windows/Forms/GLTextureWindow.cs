@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    public class GLTextureWindow : Form
+    public class GLTextureWindow : ThemedForm
     {
         private readonly GLTexturePanel panel;
 

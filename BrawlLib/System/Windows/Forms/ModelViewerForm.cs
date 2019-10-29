@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    public partial class ModelViewerForm : Form
+    public partial class ModelViewerForm : ThemedForm
     {
         public ModelEditorBase _mainWindow;
 

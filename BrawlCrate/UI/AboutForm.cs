@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate
 {
-    public partial class AboutForm : Form
+    public partial class AboutForm : ThemedForm
     {
         private static AboutForm _instance;
         public static AboutForm Instance => _instance ?? (_instance = new AboutForm());

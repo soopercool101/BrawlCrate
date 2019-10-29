@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    public class RenameDialog : Form
+    public class RenameDialog : ThemedForm
     {
         private ResourceNode _node;
 

@@ -2,7 +2,7 @@
 
 namespace BrawlCrate.SongManager
 {
-    public partial class CustomSongVolumeStatusForm : Form
+    public partial class CustomSongVolumeStatusForm : ThemedForm
     {
         public CustomSongVolumeStatusForm(CustomSongVolumeEditor editor)
         {

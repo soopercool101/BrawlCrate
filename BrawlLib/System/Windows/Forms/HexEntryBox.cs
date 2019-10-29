@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    public partial class HexEntryBox : Form
+    public partial class HexEntryBox : ThemedForm
     {
         public string title = "BrawlCrate Hex Entry Box";
         public string lowerText = "Enter hex:";

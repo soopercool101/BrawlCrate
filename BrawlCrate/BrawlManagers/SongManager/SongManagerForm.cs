@@ -10,7 +10,7 @@ using BrawlCrate.SongManager.SongExport;
 
 namespace BrawlCrate.SongManager
 {
-    public partial class SongManagerForm : Form
+    public partial class SongManagerForm : ThemedForm
     {
         public static readonly string[] GCT_PATHS =
         {

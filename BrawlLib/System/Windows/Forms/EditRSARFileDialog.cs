@@ -5,7 +5,7 @@ using System.Audio;
 
 namespace System.Windows.Forms
 {
-    public class EditRSARFileDialog : Form
+    public class EditRSARFileDialog : ThemedForm
     {
         public EditRSARFileDialog()
         {

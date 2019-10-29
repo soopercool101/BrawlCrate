@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class NameCreatorDialog : Form
+    public partial class NameCreatorDialog : ThemedForm
     {
         private NameCreatorSettings _settings;
 

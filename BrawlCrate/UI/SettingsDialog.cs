@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate
 {
-    internal class SettingsDialog : Form
+    internal class SettingsDialog : ThemedForm
     {
         public bool _updating;
 

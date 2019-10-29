@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    public class GoodColorDialog : Form
+    public class GoodColorDialog : ThemedForm
     {
         #region Designer
 

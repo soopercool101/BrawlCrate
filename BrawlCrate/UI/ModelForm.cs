@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate
 {
-    internal class ModelForm : Form
+    internal class ModelForm : ThemedForm
     {
         #region Designer
 

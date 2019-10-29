@@ -8,7 +8,7 @@ using BrawlManagerLib;
 
 namespace BrawlCrate.CostumeManager
 {
-    public partial class CostumeManagerForm : Form
+    public partial class CostumeManagerForm : ThemedForm
     {
         private static string _title = "";
 

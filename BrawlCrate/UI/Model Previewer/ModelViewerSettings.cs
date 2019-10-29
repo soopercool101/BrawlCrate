@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace System.Windows.Forms
 {
-    public class ModelViewerSettingsDialog : Form
+    public class ModelViewerSettingsDialog : ThemedForm
     {
         private Label label1;
         private Label label2;

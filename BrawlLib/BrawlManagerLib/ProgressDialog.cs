@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BrawlManagerLib
 {
-    public partial class ProgressDialog : Form
+    public partial class ProgressDialog : ThemedForm
     {
         public ProgressDialog()
         {

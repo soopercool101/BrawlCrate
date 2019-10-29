@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class EnterSizeDialog : Form
+    public partial class EnterSizeDialog : ThemedForm
     {
         public Size SizeEntry
         {

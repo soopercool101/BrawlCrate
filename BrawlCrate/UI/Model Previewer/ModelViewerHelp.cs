@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    public class ModelViewerHelp : Form
+    public class ModelViewerHelp : ThemedForm
     {
         public ModelViewerHelp()
         {

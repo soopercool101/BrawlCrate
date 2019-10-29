@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 
 namespace System.Windows.Forms
 {
-    public class GradientDialog : Form
+    public class GradientDialog : ThemedForm
     {
         #region Designer
 

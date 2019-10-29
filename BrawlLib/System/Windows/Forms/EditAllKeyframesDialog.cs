@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    public class EditAllKeyframesDialog : Form
+    public class EditAllKeyframesDialog : ThemedForm
     {
         private int _type;
         private IKeyframeSource _target;

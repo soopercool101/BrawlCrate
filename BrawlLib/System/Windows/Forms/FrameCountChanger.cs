@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    public partial class FrameCountChanger : Form
+    public partial class FrameCountChanger : ThemedForm
     {
         public FrameCountChanger()
         {

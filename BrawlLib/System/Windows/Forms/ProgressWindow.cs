@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    public partial class ProgressWindow : Form, IProgressTracker
+    public partial class ProgressWindow : ThemedForm, IProgressTracker
     {
         private bool _canCancel, _cancelled;
 

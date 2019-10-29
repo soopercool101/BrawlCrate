@@ -13,7 +13,7 @@ using System.Text;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class StageManagerForm : Form
+    public partial class StageManagerForm : ThemedForm
     {
         private static OpenFileDialog OpenDialog = new OpenFileDialog();
         private static SaveFileDialog SaveDialog = new SaveFileDialog();

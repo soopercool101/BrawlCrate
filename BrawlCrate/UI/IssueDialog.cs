@@ -8,7 +8,7 @@ using System.IO;
 
 namespace System.Windows.Forms
 {
-    public partial class IssueDialog : Form
+    public partial class IssueDialog : ThemedForm
     {
         private readonly Exception _exception;
 

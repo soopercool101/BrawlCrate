@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace System.Windows.Forms
 {
-    public partial class ObjectOptimizerForm : Form
+    public partial class ObjectOptimizerForm : ThemedForm
     {
         public ObjectOptimizerForm()
         {

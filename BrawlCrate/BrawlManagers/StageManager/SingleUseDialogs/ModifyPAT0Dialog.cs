@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class ModifyPAT0Dialog : Form
+    public partial class ModifyPAT0Dialog : ThemedForm
     {
         private TextureContainer textures;
 

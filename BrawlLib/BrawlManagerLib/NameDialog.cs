@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace BrawlManagerLib
 {
-    public class NameDialog : Form
+    public class NameDialog : ThemedForm
     {
         public string EntryText
         {

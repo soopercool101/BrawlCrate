@@ -2,7 +2,7 @@
 
 namespace BrawlManagerLib
 {
-    public partial class TextBoxDialog : Form
+    public partial class TextBoxDialog : ThemedForm
     {
         public string DisplayText
         {

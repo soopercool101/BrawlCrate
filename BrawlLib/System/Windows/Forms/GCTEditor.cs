@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace System.Windows.Forms
 {
-    public partial class GCTEditor : Form
+    public partial class GCTEditor : ThemedForm
     {
         public event EventHandler OpenFileChanged;
 

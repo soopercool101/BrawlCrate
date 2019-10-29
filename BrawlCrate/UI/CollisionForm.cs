@@ -3,7 +3,7 @@ using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
-    public class CollisionForm : Form
+    public class CollisionForm : ThemedForm
     {
         #region Designer
 

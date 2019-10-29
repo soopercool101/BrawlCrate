@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace System.Windows.Forms
 {
-    public class BrstmConverterDialog : Form
+    public class BrstmConverterDialog : ThemedForm
     {
         internal class InitialStreamWrapper : IAudioStream
         {

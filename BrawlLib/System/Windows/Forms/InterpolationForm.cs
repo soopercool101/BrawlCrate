@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    public partial class InterpolationForm : Form
+    public partial class InterpolationForm : ThemedForm
     {
         public InterpolationEditor _interpolationEditor;
 

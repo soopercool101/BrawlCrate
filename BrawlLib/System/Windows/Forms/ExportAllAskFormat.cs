@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    public partial class ExportAllFormatDialog : Form
+    public partial class ExportAllFormatDialog : ThemedForm
     {
         public ExportAllFormatDialog(Type t, string filters)
         {

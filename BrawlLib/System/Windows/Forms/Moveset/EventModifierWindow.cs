@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    public class FormModifyEvent : Form
+    public class FormModifyEvent : ThemedForm
     {
         public EventModifier eventModifier1;
 

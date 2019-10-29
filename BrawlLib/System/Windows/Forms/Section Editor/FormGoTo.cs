@@ -3,7 +3,7 @@ namespace System.Windows.Forms
     /// <summary>
     /// Summary description for FormGoTo.
     /// </summary>
-    public class FormGoTo : Form
+    public class FormGoTo : ThemedForm
     {
         private Button btnCancel;
         private Button btnOK;
