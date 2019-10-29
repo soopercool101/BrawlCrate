@@ -33,6 +33,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _lod;
         private bool _hasPalette;
 
+        public int texSortNum;
+
         // Could improve performance by caching, and making sure to clear the cache when needed.
         // For now, prefer the simplicity of not identifying every situation where clearing the cache would be needed.
         private TEX0Node SourceNode => FindSourceNode();
