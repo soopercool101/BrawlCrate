@@ -25,8 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public TBCLNode()
         {
             unk0 = 1;
-            unk1 = 0;
-            unk2 = 0;
+            _entryOffset = 0x14;
         }
 
         public TBCLNode(int numEntries)
@@ -34,6 +33,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             unk0 = 1;
             unk1 = 0;
             unk2 = 0;
+            _entryOffset = 0x14;
             while (NumEntries < numEntries)
             {
                 EntryList.Add(0);

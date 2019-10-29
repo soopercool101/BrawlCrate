@@ -822,7 +822,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             1223,
             1347, // this appears to be some sort of "if" condition
             1371,
-            1627,
+            1627
         };
 
         #endregion
@@ -968,7 +968,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {123, "ft_sonic"},
             {124, "ft_purin"},
             {125, "ft_wolf"},
-            {126, "ft_zako"},
+            {126, "ft_zako"}
         };
 
         #endregion

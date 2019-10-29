@@ -224,7 +224,7 @@ namespace System.Windows.Forms
                 _provider.Attach(this);
             }
 
-            chkLoop.Checked = false;
+            chkLoop.Checked = newTarget.Loop;
 
             //Create buffer for stream
             if (s != null)

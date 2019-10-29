@@ -182,7 +182,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             SCN0CameraFlags.AimZConstant,
             SCN0CameraFlags.TwistConstant,
             SCN0CameraFlags.PerspFovYConstant,
-            SCN0CameraFlags.OrthoHeightConstant,
+            SCN0CameraFlags.OrthoHeightConstant
         };
 
         public void SetCamera(ModelPanelViewport v, float frame, bool retainAspect)
@@ -372,6 +372,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         AimZ,
         Twist,
         FovY,
-        Height,
+        Height
     }
 }

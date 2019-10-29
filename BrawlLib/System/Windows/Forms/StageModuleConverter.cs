@@ -87,7 +87,7 @@ namespace System.Windows.Forms
             new Stage(53, "Edit", "st_stageedit.rel"),
             new Stage(54, "Heal", "st_heal.rel"),
             new Stage(55, "Online Training", "st_otrain.rel"),
-            new Stage(56, "TargetBreak", "st_tbreak.rel"),
+            new Stage(56, "TargetBreak", "st_tbreak.rel")
         };
 
         private static readonly int[] indicesToIgnore =
@@ -97,7 +97,7 @@ namespace System.Windows.Forms
             387,  // st_dxyorster
             2519, // st_croll (NTSC)
             419,  // st_donkey
-            423,  // st_halberd, st_jungle, st_mansion
+            423  // st_halberd, st_jungle, st_mansion
         };
 
         public static ReadOnlyCollection<Stage> StageList => Array.AsReadOnly(stageList);

@@ -167,7 +167,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             None = 0,
             RSA2048 = 0x00010001,
-            RSA4096 = 0x00010000,
+            RSA4096 = 0x00010000
         }
 
         public override bool OnInitialize()

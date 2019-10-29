@@ -162,7 +162,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Bone")]
         [Description("These draw calls use this bone to control their visibility.")]
         public string[] VisibilityDrawCalls =>
-            _visDrawCalls.Select(x => x._parentObject.ToString() + " " + x.ToString()).ToArray();
+            _visDrawCalls.Select(x => x._parentObject + " " + x).ToArray();
 
         [Category("Bone")]
         [Description("These objects use this bone as a single-bind influence (the only bone they're rigged to).")]
@@ -1318,7 +1318,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             if (_nodeColor != Color.Transparent && viewport != null)
             {
                 Vector3 screenPos = viewport.Camera.Project(_frameMatrix.GetPoint());
-                viewport.ScreenText[Name] = new Vector3(screenPos._x, screenPos._y - 9.0f, screenPos._z);
+                viewport.SettingsScreenText[Name] = new Vector3(screenPos._x, screenPos._y - 9.0f, screenPos._z);
             }
 
             float alpha = targetModel ? 1.0f : 0.45f;

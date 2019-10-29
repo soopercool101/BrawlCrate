@@ -83,7 +83,7 @@ namespace BrawlManagerLib
             {
                 tex0 = null,
                 ForThisFrameIndex = false,
-                pat0 = null,
+                pat0 = null
             };
             if (iconNum == 255)
             {

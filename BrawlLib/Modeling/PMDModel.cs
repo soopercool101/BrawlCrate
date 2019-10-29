@@ -43,7 +43,7 @@ namespace BrawlLib.Modeling
                 }
                 else
                 {
-                    throw new Exception("Version " + version.ToString() + " models are not supported.");
+                    throw new Exception("Version " + version + " models are not supported.");
                 }
 
                 if (model != null)
@@ -145,7 +145,7 @@ namespace BrawlLib.Modeling
             RightHanded = 1,
 
             //XNA standard coordinate system
-            LeftHanded = -1,
+            LeftHanded = -1
         }
 
         #endregion
@@ -349,7 +349,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_vertices[i] == null)
                     {
-                        throw new ArgumentNullException("Vertexes[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Vertexes[" + i + "] is null!");
                     }
 
                     _vertices[i].Write(writer, CoordZ);
@@ -380,7 +380,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_materials[i] == null)
                     {
-                        throw new ArgumentNullException("Materials[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Materials[" + i + "] is null!");
                     }
 
                     _materials[i].Write(writer);
@@ -398,7 +398,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_bones[i] == null)
                     {
-                        throw new ArgumentNullException("Bones[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Bones[" + i + "] is null!");
                     }
 
                     _bones[i].Write(writer, CoordZ);
@@ -416,7 +416,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_IKs[i] == null)
                     {
-                        throw new ArgumentNullException("IKs[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("IKs[" + i + "] is null!");
                     }
 
                     _IKs[i].Write(writer);
@@ -434,7 +434,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_skins[i] == null)
                     {
-                        throw new ArgumentNullException("Skins[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Skins[" + i + "] is null!");
                     }
 
                     _skins[i].Write(writer, CoordZ);
@@ -466,7 +466,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_boneDispNames[i] == null)
                     {
-                        throw new ArgumentNullException("BoneDispNames[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("BoneDispNames[" + i + "] is null!");
                     }
 
                     _boneDispNames[i].Write(writer);
@@ -484,7 +484,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_boneDisps[i] == null)
                     {
-                        throw new ArgumentNullException("BoneDisps[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("BoneDisps[" + i + "] is null!");
                     }
 
                     _boneDisps[i].Write(writer);
@@ -542,7 +542,7 @@ namespace BrawlLib.Modeling
                             {
                                 if (_rigidBodies[i] == null)
                                 {
-                                    throw new ArgumentNullException("RididBodies[" + i.ToString() + "] is null!");
+                                    throw new ArgumentNullException("RididBodies[" + i + "] is null!");
                                 }
 
                                 _rigidBodies[i].WriteExpansion(writer, CoordZ);
@@ -560,7 +560,7 @@ namespace BrawlLib.Modeling
                             {
                                 if (_joints[i] == null)
                                 {
-                                    throw new ArgumentNullException("Joints[" + i.ToString() + "] is null!");
+                                    throw new ArgumentNullException("Joints[" + i + "] is null!");
                                 }
 
                                 _joints[i].WriteExpansion(writer, CoordZ);

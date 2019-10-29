@@ -848,25 +848,6 @@ namespace System
         }
     }
 
-    public class DropDownListEnemies : StringConverter
-    {
-        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
-        {
-            return true;
-        }
-
-        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
-        {
-            List<string> values = new List<string>();
-            foreach (int i in GEG1Entry._KnownEnemies)
-            {
-                values.Add(((GEG1Entry.EnemyType) i).ToString());
-            }
-
-            return new StandardValuesCollection(values);
-        }
-    }
-
     public class DropDownListAITypes : ByteConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)

@@ -409,7 +409,7 @@ namespace System.Windows.Forms
                 {
                     ContextMenuStrip = ctxBones;
                     nameToolStripMenuItem.Text = SelectedBone.Name;
-                    boneIndex.Text = "Bone Index: " + SelectedBone.BoneIndex.ToString();
+                    boneIndex.Text = "Bone Index: " + SelectedBone.BoneIndex;
                 }
                 else
                 {

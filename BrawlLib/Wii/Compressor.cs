@@ -42,7 +42,7 @@ namespace BrawlLib.Wii.Compression
             CompressionType.ExtendedLZ77,
             CompressionType.RunLength,
             CompressionType.RunLengthYAZ0,
-            CompressionType.RunLengthYAY0,
+            CompressionType.RunLengthYAY0
         };
 
         public static bool Supports(CompressionType type)

@@ -192,7 +192,7 @@ namespace BrawlCrate.CostumeManager
                         tex0 = (TEX0Node) node.FindChild("Textures(NW4R)", false).Children[0];
                     }
 
-                    string tempFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".png";
+                    string tempFile = Path.GetTempPath() + Guid.NewGuid() + ".png";
                     tex0.Export(tempFile);
                     Replace(tempFile, useTextureConverter); // call self with new file
                     File.Delete(tempFile);

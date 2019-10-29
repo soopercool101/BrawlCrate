@@ -221,7 +221,7 @@ namespace BrawlLib.SSBBTypes
         Texture4 = 0x10,
         Texture5 = 0x20,
         Texture6 = 0x40,
-        Texture7 = 0x80,
+        Texture7 = 0x80
     }
 
     [Flags]
@@ -229,7 +229,7 @@ namespace BrawlLib.SSBBTypes
     {
         Indirect0 = 0x01,
         Indirect1 = 0x02,
-        Indirect2 = 0x04,
+        Indirect2 = 0x04
     }
 
     [Flags]

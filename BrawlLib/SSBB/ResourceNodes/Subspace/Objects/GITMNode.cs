@@ -11,9 +11,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("GITM")]
         [DisplayName("Entry Count")]
-        public int Count => _count;
-
-        public int _count;
+        public int Count => Children?.Count ?? 0;
+        
         private const int _entrySize = 0x17; // The constant size of a child entry
 
         public override void OnPopulate()
@@ -61,8 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = "Fighter Trophies (unlock)";
             }
-
-            _count = Header->_count;
+            
             return Header->_count > 0;
         }
 

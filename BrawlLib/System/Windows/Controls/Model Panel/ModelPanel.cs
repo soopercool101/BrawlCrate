@@ -413,7 +413,7 @@ namespace System.Windows.Forms
             xMin,
             yMin,
             xMax,
-            yMax,
+            yMax
         }
 
         protected override void OnMouseMove(MouseEventArgs e)

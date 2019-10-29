@@ -57,14 +57,14 @@ Default (Float): 9 (0x41100000)
 0
 
 Blocks Maximum Speed
-(Float) Falling Blocks maximum speed (they always start at 0 speed)
+(Float) Falling blocks maximum speed (they always start at 0 speed)
 
 Default (Float): 5 (0x40A00000)
 	/EndDescription
 0
 
 Blocks Acceleration
-(Float) Falling Blocks acceleration
+(Float) Acceleration of falling star and bomb blocks
 
 Default (Float): 0.02 (0x3CA3D70A)
 	/EndDescription
@@ -91,7 +91,7 @@ Default (Float): 0.24 (0x3E75C28F)
 	/EndDescription
 0
 
-Wind Area Width (removal)
+Wind Area Width (Removal)
 (Float) The width (in the direction the wind is blowing) that has to be removed out of the Wind Area Width (0x54) of the wind's area of effect
 
 Default (Float): 0 (0x00000000)

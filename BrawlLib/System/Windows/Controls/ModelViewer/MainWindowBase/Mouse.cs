@@ -1077,7 +1077,7 @@ namespace System.Windows.Forms
 #if DEBUG
             if (_renderDepth)
             {
-                v.ScreenText["Depth: " + depth.ToString()] = new Vector3(5.0f, v.Height - 20.0f, 0.5f);
+                v.SettingsScreenText["Depth: " + depth.ToString()] = new Vector3(5.0f, v.Height - 20.0f, 0.5f);
                 panel.Invalidate();
             }
 #endif

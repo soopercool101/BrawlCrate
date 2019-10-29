@@ -127,7 +127,7 @@ namespace BrawlLib.Modeling
                 _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, PrimitiveType.Lines),
                 _points = _points == null ? null : new GLPrimitive(_points._indices.Length, PrimitiveType.Points),
                 _dirty = new bool[] {true, true, true, true, true, true, true, true, true, true, true, true},
-                _primGroups = _primGroups,
+                _primGroups = _primGroups
             };
             Memory.Move(p._indices.Address, _indices.Address, (uint) _indices.Length);
             for (int i = 0; i < 12; i++)
@@ -2297,7 +2297,15 @@ namespace BrawlLib.Modeling
                 else
                 {
                     node = new MDL0VertexNode();
-                    obj.Model.VertexGroup.AddChild(node);
+                    MDL0Node m = obj.Model;
+                    if (m.VertexGroup == null)
+                    {
+                        MDL0GroupNode g = new MDL0GroupNode(MDLResourceType.Vertices);
+                        m.LinkGroup(g);
+                        g.Parent = m;
+                    }
+
+                    m.VertexGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._vertexNode._objects.Contains(obj))
                     {
@@ -2362,7 +2370,15 @@ namespace BrawlLib.Modeling
                 else
                 {
                     node = new MDL0NormalNode();
-                    obj.Model.NormalGroup.AddChild(node);
+                    MDL0Node m = obj.Model;
+                    if (m.NormalGroup == null)
+                    {
+                        MDL0GroupNode g = new MDL0GroupNode(MDLResourceType.Normals);
+                        m.LinkGroup(g);
+                        g.Parent = m;
+                    }
+
+                    m.NormalGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._normalNode._objects.Contains(obj))
                     {

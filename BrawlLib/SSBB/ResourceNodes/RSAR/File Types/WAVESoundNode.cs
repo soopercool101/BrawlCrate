@@ -77,6 +77,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         ReplaceRaw(dlg.AudioData);
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
             else

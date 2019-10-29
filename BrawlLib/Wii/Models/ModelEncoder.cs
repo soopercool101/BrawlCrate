@@ -556,11 +556,11 @@ namespace BrawlLib.Wii.Models
                         {
                             if (resType == MDLResourceType.Objects)
                             {
-                                form.Say("Encoding the " + resType.ToString() + " - " + e.Name);
+                                form.Say("Encoding the " + resType + " - " + e.Name);
                             }
                             else
                             {
-                                form.Say("Calculating the size of the " + resType.ToString() + " - " + e.Name);
+                                form.Say("Calculating the size of the " + resType + " - " + e.Name);
                             }
                         }
 

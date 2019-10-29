@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             typeof(RSARSoundNode),
             typeof(RSARBankNode),
             typeof(RSARGroupNode),
-            typeof(RSARPlayerInfoNode),
+            typeof(RSARPlayerInfoNode)
         };
 
         public int _listIndex;

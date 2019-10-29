@@ -406,7 +406,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 _drawOrder = pData[6],
                                 _isXLU = isXLU,
                                 MaterialNode = mat,
-                                VisibilityBoneNode = visBone,
+                                VisibilityBoneNode = visBone
                             });
 
                             //Increment pointer
@@ -554,6 +554,18 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 e.Unbind();
             }
+        }
+
+        public override void SortChildren()
+        {
+            if (Children == null || Children.Count <= 0 || !(Children[0] is MDL0MaterialNode))
+            {
+                base.SortChildren();
+                return;
+            }
+
+            _children = _children.OrderBy(o => ((MDL0MaterialNode)o).IsMetal).ThenBy(o => o.Name).ToList();
+            SignalPropertyChange();
         }
     }
 }

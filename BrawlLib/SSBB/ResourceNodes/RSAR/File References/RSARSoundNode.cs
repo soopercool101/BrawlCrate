@@ -25,12 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _waveInfo._channelPriority = 64;
         }
 
-#if DEBUG
-        [Browsable(true)]
-        [Category("DEBUG")]
-#else
-        [Browsable(false)]
-#endif
+        [Category("Data"), DisplayName("Sound ID")]
         public override int StringId => Header == null ? -1 : (int) Header->_stringId;
 
         public override ResourceType ResourceFileType => ResourceType.RSARSound;
@@ -421,7 +416,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Track13 = 0x1000,
             Track14 = 0x2000,
             Track15 = 0x4000,
-            Track16 = 0x8000,
+            Track16 = 0x8000
         }
 
         [Category("SEQ Params")]

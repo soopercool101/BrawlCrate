@@ -75,6 +75,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Movable Ground")]
+        [DisplayName("Path Index")]
+        public int PID => *(byte*) (WorkingUncompressed.Address + 0x06);
+
         public override bool OnInitialize()
         {
             base.OnInitialize();

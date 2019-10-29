@@ -2407,7 +2407,7 @@ namespace System.Windows.Forms
                         TKContext.DrawSphere(position, 5.0f, 32);
                         if (int.TryParse(bone._name.Substring(6, 1), out int playernum))
                         {
-                            _modelPanel.CurrentViewport.ScreenText[playernum.ToString()] =
+                            _modelPanel.CurrentViewport.NoSettingsScreenText[playernum.ToString()] =
                                 _modelPanel.CurrentViewport.Camera.Project(position) - new Vector3(8.0f, 8.0f, 0);
                         }
                     }
@@ -2417,7 +2417,7 @@ namespace System.Windows.Forms
                         TKContext.DrawSphere(bone._frameMatrix.GetPoint(), 5.0f, 32);
                         if (int.TryParse(bone._name.Substring(7, 1), out int playernum))
                         {
-                            _modelPanel.CurrentViewport.ScreenText[playernum.ToString()] =
+                            _modelPanel.CurrentViewport.NoSettingsScreenText[playernum.ToString()] =
                                 _modelPanel.CurrentViewport.Camera.Project(bone._frameMatrix.GetPoint()) -
                                 new Vector3(8.0f, 8.0f, 0);
                         }

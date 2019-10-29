@@ -852,7 +852,7 @@ namespace BrawlCrate.StageManager
                 return f.Name;
             }
 
-            return sb.ToString() + ".pac";
+            return sb + ".pac";
         }
 
         private static ResourceNode FindStageARC(ResourceNode node)

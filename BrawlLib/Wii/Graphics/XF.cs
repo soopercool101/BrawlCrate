@@ -422,7 +422,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasTexMatrix(i))
                 {
                     hasTex = true;
-                    texmtx += i.ToString() + " ";
+                    texmtx += i + " ";
                 }
             }
 
@@ -433,7 +433,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasUVs(i))
                 {
                     hasUVs = true;
-                    uvs += i.ToString() + " ";
+                    uvs += i + " ";
                 }
             }
 
@@ -444,7 +444,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasUVs(i))
                 {
                     hasColors = true;
-                    colors += i.ToString() + " ";
+                    colors += i + " ";
                 }
             }
 

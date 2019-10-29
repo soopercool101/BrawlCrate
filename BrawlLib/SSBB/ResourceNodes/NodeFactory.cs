@@ -122,8 +122,26 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source)
         {
+            return FromSource(parent, source, null);
+        }
+
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t)
+        {
             ResourceNode n = null;
-            if ((n = GetRaw(source)) != null)
+            
+            if(t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
+            {
+                FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
+                if (uncompressedMap != null)
+                {
+                    n.Initialize(parent, source, new DataSource(uncompressedMap));
+                }
+                else
+                {
+                    n.Initialize(parent, source);
+                }
+            }
+            else if ((n = GetRaw(source)) != null)
             {
                 n.Initialize(parent, source);
             }

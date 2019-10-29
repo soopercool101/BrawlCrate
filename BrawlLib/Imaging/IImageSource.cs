@@ -11,6 +11,7 @@ namespace BrawlLib.Imaging
 
     public interface IVideo : IImageSource
     {
+        bool Loop { get; }
         uint NumFrames { get; }
         float FrameRate { get; }
         int GetImageIndexAtFrame(int frame);

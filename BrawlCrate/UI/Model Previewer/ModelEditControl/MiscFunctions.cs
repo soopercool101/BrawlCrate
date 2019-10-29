@@ -1,4 +1,6 @@
-﻿using BrawlLib.Imaging;
+﻿using BrawlCrate;
+using BrawlCrate.NodeWrappers;
+using BrawlLib.Imaging;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
@@ -550,7 +552,7 @@ namespace System.Windows.Forms
                 new HotKeyInfo(Keys.T, false, false, false, HotkeyTranslateTool),
                 new HotKeyInfo(Keys.D0, false, false, false, HotkeyVertexEditor),
                 new HotKeyInfo(Keys.D9, false, false, false, HotkeyWeightEditor),
-                new HotKeyInfo(Keys.D5, false, false, false, HotkeyOverlays),
+                new HotKeyInfo(Keys.D5, false, false, false, HotkeyOverlays)
             };
             _hotkeyList.AddRange(temp);
         }
@@ -663,8 +665,11 @@ namespace System.Windows.Forms
 
                 _screenCapPath = ScreenCapBgLocText.Text,
                 _liveTexFolderPath = LiveTextureFolderPath.Text,
+				
+				_bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._bgColor,
+				_stgBgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._stgBgColor,
 
-                _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList(),
+                _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList()
             };
             return settings;
         }
@@ -704,7 +709,10 @@ namespace System.Windows.Forms
             MDL0BoneNode.DefaultLineColor = (Color) settings._lineColor;
             MDL0BoneNode.DefaultLineDeselectedColor = (Color) settings._lineDeselectedColor;
             _floorHue = (Color) settings._floorColor;
-
+            foreach (ModelPanelViewportInfo v in settings._viewports)
+            {
+                v._backColor = (Program.RootNode is ARCNode a && a.IsStage ? settings._stgBgColor : settings._bgColor);
+            }
             int w = (int) settings._rightPanelWidth;
             if (w >= 50)
             {

@@ -76,7 +76,7 @@ Full changelog can be viewed from the help menu.";
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
-            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1);
+            AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
             AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
@@ -509,6 +509,65 @@ Full changelog can be viewed from the help menu.";
             return false;
         }
 
+        public static bool OpenTemplate(string path)
+        {
+            return OpenTemplate(path, true);
+        }
+        
+        public static bool OpenTemplate(string path, bool showErrors)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return false;
+            }
+
+            if (!File.Exists(path))
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show("Template file does not exist.");
+                }
+
+                return false;
+            }
+
+            if (!Close())
+            {
+                return false;
+            }
+#if !DEBUG
+            try
+            {
+#endif
+                if ((_rootNode = NodeFactory.FromFile(null, path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize template file.");
+                }
+
+                MainForm.Instance.Reset();
+#if !DEBUG
+            }
+            catch (Exception x)
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show(x.ToString());
+                }
+            }
+#endif
+
+            Close();
+
+            return false;
+        }
+
         public static bool OpenFolderFile(out string fileName)
         {
 #if !DEBUG
@@ -675,6 +734,7 @@ Full changelog can be viewed from the help menu.";
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message);
+                    _rootNode.SignalPropertyChange();
                 }
 #endif
             }
@@ -895,7 +955,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlStable {RootPath}",
+                        Arguments = $"-dlStable {RootPath}"
                     });
                     git?.WaitForExit();
                 }
@@ -916,7 +976,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlCanary {RootPath}",
+                        Arguments = $"-dlCanary {RootPath}"
                     });
                     git?.WaitForExit();
                 }

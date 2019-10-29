@@ -65,7 +65,9 @@ namespace System.Windows.Forms
                 return;
             }
 
-            string s = Path.GetFileName(listBox1.SelectedItem.ToString());
+            string s = Path.GetFileName(listBox1.SelectedItem.ToString() == "<null>"
+                            ? "null"
+                            : listBox1.SelectedItem.ToString());
             label1.Text = $"{s} - Has {(SelectedFile.IsDirty ? "" : "not ")}changed";
         }
 

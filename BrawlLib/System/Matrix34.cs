@@ -378,7 +378,7 @@ namespace System
             MaxMtxT,
             MaxMtxSR,
             MaxMtxR,
-            MaxMtxS,
+            MaxMtxS
         };
 
         public static Matrix34 TextureMatrix(TextureFrameState state)

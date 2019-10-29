@@ -271,7 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                Console.Write("Absolute branch at " + CreateTarget(index).ToString());
+                Console.Write("Absolute branch at " + CreateTarget(index));
             }
         }
 
@@ -552,7 +552,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override string ToString()
         {
             return
-                $"{(RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : "m" + _moduleID.ToString())}[{_sectionID}] 0x{(_index * 4).ToString("X")}";
+                $"{(RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : "m" + _moduleID)}[{_sectionID}] 0x{(_index * 4).ToString("X")}";
         }
 
         public override int GetHashCode()

@@ -991,7 +991,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public enum MatTextureMagFilter : uint
     {
         Nearest = 0,
-        Linear,
+        Linear
     }
 
     public enum MappingMethod

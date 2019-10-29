@@ -38,6 +38,8 @@ namespace BrawlCrate.NodeWrappers
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
             _menu.Items.Add(new ToolStripSeparator());
+            _menu.Items.Add(new ToolStripMenuItem("Replace Camera", null, ReplaceCameraAction, null));
+            _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
@@ -55,6 +57,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void NewEntryAction(object sender, EventArgs e)
         {
             GetInstance<STPMWrapper>().NewEntry();
+        }
+        
+        protected static void ReplaceCameraAction(object sender, EventArgs e)
+        {
+            GetInstance<STPMWrapper>().ReplaceCamera();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -92,6 +99,22 @@ namespace BrawlCrate.NodeWrappers
         public STPMWrapper()
         {
             ContextMenuStrip = _menu;
+        }
+
+        public void ReplaceCamera()
+        {
+            if (Program.OpenFile(ReplaceFilter, out string inPath))
+            {
+                using (STPMNode ext = NodeFactory.FromFile(null, inPath) as STPMNode)
+                {
+                    if (ext == null)
+                    {
+                        MessageBox.Show("The selected STPM file could not be read.");
+                        return;
+                    }
+                    ((STPMNode)_resource).ReplaceCamera(ext);
+                }
+            }
         }
     }
 }

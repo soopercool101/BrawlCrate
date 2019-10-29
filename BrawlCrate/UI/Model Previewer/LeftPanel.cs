@@ -994,8 +994,8 @@ namespace System.Windows.Forms
 
             if (TargetModel is MDL0Node)
             {
-                _AnimGroupBRRES.Header = string.Format("In BRRES ({0})", TargetModel.ToString());
-                _AnimGroupNotBRRES.Header = string.Format("Not in BRRES ({0})", TargetModel.ToString());
+                _AnimGroupBRRES.Header = string.Format("In BRRES ({0})", TargetModel);
+                _AnimGroupNotBRRES.Header = string.Format("Not in BRRES ({0})", TargetModel);
 
                 listAnims.Groups.Add(_AnimGroupBRRES);
                 listAnims.Groups.Add(_AnimGroupNotBRRES);
@@ -2088,7 +2088,7 @@ namespace System.Windows.Forms
             Type t = ModelEditorBase.AnimTypeList[(int) TargetAnimType];
             Reflection.MethodInfo method = typeof(BRRESNode).GetMethod("CreateResource");
             Reflection.MethodInfo generic = method.MakeGenericMethod(t);
-            generic.Invoke(target, new object[] {"New" + TargetAnimType.ToString()});
+            generic.Invoke(target, new object[] {"New" + TargetAnimType});
             UpdateAnimations();
             listAnims.Items[listAnims.Items.Count - 1].Selected = true;
         }

@@ -456,7 +456,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _jabFlag.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _jabFlag = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -854,7 +854,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _soundbank.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _soundbank = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -869,7 +869,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _kirbySoundbank.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _kirbySoundbank = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -897,7 +897,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _entryArticleFlag.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _entryArticleFlag = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -926,7 +926,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _textureLoad.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _textureLoad = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -941,7 +941,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _u12Flag.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _u12Flag = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -956,7 +956,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _u13Flag.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _u13Flag = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();

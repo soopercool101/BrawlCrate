@@ -237,7 +237,7 @@ namespace BrawlCrate.NodeWrappers
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = AppDomain.CurrentDomain.BaseDirectory + "\\BrawlCrate.exe",
-                    Arguments = "\"" + s + "\"",
+                    Arguments = "\"" + s + "\""
                 });
             }
         }

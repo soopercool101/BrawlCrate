@@ -201,7 +201,7 @@ namespace BrawlLib.Wii.Animations
             }
             catch (Exception e)
             {
-                MessageBox.Show("There was a problem importing keyframes.\n\nError:\n" + e.ToString());
+                MessageBox.Show("There was a problem importing keyframes.\n\nError:\n" + e);
                 return null;
             }
         }

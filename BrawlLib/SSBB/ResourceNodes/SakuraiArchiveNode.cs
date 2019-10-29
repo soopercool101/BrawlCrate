@@ -516,6 +516,6 @@ namespace BrawlLib.SSBBTypes
         SFX = 2,
         Other = 3,
         Entry = 0,
-        Exit = 1,
+        Exit = 1
     }
 }

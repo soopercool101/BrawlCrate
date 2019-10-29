@@ -490,6 +490,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         Lose = 0x1CA,
         DamageFace = 0x1CB,
         Dark = 0x1CC,
-        Spycloak = 0x1CD,
+        Spycloak = 0x1CD
     }
 }

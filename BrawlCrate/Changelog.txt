@@ -38,6 +38,7 @@ they be held accountable for the manner in which it is used.
      . External BrawlBox integration replaced with internal BrawlCrate integration. Opening files via this method will now open them in the main window
  . Add Moveset framework from v0.68b
  . Add support to open folders
+ . Add support to open files as templates, which doesn't set the save path automatically
  . New Color Smash method: Multi-select nodes and right-click to Color Smash
  . Panning on the modelviewer freezes the mouse to allow for smoother movement
  . Add MainForm previewing of Models for BRRES and ARC nodes (check the settings)
@@ -78,9 +79,15 @@ they be held accountable for the manner in which it is used.
      . ShowOKCancelWarning
      . ShowOKCancelError
      . AddMultiSelectContextMenuItem
+	 . AppPath
+	 . APIPath
+	 . PluginPath
+	 . LoaderPath
      . OpenMultiFileDialog
      . OpenFile
      . OpenFileNoErrors
+	 . OpenTemplate
+	 . OpenTemplateNoErrors
      . SaveFile
      . SaveFileAs
      . CloseFile
@@ -105,7 +112,7 @@ they be held accountable for the manner in which it is used.
      . AddContextMenuItem
        - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
    - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a folder
-   - Example Loader (REFF) Renamed to better explain what it does, uncomments important code, and is now disabled by default
+   - Example Loader (RFNT) Renamed to better explain what it does, uncomments actual parsing logic, and adds "Do Something" to RFNTWrapper instead of ARCWrapper
    - Added Example Loader that dumps CSPs as RSPs
  . Add ability to directly import materials and shaders to an MDL0
  . Add new iconography for Canary builds
@@ -114,6 +121,9 @@ they be held accountable for the manner in which it is used.
  . Add support for multi-file importing for BRRES and ARC
  . Add "Export Selected" toolstrip for multi-selection
  . Add new setting to toggle context-based looping for audio sources
+ . Add support for parsing and editing of Custom My Music (CMM) files
+ . Add basic support to parse and edit Adventure Parameter (ADPM) files found in Subspace Emissary stages
+ . Update documentation to v0.30.0
  . Unsupported and unrecognized file types can now be opened as raw data files
  . Temp files are now opened using default OS functionality, rather than in a dedicated per-install folder
  . Duplicate now works for most node types
@@ -121,12 +131,14 @@ they be held accountable for the manner in which it is used.
  . Speed up rendering logic
  . Folder select dialog now uses the Vista and later styled folder select when on Windows
  . No longer use "lib" folder to improve compatibility
+ . Common files now are embedded into the program and no longer require internet
  . Fix bug in which certain collision planes would be ignored on object population (fixes New Pork City issues)
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
  . Fix bug in which GCTs made with Code Manager would incorrectly detect the first line of code as a code title, breaking the codeset
  . Fix unintended behavior in which context menu hotkeys could be pressed when the main window is not in focus
  . Fix bug in which settings would be saved more often than intended
+ . Fix bug in which languages which use "," as a decimal separator were unable to input floats into numeric entry boxes
  . Sped up booting and removed splash screen accordingly
  
  - BrawlCrate v0.26b Hotfix 2 - (10/11/2019)

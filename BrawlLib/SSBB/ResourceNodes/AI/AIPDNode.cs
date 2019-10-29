@@ -1085,7 +1085,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_name == null)
                 {
-                    _name = "Entry" + Parent.Children.IndexOf(this).ToString();
+                    _name = "Entry" + Parent.Children.IndexOf(this);
                 }
 
                 Entries = Header->Entries;
@@ -1413,7 +1413,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = "Type2Entry " + Parent.Children.IndexOf(this).ToString();
+                _name = "Type2Entry " + Parent.Children.IndexOf(this);
             }
 
             unk1 = Header->_unk1;

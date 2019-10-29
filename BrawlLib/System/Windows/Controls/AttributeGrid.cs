@@ -455,13 +455,13 @@ namespace System.Windows.Forms
             btnInf.Visible = btnMinusInf.Visible = false;
             if (AttributeArray[index]._type == 5) // Binary
             {
-                string field0 = value.ToString().Replace(" ", string.Empty);
+                string field0 = value.Replace(" ", string.Empty);
                 TargetNode.SetInt(index, Convert.ToInt32(field0, 2));
                 TargetNode.SignalPropertyChange();
             }
             else if (AttributeArray[index]._type == 4) // Hex
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 int temp = Convert.ToInt32(field0, fromBase);
                 if (TargetNode.GetInt(index) != temp)
@@ -480,7 +480,7 @@ namespace System.Windows.Forms
                 lblCNoA.Visible = true;
                 RGBAPixel p = new RGBAPixel();
 
-                string s = value.ToString();
+                string s = value;
                 char[] delims = new char[] {',', 'R', 'G', 'B', 'A', ':', ' '};
                 string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
 

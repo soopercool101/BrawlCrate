@@ -135,7 +135,7 @@ namespace BrawlCrate.StageManager
             "ft_sonic",
             "ft_purin",
             "ft_wolf",
-            "ft_zako",
+            "ft_zako"
         };
 
         // _relFile should only be null on startup, when no stage is selected.

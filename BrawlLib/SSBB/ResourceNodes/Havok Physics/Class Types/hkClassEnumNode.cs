@@ -59,7 +59,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                         writer.WriteStartElement("hkparam");
                         writer.WriteAttributeString("name", "name");
-                        writer.WriteString(e.Name.ToString());
+                        writer.WriteString(e.Name);
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();

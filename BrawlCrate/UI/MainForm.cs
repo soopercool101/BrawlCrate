@@ -841,14 +841,17 @@ namespace BrawlCrate
 
             if (_currentControl is MDL0ObjectControl)
             {
-                mdL0ObjectControl1.SetTarget(node as MDL0ObjectNode);
+                if (!mdL0ObjectControl1.SetTarget(node as MDL0ObjectNode))
+                {
+                    _currentControl = null;
+                }
             }
             else if (_currentControl is TexCoordControl)
             {
                 texCoordControl1.TargetNode = (MDL0MaterialRefNode) node;
             }
 
-            selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
+            selectedType = resourceTree.SelectedNode?.GetType();
         }
 
         #region Rendering
@@ -1133,6 +1136,14 @@ namespace BrawlCrate
             if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile))
             {
                 Program.Open(inFile);
+            }
+        }
+        
+        private void openTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile))
+            {
+                Program.OpenTemplate(inFile);
             }
         }
 
@@ -1431,7 +1442,7 @@ namespace BrawlCrate
             Process.Start(new ProcessStartInfo
             {
                 FileName = $"{Application.StartupPath}\\Changelog.txt",
-                WindowStyle = ProcessWindowStyle.Hidden,
+                WindowStyle = ProcessWindowStyle.Hidden
             });
 #endif
         }
@@ -1490,6 +1501,7 @@ namespace BrawlCrate
             this.rEFFParticlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rEFTParticleTexturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1620,6 +1632,7 @@ namespace BrawlCrate
             {
                 this.newToolStripMenuItem,
                 this.openToolStripMenuItem,
+                this.openTemplateToolStripMenuItem,
                 this.openFolderToolStripMenuItem,
                 this.saveToolStripMenuItem,
                 this.saveAsToolStripMenuItem,
@@ -1743,7 +1756,17 @@ namespace BrawlCrate
             this.openToolStripMenuItem.Text = "&Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // openFolerToolStripMenuItem
+            // openTemplateToolStripMenuItem
+            // 
+            this.openTemplateToolStripMenuItem.Name = "openTemplateToolStripMenuItem";
+            this.openTemplateToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt |
+                                               System.Windows.Forms.Keys.O)));
+            this.openTemplateToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.openTemplateToolStripMenuItem.Text = "&Open Template...";
+            this.openTemplateToolStripMenuItem.Click += new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
+            // 
+            // openFolderToolStripMenuItem
             // 
             this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
             this.openFolderToolStripMenuItem.ShortcutKeys =
@@ -1888,7 +1911,7 @@ namespace BrawlCrate
             // 
             this.runScriptToolStripMenuItem.Name = "runScriptToolStripMenuItem";
             this.runScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.runScriptToolStripMenuItem.Text = "Run Script..";
+            this.runScriptToolStripMenuItem.Text = "Run Script...";
             this.runScriptToolStripMenuItem.Click += new System.EventHandler(this.runScriptToolStripMenuItem_Click);
             // 
             // reloadPluginsToolStripMenuItem
@@ -2306,6 +2329,7 @@ namespace BrawlCrate
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem openTemplateToolStripMenuItem;
         private ToolStripMenuItem openFolderToolStripMenuItem;
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem exitToolStripMenuItem;

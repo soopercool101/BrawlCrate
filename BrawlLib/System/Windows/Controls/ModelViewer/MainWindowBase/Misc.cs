@@ -23,12 +23,12 @@ namespace System.Windows.Forms
             {
                 ApplyTranslation,
                 ApplyAngle,
-                ApplyScale,
+                ApplyScale
             };
             _mouseMoveTargetType = new MouseMoveTargetType[]
             {
                 MouseMoveTargetBone,
-                MouseMoveTargetVertex,
+                MouseMoveTargetVertex
             };
         }
 
@@ -362,6 +362,8 @@ namespace System.Windows.Forms
                 progress.Finish();
                 e.Finish();
             }
+
+            _loop = PlaybackPanel.chkLoop.Checked;
 
             if (MessageBox.Show(this,
                     "Animated GIF successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder now?",

@@ -177,7 +177,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             TextureMinFilter.Nearest, TextureMinFilter.Linear, TextureMinFilter.NearestMipmapNearest,
             TextureMinFilter.NearestMipmapLinear, TextureMinFilter.LinearMipmapNearest,
-            TextureMinFilter.LinearMipmapLinear,
+            TextureMinFilter.LinearMipmapLinear
         };
 
         public static readonly TextureWrapMode[] _wraps =
@@ -261,7 +261,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     ARCEntryNode a;
                     BRRESNode b;
                     bool redirect = false;
-                    if ((a = n as ARCEntryNode) != null && bres != null && bres.GroupID == a.GroupID &&
+                    if ((a = n as ARCEntryNode) != null && bres != null && (bres.GroupID == a.GroupID || a.GroupID == 0) &&
                         (b = a.RedirectNode as BRRESNode) != null)
                     {
                         redirect = true;
@@ -271,7 +271,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         continue;
                     }
 
-                    if (a.FileType != ARCFileType.TextureData || !redirect && bres != null && bres.GroupID != b.GroupID)
+                    if (a.FileType != ARCFileType.TextureData ||
+                        !redirect && bres != null && bres.GroupID != b.GroupID && b.GroupID != 0)
                     {
                         continue;
                     }
