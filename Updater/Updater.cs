@@ -776,14 +776,7 @@ namespace Updater
                             // Only extract zip files, a readme, and a license.
                             foreach (ZipArchiveEntry e in archive.Entries)
                             {
-                                if (e.Name.EndsWith(".py", StringComparison.OrdinalIgnoreCase) ||
-                                    e.Name.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    // Extract the scripts and add them to the file list
-                                    sw.WriteLine(e.FullName);
-                                    e.ExtractToFile(Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", e.FullName)));
-                                }
-                                else if (e.FullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
+                                if (e.FullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
                                          e.FullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
                                 {
                                     // Extract the README. Use a specific path instead of the one specified.
@@ -794,6 +787,12 @@ namespace Updater
                                 {
                                     // Extract the LICENSE. Use a specific path instead of the one specified.
                                     e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} LICENSE.txt");
+                                }
+                                else
+                                {
+                                    // Extract the other files and add them to the file list where specified
+                                    sw.WriteLine(e.FullName);
+                                    e.ExtractToFile(Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", e.FullName)));
                                 }
                             }
                         }

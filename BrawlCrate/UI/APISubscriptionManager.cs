@@ -44,25 +44,25 @@ namespace BrawlCrate.UI
             this.grpBoxSubscriptions = new System.Windows.Forms.GroupBox();
             this.lstSubs = new System.Windows.Forms.ListView();
             this.tabsSubInfo = new System.Windows.Forms.TabControl();
-            this.tabReadMe = new System.Windows.Forms.TabPage();
-            this.txtReadMe = new System.Windows.Forms.RichTextBox();
+            this.tabLicense = new System.Windows.Forms.TabPage();
+            this.txtLicense = new System.Windows.Forms.RichTextBox();
             this.tabScripts = new System.Windows.Forms.TabPage();
             this.lstScripts = new System.Windows.Forms.ListView();
-            this.tabAboutLicense = new System.Windows.Forms.TabPage();
-            this.txtLicense = new System.Windows.Forms.RichTextBox();
+            this.tabReadMe = new System.Windows.Forms.TabPage();
+            this.btnUninstall = new System.Windows.Forms.Button();
+            this.txtReadMe = new System.Windows.Forms.RichTextBox();
             this.lblLastUpdated = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.btnAddSub = new System.Windows.Forms.Button();
-            this.btnUninstall = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.grpBoxSubscriptions.SuspendLayout();
             this.tabsSubInfo.SuspendLayout();
-            this.tabReadMe.SuspendLayout();
+            this.tabLicense.SuspendLayout();
             this.tabScripts.SuspendLayout();
-            this.tabAboutLicense.SuspendLayout();
+            this.tabReadMe.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUpdateSubscriptions
@@ -114,12 +114,12 @@ namespace BrawlCrate.UI
             this.lstSubs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstSubs.HideSelection = false;
             this.lstSubs.Location = new System.Drawing.Point(3, 16);
+            this.lstSubs.MultiSelect = false;
             this.lstSubs.Name = "lstSubs";
             this.lstSubs.Size = new System.Drawing.Size(369, 299);
             this.lstSubs.TabIndex = 0;
-            this.lstSubs.MultiSelect = false;
             this.lstSubs.UseCompatibleStateImageBehavior = false;
-            this.lstSubs.ItemSelectionChanged += new ListViewItemSelectionChangedEventHandler(LstSubs_ItemChanged);
+            this.lstSubs.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstSubs_ItemChanged);
             // 
             // tabsSubInfo
             // 
@@ -128,44 +128,44 @@ namespace BrawlCrate.UI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabsSubInfo.Controls.Add(this.tabReadMe);
             this.tabsSubInfo.Controls.Add(this.tabScripts);
-            this.tabsSubInfo.Controls.Add(this.tabAboutLicense);
+            this.tabsSubInfo.Controls.Add(this.tabLicense);
             this.tabsSubInfo.Location = new System.Drawing.Point(0, 0);
             this.tabsSubInfo.Name = "tabsSubInfo";
             this.tabsSubInfo.SelectedIndex = 0;
             this.tabsSubInfo.Size = new System.Drawing.Size(382, 167);
             this.tabsSubInfo.TabIndex = 0;
             // 
-            // tabReadMe
+            // tabLicense
             // 
-            this.tabReadMe.Controls.Add(this.txtReadMe);
-            this.tabReadMe.Location = new System.Drawing.Point(4, 22);
-            this.tabReadMe.Name = "tabReadMe";
-            this.tabReadMe.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReadMe.Size = new System.Drawing.Size(374, 141);
-            this.tabReadMe.TabIndex = 0;
-            this.tabReadMe.Text = "ReadMe";
-            this.tabReadMe.UseVisualStyleBackColor = true;
+            this.tabLicense.BackColor = System.Drawing.SystemColors.Control;
+            this.tabLicense.Controls.Add(this.txtLicense);
+            this.tabLicense.Location = new System.Drawing.Point(4, 22);
+            this.tabLicense.Name = "tabLicense";
+            this.tabLicense.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLicense.Size = new System.Drawing.Size(374, 141);
+            this.tabLicense.TabIndex = 0;
+            this.tabLicense.Text = "License";
             // 
-            // txtReadMe
+            // txtLicense
             // 
-            this.txtReadMe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtReadMe.Location = new System.Drawing.Point(3, 3);
-            this.txtReadMe.Name = "txtReadMe";
-            this.txtReadMe.Size = new System.Drawing.Size(368, 135);
-            this.txtReadMe.TabIndex = 0;
-            this.txtReadMe.Text = "";
-            this.txtReadMe.ReadOnly = true;
+            this.txtLicense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLicense.Location = new System.Drawing.Point(3, 3);
+            this.txtLicense.Name = "txtLicense";
+            this.txtLicense.ReadOnly = true;
+            this.txtLicense.Size = new System.Drawing.Size(368, 135);
+            this.txtLicense.TabIndex = 0;
+            this.txtLicense.Text = "";
             // 
             // tabScripts
             // 
+            this.tabScripts.BackColor = System.Drawing.SystemColors.Control;
             this.tabScripts.Controls.Add(this.lstScripts);
             this.tabScripts.Location = new System.Drawing.Point(4, 22);
             this.tabScripts.Name = "tabScripts";
             this.tabScripts.Padding = new System.Windows.Forms.Padding(3);
             this.tabScripts.Size = new System.Drawing.Size(374, 141);
             this.tabScripts.TabIndex = 1;
-            this.tabScripts.Text = "Scripts";
-            this.tabScripts.UseVisualStyleBackColor = true;
+            this.tabScripts.Text = "Files";
             // 
             // lstScripts
             // 
@@ -177,31 +177,42 @@ namespace BrawlCrate.UI
             this.lstScripts.TabIndex = 0;
             this.lstScripts.UseCompatibleStateImageBehavior = false;
             // 
-            // tabAboutLicense
+            // tabReadMe
             // 
-            this.tabAboutLicense.BackColor = System.Drawing.SystemColors.Control;
-            this.tabAboutLicense.Controls.Add(this.btnUninstall);
-            this.tabAboutLicense.Controls.Add(this.txtLicense);
-            this.tabAboutLicense.Controls.Add(this.lblLastUpdated);
-            this.tabAboutLicense.Controls.Add(this.lblVersion);
-            this.tabAboutLicense.Location = new System.Drawing.Point(4, 22);
-            this.tabAboutLicense.Name = "tabAboutLicense";
-            this.tabAboutLicense.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAboutLicense.Size = new System.Drawing.Size(374, 141);
-            this.tabAboutLicense.TabIndex = 2;
-            this.tabAboutLicense.Text = "About";
+            this.tabReadMe.BackColor = System.Drawing.SystemColors.Control;
+            this.tabReadMe.Controls.Add(this.btnUninstall);
+            this.tabReadMe.Controls.Add(this.txtReadMe);
+            this.tabReadMe.Controls.Add(this.lblLastUpdated);
+            this.tabReadMe.Controls.Add(this.lblVersion);
+            this.tabReadMe.Location = new System.Drawing.Point(4, 22);
+            this.tabReadMe.Name = "tabReadMe";
+            this.tabReadMe.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReadMe.Size = new System.Drawing.Size(374, 141);
+            this.tabReadMe.TabIndex = 2;
+            this.tabReadMe.Text = "About";
             // 
-            // txtLicense
+            // btnUninstall
             // 
-            this.txtLicense.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnUninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUninstall.Location = new System.Drawing.Point(290, 12);
+            this.btnUninstall.Name = "btnUninstall";
+            this.btnUninstall.Size = new System.Drawing.Size(75, 23);
+            this.btnUninstall.TabIndex = 4;
+            this.btnUninstall.Text = "Uninstall";
+            this.btnUninstall.UseVisualStyleBackColor = true;
+            this.btnUninstall.Click += new System.EventHandler(this.BtnUninstall_Click);
+            // 
+            // txtReadMe
+            // 
+            this.txtReadMe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLicense.Location = new System.Drawing.Point(0, 44);
-            this.txtLicense.Name = "txtLicense";
-            this.txtLicense.Size = new System.Drawing.Size(374, 94);
-            this.txtLicense.TabIndex = 3;
-            this.txtLicense.Text = "";
-            this.txtLicense.ReadOnly = true;
+            this.txtReadMe.Location = new System.Drawing.Point(0, 44);
+            this.txtReadMe.Name = "txtReadMe";
+            this.txtReadMe.ReadOnly = true;
+            this.txtReadMe.Size = new System.Drawing.Size(374, 94);
+            this.txtReadMe.TabIndex = 3;
+            this.txtReadMe.Text = "";
             // 
             // lblLastUpdated
             // 
@@ -232,21 +243,9 @@ namespace BrawlCrate.UI
             this.btnAddSub.UseVisualStyleBackColor = true;
             this.btnAddSub.Click += new System.EventHandler(this.BtnAddSub_Click);
             // 
-            // btnUninstall
-            // 
-            this.btnUninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUninstall.Location = new System.Drawing.Point(290, 12);
-            this.btnUninstall.Name = "btnUninstall";
-            this.btnUninstall.Size = new System.Drawing.Size(75, 23);
-            this.btnUninstall.TabIndex = 4;
-            this.btnUninstall.Text = "Uninstall";
-            this.btnUninstall.UseVisualStyleBackColor = true;
-            this.btnUninstall.Click += new System.EventHandler(this.BtnUninstall_Click);
-            // 
             // APISubscriptionManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.Shown += new System.EventHandler(this.APISubscriptionManager_Shown);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 529);
             this.Controls.Add(this.btnAddSub);
@@ -255,16 +254,17 @@ namespace BrawlCrate.UI
             this.Name = "APISubscriptionManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BrawlAPI Subscription Manager";
+            this.Shown += new System.EventHandler(this.APISubscriptionManager_Shown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grpBoxSubscriptions.ResumeLayout(false);
             this.tabsSubInfo.ResumeLayout(false);
-            this.tabReadMe.ResumeLayout(false);
+            this.tabLicense.ResumeLayout(false);
             this.tabScripts.ResumeLayout(false);
-            this.tabAboutLicense.ResumeLayout(false);
-            this.tabAboutLicense.PerformLayout();
+            this.tabReadMe.ResumeLayout(false);
+            this.tabReadMe.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -274,14 +274,14 @@ namespace BrawlCrate.UI
         private System.Windows.Forms.Button btnUpdateSubscriptions;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TabControl tabsSubInfo;
-        private System.Windows.Forms.TabPage tabReadMe;
-        private System.Windows.Forms.RichTextBox txtReadMe;
+        private System.Windows.Forms.TabPage tabLicense;
+        private System.Windows.Forms.RichTextBox txtLicense;
         private System.Windows.Forms.TabPage tabScripts;
         private System.Windows.Forms.GroupBox grpBoxSubscriptions;
-        private System.Windows.Forms.TabPage tabAboutLicense;
+        private System.Windows.Forms.TabPage tabReadMe;
         private System.Windows.Forms.Label lblLastUpdated;
         private System.Windows.Forms.Label lblVersion;
-        private System.Windows.Forms.RichTextBox txtLicense;
+        private System.Windows.Forms.RichTextBox txtReadMe;
         private System.Windows.Forms.ListView lstScripts;
         private System.Windows.Forms.ListView lstSubs;
         private Button btnUninstall;
@@ -314,15 +314,15 @@ namespace BrawlCrate.UI
         private void LstSubs_ItemChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             splitContainer1.Panel2Collapsed = lstSubs.SelectedItems.Count < 1;
-            txtLicense.Text = "";
             txtReadMe.Text = "";
+            txtLicense.Text = "";
             lblVersion.Text = "Version:";
             lblLastUpdated.Text = "Last Updated:";
             lstScripts.Clear();
             if (e.Item is APISubscription a)
             {
-                txtLicense.Text = a.License;
                 txtReadMe.Text = a.License;
+                txtLicense.Text = a.ReadMe;
                 lblVersion.Text = $"Version: {a.Version}";
                 lblLastUpdated.Text = $"Last Updated: {a.LastUpdateDate}";
                 foreach (string s in a.ManagedScripts)
