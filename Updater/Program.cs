@@ -39,12 +39,12 @@ namespace Updater
                         break;
                     case "-bu": //BrawlCrate update call
                         t = Updater.CheckUpdate(args[1] != "0", args[2], args[3] != "0", args[4], args[5] != "0",
-                            args[6] != "0");
+                            args[6] != "0", args[7] != "0");
                         t.Wait();
                         break;
                     case "-buc": //BrawlCrate Canary update call
                         t = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null,
-                            args.Length > 2 && args[2] != "0", false);
+                            args.Length > 2 && args[2] != "0", false, args[3] != "0");
                         t.Wait();
                         break;
                     case "-bi": //BrawlCrate issue call
@@ -62,7 +62,7 @@ namespace Updater
                         break;
                     case "-dlCanary": // Force download the latest Canary build
                         Updater.SetCanaryActive();
-                        t = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null, false, true);
+                        t = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null, false, true, false);
                         t.Wait();
                         break;
                     case "-dlStable": // Force download the latest Stable build
@@ -107,7 +107,7 @@ namespace Updater
             else if (args.Length == 0)
             {
 #if CANARY
-                t = Updater.CheckCanaryUpdate("", true, false);
+                t = Updater.CheckCanaryUpdate("", true, false, true);
 #else
                 t = Updater.CheckUpdate(true);
 #endif

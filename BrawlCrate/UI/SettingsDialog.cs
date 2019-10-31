@@ -112,6 +112,7 @@ namespace BrawlCrate
         public SettingsDialog()
         {
             InitializeComponent();
+            Icon = BrawlLib.Properties.Resources.Icon;
             _updating = true;
 #if DEBUG
             chkShowHex.Text = "Prioritize hex preview for nodes";

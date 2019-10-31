@@ -179,7 +179,7 @@ namespace BrawlCrate
 
         private readonly DelegateOpenFile m_DelegateOpenFile;
 
-        private void CheckUpdates(bool manual = true)
+        private void CheckUpdates(bool manual)
         {
             try
             {
@@ -190,7 +190,7 @@ namespace BrawlCrate
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-buc \"{Program.RootPath ?? "<null>"}\" {(manual ? "1" : "0")}"
+                        Arguments = $"-buc \"{Program.RootPath ?? "<null>"}\" {(manual ? "1" : "0")} {(Properties.Settings.Default.APIAutoUpdate ? "1" : "0")}"
                     });
                     git?.WaitForExit();
                     if (File.Exists(Program.AppPath + "\\Canary\\Old"))
@@ -209,9 +209,10 @@ namespace BrawlCrate
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
                         Arguments =
-                            $"-bu 1 \"{Program.TagName}\" {(manual ? "1" : "0")} \"{Program.RootPath ?? "<null>"}\" {(_docUpdates ? "1" : "0")} {(!manual && _autoUpdate ? "1" : "0")}"
+                            $"-bu 1 \"{Program.TagName}\" {(manual ? "1" : "0")} \"{Program.RootPath ?? "<null>"}\" {(_docUpdates ? "1" : "0")} {(!manual && _autoUpdate ? "1" : "0")} {(Properties.Settings.Default.APIAutoUpdate ? "1" : "0")}"
                     });
 #endif
+
                 }
                 else
                 {
@@ -1312,7 +1313,7 @@ namespace BrawlCrate
 
         private void checkForUpdatesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            CheckUpdates();
+            CheckUpdates(true);
         }
 
         private void splitContainer_MouseDown(object sender, MouseEventArgs e)

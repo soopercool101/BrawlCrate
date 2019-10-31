@@ -345,17 +345,17 @@ namespace Updater
 
         public static async Task CheckUpdate()
         {
-            await CheckUpdate(true, "", true, null, true, true);
+            await CheckUpdate(true, "", true, null, true, true, true);
         }
 
         public static async Task CheckUpdate(bool overwrite)
         {
-            await CheckUpdate(overwrite, "", true, null, true, true);
+            await CheckUpdate(overwrite, "", true, null, true, true, true);
         }
 
         // Used to check for and download non-canary releases (including documentation updates)
         public static async Task CheckUpdate(bool overwrite, string releaseTag, bool manual, string openFile,
-                                             bool checkDocumentation, bool automatic)
+                                             bool checkDocumentation, bool automatic, bool checkForAPI)
         {
             // If canary is active, disable it
             if (File.Exists(AppPath + "\\Canary\\Active"))
@@ -468,6 +468,12 @@ namespace Updater
                 // If there are no releases available, download will fail.
                 if (release == null || release.Assets.Count == 0)
                 {
+                    if (checkForAPI)
+                    {
+                        // Do an API update check. Return afterwards since "No updates found" should only be shown once.
+                        await BrawlAPICheckUpdates(manual);
+                        return;
+                    }
                     if (manual)
                     {
                         MessageBox.Show("No updates found.");
@@ -547,7 +553,7 @@ namespace Updater
 
         #region Canary Update Check
 
-        public static async Task CheckCanaryUpdate(string openFile, bool manual, bool force)
+        public static async Task CheckCanaryUpdate(string openFile, bool manual, bool force, bool checkForAPI)
         {
             try
             {
@@ -570,6 +576,12 @@ namespace Updater
                     string newID = release.TargetCommitish;
                     if (oldID.Equals(newID, StringComparison.OrdinalIgnoreCase))
                     {
+                        if (checkForAPI)
+                        {
+                            // Do an API update check. Return afterwards since "No updates found" should only be shown once.
+                            await BrawlAPICheckUpdates(manual);
+                            return;
+                        }
                         if (manual)
                         {
                             MessageBox.Show("No updates found.");
@@ -586,6 +598,17 @@ namespace Updater
                         if (Asset.CreatedAt.UtcDateTime <= c.Commit.Committer.Date)
                         {
                             // Asset has not yet been updated
+                            if (checkForAPI)
+                            {
+                                // Do an API update check. Return afterwards since "No updates found" should only be shown once.
+                                await BrawlAPICheckUpdates(manual);
+                                return;
+                            }
+                            if (manual)
+                            {
+                                MessageBox.Show("No updates found.");
+                            }
+
                             return;
                         }
                     }
@@ -710,6 +733,10 @@ namespace Updater
 
                     updateMessage.Trim();
                     MessageBox.Show(updateMessage, "BrawlAPI Updater");
+                }
+                else if (manual)
+                {
+                    MessageBox.Show("No updates found.");
                 }
             }
         }
