@@ -11,16 +11,38 @@ namespace BrawlCrate.ExternalInterfacing
     {
         #region Updater
         
+        public static async Task CheckUpdate(bool overwrite)
+        {
+            await RunWithArgs(overwrite ? "-r" : "-n");
+        }
+
+        public static async Task CheckUpdate(bool overwrite, string releaseTag, bool manual, string openFile,
+                                             bool checkDocumentation, bool automatic, bool checkForAPI)
+        {
+            await RunWithArgs("-bu", overwrite ? "1" : "0", releaseTag, manual ? "1" : "0", openFile,
+                checkDocumentation ? "1" : "0", automatic ? "1" : "0", checkForAPI ? "1" : "0");
+        }
+
+        public static async Task CheckCanaryUpdate(string openFile, bool manual, bool force, bool checkForAPI)
+        {
+            await RunWithArgs("-buc", openFile, manual ? "1" : "0", force  ? "1" : "0", checkForAPI ? "1" : "0");
+        }
+
+        public static async Task ForceDownloadStable(string openFile)
+        {
+            await RunWithArgs("-dlStable", openFile);
+        }
+        
         public static async Task BrawlAPICheckUpdates(bool manual)
         {
             await RunWithArgs("-apiUpdate", manual ? "1" : "0");
         }
 
-        public static async Task BrawlAPIUpdate(string repoOwner, string repoName, bool manual)
+        public static async Task BrawlAPIInstallUpdate(string repoOwner, string repoName, bool manual)
         {
             await RunWithArgs("-apiInstall", repoOwner, repoName, manual ? "1" : "0");
         }
-        
+
         public static async Task BrawlAPIUninstall(string repoOwner, string repoName, bool manual)
         {
             await RunWithArgs("-apiUninstall", repoOwner, repoName, manual ? "1" : "0");
@@ -30,7 +52,15 @@ namespace BrawlCrate.ExternalInterfacing
 
         #region Issue Reporter
 
-        
+        public static async Task CreateIssue(
+            string TagName,
+            string ExceptionMessage,
+            string StackTrace,
+            string Title,
+            string Description)
+        {
+            await RunWithArgs("-bi", TagName, ExceptionMessage, StackTrace, Title, Description);
+        }
 
         #endregion
 

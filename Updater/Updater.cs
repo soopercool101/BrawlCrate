@@ -248,7 +248,8 @@ namespace Updater
                     PageCount = 1
                 };
                 List<GitHubCommit> commits =
-                    (await Github.Repository.Commit.GetAll(repoData[0], repoData[1], options)).ToList();
+                    (await Github.Repository.Commit.GetAll(repoData[0], repoData[1],
+                        new CommitRequest {Sha = currentBranch}, options)).ToList();
                 int i;
                 bool foundCurrentCommit = false;
                 for (i = 0; i < commits.Count;)
@@ -321,7 +322,7 @@ namespace Updater
                 else
                 {
                     MessageBox.Show(
-                        "The last 100 Canary commits will be shown. For a more in-depth view of changes, visit https://github.com/soopercool101/BrawlCrateNext/commits/master");
+                        $"The last 100 Canary commits will be shown. For a more in-depth view of changes, visit https://github.com/{repoData[0]}/{repoData[1]}/{currentBranch}");
                 }
 
                 CanaryChangelogViewer logWindow = new CanaryChangelogViewer(newSha.Substring(0, 7), changelog);
@@ -705,7 +706,7 @@ namespace Updater
                                         ? lines[0]
                                         : lines[1];
                                     // Download the newest release if it's newer
-                                    await BrawlAPIUpdate(repoData[0], repoData[1], manual);
+                                    await BrawlAPIInstallUpdate(repoData[0], repoData[1], manual);
                                     // If the download failed it would have thrown an error, so assume a successful download and add it to the list
                                     string newVer = !release.TagName.Equals(lines[0])
                                         ? release.TagName
@@ -741,7 +742,7 @@ namespace Updater
             }
         }
 
-        public static async Task BrawlAPIUpdate(string repoOwner, string repoName, bool manual)
+        public static async Task BrawlAPIInstallUpdate(string repoOwner, string repoName, bool manual)
         {
 
             string apiPath = $"{AppPath}\\BrawlAPI\\";

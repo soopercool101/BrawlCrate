@@ -93,7 +93,7 @@ namespace Updater
                         t.Wait();
                         break;
                     case "-apiInstall":
-                        t = Updater.BrawlAPIUpdate(args[1], args[2], args.Length > 3 && args[3] == "1");
+                        t = Updater.BrawlAPIInstallUpdate(args[1], args[2], args.Length > 3 && args[3] == "1");
                         t.Wait();
                         break;
                     case "-apiUninstall":

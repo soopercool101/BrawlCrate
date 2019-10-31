@@ -353,7 +353,7 @@ namespace BrawlCrate.UI
                 if (d.ShowDialog(null, "Add subscription", "Repository Owner", "", "Repository Name", "") ==
                     DialogResult.OK)
                 {
-                    await UpdaterHelper.BrawlAPIUpdate(d.InputText1, d.InputText2, true);
+                    await UpdaterHelper.BrawlAPIInstallUpdate(d.InputText1, d.InputText2, true);
                     RefreshList();
                 }
             }
