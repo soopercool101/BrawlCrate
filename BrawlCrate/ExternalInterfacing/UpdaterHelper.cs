@@ -71,7 +71,7 @@ namespace BrawlCrate.ExternalInterfacing
                 string argument = args[0];
                 for(int i = 1; i < args.Length; i++)
                 {
-                    argument += " " + args[i];
+                    argument += $" \"{args[i]}\"";
                 }
                 
                 // Run as task, ensuring that awaiting will be optional
