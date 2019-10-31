@@ -330,6 +330,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BrawlAPI\Loaders" />
+    <Folder Include="BrawlAPI\Plugins" />
+  </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition=" '$(Configuration)'!='Mono' ">
     <Exec Command="if EXIST &quot;$(TargetDir)Updater.exe&quot; (&#xD;&#xA;  &quot;$(TargetDir)Updater.exe&quot; -killAll&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Documentation' (&#xD;&#xA;  if not '$(ConfigurationName)' == 'Mono' (&#xD;&#xA;    cd $(SolutionDir)ColorSmash\&#xD;&#xA;    rustup install stable-i686-pc-windows-gnu&#xD;&#xA;    rustup update stable-i686-pc-windows-gnu&#xD;&#xA;    cargo build --release --target i686-pc-windows-gnu&#xD;&#xA;  )&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)" />
   </Target>

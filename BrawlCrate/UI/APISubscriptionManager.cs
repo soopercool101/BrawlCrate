@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -348,13 +349,21 @@ namespace BrawlCrate.UI
 
         private async void BtnAddSub_Click(object sender, EventArgs e)
         {
-            using (TwoInputStringDialog d = new TwoInputStringDialog())
+            using (StringInputDialog d = new StringInputDialog("Github link to a repository:", ""))
             {
-                if (d.ShowDialog(null, "Add subscription", "Repository Owner", "", "Repository Name", "") ==
-                    DialogResult.OK)
+                if (d.ShowDialog(this) == DialogResult.OK)
                 {
-                    await UpdaterHelper.BrawlAPIInstallUpdate(d.InputText1, d.InputText2, true);
-                    RefreshList();
+                    Regex rgx = new Regex(".*[Gg][Ii][Tt][Hh][Uu][Bb][.][Cc][Oo][Mm]/([^/\n]+)/([^/\n]+)[^\n]*");
+                    Match m = rgx.Match(d.resultString);
+                    if (m.Success && m.Groups.Count == 3)
+                    {
+                        await UpdaterHelper.BrawlAPIInstallUpdate(m.Groups[1].Value, m.Groups[2].Value, true);
+                        RefreshList();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{d.resultString} is not a valid GitHub repository.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -362,6 +371,7 @@ namespace BrawlCrate.UI
         private async void BtnUpdateSubscriptions_Click(object sender, EventArgs e)
         {
             await UpdaterHelper.BrawlAPICheckUpdates(true);
+            RefreshList();
         }
 
         private async void BtnUninstall_Click(object sender, EventArgs e)
