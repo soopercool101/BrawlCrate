@@ -273,6 +273,7 @@ namespace Updater
                 if (i == 0)
                 {
                     MessageBox.Show("No changes were found.");
+                    return;
                 }
 
                 for (int j = i - 1; j >= 0; j--)
@@ -407,7 +408,7 @@ namespace Updater
 
                 // Remove all pre-release versions from the list (Prerelease versions are exclusively documentation updates)
                 releases = AllReleases.Where(r => !r.Prerelease).ToList();
-                if (releases[0].TagName != releaseTag)
+                if (releases.Count > 0 && releases[0].TagName != releaseTag)
                 {
                     release = releases[0];
                     goto UpdateDL;
@@ -443,7 +444,7 @@ namespace Updater
                     }
 
                     // Don't need to check for update unless the latest release is a prerelease (documentation is included in full releases)
-                    if (AllReleases[0].Prerelease)
+                    if (AllReleases.Count > 0 && AllReleases[0].Prerelease)
                     {
                         // This track is shared by canary updates. Ensure that a documentation release is found.
                         foreach (Release r in AllReleases)
