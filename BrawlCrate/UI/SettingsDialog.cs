@@ -323,6 +323,7 @@ namespace BrawlCrate
             txtBoxDefaultBuildPath.Text = Properties.Settings.Default.BuildPath;
             rdoAPILoaderWhitelist.Checked = Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
             rdoAPILoaderBlacklist.Checked = !Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
+            chkBoxUpdateAPI.Checked = Properties.Settings.Default.APIAutoUpdate;
             RefreshLoaderList();
             grpBoxLoaderBehavior.Enabled = chkBoxEnableAPI.Checked;
             grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
@@ -2021,12 +2022,18 @@ namespace BrawlCrate
 
         private void BtnManageSubscriptions_Click(object sender, EventArgs e)
         {
-
+            MainForm.Instance.ApiSubManager.ShowDialog();
         }
 
         private void ChkBoxUpdateAPI_CheckedChanged(object sender, EventArgs e)
         {
+            if (_updating)
+            {
+                return;
+            }
 
+            Properties.Settings.Default.APIAutoUpdate = chkBoxUpdateAPI.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

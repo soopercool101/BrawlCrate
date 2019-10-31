@@ -716,6 +716,9 @@ namespace Updater
 
         public static async Task BrawlAPIUpdate(string repoOwner, string repoName, bool manual)
         {
+
+            string apiPath = $"{AppPath}\\BrawlAPI\\";
+            Directory.CreateDirectory(apiPath);
             try
             {
                 // Delete temp.zip if it exists. If it remains active, it runs the risk of 
@@ -732,11 +735,11 @@ namespace Updater
 
                     // Download the release zip asset if one is available. Otherwise, download the source code
                     // Since scripts should be the only things in these repos other than ReadMe, etc. this will be more or less accurate
-                    string url = client.DownloadString(
+                    string url =
                         release.Assets.Count > 0 &&
                         release.Assets[0].Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase)
-                            ? release.Assets[0].BrowserDownloadUrl
-                            : $"https://github.com/{repoOwner}/{repoName}/archive/{release.TagName}.zip");
+                            ? client.DownloadString(release.Assets[0].BrowserDownloadUrl)
+                            : $"https://github.com/{repoOwner}/{repoName}/archive/{release.TagName}.zip";
 
                     DLProgressWindow.finished = false;
                     // Download the file into a zip folder
@@ -773,26 +776,67 @@ namespace Updater
                         //          in case a file is moved or deleted by the update intentionally.
                         using (ZipArchive archive = ZipFile.OpenRead($"{AppPath}\\BrawlAPI\\temp.zip"))
                         {
+                            string fullNameOffset = "";
+                            string name = archive.Entries[0].FullName.Trim();
+                            // If it's a source code download, make sure to remove the containing file
+                            if (!name.Equals("Plugins/", StringComparison.OrdinalIgnoreCase) &&
+                                !name.Equals("Loaders/", StringComparison.OrdinalIgnoreCase))
+                            {
+                                bool isContainingFolder = true;
+                                foreach (ZipArchiveEntry e in archive.Entries)
+                                {
+                                    if (!e.FullName.StartsWith(name))
+                                    {
+                                        isContainingFolder = false;
+                                        break;
+                                    }
+                                }
+
+                                if (isContainingFolder)
+                                {
+                                    fullNameOffset = name;
+                                }
+                            }
+                            
+
                             // Only extract zip files, a readme, and a license.
                             foreach (ZipArchiveEntry e in archive.Entries)
                             {
-                                if (e.FullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
-                                         e.FullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
+                                int index = e.FullName.IndexOf(fullNameOffset);
+                                string fullName = index < 0
+                                    ? e.FullName.TrimStart('/', '\\')
+                                    : e.FullName.Remove(index, fullNameOffset.Length).TrimStart('/', '\\');
+                                if (fullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
+                                    fullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
                                 {
                                     // Extract the README. Use a specific path instead of the one specified.
                                     e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} README.txt");
                                 }
-                                else if (e.FullName.Equals("LICENSE", StringComparison.OrdinalIgnoreCase) ||
-                                         e.FullName.Equals("LICENSE.txt", StringComparison.OrdinalIgnoreCase))
+                                else if (fullName.Equals("LICENSE", StringComparison.OrdinalIgnoreCase) ||
+                                         fullName.Equals("LICENSE.txt", StringComparison.OrdinalIgnoreCase))
                                 {
                                     // Extract the LICENSE. Use a specific path instead of the one specified.
                                     e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} LICENSE.txt");
                                 }
-                                else
+                                else if (fullName.EndsWith("\\") || fullName.EndsWith("/"))
+                                {
+                                    Directory.CreateDirectory(Path.Combine(apiPath, fullName));
+                                }
+                                else if (!string.IsNullOrWhiteSpace(fullName) && !fullName.EndsWith("\\") && !fullName.EndsWith("/"))
                                 {
                                     // Extract the other files and add them to the file list where specified
-                                    sw.WriteLine(e.FullName);
-                                    e.ExtractToFile(Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", e.FullName)));
+                                    string path = Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", fullName));
+                                    if (File.Exists(path))
+                                    {
+                                        if (MessageBox.Show($"The file {path} already exists. Would you like to overwrite it?", "BrawlAPI Subscriptions", MessageBoxButtons.YesNo) == DialogResult.No)
+                                        {
+                                            continue;
+                                        }
+
+                                        File.Delete(path);
+                                    }
+                                    sw.WriteLine(fullName);
+                                    e.ExtractToFile(path);
                                 }
                             }
                         }
@@ -800,11 +844,11 @@ namespace Updater
                     }
                 }
             }
-            catch
+            catch(Exception e)
             {
                 if (manual)
                 {
-                    MessageBox.Show($"Error installing API scripts from {repoOwner}/{repoName}");
+                    MessageBox.Show($"Error installing API scripts from {repoOwner}/{repoName}\n\n{e.Message}");
                 }
 
                 // Throw error to prevent this from being added to the successfully updated list

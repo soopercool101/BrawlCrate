@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrawlCrate.ExternalInterfacing;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -332,19 +333,27 @@ namespace BrawlCrate.UI
             }
         }
 
-        private void BtnAddSub_Click(object sender, EventArgs e)
+        private async void BtnAddSub_Click(object sender, EventArgs e)
         {
-
+            using (TwoInputStringDialog d = new TwoInputStringDialog())
+            {
+                if (d.ShowDialog(null, "Add subscription", "Repository Owner", "", "Repository Name", "") ==
+                    DialogResult.OK)
+                {
+                    await UpdaterHelper.BrawlAPIUpdate(d.InputText1, d.InputText2, true);
+                }
+            }
         }
 
-        private void BtnUpdateSubscriptions_Click(object sender, EventArgs e)
+        private async void BtnUpdateSubscriptions_Click(object sender, EventArgs e)
         {
-
+            await UpdaterHelper.BrawlAPICheckUpdates(true);
         }
 
-        private void BtnUninstall_Click(object sender, EventArgs e)
+        private async void BtnUninstall_Click(object sender, EventArgs e)
         {
-
+            string[] repoData = lstSubs.SelectedItems[0].Name.Split('/');
+            await UpdaterHelper.BrawlAPIUninstall(repoData[0], repoData[1], true);
         }
     }
 

@@ -2,6 +2,7 @@
 using BrawlCrate.API;
 using BrawlCrate.NodeWrappers;
 using BrawlCrate.Properties;
+using BrawlCrate.UI;
 using BrawlLib;
 using BrawlLib.Imaging;
 using BrawlLib.Modeling;
@@ -30,6 +31,9 @@ namespace BrawlCrate
 
         private SettingsDialog _settings;
         private SettingsDialog Settings => _settings ?? (_settings = new SettingsDialog());
+        
+        private APISubscriptionManager _apiSubs;
+        public APISubscriptionManager ApiSubManager => _apiSubs ?? (_apiSubs = new APISubscriptionManager());
 
         public readonly RecentFileHandler RecentFilesHandler;
 
