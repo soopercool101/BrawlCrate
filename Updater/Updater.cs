@@ -767,7 +767,7 @@ namespace Updater
                     string url =
                         release.Assets.Count > 0 &&
                         release.Assets[0].Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase)
-                            ? client.DownloadString(release.Assets[0].BrowserDownloadUrl)
+                            ? release.Assets[0].BrowserDownloadUrl
                             : $"https://github.com/{repoOwner}/{repoName}/archive/{release.TagName}.zip";
 
                     DLProgressWindow.finished = false;
