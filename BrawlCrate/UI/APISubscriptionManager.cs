@@ -316,8 +316,7 @@ namespace BrawlCrate.UI
                     string[] repoInfo = repo.Name.Split(' ');
                     if (repoInfo.Length == 2)
                     {
-                        lstSubs.Items.Add(new APISubscription(repoInfo[0], repoInfo[1], repo.FullName)
-                            { Text = $"{repoInfo[0]}/{repoInfo[1]}" });
+                        lstSubs.Items.Add(new APISubscription(repoInfo[0], repoInfo[1], repo.FullName));
                     }
                 }
             }
@@ -357,12 +356,23 @@ namespace BrawlCrate.UI
                     Match m = rgx.Match(d.resultString);
                     if (m.Success && m.Groups.Count == 3)
                     {
-                        await UpdaterHelper.BrawlAPIInstallUpdate(m.Groups[1].Value, m.Groups[2].Value, true);
-                        RefreshList();
+                        string repoOwner = m.Groups[1].Value;
+                        string repoName = m.Groups[2].Value;
+                        if (repoOwner.Equals("soopercool101", StringComparison.OrdinalIgnoreCase) ||
+                            MessageBox.Show(
+                                $"Warning: The {repoOwner}/{repoName} repository is not affiliated with the BrawlCrate Developement Team.\n" +
+                                "You should only install scripts from sources you trust. Would you like to proceed?",
+                                "API Subscription Updater", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
+                            DialogResult.Yes)
+                        {
+                            await UpdaterHelper.BrawlAPIInstallUpdate(repoOwner, repoName, true);
+                            RefreshList();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show($"{d.resultString} is not a valid GitHub repository.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"{d.resultString} is not a valid GitHub repository.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -422,11 +432,13 @@ namespace BrawlCrate.UI
             {
                 ManagedScripts.Add(lines[i]);
             }
+
+            Text = ToString();
         }
 
         public override string ToString()
         {
-            return Name;
+            return $"{Name} {Version}";
         }
     }
 }
