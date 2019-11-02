@@ -346,7 +346,7 @@ namespace BrawlCrate.UI
             }
         }
 
-        private async void BtnAddSub_Click(object sender, EventArgs e)
+        private void BtnAddSub_Click(object sender, EventArgs e)
         {
             using (StringInputDialog d = new StringInputDialog("Github link to a repository:", ""))
             {
@@ -365,7 +365,7 @@ namespace BrawlCrate.UI
                                 "API Subscription Updater", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
                             DialogResult.Yes)
                         {
-                            await UpdaterHelper.BrawlAPIInstallUpdate(repoOwner, repoName, true);
+                            UpdaterHelper.BrawlAPIInstallUpdate(true, repoOwner, repoName, true);
                             RefreshList();
                         }
                     }
@@ -378,18 +378,18 @@ namespace BrawlCrate.UI
             }
         }
 
-        private async void BtnUpdateSubscriptions_Click(object sender, EventArgs e)
-        {
-            await UpdaterHelper.BrawlAPICheckUpdates(true);
+        private void BtnUpdateSubscriptions_Click(object sender, EventArgs e)
+        { 
+            UpdaterHelper.BrawlAPICheckUpdates(true, true);
             RefreshList();
         }
 
-        private async void BtnUninstall_Click(object sender, EventArgs e)
+        private void BtnUninstall_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(selected))
             {
                 string[] repoData = selected.Split('/');
-                await UpdaterHelper.BrawlAPIUninstall(repoData[0], repoData[1], true);
+                UpdaterHelper.BrawlAPIUninstall(true, repoData[0], repoData[1], true);
                 RefreshList();
                 LstSubs_ItemChanged(sender, null);
             }

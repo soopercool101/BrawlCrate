@@ -11,60 +11,61 @@ namespace BrawlCrate.ExternalInterfacing
     {
         #region Updater
         
-        public static async Task CheckUpdate(bool overwrite)
+        public static void CheckUpdate(bool waitForExit, bool overwrite)
         {
-            await RunWithArgs(overwrite ? "-r" : "-n");
+            RunWithArgs(waitForExit, overwrite ? "-r" : "-n");
         }
 
-        public static async Task CheckUpdate(bool overwrite, string releaseTag, bool manual, string openFile,
-                                             bool checkDocumentation, bool automatic, bool checkForAPI)
+        public static void CheckUpdate(bool waitForExit, bool overwrite, string releaseTag, bool manual,
+                                       string openFile, bool checkDocumentation, bool automatic, bool checkForAPI)
         {
-            await RunWithArgs("-bu", overwrite ? "1" : "0", releaseTag, manual ? "1" : "0", openFile,
+            RunWithArgs(waitForExit, "-bu", overwrite ? "1" : "0", releaseTag, manual ? "1" : "0", openFile,
                 checkDocumentation ? "1" : "0", automatic ? "1" : "0", checkForAPI ? "1" : "0");
         }
 
-        public static async Task CheckCanaryUpdate(string openFile, bool manual, bool force, bool checkForAPI)
+        public static void CheckCanaryUpdate(bool waitForExit, string openFile, bool manual, bool force, bool checkForAPI)
         {
-            await RunWithArgs("-buc", openFile, manual ? "1" : "0", force  ? "1" : "0", checkForAPI ? "1" : "0");
+            RunWithArgs(waitForExit, "-buc", openFile, manual ? "1" : "0", force ? "1" : "0", checkForAPI ? "1" : "0");
         }
 
-        public static async Task ForceDownloadStable(string openFile)
+        public static void ForceDownloadStable(bool waitForExit, string openFile)
         {
-            await RunWithArgs("-dlStable", openFile);
+            RunWithArgs(waitForExit, "-dlStable", openFile);
         }
         
-        public static async Task BrawlAPICheckUpdates(bool manual)
+        public static void BrawlAPICheckUpdates(bool waitForExit, bool manual)
         {
-            await RunWithArgs("-apiUpdate", manual ? "1" : "0");
+            RunWithArgs(waitForExit, "-apiUpdate", manual ? "1" : "0");
         }
 
-        public static async Task BrawlAPIInstallUpdate(string repoOwner, string repoName, bool manual)
+        public static void BrawlAPIInstallUpdate(bool waitForExit, string repoOwner, string repoName, bool manual)
         {
-            await RunWithArgs("-apiInstall", repoOwner, repoName, manual ? "1" : "0");
+            RunWithArgs(waitForExit, "-apiInstall", repoOwner, repoName, manual ? "1" : "0");
         }
 
-        public static async Task BrawlAPIUninstall(string repoOwner, string repoName, bool manual)
+        public static void BrawlAPIUninstall(bool waitForExit, string repoOwner, string repoName, bool manual)
         {
-            await RunWithArgs("-apiUninstall", repoOwner, repoName, manual ? "1" : "0");
+            RunWithArgs(waitForExit, "-apiUninstall", repoOwner, repoName, manual ? "1" : "0");
         }
 
         #endregion
 
         #region Issue Reporter
 
-        public static async Task CreateIssue(
+        public static void CreateIssue(
+            bool waitForExit,
             string TagName,
             string ExceptionMessage,
             string StackTrace,
             string Title,
             string Description)
         {
-            await RunWithArgs("-bi", TagName, ExceptionMessage, StackTrace, Title, Description);
+            RunWithArgs(waitForExit, "-bi", TagName, ExceptionMessage, StackTrace, Title, Description);
         }
 
         #endregion
 
-        private static async Task RunWithArgs(params string[] args)
+        private static void RunWithArgs(bool waitForExit, params string[] args)
         {
             if (Program.CanRunGithubApp(false, out string path))
             {
@@ -75,17 +76,16 @@ namespace BrawlCrate.ExternalInterfacing
                 }
                 
                 // Run as task, ensuring that awaiting will be optional
-                Task t = Task.Run(() =>
+                Process updater = Process.Start(new ProcessStartInfo
                 {
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = path,
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = argument
-                    })?.WaitForExit();
+                    FileName = path,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    Arguments = argument
                 });
-
-                await t;
+                if (waitForExit)
+                {
+                    updater?.WaitForExit();
+                }
             }
         }
     }
