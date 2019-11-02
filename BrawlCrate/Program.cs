@@ -8,6 +8,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling;
+using System.Collections.Specialized;
 
 namespace BrawlCrate
 {
@@ -154,6 +155,18 @@ Full changelog can be viewed from the help menu.";
             if (string.IsNullOrWhiteSpace(Properties.Settings.Default.BuildPath))
             {
                 Properties.Settings.Default.BuildPath = AppPath;
+                Properties.Settings.Default.Save();
+            }
+
+            if (Properties.Settings.Default.APILoadersWhitelist == null)
+            {
+                Properties.Settings.Default.APILoadersWhitelist = new StringCollection();
+                Properties.Settings.Default.Save();
+            }
+
+            if (Properties.Settings.Default.APILoadersBlacklist == null)
+            {
+                Properties.Settings.Default.APILoadersBlacklist = new StringCollection();
                 Properties.Settings.Default.Save();
             }
         }

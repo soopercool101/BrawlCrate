@@ -1,6 +1,7 @@
 ﻿using BrawlCrate.ExternalInterfacing;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
@@ -388,6 +389,7 @@ namespace BrawlCrate.UI
                             DialogResult.Yes)
                         {
                             UpdaterHelper.BrawlAPIInstallUpdate(true, repoOwner, repoName, true);
+                            GetNewFiles();
                             RefreshList();
                         }
                     }
@@ -403,6 +405,7 @@ namespace BrawlCrate.UI
         private void BtnUpdateSubscriptions_Click(object sender, EventArgs e)
         { 
             UpdaterHelper.BrawlAPICheckUpdates(true, true);
+            GetNewFiles();
             RefreshList();
         }
 
@@ -419,8 +422,112 @@ namespace BrawlCrate.UI
 
         private void lstResize(object sender, EventArgs e)
         {
-            subHeader.Width = Math.Max(0, lstSubs.Width - 5);
-            filesHeader.Width = Math.Max(0, lstScripts.Width - 5);
+            subHeader.Width = Math.Max(0, lstSubs.Width - 15);
+            filesHeader.Width = Math.Max(0, lstScripts.Width - 15);
+        }
+
+        public static void GetNewFiles()
+        {
+            //DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s))
+            List<string> newLoaders = new List<string>();
+            List<string> dangerousFiles = new List<string>();
+            List<FileInfo> newFiles = new List<FileInfo>();
+            foreach (FileInfo f in Directory.CreateDirectory(Program.ApiPath).GetFiles("*.new"))
+            {
+                newLoaders.AddRange(File.ReadAllLines(f.FullName).Where(o => o.StartsWith("Loaders/")));
+                newFiles.Add(f);
+            }
+
+            while (newFiles.Count > 0)
+            {
+                try
+                {
+                    newFiles[0].Delete();
+                }
+                catch
+                {
+                    // ignored. It should hopefully not happen, but disabling new loaders is more important.
+                }
+                newFiles.RemoveAt(0);
+            }
+
+            if (newLoaders.Count == 0)
+            {
+                return;
+            }
+
+
+            // Ensure that the format properly matches that used by the lists
+            for (int i = 0; i < newLoaders.Count; i++)
+            {
+                newLoaders[i] = newLoaders[i].Replace('/', '\\');
+                if (newLoaders[i].StartsWith("Loaders\\", StringComparison.OrdinalIgnoreCase))
+                {
+                    newLoaders[i] = newLoaders[i].Substring(8);
+                }
+            }
+
+            string message = "The following loaders that are currently active have been added or changed by updates: \n";
+            List<string> loadersToDisable = new List<string>();
+            if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist)
+            {
+                foreach (string s in Properties.Settings.Default.APILoadersWhitelist)
+                {
+                    if (newLoaders.Any(o => o.Equals(s, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        message += s + '\n';
+                        loadersToDisable.Add(s);
+                    }
+                }
+            }
+            else
+            {
+                foreach (string s in newLoaders)
+                {
+                    if (!Properties.Settings.Default.APILoadersBlacklist.Cast<string>().ToArray()
+                                   .Any(o => o.Equals(s, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        message += s + '\n';
+                        loadersToDisable.Add(s);
+                    }
+                }
+            }
+
+            if (loadersToDisable.Count > 0)
+            {
+                message += "\nLoaders downloaded from the internet may be harmful, so these have been deactivated. " +
+                           "It is recommended that you review these files before enabling them again. " + 
+                           "Would you like to enable these files?\n\n" + 
+                           "The BrawlCrate team accepts no responsibility for any files that may harm your computer";
+                if (MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) !=
+                    DialogResult.Yes)
+                {
+                    // Deactivate them
+                    // Use whitelist if that is what is used currently:
+                    if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist)
+                    {
+                        StringCollection sc = new StringCollection();
+                        foreach (string s in Properties.Settings.Default.APILoadersWhitelist)
+                        {
+                            if (!loadersToDisable.Any(o => o.Equals(s, StringComparison.OrdinalIgnoreCase)))
+                            {
+                                sc.Add(s);
+                            }
+                        }
+
+                        Properties.Settings.Default.APILoadersWhitelist = sc;
+                        Properties.Settings.Default.Save();
+                    }
+                    else // Add them to the blacklist
+                    {
+                        StringCollection sc = Properties.Settings.Default.APILoadersBlacklist;
+                        sc.AddRange(loadersToDisable.ToArray());
+
+                        Properties.Settings.Default.APILoadersBlacklist = sc;
+                        Properties.Settings.Default.Save();
+                    }
+                }
+            }
         }
     }
 

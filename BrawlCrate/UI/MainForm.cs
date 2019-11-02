@@ -1,5 +1,6 @@
 ﻿using Be.Windows.Forms;
 using BrawlCrate.API;
+using BrawlCrate.ExternalInterfacing;
 using BrawlCrate.NodeWrappers;
 using BrawlCrate.Properties;
 using BrawlCrate.UI;
@@ -186,13 +187,8 @@ namespace BrawlCrate
                 if (Program.CanRunGithubApp(manual, out string path))
                 {
 #if CANARY
-                    Process git = Process.Start(new ProcessStartInfo()
-                    {
-                        FileName = path,
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-buc \"{Program.RootPath ?? "<null>"}\" {(manual ? "1" : "0")} {(Properties.Settings.Default.APIAutoUpdate ? "1" : "0")}"
-                    });
-                    git?.WaitForExit();
+                    UpdaterHelper.CheckCanaryUpdate(true, Program.RootPath ?? "<null>", manual, false,
+                        Properties.Settings.Default.APIAutoUpdate);
                     if (File.Exists(Program.AppPath + "\\Canary\\Old"))
                     {
                         Process changelog = Process.Start(new ProcessStartInfo()
@@ -204,15 +200,13 @@ namespace BrawlCrate
                         changelog?.WaitForExit();
                     }
 #else
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = path,
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments =
-                            $"-bu 1 \"{Program.TagName}\" {(manual ? "1" : "0")} \"{Program.RootPath ?? "<null>"}\" {(_docUpdates ? "1" : "0")} {(!manual && _autoUpdate ? "1" : "0")} {(Properties.Settings.Default.APIAutoUpdate ? "1" : "0")}"
-                    });
+                    UpdaterHelper.CheckUpdate(manual || Properties.Settings.Default.APIAutoUpdate, true, Program.TagName, manual, Program.RootPath ?? "<null>",
+                        _docUpdates, !manual && _autoUpdate, Properties.Settings.Default.APIAutoUpdate);
 #endif
-
+                    if (Properties.Settings.Default.APIAutoUpdate)
+                    {
+                        APISubscriptionManager.GetNewFiles();
+                    }
                 }
                 else
                 {

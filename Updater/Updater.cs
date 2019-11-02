@@ -805,67 +805,72 @@ namespace Updater
                         //          in case a file is moved or deleted by the update intentionally.
                         using (ZipArchive archive = ZipFile.OpenRead($"{AppPath}\\BrawlAPI\\temp.zip"))
                         {
-                            string fullNameOffset = "";
-                            string name = archive.Entries[0].FullName.Trim();
-                            // If it's a source code download, make sure to remove the containing file
-                            if (!name.Equals("Plugins/", StringComparison.OrdinalIgnoreCase) &&
-                                !name.Equals("Loaders/", StringComparison.OrdinalIgnoreCase))
+                            using (StreamWriter swNew =
+                                new StreamWriter($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName}.new"))
                             {
-                                bool isContainingFolder = true;
+                                string fullNameOffset = "";
+                                string name = archive.Entries[0].FullName.Trim();
+                                // If it's a source code download, make sure to remove the containing file
+                                if (!name.Equals("Plugins/", StringComparison.OrdinalIgnoreCase) &&
+                                    !name.Equals("Loaders/", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    bool isContainingFolder = true;
+                                    foreach (ZipArchiveEntry e in archive.Entries)
+                                    {
+                                        if (!e.FullName.StartsWith(name))
+                                        {
+                                            isContainingFolder = false;
+                                            break;
+                                        }
+                                    }
+
+                                    if (isContainingFolder)
+                                    {
+                                        fullNameOffset = name;
+                                    }
+                                }
+
+
+                                // Only extract zip files, a readme, and a license.
                                 foreach (ZipArchiveEntry e in archive.Entries)
                                 {
-                                    if (!e.FullName.StartsWith(name))
+                                    int index = e.FullName.IndexOf(fullNameOffset);
+                                    string fullName = index < 0
+                                        ? e.FullName.TrimStart('/', '\\')
+                                        : e.FullName.Remove(index, fullNameOffset.Length).TrimStart('/', '\\');
+                                    if (fullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
+                                        fullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
                                     {
-                                        isContainingFolder = false;
-                                        break;
+                                        // Extract the README. Use a specific path instead of the one specified.
+                                        e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} README.txt");
                                     }
-                                }
-
-                                if (isContainingFolder)
-                                {
-                                    fullNameOffset = name;
-                                }
-                            }
-                            
-
-                            // Only extract zip files, a readme, and a license.
-                            foreach (ZipArchiveEntry e in archive.Entries)
-                            {
-                                int index = e.FullName.IndexOf(fullNameOffset);
-                                string fullName = index < 0
-                                    ? e.FullName.TrimStart('/', '\\')
-                                    : e.FullName.Remove(index, fullNameOffset.Length).TrimStart('/', '\\');
-                                if (fullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
-                                    fullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    // Extract the README. Use a specific path instead of the one specified.
-                                    e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} README.txt");
-                                }
-                                else if (fullName.Equals("LICENSE", StringComparison.OrdinalIgnoreCase) ||
-                                         fullName.Equals("LICENSE.txt", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    // Extract the LICENSE. Use a specific path instead of the one specified.
-                                    e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} LICENSE.txt");
-                                }
-                                else if (fullName.EndsWith("\\") || fullName.EndsWith("/"))
-                                {
-                                    Directory.CreateDirectory(Path.Combine(apiPath, fullName));
-                                }
-                                else if (!string.IsNullOrWhiteSpace(fullName) && !fullName.EndsWith("\\") && !fullName.EndsWith("/"))
-                                {
-                                    // Extract the other files and add them to the file list where specified
-                                    string path = Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", fullName));
-                                    if (File.Exists(path))
+                                    else if (fullName.Equals("LICENSE", StringComparison.OrdinalIgnoreCase) ||
+                                             fullName.Equals("LICENSE.txt", StringComparison.OrdinalIgnoreCase))
                                     {
-                                        if (MessageBox.Show($"The file {path} already exists. Would you like to overwrite it?", "BrawlAPI Subscriptions", MessageBoxButtons.YesNo) == DialogResult.No)
+                                        // Extract the LICENSE. Use a specific path instead of the one specified.
+                                        e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} LICENSE.txt");
+                                    }
+                                    else if (fullName.EndsWith("\\") || fullName.EndsWith("/"))
+                                    {
+                                        Directory.CreateDirectory(Path.Combine(apiPath, fullName));
+                                    }
+                                    else if (!string.IsNullOrWhiteSpace(fullName) && !fullName.EndsWith("\\") && !fullName.EndsWith("/"))
+                                    {
+                                        // Extract the other files and add them to the file list where specified
+                                        string path = Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", fullName));
+                                        if (File.Exists(path))
                                         {
-                                            continue;
-                                        }
+                                            if (MessageBox.Show($"The file {path} already exists. Would you like to overwrite it?", "BrawlAPI Subscriptions", MessageBoxButtons.YesNo) == DialogResult.No)
+                                            {
+                                                continue;
+                                            }
 
-                                        File.Delete(path);
+                                            File.Delete(path);
+                                        }
+                                        sw.WriteLine(fullName);
+                                        swNew.WriteLine(fullName);
+                                        e.ExtractToFile(path);
                                     }
-                                    sw.WriteLine(fullName);
-                                    e.ExtractToFile(path);
                                 }
                             }
 
@@ -934,6 +939,12 @@ namespace Updater
                 if (File.Exists($"{apiPath}\\{repoOwner} {repoName} LICENSE.txt"))
                 {
                     File.Delete($"{apiPath}\\{repoOwner} {repoName} LICENSE.txt");
+                }
+
+                // Delete the .new file if it still exists somehow
+                if (File.Exists($"{apiPath}\\{repoOwner} {repoName}.new"))
+                {
+                    File.Delete($"{apiPath}\\{repoOwner} {repoName}.new");
                 }
 
                 // Delete the documentation file
