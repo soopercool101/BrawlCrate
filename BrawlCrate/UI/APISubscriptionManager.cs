@@ -46,6 +46,7 @@ namespace BrawlCrate.UI
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grpBoxSubscriptions = new System.Windows.Forms.GroupBox();
             this.lstSubs = new System.Windows.Forms.ListView();
+            this.subHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabsSubInfo = new System.Windows.Forms.TabControl();
             this.tabReadMe = new System.Windows.Forms.TabPage();
             this.btnUninstall = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@ namespace BrawlCrate.UI
             this.tabLicense = new System.Windows.Forms.TabPage();
             this.txtLicense = new System.Windows.Forms.RichTextBox();
             this.btnAddSub = new System.Windows.Forms.Button();
+            this.filesHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -114,7 +116,10 @@ namespace BrawlCrate.UI
             // 
             // lstSubs
             // 
+            this.lstSubs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.subHeader});
             this.lstSubs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstSubs.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lstSubs.HideSelection = false;
             this.lstSubs.Location = new System.Drawing.Point(3, 16);
             this.lstSubs.MultiSelect = false;
@@ -122,8 +127,14 @@ namespace BrawlCrate.UI
             this.lstSubs.Size = new System.Drawing.Size(369, 299);
             this.lstSubs.TabIndex = 0;
             this.lstSubs.UseCompatibleStateImageBehavior = false;
-            this.lstSubs.View = System.Windows.Forms.View.List;
+            this.lstSubs.View = System.Windows.Forms.View.Details;
             this.lstSubs.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstSubs_ItemChanged);
+            this.lstSubs.Resize += new System.EventHandler(this.lstResize);
+            // 
+            // subHeader
+            // 
+            this.subHeader.Text = "Subscriptions";
+            this.subHeader.Width = 365;
             // 
             // tabsSubInfo
             // 
@@ -207,14 +218,19 @@ namespace BrawlCrate.UI
             // 
             // lstScripts
             // 
+            this.lstScripts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.filesHeader});
             this.lstScripts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstScripts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lstScripts.HideSelection = false;
             this.lstScripts.Location = new System.Drawing.Point(3, 3);
+            this.lstScripts.MultiSelect = false;
             this.lstScripts.Name = "lstScripts";
             this.lstScripts.Size = new System.Drawing.Size(368, 135);
             this.lstScripts.TabIndex = 0;
             this.lstScripts.UseCompatibleStateImageBehavior = false;
-            this.lstScripts.View = System.Windows.Forms.View.List;
+            this.lstScripts.View = System.Windows.Forms.View.Details;
+            this.lstScripts.Resize += new System.EventHandler(this.lstResize);
             // 
             // tabLicense
             // 
@@ -248,6 +264,10 @@ namespace BrawlCrate.UI
             this.btnAddSub.Text = "Add";
             this.btnAddSub.UseVisualStyleBackColor = true;
             this.btnAddSub.Click += new System.EventHandler(this.BtnAddSub_Click);
+            // 
+            // filesHeader
+            // 
+            this.filesHeader.Text = "Files";
             // 
             // APISubscriptionManager
             // 
@@ -291,6 +311,8 @@ namespace BrawlCrate.UI
         private System.Windows.Forms.ListView lstScripts;
         private System.Windows.Forms.ListView lstSubs;
         private Button btnUninstall;
+        private ColumnHeader subHeader;
+        private ColumnHeader filesHeader;
         private System.Windows.Forms.Button btnAddSub;
 
         public APISubscriptionManager()
@@ -307,7 +329,7 @@ namespace BrawlCrate.UI
 
         private void RefreshList()
         {
-            lstSubs.Clear();
+            lstSubs.Items.Clear();
             if (Directory.Exists(Program.ApiPath))
             {
                 foreach (FileInfo repo in Directory.CreateDirectory(Program.ApiPath).GetFiles()
@@ -331,7 +353,7 @@ namespace BrawlCrate.UI
             selected = "";
             lblVersion.Text = "Version:";
             lblLastUpdated.Text = "Last Updated:";
-            lstScripts.Clear();
+            lstScripts.Items.Clear();
             if (e?.Item is APISubscription a)
             {
                 selected = a.Name;
@@ -394,6 +416,12 @@ namespace BrawlCrate.UI
                 LstSubs_ItemChanged(sender, null);
             }
         }
+
+        private void lstResize(object sender, EventArgs e)
+        {
+            subHeader.Width = Math.Max(0, lstSubs.Width - 5);
+            filesHeader.Width = Math.Max(0, lstScripts.Width - 5);
+        }
     }
 
     public class APISubscription : ListViewItem
@@ -438,7 +466,7 @@ namespace BrawlCrate.UI
 
         public override string ToString()
         {
-            return $"{Name} {Version}";
+            return $"{Name} ({Version})";
         }
     }
 }
