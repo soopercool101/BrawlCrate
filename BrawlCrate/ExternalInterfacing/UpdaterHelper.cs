@@ -69,13 +69,9 @@ namespace BrawlCrate.ExternalInterfacing
         {
             if (Program.CanRunGithubApp(false, out string path))
             {
-                string argument = args[0];
-                for(int i = 1; i < args.Length; i++)
-                {
-                    argument += $" \"{args[i]}\"";
-                }
+                string argument = args.Aggregate("", (current, arg) => current + $"\"{arg}\" ").Trim();
                 
-                // Run as task, ensuring that awaiting will be optional
+                // Run the process with the given arguments. 
                 Process updater = Process.Start(new ProcessStartInfo
                 {
                     FileName = path,
