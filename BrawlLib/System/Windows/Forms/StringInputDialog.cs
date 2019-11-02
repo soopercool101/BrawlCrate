@@ -4,8 +4,6 @@ namespace System.Windows.Forms
 {
     public class StringInputDialog : Form
     {
-        private readonly ResourceNode _node;
-
         public StringInputDialog()
         {
             InitializeComponent();
