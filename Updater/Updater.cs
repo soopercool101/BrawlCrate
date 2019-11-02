@@ -750,7 +750,7 @@ namespace Updater
             Directory.CreateDirectory(apiPath);
             try
             {
-                // Delete temp.zip if it exists. If it remains active, it runs the risk of 
+                // Delete temp.zip if it exists. If it remains, it runs the risk of breaking the install
                 if (File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
                 {
                     File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
@@ -868,6 +868,16 @@ namespace Updater
                                     e.ExtractToFile(path);
                                 }
                             }
+
+                            // Attempt to delete the zip file
+                            try
+                            {
+                                File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
+                            }
+                            catch
+                            {
+                                // We don't necessarily wish to throw an error. After all, the installation worked.
+                            }
                         }
                         sw.Close();
                     }
@@ -878,6 +888,18 @@ namespace Updater
                 if (manual)
                 {
                     MessageBox.Show($"Error installing API scripts from {repoOwner}/{repoName}\n\n{e.Message}");
+                }
+                // Attempt to delete the file if it exists.
+                try
+                {
+                    if (File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
+                    {
+                        File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
+                    }
+                }
+                catch
+                {
+                    // Ignored
                 }
 
                 // Throw error to prevent this from being added to the successfully updated list
