@@ -467,7 +467,7 @@ namespace BrawlCrate.UI
                 }
             }
 
-            string message = "The following loaders that are currently active have been added or changed by updates: \n";
+            string message = "The following loaders that are currently active have been added or changed by updates: \n\n";
             List<string> loadersToDisable = new List<string>();
             if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist)
             {
@@ -498,7 +498,7 @@ namespace BrawlCrate.UI
                 message += "\nLoaders downloaded from the internet may be harmful, so these have been deactivated. " +
                            "It is recommended that you review these files before enabling them again. " + 
                            "Would you like to enable these files?\n\n" + 
-                           "The BrawlCrate team accepts no responsibility for any files that may harm your computer";
+                           "The BrawlCrate team accepts no responsibility for any files that may harm your computer.";
                 if (MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) !=
                     DialogResult.Yes)
                 {
