@@ -25,7 +25,7 @@ namespace BrawlCrate.NodeWrappers
             new ToolStripMenuItem("Generate &PAT0", null, GeneratePAT0Action);
         
         private static readonly ToolStripMenuItem ConvertStocksToolStripMenuItem =
-            new ToolStripMenuItem("Generate &PAT0", null, GeneratePAT0Action);
+            new ToolStripMenuItem("Convert Stock System", null, ConvertStockAction);
 
         private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
             new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
@@ -83,6 +83,8 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             GeneratePAT0ToolStripMenuItem.Enabled = true;
+            ConvertStocksToolStripMenuItem.Enabled = true;
+            ConvertStocksToolStripMenuItem.Visible = true;
             DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
@@ -105,13 +107,18 @@ namespace BrawlCrate.NodeWrappers
                 w._resource.Name.LastIndexOf(".") > 0 && w._resource.Name.LastIndexOf(".") <= w._resource.Name.Length &&
                 int.TryParse(
                     w._resource.Name.Substring(w._resource.Name.LastIndexOf(".") + 1,
-                        w._resource.Name.Length - (w._resource.Name.LastIndexOf(".") + 1)), out int n))
+                        w._resource.Name.Length - (w._resource.Name.LastIndexOf(".") + 1)), out int _))
             {
                 ConvertStocksToolStripMenuItem.Enabled = true;
                 ConvertStocksToolStripMenuItem.Visible = true;
                 ConvertStocksToolStripMenuItem.Text = w._resource.Name.Length == 10
                     ? "Convert to Expanded 50-Stock System"
                     : "Convert to Default Stock System";
+            }
+            else
+            {
+                ConvertStocksToolStripMenuItem.Enabled = false;
+                ConvertStocksToolStripMenuItem.Visible = false;
             }
         }
 

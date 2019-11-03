@@ -831,7 +831,7 @@ namespace Updater
                                 }
 
 
-                                // Only extract zip files, a readme, and a license.
+                                // Only extract the proper files, a readme, and a license.
                                 foreach (ZipArchiveEntry e in archive.Entries)
                                 {
                                     int index = e.FullName.IndexOf(fullNameOffset);
@@ -854,13 +854,19 @@ namespace Updater
                                     {
                                         Directory.CreateDirectory(Path.Combine(apiPath, fullName));
                                     }
-                                    else if (!string.IsNullOrWhiteSpace(fullName) && !fullName.EndsWith("\\") && !fullName.EndsWith("/"))
+                                    else if (!string.IsNullOrWhiteSpace(fullName) && !fullName.EndsWith("\\") &&
+                                             !fullName.EndsWith("/")
+                                             && (fullName.StartsWith("Plugins/", StringComparison.OrdinalIgnoreCase) ||
+                                                 fullName.StartsWith("Loaders/", StringComparison.OrdinalIgnoreCase)))
                                     {
                                         // Extract the other files and add them to the file list where specified
                                         string path = Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", fullName));
                                         if (File.Exists(path))
                                         {
-                                            if (MessageBox.Show($"The file {path} already exists. Would you like to overwrite it?", "BrawlAPI Subscriptions", MessageBoxButtons.YesNo) == DialogResult.No)
+                                            if (MessageBox.Show(
+                                                    $"The file {path} already exists. Would you like to overwrite it?",
+                                                    "BrawlAPI Subscriptions", MessageBoxButtons.YesNo) ==
+                                                DialogResult.No)
                                             {
                                                 continue;
                                             }
