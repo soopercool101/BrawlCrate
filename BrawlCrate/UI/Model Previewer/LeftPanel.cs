@@ -1558,13 +1558,25 @@ namespace System.Windows.Forms
         private void replaceTextureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int index = lstTextures.SelectedIndex;
-            if (_selectedTexture?.Source is TEX0Node)
+            if (_selectedTexture?.Source is TEX0Node node)
             {
-                TEX0Node node = _selectedTexture.Source as TEX0Node;
-                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                if (node.Parent == null)
                 {
-                    if (dlg.ShowDialog(this, node) == DialogResult.OK)
+                    return;
+                }
+
+                OpenFileDialog _openDlg = new OpenFileDialog
+                {
+                    Filter = FileFilters.TEX0
+                };
+#if !DEBUG
+                try
+                {
+#endif
+                    if (_openDlg.ShowDialog() == DialogResult.OK)
                     {
+                        string fileName = _openDlg.FileName;
+                        node.Replace(fileName);
                         _updating = true;
                         _selectedTexture.Reload(_selectedTexture.Model,
                             _selectedTexture.Parent?.Name.EndsWith("_ExtMtl") ?? false);
@@ -1574,7 +1586,14 @@ namespace System.Windows.Forms
 
                         _mainWindow.ModelPanel.Invalidate();
                     }
+#if !DEBUG
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    index = 0;
+                }
+#endif
             }
         }
 
