@@ -70,8 +70,9 @@ Full changelog can be viewed from the help menu.";
         public static readonly string ApiLoaderPath;
 
         public static string RootPath => _rootPath;
-        
+#if !DEBUG
         public static readonly bool FirstBoot;
+#endif
 
         static Program()
         {

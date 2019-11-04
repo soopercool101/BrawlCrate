@@ -11,7 +11,7 @@ namespace System.Windows.Forms
 
         public xyTransform _transform = new xyTransform();
 
-        public DialogResult ShowDialog()
+        public new DialogResult ShowDialog()
         {
             _transform = new xyTransform();
             propertyGrid1.SelectedObject = _transform;
