@@ -75,7 +75,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _fogIndex = 4;
 
         private Bin32 _usageFlags;
-        public CullMode _cull = CullMode.Cull_None;
+        public CullMode _cull = CullMode.Cull_Inside;
         public uint _texMtxFlags;
 
         public LightChannel _chan1, _chan2;

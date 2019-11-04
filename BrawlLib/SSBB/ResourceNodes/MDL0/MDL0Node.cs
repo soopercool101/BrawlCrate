@@ -2462,6 +2462,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 _texList.Sort();
                 _pltList.Sort();
+
+                if (_matGroup != null)
+                {
+                    foreach (MDL0MaterialNode m in _matGroup.Children)
+                    {
+                        if (m.IsMetal && m.Children != null && m.Children.Count > 0)
+                        {
+                            _metalMat = m.Children[m.Children.Count - 1].Name;
+                            break;
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
