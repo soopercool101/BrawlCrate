@@ -21,7 +21,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30";
+        public static readonly string TagName = "v0.30h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
-        public static readonly string UpdateMessage = @"Updated to BrawlCrate v0.30! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+        public static readonly string UpdateMessage = @"Updated to BrawlCrate v0.30 Hotfix 1! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
 
 Full changelog can be viewed from the help menu.";
 
