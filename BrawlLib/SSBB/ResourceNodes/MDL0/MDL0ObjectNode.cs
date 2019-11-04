@@ -918,7 +918,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //    {
             //        bool o = false;
             //        foreach (PrimitiveHeader ph in p._headers)
-            //            if (ph.Type != WiiPrimitiveType.TriangleList && notFloat)
+            //            if (ph.Type != WiiBeginMode.TriangleList && notFloat)
             //            {
             //                Model._errors.Add("Object " + Index + " will explode in-game due to assets that are not written as float.");
             //                SignalPropertyChange();

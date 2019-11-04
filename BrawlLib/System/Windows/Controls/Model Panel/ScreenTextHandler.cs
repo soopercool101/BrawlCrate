@@ -118,7 +118,7 @@ namespace System.Windows.Forms
                 OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
             _bitmap.UnlockBits(data);
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.TexCoord2(0.0f, 0.0f);
             GL.Vertex2(0.0f, 0.0f);

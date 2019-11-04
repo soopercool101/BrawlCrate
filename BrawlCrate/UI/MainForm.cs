@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace BrawlCrate
@@ -118,24 +119,6 @@ namespace BrawlCrate
             }
 #endif
 
-            foreach (string filename in new string[] {
-                "BrawlLib.dll",
-                "OpenTK.dll",
-                "Octokit.dll",
-                "Updater.exe"
-            }) {
-                string directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                if (File.Exists(Path.Combine(directory, filename))) {
-                    if (File.Exists(Path.Combine(directory, "lib", filename))) {
-                        MessageBox.Show(@"The directory structure of BrawlCrate has changed.
-Please delete the files BrawlLib.dll, OpenTK.dll, Octokit.dll, and Updater.exe;
-newer versions of these files should be located in the Lib directory.");
-                        Enabled = false;
-                        break;
-                    }
-                }
-            }
-
             soundPackControl1._grid = propertyGrid1;
             soundPackControl1.lstSets.SmallImageList = Icons.ImageList;
             foreach (Control c in splitContainer2.Panel2.Controls)
@@ -153,19 +136,10 @@ newer versions of these files should be located in the Lib directory.");
 
             RecentFilesHandler = new RecentFileHandler(components)
             {
-<<<<<<< HEAD
                 RecentFileToolStripItem = recentFilesToolStripMenuItem
             };
 
             if (Properties.Settings.Default.APIEnabled)
-=======
-                foreach (var str in Directory.EnumerateFiles(plugins, "*.fsx"))
-                {
-                    pluginToolStripMenuItem.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
-                }
-            }
-            if (Directory.Exists(loaders))
->>>>>>> parent of d96fb7d... No longer use "Lib" folder (fixing cross platform capability). Updater brought up to BrawlCrate proper. No longer uses direct DLL references (only uses NuGet)
             {
                 BrawlAPI.Plugins.Clear();
                 BrawlAPI.ResourceParsers.Clear();
@@ -211,7 +185,6 @@ newer versions of these files should be located in the Lib directory.");
         {
             try
             {
-<<<<<<< HEAD
                 if (Program.CanRunGithubApp(manual, out string path))
                 {
 #if CANARY
@@ -235,18 +208,6 @@ newer versions of these files should be located in the Lib directory.");
                     {
                         APISubscriptionManager.GetNewFiles();
                     }
-=======
-                string path;
-                if (Program.CanRunGithubApp(manual, out path))
-                {
-                    Process.Start(new ProcessStartInfo()
-                    {
-                        FileName = path,
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = String.Format("-bu {0} {1}",
-                        Program.TagName, manual ? "1" : "0"),
-                    });
->>>>>>> parent of d96fb7d... No longer use "Lib" folder (fixing cross platform capability). Updater brought up to BrawlCrate proper. No longer uses direct DLL references (only uses NuGet)
                 }
                 else
                 {

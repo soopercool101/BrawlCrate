@@ -318,7 +318,7 @@ namespace System.Windows.Forms
                     s = Width / (float) bgTex.Width,
                     t = Height / (float) bgTex.Height;
 
-                GL.Begin(PrimitiveType.Quads);
+                GL.Begin(BeginMode.Quads);
 
                 GL.TexCoord2(0.0f, 0.0f);
                 GL.Vertex2(-halfW, -halfH);
@@ -421,7 +421,7 @@ namespace System.Windows.Forms
             GL.BindTexture(TextureTarget.Texture2D, texture._texId);
 
             //Draw a quad across the screen and render the texture with the calculated texcoords
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.TexCoord2(texCoord[0], texCoord[1]);
             GL.Vertex2(-halfW, -halfH);

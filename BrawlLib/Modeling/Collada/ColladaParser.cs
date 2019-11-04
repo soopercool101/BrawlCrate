@@ -623,31 +623,31 @@ namespace BrawlLib.Modeling
                                     }
                                     else if (_reader.Name.Equals("polygons", true))
                                     {
-                                        geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.polygons));
+                                        geo._primitives.Add(ParsePrimitive(ColladaBeginMode.polygons));
                                     }
                                     else if (_reader.Name.Equals("polylist", true))
                                     {
-                                        geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.polylist));
+                                        geo._primitives.Add(ParsePrimitive(ColladaBeginMode.polylist));
                                     }
                                     else if (_reader.Name.Equals("triangles", true))
                                     {
-                                        geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.triangles));
+                                        geo._primitives.Add(ParsePrimitive(ColladaBeginMode.triangles));
                                     }
                                     else if (_reader.Name.Equals("tristrips", true))
                                     {
-                                        geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.tristrips));
+                                        geo._primitives.Add(ParsePrimitive(ColladaBeginMode.tristrips));
                                     }
                                     else if (_reader.Name.Equals("trifans", true))
                                     {
-                                        geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.trifans));
+                                        geo._primitives.Add(ParsePrimitive(ColladaBeginMode.trifans));
                                     }
                                     else if (_reader.Name.Equals("lines", true))
                                     {
-                                        geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.lines));
+                                        geo._primitives.Add(ParsePrimitive(ColladaBeginMode.lines));
                                     }
                                     else if (_reader.Name.Equals("linestrips", true))
                                     {
-                                        geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.linestrips));
+                                        geo._primitives.Add(ParsePrimitive(ColladaBeginMode.linestrips));
                                     }
 
                                     _reader.EndElement();
@@ -664,7 +664,7 @@ namespace BrawlLib.Modeling
                 }
             }
 
-            private PrimitiveEntry ParsePrimitive(ColladaPrimitiveType type)
+            private PrimitiveEntry ParsePrimitive(ColladaBeginMode type)
             {
                 PrimitiveEntry prim = new PrimitiveEntry {_type = type};
                 PrimitiveFace p;
@@ -673,17 +673,17 @@ namespace BrawlLib.Modeling
 
                 switch (type)
                 {
-                    case ColladaPrimitiveType.trifans:
-                    case ColladaPrimitiveType.tristrips:
-                    case ColladaPrimitiveType.triangles:
+                    case ColladaBeginMode.trifans:
+                    case ColladaBeginMode.tristrips:
+                    case ColladaBeginMode.triangles:
                         stride = 3;
                         break;
-                    case ColladaPrimitiveType.lines:
-                    case ColladaPrimitiveType.linestrips:
+                    case ColladaBeginMode.lines:
+                    case ColladaBeginMode.linestrips:
                         stride = 2;
                         break;
-                    case ColladaPrimitiveType.polygons:
-                    case ColladaPrimitiveType.polylist:
+                    case ColladaBeginMode.polygons:
+                    case ColladaBeginMode.polylist:
                         stride = 4;
                         break;
                 }
@@ -725,22 +725,22 @@ namespace BrawlLib.Modeling
 
                         switch (type)
                         {
-                            case ColladaPrimitiveType.trifans:
-                            case ColladaPrimitiveType.tristrips:
-                            case ColladaPrimitiveType.polygons:
-                            case ColladaPrimitiveType.polylist:
+                            case ColladaBeginMode.trifans:
+                            case ColladaBeginMode.tristrips:
+                            case ColladaBeginMode.polygons:
+                            case ColladaBeginMode.polylist:
                                 p._faceCount = p._pointCount - 2;
                                 break;
 
-                            case ColladaPrimitiveType.triangles:
+                            case ColladaBeginMode.triangles:
                                 p._faceCount = p._pointCount / 3;
                                 break;
 
-                            case ColladaPrimitiveType.lines:
+                            case ColladaBeginMode.lines:
                                 p._faceCount = p._pointCount / 2;
                                 break;
 
-                            case ColladaPrimitiveType.linestrips:
+                            case ColladaBeginMode.linestrips:
                                 p._faceCount = p._pointCount - 1;
                                 break;
                         }
@@ -1486,7 +1486,7 @@ namespace BrawlLib.Modeling
 
         private class PrimitiveEntry
         {
-            internal ColladaPrimitiveType _type;
+            internal ColladaBeginMode _type;
 
             internal string _material;
             internal int _entryCount;
@@ -1634,7 +1634,7 @@ namespace BrawlLib.Modeling
             transparent
         }
 
-        private enum ColladaPrimitiveType
+        private enum ColladaBeginMode
         {
             None,
             polygons,
