@@ -21,7 +21,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30h1";
+        public static readonly string TagName = "v0.30h2";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -29,7 +29,11 @@ namespace BrawlCrate
         ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
-        public static readonly string UpdateMessage = @"Updated to BrawlCrate v0.30 Hotfix 1! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+        public static readonly string UpdateMessage = @"Updated to BrawlCrate v0.30 Hotfix 2! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+- (Hotfix 1) Fixes crashes when previewing models
+- (Hotfix 2) Fixes DPI scaling bug
+- (Hotfix 2) MoveDef parsing is now a setting (off by default)
+- (Hotfix 2) Fix bug where changelog couldn't be viewed from the help menu
 
 Full changelog can be viewed from the help menu.";
 

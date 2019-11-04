@@ -18,12 +18,12 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>BrawlCrateLib v0.30 Hotfix 1</AssemblyTitle>
+    <AssemblyTitle>BrawlCrateLib v0.30 Hotfix 2</AssemblyTitle>
     <Product>BrawlCrateLib</Product>
     <Copyright>Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
 BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Copyright>
-    <AssemblyVersion>0.30.0.1</AssemblyVersion>
-    <FileVersion>0.30.0.1</FileVersion>
+    <AssemblyVersion>0.30.0.2</AssemblyVersion>
+    <FileVersion>0.30.0.2</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Configurations>Debug;Release;Mono;Canary</Configurations>
