@@ -274,7 +274,7 @@ namespace System.Windows.Forms
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);
             GL.Disable(EnableCap.DepthTest);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             _attached = new List<ResourceNode>();
             ctx._states["_Node_Refs"] = _attached;
@@ -318,7 +318,7 @@ namespace System.Windows.Forms
                     s = Width / (float) bgTex.Width,
                     t = Height / (float) bgTex.Height;
 
-                GL.Begin(BeginMode.Quads);
+                GL.Begin(PrimitiveType.Quads);
 
                 GL.TexCoord2(0.0f, 0.0f);
                 GL.Vertex2(-halfW, -halfH);
@@ -421,7 +421,7 @@ namespace System.Windows.Forms
             GL.BindTexture(TextureTarget.Texture2D, texture._texId);
 
             //Draw a quad across the screen and render the texture with the calculated texcoords
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
 
             GL.TexCoord2(texCoord[0], texCoord[1]);
             GL.Vertex2(-halfW, -halfH);

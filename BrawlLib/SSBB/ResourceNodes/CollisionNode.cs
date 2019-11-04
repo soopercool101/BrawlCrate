@@ -1244,14 +1244,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);
             GL.Vertex3(r._x, r._y, -10.0f);
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.End();
 
-            GL.Begin(BeginMode.Lines);
+            GL.Begin(PrimitiveType.Lines);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);

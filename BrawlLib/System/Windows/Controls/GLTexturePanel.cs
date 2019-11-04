@@ -29,7 +29,7 @@ namespace System.Windows.Forms
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);
             GL.Disable(EnableCap.DepthTest);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
@@ -82,7 +82,7 @@ namespace System.Windows.Forms
             //Draw BG
             float s = width / (float) bgTex.Width, t = height / (float) bgTex.Height;
 
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
 
             GL.TexCoord2(0.0f, 0.0f);
             GL.Vertex2(0.0f, 0.0f);
@@ -120,7 +120,7 @@ namespace System.Windows.Forms
 
                 GL.BindTexture(TextureTarget.Texture2D, texture._texId);
 
-                GL.Begin(BeginMode.Quads);
+                GL.Begin(PrimitiveType.Quads);
 
                 GL.TexCoord2(0.0f, 0.0f);
                 GL.Vertex2(points[0], points[1]);

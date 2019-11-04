@@ -2018,7 +2018,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                     GL.LinkProgram(_programHandle);
 
 #if DEBUG
-                GL.GetProgram(_programHandle, ProgramParameter.LinkStatus, out int status);
+                GL.GetProgram(_programHandle, GetProgramParameterName.LinkStatus, out int status);
                 if (status == 0)
                 {
                     string log = GL.GetProgramInfoLog(_programHandle);

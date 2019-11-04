@@ -567,7 +567,7 @@ namespace System.Windows.Forms
                             if (!only)
                             {
                                 GL.Color4(current ? Color.DarkOrange : Color.Gray);
-                                GL.Begin(BeginMode.LineLoop);
+                                GL.Begin(PrimitiveType.LineLoop);
                                 GL.Vertex2(0, 0);
                                 GL.Vertex2(0, Height);
                                 GL.Vertex2(Width, Height);
@@ -614,7 +614,7 @@ namespace System.Windows.Forms
                 GL.Enable(EnableCap.LineStipple);
                 GL.LineStipple(1, 0x0F0F);
                 GL.Color4(Color.Blue);
-                GL.Begin(BeginMode.LineLoop);
+                GL.Begin(PrimitiveType.LineLoop);
                 GL.Vertex2(_selStart.X, _selStart.Y);
                 GL.Vertex2(_selEnd.X, _selStart.Y);
                 GL.Vertex2(_selEnd.X, _selEnd.Y);
@@ -737,7 +737,7 @@ namespace System.Windows.Forms
                             break;
                     }
 
-                    GL.Begin(BeginMode.Quads);
+                    GL.Begin(PrimitiveType.Quads);
 
                     GL.TexCoord2(0.0f, 0.0f);
                     GL.Vertex2(&points[0]);

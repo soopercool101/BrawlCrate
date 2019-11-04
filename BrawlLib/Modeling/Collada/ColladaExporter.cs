@@ -708,17 +708,17 @@ namespace BrawlLib.Modeling
 
             switch (prim._type)
             {
-                case OpenTK.Graphics.OpenGL.BeginMode.Triangles:
+                case OpenTK.Graphics.OpenGL.PrimitiveType.Triangles:
                     writer.WriteStartElement("triangles");
                     stride = 3;
                     break;
 
-                case OpenTK.Graphics.OpenGL.BeginMode.Lines:
+                case OpenTK.Graphics.OpenGL.PrimitiveType.Lines:
                     writer.WriteStartElement("lines");
                     stride = 2;
                     break;
 
-                case OpenTK.Graphics.OpenGL.BeginMode.Points:
+                case OpenTK.Graphics.OpenGL.PrimitiveType.Points:
                     writer.WriteStartElement("points");
                     stride = 1;
                     break;
