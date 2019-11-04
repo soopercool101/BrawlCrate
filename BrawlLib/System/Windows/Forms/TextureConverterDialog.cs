@@ -459,28 +459,38 @@ namespace System.Windows.Forms
             PngBitmapDecoder decoder = new PngBitmapDecoder(sourceStream, BitmapCreateOptions.PreservePixelFormat,
                 BitmapCacheOption.Default);
             BitmapSource preservedImage = decoder.Frames[0];
-            if (preservedImage.Format == Media.PixelFormats.Indexed8)
+            try
             {
-                Bitmap bmp;
-                int width = Convert.ToInt32(preservedImage.Width);
-                int height = Convert.ToInt32(preservedImage.Height);
-                byte[] pixels = new byte[width * height];
-                preservedImage.CopyPixels(pixels, width, 0);
-                GCHandle pixelData = GCHandle.Alloc(pixels, GCHandleType.Pinned);
-                bmp = new Bitmap(width, height, width, PixelFormat.Format8bppIndexed, pixelData.AddrOfPinnedObject());
-
-                IList<Media.Color> preservedColors = preservedImage.Palette.Colors;
-                ColorPalette newPalette =
-                    ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, preservedColors.Count);
-                for (int i = 0; i < preservedColors.Count; i++)
+                if (preservedImage.Format == Media.PixelFormats.Indexed8)
                 {
-                    newPalette.Entries[i] = Color.FromArgb(preservedColors[i].A, preservedColors[i].R,
-                        preservedColors[i].G, preservedColors[i].B);
-                }
+                    Bitmap bmp;
+                    int width = Convert.ToInt32(preservedImage.Width);
+                    int height = Convert.ToInt32(preservedImage.Height);
+                    byte[] pixels = new byte[width * height];
+                    preservedImage.CopyPixels(pixels, width, 0);
+                    GCHandle pixelData = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                    bmp = new Bitmap(width, height, width, PixelFormat.Format8bppIndexed,
+                        pixelData.AddrOfPinnedObject());
 
-                bmp.Palette = newPalette;
-                return LoadImages(bmp, pixelData);
+                    IList<Media.Color> preservedColors = preservedImage.Palette.Colors;
+                    ColorPalette newPalette =
+                        ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, preservedColors.Count);
+                    for (int i = 0; i < preservedColors.Count; i++)
+                    {
+                        newPalette.Entries[i] = Color.FromArgb(preservedColors[i].A, preservedColors[i].R,
+                            preservedColors[i].G, preservedColors[i].B);
+                    }
+
+                    bmp.Palette = newPalette;
+                    sourceStream.Close();
+                    return LoadImages(bmp, pixelData);
+                }
             }
+            catch
+            {
+                // Palette could not properly be parsed, load regular bitmap instead
+            }
+            sourceStream.Close();
 #endif
             return LoadImages((Bitmap) Image.FromFile(path));
         }
