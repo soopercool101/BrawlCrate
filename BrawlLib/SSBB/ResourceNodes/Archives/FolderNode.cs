@@ -16,6 +16,29 @@ namespace BrawlLib.SSBB.ResourceNodes
         private string[] _directories;
         private string[] _files;
 
+
+        [DisplayName("Uncompressed Size (Bytes)")]
+        [Description("For stability, this value is only updated on save.")]
+        public override uint UncompressedSize
+        {
+            get
+            {
+                uint size = 0;
+
+                if (Children == null)
+                {
+                    return size;
+                }
+
+                foreach (ResourceNode r in Children)
+                {
+                    size += r.UncompressedSize;
+                }
+
+                return size;
+            }
+        }
+
         public override bool IsDirty
         {
             get
