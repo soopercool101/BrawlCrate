@@ -25,7 +25,7 @@ namespace System.Windows.Forms
         public virtual unsafe void modelPanel1_PostRender(ModelPanelViewport vp)
         {
             GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Disable(EnableCap.Lighting);
 
             if (_targetModels != null)

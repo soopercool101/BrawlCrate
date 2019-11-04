@@ -15,6 +15,7 @@ namespace BrawlCrate
 {
     internal static class Program
     {
+<<<<<<< HEAD
         /// <summary>
         ///     Used internally by updater protocols. Checks latest release tag name versus this value.
         /// 
@@ -30,6 +31,10 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage = @"Updated to BrawlCrate v0.30 Hotfix 1! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+=======
+        //Make sure this matches the tag name of the release on github exactly
+        public static readonly string TagName = "v0.78_h1";
+>>>>>>> parent of d96fb7d... No longer use "Lib" folder (fixing cross platform capability). Updater brought up to BrawlCrate proper. No longer uses direct DLL references (only uses NuGet)
 
 Full changelog can be viewed from the help menu.";
 
@@ -995,7 +1000,11 @@ Full changelog can be viewed from the help menu.";
 
         public static bool CanRunGithubApp(bool showMessages, out string path)
         {
+<<<<<<< HEAD
             path = $"{AppPath}\\Updater.exe";
+=======
+            path = $"{Application.StartupPath}\\lib\\Updater.exe";
+>>>>>>> parent of d96fb7d... No longer use "Lib" folder (fixing cross platform capability). Updater brought up to BrawlCrate proper. No longer uses direct DLL references (only uses NuGet)
             if (!File.Exists(path))
             {
                 if (showMessages)

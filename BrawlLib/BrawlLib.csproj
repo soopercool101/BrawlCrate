@@ -165,9 +165,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <None Remove="CustomLists\StageList.txt" />
     <None Remove="HardcodedFiles\Textures\metal00.tex0" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="OpenTK" Version="3.1.0" />
-  </ItemGroup>
   <Choose>
     <When Condition=" '$(Configuration)'!='Mono' ">
       <ItemGroup>
@@ -183,6 +180,10 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     </When>
   </Choose>
   <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>.\OpenTK.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
@@ -614,6 +615,9 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <EmbeddedResource Update="System\Windows\Forms\TextureConverterDialog.resx">
       <DependentUpon>TextureConverterDialog.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OpenTK.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Update="CustomLists\AboutCustomLists.txt">

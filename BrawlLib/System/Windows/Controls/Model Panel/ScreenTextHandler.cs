@@ -51,7 +51,7 @@ namespace System.Windows.Forms
         {
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
-            //GL.BlendFunc(BlendingFactor.One, BlendingFactor.OneMinusSrcColor);
+            //GL.BlendFunc(BlendingFactorSrc.One, BlendingFactorDest.OneMinusSrcColor);
 
             GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (float) TextureEnvMode.Replace);
 

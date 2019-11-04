@@ -208,6 +208,10 @@
     <EmbeddedResource Include="BrawlManagers\StageManager\XX.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DynamicLanguageRuntime" Version="1.2.2" />
     <PackageReference Include="IronPython" Version="2.7.9" />
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +317,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="OpenTK.dll" />
     <None Include="Changelog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
