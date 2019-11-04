@@ -1335,7 +1335,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             //Draw bone line
             Vector3 currentPos = _frameMatrix.GetPoint();
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
             GL.Vertex3((float*) &parentPos);
             GL.Vertex3((float*) &currentPos);
             GL.End();
@@ -1377,7 +1377,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                 }
 
                 GL.Enable(EnableCap.PointSmooth);
-                GL.Begin(PrimitiveType.Points);
+                GL.Begin(BeginMode.Points);
                 GL.Vertex3(0, 0, 0);
                 GL.End();
             }
@@ -1428,7 +1428,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
         public static void DrawNodeOrients(float alpha = 1.0f)
         {
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             GL.Color4(1.0f, 0.0f, 0.0f, alpha);
             GL.Vertex3(0.0f, 0.0f, 0.0f);

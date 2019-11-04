@@ -25,7 +25,7 @@ namespace System.Windows.Forms
         public virtual unsafe void modelPanel1_PostRender(ModelPanelViewport vp)
         {
             GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Disable(EnableCap.Lighting);
 
             if (_targetModels != null)
@@ -95,7 +95,7 @@ namespace System.Windows.Forms
                     {
                         case BrawlLib.SSBBTypes.LightType.Spotlight:
                         case BrawlLib.SSBBTypes.LightType.Directional:
-                            GL.Begin(PrimitiveType.Lines);
+                            GL.Begin(BeginMode.Lines);
                             GL.Color3((Color) l.GetColor(frame, 0));
                             GL.Vertex3((OpenTK.Vector3) start);
                             if (l.SpecularEnabled)
@@ -141,13 +141,13 @@ namespace System.Windows.Forms
                     }
 
                     //GL.Color4(Color.MediumPurple);
-                    //GL.Begin(PrimitiveType.LineStrip);
+                    //GL.Begin(BeginMode.LineStrip);
                     //for (int i = 0; i < MaxFrame; i++)
                     //    GL.Vertex3(l.GetFrameValue(LightKeyframeMode.StartX, i), l.GetFrameValue(LightKeyframeMode.StartY, i), l.GetFrameValue(LightKeyframeMode.StartZ, i));
                     //GL.End();
 
                     //GL.Color4(Color.ForestGreen);
-                    //GL.Begin(PrimitiveType.LineStrip);
+                    //GL.Begin(BeginMode.LineStrip);
                     //for (int i = 0; i < MaxFrame; i++)
                     //    GL.Vertex3(l.GetFrameValue(LightKeyframeMode.EndX, i), l.GetFrameValue(LightKeyframeMode.EndY, i), l.GetFrameValue(LightKeyframeMode.EndZ, i));
                     //GL.End();
@@ -201,7 +201,7 @@ namespace System.Windows.Forms
                 }
 
                 GL.Color3(Color.Green);
-                GL.Begin(PrimitiveType.Lines);
+                GL.Begin(BeginMode.Lines);
 
                 GL.Vertex3((OpenTK.Vector3) start);
                 GL.Vertex3((OpenTK.Vector3) end);
@@ -215,13 +215,13 @@ namespace System.Windows.Forms
                 }
 
                 //GL.Color4(Color.OrangeRed);
-                //GL.Begin(PrimitiveType.LineStrip);
+                //GL.Begin(BeginMode.LineStrip);
                 //for (int i = 0; i < MaxFrame; i++)
                 //    GL.Vertex3(c.GetFrameValue(CameraKeyframeMode.PosX, i), c.GetFrameValue(CameraKeyframeMode.PosY, i), c.GetFrameValue(CameraKeyframeMode.PosZ, i));
                 //GL.End();
 
                 //GL.Color4(Color.SkyBlue);
-                //GL.Begin(PrimitiveType.LineStrip);
+                //GL.Begin(BeginMode.LineStrip);
                 //for (int i = 0; i < MaxFrame; i++)
                 //    GL.Vertex3(c.GetFrameValue(CameraKeyframeMode.AimX, i), c.GetFrameValue(CameraKeyframeMode.AimY, i), c.GetFrameValue(CameraKeyframeMode.AimZ, i));
                 //GL.End();
@@ -392,7 +392,7 @@ namespace System.Windows.Forms
 
             GL.Color4(selection._hiCirc || selection._snapCirc ? Color.Yellow : Color.Gray);
 
-            GL.Begin(PrimitiveType.LineLoop);
+            GL.Begin(BeginMode.LineLoop);
 
             GL.Vertex2(-0.5f, -0.5f);
             GL.Vertex2(-0.5f, 0.5f);
@@ -568,7 +568,7 @@ namespace System.Windows.Forms
             GL.Disable(EnableCap.CullFace);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //X
 
@@ -610,7 +610,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(_axisLDist, 0.0f, 0.0f);
             GL.Vertex3(_dst, _apthm, -_apthm);
@@ -630,7 +630,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Y
 
@@ -672,7 +672,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, _axisLDist, 0.0f);
             GL.Vertex3(_apthm, _dst, -_apthm);
@@ -692,7 +692,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Z
 
@@ -734,7 +734,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, 0.0f, _axisLDist);
             GL.Vertex3(_apthm, -_apthm, _dst);
@@ -772,7 +772,7 @@ namespace System.Windows.Forms
             GL.Disable(EnableCap.CullFace);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //X
             if (selection._snapY && selection._snapZ || selection._hiY && selection._hiZ)
@@ -803,7 +803,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(_axisLDist, 0.0f, 0.0f);
             GL.Vertex3(_dst, _apthm, -_apthm);
@@ -823,7 +823,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Y
             if (selection._snapZ && selection._snapX || selection._hiZ && selection._hiX)
@@ -854,7 +854,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, _axisLDist, 0.0f);
             GL.Vertex3(_apthm, _dst, -_apthm);
@@ -874,7 +874,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Z
             if (selection._snapX && selection._snapY || selection._hiX && selection._hiY)
@@ -905,7 +905,7 @@ namespace System.Windows.Forms
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, 0.0f, _axisLDist);
             GL.Vertex3(_apthm, -_apthm, _dst);
@@ -1318,7 +1318,7 @@ namespace System.Windows.Forms
                 float f = (int) e;
                 float diff = (float) Math.Round(e - f, 1);
 
-                GL.Begin(PrimitiveType.Lines);
+                GL.Begin(BeginMode.Lines);
                 for (i = 0; i < f; i++)
                 {
                     GL.Vertex2(Math.Cos(i * Maths._deg2radf), Math.Sin(i * Maths._deg2radf));
@@ -1354,7 +1354,7 @@ namespace System.Windows.Forms
                 f = (int) e;
                 diff = (float) Math.Round(e - f, 1);
 
-                GL.Begin(PrimitiveType.Lines);
+                GL.Begin(BeginMode.Lines);
                 for (i = 0; i < f; i++)
                 {
                     GL.Vertex2(Math.Cos(i * Maths._deg2radf), Math.Sin(i * Maths._deg2radf));
@@ -1412,7 +1412,7 @@ namespace System.Windows.Forms
 
             GL.Color4(_floorHue);
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.TexCoord2(0.0f, 0.0f);
             GL.Vertex3(-e, 0.0f, -e);

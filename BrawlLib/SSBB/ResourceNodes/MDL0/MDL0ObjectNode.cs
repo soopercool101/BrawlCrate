@@ -1381,20 +1381,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             return box;
         }
 
-        private readonly BlendingFactor[] _blendSrc =
+        private readonly BlendingFactorSrc[] _blendSrc =
         {
-            BlendingFactor.Zero, BlendingFactor.One,
-            BlendingFactor.DstColor, BlendingFactor.OneMinusDstColor,
-            BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
-            BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
+            BlendingFactorSrc.Zero, BlendingFactorSrc.One,
+            BlendingFactorSrc.DstColor, BlendingFactorSrc.OneMinusDstColor,
+            BlendingFactorSrc.SrcAlpha, BlendingFactorSrc.OneMinusSrcAlpha,
+            BlendingFactorSrc.DstAlpha, BlendingFactorSrc.OneMinusDstAlpha
         };
 
-        private readonly BlendingFactor[] _blendDst =
+        private readonly BlendingFactorDest[] _blendDst =
         {
-            BlendingFactor.Zero, BlendingFactor.One,
-            BlendingFactor.SrcColor, BlendingFactor.OneMinusSrcColor,
-            BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
-            BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
+            BlendingFactorDest.Zero, BlendingFactorDest.One,
+            BlendingFactorDest.SrcColor, BlendingFactorDest.OneMinusSrcColor,
+            BlendingFactorDest.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha,
+            BlendingFactorDest.DstAlpha, BlendingFactorDest.OneMinusDstAlpha
         };
 
         private readonly LogicOp[] _logicOp =
