@@ -105,13 +105,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void RemoveChild(ResourceNode child)
         {
-            if (_children != null && _children.Count == 1 && _children.Contains(child))
+            base.RemoveChild(child);
+            if (_children == null || _children.Count == 0)
             {
                 _parent.RemoveChild(this);
-            }
-            else
-            {
-                base.RemoveChild(child);
             }
         }
 

@@ -1862,32 +1862,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             return MemberwiseClone() as MDL0ObjectNode;
         }
 
+        public bool Deleting { get; private set; }
         public void Remove(bool v, bool n, bool c1, bool c2, params bool[] uv)
         {
+            Deleting = true;
             MDL0Node node = Model;
 
             if (node == null)
             {
                 base.Remove();
                 return;
-            }
-
-            if (_vertexNode != null)
-            {
-                _vertexNode._objects.Remove(this);
-                if (_vertexNode._objects.Count == 0 && v)
-                {
-                    _vertexNode.Remove();
-                }
-            }
-
-            if (_normalNode != null)
-            {
-                _normalNode._objects.Remove(this);
-                if (_normalNode._objects.Count == 0 && n)
-                {
-                    _normalNode.Remove();
-                }
             }
 
             for (int i = 0; i < 2; i++)
@@ -1911,6 +1895,30 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         _uvSet[i].Remove();
                     }
+                }
+            }
+
+            if (_vertexNode != null)
+            {
+                if (_vertexNode._objects.Count == 1 && v)
+                {
+                    _vertexNode.Remove();
+                }
+                else
+                {
+                    _vertexNode._objects.Remove(this);
+                }
+            }
+
+            if (_normalNode != null)
+            {
+                if (_normalNode._objects.Count == 1 && n)
+                {
+                    _normalNode.Remove();
+                }
+                else
+                {
+                    _normalNode._objects.Remove(this);
                 }
             }
 
@@ -1940,6 +1948,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Remove()
         {
+            int j = 0;
+            foreach (DrawCall dc in _drawCalls)
+            {
+                ++j;
+                if (dc.MaterialNode._objects.Count == 1 &&
+                    MessageBox.Show(
+                        $"Do you want to remove this object's material{(_drawCalls.Count > 1 ? " " + j : "")}?",
+                        "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    dc.MaterialNode.Remove();
+                }
+            }
+
             Remove(
                 _vertexNode != null && _vertexNode._objects.Count == 1 &&
                 MessageBox.Show("Do you want to remove this object's vertex node?", "", MessageBoxButtons.YesNo) ==
@@ -1981,6 +2002,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void Remove(bool removeAttached)
         {
+            int j = 0;
+            foreach (DrawCall dc in _drawCalls)
+            {
+                ++j;
+                if (dc.MaterialNode._objects.Count == 1 && removeAttached)
+                {
+                    dc.MaterialNode.Remove();
+                }
+            }
             Remove(removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached,
                 removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached);
         }

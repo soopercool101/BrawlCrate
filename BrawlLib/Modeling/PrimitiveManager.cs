@@ -2278,7 +2278,7 @@ namespace BrawlLib.Modeling
 
         public unsafe void PositionsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
-            if (obj == null || _vertices == null)
+            if (obj == null || obj.Deleting || _vertices == null)
             {
                 return;
             }
@@ -2351,7 +2351,7 @@ namespace BrawlLib.Modeling
 
         public unsafe void NormalsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
-            if (obj == null || _faceData[1] == null)
+            if (obj == null || obj.Deleting || _faceData[1] == null)
             {
                 return;
             }
