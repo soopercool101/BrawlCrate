@@ -291,16 +291,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             VoidPtr addr = source.Address;
             FDefHeader* header = (FDefHeader*) addr;
 
-            if (header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0)
+            if (header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0 || header->_fileSize != source.Length ||
+                header->_lookupOffset > source.Length || Properties.Settings.Default.CompatibilityMode)
             {
                 return null;
             }
-
-            if (header->_fileSize > source.Length || header->_lookupOffset > source.Length)
-            {
-                return null;
-            }
-
+            
             return new MoveDefNode();
         }
 
