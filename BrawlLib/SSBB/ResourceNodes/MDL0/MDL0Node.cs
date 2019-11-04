@@ -447,11 +447,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 MDL0MaterialNode n = (MDL0MaterialNode)_matList[x];
                 if (!n.IsMetal && n.MetalMaterial == null)
                 {
-                    MDL0MaterialNode node = new MDL0MaterialNode()
+                    MDL0MaterialNode node = new MDL0MaterialNode
                     {
                         _updating = true,
                         Name = n.Name + "_ExtMtl",
-                        _activeStages = 4,
+                        _activeStages = 4
                     };
 
                     _matGroup.AddChild(node);
@@ -483,14 +483,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                             mr.HasTextureMatrix = true;
                             node.Rebuild(true);
 
-                            mr._texMtxFlags = new XFTexMtxInfo()
+                            mr._texMtxFlags = new XFTexMtxInfo
                             {
                                 Projection = TexProjection.STQ,
                                 InputForm = TexInputForm.ABC1,
                                 TexGenType = TexTexgenType.Regular,
                                 SourceRow = TexSourceRow.Normals,
                                 EmbossSource = 5,
-                                EmbossLight = 0,
+                                EmbossLight = 0
                             };
 
                             mr._dualTexFlags._normalEnable = 1;
@@ -1647,7 +1647,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             MDL0ColorNode colorNode = new MDL0ColorNode
             {
                 Name = Name + "_BodyM__" + Name + "_Spycloak",
-                Colors = new RGBAPixel[] {new RGBAPixel() {A = 255, R = 132, G = 130, B = 132}}
+                Colors = new RGBAPixel[] {new RGBAPixel {A = 255, R = 132, G = 130, B = 132}}
             };
             colorG.AddChild(colorNode, true);
 
@@ -1839,7 +1839,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             MDL0ColorNode colorNode = new MDL0ColorNode
             {
                 Name = Name + "_BodyM__" + Name + "_Spycloak",
-                Colors = new RGBAPixel[] {new RGBAPixel() {A = 255, R = 132, G = 130, B = 132}}
+                Colors = new RGBAPixel[] {new RGBAPixel {A = 255, R = 132, G = 130, B = 132}}
             };
             colorG.AddChild(colorNode, true);
 
