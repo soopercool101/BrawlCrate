@@ -107,6 +107,7 @@ namespace BrawlCrate
         private GroupBox grpBoxAPIUpdate;
         private Button btnManageSubscriptions;
         private CheckBox chkBoxUpdateAPI;
+        private CheckBox chkBoxParseMoveDef;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -305,6 +306,7 @@ namespace BrawlCrate
             chkBoxStageCompress.Checked = MainForm.Instance.AutoCompressStages;
             chkBoxModuleCompress.Checked = MainForm.Instance.AutoCompressModules;
             chkBoxAutoPlayAudio.Checked = MainForm.Instance.AutoPlayAudio;
+            chkBoxParseMoveDef.Checked = BrawlLib.Properties.Settings.Default.ParseMoveDef;
             chkBoxMDL0Compatibility.Checked = MainForm.Instance.CompatibilityMode;
             chkBoxRenderBRRES.Checked = MainForm.Instance.ShowBRRESPreviews;
             chkBoxRenderARC.Checked = MainForm.Instance.ShowARCPreviews;
@@ -427,6 +429,7 @@ namespace BrawlCrate
             this.chkBoxContextualLoop = new System.Windows.Forms.CheckBox();
             this.chkBoxAutoPlayAudio = new System.Windows.Forms.CheckBox();
             this.grpBoxMainFormGeneral = new System.Windows.Forms.GroupBox();
+            this.chkBoxParseMoveDef = new System.Windows.Forms.CheckBox();
             this.lblRecentFiles = new System.Windows.Forms.Label();
             this.recentFileCountBox = new System.Windows.Forms.NumericInputBox();
             this.grpBoxFileNameDisplayGeneral = new System.Windows.Forms.GroupBox();
@@ -573,7 +576,7 @@ namespace BrawlCrate
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(373, 478);
+            this.tabControl1.Size = new System.Drawing.Size(373, 511);
             this.tabControl1.TabIndex = 48;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.ToggleUpdateOff);
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.ToggleUpdateOn);
@@ -588,7 +591,7 @@ namespace BrawlCrate
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral.Size = new System.Drawing.Size(365, 452);
+            this.tabGeneral.Size = new System.Drawing.Size(365, 485);
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             // 
@@ -599,7 +602,7 @@ namespace BrawlCrate
             this.groupBox1.Controls.Add(this.btnManagerPathBrowse);
             this.groupBox1.Controls.Add(this.txtBoxDefaultBuildPath);
             this.groupBox1.Controls.Add(this.lblManagerDefaultPath);
-            this.groupBox1.Location = new System.Drawing.Point(8, 363);
+            this.groupBox1.Location = new System.Drawing.Point(8, 393);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(349, 73);
             this.groupBox1.TabIndex = 21;
@@ -645,7 +648,7 @@ namespace BrawlCrate
             this.grpBoxMDL0General.Controls.Add(this.chkBoxRenderARC);
             this.grpBoxMDL0General.Controls.Add(this.chkBoxRenderBRRES);
             this.grpBoxMDL0General.Controls.Add(this.chkBoxMDL0Compatibility);
-            this.grpBoxMDL0General.Location = new System.Drawing.Point(8, 263);
+            this.grpBoxMDL0General.Location = new System.Drawing.Point(8, 293);
             this.grpBoxMDL0General.Name = "grpBoxMDL0General";
             this.grpBoxMDL0General.Size = new System.Drawing.Size(349, 94);
             this.grpBoxMDL0General.TabIndex = 19;
@@ -691,7 +694,7 @@ namespace BrawlCrate
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBoxAudioGeneral.Controls.Add(this.chkBoxContextualLoop);
             this.grpBoxAudioGeneral.Controls.Add(this.chkBoxAutoPlayAudio);
-            this.grpBoxAudioGeneral.Location = new System.Drawing.Point(8, 182);
+            this.grpBoxAudioGeneral.Location = new System.Drawing.Point(8, 212);
             this.grpBoxAudioGeneral.Name = "grpBoxAudioGeneral";
             this.grpBoxAudioGeneral.Size = new System.Drawing.Size(349, 75);
             this.grpBoxAudioGeneral.TabIndex = 18;
@@ -724,6 +727,7 @@ namespace BrawlCrate
             // 
             this.grpBoxMainFormGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxMainFormGeneral.Controls.Add(this.chkBoxParseMoveDef);
             this.grpBoxMainFormGeneral.Controls.Add(this.lblRecentFiles);
             this.grpBoxMainFormGeneral.Controls.Add(this.recentFileCountBox);
             this.grpBoxMainFormGeneral.Controls.Add(this.grpBoxFileNameDisplayGeneral);
@@ -731,15 +735,26 @@ namespace BrawlCrate
             this.grpBoxMainFormGeneral.Controls.Add(this.chkShowHex);
             this.grpBoxMainFormGeneral.Location = new System.Drawing.Point(8, 6);
             this.grpBoxMainFormGeneral.Name = "grpBoxMainFormGeneral";
-            this.grpBoxMainFormGeneral.Size = new System.Drawing.Size(349, 170);
+            this.grpBoxMainFormGeneral.Size = new System.Drawing.Size(349, 200);
             this.grpBoxMainFormGeneral.TabIndex = 15;
             this.grpBoxMainFormGeneral.TabStop = false;
             this.grpBoxMainFormGeneral.Text = "Main Form";
             // 
+            // chkBoxParseMoveDef
+            // 
+            this.chkBoxParseMoveDef.AutoSize = true;
+            this.chkBoxParseMoveDef.Location = new System.Drawing.Point(10, 68);
+            this.chkBoxParseMoveDef.Name = "chkBoxParseMoveDef";
+            this.chkBoxParseMoveDef.Size = new System.Drawing.Size(132, 17);
+            this.chkBoxParseMoveDef.TabIndex = 13;
+            this.chkBoxParseMoveDef.Text = "Parse MoveDef nodes";
+            this.chkBoxParseMoveDef.UseVisualStyleBackColor = true;
+            this.chkBoxParseMoveDef.CheckedChanged += new System.EventHandler(this.chkBoxParseMoveDef_CheckedChanged);
+            // 
             // lblRecentFiles
             // 
             this.lblRecentFiles.AutoSize = true;
-            this.lblRecentFiles.Location = new System.Drawing.Point(8, 68);
+            this.lblRecentFiles.Location = new System.Drawing.Point(8, 94);
             this.lblRecentFiles.Name = "lblRecentFiles";
             this.lblRecentFiles.Size = new System.Drawing.Size(120, 13);
             this.lblRecentFiles.TabIndex = 12;
@@ -749,7 +764,7 @@ namespace BrawlCrate
             // 
             this.recentFileCountBox.Integer = true;
             this.recentFileCountBox.Integral = true;
-            this.recentFileCountBox.Location = new System.Drawing.Point(134, 65);
+            this.recentFileCountBox.Location = new System.Drawing.Point(133, 91);
             this.recentFileCountBox.MaximumValue = 3.402823E+38F;
             this.recentFileCountBox.MinimumValue = -3.402823E+38F;
             this.recentFileCountBox.Name = "recentFileCountBox";
@@ -764,7 +779,7 @@ namespace BrawlCrate
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBoxFileNameDisplayGeneral.Controls.Add(this.rdoShowShortName);
             this.grpBoxFileNameDisplayGeneral.Controls.Add(this.rdoShowFullPath);
-            this.grpBoxFileNameDisplayGeneral.Location = new System.Drawing.Point(6, 89);
+            this.grpBoxFileNameDisplayGeneral.Location = new System.Drawing.Point(6, 119);
             this.grpBoxFileNameDisplayGeneral.Name = "grpBoxFileNameDisplayGeneral";
             this.grpBoxFileNameDisplayGeneral.Size = new System.Drawing.Size(337, 75);
             this.grpBoxFileNameDisplayGeneral.TabIndex = 10;
@@ -804,7 +819,7 @@ namespace BrawlCrate
             this.tabCompression.Location = new System.Drawing.Point(4, 22);
             this.tabCompression.Name = "tabCompression";
             this.tabCompression.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCompression.Size = new System.Drawing.Size(365, 452);
+            this.tabCompression.Size = new System.Drawing.Size(365, 485);
             this.tabCompression.TabIndex = 3;
             this.tabCompression.Text = "Compression";
             // 
@@ -897,7 +912,7 @@ namespace BrawlCrate
             this.tabFileAssociations.Controls.Add(this.associatiedFilesBox);
             this.tabFileAssociations.Location = new System.Drawing.Point(4, 22);
             this.tabFileAssociations.Name = "tabFileAssociations";
-            this.tabFileAssociations.Size = new System.Drawing.Size(365, 452);
+            this.tabFileAssociations.Size = new System.Drawing.Size(365, 485);
             this.tabFileAssociations.TabIndex = 2;
             this.tabFileAssociations.Text = "File Associations";
             // 
@@ -907,7 +922,7 @@ namespace BrawlCrate
             | System.Windows.Forms.AnchorStyles.Right)));
             this.genericFileAssociationBox.Controls.Add(this.binFileAssociation);
             this.genericFileAssociationBox.Controls.Add(this.datFileAssociation);
-            this.genericFileAssociationBox.Location = new System.Drawing.Point(8, 341);
+            this.genericFileAssociationBox.Location = new System.Drawing.Point(8, 374);
             this.genericFileAssociationBox.Name = "genericFileAssociationBox";
             this.genericFileAssociationBox.Size = new System.Drawing.Size(349, 75);
             this.genericFileAssociationBox.TabIndex = 6;
@@ -942,7 +957,7 @@ namespace BrawlCrate
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdminApproval.ForeColor = System.Drawing.Color.Red;
-            this.lblAdminApproval.Location = new System.Drawing.Point(8, 426);
+            this.lblAdminApproval.Location = new System.Drawing.Point(8, 459);
             this.lblAdminApproval.Name = "lblAdminApproval";
             this.lblAdminApproval.Size = new System.Drawing.Size(349, 18);
             this.lblAdminApproval.TabIndex = 5;
@@ -952,7 +967,7 @@ namespace BrawlCrate
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(287, 424);
+            this.btnApply.Location = new System.Drawing.Point(287, 457);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(75, 23);
             this.btnApply.TabIndex = 4;
@@ -969,7 +984,7 @@ namespace BrawlCrate
             this.associatiedFilesBox.Controls.Add(this.lstViewFileAssociations);
             this.associatiedFilesBox.Location = new System.Drawing.Point(8, 6);
             this.associatiedFilesBox.Name = "associatiedFilesBox";
-            this.associatiedFilesBox.Size = new System.Drawing.Size(349, 329);
+            this.associatiedFilesBox.Size = new System.Drawing.Size(349, 362);
             this.associatiedFilesBox.TabIndex = 1;
             this.associatiedFilesBox.TabStop = false;
             this.associatiedFilesBox.Text = "Wii File Types";
@@ -977,7 +992,7 @@ namespace BrawlCrate
             // chkBoxAssociateAll
             // 
             this.chkBoxAssociateAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkBoxAssociateAll.Location = new System.Drawing.Point(242, 303);
+            this.chkBoxAssociateAll.Location = new System.Drawing.Point(242, 336);
             this.chkBoxAssociateAll.Name = "chkBoxAssociateAll";
             this.chkBoxAssociateAll.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkBoxAssociateAll.Size = new System.Drawing.Size(104, 20);
@@ -1001,7 +1016,7 @@ namespace BrawlCrate
             this.lstViewFileAssociations.Location = new System.Drawing.Point(6, 19);
             this.lstViewFileAssociations.MultiSelect = false;
             this.lstViewFileAssociations.Name = "lstViewFileAssociations";
-            this.lstViewFileAssociations.Size = new System.Drawing.Size(337, 278);
+            this.lstViewFileAssociations.Size = new System.Drawing.Size(337, 311);
             this.lstViewFileAssociations.TabIndex = 6;
             this.lstViewFileAssociations.UseCompatibleStateImageBehavior = false;
             this.lstViewFileAssociations.View = System.Windows.Forms.View.Details;
@@ -1023,7 +1038,7 @@ namespace BrawlCrate
             this.tabBrawlAPI.Location = new System.Drawing.Point(4, 22);
             this.tabBrawlAPI.Name = "tabBrawlAPI";
             this.tabBrawlAPI.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBrawlAPI.Size = new System.Drawing.Size(365, 452);
+            this.tabBrawlAPI.Size = new System.Drawing.Size(365, 485);
             this.tabBrawlAPI.TabIndex = 5;
             this.tabBrawlAPI.Text = "BrawlAPI";
             // 
@@ -1033,7 +1048,7 @@ namespace BrawlCrate
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAPIRestartNeeded.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAPIRestartNeeded.ForeColor = System.Drawing.Color.Red;
-            this.lblAPIRestartNeeded.Location = new System.Drawing.Point(8, 426);
+            this.lblAPIRestartNeeded.Location = new System.Drawing.Point(8, 459);
             this.lblAPIRestartNeeded.Name = "lblAPIRestartNeeded";
             this.lblAPIRestartNeeded.Size = new System.Drawing.Size(349, 18);
             this.lblAPIRestartNeeded.TabIndex = 25;
@@ -1048,7 +1063,7 @@ namespace BrawlCrate
             this.grpBoxLoaders.Controls.Add(this.lstViewLoaders);
             this.grpBoxLoaders.Location = new System.Drawing.Point(8, 297);
             this.grpBoxLoaders.Name = "grpBoxLoaders";
-            this.grpBoxLoaders.Size = new System.Drawing.Size(349, 126);
+            this.grpBoxLoaders.Size = new System.Drawing.Size(349, 159);
             this.grpBoxLoaders.TabIndex = 24;
             this.grpBoxLoaders.TabStop = false;
             this.grpBoxLoaders.Text = "Loaders";
@@ -1068,7 +1083,7 @@ namespace BrawlCrate
             this.lstViewLoaders.Location = new System.Drawing.Point(6, 19);
             this.lstViewLoaders.MultiSelect = false;
             this.lstViewLoaders.Name = "lstViewLoaders";
-            this.lstViewLoaders.Size = new System.Drawing.Size(337, 101);
+            this.lstViewLoaders.Size = new System.Drawing.Size(337, 134);
             this.lstViewLoaders.TabIndex = 7;
             this.lstViewLoaders.UseCompatibleStateImageBehavior = false;
             this.lstViewLoaders.View = System.Windows.Forms.View.Details;
@@ -1265,7 +1280,7 @@ namespace BrawlCrate
             this.tabDiscord.Location = new System.Drawing.Point(4, 22);
             this.tabDiscord.Name = "tabDiscord";
             this.tabDiscord.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDiscord.Size = new System.Drawing.Size(365, 452);
+            this.tabDiscord.Size = new System.Drawing.Size(365, 485);
             this.tabDiscord.TabIndex = 4;
             this.tabDiscord.Text = "Discord";
             // 
@@ -1375,7 +1390,7 @@ namespace BrawlCrate
             this.tabUpdater.Location = new System.Drawing.Point(4, 22);
             this.tabUpdater.Name = "tabUpdater";
             this.tabUpdater.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUpdater.Size = new System.Drawing.Size(365, 452);
+            this.tabUpdater.Size = new System.Drawing.Size(365, 485);
             this.tabUpdater.TabIndex = 1;
             this.tabUpdater.Text = "Updater";
             // 
@@ -1476,7 +1491,7 @@ namespace BrawlCrate
             // 
             // SettingsDialog
             // 
-            this.ClientSize = new System.Drawing.Size(373, 478);
+            this.ClientSize = new System.Drawing.Size(373, 511);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "SettingsDialog";
@@ -2027,6 +2042,17 @@ namespace BrawlCrate
 
             Properties.Settings.Default.APIAutoUpdate = chkBoxUpdateAPI.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void chkBoxParseMoveDef_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.ParseMoveDef = chkBoxParseMoveDef.Checked;
+            BrawlLib.Properties.Settings.Default.Save();
         }
     }
 }
