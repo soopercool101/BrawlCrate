@@ -744,7 +744,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 IAudioStream stream = CreateStreams()[0];
                 if (stream == null)
                 {
-                    throw new Exception($"{_soundFileNode.GetType().Name} cannot be exported to WAV.");
+                    throw new Exception($"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" cannot be exported to WAV.");
                 }
 
                 WAV.ToFile(stream, outPath);
