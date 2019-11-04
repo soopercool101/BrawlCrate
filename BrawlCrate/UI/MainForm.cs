@@ -1116,8 +1116,16 @@ namespace BrawlCrate
 
         protected override void OnShown(EventArgs e)
         {
+            Focus();
             base.OnShown(e);
+#if (!DEBUG && !CANARY)
+            if (BrawlCrate.Properties.Settings.Default.UpdateAutomatically && Program.FirstBoot)
+            {
+                MessageBox.Show(Program.UpdateMessage);
+            }
+#endif
             UpdateDiscordRPC(null, null);
+            resourceTree_SelectionChanged(null, null);
         }
 
         protected override void OnClosing(CancelEventArgs e)

@@ -16,12 +16,12 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
 
- - BrawlCrate v0.30 - (xx/xx/2019)
+ - BrawlCrate v0.30 - (11/4/2019)
  . Rebuilt over the latest BrawlBox source
    - Many functions have been rewritten from scratch and many bugs have been fixed due to this migration
  . .NET Framework updated from 4.0 to 4.7.2 for BrawlCrate and BrawlLib
  . .NET Framework updated from 4.5.2 to 4.7.2 for the Updater
- . OpenTK updated from v1.1.0 to v3.1.0
+ . OpenTK updated from v1.1.0 to v1.1.2349.61993
  . Octokit updated to v0.32.0 to v0.36.0
  . Add "Show Changelog" button to the help menu
  . Add ports of BrawlManagers from https://github.com/libertyernie/BrawlManagers
@@ -111,9 +111,9 @@ they be held accountable for the manner in which it is used.
        - Add support for title and filters
      . AddContextMenuItem
        - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
-   - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a folder
-   - Example Loader (RFNT) Renamed to better explain what it does, uncomments actual parsing logic, and adds "Do Something" to RFNTWrapper instead of ARCWrapper
-   - Added Example Loader that dumps CSPs as RSPs
+   - Example Plugins/Loaders removed from the program and moved to https://github.com/soopercool101/BrawlCrateSamplePlugins
+   - Add API Subscriptions where users can subscribe to plugin repositories and get updates
+   - Add various security settings for loaders
  . Add ability to directly import materials and shaders to an MDL0
  . Add new iconography for Canary builds
  . Add support for longform assembly title, to be used for hotfixes
@@ -127,6 +127,7 @@ they be held accountable for the manner in which it is used.
  . Unsupported and unrecognized file types can now be opened as raw data files
  . Temp files are now opened using default OS functionality, rather than in a dedicated per-install folder
  . Duplicate now works for most node types
+ . Transform button can now be accessed from the toolbar in the collision editor
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
  . Folder select dialog now uses the Vista and later styled folder select when on Windows
@@ -140,6 +141,12 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which settings would be saved more often than intended
  . Fix bug in which languages which use "," as a decimal separator were unable to input floats into numeric entry boxes
  . Sped up booting and removed splash screen accordingly
+ . THE FOLLOWING INTENTIONAL REVERSIONS HAVE BEEN MADE:
+   - Uncompressed size now only updates when a node is saved. This fixes many stability issues and was determined to be worth the cost.
+   - Stage 1:1s and various StageBox-era shortcuts have been depreciated in favor of future BrawlAPI solutions
+   - .dae importing has been reverted to the more stable modern BrawlBox base
+   - Right-click menu has been removed from the collision editor as it interfered with the new model preview system
+   - Settings will not transfer over to this build. Settings carryover will be back in the next release
  
  - BrawlCrate v0.26b Hotfix 2 - (10/11/2019)
  . Fix bug in which MASQ nodes with non-vanilla PM IDs would crash the program.

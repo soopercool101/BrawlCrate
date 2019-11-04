@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling;
 using System.Collections.Specialized;
+using System.Configuration;
 
 namespace BrawlCrate
 {
@@ -28,10 +29,7 @@ namespace BrawlCrate
         ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
-        public static readonly string UpdateMessage = @"Updated to BrawlCrate NEXT! This release:
-- Is a test of the new automated release system
-- Let's see how this goes
-- It should, in theory, be foolproof
+        public static readonly string UpdateMessage = @"Updated to BrawlCrate v0.30! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
 
 Full changelog can be viewed from the help menu.";
 
@@ -72,10 +70,65 @@ Full changelog can be viewed from the help menu.";
         public static readonly string ApiLoaderPath;
 
         public static string RootPath => _rootPath;
+        
+        public static readonly bool FirstBoot;
 
         static Program()
         {
             Application.EnableVisualStyles();
+            
+#if !DEBUG
+            if (Properties.Settings.Default.UpdateSettings)
+            {
+                //foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
+                //{
+                //    foreach (Type _Type in _Assembly.GetTypes())
+                //    {
+                //        if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
+                //        {
+                //            ApplicationSettingsBase settings =
+                //                (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
+                //            if (settings != null)
+                //            {
+                //                settings.Upgrade();
+                //                settings.Reload();
+                //                settings.Save();
+                //            }
+                //        }
+                //    }
+                //}
+
+                string settingsPath = Path.Combine(Environment.GetEnvironmentVariable("LocalAppData"),
+                    "BrawlCrate");
+                if (Directory.Exists(settingsPath))
+                {
+                    if (MessageBox.Show(
+                        "Old settings have been detected. These settings cannot be forward-transferred. Would you like to delete them to save disk space?",
+                        "BrawlCrate v0.30", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        foreach (DirectoryInfo d in Directory.CreateDirectory(settingsPath).GetDirectories())
+                        {
+                            try
+                            {
+                                d.Delete(true);
+                            }
+                            catch
+                            {
+                                // ignored. Likely the current settings file
+                            }
+                        }
+                    }
+                }
+
+                // This is the first time booting this update
+                FirstBoot = true;
+
+                // Ensure settings only get updated once
+                Properties.Settings.Default.UpdateSettings = false;
+                Properties.Settings.Default.Save();
+            }
+#endif
+            
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
