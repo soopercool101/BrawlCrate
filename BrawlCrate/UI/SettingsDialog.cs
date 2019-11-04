@@ -210,15 +210,6 @@ namespace BrawlCrate
                     FileAssociation.Get(".bin").Delete();
                 }
             }
-            catch (UnauthorizedAccessException)
-            {
-                MessageBox.Show(null,
-                    "Unable to access the registry to set file associations.\nRun the program as administrator and try again.",
-                    "Insufficient Privileges", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblAdminApproval.Visible = true;
-                btnApply.Visible = false;
-                associatiedFilesBox.Enabled = false;
-            }
             catch (Exception)
             {
                 MessageBox.Show(null,
@@ -227,6 +218,7 @@ namespace BrawlCrate
                 lblAdminApproval.Visible = true;
                 btnApply.Visible = false;
                 associatiedFilesBox.Enabled = false;
+                genericFileAssociationBox.Enabled = false;
             }
             finally
             {
