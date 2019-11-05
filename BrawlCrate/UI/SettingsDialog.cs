@@ -1602,7 +1602,7 @@ namespace BrawlCrate
             }
 
             _updating = true;
-#if CANARY
+#if !CANARY
             DialogResult dc = MessageBox.Show(this,
                     "Are you sure you'd like to receive BrawlCrate canary updates? " +
                     "These updates will happen more often and include features as they are developed, but will come at the cost of stability. " +
@@ -1613,7 +1613,7 @@ namespace BrawlCrate
             {
                 Program.ForceDownloadCanary();
             }
-            chkCanary.Checked = true;
+            chkCanary.Checked = false;
 #else
             DialogResult dc = MessageBox.Show(this, "Are you sure you'd like to return to the stable build? " +
                                                     "Please note that there may be issues saving settings between the old version and the next update. " +
@@ -1625,7 +1625,7 @@ namespace BrawlCrate
                 Program.ForceDownloadStable();
             }
 
-            chkCanary.Checked = false;
+            chkCanary.Checked = true;
 #endif
 
             _updating = false;
