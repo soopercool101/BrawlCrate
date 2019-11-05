@@ -20,7 +20,7 @@ namespace Updater
     {
         public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        public static readonly string mainRepo = "soopercool101/BrawlCrateNext";
+        public static readonly string mainRepo = "soopercool101/BrawlCrate";
         public static readonly string mainBranch = "master";
 
         private static readonly GitHubClient Github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))

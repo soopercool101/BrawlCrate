@@ -7,43 +7,43 @@ using System.Threading.Tasks;
 
 namespace BrawlCrate.ExternalInterfacing
 {
-    public static class UpdaterHelper
+    internal static class UpdaterHelper
     {
         #region Updater
         
-        public static void CheckUpdate(bool waitForExit, bool overwrite)
+        internal static void CheckUpdate(bool waitForExit, bool overwrite)
         {
             RunWithArgs(waitForExit, overwrite ? "-r" : "-n");
         }
 
-        public static void CheckUpdate(bool waitForExit, bool overwrite, string releaseTag, bool manual,
+        internal static void CheckUpdate(bool waitForExit, bool overwrite, string releaseTag, bool manual,
                                        string openFile, bool checkDocumentation, bool automatic, bool checkForAPI)
         {
             RunWithArgs(waitForExit, "-bu", overwrite ? "1" : "0", releaseTag, manual ? "1" : "0", openFile,
                 checkDocumentation ? "1" : "0", automatic ? "1" : "0", checkForAPI ? "1" : "0");
         }
 
-        public static void CheckCanaryUpdate(bool waitForExit, string openFile, bool manual, bool force, bool checkForAPI)
+        internal static void CheckCanaryUpdate(bool waitForExit, string openFile, bool manual, bool force, bool checkForAPI)
         {
             RunWithArgs(waitForExit, "-buc", openFile, manual ? "1" : "0", force ? "1" : "0", checkForAPI ? "1" : "0");
         }
 
-        public static void ForceDownloadStable(bool waitForExit, string openFile)
+        internal static void ForceDownloadStable(bool waitForExit, string openFile)
         {
             RunWithArgs(waitForExit, "-dlStable", openFile);
         }
         
-        public static void BrawlAPICheckUpdates(bool waitForExit, bool manual)
+        internal static void BrawlAPICheckUpdates(bool waitForExit, bool manual)
         {
             RunWithArgs(waitForExit, "-apiUpdate", manual ? "1" : "0");
         }
 
-        public static void BrawlAPIInstallUpdate(bool waitForExit, string repoOwner, string repoName, bool manual)
+        internal static void BrawlAPIInstallUpdate(bool waitForExit, string repoOwner, string repoName, bool manual)
         {
             RunWithArgs(waitForExit, "-apiInstall", repoOwner, repoName, manual ? "1" : "0");
         }
 
-        public static void BrawlAPIUninstall(bool waitForExit, string repoOwner, string repoName, bool manual)
+        internal static void BrawlAPIUninstall(bool waitForExit, string repoOwner, string repoName, bool manual)
         {
             RunWithArgs(waitForExit, "-apiUninstall", repoOwner, repoName, manual ? "1" : "0");
         }
@@ -52,7 +52,7 @@ namespace BrawlCrate.ExternalInterfacing
 
         #region Issue Reporter
 
-        public static void CreateIssue(
+        internal static void CreateIssue(
             bool waitForExit,
             string TagName,
             string ExceptionMessage,
