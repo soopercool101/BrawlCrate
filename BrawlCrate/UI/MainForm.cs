@@ -112,13 +112,6 @@ namespace BrawlCrate
             Activated += _enableEditMenu;
             Deactivate += _disableEditMenu;
 
-#if !DEBUG //Don't need to see this every time a debug build is compiled
-            if (CheckUpdatesOnStartup)
-            {
-                CheckUpdates(false);
-            }
-#endif
-
             soundPackControl1._grid = propertyGrid1;
             soundPackControl1.lstSets.SmallImageList = Icons.ImageList;
             foreach (Control c in splitContainer2.Panel2.Controls)
@@ -181,7 +174,7 @@ namespace BrawlCrate
 
         private readonly DelegateOpenFile m_DelegateOpenFile;
 
-        private void CheckUpdates(bool manual)
+        internal void CheckUpdates(bool manual)
         {
             try
             {

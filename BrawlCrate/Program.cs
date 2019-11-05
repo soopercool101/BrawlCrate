@@ -407,6 +407,13 @@ Full changelog can be viewed from the help menu.";
                         MessageBox.Show($"Error: Unable to find node or path '{args[1]}'!");
                     }
                 }
+                
+#if !DEBUG //Don't need to see this every time a debug build is compiled
+                if (MainForm.Instance.CheckUpdatesOnStartup)
+                {
+                    MainForm.Instance.CheckUpdates(false);
+                }
+#endif
 
                 Application.Run(MainForm.Instance);
             }
