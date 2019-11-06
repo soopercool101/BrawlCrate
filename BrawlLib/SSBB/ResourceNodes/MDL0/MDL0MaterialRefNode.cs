@@ -800,8 +800,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                         };
                     }
                 }
+
                 return;
             }
+
             PAT0Texture = PAT0Palette = null;
         }
 

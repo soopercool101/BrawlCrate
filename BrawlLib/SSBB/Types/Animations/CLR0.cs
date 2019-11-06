@@ -169,7 +169,7 @@ namespace BrawlLib.SSBBTypes
         ConstantColorRegister0,     // GX_KCOLOR0
         ConstantColorRegister1,     // GX_KCOLOR1
         ConstantColorRegister2,     // GX_KCOLOR2
-        ConstantColorRegister3     // GX_KCOLOR3
+        ConstantColorRegister3      // GX_KCOLOR3
     }
 
     [Flags]

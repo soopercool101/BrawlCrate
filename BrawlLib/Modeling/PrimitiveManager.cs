@@ -121,10 +121,12 @@ namespace BrawlLib.Modeling
                 _pointCount = _pointCount,
                 _faceCount = _faceCount,
                 _faceData = new UnsafeBuffer[12],
-                _triangles = _triangles == null ? null : new GLPrimitive(_triangles._indices.Length, BeginMode.Triangles),
+                _triangles = _triangles == null
+                    ? null
+                    : new GLPrimitive(_triangles._indices.Length, BeginMode.Triangles),
                 _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, BeginMode.Lines),
                 _points = _points == null ? null : new GLPrimitive(_points._indices.Length, BeginMode.Points),
-                _dirty = new bool[] { true, true, true, true, true, true, true, true, true, true, true, true },
+                _dirty = new bool[] {true, true, true, true, true, true, true, true, true, true, true, true},
                 _primGroups = _primGroups,
             };
             Memory.Move(p._indices.Address, _indices.Address, (uint) _indices.Length);

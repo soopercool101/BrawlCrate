@@ -88,14 +88,15 @@ namespace BrawlCrate.API
         ///
         ///     This allows for maximum compatibility with little room for user error.
         /// </summary>
-        internal static readonly Dictionary<string, string> DepreciatedReplacementStrings = new Dictionary<string, string>
-        {
-            { "BrawlBox", "BrawlCrate" },                   // Update program name and default namespace
-            { "bboxapi", "BrawlAPI" },                      // Update API system name
-            { "PluginLoader", "PluginResourceParser" },     // Loaders aren't necessarily parsers (and vice-versa)
-            { "AddLoader", "AddResourceParser" },           // Loaders aren't necessarily parsers (and vice-versa)
-            { "get_ResourceType", "get_ResourceFileType" }  // Changed to not conflict/confuse with the enum
-        };
+        internal static readonly Dictionary<string, string> DepreciatedReplacementStrings =
+            new Dictionary<string, string>
+            {
+                {"BrawlBox", "BrawlCrate"},                  // Update program name and default namespace
+                {"bboxapi", "BrawlAPI"},                     // Update API system name
+                {"PluginLoader", "PluginResourceParser"},    // Loaders aren't necessarily parsers (and vice-versa)
+                {"AddLoader", "AddResourceParser"},          // Loaders aren't necessarily parsers (and vice-versa)
+                {"get_ResourceType", "get_ResourceFileType"} // Changed to not conflict/confuse with the enum
+            };
 
         internal static void RunScript(string path)
         {
@@ -267,7 +268,7 @@ namespace BrawlCrate.API
                 searchPaths.Add(Directory.Exists($"{settingPath}\\Lib") ? $"{settingPath}\\Lib" : settingPath);
             }
             // Search for any other Python installations in their default directories
-            else if(force || !settingPath.Equals("(none)"))
+            else if (force || !settingPath.Equals("(none)"))
             {
                 // Search the PATH environment variable
                 string[] paths = Environment.GetEnvironmentVariable("PATH").Trim(';').Split(';');
@@ -372,7 +373,7 @@ namespace BrawlCrate.API
                     {
 #if !MONO
                         using (Ookii.Dialogs.VistaFolderBrowserDialog dlg
-                            = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+                            = new Ookii.Dialogs.VistaFolderBrowserDialog {UseDescriptionForTitle = true})
 #else
                         using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif

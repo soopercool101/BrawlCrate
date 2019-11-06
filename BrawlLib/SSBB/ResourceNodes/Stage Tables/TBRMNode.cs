@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal TBRM* Header => (TBRM*) WorkingUncompressed.Address;
         internal override string DocumentationSubDirectory => "TBRM";
         internal override int EntryOffset => 0x10;
-        
+
         public TBRMNode()
         {
             unk0 = 1;

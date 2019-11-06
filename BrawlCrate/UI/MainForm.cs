@@ -33,7 +33,7 @@ namespace BrawlCrate
 
         private SettingsDialog _settings;
         private SettingsDialog Settings => _settings ?? (_settings = new SettingsDialog());
-        
+
         private APISubscriptionManager _apiSubs;
         public APISubscriptionManager ApiSubManager => _apiSubs ?? (_apiSubs = new APISubscriptionManager());
 
@@ -67,12 +67,14 @@ namespace BrawlCrate
             {
                 return;
             }
+
             BaseWrapper w = resourceTree?.SelectedNode as BaseWrapper;
             if (w == null)
             {
                 editToolStripMenuItem.Enabled = false;
                 return;
             }
+
             editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
                                                 Instance.resourceTree.SelectedNodes.Count > 1
                                                     ? Instance.resourceTree.GetMultiSelectMenuStrip()
@@ -152,11 +154,11 @@ namespace BrawlCrate
                         //  If whitelist behavior is on, load only whitelisted scripts
                         if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist
                             ? Properties.Settings.Default.APILoadersWhitelist?.Contains(
-                                    f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
-                                false
+                                  f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
+                              false
                             : !Properties.Settings.Default.APILoadersBlacklist?.Contains(
-                                    f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
-                                true)
+                                  f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
+                              true)
                         {
                             BrawlAPI.CreatePlugin(f.FullName, true);
                         }
@@ -194,7 +196,8 @@ namespace BrawlCrate
                         changelog?.WaitForExit();
                     }
 #else
-                    UpdaterHelper.CheckUpdate(manual || Properties.Settings.Default.APIAutoUpdate, true, Program.TagName, manual, Program.RootPath ?? "<null>",
+                    UpdaterHelper.CheckUpdate(manual || Properties.Settings.Default.APIAutoUpdate, true,
+                        Program.TagName, manual, Program.RootPath ?? "<null>",
                         _docUpdates, !manual && _autoUpdate, Properties.Settings.Default.APIAutoUpdate);
 #endif
                     if (Properties.Settings.Default.APIAutoUpdate)
@@ -437,7 +440,8 @@ namespace BrawlCrate
             }
             else
             {
-                propertyGrid1.HelpVisible = item?.PropertyDescriptor != null && !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
+                propertyGrid1.HelpVisible = item?.PropertyDescriptor != null &&
+                                            !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
             }
         }
 
@@ -482,8 +486,6 @@ namespace BrawlCrate
             UpdateName();
             UpdateDiscordRPC(null, null);
         }
-
-
 
 
         public void UpdateName()
@@ -580,7 +582,7 @@ namespace BrawlCrate
                 {
                     if (d.IsValid())
                     {
-                        hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
+                        hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream(
                                 (byte*) d.GetAddress(),
                                 d.GetLength(),
                                 d.GetLength(),
@@ -592,12 +594,12 @@ namespace BrawlCrate
 #if DEBUG
                 else if (ShowHex && !(node is RELEntryNode || node is RELNode) && node.WorkingUncompressed.Length > 0)
                 {
-                    hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
-                            (byte*)node.WorkingUncompressed.Address,
+                    hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream(
+                            (byte*) node.WorkingUncompressed.Address,
                             node.WorkingUncompressed.Length,
                             node.WorkingUncompressed.Length,
                             FileAccess.ReadWrite))
-                        { _supportsInsDel = false };
+                        {_supportsInsDel = false};
                     newControl = hexBox1;
                 }
 #endif
@@ -761,7 +763,7 @@ namespace BrawlCrate
                 {
                     if (node.WorkingUncompressed.Length > 0)
                     {
-                        hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
+                        hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream(
                                 (byte*) node.WorkingUncompressed.Address,
                                 node.WorkingUncompressed.Length,
                                 node.WorkingUncompressed.Length,
@@ -770,6 +772,7 @@ namespace BrawlCrate
                         newControl = hexBox1;
                     }
                 }
+
                 _enableEditMenu(this, null);
             }
             else
@@ -1139,7 +1142,7 @@ namespace BrawlCrate
                 Program.Open(inFile);
             }
         }
-        
+
         private void openTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile))
@@ -1764,7 +1767,8 @@ namespace BrawlCrate
                                                System.Windows.Forms.Keys.O)));
             this.openTemplateToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.openTemplateToolStripMenuItem.Text = "&Open Template...";
-            this.openTemplateToolStripMenuItem.Click += new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
+            this.openTemplateToolStripMenuItem.Click +=
+                new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
             // 
             // openFolderToolStripMenuItem
             // 
@@ -2381,7 +2385,7 @@ namespace BrawlCrate
         private TexCoordControl texCoordControl1;
         private PPCDisassembler ppcDisassembler1;
         private MDL0ObjectControl mdL0ObjectControl1;
-        private Be.Windows.Forms.HexBox hexBox1;
+        private HexBox hexBox1;
         private ToolStripMenuItem pluginToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem runScriptToolStripMenuItem;

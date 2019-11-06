@@ -62,7 +62,7 @@ namespace System.Windows.Forms
             {
                 // ignored
             }
-            
+
             if (_targetObject != null)
             {
                 try

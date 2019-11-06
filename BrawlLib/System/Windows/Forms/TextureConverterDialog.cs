@@ -11,6 +11,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 #if !MONO
 using System.Windows.Media.Imaging;
+
 #endif
 
 namespace System.Windows.Forms
@@ -490,6 +491,7 @@ namespace System.Windows.Forms
             {
                 // Palette could not properly be parsed, load regular bitmap instead
             }
+
             sourceStream.Close();
 #endif
             return LoadImages((Bitmap) Image.FromFile(path));
@@ -996,7 +998,8 @@ namespace System.Windows.Forms
             }
             else if (_reftParent != null)
             {
-                _reftParent.AddChild(_origREFT = new REFTEntryNode {Name = Path.GetFileNameWithoutExtension(_imageSource)});
+                _reftParent.AddChild(_origREFT = new REFTEntryNode
+                    {Name = Path.GetFileNameWithoutExtension(_imageSource)});
                 _origREFT.ReplaceRaw(_textureData);
             }
             else if (_origTEX0 != null)

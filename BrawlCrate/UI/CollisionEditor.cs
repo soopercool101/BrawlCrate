@@ -3831,7 +3831,7 @@ namespace System.Windows.Forms
                 TargetNode.SignalPropertyChange();
             }
         }
-        
+
         protected void btnSameX_Click(object sender, EventArgs e)
         {
             CreateUndo();

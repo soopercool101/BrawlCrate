@@ -142,7 +142,7 @@ namespace System
 
     public class RGBAStringConverter : TypeConverter
     {
-        private static readonly char[] Delims = { ',', 'R', 'G', 'B', 'A', ':', ' ' };
+        private static readonly char[] Delims = {',', 'R', 'G', 'B', 'A', ':', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -188,7 +188,7 @@ namespace System
 
     public class GXColorS10StringConverter : TypeConverter
     {
-        private static readonly char[] Delims = { ',', 'R', 'G', 'B', 'A', ':', ' ' };
+        private static readonly char[] Delims = {',', 'R', 'G', 'B', 'A', ':', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {

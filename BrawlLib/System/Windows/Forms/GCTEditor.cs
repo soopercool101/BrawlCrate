@@ -18,6 +18,7 @@ namespace System.Windows.Forms
             EventHandler handler = OpenFileChanged;
             handler?.Invoke(this, e);
         }
+
         public GCTEditor()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace System.Windows.Forms
             lstCodes.SelectedIndexChanged += new EventHandler(lstCodes_SelectedIndexChanged);
 
             Text = ((AssemblyTitleAttribute) Attribute.GetCustomAttribute(Assembly.GetEntryAssembly(),
-                typeof(AssemblyTitleAttribute), false)).Title + " - Code Manager";
+                       typeof(AssemblyTitleAttribute), false)).Title + " - Code Manager";
 
             checkBox1.Checked = BrawlLib.Properties.Settings.Default.SaveGCTWithInfo;
         }
@@ -553,7 +554,8 @@ namespace System.Windows.Forms
 
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
         }
@@ -642,7 +644,8 @@ namespace System.Windows.Forms
 
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
 
@@ -658,7 +661,8 @@ namespace System.Windows.Forms
             };
             foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
             {
-                node.AddChild(new GCTCodeEntryNode {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
+                node.AddChild(new GCTCodeEntryNode
+                    {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
             }
 
             TargetNode = node;

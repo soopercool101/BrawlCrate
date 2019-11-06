@@ -97,7 +97,7 @@ namespace System.Windows.Forms
             387,  // st_dxyorster
             2519, // st_croll (NTSC)
             419,  // st_donkey
-            423  // st_halberd, st_jungle, st_mansion
+            423   // st_halberd, st_jungle, st_mansion
         };
 
         public static ReadOnlyCollection<Stage> StageList => Array.AsReadOnly(stageList);

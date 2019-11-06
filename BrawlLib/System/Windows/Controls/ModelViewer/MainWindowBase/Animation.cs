@@ -607,11 +607,11 @@ namespace System.Windows.Forms
             else
             {
                 int loopBias = node.Loop && Interpolated.Contains(node.GetType()) ? 1 : 0;
-				
-				if (BrawlLib.Properties.Settings.Default.ContextualLoopAnimation)
-				{
-					PlaybackPanel.chkLoop.Checked = node.Loop;
-				}
+
+                if (BrawlLib.Properties.Settings.Default.ContextualLoopAnimation)
+                {
+                    PlaybackPanel.chkLoop.Checked = node.Loop;
+                }
 
                 _maxFrame = node.FrameCount;
                 EnableTransformEdit = !_playing;

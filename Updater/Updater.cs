@@ -24,7 +24,7 @@ namespace Updater
         public static readonly string mainBranch = "master";
 
         private static readonly GitHubClient Github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
-        { Credentials = new Credentials(Encoding.Default.GetString(Program.RawData)) };
+            {Credentials = new Credentials(Encoding.Default.GetString(Program.RawData))};
 
         #region Canary Variables/Helpers
 
@@ -226,7 +226,7 @@ namespace Updater
                 Console.WriteLine(s.Send("www.github.com").Status);
             }
 
-            char[] slashes = { '\\', '/' };
+            char[] slashes = {'\\', '/'};
             string[] repoData = currentRepo.Split(slashes);
 
             try
@@ -476,6 +476,7 @@ namespace Updater
                         await BrawlAPICheckUpdates(manual);
                         return;
                     }
+
                     if (manual)
                     {
                         MessageBox.Show("No updates found.");
@@ -559,7 +560,7 @@ namespace Updater
         {
             try
             {
-                char[] slashes = { '\\', '/' };
+                char[] slashes = {'\\', '/'};
                 string[] repoData = currentRepo.Split(slashes);
                 Release release =
                     await Github.Repository.Release.Get(repoData[0], repoData[1], $"Canary-{currentBranch}");
@@ -584,6 +585,7 @@ namespace Updater
                             await BrawlAPICheckUpdates(manual);
                             return;
                         }
+
                         if (manual)
                         {
                             MessageBox.Show("No updates found.");
@@ -606,6 +608,7 @@ namespace Updater
                                 await BrawlAPICheckUpdates(manual);
                                 return;
                             }
+
                             if (manual)
                             {
                                 MessageBox.Show("No updates found.");
@@ -671,6 +674,7 @@ namespace Updater
             {
                 throw new HttpRequestException();
             }
+
             string apiPath = $"{AppPath}\\BrawlAPI\\";
             List<string> updated = new List<string>();
             if (Directory.Exists(apiPath))
@@ -712,7 +716,8 @@ namespace Updater
                                     string newVer = !release.TagName.Equals(lines[0])
                                         ? release.TagName
                                         : release.TargetCommitish;
-                                    updated.Add($"{repoData[0]}/{repoData[1]} was updated from {oldVer} to {newVer}\n{release.Body}");
+                                    updated.Add(
+                                        $"{repoData[0]}/{repoData[1]} was updated from {oldVer} to {newVer}\n{release.Body}");
                                 }
                             }
                         }
@@ -722,7 +727,7 @@ namespace Updater
                         // Errors are ignored, move on to the next file
                     }
                 }
-                
+
                 // Print success message
                 if (updated.Count > 0)
                 {
@@ -745,7 +750,6 @@ namespace Updater
 
         public static async Task BrawlAPIInstallUpdate(string repoOwner, string repoName, bool manual)
         {
-
             string apiPath = $"{AppPath}\\BrawlAPI\\";
             Directory.CreateDirectory(apiPath);
             try
@@ -755,6 +759,7 @@ namespace Updater
                 {
                     File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
                 }
+
                 // Get the latest release of this script repo
                 Release release = await Github.Repository.Release.GetLatest(repoOwner, repoName);
                 using (WebClient client = new WebClient())
@@ -860,7 +865,8 @@ namespace Updater
                                                  fullName.StartsWith("Loaders/", StringComparison.OrdinalIgnoreCase)))
                                     {
                                         // Extract the other files and add them to the file list where specified
-                                        string path = Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", fullName));
+                                        string path =
+                                            Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", fullName));
                                         if (File.Exists(path))
                                         {
                                             if (MessageBox.Show(
@@ -873,6 +879,7 @@ namespace Updater
 
                                             File.Delete(path);
                                         }
+
                                         sw.WriteLine(fullName);
                                         swNew.WriteLine(fullName);
                                         e.ExtractToFile(path);
@@ -890,16 +897,18 @@ namespace Updater
                                 // We don't necessarily wish to throw an error. After all, the installation worked.
                             }
                         }
+
                         sw.Close();
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (manual)
                 {
                     MessageBox.Show($"Error installing API scripts from {repoOwner}/{repoName}\n\n{e.Message}");
                 }
+
                 // Attempt to delete the file if it exists.
                 try
                 {
@@ -983,7 +992,7 @@ namespace Updater
                     Directory.CreateDirectory(AppPath + "/" + release.TagName);
                     AppPath += "/" + release.TagName;
                 }
-                
+
                 using (WebClient client = new WebClient())
                 {
                     // Add the user agent header, otherwise we will get access denied.

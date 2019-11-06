@@ -7,8 +7,9 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RSARGroupNode : RSAREntryNode
     {
         internal INFOGroupHeader* Header => (INFOGroupHeader*) WorkingUncompressed.Address;
-        
-        [Category("Data"), DisplayName("Group ID")]
+
+        [Category("Data")]
+        [DisplayName("Group ID")]
         public override int StringId => Header == null ? -1 : (int) Header->_stringId;
 
         public override ResourceType ResourceFileType => ResourceType.RSARGroup;

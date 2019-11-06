@@ -20,7 +20,7 @@ namespace BrawlCrate.UI
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -28,10 +28,11 @@ namespace BrawlCrate.UI
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -47,7 +48,7 @@ namespace BrawlCrate.UI
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grpBoxSubscriptions = new System.Windows.Forms.GroupBox();
             this.lstSubs = new System.Windows.Forms.ListView();
-            this.subHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.subHeader = ((System.Windows.Forms.ColumnHeader) (new System.Windows.Forms.ColumnHeader()));
             this.tabsSubInfo = new System.Windows.Forms.TabControl();
             this.tabReadMe = new System.Windows.Forms.TabPage();
             this.btnUninstall = new System.Windows.Forms.Button();
@@ -59,8 +60,8 @@ namespace BrawlCrate.UI
             this.tabLicense = new System.Windows.Forms.TabPage();
             this.txtLicense = new System.Windows.Forms.RichTextBox();
             this.btnAddSub = new System.Windows.Forms.Button();
-            this.filesHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.filesHeader = ((System.Windows.Forms.ColumnHeader) (new System.Windows.Forms.ColumnHeader()));
+            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -73,7 +74,9 @@ namespace BrawlCrate.UI
             // 
             // btnUpdateSubscriptions
             // 
-            this.btnUpdateSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateSubscriptions.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom |
+                                                       System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateSubscriptions.Location = new System.Drawing.Point(295, 500);
             this.btnUpdateSubscriptions.Name = "btnUpdateSubscriptions";
             this.btnUpdateSubscriptions.Size = new System.Drawing.Size(75, 23);
@@ -84,9 +87,11 @@ namespace BrawlCrate.UI
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top |
+                                                         System.Windows.Forms.AnchorStyles.Bottom)
+                                                        | System.Windows.Forms.AnchorStyles.Left)
+                                                       | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(1, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -104,9 +109,11 @@ namespace BrawlCrate.UI
             // 
             // grpBoxSubscriptions
             // 
-            this.grpBoxSubscriptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxSubscriptions.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top |
+                                                         System.Windows.Forms.AnchorStyles.Bottom)
+                                                        | System.Windows.Forms.AnchorStyles.Left)
+                                                       | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBoxSubscriptions.Controls.Add(this.lstSubs);
             this.grpBoxSubscriptions.Location = new System.Drawing.Point(3, 3);
             this.grpBoxSubscriptions.Name = "grpBoxSubscriptions";
@@ -117,8 +124,10 @@ namespace BrawlCrate.UI
             // 
             // lstSubs
             // 
-            this.lstSubs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.subHeader});
+            this.lstSubs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
+            {
+                this.subHeader
+            });
             this.lstSubs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstSubs.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lstSubs.HideSelection = false;
@@ -129,7 +138,8 @@ namespace BrawlCrate.UI
             this.lstSubs.TabIndex = 0;
             this.lstSubs.UseCompatibleStateImageBehavior = false;
             this.lstSubs.View = System.Windows.Forms.View.Details;
-            this.lstSubs.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstSubs_ItemChanged);
+            this.lstSubs.ItemSelectionChanged +=
+                new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LstSubs_ItemChanged);
             this.lstSubs.Resize += new System.EventHandler(this.lstResize);
             // 
             // subHeader
@@ -139,9 +149,11 @@ namespace BrawlCrate.UI
             // 
             // tabsSubInfo
             // 
-            this.tabsSubInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabsSubInfo.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top |
+                                                         System.Windows.Forms.AnchorStyles.Bottom)
+                                                        | System.Windows.Forms.AnchorStyles.Left)
+                                                       | System.Windows.Forms.AnchorStyles.Right)));
             this.tabsSubInfo.Controls.Add(this.tabReadMe);
             this.tabsSubInfo.Controls.Add(this.tabScripts);
             this.tabsSubInfo.Controls.Add(this.tabLicense);
@@ -167,7 +179,9 @@ namespace BrawlCrate.UI
             // 
             // btnUninstall
             // 
-            this.btnUninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUninstall.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top |
+                                                       System.Windows.Forms.AnchorStyles.Right)));
             this.btnUninstall.Location = new System.Drawing.Point(290, 12);
             this.btnUninstall.Name = "btnUninstall";
             this.btnUninstall.Size = new System.Drawing.Size(75, 23);
@@ -178,9 +192,11 @@ namespace BrawlCrate.UI
             // 
             // txtReadMe
             // 
-            this.txtReadMe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReadMe.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top |
+                                                         System.Windows.Forms.AnchorStyles.Bottom)
+                                                        | System.Windows.Forms.AnchorStyles.Left)
+                                                       | System.Windows.Forms.AnchorStyles.Right)));
             this.txtReadMe.Location = new System.Drawing.Point(0, 44);
             this.txtReadMe.Name = "txtReadMe";
             this.txtReadMe.ReadOnly = true;
@@ -219,8 +235,10 @@ namespace BrawlCrate.UI
             // 
             // lstScripts
             // 
-            this.lstScripts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.filesHeader});
+            this.lstScripts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
+            {
+                this.filesHeader
+            });
             this.lstScripts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstScripts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lstScripts.HideSelection = false;
@@ -257,7 +275,9 @@ namespace BrawlCrate.UI
             // 
             // btnAddSub
             // 
-            this.btnAddSub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSub.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom |
+                                                       System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddSub.Location = new System.Drawing.Point(214, 500);
             this.btnAddSub.Name = "btnAddSub";
             this.btnAddSub.Size = new System.Drawing.Size(75, 23);
@@ -284,7 +304,7 @@ namespace BrawlCrate.UI
             this.Shown += new System.EventHandler(this.APISubscriptionManager_Shown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grpBoxSubscriptions.ResumeLayout(false);
             this.tabsSubInfo.ResumeLayout(false);
@@ -293,28 +313,27 @@ namespace BrawlCrate.UI
             this.tabScripts.ResumeLayout(false);
             this.tabLicense.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnUpdateSubscriptions;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TabControl tabsSubInfo;
-        private System.Windows.Forms.TabPage tabLicense;
-        private System.Windows.Forms.RichTextBox txtLicense;
-        private System.Windows.Forms.TabPage tabScripts;
-        private System.Windows.Forms.GroupBox grpBoxSubscriptions;
-        private System.Windows.Forms.TabPage tabReadMe;
-        private System.Windows.Forms.Label lblLastUpdated;
-        private System.Windows.Forms.Label lblVersion;
-        private System.Windows.Forms.RichTextBox txtReadMe;
-        private System.Windows.Forms.ListView lstScripts;
-        private System.Windows.Forms.ListView lstSubs;
+        private Button btnUpdateSubscriptions;
+        private SplitContainer splitContainer1;
+        private TabControl tabsSubInfo;
+        private TabPage tabLicense;
+        private RichTextBox txtLicense;
+        private TabPage tabScripts;
+        private GroupBox grpBoxSubscriptions;
+        private TabPage tabReadMe;
+        private Label lblLastUpdated;
+        private Label lblVersion;
+        private RichTextBox txtReadMe;
+        private ListView lstScripts;
+        private ListView lstSubs;
         private Button btnUninstall;
         private ColumnHeader subHeader;
         private ColumnHeader filesHeader;
-        private System.Windows.Forms.Button btnAddSub;
+        private Button btnAddSub;
 
         public APISubscriptionManager()
         {
@@ -346,6 +365,7 @@ namespace BrawlCrate.UI
         }
 
         private string selected = "";
+
         private void LstSubs_ItemChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             splitContainer1.Panel2Collapsed = lstSubs.SelectedItems.Count < 1;
@@ -403,7 +423,7 @@ namespace BrawlCrate.UI
         }
 
         private void BtnUpdateSubscriptions_Click(object sender, EventArgs e)
-        { 
+        {
             UpdaterHelper.BrawlAPICheckUpdates(true, true);
             GetNewFiles();
             RefreshList();
@@ -448,6 +468,7 @@ namespace BrawlCrate.UI
                 {
                     // ignored. It should hopefully not happen, but disabling new loaders is more important.
                 }
+
                 newFiles.RemoveAt(0);
             }
 
@@ -467,7 +488,8 @@ namespace BrawlCrate.UI
                 }
             }
 
-            string message = "The following loaders that are currently active have been added or changed by updates: \n\n";
+            string message =
+                "The following loaders that are currently active have been added or changed by updates: \n\n";
             List<string> loadersToDisable = new List<string>();
             if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist)
             {
@@ -496,8 +518,8 @@ namespace BrawlCrate.UI
             if (loadersToDisable.Count > 0)
             {
                 message += "\nLoaders downloaded from the internet may be harmful, so these have been deactivated. " +
-                           "It is recommended that you review these files before enabling them again. " + 
-                           "Would you like to enable these files?\n\n" + 
+                           "It is recommended that you review these files before enabling them again. " +
+                           "Would you like to enable these files?\n\n" +
                            "The BrawlCrate team accepts no responsibility for any files that may harm your computer.";
                 if (MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) !=
                     DialogResult.Yes)
@@ -548,6 +570,7 @@ namespace BrawlCrate.UI
             {
                 ReadMe = File.ReadAllText($"{path} README.txt");
             }
+
             if (File.Exists($"{path} LICENSE.txt"))
             {
                 License = File.ReadAllText($"{path} LICENSE.txt");

@@ -289,7 +289,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 temp = "[" + FileIndex + "]";
             }
 
-            
+
             string filename = Path.Combine(Application.StartupPath, "InternalDocumentation", DocumentationSubDirectory,
                 root.Name.ToUpper().Replace("STG", "") + temp + ".txt");
             return new AttributeInterpretation(arr, filename);

@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB
         {
             ((byte*) _values.Address)[index * 4 + index2] = value;
         }
-        
+
         public string GetHex(int index)
         {
             return "0x" + GetInt(index).ToString("X8");

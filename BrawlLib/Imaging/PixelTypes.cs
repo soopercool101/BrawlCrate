@@ -760,12 +760,14 @@ namespace BrawlLib.Imaging
 
         public static explicit operator ARGBPixel(GXColorS10 p)
         {
-            return new ARGBPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new ARGBPixel
+                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static explicit operator RGBAPixel(GXColorS10 p)
         {
-            return new RGBAPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new RGBAPixel
+                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static implicit operator Vector4(GXColorS10 p)

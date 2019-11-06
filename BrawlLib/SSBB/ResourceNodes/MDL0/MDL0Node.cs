@@ -93,6 +93,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _metalMat = value;
             }
         }
+
         public string _metalMat;
 
         [Category("G3D Model")]
@@ -444,7 +445,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             for (int x = 0; x < _matList.Count; x++)
             {
-                MDL0MaterialNode n = (MDL0MaterialNode)_matList[x];
+                MDL0MaterialNode n = (MDL0MaterialNode) _matList[x];
                 if (!n.IsMetal && n.MetalMaterial == null)
                 {
                     MDL0MaterialNode node = new MDL0MaterialNode
@@ -458,7 +459,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     for (int i = 0; i <= n.Children.Count; i++)
                     {
                         if (i != n.Children.Count &&
-                            ((MDL0MaterialRefNode)n.Children[i]).MapMode == MappingMethod.EnvCamera)
+                            ((MDL0MaterialRefNode) n.Children[i]).MapMode == MappingMethod.EnvCamera)
                         {
                             continue;
                         }
@@ -474,7 +475,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         mr._texMtxFlags.SourceRow = TexSourceRow.TexCoord0;
                         mr.EmbossSource = 5;
 
-                        if (i == n.Children.Count || ((MDL0MaterialRefNode)n.Children[i]).HasTextureMatrix)
+                        if (i == n.Children.Count || ((MDL0MaterialRefNode) n.Children[i]).HasTextureMatrix)
                         {
                             mr._minFltr = 5;
                             mr._magFltr = 1;
@@ -2686,7 +2687,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 index = 0;
                 foreach (VertexCodec c in _linker._uvs)
                 {
-                    table.Add("#" + (index++));
+                    table.Add("#" + index++);
                 }
             }
         }

@@ -561,9 +561,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     CHR0EntryNode intEntry = null;
                     KeyframeEntry kfe;
-                    if ((intEntry = (CHR0EntryNode)FindChild(extEntry.Name, false)) == null)
+                    if ((intEntry = (CHR0EntryNode) FindChild(extEntry.Name, false)) == null)
                     {
-                        CHR0EntryNode newIntEntry = new CHR0EntryNode { Name = extEntry.Name };
+                        CHR0EntryNode newIntEntry = new CHR0EntryNode {Name = extEntry.Name};
                         newIntEntry.SetSize(extEntry.FrameCount + origIntCount, Loop);
                         for (int x = 0; x < extEntry.FrameCount; x++)
                         {
@@ -596,6 +596,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         public void Reverse(bool appendReverse)
         {
             using (CHR0Node tempReversedCHR0 = new CHR0Node
@@ -604,7 +605,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 KeyframeEntry kfe;
                 foreach (CHR0EntryNode tempEntry in Children)
                 {
-                    CHR0EntryNode newIntEntry = new CHR0EntryNode { Name = tempEntry.Name };
+                    CHR0EntryNode newIntEntry = new CHR0EntryNode {Name = tempEntry.Name};
                     newIntEntry.SetSize(tempEntry.FrameCount, Loop);
                     for (int x = 0; x < tempEntry.FrameCount; x++)
                     {
@@ -612,7 +613,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             if ((kfe = tempEntry.GetKeyframe(i, x)) != null)
                             {
-                                newIntEntry.Keyframes.SetFrameValue(i, FrameCount - (x + (Loop ? 0 : 1)), kfe._value)._tangent =
+                                newIntEntry.Keyframes.SetFrameValue(i, FrameCount - (x + (Loop ? 0 : 1)), kfe._value)
+                                           ._tangent =
                                     kfe._tangent;
                             }
                         }

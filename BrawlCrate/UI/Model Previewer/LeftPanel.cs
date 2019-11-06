@@ -2127,7 +2127,7 @@ namespace System.Windows.Forms
         private void ctxAnimList_Opening(object sender, CancelEventArgs e)
         {
             ResourceNode r = TargetModel as ResourceNode;
-            bool targetBRRES = !(!(r?.Parent?.Parent is BRRESNode));
+            bool targetBRRES = !!(r?.Parent?.Parent is BRRESNode);
 
             if (!targetBRRES)
             {

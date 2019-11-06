@@ -418,8 +418,9 @@ namespace System.Windows.Forms
             }
 
             Enabled = _targetStream.Samples > 0;
-            
-            chkLoop.Checked = BrawlLib.Properties.Settings.Default.ContextualLoopAudio && (_targetSource?.IsLooped ?? false);
+
+            chkLoop.Checked = BrawlLib.Properties.Settings.Default.ContextualLoopAudio &&
+                              (_targetSource?.IsLooped ?? false);
 
             if (Enabled && BrawlLib.Properties.Settings.Default.AutoPlayAudio)
             {

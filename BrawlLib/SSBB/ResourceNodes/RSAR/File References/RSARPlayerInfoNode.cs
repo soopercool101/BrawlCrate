@@ -8,7 +8,8 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal INFOPlayerInfoEntry* Header => (INFOPlayerInfoEntry*) WorkingUncompressed.Address;
 
-        [Category("Data"), DisplayName("ID")]
+        [Category("Data")]
+        [DisplayName("ID")]
         public override int StringId => Header == null ? -1 : (int) Header->_stringId;
 
         public override ResourceType ResourceFileType => ResourceType.RSARType;

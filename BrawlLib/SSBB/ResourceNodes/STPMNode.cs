@@ -65,10 +65,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     continue;
                 }
-                
+
                 // In-game camera
                 cur.CameraFOV = ext.CameraFOV;
-                
+
                 cur.MinimumZ = ext.MinimumZ;
                 cur.MaximumZ = ext.MaximumZ;
 
@@ -79,7 +79,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.VerticalRotationFactor = ext.VerticalRotationFactor;
 
                 cur.CharacterBubbleBufferMultiplier = ext.CharacterBubbleBufferMultiplier;
-                
+
                 cur.CameraSpeed = ext.CameraSpeed;
 
                 cur.StarKOCamTilt = ext.StarKOCamTilt;
@@ -87,13 +87,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 cur.CameraRight = ext.CameraRight;
                 cur.CameraLeft = ext.CameraLeft;
-                
+
                 // Pause camera
                 cur.PauseCamX = ext.PauseCamX;
                 cur.PauseCamY = ext.PauseCamY;
                 cur.PauseCamZ = ext.PauseCamZ;
                 cur.PauseCamAngle = ext.PauseCamAngle;
-                
+
                 cur.PauseCamZoomIn = ext.PauseCamZoomIn;
                 cur.PauseCamZoomOut = ext.PauseCamZoomOut;
                 cur.PauseCamZoomDefault = ext.PauseCamZoomDefault;
@@ -102,7 +102,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.PauseCamRotYMax = ext.PauseCamRotYMax;
                 cur.PauseCamRotXMin = ext.PauseCamRotXMin;
                 cur.PauseCamRotXMax = ext.PauseCamRotXMax;
-                
+
                 // Fixed camera
                 cur.FixedCamX = ext.FixedCamX;
                 cur.FixedCamY = ext.FixedCamY;

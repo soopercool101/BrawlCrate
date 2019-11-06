@@ -358,7 +358,7 @@ namespace BrawlLib.SSBBTypes
         //All use pos and color
         Point = 0x0,       //Don't use aim, use dist func
         Directional = 0x1, //Use aim
-        Spotlight = 0x2   //Use aim, spot func and dist func
+        Spotlight = 0x2    //Use aim, spot func and dist func
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

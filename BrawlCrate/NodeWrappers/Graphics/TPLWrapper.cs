@@ -91,7 +91,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 if (path.EndsWith(".tplt", StringComparison.OrdinalIgnoreCase) || !path.Contains("."))
                 {
-                    TPLTextureNode t = new TPLTextureNode { Name = "Texture" };
+                    TPLTextureNode t = new TPLTextureNode {Name = "Texture"};
                     _resource.AddChild(t);
                     t.Replace(path);
 

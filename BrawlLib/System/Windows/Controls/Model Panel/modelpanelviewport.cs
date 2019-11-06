@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Runtime.Serialization;
-
 using OpenTK.Graphics.OpenGL;
 
 namespace System.Windows.Forms
@@ -31,7 +30,7 @@ namespace System.Windows.Forms
             return new ModelPanelViewportInfo
             {
                 _ambient = _ambient,
-                _backColor = (ARGBPixel)BackgroundColor,
+                _backColor = (ARGBPixel) BackgroundColor,
                 _bgImagePath = "",
                 _bgType = BackgroundImageType,
                 _diffuse = _diffuse,
@@ -56,9 +55,9 @@ namespace System.Windows.Forms
                 _textEnabled = _textEnabled,
                 _lightEnabled = _lightEnabled,
 
-                _defaultRotate = (Vector4)_camera._defaultRotate,
-                _defaultScale = (Vector4)_camera._defaultScale,
-                _defaultTranslate = (Vector4)_camera._defaultTranslate,
+                _defaultRotate = (Vector4) _camera._defaultRotate,
+                _defaultScale = (Vector4) _camera._defaultScale,
+                _defaultTranslate = (Vector4) _camera._defaultTranslate,
                 _farZ = _camera._farZ,
                 _fovY = _camera._fovY,
                 _nearZ = _camera._nearZ,
@@ -129,7 +128,7 @@ namespace System.Windows.Forms
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ScreenTextHandler SettingsScreenText => _settingsText;
-        
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ScreenTextHandler NoSettingsScreenText => _noSettingsText;
 
@@ -269,10 +268,10 @@ namespace System.Windows.Forms
                 float elevation = 360.0f - _lightPosition._z * Maths._deg2radf;
 
                 float
-                    cosElev = (float)Math.Cos(elevation),
-                    sinElev = (float)Math.Sin(elevation),
-                    cosAzi = (float)Math.Cos(azimuth),
-                    sinAzi = (float)Math.Sin(azimuth);
+                    cosElev = (float) Math.Cos(elevation),
+                    sinElev = (float) Math.Sin(elevation),
+                    cosAzi = (float) Math.Cos(azimuth),
+                    sinAzi = (float) Math.Sin(azimuth);
 
                 _posLight = new Vector4(r * cosAzi * sinElev, r * cosElev, r * sinAzi * sinElev, _posLight._w);
                 _spotDirLight = new Vector4(-cosAzi * sinElev, -cosElev, -sinAzi * sinElev, _posLight._w);
@@ -515,7 +514,7 @@ namespace System.Windows.Forms
         public void RenderBackground()
         {
             //Apply color
-            Vector3 v = (Vector3)BackgroundColor;
+            Vector3 v = (Vector3) BackgroundColor;
             GL.ClearColor(v._x, v._y, v._z, 0.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
@@ -539,7 +538,8 @@ namespace System.Windows.Forms
                 Vector3 point = Camera.GetPoint().Round(3);
                 Vector3 rot = Camera._rotation.Round(3);
                 _settingsText[
-                    $"Position\nX: {point._x}\nY: {point._y}\nZ: {point._z}\n\nRotation\nX: {rot._x}\nY: {rot._y}\nZ: {rot._z}"] = new Vector3(5.0f, 5.0f, 0.5f);
+                        $"Position\nX: {point._x}\nY: {point._y}\nZ: {point._z}\n\nRotation\nX: {rot._x}\nY: {rot._y}\nZ: {rot._z}"]
+                    = new Vector3(5.0f, 5.0f, 0.5f);
             }
 
             //Render selection overlay and/or text overlays
@@ -558,7 +558,7 @@ namespace System.Windows.Forms
                     {
                         GL.LoadIdentity();
                         Matrix p = Matrix.OrthographicMatrix(0, Width, 0, Height, -1, 1);
-                        GL.LoadMatrix((float*)&p);
+                        GL.LoadMatrix((float*) &p);
 
                         GL.MatrixMode(MatrixMode.Modelview);
                         GL.PushMatrix();
@@ -578,12 +578,12 @@ namespace System.Windows.Forms
                             }
 
                             GL.Color4(Color.White);
-                            
+
                             if (_settingsText?.Count != 0 && _textEnabled)
                             {
                                 _settingsText?.Draw();
                             }
-                            
+
                             if (_noSettingsText?.Count != 0)
                             {
                                 _noSettingsText?.Draw();
@@ -638,7 +638,7 @@ namespace System.Windows.Forms
             {
                 GL.LoadIdentity();
                 Matrix p = Matrix.OrthographicMatrix(0, Region.Width, 0, Region.Height, -1, 1);
-                GL.LoadMatrix((float*)&p);
+                GL.LoadMatrix((float*) &p);
 
                 GL.MatrixMode(MatrixMode.Modelview);
                 GL.PushMatrix();
@@ -674,8 +674,8 @@ namespace System.Windows.Forms
                     }
 
                     float* points = stackalloc float[8];
-                    float tAspect = _bgImage.Width / (float)_bgImage.Height;
-                    float wAspect = Width / (float)Height;
+                    float tAspect = _bgImage.Width / (float) _bgImage.Height;
+                    float wAspect = Width / (float) Height;
 
                     switch (_bgType)
                     {
@@ -695,7 +695,7 @@ namespace System.Windows.Forms
                                 points[5] = points[7] = Height;
 
                                 points[0] = points[6] =
-                                    Width * ((Width - (float)Height / _bgImage.Height * _bgImage.Width) / Width /
+                                    Width * ((Width - (float) Height / _bgImage.Height * _bgImage.Width) / Width /
                                              2.0f);
                                 points[2] = points[4] = Width - points[0];
                             }
@@ -705,7 +705,7 @@ namespace System.Windows.Forms
                                 points[2] = points[4] = Width;
 
                                 points[1] = points[3] =
-                                    Height * ((Height - (float)Width / _bgImage.Width * _bgImage.Height) / Height /
+                                    Height * ((Height - (float) Width / _bgImage.Width * _bgImage.Height) / Height /
                                               2.0f);
                                 points[5] = points[7] = Height - points[1];
                             }
@@ -720,7 +720,7 @@ namespace System.Windows.Forms
                                 points[2] = points[4] = Width;
 
                                 points[1] = points[3] =
-                                    Height * ((Height - (float)Width / _bgImage.Width * _bgImage.Height) / Height /
+                                    Height * ((Height - (float) Width / _bgImage.Width * _bgImage.Height) / Height /
                                               2.0f);
                                 points[5] = points[7] = Height - points[1];
                             }
@@ -730,7 +730,7 @@ namespace System.Windows.Forms
                                 points[5] = points[7] = Height;
 
                                 points[0] = points[6] =
-                                    Width * ((Width - (float)Height / _bgImage.Height * _bgImage.Width) / Width /
+                                    Width * ((Width - (float) Height / _bgImage.Height * _bgImage.Width) / Width /
                                              2.0f);
                                 points[2] = points[4] = Width - points[0];
                             }
@@ -752,13 +752,13 @@ namespace System.Windows.Forms
                     GL.End();
 
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS,
-                        (int)TextureWrapMode.Repeat);
+                        (int) TextureWrapMode.Repeat);
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT,
-                        (int)TextureWrapMode.Repeat);
+                        (int) TextureWrapMode.Repeat);
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
-                        (int)MatTextureMinFilter.Linear);
+                        (int) MatTextureMinFilter.Linear);
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
-                        (int)MatTextureMagFilter.Linear);
+                        (int) MatTextureMagFilter.Linear);
 
                     GL.Disable(EnableCap.Texture2D);
                 }
@@ -780,38 +780,38 @@ namespace System.Windows.Forms
 
             fixed (Vector4* pos = &_posLight)
             {
-                GL.Light(LightName.Light0, LightParameter.Position, (float*)pos);
+                GL.Light(LightName.Light0, LightParameter.Position, (float*) pos);
             }
 
             fixed (Vector4* pos = &_spotDirLight)
             {
-                GL.Light(LightName.Light0, LightParameter.SpotDirection, (float*)pos);
+                GL.Light(LightName.Light0, LightParameter.SpotDirection, (float*) pos);
             }
 
             fixed (Vector4* pos = &_ambient)
             {
-                GL.Light(LightName.Light0, LightParameter.Ambient, (float*)pos);
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Ambient, (float*)pos);
+                GL.Light(LightName.Light0, LightParameter.Ambient, (float*) pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Ambient, (float*) pos);
             }
 
             fixed (Vector4* pos = &_diffuse)
             {
-                GL.Light(LightName.Light0, LightParameter.Diffuse, (float*)pos);
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Diffuse, (float*)pos);
+                GL.Light(LightName.Light0, LightParameter.Diffuse, (float*) pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Diffuse, (float*) pos);
             }
 
             fixed (Vector4* pos = &_specular)
             {
-                GL.Light(LightName.Light0, LightParameter.Specular, (float*)pos);
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Specular, (float*)pos);
+                GL.Light(LightName.Light0, LightParameter.Specular, (float*) pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Specular, (float*) pos);
             }
 
             fixed (Vector4* pos = &_emission)
             {
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Emission, (float*)pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Emission, (float*) pos);
             }
 
-            GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (int)TextureEnvMode.Modulate);
+            GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (int) TextureEnvMode.Modulate);
         }
 
         #endregion
@@ -819,6 +819,7 @@ namespace System.Windows.Forms
         #region Mouse/Keyboard Functions
 
         private Drawing.Point? lastHeldMouseLocat = null;
+
         //What we are trying to do here is getting the actual screen location of this viewport
         private Drawing.Point? viewportScreenLocation = null;
 
@@ -853,8 +854,8 @@ namespace System.Windows.Forms
 
         public void HandleOtherMouseUp(MouseEventArgs e)
         {
-
         }
+
         public void HandleOtherMouseDown(MouseEventArgs e)
         {
             if (lastHeldMouseLocat != null)
@@ -870,7 +871,6 @@ namespace System.Windows.Forms
             Cursor.Clip = Rectangle.Empty;
         }
 
-        private bool teleported = false;
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
             if (_selecting)
@@ -878,15 +878,16 @@ namespace System.Windows.Forms
                 _selEnd = new Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
             }
 
-            bool grabbingOrScrolling = (_grabbing || _scrolling);
-            bool notGrabbingAndScrolling = (!_grabbing && !_scrolling);
+            bool grabbingOrScrolling = _grabbing || _scrolling;
+            bool notGrabbingAndScrolling = !_grabbing && !_scrolling;
 
             if (grabbingOrScrolling && lastHeldMouseLocat == null)
             {
                 viewportScreenLocation = ctx._window.PointToScreen(Drawing.Point.Empty);
                 lastHeldMouseLocat = e.Location;
 
-                Cursor.Clip = new Rectangle(viewportScreenLocation.Value, new Drawing.Size(Region.Width, Region.Height));
+                Cursor.Clip = new Rectangle(viewportScreenLocation.Value,
+                    new Drawing.Size(Region.Width, Region.Height));
             }
             else if (notGrabbingAndScrolling && lastHeldMouseLocat != null)
             {
@@ -898,17 +899,18 @@ namespace System.Windows.Forms
                 int borders = 1;
                 int mouseBorders = 2;
 
-                bool leftScrHit = (e.Location.X <= borders);
-                bool rightScrHit = (e.Location.X >= (Region.Width - borders));
-                bool topScrHit = (e.Location.Y <= borders);
-                bool bottomScrHit = (e.Location.Y >= (Region.Height - borders));
+                bool leftScrHit = e.Location.X <= borders;
+                bool rightScrHit = e.Location.X >= Region.Width - borders;
+                bool topScrHit = e.Location.Y <= borders;
+                bool bottomScrHit = e.Location.Y >= Region.Height - borders;
 
-                Drawing.Point mouseSpeed = new Drawing.Point(e.Location.X - lastHeldMouseLocat.Value.X, e.Location.Y - lastHeldMouseLocat.Value.Y);
+                Drawing.Point mouseSpeed = new Drawing.Point(e.Location.X - lastHeldMouseLocat.Value.X,
+                    e.Location.Y - lastHeldMouseLocat.Value.Y);
 
-                bool movingLeft = (mouseSpeed.X < 0);
-                bool movingRight = (mouseSpeed.X > 0);
-                bool movingTop = (mouseSpeed.Y < 0);
-                bool movingBottom = (mouseSpeed.Y > 0);
+                bool movingLeft = mouseSpeed.X < 0;
+                bool movingRight = mouseSpeed.X > 0;
+                bool movingTop = mouseSpeed.Y < 0;
+                bool movingBottom = mouseSpeed.Y > 0;
 
                 if (leftScrHit || rightScrHit || topScrHit || bottomScrHit)
                 {
@@ -942,7 +944,8 @@ namespace System.Windows.Forms
 
                     if (viewportScreenLocation != null)
                     {
-                        Cursor.Position = new Drawing.Point(px + viewportScreenLocation.Value.X, py + viewportScreenLocation.Value.Y);
+                        Cursor.Position = new Drawing.Point(px + viewportScreenLocation.Value.X,
+                            py + viewportScreenLocation.Value.Y);
                         return;
                     }
                 }
@@ -992,7 +995,7 @@ namespace System.Windows.Forms
                         }
                     }
                 }
-                
+
                 lastHeldMouseLocat = e.Location;
             }
 
@@ -1030,107 +1033,107 @@ namespace System.Windows.Forms
 
                 case Keys.NumPad8:
                 case Keys.Up:
+                {
+                    if (alt)
                     {
-                        if (alt)
-                        {
-                            break;
-                        }
-
-                        if (ctrl)
-                        {
-                            Pivot(-RotationScale * (shift ? 32 : 4), 0.0f);
-                        }
-                        else
-                        {
-                            Translate(0.0f, TranslationScale * (shift ? 128 : 8), 0.0f);
-                        }
-
-                        return true;
+                        break;
                     }
+
+                    if (ctrl)
+                    {
+                        Pivot(-RotationScale * (shift ? 32 : 4), 0.0f);
+                    }
+                    else
+                    {
+                        Translate(0.0f, TranslationScale * (shift ? 128 : 8), 0.0f);
+                    }
+
+                    return true;
+                }
 
                 case Keys.NumPad2:
                 case Keys.Down:
+                {
+                    if (alt)
                     {
-                        if (alt)
-                        {
-                            break;
-                        }
-
-                        if (ctrl)
-                        {
-                            Pivot(RotationScale * (shift ? 32 : 4), 0.0f);
-                        }
-                        else
-                        {
-                            Translate(0.0f, -TranslationScale * (shift ? 128 : 8), 0.0f);
-                        }
-
-                        return true;
+                        break;
                     }
+
+                    if (ctrl)
+                    {
+                        Pivot(RotationScale * (shift ? 32 : 4), 0.0f);
+                    }
+                    else
+                    {
+                        Translate(0.0f, -TranslationScale * (shift ? 128 : 8), 0.0f);
+                    }
+
+                    return true;
+                }
 
                 case Keys.NumPad6:
                 case Keys.Right:
+                {
+                    if (alt)
                     {
-                        if (alt)
-                        {
-                            break;
-                        }
-
-                        if (ctrl)
-                        {
-                            Pivot(0.0f, RotationScale * (shift ? 32 : 4));
-                        }
-                        else
-                        {
-                            Translate(TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
-                        }
-
-                        return true;
+                        break;
                     }
+
+                    if (ctrl)
+                    {
+                        Pivot(0.0f, RotationScale * (shift ? 32 : 4));
+                    }
+                    else
+                    {
+                        Translate(TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
+                    }
+
+                    return true;
+                }
 
                 case Keys.NumPad4:
                 case Keys.Left:
+                {
+                    if (alt)
                     {
-                        if (alt)
-                        {
-                            break;
-                        }
-
-                        if (ctrl)
-                        {
-                            Pivot(0.0f, -RotationScale * (shift ? 32 : 4));
-                        }
-                        else
-                        {
-                            Translate(-TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
-                        }
-
-                        return true;
+                        break;
                     }
+
+                    if (ctrl)
+                    {
+                        Pivot(0.0f, -RotationScale * (shift ? 32 : 4));
+                    }
+                    else
+                    {
+                        Translate(-TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
+                    }
+
+                    return true;
+                }
 
                 case Keys.Add:
                 case Keys.Oemplus:
+                {
+                    if (alt)
                     {
-                        if (alt)
-                        {
-                            break;
-                        }
-
-                        Zoom(-ZoomScale * (shift ? 32 : 2));
-                        return true;
+                        break;
                     }
+
+                    Zoom(-ZoomScale * (shift ? 32 : 2));
+                    return true;
+                }
 
                 case Keys.Subtract:
                 case Keys.OemMinus:
+                {
+                    if (alt)
                     {
-                        if (alt)
-                        {
-                            break;
-                        }
-
-                        Zoom(ZoomScale * (shift ? 32 : 2));
-                        return true;
+                        break;
                     }
+
+                    Zoom(ZoomScale * (shift ? 32 : 2));
+                    return true;
+                }
             }
 
             return false;
@@ -1436,8 +1439,8 @@ namespace System.Windows.Forms
         public ModelPanelViewport AsViewport()
         {
             ModelPanelViewport v = ModelPanelViewport.DefaultPerspective;
-            v.Camera = new GLCamera(1, 1, (Vector3)_defaultTranslate, (Vector3)_defaultRotate,
-                (Vector3)_defaultScale)
+            v.Camera = new GLCamera(1, 1, (Vector3) _defaultTranslate, (Vector3) _defaultRotate,
+                (Vector3) _defaultScale)
             {
                 _farZ = _farZ,
                 _fovY = _fovY,
@@ -1450,7 +1453,7 @@ namespace System.Windows.Forms
             v.SetPercentages(_percentages);
             v.LightPosition = _lightPosition;
             v.Enabled = _enabled;
-            v.BackgroundColor = (Color)_backColor;
+            v.BackgroundColor = (Color) _backColor;
             v.BackgroundImageType = _bgType;
             v._allowSelection = _allowSelection;
             v._showCamCoords = _showCamCoords;

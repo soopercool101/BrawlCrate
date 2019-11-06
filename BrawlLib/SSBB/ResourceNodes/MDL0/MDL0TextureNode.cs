@@ -247,7 +247,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TEX0Node tNode;
-            if (bmp == null && (!(Source is TEX0Node)) &&
+            if (bmp == null && !(Source is TEX0Node) &&
                 TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
             {
                 List<ResourceNode> nodes = RootNode.GetChildrenRecursive();
@@ -261,7 +261,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     ARCEntryNode a;
                     BRRESNode b;
                     bool redirect = false;
-                    if ((a = n as ARCEntryNode) != null && bres != null && (bres.GroupID == a.GroupID || a.GroupID == 0) &&
+                    if ((a = n as ARCEntryNode) != null && bres != null &&
+                        (bres.GroupID == a.GroupID || a.GroupID == 0) &&
                         (b = a.RedirectNode as BRRESNode) != null)
                     {
                         redirect = true;

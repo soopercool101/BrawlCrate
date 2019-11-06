@@ -482,7 +482,8 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog()
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog
+                {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
@@ -506,7 +507,8 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog(string description)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog
+                {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
@@ -821,17 +823,17 @@ namespace BrawlCrate.API
         ///     The folder in which the BrawlCrate installation is located.
         /// </summary>
         public static string AppPath => Path.GetFullPath(Program.AppPath);
-        
+
         /// <summary>
         ///     The folder in which the API folders are located.
         /// </summary>
         public static string APIPath => Path.GetFullPath(Program.ApiPath);
-        
+
         /// <summary>
         ///     The folder in which plugins are located.
         /// </summary>
         public static string PluginPath => Path.GetFullPath(Program.ApiPluginPath);
-        
+
         /// <summary>
         ///     The folder in which loaders are located.
         /// </summary>
@@ -863,7 +865,7 @@ namespace BrawlCrate.API
         {
             return Program.Open(path, false);
         }
-        
+
         /// <summary>
         ///     Attempts to open the file as a template using a given path.
         ///

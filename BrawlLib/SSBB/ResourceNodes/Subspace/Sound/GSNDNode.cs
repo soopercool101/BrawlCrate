@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = "Sound Effects";
             }
-            
+
             return Header->_count > 0;
         }
 

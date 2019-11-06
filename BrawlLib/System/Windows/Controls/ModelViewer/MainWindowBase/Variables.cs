@@ -46,13 +46,7 @@ namespace System.Windows.Forms
         public BindingList<ResourceNode> _openedFiles = new BindingList<ResourceNode>();
 
         //Bone Name - Attached Polygon Indices
-        public Dictionary<string, Dictionary<int, List<int>>> VIS0Indices
-        {
-            get
-            {
-                return (_targetModel as MDL0Node)?.VIS0Indices;
-            }
-        }
+        public Dictionary<string, Dictionary<int, List<int>>> VIS0Indices => (_targetModel as MDL0Node)?.VIS0Indices;
 
         protected NW4RAnimType _targetAnimType;
 

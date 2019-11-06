@@ -665,9 +665,9 @@ namespace System.Windows.Forms
 
                 _screenCapPath = ScreenCapBgLocText.Text,
                 _liveTexFolderPath = LiveTextureFolderPath.Text,
-				
-				_bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._bgColor,
-				_stgBgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._stgBgColor,
+
+                _bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._bgColor,
+                _stgBgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._stgBgColor,
 
                 _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList()
             };
@@ -711,8 +711,9 @@ namespace System.Windows.Forms
             _floorHue = (Color) settings._floorColor;
             foreach (ModelPanelViewportInfo v in settings._viewports)
             {
-                v._backColor = (Program.RootNode is ARCNode a && a.IsStage ? settings._stgBgColor : settings._bgColor);
+                v._backColor = Program.RootNode is ARCNode a && a.IsStage ? settings._stgBgColor : settings._bgColor;
             }
+
             int w = (int) settings._rightPanelWidth;
             if (w >= 50)
             {

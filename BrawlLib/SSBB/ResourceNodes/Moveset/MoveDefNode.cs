@@ -296,7 +296,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return null;
             }
-            
+
             return new MoveDefNode();
         }
 

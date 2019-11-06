@@ -182,7 +182,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void Loop(int timesToLoop)
         {
-            ((CHR0Node)_resource).Append((CHR0Node)_resource, timesToLoop);
+            ((CHR0Node) _resource).Append((CHR0Node) _resource, timesToLoop);
             BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
@@ -196,7 +196,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void Reverse(bool appendReverse)
         {
-            ((CHR0Node)_resource).Reverse(appendReverse);
+            ((CHR0Node) _resource).Reverse(appendReverse);
             BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;

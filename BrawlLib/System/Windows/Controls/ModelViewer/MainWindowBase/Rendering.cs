@@ -96,8 +96,8 @@ namespace System.Windows.Forms
                         case BrawlLib.SSBBTypes.LightType.Spotlight:
                         case BrawlLib.SSBBTypes.LightType.Directional:
                             GL.Begin(BeginMode.Lines);
-                            GL.Color3((Color)l.GetColor(frame, 0));
-                            GL.Vertex3((OpenTK.Vector3)start);
+                            GL.Color3((Color) l.GetColor(frame, 0));
+                            GL.Vertex3((OpenTK.Vector3) start);
                             if (l.SpecularEnabled)
                             {
                                 GL.Color3((Color) l.GetColor(frame, 1));
@@ -296,7 +296,7 @@ namespace System.Windows.Forms
         {
             CoordinateType.Local, //T
             CoordinateType.Local, //R
-            CoordinateType.Local //S
+            CoordinateType.Local  //S
         };
 
         #region Transform Control Rendering
@@ -414,11 +414,11 @@ namespace System.Windows.Forms
             GL.PopMatrix();
 
             panel.SettingsScreenText["X"] = panel.Camera.Project(new Vector3(_axisLDist + 0.1f, 0, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Y"] = panel.Camera.Project(new Vector3(0, _axisLDist + 0.1f, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Z"] = panel.Camera.Project(new Vector3(0, 0, _axisLDist + 0.1f) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
         }
 
         public unsafe void RenderScaleControl(
@@ -438,11 +438,11 @@ namespace System.Windows.Forms
             GL.PopMatrix();
 
             panel.SettingsScreenText["X"] = panel.Camera.Project(new Vector3(_axisLDist + 0.1f, 0, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Y"] = panel.Camera.Project(new Vector3(0, _axisLDist + 0.1f, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Z"] = panel.Camera.Project(new Vector3(0, 0, _axisLDist + 0.1f) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
         }
 
         public unsafe void RenderRotationControl(
@@ -498,9 +498,12 @@ namespace System.Windows.Forms
             //Enter local space
             m = Matrix.TransformMatrix(new Vector3(radius), new Vector3(), position) * rotation;
 
-            panel.SettingsScreenText["X"] = panel.Camera.Project(new Vector3(1.1f, 0, 0) * m) - new Vector3(8.0f, 8.0f, 0);
-            panel.SettingsScreenText["Y"] = panel.Camera.Project(new Vector3(0, 1.1f, 0) * m) - new Vector3(8.0f, 8.0f, 0);
-            panel.SettingsScreenText["Z"] = panel.Camera.Project(new Vector3(0, 0, 1.1f) * m) - new Vector3(8.0f, 8.0f, 0);
+            panel.SettingsScreenText["X"] =
+                panel.Camera.Project(new Vector3(1.1f, 0, 0) * m) - new Vector3(8.0f, 8.0f, 0);
+            panel.SettingsScreenText["Y"] =
+                panel.Camera.Project(new Vector3(0, 1.1f, 0) * m) - new Vector3(8.0f, 8.0f, 0);
+            panel.SettingsScreenText["Z"] =
+                panel.Camera.Project(new Vector3(0, 0, 1.1f) * m) - new Vector3(8.0f, 8.0f, 0);
 
             GL.PushMatrix();
             GL.MultMatrix((float*) &m);

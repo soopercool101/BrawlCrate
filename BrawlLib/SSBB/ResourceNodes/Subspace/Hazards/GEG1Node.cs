@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal GEG1* Header => (GEG1*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GEG1;
-        
+
         [Category("GEG1")]
         [DisplayName("Enemy Count")]
         public int EnemyCount => Children?.Count ?? 0;
@@ -60,7 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = "GEG1";
             }
-            
+
             return Header->_count > 0;
         }
 

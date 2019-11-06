@@ -1336,8 +1336,8 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             //Draw bone line
             Vector3 currentPos = _frameMatrix.GetPoint();
             GL.Begin(BeginMode.Lines);
-            GL.Vertex3((float*)&parentPos);
-            GL.Vertex3((float*)&currentPos);
+            GL.Vertex3((float*) &parentPos);
+            GL.Vertex3((float*) &currentPos);
             GL.End();
 
             //Set bone orb color

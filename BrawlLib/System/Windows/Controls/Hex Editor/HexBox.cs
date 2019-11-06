@@ -1365,17 +1365,17 @@ namespace Be.Windows.Forms
         private int _lastThumbtrack;
 
         /// <summary>
-        /// Contains the border´s left shift
+        /// Contains the borderÂ´s left shift
         /// </summary>
         private int _recBorderLeft = SystemInformation.Border3DSize.Width;
 
         /// <summary>
-        /// Contains the border´s right shift
+        /// Contains the borderÂ´s right shift
         /// </summary>
         private int _recBorderRight = SystemInformation.Border3DSize.Width;
 
         /// <summary>
-        /// Contains the border´s top shift
+        /// Contains the borderÂ´s top shift
         /// </summary>
         private int _recBorderTop = SystemInformation.Border3DSize.Height;
 
@@ -4435,11 +4435,11 @@ namespace Be.Windows.Forms
         private long _lineInfoOffset;
 
         /// <summary>
-        /// Gets or sets the hex box´s border style.
+        /// Gets or sets the hex boxÂ´s border style.
         /// </summary>
         [DefaultValue(typeof(BorderStyle), "Fixed3D")]
         [Category("Hex")]
-        [Description("Gets or sets the hex box´s border style.")]
+        [Description("Gets or sets the hex boxÂ´s border style.")]
         public BorderStyle BorderStyle
         {
             get => _borderStyle;

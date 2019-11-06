@@ -508,7 +508,8 @@ namespace System.Windows.Forms
                             TargetNode.Root.GetBoneIndex(ref id);
                         }
 
-                        if (_targetNode.Model?._linker.BoneCache != null && _targetNode.Model._linker.BoneCache.Length > id && id >= 0)
+                        if (_targetNode.Model?._linker.BoneCache != null &&
+                            _targetNode.Model._linker.BoneCache.Length > id && id >= 0)
                         {
                             return _targetNode.Model._linker.BoneCache[id].Name;
                         }

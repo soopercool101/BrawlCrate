@@ -29,7 +29,8 @@ namespace BrawlCrate
         ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
-        public static readonly string UpdateMessage = @"Updated to BrawlCrate v0.30 Hotfix 2! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+        public static readonly string UpdateMessage =
+            @"Updated to BrawlCrate v0.30 Hotfix 2! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
 - (Hotfix 1) Fixes crashes when previewing models
 - (Hotfix 2) Fixes DPI scaling bug
 - (Hotfix 2) MoveDef parsing is now a setting (off by default)
@@ -68,7 +69,7 @@ Full changelog can be viewed from the help menu.";
         internal static string _rootPath;
 
         public static readonly string AppPath;
-        
+
         public static readonly string ApiPath;
         public static readonly string ApiPluginPath;
         public static readonly string ApiLoaderPath;
@@ -81,7 +82,7 @@ Full changelog can be viewed from the help menu.";
         static Program()
         {
             Application.EnableVisualStyles();
-            
+
 #if !DEBUG
             if (Properties.Settings.Default.UpdateSettings)
             {
@@ -108,8 +109,8 @@ Full changelog can be viewed from the help menu.";
                 if (Directory.Exists(settingsPath))
                 {
                     if (MessageBox.Show(
-                        "Old settings have been detected. These settings cannot be forward-transferred. Would you like to delete them to save disk space?",
-                        "BrawlCrate v0.30", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            "Old settings have been detected. These settings cannot be forward-transferred. Would you like to delete them to save disk space?",
+                            "BrawlCrate v0.30", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         foreach (DirectoryInfo d in Directory.CreateDirectory(settingsPath).GetDirectories())
                         {
@@ -133,7 +134,7 @@ Full changelog can be viewed from the help menu.";
                 Properties.Settings.Default.Save();
             }
 #endif
-            
+
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
@@ -173,16 +174,16 @@ Full changelog can be viewed from the help menu.";
                                                       .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
-            OpenDlg = new OpenFileDialog { Title = "Open File" };
-            MultiFileOpenDlg = new OpenFileDialog { Title = "Open Files", Multiselect = true };
+            OpenDlg = new OpenFileDialog {Title = "Open File"};
+            MultiFileOpenDlg = new OpenFileDialog {Title = "Open Files", Multiselect = true};
             SaveDlg = new SaveFileDialog();
 #if !MONO
-            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             FolderDlg = new FolderBrowserDialog();
 #endif
             FolderDlg.Description = "Open Folder";
-            
+
             ApiPath = Path.Combine(AppPath, "BrawlAPI");
             ApiPluginPath = Path.Combine(ApiPath, "Plugins");
             ApiLoaderPath = Path.Combine(ApiPath, "Loaders");
@@ -407,7 +408,7 @@ Full changelog can be viewed from the help menu.";
                         MessageBox.Show($"Error: Unable to find node or path '{args[1]}'!");
                     }
                 }
-                
+
 #if !DEBUG //Don't need to see this every time a debug build is compiled
                 if (MainForm.Instance.CheckUpdatesOnStartup)
                 {
@@ -591,7 +592,7 @@ Full changelog can be viewed from the help menu.";
         {
             return OpenTemplate(path, true);
         }
-        
+
         public static bool OpenTemplate(string path, bool showErrors)
         {
             if (string.IsNullOrEmpty(path))
@@ -679,7 +680,7 @@ Full changelog can be viewed from the help menu.";
             {
                 return false;
             }
-            
+
 #if !MONO
             if (!path.EndsWith("\\"))
             {

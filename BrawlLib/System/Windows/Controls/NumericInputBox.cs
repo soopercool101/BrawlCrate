@@ -213,6 +213,7 @@ namespace System.Windows.Forms
                     {
                         e.SuppressKeyPress = true;
                     }
+
                     break;
                 case Keys.Escape:
                     UpdateText();

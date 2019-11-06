@@ -1381,16 +1381,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             return box;
         }
 
-        BlendingFactorSrc[] _blendSrc = 
+        private BlendingFactorSrc[] _blendSrc =
         {
             BlendingFactorSrc.Zero, BlendingFactorSrc.One,
             BlendingFactorSrc.DstColor, BlendingFactorSrc.OneMinusDstColor,
-            BlendingFactorSrc.SrcAlpha, BlendingFactorSrc.OneMinusSrcAlpha, 
+            BlendingFactorSrc.SrcAlpha, BlendingFactorSrc.OneMinusSrcAlpha,
             BlendingFactorSrc.DstAlpha, BlendingFactorSrc.OneMinusDstAlpha
         };
-        BlendingFactorDest[] _blendDst =
+
+        private BlendingFactorDest[] _blendDst =
         {
-            BlendingFactorDest.Zero, BlendingFactorDest.One, 
+            BlendingFactorDest.Zero, BlendingFactorDest.One,
             BlendingFactorDest.SrcColor, BlendingFactorDest.OneMinusSrcColor,
             BlendingFactorDest.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha,
             BlendingFactorDest.DstAlpha, BlendingFactorDest.OneMinusDstAlpha
@@ -1862,6 +1863,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public bool Deleting { get; private set; }
+
         public void Remove(bool v, bool n, bool c1, bool c2, params bool[] uv)
         {
             Deleting = true;
@@ -2010,6 +2012,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     dc.MaterialNode.Remove();
                 }
             }
+
             Remove(removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached,
                 removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached);
         }
