@@ -637,9 +637,10 @@ namespace Updater
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                MessageBox.Show(
-                    "ERROR: Current Canary version could not be found. Canary has been disabled. The latest stable build will be downloaded instead.");
-                await ForceDownloadStable(openFile);
+                if (manual)
+                {
+                    MessageBox.Show("ERROR: Current Canary version could not be found. Updates have been disabled.");
+                }
             }
         }
 
