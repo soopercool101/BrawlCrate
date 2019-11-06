@@ -21,7 +21,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30h2";
+        public static readonly string TagName = "v0.30h3";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -30,11 +30,10 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30 Hotfix 2! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
-- (Hotfix 1) Fixes crashes when previewing models
-- (Hotfix 2) Fixes DPI scaling bug
-- (Hotfix 2) MoveDef parsing is now a setting (off by default)
-- (Hotfix 2) Fix bug where changelog couldn't be viewed from the help menu
+            @"Updated to BrawlCrate v0.30 Hotfix 3! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+- (Hotfix 3) Improve camera for Model Viewers
+- (Hotfix 3) Fixes issue in which looping worked incorrectly
+- (Hotfix 3) Fixes bug in switching to/from canary builds
 
 Full changelog can be viewed from the help menu.";
 
@@ -86,41 +85,19 @@ Full changelog can be viewed from the help menu.";
 #if !DEBUG
             if (Properties.Settings.Default.UpdateSettings)
             {
-                //foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
-                //{
-                //    foreach (Type _Type in _Assembly.GetTypes())
-                //    {
-                //        if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
-                //        {
-                //            ApplicationSettingsBase settings =
-                //                (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
-                //            if (settings != null)
-                //            {
-                //                settings.Upgrade();
-                //                settings.Reload();
-                //                settings.Save();
-                //            }
-                //        }
-                //    }
-                //}
-
-                string settingsPath = Path.Combine(Environment.GetEnvironmentVariable("LocalAppData"),
-                    "BrawlCrate");
-                if (Directory.Exists(settingsPath))
+                foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
                 {
-                    if (MessageBox.Show(
-                            "Old settings have been detected. These settings cannot be forward-transferred. Would you like to delete them to save disk space?",
-                            "BrawlCrate v0.30", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    foreach (Type _Type in _Assembly.GetTypes())
                     {
-                        foreach (DirectoryInfo d in Directory.CreateDirectory(settingsPath).GetDirectories())
+                        if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
                         {
-                            try
+                            ApplicationSettingsBase settings =
+                                (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
+                            if (settings != null)
                             {
-                                d.Delete(true);
-                            }
-                            catch
-                            {
-                                // ignored. Likely the current settings file
+                                settings.Upgrade();
+                                settings.Reload();
+                                settings.Save();
                             }
                         }
                     }
@@ -227,6 +204,38 @@ Full changelog can be viewed from the help menu.";
             {
                 Properties.Settings.Default.APILoadersBlacklist = new StringCollection();
                 Properties.Settings.Default.Save();
+            }
+
+            try
+            {
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "temp.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "temp.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.bat"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.bat");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "StageBox.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "StageBox.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "BrawlBox.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "BrawlBox.exe");
+                }
+            }
+            catch
+            {
+                // ignored
             }
         }
 

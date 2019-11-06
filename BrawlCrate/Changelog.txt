@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30 Hotfix 2
+BrawlCrate - v0.30 Hotfix 3
 Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,15 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30 Hotfix 3 - (11/5/2019)
+ . Model viewer camera updated to a faster one by Onium
+   - Mouse now wraps around, is no longer hidden
+ . Settings are now once again saved between versions
+ . Fix bug in which Update.bat never got deleted
+ . Fix bug in which contextual loop would not work properly for audio
+ . Fix bug in which stable builds could not switch to Canary
+ . Updater version now matches the latest version in which it got updates
 
  - BrawlCrate v0.30 Hotfix 2 - (11/4/2019)
  . OpenTK reverted to v1.1.0
