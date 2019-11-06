@@ -870,6 +870,7 @@ namespace System.Windows.Forms
             Cursor.Clip = Rectangle.Empty;
         }
 
+        private bool teleported = false;
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
             if (_selecting)
@@ -942,9 +943,9 @@ namespace System.Windows.Forms
                     if (viewportScreenLocation != null)
                     {
                         Cursor.Position = new Drawing.Point(px + viewportScreenLocation.Value.X, py + viewportScreenLocation.Value.Y);
+                        return;
                     }
                 }
-
 
                 if (ctx != null)
                 {
@@ -991,7 +992,7 @@ namespace System.Windows.Forms
                         }
                     }
                 }
-
+                
                 lastHeldMouseLocat = e.Location;
             }
 
