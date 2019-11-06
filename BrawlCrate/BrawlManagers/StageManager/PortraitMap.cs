@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-namespace BrawlCrate.StageManager
+﻿namespace BrawlCrate.StageManager
 {
     public class PortraitMap
     {
@@ -89,7 +83,7 @@ namespace BrawlCrate.StageManager
             "custom22",
             "custom23",
             "custom24",
-            "custom25",
+            "custom25"
         };
 
         public static int ForPac(string filename)

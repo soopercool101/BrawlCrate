@@ -66,13 +66,10 @@ namespace System.Windows.Forms
             }
 
             //Also change palette node
-            if (_node is TEX0Node)
+            PLT0Node plt = (_node as TEX0Node)?.GetPaletteNode();
+            if (plt != null)
             {
-                PLT0Node plt = ((TEX0Node) _node).GetPaletteNode();
-                if (plt != null)
-                {
-                    plt.Name = name;
-                }
+                plt.Name = name;
             }
 
             _node.Name = name;
@@ -118,7 +115,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
@@ -129,7 +126,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // RenameDialog
             // 

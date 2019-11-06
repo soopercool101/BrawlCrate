@@ -235,7 +235,7 @@ namespace System.Windows.Forms
             listBox1.Name = "listBox1";
             listBox1.Size = new System.Drawing.Size(219, 113);
             listBox1.TabIndex = 1;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -258,7 +258,7 @@ namespace System.Windows.Forms
             btnRemove.TabIndex = 4;
             btnRemove.Text = "-";
             btnRemove.UseVisualStyleBackColor = true;
-            btnRemove.Click += btnRemove_Click;
+            btnRemove.Click += new EventHandler(btnRemove_Click);
             // 
             // btnAdd
             // 
@@ -268,7 +268,7 @@ namespace System.Windows.Forms
             btnAdd.TabIndex = 3;
             btnAdd.Text = "+";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnAdd.Click += new EventHandler(btnAdd_Click);
             // 
             // txtEditor
             // 
@@ -282,8 +282,8 @@ namespace System.Windows.Forms
             txtEditor.ScrollBars = ScrollBars.Both;
             txtEditor.Size = new System.Drawing.Size(277, 164);
             txtEditor.TabIndex = 3;
-            txtEditor.TextChanged += txtEditor_TextChanged;
-            txtEditor.KeyDown += txtEditor_KeyDown;
+            txtEditor.TextChanged += new EventHandler(txtEditor_TextChanged);
+            txtEditor.KeyDown += new KeyEventHandler(txtEditor_KeyDown);
             // 
             // splitContainer1
             // 
@@ -298,7 +298,7 @@ namespace System.Windows.Forms
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
+            splitContainer1.Panel2.Paint += new PaintEventHandler(splitContainer1_Panel2_Paint);
             splitContainer1.Panel2Collapsed = true;
             splitContainer1.Size = new System.Drawing.Size(277, 164);
             splitContainer1.SplitterDistance = 74;

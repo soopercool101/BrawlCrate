@@ -55,10 +55,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Dispose()
         {
-            if (_audioSource != null)
-            {
-                _audioSource.Close();
-            }
+            _audioSource.Close();
 
             if (_stream != null)
             {
@@ -146,7 +143,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = string.Format("Audio[{0}]", Index);
+                _name = $"Audio[{Index}]";
             }
 
             Init(Header->Data->Data, Header->Data->_header._length, &Header->Info->_info);
@@ -180,10 +177,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             UpdateCurrentControl();
             SignalPropertyChange();
             Parent.Parent.SignalPropertyChange();
-            if (RSARNode != null)
-            {
-                RSARNode.SignalPropertyChange();
-            }
+            RSARNode?.SignalPropertyChange();
         }
 
         public override unsafe void Export(string outPath)

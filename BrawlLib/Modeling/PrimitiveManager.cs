@@ -123,9 +123,9 @@ namespace BrawlLib.Modeling
                 _faceData = new UnsafeBuffer[12],
                 _triangles = _triangles == null
                     ? null
-                    : new GLPrimitive(_triangles._indices.Length, PrimitiveType.Triangles),
-                _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, PrimitiveType.Lines),
-                _points = _points == null ? null : new GLPrimitive(_points._indices.Length, PrimitiveType.Points),
+                    : new GLPrimitive(_triangles._indices.Length, BeginMode.Triangles),
+                _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, BeginMode.Lines),
+                _points = _points == null ? null : new GLPrimitive(_points._indices.Length, BeginMode.Points),
                 _dirty = new bool[] {true, true, true, true, true, true, true, true, true, true, true, true},
                 _primGroups = _primGroups,
             };
@@ -615,7 +615,7 @@ namespace BrawlLib.Modeling
                     newGroup = false;
                 }
 
-                group._headers.Add(new PrimitiveHeader {Type = (WiiPrimitiveType) cmd, Entries = value});
+                group._headers.Add(new PrimitiveHeader {Type = (WiiBeginMode) cmd, Entries = value});
 
                 pData += 2;
 
@@ -636,9 +636,9 @@ namespace BrawlLib.Modeling
 
         private void CreateGLPrimitives(int triCount, int lineCount, int pointCount)
         {
-            _triangles = triCount > 0 ? new GLPrimitive(triCount, PrimitiveType.Triangles) : null;
-            _lines = lineCount > 0 ? new GLPrimitive(lineCount, PrimitiveType.Lines) : null;
-            _points = pointCount > 0 ? new GLPrimitive(pointCount, PrimitiveType.Points) : null;
+            _triangles = triCount > 0 ? new GLPrimitive(triCount, BeginMode.Triangles) : null;
+            _lines = lineCount > 0 ? new GLPrimitive(lineCount, BeginMode.Lines) : null;
+            _points = pointCount > 0 ? new GLPrimitive(pointCount, BeginMode.Points) : null;
         }
 
         private void ExtractIndices(byte* pData, int stride, ref uint p3, ref uint p2, ref uint p1, uint length = 0)
@@ -2179,20 +2179,11 @@ namespace BrawlLib.Modeling
 
         public void RenderMesh()
         {
-            if (_triangles != null)
-            {
-                _triangles.Render();
-            }
+            _triangles?.Render();
 
-            if (_lines != null)
-            {
-                _lines.Render();
-            }
+            _lines?.Render();
 
-            if (_points != null)
-            {
-                _points.Render();
-            }
+            _points?.Render();
         }
 
         public static Color DefaultVertColor = Color.FromArgb(0, 128, 0);
@@ -2234,7 +2225,7 @@ namespace BrawlLib.Modeling
                 GL.PointSize(
                     d <= 0 ? 1 : (3000.0f / d).Clamp(1.0f, depthPass ? 8.0f : 5.0f) * (depthPass ? 1.5f : 1.2f));
 
-                GL.Begin(PrimitiveType.Points);
+                GL.Begin(BeginMode.Points);
                 GL.Vertex3(v.WeightedPosition._x, v.WeightedPosition._y, v.WeightedPosition._z);
                 GL.End();
             }
@@ -2271,7 +2262,7 @@ namespace BrawlLib.Modeling
                 Matrix m = Matrix.TransformMatrix(new Vector3(NormalLength), new Vector3(), n.WeightedPosition);
                 GL.MultMatrix((float*) &m);
 
-                GL.Begin(PrimitiveType.Lines);
+                GL.Begin(BeginMode.Lines);
                 GL.Vertex3(0, 0, 0);
                 GL.Vertex3(w._x, w._y, w._z);
                 GL.End();
@@ -2287,7 +2278,7 @@ namespace BrawlLib.Modeling
 
         public unsafe void PositionsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
-            if (obj == null || _vertices == null)
+            if (obj == null || obj.Deleting || _vertices == null)
             {
                 return;
             }
@@ -2306,7 +2297,15 @@ namespace BrawlLib.Modeling
                 else
                 {
                     node = new MDL0VertexNode();
-                    obj.Model.VertexGroup.AddChild(node);
+                    MDL0Node m = obj.Model;
+                    if (m.VertexGroup == null)
+                    {
+                        MDL0GroupNode g = new MDL0GroupNode(MDLResourceType.Vertices);
+                        m.LinkGroup(g);
+                        g.Parent = m;
+                    }
+
+                    m.VertexGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._vertexNode._objects.Contains(obj))
                     {
@@ -2352,7 +2351,7 @@ namespace BrawlLib.Modeling
 
         public unsafe void NormalsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
-            if (obj == null || _faceData[1] == null)
+            if (obj == null || obj.Deleting || _faceData[1] == null)
             {
                 return;
             }
@@ -2371,7 +2370,15 @@ namespace BrawlLib.Modeling
                 else
                 {
                     node = new MDL0NormalNode();
-                    obj.Model.NormalGroup.AddChild(node);
+                    MDL0Node m = obj.Model;
+                    if (m.NormalGroup == null)
+                    {
+                        MDL0GroupNode g = new MDL0GroupNode(MDLResourceType.Normals);
+                        m.LinkGroup(g);
+                        g.Parent = m;
+                    }
+
+                    m.NormalGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._normalNode._objects.Contains(obj))
                     {
@@ -2543,10 +2550,10 @@ namespace BrawlLib.Modeling
 
     public unsafe class GLPrimitive
     {
-        public PrimitiveType _type;
+        public BeginMode _type;
         public uint[] _indices;
 
-        public GLPrimitive(int elements, PrimitiveType type)
+        public GLPrimitive(int elements, BeginMode type)
         {
             _type = type;
             _indices = new uint[elements];

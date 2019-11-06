@@ -18,15 +18,16 @@ namespace System.Windows.Forms
             EventHandler handler = OpenFileChanged;
             handler?.Invoke(this, e);
         }
+
         public GCTEditor()
         {
             InitializeComponent();
             txtCode.TextChanged += txtCode_TextChanged;
-            lstCodes.ItemChecked += lstCodes_ItemChecked;
-            lstCodes.SelectedIndexChanged += lstCodes_SelectedIndexChanged;
+            lstCodes.ItemChecked += new ItemCheckedEventHandler(lstCodes_ItemChecked);
+            lstCodes.SelectedIndexChanged += new EventHandler(lstCodes_SelectedIndexChanged);
 
             Text = ((AssemblyTitleAttribute) Attribute.GetCustomAttribute(Assembly.GetEntryAssembly(),
-                typeof(AssemblyTitleAttribute), false)).Title + " - Code Manager";
+                       typeof(AssemblyTitleAttribute), false)).Title + " - Code Manager";
 
             checkBox1.Checked = BrawlLib.Properties.Settings.Default.SaveGCTWithInfo;
         }
@@ -115,7 +116,7 @@ namespace System.Windows.Forms
         {
             OpenFileDialog d = new OpenFileDialog
             {
-                Filter = "GCT/Text File|*.gct;*.txt|GCT File|*.gct|Text File|*.txt"
+                Filter = BrawlLib.FileFilters.GCT
             };
             if (d.ShowDialog(this) != DialogResult.OK)
             {
@@ -412,7 +413,7 @@ namespace System.Windows.Forms
 
         private Color Error(int x, string text)
         {
-            status.Text = string.Format("Problem on line {0}: {1}", x, text);
+            status.Text = $"Problem on line {x}: {text}";
             return Color.Red;
         }
 
@@ -553,7 +554,8 @@ namespace System.Windows.Forms
 
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
         }
@@ -642,7 +644,8 @@ namespace System.Windows.Forms
 
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
 
@@ -658,7 +661,8 @@ namespace System.Windows.Forms
             };
             foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
             {
-                node.AddChild(new GCTCodeEntryNode {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
+                node.AddChild(new GCTCodeEntryNode
+                    {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
             }
 
             TargetNode = node;

@@ -5,11 +5,11 @@
 // gOODiDEA, uland.com
 //===============================================================================
 //
-// $Header :		$  
-// $Author :		$
-// $Date   :		$
-// $Revision:		$
-// $History:		$  
+// $Header :        $  
+// $Author :        $
+// $Date   :        $
+// $Revision:        $
+// $History:        $  
 //  
 //===============================================================================
 
@@ -59,19 +59,19 @@ namespace Gif.Components
         protected static readonly int minpicturebytes = 3 * prime4;
         /* minimum size for input image */
         /* Program Skeleton
-		   ----------------
-		   [select samplefac in range 1..30]
-		   [read image from input file]
-		   pic = (unsigned char*) malloc(3*width*height);
-		   initnet(pic,3*width*height,samplefac);
-		   learn();
-		   unbiasnet();
-		   [write output image header, using writecolourmap(f)]
-		   inxbuild();
-		   write output image using inxsearch(b,g,r)      */
+           ----------------
+           [select samplefac in range 1..30]
+           [read image from input file]
+           pic = (unsigned char*) malloc(3*width*height);
+           initnet(pic,3*width*height,samplefac);
+           learn();
+           unbiasnet();
+           [write output image header, using writecolourmap(f)]
+           inxbuild();
+           write output image using inxsearch(b,g,r)      */
 
         /* Network Definitions
-		   ------------------- */
+           ------------------- */
         protected static readonly int maxnetpos = netsize - 1;
         protected static readonly int netbiasshift = 4; /* bias for colour values */
         protected static readonly int ncycles = 100;    /* no. of learning cycles */
@@ -107,7 +107,7 @@ namespace Gif.Components
         protected static readonly int alpharadbias = 1 << alpharadbshift;
 
         /* Types and Global Variables
-		-------------------------- */
+        -------------------------- */
 
         protected UnsafeBuffer thepicture; /* the input image itself */
         protected int lengthcount;         /* lengthcount = H*W*3 */
@@ -129,7 +129,7 @@ namespace Gif.Components
         /* radpower for precomputation */
 
         /* Initialise network in range (0,0,0) to (255,255,255) and set parameters
-		   ----------------------------------------------------------------------- */
+           ----------------------------------------------------------------------- */
         public NeuQuant(UnsafeBuffer thepic, int len, int sample)
         {
             int i;
@@ -172,7 +172,7 @@ namespace Gif.Components
         }
 
         /* Insertion sort of network and building of netindex[0..255] (to do after unbias)
-		   ------------------------------------------------------------------------------- */
+           ------------------------------------------------------------------------------- */
         public void Inxbuild()
         {
             int i, j, smallpos, smallval;
@@ -239,7 +239,7 @@ namespace Gif.Components
         }
 
         /* Main Learning Loop
-		   ------------------ */
+           ------------------ */
         public unsafe void Learn()
         {
             int i, j, b, g, r;
@@ -351,7 +351,7 @@ namespace Gif.Components
         }
 
         /* Search for BGR values 0..255 (after net is unbiased) and return colour index
-		   ---------------------------------------------------------------------------- */
+           ---------------------------------------------------------------------------- */
         public int Map(int b, int g, int r)
         {
             int i, j, dist, a, bestd;
@@ -460,7 +460,7 @@ namespace Gif.Components
         }
 
         /* Unbias network to give byte values 0..255 and record position i to prepare for sort
-		   ----------------------------------------------------------------------------------- */
+           ----------------------------------------------------------------------------------- */
         public void Unbiasnet()
         {
             for (int i = 0; i < netsize; i++)
@@ -473,7 +473,7 @@ namespace Gif.Components
         }
 
         /* Move adjacent neurons by precomputed alpha*(1-((i-j)^2/[r]^2)) in radpower[|i-j|]
-		   --------------------------------------------------------------------------------- */
+           --------------------------------------------------------------------------------- */
         protected void Alterneigh(int rad, int i, int b, int g, int r)
         {
             int j, k, lo, hi, a, m;
@@ -530,7 +530,7 @@ namespace Gif.Components
         }
 
         /* Move neuron i towards biased (b,g,r) by factor alpha
-		   ---------------------------------------------------- */
+           ---------------------------------------------------- */
         protected void Altersingle(int alpha, int i, int b, int g, int r)
         {
             /* alter hit neuron */
@@ -541,7 +541,7 @@ namespace Gif.Components
         }
 
         /* Search for biased BGR values
-		   ---------------------------- */
+           ---------------------------- */
         protected int Contest(int b, int g, int r)
         {
             /* finds closest neuron (min dist) and updates freq */

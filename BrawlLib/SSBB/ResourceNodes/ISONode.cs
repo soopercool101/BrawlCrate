@@ -14,7 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal static byte[] LoadedKey;
 
         internal ISOPartitionHeader* Header => (ISOPartitionHeader*) WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.DiscImage;
         public override string DataSize => "0x" + WorkingUncompressed.Map.BaseStream.Length.ToString("X");
 
         private string _gameName;
@@ -85,6 +85,8 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class ISOPartitionNode : ISOEntryNode, IBufferNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
+
+        public override ResourceType ResourceFileType => ResourceType.DiscImagePartition;
 
         private PartitionTableEntry.Type _type;
         private string _vcID;
@@ -165,14 +167,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             None = 0,
             RSA2048 = 0x00010001,
-            RSA4096 = 0x00010000,
+            RSA4096 = 0x00010000
         }
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
-            _name = string.Format("[{0}] {1}", Index, PartitionType.ToString());
+            _name = $"[{Index}] {PartitionType.ToString()}";
             _info = Get<PartitionInfo>(0x2A4, true);
 
             long tmdOffset = _info._tmdOffset * OffMult;
@@ -341,6 +343,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //so we need to use some special functions to get data from the base stream.
         //NOTE: some ISOs are too big even for streams (file size bigger than long.MaxValue)
         //Need to split data into stream chunks
+        public override ResourceType ResourceFileType => ResourceType.DiscImageEntry;
 
         public long _rootOffset;
 

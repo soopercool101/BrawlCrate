@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
@@ -135,14 +136,16 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})", _x, _y, _z, _w);
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({_x} {_y} {_z} {_w})"
+                : $"({_x},{_y},{_z},{_w})";
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is Vector4)
+            if (obj is Vector4 vector4)
             {
-                return this == (Vector4) obj;
+                return this == vector4;
             }
 
             return false;

@@ -441,7 +441,8 @@ namespace BrawlLib.SSBBTypes
             pEntry = &pGroup->_first;
         }
 
-        public ResourcePair Current => new ResourcePair {Name = (sbyte*) pGroup + pEntry->_stringOffset, Data = (byte*) pGroup + pEntry->_dataOffset};
+        public ResourcePair Current => new ResourcePair
+            {Name = (sbyte*) pGroup + pEntry->_stringOffset, Data = (byte*) pGroup + pEntry->_dataOffset};
 
         public void Dispose()
         {

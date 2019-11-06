@@ -466,12 +466,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void AverageKeys(string baseName, string morphName)
         {
             SHP0EntryNode w = FindChild(baseName, false) as SHP0EntryNode;
-            if (w == null)
-            {
-                return;
-            }
 
-            SHP0VertexSetNode t = w.FindChild(morphName, false) as SHP0VertexSetNode;
+            SHP0VertexSetNode t = w?.FindChild(morphName, false) as SHP0VertexSetNode;
             if (t == null)
             {
                 return;
@@ -857,8 +853,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("Index={0}, Percentage={1}, Tangent={2}", _index,
-                string.Format("{0}%", _percentage * 100.0f), _tangent);
+            return $"Index={_index}, Percentage={$"{_percentage * 100.0f}%"}, Tangent={_tangent}";
         }
     }
 }

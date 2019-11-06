@@ -1159,6 +1159,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region IVideo Interface
 
         [Browsable(false)] public uint NumFrames => (uint) ((PAT0Node) Parent.Parent).FrameCount;
+        [Browsable(false)] public bool Loop => (Parent.Parent as PAT0Node)?.Loop ?? false;
 
         [Browsable(false)]
         public int GetImageIndexAtFrame(int frame)

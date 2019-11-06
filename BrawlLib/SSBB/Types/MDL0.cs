@@ -432,7 +432,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("Node (Bone Index:{0}, Parent Node Index:{1})", BoneIndex, ParentNodeIndex);
+            return $"Node (Bone Index:{BoneIndex}, Parent Node Index:{ParentNodeIndex})";
         }
     }
 
@@ -465,7 +465,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("NodeMix (ID:{0})", Id);
+            return $"NodeMix (ID:{Id})";
         }
     }
 
@@ -491,7 +491,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("Node (Index:{0},ParentID:{1})", Index, ParentId);
+            return $"Node (Index:{Index},ParentID:{ParentId})";
         }
     }
 
@@ -530,7 +530,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("NodeMix (ID:{0},Entries:{1})", Id, NumEntries);
+            return $"NodeMix (ID:{Id},Entries:{NumEntries})";
         }
     }
 
@@ -556,7 +556,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("NodeWeight (ID:{0},Weight:{1})", Id, Value);
+            return $"NodeWeight (ID:{Id},Weight:{Value})";
         }
     }
 
@@ -596,8 +596,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("Draw (MatID:{0},PolyID:{1},BoneIndex:{2},ZIndex:{3})", MaterialId, PolygonId,
-                BoneIndex, ZIndex);
+            return $"Draw (MatID:{MaterialId},PolyID:{PolygonId},BoneIndex:{BoneIndex},ZIndex:{ZIndex})";
         }
     }
 
@@ -624,7 +623,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("EnvMtx (ID:{0},Index:{1})", Id, Index);
+            return $"EnvMtx (ID:{Id},Index:{Index})";
         }
     }
 
@@ -642,7 +641,7 @@ namespace BrawlLib.SSBBTypes
         ClassicScaleOff = 0x80,
         Visible = 0x100,
         HasGeometry = 0x200,
-        HasBillboardParent = 0x400,
+        HasBillboardParent = 0x400
     }
 
     public enum BillboardFlags : uint
@@ -653,7 +652,7 @@ namespace BrawlLib.SSBBTypes
         Rotation,
         RotationPerspective,
         Y,
-        YPerspective,
+        YPerspective
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -1072,7 +1071,7 @@ namespace BrawlLib.SSBBTypes
             Tex5Matrices = TexMtxEffect.Default,
             Tex6Matrices = TexMtxEffect.Default,
             Tex7Matrices = TexMtxEffect.Default,
-            Tex8Matrices = TexMtxEffect.Default,
+            Tex8Matrices = TexMtxEffect.Default
         };
 
         public buint _layerFlags;
@@ -1342,7 +1341,7 @@ namespace BrawlLib.SSBBTypes
             _mode = MatModeBlock.Default,
             _color = MatTevColorBlock.Default,
             _konst = MatTevKonstBlock.Default,
-            _indMtx = MatIndMtxBlock.Default,
+            _indMtx = MatIndMtxBlock.Default
         };
 
         public MatModeBlock _mode;
@@ -1533,7 +1532,7 @@ namespace BrawlLib.SSBBTypes
             _tr3LoCmd = 0xE661,
             TevReg3Lo = ColorReg.Konstant,
             _tr3HiCmd = 0xE761,
-            TevReg3Hi = ColorReg.Konstant,
+            TevReg3Hi = ColorReg.Konstant
         };
 
         private ushort _tr0LoCmd;
@@ -1614,7 +1613,7 @@ namespace BrawlLib.SSBBTypes
             Mem15 = (BPMemory) 0xFD,
             _Value15 = new KSel(0xE),
             Mem16 = (BPMemory) 0x27,
-            _Value16 = new RAS1_IRef(0xFFFFFF),
+            _Value16 = new RAS1_IRef(0xFFFFFF)
         };
 
         public byte Reg00; //0x61
@@ -1717,7 +1716,7 @@ namespace BrawlLib.SSBBTypes
             _evenAlphaEnv = new BPCommand(true) {Mem = BPMemory.BPMEM_TEV_ALPHA_ENV_0},
             _oddAlphaEnv = new BPCommand(false) {Mem = BPMemory.BPMEM_GENMODE},
             _evenCmd = new BPCommand(true) {Mem = BPMemory.BPMEM_IND_CMD0},
-            _oddCmd = new BPCommand(false) {Mem = BPMemory.BPMEM_GENMODE},
+            _oddCmd = new BPCommand(false) {Mem = BPMemory.BPMEM_GENMODE}
         };
 
         public void SetGroup(int index)
@@ -2024,7 +2023,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("(Material: 0x{0:X}, MatRef: 0x{1:X})", (int) _mat, (int) _ref);
+            return $"(Material: 0x{(int) _mat:X}, MatRef: 0x{(int) _ref:X})";
         }
     }
 }

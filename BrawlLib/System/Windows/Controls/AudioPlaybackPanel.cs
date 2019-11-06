@@ -16,7 +16,7 @@ namespace System.Windows.Forms
         private ComboBox lstStreams;
         private CustomTrackBar trackBarVolume;
         private Panel panel2;
-        private CheckBox chkLoop;
+        public CheckBox chkLoop;
 
         private void InitializeComponent()
         {
@@ -43,7 +43,7 @@ namespace System.Windows.Forms
             btnPlay.TabIndex = 1;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
-            btnPlay.Click += btnPlay_Click;
+            btnPlay.Click += new EventHandler(btnPlay_Click);
             // 
             // btnRewind
             // 
@@ -53,7 +53,7 @@ namespace System.Windows.Forms
             btnRewind.TabIndex = 2;
             btnRewind.Text = "|<";
             btnRewind.UseVisualStyleBackColor = true;
-            btnRewind.Click += btnRewind_Click;
+            btnRewind.Click += new EventHandler(btnRewind_Click);
             // 
             // chkLoop
             // 
@@ -63,7 +63,7 @@ namespace System.Windows.Forms
             chkLoop.TabIndex = 3;
             chkLoop.Text = "Loop";
             chkLoop.UseVisualStyleBackColor = true;
-            chkLoop.CheckedChanged += chkLoop_CheckedChanged;
+            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
             // 
             // lblProgress
             // 
@@ -79,7 +79,7 @@ namespace System.Windows.Forms
             // tmrUpdate
             // 
             tmrUpdate.Interval = 10;
-            tmrUpdate.Tick += tmrUpdate_Tick;
+            tmrUpdate.Tick += new EventHandler(tmrUpdate_Tick);
             // 
             // lstStreams
             // 
@@ -90,7 +90,7 @@ namespace System.Windows.Forms
             lstStreams.Name = "lstStreams";
             lstStreams.Size = new Drawing.Size(73, 21);
             lstStreams.TabIndex = 5;
-            lstStreams.SelectedIndexChanged += lstStreams_SelectedIndexChanged;
+            lstStreams.SelectedIndexChanged += new EventHandler(lstStreams_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -115,7 +115,7 @@ namespace System.Windows.Forms
             trackBarVolume.TabIndex = 6;
             trackBarVolume.TickFrequency = 25;
             trackBarVolume.Value = 100;
-            trackBarVolume.ValueChanged += customTrackBar1_ValueChanged;
+            trackBarVolume.ValueChanged += new EventHandler(customTrackBar1_ValueChanged);
             // 
             // trackBarPosition
             // 
@@ -126,8 +126,8 @@ namespace System.Windows.Forms
             trackBarPosition.Size = new Drawing.Size(377, 45);
             trackBarPosition.TabIndex = 0;
             trackBarPosition.TickFrequency = 2;
-            trackBarPosition.UserSeek += trackBar1_UserSeek;
-            trackBarPosition.ValueChanged += trackBar1_ValueChanged;
+            trackBarPosition.UserSeek += new EventHandler(trackBar1_UserSeek);
+            trackBarPosition.ValueChanged += new EventHandler(trackBar1_ValueChanged);
             // 
             // AudioPlaybackPanel
             // 
@@ -387,10 +387,7 @@ namespace System.Windows.Forms
             if (_provider == null)
             {
                 _provider = AudioProvider.Create(null);
-                if (_provider != null)
-                {
-                    _provider.Attach(this);
-                }
+                _provider?.Attach(this);
             }
 
             chkLoop.Checked = false;
@@ -421,6 +418,14 @@ namespace System.Windows.Forms
             }
 
             Enabled = _targetStream.Samples > 0;
+
+            chkLoop.Checked = BrawlLib.Properties.Settings.Default.ContextualLoopAudio &&
+                              (_targetSource?.IsLooped ?? false);
+
+            if (Enabled && BrawlLib.Properties.Settings.Default.AutoPlayAudio)
+            {
+                Play();
+            }
         }
 
         private void UpdateTimeDisplay()
@@ -431,7 +436,7 @@ namespace System.Windows.Forms
             }
 
             DateTime t = new DateTime((long) trackBarPosition.Value * 10000000 / _targetStream.Frequency);
-            lblProgress.Text = string.Format("{0:mm:ss.ff} / {1:mm:ss.ff}", t, _sampleTime);
+            lblProgress.Text = $"{t:mm:ss.ff} / {_sampleTime:mm:ss.ff}";
         }
 
         private void Seek(int sample)
@@ -442,10 +447,7 @@ namespace System.Windows.Forms
             if (_isPlaying)
             {
                 Stop();
-                if (CurrentBuffer != null)
-                {
-                    CurrentBuffer.Seek(sample);
-                }
+                CurrentBuffer?.Seek(sample);
 
                 Play();
             }
@@ -499,10 +501,7 @@ namespace System.Windows.Forms
             tmrUpdate.Stop();
 
             //Stop device
-            if (CurrentBuffer != null)
-            {
-                CurrentBuffer.Stop();
-            }
+            CurrentBuffer?.Stop();
 
             btnPlay.Text = "Play";
         }

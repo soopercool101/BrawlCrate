@@ -51,7 +51,7 @@ namespace System.Windows.Forms
         {
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
-            //GL.BlendFunc(BlendingFactor.One, BlendingFactor.OneMinusSrcColor);
+            //GL.BlendFunc(BlendingFactorSrc.One, BlendingFactorDest.OneMinusSrcColor);
 
             GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (float) TextureEnvMode.Replace);
 
@@ -61,10 +61,7 @@ namespace System.Windows.Forms
             {
                 _size = _viewport.Region.Size;
 
-                if (_bitmap != null)
-                {
-                    _bitmap.Dispose();
-                }
+                _bitmap?.Dispose();
 
                 if (_texId != -1)
                 {
@@ -121,7 +118,7 @@ namespace System.Windows.Forms
                 OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
             _bitmap.UnlockBits(data);
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.TexCoord2(0.0f, 0.0f);
             GL.Vertex2(0.0f, 0.0f);

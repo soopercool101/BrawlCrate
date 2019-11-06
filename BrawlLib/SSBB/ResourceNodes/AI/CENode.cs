@@ -560,7 +560,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null || _name == "")
             {
-                _name = "StringEntry" + Parent.Children.IndexOf(this).ToString();
+                _name = "StringEntry" + Parent.Children.IndexOf(this);
             }
 
             entries = new int[Header->_numEntries][];

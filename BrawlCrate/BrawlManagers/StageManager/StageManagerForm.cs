@@ -7,7 +7,6 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
 using BrawlLib.Wii.Textures;
 using BrawlManagerLib;
-using System.Diagnostics;
 using BrawlCrate.StageManager.SingleUseDialogs;
 using System.Security.Cryptography;
 using System.Text;
@@ -157,30 +156,30 @@ namespace BrawlCrate.StageManager
 
             // Drag and drop for the left and right sides of the window. The dragEnter and dragDrop methods will check which panel the file is dropped onto.
             panel2.AllowDrop = true;
-            panel2.DragEnter += dragEnter;
-            panel2.DragDrop += dragDrop;
+            panel2.DragEnter += new DragEventHandler(dragEnter);
+            panel2.DragDrop += new DragEventHandler(dragDrop);
             listBox1.AllowDrop = true;
-            listBox1.DragEnter += dragEnter;
-            listBox1.DragDrop += dragDrop;
+            listBox1.DragEnter += new DragEventHandler(dragEnter);
+            listBox1.DragDrop += new DragEventHandler(dragDrop);
 
             foreach (object item in selmapMarkFormat.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += switchSelmapMarkFormat;
+                ((ToolStripMenuItem) item).Click += new EventHandler(switchSelmapMarkFormat);
             }
 
             foreach (object item in prevbaseSize.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += switchPrevbaseSize;
+                ((ToolStripMenuItem) item).Click += new EventHandler(switchPrevbaseSize);
             }
 
             foreach (object item in frontstnameSizeToolStripMenuItem.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += switchFrontstnameSize;
+                ((ToolStripMenuItem) item).Click += new EventHandler(switchFrontstnameSize);
             }
 
             foreach (object item in selmapMarkSizeToolStripMenuItem.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += switchSelmapMarkSize;
+                ((ToolStripMenuItem) item).Click += new EventHandler(switchSelmapMarkSize);
             }
 
             fileToolStripMenuItem.DropDownOpening += (o, e) =>
@@ -191,8 +190,8 @@ namespace BrawlCrate.StageManager
                 MoveToolStripItems(songContextMenu.Items, currentSongToolStripMenuItem.DropDownItems);
             };
 
-            FormClosing += MainForm_FormClosing;
-            FormClosed += MainForm_FormClosed;
+            FormClosing += StageManagerForm_FormClosing;
+            FormClosed += StageManagerForm_FormClosed;
 
             clbTextures.ItemCheck += (o, e) =>
             {
@@ -350,7 +349,7 @@ namespace BrawlCrate.StageManager
 
                 if (renderModels.Checked)
                 {
-                    modelPanel1.SetCamWithBox(new Vector3("-100,-100,-100"), new Vector3("100,100,100"));
+                    modelPanel1.SetCamWithBox(new Vector3(-100, -100, -100), new Vector3(100, 100, 100));
 
                     // Update textures list
                     CheckedListBox.ObjectCollection items = clbTextures.Items;
@@ -853,7 +852,7 @@ namespace BrawlCrate.StageManager
                 return f.Name;
             }
 
-            return sb.ToString() + ".pac";
+            return sb + ".pac";
         }
 
         private static ResourceNode FindStageARC(ResourceNode node)
@@ -1337,7 +1336,7 @@ namespace BrawlCrate.StageManager
             if (!string.IsNullOrEmpty(filepath))
             {
                 Program.Open(filepath);
-                BrawlCrate.MainForm.Instance.Focus();
+                MainForm.Instance.Focus();
             }
         }
 
@@ -1353,11 +1352,11 @@ namespace BrawlCrate.StageManager
             else
             {
                 Program.Open(new FileInfo(portraitViewer1.OpenFilePath).FullName);
-                BrawlCrate.MainForm.Instance.Focus();
+                MainForm.Instance.Focus();
             }
         }
 
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        private void StageManagerForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.PageDown)
             {
@@ -1421,12 +1420,12 @@ namespace BrawlCrate.StageManager
             renderModels.Enabled = loadStagepacsToolStripMenuItem.Checked;
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void StageManagerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = !savePacsIfNecessary();
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void StageManagerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             TempFiles.DeleteAll();
         }

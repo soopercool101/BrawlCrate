@@ -3,10 +3,12 @@ using BrawlLib.IO;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Textures;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -31,6 +33,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _lod;
         private bool _hasPalette;
 
+        public int texSortNum;
+
         // Could improve performance by caching, and making sure to clear the cache when needed.
         // For now, prefer the simplicity of not identifying every situation where clearing the cache would be needed.
         private TEX0Node SourceNode => FindSourceNode();
@@ -41,10 +45,50 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _sharesData;
             set
             {
+                Bitmap bmp = GetImage(0);
+                bool disableRevert = false;
+                TEX0Node t = PrevSibling() as TEX0Node;
+                if (!_revertingCS && !value)
+                {
+                    if (MessageBox.Show(
+                            "Would you like to revert color smashing for the node and all nodes that share data above it? (If your preview looks correct now, say yes. If your preview looks bugged, say no)",
+                            "Warning", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    {
+                        _sharesData = value;
+                        SignalPropertyChange();
+                        return;
+                    }
+
+                    _revertingCS = true;
+                    disableRevert = true;
+                }
+
                 _sharesData = value;
                 SignalPropertyChange();
+                if (!value)
+                {
+                    if (t != null && t.SharesData)
+                    {
+                        t.SharesData = false;
+                    }
+
+                    using (TextureConverterDialog dlg = new TextureConverterDialog())
+                    {
+                        dlg.Automatic = true;
+                        dlg.cboFormat.SelectedItem =
+                            dlg.LoadImages(bmp);
+                        dlg.ShowDialog(null, this);
+                    }
+                }
+
+                if (disableRevert)
+                {
+                    _revertingCS = false;
+                }
             }
         }
+
+        private static bool _revertingCS = false;
 
         [Category("G3D Texture")] public int Width => SharesData ? SourceNode.Width : _width;
         [Category("G3D Texture")] public int Height => SharesData ? SourceNode.Height : _height;
@@ -346,31 +390,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override unsafe void Replace(string fileName)
         {
             string ext = Path.GetExtension(fileName);
-            Bitmap bmp;
-            if (string.Equals(ext, ".tga", StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(ext, ".tex0", StringComparison.OrdinalIgnoreCase))
             {
-                bmp = TGA.FromFile(fileName);
-            }
-            else if (
-                string.Equals(ext, ".png", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(ext, ".tif", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(ext, ".tiff", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(ext, ".bmp", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(ext, ".jpg", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(ext, ".jpeg", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(ext, ".gif", StringComparison.OrdinalIgnoreCase))
-            {
-                bmp = (Bitmap) Image.FromFile(fileName);
+                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                {
+                    dlg.ImageSource = fileName;
+                    dlg.ShowDialog(null, this);
+                }
             }
             else
             {
                 base.Replace(fileName);
-                return;
-            }
-
-            using (Bitmap b = bmp)
-            {
-                Replace(b);
             }
         }
 

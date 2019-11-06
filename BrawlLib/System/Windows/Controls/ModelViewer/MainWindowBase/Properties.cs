@@ -647,10 +647,7 @@ namespace System.Windows.Forms
                     TargetModel = _selectedBone.IModel;
                 }
 
-                if (BonesPanel != null)
-                {
-                    BonesPanel.SetSelectedBone(_selectedBone);
-                }
+                BonesPanel?.SetSelectedBone(_selectedBone);
 
                 if (TargetAnimType == NW4RAnimType.CHR && KeyframePanel != null)
                 {

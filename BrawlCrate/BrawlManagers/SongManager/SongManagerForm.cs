@@ -24,7 +24,7 @@ namespace BrawlCrate.SongManager
             "../../../RSBE01.gct",
             "../../../../RSBE01.gct",
             "../../../../../../RSBE01.gct",
-            "../../../../../../../RSBE01.gct",
+            "../../../../../../../RSBE01.gct"
         };
 
         /// <summary>
@@ -134,7 +134,10 @@ namespace BrawlCrate.SongManager
 
             if (autoplay && autoplayNext)
             {
-                songPanel1.Play();
+                if (!BrawlLib.Properties.Settings.Default.AutoPlayAudio)
+                {
+                    songPanel1.Play();
+                }
             }
 
             autoplayNext = false;
@@ -573,7 +576,7 @@ namespace BrawlCrate.SongManager
                 ReadOnlySearchableRichTextBox r = new ReadOnlySearchableRichTextBox
                 {
                     Dock = DockStyle.Fill,
-                    Text = ReadOnlySearchableRichTextBox.HELP + "\n\n" + SongsByStage.DEFAULTS,
+                    Text = ReadOnlySearchableRichTextBox.HELP + "\n\n" + SongsByStage.DEFAULTS
                 };
                 splitContainerTop.Panel2.Controls.Add(r);
                 splitContainerTop.Panel2Collapsed = false;

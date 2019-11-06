@@ -326,7 +326,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 new ModuleSectionNode
                 {
-                    _isCodeSection = true, _name = string.Format("[{0}] Text{1}", x, i),
+                    _isCodeSection = true, _name = $"[{x}] Text{i}",
                     _dataOffset = (int) Header->TextOffset[i], _dataSize = Header->TextSize[i]
                 }.Initialize(this, (VoidPtr) Header + Header->TextOffset[i], (int) Header->TextSize[i]);
             }
@@ -335,7 +335,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 new ModuleSectionNode
                 {
-                    _name = string.Format("[{0}] Data{1}", x, i), _dataOffset = (int) Header->DataOffset[i],
+                    _name = $"[{x}] Data{i}", _dataOffset = (int) Header->DataOffset[i],
                     _dataSize = Header->DataSize[i]
                 }.Initialize(this, (VoidPtr) Header + Header->DataOffset[i], (int) Header->DataSize[i]);
             }

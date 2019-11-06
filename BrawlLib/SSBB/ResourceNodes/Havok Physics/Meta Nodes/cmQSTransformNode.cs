@@ -72,17 +72,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
-            writer.WriteString(string.Format("({0} {1} {2})({3} {4} {5} {6})({7} {8} {9})",
-                _translation._x.ToString("0.000000", CultureInfo.InvariantCulture),
-                _translation._y.ToString("0.000000", CultureInfo.InvariantCulture),
-                _translation._z.ToString("0.000000", CultureInfo.InvariantCulture),
-                _quaternion._x.ToString("0.000000", CultureInfo.InvariantCulture),
-                _quaternion._y.ToString("0.000000", CultureInfo.InvariantCulture),
-                _quaternion._z.ToString("0.000000", CultureInfo.InvariantCulture),
-                _quaternion._w.ToString("0.000000", CultureInfo.InvariantCulture),
-                _scale._x.ToString("0.000000", CultureInfo.InvariantCulture),
-                _scale._y.ToString("0.000000", CultureInfo.InvariantCulture),
-                _scale._z.ToString("0.000000", CultureInfo.InvariantCulture)));
+            writer.WriteString(
+                $"({_translation._x.ToString("0.000000", CultureInfo.InvariantCulture)} {_translation._y.ToString("0.000000", CultureInfo.InvariantCulture)} {_translation._z.ToString("0.000000", CultureInfo.InvariantCulture)})({_quaternion._x.ToString("0.000000", CultureInfo.InvariantCulture)} {_quaternion._y.ToString("0.000000", CultureInfo.InvariantCulture)} {_quaternion._z.ToString("0.000000", CultureInfo.InvariantCulture)} {_quaternion._w.ToString("0.000000", CultureInfo.InvariantCulture)})({_scale._x.ToString("0.000000", CultureInfo.InvariantCulture)} {_scale._y.ToString("0.000000", CultureInfo.InvariantCulture)} {_scale._z.ToString("0.000000", CultureInfo.InvariantCulture)})");
         }
     }
 }

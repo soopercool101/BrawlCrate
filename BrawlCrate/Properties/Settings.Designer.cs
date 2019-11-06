@@ -12,7 +12,7 @@ namespace BrawlCrate.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -132,48 +132,12 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ContextualLoop {
-            get {
-                return ((bool)(this["ContextualLoop"]));
-            }
-            set {
-                this["ContextualLoop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutoPlayAudio {
-            get {
-                return ((bool)(this["AutoPlayAudio"]));
-            }
-            set {
-                this["AutoPlayAudio"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool APIEnabled {
             get {
                 return ((bool)(this["APIEnabled"]));
             }
             set {
                 this["APIEnabled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool APILoadersEnabled {
-            get {
-                return ((bool)(this["APILoadersEnabled"]));
-            }
-            set {
-                this["APILoadersEnabled"] = value;
             }
         }
         
@@ -305,6 +269,52 @@ namespace BrawlCrate.Properties {
             }
             set {
                 this["BuildPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection APILoadersBlacklist {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["APILoadersBlacklist"]));
+            }
+            set {
+                this["APILoadersBlacklist"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection APILoadersWhitelist {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["APILoadersWhitelist"]));
+            }
+            set {
+                this["APILoadersWhitelist"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool APIOnlyAllowLoadersFromWhitelist {
+            get {
+                return ((bool)(this["APIOnlyAllowLoadersFromWhitelist"]));
+            }
+            set {
+                this["APIOnlyAllowLoadersFromWhitelist"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool APIAutoUpdate {
+            get {
+                return ((bool)(this["APIAutoUpdate"]));
+            }
+            set {
+                this["APIAutoUpdate"] = value;
             }
         }
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace System
 {
@@ -46,7 +42,7 @@ namespace System
                 return;
             }
 
-            Array.Resize<long>(ref defaultParams, s.Length);
+            Array.Resize(ref defaultParams, s.Length);
             for (int i = 0; i < s.Length; i++)
             {
                 try

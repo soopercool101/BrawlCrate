@@ -88,8 +88,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportTexture()
         {
-            int index = Program.OpenFile(FileFilters.Images, out string path);
-            if (index > 0)
+            if (Program.OpenFile(FileFilters.Images, out string path))
             {
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {

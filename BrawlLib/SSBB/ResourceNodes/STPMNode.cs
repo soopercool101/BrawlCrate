@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class STPMNode : ARCEntryNode
     {
-        internal STPM* Header => (STPM*) WorkingUncompressed.Address;
+        internal Parameter* Header => (Parameter*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.STPM;
 
         public override bool OnInitialize()
@@ -39,8 +39,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            STPM* header = (STPM*) address;
-            *header = new STPM(Children.Count);
+            Parameter* header = (Parameter*) address;
+            *header = new Parameter(Parameter.TagSTPM, Children.Count);
             uint offset = (uint) (0x10 + Children.Count * 4);
             for (int i = 0; i < Children.Count; i++)
             {
@@ -53,91 +53,77 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((STPM*) source.Address)->_tag == STPM.Tag ? new STPMNode() : null;
+            return ((Parameter*) source.Address)->_tag == Parameter.TagSTPM ? new STPMNode() : null;
+        }
+
+        public void ReplaceCamera(STPMNode external)
+        {
+            for (int i = 0; i < Children.Count && i < external.Children.Count; i++)
+            {
+                STPMEntryNode ext = external.Children[i] as STPMEntryNode;
+                if (ext == null || !(Children[i] is STPMEntryNode cur))
+                {
+                    continue;
+                }
+
+                // In-game camera
+                cur.CameraFOV = ext.CameraFOV;
+
+                cur.MinimumZ = ext.MinimumZ;
+                cur.MaximumZ = ext.MaximumZ;
+
+                cur.MinimumTilt = ext.MinimumTilt;
+                cur.MaximumTilt = ext.MaximumTilt;
+
+                cur.HorizontalRotationFactor = ext.HorizontalRotationFactor;
+                cur.VerticalRotationFactor = ext.VerticalRotationFactor;
+
+                cur.CharacterBubbleBufferMultiplier = ext.CharacterBubbleBufferMultiplier;
+
+                cur.CameraSpeed = ext.CameraSpeed;
+
+                cur.StarKOCamTilt = ext.StarKOCamTilt;
+                cur.FinalSmashCamTilt = ext.FinalSmashCamTilt;
+
+                cur.CameraRight = ext.CameraRight;
+                cur.CameraLeft = ext.CameraLeft;
+
+                // Pause camera
+                cur.PauseCamX = ext.PauseCamX;
+                cur.PauseCamY = ext.PauseCamY;
+                cur.PauseCamZ = ext.PauseCamZ;
+                cur.PauseCamAngle = ext.PauseCamAngle;
+
+                cur.PauseCamZoomIn = ext.PauseCamZoomIn;
+                cur.PauseCamZoomOut = ext.PauseCamZoomOut;
+                cur.PauseCamZoomDefault = ext.PauseCamZoomDefault;
+
+                cur.PauseCamRotYMin = ext.PauseCamRotYMin;
+                cur.PauseCamRotYMax = ext.PauseCamRotYMax;
+                cur.PauseCamRotXMin = ext.PauseCamRotXMin;
+                cur.PauseCamRotXMax = ext.PauseCamRotXMax;
+
+                // Fixed camera
+                cur.FixedCamX = ext.FixedCamX;
+                cur.FixedCamY = ext.FixedCamY;
+                cur.FixedCamZ = ext.FixedCamZ;
+                cur.FixedCamAngle = ext.FixedCamAngle;
+                cur.FixedHorizontalAngle = ext.FixedHorizontalAngle;
+                cur.FixedVerticalAngle = ext.FixedVerticalAngle;
+            }
         }
     }
 
     public unsafe class STPMEntryNode : ResourceNode
     {
-        internal STPMEntry* Header => (STPMEntry*) WorkingUncompressed.Address;
+        internal ParameterEntry* Header => (ParameterEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        public byte echo, id2;
-        public ushort id;
+        private byte echo;
+        private byte id2;
+        private ushort id;
 
-        public STPMValueManager _values = new STPMValueManager(null);
-
-        public class STPMValueManager
-        {
-            public UnsafeBuffer _values;
-
-            public STPMValueManager(VoidPtr address)
-            {
-                _values = new UnsafeBuffer(256);
-                if (address == null)
-                {
-                    byte* pOut = (byte*) _values.Address;
-                    for (int i = 0; i < 256; i++)
-                    {
-                        *pOut++ = 0;
-                    }
-                }
-                else
-                {
-                    byte* pIn = (byte*) address;
-                    byte* pOut = (byte*) _values.Address;
-                    for (int i = 0; i < 256; i++)
-                    {
-                        *pOut++ = *pIn++;
-                    }
-                }
-            }
-
-            ~STPMValueManager()
-            {
-                _values.Dispose();
-            }
-
-            public float GetFloat(int index)
-            {
-                return ((bfloat*) _values.Address)[index];
-            }
-
-            public void SetFloat(int index, float value)
-            {
-                ((bfloat*) _values.Address)[index] = value;
-            }
-
-            public int GetInt(int index)
-            {
-                return ((bint*) _values.Address)[index];
-            }
-
-            public void SetInt(int index, int value)
-            {
-                ((bint*) _values.Address)[index] = value;
-            }
-
-            public RGBAPixel GetRGBA(int index)
-            {
-                return ((RGBAPixel*) _values.Address)[index];
-            }
-
-            public void SetRGBA(int index, RGBAPixel value)
-            {
-                ((RGBAPixel*) _values.Address)[index] = value;
-            }
-
-            public byte GetByte(int index, int index2)
-            {
-                return ((byte*) _values.Address)[index * 4 + index2];
-            }
-
-            public void SetByte(int index, int index2, byte value)
-            {
-                ((byte*) _values.Address)[index * 4 + index2] = value;
-            }
-        }
+        private ParameterValueManager _values = new ParameterValueManager(null);
 
         [Category("STPM Data")]
         public byte Echo
@@ -920,15 +906,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _name = "STPMEntry " + id;
             }
 
-            _values = new STPMValueManager((VoidPtr) Header + 4);
+            _values = new ParameterValueManager((VoidPtr) Header + 4);
 
             return false;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            STPMEntry* header = (STPMEntry*) address;
-            *header = new STPMEntry(id, echo, id2);
+            ParameterEntry* header = (ParameterEntry*) address;
+            *header = new ParameterEntry(id, echo, id2);
             byte* pOut = (byte*) header + 4;
             byte* pIn = (byte*) _values._values.Address;
             for (int i = 0; i < 64 * 4; i++)

@@ -158,12 +158,12 @@ namespace System.IO
         internal wFileType(string name)
         {
             _name = name;
-            _regPath = string.Format("HKEY_CLASSES_ROOT\\{0}", _name);
+            _regPath = $"HKEY_CLASSES_ROOT\\{_name}";
         }
 
         public override string GetCommand(string verb)
         {
-            return Registry.GetValue(string.Format("{0}\\shell\\{1}\\command", _regPath, verb), "", null) as string;
+            return Registry.GetValue($"{_regPath}\\shell\\{verb}\\command", "", null) as string;
         }
 
         public override void SetCommand(string verb, string command)
@@ -172,7 +172,7 @@ namespace System.IO
             {
                 try
                 {
-                    Registry.ClassesRoot.DeleteSubKeyTree(string.Format("{0}\\shell\\{1}", _regPath, verb));
+                    Registry.ClassesRoot.DeleteSubKeyTree($"{_regPath}\\shell\\{verb}");
                 }
                 catch (Exception)
                 {
@@ -181,7 +181,7 @@ namespace System.IO
             }
             else
             {
-                Registry.SetValue(string.Format("{0}\\shell\\{1}\\command", _regPath, verb), "", command);
+                Registry.SetValue($"{_regPath}\\shell\\{verb}\\command", "", command);
             }
         }
 

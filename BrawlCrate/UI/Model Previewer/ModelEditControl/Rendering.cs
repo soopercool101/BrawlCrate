@@ -78,10 +78,9 @@ namespace System.Windows.Forms
                     {
                         DeathBone1 = bone;
                     }
-                    else if (bone._name.Contains("Player") && chkSpawns.Checked)
+                    else if (bone._name.StartsWith("Player") && bone._name.Length == 8 && chkSpawns.Checked)
                     {
                         Vector3 position = bone._frameMatrix.GetPoint();
-
                         if (PointCollides(position))
                         {
                             GL.Color4(0.0f, 1.0f, 0.0f, 0.5f);
@@ -92,13 +91,23 @@ namespace System.Windows.Forms
                         }
 
                         TKContext.DrawSphere(position, 5.0f, 32);
+                        if (int.TryParse(bone._name.Substring(6, 1), out int playernum))
+                        {
+                            panel.NoSettingsScreenText[playernum.ToString()] =
+                                panel.Camera.Project(position) - new Vector3(8.0f, 8.0f, 0);
+                        }
                     }
-                    else if (bone._name.Contains("Rebirth") && chkSpawns.Checked)
+                    else if (bone._name.StartsWith("Rebirth") && bone._name.Length == 9 && chkSpawns.Checked)
                     {
                         GL.Color4(1.0f, 1.0f, 1.0f, 0.1f);
                         TKContext.DrawSphere(bone._frameMatrix.GetPoint(), 5.0f, 32);
+                        if (int.TryParse(bone._name.Substring(7, 1), out int playernum))
+                        {
+                            panel.NoSettingsScreenText[playernum.ToString()] =
+                                panel.Camera.Project(bone._frameMatrix.GetPoint()) - new Vector3(8.0f, 8.0f, 0);
+                        }
                     }
-                    else if (bone._name.Contains("Item"))
+                    else if (bone._name.StartsWith("Item"))
                     {
                         ItemBones.Add(bone);
                     }
@@ -111,12 +120,33 @@ namespace System.Windows.Forms
                 GL.Color4(0.5f, 0.0f, 1.0f, 0.4f);
                 for (int i = 0; i < ItemBones.Count; i += 2)
                 {
-                    Vector3 pos1 = new Vector3(ItemBones[i]._frameMatrix.GetPoint()._x,
-                        ItemBones[i]._frameMatrix.GetPoint()._y + 3.0f, 1.0f);
-                    Vector3 pos2 = new Vector3(ItemBones[i + 1]._frameMatrix.GetPoint()._x,
-                        ItemBones[i + 1]._frameMatrix.GetPoint()._y - 3.0f, 1.0f);
+                    Vector3 pos1, pos2;
+                    if (ItemBones[i]._frameMatrix.GetPoint()._y == ItemBones[i + 1]._frameMatrix.GetPoint()._y)
+                    {
+                        pos1 = new Vector3(ItemBones[i]._frameMatrix.GetPoint()._x,
+                            ItemBones[i]._frameMatrix.GetPoint()._y + 1.5f, 1.0f);
+                        pos2 = new Vector3(ItemBones[i + 1]._frameMatrix.GetPoint()._x,
+                            ItemBones[i + 1]._frameMatrix.GetPoint()._y - 1.5f, 1.0f);
+                    }
+                    else
+                    {
+                        pos1 = new Vector3(ItemBones[i]._frameMatrix.GetPoint()._x,
+                            ItemBones[i]._frameMatrix.GetPoint()._y, 1.0f);
+                        pos2 = new Vector3(ItemBones[i + 1]._frameMatrix.GetPoint()._x,
+                            ItemBones[i + 1]._frameMatrix.GetPoint()._y, 1.0f);
+                    }
 
-                    TKContext.DrawBox(pos1, pos2);
+
+                    if (pos1._x != pos2._x)
+                    {
+                        TKContext.DrawBox(pos1, pos2);
+                    }
+                    else
+                    {
+                        TKContext.DrawSphere(
+                            new Vector3(ItemBones[i]._frameMatrix.GetPoint()._x,
+                                ItemBones[i]._frameMatrix.GetPoint()._y, pos1._z), 3.0f, 32);
+                    }
                 }
             }
 
@@ -131,7 +161,7 @@ namespace System.Windows.Forms
                 GL.CullFace(CullFaceMode.Front);
 
                 GL.Color4(Color.Blue);
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.LineWidth(15.0f);
 
                 Vector3
@@ -145,7 +175,7 @@ namespace System.Windows.Forms
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.Color4(Color.Red);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
@@ -153,25 +183,25 @@ namespace System.Windows.Forms
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.End();
                 GL.Color4(0.0f, 0.5f, 1.0f, 0.3f);
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone0._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);

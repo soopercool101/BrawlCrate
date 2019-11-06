@@ -28,27 +28,33 @@ namespace BrawlLib.Wii.Animations
         {
             Coords output = new Coords();
             for (line = reader.ReadLine();
-                line != null && line.CompareTo("	") != 0 &&
+                line != null && line.CompareTo("    ") != 0 &&
                 (line.CompareTo("X") == 0 || line.CompareTo("Y") == 0 || line.CompareTo("Z") == 0);
                 line = reader.ReadLine())
             {
                 if (line.CompareTo("X") == 0)
                 {
-                    for (line = reader.ReadLine(); line != null && line.CompareTo("	") != 0; line = reader.ReadLine())
+                    for (line = reader.ReadLine();
+                        line != null && line.CompareTo("    ") != 0;
+                        line = reader.ReadLine())
                     {
                         output.x.Add(float.Parse(line));
                     }
                 }
                 else if (line.CompareTo("Y") == 0)
                 {
-                    for (line = reader.ReadLine(); line != null && line.CompareTo("	") != 0; line = reader.ReadLine())
+                    for (line = reader.ReadLine();
+                        line != null && line.CompareTo("    ") != 0;
+                        line = reader.ReadLine())
                     {
                         output.y.Add(float.Parse(line));
                     }
                 }
                 else if (line.CompareTo("Z") == 0)
                 {
-                    for (line = reader.ReadLine(); line != null && line.CompareTo("	") != 0; line = reader.ReadLine())
+                    for (line = reader.ReadLine();
+                        line != null && line.CompareTo("    ") != 0;
+                        line = reader.ReadLine())
                     {
                         output.z.Add(float.Parse(line));
                     }
@@ -201,7 +207,7 @@ namespace BrawlLib.Wii.Animations
             }
             catch (Exception e)
             {
-                MessageBox.Show("There was a problem importing keyframes.\n\nError:\n" + e.ToString());
+                MessageBox.Show("There was a problem importing keyframes.\n\nError:\n" + e);
                 return null;
             }
         }

@@ -33,7 +33,7 @@ namespace BrawlCrate.API
                 if (!_converted)
                 {
                     _converted = true;
-                    if (BrawlAPI.DepreciatedStrings.Any(s => e.Message.Contains(s)))
+                    if (BrawlAPI.DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
                     {
                         BrawlAPI.ConvertPlugin(Script.Path);
                         Execute();

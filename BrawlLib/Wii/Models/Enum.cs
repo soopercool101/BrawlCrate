@@ -27,7 +27,7 @@
         None
     }
 
-    public enum WiiPrimitiveType : byte
+    public enum WiiBeginMode : byte
     {
         PosMtx = 0x20,
         NorMtx = 0x28,

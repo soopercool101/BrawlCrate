@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
-using BrawlManagerLib;
 
 namespace BrawlCrate.CostumeManager
 {
@@ -110,7 +105,7 @@ namespace BrawlCrate.CostumeManager
             saveButton.TabIndex = 2;
             saveButton.Text = "Save info.pac";
             saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += saveButton_Click;
+            saveButton.Click += new EventHandler(saveButton_Click);
             // 
             // InfoStockIconViewer
             // 

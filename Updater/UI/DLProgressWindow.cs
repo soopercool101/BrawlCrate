@@ -36,7 +36,33 @@ namespace System.Windows.Forms
             CurrentValue = 0;
             MaxValue = 1;
             //MessageBox.Show(version + '\n' + appPath + '\n' + dlLink);
-            startDownload(appPath, dlLink);
+            startDownload(dlLink, $"{appPath}\\temp.exe");
+            Thread.Sleep(50);
+            UpdateProgress();
+            Show();
+            Focus();
+            while (!finished)
+            {
+                UpdateProgress();
+            }
+        }
+
+        public DLProgressWindow(string packageName, string appPath, string dlLink, string downloadLocation) : this()
+        {
+            //controlOwner = owner;
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+            PackageName = packageName;
+            Text = "Downloading Update";
+            Caption = "Downloading " + PackageName + ": ";
+            CanCancel = false;
+            started = false;
+            finished = false;
+            MinValue = 0;
+            progressBar1.MinValue = 0;
+            CurrentValue = 0;
+            MaxValue = 1;
+            //MessageBox.Show(version + '\n' + appPath + '\n' + dlLink);
+            startDownload(dlLink, downloadLocation);
             Thread.Sleep(50);
             UpdateProgress();
             Show();
@@ -120,7 +146,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private void startDownload(string AppPath, string dlLink)
+        private void startDownload(string dlLink, string downloadLocation)
         {
             Thread thread = new Thread(() =>
             {
@@ -132,7 +158,7 @@ namespace System.Windows.Forms
                         client.DownloadProgressChanged +=
                             client_DownloadProgressChanged;
                         client.DownloadFileCompleted += client_DownloadFileCompleted;
-                        client.DownloadFileAsync(new Uri(dlLink), AppPath + "\\temp.exe");
+                        client.DownloadFileAsync(new Uri(dlLink), downloadLocation);
                         Application.DoEvents();
                     }
                 }

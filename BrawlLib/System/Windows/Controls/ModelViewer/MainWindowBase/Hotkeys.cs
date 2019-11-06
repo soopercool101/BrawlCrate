@@ -204,7 +204,7 @@ namespace System.Windows.Forms
             if (ModelPanel.Focused)
             {
                 SaveBitmap(ModelPanel.GetScreenshot(ModelPanel.ClientRectangle, true), ScreenCaptureFolder,
-                    "." + ScreenCaptureType.ToString());
+                    "." + ScreenCaptureType);
                 return true;
             }
 
@@ -216,7 +216,7 @@ namespace System.Windows.Forms
             if (ModelPanel.Focused)
             {
                 SaveBitmap(ModelPanel.GetScreenshot(ModelPanel.ClientRectangle, false), ScreenCaptureFolder,
-                    "." + ScreenCaptureType.ToString());
+                    "." + ScreenCaptureType);
                 return true;
             }
 
@@ -499,40 +499,28 @@ namespace System.Windows.Forms
 
         private bool HotkeyLastFrame()
         {
-            if (PlaybackPanel != null)
-            {
-                PlaybackPanel.btnLast_Click(this, null);
-            }
+            PlaybackPanel?.btnLast_Click(this, null);
 
             return true;
         }
 
         private bool HotkeyNextFrame()
         {
-            if (PlaybackPanel != null)
-            {
-                PlaybackPanel.btnNextFrame_Click(this, null);
-            }
+            PlaybackPanel?.btnNextFrame_Click(this, null);
 
             return true;
         }
 
         private bool HotkeyFirstFrame()
         {
-            if (PlaybackPanel != null)
-            {
-                PlaybackPanel.btnFirst_Click(this, null);
-            }
+            PlaybackPanel?.btnFirst_Click(this, null);
 
             return true;
         }
 
         private bool HotkeyPrevFrame()
         {
-            if (PlaybackPanel != null)
-            {
-                PlaybackPanel.btnPrevFrame_Click(this, null);
-            }
+            PlaybackPanel?.btnPrevFrame_Click(this, null);
 
             return true;
         }

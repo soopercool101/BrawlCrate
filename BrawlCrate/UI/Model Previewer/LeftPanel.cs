@@ -1,7 +1,6 @@
 ﻿using BrawlLib;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -162,10 +161,10 @@ namespace System.Windows.Forms
             lstObjects.Name = "lstObjects";
             lstObjects.Size = new Drawing.Size(170, 45);
             lstObjects.TabIndex = 4;
-            lstObjects.ItemCheck += lstPolygons_ItemCheck;
-            lstObjects.SelectedValueChanged += lstPolygons_SelectedValueChanged;
-            lstObjects.KeyDown += lstPolygons_KeyDown;
-            lstObjects.Leave += lstObjects_Leave;
+            lstObjects.ItemCheck += new ItemCheckEventHandler(lstPolygons_ItemCheck);
+            lstObjects.SelectedValueChanged += new EventHandler(lstPolygons_SelectedValueChanged);
+            lstObjects.KeyDown += new KeyEventHandler(lstPolygons_KeyDown);
+            lstObjects.Leave += new EventHandler(lstObjects_Leave);
             // 
             // spltDrawCalls
             // 
@@ -187,9 +186,9 @@ namespace System.Windows.Forms
             lstDrawCalls.Size = new Drawing.Size(170, 34);
             lstDrawCalls.TabIndex = 0;
             lstDrawCalls.Visible = false;
-            lstDrawCalls.ItemCheck += lstDrawCalls_ItemCheck;
-            lstDrawCalls.SelectedIndexChanged += lstDrawCalls_SelectedIndexChanged;
-            lstDrawCalls.DoubleClick += lstDrawCalls_DoubleClick;
+            lstDrawCalls.ItemCheck += new ItemCheckEventHandler(lstDrawCalls_ItemCheck);
+            lstDrawCalls.SelectedIndexChanged += new EventHandler(lstDrawCalls_SelectedIndexChanged);
+            lstDrawCalls.DoubleClick += new EventHandler(lstDrawCalls_DoubleClick);
             // 
             // chkAllObj
             // 
@@ -204,7 +203,7 @@ namespace System.Windows.Forms
             chkAllObj.TabIndex = 5;
             chkAllObj.Text = "All";
             chkAllObj.UseVisualStyleBackColor = false;
-            chkAllObj.CheckStateChanged += chkAllPoly_CheckStateChanged;
+            chkAllObj.CheckStateChanged += new EventHandler(chkAllPoly_CheckStateChanged);
             // 
             // chkSyncVis
             // 
@@ -227,7 +226,7 @@ namespace System.Windows.Forms
             btnObjects.TabIndex = 6;
             btnObjects.Text = "Objects";
             btnObjects.UseVisualStyleBackColor = true;
-            btnObjects.Click += btnObjects_Click;
+            btnObjects.Click += new EventHandler(btnObjects_Click);
             // 
             // pnlAnims
             // 
@@ -268,9 +267,9 @@ namespace System.Windows.Forms
             listAnims.TabIndex = 25;
             listAnims.UseCompatibleStateImageBehavior = false;
             listAnims.View = View.Details;
-            listAnims.SelectedIndexChanged += listAnims_SelectedIndexChanged;
-            listAnims.KeyDown += listAnims_KeyDown;
-            listAnims.MouseDown += listAnims_MouseDown;
+            listAnims.SelectedIndexChanged += new EventHandler(listAnims_SelectedIndexChanged);
+            listAnims.KeyDown += new KeyEventHandler(listAnims_KeyDown);
+            listAnims.MouseDown += new MouseEventHandler(listAnims_MouseDown);
             // 
             // nameColumn
             // 
@@ -286,7 +285,7 @@ namespace System.Windows.Forms
             });
             ctxAnimList.Name = "ctxAnim";
             ctxAnimList.Size = new Drawing.Size(235, 30);
-            ctxAnimList.Opening += ctxAnimList_Opening;
+            ctxAnimList.Opening += new CancelEventHandler(ctxAnimList_Opening);
             // 
             // AnimListNewAnim
             // 
@@ -298,7 +297,7 @@ namespace System.Windows.Forms
             AnimListNewAnim.Name = "AnimListNewAnim";
             AnimListNewAnim.Size = new Drawing.Size(234, 26);
             AnimListNewAnim.Text = "Create New Animation";
-            AnimListNewAnim.Click += inModelsBRRESToolStripMenuItem_Click;
+            AnimListNewAnim.Click += new EventHandler(inModelsBRRESToolStripMenuItem_Click);
             // 
             // inModelsBRRESToolStripMenuItem
             // 
@@ -307,7 +306,7 @@ namespace System.Windows.Forms
             inModelsBRRESToolStripMenuItem.Size = new Drawing.Size(199, 26);
             inModelsBRRESToolStripMenuItem.Text = "In Model\'s BRRES";
             inModelsBRRESToolStripMenuItem.Visible = false;
-            inModelsBRRESToolStripMenuItem.Click += inModelsBRRESToolStripMenuItem_Click;
+            inModelsBRRESToolStripMenuItem.Click += new EventHandler(inModelsBRRESToolStripMenuItem_Click);
             // 
             // inExternalFileToolStripMenuItem
             // 
@@ -316,7 +315,7 @@ namespace System.Windows.Forms
             inExternalFileToolStripMenuItem.Size = new Drawing.Size(199, 26);
             inExternalFileToolStripMenuItem.Text = "In External File";
             inExternalFileToolStripMenuItem.Visible = false;
-            inExternalFileToolStripMenuItem.Click += inExternalFileToolStripMenuItem_Click;
+            inExternalFileToolStripMenuItem.Click += new EventHandler(inExternalFileToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -337,9 +336,9 @@ namespace System.Windows.Forms
             txtSearchAnim.Size = new Drawing.Size(82, 22);
             txtSearchAnim.TabIndex = 30;
             txtSearchAnim.Text = "Search for an animation...";
-            txtSearchAnim.TextChanged += txtSearchAnim_TextChanged;
-            txtSearchAnim.Enter += txtSearchAnim_Enter;
-            txtSearchAnim.Leave += txtSearchAnim_Leave;
+            txtSearchAnim.TextChanged += new EventHandler(txtSearchAnim_TextChanged);
+            txtSearchAnim.Enter += new EventHandler(txtSearchAnim_Enter);
+            txtSearchAnim.Leave += new EventHandler(txtSearchAnim_Leave);
             // 
             // chkContains
             // 
@@ -353,7 +352,7 @@ namespace System.Windows.Forms
             chkContains.TabIndex = 32;
             chkContains.Text = "Contains";
             chkContains.UseVisualStyleBackColor = true;
-            chkContains.CheckedChanged += chkContains_CheckedChanged;
+            chkContains.CheckedChanged += new EventHandler(chkContains_CheckedChanged);
             // 
             // panel1
             // 
@@ -375,7 +374,7 @@ namespace System.Windows.Forms
             btnSaveAnims.TabIndex = 28;
             btnSaveAnims.Text = "Save";
             btnSaveAnims.UseVisualStyleBackColor = true;
-            btnSaveAnims.Click += button2_Click;
+            btnSaveAnims.Click += new EventHandler(button2_Click);
             // 
             // btnLoad
             // 
@@ -386,7 +385,7 @@ namespace System.Windows.Forms
             btnLoad.TabIndex = 27;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += button1_Click;
+            btnLoad.Click += new EventHandler(button1_Click);
             // 
             // fileType
             // 
@@ -397,7 +396,7 @@ namespace System.Windows.Forms
             fileType.Name = "fileType";
             fileType.Size = new Drawing.Size(59, 24);
             fileType.TabIndex = 26;
-            fileType.SelectedIndexChanged += fileType_SelectedIndexChanged;
+            fileType.SelectedIndexChanged += new EventHandler(fileType_SelectedIndexChanged);
             // 
             // btnAnims
             // 
@@ -408,7 +407,7 @@ namespace System.Windows.Forms
             btnAnims.TabIndex = 7;
             btnAnims.Text = "Animations";
             btnAnims.UseVisualStyleBackColor = true;
-            btnAnims.Click += btnAnims_Click;
+            btnAnims.Click += new EventHandler(btnAnims_Click);
             // 
             // ctxTextures
             // 
@@ -426,7 +425,7 @@ namespace System.Windows.Forms
             });
             ctxTextures.Name = "ctxTextures";
             ctxTextures.Size = new Drawing.Size(147, 192);
-            ctxTextures.Opening += ctxTextures_Opening;
+            ctxTextures.Opening += new CancelEventHandler(ctxTextures_Opening);
             // 
             // sourceToolStripMenuItem
             // 
@@ -452,35 +451,35 @@ namespace System.Windows.Forms
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             viewToolStripMenuItem.Size = new Drawing.Size(146, 26);
             viewToolStripMenuItem.Text = "View...";
-            viewToolStripMenuItem.Click += viewToolStripMenuItem_Click;
+            viewToolStripMenuItem.Click += new EventHandler(viewToolStripMenuItem_Click);
             // 
             // exportTextureToolStripMenuItem
             // 
             exportTextureToolStripMenuItem.Name = "exportTextureToolStripMenuItem";
             exportTextureToolStripMenuItem.Size = new Drawing.Size(146, 26);
             exportTextureToolStripMenuItem.Text = "Export...";
-            exportTextureToolStripMenuItem.Click += exportTextureToolStripMenuItem_Click;
+            exportTextureToolStripMenuItem.Click += new EventHandler(exportTextureToolStripMenuItem_Click);
             // 
             // replaceTextureToolStripMenuItem
             // 
             replaceTextureToolStripMenuItem.Name = "replaceTextureToolStripMenuItem";
             replaceTextureToolStripMenuItem.Size = new Drawing.Size(146, 26);
             replaceTextureToolStripMenuItem.Text = "Replace...";
-            replaceTextureToolStripMenuItem.Click += replaceTextureToolStripMenuItem_Click;
+            replaceTextureToolStripMenuItem.Click += new EventHandler(replaceTextureToolStripMenuItem_Click);
             // 
             // renameTextureTextureToolStripMenuItem
             // 
             renameTextureTextureToolStripMenuItem.Name = "renameTextureTextureToolStripMenuItem";
             renameTextureTextureToolStripMenuItem.Size = new Drawing.Size(146, 26);
             renameTextureTextureToolStripMenuItem.Text = "Rename";
-            renameTextureTextureToolStripMenuItem.Click += renameTextureToolStripMenuItem_Click;
+            renameTextureTextureToolStripMenuItem.Click += new EventHandler(renameTextureToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             resetToolStripMenuItem.Name = "resetToolStripMenuItem";
             resetToolStripMenuItem.Size = new Drawing.Size(146, 26);
             resetToolStripMenuItem.Text = "Reload";
-            resetToolStripMenuItem.Click += resetToolStripMenuItem_Click;
+            resetToolStripMenuItem.Click += new EventHandler(resetToolStripMenuItem_Click);
             // 
             // pnlTextures
             // 
@@ -508,11 +507,11 @@ namespace System.Windows.Forms
             lstTextures.Name = "lstTextures";
             lstTextures.Size = new Drawing.Size(170, 116);
             lstTextures.TabIndex = 7;
-            lstTextures.ItemCheck += lstTextures_ItemCheck;
-            lstTextures.SelectedValueChanged += lstTextures_SelectedValueChanged;
-            lstTextures.KeyDown += lstTextures_KeyDown;
-            lstTextures.Leave += lstTextures_Leave;
-            lstTextures.MouseDown += lstTextures_MouseDown;
+            lstTextures.ItemCheck += new ItemCheckEventHandler(lstTextures_ItemCheck);
+            lstTextures.SelectedValueChanged += new EventHandler(lstTextures_SelectedValueChanged);
+            lstTextures.KeyDown += new KeyEventHandler(lstTextures_KeyDown);
+            lstTextures.Leave += new EventHandler(lstTextures_Leave);
+            lstTextures.MouseDown += new MouseEventHandler(lstTextures_MouseDown);
             // 
             // chkAllTextures
             // 
@@ -527,7 +526,7 @@ namespace System.Windows.Forms
             chkAllTextures.TabIndex = 8;
             chkAllTextures.Text = "All";
             chkAllTextures.UseVisualStyleBackColor = false;
-            chkAllTextures.CheckStateChanged += chkAllTextures_CheckStateChanged;
+            chkAllTextures.CheckStateChanged += new EventHandler(chkAllTextures_CheckStateChanged);
             // 
             // btnTextures
             // 
@@ -538,7 +537,7 @@ namespace System.Windows.Forms
             btnTextures.TabIndex = 9;
             btnTextures.Text = "Textures";
             btnTextures.UseVisualStyleBackColor = true;
-            btnTextures.Click += btnTextures_Click;
+            btnTextures.Click += new EventHandler(btnTextures_Click);
             // 
             // ctxAnim
             // 
@@ -557,7 +556,7 @@ namespace System.Windows.Forms
             });
             ctxAnim.Name = "ctxAnim";
             ctxAnim.Size = new Drawing.Size(235, 218);
-            ctxAnim.Opening += ctxAnim_Opening;
+            ctxAnim.Opening += new CancelEventHandler(ctxAnim_Opening);
             // 
             // toolStripMenuItem2
             // 
@@ -577,7 +576,7 @@ namespace System.Windows.Forms
             chkLoop.Name = "chkLoop";
             chkLoop.Size = new Drawing.Size(234, 26);
             chkLoop.Text = "Loop";
-            chkLoop.CheckedChanged += chkLoop_CheckedChanged;
+            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
             // 
             // matrixModeToolStripMenuItem
             // 
@@ -598,7 +597,7 @@ namespace System.Windows.Forms
             chkMtxMaya.Name = "chkMtxMaya";
             chkMtxMaya.Size = new Drawing.Size(139, 26);
             chkMtxMaya.Text = "Maya";
-            chkMtxMaya.CheckedChanged += chkMtxMaya_CheckedChanged;
+            chkMtxMaya.CheckedChanged += new EventHandler(chkMtxMaya_CheckedChanged);
             // 
             // chkMtxXSI
             // 
@@ -606,7 +605,7 @@ namespace System.Windows.Forms
             chkMtxXSI.Name = "chkMtxXSI";
             chkMtxXSI.Size = new Drawing.Size(139, 26);
             chkMtxXSI.Text = "XSI";
-            chkMtxXSI.CheckedChanged += chkMtxXSI_CheckedChanged;
+            chkMtxXSI.CheckedChanged += new EventHandler(chkMtxXSI_CheckedChanged);
             // 
             // chkMtxMax
             // 
@@ -614,42 +613,42 @@ namespace System.Windows.Forms
             chkMtxMax.Name = "chkMtxMax";
             chkMtxMax.Size = new Drawing.Size(139, 26);
             chkMtxMax.Text = "3ds Max";
-            chkMtxMax.CheckedChanged += chkMtxMax_CheckedChanged;
+            chkMtxMax.CheckedChanged += new EventHandler(chkMtxMax_CheckedChanged);
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
             toolStripMenuItem3.Size = new Drawing.Size(234, 26);
             toolStripMenuItem3.Text = "Export...";
-            toolStripMenuItem3.Click += exportToolStripMenuItem_Click;
+            toolStripMenuItem3.Click += new EventHandler(exportToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
             toolStripMenuItem4.Size = new Drawing.Size(234, 26);
             toolStripMenuItem4.Text = "Replace...";
-            toolStripMenuItem4.Click += _replaceToolStripMenuItem_Click;
+            toolStripMenuItem4.Click += new EventHandler(_replaceToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             renameToolStripMenuItem.Name = "renameToolStripMenuItem";
             renameToolStripMenuItem.Size = new Drawing.Size(234, 26);
             renameToolStripMenuItem.Text = "Rename";
-            renameToolStripMenuItem.Click += renameToolStripMenuItem_Click;
+            renameToolStripMenuItem.Click += new EventHandler(renameToolStripMenuItem_Click);
             // 
             // _deleteToolStripMenuItem
             // 
             _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
             _deleteToolStripMenuItem.Size = new Drawing.Size(234, 26);
             _deleteToolStripMenuItem.Text = "Delete";
-            _deleteToolStripMenuItem.Click += _deleteToolStripMenuItem_Click;
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // createNewToolStripMenuItem
             // 
             createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
             createNewToolStripMenuItem.Size = new Drawing.Size(234, 26);
             createNewToolStripMenuItem.Text = "Create New Animation";
-            createNewToolStripMenuItem.Click += createNewToolStripMenuItem_Click;
+            createNewToolStripMenuItem.Click += new EventHandler(createNewToolStripMenuItem_Click);
             // 
             // overObjPnl
             // 
@@ -658,7 +657,7 @@ namespace System.Windows.Forms
             overObjPnl.Name = "overObjPnl";
             overObjPnl.Size = new Drawing.Size(170, 45);
             overObjPnl.TabIndex = 8;
-            overObjPnl.Paint += overObjPnl_Paint;
+            overObjPnl.Paint += new PaintEventHandler(overObjPnl_Paint);
             // 
             // spltObjTex
             // 
@@ -668,7 +667,7 @@ namespace System.Windows.Forms
             spltObjTex.Name = "spltObjTex";
             spltObjTex.Size = new Drawing.Size(172, 4);
             spltObjTex.TabIndex = 4;
-            spltObjTex.Dragged += spltObjTex_Dragged;
+            spltObjTex.Dragged += new SplitterEventHandler(spltObjTex_Dragged);
             // 
             // spltAnimObj
             // 
@@ -678,7 +677,7 @@ namespace System.Windows.Forms
             spltAnimObj.Name = "spltAnimObj";
             spltAnimObj.Size = new Drawing.Size(172, 4);
             spltAnimObj.TabIndex = 1;
-            spltAnimObj.Dragged += spltAnimObj_Dragged;
+            spltAnimObj.Dragged += new SplitterEventHandler(spltAnimObj_Dragged);
             // 
             // overTexPnl
             // 
@@ -687,7 +686,7 @@ namespace System.Windows.Forms
             overTexPnl.Name = "overTexPnl";
             overTexPnl.Size = new Drawing.Size(170, 116);
             overTexPnl.TabIndex = 9;
-            overTexPnl.Paint += overTexPnl_Paint;
+            overTexPnl.Paint += new PaintEventHandler(overTexPnl_Paint);
             // 
             // LeftPanel
             // 
@@ -872,8 +871,7 @@ namespace System.Windows.Forms
             bool inBRRES,
             ListViewGroup externalGroup = null)
         {
-            bool ib = inBRRES || TargetModel != null && TargetModel is MDL0Node &&
-                      node == ((MDL0Node) TargetModel).BRESNode;
+            bool ib = inBRRES || TargetModel is MDL0Node && node == ((MDL0Node) TargetModel).BRESNode;
 
             if (!_mainWindow.chkBRRESAnims.Checked && ib)
             {
@@ -994,10 +992,10 @@ namespace System.Windows.Forms
 
             listAnims.Groups.Clear();
 
-            if (TargetModel != null && TargetModel is MDL0Node)
+            if (TargetModel is MDL0Node)
             {
-                _AnimGroupBRRES.Header = string.Format("In BRRES ({0})", TargetModel.ToString());
-                _AnimGroupNotBRRES.Header = string.Format("Not in BRRES ({0})", TargetModel.ToString());
+                _AnimGroupBRRES.Header = string.Format("In BRRES ({0})", TargetModel);
+                _AnimGroupNotBRRES.Header = string.Format("Not in BRRES ({0})", TargetModel);
 
                 listAnims.Groups.Add(_AnimGroupBRRES);
                 listAnims.Groups.Add(_AnimGroupNotBRRES);
@@ -1115,7 +1113,7 @@ namespace System.Windows.Forms
                     }
                 }
             }
-            else if (TargetModel != null)
+            else
             {
                 //Add all model textures
                 if (TargetModel is MDL0Node && (n = ((ResourceNode) TargetModel).FindChild("Textures", false)) != null)
@@ -1433,8 +1431,7 @@ namespace System.Windows.Forms
                     _selectedTexture.ObjOnly = true;
                 }
 
-                if (_selectedObject is MDL0ObjectNode &&
-                    ((MDL0ObjectNode) _selectedObject)._drawCalls[0].MaterialNode != null)
+                if ((_selectedObject as MDL0ObjectNode)?._drawCalls[0].MaterialNode != null)
                 {
                     TargetTexRef = _selectedObject != null
                         ? ((MDL0ObjectNode) _selectedObject)
@@ -1561,22 +1558,42 @@ namespace System.Windows.Forms
         private void replaceTextureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int index = lstTextures.SelectedIndex;
-            if (_selectedTexture != null && _selectedTexture.Source is TEX0Node)
+            if (_selectedTexture?.Source is TEX0Node node)
             {
-                TEX0Node node = _selectedTexture.Source as TEX0Node;
-                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                if (node.Parent == null)
                 {
-                    if (dlg.ShowDialog(this, node) == DialogResult.OK)
+                    return;
+                }
+
+                OpenFileDialog _openDlg = new OpenFileDialog
+                {
+                    Filter = FileFilters.TEX0
+                };
+#if !DEBUG
+                try
+                {
+#endif
+                    if (_openDlg.ShowDialog() == DialogResult.OK)
                     {
+                        string fileName = _openDlg.FileName;
+                        node.Replace(fileName);
                         _updating = true;
-                        _selectedTexture.Reload();
+                        _selectedTexture.Reload(_selectedTexture.Model,
+                            _selectedTexture.Parent?.Name.EndsWith("_ExtMtl") ?? false);
                         lstTextures.SetItemCheckState(index, CheckState.Checked);
                         lstTextures.SetSelected(index, false);
                         _updating = false;
 
                         _mainWindow.ModelPanel.Invalidate();
                     }
+#if !DEBUG
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    index = 0;
+                }
+#endif
             }
         }
 
@@ -1648,7 +1665,8 @@ namespace System.Windows.Forms
         {
             if (_selectedTexture != null)
             {
-                _selectedTexture.Reload();
+                _selectedTexture.Reload(_selectedTexture.Model,
+                    _selectedTexture.Parent?.Name.EndsWith("_ExtMtl") ?? false);
                 _mainWindow.ModelPanel.Invalidate();
             }
         }
@@ -1679,7 +1697,7 @@ namespace System.Windows.Forms
 
         private void exportTextureToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_selectedTexture != null && _selectedTexture.Source is TEX0Node)
+            if (_selectedTexture?.Source is TEX0Node)
             {
                 TEX0Node node = _selectedTexture.Source as TEX0Node;
                 using (SaveFileDialog dlgSave = new SaveFileDialog())
@@ -1953,9 +1971,9 @@ namespace System.Windows.Forms
                                     g.DrawRectangle(Pens.Black, r);
                                 }
                             }
-                            else if (_pat0Selection != null)
+                            else
                             {
-                                if (_pat0Selection.FindChildByType(c.MaterialNode.Name, false,
+                                if (_pat0Selection?.FindChildByType(c.MaterialNode.Name, false,
                                         ResourceType.PAT0Entry) != null)
                                 {
                                     Rectangle r = lstObjects.GetItemRectangle(i);
@@ -1978,7 +1996,7 @@ namespace System.Windows.Forms
             Graphics g = e.Graphics;
             ResourceNode rn = null;
 
-            if (_selectedObject != null && _selectedObject is MDL0ObjectNode)
+            if (_selectedObject is MDL0ObjectNode)
             {
                 for (int i = 0; i < lstTextures.Items.Count; i++)
                 {
@@ -1999,9 +2017,9 @@ namespace System.Windows.Forms
                                         g.DrawRectangle(Pens.Black, r);
                                     }
                                 }
-                                else if (_pat0Selection != null)
+                                else
                                 {
-                                    if (_pat0Selection.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index,
+                                    if (_pat0Selection?.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index,
                                             false, ResourceType.PAT0Texture) != null)
                                     {
                                         Rectangle r = lstTextures.GetItemRectangle(i);
@@ -2076,7 +2094,7 @@ namespace System.Windows.Forms
         private void inModelsBRRESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResourceNode r = TargetModel as ResourceNode;
-            if (r == null || r.Parent == null || r.Parent.Parent == null || !(r.Parent.Parent is BRRESNode))
+            if (!(r?.Parent?.Parent is BRRESNode))
             {
                 return;
             }
@@ -2089,7 +2107,7 @@ namespace System.Windows.Forms
             Type t = ModelEditorBase.AnimTypeList[(int) TargetAnimType];
             Reflection.MethodInfo method = typeof(BRRESNode).GetMethod("CreateResource");
             Reflection.MethodInfo generic = method.MakeGenericMethod(t);
-            generic.Invoke(target, new object[] {"New" + TargetAnimType.ToString()});
+            generic.Invoke(target, new object[] {"New" + TargetAnimType});
             UpdateAnimations();
             listAnims.Items[listAnims.Items.Count - 1].Selected = true;
         }
@@ -2109,8 +2127,7 @@ namespace System.Windows.Forms
         private void ctxAnimList_Opening(object sender, CancelEventArgs e)
         {
             ResourceNode r = TargetModel as ResourceNode;
-            bool targetBRRES = !(r == null || r.Parent == null || r.Parent.Parent == null ||
-                                 !(r.Parent.Parent is BRRESNode));
+            bool targetBRRES = !!(r?.Parent?.Parent is BRRESNode);
 
             if (!targetBRRES)
             {
@@ -2290,7 +2307,7 @@ namespace System.Windows.Forms
         private void lstDrawCalls_SelectedIndexChanged(object sender, EventArgs e)
         {
             DrawCall c = lstDrawCalls.SelectedItem as DrawCall;
-            if (c != null && c.MaterialNode != null)
+            if (c?.MaterialNode != null)
             {
                 TargetTexRef = _selectedTexture != null
                     ? c.MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode

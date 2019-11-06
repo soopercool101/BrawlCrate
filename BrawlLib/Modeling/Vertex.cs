@@ -35,7 +35,7 @@ namespace BrawlLib.Modeling
 
         public IMatrixNode GetMatrixNode()
         {
-            if (_parent != null && _parent.MatrixNode != null)
+            if (_parent?.MatrixNode != null)
             {
                 return _parent.MatrixNode;
             }
@@ -313,10 +313,7 @@ namespace BrawlLib.Modeling
             //Have to use this function instead of setting the vertices directly
             //This is because the vertex set may be used by other objects
             MDL0ObjectNode obj = _parent as MDL0ObjectNode;
-            if (obj != null)
-            {
-                obj.SetEditedVertices();
-            }
+            obj?.SetEditedVertices();
         }
 
         public void SetPosition()

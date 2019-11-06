@@ -310,7 +310,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             FixedFlags.RefDistanceConstant,
             FixedFlags.RefBrightnessConstant,
             FixedFlags.CutoffConstant,
-            FixedFlags.ShininessConstant,
+            FixedFlags.ShininessConstant
         };
 
         [Flags]
@@ -1201,6 +1201,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         SpotCut,
         SpotBright,
         RefDist,
-        RefBright,
+        RefBright
     }
 }

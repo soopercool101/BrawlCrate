@@ -30,7 +30,10 @@ namespace BrawlLib.Wii.Animations
                 kf = new KeyframeCollection(arrayCount, numFrames, defaults);
             }
 
-            kf.Loop = node.Loop;
+            if (node != null)
+            {
+                kf.Loop = node.Loop;
+            }
 
             return kf;
         }

@@ -253,7 +253,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("Slot {0} - {1}", Index + 1, Name);
+            return $"Slot {Index + 1} - {Name}";
         }
     }
 }

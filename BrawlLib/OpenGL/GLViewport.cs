@@ -71,10 +71,7 @@ namespace BrawlLib.OpenGL
             get => _backImg;
             set
             {
-                if (_backImg != null)
-                {
-                    _backImg.Dispose();
-                }
+                _backImg?.Dispose();
 
                 _backImg = value;
                 _updateImage = true;
@@ -246,7 +243,7 @@ namespace BrawlLib.OpenGL
         {
             _type = ViewportProjection.Perspective,
             _camera = new GLCamera(),
-            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f)
         };
 
         public static GLViewport BaseOrtho => new GLViewport
@@ -257,9 +254,9 @@ namespace BrawlLib.OpenGL
                 _ortho = true,
                 _nearZ = -10000.0f,
                 _farZ = 10000.0f,
-                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f),
+                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f)
             },
-            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f)
         };
 
         public static GLViewport DefaultOrtho

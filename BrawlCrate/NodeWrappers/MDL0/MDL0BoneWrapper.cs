@@ -116,31 +116,25 @@ namespace BrawlCrate.NodeWrappers
         public void Regen()
         {
             MDL0BoneNode b = _resource as MDL0BoneNode;
-            if (b != null)
+            MDL0Node m = b?.Model;
+            if (m != null)
             {
-                MDL0Node m = b.Model;
-                if (m != null)
-                {
-                    m._linker.RegenerateBoneCache(true);
-                    OnUpdateProperties(null, null);
-                    b.SignalPropertyChange();
-                }
+                m._linker.RegenerateBoneCache(true);
+                OnUpdateProperties(null, null);
+                b.SignalPropertyChange();
             }
         }
 
         public void Remap()
         {
             MDL0BoneNode b = _resource as MDL0BoneNode;
-            if (b != null)
+            MDL0Node m = b?.Model;
+            if (m != null)
             {
-                MDL0Node m = b.Model;
-                if (m != null)
-                {
-                    b._entryIndex = m._linker.BoneCache.Length;
-                    m._linker.RegenerateBoneCache();
-                    OnUpdateProperties(null, null);
-                    b.SignalPropertyChange();
-                }
+                b._entryIndex = m._linker.BoneCache.Length;
+                m._linker.RegenerateBoneCache();
+                OnUpdateProperties(null, null);
+                b.SignalPropertyChange();
             }
         }
 

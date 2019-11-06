@@ -986,7 +986,7 @@ namespace BrawlLib.Wii.Graphics
 
         public override string ToString()
         {
-            return string.Format("A:{0}, B:{1}, Type:{2}", RB, AG, Type);
+            return $"A:{RB}, B:{AG}, Type:{Type}";
         }
     }
 

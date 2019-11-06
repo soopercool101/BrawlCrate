@@ -321,7 +321,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = string.Format("[{0}]Data", Index);
+                _name = $"[{Index}]Data";
             }
 
             if (Parent.Parent.Children.Count > 1 && _part3._waveIndex < Parent.Parent.Children[1].Children.Count)
@@ -424,7 +424,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            _name = string.Format("{0}", string.IsNullOrEmpty(closestMatch) ? "[" + Index + "]Data" : closestMatch);
+            _name = $"{(string.IsNullOrEmpty(closestMatch) ? "[" + Index + "]Data" : closestMatch)}";
         }
     }
 }

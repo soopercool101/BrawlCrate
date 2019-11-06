@@ -3,10 +3,8 @@ using System.Linq;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
-using BrawlManagerLib;
 using System.Audio;
 using System.ComponentModel;
-using System.Drawing;
 using System.Collections.Generic;
 
 namespace BrawlManagerLib
@@ -157,10 +155,10 @@ namespace BrawlManagerLib
                 songNameBar.Index = -1;
             }
 
-            if (LoadBrstms && _rootNode is IAudioSource)
+            if (LoadBrstms && _rootNode is IAudioSource node)
             {
                 grid.SelectedObject = _rootNode;
-                app.TargetSource = _rootNode as IAudioSource;
+                app.TargetSource = node;
                 app.Enabled = grid.Enabled = true;
             }
             else
@@ -316,7 +314,7 @@ namespace BrawlManagerLib
 
         private void nudVolume_ValueChanged(object sender, EventArgs e)
         {
-            app.VolumePercent = nudVolume.Value < 0 ? 1.0 : (double) nudVolume.Value / 127.0;
+            app.VolumePercent = nudVolume.Value <= 0 ? 1.0 : (double) nudVolume.Value / 127.0;
         }
 
         private void app_AudioEnded(object sender, EventArgs e)

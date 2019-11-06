@@ -102,6 +102,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().Rename();
         }
 
+        protected static void SortAction(object sender, EventArgs e)
+        {
+            GetInstance<GenericWrapper>().Sort();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DuplicateToolStripMenuItem.Enabled = true;
@@ -139,6 +144,12 @@ namespace BrawlCrate.NodeWrappers
         }
 
         public virtual ContextMenuStrip MultiSelectMenuStrip => MultiSelectMenu;
+
+        public virtual void Sort()
+        {
+            _resource.SortChildren();
+            RefreshView(_resource);
+        }
 
         public void MoveUp()
         {
@@ -202,25 +213,6 @@ namespace BrawlCrate.NodeWrappers
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
 
-        public static int CategorizeFilter(string path, string filter)
-        {
-            string ext = "*" + Path.GetExtension(path);
-
-            string[] split = filter.Split('|');
-            for (int i = 3; i < split.Length; i += 2)
-            {
-                foreach (string s in split[i].Split(';'))
-                {
-                    if (s.Equals(ext, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return (i + 1) / 2;
-                    }
-                }
-            }
-
-            return 1;
-        }
-
         public virtual void ExportSelected()
         {
             string folder = Program.ChooseFolder();
@@ -248,7 +240,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 ExportAllFormatDialog dialog = new ExportAllFormatDialog(ext.Key, ext.Value);
 
-                if (dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
+                if (dialog.AutoSelect || dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
                 {
                     chosenExtensions.Add(ext.Key, dialog.SelectedExtension);
                 }
@@ -301,15 +293,14 @@ namespace BrawlCrate.NodeWrappers
                 return;
             }
 
-            int index = Program.OpenFile(ReplaceFilter, out string inPath);
-            if (index != 0)
+            if (Program.OpenFile(ReplaceFilter, out string inPath))
             {
-                OnReplace(inPath, index);
+                OnReplace(inPath);
                 Link(_resource);
             }
         }
 
-        public virtual void OnReplace(string inStream, int filterIndex)
+        public virtual void OnReplace(string inStream)
         {
             _resource.Replace(inStream);
         }
@@ -321,7 +312,7 @@ namespace BrawlCrate.NodeWrappers
 
         public virtual void Delete()
         {
-            if (Parent == null || Form.ActiveForm != MainForm.Instance)
+            if (Parent == null)
             {
                 return;
             }

@@ -104,10 +104,10 @@ namespace System.Windows.Forms
             lstSets.TabIndex = 0;
             lstSets.UseCompatibleStateImageBehavior = false;
             lstSets.View = View.Details;
-            lstSets.ColumnClick += lstSets_ColumnClick;
-            lstSets.SelectedIndexChanged += lstSets_SelectedIndexChanged;
-            lstSets.DoubleClick += lstSets_DoubleClick;
-            lstSets.KeyDown += lstSets_KeyDown;
+            lstSets.ColumnClick += new ColumnClickEventHandler(lstSets_ColumnClick);
+            lstSets.SelectedIndexChanged += new EventHandler(lstSets_SelectedIndexChanged);
+            lstSets.DoubleClick += new EventHandler(lstSets_DoubleClick);
+            lstSets.KeyDown += new KeyEventHandler(lstSets_KeyDown);
             // 
             // clmType
             // 
@@ -140,35 +140,35 @@ namespace System.Windows.Forms
             });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Drawing.Size(138, 108);
-            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
+            contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
             // 
             // mnuPath
             // 
             mnuPath.Name = "mnuPath";
             mnuPath.Size = new Drawing.Size(137, 26);
             mnuPath.Text = "Path...";
-            mnuPath.Click += mnuPath_Click;
+            mnuPath.Click += new EventHandler(mnuPath_Click);
             // 
             // mnuExport
             // 
             mnuExport.Name = "mnuExport";
             mnuExport.Size = new Drawing.Size(137, 26);
             mnuExport.Text = "Export";
-            mnuExport.Click += mnuExport_Click;
+            mnuExport.Click += new EventHandler(mnuExport_Click);
             // 
             // mnuReplace
             // 
             mnuReplace.Name = "mnuReplace";
             mnuReplace.Size = new Drawing.Size(137, 26);
             mnuReplace.Text = "Replace";
-            mnuReplace.Click += mnuReplace_Click;
+            mnuReplace.Click += new EventHandler(mnuReplace_Click);
             // 
             // _deleteToolStripMenuItem
             // 
             _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
             _deleteToolStripMenuItem.Size = new Drawing.Size(137, 26);
             _deleteToolStripMenuItem.Text = "Delete";
-            _deleteToolStripMenuItem.Click += _deleteToolStripMenuItem_Click;
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -203,35 +203,35 @@ namespace System.Windows.Forms
             rWSDToolStripMenuItem.Name = "rWSDToolStripMenuItem";
             rWSDToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rWSDToolStripMenuItem.Text = "RWSD";
-            rWSDToolStripMenuItem.Click += rWSDToolStripMenuItem_Click;
+            rWSDToolStripMenuItem.Click += new EventHandler(rWSDToolStripMenuItem_Click);
             // 
             // rSEQToolStripMenuItem
             // 
             rSEQToolStripMenuItem.Name = "rSEQToolStripMenuItem";
             rSEQToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rSEQToolStripMenuItem.Text = "RSEQ";
-            rSEQToolStripMenuItem.Click += rSEQToolStripMenuItem_Click;
+            rSEQToolStripMenuItem.Click += new EventHandler(rSEQToolStripMenuItem_Click);
             // 
             // rBNKToolStripMenuItem
             // 
             rBNKToolStripMenuItem.Name = "rBNKToolStripMenuItem";
             rBNKToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rBNKToolStripMenuItem.Text = "RBNK";
-            rBNKToolStripMenuItem.Click += rBNKToolStripMenuItem_Click;
+            rBNKToolStripMenuItem.Click += new EventHandler(rBNKToolStripMenuItem_Click);
             // 
             // rSTMToolStripMenuItem
             // 
             rSTMToolStripMenuItem.Name = "rSTMToolStripMenuItem";
             rSTMToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rSTMToolStripMenuItem.Text = "RSTM";
-            rSTMToolStripMenuItem.Click += rSTMToolStripMenuItem_Click;
+            rSTMToolStripMenuItem.Click += new EventHandler(rSTMToolStripMenuItem_Click);
             // 
             // externalReferenceToolStripMenuItem
             // 
             externalReferenceToolStripMenuItem.Name = "externalReferenceToolStripMenuItem";
             externalReferenceToolStripMenuItem.Size = new Drawing.Size(207, 26);
             externalReferenceToolStripMenuItem.Text = "External Reference";
-            externalReferenceToolStripMenuItem.Click += externalReferenceToolStripMenuItem_Click;
+            externalReferenceToolStripMenuItem.Click += new EventHandler(externalReferenceToolStripMenuItem_Click);
             // 
             // audioPlaybackPanel1
             // 
@@ -242,7 +242,7 @@ namespace System.Windows.Forms
             audioPlaybackPanel1.TabIndex = 2;
             audioPlaybackPanel1.TargetStreams = null;
             audioPlaybackPanel1.Visible = false;
-            audioPlaybackPanel1.Volume = 0;
+            audioPlaybackPanel1.Volume = null;
             // 
             // editToolStripMenuItem
             // 
@@ -260,14 +260,14 @@ namespace System.Windows.Forms
             makeAllExternalToolStripMenuItem.Name = "makeAllExternalToolStripMenuItem";
             makeAllExternalToolStripMenuItem.Size = new Drawing.Size(197, 26);
             makeAllExternalToolStripMenuItem.Text = "Make all external";
-            makeAllExternalToolStripMenuItem.Click += makeAllExternalToolStripMenuItem_Click;
+            makeAllExternalToolStripMenuItem.Click += new EventHandler(makeAllExternalToolStripMenuItem_Click);
             // 
             // makeAllInternalToolStripMenuItem
             // 
             makeAllInternalToolStripMenuItem.Name = "makeAllInternalToolStripMenuItem";
             makeAllInternalToolStripMenuItem.Size = new Drawing.Size(197, 26);
             makeAllInternalToolStripMenuItem.Text = "Make all internal";
-            makeAllInternalToolStripMenuItem.Click += makeAllInternalToolStripMenuItem_Click;
+            makeAllInternalToolStripMenuItem.Click += new EventHandler(makeAllInternalToolStripMenuItem_Click);
             // 
             // SoundPackControl
             // 
@@ -276,7 +276,7 @@ namespace System.Windows.Forms
             Controls.Add(menuStrip1);
             Name = "SoundPackControl";
             Size = new Drawing.Size(389, 253);
-            DoubleClick += lstSets_DoubleClick;
+            DoubleClick += new EventHandler(lstSets_DoubleClick);
             contextMenuStrip1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -347,7 +347,7 @@ namespace System.Windows.Forms
 
             if (lstSets.InvokeRequired)
             {
-                delUpdate callbackMethod = Update;
+                delUpdate callbackMethod = new delUpdate(Update);
                 Invoke(callbackMethod, lstSets);
             }
             else
@@ -529,7 +529,7 @@ namespace System.Windows.Forms
         {
             RWSDNode node = new RWSDNode
             {
-                _name = string.Format("[{0}] RWSD", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] RWSD",
                 _fileIndex = _targetNode.Files.Count
             };
             node.InitGroups();
@@ -543,7 +543,7 @@ namespace System.Windows.Forms
         {
             RSEQNode node = new RSEQNode
             {
-                _name = string.Format("[{0}] RSEQ", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] RSEQ",
                 _fileIndex = _targetNode.Files.Count
             };
             node._parent = _targetNode;
@@ -556,7 +556,7 @@ namespace System.Windows.Forms
         {
             RBNKNode node = new RBNKNode
             {
-                _name = string.Format("[{0}] RBNK", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] RBNK",
                 _fileIndex = _targetNode.Files.Count
             };
             node.InitGroups();
@@ -570,7 +570,7 @@ namespace System.Windows.Forms
         {
             RSARExtFileNode node = new RSARExtFileNode
             {
-                _name = string.Format("[{0}] External", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] External",
                 _fileIndex = _targetNode.Files.Count
             };
             node._parent = _targetNode;
@@ -591,9 +591,7 @@ namespace System.Windows.Forms
                         dlg.AudioSource = ofd.FileName;
                         if (dlg.ShowDialog(this) == DialogResult.OK)
                         {
-                            r.Name = string.Format("[{0}] {1}",
-                                _targetNode.Files.Count,
-                                Path.GetFileNameWithoutExtension(dlg.AudioSource));
+                            r.Name = $"[{_targetNode.Files.Count}] {Path.GetFileNameWithoutExtension(dlg.AudioSource)}";
                             r.ReplaceRaw(dlg.AudioData);
                         }
                     }
@@ -694,7 +692,7 @@ namespace System.Windows.Forms
                 _targetNode.Files.Insert(i.Index, ext);
 
                 ext.ExtPath = (dir + fileName).Replace('\\', '/');
-                ext.Name = string.Format("[{0}] {1}", i.Index, ext.ExtPath);
+                ext.Name = $"[{i.Index}] {ext.ExtPath}";
 
                 if ((i._node is RBNKNode || i._node is RSARExtFileNode) && rbnkRefs != null)
                 {

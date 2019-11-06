@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace BrawlCrate.CostumeManager
@@ -11,7 +7,7 @@ namespace BrawlCrate.CostumeManager
     {
         public void UpdateImage(int charNum, int costumeNum, bool confident)
         {
-            Text = string.Format("Char {0} / Costume {1}", charNum, costumeNum);
+            Text = $"Char {charNum} / Costume {costumeNum}";
             if (!confident)
             {
                 Text += " (?)";

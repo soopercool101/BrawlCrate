@@ -1,9 +1,7 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
 using System.Drawing;
 using System.Collections.Generic;
-using System.IO;
 
 namespace System.Windows.Forms
 {
@@ -83,7 +81,7 @@ namespace System.Windows.Forms
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Drawing.Size(33, 22);
             btnAdd.Text = "Add";
-            btnAdd.Click += btnAdd_Click;
+            btnAdd.Click += new EventHandler(btnAdd_Click);
             // 
             // btnRemove
             // 
@@ -93,7 +91,7 @@ namespace System.Windows.Forms
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Drawing.Size(54, 22);
             btnRemove.Text = "Remove";
-            btnRemove.Click += btnRemove_Click;
+            btnRemove.Click += new EventHandler(btnRemove_Click);
             // 
             // btnModify
             // 
@@ -103,7 +101,7 @@ namespace System.Windows.Forms
             btnModify.Name = "btnModify";
             btnModify.Size = new Drawing.Size(49, 22);
             btnModify.Text = "Modify";
-            btnModify.Click += btnModify_Click;
+            btnModify.Click += new EventHandler(btnModify_Click);
             // 
             // btnUp
             // 
@@ -113,7 +111,7 @@ namespace System.Windows.Forms
             btnUp.Name = "btnUp";
             btnUp.Size = new Drawing.Size(23, 22);
             btnUp.Text = "▲";
-            btnUp.Click += btnUp_Click;
+            btnUp.Click += new EventHandler(btnUp_Click);
             // 
             // btnDown
             // 
@@ -123,7 +121,7 @@ namespace System.Windows.Forms
             btnDown.Name = "btnDown";
             btnDown.Size = new Drawing.Size(23, 22);
             btnDown.Text = "▼";
-            btnDown.Click += btnDown_Click;
+            btnDown.Click += new EventHandler(btnDown_Click);
             // 
             // panel2
             // 
@@ -159,7 +157,7 @@ namespace System.Windows.Forms
             btnCopy.Name = "btnCopy";
             btnCopy.Size = new Drawing.Size(39, 20);
             btnCopy.Text = "Copy";
-            btnCopy.Click += btnCopy_Click;
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // btnCut
             // 
@@ -169,7 +167,7 @@ namespace System.Windows.Forms
             btnCut.Name = "btnCut";
             btnCut.Size = new Drawing.Size(30, 20);
             btnCut.Text = "Cut";
-            btnCut.Click += btnCut_Click;
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // btnPaste
             // 
@@ -179,7 +177,7 @@ namespace System.Windows.Forms
             btnPaste.Name = "btnPaste";
             btnPaste.Size = new Drawing.Size(39, 20);
             btnPaste.Text = "Paste";
-            btnPaste.Click += btnPaste_Click;
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // btnCopyText
             // 
@@ -189,7 +187,7 @@ namespace System.Windows.Forms
             btnCopyText.Name = "btnCopyText";
             btnCopyText.Size = new Drawing.Size(64, 20);
             btnCopyText.Text = "Copy Text";
-            btnCopyText.Click += btnCopyText_Click;
+            btnCopyText.Click += new EventHandler(btnCopyText_Click);
             // 
             // EventList
             // 
@@ -202,8 +200,8 @@ namespace System.Windows.Forms
             EventList.SelectionMode = SelectionMode.MultiExtended;
             EventList.Size = new Drawing.Size(324, 161);
             EventList.TabIndex = 16;
-            EventList.SelectedIndexChanged += EventList_SelectedIndexChanged;
-            EventList.DoubleClick += EventList_DoubleClick;
+            EventList.SelectedIndexChanged += new EventHandler(EventList_SelectedIndexChanged);
+            EventList.DoubleClick += new EventHandler(EventList_DoubleClick);
             // 
             // splitter1
             // 
@@ -381,7 +379,7 @@ namespace System.Windows.Forms
                     paramEnd = strParams.Length;
                 }
 
-                Array.Resize<string>(ref parameters, index + 1);
+                Array.Resize(ref parameters, index + 1);
                 parameters[index] = strParams.Substring(loc, paramEnd - loc);
                 parameters[index] = Helpers.ClearWhiteSpace(parameters[index]);
 
@@ -510,7 +508,7 @@ namespace System.Windows.Forms
                             TargetNode.Root.GetBoneIndex(ref id);
                         }
 
-                        if (_targetNode.Model != null && _targetNode.Model._linker.BoneCache != null &&
+                        if (_targetNode.Model?._linker.BoneCache != null &&
                             _targetNode.Model._linker.BoneCache.Length > id && id >= 0)
                         {
                             return _targetNode.Model._linker.BoneCache[id].Name;
@@ -763,8 +761,7 @@ namespace System.Windows.Forms
                 case 0x04000200:
                     if (index == 0)
                     {
-                        if (TargetNode.Parent != null && TargetNode.Parent.Parent != null &&
-                            TargetNode.Parent.Parent.Name.StartsWith("Article"))
+                        if (TargetNode.Parent?.Parent != null && TargetNode.Parent.Parent.Name.StartsWith("Article"))
                         {
                             ResourceNode sa = TargetNode.Parent.Parent.FindChild("SubActions", false);
                             if (sa != null)
@@ -1138,7 +1135,7 @@ namespace System.Windows.Forms
             string s = "";
             foreach (int i in EventList.SelectedIndices)
             {
-                s += EventList.Items[i].ToString() + Environment.NewLine;
+                s += EventList.Items[i] + Environment.NewLine;
             }
 
             if (!string.IsNullOrEmpty(s))

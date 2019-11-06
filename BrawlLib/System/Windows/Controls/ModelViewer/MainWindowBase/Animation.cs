@@ -1,7 +1,6 @@
 ﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
-using System;
 using System.Linq;
 
 namespace System.Windows.Forms
@@ -166,7 +165,7 @@ namespace System.Windows.Forms
             {
                 if (PlaybackPanel.InvokeRequired)
                 {
-                    Action<int, int> d = PlaybackPanel.UpdateInterface;
+                    Action<int, int> d = new Action<int, int>(PlaybackPanel.UpdateInterface);
                     Invoke(d, new object[] {_animFrame, loopMax});
                 }
                 else
@@ -182,10 +181,7 @@ namespace System.Windows.Forms
                     InterpolationEditor.Frame = CurrentFrame;
                 }
 
-                if (KeyframePanel != null)
-                {
-                    KeyframePanel.numFrame_ValueChanged();
-                }
+                KeyframePanel?.numFrame_ValueChanged();
             }
         }
 
@@ -296,10 +292,7 @@ namespace System.Windows.Forms
                 InterpolationEditor.Frame = CurrentFrame;
             }
 
-            if (KeyframePanel != null)
-            {
-                KeyframePanel.numFrame_ValueChanged();
-            }
+            KeyframePanel?.numFrame_ValueChanged();
 
             if (_capture)
             {
@@ -378,7 +371,7 @@ namespace System.Windows.Forms
                     {
                         if (KeyframePanel.InvokeRequired)
                         {
-                            Action<int> d = KeyframePanel.UpdateCurrentFrame;
+                            Action<int> d = new Action<int>(KeyframePanel.UpdateCurrentFrame);
                             Invoke(d, new object[] {_animFrame});
                         }
 
@@ -542,40 +535,25 @@ namespace System.Windows.Forms
                     UpdateSRT0FocusControls(SelectedSRT0);
                     break;
                 case NW4RAnimType.SHP:
-                    if (SHP0Editor != null)
-                    {
-                        SHP0Editor.AnimationChanged();
-                    }
+                    SHP0Editor?.AnimationChanged();
 
                     break;
                 case NW4RAnimType.PAT:
-                    if (PAT0Editor != null)
-                    {
-                        PAT0Editor.UpdateBoxes();
-                    }
+                    PAT0Editor?.UpdateBoxes();
 
                     UpdatePAT0FocusControls(SelectedPAT0);
                     break;
                 case NW4RAnimType.VIS:
-                    if (VIS0Editor != null)
-                    {
-                        VIS0Editor.AnimationChanged();
-                    }
+                    VIS0Editor?.AnimationChanged();
 
                     break;
                 case NW4RAnimType.SCN:
-                    if (SCN0Editor != null)
-                    {
-                        SCN0Editor.tabControl1_Selected(null,
-                            new TabControlEventArgs(null, SCN0Editor._tabIndex, TabControlAction.Selected));
-                    }
+                    SCN0Editor?.tabControl1_Selected(null,
+                        new TabControlEventArgs(null, SCN0Editor._tabIndex, TabControlAction.Selected));
 
                     break;
                 case NW4RAnimType.CLR:
-                    if (CLR0Editor != null)
-                    {
-                        CLR0Editor.AnimationChanged();
-                    }
+                    CLR0Editor?.AnimationChanged();
 
                     break;
             }
@@ -629,6 +607,11 @@ namespace System.Windows.Forms
             else
             {
                 int loopBias = node.Loop && Interpolated.Contains(node.GetType()) ? 1 : 0;
+
+                if (BrawlLib.Properties.Settings.Default.ContextualLoopAnimation)
+                {
+                    PlaybackPanel.chkLoop.Checked = node.Loop;
+                }
 
                 _maxFrame = node.FrameCount;
                 EnableTransformEdit = !_playing;
@@ -721,7 +704,7 @@ namespace System.Windows.Forms
             ResourceType.PAT0,
             ResourceType.VIS0,
             ResourceType.CLR0,
-            ResourceType.SCN0,
+            ResourceType.SCN0
         };
 
         public virtual void SetCorrespondingAnimation(NW4RAnimType focusType, NW4RAnimType targetType)

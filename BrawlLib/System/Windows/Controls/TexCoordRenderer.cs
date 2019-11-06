@@ -51,10 +51,7 @@ namespace System.Windows.Forms
                 _attached = new List<ResourceNode>();
             }
 
-            if (Tex0 != null)
-            {
-                Tex0.Unbind();
-            }
+            Tex0?.Unbind();
 
             _attached.Clear();
 
@@ -66,20 +63,14 @@ namespace System.Windows.Forms
 
             _attached.Add(_targetMatRef);
 
-            if (Tex0 != null)
-            {
-                Tex0.Prepare(_targetMatRef, -1);
-            }
+            Tex0?.Prepare(_targetMatRef, -1);
 
             //Dispose of all old UV buffers
             if (_renderInfo != null)
             {
                 foreach (RenderInfo info in _renderInfo)
                 {
-                    if (info._renderBuffer != null)
-                    {
-                        info._renderBuffer.Dispose();
-                    }
+                    info._renderBuffer?.Dispose();
                 }
             }
 
@@ -217,7 +208,7 @@ namespace System.Windows.Forms
 
                 _uvSetNames.Clear();
                 _uvSetNames.Add(_uvSetIndices.Count == 1 ? model._uvList[_uvSetIndices[0]].Name : "All");
-                if (model != null && model._uvList != null && _uvSetIndices.Count != 1)
+                if (model?._uvList != null && _uvSetIndices.Count != 1)
                 {
                     foreach (int i in _uvSetIndices)
                     {
@@ -253,7 +244,7 @@ namespace System.Windows.Forms
                         info._enabled = new bool[8];
                         for (int x = 0; x < 8; x++)
                         {
-                            if (info._manager != null && info._manager._faceData[x + 4] != null)
+                            if (info._manager?._faceData[x + 4] != null)
                             {
                                 info._enabled[x] = !singleUV || _uvIndex == x;
                             }
@@ -266,7 +257,7 @@ namespace System.Windows.Forms
                     info._enabled = new bool[8];
                     for (int x = 0; x < 8; x++)
                     {
-                        if (info._manager != null && info._manager._faceData[x + 4] != null)
+                        if (info._manager?._faceData[x + 4] != null)
                         {
                             info._enabled[x] = !singleUV || _uvIndex == r++;
                         }
@@ -283,7 +274,7 @@ namespace System.Windows.Forms
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);
             GL.Disable(EnableCap.DepthTest);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             _attached = new List<ResourceNode>();
             ctx._states["_Node_Refs"] = _attached;
@@ -327,7 +318,7 @@ namespace System.Windows.Forms
                     s = Width / (float) bgTex.Width,
                     t = Height / (float) bgTex.Height;
 
-                GL.Begin(PrimitiveType.Quads);
+                GL.Begin(BeginMode.Quads);
 
                 GL.TexCoord2(0.0f, 0.0f);
                 GL.Vertex2(-halfW, -halfH);
@@ -430,7 +421,7 @@ namespace System.Windows.Forms
             GL.BindTexture(TextureTarget.Texture2D, texture._texId);
 
             //Draw a quad across the screen and render the texture with the calculated texcoords
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.TexCoord2(texCoord[0], texCoord[1]);
             GL.Vertex2(-halfW, -halfH);
@@ -646,7 +637,7 @@ namespace System.Windows.Forms
             {
                 _min = new Vector2(float.MaxValue);
                 _max = new Vector2(float.MinValue);
-                if (_manager != null && _manager._faceData != null)
+                if (_manager?._faceData != null)
                 {
                     for (int i = 4; i < _manager._faceData.Length; i++)
                     {
@@ -725,20 +716,11 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (_manager._triangles != null)
-                {
-                    _manager._triangles.Render();
-                }
+                _manager._triangles?.Render();
 
-                if (_manager._lines != null)
-                {
-                    _manager._lines.Render();
-                }
+                _manager._lines?.Render();
 
-                if (_manager._points != null)
-                {
-                    _manager._points.Render();
-                }
+                _manager._points?.Render();
 
                 GL.DisableClientState(ArrayCap.VertexArray);
             }

@@ -162,7 +162,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Bone")]
         [Description("These draw calls use this bone to control their visibility.")]
         public string[] VisibilityDrawCalls =>
-            _visDrawCalls.Select(x => x._parentObject.ToString() + " " + x.ToString()).ToArray();
+            _visDrawCalls.Select(x => x._parentObject + " " + x).ToArray();
 
         [Category("Bone")]
         [Description("These objects use this bone as a single-bind influence (the only bone they're rigged to).")]
@@ -262,7 +262,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _entryIndex = value;
 
                 MDL0Node model = Model;
-                if (model != null && model._linker != null && model._linker.BoneCache != null)
+                if (model?._linker?.BoneCache != null)
                 {
                     if (down)
                     {
@@ -1318,7 +1318,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             if (_nodeColor != Color.Transparent && viewport != null)
             {
                 Vector3 screenPos = viewport.Camera.Project(_frameMatrix.GetPoint());
-                viewport.ScreenText[Name] = new Vector3(screenPos._x, screenPos._y - 9.0f, screenPos._z);
+                viewport.SettingsScreenText[Name] = new Vector3(screenPos._x, screenPos._y - 9.0f, screenPos._z);
             }
 
             float alpha = targetModel ? 1.0f : 0.45f;
@@ -1335,7 +1335,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             //Draw bone line
             Vector3 currentPos = _frameMatrix.GetPoint();
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
             GL.Vertex3((float*) &parentPos);
             GL.Vertex3((float*) &currentPos);
             GL.End();
@@ -1377,7 +1377,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                 }
 
                 GL.Enable(EnableCap.PointSmooth);
-                GL.Begin(PrimitiveType.Points);
+                GL.Begin(BeginMode.Points);
                 GL.Vertex3(0, 0, 0);
                 GL.End();
             }
@@ -1428,7 +1428,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
         public static void DrawNodeOrients(float alpha = 1.0f)
         {
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             GL.Color4(1.0f, 0.0f, 0.0f, alpha);
             GL.Vertex3(0.0f, 0.0f, 0.0f);

@@ -238,15 +238,9 @@ namespace BrawlCrate.StageManager
         public void UpdateDirectory()
         {
             Console.WriteLine(Environment.CurrentDirectory);
-            if (sc_selmap != null)
-            {
-                sc_selmap.Dispose();
-            }
+            sc_selmap?.Dispose();
 
-            if (common5 != null)
-            {
-                common5.Dispose();
-            }
+            common5?.Dispose();
 
             _openFilePath = null;
             fileSizeBar.Maximum = 1214283;
@@ -507,14 +501,8 @@ namespace BrawlCrate.StageManager
 
         public void exportAll(string folder)
         {
-            if (sc_selmap != null)
-            {
-                BRRESNode bres = sc_selmap.FindChild("Misc Data [80]", false) as BRRESNode;
-                if (bres != null)
-                {
-                    bres.ExportToFolder(folder, ".png");
-                }
-            }
+            BRRESNode bres = sc_selmap?.FindChild("Misc Data [80]", false) as BRRESNode;
+            bres?.ExportToFolder(folder, ".png");
         }
 
         #endregion
@@ -975,30 +963,15 @@ namespace BrawlCrate.StageManager
                 return;
             }
 
-            if (texs.prevbase.tex0 != null)
-            {
-                texs.prevbase.tex0.Export(thisdir + "/MenSelmapPrevbase.png");
-            }
+            texs.prevbase.tex0?.Export(thisdir + "/MenSelmapPrevbase.png");
 
-            if (texs.icon.tex0 != null)
-            {
-                texs.icon.tex0.Export(thisdir + "/MenSelmapIcon.png");
-            }
+            texs.icon.tex0?.Export(thisdir + "/MenSelmapIcon.png");
 
-            if (texs.frontstname.tex0 != null)
-            {
-                texs.frontstname.tex0.Export(thisdir + "/MenSelmapFrontStname.png");
-            }
+            texs.frontstname.tex0?.Export(thisdir + "/MenSelmapFrontStname.png");
 
-            if (texs.seriesicon.tex0 != null)
-            {
-                texs.seriesicon.tex0.Export(thisdir + "/MenSelchrMark.png");
-            }
+            texs.seriesicon.tex0?.Export(thisdir + "/MenSelchrMark.png");
 
-            if (texs.selmap_mark.tex0 != null)
-            {
-                texs.selmap_mark.tex0.Export(thisdir + "/MenSelmapMark.png");
-            }
+            texs.selmap_mark.tex0?.Export(thisdir + "/MenSelmapMark.png");
         }
 
         public void openModifyPAT0Dialog()

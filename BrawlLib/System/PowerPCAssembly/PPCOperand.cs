@@ -60,14 +60,14 @@
 
                 switch (_opType)
                 {
-                    case OperandType.VAL:       return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
-                    case OperandType.UVAL:      return string.Format("0x{0:X}", val);
-                    case OperandType.OFFSET:    return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
-                    case OperandType.UOFFSET:   return string.Format("0x{0:X}", val);
-                    case OperandType.REGISTER:  return string.Format("r{0}", val);
-                    case OperandType.FREGISTER: return string.Format("f{0}", val);
-                    case OperandType.CREGISTER: return string.Format("cr{0}", val);
-                    case OperandType.VREGISTER: return string.Format("v{0}", val);
+                    case OperandType.VAL:       return (val < 0 ? "-" : "") + $"0x{Math.Abs(val):X}";
+                    case OperandType.UVAL:      return $"0x{val:X}";
+                    case OperandType.OFFSET:    return (val < 0 ? "-" : "") + $"0x{Math.Abs(val):X}";
+                    case OperandType.UOFFSET:   return $"0x{val:X}";
+                    case OperandType.REGISTER:  return $"r{val}";
+                    case OperandType.FREGISTER: return $"f{val}";
+                    case OperandType.CREGISTER: return $"cr{val}";
+                    case OperandType.VREGISTER: return $"v{val}";
                     case OperandType.SREGISTER:
                         switch (val)
                         {

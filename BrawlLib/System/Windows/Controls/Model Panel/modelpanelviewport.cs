@@ -2,12 +2,12 @@
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using OpenTK.Graphics.OpenGL;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Runtime.Serialization;
+using OpenTK.Graphics.OpenGL;
 
 namespace System.Windows.Forms
 {
@@ -15,7 +15,8 @@ namespace System.Windows.Forms
     {
         public ModelPanelViewport()
         {
-            _text = new ScreenTextHandler(this);
+            _settingsText = new ScreenTextHandler(this);
+            _noSettingsText = new ScreenTextHandler(this);
             _camera = new GLCamera();
             LightPosition = new Vector4(100.0f, 45.0f, 45.0f, 1.0f);
 
@@ -63,7 +64,7 @@ namespace System.Windows.Forms
                 _ortho = _camera._ortho,
                 _restrictXRot = _camera._restrictXRot,
                 _restrictYRot = _camera._restrictYRot,
-                _restrictZRot = _camera._restrictZRot,
+                _restrictZRot = _camera._restrictZRot
             };
         }
 
@@ -96,7 +97,8 @@ namespace System.Windows.Forms
         public bool _shiftSelecting;
         public Drawing.Point _selStart, _selEnd;
 
-        private readonly ScreenTextHandler _text;
+        private readonly ScreenTextHandler _settingsText;
+        private readonly ScreenTextHandler _noSettingsText;
 
         public bool _textEnabled;
         public bool _allowSelection;
@@ -125,7 +127,10 @@ namespace System.Windows.Forms
         public bool Selecting => _selecting;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ScreenTextHandler ScreenText => _text;
+        public ScreenTextHandler SettingsScreenText => _settingsText;
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public ScreenTextHandler NoSettingsScreenText => _noSettingsText;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Drawing.Point SelectionStart
@@ -532,13 +537,14 @@ namespace System.Windows.Forms
             {
                 Vector3 point = Camera.GetPoint().Round(3);
                 Vector3 rot = Camera._rotation.Round(3);
-                _text[
-                    string.Format("Position\nX: {0}\nY: {1}\nZ: {2}\n\nRotation\nX: {3}\nY: {4}\nZ: {5}", point._x,
-                        point._y, point._z, rot._x, rot._y, rot._z)] = new Vector3(5.0f, 5.0f, 0.5f);
+                _settingsText[
+                        $"Position\nX: {point._x}\nY: {point._y}\nZ: {point._z}\n\nRotation\nX: {rot._x}\nY: {rot._y}\nZ: {rot._z}"]
+                    = new Vector3(5.0f, 5.0f, 0.5f);
             }
 
             //Render selection overlay and/or text overlays
-            if (_selecting && _allowSelection || _text.Count != 0 && _textEnabled || !only)
+            if (_selecting && _allowSelection || _settingsText.Count != 0 && _textEnabled ||
+                _noSettingsText.Count != 0 || !only)
             {
                 GL.PushAttrib(AttribMask.AllAttribBits);
                 {
@@ -562,7 +568,7 @@ namespace System.Windows.Forms
                             if (!only)
                             {
                                 GL.Color4(current ? Color.DarkOrange : Color.Gray);
-                                GL.Begin(PrimitiveType.LineLoop);
+                                GL.Begin(BeginMode.LineLoop);
                                 GL.Vertex2(0, 0);
                                 GL.Vertex2(0, Height);
                                 GL.Vertex2(Width, Height);
@@ -572,9 +578,15 @@ namespace System.Windows.Forms
                             }
 
                             GL.Color4(Color.White);
-                            if (_text.Count != 0 && _textEnabled)
+
+                            if (_settingsText?.Count != 0 && _textEnabled)
                             {
-                                _text.Draw();
+                                _settingsText?.Draw();
+                            }
+
+                            if (_noSettingsText?.Count != 0)
+                            {
+                                _noSettingsText?.Draw();
                             }
 
                             if (_selecting && _allowSelection)
@@ -591,7 +603,8 @@ namespace System.Windows.Forms
 
                 //Clear text values
                 //This will be filled until the next render
-                _text.Clear();
+                _settingsText.Clear();
+                _noSettingsText.Clear();
             }
         }
 
@@ -602,7 +615,7 @@ namespace System.Windows.Forms
                 GL.Enable(EnableCap.LineStipple);
                 GL.LineStipple(1, 0x0F0F);
                 GL.Color4(Color.Blue);
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.Vertex2(_selStart.X, _selStart.Y);
                 GL.Vertex2(_selEnd.X, _selStart.Y);
                 GL.Vertex2(_selEnd.X, _selEnd.Y);
@@ -725,7 +738,7 @@ namespace System.Windows.Forms
                             break;
                     }
 
-                    GL.Begin(PrimitiveType.Quads);
+                    GL.Begin(BeginMode.Quads);
 
                     GL.TexCoord2(0.0f, 0.0f);
                     GL.Vertex2(&points[0]);
@@ -805,6 +818,11 @@ namespace System.Windows.Forms
 
         #region Mouse/Keyboard Functions
 
+        private Drawing.Point? lastHeldMouseLocat = null;
+
+        //What we are trying to do here is getting the actual screen location of this viewport
+        private Drawing.Point? viewportScreenLocation = null;
+
         public void HandleLeftMouseDown(MouseEventArgs e)
         {
             if (_allowSelection && !_selecting)
@@ -834,7 +852,24 @@ namespace System.Windows.Forms
             }
         }
 
-        private Drawing.Point? lastCursorPos;
+        public void HandleOtherMouseUp(MouseEventArgs e)
+        {
+        }
+
+        public void HandleOtherMouseDown(MouseEventArgs e)
+        {
+            if (lastHeldMouseLocat != null)
+            {
+                MouseUnheld();
+            }
+        }
+
+        private void MouseUnheld()
+        {
+            lastHeldMouseLocat = null;
+            viewportScreenLocation = null;
+            Cursor.Clip = Rectangle.Empty;
+        }
 
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
@@ -843,82 +878,126 @@ namespace System.Windows.Forms
                 _selEnd = new Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
             }
 
-            if (!_grabbing && !_scrolling && lastCursorPos != null)
+            bool grabbingOrScrolling = _grabbing || _scrolling;
+            bool notGrabbingAndScrolling = !_grabbing && !_scrolling;
+
+            if (grabbingOrScrolling && lastHeldMouseLocat == null)
             {
-                Cursor.Show();
-                lastCursorPos = null;
+                viewportScreenLocation = ctx._window.PointToScreen(Drawing.Point.Empty);
+                lastHeldMouseLocat = e.Location;
+
+                Cursor.Clip = new Rectangle(viewportScreenLocation.Value,
+                    new Drawing.Size(Region.Width, Region.Height));
             }
-            else if ((_grabbing || _scrolling) && lastCursorPos == null)
+            else if (notGrabbingAndScrolling && lastHeldMouseLocat != null)
             {
-                Cursor.Hide();
-                lastCursorPos = Cursor.Position;
+                MouseUnheld();
             }
 
-            int x = e.X - Region.X;
-            int y = e.Y - Region.Y;
-
-            if (ctx != null && (_grabbing || _scrolling))
+            if (grabbingOrScrolling)
             {
-                lock (ctx)
+                int borders = 1;
+                int mouseBorders = 2;
+
+                bool leftScrHit = e.Location.X <= borders;
+                bool rightScrHit = e.Location.X >= Region.Width - borders;
+                bool topScrHit = e.Location.Y <= borders;
+                bool bottomScrHit = e.Location.Y >= Region.Height - borders;
+
+                Drawing.Point mouseSpeed = new Drawing.Point(e.Location.X - lastHeldMouseLocat.Value.X,
+                    e.Location.Y - lastHeldMouseLocat.Value.Y);
+
+                bool movingLeft = mouseSpeed.X < 0;
+                bool movingRight = mouseSpeed.X > 0;
+                bool movingTop = mouseSpeed.Y < 0;
+                bool movingBottom = mouseSpeed.Y > 0;
+
+                if (leftScrHit || rightScrHit || topScrHit || bottomScrHit)
                 {
-                    int xDiff = lastCursorPos != null
-                        ? Cursor.Position.X - lastCursorPos.Value.X
-                        : x - _lastX;
-                    int yDiff = lastCursorPos != null
-                        ? lastCursorPos.Value.Y - Cursor.Position.Y
-                        : _lastY - y;
+                    int px = e.Location.X;
+                    int py = e.Location.Y;
 
-                    Keys mod = Control.ModifierKeys;
-                    bool ctrl = (mod & Keys.Control) != 0;
-                    bool shift = (mod & Keys.Shift) != 0;
-                    bool alt = (mod & Keys.Alt) != 0;
-
-                    if (ViewType != ViewportProjection.Perspective && !ctrl)
+                    //Now we know that the left side of the viewport is going to be hit. So we want to send it to the right side of it
+                    if (leftScrHit && movingLeft)
                     {
-                        xDiff *= 20;
-                        yDiff *= 20;
+                        px = Region.Width - mouseBorders;
+                        lastHeldMouseLocat = new Drawing.Point(Region.Width, lastHeldMouseLocat.Value.Y);
+                    }
+                    //If it wasn't hit, then we check for the right side of the screen's hit. We want to send it to the left
+                    else if (rightScrHit && movingRight)
+                    {
+                        px = mouseBorders;
+                        lastHeldMouseLocat = new Drawing.Point(0, lastHeldMouseLocat.Value.Y);
                     }
 
-                    if (shift)
+                    //Same procedure as previous, just vertical
+                    if (topScrHit && movingTop)
                     {
-                        xDiff *= 16;
-                        yDiff *= 16;
+                        py = Region.Height - mouseBorders;
+                        lastHeldMouseLocat = new Drawing.Point(lastHeldMouseLocat.Value.X, Region.Height);
+                    }
+                    else if (bottomScrHit && movingBottom)
+                    {
+                        py = mouseBorders;
+                        lastHeldMouseLocat = new Drawing.Point(lastHeldMouseLocat.Value.X, 0);
                     }
 
-                    if (_scrolling)
+                    if (viewportScreenLocation != null)
                     {
-                        Translate(0, 0, -yDiff * 0.01f);
+                        Cursor.Position = new Drawing.Point(px + viewportScreenLocation.Value.X,
+                            py + viewportScreenLocation.Value.Y);
+                        return;
                     }
-                    else if (ctrl)
+                }
+
+                if (ctx != null)
+                {
+                    lock (ctx)
                     {
-                        if (alt)
+                        int xDiff = e.X - lastHeldMouseLocat.Value.X;
+                        int yDiff = lastHeldMouseLocat.Value.Y - e.Y;
+
+                        Keys mod = Control.ModifierKeys;
+                        bool ctrl = (mod & Keys.Control) != 0;
+                        bool shift = (mod & Keys.Shift) != 0;
+                        bool alt = (mod & Keys.Alt) != 0;
+
+                        if (ViewType != ViewportProjection.Perspective && !ctrl)
                         {
-                            Rotate(0, 0, -yDiff * RotationScale);
+                            xDiff *= 20;
+                            yDiff *= 20;
+                        }
+
+                        if (shift)
+                        {
+                            xDiff *= 16;
+                            yDiff *= 16;
+                        }
+
+                        if (_scrolling)
+                        {
+                            Translate(0, 0, -yDiff * 0.01f);
+                        }
+                        else if (ctrl)
+                        {
+                            if (alt)
+                            {
+                                Rotate(0, 0, -yDiff * RotationScale);
+                            }
+                            else
+                            {
+                                Pivot(yDiff * RotationScale, -xDiff * RotationScale);
+                            }
                         }
                         else
                         {
-                            Pivot(yDiff * RotationScale, -xDiff * RotationScale);
+                            Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
                         }
                     }
-                    else
-                    {
-                        Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
-                    }
                 }
 
-                if (_grabbing || _scrolling)
-                {
-                    if (lastCursorPos == null)
-                    {
-                        lastCursorPos = Cursor.Position;
-                    }
-
-                    Cursor.Position = (Drawing.Point) lastCursorPos;
-                }
+                lastHeldMouseLocat = e.Location;
             }
-
-            _lastX = x;
-            _lastY = y;
 
             if (_selecting)
             {
@@ -1162,7 +1241,7 @@ namespace System.Windows.Forms
         {
             _type = ViewportProjection.Perspective,
             _camera = new GLCamera(),
-            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f)
         };
 
         private new static ModelPanelViewport BaseOrtho => new ModelPanelViewport
@@ -1173,9 +1252,9 @@ namespace System.Windows.Forms
                 _ortho = true,
                 _nearZ = -10000.0f,
                 _farZ = 10000.0f,
-                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f),
+                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f)
             },
-            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f)
         };
 
         public new static ModelPanelViewport DefaultOrtho
@@ -1369,7 +1448,7 @@ namespace System.Windows.Forms
                 _ortho = _ortho,
                 _restrictXRot = _restrictXRot,
                 _restrictYRot = _restrictYRot,
-                _restrictZRot = _restrictZRot,
+                _restrictZRot = _restrictZRot
             };
             v.SetPercentages(_percentages);
             v.LightPosition = _lightPosition;

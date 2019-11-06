@@ -71,10 +71,7 @@ namespace BrawlLib.Wii.Compression
             int lastUpdate = srcLen;
             int remaining = srcLen;
 
-            if (progress != null)
-            {
-                progress.Begin(0, remaining, 0);
-            }
+            progress?.Begin(0, remaining, 0);
 
             while (remaining > 0)
             {
@@ -143,10 +140,7 @@ namespace BrawlLib.Wii.Compression
 
             outStream.Flush();
 
-            if (progress != null)
-            {
-                progress.Finish();
-            }
+            progress?.Finish();
 
             return dstLen;
         }
@@ -257,7 +251,7 @@ namespace BrawlLib.Wii.Compression
             {
                 using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm,
                     (extendedFormat ? "Extended " : "") + "LZ77",
-                    string.Format("Compressing {0}, please wait...", r.Name), false))
+                    $"Compressing {r.Name}, please wait...", false))
                 {
                     return lz.Compress(srcAddr, srcLen, outStream, prog, extendedFormat);
                 }

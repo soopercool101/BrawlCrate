@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 
 namespace BrawlManagerLib
 {
@@ -182,7 +181,7 @@ namespace BrawlManagerLib
             56, // Corneria
             57, // Big Blue
             58, // Brinstar
-            59, // Pokemon Stadium
+            59  // Pokemon Stadium
         };
 
         public static int sssPositionForSelcharacter2Icon(int selcharacter2Icon)

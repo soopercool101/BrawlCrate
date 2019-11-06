@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows.Forms;
@@ -132,8 +129,9 @@ namespace BrawlManagerLib
             /// <summary>
             /// Send a warning if a file or folder is being destroyed during a delete operation rather than recycled. This flag partially overrides FOF_NOCONFIRMATION.
             /// </summary>
-            FOF_WANTNUKEWARNING = 0x4000,
-            /*			/// <summary>
+            FOF_WANTNUKEWARNING = 0x4000
+
+            /*            /// <summary>
                         /// Introduced in Windows 8. The file operation was user-invoked and should be placed on the undo stack. This flag is preferred to FOF_ALLOWUNDO.
                         /// </summary>
                         FOFX_ADDUNDORECORD = 0x20000000,
@@ -222,7 +220,7 @@ namespace BrawlManagerLib
             /// <summary>
             /// Rename the object(s)
             /// </summary>
-            FO_RENAME = 0x0004,
+            FO_RENAME = 0x0004
         }
 
         /// <summary>

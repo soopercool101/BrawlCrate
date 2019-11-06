@@ -154,7 +154,7 @@ namespace BrawlLib.SSBBTypes
         TevKonst2Exists = 0x40000,
         TevKonst2Constant = 0x80000,
         TevKonst3Exists = 0x100000,
-        TevKonst3Constant = 0x200000,
+        TevKonst3Constant = 0x200000
     }
 
     public enum EntryTarget
@@ -169,7 +169,7 @@ namespace BrawlLib.SSBBTypes
         ConstantColorRegister0,     // GX_KCOLOR0
         ConstantColorRegister1,     // GX_KCOLOR1
         ConstantColorRegister2,     // GX_KCOLOR2
-        ConstantColorRegister3,     // GX_KCOLOR3
+        ConstantColorRegister3      // GX_KCOLOR3
     }
 
     [Flags]

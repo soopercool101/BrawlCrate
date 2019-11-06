@@ -262,9 +262,9 @@ namespace BrawlLib.OpenGL
 
         private void PositionChanged()
         {
-            if (!_updating && OnPositionChanged != null)
+            if (!_updating)
             {
-                OnPositionChanged();
+                OnPositionChanged?.Invoke();
             }
         }
 

@@ -91,11 +91,11 @@ namespace BrawlCrate.NodeWrappers
 
         public override string ExportFilter => FileFilters.Images;
 
-        public override void OnReplace(string inStream, int filterIndex)
+        public override void OnReplace(string inStream)
         {
-            if (filterIndex == 8)
+            if (inStream.EndsWith(".refti", StringComparison.OrdinalIgnoreCase) || !inStream.Contains("."))
             {
-                base.OnReplace(inStream, filterIndex);
+                base.OnReplace(inStream);
             }
             else
             {

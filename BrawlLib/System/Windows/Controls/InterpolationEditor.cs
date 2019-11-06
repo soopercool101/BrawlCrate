@@ -105,6 +105,7 @@ namespace System.Windows.Forms
 
         public void SetTarget(IKeyframeSource node)
         {
+            int selectedCB = cbTransform.SelectedIndex;
             if ((_targetNode = node) != null)
             {
                 panel1.Enabled = true;
@@ -238,7 +239,11 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (cbTransform.Items.Count > 0)
+                if (cbTransform.Items.Count > selectedCB && selectedCB >= 0)
+                {
+                    cbTransform.SelectedIndex = selectedCB;
+                }
+                else if (cbTransform.Items.Count > 0)
                 {
                     cbTransform.SelectedIndex = 0;
                 }
@@ -332,7 +337,7 @@ namespace System.Windows.Forms
                     interpolationViewer1_FrameChanged(this, null);
                 }
 
-                if (_mainWindow != null && _mainWindow.KeyframePanel != null)
+                if (_mainWindow?.KeyframePanel != null)
                 {
                     if (indexChanged)
                     {
@@ -431,10 +436,7 @@ namespace System.Windows.Forms
 
             interpolationViewer.Invalidate();
             ((ResourceNode) _targetNode).SignalPropertyChange();
-            if (_mainWindow != null)
-            {
-                _mainWindow.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
-            }
+            _mainWindow?.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
 
             if (chkSyncStartEnd.Checked)
             {
@@ -634,10 +636,7 @@ namespace System.Windows.Forms
             kf._value = numOutVal.Value;
             interpolationViewer.Invalidate();
             ((ResourceNode) _targetNode).SignalPropertyChange();
-            if (_mainWindow != null)
-            {
-                _mainWindow.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
-            }
+            _mainWindow?.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
 
             if (chkSyncStartEnd.Checked)
             {
@@ -683,10 +682,7 @@ namespace System.Windows.Forms
                 else
                 {
                     KeyframeEntry second = SelectedKeyframe.Second;
-                    if (second != null)
-                    {
-                        second.Remove();
-                    }
+                    second?.Remove();
                 }
 
                 interpolationViewer.Invalidate();

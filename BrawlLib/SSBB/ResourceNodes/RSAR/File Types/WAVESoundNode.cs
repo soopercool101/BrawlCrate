@@ -32,7 +32,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = string.Format("[{0}]Audio", Index);
+                _name = $"[{Index}]Audio";
             }
 
             Info = *(WaveInfo*) WorkingUncompressed.Address;
@@ -77,6 +77,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         ReplaceRaw(dlg.AudioData);
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
             else
@@ -93,10 +97,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             UpdateCurrentControl();
             SignalPropertyChange();
             Parent.Parent.SignalPropertyChange();
-            if (RSARNode != null)
-            {
-                RSARNode.SignalPropertyChange();
-            }
+            RSARNode?.SignalPropertyChange();
         }
 
         public override unsafe void Export(string outPath)

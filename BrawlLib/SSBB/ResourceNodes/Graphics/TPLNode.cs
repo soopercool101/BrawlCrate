@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => _name ?? string.Format("TPL{0}", Index);
+            get => _name ?? $"TPL{Index}";
             set => base.Name = value;
         }
 
@@ -50,12 +50,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if ((p = Header->GetTextureEntry(i)) != null)
                 {
-                    TPLTextureNode t = new TPLTextureNode {_dataAddr = (VoidPtr) Header + ((TPLTextureHeader*) p)->_data};
+                    TPLTextureNode t = new TPLTextureNode
+                        {_dataAddr = (VoidPtr) Header + ((TPLTextureHeader*) p)->_data};
                     t.Initialize(this, p, 0);
 
                     if ((p = Header->GetPaletteEntry(i)) != null)
                     {
-                        new TPLPaletteNode {_dataAddr = (VoidPtr) Header + ((TPLPaletteHeader*) p)->_data}.Initialize(t, p, 0);
+                        new TPLPaletteNode {_dataAddr = (VoidPtr) Header + ((TPLPaletteHeader*) p)->_data}.Initialize(t,
+                            p, 0);
                     }
                 }
             }
@@ -170,7 +172,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => string.Format("Texture{0}", Index);
+            get => $"Texture{Index}";
             set => base.Name = value;
         }
 

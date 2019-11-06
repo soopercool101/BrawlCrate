@@ -43,7 +43,7 @@ namespace BrawlLib.Modeling
                 }
                 else
                 {
-                    throw new Exception("Version " + version.ToString() + " models are not supported.");
+                    throw new Exception("Version " + version + " models are not supported.");
                 }
 
                 if (model != null)
@@ -145,7 +145,7 @@ namespace BrawlLib.Modeling
             RightHanded = 1,
 
             //XNA standard coordinate system
-            LeftHanded = -1,
+            LeftHanded = -1
         }
 
         #endregion
@@ -336,10 +336,7 @@ namespace BrawlLib.Modeling
 
         public static void Write(BinaryWriter writer)
         {
-            if (_header != null)
-            {
-                _header.Write(writer);
-            }
+            _header?.Write(writer);
 
             if (_vertices == null)
             {
@@ -352,7 +349,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_vertices[i] == null)
                     {
-                        throw new ArgumentNullException("Vertexes[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Vertexes[" + i + "] is null!");
                     }
 
                     _vertices[i].Write(writer, CoordZ);
@@ -383,7 +380,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_materials[i] == null)
                     {
-                        throw new ArgumentNullException("Materials[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Materials[" + i + "] is null!");
                     }
 
                     _materials[i].Write(writer);
@@ -401,7 +398,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_bones[i] == null)
                     {
-                        throw new ArgumentNullException("Bones[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Bones[" + i + "] is null!");
                     }
 
                     _bones[i].Write(writer, CoordZ);
@@ -419,7 +416,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_IKs[i] == null)
                     {
-                        throw new ArgumentNullException("IKs[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("IKs[" + i + "] is null!");
                     }
 
                     _IKs[i].Write(writer);
@@ -437,7 +434,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_skins[i] == null)
                     {
-                        throw new ArgumentNullException("Skins[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("Skins[" + i + "] is null!");
                     }
 
                     _skins[i].Write(writer, CoordZ);
@@ -469,7 +466,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_boneDispNames[i] == null)
                     {
-                        throw new ArgumentNullException("BoneDispNames[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("BoneDispNames[" + i + "] is null!");
                     }
 
                     _boneDispNames[i].Write(writer);
@@ -487,7 +484,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_boneDisps[i] == null)
                     {
-                        throw new ArgumentNullException("BoneDisps[" + i.ToString() + "] is null!");
+                        throw new ArgumentNullException("BoneDisps[" + i + "] is null!");
                     }
 
                     _boneDisps[i].Write(writer);
@@ -545,7 +542,7 @@ namespace BrawlLib.Modeling
                             {
                                 if (_rigidBodies[i] == null)
                                 {
-                                    throw new ArgumentNullException("RididBodies[" + i.ToString() + "] is null!");
+                                    throw new ArgumentNullException("RididBodies[" + i + "] is null!");
                                 }
 
                                 _rigidBodies[i].WriteExpansion(writer, CoordZ);
@@ -563,7 +560,7 @@ namespace BrawlLib.Modeling
                             {
                                 if (_joints[i] == null)
                                 {
-                                    throw new ArgumentNullException("Joints[" + i.ToString() + "] is null!");
+                                    throw new ArgumentNullException("Joints[" + i + "] is null!");
                                 }
 
                                 _joints[i].WriteExpansion(writer, CoordZ);
@@ -807,7 +804,7 @@ namespace BrawlLib.Modeling
                 Vector3* Normals = (Vector3*) p._manager._faceData[1].Address;
                 Vector2* UVs = (Vector2*) p._manager._faceData[4].Address;
 
-                manager._triangles = new GLPrimitive((int) m._faceVertCount, PrimitiveType.Triangles);
+                manager._triangles = new GLPrimitive((int) m._faceVertCount, BeginMode.Triangles);
                 uint[] pTriarr = manager._triangles._indices;
                 uint pTri = 0;
 
@@ -915,19 +912,13 @@ namespace BrawlLib.Modeling
                     if (singlebind && p._matrixNode == null)
                     {
                         //Increase reference count ahead of time for rebuild
-                        if (p._manager._vertices[0].MatrixNode != null)
-                        {
-                            //p._manager._vertices[0].MatrixNode.ReferenceCount++;
-                            p._manager._vertices[0].MatrixNode.Users.Add(p);
-                        }
+                        //p._manager._vertices[0].MatrixNode.ReferenceCount++;
+                        p._manager._vertices[0].MatrixNode?.Users.Add(p);
 
                         foreach (Vertex3 v in p._manager._vertices)
                         {
-                            if (v.MatrixNode != null)
-                            {
-                                //v.MatrixNode.ReferenceCount--;
-                                v.MatrixNode.Users.Remove(v);
-                            }
+                            //v.MatrixNode.ReferenceCount--;
+                            v.MatrixNode?.Users.Remove(v);
                         }
 
                         p._nodeId = -2; //Continued on polygon rebuild

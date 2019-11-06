@@ -3,5 +3,7 @@
     public interface IAudioSource
     {
         IAudioStream[] CreateStreams();
+
+        bool IsLooped { get; }
     }
 }

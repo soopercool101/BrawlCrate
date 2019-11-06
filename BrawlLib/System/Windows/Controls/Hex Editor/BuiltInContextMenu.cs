@@ -47,7 +47,7 @@ namespace Be.Windows.Forms
         internal BuiltInContextMenu(HexBox hexBox)
         {
             _hexBox = hexBox;
-            _hexBox.ByteProviderChanged += HexBox_ByteProviderChanged;
+            _hexBox.ByteProviderChanged += new EventHandler(HexBox_ByteProviderChanged);
         }
 
         /// <summary>
@@ -76,18 +76,18 @@ namespace Be.Windows.Forms
                 //_cutToolStripMenuItem = new ToolStripMenuItem(CutMenuItemTextInternal, CutMenuItemImage, new EventHandler(CutMenuItem_Click));
                 //cms.Items.Add(_cutToolStripMenuItem);
                 _copyToolStripMenuItem = new ToolStripMenuItem(CopyMenuItemTextInternal, CopyMenuItemImage,
-                    CopyMenuItem_Click);
+                    new EventHandler(CopyMenuItem_Click));
                 cms.Items.Add(_copyToolStripMenuItem);
                 _pasteToolStripMenuItem = new ToolStripMenuItem(PasteMenuItemTextInternal, PasteMenuItemImage,
-                    PasteMenuItem_Click);
+                    new EventHandler(PasteMenuItem_Click));
                 cms.Items.Add(_pasteToolStripMenuItem);
 
                 cms.Items.Add(new ToolStripSeparator());
 
                 _selectAllToolStripMenuItem = new ToolStripMenuItem(SelectAllMenuItemTextInternal,
-                    SelectAllMenuItemImage, SelectAllMenuItem_Click);
+                    SelectAllMenuItemImage, new EventHandler(SelectAllMenuItem_Click));
                 cms.Items.Add(_selectAllToolStripMenuItem);
-                cms.Opening += BuildInContextMenuStrip_Opening;
+                cms.Opening += new CancelEventHandler(BuildInContextMenuStrip_Opening);
 
                 _contextMenuStrip = cms;
             }

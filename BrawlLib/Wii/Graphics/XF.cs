@@ -188,9 +188,8 @@ namespace BrawlLib.Wii.Graphics
 
         public override string ToString()
         {
-            return string.Format(
-                "Projection: {0} | Input Form: {1} | Texgen Type: {2} | Source Row: {3} | Emboss Source: {4} | Emboss Light: {5}",
-                Projection, InputForm, TexGenType, SourceRow, EmbossSource, EmbossLight);
+            return
+                $"Projection: {Projection} | Input Form: {InputForm} | Texgen Type: {TexGenType} | Source Row: {SourceRow} | Emboss Source: {EmbossSource} | Emboss Light: {EmbossLight}";
         }
     }
 
@@ -224,8 +223,7 @@ namespace BrawlLib.Wii.Graphics
 
         public override string ToString()
         {
-            return string.Format("Normal Enable: {0} | Dual Matrix: {1}", _normalEnable != 0 ? "True" : "False",
-                _dualMtx);
+            return $"Normal Enable: {(_normalEnable != 0 ? "True" : "False")} | Dual Matrix: {_dualMtx}";
         }
     }
 
@@ -332,8 +330,8 @@ namespace BrawlLib.Wii.Graphics
 
         public override string ToString()
         {
-            return string.Format("ColorCount: {0} | TextureCount: {1} | Normal Format: {2} [Data: {3}] ",
-                ColorCount.ToString(), TextureCount.ToString(), NormalFormat.ToString(), (int) _data);
+            return
+                $"ColorCount: {ColorCount.ToString()} | TextureCount: {TextureCount.ToString()} | Normal Format: {NormalFormat.ToString()} [Data: {(int) _data}] ";
         }
     }
 
@@ -424,7 +422,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasTexMatrix(i))
                 {
                     hasTex = true;
-                    texmtx += i.ToString() + " ";
+                    texmtx += i + " ";
                 }
             }
 
@@ -435,7 +433,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasUVs(i))
                 {
                     hasUVs = true;
-                    uvs += i.ToString() + " ";
+                    uvs += i + " ";
                 }
             }
 
@@ -446,7 +444,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasUVs(i))
                 {
                     hasColors = true;
-                    colors += i.ToString() + " ";
+                    colors += i + " ";
                 }
             }
 

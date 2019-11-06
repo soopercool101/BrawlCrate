@@ -258,10 +258,10 @@ namespace System.Windows.Forms
             pnlColorBox.Name = "pnlColorBox";
             pnlColorBox.Size = new Drawing.Size(180, 180);
             pnlColorBox.TabIndex = 0;
-            pnlColorBox.Paint += pnlColorBox_Paint;
-            pnlColorBox.MouseDown += pnlColorBox_MouseDown;
-            pnlColorBox.MouseMove += pnlColorBox_MouseMove;
-            pnlColorBox.MouseUp += pnlColorBox_MouseUp;
+            pnlColorBox.Paint += new PaintEventHandler(pnlColorBox_Paint);
+            pnlColorBox.MouseDown += new MouseEventHandler(pnlColorBox_MouseDown);
+            pnlColorBox.MouseMove += new MouseEventHandler(pnlColorBox_MouseMove);
+            pnlColorBox.MouseUp += new MouseEventHandler(pnlColorBox_MouseUp);
             // 
             // pnlColorBar
             // 
@@ -270,10 +270,10 @@ namespace System.Windows.Forms
             pnlColorBar.Name = "pnlColorBar";
             pnlColorBar.Size = new Drawing.Size(25, 180);
             pnlColorBar.TabIndex = 1;
-            pnlColorBar.Paint += pnlColorBar_Paint;
-            pnlColorBar.MouseDown += pnlColorBar_MouseDown;
-            pnlColorBar.MouseMove += pnlColorBar_MouseMove;
-            pnlColorBar.MouseUp += pnlColorBar_MouseUp;
+            pnlColorBar.Paint += new PaintEventHandler(pnlColorBar_Paint);
+            pnlColorBar.MouseDown += new MouseEventHandler(pnlColorBar_MouseDown);
+            pnlColorBar.MouseMove += new MouseEventHandler(pnlColorBar_MouseMove);
+            pnlColorBar.MouseUp += new MouseEventHandler(pnlColorBar_MouseUp);
             // 
             // panel2
             // 
@@ -293,10 +293,10 @@ namespace System.Windows.Forms
             pnlAlpha.Name = "pnlAlpha";
             pnlAlpha.Size = new Drawing.Size(14, 180);
             pnlAlpha.TabIndex = 2;
-            pnlAlpha.Paint += pnlAlpha_Paint;
-            pnlAlpha.MouseDown += pnlAlpha_MouseDown;
-            pnlAlpha.MouseMove += pnlAlpha_MouseMove;
-            pnlAlpha.MouseUp += pnlAlpha_MouseUp;
+            pnlAlpha.Paint += new PaintEventHandler(pnlAlpha_Paint);
+            pnlAlpha.MouseDown += new MouseEventHandler(pnlAlpha_MouseDown);
+            pnlAlpha.MouseMove += new MouseEventHandler(pnlAlpha_MouseMove);
+            pnlAlpha.MouseUp += new MouseEventHandler(pnlAlpha_MouseUp);
             // 
             // panel3
             // 
@@ -329,8 +329,8 @@ namespace System.Windows.Forms
             txtColorCode.TabIndex = 16;
             txtColorCode.Text = "000000FF";
             txtColorCode.TextAlign = HorizontalAlignment.Center;
-            txtColorCode.TextChanged += txtColorCode_TextChanged;
-            txtColorCode.KeyPress += txtColorCode_KeyPress;
+            txtColorCode.TextChanged += new EventHandler(txtColorCode_TextChanged);
+            txtColorCode.KeyPress += new KeyPressEventHandler(txtColorCode_KeyPress);
             // 
             // GoodColorControl
             // 

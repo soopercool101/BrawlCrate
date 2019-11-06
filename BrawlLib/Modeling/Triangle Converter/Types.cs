@@ -67,7 +67,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is TriangleEdge))
+            if (!(obj is TriangleEdge))
             {
                 return false;
             }
@@ -85,7 +85,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override string ToString()
         {
-            return string.Format("{0} {1}", m_A, m_B);
+            return $"{m_A} {m_B}";
         }
     }
 
@@ -111,7 +111,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is TriEdge))
+            if (!(obj is TriEdge))
             {
                 return false;
             }
@@ -126,7 +126,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}", m_A, m_B, m_TriPos);
+            return $"{m_A} {m_B} {m_TriPos}";
         }
     }
 

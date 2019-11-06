@@ -22,7 +22,7 @@ namespace BrawlLib.Modeling
 
         public enum ImportType
         {
-            MDL0, //Wii SDK
+            MDL0 //Wii SDK
             //BMD, //GameCube SDK
             //LM, //Luigi's Mansion
             //FMDL, //Wii U SDK
@@ -97,7 +97,7 @@ namespace BrawlLib.Modeling
                                 Ref4 = -1,
                                 Ref5 = -1,
                                 Ref6 = -1,
-                                Ref7 = -1,
+                                Ref7 = -1
                             };
 
                             shadNode._parent = m._shadGroup;
@@ -370,10 +370,9 @@ namespace BrawlLib.Modeling
                         string w2 = obj._weighted ? "\nOne or more vertices may not be weighted correctly." : "";
                         string n = node._name ?? node._id;
 
-                        Error = string.Format(
-                            "There was a problem decoding {0}weighted primitives for the object {1}.{2}", w, n, w2);
+                        Error = $"There was a problem decoding {w}weighted primitives for the object {n}.{w2}";
 
-                        Say(string.Format("Decoding {0}weighted primitives for {1}...", w, n));
+                        Say($"Decoding {w}weighted primitives for {n}...");
 
                         obj.Initialize(model, shell);
                     }
@@ -397,7 +396,7 @@ namespace BrawlLib.Modeling
                 catch (Exception x)
                 {
                     MessageBox.Show("Cannot continue importing this model.\n" + Error + "\n\nException:\n" +
-                                    x.ToString());
+                                    x);
                     model = null;
                     Close();
                 }
@@ -725,7 +724,7 @@ namespace BrawlLib.Modeling
                 model.ResetToBindState();
 
                 //Attach single-bind
-                if (parent != null && parent is MDL0BoneNode)
+                if (parent is MDL0BoneNode)
                 {
                     MDL0BoneNode bone = (MDL0BoneNode) parent;
                     poly.DeferUpdateAssets();
@@ -738,7 +737,7 @@ namespace BrawlLib.Modeling
                 }
                 else if (model._boneList.Count == 0)
                 {
-                    Error = string.Format("There was a problem rigging {0} to a single bone.", poly._name);
+                    Error = $"There was a problem rigging {poly._name} to a single bone.";
 
                     Box box = poly.GetBox();
                     MDL0BoneNode bone = new MDL0BoneNode
@@ -746,7 +745,7 @@ namespace BrawlLib.Modeling
                         Scale = Vector3.One,
                         Translation = (box.Max + box.Min) / 2.0f,
                         _name = "TransN_" + poly.Name,
-                        Parent = TempRootBone,
+                        Parent = TempRootBone
                     };
 
                     poly.DeferUpdateAssets();
@@ -760,8 +759,7 @@ namespace BrawlLib.Modeling
                 }
                 else
                 {
-                    Error = string.Format("There was a problem checking if {0} is rigged to a single bone.",
-                        poly._name);
+                    Error = $"There was a problem checking if {poly._name} is rigged to a single bone.";
 
                     foreach (DrawCall c in poly._drawCalls)
                     {
@@ -791,17 +789,11 @@ namespace BrawlLib.Modeling
                     if (singlebind && poly._matrixNode == null)
                     {
                         //Reassign reference entries
-                        if (poly._manager._vertices[0].MatrixNode != null)
-                        {
-                            poly._manager._vertices[0].MatrixNode.Users.Add(poly);
-                        }
+                        poly._manager._vertices[0].MatrixNode?.Users.Add(poly);
 
                         foreach (Vertex3 v in poly._manager._vertices)
                         {
-                            if (v.MatrixNode != null)
-                            {
-                                v.MatrixNode.Users.Remove(v);
-                            }
+                            v.MatrixNode?.Users.Remove(v);
                         }
 
                         poly._nodeId = -2; //Continued on polygon rebuild
@@ -815,12 +807,12 @@ namespace BrawlLib.Modeling
             Error = "There was a problem creating a default material and shader.";
             if (model._matList.Count == 0 && model._objList.Count != 0)
             {
-                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default",};
+                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default"};
                 (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
                 {
                     RasterColor = ColorSelChan.LightChannel0,
                     AlphaSelectionD = AlphaArg.RasterAlpha,
-                    ColorSelectionD = ColorArg.RasterColor,
+                    ColorSelectionD = ColorArg.RasterColor
                 });
 
                 model._shadGroup.AddChild(mat.ShaderNode);
@@ -942,10 +934,7 @@ namespace BrawlLib.Modeling
             Error = "There was a problem writing the model.";
 
             //Clean the model and then build it!
-            if (model != null)
-            {
-                model.FinishImport();
-            }
+            model?.FinishImport();
         }
 
         public static ImportOptions _importOptions = new ImportOptions();

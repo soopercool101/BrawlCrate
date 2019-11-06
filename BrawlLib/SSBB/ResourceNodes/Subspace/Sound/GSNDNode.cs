@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("GSND")]
         [DisplayName("Entries")]
-        public int count => Header->_count;
+        public int Count => Children?.Count ?? 0;
 
         public override void OnPopulate()
         {

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.ComponentModel;
 using System.Windows.Forms;
 using BrawlLib.SSBBTypes;
@@ -497,7 +495,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //    return;
                 //}
                 ResourceNode r = Root.FindNode(value);
-                if (r != null && r is MoveDefActionNode)
+                if (r is MoveDefActionNode)
                 {
                     _value = value;
                     SignalPropertyChange();
@@ -548,12 +546,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public MoveDefActionNode GetAction()
         {
             ResourceNode r = Root.FindNode(RawOffset);
-            if (r != null && r is MoveDefActionNode)
-            {
-                return r as MoveDefActionNode;
-            }
-
-            return null;
+            return r as MoveDefActionNode;
         }
 
         public MoveDefActionNode action;

@@ -19,7 +19,7 @@ namespace BrawlLib.Wii.Compression
         public static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r, bool extendedFormat)
         {
             using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "Differential",
-                string.Format("Compressing {0}, please wait...", r.Name), false))
+                $"Compressing {r.Name}, please wait...", false))
             {
                 return new Differential().Compress(srcAddr, srcLen, outStream, prog);
             }

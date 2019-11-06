@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace System.Audio
 {
@@ -247,7 +246,7 @@ namespace System.Audio
                 reset can be stablished by making r equal to 1. The law is A if
                 `law'=='1', and mu law if `law'=='0'.
 
-	
+    
                 Return value:
                 ~~~~~~~~~~~~~
                 None.
@@ -272,7 +271,7 @@ namespace System.Audio
             short sigpk;
             short sr, tr;
             short sp, dlnx, dsx, sd, slx, dlx, dx; /* these are unique to
-							 * the decoder */
+                             * the decoder */
             int yl;
             short yu;
             short al, fi, ap, dq, se, ax, td, wi;
@@ -1129,7 +1128,7 @@ namespace System.Audio
                 /* Table look-up */
                 *dqln = tab1[*i];
             } /* ............... end of 32 kbit part
-				 * ................. */
+                 * ................. */
 
             else if (rate == 3)
             {
@@ -1141,7 +1140,7 @@ namespace System.Audio
                 /* Table look-up */
                 *dqln = tab2[*i];
             } /* ............... end of 24 kbit part
-				 * ................. */
+                 * ................. */
 
 
             else if (rate == 2)
@@ -1154,7 +1153,7 @@ namespace System.Audio
                 /* Table look-up */
                 *dqln = tab3[*i];
             } /* ............... end of 16 kbit part
-				 * ................. */
+                 * ................. */
             else
             {
                 /* Initialized data */
@@ -1167,7 +1166,7 @@ namespace System.Audio
                 /* Table look-up */
                 *dqln = tab4[*i];
             } /* ................ end of 40 kbit part
-				 * ................... */
+                 * ................... */
         }
         /* ....................... end of G726_reconst() ....................... */
 
@@ -1466,7 +1465,7 @@ namespace System.Audio
                 /* Scale factor multiplier */
                 *wi = tab5[im];
             } /* ................. end of 32 kbit part
-				 * .............. */
+                 * .............. */
 
 
             else if (rate == 3)
@@ -1482,7 +1481,7 @@ namespace System.Audio
 
                 *wi = tab6[im];
             } /* ................. end of 24 kbit part
-				 * .............. */
+                 * .............. */
 
 
             else if (rate == 2)
@@ -1498,7 +1497,7 @@ namespace System.Audio
 
                 *wi = tab7[im];
             } /* ................. end of 16 kbit part
-				 * .............. */
+                 * .............. */
 
 
             else
@@ -1514,7 +1513,7 @@ namespace System.Audio
 
                 *wi = tab8[im];
             } /* ................. end of 40 kbit part
-				 * .............. */
+                 * .............. */
         }
         /* ....................... end of G726_functw() ....................... */
 
@@ -1822,7 +1821,7 @@ namespace System.Audio
 
                 *fi = tab9[im];
             } /* ................ end of 32 kbit part
-				 * ................. */
+                 * ................. */
 
             else if (rate == 3)
             {
@@ -1835,7 +1834,7 @@ namespace System.Audio
 
                 *fi = tab10[im];
             } /* ................ end of 24 kbit part
-				 * ................. */
+                 * ................. */
             else if (rate == 2)
             {
                 /* Initialized data */
@@ -1848,7 +1847,7 @@ namespace System.Audio
 
                 *fi = tab11[im];
             } /* ................ end of 16 kbit part
-				 * ................. */
+                 * ................. */
 
             else
             {
@@ -1862,7 +1861,7 @@ namespace System.Audio
 
                 *fi = tab12[im];
             } /* ................ end of 40 kbit part
-				 * ................. */
+                 * ................. */
         }
         /* ...................... end of G726_functf() ...................... */
 
@@ -3261,7 +3260,7 @@ namespace System.Audio
                     id = 7;
                 }
             } /* ............... end of 32 kbit part
-				 * ................. */
+                 * ................. */
             else if (rate == 3)
             {
                 _is = (short) (*i >> 2);
@@ -3301,7 +3300,7 @@ namespace System.Audio
                     id = 3;
                 }
             } /* ............... end of 24 kbit part
-				 * ................. */
+                 * ................. */
             else if (rate == 2)
             {
                 _is = (short) (*i >> 1);
@@ -3327,7 +3326,7 @@ namespace System.Audio
                     id = (short) (3 - id);
                 }
             } /* ............... end of 16 kbit part
-				 * ................. */
+                 * ................. */
             else
             {
                 _is = (short) (*i >> 4);
@@ -3415,7 +3414,7 @@ namespace System.Audio
                     id = 15;
                 }
             } /* ............... end of 40 kbit part
-				 * ................. */
+                 * ................. */
 
             /* Choose sd as sp, sp+ or sp- */
 

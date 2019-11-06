@@ -45,6 +45,10 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("Edit", null,
                 new ToolStripMenuItem("&Merge Animation", null, MergeAction),
                 new ToolStripMenuItem("&Append Animation", null, AppendAction),
+                new ToolStripMenuItem("Repeat Animation", null, LoopAction),
+                new ToolStripMenuItem("Reverse Animation", null, ReverseAction),
+                new ToolStripMenuItem("Reverse to Loop", null, ReverseLoopAction),
+                new ToolStripMenuItem("Sort Entries", null, SortAction),
                 new ToolStripMenuItem("Res&ize", null, ResizeAction)));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
@@ -89,6 +93,25 @@ namespace BrawlCrate.NodeWrappers
         protected static void EditAllAction(object sender, EventArgs e)
         {
             EditAll(GetInstances<CHR0Wrapper>());
+        }
+
+        protected static void LoopAction(object sender, EventArgs e)
+        {
+            NumericInputForm entryCount = new NumericInputForm();
+            if (entryCount.ShowDialog("Animation Looper", "Number of runthroughs:") == DialogResult.OK)
+            {
+                GetInstance<CHR0Wrapper>().Loop(entryCount.NewValue - 1);
+            }
+        }
+
+        protected static void ReverseAction(object sender, EventArgs e)
+        {
+            GetInstance<CHR0Wrapper>().Reverse(false);
+        }
+
+        protected static void ReverseLoopAction(object sender, EventArgs e)
+        {
+            GetInstance<CHR0Wrapper>().Reverse(true);
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -157,10 +180,26 @@ namespace BrawlCrate.NodeWrappers
             res.TreeView.SelectedNode = res;
         }
 
-        private static void EditAll(IEnumerable<BaseWrapper> wrappers)
+        public void Loop(int timesToLoop)
+        {
+            ((CHR0Node) _resource).Append((CHR0Node) _resource, timesToLoop);
+            BaseWrapper res = FindResource(_resource, false);
+            res.EnsureVisible();
+            res.TreeView.SelectedNode = res;
+        }
+
+        public static void EditAll(IEnumerable<BaseWrapper> wrappers)
         {
             EditAllDialog ctd = new EditAllDialog();
             ctd.ShowDialog(_owner, wrappers.Select(n => n.Resource));
+        }
+
+        public void Reverse(bool appendReverse)
+        {
+            ((CHR0Node) _resource).Reverse(appendReverse);
+            BaseWrapper res = FindResource(_resource, false);
+            res.EnsureVisible();
+            res.TreeView.SelectedNode = res;
         }
     }
 
@@ -229,14 +268,8 @@ namespace BrawlCrate.NodeWrappers
         private void ViewInterp()
         {
             InterpolationForm f = MainForm.Instance.InterpolationForm;
-            if (f != null)
-            {
-                InterpolationEditor e = f._interpolationEditor;
-                if (e != null)
-                {
-                    e.SetTarget(_resource as IKeyframeSource);
-                }
-            }
+            InterpolationEditor e = f?._interpolationEditor;
+            e?.SetTarget(_resource as IKeyframeSource);
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)

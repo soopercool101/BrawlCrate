@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -134,7 +133,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return "Item Table";
                 }
-                else if (Parent != null && Parent is ARCNode)
+                else if (Parent is ARCNode)
                 {
                     if (((ARCNode) Parent).SpecialARC.EndsWith("SubNode") ||
                         ((ARCNode) Parent).SpecialARC.Equals("<None>"))
@@ -420,18 +419,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (Compression == "LZ77" && Header->_numFiles > 0)
             {
-                if (_parent != null)
+                if (_parent is ARCNode)
                 {
-                    if (_parent is ARCNode)
+                    if (((ARCNode) _parent).IsStage && Properties.Settings.Default.AutoCompressStages)
                     {
-                        if (((ARCNode) _parent).IsStage && Properties.Settings.Default.AutoCompressStages)
+                        // Console.WriteLine(_parent._name);
+                        if (Enum.TryParse("ExtendedLZ77", out CompressionType type))
                         {
-                            // Console.WriteLine(_parent._name);
-                            if (Enum.TryParse("ExtendedLZ77", out CompressionType type))
-                            {
-                                _compression = type;
-                                SignalPropertyChange();
-                            }
+                            _compression = type;
+                            SignalPropertyChange();
                         }
                     }
                 }
@@ -521,9 +517,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         ((ARCNode) entry).ReplaceFromFolder(dirs[0].FullName, imageExtension);
                     }
                 }
-                else if (entry is BRRESNode)
+                else
                 {
-                    ((BRRESNode) entry).ReplaceFromFolder(inFolder, imageExtension);
+                    (entry as BRRESNode)?.ReplaceFromFolder(inFolder, imageExtension);
                 }
             }
         }
@@ -857,7 +853,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected void UpdateName()
         {
-            Name = string.Format("[{0}]Group", _group);
+            Name = $"[{_group}]Group";
         }
     }
 
@@ -958,7 +954,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return "None";
                 }
 
-                return $"{(redirectTargetNode as ARCEntryNode).AbsoluteIndex.ToString()}. {redirectTargetNode.Name}";
+                if (redirectTargetNode is ARCEntryNode a)
+                {
+                    return $"{a.AbsoluteIndex.ToString()}. {redirectTargetNode.Name}";
+                }
+
+                return $"{redirectTargetNode.Index.ToString()}. {redirectTargetNode.Name}";
             }
         }
 
@@ -1025,7 +1026,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// </returns>
         private ResourceNode UpdateRedirectTarget()
         {
-            if (RedirectIndex == -1 || Parent == null || Parent.Children.Count <= RedirectIndex)
+            if (RedirectIndex < 0 || Parent == null || Parent.Children.Count <= RedirectIndex)
             {
                 redirectTargetNode = null;
                 UpdateProperties();
@@ -1050,7 +1051,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 fileType = System.Text.RegularExpressions.Regex.Replace(fileType, "(\\B[A-Z])", " $1");
             }
 
-            string s = string.Format("{0} [{1}]", fileType, _fileIndex);
+            string s = $"{fileType} [{_fileIndex}]";
             if (_group != 0)
             {
                 s += $" [Group {_group}]";

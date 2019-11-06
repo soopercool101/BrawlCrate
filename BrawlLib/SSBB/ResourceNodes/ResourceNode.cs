@@ -3,14 +3,12 @@ using BrawlLib.Wii.Compression;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -123,11 +121,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public string _name, _origPath;
 
-        [Category("DEBUG")]
-#if !DEBUG
-        [Browsable(false)]
-#endif
-        public string OrigFileName => Path.GetFileName(_origPath);
 
         public ResourceNode _parent;
         public List<ResourceNode> _children = new List<ResourceNode>();
@@ -146,7 +139,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Properties
 
-        [Browsable(false)] public string FilePath => _origPath;
+        public string FilePath => _origPath;
+        public string FileName => Path.GetFileName(_origPath);
 
 #if !DEBUG
         [Browsable(false)]
@@ -232,10 +226,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 Remove();
                 _parent = value;
-                if (_parent != null)
-                {
-                    _parent.Children.Add(this);
-                }
+                _parent?.Children.Add(this);
             }
         }
 
@@ -367,6 +358,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
+
+        [DisplayName("Uncompressed Size (Bytes)")]
+        [Description("For stability, this value is only updated on save.")]
+        public virtual uint UncompressedSize => (uint) WorkingUncompressed.Length;
 
         [Browsable(false)] public virtual Type[] AllowedChildTypes => _allowedChildTypes;
         private readonly Type[] _allowedChildTypes = new Type[] { };
@@ -576,7 +572,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public virtual bool ToParent()
         {
-            if (Parent != null && Parent is MDL0BoneNode)
+            if (Parent is MDL0BoneNode)
             {
                 return true;
             }
@@ -718,10 +714,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public virtual void Remove()
         {
-            if (_parent != null)
-            {
-                _parent.RemoveChild(this);
-            }
+            _parent?.RemoveChild(this);
         }
 
         public virtual void RemoveChild(ResourceNode child)
@@ -1243,20 +1236,28 @@ namespace BrawlLib.SSBB.ResourceNodes
             return root.FindChild(path, searchChildren, compare);
         }
 
-        public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type)
+        public ResourceNode FindChildByType(string path, bool searchChildren, params ResourceType[] types)
         {
-            return FindChildByType(path, searchChildren, type, StringComparison.OrdinalIgnoreCase);
+            return FindChildByType(path, searchChildren, StringComparison.Ordinal, types);
         }
 
-        public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type,
-                                            StringComparison compare)
+        public ResourceNode FindChildByType(string path, bool searchChildren, StringComparison compare,
+                                            params ResourceType[] types)
         {
             if (path == null)
             {
                 return null;
             }
 
+            if (types.Contains(ResourceType.TEX0) && !types.Contains(ResourceType.SharedTEX0))
+            {
+                List<ResourceType> t = types.ToList();
+                t.Add(ResourceType.SharedTEX0);
+                types = t.ToArray();
+            }
+
             ResourceNode node = null;
+
             if (path.Contains("/"))
             {
                 string next = path.Substring(0, path.IndexOf('/'));
@@ -1265,7 +1266,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     if (n.Name != null && n.Name.Equals(next, compare))
                     {
                         if ((node = FindNode(n, path.Substring(next.Length + 1), searchChildren, compare)) != null &&
-                            node.ResourceFileType == type)
+                            types.Any(t => t == node.ResourceFileType))
                         {
                             return node;
                         }
@@ -1278,7 +1279,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 foreach (ResourceNode n in Children)
                 {
                     if (n.Name != null && n.Name.Equals(path, compare) &&
-                        n.ResourceFileType == type)
+                        types.Any(t => t == n.ResourceFileType))
                     {
                         return n;
                     }
@@ -1289,7 +1290,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 foreach (ResourceNode n in Children)
                 {
-                    if ((node = n.FindChildByType(path, true, type)) != null && node.ResourceFileType == type)
+                    if ((node = n.FindChildByType(path, true, compare, types)) != null &&
+                        types.Any(t => t == node.ResourceFileType))
                     {
                         return node;
                     }
@@ -1668,6 +1670,22 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         #endregion
+
+        public ResourceNode PrevSibling()
+        {
+            if (_parent == null)
+            {
+                return null;
+            }
+
+            int siblingIndex = Index - 1;
+            if (siblingIndex < 0)
+            {
+                return null;
+            }
+
+            return Parent.Children[siblingIndex];
+        }
 
         public ResourceNode NextSibling()
         {

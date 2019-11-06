@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public RelocationManager(ModuleDataNode data)
         {
             _data = data;
-            if (DataNode == null || DataNode._manager == null)
+            if (DataNode?._manager == null)
             {
                 //Initialize
                 _linkedCommands = new SortedList<int, List<RelocationTarget>>();
@@ -99,46 +99,31 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void SetInt(int index, int value)
         {
             *((bint*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetFloat(int index, float value)
         {
             *((bfloat*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetBin(int index, Bin32 value)
         {
             *((Bin32*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetCode(int index, PPCOpCode code)
         {
             *((buint*) DataNode._dataBuffer.Address + index + _referenceIndex) = (uint) code;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetString(int index, string value)
         {
             value.Write((sbyte*) DataNode._dataBuffer.Address + (index + _referenceIndex) * 4);
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         #region TargetRelocation
@@ -286,7 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                Console.Write("Absolute branch at " + CreateTarget(index).ToString());
+                Console.Write("Absolute branch at " + CreateTarget(index));
             }
         }
 
@@ -566,9 +551,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("{0}[{1}] 0x{2}",
-                RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : "m" + _moduleID.ToString(),
-                _sectionID, (_index * 4).ToString("X"));
+            return
+                $"{(RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : "m" + _moduleID)}[{_sectionID}] 0x{(_index * 4).ToString("X")}";
         }
 
         public override int GetHashCode()

@@ -1,6 +1,5 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.Discord
@@ -17,11 +16,11 @@ namespace BrawlCrate.Discord
 
         // Fields to be saved between runs
         private static bool _enabled = true;
-        private const string UserPickedImageKey = "";
+        private static readonly string UserPickedImageKey = "";
         private static ModNameType _modNameType = ModNameType.Disabled;
-        private const string WorkString = "Working on";
+        private static readonly string WorkString = "Working on";
         private static string _userNamedMod = "My Mod";
-        private const bool ShowTimeElapsed = true;
+        private static readonly bool ShowTimeElapsed = true;
 
         private static bool _controllerSet;
         public static bool DiscordControllerSet => _controllerSet;
@@ -58,7 +57,7 @@ namespace BrawlCrate.Discord
 #endif
             };
             ResourceNode root = MainForm.Instance?.RootNode?.Resource;
-            string rootName = root?.Name;
+            string rootName = root?.Name ?? "<null>";
             bool hasGct = (rootName?.EndsWith(".gct") ?? false) || (rootName?.EndsWith(".txt") ?? false);
             bool usingManager = false;
             GCTEditor gctEditor = null;
@@ -200,8 +199,7 @@ namespace BrawlCrate.Discord
                         DiscordController.presence.details = WorkString + " animations";
                     }
                     else if (rootName.StartsWith("home_", StringComparison.OrdinalIgnoreCase)
-                             && Program.RootPath.Substring(0, Program.RootPath.LastIndexOf('\\'))
-                                       .EndsWith("\\system\\homebutton"))
+                             && Program.RootPath.EndsWith("\\system\\homebutton"))
                     {
                         DiscordController.presence.details = WorkString + " the home menu";
                     }

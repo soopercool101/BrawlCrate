@@ -378,7 +378,7 @@ namespace System
             MaxMtxT,
             MaxMtxSR,
             MaxMtxR,
-            MaxMtxS,
+            MaxMtxS
         };
 
         public static Matrix34 TextureMatrix(TextureFrameState state)
@@ -750,7 +750,7 @@ namespace System
         public static Matrix EnvCamMap(int refCam, SCN0Node node, ModelPanelViewport v, float frame)
         {
             GLCamera cam = v.Camera;
-            if (refCam >= 0 && node != null && node.CameraGroup != null && refCam < node.CameraGroup.Children.Count)
+            if (refCam >= 0 && node?.CameraGroup != null && refCam < node.CameraGroup.Children.Count)
             {
                 SCN0CameraNode camNode = (SCN0CameraNode) node.CameraGroup.Children[refCam];
                 camNode.GetModelViewMatrix(frame, out Matrix cm, out Matrix cmInv);
@@ -773,7 +773,7 @@ namespace System
                 0.0f, 0.0f, 0.0f, 1.0f);
 
             //If no light is referenced, use the BrawlCrate built-in light
-            if (refLight < 0 || node != null && node.LightGroup != null && refLight >= node.LightGroup.Children.Count)
+            if (refLight < 0 || node?.LightGroup != null && refLight >= node.LightGroup.Children.Count)
             {
                 refLight = 0;
                 node = null;
@@ -834,10 +834,7 @@ namespace System
             Matrix projMtx = Matrix.Identity;
             Matrix camMtx = Matrix.Identity;
             GLCamera cam = v.Camera;
-            if (ref_camera >= 0 &&
-                node != null &&
-                node.CameraGroup != null &&
-                ref_camera < node.CameraGroup.Children.Count)
+            if (ref_camera >= 0 && node?.CameraGroup != null && ref_camera < node.CameraGroup.Children.Count)
             {
                 // Set so that the image is projected from the specified camera.
                 // Transform to the viewing coordinate system of the specified camera
@@ -946,7 +943,7 @@ namespace System
             {
                 SCN0CameraNode camNode = null;
 
-                if (node != null && node.CameraGroup != null && refCam < node.CameraGroup.Children.Count)
+                if (node?.CameraGroup != null && refCam < node.CameraGroup.Children.Count)
                 {
                     camNode = (SCN0CameraNode) node.CameraGroup.Children[refCam];
                 }
@@ -994,7 +991,7 @@ namespace System
             Vector3 start, end;
             LightType lightType;
 
-            if (node != null && node.LightGroup != null && refLight < node.LightGroup.Children.Count && refLight >= 0)
+            if (node?.LightGroup != null && refLight < node.LightGroup.Children.Count && refLight >= 0)
             {
                 //SCN0 light exists
                 SCN0LightNode lightNode = (SCN0LightNode) node.LightGroup.Children[refLight];
@@ -1170,9 +1167,9 @@ namespace System
 
         public override bool Equals(object obj)
         {
-            if (obj is Matrix34)
+            if (obj is Matrix34 matrix34)
             {
-                return (Matrix34) obj == this;
+                return matrix34 == this;
             }
 
             return base.Equals(obj);
@@ -1187,14 +1184,9 @@ namespace System
         {
             fixed (float* p = _data)
             {
-                if (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(","))
-                {
-                    return string.Format("({0} {1} {2} {3})({4} {5} {6} {7})({8} {9} {10} {11})", p[0], p[1], p[2],
-                        p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11]);
-                }
-
-                return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})", p[0], p[1], p[2], p[3],
-                    p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11]);
+                return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                    ? $"({p[0]} {p[1]} {p[2]} {p[3]})({p[4]} {p[5]} {p[6]} {p[7]})({p[8]} {p[9]} {p[10]} {p[11]})"
+                    : $"({p[0]},{p[1]},{p[2]},{p[3]})({p[4]},{p[5]},{p[6]},{p[7]})({p[8]},{p[9]},{p[10]},{p[11]})";
             }
         }
     }

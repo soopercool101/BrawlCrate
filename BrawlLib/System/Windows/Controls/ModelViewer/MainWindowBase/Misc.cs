@@ -2,7 +2,6 @@
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using Gif.Components;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -24,12 +23,12 @@ namespace System.Windows.Forms
             {
                 ApplyTranslation,
                 ApplyAngle,
-                ApplyScale,
+                ApplyScale
             };
             _mouseMoveTargetType = new MouseMoveTargetType[]
             {
                 MouseMoveTargetBone,
-                MouseMoveTargetVertex,
+                MouseMoveTargetVertex
             };
         }
 
@@ -40,15 +39,15 @@ namespace System.Windows.Forms
 
             if (KeyframePanel != null)
             {
-                KeyframePanel.visEditor.EntryChanged += VISEntryChanged;
-                KeyframePanel.visEditor.IndexChanged += VISIndexChanged;
+                KeyframePanel.visEditor.EntryChanged += new EventHandler(VISEntryChanged);
+                KeyframePanel.visEditor.IndexChanged += new EventHandler(VISIndexChanged);
             }
 
-            ModelPanel.PreRender += EventPreRender = modelPanel1_PreRender;
-            ModelPanel.PostRender += EventPostRender = modelPanel1_PostRender;
-            ModelPanel.MouseDown += EventMouseDown = modelPanel1_MouseDown;
-            ModelPanel.MouseMove += EventMouseMove = modelPanel1_MouseMove;
-            ModelPanel.MouseUp += EventMouseUp = modelPanel1_MouseUp;
+            ModelPanel.PreRender += EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender);
+            ModelPanel.PostRender += EventPostRender = new GLRenderEventHandler(modelPanel1_PostRender);
+            ModelPanel.MouseDown += EventMouseDown = new MouseEventHandler(modelPanel1_MouseDown);
+            ModelPanel.MouseMove += EventMouseMove = new MouseEventHandler(modelPanel1_MouseMove);
+            ModelPanel.MouseUp += EventMouseUp = new MouseEventHandler(modelPanel1_MouseUp);
 
             if (PlaybackPanel != null)
             {
@@ -363,6 +362,8 @@ namespace System.Windows.Forms
                 progress.Finish();
                 e.Finish();
             }
+
+            _loop = PlaybackPanel.chkLoop.Checked;
 
             if (MessageBox.Show(this,
                     "Animated GIF successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder now?",

@@ -2,11 +2,9 @@
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
-using Community.CsharpSqlite;
 using OpenTK.Graphics.OpenGL;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 
@@ -14,10 +12,11 @@ namespace System.Windows.Forms
 {
     public unsafe class CollisionEditor : UserControl
     {
+        protected virtual bool ErrorChecking => true;
+
         #region Designer
 
         public ModelPanel _modelPanel;
-        protected bool _errorChecking = true;
         protected SplitContainer undoToolStrip;
         protected SplitContainer redoToolStrip;
         protected CheckBox chkAllModels;
@@ -27,6 +26,7 @@ namespace System.Windows.Forms
         protected ComboBox cboMaterial;
         protected Panel pnlObjProps;
         protected ToolStrip toolStrip1;
+        protected ToolStripButton btnTransform;
         protected ToolStripButton btnSplit;
         protected ToolStripButton btnMerge;
         protected ToolStripButton btnDelete;
@@ -194,6 +194,7 @@ namespace System.Windows.Forms
             btnUndo = new ToolStripButton();
             btnRedo = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
+            btnTransform = new ToolStripButton();
             btnSplit = new ToolStripButton();
             btnMerge = new ToolStripButton();
             btnFlipColl = new ToolStripButton();
@@ -300,9 +301,9 @@ namespace System.Windows.Forms
             modelTree.Name = "modelTree";
             modelTree.Size = new System.Drawing.Size(209, 225);
             modelTree.TabIndex = 4;
-            modelTree.AfterCheck += modelTree_AfterCheck;
-            modelTree.BeforeSelect += modelTree_BeforeSelect;
-            modelTree.AfterSelect += modelTree_AfterSelect;
+            modelTree.AfterCheck += new TreeViewEventHandler(modelTree_AfterCheck);
+            modelTree.BeforeSelect += new TreeViewCancelEventHandler(modelTree_BeforeSelect);
+            modelTree.AfterSelect += new TreeViewEventHandler(modelTree_AfterSelect);
             // 
             // contextMenuStrip2
             // 
@@ -315,21 +316,21 @@ namespace System.Windows.Forms
             });
             contextMenuStrip2.Name = "contextMenuStrip2";
             contextMenuStrip2.Size = new System.Drawing.Size(239, 76);
-            contextMenuStrip2.Opening += contextMenuStrip2_Opening;
+            contextMenuStrip2.Opening += new CancelEventHandler(contextMenuStrip2_Opening);
             // 
             // assignToolStripMenuItem
             // 
             assignToolStripMenuItem.Name = "assignToolStripMenuItem";
             assignToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             assignToolStripMenuItem.Text = "Assign";
-            assignToolStripMenuItem.Click += btnRelink_Click;
+            assignToolStripMenuItem.Click += new EventHandler(btnRelink_Click);
             // 
             // assignNoMoveToolStripMenuItem
             // 
             assignNoMoveToolStripMenuItem.Name = "assignNoMoveToolStripMenuItem";
             assignNoMoveToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             assignNoMoveToolStripMenuItem.Text = "Assign (No relative movement)";
-            assignNoMoveToolStripMenuItem.Click += btnRelinkNoMove_Click;
+            assignNoMoveToolStripMenuItem.Click += new EventHandler(btnRelinkNoMove_Click);
             // 
             // assignSeperatorToolStripMenuItem
             // 
@@ -341,7 +342,7 @@ namespace System.Windows.Forms
             snapToolStripMenuItem1.Name = "snapToolStripMenuItem1";
             snapToolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
             snapToolStripMenuItem1.Text = "Snap";
-            snapToolStripMenuItem1.Click += snapToolStripMenuItem1_Click;
+            snapToolStripMenuItem1.Click += new EventHandler(snapToolStripMenuItem1_Click);
             // 
             // panel2
             // 
@@ -363,7 +364,7 @@ namespace System.Windows.Forms
             chkBones.TabIndex = 4;
             chkBones.Text = "Bones";
             chkBones.UseVisualStyleBackColor = true;
-            chkBones.CheckedChanged += chkBones_CheckedChanged;
+            chkBones.CheckedChanged += new EventHandler(chkBones_CheckedChanged);
             // 
             // chkPoly
             // 
@@ -377,7 +378,7 @@ namespace System.Windows.Forms
             chkPoly.Text = "Poly";
             chkPoly.ThreeState = true;
             chkPoly.UseVisualStyleBackColor = true;
-            chkPoly.CheckStateChanged += chkPoly_CheckStateChanged;
+            chkPoly.CheckStateChanged += new EventHandler(chkPoly_CheckStateChanged);
             // 
             // chkAllModels
             // 
@@ -390,7 +391,7 @@ namespace System.Windows.Forms
             chkAllModels.TabIndex = 2;
             chkAllModels.Text = "All";
             chkAllModels.UseVisualStyleBackColor = true;
-            chkAllModels.CheckedChanged += chkAllModels_CheckedChanged;
+            chkAllModels.CheckedChanged += new EventHandler(chkAllModels_CheckedChanged);
             // 
             // lstObjects
             // 
@@ -403,9 +404,9 @@ namespace System.Windows.Forms
             lstObjects.Name = "lstObjects";
             lstObjects.Size = new System.Drawing.Size(209, 82);
             lstObjects.TabIndex = 1;
-            lstObjects.ItemCheck += lstObjects_ItemCheck;
-            lstObjects.SelectedValueChanged += lstObjects_SelectedValueChanged;
-            lstObjects.MouseDown += lstObjects_MouseDown;
+            lstObjects.ItemCheck += new ItemCheckEventHandler(lstObjects_ItemCheck);
+            lstObjects.SelectedValueChanged += new EventHandler(lstObjects_SelectedValueChanged);
+            lstObjects.MouseDown += new MouseEventHandler(lstObjects_MouseDown);
             // 
             // contextMenuStrip1
             // 
@@ -422,14 +423,14 @@ namespace System.Windows.Forms
             });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new System.Drawing.Size(238, 132);
-            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
+            contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
             // 
             // newObjectToolStripMenuItem
             // 
             newObjectToolStripMenuItem.Name = "newObjectToolStripMenuItem";
             newObjectToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             newObjectToolStripMenuItem.Text = "New Object";
-            newObjectToolStripMenuItem.Click += newObjectToolStripMenuItem_Click;
+            newObjectToolStripMenuItem.Click += new EventHandler(newObjectToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -441,14 +442,14 @@ namespace System.Windows.Forms
             unlinkToolStripMenuItem.Name = "unlinkToolStripMenuItem";
             unlinkToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             unlinkToolStripMenuItem.Text = "Unlink";
-            unlinkToolStripMenuItem.Click += btnUnlink_Click;
+            unlinkToolStripMenuItem.Click += new EventHandler(btnUnlink_Click);
             // 
             // unlinkNoMoveToolStripMenuItem
             // 
             unlinkNoMoveToolStripMenuItem.Name = "unlinkNoMoveToolStripMenuItem";
             unlinkNoMoveToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             unlinkNoMoveToolStripMenuItem.Text = "Unlink (No relative movement)";
-            unlinkNoMoveToolStripMenuItem.Click += btnUnlinkNoMove_Click;
+            unlinkNoMoveToolStripMenuItem.Click += new EventHandler(btnUnlinkNoMove_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -460,7 +461,7 @@ namespace System.Windows.Forms
             snapToolStripMenuItem.Name = "snapToolStripMenuItem";
             snapToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             snapToolStripMenuItem.Text = "Snap";
-            snapToolStripMenuItem.Click += snapToolStripMenuItem_Click;
+            snapToolStripMenuItem.Click += new EventHandler(snapToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -473,7 +474,7 @@ namespace System.Windows.Forms
             _deleteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Delete;
             _deleteToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             _deleteToolStripMenuItem.Text = "Delete";
-            _deleteToolStripMenuItem.Click += _deleteToolStripMenuItem_Click;
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // panel3
             // 
@@ -527,7 +528,7 @@ namespace System.Windows.Forms
             chkFlagUnknown1.TabIndex = 3;
             chkFlagUnknown1.Text = "Unknown 1";
             chkFlagUnknown1.UseVisualStyleBackColor = true;
-            chkFlagUnknown1.CheckedChanged += chkFlagUnknown1_CheckedChanged;
+            chkFlagUnknown1.CheckedChanged += new EventHandler(chkFlagUnknown1_CheckedChanged);
             // 
             // chkFlagUnknown2
             // 
@@ -538,7 +539,7 @@ namespace System.Windows.Forms
             chkFlagUnknown2.TabIndex = 3;
             chkFlagUnknown2.Text = "Unknown 2";
             chkFlagUnknown2.UseVisualStyleBackColor = true;
-            chkFlagUnknown2.CheckedChanged += chkFlagUnknown2_CheckedChanged;
+            chkFlagUnknown2.CheckedChanged += new EventHandler(chkFlagUnknown2_CheckedChanged);
             // 
             // chkFlagUnknown3
             // 
@@ -549,7 +550,7 @@ namespace System.Windows.Forms
             chkFlagUnknown3.TabIndex = 3;
             chkFlagUnknown3.Text = "Unknown 3";
             chkFlagUnknown3.UseVisualStyleBackColor = true;
-            chkFlagUnknown3.CheckedChanged += chkFlagUnknown3_CheckedChanged;
+            chkFlagUnknown3.CheckedChanged += new EventHandler(chkFlagUnknown3_CheckedChanged);
             // 
             // chkFlagUnknown4
             // 
@@ -560,7 +561,7 @@ namespace System.Windows.Forms
             chkFlagUnknown4.TabIndex = 3;
             chkFlagUnknown4.Text = "Unknown 4";
             chkFlagUnknown4.UseVisualStyleBackColor = true;
-            chkFlagUnknown4.CheckedChanged += chkFlagUnknown4_CheckedChanged;
+            chkFlagUnknown4.CheckedChanged += new EventHandler(chkFlagUnknown4_CheckedChanged);
             // 
             // groupBoxFlags1
             // 
@@ -589,7 +590,7 @@ namespace System.Windows.Forms
             chkLeftLedge.TabIndex = 4;
             chkLeftLedge.Text = "Left Ledge";
             chkLeftLedge.UseVisualStyleBackColor = true;
-            chkLeftLedge.CheckedChanged += chkLeftLedge_CheckedChanged;
+            chkLeftLedge.CheckedChanged += new EventHandler(chkLeftLedge_CheckedChanged);
             // 
             // chkNoWalljump
             // 
@@ -600,7 +601,7 @@ namespace System.Windows.Forms
             chkNoWalljump.TabIndex = 2;
             chkNoWalljump.Text = "No Walljump";
             chkNoWalljump.UseVisualStyleBackColor = true;
-            chkNoWalljump.CheckedChanged += chkNoWalljump_CheckedChanged;
+            chkNoWalljump.CheckedChanged += new EventHandler(chkNoWalljump_CheckedChanged);
             // 
             // chkRightLedge
             // 
@@ -611,7 +612,7 @@ namespace System.Windows.Forms
             chkRightLedge.TabIndex = 1;
             chkRightLedge.Text = "Right Ledge";
             chkRightLedge.UseVisualStyleBackColor = true;
-            chkRightLedge.CheckedChanged += chkRightLedge_CheckedChanged;
+            chkRightLedge.CheckedChanged += new EventHandler(chkRightLedge_CheckedChanged);
             // 
             // chkTypeRotating
             // 
@@ -622,7 +623,7 @@ namespace System.Windows.Forms
             chkTypeRotating.TabIndex = 4;
             chkTypeRotating.Text = "Rotating";
             chkTypeRotating.UseVisualStyleBackColor = true;
-            chkTypeRotating.CheckedChanged += chkTypeRotating_CheckedChanged;
+            chkTypeRotating.CheckedChanged += new EventHandler(chkTypeRotating_CheckedChanged);
             // 
             // chkFallThrough
             // 
@@ -633,7 +634,7 @@ namespace System.Windows.Forms
             chkFallThrough.TabIndex = 0;
             chkFallThrough.Text = "Fall-Through";
             chkFallThrough.UseVisualStyleBackColor = true;
-            chkFallThrough.CheckedChanged += chkFallThrough_CheckedChanged;
+            chkFallThrough.CheckedChanged += new EventHandler(chkFallThrough_CheckedChanged);
             // 
             // groupBoxTargets
             // 
@@ -660,7 +661,7 @@ namespace System.Windows.Forms
             chkTypePokemonTrainer.TabIndex = 3;
             chkTypePokemonTrainer.Text = "Pokémon Trainer";
             chkTypePokemonTrainer.UseVisualStyleBackColor = true;
-            chkTypePokemonTrainer.CheckedChanged += chkTypePokemonTrainer_CheckedChanged;
+            chkTypePokemonTrainer.CheckedChanged += new EventHandler(chkTypePokemonTrainer_CheckedChanged);
             // 
             // chkTypeItems
             // 
@@ -671,7 +672,7 @@ namespace System.Windows.Forms
             chkTypeItems.TabIndex = 3;
             chkTypeItems.Text = "Items";
             chkTypeItems.UseVisualStyleBackColor = true;
-            chkTypeItems.CheckedChanged += chkTypeItems_CheckedChanged;
+            chkTypeItems.CheckedChanged += new EventHandler(chkTypeItems_CheckedChanged);
             // 
             // chkTypeCharacters
             // 
@@ -682,7 +683,7 @@ namespace System.Windows.Forms
             chkTypeCharacters.TabIndex = 4;
             chkTypeCharacters.Text = "Everything";
             chkTypeCharacters.UseVisualStyleBackColor = true;
-            chkTypeCharacters.CheckedChanged += chkTypeCharacters_CheckedChanged;
+            chkTypeCharacters.CheckedChanged += new EventHandler(chkTypeCharacters_CheckedChanged);
             // 
             // cboMaterial
             // 
@@ -692,7 +693,7 @@ namespace System.Windows.Forms
             cboMaterial.Name = "cboMaterial";
             cboMaterial.Size = new System.Drawing.Size(139, 21);
             cboMaterial.TabIndex = 12;
-            cboMaterial.SelectedIndexChanged += cboMaterial_SelectedIndexChanged;
+            cboMaterial.SelectedIndexChanged += new EventHandler(cboMaterial_SelectedIndexChanged);
             cboMaterial.Anchor = AnchorStyles.Top | AnchorStyles.Right
                                                   | AnchorStyles.Left;
             // 
@@ -704,7 +705,7 @@ namespace System.Windows.Forms
             cboType.Name = "cboType";
             cboType.Size = new System.Drawing.Size(139, 21);
             cboType.TabIndex = 5;
-            cboType.SelectedIndexChanged += cboType_SelectedIndexChanged;
+            cboType.SelectedIndexChanged += new EventHandler(cboType_SelectedIndexChanged);
             cboType.Anchor = AnchorStyles.Top | AnchorStyles.Right
                                               | AnchorStyles.Left;
             // 
@@ -760,7 +761,7 @@ namespace System.Windows.Forms
             numY.Size = new System.Drawing.Size(100, 20);
             numY.TabIndex = 2;
             numY.Text = "0";
-            numY.ValueChanged += numY_ValueChanged;
+            numY.ValueChanged += new EventHandler(numY_ValueChanged);
             // 
             // label1
             // 
@@ -783,7 +784,7 @@ namespace System.Windows.Forms
             numX.Size = new System.Drawing.Size(100, 20);
             numX.TabIndex = 0;
             numX.Text = "0";
-            numX.ValueChanged += numX_ValueChanged;
+            numX.ValueChanged += new EventHandler(numX_ValueChanged);
             // 
             // pnlObjProps
             // 
@@ -812,7 +813,7 @@ namespace System.Windows.Forms
             chkObjSSEUnk.TabIndex = 15;
             chkObjSSEUnk.Text = "SSE Unknown";
             chkObjSSEUnk.UseVisualStyleBackColor = true;
-            chkObjSSEUnk.CheckedChanged += chkObjSSEUnk_CheckedChanged;
+            chkObjSSEUnk.CheckedChanged += new EventHandler(chkObjSSEUnk_CheckedChanged);
             // 
             // chkObjModule
             // 
@@ -823,7 +824,7 @@ namespace System.Windows.Forms
             chkObjModule.TabIndex = 14;
             chkObjModule.Text = "Module Controlled";
             chkObjModule.UseVisualStyleBackColor = true;
-            chkObjModule.CheckedChanged += chkObjModule_CheckedChanged;
+            chkObjModule.CheckedChanged += new EventHandler(chkObjModule_CheckedChanged);
             // 
             // chkObjUnk
             // 
@@ -834,7 +835,7 @@ namespace System.Windows.Forms
             chkObjUnk.TabIndex = 13;
             chkObjUnk.Text = "Unknown";
             chkObjUnk.UseVisualStyleBackColor = true;
-            chkObjUnk.CheckedChanged += chkObjUnk_CheckedChanged;
+            chkObjUnk.CheckedChanged += new EventHandler(chkObjUnk_CheckedChanged);
             // 
             // btnUnlink
             // 
@@ -844,7 +845,7 @@ namespace System.Windows.Forms
             btnUnlink.TabIndex = 12;
             btnUnlink.Text = "-";
             btnUnlink.UseVisualStyleBackColor = true;
-            btnUnlink.Click += btnUnlink_Click;
+            btnUnlink.Click += new EventHandler(btnUnlink_Click);
             // 
             // btnRelink
             // 
@@ -854,7 +855,7 @@ namespace System.Windows.Forms
             btnRelink.TabIndex = 4;
             btnRelink.Text = "+";
             btnRelink.UseVisualStyleBackColor = true;
-            btnRelink.Click += btnRelink_Click;
+            btnRelink.Click += new EventHandler(btnRelink_Click);
             // 
             // txtBone
             // 
@@ -912,7 +913,7 @@ namespace System.Windows.Forms
             btnPlayAnims.TabIndex = 16;
             btnPlayAnims.Text = "Play Animations";
             btnPlayAnims.UseVisualStyleBackColor = true;
-            btnPlayAnims.Click += btnPlayAnims_Click;
+            btnPlayAnims.Click += new EventHandler(btnPlayAnims_Click);
             // 
             // btnPrevFrame
             // 
@@ -923,7 +924,7 @@ namespace System.Windows.Forms
             btnPrevFrame.TabIndex = 18;
             btnPrevFrame.Text = "<";
             btnPrevFrame.UseVisualStyleBackColor = true;
-            btnPrevFrame.Click += btnPrevFrame_Click;
+            btnPrevFrame.Click += new EventHandler(btnPrevFrame_Click);
             // 
             // btnNextFrame
             // 
@@ -934,7 +935,7 @@ namespace System.Windows.Forms
             btnNextFrame.TabIndex = 17;
             btnNextFrame.Text = ">";
             btnNextFrame.UseVisualStyleBackColor = true;
-            btnNextFrame.Click += btnNextFrame_Click;
+            btnNextFrame.Click += new EventHandler(btnNextFrame_Click);
             // 
             // _modelPanel
             // 
@@ -943,12 +944,12 @@ namespace System.Windows.Forms
             _modelPanel.Name = "_modelPanel";
             _modelPanel.Size = new System.Drawing.Size(481, 442);
             _modelPanel.TabIndex = 0;
-            _modelPanel.PreRender += _modelPanel_PreRender;
-            _modelPanel.PostRender += _modelPanel_PostRender;
-            _modelPanel.KeyDown += _modelPanel_KeyDown;
-            _modelPanel.MouseDown += _modelPanel_MouseDown;
-            _modelPanel.MouseMove += _modelPanel_MouseMove;
-            _modelPanel.MouseUp += _modelPanel_MouseUp;
+            _modelPanel.PreRender += new GLRenderEventHandler(_modelPanel_PreRender);
+            _modelPanel.PostRender += new GLRenderEventHandler(_modelPanel_PostRender);
+            _modelPanel.KeyDown += new KeyEventHandler(_modelPanel_KeyDown);
+            _modelPanel.MouseDown += new MouseEventHandler(_modelPanel_MouseDown);
+            _modelPanel.MouseMove += new MouseEventHandler(_modelPanel_MouseMove);
+            _modelPanel.MouseUp += new MouseEventHandler(_modelPanel_MouseUp);
             // 
             // panel1
             // 
@@ -972,6 +973,7 @@ namespace System.Windows.Forms
                 btnUndo,
                 btnRedo,
                 toolStripSeparator3,
+                btnTransform,
                 btnSplit,
                 btnMerge,
                 btnFlipColl,
@@ -1005,7 +1007,7 @@ namespace System.Windows.Forms
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new System.Drawing.Size(40, 22);
             btnUndo.Text = "Undo";
-            btnUndo.Click += Undo;
+            btnUndo.Click += new EventHandler(Undo);
             // 
             // btnRedo
             // 
@@ -1015,12 +1017,22 @@ namespace System.Windows.Forms
             btnRedo.Name = "btnRedo";
             btnRedo.Size = new System.Drawing.Size(38, 22);
             btnRedo.Text = "Redo";
-            btnRedo.Click += Redo;
+            btnRedo.Click += new EventHandler(Redo);
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnTransform
+            // 
+            btnTransform.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnTransform.Enabled = false;
+            btnTransform.ImageTransparentColor = Color.Magenta;
+            btnTransform.Name = "btnTransform";
+            btnTransform.Size = new System.Drawing.Size(34, 22);
+            btnTransform.Text = "Transform";
+            btnTransform.Click += new EventHandler(transformToolStripMenuItem_Click);
             // 
             // btnSplit
             // 
@@ -1030,7 +1042,7 @@ namespace System.Windows.Forms
             btnSplit.Name = "btnSplit";
             btnSplit.Size = new System.Drawing.Size(34, 22);
             btnSplit.Text = "Split";
-            btnSplit.Click += btnSplit_Click;
+            btnSplit.Click += new EventHandler(btnSplit_Click);
             // 
             // btnMerge
             // 
@@ -1040,7 +1052,7 @@ namespace System.Windows.Forms
             btnMerge.Name = "btnMerge";
             btnMerge.Size = new System.Drawing.Size(45, 22);
             btnMerge.Text = "Merge";
-            btnMerge.Click += btnMerge_Click;
+            btnMerge.Click += new EventHandler(btnMerge_Click);
             // 
             // btnFlipColl
             // 
@@ -1050,7 +1062,7 @@ namespace System.Windows.Forms
             btnFlipColl.Name = "btnFlipColl";
             btnFlipColl.Size = new System.Drawing.Size(30, 22);
             btnFlipColl.Text = "Flip";
-            btnFlipColl.Click += btnFlipColl_Click;
+            btnFlipColl.Click += new EventHandler(btnFlipColl_Click);
             // 
             // btnDelete
             // 
@@ -1060,7 +1072,7 @@ namespace System.Windows.Forms
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new System.Drawing.Size(44, 22);
             btnDelete.Text = "Delete";
-            btnDelete.Click += btnDelete_Click;
+            btnDelete.Click += new EventHandler(btnDelete_Click);
             // 
             // toolStripSeparator2
             // 
@@ -1074,7 +1086,7 @@ namespace System.Windows.Forms
             btnSameX.Name = "btnSameX";
             btnSameX.Size = new System.Drawing.Size(49, 22);
             btnSameX.Text = "Align X";
-            btnSameX.Click += btnSameX_Click;
+            btnSameX.Click += new EventHandler(btnSameX_Click);
             // 
             // btnSameY
             // 
@@ -1083,7 +1095,7 @@ namespace System.Windows.Forms
             btnSameY.Name = "btnSameY";
             btnSameY.Size = new System.Drawing.Size(49, 19);
             btnSameY.Text = "Align Y";
-            btnSameY.Click += btnSameY_Click;
+            btnSameY.Click += new EventHandler(btnSameY_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1099,7 +1111,7 @@ namespace System.Windows.Forms
             btnPerspectiveCam.Name = "btnPerspectiveCam";
             btnPerspectiveCam.Size = new System.Drawing.Size(71, 19);
             btnPerspectiveCam.Text = "Perspective";
-            btnPerspectiveCam.Click += btnPerspectiveCam_Click;
+            btnPerspectiveCam.Click += new EventHandler(btnPerspectiveCam_Click);
             // 
             // btnOrthographicCam
             // 
@@ -1108,7 +1120,7 @@ namespace System.Windows.Forms
             btnOrthographicCam.Name = "btnOrthographicCam";
             btnOrthographicCam.Size = new System.Drawing.Size(82, 19);
             btnOrthographicCam.Text = "Orthographic";
-            btnOrthographicCam.Click += btnOrthographicCam_Click;
+            btnOrthographicCam.Click += new EventHandler(btnOrthographicCam_Click);
             // 
             // btnResetCam
             // 
@@ -1117,7 +1129,7 @@ namespace System.Windows.Forms
             btnResetCam.Name = "btnResetCam";
             btnResetCam.Size = new System.Drawing.Size(67, 19);
             btnResetCam.Text = "Reset Cam";
-            btnResetCam.Click += btnResetCam_Click;
+            btnResetCam.Click += new EventHandler(btnResetCam_Click);
             // 
             // toolStripSeparatorCamera
             // 
@@ -1131,7 +1143,7 @@ namespace System.Windows.Forms
             btnSpawns.Name = "btnSpawns";
             btnSpawns.Size = new System.Drawing.Size(51, 19);
             btnSpawns.Text = "Spawns";
-            btnSpawns.Click += btnSpawns_Click;
+            btnSpawns.Click += new EventHandler(btnSpawns_Click);
             // 
             // btnItems
             // 
@@ -1140,7 +1152,7 @@ namespace System.Windows.Forms
             btnItems.Name = "btnItems";
             btnItems.Size = new System.Drawing.Size(40, 19);
             btnItems.Text = "Items";
-            btnItems.Click += btnItems_Click;
+            btnItems.Click += new EventHandler(btnItems_Click);
             // 
             // btnBoundaries
             // 
@@ -1151,7 +1163,7 @@ namespace System.Windows.Forms
             btnBoundaries.Name = "btnBoundaries";
             btnBoundaries.Size = new System.Drawing.Size(70, 19);
             btnBoundaries.Text = "Boundaries";
-            btnBoundaries.Click += btnBoundaries_Click;
+            btnBoundaries.Click += new EventHandler(btnBoundaries_Click);
             // 
             // toolStripSeparatorOverlays
             // 
@@ -1165,7 +1177,7 @@ namespace System.Windows.Forms
             btnResetSnap.Name = "btnResetSnap";
             btnResetSnap.Size = new System.Drawing.Size(57, 19);
             btnResetSnap.Text = "Un-Snap";
-            btnResetSnap.Click += btnResetSnap_Click;
+            btnResetSnap.Click += new EventHandler(btnResetSnap_Click);
             // 
             // btnHelp
             // 
@@ -1175,7 +1187,7 @@ namespace System.Windows.Forms
             btnHelp.Name = "btnHelp";
             btnHelp.Size = new System.Drawing.Size(36, 19);
             btnHelp.Text = "Help";
-            btnHelp.Click += btnHelp_Click;
+            btnHelp.Click += new EventHandler(btnHelp_Click);
             // 
             // btnResetRot
             // 
@@ -1190,7 +1202,7 @@ namespace System.Windows.Forms
             btnResetRot.Text = "*";
             btnResetRot.UseVisualStyleBackColor = true;
             btnResetRot.Visible = false;
-            btnResetRot.Click += btnResetRot_Click;
+            btnResetRot.Click += new EventHandler(btnResetRot_Click);
             // 
             // trackBar1
             // 
@@ -1204,7 +1216,7 @@ namespace System.Windows.Forms
             trackBar1.TabIndex = 3;
             trackBar1.TickStyle = TickStyle.None;
             trackBar1.Visible = false;
-            trackBar1.Scroll += trackBar1_Scroll;
+            trackBar1.Scroll += new EventHandler(trackBar1_Scroll);
             // 
             // contextMenuStrip3
             // 
@@ -1222,7 +1234,7 @@ namespace System.Windows.Forms
             });
             contextMenuStrip3.Name = "contextMenuStrip3";
             contextMenuStrip3.Size = new System.Drawing.Size(184, 208);
-            contextMenuStrip3.Opening += contextMenuStrip3_Opening;
+            contextMenuStrip3.Opening += new CancelEventHandler(contextMenuStrip3_Opening);
             // 
             // moveToNewObjectToolStripMenuItem
             // 
@@ -1240,48 +1252,49 @@ namespace System.Windows.Forms
             splitToolStripMenuItem.Name = "splitToolStripMenuItem";
             splitToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             splitToolStripMenuItem.Text = "Split";
-            splitToolStripMenuItem.Click += btnSplit_Click;
+            splitToolStripMenuItem.Click += new EventHandler(btnSplit_Click);
             // 
             // mergeToolStripMenuItem
             // 
             mergeToolStripMenuItem.Name = "mergeToolStripMenuItem";
             mergeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             mergeToolStripMenuItem.Text = "Merge";
-            mergeToolStripMenuItem.Click += btnMerge_Click;
+            mergeToolStripMenuItem.Click += new EventHandler(btnMerge_Click);
             // 
             // flipToolStripMenuItem
             // 
             flipToolStripMenuItem.Name = "flipToolStripMenuItem";
             flipToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             flipToolStripMenuItem.Text = "Flip";
-            flipToolStripMenuItem.Click += btnFlipColl_Click;
+            flipToolStripMenuItem.Click += new EventHandler(btnFlipColl_Click);
             // 
             // _deleteToolStripMenuItem1
             // 
             _deleteToolStripMenuItem1.Name = "_deleteToolStripMenuItem1";
             _deleteToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
             _deleteToolStripMenuItem1.Text = "Delete";
-            _deleteToolStripMenuItem1.Click += btnDelete_Click;
+            _deleteToolStripMenuItem1.Click += new EventHandler(btnDelete_Click);
             // 
             // transformToolStripMenuItem
             // 
             transformToolStripMenuItem.Name = "transformToolStripMenuItem";
             transformToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             transformToolStripMenuItem.Text = "Transform";
+            alignXToolStripMenuItem.Click += new EventHandler(transformToolStripMenuItem_Click);
             // 
             // alignXToolStripMenuItem
             // 
             alignXToolStripMenuItem.Name = "alignXToolStripMenuItem";
             alignXToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             alignXToolStripMenuItem.Text = "Align X";
-            alignXToolStripMenuItem.Click += btnSameX_Click;
+            alignXToolStripMenuItem.Click += new EventHandler(btnSameX_Click);
             // 
             // alignYToolStripMenuItem
             // 
             alignYToolStripMenuItem.Name = "alignYToolStripMenuItem";
             alignYToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             alignYToolStripMenuItem.Text = "Align Y";
-            alignYToolStripMenuItem.Click += btnSameY_Click;
+            alignYToolStripMenuItem.Click += new EventHandler(btnSameY_Click);
             // 
             // CollisionEditor
             // 
@@ -1453,13 +1466,9 @@ namespace System.Windows.Forms
                     cboMaterial.DataSource =
                         CollisionTerrain.Terrains.ToList(); // Get the expanded collisions if they're used
                 }
-                else if (cboMaterial.Items.Count > 32)
-                {
-                    cboMaterial.DataSource =
-                        CollisionTerrain.Terrains.Take(0x20).ToList(); // Take unexpanded collisions
-                }
 
                 cboMaterial.SelectedItem = cboMaterial.Items[p._material];
+
                 //Type
                 cboType.SelectedItem = p.Type;
                 //Flags
@@ -1514,7 +1523,7 @@ namespace System.Windows.Forms
             modelTree.Nodes.Clear();
             _models.Clear();
 
-            if (_targetNode != null && _targetNode._parent != null)
+            if (_targetNode?._parent != null)
             {
                 foreach (MDL0Node n in _targetNode._parent.FindChildrenByTypeInGroup(null, ResourceType.MDL0,
                     _targetNode.GroupID))
@@ -1553,15 +1562,12 @@ namespace System.Windows.Forms
                     MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
                                             .FirstOrDefault() as MDL0Node;
 
-                    if (model != null)
+                    MDL0BoneNode bone =
+                        model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
+                             .FirstOrDefault() as MDL0BoneNode;
+                    if (bone != null)
                     {
-                        MDL0BoneNode bone =
-                            model._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                                 .FirstOrDefault() as MDL0BoneNode;
-                        if (bone != null)
-                        {
-                            obj._linkedBone = bone;
-                        }
+                        obj._linkedBone = bone;
                     }
 
                     /*if (!obj._flags[1])
@@ -1770,13 +1776,13 @@ namespace System.Windows.Forms
         {
             if (_selecting || _hovering || _selectedLinks.Count == 0)
             {
-                btnDelete.Enabled = btnFlipColl.Enabled =
+                btnDelete.Enabled = btnFlipColl.Enabled = btnTransform.Enabled =
                     btnMerge.Enabled = btnSplit.Enabled = btnSameX.Enabled = btnSameY.Enabled = false;
             }
             else
             {
                 btnMerge.Enabled = btnSameX.Enabled = btnSameY.Enabled = _selectedLinks.Count > 1;
-                btnDelete.Enabled = btnSplit.Enabled = true;
+                btnDelete.Enabled = btnSplit.Enabled = btnTransform.Enabled = true;
                 btnFlipColl.Enabled = _selectedPlanes.Count > 0;
             }
         }
@@ -2276,7 +2282,7 @@ namespace System.Windows.Forms
                 if (_RCend - _RCstart <= TimeSpan.FromSeconds(0.5) && _selectedLinks != null &&
                     _selectedLinks.Count > 0)
                 {
-                    //contextMenuStrip3.Show(Cursor.Position);
+                    contextMenuStrip3.Show(Cursor.Position);
                 }
             }
         }
@@ -2349,19 +2355,13 @@ namespace System.Windows.Forms
             GL.Enable(EnableCap.DepthTest);
 
             //Render objects
-            if (_targetNode != null)
-            {
-                _targetNode.Render();
-            }
+            _targetNode?.Render();
 
             if (_modelPanel.RenderBones)
             {
                 foreach (IRenderedObject o in _modelPanel._renderList)
                 {
-                    if (o is IModel)
-                    {
-                        ((IModel) o).RenderBones(_modelPanel.CurrentViewport);
-                    }
+                    (o as IModel)?.RenderBones(_modelPanel.CurrentViewport);
                 }
             }
 
@@ -2421,7 +2421,7 @@ namespace System.Windows.Forms
                         TKContext.DrawSphere(position, 5.0f, 32);
                         if (int.TryParse(bone._name.Substring(6, 1), out int playernum))
                         {
-                            _modelPanel.CurrentViewport.ScreenText[playernum.ToString()] =
+                            _modelPanel.CurrentViewport.NoSettingsScreenText[playernum.ToString()] =
                                 _modelPanel.CurrentViewport.Camera.Project(position) - new Vector3(8.0f, 8.0f, 0);
                         }
                     }
@@ -2431,7 +2431,7 @@ namespace System.Windows.Forms
                         TKContext.DrawSphere(bone._frameMatrix.GetPoint(), 5.0f, 32);
                         if (int.TryParse(bone._name.Substring(7, 1), out int playernum))
                         {
-                            _modelPanel.CurrentViewport.ScreenText[playernum.ToString()] =
+                            _modelPanel.CurrentViewport.NoSettingsScreenText[playernum.ToString()] =
                                 _modelPanel.CurrentViewport.Camera.Project(bone._frameMatrix.GetPoint()) -
                                 new Vector3(8.0f, 8.0f, 0);
                         }
@@ -2490,7 +2490,7 @@ namespace System.Windows.Forms
                 GL.CullFace(CullFaceMode.Front);
 
                 GL.Color4(Color.Blue);
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.LineWidth(15.0f);
 
                 Vector3
@@ -2504,7 +2504,7 @@ namespace System.Windows.Forms
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.Color4(Color.Red);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
@@ -2512,25 +2512,25 @@ namespace System.Windows.Forms
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.End();
                 GL.Color4(0.0f, 0.5f, 1.0f, 0.3f);
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone0._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
@@ -2917,7 +2917,7 @@ namespace System.Windows.Forms
             foreach (CollisionPlane plane in _selectedPlanes)
             {
                 plane.Type = (CollisionPlaneType) cboType.SelectedItem;
-                if (!plane.IsRotating)
+                if (ErrorChecking && !plane.IsRotating)
                 {
                     if (!plane.IsFloor)
                     {
@@ -2950,7 +2950,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypeCharacters_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -2994,7 +2994,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypeItems_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3032,7 +3032,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypePokemonTrainer_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3070,7 +3070,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypeRotating_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3143,7 +3143,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkFallThrough_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3212,7 +3212,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkLeftLedge_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3346,7 +3346,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkRightLedge_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3484,7 +3484,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkNoWalljump_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3731,14 +3731,14 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (numX.Text == "" && _errorChecking)
+            if (numX.Text == "" && ErrorChecking)
             {
                 return;
             }
 
             foreach (CollisionLink link in _selectedLinks)
             {
-                if (link._parent == null || link._parent.LinkedBone == null)
+                if (link._parent?.LinkedBone == null)
                 {
                     link._rawValue._x = numX.Value;
                 }
@@ -3760,14 +3760,14 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (numY.Text == "" && _errorChecking)
+            if (numY.Text == "" && ErrorChecking)
             {
                 return;
             }
 
             foreach (CollisionLink link in _selectedLinks)
             {
-                if (link._parent == null || link._parent.LinkedBone == null)
+                if (link._parent?.LinkedBone == null)
                 {
                     link._rawValue._y = numY.Value;
                 }
@@ -3783,6 +3783,54 @@ namespace System.Windows.Forms
         }
 
         #endregion
+
+        protected void transformToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TransformEditor transform = new TransformEditor();
+            if (transform.ShowDialog() == DialogResult.OK)
+            {
+                CreateUndo();
+
+                if (_selectedPlanes.Count > 0)
+                {
+                    FrameState _centerState =
+                        new FrameState(new Vector3(1, 1, 1), new Vector3(0, 0, 0), new Vector3(0, 0, 0));
+                    /*if(transform._transform.ScalingType == xyTransform.ScaleType.FromCenterOfCollisions)
+                    {
+                        Vector2 v2avg = new Vector2(0, 0);
+                        int i = 0;
+                        foreach(CollisionLink l in _selectedLinks)
+                        {
+                            v2avg += l._rawValue;
+                            i++;
+                        }
+                        float newX = (v2avg._x / i) * -1;// * (v2avg._x >= 1 ? -1 : 1);
+                        float newY = (v2avg._y / i) * -1;// * (v2avg._y >= 1 ? -1 : 1);
+                        Console.WriteLine(new Vector2(newX, newY));
+                        _centerState = new FrameState(new Vector3(1, 1, 1), new Vector3(0, 0, 0), new Vector3(newX, newY, 0));
+                    }*/
+                    Vector3 v3trans = new Vector3(transform._transform.Translation._x,
+                        transform._transform.Translation._y, 0);
+                    Vector3 v3rot = new Vector3(0, 0, transform._transform.Rotation);
+                    Vector3 v3scale = new Vector3(transform._transform.Scale._x, transform._transform.Scale._y, 1);
+                    FrameState _frameState = new FrameState(v3scale, v3rot, v3trans);
+                    foreach (CollisionLink l in _selectedLinks)
+                    {
+                        l._rawValue = _centerState._transform * _frameState._transform * l._rawValue;
+                    }
+                }
+                else
+                {
+                    foreach (CollisionLink l in _selectedLinks)
+                    {
+                        l._rawValue += transform._transform.Translation;
+                    }
+                }
+
+                _modelPanel.Invalidate();
+                TargetNode.SignalPropertyChange();
+            }
+        }
 
         protected void btnSameX_Click(object sender, EventArgs e)
         {
@@ -3825,9 +3873,9 @@ namespace System.Windows.Forms
 
         protected void modelTree_AfterCheck(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Tag is MDL0Node)
+            if (e.Node.Tag is MDL0Node node)
             {
-                ((MDL0Node) e.Node.Tag).IsRendering = e.Node.Checked;
+                node.IsRendering = e.Node.Checked;
                 if (!_updating)
                 {
                     _updating = true;
@@ -3839,9 +3887,9 @@ namespace System.Windows.Forms
                     _updating = false;
                 }
             }
-            else if (e.Node.Tag is MDL0BoneNode)
+            else if (e.Node.Tag is MDL0BoneNode boneNode)
             {
-                ((MDL0BoneNode) e.Node.Tag)._render = e.Node.Checked;
+                boneNode._render = e.Node.Checked;
             }
 
             if (!_updating)
@@ -3852,42 +3900,35 @@ namespace System.Windows.Forms
 
         protected void modelTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node != null)
+            if (e.Node?.Tag is MDL0BoneNode)
             {
-                if (e.Node.Tag is MDL0BoneNode)
-                {
-                    MDL0BoneNode bone = e.Node.Tag as MDL0BoneNode;
-                    bone._boneColor = Color.FromArgb(255, 0, 0);
-                    bone._nodeColor = Color.FromArgb(255, 128, 0);
-                    _modelPanel.Invalidate();
-                }
+                MDL0BoneNode bone = e.Node.Tag as MDL0BoneNode;
+                bone._boneColor = Color.FromArgb(255, 0, 0);
+                bone._nodeColor = Color.FromArgb(255, 128, 0);
+                _modelPanel.Invalidate();
             }
         }
 
         protected void modelTree_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (node != null)
+            if (node?.Tag is MDL0BoneNode bone)
             {
-                if (node.Tag is MDL0BoneNode)
-                {
-                    MDL0BoneNode bone = node.Tag as MDL0BoneNode;
-                    bone._nodeColor = bone._boneColor = Color.Transparent;
-                    _modelPanel.Invalidate();
-                }
+                bone._nodeColor = bone._boneColor = Color.Transparent;
+                _modelPanel.Invalidate();
             }
         }
 
         protected void btnRelink_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (_selectedObject == null || node == null || !(node.Tag is MDL0BoneNode))
+            if (_selectedObject == null || !(node?.Tag is MDL0BoneNode bone))
             {
                 return;
             }
 
             txtBone.Text = _selectedObject._boneName = node.Text;
-            _selectedObject.LinkedBone = (MDL0BoneNode) node.Tag;
+            _selectedObject.LinkedBone = bone;
             txtModel.Text = _selectedObject._modelName = node.Parent.Text;
             TargetNode.SignalPropertyChange();
             _modelPanel.Invalidate();
@@ -3896,13 +3937,13 @@ namespace System.Windows.Forms
         protected void btnRelinkNoMove_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (_selectedObject == null || node == null || !(node.Tag is MDL0BoneNode))
+            if (_selectedObject == null || !(node?.Tag is MDL0BoneNode bone))
             {
                 return;
             }
 
             txtBone.Text = _selectedObject._boneName = node.Text;
-            _selectedObject.LinkedBone = (MDL0BoneNode) node.Tag;
+            _selectedObject.LinkedBone = bone;
             txtModel.Text = _selectedObject._modelName = node.Parent.Text;
             if (_selectedObject._points != null)
             {
@@ -3980,7 +4021,7 @@ namespace System.Windows.Forms
 
         protected void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
         {
-            if (modelTree.SelectedNode == null || !(modelTree.SelectedNode.Tag is MDL0BoneNode))
+            if (!(modelTree.SelectedNode?.Tag is MDL0BoneNode))
             {
                 e.Cancel = true;
             }
@@ -4017,7 +4058,7 @@ namespace System.Windows.Forms
         protected void snapToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (node == null || !(node.Tag is MDL0BoneNode))
+            if (!(node?.Tag is MDL0BoneNode))
             {
                 return;
             }

@@ -193,7 +193,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            if (Program.OpenFile(FileFilters.ARCImport, out string path) > 0)
+            if (Program.OpenFile(FileFilters.ARCImport, out string path))
             {
                 NewARC().Replace(path);
             }
@@ -201,7 +201,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportBRES()
         {
-            if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
+            if (Program.OpenFile(FileFilters.BRES, out string path))
             {
                 NewBRES().Replace(path);
             }
@@ -209,7 +209,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportMSBin()
         {
-            if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
+            if (Program.OpenFile(FileFilters.MSBin, out string path))
             {
                 NewMSBin().Replace(path);
             }

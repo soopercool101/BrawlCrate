@@ -45,7 +45,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
@@ -56,7 +56,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // pnlColors
             // 
@@ -101,7 +101,7 @@ namespace System.Windows.Forms
             chkAlpha.TabIndex = 6;
             chkAlpha.Text = "Show Alpha";
             chkAlpha.UseVisualStyleBackColor = true;
-            chkAlpha.CheckedChanged += chkAlpha_CheckedChanged;
+            chkAlpha.CheckedChanged += new EventHandler(chkAlpha_CheckedChanged);
             // 
             // pnlNew
             // 
@@ -110,7 +110,7 @@ namespace System.Windows.Forms
             pnlNew.Name = "pnlNew";
             pnlNew.Size = new Drawing.Size(90, 37);
             pnlNew.TabIndex = 6;
-            pnlNew.Paint += pnlNew_Paint;
+            pnlNew.Paint += new PaintEventHandler(pnlNew_Paint);
             // 
             // pnlOld
             // 
@@ -119,7 +119,7 @@ namespace System.Windows.Forms
             pnlOld.Name = "pnlOld";
             pnlOld.Size = new Drawing.Size(90, 37);
             pnlOld.TabIndex = 5;
-            pnlOld.Paint += pnlOld_Paint;
+            pnlOld.Paint += new PaintEventHandler(pnlOld_Paint);
             // 
             // goodColorControl1
             // 
@@ -130,7 +130,7 @@ namespace System.Windows.Forms
             goodColorControl1.ShowAlpha = true;
             goodColorControl1.Size = new Drawing.Size(314, 186);
             goodColorControl1.TabIndex = 2;
-            goodColorControl1.ColorChanged += goodColorControl1_ColorChanged;
+            goodColorControl1.ColorChanged += new EventHandler(goodColorControl1_ColorChanged);
             // 
             // GoodColorControl2
             // 
@@ -342,10 +342,7 @@ namespace System.Windows.Forms
 
         private void selectionControl_Closed(object sender, EventArgs e)
         {
-            if (_service != null)
-            {
-                _service.CloseDropDown();
-            }
+            _service?.CloseDropDown();
         }
     }
 }

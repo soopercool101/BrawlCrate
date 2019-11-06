@@ -54,9 +54,9 @@ namespace BrawlLib.SSBBTypes
         private fixed byte _pad2[20];
 
         // Most likely the z, y, and z override coordinates for the door.
-        public bfloat _xOverride;
-        public bfloat _yOverride;
-        public bfloat _zOverride;
+        public bfloat _posunk1;
+        public bfloat _posunk2;
+        public bfloat _posunk3;
         private fixed byte _stageID[3];
         public byte _doorIndex;
 
@@ -67,8 +67,8 @@ namespace BrawlLib.SSBBTypes
         public byte _unk6;
 
         // Possibly rotation override?
-        public bfloat _unkFloat0;
-        public bfloat _unkFloat1;
+        public bfloat _xpos;
+        public bfloat _ypos;
 
         // Triggers and padding
         private fixed byte _trigger0[4];
@@ -275,8 +275,8 @@ namespace BrawlLib.SSBBTypes
                 _unk4 = _unk5 = _unk6 = 0;
             _pad1 = 0;
             _unkInt = 0;
-            _xOverride = _yOverride = _zOverride =
-                _unkFloat0 = _unkFloat1 = 0;
+            _posunk1 = _posunk2 = _posunk3 =
+                _xpos = _ypos = 0;
             _unk7 = 1;
             _unk8 = _unk9 = _unk10 = 0;
             _nulls = 0xffffffff;

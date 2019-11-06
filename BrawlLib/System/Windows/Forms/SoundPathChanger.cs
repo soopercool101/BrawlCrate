@@ -29,7 +29,7 @@ namespace System.Windows.Forms
             txtPath.Name = "txtPath";
             txtPath.Size = new Drawing.Size(330, 20);
             txtPath.TabIndex = 0;
-            txtPath.TextChanged += txtPath_TextChanged;
+            txtPath.TextChanged += new EventHandler(txtPath_TextChanged);
             // 
             // btnOkay
             // 
@@ -40,7 +40,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
@@ -51,7 +51,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // label1
             // 
@@ -72,7 +72,7 @@ namespace System.Windows.Forms
             btnBrowse.TabIndex = 4;
             btnBrowse.Text = "...";
             btnBrowse.UseVisualStyleBackColor = true;
-            btnBrowse.Click += btnBrowse_Click;
+            btnBrowse.Click += new EventHandler(btnBrowse_Click);
             // 
             // SoundPathChanger
             // 

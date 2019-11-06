@@ -205,6 +205,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         SetBranchDestination = 0xA,
         SetBranchConditionDestination1 = 0xB,
         SetBranchConditionDestination2 = 0xC,
-        SetBranchConditionDestination3 = 0xD,
+        SetBranchConditionDestination3 = 0xD
     }
 }

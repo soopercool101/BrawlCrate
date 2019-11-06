@@ -10,35 +10,57 @@ namespace BrawlCrate.NodeWrappers
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     internal sealed class NodeWrapperAttribute : Attribute
     {
-        private readonly ResourceType _type;
-
-        public NodeWrapperAttribute(ResourceType type)
+        public NodeWrapperAttribute(ResourceType resourceType)
         {
-            _type = type;
+            WrappedResourceType = resourceType;
+            WrappedType = null;
         }
 
-        public ResourceType WrappedType => _type;
+        public ResourceType WrappedResourceType { get; }
 
-        private static Dictionary<ResourceType, Type> _wrappers;
+        public Type WrappedType { get; }
 
-        public static Dictionary<ResourceType, Type> Wrappers
+        private static Dictionary<ResourceType, Type> _resourceWrappers;
+
+        public static Dictionary<ResourceType, Type> ResourceWrappers
         {
             get
             {
-                if (_wrappers == null)
+                if (_resourceWrappers == null)
                 {
-                    _wrappers = new Dictionary<ResourceType, Type>();
+                    _resourceWrappers = new Dictionary<ResourceType, Type>();
                     foreach (Type t in Assembly.GetExecutingAssembly().GetTypes())
                     {
                         foreach (NodeWrapperAttribute attr in t.GetCustomAttributes(typeof(NodeWrapperAttribute), true))
                         {
-                            _wrappers[attr._type] = t;
+                            _resourceWrappers[attr.WrappedResourceType] = t;
                         }
                     }
                 }
 
-                return _wrappers;
+                return _resourceWrappers;
             }
+        }
+
+        public static Dictionary<ResourceType, PluginWrapper> PluginResourceWrappers { get; } =
+            new Dictionary<ResourceType, PluginWrapper>();
+
+        public static Dictionary<Type, PluginWrapper> PluginTypeWrappers { get; } =
+            new Dictionary<Type, PluginWrapper>();
+
+        public static void AddWrapper(ResourceType r, PluginWrapper w)
+        {
+            PluginResourceWrappers[r] = w;
+        }
+
+        public static void AddWrapper<TypeNode>(PluginWrapper w) where TypeNode : ResourceNode
+        {
+            PluginTypeWrappers[typeof(TypeNode)] = w;
+        }
+
+        public static void AddWrapper(Type t, PluginWrapper w)
+        {
+            PluginTypeWrappers[t] = w;
         }
     }
 
@@ -354,13 +376,22 @@ namespace BrawlCrate.NodeWrappers
         {
             _owner = owner;
             BaseWrapper w;
-            if (!NodeWrapperAttribute.Wrappers.ContainsKey(node.ResourceFileType))
+            if (NodeWrapperAttribute.PluginTypeWrappers.ContainsKey(node.GetType()))
             {
-                w = new GenericWrapper();
+                w = NodeWrapperAttribute.PluginTypeWrappers[node.GetType()].GetInstance();
+            }
+            else if (NodeWrapperAttribute.PluginResourceWrappers.ContainsKey(node.ResourceFileType))
+            {
+                w = NodeWrapperAttribute.PluginResourceWrappers[node.ResourceFileType].GetInstance();
+            }
+            else if (NodeWrapperAttribute.ResourceWrappers.ContainsKey(node.ResourceFileType))
+            {
+                w = Activator.CreateInstance(NodeWrapperAttribute.ResourceWrappers[node.ResourceFileType]) as
+                    BaseWrapper;
             }
             else
             {
-                w = Activator.CreateInstance(NodeWrapperAttribute.Wrappers[node.ResourceFileType]) as BaseWrapper;
+                w = new GenericWrapper();
             }
 
             w.Link(node);

@@ -2,6 +2,8 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 // ReSharper disable UnusedMember.Global
@@ -17,15 +19,15 @@ namespace BrawlCrate.API
         ///
         ///     Returns null if there is no open file.
         /// </summary>
-        public static ResourceNode RootNode => MainForm.Instance.RootNode?.Resource;
+        public static ResourceNode RootNode => MainForm.Instance?.RootNode?.Resource;
 
         /// <summary>
         ///     The currently selected node on the Main Form. Useful for context menu items.
         ///
         ///     Returns null if there is no selected node.
         /// </summary>
-        public static ResourceNode SelectedNode => MainForm.Instance.resourceTree.SelectedNode != null
-            ? ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource
+        public static ResourceNode SelectedNode => MainForm.Instance?.resourceTree.SelectedNode != null
+            ? ((BaseWrapper) MainForm.Instance?.resourceTree.SelectedNode).Resource
             : null;
 
         /// <summary>
@@ -38,9 +40,9 @@ namespace BrawlCrate.API
             get
             {
                 List<ResourceNode> nodes = new List<ResourceNode>();
-                if (MainForm.Instance.resourceTree.SelectedNodes != null)
+                if (MainForm.Instance?.resourceTree.SelectedNodes != null)
                 {
-                    foreach (BaseWrapper b in MainForm.Instance.resourceTree.SelectedNodes)
+                    foreach (BaseWrapper b in MainForm.Instance?.resourceTree.SelectedNodes)
                     {
                         nodes.Add(b.Resource);
                     }
@@ -70,6 +72,24 @@ namespace BrawlCrate.API
             }
         }
 
+        /// <summary>
+        ///     Returns a full list of all nodes of a given type in the open file.
+        ///
+        ///     Returns an empty list if there is no open file
+        /// </summary>
+        public static List<T> NodeListOfType<T>() where T : ResourceNode
+        {
+            List<T> nodes = new List<T>();
+
+            if (RootNode != null)
+            {
+                nodes = ResourceNode.FindAllSubNodes(RootNode).Where(n => n.GetType().IsInstanceOfType(typeof(T)))
+                                    .Cast<T>().ToList();
+            }
+
+            return nodes;
+        }
+
         #endregion
 
         #region Wrappers
@@ -79,14 +99,14 @@ namespace BrawlCrate.API
         ///
         ///     Returns null if there is no open file.
         /// </summary>
-        public static BaseWrapper RootNodeWrapper => MainForm.Instance.RootNode;
+        public static BaseWrapper RootNodeWrapper => MainForm.Instance?.RootNode;
 
         /// <summary>
         ///     The wrapper for the currently selected node on the Main Form. Useful for context menu items.
         ///
         ///     Returns null if there is no selected node.
         /// </summary>
-        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
+        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance?.resourceTree.SelectedNode;
 
         /// <summary>
         ///     The wrappers for the currently selected nodes on the Main Form.
@@ -98,9 +118,9 @@ namespace BrawlCrate.API
             get
             {
                 List<BaseWrapper> wrappers = new List<BaseWrapper>();
-                if (MainForm.Instance.resourceTree.SelectedNodes != null)
+                if (MainForm.Instance?.resourceTree.SelectedNodes != null)
                 {
-                    foreach (TreeNode treeNode in MainForm.Instance.resourceTree.SelectedNodes)
+                    foreach (TreeNode treeNode in MainForm.Instance?.resourceTree.SelectedNodes)
                     {
                         if (treeNode is BaseWrapper b)
                         {
@@ -129,7 +149,7 @@ namespace BrawlCrate.API
 
                 if (RootNodeWrapper != null)
                 {
-                    MainForm.Instance.resourceTree.Hide();
+                    MainForm.Instance?.resourceTree.Hide();
 
                     TreeNodeCollection treeNodes = RootNodeWrapper.TreeView.Nodes;
                     foreach (TreeNode n in treeNodes)
@@ -140,11 +160,28 @@ namespace BrawlCrate.API
                         }
                     }
 
-                    MainForm.Instance.resourceTree.Show();
+                    MainForm.Instance?.resourceTree.Show();
                 }
 
                 return wrappers;
             }
+        }
+
+        /// <summary>
+        ///     Returns a full list of all node wrappers of a given type in the open file.
+        ///
+        ///     Returns an empty list if there is no open file
+        /// </summary>
+        public static List<T> NodeWrapperListOfType<T>() where T : BaseWrapper
+        {
+            List<T> nodes = new List<T>();
+
+            if (RootNodeWrapper != null)
+            {
+                nodes = NodeWrapperList.Where(n => n.GetType().IsInstanceOfType(typeof(T))).Cast<T>().ToList();
+            }
+
+            return nodes;
         }
 
         #endregion
@@ -322,6 +359,7 @@ namespace BrawlCrate.API
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
+                dlg.Title = "Open File";
                 dlg.Multiselect = false;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
             }
@@ -383,6 +421,7 @@ namespace BrawlCrate.API
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
+                dlg.Title = "Open Files";
                 dlg.Multiselect = true;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : null;
             }
@@ -443,11 +482,13 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog()
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog
+                {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
             {
+                dlg.Description = "Open Folder";
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
         }
@@ -459,11 +500,15 @@ namespace BrawlCrate.API
         /// </summary>
         /// <param name="description">
         ///     The description of the folder dialog.
+        ///
+        ///     For Windows-based devices, this will appear as the title of the window.
+        ///     For others, this will appear as a description box.
         /// </param>
         public static string OpenFolderDialog(string description)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog
+                {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
@@ -775,6 +820,26 @@ namespace BrawlCrate.API
         #region Program
 
         /// <summary>
+        ///     The folder in which the BrawlCrate installation is located.
+        /// </summary>
+        public static string AppPath => Path.GetFullPath(Program.AppPath);
+
+        /// <summary>
+        ///     The folder in which the API folders are located.
+        /// </summary>
+        public static string APIPath => Path.GetFullPath(Program.ApiPath);
+
+        /// <summary>
+        ///     The folder in which plugins are located.
+        /// </summary>
+        public static string PluginPath => Path.GetFullPath(Program.ApiPluginPath);
+
+        /// <summary>
+        ///     The folder in which loaders are located.
+        /// </summary>
+        public static string LoaderPath => Path.GetFullPath(Program.ApiLoaderPath);
+
+        /// <summary>
         ///     Attempts to open the file using a given path.
         ///
         ///     Returns true if the file is successfully loaded, and false otherwise.
@@ -799,6 +864,37 @@ namespace BrawlCrate.API
         public static bool OpenFileNoErrors(string path)
         {
             return Program.Open(path, false);
+        }
+
+        /// <summary>
+        ///     Attempts to open the file as a template using a given path.
+        ///
+        ///     Templates do not set the save path, meaning that the user will be prompted for "Save As" on first save.
+        ///
+        ///     Returns true if the file is successfully loaded, and false otherwise.
+        /// </summary>
+        /// <param name="path">
+        ///     The path of the template file that is to be opened.
+        /// </param>
+        public static bool OpenTemplate(string path)
+        {
+            return Program.OpenTemplate(path);
+        }
+
+        /// <summary>
+        ///     Attempts to open the file using a given path.
+        ///     Any error messages (including "file not found") are not shown to the user.
+        ///
+        ///     Templates do not set the save path, meaning that the user will be prompted for "Save As" on first save.
+        ///
+        ///     Returns true if the file is successfully loaded, and false otherwise.
+        /// </summary>
+        /// <param name="path">
+        ///     The path of the template file that is to be opened.
+        /// </param>
+        public static bool OpenTemplateNoErrors(string path)
+        {
+            return Program.OpenTemplate(path, false);
         }
 
         /// <summary>
@@ -833,9 +929,9 @@ namespace BrawlCrate.API
         {
             try
             {
-                MainForm.Instance.RootNode.Resource.Export(path);
+                MainForm.Instance?.RootNode.Resource.Export(path);
                 Program._rootPath = path;
-                MainForm.Instance.UpdateName();
+                MainForm.Instance?.UpdateName();
             }
             catch (Exception e)
             {
@@ -885,6 +981,40 @@ namespace BrawlCrate.API
         public static void AddResourceParser(PluginResourceParser resourceParser)
         {
             ResourceParsers.Add(resourceParser);
+        }
+
+        /// <summary>
+        ///     Adds a wrapper for a specific user-defined file type.
+        ///
+        ///     This variation requires reference to a pre-existing ResourceType.
+        ///     Will overwrite pre-existing ResourceType-based wrappers.
+        /// </summary>
+        /// <param name="resourceType">
+        ///     The resource file type to attach the wrapper to.
+        /// </param>
+        /// <param name="wrapper">
+        ///     The wrapper to be used.
+        /// </param>
+        public static void AddWrapper(ResourceType resourceType, PluginWrapper wrapper)
+        {
+            NodeWrapperAttribute.AddWrapper(resourceType, wrapper);
+        }
+
+        /// <summary>
+        ///     Adds a wrapper for a specific user-defined node type.
+        ///
+        ///     This variation bases wrappers off of the type of the resource node, offering more flexibility for new types.
+        ///     Will overwrite pre-existing Type-based wrappers. Type-based wrappers take priority over ResourceType-based wrappers.
+        /// </summary>
+        /// <typeparam name="TypeNode">
+        ///     The ResourceNode type to attach the wrapper to.
+        /// </typeparam>
+        /// <param name="wrapper">
+        ///     The wrapper to be used.
+        /// </param>
+        public static void AddWrapper<TypeNode>(PluginWrapper wrapper) where TypeNode : ResourceNode
+        {
+            NodeWrapperAttribute.AddWrapper<TypeNode>(wrapper);
         }
 
         #endregion

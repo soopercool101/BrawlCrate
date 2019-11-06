@@ -11,8 +11,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 #if !MONO
 using System.Windows.Media.Imaging;
+
 #endif
-using BrawlLib.Modeling.Triangle_Converter;
 
 namespace System.Windows.Forms
 {
@@ -460,28 +460,39 @@ namespace System.Windows.Forms
             PngBitmapDecoder decoder = new PngBitmapDecoder(sourceStream, BitmapCreateOptions.PreservePixelFormat,
                 BitmapCacheOption.Default);
             BitmapSource preservedImage = decoder.Frames[0];
-            if (preservedImage.Format == Media.PixelFormats.Indexed8)
+            try
             {
-                Bitmap bmp;
-                int width = Convert.ToInt32(preservedImage.Width);
-                int height = Convert.ToInt32(preservedImage.Height);
-                byte[] pixels = new byte[width * height];
-                preservedImage.CopyPixels(pixels, width, 0);
-                GCHandle pixelData = GCHandle.Alloc(pixels, GCHandleType.Pinned);
-                bmp = new Bitmap(width, height, width, PixelFormat.Format8bppIndexed, pixelData.AddrOfPinnedObject());
-
-                IList<Media.Color> preservedColors = preservedImage.Palette.Colors;
-                ColorPalette newPalette =
-                    ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, preservedColors.Count);
-                for (int i = 0; i < preservedColors.Count; i++)
+                if (preservedImage.Format == Media.PixelFormats.Indexed8)
                 {
-                    newPalette.Entries[i] = Color.FromArgb(preservedColors[i].A, preservedColors[i].R,
-                        preservedColors[i].G, preservedColors[i].B);
-                }
+                    Bitmap bmp;
+                    int width = Convert.ToInt32(preservedImage.Width);
+                    int height = Convert.ToInt32(preservedImage.Height);
+                    byte[] pixels = new byte[width * height];
+                    preservedImage.CopyPixels(pixels, width, 0);
+                    GCHandle pixelData = GCHandle.Alloc(pixels, GCHandleType.Pinned);
+                    bmp = new Bitmap(width, height, width, PixelFormat.Format8bppIndexed,
+                        pixelData.AddrOfPinnedObject());
 
-                bmp.Palette = newPalette;
-                return LoadImages(bmp, pixelData);
+                    IList<Media.Color> preservedColors = preservedImage.Palette.Colors;
+                    ColorPalette newPalette =
+                        ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, preservedColors.Count);
+                    for (int i = 0; i < preservedColors.Count; i++)
+                    {
+                        newPalette.Entries[i] = Color.FromArgb(preservedColors[i].A, preservedColors[i].R,
+                            preservedColors[i].G, preservedColors[i].B);
+                    }
+
+                    bmp.Palette = newPalette;
+                    sourceStream.Close();
+                    return LoadImages(bmp, pixelData);
+                }
             }
+            catch
+            {
+                // Palette could not properly be parsed, load regular bitmap instead
+            }
+
+            sourceStream.Close();
 #endif
             return LoadImages((Bitmap) Image.FromFile(path));
         }
@@ -516,7 +527,7 @@ namespace System.Windows.Forms
             }
 
             _preview = new Bitmap(_source.Width, _source.Height, PixelFormat.Format32bppArgb);
-            lblSize.Text = string.Format("{0} x {1}", _source.Width, _source.Height);
+            lblSize.Text = $"{_source.Width} x {_source.Height}";
 
             _colorInfo = _source.GetColorInformation();
             lblColors.Text = _colorInfo.ColorCount.ToString();
@@ -671,23 +682,20 @@ namespace System.Windows.Forms
             if (_origTEX0 != null || _bresParent != null)
             {
                 int palSize = PaletteSize(0x40);
-                lblDataSize.Text = string.Format("{0:n0}B",
-                    TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize);
+                lblDataSize.Text =
+                    $"{TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem).GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize:n0}B";
             }
             else if (_origREFT != null || _reftParent != null)
             {
                 int palSize = PaletteSize(0);
-                lblDataSize.Text = string.Format("{0:n0}B",
-                    TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize);
+                lblDataSize.Text =
+                    $"{TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem).GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize:n0}B";
             }
             else if (_origTPL != null || _tplParent != null)
             {
                 int palSize = PaletteSize(0xC);
-                lblDataSize.Text = string.Format("{0:n0}B",
-                    TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize);
+                lblDataSize.Text =
+                    $"{TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem).GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize:n0}B";
             }
         }
 
@@ -990,7 +998,8 @@ namespace System.Windows.Forms
             }
             else if (_reftParent != null)
             {
-                _reftParent.AddChild(_origREFT = new REFTEntryNode {Name = Path.GetFileNameWithoutExtension(_imageSource)});
+                _reftParent.AddChild(_origREFT = new REFTEntryNode
+                    {Name = Path.GetFileNameWithoutExtension(_imageSource)});
                 _origREFT.ReplaceRaw(_textureData);
             }
             else if (_origTEX0 != null)
@@ -1009,7 +1018,7 @@ namespace System.Windows.Forms
                 }
                 else if (_paletteData != null)
                 {
-                    if (_origTEX0.Parent == null || _origTEX0.Parent.Parent == null)
+                    if (_origTEX0.Parent?.Parent == null)
                     {
                         _paletteData.Dispose();
                         _paletteData = null;
@@ -1174,7 +1183,7 @@ namespace System.Windows.Forms
             chkPreview.TabIndex = 0;
             chkPreview.Text = "Preview";
             chkPreview.UseVisualStyleBackColor = true;
-            chkPreview.CheckedChanged += chkPreview_CheckedChanged;
+            chkPreview.CheckedChanged += new EventHandler(chkPreview_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -1213,7 +1222,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numLOD.ValueChanged += numLOD_ValueChanged;
+            numLOD.ValueChanged += new EventHandler(numLOD_ValueChanged);
             // 
             // label5
             // 
@@ -1234,7 +1243,7 @@ namespace System.Windows.Forms
             cboFormat.Name = "cboFormat";
             cboFormat.Size = new Drawing.Size(98, 21);
             cboFormat.TabIndex = 1;
-            cboFormat.SelectedIndexChanged += cboFormat_SelectedIndexChanged;
+            cboFormat.SelectedIndexChanged += new EventHandler(cboFormat_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1255,7 +1264,7 @@ namespace System.Windows.Forms
             btnRecommend.TabIndex = 1;
             btnRecommend.Text = "Recommend";
             btnRecommend.UseVisualStyleBackColor = true;
-            btnRecommend.Click += btnRecommend_Click;
+            btnRecommend.Click += new EventHandler(btnRecommend_Click);
             // 
             // groupBox2
             // 
@@ -1361,7 +1370,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 11;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
@@ -1372,7 +1381,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 12;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // grpPalette
             // 
@@ -1401,7 +1410,7 @@ namespace System.Windows.Forms
             ChkImportPalette.TabIndex = 6;
             ChkImportPalette.Text = "Import Palette";
             ChkImportPalette.UseVisualStyleBackColor = true;
-            ChkImportPalette.CheckedChanged += chkImportPalette_CheckedChanged;
+            ChkImportPalette.CheckedChanged += new EventHandler(chkImportPalette_CheckedChanged);
             // 
             // cboAlgorithm
             // 
@@ -1413,7 +1422,7 @@ namespace System.Windows.Forms
             cboAlgorithm.Name = "cboAlgorithm";
             cboAlgorithm.Size = new Drawing.Size(98, 21);
             cboAlgorithm.TabIndex = 5;
-            cboAlgorithm.SelectedIndexChanged += formatChanged;
+            cboAlgorithm.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label8
             // 
@@ -1460,7 +1469,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numPaletteCount.ValueChanged += formatChanged;
+            numPaletteCount.ValueChanged += new EventHandler(formatChanged);
             // 
             // label7
             // 
@@ -1481,7 +1490,7 @@ namespace System.Windows.Forms
             cboPaletteFormat.Name = "cboPaletteFormat";
             cboPaletteFormat.Size = new Drawing.Size(98, 21);
             cboPaletteFormat.TabIndex = 1;
-            cboPaletteFormat.SelectedIndexChanged += formatChanged;
+            cboPaletteFormat.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label6
             // 
@@ -1525,7 +1534,7 @@ namespace System.Windows.Forms
             chkSwapRGB.TabIndex = 8;
             chkSwapRGB.Text = "Swap RGB";
             chkSwapRGB.UseVisualStyleBackColor = true;
-            chkSwapRGB.CheckedChanged += chkSwapRGB_CheckedChanged;
+            chkSwapRGB.CheckedChanged += new EventHandler(chkSwapRGB_CheckedChanged);
             // 
             // chkSwapAlpha
             // 
@@ -1536,7 +1545,7 @@ namespace System.Windows.Forms
             chkSwapAlpha.TabIndex = 9;
             chkSwapAlpha.Text = "Swap Alpha";
             chkSwapAlpha.UseVisualStyleBackColor = true;
-            chkSwapAlpha.CheckedChanged += chkSwapAlpha_CheckedChanged;
+            chkSwapAlpha.CheckedChanged += new EventHandler(chkSwapAlpha_CheckedChanged);
             // 
             // chkConstrainProps
             // 
@@ -1549,7 +1558,7 @@ namespace System.Windows.Forms
             chkConstrainProps.TabIndex = 7;
             chkConstrainProps.Text = "Constrain Proportions";
             chkConstrainProps.UseVisualStyleBackColor = true;
-            chkConstrainProps.CheckedChanged += chkConstrainProps_CheckedChanged;
+            chkConstrainProps.CheckedChanged += new EventHandler(chkConstrainProps_CheckedChanged);
             // 
             // btnApplyDims
             // 
@@ -1561,7 +1570,7 @@ namespace System.Windows.Forms
             btnApplyDims.TabIndex = 6;
             btnApplyDims.Text = "Apply";
             btnApplyDims.UseVisualStyleBackColor = true;
-            btnApplyDims.Click += btnApplyDims_Click;
+            btnApplyDims.Click += new EventHandler(btnApplyDims_Click);
             // 
             // label11
             // 
@@ -1601,7 +1610,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numH.ValueChanged += numH_ValueChanged;
+            numH.ValueChanged += new EventHandler(numH_ValueChanged);
             // 
             // numW
             // 
@@ -1632,7 +1641,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numW.ValueChanged += numW_ValueChanged;
+            numW.ValueChanged += new EventHandler(numW_ValueChanged);
             // 
             // label10
             // 
@@ -1699,7 +1708,7 @@ namespace System.Windows.Forms
                 0
             });
             numMIPPreview.Visible = false;
-            numMIPPreview.ValueChanged += numMIPPreview_ValueChanged;
+            numMIPPreview.ValueChanged += new EventHandler(numMIPPreview_ValueChanged);
             // 
             // label12
             // 
@@ -1721,7 +1730,7 @@ namespace System.Windows.Forms
             button1.TabIndex = 3;
             button1.Text = "Browse...";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += new EventHandler(button1_Click);
             // 
             // pictureBox1
             // 
@@ -1742,7 +1751,7 @@ namespace System.Windows.Forms
             chkSwapAlphaRGB.TabIndex = 10;
             chkSwapAlphaRGB.Text = "Swap Alpha with RGB";
             chkSwapAlphaRGB.UseVisualStyleBackColor = true;
-            chkSwapAlphaRGB.CheckedChanged += chkSwapAlphaRGB_CheckedChanged;
+            chkSwapAlphaRGB.CheckedChanged += new EventHandler(chkSwapAlphaRGB_CheckedChanged);
             // 
             // TextureConverterDialog
             // 

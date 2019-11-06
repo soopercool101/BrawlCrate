@@ -193,16 +193,16 @@ namespace Be.Windows.Forms
 
             public virtual void Activate()
             {
-                _hexBox.MouseDown += BeginMouseSelection;
-                _hexBox.MouseMove += UpdateMouseSelection;
-                _hexBox.MouseUp += EndMouseSelection;
+                _hexBox.MouseDown += new MouseEventHandler(BeginMouseSelection);
+                _hexBox.MouseMove += new MouseEventHandler(UpdateMouseSelection);
+                _hexBox.MouseUp += new MouseEventHandler(EndMouseSelection);
             }
 
             public virtual void Deactivate()
             {
-                _hexBox.MouseDown -= BeginMouseSelection;
-                _hexBox.MouseMove -= UpdateMouseSelection;
-                _hexBox.MouseUp -= EndMouseSelection;
+                _hexBox.MouseDown -= new MouseEventHandler(BeginMouseSelection);
+                _hexBox.MouseMove -= new MouseEventHandler(UpdateMouseSelection);
+                _hexBox.MouseUp -= new MouseEventHandler(EndMouseSelection);
             }
 
             #endregion
@@ -288,7 +288,7 @@ namespace Be.Windows.Forms
 
                 MessageDelegate messageHandler = hasMessageHandler
                     ? MessageHandlers[keyData]
-                    : messageHandler = PreProcessWmKeyDown_Default;
+                    : messageHandler = new MessageDelegate(PreProcessWmKeyDown_Default);
 
                 return messageHandler(ref m);
             }
@@ -585,12 +585,7 @@ namespace Be.Windows.Forms
                     return true;
                 }
 
-                if (_hexBox.Parent == null)
-                {
-                    return true;
-                }
-
-                _hexBox.Parent.SelectNextControl(_hexBox, true, true, true, true);
+                _hexBox.Parent?.SelectNextControl(_hexBox, true, true, true, true);
                 return true;
             }
 
@@ -607,12 +602,7 @@ namespace Be.Windows.Forms
                     return true;
                 }
 
-                if (_hexBox.Parent == null)
-                {
-                    return true;
-                }
-
-                _hexBox.Parent.SelectNextControl(_hexBox, false, true, true, true);
+                _hexBox.Parent?.SelectNextControl(_hexBox, false, true, true, true);
                 return true;
             }
 
@@ -940,35 +930,35 @@ namespace Be.Windows.Forms
                     {
                         _messageHandlers = new Dictionary<Keys, MessageDelegate>
                         {
-                            {Keys.Left, PreProcessWmKeyDown_Left},         // move left
-                            {Keys.Up, PreProcessWmKeyDown_Up},             // move up
-                            {Keys.Right, PreProcessWmKeyDown_Right},       // move right
-                            {Keys.Down, PreProcessWmKeyDown_Down},         // move down
-                            {Keys.PageUp, PreProcessWmKeyDown_PageUp},     // move pageup
-                            {Keys.PageDown, PreProcessWmKeyDown_PageDown}, // move page down
+                            {Keys.Left, new MessageDelegate(PreProcessWmKeyDown_Left)},         // move left
+                            {Keys.Up, new MessageDelegate(PreProcessWmKeyDown_Up)},             // move up
+                            {Keys.Right, new MessageDelegate(PreProcessWmKeyDown_Right)},       // move right
+                            {Keys.Down, new MessageDelegate(PreProcessWmKeyDown_Down)},         // move down
+                            {Keys.PageUp, new MessageDelegate(PreProcessWmKeyDown_PageUp)},     // move pageup
+                            {Keys.PageDown, new MessageDelegate(PreProcessWmKeyDown_PageDown)}, // move page down
                             {
-                                Keys.Left | Keys.Shift, PreProcessWmKeyDown_ShiftLeft
+                                Keys.Left | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftLeft)
                             }, // move left with selection
                             {
-                                Keys.Up | Keys.Shift, PreProcessWmKeyDown_ShiftUp
+                                Keys.Up | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftUp)
                             }, // move up with selection
                             {
-                                Keys.Right | Keys.Shift, PreProcessWmKeyDown_ShiftRight
+                                Keys.Right | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftRight)
                             }, // move right with selection
                             {
-                                Keys.Down | Keys.Shift, PreProcessWmKeyDown_ShiftDown
+                                Keys.Down | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftDown)
                             },                                                              // move down with selection
-                            {Keys.Tab, PreProcessWmKeyDown_Tab},       // switch to string view
-                            {Keys.Back, PreProcessWmKeyDown_Back},     // back
-                            {Keys.Delete, PreProcessWmKeyDown_Delete}, // delete
-                            {Keys.Home, PreProcessWmKeyDown_Home},     // move to home
-                            {Keys.End, PreProcessWmKeyDown_End},       // move to end
+                            {Keys.Tab, new MessageDelegate(PreProcessWmKeyDown_Tab)},       // switch to string view
+                            {Keys.Back, new MessageDelegate(PreProcessWmKeyDown_Back)},     // back
+                            {Keys.Delete, new MessageDelegate(PreProcessWmKeyDown_Delete)}, // delete
+                            {Keys.Home, new MessageDelegate(PreProcessWmKeyDown_Home)},     // move to home
+                            {Keys.End, new MessageDelegate(PreProcessWmKeyDown_End)},       // move to end
                             {
-                                Keys.ShiftKey | Keys.Shift, PreProcessWmKeyDown_ShiftShiftKey
+                                Keys.ShiftKey | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftShiftKey)
                             },                                                                          // begin selection process
-                            {Keys.C | Keys.Control, PreProcessWmKeyDown_ControlC}, // copy 
-                            {Keys.X | Keys.Control, PreProcessWmKeyDown_ControlX}, // cut
-                            {Keys.V | Keys.Control, PreProcessWmKeyDown_ControlV}  // paste
+                            {Keys.C | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlC)}, // copy 
+                            {Keys.X | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlX)}, // cut
+                            {Keys.V | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlV)}  // paste
                         };
                     }
 
@@ -1375,17 +1365,17 @@ namespace Be.Windows.Forms
         private int _lastThumbtrack;
 
         /// <summary>
-        /// Contains the border´s left shift
+        /// Contains the borderÂ´s left shift
         /// </summary>
         private int _recBorderLeft = SystemInformation.Border3DSize.Width;
 
         /// <summary>
-        /// Contains the border´s right shift
+        /// Contains the borderÂ´s right shift
         /// </summary>
         private int _recBorderRight = SystemInformation.Border3DSize.Width;
 
         /// <summary>
-        /// Contains the border´s top shift
+        /// Contains the borderÂ´s top shift
         /// </summary>
         private int _recBorderTop = SystemInformation.Border3DSize.Height;
 
@@ -1605,7 +1595,7 @@ namespace Be.Windows.Forms
         public HexBox()
         {
             _vScrollBar = new VScrollBar();
-            _vScrollBar.Scroll += _vScrollBar_Scroll;
+            _vScrollBar.Scroll += new ScrollEventHandler(vScrollBar_Scroll);
             _vScrollBar.Cursor = Cursors.Default;
 
             _builtInContextMenu = new BuiltInContextMenu(this);
@@ -1625,14 +1615,14 @@ namespace Be.Windows.Forms
             SetStyle(ControlStyles.ResizeRedraw, true);
 
             _thumbTrackTimer.Interval = 50;
-            _thumbTrackTimer.Tick += PerformScrollThumbTrack;
+            _thumbTrackTimer.Tick += new EventHandler(PerformScrollThumbTrack);
         }
 
         #endregion
 
         #region Scroll methods
 
-        private void _vScrollBar_Scroll(object sender, ScrollEventArgs e)
+        private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             switch (e.Type)
             {
@@ -2016,10 +2006,7 @@ namespace Be.Windows.Forms
                 return;
             }
 
-            if (_keyInterpreter != null)
-            {
-                _keyInterpreter.Deactivate();
-            }
+            _keyInterpreter?.Deactivate();
 
             _keyInterpreter = _eki;
             _keyInterpreter.Activate();
@@ -2037,10 +2024,7 @@ namespace Be.Windows.Forms
                 return;
             }
 
-            if (_keyInterpreter != null)
-            {
-                _keyInterpreter.Deactivate();
-            }
+            _keyInterpreter?.Deactivate();
 
             _keyInterpreter = _ki;
             _keyInterpreter.Activate();
@@ -2058,10 +2042,7 @@ namespace Be.Windows.Forms
                 return;
             }
 
-            if (_keyInterpreter != null)
-            {
-                _keyInterpreter.Deactivate();
-            }
+            _keyInterpreter?.Deactivate();
 
             _keyInterpreter = _ski;
             _keyInterpreter.Activate();
@@ -3326,7 +3307,7 @@ namespace Be.Windows.Forms
             Brush brush = new SolidBrush(InfoForeColor);
             PointF headerPointF = new PointF(_recLineInfo.X, _recColumnInfo.Y);
 
-            g.DrawString(string.Format("Offset({0})", _offsetDisplay == OffsetDisplay.Hex ? "h" : "d"), Font, brush,
+            g.DrawString($"Offset({(_offsetDisplay == OffsetDisplay.Hex ? "h" : "d")})", Font, brush,
                 headerPointF, _stringFormat);
 
             for (int col = 0; col < _iHexMaxHBytes; col++)
@@ -4303,13 +4284,13 @@ namespace Be.Windows.Forms
 
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged -= _byteProvider_LengthChanged;
+                    _byteProvider.LengthChanged -= new EventHandler(ByteProvider_LengthChanged);
                 }
 
                 _byteProvider = value;
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged += _byteProvider_LengthChanged;
+                    _byteProvider.LengthChanged += new EventHandler(ByteProvider_LengthChanged);
                 }
 
                 OnByteProviderChanged(EventArgs.Empty);
@@ -4454,11 +4435,11 @@ namespace Be.Windows.Forms
         private long _lineInfoOffset;
 
         /// <summary>
-        /// Gets or sets the hex box´s border style.
+        /// Gets or sets the hex boxÂ´s border style.
         /// </summary>
         [DefaultValue(typeof(BorderStyle), "Fixed3D")]
         [Category("Hex")]
-        [Description("Gets or sets the hex box´s border style.")]
+        [Description("Gets or sets the hex boxÂ´s border style.")]
         public BorderStyle BorderStyle
         {
             get => _borderStyle;
@@ -5132,10 +5113,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnInsertActiveChanged(EventArgs e)
         {
-            if (InsertActiveChanged != null)
-            {
-                InsertActiveChanged(this, e);
-            }
+            InsertActiveChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5144,10 +5122,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnReadOnlyChanged(EventArgs e)
         {
-            if (ReadOnlyChanged != null)
-            {
-                ReadOnlyChanged(this, e);
-            }
+            ReadOnlyChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5156,10 +5131,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnByteProviderChanged(EventArgs e)
         {
-            if (ByteProviderChanged != null)
-            {
-                ByteProviderChanged(this, e);
-            }
+            ByteProviderChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5168,10 +5140,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnSelectionStartChanged(EventArgs e)
         {
-            if (SelectionStartChanged != null)
-            {
-                SelectionStartChanged(this, e);
-            }
+            SelectionStartChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5180,10 +5149,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnSelectionLengthChanged(EventArgs e)
         {
-            if (SelectionLengthChanged != null)
-            {
-                SelectionLengthChanged(this, e);
-            }
+            SelectionLengthChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5192,10 +5158,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnLineInfoVisibleChanged(EventArgs e)
         {
-            if (LineInfoVisibleChanged != null)
-            {
-                LineInfoVisibleChanged(this, e);
-            }
+            LineInfoVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5204,10 +5167,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnColumnInfoVisibleChanged(EventArgs e)
         {
-            if (ColumnInfoVisibleChanged != null)
-            {
-                ColumnInfoVisibleChanged(this, e);
-            }
+            ColumnInfoVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5216,10 +5176,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnGroupSeparatorVisibleChanged(EventArgs e)
         {
-            if (GroupSeparatorVisibleChanged != null)
-            {
-                GroupSeparatorVisibleChanged(this, e);
-            }
+            GroupSeparatorVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5228,10 +5185,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnStringViewVisibleChanged(EventArgs e)
         {
-            if (StringViewVisibleChanged != null)
-            {
-                StringViewVisibleChanged(this, e);
-            }
+            StringViewVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5240,10 +5194,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnBorderStyleChanged(EventArgs e)
         {
-            if (BorderStyleChanged != null)
-            {
-                BorderStyleChanged(this, e);
-            }
+            BorderStyleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5252,10 +5203,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnUseFixedBytesPerLineChanged(EventArgs e)
         {
-            if (UseFixedBytesPerLineChanged != null)
-            {
-                UseFixedBytesPerLineChanged(this, e);
-            }
+            UseFixedBytesPerLineChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5264,10 +5212,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnGroupSizeChanged(EventArgs e)
         {
-            if (GroupSizeChanged != null)
-            {
-                GroupSizeChanged(this, e);
-            }
+            GroupSizeChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5276,10 +5221,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnBytesPerLineChanged(EventArgs e)
         {
-            if (BytesPerLineChanged != null)
-            {
-                BytesPerLineChanged(this, e);
-            }
+            BytesPerLineChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5288,10 +5230,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnVScrollBarVisibleChanged(EventArgs e)
         {
-            if (VScrollBarVisibleChanged != null)
-            {
-                VScrollBarVisibleChanged(this, e);
-            }
+            VScrollBarVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5300,10 +5239,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnHexCasingChanged(EventArgs e)
         {
-            if (HexCasingChanged != null)
-            {
-                HexCasingChanged(this, e);
-            }
+            HexCasingChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5312,10 +5248,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnHorizontalByteCountChanged(EventArgs e)
         {
-            if (HorizontalByteCountChanged != null)
-            {
-                HorizontalByteCountChanged(this, e);
-            }
+            HorizontalByteCountChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5324,10 +5257,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnVerticalByteCountChanged(EventArgs e)
         {
-            if (VerticalByteCountChanged != null)
-            {
-                VerticalByteCountChanged(this, e);
-            }
+            VerticalByteCountChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5336,10 +5266,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCurrentLineChanged(EventArgs e)
         {
-            if (CurrentLineChanged != null)
-            {
-                CurrentLineChanged(this, e);
-            }
+            CurrentLineChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5348,10 +5275,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCurrentPositionInLineChanged(EventArgs e)
         {
-            if (CurrentPositionInLineChanged != null)
-            {
-                CurrentPositionInLineChanged(this, e);
-            }
+            CurrentPositionInLineChanged?.Invoke(this, e);
         }
 
 
@@ -5361,10 +5285,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCopied(EventArgs e)
         {
-            if (Copied != null)
-            {
-                Copied(this, e);
-            }
+            Copied?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5373,10 +5294,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCopiedHex(EventArgs e)
         {
-            if (CopiedHex != null)
-            {
-                CopiedHex(this, e);
-            }
+            CopiedHex?.Invoke(this, e);
         }
 
         /// <summary>
@@ -5442,7 +5360,7 @@ namespace Be.Windows.Forms
             DestroyCaret();
         }
 
-        private void _byteProvider_LengthChanged(object sender, EventArgs e)
+        private void ByteProvider_LengthChanged(object sender, EventArgs e)
         {
             UpdateScrollSize();
         }

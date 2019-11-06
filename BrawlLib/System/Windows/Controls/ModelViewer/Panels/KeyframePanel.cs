@@ -364,7 +364,7 @@ namespace System.Windows.Forms
                 {
                     for (int i = 0; i < clrControl.ColorSource.TypeCount; i++)
                     {
-                        lstTypes.Items.Add(string.Format("ColorSource{0}", i));
+                        lstTypes.Items.Add($"ColorSource{i}");
                     }
                 }
             }

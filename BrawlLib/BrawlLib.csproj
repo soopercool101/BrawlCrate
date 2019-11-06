@@ -18,12 +18,12 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>BrawlCrateLib</AssemblyTitle>
+    <AssemblyTitle>BrawlCrateLib v0.30 Hotfix 3</AssemblyTitle>
     <Product>BrawlCrateLib</Product>
     <Copyright>Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
 BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Copyright>
-    <AssemblyVersion>0.27.0.0</AssemblyVersion>
-    <FileVersion>0.27.0.0</FileVersion>
+    <AssemblyVersion>0.30.0.3</AssemblyVersion>
+    <FileVersion>0.30.0.3</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Configurations>Debug;Release;Mono;Canary</Configurations>
@@ -158,15 +158,12 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <PackageId>BrawlCrateLib</PackageId>
     <Company>BrawlCrateLib</Company>
     <Authors>soopercool101, MarioDox, Syvkal, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
-    <Version>27.0.0</Version>
+    <Version>30.0.3</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CustomLists\FighterList.txt" />
     <None Remove="CustomLists\StageList.txt" />
     <None Remove="HardcodedFiles\Textures\metal00.tex0" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="OpenTK" Version="3.1.0" />
   </ItemGroup>
   <Choose>
     <When Condition=" '$(Configuration)'!='Mono' ">
@@ -183,6 +180,10 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     </When>
   </Choose>
   <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>.\OpenTK.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
@@ -192,6 +193,10 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <EmbeddedResource Include="CustomLists\FighterList.txt" />
     <EmbeddedResource Include="CustomLists\StageList.txt" />
     <EmbeddedResource Include="HardcodedFiles\Textures\metal00.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Textures\TShadow1.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Textures\spycloak00.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Textures\FB.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Models\Static.mdl0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Modeling\Collada\ColladaImportDialog.cs">
@@ -610,6 +615,9 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <EmbeddedResource Update="System\Windows\Forms\TextureConverterDialog.resx">
       <DependentUpon>TextureConverterDialog.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OpenTK.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Update="CustomLists\AboutCustomLists.txt">

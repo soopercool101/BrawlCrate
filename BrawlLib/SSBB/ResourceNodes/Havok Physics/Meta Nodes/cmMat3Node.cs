@@ -45,16 +45,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             fixed (float* p = _value._data)
             {
-                writer.WriteString(string.Format("({0} {1} {2})({3} {4} {5})({6} {7} {8})",
-                    p[0].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[1].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[2].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[4].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[5].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[6].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[8].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[9].ToString("0.000000", CultureInfo.InvariantCulture),
-                    p[10].ToString("0.000000", CultureInfo.InvariantCulture)));
+                writer.WriteString(
+                    $"({p[0].ToString("0.000000", CultureInfo.InvariantCulture)} {p[1].ToString("0.000000", CultureInfo.InvariantCulture)} {p[2].ToString("0.000000", CultureInfo.InvariantCulture)})({p[4].ToString("0.000000", CultureInfo.InvariantCulture)} {p[5].ToString("0.000000", CultureInfo.InvariantCulture)} {p[6].ToString("0.000000", CultureInfo.InvariantCulture)})({p[8].ToString("0.000000", CultureInfo.InvariantCulture)} {p[9].ToString("0.000000", CultureInfo.InvariantCulture)} {p[10].ToString("0.000000", CultureInfo.InvariantCulture)})");
             }
         }
     }

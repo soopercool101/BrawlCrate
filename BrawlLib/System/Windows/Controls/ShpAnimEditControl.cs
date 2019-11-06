@@ -63,7 +63,7 @@ namespace System.Windows.Forms
                     _currentPage = 0;
                     numFrame.Value = 1;
                     numFrame.Maximum = _numFrames;
-                    lblFrameCount.Text = string.Format("/ {0}", _numFrames);
+                    lblFrameCount.Text = $"/ {_numFrames}";
                 }
                 else
                 {
@@ -260,7 +260,7 @@ namespace System.Windows.Forms
             numScale.TabIndex = 3;
             numScale.Text = "0";
             numScale.TextAlign = HorizontalAlignment.Right;
-            numScale.ValueChanged += BoxChanged;
+            numScale.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label7
             // 
@@ -291,7 +291,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numFrame.ValueChanged += numFrame_ValueChanged;
+            numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // lblFrameCount
             // 
@@ -312,7 +312,7 @@ namespace System.Windows.Forms
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += btnPrev_Click;
+            btnPrev.Click += new EventHandler(btnPrev_Click);
             // 
             // btnNext
             // 
@@ -324,7 +324,7 @@ namespace System.Windows.Forms
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += btnNext_Click;
+            btnNext.Click += new EventHandler(btnNext_Click);
             // 
             // listKeyframes
             // 
@@ -337,7 +337,7 @@ namespace System.Windows.Forms
             listKeyframes.Name = "listKeyframes";
             listKeyframes.Size = new Drawing.Size(224, 119);
             listKeyframes.TabIndex = 18;
-            listKeyframes.SelectedIndexChanged += listKeyframes_SelectedIndexChanged;
+            listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -427,7 +427,7 @@ namespace System.Windows.Forms
 
         public override string ToString()
         {
-            return string.Format("[{0}] {1}%", (_entry._index + 1).ToString().PadLeft(5), _entry._value * 100.0f);
+            return $"[{(_entry._index + 1).ToString().PadLeft(5)}] {_entry._value * 100.0f}%";
         }
     }
 }

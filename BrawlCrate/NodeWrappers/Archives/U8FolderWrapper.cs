@@ -283,7 +283,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportU8()
         {
-            if (Program.OpenFile(FileFilters.U8Import, out string path) > 0)
+            if (Program.OpenFile(FileFilters.U8Import, out string path))
             {
                 U8Node node = NodeFactory.FromFile(null, path) as U8Node;
                 U8FolderNode n = new U8FolderNode();
@@ -303,7 +303,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportBrres()
         {
-            if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
+            if (Program.OpenFile(FileFilters.BRES, out string path))
             {
                 BRRESNode node = NodeFactory.FromFile(null, path) as BRRESNode;
                 ((U8FolderNode) _resource).AddChild(node);

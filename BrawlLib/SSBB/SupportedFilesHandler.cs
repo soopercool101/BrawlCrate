@@ -99,16 +99,16 @@ namespace BrawlLib.SSBB
             //MDL0 subfiles
             new SupportedFileInfo(false, "MDL0 Material", "mdl0mat"),
             new SupportedFileInfo(false, "MDL0 Shader", "mdl0shade"),
-            new SupportedFileInfo(false, "MDL0 Bone", "mdl0bone"),
 
             //Gecko Codes
-            new SupportedFileInfo(true, "GCT Code List", "gct"),
+            new SupportedFileInfo(true, "Gecko Code Table", "gct"),
             new SupportedFileInfo(true, false, "Text File", "txt"),
 
             //Brawl Mod Files
             new SupportedFileInfo(false, "Sawnd Soundbank File", "sawnd"),
             new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
             new SupportedFileInfo(true, "BrawlEx Configuration", "bx"),
+            new SupportedFileInfo(true, "Custom My Music Tracklist", "cmm"),
 
             //The following files are not for direct editing
 
@@ -127,6 +127,10 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, false, "Data File", "dat"),
             new SupportedFileInfo(true, false, "Binary File", "bin"),
             new SupportedFileInfo(false, "Raw Data File", "*"),
+
+            // BrawlAPI
+            new SupportedFileInfo(false, "Python File", ".py"),
+            new SupportedFileInfo(false, "F# script", ".fsx")
         };
 
         private static string _allSupportedFilter;
@@ -157,7 +161,7 @@ namespace BrawlLib.SSBB
             {
                 if (!string.IsNullOrEmpty(s = extensions[i]))
                 {
-                    infoArray[i] = new SupportedFileInfo(false, string.Format("{0} File", s.ToUpper()), s);
+                    infoArray[i] = new SupportedFileInfo(false, $"{s.ToUpper()} File", s);
                 }
             }
 

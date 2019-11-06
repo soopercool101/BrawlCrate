@@ -91,7 +91,8 @@ namespace BrawlLib.IO
 
         public static FileMap FromTempFile(int length, out string path)
         {
-            FileStream stream = new FileStream(path = Path.GetTempFileName(), FileMode.Open, FileAccess.ReadWrite,
+            path = Path.GetTempFileName();
+            FileStream stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite,
                 FileShare.Read, 8, FileOptions.RandomAccess | FileOptions.DeleteOnClose);
             try
             {
@@ -233,15 +234,9 @@ namespace BrawlLib.IO
 
         public override void Dispose()
         {
-            if (_mappedFile != null)
-            {
-                _mappedFile.Dispose();
-            }
+            _mappedFile?.Dispose();
 
-            if (_mappedFileAccessor != null)
-            {
-                _mappedFileAccessor.Dispose();
-            }
+            _mappedFileAccessor?.Dispose();
 
             base.Dispose();
         }

@@ -126,7 +126,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _emitTrackCount = *Header->EmitTrackCount,
                     _emitInitTrackCount = *Header->EmitInitTrackCount,
                     _ptclTrackAddr = Header->PtclTrack,
-                    _emitTrackAddr = Header->EmitTrack,
+                    _emitTrackAddr = Header->EmitTrack
                 }
                 .Initialize(this, Header->Animations,
                     WorkingUncompressed.Length - ((int) Header->Animations - (int) Header));

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing.Imaging;
 using System.Reflection;
 using System.Security.Permissions;
 using System.Threading;
@@ -267,10 +266,7 @@ namespace BrawlLib.OpenGL
 
         public void Release()
         {
-            if (_ctx != null)
-            {
-                _ctx.Release();
-            }
+            _ctx?.Release();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -365,7 +361,7 @@ namespace BrawlLib.OpenGL
         public virtual float GetDepth(int x, int y)
         {
             float val = 0;
-            GL.ReadPixels(x, Height - y, 1, 1, OpenTK.Graphics.OpenGL.PixelFormat.DepthComponent, PixelType.Float,
+            GL.ReadPixels(x, Height - y, 1, 1, PixelFormat.DepthComponent, PixelType.Float,
                 ref val);
             return val;
         }
@@ -465,10 +461,7 @@ namespace BrawlLib.OpenGL
 
         protected override void OnResize(EventArgs e)
         {
-            if (_ctx != null)
-            {
-                _ctx.Update();
-            }
+            _ctx?.Update();
 
             foreach (GLViewport v in _viewports)
             {

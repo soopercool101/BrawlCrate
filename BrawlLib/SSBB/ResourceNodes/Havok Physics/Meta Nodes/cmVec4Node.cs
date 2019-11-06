@@ -43,11 +43,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
-            writer.WriteString(string.Format("({0} {1} {2} {3})",
-                _value._x.ToString("0.000000", CultureInfo.InvariantCulture),
-                _value._y.ToString("0.000000", CultureInfo.InvariantCulture),
-                _value._z.ToString("0.000000", CultureInfo.InvariantCulture),
-                _value._w.ToString("0.000000", CultureInfo.InvariantCulture)));
+            writer.WriteString(
+                $"({_value._x.ToString("0.000000", CultureInfo.InvariantCulture)} {_value._y.ToString("0.000000", CultureInfo.InvariantCulture)} {_value._z.ToString("0.000000", CultureInfo.InvariantCulture)} {_value._w.ToString("0.000000", CultureInfo.InvariantCulture)})");
         }
     }
 }

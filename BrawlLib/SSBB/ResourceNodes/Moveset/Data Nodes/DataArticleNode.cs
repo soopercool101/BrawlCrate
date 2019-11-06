@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
 using BrawlLib.SSBBTypes;
-using BrawlLib.OpenGL;
-using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -471,10 +467,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         case 9: break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }
@@ -505,10 +498,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }
@@ -526,10 +516,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }
@@ -552,10 +539,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }

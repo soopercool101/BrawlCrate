@@ -324,10 +324,7 @@ namespace BrawlLib.Wii.Models
 
                                     obj._elementIndices[x] = (short) aList.Count;
 
-                                    if (form != null)
-                                    {
-                                        form.Say("Encoding " + str + (x - aInd) + " for Object " + i + ": " + obj.Name);
-                                    }
+                                    form?.Say("Encoding " + str + (x - aInd) + " for Object " + i + ": " + obj.Name);
 
                                     VertexCodec vert;
                                     switch (aInd)
@@ -474,10 +471,7 @@ namespace BrawlLib.Wii.Models
                         int index = 0;
                         foreach (MDL0BoneNode b in linker.BoneCache)
                         {
-                            if (form != null)
-                            {
-                                form.Say("Calculating the size of the Bones - " + b.Name);
-                            }
+                            form?.Say("Calculating the size of the Bones - " + b.Name);
 
                             b._entryIndex = index++;
                             boneLen += b.CalculateSize(true);
@@ -562,11 +556,11 @@ namespace BrawlLib.Wii.Models
                         {
                             if (resType == MDLResourceType.Objects)
                             {
-                                form.Say("Encoding the " + resType.ToString() + " - " + e.Name);
+                                form.Say("Encoding the " + resType + " - " + e.Name);
                             }
                             else
                             {
-                                form.Say("Calculating the size of the " + resType.ToString() + " - " + e.Name);
+                                form.Say("Calculating the size of the " + resType + " - " + e.Name);
                             }
                         }
 
@@ -594,10 +588,7 @@ namespace BrawlLib.Wii.Models
                 MDL0MaterialNode prev = null;
                 foreach (MDL0MaterialNode e in model._matList)
                 {
-                    if (form != null)
-                    {
-                        form.Say("Calculating the size of the Materials - " + e.Name);
-                    }
+                    form?.Say("Calculating the size of the Materials - " + e.Name);
 
                     if (index != 0)
                     {
@@ -620,7 +611,7 @@ namespace BrawlLib.Wii.Models
             {
                 foreach (MDL0ObjectNode obj1 in model._objList)
                 {
-                    if (obj1 == null || obj1._drawCalls == null || obj1._drawCalls.Count == 0)
+                    if (obj1?._drawCalls == null || obj1._drawCalls.Count == 0)
                     {
                         continue;
                     }
@@ -673,26 +664,17 @@ namespace BrawlLib.Wii.Models
 
             linker.Header = header;
 
-            if (form != null)
-            {
-                form.Say("Writing header...");
-            }
+            form?.Say("Writing header...");
 
             //Create new model header
             *header = new MDL0Header(length, linker.Version);
 
-            if (form != null)
-            {
-                form.Say("Writing node table...");
-            }
+            form?.Say("Writing node table...");
 
             //Write node table, assign node ids
             WriteNodeTable(linker);
 
-            if (form != null)
-            {
-                form.Say("Writing definitions...");
-            }
+            form?.Say("Writing definitions...");
 
             //Write def table
             WriteDefs(linker, ref groupAddr, ref dataAddr);
@@ -957,10 +939,7 @@ namespace BrawlLib.Wii.Models
                         node._name += "_" + ((MDL0ObjectNode) model._objList[index])._drawCalls[0].MaterialNode._name;
                     }
 
-                    if (form != null)
-                    {
-                        form.Say("Writing Vertices - " + node.Name);
-                    }
+                    form?.Say("Writing Vertices - " + node.Name);
 
                     MDL0VertexData* header = (MDL0VertexData*) pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x40;
@@ -1002,10 +981,7 @@ namespace BrawlLib.Wii.Models
                         node._name += "_" + ((MDL0ObjectNode) model._objList[index])._drawCalls[0].MaterialNode._name;
                     }
 
-                    if (form != null)
-                    {
-                        form.Say("Writing Normals - " + node.Name);
-                    }
+                    form?.Say("Writing Normals - " + node.Name);
 
                     MDL0NormalData* header = (MDL0NormalData*) pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x20;
@@ -1044,10 +1020,7 @@ namespace BrawlLib.Wii.Models
                         node._name += "_" + ((MDL0ObjectNode) model._objList[index])._drawCalls[0].MaterialNode._name;
                     }
 
-                    if (form != null)
-                    {
-                        form.Say("Writing Colors - " + node.Name);
-                    }
+                    form?.Say("Writing Colors - " + node.Name);
 
                     MDL0ColorData* header = (MDL0ColorData*) pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x20;
@@ -1078,10 +1051,7 @@ namespace BrawlLib.Wii.Models
                 {
                     MDL0UVNode node = new MDL0UVNode {_name = "#" + index};
 
-                    if (form != null)
-                    {
-                        form.Say("Writing UVs - " + node.Name);
-                    }
+                    form?.Say("Writing UVs - " + node.Name);
 
                     MDL0UVData* header = (MDL0UVData*) pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x40;

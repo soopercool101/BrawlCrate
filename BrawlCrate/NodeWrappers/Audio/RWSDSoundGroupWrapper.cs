@@ -55,7 +55,7 @@ namespace BrawlCrate.NodeWrappers
 
         private unsafe void Import()
         {
-            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path) > 0)
+            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path))
             {
                 RSARFileAudioNode n;
 

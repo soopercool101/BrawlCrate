@@ -125,7 +125,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _wiimoteSFX.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _wiimoteSFX = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -138,7 +138,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _status.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _status = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -363,7 +363,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 List<string> internalNames = BrawlCrate.FighterNameGenerators
                                                        .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
                                                            BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S")
-                                                       .Split('/').ToList<string>();
+                                                       .Split('/').ToList();
                 foreach (string s in internalNames)
                 {
                     if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +

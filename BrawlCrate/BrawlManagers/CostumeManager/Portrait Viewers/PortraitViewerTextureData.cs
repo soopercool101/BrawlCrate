@@ -2,11 +2,8 @@
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BrawlCrate.CostumeManager
@@ -130,10 +127,7 @@ namespace BrawlCrate.CostumeManager
             {
                 string fileName = _openDlg.FileName;
                 Replace(fileName, true);
-                if (OnUpdate != null)
-                {
-                    OnUpdate(this);
-                }
+                OnUpdate?.Invoke(this);
             }
         }
 
@@ -198,7 +192,7 @@ namespace BrawlCrate.CostumeManager
                         tex0 = (TEX0Node) node.FindChild("Textures(NW4R)", false).Children[0];
                     }
 
-                    string tempFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".png";
+                    string tempFile = Path.GetTempPath() + Guid.NewGuid() + ".png";
                     tex0.Export(tempFile);
                     Replace(tempFile, useTextureConverter); // call self with new file
                     File.Delete(tempFile);
@@ -213,10 +207,7 @@ namespace BrawlCrate.CostumeManager
                         dlg.ImageSource = filename;
                         if (dlg.ShowDialog(null, Texture) == DialogResult.OK)
                         {
-                            if (OnUpdate != null)
-                            {
-                                OnUpdate(this);
-                            }
+                            OnUpdate?.Invoke(this);
                         }
                     }
                 }
@@ -235,10 +226,7 @@ namespace BrawlCrate.CostumeManager
                         Texture.Replace(filename);
                     }
 
-                    if (OnUpdate != null)
-                    {
-                        OnUpdate(this);
-                    }
+                    OnUpdate?.Invoke(this);
                 }
             }
         }

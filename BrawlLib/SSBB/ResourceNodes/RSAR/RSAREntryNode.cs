@@ -30,11 +30,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 #endif
         public virtual int StringId => 0;
 
-        public int InfoIndex
+        public string InfoIndex
         {
-            get => _infoIndex;
+            get => "0x" + _infoIndex.ToString("X8");
             set
             {
+                string field0 = (value ?? "").Split(' ')[0];
+                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
+                int intValue = Convert.ToInt32(field0, fromBase);
                 int i = 0;
                 Type t = GetType();
                 switch (t.Name)
@@ -55,7 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 System.Collections.Generic.List<RSAREntryNode> list = RSARNode._infoCache[i];
                 int prevIndex = _infoIndex;
-                _infoIndex = value.Clamp(0, list.Count - 1);
+                _infoIndex = intValue.Clamp(0, list.Count - 1);
                 if (_infoIndex == prevIndex)
                 {
                     return;
@@ -65,6 +68,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 temp._infoIndex = prevIndex;
                 list[_infoIndex] = this;
                 list[prevIndex] = temp;
+                SignalPropertyChange();
             }
         }
 
@@ -91,6 +95,41 @@ namespace BrawlLib.SSBB.ResourceNodes
         public VoidPtr _rebuildBase;
         public int _rebuildIndex, _rebuildStringId;
 
+        private static int _soundbankCalc = 331;
+
+        [Category("JOJI Soundbank Expansion")]
+        [DisplayName("SawndID (For Calculation Purposes Only)")]
+        public int SoundbankCalc
+        {
+            get => _soundbankCalc;
+            set => _soundbankCalc = value.Clamp(331, 586);
+        }
+
+        [Category("JOJI Soundbank Expansion")]
+        public string ExpandedInfoIndex
+        {
+            get
+            {
+                int a5Mult = 0;
+                if (_soundbankCalc >= 331 && _soundbankCalc <= 587)
+                {
+                    a5Mult = _soundbankCalc - 331;
+                }
+
+                if (_infoIndex >= 0xA34 && _infoIndex <= 0xA62)
+                {
+                    return "0x" + (_infoIndex + 0x35CC + 0xA5 * a5Mult).ToString("X8");
+                }
+
+                if (_infoIndex >= 0x18D8 && _infoIndex <= 0x194D)
+                {
+                    return "0x" + (_infoIndex + 0x2757 + 0xA5 * a5Mult).ToString("X8");
+                }
+
+                return "N/A";
+            }
+        }
+
         public override bool OnInitialize()
         {
             if (_name == null)
@@ -102,7 +141,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    _name = string.Format("Entry{0}", StringId);
+                    _name = $"Entry{StringId}";
                 }
             }
 

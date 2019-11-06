@@ -86,10 +86,7 @@ namespace BrawlLib.OpenGL
             {
                 foreach (Bitmap bmp in _textures)
                 {
-                    if (bmp != null)
-                    {
-                        bmp.Dispose();
-                    }
+                    bmp?.Dispose();
                 }
 
                 _textures = null;
@@ -108,7 +105,7 @@ namespace BrawlLib.OpenGL
 
         public unsafe void SetPalette(PLT0Node plt)
         {
-            if (_source != null && _source is TEX0Node)
+            if (_source is TEX0Node)
             {
                 Attach((TEX0Node) _source, plt);
             }

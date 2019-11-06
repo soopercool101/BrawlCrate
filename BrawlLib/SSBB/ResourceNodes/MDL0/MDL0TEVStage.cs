@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => string.Format("Stage{0}", Index);
+            get => $"Stage{Index}";
             set => base.Name = value;
         }
 
@@ -134,7 +134,7 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
         {
             get
             {
-                string s = ColorRegister.ToString() + (ColorClamp ? " = clamp(" : " = ");
+                string s = ColorRegister + (ColorClamp ? " = clamp(" : " = ");
 
                 int op = (int) ColorOperation;
                 if (op < 2)
@@ -144,11 +144,11 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
                         ColorScale != 0 ? "(" : "",
                         (int) ColorBias == 1 ? " + 0.5)" : (int) ColorBias == 2 ? " - 0.5)" : "",
                         (int) ColorScale == 3 ? ") / 2" :
-                        ColorScale != 0 ? ") * " + ((int) ColorScale * 2).ToString() : "");
+                        ColorScale != 0 ? ") * " + (int) ColorScale * 2 : "");
                 }
                 else if (op > 13)
                 {
-                    s += string.Format("d[x] + ((a[x] {0} b[x]) ? c[x] : 0)", op % 2 == 0 ? ">" : "==");
+                    s += $"d[x] + ((a[x] {(op % 2 == 0 ? ">" : "==")} b[x]) ? c[x] : 0)";
                 }
                 else
                 {
@@ -167,7 +167,7 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
         {
             get
             {
-                string s = AlphaRegister.ToString() + (AlphaClamp ? " = clamp(" : " = ");
+                string s = AlphaRegister + (AlphaClamp ? " = clamp(" : " = ");
 
                 int op = (int) AlphaOperation;
                 if (op < 2)
@@ -177,11 +177,11 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
                         AlphaScale != 0 ? "(" : "",
                         (int) AlphaBias == 1 ? " + 0.5)" : (int) AlphaBias == 2 ? " - 0.5)" : "",
                         (int) AlphaScale == 3 ? ") / 2" :
-                        AlphaScale != 0 ? ") * " + ((int) AlphaScale * 2).ToString() : "");
+                        AlphaScale != 0 ? ") * " + (int) AlphaScale * 2 : "");
                 }
                 else if (op > 13)
                 {
-                    s += string.Format("d + ((a {0} b) ? c : 0)", op % 2 == 0 ? ">" : "==");
+                    s += $"d + ((a {(op % 2 == 0 ? ">" : "==")} b) ? c : 0)";
                 }
                 else
                 {

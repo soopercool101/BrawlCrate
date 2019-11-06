@@ -43,7 +43,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = string.Format("Stepjumps[{0}]", index);
+                _name = $"Stepjumps[{index}]";
             }
 
             return Header->_count > 0;

@@ -101,7 +101,7 @@ namespace System.Windows.Forms
                 _projectionMatrix = texCoordRenderer1.CurrentViewport.Camera._projectionMatrix,
                 _projectionInverse = texCoordRenderer1.CurrentViewport.Camera._projectionInverse,
                 _matrix = Matrix.Identity,
-                _matrixInverse = Matrix.Identity,
+                _matrixInverse = Matrix.Identity
             };
             texCoordRenderer1.Render(cam, false);
 

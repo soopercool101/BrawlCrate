@@ -145,7 +145,7 @@ namespace BrawlLib.SSBBTypes
             Data = 0,
             Update = 1,
             Installer = 2,
-            VirtualConsole = 3,
+            VirtualConsole = 3
         }
 
         public Type PartitionType

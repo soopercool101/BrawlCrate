@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
 using BrawlManagerLib;
@@ -39,7 +35,7 @@ namespace BrawlCrate.CostumeManager
             new PortraitViewerTextureData(32, 32,
                 (i, j) => "Misc Data [90]/Textures(NW4R)/InfStc." + (i * 10 + j + 1).ToString("D3")),
             new PortraitViewerTextureData(56, 14,
-                (i, j) => "Misc Data [70]/Textures(NW4R)/MenSelchrChrNmS." + (i < 47 ? i + 1 : i).ToString("D3")),
+                (i, j) => "Misc Data [70]/Textures(NW4R)/MenSelchrChrNmS." + (i < 47 ? i + 1 : i).ToString("D3"))
         };
 
         private string _openFilePath;
@@ -193,7 +189,7 @@ namespace BrawlCrate.CostumeManager
             else
             {
                 ResourceNode css_stockicons = sc_selcharacter.FindChild("Misc Data [90]", false);
-                string tempFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".brres";
+                string tempFile = Path.GetTempPath() + Guid.NewGuid() + ".brres";
                 css_stockicons.Export(tempFile);
                 ResourceNode sss_stockicons = common5.FindChild("sc_selmap_en/Misc Data [40]", false);
                 sss_stockicons.Replace(tempFile);
@@ -245,7 +241,7 @@ namespace BrawlCrate.CostumeManager
             saveButton.TabIndex = 2;
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += saveButton_Click;
+            saveButton.Click += new EventHandler(saveButton_Click);
             // 
             // CSSPortraitViewer
             // 

@@ -197,8 +197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Object Data")] public int ID => _entryIndex;
         [Category("Object Data")] public int FacepointCount => _numFacepoints;
 
-        [Category("Object Data")]
-        public int VertexCount => _manager == null || _manager._vertices == null ? 0 : _manager._vertices.Count;
+        [Category("Object Data")] public int VertexCount => _manager?._vertices == null ? 0 : _manager._vertices.Count;
 
         [Category("Object Data")] public int FaceCount => _numFaces;
 
@@ -225,15 +224,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!string.IsNullOrEmpty(value))
                 {
                     MDL0VertexNode newNode =
-                        Model.FindChild(string.Format("Vertices/{0}", value), false) as MDL0VertexNode;
+                        Model.FindChild($"Vertices/{value}", false) as MDL0VertexNode;
                     if (newNode != null)
                     {
                         if (_vertexNode != null)
                         {
                             if (newNode.NumVertices < _vertexNode.NumVertices)
                             {
-                                MessageBox.Show(string.Format("Not enough vertices.\nNeeds: {0}\nSelection: {1}",
-                                    _vertexNode.NumVertices, newNode.NumVertices));
+                                MessageBox.Show(
+                                    $"Not enough vertices.\nNeeds: {_vertexNode.NumVertices}\nSelection: {newNode.NumVertices}");
                                 return;
                             }
 
@@ -288,15 +287,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else
                 {
                     MDL0NormalNode newNode =
-                        Model.FindChild(string.Format("Normals/{0}", value), false) as MDL0NormalNode;
+                        Model.FindChild($"Normals/{value}", false) as MDL0NormalNode;
                     if (newNode != null)
                     {
                         if (_normalNode != null)
                         {
                             if (newNode.NumEntries < _normalNode.NumEntries)
                             {
-                                MessageBox.Show(string.Format("Not enough normals.\nNeeds: {0}\nSelection: {1}",
-                                    _normalNode.NumEntries, newNode.NumEntries));
+                                MessageBox.Show(
+                                    $"Not enough normals.\nNeeds: {_normalNode.NumEntries}\nSelection: {newNode.NumEntries}");
                                 return;
                             }
 
@@ -326,14 +325,20 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0ColorNode[] _colorSet = new MDL0ColorNode[2];
 
-        private void SetColors(int id, string value)
+        public void SetColors(int id, string value)
+        {
+            SetColors(id, value, false);
+        }
+
+        public void SetColors(int id, string value, bool skipDialog)
         {
             MDL0ColorNode oldNode = _colorSet[id];
             if (string.IsNullOrEmpty(value))
             {
-                if (oldNode != null && MessageBox.Show(RootNode._mainForm,
-                        "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) ==
-                    DialogResult.OK)
+                if (oldNode != null && (skipDialog || MessageBox.Show(RootNode._mainForm,
+                                            "Are you sure you want to remove this reference?", "Continue?",
+                                            MessageBoxButtons.OKCancel) ==
+                                        DialogResult.OK))
                 {
                     if (oldNode._objects.Contains(this))
                     {
@@ -351,14 +356,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                MDL0ColorNode newNode = Model.FindChild(string.Format("Colors/{0}", value), false) as MDL0ColorNode;
+                MDL0ColorNode newNode = Model.FindChild($"Colors/{value}", false) as MDL0ColorNode;
                 if (newNode != null)
                 {
                     if (oldNode != null)
                     {
                         if (newNode.NumEntries < oldNode.NumEntries)
                         {
-                            if (MessageBox.Show(null,
+                            if (!skipDialog && MessageBox.Show(null,
                                     "This node has less colors than in the originally linked color node.\nAny colors that cannot be found will use the first color instead.\nIs this okay?",
                                     "", MessageBoxButtons.YesNo) == DialogResult.No)
                             {
@@ -409,14 +414,20 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0UVNode[] _uvSet = new MDL0UVNode[8];
 
-        private void SetUVs(int id, string value)
+        public void SetUVs(int id, string value)
+        {
+            SetUVs(id, value, false);
+        }
+
+        public void SetUVs(int id, string value, bool skipDialog)
         {
             MDL0UVNode oldNode = _uvSet[id];
             if (string.IsNullOrEmpty(value))
             {
-                if (oldNode != null && MessageBox.Show(RootNode._mainForm,
-                        "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) ==
-                    DialogResult.OK)
+                if (oldNode != null && (skipDialog || MessageBox.Show(RootNode._mainForm,
+                                            "Are you sure you want to remove this reference?", "Continue?",
+                                            MessageBoxButtons.OKCancel) ==
+                                        DialogResult.OK))
                 {
                     if (oldNode._objects.Contains(this))
                     {
@@ -434,15 +445,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                MDL0UVNode newNode = Model.FindChild(string.Format("UVs/{0}", value), false) as MDL0UVNode;
+                MDL0UVNode newNode = Model.FindChild($"UVs/{value}", false) as MDL0UVNode;
                 if (newNode != null)
                 {
                     if (oldNode != null)
                     {
                         if (newNode.NumEntries < oldNode.NumEntries)
                         {
-                            MessageBox.Show(string.Format("Not enough UVs.\nNeeds: {0}\nSelection: {1}",
-                                oldNode.NumEntries, newNode.NumEntries));
+                            MessageBox.Show(
+                                $"Not enough UVs.\nNeeds: {oldNode.NumEntries}\nSelection: {newNode.NumEntries}");
                             return;
                         }
 
@@ -545,7 +556,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!string.IsNullOrEmpty(value))
                 {
                     MDL0FurPosNode node =
-                        Model.FindChild(string.Format("FurLayerCoords/{0}", value), false) as MDL0FurPosNode;
+                        Model.FindChild($"FurLayerCoords/{value}", false) as MDL0FurPosNode;
                     if (node != null && _furPosNode != null && node.NumVertices >= _furPosNode.NumVertices)
                     {
                         if (_furPosNode != null && _furPosNode._objects.Contains(this))
@@ -572,7 +583,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!string.IsNullOrEmpty(value))
                 {
                     MDL0FurVecNode node =
-                        Model.FindChild(string.Format("FurVectors/{0}", value), false) as MDL0FurVecNode;
+                        Model.FindChild($"FurVectors/{value}", false) as MDL0FurVecNode;
                     if (node != null && _furVecNode != null && node.NumEntries >= _furVecNode.NumEntries)
                     {
                         if (_furVecNode != null && _furVecNode._objects.Contains(this))
@@ -907,7 +918,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //    {
             //        bool o = false;
             //        foreach (PrimitiveHeader ph in p._headers)
-            //            if (ph.Type != WiiPrimitiveType.TriangleList && notFloat)
+            //            if (ph.Type != WiiBeginMode.TriangleList && notFloat)
             //            {
             //                Model._errors.Add("Object " + Index + " will explode in-game due to assets that are not written as float.");
             //                SignalPropertyChange();
@@ -1356,7 +1367,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public Box GetBox()
         {
-            if (_manager == null || _manager._vertices == null)
+            if (_manager?._vertices == null)
             {
                 return new Box();
             }
@@ -1370,20 +1381,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             return box;
         }
 
-        private readonly BlendingFactor[] _blendSrc =
+        private BlendingFactorSrc[] _blendSrc =
         {
-            BlendingFactor.Zero, BlendingFactor.One,
-            BlendingFactor.DstColor, BlendingFactor.OneMinusDstColor,
-            BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
-            BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
+            BlendingFactorSrc.Zero, BlendingFactorSrc.One,
+            BlendingFactorSrc.DstColor, BlendingFactorSrc.OneMinusDstColor,
+            BlendingFactorSrc.SrcAlpha, BlendingFactorSrc.OneMinusSrcAlpha,
+            BlendingFactorSrc.DstAlpha, BlendingFactorSrc.OneMinusDstAlpha
         };
 
-        private readonly BlendingFactor[] _blendDst =
+        private BlendingFactorDest[] _blendDst =
         {
-            BlendingFactor.Zero, BlendingFactor.One,
-            BlendingFactor.SrcColor, BlendingFactor.OneMinusSrcColor,
-            BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
-            BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
+            BlendingFactorDest.Zero, BlendingFactorDest.One,
+            BlendingFactorDest.SrcColor, BlendingFactorDest.OneMinusSrcColor,
+            BlendingFactorDest.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha,
+            BlendingFactorDest.DstAlpha, BlendingFactorDest.OneMinusDstAlpha
         };
 
         private readonly LogicOp[] _logicOp =
@@ -1648,18 +1659,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal void Weight()
         {
-            if (_manager != null)
-            {
-                _manager.Weight();
-            }
+            _manager?.Weight();
         }
 
         internal void Unweight(bool updateAssets)
         {
-            if (_manager != null)
-            {
-                _manager.Unweight(updateAssets);
-            }
+            _manager?.Unweight(updateAssets);
         }
 
         internal override void Bind()
@@ -1682,26 +1687,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _attached = false;
 
-            if (Model != null)
-            {
-                Model.Detach();
-            }
+            Model?.Detach();
         }
 
         public void Refresh()
         {
-            if (Model != null)
-            {
-                Model.Refresh();
-            }
+            Model?.Refresh();
         }
 
         public void PreRender(ModelPanelViewport v)
         {
-            if (Model != null)
-            {
-                Model.PreRender(v);
-            }
+            Model?.PreRender(v);
         }
 
         #endregion
@@ -1866,32 +1862,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             return MemberwiseClone() as MDL0ObjectNode;
         }
 
+        public bool Deleting { get; private set; }
+
         public void Remove(bool v, bool n, bool c1, bool c2, params bool[] uv)
         {
+            Deleting = true;
             MDL0Node node = Model;
 
             if (node == null)
             {
                 base.Remove();
                 return;
-            }
-
-            if (_vertexNode != null)
-            {
-                _vertexNode._objects.Remove(this);
-                if (_vertexNode._objects.Count == 0 && v)
-                {
-                    _vertexNode.Remove();
-                }
-            }
-
-            if (_normalNode != null)
-            {
-                _normalNode._objects.Remove(this);
-                if (_normalNode._objects.Count == 0 && n)
-                {
-                    _normalNode.Remove();
-                }
             }
 
             for (int i = 0; i < 2; i++)
@@ -1918,6 +1899,30 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
+            if (_vertexNode != null)
+            {
+                if (_vertexNode._objects.Count == 1 && v)
+                {
+                    _vertexNode.Remove();
+                }
+                else
+                {
+                    _vertexNode._objects.Remove(this);
+                }
+            }
+
+            if (_normalNode != null)
+            {
+                if (_normalNode._objects.Count == 1 && n)
+                {
+                    _normalNode.Remove();
+                }
+                else
+                {
+                    _normalNode._objects.Remove(this);
+                }
+            }
+
             MatrixNode = null;
 
             foreach (DrawCall c in _drawCalls)
@@ -1934,10 +1939,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 foreach (Vertex3 vertex in _manager._vertices)
                 {
-                    if (vertex.MatrixNode != null)
-                    {
-                        vertex.MatrixNode.Users.Remove(vertex);
-                    }
+                    vertex.MatrixNode?.Users.Remove(vertex);
                 }
             }
 
@@ -1947,6 +1949,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Remove()
         {
+            int j = 0;
+            foreach (DrawCall dc in _drawCalls)
+            {
+                ++j;
+                if (dc.MaterialNode._objects.Count == 1 &&
+                    MessageBox.Show(
+                        $"Do you want to remove this object's material{(_drawCalls.Count > 1 ? " " + j : "")}?",
+                        "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    dc.MaterialNode.Remove();
+                }
+            }
+
             Remove(
                 _vertexNode != null && _vertexNode._objects.Count == 1 &&
                 MessageBox.Show("Do you want to remove this object's vertex node?", "", MessageBoxButtons.YesNo) ==
@@ -1986,6 +2001,22 @@ namespace BrawlLib.SSBB.ResourceNodes
                 DialogResult.Yes);
         }
 
+        public void Remove(bool removeAttached)
+        {
+            int j = 0;
+            foreach (DrawCall dc in _drawCalls)
+            {
+                ++j;
+                if (dc.MaterialNode._objects.Count == 1 && removeAttached)
+                {
+                    dc.MaterialNode.Remove();
+                }
+            }
+
+            Remove(removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached,
+                removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached);
+        }
+
         #endregion
 
         public event EventHandler DrawCallsChanged;
@@ -2018,11 +2049,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("{0} {1}: {2} {3}",
-                _isXLU ? "XLU" : "OPA",
-                _drawOrder.ToString(),
-                _material == null ? "(null)" : _material.Name,
-                _visBoneNode == null ? "(null)" : _visBoneNode.Name);
+            return
+                $"{(_isXLU ? "XLU" : "OPA")} {_drawOrder.ToString()}: {(_material == null ? "(null)" : _material.Name)} {(_visBoneNode == null ? "(null)" : _visBoneNode.Name)}";
         }
 
         //Data stored in actual MDL0 opa/xlu draw call
@@ -2099,10 +2127,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return;
                 }
 
-                if (_material != null)
-                {
-                    _material._objects.Remove(_parentObject);
-                }
+                _material?._objects.Remove(_parentObject);
 
                 if ((_material = value) != null)
                 {
@@ -2258,7 +2283,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             MDL0Node model = _parentObject.Model;
-            bool usesOffset = model != null && model._matrixOffset != null;
+            bool usesOffset = model?._matrixOffset != null;
             if (usesOffset)
             {
                 GL.PushMatrix();

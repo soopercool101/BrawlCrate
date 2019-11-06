@@ -21,9 +21,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override ResourceType ResourceFileType => ResourceType.BRES;
 
-        public override Type[] AllowedChildTypes => new Type[] {typeof(BRESGroupNode)};
+        public override Type[] AllowedChildTypes => new[] {typeof(BRESGroupNode)};
 
-        public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
+        [DisplayName("Texture Count")] public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
 
         public Bitmap GetImage(int index)
         {
@@ -32,7 +32,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return null;
             }
 
-            return (GetFolder<TEX0Node>().Children[index] as IImageSource).GetImage(0);
+            return (GetFolder<TEX0Node>().Children[index] as IImageSource)?.GetImage(0);
         }
 
         #region Model Counters
@@ -749,10 +749,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
 
                         progress.Finish();
-                        if (prev != null)
-                        {
-                            prev.Dispose();
-                        }
+                        prev?.Dispose();
                     }
                 }
 
@@ -778,6 +775,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ResourceGroup* Group => (ResourceGroup*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.BRESGroup;
 
+        [Browsable(false)]
         public int ImageCount => Children.Count > 0 && Children[0] is IImageSource ? Children.Count : 0;
 
         public Bitmap GetImage(int index)
@@ -872,13 +870,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void RemoveChild(ResourceNode child)
         {
-            if (Children.Count == 1 && Children.Contains(child))
+            base.RemoveChild(child);
+            if (Children.Count == 0)
             {
-                Parent.RemoveChild(this);
-            }
-            else
-            {
-                base.RemoveChild(child);
+                Parent?.RemoveChild(this);
             }
         }
 

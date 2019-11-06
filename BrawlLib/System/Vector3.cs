@@ -39,24 +39,6 @@ namespace System
     {
         public float _x, _y, _z;
 
-        public Vector3(string s)
-        {
-            Vector3 v = new Vector3();
-            char[] delims = new char[] {',', '(', ')', ' '};
-            string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-
-            if (arr.Length == 3)
-            {
-                float.TryParse(arr[0], NumberStyles.Any, CultureInfo.InvariantCulture, out v._x);
-                float.TryParse(arr[1], NumberStyles.Any, CultureInfo.InvariantCulture, out v._y);
-                float.TryParse(arr[2], NumberStyles.Any, CultureInfo.InvariantCulture, out v._z);
-            }
-
-            _x = v._x;
-            _y = v._y;
-            _z = v._z;
-        }
-
         public Vector3(float x, float y, float z)
         {
             _x = x;
@@ -96,7 +78,6 @@ namespace System
                 return new Vector3(v._x / v._w, v._y / v._w, v._z / v._w);
             }
         }
-        //public static explicit operator Vector4(Vector3 v) { return new Vector4(v._x, v._y, v._z, 1.0f); }
 
         public static explicit operator Vector3(OpenTK.Vector3 v)
         {
@@ -301,13 +282,6 @@ namespace System
             return v1;
         }
 
-        //public static float* Mult(float* v1, float* v2) { v1[0] = v1[0] * v2[0]; v1[1] = v1[1] * v2[1]; v1[2] = v1[2] * v2[2]; return v1; }
-        //public static float* Mult(float* v1, float v2) { v1[0] *= v2; v1[1] *= v2; v1[2] *= v2; return v1; }
-        //public static float* Add(float* v1, float* v2) { v1[0] += v2[0]; v1[1] += v2[1]; v1[2] += v2[2]; return v1; }
-        //public static float* Add(float* v1, float v2) { v1[0] += v2; v1[1] += v2; v1[2] += v2; return v1; }
-        //public static float* Sub(float* v1, float* v2) { v1[0] -= v2[0]; v1[1] -= v2[1]; v1[2] -= v2[2]; return v1; }
-        //public static float* Sub(float* v1, float v2) { v1[0] -= v2; v1[1] -= v2; v1[2] -= v2; return v1; }
-
         public static float Dot(Vector3 v1, Vector3 v2)
         {
             return v1._x * v2._x + v1._y * v2._y + v1._z * v2._z;
@@ -477,7 +451,9 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2})", _x, _y, _z);
+            return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",")
+                ? $"({_x} {_y} {_z})"
+                : $"({_x},{_y},{_z})";
         }
 
         public bool Contained(Vector3 start, Vector3 end, float expansion)
@@ -586,9 +562,9 @@ namespace System
 
         public override bool Equals(object obj)
         {
-            if (obj is Vector3)
+            if (obj is Vector3 vector3)
             {
-                return this == (Vector3) obj;
+                return this == vector3;
             }
 
             return false;

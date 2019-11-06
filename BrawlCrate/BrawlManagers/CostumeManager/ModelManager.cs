@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
@@ -125,10 +121,7 @@ namespace BrawlCrate.CostumeManager
                             (newroot as ARCNode).ExportPAC(pac.FullName);
                             (newroot as ARCNode).ExportPCS(pcs.FullName);
 
-                            if (ParentForm is CostumeManagerForm)
-                            {
-                                (ParentForm as CostumeManagerForm).updateCostumeSelectionPane();
-                            }
+                            (ParentForm as CostumeManagerForm)?.updateCostumeSelectionPane();
 
                             LoadFile(_path);
                         }
@@ -149,7 +142,7 @@ namespace BrawlCrate.CostumeManager
             {
                 Timer tmp_timer = new Timer(1000);
                 tmp_timer.AutoReset = false;
-                tmp_timer.Elapsed += initializeModelPanel;
+                tmp_timer.Elapsed += new ElapsedEventHandler(initializeModelPanel);
                 tmp_timer.Enabled = true;
             }
         }
@@ -232,13 +225,10 @@ namespace BrawlCrate.CostumeManager
                 foreach (string texname in TexturesToDisable)
                 {
                     ResourceNode textureGroup = model.TextureGroup;
-                    if (textureGroup != null)
+                    MDL0TextureNode tex = textureGroup?.FindChild(texname, false) as MDL0TextureNode;
+                    if (tex != null)
                     {
-                        MDL0TextureNode tex = textureGroup.FindChild(texname, false) as MDL0TextureNode;
-                        if (tex != null)
-                        {
-                            tex.Enabled = false;
-                        }
+                        tex.Enabled = false;
                     }
                 }
             }

@@ -10,12 +10,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal override string DocumentationSubDirectory => "TBRM";
         internal override int EntryOffset => 0x10;
 
+        public TBRMNode()
+        {
+            unk0 = 1;
+            unk1 = 0;
+            unk2 = 0;
+        }
+
         public TBRMNode(int numEntries)
         {
             unk0 = 1;
             unk1 = 0;
             unk2 = 0;
-            while (EntryList.Count < numEntries)
+            while (NumEntries < numEntries)
             {
                 EntryList.Add(0);
             }

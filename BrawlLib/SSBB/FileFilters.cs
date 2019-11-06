@@ -162,9 +162,6 @@ namespace BrawlLib
         public static string MDL0Shader =
             SupportedFilesHandler.GetCompleteFilter("mdl0shade");
 
-        public static string MDL0Bone =
-            SupportedFilesHandler.GetCompleteFilter("mdl0bone");
-
         public static string Raw =
             SupportedFilesHandler.GetCompleteFilter("*");
 
@@ -192,13 +189,22 @@ namespace BrawlLib
             SupportedFilesHandler.GetCompleteFilter("dat", "bx");
 
         public static string MASQ =
-            SupportedFilesHandler.GetCompleteFilter("masq", "bin", "dat", "*");
+            SupportedFilesHandler.GetCompleteFilter("masq");
+
+        public static string CMM =
+            SupportedFilesHandler.GetCompleteFilter("cmm");
 
         public static string SAWND =
             SupportedFilesHandler.GetCompleteFilter("sawnd");
 			
         public static string MDef =
             SupportedFilesHandler.GetCompleteFilter("moveset");
+
+        public static string GCT =
+            SupportedFilesHandler.GetCompleteFilter("gct", "txt");
+
+        public static string APIScripts =
+            SupportedFilesHandler.GetCompleteFilter("py", "fsx");
 
         /// <summary>
         /// Maps node types to the default extension when using Export All.
@@ -234,7 +240,7 @@ namespace BrawlLib
             [typeof(STPMNode)] = "stpm",
             [typeof(STDTNode)] = "stdt",
             [typeof(SCLANode)] = "scla",
-            [typeof(HavokNode)] = "hkx",
+            [typeof(HavokNode)] = "hkx"
         };
 
         public static string GetDefaultExportAllExtension(Type type)

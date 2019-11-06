@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.StageManager
 {
@@ -47,7 +45,7 @@ namespace BrawlCrate.StageManager
             g.DrawString(text, fontData.Font, new SolidBrush(Color.White), x, y, new StringFormat
             {
                 Alignment = corner ? StringAlignment.Near : StringAlignment.Center,
-                LineAlignment = corner ? StringAlignment.Far : StringAlignment.Center,
+                LineAlignment = corner ? StringAlignment.Far : StringAlignment.Center
             });
             return b;
         }
@@ -61,13 +59,13 @@ namespace BrawlCrate.StageManager
                 new StringFormat
                 {
                     Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
                 });
             g.DrawString(line2, fontData.Font, new SolidBrush(Color.White), 104, 43 - fontData.VerticalOffset,
                 new StringFormat
                 {
                     Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
                 });
             return b;
         }

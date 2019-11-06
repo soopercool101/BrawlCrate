@@ -2,6 +2,7 @@
 using BrawlLib.Imaging;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Models;
 using System;
 using System.ComponentModel;
@@ -87,13 +88,34 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Objects", null, NameObjectAction)
             ));
             _menu.Items.Add(new ToolStripSeparator());
+            _menu.Items.Add(new ToolStripMenuItem("&Edit Materials", null,
+                new ToolStripMenuItem("&Characters", null,
+                    new ToolStripMenuItem("&Convert To Spy Model", null, SpyConvertAction),
+                    new ToolStripMenuItem("(&Re)generate Metal Materials", null, MetalAction,
+                        Keys.Control | Keys.Shift | Keys.M)
+                ),
+                new ToolStripMenuItem("&Stages", null,
+                    new ToolStripMenuItem("&Convert To Shadow Model", null, ShadowConvertAction)
+                ),
+                new ToolStripMenuItem("&Culling", null,
+                    new ToolStripMenuItem("Invert &Culling", null, InvertMaterialsAction),
+                    new ToolStripMenuItem("Set all (Cull &None)", null, CullNoneAction,
+                        Keys.Control | Keys.Shift | Keys.D0),
+                    new ToolStripMenuItem("Set all (Cull &Outside)", null, CullOutsideAction,
+                        Keys.Control | Keys.Shift | Keys.D1),
+                    new ToolStripMenuItem("Set all (Cull &Inside)", null, CullInsideAction,
+                        Keys.Control | Keys.Shift | Keys.D2),
+                    new ToolStripMenuItem("Set all (Cull &All)", null, CullAllAction,
+                        Keys.Control | Keys.Shift | Keys.D3)
+                )
+            ));
             _menu.Items.Add(new ToolStripMenuItem("&Reimport Meshes", null, ReimportAction));
             _menu.Items.Add(new ToolStripMenuItem("&Optimize Meshes", null, OptimizeAction));
             _menu.Items.Add(new ToolStripMenuItem("&Recalculate Bounding Boxes", null, RecalcBBsOption));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("(&Re)generate Metal Materials", null, MetalAction));
-            _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(DeleteToolStripMenuItem);
+            _menu.Items.Add(new ToolStripMenuItem("Delete All But Bones", null, StripAction,
+                Keys.Control | Keys.Shift | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -253,6 +275,54 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MDL0Wrapper>().SortTexture();
         }
 
+        protected static void InvertMaterialsAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().InvertMaterials();
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void CullNoneAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().CullMaterials(CullMode.Cull_None);
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void CullOutsideAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().CullMaterials(CullMode.Cull_Outside);
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void CullInsideAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().CullMaterials(CullMode.Cull_Inside);
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void CullAllAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().CullMaterials(CullMode.Cull_All);
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void ShadowConvertAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().ShadowConvert();
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void SpyConvertAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().SpyConvert();
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
+        protected static void StripAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0Wrapper>().StripModel();
+            MainForm.Instance.resourceTree_SelectionChanged(sender, e);
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DuplicateToolStripMenuItem.Enabled = true;
@@ -352,10 +422,7 @@ namespace BrawlCrate.NodeWrappers
                 shader.Rebuild(true);
 
                 BaseWrapper b = FindResource(shader, true);
-                if (b != null)
-                {
-                    b.EnsureVisible();
-                }
+                b?.EnsureVisible();
 
                 return shader;
             }
@@ -407,10 +474,7 @@ namespace BrawlCrate.NodeWrappers
             mat.Rebuild(true);
 
             BaseWrapper b = FindResource(mat, true);
-            if (b != null)
-            {
-                b.EnsureVisible();
-            }
+            b?.EnsureVisible();
 
             return mat;
         }
@@ -661,7 +725,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportMaterial()
         {
-            if (Program.OpenFile(FileFilters.MDL0Material, out string path) > 0)
+            if (Program.OpenFile(FileFilters.MDL0Material, out string path))
             {
                 NewMaterial().Replace(path);
             }
@@ -669,7 +733,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportShader()
         {
-            if (Program.OpenFile(FileFilters.MDL0Shader, out string path) > 0)
+            if (Program.OpenFile(FileFilters.MDL0Shader, out string path))
             {
                 NewShader()?.Replace(path);
             }
@@ -796,9 +860,64 @@ namespace BrawlCrate.NodeWrappers
         private void RecalcBoundingBoxes()
         {
             MDL0Node model = _resource as MDL0Node;
+            model?.CalculateBoundingBoxes();
+        }
+
+        public void ShadowConvert()
+        {
+            ((MDL0Node) _resource).ConvertToShadowModel();
+        }
+
+        public void SpyConvert()
+        {
+            ((MDL0Node) _resource).ConvertToSpyModel();
+        }
+
+        public void InvertMaterials()
+        {
+            if (_resource is MDL0Node mdl)
+            {
+                if (mdl.MaterialList == null)
+                {
+                    return;
+                }
+
+                foreach (MDL0MaterialNode mat in mdl.MaterialList)
+                {
+                    if (mat.CullMode == CullMode.Cull_Inside)
+                    {
+                        mat.CullMode = CullMode.Cull_Outside;
+                    }
+                    else if (mat.CullMode == CullMode.Cull_Outside)
+                    {
+                        mat.CullMode = CullMode.Cull_Inside;
+                    }
+                }
+            }
+        }
+
+        public void CullMaterials(CullMode mode)
+        {
+            if (_resource is MDL0Node mdl)
+            {
+                if (mdl.MaterialList == null)
+                {
+                    return;
+                }
+
+                foreach (MDL0MaterialNode mat in mdl.MaterialList)
+                {
+                    mat.CullMode = mode;
+                }
+            }
+        }
+
+        private void StripModel()
+        {
+            MDL0Node model = _resource as MDL0Node;
             if (model != null)
             {
-                model.CalculateBoundingBoxes();
+                model.StripModel();
             }
         }
     }

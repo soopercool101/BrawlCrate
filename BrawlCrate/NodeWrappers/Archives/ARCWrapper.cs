@@ -46,14 +46,14 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Redirect", null, NewRedirectAction),
                 new ToolStripMenuItem("SCLA", null, NewSCLAAction),
                 new ToolStripMenuItem("Stage Table", null,
-                    new ToolStripMenuItem("STDT", null, NewSTDTAction),
-                    new ToolStripMenuItem("TBCL", null, NewTBCLAction),
-                    new ToolStripMenuItem("TBGC", null, NewTBGCAction),
-                    new ToolStripMenuItem("TBGD", null, NewTBGDAction),
-                    new ToolStripMenuItem("TBGM", null, NewTBGMAction),
-                    new ToolStripMenuItem("TBLV", null, NewTBLVAction),
-                    new ToolStripMenuItem("TBRM", null, NewTBRMAction),
-                    new ToolStripMenuItem("TBST", null, NewTBSTAction)
+                    new ToolStripMenuItem("STDT", null, NewStageTableAction<STDTNode>),
+                    new ToolStripMenuItem("TBCL", null, NewStageTableAction<TBCLNode>),
+                    new ToolStripMenuItem("TBGC", null, NewStageTableAction<TBGCNode>),
+                    new ToolStripMenuItem("TBGD", null, NewStageTableAction<TBGDNode>),
+                    new ToolStripMenuItem("TBGM", null, NewStageTableAction<TBGMNode>),
+                    new ToolStripMenuItem("TBLV", null, NewStageTableAction<TBLVNode>),
+                    new ToolStripMenuItem("TBRM", null, NewStageTableAction<TBRMNode>),
+                    new ToolStripMenuItem("TBST", null, NewStageTableAction<TBSTNode>)
                 ),
                 new ToolStripMenuItem("STPM", null, NewSTPMAction)
             ));
@@ -131,75 +131,14 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<ARCWrapper>().NewSTPM();
         }
 
-        protected static void NewSTDTAction(object sender, EventArgs e)
+        protected static void NewStageTableAction<T>(object sender, EventArgs e) where T : StageTableNode, new()
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("STDT Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewSTDT(entryCount.NewValue);
-            }
-        }
-
-        protected static void NewTBCLAction(object sender, EventArgs e)
-        {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBCL Generation", "Number of Entries:") == DialogResult.OK)
-            {
-                GetInstance<ARCWrapper>().NewTBCL(entryCount.NewValue);
-            }
-        }
-
-        protected static void NewTBGCAction(object sender, EventArgs e)
-        {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBGC Generation", "Number of Entries:") == DialogResult.OK)
-            {
-                GetInstance<ARCWrapper>().NewTBGC(entryCount.NewValue);
-            }
-        }
-
-        protected static void NewTBGDAction(object sender, EventArgs e)
-        {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBGD Generation", "Number of Entries:") == DialogResult.OK)
-            {
-                GetInstance<ARCWrapper>().NewTBGD(entryCount.NewValue);
-            }
-        }
-
-        protected static void NewTBGMAction(object sender, EventArgs e)
-        {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBGM Generation", "Number of Entries:") == DialogResult.OK)
-            {
-                GetInstance<ARCWrapper>().NewTBGM(entryCount.NewValue);
-            }
-        }
-
-        protected static void NewTBLVAction(object sender, EventArgs e)
-        {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBLV Generation", "Number of Entries:") == DialogResult.OK)
-            {
-                GetInstance<ARCWrapper>().NewTBLV(entryCount.NewValue);
-            }
-        }
-
-        protected static void NewTBRMAction(object sender, EventArgs e)
-        {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBRM Generation", "Number of Entries:") == DialogResult.OK)
-            {
-                GetInstance<ARCWrapper>().NewTBRM(entryCount.NewValue);
-            }
-        }
-
-        protected static void NewTBSTAction(object sender, EventArgs e)
-        {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBST Generation", "Number of Entries:") == DialogResult.OK)
-            {
-                GetInstance<ARCWrapper>().NewTBST(entryCount.NewValue);
+                if (entryCount.ShowDialog($"{typeof(T).Name} Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewStageTable<T>(entryCount.NewValue);
+                }
             }
         }
 
@@ -412,86 +351,14 @@ namespace BrawlCrate.NodeWrappers
             return node;
         }
 
-        public STDTNode NewSTDT(int numEntries)
+        public T NewStageTable<T>(int numEntries) where T : StageTableNode, new()
         {
-            STDTNode node = new STDTNode(numEntries) {FileType = ARCFileType.MiscData};
-            _resource.AddChild(node);
+            T node = new T {FileType = ARCFileType.MiscData};
+            while (node.NumEntries < numEntries)
+            {
+                node.EntryList.Add(0);
+            }
 
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public TBCLNode NewTBCL(int numEntries)
-        {
-            TBCLNode node = new TBCLNode(numEntries) {FileType = ARCFileType.MiscData};
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public TBGCNode NewTBGC(int numEntries)
-        {
-            TBGCNode node = new TBGCNode(numEntries) {FileType = ARCFileType.MiscData};
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public TBGDNode NewTBGD(int numEntries)
-        {
-            TBGDNode node = new TBGDNode(numEntries) {FileType = ARCFileType.MiscData};
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public TBGMNode NewTBGM(int numEntries)
-        {
-            TBGMNode node = new TBGMNode(numEntries) {FileType = ARCFileType.MiscData};
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public TBLVNode NewTBLV(int numEntries)
-        {
-            TBLVNode node = new TBLVNode(numEntries) {FileType = ARCFileType.MiscData};
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public TBRMNode NewTBRM(int numEntries)
-        {
-            TBRMNode node = new TBRMNode(numEntries) {FileType = ARCFileType.MiscData};
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public TBSTNode NewTBST(int numEntries)
-        {
-            TBSTNode node = new TBSTNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -513,7 +380,8 @@ namespace BrawlCrate.NodeWrappers
 
         public ARCEntryNode NewRedirect()
         {
-            ARCEntryNode node = new ARCEntryNode {FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect};
+            ARCEntryNode node = new ARCEntryNode
+                {FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect};
             _resource.AddChild(node);
             node.RedirectIndex = 0;
 
@@ -525,129 +393,177 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            if (Program.OpenFile(FileFilters.ARCImport, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.ARCImport, out string[] paths) > 0)
             {
-                NewARC().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewARC().Replace(path);
+                }
             }
         }
 
         public void ImportBRES()
         {
-            if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.BRES, out string[] paths) > 0)
             {
-                NewBRES().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewBRES().Replace(path);
+                }
             }
         }
 
         public void ImportBLOC()
         {
-            if (Program.OpenFile(FileFilters.BLOC, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.BLOC, out string[] paths) > 0)
             {
-                NewBLOC().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewBLOC().Replace(path);
+                }
             }
         }
 
         public void ImportCollision()
         {
-            if (Program.OpenFile(FileFilters.CollisionDef, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.CollisionDef, out string[] paths) > 0)
             {
-                NewCollision().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewCollision().Replace(path);
+                }
             }
         }
 
         public void ImportMSBin()
         {
-            if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.MSBin, out string[] paths) > 0)
             {
-                NewMSBin().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewMSBin().Replace(path);
+                }
             }
         }
 
         public void ImportSCLA()
         {
-            if (Program.OpenFile(FileFilters.SCLA, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.SCLA, out string[] paths) > 0)
             {
-                NewSCLA().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewSCLA().Replace(path);
+                }
             }
         }
 
         public void ImportSTPM()
         {
-            if (Program.OpenFile(FileFilters.STPM, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.STPM, out string[] paths) > 0)
             {
-                NewSTPM().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewSTPM().Replace(path);
+                }
             }
         }
 
         public void ImportSTDT()
         {
-            if (Program.OpenFile(FileFilters.STDT, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.STDT, out string[] paths) > 0)
             {
-                NewSTDT(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<STDTNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBCL()
         {
-            if (Program.OpenFile(FileFilters.TBCL, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBCL, out string[] paths) > 0)
             {
-                NewTBCL(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBCLNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBGC()
         {
-            if (Program.OpenFile(FileFilters.TBGC, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBGC, out string[] paths) > 0)
             {
-                NewTBGC(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBGCNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBGD()
         {
-            if (Program.OpenFile(FileFilters.TBGD, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBGD, out string[] paths) > 0)
             {
-                NewTBGD(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBGDNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBGM()
         {
-            if (Program.OpenFile(FileFilters.TBGM, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBGM, out string[] paths) > 0)
             {
-                NewTBGM(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBGMNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBLV()
         {
-            if (Program.OpenFile(FileFilters.TBLV, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBLV, out string[] paths) > 0)
             {
-                NewTBLV(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBLVNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBRM()
         {
-            if (Program.OpenFile(FileFilters.TBRM, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBRM, out string[] paths) > 0)
             {
-                NewTBRM(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBRMNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBST()
         {
-            if (Program.OpenFile(FileFilters.TBST, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBST, out string[] paths) > 0)
             {
-                NewTBST(1).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBSTNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportHavok()
         {
-            if (Program.OpenFile(FileFilters.Havok, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.Havok, out string[] paths) > 0)
             {
-                NewHavok().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewHavok().Replace(path);
+                }
             }
         }
 

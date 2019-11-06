@@ -1,6 +1,4 @@
-﻿using BrawlLib;
-
-namespace System.Windows.Forms
+﻿namespace System.Windows.Forms
 {
     public partial class ExportAllFormatDialog : Form
     {
@@ -29,6 +27,7 @@ namespace System.Windows.Forms
             ((FormatForExportAllDialog) comboBox1.SelectedItem).extension.Replace("*", "");
 
         public bool Valid => comboBox1.Items.Count > 0;
+        public bool AutoSelect => comboBox1.Items.Count == 1;
     }
 
     public class FormatForExportAllDialog

@@ -2,10 +2,7 @@
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace BrawlCrate.StageManager
 {

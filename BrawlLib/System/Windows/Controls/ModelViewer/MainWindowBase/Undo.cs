@@ -96,7 +96,7 @@ namespace System.Windows.Forms
                 _animation = SelectedCHR0,
                 _frameIndex = CurrentFrame,
                 _updateBoneOnly = CHR0Editor.chkMoveBoneOnly.Checked,
-                _updateBindState = CHR0Editor.chkUpdateBindPose.Checked,
+                _updateBindState = CHR0Editor.chkUpdateBindPose.Checked
             };
 
             AddState(state);
@@ -113,7 +113,7 @@ namespace System.Windows.Forms
                 _animFrame = CurrentFrame,
                 _vertices = vertices,
                 _weightedPositions = vertices.Select(x => x.WeightedPosition).ToList(),
-                _targetModel = TargetModel,
+                _targetModel = TargetModel
             };
 
             AddState(state);

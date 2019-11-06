@@ -92,10 +92,7 @@ namespace BrawlCrate.NodeWrappers
             if (n != null)
             {
                 BaseWrapper b = FindResource(n, true);
-                if (b != null)
-                {
-                    b.EnsureVisible();
-                }
+                b?.EnsureVisible();
             }
         }
     }
@@ -184,10 +181,7 @@ namespace BrawlCrate.NodeWrappers
             if (n != null)
             {
                 BaseWrapper b = FindResource(n, true);
-                if (b != null)
-                {
-                    b.EnsureVisible();
-                }
+                b?.EnsureVisible();
             }
         }
     }

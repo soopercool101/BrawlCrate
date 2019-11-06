@@ -45,12 +45,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             RelCommand cmd = Manager.GetCommand(index);
-            if (cmd == null)
-            {
-                return null;
-            }
 
-            RelocationTarget target = cmd.GetTargetRelocation();
+            RelocationTarget target = cmd?.GetTargetRelocation();
             if (target == null || target._sectionID != _objectSection.Index)
             {
                 return null;
@@ -107,12 +103,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private unsafe RELObjectNode ParseObject(ref int rel)
         {
             RelCommand cmd = Manager.GetCommand(rel);
-            if (cmd == null)
-            {
-                return null;
-            }
 
-            RelocationTarget target = cmd.GetTargetRelocation();
+            RelocationTarget target = cmd?.GetTargetRelocation();
             if (target == null || target._sectionID != _objectSection.Index)
             {
                 return null;
@@ -162,7 +154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RelocationTarget t = cmd.GetTargetRelocation();
                 if (cmd.Apply(Manager.GetUint(rel), 0) != baseCmd.Apply(Manager.GetUint(baseRel), 0))
                 {
-                    string methodName = string.Format("Function[{0}][{1}]", setIndex, methodIndex);
+                    string methodName = $"Function[{setIndex}][{methodIndex}]";
                     VoidPtr addr = null;
                     if (t != null && t._moduleID == (_objectSection.Root as ModuleNode).ID)
                     {

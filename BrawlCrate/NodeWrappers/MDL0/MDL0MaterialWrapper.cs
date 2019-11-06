@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
 using System;
 using System.ComponentModel;
@@ -134,6 +135,8 @@ namespace BrawlCrate.NodeWrappers
         }
 
         #endregion
+
+        public override string ExportFilter => FileFilters.MDL0Material;
 
         public MDL0MaterialWrapper()
         {

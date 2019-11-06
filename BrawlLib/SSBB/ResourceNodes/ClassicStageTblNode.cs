@@ -343,7 +343,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             Normal = 0,
             Metal = 1,
-            Invisible = 2,
+            Invisible = 2
         }
 
         [TypeConverter(typeof(DropDownListFighterIDs))]

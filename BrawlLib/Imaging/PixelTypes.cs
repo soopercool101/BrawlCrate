@@ -144,27 +144,27 @@ namespace BrawlLib.Imaging
 
         public override string ToString()
         {
-            return string.Format("A:{0} R:{1} G:{2} B:{3}", A, R, G, B);
+            return $"A:{A} R:{R} G:{G} B:{B}";
         }
 
         public string ToHexString()
         {
-            return string.Format("A:{0:X2} R:{1:X2} G:{2:X2} B:{3:X2}", A, R, G, B);
+            return $"A:{A:X2} R:{R:X2} G:{G:X2} B:{B:X2}";
         }
 
         public string ToPaddedString()
         {
-            return string.Format("A:{0,3} R:{1,3} G:{2,3} B:{3,3}", A, R, G, B);
+            return $"A:{A,3} R:{R,3} G:{G,3} B:{B,3}";
         }
 
         public string ToARGBColorCode()
         {
-            return string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", A, R, G, B);
+            return $"{A:X2}{R:X2}{G:X2}{B:X2}";
         }
 
         public string ToRGBAColorCode()
         {
-            return string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", R, G, B, A);
+            return $"{R:X2}{G:X2}{B:X2}{A:X2}";
         }
 
         public override int GetHashCode()
@@ -420,7 +420,7 @@ namespace BrawlLib.Imaging
         public override string ToString()
         {
             //return String.Format("R:{0:X2} G:{1:X2} B:{2:X2} A:{3:X2}", R, G, B, A);
-            return string.Format("R:{0} G:{1} B:{2} A:{3}", R, G, B, A);
+            return $"R:{R} G:{G} B:{B} A:{A}";
         }
 
         public override int GetHashCode()
@@ -584,7 +584,7 @@ namespace BrawlLib.Imaging
 
         public override string ToString()
         {
-            return string.Format("R:{0:X2} G:{1:X2} B:{2:X2}", R, G, B);
+            return $"R:{R:X2} G:{G:X2} B:{B:X2}";
         }
     }
 
@@ -760,12 +760,14 @@ namespace BrawlLib.Imaging
 
         public static explicit operator ARGBPixel(GXColorS10 p)
         {
-            return new ARGBPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new ARGBPixel
+                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static explicit operator RGBAPixel(GXColorS10 p)
         {
-            return new RGBAPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new RGBAPixel
+                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static implicit operator Vector4(GXColorS10 p)
@@ -812,7 +814,7 @@ namespace BrawlLib.Imaging
         public override string ToString()
         {
             //return String.Format("R:{0:X2} G:{1:X2} B:{2:X2} A:{3:X2}", R, G, B, A);
-            return string.Format("R:{0} G:{1} B:{2} A:{3}", R, G, B, A);
+            return $"R:{R} G:{G} B:{B} A:{A}";
         }
 
         public static bool operator ==(GXColorS10 p1, GXColorS10 p2)

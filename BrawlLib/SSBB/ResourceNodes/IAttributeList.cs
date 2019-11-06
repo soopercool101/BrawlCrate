@@ -1,6 +1,4 @@
 ﻿using BrawlLib.Imaging;
-using System;
-using System.Collections.Generic;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

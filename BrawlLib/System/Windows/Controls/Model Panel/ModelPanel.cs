@@ -1,13 +1,13 @@
-﻿using BrawlLib.Modeling;
-using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes;
-using OpenTK.Graphics.OpenGL;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using BrawlLib.Modeling;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.ResourceNodes;
+using OpenTK.Graphics.OpenGL;
 
 namespace System.Windows.Forms
 {
@@ -359,6 +359,11 @@ namespace System.Windows.Forms
                     break;
             }
 
+            if (e.Button != MouseButtons.Left)
+            {
+                CurrentViewport.HandleOtherMouseDown(e);
+            }
+
             base.OnMouseDown(e);
         }
 
@@ -404,6 +409,11 @@ namespace System.Windows.Forms
                     return;
             }
 
+            if (e.Button != MouseButtons.Left)
+            {
+                CurrentViewport.HandleOtherMouseUp(e);
+            }
+
             Invalidate();
             base.OnMouseUp(e);
         }
@@ -413,7 +423,7 @@ namespace System.Windows.Forms
             xMin,
             yMin,
             xMax,
-            yMax,
+            yMax
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -620,7 +630,7 @@ namespace System.Windows.Forms
             GL.Hint(HintTarget.GenerateMipmapHint, HintMode.Nicest);
 
             GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             GL.Enable(EnableCap.AlphaTest);
             GL.AlphaFunc(AlphaFunction.Gequal, 0.1f);
@@ -665,7 +675,7 @@ namespace System.Windows.Forms
             GL.MatrixMode(MatrixMode.Modelview);
 
             GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Enable(EnableCap.Lighting);
             GL.Enable(EnableCap.DepthTest);
 

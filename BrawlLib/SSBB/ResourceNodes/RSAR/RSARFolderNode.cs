@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             typeof(RSARSoundNode),
             typeof(RSARBankNode),
             typeof(RSARGroupNode),
-            typeof(RSARPlayerInfoNode),
+            typeof(RSARPlayerInfoNode)
         };
 
         public int _listIndex;
@@ -80,9 +80,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         ((RSARFolderNode) n).GetStrings(chars, len, list, ref unusedFolders);
                     }
-                    else if (n is RSAREntryNode)
+                    else
                     {
-                        ((RSAREntryNode) n).GetStrings(chars, len, list);
+                        (n as RSAREntryNode)?.GetStrings(chars, len, list);
                     }
                 }
             }

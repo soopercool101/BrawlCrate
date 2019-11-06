@@ -12,6 +12,8 @@ namespace BrawlCrate.NodeWrappers
     {
         public override string ExportFilter => FileFilters.CollisionDef;
 
+        public override string ImportFilter => FileFilters.Raw;
+
         // Override Duplicate since by default Collision Objects don't contain their own data
         public override void Duplicate()
         {
@@ -21,10 +23,9 @@ namespace BrawlCrate.NodeWrappers
             }
 
             string tempPath = Path.GetTempFileName();
-            _resource.Export(tempPath + ".coll");
-            CollisionNode cNode =
-                NodeFactory.FromFile(null, tempPath + ".coll", typeof(CollisionNode)) as CollisionNode;
-            if (cNode == null)
+            // Explicitly set the ".coll" extension to ensure that the node exports all necessary data
+            _resource.Export($"{tempPath}.coll");
+            if (!(NodeFactory.FromFile(null, $"{tempPath}.coll", typeof(CollisionNode)) is CollisionNode cNode))
             {
                 MessageBox.Show("The node could not be duplicated correctly.");
                 return;
@@ -32,7 +33,7 @@ namespace BrawlCrate.NodeWrappers
 
             int n = 0;
             int index = _resource.Index;
-            // Copy the name directly in cases where name isn't saved
+            // Copy the name directly since Collision Objects don't store their own name
             cNode.Children[0].Name = _resource.Name;
             // Set the name programatically (based on Windows' implementation)
             while (_resource.Parent.FindChildrenByName(cNode.Children[0].Name).Length >= 1)

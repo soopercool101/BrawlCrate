@@ -345,7 +345,7 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            return string.Format("Prev={0}, Next={1}, Value={2}", _prev, _next, _value);
+            return $"Prev={_prev}, Next={_next}, Value={_value}";
         }
     }
 

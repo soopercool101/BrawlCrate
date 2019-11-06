@@ -827,7 +827,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     System.Diagnostics.Debug.WriteLine((IntPtr) Header);
                     _keyframes = AnimationConverter.DecodeKeyframes(Header,
-                        Parent != null ? Parent.Parent as SRT0Node : null, 5, 1, 1);
+                        Parent?.Parent as SRT0Node, 5, 1, 1);
                 }
 
                 return _keyframes;
@@ -1083,7 +1083,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("Index={0}, Value={1}, Tangent={2}", _index, _value, _tangent);
+            return $"Index={_index}, Value={_value}, Tangent={_tangent}";
         }
     }
 }

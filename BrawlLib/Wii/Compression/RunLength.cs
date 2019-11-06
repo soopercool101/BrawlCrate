@@ -97,10 +97,7 @@ namespace BrawlLib.Wii.Compression
 
             int chunkCount = (int) Math.Ceiling((double) srcLen / _threadChunk);
 
-            if (progress != null)
-            {
-                progress.Begin(0, srcLen, 0);
-            }
+            progress?.Begin(0, srcLen, 0);
 
             _contractions = new List<Contraction>[chunkCount];
 
@@ -296,10 +293,7 @@ namespace BrawlLib.Wii.Compression
 
             outStream.Flush();
 
-            if (progress != null)
-            {
-                progress.Finish();
-            }
+            progress?.Finish();
 
             return (int) outStream.Length;
         }
@@ -307,7 +301,7 @@ namespace BrawlLib.Wii.Compression
         public static int CompactYAZ0(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
             using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAZ0",
-                string.Format("Compressing {0}, please wait...", r.Name), false))
+                $"Compressing {r.Name}, please wait...", false))
             {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 0);
             }
@@ -316,7 +310,7 @@ namespace BrawlLib.Wii.Compression
         public static int CompactYAY0(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
             using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAY0",
-                string.Format("Compressing {0}, please wait...", r.Name), false))
+                $"Compressing {r.Name}, please wait...", false))
             {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 1);
             }
@@ -325,7 +319,7 @@ namespace BrawlLib.Wii.Compression
         public static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
             using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength",
-                string.Format("Compressing {0}, please wait...", r.Name), false))
+                $"Compressing {r.Name}, please wait...", false))
             {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 2);
             }

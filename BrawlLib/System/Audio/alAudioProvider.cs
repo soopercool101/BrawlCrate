@@ -15,10 +15,7 @@ namespace System.Audio
         public override void Dispose()
         {
             base.Dispose();
-            if (context != null)
-            {
-                context.Dispose();
-            }
+            context?.Dispose();
 
             context = null;
         }

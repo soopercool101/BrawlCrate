@@ -88,27 +88,15 @@ namespace BrawlCrate.API
         ///
         ///     This allows for maximum compatibility with little room for user error.
         /// </summary>
-        internal static readonly string[] DepreciatedStrings = new[]
-        {
-            "BrawlBox",     // BrawlBox namespace is "BrawlCrate" in this program
-            "bboxapi",      // API system is now named "BrawlAPI"
-            "PluginLoader", // Renamed to better reflect what it does (loaders do not have to be parsers)
-            "AddLoader"     // Renamed to better reflect what it does (loaders do not have to be parsers)
-        };
-
-        /// <summary>
-        ///     Contains the new names of anything defined in the DepreciatedStrings array.
-        ///     Corresponds 1:1 with DepreciatedStrings.
-        ///
-        ///     This allows for maximum compatibility with little room for user error.
-        /// </summary>
-        internal static readonly string[] ReplacementStrings = new[]
-        {
-            "BrawlCrate",           // BrawlBox namespace is "BrawlCrate" in this program
-            "BrawlAPI",             // API system is now named "BrawlAPI"
-            "PluginResourceParser", // Renamed to better reflect what it does (loaders do not have to be parsers)
-            "AddResourceParser"     // Renamed to better reflect what it does (loaders do not have to be parsers)
-        };
+        internal static readonly Dictionary<string, string> DepreciatedReplacementStrings =
+            new Dictionary<string, string>
+            {
+                {"BrawlBox", "BrawlCrate"},                  // Update program name and default namespace
+                {"bboxapi", "BrawlAPI"},                     // Update API system name
+                {"PluginLoader", "PluginResourceParser"},    // Loaders aren't necessarily parsers (and vice-versa)
+                {"AddLoader", "AddResourceParser"},          // Loaders aren't necessarily parsers (and vice-versa)
+                {"get_ResourceType", "get_ResourceFileType"} // Changed to not conflict/confuse with the enum
+            };
 
         internal static void RunScript(string path)
         {
@@ -138,7 +126,7 @@ namespace BrawlCrate.API
 
                     Process p = Process.Start(new ProcessStartInfo
                     {
-                        FileName = fsi_path,
+                        FileName = FSIPath,
                         Arguments = $"--noninteractive \"{tempPath}\"",
                         UseShellExecute = false,
                         CreateNoWindow = true,
@@ -190,7 +178,7 @@ namespace BrawlCrate.API
                 }
                 catch (Exception e)
                 {
-                    if (DepreciatedStrings.Any(s => e.Message.Contains(s)))
+                    if (DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
                     {
                         ConvertPlugin(path);
                         RunScript(path);
@@ -244,7 +232,7 @@ namespace BrawlCrate.API
             }
             catch (Exception e)
             {
-                if (DepreciatedStrings.Any(s => e.Message.Contains(s)))
+                if (DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
                 {
                     ConvertPlugin(path);
                     return CreatePlugin(path, loader);
@@ -260,9 +248,10 @@ namespace BrawlCrate.API
         internal static void ConvertPlugin(string path)
         {
             string text = File.ReadAllText(path);
-            for (int i = 0; i < DepreciatedStrings.Length; i++)
+            for (int i = 0; i < DepreciatedReplacementStrings.Count; i++)
             {
-                text = text.Replace(DepreciatedStrings[i], ReplacementStrings[i]);
+                text = text.Replace(DepreciatedReplacementStrings.Keys.ElementAt(i),
+                    DepreciatedReplacementStrings.Values.ElementAt(i));
             }
 
             File.WriteAllText(path, text);
@@ -278,30 +267,58 @@ namespace BrawlCrate.API
             {
                 searchPaths.Add(Directory.Exists($"{settingPath}\\Lib") ? $"{settingPath}\\Lib" : settingPath);
             }
-            // Then check for Python 2.7 (The recommended version for iron python) in its default installation directory
-            else if (Directory.Exists("C:\\Python27\\Lib"))
+            // Search for any other Python installations in their default directories
+            else if (force || !settingPath.Equals("(none)"))
             {
-                searchPaths.Add("C:\\Python27\\Lib");
-            }
-            // Finally, search for any other Python installations in their default directories
-            else
-            {
-                // Search the new installation path for Python
-                foreach (DirectoryInfo d in Directory
-                                            .CreateDirectory(Environment.SpecialFolder.ApplicationData.ToString())
-                                            .GetDirectories().Reverse())
+                // Search the PATH environment variable
+                string[] paths = Environment.GetEnvironmentVariable("PATH").Trim(';').Split(';');
+                bool found = false;
+                foreach (string s in paths)
                 {
-                    if (d.FullName.StartsWith(
-                            $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Python") &&
-                        Directory.Exists($"{d.FullName}\\Lib"))
+                    if (s.Contains("Python") && Directory.Exists($"{s}Lib"))
                     {
-                        searchPaths.Add($"{d.FullName}\\Lib");
+                        searchPaths.Add($"{s}Lib");
+                        found = true;
                         break;
                     }
                 }
 
+                // Search the new installation path for Python
+                if (!found)
+                {
+                    string python3InstallDir =
+                        $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Programs";
+                    foreach (DirectoryInfo d in Directory.CreateDirectory(python3InstallDir).GetDirectories().Reverse())
+                    {
+                        if (d.Name.StartsWith("Python"))
+                        {
+                            if (Directory.Exists($"{d.FullName}\\Lib"))
+                            {
+                                searchPaths.Add($"{d.FullName}\\Lib");
+                                found = true;
+                                break;
+                            }
+
+                            foreach (DirectoryInfo d2 in d.GetDirectories().Reverse())
+                            {
+                                if (d2.Name.StartsWith("Python") && Directory.Exists($"{d2.FullName}\\Lib"))
+                                {
+                                    searchPaths.Add($"{d2.FullName}\\Lib");
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (found)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 // Search the old installation path for Python
-                if (searchPaths.Count == 0)
+                if (!found)
                 {
                     foreach (DirectoryInfo d in Directory.CreateDirectory("C:\\").GetDirectories().Reverse())
                     {
@@ -349,18 +366,19 @@ namespace BrawlCrate.API
                         }
 
                         MessageBox.Show(
-                            "Python installation could not be automatically detected. Install the latest version of Python 2.7 and try again, or browse manually to your Python installation directory.",
+                            "Python installation could not be automatically detected. Reinstall Python and try again, or browse manually to your Python installation directory.",
                             "BrawlAPI");
                     }
                     else
                     {
 #if !MONO
                         using (Ookii.Dialogs.VistaFolderBrowserDialog dlg
-                            = new Ookii.Dialogs.VistaFolderBrowserDialog())
+                            = new Ookii.Dialogs.VistaFolderBrowserDialog {UseDescriptionForTitle = true})
 #else
                         using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
                         {
+                            dlg.Description = "Python Installation Path";
                             if (MessageBox.Show(
                                     "Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.",
                                     "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes

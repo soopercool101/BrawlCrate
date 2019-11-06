@@ -221,7 +221,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = string.Format("[{0}] InstParams", Index);
+                _name = $"[{Index}] InstParams";
             }
 
             SetSizeInternal(0x30);
@@ -253,7 +253,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = string.Format("[{0}] Group", Index);
+                _name = $"[{Index}] Group";
             }
 
             _keys = new byte[Header->_tableCount];
@@ -298,10 +298,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                 }
 
-                if (e != null)
-                {
-                    e.Initialize(this, addr, 0);
-                }
+                e?.Initialize(this, addr, 0);
             }
         }
     }
@@ -340,7 +337,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = string.Format("[{0}] Group", Index);
+                _name = $"[{Index}] Group";
             }
 
             SetSizeInternal(4 + (Max - Min + 1) * 8);
@@ -377,10 +374,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                 }
 
-                if (e != null)
-                {
-                    e.Initialize(this, addr, 0);
-                }
+                e?.Initialize(this, addr, 0);
             }
         }
     }

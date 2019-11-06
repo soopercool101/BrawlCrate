@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using BrawlLib.SSBB.ResourceNodes.Archives;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -22,31 +23,37 @@ namespace BrawlLib.SSBB.ResourceNodes
             {"MRGC", typeof(MRGNode)}, //Compressed MRG
             {"DOL", typeof(DOLNode)},
             {"REL", typeof(RELNode)},
-            {"MASQ", typeof(MasqueradeNode)}
+            {"MASQ", typeof(MasqueradeNode)},
+            {"CMM", typeof(CMMNode)}
         };
 
         static NodeFactory()
         {
-            foreach (Type t in Assembly.GetExecutingAssembly().GetTypes())
+            // Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)
+            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()
+                                       ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
 
-            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes())
+            // Add all BrawlLib parsers (excluding MoveDefs, as explained below)
+            foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()
+                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode)) && t != typeof(MoveDefNode)))
             {
                 AddParser(t);
             }
+
+            // Add MoveDef. MoveDef is very generalized as a parser and currently encounters many false positives.
+            // Prevent this by trying everything else first
+            AddParser(typeof(MoveDefNode));
         }
 
         public static void AddParser(Type t)
         {
-            if (t.IsSubclassOf(typeof(ResourceNode)))
+            Delegate del = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParse", false, false);
+            if (del != null)
             {
-                Delegate del = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParse", false, false);
-                if (del != null)
-                {
-                    _parsers.Add(del as ResourceParser);
-                }
+                _parsers.Add(del as ResourceParser);
             }
         }
 
@@ -91,13 +98,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node.Initialize(parent, source);
                         }
                     }
-#if DEBUG
                     else
                     {
-                        node = new RawDataNode(Path.GetFileNameWithoutExtension(path));
+                        node = new RawDataNode(Path.GetFileName(path));
                         node.Initialize(parent, source);
                     }
-#endif
                 }
             }
             finally
@@ -118,8 +123,26 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source)
         {
+            return FromSource(parent, source, null);
+        }
+
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t)
+        {
             ResourceNode n = null;
-            if ((n = GetRaw(source)) != null)
+
+            if (t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
+            {
+                FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
+                if (uncompressedMap != null)
+                {
+                    n.Initialize(parent, source, new DataSource(uncompressedMap));
+                }
+                else
+                {
+                    n.Initialize(parent, source);
+                }
+            }
+            else if ((n = GetRaw(source)) != null)
             {
                 n.Initialize(parent, source);
             }

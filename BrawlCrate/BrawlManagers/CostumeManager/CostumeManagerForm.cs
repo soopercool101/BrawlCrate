@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BrawlManagerLib;
-using System.Globalization;
 
 namespace BrawlCrate.CostumeManager
 {
@@ -242,7 +237,7 @@ namespace BrawlCrate.CostumeManager
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
-            //			fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
+            //            fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 Environment.CurrentDirectory = fbd.SelectedPath;
@@ -398,7 +393,7 @@ namespace BrawlCrate.CostumeManager
                 g.DrawImage(screenshot, x, y);
             }
 
-            string iconFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".png";
+            string iconFile = Path.GetTempPath() + Guid.NewGuid() + ".png";
 
             BitmapUtilities.Resize(rect, new Size(128, 160)).Save(iconFile);
             cssPortraitViewer1.ReplaceMain(iconFile, false);

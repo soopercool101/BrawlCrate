@@ -5,8 +5,6 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -267,7 +265,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void MergeWith()
         {
-            CollisionNode external = null;
             OpenFileDialog o = new OpenFileDialog
             {
                 Filter = FileFilters.CollisionDef,
@@ -275,7 +272,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (CollisionNode) NodeFactory.FromFile(null, o.FileName)) != null)
+                CollisionNode external = (CollisionNode) NodeFactory.FromFile(null, o.FileName, typeof(CollisionNode));
+                if (external != null)
                 {
                     MergeWith(external);
                 }
@@ -284,7 +282,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void MergeWith(CollisionNode external)
         {
-            foreach (CollisionObject co in external.Children)
+            foreach (ResourceNode co in external.Children)
             {
                 AddChild(co);
             }
@@ -392,7 +390,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Unknown = 1,
             Independent = 2,
             ModuleControlled = 4,
-            SSEUnknown = 8,
+            SSEUnknown = 8
         }
 
         public List<CollisionLink> _points = new List<CollisionLink>();
@@ -1246,14 +1244,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);
             GL.Vertex3(r._x, r._y, -10.0f);
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);

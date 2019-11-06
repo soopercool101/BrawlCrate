@@ -446,7 +446,7 @@
             // 
             // dlgSave
             // 
-            this.dlgSave.Filter = "GCT/Text File|*.gct;*.txt|GCT File|*.gct|Text File|*.txt";
+            this.dlgSave.Filter = BrawlLib.FileFilters.GCT;
             // 
             // contextMenuStrip1
             // 

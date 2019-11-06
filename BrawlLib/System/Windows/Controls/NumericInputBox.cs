@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Globalization;
 
 namespace System.Windows.Forms
 {
@@ -188,6 +189,17 @@ namespace System.Windows.Forms
                     break;
 
                 case Keys.Decimal:
+                    if (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(","))
+                    {
+                        if (Text.IndexOf(',') != -1 || Integer)
+                        {
+                            e.SuppressKeyPress = true;
+                        }
+
+                        break;
+                    }
+
+                    goto case Keys.OemPeriod;
                 case Keys.OemPeriod:
                     if (Text.IndexOf('.') != -1 || Integer)
                     {
@@ -195,7 +207,14 @@ namespace System.Windows.Forms
                     }
 
                     break;
+                case Keys.Oemcomma:
+                    if (!CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(",") ||
+                        Text.IndexOf(',') != -1 || Integer)
+                    {
+                        e.SuppressKeyPress = true;
+                    }
 
+                    break;
                 case Keys.Escape:
                     UpdateText();
                     e.SuppressKeyPress = true;

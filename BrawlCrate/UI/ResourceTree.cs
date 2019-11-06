@@ -1,5 +1,4 @@
 ﻿using BrawlCrate.NodeWrappers;
-using BrawlCrate.Properties;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -68,18 +67,18 @@ namespace BrawlCrate
             SetStyle(ControlStyles.UserMouse, true);
 
             _timer.Interval = 200;
-            _timer.Tick += timer_Tick;
+            _timer.Tick += new EventHandler(timer_Tick);
 
             AllowDrop = true;
 
-            ItemDrag += treeView_ItemDrag;
-            DragOver += treeView1_DragOver;
-            DragDrop += treeView1_DragDrop;
-            DragEnter += treeView1_DragEnter;
-            DragLeave += treeView1_DragLeave;
-            GiveFeedback += treeView1_GiveFeedback;
+            ItemDrag += new ItemDragEventHandler(treeView_ItemDrag);
+            DragOver += new DragEventHandler(treeView1_DragOver);
+            DragDrop += new DragEventHandler(treeView1_DragDrop);
+            DragEnter += new DragEventHandler(treeView1_DragEnter);
+            DragLeave += new EventHandler(treeView1_DragLeave);
+            GiveFeedback += new GiveFeedbackEventHandler(treeView1_GiveFeedback);
 
-            m_DelegateOpenFile = ImportFile;
+            m_DelegateOpenFile = new DelegateOpenFile(ImportFile);
         }
 
         public BaseWrapper FindResource(ResourceNode node)
@@ -192,10 +191,7 @@ namespace BrawlCrate
         protected override void OnBeforeExpand(TreeViewCancelEventArgs e)
         {
             base.OnBeforeExpand(e);
-            if (e.Node is BaseWrapper)
-            {
-                ((BaseWrapper) e.Node).OnExpand();
-            }
+            (e.Node as BaseWrapper)?.OnExpand();
         }
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)

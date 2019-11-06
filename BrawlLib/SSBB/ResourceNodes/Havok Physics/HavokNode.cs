@@ -61,10 +61,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private void PatchPointers()
         {
-            if (_buffer != null)
-            {
-                _buffer.Dispose();
-            }
+            _buffer?.Dispose();
 
             //Make a copy of the file's data that we can patch with offsets
             _buffer = new UnsafeBuffer(WorkingUncompressed.Length);
@@ -308,7 +305,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private static readonly Dictionary<string, Type> _classNodeTypes = new Dictionary<string, Type>
         {
             {"hkClass", typeof(hkClassNode)},
-            {"hkClassEnum", typeof(hkClassEnumNode)},
+            {"hkClassEnum", typeof(hkClassEnumNode)}
 
             //Class types can be explicitly supported
             //Otherwise they are interpreted with a meta object node

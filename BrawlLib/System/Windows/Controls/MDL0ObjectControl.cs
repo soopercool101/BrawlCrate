@@ -32,29 +32,56 @@ namespace System.Windows.Forms
             floorToolStripMenuItem.Checked = value;
         }
 
-        public void SetTarget(MDL0ObjectNode o)
+        public bool SetTarget(MDL0ObjectNode o)
         {
             //lstDrawCalls.Items.Clear();
             lstDrawCalls.DataSource = null;
             modelPanel.ClearAll();
             cboMaterial.Items.Clear();
             cboVisBone.Items.Clear();
-
-            if ((_targetObject = o) != null)
+            try
             {
-                _targetObject.IsRendering = true;
+                if ((_targetObject = o) != null)
+                {
+                    _targetObject.IsRendering = true;
 
-                cboMaterial.Items.AddRange(o.Model.MaterialList.ToArray());
-                cboVisBone.Items.AddRange(o.Model._linker.BoneCache.ToArray());
-                lstDrawCalls.DataSource = o._drawCalls;
-                //lstDrawCalls.DisplayMember = "";
-                //lstDrawCalls.ValueMember = "_isXLU";
+                    cboMaterial.Items.AddRange(o.Model.MaterialList.ToArray());
+                    cboVisBone.Items.AddRange(o.Model._linker.BoneCache.ToArray());
+                    lstDrawCalls.DataSource = o._drawCalls;
+                    //lstDrawCalls.DisplayMember = "";
+                    //lstDrawCalls.ValueMember = "_isXLU";
 
-                modelPanel.AddTarget(o, false);
-                //if (o._drawCalls.Count > 0)
-                //    lstDrawCalls.SelectedIndex = 0;
-                modelPanel.SetCamWithBox(o.GetBox());
+                    modelPanel.AddTarget(o);
+                    //if (o._drawCalls.Count > 0)
+                    //    lstDrawCalls.SelectedIndex = 0;
+                    modelPanel.SetCamWithBox(o.GetBox());
+                    return true;
+                }
             }
+            catch
+            {
+                // ignored
+            }
+
+            if (_targetObject != null)
+            {
+                try
+                {
+                    _targetObject.IsRendering = false;
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
+
+            _targetObject = null;
+            lstDrawCalls.DataSource = null;
+            modelPanel.ClearAll();
+            cboMaterial.Items.Clear();
+            cboVisBone.Items.Clear();
+
+            return false;
         }
 
         private bool _updating;
@@ -228,7 +255,7 @@ namespace System.Windows.Forms
                 drawCall._render = !drawCall._render;
                 lstDrawCalls.SetItemChecked(lstDrawCalls.SelectedIndex, drawCall._render);
 
-                if (_targetObject != null && _targetObject.Model != null)
+                if (_targetObject?.Model != null)
                 {
                     TKContext.InvalidateModelPanels(_targetObject.Model);
                 }

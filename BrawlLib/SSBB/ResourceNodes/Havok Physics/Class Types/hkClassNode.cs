@@ -131,7 +131,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             current = this;
 
             //Now add this class and the classes it inherits
-            while (current != null && current is hkClassNode)
+            while (current is hkClassNode)
             {
                 hkClassNode cNode = (hkClassNode) current;
 

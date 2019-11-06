@@ -8,7 +8,8 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes.Archives;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace BrawlCrate
 {
@@ -20,7 +21,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "BrawlCrate_v0.26Hotfix3";
+        public static readonly string TagName = "v0.30h3";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -28,10 +29,11 @@ namespace BrawlCrate
         ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
-        public static readonly string UpdateMessage = @"Updated to BrawlCrate NEXT! This release:
-- Is a test of the new automated release system
-- Let's see how this goes
-- It should, in theory, be foolproof
+        public static readonly string UpdateMessage =
+            @"Updated to BrawlCrate v0.30 Hotfix 3! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+- (Hotfix 3) Improve camera for Model Viewers
+- (Hotfix 3) Fixes issue in which looping worked incorrectly
+- (Hotfix 3) Fixes bug in switching to/from canary builds
 
 Full changelog can be viewed from the help menu.";
 
@@ -42,12 +44,13 @@ Full changelog can be viewed from the help menu.";
         public static readonly string FullPath;
         public static readonly string BrawlLibTitle;
 
-        private static readonly OpenFileDialog _openDlg;
-        private static readonly SaveFileDialog _saveDlg;
+        private static readonly OpenFileDialog OpenDlg;
+        private static readonly OpenFileDialog MultiFileOpenDlg;
+        private static readonly SaveFileDialog SaveDlg;
 #if !MONO
-        private static readonly Ookii.Dialogs.VistaFolderBrowserDialog _folderDlg;
+        private static readonly Ookii.Dialogs.VistaFolderBrowserDialog FolderDlg;
 #else
-        private static readonly FolderBrowserDialog _folderDlg;
+        private static readonly FolderBrowserDialog FolderDlg;
 #endif
 
         internal static ResourceNode _rootNode;
@@ -64,14 +67,53 @@ Full changelog can be viewed from the help menu.";
 
         internal static string _rootPath;
 
-        public static string AppPath;
+        public static readonly string AppPath;
+
+        public static readonly string ApiPath;
+        public static readonly string ApiPluginPath;
+        public static readonly string ApiLoaderPath;
+
         public static string RootPath => _rootPath;
+#if !DEBUG
+        public static readonly bool FirstBoot;
+#endif
 
         static Program()
         {
             Application.EnableVisualStyles();
+
+#if !DEBUG
+            if (Properties.Settings.Default.UpdateSettings)
+            {
+                foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    foreach (Type _Type in _Assembly.GetTypes())
+                    {
+                        if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
+                        {
+                            ApplicationSettingsBase settings =
+                                (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
+                            if (settings != null)
+                            {
+                                settings.Upgrade();
+                                settings.Reload();
+                                settings.Save();
+                            }
+                        }
+                    }
+                }
+
+                // This is the first time booting this update
+                FirstBoot = true;
+
+                // Ensure settings only get updated once
+                Properties.Settings.Default.UpdateSettings = false;
+                Properties.Settings.Default.Save();
+            }
+#endif
+
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
-            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe", StringComparison.OrdinalIgnoreCase));
+            AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
             AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
@@ -88,7 +130,7 @@ Full changelog can be viewed from the help menu.";
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
 
-            AssemblyTitleShort = AssemblyTitleFull.Replace(" Hotfix ", "h");
+            AssemblyTitleShort = AssemblyTitleFull.Replace("Hotfix ", "h");
 #endif
 #if DEBUG
             AssemblyTitleFull += " DEBUG";
@@ -109,14 +151,19 @@ Full changelog can be viewed from the help menu.";
                                                       .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
-            _openDlg = new OpenFileDialog();
-            _saveDlg = new SaveFileDialog();
+            OpenDlg = new OpenFileDialog {Title = "Open File"};
+            MultiFileOpenDlg = new OpenFileDialog {Title = "Open Files", Multiselect = true};
+            SaveDlg = new SaveFileDialog();
 #if !MONO
-            _folderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
-            _folderDlg = new FolderBrowserDialog();
+            FolderDlg = new FolderBrowserDialog();
 #endif
+            FolderDlg.Description = "Open Folder";
 
+            ApiPath = Path.Combine(AppPath, "BrawlAPI");
+            ApiPluginPath = Path.Combine(ApiPath, "Plugins");
+            ApiLoaderPath = Path.Combine(ApiPath, "Loaders");
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
@@ -139,6 +186,56 @@ Full changelog can be viewed from the help menu.";
                 Properties.Settings.Default.ViewerSettings = ModelEditorSettings.Default();
                 Properties.Settings.Default.ViewerSettingsSet = true;
                 Properties.Settings.Default.Save();
+            }
+
+            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.BuildPath))
+            {
+                Properties.Settings.Default.BuildPath = AppPath;
+                Properties.Settings.Default.Save();
+            }
+
+            if (Properties.Settings.Default.APILoadersWhitelist == null)
+            {
+                Properties.Settings.Default.APILoadersWhitelist = new StringCollection();
+                Properties.Settings.Default.Save();
+            }
+
+            if (Properties.Settings.Default.APILoadersBlacklist == null)
+            {
+                Properties.Settings.Default.APILoadersBlacklist = new StringCollection();
+                Properties.Settings.Default.Save();
+            }
+
+            try
+            {
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "temp.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "temp.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.bat"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.bat");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "StageBox.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "StageBox.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "BrawlBox.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "BrawlBox.exe");
+                }
+            }
+            catch
+            {
+                // ignored
             }
         }
 
@@ -321,6 +418,13 @@ Full changelog can be viewed from the help menu.";
                     }
                 }
 
+#if !DEBUG //Don't need to see this every time a debug build is compiled
+                if (MainForm.Instance.CheckUpdatesOnStartup)
+                {
+                    MainForm.Instance.CheckUpdates(false);
+                }
+#endif
+
                 Application.Run(MainForm.Instance);
             }
             catch (FileNotFoundException x)
@@ -360,7 +464,7 @@ Full changelog can be viewed from the help menu.";
             }
 
             _rootNode = Activator.CreateInstance<T>();
-            _rootNode.Name = "NewTree";
+            _rootNode.Name = $"New{typeof(T).Name}";
             MainForm.Instance.Reset();
 
             return true;
@@ -423,6 +527,11 @@ Full changelog can be viewed from the help menu.";
             if (string.IsNullOrEmpty(path))
             {
                 return false;
+            }
+
+            if (path.EndsWith("\\") || path.EndsWith("/"))
+            {
+                return OpenFolder(path, showErrors);
             }
 
             if (!File.Exists(path))
@@ -488,16 +597,75 @@ Full changelog can be viewed from the help menu.";
             return false;
         }
 
-        public static int OpenFolderFile(out string fileName)
+        public static bool OpenTemplate(string path)
+        {
+            return OpenTemplate(path, true);
+        }
+
+        public static bool OpenTemplate(string path, bool showErrors)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return false;
+            }
+
+            if (!File.Exists(path))
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show("Template file does not exist.");
+                }
+
+                return false;
+            }
+
+            if (!Close())
+            {
+                return false;
+            }
+#if !DEBUG
+            try
+            {
+#endif
+                if ((_rootNode = NodeFactory.FromFile(null, path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize template file.");
+                }
+
+                MainForm.Instance.Reset();
+#if !DEBUG
+            }
+            catch (Exception x)
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show(x.ToString());
+                }
+            }
+#endif
+
+            Close();
+
+            return false;
+        }
+
+        public static bool OpenFolderFile(out string fileName)
         {
 #if !DEBUG
             try
             {
 #endif
-                if (_folderDlg.ShowDialog() == DialogResult.OK)
+                if (FolderDlg.ShowDialog() == DialogResult.OK)
                 {
-                    fileName = _folderDlg.SelectedPath;
-                    return 1;
+                    fileName = FolderDlg.SelectedPath;
+                    return true;
                 }
 #if !DEBUG
             }
@@ -507,7 +675,7 @@ Full changelog can be viewed from the help menu.";
             }
 #endif
             fileName = null;
-            return 0;
+            return false;
         }
 
         public static bool OpenFolder(string path)
@@ -521,6 +689,18 @@ Full changelog can be viewed from the help menu.";
             {
                 return false;
             }
+
+#if !MONO
+            if (!path.EndsWith("\\"))
+            {
+                path += "\\";
+            }
+#else
+            if (!path.EndsWith("/"))
+            {
+                path += "/";
+            }
+#endif
 
             if (!Directory.Exists(path))
             {
@@ -543,7 +723,7 @@ Full changelog can be viewed from the help menu.";
                 if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
                 {
                     MainForm.Instance.Reset();
-                    MainForm.Instance.RecentFilesHandler.AddFile(path.EndsWith("\\") ? path : $"{path}\\");
+                    MainForm.Instance.RecentFilesHandler.AddFile(path);
                     return true;
                 }
 
@@ -564,7 +744,6 @@ Full changelog can be viewed from the help menu.";
                 }
             }
 #endif
-
             Close();
 
             return false;
@@ -643,6 +822,7 @@ Full changelog can be viewed from the help menu.";
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message);
+                    _rootNode.SignalPropertyChange();
                 }
 #endif
             }
@@ -653,35 +833,25 @@ Full changelog can be viewed from the help menu.";
 
         public static string ChooseFolder()
         {
-            if (_folderDlg.ShowDialog() == DialogResult.OK)
+            if (FolderDlg.ShowDialog() == DialogResult.OK)
             {
-                return _folderDlg.SelectedPath;
+                return FolderDlg.SelectedPath;
             }
 
             return null;
         }
 
-        public static int OpenFile(string filter, out string fileName)
+        public static bool OpenFile(string filter, out string fileName)
         {
-            return OpenFile(filter, out fileName, true);
-        }
-
-        public static int OpenFile(string filter, out string fileName, bool categorize)
-        {
-            _openDlg.Filter = filter;
+            OpenDlg.Filter = filter;
 #if !DEBUG
             try
             {
 #endif
-                if (_openDlg.ShowDialog() == DialogResult.OK)
+                if (OpenDlg.ShowDialog() == DialogResult.OK)
                 {
-                    fileName = _openDlg.FileName;
-                    if (categorize && _openDlg.FilterIndex == 1)
-                    {
-                        return CategorizeFilter(_openDlg.FileName, filter);
-                    }
-
-                    return _openDlg.FilterIndex;
+                    fileName = OpenDlg.FileName;
+                    return true;
                 }
 #if !DEBUG
             }
@@ -691,6 +861,29 @@ Full changelog can be viewed from the help menu.";
             }
 #endif
             fileName = null;
+            return false;
+        }
+
+        public static int OpenFiles(string filter, out string[] fileNames)
+        {
+            MultiFileOpenDlg.Filter = filter;
+#if !DEBUG
+            try
+            {
+#endif
+                if (MultiFileOpenDlg.ShowDialog() == DialogResult.OK)
+                {
+                    fileNames = MultiFileOpenDlg.FileNames;
+                    return fileNames.Length;
+                }
+#if !DEBUG
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+#endif
+            fileNames = null;
             return 0;
         }
 
@@ -704,22 +897,22 @@ Full changelog can be viewed from the help menu.";
             int fIndex = 0;
             fileName = null;
 
-            _saveDlg.Filter = filter;
-            _saveDlg.FileName = name;
-            _saveDlg.FilterIndex = 1;
-            if (_saveDlg.ShowDialog() == DialogResult.OK)
+            SaveDlg.Filter = filter;
+            SaveDlg.FileName = name;
+            SaveDlg.FilterIndex = 1;
+            if (SaveDlg.ShowDialog() == DialogResult.OK)
             {
-                if (categorize && _saveDlg.FilterIndex == 1 && Path.HasExtension(_saveDlg.FileName))
+                if (categorize && SaveDlg.FilterIndex == 1 && Path.HasExtension(SaveDlg.FileName))
                 {
-                    fIndex = CategorizeFilter(_saveDlg.FileName, filter);
+                    fIndex = CategorizeFilter(SaveDlg.FileName, filter);
                 }
                 else
                 {
-                    fIndex = _saveDlg.FilterIndex;
+                    fIndex = SaveDlg.FilterIndex;
                 }
 
                 //Fix extension
-                fileName = ApplyExtension(_saveDlg.FileName, filter, fIndex - 1);
+                fileName = ApplyExtension(SaveDlg.FileName, filter, fIndex - 1);
             }
 
             return fIndex;
@@ -728,9 +921,9 @@ Full changelog can be viewed from the help menu.";
         public static bool SaveFolder(out string folderName)
         {
             folderName = null;
-            if (_folderDlg.ShowDialog() == DialogResult.OK)
+            if (FolderDlg.ShowDialog() == DialogResult.OK)
             {
-                folderName = _folderDlg.SelectedPath;
+                folderName = FolderDlg.SelectedPath;
                 return true;
             }
 
@@ -799,7 +992,7 @@ Full changelog can be viewed from the help menu.";
                         RootNode._origPath = path;
                         if (w is FolderWrapper)
                         {
-                            w.Resource.Name = w.Resource.OrigFileName;
+                            w.Resource.Name = w.Resource.FileName;
                             w.Text = w.Resource.Name;
                         }
 
@@ -850,7 +1043,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlStable {RootPath}",
+                        Arguments = $"-dlStable {RootPath}"
                     });
                     git?.WaitForExit();
                 }
@@ -871,7 +1064,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlCanary {RootPath}",
+                        Arguments = $"-dlCanary {RootPath}"
                     });
                     git?.WaitForExit();
                 }

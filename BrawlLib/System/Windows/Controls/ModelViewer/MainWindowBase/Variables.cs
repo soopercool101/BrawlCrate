@@ -46,18 +46,7 @@ namespace System.Windows.Forms
         public BindingList<ResourceNode> _openedFiles = new BindingList<ResourceNode>();
 
         //Bone Name - Attached Polygon Indices
-        public Dictionary<string, Dictionary<int, List<int>>> VIS0Indices
-        {
-            get
-            {
-                if (_targetModel is MDL0Node)
-                {
-                    return ((MDL0Node) _targetModel).VIS0Indices;
-                }
-
-                return null;
-            }
-        }
+        public Dictionary<string, Dictionary<int, List<int>>> VIS0Indices => (_targetModel as MDL0Node)?.VIS0Indices;
 
         protected NW4RAnimType _targetAnimType;
 
@@ -166,7 +155,7 @@ namespace System.Windows.Forms
             NW4RAnimType.PAT,
             NW4RAnimType.VIS,
             NW4RAnimType.CLR,
-            NW4RAnimType.SCN,
+            NW4RAnimType.SCN
         };
 
         public ModelViewerForm _viewerForm = null;
@@ -199,7 +188,7 @@ namespace System.Windows.Forms
             typeof(PAT0Node),
             typeof(VIS0Node),
             typeof(CLR0Node),
-            typeof(SCN0Node),
+            typeof(SCN0Node)
         };
     }
 
@@ -212,13 +201,13 @@ namespace System.Windows.Forms
         PAT = 3,
         VIS = 4,
         CLR = 5,
-        SCN = 6,
+        SCN = 6
     }
 
     public enum J3DAnimType : int
     {
         None = -1,
-        BCK = 0,
+        BCK = 0
     }
 
     public enum TransformType
@@ -226,6 +215,6 @@ namespace System.Windows.Forms
         Translation = 0,
         Rotation = 1,
         Scale = 2,
-        None = 3,
+        None = 3
     }
 }

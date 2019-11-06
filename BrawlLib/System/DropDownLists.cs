@@ -136,7 +136,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
-            return new StandardValuesCollection(model != null && model._colorList != null
+            return new StandardValuesCollection(model?._colorList != null
                 ? model._colorList.Select(n => n.ToString()).ToList()
                 : null);
         }
@@ -152,7 +152,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
-            return new StandardValuesCollection(model != null && model._vertList != null
+            return new StandardValuesCollection(model?._vertList != null
                 ? model._vertList.Select(n => n.ToString()).ToList()
                 : null);
         }
@@ -168,7 +168,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
-            return new StandardValuesCollection(model != null && model._normList != null
+            return new StandardValuesCollection(model?._normList != null
                 ? model._normList.Select(n => n.ToString()).ToList()
                 : null);
         }
@@ -184,7 +184,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
-            return new StandardValuesCollection(model != null && model._uvList != null
+            return new StandardValuesCollection(model?._uvList != null
                 ? model._uvList.Select(n => n.ToString()).ToList()
                 : null);
         }
@@ -200,7 +200,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
-            return new StandardValuesCollection(model != null && model._furPosList != null
+            return new StandardValuesCollection(model?._furPosList != null
                 ? model._furPosList.Select(n => n.ToString()).ToList()
                 : null);
         }
@@ -216,7 +216,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
-            return new StandardValuesCollection(model != null && model._furVecList != null
+            return new StandardValuesCollection(model?._furVecList != null
                 ? model._furVecList.Select(n => n.ToString()).ToList()
                 : null);
         }
@@ -845,25 +845,6 @@ namespace System
             }
 
             return base.ConvertFrom(context, culture, value);
-        }
-    }
-
-    public class DropDownListEnemies : StringConverter
-    {
-        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
-        {
-            return true;
-        }
-
-        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
-        {
-            List<string> values = new List<string>();
-            foreach (int i in GEG1Entry._KnownEnemies)
-            {
-                values.Add(((GEG1Entry.EnemyType) i).ToString());
-            }
-
-            return new StandardValuesCollection(values);
         }
     }
 

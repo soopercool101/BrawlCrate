@@ -69,8 +69,8 @@ namespace System.Windows.Forms
             dtgrdAttributes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgrdAttributes.Size = new System.Drawing.Size(479, 200);
             dtgrdAttributes.TabIndex = 5;
-            dtgrdAttributes.CellEndEdit += dtgrdAttributes_CellEndEdit;
-            dtgrdAttributes.CurrentCellChanged += dtgrdAttributes_CurrentCellChanged;
+            dtgrdAttributes.CellEndEdit += new DataGridViewCellEventHandler(dtgrdAttributes_CellEndEdit);
+            dtgrdAttributes.CurrentCellChanged += new EventHandler(dtgrdAttributes_CurrentCellChanged);
             // 
             // description
             // 
@@ -89,8 +89,8 @@ namespace System.Windows.Forms
             description.Size = new System.Drawing.Size(479, 74);
             description.TabIndex = 6;
             description.Text = "No Description Available.";
-            description.LinkClicked += description_LinkClicked;
-            description.TextChanged += description_TextChanged;
+            description.LinkClicked += new LinkClickedEventHandler(description_LinkClicked);
+            description.TextChanged += new EventHandler(description_TextChanged);
             // 
             // splitter1
             // 
@@ -126,7 +126,7 @@ namespace System.Windows.Forms
             btnInf.Text = "∞";
             btnInf.UseVisualStyleBackColor = true;
             btnInf.Visible = false;
-            btnInf.Click += btnInf_Click;
+            btnInf.Click += new EventHandler(btnInf_Click);
             // 
             // btnMinusInf
             // 
@@ -139,7 +139,7 @@ namespace System.Windows.Forms
             btnMinusInf.Text = "-∞";
             btnMinusInf.UseVisualStyleBackColor = true;
             btnMinusInf.Visible = false;
-            btnMinusInf.Click += btnMinusInf_Click;
+            btnMinusInf.Click += new EventHandler(btnMinusInf_Click);
             // 
             // lblColor
             // 
@@ -150,7 +150,7 @@ namespace System.Windows.Forms
             lblColor.Size = new System.Drawing.Size(41, 14);
             lblColor.TabIndex = 10;
             lblColor.Visible = false;
-            lblColor.Click += lblColor_Click;
+            lblColor.Click += new EventHandler(lblColor_Click);
             // 
             // lblCNoA
             // 
@@ -161,7 +161,7 @@ namespace System.Windows.Forms
             lblCNoA.Size = new System.Drawing.Size(41, 14);
             lblCNoA.TabIndex = 11;
             lblCNoA.Visible = false;
-            lblCNoA.Click += lblColor_Click;
+            lblCNoA.Click += new EventHandler(lblColor_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -201,7 +201,7 @@ namespace System.Windows.Forms
             rdoFloat.TabStop = true;
             rdoFloat.Text = "Float";
             rdoFloat.UseVisualStyleBackColor = true;
-            rdoFloat.CheckedChanged += radioButtonsChanged;
+            rdoFloat.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoInt
             // 
@@ -217,7 +217,7 @@ namespace System.Windows.Forms
             rdoInt.TabStop = true;
             rdoInt.Text = "Integer";
             rdoInt.UseVisualStyleBackColor = true;
-            rdoInt.CheckedChanged += radioButtonsChanged;
+            rdoInt.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoColor
             // 
@@ -233,7 +233,7 @@ namespace System.Windows.Forms
             rdoColor.TabStop = true;
             rdoColor.Text = "Color";
             rdoColor.UseVisualStyleBackColor = true;
-            rdoColor.CheckedChanged += radioButtonsChanged;
+            rdoColor.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoFlags
             // 
@@ -249,7 +249,7 @@ namespace System.Windows.Forms
             rdoFlags.TabStop = true;
             rdoFlags.Text = "Flags";
             rdoFlags.UseVisualStyleBackColor = true;
-            rdoFlags.CheckedChanged += radioButtonsChanged;
+            rdoFlags.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoDegrees
             // 
@@ -265,7 +265,7 @@ namespace System.Windows.Forms
             rdoDegrees.TabStop = true;
             rdoDegrees.Text = "Degrees";
             rdoDegrees.UseVisualStyleBackColor = true;
-            rdoDegrees.CheckedChanged += radioButtonsChanged;
+            rdoDegrees.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoUnknown
             // 
@@ -281,7 +281,7 @@ namespace System.Windows.Forms
             rdoUnknown.TabStop = true;
             rdoUnknown.Text = "Hex";
             rdoUnknown.UseVisualStyleBackColor = true;
-            rdoUnknown.CheckedChanged += radioButtonsChanged;
+            rdoUnknown.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // AttributeGrid
             // 
@@ -445,10 +445,7 @@ namespace System.Windows.Forms
             if (AttributeArray[index]._name != name)
             {
                 AttributeArray[index]._name = name;
-                if (DictionaryChanged != null)
-                {
-                    DictionaryChanged.Invoke(this, EventArgs.Empty);
-                }
+                DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
                 return;
             }
@@ -458,13 +455,13 @@ namespace System.Windows.Forms
             btnInf.Visible = btnMinusInf.Visible = false;
             if (AttributeArray[index]._type == 5) // Binary
             {
-                string field0 = value.ToString().Replace(" ", string.Empty);
+                string field0 = value.Replace(" ", string.Empty);
                 TargetNode.SetInt(index, Convert.ToInt32(field0, 2));
                 TargetNode.SignalPropertyChange();
             }
             else if (AttributeArray[index]._type == 4) // Hex
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 int temp = Convert.ToInt32(field0, fromBase);
                 if (TargetNode.GetInt(index) != temp)
@@ -483,7 +480,7 @@ namespace System.Windows.Forms
                 lblCNoA.Visible = true;
                 RGBAPixel p = new RGBAPixel();
 
-                string s = value.ToString();
+                string s = value;
                 char[] delims = new char[] {',', 'R', 'G', 'B', 'A', ':', ' '};
                 string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
 
@@ -564,10 +561,7 @@ namespace System.Windows.Forms
                 attributes.Rows[index][1] = TargetNode.GetRGBAPixel(index).ToString();
             }
 
-            if (CellEdited != null)
-            {
-                CellEdited.Invoke(this, EventArgs.Empty);
-            }
+            CellEdited?.Invoke(this, EventArgs.Empty);
         }
 
         private void dtgrdAttributes_CurrentCellChanged(object sender, EventArgs e)
@@ -634,10 +628,7 @@ namespace System.Windows.Forms
             if (index >= 0 && AttributeArray.Length > index)
             {
                 AttributeArray[index]._description = description.Text;
-                if (DictionaryChanged != null)
-                {
-                    DictionaryChanged.Invoke(this, EventArgs.Empty);
-                }
+                DictionaryChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -665,10 +656,7 @@ namespace System.Windows.Forms
             if (nType != AttributeArray[index]._type)
             {
                 AttributeArray[index]._type = nType;
-                if (DictionaryChanged != null)
-                {
-                    DictionaryChanged.Invoke(this, EventArgs.Empty);
-                }
+                DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
                 RefreshRow(index);
             }

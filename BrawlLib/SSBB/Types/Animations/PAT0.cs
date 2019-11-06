@@ -9,7 +9,7 @@ namespace BrawlLib.SSBBTypes
         Enabled = 0x1,
         FixedTexture = 0x2,
         HasTexture = 0x4,
-        HasPalette = 0x8,
+        HasPalette = 0x8
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

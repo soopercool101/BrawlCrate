@@ -40,7 +40,7 @@ namespace System.Windows.Forms
 
             _openedSections.Add(this);
 
-            Text = string.Format("Module Section Editor - {0}", _section.Name);
+            Text = $"Module Section Editor - {_section.Name}";
 
             hexBox1.SectionEditor = this;
             chkCodeSection.Checked = _section._isCodeSection;
@@ -134,8 +134,7 @@ namespace System.Windows.Forms
             annotationIndex = 0;
             annotationTitles.Clear();
             annotationDescription.Clear();
-            if (_section == null || _section.Root == null || hexBox1.ByteProvider == null ||
-                hexBox1.ByteProvider.Length < 4)
+            if (_section?.Root == null || hexBox1.ByteProvider == null || hexBox1.ByteProvider.Length < 4)
             {
                 chkAnnotations.Checked = false;
                 return;
@@ -174,7 +173,7 @@ namespace System.Windows.Forms
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
-                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0)
                 };
                 annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
                                            bytes[1].ToString("X2") + bytes[0].ToString("X2"));
@@ -230,7 +229,7 @@ namespace System.Windows.Forms
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 3),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 2),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 1),
-                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 0),
+                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 0)
                                 };
                                 annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") +
                                                            bytes[2].ToString("X2") + bytes[1].ToString("X2") +
@@ -282,7 +281,7 @@ namespace System.Windows.Forms
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
-                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0)
                 };
                 annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
                                            bytes[1].ToString("X2") + bytes[0].ToString("X2"));
@@ -310,10 +309,7 @@ namespace System.Windows.Forms
 
         private void SetByteProvider()
         {
-            if (hexBox1.ByteProvider != null)
-            {
-                ((DynamicFileByteProvider) hexBox1.ByteProvider).Dispose();
-            }
+            ((DynamicFileByteProvider) hexBox1.ByteProvider)?.Dispose();
 
             hexBox1.ByteProvider =
                 new DynamicFileByteProvider(new UnmanagedMemoryStream((byte*) _section._dataBuffer.Address,
@@ -362,27 +358,23 @@ namespace System.Windows.Forms
             string result;
             if (size < kb)
             {
-                result = string.Format("{0} {1}", size, BYTES);
+                result = $"{size} {BYTES}";
             }
             else if (size < mb)
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, kb), KB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, kb)} {KB} ({ConvertBytesDisplay(size)} Bytes)";
             }
             else if (size < gb)
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, mb), MB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, mb)} {MB} ({ConvertBytesDisplay(size)} Bytes)";
             }
             else if (size < tb)
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, gb), GB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, gb)} {GB} ({ConvertBytesDisplay(size)} Bytes)";
             }
             else
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, tb), TB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, tb)} {TB} ({ConvertBytesDisplay(size)} Bytes)";
             }
 
             return result;
@@ -424,8 +416,7 @@ namespace System.Windows.Forms
 
         private void PosChanged()
         {
-            toolStripStatusLabel.Text = string.Format("Ln {0}    Col {1}",
-                hexBox1.CurrentLine, hexBox1.CurrentPositionInLine);
+            toolStripStatusLabel.Text = $"Ln {hexBox1.CurrentLine}    Col {hexBox1.CurrentPositionInLine}";
 
             long offset = hexBox1.SelectionStart;
             long t = offset.RoundDown(4);
@@ -465,7 +456,7 @@ namespace System.Windows.Forms
                         hexBox1.ByteProvider.ReadByte(t + 3),
                         hexBox1.ByteProvider.ReadByte(t + 2),
                         hexBox1.ByteProvider.ReadByte(t + 1),
-                        hexBox1.ByteProvider.ReadByte(t + 0),
+                        hexBox1.ByteProvider.ReadByte(t + 0)
                     };
 
                     //Reverse byte order to big endian
@@ -522,7 +513,7 @@ namespace System.Windows.Forms
                     {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 1),
-                        hexBox1.ByteProvider.ReadByte(t + 0),
+                        hexBox1.ByteProvider.ReadByte(t + 0)
                     };
                     //Reverse byte order to big endian
                     txtByte1.Text = bytes[1].ToString("X2");
@@ -606,7 +597,7 @@ namespace System.Windows.Forms
                 grpValue.Enabled = false;
             }
 
-            OffsetToolStripStatusLabel.Text = string.Format("Offset: 0x{0}", offset.ToString("X"));
+            OffsetToolStripStatusLabel.Text = $"Offset: 0x{offset.ToString("X")}";
 
             if (_section.HasCode && ppcDisassembler1.Visible && !ppcDisassembler1._updating)
             {
@@ -1136,7 +1127,7 @@ namespace System.Windows.Forms
             if (e.Index >= 0)
             {
                 RelocationTarget r = lstLinked.Items[e.Index] as RelocationTarget;
-                if (r != null && r.Section != null)
+                if (r?.Section != null)
                 {
                     PPCOpCode code = r.Section._manager.GetCode(r._index);
                     Color c = code is PPCBranch ? Color.Blue : Color.Red;
@@ -1398,10 +1389,7 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (d._stream != null)
-                {
-                    d._stream.Dispose();
-                }
+                d._stream?.Dispose();
 
                 d._stream = new UnmanagedMemoryStream((byte*) newBuffer.Address, newBuffer.Length, newBuffer.Length,
                     FileAccess.ReadWrite);

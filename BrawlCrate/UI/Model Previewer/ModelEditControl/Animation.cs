@@ -69,9 +69,9 @@ namespace System.Windows.Forms
         /// </summary>
         private void HandleFirstPersonCamera()
         {
-            if (FirstPersonCamera && _scn0 != null && scn0Editor._camera != null)
+            if (FirstPersonCamera && _scn0 != null)
             {
-                scn0Editor._camera.SetCamera(ModelPanel.CurrentViewport, CurrentFrame - 1, _retainAspect);
+                scn0Editor._camera?.SetCamera(ModelPanel.CurrentViewport, CurrentFrame - 1, _retainAspect);
             }
         }
 
@@ -96,7 +96,7 @@ namespace System.Windows.Forms
                 "entry";
 
             averageboneStartendTangentsToolStripMenuItem.Enabled = hasKeys && s != "entry";
-            averageboneStartendTangentsToolStripMenuItem.Text = string.Format("Average {0} start/end keyframes", s);
+            averageboneStartendTangentsToolStripMenuItem.Text = $"Average {s} start/end keyframes";
 
             averageAllStartEndTangentsToolStripMenuItem.Enabled =
                 node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;

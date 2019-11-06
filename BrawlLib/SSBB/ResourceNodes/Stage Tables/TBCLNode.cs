@@ -22,12 +22,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public TBCLNode()
+        {
+            unk0 = 1;
+            _entryOffset = 0x14;
+        }
+
         public TBCLNode(int numEntries)
         {
             unk0 = 1;
             unk1 = 0;
             unk2 = 0;
-            while (EntryList.Count < numEntries)
+            _entryOffset = 0x14;
+            while (NumEntries < numEntries)
             {
                 EntryList.Add(0);
             }

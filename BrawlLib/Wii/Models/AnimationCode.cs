@@ -28,9 +28,9 @@ namespace BrawlLib.Wii.Animations
         //0000 0000 0000 0000 0000 0000 0000 0100       Rot/Trans Zero (Rot = 0, Trans = 0) - Must be set if Identity is set
         //0000 0000 0000 0000 0000 0000 0000 1000       Scale One (Scale = 1) - Must be set if Identity is set
 
-        //0000 0000 0000 0000 0000 0000 0001 0000		Scale isotropic
-        //0000 0000 0000 0000 0000 0000 0010 0000		Rotation isotropic
-        //0000 0000 0000 0000 0000 0000 0100 0000		Translation isotropic
+        //0000 0000 0000 0000 0000 0000 0001 0000        Scale isotropic
+        //0000 0000 0000 0000 0000 0000 0010 0000        Rotation isotropic
+        //0000 0000 0000 0000 0000 0000 0100 0000        Translation isotropic
 
         //0000 0000 0000 0000 0000 0000 1000 0000       Use Model Scale
         //0000 0000 0000 0000 0000 0001 0000 0000       Use Model Rotation
@@ -40,17 +40,17 @@ namespace BrawlLib.Wii.Animations
         //0000 0000 0000 0000 0000 1000 0000 0000       Scale Compensate Parent (Maya Calculations)
         //0000 0000 0000 0000 0001 0000 0000 0000       Classic Scale Off (SoftImage Calculations)
 
-        //0000 0000 0000 0000 1110 0000 0000 0000		Scale fixed
-        //0000 0000 0000 0111 0000 0000 0000 0000		Rotation fixed
-        //0000 0000 0011 1000 0000 0000 0000 0000		Translation fixed
+        //0000 0000 0000 0000 1110 0000 0000 0000        Scale fixed
+        //0000 0000 0000 0111 0000 0000 0000 0000        Rotation fixed
+        //0000 0000 0011 1000 0000 0000 0000 0000        Translation fixed
 
-        //0000 0000 0100 0000 0000 0000 0000 0000		Scale exists (Equivalent to Use Model Scale & Scale One set to false)
-        //0000 0000 1000 0000 0000 0000 0000 0000		Rotation exists (Equivalent to Use Model Rotation & Rotation Zero set to false)
-        //0000 0001 0000 0000 0000 0000 0000 0000		Translation exists (Equivalent to Use Model Translation & Translation Zero set to false)
+        //0000 0000 0100 0000 0000 0000 0000 0000        Scale exists (Equivalent to Use Model Scale & Scale One set to false)
+        //0000 0000 1000 0000 0000 0000 0000 0000        Rotation exists (Equivalent to Use Model Rotation & Rotation Zero set to false)
+        //0000 0001 0000 0000 0000 0000 0000 0000        Translation exists (Equivalent to Use Model Translation & Translation Zero set to false)
 
-        //0000 0110 0000 0000 0000 0000 0000 0000		Scale format
-        //0011 1000 0000 0000 0000 0000 0000 0000		Rotation format
-        //1100 0000 0000 0000 0000 0000 0000 0000		Translation format
+        //0000 0110 0000 0000 0000 0000 0000 0000        Scale format
+        //0011 1000 0000 0000 0000 0000 0000 0000        Rotation format
+        //1100 0000 0000 0000 0000 0000 0000 0000        Translation format
 
         public bool AlwaysSet
         {

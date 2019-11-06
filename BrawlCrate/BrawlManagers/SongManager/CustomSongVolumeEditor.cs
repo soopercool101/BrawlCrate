@@ -200,10 +200,7 @@ namespace BrawlCrate.SongManager
                 }
             }
 
-            if (ValueChanged != null)
-            {
-                ValueChanged(this, new EventArgs());
-            }
+            ValueChanged?.Invoke(this, new EventArgs());
         }
     }
 }

@@ -9,7 +9,7 @@ namespace System.Windows.Forms
         public bool CanCancel
         {
             get => _canCancel;
-            set => btnCancel.Enabled = _canCancel = value;
+            set => btnCancel.Enabled = btnCancel.Visible = _canCancel = value;
         }
 
         public string Caption

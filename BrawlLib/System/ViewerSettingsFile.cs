@@ -16,7 +16,7 @@ namespace System
         tif,
         bmp,
         jpg,
-        gif,
+        gif
     }
 
     [Serializable]
@@ -54,6 +54,8 @@ namespace System
         public ARGBPixel _lineColor;
         public ARGBPixel _lineDeselectedColor;
         public ARGBPixel _floorColor;
+        public ARGBPixel _bgColor;
+        public ARGBPixel _stgBgColor;
 
         public string _screenCapPath;
         public string _liveTexFolderPath;
@@ -70,7 +72,7 @@ namespace System
                 RetrieveCorrAnims = true,
                 SyncTexToObj = false,
                 SyncObjToVIS0 = false,
-                DisableBonesOnPlay = true,
+                DisableBonesOnPlay = false,
                 Maximize = false,
                 GenTansCHR = true,
                 GenTansSRT = true,
@@ -93,18 +95,20 @@ namespace System
                 _lineColor = new ARGBPixel(255, 0, 0, 128),
                 _lineDeselectedColor = new ARGBPixel(255, 128, 0, 0),
                 _floorColor = new ARGBPixel(255, 128, 128, 191),
+                _bgColor = new ARGBPixel(255, 230, 230, 250),
+                _stgBgColor = new ARGBPixel(255, 0, 0, 0),
 
                 _viewports = new List<ModelPanelViewportInfo>
                 {
-                    ModelPanelViewport.DefaultPerspective.GetInfo(),
+                    ModelPanelViewport.DefaultPerspective.GetInfo()
                     //ModelPanelViewport.DefaultFront.GetInfo(),
                     //ModelPanelViewport.DefaultLeft.GetInfo(),
                     //ModelPanelViewport.DefaultTop.GetInfo(),
-                },
+                }
             };
             foreach (ModelPanelViewportInfo v in s._viewports)
             {
-                v._backColor = (ARGBPixel) Color.Lavender;
+                v._backColor = s._bgColor;
             }
 
             //s._viewports[0]._percentages = new Vector4(0.0f, 0.5f, 0.5f, 1.0f);

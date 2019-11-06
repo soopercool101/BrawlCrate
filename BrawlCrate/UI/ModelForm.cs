@@ -31,8 +31,8 @@ namespace BrawlCrate
             modelEditControl1.TabIndex = 0;
             modelEditControl1.TargetAnimation = null;
             modelEditControl1.TargetAnimType = NW4RAnimType.CHR;
-            modelEditControl1.TargetModelChanged += TargetModelChanged;
-            modelEditControl1.ModelViewerChanged += ModelViewerChanged;
+            modelEditControl1.TargetModelChanged += new EventHandler(TargetModelChanged);
+            modelEditControl1.ModelViewerChanged += new EventHandler(ModelViewerChanged);
             // 
             // ModelForm
             // 
@@ -41,7 +41,7 @@ namespace BrawlCrate
             Controls.Add(modelEditControl1);
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "ModelForm";
-            FormClosing += ModelForm_FormClosing;
+            FormClosing += new FormClosingEventHandler(ModelForm_FormClosing);
             ResumeLayout(false);
         }
 
@@ -201,15 +201,12 @@ namespace BrawlCrate
                         MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
                                                 .FirstOrDefault() as MDL0Node;
 
-                        if (model != null)
+                        MDL0BoneNode bone =
+                            model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
+                                 .FirstOrDefault() as MDL0BoneNode;
+                        if (bone != null)
                         {
-                            MDL0BoneNode bone =
-                                model._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                                     .FirstOrDefault() as MDL0BoneNode;
-                            if (bone != null)
-                            {
-                                obj._linkedBone = bone;
-                            }
+                            obj._linkedBone = bone;
                         }
                     }
                 }

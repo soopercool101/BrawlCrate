@@ -122,7 +122,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasTexMatrix(i))
                 {
                     hasTex = true;
-                    texmtx += i.ToString() + " ";
+                    texmtx += i + " ";
                 }
             }
 
@@ -133,7 +133,7 @@ namespace BrawlLib.Wii.Graphics
                 if ((f = GetUVFormat(i)) != XFDataFormat.None)
                 {
                     hasUVs = true;
-                    uvs += i + ":" + f.ToString() + " ";
+                    uvs += i + ":" + f + " ";
                 }
             }
 
@@ -144,7 +144,7 @@ namespace BrawlLib.Wii.Graphics
                 if ((f = GetColorFormat(i)) != XFDataFormat.None)
                 {
                     hasColors = true;
-                    colors += i + ":" + f.ToString() + " ";
+                    colors += i + ":" + f + " ";
                 }
             }
 
@@ -331,14 +331,14 @@ namespace BrawlLib.Wii.Graphics
 
         public string asColor()
         {
-            return string.Format("IsSpecial: {0} | Scale: {1} | Color Format: {2}", IsSpecial ? "True" : "False",
-                Scale.ToString(), ColorFormat);
+            return
+                $"IsSpecial: {(IsSpecial ? "True" : "False")} | Scale: {Scale.ToString()} | Color Format: {ColorFormat}";
         }
 
         public override string ToString()
         {
-            return string.Format("IsSpecial: {0} | Scale: {1} | Data Format: {2}", IsSpecial ? "True" : "False",
-                Scale.ToString(), DataFormat);
+            return
+                $"IsSpecial: {(IsSpecial ? "True" : "False")} | Scale: {Scale.ToString()} | Data Format: {DataFormat}";
         }
     }
 

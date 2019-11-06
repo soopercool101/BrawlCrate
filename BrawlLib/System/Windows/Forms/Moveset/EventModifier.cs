@@ -1,7 +1,5 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
-using System.Reflection;
 using System.Drawing;
 
 namespace System.Windows.Forms
@@ -91,7 +89,7 @@ namespace System.Windows.Forms
             cboType.Name = "cboType";
             cboType.Size = new Drawing.Size(82, 21);
             cboType.TabIndex = 63;
-            cboType.SelectedIndexChanged += cboType_SelectedIndexChanged;
+            cboType.SelectedIndexChanged += new EventHandler(cboType_SelectedIndexChanged);
             // 
             // lstParameters
             // 
@@ -101,7 +99,7 @@ namespace System.Windows.Forms
             lstParameters.Name = "lstParameters";
             lstParameters.Size = new Drawing.Size(93, 92);
             lstParameters.TabIndex = 62;
-            lstParameters.SelectedIndexChanged += lstParameters_SelectedIndexChanged;
+            lstParameters.SelectedIndexChanged += new EventHandler(lstParameters_SelectedIndexChanged);
             // 
             // btnChangeEvent
             // 
@@ -112,7 +110,7 @@ namespace System.Windows.Forms
             btnChangeEvent.TabIndex = 61;
             btnChangeEvent.Text = "Change";
             btnChangeEvent.UseVisualStyleBackColor = true;
-            btnChangeEvent.Click += btnChangeEvent_Click;
+            btnChangeEvent.Click += new EventHandler(btnChangeEvent_Click);
             // 
             // lblEventId
             // 
@@ -226,7 +224,7 @@ namespace System.Windows.Forms
             chkNot.TabIndex = 65;
             chkNot.Text = "Not";
             chkNot.UseVisualStyleBackColor = true;
-            chkNot.CheckedChanged += Requirement_Handle;
+            chkNot.CheckedChanged += new EventHandler(Requirement_Handle);
             // 
             // label1
             // 
@@ -248,7 +246,7 @@ namespace System.Windows.Forms
             cboRequirement.Name = "cboRequirement";
             cboRequirement.Size = new Drawing.Size(128, 21);
             cboRequirement.TabIndex = 0;
-            cboRequirement.SelectedIndexChanged += Requirement_Handle;
+            cboRequirement.SelectedIndexChanged += new EventHandler(Requirement_Handle);
             // 
             // offsetPanel
             // 
@@ -275,7 +273,7 @@ namespace System.Windows.Forms
             offsetOkay.TabIndex = 13;
             offsetOkay.Text = "Okay";
             offsetOkay.UseVisualStyleBackColor = true;
-            offsetOkay.Click += offsetOkay_Click;
+            offsetOkay.Click += new EventHandler(offsetOkay_Click);
             // 
             // comboBox1
             // 
@@ -295,7 +293,7 @@ namespace System.Windows.Forms
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Drawing.Size(82, 21);
             comboBox1.TabIndex = 7;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 

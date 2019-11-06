@@ -1,10 +1,6 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
-using BrawlLib;
 using System.ComponentModel;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
 using BrawlCrate.NodeWrappers;
 
 namespace BrawlBox.NodeWrappers
@@ -18,7 +14,6 @@ namespace BrawlBox.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            //_menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }

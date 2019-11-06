@@ -43,7 +43,7 @@ namespace BrawlCrate
             txtName.Name = "txtName";
             txtName.Size = new System.Drawing.Size(99, 20);
             txtName.TabIndex = 2;
-            txtName.TextChanged += txtName_TextChanged;
+            txtName.TextChanged += new EventHandler(txtName_TextChanged);
             // 
             // btnOk
             // 
@@ -54,7 +54,7 @@ namespace BrawlCrate
             btnOk.TabIndex = 3;
             btnOk.Text = "Okay";
             btnOk.UseVisualStyleBackColor = true;
-            btnOk.Click += btnOk_Click;
+            btnOk.Click += new EventHandler(btnOk_Click);
             // 
             // btnCancel
             // 
@@ -65,7 +65,7 @@ namespace BrawlCrate
             btnCancel.TabIndex = 4;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // treeResource
             // 
@@ -81,7 +81,7 @@ namespace BrawlCrate
             treeResource.ShowIcons = true;
             treeResource.Size = new System.Drawing.Size(291, 200);
             treeResource.TabIndex = 0;
-            treeResource.SelectionChanged += treeResource_SelectionChanged;
+            treeResource.SelectionChanged += new EventHandler(treeResource_SelectionChanged);
             // 
             // CloneSoundDialog
             // 
@@ -157,26 +157,23 @@ namespace BrawlCrate
             };
             _parentNode.AddChild(_newNode);
 
-            if (treeResource.SelectedNode != null)
+            RSARSoundNode existing = ((BaseWrapper) treeResource.SelectedNode)?.Resource as RSARSoundNode;
+            if (existing != null)
             {
-                RSARSoundNode existing = ((BaseWrapper) treeResource.SelectedNode).Resource as RSARSoundNode;
-                if (existing != null)
-                {
-                    _newNode._sound3dParam = existing._sound3dParam;
-                    _newNode._waveInfo = existing._waveInfo;
-                    _newNode._seqInfo = existing._seqInfo;
-                    _newNode._strmInfo = existing._strmInfo;
+                _newNode._sound3dParam = existing._sound3dParam;
+                _newNode._waveInfo = existing._waveInfo;
+                _newNode._seqInfo = existing._seqInfo;
+                _newNode._strmInfo = existing._strmInfo;
 
-                    _newNode._fileId = existing._fileId;
-                    _newNode._playerId = existing._playerId;
-                    _newNode._volume = existing._volume;
-                    _newNode._playerPriority = existing._playerPriority;
-                    _newNode._soundType = existing._soundType;
-                    _newNode._remoteFilter = existing._remoteFilter;
-                    _newNode._panMode = existing._panMode;
-                    _newNode._panCurve = existing._panCurve;
-                    _newNode._actorPlayerId = existing._actorPlayerId;
-                }
+                _newNode._fileId = existing._fileId;
+                _newNode._playerId = existing._playerId;
+                _newNode._volume = existing._volume;
+                _newNode._playerPriority = existing._playerPriority;
+                _newNode._soundType = existing._soundType;
+                _newNode._remoteFilter = existing._remoteFilter;
+                _newNode._panMode = existing._panMode;
+                _newNode._panCurve = existing._panCurve;
+                _newNode._actorPlayerId = existing._actorPlayerId;
             }
 
             DialogResult = DialogResult.OK;
@@ -194,7 +191,7 @@ namespace BrawlCrate
             if (txtName.Text != "")
             {
                 GenericWrapper node = treeResource.SelectedNode as GenericWrapper;
-                btnOk.Enabled = node != null && node.Resource is RSARSoundNode;
+                btnOk.Enabled = node?.Resource is RSARSoundNode;
             }
             else
             {
