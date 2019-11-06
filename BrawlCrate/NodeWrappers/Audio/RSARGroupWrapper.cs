@@ -93,6 +93,10 @@ namespace BrawlCrate.NodeWrappers
         {
             _resource.RootNode.Rebuild();
             bool swapEndian = BitConverter.IsLittleEndian;
+            if (File.Exists(outPath))
+            {
+                File.Delete(outPath);
+            }
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
                 FileShare.ReadWrite, 8, FileOptions.SequentialScan))
             {
@@ -103,6 +107,7 @@ namespace BrawlCrate.NodeWrappers
                 {
                     id = id.ToReverseArray();
                 }
+                
                 // Write the ID
                 stream.Write(id, 0, 4);
 
