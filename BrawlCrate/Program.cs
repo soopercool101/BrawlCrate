@@ -115,7 +115,7 @@ Full changelog can be viewed from the help menu.";
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
-            AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+            AssemblyTitleFull = "BrawlCrate Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
