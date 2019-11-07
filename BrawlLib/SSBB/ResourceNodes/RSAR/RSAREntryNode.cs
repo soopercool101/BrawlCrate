@@ -95,7 +95,7 @@ namespace BrawlLib.SSBB.ResourceNodes.RSAR
 
         public VoidPtr _rebuildBase;
         public int _rebuildIndex, _rebuildStringId;
-        
+
         private static int _soundbankCalc = 331;
 
         [Category("JOJI Soundbank Expansion")]

@@ -112,7 +112,7 @@ namespace BrawlCrate.NodeWrappers
 
         private void Merge()
         {
-            ((CollisionNode)_resource).MergeWith();
+            ((CollisionNode) _resource).MergeWith();
             MainForm.Instance.resourceTree_SelectionChanged(this, null);
         }
 

@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Hazards
         [Category("GWAT")]
         [DisplayName("Entry Count")]
         public int Count => Children?.Count ?? 0;
-        
+
         private const int _entrySize = 0x38; // The constant size of a child entry
 
         public override void OnPopulate()
@@ -60,7 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Hazards
             {
                 _name = "Swimmable Water";
             }
-            
+
             return Header->_count > 0;
         }
 

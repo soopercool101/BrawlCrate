@@ -40,6 +40,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace BrawlCrate.UI
@@ -53,7 +54,7 @@ namespace BrawlCrate.UI
 
         private SettingsDialog _settings;
         private SettingsDialog Settings => _settings ?? (_settings = new SettingsDialog());
-        
+
         private APISubscriptionManager _apiSubs;
         public APISubscriptionManager ApiSubManager => _apiSubs ?? (_apiSubs = new APISubscriptionManager());
 
@@ -87,12 +88,14 @@ namespace BrawlCrate.UI
             {
                 return;
             }
+
             BaseWrapper w = resourceTree?.SelectedNode as BaseWrapper;
             if (w == null)
             {
                 editToolStripMenuItem.Enabled = false;
                 return;
             }
+
             editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
                                                 Instance.resourceTree.SelectedNodes.Count > 1
                                                     ? Instance.resourceTree.GetMultiSelectMenuStrip()
@@ -131,13 +134,6 @@ namespace BrawlCrate.UI
 
             Activated += _enableEditMenu;
             Deactivate += _disableEditMenu;
-
-#if !DEBUG //Don't need to see this every time a debug build is compiled
-            if (CheckUpdatesOnStartup)
-            {
-                CheckUpdates(false);
-            }
-#endif
 
             soundPackControl1._grid = propertyGrid1;
             soundPackControl1.lstSets.SmallImageList = Icons.ImageList;
@@ -179,11 +175,11 @@ namespace BrawlCrate.UI
                         //  If whitelist behavior is on, load only whitelisted scripts
                         if (Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist
                             ? Properties.Settings.Default.APILoadersWhitelist?.Contains(
-                                    f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
-                                false
+                                  f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
+                              false
                             : !Properties.Settings.Default.APILoadersBlacklist?.Contains(
-                                    f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
-                                true)
+                                  f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
+                              true)
                         {
                             BrawlAPI.BrawlAPI.CreatePlugin(f.FullName, true);
                         }
@@ -201,7 +197,7 @@ namespace BrawlCrate.UI
 
         private readonly DelegateOpenFile m_DelegateOpenFile;
 
-        private void CheckUpdates(bool manual)
+        internal void CheckUpdates(bool manual)
         {
             try
             {
@@ -221,7 +217,8 @@ namespace BrawlCrate.UI
                         changelog?.WaitForExit();
                     }
 #else
-                    UpdaterHelper.CheckUpdate(manual || Properties.Settings.Default.APIAutoUpdate, true, Program.TagName, manual, Program.RootPath ?? "<null>",
+                    UpdaterHelper.CheckUpdate(manual || Properties.Settings.Default.APIAutoUpdate, true,
+                        Program.TagName, manual, Program.RootPath ?? "<null>",
                         _docUpdates, !manual && _autoUpdate, Properties.Settings.Default.APIAutoUpdate);
 #endif
                     if (Properties.Settings.Default.APIAutoUpdate)
@@ -464,7 +461,8 @@ namespace BrawlCrate.UI
             }
             else
             {
-                propertyGrid1.HelpVisible = item?.PropertyDescriptor != null && !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
+                propertyGrid1.HelpVisible = item?.PropertyDescriptor != null &&
+                                            !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
             }
         }
 
@@ -509,8 +507,6 @@ namespace BrawlCrate.UI
             UpdateName();
             UpdateDiscordRPC(null, null);
         }
-
-
 
 
         public void UpdateName()
@@ -620,11 +616,11 @@ namespace BrawlCrate.UI
                 else if (ShowHex && !(node is RELEntryNode || node is RELNode) && node.WorkingUncompressed.Length > 0)
                 {
                     hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream(
-                            (byte*)node.WorkingUncompressed.Address,
+                            (byte*) node.WorkingUncompressed.Address,
                             node.WorkingUncompressed.Length,
                             node.WorkingUncompressed.Length,
                             FileAccess.ReadWrite))
-                        { _supportsInsDel = false };
+                        {_supportsInsDel = false};
                     newControl = hexBox1;
                 }
 #endif
@@ -797,6 +793,7 @@ namespace BrawlCrate.UI
                         newControl = hexBox1;
                     }
                 }
+
                 _enableEditMenu(this, null);
             }
             else
@@ -1166,7 +1163,7 @@ namespace BrawlCrate.UI
                 Program.Open(inFile);
             }
         }
-        
+
         private void openTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile))
@@ -1469,8 +1466,7 @@ namespace BrawlCrate.UI
 #else
             Process.Start(new ProcessStartInfo
             {
-                FileName = Path.Combine(Program.AppPath, "Changelog.txt"),
-                WindowStyle = ProcessWindowStyle.Hidden
+                FileName = Path.Combine(Program.AppPath, "Changelog.txt")
             });
 #endif
         }
@@ -1792,7 +1788,8 @@ namespace BrawlCrate.UI
                                                System.Windows.Forms.Keys.O)));
             this.openTemplateToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.openTemplateToolStripMenuItem.Text = "&Open Template...";
-            this.openTemplateToolStripMenuItem.Click += new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
+            this.openTemplateToolStripMenuItem.Click +=
+                new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
             // 
             // openFolderToolStripMenuItem
             // 
@@ -2274,7 +2271,6 @@ namespace BrawlCrate.UI
             this.audioPlaybackPanel1.TabIndex = 4;
             this.audioPlaybackPanel1.TargetStreams = null;
             this.audioPlaybackPanel1.Visible = false;
-            this.audioPlaybackPanel1.Volume = null;
             // 
             // visEditor
             // 

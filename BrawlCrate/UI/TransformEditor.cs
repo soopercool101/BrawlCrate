@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+﻿using System.ComponentModel;
 
 namespace BrawlCrate.UI
 {
@@ -14,7 +15,7 @@ namespace BrawlCrate.UI
 
         public xyTransform _transform = new xyTransform();
 
-        public DialogResult ShowDialog()
+        public new DialogResult ShowDialog()
         {
             _transform = new xyTransform();
             propertyGrid1.SelectedObject = _transform;

@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Animation
 {
     public unsafe class GCAMNode : ResourceNode
     {
-        internal GCAM* Header => (GCAM*)WorkingUncompressed.Address;
+        internal GCAM* Header => (GCAM*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GCAM;
 
         [Category("GCAM")]
@@ -41,13 +41,13 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Animation
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            GCAM* header = (GCAM*)address;
+            GCAM* header = (GCAM*) address;
             *header = new GCAM(Children.Count);
-            uint offset = (uint)(0x08 + Children.Count * 4);
+            uint offset = (uint) (0x08 + Children.Count * 4);
             for (int i = 0; i < Children.Count; i++)
             {
                 ResourceNode r = Children[i];
-                *(buint*)(address + 0x08 + i * 4) = offset;
+                *(buint*) (address + 0x08 + i * 4) = offset;
                 r.Rebuild(address + offset, _entrySize, true);
                 offset += _entrySize;
             }
@@ -60,19 +60,19 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Animation
             {
                 _name = "Animated Camera";
             }
-            
+
             return Header->_count > 0;
         }
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GCAM*)source.Address)->_tag == GCAM.Tag ? new GCAMNode() : null;
+            return ((GCAM*) source.Address)->_tag == GCAM.Tag ? new GCAMNode() : null;
         }
     }
 
     public unsafe class GCAMEntryNode : ResourceNode
     {
-        internal GCAMEntry* Header => (GCAMEntry*)WorkingUncompressed.Address;
+        internal GCAMEntry* Header => (GCAMEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public byte _unknown0x00;
@@ -241,7 +241,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Animation
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            GCAMEntry* hdr = (GCAMEntry*)address;
+            GCAMEntry* hdr = (GCAMEntry*) address;
             hdr->_unknown0x00 = _unknown0x00;
             hdr->_unknown0x01 = _unknown0x01;
             hdr->_unknown0x02 = _unknown0x02;

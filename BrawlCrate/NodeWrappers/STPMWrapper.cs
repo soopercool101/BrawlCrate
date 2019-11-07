@@ -59,7 +59,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GetInstance<STPMWrapper>().NewEntry();
         }
-        
+
         protected static void ReplaceCameraAction(object sender, EventArgs e)
         {
             GetInstance<STPMWrapper>().ReplaceCamera();
@@ -113,7 +113,8 @@ namespace BrawlCrate.NodeWrappers
                         MessageBox.Show("The selected STPM file could not be read.");
                         return;
                     }
-                    ((STPMNode)_resource).ReplaceCamera(ext);
+
+                    ((STPMNode) _resource).ReplaceCamera(ext);
                 }
             }
         }

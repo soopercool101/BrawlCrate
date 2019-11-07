@@ -360,11 +360,12 @@ namespace BrawlCrate.NodeWrappers.Archives
 
         public T NewStageTable<T>(int numEntries) where T : StageTableNode, new()
         {
-            T node = new T { FileType = ARCFileType.MiscData };
+            T node = new T {FileType = ARCFileType.MiscData};
             while (node.NumEntries < numEntries)
             {
                 node.EntryList.Add(0);
             }
+
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

@@ -176,5 +176,17 @@ namespace BrawlLib.Properties {
                 this["ContextualLoopAnimation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ParseMoveDef {
+            get {
+                return ((bool)(this["ParseMoveDef"]));
+            }
+            set {
+                this["ParseMoveDef"] = value;
+            }
+        }
     }
 }

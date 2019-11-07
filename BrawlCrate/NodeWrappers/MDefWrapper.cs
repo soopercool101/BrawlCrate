@@ -1113,7 +1113,8 @@ namespace BrawlCrate.NodeWrappers
                         node = new MoveDefActionNode("Action" + _resource.Children.Count, true, _resource);
                     }
 
-                    article.actionFlags.AddChild(new MoveDefActionFlagsEntryNode {Name = "Action" + article.actionFlags.Children.Count});
+                    article.actionFlags.AddChild(new MoveDefActionFlagsEntryNode
+                        {Name = "Action" + article.actionFlags.Children.Count});
                 }
             }
             else if (_resource.Children[0] is MoveDefSubActionGroupNode)
@@ -1500,7 +1501,8 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewGroup()
         {
-            MoveDefModelVisGroupNode node = new MoveDefModelVisGroupNode {Name = "BoneGroup" + _resource.Children.Count};
+            MoveDefModelVisGroupNode node = new MoveDefModelVisGroupNode
+                {Name = "BoneGroup" + _resource.Children.Count};
             _resource.AddChild(node);
             BaseWrapper res = FindResource(node, false);
             res.EnsureVisible();

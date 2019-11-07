@@ -30,8 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
 
         public override Type[] AllowedChildTypes => new[] {typeof(BRESGroupNode)};
 
-        [DisplayName("Texture Count")]
-        public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
+        [DisplayName("Texture Count")] public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
 
         public Bitmap GetImage(int index)
         {

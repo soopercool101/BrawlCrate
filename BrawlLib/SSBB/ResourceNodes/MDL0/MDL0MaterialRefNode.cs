@@ -803,8 +803,10 @@ namespace BrawlLib.SSBB.ResourceNodes.MDL0
                         };
                     }
                 }
+
                 return;
             }
+
             PAT0Texture = PAT0Palette = null;
         }
 

@@ -31,7 +31,7 @@ namespace Updater
             {
                 Issue x = null;
                 Credentials cr = new Credentials(Encoding.Default.GetString(Program.RawData));
-                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = cr };
+                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Issue> issues = null;
                 if (!TagName.ToLower().Contains("canary"))
                 {
@@ -121,7 +121,9 @@ namespace Updater
 
                 if (x != null)
                 {
-                    MessageBox.Show($"Your issue can be found at {x.HtmlUrl}. Please add any clarification on the issue there", "Issue Reported");
+                    MessageBox.Show(
+                        $"Your issue can be found at {x.HtmlUrl}. Please add any clarification on the issue there",
+                        "Issue Reported");
                 }
             }
             catch

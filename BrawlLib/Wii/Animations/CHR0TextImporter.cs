@@ -35,21 +35,27 @@ namespace BrawlLib.Wii.Animations
             {
                 if (line.CompareTo("X") == 0)
                 {
-                    for (line = reader.ReadLine(); line != null && line.CompareTo("    ") != 0; line = reader.ReadLine())
+                    for (line = reader.ReadLine();
+                        line != null && line.CompareTo("    ") != 0;
+                        line = reader.ReadLine())
                     {
                         output.x.Add(float.Parse(line));
                     }
                 }
                 else if (line.CompareTo("Y") == 0)
                 {
-                    for (line = reader.ReadLine(); line != null && line.CompareTo("    ") != 0; line = reader.ReadLine())
+                    for (line = reader.ReadLine();
+                        line != null && line.CompareTo("    ") != 0;
+                        line = reader.ReadLine())
                     {
                         output.y.Add(float.Parse(line));
                     }
                 }
                 else if (line.CompareTo("Z") == 0)
                 {
-                    for (line = reader.ReadLine(); line != null && line.CompareTo("    ") != 0; line = reader.ReadLine())
+                    for (line = reader.ReadLine();
+                        line != null && line.CompareTo("    ") != 0;
+                        line = reader.ReadLine())
                     {
                         output.z.Add(float.Parse(line));
                     }

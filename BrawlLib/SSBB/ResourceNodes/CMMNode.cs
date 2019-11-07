@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CMMNode : ResourceNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
-        public override Type[] AllowedChildTypes => new[] { typeof(CMMEntryNode) };
+        public override Type[] AllowedChildTypes => new[] {typeof(CMMEntryNode)};
         public override ResourceType ResourceFileType => ResourceType.CMM;
 
         [Category("Custom My Music")]
@@ -25,6 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         public byte _tracklistID;
 
         public override void OnPopulate()
@@ -49,7 +50,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 r.Rebuild(address + offset, CMMEntry.Size, true);
                 offset += CMMEntry.Size;
             }
-            CMMEntryNode end = new CMMEntryNode { TrackListID = 0xFF };
+
+            CMMEntryNode end = new CMMEntryNode {TrackListID = 0xFF};
             while (offset < length)
             {
                 end.Rebuild(address + offset, CMMEntry.Size, true);
@@ -61,7 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int size = Children.Count * CMMEntry.Size;
 
-            while(size % 0x20 != 0)
+            while (size % 0x20 != 0)
             {
                 size += CMMEntry.Size;
             }
@@ -76,13 +78,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _tracklistID = Header[1, 6].Byte;
                 _name = $"tracklist_{_tracklistID.ToString("X2")}";
             }
+
             return true;
         }
     }
 
     public unsafe class CMMEntryNode : ResourceNode
     {
-        internal CMMEntry* Header => (CMMEntry*)WorkingUncompressed.Address;
+        internal CMMEntry* Header => (CMMEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public uint _songID;
@@ -102,8 +105,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         private short _unknown;
+
         [Category("Custom My Music")]
-        public short Unknown {
+        public short Unknown
+        {
             get => _unknown;
             set
             {
@@ -119,6 +124,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte TrackListID { get; set; }
 
         private byte _sliderSetting;
+
         [Category("Custom My Music")]
         [Description("Between 0-64, the slider setting to use for My Music")]
         public byte SliderSetting
@@ -152,7 +158,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            CMMEntry* hdr = (CMMEntry*)address;
+            CMMEntry* hdr = (CMMEntry*) address;
             hdr->_songID = _songID;
             hdr->_unknown = Unknown;
             hdr->_trackListID = Parent is CMMNode c ? c._tracklistID : TrackListID;

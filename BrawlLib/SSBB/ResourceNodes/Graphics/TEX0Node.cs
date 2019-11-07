@@ -61,9 +61,11 @@ namespace BrawlLib.SSBB.ResourceNodes.Graphics
                         SignalPropertyChange();
                         return;
                     }
+
                     _revertingCS = true;
                     disableRevert = true;
                 }
+
                 _sharesData = value;
                 SignalPropertyChange();
                 if (!value)
@@ -76,17 +78,19 @@ namespace BrawlLib.SSBB.ResourceNodes.Graphics
                     using (TextureConverterDialog dlg = new TextureConverterDialog())
                     {
                         dlg.Automatic = true;
-                        dlg.cboFormat.SelectedItem = 
-                        dlg.LoadImages(bmp);
+                        dlg.cboFormat.SelectedItem =
+                            dlg.LoadImages(bmp);
                         dlg.ShowDialog(null, this);
                     }
                 }
+
                 if (disableRevert)
                 {
                     _revertingCS = false;
                 }
             }
         }
+
         private static bool _revertingCS = false;
 
         [Category("G3D Texture")] public int Width => SharesData ? SourceNode.Width : _width;

@@ -55,7 +55,6 @@ namespace BrawlLib.BrawlManagerLib.Songs
             this.app.Size = new System.Drawing.Size(300, 111);
             this.app.TabIndex = 1;
             this.app.TargetStreams = null;
-            this.app.Volume = null;
             this.app.AudioEnded += new System.EventHandler(this.app_AudioEnded);
             // 
             // panel1

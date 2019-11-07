@@ -54,12 +54,14 @@ namespace BrawlLib.SSBB.ResourceNodes.Graphics
             {
                 if ((p = Header->GetTextureEntry(i)) != null)
                 {
-                    TPLTextureNode t = new TPLTextureNode {_dataAddr = (VoidPtr) Header + ((TPLTextureHeader*) p)->_data};
+                    TPLTextureNode t = new TPLTextureNode
+                        {_dataAddr = (VoidPtr) Header + ((TPLTextureHeader*) p)->_data};
                     t.Initialize(this, p, 0);
 
                     if ((p = Header->GetPaletteEntry(i)) != null)
                     {
-                        new TPLPaletteNode {_dataAddr = (VoidPtr) Header + ((TPLPaletteHeader*) p)->_data}.Initialize(t, p, 0);
+                        new TPLPaletteNode {_dataAddr = (VoidPtr) Header + ((TPLPaletteHeader*) p)->_data}.Initialize(t,
+                            p, 0);
                     }
                 }
             }

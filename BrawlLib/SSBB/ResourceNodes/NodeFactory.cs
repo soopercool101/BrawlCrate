@@ -35,7 +35,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         static NodeFactory()
         {
             // Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)
-            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
+            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()
+                                       ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
@@ -133,8 +134,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t)
         {
             ResourceNode n = null;
-            
-            if(t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
+
+            if (t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
             {
                 FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
                 if (uncompressedMap != null)

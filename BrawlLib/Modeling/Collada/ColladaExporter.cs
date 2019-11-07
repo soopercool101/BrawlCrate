@@ -16,7 +16,8 @@ namespace BrawlLib.Modeling.Collada
 {
     public unsafe partial class Collada
     {
-        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings
+            {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
 
         public static void Serialize(MDL0Node model, string outFile)
         {
@@ -711,17 +712,17 @@ namespace BrawlLib.Modeling.Collada
 
             switch (prim._type)
             {
-                case OpenTK.Graphics.OpenGL.PrimitiveType.Triangles:
+                case OpenTK.Graphics.OpenGL.BeginMode.Triangles:
                     writer.WriteStartElement("triangles");
                     stride = 3;
                     break;
 
-                case OpenTK.Graphics.OpenGL.PrimitiveType.Lines:
+                case OpenTK.Graphics.OpenGL.BeginMode.Lines:
                     writer.WriteStartElement("lines");
                     stride = 2;
                     break;
 
-                case OpenTK.Graphics.OpenGL.PrimitiveType.Points:
+                case OpenTK.Graphics.OpenGL.BeginMode.Points:
                     writer.WriteStartElement("points");
                     stride = 1;
                     break;

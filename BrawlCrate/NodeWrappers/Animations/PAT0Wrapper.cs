@@ -369,7 +369,7 @@ namespace BrawlCrate.NodeWrappers.Animations
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
-        
+
         protected static void OffsetAction(object sender, EventArgs e)
         {
             PAT0OffsetControl offsetControl = new PAT0OffsetControl();
@@ -386,7 +386,7 @@ namespace BrawlCrate.NodeWrappers.Animations
         {
             ContextMenuStrip = _menu;
         }
-        
+
         public void Offset(int offsetValue, bool offsetFrames, bool offsetOtherTextures)
         {
             float currentFrame = ((PAT0TextureEntryNode) _resource).FrameIndex;

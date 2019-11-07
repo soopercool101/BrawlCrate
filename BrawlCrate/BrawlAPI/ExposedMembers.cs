@@ -827,17 +827,17 @@ namespace BrawlCrate.BrawlAPI
         ///     The folder in which the BrawlCrate installation is located.
         /// </summary>
         public static string AppPath => Path.GetFullPath(Program.AppPath);
-        
+
         /// <summary>
         ///     The folder in which the API folders are located.
         /// </summary>
         public static string APIPath => Path.GetFullPath(Program.ApiPath);
-        
+
         /// <summary>
         ///     The folder in which plugins are located.
         /// </summary>
         public static string PluginPath => Path.GetFullPath(Program.ApiPluginPath);
-        
+
         /// <summary>
         ///     The folder in which loaders are located.
         /// </summary>
@@ -869,7 +869,7 @@ namespace BrawlCrate.BrawlAPI
         {
             return Program.Open(path, false);
         }
-        
+
         /// <summary>
         ///     Attempts to open the file as a template using a given path.
         ///

@@ -534,7 +534,7 @@ namespace BrawlLib.SSBB.ResourceNodes.MDL0
                 s.DefaultAsMetal(texcount - 1);
             }
         }
-        
+
         public void DefaultAsShadow()
         {
             Default(true);

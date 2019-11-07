@@ -144,7 +144,7 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
                         ColorScale != 0 ? "(" : "",
                         (int) ColorBias == 1 ? " + 0.5)" : (int) ColorBias == 2 ? " - 0.5)" : "",
                         (int) ColorScale == 3 ? ") / 2" :
-                        ColorScale != 0 ? ") * " + ((int) ColorScale * 2) : "");
+                        ColorScale != 0 ? ") * " + (int) ColorScale * 2 : "");
                 }
                 else if (op > 13)
                 {
@@ -177,7 +177,7 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
                         AlphaScale != 0 ? "(" : "",
                         (int) AlphaBias == 1 ? " + 0.5)" : (int) AlphaBias == 2 ? " - 0.5)" : "",
                         (int) AlphaScale == 3 ? ") / 2" :
-                        AlphaScale != 0 ? ") * " + ((int) AlphaScale * 2) : "");
+                        AlphaScale != 0 ? ") * " + (int) AlphaScale * 2 : "");
                 }
                 else if (op > 13)
                 {

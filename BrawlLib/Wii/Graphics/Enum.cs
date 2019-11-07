@@ -248,7 +248,7 @@
         Swap0, //GX_TEV_SWAP0 = 0,
         Swap1, //GX_TEV_SWAP1,
         Swap2, //GX_TEV_SWAP2,
-        Swap3 //GX_TEV_SWAP3
+        Swap3  //GX_TEV_SWAP3
     }
 
     public enum TevScale
@@ -291,6 +291,7 @@
         TexMap4, //GX_TEXMAP4,
         TexMap5, //GX_TEXMAP5,
         TexMap6, //GX_TEXMAP6,
+
         TexMap7 //GX_TEXMAP7,
         //GX_MAX_TEXMAP,
 
@@ -305,7 +306,7 @@
         LightChannel1,           //RAS1_CC_1 = 1, // Color channel 1 
         BumpAlpha = 5,           //RAS1_CC_B = 5, // Indirect texture bump alpha 
         NormalizedBumpAlpha = 6, //RAS1_CC_BN = 6, // Indirect texture bump alpha, normalized 0-255 
-        Zero = 7                //RAS1_CC_Z = 7 // Set color value to zero 
+        Zero = 7                 //RAS1_CC_Z = 7 // Set color value to zero 
     }
 
     public enum ChannelID
@@ -331,6 +332,7 @@
         TexCoord4, //GX_TEXCOORD4,         // generated texture coordinate 4
         TexCoord5, //GX_TEXCOORD5,         // generated texture coordinate 5
         TexCoord6, //GX_TEXCOORD6,         // generated texture coordinate 6
+
         TexCoord7 //GX_TEXCOORD7,         // generated texture coordinate 7
         //GX_MAX_TEXCOORD = 8,
         //GX_TEXCOORD_NULL = 0xff
@@ -429,7 +431,7 @@
         F_8_Bit_Offsets, //GX_ITF_8,        // 8 bit texture offsets.
         F_5_Bit_Offsets, //GX_ITF_5,        // 5 bit texture offsets.
         F_4_Bit_Offsets, //GX_ITF_4,        // 4 bit texture offsets.
-        F_3_Bit_Offsets //GX_ITF_3        // 3 bit texture offsets.
+        F_3_Bit_Offsets  //GX_ITF_3        // 3 bit texture offsets.
     }
 
     public enum IndTexBiasSel
@@ -455,7 +457,7 @@
         MatrixS2,     //GX_ITM_S2,
         MatrixT0 = 9, //GX_ITM_T0 = 9,
         MatrixT1,     //GX_ITM_T1,
-        MatrixT2     //GX_ITM_T2
+        MatrixT2      //GX_ITM_T2
     }
 
     public enum IndTexWrap
@@ -466,7 +468,7 @@
         Wrap64,  //GX_ITW_64,         // wrap 64
         Wrap32,  //GX_ITW_32,         // wrap 32
         Wrap16,  //GX_ITW_16,         // wrap 16
-        Wrap0   //GX_ITW_0,             // wrap 0
+        Wrap0    //GX_ITW_0,             // wrap 0
     }
 
     public enum IndTexScale
@@ -479,7 +481,7 @@
         DivideBy32,  //GX_ITS_32,        // Scale by 1/32.
         DivideBy64,  //GX_ITS_64,        // Scale by 1/64.
         DivideBy128, //GX_ITS_128,   // Scale by 1/128.
-        DivideBy256 //GX_ITS_256    // Scale by 1/256.
+        DivideBy256  //GX_ITS_256    // Scale by 1/256.
     }
 
     public enum PosNrmMtx
@@ -565,7 +567,7 @@
         Regular,   //XF_TEXGEN_REGULAR = 0x0,
         EmbossMap, //XF_TEXGEN_EMBOSS_MAP = 0x1,
         Color0,    //XF_TEXGEN_COLOR_STRGBC0 = 0x2,
-        Color1    //XF_TEXGEN_COLOR_STRGBC1 = 0x3
+        Color1     //XF_TEXGEN_COLOR_STRGBC1 = 0x3
     }
 
     public enum TexSourceRow
@@ -582,7 +584,7 @@
         TexCoord4,  //XF_TEX4_INROW  = 0x9,
         TexCoord5,  //XF_TEX5_INROW =  0xA,
         TexCoord6,  //XF_TEX6_INROW =  0xB,
-        TexCoord7  //XF_TEX7_INROW =  0xC
+        TexCoord7   //XF_TEX7_INROW =  0xC
     }
 
     public enum SpotFn

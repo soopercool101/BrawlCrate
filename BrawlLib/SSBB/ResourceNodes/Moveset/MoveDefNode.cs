@@ -299,11 +299,11 @@ namespace BrawlLib.SSBB.ResourceNodes.Moveset
             FDefHeader* header = (FDefHeader*) addr;
 
             if (header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0 || header->_fileSize != source.Length ||
-                header->_lookupOffset > source.Length || Properties.Settings.Default.CompatibilityMode)
+                header->_lookupOffset > source.Length || !Properties.Settings.Default.ParseMoveDef)
             {
                 return null;
             }
-            
+
             return new MoveDefNode();
         }
 

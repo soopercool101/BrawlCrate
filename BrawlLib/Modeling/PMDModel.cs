@@ -806,7 +806,7 @@ namespace BrawlLib.Modeling
                 Vector3* Normals = (Vector3*) p._manager._faceData[1].Address;
                 Vector2* UVs = (Vector2*) p._manager._faceData[4].Address;
 
-                manager._triangles = new GLPrimitive((int) m._faceVertCount, PrimitiveType.Triangles);
+                manager._triangles = new GLPrimitive((int) m._faceVertCount, BeginMode.Triangles);
                 uint[] pTriarr = manager._triangles._indices;
                 uint pTri = 0;
 

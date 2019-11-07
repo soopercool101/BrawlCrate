@@ -921,7 +921,7 @@ namespace BrawlLib.SSBB.ResourceNodes.MDL0
             //    {
             //        bool o = false;
             //        foreach (PrimitiveHeader ph in p._headers)
-            //            if (ph.Type != WiiPrimitiveType.TriangleList && notFloat)
+            //            if (ph.Type != WiiBeginMode.TriangleList && notFloat)
             //            {
             //                Model._errors.Add("Object " + Index + " will explode in-game due to assets that are not written as float.");
             //                SignalPropertyChange();
@@ -1384,20 +1384,20 @@ namespace BrawlLib.SSBB.ResourceNodes.MDL0
             return box;
         }
 
-        private readonly BlendingFactor[] _blendSrc =
+        private BlendingFactorSrc[] _blendSrc =
         {
-            BlendingFactor.Zero, BlendingFactor.One,
-            BlendingFactor.DstColor, BlendingFactor.OneMinusDstColor,
-            BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
-            BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
+            BlendingFactorSrc.Zero, BlendingFactorSrc.One,
+            BlendingFactorSrc.DstColor, BlendingFactorSrc.OneMinusDstColor,
+            BlendingFactorSrc.SrcAlpha, BlendingFactorSrc.OneMinusSrcAlpha,
+            BlendingFactorSrc.DstAlpha, BlendingFactorSrc.OneMinusDstAlpha
         };
 
-        private readonly BlendingFactor[] _blendDst =
+        private BlendingFactorDest[] _blendDst =
         {
-            BlendingFactor.Zero, BlendingFactor.One,
-            BlendingFactor.SrcColor, BlendingFactor.OneMinusSrcColor,
-            BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
-            BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
+            BlendingFactorDest.Zero, BlendingFactorDest.One,
+            BlendingFactorDest.SrcColor, BlendingFactorDest.OneMinusSrcColor,
+            BlendingFactorDest.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha,
+            BlendingFactorDest.DstAlpha, BlendingFactorDest.OneMinusDstAlpha
         };
 
         private readonly LogicOp[] _logicOp =
@@ -1866,6 +1866,7 @@ namespace BrawlLib.SSBB.ResourceNodes.MDL0
         }
 
         public bool Deleting { get; private set; }
+
         public void Remove(bool v, bool n, bool c1, bool c2, params bool[] uv)
         {
             Deleting = true;
@@ -2014,6 +2015,7 @@ namespace BrawlLib.SSBB.ResourceNodes.MDL0
                     dc.MaterialNode.Remove();
                 }
             }
+
             Remove(removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached,
                 removeAttached, removeAttached, removeAttached, removeAttached, removeAttached, removeAttached);
         }

@@ -8,7 +8,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics
 {
     public unsafe class HavokXML
     {
-        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings
+            {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
 
         public static void Serialize(HavokNode node, string outFile)
         {

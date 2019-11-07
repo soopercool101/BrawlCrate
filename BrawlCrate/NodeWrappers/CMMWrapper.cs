@@ -16,7 +16,8 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
-        private static readonly ToolStripMenuItem NewEntryToolStripMenuItem = new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J);
+        private static readonly ToolStripMenuItem NewEntryToolStripMenuItem =
+            new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J);
 
         private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
             new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
@@ -98,7 +99,7 @@ namespace BrawlCrate.NodeWrappers
 
             CMMEntryNode node = new CMMEntryNode
             {
-                TrackListID = ((CMMNode)_resource)._tracklistID,
+                TrackListID = ((CMMNode) _resource)._tracklistID,
                 Name = "0x00000000"
             };
             _resource.AddChild(node);

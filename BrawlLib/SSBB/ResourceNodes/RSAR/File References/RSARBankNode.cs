@@ -9,7 +9,8 @@ namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_References
     {
         internal INFOBankEntry* Header => (INFOBankEntry*) WorkingUncompressed.Address;
 
-        [Category("Data"), DisplayName("Sound ID")]
+        [Category("Data")]
+        [DisplayName("Sound ID")]
         public override int StringId => Header == null ? -1 : (int) Header->_stringId;
 
         private RSARFileNode _rbnk;

@@ -423,7 +423,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             ModelPanel.Camera.ZoomExtents(SelectedBone.Matrix.GetPoint(), 27.0f);
             ModelPanel.Invalidate();
         }
-        
+
         private void chkAllOverlays_CheckedChanged(object sender, EventArgs e)
         {
             chkItems.Checked = chkAllOverlays.Checked;

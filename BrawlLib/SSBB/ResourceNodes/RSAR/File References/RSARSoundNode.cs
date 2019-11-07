@@ -30,7 +30,8 @@ namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_References
             _waveInfo._channelPriority = 64;
         }
 
-        [Category("Data"), DisplayName("Sound ID")]
+        [Category("Data")]
+        [DisplayName("Sound ID")]
         public override int StringId => Header == null ? -1 : (int) Header->_stringId;
 
         public override ResourceType ResourceFileType => ResourceType.RSARSound;
@@ -749,7 +750,8 @@ namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_References
                 IAudioStream stream = CreateStreams()[0];
                 if (stream == null)
                 {
-                    throw new Exception($"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" cannot be exported to WAV.");
+                    throw new Exception(
+                        $"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" cannot be exported to WAV.");
                 }
 
                 WAV.ToFile(stream, outPath);

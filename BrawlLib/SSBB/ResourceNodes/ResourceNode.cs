@@ -366,7 +366,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [DisplayName("Uncompressed Size (Bytes)")]
         [Description("For stability, this value is only updated on save.")]
-        public virtual uint UncompressedSize => (uint)WorkingUncompressed.Length;
+        public virtual uint UncompressedSize => (uint) WorkingUncompressed.Length;
 
         [Browsable(false)] public virtual Type[] AllowedChildTypes => _allowedChildTypes;
         private readonly Type[] _allowedChildTypes = new Type[] { };
@@ -1245,7 +1245,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return FindChildByType(path, searchChildren, StringComparison.Ordinal, types);
         }
 
-        public ResourceNode FindChildByType(string path, bool searchChildren, StringComparison compare, params ResourceType[] types)
+        public ResourceNode FindChildByType(string path, bool searchChildren, StringComparison compare,
+                                            params ResourceType[] types)
         {
             if (path == null)
             {

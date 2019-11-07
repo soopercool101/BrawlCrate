@@ -74,10 +74,10 @@ namespace BrawlLib.Modeling
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct PrimitiveHeader
     {
-        public WiiPrimitiveType Type;
+        public WiiBeginMode Type;
         public bushort Entries;
 
-        public PrimitiveHeader(WiiPrimitiveType type, int entries)
+        public PrimitiveHeader(WiiBeginMode type, int entries)
         {
             Type = type;
             Entries = (ushort) entries;
@@ -120,9 +120,9 @@ namespace BrawlLib.Modeling
 
         //For imports
         public PrimitiveHeader TriangleHeader =>
-            new PrimitiveHeader(WiiPrimitiveType.TriangleList, _triangles.Count * 3);
+            new PrimitiveHeader(WiiBeginMode.TriangleList, _triangles.Count * 3);
 
-        public PrimitiveHeader LineHeader => new PrimitiveHeader(WiiPrimitiveType.Lines, _lines.Count * 2);
+        public PrimitiveHeader LineHeader => new PrimitiveHeader(WiiBeginMode.Lines, _lines.Count * 2);
 
         public List<PointTriangle> _triangles = new List<PointTriangle>();
         public List<PointTriangleStrip> _tristrips = new List<PointTriangleStrip>();
@@ -396,7 +396,7 @@ namespace BrawlLib.Modeling
 
     public class PointTriangleStrip : PrimitiveClass
     {
-        public PrimitiveHeader Header => new PrimitiveHeader(WiiPrimitiveType.TriangleStrip, _points.Count);
+        public PrimitiveHeader Header => new PrimitiveHeader(WiiBeginMode.TriangleStrip, _points.Count);
         public List<Facepoint> _points = new List<Facepoint>();
 
         public override List<Facepoint> Points
@@ -487,7 +487,7 @@ namespace BrawlLib.Modeling
 
     public class PointLineStrip : PrimitiveClass
     {
-        public PrimitiveHeader Header => new PrimitiveHeader(WiiPrimitiveType.LineStrip, _points.Count);
+        public PrimitiveHeader Header => new PrimitiveHeader(WiiBeginMode.LineStrip, _points.Count);
         public List<Facepoint> _points = new List<Facepoint>();
 
         public override List<Facepoint> Points

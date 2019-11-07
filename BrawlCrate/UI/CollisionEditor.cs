@@ -2498,7 +2498,7 @@ namespace BrawlCrate.UI
                 GL.CullFace(CullFaceMode.Front);
 
                 GL.Color4(Color.Blue);
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.LineWidth(15.0f);
 
                 Vector3
@@ -2512,7 +2512,7 @@ namespace BrawlCrate.UI
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.Color4(Color.Red);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
@@ -2520,25 +2520,25 @@ namespace BrawlCrate.UI
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.End();
                 GL.Color4(0.0f, 0.5f, 1.0f, 0.3f);
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone0._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
@@ -3839,7 +3839,7 @@ namespace BrawlCrate.UI
                 TargetNode.SignalPropertyChange();
             }
         }
-        
+
         protected void btnSameX_Click(object sender, EventArgs e)
         {
             CreateUndo();

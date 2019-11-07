@@ -563,7 +563,7 @@ namespace BrawlLib.SSBB.ResourceNodes.MDL0
                 return;
             }
 
-            _children = _children.OrderBy(o => ((MDL0MaterialNode)o).IsMetal).ThenBy(o => o.Name).ToList();
+            _children = _children.OrderBy(o => ((MDL0MaterialNode) o).IsMetal).ThenBy(o => o.Name).ToList();
             SignalPropertyChange();
         }
     }

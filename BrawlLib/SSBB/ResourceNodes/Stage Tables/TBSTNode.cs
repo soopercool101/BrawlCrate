@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Stage_Tables
         internal TBST* Header => (TBST*) WorkingUncompressed.Address;
         internal override string DocumentationSubDirectory => "TBST";
         internal override int EntryOffset => 0x10;
-        
+
         public TBSTNode()
         {
             unk0 = 1;

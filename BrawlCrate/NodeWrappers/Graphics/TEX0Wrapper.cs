@@ -29,7 +29,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
 
         private static readonly ToolStripMenuItem GeneratePAT0ToolStripMenuItem =
             new ToolStripMenuItem("Generate &PAT0", null, GeneratePAT0Action);
-        
+
         private static readonly ToolStripMenuItem ConvertStocksToolStripMenuItem =
             new ToolStripMenuItem("Convert Stock System", null, ConvertStockAction);
 
@@ -162,12 +162,12 @@ namespace BrawlCrate.NodeWrappers.Graphics
         {
             GetInstance<TEX0Wrapper>().GeneratePAT0(false);
         }
-        
+
         protected static void ConvertStockAction(object sender, EventArgs e)
         {
             GetInstance<TEX0Wrapper>().ConvertStocks();
         }
-        
+
         #endregion
 
         public override ContextMenuStrip MultiSelectMenuStrip => MultiSelectMenu;
@@ -198,7 +198,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
         public void ReEncode()
         {
             PLT0Node plt = null;
-            if (((TEX0Node)_resource).HasPalette)
+            if (((TEX0Node) _resource).HasPalette)
             {
                 plt = ((TEX0Node) _resource).GetPaletteNode();
             }
@@ -220,7 +220,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
         {
             RefreshView(node);
         }
-        
+
         public PAT0Node GeneratePAT0(bool force)
         {
             if (Parent == null)
@@ -315,15 +315,15 @@ namespace BrawlCrate.NodeWrappers.Graphics
                     pat0Entry.AddChild(pat0Tex);
                     if (((BRRESNode) _resource.Parent.Parent).GetFolder<PAT0Node>() != null &&
                         ((BRRESNode) _resource.Parent.Parent).GetFolder<PAT0Node>().FindChildrenByName(newPat0.Name)
-                        .Length > 0)
+                                                             .Length > 0)
                     {
                         if (force)
                         {
                             while (((BRRESNode) _resource.Parent.Parent).GetFolder<PAT0Node>()
-                                   .FindChildrenByName(newPat0.Name).Length > 0)
+                                                                        .FindChildrenByName(newPat0.Name).Length > 0)
                             {
                                 ((BRRESNode) _resource.Parent.Parent).GetFolder<PAT0Node>()
-                                    .FindChildrenByName(newPat0.Name)[0].Remove();
+                                                                     .FindChildrenByName(newPat0.Name)[0].Remove();
                             }
                         }
                         else
@@ -339,10 +339,11 @@ namespace BrawlCrate.NodeWrappers.Graphics
                             if (d == DialogResult.Yes)
                             {
                                 while (((BRRESNode) _resource.Parent.Parent).GetFolder<PAT0Node>()
-                                       .FindChildrenByName(newPat0.Name).Length > 0)
+                                                                            .FindChildrenByName(newPat0.Name).Length >
+                                       0)
                                 {
                                     ((BRRESNode) _resource.Parent.Parent).GetFolder<PAT0Node>()
-                                        .FindChildrenByName(newPat0.Name)[0].Remove();
+                                                                         .FindChildrenByName(newPat0.Name)[0].Remove();
                                 }
                             }
                         }
@@ -456,7 +457,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
             {
                 return;
             }
-            
+
             PLT0Node p = ((TEX0Node) _resource).GetPaletteNode();
             if (((TEX0Node) _resource).HasPalette && p != null &&
                 MessageBox.Show("Would you like to delete the associated PLT0?", "Deleting TEX0",
@@ -465,10 +466,10 @@ namespace BrawlCrate.NodeWrappers.Graphics
                 p.Dispose();
                 p.Remove();
             }
-            
+
             base.Delete();
         }
-        
+
         public void ConvertStocks()
         {
             if (Parent == null)
@@ -554,10 +555,12 @@ namespace BrawlCrate.NodeWrappers.Graphics
 
                     tx0.Name = "InfStc." + tx0.texSortNum.ToString("0000");
                     if (((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                        .FindChildrenByName("InfStc." + x.ToString("000")).Count() > 0)
+                                                             .FindChildrenByName("InfStc." + x.ToString("000"))
+                                                             .Count() > 0)
                     {
                         foreach (PLT0Node p in ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                            .FindChildrenByName("InfStc." + x.ToString("000")))
+                                                                                    .FindChildrenByName(
+                                                                                        "InfStc." + x.ToString("000")))
                         {
                             p.Remove();
                         }
@@ -576,10 +579,13 @@ namespace BrawlCrate.NodeWrappers.Graphics
 
                     tx0.Name = "InfStc." + x2.ToString("0000");
                     if (((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                        .FindChildrenByName("InfStcX." + x2.ToString("0000")).Count() > 0)
+                                                             .FindChildrenByName("InfStcX." + x2.ToString("0000"))
+                                                             .Count() > 0)
                     {
                         foreach (PLT0Node p in ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                            .FindChildrenByName("InfStcX." + x2.ToString("0000")))
+                                                                                    .FindChildrenByName(
+                                                                                        "InfStcX." +
+                                                                                        x2.ToString("0000")))
                         {
                             p.Remove();
                         }
@@ -591,7 +597,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
             if (((BRRESNode) _resource.Parent.Parent).GetFolder<CHR0Node>() != null)
             {
                 ResourceNode[] temp = ((BRRESNode) _resource.Parent.Parent).GetFolder<CHR0Node>()
-                    .FindChildrenByName(newPat0.Name);
+                                                                           .FindChildrenByName(newPat0.Name);
                 if (temp.Length > 0)
                 {
                     foreach (CHR0Node cn in temp)
@@ -604,7 +610,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
             if (((BRRESNode) _resource.Parent.Parent).GetFolder<CLR0Node>() != null)
             {
                 ResourceNode[] temp = ((BRRESNode) _resource.Parent.Parent).GetFolder<CLR0Node>()
-                    .FindChildrenByName(newPat0.Name);
+                                                                           .FindChildrenByName(newPat0.Name);
                 if (temp.Length > 0)
                 {
                     foreach (CLR0Node cn in temp)
@@ -767,10 +773,13 @@ namespace BrawlCrate.NodeWrappers.Graphics
 
                         tx0.Name = "InfStc." + tx0.texSortNum.ToString("000");
                         if (((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                            .FindChildrenByName("InfStc." + x.ToString("0000")).Count() > 0)
+                                                                 .FindChildrenByName("InfStc." + x.ToString("0000"))
+                                                                 .Count() > 0)
                         {
                             foreach (PLT0Node p in ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                                .FindChildrenByName("InfStc." + x.ToString("0000")))
+                                                                                        .FindChildrenByName(
+                                                                                            "InfStc." + x.ToString(
+                                                                                                "0000")))
                             {
                                 p.Remove();
                             }
@@ -786,10 +795,13 @@ namespace BrawlCrate.NodeWrappers.Graphics
 
                         tx0.Name = "InfStc." + tx0.texSortNum.ToString("000");
                         if (((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                            .FindChildrenByName("InfStc." + x.ToString("0000")).Count() > 0)
+                                                                 .FindChildrenByName("InfStc." + x.ToString("0000"))
+                                                                 .Count() > 0)
                         {
                             foreach (PLT0Node p in ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                                .FindChildrenByName("InfStc." + x.ToString("0000")))
+                                                                                        .FindChildrenByName(
+                                                                                            "InfStc." + x.ToString(
+                                                                                                "0000")))
                             {
                                 p.Remove();
                             }
@@ -821,10 +833,13 @@ namespace BrawlCrate.NodeWrappers.Graphics
 
                         tx0.Name = "InfStc." + tx0.texSortNum.ToString("000");
                         if (((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                            .FindChildrenByName("InfStc." + x.ToString("0000")).Count() > 0)
+                                                                 .FindChildrenByName("InfStc." + x.ToString("0000"))
+                                                                 .Count() > 0)
                         {
                             foreach (PLT0Node p in ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                                .FindChildrenByName("InfStc." + x.ToString("0000")))
+                                                                                        .FindChildrenByName(
+                                                                                            "InfStc." + x.ToString(
+                                                                                                "0000")))
                             {
                                 p.Remove();
                             }
@@ -839,10 +854,13 @@ namespace BrawlCrate.NodeWrappers.Graphics
 
                         tx0.Name = "InfStcX." + tx0.texSortNum.ToString("0000");
                         if (((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                            .FindChildrenByName("InfStc." + x.ToString("0000")).Count() > 0)
+                                                                 .FindChildrenByName("InfStc." + x.ToString("0000"))
+                                                                 .Count() > 0)
                         {
                             foreach (PLT0Node p in ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                                .FindChildrenByName("InfStc." + x.ToString("0000")))
+                                                                                        .FindChildrenByName(
+                                                                                            "InfStc." + x.ToString(
+                                                                                                "0000")))
                             {
                                 p.Remove();
                             }
@@ -855,7 +873,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
             if (((BRRESNode) _resource.Parent.Parent).GetFolder<CHR0Node>() != null)
             {
                 ResourceNode[] temp = ((BRRESNode) _resource.Parent.Parent).GetFolder<CHR0Node>()
-                    .FindChildrenByName(newPat0.Name);
+                                                                           .FindChildrenByName(newPat0.Name);
                 if (temp.Length > 0)
                 {
                     foreach (CHR0Node cn in temp)
@@ -868,7 +886,7 @@ namespace BrawlCrate.NodeWrappers.Graphics
             if (((BRRESNode) _resource.Parent.Parent).GetFolder<CLR0Node>() != null)
             {
                 ResourceNode[] temp = ((BRRESNode) _resource.Parent.Parent).GetFolder<CLR0Node>()
-                    .FindChildrenByName(newPat0.Name);
+                                                                           .FindChildrenByName(newPat0.Name);
                 if (temp.Length > 0)
                 {
                     foreach (CLR0Node cn in temp)

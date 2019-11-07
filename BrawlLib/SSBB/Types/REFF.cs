@@ -664,7 +664,7 @@ namespace BrawlLib.SSBB.Types
         User,          // User specified (unused)
         NoDesign,      // Unspecified
         ParticleBoth,  // Difference in position with both neighboring particles
-        NoDesignYAxis // Unspecified (initialized as the world Y-axis)
+        NoDesignYAxis  // Unspecified (initialized as the world Y-axis)
     }
 
     // Movement direction (Y-axis) -- billboards
@@ -676,7 +676,7 @@ namespace BrawlLib.SSBB.Types
         EmitterCenter, // Relative position from the center of emitter
         EmitterDesign, // Emitter specified direction
         Particle,      // Difference in location from the previous particle
-        ParticleBoth  // Difference in position with both neighboring particles
+        ParticleBoth   // Difference in position with both neighboring particles
     }
 
     // Rotational axis to take into account when rendering
@@ -687,7 +687,7 @@ namespace BrawlLib.SSBB.Types
         OnlyX = 0, // X-axis rotation only
         OnlyY,     // Y-axis rotation only
         OnlyZ,     // Z-axis rotation only
-        XYZ       // 3-axis rotation
+        XYZ        // 3-axis rotation
     }
 
     // Base surface (polygon render surface)
@@ -706,7 +706,8 @@ namespace BrawlLib.SSBB.Types
     {
         None = 0, // Does not connect
         Ring,     // Both ends connected
-        Emitter  // Connect between the newest particle and the emitter
+
+        Emitter // Connect between the newest particle and the emitter
         //Mask = 0x07 // StripeConnect mask
     }
 
@@ -718,7 +719,8 @@ namespace BrawlLib.SSBB.Types
         XAxis = 1, // X-axis of the emitter
         YAxis = 0, // Y-axis of the emitter (assigned to 0 for compatibility)
         ZAxis = 2, // Z-axis of the emitter
-        XYZ = 3   // Direction in emitter coordinates (1, 1, 1)
+
+        XYZ = 3 // Direction in emitter coordinates (1, 1, 1)
         //STRIPE_INITIAL_PREV_AXIS__MASK = 0x07 << 3          // Bitmask
     }
 
@@ -728,7 +730,8 @@ namespace BrawlLib.SSBB.Types
     public enum StripeTexmapType
     {
         Stretch = 0, // Stretch the texture along the stripe's entire length.
-        Repeat = 1  // Repeats the texture for each segment.
+
+        Repeat = 1 // Repeats the texture for each segment.
         //STRIPE_TEXMAP_TYPE__MASK = 0x03 << 6
     }
 
@@ -739,7 +742,8 @@ namespace BrawlLib.SSBB.Types
     public enum DirectionalPivot
     {
         NoProcessing = 0 << 0, // No processing
-        Billboard = 1 << 0    // Convert into a billboard, with the movement direction as its axis
+
+        Billboard = 1 << 0 // Convert into a billboard, with the movement direction as its axis
         //DIRECTIONAL_PIVOT__MASK = 0x03 << 0
     }
 

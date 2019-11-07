@@ -182,7 +182,7 @@ namespace BrawlLib.BrawlManagerLib
             56, // Corneria
             57, // Big Blue
             58, // Brinstar
-            59 // Pokemon Stadium
+            59  // Pokemon Stadium
         };
 
         public static int sssPositionForSelcharacter2Icon(int selcharacter2Icon)

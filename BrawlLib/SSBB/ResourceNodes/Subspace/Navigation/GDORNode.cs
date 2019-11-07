@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Navigation
     {
         internal GDOR* Header => (GDOR*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GDOR;
-        
+
         [Category("GDOR")] public int Doors => Children?.Count ?? 0;
 
         public override void OnPopulate()
