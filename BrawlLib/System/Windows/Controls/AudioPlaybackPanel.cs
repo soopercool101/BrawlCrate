@@ -234,7 +234,7 @@ namespace System.Windows.Forms
         /// Custom Song Volume code's difference between 7F (max) and 3F seems to be 1/4 volume - about -6dB. In other words, both the maximum and minimum amplitudes are halved.
         /// See: http://msdn.microsoft.com/en-us/library/windows/desktop/bb280955%28v=vs.85%29.aspx
         /// </summary>
-        public int? Volume
+        private int? Volume
         {
             get => _volume;
             set
