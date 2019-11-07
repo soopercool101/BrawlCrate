@@ -1,4 +1,7 @@
-﻿namespace BrawlCrate.CostumeManager {
+﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
+using BrawlLib.BrawlManagerLib;
+
+namespace BrawlCrate.BrawlManagers.CostumeManager {
     partial class CostumeManagerForm {
         /// <summary>
         /// Required designer variable.
@@ -51,16 +54,16 @@
             this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.otherPVsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.brawlSplitter3 = new BrawlManagerLib.BrawlSplitter();
-            this.brawlSplitter2 = new BrawlManagerLib.BrawlSplitter();
+            this.brawlSplitter3 = new BrawlSplitter();
+            this.brawlSplitter2 = new BrawlSplitter();
             this.globalPVsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.brawlSplitter1 = new BrawlManagerLib.BrawlSplitter();
-            this.modelManager1 = new BrawlCrate.CostumeManager.ModelManager();
-            this.cssPortraitViewer1 = new BrawlCrate.CostumeManager.CSSPortraitViewer();
-            this.infoStockIconViewer1 = new BrawlCrate.CostumeManager.InfoStockIconViewer();
-            this.costumeNumberLabel = new BrawlCrate.CostumeManager.CostumeNumberLabel();
-            this.battlePortraitViewer1 = new BrawlCrate.CostumeManager.BattleSinglePortraitViewer();
-            this.resultPortraitViewer1 = new BrawlCrate.CostumeManager.ResultSinglePortraitViewer();
+            this.brawlSplitter1 = new BrawlSplitter();
+            this.modelManager1 = new BrawlManagers.CostumeManager.ModelManager();
+            this.cssPortraitViewer1 = new CSSPortraitViewer();
+            this.infoStockIconViewer1 = new InfoStockIconViewer();
+            this.costumeNumberLabel = new CostumeNumberLabel();
+            this.battlePortraitViewer1 = new BattleSinglePortraitViewer();
+            this.resultPortraitViewer1 = new ResultSinglePortraitViewer();
             this.use16ptFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -458,7 +461,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private ModelManager modelManager1;
+        private BrawlManagers.CostumeManager.ModelManager modelManager1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ListBox listBox2;
         private CSSPortraitViewer cssPortraitViewer1;
@@ -488,9 +491,9 @@
         private System.Windows.Forms.FlowLayoutPanel otherPVsFlowLayoutPanel;
         private System.Windows.Forms.ToolStripMenuItem updateMewtwoHatForCurrentKirbyToolStripMenuItem;
         private CostumeNumberLabel costumeNumberLabel;
-        private BrawlManagerLib.BrawlSplitter brawlSplitter1;
-        private BrawlManagerLib.BrawlSplitter brawlSplitter2;
-        private BrawlManagerLib.BrawlSplitter brawlSplitter3;
+        private BrawlSplitter brawlSplitter1;
+        private BrawlSplitter brawlSplitter2;
+        private BrawlSplitter brawlSplitter3;
         private InfoStockIconViewer infoStockIconViewer1;
         private System.Windows.Forms.FlowLayoutPanel globalPVsFlowLayoutPanel;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton3;

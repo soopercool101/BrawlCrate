@@ -1,7 +1,14 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlManagerLib;
-using IronPython.Modules;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.ResourceNodes.SCN0;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +16,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Archives
 {
     [NodeWrapper(ResourceType.BRES)]
     public class BRESWrapper : GenericWrapper

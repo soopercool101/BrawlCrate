@@ -1,4 +1,7 @@
-﻿namespace System
+﻿using BrawlLib.Internal;
+using System;
+
+namespace BrawlLib
 {
     public static unsafe class Maths
     {

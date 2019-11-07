@@ -1,4 +1,6 @@
 ﻿using BrawlCrate.NodeWrappers;
+using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB.ResourceNodes;
 using IronPython.Hosting;
 using IronPython.Runtime.Exceptions;
@@ -12,7 +14,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace BrawlCrate.API
+namespace BrawlCrate.BrawlAPI
 {
     public static partial class BrawlAPI
     {
@@ -371,8 +373,8 @@ namespace BrawlCrate.API
                     else
                     {
 #if !MONO
-                        using (Ookii.Dialogs.VistaFolderBrowserDialog dlg
-                            = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+                        using (VistaFolderBrowserDialog dlg
+                            = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
                         using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif

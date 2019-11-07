@@ -1,4 +1,4 @@
-﻿namespace BrawlManagerLib {
+﻿namespace BrawlLib.BrawlManagerLib.Songs {
     partial class SongNameBar {
         /// <summary> 
         /// Required designer variable.
@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new BrawlManagerLib.SongNameBar.MyTextBox();
+            this.textBox1 = new BrawlLib.BrawlManagerLib.Songs.SongNameBar.MyTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -89,7 +89,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private SongNameBar.MyTextBox textBox1;
+        private BrawlLib.BrawlManagerLib.Songs.SongNameBar.MyTextBox textBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
 

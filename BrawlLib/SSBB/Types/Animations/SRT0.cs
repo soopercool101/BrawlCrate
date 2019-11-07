@@ -1,8 +1,9 @@
-﻿using BrawlLib.Wii.Animations;
+﻿using BrawlLib.Internal;
+using BrawlLib.Wii.Animations;
 using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Animations
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct SRT0v4

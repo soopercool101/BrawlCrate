@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     /// <summary>
     ///  A modification of David Amenta's RecycleBin code

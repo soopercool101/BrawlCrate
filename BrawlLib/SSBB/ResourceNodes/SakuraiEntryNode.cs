@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public abstract unsafe class SakuraiEntryNode
     {

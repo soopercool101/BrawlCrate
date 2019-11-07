@@ -1,6 +1,8 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
 using System;
@@ -9,7 +11,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.Modeling
+namespace BrawlLib.Modeling.Collada
 {
     public unsafe partial class Collada : Form
     {

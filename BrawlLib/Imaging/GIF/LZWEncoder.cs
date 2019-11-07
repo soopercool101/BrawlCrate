@@ -26,7 +26,7 @@
 using System;
 using System.IO;
 
-namespace Gif.Components
+namespace BrawlLib.Imaging.GIF
 {
     public class LZWEncoder
     {

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     public enum Endian
     {

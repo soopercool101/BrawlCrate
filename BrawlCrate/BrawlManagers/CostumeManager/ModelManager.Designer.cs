@@ -1,5 +1,6 @@
-﻿using System.Windows.Forms;
-namespace BrawlCrate.CostumeManager {
+﻿using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using System.Windows.Forms;
+namespace BrawlCrate.BrawlManagers.CostumeManager {
     partial class ModelManager {
         /// <summary>
         /// Required designer variable.
@@ -24,8 +25,8 @@ namespace BrawlCrate.CostumeManager {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelManager));
-            this.modelPanel1 = new System.Windows.Forms.ModelPanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrawlManagers.CostumeManager.ModelManager));
+            this.modelPanel1 = new ModelPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 

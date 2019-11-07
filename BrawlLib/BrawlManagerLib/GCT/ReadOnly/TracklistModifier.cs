@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.GCT.ReadOnly
 {
     /// <summary>
     /// Allows read-only access to the Tracklist Modifier code in a GCT codeset.

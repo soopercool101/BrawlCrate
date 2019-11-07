@@ -1,10 +1,14 @@
-﻿using BrawlLib.OpenGL;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
+using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
 using OpenTK.Graphics.OpenGL;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 {
     public partial class ModelEditControl : ModelEditorBase
     {

@@ -1,4 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_References;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Audio;
 using BrawlLib.Wii.Audio;
 using System;
 using System.Collections.Generic;
@@ -7,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.RSAR
 {
     public unsafe class RSARNode : NW4RNode
     {

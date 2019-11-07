@@ -1,8 +1,9 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Moveset.Actions;
+using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes
 {
     public unsafe class MoveDefActionOverrideNode : MoveDefEntryNode
     {

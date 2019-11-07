@@ -1,10 +1,10 @@
-﻿using BrawlManagerLib;
+﻿using BrawlLib.BrawlManagerLib;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs
 {
     public partial class CopyPacRelDialog : Form
     {

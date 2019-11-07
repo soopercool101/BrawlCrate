@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBB.Types.Subspace.Objects;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 {
     public unsafe class GMPSNode : ResourceNode
     {

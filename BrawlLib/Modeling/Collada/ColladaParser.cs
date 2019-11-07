@@ -1,12 +1,12 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.Modeling
+namespace BrawlLib.Modeling.Collada
 {
     public unsafe partial class Collada : Form
     {

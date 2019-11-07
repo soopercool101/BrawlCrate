@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Hex_Editor;
 using System.ComponentModel;
-using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Modules
 {
     public unsafe class ModuleDataNode : RELEntryNode
     {

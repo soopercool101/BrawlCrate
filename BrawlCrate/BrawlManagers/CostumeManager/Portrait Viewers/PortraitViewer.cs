@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 {
     public class PortraitViewer : UserControl
     {

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     public partial class TextBoxDialog : Form
     {

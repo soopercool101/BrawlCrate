@@ -1,8 +1,10 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWAR;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Audio;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RBNK
 {
     public unsafe class RBNKDataInstParamNode : RBNKDataEntryNode
     {

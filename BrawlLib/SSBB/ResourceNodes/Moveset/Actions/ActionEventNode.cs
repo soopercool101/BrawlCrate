@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using BrawlLib.SSBBTypes;
 using System.ComponentModel;
+using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Moveset.Actions
 {
     public unsafe class MoveDefEventNode : MoveDefEntryNode
     {

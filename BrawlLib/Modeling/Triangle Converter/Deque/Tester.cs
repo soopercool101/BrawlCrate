@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace DequeTest
+namespace BrawlLib.Modeling.Triangle_Converter.Deque
 {
     internal class Tester
     {

@@ -1,9 +1,9 @@
-﻿using System.Drawing;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public class MSBinViewer : UserControl
     {

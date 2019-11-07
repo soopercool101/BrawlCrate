@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Subspace
 {
     //Alot of this was reused from STPM
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

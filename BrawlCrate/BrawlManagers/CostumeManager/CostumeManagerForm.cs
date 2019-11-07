@@ -1,12 +1,16 @@
-﻿using System;
+﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
+using BrawlCrate.UI;
+using BrawlLib.BrawlManagerLib;
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using BrawlManagerLib;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager
 {
     public partial class CostumeManagerForm : Form
     {
@@ -233,7 +237,7 @@ namespace BrawlCrate.CostumeManager
         private void changeDirectory_Click(object sender, EventArgs e)
         {
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -344,13 +348,13 @@ namespace BrawlCrate.CostumeManager
             string charfile = ((FighterFile) listBox2.SelectedItem).FullName;
             if (charfile.EndsWith(".pac", StringComparison.InvariantCultureIgnoreCase))
             {
-                ((BrawlLib.SSBB.ResourceNodes.ARCNode) modelManager1.WorkingRoot)
+                ((ARCNode) modelManager1.WorkingRoot)
                     .ExportPCS(charfile.Substring(0, charfile.Length - 4) + ".pcs");
                 updateCostumeSelectionPane();
             }
             else if (charfile.EndsWith(".pcs", StringComparison.InvariantCultureIgnoreCase))
             {
-                ((BrawlLib.SSBB.ResourceNodes.ARCNode) modelManager1.WorkingRoot)
+                ((ARCNode) modelManager1.WorkingRoot)
                     .ExportPAC(charfile.Substring(0, charfile.Length - 4) + ".pac");
                 updateCostumeSelectionPane();
             }

@@ -1,11 +1,12 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlManagerLib;
+﻿using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.SSBB.ResourceNodes;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public static class IconsToMenumain
     {

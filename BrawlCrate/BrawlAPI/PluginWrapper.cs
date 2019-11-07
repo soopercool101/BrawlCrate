@@ -1,6 +1,6 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlCrate.NodeWrappers;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.BrawlAPI
 {
     public class PluginWrapper : GenericWrapper
     {

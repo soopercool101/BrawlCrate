@@ -1,14 +1,18 @@
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
+using BrawlCrate.BrawlManagers.SongManager.SongExport;
+using BrawlCrate.UI;
+using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.BrawlManagerLib.Songs;
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB.ResourceNodes;
-using System.IO;
+using System;
 using System.Collections.Generic;
-using BrawlManagerLib;
+using System.ComponentModel;
 using System.Drawing;
-using BrawlCrate.SongManager.SongExport;
+using System.IO;
+using System.Windows.Forms;
 
-namespace BrawlCrate.SongManager
+namespace BrawlCrate.BrawlManagers.SongManager
 {
     public partial class SongManagerForm : Form
     {
@@ -429,7 +433,7 @@ namespace BrawlCrate.SongManager
         private void changeDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -443,7 +447,7 @@ namespace BrawlCrate.SongManager
         private void openFallbackDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -687,7 +691,7 @@ namespace BrawlCrate.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -730,7 +734,7 @@ namespace BrawlCrate.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif

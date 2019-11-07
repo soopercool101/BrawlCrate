@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BrawlLib.BrawlManagerLib.Songs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.GCT.ReadOnly
 {
     /// <summary>
     /// Allows read-only access to the alt stage song forcer in a GCT codeset.

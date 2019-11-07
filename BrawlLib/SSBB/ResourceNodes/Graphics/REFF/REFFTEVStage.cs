@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Wii.Graphics;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Graphics.REFF
 {
     public unsafe class REFFTEVStage : ResourceNode
     {

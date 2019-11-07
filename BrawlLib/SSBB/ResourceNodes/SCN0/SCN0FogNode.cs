@@ -1,12 +1,13 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Graphics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.SCN0
 {
     public unsafe class SCN0FogNode : SCN0EntryNode, IColorSource, IKeyframeSource
     {

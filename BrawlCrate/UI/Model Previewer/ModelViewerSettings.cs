@@ -1,11 +1,20 @@
-﻿using BrawlCrate;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.Wii.Graphics;
+using System;
 using System.Drawing;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI.Model_Previewer
 {
     public class ModelViewerSettingsDialog : Form
     {
@@ -119,7 +128,7 @@ namespace System.Windows.Forms
         private Label lblBGColorText;
         private Label label33;
         private Label label34;
-        private ModelEditControl _form;
+        private ModelEditControl.ModelEditControl _form;
 
         public ModelViewerSettingsDialog()
         {
@@ -185,7 +194,7 @@ namespace System.Windows.Forms
         private readonly CheckBox[] _checkBoxes = new CheckBox[9];
         private readonly bool[] _origChecks = new bool[9];
 
-        public void Show(ModelEditControl owner)
+        public void Show(ModelEditControl.ModelEditControl owner)
         {
             _form = owner;
             _form.RenderLightDisplay = true;
@@ -493,48 +502,48 @@ namespace System.Windows.Forms
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.ez = new System.Windows.Forms.NumericInputBox();
-            this.ey = new System.Windows.Forms.NumericInputBox();
+            this.ez = new NumericInputBox();
+            this.ey = new NumericInputBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ex = new System.Windows.Forms.NumericInputBox();
+            this.ex = new NumericInputBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.sz = new System.Windows.Forms.NumericInputBox();
-            this.dz = new System.Windows.Forms.NumericInputBox();
-            this.radius = new System.Windows.Forms.NumericInputBox();
-            this.az = new System.Windows.Forms.NumericInputBox();
-            this.elevation = new System.Windows.Forms.NumericInputBox();
-            this.sy = new System.Windows.Forms.NumericInputBox();
-            this.azimuth = new System.Windows.Forms.NumericInputBox();
-            this.dy = new System.Windows.Forms.NumericInputBox();
-            this.ay = new System.Windows.Forms.NumericInputBox();
-            this.sx = new System.Windows.Forms.NumericInputBox();
-            this.dx = new System.Windows.Forms.NumericInputBox();
-            this.ax = new System.Windows.Forms.NumericInputBox();
+            this.sz = new NumericInputBox();
+            this.dz = new NumericInputBox();
+            this.radius = new NumericInputBox();
+            this.az = new NumericInputBox();
+            this.elevation = new NumericInputBox();
+            this.sy = new NumericInputBox();
+            this.azimuth = new NumericInputBox();
+            this.dy = new NumericInputBox();
+            this.ay = new NumericInputBox();
+            this.sx = new NumericInputBox();
+            this.dx = new NumericInputBox();
+            this.ax = new NumericInputBox();
             this.grpProjection = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkDefaultPos = new System.Windows.Forms.RadioButton();
             this.chkCurrentPos = new System.Windows.Forms.RadioButton();
             this.label26 = new System.Windows.Forms.Label();
-            this.numPosTX = new System.Windows.Forms.NumericInputBox();
+            this.numPosTX = new NumericInputBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.numPosTY = new System.Windows.Forms.NumericInputBox();
+            this.numPosTY = new NumericInputBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.numPosTZ = new System.Windows.Forms.NumericInputBox();
-            this.numPosSX = new System.Windows.Forms.NumericInputBox();
-            this.numPosRZ = new System.Windows.Forms.NumericInputBox();
-            this.numPosSY = new System.Windows.Forms.NumericInputBox();
-            this.numPosRY = new System.Windows.Forms.NumericInputBox();
-            this.numPosSZ = new System.Windows.Forms.NumericInputBox();
-            this.numPosRX = new System.Windows.Forms.NumericInputBox();
+            this.numPosTZ = new NumericInputBox();
+            this.numPosSX = new NumericInputBox();
+            this.numPosRZ = new NumericInputBox();
+            this.numPosSY = new NumericInputBox();
+            this.numPosRY = new NumericInputBox();
+            this.numPosSZ = new NumericInputBox();
+            this.numPosRX = new NumericInputBox();
             this.label25 = new System.Windows.Forms.Label();
             this.cboProjection = new System.Windows.Forms.ComboBox();
-            this.farZ = new System.Windows.Forms.NumericInputBox();
-            this.nearZ = new System.Windows.Forms.NumericInputBox();
-            this.yFov = new System.Windows.Forms.NumericInputBox();
-            this.zScale = new System.Windows.Forms.NumericInputBox();
-            this.tScale = new System.Windows.Forms.NumericInputBox();
-            this.rScale = new System.Windows.Forms.NumericInputBox();
+            this.farZ = new NumericInputBox();
+            this.nearZ = new NumericInputBox();
+            this.yFov = new NumericInputBox();
+            this.zScale = new NumericInputBox();
+            this.tScale = new NumericInputBox();
+            this.rScale = new NumericInputBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -574,7 +583,7 @@ namespace System.Windows.Forms
             this.chkScaleBones = new System.Windows.Forms.CheckBox();
             this.chkSaveWindowPosition = new System.Windows.Forms.CheckBox();
             this.chkMaximize = new System.Windows.Forms.CheckBox();
-            this.maxUndoCount = new System.Windows.Forms.NumericInputBox();
+            this.maxUndoCount = new NumericInputBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.chkContextLoop = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -2564,7 +2573,7 @@ namespace System.Windows.Forms
             }
 
             MainForm.Instance.Visible = !(_form._hideMainWindow = chkHideMainWindow.Checked);
-            foreach (ModelEditControl c in ModelEditControl.Instances)
+            foreach (ModelEditControl.ModelEditControl c in ModelEditControl.ModelEditControl.Instances)
             {
                 c._hideMainWindow = _form._hideMainWindow;
             }

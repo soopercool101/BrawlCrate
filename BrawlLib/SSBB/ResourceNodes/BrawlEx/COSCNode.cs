@@ -1,10 +1,10 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.BrawlEx;
 using System;
-using System.BrawlEx;
 using System.ComponentModel;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.BrawlEx
 {
     public unsafe class COSCNode : ResourceNode
     {

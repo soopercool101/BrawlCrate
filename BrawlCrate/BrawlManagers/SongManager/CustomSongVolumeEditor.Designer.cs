@@ -1,4 +1,4 @@
-﻿namespace BrawlCrate.SongManager {
+﻿namespace BrawlCrate.BrawlManagers.SongManager {
     partial class CustomSongVolumeEditor {
         /// <summary> 
         /// Required designer variable.

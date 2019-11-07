@@ -1,4 +1,6 @@
-﻿using BrawlLib.Wii.Models;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Wii.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

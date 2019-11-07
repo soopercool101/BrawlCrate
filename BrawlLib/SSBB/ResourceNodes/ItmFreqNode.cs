@@ -1,4 +1,6 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +32,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         // Public variables
         public List<bint> _pointerList = new List<bint>();
         public List<ItmFreqOffPair> _DataTable = new List<ItmFreqOffPair>();
-        public CompactStringTable _strings = new CompactStringTable();
+        public Moveset.CompactStringTable _strings = new Moveset.CompactStringTable();
         public VoidPtr BaseAddress;
         public VoidPtr _pPointerList;
         public VoidPtr _pDataTable;

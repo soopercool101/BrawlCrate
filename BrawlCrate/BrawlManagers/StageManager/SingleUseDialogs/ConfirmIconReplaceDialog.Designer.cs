@@ -1,4 +1,4 @@
-﻿namespace BrawlCrate.StageManager {
+﻿namespace BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs {
     partial class ConfirmIconReplaceDialog {
         /// <summary>
         /// Required designer variable.

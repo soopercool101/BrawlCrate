@@ -1,4 +1,6 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;

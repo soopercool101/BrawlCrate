@@ -1,6 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.SSBB.Types.Audio;
 using System;
-using System.Audio;
 using System.IO;
 
 namespace BrawlLib.Wii.Audio

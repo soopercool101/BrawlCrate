@@ -1,8 +1,9 @@
-﻿using System;
+﻿using BrawlLib.BrawlManagerLib.Songs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.GCT.ReadOnly
 {
     /// <summary>
     /// Allows read-only access to all Stage-Dependent Song Loader instances in a GCT codeset.

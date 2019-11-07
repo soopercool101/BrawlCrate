@@ -1,4 +1,4 @@
-﻿namespace BrawlCrate.StageManager {
+﻿namespace BrawlCrate.BrawlManagers.StageManager {
     partial class StageInfoControl {
         /// <summary> 
         /// Required designer variable.

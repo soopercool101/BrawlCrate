@@ -1,8 +1,10 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes
 {
     public unsafe class cmPointerNode : ClassMemberInstanceNode
     {

@@ -1,14 +1,21 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlCrate.UI;
 using BrawlLib;
-using System.Windows.Forms;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.ResourceNodes.Moveset;
+using BrawlLib.SSBB.ResourceNodes.Moveset.Actions;
+using BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Collections.Generic;
-using BrawlCrate.NodeWrappers;
-using BrawlCrate;
+using System.Windows.Forms;
 
-namespace BrawlBox.NodeWrappers
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MDef)]
     internal class MDefWrapper : GenericWrapper

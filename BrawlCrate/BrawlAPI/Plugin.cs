@@ -1,11 +1,12 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.ResourceNodes;
 using Microsoft.Scripting.Hosting;
 using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlCrate.API
+namespace BrawlCrate.BrawlAPI
 {
     public class PluginScript
     {

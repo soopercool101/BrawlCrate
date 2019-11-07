@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.Types;
 using OpenTK.Graphics.OpenGL;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes
 {
     public unsafe class MoveDefMiscNode : MoveDefEntryNode
     {

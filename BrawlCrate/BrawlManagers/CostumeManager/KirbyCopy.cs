@@ -1,8 +1,9 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager
 {
     public static class KirbyCopy
     {

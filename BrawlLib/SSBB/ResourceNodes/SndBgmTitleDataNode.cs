@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBB.Types;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 

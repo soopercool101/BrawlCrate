@@ -1,5 +1,8 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Models;
 using System;
@@ -9,7 +12,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace BrawlLib.Modeling
+namespace BrawlLib.Modeling.Collada
 {
     public unsafe partial class Collada
     {
@@ -490,7 +493,7 @@ namespace BrawlLib.Modeling
             {
                 if (p._vertices.Count > pIndex[i])
                 {
-                    _normRemap.Add(Array.IndexOf(_normals,
+                    _normRemap.Add(Array.IndexOf((Array) _normals,
                         p._vertices[pIndex[i]].GetMatrix().GetRotationMatrix() * pData[i]));
                 }
             }

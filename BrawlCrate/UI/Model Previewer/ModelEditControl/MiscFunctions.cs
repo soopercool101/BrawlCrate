@@ -1,16 +1,25 @@
-﻿using BrawlCrate;
-using BrawlCrate.NodeWrappers;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.Editors;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.ResourceNodes.SCN0;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using BrawlLib.Wii.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 {
     public partial class ModelEditControl : ModelEditorBase
     {
@@ -113,16 +122,16 @@ namespace System.Windows.Forms
         public void CheckDimensions()
         {
             int totalWidth = animEditors.Width;
-            Drawing.Size s = new Drawing.Size(animCtrlPnl.Width, animEditors.Height);
+            System.Drawing.Size s = new System.Drawing.Size(animCtrlPnl.Width, animEditors.Height);
             if (_currentControl != null && _currentControl.Visible)
             {
                 s = _currentControl.Visible ? _currentControl is SCN0Editor ? scn0Editor.GetDimensions() :
                     _currentControl.MinimumSize :
-                    !weightEditor.Visible && !vertexEditor.Visible ? new Drawing.Size(0, 0) : s;
+                    !weightEditor.Visible && !vertexEditor.Visible ? new System.Drawing.Size(0, 0) : s;
             }
             else if (!weightEditor.Visible && !vertexEditor.Visible)
             {
-                s = new Drawing.Size(0, 0);
+                s = new System.Drawing.Size(0, 0);
             }
             else if (weightEditor.Visible)
             {
@@ -219,7 +228,7 @@ namespace System.Windows.Forms
         {
             if (_currentControl is SCN0Editor)
             {
-                Drawing.Size s = scn0Editor.GetDimensions();
+                System.Drawing.Size s = scn0Editor.GetDimensions();
                 animEditors.Height = s.Height;
                 animCtrlPnl.Width = s.Width;
             }
@@ -729,7 +738,7 @@ namespace System.Windows.Forms
             SCN0FogNode._generateTangents = settings.GenTansFog;
             SCN0CameraNode._generateTangents = settings.GenTansCam;
 
-            string applicationFolder = IO.Path.GetDirectoryName(Reflection.Assembly.GetEntryAssembly().Location);
+            string applicationFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 
             string t = settings._screenCapPath;
             ScreenCapBgLocText.Text = !string.IsNullOrEmpty(t) ? t : applicationFolder + "\\ScreenCaptures";

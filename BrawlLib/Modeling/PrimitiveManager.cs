@@ -1,14 +1,19 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.Modeling.Triangle_Converter;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using UnsafeBuffer = BrawlLib.Internal.UnsafeBuffer;
+using Vector2 = BrawlLib.Internal.Vector2;
+using Vector3 = BrawlLib.Internal.Vector3;
 
 namespace BrawlLib.Modeling
 {
@@ -1857,7 +1862,7 @@ namespace BrawlLib.Modeling
         {
             Facepoint[] _facepoints = new Facepoint[_pointCount];
 
-            bool isModelImport = Collada.CurrentModel != null;
+            bool isModelImport = Collada.Collada.CurrentModel != null;
             if (isModelImport)
             {
                 ushort* pIndex = (ushort*) _indices.Address;
@@ -1904,12 +1909,12 @@ namespace BrawlLib.Modeling
                         RGBAPixel* pIn2 = (RGBAPixel*) _faceData[x].Address;
                         if (isModelImport)
                         {
-                            if (Collada._importOptions._useOneNode)
+                            if (Collada.Collada._importOptions._useOneNode)
                             {
                                 for (int i = 0; i < _pointCount; i++)
                                 {
                                     _facepoints[i]._colorIndices[x - 2] =
-                                        Array.IndexOf(Collada._importOptions._singleColorNodeEntries, *pIn2++);
+                                        Array.IndexOf(Collada.Collada._importOptions._singleColorNodeEntries, *pIn2++);
                                 }
                             }
                             else
@@ -1918,7 +1923,7 @@ namespace BrawlLib.Modeling
                                 {
                                     _facepoints[i]._colorIndices[x - 2] = Array
                                                                           .IndexOf(
-                                                                              ((MDL0ObjectNode) ((MDL0Node) Collada
+                                                                              ((MDL0ObjectNode) ((MDL0Node) Collada.Collada
                                                                                       .CurrentModel)
                                                                                   ._objList[_newClrObj[x - 2]])
                                                                               ._manager.GetColors(x - 2, false),

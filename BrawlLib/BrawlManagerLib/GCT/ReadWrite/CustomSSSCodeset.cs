@@ -1,11 +1,13 @@
-﻿using System;
+﻿using BrawlLib.BrawlManagerLib.GCT.ReadOnly;
+using BrawlLib.BrawlManagerLib.Songs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.GCT.ReadWrite
 {
     /// <summary>
     /// Allows read-write access to the Custom SSS code, and read-only access to some other codes.

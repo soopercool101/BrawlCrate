@@ -1,7 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Subspace.Sound
 {
     //Alot of this was reused from STPM
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

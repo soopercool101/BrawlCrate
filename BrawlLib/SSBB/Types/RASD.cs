@@ -1,7 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct RASD //Align all data to 0x20

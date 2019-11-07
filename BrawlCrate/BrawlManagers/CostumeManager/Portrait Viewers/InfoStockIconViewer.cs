@@ -1,10 +1,10 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Drawing;
 using System.IO;
-using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 {
     public class InfoStockIconViewer : PortraitViewer
     {

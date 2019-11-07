@@ -1,5 +1,8 @@
 ﻿using BrawlCrate.NodeWrappers;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +10,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace BrawlCrate
+namespace BrawlCrate.UI
 {
     public class ResourceTree : TreeViewMS
     {

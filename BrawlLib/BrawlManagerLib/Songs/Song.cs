@@ -1,4 +1,4 @@
-﻿namespace BrawlManagerLib
+﻿namespace BrawlLib.BrawlManagerLib.Songs
 {
     public class Song
     {

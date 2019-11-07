@@ -41,9 +41,10 @@
 
 #endregion
 
+using BrawlLib.Internal;
 using System;
 
-namespace Gif.Components
+namespace BrawlLib.Imaging.GIF
 {
     public class NeuQuant
     {

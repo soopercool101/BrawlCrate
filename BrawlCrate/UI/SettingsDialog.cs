@@ -1,4 +1,7 @@
 ﻿using BrawlCrate.Discord;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Controls;
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB;
 using System;
 using System.Collections.Generic;
@@ -6,7 +9,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlCrate
+namespace BrawlCrate.UI
 {
     internal class SettingsDialog : Form
     {
@@ -428,7 +431,7 @@ namespace BrawlCrate
             this.chkBoxAutoPlayAudio = new System.Windows.Forms.CheckBox();
             this.grpBoxMainFormGeneral = new System.Windows.Forms.GroupBox();
             this.lblRecentFiles = new System.Windows.Forms.Label();
-            this.recentFileCountBox = new System.Windows.Forms.NumericInputBox();
+            this.recentFileCountBox = new NumericInputBox();
             this.grpBoxFileNameDisplayGeneral = new System.Windows.Forms.GroupBox();
             this.rdoShowShortName = new System.Windows.Forms.RadioButton();
             this.rdoShowFullPath = new System.Windows.Forms.RadioButton();
@@ -1839,7 +1842,7 @@ namespace BrawlCrate
         private void BtnPythonBrowse_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (VistaFolderBrowserDialog f = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
             using (FolderBrowserDialog f = new FolderBrowserDialog())
 #endif
@@ -1854,7 +1857,7 @@ namespace BrawlCrate
 
         private void BtnPythonDetect_Click(object sender, EventArgs e)
         {
-            API.BrawlAPI.PythonInstall(true, true);
+            BrawlAPI.BrawlAPI.PythonInstall(true, true);
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
         }
 
@@ -1898,7 +1901,7 @@ namespace BrawlCrate
 
         private void BtnFSharpDetect_Click(object sender, EventArgs e)
         {
-            API.BrawlAPI.FSharpInstall(true, true);
+            BrawlAPI.BrawlAPI.FSharpInstall(true, true);
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
         }
 
@@ -1936,7 +1939,7 @@ namespace BrawlCrate
         private void BtnManagerPathBrowse_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (VistaFolderBrowserDialog f = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
             using (FolderBrowserDialog f = new FolderBrowserDialog())
 #endif

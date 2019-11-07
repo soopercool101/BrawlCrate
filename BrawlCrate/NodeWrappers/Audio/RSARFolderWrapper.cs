@@ -1,9 +1,12 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlCrate.UI;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.RSAR;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_References;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Audio
 {
     [NodeWrapper(ResourceType.RSARFolder)]
     public class RSARFolderWrapper : GenericWrapper
