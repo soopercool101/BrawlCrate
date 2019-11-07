@@ -3,11 +3,9 @@ using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB;
-using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.Animations;
 using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.ResourceNodes.Graphics;
@@ -17,6 +15,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 {

@@ -619,7 +619,7 @@ namespace BrawlCrate.UI
 #if DEBUG
                 else if (ShowHex && !(node is RELEntryNode || node is RELNode) && node.WorkingUncompressed.Length > 0)
                 {
-                    hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
+                    hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream(
                             (byte*)node.WorkingUncompressed.Address,
                             node.WorkingUncompressed.Length,
                             node.WorkingUncompressed.Length,

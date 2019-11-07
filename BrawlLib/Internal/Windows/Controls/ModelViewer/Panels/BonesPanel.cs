@@ -1,12 +1,15 @@
 ﻿using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
 {

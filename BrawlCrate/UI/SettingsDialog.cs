@@ -1,13 +1,16 @@
 ﻿using BrawlCrate.Discord;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Controls;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Windows.Forms;
+
+#if !MONO
+    using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate.UI
 {

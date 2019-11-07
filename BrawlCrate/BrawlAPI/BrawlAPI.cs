@@ -1,6 +1,5 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlCrate.UI;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB.ResourceNodes;
 using IronPython.Hosting;
 using IronPython.Runtime.Exceptions;
@@ -13,6 +12,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate.BrawlAPI
 {

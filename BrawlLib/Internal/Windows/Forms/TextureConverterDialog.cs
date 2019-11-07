@@ -16,9 +16,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Windows.Media.Imaging;
 #if !MONO
-
+    using System.Windows.Media.Imaging;
 #endif
 
 namespace BrawlLib.Internal.Windows.Forms

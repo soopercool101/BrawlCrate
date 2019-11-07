@@ -5,7 +5,6 @@ using BrawlLib.Internal;
 using BrawlLib.Internal.Audio;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -13,11 +12,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using BrawlLib.Modeling;
 using BrawlLib.Modeling.Collada;
 using BrawlLib.SSBB.ResourceNodes.Archives;
 using System.Collections.Specialized;
-using System.Configuration;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate
 {

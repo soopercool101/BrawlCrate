@@ -5,7 +5,6 @@ using BrawlLib.BrawlManagerLib.GCT;
 using BrawlLib.BrawlManagerLib.Songs;
 using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.MDL0;
@@ -18,6 +17,10 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate.BrawlManagers.StageManager
 {

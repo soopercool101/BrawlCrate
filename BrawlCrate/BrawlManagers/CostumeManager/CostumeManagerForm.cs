@@ -1,7 +1,6 @@
 ﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
 using BrawlCrate.UI;
 using BrawlLib.BrawlManagerLib;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB.ResourceNodes.Archives;
 using System;
 using System.Collections.Generic;
@@ -9,6 +8,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate.BrawlManagers.CostumeManager
 {

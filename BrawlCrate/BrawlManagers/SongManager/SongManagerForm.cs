@@ -3,7 +3,6 @@ using BrawlCrate.UI;
 using BrawlLib.BrawlManagerLib;
 using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
 using BrawlLib.BrawlManagerLib.Songs;
-using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,10 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate.BrawlManagers.SongManager
 {
