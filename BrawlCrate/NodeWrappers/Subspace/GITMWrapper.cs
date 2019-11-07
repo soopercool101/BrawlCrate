@@ -1,4 +1,5 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Objects;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

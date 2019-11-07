@@ -1867,7 +1867,7 @@ namespace BrawlCrate.UI
         private void BtnPythonBrowse_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog
+            using (VistaFolderBrowserDialog f = new VistaFolderBrowserDialog
                 {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog f = new FolderBrowserDialog())
@@ -1965,7 +1965,7 @@ namespace BrawlCrate.UI
         private void BtnManagerPathBrowse_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog
+            using (VistaFolderBrowserDialog f = new VistaFolderBrowserDialog
                 {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog f = new FolderBrowserDialog())

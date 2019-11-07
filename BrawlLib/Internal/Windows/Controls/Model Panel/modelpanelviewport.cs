@@ -570,7 +570,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                             if (!only)
                             {
                                 GL.Color4(current ? Color.DarkOrange : Color.Gray);
-                                GL.Begin(PrimitiveType.LineLoop);
+                                GL.Begin(BeginMode.LineLoop);
                                 GL.Vertex2(0, 0);
                                 GL.Vertex2(0, Height);
                                 GL.Vertex2(Width, Height);
@@ -617,7 +617,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                 GL.Enable(EnableCap.LineStipple);
                 GL.LineStipple(1, 0x0F0F);
                 GL.Color4(Color.Blue);
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.Vertex2(_selStart.X, _selStart.Y);
                 GL.Vertex2(_selEnd.X, _selStart.Y);
                 GL.Vertex2(_selEnd.X, _selEnd.Y);
@@ -740,7 +740,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                             break;
                     }
 
-                    GL.Begin(PrimitiveType.Quads);
+                    GL.Begin(BeginMode.Quads);
 
                     GL.TexCoord2(0.0f, 0.0f);
                     GL.Vertex2(&points[0]);

@@ -31,7 +31,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
         public virtual unsafe void modelPanel1_PostRender(ModelPanelViewport vp)
         {
             GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
             GL.Disable(EnableCap.Lighting);
 
             if (_targetModels != null)
@@ -101,7 +101,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                     {
                         case LightType.Spotlight:
                         case LightType.Directional:
-                            GL.Begin(PrimitiveType.Lines);
+                            GL.Begin(BeginMode.Lines);
                             GL.Color3((Color) l.GetColor(frame, 0));
                             GL.Vertex3((OpenTK.Vector3) start);
                             if (l.SpecularEnabled)
@@ -207,7 +207,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                 }
 
                 GL.Color3(Color.Green);
-                GL.Begin(PrimitiveType.Lines);
+                GL.Begin(BeginMode.Lines);
 
                 GL.Vertex3((OpenTK.Vector3) start);
                 GL.Vertex3((OpenTK.Vector3) end);
@@ -398,7 +398,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.Color4(selection._hiCirc || selection._snapCirc ? Color.Yellow : Color.Gray);
 
-            GL.Begin(PrimitiveType.LineLoop);
+            GL.Begin(BeginMode.LineLoop);
 
             GL.Vertex2(-0.5f, -0.5f);
             GL.Vertex2(-0.5f, 0.5f);
@@ -574,7 +574,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             GL.Disable(EnableCap.CullFace);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //X
 
@@ -616,7 +616,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(_axisLDist, 0.0f, 0.0f);
             GL.Vertex3(_dst, _apthm, -_apthm);
@@ -636,7 +636,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Y
 
@@ -678,7 +678,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, _axisLDist, 0.0f);
             GL.Vertex3(_apthm, _dst, -_apthm);
@@ -698,7 +698,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Z
 
@@ -740,7 +740,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, 0.0f, _axisLDist);
             GL.Vertex3(_apthm, -_apthm, _dst);
@@ -778,7 +778,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             GL.Disable(EnableCap.CullFace);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //X
             if (selection._snapY && selection._snapZ || selection._hiY && selection._hiZ)
@@ -809,7 +809,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(_axisLDist, 0.0f, 0.0f);
             GL.Vertex3(_dst, _apthm, -_apthm);
@@ -829,7 +829,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Y
             if (selection._snapZ && selection._snapX || selection._hiZ && selection._hiX)
@@ -860,7 +860,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, _axisLDist, 0.0f);
             GL.Vertex3(_apthm, _dst, -_apthm);
@@ -880,7 +880,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             //Z
             if (selection._snapX && selection._snapY || selection._hiX && selection._hiY)
@@ -911,7 +911,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Triangles);
+            GL.Begin(BeginMode.Triangles);
 
             GL.Vertex3(0.0f, 0.0f, _axisLDist);
             GL.Vertex3(_apthm, -_apthm, _dst);
@@ -1324,7 +1324,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                 float f = (int) e;
                 float diff = (float) Math.Round(e - f, 1);
 
-                GL.Begin(PrimitiveType.Lines);
+                GL.Begin(BeginMode.Lines);
                 for (i = 0; i < f; i++)
                 {
                     GL.Vertex2(Math.Cos(i * Maths._deg2radf), Math.Sin(i * Maths._deg2radf));
@@ -1360,7 +1360,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                 f = (int) e;
                 diff = (float) Math.Round(e - f, 1);
 
-                GL.Begin(PrimitiveType.Lines);
+                GL.Begin(BeginMode.Lines);
                 for (i = 0; i < f; i++)
                 {
                     GL.Vertex2(Math.Cos(i * Maths._deg2radf), Math.Sin(i * Maths._deg2radf));
@@ -1418,7 +1418,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
             GL.Color4(_floorHue);
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.TexCoord2(0.0f, 0.0f);
             GL.Vertex3(-e, 0.0f, -e);
