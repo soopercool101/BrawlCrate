@@ -897,13 +897,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal KeyframeCollection _keyframes;
 
         [DisplayName("Uncompressed Size (Bytes)")]
-        public override uint UncompressedSize
-        {
-            get
-            {
-                return (uint)(AnimationConverter.CalculateCHR0Size(Keyframes, out _, out _) + _entryLen);
-            }
-        }
+        public override uint UncompressedSize => (uint)(AnimationConverter.CalculateCHR0Size(Keyframes, out _, out _) + _entryLen);
 
         [Browsable(false)]
         public KeyframeCollection Keyframes
