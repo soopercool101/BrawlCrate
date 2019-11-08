@@ -56,7 +56,14 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             portraitViewers = new List<PortraitViewer>
                 {cssPortraitViewer1, resultPortraitViewer1, battlePortraitViewer1, infoStockIconViewer1};
 
+            cssPortraitViewer1.NamePortraitPreview = nameportraitPreviewToolStripMenuItem.Checked;
+            modelManager1.ZoomOut = defaultZoomLevelToolStripMenuItem.Checked;
+            pmap = new PortraitMap(this);
+            readDir();
+        }
 
+        private void readDir()
+        {
             if (!new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter")).Exists)
             {
                 if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/fighter")).Exists)
@@ -73,14 +80,6 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                 }
             }
 
-            cssPortraitViewer1.NamePortraitPreview = nameportraitPreviewToolStripMenuItem.Checked;
-            modelManager1.ZoomOut = defaultZoomLevelToolStripMenuItem.Checked;
-            pmap = new PortraitMap(this);
-            readDir();
-        }
-
-        private void readDir()
-        {
             Text = _title + " - " + CurrentDirectory;
 
             pmap.ClearAll();

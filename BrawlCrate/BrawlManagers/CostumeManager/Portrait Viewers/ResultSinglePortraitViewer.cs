@@ -66,7 +66,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
                 if (bres_cache[i] != null && bres_cache[i].IsDirty)
                 {
                     bres_cache[i].Merge();
-                    bres_cache[i].Export("../menu/common/char_bust_tex/MenSelchrFaceB" + i.ToString("D2") + "0.brres");
+                    bres_cache[i].Export(Path.Combine(currentDirectory, "menu/common/char_bust_tex/MenSelchrFaceB" + i.ToString("D2") + "0.brres"));
                 }
             }
         }
