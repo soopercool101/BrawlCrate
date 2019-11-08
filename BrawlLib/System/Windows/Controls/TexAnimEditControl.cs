@@ -344,7 +344,7 @@ namespace System.Windows.Forms
             numScaleY.Margin = new Padding(0);
             numScaleY.Name = "numScaleY";
             numScaleY.Size = new Drawing.Size(70, 20);
-            numScaleY.TabIndex = 3;
+            numScaleY.TabIndex = 101;
             numScaleY.Text = "0";
             numScaleY.ValueChanged += new EventHandler(BoxChanged);
             // 
@@ -355,7 +355,7 @@ namespace System.Windows.Forms
             numRot.Margin = new Padding(0, 10, 0, 10);
             numRot.Name = "numRot";
             numRot.Size = new Drawing.Size(70, 20);
-            numRot.TabIndex = 6;
+            numRot.TabIndex = 104;
             numRot.Text = "0";
             numRot.ValueChanged += new EventHandler(BoxChanged);
             // 
@@ -366,7 +366,7 @@ namespace System.Windows.Forms
             numTransX.Margin = new Padding(0, 10, 0, 10);
             numTransX.Name = "numTransX";
             numTransX.Size = new Drawing.Size(70, 20);
-            numTransX.TabIndex = 9;
+            numTransX.TabIndex = 102;
             numTransX.Text = "0";
             numTransX.ValueChanged += new EventHandler(BoxChanged);
             // 
@@ -377,7 +377,7 @@ namespace System.Windows.Forms
             numTransY.Margin = new Padding(0, 10, 0, 10);
             numTransY.Name = "numTransY";
             numTransY.Size = new Drawing.Size(70, 20);
-            numTransY.TabIndex = 10;
+            numTransY.TabIndex = 103;
             numTransY.Text = "0";
             numTransY.ValueChanged += new EventHandler(BoxChanged);
             // 
@@ -388,7 +388,7 @@ namespace System.Windows.Forms
             numScaleX.Margin = new Padding(0, 10, 0, 10);
             numScaleX.Name = "numScaleX";
             numScaleX.Size = new Drawing.Size(70, 20);
-            numScaleX.TabIndex = 11;
+            numScaleX.TabIndex = 100;
             numScaleX.Text = "0";
             numScaleX.ValueChanged += new EventHandler(BoxChanged);
             // 
