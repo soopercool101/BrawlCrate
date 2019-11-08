@@ -69,7 +69,7 @@ $WEBHOOK_DATA="{
     ""color"": $EMBED_COLOR,
     ""author"": {
       ""name"": ""Build #$env:APPVEYOR_BUILD_NUMBER.$env:APPVEYOR_JOB_NUMBER $STATUS_MESSAGE - $env:APPVEYOR_REPO_NAME"",
-      ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/$env:APPVEYOR_BUILD_ID"",
+      ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/builds/$env:APPVEYOR_BUILD_ID"",
       ""icon_url"": ""$AVATAR""
     },
     ""title"": ""$COMMIT_SUBJECT"",
