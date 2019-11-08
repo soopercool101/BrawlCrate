@@ -23,7 +23,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
             ResourceNode bres;
             if (!bres_cache.TryGetValue(index, out bres))
             {
-                string f = "../info/portrite/InfFace" + tex_number + ".brres";
+                string f = Path.Combine(currentDirectory, "info/portrite/InfFace" + tex_number + ".brres");
                 if (new FileInfo(f).Exists)
                 {
                     bres_cache[index] = bres = (BRRESNode) NodeFactory.FromFile(null, f);
@@ -72,7 +72,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
                 if (bres_cache[i] != null && bres_cache[i].IsDirty)
                 {
                     bres_cache[i].Merge();
-                    bres_cache[i].Export(Path.Combine(currentDirectory, "/info/portrite/InfFace" + i.ToString("D3") + ".brres"));
+                    bres_cache[i].Export(Path.Combine(currentDirectory, "info/portrite/InfFace" + i.ToString("D3") + ".brres"));
                 }
             }
         }

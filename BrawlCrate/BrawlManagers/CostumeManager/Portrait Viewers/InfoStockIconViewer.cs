@@ -55,15 +55,16 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 
         public override void UpdateDirectory(string directory)
         {
-            if (File.Exists(Path.Combine(directory, "/info2/info.pac")))
+            currentDirectory = directory;
+            if (File.Exists(Path.Combine(directory, "info2/info.pac")))
             {
-                string path = Path.Combine(directory, "/info2/info.pac");
+                string path = Path.Combine(directory, "info2/info.pac");
                 info_en = NodeFactory.FromFile(null, path);
                 _openFilePath = path;
             }
-            else if (File.Exists(Path.Combine(directory, "/info2/info_en.pac")))
+            else if (File.Exists(Path.Combine(directory, "info2/info_en.pac")))
             {
-                string path = Path.Combine(directory, "/info2/info_en.pac");
+                string path = Path.Combine(directory, "info2/info_en.pac");
                 info_en = NodeFactory.FromFile(null, path);
                 _openFilePath = path;
             }
