@@ -236,9 +236,9 @@ namespace BrawlLib.BrawlManagerLib.Songs
             Open(new FileInfo(LastFileCalledFor));
         }
 
-        public string findInfoFile()
+        public string findInfoFile(string directory)
         {
-            return songNameBar.findInfoFile();
+            return songNameBar.findInfoFile(directory);
         }
 
         public bool IsInfoBarDirty()

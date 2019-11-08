@@ -171,62 +171,23 @@ namespace BrawlCrate.BrawlManagers.SongManager
             CurrentDirectory = newpath;                                   // Update the program's working directory
             Text = Text.Substring(0, Text.IndexOf('-')) + "- " + newpath; // Update titlebar
 
-            DirectoryInfo dirInfo = new DirectoryInfo(CurrentDirectory);
-            RightControl = ChooseLabel;
-            brstmFiles = dirInfo.GetFiles("*.brstm");
-
-            // Special code for the root directory of a drive
-            if (brstmFiles.Length == 0)
+            if (!new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter")).Exists)
             {
-                foreach (string path in new[]
+                if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/fighter")).Exists)
                 {
-                    "\\private\\wii\\app\\RSBE\\pf\\sound\\strm",
-                    "\\projectm\\pf\\sound\\strm"
-                })
-                {
-                    DirectoryInfo search = new DirectoryInfo(dirInfo.FullName + path);
-                    if (search.Exists)
-                    {
-                        changeDirectory(
-                            search); // Change to the typical song folder used by the FPC, if it exists on the drive
-                        return;
-                    }
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/");
                 }
-
-                string findStrmFolder(string dir)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/projectm/pf/fighter")).Exists)
                 {
-                    if (dir.EndsWith("\\strm"))
-                    {
-                        return dir;
-                    }
-
-                    try
-                    {
-                        foreach (string subdir in Directory.EnumerateDirectories(dir))
-                        {
-                            string possible = findStrmFolder(subdir);
-                            if (Directory.Exists(possible))
-                            {
-                                return possible;
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        // ignored
-                    }
-
-                    return null;
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "/projectm/pf/");
                 }
-
-                string strmDir = findStrmFolder(CurrentDirectory);
-                if (strmDir != null && strmDir != CurrentDirectory)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/pf/fighter")).Exists)
                 {
-                    changeDirectory(strmDir);
-                    return;
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "/pf/");
                 }
             }
 
+            RightControl = ChooseLabel;
             refreshDirectory();
             findGCT();
         }
@@ -259,7 +220,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         {
             int selected = listBox1.SelectedIndex;
 
-            DirectoryInfo dir = new DirectoryInfo(CurrentDirectory);
+            DirectoryInfo dir = new DirectoryInfo(Path.Combine(CurrentDirectory, "sound", "strm"));
             RightControl = ChooseLabel;
             brstmFiles = dir.GetFiles("*.brstm");
 
@@ -321,7 +282,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
                 listBox1.SelectedIndex = listBox1.Items.Count - 1;
             }
 
-            statusToolStripMenuItem.Text = songPanel1.findInfoFile();
+            statusToolStripMenuItem.Text = songPanel1.findInfoFile(CurrentDirectory);
         }
 
         private void closing(object sender, FormClosingEventArgs e)
@@ -635,14 +596,14 @@ namespace BrawlCrate.BrawlManagers.SongManager
             string mu_menumain_path = null;
             string[] lookIn =
             {
-                "../../menu2/mu_menumain.pac",
-                "../../menu2/mu_menumain_en.pac",
-                "../../../pfmenu2/mu_menumain.pac",
-                "../../../pfmenu2/mu_menumain_en.pac"
+                "menu2/mu_menumain.pac",
+                "menu2/mu_menumain_en.pac",
+                "pfmenu2/mu_menumain.pac",
+                "pfmenu2/mu_menumain_en.pac"
             };
             foreach (string path in lookIn)
             {
-                if (File.Exists(path))
+                if (File.Exists(Path.Combine(CurrentDirectory, path)))
                 {
                     mu_menumain_path = path;
                     break;

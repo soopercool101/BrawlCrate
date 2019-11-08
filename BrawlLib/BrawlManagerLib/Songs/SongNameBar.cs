@@ -104,7 +104,7 @@ namespace BrawlLib.BrawlManagerLib.Songs
         /// This function finds the new info.pac and common2.pac. It should be called whenever you change the working directory.
         /// It also clears the list of edited ("dirty") strings, and records the current names (for the "restore" button).
         /// </summary>
-        public string findInfoFile()
+        public string findInfoFile(string directory)
         {
             _index = -1;
 
@@ -114,10 +114,10 @@ namespace BrawlLib.BrawlManagerLib.Songs
 
             string tempfile = Path.GetTempFileName();
             string[] sndBgmTitleDataPaths =
-                {"..\\..\\system\\common2.pac", "..\\..\\system\\common2_en.pac", "..\\common2.pac"};
+                {"system\\common2.pac", "system\\common2_en.pac", "common2.pac"};
             foreach (string relativepath in sndBgmTitleDataPaths)
             {
-                string s = Path.GetFullPath(relativepath);
+                string s = Path.Combine(directory, relativepath);
                 if (new FileInfo(s).Exists)
                 {
                     File.Copy(s, tempfile, true);
@@ -175,19 +175,20 @@ namespace BrawlLib.BrawlManagerLib.Songs
             }
             else
             {
-                string[] infopaths = {"..\\..\\info2\\info.pac", "..\\..\\info2\\info_en.pac", "..\\info.pac"};
+                string[] infopaths = {"info2\\info.pac", "info2\\info_en.pac", "info.pac"};
 
                 foreach (string relativepath in infopaths)
                 {
                     if (info == null)
                     {
-                        string s = Path.GetFullPath(relativepath);
+                        string s = Path.Combine(directory, relativepath);
                         if (new FileInfo(s).Exists)
                         {
                             _currentFile = s;
                             File.Copy(s, tempfile, true);
                             info_pac = NodeFactory.FromFile(null, tempfile);
                             info = (MSBinNode) info_pac.FindChild("Misc Data [140]", true);
+                            break;
                         }
                     }
                 }
@@ -323,7 +324,7 @@ namespace BrawlLib.BrawlManagerLib.Songs
         {
             SongIndexEntry titleEntry = common2_titledata.FirstOrDefault(c => c.Index == _index);
             TextBoxText = titleEntry == null
-                ? "Title index not found in MiscDat[13] in common2"
+                ? "Title index not found in Misc Data [13] in common2"
                 : (from s in SongIDMap.Songs
                    where s.ID == titleEntry.ID
                    select s.DefaultName).First();

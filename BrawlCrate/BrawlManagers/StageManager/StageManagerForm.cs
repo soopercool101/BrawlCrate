@@ -552,7 +552,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
             stageInfoControl1.setStageLabels("", "", "");
             stageInfoControl1.RelFile = null;
 
-            Console.WriteLine((string) songPanel1.findInfoFile());
+            Console.WriteLine((string) songPanel1.findInfoFile(CurrentDirectory));
             songPanel1.CustomSongTitles = portraitViewer1.BestSSS.CNMT.Map;
 
             portraitViewer1.UpdateDirectory(CurrentDirectory);
