@@ -83,7 +83,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             Text = _title + " - " + CurrentDirectory;
 
             pmap.ClearAll();
-            pmap.BrawlExScan(Path.Combine("BrawlEx"));
+            pmap.BrawlExScan(Path.Combine(CurrentDirectory, "BrawlEx"));
 
             int selectedIndex = listBox1.SelectedIndex;
             listBox1.Items.Clear();

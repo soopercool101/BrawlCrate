@@ -247,29 +247,29 @@ namespace BrawlCrate.BrawlManagers.StageManager
 
             _openFilePath = null;
             fileSizeBar.Maximum = 1214283;
-            if (File.Exists("../../menu2/sc_selmap.pac"))
+            if (File.Exists(Path.Combine(dir, "menu2/sc_selmap.pac")))
             {
                 common5 = null;
-                sc_selmap = TempFiles.MakeTempNode("../../menu2/sc_selmap.pac");
-                _openFilePath = "../../menu2/sc_selmap.pac";
+                sc_selmap = TempFiles.MakeTempNode(Path.Combine(dir, "menu2/sc_selmap.pac"));
+                _openFilePath = Path.Combine(dir, "menu2/sc_selmap.pac");
             }
-            else if (File.Exists("../../menu2/sc_selmap_en.pac"))
+            else if (File.Exists(Path.Combine(dir, "menu2/sc_selmap_en.pac")))
             {
                 common5 = null;
-                sc_selmap = TempFiles.MakeTempNode("../../menu2/sc_selmap_en.pac");
-                _openFilePath = "../../menu2/sc_selmap_en.pac";
+                sc_selmap = TempFiles.MakeTempNode(Path.Combine(dir, "menu2/sc_selmap_en.pac"));
+                _openFilePath = Path.Combine(dir, "menu2/sc_selmap_en.pac");
             }
-            else if (File.Exists("../../system/common5.pac"))
+            else if (File.Exists(Path.Combine(dir, "system/common5.pac")))
             {
-                common5 = TempFiles.MakeTempNode("../../system/common5.pac");
+                common5 = TempFiles.MakeTempNode(Path.Combine(dir, "system/common5.pac"));
                 sc_selmap = common5.FindChild("sc_selmap_en", false);
-                _openFilePath = "../../system/common5.pac";
+                _openFilePath = Path.Combine(dir, "system/common5.pac");
             }
-            else if (File.Exists("../../system/common5_en.pac"))
+            else if (File.Exists(Path.Combine(dir, "system/common5_en.pac")))
             {
-                common5 = TempFiles.MakeTempNode("../../system/common5_en.pac");
+                common5 = TempFiles.MakeTempNode(Path.Combine(dir, "system/common5_en.pac"));
                 sc_selmap = common5.FindChild("sc_selmap_en", false);
-                _openFilePath = "../../system/common5_en.pac";
+                _openFilePath = Path.Combine(dir, "system/common5_en.pac");
             }
             else
             {

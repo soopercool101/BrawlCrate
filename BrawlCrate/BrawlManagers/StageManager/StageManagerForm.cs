@@ -147,7 +147,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
                    Program.AssemblyTitleShort.Substring(
                        Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
 
-            moduleFolderLocation = "../../module";
+            moduleFolderLocation = Path.Combine(CurrentDirectory, "module");
 
             // Later commands to change the titlebar assume there is a hyphen in the title somewhere
             Text += " -";
@@ -408,9 +408,9 @@ namespace BrawlCrate.BrawlManagers.StageManager
                 {
                     songContainerPanel.Visible = true;
                     string dir = song.Filename.StartsWith("0000") && cse2xToolStripMenuItem.Checked
-                        ? "../../sound/sfx/"
-                        : "../../sound/strm/";
-                    listBoxSongs.Items.Add(new SongListItem(dir + song.Filename + ".brstm"));
+                        ? "sound/sfx/"
+                        : "sound/strm/";
+                    listBoxSongs.Items.Add(new SongListItem(Path.Combine(CurrentDirectory, dir + song.Filename + ".brstm")));
                     listBoxSongs.SelectedIndex = 0;
                 }
                 else
@@ -489,65 +489,37 @@ namespace BrawlCrate.BrawlManagers.StageManager
 
         private void changeDirectory(DirectoryInfo path)
         {
-            CurrentDirectory =
-                path.FullName;                                                  // Update the program's working directory
-            Text = Text.Substring(0, Text.IndexOf('-')) + "- " + path.FullName; // Update titlebar
+            CurrentDirectory = path.FullName; // Update the program's working directory
+            if (!new DirectoryInfo(Path.Combine(CurrentDirectory, "stage")).Exists)
+            {
+                if (new DirectoryInfo(Path.Combine(CurrentDirectory, "private/wii/app/RSBE/pf/stage")).Exists)
+                {
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "private/wii/app/RSBE/pf/");
+                }
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "projectm/pf/stage")).Exists)
+                {
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "projectm/pf/");
+                }
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "pf/stage")).Exists)
+                {
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "pf/");
+                }
+            }
+            moduleFolderLocation = Path.Combine(CurrentDirectory, "module");
+
+            Text = Text.Substring(0, Text.IndexOf('-')) + "- " + CurrentDirectory; // Update titlebar
 
             RightControl = null;
 
-            pacFiles = path.GetFiles("*.pac");
-
-            // Special code for the root directory of a drive
-            if (pacFiles.Length == 0)
+            path = new DirectoryInfo(Path.Combine(CurrentDirectory, "stage", "melee"));
+            if (!path.Exists)
             {
-                foreach (string subpath in new[]
-                {
-                    "\\private\\wii\\app\\RSBE\\pf\\stage\\melee",
-                    "\\projectm\\pf\\stage\\melee"
-                })
-                {
-                    DirectoryInfo search = new DirectoryInfo(path.FullName + subpath);
-                    if (search.Exists)
-                    {
-                        changeDirectory(
-                            search); // Change to the typical stage folder used by the FPC, if it exists on the drive
-                        return;
-                    }
-                }
-
-                string findMeleeFolder(string dir)
-                {
-                    if (dir.EndsWith("\\melee"))
-                    {
-                        return dir;
-                    }
-
-                    try
-                    {
-                        foreach (string subdir in Directory.EnumerateDirectories(dir))
-                        {
-                            string possible = findMeleeFolder(subdir);
-                            if (Directory.Exists(possible))
-                            {
-                                return possible;
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        // ignored
-                    }
-
-                    return null;
-                }
-
-                string meleeDir = findMeleeFolder(CurrentDirectory);
-                if (meleeDir != null && meleeDir != CurrentDirectory)
-                {
-                    changeDirectory(meleeDir);
-                    return;
-                }
+                listBox1.Items.Clear();
+                listBox1.Refresh();
+                return;
             }
+
+            pacFiles = path.GetFiles("*.pac");
 
             stageInfoControl1.setStageLabels("", "", "");
             stageInfoControl1.RelFile = null;
@@ -816,7 +788,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
 
             string relname =
                 StageIDMap.RelNameForPac(f.Name, differentrelsForAlternateStagesPM36ToolStripMenuItem.Checked);
-            FileInfo rel = new FileInfo("../../module/" + relname);
+            FileInfo rel = new FileInfo(Path.Combine("module/" + relname));
             if (rel.Exists)
             {
                 FileOperations.Copy(rel.FullName, thisdir + "/st.rel");
@@ -831,8 +803,9 @@ namespace BrawlCrate.BrawlManagers.StageManager
                 SongsByStageID.ForPac(portraitViewer1.BestSSS, f.Name);
             }
 
-            foreach (string dir in new[] {"../../sound/strm/", "../../sound/sfx/"})
+            foreach (string s in new[] {"sound/strm/", "sound/sfx/"})
             {
+                string dir = Path.Combine(CurrentDirectory, s);
                 if (song != null && File.Exists(dir + song.Filename + ".brstm"))
                 {
                     File.Copy(dir + song.Filename + ".brstm", thisdir + "/song.brstm", true);
@@ -1067,7 +1040,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
 
         private void sameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            moduleFolderLocation = ".";
+            moduleFolderLocation =CurrentDirectory;
             sameToolStripMenuItem.Checked = true;
             moduleToolStripMenuItem.Checked = false;
             if (stageInfoControl1.RelFile != null)
@@ -1078,7 +1051,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
 
         private void moduleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            moduleFolderLocation = "../../module";
+            moduleFolderLocation = Path.Combine(CurrentDirectory, "module");
             sameToolStripMenuItem.Checked = false;
             moduleToolStripMenuItem.Checked = true;
             if (stageInfoControl1.RelFile != null)
@@ -1425,7 +1398,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
             else
             {
                 string basename = listBoxSongs.SelectedItem.ToString();
-                FileInfo fi = new FileInfo("../../sound/strm/" + basename + ".brstm");
+                FileInfo fi = new FileInfo(Path.Combine(CurrentDirectory, "sound/strm/" + basename + ".brstm"));
                 songPanel1.Open(fi);
             }
 
