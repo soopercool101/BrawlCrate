@@ -1,6 +1,4 @@
-﻿using BrawlCrate.NodeWrappers;
-
-namespace BrawlCrate.API
+namespace BrawlCrate.NodeWrappers
 {
     public class PluginWrapper : GenericWrapper
     {
