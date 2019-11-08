@@ -1,4 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;

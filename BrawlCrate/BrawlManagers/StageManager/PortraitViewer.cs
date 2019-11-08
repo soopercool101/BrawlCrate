@@ -1,20 +1,24 @@
-﻿using BrawlLib.SSBB;
+﻿using BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs;
+using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.Wii.Textures;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
-using System.IO;
-using BrawlLib.Wii.Textures;
-using BrawlManagerLib;
-using System.Reflection;
 using System.Diagnostics;
-using BrawlCrate.StageManager.SingleUseDialogs;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public partial class PortraitViewer : UserControl
     {
@@ -563,7 +567,7 @@ namespace BrawlCrate.StageManager
                 length = new FileInfo(_openFilePath).Length;
             }
 
-            fileSizeBar.Value = Math.Min(fileSizeBar.Maximum, (int) length);
+            fileSizeBar.Value = Math.Min((int) fileSizeBar.Maximum, (int) length);
             fileSizeLabel.Text = length + " / " + fileSizeBar.Maximum;
         }
 
@@ -627,7 +631,7 @@ namespace BrawlCrate.StageManager
             Bitmap toEncode = format == WiiPixelFormat.IA4 && BitmapUtilities.HasSolidCorners(newBitmap)
                 ? BitmapUtilities.AlphaSwap(newBitmap)
                 : newBitmap;
-            BrawlLib.IO.FileMap tMap = TextureConverter.Get(format).EncodeTEX0Texture(toEncode, 1);
+            FileMap tMap = TextureConverter.Get(format).EncodeTEX0Texture(toEncode, 1);
             toReplace.ReplaceRaw(tMap);
         }
 

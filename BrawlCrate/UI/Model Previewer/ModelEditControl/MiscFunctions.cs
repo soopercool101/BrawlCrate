@@ -1,14 +1,21 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.Editors;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using BrawlLib.Wii.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 {
     public partial class ModelEditControl : ModelEditorBase
     {
@@ -111,16 +118,16 @@ namespace System.Windows.Forms
         public void CheckDimensions()
         {
             int totalWidth = animEditors.Width;
-            Drawing.Size s = new Drawing.Size(animCtrlPnl.Width, animEditors.Height);
+            System.Drawing.Size s = new System.Drawing.Size(animCtrlPnl.Width, animEditors.Height);
             if (_currentControl != null && _currentControl.Visible)
             {
                 s = _currentControl.Visible ? _currentControl is SCN0Editor ? scn0Editor.GetDimensions() :
                     _currentControl.MinimumSize :
-                    !weightEditor.Visible && !vertexEditor.Visible ? new Drawing.Size(0, 0) : s;
+                    !weightEditor.Visible && !vertexEditor.Visible ? new System.Drawing.Size(0, 0) : s;
             }
             else if (!weightEditor.Visible && !vertexEditor.Visible)
             {
-                s = new Drawing.Size(0, 0);
+                s = new System.Drawing.Size(0, 0);
             }
             else if (weightEditor.Visible)
             {
@@ -217,7 +224,7 @@ namespace System.Windows.Forms
         {
             if (_currentControl is SCN0Editor)
             {
-                Drawing.Size s = scn0Editor.GetDimensions();
+                System.Drawing.Size s = scn0Editor.GetDimensions();
                 animEditors.Height = s.Height;
                 animCtrlPnl.Width = s.Width;
             }
@@ -518,6 +525,21 @@ namespace System.Windows.Forms
             return false;
         }
 
+        private bool HotkeyOverlays()
+        {
+            if (ModelPanel.Focused)
+            {
+                chkAllOverlays.Checked = !chkAllOverlays.Checked;
+                chkItems.Checked = chkAllOverlays.Checked;
+                chkSpawns.Checked = chkAllOverlays.Checked;
+                chkBoundaries.Checked = chkAllOverlays.Checked;
+                ModelPanel.Invalidate();
+                return true;
+            }
+
+            return false;
+        }
+
         public override void InitHotkeyList()
         {
             base.InitHotkeyList();
@@ -535,6 +557,7 @@ namespace System.Windows.Forms
                 new HotKeyInfo(Keys.T, false, false, false, HotkeyTranslateTool),
                 new HotKeyInfo(Keys.D0, false, false, false, HotkeyVertexEditor),
                 new HotKeyInfo(Keys.D9, false, false, false, HotkeyWeightEditor),
+                new HotKeyInfo(Keys.D5, false, false, false, HotkeyOverlays)
             };
             _hotkeyList.AddRange(temp);
         }
@@ -560,9 +583,9 @@ namespace System.Windows.Forms
                     {
                         foreach (CollisionPlane plane in obj._planes)
                         {
-                            if (plane._type == CollisionPlaneType.Floor)
+                            if (plane._type == CollisionPlaneType.Floor && plane.IsCharacters)
                             {
-                                if (plane.PointLeft._x < v2._x && plane.PointRight._x > v2._x)
+                                if (plane.PointLeft._x <= v2._x && plane.PointRight._x >= v2._x)
                                 {
                                     float x = v2._x;
                                     float m = (plane.PointLeft._y - plane.PointRight._y)
@@ -648,7 +671,10 @@ namespace System.Windows.Forms
                 _screenCapPath = ScreenCapBgLocText.Text,
                 _liveTexFolderPath = LiveTextureFolderPath.Text,
 
-                _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList(),
+                _bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._bgColor,
+                _stgBgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._stgBgColor,
+
+                _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList()
             };
             return settings;
         }
@@ -688,6 +714,10 @@ namespace System.Windows.Forms
             MDL0BoneNode.DefaultLineColor = (Color) settings._lineColor;
             MDL0BoneNode.DefaultLineDeselectedColor = (Color) settings._lineDeselectedColor;
             _floorHue = (Color) settings._floorColor;
+            foreach (ModelPanelViewportInfo v in settings._viewports)
+            {
+                v._backColor = Program.RootNode is ARCNode a && a.IsStage ? settings._stgBgColor : settings._bgColor;
+            }
 
             int w = (int) settings._rightPanelWidth;
             if (w >= 50)
@@ -705,7 +735,7 @@ namespace System.Windows.Forms
             SCN0FogNode._generateTangents = settings.GenTansFog;
             SCN0CameraNode._generateTangents = settings.GenTansCam;
 
-            string applicationFolder = IO.Path.GetDirectoryName(Reflection.Assembly.GetEntryAssembly().Location);
+            string applicationFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 
             string t = settings._screenCapPath;
             ScreenCapBgLocText.Text = !string.IsNullOrEmpty(t) ? t : applicationFolder + "\\ScreenCaptures";

@@ -1,10 +1,11 @@
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.BrawlManagerLib.Songs;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlManagerLib;
 using System;
 using System.IO;
 using System.Linq;
 
-namespace BrawlCrate.SongManager.SongExport
+namespace BrawlCrate.BrawlManagers.SongManager.SongExport
 {
     internal class SongEditor
     {
@@ -13,7 +14,7 @@ namespace BrawlCrate.SongManager.SongExport
             "RSBE01.gct",
             "/data/gecko/codes/RSBE01.gct",
             "/codes/RSBE01.gct",
-            "../../../../codes/RSBE01.gct",
+            "../../../../codes/RSBE01.gct"
         };
 
         private static readonly string[] MUM_PATHS =

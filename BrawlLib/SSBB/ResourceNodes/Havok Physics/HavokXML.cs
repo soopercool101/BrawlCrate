@@ -7,7 +7,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class HavokXML
     {
-        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings
+            {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
 
         public static void Serialize(HavokNode node, string outFile)
         {
@@ -180,7 +181,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 {"hkSkeleton", new KeyValuePair<string, string>("hkaSkeleton", "0xfec1cedb")},
                 {"hkAnimationContainer", new KeyValuePair<string, string>("hkaAnimationContainer", "0x26859f4c")},
-                {"hkBone", new KeyValuePair<string, string>("hkaBone", "0")},
+                {"hkBone", new KeyValuePair<string, string>("hkaBone", "0")}
             };
     }
 }

@@ -1,6 +1,8 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlLib.Internal;
+using BrawlLib.Modeling;
+using BrawlLib.Modeling.Collada;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +59,7 @@ namespace BrawlLib.Wii.Models
             typeof(MDL0TextureNode), //9, special handling
             typeof(MDL0TextureNode), //10, special handling
             typeof(MDL0FurVecNode),
-            typeof(MDL0FurPosNode),
+            typeof(MDL0FurPosNode)
         };
 
         internal static readonly MR[] OrderBank = new MR[]
@@ -74,7 +76,7 @@ namespace BrawlLib.Wii.Models
             MR.Vertices,
             MR.Normals,
             MR.Colors,
-            MR.UVs,
+            MR.UVs
         };
 
         public static readonly List<MR>[] IndexBank = new List<MR>[]
@@ -309,7 +311,7 @@ namespace BrawlLib.Wii.Models
                 {
                     foreach (ResourceNode r in group.Children)
                     {
-                        form?.Say("Writing " + resType.ToString() + " - " + r.Name);
+                        form?.Say("Writing " + resType + " - " + r.Name);
 
                         len = r._calcSize;
                         r.Rebuild(pData, len, true); //Forced to fix object node ids and align materials
@@ -337,7 +339,7 @@ namespace BrawlLib.Wii.Models
                         {
                             //Console.WriteLine("Rebuilding the " + group.Name);
 
-                            form?.Say("Writing the " + resType.ToString() + " - " + e.Name);
+                            form?.Say("Writing the " + resType + " - " + e.Name);
 
                             len = e._calcSize;
                             e.Rebuild(pData, len, true); //Forced just in case we need to convert to float.

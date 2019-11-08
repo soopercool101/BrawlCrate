@@ -1,5 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Stage_Tables;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -25,11 +25,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         public STDTNode()
         {
             unk0 = 1;
+            _entryOffset = 0x14;
         }
 
         public STDTNode(int numEntries)
         {
             unk0 = 1;
+            _entryOffset = 0x14;
             while (NumEntries < numEntries)
             {
                 EntryList.Add(0);

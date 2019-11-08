@@ -1,4 +1,6 @@
-﻿using OpenTK.Graphics;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Platform;
 using System;
@@ -82,8 +84,8 @@ namespace BrawlLib.OpenGL
             {
                 // Check for GLSL support
                 string[] version = GL.GetString(StringName.Version).Split('.', ' ');
-                _versionMax = int.Parse(version[0].ToString());
-                _versionMin = int.Parse(version[1].ToString());
+                _versionMax = int.Parse(version[0]);
+                _versionMin = int.Parse(version[1]);
 
                 //Need OpenGL 2.1 to use GLSL 120
                 _shadersSupported = !(_versionMax < 2 || _versionMax == 2 && _versionMin < 1);
@@ -232,7 +234,7 @@ namespace BrawlLib.OpenGL
 
         public static unsafe void DrawWireframeBox(Vector3 min, Vector3 max)
         {
-            GL.Begin(PrimitiveType.LineStrip);
+            GL.Begin(BeginMode.LineStrip);
 
             GL.Vertex3(max._x, max._y, max._z);
             GL.Vertex3(max._x, max._y, min._z);
@@ -244,7 +246,7 @@ namespace BrawlLib.OpenGL
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             GL.Vertex3(min._x, max._y, max._z);
             GL.Vertex3(max._x, max._y, max._z);
@@ -269,7 +271,7 @@ namespace BrawlLib.OpenGL
 
         public static unsafe void DrawBox(Vector3 p1, Vector3 p2)
         {
-            GL.Begin(PrimitiveType.QuadStrip);
+            GL.Begin(BeginMode.QuadStrip);
 
             GL.Vertex3(p1._x, p1._y, p1._z);
             GL.Vertex3(p1._x, p2._y, p1._z);
@@ -284,7 +286,7 @@ namespace BrawlLib.OpenGL
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.Vertex3(p1._x, p2._y, p1._z);
             GL.Vertex3(p1._x, p2._y, p2._z);
@@ -306,7 +308,7 @@ namespace BrawlLib.OpenGL
 
         public static unsafe void DrawInvertedBox(Vector3 p1, Vector3 p2)
         {
-            GL.Begin(PrimitiveType.QuadStrip);
+            GL.Begin(BeginMode.QuadStrip);
 
             GL.Vertex3(p1._x, p1._y, p1._z);
             GL.Vertex3(p1._x, p2._y, p1._z);
@@ -321,7 +323,7 @@ namespace BrawlLib.OpenGL
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.Vertex3(p2._x, p2._y, p1._z);
             GL.Vertex3(p2._x, p2._y, p2._z);
@@ -366,7 +368,7 @@ namespace BrawlLib.OpenGL
         private static GLDisplayList CreateLine()
         {
             GLDisplayList list = new GLDisplayList();
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             GL.Vertex3(0.0f, 0.0f, 0.0f);
             GL.Vertex3(2.0f, 0.0f, 0.0f);
@@ -387,7 +389,7 @@ namespace BrawlLib.OpenGL
             GLDisplayList list = new GLDisplayList();
             list.Begin();
 
-            GL.Begin(PrimitiveType.LineLoop);
+            GL.Begin(BeginMode.LineLoop);
 
             float angle = 0.0f;
             for (int i = 0; i < 360; i++, angle = i * Maths._deg2radf)
@@ -411,7 +413,7 @@ namespace BrawlLib.OpenGL
             GLDisplayList list = new GLDisplayList();
             list.Begin();
 
-            GL.Begin(PrimitiveType.LineLoop);
+            GL.Begin(BeginMode.LineLoop);
 
             GL.Vertex2(0.0f, 0.0f);
             GL.Vertex2(0.0f, 1.0f);
@@ -435,7 +437,7 @@ namespace BrawlLib.OpenGL
             GLDisplayList list = new GLDisplayList();
             list.Begin();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
 
             GL.Color4(1.0f, 0.0f, 0.0f, 1.0f);
 
@@ -480,7 +482,7 @@ namespace BrawlLib.OpenGL
             GLDisplayList list = new GLDisplayList();
             list.Begin();
 
-            GL.Begin(PrimitiveType.QuadStrip);
+            GL.Begin(BeginMode.QuadStrip);
 
             Vector3 p1 = new Vector3(0);
             Vector3 p2 = new Vector3(0.99f);
@@ -498,7 +500,7 @@ namespace BrawlLib.OpenGL
 
             GL.End();
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
 
             GL.Vertex3(p1._x, p2._y, p1._z);
             GL.Vertex3(p1._x, p2._y, p2._z);
@@ -526,7 +528,7 @@ namespace BrawlLib.OpenGL
             GLDisplayList list = new GLDisplayList();
             list.Begin();
 
-            GL.Begin(PrimitiveType.TriangleFan);
+            GL.Begin(BeginMode.TriangleFan);
 
             GL.Vertex3(0.0f, 0.0f, 0.0f);
 
@@ -595,7 +597,7 @@ namespace BrawlLib.OpenGL
                 theta1 = j * twoPIThroughPrecision - halfPI;
                 theta2 = (j + 1) * twoPIThroughPrecision - halfPI;
 
-                GL.Begin(PrimitiveType.TriangleStrip);
+                GL.Begin(BeginMode.TriangleStrip);
                 for (uint i = 0; i <= precision; i++)
                 {
                     theta3 = i * twoPIThroughPrecision;

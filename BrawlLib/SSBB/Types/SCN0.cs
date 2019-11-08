@@ -1,8 +1,9 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct SCN0v4
@@ -298,7 +299,7 @@ namespace BrawlLib.SSBBTypes
     public enum SCN0AmbLightFixedFlags
     {
         None = 0,
-        FixedLighting = 128,
+        FixedLighting = 128
     }
 
     [Flags]
@@ -349,7 +350,7 @@ namespace BrawlLib.SSBBTypes
         Enabled = 0x1,
         SpecularEnabled = 0x2, //Use NonSpecLightId, SpecularColor, Brightness
         ColorEnabled = 0x4,
-        AlphaEnabled = 0x8,
+        AlphaEnabled = 0x8
     }
 
     [Flags]
@@ -358,7 +359,7 @@ namespace BrawlLib.SSBBTypes
         //All use pos and color
         Point = 0x0,       //Don't use aim, use dist func
         Directional = 0x1, //Use aim
-        Spotlight = 0x2,   //Use aim, spot func and dist func
+        Spotlight = 0x2    //Use aim, spot func and dist func
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -473,7 +474,7 @@ namespace BrawlLib.SSBBTypes
         TwistConstant = 0x1000,
         RotXConstant = 0x2000,
         RotYConstant = 0x4000,
-        RotZConstant = 0x8000,
+        RotZConstant = 0x8000
     }
 
     [Flags]
@@ -481,13 +482,13 @@ namespace BrawlLib.SSBBTypes
     {
         None = 0,
         CameraTypeMask = 1,
-        AlwaysOn = 2,
+        AlwaysOn = 2
     }
 
     public enum SCN0CameraType
     {
         Rotate = 0,
-        Aim = 1,
+        Aim = 1
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

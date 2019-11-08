@@ -84,7 +84,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GDOREntryNode node = new GDOREntryNode
             {
-                Name = "NewEntry",
+                Name = "Door[0]",
                 Trigger0 = "00000100",
                 Trigger1 = "00000100",
                 Trigger2 = "00000100",

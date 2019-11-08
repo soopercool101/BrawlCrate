@@ -5,11 +5,11 @@
 // gOODiDEA, uland.com
 //===============================================================================
 //
-// $Header :		$  
-// $Author :		$
-// $Date   :		$
-// $Revision:		$
-// $History:		$  
+// $Header :        $  
+// $Author :        $
+// $Date   :        $
+// $Revision:        $
+// $History:        $  
 //  
 //===============================================================================
 
@@ -41,29 +41,30 @@
 
 #endregion
 
+using BrawlLib.Internal.Windows.Forms;
 using System;
 using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Gif.Components
+namespace BrawlLib.Imaging.GIF
 {
     public class GifDecoder
     {
         /**
-		 * File read status: No errors.
-		 */
+         * File read status: No errors.
+         */
         public static readonly int STATUS_OK = 0;
 
         /**
-		 * File read status: Error decoding file (may be partially decoded)
-		 */
+         * File read status: Error decoding file (may be partially decoded)
+         */
         public static readonly int STATUS_FORMAT_ERROR = 1;
 
         /**
-		 * File read status: Unable to open source.
-		 */
+         * File read status: Unable to open source.
+         */
         public static readonly int STATUS_OPEN_ERROR = 2;
 
         protected Stream inStream;
@@ -131,11 +132,11 @@ namespace Gif.Components
         }
 
         /**
-		 * Gets display duration for specified frame.
-		 *
-		 * @param n int index of frame
-		 * @return delay in milliseconds
-		 */
+         * Gets display duration for specified frame.
+         *
+         * @param n int index of frame
+         * @return delay in milliseconds
+         */
         public int GetDelay(int n)
         {
             //
@@ -149,39 +150,39 @@ namespace Gif.Components
         }
 
         /**
-		 * Gets the number of frames read from file.
-		 * @return frame count
-		 */
+         * Gets the number of frames read from file.
+         * @return frame count
+         */
         public int GetFrameCount()
         {
             return frameCount;
         }
 
         /**
-		 * Gets the first (or only) image read.
-		 *
-		 * @return BufferedImage containing first frame, or null if none.
-		 */
+         * Gets the first (or only) image read.
+         *
+         * @return BufferedImage containing first frame, or null if none.
+         */
         public Image GetImage()
         {
             return GetFrame(0);
         }
 
         /**
-		 * Gets the "Netscape" iteration count, if any.
-		 * A count of 0 means repeat indefinitiely.
-		 *
-		 * @return iteration count if one was specified, else 1.
-		 */
+         * Gets the "Netscape" iteration count, if any.
+         * A count of 0 means repeat indefinitiely.
+         *
+         * @return iteration count if one was specified, else 1.
+         */
         public int GetLoopCount()
         {
             return loopCount;
         }
 
         /**
-		 * Creates new frame image from current data (and previous
-		 * frames as specified by their disposition codes).
-		 */
+         * Creates new frame image from current data (and previous
+         * frames as specified by their disposition codes).
+         */
         private int[] GetPixels(Bitmap bitmap)
         {
             int[] pixels = new int[3 * image.Width * image.Height];
@@ -219,8 +220,8 @@ namespace Gif.Components
         protected void SetPixels()
         {
             // expose destination image's pixels as int array
-            //		int[] dest =
-            //			(( int ) image.getRaster().getDataBuffer()).getData();
+            //        int[] dest =
+            //            (( int ) image.getRaster().getDataBuffer()).getData();
             int[] dest = GetPixels(bitmap);
 
             // fill in starting image contents based on last image's dispose code
@@ -242,8 +243,8 @@ namespace Gif.Components
 
                 if (lastImage != null)
                 {
-                    //				int[] prev =
-                    //					((DataBufferInt) lastImage.getRaster().getDataBuffer()).getData();
+                    //                int[] prev =
+                    //                    ((DataBufferInt) lastImage.getRaster().getDataBuffer()).getData();
                     int[] prev = GetPixels(new Bitmap(lastImage));
                     Array.Copy(prev, 0, dest, 0, width * height);
                     // copy pixels
@@ -260,7 +261,7 @@ namespace Gif.Components
                         else
                         {
                             c = Color.FromArgb(lastBgColor);
-                            //						c = new Color(lastBgColor); // use given background color
+                            //                        c = new Color(lastBgColor); // use given background color
                         }
 
                         Brush brush = new SolidBrush(c);
@@ -334,10 +335,10 @@ namespace Gif.Components
         }
 
         /**
-		 * Gets the image contents of frame n.
-		 *
-		 * @return BufferedImage representation of frame, or null if n is invalid.
-		 */
+         * Gets the image contents of frame n.
+         *
+         * @return BufferedImage representation of frame, or null if n is invalid.
+         */
         public Image GetFrame(int n)
         {
             Image im = null;
@@ -350,21 +351,21 @@ namespace Gif.Components
         }
 
         /**
-		 * Gets image size.
-		 *
-		 * @return GIF image dimensions
-		 */
+         * Gets image size.
+         *
+         * @return GIF image dimensions
+         */
         public Size GetFrameSize()
         {
             return new Size(width, height);
         }
 
         /**
-		 * Reads GIF image from stream
-		 *
-		 * @param BufferedInputStream containing GIF file.
-		 * @return read status code (0 = no errors)
-		 */
+         * Reads GIF image from stream
+         *
+         * @param BufferedInputStream containing GIF file.
+         * @return read status code (0 = no errors)
+         */
         public int Read(Stream inStream)
         {
             Init();
@@ -392,12 +393,12 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads GIF file from specified file/URL source  
-		 * (URL assumed if name contains ":/" or "file:")
-		 *
-		 * @param name String containing source
-		 * @return read status code (0 = no errors)
-		 */
+         * Reads GIF file from specified file/URL source  
+         * (URL assumed if name contains ":/" or "file:")
+         *
+         * @param name String containing source
+         * @return read status code (0 = no errors)
+         */
         public int Read(string name, Form o)
         {
             owner = o;
@@ -426,9 +427,9 @@ namespace Gif.Components
         }
 
         /**
-		 * Decodes LZW image data into pixel array.
-		 * Adapted from John Cristy's ImageMagick.
-		 */
+         * Decodes LZW image data into pixel array.
+         * Adapted from John Cristy's ImageMagick.
+         */
         protected void DecodeImageData()
         {
             int NullCode = -1;
@@ -597,16 +598,16 @@ namespace Gif.Components
         }
 
         /**
-		 * Returns true if an error was encountered during reading/decoding
-		 */
+         * Returns true if an error was encountered during reading/decoding
+         */
         protected bool Error()
         {
             return status != STATUS_OK;
         }
 
         /**
-		 * Initializes or re-initializes reader
-		 */
+         * Initializes or re-initializes reader
+         */
         protected void Init()
         {
             status = STATUS_OK;
@@ -618,8 +619,8 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads a single byte from the input stream.
-		 */
+         * Reads a single byte from the input stream.
+         */
         protected int Read()
         {
             int curByte = 0;
@@ -636,10 +637,10 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads next variable length block from input.
-		 *
-		 * @return number of bytes stored in "buffer"
-		 */
+         * Reads next variable length block from input.
+         *
+         * @return number of bytes stored in "buffer"
+         */
         protected int ReadBlock()
         {
             blockSize = Read();
@@ -674,11 +675,11 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads color table as 256 RGB integer values
-		 *
-		 * @param ncolors int number of colors to read
-		 * @return int array containing 256 colors (packed ARGB with full alpha)
-		 */
+         * Reads color table as 256 RGB integer values
+         *
+         * @param ncolors int number of colors to read
+         * @return int array containing 256 colors (packed ARGB with full alpha)
+         */
         protected int[] ReadColorTable(int ncolors)
         {
             int nbytes = 3 * ncolors;
@@ -717,8 +718,8 @@ namespace Gif.Components
         private Form owner;
 
         /**
-		 * Main file parser.  Reads GIF content blocks.
-		 */
+         * Main file parser.  Reads GIF content blocks.
+         */
         protected void ReadContents()
         {
             long offset = inStream.Position;
@@ -848,8 +849,8 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads Graphics Control Extension values
-		 */
+         * Reads Graphics Control Extension values
+         */
         protected void ReadGraphicControlExt()
         {
             Read();                         // block size
@@ -867,8 +868,8 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads GIF file header information.
-		 */
+         * Reads GIF file header information.
+         */
         protected void ReadHeader()
         {
             string id = "";
@@ -907,8 +908,8 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads next frame image
-		 */
+         * Reads next frame image
+         */
         protected void ReadImage()
         {
             ix = ReadShort(); // (sub)image position & size
@@ -965,8 +966,8 @@ namespace Gif.Components
             currentFrame++;
 
             // create new image to receive frame data
-            //		image =
-            //			new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB_PRE);
+            //        image =
+            //            new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB_PRE);
 
             bitmap = new Bitmap(width, height);
             image = bitmap;
@@ -983,8 +984,8 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads Logical Screen Descriptor
-		 */
+         * Reads Logical Screen Descriptor
+         */
         protected void ReadLSD()
         {
             // logical screen size
@@ -1003,8 +1004,8 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads Netscape extenstion to obtain iteration count
-		 */
+         * Reads Netscape extenstion to obtain iteration count
+         */
         protected void ReadNetscapeExt()
         {
             do
@@ -1021,8 +1022,8 @@ namespace Gif.Components
         }
 
         /**
-		 * Reads next 16-bit value, LSB first
-		 */
+         * Reads next 16-bit value, LSB first
+         */
         protected int ReadShort()
         {
             // read 16-bit value, LSB first
@@ -1030,24 +1031,24 @@ namespace Gif.Components
         }
 
         /**
-		 * Resets frame state for reading next image.
-		 */
+         * Resets frame state for reading next image.
+         */
         protected void ResetFrame()
         {
             lastDispose = dispose;
             lastRect = new Rectangle(ix, iy, iw, ih);
             lastImage = image;
             lastBgColor = bgColor;
-            //		int dispose = 0;
+            //        int dispose = 0;
             //transparency = false;
             //delay = 0;
             lct = null;
         }
 
         /**
-		 * Skips variable length blocks up to and including
-		 * next zero length block.
-		 */
+         * Skips variable length blocks up to and including
+         * next zero length block.
+         */
         protected void Skip()
         {
             do

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
-using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 {
     public class BattleSinglePortraitViewer : SinglePortraitViewer
     {

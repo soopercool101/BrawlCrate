@@ -1,4 +1,6 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlLib.Internal;
+using BrawlLib.Modeling;
+using BrawlLib.Modeling.Collada;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct STPM
+    public unsafe struct Parameter
     {
-        public const string Tag = "STPM";
+        public const string TagSTPM = "STPM";
+        public const string TagADPM = "ADPM";
         public const int Size = 0x10;
 
         public BinTag _tag;
@@ -14,9 +15,9 @@ namespace BrawlLib.SSBBTypes
         public int pad0;
         public int pad1;
 
-        public STPM(int count)
+        public Parameter(string tag, int count)
         {
-            _tag = Tag;
+            _tag = tag;
             _count = count;
             pad0 = pad1 = 0;
         }
@@ -41,7 +42,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct STPMEntry
+    public unsafe struct ParameterEntry
     {
         public bushort _id;
         public byte _id2;
@@ -49,7 +50,7 @@ namespace BrawlLib.SSBBTypes
 
         public fixed int _values[64];
 
-        public STPMEntry(ushort id, byte echo, byte id2)
+        public ParameterEntry(ushort id, byte echo, byte id2)
         {
             _id = id;
             _echo = echo;

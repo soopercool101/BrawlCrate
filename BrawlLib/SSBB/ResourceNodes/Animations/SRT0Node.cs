@@ -1,5 +1,8 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using BrawlLib.Wii.Animations;
 using System;
 using System.ComponentModel;
@@ -827,7 +830,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     System.Diagnostics.Debug.WriteLine((IntPtr) Header);
                     _keyframes = AnimationConverter.DecodeKeyframes(Header,
-                        Parent != null ? Parent.Parent as SRT0Node : null, 5, 1, 1);
+                        Parent?.Parent as SRT0Node, 5, 1, 1);
                 }
 
                 return _keyframes;

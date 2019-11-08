@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Stage_Tables
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct TBGM // TBGM

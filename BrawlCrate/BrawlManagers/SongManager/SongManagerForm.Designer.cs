@@ -1,38 +1,40 @@
-﻿namespace BrawlCrate.SongManager {
-	partial class SongManagerForm {
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+﻿using BrawlLib.BrawlManagerLib.Songs;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing) {
-			if (disposing && (components != null)) {
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+namespace BrawlCrate.BrawlManagers.SongManager {
+    partial class SongManagerForm {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		#region Windows Form Designer generated code
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent() {
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SongManagerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrawlManagers.SongManager.SongManagerForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customSongVolumeEditor1 = new BrawlCrate.SongManager.CustomSongVolumeEditor();
-            this.songPanel1 = new BrawlManagerLib.SongPanel();
+            this.customSongVolumeEditor1 = new BrawlManagers.SongManager.CustomSongVolumeEditor();
+            this.songPanel1 = new SongPanel();
             this.rightLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -422,44 +424,44 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		private System.Windows.Forms.SplitContainer splitContainer1;
-		private System.Windows.Forms.ListBox listBox1;
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem changeDirectoryToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem _deleteToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem loadNamesFromInfopacToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem loadBRSTMPlayerToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem saveInfopacToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem groupSongsByStageToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem defaultSongsListToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem updateMumenumainToolStripMenuItem;
-		private System.Windows.Forms.SplitContainer splitContainerTop;
-		private System.Windows.Forms.Label rightLabel;
-		private BrawlManagerLib.SongPanel songPanel1;
-		private System.Windows.Forms.ToolStripMenuItem openFallbackDirectoryToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem onlyShowSongsWithCSVCodeToolStripMenuItem;
-		private CustomSongVolumeEditor customSongVolumeEditor1;
-		private System.Windows.Forms.ToolStripMenuItem saveGCTCodesetToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exportMusicSongsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem importMusicSongsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem use16ptFontToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem whenSongEndsStartPlayingNextSongToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem _deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadNamesFromInfopacToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadBRSTMPlayerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveInfopacToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem groupSongsByStageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem defaultSongsListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateMumenumainToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainerTop;
+        private System.Windows.Forms.Label rightLabel;
+        private SongPanel songPanel1;
+        private System.Windows.Forms.ToolStripMenuItem openFallbackDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem onlyShowSongsWithCSVCodeToolStripMenuItem;
+        private BrawlManagers.SongManager.CustomSongVolumeEditor customSongVolumeEditor1;
+        private System.Windows.Forms.ToolStripMenuItem saveGCTCodesetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportMusicSongsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importMusicSongsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem use16ptFontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whenSongEndsStartPlayingNextSongToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem customSongVolumeStatusToolStripMenuItem;
     }

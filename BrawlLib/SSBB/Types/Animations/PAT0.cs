@@ -1,7 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Animations
 {
     [Flags]
     public enum PAT0Flags
@@ -9,7 +10,7 @@ namespace BrawlLib.SSBBTypes
         Enabled = 0x1,
         FixedTexture = 0x2,
         HasTexture = 0x4,
-        HasPalette = 0x8,
+        HasPalette = 0x8
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

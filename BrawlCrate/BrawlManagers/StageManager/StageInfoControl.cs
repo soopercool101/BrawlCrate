@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BrawlLib.Internal.Windows.Forms;
+using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public partial class StageInfoControl : UserControl
     {
@@ -135,7 +136,7 @@ namespace BrawlCrate.StageManager
             "ft_sonic",
             "ft_purin",
             "ft_wolf",
-            "ft_zako",
+            "ft_zako"
         };
 
         // _relFile should only be null on startup, when no stage is selected.

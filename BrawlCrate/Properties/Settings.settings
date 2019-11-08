@@ -74,5 +74,8 @@
     <Setting Name="APIOnlyAllowLoadersFromWhitelist" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="APIAutoUpdate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

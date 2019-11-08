@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,14 +7,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB
 {
     public class UserDataCollectionPropertyDescriptor : PropertyDescriptor
     {
         private readonly UserDataCollection collection;
         private readonly int index = -1;
 
-        public UserDataCollectionPropertyDescriptor(UserDataCollection coll, int idx) : base("#" + idx.ToString(), null)
+        public UserDataCollectionPropertyDescriptor(UserDataCollection coll, int idx) : base("#" + idx, null)
         {
             collection = coll;
             index = idx;
@@ -39,7 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public override bool IsReadOnly => true;
-        public override string Name => "#" + index.ToString();
+        public override string Name => "#" + index;
         public override Type PropertyType => collection[index].GetType();
 
         public override void ResetValue(object component)

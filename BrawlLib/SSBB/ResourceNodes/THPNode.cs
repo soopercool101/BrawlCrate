@@ -1,8 +1,9 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Audio;
 using System;
-using System.Audio;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -33,6 +34,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("THP Header Data")] public float FrameRate => hdr._frameRate;
         [Category("THP Header Data")] public uint NumFrames => hdr._numFrames;
+
+        [Browsable(false)] public bool Loop => false;
 
         public THPFrame[] _frames;
         public List<byte> _componentTypes;

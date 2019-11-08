@@ -1,6 +1,8 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Drawing;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Textures;
 using System;
 using System.ComponentModel;
@@ -50,12 +52,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if ((p = Header->GetTextureEntry(i)) != null)
                 {
-                    TPLTextureNode t = new TPLTextureNode {_dataAddr = (VoidPtr) Header + ((TPLTextureHeader*) p)->_data};
+                    TPLTextureNode t = new TPLTextureNode
+                        {_dataAddr = (VoidPtr) Header + ((TPLTextureHeader*) p)->_data};
                     t.Initialize(this, p, 0);
 
                     if ((p = Header->GetPaletteEntry(i)) != null)
                     {
-                        new TPLPaletteNode {_dataAddr = (VoidPtr) Header + ((TPLPaletteHeader*) p)->_data}.Initialize(t, p, 0);
+                        new TPLPaletteNode {_dataAddr = (VoidPtr) Header + ((TPLPaletteHeader*) p)->_data}.Initialize(t,
+                            p, 0);
                     }
                 }
             }

@@ -1,7 +1,10 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
-using Gif.Components;
+using BrawlLib.Imaging.GIF;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Drawing;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -21,9 +24,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override ResourceType ResourceFileType => ResourceType.BRES;
 
-        public override Type[] AllowedChildTypes => new Type[] {typeof(BRESGroupNode)};
+        public override Type[] AllowedChildTypes => new[] {typeof(BRESGroupNode)};
 
-        public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
+        [DisplayName("Texture Count")] public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
 
         public Bitmap GetImage(int index)
         {
@@ -32,7 +35,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return null;
             }
 
-            return (GetFolder<TEX0Node>().Children[index] as IImageSource).GetImage(0);
+            return (GetFolder<TEX0Node>().Children[index] as IImageSource)?.GetImage(0);
         }
 
         #region Model Counters
@@ -707,7 +710,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     //Draw the current image over the previous
                                     //This is because some GIFs use pixels of the previous frame
                                     //in order to compress the overall image data
-                                    using (Graphics graphics = Graphics.FromImage(prev))
+                                    using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(prev))
                                     {
                                         graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
                                         graphics.CompositingQuality = CompositingQuality.HighQuality;
@@ -775,6 +778,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ResourceGroup* Group => (ResourceGroup*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.BRESGroup;
 
+        [Browsable(false)]
         public int ImageCount => Children.Count > 0 && Children[0] is IImageSource ? Children.Count : 0;
 
         public Bitmap GetImage(int index)
@@ -869,13 +873,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void RemoveChild(ResourceNode child)
         {
-            if (Children.Count == 1 && Children.Contains(child))
+            base.RemoveChild(child);
+            if (Children.Count == 0)
             {
-                Parent.RemoveChild(this);
-            }
-            else
-            {
-                base.RemoveChild(child);
+                Parent?.RemoveChild(this);
             }
         }
 

@@ -1,5 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Audio;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -8,12 +8,8 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal INFOPlayerInfoEntry* Header => (INFOPlayerInfoEntry*) WorkingUncompressed.Address;
 
-#if DEBUG
-        [Browsable(true)]
-        [Category("DEBUG")]
-#else
-        [Browsable(false)]
-#endif
+        [Category("Data")]
+        [DisplayName("ID")]
         public override int StringId => Header == null ? -1 : (int) Header->_stringId;
 
         public override ResourceType ResourceFileType => ResourceType.RSARType;

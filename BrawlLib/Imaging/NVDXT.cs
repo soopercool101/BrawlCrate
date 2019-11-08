@@ -25,6 +25,7 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
 
+using BrawlLib.Internal;
 using BrawlLib.Wii.Textures;
 using System;
 
@@ -142,7 +143,7 @@ namespace BrawlLib.Imaging
             block._root1._data = color0;
             block._lookup = computeIndices3(pBlock, &maxColor, &minColor);
 
-            //	optimizeEndPoints(block, dxtBlock);
+            //    optimizeEndPoints(block, dxtBlock);
 
             return block;
         }
@@ -703,7 +704,7 @@ namespace BrawlLib.Imaging
             {0x1F, 0x1E},
             {0x1F, 0x1E},
             {0x1F, 0x1F},
-            {0x1F, 0x1F},
+            {0x1F, 0x1F}
         };
 
 
@@ -964,7 +965,7 @@ namespace BrawlLib.Imaging
             {0x3E, 0x3F},
             {0x3F, 0x3E},
             {0x3F, 0x3F},
-            {0x3F, 0x3F},
+            {0x3F, 0x3F}
         };
 
         #endregion

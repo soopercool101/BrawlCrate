@@ -1,13 +1,13 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -784,8 +784,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     prev = next;
                 }
 
-                PAT0Texture = prev.Texture;
-                PAT0Palette = prev.Palette;
+                PAT0Texture = prev?.Texture;
+                PAT0Palette = prev?.Palette;
                 if (PAT0Texture != null && !PAT0Textures.ContainsKey(PAT0Texture))
                 {
                     TEX0Node texture = RootNode.FindChildByType(PAT0Texture, true, ResourceType.TEX0) as TEX0Node;
@@ -803,10 +803,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 return;
             }
-            else
-            {
-                PAT0Texture = PAT0Palette = null;
-            }
+
+            PAT0Texture = PAT0Palette = null;
         }
 
         public void SetEffectMatrix(SCN0Node node, ModelPanelViewport v, float frame)
@@ -995,7 +993,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public enum MatTextureMagFilter : uint
     {
         Nearest = 0,
-        Linear,
+        Linear
     }
 
     public enum MappingMethod

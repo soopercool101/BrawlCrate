@@ -5,11 +5,11 @@
 // gOODiDEA, uland.com
 //===============================================================================
 //
-// $Header :		$  
-// $Author :		$
-// $Date   :		$
-// $Revision:		$
-// $History:		$  
+// $Header :        $  
+// $Author :        $
+// $Date   :        $
+// $Revision:        $
+// $History:        $  
 //  
 //===============================================================================
 
@@ -26,7 +26,7 @@
 using System;
 using System.IO;
 
-namespace Gif.Components
+namespace BrawlLib.Imaging.GIF
 {
     public class LZWEncoder
     {

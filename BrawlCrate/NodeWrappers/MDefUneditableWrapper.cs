@@ -1,9 +1,8 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
 using System.ComponentModel;
-using BrawlCrate.NodeWrappers;
+using System.Windows.Forms;
 
-namespace BrawlBox.NodeWrappers
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.NoEdit)]
     internal class MDefUneditableWrapper : GenericWrapper
@@ -14,7 +13,6 @@ namespace BrawlBox.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            //_menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }

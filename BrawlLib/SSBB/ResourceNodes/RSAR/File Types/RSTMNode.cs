@@ -1,8 +1,10 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Audio;
 using BrawlLib.Wii.Audio;
 using System;
-using System.Audio;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;

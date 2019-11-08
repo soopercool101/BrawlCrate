@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Audio
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct RSEQHeader

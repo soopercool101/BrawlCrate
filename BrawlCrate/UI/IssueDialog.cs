@@ -1,12 +1,13 @@
-﻿using BrawlCrate;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI
 {
     public partial class IssueDialog : Form
     {
@@ -75,6 +76,7 @@ namespace System.Windows.Forms
                     exceptionMessage += " ";
                     exceptionMessage += _exception.InnerException.Message.Replace("\"", "\\\"");
                 }
+
                 string args = string.Format("-bi \"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
                     programTitle,
                     exceptionMessage,
@@ -88,7 +90,7 @@ namespace System.Windows.Forms
                 {
                     FileName = path,
                     WindowStyle = ProcessWindowStyle.Hidden,
-                    Arguments = args,
+                    Arguments = args
                 });
             }
             else

@@ -1,8 +1,9 @@
-﻿using BrawlManagerLib;
+﻿using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.BrawlManagerLib.Songs;
 using System.IO;
 using System.Linq;
 
-namespace BrawlCrate.SongManager
+namespace BrawlCrate.BrawlManagers.SongManager
 {
     public class SongInfo
     {

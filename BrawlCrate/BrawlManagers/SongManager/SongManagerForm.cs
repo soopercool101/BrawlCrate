@@ -1,14 +1,21 @@
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
+using BrawlCrate.BrawlManagers.SongManager.SongExport;
+using BrawlCrate.UI;
+using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.BrawlManagerLib.Songs;
 using BrawlLib.SSBB.ResourceNodes;
-using System.IO;
+using System;
 using System.Collections.Generic;
-using BrawlManagerLib;
+using System.ComponentModel;
 using System.Drawing;
-using BrawlCrate.SongManager.SongExport;
+using System.IO;
+using System.Windows.Forms;
 
-namespace BrawlCrate.SongManager
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
+
+namespace BrawlCrate.BrawlManagers.SongManager
 {
     public partial class SongManagerForm : Form
     {
@@ -24,7 +31,7 @@ namespace BrawlCrate.SongManager
             "../../../RSBE01.gct",
             "../../../../RSBE01.gct",
             "../../../../../../RSBE01.gct",
-            "../../../../../../../RSBE01.gct",
+            "../../../../../../../RSBE01.gct"
         };
 
         /// <summary>
@@ -141,7 +148,10 @@ namespace BrawlCrate.SongManager
 
             if (autoplay && autoplayNext)
             {
-                songPanel1.Play();
+                if (!BrawlLib.Properties.Settings.Default.AutoPlayAudio)
+                {
+                    songPanel1.Play();
+                }
             }
 
             autoplayNext = false;
@@ -433,7 +443,7 @@ namespace BrawlCrate.SongManager
         private void changeDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -447,7 +457,7 @@ namespace BrawlCrate.SongManager
         private void openFallbackDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -580,7 +590,7 @@ namespace BrawlCrate.SongManager
                 ReadOnlySearchableRichTextBox r = new ReadOnlySearchableRichTextBox
                 {
                     Dock = DockStyle.Fill,
-                    Text = ReadOnlySearchableRichTextBox.HELP + "\n\n" + SongsByStage.DEFAULTS,
+                    Text = ReadOnlySearchableRichTextBox.HELP + "\n\n" + SongsByStage.DEFAULTS
                 };
                 splitContainerTop.Panel2.Controls.Add(r);
                 splitContainerTop.Panel2Collapsed = false;
@@ -691,7 +701,7 @@ namespace BrawlCrate.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -734,7 +744,7 @@ namespace BrawlCrate.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif

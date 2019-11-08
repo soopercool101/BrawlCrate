@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     public partial class ProgressDialog : Form
     {

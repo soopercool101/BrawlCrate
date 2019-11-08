@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30
+BrawlCrate - v0.30 Hotfix 3
 Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,28 +15,49 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30 Hotfix 3 - (11/5/2019)
+ . Model viewer camera updated to a faster one by Onium
+   - Mouse now wraps around, is no longer hidden
+ . Settings are now once again saved between versions
+ . Fix bug in which Update.bat never got deleted
+ . Fix bug in which contextual loop would not work properly for audio
+ . Fix bug in which stable builds could not switch to Canary
+ . Updater version now matches the latest version in which it got updates
 
- - BrawlCrate v0.30 - (xx/xx/2019)
+ - BrawlCrate v0.30 Hotfix 2 - (11/4/2019)
+ . OpenTK reverted to v1.1.0
+   - Fixes issue where the window would resize dependant on scaling settings
+ . MoveDef parsing is now tied to its own setting, which is off by default
+ . Fix bug in which changelog could not properly be viewed from a release build
+
+ - BrawlCrate v0.30 Hotfix 1 - (11/4/2019)
+ . OpenTK updated from v1.1.2349.61993 to v3.1.0
+   - Fixes crashes when viewing models
+
+ - BrawlCrate v0.30 - (11/4/2019)
  . Rebuilt over the latest BrawlBox source
    - Many functions have been rewritten from scratch and many bugs have been fixed due to this migration
  . .NET Framework updated from 4.0 to 4.7.2 for BrawlCrate and BrawlLib
  . .NET Framework updated from 4.5.2 to 4.7.2 for the Updater
- . OpenTK updated from v1.1.0 to v3.1.0
+ . OpenTK updated from v1.1.0 to v1.1.2349.61993
+ . Octokit updated to v0.32.0 to v0.36.0
  . Add "Show Changelog" button to the help menu
  . Add ports of BrawlManagers from https://github.com/libertyernie/BrawlManagers
    - All:
      . Add setting for default build path. A build in this path will be handled by all managers by default.
-	 . Use BrawlCrateLib instead of BrawlLib, with relevant improvements
-	 . Use BrawlCrate name and iconography
+     . Use BrawlCrateLib instead of BrawlLib, with relevant improvements
+     . Use BrawlCrate name and iconography
    - Costume Manager:
      . Remove functionality which removes and hides objects and materials. Implementation for this made too many assumptions that are no longer generally true
    - Song Manager:
-	 . Fix issue where a volume of "0" muted playback, instead of playing the sound at full volume (as appears to be the case in-game)
-	 . Auto-play audio and Contextual loop settings are used during playback
+     . Fix issue where a volume of "0" muted playback, instead of playing the sound at full volume (as appears to be the case in-game)
+     . Auto-play audio and Contextual loop settings are used during playback
    - Stage Manager:
-	 . External BrawlBox integration replaced with internal BrawlCrate integration. Opening files via this method will now open them in the main window
+     . External BrawlBox integration replaced with internal BrawlCrate integration. Opening files via this method will now open them in the main window
  . Add Moveset framework from v0.68b
  . Add support to open folders
+ . Add support to open files as templates, which doesn't set the save path automatically
  . New Color Smash method: Multi-select nodes and right-click to Color Smash
  . Panning on the modelviewer freezes the mouse to allow for smoother movement
  . Add MainForm previewing of Models for BRRES and ARC nodes (check the settings)
@@ -53,31 +74,44 @@ they be held accountable for the manner in which it is used.
  . ".txt" GCTs can now be directly opened
  . Add "All Files" filter when opening or saving files
  . bboxapi changed to BrawlAPI
+   - IronPython updated from v2.7.5 to v2.7.9
+   - Loaders and Plugins are now contained in a BrawlAPI subdirectory
    - Python is no longer included in the installation. Path will be automatically searched for on first boot.
+   - Plugins and loaders are now subdirectories in a BrawlAPI folder
+   - Loaders can now be blacklisted or whitelisted
    - F# path is now saved to a setting, greatly reducing runtime for F# scripts
    - Plugin-created dropdown items now appear in a Plugins submenu
    - Plugins now are sorted into submenus based on subfolders
+   - Loaders can now be loaded from subfolders for easier sorting
    - Add various additional exposed members for API and extensive documentation (found at https://github.com/soopercool101/BrawlCrateNext/blob/master/BrawlCrate/BrawlAPI/ExposedMembers.cs)
      . SelectedNodes
      . NodeList
+     . NodeListOfType
      . RootNodeWrapper
      . SelectedNodesWrappers
      . NodeWrapperList
+     . NodeWrapperListOfType
      . ShowWarning
      . ShowError
      . ShowYesNoWarning
      . ShowYesNoError
      . ShowOKCancelWarning
      . ShowOKCancelError
-	 . AddMultiSelectContextMenuItem
+     . AddMultiSelectContextMenuItem
+	 . AppPath
+	 . APIPath
+	 . PluginPath
+	 . LoaderPath
      . OpenMultiFileDialog
      . OpenFile
      . OpenFileNoErrors
+	 . OpenTemplate
+	 . OpenTemplateNoErrors
      . SaveFile
      . SaveFileAs
      . CloseFile
      . ForceCloseFile
-	 . AddWrapper
+     . AddWrapper
      . WriteToConsole (only useful when debugging)
    - Change function/variable names to properly reflect usage
      . "AddLoader" -> "AddResourceParser"
@@ -89,16 +123,16 @@ they be held accountable for the manner in which it is used.
      . "PluginLoader" -> "PluginResourceParser"
    - Add additional overrides for more functionality for the following exposed members
      . OpenFileDialog
-	   - Add support for title and filters
+       - Add support for title and filters
      . OpenFolderDialog
-	   - Add support for description
+       - Add support for description
      . SaveFileDialog
-	   - Add support for title and filters
+       - Add support for title and filters
      . AddContextMenuItem
-	   - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
-   - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a folder
-   - Example Loader (REFF) Renamed to better explain what it does, uncomments important code, and is now disabled by default
-   - Added Example Loader that dumps CSPs as RSPs
+       - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
+   - Example Plugins/Loaders removed from the program and moved to https://github.com/soopercool101/BrawlCrateSamplePlugins
+   - Add API Subscriptions where users can subscribe to plugin repositories and get updates
+   - Add various security settings for loaders
  . Add ability to directly import materials and shaders to an MDL0
  . Add new iconography for Canary builds
  . Add support for longform assembly title, to be used for hotfixes
@@ -106,18 +140,32 @@ they be held accountable for the manner in which it is used.
  . Add support for multi-file importing for BRRES and ARC
  . Add "Export Selected" toolstrip for multi-selection
  . Add new setting to toggle context-based looping for audio sources
+ . Add support for parsing and editing of Custom My Music (CMM) files
+ . Add basic support to parse and edit Adventure Parameter (ADPM) files found in Subspace Emissary stages
+ . Update documentation to v0.30.0
+ . Unsupported and unrecognized file types can now be opened as raw data files
  . Temp files are now opened using default OS functionality, rather than in a dedicated per-install folder
  . Duplicate now works for most node types
+ . Transform button can now be accessed from the toolbar in the collision editor
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
  . Folder select dialog now uses the Vista and later styled folder select when on Windows
  . No longer use "lib" folder to improve compatibility
+ . Common files now are embedded into the program and no longer require internet
  . Fix bug in which certain collision planes would be ignored on object population (fixes New Pork City issues)
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
  . Fix bug in which GCTs made with Code Manager would incorrectly detect the first line of code as a code title, breaking the codeset
  . Fix unintended behavior in which context menu hotkeys could be pressed when the main window is not in focus
+ . Fix bug in which settings would be saved more often than intended
+ . Fix bug in which languages which use "," as a decimal separator were unable to input floats into numeric entry boxes
  . Sped up booting and removed splash screen accordingly
+ . THE FOLLOWING INTENTIONAL REVERSIONS HAVE BEEN MADE:
+   - Uncompressed size now only updates when a node is saved. This fixes many stability issues and was determined to be worth the cost.
+   - Stage 1:1s and various StageBox-era shortcuts have been depreciated in favor of future BrawlAPI solutions
+   - .dae importing has been reverted to the more stable modern BrawlBox base
+   - Right-click menu has been removed from the collision editor as it interfered with the new model preview system
+   - Settings will not transfer over to this build. Settings carryover will be back in the next release
  
  - BrawlCrate v0.26b Hotfix 2 - (10/11/2019)
  . Fix bug in which MASQ nodes with non-vanilla PM IDs would crash the program.
@@ -1048,12 +1096,12 @@ they be held accountable for the manner in which it is used.
  SCN0 scene lighting, fog and ambient lights can be applied to a model and edited in realtime by linking the model's materials to a corresponding lightset 
  and fog entry and then selecting the SCN0 in the model editor after changing the edit type to SCN.
  NOTE that this feature (rendering shaders in general) is not flawless. Here's a list of things that DO NOT WORK:
-	- Indirect textures, including normal maps and fur maps
-	- Projection (texture stays the same in relation to the screen), Env Spec (texture faces point between ref camera and ref light), Env Light (texture faces light) texture reference map modes
-	- Blending of some intensity textures (there's a hard line where the texture should blend into the background nicely instead)
-	- Binormals for texture coordinates (Binormals are not supported by BrawlBox at all)
-	- "Emboss Map" for texture reference "Type", "EmbossSource" and "EmbossLight" (under XF TexGen Flags)
-	- "CompareBeforeTexture" under Z Mode in material properties (this allows for comparing depth before any texture transparency is applied)
+    - Indirect textures, including normal maps and fur maps
+    - Projection (texture stays the same in relation to the screen), Env Spec (texture faces point between ref camera and ref light), Env Light (texture faces light) texture reference map modes
+    - Blending of some intensity textures (there's a hard line where the texture should blend into the background nicely instead)
+    - Binormals for texture coordinates (Binormals are not supported by BrawlBox at all)
+    - "Emboss Map" for texture reference "Type", "EmbossSource" and "EmbossLight" (under XF TexGen Flags)
+    - "CompareBeforeTexture" under Z Mode in material properties (this allows for comparing depth before any texture transparency is applied)
 . Added options to MDL0 bone right click menu to move the current bone to the end of the bone array or regenerate the bone array (all bone indices are reassigned). 
 You can also change the bone's Bone Index in the array. This doesn't have an effect on heirarchy, but allows you to inject bones without affecting the bone indices of others.
 . Moved "AutoMetalMaterials" option from the MDL0 properties to the right click menu under the name "Regenerate Metal Materials".
@@ -1076,11 +1124,11 @@ coordinate axes are relative to the floor, and dragging on an axis may affect mu
 . Added "After Rotation" option to change the local bone/vertex translation tool to apply before or after the bone's rotation.
 Transforms are applied in order of Translate, Rotate, Scale, so this option changes the tool to work in the order of Rotate, Translate, Scale. "After Rotation" is off by default. (View -> Viewport -> Transform Control -> Translate -> After Rotation)
 . Added options to model editor settings dialog (Options -> Settings):
-	- Current Viewport -> Lighting -> Enabled: This will enable or disable built-in lighting in the viewport. SCN0 lighting may still be applied.
-	- General -> Scale bone with camera: This will keep each bone at a fixed size on the screen. Especially useful for stage editing.
-	- General -> Display bones as points: This will render each bone as a point instead of an orb with axes. Useful for reducing visual clutter, such as when viewing bones that are close together (like fingers).
-	- General -> Hide main window: hides the main BrawlBox window when the model editor is open.
-	- General -> Per pixel lighting: This renders models with more accurate lighting calculations. This isn't what the Wii uses, but it usually looks better than per vertex lighting (especially with specular highlights).
+    - Current Viewport -> Lighting -> Enabled: This will enable or disable built-in lighting in the viewport. SCN0 lighting may still be applied.
+    - General -> Scale bone with camera: This will keep each bone at a fixed size on the screen. Especially useful for stage editing.
+    - General -> Display bones as points: This will render each bone as a point instead of an orb with axes. Useful for reducing visual clutter, such as when viewing bones that are close together (like fingers).
+    - General -> Hide main window: hides the main BrawlBox window when the model editor is open.
+    - General -> Per pixel lighting: This renders models with more accurate lighting calculations. This isn't what the Wii uses, but it usually looks better than per vertex lighting (especially with specular highlights).
 . Fixed undo/redo in the model editor. Doesn't seem to have any issues anymore.
 . Added support for rotating and scaling vertex selections (you can use E, R, T to change the transform control).
 . Fixed bug saving/reading SCN0 lights; SCN0s saved in older versions of BrawlBox may not open properly anymore
@@ -1104,649 +1152,649 @@ Transforms are applied in order of Translate, Rotate, Scale, so this option chan
  - v0.75b - BrawlLib v0.22b
 
  Hotfix 1 (3/1/2015)
-	. Fixed bug copying and pasting entire animation frames or single bone entry frames to and from the bind state (frame 0).
+    . Fixed bug copying and pasting entire animation frames or single bone entry frames to and from the bind state (frame 0).
 
  Initial Release (2/28/2015)
-	. Added new reimport meshes button to MDL0 right click menu. This allows you to update the meshes of an MDL0 without resetting any custom materials, shaders, vis bones, bone tree edits, etc.
-	. Fixed bug where textures with no object references would overwrite the node tree definition
-	. Fixed bug where if the MDL0 node tree definition didn't have any entries but the bone tree did, a mismatch would not be detected and reported to the user
-	. Fixed bug where an MDL0 replaced with an imported model could not be restored to the original
-	. Fixed bug where an imported MDL0 would allow restoring, but would crash when trying to do so because there is nothing to restore to.
-	. Added the option to delete or not delete all associated assets that are not assigned to another object when deleting an MDL0 object
-	. Fixed bug where some controls in the collision editor were missing.
-	. Fixed bug where pasting a bone frame would swap the Y and Z values.
-	. Fixed bug where when pasting a bone frame in the CHR0 editor, everything would be keyframed even if only one of the paste options was unchecked
-	. Updated the module editor to parse and run faster and use less RAM. Editing and saving is a work in progress! You cannot save any changes, and DOL files do not load correctly.
-	. Added several more property descriptions to materials and shaders. More to come later.
-	. Fixed bug importing a model with objects but no materials for them
-	. Fixed bug where no editor would be visible next to the playback panel in the model editor upon first opening the window and opening the bottom panel
-	. Fixed bug where the loop frame would not be retained after inserting or removing a frame in the model editor
+    . Added new reimport meshes button to MDL0 right click menu. This allows you to update the meshes of an MDL0 without resetting any custom materials, shaders, vis bones, bone tree edits, etc.
+    . Fixed bug where textures with no object references would overwrite the node tree definition
+    . Fixed bug where if the MDL0 node tree definition didn't have any entries but the bone tree did, a mismatch would not be detected and reported to the user
+    . Fixed bug where an MDL0 replaced with an imported model could not be restored to the original
+    . Fixed bug where an imported MDL0 would allow restoring, but would crash when trying to do so because there is nothing to restore to.
+    . Added the option to delete or not delete all associated assets that are not assigned to another object when deleting an MDL0 object
+    . Fixed bug where some controls in the collision editor were missing.
+    . Fixed bug where pasting a bone frame would swap the Y and Z values.
+    . Fixed bug where when pasting a bone frame in the CHR0 editor, everything would be keyframed even if only one of the paste options was unchecked
+    . Updated the module editor to parse and run faster and use less RAM. Editing and saving is a work in progress! You cannot save any changes, and DOL files do not load correctly.
+    . Added several more property descriptions to materials and shaders. More to come later.
+    . Fixed bug importing a model with objects but no materials for them
+    . Fixed bug where no editor would be visible next to the playback panel in the model editor upon first opening the window and opening the bottom panel
+    . Fixed bug where the loop frame would not be retained after inserting or removing a frame in the model editor
 
  - v0.75 - BrawlLib v0.22
 
 Hotfix 2 (2/21/2015)
-	. Fixed bug where saving a file with unmodified compressed children would result in the file being corrupted
+    . Fixed bug where saving a file with unmodified compressed children would result in the file being corrupted
 
 Hotfix 1 (2/20/2015):
-	. Fixed bug where an extra bone named TopN would be added to the imported bone tree (this is only supposed to be added to models with no bones)
+    . Fixed bug where an extra bone named TopN would be added to the imported bone tree (this is only supposed to be added to models with no bones)
 
 Initial Release (2/19/2015):
- 	. Added support for multiple viewports in the model viewer! Go to View -> Viewport -> Add New Viewport and try it out!
-	. Added support for changing the current viewport's projection under View -> Viewport -> Projection
-	. Moved all settings into the one settings dialog, found under "Options -> Settings"
-	. Added support for editing the current or default camera precisely in the settings dialog
-	. Fixed bug where MDL0 material blend mode values were read and written incorrectly
-	. Fixed bug in model viewer where setting an SRT0's matrix mode via the animation's right click menu didn't actually set it
-	. Fixed bug encoding SRT0 keyframes
-	. Fixed bug writing SHP0 vertex set target names
-	. Fixed bug where framecount would be set wrong on a looped and interpolated animation in the model viewer
-	. Fixed bug that occured when changing if an animation looped or not in the viewer and then trying to view the loop frame
-	. Fixed bug when selecting an animation that has less than 2 frames when the previous animation looped
-	. Fixed bug where selecting a radio button in an attribute grid without having a cell selected caused an error
-	. Fixed bug where textures being read by the live texture folder tool in the model viewer were "in use" and could not be saved over again
-	. Fixed bug with frame count when creating a new interpolated animation node from scratch
-	. Fixed bug checking and unchecking bones in the model viewer
-	. Fixed bug with the model not updating when editing the bind state (frame 0) in the model viewer
-	. Fixed bug with the texture coordinate renderer where random lines would appear
-	. Fixed bug setting mini model previewer camera when highlighting a collision node
-	. Fixed several orthographic projection bugs, such as bone/vertex selection, billboard bones, transform tool scaling, and light recalculation
-	. Fixed bug setting the frame index in the interpolation editor
-	. Fixed bug dragging the last keyframe in the interpolation editor
-	. Fixed bug where vertex translations could not be undone
-	. Added checkboxes to bone tree view in the model viewer
-	. Added support for editing SCLA (no new entry adding yet - found in Brawl stages next to the STPM entry)
-	. Added animated GIF to PAT0 + textures converter. Right click BRRES -> Import -> Animated GIF
-	. Added support for setting BrawlBox as the default GCT editor so that you can double click a GCT to open it directly in the editor (Skips opening BrawlBox)
-	. Added support for opening GCT files directly from the File -> Open dialog or via command line (BrawlBox.exe /gct), (BrawlBox.exe /gct "<path>"), or (BrawlBox.exe "<path>.gct")
-	. Added hexadecimal color code textbox to color picker control
-	. Added helpful text that displays on the model viewer's animation playback panel to clarify if the last frame is the loop frame (this frame is not read by the game; it is used for interpolation)
-	. Updated color property grid editor to display before and after colors with alpha and okay/cancel buttons
-	. Updated the texture coordinate renderer to display lines in neon green (to stand out from the texture) and show object dropdown to change what coordinates are shown
-	. Updated color array editor right click menu paste to allow for pasting only color, only alpha, or both
-	. Updated splitters in the main BrawlBox window to update the controls as they are dragged
-	. Moved "Edit All Models" option from File -> Options -> Settings in the previous version to "Target Model -> Edit All".
-	. Updated Collada model importer to rig unrigged objects to their own bone located at the center of their mesh
-	. Updated "Snap bones to collisions" setting to snap while translating a bone instead of when the bone is released
+     . Added support for multiple viewports in the model viewer! Go to View -> Viewport -> Add New Viewport and try it out!
+    . Added support for changing the current viewport's projection under View -> Viewport -> Projection
+    . Moved all settings into the one settings dialog, found under "Options -> Settings"
+    . Added support for editing the current or default camera precisely in the settings dialog
+    . Fixed bug where MDL0 material blend mode values were read and written incorrectly
+    . Fixed bug in model viewer where setting an SRT0's matrix mode via the animation's right click menu didn't actually set it
+    . Fixed bug encoding SRT0 keyframes
+    . Fixed bug writing SHP0 vertex set target names
+    . Fixed bug where framecount would be set wrong on a looped and interpolated animation in the model viewer
+    . Fixed bug that occured when changing if an animation looped or not in the viewer and then trying to view the loop frame
+    . Fixed bug when selecting an animation that has less than 2 frames when the previous animation looped
+    . Fixed bug where selecting a radio button in an attribute grid without having a cell selected caused an error
+    . Fixed bug where textures being read by the live texture folder tool in the model viewer were "in use" and could not be saved over again
+    . Fixed bug with frame count when creating a new interpolated animation node from scratch
+    . Fixed bug checking and unchecking bones in the model viewer
+    . Fixed bug with the model not updating when editing the bind state (frame 0) in the model viewer
+    . Fixed bug with the texture coordinate renderer where random lines would appear
+    . Fixed bug setting mini model previewer camera when highlighting a collision node
+    . Fixed several orthographic projection bugs, such as bone/vertex selection, billboard bones, transform tool scaling, and light recalculation
+    . Fixed bug setting the frame index in the interpolation editor
+    . Fixed bug dragging the last keyframe in the interpolation editor
+    . Fixed bug where vertex translations could not be undone
+    . Added checkboxes to bone tree view in the model viewer
+    . Added support for editing SCLA (no new entry adding yet - found in Brawl stages next to the STPM entry)
+    . Added animated GIF to PAT0 + textures converter. Right click BRRES -> Import -> Animated GIF
+    . Added support for setting BrawlBox as the default GCT editor so that you can double click a GCT to open it directly in the editor (Skips opening BrawlBox)
+    . Added support for opening GCT files directly from the File -> Open dialog or via command line (BrawlBox.exe /gct), (BrawlBox.exe /gct "<path>"), or (BrawlBox.exe "<path>.gct")
+    . Added hexadecimal color code textbox to color picker control
+    . Added helpful text that displays on the model viewer's animation playback panel to clarify if the last frame is the loop frame (this frame is not read by the game; it is used for interpolation)
+    . Updated color property grid editor to display before and after colors with alpha and okay/cancel buttons
+    . Updated the texture coordinate renderer to display lines in neon green (to stand out from the texture) and show object dropdown to change what coordinates are shown
+    . Updated color array editor right click menu paste to allow for pasting only color, only alpha, or both
+    . Updated splitters in the main BrawlBox window to update the controls as they are dragged
+    . Moved "Edit All Models" option from File -> Options -> Settings in the previous version to "Target Model -> Edit All".
+    . Updated Collada model importer to rig unrigged objects to their own bone located at the center of their mesh
+    . Updated "Snap bones to collisions" setting to snap while translating a bone instead of when the bone is released
 
  - v0.74b - BrawlLib v0.21b
 
  Hotfix 1 (1/7/2015): 
-	. Fixed bug where animations did not set the frame count in the model viewer
-	. Fixed bug where part of the animation edit control at the bottom of the model viewer would be cut off when the scroll bar became visible
+    . Fixed bug where animations did not set the frame count in the model viewer
+    . Fixed bug where part of the animation edit control at the bottom of the model viewer would be cut off when the scroll bar became visible
 
  Initial Release (1/6/2015):
-	. Fixed bug where the file's compression type was not displayed
-	. Loop frame is no longer included when playing an animation. This is how it works in-game; the loop frame is only for interpolation from the last frame to the first and therefore only included for CHR0, SRT0, SHP0, and SCN0
-	. Fixed several bugs involving the loop frame
-	. Fixed bug where IA4 alpha and intensity were swapped
-	. Fixed bug where a raw data node would appear when opening an unrecognizable file format instead of showing a message
-	. Fixed bug where the loop frame was not included in the frame count when parsing CHR0, SRT0, SHP0, and SCN0
-	. Fixed bug where detaching and reattaching the model panel as a separate window did not work
-	. Fixed bug when trying to view the interpolation of SHP0 nodes
-	. Fixed model viewer screenshot hotkeys
-	. Fixed bug where PAT0 animations did not save texture/palette names properly
-	. Fixed bug where models no longer clipped with the floor in the model viewer
-	. Fixed bug when opening the collision editor
-	. Fixed bug where isotropic animations (isotropic means all the values are the same, so this is usually scale) were not parsed correctly
-	. Fixed bug where PMD models could no longer be imported
-	. Fixed bug where the vertex editor did not appear in the model viewer when using the "J" hotkey
-	. Removed MDL0 material light channel count and instead added "enabled" to each light channel's properties
-	. Renamed MDL0 material "ZCompareLoc" property to "CompareBeforeTexture" and added it under "Z Mode".
-	. Fixed bug where MDL0 textures that aren't used by any object were written to the model (metal00 for Brawl models).
-	. Added TPL, EFLS, REFF and REFT as nodes that can be created from scratch
-	. Fixed bug where billboard bones did not apply in the model panel
-	. Added option to zoom precisely in the model viewer by pressing the middle mouse button and dragging
-	. Fixed bug where replacing an MDL0 bone node would remove its children
-	. Moved option to edit all models out of the dropdown in the model viewer and into the settings area under Options->Settings
-	. Added tool to search for animations at the top of the animation list in the model viewer
-	. Added option to MDL0 right click menu to recalculate and set bounding boxes at bind state (model and visibility bone boxes)
-	. Added options to render visibility bone boxes, model boxes, and object boxes separately under View->Model->'Bounding Boxes' in the model viewer
-	. Added option to render the bounding boxes that have been written to the model on frame 0 (the bind state) instead of rendering the auto-calculated ones. This option is located under Options->Settings in the model viewer
-	. Branch opcodes are now highlighted in purple in the module section editor.
-	. Branch offset destinations are now included in the module section editor's list box, highlighted in blue. Command destinations are highlighted in green.
-	. REL Section 5 object parser has been added back
-	. Added the option to manually set a bone's billboard reference bone.
+    . Fixed bug where the file's compression type was not displayed
+    . Loop frame is no longer included when playing an animation. This is how it works in-game; the loop frame is only for interpolation from the last frame to the first and therefore only included for CHR0, SRT0, SHP0, and SCN0
+    . Fixed several bugs involving the loop frame
+    . Fixed bug where IA4 alpha and intensity were swapped
+    . Fixed bug where a raw data node would appear when opening an unrecognizable file format instead of showing a message
+    . Fixed bug where the loop frame was not included in the frame count when parsing CHR0, SRT0, SHP0, and SCN0
+    . Fixed bug where detaching and reattaching the model panel as a separate window did not work
+    . Fixed bug when trying to view the interpolation of SHP0 nodes
+    . Fixed model viewer screenshot hotkeys
+    . Fixed bug where PAT0 animations did not save texture/palette names properly
+    . Fixed bug where models no longer clipped with the floor in the model viewer
+    . Fixed bug when opening the collision editor
+    . Fixed bug where isotropic animations (isotropic means all the values are the same, so this is usually scale) were not parsed correctly
+    . Fixed bug where PMD models could no longer be imported
+    . Fixed bug where the vertex editor did not appear in the model viewer when using the "J" hotkey
+    . Removed MDL0 material light channel count and instead added "enabled" to each light channel's properties
+    . Renamed MDL0 material "ZCompareLoc" property to "CompareBeforeTexture" and added it under "Z Mode".
+    . Fixed bug where MDL0 textures that aren't used by any object were written to the model (metal00 for Brawl models).
+    . Added TPL, EFLS, REFF and REFT as nodes that can be created from scratch
+    . Fixed bug where billboard bones did not apply in the model panel
+    . Added option to zoom precisely in the model viewer by pressing the middle mouse button and dragging
+    . Fixed bug where replacing an MDL0 bone node would remove its children
+    . Moved option to edit all models out of the dropdown in the model viewer and into the settings area under Options->Settings
+    . Added tool to search for animations at the top of the animation list in the model viewer
+    . Added option to MDL0 right click menu to recalculate and set bounding boxes at bind state (model and visibility bone boxes)
+    . Added options to render visibility bone boxes, model boxes, and object boxes separately under View->Model->'Bounding Boxes' in the model viewer
+    . Added option to render the bounding boxes that have been written to the model on frame 0 (the bind state) instead of rendering the auto-calculated ones. This option is located under Options->Settings in the model viewer
+    . Branch opcodes are now highlighted in purple in the module section editor.
+    . Branch offset destinations are now included in the module section editor's list box, highlighted in blue. Command destinations are highlighted in green.
+    . REL Section 5 object parser has been added back
+    . Added the option to manually set a bone's billboard reference bone.
 
  - v0.74- (12/25/2014) - BrawlLib v0.21
-	. BrawlBox can now check for updates on startup (can be enabled via Tools->Settings) or when you go to Help->"Check for updates" and automatically install that update for you, in another folder or in place of the current version.
-	. Support for adding new collision nodes to ARC via right click.
-	. Support for adding new BLOC to ARC via right click.
-	. Support for editing and adding the following nodes found in BLOC archives:
-		- GSND sound files
-		- ADSJ StepJump files, required to link rooms and levels.
-		- GDOR Adventure door files, requires rooms linked via ADSJ.
-	. Support for item frequency nodes.
-	. BrawlBox now displays redirected nodes with their own icon
-	. Fixed setting redirect index.
-	. Fixed embedded module files (common2 and common3) not parsing.
-	. Fixed BBox crashing when no vertices exist in Target model.
-	. Fixed alignment of the frame indicator with the mouse when dragging it in the interpolation editor.
-	. Fixed shader0's tex ref not being set when importing .dae files.
-	. Fixed always asking to save after opening the collision editor, regardless if things were changed.
-	. Fixed IA8 texture bug where alpha and intensity were swapped
-	. Fixed frame counts on looped animations with keyframes (CHR0, SRT0, SHP0, SCN0): there is an extra loop frame at the end
-	. Added proper texture matrix support that uses the Texture Matrix Mode included in SRT0, MDL0 and MDL0 material properties.
-	. Fixed bug where if two keyframes were on the same frame, the second overwrote the first. Now, for example, Game&Watch's animations now display properly.
-	. Fixed several SCN0 rebuilding bugs including when changing the frame count or using animated color arrays would cause the file to save improperly
-	. Fixed Collada importer bug that occured when mesh nodes were nested inside another. Their bind matrices were not multiplied with the previous node, causing the imported object's mesh to be out of place.
-	. Fixed Collada importer bug that occured when the imported model had no normals.
-	. Fixed Collada importer bug that occured when the imported model had some rigged and some unrigged objects. Unrigged objects are now rigged to the first bone.
-	. Fixed bug where opening environment settings would radically enlarge various rendered items. (bone controls, overlays, etc.)
-	. Changing tool via options->viewer->bone control or shortcuts E,R, and T now updates Tool dropdown and vice versa.
-	. Model editor now displays bones that are not part of the currently selected model at half opacity, and in a red color.
-	. Section editor now displays number of selected bytes, rather than length of the full section. (bottom status bar)
-	. GCT editor saves unchecked codes as disabled in .txt (pads the left side with an asterisk). Saving as GCT will not save disabled codes
-	. GCT editor now allows multiline descriptions in .txt files.
-	. Improved pixel format conversion, furthering its acuracy. (see details here: https://github.com/libertyernie/brawltools/pull/14)
-	. Fixed scaling of bone control in the model previewer when changing the "Y Field Of View" in the environment settings window under Menu->Options
-	. Added experimental support for orthographic projection in the viewport. Toggleable under Menu->Options->Environment Settings->Orthographic. 
-		Note: there are problems with this, such as billboard bones and the scaling of the bone edit control. Orthographic cameras look AT their origin point, while perspective cameras look OUT from their origin point.
-	. Added a live texture folder to the model previewer. Select a folder under Menu->Tools->"Live Texture Folder" and any textures with names that match the model's textures will be auto-loaded on the model when modified.
-	. Added a small dialog in the collision editor to rotate/translate/scale selected planes by specific values.
-	. Object / Method editor has been added to the module editor pending a better UI for it.
-		- Right click on methods allows you to open the Method's Assembly in section editor.
-		- Right click on inheritance items will open the section editor to THAT INSTANCE'S declaration, before the object's vTable.
-		- PPC disassembler now stops at branch commands in addition to blr.
-		- Added a button to the disassembler that is only visible when a branch command is selected, allowing you to jump to that location.
-	. Better support for MDL0 billboard bones. Can now render properly in the viewer and be properly set in the bone's properties.
-	. Added the option to view property descriptions if they are available (Can be enabled in Tools->Settings). Most currently available descriptions are located in the properties of nodes found in MDL0 (materials, shaders, bones, etc).
-	. Added property descriptions to some MDL0 material and bone properties. More descriptions coming soon.
-	. Added a texture coordinate viewer when selecting MDL0 material reference nodes and MDL0 texture nodes. Options to display only certain coords and export as a texture coming soon.
+    . BrawlBox can now check for updates on startup (can be enabled via Tools->Settings) or when you go to Help->"Check for updates" and automatically install that update for you, in another folder or in place of the current version.
+    . Support for adding new collision nodes to ARC via right click.
+    . Support for adding new BLOC to ARC via right click.
+    . Support for editing and adding the following nodes found in BLOC archives:
+        - GSND sound files
+        - ADSJ StepJump files, required to link rooms and levels.
+        - GDOR Adventure door files, requires rooms linked via ADSJ.
+    . Support for item frequency nodes.
+    . BrawlBox now displays redirected nodes with their own icon
+    . Fixed setting redirect index.
+    . Fixed embedded module files (common2 and common3) not parsing.
+    . Fixed BBox crashing when no vertices exist in Target model.
+    . Fixed alignment of the frame indicator with the mouse when dragging it in the interpolation editor.
+    . Fixed shader0's tex ref not being set when importing .dae files.
+    . Fixed always asking to save after opening the collision editor, regardless if things were changed.
+    . Fixed IA8 texture bug where alpha and intensity were swapped
+    . Fixed frame counts on looped animations with keyframes (CHR0, SRT0, SHP0, SCN0): there is an extra loop frame at the end
+    . Added proper texture matrix support that uses the Texture Matrix Mode included in SRT0, MDL0 and MDL0 material properties.
+    . Fixed bug where if two keyframes were on the same frame, the second overwrote the first. Now, for example, Game&Watch's animations now display properly.
+    . Fixed several SCN0 rebuilding bugs including when changing the frame count or using animated color arrays would cause the file to save improperly
+    . Fixed Collada importer bug that occured when mesh nodes were nested inside another. Their bind matrices were not multiplied with the previous node, causing the imported object's mesh to be out of place.
+    . Fixed Collada importer bug that occured when the imported model had no normals.
+    . Fixed Collada importer bug that occured when the imported model had some rigged and some unrigged objects. Unrigged objects are now rigged to the first bone.
+    . Fixed bug where opening environment settings would radically enlarge various rendered items. (bone controls, overlays, etc.)
+    . Changing tool via options->viewer->bone control or shortcuts E,R, and T now updates Tool dropdown and vice versa.
+    . Model editor now displays bones that are not part of the currently selected model at half opacity, and in a red color.
+    . Section editor now displays number of selected bytes, rather than length of the full section. (bottom status bar)
+    . GCT editor saves unchecked codes as disabled in .txt (pads the left side with an asterisk). Saving as GCT will not save disabled codes
+    . GCT editor now allows multiline descriptions in .txt files.
+    . Improved pixel format conversion, furthering its acuracy. (see details here: https://github.com/libertyernie/brawltools/pull/14)
+    . Fixed scaling of bone control in the model previewer when changing the "Y Field Of View" in the environment settings window under Menu->Options
+    . Added experimental support for orthographic projection in the viewport. Toggleable under Menu->Options->Environment Settings->Orthographic. 
+        Note: there are problems with this, such as billboard bones and the scaling of the bone edit control. Orthographic cameras look AT their origin point, while perspective cameras look OUT from their origin point.
+    . Added a live texture folder to the model previewer. Select a folder under Menu->Tools->"Live Texture Folder" and any textures with names that match the model's textures will be auto-loaded on the model when modified.
+    . Added a small dialog in the collision editor to rotate/translate/scale selected planes by specific values.
+    . Object / Method editor has been added to the module editor pending a better UI for it.
+        - Right click on methods allows you to open the Method's Assembly in section editor.
+        - Right click on inheritance items will open the section editor to THAT INSTANCE'S declaration, before the object's vTable.
+        - PPC disassembler now stops at branch commands in addition to blr.
+        - Added a button to the disassembler that is only visible when a branch command is selected, allowing you to jump to that location.
+    . Better support for MDL0 billboard bones. Can now render properly in the viewer and be properly set in the bone's properties.
+    . Added the option to view property descriptions if they are available (Can be enabled in Tools->Settings). Most currently available descriptions are located in the properties of nodes found in MDL0 (materials, shaders, bones, etc).
+    . Added property descriptions to some MDL0 material and bone properties. More descriptions coming soon.
+    . Added a texture coordinate viewer when selecting MDL0 material reference nodes and MDL0 texture nodes. Options to display only certain coords and export as a texture coming soon.
 
  - v0.73b- (8/14/2014) - BrawlLib v0.20b
-	. Model previewer now has the abiility to render the stage boundries as well as respawn and spawn areas
-	  . Spawn areas turn red when they're too far away from the floor
-	. Added a "Zoom Extents" Button to the model previewer which will zoom the camera to the selected bone.
-	. BLOC archives are now rebuildable
-		.GSND files are now fully editable
-	. Collisions are now color coded by type.
-		. Floors = cyan
-		. Ceilings = red
-		. Walls = green
-		. No type = white
-		. Fallthrough platforms are rendered yellow.
-		. Ledge grab collisions have their appropriate link rendered purple.
-	. Update OpenTK library to latest stable release for optimizations
-	. Module names internalized (rather then pulled from external text file) and shown in properties as ModuleName
-	. BrawlBox icon replaced with 256x256 version
+    . Model previewer now has the abiility to render the stage boundries as well as respawn and spawn areas
+      . Spawn areas turn red when they're too far away from the floor
+    . Added a "Zoom Extents" Button to the model previewer which will zoom the camera to the selected bone.
+    . BLOC archives are now rebuildable
+        .GSND files are now fully editable
+    . Collisions are now color coded by type.
+        . Floors = cyan
+        . Ceilings = red
+        . Walls = green
+        . No type = white
+        . Fallthrough platforms are rendered yellow.
+        . Ledge grab collisions have their appropriate link rendered purple.
+    . Update OpenTK library to latest stable release for optimizations
+    . Module names internalized (rather then pulled from external text file) and shown in properties as ModuleName
+    . BrawlBox icon replaced with 256x256 version
 
  - v0.73a- (6/28/2014) - BrawlLib v0.20a
-	. Interpolation Editor changes (TheShyGuy)
-		Display -> Linear -> Edit Values As Linear (toggle on/off)
-		  When editing values (e.g. with 3D rot/trans/scale controls), start from the linear value displayed, not the interpolated one
-		Options -> Generate Tangents (toggle on/off)
-		  Sub-options:
-			Alter Selected Tangent On Drag
-			Alter Ajdacent Tangent (on create, delete, and/or drag)
-	. Read-only support added for collision nodes in the model viewer (right-click the ARC node containing both models and collisions and click "Preview All")
-	. If a floor collision is visible in the model previewer, you can snap to it while dragging a bone with the translation tool (Options -> Settings -> Snap dragged bones to floor collisions)
-	. REL files: stage ID (where applicable) and item ID (Online Training Room only) can be edited in property grid, making the Stage Module Converter dialog unnecessary
+    . Interpolation Editor changes (TheShyGuy)
+        Display -> Linear -> Edit Values As Linear (toggle on/off)
+          When editing values (e.g. with 3D rot/trans/scale controls), start from the linear value displayed, not the interpolated one
+        Options -> Generate Tangents (toggle on/off)
+          Sub-options:
+            Alter Selected Tangent On Drag
+            Alter Ajdacent Tangent (on create, delete, and/or drag)
+    . Read-only support added for collision nodes in the model viewer (right-click the ARC node containing both models and collisions and click "Preview All")
+    . If a floor collision is visible in the model previewer, you can snap to it while dragging a bone with the translation tool (Options -> Settings -> Snap dragged bones to floor collisions)
+    . REL files: stage ID (where applicable) and item ID (Online Training Room only) can be edited in property grid, making the Stage Module Converter dialog unnecessary
 
  - v0.73- (6/3/2014) - BrawlLib v0.20
-	. The attribute grid from Ikarus is now used to edit STDT data in stages
-	. Added support for viewing and exporting Subspace Emissary data formats, rebuilding not implemented.
-		.BLOC Archives
-		.GDOR (doors)
-		.GMOT (moving things with chr0 animations)
-		.GMOV (Moving things w/o chr0 animations)
-		.GEG1 (Enemy spawning)
-		.GSND (Sound effects)
-		.GBLK (Breakable Blocks)
-		.GMPS (Punch Sliders)
-		.ADSJ (Step jumps from one level to another)
-	. Fixed MSBin encoding for empty strings
+    . The attribute grid from Ikarus is now used to edit STDT data in stages
+    . Added support for viewing and exporting Subspace Emissary data formats, rebuilding not implemented.
+        .BLOC Archives
+        .GDOR (doors)
+        .GMOT (moving things with chr0 animations)
+        .GMOV (Moving things w/o chr0 animations)
+        .GEG1 (Enemy spawning)
+        .GSND (Sound effects)
+        .GBLK (Breakable Blocks)
+        .GMPS (Punch Sliders)
+        .ADSJ (Step jumps from one level to another)
+    . Fixed MSBin encoding for empty strings
 
  - v0.72- (5/3/2014) - BrawlLib v0.19L (libertyernie's fork)
-	. BrawlBox will display an error dialog if it tries to start without OpenTK.dll
-	. The BrawlBox "About" screen now shows what version of BrawlLib is being used
-	. Unknown nodes export as .dat files
-	. See also the changelog of BrawlLib 0.19L
+    . BrawlBox will display an error dialog if it tries to start without OpenTK.dll
+    . The BrawlBox "About" screen now shows what version of BrawlLib is being used
+    . Unknown nodes export as .dat files
+    . See also the changelog of BrawlLib 0.19L
 
-	
+    
  - v0.71- (12/25/2013) - BrawlLib v0.18
-	. Added a tristripper and integrated it into Brawllib. This allows for mesh optimization for smaller filesize and less in-game lag.
-	. Added several new options to the model importer settings dialog, including tristripper algorithm options
-	. Added "Optimize" option to the MDL0/object right click menus. This will allow you to re-optimize meshes that have already been encoded.
-	. Added support for writing string type user data properly
-	. Added toggles for texture matrices in model object properties
-	. Fixed a bug where exported Collada models would have _ID added to the end of all bone and object names.
+    . Added a tristripper and integrated it into Brawllib. This allows for mesh optimization for smaller filesize and less in-game lag.
+    . Added several new options to the model importer settings dialog, including tristripper algorithm options
+    . Added "Optimize" option to the MDL0/object right click menus. This will allow you to re-optimize meshes that have already been encoded.
+    . Added support for writing string type user data properly
+    . Added toggles for texture matrices in model object properties
+    . Fixed a bug where exported Collada models would have _ID added to the end of all bone and object names.
 
  - v0.70- (12/7/2013) - BrawlLib v0.17
-	. Fixed header and alignment in module rebuilder
-	. Fixed problem adding a new word to a static module
-	. Fixed the right click menu on a static module
-	. Fixed bug where only the command list with the same module id would be applied
-	. Added option to change a relocation command's target module
-	. Removed the Imports folder from REL tree, as its generation is now fully automatic
+    . Fixed header and alignment in module rebuilder
+    . Fixed problem adding a new word to a static module
+    . Fixed the right click menu on a static module
+    . Fixed bug where only the command list with the same module id would be applied
+    . Added option to change a relocation command's target module
+    . Removed the Imports folder from REL tree, as its generation is now fully automatic
 
  - v0.69b- (11/19/13) - BrawlLib v0.16b
-	. Fixed problem painting the GUI when closing the model viewer
-	. Fixed bug where when opening a TXT in the code manager, any spaces after hex lines would cause reading problems
-	. Fixed bug where if codes where recognized in a GCT, they would be displayed as recognized and unrecognized	
-	. Fixed bug where hex lines in a GCT would be read incorrectly	
-	. Finished, fixed and added PMD importer	
-	. Fixed error in collision viewer with displaying and selecting plans/links anchored to bones	
-	. Fixed display error of SHP0 framecount in its editor	
-	. Fixed display error of CLR0 primary color in its editor
-	. Fixed error when trying to view an SCN0 camera entry
-	. Fixed error reading float values with commas in anim parser
-	. Fixed problem where the bounding box would not be generated for imported models
-	. Added option to code manager to display all remembered codes
-	. Updated Collada model exporter to Collada 1.5
-	. Updated Collada model importer to support Collada 1.5
-	. Updated GCT editor to have checkboxes next to codes
+    . Fixed problem painting the GUI when closing the model viewer
+    . Fixed bug where when opening a TXT in the code manager, any spaces after hex lines would cause reading problems
+    . Fixed bug where if codes where recognized in a GCT, they would be displayed as recognized and unrecognized    
+    . Fixed bug where hex lines in a GCT would be read incorrectly    
+    . Finished, fixed and added PMD importer    
+    . Fixed error in collision viewer with displaying and selecting plans/links anchored to bones    
+    . Fixed display error of SHP0 framecount in its editor    
+    . Fixed display error of CLR0 primary color in its editor
+    . Fixed error when trying to view an SCN0 camera entry
+    . Fixed error reading float values with commas in anim parser
+    . Fixed problem where the bounding box would not be generated for imported models
+    . Added option to code manager to display all remembered codes
+    . Updated Collada model exporter to Collada 1.5
+    . Updated Collada model importer to support Collada 1.5
+    . Updated GCT editor to have checkboxes next to codes
 
  - v0.69- (10/18/13) - BrawlLib v0.16
-	. Started to add Maya .anim animation importing and exporting. This feature is still a work in progress and does not work properly yet.
-	. Added interpolation editor located under Tools in the model viewer
-	. Added DOL & REL section editor
-	. Finished DOL & REL rebuilders
-	. Added option to sync first and last keyframes (useful for looping animations)
-	. Added option to generate animation tangents automatically or not
-	. Added "Recent Files" under File in the main menu strip
-	. Added full support for RunLength and Extended LZ77 compression
-	. Added a code manager for GCT files. Can read/write to TXT, save GCT with text info, and open GCTs using a database of saved codes if it contains no text info.
-	. Added support for adding REFF entries
-	. Added option to move the model viewer panel into a new window and back - useful for dual monitors
-	. Added option to create a link directly on a plane in the collision editor
-	. Added a help window to the collision editor
-	. Added a texture resize function to the Texture Converter dialog
-	. Added a Re-Encode option to the right click menus of TEX0, REFT, and TPL textures
-	. Fixed saving RSAR files (RWSD, RBNK, RSEQ) when they are outside of the RSAR
-	. Fixed U8 parser/rebuilder
-	. Fixed bug where the model previewer would lock itself if you closed it while playing an animation
-	. Fixed "Replace All" button on ARC right click menu
-	. Fixed MDL0 object importer
-	. Updated the keyframe panel in the model viewer
-	. Made animation frames able to be copied and pasted in different instances of BrawlBox
-	. Updated model viewer to internally retain all changes to settings; no more external settings file.
-	. Model viewer settings can be exported, imported, and reset to default.
-	. Updated the display of TPL entries
-	. Updated the Collada model import settings dialog
+    . Started to add Maya .anim animation importing and exporting. This feature is still a work in progress and does not work properly yet.
+    . Added interpolation editor located under Tools in the model viewer
+    . Added DOL & REL section editor
+    . Finished DOL & REL rebuilders
+    . Added option to sync first and last keyframes (useful for looping animations)
+    . Added option to generate animation tangents automatically or not
+    . Added "Recent Files" under File in the main menu strip
+    . Added full support for RunLength and Extended LZ77 compression
+    . Added a code manager for GCT files. Can read/write to TXT, save GCT with text info, and open GCTs using a database of saved codes if it contains no text info.
+    . Added support for adding REFF entries
+    . Added option to move the model viewer panel into a new window and back - useful for dual monitors
+    . Added option to create a link directly on a plane in the collision editor
+    . Added a help window to the collision editor
+    . Added a texture resize function to the Texture Converter dialog
+    . Added a Re-Encode option to the right click menus of TEX0, REFT, and TPL textures
+    . Fixed saving RSAR files (RWSD, RBNK, RSEQ) when they are outside of the RSAR
+    . Fixed U8 parser/rebuilder
+    . Fixed bug where the model previewer would lock itself if you closed it while playing an animation
+    . Fixed "Replace All" button on ARC right click menu
+    . Fixed MDL0 object importer
+    . Updated the keyframe panel in the model viewer
+    . Made animation frames able to be copied and pasted in different instances of BrawlBox
+    . Updated model viewer to internally retain all changes to settings; no more external settings file.
+    . Model viewer settings can be exported, imported, and reset to default.
+    . Updated the display of TPL entries
+    . Updated the Collada model import settings dialog
 
  - v0.68d- (6/22/2013) - BrawlLib v0.15d
-	. Fixed BRSTM encoder issue
-	. Fixed issue with mini model viewer when first loaded
-	. Fixed bug where the frame count and loop animation properties were gone
-	. Fixed animation framerate in model viewer (defaults to 60) - changing the FPS (Frames Per Second) value now works accurately
-	. Fixed issue when opening collision viewer for the first time
-	. Fixed collision plane culling (was inside-out) and removed 2D selection overlay from collision viewer
-	. Fixed problem where texture matrices would be removed but leave empty bytes in the object
-	. Moved collision editor and model viewer code out of Brawllib and into BrawlBox
-	. Removed wireframe mode from the polygons button and moved it to a seperate menu button
-	. Added support for viewing THPs (video and audio may desync though)
+    . Fixed BRSTM encoder issue
+    . Fixed issue with mini model viewer when first loaded
+    . Fixed bug where the frame count and loop animation properties were gone
+    . Fixed animation framerate in model viewer (defaults to 60) - changing the FPS (Frames Per Second) value now works accurately
+    . Fixed issue when opening collision viewer for the first time
+    . Fixed collision plane culling (was inside-out) and removed 2D selection overlay from collision viewer
+    . Fixed problem where texture matrices would be removed but leave empty bytes in the object
+    . Moved collision editor and model viewer code out of Brawllib and into BrawlBox
+    . Removed wireframe mode from the polygons button and moved it to a seperate menu button
+    . Added support for viewing THPs (video and audio may desync though)
 
  - v0.68c- (5/27/2013) - BrawlLib v0.15c
-	. Added bones panel to the keyframes panel in the model previewer
-	. Removed buttons to toggle playback and bones panels
-	. Removed moveset editor (Moveset editing moved to Ikarus)
-	. Fixed shortcut text for the button to toggle bones
-	. Fixed crash when saving a PCS with compression already set to LZ77
-	. Fixed bug opening a model with objects that have incorrect vertex format flags
-	. Fixed problem with PAT0 animations and different palettes
-	. Fixed importing a model with no materials
-	. Fixed model import problem where all normals and unweighted objects would be rotated forward 90 degrees
-	. Added ability to drag and drop tree nodes. Hold shift to add node as a child
-	. Added drop down color picker for any RGBA pixel property
+    . Added bones panel to the keyframes panel in the model previewer
+    . Removed buttons to toggle playback and bones panels
+    . Removed moveset editor (Moveset editing moved to Ikarus)
+    . Fixed shortcut text for the button to toggle bones
+    . Fixed crash when saving a PCS with compression already set to LZ77
+    . Fixed bug opening a model with objects that have incorrect vertex format flags
+    . Fixed problem with PAT0 animations and different palettes
+    . Fixed importing a model with no materials
+    . Fixed model import problem where all normals and unweighted objects would be rotated forward 90 degrees
+    . Added ability to drag and drop tree nodes. Hold shift to add node as a child
+    . Added drop down color picker for any RGBA pixel property
 
  - v0.68b- (5/5/2013) - BrawlLib v0.15b
-	. Fixed loop points when importing an RSAR sound
-	. Fixed problem where edited models would explode in-game
-	. Fixed REFT image importer. Works just as good as the TEX0 image importer now
-	. Fixed when vertices are moved when modified by a SHP0
-	. Fixed background image to load immediately
-	. Fixed random green/blue/yellow color overlays when clicking bones
-	. Fixed when the last frame of an animation is deleted when clicking "."
-	. Fixed bone translation tool
-	. Fixed duplicated objects to be independent from the original
-	. Changed shortcut to delete the current frame to Shift + Backspace
-	. Changed shortcut when zooming to increase/decrease camera zoom/translate/rotate speeds from Control to Alt
-	. Added support to compress U8 Archives to YAZ0 format with RunLength compression
-	. Added support for v1.9 REFF
-	. Finished REFT and REFF rebuilders
-	. Finished TPL rebuilder
-	. Set point/line smooth to off by default and added a button to toggle it on
-	. Set text overlays to not display by default and added a button to toggle them on
-	 
+    . Fixed loop points when importing an RSAR sound
+    . Fixed problem where edited models would explode in-game
+    . Fixed REFT image importer. Works just as good as the TEX0 image importer now
+    . Fixed when vertices are moved when modified by a SHP0
+    . Fixed background image to load immediately
+    . Fixed random green/blue/yellow color overlays when clicking bones
+    . Fixed when the last frame of an animation is deleted when clicking "."
+    . Fixed bone translation tool
+    . Fixed duplicated objects to be independent from the original
+    . Changed shortcut to delete the current frame to Shift + Backspace
+    . Changed shortcut when zooming to increase/decrease camera zoom/translate/rotate speeds from Control to Alt
+    . Added support to compress U8 Archives to YAZ0 format with RunLength compression
+    . Added support for v1.9 REFF
+    . Finished REFT and REFF rebuilders
+    . Finished TPL rebuilder
+    . Set point/line smooth to off by default and added a button to toggle it on
+    . Set text overlays to not display by default and added a button to toggle them on
+     
 - v0.68- (4/28/2013) - BrawlLib v0.15
-	. Fixed "Null weights" MDL0 error
-	. "Export as Single Matrix" 3ds Max export setting for DAE models is not necessary to check anymore
-	. Added support for editing REFF files
-	. Updated UserData handling
-	. Updated MDL0 Material Properties
-	. MDL0 Objects updated: now support both an OPA and XLU material, added "DrawPriority" value and added the ability to change linked vertex/normal/color/uv nodes.
-	. Updated BRRES "Edit All" dialog
-	. Added TPL support
-	. Added SCN0 & CLR0 editors to the model viewer (however, their effects cannot be literally displayed yet)
-	. SCN0 rebuilder bugfixes
-	. Finished SCN0 Editor
-	. Added various model viewer buttons: take screenshot, save camera, model viewer help, load background image
-	. Revised and added new options to model viewer settings window
-	. Began working on rendering materials & shaders using GLSL; all OpenGL coded has been modified to use OpenTK. This feature is not yet available.
-	. Added "Original Path" string value for all NW4R nodes.
-	. Edited animation editors in model viewer to be a bit more compact
-	. Finished RSAR rebuilder
-	. Added RSAR sound importer
-	. Added RSAR file viewer
-	. Made RSAR file list sortable by columns
-	. Fixed loop point retrieval for RSAR sounds
-	. Added support for stereo RSAR sounds
-	. Added support for modifying RWSD, RBNK, and RSEQ files. RSEQ MML code is not yet editable yet.
-	. Added support for all RSAR versions
-	. Added support for RWAR and RWAV formats, located in other versions of RWSD and RBNK
-	. Updated Stage Model Converter
-	. Fixed when an offset parameter is pasted back into moveset code
-	. Finished bone translation and scale controls in the model previewer
-	. Implemented vertex editor
-	. Made bones, vertices and the bone scale/rotation/translation controls highlight when you move the mouse over them
-	. Added left and right buttons to texture previewer to view the different mipmaps
-	. Fixed problem with importing mono audio files
-	. Multi-Channel BRSTMs are now previewable
-	. Undo and Redo buttons re-coded
-	. Added buttons to display model and object bounding boxes and to render normals
-	. Fixed .wav file exporter
-	. Corrected SHP0 morphing between multiple destinations
-	. Added a donate button to the About menu dropdown (yay!)
+    . Fixed "Null weights" MDL0 error
+    . "Export as Single Matrix" 3ds Max export setting for DAE models is not necessary to check anymore
+    . Added support for editing REFF files
+    . Updated UserData handling
+    . Updated MDL0 Material Properties
+    . MDL0 Objects updated: now support both an OPA and XLU material, added "DrawPriority" value and added the ability to change linked vertex/normal/color/uv nodes.
+    . Updated BRRES "Edit All" dialog
+    . Added TPL support
+    . Added SCN0 & CLR0 editors to the model viewer (however, their effects cannot be literally displayed yet)
+    . SCN0 rebuilder bugfixes
+    . Finished SCN0 Editor
+    . Added various model viewer buttons: take screenshot, save camera, model viewer help, load background image
+    . Revised and added new options to model viewer settings window
+    . Began working on rendering materials & shaders using GLSL; all OpenGL coded has been modified to use OpenTK. This feature is not yet available.
+    . Added "Original Path" string value for all NW4R nodes.
+    . Edited animation editors in model viewer to be a bit more compact
+    . Finished RSAR rebuilder
+    . Added RSAR sound importer
+    . Added RSAR file viewer
+    . Made RSAR file list sortable by columns
+    . Fixed loop point retrieval for RSAR sounds
+    . Added support for stereo RSAR sounds
+    . Added support for modifying RWSD, RBNK, and RSEQ files. RSEQ MML code is not yet editable yet.
+    . Added support for all RSAR versions
+    . Added support for RWAR and RWAV formats, located in other versions of RWSD and RBNK
+    . Updated Stage Model Converter
+    . Fixed when an offset parameter is pasted back into moveset code
+    . Finished bone translation and scale controls in the model previewer
+    . Implemented vertex editor
+    . Made bones, vertices and the bone scale/rotation/translation controls highlight when you move the mouse over them
+    . Added left and right buttons to texture previewer to view the different mipmaps
+    . Fixed problem with importing mono audio files
+    . Multi-Channel BRSTMs are now previewable
+    . Undo and Redo buttons re-coded
+    . Added buttons to display model and object bounding boxes and to render normals
+    . Fixed .wav file exporter
+    . Corrected SHP0 morphing between multiple destinations
+    . Added a donate button to the About menu dropdown (yay!)
 
  - v0.67b- (7/23/2012) - BrawlLib v0.14b
-	. Move up/down for events doesn't randomly throw an error
-	. SubActions can have same names
-	. Model Visibility works perfectly in viewer
-	. Article Data3 now read correctly, will not freeze entry article
-	. Auto removal of FADEF00D and FADE0D8A events created by PSA
-	. External subroutine removal doesn't corrupt save file
-	. Setting an offset doesn't require the value to already have an offset
-	. Offset editor fixed up, had some problems before and did not work.
-	. Culture Invariant Float.Parse on most parse uses
-	. Loads animations from U8 files correctly
-	. WAV files now parse correctly when there is text info in the header
-	. InsertChild now adds node in right location on node tree
-	. Event changes in viewer updates on the selected frame right after being modified
-	. Model visibility switch nodes sync in number between references
-	. Added REL stage converter coded by libertyernie to REL right click menu
-	. Added new parameter node handling for events
-	. Added new parameter node for external GFX using new text file "GFXFiles.txt" for the gfx file names. Names originally written down by Eternal Yoshi.
-	. CLR0 parsing/rebuilding remade. Full editing support and v4 support
-	. Removed all unknowns from all formats found in BRRES files. All flags are fully known as well.
-	. Fixed CHR0/SRT0 manual editors
-	. Fixed SRT0 flag handling
-	. Better lighting in model viewer
-	. SCN0 fully editable and rebuildable
-	. "Part2" entries updated to UserData entries with full support
+    . Move up/down for events doesn't randomly throw an error
+    . SubActions can have same names
+    . Model Visibility works perfectly in viewer
+    . Article Data3 now read correctly, will not freeze entry article
+    . Auto removal of FADEF00D and FADE0D8A events created by PSA
+    . External subroutine removal doesn't corrupt save file
+    . Setting an offset doesn't require the value to already have an offset
+    . Offset editor fixed up, had some problems before and did not work.
+    . Culture Invariant Float.Parse on most parse uses
+    . Loads animations from U8 files correctly
+    . WAV files now parse correctly when there is text info in the header
+    . InsertChild now adds node in right location on node tree
+    . Event changes in viewer updates on the selected frame right after being modified
+    . Model visibility switch nodes sync in number between references
+    . Added REL stage converter coded by libertyernie to REL right click menu
+    . Added new parameter node handling for events
+    . Added new parameter node for external GFX using new text file "GFXFiles.txt" for the gfx file names. Names originally written down by Eternal Yoshi.
+    . CLR0 parsing/rebuilding remade. Full editing support and v4 support
+    . Removed all unknowns from all formats found in BRRES files. All flags are fully known as well.
+    . Fixed CHR0/SRT0 manual editors
+    . Fixed SRT0 flag handling
+    . Better lighting in model viewer
+    . SCN0 fully editable and rebuildable
+    . "Part2" entries updated to UserData entries with full support
 
  - v0.67- (7/7/2012) - BrawlLib v0.14
-	. New moveset editor & rebuilder
-	. SCN0 rebuilder revised
-	. PAT0 rebuilder revised
-	. New text animation importer for use with a specific maxscript for 3ds Max
-	. Various bug fixes
+    . New moveset editor & rebuilder
+    . SCN0 rebuilder revised
+    . PAT0 rebuilder revised
+    . New text animation importer for use with a specific maxscript for 3ds Max
+    . Various bug fixes
 
  - v0.66b- (4/17/2012) - BrawlLib v0.13b
-	. Various bug fixes
-	. Edited viewer based on feedback
-	. Previewer now allows saving viewer settings
+    . Various bug fixes
+    . Edited viewer based on feedback
+    . Previewer now allows saving viewer settings
 
  - v0.66- (4/10/2012) - BrawlLib v0.13
-	. New SRT0 editor & rebuilder
-	. New SHP0 editor & rebuilder
-	. New PAT0 editor & revised rebuilder
-	. New Model Previewer - now supports different animation editors
-	. All animation types & versions supported
+    . New SRT0 editor & rebuilder
+    . New SHP0 editor & rebuilder
+    . New PAT0 editor & revised rebuilder
+    . New Model Previewer - now supports different animation editors
+    . All animation types & versions supported
 
  - v0.65c- (2/4/2012) - BrawlLib v0.12c
-	. Made MDL0 nodes modulate their values and each other more closely
-	. Finished Wavefront OBJ exporter (Right click an MDL0 object and export it as OBJ)
-	. Fixed up the DAE exporter again
-	. Undo and Redo buttons have been fixed for the model viewer and added to the collision viewer (All coded by Xiggah)
-	. Texture matrices can now be used without any problems in-game (moving textures)
-	. Added stage default support for DAE importer
+    . Made MDL0 nodes modulate their values and each other more closely
+    . Finished Wavefront OBJ exporter (Right click an MDL0 object and export it as OBJ)
+    . Fixed up the DAE exporter again
+    . Undo and Redo buttons have been fixed for the model viewer and added to the collision viewer (All coded by Xiggah)
+    . Texture matrices can now be used without any problems in-game (moving textures)
+    . Added stage default support for DAE importer
 
  - v0.65b- (1/28/2012) - BrawlLib v0.12b
-	. Changed GX enums to be easier to understand
-	. Updated MDL0 Shader display
-	. Added an MDL0 object importer and duplicator
-	. Added SCN0, SRT0 and STPM rebuilding
-	. Fixed tons of bugs!
-	. Added REFT image importer and rebuilder
-	. Added new node icons
-	. Changed around material values
+    . Changed GX enums to be easier to understand
+    . Updated MDL0 Shader display
+    . Added an MDL0 object importer and duplicator
+    . Added SCN0, SRT0 and STPM rebuilding
+    . Fixed tons of bugs!
+    . Added REFT image importer and rebuilder
+    . Added new node icons
+    . Changed around material values
 
  - v0.65- (11/8/2011) - BrawlLib v0.12
-	. Finished the DAE model importer!
-	. Finished the model rebuilder completely (everything is now editable).
-	. Finalized shader editing.
-	. Fixed the v5 CHR0 saving bug.
-	. Added support for v8 MDL0s.
-	. Added minor REFF support.
-	. Added a new menu to the model previewer
-	. Many bugfixes
+    . Finished the DAE model importer!
+    . Finished the model rebuilder completely (everything is now editable).
+    . Finalized shader editing.
+    . Fixed the v5 CHR0 saving bug.
+    . Added support for v8 MDL0s.
+    . Added minor REFF support.
+    . Added a new menu to the model previewer
+    . Many bugfixes
 
  - v0.64d- (08/31/2011) - BrawlLib v0.11d (BlackJax96 takes over development from here on)
-	. Fixed "Clean" button and the keyframe viewer.
-	. Added animation porter
-	. Added "Rename All" and "Edit All" buttons to BRRES nodes.
-	. Added support for viewing multiple models in the model previewer (CTRL+H opens model switcher).
-	. Finished model rebuilder, for the most part.
-	. Finished DAE parser.
-	. Added support for editing most MDL0 shader values.
-	. Added undo and redo functions in the model previewer.
-	. Changed the way models are rendered.
-	. Added support for v5 CHR0s and v10 and v11 MDL0s.
-	. Added the ability to drag files into the model previewer to view all the models in the file.
-	. Added bone tree editing functions.
-	. Added support for editing/saving MRG files.
-	. Added right click menus to the Trans, Rot and Scale labels for editing keyframes in the model previewer.
-	. Many bugfixes and small additions/changes to things
+    . Fixed "Clean" button and the keyframe viewer.
+    . Added animation porter
+    . Added "Rename All" and "Edit All" buttons to BRRES nodes.
+    . Added support for viewing multiple models in the model previewer (CTRL+H opens model switcher).
+    . Finished model rebuilder, for the most part.
+    . Finished DAE parser.
+    . Added support for editing most MDL0 shader values.
+    . Added undo and redo functions in the model previewer.
+    . Changed the way models are rendered.
+    . Added support for v5 CHR0s and v10 and v11 MDL0s.
+    . Added the ability to drag files into the model previewer to view all the models in the file.
+    . Added bone tree editing functions.
+    . Added support for editing/saving MRG files.
+    . Added right click menus to the Trans, Rot and Scale labels for editing keyframes in the model previewer.
+    . Many bugfixes and small additions/changes to things
 
 - v0.63d- (02/08/2010) - BrawlLib v0.10d
-	. Fixed animation encoder bug.
-	. Fixed bug dealing with single CLR entries saving improperly.
-	
+    . Fixed animation encoder bug.
+    . Fixed bug dealing with single CLR entries saving improperly.
+    
 - v0.63c- (01/31/2010) - BrawlLib v0.10c
-	. Various bugfixes
-	. Added VIS editor
-	. Animation frames now interpolate properly.
+    . Various bugfixes
+    . Added VIS editor
+    . Animation frames now interpolate properly.
  
 - v0.63b- (01/19/2010) - BrawlLib v0.10b
-	. Fixed image encoding bug related to image format on older systems.
-	. Fixed save dialog extension bug. Also, numbered extensions will now have real extension added.
-	. Fixed rendering bug related to materials without textures.
-	. Added various features to collision editor.
+    . Fixed image encoding bug related to image format on older systems.
+    . Fixed save dialog extension bug. Also, numbered extensions will now have real extension added.
+    . Fixed rendering bug related to materials without textures.
+    . Added various features to collision editor.
  
 - v0.63 - (01/18/2010) - BrawlLib v0.10
-	. Fixed a bug that was causing decal textures to link improperly in MDL files.
-	. Added minor support for EFLS resources.
-	. Added support for stage collision files.
-	. Added editor for stage collision files.
-	. Fixed minor bug that was affecting the way non-textured polygons are rendered (alloy models).
-	. Increased maximum frame delay for animation playback.
-	. Fixed bug in OpenGL rendering dealing with depth buffer precision.
+    . Fixed a bug that was causing decal textures to link improperly in MDL files.
+    . Added minor support for EFLS resources.
+    . Added support for stage collision files.
+    . Added editor for stage collision files.
+    . Fixed minor bug that was affecting the way non-textured polygons are rendered (alloy models).
+    . Increased maximum frame delay for animation playback.
+    . Fixed bug in OpenGL rendering dealing with depth buffer precision.
 
 - v0.62b- (01/06/2010) - BrawlLib v0.09b
-	. Added minor support for single-color CLR0 entries. Fixes many crashing problems.
-	. Fixed bug in CI4 encoder that was corrupting image blocks.
-	. Added floor option to model viewer.
-	. CopyAll/PasteAll in model viewer now saves the animation state globally.
-	. Color lists now have two color columns, one with transparency and one without.
-	. Added gradient generator to color list.
+    . Added minor support for single-color CLR0 entries. Fixes many crashing problems.
+    . Fixed bug in CI4 encoder that was corrupting image blocks.
+    . Added floor option to model viewer.
+    . CopyAll/PasteAll in model viewer now saves the animation state globally.
+    . Color lists now have two color columns, one with transparency and one without.
+    . Added gradient generator to color list.
 
 - v0.62 - (01/05/2010) - BrawlLib v0.09
-	. Added support for CLR0 nodes.
-	. Added color dialog for CLR0 and PLT0 editing.
-	. New Median Cut quantizer using method from GIMP library.
-	. Added features to BRSTM converter dialog.
-	. Fixed CHR bug that was causing long animations to cut short.
-	. Fixed bug in MSBin parser/decoder dealing with empty strings.
+    . Added support for CLR0 nodes.
+    . Added color dialog for CLR0 and PLT0 editing.
+    . New Median Cut quantizer using method from GIMP library.
+    . Added features to BRSTM converter dialog.
+    . Fixed CHR bug that was causing long animations to cut short.
+    . Fixed bug in MSBin parser/decoder dealing with empty strings.
 
 - v0.61 - (12/24/2009) - BrawlLib v0.08
-	. Added audio playback controls.
-	. Added brstm converter.
-	. Added CopyAll/PasteAll/Clean/Clear controls to animation editor.
-	. Added support for RWSD/RBNK/RSEQ files.
-	. Added RSAR file list.
+    . Added audio playback controls.
+    . Added brstm converter.
+    . Added CopyAll/PasteAll/Clean/Clear controls to animation editor.
+    . Added support for RWSD/RBNK/RSEQ files.
+    . Added RSAR file list.
 
 - v0.60c- (12/01/2009) - BrawlLib v0.07c
-	. Fixed various bugs with the CHR0 encoder.
-	. Fixed a bug in the MSBin encoder for border entries.
+    . Fixed various bugs with the CHR0 encoder.
+    . Fixed a bug in the MSBin encoder for border entries.
 
 - v0.60b- (11/30/2009) - BrawlLib v0.07b
-	. Fixed various bugs with the CHR0 encoder.
-	. Fixed a bug in the MSBin encoder for border entries.
-	. Various improvements to the model editor:
-		Added option panel.
-		Added cut/copy/paste/insert/delete buttons to animation panel.
-		Animation length can be set from the playback panel.
-		Added context menu for animation list, which allows for faster import/export.
-		Fixed issue with texture layers. Now all textures are rendered until it can be fixed.
-		Adjusted keyboard controls.
-	. Fixed bug with GLPanel not closing properly.
+    . Fixed various bugs with the CHR0 encoder.
+    . Fixed a bug in the MSBin encoder for border entries.
+    . Various improvements to the model editor:
+        Added option panel.
+        Added cut/copy/paste/insert/delete buttons to animation panel.
+        Animation length can be set from the playback panel.
+        Added context menu for animation list, which allows for faster import/export.
+        Fixed issue with texture layers. Now all textures are rendered until it can be fixed.
+        Adjusted keyboard controls.
+    . Fixed bug with GLPanel not closing properly.
 
 - v0.60 - (11/24/2009) - BrawlLib v0.07
-	. Added tons of features to model editor, including:
-		Animation previewer/editor.
-		Improved model editor features/controls.
-		Improved OpenGL initialization/support.
-	. Fixed a bug that was causing PAC files to export uncompressed regardless of setting.
-	. Fixed a bug in the CHR0 decoder.
-	. Most new features are library improvements. Please see BrawlLib.txt for more details.
+    . Added tons of features to model editor, including:
+        Animation previewer/editor.
+        Improved model editor features/controls.
+        Improved OpenGL initialization/support.
+    . Fixed a bug that was causing PAC files to export uncompressed regardless of setting.
+    . Fixed a bug in the CHR0 decoder.
+    . Most new features are library improvements. Please see BrawlLib.txt for more details.
 
 - v0.59 - (11/08/2009) - BrawlLib v0.06
-	. Re-added settings dialog.
-	. Various menu improvements/features.
-	. CHR0 entries can now be manipulated.
-	. Added editor for CHR0 keyframes.
-	. Added editor for MSBin messages.
-	. Re-added RSAR support with new organization. (No audio features yet)
-	. Improved CMPR algorithm using modified code from the NVidia Texture Tools.
-	. Lowered OpenGL version to 1.1, and changed the way mipmaps are generated.
-	. Added FileAssociation and FileType classes.
-	. Added CHR0 encoder/decoder, with KeyframeCollection class.
-	. Added MSBinEditor for editing MSBin messages.
+    . Re-added settings dialog.
+    . Various menu improvements/features.
+    . CHR0 entries can now be manipulated.
+    . Added editor for CHR0 keyframes.
+    . Added editor for MSBin messages.
+    . Re-added RSAR support with new organization. (No audio features yet)
+    . Improved CMPR algorithm using modified code from the NVidia Texture Tools.
+    . Lowered OpenGL version to 1.1, and changed the way mipmaps are generated.
+    . Added FileAssociation and FileType classes.
+    . Added CHR0 encoder/decoder, with KeyframeCollection class.
+    . Added MSBinEditor for editing MSBin messages.
 
 - v0.58b- (10/24/2009) - BrawlLib v0.05
-	. Re-integration with BrawlLib is nearly complete. Audio support still isn't finished.
-	. Added support for the following new controls from BrawlLib:
-		ModelPanel
-		TextureConverterDialog
-	. New menu system.
-	. Due to new rebuild enhancements, nodes can now be created, renamed, and deleted.
-	. Various improvements to node stability.
-	. Certain resources now automatically convert with the Export/Replace(string) command. Mainly TEX0Node.
-	. Support for binary string trees has been added. (Use ResourceEntry.Build)
-	. More BRES entries now link to the string table. This allows other resources to change size.
-	. BRES entries now do post-processing, and link groups/nodes to the binary tree.
+    . Re-integration with BrawlLib is nearly complete. Audio support still isn't finished.
+    . Added support for the following new controls from BrawlLib:
+        ModelPanel
+        TextureConverterDialog
+    . New menu system.
+    . Due to new rebuild enhancements, nodes can now be created, renamed, and deleted.
+    . Various improvements to node stability.
+    . Certain resources now automatically convert with the Export/Replace(string) command. Mainly TEX0Node.
+    . Support for binary string trees has been added. (Use ResourceEntry.Build)
+    . More BRES entries now link to the string table. This allows other resources to change size.
+    . BRES entries now do post-processing, and link groups/nodes to the binary tree.
 
 - BrawlLib v0.04 - (10/11/2009)
-	. FileMaps now hold on to a FileStream object until the map is closed.
-	. Added OpenGL support with basic functions.
-	. Added GLPanel/ModelPanel controls
-	. Moved MDL0 node classes to separate folder for organization.
-	. MDL0 support has been improved.
-	. GLModel objects can now be created from MDL0Node.
-	. GLModel can be attached to ModelPanel for rendering.
+    . FileMaps now hold on to a FileStream object until the map is closed.
+    . Added OpenGL support with basic functions.
+    . Added GLPanel/ModelPanel controls
+    . Moved MDL0 node classes to separate folder for organization.
+    . MDL0 support has been improved.
+    . GLModel objects can now be created from MDL0Node.
+    . GLModel can be attached to ModelPanel for rendering.
 
 - BrawlLib v0.03 - (10/02/2009)
-	. Fixed many bugs dealing with node memory:
-		BRES entries properly adjust offsets in OnRebuild.
-		BRESGroup addresses change on rebuild.
-		Parent nodes (ARC/BRES) don't release sources until rebuild is complete.
-		Initialization flag is set so nodes know when to initialize from a raw source.
-	. Began support for OpenGL/Models with OGL natives and GLPanel.
-	. Added minor speed tweak to LZ77 decompression.
+    . Fixed many bugs dealing with node memory:
+        BRES entries properly adjust offsets in OnRebuild.
+        BRESGroup addresses change on rebuild.
+        Parent nodes (ARC/BRES) don't release sources until rebuild is complete.
+        Initialization flag is set so nodes know when to initialize from a raw source.
+    . Began support for OpenGL/Models with OGL natives and GLPanel.
+    . Added minor speed tweak to LZ77 decompression.
 
 - v0.58 - (09/29/2009) - BrawlLib v0.02
-	. Name has changed to BrawlBox (previously SmashBox)
-	. Program has been separated, allowing for the creation of BrawlLib.
-	. Now has minor Linux support.
-	. Audio nodes/controls have been temporarily disabled until BrawlLib can be updated.
-	. You can now use SaveAs on the current working file, so long as changes have been made.
-	. Added the ability to construct a resource tree from scratch.
-	. Various properties from ResourceTreeNode, TEX0Node and PLT0Node can now be written to.
+    . Name has changed to BrawlBox (previously SmashBox)
+    . Program has been separated, allowing for the creation of BrawlLib.
+    . Now has minor Linux support.
+    . Audio nodes/controls have been temporarily disabled until BrawlLib can be updated.
+    . You can now use SaveAs on the current working file, so long as changes have been made.
+    . Added the ability to construct a resource tree from scratch.
+    . Various properties from ResourceTreeNode, TEX0Node and PLT0Node can now be written to.
 
 - BrawlLib v0.01 - (09/28/2009)
-	. Initial release
+    . Initial release
 
 - v.057 - (08/23/2009)
-	. Added support for brstm files.
-	. Increased support for brsar audio packages.
-	. Added audio playback control for use with brsar and brstm files.
-	. Added the ability to export audio to .wav format.
+    . Added support for brstm files.
+    . Increased support for brsar audio packages.
+    . Added audio playback control for use with brsar and brstm files.
+    . Added the ability to export audio to .wav format.
 
 - v0.56 - (08/09/2009)
-	. Added support for TGA images.
-	. Re-wrote the LZ77 algorithm for increased speed.
-	. Due to compatibility problems with paletted images and transparent colors. All images are now exported in 32-bit format.
+    . Added support for TGA images.
+    . Re-wrote the LZ77 algorithm for increased speed.
+    . Due to compatibility problems with paletted images and transparent colors. All images are now exported in 32-bit format.
 
 - v0.55b - (08/04/2009)
-	. Fixed a bug that was causing unknown files to disappear entirely. (Thanks lavamage)
-	. Fixed a bug with pre-paletted textures that was causing them to recreate the palette improperly. (Thanks kid craft 24/sonic master)
-	. Added a progress bar for those long compression jobs.
-	. Discovered another portion of model files that needs an entry in the BRES string table.
-	. The texture replacer will now default to the original texture/palette/mip settings.
+    . Fixed a bug that was causing unknown files to disappear entirely. (Thanks lavamage)
+    . Fixed a bug with pre-paletted textures that was causing them to recreate the palette improperly. (Thanks kid craft 24/sonic master)
+    . Added a progress bar for those long compression jobs.
+    . Discovered another portion of model files that needs an entry in the BRES string table.
+    . The texture replacer will now default to the original texture/palette/mip settings.
 
 - v0.55 - (08/03/2009)
-	. Fixed various issues with Common pac files.
-	. Fixed an issue with certain compressed files. Character selection portraits are now supported.
-	. Added support for more image formats (bmp, gif, jpg, still waiting on TGA)
-	. Started incorporating change tracking which offers improvements such as:
-		a. Active discovery; Nodes will only be interpreted as they are browsed. Helps with large/embedded files.
-		b. Only portions of the tree that have changed will be re-built. 
-		c. Unchanged nodes will be copied back as-is. This helps with speed and compatibility.
-	. Removed Managed DirectX 9 dependency. Was causing assembly problems.
-	. Added child-only properties
+    . Fixed various issues with Common pac files.
+    . Fixed an issue with certain compressed files. Character selection portraits are now supported.
+    . Added support for more image formats (bmp, gif, jpg, still waiting on TGA)
+    . Started incorporating change tracking which offers improvements such as:
+        a. Active discovery; Nodes will only be interpreted as they are browsed. Helps with large/embedded files.
+        b. Only portions of the tree that have changed will be re-built. 
+        c. Unchanged nodes will be copied back as-is. This helps with speed and compatibility.
+    . Removed Managed DirectX 9 dependency. Was causing assembly problems.
+    . Added child-only properties
 
 - v0.54 - (08/01/2009)
-	. Fixed a bug during texture replacing that was causing problems in some files (common pacs).
-	. Added various improvements to MDL0 file browsing.
-	. Confirmed successful rebuilding of 'common' files.
+    . Fixed a bug during texture replacing that was causing problems in some files (common pacs).
+    . Added various improvements to MDL0 file browsing.
+    . Confirmed successful rebuilding of 'common' files.
 
 - v0.53b - (07/29/2009)
-	. Fixed a bug dealing with vertex/color data types by removing vertex parsing.
+    . Fixed a bug dealing with vertex/color data types by removing vertex parsing.
 
 - v0.53 - (07/25/2009)
-	. Added minor support for the following brres resources (fixes some texture replacing issues):
-		a. AnmVis (VIS0)
-		b. AnmScn (SCN0)
-		c. AnmTexShp (SHP0)
-		d. AnmTexSrt (SRT0)
-		e. AnmTexPat (PAT0)
-	. Confirmed successful rebuilding of stage files.
+    . Added minor support for the following brres resources (fixes some texture replacing issues):
+        a. AnmVis (VIS0)
+        b. AnmScn (SCN0)
+        c. AnmTexShp (SHP0)
+        d. AnmTexSrt (SRT0)
+        e. AnmTexPat (PAT0)
+    . Confirmed successful rebuilding of stage files.
 
 - v0.52c - (07/23/2009)
-	. Added some support for CHR0 and CLR0 animations.
-	. A bit more support for MDL0 files (can browse data info)
-	. Fixed an issue with character files with transformations.
+    . Added some support for CHR0 and CLR0 animations.
+    . A bit more support for MDL0 files (can browse data info)
+    . Fixed an issue with character files with transformations.
 
 - v0.52b - (07/17/2009)
-	. Fixed a few small bugs with brres generation.
-	. Confirmed texture replacement works, so long as the same texture format is used.
+    . Fixed a few small bugs with brres generation.
+    . Confirmed texture replacement works, so long as the same texture format is used.
 
 - v0.52 - (07/16/2009)
-	. All texture formats are now supported for replacing.
-	. Texture replacer has been updated to allow indexed textures.
-	. Nodes can now be inserted/deleted/moved.
-	. Added some support for MDL0 and brsar files. (Entry viewing only)
-	. Remade node structure (again). Archives are rebuilt entirely when they are saved.
-	. PCS files compress a little faster.
-	. Added About window.
+    . All texture formats are now supported for replacing.
+    . Texture replacer has been updated to allow indexed textures.
+    . Nodes can now be inserted/deleted/moved.
+    . Added some support for MDL0 and brsar files. (Entry viewing only)
+    . Remade node structure (again). Archives are rebuilt entirely when they are saved.
+    . PCS files compress a little faster.
+    . Added About window.
 
 - v0.51 - (06/28/2009)
-	. Texture replacing works fairly well, still doesn't support indexed textures.
-	. Program can display/generate mipmaps. (Use the arrows on the preview panel to change mip level)
-	. Node move/resize functions, allows for better data replacement
-	. PCS entries are now re-packed before saving
-	. Embedded PCS nodes are better supported
-	
+    . Texture replacing works fairly well, still doesn't support indexed textures.
+    . Program can display/generate mipmaps. (Use the arrows on the preview panel to change mip level)
+    . Node move/resize functions, allows for better data replacement
+    . PCS entries are now re-packed before saving
+    . Embedded PCS nodes are better supported
+    
 - v0.50 - (06/23/2009)
-	. Original release
+    . Original release
 
  ====================================
 |*********** Requirements ***********|
  ====================================
  
 * BrawlCrate: Microsoft .Net Framework v4.7.2
-	https://dotnet.microsoft.com/download/thank-you/net472
-	
+    https://dotnet.microsoft.com/download/thank-you/net472
+    
 * A video card that supports OpenGL 1.1 or higher (OpenGL 2.1 is required to enable shaders).
 
 Non-Windows users can try running BrawlCrate with mono (32-bit only), or with wine (use a separate WINEPREFIX and `winetricks dotnet472`).

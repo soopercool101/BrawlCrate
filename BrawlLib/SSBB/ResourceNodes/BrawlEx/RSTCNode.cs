@@ -1,6 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
-using System.BrawlEx;
+﻿using BrawlLib.CustomLists;
+using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.BrawlEx;
 using System.ComponentModel;
 using System.IO;
 
@@ -212,8 +213,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 _fighterID = value;
-                Name = BrawlCrate.FighterNameGenerators.FromID(_fighterID,
-                    BrawlCrate.FighterNameGenerators.cssSlotIDIndex, "+S");
+                Name = FighterNameGenerators.FromID(_fighterID,
+                    FighterNameGenerators.cssSlotIDIndex, "+S");
                 if (Name == null)
                 {
                     Name = "ID 0x" + _fighterID.ToString("X2");
@@ -233,8 +234,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _fighterID = Header->_fighterID;
             if (_name == null)
             {
-                _name = BrawlCrate.FighterNameGenerators.FromID(_fighterID,
-                    BrawlCrate.FighterNameGenerators.cssSlotIDIndex, "+S");
+                _name = FighterNameGenerators.FromID(_fighterID,
+                    FighterNameGenerators.cssSlotIDIndex, "+S");
             }
 
             if (_name == null)

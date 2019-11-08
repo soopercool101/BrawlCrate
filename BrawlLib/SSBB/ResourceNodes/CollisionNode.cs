@@ -1,5 +1,6 @@
-﻿using BrawlLib.OpenGL;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using System;
@@ -390,7 +391,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Unknown = 1,
             Independent = 2,
             ModuleControlled = 4,
-            SSEUnknown = 8,
+            SSEUnknown = 8
         }
 
         public List<CollisionLink> _points = new List<CollisionLink>();
@@ -1244,14 +1245,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);
             GL.Vertex3(r._x, r._y, -10.0f);
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.End();
 
-            GL.Begin(PrimitiveType.Lines);
+            GL.Begin(BeginMode.Lines);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);

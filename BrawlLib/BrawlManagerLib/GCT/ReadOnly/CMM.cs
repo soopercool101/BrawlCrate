@@ -1,10 +1,11 @@
-﻿using BrawlLib.SSBB;
+﻿using BrawlLib.BrawlManagerLib.Songs;
+using BrawlLib.SSBB;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.GCT.ReadOnly
 {
     public class CMM
     {

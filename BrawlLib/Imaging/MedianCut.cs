@@ -1,9 +1,11 @@
-﻿using BrawlLib.Wii.Textures;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Drawing.Imaging;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.Wii.Textures;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 /* This formula is based on the Median Cut formula used in the GIMP library.
  * Special thanks goes to Spencer Kimball, Peter Mattis, and Adam Moss.

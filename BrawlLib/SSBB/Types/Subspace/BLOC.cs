@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Subspace
 {
     //Alot of this was reused from STPM
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -12,8 +12,8 @@ namespace BrawlLib.SSBBTypes
 
         public uint _tag;
         public bint _count;
-        public bint _unk0;
-        public int _pad1;
+        public bint _version;
+        public int _extParam;
 
         public VoidPtr this[int index] => (byte*) Address + Offsets(index);
 
@@ -21,42 +21,6 @@ namespace BrawlLib.SSBBTypes
         {
             return *(buint*) ((byte*) Address + 0x10 + index * 4);
         }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public BLOC(int count)
-        {
-            _tag = Tag;
-            _count = count;
-            _unk0 = 0x80;
-            _pad1 = 0x00;
-        }
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct BLOCEntry
-    {
-        //public bushort _id;
-        //public byte _id2;
-        //public byte _echo;
-
-        //public fixed int _values[64];
-
-        //public BLOCEntry(ushort id, byte echo, byte id2)
-        //{
-        //    _id = id;
-        //    _echo = echo;
-        //    _id2 = id2;
-        //}
 
         private VoidPtr Address
         {

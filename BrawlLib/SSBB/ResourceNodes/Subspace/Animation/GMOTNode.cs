@@ -1,5 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Animation;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes

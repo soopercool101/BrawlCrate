@@ -1,6 +1,9 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

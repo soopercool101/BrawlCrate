@@ -1,7 +1,9 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -353,11 +355,12 @@ namespace BrawlCrate.NodeWrappers
 
         public T NewStageTable<T>(int numEntries) where T : StageTableNode, new()
         {
-            T node = new T { FileType = ARCFileType.MiscData };
+            T node = new T {FileType = ARCFileType.MiscData};
             while (node.NumEntries < numEntries)
             {
                 node.EntryList.Add(0);
             }
+
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

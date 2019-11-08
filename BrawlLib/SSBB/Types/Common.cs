@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     public enum Endian
     {
@@ -441,7 +441,8 @@ namespace BrawlLib.SSBBTypes
             pEntry = &pGroup->_first;
         }
 
-        public ResourcePair Current => new ResourcePair {Name = (sbyte*) pGroup + pEntry->_stringOffset, Data = (byte*) pGroup + pEntry->_dataOffset};
+        public ResourcePair Current => new ResourcePair
+            {Name = (sbyte*) pGroup + pEntry->_stringOffset, Data = (byte*) pGroup + pEntry->_dataOffset};
 
         public void Dispose()
         {

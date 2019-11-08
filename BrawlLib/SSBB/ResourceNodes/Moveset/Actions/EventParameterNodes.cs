@@ -1,9 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
+using System;
 using System.ComponentModel;
-using System.Windows.Forms;
-using BrawlLib.SSBBTypes;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

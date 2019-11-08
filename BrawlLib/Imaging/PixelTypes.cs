@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
-using System.Windows.Forms;
 
 namespace BrawlLib.Imaging
 {
@@ -760,12 +761,14 @@ namespace BrawlLib.Imaging
 
         public static explicit operator ARGBPixel(GXColorS10 p)
         {
-            return new ARGBPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new ARGBPixel
+                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static explicit operator RGBAPixel(GXColorS10 p)
         {
-            return new RGBAPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new RGBAPixel
+                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static implicit operator Vector4(GXColorS10 p)

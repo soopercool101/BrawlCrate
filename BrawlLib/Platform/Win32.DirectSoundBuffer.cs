@@ -1,7 +1,9 @@
-﻿using System.Audio;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using System;
 using System.Runtime.InteropServices;
 
-namespace System
+namespace BrawlLib.Platform
 {
     internal static partial class Win32
     {

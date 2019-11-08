@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using BrawlLib.Internal;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -361,7 +362,7 @@ namespace BrawlLib.OpenGL
         public virtual float GetDepth(int x, int y)
         {
             float val = 0;
-            GL.ReadPixels(x, Height - y, 1, 1, OpenTK.Graphics.OpenGL.PixelFormat.DepthComponent, PixelType.Float,
+            GL.ReadPixels(x, Height - y, 1, 1, PixelFormat.DepthComponent, PixelType.Float,
                 ref val);
             return val;
         }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System.ComponentModel;
-using BrawlLib.SSBBTypes;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.ResourceNodes

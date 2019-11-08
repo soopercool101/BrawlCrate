@@ -1,5 +1,5 @@
-﻿using BrawlLib.IO;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using System.ComponentModel;
 using System.IO;
 

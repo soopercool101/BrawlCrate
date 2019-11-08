@@ -1,5 +1,6 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -560,7 +561,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null || _name == "")
             {
-                _name = "StringEntry" + Parent.Children.IndexOf(this).ToString();
+                _name = "StringEntry" + Parent.Children.IndexOf(this);
             }
 
             entries = new int[Header->_numEntries][];

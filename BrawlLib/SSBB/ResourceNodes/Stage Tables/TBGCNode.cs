@@ -1,5 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Stage_Tables;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

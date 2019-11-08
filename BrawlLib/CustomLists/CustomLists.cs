@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace BrawlLib.BrawlCrate
+namespace BrawlLib.CustomLists
 {
     public class FighterNameGenerators
     {

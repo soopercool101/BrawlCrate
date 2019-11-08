@@ -1,6 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.CustomLists;
+using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.BrawlEx;
 using System;
-using System.BrawlEx;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -125,7 +126,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _wiimoteSFX.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _wiimoteSFX = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -138,7 +139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _status.ToString("X8");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 _status = Convert.ToUInt32(field0, fromBase);
                 SignalPropertyChange();
@@ -328,8 +329,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _costumeID = Header->_costumeID;
             if (_name == null)
             {
-                _name = "Fit" + BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
-                            BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") +
+                _name = "Fit" + FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
+                            FighterNameGenerators.cosmeticIDIndex, "+S") +
                         _costumeID.ToString("00") +
                         (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
             }
@@ -339,8 +340,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void regenName()
         {
-            Name = "Fit" + BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
-                       BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") +
+            Name = "Fit" + FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
+                       FighterNameGenerators.cosmeticIDIndex, "+S") +
                    _costumeID.ToString("00") +
                    (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
         }
@@ -360,9 +361,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 currentPath = currentPath.Substring(0,
                     currentPath.LastIndexOf("brawlex", StringComparison.OrdinalIgnoreCase));
-                List<string> internalNames = BrawlCrate.FighterNameGenerators
+                List<string> internalNames = FighterNameGenerators
                                                        .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
-                                                           BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S")
+                                                           FighterNameGenerators.cosmeticIDIndex, "+S")
                                                        .Split('/').ToList();
                 foreach (string s in internalNames)
                 {

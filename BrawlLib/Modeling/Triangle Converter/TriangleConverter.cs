@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -67,7 +67,8 @@ namespace BrawlLib.Modeling.Triangle_Converter
                     else
                     {
                         faceCount += p.Indices.Count - 2;
-                        fpPrimitives.Add(new PointTriangleStrip {_points = p.Indices.Select(x => points[remapData._impTable[x]]).ToList()});
+                        fpPrimitives.Add(new PointTriangleStrip
+                            {_points = p.Indices.Select(x => points[remapData._impTable[x]]).ToList()});
                     }
 
                     pointCount += p.Indices.Count;

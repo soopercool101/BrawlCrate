@@ -1,4 +1,4 @@
-﻿namespace BrawlCrate.SongManager
+﻿namespace BrawlCrate.BrawlManagers.SongManager
 {
     public class SongsByStage
     {
@@ -366,7 +366,7 @@
                     new SongInfo("Z55"),
                     new SongInfo("Z56"),
                     new SongInfo("Z57"),
-                    new SongInfo("Z58"),
+                    new SongInfo("Z58")
                 };
                 return oa;
             }

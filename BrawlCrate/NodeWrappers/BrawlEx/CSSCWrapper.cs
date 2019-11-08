@@ -1,7 +1,8 @@
-﻿using BrawlLib;
+﻿using BrawlLib.CustomLists;
+using BrawlLib.Internal;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
-using System.BrawlEx;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -107,9 +108,9 @@ namespace BrawlCrate.NodeWrappers
             }
 
             node._name =
-                "Fit" + BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(
+                "Fit" + FighterNameGenerators.InternalNameFromID(
                     ((CSSCNode) _resource)._cosmeticSlot,
-                    BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex,
+                    FighterNameGenerators.cosmeticIDIndex,
                     "+S") + node._costumeID.ToString("00") +
                 (BrawlExColorID.Colors.Length > node._colorID
                     ? " - " + BrawlExColorID.Colors[node._colorID].Name
@@ -234,7 +235,7 @@ namespace BrawlCrate.NodeWrappers
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = AppDomain.CurrentDomain.BaseDirectory + "\\BrawlCrate.exe",
-                    Arguments = "\"" + s + "\"",
+                    Arguments = "\"" + s + "\""
                 });
             }
         }

@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,7 +161,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (m == null)
             {
-                Console.WriteLine("Problem creating class member instance of " + type.ToString());
+                Console.WriteLine("Problem creating class member instance of " + type);
             }
 
             return m;
@@ -200,7 +201,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             typeof(cmStringNode),
             typeof(cmULongPtrNode),
             typeof(cmEnumNode),
-            null, //max
+            null //max
         };
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)

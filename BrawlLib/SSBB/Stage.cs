@@ -1,4 +1,4 @@
-﻿using BrawlLib.BrawlCrate;
+﻿using BrawlLib.CustomLists;
 using System;
 
 namespace BrawlLib.SSBB
@@ -438,7 +438,7 @@ namespace BrawlLib.SSBB
             new Stage(0xFC, "Custom BD", "st_customBD.rel", "customBD", true),
             new Stage(0xFD, "Custom BE", "st_customBE.rel", "customBE", true),
             new Stage(0xFE, "Custom BF", "st_customBF.rel", "customBF", true),
-            new Stage(0xFF, "Custom C0", "st_customC0.rel", "customC0", true),
+            new Stage(0xFF, "Custom C0", "st_customC0.rel", "customC0", true)
         };
 
         public static readonly Stage[] RelList = new Stage[]
@@ -558,7 +558,7 @@ namespace BrawlLib.SSBB
             new Stage(0x36, "All Star Rest Area", "st_heal.rel", "heal"),
             new Stage(0x37, "Online Training", "st_otrain.rel", "onlinetraining"),
             new Stage(0x38, "Target Break", "st_tbreak.rel", "targetlv"),
-            new Stage(0x39, "Classic mode credits", "st_croll.rel", "chararoll"),
+            new Stage(0x39, "Classic mode credits", "st_croll.rel", "chararoll")
         };
     }
 }

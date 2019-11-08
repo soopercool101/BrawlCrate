@@ -1,5 +1,5 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes

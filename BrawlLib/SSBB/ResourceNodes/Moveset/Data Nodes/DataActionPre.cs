@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes

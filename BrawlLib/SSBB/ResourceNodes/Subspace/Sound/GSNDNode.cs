@@ -1,5 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Sound;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("GSND")]
         [DisplayName("Entries")]
-        public int count => Header->_count;
+        public int Count => Children?.Count ?? 0;
 
         public override void OnPopulate()
         {

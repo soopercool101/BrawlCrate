@@ -1,6 +1,8 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 {
     public partial class ModelEditControl : ModelEditorBase
     {

@@ -1,14 +1,15 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
-using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes;
 using System.Timers;
+using System.Windows.Forms;
 using Timer = System.Timers.Timer;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager
 {
     public partial class ModelManager : UserControl
     {

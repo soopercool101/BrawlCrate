@@ -1,4 +1,5 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -29,7 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => "0x" + _endBufferSize.ToString("X");
             set
             {
-                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                string field0 = (value ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase) ? 16 : 10;
                 if (Convert.ToByte(field0, fromBase) % 4 != 0 &&
                     MessageBox.Show(
@@ -95,8 +96,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            _parser.Parse();
-            _parser.Populate();
+            _parser?.Parse();
+            _parser?.Populate();
         }
 
         public override int OnCalculateSize(bool force)

@@ -1,9 +1,11 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace BrawlLib.Wii.Compression
 {

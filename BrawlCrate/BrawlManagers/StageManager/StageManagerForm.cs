@@ -1,25 +1,35 @@
-﻿using System;
+﻿using BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs;
+using BrawlCrate.UI;
+using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT;
+using BrawlLib.BrawlManagerLib.Songs;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.Wii.Textures;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
-using BrawlLib.Wii.Textures;
-using BrawlManagerLib;
-using BrawlCrate.StageManager.SingleUseDialogs;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
+
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public partial class StageManagerForm : Form
     {
         private static OpenFileDialog OpenDialog = new OpenFileDialog();
         private static SaveFileDialog SaveDialog = new SaveFileDialog();
 #if !MONO
-        private static Ookii.Dialogs.VistaFolderBrowserDialog FolderDialog =
-            new Ookii.Dialogs.VistaFolderBrowserDialog();
+        private static VistaFolderBrowserDialog FolderDialog =
+            new VistaFolderBrowserDialog();
 #else
         private static FolderBrowserDialog FolderDialog = new FolderBrowserDialog();
 #endif
@@ -356,7 +366,7 @@ namespace BrawlCrate.StageManager
 
                 if (renderModels.Checked)
                 {
-                    modelPanel1.SetCamWithBox(new Vector3("-100,-100,-100"), new Vector3("100,100,100"));
+                    modelPanel1.SetCamWithBox(new Vector3(-100, -100, -100), new Vector3(100, 100, 100));
 
                     // Update textures list
                     CheckedListBox.ObjectCollection items = clbTextures.Items;
@@ -406,7 +416,7 @@ namespace BrawlCrate.StageManager
                 else
                 {
                     string[] arr = SongsByStageID.ForPac(portraitViewer1.BestSSS, fi.Name);
-                    arr = arr.Select(filename =>
+                    arr = arr.Select<string, string>(filename =>
                     {
                         Song element = SongIDMap.Songs.SingleOrDefault(s => s.Filename == filename);
                         if (element != null)
@@ -542,7 +552,7 @@ namespace BrawlCrate.StageManager
             stageInfoControl1.setStageLabels("", "", "");
             stageInfoControl1.RelFile = null;
 
-            Console.WriteLine(songPanel1.findInfoFile());
+            Console.WriteLine((string) songPanel1.findInfoFile());
             songPanel1.CustomSongTitles = portraitViewer1.BestSSS.CNMT.Map;
 
             portraitViewer1.UpdateDirectory(CurrentDirectory);
@@ -859,7 +869,7 @@ namespace BrawlCrate.StageManager
                 return f.Name;
             }
 
-            return sb.ToString() + ".pac";
+            return sb + ".pac";
         }
 
         private static ResourceNode FindStageARC(ResourceNode node)
@@ -1193,7 +1203,7 @@ namespace BrawlCrate.StageManager
 
         private void addMenSelmapMarksToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenDialog.Filter = BrawlLib.FileFilters.TEX0;
+            OpenDialog.Filter = FileFilters.TEX0;
             OpenDialog.Multiselect = true;
             if (OpenDialog.ShowDialog() == DialogResult.OK)
             {
@@ -1343,7 +1353,7 @@ namespace BrawlCrate.StageManager
             if (!string.IsNullOrEmpty(filepath))
             {
                 Program.Open(filepath);
-                BrawlCrate.MainForm.Instance.Focus();
+                MainForm.Instance.Focus();
             }
         }
 
@@ -1359,7 +1369,7 @@ namespace BrawlCrate.StageManager
             else
             {
                 Program.Open(new FileInfo(portraitViewer1.OpenFilePath).FullName);
-                BrawlCrate.MainForm.Instance.Focus();
+                MainForm.Instance.Focus();
             }
         }
 

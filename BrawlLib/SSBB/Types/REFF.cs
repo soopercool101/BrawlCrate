@@ -1,8 +1,9 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct REFF
@@ -112,7 +113,7 @@ namespace BrawlLib.SSBBTypes
             InheritChildPivot = 0x800,
             InheritChildPScale = 0x1000,
             InheritChildPRotate = 0x2000,
-            RelocateComplete = 0x80000000,
+            RelocateComplete = 0x80000000
         }
 
         public enum EmitFormType
@@ -663,7 +664,7 @@ namespace BrawlLib.SSBBTypes
         User,          // User specified (unused)
         NoDesign,      // Unspecified
         ParticleBoth,  // Difference in position with both neighboring particles
-        NoDesignYAxis, // Unspecified (initialized as the world Y-axis)
+        NoDesignYAxis  // Unspecified (initialized as the world Y-axis)
     }
 
     // Movement direction (Y-axis) -- billboards
@@ -675,7 +676,7 @@ namespace BrawlLib.SSBBTypes
         EmitterCenter, // Relative position from the center of emitter
         EmitterDesign, // Emitter specified direction
         Particle,      // Difference in location from the previous particle
-        ParticleBoth,  // Difference in position with both neighboring particles
+        ParticleBoth   // Difference in position with both neighboring particles
     }
 
     // Rotational axis to take into account when rendering
@@ -686,7 +687,7 @@ namespace BrawlLib.SSBBTypes
         OnlyX = 0, // X-axis rotation only
         OnlyY,     // Y-axis rotation only
         OnlyZ,     // Z-axis rotation only
-        XYZ,       // 3-axis rotation
+        XYZ        // 3-axis rotation
     }
 
     // Base surface (polygon render surface)
@@ -695,7 +696,7 @@ namespace BrawlLib.SSBBTypes
     public enum Face
     {
         XY = 0,
-        XZ,
+        XZ
     }
 
     // Stripe terminal connections
@@ -705,7 +706,8 @@ namespace BrawlLib.SSBBTypes
     {
         None = 0, // Does not connect
         Ring,     // Both ends connected
-        Emitter,  // Connect between the newest particle and the emitter
+
+        Emitter // Connect between the newest particle and the emitter
         //Mask = 0x07 // StripeConnect mask
     }
 
@@ -717,7 +719,8 @@ namespace BrawlLib.SSBBTypes
         XAxis = 1, // X-axis of the emitter
         YAxis = 0, // Y-axis of the emitter (assigned to 0 for compatibility)
         ZAxis = 2, // Z-axis of the emitter
-        XYZ = 3,   // Direction in emitter coordinates (1, 1, 1)
+
+        XYZ = 3 // Direction in emitter coordinates (1, 1, 1)
         //STRIPE_INITIAL_PREV_AXIS__MASK = 0x07 << 3          // Bitmask
     }
 
@@ -727,7 +730,8 @@ namespace BrawlLib.SSBBTypes
     public enum StripeTexmapType
     {
         Stretch = 0, // Stretch the texture along the stripe's entire length.
-        Repeat = 1,  // Repeats the texture for each segment.
+
+        Repeat = 1 // Repeats the texture for each segment.
         //STRIPE_TEXMAP_TYPE__MASK = 0x03 << 6
     }
 
@@ -738,7 +742,8 @@ namespace BrawlLib.SSBBTypes
     public enum DirectionalPivot
     {
         NoProcessing = 0 << 0, // No processing
-        Billboard = 1 << 0,    // Convert into a billboard, with the movement direction as its axis
+
+        Billboard = 1 << 0 // Convert into a billboard, with the movement direction as its axis
         //DIRECTIONAL_PIVOT__MASK = 0x03 << 0
     }
 
@@ -815,7 +820,7 @@ namespace BrawlLib.SSBBTypes
         TexIndRot = 76,
         TexIndTrans = 96,
         AlphaCompareRef0 = 119,
-        AlphaCompareRef1 = 120,
+        AlphaCompareRef1 = 120
     }
 
     public enum v7AnimCurveTargetByteFloat //curve flag = 0, 3
@@ -856,7 +861,7 @@ namespace BrawlLib.SSBBTypes
         Tex2Trans = 88,
         TexIndScale = 60,
         TexIndRot = 76,
-        TexIndTrans = 96,
+        TexIndTrans = 96
     }
 
     public enum v9AnimCurveTargetRotateFloat //curve flag = 6, 3 when baking
@@ -870,19 +875,19 @@ namespace BrawlLib.SSBBTypes
         //Updates: ParticleParam
         Tex1 = 104,
         Tex2 = 108,
-        TexInd = 112,
+        TexInd = 112
     }
 
     public enum v9AnimCurveTargetChild //curve flag = 5
     {
         //Updates: child
-        Child = 0,
+        Child = 0
     }
 
     public enum v7AnimCurveTargetChild2 //curve flag = 5
     {
         //Updates: child
-        Child = 26,
+        Child = 26
     }
 
     public enum v9AnimCurveTargetField //curve flag = 7
@@ -895,7 +900,7 @@ namespace BrawlLib.SSBBTypes
         Vortex = 4,
         Spin = 6,
         Random = 7,
-        Tail = 8,
+        Tail = 8
     }
 
     public enum v9AnimCurveTargetPostField //curve flag = 2
@@ -903,7 +908,7 @@ namespace BrawlLib.SSBBTypes
         //Updates: PostFieldInfo.AnimatableParams
         Size = 0,
         Rotate = 12,
-        Translate = 24,
+        Translate = 24
     }
 
     public enum v9AnimCurveTargetEmitterFloat //curve flag = 11

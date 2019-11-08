@@ -1,6 +1,6 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Models;
-using System;
 using System.Collections.Generic;
 
 namespace BrawlLib.Modeling

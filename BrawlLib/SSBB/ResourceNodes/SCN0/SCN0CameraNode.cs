@@ -1,10 +1,10 @@
-﻿using BrawlLib.OpenGL;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Graphics;
-using System;
 using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -182,7 +182,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             SCN0CameraFlags.AimZConstant,
             SCN0CameraFlags.TwistConstant,
             SCN0CameraFlags.PerspFovYConstant,
-            SCN0CameraFlags.OrthoHeightConstant,
+            SCN0CameraFlags.OrthoHeightConstant
         };
 
         public void SetCamera(ModelPanelViewport v, float frame, bool retainAspect)
@@ -372,6 +372,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         AimZ,
         Twist,
         FovY,
-        Height,
+        Height
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,7 +13,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Compression;
+using Updater.UI;
+using DLProgressWindow = Updater.UI.DLProgressWindow;
 
 namespace Updater
 {
@@ -20,11 +22,11 @@ namespace Updater
     {
         public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        public static readonly string mainRepo = "soopercool101/BrawlCrateNext";
+        public static readonly string mainRepo = "soopercool101/BrawlCrate";
         public static readonly string mainBranch = "master";
 
         private static readonly GitHubClient Github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
-        { Credentials = new Credentials(Encoding.Default.GetString(Program.RawData)) };
+            {Credentials = new Credentials(Encoding.Default.GetString(Program.RawData))};
 
         #region Canary Variables/Helpers
 
@@ -226,7 +228,7 @@ namespace Updater
                 Console.WriteLine(s.Send("www.github.com").Status);
             }
 
-            char[] slashes = { '\\', '/' };
+            char[] slashes = {'\\', '/'};
             string[] repoData = currentRepo.Split(slashes);
 
             try
@@ -248,7 +250,8 @@ namespace Updater
                     PageCount = 1
                 };
                 List<GitHubCommit> commits =
-                    (await Github.Repository.Commit.GetAll(repoData[0], repoData[1], options)).ToList();
+                    (await Github.Repository.Commit.GetAll(repoData[0], repoData[1],
+                        new CommitRequest {Sha = currentBranch}, options)).ToList();
                 int i;
                 bool foundCurrentCommit = false;
                 for (i = 0; i < commits.Count;)
@@ -272,6 +275,7 @@ namespace Updater
                 if (i == 0)
                 {
                     MessageBox.Show("No changes were found.");
+                    return;
                 }
 
                 for (int j = i - 1; j >= 0; j--)
@@ -321,7 +325,7 @@ namespace Updater
                 else
                 {
                     MessageBox.Show(
-                        "The last 100 Canary commits will be shown. For a more in-depth view of changes, visit https://github.com/soopercool101/BrawlCrateNext/commits/master");
+                        $"The last 100 Canary commits will be shown. For a more in-depth view of changes, visit https://github.com/{repoData[0]}/{repoData[1]}/{currentBranch}");
                 }
 
                 CanaryChangelogViewer logWindow = new CanaryChangelogViewer(newSha.Substring(0, 7), changelog);
@@ -345,17 +349,17 @@ namespace Updater
 
         public static async Task CheckUpdate()
         {
-            await CheckUpdate(true, "", true, null, true, true);
+            await CheckUpdate(true, "", true, null, true, true, true);
         }
 
         public static async Task CheckUpdate(bool overwrite)
         {
-            await CheckUpdate(overwrite, "", true, null, true, true);
+            await CheckUpdate(overwrite, "", true, null, true, true, true);
         }
 
         // Used to check for and download non-canary releases (including documentation updates)
         public static async Task CheckUpdate(bool overwrite, string releaseTag, bool manual, string openFile,
-                                             bool checkDocumentation, bool automatic)
+                                             bool checkDocumentation, bool automatic, bool checkForAPI)
         {
             // If canary is active, disable it
             if (File.Exists(AppPath + "\\Canary\\Active"))
@@ -406,7 +410,7 @@ namespace Updater
 
                 // Remove all pre-release versions from the list (Prerelease versions are exclusively documentation updates)
                 releases = AllReleases.Where(r => !r.Prerelease).ToList();
-                if (releases[0].TagName != releaseTag)
+                if (releases.Count > 0 && releases[0].TagName != releaseTag)
                 {
                     release = releases[0];
                     goto UpdateDL;
@@ -442,7 +446,7 @@ namespace Updater
                     }
 
                     // Don't need to check for update unless the latest release is a prerelease (documentation is included in full releases)
-                    if (AllReleases[0].Prerelease)
+                    if (AllReleases.Count > 0 && AllReleases[0].Prerelease)
                     {
                         // This track is shared by canary updates. Ensure that a documentation release is found.
                         foreach (Release r in AllReleases)
@@ -468,6 +472,13 @@ namespace Updater
                 // If there are no releases available, download will fail.
                 if (release == null || release.Assets.Count == 0)
                 {
+                    if (checkForAPI)
+                    {
+                        // Do an API update check. Return afterwards since "No updates found" should only be shown once.
+                        await BrawlAPICheckUpdates(manual);
+                        return;
+                    }
+
                     if (manual)
                     {
                         MessageBox.Show("No updates found.");
@@ -547,11 +558,11 @@ namespace Updater
 
         #region Canary Update Check
 
-        public static async Task CheckCanaryUpdate(string openFile, bool manual, bool force)
+        public static async Task CheckCanaryUpdate(string openFile, bool manual, bool force, bool checkForAPI)
         {
             try
             {
-                char[] slashes = { '\\', '/' };
+                char[] slashes = {'\\', '/'};
                 string[] repoData = currentRepo.Split(slashes);
                 Release release =
                     await Github.Repository.Release.Get(repoData[0], repoData[1], $"Canary-{currentBranch}");
@@ -570,6 +581,13 @@ namespace Updater
                     string newID = release.TargetCommitish;
                     if (oldID.Equals(newID, StringComparison.OrdinalIgnoreCase))
                     {
+                        if (checkForAPI)
+                        {
+                            // Do an API update check. Return afterwards since "No updates found" should only be shown once.
+                            await BrawlAPICheckUpdates(manual);
+                            return;
+                        }
+
                         if (manual)
                         {
                             MessageBox.Show("No updates found.");
@@ -586,6 +604,18 @@ namespace Updater
                         if (Asset.CreatedAt.UtcDateTime <= c.Commit.Committer.Date)
                         {
                             // Asset has not yet been updated
+                            if (checkForAPI)
+                            {
+                                // Do an API update check. Return afterwards since "No updates found" should only be shown once.
+                                await BrawlAPICheckUpdates(manual);
+                                return;
+                            }
+
+                            if (manual)
+                            {
+                                MessageBox.Show("No updates found.");
+                            }
+
                             return;
                         }
                     }
@@ -609,9 +639,10 @@ namespace Updater
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                MessageBox.Show(
-                    "ERROR: Current Canary version could not be found. Canary has been disabled. The latest stable build will be downloaded instead.");
-                await ForceDownloadStable(openFile);
+                if (manual)
+                {
+                    MessageBox.Show("ERROR: Current Canary version could not be found. Updates have been disabled.");
+                }
             }
         }
 
@@ -646,6 +677,7 @@ namespace Updater
             {
                 throw new HttpRequestException();
             }
+
             string apiPath = $"{AppPath}\\BrawlAPI\\";
             List<string> updated = new List<string>();
             if (Directory.Exists(apiPath))
@@ -666,7 +698,7 @@ namespace Updater
                             // Get the file's contents. API updater files are generated automatically in the following format:
                             // Line 0:  Release Tag. This is checked against to see if there is a new update for the repo.
                             // Line 1:  Release Target Commitish. Used to allow continuous integration repos to work.
-                            // Line 2:  Blank Line for readability
+                            // Line 2:  Update date (not used by updater, used instead to view info)
                             // Line 3+: Each line is a relative path to a file from the installation.
                             //          This is used to delete relevant files when updating,
                             //          in case a file is moved or deleted by the update intentionally.
@@ -682,12 +714,13 @@ namespace Updater
                                         ? lines[0]
                                         : lines[1];
                                     // Download the newest release if it's newer
-                                    await BrawlAPIUpdate(repoData[0], repoData[1], manual);
+                                    await BrawlAPIInstallUpdate(repoData[0], repoData[1], manual);
                                     // If the download failed it would have thrown an error, so assume a successful download and add it to the list
                                     string newVer = !release.TagName.Equals(lines[0])
                                         ? release.TagName
                                         : release.TargetCommitish;
-                                    updated.Add($"{repoData[0]}/{repoData[1]} was updated from {oldVer} to {newVer}\n{release.Body}");
+                                    updated.Add(
+                                        $"{repoData[0]}/{repoData[1]} was updated from {oldVer} to {newVer}\n{release.Body}");
                                 }
                             }
                         }
@@ -697,18 +730,39 @@ namespace Updater
                         // Errors are ignored, move on to the next file
                     }
                 }
+
+                // Print success message
+                if (updated.Count > 0)
+                {
+                    string updateMessage = "";
+                    foreach (string s in updated)
+                    {
+                        updateMessage += s;
+                        updateMessage += '\n';
+                    }
+
+                    updateMessage.Trim();
+                    MessageBox.Show(updateMessage, "BrawlAPI Updater");
+                }
+                else if (manual)
+                {
+                    MessageBox.Show("No updates found.");
+                }
             }
         }
 
-        public static async Task BrawlAPIUpdate(string repoOwner, string repoName, bool manual)
+        public static async Task BrawlAPIInstallUpdate(string repoOwner, string repoName, bool manual)
         {
+            string apiPath = $"{AppPath}\\BrawlAPI\\";
+            Directory.CreateDirectory(apiPath);
             try
             {
-                // Delete temp.zip if it exists. If it remains active, it runs the risk of 
+                // Delete temp.zip if it exists. If it remains, it runs the risk of breaking the install
                 if (File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
                 {
                     File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
                 }
+
                 // Get the latest release of this script repo
                 Release release = await Github.Repository.Release.GetLatest(repoOwner, repoName);
                 using (WebClient client = new WebClient())
@@ -718,11 +772,11 @@ namespace Updater
 
                     // Download the release zip asset if one is available. Otherwise, download the source code
                     // Since scripts should be the only things in these repos other than ReadMe, etc. this will be more or less accurate
-                    string url = client.DownloadString(
+                    string url =
                         release.Assets.Count > 0 &&
                         release.Assets[0].Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase)
                             ? release.Assets[0].BrowserDownloadUrl
-                            : $"https://github.com/{repoOwner}/{repoName}/archive/{release.TagName}.zip");
+                            : $"https://github.com/{repoOwner}/{repoName}/archive/{release.TagName}.zip";
 
                     DLProgressWindow.finished = false;
                     // Download the file into a zip folder
@@ -752,46 +806,123 @@ namespace Updater
                         sw.WriteLine(release.TagName);
                         // Line 1:  Release Target Commitish. Used to allow continuous integration repos to work.
                         sw.WriteLine(release.TargetCommitish);
-                        // Line 2:  Blank Line for readability
-                        sw.WriteLine();
+                        // Line 2:  Update date (not used by updater, used instead to view info)
+                        sw.WriteLine(DateTime.Now);
                         // Line 3+: Each line is a relative path to a file from the installation.
                         //          This is used to delete relevant files when updating,
                         //          in case a file is moved or deleted by the update intentionally.
                         using (ZipArchive archive = ZipFile.OpenRead($"{AppPath}\\BrawlAPI\\temp.zip"))
                         {
-                            // Only extract zip files, a readme, and a license.
-                            foreach (ZipArchiveEntry e in archive.Entries)
+                            using (StreamWriter swNew =
+                                new StreamWriter($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName}.new"))
                             {
-                                if (e.Name.EndsWith(".py", StringComparison.OrdinalIgnoreCase) ||
-                                    e.Name.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase))
+                                string fullNameOffset = "";
+                                string name = archive.Entries[0].FullName.Trim();
+                                // If it's a source code download, make sure to remove the containing file
+                                if (!name.Equals("Plugins/", StringComparison.OrdinalIgnoreCase) &&
+                                    !name.Equals("Loaders/", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    // Extract the scripts and add them to the file list
-                                    sw.WriteLine(e.FullName);
-                                    e.ExtractToFile(Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", e.FullName)));
+                                    bool isContainingFolder = true;
+                                    foreach (ZipArchiveEntry e in archive.Entries)
+                                    {
+                                        if (!e.FullName.StartsWith(name))
+                                        {
+                                            isContainingFolder = false;
+                                            break;
+                                        }
+                                    }
+
+                                    if (isContainingFolder)
+                                    {
+                                        fullNameOffset = name;
+                                    }
                                 }
-                                else if (e.FullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
-                                         e.FullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
+
+
+                                // Only extract the proper files, a readme, and a license.
+                                foreach (ZipArchiveEntry e in archive.Entries)
                                 {
-                                    // Extract the README. Use a specific path instead of the one specified.
-                                    e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} README.txt");
-                                }
-                                else if (e.FullName.Equals("LICENSE", StringComparison.OrdinalIgnoreCase) ||
-                                         e.FullName.Equals("LICENSE.txt", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    // Extract the LICENSE. Use a specific path instead of the one specified.
-                                    e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} LICENSE.txt");
+                                    int index = e.FullName.IndexOf(fullNameOffset);
+                                    string fullName = index < 0
+                                        ? e.FullName.TrimStart('/', '\\')
+                                        : e.FullName.Remove(index, fullNameOffset.Length).TrimStart('/', '\\');
+                                    if (fullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
+                                        fullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        // Extract the README. Use a specific path instead of the one specified.
+                                        e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} README.txt");
+                                    }
+                                    else if (fullName.Equals("LICENSE", StringComparison.OrdinalIgnoreCase) ||
+                                             fullName.Equals("LICENSE.txt", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        // Extract the LICENSE. Use a specific path instead of the one specified.
+                                        e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} LICENSE.txt");
+                                    }
+                                    else if (fullName.EndsWith("\\") || fullName.EndsWith("/"))
+                                    {
+                                        Directory.CreateDirectory(Path.Combine(apiPath, fullName));
+                                    }
+                                    else if (!string.IsNullOrWhiteSpace(fullName) && !fullName.EndsWith("\\") &&
+                                             !fullName.EndsWith("/")
+                                             && (fullName.StartsWith("Plugins/", StringComparison.OrdinalIgnoreCase) ||
+                                                 fullName.StartsWith("Loaders/", StringComparison.OrdinalIgnoreCase)))
+                                    {
+                                        // Extract the other files and add them to the file list where specified
+                                        string path =
+                                            Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", fullName));
+                                        if (File.Exists(path))
+                                        {
+                                            if (MessageBox.Show(
+                                                    $"The file {path} already exists. Would you like to overwrite it?",
+                                                    "BrawlAPI Subscriptions", MessageBoxButtons.YesNo) ==
+                                                DialogResult.No)
+                                            {
+                                                continue;
+                                            }
+
+                                            File.Delete(path);
+                                        }
+
+                                        sw.WriteLine(fullName);
+                                        swNew.WriteLine(fullName);
+                                        e.ExtractToFile(path);
+                                    }
                                 }
                             }
+
+                            // Attempt to delete the zip file
+                            try
+                            {
+                                File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
+                            }
+                            catch
+                            {
+                                // We don't necessarily wish to throw an error. After all, the installation worked.
+                            }
                         }
+
                         sw.Close();
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
                 if (manual)
                 {
-                    MessageBox.Show($"Error installing API scripts from {repoOwner}/{repoName}");
+                    MessageBox.Show($"Error installing API scripts from {repoOwner}/{repoName}\n\n{e.Message}");
+                }
+
+                // Attempt to delete the file if it exists.
+                try
+                {
+                    if (File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
+                    {
+                        File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
+                    }
+                }
+                catch
+                {
+                    // Ignored
                 }
 
                 // Throw error to prevent this from being added to the successfully updated list
@@ -828,6 +959,12 @@ namespace Updater
                     File.Delete($"{apiPath}\\{repoOwner} {repoName} LICENSE.txt");
                 }
 
+                // Delete the .new file if it still exists somehow
+                if (File.Exists($"{apiPath}\\{repoOwner} {repoName}.new"))
+                {
+                    File.Delete($"{apiPath}\\{repoOwner} {repoName}.new");
+                }
+
                 // Delete the documentation file
                 File.Delete($"{apiPath}\\{repoOwner} {repoName}");
             }
@@ -858,7 +995,7 @@ namespace Updater
                     Directory.CreateDirectory(AppPath + "/" + release.TagName);
                     AppPath += "/" + release.TagName;
                 }
-                
+
                 using (WebClient client = new WebClient())
                 {
                     // Add the user agent header, otherwise we will get access denied.

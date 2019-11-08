@@ -1,12 +1,14 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
+using BrawlLib.Wii.Compression;
 using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlLib.Wii.Compression
+namespace BrawlLib.Wii
 {
     [Serializable]
     public class InvalidCompressionException : Exception
@@ -42,7 +44,7 @@ namespace BrawlLib.Wii.Compression
             CompressionType.ExtendedLZ77,
             CompressionType.RunLength,
             CompressionType.RunLengthYAZ0,
-            CompressionType.RunLengthYAY0,
+            CompressionType.RunLengthYAY0
         };
 
         public static bool Supports(CompressionType type)

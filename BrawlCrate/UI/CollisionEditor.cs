@@ -1,14 +1,21 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlCrate.UI.Model_Previewer;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
 using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI
 {
     public unsafe class CollisionEditor : UserControl
     {
@@ -26,6 +33,7 @@ namespace System.Windows.Forms
         protected ComboBox cboMaterial;
         protected Panel pnlObjProps;
         protected ToolStrip toolStrip1;
+        protected ToolStripButton btnTransform;
         protected ToolStripButton btnSplit;
         protected ToolStripButton btnMerge;
         protected ToolStripButton btnDelete;
@@ -193,6 +201,7 @@ namespace System.Windows.Forms
             btnUndo = new ToolStripButton();
             btnRedo = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
+            btnTransform = new ToolStripButton();
             btnSplit = new ToolStripButton();
             btnMerge = new ToolStripButton();
             btnFlipColl = new ToolStripButton();
@@ -971,6 +980,7 @@ namespace System.Windows.Forms
                 btnUndo,
                 btnRedo,
                 toolStripSeparator3,
+                btnTransform,
                 btnSplit,
                 btnMerge,
                 btnFlipColl,
@@ -1020,6 +1030,16 @@ namespace System.Windows.Forms
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnTransform
+            // 
+            btnTransform.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnTransform.Enabled = false;
+            btnTransform.ImageTransparentColor = Color.Magenta;
+            btnTransform.Name = "btnTransform";
+            btnTransform.Size = new System.Drawing.Size(34, 22);
+            btnTransform.Text = "Transform";
+            btnTransform.Click += new EventHandler(transformToolStripMenuItem_Click);
             // 
             // btnSplit
             // 
@@ -1267,6 +1287,7 @@ namespace System.Windows.Forms
             transformToolStripMenuItem.Name = "transformToolStripMenuItem";
             transformToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             transformToolStripMenuItem.Text = "Transform";
+            alignXToolStripMenuItem.Click += new EventHandler(transformToolStripMenuItem_Click);
             // 
             // alignXToolStripMenuItem
             // 
@@ -1452,13 +1473,9 @@ namespace System.Windows.Forms
                     cboMaterial.DataSource =
                         CollisionTerrain.Terrains.ToList(); // Get the expanded collisions if they're used
                 }
-                else if (cboMaterial.Items.Count > 32)
-                {
-                    cboMaterial.DataSource =
-                        CollisionTerrain.Terrains.Take(0x20).ToList(); // Take unexpanded collisions
-                }
 
                 cboMaterial.SelectedItem = cboMaterial.Items[p._material];
+
                 //Type
                 cboType.SelectedItem = p.Type;
                 //Flags
@@ -1766,13 +1783,13 @@ namespace System.Windows.Forms
         {
             if (_selecting || _hovering || _selectedLinks.Count == 0)
             {
-                btnDelete.Enabled = btnFlipColl.Enabled =
+                btnDelete.Enabled = btnFlipColl.Enabled = btnTransform.Enabled =
                     btnMerge.Enabled = btnSplit.Enabled = btnSameX.Enabled = btnSameY.Enabled = false;
             }
             else
             {
                 btnMerge.Enabled = btnSameX.Enabled = btnSameY.Enabled = _selectedLinks.Count > 1;
-                btnDelete.Enabled = btnSplit.Enabled = true;
+                btnDelete.Enabled = btnSplit.Enabled = btnTransform.Enabled = true;
                 btnFlipColl.Enabled = _selectedPlanes.Count > 0;
             }
         }
@@ -2272,7 +2289,7 @@ namespace System.Windows.Forms
                 if (_RCend - _RCstart <= TimeSpan.FromSeconds(0.5) && _selectedLinks != null &&
                     _selectedLinks.Count > 0)
                 {
-                    //contextMenuStrip3.Show(Cursor.Position);
+                    contextMenuStrip3.Show(Cursor.Position);
                 }
             }
         }
@@ -2411,7 +2428,7 @@ namespace System.Windows.Forms
                         TKContext.DrawSphere(position, 5.0f, 32);
                         if (int.TryParse(bone._name.Substring(6, 1), out int playernum))
                         {
-                            _modelPanel.CurrentViewport.ScreenText[playernum.ToString()] =
+                            _modelPanel.CurrentViewport.NoSettingsScreenText[playernum.ToString()] =
                                 _modelPanel.CurrentViewport.Camera.Project(position) - new Vector3(8.0f, 8.0f, 0);
                         }
                     }
@@ -2421,7 +2438,7 @@ namespace System.Windows.Forms
                         TKContext.DrawSphere(bone._frameMatrix.GetPoint(), 5.0f, 32);
                         if (int.TryParse(bone._name.Substring(7, 1), out int playernum))
                         {
-                            _modelPanel.CurrentViewport.ScreenText[playernum.ToString()] =
+                            _modelPanel.CurrentViewport.NoSettingsScreenText[playernum.ToString()] =
                                 _modelPanel.CurrentViewport.Camera.Project(bone._frameMatrix.GetPoint()) -
                                 new Vector3(8.0f, 8.0f, 0);
                         }
@@ -2480,7 +2497,7 @@ namespace System.Windows.Forms
                 GL.CullFace(CullFaceMode.Front);
 
                 GL.Color4(Color.Blue);
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.LineWidth(15.0f);
 
                 Vector3
@@ -2494,7 +2511,7 @@ namespace System.Windows.Forms
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.LineLoop);
+                GL.Begin(BeginMode.LineLoop);
                 GL.Color4(Color.Red);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
@@ -2502,25 +2519,25 @@ namespace System.Windows.Forms
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.End();
                 GL.Color4(0.0f, 0.5f, 1.0f, 0.3f);
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone0._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone1._x, camBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone0._y);
                 GL.Vertex2(deathBone1._x, deathBone1._y);
                 GL.Vertex2(camBone1._x, camBone1._y);
                 GL.End();
-                GL.Begin(PrimitiveType.TriangleFan);
+                GL.Begin(BeginMode.TriangleFan);
                 GL.Vertex2(camBone0._x, camBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone1._y);
                 GL.Vertex2(deathBone0._x, deathBone0._y);
@@ -3773,6 +3790,54 @@ namespace System.Windows.Forms
         }
 
         #endregion
+
+        protected void transformToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TransformEditor transform = new TransformEditor();
+            if (transform.ShowDialog() == DialogResult.OK)
+            {
+                CreateUndo();
+
+                if (_selectedPlanes.Count > 0)
+                {
+                    FrameState _centerState =
+                        new FrameState(new Vector3(1, 1, 1), new Vector3(0, 0, 0), new Vector3(0, 0, 0));
+                    /*if(transform._transform.ScalingType == xyTransform.ScaleType.FromCenterOfCollisions)
+                    {
+                        Vector2 v2avg = new Vector2(0, 0);
+                        int i = 0;
+                        foreach(CollisionLink l in _selectedLinks)
+                        {
+                            v2avg += l._rawValue;
+                            i++;
+                        }
+                        float newX = (v2avg._x / i) * -1;// * (v2avg._x >= 1 ? -1 : 1);
+                        float newY = (v2avg._y / i) * -1;// * (v2avg._y >= 1 ? -1 : 1);
+                        Console.WriteLine(new Vector2(newX, newY));
+                        _centerState = new FrameState(new Vector3(1, 1, 1), new Vector3(0, 0, 0), new Vector3(newX, newY, 0));
+                    }*/
+                    Vector3 v3trans = new Vector3(transform._transform.Translation._x,
+                        transform._transform.Translation._y, 0);
+                    Vector3 v3rot = new Vector3(0, 0, transform._transform.Rotation);
+                    Vector3 v3scale = new Vector3(transform._transform.Scale._x, transform._transform.Scale._y, 1);
+                    FrameState _frameState = new FrameState(v3scale, v3rot, v3trans);
+                    foreach (CollisionLink l in _selectedLinks)
+                    {
+                        l._rawValue = _centerState._transform * _frameState._transform * l._rawValue;
+                    }
+                }
+                else
+                {
+                    foreach (CollisionLink l in _selectedLinks)
+                    {
+                        l._rawValue += transform._transform.Translation;
+                    }
+                }
+
+                _modelPanel.Invalidate();
+                TargetNode.SignalPropertyChange();
+            }
+        }
 
         protected void btnSameX_Click(object sender, EventArgs e)
         {

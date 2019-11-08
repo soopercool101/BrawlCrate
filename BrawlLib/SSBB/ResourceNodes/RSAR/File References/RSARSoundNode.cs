@@ -1,6 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.SSBB.Types.Audio;
 using System;
-using System.Audio;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -25,12 +26,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _waveInfo._channelPriority = 64;
         }
 
-#if DEBUG
-        [Browsable(true)]
-        [Category("DEBUG")]
-#else
-        [Browsable(false)]
-#endif
+        [Category("Data")]
+        [DisplayName("Sound ID")]
         public override int StringId => Header == null ? -1 : (int) Header->_stringId;
 
         public override ResourceType ResourceFileType => ResourceType.RSARSound;
@@ -421,7 +418,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Track13 = 0x1000,
             Track14 = 0x2000,
             Track15 = 0x4000,
-            Track16 = 0x8000,
+            Track16 = 0x8000
         }
 
         [Category("SEQ Params")]
@@ -749,7 +746,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 IAudioStream stream = CreateStreams()[0];
                 if (stream == null)
                 {
-                    throw new Exception($"{GetType().Name} cannot be exported to WAV.");
+                    throw new Exception(
+                        $"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" cannot be exported to WAV.");
                 }
 
                 WAV.ToFile(stream, outPath);

@@ -32,9 +32,11 @@
 
 #endregion
 
+using System;
+using System.Collections;
 using System.Diagnostics;
 
-namespace System.Collections
+namespace BrawlLib.Modeling.Triangle_Converter.Deque
 {
     /// <summary>
     /// Represents a simple double-ended-queue collection of objects.

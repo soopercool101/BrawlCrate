@@ -1,4 +1,4 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBB.Types.Subspace.Animation;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -74,6 +74,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
+        [Category("Movable Ground")]
+        [DisplayName("Path Index")]
+        public int PID => *(byte*) (WorkingUncompressed.Address + 0x06);
 
         public override bool OnInitialize()
         {

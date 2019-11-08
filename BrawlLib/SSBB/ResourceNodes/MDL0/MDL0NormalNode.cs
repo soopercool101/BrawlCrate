@@ -1,6 +1,6 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -18,8 +18,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public enum NormalType
         {
             XYZ = 0,
-            NBT = 1,  // one index per NBT
-            NBT3 = 2, // one index per each of N/B/T
+            NBT = 1, // one index per NBT
+            NBT3 = 2 // one index per each of N/B/T
         }
 
         [Category("Normal Data")] public int ID => _hdr._index;

@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -36,7 +37,12 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("Ne&w", null,
                 new ToolStripMenuItem("GSND Archive", null, NewGSNDAction),
                 new ToolStripMenuItem("ADSJ Stepjump File", null, NewADSJAction),
-                new ToolStripMenuItem("GDOR Adventure Door File", null, NewGDORAction)
+                new ToolStripMenuItem("GDOR Adventure Door File", null, NewGDORAction),
+                new ToolStripMenuItem("GDBF Factory Door File", null, NewGDBFAction),
+                new ToolStripMenuItem("GWAT Swimmable Water File", null, NewGWATAction),
+                new ToolStripMenuItem("GEG1 Enemy File", null, NewGEG1Action),
+                new ToolStripMenuItem("GCAM Animated Camera File", null, NewGCAMAction),
+                new ToolStripMenuItem("GITM Fighter Trophy File", null, NewGITMAction)
             ));
 
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
@@ -68,6 +74,31 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<BLOCWrapper>().NewGDOR();
         }
 
+        protected static void NewGDBFAction(object sender, EventArgs e)
+        {
+            GetInstance<BLOCWrapper>().NewGDBF();
+        }
+
+        protected static void NewGWATAction(object sender, EventArgs e)
+        {
+            GetInstance<BLOCWrapper>().NewGWAT();
+        }
+
+        protected static void NewGEG1Action(object sender, EventArgs e)
+        {
+            GetInstance<BLOCWrapper>().NewGEG1();
+        }
+
+        protected static void NewGCAMAction(object sender, EventArgs e)
+        {
+            GetInstance<BLOCWrapper>().NewGCAM();
+        }
+
+        protected static void NewGITMAction(object sender, EventArgs e)
+        {
+            GetInstance<BLOCWrapper>().NewGITM();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DuplicateToolStripMenuItem.Enabled = true;
@@ -92,7 +123,7 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => BrawlLib.FileFilters.BLOC;
+        public override string ExportFilter => FileFilters.BLOC;
 
         public BLOCWrapper()
         {
@@ -124,6 +155,61 @@ namespace BrawlCrate.NodeWrappers
         public GDORNode NewGDOR()
         {
             GDORNode node = new GDORNode {Name = _resource.FindName("NewGDOR")};
+            _resource.AddChild(node);
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public GDBFNode NewGDBF()
+        {
+            GDBFNode node = new GDBFNode {Name = _resource.FindName("NewGDBF")};
+            _resource.AddChild(node);
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public GWATNode NewGWAT()
+        {
+            GWATNode node = new GWATNode {Name = _resource.FindName("NewGWAT")};
+            _resource.AddChild(node);
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public GEG1Node NewGEG1()
+        {
+            GEG1Node node = new GEG1Node {Name = _resource.FindName("NewGEG1")};
+            _resource.AddChild(node);
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public GCAMNode NewGCAM()
+        {
+            GCAMNode node = new GCAMNode {Name = _resource.FindName("NewGCAM")};
+            _resource.AddChild(node);
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public GITMNode NewGITM()
+        {
+            GITMNode node = new GITMNode {Name = _resource.FindName("NewGITM")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

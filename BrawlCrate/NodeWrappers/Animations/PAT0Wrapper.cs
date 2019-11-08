@@ -1,4 +1,5 @@
-﻿using BrawlLib;
+﻿using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
@@ -39,6 +40,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("Edit", null,
                 //new ToolStripMenuItem("&Merge Animation", null, MergeAction),
                 new ToolStripMenuItem("&Append Animation", null, AppendAction),
+                new ToolStripMenuItem("Sort Entries", null, SortAction),
                 new ToolStripMenuItem("Res&ize", null, ResizeAction)));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
@@ -330,6 +332,8 @@ namespace BrawlCrate.NodeWrappers
         static PAT0TextureEntryWrapper()
         {
             _menu = new ContextMenuStrip();
+            _menu.Items.Add(new ToolStripMenuItem("&Offset frame", null, OffsetAction));
+            _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
@@ -364,11 +368,62 @@ namespace BrawlCrate.NodeWrappers
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
 
+        protected static void OffsetAction(object sender, EventArgs e)
+        {
+            PAT0OffsetControl offsetControl = new PAT0OffsetControl();
+            if (offsetControl.ShowDialog() == DialogResult.OK)
+            {
+                GetInstance<PAT0TextureEntryWrapper>().Offset(offsetControl.NewValue, offsetControl.IncreaseFrames,
+                    offsetControl.OffsetOtherTextures);
+            }
+        }
+
         #endregion
 
         public PAT0TextureEntryWrapper()
         {
             ContextMenuStrip = _menu;
+        }
+
+        public void Offset(int offsetValue, bool offsetFrames, bool offsetOtherTextures)
+        {
+            float currentFrame = ((PAT0TextureEntryNode) _resource).FrameIndex;
+            if (offsetFrames)
+            {
+                ((PAT0Node) _resource.Parent.Parent.Parent).FrameCount += offsetValue;
+            }
+
+            if (offsetOtherTextures)
+            {
+                OffsetAll(currentFrame, offsetValue);
+                return;
+            }
+
+            foreach (PAT0TextureEntryNode pte in _resource.Parent.Children)
+            {
+                if (pte._frame >= currentFrame)
+                {
+                    pte._frame += offsetValue;
+                }
+            }
+        }
+
+        public void OffsetAll(float currentFrame, int offsetValue)
+        {
+            // Go through every entry in the PAT0 and edit it as necessary
+            foreach (PAT0EntryNode pe in _resource.Parent.Parent.Parent.Children)
+            {
+                foreach (PAT0TextureNode pt in pe.Children)
+                {
+                    foreach (PAT0TextureEntryNode pte in pt.Children)
+                    {
+                        if (pte._frame >= currentFrame)
+                        {
+                            pte._frame += offsetValue;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using BrawlLib.Wii.Animations;
 using System;
 using System.Collections.Generic;

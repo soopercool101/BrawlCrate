@@ -1,5 +1,5 @@
 ﻿using BrawlLib.Imaging;
-using System;
+using BrawlLib.Internal;
 
 namespace BrawlLib.Wii.Textures
 {

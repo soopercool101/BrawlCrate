@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct ISOPartitionHeader
@@ -145,7 +145,7 @@ namespace BrawlLib.SSBBTypes
             Data = 0,
             Update = 1,
             Installer = 2,
-            VirtualConsole = 3,
+            VirtualConsole = 3
         }
 
         public Type PartitionType

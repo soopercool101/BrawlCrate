@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
@@ -7,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct MDL0Header
@@ -641,7 +642,7 @@ namespace BrawlLib.SSBBTypes
         ClassicScaleOff = 0x80,
         Visible = 0x100,
         HasGeometry = 0x200,
-        HasBillboardParent = 0x400,
+        HasBillboardParent = 0x400
     }
 
     public enum BillboardFlags : uint
@@ -652,7 +653,7 @@ namespace BrawlLib.SSBBTypes
         Rotation,
         RotationPerspective,
         Y,
-        YPerspective,
+        YPerspective
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -1071,7 +1072,7 @@ namespace BrawlLib.SSBBTypes
             Tex5Matrices = TexMtxEffect.Default,
             Tex6Matrices = TexMtxEffect.Default,
             Tex7Matrices = TexMtxEffect.Default,
-            Tex8Matrices = TexMtxEffect.Default,
+            Tex8Matrices = TexMtxEffect.Default
         };
 
         public buint _layerFlags;
@@ -1341,7 +1342,7 @@ namespace BrawlLib.SSBBTypes
             _mode = MatModeBlock.Default,
             _color = MatTevColorBlock.Default,
             _konst = MatTevKonstBlock.Default,
-            _indMtx = MatIndMtxBlock.Default,
+            _indMtx = MatIndMtxBlock.Default
         };
 
         public MatModeBlock _mode;
@@ -1532,7 +1533,7 @@ namespace BrawlLib.SSBBTypes
             _tr3LoCmd = 0xE661,
             TevReg3Lo = ColorReg.Konstant,
             _tr3HiCmd = 0xE761,
-            TevReg3Hi = ColorReg.Konstant,
+            TevReg3Hi = ColorReg.Konstant
         };
 
         private ushort _tr0LoCmd;
@@ -1613,7 +1614,7 @@ namespace BrawlLib.SSBBTypes
             Mem15 = (BPMemory) 0xFD,
             _Value15 = new KSel(0xE),
             Mem16 = (BPMemory) 0x27,
-            _Value16 = new RAS1_IRef(0xFFFFFF),
+            _Value16 = new RAS1_IRef(0xFFFFFF)
         };
 
         public byte Reg00; //0x61
@@ -1716,7 +1717,7 @@ namespace BrawlLib.SSBBTypes
             _evenAlphaEnv = new BPCommand(true) {Mem = BPMemory.BPMEM_TEV_ALPHA_ENV_0},
             _oddAlphaEnv = new BPCommand(false) {Mem = BPMemory.BPMEM_GENMODE},
             _evenCmd = new BPCommand(true) {Mem = BPMemory.BPMEM_IND_CMD0},
-            _oddCmd = new BPCommand(false) {Mem = BPMemory.BPMEM_GENMODE},
+            _oddCmd = new BPCommand(false) {Mem = BPMemory.BPMEM_GENMODE}
         };
 
         public void SetGroup(int index)

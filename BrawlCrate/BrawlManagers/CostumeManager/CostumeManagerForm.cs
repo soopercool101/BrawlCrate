@@ -1,12 +1,19 @@
-﻿using System;
+﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
+using BrawlCrate.UI;
+using BrawlLib.BrawlManagerLib;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using BrawlManagerLib;
 
-namespace BrawlCrate.CostumeManager
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
+
+namespace BrawlCrate.BrawlManagers.CostumeManager
 {
     public partial class CostumeManagerForm : Form
     {
@@ -249,11 +256,11 @@ namespace BrawlCrate.CostumeManager
         private void changeDirectory_Click(object sender, EventArgs e)
         {
 #if !MONO
-            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
-            //			fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
+            //            fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 CurrentDirectory = fbd.SelectedPath;
@@ -360,13 +367,13 @@ namespace BrawlCrate.CostumeManager
             string charfile = ((FighterFile) listBox2.SelectedItem).FullName;
             if (charfile.EndsWith(".pac", StringComparison.InvariantCultureIgnoreCase))
             {
-                ((BrawlLib.SSBB.ResourceNodes.ARCNode) modelManager1.WorkingRoot)
+                ((ARCNode) modelManager1.WorkingRoot)
                     .ExportPCS(charfile.Substring(0, charfile.Length - 4) + ".pcs");
                 updateCostumeSelectionPane();
             }
             else if (charfile.EndsWith(".pcs", StringComparison.InvariantCultureIgnoreCase))
             {
-                ((BrawlLib.SSBB.ResourceNodes.ARCNode) modelManager1.WorkingRoot)
+                ((ARCNode) modelManager1.WorkingRoot)
                     .ExportPAC(charfile.Substring(0, charfile.Length - 4) + ".pac");
                 updateCostumeSelectionPane();
             }
@@ -409,7 +416,7 @@ namespace BrawlCrate.CostumeManager
                 g.DrawImage(screenshot, x, y);
             }
 
-            string iconFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".png";
+            string iconFile = Path.GetTempPath() + Guid.NewGuid() + ".png";
 
             BitmapUtilities.Resize(rect, new Size(128, 160)).Save(iconFile);
             cssPortraitViewer1.ReplaceMain(iconFile, false);

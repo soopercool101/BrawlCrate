@@ -1,10 +1,11 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.PowerPCAssembly;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.PowerPcAssembly;
 using System.Text;
 using System.Windows.Forms;
 
@@ -165,10 +166,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID1
         {
-            get
-            {
-                return _itemIDs?[0];
-            }
+            get => _itemIDs?[0];
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
@@ -186,10 +184,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID2
         {
-            get
-            {
-                return _itemIDs?[1];
-            }
+            get => _itemIDs?[1];
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
@@ -207,10 +202,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID3
         {
-            get
-            {
-                return _itemIDs?[2];
-            }
+            get => _itemIDs?[2];
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
@@ -228,10 +220,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID4
         {
-            get
-            {
-                return _itemIDs?[3];
-            }
+            get => _itemIDs?[3];
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
@@ -559,7 +548,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         impData._lastOffset += 0xFFFF;
                         diff = offset - impData._lastOffset;
 
-                        links.Add(new RELLink {_type = RELLinkType.IncrementOffset, _section = 0, _value = 0, _prevOffset = 0xFFFF});
+                        links.Add(new RELLink
+                            {_type = RELLinkType.IncrementOffset, _section = 0, _value = 0, _prevOffset = 0xFFFF});
                     }
 
                     //Gather the link information
@@ -568,7 +558,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     uint val = command._addend;
 
                     //Write command link
-                    links.Add(new RELLink {_type = type, _section = targetSection, _value = val, _prevOffset = (ushort) diff});
+                    links.Add(new RELLink
+                        {_type = type, _section = targetSection, _value = val, _prevOffset = (ushort) diff});
 
                     //Don't bother adding the difference, 
                     //just set the exact offset as the last offset
@@ -822,7 +813,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             1223,
             1347, // this appears to be some sort of "if" condition
             1371,
-            1627,
+            1627
         };
 
         #endregion
@@ -968,7 +959,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {123, "ft_sonic"},
             {124, "ft_purin"},
             {125, "ft_wolf"},
-            {126, "ft_zako"},
+            {126, "ft_zako"}
         };
 
         #endregion

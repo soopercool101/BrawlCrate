@@ -1,4 +1,6 @@
-﻿using BrawlLib;
+﻿using BrawlLib.CustomLists;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
@@ -133,15 +135,15 @@ namespace BrawlCrate.NodeWrappers
             RSTCEntryNode node1 = new RSTCEntryNode
             {
                 FighterID = cssID,
-                _name = BrawlLib.BrawlCrate.FighterNameGenerators.FromID(cssID,
-                    BrawlLib.BrawlCrate.FighterNameGenerators.cssSlotIDIndex, "+S")
+                _name = FighterNameGenerators.FromID(cssID,
+                    FighterNameGenerators.cssSlotIDIndex, "+S")
             };
             ((RSTCNode) _resource).cssList.AddChild(node1);
             RSTCEntryNode node2 = new RSTCEntryNode
             {
                 FighterID = cssID,
-                _name = BrawlLib.BrawlCrate.FighterNameGenerators.FromID(cssID,
-                    BrawlLib.BrawlCrate.FighterNameGenerators.cssSlotIDIndex, "+S")
+                _name = FighterNameGenerators.FromID(cssID,
+                    FighterNameGenerators.cssSlotIDIndex, "+S")
             };
             ((RSTCNode) _resource).randList.AddChild(node2);
         }

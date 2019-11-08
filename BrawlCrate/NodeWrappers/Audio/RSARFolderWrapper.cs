@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlCrate.UI;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

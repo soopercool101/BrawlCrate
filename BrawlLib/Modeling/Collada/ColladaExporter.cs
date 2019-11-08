@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Models;
@@ -9,11 +10,12 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace BrawlLib.Modeling
+namespace BrawlLib.Modeling.Collada
 {
     public unsafe partial class Collada
     {
-        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings
+            {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
 
         public static void Serialize(MDL0Node model, string outFile)
         {
@@ -490,7 +492,7 @@ namespace BrawlLib.Modeling
             {
                 if (p._vertices.Count > pIndex[i])
                 {
-                    _normRemap.Add(Array.IndexOf(_normals,
+                    _normRemap.Add(Array.IndexOf((Array) _normals,
                         p._vertices[pIndex[i]].GetMatrix().GetRotationMatrix() * pData[i]));
                 }
             }
@@ -569,11 +571,11 @@ namespace BrawlLib.Modeling
 
             //Position source
             writer.WriteStartElement("source");
-            writer.WriteAttributeString("id", name + "_Colors" + set.ToString());
+            writer.WriteAttributeString("id", name + "_Colors" + set);
 
             //Array start
             writer.WriteStartElement("float_array");
-            writer.WriteAttributeString("id", name + "_ColorArr" + set.ToString());
+            writer.WriteAttributeString("id", name + "_ColorArr" + set);
             writer.WriteAttributeString("count", (count * 4).ToString());
 
             for (int i = 0; i < count; i++)
@@ -599,7 +601,7 @@ namespace BrawlLib.Modeling
             writer.WriteStartElement("technique_common");
 
             writer.WriteStartElement("accessor");
-            writer.WriteAttributeString("source", "#" + name + "_ColorArr" + set.ToString());
+            writer.WriteAttributeString("source", "#" + name + "_ColorArr" + set);
             writer.WriteAttributeString("count", count.ToString());
             writer.WriteAttributeString("stride", "4");
 
@@ -644,11 +646,11 @@ namespace BrawlLib.Modeling
 
             //Position source
             writer.WriteStartElement("source");
-            writer.WriteAttributeString("id", name + "_UVs" + set.ToString());
+            writer.WriteAttributeString("id", name + "_UVs" + set);
 
             //Array start
             writer.WriteStartElement("float_array");
-            writer.WriteAttributeString("id", name + "_UVArr" + set.ToString());
+            writer.WriteAttributeString("id", name + "_UVArr" + set);
             writer.WriteAttributeString("count", (count * 2).ToString());
 
             for (int i = 0; i < count; i++)
@@ -675,7 +677,7 @@ namespace BrawlLib.Modeling
             writer.WriteStartElement("technique_common");
 
             writer.WriteStartElement("accessor");
-            writer.WriteAttributeString("source", "#" + name + "_UVArr" + set.ToString());
+            writer.WriteAttributeString("source", "#" + name + "_UVArr" + set);
             writer.WriteAttributeString("count", count.ToString());
             writer.WriteAttributeString("stride", "2");
 
@@ -708,17 +710,17 @@ namespace BrawlLib.Modeling
 
             switch (prim._type)
             {
-                case OpenTK.Graphics.OpenGL.PrimitiveType.Triangles:
+                case OpenTK.Graphics.OpenGL.BeginMode.Triangles:
                     writer.WriteStartElement("triangles");
                     stride = 3;
                     break;
 
-                case OpenTK.Graphics.OpenGL.PrimitiveType.Lines:
+                case OpenTK.Graphics.OpenGL.BeginMode.Lines:
                     writer.WriteStartElement("lines");
                     stride = 2;
                     break;
 
-                case OpenTK.Graphics.OpenGL.PrimitiveType.Points:
+                case OpenTK.Graphics.OpenGL.BeginMode.Points:
                     writer.WriteStartElement("points");
                     stride = 1;
                     break;
@@ -759,14 +761,14 @@ namespace BrawlLib.Modeling
                     case 3:
                         set = i - 2;
                         writer.WriteAttributeString("semantic", "COLOR");
-                        writer.WriteAttributeString("source", "#" + poly._name + "_Colors" + set.ToString());
+                        writer.WriteAttributeString("source", "#" + poly._name + "_Colors" + set);
                         writer.WriteAttributeString("set", set.ToString());
                         break;
 
                     default:
                         set = i - 4;
                         writer.WriteAttributeString("semantic", "TEXCOORD");
-                        writer.WriteAttributeString("source", "#" + poly._name + "_UVs" + set.ToString());
+                        writer.WriteAttributeString("source", "#" + poly._name + "_UVs" + set);
                         writer.WriteAttributeString("set", set.ToString());
                         break;
                 }

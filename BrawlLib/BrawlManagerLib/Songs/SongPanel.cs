@@ -1,13 +1,14 @@
-﻿using System;
+﻿using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
-using System.IO;
-using System.Audio;
-using System.ComponentModel;
-using System.Collections.Generic;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.Songs
 {
     public partial class SongPanel : UserControl
     {

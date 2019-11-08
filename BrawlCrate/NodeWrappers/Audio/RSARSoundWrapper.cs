@@ -1,4 +1,6 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
@@ -48,7 +50,6 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
-            _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(MoveUpToolStripMenuItem);

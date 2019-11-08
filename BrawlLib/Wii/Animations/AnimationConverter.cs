@@ -1,5 +1,7 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.Types.Animations;
+using BrawlLib.Wii.Models;
 using System;
 
 namespace BrawlLib.Wii.Animations
@@ -30,7 +32,10 @@ namespace BrawlLib.Wii.Animations
                 kf = new KeyframeCollection(arrayCount, numFrames, defaults);
             }
 
-            kf.Loop = node.Loop;
+            if (node != null)
+            {
+                kf.Loop = node.Loop;
+            }
 
             return kf;
         }

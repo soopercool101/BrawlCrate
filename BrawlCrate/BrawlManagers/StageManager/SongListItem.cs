@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public class SongListItem
     {

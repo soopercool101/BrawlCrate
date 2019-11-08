@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
-using BrawlLib.SSBBTypes;
 using System.Runtime.ExceptionServices;
 
 namespace BrawlLib.SSBB.ResourceNodes

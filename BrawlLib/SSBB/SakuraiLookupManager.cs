@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Collections.Generic;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB
 {
     /// <summary>
     /// When rebuilding, add the addresses of all offset values to this collection

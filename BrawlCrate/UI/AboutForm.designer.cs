@@ -1,4 +1,4 @@
-﻿namespace BrawlCrate
+﻿namespace BrawlCrate.UI
 {
     partial class AboutForm
     {
@@ -134,7 +134,7 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label lblCopyright;
-		private System.Windows.Forms.Label lblBrawlLib;
+        private System.Windows.Forms.Label lblBrawlLib;
         private System.Windows.Forms.Label lblAudioBackend;
     }
 }

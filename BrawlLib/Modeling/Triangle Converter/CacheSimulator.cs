@@ -2,8 +2,8 @@
 //Original source:
 //http://users.telenet.be/tfautre/softdev/tristripper/
 
+using BrawlLib.Modeling.Triangle_Converter.Deque;
 using System;
-using System.Collections.Generic;
 
 namespace BrawlLib.Modeling.Triangle_Converter
 {

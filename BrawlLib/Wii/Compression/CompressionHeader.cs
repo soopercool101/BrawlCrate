@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Runtime.InteropServices;
 
@@ -15,7 +16,7 @@ namespace BrawlLib.Wii.Compression
         RunLengthYAY0 = 0x203,
         LZ77Huffman = 0x4,
         LZ77RangeCoder = 0x5,
-        Differential = 0x8,
+        Differential = 0x8
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

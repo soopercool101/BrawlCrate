@@ -1,4 +1,4 @@
-﻿using BrawlLib;
+﻿using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -237,7 +237,7 @@ namespace BrawlCrate.NodeWrappers
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = AppDomain.CurrentDomain.BaseDirectory + "\\BrawlCrate.exe",
-                    Arguments = "\"" + s + "\"",
+                    Arguments = "\"" + s + "\""
                 });
             }
         }

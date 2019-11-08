@@ -1,5 +1,6 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -305,7 +306,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private static readonly Dictionary<string, Type> _classNodeTypes = new Dictionary<string, Type>
         {
             {"hkClass", typeof(hkClassNode)},
-            {"hkClassEnum", typeof(hkClassEnumNode)},
+            {"hkClassEnum", typeof(hkClassEnumNode)}
 
             //Class types can be explicitly supported
             //Otherwise they are interpreted with a meta object node

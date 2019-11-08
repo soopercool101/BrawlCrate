@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 
@@ -205,6 +206,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         SetBranchDestination = 0xA,
         SetBranchConditionDestination1 = 0xB,
         SetBranchConditionDestination2 = 0xC,
-        SetBranchConditionDestination3 = 0xD,
+        SetBranchConditionDestination3 = 0xD
     }
 }

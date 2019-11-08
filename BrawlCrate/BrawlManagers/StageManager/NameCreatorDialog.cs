@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public partial class NameCreatorDialog : Form
     {
@@ -28,7 +28,7 @@ namespace BrawlCrate.StageManager
             Settings = new NameCreatorSettings
             {
                 Font = new Font("Impact", 22.5f),
-                VerticalOffset = -1,
+                VerticalOffset = -1
             };
         }
 
@@ -37,7 +37,7 @@ namespace BrawlCrate.StageManager
             Settings = new NameCreatorSettings
             {
                 Font = new Font("Edo SZ", 22f, FontStyle.Bold),
-                VerticalOffset = 2,
+                VerticalOffset = 2
             };
         }
 
@@ -58,7 +58,7 @@ namespace BrawlCrate.StageManager
                         Settings = new NameCreatorSettings
                         {
                             Font = d.Font,
-                            VerticalOffset = (int) nudOffset.Value,
+                            VerticalOffset = (int) nudOffset.Value
                         };
                     }
                 }

@@ -1,4 +1,5 @@
-﻿using BrawlLib.Wii.Models;
+﻿using BrawlLib.Internal;
+using BrawlLib.Wii.Models;
 using System;
 using System.Runtime.InteropServices;
 
@@ -122,7 +123,7 @@ namespace BrawlLib.Wii.Graphics
                 if (GetHasTexMatrix(i))
                 {
                     hasTex = true;
-                    texmtx += i.ToString() + " ";
+                    texmtx += i + " ";
                 }
             }
 
@@ -133,7 +134,7 @@ namespace BrawlLib.Wii.Graphics
                 if ((f = GetUVFormat(i)) != XFDataFormat.None)
                 {
                     hasUVs = true;
-                    uvs += i + ":" + f.ToString() + " ";
+                    uvs += i + ":" + f + " ";
                 }
             }
 
@@ -144,7 +145,7 @@ namespace BrawlLib.Wii.Graphics
                 if ((f = GetColorFormat(i)) != XFDataFormat.None)
                 {
                     hasColors = true;
-                    colors += i + ":" + f.ToString() + " ";
+                    colors += i + ":" + f + " ";
                 }
             }
 

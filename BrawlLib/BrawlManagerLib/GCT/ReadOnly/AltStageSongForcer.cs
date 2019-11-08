@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BrawlLib.BrawlManagerLib.Songs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.GCT.ReadOnly
 {
     /// <summary>
     /// Allows read-only access to the alt stage song forcer in a GCT codeset.
@@ -14,7 +15,7 @@ namespace BrawlManagerLib
         {
             0xC2, 0x10, 0xF9, 0xFC, 0x00, 0x00, 0x00, 0x2B,
             0x3D, 0x80, 0x81, 0x5F, 0xA1, 0x8C, 0x84, 0x22,
-            0x54, 0x00, 0x80, 0x1E, 0x54, 0x00, 0x84, 0x3E,
+            0x54, 0x00, 0x80, 0x1E, 0x54, 0x00, 0x84, 0x3E
         };
 
         private class SongReplacement

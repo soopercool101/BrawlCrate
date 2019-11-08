@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.PowerPCAssembly;
 using System.ComponentModel;
-using System.PowerPcAssembly;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

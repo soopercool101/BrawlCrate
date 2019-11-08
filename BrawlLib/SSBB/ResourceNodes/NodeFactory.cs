@@ -1,13 +1,12 @@
-﻿using BrawlLib.IO;
-using BrawlLib.Wii.Compression;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Wii;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -24,13 +23,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             {"MRGC", typeof(MRGNode)}, //Compressed MRG
             {"DOL", typeof(DOLNode)},
             {"REL", typeof(RELNode)},
-            {"MASQ", typeof(MasqueradeNode)}
+            {"MASQ", typeof(MasqueradeNode)},
+            {"CMM", typeof(CMMNode)}
         };
 
         static NodeFactory()
         {
             // Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)
-            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
+            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()
+                                       ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
@@ -97,13 +98,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node.Initialize(parent, source);
                         }
                     }
-#if DEBUG
                     else
                     {
-                        node = new RawDataNode(Path.GetFileNameWithoutExtension(path));
+                        node = new RawDataNode(Path.GetFileName(path));
                         node.Initialize(parent, source);
                     }
-#endif
                 }
             }
             finally
@@ -124,8 +123,26 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source)
         {
+            return FromSource(parent, source, null);
+        }
+
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t)
+        {
             ResourceNode n = null;
-            if ((n = GetRaw(source)) != null)
+
+            if (t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
+            {
+                FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
+                if (uncompressedMap != null)
+                {
+                    n.Initialize(parent, source, new DataSource(uncompressedMap));
+                }
+                else
+                {
+                    n.Initialize(parent, source);
+                }
+            }
+            else if ((n = GetRaw(source)) != null)
             {
                 n.Initialize(parent, source);
             }

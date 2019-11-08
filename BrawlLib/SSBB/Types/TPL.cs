@@ -1,8 +1,8 @@
-﻿using BrawlLib.Wii.Textures;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.Wii.Textures;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct TPLHeader

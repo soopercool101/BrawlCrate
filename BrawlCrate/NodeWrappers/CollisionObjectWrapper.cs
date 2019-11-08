@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using BrawlLib;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers

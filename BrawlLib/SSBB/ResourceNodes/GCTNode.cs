@@ -1,4 +1,5 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -430,7 +431,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 string temp = "";
                 foreach (GCTCodeLine c in _lines)
                 {
-                    temp += (_enabled ? "* " : "") + c.ToString() + Environment.NewLine;
+                    temp += (_enabled ? "* " : "") + c + Environment.NewLine;
                 }
 
                 return temp;

@@ -1,4 +1,7 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Controls;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Animations;
 using System;

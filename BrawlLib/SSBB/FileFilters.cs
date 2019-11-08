@@ -1,9 +1,8 @@
-﻿using BrawlLib.SSBB;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 
-namespace BrawlLib
+namespace BrawlLib.SSBB
 {
     public static class FileFilters
     {
@@ -189,7 +188,10 @@ namespace BrawlLib
             SupportedFilesHandler.GetCompleteFilter("dat", "bx");
 
         public static string MASQ =
-            SupportedFilesHandler.GetCompleteFilter("masq", "bin", "dat", "*");
+            SupportedFilesHandler.GetCompleteFilter("masq");
+
+        public static string CMM =
+            SupportedFilesHandler.GetCompleteFilter("cmm");
 
         public static string MDef =
             SupportedFilesHandler.GetCompleteFilter("moveset");
@@ -234,7 +236,7 @@ namespace BrawlLib
             [typeof(STPMNode)] = "stpm",
             [typeof(STDTNode)] = "stdt",
             [typeof(SCLANode)] = "scla",
-            [typeof(HavokNode)] = "hkx",
+            [typeof(HavokNode)] = "hkx"
         };
 
         public static string GetDefaultExportAllExtension(Type type)

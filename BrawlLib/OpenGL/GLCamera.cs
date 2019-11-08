@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using BrawlLib.Internal;
+using OpenTK.Graphics.OpenGL;
 using System;
 
 namespace BrawlLib.OpenGL

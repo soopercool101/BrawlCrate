@@ -1,12 +1,14 @@
-﻿using System;
+﻿using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.BrawlManagerLib.Songs;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using BrawlManagerLib;
 using System.Reflection;
+using System.Windows.Forms;
 
-namespace BrawlCrate.SongManager
+namespace BrawlCrate.BrawlManagers.SongManager
 {
     [DefaultEvent("ValueChanged")]
     public partial class CustomSongVolumeEditor : UserControl

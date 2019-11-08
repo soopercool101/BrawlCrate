@@ -1,0 +1,279 @@
+Arrow Warning Start
+(Float) How many frames to wait to start arrow warning effect (starting from the summit get up sequence)
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+Arrow Warning End
+(Float) How many frames to wait to end arrow warning effect (starting from the summit get up sequence)
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+~0x01C
+Default (Unknown Type): (0x04060406)
+	/EndDescription
+4
+
+Ice Platform Health
+(Float) The amount of damage that the ice platform can take before breaking
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Ice Platform Damage Taken Multiplier
+(Float) How much the damage taken will be multiplied by. Health can be calculated by Health divided by this value.
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+Ice Platform Respawn Time
+(Float) How many frames to wait until platform respawns
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x044
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x048
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 4 (0x40800000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 100 (0x42C80000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 0.8 (0x3F4CCCCD)
+	/EndDescription
+0
+
+0x064
+Default (Float): 150 (0x43160000)
+	/EndDescription
+0
+
+0x068
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x070
+Default (Float): 2700 (0x4528C000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+0x078
+Default (Float): 3 (0x40400000)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 500 (0x43FA0000)
+	/EndDescription
+0
+
+0x080
+Default (Float): 4 (0x40800000)
+	/EndDescription
+0
+
+0x084
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x088
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x08C
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x090
+Default (Float): 0.7 (0x3F333333)
+	/EndDescription
+0
+
+0x094
+Default: 0 (Could be int or float - be careful)
+	/EndDescription
+0
+
+0x098
+Default (Float): 45 (0x42340000)
+	/EndDescription
+0
+
+0x09C
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x0A0
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x0A4
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x0A8
+Default (Float): 660 (0x44250000)
+	/EndDescription
+0
+
+0x0AC
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+0x0B0
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x0B4
+Default (Float): 22 (0x41B00000)
+	/EndDescription
+0
+
+0x0B8
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x0BC
+Default (Float): 2.5 (0x40200000)
+	/EndDescription
+0
+
+0x0C0
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x0C4
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+0x0C8
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x0CC
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x0D0
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x0D4
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x0D8
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+0x0DC
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x0E0
+Default (Float): 0.45 (0x3EE66666)
+	/EndDescription
+0
+
+0x0E4
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x0E8
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0

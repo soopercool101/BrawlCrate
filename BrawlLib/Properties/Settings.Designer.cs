@@ -48,9 +48,9 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::BrawlLib.Modeling.Collada.ImportOptions ColladaImportOptions {
+        public global::BrawlLib.Modeling.Collada.Collada.ImportOptions ColladaImportOptions {
             get {
-                return ((global::BrawlLib.Modeling.Collada.ImportOptions)(this["ColladaImportOptions"]));
+                return ((global::BrawlLib.Modeling.Collada.Collada.ImportOptions)(this["ColladaImportOptions"]));
             }
             set {
                 this["ColladaImportOptions"] = value;
@@ -162,6 +162,30 @@ namespace BrawlLib.Properties {
             }
             set {
                 this["ContextualLoopAudio"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ContextualLoopAnimation {
+            get {
+                return ((bool)(this["ContextualLoopAnimation"]));
+            }
+            set {
+                this["ContextualLoopAnimation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ParseMoveDef {
+            get {
+                return ((bool)(this["ParseMoveDef"]));
+            }
+            set {
+                this["ParseMoveDef"] = value;
             }
         }
     }

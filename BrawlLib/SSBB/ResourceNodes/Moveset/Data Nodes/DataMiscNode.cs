@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using OpenTK.Graphics.OpenGL;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -1420,7 +1421,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         if (quadrant == q)
                         {
                             GL.Translate(stretch._x, stretch._y, stretch._z);
-                            GL.Begin(PrimitiveType.Quads);
+                            GL.Begin(BeginMode.Quads);
                             GL.Vertex3(Math.Cos(ang1) * Math.Sin(ringang2), Math.Sin(ang1) * Math.Sin(ringang2),
                                 Math.Cos(ringang2));
                             GL.Vertex3(Math.Cos(ang2) * Math.Sin(ringang2), Math.Sin(ang2) * Math.Sin(ringang2),
@@ -1477,7 +1478,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     z2 += stretchfac._z;
                 }
 
-                GL.Begin(PrimitiveType.Quads);
+                GL.Begin(BeginMode.Quads);
                 GL.Vertex3(x1, y1, z1);
                 GL.Vertex3(x2, y1, z1);
                 GL.Vertex3(x2, y2, z2);
@@ -1523,7 +1524,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     z2 += stretchfac._z;
                 }
 
-                GL.Begin(PrimitiveType.Quads);
+                GL.Begin(BeginMode.Quads);
                 GL.Vertex3(x1, y1, z1);
                 GL.Vertex3(x1, y2, z1);
                 GL.Vertex3(x2, y2, z2);
@@ -1569,7 +1570,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     y2 += stretchfac._y;
                 }
 
-                GL.Begin(PrimitiveType.Quads);
+                GL.Begin(BeginMode.Quads);
                 GL.Vertex3(x2, y2, z1);
                 GL.Vertex3(x2, y2, z2);
                 GL.Vertex3(x1, y1, z2);
@@ -1580,7 +1581,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Vector3 scale = BoneNode._frameMatrix.GetScale(); //TODO: Same problem
 
             // six faces
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(BeginMode.Quads);
             float outpos;
 
             // left face

@@ -1,10 +1,10 @@
-﻿using BrawlLib.OpenGL;
+﻿using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Models;
 using System;
 using System.Reflection;
 using System.Runtime.Serialization;
-using System.Windows.Forms;
 
 namespace BrawlLib.Modeling
 {

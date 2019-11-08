@@ -1,6 +1,6 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Animations;
-using System;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.Modeling

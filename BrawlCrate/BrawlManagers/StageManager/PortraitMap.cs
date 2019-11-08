@@ -1,4 +1,4 @@
-﻿namespace BrawlCrate.StageManager
+﻿namespace BrawlCrate.BrawlManagers.StageManager
 {
     public class PortraitMap
     {
@@ -83,7 +83,7 @@
             "custom22",
             "custom23",
             "custom24",
-            "custom25",
+            "custom25"
         };
 
         public static int ForPac(string filename)

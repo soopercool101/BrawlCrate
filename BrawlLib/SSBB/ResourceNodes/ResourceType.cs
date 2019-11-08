@@ -172,6 +172,7 @@
         BTI,
 
         //Subspace Emmisary
+        ADPM,
         GDOR,
         GEG1,
         ENEMY,
@@ -202,9 +203,10 @@
         RSTCGroup,
         SLTC,
 
-        // Project M
+        // Brawl Mods
         MASQ,
         MASQEntry,
+        CMM,
 
         // Items
         ItemFreqNode,

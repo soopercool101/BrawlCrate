@@ -1,9 +1,12 @@
-﻿using BrawlLib.SSBB;
-using BrawlManagerLib;
+﻿using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT.ReadOnly;
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.BrawlManagerLib.Songs;
+using BrawlLib.SSBB;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public static class SongsByStageID
     {
@@ -19,7 +22,7 @@ namespace BrawlCrate.StageManager
                     "T02",
                     "X25",
                     "W21",
-                    "W23",
+                    "W23"
                 }
             },
             {
@@ -30,7 +33,7 @@ namespace BrawlCrate.StageManager
                     "T01",
                     "T03",
                     "W25",
-                    "W31",
+                    "W31"
                 }
             },
             {
@@ -41,7 +44,7 @@ namespace BrawlCrate.StageManager
                     "A07",
                     "A08",
                     "A14",
-                    "A15",
+                    "A15"
                 }
             },
             {
@@ -52,7 +55,7 @@ namespace BrawlCrate.StageManager
                     "A06",
                     "A05",
                     "Q10",
-                    "Q11",
+                    "Q11"
                 }
             },
             {
@@ -64,7 +67,7 @@ namespace BrawlCrate.StageManager
                     "A10",
                     "A02",
                     "A03",
-                    "A04",
+                    "A04"
                 }
             },
             {
@@ -77,7 +80,7 @@ namespace BrawlCrate.StageManager
                     "A23",
                     "R05",
                     "R14",
-                    "Q09",
+                    "Q09"
                 }
             },
             {
@@ -90,7 +93,7 @@ namespace BrawlCrate.StageManager
                     "B06",
                     "B07",
                     "B10",
-                    "B02",
+                    "B02"
                 }
             },
             {
@@ -105,7 +108,7 @@ namespace BrawlCrate.StageManager
                     "C08",
                     "C17",
                     "C18",
-                    "C19",
+                    "C19"
                 }
             },
             {
@@ -119,7 +122,7 @@ namespace BrawlCrate.StageManager
                     "C13",
                     "C11",
                     "C12",
-                    "C14",
+                    "C14"
                 }
             },
             {
@@ -131,7 +134,7 @@ namespace BrawlCrate.StageManager
                     "D02",
                     "D05",
                     "R12",
-                    "R07",
+                    "R07"
                 }
             },
             {
@@ -143,7 +146,7 @@ namespace BrawlCrate.StageManager
                     "D07",
                     "D06",
                     "D09",
-                    "D10",
+                    "D10"
                 }
             },
             {
@@ -155,7 +158,7 @@ namespace BrawlCrate.StageManager
                     "E01",
                     "E03",
                     "E05",
-                    "E06",
+                    "E06"
                 }
             },
             {
@@ -173,7 +176,7 @@ namespace BrawlCrate.StageManager
                     "F03",
                     "F10",
                     "F09",
-                    "F11",
+                    "F11"
                 }
             },
             {
@@ -190,7 +193,7 @@ namespace BrawlCrate.StageManager
                     "G09",
                     "G07",
                     "G08",
-                    "Q12",
+                    "Q12"
                 }
             },
             {
@@ -201,7 +204,7 @@ namespace BrawlCrate.StageManager
                     "H03",
                     "H02",
                     "H04",
-                    "H05",
+                    "H05"
                 }
             },
             {
@@ -212,7 +215,7 @@ namespace BrawlCrate.StageManager
                     "H08",
                     "H07",
                     "H09",
-                    "H10",
+                    "H10"
                 }
             },
             {
@@ -230,7 +233,7 @@ namespace BrawlCrate.StageManager
                     "I09",
                     "I10",
                     "R09",
-                    "W18",
+                    "W18"
                 }
             },
             {
@@ -248,7 +251,7 @@ namespace BrawlCrate.StageManager
                     "J10",
                     "J11",
                     "J12",
-                    "W17",
+                    "W17"
                 }
             },
             {
@@ -271,7 +274,7 @@ namespace BrawlCrate.StageManager
                     "M15",
                     "M16",
                     "M17",
-                    "M18",
+                    "M18"
                 }
             },
             {
@@ -286,7 +289,7 @@ namespace BrawlCrate.StageManager
                     "L08",
                     "L05",
                     "L03",
-                    "R08",
+                    "R08"
                 }
             },
             {
@@ -303,7 +306,7 @@ namespace BrawlCrate.StageManager
                     "N09",
                     "N10",
                     "N11",
-                    "N12",
+                    "N12"
                 }
             },
             {
@@ -315,7 +318,7 @@ namespace BrawlCrate.StageManager
                     "K08",
                     "K10",
                     "K05",
-                    "K01",
+                    "K01"
                 }
             },
             {
@@ -326,7 +329,7 @@ namespace BrawlCrate.StageManager
                     "Q06",
                     "Q08",
                     "Q05",
-                    "W13",
+                    "W13"
                 }
             },
             {
@@ -336,7 +339,7 @@ namespace BrawlCrate.StageManager
                     "P01",
                     "P03",
                     "P02",
-                    "P04",
+                    "P04"
                 }
             },
             {
@@ -345,7 +348,7 @@ namespace BrawlCrate.StageManager
                     // 75 m
                     "B04",
                     "B03",
-                    "B09",
+                    "B09"
                 }
             },
             {
@@ -356,7 +359,7 @@ namespace BrawlCrate.StageManager
                     "Q02",
                     "Q01",
                     "Q13",
-                    "Q14",
+                    "Q14"
                 }
             },
             {
@@ -365,7 +368,7 @@ namespace BrawlCrate.StageManager
                     // Flat Zone 2
                     "R04",
                     "Q04",
-                    "W14",
+                    "W14"
                 }
             },
             {
@@ -380,14 +383,14 @@ namespace BrawlCrate.StageManager
                     "R17",
                     "R13",
                     "R06",
-                    "W20",
+                    "W20"
                 }
             },
             {
                 37, new[]
                 {
                     // Hanenbow
-                    "R03",
+                    "R03"
                 }
             },
             {
@@ -402,7 +405,7 @@ namespace BrawlCrate.StageManager
                     "S07",
                     "S05",
                     "S10",
-                    "S11",
+                    "S11"
                 }
             },
             {
@@ -420,7 +423,7 @@ namespace BrawlCrate.StageManager
                     "U10",
                     "U11",
                     "U12",
-                    "U13",
+                    "U13"
                 }
             },
             {
@@ -428,7 +431,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Temple
                     "C03",
-                    "W24",
+                    "W24"
                 }
             },
             {
@@ -436,7 +439,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Yoshi's Island (Melee)
                     "W05",
-                    "W15",
+                    "W15"
                 }
             },
             {
@@ -444,7 +447,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Jungle Japes
                     "W03",
-                    "W26",
+                    "W26"
                 }
             },
             {
@@ -452,7 +455,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Onett
                     "W12",
-                    "W19",
+                    "W19"
                 }
             },
             {
@@ -460,7 +463,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Corneria
                     "W08",
-                    "W28",
+                    "W28"
                 }
             },
             {
@@ -468,7 +471,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Rainbow Cruise
                     "W02",
-                    "W01",
+                    "W01"
                 }
             },
             {
@@ -476,7 +479,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Green Greens
                     "W07",
-                    "W06",
+                    "W06"
                 }
             },
             {
@@ -484,7 +487,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Big Blue
                     "W11",
-                    "W29",
+                    "W29"
                 }
             },
             {
@@ -492,7 +495,7 @@ namespace BrawlCrate.StageManager
                 {
                     // Brinstar
                     "W27",
-                    "W04",
+                    "W04"
                 }
             },
             {
@@ -501,16 +504,16 @@ namespace BrawlCrate.StageManager
                     // Pokemon Stadium
                     "W09",
                     "W16",
-                    "W10",
+                    "W10"
                 }
             },
             {
                 55, new[]
                 {
                     // Online Training
-                    "X07",
+                    "X07"
                 }
-            },
+            }
         };
 
         #endregion
@@ -560,7 +563,7 @@ namespace BrawlCrate.StageManager
                 {
                     "A01",
                     "A16",
-                    "A10",
+                    "A10"
                 };
             }
             else if (stageId == 5 && filename.StartsWith("stgmariopast_01"))
@@ -569,7 +572,7 @@ namespace BrawlCrate.StageManager
                 {
                     "A02",
                     "A03",
-                    "A04",
+                    "A04"
                 };
             }
             else if (dict.TryGetValue(stageId, out string[] ret))

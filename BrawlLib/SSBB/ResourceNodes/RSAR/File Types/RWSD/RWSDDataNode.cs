@@ -1,4 +1,6 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Audio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

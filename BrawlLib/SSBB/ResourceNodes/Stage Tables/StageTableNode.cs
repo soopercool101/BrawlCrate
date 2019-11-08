@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -233,11 +234,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             AttributeInfo[] arr = new AttributeInfo[NumEntries];
             int index = EntryOffset;
 
-            ResourceNode root = this;
-            while (root.Parent != null)
-            {
-                root = root.Parent;
-            }
+            ResourceNode root = RootNode;
 
             for (int i = 0; i < arr.Length; i++)
             {
@@ -293,8 +290,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 temp = "[" + FileIndex + "]";
             }
 
-            string filename = Application.StartupPath + "\\InternalDocumentation\\" +
-                              DocumentationSubDirectory + "\\" + root.Name.ToUpper().Replace("STG", "") + temp + ".txt";
+
+            string filename = Path.Combine(Application.StartupPath, "InternalDocumentation", DocumentationSubDirectory,
+                root.Name.ToUpper().Replace("STG", "") + temp + ".txt");
             return new AttributeInterpretation(arr, filename);
         }
 

@@ -1,5 +1,10 @@
 ﻿using BrawlCrate.NodeWrappers;
-using BrawlLib.IO;
+using BrawlCrate.UI;
+using BrawlCrate.UI.Model_Previewer.ModelEditControl;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -7,8 +12,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.Modeling.Collada;
+using System.Collections.Specialized;
+using System.Configuration;
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate
 {
@@ -20,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "BrawlCrate_v0.26bHotfix2";
+        public static readonly string TagName = "v0.30h3";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -28,10 +37,11 @@ namespace BrawlCrate
         ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
-        public static readonly string UpdateMessage = @"Updated to BrawlCrate NEXT! This release:
-- Is a test of the new automated release system
-- Let's see how this goes
-- It should, in theory, be foolproof
+        public static readonly string UpdateMessage =
+            @"Updated to BrawlCrate v0.30 Hotfix 3! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
+- (Hotfix 3) Improve camera for Model Viewers
+- (Hotfix 3) Fixes issue in which looping worked incorrectly
+- (Hotfix 3) Fixes bug in switching to/from canary builds
 
 Full changelog can be viewed from the help menu.";
 
@@ -46,7 +56,7 @@ Full changelog can be viewed from the help menu.";
         private static readonly OpenFileDialog MultiFileOpenDlg;
         private static readonly SaveFileDialog SaveDlg;
 #if !MONO
-        private static readonly Ookii.Dialogs.VistaFolderBrowserDialog FolderDlg;
+        private static readonly VistaFolderBrowserDialog FolderDlg;
 #else
         private static readonly FolderBrowserDialog FolderDlg;
 #endif
@@ -65,21 +75,55 @@ Full changelog can be viewed from the help menu.";
 
         internal static string _rootPath;
 
-        public static string AppPath;
+        public static readonly string AppPath;
 
-        public static string ApiPath;
-        public static string ApiPluginPath;
-        public static string ApiLoaderPath;
+        public static readonly string ApiPath;
+        public static readonly string ApiPluginPath;
+        public static readonly string ApiLoaderPath;
 
         public static string RootPath => _rootPath;
+#if !DEBUG
+        public static readonly bool FirstBoot;
+#endif
 
         static Program()
         {
             Application.EnableVisualStyles();
+
+#if !DEBUG
+            if (Properties.Settings.Default.UpdateSettings)
+            {
+                foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    foreach (Type _Type in _Assembly.GetTypes())
+                    {
+                        if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
+                        {
+                            ApplicationSettingsBase settings =
+                                (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
+                            if (settings != null)
+                            {
+                                settings.Upgrade();
+                                settings.Reload();
+                                settings.Save();
+                            }
+                        }
+                    }
+                }
+
+                // This is the first time booting this update
+                FirstBoot = true;
+
+                // Ensure settings only get updated once
+                Properties.Settings.Default.UpdateSettings = false;
+                Properties.Settings.Default.Save();
+            }
+#endif
+
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
-            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe", StringComparison.OrdinalIgnoreCase));
+            AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
-            AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+            AssemblyTitleFull = "BrawlCrate Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
@@ -115,16 +159,16 @@ Full changelog can be viewed from the help menu.";
                                                       .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
-            OpenDlg = new OpenFileDialog { Title = "Open File" };
-            MultiFileOpenDlg = new OpenFileDialog { Title = "Open Files", Multiselect = true };
+            OpenDlg = new OpenFileDialog {Title = "Open File"};
+            MultiFileOpenDlg = new OpenFileDialog {Title = "Open Files", Multiselect = true};
             SaveDlg = new SaveFileDialog();
 #if !MONO
-            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            FolderDlg = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderDlg = new FolderBrowserDialog();
 #endif
             FolderDlg.Description = "Open Folder";
-            
+
             ApiPath = Path.Combine(AppPath, "BrawlAPI");
             ApiPluginPath = Path.Combine(ApiPath, "Plugins");
             ApiLoaderPath = Path.Combine(ApiPath, "Loaders");
@@ -156,6 +200,50 @@ Full changelog can be viewed from the help menu.";
             {
                 Properties.Settings.Default.BuildPath = AppPath;
                 Properties.Settings.Default.Save();
+            }
+
+            if (Properties.Settings.Default.APILoadersWhitelist == null)
+            {
+                Properties.Settings.Default.APILoadersWhitelist = new StringCollection();
+                Properties.Settings.Default.Save();
+            }
+
+            if (Properties.Settings.Default.APILoadersBlacklist == null)
+            {
+                Properties.Settings.Default.APILoadersBlacklist = new StringCollection();
+                Properties.Settings.Default.Save();
+            }
+
+            try
+            {
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "temp.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "temp.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.bat"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Update.bat");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "StageBox.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "StageBox.exe");
+                }
+
+                if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "BrawlBox.exe"))
+                {
+                    File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "BrawlBox.exe");
+                }
+            }
+            catch
+            {
+                // ignored
             }
         }
 
@@ -298,16 +386,16 @@ Full changelog can be viewed from the help menu.";
             {
                 if (a.Equals("/audio:directsound", StringComparison.OrdinalIgnoreCase))
                 {
-                    System.Audio.AudioProvider.AvailableTypes =
-                        System.Audio.AudioProvider.AudioProviderType.DirectSound;
+                    AudioProvider.AvailableTypes =
+                        AudioProvider.AudioProviderType.DirectSound;
                 }
                 else if (a.Equals("/audio:openal", StringComparison.OrdinalIgnoreCase))
                 {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.OpenAL;
+                    AudioProvider.AvailableTypes = AudioProvider.AudioProviderType.OpenAL;
                 }
                 else if (a.Equals("/audio:none", StringComparison.OrdinalIgnoreCase))
                 {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.None;
+                    AudioProvider.AvailableTypes = AudioProvider.AudioProviderType.None;
                 }
                 else
                 {
@@ -337,6 +425,13 @@ Full changelog can be viewed from the help menu.";
                         MessageBox.Show($"Error: Unable to find node or path '{args[1]}'!");
                     }
                 }
+
+#if !DEBUG //Don't need to see this every time a debug build is compiled
+                if (MainForm.Instance.CheckUpdatesOnStartup)
+                {
+                    MainForm.Instance.CheckUpdates(false);
+                }
+#endif
 
                 Application.Run(MainForm.Instance);
             }
@@ -510,6 +605,65 @@ Full changelog can be viewed from the help menu.";
             return false;
         }
 
+        public static bool OpenTemplate(string path)
+        {
+            return OpenTemplate(path, true);
+        }
+
+        public static bool OpenTemplate(string path, bool showErrors)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return false;
+            }
+
+            if (!File.Exists(path))
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show("Template file does not exist.");
+                }
+
+                return false;
+            }
+
+            if (!Close())
+            {
+                return false;
+            }
+#if !DEBUG
+            try
+            {
+#endif
+                if ((_rootNode = NodeFactory.FromFile(null, path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize template file.");
+                }
+
+                MainForm.Instance.Reset();
+#if !DEBUG
+            }
+            catch (Exception x)
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show(x.ToString());
+                }
+            }
+#endif
+
+            Close();
+
+            return false;
+        }
+
         public static bool OpenFolderFile(out string fileName)
         {
 #if !DEBUG
@@ -544,10 +698,17 @@ Full changelog can be viewed from the help menu.";
                 return false;
             }
 
+#if !MONO
             if (!path.EndsWith("\\"))
             {
                 path += "\\";
             }
+#else
+            if (!path.EndsWith("/"))
+            {
+                path += "/";
+            }
+#endif
 
             if (!Directory.Exists(path))
             {
@@ -669,6 +830,7 @@ Full changelog can be viewed from the help menu.";
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message);
+                    _rootNode.SignalPropertyChange();
                 }
 #endif
             }
@@ -838,7 +1000,7 @@ Full changelog can be viewed from the help menu.";
                         RootNode._origPath = path;
                         if (w is FolderWrapper)
                         {
-                            w.Resource.Name = w.Resource.OrigFileName;
+                            w.Resource.Name = w.Resource.FileName;
                             w.Text = w.Resource.Name;
                         }
 
@@ -889,7 +1051,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlStable {RootPath}",
+                        Arguments = $"-dlStable {RootPath}"
                     });
                     git?.WaitForExit();
                 }
@@ -910,7 +1072,7 @@ Full changelog can be viewed from the help menu.";
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = $"-dlCanary {RootPath}",
+                        Arguments = $"-dlCanary {RootPath}"
                     });
                     git?.WaitForExit();
                 }

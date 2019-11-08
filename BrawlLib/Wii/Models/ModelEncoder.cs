@@ -1,7 +1,9 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.Modeling;
+using BrawlLib.Modeling.Collada;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -556,11 +558,11 @@ namespace BrawlLib.Wii.Models
                         {
                             if (resType == MDLResourceType.Objects)
                             {
-                                form.Say("Encoding the " + resType.ToString() + " - " + e.Name);
+                                form.Say("Encoding the " + resType + " - " + e.Name);
                             }
                             else
                             {
-                                form.Say("Calculating the size of the " + resType.ToString() + " - " + e.Name);
+                                form.Say("Calculating the size of the " + resType + " - " + e.Name);
                             }
                         }
 

@@ -1,8 +1,9 @@
-﻿using BrawlLib.Wii.Animations;
+﻿using BrawlLib.Internal;
+using BrawlLib.Wii.Animations;
 using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Animations
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct SRT0v4
@@ -221,7 +222,7 @@ namespace BrawlLib.SSBBTypes
         Texture4 = 0x10,
         Texture5 = 0x20,
         Texture6 = 0x40,
-        Texture7 = 0x80,
+        Texture7 = 0x80
     }
 
     [Flags]
@@ -229,7 +230,7 @@ namespace BrawlLib.SSBBTypes
     {
         Indirect0 = 0x01,
         Indirect1 = 0x02,
-        Indirect2 = 0x04,
+        Indirect2 = 0x04
     }
 
     [Flags]
@@ -313,13 +314,13 @@ namespace BrawlLib.SSBBTypes
         //0000 0000 0000 0000 0000 0000 0000 0010       Scale One
         //0000 0000 0000 0000 0000 0000 0000 0100       Rot Zero
         //0000 0000 0000 0000 0000 0000 0000 1000       Trans Zero
-        //0000 0000 0000 0000 0000 0000 0001 0000		Scale Isotropic
+        //0000 0000 0000 0000 0000 0000 0001 0000        Scale Isotropic
 
-        //0000 0000 0000 0000 0000 0000 0010 0000		Fixed Scale X
-        //0000 0000 0000 0000 0000 0000 0100 0000		Fixed Scale Y
-        //0000 0000 0000 0000 0000 0000 1000 0000		Fixed Rotation
-        //0000 0000 0000 0000 0000 0001 0000 0000		Fixed X Translation
-        //0000 0000 0000 0000 0000 0010 0000 0000		Fixed Y Translation
+        //0000 0000 0000 0000 0000 0000 0010 0000        Fixed Scale X
+        //0000 0000 0000 0000 0000 0000 0100 0000        Fixed Scale Y
+        //0000 0000 0000 0000 0000 0000 1000 0000        Fixed Rotation
+        //0000 0000 0000 0000 0000 0001 0000 0000        Fixed X Translation
+        //0000 0000 0000 0000 0000 0010 0000 0000        Fixed Y Translation
 
         public Bin32 _data;
 

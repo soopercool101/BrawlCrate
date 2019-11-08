@@ -3,7 +3,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Windows.Forms;
 
-namespace BrawlCrate
+namespace BrawlCrate.UI
 {
     internal class CloneSoundDialog : Form
     {

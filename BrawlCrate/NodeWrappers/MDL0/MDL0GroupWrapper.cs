@@ -1,5 +1,6 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

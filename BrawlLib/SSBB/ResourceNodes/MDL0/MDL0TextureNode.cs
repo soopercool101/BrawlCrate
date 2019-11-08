@@ -1,5 +1,7 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal.Drawing;
 using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -66,7 +67,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!string.IsNullOrEmpty(value) && Directory.Exists(value))
                 {
-                    _folderWatcher.Path = value + "\\";
+                    _folderWatcher.Path = Path.GetFullPath(value);
                 }
                 else
                 {
@@ -177,7 +178,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             TextureMinFilter.Nearest, TextureMinFilter.Linear, TextureMinFilter.NearestMipmapNearest,
             TextureMinFilter.NearestMipmapLinear, TextureMinFilter.LinearMipmapNearest,
-            TextureMinFilter.LinearMipmapLinear,
+            TextureMinFilter.LinearMipmapLinear
         };
 
         public static readonly TextureWrapMode[] _wraps =
@@ -202,7 +203,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Source = BRESNode?.FindChild("Textures(NW4R)/" + Name, true, StringComparison.Ordinal) as TEX0Node;
         }
 
-        public void Reload()
+        public void Reload(MDL0Node model, bool isMetal)
         {
             if (TKContext.CurrentContext == null)
             {
@@ -210,18 +211,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TKContext.CurrentContext.Capture();
-            Load(_index, _program, Model, _isMetal);
+            Load(_index, _program, model, isMetal);
         }
 
         private int _index = -1;
         private int _program = -1;
-        private bool _isMetal;
 
         private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
         {
             _index = index;
             _program = program;
-            _isMetal = isMetal;
             if (TKContext.CurrentContext == null)
             {
                 return;
@@ -249,7 +248,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TEX0Node tNode;
-            if (bmp == null && (!(Source is TEX0Node)) &&
+            if (bmp == null && !(Source is TEX0Node) &&
                 TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
             {
                 List<ResourceNode> nodes = RootNode.GetChildrenRecursive();
@@ -263,7 +262,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     ARCEntryNode a;
                     BRRESNode b;
                     bool redirect = false;
-                    if ((a = n as ARCEntryNode) != null && bres != null && bres.GroupID == a.GroupID &&
+                    if ((a = n as ARCEntryNode) != null && bres != null &&
+                        (bres.GroupID == a.GroupID || a.GroupID == 0) &&
                         (b = a.RedirectNode as BRRESNode) != null)
                     {
                         redirect = true;
@@ -273,7 +273,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         continue;
                     }
 
-                    if (a.FileType != ARCFileType.TextureData || !redirect && bres != null && bres.GroupID != b.GroupID)
+                    if (a.FileType != ARCFileType.TextureData ||
+                        !redirect && bres != null && bres.GroupID != b.GroupID && b.GroupID != 0)
                     {
                         continue;
                     }

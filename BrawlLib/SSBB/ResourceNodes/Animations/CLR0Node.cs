@@ -1,6 +1,8 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

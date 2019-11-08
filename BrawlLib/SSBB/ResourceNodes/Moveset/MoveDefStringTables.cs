@@ -1,6 +1,7 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
+using System;
 using System.Collections.Generic;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

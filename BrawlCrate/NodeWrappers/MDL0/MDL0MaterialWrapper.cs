@@ -1,4 +1,5 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
 using System;

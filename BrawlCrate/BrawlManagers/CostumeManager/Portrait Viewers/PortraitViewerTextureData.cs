@@ -1,4 +1,7 @@
-﻿using BrawlLib;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;
 using System;
@@ -6,7 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 {
     public class PortraitViewerTextureData
     {
@@ -192,7 +195,7 @@ namespace BrawlCrate.CostumeManager
                         tex0 = (TEX0Node) node.FindChild("Textures(NW4R)", false).Children[0];
                     }
 
-                    string tempFile = Path.GetTempPath() + Guid.NewGuid().ToString() + ".png";
+                    string tempFile = Path.GetTempPath() + Guid.NewGuid() + ".png";
                     tex0.Export(tempFile);
                     Replace(tempFile, useTextureConverter); // call self with new file
                     File.Delete(tempFile);
@@ -217,7 +220,7 @@ namespace BrawlCrate.CostumeManager
                     {
                         Bitmap bitmap = new Bitmap(filename);
                         UnsafeBuffer buffer = TextureConverter.CMPR.GeneratePreview(bitmap);
-                        BrawlLib.IO.FileMap textureData =
+                        FileMap textureData =
                             TextureConverter.CMPR.EncodeTEX0TextureCached(bitmap, Texture.LevelOfDetail, buffer);
                         Texture.ReplaceRaw(textureData);
                     }

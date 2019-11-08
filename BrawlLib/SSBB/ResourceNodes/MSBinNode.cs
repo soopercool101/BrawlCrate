@@ -1,5 +1,5 @@
-﻿using BrawlLib.Wii;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.Wii;
 using System.Collections.Generic;
 using System.IO;
 

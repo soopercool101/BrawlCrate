@@ -1,6 +1,7 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
-namespace System
+namespace BrawlLib.Platform
 {
     internal static partial class Win32
     {

@@ -1,5 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Stage_Tables;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal TBRM* Header => (TBRM*) WorkingUncompressed.Address;
         internal override string DocumentationSubDirectory => "TBRM";
         internal override int EntryOffset => 0x10;
-		
+
         public TBRMNode()
         {
             unk0 = 1;

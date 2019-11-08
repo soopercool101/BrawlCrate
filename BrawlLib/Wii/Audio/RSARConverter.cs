@@ -1,6 +1,7 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Audio;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -445,7 +446,7 @@ namespace BrawlLib.Wii.Audio
             }
 
             str._type = type;
-            str._index = node.InfoIndex;
+            str._index = node._infoIndex;
 
             group.Add(node);
 
@@ -541,7 +542,7 @@ namespace BrawlLib.Wii.Audio
 
         public static int Compare(RSAREntryNode n1, RSAREntryNode n2)
         {
-            return n2.InfoIndex < n1.InfoIndex ? 1 : n2.InfoIndex > n1.InfoIndex ? -1 : 0;
+            return n2._infoIndex < n1._infoIndex ? 1 : n2._infoIndex > n1._infoIndex ? -1 : 0;
         }
     }
 }

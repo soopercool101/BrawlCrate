@@ -1,4 +1,6 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlCrate.API;
+using BrawlCrate.UI;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,9 +44,11 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public static Dictionary<ResourceType, PluginWrapper> PluginResourceWrappers { get; } = new Dictionary<ResourceType, PluginWrapper>();
+        public static Dictionary<ResourceType, PluginWrapper> PluginResourceWrappers { get; } =
+            new Dictionary<ResourceType, PluginWrapper>();
 
-        public static Dictionary<Type, PluginWrapper> PluginTypeWrappers { get; } = new Dictionary<Type, PluginWrapper>();
+        public static Dictionary<Type, PluginWrapper> PluginTypeWrappers { get; } =
+            new Dictionary<Type, PluginWrapper>();
 
         public static void AddWrapper(ResourceType r, PluginWrapper w)
         {
@@ -384,7 +388,8 @@ namespace BrawlCrate.NodeWrappers
             }
             else if (NodeWrapperAttribute.ResourceWrappers.ContainsKey(node.ResourceFileType))
             {
-                w = Activator.CreateInstance(NodeWrapperAttribute.ResourceWrappers[node.ResourceFileType]) as BaseWrapper;
+                w = Activator.CreateInstance(NodeWrapperAttribute.ResourceWrappers[node.ResourceFileType]) as
+                    BaseWrapper;
             }
             else
             {

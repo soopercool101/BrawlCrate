@@ -1,9 +1,13 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -47,17 +51,24 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Scene Settings", null, NewScnAction)
             ));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
-                new ToolStripMenuItem("Texture", null, ImportTextureAction),
-                new ToolStripMenuItem("Model", null, ImportModelAction),
-                new ToolStripMenuItem("Model Animation", null, ImportChrAction),
-                new ToolStripMenuItem("Texture Animation", null, ImportSrtAction),
-                new ToolStripMenuItem("Texture Pattern", null, ImportPatAction),
-                new ToolStripMenuItem("Visibility Sequence", null, ImportVisAction),
-                new ToolStripMenuItem("Vertex Morph", null, ImportShpAction),
-                new ToolStripMenuItem("Color Sequence", null, ImportClrAction),
+                new ToolStripMenuItem("Textures", null, ImportTextureAction),
+                new ToolStripMenuItem("Color Smashable Textures", null, ImportColorSmashTextureAction),
+                new ToolStripMenuItem("Models", null, ImportModelAction),
+                new ToolStripMenuItem("Model Animations", null, ImportChrAction),
+                new ToolStripMenuItem("Texture Animations", null, ImportSrtAction),
+                new ToolStripMenuItem("Texture Patterns", null, ImportPatAction),
+                new ToolStripMenuItem("Visibility Sequences", null, ImportVisAction),
+                new ToolStripMenuItem("Vertex Morphs", null, ImportShpAction),
+                new ToolStripMenuItem("Color Sequences", null, ImportClrAction),
                 new ToolStripMenuItem("Scene Settings", null, ImportScnAction),
                 new ToolStripMenuItem("Folder", null, ImportFolderAction),
-                new ToolStripMenuItem("Animated GIF", null, ImportGIFAction)
+                new ToolStripMenuItem("Animated GIFs", null, ImportGIFAction),
+                new ToolStripMenuItem("Special", null,
+                    new ToolStripMenuItem("Clear Mode (Spy) Textures", null, ImportCommonTextureSpyAction),
+                    new ToolStripMenuItem("Metal Texture", null, ImportCommonTextureMetalAction),
+                    new ToolStripMenuItem("Stage Shadow Texture", null, ImportCommonTextureShadowAction),
+                    new ToolStripMenuItem("Static (Empty) Model", null, ImportCommonModelStaticAction)
+                )
             ));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Preview All Models", null, PreviewAllAction));
@@ -82,6 +93,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void ImportTextureAction(object sender, EventArgs e)
         {
             GetInstance<BRESWrapper>().ImportTexture();
+        }
+
+        protected static void ImportColorSmashTextureAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportColorSmashTexture();
         }
 
         protected static void ImportModelAction(object sender, EventArgs e)
@@ -194,6 +210,28 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<BRESWrapper>().ImportGIF();
         }
 
+        protected static void ImportCommonModelStaticAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportCommonResources<MDL0Node>("BrawlLib.HardcodedFiles.Models.Static.mdl0");
+        }
+
+        protected static void ImportCommonTextureSpyAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportCommonResources<TEX0Node>("BrawlLib.HardcodedFiles.Textures.FB.tex0",
+                "BrawlLib.HardcodedFiles.Textures.spycloak00.tex0");
+        }
+
+        protected static void ImportCommonTextureShadowAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>()
+                .ImportCommonResources<TEX0Node>("BrawlLib.HardcodedFiles.Textures.TShadow1.tex0");
+        }
+
+        protected static void ImportCommonTextureMetalAction(object sender, EventArgs e)
+        {
+            GetInstance<BRESWrapper>().ImportCommonResources<TEX0Node>("BrawlLib.HardcodedFiles.Textures.metal00.tex0");
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DuplicateToolStripMenuItem.Enabled = true;
@@ -231,14 +269,19 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    ((BRRESNode)_resource).ImportGIF(path);
+                    ((BRRESNode) _resource).ImportGIF(path);
                 }
             }
         }
 
+        public void ImportColorSmashTexture()
+        {
+            ExternalInterfacing.ColorSmash.ColorSmashImport(_resource as BRRESNode);
+        }
+
         public void ImportTexture()
         {
-            if(Program.OpenFiles(FileFilters.TEX0, out string[] paths) > 0)
+            if (Program.OpenFiles(FileFilters.TEX0, out string[] paths) > 0)
             {
                 foreach (string path in paths)
                 {
@@ -249,13 +292,14 @@ namespace BrawlCrate.NodeWrappers
                         {
                             continue;
                         }
-                        ((BRRESNode)_resource).GetOrCreateFolder<TEX0Node>().AddChild(node);
+
+                        ((BRRESNode) _resource).GetOrCreateFolder<TEX0Node>().AddChild(node);
 
                         string palette = Path.ChangeExtension(path, ".plt0");
                         if (File.Exists(palette) && node.HasPalette)
                         {
                             PLT0Node n = NodeFactory.FromFile(null, palette) as PLT0Node;
-                            ((BRRESNode)_resource).GetOrCreateFolder<PLT0Node>().AddChild(n);
+                            ((BRRESNode) _resource).GetOrCreateFolder<PLT0Node>().AddChild(n);
                         }
 
                         BaseWrapper w = FindResource(node, true);
@@ -288,7 +332,7 @@ namespace BrawlCrate.NodeWrappers
                     MDL0Node node = MDL0Node.FromFile(path);
                     if (node != null)
                     {
-                        ((BRRESNode)_resource).GetOrCreateFolder<MDL0Node>().AddChild(node);
+                        ((BRRESNode) _resource).GetOrCreateFolder<MDL0Node>().AddChild(node);
 
                         BaseWrapper w = FindResource(node, true);
                         w.EnsureVisible();
@@ -305,7 +349,7 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     CHR0Node node = CHR0Node.FromFile(path);
-                    ((BRRESNode)_resource).GetOrCreateFolder<CHR0Node>().AddChild(node);
+                    ((BRRESNode) _resource).GetOrCreateFolder<CHR0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -321,7 +365,7 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     VIS0Node node = NodeFactory.FromFile(null, path) as VIS0Node;
-                    ((BRRESNode)_resource).GetOrCreateFolder<VIS0Node>().AddChild(node);
+                    ((BRRESNode) _resource).GetOrCreateFolder<VIS0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -337,7 +381,7 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     SHP0Node node = NodeFactory.FromFile(null, path) as SHP0Node;
-                    ((BRRESNode)_resource).GetOrCreateFolder<SHP0Node>().AddChild(node);
+                    ((BRRESNode) _resource).GetOrCreateFolder<SHP0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -353,7 +397,7 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     SRT0Node node = NodeFactory.FromFile(null, path) as SRT0Node;
-                    ((BRRESNode)_resource).GetOrCreateFolder<SRT0Node>().AddChild(node);
+                    ((BRRESNode) _resource).GetOrCreateFolder<SRT0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -369,7 +413,7 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     PAT0Node node = NodeFactory.FromFile(null, path) as PAT0Node;
-                    ((BRRESNode)_resource).GetOrCreateFolder<PAT0Node>().AddChild(node);
+                    ((BRRESNode) _resource).GetOrCreateFolder<PAT0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -385,7 +429,7 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     SCN0Node node = NodeFactory.FromFile(null, path) as SCN0Node;
-                    ((BRRESNode)_resource).GetOrCreateFolder<SCN0Node>().AddChild(node);
+                    ((BRRESNode) _resource).GetOrCreateFolder<SCN0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -401,7 +445,7 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     CLR0Node node = NodeFactory.FromFile(null, path) as CLR0Node;
-                    ((BRRESNode)_resource).GetOrCreateFolder<CLR0Node>().AddChild(node);
+                    ((BRRESNode) _resource).GetOrCreateFolder<CLR0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -580,6 +624,32 @@ namespace BrawlCrate.NodeWrappers
         public void PreviewAll()
         {
             new ModelForm().Show(_owner, ModelPanel.CollectModels(_resource));
+        }
+
+        public void ImportCommonResources<T>(params string[] resourceNames) where T : BRESEntryNode
+        {
+            foreach (string resourceName in resourceNames)
+            {
+                Assembly assembly = Assembly.GetAssembly(typeof(ResourceNode));
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                {
+                    if (stream == null)
+                    {
+                        return;
+                    }
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        stream.CopyTo(ms);
+                        ResourceNode node = NodeFactory.FromSource(null, new DataSource(ms), typeof(T));
+                        ((BRRESNode) _resource).GetOrCreateFolder<T>().AddChild(node);
+
+                        BaseWrapper w = FindResource(node, true);
+                        w.EnsureVisible();
+                        w.TreeView.SelectedNode = w;
+                    }
+                }
+            }
         }
     }
 }

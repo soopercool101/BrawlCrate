@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -102,6 +105,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().Rename();
         }
 
+        protected static void SortAction(object sender, EventArgs e)
+        {
+            GetInstance<GenericWrapper>().Sort();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DuplicateToolStripMenuItem.Enabled = true;
@@ -139,6 +147,12 @@ namespace BrawlCrate.NodeWrappers
         }
 
         public virtual ContextMenuStrip MultiSelectMenuStrip => MultiSelectMenu;
+
+        public virtual void Sort()
+        {
+            _resource.SortChildren();
+            RefreshView(_resource);
+        }
 
         public void MoveUp()
         {
@@ -198,7 +212,7 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public virtual string ExportFilter => BrawlLib.FileFilters.Raw;
+        public virtual string ExportFilter => FileFilters.Raw;
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
 
