@@ -15,7 +15,7 @@ using System.Windows.Forms;
 using BrawlLib.Modeling.Collada;
 using BrawlLib.SSBB.ResourceNodes.Archives;
 using System.Collections.Specialized;
-
+using System.Configuration;
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 #endif
