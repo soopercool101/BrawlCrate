@@ -1,4 +1,4 @@
-﻿using BrawlCrate.BrawlAPI;
+﻿using BrawlCrate.API;
 using BrawlCrate.BrawlManagers.CostumeManager;
 using BrawlCrate.BrawlManagers.SongManager;
 using BrawlCrate.BrawlManagers.StageManager;

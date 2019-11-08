@@ -1,4 +1,4 @@
-﻿using BrawlCrate.BrawlAPI;
+﻿using BrawlCrate.API;
 using BrawlCrate.UI;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
