@@ -226,7 +226,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                     string name = f.Name.ToLower();
                     if (name.EndsWith(".pac") || name.EndsWith(".pcs"))
                     {
-                        listBox2.Items.Add(new FighterFile(f.Name, 1, 1));
+                        listBox2.Items.Add(new FighterFile(f.FullName, 1, 1));
                     }
                 }
             }
@@ -243,7 +243,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                     {
                         foreach (string hatchar in PortraitMap.KirbyHats)
                         {
-                            listBox2.Items.Add(new FighterFile("kirby/fitkirby" + hatchar + i.ToString("D2") + ".pac",
+                            listBox2.Items.Add(new FighterFile(Path.Combine(CurrentDirectory, "kirby/fitkirby" + hatchar + i.ToString("D2") + ".pac"),
                                 charNum, i));
                         }
                     }
@@ -464,13 +464,13 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             string nn = ff.CostumeNum.ToString("D2");
             if (p.Contains("fitkirbymewtwo"))
             {
-                kirby = "kirby/FitKirby" + nn + ".pcs";
+                kirby = Path.Combine(CurrentDirectory, "kirby/FitKirby" + nn + ".pcs");
                 hat = ff.FullName;
             }
             else
             {
                 kirby = ff.FullName;
-                hat = "kirby/FitKirbyMewtwo" + nn + ".pac";
+                hat = Path.Combine(CurrentDirectory, "kirby/FitKirbyMewtwo" + nn + ".pac");
             }
 
             if (!File.Exists(kirby))
