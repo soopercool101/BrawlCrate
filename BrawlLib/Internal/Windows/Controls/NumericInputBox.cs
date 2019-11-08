@@ -96,6 +96,11 @@ namespace BrawlLib.Internal.Windows.Controls
                 case Keys.NumPad7:
                 case Keys.NumPad8:
                 case Keys.NumPad9:
+                    if (Text.IndexOf('-') == 0 && SelectionStart == 0)
+                    {
+                        e.SuppressKeyPress = true;
+                    }
+                    break;
                 case Keys.Back:
                     break;
 
@@ -183,7 +188,7 @@ namespace BrawlLib.Internal.Windows.Controls
 
                 case Keys.Subtract:
                 case Keys.OemMinus:
-                    if (SelectionStart != 0 || Text.IndexOf('-') != -1)
+                    if (SelectionStart != 0 || (Text.Contains('-') && !SelectedText.Contains('-')))
                     {
                         e.SuppressKeyPress = true;
                     }

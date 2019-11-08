@@ -236,7 +236,7 @@ namespace BrawlLib.Internal.Windows.Controls
         /// Custom Song Volume code's difference between 7F (max) and 3F seems to be 1/4 volume - about -6dB. In other words, both the maximum and minimum amplitudes are halved.
         /// See: http://msdn.microsoft.com/en-us/library/windows/desktop/bb280955%28v=vs.85%29.aspx
         /// </summary>
-        public int? Volume
+        private int? Volume
         {
             get => _volume;
             set
@@ -393,7 +393,6 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             chkLoop.Checked = false;
-            chkLoop.Checked = BrawlLib.Properties.Settings.Default.ContextualLoopAudio && (_targetSource?.IsLooped ?? false);
 
             //Create buffer for stream
             if (_provider != null)
@@ -422,7 +421,9 @@ namespace BrawlLib.Internal.Windows.Controls
 
             Enabled = _targetStream.Samples > 0;
 
-            if (Enabled && BrawlLib.Properties.Settings.Default.AutoPlayAudio)
+            chkLoop.Checked = Properties.Settings.Default.ContextualLoopAudio && (_targetSource?.IsLooped ?? false);
+
+            if (Enabled && Properties.Settings.Default.AutoPlayAudio)
             {
                 Play();
             }

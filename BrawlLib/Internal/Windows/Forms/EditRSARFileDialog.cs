@@ -392,7 +392,6 @@ namespace BrawlLib.Internal.Windows.Forms
             audioPlaybackPanel1.Size = new System.Drawing.Size(337, 111);
             audioPlaybackPanel1.TabIndex = 6;
             audioPlaybackPanel1.TargetStreams = null;
-            audioPlaybackPanel1.Volume = null;
             // 
             // button1
             // 

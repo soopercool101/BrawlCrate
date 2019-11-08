@@ -65,11 +65,19 @@ namespace BrawlLib.Internal.IO
             FileStream stream;
             FileMap map;
 
-            // Use a temp file in order to prevent writelocks
-            string tempPath = Path.GetTempFileName();
-            File.Copy(path, tempPath, true);
-            stream = new FileStream(tempPath, FileMode.Open, FileAccess.ReadWrite, FileShare.Read, 8,
-                options | FileOptions.DeleteOnClose);
+            try // Use a temp file in order to prevent writelocks
+            {
+                string tempPath = Path.GetTempFileName();
+                File.Copy(path, tempPath, true);
+                stream = new FileStream(tempPath, FileMode.Open, FileAccess.ReadWrite, FileShare.Read, 8,
+                    options | FileOptions.DeleteOnClose);
+            }
+            catch // Just open the file normally
+            {
+                stream = new FileStream(path, FileMode.Open,
+                    prot == FileMapProtect.ReadWrite ? FileAccess.ReadWrite : FileAccess.Read, FileShare.Read, 8,
+                    options);
+            }
 
             try
             {

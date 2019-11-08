@@ -1,16 +1,17 @@
-﻿using BrawlLib.Modeling;
-using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using OpenTK.Graphics.OpenGL;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using BrawlLib.Modeling;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using OpenTK.Graphics.OpenGL;
+using System;
 using System.Windows.Forms;
+using PixelFormat = System.Drawing.Imaging.PixelFormat;
 
 namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 {
@@ -68,7 +69,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
             //Get the position of the midpoint of the bounding box plane closer to the camera
             Vector3 frontMidPt = new Vector3((max._x + min._x) / 2.0f, (max._y + min._y) / 2.0f, max._z);
-            float tan = (float) Math.Tan(cam.VerticalFieldOfView / 2.0f * Maths._deg2radf), distX = 0, distY = 0;
+            float tan = (float)Math.Tan(cam.VerticalFieldOfView / 2.0f * Maths._deg2radf), distX = 0, distY = 0;
 
             //The tangent value would only be 0 if the FOV was 0,
             //meaning nothing would be visible anyway
@@ -362,6 +363,11 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                     break;
             }
 
+            if (e.Button != MouseButtons.Left)
+            {
+                CurrentViewport.HandleOtherMouseDown(e);
+            }
+
             base.OnMouseDown(e);
         }
 
@@ -407,6 +413,11 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                     return;
             }
 
+            if (e.Button != MouseButtons.Left)
+            {
+                CurrentViewport.HandleOtherMouseUp(e);
+            }
+
             Invalidate();
             base.OnMouseUp(e);
         }
@@ -442,14 +453,14 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             if (_draggingViewports)
             {
                 float
-                    yP = (float) y / Height,
-                    xP = (float) x / Width;
+                    yP = (float)y / Height,
+                    xP = (float)x / Width;
 
                 foreach (KeyValuePair<ModelPanelViewport, DragFlags> t in _dragging)
                 {
                     //TODO: don't allow the user to drag over another viewport
                     //bool cont = false;
-                    bool isX = ((int) t.Value & 1) == 0;
+                    bool isX = ((int)t.Value & 1) == 0;
                     float p = isX ? xP : yP;
                     //foreach (ModelPanelViewport v in _viewports)
                     //{
@@ -470,7 +481,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                     //}
                     //if (cont)
                     //    continue;
-                    t.Key.SetPercentageIndex((int) t.Value, p);
+                    t.Key.SetPercentageIndex((int)t.Value, p);
                 }
 
                 Invalidate();
@@ -559,7 +570,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
         protected override bool IsInputKey(Keys keyData)
         {
-            keyData &= (Keys) 0xFFFF;
+            keyData &= (Keys)0xFFFF;
             switch (keyData)
             {
                 case Keys.Up:
@@ -592,7 +603,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             }
             else if (Enabled && m.Msg == 0x100)
             {
-                if (CurrentViewport.ProcessKeys((Keys) m.WParam, ModifierKeys))
+                if (CurrentViewport.ProcessKeys((Keys)m.WParam, ModifierKeys))
                 {
                     return true;
                 }
@@ -607,7 +618,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
         internal override unsafe void OnInit(TKContext ctx)
         {
-            Vector3 v = (Vector3) BackColor;
+            Vector3 v = (Vector3)BackColor;
             GL.ClearColor(v._x, v._y, v._z, 0.0f);
             GL.ClearDepth(1.0);
 
@@ -720,14 +731,14 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             if (withTransparency)
             {
                 data = bmp.LockBits(new Rectangle(0, 0, region.Width, region.Height), ImageLockMode.WriteOnly,
-                    System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                    PixelFormat.Format32bppArgb);
                 GL.ReadPixels(region.X, region.Y, region.Width, region.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra,
                     PixelType.UnsignedByte, data.Scan0);
             }
             else
             {
                 data = bmp.LockBits(new Rectangle(0, 0, region.Width, region.Height), ImageLockMode.WriteOnly,
-                    System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                    PixelFormat.Format24bppRgb);
                 GL.ReadPixels(region.X, region.Y, region.Width, region.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgr,
                     PixelType.UnsignedByte, data.Scan0);
             }
@@ -1058,7 +1069,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                     break;
                 case ResourceType.MDL0:
                 case ResourceType.BMD:
-                    models.Add((IModel) node);
+                    models.Add((IModel)node);
                     break;
             }
         }

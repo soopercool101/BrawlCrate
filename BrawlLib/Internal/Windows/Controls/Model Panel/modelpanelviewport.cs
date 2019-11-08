@@ -1,15 +1,17 @@
-﻿using BrawlLib.Imaging;
+﻿using BrawlLib;
+using BrawlLib.Imaging;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.MDL0;
-using OpenTK.Graphics.OpenGL;
-using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Reflection;
 using System.Runtime.Serialization;
+using OpenTK.Graphics.OpenGL;
+using System;
 using System.Windows.Forms;
 
 namespace BrawlLib.Internal.Windows.Controls.Model_Panel
@@ -33,7 +35,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             return new ModelPanelViewportInfo
             {
                 _ambient = _ambient,
-                _backColor = (ARGBPixel) BackgroundColor,
+                _backColor = (ARGBPixel)BackgroundColor,
                 _bgImagePath = "",
                 _bgType = BackgroundImageType,
                 _diffuse = _diffuse,
@@ -58,9 +60,9 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                 _textEnabled = _textEnabled,
                 _lightEnabled = _lightEnabled,
 
-                _defaultRotate = (Vector4) _camera._defaultRotate,
-                _defaultScale = (Vector4) _camera._defaultScale,
-                _defaultTranslate = (Vector4) _camera._defaultTranslate,
+                _defaultRotate = (Vector4)_camera._defaultRotate,
+                _defaultScale = (Vector4)_camera._defaultScale,
+                _defaultTranslate = (Vector4)_camera._defaultTranslate,
                 _farZ = _camera._farZ,
                 _fovY = _camera._fovY,
                 _nearZ = _camera._nearZ,
@@ -98,7 +100,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
         public float _multiplier = 1.0f;
         public bool _shiftSelecting;
-        public System.Drawing.Point _selStart, _selEnd;
+        public Point _selStart, _selEnd;
 
         private readonly ScreenTextHandler _settingsText;
         private readonly ScreenTextHandler _noSettingsText;
@@ -131,19 +133,19 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ScreenTextHandler SettingsScreenText => _settingsText;
-        
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ScreenTextHandler NoSettingsScreenText => _noSettingsText;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public System.Drawing.Point SelectionStart
+        public Point SelectionStart
         {
             get => _selStart;
             set => _selStart = value;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public System.Drawing.Point SelectionEnd
+        public  Point SelectionEnd
         {
             get => _selEnd;
             set => _selEnd = value;
@@ -271,10 +273,10 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                 float elevation = 360.0f - _lightPosition._z * Maths._deg2radf;
 
                 float
-                    cosElev = (float) Math.Cos(elevation),
-                    sinElev = (float) Math.Sin(elevation),
-                    cosAzi = (float) Math.Cos(azimuth),
-                    sinAzi = (float) Math.Sin(azimuth);
+                    cosElev = (float)Math.Cos(elevation),
+                    sinElev = (float)Math.Sin(elevation),
+                    cosAzi = (float)Math.Cos(azimuth),
+                    sinAzi = (float)Math.Sin(azimuth);
 
                 _posLight = new Vector4(r * cosAzi * sinElev, r * cosElev, r * sinAzi * sinElev, _posLight._w);
                 _spotDirLight = new Vector4(-cosAzi * sinElev, -cosElev, -sinAzi * sinElev, _posLight._w);
@@ -517,7 +519,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         public void RenderBackground()
         {
             //Apply color
-            Vector3 v = (Vector3) BackgroundColor;
+            Vector3 v = (Vector3)BackgroundColor;
             GL.ClearColor(v._x, v._y, v._z, 0.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
@@ -541,7 +543,8 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                 Vector3 point = Camera.GetPoint().Round(3);
                 Vector3 rot = Camera._rotation.Round(3);
                 _settingsText[
-                    $"Position\nX: {point._x}\nY: {point._y}\nZ: {point._z}\n\nRotation\nX: {rot._x}\nY: {rot._y}\nZ: {rot._z}"] = new Vector3(5.0f, 5.0f, 0.5f);
+                        $"Position\nX: {point._x}\nY: {point._y}\nZ: {point._z}\n\nRotation\nX: {rot._x}\nY: {rot._y}\nZ: {rot._z}"]
+                    = new Vector3(5.0f, 5.0f, 0.5f);
             }
 
             //Render selection overlay and/or text overlays
@@ -560,7 +563,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                     {
                         GL.LoadIdentity();
                         Matrix p = Matrix.OrthographicMatrix(0, Width, 0, Height, -1, 1);
-                        GL.LoadMatrix((float*) &p);
+                        GL.LoadMatrix((float*)&p);
 
                         GL.MatrixMode(MatrixMode.Modelview);
                         GL.PushMatrix();
@@ -580,12 +583,12 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                             }
 
                             GL.Color4(Color.White);
-                            
+
                             if (_settingsText?.Count != 0 && _textEnabled)
                             {
                                 _settingsText?.Draw();
                             }
-                            
+
                             if (_noSettingsText?.Count != 0)
                             {
                                 _noSettingsText?.Draw();
@@ -640,7 +643,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             {
                 GL.LoadIdentity();
                 Matrix p = Matrix.OrthographicMatrix(0, Region.Width, 0, Region.Height, -1, 1);
-                GL.LoadMatrix((float*) &p);
+                GL.LoadMatrix((float*)&p);
 
                 GL.MatrixMode(MatrixMode.Modelview);
                 GL.PushMatrix();
@@ -676,8 +679,8 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                     }
 
                     float* points = stackalloc float[8];
-                    float tAspect = _bgImage.Width / (float) _bgImage.Height;
-                    float wAspect = Width / (float) Height;
+                    float tAspect = _bgImage.Width / (float)_bgImage.Height;
+                    float wAspect = Width / (float)Height;
 
                     switch (_bgType)
                     {
@@ -697,7 +700,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                                 points[5] = points[7] = Height;
 
                                 points[0] = points[6] =
-                                    Width * ((Width - (float) Height / _bgImage.Height * _bgImage.Width) / Width /
+                                    Width * ((Width - (float)Height / _bgImage.Height * _bgImage.Width) / Width /
                                              2.0f);
                                 points[2] = points[4] = Width - points[0];
                             }
@@ -707,7 +710,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                                 points[2] = points[4] = Width;
 
                                 points[1] = points[3] =
-                                    Height * ((Height - (float) Width / _bgImage.Width * _bgImage.Height) / Height /
+                                    Height * ((Height - (float)Width / _bgImage.Width * _bgImage.Height) / Height /
                                               2.0f);
                                 points[5] = points[7] = Height - points[1];
                             }
@@ -722,7 +725,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                                 points[2] = points[4] = Width;
 
                                 points[1] = points[3] =
-                                    Height * ((Height - (float) Width / _bgImage.Width * _bgImage.Height) / Height /
+                                    Height * ((Height - (float)Width / _bgImage.Width * _bgImage.Height) / Height /
                                               2.0f);
                                 points[5] = points[7] = Height - points[1];
                             }
@@ -732,7 +735,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                                 points[5] = points[7] = Height;
 
                                 points[0] = points[6] =
-                                    Width * ((Width - (float) Height / _bgImage.Height * _bgImage.Width) / Width /
+                                    Width * ((Width - (float)Height / _bgImage.Height * _bgImage.Width) / Width /
                                              2.0f);
                                 points[2] = points[4] = Width - points[0];
                             }
@@ -754,13 +757,13 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                     GL.End();
 
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS,
-                        (int) TextureWrapMode.Repeat);
+                        (int)TextureWrapMode.Repeat);
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT,
-                        (int) TextureWrapMode.Repeat);
+                        (int)TextureWrapMode.Repeat);
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
-                        (int) MatTextureMinFilter.Linear);
+                        (int)MatTextureMinFilter.Linear);
                     GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
-                        (int) MatTextureMagFilter.Linear);
+                        (int)MatTextureMagFilter.Linear);
 
                     GL.Disable(EnableCap.Texture2D);
                 }
@@ -782,57 +785,62 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
             fixed (Vector4* pos = &_posLight)
             {
-                GL.Light(LightName.Light0, LightParameter.Position, (float*) pos);
+                GL.Light(LightName.Light0, LightParameter.Position, (float*)pos);
             }
 
             fixed (Vector4* pos = &_spotDirLight)
             {
-                GL.Light(LightName.Light0, LightParameter.SpotDirection, (float*) pos);
+                GL.Light(LightName.Light0, LightParameter.SpotDirection, (float*)pos);
             }
 
             fixed (Vector4* pos = &_ambient)
             {
-                GL.Light(LightName.Light0, LightParameter.Ambient, (float*) pos);
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Ambient, (float*) pos);
+                GL.Light(LightName.Light0, LightParameter.Ambient, (float*)pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Ambient, (float*)pos);
             }
 
             fixed (Vector4* pos = &_diffuse)
             {
-                GL.Light(LightName.Light0, LightParameter.Diffuse, (float*) pos);
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Diffuse, (float*) pos);
+                GL.Light(LightName.Light0, LightParameter.Diffuse, (float*)pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Diffuse, (float*)pos);
             }
 
             fixed (Vector4* pos = &_specular)
             {
-                GL.Light(LightName.Light0, LightParameter.Specular, (float*) pos);
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Specular, (float*) pos);
+                GL.Light(LightName.Light0, LightParameter.Specular, (float*)pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Specular, (float*)pos);
             }
 
             fixed (Vector4* pos = &_emission)
             {
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Emission, (float*) pos);
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Emission, (float*)pos);
             }
 
-            GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (int) TextureEnvMode.Modulate);
+            GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (int)TextureEnvMode.Modulate);
         }
 
         #endregion
 
         #region Mouse/Keyboard Functions
 
+        private Point? lastHeldMouseLocat = null;
+
+        //What we are trying to do here is getting the actual screen location of this viewport
+        private Point? viewportScreenLocation = null;
+
         public void HandleLeftMouseDown(MouseEventArgs e)
         {
             if (_allowSelection && !_selecting)
             {
                 _selecting = true;
-                _selStart = new System.Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
+                _selStart = new Point(e.X - Region.X, WorldToLocalY(e.Y));
                 _selEnd = _selStart;
                 _shiftSelecting = Control.ModifierKeys == Keys.ShiftKey || Control.ModifierKeys == Keys.Shift;
             }
             else if (_selecting && _shiftSelecting)
             {
                 _selecting = false;
-                _selEnd = new System.Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
+                _selEnd = new Point(e.X - Region.X, WorldToLocalY(e.Y));
                 _shiftSelecting = false;
             }
         }
@@ -844,96 +852,157 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                   Control.ModifierKeys == Keys.Shift ||
                   _shiftSelecting))
             {
-                _selEnd = new System.Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
+                _selEnd = new Point(e.X - Region.X, WorldToLocalY(e.Y));
                 _selecting = false;
             }
         }
 
-        private System.Drawing.Point? lastCursorPos;
+        public void HandleOtherMouseUp(MouseEventArgs e)
+        {
+        }
+
+        public void HandleOtherMouseDown(MouseEventArgs e)
+        {
+            if (lastHeldMouseLocat != null)
+            {
+                MouseUnheld();
+            }
+        }
+
+        private void MouseUnheld()
+        {
+            lastHeldMouseLocat = null;
+            viewportScreenLocation = null;
+            Cursor.Clip = Rectangle.Empty;
+        }
 
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
             if (_selecting)
             {
-                _selEnd = new System.Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
+                _selEnd = new Point(e.X - Region.X, WorldToLocalY(e.Y));
             }
 
-            if (!_grabbing && !_scrolling && lastCursorPos != null)
+            bool grabbingOrScrolling = _grabbing || _scrolling;
+            bool notGrabbingAndScrolling = !_grabbing && !_scrolling;
+
+            if (grabbingOrScrolling && lastHeldMouseLocat == null)
             {
-                Cursor.Show();
-                lastCursorPos = null;
+                viewportScreenLocation = ctx._window.PointToScreen(Point.Empty);
+                lastHeldMouseLocat = e.Location;
+
+                Cursor.Clip = new Rectangle(viewportScreenLocation.Value,
+                    new Size(Region.Width, Region.Height));
             }
-            else if ((_grabbing || _scrolling) && lastCursorPos == null)
+            else if (notGrabbingAndScrolling && lastHeldMouseLocat != null)
             {
-                Cursor.Hide();
-                lastCursorPos = Cursor.Position;
+                MouseUnheld();
             }
 
-            int x = e.X - Region.X;
-            int y = e.Y - Region.Y;
-
-            if (ctx != null && (_grabbing || _scrolling))
+            if (grabbingOrScrolling)
             {
-                lock (ctx)
+                int borders = 1;
+                int mouseBorders = 2;
+
+                bool leftScrHit = e.Location.X <= borders;
+                bool rightScrHit = e.Location.X >= Region.Width - borders;
+                bool topScrHit = e.Location.Y <= borders;
+                bool bottomScrHit = e.Location.Y >= Region.Height - borders;
+
+                Point mouseSpeed = new Point(e.Location.X - lastHeldMouseLocat.Value.X,
+                    e.Location.Y - lastHeldMouseLocat.Value.Y);
+
+                bool movingLeft = mouseSpeed.X < 0;
+                bool movingRight = mouseSpeed.X > 0;
+                bool movingTop = mouseSpeed.Y < 0;
+                bool movingBottom = mouseSpeed.Y > 0;
+
+                if (leftScrHit || rightScrHit || topScrHit || bottomScrHit)
                 {
-                    int xDiff = lastCursorPos != null
-                        ? Cursor.Position.X - lastCursorPos.Value.X
-                        : x - _lastX;
-                    int yDiff = lastCursorPos != null
-                        ? lastCursorPos.Value.Y - Cursor.Position.Y
-                        : _lastY - y;
+                    int px = e.Location.X;
+                    int py = e.Location.Y;
 
-                    Keys mod = Control.ModifierKeys;
-                    bool ctrl = (mod & Keys.Control) != 0;
-                    bool shift = (mod & Keys.Shift) != 0;
-                    bool alt = (mod & Keys.Alt) != 0;
-
-                    if (ViewType != ViewportProjection.Perspective && !ctrl)
+                    //Now we know that the left side of the viewport is going to be hit. So we want to send it to the right side of it
+                    if (leftScrHit && movingLeft)
                     {
-                        xDiff *= 20;
-                        yDiff *= 20;
+                        px = Region.Width - mouseBorders;
+                        lastHeldMouseLocat = new Point(Region.Width, lastHeldMouseLocat.Value.Y);
+                    }
+                    //If it wasn't hit, then we check for the right side of the screen's hit. We want to send it to the left
+                    else if (rightScrHit && movingRight)
+                    {
+                        px = mouseBorders;
+                        lastHeldMouseLocat = new Point(0, lastHeldMouseLocat.Value.Y);
                     }
 
-                    if (shift)
+                    //Same procedure as previous, just vertical
+                    if (topScrHit && movingTop)
                     {
-                        xDiff *= 16;
-                        yDiff *= 16;
+                        py = Region.Height - mouseBorders;
+                        lastHeldMouseLocat = new Point(lastHeldMouseLocat.Value.X, Region.Height);
+                    }
+                    else if (bottomScrHit && movingBottom)
+                    {
+                        py = mouseBorders;
+                        lastHeldMouseLocat = new Point(lastHeldMouseLocat.Value.X, 0);
                     }
 
-                    if (_scrolling)
+                    if (viewportScreenLocation != null)
                     {
-                        Translate(0, 0, -yDiff * 0.01f);
+                        Cursor.Position = new Point(px + viewportScreenLocation.Value.X,
+                            py + viewportScreenLocation.Value.Y);
+                        return;
                     }
-                    else if (ctrl)
+                }
+
+                if (ctx != null)
+                {
+                    lock (ctx)
                     {
-                        if (alt)
+                        int xDiff = e.X - lastHeldMouseLocat.Value.X;
+                        int yDiff = lastHeldMouseLocat.Value.Y - e.Y;
+
+                        Keys mod = Control.ModifierKeys;
+                        bool ctrl = (mod & Keys.Control) != 0;
+                        bool shift = (mod & Keys.Shift) != 0;
+                        bool alt = (mod & Keys.Alt) != 0;
+
+                        if (ViewType != ViewportProjection.Perspective && !ctrl)
                         {
-                            Rotate(0, 0, -yDiff * RotationScale);
+                            xDiff *= 20;
+                            yDiff *= 20;
+                        }
+
+                        if (shift)
+                        {
+                            xDiff *= 16;
+                            yDiff *= 16;
+                        }
+
+                        if (_scrolling)
+                        {
+                            Translate(0, 0, -yDiff * 0.01f);
+                        }
+                        else if (ctrl)
+                        {
+                            if (alt)
+                            {
+                                Rotate(0, 0, -yDiff * RotationScale);
+                            }
+                            else
+                            {
+                                Pivot(yDiff * RotationScale, -xDiff * RotationScale);
+                            }
                         }
                         else
                         {
-                            Pivot(yDiff * RotationScale, -xDiff * RotationScale);
+                            Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
                         }
                     }
-                    else
-                    {
-                        Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
-                    }
                 }
 
-                if (_grabbing || _scrolling)
-                {
-                    if (lastCursorPos == null)
-                    {
-                        lastCursorPos = Cursor.Position;
-                    }
-
-                    Cursor.Position = (System.Drawing.Point) lastCursorPos;
-                }
+                lastHeldMouseLocat = e.Location;
             }
-
-            _lastX = x;
-            _lastY = y;
 
             if (_selecting)
             {
@@ -969,107 +1038,107 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
                 case Keys.NumPad8:
                 case Keys.Up:
-                {
-                    if (alt)
                     {
-                        break;
-                    }
+                        if (alt)
+                        {
+                            break;
+                        }
 
-                    if (ctrl)
-                    {
-                        Pivot(-RotationScale * (shift ? 32 : 4), 0.0f);
-                    }
-                    else
-                    {
-                        Translate(0.0f, TranslationScale * (shift ? 128 : 8), 0.0f);
-                    }
+                        if (ctrl)
+                        {
+                            Pivot(-RotationScale * (shift ? 32 : 4), 0.0f);
+                        }
+                        else
+                        {
+                            Translate(0.0f, TranslationScale * (shift ? 128 : 8), 0.0f);
+                        }
 
-                    return true;
-                }
+                        return true;
+                    }
 
                 case Keys.NumPad2:
                 case Keys.Down:
-                {
-                    if (alt)
                     {
-                        break;
-                    }
+                        if (alt)
+                        {
+                            break;
+                        }
 
-                    if (ctrl)
-                    {
-                        Pivot(RotationScale * (shift ? 32 : 4), 0.0f);
-                    }
-                    else
-                    {
-                        Translate(0.0f, -TranslationScale * (shift ? 128 : 8), 0.0f);
-                    }
+                        if (ctrl)
+                        {
+                            Pivot(RotationScale * (shift ? 32 : 4), 0.0f);
+                        }
+                        else
+                        {
+                            Translate(0.0f, -TranslationScale * (shift ? 128 : 8), 0.0f);
+                        }
 
-                    return true;
-                }
+                        return true;
+                    }
 
                 case Keys.NumPad6:
                 case Keys.Right:
-                {
-                    if (alt)
                     {
-                        break;
-                    }
+                        if (alt)
+                        {
+                            break;
+                        }
 
-                    if (ctrl)
-                    {
-                        Pivot(0.0f, RotationScale * (shift ? 32 : 4));
-                    }
-                    else
-                    {
-                        Translate(TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
-                    }
+                        if (ctrl)
+                        {
+                            Pivot(0.0f, RotationScale * (shift ? 32 : 4));
+                        }
+                        else
+                        {
+                            Translate(TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
+                        }
 
-                    return true;
-                }
+                        return true;
+                    }
 
                 case Keys.NumPad4:
                 case Keys.Left:
-                {
-                    if (alt)
                     {
-                        break;
-                    }
+                        if (alt)
+                        {
+                            break;
+                        }
 
-                    if (ctrl)
-                    {
-                        Pivot(0.0f, -RotationScale * (shift ? 32 : 4));
-                    }
-                    else
-                    {
-                        Translate(-TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
-                    }
+                        if (ctrl)
+                        {
+                            Pivot(0.0f, -RotationScale * (shift ? 32 : 4));
+                        }
+                        else
+                        {
+                            Translate(-TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
+                        }
 
-                    return true;
-                }
+                        return true;
+                    }
 
                 case Keys.Add:
                 case Keys.Oemplus:
-                {
-                    if (alt)
                     {
-                        break;
-                    }
+                        if (alt)
+                        {
+                            break;
+                        }
 
-                    Zoom(-ZoomScale * (shift ? 32 : 2));
-                    return true;
-                }
+                        Zoom(-ZoomScale * (shift ? 32 : 2));
+                        return true;
+                    }
 
                 case Keys.Subtract:
                 case Keys.OemMinus:
-                {
-                    if (alt)
                     {
-                        break;
-                    }
+                        if (alt)
+                        {
+                            break;
+                        }
 
-                    Zoom(ZoomScale * (shift ? 32 : 2));
-                    return true;
-                }
+                        Zoom(ZoomScale * (shift ? 32 : 2));
+                        return true;
+                    }
             }
 
             return false;
@@ -1375,8 +1444,8 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         public ModelPanelViewport AsViewport()
         {
             ModelPanelViewport v = ModelPanelViewport.DefaultPerspective;
-            v.Camera = new GLCamera(1, 1, (Vector3) _defaultTranslate, (Vector3) _defaultRotate,
-                (Vector3) _defaultScale)
+            v.Camera = new GLCamera(1, 1, (Vector3)_defaultTranslate, (Vector3)_defaultRotate,
+                (Vector3)_defaultScale)
             {
                 _farZ = _farZ,
                 _fovY = _fovY,
@@ -1389,7 +1458,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             v.SetPercentages(_percentages);
             v.LightPosition = _lightPosition;
             v.Enabled = _enabled;
-            v.BackgroundColor = (Color) _backColor;
+            v.BackgroundColor = (Color)_backColor;
             v.BackgroundImageType = _bgType;
             v._allowSelection = _allowSelection;
             v._showCamCoords = _showCamCoords;

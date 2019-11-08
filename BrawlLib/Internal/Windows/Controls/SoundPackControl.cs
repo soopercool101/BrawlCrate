@@ -250,7 +250,6 @@ namespace BrawlLib.Internal.Windows.Controls
             audioPlaybackPanel1.TabIndex = 2;
             audioPlaybackPanel1.TargetStreams = null;
             audioPlaybackPanel1.Visible = false;
-            audioPlaybackPanel1.Volume = null;
             // 
             // editToolStripMenuItem
             // 
