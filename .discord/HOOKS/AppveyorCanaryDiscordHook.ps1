@@ -53,6 +53,9 @@ if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
   $COMMIT_SUBJECT="PR #$env:APPVEYOR_PULL_REQUEST_NUMBER - $env:APPVEYOR_PULL_REQUEST_TITLE"
   $URL="https://github.com/$env:APPVEYOR_REPO_NAME/pull/$env:APPVEYOR_PULL_REQUEST_NUMBER"
 }
+elseif ($env:APPVEYOR_REPO_BRANCH -notmatch '^master$|^.*[Tt][Ee][Ss][Tt]$') {
+  $URL="https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/job/$env:APPVEYOR_JOB_ID/artifacts"
+}
 else {
   $URL="https://github.com/$env:APPVEYOR_REPO_NAME/releases/tag/Canary-$env:APPVEYOR_REPO_BRANCH"
 }
