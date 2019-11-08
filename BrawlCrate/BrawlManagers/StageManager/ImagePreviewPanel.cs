@@ -1,12 +1,16 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs;
+using BrawlLib;
+using BrawlLib.Internal;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public class ImagePreviewPanel : Panel
     {

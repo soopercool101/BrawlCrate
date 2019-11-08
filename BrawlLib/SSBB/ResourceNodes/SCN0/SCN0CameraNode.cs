@@ -1,12 +1,12 @@
-﻿using BrawlLib.OpenGL;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Graphics;
-using System;
 using System.ComponentModel;
-using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.SCN0
 {
     public unsafe class SCN0CameraNode : SCN0EntryNode, IKeyframeSource
     {

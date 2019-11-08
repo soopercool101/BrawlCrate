@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public delegate TableEntryNode SakuraiSectionParser(string name);
 
@@ -92,7 +94,7 @@ namespace BrawlLib.SSBBTypes
         }
     }
 
-    public unsafe class RawDataNode : TableEntryNode
+    public unsafe class RawDataNode2 : TableEntryNode
     {
         internal byte[] _data;
 

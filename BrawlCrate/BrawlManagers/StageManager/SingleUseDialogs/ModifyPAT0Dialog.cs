@@ -1,12 +1,13 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.BrawlManagerLib;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
 using BrawlLib.Wii.Textures;
-using BrawlManagerLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs
 {
     public partial class ModifyPAT0Dialog : Form
     {

@@ -1,8 +1,9 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Modules
 {
     [TypeConverter(typeof(ExpandableObjectCustomConverter))]
     public unsafe class RelCommand

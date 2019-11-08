@@ -1,4 +1,6 @@
-﻿﻿namespace System.Windows.Forms
+﻿using System.Windows.Forms;﻿
+
+namespace BrawlCrate.UI
 {
     partial class TransformEditor
     {

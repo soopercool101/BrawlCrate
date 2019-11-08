@@ -1,7 +1,8 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.Types.Subspace;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Subspace
 {
     public unsafe class BLOCNode : ARCEntryNode
     {

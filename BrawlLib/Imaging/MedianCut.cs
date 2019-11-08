@@ -1,4 +1,7 @@
-﻿using BrawlLib.Wii.Textures;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Drawing.Imaging;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.Wii.Textures;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;

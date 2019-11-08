@@ -1,10 +1,11 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.MDL0
 {
     public unsafe class MDL0ShaderNode : MDL0EntryNode
     {

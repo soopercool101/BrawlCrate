@@ -1,9 +1,16 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Subspace;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Animation;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Hazards;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Navigation;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Objects;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Sound;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Subspace
 {
     [NodeWrapper(ResourceType.BLOC)]
     public class BLOCWrapper : GenericWrapper
@@ -122,7 +129,7 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => BrawlLib.FileFilters.BLOC;
+        public override string ExportFilter => FileFilters.BLOC;
 
         public BLOCWrapper()
         {

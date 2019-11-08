@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Net;
 using System.Threading;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace Updater.UI
 {
     public partial class DLProgressWindow : Form
     {

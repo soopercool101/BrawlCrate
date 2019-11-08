@@ -1,10 +1,11 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Modules
 {
     public unsafe class ModuleSectionNode : ModuleDataNode
     {

@@ -1,4 +1,5 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -72,7 +73,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private CompactStringTable _stringTable;
+        private Moveset.CompactStringTable _stringTable;
 
         public bool _writeInfo = true;
 
@@ -86,7 +87,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_writeInfo)
             {
-                _stringTable = new CompactStringTable();
+                _stringTable = new Moveset.CompactStringTable();
                 _stringTable.Add(_name);
                 if (!string.IsNullOrEmpty(_gameName))
                 {

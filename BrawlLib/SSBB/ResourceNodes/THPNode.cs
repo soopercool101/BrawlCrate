@@ -1,8 +1,9 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Audio;
 using System;
-using System.Audio;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;

@@ -1,5 +1,10 @@
 ﻿using BrawlCrate.NodeWrappers;
-using BrawlLib.IO;
+using BrawlCrate.UI;
+using BrawlCrate.UI.Model_Previewer.ModelEditControl;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -7,9 +12,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using BrawlLib.Modeling;
+using BrawlLib.Modeling.Collada;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 using System.Collections.Specialized;
-using System.Configuration;
+
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
 
 namespace BrawlCrate
 {
@@ -48,7 +57,7 @@ Full changelog can be viewed from the help menu.";
         private static readonly OpenFileDialog MultiFileOpenDlg;
         private static readonly SaveFileDialog SaveDlg;
 #if !MONO
-        private static readonly Ookii.Dialogs.VistaFolderBrowserDialog FolderDlg;
+        private static readonly VistaFolderBrowserDialog FolderDlg;
 #else
         private static readonly FolderBrowserDialog FolderDlg;
 #endif
@@ -155,7 +164,7 @@ Full changelog can be viewed from the help menu.";
             MultiFileOpenDlg = new OpenFileDialog {Title = "Open Files", Multiselect = true};
             SaveDlg = new SaveFileDialog();
 #if !MONO
-            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog {UseDescriptionForTitle = true};
+            FolderDlg = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderDlg = new FolderBrowserDialog();
 #endif
@@ -378,16 +387,16 @@ Full changelog can be viewed from the help menu.";
             {
                 if (a.Equals("/audio:directsound", StringComparison.OrdinalIgnoreCase))
                 {
-                    System.Audio.AudioProvider.AvailableTypes =
-                        System.Audio.AudioProvider.AudioProviderType.DirectSound;
+                    AudioProvider.AvailableTypes =
+                        AudioProvider.AudioProviderType.DirectSound;
                 }
                 else if (a.Equals("/audio:openal", StringComparison.OrdinalIgnoreCase))
                 {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.OpenAL;
+                    AudioProvider.AvailableTypes = AudioProvider.AudioProviderType.OpenAL;
                 }
                 else if (a.Equals("/audio:none", StringComparison.OrdinalIgnoreCase))
                 {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.None;
+                    AudioProvider.AvailableTypes = AudioProvider.AudioProviderType.None;
                 }
                 else
                 {

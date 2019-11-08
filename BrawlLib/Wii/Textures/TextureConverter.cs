@@ -1,6 +1,9 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Drawing;
+using BrawlLib.Internal.Drawing.Imaging;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;

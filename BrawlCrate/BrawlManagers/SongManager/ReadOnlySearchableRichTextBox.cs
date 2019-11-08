@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BrawlCrate.SongManager
+namespace BrawlCrate.BrawlManagers.SongManager
 {
     public class ReadOnlySearchableRichTextBox : RichTextBox
     {

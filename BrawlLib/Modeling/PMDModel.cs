@@ -1,5 +1,7 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
 using OpenTK.Graphics.OpenGL;
@@ -577,12 +579,12 @@ namespace BrawlLib.Modeling
 
         public static unsafe void PMD2MDL0(MDL0Node model)
         {
-            Collada._importOptions = Properties.Settings.Default.ColladaImportOptions;
-            Collada._importOptions._forceCCW = true;
-            Collada._importOptions._fltVerts = true;
-            Collada._importOptions._fltNrms = true;
-            Collada._importOptions._fltUVs = true;
-            Collada.CurrentModel = model;
+            Collada.Collada._importOptions = Properties.Settings.Default.ColladaImportOptions;
+            Collada.Collada._importOptions._forceCCW = true;
+            Collada.Collada._importOptions._fltVerts = true;
+            Collada.Collada._importOptions._fltNrms = true;
+            Collada.Collada._importOptions._fltUVs = true;
+            Collada.Collada.CurrentModel = model;
 
             model.BeginImport();
             model._version = 9;
@@ -946,7 +948,7 @@ namespace BrawlLib.Modeling
             //        model._matList.RemoveAt(i--);
 
             model.FinishImport();
-            Collada.CurrentModel = null;
+            Collada.Collada.CurrentModel = null;
         }
 
         public static void AssignParent(MDL0BoneNode pBone, ModelBone child, MDL0BoneNode cBone, ModelBone parent)

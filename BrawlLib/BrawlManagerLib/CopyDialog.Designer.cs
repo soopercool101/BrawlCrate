@@ -1,4 +1,4 @@
-﻿namespace BrawlManagerLib {
+﻿namespace BrawlLib.BrawlManagerLib {
     partial class CopyDialog {
         /// <summary>
         /// Required designer variable.

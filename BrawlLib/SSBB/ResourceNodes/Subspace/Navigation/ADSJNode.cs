@@ -1,8 +1,10 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Subspace.Navigation;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Subspace.Navigation
 {
     public unsafe class ADSJNode : ARCEntryNode
     {

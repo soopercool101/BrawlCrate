@@ -1,9 +1,22 @@
-﻿using BrawlLib.SSBB;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
+using BrawlLib.SSBB.ResourceNodes.Graphics.REFF;
+using BrawlLib.SSBB.ResourceNodes.Havok_Physics;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.ResourceNodes.Modules;
+using BrawlLib.SSBB.ResourceNodes.RSAR;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RBNK;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RSEQ;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWSD;
+using BrawlLib.SSBB.ResourceNodes.SCN0;
+using BrawlLib.SSBB.ResourceNodes.Stage_Tables;
+using BrawlLib.SSBB.ResourceNodes.Subspace;
 using System;
 using System.Collections.Generic;
 
-namespace BrawlLib
+namespace BrawlLib.SSBB
 {
     public static class FileFilters
     {

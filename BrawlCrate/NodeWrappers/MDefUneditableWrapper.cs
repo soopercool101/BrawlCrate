@@ -1,9 +1,8 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
 using System.ComponentModel;
-using BrawlCrate.NodeWrappers;
+using System.Windows.Forms;
 
-namespace BrawlBox.NodeWrappers
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.NoEdit)]
     internal class MDefUneditableWrapper : GenericWrapper

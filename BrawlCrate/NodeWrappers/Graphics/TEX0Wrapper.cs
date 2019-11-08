@@ -1,7 +1,13 @@
 ﻿using BrawlCrate.ExternalInterfacing;
+using BrawlCrate.UI;
 using BrawlLib;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
+using BrawlLib.SSBB.Types.Animations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +16,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Graphics
 {
     [NodeWrapper(ResourceType.TEX0)]
     [NodeWrapper(ResourceType.SharedTEX0)]

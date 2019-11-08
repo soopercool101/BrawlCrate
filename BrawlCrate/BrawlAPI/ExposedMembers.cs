@@ -1,4 +1,6 @@
 ﻿using BrawlCrate.NodeWrappers;
+using BrawlCrate.UI;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -6,9 +8,13 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
+
 // ReSharper disable UnusedMember.Global
 
-namespace BrawlCrate.API
+namespace BrawlCrate.BrawlAPI
 {
     public static partial class BrawlAPI
     {
@@ -482,8 +488,7 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog()
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog
-                {UseDescriptionForTitle = true})
+            using (VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
@@ -507,8 +512,7 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog(string description)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog
-                {UseDescriptionForTitle = true})
+            using (VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif

@@ -1,6 +1,9 @@
 ﻿using BrawlLib;
-using BrawlLib.IO;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Havok_Physics;
 using System;
 using System.ComponentModel;
 using System.IO;

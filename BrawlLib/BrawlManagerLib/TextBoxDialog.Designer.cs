@@ -1,4 +1,4 @@
-﻿namespace BrawlManagerLib {
+﻿namespace BrawlLib.BrawlManagerLib {
     partial class TextBoxDialog {
         /// <summary>
         /// Required designer variable.

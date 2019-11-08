@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;

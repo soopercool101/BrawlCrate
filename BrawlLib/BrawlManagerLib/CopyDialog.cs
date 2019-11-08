@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     public partial class CopyDialog : Form
     {

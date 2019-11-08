@@ -1,6 +1,9 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Modeling;
+using BrawlLib.Modeling.Collada;
 using BrawlLib.OpenGL;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
 using OpenTK.Graphics.OpenGL;
@@ -11,7 +14,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.MDL0
 {
     public unsafe partial class MDL0ObjectNode : MDL0EntryNode, IMatrixNodeUser, IObject
     {

@@ -1,4 +1,4 @@
-﻿namespace System.Windows.Forms
+﻿namespace Updater.UI
 {
     partial class CanaryChangelogViewer
     {

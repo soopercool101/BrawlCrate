@@ -1,4 +1,5 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
 using System;
 using System.Collections.Generic;
 using System.IO;

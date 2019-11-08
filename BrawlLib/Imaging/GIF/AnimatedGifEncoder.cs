@@ -1,3 +1,4 @@
+using BrawlLib.Internal;
 using System;
 using System.Drawing;
 using System.IO;
@@ -45,7 +46,7 @@ using System.IO;
 
 #endregion
 
-namespace Gif.Components
+namespace BrawlLib.Imaging.GIF
 {
     public class AnimatedGifEncoder
     {

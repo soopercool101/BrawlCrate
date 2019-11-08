@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BrawlLib.BrawlManagerLib;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Drawing;
 using System.IO;
-using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
-using BrawlManagerLib;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 {
     public class CSSPortraitViewer : PortraitViewer
     {

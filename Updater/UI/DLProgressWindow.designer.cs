@@ -1,4 +1,6 @@
-﻿namespace System.Windows.Forms
+﻿using System.Windows.Forms;
+
+namespace Updater.UI
 {
     partial class DLProgressWindow
     {
@@ -30,7 +32,7 @@
         {
             this.btnCancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.DLProgressBar();
+            this.progressBar1 = new DLProgressBar();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -93,7 +95,7 @@
         #endregion
 
         public DLProgressBar progressBar1;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label1;
+        private Button btnCancel;
+        private Label label1;
     }
 }

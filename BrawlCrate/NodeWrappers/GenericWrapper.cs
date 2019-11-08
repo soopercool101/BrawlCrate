@@ -1,10 +1,14 @@
-﻿using System;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -209,7 +213,7 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public virtual string ExportFilter => BrawlLib.FileFilters.Raw;
+        public virtual string ExportFilter => FileFilters.Raw;
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
 

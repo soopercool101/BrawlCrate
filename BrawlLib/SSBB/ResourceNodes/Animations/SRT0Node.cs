@@ -1,12 +1,17 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using BrawlLib.Wii.Animations;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Animations
 {
     public unsafe class SRT0Node : NW4RAnimationNode
     {

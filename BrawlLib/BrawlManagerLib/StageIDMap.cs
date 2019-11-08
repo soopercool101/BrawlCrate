@@ -1,10 +1,11 @@
-﻿using BrawlLib.SSBB;
+﻿using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.SSBB;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     public class StageIDMap
     {

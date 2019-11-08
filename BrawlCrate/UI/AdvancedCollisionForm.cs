@@ -1,7 +1,8 @@
-﻿using BrawlCrate;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI
 {
     public class AdvancedCollisionForm : Form
     {
@@ -16,16 +17,16 @@ namespace System.Windows.Forms
             // 
             // collisionEditor1
             // 
-            collisionEditor1.BackColor = Drawing.Color.Lavender;
+            collisionEditor1.BackColor = System.Drawing.Color.Lavender;
             collisionEditor1.Dock = DockStyle.Fill;
-            collisionEditor1.Location = new Drawing.Point(0, 0);
+            collisionEditor1.Location = new System.Drawing.Point(0, 0);
             collisionEditor1.Name = "collisionEditor1";
-            collisionEditor1.Size = new Drawing.Size(800, 600);
+            collisionEditor1.Size = new System.Drawing.Size(800, 600);
             collisionEditor1.TabIndex = 0;
             // 
             // CollisionForm
             // 
-            ClientSize = new Drawing.Size(800, 600);
+            ClientSize = new System.Drawing.Size(800, 600);
             Controls.Add(collisionEditor1);
             Icon = BrawlLib.Properties.Resources.Icon;
             MinimizeBox = false;

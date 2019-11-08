@@ -1,4 +1,4 @@
-﻿namespace BrawlCrate.StageManager.SingleUseDialogs {
+﻿namespace BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs {
     partial class BatchAddPAT0Dialog {
         /// <summary>
         /// Required designer variable.

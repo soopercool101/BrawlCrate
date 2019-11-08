@@ -1,8 +1,9 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Hazards;
 using System;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Subspace.Hazards
 {
     public unsafe class GEG1Node : ResourceNode
     {

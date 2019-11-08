@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BrawlLib.Internal.Drawing;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     public static class BitmapUtilities
     {

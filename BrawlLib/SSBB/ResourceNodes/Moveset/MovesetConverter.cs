@@ -1,8 +1,12 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Moveset.Actions;
+using BrawlLib.SSBB.ResourceNodes.Moveset.Common_Nodes;
+using BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes;
+using BrawlLib.SSBB.Types;
+using System;
 using System.Collections.Generic;
-using BrawlLib.SSBBTypes;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Moveset
 {
     public unsafe class MovesetConverter
     {

@@ -1,8 +1,9 @@
-﻿using BrawlLib.Wii.Audio;
+﻿using BrawlLib.Internal;
+using BrawlLib.Wii.Audio;
 using System;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.RSAR
 {
     public unsafe class RSAREntryNode : ResourceNode
     {

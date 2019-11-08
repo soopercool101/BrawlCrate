@@ -1,12 +1,17 @@
 ﻿using BrawlLib;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
 using BrawlLib.Wii.Textures;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 {
     public class PortraitViewerTextureData
     {
@@ -217,7 +222,7 @@ namespace BrawlCrate.CostumeManager
                     {
                         Bitmap bitmap = new Bitmap(filename);
                         UnsafeBuffer buffer = TextureConverter.CMPR.GeneratePreview(bitmap);
-                        BrawlLib.IO.FileMap textureData =
+                        FileMap textureData =
                             TextureConverter.CMPR.EncodeTEX0TextureCached(bitmap, Texture.LevelOfDetail, buffer);
                         Texture.ReplaceRaw(textureData);
                     }

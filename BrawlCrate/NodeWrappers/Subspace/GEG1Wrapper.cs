@@ -1,10 +1,12 @@
 ﻿using BrawlLib;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Hazards;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Subspace
 {
     [NodeWrapper(ResourceType.GEG1)]
     internal class GEG1Wrapper : GenericWrapper

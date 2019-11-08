@@ -1,12 +1,16 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlCrate.UI.Model_Previewer.ModelEditControl;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
+using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlCrate
+namespace BrawlCrate.UI
 {
     internal class ModelForm : Form
     {

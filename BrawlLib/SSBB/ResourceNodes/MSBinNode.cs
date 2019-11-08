@@ -1,4 +1,6 @@
-﻿using BrawlLib.Wii;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.Wii;
 using System;
 using System.Collections.Generic;
 using System.IO;

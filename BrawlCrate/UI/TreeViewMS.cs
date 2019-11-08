@@ -1,10 +1,10 @@
-﻿using System;
+﻿using BrawlCrate.NodeWrappers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using BrawlCrate.NodeWrappers;
 
-namespace BrawlCrate
+namespace BrawlCrate.UI
 {
     /// <summary>
     /// http://www.arstdesign.com/articles/treeviewms.html

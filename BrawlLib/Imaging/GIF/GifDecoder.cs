@@ -41,13 +41,14 @@
 
 #endregion
 
+using BrawlLib.Internal.Windows.Forms;
 using System;
 using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Gif.Components
+namespace BrawlLib.Imaging.GIF
 {
     public class GifDecoder
     {

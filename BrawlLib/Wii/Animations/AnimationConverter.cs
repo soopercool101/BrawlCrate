@@ -1,5 +1,9 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.Types.Animations;
+using BrawlLib.Wii.Models;
 using System;
 
 namespace BrawlLib.Wii.Animations

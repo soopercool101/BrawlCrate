@@ -1,4 +1,6 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Drawing.Imaging;
+using BrawlLib.Internal.IO;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;

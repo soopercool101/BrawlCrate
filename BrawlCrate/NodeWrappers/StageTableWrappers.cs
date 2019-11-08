@@ -1,8 +1,12 @@
-﻿using System;
+﻿using BrawlCrate.UI;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using BrawlLib;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Stage_Tables;
 using System.Collections.Generic;
 
 namespace BrawlCrate.NodeWrappers

@@ -1,4 +1,6 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.CustomLists;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
@@ -361,8 +363,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    Name = BrawlCrate.FighterNameGenerators.FromID(_header._fighterID,
-                        BrawlCrate.FighterNameGenerators.slotIDIndex, "-S");
+                    Name = FighterNameGenerators.FromID(_header._fighterID,
+                        FighterNameGenerators.slotIDIndex, "-S");
                 }
 
                 SignalPropertyChange();
@@ -458,8 +460,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = BrawlCrate.FighterNameGenerators.FromID(_header._fighterID,
-                    BrawlCrate.FighterNameGenerators.slotIDIndex, "-S");
+                _name = FighterNameGenerators.FromID(_header._fighterID,
+                    FighterNameGenerators.slotIDIndex, "-S");
             }
 
             if (_header._fighterID == 0xFF)

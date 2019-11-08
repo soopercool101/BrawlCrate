@@ -1,13 +1,20 @@
-﻿using BrawlLib;
+﻿using BrawlCrate.UI;
+using BrawlLib;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.Havok_Physics;
+using BrawlLib.SSBB.ResourceNodes.Stage_Tables;
+using BrawlLib.SSBB.ResourceNodes.Subspace;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Archives
 {
     [NodeWrapper(ResourceType.ARC)]
     public class ARCWrapper : GenericWrapper

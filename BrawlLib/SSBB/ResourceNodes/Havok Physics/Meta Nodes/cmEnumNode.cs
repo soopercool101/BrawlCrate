@@ -1,10 +1,11 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types;
+using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes
 {
     public unsafe class cmEnumNode : ClassMemberInstanceNode
     {

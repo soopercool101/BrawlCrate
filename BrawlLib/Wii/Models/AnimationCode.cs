@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BrawlLib.Internal;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.Wii.Animations
+namespace BrawlLib.Wii.Models
 {
     //I = indexed/interpolated, L = linear
     public enum AnimDataFormat : byte

@@ -1,10 +1,11 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal.Drawing;
+using BrawlLib.Internal.IO;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
 using BrawlLib.Wii.Textures;
-using System;
 using System.Drawing;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public static class TEX0Extension
     {

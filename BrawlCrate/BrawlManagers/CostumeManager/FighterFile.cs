@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace BrawlCrate.CostumeManager
+namespace BrawlCrate.BrawlManagers.CostumeManager
 {
     public class FighterFile
     {

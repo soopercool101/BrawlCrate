@@ -1,8 +1,10 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.Types;
+using System;
 using System.Linq;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI
 {
     public unsafe class AdvancedCollisionEditor : CollisionEditor
     {

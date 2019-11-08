@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public class NameCreatorSettings
     {

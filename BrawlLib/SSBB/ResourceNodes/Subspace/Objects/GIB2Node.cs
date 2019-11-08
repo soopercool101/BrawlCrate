@@ -1,8 +1,8 @@
-using BrawlLib.SSBBTypes;
-using System;
+using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Objects;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 {
     public unsafe class GIB2Node : ResourceNode
     {

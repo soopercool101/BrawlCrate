@@ -1,11 +1,13 @@
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.Types.Audio;
 using BrawlLib.Wii.Audio;
 using System;
-using System.Audio;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWAR
 {
     public unsafe class RSARFileAudioNode : RSARFileEntryNode, IAudioSource, IDisposable
     {

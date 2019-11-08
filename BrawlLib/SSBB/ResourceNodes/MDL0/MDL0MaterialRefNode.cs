@@ -1,15 +1,18 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
+using BrawlLib.SSBB.ResourceNodes.SCN0;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.MDL0
 {
     public unsafe class MDL0MaterialRefNode : MDL0EntryNode
     {

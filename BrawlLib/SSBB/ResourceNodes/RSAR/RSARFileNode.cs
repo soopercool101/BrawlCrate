@@ -1,11 +1,13 @@
-using BrawlLib.IO;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_References;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.RSAR
 {
     public unsafe class RSARFileNode : NW4RNode
     {

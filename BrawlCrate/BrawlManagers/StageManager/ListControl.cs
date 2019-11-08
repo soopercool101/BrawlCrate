@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public partial class ListControl : UserControl
     {

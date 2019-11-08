@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BrawlCrate.SongManager
+namespace BrawlCrate.BrawlManagers.SongManager
 {
     public partial class CustomSongVolumeStatusForm : Form
     {

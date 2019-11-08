@@ -1,9 +1,12 @@
-﻿using BrawlLib.SSBB;
-using BrawlManagerLib;
+﻿using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.GCT.ReadOnly;
+using BrawlLib.BrawlManagerLib.GCT.ReadWrite;
+using BrawlLib.BrawlManagerLib.Songs;
+using BrawlLib.SSBB;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public static class SongsByStageID
     {

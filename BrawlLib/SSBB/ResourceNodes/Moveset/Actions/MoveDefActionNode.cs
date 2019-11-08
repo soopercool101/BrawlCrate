@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
 using System.ComponentModel;
-using BrawlLib.SSBBTypes;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Moveset.Actions
 {
     public class MoveDefSubActionGroupNode : MoveDefEntryNode
     {
