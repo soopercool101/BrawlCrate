@@ -107,7 +107,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
                    Program.AssemblyTitleShort.Substring(
                        Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
 
-            // Later commands to change the titlebar assume there is a hypen in the title somewhere
+            // Later commands to change the titlebar assume there is a hyphen in the title somewhere
             Text += " -";
 
             loadNames = loadNamesFromInfopacToolStripMenuItem.Checked;
@@ -169,23 +169,24 @@ namespace BrawlCrate.BrawlManagers.SongManager
             }
 
             CurrentDirectory = newpath;                                   // Update the program's working directory
-            Text = Text.Substring(0, Text.IndexOf('-')) + "- " + newpath; // Update titlebar
 
-            if (!new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter")).Exists)
+            if (!new DirectoryInfo(Path.Combine(CurrentDirectory, "sound")).Exists)
             {
-                if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/fighter")).Exists)
+                if (new DirectoryInfo(Path.Combine(CurrentDirectory, "private/wii/app/RSBE/pf/sound")).Exists)
                 {
-                    CurrentDirectory = Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/");
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "private/wii/app/RSBE/pf/");
                 }
-                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/projectm/pf/fighter")).Exists)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "projectm/pf/sound")).Exists)
                 {
-                    CurrentDirectory = Path.Combine(CurrentDirectory, "/projectm/pf/");
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "projectm/pf/");
                 }
-                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/pf/fighter")).Exists)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "pf/sound")).Exists)
                 {
-                    CurrentDirectory = Path.Combine(CurrentDirectory, "/pf/");
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "pf/");
                 }
             }
+
+            Text = Text.Substring(0, Text.IndexOf('-')) + "- " + CurrentDirectory; // Update titlebar
 
             RightControl = ChooseLabel;
             refreshDirectory();
@@ -222,6 +223,12 @@ namespace BrawlCrate.BrawlManagers.SongManager
 
             DirectoryInfo dir = new DirectoryInfo(Path.Combine(CurrentDirectory, "sound", "strm"));
             RightControl = ChooseLabel;
+            listBox1.Items.Clear();
+            if (!dir.Exists)
+            {
+                listBox1.Refresh();
+                return;
+            }
             brstmFiles = dir.GetFiles("*.brstm");
 
             Array.Sort(brstmFiles, delegate(FileInfo f1, FileInfo f2)
@@ -229,7 +236,6 @@ namespace BrawlCrate.BrawlManagers.SongManager
                 return f1.Name.ToLower().CompareTo(f2.Name.ToLower()); // Sort by filename, case-insensitive
             });
 
-            listBox1.Items.Clear();
             switch (listType)
             {
                 case ListType.FilesInDir:

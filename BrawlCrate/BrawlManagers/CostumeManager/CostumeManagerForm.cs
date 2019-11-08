@@ -66,17 +66,17 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         {
             if (!new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter")).Exists)
             {
-                if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/fighter")).Exists)
+                if (new DirectoryInfo(Path.Combine(CurrentDirectory, "private/wii/app/RSBE/pf/fighter")).Exists)
                 {
-                    CurrentDirectory = Path.Combine(CurrentDirectory, "/private/wii/app/RSBE/pf/");
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "private/wii/app/RSBE/pf/");
                 }
-                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/projectm/pf/fighter")).Exists)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "projectm/pf/fighter")).Exists)
                 {
-                    CurrentDirectory = Path.Combine(CurrentDirectory, "/projectm/pf/");
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "projectm/pf/");
                 }
-                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "/pf/fighter")).Exists)
+                else if (new DirectoryInfo(Path.Combine(CurrentDirectory, "pf/fighter")).Exists)
                 {
-                    CurrentDirectory = Path.Combine(CurrentDirectory, "/pf/");
+                    CurrentDirectory = Path.Combine(CurrentDirectory, "pf/");
                 }
             }
 
