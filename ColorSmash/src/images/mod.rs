@@ -31,7 +31,7 @@ where
     I: Iterator<Item = &'a Path>,
     O: Iterator<Item = &'b Path>,
 {
-    let images = try!(open_images(input_paths));
+    let images = open_images(input_paths)?;
 
     let quantization_map =
         quantization_map_from_images_and_color_type(&images, colortype, num_colors, verbose);
@@ -59,14 +59,14 @@ where
     let indexed_image_data = calculate_indexes(images, indexed_quantization_map);
     let (rgb_palettes, alpha_palettes) = calculate_palettes(ordered_color_combinations);
 
-    try!(write_pngs(
+    write_pngs(
         output_paths,
         indexed_image_data,
         rgb_palettes,
         alpha_palettes,
         width,
         height
-    ));
+    )?;
 
     Ok(())
 }
@@ -76,7 +76,7 @@ fn open_images<'a, I: Iterator<Item = &'a Path>>(
 ) -> Result<Vec<RgbaImage>, ImageError> {
     let mut images = Vec::new();
     for input_path in input_paths {
-        let image = try!(image_lib::open(input_path)).to_rgba();
+        let image = image_lib::open(input_path)?.to_rgba();
         images.push(image);
     }
     Ok(images)
@@ -281,16 +281,16 @@ where
         .zip(rgb_palettes.into_iter())
         .zip(alpha_palettes.into_iter())
     {
-        let output = &try!(File::create(output_path));
+        let output = &File::create(output_path)?;
         let mut encoder = png::Encoder::new(output, width, height);
         encoder
             .set(png::ColorType::Indexed)
             .set(png::BitDepth::Eight);
 
-        let mut writer = try!(encoder.write_header());
-        try!(writer.write_chunk(png::chunk::PLTE, &rgb_palette));
-        try!(writer.write_chunk(png::chunk::tRNS, &alpha_palette));
-        try!(writer.write_image_data(&indexed_image_data));
+        let mut writer = encoder.write_header()?;
+        writer.write_chunk(png::chunk::PLTE, &rgb_palette)?;
+        writer.write_chunk(png::chunk::tRNS, &alpha_palette)?;
+        writer.write_image_data(&indexed_image_data)?;
     }
 
     Ok(())
