@@ -49,18 +49,18 @@ else {
   $CREDITS="$AUTHOR_NAME authored & $COMMITTER_NAME committed"
 }
 
-$BUILD_VERSION = [uri]::EscapeDataString($env:APPVEYOR_BUILD_VERSION)
 if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
   $COMMIT_SUBJECT="PR #$env:APPVEYOR_PULL_REQUEST_NUMBER - $env:APPVEYOR_PULL_REQUEST_TITLE"
   $URL="https://github.com/$env:APPVEYOR_REPO_NAME/pull/$env:APPVEYOR_PULL_REQUEST_NUMBER"
 }
 elseif ($env:APPVEYOR_REPO_BRANCH -notmatch '^master$|^.*[Tt][Ee][Ss][Tt]$') {
-  $URL="https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/builds/$BUILD_VERSION/job/$env:APPVEYOR_JOB_ID/artifacts"
+  $URL="https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/builds/$env:APPVEYOR_BUILD_ID/job/$env:APPVEYOR_JOB_ID/artifacts"
 }
 else {
   $URL="https://github.com/$env:APPVEYOR_REPO_NAME/releases/tag/Canary-$env:APPVEYOR_REPO_BRANCH"
 }
 
+$BUILD_VERSION = [uri]::EscapeDataString($env:APPVEYOR_BUILD_VERSION)
 $TIMESTAMP="$(Get-Date -format s)Z"
 $WEBHOOK_DATA="{
   ""username"": """",
@@ -69,7 +69,7 @@ $WEBHOOK_DATA="{
     ""color"": $EMBED_COLOR,
     ""author"": {
       ""name"": ""Build #$env:APPVEYOR_BUILD_NUMBER.$env:APPVEYOR_JOB_NUMBER $STATUS_MESSAGE - $env:APPVEYOR_REPO_NAME"",
-      ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/$BUILD_VERSION"",
+      ""url"": ""https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/$env:APPVEYOR_BUILD_ID"",
       ""icon_url"": ""$AVATAR""
     },
     ""title"": ""$COMMIT_SUBJECT"",
@@ -78,7 +78,7 @@ $WEBHOOK_DATA="{
     ""fields"": [
       {
         ""name"": ""Platform"",
-        ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/builds/$BUILD_VERSION/job/$env:APPVEYOR_JOB_ID)"",
+        ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/builds/$env:APPVEYOR_BUILD_ID/job/$env:APPVEYOR_JOB_ID)"",
         ""inline"": true
       },
       {
