@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlCrate.BrawlAPI
+namespace BrawlCrate.API
 {
     public class PluginScript
     {

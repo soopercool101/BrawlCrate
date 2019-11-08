@@ -17,7 +17,7 @@ using System.Windows.Forms;
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 #endif
 
-namespace BrawlCrate.BrawlAPI
+namespace BrawlCrate.API
 {
     public static partial class BrawlAPI
     {

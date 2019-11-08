@@ -14,7 +14,7 @@ using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 
 // ReSharper disable UnusedMember.Global
 
-namespace BrawlCrate.BrawlAPI
+namespace BrawlCrate.API
 {
     public static partial class BrawlAPI
     {
