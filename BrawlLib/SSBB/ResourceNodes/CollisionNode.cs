@@ -510,6 +510,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             base.Export(outPath);
         }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 
     public unsafe class CollisionLink
@@ -559,7 +564,56 @@ namespace BrawlLib.SSBB.ResourceNodes
             _parent._points.Add(this);
         }
 
-        public CollisionLink Clone()
+        protected CollisionLink(CollisionLink toClone)
+        {
+            _parent = (CollisionObject)toClone._parent.Clone();
+            _encodeIndex = toClone._encodeIndex;
+
+            _highlight = toClone._highlight;
+            _rawValue = toClone._rawValue;
+
+            //We start cloning members by basically iterating through the list
+            foreach (var MemberToClone in toClone._members)
+            {
+                //Add the clone to the list of members
+                _members.Add((CollisionPlane)MemberToClone.Clone());
+            }
+        }
+
+        //A way to know if an object is equal to the link by reading its variables
+        public static bool LinkEquals(CollisionLink link1, CollisionLink link2)
+        {
+            if (link1._parent != link2._parent)
+                return false;
+
+            if (link1._encodeIndex != link2._encodeIndex)
+                return false;
+
+            if (link1._rawValue != link2._rawValue)
+                return false;
+
+            if (link1._members.Count != link2._members.Count)
+                return false;
+
+            for (int i = 0; i < link1._members.Count; i++)
+            {
+                CollisionPlane l1m = link1._members[i];
+                CollisionPlane l2m = link2._members[i];
+
+				if (!CollisionPlane.ReferenceEquals(l1m, l2m))
+					return false;
+			}
+
+			return true;
+        }
+
+        public object Clone()
+        {
+            return new CollisionLink(this);
+        }
+
+        //Had to be renamed due to ICloneable not allowing other procedures to be called this
+        public CollisionLink Clone2()
         {
             return new CollisionLink(_parent, _rawValue);
         }
@@ -589,11 +643,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_members[0]._linkLeft == this)
                 {
-                    _members[0].LinkLeft = links[i] = Clone();
+                    _members[0].LinkLeft = links[i] = Clone2();
                 }
                 else
                 {
-                    _members[0].LinkRight = links[i] = Clone();
+                    _members[0].LinkRight = links[i] = Clone2();
                 }
             }
 
@@ -662,7 +716,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return new CollisionPlane(_parent, this, p);
         }
 
-        //Create new point/plane extending to target
+        //Create new point and plane extending to target
         public CollisionLink Branch(Vector2 point)
         {
             CollisionLink link = new CollisionLink(_parent, point);
@@ -837,6 +891,243 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool _render = true;
 
         public CollisionObject _parent;
+
+        public CollisionPlane(CollisionObject parent, CollisionLink left, CollisionLink right)
+        {
+            _parent = parent;
+            _parent._planes.Add(this);
+
+            _linkLeft = left;
+            _linkLeft._members.Add(this);
+            _linkRight = right;
+            if (_linkLeft != _linkRight)
+            {
+                _linkRight._members.Add(this);
+            }
+        }
+
+        public CollisionPlane(CollisionObject parent, ColPlane* entry, int offset)
+            : this(parent, parent._points[entry->_point1 - offset], parent._points[entry->_point2 - offset])
+        {
+            _material = entry->_material;
+            _flags = entry->_flags;
+            _type = entry->Type;
+            _flags2 = entry->Flags2;
+        }
+
+        protected CollisionPlane(CollisionPlane toClone)
+        {
+            _linkLeft = (CollisionLink)toClone._linkLeft.Clone2();
+            _linkRight = (CollisionLink)toClone._linkRight.Clone2();
+
+            _parent = (CollisionObject)toClone._parent.Clone();
+
+            _material = toClone._material;
+            _flags = toClone._flags;
+            _flags2 = toClone._flags2;
+            _type = toClone.Type;
+
+            _render = toClone._render;
+        }
+
+        //A way to know if an object is equal to this by reading its variables
+        public static bool PlaneEquals(CollisionPlane plane1, CollisionPlane plane2)
+        {
+            if (plane1._encodeIndex != plane2._encodeIndex)
+                return false;
+            if (plane1._flags != plane2._flags)
+                return false;
+            if (plane1._flags2 != plane2._flags2)
+                return false;
+            if (plane1._type != plane2.Type)
+                return false;
+
+            return true;
+        }
+
+        public CollisionPlane Clone()
+        {
+            return new CollisionPlane(this);
+        }
+
+        public CollisionLink Split(Vector2 point)
+        {
+            CollisionLink link = new CollisionLink(_parent, point);
+            CollisionPlane plane = new CollisionPlane(_parent, link, _linkRight)
+            {
+                _material = _material,
+                _flags = _flags,
+                _flags2 = _flags2,
+                _type = _type
+            };
+            if (IsRightLedge)
+            {
+                IsRightLedge = false;
+            }
+
+            if (IsLeftLedge)
+            {
+                plane.IsLeftLedge = false;
+            }
+
+            LinkRight = link;
+            return link;
+        }
+
+        public void SwapLinks()
+        {
+            CollisionLink l = _linkLeft;
+            _linkLeft = _linkRight;
+            _linkRight = l;
+        }
+
+        public void Delete()
+        {
+            LinkLeft = null;
+            LinkRight = null;
+            _parent._planes.Remove(this);
+        }
+
+        internal void Render()
+        {
+            if (!_render || LinkLeft == LinkRight)
+            {
+                return;
+            }
+
+            float alpha = 0.8f;
+
+            if (!CollidableByCharacters)
+            {
+                alpha = 0.5f;
+            }
+
+            Vector2 l = _linkLeft.Value;
+            Vector2 r = _linkRight.Value;
+
+            int lev = 0;
+            if (_linkLeft._highlight)
+            {
+                lev++;
+            }
+
+            if (_linkRight._highlight)
+            {
+                lev++;
+            }
+
+            if (lev == 1)
+            {
+                GL.Color4(1.0f, 0.5f, 0.5f, alpha);
+            }
+            else if (lev != 0)
+            {
+                GL.Color4(0.9f, 0.0f, 0.9f, alpha);
+            }
+            else if (!IsFallThrough)
+            {
+                switch (GetCurrentType())
+                {
+                    case CollisionPlaneType.None:
+                        GL.Color4(1.0f, 1.0f, 1.0f, alpha);
+                        break;
+                    case CollisionPlaneType.Floor:
+                        GL.Color4(0.0f, 0.9f, 0.9f, alpha);
+                        break;
+                    case CollisionPlaneType.Ceiling:
+                        GL.Color4(0.9f, 0.0f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.LeftWall:
+                    case CollisionPlaneType.RightWall:
+                        GL.Color4(0.0f, 0.9f, 0.0f, alpha);
+                        break;
+                    default:
+                        GL.Color4(0.0f, 0.0f, 0.0f, alpha);
+                        break;
+                }
+            }
+            else
+            {
+                switch (GetCurrentType())
+                {
+                    case CollisionPlaneType.None:
+                        GL.Color4(0.65f, 0.65f, 0.35f, alpha);
+                        break;
+                    case CollisionPlaneType.Floor:
+                        GL.Color4(1.0f, 1.0f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.Ceiling:
+                        GL.Color4(0.9f, 0.3f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.LeftWall:
+                    case CollisionPlaneType.RightWall:
+                        GL.Color4(0.45f, 1.0f, 0.0f, alpha);
+                        break;
+                    default:
+                        GL.Color4(0.5f, 0.5f, 0.0f, alpha);
+                        break;
+                }
+            }
+
+            GL.Begin(PrimitiveType.Quads);
+            GL.Vertex3(l._x, l._y, 10.0f);
+            GL.Vertex3(l._x, l._y, -10.0f);
+            GL.Vertex3(r._x, r._y, -10.0f);
+            GL.Vertex3(r._x, r._y, 10.0f);
+            GL.End();
+
+            GL.Begin(PrimitiveType.Lines);
+            GL.Vertex3(l._x, l._y, 10.0f);
+            GL.Vertex3(r._x, r._y, 10.0f);
+            GL.Vertex3(l._x, l._y, -10.0f);
+            GL.Vertex3(r._x, r._y, -10.0f);
+            GL.End();
+        }
+
+        public Vector2 PointLeft => _linkLeft.Value;
+        public Vector2 PointRight => _linkRight.Value;
+
+        public CollisionLink LinkLeft
+        {
+            get => _linkLeft;
+            set
+            {
+                _linkLeft?.RemoveMember(this);
+
+                if ((_linkLeft = value) != null)
+                {
+                    if (_linkLeft != _linkRight)
+                    {
+                        _linkLeft._members.Add(this);
+                    }
+                    else
+                    {
+                        _linkLeft = null;
+                    }
+                }
+            }
+        }
+
+        public CollisionLink LinkRight
+        {
+            get => _linkRight;
+            set
+            {
+                _linkRight?.RemoveMember(this);
+
+                if ((_linkRight = value) != null)
+                {
+                    if (_linkRight != _linkLeft)
+                    {
+                        _linkRight._members.Add(this);
+                    }
+                    else
+                    {
+                        _linkRight = null;
+                    }
+                }
+            }
+        }
 
         public CollisionPlaneType Type
         {
@@ -1058,208 +1349,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         public double GetAngleDegrees()
         {
             return GetAngleRadians() * Maths._rad2deg;
-        }
-
-        public Vector2 PointLeft => _linkLeft.Value;
-        public Vector2 PointRight => _linkRight.Value;
-
-        public CollisionLink LinkLeft
-        {
-            get => _linkLeft;
-            set
-            {
-                _linkLeft?.RemoveMember(this);
-
-                if ((_linkLeft = value) != null)
-                {
-                    if (_linkLeft != _linkRight)
-                    {
-                        _linkLeft._members.Add(this);
-                    }
-                    else
-                    {
-                        _linkLeft = null;
-                    }
-                }
-            }
-        }
-
-        public CollisionLink LinkRight
-        {
-            get => _linkRight;
-            set
-            {
-                _linkRight?.RemoveMember(this);
-
-                if ((_linkRight = value) != null)
-                {
-                    if (_linkRight != _linkLeft)
-                    {
-                        _linkRight._members.Add(this);
-                    }
-                    else
-                    {
-                        _linkRight = null;
-                    }
-                }
-            }
-        }
-
-        public CollisionPlane(CollisionObject parent, CollisionLink left, CollisionLink right)
-        {
-            _parent = parent;
-            _parent._planes.Add(this);
-
-            _linkLeft = left;
-            _linkLeft._members.Add(this);
-            _linkRight = right;
-            if (_linkLeft != _linkRight)
-            {
-                _linkRight._members.Add(this);
-            }
-        }
-
-        public CollisionPlane(CollisionObject parent, ColPlane* entry, int offset)
-            : this(parent, parent._points[entry->_point1 - offset], parent._points[entry->_point2 - offset])
-        {
-            _material = entry->_material;
-            _flags = entry->_flags;
-            _type = entry->Type;
-            _flags2 = entry->Flags2;
-        }
-
-        public CollisionLink Split(Vector2 point)
-        {
-            CollisionLink link = new CollisionLink(_parent, point);
-            CollisionPlane plane = new CollisionPlane(_parent, link, _linkRight)
-            {
-                _material = _material,
-                _flags = _flags,
-                _flags2 = _flags2,
-                _type = _type
-            };
-            if (IsRightLedge)
-            {
-                IsRightLedge = false;
-            }
-
-            if (IsLeftLedge)
-            {
-                plane.IsLeftLedge = false;
-            }
-
-            LinkRight = link;
-            return link;
-        }
-
-        public void SwapLinks()
-        {
-            CollisionLink l = _linkLeft;
-            _linkLeft = _linkRight;
-            _linkRight = l;
-        }
-
-        public void Delete()
-        {
-            LinkLeft = null;
-            LinkRight = null;
-            _parent._planes.Remove(this);
-        }
-
-        internal void Render()
-        {
-            if (!_render || LinkLeft == LinkRight)
-            {
-                return;
-            }
-
-            float alpha = 0.8f;
-
-            if (!CollidableByCharacters)
-            {
-                alpha = 0.5f;
-            }
-
-            Vector2 l = _linkLeft.Value;
-            Vector2 r = _linkRight.Value;
-
-            int lev = 0;
-            if (_linkLeft._highlight)
-            {
-                lev++;
-            }
-
-            if (_linkRight._highlight)
-            {
-                lev++;
-            }
-
-            if (lev == 1)
-            {
-                GL.Color4(1.0f, 0.5f, 0.5f, alpha);
-            }
-            else if (lev != 0)
-            {
-                GL.Color4(0.9f, 0.0f, 0.9f, alpha);
-            }
-            else if (!IsFallThrough)
-            {
-                switch (GetCurrentType())
-                {
-                    case CollisionPlaneType.None:
-                        GL.Color4(1.0f, 1.0f, 1.0f, alpha);
-                        break;
-                    case CollisionPlaneType.Floor:
-                        GL.Color4(0.0f, 0.9f, 0.9f, alpha);
-                        break;
-                    case CollisionPlaneType.Ceiling:
-                        GL.Color4(0.9f, 0.0f, 0.0f, alpha);
-                        break;
-                    case CollisionPlaneType.LeftWall:
-                    case CollisionPlaneType.RightWall:
-                        GL.Color4(0.0f, 0.9f, 0.0f, alpha);
-                        break;
-                    default:
-                        GL.Color4(0.0f, 0.0f, 0.0f, alpha);
-                        break;
-                }
-            }
-            else
-            {
-                switch (GetCurrentType())
-                {
-                    case CollisionPlaneType.None:
-                        GL.Color4(0.65f, 0.65f, 0.35f, alpha);
-                        break;
-                    case CollisionPlaneType.Floor:
-                        GL.Color4(1.0f, 1.0f, 0.0f, alpha);
-                        break;
-                    case CollisionPlaneType.Ceiling:
-                        GL.Color4(0.9f, 0.3f, 0.0f, alpha);
-                        break;
-                    case CollisionPlaneType.LeftWall:
-                    case CollisionPlaneType.RightWall:
-                        GL.Color4(0.45f, 1.0f, 0.0f, alpha);
-                        break;
-                    default:
-                        GL.Color4(0.5f, 0.5f, 0.0f, alpha);
-                        break;
-                }
-            }
-
-            GL.Begin(PrimitiveType.Quads);
-            GL.Vertex3(l._x, l._y, 10.0f);
-            GL.Vertex3(l._x, l._y, -10.0f);
-            GL.Vertex3(r._x, r._y, -10.0f);
-            GL.Vertex3(r._x, r._y, 10.0f);
-            GL.End();
-
-            GL.Begin(PrimitiveType.Lines);
-            GL.Vertex3(l._x, l._y, 10.0f);
-            GL.Vertex3(r._x, r._y, 10.0f);
-            GL.Vertex3(l._x, l._y, -10.0f);
-            GL.Vertex3(r._x, r._y, -10.0f);
-            GL.End();
         }
     }
 }

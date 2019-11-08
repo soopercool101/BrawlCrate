@@ -1,9 +1,11 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlCrate.UI;
+using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
-using Community.CsharpSqlite;
+
 using OpenTK.Graphics.OpenGL;
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,32 +14,41 @@ using System.Linq;
 
 namespace System.Windows.Forms
 {
+    [Serializable]
     public unsafe class CollisionEditor : UserControl
     {
+        protected virtual bool _errorChecking => true;
+
         #region Designer
 
         public ModelPanel _modelPanel;
-        protected bool _errorChecking = true;
-        protected SplitContainer undoToolStrip;
-        protected SplitContainer redoToolStrip;
+        private IContainer components;
+
+        protected SplitContainer mainSplitter;
+        protected SplitContainer collisionControlSplitter;
+
         protected CheckBox chkAllModels;
         protected Panel pnlPlaneProps;
-        protected Label label5;
+        protected Label materialLabel;
         protected Label labelType;
         protected ComboBox cboMaterial;
         protected Panel pnlObjProps;
-        protected ToolStrip toolStrip1;
+        protected Panel toolsStripPanel;
+        protected ToolStrip toolsStrip;
+        protected ToolStripSeparator toolsStrip_Sep1;
+        protected ToolStripSeparator toolsStrip_Sep2;
+        protected ToolStripSeparator toolsStrip_Sep3;
+        protected ToolStripButton btnSameX;
+        protected ToolStripButton btnSameY;
         protected ToolStripButton btnSplit;
         protected ToolStripButton btnMerge;
         protected ToolStripButton btnDelete;
-        protected ContextMenuStrip contextMenuStrip1;
-        protected ContextMenuStrip contextMenuStrip3;
-        private IContainer components;
         protected ToolStripMenuItem snapToolStripMenuItem;
-        protected Panel panel1;
-        protected TrackBar trackBar1;
         protected Button btnResetRot;
         protected ToolStripButton btnResetCam;
+
+        protected TrackBar trackBar1;
+
         protected GroupBox groupBoxFlags1;
         protected CheckBox chkFallThrough;
         protected GroupBox groupBoxFlags2;
@@ -56,50 +67,52 @@ namespace System.Windows.Forms
         protected CheckBox chkFlagUnknown4;
 
         protected Panel pnlPointProps;
+        protected Label pnlPointPropsX;
+        protected Label pnlPointPropsY;
         protected NumericInputBox numX;
-        protected Label label2;
         protected NumericInputBox numY;
-        protected Label label1;
-        protected ToolStripSeparator toolStripSeparator1;
-        protected ToolStripButton btnSameX;
-        protected ToolStripButton btnSameY;
+
+
+        protected ContextMenuStrip lstCollObjectsMenu;
         protected ToolStripMenuItem newObjectToolStripMenuItem;
-        protected ToolStripSeparator toolStripMenuItem2;
-        protected ToolStripSeparator toolStripMenuItem3;
+        protected ToolStripSeparator lstCollObjectsMenu_Sep1;
+        protected ToolStripSeparator lstCollObjectsMenu_Sep2;
+        protected ToolStripSeparator lstCollObjectsMenu_Sep3;
         protected ToolStripSeparator assignSeperatorToolStripMenuItem;
-        protected ToolStripSeparator toolStripMenuItem1;
         protected ToolStripMenuItem _deleteToolStripMenuItem;
         protected TextBox txtModel;
-        protected Label label3;
-        protected Panel panel2;
+        protected Label boneModel;
+        protected Panel visibilityCheckPanel;
         protected CheckBox chkPoly;
         protected Button btnRelink;
         protected TextBox txtBone;
-        protected Label label4;
+        protected Label boneLabel;
         protected CheckBox chkBones;
         protected CheckBox chkLeftLedge;
         protected ComboBox cboType;
         protected TreeView modelTree;
         protected Button btnUnlink;
-        protected ContextMenuStrip contextMenuStrip2;
+
+        protected ContextMenuStrip modelTreeMenu;
         protected ToolStripMenuItem assignToolStripMenuItem;
         protected ToolStripMenuItem assignNoMoveToolStripMenuItem;
         protected ToolStripMenuItem unlinkToolStripMenuItem;
         protected ToolStripMenuItem unlinkNoMoveToolStripMenuItem;
         protected ToolStripMenuItem snapToolStripMenuItem1;
-        protected ToolStripSeparator toolStripSeparator2;
         protected ToolStripButton btnResetSnap;
         protected ToolStripButton btnUndo;
         protected ToolStripButton btnRedo;
-        protected ToolStripSeparator toolStripSeparator3;
+
         protected CheckBox chkObjModule;
         protected CheckBox chkObjUnk;
         protected CheckBox chkObjSSEUnk;
         protected Button btnPlayAnims;
-        protected Panel panel4;
-        protected Panel panel3;
+        protected Panel animationPanel;
+
+        protected Panel selectedMenuPanel; // A panel shown when a collision is selected (can be a point or planes)
         protected Button btnPrevFrame;
         protected Button btnNextFrame;
+
         protected ToolStripButton btnHelp;
         protected CheckedListBox lstObjects;
 
@@ -111,8 +124,25 @@ namespace System.Windows.Forms
         protected ToolStripButton btnBoundaries;
         protected ToolStripButton btnSpawns;
         protected ToolStripButton btnItems;
+
+        protected ContextMenuStrip collisionOptions;
+
+        // Added so that it allows clipboard operations on a selected collision/points
+        private ToolStripMenuItem clipboardCut;
+        private ToolStripMenuItem clipboardCopy;
+        private ToolStripMenuItem clipboardPaste;
+        private ToolStripMenuItem clipboardPaste_PasteDirectly;
+        private ToolStripMenuItem clipboardPaste_PasteUI;
+        //This allows the collisions to be removed and have it pasted
+        private ToolStripMenuItem clipboardPaste_PasteRemoveSelected;
+        //This allows the collisions to be removed and combine them together
+        private ToolStripMenuItem clipboardPaste_PasteOverrideSelected; 
+        private ToolStripSeparator clipboardPaste_Sep1;
+        private ToolStripMenuItem clipboardDelete;
+
         private ToolStripMenuItem moveToNewObjectToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripSeparator collisionOptions_Sep1;
+        private ToolStripSeparator collisionOptions_Sep2;
         private ToolStripMenuItem splitToolStripMenuItem;
         private ToolStripMenuItem mergeToolStripMenuItem;
         private ToolStripMenuItem flipToolStripMenuItem;
@@ -120,35 +150,40 @@ namespace System.Windows.Forms
         private ToolStripMenuItem transformToolStripMenuItem;
         private ToolStripMenuItem alignXToolStripMenuItem;
         private ToolStripMenuItem alignYToolStripMenuItem;
+
         protected ToolStripSeparator toolStripSeparatorOverlays; // Seperator for Overlay controls
 
         protected void InitializeComponent()
         {
             components = new Container();
             ComponentResourceManager resources = new ComponentResourceManager(typeof(CollisionEditor));
-            undoToolStrip = new SplitContainer();
-            redoToolStrip = new SplitContainer();
+            mainSplitter = new SplitContainer();
+            collisionControlSplitter = new SplitContainer();
             modelTree = new TreeView();
-            contextMenuStrip2 = new ContextMenuStrip(components);
+            modelTreeMenu = new ContextMenuStrip(components);
             assignToolStripMenuItem = new ToolStripMenuItem();
             assignNoMoveToolStripMenuItem = new ToolStripMenuItem();
             assignSeperatorToolStripMenuItem = new ToolStripSeparator();
             snapToolStripMenuItem1 = new ToolStripMenuItem();
-            panel2 = new Panel();
+
+            visibilityCheckPanel = new Panel();
             chkBones = new CheckBox();
             chkPoly = new CheckBox();
             chkAllModels = new CheckBox();
+
             lstObjects = new CheckedListBox();
-            contextMenuStrip1 = new ContextMenuStrip(components);
+            lstCollObjectsMenu = new ContextMenuStrip(components);
             newObjectToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripSeparator();
+            lstCollObjectsMenu_Sep3 = new ToolStripSeparator();
             unlinkToolStripMenuItem = new ToolStripMenuItem();
             unlinkNoMoveToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripSeparator();
+            lstCollObjectsMenu_Sep2 = new ToolStripSeparator();
             snapToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripSeparator();
+            lstCollObjectsMenu_Sep1 = new ToolStripSeparator();
             _deleteToolStripMenuItem = new ToolStripMenuItem();
-            panel3 = new Panel();
+
+            selectedMenuPanel = new Panel();
+
             pnlPlaneProps = new Panel();
             groupBoxFlags2 = new GroupBox();
             chkFlagUnknown1 = new CheckBox();
@@ -167,13 +202,15 @@ namespace System.Windows.Forms
             chkTypeCharacters = new CheckBox();
             cboMaterial = new ComboBox();
             cboType = new ComboBox();
-            label5 = new Label();
+            materialLabel = new Label();
             labelType = new Label();
+
             pnlPointProps = new Panel();
-            label2 = new Label();
+            pnlPointPropsY = new Label();
+            pnlPointPropsX = new Label();
             numY = new NumericInputBox();
-            label1 = new Label();
             numX = new NumericInputBox();
+
             pnlObjProps = new Panel();
             chkObjSSEUnk = new CheckBox();
             chkObjModule = new CheckBox();
@@ -181,27 +218,32 @@ namespace System.Windows.Forms
             btnUnlink = new Button();
             btnRelink = new Button();
             txtBone = new TextBox();
-            label4 = new Label();
+            boneLabel = new Label();
             txtModel = new TextBox();
-            label3 = new Label();
-            panel4 = new Panel();
+            boneModel = new Label();
+
+            toolsStrip = new ToolStrip();
+            toolsStrip_Sep1 = new ToolStripSeparator();
+            toolsStrip_Sep3 = new ToolStripSeparator();
+            toolsStrip_Sep2 = new ToolStripSeparator();
+
+            animationPanel = new Panel();
             btnPlayAnims = new Button();
             btnPrevFrame = new Button();
             btnNextFrame = new Button();
+
             _modelPanel = new ModelPanel();
-            panel1 = new Panel();
-            toolStrip1 = new ToolStrip();
+
+            toolsStripPanel = new Panel();
+
             btnUndo = new ToolStripButton();
             btnRedo = new ToolStripButton();
-            toolStripSeparator3 = new ToolStripSeparator();
             btnSplit = new ToolStripButton();
             btnMerge = new ToolStripButton();
             btnFlipColl = new ToolStripButton();
             btnDelete = new ToolStripButton();
-            toolStripSeparator2 = new ToolStripSeparator();
             btnSameX = new ToolStripButton();
             btnSameY = new ToolStripButton();
-            toolStripSeparator1 = new ToolStripSeparator();
             btnPerspectiveCam = new ToolStripButton();
             btnOrthographicCam = new ToolStripButton();
             btnResetCam = new ToolStripButton();
@@ -214,86 +256,104 @@ namespace System.Windows.Forms
             btnHelp = new ToolStripButton();
             btnResetRot = new Button();
             trackBar1 = new TrackBar();
-            contextMenuStrip3 = new ContextMenuStrip(components);
+
+            //Right-click on selected collision/collision view
+            collisionOptions = new ContextMenuStrip(components);
+            clipboardCopy = new ToolStripMenuItem();
+            clipboardCut = new ToolStripMenuItem();
+            clipboardPaste = new ToolStripMenuItem();
+            clipboardPaste_PasteDirectly = new ToolStripMenuItem();
+            clipboardPaste_PasteUI = new ToolStripMenuItem();
+            clipboardPaste_PasteRemoveSelected = new ToolStripMenuItem();
+            clipboardPaste_PasteOverrideSelected = new ToolStripMenuItem();
+            clipboardDelete = new ToolStripMenuItem();
+            clipboardPaste_Sep1 = new ToolStripSeparator();
+            collisionOptions_Sep1 = new ToolStripSeparator();
             moveToNewObjectToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator4 = new ToolStripSeparator();
             splitToolStripMenuItem = new ToolStripMenuItem();
             mergeToolStripMenuItem = new ToolStripMenuItem();
+            collisionOptions_Sep2 = new ToolStripSeparator();
             flipToolStripMenuItem = new ToolStripMenuItem();
             _deleteToolStripMenuItem1 = new ToolStripMenuItem();
             transformToolStripMenuItem = new ToolStripMenuItem();
             alignXToolStripMenuItem = new ToolStripMenuItem();
             alignYToolStripMenuItem = new ToolStripMenuItem();
-            ((ISupportInitialize) undoToolStrip).BeginInit();
-            undoToolStrip.Panel1.SuspendLayout();
-            undoToolStrip.Panel2.SuspendLayout();
-            undoToolStrip.SuspendLayout();
-            ((ISupportInitialize) redoToolStrip).BeginInit();
-            redoToolStrip.Panel1.SuspendLayout();
-            redoToolStrip.Panel2.SuspendLayout();
-            redoToolStrip.SuspendLayout();
-            contextMenuStrip2.SuspendLayout();
-            panel2.SuspendLayout();
-            contextMenuStrip1.SuspendLayout();
-            panel3.SuspendLayout();
+
+            ((ISupportInitialize)mainSplitter).BeginInit();
+            mainSplitter.Panel1.SuspendLayout();
+            mainSplitter.Panel2.SuspendLayout();
+            mainSplitter.SuspendLayout();
+
+            ((ISupportInitialize)collisionControlSplitter).BeginInit();
+            collisionControlSplitter.Panel1.SuspendLayout();
+            collisionControlSplitter.Panel2.SuspendLayout();
+            collisionControlSplitter.SuspendLayout();
+
+            modelTreeMenu.SuspendLayout();
+            visibilityCheckPanel.SuspendLayout();
+            lstCollObjectsMenu.SuspendLayout();
+            selectedMenuPanel.SuspendLayout();
+
             pnlPlaneProps.SuspendLayout();
             groupBoxFlags2.SuspendLayout();
             groupBoxFlags1.SuspendLayout();
             groupBoxTargets.SuspendLayout();
             pnlPointProps.SuspendLayout();
             pnlObjProps.SuspendLayout();
-            panel4.SuspendLayout();
-            panel1.SuspendLayout();
-            toolStrip1.SuspendLayout();
-            ((ISupportInitialize) trackBar1).BeginInit();
-            contextMenuStrip3.SuspendLayout();
+            animationPanel.SuspendLayout();
+            toolsStripPanel.SuspendLayout();
+            toolsStrip.SuspendLayout();
+
+            ((ISupportInitialize)trackBar1).BeginInit();
+            collisionOptions.SuspendLayout();
             SuspendLayout();
+
             // 
-            // undoToolStrip
+            // mainSplitter
             // 
-            undoToolStrip.Dock = DockStyle.Fill;
-            undoToolStrip.FixedPanel = FixedPanel.Panel1;
-            undoToolStrip.Location = new System.Drawing.Point(0, 0);
-            undoToolStrip.Name = "undoToolStrip";
+            mainSplitter.Dock = DockStyle.Fill;
+            mainSplitter.FixedPanel = FixedPanel.Panel1;
+            mainSplitter.Location = new System.Drawing.Point(0, 0);
+            mainSplitter.Name = "mainSplitter";
             // 
-            // undoToolStrip.Panel1
+            // mainSplitter.Panel1
             // 
-            undoToolStrip.Panel1.Controls.Add(redoToolStrip);
+            mainSplitter.Panel1.Controls.Add(collisionControlSplitter);
             // 
-            // undoToolStrip.Panel2
+            // mainSplitter.Panel2
             // 
-            undoToolStrip.Panel2.Controls.Add(_modelPanel);
-            undoToolStrip.Panel2.Controls.Add(panel1);
-            undoToolStrip.Size = new System.Drawing.Size(694, 467);
-            undoToolStrip.SplitterDistance = 209;
-            undoToolStrip.TabIndex = 1;
+            mainSplitter.Panel2.Controls.Add(_modelPanel);
+            mainSplitter.Panel2.Controls.Add(toolsStripPanel);
+            mainSplitter.Size = new System.Drawing.Size(694, 467);
+            mainSplitter.SplitterDistance = 209;
+            mainSplitter.TabIndex = 1;
             // 
-            // redoToolStrip
+            // collisionControlSplitter
             // 
-            redoToolStrip.Dock = DockStyle.Fill;
-            redoToolStrip.Location = new System.Drawing.Point(0, 0);
-            redoToolStrip.Name = "redoToolStrip";
-            redoToolStrip.Orientation = Orientation.Horizontal;
+            collisionControlSplitter.Dock = DockStyle.Fill;
+            collisionControlSplitter.Location = new System.Drawing.Point(0, 0);
+            collisionControlSplitter.Name = "collisionControlSplitter";
+            collisionControlSplitter.Orientation = Orientation.Horizontal;
             // 
-            // redoToolStrip.Panel1
+            // collisionControlSplitter.Panel1
             // 
-            redoToolStrip.Panel1.Controls.Add(modelTree);
-            redoToolStrip.Panel1.Controls.Add(panel2);
+            collisionControlSplitter.Panel1.Controls.Add(modelTree);
+            collisionControlSplitter.Panel1.Controls.Add(visibilityCheckPanel);
             // 
-            // redoToolStrip.Panel2
+            // collisionControlSplitter.Panel2
             // 
-            redoToolStrip.Panel2.Controls.Add(lstObjects);
-            redoToolStrip.Panel2.Controls.Add(panel3);
-            redoToolStrip.Panel2.Controls.Add(panel4);
-            redoToolStrip.Size = new System.Drawing.Size(209, 467);
-            redoToolStrip.SplitterDistance = 242;
-            redoToolStrip.TabIndex = 2;
+            collisionControlSplitter.Panel2.Controls.Add(lstObjects);
+            collisionControlSplitter.Panel2.Controls.Add(selectedMenuPanel);
+            collisionControlSplitter.Panel2.Controls.Add(animationPanel);
+            collisionControlSplitter.Size = new System.Drawing.Size(209, 467);
+            collisionControlSplitter.SplitterDistance = 242;
+            collisionControlSplitter.TabIndex = 2;
             // 
             // modelTree
             // 
             modelTree.BorderStyle = BorderStyle.None;
             modelTree.CheckBoxes = true;
-            modelTree.ContextMenuStrip = contextMenuStrip2;
+            modelTree.ContextMenuStrip = modelTreeMenu;
             modelTree.Dock = DockStyle.Fill;
             modelTree.HideSelection = false;
             modelTree.Location = new System.Drawing.Point(0, 17);
@@ -304,18 +364,18 @@ namespace System.Windows.Forms
             modelTree.BeforeSelect += new TreeViewCancelEventHandler(modelTree_BeforeSelect);
             modelTree.AfterSelect += new TreeViewEventHandler(modelTree_AfterSelect);
             // 
-            // contextMenuStrip2
+            // modelTreeMenu
             // 
-            contextMenuStrip2.Items.AddRange(new ToolStripItem[]
+            modelTreeMenu.Items.AddRange(new ToolStripItem[]
             {
                 assignToolStripMenuItem,
                 assignNoMoveToolStripMenuItem,
                 assignSeperatorToolStripMenuItem,
                 snapToolStripMenuItem1
             });
-            contextMenuStrip2.Name = "contextMenuStrip2";
-            contextMenuStrip2.Size = new System.Drawing.Size(239, 76);
-            contextMenuStrip2.Opening += new CancelEventHandler(contextMenuStrip2_Opening);
+            modelTreeMenu.Name = "modelTreeMenu";
+            modelTreeMenu.Size = new System.Drawing.Size(239, 76);
+            modelTreeMenu.Opening += new CancelEventHandler(modelTreeMenu_Opening);
             // 
             // assignToolStripMenuItem
             // 
@@ -343,16 +403,16 @@ namespace System.Windows.Forms
             snapToolStripMenuItem1.Text = "Snap";
             snapToolStripMenuItem1.Click += snapToolStripMenuItem1_Click;
             // 
-            // panel2
+            // visibilityCheckPanel
             // 
-            panel2.Controls.Add(chkBones);
-            panel2.Controls.Add(chkPoly);
-            panel2.Controls.Add(chkAllModels);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(209, 17);
-            panel2.TabIndex = 3;
+            visibilityCheckPanel.Controls.Add(chkBones);
+            visibilityCheckPanel.Controls.Add(chkPoly);
+            visibilityCheckPanel.Controls.Add(chkAllModels);
+            visibilityCheckPanel.Dock = DockStyle.Top;
+            visibilityCheckPanel.Location = new System.Drawing.Point(0, 0);
+            visibilityCheckPanel.Name = "visibilityCheckPanel";
+            visibilityCheckPanel.Size = new System.Drawing.Size(209, 17);
+            visibilityCheckPanel.TabIndex = 3;
             // 
             // chkBones
             // 
@@ -395,7 +455,7 @@ namespace System.Windows.Forms
             // lstObjects
             // 
             lstObjects.BorderStyle = BorderStyle.None;
-            lstObjects.ContextMenuStrip = contextMenuStrip1;
+            lstObjects.ContextMenuStrip = lstCollObjectsMenu;
             lstObjects.Dock = DockStyle.Fill;
             lstObjects.FormattingEnabled = true;
             lstObjects.IntegralHeight = false;
@@ -407,22 +467,37 @@ namespace System.Windows.Forms
             lstObjects.SelectedValueChanged += lstObjects_SelectedValueChanged;
             lstObjects.MouseDown += new MouseEventHandler(lstObjects_MouseDown);
             // 
-            // contextMenuStrip1
+            // lstCollObjectsMenu
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[]
+            lstCollObjectsMenu.Items.AddRange(new ToolStripItem[]
             {
                 newObjectToolStripMenuItem,
-                toolStripMenuItem3,
+                lstCollObjectsMenu_Sep3,
                 unlinkToolStripMenuItem,
                 unlinkNoMoveToolStripMenuItem,
-                toolStripMenuItem2,
+                lstCollObjectsMenu_Sep2,
                 snapToolStripMenuItem,
-                toolStripMenuItem1,
+                lstCollObjectsMenu_Sep1,
                 _deleteToolStripMenuItem
             });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new System.Drawing.Size(238, 132);
-            contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
+            lstCollObjectsMenu.Name = "lstCollObjectsMenu";
+            lstCollObjectsMenu.Size = new System.Drawing.Size(238, 132);
+            lstCollObjectsMenu.Opening += new CancelEventHandler(lstCollObjectsMenu_Opening);
+            // 
+            // lstCollObjectsMenu_Sep1
+            // 
+            lstCollObjectsMenu_Sep1.Name = "lstCollObjectsMenu_Sep1";
+            lstCollObjectsMenu_Sep1.Size = new System.Drawing.Size(234, 6);
+            // 
+            // lstCollObjectsMenu_Sep2
+            // 
+            lstCollObjectsMenu_Sep2.Name = "lstCollObjectsMenu_Sep2";
+            lstCollObjectsMenu_Sep2.Size = new System.Drawing.Size(234, 6);
+            // 
+            // lstCollObjectsMenu_Sep3
+            // 
+            lstCollObjectsMenu_Sep3.Name = "lstCollObjectsMenu_Sep3";
+            lstCollObjectsMenu_Sep3.Size = new System.Drawing.Size(234, 6);
             // 
             // newObjectToolStripMenuItem
             // 
@@ -430,11 +505,6 @@ namespace System.Windows.Forms
             newObjectToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             newObjectToolStripMenuItem.Text = "New Object";
             newObjectToolStripMenuItem.Click += newObjectToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new System.Drawing.Size(234, 6);
             // 
             // unlinkToolStripMenuItem
             // 
@@ -450,22 +520,12 @@ namespace System.Windows.Forms
             unlinkNoMoveToolStripMenuItem.Text = "Unlink (No relative movement)";
             unlinkNoMoveToolStripMenuItem.Click += btnUnlinkNoMove_Click;
             // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new System.Drawing.Size(234, 6);
-            // 
             // snapToolStripMenuItem
             // 
             snapToolStripMenuItem.Name = "snapToolStripMenuItem";
             snapToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             snapToolStripMenuItem.Text = "Snap";
             snapToolStripMenuItem.Click += snapToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new System.Drawing.Size(234, 6);
             // 
             // _deleteToolStripMenuItem
             // 
@@ -474,17 +534,18 @@ namespace System.Windows.Forms
             _deleteToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             _deleteToolStripMenuItem.Text = "Delete";
             _deleteToolStripMenuItem.Click += _deleteToolStripMenuItem_Click;
+
             // 
-            // panel3
+            // selectedMenuPanel
             // 
-            panel3.Controls.Add(pnlPlaneProps);
-            panel3.Controls.Add(pnlPointProps);
-            panel3.Controls.Add(pnlObjProps);
-            panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new System.Drawing.Point(0, 82);
-            panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(209, 115);
-            panel3.TabIndex = 16;
+            selectedMenuPanel.Controls.Add(pnlPlaneProps);
+            selectedMenuPanel.Controls.Add(pnlPointProps);
+            selectedMenuPanel.Controls.Add(pnlObjProps);
+            selectedMenuPanel.Dock = DockStyle.Bottom;
+            selectedMenuPanel.Location = new System.Drawing.Point(0, 82);
+            selectedMenuPanel.Name = "selectedMenuPanel";
+            selectedMenuPanel.Size = new System.Drawing.Size(209, 115);
+            selectedMenuPanel.TabIndex = 16;
             // 
             // pnlPlaneProps
             // 
@@ -493,7 +554,7 @@ namespace System.Windows.Forms
             pnlPlaneProps.Controls.Add(groupBoxTargets);
             pnlPlaneProps.Controls.Add(cboMaterial);
             pnlPlaneProps.Controls.Add(cboType);
-            pnlPlaneProps.Controls.Add(label5);
+            pnlPlaneProps.Controls.Add(materialLabel);
             pnlPlaneProps.Controls.Add(labelType);
             pnlPlaneProps.Dock = DockStyle.Bottom;
             pnlPlaneProps.Location = new System.Drawing.Point(0, -273);
@@ -502,70 +563,50 @@ namespace System.Windows.Forms
             pnlPlaneProps.TabIndex = 0;
             pnlPlaneProps.Visible = false;
             // 
-            // groupBoxFlags2
+            // cboMaterial
             // 
-            groupBoxFlags2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                     | AnchorStyles.Left;
-            groupBoxFlags2.Controls.Add(chkFlagUnknown1);
-            groupBoxFlags2.Controls.Add(chkFlagUnknown2);
-            groupBoxFlags2.Controls.Add(chkFlagUnknown3);
-            groupBoxFlags2.Controls.Add(chkFlagUnknown4);
-            groupBoxFlags2.Location = new System.Drawing.Point(104, 102);
-            groupBoxFlags2.Margin = new Padding(0);
-            groupBoxFlags2.Name = "groupBoxFlags2";
-            groupBoxFlags2.Padding = new Padding(0);
-            groupBoxFlags2.Size = new System.Drawing.Size(105, 160);
-            groupBoxFlags2.TabIndex = 14;
-            groupBoxFlags2.TabStop = false;
+            cboMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboMaterial.FormattingEnabled = true;
+            cboMaterial.Location = new System.Drawing.Point(66, 25);
+            cboMaterial.Name = "cboMaterial";
+            cboMaterial.Size = new System.Drawing.Size(139, 21);
+            cboMaterial.TabIndex = 12;
+            cboMaterial.SelectedIndexChanged += cboMaterial_SelectedIndexChanged;
+            cboMaterial.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
             // 
-            // chkFlagUnknown1
+            // materialLabel
             // 
-            chkFlagUnknown1.Location = new System.Drawing.Point(8, 17);
-            chkFlagUnknown1.Margin = new Padding(0);
-            chkFlagUnknown1.Name = "chkFlagUnknown1";
-            chkFlagUnknown1.Size = new System.Drawing.Size(86, 18);
-            chkFlagUnknown1.TabIndex = 3;
-            chkFlagUnknown1.Text = "Unknown 1";
-            chkFlagUnknown1.UseVisualStyleBackColor = true;
-            chkFlagUnknown1.CheckedChanged += chkFlagUnknown1_CheckedChanged;
+            materialLabel.Location = new System.Drawing.Point(7, 25);
+            materialLabel.Name = "materialLabel";
+            materialLabel.Size = new System.Drawing.Size(53, 21);
+            materialLabel.TabIndex = 8;
+            materialLabel.Text = "Material:";
+            materialLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // chkFlagUnknown2
+            // cboType
             // 
-            chkFlagUnknown2.Location = new System.Drawing.Point(8, 33);
-            chkFlagUnknown2.Margin = new Padding(0);
-            chkFlagUnknown2.Name = "chkFlagUnknown2";
-            chkFlagUnknown2.Size = new System.Drawing.Size(86, 18);
-            chkFlagUnknown2.TabIndex = 3;
-            chkFlagUnknown2.Text = "Unknown 2";
-            chkFlagUnknown2.UseVisualStyleBackColor = true;
-            chkFlagUnknown2.CheckedChanged += chkFlagUnknown2_CheckedChanged;
+            cboType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboType.FormattingEnabled = true;
+            cboType.Location = new System.Drawing.Point(66, 4);
+            cboType.Name = "cboType";
+            cboType.Size = new System.Drawing.Size(139, 21);
+            cboType.TabIndex = 5;
+            cboType.SelectedIndexChanged += cboType_SelectedIndexChanged;
+            cboType.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
             // 
-            // chkFlagUnknown3
+            // labelType
             // 
-            chkFlagUnknown3.Location = new System.Drawing.Point(8, 49);
-            chkFlagUnknown3.Margin = new Padding(0);
-            chkFlagUnknown3.Name = "chkFlagUnknown3";
-            chkFlagUnknown3.Size = new System.Drawing.Size(86, 18);
-            chkFlagUnknown3.TabIndex = 3;
-            chkFlagUnknown3.Text = "Unknown 3";
-            chkFlagUnknown3.UseVisualStyleBackColor = true;
-            chkFlagUnknown3.CheckedChanged += chkFlagUnknown3_CheckedChanged;
-            // 
-            // chkFlagUnknown4
-            // 
-            chkFlagUnknown4.Location = new System.Drawing.Point(8, 65);
-            chkFlagUnknown4.Margin = new Padding(0);
-            chkFlagUnknown4.Name = "chkFlagUnknown4";
-            chkFlagUnknown4.Size = new System.Drawing.Size(86, 18);
-            chkFlagUnknown4.TabIndex = 3;
-            chkFlagUnknown4.Text = "Unknown 4";
-            chkFlagUnknown4.UseVisualStyleBackColor = true;
-            chkFlagUnknown4.CheckedChanged += chkFlagUnknown4_CheckedChanged;
+            labelType.Location = new System.Drawing.Point(7, 4);
+            labelType.Name = "labelType";
+            labelType.Size = new System.Drawing.Size(53, 21);
+            labelType.TabIndex = 8;
+            labelType.Text = "Type:";
+            labelType.TextAlign = ContentAlignment.MiddleRight;
+
             // 
             // groupBoxFlags1
             // 
-            groupBoxFlags1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                     | AnchorStyles.Left;
+            groupBoxFlags1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             groupBoxFlags1.Controls.Add(chkLeftLedge);
             groupBoxFlags1.Controls.Add(chkNoWalljump);
             groupBoxFlags1.Controls.Add(chkRightLedge);
@@ -637,8 +678,7 @@ namespace System.Windows.Forms
             // 
             // groupBoxTargets
             // 
-            groupBoxTargets.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                      | AnchorStyles.Left;
+            groupBoxTargets.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             groupBoxTargets.Controls.Add(chkTypePokemonTrainer);
             groupBoxTargets.Controls.Add(chkTypeItems);
             groupBoxTargets.Controls.Add(chkTypeCharacters);
@@ -683,54 +723,74 @@ namespace System.Windows.Forms
             chkTypeCharacters.Text = "Everything";
             chkTypeCharacters.UseVisualStyleBackColor = true;
             chkTypeCharacters.CheckedChanged += chkTypeCharacters_CheckedChanged;
+
             // 
-            // cboMaterial
+            // groupBoxFlags2
             // 
-            cboMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboMaterial.FormattingEnabled = true;
-            cboMaterial.Location = new System.Drawing.Point(66, 25);
-            cboMaterial.Name = "cboMaterial";
-            cboMaterial.Size = new System.Drawing.Size(139, 21);
-            cboMaterial.TabIndex = 12;
-            cboMaterial.SelectedIndexChanged += cboMaterial_SelectedIndexChanged;
-            cboMaterial.Anchor = AnchorStyles.Top | AnchorStyles.Right
-                                                  | AnchorStyles.Left;
+            groupBoxFlags2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBoxFlags2.Controls.Add(chkFlagUnknown1);
+            groupBoxFlags2.Controls.Add(chkFlagUnknown2);
+            groupBoxFlags2.Controls.Add(chkFlagUnknown3);
+            groupBoxFlags2.Controls.Add(chkFlagUnknown4);
+            groupBoxFlags2.Location = new System.Drawing.Point(104, 102);
+            groupBoxFlags2.Margin = new Padding(0);
+            groupBoxFlags2.Name = "groupBoxFlags2";
+            groupBoxFlags2.Padding = new Padding(0);
+            groupBoxFlags2.Size = new System.Drawing.Size(105, 160);
+            groupBoxFlags2.TabIndex = 14;
+            groupBoxFlags2.TabStop = false;
             // 
-            // cboType
+            // chkFlagUnknown1
             // 
-            cboType.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboType.FormattingEnabled = true;
-            cboType.Location = new System.Drawing.Point(66, 4);
-            cboType.Name = "cboType";
-            cboType.Size = new System.Drawing.Size(139, 21);
-            cboType.TabIndex = 5;
-            cboType.SelectedIndexChanged += cboType_SelectedIndexChanged;
-            cboType.Anchor = AnchorStyles.Top | AnchorStyles.Right
-                                              | AnchorStyles.Left;
+            chkFlagUnknown1.Location = new System.Drawing.Point(8, 17);
+            chkFlagUnknown1.Margin = new Padding(0);
+            chkFlagUnknown1.Name = "chkFlagUnknown1";
+            chkFlagUnknown1.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown1.TabIndex = 3;
+            chkFlagUnknown1.Text = "Unknown 1";
+            chkFlagUnknown1.UseVisualStyleBackColor = true;
+            chkFlagUnknown1.CheckedChanged += chkFlagUnknown1_CheckedChanged;
             // 
-            // label5
+            // chkFlagUnknown2
             // 
-            label5.Location = new System.Drawing.Point(7, 25);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(53, 21);
-            label5.TabIndex = 8;
-            label5.Text = "Material:";
-            label5.TextAlign = ContentAlignment.MiddleRight;
+            chkFlagUnknown2.Location = new System.Drawing.Point(8, 33);
+            chkFlagUnknown2.Margin = new Padding(0);
+            chkFlagUnknown2.Name = "chkFlagUnknown2";
+            chkFlagUnknown2.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown2.TabIndex = 3;
+            chkFlagUnknown2.Text = "Unknown 2";
+            chkFlagUnknown2.UseVisualStyleBackColor = true;
+            chkFlagUnknown2.CheckedChanged += chkFlagUnknown2_CheckedChanged;
             // 
-            // labelType
+            // chkFlagUnknown3
             // 
-            labelType.Location = new System.Drawing.Point(7, 4);
-            labelType.Name = "labelType";
-            labelType.Size = new System.Drawing.Size(53, 21);
-            labelType.TabIndex = 8;
-            labelType.Text = "Type:";
-            labelType.TextAlign = ContentAlignment.MiddleRight;
+            chkFlagUnknown3.Location = new System.Drawing.Point(8, 49);
+            chkFlagUnknown3.Margin = new Padding(0);
+            chkFlagUnknown3.Name = "chkFlagUnknown3";
+            chkFlagUnknown3.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown3.TabIndex = 3;
+            chkFlagUnknown3.Text = "Unknown 3";
+            chkFlagUnknown3.UseVisualStyleBackColor = true;
+            chkFlagUnknown3.CheckedChanged += chkFlagUnknown3_CheckedChanged;
+            // 
+            // chkFlagUnknown4
+            // 
+            chkFlagUnknown4.Location = new System.Drawing.Point(8, 65);
+            chkFlagUnknown4.Margin = new Padding(0);
+            chkFlagUnknown4.Name = "chkFlagUnknown4";
+            chkFlagUnknown4.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown4.TabIndex = 3;
+            chkFlagUnknown4.Text = "Unknown 4";
+            chkFlagUnknown4.UseVisualStyleBackColor = true;
+            chkFlagUnknown4.CheckedChanged += chkFlagUnknown4_CheckedChanged;
+
+
             // 
             // pnlPointProps
             // 
-            pnlPointProps.Controls.Add(label2);
+            pnlPointProps.Controls.Add(pnlPointPropsY);
             pnlPointProps.Controls.Add(numY);
-            pnlPointProps.Controls.Add(label1);
+            pnlPointProps.Controls.Add(pnlPointPropsX);
             pnlPointProps.Controls.Add(numX);
             pnlPointProps.Dock = DockStyle.Bottom;
             pnlPointProps.Location = new System.Drawing.Point(0, -85);
@@ -739,51 +799,55 @@ namespace System.Windows.Forms
             pnlPointProps.TabIndex = 15;
             pnlPointProps.Visible = false;
             // 
-            // label2
+            // pnlPointPropsX
             // 
-            label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new System.Drawing.Point(18, 32);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(42, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Y";
-            label2.TextAlign = ContentAlignment.MiddleRight;
+            pnlPointPropsX.BorderStyle = BorderStyle.FixedSingle;
+            pnlPointPropsX.Location = new System.Drawing.Point(18, 13);
+            pnlPointPropsX.Name = "pnlPointPropsX";
+            pnlPointPropsX.Size = new System.Drawing.Size(20, 20);
+            pnlPointPropsX.TabIndex = 1;
+            pnlPointPropsX.Text = "X";
+            pnlPointPropsX.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // numY
+            // pnlPointPropsY
             // 
-            numY.BorderStyle = BorderStyle.FixedSingle;
-            numY.Integral = false;
-            numY.Location = new System.Drawing.Point(59, 32);
-            numY.MaximumValue = 3.402823E+38F;
-            numY.MinimumValue = -3.402823E+38F;
-            numY.Name = "numY";
-            numY.Size = new System.Drawing.Size(100, 20);
-            numY.TabIndex = 2;
-            numY.Text = "0";
-            numY.ValueChanged += numY_ValueChanged;
-            // 
-            // label1
-            // 
-            label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(18, 13);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(42, 20);
-            label1.TabIndex = 1;
-            label1.Text = "X";
-            label1.TextAlign = ContentAlignment.MiddleRight;
+            pnlPointPropsY.BorderStyle = BorderStyle.FixedSingle;
+            pnlPointPropsY.Location = new System.Drawing.Point(18, 32);
+            pnlPointPropsY.Name = "pnlPointPropsY";
+            pnlPointPropsY.Size = new System.Drawing.Size(20, 20);
+            pnlPointPropsY.TabIndex = 3;
+            pnlPointPropsY.Text = "Y";
+            pnlPointPropsY.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numX
             // 
             numX.BorderStyle = BorderStyle.FixedSingle;
             numX.Integral = false;
-            numX.Location = new System.Drawing.Point(59, 13);
+            numX.Location = new System.Drawing.Point(37, 13);
             numX.MaximumValue = 3.402823E+38F;
             numX.MinimumValue = -3.402823E+38F;
             numX.Name = "numX";
-            numX.Size = new System.Drawing.Size(100, 20);
+            numX.Size = new System.Drawing.Size(152, 20);
             numX.TabIndex = 0;
             numX.Text = "0";
             numX.ValueChanged += numX_ValueChanged;
+            numX.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            // 
+            // numY
+            // 
+            numY.BorderStyle = BorderStyle.FixedSingle;
+            numY.Integral = false;
+            numY.Location = new System.Drawing.Point(37, 32);
+            numY.MaximumValue = 3.402823E+38F;
+            numY.MinimumValue = -3.402823E+38F;
+            numY.Name = "numY";
+            numY.Size = new System.Drawing.Size(152, 20);
+            numY.TabIndex = 2;
+            numY.Text = "0";
+            numY.ValueChanged += numY_ValueChanged;
+            numY.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+
             // 
             // pnlObjProps
             // 
@@ -793,9 +857,9 @@ namespace System.Windows.Forms
             pnlObjProps.Controls.Add(btnUnlink);
             pnlObjProps.Controls.Add(btnRelink);
             pnlObjProps.Controls.Add(txtBone);
-            pnlObjProps.Controls.Add(label4);
+            pnlObjProps.Controls.Add(boneLabel);
             pnlObjProps.Controls.Add(txtModel);
-            pnlObjProps.Controls.Add(label3);
+            pnlObjProps.Controls.Add(boneModel);
             pnlObjProps.Dock = DockStyle.Bottom;
             pnlObjProps.Location = new System.Drawing.Point(0, -15);
             pnlObjProps.Name = "pnlObjProps";
@@ -864,14 +928,14 @@ namespace System.Windows.Forms
             txtBone.Size = new System.Drawing.Size(126, 20);
             txtBone.TabIndex = 3;
             // 
-            // label4
+            // boneLabel
             // 
-            label4.Location = new System.Drawing.Point(4, 23);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(42, 20);
-            label4.TabIndex = 2;
-            label4.Text = "Bone:";
-            label4.TextAlign = ContentAlignment.MiddleRight;
+            boneLabel.Location = new System.Drawing.Point(4, 23);
+            boneLabel.Name = "boneLabel";
+            boneLabel.Size = new System.Drawing.Size(42, 20);
+            boneLabel.TabIndex = 2;
+            boneLabel.Text = "Bone:";
+            boneLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // txtModel
             // 
@@ -881,27 +945,27 @@ namespace System.Windows.Forms
             txtModel.Size = new System.Drawing.Size(126, 20);
             txtModel.TabIndex = 1;
             // 
-            // label3
+            // boneModel
             // 
-            label3.Location = new System.Drawing.Point(4, 3);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(42, 20);
-            label3.TabIndex = 0;
-            label3.Text = "Model:";
-            label3.TextAlign = ContentAlignment.MiddleRight;
+            boneModel.Location = new System.Drawing.Point(4, 3);
+            boneModel.Name = "boneModel";
+            boneModel.Size = new System.Drawing.Size(42, 20);
+            boneModel.TabIndex = 0;
+            boneModel.Text = "Model:";
+            boneModel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // panel4
+            // animationPanel
             // 
-            panel4.Controls.Add(btnPlayAnims);
-            panel4.Controls.Add(btnPrevFrame);
-            panel4.Controls.Add(btnNextFrame);
-            panel4.Dock = DockStyle.Bottom;
-            panel4.Enabled = false;
-            panel4.Location = new System.Drawing.Point(0, 197);
-            panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(209, 24);
-            panel4.TabIndex = 17;
-            panel4.Visible = false;
+            animationPanel.Controls.Add(btnPlayAnims);
+            animationPanel.Controls.Add(btnPrevFrame);
+            animationPanel.Controls.Add(btnNextFrame);
+            animationPanel.Dock = DockStyle.Bottom;
+            animationPanel.Enabled = false;
+            animationPanel.Location = new System.Drawing.Point(0, 197);
+            animationPanel.Name = "animationPanel";
+            animationPanel.Size = new System.Drawing.Size(209, 24);
+            animationPanel.TabIndex = 17;
+            animationPanel.Visible = false;
             // 
             // btnPlayAnims
             // 
@@ -950,36 +1014,36 @@ namespace System.Windows.Forms
             _modelPanel.MouseMove += new MouseEventHandler(_modelPanel_MouseMove);
             _modelPanel.MouseUp += new MouseEventHandler(_modelPanel_MouseUp);
             // 
-            // panel1
+            // toolsStripPanel
             // 
-            panel1.BackColor = Color.WhiteSmoke;
-            panel1.Controls.Add(toolStrip1);
-            panel1.Controls.Add(btnResetRot);
-            panel1.Controls.Add(trackBar1);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(481, 25);
-            panel1.TabIndex = 2;
+            toolsStripPanel.BackColor = Color.WhiteSmoke;
+            toolsStripPanel.Controls.Add(toolsStrip);
+            toolsStripPanel.Controls.Add(btnResetRot);
+            toolsStripPanel.Controls.Add(trackBar1);
+            toolsStripPanel.Dock = DockStyle.Top;
+            toolsStripPanel.Location = new System.Drawing.Point(0, 0);
+            toolsStripPanel.Name = "toolsStripPanel";
+            toolsStripPanel.Size = new System.Drawing.Size(481, 25);
+            toolsStripPanel.TabIndex = 2;
             // 
-            // toolStrip1
+            // toolsStrip
             // 
-            toolStrip1.BackColor = Color.WhiteSmoke;
-            toolStrip1.Dock = DockStyle.Fill;
-            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
-            toolStrip1.Items.AddRange(new ToolStripItem[]
+            toolsStrip.BackColor = Color.WhiteSmoke;
+            toolsStrip.Dock = DockStyle.Fill;
+            toolsStrip.GripStyle = ToolStripGripStyle.Hidden;
+            toolsStrip.Items.AddRange(new ToolStripItem[]
             {
                 btnUndo,
                 btnRedo,
-                toolStripSeparator3,
+                toolsStrip_Sep3,
                 btnSplit,
                 btnMerge,
                 btnFlipColl,
                 btnDelete,
-                toolStripSeparator2,
+                toolsStrip_Sep2,
                 btnSameX,
                 btnSameY,
-                toolStripSeparator1,
+                toolsStrip_Sep1,
                 btnPerspectiveCam,
                 btnOrthographicCam,
                 btnResetCam,
@@ -991,11 +1055,11 @@ namespace System.Windows.Forms
                 btnResetSnap,
                 btnHelp
             });
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
-            toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new System.Drawing.Size(335, 25);
-            toolStrip1.TabIndex = 1;
-            toolStrip1.Text = "toolStrip1";
+            toolsStrip.Location = new System.Drawing.Point(0, 0);
+            toolsStrip.Name = "toolsStrip";
+            toolsStrip.Size = new System.Drawing.Size(335, 25);
+            toolsStrip.TabIndex = 1;
+            toolsStrip.Text = "toolsStrip";
             // 
             // btnUndo
             // 
@@ -1017,10 +1081,20 @@ namespace System.Windows.Forms
             btnRedo.Text = "Redo";
             btnRedo.Click += Redo;
             // 
-            // toolStripSeparator3
+            // toolsStrip_Sep1
             // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            toolsStrip_Sep1.Name = "toolsStrip_Sep1";
+            toolsStrip_Sep1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolsStrip_Sep2
+            // 
+            toolsStrip_Sep2.Name = "toolsStrip_Sep2";
+            toolsStrip_Sep2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolsStrip_Sep3
+            // 
+            toolsStrip_Sep3.Name = "toolsStrip_Sep3";
+            toolsStrip_Sep3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnSplit
             // 
@@ -1062,11 +1136,6 @@ namespace System.Windows.Forms
             btnDelete.Text = "Delete";
             btnDelete.Click += btnDelete_Click;
             // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnSameX
             // 
             btnSameX.DisplayStyle = ToolStripItemDisplayStyle.Text;
@@ -1084,11 +1153,6 @@ namespace System.Windows.Forms
             btnSameY.Size = new System.Drawing.Size(49, 19);
             btnSameY.Text = "Align Y";
             btnSameY.Click += btnSameY_Click;
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // btnPerspectiveCam
             // 
@@ -1170,7 +1234,7 @@ namespace System.Windows.Forms
             // btnHelp
             // 
             btnHelp.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnHelp.Image = (Image) resources.GetObject("btnHelp.Image");
+            btnHelp.Image = (Image)resources.GetObject("btnHelp.Image");
             btnHelp.ImageTransparentColor = Color.Magenta;
             btnHelp.Name = "btnHelp";
             btnHelp.Size = new System.Drawing.Size(36, 19);
@@ -1206,23 +1270,28 @@ namespace System.Windows.Forms
             trackBar1.Visible = false;
             trackBar1.Scroll += trackBar1_Scroll;
             // 
-            // contextMenuStrip3
+            // collisionOptions
             // 
-            contextMenuStrip3.Items.AddRange(new ToolStripItem[]
+            collisionOptions.Items.AddRange(new ToolStripItem[]
             {
+                clipboardCut,
+                clipboardCopy,
+                clipboardPaste,
+                clipboardDelete,
+                collisionOptions_Sep1,
                 moveToNewObjectToolStripMenuItem,
                 transformToolStripMenuItem,
                 alignXToolStripMenuItem,
                 alignYToolStripMenuItem,
-                toolStripSeparator4,
+                collisionOptions_Sep2,
                 splitToolStripMenuItem,
                 mergeToolStripMenuItem,
                 flipToolStripMenuItem,
                 _deleteToolStripMenuItem1
             });
-            contextMenuStrip3.Name = "contextMenuStrip3";
-            contextMenuStrip3.Size = new System.Drawing.Size(184, 208);
-            contextMenuStrip3.Opening += new CancelEventHandler(contextMenuStrip3_Opening);
+            collisionOptions.Name = "collisionOptions";
+            collisionOptions.Size = new System.Drawing.Size(184, 208);
+            collisionOptions.Opening += new CancelEventHandler(collisionOptions_Opening);
             // 
             // moveToNewObjectToolStripMenuItem
             // 
@@ -1230,10 +1299,16 @@ namespace System.Windows.Forms
             moveToNewObjectToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             moveToNewObjectToolStripMenuItem.Text = "Move to New Object";
             // 
-            // toolStripSeparator4
+            // collisionOptions_Sep1
             // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new System.Drawing.Size(180, 6);
+            collisionOptions_Sep1.Name = "collisionOptions_Sep1";
+            collisionOptions_Sep1.Size = new System.Drawing.Size(180, 6);
+            // 
+            // 
+            // collisionOptions_Sep2
+            // 
+            collisionOptions_Sep2.Name = "collisionOptions_Sep2";
+            collisionOptions_Sep2.Size = new System.Drawing.Size(180, 6);
             // 
             // splitToolStripMenuItem
             // 
@@ -1283,24 +1358,93 @@ namespace System.Windows.Forms
             alignYToolStripMenuItem.Text = "Align Y";
             alignYToolStripMenuItem.Click += btnSameY_Click;
             // 
+            // clipboardCut
+            // 
+            clipboardCut.Name = "clipboardCut";
+            clipboardCut.Size = new System.Drawing.Size(183, 22);
+            clipboardCut.Text = "Cut";
+            clipboardCut.Click += btnCut_Click;
+            // 
+            // clipboardCopy
+            // 
+            clipboardCopy.Name = "clipboardCopy";
+            clipboardCopy.Size = new System.Drawing.Size(183, 22);
+            clipboardCopy.Text = "Copy";
+            clipboardCopy.Click += btnCopy_Click;
+            // 
+            // clipboardPaste
+            // 
+            clipboardPaste.DropDown.Items.AddRange(new ToolStripItem[]
+            {
+                clipboardPaste_PasteDirectly,
+                clipboardPaste_PasteUI,
+                clipboardPaste_Sep1,
+                clipboardPaste_PasteRemoveSelected,
+                clipboardPaste_PasteOverrideSelected,
+            });
+            clipboardPaste.Name = "clipboardPaste";
+            clipboardPaste.Size = new System.Drawing.Size(183, 22);
+            clipboardPaste.Text = "Paste";
+            clipboardPaste.Click += btnPaste_Click;
+            // 
+            // clipboardPaste_PasteDirectly
+            // 
+            clipboardPaste_PasteDirectly.Name = "clipboardPaste_PasteDirectly";
+            clipboardPaste_PasteDirectly.Size = new System.Drawing.Size(183, 22);
+            clipboardPaste_PasteDirectly.Text = "Paste Here";
+            clipboardPaste_PasteDirectly.Click += btnPasteDirectly_Click;
+            // 
+            // clipboardPaste_PasteUI
+            // 
+            clipboardPaste_PasteUI.Name = "clipboardPaste_PasteUI";
+            clipboardPaste_PasteUI.Size = new System.Drawing.Size(183, 22);
+            clipboardPaste_PasteUI.Text = "Advanced Paste";
+            clipboardPaste_PasteUI.Click += btnPasteUI_Click;
+            // 
+            // clipboardPaste_PasteRemoveSelected
+            // 
+            clipboardPaste_PasteRemoveSelected.Name = "clipboardPaste_PasteRemoveSelected";
+            clipboardPaste_PasteRemoveSelected.Size = new System.Drawing.Size(183, 22);
+            clipboardPaste_PasteRemoveSelected.Text = "Remove and Place Selected Collisions";
+            clipboardPaste_PasteRemoveSelected.CheckOnClick = true;
+            // 
+            // clipboardPaste_PasteOverrideSelected
+            // 
+            clipboardPaste_PasteOverrideSelected.Name = "clipboardPaste_PasteOverrideSelected";
+            clipboardPaste_PasteOverrideSelected.Size = new System.Drawing.Size(183, 22);
+            clipboardPaste_PasteOverrideSelected.Text = "Override Selected Collisions";
+            clipboardPaste_PasteOverrideSelected.CheckOnClick = true;
+            // 
+            // clipboardPaste_Sep1
+            // 
+            clipboardPaste_Sep1.Name = "clipboardPaste_Sep1";
+            clipboardPaste_Sep1.Size = new System.Drawing.Size(180, 6);
+            // 
+            // clipboardDelete
+            // 
+            clipboardDelete.Name = "clipboardDelete";
+            clipboardDelete.Size = new System.Drawing.Size(183, 22);
+            clipboardDelete.Text = "Delete Selected";
+            clipboardDelete.Click += btnDelete_Click;
+            // 
             // CollisionEditor
             // 
             BackColor = Color.Lavender;
-            Controls.Add(undoToolStrip);
+            Controls.Add(mainSplitter);
             Name = "CollisionEditor";
             Size = new System.Drawing.Size(694, 467);
-            undoToolStrip.Panel1.ResumeLayout(false);
-            undoToolStrip.Panel2.ResumeLayout(false);
-            ((ISupportInitialize) undoToolStrip).EndInit();
-            undoToolStrip.ResumeLayout(false);
-            redoToolStrip.Panel1.ResumeLayout(false);
-            redoToolStrip.Panel2.ResumeLayout(false);
-            ((ISupportInitialize) redoToolStrip).EndInit();
-            redoToolStrip.ResumeLayout(false);
-            contextMenuStrip2.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            contextMenuStrip1.ResumeLayout(false);
-            panel3.ResumeLayout(false);
+            mainSplitter.Panel1.ResumeLayout(false);
+            mainSplitter.Panel2.ResumeLayout(false);
+            ((ISupportInitialize)mainSplitter).EndInit();
+            mainSplitter.ResumeLayout(false);
+            collisionControlSplitter.Panel1.ResumeLayout(false);
+            collisionControlSplitter.Panel2.ResumeLayout(false);
+            ((ISupportInitialize)collisionControlSplitter).EndInit();
+            collisionControlSplitter.ResumeLayout(false);
+            modelTreeMenu.ResumeLayout(false);
+            visibilityCheckPanel.ResumeLayout(false);
+            lstCollObjectsMenu.ResumeLayout(false);
+            selectedMenuPanel.ResumeLayout(false);
             pnlPlaneProps.ResumeLayout(false);
             groupBoxFlags2.ResumeLayout(false);
             groupBoxFlags1.ResumeLayout(false);
@@ -1309,13 +1453,13 @@ namespace System.Windows.Forms
             pnlPointProps.PerformLayout();
             pnlObjProps.ResumeLayout(false);
             pnlObjProps.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
-            ((ISupportInitialize) trackBar1).EndInit();
-            contextMenuStrip3.ResumeLayout(false);
+            animationPanel.ResumeLayout(false);
+            toolsStripPanel.ResumeLayout(false);
+            toolsStripPanel.PerformLayout();
+            toolsStrip.ResumeLayout(false);
+            toolsStrip.PerformLayout();
+            ((ISupportInitialize)trackBar1).EndInit();
+            collisionOptions.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1343,6 +1487,15 @@ namespace System.Windows.Forms
         protected List<CollisionLink> _selectedLinks = new List<CollisionLink>();
         protected List<CollisionPlane> _selectedPlanes = new List<CollisionPlane>();
 
+        //We copy the selected variables from _selected... so that we have it in memory
+        protected byte _copyState = 0; //Is this even a good practice? 0 = none, 1 = Copying, 2 = Cutting
+        protected List<CollisionLink_S> _copiedLinks = new List<CollisionLink_S>();
+        protected List<CollisionPlane_S> _copiedPlanes = new List<CollisionPlane_S>();
+
+        protected SortedList<int, List<CollisionLink_S>> _copiedLinks2 = new SortedList<int, List<CollisionLink_S>>();
+        protected List<List<CollisionPlane>> _copiedPlanes2 = new List<List<CollisionPlane>>();
+		protected List<CollisionState> _copiedLinks3 = new List<CollisionState>();
+
         protected bool _selecting, _selectInverse;
         protected Vector3 _selectStart, _selectLast, _selectEnd;
         protected bool _creating;
@@ -1350,7 +1503,11 @@ namespace System.Windows.Forms
         protected CollisionState save;
         protected List<CollisionState> undoSaves = new List<CollisionState>();
         protected List<CollisionState> redoSaves = new List<CollisionState>();
+
         protected int saveIndex = 0;
+        // Why limit the amount of saves to 25? An option would be nice.
+        public int maxSaveCount = 25;
+
         protected bool hasMoved = false;
 
         public CollisionEditor()
@@ -1368,10 +1525,20 @@ namespace System.Windows.Forms
             pnlPointProps.Dock = DockStyle.Fill;
 
             _updating = true;
-            cboMaterial.DataSource = CollisionTerrain.Terrains.Take(0x20).ToList(); // Take unexpanded collisions
-            cboType.DataSource = Enum.GetValues(typeof(CollisionPlaneType));
+            cboMaterial.DataSource = getMaterials(); // Take unexpanded collisions
+            cboType.DataSource = getCollisionPlaneTypes();
             _updating = false;
         }
+
+        public List<CollisionTerrain> getMaterials()
+        {
+            return CollisionTerrain.Terrains.Take(0x20).ToList();
+        }
+        public Array getCollisionPlaneTypes()
+        {
+            return Enum.GetValues(typeof(CollisionPlaneType));
+        }
+
 
         protected void TargetChanged(CollisionNode node)
         {
@@ -1401,34 +1568,24 @@ namespace System.Windows.Forms
 
         protected virtual void SelectionModified()
         {
-            _selectedPlanes.Clear();
-            foreach (CollisionLink l in _selectedLinks)
-            {
-                foreach (CollisionPlane p in l._members)
-                {
-                    if (_selectedLinks.Contains(p._linkLeft) &&
-                        _selectedLinks.Contains(p._linkRight) &&
-                        !_selectedPlanes.Contains(p))
-                    {
-                        _selectedPlanes.Add(p);
-                    }
-                }
-            }
+            CheckPlanes(ref _selectedLinks, ref _selectedPlanes);
 
             pnlPlaneProps.Visible = false;
             pnlObjProps.Visible = false;
             pnlPointProps.Visible = false;
-            panel3.Height = 0;
+            selectedMenuPanel.Height = 0;
 
+            //Selected Planes are used for actual planes and overrides the collision data (such as Ground Type, etc.)
             if (_selectedPlanes.Count > 0)
             {
                 pnlPlaneProps.Visible = true;
-                panel3.Height = 205;
+                selectedMenuPanel.Height = 205;
             }
+            //Selected links are used for getting an specific point in that collision
             else if (_selectedLinks.Count == 1)
             {
                 pnlPointProps.Visible = true;
-                panel3.Height = 70;
+                selectedMenuPanel.Height = 70;
             }
 
             UpdatePropPanels();
@@ -1519,13 +1676,13 @@ namespace System.Windows.Forms
                 foreach (MDL0Node n in _targetNode._parent.FindChildrenByTypeInGroup(null, ResourceType.MDL0,
                     _targetNode.GroupID))
                 {
-                    TreeNode modelNode = new TreeNode(n._name) {Tag = n, Checked = true};
+                    TreeNode modelNode = new TreeNode(n._name) { Tag = n, Checked = true };
                     modelTree.Nodes.Add(modelNode);
                     _models.Add(n);
 
                     foreach (MDL0BoneNode bone in n._linker.BoneCache)
                     {
-                        modelNode.Nodes.Add(new TreeNode(bone._name) {Tag = bone, Checked = true});
+                        modelNode.Nodes.Add(new TreeNode(bone._name) { Tag = bone, Checked = true });
                     }
 
                     _modelPanel.AddTarget(n);
@@ -1550,7 +1707,7 @@ namespace System.Windows.Forms
                     obj._render = true;
                     lstObjects.Items.Add(obj, true);
 
-                    MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
+                    MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode)m).Name == obj._modelName)
                         .FirstOrDefault() as MDL0Node;
 
                     if (model != null)
@@ -1608,6 +1765,7 @@ namespace System.Windows.Forms
             lstObjects.Items.Remove(_selectedObject);
             _selectedObject = null;
             ClearSelection();
+
             if (lstObjects.Items.Count > 0)
             {
                 if (lstObjects.Items.Count > index)
@@ -1640,11 +1798,11 @@ namespace System.Windows.Forms
             pnlPlaneProps.Visible = false;
             pnlPointProps.Visible = false;
             pnlObjProps.Visible = false;
-            panel3.Height = 0;
+            selectedMenuPanel.Height = 0;
             if (_selectedObject != null)
             {
                 pnlObjProps.Visible = true;
-                panel3.Height = 130;
+                selectedMenuPanel.Height = 130;
                 UpdatePropPanels();
             }
         }
@@ -1676,7 +1834,7 @@ namespace System.Windows.Forms
                         {
                             if (bNode.Text == _selectedObject._boneName)
                             {
-                                _snapMatrix = ((MDL0BoneNode) bNode.Tag)._inverseBindMatrix;
+                                _snapMatrix = ((MDL0BoneNode)bNode.Tag)._inverseBindMatrix;
                                 break;
                             }
                         }
@@ -1738,7 +1896,7 @@ namespace System.Windows.Forms
                         continue;
                     }
 
-                    Vector3 point = (Vector3) link.Value;
+                    Vector3 point = (Vector3)link.Value;
 
                     if (_selectInverse && point.Contained(_selectStart, _selectEnd, 0.0f))
                     {
@@ -1958,7 +2116,7 @@ namespace System.Windows.Forms
 
                 if (!move && depth < 1.0f)
                 {
-                    point = (Vector2) target;
+                    point = (Vector2)target;
 
                     //Hit-detect points first
                     foreach (CollisionObject obj in _targetNode.Children)
@@ -2099,14 +2257,15 @@ namespace System.Windows.Forms
                     }
                 }
 
-                //Nothing found :(
+                // Nothing found :(
 
-                //Trace ray to Z axis
+                // Trace ray to Z axis
                 target = Vector3.IntersectZ(target, _modelPanel.CurrentViewport.UnProject(e.X, e.Y, 0.0f), 0.0f);
-                point = (Vector2) target;
+                point = (Vector2)target;
 
                 if (create)
                 {
+                    // Create Link (if no other links are selected)
                     if (_selectedLinks.Count == 0)
                     {
                         if (_selectedObject == null)
@@ -2127,11 +2286,12 @@ namespace System.Windows.Forms
                         _modelPanel.Invalidate();
                         return;
                     }
+                    // If there's a link (aka Point), then create another point/target
                     else if (_selectedLinks.Count == 1)
                     {
-                        //Create new plane extending to point
+                        // Create new plane extending to point
                         CollisionLink link = _selectedLinks[0];
-                        _selectedLinks[0] = link.Branch((Vector2) target);
+                        _selectedLinks[0] = link.Branch((Vector2)target);
                         _selectedLinks[0]._highlight = true;
                         link._highlight = false;
                         SelectionModified();
@@ -2193,7 +2353,7 @@ namespace System.Windows.Forms
                         _creating = true;
                         foreach (CollisionLink l in _selectedLinks)
                         {
-                            links.Add(l.Branch((Vector2) target));
+                            links.Add(l.Branch((Vector2)target));
                             l._highlight = false;
                         }
 
@@ -2211,9 +2371,9 @@ namespace System.Windows.Forms
                             }
                         }
 
+                        link._highlight = true;
                         _selectedLinks.Clear();
                         _selectedLinks.Add(link);
-                        link._highlight = true;
                         SelectionModified();
                         _modelPanel.Invalidate();
 
@@ -2273,11 +2433,17 @@ namespace System.Windows.Forms
             else if (e.Button == MouseButtons.Right)
             {
                 DateTime _RCend = DateTime.UtcNow;
-                if (_RCend - _RCstart <= TimeSpan.FromSeconds(0.5) && _selectedLinks != null &&
-                    _selectedLinks.Count > 0)
-                {
-                    //contextMenuStrip3.Show(Cursor.Position);
-                }
+
+				if (!hasMoved)
+				{
+					//Removed so that we show the menu regardless of whether or not the user has selected any collisions
+					if ((_RCend - _RCstart) <= TimeSpan.FromMilliseconds(150))
+					{
+						if (_copiedLinks.Count > 0 || _copiedPlanes.Count > 0 || _copiedLinks2.Count > 0 || _copiedLinks3.Count > 0 ||
+							_selectedLinks.Count > 0 || _selectedPlanes.Count > 0 || _copiedPlanes2.Count > 0)
+							collisionOptions.Show(Cursor.Position);
+					}
+				}
             }
         }
 
@@ -2324,7 +2490,7 @@ namespace System.Windows.Forms
                                           / (plane.PointLeft._x - plane.PointRight._x);
                                 float b = plane.PointRight._y - m * plane.PointRight._x;
                                 float y_target = m * x + b;
-                                //Console.WriteLine(y_target);
+
                                 if (Math.Abs(y_target - v2._y) <= Math.Abs(y_result - v2._y))
                                 {
                                     y_result = y_target;
@@ -2360,7 +2526,7 @@ namespace System.Windows.Forms
                 {
                     if (o is IModel)
                     {
-                        ((IModel) o).RenderBones(_modelPanel.CurrentViewport);
+                        ((IModel)o).RenderBones(_modelPanel.CurrentViewport);
                     }
                 }
             }
@@ -2372,10 +2538,7 @@ namespace System.Windows.Forms
 
             MDL0Node stgPos = null;
 
-            MDL0BoneNode CamBone0 = null,
-                CamBone1 = null,
-                DeathBone0 = null,
-                DeathBone1 = null;
+            MDL0BoneNode CamBone0 = null, CamBone1 = null, DeathBone0 = null, DeathBone1 = null;
 
             foreach (MDL0Node m in _models)
             {
@@ -2562,7 +2725,8 @@ namespace System.Windows.Forms
 
         protected void btnSplit_Click(object sender, EventArgs e)
         {
-            ClearUndoBuffer();
+            ClearUndoRedoBuffer();
+
             for (int i = _selectedLinks.Count; --i >= 0;)
             {
                 _selectedLinks[i].Split();
@@ -2576,7 +2740,7 @@ namespace System.Windows.Forms
 
         protected void btnMerge_Click(object sender, EventArgs e)
         {
-            ClearUndoBuffer();
+            ClearUndoRedoBuffer();
 
             for (int i = 0; i < _selectedLinks.Count - 1;)
             {
@@ -2707,28 +2871,8 @@ namespace System.Windows.Forms
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                if (_selectedPlanes.Count > 0)
-                {
-                    foreach (CollisionPlane plane in _selectedPlanes)
-                    {
-                        plane.Delete();
-                    }
-
-                    TargetNode.SignalPropertyChange();
-                }
-                else if (_selectedLinks.Count > 0)
-                {
-                    for (int i = 0; i < _selectedLinks.Count; i++)
-                    {
-                        _selectedLinks[i].Pop();
-                    }
-
-                    TargetNode.SignalPropertyChange();
-                }
-
-                ClearSelection();
-                SelectionModified();
-                _modelPanel.Invalidate();
+                //Moved delete so that it can be used with cutting and don't have to recall this variable multiple times
+                DeleteSelected();
             }
             else if (ModifierKeys == Keys.Control)
             {
@@ -2898,7 +3042,7 @@ namespace System.Windows.Forms
             _updating = true;
             foreach (CollisionPlane plane in _selectedPlanes)
             {
-                plane._material = ((CollisionTerrain) cboMaterial.SelectedItem).ID;
+                plane._material = ((CollisionTerrain)cboMaterial.SelectedItem).ID;
             }
 
             _updating = false;
@@ -2916,7 +3060,7 @@ namespace System.Windows.Forms
             _updating = true;
             foreach (CollisionPlane plane in _selectedPlanes)
             {
-                plane.Type = (CollisionPlaneType) cboType.SelectedItem;
+                plane.Type = (CollisionPlaneType)cboType.SelectedItem;
                 if (!plane.IsRotating)
                 {
                     if (!plane.IsFloor)
@@ -2959,6 +3103,7 @@ namespace System.Windows.Forms
 
             TargetNode.SignalPropertyChange();
             _updating = true;
+
             bool selection = chkTypeCharacters.Checked;
             foreach (CollisionPlane p in _selectedPlanes)
             {
@@ -3151,11 +3296,14 @@ namespace System.Windows.Forms
 
             _updating = true;
             TargetNode.SignalPropertyChange();
+
             bool selection = chkFallThrough.Checked;
             CollisionPlaneType firstType = _selectedPlanes[0].Type;
+
             bool firstIsRotating = _selectedPlanes[0].IsRotating;
             bool allSameType = true;
             bool allNonCharacters = !_selectedPlanes[0].IsCharacters;
+
             foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsFallThrough = selection;
@@ -3221,12 +3369,15 @@ namespace System.Windows.Forms
             _updating = true;
             TargetNode.SignalPropertyChange();
             bool selection = chkLeftLedge.Checked;
+
             CollisionPlaneType firstType = _selectedPlanes[0].Type;
+
             bool firstIsRotating = _selectedPlanes[0].IsRotating;
             bool allSameType = true;
             bool allNonCharacters = !_selectedPlanes[0].IsCharacters;
             bool anyNoLedgeFloors = false;
             bool allNoLedge = true;
+
             foreach (CollisionPlane p in _selectedPlanes)
             {
                 bool noLedge = false;
@@ -3354,8 +3505,10 @@ namespace System.Windows.Forms
 
             _updating = false;
             TargetNode.SignalPropertyChange();
+
             bool selection = chkRightLedge.Checked;
             CollisionPlaneType firstType = _selectedPlanes[0].Type;
+
             bool firstIsRotating = _selectedPlanes[0].IsRotating;
             bool allSameType = true;
             bool allNonCharacters = !_selectedPlanes[0].IsCharacters;
@@ -3492,11 +3645,14 @@ namespace System.Windows.Forms
 
             _updating = true;
             TargetNode.SignalPropertyChange();
+
             bool selection = chkNoWalljump.Checked;
             CollisionPlaneType firstType = _selectedPlanes[0].Type;
-            bool firstIsRotating = _selectedPlanes[0].IsRotating;
+
             bool allSameType = true;
+            bool firstIsRotating = _selectedPlanes[0].IsRotating;
             bool allNonCharacters = !_selectedPlanes[0].IsCharacters;
+
             foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsNoWalljump = selection;
@@ -3827,7 +3983,7 @@ namespace System.Windows.Forms
         {
             if (e.Node.Tag is MDL0Node)
             {
-                ((MDL0Node) e.Node.Tag).IsRendering = e.Node.Checked;
+                ((MDL0Node)e.Node.Tag).IsRendering = e.Node.Checked;
                 if (!_updating)
                 {
                     _updating = true;
@@ -3841,7 +3997,7 @@ namespace System.Windows.Forms
             }
             else if (e.Node.Tag is MDL0BoneNode)
             {
-                ((MDL0BoneNode) e.Node.Tag)._render = e.Node.Checked;
+                ((MDL0BoneNode)e.Node.Tag)._render = e.Node.Checked;
             }
 
             if (!_updating)
@@ -3887,7 +4043,7 @@ namespace System.Windows.Forms
             }
 
             txtBone.Text = _selectedObject._boneName = node.Text;
-            _selectedObject.LinkedBone = (MDL0BoneNode) node.Tag;
+            _selectedObject.LinkedBone = (MDL0BoneNode)node.Tag;
             txtModel.Text = _selectedObject._modelName = node.Parent.Text;
             TargetNode.SignalPropertyChange();
             _modelPanel.Invalidate();
@@ -3902,7 +4058,7 @@ namespace System.Windows.Forms
             }
 
             txtBone.Text = _selectedObject._boneName = node.Text;
-            _selectedObject.LinkedBone = (MDL0BoneNode) node.Tag;
+            _selectedObject.LinkedBone = (MDL0BoneNode)node.Tag;
             txtModel.Text = _selectedObject._modelName = node.Parent.Text;
             if (_selectedObject._points != null)
             {
@@ -3954,6 +4110,558 @@ namespace System.Windows.Forms
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            DeleteSelected();
+        }
+
+        protected void modelTreeMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (modelTree.SelectedNode == null || !(modelTree.SelectedNode.Tag is MDL0BoneNode))
+            {
+                e.Cancel = true;
+            }
+        }
+
+        protected void lstCollObjectsMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (_selectedObject == null)
+            {
+                lstCollObjectsMenu.Items[1].Visible = lstCollObjectsMenu.Items[2].Visible =
+                    lstCollObjectsMenu.Items[3].Visible = lstCollObjectsMenu.Items[4].Visible =
+                        lstCollObjectsMenu.Items[5].Visible = lstCollObjectsMenu.Items[6].Visible =
+                            lstCollObjectsMenu.Items[7].Visible = false;
+            }
+            else
+            {
+                lstCollObjectsMenu.Items[1].Visible = lstCollObjectsMenu.Items[2].Visible =
+                    lstCollObjectsMenu.Items[3].Visible = lstCollObjectsMenu.Items[4].Visible =
+                        lstCollObjectsMenu.Items[5].Visible = lstCollObjectsMenu.Items[6].Visible =
+                            lstCollObjectsMenu.Items[7].Visible = true;
+            }
+        }
+
+        protected void collisionOptions_Opening(object sender, CancelEventArgs e)
+        {
+            bool ThereAreCopiedStuff = (_copiedLinks.Count > 0) || (_copiedPlanes.Count > 0) || (_copiedPlanes2.Count > 0) || (_copiedLinks3.Count > 0);
+
+			//This shows the extensive menus if a link is selected. Planes also dictate the visibility.
+			if (_selectedLinks != null && _selectedLinks.Count > 0)
+            {
+                //We show every single collision options items so that we don't have to deal
+                //with later code.
+                ToggleCollisionOptionsItemVisibility(true);
+
+                //The usual "Control me" algorithm
+                mergeToolStripMenuItem.Visible = alignXToolStripMenuItem.Visible =
+                    alignYToolStripMenuItem.Visible = _selectedLinks != null && _selectedLinks.Count > 1;
+                moveToNewObjectToolStripMenuItem.Visible =
+                    flipToolStripMenuItem.Visible = _selectedPlanes != null && _selectedPlanes.Count > 0;
+                moveToNewObjectToolStripMenuItem.Visible = false;
+
+                //collisionOptions.Items[0].Visible = collisionOptions.Items[1].Visible = 
+                //collisionOptions.Items[2].Visible = collisionOptions.Items[3].Visible = 
+                //collisionOptions.Items[4].Visible = collisionOptions.Items[6].Visible = 
+                //collisionOptions.Items[7].Visible = (_selectedPlanes != null && _selectedPlanes.Count > 0);
+            }
+            else
+            {
+                // We hide every single one of them
+                ToggleCollisionOptionsItemVisibility(false);
+
+                // We show paste only if there are copied items on the clipboard.
+                clipboardPaste.Visible = ThereAreCopiedStuff;
+            }
+
+            //Trace.WriteLine("copiedStuff: " + ThereAreCopiedStuff);
+            clipboardPaste.Enabled = ThereAreCopiedStuff;
+        }
+
+        //Used so that every item in collisionOptions are visible or not
+        //Please change this algorithm if you think there's a better way
+        private void ToggleCollisionOptionsItemVisibility(bool visible)
+        {
+            for (int i = 0; i < collisionOptions.Items.Count; ++i)
+                (collisionOptions.Items[i]).Visible = visible;
+        }
+
+        #region Clipboard Operations
+        #region Clipboard Events
+        //Here we check the amount of selected items, copy its selections first then delete the selected collisions
+        protected void btnCut_Click(object sender, EventArgs e)
+        {
+            CopySelected();
+            DeleteSelected();
+
+            _copyState = 2;
+        }
+        //Here we check the amount of selected items and copy it
+        protected void btnCopy_Click(object sender, EventArgs e)
+        {
+            CopySelected();
+            _copyState = 1;
+        }
+        // Here we decide what to paste based on the toggle option
+        // Is this even reasonable to make users make checks in terms
+        // of having to switch paste kinds or is this okay?
+        protected void btnPaste_Click(object sender, EventArgs e)
+        {
+            if (clipboardPaste_PasteDirectly.Checked)
+            {
+                btnPasteDirectly_Click(sender, e);
+            }
+            else if (clipboardPaste_PasteUI.Checked)
+            {
+                btnPasteUI_Click(sender, e);
+            }
+        }
+        //Here we paste the collisions directly into the collision system
+        protected void btnPasteDirectly_Click(object sender, EventArgs e)
+        {
+            clipboardPaste_PasteDirectly.Checked = true;
+            clipboardPaste_PasteUI.Checked = false;
+
+            this.PasteCopiedCollisions();
+        }
+
+        // Here we paste the collisions but in a ui that will take special care of it
+        protected void btnPasteUI_Click(object sender, EventArgs e)
+        {
+            clipboardPaste_PasteDirectly.Checked = false;
+            clipboardPaste_PasteUI.Checked = true;
+
+            ShowAdvancedPasteOptions();
+        }
+
+        public CollisionEditor_PasteOptions editorPO = null;
+        public void ShowAdvancedPasteOptions()
+        {
+            // Show the dialog
+            if (editorPO == null)
+            {
+                editorPO = new CollisionEditor_PasteOptions(this);
+                editorPO.Show();
+            }
+            // Else then we have to either make a new dialog that supports multi-pasting ui options
+            // (to be honest, it's actually that good) or stick to letting the user know that a dialog
+            // is already open (boo!)
+            else
+            {
+                if (editorPO.Visible)
+                    MessageBox.Show("Advanced Paste Options is already open.");
+                else
+                {
+                    editorPO = null;
+                    ShowAdvancedPasteOptions();
+                }
+            }
+        }
+        #endregion
+
+        // We copy its selected contents first. This will not override copied planes/links if we know that 
+        // the counts aren't 1. (This might aswell be broken)
+        protected void CopySelected()
+        {
+            if (_selectedLinks.Count == 0)
+            {
+                MessageBox.Show("There is nothing to copy.");
+                return;
+            }
+
+
+			//_copiedLinks3 = new List<CollisionState>();
+
+			//var copy = new CollisionState 
+			//{ 
+			//	_collisionLinks = new List<CollisionLink>(),
+			//	_linkVectors = new List<Vector2>(),
+			//	_create = true
+			//};
+				
+
+			//for (int index = 0; index < _selectedLinks.Count; index++)
+			//{
+			//	CollisionLink l = (CollisionLink)_selectedLinks[index].Clone();
+
+			//	copy._collisionLinks.Add(l);
+			//	copy._linkVectors.Add(l.Value);
+			//}
+
+			//_copiedLinks3.Add(copy);
+			//copy = null;
+
+
+   //       List<List<CollisionPlane>> Planes = new List<List<CollisionPlane>>();
+
+     //       foreach (var link in _selectedLinks)
+     //       {
+     //           var linkc = (CollisionLink)link.Clone();
+
+     //           if (linkc._members == null || linkc._members.Count == 0)
+     //           {
+     //               _copiedLinks.Add(new CollisionLink_S(linkc));
+     //           }
+     //           else
+     //           {
+     //               List<CollisionPlane> PlanesSub = new List<CollisionPlane>();
+
+     //               foreach (var plane in linkc._members)
+     //               {
+     //                   var planec = plane.Clone();
+
+     //                   PlanesSub.Add(planec);
+
+     //                   //var p = new CollisionPlane_S(planec);
+     //                   //_copiedPlanes.Add(p);
+     //               }
+
+     //               Planes.Add(PlanesSub);
+     //           }
+     //       }
+
+     //       if (Planes.Count > 0)
+     //       {
+     //           // Now we have to sort the list based on how much they have...
+
+     //           var sorter = new CollisionPlaneComparable();
+
+     //           Planes.Sort(sorter);
+     //           //Planes.Reverse();
+
+     //           // Now we have to remove any plane clones that are on the list.
+     //           // We start at the last part of the list since the last part has
+     //           // more planes than the eariler ones.
+     //           for (int pl = Planes.Count - 1; pl > 0; --pl)
+     //           {
+     //               int prev = pl - 1;
+
+     //               if (prev < 0)
+     //                   break;
+
+     //               List<CollisionPlane> planes = Planes[pl];
+					//if (planes.Count < 1)
+					//	continue;
+
+     //               for (int plp = prev; plp >= 0; --plp)
+     //               {
+     //                   List<CollisionPlane> planesPrev = Planes[plp];
+
+					//	if (planesPrev.Count < 1)
+					//		continue;
+
+     //                   bool planesHighestCount = (planes.Count > planesPrev.Count);
+     //                   bool plPrevHighestCount = (planesPrev.Count > planes.Count);
+                        
+     //                   int highestCount = planesHighestCount ? planes.Count : planesPrev.Count;
+
+     //                   for (int ind = 0; ind < highestCount; ind++)
+     //                   {
+
+     //                       if (planesHighestCount)
+     //                       {
+     //                           this.RemovePrevIndex(ref planes, ref planesPrev, ind, true);
+     //                       }
+     //                       else if (plPrevHighestCount)
+     //                       {
+     //                           this.RemovePrevIndex(ref planesPrev, ref planes, ind, false);
+     //                       }
+     //                       else
+     //                       {
+     //                           this.RemovePrevIndex(ref planes, ref planesPrev, ind, true);
+     //                       }
+     //                   }
+     //               }
+     //           }
+     //       }
+
+     //       this._copiedPlanes2 = Planes;
+
+
+
+            CopyCollisionLinks(ref _selectedLinks, ref _copiedLinks, true);
+
+            //Utils.CopyList(ref _selectedLinks, ref _copiedLinks, true);
+            //Utils.CopyList(ref _selectedPlanes, ref _copiedPlanes, true);
+
+            this.SelectionModified();
+        }
+
+        private void RemovePrevIndex(ref List<CollisionPlane> planesPrimary, ref List<CollisionPlane> planesSecondary, 
+            int ind, bool removeSecondary)
+        {
+            int?[] listsToRemove = new int?[planesSecondary.Count];
+            CollisionPlane plane1 = planesPrimary[ind];
+
+			Trace.WriteLine("index: "+ind+" | prim: "+planesPrimary.Count+" | sec: "+planesSecondary.Count);
+
+			if (ind >= planesSecondary.Count || 
+				planesPrimary == null || planesPrimary.Count < 1 || 
+				planesSecondary == null || planesSecondary.Count < 1)
+			{
+				return;
+			}
+
+            for (int i = 0; i < planesSecondary.Count; i++)
+            {
+                CollisionPlane plane2 = planesSecondary[ind];
+
+                if (CollisionPlane.PlaneEquals(plane1, plane2))
+                {
+                    listsToRemove[i] = i;
+                }
+            }
+
+            for (int i = 0; i < listsToRemove.Length; i++)
+            {
+                if (listsToRemove[i].HasValue)
+                {
+                    if (removeSecondary)
+                        planesSecondary.RemoveAt(listsToRemove[i].Value);
+                    else
+                        planesPrimary.RemoveAt(listsToRemove[i].Value);
+                }
+            }
+        }
+
+        private void CopyCollisionLinks(ref List<CollisionLink> links, ref List<CollisionLink_S> links_S, bool from)
+        {
+            //From means that the original links will override/create a new link
+            if (from)
+            {
+                links_S.Clear();
+
+                CollisionLink last = null;
+				List<CollisionPlane_S> PlanesID = new List<CollisionPlane_S>();
+
+				int planeID = 0;
+
+				//We get a list of links.
+				for (int i = links.Count - 1; i >= 0; --i)
+                {
+					CollisionLink link = links[i];
+
+					//We then get a list of planes that this link has.
+					var planes = link._members;
+
+					for (int ip = planes.Count - 1; ip >= 0; --ip)
+					{
+						CollisionPlane cp = planes[ip];
+
+						//We first check if the links are not equal to the main link being read.
+						if (!CollisionLink.LinkEquals(link, cp._linkRight) && !cp._linkLeft._highlight)
+						{
+							continue;
+						}
+						else if (!CollisionLink.LinkEquals(link, cp._linkRight) && !cp._linkRight._highlight)
+						{
+							continue;
+						}
+
+						//We now create a plane that does not use any links yet.
+						var cp_s = new CollisionPlane_S(ref cp, planeID, false);
+
+
+
+						planeID++;
+					}
+
+
+					CollisionLink_S cl = new CollisionLink_S(link);
+                    links_S.Add(cl);
+
+					
+
+                    last = link;
+                }
+				//foreach (var link in links)
+    //            {
+    //                //var linkc = (CollisionLink)link.Clone();
+
+    //                //if (last != null)
+    //                //{
+    //                //    if (last._members != null && last._members.Count > 0)
+    //                //    {
+    //                //        for (int m = 0; m < last._members.Count; m++)
+    //                //        {
+    //                //            CollisionPlane cp = last._members[m];
+
+    //                //        }
+    //                //    }
+    //                //}
+
+
+    //                CollisionLink_S cl = new CollisionLink_S(link);
+    //                links_S.Add(cl);
+
+					
+
+    //                last = link;
+    //            }
+            }
+            else
+            {
+                links.Clear();
+
+                foreach (var link_s in links_S)
+                {
+                    
+                }
+            }
+        }
+
+        public void PasteCopiedCollisions()
+        {
+			//if (_selectedLinks.Count == 0)
+			//{
+			//    if (_selectedObject == null)
+			//    {
+			//        MessageBox.Show("You need to select a collision object.");
+			//        return;
+			//    }
+			//}
+
+			//if (_copiedLinks.Count == 0)
+			//{
+			//    MessageBox.Show("You do not have anything copied.");
+			//    return;
+			//}
+
+			CreateUndo();
+
+            if (clipboardPaste_PasteOverrideSelected.Checked)
+            {
+                if (_selectedLinks.Count == 1)
+                {
+                    //Create new plane extending to point
+                    //CollisionLink link = _selectedLinks[0];
+
+                    //_copiedLinks[0]
+
+                    //_selectedLinks[0] = link.Branch((Vector2)target);
+                    //_selectedLinks[0]._highlight = true;
+                    //link._highlight = false;
+                    //SelectionModified();
+                    //_modelPanel.Invalidate();
+
+                    ////Hover new point so it can be moved
+                    //BeginHover(target);
+                }
+                else if (_selectedPlanes.Count > 0)
+                {
+
+                }
+
+                return;
+            }
+            else if (clipboardPaste_PasteRemoveSelected.Checked)
+            {
+                DeleteSelected();
+            }
+            else
+            {
+                ClearSelection();
+            }
+
+            if (_copiedLinks.Count < 1)
+                return;
+
+            _selectedLinks.Clear();
+
+
+
+			//if (_copiedLinks3 == null || _copiedLinks3.Count < 1)
+			//	return;
+
+			//CollisionState cs = _copiedLinks3[0];
+
+			//for (int i = 0; i < cs._collisionLinks.Count; i++)
+			//{
+			//	CollisionLink cl = cs._collisionLinks[i];
+
+			//	_selectedLinks.Add(cl);
+			//	_selectedLinks[i].Value = cs._linkVectors[i];
+			//	_selectedLinks[i]._highlight = true;
+			//}
+
+			//SelectionModified();
+			//_modelPanel.Invalidate();
+
+
+			////Failed algorithm #2
+			//for (int i = 0; i < _copiedPlanes2.Count; i++)
+			//{
+			//	List<CollisionPlane> planes = _copiedPlanes2[i];
+
+			//	CollisionLink clL = new CollisionLink(_selectedObject, planes[0]._linkLeft._rawValue);
+			//	CollisionLink clR = new CollisionLink(_selectedObject, planes[0]._linkRight._rawValue);
+			//	CollisionPlane branch = new CollisionPlane(_selectedObject, clL, clR);
+			//	branch._flags = planes[0]._flags;
+			//	branch._flags2 = planes[0]._flags2;
+			//	branch._type = planes[0]._type;
+
+			//	clL._highlight = true;
+			//	clR._highlight = true;
+
+			//	_selectedLinks.Add(clL);
+			//	_selectedLinks.Add(clR);
+			//	//_selectedPlanes.Add(branch);
+
+			//	for (int i2 = 1; i2 < planes.Count; i2++)
+			//	{
+			//		CollisionPlane cp = planes[i2];
+
+			//	}
+
+			//	SelectionModified();
+			//	_modelPanel.Invalidate();
+			//}
+
+
+
+			//This is _copiedLinks algorithm
+			{
+				CollisionLink l = new CollisionLink(_selectedObject, _copiedLinks[0].RawValue);
+				//CollisionLink l = new CollisionLink(_selectedObject, _copiedLinks[0].RawValue).Branch(_copiedLinks[0].RawValue);
+				_selectedLinks.Add(l);
+				l._highlight = true;
+
+				if (_copiedLinks.Count > 1)
+				{
+					for (int a = 1; a < _copiedLinks.Count; a++)
+					{
+						CollisionLink_S v = _copiedLinks[a];
+
+						CollisionLink last = _selectedLinks[a - 1];
+						CollisionLink recent = new CollisionLink(_selectedObject, v.RawValue);
+
+						CollisionPlane branchPlane = new CollisionPlane(_selectedObject, last, recent);
+						if (v.Members != null && v.Members.Count > 0)
+						{
+							for (int vm = 0; vm < 1/*v.Members.Count*/; vm++)
+							{
+								CollisionPlane_S p = v.Members[vm];
+								p.ApplyToOriginal(ref branchPlane);
+							}
+						}
+
+						//CollisionLink recent = last.Branch(v.RawValue);
+						//_selectedLinks[a - 1] = recent;
+						//_selectedLinks[a - 1]._highlight = true;
+
+						recent._highlight = true;
+
+						_selectedLinks.Add(recent);
+					}
+				}
+
+				SelectionModified();
+				_modelPanel.Invalidate();
+			}
+		}
+		#endregion
+
+		// Delete selected items
+		// callClearSel means that we will clear the selection
+		protected void DeleteSelected(bool callClearSel = true)
+        {
             if (_selectedPlanes.Count > 0)
             {
                 foreach (CollisionPlane plane in _selectedPlanes)
@@ -3973,45 +4681,11 @@ namespace System.Windows.Forms
                 TargetNode.SignalPropertyChange();
             }
 
-            ClearSelection();
+            if (callClearSel)
+                ClearSelection();
+
             SelectionModified();
             _modelPanel.Invalidate();
-        }
-
-        protected void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
-        {
-            if (modelTree.SelectedNode == null || !(modelTree.SelectedNode.Tag is MDL0BoneNode))
-            {
-                e.Cancel = true;
-            }
-        }
-
-        protected void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-            if (_selectedObject == null)
-            {
-                contextMenuStrip1.Items[1].Visible = contextMenuStrip1.Items[2].Visible =
-                    contextMenuStrip1.Items[3].Visible = contextMenuStrip1.Items[4].Visible =
-                        contextMenuStrip1.Items[5].Visible = contextMenuStrip1.Items[6].Visible =
-                            contextMenuStrip1.Items[7].Visible = false;
-            }
-            else
-            {
-                contextMenuStrip1.Items[1].Visible = contextMenuStrip1.Items[2].Visible =
-                    contextMenuStrip1.Items[3].Visible = contextMenuStrip1.Items[4].Visible =
-                        contextMenuStrip1.Items[5].Visible = contextMenuStrip1.Items[6].Visible =
-                            contextMenuStrip1.Items[7].Visible = true;
-            }
-        }
-
-        protected void contextMenuStrip3_Opening(object sender, CancelEventArgs e)
-        {
-            mergeToolStripMenuItem.Visible = alignXToolStripMenuItem.Visible =
-                alignYToolStripMenuItem.Visible = _selectedLinks != null && _selectedLinks.Count > 1;
-            moveToNewObjectToolStripMenuItem.Visible =
-                flipToolStripMenuItem.Visible = _selectedPlanes != null && _selectedPlanes.Count > 0;
-            moveToNewObjectToolStripMenuItem.Visible = false;
-            //contextMenuStrip3.Items[0].Visible = contextMenuStrip3.Items[1].Visible = contextMenuStrip3.Items[2].Visible = contextMenuStrip3.Items[3].Visible = contextMenuStrip3.Items[4].Visible = contextMenuStrip3.Items[6].Visible = contextMenuStrip3.Items[7].Visible = (_selectedPlanes != null && _selectedPlanes.Count > 0);
         }
 
         protected void snapToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -4022,7 +4696,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _snapMatrix = ((MDL0BoneNode) node.Tag)._inverseBindMatrix;
+            _snapMatrix = ((MDL0BoneNode)node.Tag)._inverseBindMatrix;
             _modelPanel.Invalidate();
         }
 
@@ -4043,6 +4717,30 @@ namespace System.Windows.Forms
             _modelPanel.Invalidate();
         }
 
+        protected void CheckSaveIndex()
+        {
+            if (saveIndex < 0)
+            {
+                saveIndex = 0;
+            }
+
+            if (undoSaves.Count > maxSaveCount)
+            {
+                undoSaves.RemoveAt(0);
+                saveIndex--;
+            }
+        }
+
+        protected void ClearUndoRedoBuffer()
+        {
+            saveIndex = 0;
+            undoSaves.Clear();
+            redoSaves.Clear();
+            btnUndo.Enabled = btnRedo.Enabled = false;
+        }
+
+		//TODO: Why not make a UI that shows you what were undone? That way it is quicker
+		//and saves some time.
         protected void CreateUndo()
         {
             CheckSaveIndex();
@@ -4070,45 +4768,25 @@ namespace System.Windows.Forms
             save = null;
         }
 
-        protected void CheckSaveIndex()
-        {
-            if (saveIndex < 0)
-            {
-                saveIndex = 0;
-            }
-
-            if (undoSaves.Count > 25)
-            {
-                undoSaves.RemoveAt(0);
-                saveIndex--;
-            }
-        }
-
-        protected void ClearUndoBuffer()
-        {
-            saveIndex = 0;
-            undoSaves.Clear();
-            redoSaves.Clear();
-            btnUndo.Enabled = btnRedo.Enabled = false;
-        }
-
         protected void Undo(object sender, EventArgs e)
         {
             _selectedLinks.Clear();
 
             save = new CollisionState();
 
-            if (undoSaves[saveIndex - 1]._linkVectors != null) //XY Positions changed.
+            int index = saveIndex - 1;
+
+            if (undoSaves[index]._linkVectors != null) //XY Positions changed.
             {
                 save._collisionLinks = new List<CollisionLink>();
                 save._linkVectors = new List<Vector2>();
 
-                for (int i = 0; i < undoSaves[saveIndex - 1]._collisionLinks.Count; i++)
+                for (int i = 0; i < undoSaves[index]._collisionLinks.Count; i++)
                 {
-                    _selectedLinks.Add(undoSaves[saveIndex - 1]._collisionLinks[i]);
-                    save._collisionLinks.Add(undoSaves[saveIndex - 1]._collisionLinks[i]);
-                    save._linkVectors.Add(undoSaves[saveIndex - 1]._collisionLinks[i].Value);
-                    _selectedLinks[i].Value = undoSaves[saveIndex - 1]._linkVectors[i];
+                    _selectedLinks.Add(undoSaves[index]._collisionLinks[i]);
+                    save._collisionLinks.Add(undoSaves[index]._collisionLinks[i]);
+                    save._linkVectors.Add(undoSaves[index]._collisionLinks[i].Value);
+                    _selectedLinks[i].Value = undoSaves[index]._linkVectors[i];
                 }
             }
 
@@ -4133,13 +4811,14 @@ namespace System.Windows.Forms
         {
             _selectedLinks.Clear();
 
-            for (int i = 0; i < redoSaves[undoSaves.Count - saveIndex - 1]._collisionLinks.Count; i++)
+            int index = undoSaves.Count - saveIndex - 1;
+            for (int i = 0; i < redoSaves[index]._collisionLinks.Count; i++)
             {
-                _selectedLinks.Add(redoSaves[undoSaves.Count - saveIndex - 1]._collisionLinks[i]);
-                _selectedLinks[i].Value = redoSaves[undoSaves.Count - saveIndex - 1]._linkVectors[i];
+                _selectedLinks.Add(redoSaves[index]._collisionLinks[i]);
+                _selectedLinks[i].Value = redoSaves[index]._linkVectors[i];
             }
 
-            redoSaves.RemoveAt(undoSaves.Count - saveIndex - 1);
+            redoSaves.RemoveAt(index);
             saveIndex++;
 
             if (redoSaves.Count == 0)
@@ -4230,6 +4909,158 @@ namespace System.Windows.Forms
                     _modelPanel.Invalidate();
                 }
             }
+        }
+
+        protected void CheckPlanes(ref List<CollisionLink> _links, ref List<CollisionPlane> _planes)
+        {
+            _planes.Clear();
+
+            foreach (CollisionLink l in _links)
+            {
+                foreach (CollisionPlane p in l._members)
+                {
+                    if (_links.Contains(p._linkLeft) && _links.Contains(p._linkRight) && !_planes.Contains(p))
+                    {
+                        _planes.Add(p);
+                    }
+                }
+            }
+        }
+    }
+
+    [Serializable]
+    public struct CollisionLink_S
+    {
+        public CollisionObject Parent;
+        public int EncodeIndex;
+
+        public Vector2 RawValue;
+
+        public List<CollisionPlane_S> Members;
+
+        // A way to know which index this object is. For example, because there are a bunch of 
+        // links that might be equal in terms of RawValue, Members, and its parent, this index
+        // serves to make sure that only a link serves as a parent
+        public int LinkIndex;
+
+        public CollisionLink_S(CollisionLink orig,  bool callPlaneMembers = true)
+        {
+            Parent = orig._parent;
+            RawValue = orig._rawValue;
+            EncodeIndex = orig._encodeIndex;
+
+            //List<CollisionPlane_S> members = new List<CollisionPlane_S>();
+            //if (callPlaneMembers)
+            //{
+            //    foreach (var member in orig._members)
+            //    {
+            //        members.Add(new CollisionPlane_S(ref member, -1));
+            //    }
+            //}
+
+            LinkIndex = 0;
+            Members = null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="link1"></param>
+        /// <param name="link2"></param>
+        /// <param name="strict">If set to true, this means that even Parent of that link will have to be the same. </param>
+        /// <returns></returns>
+        public static bool SameLink(CollisionLink_S link1, CollisionLink_S link2, bool strict = false)
+        {
+            if (strict)
+            {
+                if (link1.Parent != link2.Parent)
+                    return false;
+            }
+
+            if (link1.EncodeIndex != link2.EncodeIndex)
+                return false;
+
+            if (link1.RawValue != link2.RawValue)
+                return false;
+            if (link1.Members.Count != link2.Members.Count)
+                return false;
+
+            for (int i = 0; i < link1.Members.Count; i++)
+            {
+                CollisionPlane_S l1m = link1.Members[i];
+                CollisionPlane_S l2m = link2.Members[i];
+
+                if (l1m.EncodeIndex != l2m.EncodeIndex)
+                    return false;
+                if (l1m.Flags != l2m.Flags)
+                    return false;
+                if (l1m.Flags2 != l2m.Flags2)
+                    return false;
+                if (l1m.Type != l2m.Type)
+                    return false;
+            }
+
+            return true;
+        }
+    }
+
+    [Serializable]
+    public struct CollisionPlane_S
+    {
+        public CollisionObject Parent;
+        public int EncodeIndex;
+
+        public CollisionLink_S LinkLeft;
+        public CollisionLink_S LinkRight;
+
+        public CollisionPlaneFlags Flags;
+        public CollisionPlaneFlags2 Flags2;
+        public CollisionPlaneType Type;
+
+		public int ID;
+		public CollisionPlane Reference;
+
+		public CollisionPlane_S(ref CollisionPlane orig, int id, bool makeLinks = true)
+        {
+            Parent = orig._parent;
+            EncodeIndex = orig._encodeIndex;
+
+            Flags = orig._flags;
+            Flags2 = orig._flags2;
+            Type = orig._type;
+
+			ID = id;
+			Reference = orig;
+
+            if (makeLinks)
+            {
+                LinkLeft = new CollisionLink_S(orig.LinkLeft, false);
+                LinkRight = new CollisionLink_S(orig.LinkRight, false);
+                return;
+            }
+			else
+			{
+				LinkLeft = new CollisionLink_S();
+				LinkRight = new CollisionLink_S();
+			}
+        }
+
+        public void ApplyToOriginal(ref CollisionPlane plane)
+        {
+            plane._flags = Flags;
+            plane._flags2 = Flags2;
+            plane._type = Type;
+        }
+    }
+
+    public class CollisionPlaneComparable : IComparer<List<CollisionPlane>>
+    {
+        public int Compare(List<CollisionPlane> x, List<CollisionPlane> y)
+        {
+            if (x == null || y == null)
+                return 0;
+
+            return x.Count.CompareTo(y.Count);
         }
     }
 }
