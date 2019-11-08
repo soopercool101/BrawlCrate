@@ -1,8 +1,9 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib
+namespace BrawlLib.SSBB
 {
     public unsafe class CompactStringTable
     {

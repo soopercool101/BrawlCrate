@@ -1,6 +1,9 @@
-﻿using System.ComponentModel;
+﻿using BrawlLib.Internal;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI
 {
     public partial class TransformEditor : Form
     {

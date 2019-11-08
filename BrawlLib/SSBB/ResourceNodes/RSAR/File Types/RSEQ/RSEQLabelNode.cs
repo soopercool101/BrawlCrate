@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBB.Types.Audio;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RSEQ
 {
     public unsafe class RSEQLabelNode : ResourceNode
     {

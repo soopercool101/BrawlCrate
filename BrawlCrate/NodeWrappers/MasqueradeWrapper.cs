@@ -1,5 +1,7 @@
 ﻿using BrawlLib;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.BrawlEx;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

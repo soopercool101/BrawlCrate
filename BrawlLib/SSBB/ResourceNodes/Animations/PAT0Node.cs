@@ -1,12 +1,18 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Animations
 {
     public unsafe class PAT0Node : NW4RAnimationNode
     {
@@ -1174,7 +1180,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(false)] public float FrameRate => 60;
-        [Browsable(false)] public System.Audio.IAudioStream Audio => null;
+        [Browsable(false)] public IAudioStream Audio => null;
         [Browsable(false)] public uint Frequency => 0;
         [Browsable(false)] public int ImageCount => Children.Count;
 

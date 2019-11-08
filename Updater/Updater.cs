@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,7 +13,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Compression;
+using Updater.UI;
+using DLProgressWindow = Updater.UI.DLProgressWindow;
 
 namespace Updater
 {
@@ -637,9 +639,10 @@ namespace Updater
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                MessageBox.Show(
-                    "ERROR: Current Canary version could not be found. Canary has been disabled. The latest stable build will be downloaded instead.");
-                await ForceDownloadStable(openFile);
+                if (manual)
+                {
+                    MessageBox.Show("ERROR: Current Canary version could not be found. Updates have been disabled.");
+                }
             }
         }
 

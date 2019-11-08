@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Modules
 {
     public class RELObjectNode : RELEntryNode
     {

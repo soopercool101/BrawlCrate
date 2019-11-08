@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Stage_Tables;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Stage_Tables
 {
     public unsafe class TBGCNode : StageTableNode
     {

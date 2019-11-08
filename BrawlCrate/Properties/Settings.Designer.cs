@@ -96,9 +96,9 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.ModelEditorSettings ViewerSettings {
+        public global::BrawlLib.Internal.ModelEditorSettings ViewerSettings {
             get {
-                return ((global::System.ModelEditorSettings)(this["ViewerSettings"]));
+                return ((global::BrawlLib.Internal.ModelEditorSettings)(this["ViewerSettings"]));
             }
             set {
                 this["ViewerSettings"] = value;

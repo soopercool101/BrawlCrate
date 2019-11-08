@@ -1,19 +1,19 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Graphics.REFF
 {
     public unsafe class REFFNode : NW4RArcEntryNode
     {
-        internal REFF* Header => (REFF*) WorkingUncompressed.Address;
+        internal Types.REFF* Header => (Types.REFF*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.REFF;
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
-            REFF* header = Header;
+            Types.REFF* header = Header;
 
             if (_name == null)
             {
@@ -51,12 +51,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            REFF* header = (REFF*) address;
+            Types.REFF* header = (Types.REFF*) address;
             header->_linkPrev = 0;
             header->_linkNext = 0;
             header->_padding = 0;
             header->_dataLength = length - 0x18;
-            header->_header._tag = header->_tag = REFF.Tag;
+            header->_header._tag = header->_tag = Types.REFF.Tag;
             header->_header.Endian = Endian.Big;
             header->_header._version = 7;
             header->_header._length = length;
@@ -84,7 +84,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((REFF*) source.Address)->_tag == REFF.Tag ? new REFFNode() : null;
+            return ((Types.REFF*) source.Address)->_tag == Types.REFF.Tag ? new REFFNode() : null;
         }
     }
 

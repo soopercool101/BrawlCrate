@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BrawlLib.Internal.Windows.Forms;
+using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager
+namespace BrawlCrate.BrawlManagers.StageManager
 {
     public partial class StageInfoControl : UserControl
     {

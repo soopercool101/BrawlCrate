@@ -1,9 +1,10 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Sound;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Subspace
 {
     [NodeWrapper(ResourceType.GSND)]
     public class GSNDWrapper : GenericWrapper

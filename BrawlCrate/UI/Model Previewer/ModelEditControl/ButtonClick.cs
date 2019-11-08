@@ -1,12 +1,26 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlLib;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes.Graphics;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using BrawlLib;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+#if !MONO
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
+
+namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 {
     public partial class ModelEditControl : ModelEditorBase
     {
@@ -147,7 +161,7 @@ namespace System.Windows.Forms
         private void ScreenCapBgLocText_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog d = new Ookii.Dialogs.VistaFolderBrowserDialog())
+            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog())
 #else
             using (FolderBrowserDialog d = new FolderBrowserDialog())
 #endif
@@ -382,7 +396,7 @@ namespace System.Windows.Forms
         private void LiveTextureFolderPath_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog d = new Ookii.Dialogs.VistaFolderBrowserDialog())
+            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog())
 #else
             using (FolderBrowserDialog d = new FolderBrowserDialog())
 #endif
@@ -397,7 +411,7 @@ namespace System.Windows.Forms
 
             if (string.IsNullOrEmpty(LiveTextureFolderPath.Text))
             {
-                LiveTextureFolderPath.Text = IO.Path.GetDirectoryName(Reflection.Assembly.GetEntryAssembly().Location);
+                LiveTextureFolderPath.Text = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             }
 
             modelPanel.RefreshReferences();

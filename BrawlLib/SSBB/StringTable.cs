@@ -1,9 +1,10 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace BrawlLib
+namespace BrawlLib.SSBB
 {
     public unsafe class StringTable : IEnumerable<string>, IEnumerable
     {

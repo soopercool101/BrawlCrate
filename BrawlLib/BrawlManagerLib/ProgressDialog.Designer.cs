@@ -1,4 +1,4 @@
-﻿namespace BrawlManagerLib {
+﻿namespace BrawlLib.BrawlManagerLib {
     partial class ProgressDialog {
         /// <summary>
         /// Required designer variable.

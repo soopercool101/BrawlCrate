@@ -1,12 +1,12 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
-using System.IO;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.Songs
 {
     public partial class SongNameBar : UserControl
     {

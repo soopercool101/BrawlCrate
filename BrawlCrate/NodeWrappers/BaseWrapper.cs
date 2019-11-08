@@ -1,4 +1,6 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlCrate.API;
+using BrawlCrate.UI;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

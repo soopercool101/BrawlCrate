@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBB.Types.Subspace.Animation;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Subspace.Animation
 {
     public unsafe class GMOVNode : ResourceNode
     {

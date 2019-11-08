@@ -1,11 +1,12 @@
-using BrawlManagerLib;
+using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.Songs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlCrate.SongManager.SongExport
+namespace BrawlCrate.BrawlManagers.SongManager.SongExport
 {
     /// <summary>
     /// Contains logic for user to export music song files with a format like

@@ -1,4 +1,6 @@
-﻿namespace BrawlCrate.StageManager {
+﻿using BrawlCrate.BrawlManagers.StageManager;
+
+namespace BrawlCrate.BrawlManagers.StageManager {
     partial class PortraitViewer {
         /// <summary> 
         /// Required designer variable.
@@ -27,7 +29,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.prevbase = new BrawlCrate.StageManager.ImagePreviewPanel();
+            this.prevbase = new ImagePreviewPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblLegacyBottomRight = new System.Windows.Forms.Label();
@@ -38,13 +40,13 @@
             this.lblPMAlt = new System.Windows.Forms.Label();
             this.lblPMTop = new System.Windows.Forms.Label();
             this.lblPM = new System.Windows.Forms.Label();
-            this.icon = new BrawlCrate.StageManager.ImagePreviewPanel();
+            this.icon = new ImagePreviewPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnGenerateName = new System.Windows.Forms.Button();
             this.lblIconTex = new System.Windows.Forms.Label();
-            this.frontstname = new BrawlCrate.StageManager.ImagePreviewPanel();
-            this.seriesicon = new BrawlCrate.StageManager.ImagePreviewPanel();
-            this.selmap_mark = new BrawlCrate.StageManager.ImagePreviewPanel();
+            this.frontstname = new ImagePreviewPanel();
+            this.seriesicon = new ImagePreviewPanel();
+            this.selmap_mark = new ImagePreviewPanel();
             this.fileSizeBar = new System.Windows.Forms.ProgressBar();
             this.fileSizeLabel = new System.Windows.Forms.Label();
             this.modifyPAT0 = new System.Windows.Forms.Button();
@@ -354,11 +356,11 @@
 
         #endregion
 
-        public BrawlCrate.StageManager.ImagePreviewPanel prevbase;
-        public BrawlCrate.StageManager.ImagePreviewPanel icon;
-        public BrawlCrate.StageManager.ImagePreviewPanel frontstname;
-        public BrawlCrate.StageManager.ImagePreviewPanel seriesicon;
-        public BrawlCrate.StageManager.ImagePreviewPanel selmap_mark;
+        public ImagePreviewPanel prevbase;
+        public ImagePreviewPanel icon;
+        public ImagePreviewPanel frontstname;
+        public ImagePreviewPanel seriesicon;
+        public ImagePreviewPanel selmap_mark;
         protected System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

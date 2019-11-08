@@ -1,4 +1,7 @@
-﻿namespace BrawlManagerLib {
+﻿using BrawlLib.Internal.Windows.Controls;
+
+namespace BrawlLib.BrawlManagerLib.Songs
+{
     partial class SongPanel {
         /// <summary> 
         /// Required designer variable.
@@ -25,9 +28,9 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.grid = new System.Windows.Forms.PropertyGrid();
-            this.app = new System.Windows.Forms.AudioPlaybackPanel();
+            this.app = new AudioPlaybackPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.songNameBar = new BrawlManagerLib.SongNameBar();
+            this.songNameBar = new BrawlLib.BrawlManagerLib.Songs.SongNameBar();
             this.lblFilename = new System.Windows.Forms.Label();
             this.nudVolume = new System.Windows.Forms.NumericUpDown();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -52,7 +55,6 @@
             this.app.Size = new System.Drawing.Size(300, 111);
             this.app.TabIndex = 1;
             this.app.TargetStreams = null;
-            this.app.Volume = null;
             this.app.AudioEnded += new System.EventHandler(this.app_AudioEnded);
             // 
             // panel1
@@ -128,8 +130,8 @@
         #endregion
 
         private System.Windows.Forms.PropertyGrid grid;
-        private System.Windows.Forms.AudioPlaybackPanel app;
-        private SongNameBar songNameBar;
+        private AudioPlaybackPanel app;
+        private BrawlLib.BrawlManagerLib.Songs.SongNameBar songNameBar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblFilename;
         private System.Windows.Forms.NumericUpDown nudVolume;

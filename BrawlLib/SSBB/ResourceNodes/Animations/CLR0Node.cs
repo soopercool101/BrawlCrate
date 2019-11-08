@@ -1,12 +1,15 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Animations
 {
     public unsafe class CLR0Node : NW4RAnimationNode
     {

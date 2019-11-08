@@ -1,9 +1,10 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Subspace.Hazards;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Subspace
 {
     [NodeWrapper(ResourceType.GWAT)]
     internal class GWATWrapper : GenericWrapper

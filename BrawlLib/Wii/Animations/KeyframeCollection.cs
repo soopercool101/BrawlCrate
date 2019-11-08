@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using System;
 using System.Collections.Generic;
 
 namespace BrawlLib.Wii.Animations

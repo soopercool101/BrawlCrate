@@ -1,4 +1,8 @@
-﻿namespace BrawlCrate.StageManager {
+﻿using BrawlLib.BrawlManagerLib;
+using BrawlLib.BrawlManagerLib.Songs;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+
+namespace BrawlCrate.BrawlManagers.StageManager {
     partial class StageManagerForm {
         /// <summary>
         /// Required designer variable.
@@ -24,16 +28,16 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ModelPanelViewport modelPanelViewport1 = new System.Windows.Forms.ModelPanelViewport();
+            ModelPanelViewport modelPanelViewport1 = new ModelPanelViewport();
             BrawlLib.OpenGL.GLCamera glCamera1 = new BrawlLib.OpenGL.GLCamera();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StageManagerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrawlManagers.StageManager.StageManagerForm));
             this.splitContainerLeft = new System.Windows.Forms.SplitContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.stageContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.clbTextures = new System.Windows.Forms.CheckedListBox();
-            this.modelPanel1 = new System.Windows.Forms.ModelPanel();
+            this.modelPanel1 = new ModelPanel();
             this.songContainerPanel = new System.Windows.Forms.Panel();
-            this.songPanel1 = new BrawlManagerLib.SongPanel();
+            this.songPanel1 = new SongPanel();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.songContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.msBinPanel = new System.Windows.Forms.Panel();
@@ -117,13 +121,13 @@
             this.brawlCrateStageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brawlCrateCommon5scselmapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.brawlSplitter5 = new BrawlManagerLib.BrawlSplitter();
+            this.brawlSplitter5 = new BrawlSplitter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.stageInfoControl1 = new BrawlCrate.StageManager.StageInfoControl();
-            this.brawlSplitter3 = new BrawlManagerLib.BrawlSplitter();
-            this.brawlSplitter1 = new BrawlManagerLib.BrawlSplitter();
-            this.brawlSplitter2 = new BrawlManagerLib.BrawlSplitter();
-            this.portraitViewer1 = new BrawlCrate.StageManager.PortraitViewer();
+            this.stageInfoControl1 = new BrawlManagers.StageManager.StageInfoControl();
+            this.brawlSplitter3 = new BrawlSplitter();
+            this.brawlSplitter1 = new BrawlSplitter();
+            this.brawlSplitter2 = new BrawlSplitter();
+            this.portraitViewer1 = new BrawlManagers.StageManager.PortraitViewer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeft)).BeginInit();
             this.splitContainerLeft.Panel1.SuspendLayout();
             this.splitContainerLeft.Panel2.SuspendLayout();
@@ -1006,7 +1010,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private StageInfoControl stageInfoControl1;
+        private BrawlManagers.StageManager.StageInfoControl stageInfoControl1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeDirectoryToolStripMenuItem;
@@ -1018,10 +1022,10 @@
         private System.Windows.Forms.ToolStripMenuItem useFullrelNamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ModelPanel modelPanel1;
+        private ModelPanel modelPanel1;
         private System.Windows.Forms.ToolStripMenuItem texturesToolStripMenuItem;
         private System.Windows.Forms.Panel msBinPanel;
-        private PortraitViewer portraitViewer1;
+        private BrawlManagers.StageManager.PortraitViewer portraitViewer1;
         private System.Windows.Forms.ToolStripMenuItem prevbaseSize;
         private System.Windows.Forms.ToolStripMenuItem prevbaseOriginalSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem x128ToolStripMenuItem;
@@ -1069,7 +1073,7 @@
         private System.Windows.Forms.CheckedListBox clbTextures;
         private System.Windows.Forms.ToolStripMenuItem deletepacrelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadbrstmsToolStripMenuItem;
-        private BrawlManagerLib.SongPanel songPanel1;
+        private SongPanel songPanel1;
         private System.Windows.Forms.ToolStripMenuItem exportbrstmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deletebrstmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentStageToolStripMenuItem;
@@ -1090,10 +1094,10 @@
         private System.Windows.Forms.ToolStripMenuItem loadCustomSSSToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem loadStagepacsToolStripMenuItem;
-        private BrawlManagerLib.BrawlSplitter brawlSplitter1;
-        private BrawlManagerLib.BrawlSplitter brawlSplitter2;
-        private BrawlManagerLib.BrawlSplitter brawlSplitter5;
-        private BrawlManagerLib.BrawlSplitter brawlSplitter3;
+        private BrawlSplitter brawlSplitter1;
+        private BrawlSplitter brawlSplitter2;
+        private BrawlSplitter brawlSplitter5;
+        private BrawlSplitter brawlSplitter3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem differentrelsForAlternateStagesPM36ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem x96ToolStripMenuItem;

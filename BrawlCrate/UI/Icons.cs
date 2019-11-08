@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BrawlCrate.Properties;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using BrawlCrate.Properties;
-using BrawlLib.SSBB.ResourceNodes;
 
-namespace BrawlCrate
+namespace BrawlCrate.UI
 {
     public static class Icons
     {

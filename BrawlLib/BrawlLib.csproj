@@ -18,15 +18,15 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>BrawlCrateLib v0.30 Hotfix 3</AssemblyTitle>
+    <AssemblyTitle>BrawlCrateLib v0.30 Hotfix 1</AssemblyTitle>
     <Product>BrawlCrateLib</Product>
     <Copyright>Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
 BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Copyright>
-    <AssemblyVersion>0.30.0.3</AssemblyVersion>
-    <FileVersion>0.30.0.3</FileVersion>
+    <AssemblyVersion>0.30.0.1</AssemblyVersion>
+    <FileVersion>0.30.0.1</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Configurations>Debug;Release;Mono;Canary</Configurations>
+    <Configurations>Debug;Release;Mono;Canary;Documentation</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>DEBUG</DefineConstants>
@@ -35,6 +35,12 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants />
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <DefineConstants />
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
@@ -73,6 +79,12 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <WarningLevel>4</WarningLevel>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineConstants />
+    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>CANARY</DefineConstants>
@@ -88,6 +100,11 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants />
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <DefineConstants />
     <WarningLevel>4</WarningLevel>
@@ -109,6 +126,10 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineConstants />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x64'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>CANARY</DefineConstants>
@@ -126,6 +147,13 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
@@ -158,7 +186,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <PackageId>BrawlCrateLib</PackageId>
     <Company>BrawlCrateLib</Company>
     <Authors>soopercool101, MarioDox, Syvkal, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
-    <Version>30.0.3</Version>
+    <Version>27.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CustomLists\FighterList.txt" />
@@ -173,9 +201,9 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     </When>
     <When Condition=" '$(Configuration)'=='Mono' ">
       <ItemGroup>
-        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\**" />
-        <EmbeddedResource Remove="System\Windows\Forms\Ookii.Dialogs\**" />
-        <None Remove="System\Windows\Forms\Ookii.Dialogs\**" />
+        <Compile Remove="Internal\Windows\Forms\Ookii.Dialogs\**" />
+        <EmbeddedResource Remove="Internal\Windows\Forms\Ookii.Dialogs\**" />
+        <None Remove="Internal\Windows\Forms\Ookii.Dialogs\**" />
       </ItemGroup>
     </When>
   </Choose>
@@ -215,7 +243,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\AttributeGrid.cs">
+    <Compile Update="Internal\Windows\Controls\AttributeGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Modeling\Collada\ColladaExporter.cs">
@@ -227,334 +255,334 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <Compile Update="Modeling\Collada\ColladaImporter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\Hex Editor\BuiltInContextMenu.cs">
+    <Compile Update="Internal\Windows\Controls\Hex Editor\BuiltInContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\Hex Editor\HexBox.cs">
+    <Compile Update="Internal\Windows\Controls\Hex Editor\HexBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\MDL0ObjectControl.cs">
+    <Compile Update="Internal\Windows\Controls\MDL0ObjectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\MDL0ObjectControl.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\MDL0ObjectControl.Designer.cs">
       <DependentUpon>MDL0ObjectControl.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Mouse.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Mouse.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Animation.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Animation.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Hotkeys.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Hotkeys.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Misc.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Misc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Properties.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Properties.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Variables.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Variables.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Undo.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Undo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\OpenedFilesPanel.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\OpenedFilesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\OpenedFilesPanel.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\OpenedFilesPanel.Designer.cs">
       <DependentUpon>OpenedFilesPanel.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\PPCOpCodeEditControl.cs">
+    <Compile Update="Internal\Windows\Controls\PPCOpCodeEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\PPCOpCodeEditControl.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\PPCOpCodeEditControl.Designer.cs">
       <DependentUpon>PPCOpCodeEditControl.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\RSARGroupEditor.cs">
+    <Compile Update="Internal\Windows\Controls\RSARGroupEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\RSARGroupEditor.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\RSARGroupEditor.Designer.cs">
       <DependentUpon>RSARGroupEditor.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\TexCoordControl.cs">
+    <Compile Update="Internal\Windows\Controls\TexCoordControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\TexCoordControl.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\TexCoordControl.Designer.cs">
       <DependentUpon>TexCoordControl.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\TexCoordRenderer.cs">
+    <Compile Update="Internal\Windows\Controls\TexCoordRenderer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\TexCoordRenderer.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\TexCoordRenderer.Designer.cs">
       <DependentUpon>TexCoordRenderer.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\MainWindowBase\Rendering.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\MainWindowBase\Rendering.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\EditAllDialog\SRT0.cs">
+    <Compile Update="Internal\Windows\Controls\EditAllDialog\SRT0.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\CHR0Editor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\CHR0Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\CLR0Editor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\CLR0Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\PAT0Editor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\PAT0Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\SCN0Editor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\SCN0Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\SHP0Editor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\SHP0Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\SRT0Editor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\SRT0Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\VertexEditor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\VertexEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\VIS0Editor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\VIS0Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Editors\WeightEditor.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Editors\WeightEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\Model Panel\ModelPanel.cs">
+    <Compile Update="Internal\Windows\Controls\Model Panel\ModelPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\BonesPanel.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\BonesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\KeyframePanel.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\KeyframePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\KeyframePanel.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\KeyframePanel.Designer.cs">
       <DependentUpon>KeyframePanel.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\PlaybackPanel.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\PlaybackPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\RightPanel.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\RightPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ModelViewer\Panels\RightPanel.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\ModelViewer\Panels\RightPanel.Designer.cs">
       <DependentUpon>RightPanel.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\MultipleInterpretationAttributeGrid.cs">
+    <Compile Update="Internal\Windows\Controls\MultipleInterpretationAttributeGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\PreviewPanel.cs">
+    <Compile Update="Internal\Windows\Controls\PreviewPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\PreviewPanel.designer.cs">
+    <Compile Update="Internal\Windows\Controls\PreviewPanel.designer.cs">
       <DependentUpon>PreviewPanel.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\InterpolationViewer.cs">
+    <Compile Update="Internal\Windows\Controls\InterpolationViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\InterpolationViewer.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\InterpolationViewer.Designer.cs">
       <DependentUpon>InterpolationViewer.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\RichTextBoxBordered.cs">
+    <Compile Update="Internal\Windows\Controls\RichTextBoxBordered.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\RichTextBoxBordered.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\RichTextBoxBordered.Designer.cs">
       <DependentUpon>RichTextBoxBordered.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\InterpolationEditor.cs">
+    <Compile Update="Internal\Windows\Controls\InterpolationEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\InterpolationEditor.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\InterpolationEditor.Designer.cs">
       <DependentUpon>InterpolationEditor.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\TransformAttributesControl.cs">
+    <Compile Update="Internal\Windows\Controls\TransformAttributesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\TransformAttributesControl.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\TransformAttributesControl.Designer.cs">
       <DependentUpon>TransformAttributesControl.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\TransparentPanel.cs">
+    <Compile Update="Internal\Windows\Controls\TransparentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\VideoPlaybackPanel.cs">
+    <Compile Update="Internal\Windows\Controls\VideoPlaybackPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\GoodColorControl2.cs">
+    <Compile Update="Internal\Windows\Controls\GoodColorControl2.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\ObjectOptimizerForm.cs">
+    <Compile Update="Internal\Windows\Forms\ObjectOptimizerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\ObjectOptimizerForm.Designer.cs">
+    <Compile Update="Internal\Windows\Forms\ObjectOptimizerForm.Designer.cs">
       <DependentUpon>ObjectOptimizerForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Forms\ModelViewerForm.cs">
+    <Compile Update="Internal\Windows\Forms\ModelViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\ModelViewerForm.Designer.cs">
+    <Compile Update="Internal\Windows\Forms\ModelViewerForm.Designer.cs">
       <DependentUpon>ModelViewerForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\PowerPcDisassembler.cs">
+    <Compile Update="Internal\Windows\Controls\PowerPcDisassembler.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\PowerPcDisassembler.Designer.cs">
+    <Compile Update="Internal\Windows\Controls\PowerPcDisassembler.Designer.cs">
       <DependentUpon>PowerPcDisassembler.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\EditAllDialog\CHR0.cs">
+    <Compile Update="Internal\Windows\Controls\EditAllDialog\CHR0.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\VisEditor.cs">
+    <Compile Update="Internal\Windows\Controls\VisEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\EditRSARFileDialog.cs">
+    <Compile Update="Internal\Windows\Forms\EditRSARFileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\SCN0FogEditControl.cs">
+    <Compile Update="Internal\Windows\Controls\SCN0FogEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\SCN0CameraEditControl.cs">
+    <Compile Update="Internal\Windows\Controls\SCN0CameraEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\SCN0LightEditControl.cs">
+    <Compile Update="Internal\Windows\Controls\SCN0LightEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\FrameCountChanger.cs">
+    <Compile Update="Internal\Windows\Forms\FrameCountChanger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\FrameCountChanger.Designer.cs">
+    <Compile Update="Internal\Windows\Forms\FrameCountChanger.Designer.cs">
       <DependentUpon>FrameCountChanger.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Forms\Section Editor\FormFind.cs">
+    <Compile Update="Internal\Windows\Forms\Section Editor\FormFind.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\Section Editor\FormGoTo.cs">
+    <Compile Update="Internal\Windows\Forms\Section Editor\FormGoTo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\Section Editor\SectionEditor.cs">
+    <Compile Update="Internal\Windows\Forms\Section Editor\SectionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\Section Editor\SectionEditor.Designer.cs">
+    <Compile Update="Internal\Windows\Forms\Section Editor\SectionEditor.Designer.cs">
       <DependentUpon>SectionEditor.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Forms\GCTEditor.cs">
+    <Compile Update="Internal\Windows\Forms\GCTEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\GCTEditor.Designer.cs">
+    <Compile Update="Internal\Windows\Forms\GCTEditor.Designer.cs">
       <DependentUpon>GCTEditor.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Forms\InterpolationForm.cs">
+    <Compile Update="Internal\Windows\Forms\InterpolationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\InterpolationForm.Designer.cs">
+    <Compile Update="Internal\Windows\Forms\InterpolationForm.Designer.cs">
       <DependentUpon>InterpolationForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Forms\ExportAllAskFormat.cs">
+    <Compile Update="Internal\Windows\Forms\ExportAllAskFormat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\ExportAllAskFormat.designer.cs">
+    <Compile Update="Internal\Windows\Forms\ExportAllAskFormat.designer.cs">
       <DependentUpon>ExportAllAskFormat.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\AnimEditControl.cs">
+    <Compile Update="Internal\Windows\Controls\AnimEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\AudioPlaybackPanel.cs">
+    <Compile Update="Internal\Windows\Controls\AudioPlaybackPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\BrstmConverterDialog.cs">
+    <Compile Update="Internal\Windows\Forms\BrstmConverterDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\BufferedPanel.cs">
+    <Compile Update="Internal\Windows\Controls\BufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\CLRControl.cs">
+    <Compile Update="Internal\Windows\Controls\CLRControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\EditAllDialog.cs">
+    <Compile Update="Internal\Windows\Forms\EditAllDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ShpAnimEditControl.cs">
+    <Compile Update="Internal\Windows\Controls\ShpAnimEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\StageModuleConverter.cs">
+    <Compile Update="Internal\Windows\Forms\StageModuleConverter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\HexEntryBox.cs">
+    <Compile Update="Internal\Windows\Forms\HexEntryBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\StringInputComboBox.cs">
+    <Compile Update="Internal\Windows\Controls\StringInputComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\TexAnimEditControl.cs">
+    <Compile Update="Internal\Windows\Controls\TexAnimEditControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\ObjectImporter.cs">
+    <Compile Update="Internal\Windows\Forms\ObjectImporter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\EditAllKeyframesDialog.cs">
+    <Compile Update="Internal\Windows\Forms\EditAllKeyframesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\CustomTrackBar.cs">
+    <Compile Update="Internal\Windows\Controls\CustomTrackBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\GLTexturePanel.cs">
+    <Compile Update="Internal\Windows\Controls\GLTexturePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\GLTextureWindow.cs">
+    <Compile Update="Internal\Windows\Forms\GLTextureWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\GoodColorControl.cs">
+    <Compile Update="Internal\Windows\Controls\GoodColorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\GoodColorDialog.cs">
+    <Compile Update="Internal\Windows\Forms\GoodColorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\GoodPictureBox.cs">
+    <Compile Update="Internal\Windows\Controls\GoodPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\GradientDialog.cs">
+    <Compile Update="Internal\Windows\Forms\GradientDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\MSBinEditor.cs">
+    <Compile Update="Internal\Windows\Controls\MSBinEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\MSBinTextBox.cs">
+    <Compile Update="Internal\Windows\Controls\MSBinTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\NumericInputBox.cs">
+    <Compile Update="Internal\Windows\Controls\NumericInputBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\ProxySplitter.cs">
+    <Compile Update="Internal\Windows\Controls\ProxySplitter.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\RenameDialog.cs">
+    <Compile Update="Internal\Windows\Forms\RenameDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Controls\SoundPackControl.cs">
+    <Compile Update="Internal\Windows\Controls\SoundPackControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\SoundPathChanger.cs">
+    <Compile Update="Internal\Windows\Forms\SoundPathChanger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\TextureConverterDialog.cs">
+    <Compile Update="Internal\Windows\Forms\TextureConverterDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\TransformAttributesForm.cs">
+    <Compile Update="Internal\Windows\Forms\TransformAttributesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\TransformAttributesForm.Designer.cs">
+    <Compile Update="Internal\Windows\Forms\TransformAttributesForm.Designer.cs">
       <DependentUpon>TransformAttributesForm.cs</DependentUpon>
     </Compile>
-    <Compile Update="System\Windows\Controls\GoodProgressBar.cs">
+    <Compile Update="Internal\Windows\Controls\GoodProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\ProgressWindow.cs">
+    <Compile Update="Internal\Windows\Forms\ProgressWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="System\Windows\Forms\ProgressWindow.designer.cs">
+    <Compile Update="Internal\Windows\Forms\ProgressWindow.designer.cs">
       <DependentUpon>ProgressWindow.cs</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -563,61 +591,58 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\Hex Editor\HexBox.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\Hex Editor\HexBox.resx">
       <DependentUpon>HexBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\MDL0ObjectControl.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\MDL0ObjectControl.resx">
       <DependentUpon>MDL0ObjectControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\CHR0Editor.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\ModelViewer\Editors\CHR0Editor.resx">
       <DependentUpon>CHR0Editor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\SRT0Editor.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\ModelViewer\Editors\SRT0Editor.resx">
       <DependentUpon>SRT0Editor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Panels\BonesPanel.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\ModelViewer\Panels\BonesPanel.resx">
       <DependentUpon>BonesPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Panels\OpenedFilesPanel.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\ModelViewer\Panels\OpenedFilesPanel.resx">
       <DependentUpon>OpenedFilesPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\InterpolationEditor.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\InterpolationEditor.resx">
       <DependentUpon>InterpolationEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\PowerPcDisassembler.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\PowerPcDisassembler.resx">
       <DependentUpon>PowerPcDisassembler.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\EditRSARFileDialog.resx">
+    <EmbeddedResource Update="Internal\Windows\Forms\EditRSARFileDialog.resx">
       <DependentUpon>EditRSARFileDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\Section Editor\FormFind.resx">
+    <EmbeddedResource Update="Internal\Windows\Forms\Section Editor\FormFind.resx">
       <DependentUpon>FormFind.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\Section Editor\SectionEditor.resx">
+    <EmbeddedResource Update="Internal\Windows\Forms\Section Editor\SectionEditor.resx">
       <DependentUpon>SectionEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\GCTEditor.resx">
+    <EmbeddedResource Update="Internal\Windows\Forms\GCTEditor.resx">
       <DependentUpon>GCTEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\AudioPlaybackPanel.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\AudioPlaybackPanel.resx">
       <DependentUpon>AudioPlaybackPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\BrstmConverterDialog.resx">
+    <EmbeddedResource Update="Internal\Windows\Forms\BrstmConverterDialog.resx">
       <DependentUpon>BrstmConverterDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\CLRControl.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\CLRControl.resx">
       <DependentUpon>CLRControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\SoundPackControl.resx">
+    <EmbeddedResource Update="Internal\Windows\Controls\SoundPackControl.resx">
       <DependentUpon>SoundPackControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\TextureConverterDialog.resx">
+    <EmbeddedResource Update="Internal\Windows\Forms\TextureConverterDialog.resx">
       <DependentUpon>TextureConverterDialog.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="OpenTK.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Update="CustomLists\AboutCustomLists.txt">

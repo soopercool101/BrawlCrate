@@ -1,8 +1,8 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.SCN0
 {
     public unsafe class SCN0LightSetNode : SCN0EntryNode
     {

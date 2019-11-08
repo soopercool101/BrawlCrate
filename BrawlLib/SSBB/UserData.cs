@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB
 {
     public class UserDataCollectionPropertyDescriptor : PropertyDescriptor
     {

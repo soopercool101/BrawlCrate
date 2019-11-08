@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BrawlLib.BrawlManagerLib.GCT.ReadOnly;
+using BrawlLib.BrawlManagerLib.Songs;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.GCT.ReadWrite
 {
     /// <summary>
     /// Allows read-write access to Custom Song Volume code.

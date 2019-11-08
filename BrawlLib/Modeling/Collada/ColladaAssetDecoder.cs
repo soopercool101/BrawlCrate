@@ -1,9 +1,10 @@
-﻿using BrawlLib.Wii.Models;
+﻿using BrawlLib.Internal;
+using BrawlLib.Wii.Models;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.Modeling
+namespace BrawlLib.Modeling.Collada
 {
     public unsafe partial class Collada
     {

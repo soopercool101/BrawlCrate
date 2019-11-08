@@ -1,10 +1,14 @@
-﻿using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_References;
+using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWAR;
+using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Audio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWSD
 {
     public unsafe class RWSDDataNode : RSARFileEntryNode
     {

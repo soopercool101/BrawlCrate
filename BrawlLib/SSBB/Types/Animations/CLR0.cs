@@ -1,8 +1,9 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.Types.Animations
 {
     [StructLayout(LayoutKind.Sequential)]
     internal unsafe struct CLR0v3

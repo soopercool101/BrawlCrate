@@ -1,10 +1,12 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SakuraiArchiveNode : ARCEntryNode
     {
@@ -233,7 +235,7 @@ namespace BrawlLib.SSBBTypes
                         //Still unhandled, so initialize as raw
                         if (section == null)
                         {
-                            section = Parse<RawDataNode>(offset);
+                            section = Parse<RawDataNode2>(offset);
                         }
                     }
                     else

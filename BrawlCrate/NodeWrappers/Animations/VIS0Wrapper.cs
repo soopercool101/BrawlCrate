@@ -1,10 +1,12 @@
 ﻿using BrawlLib;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Animations
 {
     [NodeWrapper(ResourceType.VIS0)]
     public class VIS0Wrapper : GenericWrapper

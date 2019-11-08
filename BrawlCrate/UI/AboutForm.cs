@@ -1,8 +1,8 @@
-﻿using System;
-using System.Audio;
+﻿using BrawlLib.Internal.Audio;
+using System;
 using System.Windows.Forms;
 
-namespace BrawlCrate
+namespace BrawlCrate.UI
 {
     public partial class AboutForm : Form
     {

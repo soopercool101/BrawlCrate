@@ -1,4 +1,7 @@
-﻿using BrawlCrate.Discord;
+﻿using BrawlCrate.API;
+using BrawlCrate.Discord;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Controls;
 using BrawlLib.SSBB;
 using System;
 using System.Collections.Generic;
@@ -6,7 +9,11 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlCrate
+#if !MONO
+    using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+#endif
+
+namespace BrawlCrate.UI
 {
     internal class SettingsDialog : Form
     {
@@ -1861,7 +1868,7 @@ namespace BrawlCrate
         private void BtnPythonBrowse_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog
+            using (VistaFolderBrowserDialog f = new VistaFolderBrowserDialog
                 {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog f = new FolderBrowserDialog())
@@ -1877,7 +1884,7 @@ namespace BrawlCrate
 
         private void BtnPythonDetect_Click(object sender, EventArgs e)
         {
-            API.BrawlAPI.PythonInstall(true, true);
+            BrawlAPI.PythonInstall(true, true);
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
         }
 
@@ -1921,7 +1928,7 @@ namespace BrawlCrate
 
         private void BtnFSharpDetect_Click(object sender, EventArgs e)
         {
-            API.BrawlAPI.FSharpInstall(true, true);
+            BrawlAPI.FSharpInstall(true, true);
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
         }
 
@@ -1959,7 +1966,7 @@ namespace BrawlCrate
         private void BtnManagerPathBrowse_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog
+            using (VistaFolderBrowserDialog f = new VistaFolderBrowserDialog
                 {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog f = new FolderBrowserDialog())

@@ -1,11 +1,11 @@
-﻿using BrawlLib.Modeling;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Modeling;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.MDL0
 {
     public unsafe class MDL0VertexNode : MDL0EntryNode
     {

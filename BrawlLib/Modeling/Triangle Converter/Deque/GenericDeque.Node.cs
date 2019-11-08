@@ -1,4 +1,6 @@
-namespace System.Collections.Generic
+using System;
+
+namespace BrawlLib.Modeling.Triangle_Converter.Deque
 {
     public partial class Deque<T>
     {

@@ -1,6 +1,9 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Drawing;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Textures;
 using System;
 using System.ComponentModel;
@@ -8,7 +11,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Graphics
 {
     public unsafe class REFTNode : NW4RArcEntryNode
     {

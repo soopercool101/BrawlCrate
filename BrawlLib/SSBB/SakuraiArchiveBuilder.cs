@@ -1,7 +1,9 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
 
-namespace BrawlLib.SSBBTypes
+namespace BrawlLib.SSBB
 {
     public class SakuraiArchiveBuilder
     {

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.Windows.Forms;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     public class NameDialog : Form
     {

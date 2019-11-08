@@ -1,11 +1,11 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Internal.IO;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib
 {
     public class TempFileCleanupException : AggregateException
     {

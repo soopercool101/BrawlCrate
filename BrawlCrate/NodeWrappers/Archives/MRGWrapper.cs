@@ -1,11 +1,13 @@
 ﻿using BrawlLib;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Archives
 {
     [NodeWrapper(ResourceType.MRG)]
     public class MRGWrapper : GenericWrapper

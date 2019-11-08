@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BrawlCrate.StageManager.SingleUseDialogs
+namespace BrawlCrate.BrawlManagers.StageManager.SingleUseDialogs
 {
     public partial class BatchAddPAT0Dialog : Form
     {

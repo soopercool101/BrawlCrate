@@ -1,12 +1,12 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.MDL0
 {
     public unsafe class MDL0ColorNode : MDL0EntryNode, IColorSource
     {

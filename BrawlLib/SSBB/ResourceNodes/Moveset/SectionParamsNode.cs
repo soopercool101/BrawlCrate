@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes;
+using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
-using BrawlLib.SSBBTypes;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Moveset
 {
     public unsafe class MoveDefSectionParamNode : MoveDefCharSpecificNode
     {

@@ -1,5 +1,8 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.Internal;
+using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.ResourceNodes.Modules;
+using BrawlLib.SSBB.Types;
+using BrawlLib.Wii;
 using BrawlLib.Wii.Compression;
 using System;
 using System.Collections.Generic;
@@ -7,7 +10,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Archives
 {
     public unsafe class ARCNode : ARCEntryNode
     {

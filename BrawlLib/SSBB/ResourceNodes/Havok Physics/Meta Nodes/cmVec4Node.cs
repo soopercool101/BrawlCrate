@@ -1,10 +1,10 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes
 {
     public unsafe class cmVec4Node : ClassMemberInstanceNode
     {

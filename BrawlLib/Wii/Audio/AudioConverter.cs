@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrawlLib.Internal.Windows.Forms;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 

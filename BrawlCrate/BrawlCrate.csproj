@@ -31,7 +31,7 @@
     <FileVersion>0.30.0.3</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Configurations>Debug;Release;Mono;Canary</Configurations>
+    <Configurations>Debug;Release;Mono;Canary;Documentation</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>DEBUG</DefineConstants>
@@ -39,6 +39,12 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineConstants />
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
     <DefineConstants />
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
@@ -81,6 +87,11 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|AnyCPU'">
+    <DefineConstants />
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
     <DefineConstants>CANARY</DefineConstants>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -92,6 +103,13 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DefineConstants />
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
     <DefineConstants />
     <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
@@ -115,6 +133,11 @@
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants />
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
     <DefineConstants />
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
@@ -154,6 +177,13 @@
     <Prefer32Bit>true</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants />
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants>CANARY</DefineConstants>
@@ -176,10 +206,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>4</WarningLevel>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>4</WarningLevel>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DocumentationFile />
+    <Optimize>false</Optimize>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
     <WarningLevel>4</WarningLevel>
@@ -208,6 +248,10 @@
     <EmbeddedResource Include="BrawlManagers\StageManager\XX.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Doxygen" Version="1.8.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="IronPython" Version="2.7.9" />
   </ItemGroup>
   <ItemGroup>
@@ -333,13 +377,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BrawlAPI\Loaders" />
-    <Folder Include="BrawlAPI\Plugins" />
+    <Folder Include="API\Loaders" />
+    <Folder Include="API\Plugins" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition=" '$(Configuration)'!='Mono' ">
     <Exec Command="if EXIST &quot;$(TargetDir)Updater.exe&quot; (&#xD;&#xA;  &quot;$(TargetDir)Updater.exe&quot; -killAll&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Documentation' (&#xD;&#xA;  if not '$(ConfigurationName)' == 'Mono' (&#xD;&#xA;    cd $(SolutionDir)ColorSmash\&#xD;&#xA;    rustup install stable-i686-pc-windows-gnu&#xD;&#xA;    rustup update stable-i686-pc-windows-gnu&#xD;&#xA;    cargo build --release --target i686-pc-windows-gnu&#xD;&#xA;  )&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)" />
   </Target>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition=" '$(Configuration)'!='Mono' ">
-    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)BrawlLib\InternalDocumentation\*&quot; &quot;$(TargetDir)\InternalDocumentation\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)BrawlAPI\Plugins\*&quot; &quot;$(TargetDir)\BrawlAPI\Plugins\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)BrawlAPI\Loaders\*&quot; &quot;$(TargetDir)\BrawlAPI\Loaders\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;if EXIST &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-gnu\release\color_smash.exe&quot; (&#xD;&#xA;  %25windir%25\system32\xcopy &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-gnu\release\color_smash.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)&#xD;&#xA;if '$(ConfigurationName)' == 'Documentation' (&#xD;&#xA;  del *.exe&#xD;&#xA;  del *.dll&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)\Plugins&quot;&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)\Loaders&quot;&#xD;&#xA;)" />
+    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)BrawlLib\InternalDocumentation\*&quot; &quot;$(TargetDir)\InternalDocumentation\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)BrawlAPI\Plugins\*&quot; &quot;$(TargetDir)\BrawlAPI\Plugins\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(ProjectDir)BrawlAPI\Loaders\*&quot; &quot;$(TargetDir)\BrawlAPI\Loaders\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;if EXIST &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-gnu\release\color_smash.exe&quot; (&#xD;&#xA;  %25windir%25\system32\xcopy &quot;$(SolutionDir)ColorSmash\target\i686-pc-windows-gnu\release\color_smash.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)&#xD;&#xA;if '$(ConfigurationName)' == 'Documentation' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;  doxygen $(SolutionDir)\doxygen.conf&#xD;&#xA;)" />
   </Target>
 </Project>

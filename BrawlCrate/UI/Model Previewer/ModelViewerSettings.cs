@@ -1,11 +1,20 @@
-﻿using BrawlCrate;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.Animations;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.Wii.Graphics;
+using System;
 using System.Drawing;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI.Model_Previewer
 {
     public class ModelViewerSettingsDialog : Form
     {
@@ -119,7 +128,7 @@ namespace System.Windows.Forms
         private Label lblBGColorText;
         private Label label33;
         private Label label34;
-        private ModelEditControl _form;
+        private ModelEditControl.ModelEditControl _form;
 
         public ModelViewerSettingsDialog()
         {
@@ -185,7 +194,7 @@ namespace System.Windows.Forms
         private readonly CheckBox[] _checkBoxes = new CheckBox[9];
         private readonly bool[] _origChecks = new bool[9];
 
-        public void Show(ModelEditControl owner)
+        public void Show(ModelEditControl.ModelEditControl owner)
         {
             _form = owner;
             _form.RenderLightDisplay = true;
@@ -2563,7 +2572,7 @@ namespace System.Windows.Forms
             }
 
             MainForm.Instance.Visible = !(_form._hideMainWindow = chkHideMainWindow.Checked);
-            foreach (ModelEditControl c in ModelEditControl.Instances)
+            foreach (ModelEditControl.ModelEditControl c in ModelEditControl.ModelEditControl.Instances)
             {
                 c._hideMainWindow = _form._hideMainWindow;
             }

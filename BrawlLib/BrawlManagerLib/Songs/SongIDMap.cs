@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BrawlManagerLib
+namespace BrawlLib.BrawlManagerLib.Songs
 {
     public static class SongIDMap
     {

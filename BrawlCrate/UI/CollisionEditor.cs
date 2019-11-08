@@ -1,14 +1,22 @@
-﻿using BrawlLib.Modeling;
+﻿using BrawlCrate.UI.Model_Previewer;
+using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Controls;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
+using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.Types;
 using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
-namespace System.Windows.Forms
+namespace BrawlCrate.UI
 {
     public unsafe class CollisionEditor : UserControl
     {

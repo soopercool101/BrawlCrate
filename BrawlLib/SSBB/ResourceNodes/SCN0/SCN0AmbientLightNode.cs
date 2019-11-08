@@ -1,10 +1,11 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.SSBBTypes;
+using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes
+namespace BrawlLib.SSBB.ResourceNodes.SCN0
 {
     public unsafe class SCN0AmbientLightNode : SCN0EntryNode, IColorSource
     {

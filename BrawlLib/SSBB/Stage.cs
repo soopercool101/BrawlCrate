@@ -1,4 +1,5 @@
 ﻿using BrawlLib.BrawlCrate;
+using BrawlLib.CustomLists;
 using System;
 
 namespace BrawlLib.SSBB
