@@ -1,4 +1,5 @@
-﻿using BrawlCrate.Discord;
+﻿using BrawlCrate.API;
+using BrawlCrate.Discord;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Controls;
 using BrawlLib.SSBB;
@@ -1883,7 +1884,7 @@ namespace BrawlCrate.UI
 
         private void BtnPythonDetect_Click(object sender, EventArgs e)
         {
-            BrawlAPI.BrawlAPI.PythonInstall(true, true);
+            BrawlAPI.PythonInstall(true, true);
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
         }
 
@@ -1927,7 +1928,7 @@ namespace BrawlCrate.UI
 
         private void BtnFSharpDetect_Click(object sender, EventArgs e)
         {
-            BrawlAPI.BrawlAPI.FSharpInstall(true, true);
+            BrawlAPI.FSharpInstall(true, true);
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
         }
 
