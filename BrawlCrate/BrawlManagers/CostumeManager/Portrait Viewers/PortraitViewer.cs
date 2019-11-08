@@ -4,8 +4,11 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 {
     public class PortraitViewer : UserControl
     {
-        public virtual void UpdateDirectory()
+        protected string currentDirectory { get; set; }
+
+        public virtual void UpdateDirectory(string directory)
         {
+            currentDirectory = directory;
         }
 
         public virtual bool UpdateImage(int charNum, int costumeNum)

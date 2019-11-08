@@ -59,11 +59,11 @@ namespace BrawlCrate.BrawlManagers.CostumeManager {
             this.globalPVsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.brawlSplitter1 = new BrawlSplitter();
             this.modelManager1 = new BrawlManagers.CostumeManager.ModelManager();
-            this.cssPortraitViewer1 = new CSSPortraitViewer();
-            this.infoStockIconViewer1 = new InfoStockIconViewer();
+            this.cssPortraitViewer1 = new CSSPortraitViewer(this);
+            this.infoStockIconViewer1 = new InfoStockIconViewer(this.CurrentDirectory);
             this.costumeNumberLabel = new CostumeNumberLabel();
-            this.battlePortraitViewer1 = new BattleSinglePortraitViewer();
-            this.resultPortraitViewer1 = new ResultSinglePortraitViewer();
+            this.battlePortraitViewer1 = new BattleSinglePortraitViewer(this.CurrentDirectory);
+            this.resultPortraitViewer1 = new ResultSinglePortraitViewer(this.CurrentDirectory);
             this.use16ptFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();

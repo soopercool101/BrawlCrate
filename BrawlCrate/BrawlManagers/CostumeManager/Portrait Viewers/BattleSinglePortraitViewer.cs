@@ -46,13 +46,14 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 
         private Dictionary<int, ResourceNode> bres_cache;
 
-        public BattleSinglePortraitViewer() : base()
+        public BattleSinglePortraitViewer(string directory) : base(directory)
         {
-            UpdateDirectory();
+            UpdateDirectory(directory);
         }
 
-        public override void UpdateDirectory()
+        public override void UpdateDirectory(string directory)
         {
+            currentDirectory = directory;
             if (bres_cache != null)
             {
                 foreach (ResourceNode node in bres_cache.Values)
@@ -71,7 +72,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
                 if (bres_cache[i] != null && bres_cache[i].IsDirty)
                 {
                     bres_cache[i].Merge();
-                    bres_cache[i].Export("../info/portrite/InfFace" + i.ToString("D3") + ".brres");
+                    bres_cache[i].Export(Path.Combine(currentDirectory, "/info/portrite/InfFace" + i.ToString("D3") + ".brres"));
                 }
             }
         }

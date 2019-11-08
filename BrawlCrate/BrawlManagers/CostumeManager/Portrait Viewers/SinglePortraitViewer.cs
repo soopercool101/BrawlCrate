@@ -22,12 +22,13 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
         // In case the image needs to be reloaded after replacing the texture
         protected int _charNum, _costumeNum;
 
-        public SinglePortraitViewer()
+        public SinglePortraitViewer(string directory)
         {
             InitializeComponent();
             mainTexture = new PortraitViewerTextureData(PortraitWidth, PortraitHeight, this);
             additionalTexturesPanel.Controls.Add(mainTexture.TexturePanel);
             mainTexture.OnUpdate = delegate(PortraitViewerTextureData sender) { UpdateImage(_charNum, _costumeNum); };
+            currentDirectory = directory;
 
             _charNum = -1;
             _costumeNum = -1;

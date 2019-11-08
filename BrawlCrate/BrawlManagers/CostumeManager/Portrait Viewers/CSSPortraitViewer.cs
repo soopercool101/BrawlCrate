@@ -54,7 +54,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
         /// </summary>
         private ResourceNode sc_selcharacter;
 
-        public CSSPortraitViewer()
+        public CSSPortraitViewer(CostumeManagerForm mainForm)
         {
             InitializeComponent();
             foreach (PortraitViewerTextureData atd in textureData)
@@ -67,7 +67,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
                 atd.TexturePanel.ContextMenuStrip.Items.Add(copyPreview);
             }
 
-            UpdateDirectory();
+            UpdateDirectory(mainForm.CurrentDirectory);
             label1.Text = common5 != null ? "common5" : "sc_selcharacter";
         }
 
@@ -116,7 +116,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
             textureData[0].TexturePanel.BackgroundImage = overlaid;
         }
 
-        public override void UpdateDirectory()
+        public override void UpdateDirectory(string directory)
         {
             if (File.Exists("../menu2/sc_selcharacter.pac"))
             {

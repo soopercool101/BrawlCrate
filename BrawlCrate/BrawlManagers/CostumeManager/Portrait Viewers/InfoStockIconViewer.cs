@@ -25,7 +25,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
         /// </summary>
         private ResourceNode info_en;
 
-        public InfoStockIconViewer()
+        public InfoStockIconViewer(string directory)
         {
             InitializeComponent();
             foreach (PortraitViewerTextureData atd in textureData)
@@ -38,7 +38,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
                 atd.TexturePanel.ContextMenuStrip.Items.Add(copyPreview);
             }
 
-            UpdateDirectory();
+            UpdateDirectory(directory);
         }
 
         public override bool UpdateImage(int charNum, int costumeNum)
@@ -53,17 +53,17 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
             return true;
         }
 
-        public override void UpdateDirectory()
+        public override void UpdateDirectory(string directory)
         {
-            if (File.Exists("../info2/info.pac"))
+            if (File.Exists(Path.Combine(directory, "/info2/info.pac")))
             {
-                string path = "../info2/info.pac";
+                string path = Path.Combine(directory, "/info2/info.pac");
                 info_en = NodeFactory.FromFile(null, path);
                 _openFilePath = path;
             }
-            else if (File.Exists("../info2/info_en.pac"))
+            else if (File.Exists(Path.Combine(directory, "/info2/info_en.pac")))
             {
-                string path = "../info2/info_en.pac";
+                string path = Path.Combine(directory, "/info2/info_en.pac");
                 info_en = NodeFactory.FromFile(null, path);
                 _openFilePath = path;
             }

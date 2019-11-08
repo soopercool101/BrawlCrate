@@ -20,14 +20,14 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         private static string _title = "";
 
         private List<PortraitViewer> portraitViewers = new List<PortraitViewer>();
-        private PortraitMap pmap = new PortraitMap();
+        private PortraitMap pmap;
 
         public bool Swap_Wario;
 
         /// <summary>
         ///     Replacement for Environment.CurrentDirectory to be more localized and not break functionality of other open managers.
         /// </summary>
-        private string CurrentDirectory
+        public string CurrentDirectory
         {
             get => curDir;
             set => curDir = value;
@@ -75,68 +75,16 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
             cssPortraitViewer1.NamePortraitPreview = nameportraitPreviewToolStripMenuItem.Checked;
             modelManager1.ZoomOut = defaultZoomLevelToolStripMenuItem.Checked;
-
+            pmap = new PortraitMap(this);
             readDir();
         }
 
         private void readDir()
         {
-            if (!Directory.Exists(Path.Combine(CurrentDirectory, "mario")))
-            {
-                foreach (string path in new[]
-                {
-                    "/private/wii/app/RSBE/pf/fighter",
-                    "/projectm/pf/fighter",
-                    "/fighter"
-                })
-                {
-                    if (Directory.Exists(CurrentDirectory + path))
-                    {
-                        CurrentDirectory += path;
-                        readDir();
-                        return;
-                    }
-                }
-
-                string findFighterFolder(string dir)
-                {
-                    if (dir.EndsWith("\\fighter"))
-                    {
-                        return dir;
-                    }
-
-                    try
-                    {
-                        foreach (string subdir in Directory.EnumerateDirectories(dir))
-                        {
-                            string possible = findFighterFolder(subdir);
-                            if (Directory.Exists(possible + "\\mario"))
-                            {
-                                return possible;
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        // ignored
-                    }
-
-                    return null;
-                }
-
-                string fighterDir = findFighterFolder(CurrentDirectory);
-                if (fighterDir != null)
-                {
-                    CurrentDirectory = Path.GetDirectoryName(fighterDir);
-                    readDir();
-                    return;
-                }
-            }
-
             Text = _title + " - " + CurrentDirectory;
 
             pmap.ClearAll();
-            pmap.BrawlExScan("../BrawlEx");
+            pmap.BrawlExScan(Path.Combine("BrawlEx"));
 
             int selectedIndex = listBox1.SelectedIndex;
             listBox1.Items.Clear();
@@ -151,7 +99,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
             foreach (PortraitViewer p in portraitViewers)
             {
-                p.UpdateDirectory();
+                p.UpdateDirectory(CurrentDirectory);
             }
 
             if (selectedIndex >= 0)
@@ -219,32 +167,23 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
             string charname = listBox1.SelectedItem.ToString();
             listBox2.Items.Clear();
-            if (charname == "-")
-            {
-                foreach (FileInfo f in new DirectoryInfo(CurrentDirectory).EnumerateFiles())
-                {
-                    string name = f.Name.ToLower();
-                    if (name.EndsWith(".pac") || name.EndsWith(".pcs"))
-                    {
-                        listBox2.Items.Add(new FighterFile(f.FullName, 1, 1));
-                    }
-                }
-            }
-            else
+            if (charname != "-")
             {
                 int charNum = pmap.CharBustTexFor(charname);
                 int upperBound = 12;
                 for (int i = 0; i < upperBound; i++)
                 {
-                    string pathNoExt = CurrentDirectory + '\\' + charname + "/fit" + charname + i.ToString("D2");
+                    string pathNoExt = Path.Combine(CurrentDirectory, "fighter",
+                        charname + "/fit" + charname + i.ToString("D2"));
                     listBox2.Items.Add(new FighterFile(pathNoExt + ".pac", charNum, i));
                     listBox2.Items.Add(new FighterFile(pathNoExt + ".pcs", charNum, i));
                     if (charname.ToLower() == "kirby")
                     {
                         foreach (string hatchar in PortraitMap.KirbyHats)
                         {
-                            listBox2.Items.Add(new FighterFile(Path.Combine(CurrentDirectory, "kirby/fitkirby" + hatchar + i.ToString("D2") + ".pac"),
-                                charNum, i));
+                            listBox2.Items.Add(new FighterFile(
+                                Path.Combine(CurrentDirectory, "Fighter",
+                                    "kirby/fitkirby" + hatchar + i.ToString("D2") + ".pac"), charNum, i));
                         }
                     }
                 }
@@ -260,7 +199,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
-            //            fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
+            fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 CurrentDirectory = fbd.SelectedPath;
@@ -278,9 +217,9 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         {
             projectMCheckbox.Checked = false;
             pmap = cBlissCheckbox.Checked
-                ? new PortraitMap.CBliss()
-                : new PortraitMap();
-            pmap.BrawlExScan("../BrawlEx");
+                ? new PortraitMap.CBliss(this)
+                : new PortraitMap(this);
+            pmap.BrawlExScan(Path.Combine(CurrentDirectory, "BrawlEx"));
             foreach (PortraitViewer p in portraitViewers)
             {
                 RefreshPortraits();
@@ -291,22 +230,16 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         {
             cBlissCheckbox.Checked = false;
             pmap = projectMCheckbox.Checked
-                ? new PortraitMap.ProjectM()
-                : new PortraitMap();
-            pmap.BrawlExScan("../BrawlEx");
-            foreach (PortraitViewer p in portraitViewers)
-            {
-                RefreshPortraits();
-            }
+                ? new PortraitMap.ProjectM(this)
+                : new PortraitMap(this);
+            pmap.BrawlExScan(Path.Combine(CurrentDirectory, "BrawlEx"));
+            RefreshPortraits();
         }
 
         private void swapPortraitsForWarioStylesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Swap_Wario = swapPortraitsForWarioStylesToolStripMenuItem.Checked;
-            foreach (PortraitViewer p in portraitViewers)
-            {
-                RefreshPortraits();
-            }
+            RefreshPortraits();
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -464,13 +397,13 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             string nn = ff.CostumeNum.ToString("D2");
             if (p.Contains("fitkirbymewtwo"))
             {
-                kirby = Path.Combine(CurrentDirectory, "kirby/FitKirby" + nn + ".pcs");
+                kirby = Path.Combine(CurrentDirectory, "fighter", "kirby/FitKirby" + nn + ".pcs");
                 hat = ff.FullName;
             }
             else
             {
                 kirby = ff.FullName;
-                hat = Path.Combine(CurrentDirectory, "kirby/FitKirbyMewtwo" + nn + ".pac");
+                hat = Path.Combine(CurrentDirectory, "fighter", "kirby/FitKirbyMewtwo" + nn + ".pac");
             }
 
             if (!File.Exists(kirby))

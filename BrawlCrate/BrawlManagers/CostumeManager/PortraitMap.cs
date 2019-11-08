@@ -292,8 +292,8 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         public class ProjectM : PortraitMap
         {
-            public ProjectM()
-                : base()
+            public ProjectM(CostumeManagerForm mainForm)
+                : base(mainForm)
             {
                 foreach (int i in PM35Mappings.Keys)
                 {
@@ -304,6 +304,12 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         public class CBliss : PortraitMap
         {
+            public CBliss(CostumeManagerForm mainForm)
+                : base(mainForm)
+            {
+                // Run base constructor
+            }
+
             public override bool ContainsMapping(int index)
             {
                 /* Do not check PortraitToCostumeMappings if cBliss is selected.
@@ -317,9 +323,11 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         private List<Fighter> additionalFighters;
         private Dictionary<int, int[]> additionalMappings;
+        private CostumeManagerForm MainForm;
 
-        public PortraitMap()
+        public PortraitMap(CostumeManagerForm mainForm)
         {
+            MainForm = mainForm;
             additionalFighters = new List<Fighter>();
             additionalMappings = new Dictionary<int, int[]>();
         }

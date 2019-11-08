@@ -16,7 +16,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
             ResourceNode bres;
             if (!bres_cache.TryGetValue(charNum, out bres))
             {
-                string f = "../menu/common/char_bust_tex/MenSelchrFaceB" + charNum.ToString("D2") + "0.brres";
+                string f = Path.Combine(currentDirectory, "menu/common/char_bust_tex/MenSelchrFaceB" + charNum.ToString("D2") + "0.brres");
                 if (new FileInfo(f).Exists)
                 {
                     bres_cache[charNum] = bres = (BRRESNode) NodeFactory.FromFile(null, f);
@@ -40,13 +40,14 @@ namespace BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers
 
         private Dictionary<int, ResourceNode> bres_cache;
 
-        public ResultSinglePortraitViewer() : base()
+        public ResultSinglePortraitViewer(string directory) : base(directory)
         {
-            UpdateDirectory();
+            UpdateDirectory(directory);
         }
 
-        public override void UpdateDirectory()
+        public override void UpdateDirectory(string directory)
         {
+            currentDirectory = directory;
             if (bres_cache != null)
             {
                 foreach (ResourceNode node in bres_cache.Values)
