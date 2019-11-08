@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.PowerPCAssembly;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Modules
+namespace BrawlLib.SSBB.ResourceNodes
 {
     //Credit to PhantomWings for researching RELs and coding Module Editors 1, 2 & 3
     public unsafe class RELNode : ARCEntryNode, ModuleNode

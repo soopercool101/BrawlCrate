@@ -1,10 +1,8 @@
-﻿using BrawlLib;
-using BrawlLib.Internal;
+﻿using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
 using BrawlLib.Wii.Textures;
 using System;
 using System.Drawing;

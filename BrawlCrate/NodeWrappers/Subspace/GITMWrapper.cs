@@ -1,10 +1,9 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Subspace.Objects;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.Subspace
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.GITM)]
     internal class GITMWrapper : GenericWrapper

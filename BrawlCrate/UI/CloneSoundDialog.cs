@@ -1,7 +1,5 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.RSAR;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_References;
 using System;
 using System.Windows.Forms;
 

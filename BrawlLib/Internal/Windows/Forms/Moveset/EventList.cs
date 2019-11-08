@@ -1,5 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Moveset;
 using System;
 using System.Windows.Forms;
 

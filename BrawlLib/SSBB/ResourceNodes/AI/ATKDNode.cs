@@ -1,10 +1,9 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.AI
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ATKDNode : ARCEntryNode
     {

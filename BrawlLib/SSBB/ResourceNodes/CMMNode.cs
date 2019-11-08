@@ -3,7 +3,6 @@ using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Media.Converters;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

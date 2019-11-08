@@ -2,7 +2,7 @@
 using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GET1Node : ResourceNode
     {

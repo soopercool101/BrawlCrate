@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.Wii.Animations;
 using OpenTK.Graphics.OpenGL;
 using System;

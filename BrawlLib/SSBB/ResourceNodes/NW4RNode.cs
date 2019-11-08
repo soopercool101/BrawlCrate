@@ -1,5 +1,4 @@
-﻿using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.Types;
+﻿using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes

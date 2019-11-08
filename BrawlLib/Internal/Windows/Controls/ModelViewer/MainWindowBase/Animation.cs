@@ -1,9 +1,5 @@
 ﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.SSBB.Types.Animations;
 using System;
 using System.Linq;

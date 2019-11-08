@@ -1,6 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
 using System;
 using System.Windows.Forms;
 

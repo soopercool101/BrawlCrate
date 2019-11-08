@@ -3,7 +3,6 @@ using BrawlLib.Internal;
 using BrawlLib.Modeling.Triangle_Converter;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;

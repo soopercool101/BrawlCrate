@@ -6,7 +6,6 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 /* This formula is based on the Median Cut formula used in the GIMP library.
  * Special thanks goes to Spencer Kimball, Peter Mattis, and Adam Moss.

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBB.ResourceNodes.SCN0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0LightNode : SCN0EntryNode, IBoolArraySource, IColorSource, IKeyframeSource
     {

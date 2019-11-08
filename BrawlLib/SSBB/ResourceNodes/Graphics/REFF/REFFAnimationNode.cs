@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.Graphics.REFF
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class REFFAnimationListNode : ResourceNode
     {

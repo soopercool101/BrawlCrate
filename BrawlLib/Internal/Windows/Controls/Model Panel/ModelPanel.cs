@@ -7,7 +7,6 @@ using System.Linq;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Windows.Forms;

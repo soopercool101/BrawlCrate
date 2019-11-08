@@ -5,9 +5,6 @@ using BrawlCrate.UI;
 using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.Modules;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types;
 using System;
 using System.Windows.Forms;
 

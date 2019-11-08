@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes.BrawlEx
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class FCFGNode : ResourceNode
     {

@@ -2,7 +2,7 @@
 using BrawlLib.Internal.PowerPCAssembly;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Modules
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RELMethodNode : RELEntryNode
     {

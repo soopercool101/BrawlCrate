@@ -2,7 +2,7 @@
 using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Graphics.REFF
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class REFFNode : NW4RArcEntryNode
     {

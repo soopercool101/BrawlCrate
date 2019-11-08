@@ -6,7 +6,6 @@ using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using OpenTK.Graphics.OpenGL;
 using System;

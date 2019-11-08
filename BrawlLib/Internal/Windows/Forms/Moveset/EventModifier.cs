@@ -1,6 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Moveset;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Actions;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;

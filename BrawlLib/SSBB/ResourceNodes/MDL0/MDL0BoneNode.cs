@@ -3,7 +3,6 @@ using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes.Animations;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
 using OpenTK.Graphics.OpenGL;
@@ -12,7 +11,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.MDL0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0BoneNode : MDL0EntryNode, IBoneNode
     {

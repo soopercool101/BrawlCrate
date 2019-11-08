@@ -1,18 +1,14 @@
 ﻿using BrawlCrate.UI;
-using BrawlLib;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.Archives
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.U8)]
     public class U8Wrapper : GenericWrapper

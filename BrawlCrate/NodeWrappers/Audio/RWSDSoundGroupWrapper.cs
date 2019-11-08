@@ -1,11 +1,9 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWAR;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.Audio
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSARFileSoundGroup)]
     public class RWSDSoundGroupWrapper : GenericWrapper

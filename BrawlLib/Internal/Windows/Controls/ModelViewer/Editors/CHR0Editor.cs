@@ -2,8 +2,6 @@
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Models;
 using System;

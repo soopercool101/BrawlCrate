@@ -5,7 +5,7 @@ using BrawlLib.Wii.Graphics;
 using System;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Graphics.REFF
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class REFFEmitterNode9 : ResourceNode
     {

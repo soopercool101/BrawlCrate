@@ -6,7 +6,7 @@ using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Graphics;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.SCN0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0CameraNode : SCN0EntryNode, IKeyframeSource
     {

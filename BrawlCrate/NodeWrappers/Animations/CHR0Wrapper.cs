@@ -1,10 +1,8 @@
 ﻿using BrawlCrate.UI;
-using BrawlLib;
 using BrawlLib.Internal.Windows.Controls;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
 using BrawlLib.Wii.Animations;
 using System;
 using System.Collections.Generic;
@@ -12,7 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.Animations
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.CHR0)]
     public class CHR0Wrapper : GenericWrapper

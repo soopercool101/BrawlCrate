@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Internal;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefActionPreNode : MoveDefEntryNode
     {

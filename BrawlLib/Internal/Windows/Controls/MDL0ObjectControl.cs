@@ -1,8 +1,6 @@
-﻿using BrawlLib.Internal;
-using BrawlLib.Internal.Windows.Controls.Model_Panel;
+﻿using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using System;
 using System.Linq;
 using System.Windows.Forms;

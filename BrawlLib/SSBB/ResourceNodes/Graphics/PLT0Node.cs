@@ -1,13 +1,12 @@
 ﻿using BrawlLib.Imaging;
 using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Textures;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace BrawlLib.SSBB.ResourceNodes.Graphics
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class PLT0Node : BRESEntryNode, IColorSource
     {

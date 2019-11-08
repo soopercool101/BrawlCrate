@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Stage_Tables;
 
-namespace BrawlLib.SSBB.ResourceNodes.Stage_Tables
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class TBLVNode : StageTableNode
     {

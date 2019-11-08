@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes.Archives
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class U8Node : ResourceNode
     {

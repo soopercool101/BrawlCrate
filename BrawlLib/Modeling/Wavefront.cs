@@ -1,7 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using System;
 using System.IO;
 using System.Windows.Forms;
 

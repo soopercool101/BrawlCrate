@@ -1,5 +1,4 @@
-﻿using BrawlLib.SSBB.ResourceNodes.RSAR;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_References;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Diagnostics;
 using System.IO;

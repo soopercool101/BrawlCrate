@@ -1,4 +1,4 @@
-﻿namespace BrawlLib.SSBB.ResourceNodes.Modules
+﻿namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RELDeConStructorNode : RELMethodNode
     {

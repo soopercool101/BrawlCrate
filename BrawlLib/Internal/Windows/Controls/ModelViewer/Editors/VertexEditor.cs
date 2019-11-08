@@ -2,7 +2,6 @@
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

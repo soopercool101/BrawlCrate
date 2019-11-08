@@ -1,11 +1,9 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Actions;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes;
 using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public class MoveDefCharSpecificNode : MoveDefExternalNode
     {

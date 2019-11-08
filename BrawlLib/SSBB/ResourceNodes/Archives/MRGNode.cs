@@ -3,7 +3,7 @@ using BrawlLib.SSBB.Types;
 using System;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes.Archives
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MRGNode : ResourceNode
     {

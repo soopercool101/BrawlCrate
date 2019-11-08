@@ -2,7 +2,7 @@
 using BrawlLib.Internal.Windows.Controls.Hex_Editor;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Modules
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ModuleDataNode : RELEntryNode
     {

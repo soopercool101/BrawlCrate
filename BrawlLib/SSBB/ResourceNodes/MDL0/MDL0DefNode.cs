@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.MDL0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0DefNode : MDL0EntryNode
     {

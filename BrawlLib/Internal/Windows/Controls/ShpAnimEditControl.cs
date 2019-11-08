@@ -1,5 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
 using BrawlLib.Wii.Animations;
 using System;
 using System.ComponentModel;

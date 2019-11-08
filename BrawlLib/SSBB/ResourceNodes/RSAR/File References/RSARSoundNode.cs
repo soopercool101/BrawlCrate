@@ -1,14 +1,10 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.Audio;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RSEQ;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWAR;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWSD;
 using BrawlLib.SSBB.Types.Audio;
 using System;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_References
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARSoundNode : RSAREntryNode, IAudioSource
     {

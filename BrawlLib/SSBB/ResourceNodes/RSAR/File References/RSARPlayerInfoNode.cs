@@ -2,7 +2,7 @@
 using BrawlLib.SSBB.Types.Audio;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_References
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARPlayerInfoNode : RSAREntryNode
     {

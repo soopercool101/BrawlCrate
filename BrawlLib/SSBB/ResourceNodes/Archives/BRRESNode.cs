@@ -4,10 +4,6 @@ using BrawlLib.Internal;
 using BrawlLib.Internal.Drawing;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
@@ -17,7 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Archives
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class BRRESNode : ARCEntryNode, IImageSource
     {

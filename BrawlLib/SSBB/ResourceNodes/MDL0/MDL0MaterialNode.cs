@@ -3,8 +3,6 @@ using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Animations;
 using BrawlLib.Wii.Animations;
@@ -16,7 +14,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.MDL0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe partial class MDL0MaterialNode : MDL0EntryNode
     {

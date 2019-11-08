@@ -1,8 +1,6 @@
 ﻿using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Models;
 using System;

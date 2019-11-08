@@ -1,5 +1,4 @@
-﻿using BrawlLib.Internal;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace BrawlLib.Internal.Windows.Forms
 {

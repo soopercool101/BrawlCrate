@@ -1,10 +1,7 @@
-﻿using BrawlLib;
-using BrawlLib.Imaging;
-using BrawlLib.Internal;
-using BrawlLib.Internal.Windows.Controls.Model_Panel;
+﻿using BrawlLib.Imaging;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
+using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;

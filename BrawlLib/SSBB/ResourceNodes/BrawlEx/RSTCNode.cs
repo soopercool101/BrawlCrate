@@ -5,7 +5,7 @@ using BrawlLib.SSBB.Types.BrawlEx;
 using System.ComponentModel;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes.BrawlEx
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSTCNode : ResourceNode
     {

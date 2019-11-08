@@ -2,7 +2,7 @@
 using BrawlLib.SSBB.Types.Subspace.Objects;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GBLKNode : ResourceNode
     {

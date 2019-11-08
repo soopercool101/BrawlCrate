@@ -5,8 +5,6 @@ using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Controls;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
 using BrawlLib.Wii.Textures;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@ using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Subspace.Hazards
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GWATNode : ResourceNode
     {

@@ -7,7 +7,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWAR
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARFileAudioNode : RSARFileEntryNode, IAudioSource, IDisposable
     {

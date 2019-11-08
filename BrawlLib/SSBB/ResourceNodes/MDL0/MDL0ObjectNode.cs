@@ -14,7 +14,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.MDL0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe partial class MDL0ObjectNode : MDL0EntryNode, IMatrixNodeUser, IObject
     {

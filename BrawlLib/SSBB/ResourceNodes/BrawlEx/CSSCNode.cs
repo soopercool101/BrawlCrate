@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.BrawlEx
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class CSSCNode : ResourceNode
     {

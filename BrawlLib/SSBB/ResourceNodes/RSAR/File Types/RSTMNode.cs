@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSTMNode : RSARFileNode, IAudioSource
     {

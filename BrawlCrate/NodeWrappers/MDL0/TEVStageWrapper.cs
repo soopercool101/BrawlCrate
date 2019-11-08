@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.MDL0
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.TEVStage)]
     public class TEVStageWrapper : GenericWrapper

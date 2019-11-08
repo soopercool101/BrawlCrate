@@ -1,12 +1,11 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.MDL0
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MDL0Group)]
     public class MDL0GroupWrapper : GenericWrapper

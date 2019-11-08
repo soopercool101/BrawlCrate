@@ -3,7 +3,6 @@ using BrawlLib.Internal;
 using BrawlLib.Internal.Drawing;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Textures;
 using System;
@@ -13,7 +12,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Graphics
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class TEX0Node : BRESEntryNode, IImageSource
     {

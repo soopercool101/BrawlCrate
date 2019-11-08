@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset.Actions
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefEventParameterNode : MoveDefEntryNode
     {

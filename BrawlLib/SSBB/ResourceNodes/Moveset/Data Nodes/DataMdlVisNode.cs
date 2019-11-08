@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefModelVisibilityNode : MoveDefEntryNode
     {

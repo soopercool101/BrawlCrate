@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Internal;
 using System.Collections.Generic;
 
-namespace BrawlLib.SSBB.ResourceNodes.Modules
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public class RELType
     {

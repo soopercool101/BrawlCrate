@@ -1,9 +1,8 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.Types.Subspace.Sound;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Subspace.Sound
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class BGMGNode : ARCEntryNode
     {

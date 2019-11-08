@@ -1,12 +1,8 @@
 ﻿using BrawlLib.Imaging;
-using BrawlLib.Internal;
-using BrawlLib.Internal.Windows.Controls;
 using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.Wii.Animations;
 using System;
 using System.ComponentModel;

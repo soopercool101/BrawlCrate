@@ -1,16 +1,10 @@
-﻿using BrawlLib;
-using BrawlLib.Internal;
+﻿using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Controls;
 using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;

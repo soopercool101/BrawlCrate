@@ -1,10 +1,9 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.Archives
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.BRESGroup)]
     public class BRESGroupWrapper : GenericWrapper

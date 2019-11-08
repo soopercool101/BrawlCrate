@@ -3,7 +3,6 @@ using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace BrawlLib.OpenGL
 {

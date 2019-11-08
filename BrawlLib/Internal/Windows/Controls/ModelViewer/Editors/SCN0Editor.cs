@@ -3,8 +3,6 @@ using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using BrawlLib.SSBB.ResourceNodes.SCN0;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Graphics;

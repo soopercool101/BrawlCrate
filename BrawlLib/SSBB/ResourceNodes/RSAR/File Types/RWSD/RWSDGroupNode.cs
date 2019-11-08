@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Audio;
 
-namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWSD
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RWSDDataGroupNode : ResourceNode
     {

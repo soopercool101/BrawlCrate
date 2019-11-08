@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Drawing.Design;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
-using System.Windows.Forms;
 
 namespace BrawlLib.Imaging
 {

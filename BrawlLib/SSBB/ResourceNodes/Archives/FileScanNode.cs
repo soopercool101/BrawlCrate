@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes.Archives
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class FileScanNode : ResourceNode
     {

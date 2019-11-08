@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset.Actions
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefEventNode : MoveDefEntryNode
     {

@@ -1,8 +1,7 @@
-﻿using BrawlLib;
-using BrawlLib.SSBB;
+﻿using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 
-namespace BrawlCrate.NodeWrappers.Audio
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSAR)]
     public class RSARWrapper : GenericWrapper

@@ -1,8 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types;
-using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
@@ -10,7 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class HavokNode : ARCEntryNode
     {

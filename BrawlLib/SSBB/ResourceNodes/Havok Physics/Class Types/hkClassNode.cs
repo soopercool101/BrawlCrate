@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class hkClassNode : HavokClassNode
     {

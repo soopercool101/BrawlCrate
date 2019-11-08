@@ -1,14 +1,8 @@
 ﻿using BrawlCrate.UI;
-using BrawlLib;
 using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using BrawlLib.SSBB.ResourceNodes.Moveset;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Actions;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,8 +1,6 @@
-﻿using BrawlLib.Internal;
-using BrawlLib.Internal.PowerPCAssembly;
+﻿using BrawlLib.Internal.PowerPCAssembly;
 using BrawlLib.Internal.Windows.Controls.Hex_Editor;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Modules;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

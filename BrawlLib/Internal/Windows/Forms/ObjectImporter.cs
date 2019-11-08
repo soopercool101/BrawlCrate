@@ -1,7 +1,6 @@
 ﻿using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.Wii.Models;
 using System;
 using System.Windows.Forms;

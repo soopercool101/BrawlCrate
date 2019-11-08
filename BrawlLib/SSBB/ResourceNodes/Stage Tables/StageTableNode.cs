@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Imaging;
 using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Stage_Tables
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public abstract unsafe class StageTableNode : ARCEntryNode, IAttributeList
     {

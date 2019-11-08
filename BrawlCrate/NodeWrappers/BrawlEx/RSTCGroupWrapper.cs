@@ -1,10 +1,9 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.BrawlEx;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.BrawlEx
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSTCGroup)]
     internal class RSTCGroupWrapper : GenericWrapper

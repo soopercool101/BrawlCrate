@@ -2,8 +2,6 @@
 using BrawlLib.Internal;
 using BrawlLib.Internal.Audio;
 using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
 using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Animations;
 using System;
@@ -12,7 +10,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Animations
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class PAT0Node : NW4RAnimationNode
     {

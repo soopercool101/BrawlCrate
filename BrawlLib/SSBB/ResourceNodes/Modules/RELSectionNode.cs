@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Modules
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ModuleSectionNode : ModuleDataNode
     {

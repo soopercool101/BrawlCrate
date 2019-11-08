@@ -5,7 +5,6 @@ using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.Types.Audio;
 using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace BrawlLib.Wii.Audio
 {

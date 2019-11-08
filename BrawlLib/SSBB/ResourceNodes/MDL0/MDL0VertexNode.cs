@@ -5,7 +5,7 @@ using BrawlLib.Wii.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.MDL0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0VertexNode : MDL0EntryNode
     {

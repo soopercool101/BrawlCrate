@@ -2,7 +2,7 @@
 using BrawlLib.SSBB.Types.Subspace.Graphics;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Subspace.Graphics
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GNDVNode : ResourceNode
     {

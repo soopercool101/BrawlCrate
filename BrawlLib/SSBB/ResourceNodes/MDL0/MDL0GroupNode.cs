@@ -1,7 +1,6 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
 using System;
@@ -9,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.MDL0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public abstract unsafe class MDL0EntryNode : ResourceNode
     {

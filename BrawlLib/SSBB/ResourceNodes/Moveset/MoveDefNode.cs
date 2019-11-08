@@ -1,10 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Actions;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Common_Nodes;
-using BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii;
 using BrawlLib.Wii.Compression;
@@ -15,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefEntryNode : ResourceNode
     {

@@ -3,7 +3,7 @@ using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 using System.Runtime.ExceptionServices;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefLookupNode : MoveDefEntryNode
     {

@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using OpenTK.Graphics.OpenGL;
 using System;
@@ -8,7 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefMiscNode : MoveDefEntryNode
     {

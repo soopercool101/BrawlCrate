@@ -1,9 +1,8 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types;
 using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmVariantNode : ClassMemberInstanceNode
     {

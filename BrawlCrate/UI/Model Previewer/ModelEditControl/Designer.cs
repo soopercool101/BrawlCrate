@@ -4,7 +4,6 @@ using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Internal.Windows.Controls.ModelViewer.Panels;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

@@ -2,7 +2,6 @@
 using BrawlLib.Modeling;
 using BrawlLib.Modeling.Collada;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;

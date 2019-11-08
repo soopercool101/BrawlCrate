@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Audio;
-using System;
 using System.Collections.Generic;
 
 namespace BrawlLib.SSBB

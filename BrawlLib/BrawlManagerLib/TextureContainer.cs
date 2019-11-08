@@ -1,6 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 

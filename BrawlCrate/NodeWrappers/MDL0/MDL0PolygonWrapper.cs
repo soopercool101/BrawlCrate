@@ -1,12 +1,10 @@
-﻿using BrawlLib;
-using BrawlLib.Internal.Windows.Forms;
+﻿using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using System;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.MDL0
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MDL0Object)]
     public class MDL0PolygonWrapper : GenericWrapper

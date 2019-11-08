@@ -1,5 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,7 +1,6 @@
 ﻿using BrawlLib.Internal.Drawing;
 using BrawlLib.Internal.IO;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
 using BrawlLib.Wii.Textures;
 using System.Drawing;
 

@@ -2,11 +2,6 @@
 using BrawlLib.Internal.Windows.Controls;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.RSAR;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RBNK;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RSEQ;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWSD;
 using System;
 using System.Windows.Forms;
 

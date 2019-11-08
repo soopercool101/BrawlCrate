@@ -1,7 +1,6 @@
 ﻿using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
-using BrawlLib.SSBB.ResourceNodes.Archives;
 using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Animations;
 using System;
@@ -9,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 
-namespace BrawlLib.SSBB.ResourceNodes.Animations
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class CLR0Node : NW4RAnimationNode
     {

@@ -2,7 +2,7 @@ using BrawlLib.Internal;
 using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Audio;
 
-namespace BrawlLib.SSBB.ResourceNodes.RSAR.File_Types.RWAR
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RWARNode : RSAREntryNode
     {

@@ -1,9 +1,8 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types;
 using BrawlLib.SSBB.Types;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public abstract unsafe class ClassMemberInstanceNode : HavokClassNode
     {

@@ -1,7 +1,7 @@
 ﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
 using BrawlCrate.UI;
 using BrawlLib.BrawlManagerLib;
-using BrawlLib.SSBB.ResourceNodes.Archives;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

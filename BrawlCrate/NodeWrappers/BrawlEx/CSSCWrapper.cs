@@ -1,16 +1,14 @@
-﻿using BrawlLib;
-using BrawlLib.CustomLists;
+﻿using BrawlLib.CustomLists;
 using BrawlLib.Internal;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.BrawlEx;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.BrawlEx
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.CSSC)]
     internal class CSSCWrapper : GenericWrapper

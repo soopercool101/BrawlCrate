@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Wii.Models;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;

@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.Items
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.ItemFreqNode)]
     internal class ItemFreqWrapper : GenericWrapper

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmMat4Node : ClassMemberInstanceNode
     {

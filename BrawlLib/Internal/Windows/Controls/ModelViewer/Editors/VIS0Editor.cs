@@ -1,7 +1,6 @@
 ﻿using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Animations;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;

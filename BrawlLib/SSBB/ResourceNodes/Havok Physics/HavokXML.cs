@@ -1,10 +1,9 @@
-﻿using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class HavokXML
     {

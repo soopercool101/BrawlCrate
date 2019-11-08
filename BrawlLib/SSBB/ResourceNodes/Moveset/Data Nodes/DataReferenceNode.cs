@@ -3,7 +3,7 @@ using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset.Data_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefReferenceNode : MoveDefEntryNode
     {

@@ -3,7 +3,7 @@ using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class FDefSubActionStringTable
     {

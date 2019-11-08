@@ -1,12 +1,10 @@
-﻿using BrawlLib;
-using BrawlLib.SSBB;
+﻿using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.Graphics;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.Graphics
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.EFLS)]
     public class EFLSWrapper : GenericWrapper

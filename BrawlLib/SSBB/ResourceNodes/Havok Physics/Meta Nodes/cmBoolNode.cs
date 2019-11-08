@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Internal;
 using System.Collections.Generic;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmBoolNode : ClassMemberInstanceNode
     {

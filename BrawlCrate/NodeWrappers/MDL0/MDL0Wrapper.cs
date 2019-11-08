@@ -1,18 +1,16 @@
 ﻿using BrawlCrate.UI;
-using BrawlLib;
 using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.MDL0
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MDL0)]
     public class MDL0Wrapper : GenericWrapper

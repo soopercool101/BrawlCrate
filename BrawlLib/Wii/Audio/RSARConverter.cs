@@ -1,10 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.RSAR;
-using BrawlLib.SSBB.ResourceNodes.RSAR.File_References;
 using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Audio;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

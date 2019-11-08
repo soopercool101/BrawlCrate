@@ -2,7 +2,7 @@
 using BrawlLib.SSBB.Types.Subspace.Navigation;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Subspace.Navigation
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GDORNode : ResourceNode
     {

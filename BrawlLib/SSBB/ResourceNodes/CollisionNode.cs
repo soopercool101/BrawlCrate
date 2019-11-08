@@ -1,7 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.OpenGL;
-using BrawlLib.SSBB.ResourceNodes.Archives;
-using BrawlLib.SSBB.ResourceNodes.MDL0;
 using BrawlLib.SSBB.Types;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;

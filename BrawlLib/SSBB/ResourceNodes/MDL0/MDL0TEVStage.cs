@@ -1,7 +1,7 @@
 ﻿using BrawlLib.Wii.Graphics;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.MDL0
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe partial class MDL0TEVStageNode : MDL0EntryNode
     {

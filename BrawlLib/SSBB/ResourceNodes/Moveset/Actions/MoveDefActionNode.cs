@@ -3,7 +3,7 @@ using BrawlLib.SSBB.Types;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BrawlLib.SSBB.ResourceNodes.Moveset.Actions
+namespace BrawlLib.SSBB.ResourceNodes
 {
     public class MoveDefSubActionGroupNode : MoveDefEntryNode
     {

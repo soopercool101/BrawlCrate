@@ -1,14 +1,12 @@
-﻿using BrawlLib;
-using BrawlLib.CustomLists;
+﻿using BrawlLib.CustomLists;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.BrawlEx;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers.BrawlEx
+namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSTC)]
     internal class RSTCWrapper : GenericWrapper

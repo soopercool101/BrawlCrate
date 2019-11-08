@@ -1,12 +1,10 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Class_Types;
-using BrawlLib.SSBB.ResourceNodes.Havok_Physics.Meta_Nodes;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BrawlLib.SSBB.ResourceNodes.Havok_Physics
+namespace BrawlLib.SSBB.ResourceNodes
 {
     //Parses instance data with class meta
     public unsafe class HavokMetaObjectNode : ClassMemberInstanceNode
