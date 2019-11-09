@@ -125,13 +125,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         private byte _sliderSetting;
 
         [Category("Custom My Music")]
-        [Description("Between 0-64, the slider setting to use for My Music")]
+        [Description("Between 0-100, the slider setting to use for My Music")]
         public byte SliderSetting
         {
             get => _sliderSetting;
             set
             {
-                _sliderSetting = value;
+                _sliderSetting = value.Clamp(0, 100);
                 SignalPropertyChange();
             }
         }
