@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30h3";
+        public static readonly string TagName = "v0.30h4";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,10 +38,11 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30 Hotfix 3! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
-- (Hotfix 3) Improve camera for Model Viewers
-- (Hotfix 3) Fixes issue in which looping worked incorrectly
-- (Hotfix 3) Fixes bug in switching to/from canary builds
+            @"Updated to BrawlCrate v0.30 Hotfix 4! This release:
+- Fixes crashes when merging models
+- Fixes issue where CHR0Entries wouldn't show correct sizes
+- Fixes issues with negative numbers in Numeric Entry Boxes
+- Fixes issue where volume settings would not update correctly
 
 Full changelog can be viewed from the help menu.";
 

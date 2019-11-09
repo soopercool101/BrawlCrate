@@ -91,11 +91,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Updater.Program</StartupObject>
-    <AssemblyVersion>0.30.0.3</AssemblyVersion>
+    <AssemblyVersion>0.30.0.4</AssemblyVersion>
     <Authors>soopercool101, Sammi Husky</Authors>
     <PackageId>BrawlCrate Updater</PackageId>
-    <FileVersion>0.30.0.3</FileVersion>
-    <Version>30.0.3</Version>
+    <FileVersion>0.30.0.4</FileVersion>
+    <Version>30.0.4</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>

@@ -1,6 +1,6 @@
 ﻿
-BrawlCrate - v0.30 Hotfix 3
-Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
+BrawlCrate - v0.30 Hotfix 4
+Copyright © 2018 - 2019 soopercool101, STulling, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
@@ -15,6 +15,16 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30 Hotfix 4 - (11/8/2019)
+ . Update copyright info
+ . Fix crash when merging models
+ . Fix UncompressedSize for CHR0Entries not showing accurate values
+ . Fix issues with typing negative values into numeric entry boxes
+ . Fix tab behavior when editing SRT0
+ . Fix issue where a file would fail to open if the temporary file failed to open
+ . Fix issue where volume settings would reset on program close (despite the slider showing the proper value)
+ . Various namespace changes (may affect API scripts)
  
  - BrawlCrate v0.30 Hotfix 3 - (11/5/2019)
  . Model viewer camera updated to a faster one by Onium
