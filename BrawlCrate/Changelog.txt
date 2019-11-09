@@ -1,6 +1,6 @@
 ﻿
 BrawlCrate - v0.30 Hotfix 4
-Copyright © 2018 - 2019 soopercool101, STulling, Onium
+Copyright © 2018 - 2019 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
