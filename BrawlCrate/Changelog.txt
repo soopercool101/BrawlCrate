@@ -18,6 +18,8 @@ they be held accountable for the manner in which it is used.
  
  - BrawlCrate v0.30 Hotfix 4 - (11/8/2019)
  . Update copyright info
+ . SndBgmTitleNode now parses Song ID as hexadecimal
+ . Update slider parsing for CMM Nodes to closer match spec
  . Fix crash when merging models
  . Fix UncompressedSize for CHR0Entries not showing accurate values
  . Fix issues with typing negative values into numeric entry boxes
