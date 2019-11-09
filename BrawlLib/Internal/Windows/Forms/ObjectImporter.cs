@@ -144,9 +144,13 @@ namespace BrawlLib.Internal.Windows.Forms
             if (_mergeModels)
             {
                 _externalModel.ApplyCHR(null, 0);
-                foreach (MDL0ObjectNode poly in _externalModel.FindChild("Objects", true).Children)
+                foreach (ResourceNode node in _externalModel?.FindChild("Objects", true)?.Children?.ToArray() ??
+                                              new ResourceNode[0])
                 {
-                    ImportObject(poly);
+                    if (node is MDL0ObjectNode poly)
+                    {
+                        ImportObject(poly);
+                    }
                 }
             }
             else
