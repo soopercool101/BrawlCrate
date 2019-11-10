@@ -13,7 +13,7 @@ BrawlBox and BrawlLib were developed initially by [Kryal](https://code.google.co
 
 BrawlCrate also incorporates a modified version of the [Color Smash tool originally by Peter Hatch](https://github.com/PeterHatch/color-smash) and modifed versions of the [BrawlManagers by libertyernie](https://github.com/libertyernie/BrawlManagers).
 
-Current BrawlCrate contributors: soopercool101, Simon381, Onium
+Current BrawlCrate contributors: [soopercool101](https://github.com/soopercool101), [Simon381](https://github.com/STulling), [Onium](https://github.com/HavKT)
 
 Join the [Brawl Knowledge Compendium Discord](https://discord.gg/s7c8763) to talk to the developers.
 
