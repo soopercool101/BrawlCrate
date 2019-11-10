@@ -107,7 +107,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.FixedCamX = ext.FixedCamX;
                 cur.FixedCamY = ext.FixedCamY;
                 cur.FixedCamZ = ext.FixedCamZ;
-                cur.FixedCamAngle = ext.FixedCamAngle;
+                cur.FixedCamFOV = ext.FixedCamFOV;
                 cur.FixedHorizontalAngle = ext.FixedHorizontalAngle;
                 cur.FixedVerticalAngle = ext.FixedVerticalAngle;
             }
@@ -566,7 +566,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float FixedCamAngle
+        public float FixedCamFOV
         {
             get => _values.GetFloat(37);
             set
@@ -698,12 +698,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public byte StageWindEnabled
+        public bool StageWindEnabled
         {
-            get => _values.GetByte(49, 0);
+            get => _values.GetByte(49, 0) != 0;
             set
             {
-                _values.SetByte(49, 0, value);
+                _values.SetByte(49, 0, (byte) (value ? 1 : 0));
                 SignalPropertyChange();
             }
         }
