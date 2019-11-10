@@ -15,6 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal HKXHeader* Header => (HKXHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Havok;
+        public override bool supportsCompression => false;
 
         protected override string GetName()
         {
