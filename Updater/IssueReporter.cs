@@ -114,7 +114,7 @@ namespace Updater
                             Environment.NewLine +
                             ExceptionMessage +
                             Environment.NewLine +
-                            StackTrace
+                            $"```{StackTrace}```"
                     };
                     x = await github.Issue.Create("BrawlCrate", "BrawlCrateIssues", issue);
                 }
