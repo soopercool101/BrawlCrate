@@ -477,6 +477,7 @@ namespace BrawlCrate.API
                        (menu.Items[menu.Items.Count - 1].Text.Equals("Plugins") ||
                         menu.Items[menu.Items.Count - 1] is ToolStripSeparator))
                 {
+                    menu.Items[menu.Items.Count - 1].Dispose();
                     menu.Items.RemoveAt(menu.Items.Count - 1);
                 }
 
@@ -578,6 +579,7 @@ namespace BrawlCrate.API
                                .Equals("Plugins") ||
                         wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
                 {
+                    wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Dispose();
                     wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
                 }
 
@@ -587,37 +589,74 @@ namespace BrawlCrate.API
                     type = resourceTree.SelectedNode.GetType();
                 }
 
-                if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
+                if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0 ||
+                    ContextMenuHooks.ContainsKey(typeof(GenericWrapper)) &&
+                    ContextMenuHooks[typeof(GenericWrapper)].Length > 0)
                 {
-                    foreach (ToolStripMenuItem item in ContextMenuHooks[type])
+                    List<ToolStripItem> items = new List<ToolStripItem>();
+                    if (type != typeof(GenericWrapper) &&
+                        ContextMenuHooks.ContainsKey(typeof(GenericWrapper)) &&
+                        ContextMenuHooks[typeof(GenericWrapper)].Length > 0)
                     {
-                        // Toggle enabled state to activate the "EnabledChanged" event. This will allow conditionals to evaluate
-                        item.Enabled = false;
-                        item.Enabled = true;
-
-                        // Implementation only allows for single-nested dropdowns, so ensure those get properly initialized as well
-                        if (item.DropDownItems.Count > 0)
+                        foreach (ToolStripMenuItem item in ContextMenuHooks[typeof(GenericWrapper)])
                         {
-                            foreach (ToolStripMenuItem i in item.DropDownItems)
+                            // Toggle enabled state to activate the "EnabledChanged" event. This will allow conditionals to evaluate
+                            item.Enabled = false;
+                            item.Enabled = true;
+
+                            // Implementation only allows for single-nested dropdowns, so ensure those get properly initialized as well
+                            if (item.DropDownItems.Count > 0)
                             {
-                                i.Enabled = false;
-                                i.Enabled = true;
-                                i.Visible = i.Enabled;
+                                foreach (ToolStripMenuItem i in item.DropDownItems)
+                                {
+                                    i.Enabled = false;
+                                    i.Enabled = true;
+                                    i.Visible = i.Enabled;
+                                }
+                            }
+                            
+                            // If a dropdown has no currently visible items, disable it
+                            if (item.DropDownItems.Count > 0 && item.Enabled)
+                            {
+                                item.Enabled = item.HasDropDownItems;
+                            }
+
+                            if (item.Enabled)
+                            {
+                                items.Add(item);
                             }
                         }
                     }
 
-                    List<ToolStripItem> items = new List<ToolStripItem>();
-                    foreach (ToolStripMenuItem item in ContextMenuHooks[type])
+                    if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
                     {
-                        if (item.DropDownItems.Count > 0)
+                        foreach (ToolStripMenuItem item in ContextMenuHooks[type])
                         {
-                            item.Enabled = item.HasDropDownItems;
-                        }
+                            // Toggle enabled state to activate the "EnabledChanged" event. This will allow conditionals to evaluate
+                            item.Enabled = false;
+                            item.Enabled = true;
 
-                        if (item.Enabled)
-                        {
-                            items.Add(item);
+                            // Implementation only allows for single-nested dropdowns, so ensure those get properly initialized as well
+                            if (item.DropDownItems.Count > 0)
+                            {
+                                foreach (ToolStripMenuItem i in item.DropDownItems)
+                                {
+                                    i.Enabled = false;
+                                    i.Enabled = true;
+                                    i.Visible = i.Enabled;
+                                }
+                            }
+                            
+                            // If a dropdown has no currently visible items, disable it
+                            if (item.DropDownItems.Count > 0 && item.Enabled)
+                            {
+                                item.Enabled = item.HasDropDownItems;
+                            }
+                            
+                            if (item.Enabled)
+                            {
+                                items.Add(item);
+                            }
                         }
                     }
 
