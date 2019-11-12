@@ -241,7 +241,7 @@ namespace BrawlCrate.NodeWrappers
             Dictionary<Type, string> chosenExtensions = new Dictionary<Type, string>();
             foreach (KeyValuePair<Type, string> ext in extensions)
             {
-                ExportAllFormatDialog dialog = new ExportAllFormatDialog(ext.Key, ext.Value);
+                ExportAllFormatDialog dialog = new ExportAllFormatDialog("Export Selected", ext.Key, ext.Value);
 
                 if (dialog.AutoSelect || dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
                 {

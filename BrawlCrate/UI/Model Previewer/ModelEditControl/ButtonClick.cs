@@ -193,9 +193,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private void imageFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Just use an existing dialog with the same basic function
-            using (ExportAllFormatDialog d = new ExportAllFormatDialog(typeof(TEX0Node), FileFilters.TEX0))
+            using (ExportAllFormatDialog d = new ExportAllFormatDialog("Choose Texture Format:", typeof(TEX0Node), FileFilters.TEX0))
             {
-                d.Text = "Choose texture format";
                 d.comboBox1.Items.RemoveAt(6); //TEX0
                 if (d.ShowDialog(this) == DialogResult.OK)
                 {
