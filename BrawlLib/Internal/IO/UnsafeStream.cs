@@ -33,6 +33,13 @@ namespace BrawlLib.Internal.IO
             _length = length;
             _position = 0;
         }
+        
+        public UnsafeStream(VoidPtr address, int length)
+        {
+            _address = (byte*) address;
+            _length = (uint) length;
+            _position = 0;
+        }
 
         public override int ReadByte()
         {
