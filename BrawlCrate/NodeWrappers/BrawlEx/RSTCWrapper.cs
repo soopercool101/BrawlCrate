@@ -66,7 +66,7 @@ namespace BrawlCrate.NodeWrappers
         {
             RSTCWrapper w = GetInstance<RSTCWrapper>();
             ResourceNode r = w._resource;
-            if (((RSTCNode) r).cssList.Children.Count >= 100 || ((RSTCNode) r).randList.Children.Count >= 100)
+            if (((RSTCNode) r).cssList.Children.Count >= 256 || ((RSTCNode) r).randList.Children.Count >= 256)
             {
                 return;
             }
@@ -110,8 +110,8 @@ namespace BrawlCrate.NodeWrappers
         {
             RSTCWrapper w = GetInstance<RSTCWrapper>();
             ResourceNode r = w._resource;
-            _newEntryToolStripMenuItem.Enabled = ((RSTCNode) r).cssList.Children.Count <= 100 ||
-                                                 ((RSTCNode) r).randList.Children.Count <= 100;
+            _newEntryToolStripMenuItem.Enabled = ((RSTCNode) r).cssList.Children.Count < 256 &&
+                                                 ((RSTCNode) r).randList.Children.Count < 256;
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
@@ -126,8 +126,8 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry(byte cssID)
         {
-            if (((RSTCNode) _resource).cssList.Children.Count >= 100 ||
-                ((RSTCNode) _resource).randList.Children.Count >= 100)
+            if (((RSTCNode) _resource).cssList.entries >= 256 ||
+                ((RSTCNode) _resource).randList.entries >= 256)
             {
                 return;
             }
