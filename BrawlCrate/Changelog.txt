@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30b
+BrawlCrate - v0.30b Hotfix 1
 Copyright © 2018 - 2019 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,9 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30b Hotfix 1 - (11/15/2019)
+ . Fix bug in which issue reporter would use improper formatting when submitting
  
  - BrawlCrate v0.30b - (11/14/2019)
  . BrawlAPI updates:
