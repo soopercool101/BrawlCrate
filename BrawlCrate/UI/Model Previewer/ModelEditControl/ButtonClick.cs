@@ -157,7 +157,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private void ScreenCapBgLocText_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog())
+            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog { UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog d = new FolderBrowserDialog())
 #endif
@@ -391,7 +391,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private void LiveTextureFolderPath_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog())
+            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog { UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog d = new FolderBrowserDialog())
 #endif

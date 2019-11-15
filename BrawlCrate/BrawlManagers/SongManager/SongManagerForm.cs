@@ -436,7 +436,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         private void changeDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -450,7 +450,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         private void openFallbackDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -694,7 +694,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -737,7 +737,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif

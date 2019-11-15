@@ -240,7 +240,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         private void changeDirectory_Click(object sender, EventArgs e)
         {
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog();
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
