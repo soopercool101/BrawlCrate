@@ -302,6 +302,23 @@ Full changelog can be viewed from the help menu.";
         {
             if (args.Length >= 1)
             {
+                // Writes the latest changelog to a text file
+                if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
+                {
+                    string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
+                        UpdateMessage.IndexOf(
+                            "Full changelog can be viewed from the help menu",
+                            StringComparison.OrdinalIgnoreCase) -
+                        UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
+                    string fileName = Path.Combine(AppPath, "changelog-newest.txt");
+                    using (StreamWriter file = new StreamWriter(fileName))
+                    {
+                        file.Write(changelog);
+                    }
+
+                    return;
+                }
+
                 if (args[0].Equals("/gct", StringComparison.OrdinalIgnoreCase))
                 {
                     GCTEditor editor = new GCTEditor(AssemblyTitleFull);
@@ -360,23 +377,6 @@ Full changelog can be viewed from the help menu.";
                     catch
                     {
                         // Discord RPC doesn't need to work always
-                    }
-
-                    return;
-                }
-
-                // Writes the latest changelog to a text file
-                if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
-                {
-                    string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
-                        UpdateMessage.IndexOf(
-                            "Full changelog can be found in the installation folder",
-                            StringComparison.OrdinalIgnoreCase) -
-                        UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
-                    string fileName = $@"{AppPath}changelog-newest.txt";
-                    using (StreamWriter file = new StreamWriter(fileName))
-                    {
-                        file.Write(changelog);
                     }
 
                     return;
