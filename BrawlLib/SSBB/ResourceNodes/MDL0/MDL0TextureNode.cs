@@ -226,9 +226,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-
             Texture?.Delete();
-
 
             Texture = new GLTexture();
             Texture.Bind(index, program);
