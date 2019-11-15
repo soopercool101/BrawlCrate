@@ -43,17 +43,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_charNum = (byte) cssList.Children.Count;
             hdr->_unknown0x0E = _unknown0x0E;
             hdr->_randNum = (byte) randList.Children.Count;
-            uint offset = 0x10;
-            uint entrySize = (_size - 0x10) / 2;
-            for (int i = 0; i < cssList.entries; i++, offset++)
-            {
-                cssList.Children[i].Rebuild(address + offset, 1, force);
-            }
-            offset = 0x10 + entrySize;
-            for (int i = 0; i < randList.entries; i++, offset++)
-            {
-                randList.Children[i].Rebuild(address + offset, 1, force);
-            }
+            int entrySize = (length - 0x10) / 2;
+            cssList.Rebuild(address + 0x10, entrySize, force);
+            randList.Rebuild(address + 0x10 + entrySize, entrySize, force);
         }
 
         public override bool OnInitialize()
@@ -115,6 +107,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return HasChildren;
             }
             return false;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            for (int i = 0; i < entries; i++)
+            {
+                Children[i].Rebuild(address + i, 1, force);
+            }
         }
     }
 
