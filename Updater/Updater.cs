@@ -1212,7 +1212,7 @@ namespace Updater
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
