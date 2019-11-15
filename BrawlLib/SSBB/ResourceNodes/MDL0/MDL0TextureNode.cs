@@ -226,7 +226,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            GetSource();
 
             Texture?.Delete();
 
@@ -237,14 +236,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             Bitmap bmp = null;
             BRRESNode bres = model?.BRESNode;
 
-            if (_folderWatcher.EnableRaisingEvents && !string.IsNullOrEmpty(_folderWatcher.Path))
+            if (!(_folderWatcher.EnableRaisingEvents && !string.IsNullOrEmpty(_folderWatcher.Path) && (bmp = SearchDirectory(Path.Combine(_folderWatcher.Path, Name))) != null))
             {
-                bmp = SearchDirectory(_folderWatcher.Path + Name);
-            }
-            else if (Source != null && Source is TEX0Node t)
-            {
-                Texture.Attach(t, _palette);
-                return;
+                GetSource();
+                if (Source != null && Source is TEX0Node t)
+                {
+                    Texture.Attach(t, _palette);
+                    return;
+                }
             }
 
             TEX0Node tNode;
