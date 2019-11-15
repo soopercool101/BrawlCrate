@@ -65,9 +65,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _charNum = Header->_charNum;
             _unknown0x0E = Header->_unknown0x0E;
             _randNum = Header->_randNum;
-            uint offset = 0x10;
-            cssList.Initialize(this, new DataSource((*Header)[0x10], (int)(_size - 0x10)/2));
-            randList.Initialize(this, new DataSource((*Header)[0x10 + (int)((_size - 0x10) / 2)], (int)(_size - 0x10) / 2));
+            cssList.Initialize(this, new DataSource((*Header)[0], (int)(_size - 0x10)/2));
+            randList.Initialize(this, new DataSource((*Header)[(int)((_size - 0x10) / 2)], (int)(_size - 0x10) / 2));
 
             if (_name == null && _origPath != null)
             {
