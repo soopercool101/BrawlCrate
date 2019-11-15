@@ -1200,7 +1200,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
 
-            return true;
+            return false;
         }
 
         internal static ResourceNode TryParse(DataSource source)
