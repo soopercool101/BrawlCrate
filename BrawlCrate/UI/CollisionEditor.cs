@@ -139,6 +139,8 @@ namespace System.Windows.Forms
         private ToolStripMenuItem clipboardPaste_PasteOverrideSelected; 
         private ToolStripSeparator clipboardPaste_Sep1;
         private ToolStripMenuItem clipboardDelete;
+        private ToolStripMenuItem clipboardCopySettings;
+        private ToolStripMenuItem clipboardCopySettings_PasteEveryLinkToOriginalParent;
 
         private ToolStripMenuItem moveToNewObjectToolStripMenuItem;
         private ToolStripSeparator collisionOptions_Sep1;
@@ -1489,12 +1491,8 @@ namespace System.Windows.Forms
 
         //We copy the selected variables from _selected... so that we have it in memory
         protected byte _copyState = 0; //Is this even a good practice? 0 = none, 1 = Copying, 2 = Cutting
-        protected List<CollisionLink_S> _copiedLinks = new List<CollisionLink_S>();
-        protected List<CollisionPlane_S> _copiedPlanes = new List<CollisionPlane_S>();
-
-        protected SortedList<int, List<CollisionLink_S>> _copiedLinks2 = new SortedList<int, List<CollisionLink_S>>();
-        protected List<List<CollisionPlane>> _copiedPlanes2 = new List<List<CollisionPlane>>();
-		protected List<CollisionState> _copiedLinks3 = new List<CollisionState>();
+        protected CollisionLink_S[] _copiedLinks = null;
+        protected CollisionPlane_S[] _copiedPlanes = null;
 
         protected bool _selecting, _selectInverse;
         protected Vector3 _selectStart, _selectLast, _selectEnd;
@@ -1585,66 +1583,95 @@ namespace System.Windows.Forms
             else if (_selectedLinks.Count == 1)
             {
                 pnlPointProps.Visible = true;
-                selectedMenuPanel.Height = 70;
-            }
+				selectedMenuPanel.Height = 70;
+
+				//TEMP TEST
+				if (tslp == null)
+				{
+					tslp = new TEST_selectedLinkPlacement();
+					tslp.Size = lastFormRects.Size;
+					tslp.Location = lastFormRects.Location;
+
+					tslp.Visible = true;
+				}
+
+				CollisionLink l = _selectedLinks[0];
+				tslp.UpdateSelection(ref l);
+			}
+			else if (_selectedLinks.Count == 0)
+            {
+				if (this.tslp != null)
+				{
+					lastFormRects = this.tslp.DisplayRectangle;
+					this.tslp.Visible = false;
+					this.tslp.Dispose();
+					this.tslp = null;
+				}
+			}
 
             UpdatePropPanels();
         }
 
-        protected virtual void UpdatePropPanels()
+		//TEST STUFF
+		private Rectangle lastFormRects;
+		private TEST_selectedLinkPlacement tslp = null;
+
+		protected virtual void UpdatePropPanels()
         {
             _updating = true;
 
-            if (pnlPlaneProps.Visible)
-            {
-                if (_selectedPlanes.Count <= 0)
-                {
-                    pnlPlaneProps.Visible = false;
-                    return;
-                }
+			if (pnlPlaneProps.Visible)
+			{
+				if (_selectedPlanes.Count <= 0)
+				{
+					pnlPlaneProps.Visible = false;
+					return;
+				}
 
-                CollisionPlane p = _selectedPlanes[0];
+				CollisionPlane p = _selectedPlanes[0];
 
-                if (p._material >= 32 && cboMaterial.Items.Count <= 32)
-                {
-                    cboMaterial.DataSource =
-                        CollisionTerrain.Terrains.ToList(); // Get the expanded collisions if they're used
-                }
-                else if (cboMaterial.Items.Count > 32)
-                {
-                    cboMaterial.DataSource =
-                        CollisionTerrain.Terrains.Take(0x20).ToList(); // Take unexpanded collisions
-                }
+				if (p._material >= 32 && cboMaterial.Items.Count <= 32)
+				{
+					cboMaterial.DataSource =
+						CollisionTerrain.Terrains.ToList(); // Get the expanded collisions if they're used
+				}
+				else if (cboMaterial.Items.Count > 32)
+				{
+					cboMaterial.DataSource =
+						CollisionTerrain.Terrains.Take(0x20).ToList(); // Take unexpanded collisions
+				}
 
-                cboMaterial.SelectedItem = cboMaterial.Items[p._material];
-                //Type
-                cboType.SelectedItem = p.Type;
-                //Flags
-                chkFallThrough.Checked = p.IsFallThrough;
-                chkLeftLedge.Checked = p.IsLeftLedge;
-                chkRightLedge.Checked = p.IsRightLedge;
-                chkNoWalljump.Checked = p.IsNoWalljump;
-                chkTypeCharacters.Checked = p.IsCharacters;
-                chkTypeItems.Checked = p.IsItems;
-                chkTypePokemonTrainer.Checked = p.IsPokemonTrainer;
-                chkTypeRotating.Checked = p.IsRotating;
-                //UnknownFlags
-                chkFlagUnknown1.Checked = p.IsUnknownSSE;
-                chkFlagUnknown2.Checked = p.IsUnknownFlag1;
-                chkFlagUnknown3.Checked = p.IsUnknownFlag3;
-                chkFlagUnknown4.Checked = p.IsUnknownFlag4;
-            }
-            else if (pnlPointProps.Visible)
-            {
-                if (_selectedLinks.Count <= 0)
-                {
-                    pnlPointProps.Visible = false;
-                    return;
-                }
+				cboMaterial.SelectedItem = cboMaterial.Items[p._material];
+				//Type
+				cboType.SelectedItem = p.Type;
+				//Flags
+				chkFallThrough.Checked = p.IsFallThrough;
+				chkLeftLedge.Checked = p.IsLeftLedge;
+				chkRightLedge.Checked = p.IsRightLedge;
+				chkNoWalljump.Checked = p.IsNoWalljump;
+				chkTypeCharacters.Checked = p.IsCharacters;
+				chkTypeItems.Checked = p.IsItems;
+				chkTypePokemonTrainer.Checked = p.IsPokemonTrainer;
+				chkTypeRotating.Checked = p.IsRotating;
+				//UnknownFlags
+				chkFlagUnknown1.Checked = p.IsUnknownSSE;
+				chkFlagUnknown2.Checked = p.IsUnknownFlag1;
+				chkFlagUnknown3.Checked = p.IsUnknownFlag3;
+				chkFlagUnknown4.Checked = p.IsUnknownFlag4;
+			}
+			else if (pnlPointProps.Visible)
+			{
+				if (_selectedLinks.Count <= 0)
+				{
+					pnlPointProps.Visible = false;
+					return;
+				}
 
-                numX.Value = _selectedLinks[0].Value._x;
-                numY.Value = _selectedLinks[0].Value._y;
-            }
+				CollisionLink l = _selectedLinks[0];
+
+				numX.Value = l.Value._x;
+				numY.Value = l.Value._y;
+			}
             else if (pnlObjProps.Visible)
             {
                 if (_selectedObject == null)
@@ -1871,9 +1898,10 @@ namespace System.Windows.Forms
             }
         }
 
-        #endregion
+		#endregion
 
-        protected void ClearSelection()
+		#region Selection
+		protected void ClearSelection()
         {
             foreach (CollisionLink l in _selectedLinks)
             {
@@ -1924,7 +1952,55 @@ namespace System.Windows.Forms
             }
         }
 
-        public void UpdateTools()
+		protected void BeginSelection(Vector3 point, bool inverse)
+		{
+			if (_selecting)
+			{
+				return;
+			}
+
+			_selectStart = _selectEnd = point;
+
+			_selectEnd._z += SelectWidth;
+			_selectStart._z -= SelectWidth;
+
+			_selecting = true;
+			_selectInverse = inverse;
+
+			UpdateTools();
+		}
+
+		protected void CancelSelection()
+		{
+			if (!_selecting)
+			{
+				return;
+			}
+
+			_selecting = false;
+			_selectStart = _selectEnd = new Vector3(float.MaxValue);
+			UpdateSelection(false);
+			_modelPanel.Invalidate();
+		}
+
+		protected void FinishSelection()
+		{
+			if (!_selecting)
+			{
+				return;
+			}
+
+			_selecting = false;
+			UpdateSelection(true);
+			_modelPanel.Invalidate();
+
+			SelectionModified();
+
+			//Selection Area Selected.
+		}
+		#endregion
+
+		public void UpdateTools()
         {
             if (_selecting || _hovering || _selectedLinks.Count == 0)
             {
@@ -2052,57 +2128,14 @@ namespace System.Windows.Forms
             _hovering = false;
         }
 
-        protected void BeginSelection(Vector3 point, bool inverse)
-        {
-            if (_selecting)
-            {
-                return;
-            }
-
-            _selectStart = _selectEnd = point;
-
-            _selectEnd._z += SelectWidth;
-            _selectStart._z -= SelectWidth;
-
-            _selecting = true;
-            _selectInverse = inverse;
-
-            UpdateTools();
-        }
-
-        protected void CancelSelection()
-        {
-            if (!_selecting)
-            {
-                return;
-            }
-
-            _selecting = false;
-            _selectStart = _selectEnd = new Vector3(float.MaxValue);
-            UpdateSelection(false);
-            _modelPanel.Invalidate();
-        }
-
-        protected void FinishSelection()
-        {
-            if (!_selecting)
-            {
-                return;
-            }
-
-            _selecting = false;
-            UpdateSelection(true);
-            _modelPanel.Invalidate();
-
-            SelectionModified();
-
-            //Selection Area Selected.
-        }
-
         private DateTime _RCstart;
+
+		private Drawing.Point MouseDownLocationStart;
 
         protected void _modelPanel_MouseDown(object sender, MouseEventArgs e)
         {
+			MouseDownLocationStart = Cursor.Position;
+
             if (e.Button == MouseButtons.Left)
             {
                 bool create = ModifierKeys == Keys.Alt;
@@ -2403,21 +2436,28 @@ namespace System.Windows.Forms
             }
             else if (e.Button == MouseButtons.Right)
             {
-                _RCstart = DateTime.UtcNow;
+				//if (_modelPanel.CurrentViewport._grabbing)
+				//	_RCstart = new DateTime(0);
+				//else if (_modelPanel.CurrentViewport._grabbing)
+					_RCstart = DateTime.UtcNow;
             }
         }
 
         protected void _modelPanel_MouseUp(object sender, MouseEventArgs e)
         {
+			var MouseUpLocation = new Point(e.X, e.Y);
+
             if (e.Button == MouseButtons.Left)
             {
-                if (saveIndex - 1 > 0 && saveIndex - 1 < undoSaves.Count)
+				int lastIndex = saveIndex - 1;
+				if (lastIndex > 0 && lastIndex < undoSaves.Count)
                 {
-                    if (undoSaves[saveIndex - 1]._collisionLinks[0].Value.ToString() ==
-                        undoSaves[saveIndex - 1]._linkVectors[0].ToString()) //If equal to starting point, remove.
+					// If it equals to the starting point, remove.
+                    if (undoSaves[lastIndex]._collisionLinks[0].Value.ToString() == undoSaves[lastIndex]._linkVectors[0].ToString()) 
                     {
-                        undoSaves.RemoveAt(saveIndex - 1);
+                        undoSaves.RemoveAt(lastIndex);
                         saveIndex--;
+
                         if (saveIndex == 0)
                         {
                             btnUndo.Enabled = false;
@@ -2439,9 +2479,15 @@ namespace System.Windows.Forms
 					//Removed so that we show the menu regardless of whether or not the user has selected any collisions
 					if ((_RCend - _RCstart) <= TimeSpan.FromMilliseconds(150))
 					{
-						if (_copiedLinks.Count > 0 || _copiedPlanes.Count > 0 || _copiedLinks2.Count > 0 || _copiedLinks3.Count > 0 ||
-							_selectedLinks.Count > 0 || _selectedPlanes.Count > 0 || _copiedPlanes2.Count > 0)
+						//if ((_copiedLinks.Count > 0 || _copiedPlanes.Count > 0 || _copiedLinks2.Count > 0 || _copiedLinks3.Count > 0 ||
+						//	_selectedLinks.Count > 0 || _selectedPlanes.Count > 0 || _copiedPlanes2.Count > 0) && (MouseDownLocationStart == Cursor.Position))
+						if ((_selectedLinks.Count > 0 || _selectedPlanes.Count > 0 || 
+						(_copiedLinks != null && _copiedLinks.Length > 0) || (_copiedPlanes != null && _copiedPlanes.Length > 0)) 
+						&& (MouseDownLocationStart == Cursor.Position))
+						{
+							_modelPanel.CurrentViewport._grabbing = false;
 							collisionOptions.Show(Cursor.Position);
+						}
 					}
 				}
             }
@@ -4141,16 +4187,17 @@ namespace System.Windows.Forms
 
         protected void collisionOptions_Opening(object sender, CancelEventArgs e)
         {
-            bool ThereAreCopiedStuff = (_copiedLinks.Count > 0) || (_copiedPlanes.Count > 0) || (_copiedPlanes2.Count > 0) || (_copiedLinks3.Count > 0);
+            //bool ThereAreCopiedStuff = (_copiedLinks.Count > 0) || (_copiedPlanes.Count > 0) || (_copiedPlanes2.Count > 0) || (_copiedLinks3.Count > 0);
+            bool ThereAreCopiedStuff = (_copiedLinks != null && _copiedLinks.Length > 0) || (_copiedPlanes != null && _copiedPlanes.Length > 0);
 
 			//This shows the extensive menus if a link is selected. Planes also dictate the visibility.
 			if (_selectedLinks != null && _selectedLinks.Count > 0)
             {
-                //We show every single collision options items so that we don't have to deal
-                //with later code.
+                // Show every single collision options items so that we don't have to deal
+                // with later code.
                 ToggleCollisionOptionsItemVisibility(true);
 
-                //The usual "Control me" algorithm
+                // The usual "Control me" algorithm
                 mergeToolStripMenuItem.Visible = alignXToolStripMenuItem.Visible =
                     alignYToolStripMenuItem.Visible = _selectedLinks != null && _selectedLinks.Count > 1;
                 moveToNewObjectToolStripMenuItem.Visible =
@@ -4164,10 +4211,10 @@ namespace System.Windows.Forms
             }
             else
             {
-                // We hide every single one of them
+                // Hide every single one of them
                 ToggleCollisionOptionsItemVisibility(false);
 
-                // We show paste only if there are copied items on the clipboard.
+                // Show paste only if there are copied items on the clipboard.
                 clipboardPaste.Visible = ThereAreCopiedStuff;
             }
 
@@ -4175,8 +4222,8 @@ namespace System.Windows.Forms
             clipboardPaste.Enabled = ThereAreCopiedStuff;
         }
 
-        //Used so that every item in collisionOptions are visible or not
-        //Please change this algorithm if you think there's a better way
+        // Used so that every item in collisionOptions are visible or not
+        // Please change this algorithm if you think there's a better way
         private void ToggleCollisionOptionsItemVisibility(bool visible)
         {
             for (int i = 0; i < collisionOptions.Items.Count; ++i)
@@ -4267,6 +4314,127 @@ namespace System.Windows.Forms
             }
 
 
+			_copiedLinks = new CollisionLink_S[_selectedLinks.Count];
+			_copiedPlanes = new CollisionPlane_S[_selectedPlanes.Count];
+
+			int planeCountID = 0;
+
+			// We get a list of links.
+			//for (int i = 0; i < _selectedLinks.Count; ++i)
+			for (int i = _selectedLinks.Count - 1; i >= 0; --i)
+			{
+				CollisionLink link = _selectedLinks[i];
+				CollisionLink_S link_S = new CollisionLink_S(link);
+
+				// We then get a list of planes that this link has.
+				var planes = link._members;
+
+				for (int ip = planes.Count - 1; ip >= 0; --ip)
+				{
+					CollisionPlane cp = planes[ip];
+
+					// We now create a plane that does not use any links yet. Note: This is temporary
+					// since we have to know if this plane was referenced.
+					CollisionPlane_S cp_s = new CollisionPlane_S();
+
+					// This is how we know that the plane was referenced and copied from PlanesID.
+					bool PlaneReferenced = false;
+
+					int Length = _copiedPlanes.Length;
+					int PlaneIDToApply = planeCountID;
+
+
+					if (planeCountID > 0)
+					{
+						// Look up for a plane that has an equal reference since really, when
+						// creating lists, we don't just deep clone it, we reference them. (Not
+						// unless it were to be really deep-cloned in which ReferenceEquals would
+						// always return false)
+						for (int ip2 = planeCountID - 1; ip2 >= 0; --ip2)
+						{
+							if (ip2 >= Length)
+								break;
+
+							var cp_s2 = _copiedPlanes[ip2];
+
+							// We check if this plane has an equal reference to a plane
+							// stored in the list. Helps with connecting links back into a plane.
+							if (CollisionPlane.PlaneEquals(cp_s2.Reference, cp))
+							{
+								cp_s = cp_s2;
+								PlaneReferenced = true;
+								PlaneIDToApply = cp_s2.ID;
+								break;
+							}
+						}
+					}
+
+
+
+					bool linkLS = (cp._linkLeft != null);
+					bool linkRS = (cp._linkRight != null);
+					bool isLeftLinkE = linkLS && ReferenceEquals(link, cp._linkLeft);
+					bool isRightLinkE = linkRS && ReferenceEquals(link, cp._linkRight);
+
+					// We first check if the links are not equal to the main link being read.
+					// This might be an option if the user wants to still select planes that are not
+					// selected. At the moment, it is not necessary.
+					if (linkLS && !isLeftLinkE && !cp._linkLeft._highlight)
+						continue;
+					else if (linkRS && !isRightLinkE && !cp._linkRight._highlight)
+						continue;
+
+					if (!cp_s.Created && !PlaneReferenced)
+					{
+						cp_s = new CollisionPlane_S(cp, planeCountID);
+					}
+					else if (cp_s.Created)
+					{
+						if (cp_s.LinkLeft != -1 && cp_s.LinkRight != -1)
+							continue;
+					}
+
+					if (link_S.CollisionPlaneMembers == null)
+						link_S.CollisionPlaneMembers = new SortedList<int, PlaneLinkRelationship>();
+
+					var plr = new PlaneLinkRelationship();
+
+					if (isLeftLinkE)
+					{
+						plr.Positioning = PlaneLinkPositioning.Left;
+						cp_s.LinkLeft = i;
+					}
+					else if (isRightLinkE)
+					{
+						plr.Positioning = PlaneLinkPositioning.Right;
+						cp_s.LinkRight = i;
+					}
+					else
+						plr.Positioning = PlaneLinkPositioning.None;
+
+					if (!link_S.CollisionPlaneMembers.ContainsKey(PlaneIDToApply))
+						link_S.CollisionPlaneMembers.Add(PlaneIDToApply, plr);
+
+					_copiedPlanes[PlaneIDToApply] = cp_s;
+					
+					if (!PlaneReferenced)
+					{
+						_copiedPlanes[planeCountID].SetPlaneReference(ref cp);
+						planeCountID = planeCountID + 1;
+					}
+				}
+
+				_copiedLinks[i] = link_S;
+			}
+
+			if (_copiedPlanes.Length > 0)
+			{
+				for (int i = _copiedPlanes.Length - 1; i >= 0; --i)
+				{
+					_copiedPlanes[i].RemovePlaneReference();
+				}
+			}
+
 			//_copiedLinks3 = new List<CollisionState>();
 
 			//var copy = new CollisionState 
@@ -4275,7 +4443,7 @@ namespace System.Windows.Forms
 			//	_linkVectors = new List<Vector2>(),
 			//	_create = true
 			//};
-				
+
 
 			//for (int index = 0; index < _selectedLinks.Count; index++)
 			//{
@@ -4289,99 +4457,92 @@ namespace System.Windows.Forms
 			//copy = null;
 
 
-   //       List<List<CollisionPlane>> Planes = new List<List<CollisionPlane>>();
+			//       List<List<CollisionPlane>> Planes = new List<List<CollisionPlane>>();
 
-     //       foreach (var link in _selectedLinks)
-     //       {
-     //           var linkc = (CollisionLink)link.Clone();
+			//       foreach (var link in _selectedLinks)
+			//       {
+			//           var linkc = (CollisionLink)link.Clone();
 
-     //           if (linkc._members == null || linkc._members.Count == 0)
-     //           {
-     //               _copiedLinks.Add(new CollisionLink_S(linkc));
-     //           }
-     //           else
-     //           {
-     //               List<CollisionPlane> PlanesSub = new List<CollisionPlane>();
+			//           if (linkc._members == null || linkc._members.Count == 0)
+			//           {
+			//               _copiedLinks.Add(new CollisionLink_S(linkc));
+			//           }
+			//           else
+			//           {
+			//               List<CollisionPlane> PlanesSub = new List<CollisionPlane>();
 
-     //               foreach (var plane in linkc._members)
-     //               {
-     //                   var planec = plane.Clone();
+			//               foreach (var plane in linkc._members)
+			//               {
+			//                   var planec = plane.Clone();
 
-     //                   PlanesSub.Add(planec);
+			//                   PlanesSub.Add(planec);
 
-     //                   //var p = new CollisionPlane_S(planec);
-     //                   //_copiedPlanes.Add(p);
-     //               }
+			//                   //var p = new CollisionPlane_S(planec);
+			//                   //_copiedPlanes.Add(p);
+			//               }
 
-     //               Planes.Add(PlanesSub);
-     //           }
-     //       }
+			//               Planes.Add(PlanesSub);
+			//           }
+			//       }
 
-     //       if (Planes.Count > 0)
-     //       {
-     //           // Now we have to sort the list based on how much they have...
+			//       if (Planes.Count > 0)
+			//       {
+			//           // Now we have to sort the list based on how much they have...
 
-     //           var sorter = new CollisionPlaneComparable();
+			//           var sorter = new CollisionPlaneComparable();
 
-     //           Planes.Sort(sorter);
-     //           //Planes.Reverse();
+			//           Planes.Sort(sorter);
+			//           //Planes.Reverse();
 
-     //           // Now we have to remove any plane clones that are on the list.
-     //           // We start at the last part of the list since the last part has
-     //           // more planes than the eariler ones.
-     //           for (int pl = Planes.Count - 1; pl > 0; --pl)
-     //           {
-     //               int prev = pl - 1;
+			//           // Now we have to remove any plane clones that are on the list.
+			//           // We start at the last part of the list since the last part has
+			//           // more planes than the eariler ones.
+			//           for (int pl = Planes.Count - 1; pl > 0; --pl)
+			//           {
+			//               int prev = pl - 1;
 
-     //               if (prev < 0)
-     //                   break;
+			//               if (prev < 0)
+			//                   break;
 
-     //               List<CollisionPlane> planes = Planes[pl];
-					//if (planes.Count < 1)
-					//	continue;
+			//               List<CollisionPlane> planes = Planes[pl];
+			//if (planes.Count < 1)
+			//	continue;
 
-     //               for (int plp = prev; plp >= 0; --plp)
-     //               {
-     //                   List<CollisionPlane> planesPrev = Planes[plp];
+			//               for (int plp = prev; plp >= 0; --plp)
+			//               {
+			//                   List<CollisionPlane> planesPrev = Planes[plp];
 
-					//	if (planesPrev.Count < 1)
-					//		continue;
+			//	if (planesPrev.Count < 1)
+			//		continue;
 
-     //                   bool planesHighestCount = (planes.Count > planesPrev.Count);
-     //                   bool plPrevHighestCount = (planesPrev.Count > planes.Count);
-                        
-     //                   int highestCount = planesHighestCount ? planes.Count : planesPrev.Count;
+			//                   bool planesHighestCount = (planes.Count > planesPrev.Count);
+			//                   bool plPrevHighestCount = (planesPrev.Count > planes.Count);
 
-     //                   for (int ind = 0; ind < highestCount; ind++)
-     //                   {
+			//                   int highestCount = planesHighestCount ? planes.Count : planesPrev.Count;
 
-     //                       if (planesHighestCount)
-     //                       {
-     //                           this.RemovePrevIndex(ref planes, ref planesPrev, ind, true);
-     //                       }
-     //                       else if (plPrevHighestCount)
-     //                       {
-     //                           this.RemovePrevIndex(ref planesPrev, ref planes, ind, false);
-     //                       }
-     //                       else
-     //                       {
-     //                           this.RemovePrevIndex(ref planes, ref planesPrev, ind, true);
-     //                       }
-     //                   }
-     //               }
-     //           }
-     //       }
+			//                   for (int ind = 0; ind < highestCount; ind++)
+			//                   {
 
-     //       this._copiedPlanes2 = Planes;
+			//                       if (planesHighestCount)
+			//                       {
+			//                           this.RemovePrevIndex(ref planes, ref planesPrev, ind, true);
+			//                       }
+			//                       else if (plPrevHighestCount)
+			//                       {
+			//                           this.RemovePrevIndex(ref planesPrev, ref planes, ind, false);
+			//                       }
+			//                       else
+			//                       {
+			//                           this.RemovePrevIndex(ref planes, ref planesPrev, ind, true);
+			//                       }
+			//                   }
+			//               }
+			//           }
+			//       }
 
+			//       this._copiedPlanes2 = Planes;
 
-
-            CopyCollisionLinks(ref _selectedLinks, ref _copiedLinks, true);
-
-            //Utils.CopyList(ref _selectedLinks, ref _copiedLinks, true);
-            //Utils.CopyList(ref _selectedPlanes, ref _copiedPlanes, true);
-
-            this.SelectionModified();
+			this.SelectionModified();
         }
 
         private void RemovePrevIndex(ref List<CollisionPlane> planesPrimary, ref List<CollisionPlane> planesSecondary, 
@@ -4421,56 +4582,13 @@ namespace System.Windows.Forms
             }
         }
 
-        private void CopyCollisionLinks(ref List<CollisionLink> links, ref List<CollisionLink_S> links_S, bool from)
+        private void CopyCollisionLinks(ref List<CollisionLink> links, ref CollisionLink_S[] links_S, bool from)
         {
             //From means that the original links will override/create a new link
             if (from)
             {
-                links_S.Clear();
+              
 
-                CollisionLink last = null;
-				List<CollisionPlane_S> PlanesID = new List<CollisionPlane_S>();
-
-				int planeID = 0;
-
-				//We get a list of links.
-				for (int i = links.Count - 1; i >= 0; --i)
-                {
-					CollisionLink link = links[i];
-
-					//We then get a list of planes that this link has.
-					var planes = link._members;
-
-					for (int ip = planes.Count - 1; ip >= 0; --ip)
-					{
-						CollisionPlane cp = planes[ip];
-
-						//We first check if the links are not equal to the main link being read.
-						if (!CollisionLink.LinkEquals(link, cp._linkRight) && !cp._linkLeft._highlight)
-						{
-							continue;
-						}
-						else if (!CollisionLink.LinkEquals(link, cp._linkRight) && !cp._linkRight._highlight)
-						{
-							continue;
-						}
-
-						//We now create a plane that does not use any links yet.
-						var cp_s = new CollisionPlane_S(ref cp, planeID, false);
-
-
-
-						planeID++;
-					}
-
-
-					CollisionLink_S cl = new CollisionLink_S(link);
-                    links_S.Add(cl);
-
-					
-
-                    last = link;
-                }
 				//foreach (var link in links)
     //            {
     //                //var linkc = (CollisionLink)link.Clone();
@@ -4509,22 +4627,13 @@ namespace System.Windows.Forms
 
         public void PasteCopiedCollisions()
         {
-			//if (_selectedLinks.Count == 0)
-			//{
-			//    if (_selectedObject == null)
-			//    {
-			//        MessageBox.Show("You need to select a collision object.");
-			//        return;
-			//    }
-			//}
+			if (_copiedLinks.Length == 0)
+			{
+				MessageBox.Show("You do not have anything copied.");
+				return;
+			}
 
-			//if (_copiedLinks.Count == 0)
-			//{
-			//    MessageBox.Show("You do not have anything copied.");
-			//    return;
-			//}
-
-			CreateUndo();
+			//CreateUndo();
 
             if (clipboardPaste_PasteOverrideSelected.Checked)
             {
@@ -4560,11 +4669,164 @@ namespace System.Windows.Forms
                 ClearSelection();
             }
 
-            if (_copiedLinks.Count < 1)
+            if (_copiedLinks.Length < 1)
                 return;
 
             _selectedLinks.Clear();
 
+
+
+
+			int selectedLinksLinkIndex = 0;
+
+			// This is where the magic begins for pasting. Let's get all our copied links in memory.
+			for (int cl = 0; cl < _copiedLinks.Length; cl++)
+			{
+				var link = _copiedLinks[cl];
+
+				// Then check if the plane members are NOT nothing and there at least a plane reference.
+				if (link.CollisionPlaneMembers != null && link.CollisionPlaneMembers.Count > 0)
+				{
+					int[] planeReferences = link.CollisionPlaneMembers.Keys.ToArray();
+
+					// Then check our plane members that we just created in the copy function.
+					for (int pa = 0; pa < link.CollisionPlaneMembers.Count; pa++)
+					{
+						// This is important -- we get the reference to the list of copied planes to the plane.
+						int reference = planeReferences[pa];
+
+						// We cannot get our index if the plane reference is less than zero. That's simply
+						// nonexistent.
+						if (reference == -1)
+							continue;
+
+						//var linkRelationship = link.CollisionPlaneMembers[reference];
+
+						// We retrieve our CollisionPlane_S from our [int]reference.
+						var plane = _copiedPlanes[reference];
+
+						// We check if our linkleft or right is -1.
+						if ((plane.LinkLeft == -1) || (plane.LinkRight == -1))
+						{
+							continue;
+						}
+
+						CollisionLink_S LeftLink = _copiedLinks[plane.LinkLeft];
+						CollisionLink_S RightLink = _copiedLinks[plane.LinkRight];
+
+						// First check if both links were already created. If it is, then we skip creating
+						// a plane since we already know that it is not necessary.
+						if (LeftLink.LinkAlreadyCreated && RightLink.LinkAlreadyCreated && (plane.Reference != null))
+							continue;
+
+						//TODO: Why not allow the user to pick the default selected object?
+						CollisionLink leftLink = null;
+						CollisionLink rightLink = null;
+
+						// Check if the link was already created and has a reference. Reference is used
+						// to let us take that reference for a new collision plane linking.
+						if (LeftLink.LinkAlreadyCreated && LeftLink.Reference != null)
+							leftLink = LeftLink.Reference;
+						else
+						{
+							leftLink = new CollisionLink(_selectedObject, LeftLink.RawValue);
+
+							// Copy properties from CollisionLink_S to CollisionLink.
+							LeftLink.ApplyToOriginalLink(ref leftLink);
+						}
+
+						// Same procedure as previous.
+						if (RightLink.LinkAlreadyCreated && RightLink.Reference != null)
+							rightLink = RightLink.Reference;
+						else
+						{
+							rightLink = new CollisionLink(_selectedObject, RightLink.RawValue);
+							RightLink.ApplyToOriginalLink(ref rightLink);
+						}
+
+						// Let's just make sure that leftLink and rightLink aren't nothing.
+						if (leftLink == null || rightLink == null)
+							continue;
+
+						// We create a plane from our left and right link.
+						CollisionPlane branchedPlane = new CollisionPlane(_selectedObject, leftLink, rightLink);
+
+						// Now apply the original values that this plane used to have when we copied it.
+						// If you want to know what it applies to the original, please take a look at
+						// ApplyToOriginal in CollisionPlane_S.
+						plane.ApplyToOriginal(ref branchedPlane);
+
+						// Give the created plane a reference when we need it. 
+						plane.Reference = branchedPlane;
+
+
+						// The links are highlighted so that we know that they are selected when pasted.
+						leftLink._highlight = true;
+						rightLink._highlight = true;
+
+						// Add the links to the list of selected links. They are not needed if one already
+						// exists in the selection.
+						if (LeftLink.LinkAlreadyCreated)
+							_selectedLinks[LeftLink.LinkIndex] = leftLink;
+						else	
+						{
+							// Let's create a link reference so that later, we can use that link for a new plane.
+							LeftLink.Reference = leftLink;
+							LeftLink.LinkIndex = selectedLinksLinkIndex;
+							selectedLinksLinkIndex = selectedLinksLinkIndex + 1;
+
+							_selectedLinks.Add(leftLink);
+						}
+
+						if (RightLink.LinkAlreadyCreated)
+							_selectedLinks[RightLink.LinkIndex] = rightLink;
+						else
+						{
+							RightLink.Reference = rightLink;
+							RightLink.LinkIndex = selectedLinksLinkIndex;
+							selectedLinksLinkIndex = selectedLinksLinkIndex + 1;
+
+							_selectedLinks.Add(rightLink);
+						}
+
+						// This helps in knowing if CollisionLink_S already has a link created for paste 
+						// operations. Used when a link wants to know if the plane that is about to create
+						// was already created.
+						LeftLink.LinkAlreadyCreated = true;
+						RightLink.LinkAlreadyCreated = true;
+
+						_copiedLinks[plane.LinkLeft] = LeftLink;
+						_copiedLinks[plane.LinkRight] = RightLink;
+
+						_copiedPlanes[reference] = plane;
+					}
+				}
+				else
+				{
+
+				}
+			}
+
+			// Remove any paste reference that it was used during the operation.
+			for (int li = _copiedLinks.Length - 1; li >= 0; --li)
+			{
+				var l = _copiedLinks[li];
+
+				l.RemoveLinkReference();
+				l.LinkAlreadyCreated = false;
+				l.LinkIndex = -1;
+
+				_copiedLinks[li] = l;
+			}
+			// Remove any reference since we don't want to make ties with a collision plane.
+			for (int pl = _copiedPlanes.Length - 1; pl >= 0; --pl)
+			{
+				_copiedPlanes[pl].RemovePlaneReference();
+			}
+
+			SelectionModified();
+			_modelPanel.Invalidate();
+			_modelPanel.Update();
 
 
 			//if (_copiedLinks3 == null || _copiedLinks3.Count < 1)
@@ -4616,45 +4878,45 @@ namespace System.Windows.Forms
 
 
 
-			//This is _copiedLinks algorithm
-			{
-				CollisionLink l = new CollisionLink(_selectedObject, _copiedLinks[0].RawValue);
-				//CollisionLink l = new CollisionLink(_selectedObject, _copiedLinks[0].RawValue).Branch(_copiedLinks[0].RawValue);
-				_selectedLinks.Add(l);
-				l._highlight = true;
+			////This is _copiedLinks algorithm
+			//{
+			//	CollisionLink l = new CollisionLink(_selectedObject, _copiedLinks[0].RawValue);
+			//	//CollisionLink l = new CollisionLink(_selectedObject, _copiedLinks[0].RawValue).Branch(_copiedLinks[0].RawValue);
+			//	_selectedLinks.Add(l);
+			//	l._highlight = true;
 
-				if (_copiedLinks.Count > 1)
-				{
-					for (int a = 1; a < _copiedLinks.Count; a++)
-					{
-						CollisionLink_S v = _copiedLinks[a];
+			//	if (_copiedLinks.Count > 1)
+			//	{
+			//		for (int a = 1; a < _copiedLinks.Count; a++)
+			//		{
+			//			CollisionLink_S v = _copiedLinks[a];
 
-						CollisionLink last = _selectedLinks[a - 1];
-						CollisionLink recent = new CollisionLink(_selectedObject, v.RawValue);
+			//			CollisionLink last = _selectedLinks[a - 1];
+			//			CollisionLink recent = new CollisionLink(_selectedObject, v.RawValue);
 
-						CollisionPlane branchPlane = new CollisionPlane(_selectedObject, last, recent);
-						if (v.Members != null && v.Members.Count > 0)
-						{
-							for (int vm = 0; vm < 1/*v.Members.Count*/; vm++)
-							{
-								CollisionPlane_S p = v.Members[vm];
-								p.ApplyToOriginal(ref branchPlane);
-							}
-						}
+			//			CollisionPlane branchPlane = new CollisionPlane(_selectedObject, last, recent);
+			//			if (v.Members != null && v.Members.Count > 0)
+			//			{
+			//				for (int vm = 0; vm < 1/*v.Members.Count*/; vm++)
+			//				{
+			//					CollisionPlane_S p = v.Members[vm];
+			//					p.ApplyToOriginal(ref branchPlane);
+			//				}
+			//			}
 
-						//CollisionLink recent = last.Branch(v.RawValue);
-						//_selectedLinks[a - 1] = recent;
-						//_selectedLinks[a - 1]._highlight = true;
+			//			//CollisionLink recent = last.Branch(v.RawValue);
+			//			//_selectedLinks[a - 1] = recent;
+			//			//_selectedLinks[a - 1]._highlight = true;
 
-						recent._highlight = true;
+			//			recent._highlight = true;
 
-						_selectedLinks.Add(recent);
-					}
-				}
+			//			_selectedLinks.Add(recent);
+			//		}
+			//	}
 
-				SelectionModified();
-				_modelPanel.Invalidate();
-			}
+			//	SelectionModified();
+			//	_modelPanel.Invalidate();
+			//}
 		}
 		#endregion
 
@@ -4936,30 +5198,27 @@ namespace System.Windows.Forms
 
         public Vector2 RawValue;
 
-        public List<CollisionPlane_S> Members;
+		public SortedList<int, PlaneLinkRelationship> CollisionPlaneMembers;
 
-        // A way to know which index this object is. For example, because there are a bunch of 
-        // links that might be equal in terms of RawValue, Members, and its parent, this index
-        // serves to make sure that only a link serves as a parent
-        public int LinkIndex;
+		public bool LinkAlreadyCreated;
+
+		public CollisionLink Reference;
+
+		// A way to know which index this object is. For example, because there are a bunch of 
+		// links that might be equal in terms of RawValue, Members, and its parent, this index
+		// serves to make sure that only a link serves as a parent
+		public int LinkIndex;
 
         public CollisionLink_S(CollisionLink orig,  bool callPlaneMembers = true)
         {
             Parent = orig._parent;
             RawValue = orig._rawValue;
             EncodeIndex = orig._encodeIndex;
+			Reference = null;
 
-            //List<CollisionPlane_S> members = new List<CollisionPlane_S>();
-            //if (callPlaneMembers)
-            //{
-            //    foreach (var member in orig._members)
-            //    {
-            //        members.Add(new CollisionPlane_S(ref member, -1));
-            //    }
-            //}
-
-            LinkIndex = 0;
-            Members = null;
+            LinkIndex = -1;
+			CollisionPlaneMembers = null;
+			LinkAlreadyCreated = false;
         }
 
         /// <summary>
@@ -4982,36 +5241,38 @@ namespace System.Windows.Forms
 
             if (link1.RawValue != link2.RawValue)
                 return false;
-            if (link1.Members.Count != link2.Members.Count)
-                return false;
-
-            for (int i = 0; i < link1.Members.Count; i++)
-            {
-                CollisionPlane_S l1m = link1.Members[i];
-                CollisionPlane_S l2m = link2.Members[i];
-
-                if (l1m.EncodeIndex != l2m.EncodeIndex)
-                    return false;
-                if (l1m.Flags != l2m.Flags)
-                    return false;
-                if (l1m.Flags2 != l2m.Flags2)
-                    return false;
-                if (l1m.Type != l2m.Type)
-                    return false;
-            }
 
             return true;
         }
+
+		public void ApplyToOriginalLink(ref CollisionLink original, bool ApplyParent = false)
+		{
+			original._encodeIndex = EncodeIndex;
+			original.Value = RawValue;
+			
+			if (ApplyParent)
+				original._parent = Parent;
+		}
+
+		public void RemoveLinkReference()
+		{
+			Reference = null;
+		}
     }
 
     [Serializable]
     public struct CollisionPlane_S
     {
+		public bool Created;
+
         public CollisionObject Parent;
         public int EncodeIndex;
 
-        public CollisionLink_S LinkLeft;
-        public CollisionLink_S LinkRight;
+		public int LinkLeft;
+		public int LinkRight;
+
+		//public CollisionLink_S LinkLeft;
+		//public CollisionLink_S LinkRight;
 
         public CollisionPlaneFlags Flags;
         public CollisionPlaneFlags2 Flags2;
@@ -5020,8 +5281,10 @@ namespace System.Windows.Forms
 		public int ID;
 		public CollisionPlane Reference;
 
-		public CollisionPlane_S(ref CollisionPlane orig, int id, bool makeLinks = true)
+		public CollisionPlane_S(CollisionPlane orig, int id)
         {
+			Created = true;
+
             Parent = orig._parent;
             EncodeIndex = orig._encodeIndex;
 
@@ -5030,28 +5293,40 @@ namespace System.Windows.Forms
             Type = orig._type;
 
 			ID = id;
-			Reference = orig;
+			Reference = null;
 
-            if (makeLinks)
-            {
-                LinkLeft = new CollisionLink_S(orig.LinkLeft, false);
-                LinkRight = new CollisionLink_S(orig.LinkRight, false);
-                return;
-            }
-			else
-			{
-				LinkLeft = new CollisionLink_S();
-				LinkRight = new CollisionLink_S();
-			}
-        }
+			LinkLeft = -1;
+			LinkRight = -1;
+		}
 
-        public void ApplyToOriginal(ref CollisionPlane plane)
+		public void ApplyToOriginal(ref CollisionPlane plane)
         {
             plane._flags = Flags;
             plane._flags2 = Flags2;
             plane._type = Type;
         }
+
+		public void SetPlaneReference(ref CollisionPlane source)
+		{
+			Reference = source;
+		}
+		public void RemovePlaneReference()
+		{
+			Reference = null;
+		}
     }
+
+	public struct PlaneLinkRelationship
+	{
+		public PlaneLinkPositioning Positioning;
+	}
+
+	public enum PlaneLinkPositioning
+	{
+		Left,
+		Right,
+		None
+	}
 
     public class CollisionPlaneComparable : IComparer<List<CollisionPlane>>
     {

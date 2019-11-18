@@ -564,25 +564,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             _parent._points.Add(this);
         }
 
-        protected CollisionLink(CollisionLink toClone)
-        {
-            _parent = (CollisionObject)toClone._parent.Clone();
-            _encodeIndex = toClone._encodeIndex;
-
-            _highlight = toClone._highlight;
-            _rawValue = toClone._rawValue;
-
-            //We start cloning members by basically iterating through the list
-            foreach (var MemberToClone in toClone._members)
-            {
-                //Add the clone to the list of members
-                _members.Add((CollisionPlane)MemberToClone.Clone());
-            }
-        }
 
         //A way to know if an object is equal to the link by reading its variables
         public static bool LinkEquals(CollisionLink link1, CollisionLink link2)
         {
+			if (link1 == null || link2 == null)
+				return false;
+
             if (link1._parent != link2._parent)
                 return false;
 
@@ -607,13 +595,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 			return true;
         }
 
-        public object Clone()
-        {
-            return new CollisionLink(this);
-        }
-
-        //Had to be renamed due to ICloneable not allowing other procedures to be called this
-        public CollisionLink Clone2()
+        public CollisionLink Clone()
         {
             return new CollisionLink(_parent, _rawValue);
         }
@@ -643,11 +625,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_members[0]._linkLeft == this)
                 {
-                    _members[0].LinkLeft = links[i] = Clone2();
+                    _members[0].LinkLeft = links[i] = Clone();
                 }
                 else
                 {
-                    _members[0].LinkRight = links[i] = Clone2();
+                    _members[0].LinkRight = links[i] = Clone();
                 }
             }
 
@@ -915,41 +897,42 @@ namespace BrawlLib.SSBB.ResourceNodes
             _flags2 = entry->Flags2;
         }
 
-        protected CollisionPlane(CollisionPlane toClone)
-        {
-            _linkLeft = (CollisionLink)toClone._linkLeft.Clone2();
-            _linkRight = (CollisionLink)toClone._linkRight.Clone2();
-
-            _parent = (CollisionObject)toClone._parent.Clone();
-
-            _material = toClone._material;
-            _flags = toClone._flags;
-            _flags2 = toClone._flags2;
-            _type = toClone.Type;
-
-            _render = toClone._render;
-        }
-
         //A way to know if an object is equal to this by reading its variables
         public static bool PlaneEquals(CollisionPlane plane1, CollisionPlane plane2)
         {
+			bool p1N = plane1 == null; bool p2N = plane2 == null;
+			
+			if (p1N && p2N)
+				return true;
+			if ((p1N && !p2N) || (!p1N && p2N))
+				return false;
+
             if (plane1._encodeIndex != plane2._encodeIndex)
+                return false;
+            if (plane1._type != plane2._type)
                 return false;
             if (plane1._flags != plane2._flags)
                 return false;
             if (plane1._flags2 != plane2._flags2)
                 return false;
-            if (plane1._type != plane2.Type)
-                return false;
+
+			p1N = plane1.PointLeft == null; p2N = plane2.PointLeft == null;
+			bool p3N = plane1.PointRight == null; bool p4N = plane2.PointRight == null;
+			
+			if ((p1N && p2N) && (p3N && p4N))
+				return true;
+			if ((p1N && !p2N) || (!p1N && p2N))
+				return false;
+			if ((p3N && !p4N) || (!p3N && p4N))
+				return false;
+
+			if (plane1.PointLeft != plane2.PointLeft)
+				return false;
+			if (plane1.PointRight != plane2.PointRight)
+				return false;
 
             return true;
         }
-
-        public CollisionPlane Clone()
-        {
-            return new CollisionPlane(this);
-        }
-
         public CollisionLink Split(Vector2 point)
         {
             CollisionLink link = new CollisionLink(_parent, point);

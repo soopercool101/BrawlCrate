@@ -821,7 +821,7 @@ namespace BrawlCrate.UI
             // 
             // PasteCollision
             // 
-            this.PasteCollision.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
+            this.PasteCollision.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             this.PasteCollision.Location = new Point(49, 4);
             this.PasteCollision.Name = "PasteCollision";
             this.PasteCollision.Size = new Size(104, 23);
@@ -859,12 +859,12 @@ namespace BrawlCrate.UI
             this.ManiColl_PlacementGroup.PerformLayout();
             this.ManiColl_ScaleGroup.ResumeLayout(false);
             this.ManiColl_ScaleGroup.PerformLayout();
-            ((ISupportInitialize)(this.ManiColl_Scale_ScalarValue)).EndInit();
+            ((ISupportInitialize)this.ManiColl_Scale_ScalarValue).EndInit();
             this.ManiColl_FlipGroup.ResumeLayout(false);
             this.ManiColl_FlipGroup.PerformLayout();
             this.ManiColl_RotateGroup.ResumeLayout(false);
             this.ManiColl_RotateGroup.PerformLayout();
-            ((ISupportInitialize)(this.ManiColl_Rotate_DegreesValue)).EndInit();
+            ((ISupportInitialize)this.ManiColl_Rotate_DegreesValue).EndInit();
             this.advancedPO_TabC_AllCollsProps.ResumeLayout(false);
             this.advancedPO_TabC_AllCollsProps_Panel.ResumeLayout(false);
             this.advancedPO_TabC_AllCollsProps_Panel.PerformLayout();

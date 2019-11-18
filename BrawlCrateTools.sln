@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlLib", "BrawlLib\BrawlL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Updater", "Updater\Updater.csproj", "{9FAFC886-08B5-4922-BECC-E03D84FF15B0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sawndz", "sawndz\sawndz.vcxproj", "{D72045EE-2630-49F1-9668-435FDA84D73A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -99,26 +97,6 @@ Global
 		{9FAFC886-08B5-4922-BECC-E03D84FF15B0}.Release|x64.Build.0 = Release|x64
 		{9FAFC886-08B5-4922-BECC-E03D84FF15B0}.Release|x86.ActiveCfg = Release|x86
 		{9FAFC886-08B5-4922-BECC-E03D84FF15B0}.Release|x86.Build.0 = Release|x86
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|Any CPU.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|Any CPU.Build.0 = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|x64.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|x64.Build.0 = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|x86.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|x86.Build.0 = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|Any CPU.Build.0 = Debug|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|x64.ActiveCfg = Debug|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|x86.ActiveCfg = Debug|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|x86.Build.0 = Debug|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Mono|Any CPU.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Mono|x64.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Mono|x86.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Release|Any CPU.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Release|Any CPU.Build.0 = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Release|x64.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Release|x64.Build.0 = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Release|x86.ActiveCfg = Release|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
