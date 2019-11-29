@@ -53,6 +53,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
 
+        private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
+
         static TEX0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -78,6 +81,7 @@ namespace BrawlCrate.NodeWrappers
             MultiSelectMenu.Items.Add(ColorSmashSelectedToolStripMenuItem);
             MultiSelectMenu.Items.Add(new ToolStripSeparator());
             MultiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            MultiSelectMenu.Items.Add(DeleteSelectedToolStripMenuItem);
             MultiSelectMenu.Opening += MultiMenuOpening;
             MultiSelectMenu.Closing += MultiMenuClosing;
         }
@@ -127,6 +131,8 @@ namespace BrawlCrate.NodeWrappers
         private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             ColorSmashSelectedToolStripMenuItem.Enabled = true;
+            DeleteSelectedToolStripMenuItem.Visible = true;
+            DeleteSelectedToolStripMenuItem.Enabled = true;
         }
 
         private static void MultiMenuOpening(object sender, CancelEventArgs e)
@@ -136,15 +142,14 @@ namespace BrawlCrate.NodeWrappers
             {
                 ColorSmashSelectedToolStripMenuItem.Enabled = false;
             }
-            else
+            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
             {
-                foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+                if (!(n is TEX0Wrapper t) || t._resource.Parent == null || t._resource.Parent != w._resource.Parent)
                 {
-                    if (!(n is TEX0Wrapper t) || t._resource.Parent == null || t._resource.Parent != w._resource.Parent)
-                    {
-                        ColorSmashSelectedToolStripMenuItem.Enabled = false;
-                        break;
-                    }
+                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
+                    DeleteSelectedToolStripMenuItem.Visible = false;
+                    DeleteSelectedToolStripMenuItem.Enabled = false;
+                    break;
                 }
             }
         }

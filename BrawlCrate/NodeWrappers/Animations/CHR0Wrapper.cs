@@ -40,6 +40,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
 
+        private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
+
         static CHR0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -71,6 +74,9 @@ namespace BrawlCrate.NodeWrappers
             _multiSelectMenu.Items.Add(new ToolStripMenuItem("Edit All", null, EditAllAction));
             _multiSelectMenu.Items.Add(new ToolStripSeparator());
             _multiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            _multiSelectMenu.Items.Add(DeleteSelectedToolStripMenuItem);
+            _multiSelectMenu.Opening += MultiMenuOpening;
+            _multiSelectMenu.Closing += MultiMenuClosing;
         }
 
         protected static void NewBoneAction(object sender, EventArgs e)
@@ -137,6 +143,26 @@ namespace BrawlCrate.NodeWrappers
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
+        }
+        
+        private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            DeleteSelectedToolStripMenuItem.Visible = true;
+            DeleteSelectedToolStripMenuItem.Enabled = true;
+        }
+
+        private static void MultiMenuOpening(object sender, CancelEventArgs e)
+        {
+            CHR0Wrapper w = GetInstance<CHR0Wrapper>();
+            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+            {
+                if (!(n is CHR0Wrapper g) || g._resource.Parent == null || g._resource.Parent != w._resource.Parent)
+                {
+                    DeleteSelectedToolStripMenuItem.Visible = false;
+                    DeleteSelectedToolStripMenuItem.Enabled = false;
+                    break;
+                }
+            }
         }
 
         #endregion
@@ -234,6 +260,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
 
+        private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
+
         static CHR0EntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -256,6 +285,9 @@ namespace BrawlCrate.NodeWrappers
             _multiSelectMenu.Items.Add(new ToolStripMenuItem("Edit All", null, EditAllAction));
             _multiSelectMenu.Items.Add(new ToolStripSeparator());
             _multiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            _multiSelectMenu.Items.Add(DeleteSelectedToolStripMenuItem);
+            _multiSelectMenu.Opening += MultiMenuOpening;
+            _multiSelectMenu.Closing += MultiMenuClosing;
         }
 
         protected static void EditAllAction(object sender, EventArgs e)
@@ -295,6 +327,26 @@ namespace BrawlCrate.NodeWrappers
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
+        }
+        
+        private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            DeleteSelectedToolStripMenuItem.Visible = true;
+            DeleteSelectedToolStripMenuItem.Enabled = true;
+        }
+
+        private static void MultiMenuOpening(object sender, CancelEventArgs e)
+        {
+            CHR0EntryWrapper w = GetInstance<CHR0EntryWrapper>();
+            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+            {
+                if (!(n is CHR0EntryWrapper g) || g._resource.Parent == null || g._resource.Parent != w._resource.Parent)
+                {
+                    DeleteSelectedToolStripMenuItem.Visible = false;
+                    DeleteSelectedToolStripMenuItem.Enabled = false;
+                    break;
+                }
+            }
         }
 
         #endregion

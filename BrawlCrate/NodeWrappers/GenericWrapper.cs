@@ -39,6 +39,9 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
+        
+        private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
 
         static GenericWrapper()
         {
@@ -58,6 +61,9 @@ namespace BrawlCrate.NodeWrappers
 
             MultiSelectMenu = new ContextMenuStrip();
             MultiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            MultiSelectMenu.Items.Add(DeleteSelectedToolStripMenuItem);
+            MultiSelectMenu.Opening += MultiMenuOpening;
+            MultiSelectMenu.Closing += MultiMenuClosing;
         }
 
         protected static void MoveUpAction(object sender, EventArgs e)
@@ -80,6 +86,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().ExportSelected();
         }
 
+        protected static void DeleteSelectedAction(object sender, EventArgs e)
+        {
+            GetInstance<GenericWrapper>().DeleteSelected();
+        }
+        
         protected static void DuplicateAction(object sender, EventArgs e)
         {
             GetInstance<GenericWrapper>().Duplicate();
@@ -130,6 +141,26 @@ namespace BrawlCrate.NodeWrappers
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
+        }
+        
+        private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            DeleteSelectedToolStripMenuItem.Visible = true;
+            DeleteSelectedToolStripMenuItem.Enabled = true;
+        }
+
+        private static void MultiMenuOpening(object sender, CancelEventArgs e)
+        {
+            GenericWrapper w = GetInstance<GenericWrapper>();
+            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+            {
+                if (!(n is GenericWrapper g) || g._resource.Parent == null || g._resource.Parent != w._resource.Parent)
+                {
+                    DeleteSelectedToolStripMenuItem.Visible = false;
+                    DeleteSelectedToolStripMenuItem.Enabled = false;
+                    break;
+                }
+            }
         }
 
         #endregion
@@ -216,7 +247,21 @@ namespace BrawlCrate.NodeWrappers
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
 
-        public virtual void ExportSelected()
+        public void DeleteSelected()
+        {
+            while (MainForm.Instance.resourceTree.SelectedNodes.Count > 0)
+            {
+                if (!(MainForm.Instance.resourceTree.SelectedNodes[0] is GenericWrapper g))
+                {
+                    break;
+                }
+
+                MainForm.Instance.resourceTree.SelectedNodes.RemoveAt(0);
+                g.Delete();
+            }
+        }
+        
+        public void ExportSelected()
         {
             string folder = Program.ChooseFolder();
             if (string.IsNullOrEmpty(folder))
