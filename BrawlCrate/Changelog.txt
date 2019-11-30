@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30b Hotfix 1
+BrawlCrate - v0.30c
 Copyright © 2018 - 2019 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,11 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30c - (11/29/2019)
+ . Add support for mass-deleting multiple selected nodes
+ . Fix bug in which a corrupted settings file would completely block program boot
+ . Improve verbiage on dialog for deleting associated PLT0 for a TEX0
  
  - BrawlCrate v0.30b Hotfix 1 - (11/15/2019)
  . Fix bug in which issue reporter would use improper formatting when submitting

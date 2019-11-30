@@ -3,7 +3,7 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>Updater</AssemblyName>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>BrawlCrate updater</AssemblyTitle>
+    <AssemblyTitle>BrawlCrate Updater</AssemblyTitle>
     <Company>BrawlCrate</Company>
     <Product>BrawlCrate</Product>
     <Description>Simple application that updates a BrawlCrate installation</Description>

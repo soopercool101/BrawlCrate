@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30b-h1";
+        public static readonly string TagName = "v0.30c";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,13 +38,9 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30b Hotfix 1! This release:
-- (Hotfix 1) Fixes issues where the issue reporter would not report issues with proper formatting
-- Adds additional API functionality regarding context menus
-- Improves parsing and editing of STPM files
-- Adds 255-slot CSS config support for BrawlEx
-- Fixes bugs with live texture rendering
-- Fixes issues with Export All dialog
+            @"Updated to BrawlCrate v0.30c! This release:
+- Adds support for deleting files that have been multi-selected
+- Adds fix for corrupted settings file crashes
 
 Full changelog can be viewed from the help menu.";
 
