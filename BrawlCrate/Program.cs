@@ -94,21 +94,56 @@ Full changelog can be viewed from the help menu.";
             Application.EnableVisualStyles();
 
 #if !DEBUG
-            if (Properties.Settings.Default.UpdateSettings)
+            try
             {
-                foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
+                if (Properties.Settings.Default.UpdateSettings)
                 {
-                    foreach (Type _Type in _Assembly.GetTypes())
+                    foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
                     {
-                        if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
+                        foreach (Type _Type in _Assembly.GetTypes())
                         {
-                            ApplicationSettingsBase settings =
-                                (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
-                            if (settings != null)
+                            if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
                             {
-                                settings.Upgrade();
-                                settings.Reload();
-                                settings.Save();
+                                ApplicationSettingsBase settings =
+                                    (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
+                                if (settings != null)
+                                {
+                                    settings.Upgrade();
+                                    settings.Reload();
+                                    settings.Save();
+                                }
+                            }
+                        }
+                    }
+
+                    // This is the first time booting this update
+                    FirstBoot = true;
+
+                    // Ensure settings only get updated once
+                    Properties.Settings.Default.UpdateSettings = false;
+                    Properties.Settings.Default.Save();
+                }
+            }
+            catch
+            {
+                string settingsPath = Path.Combine(Environment.GetEnvironmentVariable("LocalAppData"),
+                    "BrawlCrate");
+                if (Directory.Exists(settingsPath))
+                {
+                    if (MessageBox.Show(
+                            "Settings corruption has been detected. You can either reset your settings or fix them manually.\n" +
+                            "Would you like to reset them? Note that if they are not reset the program may not start correctly.",
+                            "BrawlCrate", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                    {
+                        foreach (DirectoryInfo d in Directory.CreateDirectory(settingsPath).GetDirectories())
+                        {
+                            try
+                            {
+                                d.Delete(true);
+                            }
+                            catch
+                            {
+                                // ignored. Likely the current settings file
                             }
                         }
                     }
