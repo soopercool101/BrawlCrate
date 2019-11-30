@@ -144,12 +144,16 @@ namespace BrawlCrate.NodeWrappers
             }
             foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
             {
-                if (!(n is TEX0Wrapper t) || t._resource.Parent == null || t._resource.Parent != w._resource.Parent)
+                if (((TEX0Wrapper)n)?._resource.Parent == null)
                 {
-                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
                     DeleteSelectedToolStripMenuItem.Visible = false;
                     DeleteSelectedToolStripMenuItem.Enabled = false;
+                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
                     break;
+                }
+                if (((TEX0Wrapper)n)?._resource.Parent != w._resource.Parent)
+                {
+                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
                 }
             }
         }
@@ -461,7 +465,7 @@ namespace BrawlCrate.NodeWrappers
 
             PLT0Node p = ((TEX0Node) _resource).GetPaletteNode();
             if (((TEX0Node) _resource).HasPalette && p != null &&
-                MessageBox.Show("Would you like to delete the associated PLT0?", "Deleting TEX0",
+                MessageBox.Show("Would you like to delete the associated PLT0?", $"Deleting {_resource.Name}",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 p.Dispose();

@@ -154,7 +154,7 @@ namespace BrawlCrate.NodeWrappers
             GenericWrapper w = GetInstance<GenericWrapper>();
             foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
             {
-                if (!(n is GenericWrapper g) || g._resource.Parent == null || g._resource.Parent != w._resource.Parent)
+                if (!(n is GenericWrapper g) || g._resource.Parent == null)
                 {
                     DeleteSelectedToolStripMenuItem.Visible = false;
                     DeleteSelectedToolStripMenuItem.Enabled = false;
