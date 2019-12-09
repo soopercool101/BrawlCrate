@@ -197,7 +197,7 @@ namespace BrawlCrate.NodeWrappers
         {
             MasqueradeEntryWrapper w = GetInstance<MasqueradeEntryWrapper>();
 
-            List<string> files = ((CSSCEntryNode) w._resource).GetCostumeFilePath(Program.RootPath);
+            List<string> files = ((MasqueradeEntryNode) w._resource).GetCostumeFilePath(Program.RootPath);
 
             _openCostumeToolStripMenuItem.Enabled = files.Count != 0;
             _openCostumeToolStripMenuItem.Visible = files.Count != 0;
@@ -211,10 +211,6 @@ namespace BrawlCrate.NodeWrappers
                     if (i + 1 < files.Count)
                     {
                         _openCostumeToolStripMenuItem.Text += " and ";
-                    }
-                    else
-                    {
-                        _openCostumeToolStripMenuItem.Text += ", ";
                     }
                 }
             }
