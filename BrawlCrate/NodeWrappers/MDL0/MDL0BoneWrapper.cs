@@ -244,7 +244,7 @@ namespace BrawlCrate.NodeWrappers
             BaseWrapper newParent = Nodes[Nodes.Count - 1] as BaseWrapper;
             newParent.Remove();
             Remove();
-            parent.Nodes.Add(newParent);
+            parent.Nodes.Insert(Index, newParent);
             newParent.Nodes.Add(this);
             newParent.Resource.Parent = parent.Resource;
             _resource.Parent = newParent.Resource;
