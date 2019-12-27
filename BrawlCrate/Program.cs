@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30c-h1";
+        public static readonly string TagName = "v0.30d";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,8 +38,13 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30c Hotfix 1! This release:
-- Fix issues where Masquerade and CSSC Entry Wrappers would behave incorrectly
+            @"Updated to BrawlCrate v0.30d! This release:
+- Adds additional useful functions to BrawlAPI
+- Allows materials and material references to be properly duplicated
+- Moves MDL0 Material Reference HasTextureMatrix property to the Texture Matrix Effect category
+- Fixes crash when parsing unexpected MoveDef children
+- Fixes crash when reading certain REFF animations
+- Fixes error logs when resetting model viewer settings
 
 Full changelog can be viewed from the help menu.";
 

@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30c
+BrawlCrate - v0.30d
 Copyright © 2018 - 2019 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,20 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30d - (12/26/2019)
+ . Add various additional exposed members for API:
+   - UserStringInput
+   - UserIntegerInput
+   - UserFloatInput
+ . Major stability improvements for Duplicate, fixing various crashes and errors
+ . Material Reference "HasTextureMatrix" property has been moved to the "Texture Matrix Effect" category
+ . Fix crash when parsing unexpected MoveDef children
+ . Fix memory exception crash when reading certain REFF animations
+ . Fix errors when resetting model viewer settings
+ 
+ - BrawlCrate v0.30c Hotfix 1 - (12/9/2019)
+ . Fix issue where context menu for Masquerade entries would throw errors
  
  - BrawlCrate v0.30c - (11/29/2019)
  . Add support for mass-deleting multiple selected nodes
