@@ -1,6 +1,7 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlCrate.UI;
 using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -592,6 +593,61 @@ namespace BrawlCrate.API
         }
 
         #endregion
+
+        #endregion
+
+        #region User Entry Boxes
+
+        // Hidden. Used to determine default text entry when none is defined
+        private static string lastStringInput = "";
+
+        /// <summary>
+        ///     Prompts the user to input a string, with a default title and the last BrawlAPI-entered string as the default value.
+        /// </summary>
+        /// <returns>
+        ///     The user-inputted string
+        /// </returns>
+        public static string UserStringInput()
+        {
+            return UserStringInput("Input a string:", lastStringInput);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a string, with the last BrawlAPI-entered string as the default value.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the string input dialog box
+        /// </param>
+        /// <returns>
+        ///     The user-inputted string
+        /// </returns>
+        public static string UserStringInput(string title)
+        {
+            return UserStringInput(title, lastStringInput);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a string with a default starting value.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the string input dialog box
+        /// </param>
+        /// <param name="defaultText">
+        ///     The default text to use for the input
+        /// </param>
+        /// <returns>
+        ///     The user-inputted string
+        /// </returns>
+        public static string UserStringInput(string title, string defaultText)
+        {
+            using (StringInputDialog dialog = new StringInputDialog(title, defaultText))
+            {
+                dialog.Cancellable = false;
+                dialog.ShowDialog();
+                lastStringInput = dialog.resultString;
+                return dialog.resultString;
+            }
+        }
 
         #endregion
 

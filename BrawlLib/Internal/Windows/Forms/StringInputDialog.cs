@@ -19,6 +19,16 @@
 
         public string resultString = null;
 
+        public bool Cancellable
+        {
+            get => btnCancel.Enabled && btnCancel.Visible;
+            set
+            {
+                btnCancel.Enabled = value;
+                btnCancel.Visible = value;
+            }
+        }
+
         private unsafe void btnOkay_Click(object sender, EventArgs e)
         {
             resultString = txtName.Text;
