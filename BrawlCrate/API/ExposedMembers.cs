@@ -598,6 +598,8 @@ namespace BrawlCrate.API
 
         #region User Entry Boxes
 
+        #region Strings
+
         // Hidden. Used to determine default text entry when none is defined
         private static string lastStringInput = "";
 
@@ -609,7 +611,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static string UserStringInput()
         {
-            return UserStringInput("Input a string:", lastStringInput);
+            return UserStringInput("BrawlAPI String Input", lastStringInput);
         }
 
         /// <summary>
@@ -646,6 +648,260 @@ namespace BrawlCrate.API
                 dialog.ShowDialog();
                 lastStringInput = dialog.resultString;
                 return dialog.resultString;
+            }
+        }
+
+        #endregion
+
+        // Hidden. Used to determine default integer entry when none is defined
+        private static int lastIntegerInput = 0;
+        
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput()
+        {
+            return UserIntegerInput("BrawlAPI Integer Input", "Value:", lastIntegerInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title)
+        {
+            return UserIntegerInput(title, "Value:", lastIntegerInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description)
+        {
+            return UserIntegerInput(title, description, lastIntegerInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description, int defaultValue)
+        {
+            return UserIntegerInput(title, description, defaultValue, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description, int defaultValue, int minimumValue)
+        {
+            return UserIntegerInput(title, description, defaultValue, minimumValue, int.MaxValue);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <param name="maximumValue">
+        ///     The highest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description, int defaultValue, int minimumValue, int maximumValue)
+        {
+            using (NumericInputForm dialog = new NumericInputForm())
+            {
+                dialog.Cancellable = false;
+                dialog.numNewCount.Integer = true;
+                // Set minimum and maximum values if applicable
+                if (minimumValue != maximumValue)
+                {
+                    dialog.numNewCount.MinimumValue = minimumValue;
+                    dialog.numNewCount.MaximumValue = maximumValue;
+                    // Ensure value stays within the boundaries set
+                    if (defaultValue < minimumValue || defaultValue > maximumValue)
+                    {
+                        defaultValue = minimumValue;
+                    }
+                }
+                dialog.ShowDialog(title, description, defaultValue);
+                return dialog.NewValue;
+            }
+        }
+
+
+        // Hidden. Used to determine default float entry when none is defined
+        private static float lastFloatInput = 0.0f;
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title)
+        {
+            return UserFloatInput(title, "Value:", lastFloatInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description)
+        {
+            return UserFloatInput(title, description, lastFloatInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description, float defaultValue)
+        {
+            return UserFloatInput(title, description, defaultValue, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description, float defaultValue, float minimumValue)
+        {
+            return UserFloatInput(title, description, defaultValue, minimumValue, float.MaxValue);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <param name="maximumValue">
+        ///     The highest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description, float defaultValue, float minimumValue, float maximumValue)
+        {
+            using (NumericInputForm dialog = new NumericInputForm())
+            {
+                dialog.Cancellable = false;
+                dialog.numNewCount.Integer = false;
+                // Set minimum and maximum values if applicable
+                if (minimumValue != maximumValue)
+                {
+                    dialog.numNewCount.MinimumValue = minimumValue;
+                    dialog.numNewCount.MaximumValue = maximumValue;
+                    // Ensure value stays within the boundaries set
+                    if (defaultValue < minimumValue || defaultValue > maximumValue)
+                    {
+                        defaultValue = minimumValue;
+                    }
+                }
+                dialog.ShowDialog(title, description, defaultValue);
+                return dialog.NewValue;
             }
         }
 
