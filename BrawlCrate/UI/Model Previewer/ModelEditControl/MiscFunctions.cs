@@ -630,6 +630,12 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         public ModelEditorSettings CollectSettings()
         {
+            if (Properties.Settings.Default.ViewerSettings == null)
+            {
+                Properties.Settings.Default.ViewerSettings = ModelEditorSettings.Default();
+                Properties.Settings.Default.ViewerSettingsSet = true;
+                Properties.Settings.Default.Save();
+            }
             ModelEditorSettings settings = new ModelEditorSettings
             {
                 RetrieveCorrAnims = RetrieveCorrespondingAnimations,
