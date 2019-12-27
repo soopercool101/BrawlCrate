@@ -4,6 +4,8 @@ using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
 using System;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -142,6 +144,18 @@ namespace BrawlCrate.NodeWrappers
         public MDL0MaterialWrapper()
         {
             ContextMenuStrip = _menu;
+        }
+
+        public override ResourceNode Duplicate()
+        {
+            ResourceNode rNode = base.Duplicate();
+
+            if (rNode is MDL0MaterialNode mat)
+            {
+                mat.Shader = (_resource as MDL0MaterialNode).Shader;
+            }
+
+            return rNode;
         }
     }
 }

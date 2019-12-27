@@ -15,11 +15,11 @@ namespace BrawlCrate.NodeWrappers
         public override string ImportFilter => FileFilters.Raw;
 
         // Override Duplicate since by default Collision Objects don't contain their own data
-        public override void Duplicate()
+        public override ResourceNode Duplicate()
         {
             if (_resource.Parent == null)
             {
-                return;
+                return null;
             }
 
             string tempPath = Path.GetTempFileName();
@@ -28,7 +28,7 @@ namespace BrawlCrate.NodeWrappers
             if (!(NodeFactory.FromFile(null, $"{tempPath}.coll", typeof(CollisionNode)) is CollisionNode cNode))
             {
                 MessageBox.Show("The node could not be duplicated correctly.");
-                return;
+                return null;
             }
 
             int n = 0;
@@ -46,6 +46,7 @@ namespace BrawlCrate.NodeWrappers
 
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(cNode.Children[0], true, index + 1);
+            return cNode;
         }
     }
 }

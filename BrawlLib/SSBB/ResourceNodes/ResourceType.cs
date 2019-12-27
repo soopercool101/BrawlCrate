@@ -91,6 +91,7 @@
         MDL0Shader,
         TEVStage,
         MDL0Material,
+        MDL0MaterialEntry,
 
         CHR0,
         CHR0Entry,

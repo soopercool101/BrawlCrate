@@ -13,6 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0MaterialRefNode : MDL0EntryNode
     {
+        public override ResourceType ResourceFileType => ResourceType.MDL0MaterialEntry;
         internal MDL0TextureRef* Header
         {
             get => (MDL0TextureRef*) _origSource.Address;

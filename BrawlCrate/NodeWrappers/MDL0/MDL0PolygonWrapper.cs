@@ -62,12 +62,13 @@ namespace BrawlCrate.NodeWrappers
             ContextMenuStrip = _menu;
         }
 
-        public override void Duplicate()
+        public override ResourceNode Duplicate()
         {
             MDL0ObjectNode node = ((MDL0ObjectNode) _resource).HardCopy();
             node.Name += " - Copy";
             ((MDL0ObjectNode) _resource).Model._objGroup.AddChild(node);
             //((MDL0ObjectNode)_resource).Model.Rebuild(true);
+            return node;
         }
 
         public void Optimize()
