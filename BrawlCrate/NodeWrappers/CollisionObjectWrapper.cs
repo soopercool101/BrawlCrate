@@ -46,7 +46,8 @@ namespace BrawlCrate.NodeWrappers
 
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(cNode.Children[0], true, index + 1);
-            return cNode;
+            cNode.Dispose();
+            return cNode.Children[0];
         }
     }
 }
