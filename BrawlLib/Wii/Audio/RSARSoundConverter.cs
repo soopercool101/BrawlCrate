@@ -32,6 +32,10 @@ namespace BrawlLib.Wii.Audio
                     .LoopEndSample; //Set sample size to end sample. That way the audio gets cut off when encoding.
 
                 blockLen = samples.Align(14) / 14 * 8;
+                if (blockLen == 0)
+                {
+                    blockLen = 8;
+                }
                 samplesPerBlock = blockLen / 8 * 14;
 
                 //If loop point doesn't land on a block, pad the stream so that it does.
@@ -52,6 +56,10 @@ namespace BrawlLib.Wii.Audio
                 totalSamples = samples = stream.Samples;
 
                 blockLen = samples.Align(14) / 14 * 8;
+                if (blockLen == 0)
+                {
+                    blockLen = 8;
+                }
                 samplesPerBlock = blockLen / 8 * 14;
             }
 
