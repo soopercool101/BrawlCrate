@@ -158,4 +158,51 @@ namespace BrawlCrate.NodeWrappers
             return rNode;
         }
     }
+
+    [NodeWrapper(ResourceType.MDL0MaterialEntry)]
+    public class MDL0MaterialRefWrapper : GenericWrapper
+    {
+        public override ResourceNode Duplicate()
+        {
+            if (_resource is MDL0MaterialRefNode matRef && matRef.Model != null)
+            {
+                MDL0MaterialRefNode matRef2 = new MDL0MaterialRefNode();
+                matRef.Parent.InsertChild(matRef2, true, matRef.Index + 1);
+                matRef2.Default();
+                // Misc
+                matRef2.Name = matRef.Name;
+                matRef2.Texture = matRef.Texture;
+                matRef2.Palette = matRef.Palette;
+                // Texture Coordinates
+                matRef2.Scale = matRef.Scale;
+                matRef2.Rotation = matRef.Rotation;
+                matRef2.Translation = matRef.Translation;
+                // Texture Matrix Effect
+                matRef2.HasTextureMatrix = matRef.HasTextureMatrix;
+                matRef2.SCN0RefCamera = matRef.SCN0RefCamera;
+                matRef2.SCN0RefLight = matRef.SCN0RefLight;
+                // Texture Reference
+                matRef2.UWrapMode = matRef.UWrapMode;
+                matRef2.VWrapMode = matRef.VWrapMode;
+                matRef2.MinFilter = matRef.MinFilter;
+                matRef2.MagFilter = matRef.MagFilter;
+                matRef2.LODBias = matRef.LODBias;
+                matRef2.MaxAnisotropy = matRef.MaxAnisotropy;
+                matRef2.ClampBias = matRef.ClampBias;
+                matRef2.TexelInterpolate = matRef.TexelInterpolate;
+                // XF TexGen Flags
+                matRef2.Projection = matRef.Projection;
+                matRef2.InputForm = matRef.InputForm;
+                matRef2.Type = matRef.Type;
+                matRef2.Coordinates = matRef.Coordinates;
+                matRef2.EmbossSource = matRef.EmbossSource;
+                matRef2.EmbossLight = matRef.EmbossLight;
+                matRef2.Normalize = matRef.Normalize;
+
+                return matRef2;
+            }
+
+            return null;
+        }
+    }
 }

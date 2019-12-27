@@ -63,6 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Properties
 
+        [Category("Texture Matrix Effect")]
         public bool HasTextureMatrix
         {
             get
