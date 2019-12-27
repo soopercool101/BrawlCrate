@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30d
+BrawlCrate - v0.30d Hotfix 1
 Copyright © 2018 - 2019 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,10 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30d Hotfix 1 - (12/27/2019)
+ . Add ability to add a parent directly to a bone
+ . Attempt to fix bug in which converting a WAV that's shorter than the default sample size would throw errors
  
  - BrawlCrate v0.30d - (12/26/2019)
  . Add various additional exposed members for API:

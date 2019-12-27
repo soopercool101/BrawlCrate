@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30d";
+        public static readonly string TagName = "v0.30d-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -39,6 +39,7 @@ namespace BrawlCrate
         /// </summary>
         public static readonly string UpdateMessage =
             @"Updated to BrawlCrate v0.30d! This release:
+- (Hotfix 1) Adds support for adding parents directly to bones
 - Adds additional useful functions to BrawlAPI
 - Allows materials and material references to be properly duplicated
 - Moves MDL0 Material Reference HasTextureMatrix property to the Texture Matrix Effect category
