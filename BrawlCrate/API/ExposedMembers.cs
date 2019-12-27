@@ -653,6 +653,10 @@ namespace BrawlCrate.API
 
         #endregion
 
+        #region Numbers
+
+        #region Integers
+
         // Hidden. Used to determine default integer entry when none is defined
         private static int lastIntegerInput = 0;
         
@@ -784,6 +788,9 @@ namespace BrawlCrate.API
             }
         }
 
+        #endregion
+
+        #region Floating-Point (Decimal) Numbers
 
         // Hidden. Used to determine default float entry when none is defined
         private static float lastFloatInput = 0.0f;
@@ -904,6 +911,10 @@ namespace BrawlCrate.API
                 return dialog.NewValue;
             }
         }
+
+        #endregion
+
+        #endregion
 
         #endregion
 

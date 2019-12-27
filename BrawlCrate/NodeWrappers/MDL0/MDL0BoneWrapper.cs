@@ -58,6 +58,8 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("Regenerate bone array", null, RegenAction));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(
+                new ToolStripMenuItem("Add New Parent", null, CreateParentAction, Keys.Control | Keys.Alt | Keys.P));
+            _menu.Items.Add(
                 new ToolStripMenuItem("Add New Child", null, CreateAction, Keys.Control | Keys.Alt | Keys.N));
             _menu.Items.Add(DeleteToolStripMenuItem);
             _menu.Opening += MenuOpening;
@@ -77,6 +79,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void AddDownAction(object sender, EventArgs e)
         {
             GetInstance<MDL0BoneWrapper>().AddDown();
+        }
+
+        protected static void CreateParentAction(object sender, EventArgs e)
+        {
+            GetInstance<MDL0BoneWrapper>().CreateParentNode();
         }
 
         protected static void CreateAction(object sender, EventArgs e)
@@ -222,6 +229,29 @@ namespace BrawlCrate.NodeWrappers
 
             //}
             //catch { return; }
+        }
+
+        public void CreateParentNode()
+        {
+            if (Parent == null)
+            {
+                return;
+            }
+
+            CreateNode();
+            TreeView.BeginUpdate();
+            BaseWrapper parent = Parent as BaseWrapper;
+            BaseWrapper newParent = Nodes[Nodes.Count - 1] as BaseWrapper;
+            newParent.Remove();
+            Remove();
+            parent.Nodes.Add(newParent);
+            newParent.Nodes.Add(this);
+            newParent.Resource.Parent = parent.Resource;
+            _resource.Parent = newParent.Resource;
+            _resource.OnMoved();
+            TreeView.SelectedNode = this;
+            TreeView.EndUpdate();
+            EnsureVisible();
         }
 
         private void CreateNode()
