@@ -1327,7 +1327,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _tex = value;
             _textureNode = null;
-            ((PAT0Node) Parent.Parent.Parent).RegenerateTextureList();
+            ((PAT0Node) Parent?.Parent?.Parent)?.RegenerateTextureList();
         }
 
         [Browsable(false)]
