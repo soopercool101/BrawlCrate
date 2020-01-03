@@ -193,10 +193,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.Value54 = ext.Value54;
                 cur.Value55 = ext.Value55;
                 cur.Value56 = ext.Value56;
-                cur.Value57 = ext.Value57;
-                cur.Value58 = ext.Value58;
-                cur.EchoMultiplier = ext.EchoMultiplier;
-                cur.Value60 = ext.Value60;
+                cur.EchoDepth = ext.EchoDepth;
+                cur.EchoDepthRemoval = ext.EchoDepthRemoval;
+                cur.EchoRepeats1 = ext.EchoRepeats1;
+                cur.EchoRepeats2 = ext.EchoRepeats2;
                 cur.Value61 = ext.Value61;
                 cur.Value62 = ext.Value62;
                 cur.Value63 = ext.Value63;
@@ -899,7 +899,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int Value57
+        public int EchoDepth
         {
             get => _values.GetInt(56);
             set
@@ -910,7 +910,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int Value58
+        public int EchoDepthRemoval
         {
             get => _values.GetInt(57);
             set
@@ -921,7 +921,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int EchoMultiplier
+        public int EchoRepeats1
         {
             get => _values.GetInt(58);
             set
@@ -932,7 +932,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int Value60
+        public int EchoRepeats2
         {
             get => _values.GetInt(59);
             set
