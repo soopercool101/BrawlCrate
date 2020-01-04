@@ -456,7 +456,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             List<string> directChildrenExportedPaths = new List<string>();
-            foreach (ARCEntryNode entry in Children)
+            foreach (ResourceNode entry in Children)
             {
                 if (entry is ARCNode)
                 {
@@ -509,7 +509,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             DirectoryInfo dir = new DirectoryInfo(inFolder);
             DirectoryInfo[] dirs;
-            foreach (ARCEntryNode entry in Children)
+            foreach (ResourceNode entry in Children)
             {
                 if (entry is ARCNode)
                 {

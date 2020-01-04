@@ -60,8 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Children.Count && i < external.Children.Count; i++)
             {
-                STPMEntryNode ext = external.Children[i] as STPMEntryNode;
-                if (ext == null || !(Children[i] is STPMEntryNode cur))
+                if (!(external.Children[i] is STPMEntryNode ext) || !(Children[i] is STPMEntryNode cur))
                 {
                     continue;
                 }
@@ -107,9 +106,101 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.FixedCamX = ext.FixedCamX;
                 cur.FixedCamY = ext.FixedCamY;
                 cur.FixedCamZ = ext.FixedCamZ;
-                cur.FixedCamAngle = ext.FixedCamAngle;
+                cur.FixedCamFOV = ext.FixedCamFOV;
                 cur.FixedHorizontalAngle = ext.FixedHorizontalAngle;
                 cur.FixedVerticalAngle = ext.FixedVerticalAngle;
+            }
+        }
+
+        public void ReplaceGameplayVariables(STPMNode external)
+        {
+            for (int i = 0; i < Children.Count && i < external.Children.Count; i++)
+            {
+                if (!(external.Children[i] is STPMEntryNode ext) || !(Children[i] is STPMEntryNode cur))
+                {
+                    continue;
+                }
+                
+                cur.MinimumZ = ext.MinimumZ;
+                cur.MaximumZ = ext.MaximumZ;
+                cur.MinimumTilt = ext.MinimumTilt;
+                cur.MaximumTilt = ext.MaximumTilt;
+                cur.HorizontalRotationFactor = ext.HorizontalRotationFactor;
+                cur.VerticalRotationFactor = ext.VerticalRotationFactor;
+                cur.CharacterBubbleBufferMultiplier = ext.CharacterBubbleBufferMultiplier;
+                cur.Value18 = ext.Value18;
+                cur.CameraSpeed = ext.CameraSpeed;
+                cur.StarKOCamTilt = ext.StarKOCamTilt;
+                cur.FinalSmashCamTilt = ext.FinalSmashCamTilt;
+                cur.CameraRight = ext.CameraRight;
+                cur.CameraLeft = ext.CameraLeft;
+                cur.PauseCamX = ext.PauseCamX;
+                cur.PauseCamY = ext.PauseCamY;
+                cur.PauseCamZ = ext.PauseCamZ;
+                cur.PauseCamAngle = ext.PauseCamAngle;
+                cur.PauseCamZoomIn = ext.PauseCamZoomIn;
+                cur.PauseCamZoomDefault = ext.PauseCamZoomDefault;
+                cur.PauseCamZoomOut = ext.PauseCamZoomOut;
+                cur.PauseCamRotYMin = ext.PauseCamRotYMin;
+                cur.PauseCamRotYMax = ext.PauseCamRotYMax;
+                cur.PauseCamRotXMin = ext.PauseCamRotXMin;
+                cur.PauseCamRotXMax = ext.PauseCamRotXMax;
+                cur.FixedCamX = ext.FixedCamX;
+                cur.FixedCamY = ext.FixedCamY;
+                cur.FixedCamZ = ext.FixedCamZ;
+                cur.FixedCamFOV = ext.FixedCamFOV;
+                cur.FixedHorizontalAngle = ext.FixedHorizontalAngle;
+                cur.FixedVerticalAngle = ext.FixedVerticalAngle;
+                cur.Value41 = ext.Value41;
+                cur.OlimarFinalCamAngle = ext.OlimarFinalCamAngle;
+                cur.IceClimbersFinalPosX = ext.IceClimbersFinalPosX;
+                cur.IceClimbersFinalPosY = ext.IceClimbersFinalPosY;
+                cur.IceClimbersFinalPosZ = ext.IceClimbersFinalPosZ;
+                cur.IceClimbersFinalScaleX = ext.IceClimbersFinalScaleX;
+                cur.IceClimbersFinalScaleY = ext.IceClimbersFinalScaleY;
+                cur.PitFinalPalutenaScale = ext.PitFinalPalutenaScale;
+                cur.Value49 = ext.Value49;
+            }
+        }
+
+        public void ReplaceCosmeticVariables(STPMNode external)
+        {
+            for (int i = 0; i < Children.Count && i < external.Children.Count; i++)
+            {
+                if (!(external.Children[i] is STPMEntryNode ext) || !(Children[i] is STPMEntryNode cur))
+                {
+                    continue;
+                }
+                
+                cur.Id1 = ext.Id1;
+                cur.Id2 = ext.Id2;
+                cur.Value1 = ext.Value1;
+                cur.Value2 = ext.Value2;
+                cur.Value3 = ext.Value3;
+                cur.Value4 = ext.Value4;
+                cur.Value5 = ext.Value5;
+                cur.ShadowPitch = ext.ShadowPitch;
+                cur.ShadowYaw = ext.ShadowYaw;
+                cur.Value8 = ext.Value8;
+                cur.Value9 = ext.Value9;
+                cur.StageWindEnabled = ext.StageWindEnabled;
+                cur.CharacterWindEnabled = ext.CharacterWindEnabled;
+                cur.Value50c = ext.Value50c;
+                cur.Value50d = ext.Value50d;
+                cur.WindStrength = ext.WindStrength;
+                cur.HorizontalWindRotation = ext.HorizontalWindRotation;
+                cur.VerticalWindRotation = ext.VerticalWindRotation;
+                cur.Value54 = ext.Value54;
+                cur.Value55 = ext.Value55;
+                cur.Value56 = ext.Value56;
+                cur.EchoDepth = ext.EchoDepth;
+                cur.EchoDepthRemoval = ext.EchoDepthRemoval;
+                cur.EchoRepeats1 = ext.EchoRepeats1;
+                cur.EchoRepeats2 = ext.EchoRepeats2;
+                cur.Value61 = ext.Value61;
+                cur.Value62 = ext.Value62;
+                cur.Value63 = ext.Value63;
+                cur.Value64 = ext.Value64;
             }
         }
     }
@@ -566,7 +657,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float FixedCamAngle
+        public float FixedCamFOV
         {
             get => _values.GetFloat(37);
             set
@@ -698,12 +789,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public byte StageWindEnabled
+        public bool StageWindEnabled
         {
-            get => _values.GetByte(49, 0);
+            get => _values.GetByte(49, 0) != 0;
             set
             {
-                _values.SetByte(49, 0, value);
+                _values.SetByte(49, 0, (byte) (value ? 1 : 0));
                 SignalPropertyChange();
             }
         }
@@ -808,7 +899,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int Value57
+        public int EchoDepth
         {
             get => _values.GetInt(56);
             set
@@ -819,7 +910,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int Value58
+        public int EchoDepthRemoval
         {
             get => _values.GetInt(57);
             set
@@ -830,7 +921,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int EchoMultiplier
+        public int EchoRepeats1
         {
             get => _values.GetInt(58);
             set
@@ -841,7 +932,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int Value60
+        public int EchoRepeats2
         {
             get => _values.GetInt(59);
             set

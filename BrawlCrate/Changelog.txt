@@ -1,6 +1,6 @@
 ﻿
-BrawlCrate - v0.30 Hotfix 3
-Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
+BrawlCrate - v0.30d Hotfix 1
+Copyright © 2018 - 2019 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
@@ -15,6 +15,65 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30d Hotfix 1 - (12/27/2019)
+ . Add ability to add a parent directly to a bone
+ . Attempt to fix bug in which converting a WAV that's shorter than the default sample size would throw errors
+ 
+ - BrawlCrate v0.30d - (12/26/2019)
+ . Add various additional exposed members for API:
+   - UserStringInput
+   - UserIntegerInput
+   - UserFloatInput
+ . Major stability improvements for Duplicate, fixing various crashes and errors
+ . Material Reference "HasTextureMatrix" property has been moved to the "Texture Matrix Effect" category
+ . Fix crash when parsing unexpected MoveDef children
+ . Fix memory exception crash when reading certain REFF animations
+ . Fix errors when resetting model viewer settings
+ 
+ - BrawlCrate v0.30c Hotfix 1 - (12/9/2019)
+ . Fix issue where context menu for Masquerade entries would throw errors
+ 
+ - BrawlCrate v0.30c - (11/29/2019)
+ . Add support for mass-deleting multiple selected nodes
+ . Fix bug in which a corrupted settings file would completely block program boot
+ . Improve verbiage on dialog for deleting associated PLT0 for a TEX0
+ 
+ - BrawlCrate v0.30b Hotfix 1 - (11/15/2019)
+ . Fix bug in which issue reporter would use improper formatting when submitting
+ 
+ - BrawlCrate v0.30b - (11/14/2019)
+ . BrawlAPI updates:
+   - Single/Multi Context Menu items added to "GenericWrapper" will now be added to all context menus
+   - Context menus with plugins are now generated quicker
+   - Added text files to keep directory intact when no plugins or loaders are added. These explain basic functionality
+   - Fixes bug in which Plugin-parsed nodes wouldn't work correctly with Export All
+ . Stage Parameters:
+   - Changed "FixedCamAngle" -> "FixedCamFOV" to match current understanding
+   - Added "Replace Gameplay Variables" and "Replace Cosmetic Variables" as context menu actions
+ . Export All Dialog:
+   - Now shows proper title when using "Replace All"
+   - Now defaults to "Ok" as selected option
+   - Now uses BrawlCrate iconography
+ . Issue reporter now uses better formatting when sending issues
+ . RSTC now supports up to 255 slots, rather than 100
+ . Speed up texture rendering when using live texture folder
+ . Fix issues where live texture folder would not properly update
+ . Fix issue where Fighter Configs would display as having children when opened as a folder
+ . Fix issue where RSTC groups would not show hex data
+ . Fix issue where some Vista Folder Browsers would display descriptions in a text box. Now display as title
+ 
+ - BrawlCrate v0.30 Hotfix 4 - (11/8/2019)
+ . Update copyright info
+ . SndBgmTitleNode now parses Song ID as hexadecimal
+ . Update slider parsing for CMM Nodes to closer match spec
+ . Fix crash when merging models
+ . Fix UncompressedSize for CHR0Entries not showing accurate values
+ . Fix issues with typing negative values into numeric entry boxes
+ . Fix tab behavior when editing SRT0
+ . Fix issue where a file would fail to open if the temporary file failed to open
+ . Fix issue where volume settings would reset on program close (despite the slider showing the proper value)
+ . Various namespace changes (may affect API scripts)
  
  - BrawlCrate v0.30 Hotfix 3 - (11/5/2019)
  . Model viewer camera updated to a faster one by Onium

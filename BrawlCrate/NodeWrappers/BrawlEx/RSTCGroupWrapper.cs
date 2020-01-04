@@ -49,7 +49,7 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSTCGroupWrapper w = GetInstance<RSTCGroupWrapper>();
-            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 100;
+            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 256;
             _clearListToolStripMenuItem.Enabled = w._resource.HasChildren;
         }
 
@@ -59,7 +59,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            if (_resource.Children.Count >= 100)
+            if (_resource.Children.Count >= 256)
             {
                 return;
             }

@@ -2289,7 +2289,7 @@ namespace BrawlCrate.UI
                 if (_RCend - _RCstart <= TimeSpan.FromSeconds(0.5) && _selectedLinks != null &&
                     _selectedLinks.Count > 0)
                 {
-                    contextMenuStrip3.Show(Cursor.Position);
+                    //contextMenuStrip3.Show(Cursor.Position);
                 }
             }
         }

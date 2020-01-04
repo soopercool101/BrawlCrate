@@ -3,14 +3,14 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>Updater</AssemblyName>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>BrawlCrate updater</AssemblyTitle>
+    <AssemblyTitle>BrawlCrate Updater</AssemblyTitle>
     <Company>BrawlCrate</Company>
     <Product>BrawlCrate</Product>
     <Description>Simple application that updates a BrawlCrate installation</Description>
     <Copyright>Copyright © soopercool101, Sammi Husky</Copyright>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Configurations>Debug;Release;Mono;Canary;Documentation</Configurations>
+    <Configurations>Debug;Release;Mono;Canary</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
@@ -28,13 +28,6 @@
     <DefineConstants>DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants />
-    <Prefer32Bit>true</Prefer32Bit>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|AnyCPU'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants />
     <Prefer32Bit>true</Prefer32Bit>
@@ -61,10 +54,6 @@
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants />
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants />
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x86'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants />
@@ -74,10 +63,6 @@
     <DefineConstants />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants />
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants />
   </PropertyGroup>
@@ -91,11 +76,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Updater.Program</StartupObject>
-    <AssemblyVersion>0.30.0.3</AssemblyVersion>
+    <AssemblyVersion>0.30.1.1</AssemblyVersion>
     <Authors>soopercool101, Sammi Husky</Authors>
     <PackageId>BrawlCrate Updater</PackageId>
-    <FileVersion>0.30.0.3</FileVersion>
-    <Version>30.0.3</Version>
+    <FileVersion>0.30.1.1</FileVersion>
+    <Version>30.1.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
@@ -104,12 +89,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants />
-    <Prefer32Bit>true</Prefer32Bit>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants />
     <Prefer32Bit>true</Prefer32Bit>
@@ -136,12 +115,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants />
-    <Prefer32Bit>true</Prefer32Bit>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants />
     <Prefer32Bit>true</Prefer32Bit>

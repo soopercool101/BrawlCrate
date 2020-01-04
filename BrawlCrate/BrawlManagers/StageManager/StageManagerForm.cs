@@ -29,7 +29,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
         private static SaveFileDialog SaveDialog = new SaveFileDialog();
 #if !MONO
         private static VistaFolderBrowserDialog FolderDialog =
-            new VistaFolderBrowserDialog();
+            new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
         private static FolderBrowserDialog FolderDialog = new FolderBrowserDialog();
 #endif

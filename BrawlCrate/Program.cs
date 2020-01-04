@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30h3";
+        public static readonly string TagName = "v0.30d-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,10 +38,14 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30 Hotfix 3! This release is a major rewrite over the latest BrawlBox source. Please view the text changelog for additional information.
-- (Hotfix 3) Improve camera for Model Viewers
-- (Hotfix 3) Fixes issue in which looping worked incorrectly
-- (Hotfix 3) Fixes bug in switching to/from canary builds
+            @"Updated to BrawlCrate v0.30d! This release:
+- (Hotfix 1) Adds support for adding parents directly to bones
+- Adds additional useful functions to BrawlAPI
+- Allows materials and material references to be properly duplicated
+- Moves MDL0 Material Reference HasTextureMatrix property to the Texture Matrix Effect category
+- Fixes crash when parsing unexpected MoveDef children
+- Fixes crash when reading certain REFF animations
+- Fixes error logs when resetting model viewer settings
 
 Full changelog can be viewed from the help menu.";
 
@@ -91,21 +95,56 @@ Full changelog can be viewed from the help menu.";
             Application.EnableVisualStyles();
 
 #if !DEBUG
-            if (Properties.Settings.Default.UpdateSettings)
+            try
             {
-                foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
+                if (Properties.Settings.Default.UpdateSettings)
                 {
-                    foreach (Type _Type in _Assembly.GetTypes())
+                    foreach (Assembly _Assembly in AppDomain.CurrentDomain.GetAssemblies())
                     {
-                        if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
+                        foreach (Type _Type in _Assembly.GetTypes())
                         {
-                            ApplicationSettingsBase settings =
-                                (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
-                            if (settings != null)
+                            if (_Type.Name == "Settings" && typeof(SettingsBase).IsAssignableFrom(_Type))
                             {
-                                settings.Upgrade();
-                                settings.Reload();
-                                settings.Save();
+                                ApplicationSettingsBase settings =
+                                    (ApplicationSettingsBase) _Type.GetProperty("Default").GetValue(null, null);
+                                if (settings != null)
+                                {
+                                    settings.Upgrade();
+                                    settings.Reload();
+                                    settings.Save();
+                                }
+                            }
+                        }
+                    }
+
+                    // This is the first time booting this update
+                    FirstBoot = true;
+
+                    // Ensure settings only get updated once
+                    Properties.Settings.Default.UpdateSettings = false;
+                    Properties.Settings.Default.Save();
+                }
+            }
+            catch
+            {
+                string settingsPath = Path.Combine(Environment.GetEnvironmentVariable("LocalAppData"),
+                    "BrawlCrate");
+                if (Directory.Exists(settingsPath))
+                {
+                    if (MessageBox.Show(
+                            "Settings corruption has been detected. You can either reset your settings or fix them manually.\n" +
+                            "Would you like to reset them? Note that if they are not reset the program may not start correctly.",
+                            "BrawlCrate", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                    {
+                        foreach (DirectoryInfo d in Directory.CreateDirectory(settingsPath).GetDirectories())
+                        {
+                            try
+                            {
+                                d.Delete(true);
+                            }
+                            catch
+                            {
+                                // ignored. Likely the current settings file
                             }
                         }
                     }
@@ -300,6 +339,25 @@ Full changelog can be viewed from the help menu.";
         {
             if (args.Length >= 1)
             {
+                // Writes the latest changelog to a text file
+                if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
+                {
+                    string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
+                        UpdateMessage.IndexOf(
+                            "Full changelog can be viewed from the help menu",
+                            StringComparison.OrdinalIgnoreCase) -
+                        UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
+                    using (StreamWriter file = new StreamWriter(Path.Combine(AppPath, "changelog-newest.txt")))
+                    {
+                        file.Write(changelog);
+                    }
+                    using (StreamWriter file = new StreamWriter(Path.Combine(AppPath, "title.txt")))
+                    {
+                        file.Write(AssemblyTitleFull);
+                    }
+                    return;
+                }
+
                 if (args[0].Equals("/gct", StringComparison.OrdinalIgnoreCase))
                 {
                     GCTEditor editor = new GCTEditor(AssemblyTitleFull);
@@ -358,23 +416,6 @@ Full changelog can be viewed from the help menu.";
                     catch
                     {
                         // Discord RPC doesn't need to work always
-                    }
-
-                    return;
-                }
-
-                // Writes the latest changelog to a text file
-                if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
-                {
-                    string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
-                        UpdateMessage.IndexOf(
-                            "Full changelog can be found in the installation folder",
-                            StringComparison.OrdinalIgnoreCase) -
-                        UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
-                    string fileName = $@"{AppPath}changelog-newest.txt";
-                    using (StreamWriter file = new StreamWriter(fileName))
-                    {
-                        file.Write(changelog);
                     }
 
                     return;

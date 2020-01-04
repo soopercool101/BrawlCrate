@@ -112,9 +112,13 @@ namespace Updater
                             Environment.NewLine +
                             TagName +
                             Environment.NewLine +
+                            "```" +
+                            Environment.NewLine +
                             ExceptionMessage +
                             Environment.NewLine +
-                            StackTrace
+                            StackTrace +
+                            Environment.NewLine +
+                            "```"
                     };
                     x = await github.Issue.Create("BrawlCrate", "BrawlCrateIssues", issue);
                 }

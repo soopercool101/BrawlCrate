@@ -4711,11 +4711,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         if (e.EventID == 218104320)
                         {
-                            (e.Children[1] as MoveDefEventOffsetNode).index = x;
+                            if (e.Children[1] is MoveDefEventOffsetNode mdo)
+                            {
+                                mdo.index = x;
+                            }
                         }
                         else
                         {
-                            (e.Children[0] as MoveDefEventOffsetNode).index = x;
+                            if (e.Children[0] is MoveDefEventOffsetNode mdo)
+                            {
+                                mdo.index = x;
+                            }
                         }
                     }
 

@@ -2147,6 +2147,12 @@ namespace BrawlCrate.UI.Model_Previewer
 
         private void UpdateBGColor()
         {
+            if (Properties.Settings.Default.ViewerSettings == null)
+            {
+                Properties.Settings.Default.ViewerSettings = ModelEditorSettings.Default();
+                Properties.Settings.Default.ViewerSettingsSet = true;
+                Properties.Settings.Default.Save();
+            }
             ARGBPixel bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._bgColor;
             lblBGColorText.Text = bgColor.ToString();
             lblBGColor.BackColor = Color.FromArgb(bgColor.R, bgColor.G, bgColor.B);
@@ -2159,6 +2165,12 @@ namespace BrawlCrate.UI.Model_Previewer
 
         private void UpdateStgBGColor()
         {
+            if (Properties.Settings.Default.ViewerSettings == null)
+            {
+                Properties.Settings.Default.ViewerSettings = ModelEditorSettings.Default();
+                Properties.Settings.Default.ViewerSettingsSet = true;
+                Properties.Settings.Default.Save();
+            }
             ARGBPixel bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._stgBgColor;
             lblStgBGColorText.Text = bgColor.ToString();
             lblStgBGColor.BackColor = Color.FromArgb(bgColor.R, bgColor.G, bgColor.B);

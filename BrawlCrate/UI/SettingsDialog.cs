@@ -1884,7 +1884,7 @@ namespace BrawlCrate.UI
 
         private void BtnPythonDetect_Click(object sender, EventArgs e)
         {
-            BrawlAPI.PythonInstall(true, true);
+            BrawlAPIInternal.PythonInstall(true, true);
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
         }
 
@@ -1928,7 +1928,7 @@ namespace BrawlCrate.UI
 
         private void BtnFSharpDetect_Click(object sender, EventArgs e)
         {
-            BrawlAPI.FSharpInstall(true, true);
+            BrawlAPIInternal.FSharpInstall(true, true);
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
         }
 

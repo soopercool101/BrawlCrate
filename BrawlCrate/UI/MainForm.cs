@@ -141,8 +141,8 @@ namespace BrawlCrate.UI
 
             if (Properties.Settings.Default.APIEnabled)
             {
-                BrawlAPI.Plugins.Clear();
-                BrawlAPI.ResourceParsers.Clear();
+                BrawlAPIInternal.Plugins.Clear();
+                BrawlAPIInternal.ResourceParsers.Clear();
 
                 pluginToolStripMenuItem.DropDown.Items.Clear();
                 if (Directory.Exists(Program.ApiPluginPath))
@@ -165,7 +165,7 @@ namespace BrawlCrate.UI
                                   f.FullName.Substring(Program.ApiLoaderPath.Length).TrimStart('\\')) ??
                               true)
                         {
-                            BrawlAPI.CreatePlugin(f.FullName, true);
+                            BrawlAPIInternal.CreatePlugin(f.FullName, true);
                         }
                     }
                 }
@@ -1363,7 +1363,7 @@ namespace BrawlCrate.UI
 
         private void onPluginClicked(object sender, EventArgs e)
         {
-            PluginScript plg = BrawlAPI.Plugins.Find(x => x.Name == ((ToolStripItem) sender).Text);
+            PluginScript plg = BrawlAPIInternal.Plugins.Find(x => x.Name == ((ToolStripItem) sender).Text);
             plg?.Execute();
         }
 
@@ -1376,14 +1376,14 @@ namespace BrawlCrate.UI
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    BrawlAPI.RunScript(dlg.FileName);
+                    BrawlAPIInternal.RunScript(dlg.FileName);
                 }
             }
         }
 
         private void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BrawlAPI.Plugins.Clear();
+            BrawlAPIInternal.Plugins.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
             AddPlugins(pluginToolStripMenuItem, Program.ApiPluginPath);
         }
@@ -1428,7 +1428,7 @@ namespace BrawlCrate.UI
 
             foreach (string str in new[] {"*.py", "*.fsx"}.SelectMany(p => Directory.EnumerateFiles(path, p)))
             {
-                if (BrawlAPI.CreatePlugin(str, false))
+                if (BrawlAPIInternal.CreatePlugin(str, false))
                 {
                     menu.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
                 }

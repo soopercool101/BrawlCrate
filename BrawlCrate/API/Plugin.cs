@@ -34,9 +34,9 @@ namespace BrawlCrate.API
                 if (!_converted)
                 {
                     _converted = true;
-                    if (BrawlAPI.DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
+                    if (BrawlAPIInternal.DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
                     {
-                        BrawlAPI.ConvertPlugin(Script.Path);
+                        BrawlAPIInternal.ConvertPlugin(Script.Path);
                         Execute();
                         return;
                     }
@@ -55,7 +55,7 @@ namespace BrawlCrate.API
             ResourceNode n = null;
             using (UnsafeStream s = new UnsafeStream(source.Address, (uint) source.Length))
             {
-                foreach (PluginResourceParser p in BrawlAPI.ResourceParsers)
+                foreach (PluginResourceParser p in BrawlAPIInternal.ResourceParsers)
                 {
                     if ((n = p.TryParse(s)) != null)
                     {

@@ -77,6 +77,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Song")]
         [DisplayName("Song ID")]
         [Description("The ID of the song to show the title for.")]
+        public string SongID
+        {
+            get => "0x" + ((int)Data._ID).ToString("X8");
+            set
+            {
+                string field0 = (value ?? "").Split(' ')[0];
+                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
+                Data._ID = Convert.ToInt32(field0, fromBase);
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
+        
+        [Browsable(false)]
         public int ID
         {
             get => Data._ID;

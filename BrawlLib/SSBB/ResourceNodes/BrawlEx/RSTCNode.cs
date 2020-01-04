@@ -1,7 +1,7 @@
 ﻿using BrawlLib.CustomLists;
 using BrawlLib.Internal;
-using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.BrawlEx;
+using System;
 using System.ComponentModel;
 using System.IO;
 
@@ -25,116 +25,27 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte
             _randNum; // 0x0F - Number of characters in the random list; should be generated automatically. Max is 100? (Maybe 104, or may have padding).
 
-        public byte[] _charList = new byte[104];
-        public byte[] _randList = new byte[104];
+        public RSTCGroupNode cssList = new RSTCGroupNode { _type = "Character Select" };
+        public RSTCGroupNode randList = new RSTCGroupNode{ _type = "Random Character List" };
 
-        public RSTCGroupNode cssList = new RSTCGroupNode();
-        public RSTCGroupNode randList = new RSTCGroupNode();
+        public int NumChars => cssList?.Children?.Count ?? 0;
 
-        public int NumChars
-        {
-            get
-            {
-                if (FindChildrenByName(cssList.Name).Length == 0)
-                {
-                    return 0;
-                }
-
-                return cssList.Children.Count;
-            }
-        }
-
-        public int NumRands
-        {
-            get
-            {
-                if (FindChildrenByName(randList.Name).Length == 0)
-                {
-                    return 0;
-                }
-
-                return randList.Children.Count;
-            }
-        }
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < 104; i++)
-            {
-                if (i >= _charNum)
-                {
-                    break;
-                }
-
-                DataSource source;
-                source = new DataSource((*Header)[i], 1);
-                new RSTCEntryNode().Initialize(cssList, source);
-            }
-
-            for (int i = 0; i < 104; i++)
-            {
-                if (i >= _randNum)
-                {
-                    break;
-                }
-
-                DataSource source;
-                source = new DataSource((*Header)[i + 104], 1);
-                new RSTCEntryNode().Initialize(randList, source);
-            }
-        }
+        public int NumRands => randList?.Children?.Count ?? 0;
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             RSTC* hdr = (RSTC*) address;
             *hdr = new RSTC();
             hdr->_tag = _tag;
-            hdr->_size = _size;
+            hdr->_size = (uint)length;
             hdr->_version = _version;
             hdr->_unknown0x0C = _unknown0x0C;
             hdr->_charNum = (byte) cssList.Children.Count;
             hdr->_unknown0x0E = _unknown0x0E;
             hdr->_randNum = (byte) randList.Children.Count;
-            uint offset = 0x10;
-            // Ensures no junk data got saved to the character list
-            for (int i = 0; i < _charList.Length; i++)
-            {
-                hdr->_charList[i] = 0x00;
-            }
-
-            for (int i = 0; i < cssList.Children.Count; i++)
-            {
-                ResourceNode r = cssList.Children[i];
-                *(buint*) ((byte*) address + 0x10 + i) = offset;
-                r.Rebuild(address + offset, 0x01, true);
-                offset += 0x01;
-            }
-
-            offset = 0x10 + 104;
-            // Ensures no junk data got saved to the random list
-            for (int i = 0; i < _randList.Length; i++)
-            {
-                hdr->_randList[i] = 0x00;
-            }
-
-            for (int i = 0; i < randList.Children.Count; i++)
-            {
-                ResourceNode r = randList.Children[i];
-                *(buint*) ((byte*) address + 0x10 + (i + 104)) = offset;
-                r.Rebuild(address + offset, 0x01, true);
-                offset += 0x01;
-            }
-
-            // Clear all junk data from the end of the lists
-            for (int i = cssList.Children.Count; i < _charList.Length; i++)
-            {
-                hdr->_charList[i] = 0x00;
-            }
-
-            for (int i = randList.Children.Count; i < _randList.Length; i++)
-            {
-                hdr->_randList[i] = 0x00;
-            }
+            int entrySize = (length - 0x10) / 2;
+            cssList.Rebuild(address + 0x10, entrySize, force);
+            randList.Rebuild(address + 0x10 + entrySize, entrySize, force);
         }
 
         public override bool OnInitialize()
@@ -146,29 +57,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             _charNum = Header->_charNum;
             _unknown0x0E = Header->_unknown0x0E;
             _randNum = Header->_randNum;
-            for (int i = 0; i < 104; i++)
-            {
-                _charList[i] = Header->_charList[i];
-            }
-
-            for (int j = 0; j < 104; j++)
-            {
-                _randList[j] = Header->_randList[j];
-            }
+            cssList.Initialize(this, new DataSource((*Header)[0], (int)(_size - 0x10)/2));
+            randList.Initialize(this, new DataSource((*Header)[(int)((_size - 0x10) / 2)], (int)(_size - 0x10) / 2));
 
             if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
-
-            cssList._name = "Character Select";
-            cssList._type = "Character Select";
-            randList._name = "Random Character List";
-            randList._type = "Random Character List";
-            AddChild(cssList);
-            AddChild(randList);
             _changed = false;
             return true;
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return Math.Max(cssList?.Children?.Count ?? 0, randList?.Children?.Count ?? 0) > 104 ? 0x210 : 0xE0;
         }
 
         internal static ResourceNode TryParse(DataSource source)
@@ -179,7 +81,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RSTCGroupNode : ResourceNode
     {
-        internal ResourceGroup* Group => (ResourceGroup*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.RSTCGroup;
         public string _type;
 
@@ -189,11 +90,31 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("RSTCGroup")]
         [DisplayName("Entries")]
-        public int entries => Children.Count;
+        public int entries => Children?.Count ?? 0;
 
         public override bool OnInitialize()
         {
-            return true;
+            _name = _type;
+            if (Parent != null && Parent is RSTCNode r)
+            {
+                for (int i = 0;
+                    i < (_type.Contains("Random", StringComparison.OrdinalIgnoreCase) ? r._randNum : r._charNum);
+                    i++)
+                {
+                    new RSTCEntryNode().Initialize(this, WorkingUncompressed.Address[i, 1], 1);
+                }
+
+                return HasChildren;
+            }
+            return false;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            for (int i = 0; i < entries; i++)
+            {
+                Children[i].Rebuild(address + i, 1, force);
+            }
         }
     }
 

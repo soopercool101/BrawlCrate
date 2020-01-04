@@ -353,6 +353,11 @@ namespace BrawlCrate.NodeWrappers
             return node;
         }
 
+        public T NewStageTable<T>() where T : StageTableNode, new()
+        {
+            return NewStageTable<T>(0);
+        }
+
         public T NewStageTable<T>(int numEntries) where T : StageTableNode, new()
         {
             T node = new T {FileType = ARCFileType.MiscData};
@@ -476,7 +481,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<STDTNode>(0).Replace(path);
+                    NewStageTable<STDTNode>().Replace(path);
                 }
             }
         }
@@ -487,7 +492,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBCLNode>(0).Replace(path);
+                    NewStageTable<TBCLNode>().Replace(path);
                 }
             }
         }
@@ -498,7 +503,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBGCNode>(0).Replace(path);
+                    NewStageTable<TBGCNode>().Replace(path);
                 }
             }
         }
@@ -509,7 +514,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBGDNode>(0).Replace(path);
+                    NewStageTable<TBGDNode>().Replace(path);
                 }
             }
         }
@@ -520,7 +525,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBGMNode>(0).Replace(path);
+                    NewStageTable<TBGMNode>().Replace(path);
                 }
             }
         }
@@ -531,7 +536,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBLVNode>(0).Replace(path);
+                    NewStageTable<TBLVNode>().Replace(path);
                 }
             }
         }
@@ -542,7 +547,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBRMNode>(0).Replace(path);
+                    NewStageTable<TBRMNode>().Replace(path);
                 }
             }
         }
@@ -553,7 +558,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBSTNode>(0).Replace(path);
+                    NewStageTable<TBSTNode>().Replace(path);
                 }
             }
         }

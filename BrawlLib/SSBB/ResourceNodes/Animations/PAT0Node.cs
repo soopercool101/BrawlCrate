@@ -1095,7 +1095,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal void CompareToAll()
         {
             _rebuild = true;
-            foreach (PAT0EntryNode e in Parent.Parent.Children)
+            foreach (PAT0EntryNode e in Parent?.Parent?.Children ?? new List<ResourceNode>())
             {
                 foreach (PAT0TextureNode table in e.Children)
                 {
@@ -1317,7 +1317,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 _plt = value;
                 _paletteNode = null;
-                ((PAT0Node) Parent.Parent.Parent).RegeneratePaletteList();
+                ((PAT0Node)Parent?.Parent?.Parent)?.RegeneratePaletteList();
 
                 SignalPropertyChange();
             }
@@ -1327,7 +1327,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _tex = value;
             _textureNode = null;
-            ((PAT0Node) Parent.Parent.Parent).RegenerateTextureList();
+            ((PAT0Node)Parent?.Parent?.Parent)?.RegenerateTextureList();
         }
 
         [Browsable(false)]

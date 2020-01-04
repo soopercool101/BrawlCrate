@@ -39,6 +39,8 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Replace Camera", null, ReplaceCameraAction, null));
+            _menu.Items.Add(new ToolStripMenuItem("Replace Gameplay Variables", null, ReplaceGameplayAction, null));
+            _menu.Items.Add(new ToolStripMenuItem("Replace Cosmetic Variables", null, ReplaceCosmeticAction, null));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -62,6 +64,16 @@ namespace BrawlCrate.NodeWrappers
         protected static void ReplaceCameraAction(object sender, EventArgs e)
         {
             GetInstance<STPMWrapper>().ReplaceCamera();
+        }
+
+        protected static void ReplaceGameplayAction(object sender, EventArgs e)
+        {
+            GetInstance<STPMWrapper>().ReplaceGameplay();
+        }
+
+        protected static void ReplaceCosmeticAction(object sender, EventArgs e)
+        {
+            GetInstance<STPMWrapper>().ReplaceCosmetic();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -105,7 +117,7 @@ namespace BrawlCrate.NodeWrappers
         {
             if (Program.OpenFile(ReplaceFilter, out string inPath))
             {
-                using (STPMNode ext = NodeFactory.FromFile(null, inPath) as STPMNode)
+                using (STPMNode ext = NodeFactory.FromFile(null, inPath, typeof(STPMNode)) as STPMNode)
                 {
                     if (ext == null)
                     {
@@ -114,6 +126,40 @@ namespace BrawlCrate.NodeWrappers
                     }
 
                     ((STPMNode) _resource).ReplaceCamera(ext);
+                }
+            }
+        }
+        
+        public void ReplaceGameplay()
+        {
+            if (Program.OpenFile(ReplaceFilter, out string inPath))
+            {
+                using (STPMNode ext = NodeFactory.FromFile(null, inPath, typeof(STPMNode)) as STPMNode)
+                {
+                    if (ext == null)
+                    {
+                        MessageBox.Show("The selected STPM file could not be read.");
+                        return;
+                    }
+
+                    ((STPMNode) _resource).ReplaceGameplayVariables(ext);
+                }
+            }
+        }
+        
+        public void ReplaceCosmetic()
+        {
+            if (Program.OpenFile(ReplaceFilter, out string inPath))
+            {
+                using (STPMNode ext = NodeFactory.FromFile(null, inPath, typeof(STPMNode)) as STPMNode)
+                {
+                    if (ext == null)
+                    {
+                        MessageBox.Show("The selected STPM file could not be read.");
+                        return;
+                    }
+
+                    ((STPMNode) _resource).ReplaceCosmeticVariables(ext);
                 }
             }
         }

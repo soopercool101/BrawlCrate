@@ -53,6 +53,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
 
+        private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
+
         static TEX0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -78,6 +81,7 @@ namespace BrawlCrate.NodeWrappers
             MultiSelectMenu.Items.Add(ColorSmashSelectedToolStripMenuItem);
             MultiSelectMenu.Items.Add(new ToolStripSeparator());
             MultiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            MultiSelectMenu.Items.Add(DeleteSelectedToolStripMenuItem);
             MultiSelectMenu.Opening += MultiMenuOpening;
             MultiSelectMenu.Closing += MultiMenuClosing;
         }
@@ -127,6 +131,8 @@ namespace BrawlCrate.NodeWrappers
         private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             ColorSmashSelectedToolStripMenuItem.Enabled = true;
+            DeleteSelectedToolStripMenuItem.Visible = true;
+            DeleteSelectedToolStripMenuItem.Enabled = true;
         }
 
         private static void MultiMenuOpening(object sender, CancelEventArgs e)
@@ -136,15 +142,18 @@ namespace BrawlCrate.NodeWrappers
             {
                 ColorSmashSelectedToolStripMenuItem.Enabled = false;
             }
-            else
+            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
             {
-                foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+                if (((TEX0Wrapper)n)?._resource.Parent == null)
                 {
-                    if (!(n is TEX0Wrapper t) || t._resource.Parent == null || t._resource.Parent != w._resource.Parent)
-                    {
-                        ColorSmashSelectedToolStripMenuItem.Enabled = false;
-                        break;
-                    }
+                    DeleteSelectedToolStripMenuItem.Visible = false;
+                    DeleteSelectedToolStripMenuItem.Enabled = false;
+                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
+                    break;
+                }
+                if (((TEX0Wrapper)n)?._resource.Parent != w._resource.Parent)
+                {
+                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
                 }
             }
         }
@@ -456,7 +465,7 @@ namespace BrawlCrate.NodeWrappers
 
             PLT0Node p = ((TEX0Node) _resource).GetPaletteNode();
             if (((TEX0Node) _resource).HasPalette && p != null &&
-                MessageBox.Show("Would you like to delete the associated PLT0?", "Deleting TEX0",
+                MessageBox.Show("Would you like to delete the associated PLT0?", $"Deleting {_resource.Name}",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 p.Dispose();

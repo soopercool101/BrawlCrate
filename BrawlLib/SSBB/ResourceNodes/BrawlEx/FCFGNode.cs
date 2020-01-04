@@ -3,6 +3,7 @@ using BrawlLib.SSBB.Types.BrawlEx;
 using System;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -1021,10 +1022,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            _pacNameArray = System.Text.Encoding.UTF8.GetBytes(_pacName);
-            _kirbyPacNameArray = System.Text.Encoding.UTF8.GetBytes(_kirbyPacName);
-            _moduleNameArray = System.Text.Encoding.UTF8.GetBytes(_moduleName);
-            _internalNameArray = System.Text.Encoding.UTF8.GetBytes(_internalName);
+            _pacNameArray = Encoding.UTF8.GetBytes(_pacName);
+            _kirbyPacNameArray = Encoding.UTF8.GetBytes(_kirbyPacName);
+            _moduleNameArray = Encoding.UTF8.GetBytes(_moduleName);
+            _internalNameArray = Encoding.UTF8.GetBytes(_internalName);
 
             for (int i = 0; i < _pacNameArray.Length; i++)
             {
@@ -1125,18 +1126,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _internalNameArray[i] = Header->_internalNameArray[i];
             }
 
-            _pacName = System.Text.Encoding.UTF8.GetString(_pacNameArray)
-                             .Substring(0, System.Text.Encoding.UTF8.GetString(_pacNameArray).IndexOf('\0'))
-                             .TrimEnd(new char[] {'\0'});
-            _kirbyPacName = System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray)
-                                  .Substring(0, System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).IndexOf('\0'))
-                                  .TrimEnd(new char[] {'\0'});
-            _moduleName = System.Text.Encoding.UTF8.GetString(_moduleNameArray)
-                                .Substring(0, System.Text.Encoding.UTF8.GetString(_moduleNameArray).IndexOf('\0'))
-                                .TrimEnd(new char[] {'\0'});
-            _internalName = System.Text.Encoding.UTF8.GetString(_internalNameArray)
-                                  .Substring(0, System.Text.Encoding.UTF8.GetString(_internalNameArray).IndexOf('\0'))
-                                  .TrimEnd(new char[] {'\0'});
+            _pacName = Encoding.UTF8.GetString(_pacNameArray)
+                             .Substring(0, Encoding.UTF8.GetString(_pacNameArray).IndexOf('\0'))
+                             .TrimEnd('\0');
+            _kirbyPacName = Encoding.UTF8.GetString(_kirbyPacNameArray)
+                                  .Substring(0, Encoding.UTF8.GetString(_kirbyPacNameArray).IndexOf('\0'))
+                                  .TrimEnd('\0');
+            _moduleName = Encoding.UTF8.GetString(_moduleNameArray)
+                                .Substring(0, Encoding.UTF8.GetString(_moduleNameArray).IndexOf('\0'))
+                                .TrimEnd('\0');
+            _internalName = Encoding.UTF8.GetString(_internalNameArray)
+                                  .Substring(0, Encoding.UTF8.GetString(_internalNameArray).IndexOf('\0'))
+                                  .TrimEnd('\0');
             try
             {
                 if (_pacName.ToUpper().LastIndexOf(".PAC") > 0 && _pacName.ToUpper().Contains("/FIT"))
@@ -1154,25 +1155,22 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _fighterName = _internalName;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_pacNameArray).ToUpper().TrimEnd(new char[] {'\0'}).EndsWith("\0X"))
+            if (Encoding.UTF8.GetString(_pacNameArray).ToUpper().TrimEnd('\0').EndsWith("\0X"))
             {
                 _hasPac = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).ToUpper().TrimEnd(new char[] {'\0'})
-                      .EndsWith("\0X"))
+            if (Encoding.UTF8.GetString(_kirbyPacNameArray).ToUpper().TrimEnd('\0').EndsWith("\0X"))
             {
                 _hasKirbyHat = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_moduleNameArray).ToUpper().TrimEnd(new char[] {'\0'})
-                      .EndsWith("\0X"))
+            if (Encoding.UTF8.GetString(_moduleNameArray).ToUpper().TrimEnd('\0').EndsWith("\0X"))
             {
                 _hasModule = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_internalNameArray).ToUpper().TrimEnd(new char[] {'\0'})
-                      .EndsWith("\0X"))
+            if (Encoding.UTF8.GetString(_internalNameArray).ToUpper().TrimEnd('\0').EndsWith("\0X"))
             {
                 _hasInternalName = false;
             }
@@ -1200,7 +1198,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
 
-            return true;
+            return false;
         }
 
         internal static ResourceNode TryParse(DataSource source)

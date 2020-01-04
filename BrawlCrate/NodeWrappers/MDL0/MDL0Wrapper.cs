@@ -798,14 +798,19 @@ namespace BrawlCrate.NodeWrappers
             MDL0Node external = null;
             OpenFileDialog o = new OpenFileDialog
             {
-                Filter = "MDL0 Raw Model (*.mdl0)|*.mdl0",
+                Filter = ImportFilter,
                 Title = "Please select a model to import an object from."
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (MDL0Node) NodeFactory.FromFile(null, o.FileName)) != null)
+                if ((external = MDL0Node.FromFile(o.FileName)) != null)
                 {
                     new ObjectImporter().ShowDialog((MDL0Node) _resource, external);
+                }
+                else
+                {
+                    MessageBox.Show("Could not import an object from this model.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }

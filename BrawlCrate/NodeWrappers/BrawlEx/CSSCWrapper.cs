@@ -210,10 +210,6 @@ namespace BrawlCrate.NodeWrappers
                     {
                         _openCostumeToolStripMenuItem.Text += " and ";
                     }
-                    else
-                    {
-                        _openCostumeToolStripMenuItem.Text += ", ";
-                    }
                 }
             }
 

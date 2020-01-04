@@ -29,12 +29,22 @@ namespace BrawlLib.Internal.Windows.Forms
             return base.ShowDialog();
         }
 
-        public DialogResult ShowDialog(string newTitle, string newLower, int val)
+        public DialogResult ShowDialog(string newTitle, string newLower, float val)
         {
             Text = newTitle;
             label2.Text = newLower;
             numNewCount.Value = val;
             return base.ShowDialog();
+        }
+
+        public bool Cancellable
+        {
+            get => btnCancel.Enabled && btnCancel.Visible;
+            set
+            {
+                btnCancel.Enabled = value;
+                btnCancel.Visible = value;
+            }
         }
 
         private void btnOkay_Click(object sender, EventArgs e)

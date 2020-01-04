@@ -80,7 +80,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
                 DataSource source = new DataSource(map);
-                if ((node = FromSource(parent, source)) == null)
+                if ((node = FromSource(parent, source, t)) == null)
                 {
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 

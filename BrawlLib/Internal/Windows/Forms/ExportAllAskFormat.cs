@@ -5,9 +5,11 @@ namespace BrawlLib.Internal.Windows.Forms
 {
     public partial class ExportAllFormatDialog : Form
     {
-        public ExportAllFormatDialog(Type t, string filters)
+        public ExportAllFormatDialog(string title, Type t, string filters)
         {
             InitializeComponent();
+            Icon = Properties.Resources.Icon;
+            Text = title;
             label1.Text = $"Output format for {t.Name}:";
             string[] source = filters.Split('|');
             for (int i = 0; i < source.Length; i += 2)

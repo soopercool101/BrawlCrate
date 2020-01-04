@@ -39,6 +39,9 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
+        
+        private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
 
         static GenericWrapper()
         {
@@ -58,6 +61,9 @@ namespace BrawlCrate.NodeWrappers
 
             MultiSelectMenu = new ContextMenuStrip();
             MultiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            MultiSelectMenu.Items.Add(DeleteSelectedToolStripMenuItem);
+            MultiSelectMenu.Opening += MultiMenuOpening;
+            MultiSelectMenu.Closing += MultiMenuClosing;
         }
 
         protected static void MoveUpAction(object sender, EventArgs e)
@@ -80,6 +86,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().ExportSelected();
         }
 
+        protected static void DeleteSelectedAction(object sender, EventArgs e)
+        {
+            GetInstance<GenericWrapper>().DeleteSelected();
+        }
+        
         protected static void DuplicateAction(object sender, EventArgs e)
         {
             GetInstance<GenericWrapper>().Duplicate();
@@ -130,6 +141,26 @@ namespace BrawlCrate.NodeWrappers
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
+        }
+        
+        private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            DeleteSelectedToolStripMenuItem.Visible = true;
+            DeleteSelectedToolStripMenuItem.Enabled = true;
+        }
+
+        private static void MultiMenuOpening(object sender, CancelEventArgs e)
+        {
+            GenericWrapper w = GetInstance<GenericWrapper>();
+            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+            {
+                if (!(n is GenericWrapper g) || g._resource.Parent == null)
+                {
+                    DeleteSelectedToolStripMenuItem.Visible = false;
+                    DeleteSelectedToolStripMenuItem.Enabled = false;
+                    break;
+                }
+            }
         }
 
         #endregion
@@ -216,7 +247,21 @@ namespace BrawlCrate.NodeWrappers
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
 
-        public virtual void ExportSelected()
+        public void DeleteSelected()
+        {
+            while (MainForm.Instance.resourceTree.SelectedNodes.Count > 0)
+            {
+                if (!(MainForm.Instance.resourceTree.SelectedNodes[0] is GenericWrapper g))
+                {
+                    break;
+                }
+
+                MainForm.Instance.resourceTree.SelectedNodes.RemoveAt(0);
+                g.Delete();
+            }
+        }
+        
+        public void ExportSelected()
         {
             string folder = Program.ChooseFolder();
             if (string.IsNullOrEmpty(folder))
@@ -241,7 +286,7 @@ namespace BrawlCrate.NodeWrappers
             Dictionary<Type, string> chosenExtensions = new Dictionary<Type, string>();
             foreach (KeyValuePair<Type, string> ext in extensions)
             {
-                ExportAllFormatDialog dialog = new ExportAllFormatDialog(ext.Key, ext.Value);
+                ExportAllFormatDialog dialog = new ExportAllFormatDialog("Export Selected", ext.Key, ext.Value);
 
                 if (dialog.AutoSelect || dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -332,24 +377,32 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public virtual void Duplicate()
+        public virtual ResourceNode Duplicate()
+        {
+            return Duplicate(true);
+        }
+        
+        public virtual ResourceNode Duplicate(bool changeName)
         {
             if (_resource.Parent == null)
             {
-                return;
+                return null;
             }
 
             string tempPath = Path.GetTempFileName();
             _resource.Export(tempPath);
-            ResourceNode rNode2 = NodeFactory.FromFile(null, tempPath, _resource.GetType());
+            // Initialize node as a child of the parent
+            ResourceNode rNode2 = NodeFactory.FromFile(_resource.Parent, tempPath, _resource.GetType());
+
             if (rNode2 == null)
             {
                 MessageBox.Show("The node could not be duplicated correctly.");
-                return;
+                return null;
             }
 
-            int n = 0;
-            int index = _resource.Index;
+            // Remove the node from the parent temporarily
+            rNode2.Remove();
+
             // Copy ARCEntryNode data, which is contained in the containing ARC, not the node itself
             if (rNode2 is ARCEntryNode)
             {
@@ -362,16 +415,23 @@ namespace BrawlCrate.NodeWrappers
             // Copy the name directly in cases where name isn't saved
             rNode2.Name = _resource.Name;
             // Set the name programatically (based on Windows' implementation)
-            while (_resource.Parent.FindChildrenByName(rNode2.Name).Length >= 1)
+            int index = _resource.Index;
+            int n = 0;
+            if (changeName)
             {
-                // Get the last index of the last duplicated node in order to place it after that one
-                index = Math.Max(index, _resource.Parent.FindChildrenByName(rNode2.Name).Last().Index);
-                // Set the name based on the number of duplicate nodes found
-                rNode2.Name = $"{_resource.Name} ({++n})";
+                while (_resource.Parent.FindChildrenByName(rNode2.Name).Length >= 1)
+                {
+                    // Get the last index of the last duplicated node in order to place it after that one
+                    index = Math.Max(index, _resource.Parent.FindChildrenByName(rNode2.Name).Last().Index);
+                    // Set the name based on the number of duplicate nodes found
+                    rNode2.Name = $"{_resource.Name} ({++n})";
+                }
             }
 
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(rNode2, true, index + 1);
+
+            return rNode2;
         }
     }
 }

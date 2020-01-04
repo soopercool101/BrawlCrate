@@ -54,7 +54,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             dlgOpen = new OpenFileDialog();
             dlgSave = new SaveFileDialog();
 #if !MONO
-            folderBrowserDialog1 = new VistaFolderBrowserDialog();
+            folderBrowserDialog1 = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
 #else
             folderBrowserDialog1 = new FolderBrowserDialog();
 #endif

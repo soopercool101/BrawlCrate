@@ -1,6 +1,7 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlCrate.UI;
 using BrawlLib.Internal;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 
 namespace BrawlCrate.API
 {
-    public static partial class BrawlAPI
+    public static class BrawlAPI
     {
         #region Nodes
 
@@ -595,6 +596,328 @@ namespace BrawlCrate.API
 
         #endregion
 
+        #region User Entry Boxes
+
+        #region Strings
+
+        // Hidden. Used to determine default text entry when none is defined
+        private static string lastStringInput = "";
+
+        /// <summary>
+        ///     Prompts the user to input a string, with a default title and the last BrawlAPI-entered string as the default value.
+        /// </summary>
+        /// <returns>
+        ///     The user-inputted string
+        /// </returns>
+        public static string UserStringInput()
+        {
+            return UserStringInput("BrawlAPI String Input", lastStringInput);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a string, with the last BrawlAPI-entered string as the default value.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the string input dialog box
+        /// </param>
+        /// <returns>
+        ///     The user-inputted string
+        /// </returns>
+        public static string UserStringInput(string title)
+        {
+            return UserStringInput(title, lastStringInput);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a string with a default starting value.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the string input dialog box
+        /// </param>
+        /// <param name="defaultText">
+        ///     The default text to use for the input
+        /// </param>
+        /// <returns>
+        ///     The user-inputted string
+        /// </returns>
+        public static string UserStringInput(string title, string defaultText)
+        {
+            using (StringInputDialog dialog = new StringInputDialog(title, defaultText))
+            {
+                dialog.Cancellable = false;
+                dialog.ShowDialog();
+                lastStringInput = dialog.resultString;
+                return dialog.resultString;
+            }
+        }
+
+        #endregion
+
+        #region Numbers
+
+        #region Integers
+
+        // Hidden. Used to determine default integer entry when none is defined
+        private static int lastIntegerInput = 0;
+        
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput()
+        {
+            return UserIntegerInput("BrawlAPI Integer Input", "Value:", lastIntegerInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title)
+        {
+            return UserIntegerInput(title, "Value:", lastIntegerInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description)
+        {
+            return UserIntegerInput(title, description, lastIntegerInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description, int defaultValue)
+        {
+            return UserIntegerInput(title, description, defaultValue, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description, int defaultValue, int minimumValue)
+        {
+            return UserIntegerInput(title, description, defaultValue, minimumValue, int.MaxValue);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input an integer.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <param name="maximumValue">
+        ///     The highest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted integer
+        /// </returns>
+        public static int UserIntegerInput(string title, string description, int defaultValue, int minimumValue, int maximumValue)
+        {
+            using (NumericInputForm dialog = new NumericInputForm())
+            {
+                dialog.Cancellable = false;
+                dialog.numNewCount.Integer = true;
+                // Set minimum and maximum values if applicable
+                if (minimumValue != maximumValue)
+                {
+                    dialog.numNewCount.MinimumValue = minimumValue;
+                    dialog.numNewCount.MaximumValue = maximumValue;
+                    // Ensure value stays within the boundaries set
+                    if (defaultValue < minimumValue || defaultValue > maximumValue)
+                    {
+                        defaultValue = minimumValue;
+                    }
+                }
+                dialog.ShowDialog(title, description, defaultValue);
+                return dialog.NewValue;
+            }
+        }
+
+        #endregion
+
+        #region Floating-Point (Decimal) Numbers
+
+        // Hidden. Used to determine default float entry when none is defined
+        private static float lastFloatInput = 0.0f;
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title)
+        {
+            return UserFloatInput(title, "Value:", lastFloatInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description)
+        {
+            return UserFloatInput(title, description, lastFloatInput, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description, float defaultValue)
+        {
+            return UserFloatInput(title, description, defaultValue, 0, 0);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description, float defaultValue, float minimumValue)
+        {
+            return UserFloatInput(title, description, defaultValue, minimumValue, float.MaxValue);
+        }
+
+        /// <summary>
+        ///     Prompts the user to input a float.
+        /// </summary>
+        /// <param name="title">
+        ///     The title of the dialog box
+        /// </param>
+        /// <param name="description">
+        ///     A short description printed next to the NumericEntryBox
+        /// </param>
+        /// <param name="defaultValue">
+        ///     The default value that the NumericInputBox will be set to
+        /// </param>
+        /// <param name="minimumValue">
+        ///     The lowest possible number allowed
+        /// </param>
+        /// <param name="maximumValue">
+        ///     The highest possible number allowed
+        /// </param>
+        /// <returns>
+        ///     The user-inputted float
+        /// </returns>
+        public static float UserFloatInput(string title, string description, float defaultValue, float minimumValue, float maximumValue)
+        {
+            using (NumericInputForm dialog = new NumericInputForm())
+            {
+                dialog.Cancellable = false;
+                dialog.numNewCount.Integer = false;
+                // Set minimum and maximum values if applicable
+                if (minimumValue != maximumValue)
+                {
+                    dialog.numNewCount.MinimumValue = minimumValue;
+                    dialog.numNewCount.MaximumValue = maximumValue;
+                    // Ensure value stays within the boundaries set
+                    if (defaultValue < minimumValue || defaultValue > maximumValue)
+                    {
+                        defaultValue = minimumValue;
+                    }
+                }
+                dialog.ShowDialog(title, description, defaultValue);
+                return dialog.NewValue;
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
         #endregion
 
         #region Context Menus
@@ -613,14 +936,14 @@ namespace BrawlCrate.API
         /// </param>
         public static void AddContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
         {
-            if (ContextMenuHooks.ContainsKey(wrapper))
+            if (BrawlAPIInternal.ContextMenuHooks.ContainsKey(wrapper))
             {
                 if (items.Length == 1 && items[0].HasDropDownItems)
                 {
                     // Combine same-named submenus
-                    for (int i = 0; i < ContextMenuHooks[wrapper].Length; i++)
+                    for (int i = 0; i < BrawlAPIInternal.ContextMenuHooks[wrapper].Length; i++)
                     {
-                        ToolStripMenuItem item = ContextMenuHooks[wrapper][i];
+                        ToolStripMenuItem item = BrawlAPIInternal.ContextMenuHooks[wrapper][i];
                         if (!item.HasDropDownItems || item.Text != items[0].Text)
                         {
                             continue;
@@ -641,11 +964,11 @@ namespace BrawlCrate.API
                     }
                 }
 
-                ContextMenuHooks[wrapper] = ContextMenuHooks[wrapper].Append(items);
+                BrawlAPIInternal.ContextMenuHooks[wrapper] = BrawlAPIInternal.ContextMenuHooks[wrapper].Append(items);
             }
             else
             {
-                ContextMenuHooks.Add(wrapper, items);
+                BrawlAPIInternal.ContextMenuHooks.Add(wrapper, items);
             }
         }
 
@@ -723,14 +1046,14 @@ namespace BrawlCrate.API
         /// </param>
         public static void AddMultiSelectContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
         {
-            if (MultiSelectContextMenuHooks.ContainsKey(wrapper))
+            if (BrawlAPIInternal.MultiSelectContextMenuHooks.ContainsKey(wrapper))
             {
                 if (items.Length == 1 && items[0].HasDropDownItems)
                 {
                     // Combine same-named submenus
-                    for (int i = 0; i < MultiSelectContextMenuHooks[wrapper].Length; i++)
+                    for (int i = 0; i < BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper].Length; i++)
                     {
-                        ToolStripMenuItem item = MultiSelectContextMenuHooks[wrapper][i];
+                        ToolStripMenuItem item = BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper][i];
                         if (!item.HasDropDownItems || item.Text != items[0].Text)
                         {
                             continue;
@@ -751,11 +1074,11 @@ namespace BrawlCrate.API
                     }
                 }
 
-                MultiSelectContextMenuHooks[wrapper] = MultiSelectContextMenuHooks[wrapper].Append(items);
+                BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper] = BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper].Append(items);
             }
             else
             {
-                MultiSelectContextMenuHooks.Add(wrapper, items);
+                BrawlAPIInternal.MultiSelectContextMenuHooks.Add(wrapper, items);
             }
         }
 
@@ -984,7 +1307,7 @@ namespace BrawlCrate.API
         /// </param>
         public static void AddResourceParser(PluginResourceParser resourceParser)
         {
-            ResourceParsers.Add(resourceParser);
+            BrawlAPIInternal.ResourceParsers.Add(resourceParser);
         }
 
         /// <summary>

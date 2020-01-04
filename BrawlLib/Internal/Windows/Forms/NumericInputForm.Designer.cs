@@ -100,7 +100,7 @@ namespace BrawlLib.Internal.Windows.Forms
 
         #endregion
         private global::System.Windows.Forms.Label label2;
-        private global::BrawlLib.Internal.Windows.Controls.NumericInputBox numNewCount;
+        public global::BrawlLib.Internal.Windows.Controls.NumericInputBox numNewCount;
         private Button btnCancel;
         private Button btnOkay;
     }

@@ -426,17 +426,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             offset += RandomTableSize;
             if (NameTableSize > 4)
             {
-                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
-
-                _names = new List<string>();
-                bushort* addr = (bushort*) ((VoidPtr) hdr + 4 + hdr->_count * 4);
-                for (int i = 0; i < hdr->_count; i++, addr = (bushort*) ((VoidPtr) addr + 2 + *addr))
+                if (offset + NameTableSize <= size)
                 {
-                    _names.Add(new string((sbyte*) addr + 2));
+                    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*)offset;
+
+                    _names = new List<string>();
+                    bushort* addr = (bushort*)((VoidPtr)hdr + 4 + hdr->_count * 4);
+                    for (int i = 0; i < hdr->_count; i++, addr = (bushort*)((VoidPtr)addr + 2 + *addr))
+                    {
+                        _names.Add(new string((sbyte*)addr + 2));
+                    }
+                    offset += NameTableSize;
                 }
             }
+            else
+            {
+                offset += NameTableSize;
+            }
 
-            offset += NameTableSize;
             if (InfoTableSize > 4)
             {
                 AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;

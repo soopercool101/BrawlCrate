@@ -1,0 +1,5 @@
+﻿BrawlAPI Plugins
+
+Plugins are loaded into the plugins menu on the BrawlCrate toolbar.
+Plugins will be organized into submenus depending on their relative path from the plugins folder.
+These can be used to easily add macros to automate user workflow.
