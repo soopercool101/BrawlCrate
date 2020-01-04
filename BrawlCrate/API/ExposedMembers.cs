@@ -17,7 +17,7 @@ using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 
 namespace BrawlCrate.API
 {
-    public static partial class BrawlAPI
+    public static class BrawlAPI
     {
         #region Nodes
 
@@ -936,14 +936,14 @@ namespace BrawlCrate.API
         /// </param>
         public static void AddContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
         {
-            if (ContextMenuHooks.ContainsKey(wrapper))
+            if (BrawlAPIInternal.ContextMenuHooks.ContainsKey(wrapper))
             {
                 if (items.Length == 1 && items[0].HasDropDownItems)
                 {
                     // Combine same-named submenus
-                    for (int i = 0; i < ContextMenuHooks[wrapper].Length; i++)
+                    for (int i = 0; i < BrawlAPIInternal.ContextMenuHooks[wrapper].Length; i++)
                     {
-                        ToolStripMenuItem item = ContextMenuHooks[wrapper][i];
+                        ToolStripMenuItem item = BrawlAPIInternal.ContextMenuHooks[wrapper][i];
                         if (!item.HasDropDownItems || item.Text != items[0].Text)
                         {
                             continue;
@@ -964,11 +964,11 @@ namespace BrawlCrate.API
                     }
                 }
 
-                ContextMenuHooks[wrapper] = ContextMenuHooks[wrapper].Append(items);
+                BrawlAPIInternal.ContextMenuHooks[wrapper] = BrawlAPIInternal.ContextMenuHooks[wrapper].Append(items);
             }
             else
             {
-                ContextMenuHooks.Add(wrapper, items);
+                BrawlAPIInternal.ContextMenuHooks.Add(wrapper, items);
             }
         }
 
@@ -1046,14 +1046,14 @@ namespace BrawlCrate.API
         /// </param>
         public static void AddMultiSelectContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
         {
-            if (MultiSelectContextMenuHooks.ContainsKey(wrapper))
+            if (BrawlAPIInternal.MultiSelectContextMenuHooks.ContainsKey(wrapper))
             {
                 if (items.Length == 1 && items[0].HasDropDownItems)
                 {
                     // Combine same-named submenus
-                    for (int i = 0; i < MultiSelectContextMenuHooks[wrapper].Length; i++)
+                    for (int i = 0; i < BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper].Length; i++)
                     {
-                        ToolStripMenuItem item = MultiSelectContextMenuHooks[wrapper][i];
+                        ToolStripMenuItem item = BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper][i];
                         if (!item.HasDropDownItems || item.Text != items[0].Text)
                         {
                             continue;
@@ -1074,11 +1074,11 @@ namespace BrawlCrate.API
                     }
                 }
 
-                MultiSelectContextMenuHooks[wrapper] = MultiSelectContextMenuHooks[wrapper].Append(items);
+                BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper] = BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper].Append(items);
             }
             else
             {
-                MultiSelectContextMenuHooks.Add(wrapper, items);
+                BrawlAPIInternal.MultiSelectContextMenuHooks.Add(wrapper, items);
             }
         }
 
@@ -1307,7 +1307,7 @@ namespace BrawlCrate.API
         /// </param>
         public static void AddResourceParser(PluginResourceParser resourceParser)
         {
-            ResourceParsers.Add(resourceParser);
+            BrawlAPIInternal.ResourceParsers.Add(resourceParser);
         }
 
         /// <summary>

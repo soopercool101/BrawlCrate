@@ -19,17 +19,17 @@ using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 
 namespace BrawlCrate.API
 {
-    public static partial class BrawlAPI
+    internal static class BrawlAPIInternal
     {
-        public static bool PythonEnabled => Engine.GetSearchPaths().Count > 0;
+        internal static bool PythonEnabled => Engine.GetSearchPaths().Count > 0;
 
-        public static bool FSharpEnabled =>
+        internal static bool FSharpEnabled =>
             Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
             !string.IsNullOrEmpty(fsi_path) && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
 
         private static string fsi_path;
 
-        public static string PythonPath
+        internal static string PythonPath
         {
             get => Engine.GetSearchPaths().Count > 0 ? Engine.GetSearchPaths().ElementAt(0) : "(none)";
             set
@@ -40,7 +40,7 @@ namespace BrawlCrate.API
             }
         }
 
-        public static string FSIPath
+        internal static string FSIPath
         {
             get => fsi_path;
             set
@@ -51,7 +51,7 @@ namespace BrawlCrate.API
             }
         }
 
-        static BrawlAPI()
+        static BrawlAPIInternal()
         {
             ContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
             MultiSelectContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
@@ -262,7 +262,7 @@ namespace BrawlCrate.API
             File.WriteAllText(path, text);
         }
 
-        public static void PythonInstall(bool manual = false, bool force = false)
+        internal static void PythonInstall(bool manual = false, bool force = false)
         {
             string settingPath = Properties.Settings.Default.PythonInstallationPath;
             List<string> searchPaths = new List<string>();
