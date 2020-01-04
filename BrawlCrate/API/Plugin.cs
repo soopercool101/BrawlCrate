@@ -48,7 +48,7 @@ namespace BrawlCrate.API
         }
     }
 
-    public class PluginResourceParser : ResourceNode
+    internal class PluginResourceParsers : ResourceNode
     {
         internal static ResourceNode TryParse(DataSource source)
         {
@@ -66,10 +66,14 @@ namespace BrawlCrate.API
 
             return n;
         }
+    }
 
-        public virtual ResourceNode TryParse(Stream stream)
-        {
-            return null;
-        }
+    /// <summary>
+    ///   An interface which can be used to define plugin-parsed resource nodes.
+    ///   Nodes must be derived from this and ResourceNode or a derivative of such.
+    /// </summary>
+    public interface PluginResourceParser
+    {
+        ResourceNode TryParse(Stream stream);
     }
 }
