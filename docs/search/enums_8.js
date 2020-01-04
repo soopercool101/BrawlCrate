@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['hexcasing_31884',['HexCasing',['../namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#a9f19b7748cc01a29b0b46431c26aa3c1',1,'BrawlLib::Internal::Windows::Controls::Hex_Editor']]],
-  ['hitboxeffect_31885',['HitboxEffect',['../namespace_brawl_lib_1_1_internal.html#aad47dc5d3712e8ed8eab131cedff7ccc',1,'BrawlLib::Internal']]],
-  ['hitboxsfx_31886',['HitboxSFX',['../namespace_brawl_lib_1_1_internal.html#ac2516ff5ea868140730c54036525888a',1,'BrawlLib::Internal']]],
-  ['hitboxtype_31887',['HitboxType',['../namespace_brawl_lib_1_1_internal.html#ab640cac3a8e130a5012a40a58e15f5a2',1,'BrawlLib::Internal']]],
-  ['hurtboxzone_31888',['HurtBoxZone',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ab69be25c84bf8a677d9e08b23fa8a346',1,'BrawlLib::SSBB::Types']]]
+  ['hexcasing_31887',['HexCasing',['../namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#a9f19b7748cc01a29b0b46431c26aa3c1',1,'BrawlLib::Internal::Windows::Controls::Hex_Editor']]],
+  ['hitboxeffect_31888',['HitboxEffect',['../namespace_brawl_lib_1_1_internal.html#aad47dc5d3712e8ed8eab131cedff7ccc',1,'BrawlLib::Internal']]],
+  ['hitboxsfx_31889',['HitboxSFX',['../namespace_brawl_lib_1_1_internal.html#ac2516ff5ea868140730c54036525888a',1,'BrawlLib::Internal']]],
+  ['hitboxtype_31890',['HitboxType',['../namespace_brawl_lib_1_1_internal.html#ab640cac3a8e130a5012a40a58e15f5a2',1,'BrawlLib::Internal']]],
+  ['hurtboxzone_31891',['HurtBoxZone',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ab69be25c84bf8a677d9e08b23fa8a346',1,'BrawlLib::SSBB::Types']]]
 ];

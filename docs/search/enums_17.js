@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['wavedatalocation_32029',['WaveDataLocation',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a36e57d0d5c414531076d4761c691ffc2',1,'BrawlLib::SSBB::Types::Audio']]],
-  ['wavedatalocationtype_32030',['WaveDataLocationType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a5d1edc89c6d777ba7e6c7e3117c8889f',1,'BrawlLib::SSBB::Types::Audio']]],
-  ['waveencoding_32031',['WaveEncoding',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a13685f0da0786898115e17125e03514b',1,'BrawlLib::SSBB::Types::Audio']]],
-  ['waveformattag_32032',['WaveFormatTag',['../namespace_brawl_lib_1_1_internal_1_1_audio.html#a4d4b833269a9da220b950dca37a38d2b',1,'BrawlLib::Internal::Audio']]],
-  ['weighttype_32033',['WeightType',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_weight_editor.html#ab1656e71ec6da04106b278bfe97aa7f1',1,'BrawlLib::Internal::Windows::Controls::ModelViewer::Editors::WeightEditor']]],
-  ['wiibeginmode_32034',['WiiBeginMode',['../namespace_brawl_lib_1_1_wii_1_1_models.html#ab175ebe1c9a8c2871641e5f706bacbed',1,'BrawlLib::Wii::Models']]],
-  ['wiicolorcomponenttype_32035',['WiiColorComponentType',['../namespace_brawl_lib_1_1_wii_1_1_models.html#a1ff65d70fa9876fd83eaa9c168399fbc',1,'BrawlLib::Wii::Models']]],
-  ['wiipaletteformat_32036',['WiiPaletteFormat',['../namespace_brawl_lib_1_1_wii_1_1_textures.html#a77f62c52d21306f2b937c0e15f3cea8d',1,'BrawlLib::Wii::Textures']]],
-  ['wiipixelformat_32037',['WiiPixelFormat',['../namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796',1,'BrawlLib::Wii::Textures']]],
-  ['wiipixelformatv2_32038',['WiiPixelFormatv2',['../namespace_brawl_lib_1_1_wii_1_1_textures.html#a1607503b18d87477d5779aa0d7d250d3',1,'BrawlLib::Wii::Textures']]],
-  ['wiivertexcomponenttype_32039',['WiiVertexComponentType',['../namespace_brawl_lib_1_1_wii_1_1_models.html#a37e23d9f04f9f5724b4483c9f8a783b1',1,'BrawlLib::Wii::Models']]],
-  ['wrapoption_32040',['WrapOption',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_post_field_info.html#a04f47d84db29c4343e011765b57dc527',1,'BrawlLib::SSBB::Types::PostFieldInfo']]]
+  ['wavedatalocation_32032',['WaveDataLocation',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a36e57d0d5c414531076d4761c691ffc2',1,'BrawlLib::SSBB::Types::Audio']]],
+  ['wavedatalocationtype_32033',['WaveDataLocationType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a5d1edc89c6d777ba7e6c7e3117c8889f',1,'BrawlLib::SSBB::Types::Audio']]],
+  ['waveencoding_32034',['WaveEncoding',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a13685f0da0786898115e17125e03514b',1,'BrawlLib::SSBB::Types::Audio']]],
+  ['waveformattag_32035',['WaveFormatTag',['../namespace_brawl_lib_1_1_internal_1_1_audio.html#a4d4b833269a9da220b950dca37a38d2b',1,'BrawlLib::Internal::Audio']]],
+  ['weighttype_32036',['WeightType',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_weight_editor.html#ab1656e71ec6da04106b278bfe97aa7f1',1,'BrawlLib::Internal::Windows::Controls::ModelViewer::Editors::WeightEditor']]],
+  ['wiibeginmode_32037',['WiiBeginMode',['../namespace_brawl_lib_1_1_wii_1_1_models.html#ab175ebe1c9a8c2871641e5f706bacbed',1,'BrawlLib::Wii::Models']]],
+  ['wiicolorcomponenttype_32038',['WiiColorComponentType',['../namespace_brawl_lib_1_1_wii_1_1_models.html#a1ff65d70fa9876fd83eaa9c168399fbc',1,'BrawlLib::Wii::Models']]],
+  ['wiipaletteformat_32039',['WiiPaletteFormat',['../namespace_brawl_lib_1_1_wii_1_1_textures.html#a77f62c52d21306f2b937c0e15f3cea8d',1,'BrawlLib::Wii::Textures']]],
+  ['wiipixelformat_32040',['WiiPixelFormat',['../namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796',1,'BrawlLib::Wii::Textures']]],
+  ['wiipixelformatv2_32041',['WiiPixelFormatv2',['../namespace_brawl_lib_1_1_wii_1_1_textures.html#a1607503b18d87477d5779aa0d7d250d3',1,'BrawlLib::Wii::Textures']]],
+  ['wiivertexcomponenttype_32042',['WiiVertexComponentType',['../namespace_brawl_lib_1_1_wii_1_1_models.html#a37e23d9f04f9f5724b4483c9f8a783b1',1,'BrawlLib::Wii::Models']]],
+  ['wrapoption_32043',['WrapOption',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_post_field_info.html#a04f47d84db29c4343e011765b57dc527',1,'BrawlLib::SSBB::Types::PostFieldInfo']]]
 ];
