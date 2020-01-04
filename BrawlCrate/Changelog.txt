@@ -1,6 +1,6 @@
 ﻿
-BrawlCrate - v0.30d Hotfix 1
-Copyright © 2018 - 2019 soopercool101, Simon381, Onium
+BrawlCrate - v0.30e
+Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
@@ -15,6 +15,21 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30e - (1/4/2020)
+ . "Import > Object" option for MDL0 now supports all MDL0 import types
+ . Add "Delete Entries" option to Edit All menu for CHR0
+ . Improved STPM parsing (credit: MarioDox)
+   - Value57 -> EchoDepth
+   - Value58 -> EchoDepthRemoval
+   - EchoMultiplier -> EchoRepeats1
+   - Value60 -> EchoRepeats2
+ . Add BrawlCrate documentation hosted at https://soopercool101.github.io/BrawlCrate/ (can be accessed from the help menu)
+ . PluginResourceParser is now an interface rather than a type itself. Parsers must now also be derived from a ResourceNode type as well as PluginResourceParser
+ . BrawlAPI internal members have been moved out of scope of the API itself
+ . Fix bug where PAT0 Entries could attempt to access invalid data during duplication
+ . Fix bug where the "UserFloatInput" API member would round to an int value
+ . Fix bug where the last user input was not saved for numerical API inputs
  
  - BrawlCrate v0.30d Hotfix 1 - (12/27/2019)
  . Add ability to add a parent directly to a bone
