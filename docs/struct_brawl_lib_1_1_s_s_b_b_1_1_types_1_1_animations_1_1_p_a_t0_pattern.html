@@ -117,10 +117,7 @@ Properties</h2></td></tr>
 <tr class="memitem:a0e923514064c3571e5f9d00c90df23f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#a0e923514064c3571e5f9d00c90df23f9">ResourceStringAddress</a><code> [get, set]</code></td></tr>
 <tr class="separator:a0e923514064c3571e5f9d00c90df23f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00159">159</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="aebc5d9e1c141d7dea3cbb464780582f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aebc5d9e1c141d7dea3cbb464780582f1">&#9670;&nbsp;</a></span>GetIndex()</h2>
 
@@ -154,8 +151,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00188">188</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        {</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">return</span> *((<a class="code" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a> + 4 + index * 2 + (palette ? 1 : 0));</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
@@ -185,8 +180,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00167">167</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        {</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">return</span> (PAT0TextureTable*) (<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a> + <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#ae3f386007d1299b2aac7ac9e03d87288">GetTexTableOffset</a>(index));</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        }</div>
@@ -216,8 +209,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00172">172</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        {</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">return</span> *((<a class="code" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a> + 2 + index);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
@@ -263,8 +254,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00193">193</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            *((<a class="code" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a> + 4 + index * 2 + (palette ? 1 : 0)) = value;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
@@ -304,8 +293,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00177">177</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            *((<a class="code" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a> + 2 + index) = value;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
@@ -345,8 +332,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00182">182</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        {</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            *((<a class="code" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a> + 2 + index) = (int) value - (<span class="keywordtype">int</span>) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a>;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
@@ -366,8 +351,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00164">164</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
-
 </div>
 </div>
 <a id="ad9f222dcabc8568a9c07d13fb1463555"></a>
@@ -381,8 +364,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00163">163</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 
 </div>
 </div>
@@ -398,8 +379,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00217">217</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
-
 </div>
 </div>
 <a id="a69a2125fc289fb8cee9be9b612f4558e"></a>
@@ -413,8 +392,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00209">209</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 
 </div>
 </div>
@@ -438,8 +415,6 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00161">161</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -462,8 +437,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00199">199</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        {</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keyword">get</span></div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            {</div>
@@ -495,8 +468,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_a_t0_8cs_source.html#l00212">212</a> of file <a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        {</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a> + <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#ad9f222dcabc8568a9c07d13fb1463555">_stringOffset</a>;</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#ad9f222dcabc8568a9c07d13fb1463555">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">Address</a>;</div>
@@ -505,14 +476,14 @@ Properties</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>BrawlLib/SSBB/Types/Animations/<a class="el" href="_p_a_t0_8cs_source.html">PAT0.cs</a></li>
+<li>BrawlLib/SSBB/Types/Animations/PAT0.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bushort_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bushort.html">BrawlLib.Internal.bushort</a></div><div class="ttdef"><b>Definition:</b> <a href="_big_endian_types_8cs_source.html#l00191">BigEndianTypes.cs:191</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern_html_ae3f386007d1299b2aac7ac9e03d87288"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#ae3f386007d1299b2aac7ac9e03d87288">BrawlLib.SSBB.Types.Animations.PAT0Pattern.GetTexTableOffset</a></div><div class="ttdeci">int GetTexTableOffset(int index)</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_8cs_source.html#l00172">PAT0.cs:172</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern_html_ad9f222dcabc8568a9c07d13fb1463555"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#ad9f222dcabc8568a9c07d13fb1463555">BrawlLib.SSBB.Types.Animations.PAT0Pattern._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_8cs_source.html#l00163">PAT0.cs:163</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> <a href="_big_endian_types_8cs_source.html#l00008">BigEndianTypes.cs:8</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern_html_aa1765e16c636caade5e59792608f1780"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">BrawlLib.SSBB.Types.Animations.PAT0Pattern.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_8cs_source.html#l00199">PAT0.cs:199</a></div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bushort_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bushort.html">BrawlLib.Internal.bushort</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:191</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern_html_ae3f386007d1299b2aac7ac9e03d87288"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#ae3f386007d1299b2aac7ac9e03d87288">BrawlLib.SSBB.Types.Animations.PAT0Pattern.GetTexTableOffset</a></div><div class="ttdeci">int GetTexTableOffset(int index)</div><div class="ttdef"><b>Definition:</b> PAT0.cs:172</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern_html_ad9f222dcabc8568a9c07d13fb1463555"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#ad9f222dcabc8568a9c07d13fb1463555">BrawlLib.SSBB.Types.Animations.PAT0Pattern._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> PAT0.cs:163</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:8</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern_html_aa1765e16c636caade5e59792608f1780"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_p_a_t0_pattern.html#aa1765e16c636caade5e59792608f1780">BrawlLib.SSBB.Types.Animations.PAT0Pattern.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> PAT0.cs:199</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

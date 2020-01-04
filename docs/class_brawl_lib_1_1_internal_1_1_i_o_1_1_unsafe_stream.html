@@ -137,10 +137,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:afc7e3e1f8874178675ee6b118ef61bbe"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a></td></tr>
 <tr class="separator:afc7e3e1f8874178675ee6b118ef61bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00006">6</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab67ced13a2cd4a6c4aa93f565c6c8eb9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab67ced13a2cd4a6c4aa93f565c6c8eb9">&#9670;&nbsp;</a></span>UnsafeStream() <span class="overload">[1/2]</span></h2>
 
@@ -174,8 +171,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00030">30</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a86a6c77b2f538cf49e76fdb78683b2c3">_address</a> = (<span class="keywordtype">byte</span>*) address;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">_length</a> = length;</div>
@@ -217,8 +212,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00037">37</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a86a6c77b2f538cf49e76fdb78683b2c3">_address</a> = (<span class="keywordtype">byte</span>*) address;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">_length</a> = (uint) length;</div>
@@ -250,8 +243,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00018">18</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -290,8 +281,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00054">54</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            uint size = Math.Min((uint) length, <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">_length</a> - <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a>);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            Memory.Move(dst, &amp;<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a86a6c77b2f538cf49e76fdb78683b2c3">_address</a>[<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a>], size);</div>
@@ -340,8 +329,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00062">62</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (offset + count &gt; buffer.Length)</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
@@ -378,8 +365,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00044">44</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a> &gt;= <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">_length</a>)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            {</div>
@@ -424,8 +409,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00075">75</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">switch</span> (origin)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
@@ -476,8 +459,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00101">101</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
@@ -517,8 +498,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00114">114</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            uint size = Math.Min((uint) length, <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">_length</a> - <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a>);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            Memory.Move(<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a86a6c77b2f538cf49e76fdb78683b2c3">_address</a>, src, size);</div>
@@ -565,8 +544,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00120">120</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">if</span> (offset + count &gt; buffer.Length)</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            {</div>
@@ -604,8 +581,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00106">106</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a> &lt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">_length</a>)</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
@@ -636,8 +611,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00008">8</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="a7a02eb89ed1120eb181a8adc98062d4c"></a>
@@ -659,8 +632,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00009">9</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 
 </div>
 </div>
@@ -684,8 +655,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00010">10</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="a9c64b85711455cd3cd6d18c920ccaaba"></a>
@@ -699,8 +668,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00012">12</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 
 </div>
 </div>
@@ -716,8 +683,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00014">14</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="a887f75520a3563cd44d4c1f503b365d8"></a>
@@ -731,8 +696,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00015">15</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 
 </div>
 </div>
@@ -748,8 +711,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00016">16</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="aa93d4b54cbe3b2d3bc213331e8f81520"></a>
@@ -763,8 +724,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00022">22</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 
 </div>
 </div>
@@ -788,8 +747,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_unsafe_stream_8cs_source.html#l00025">25</a> of file <a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">_position</a> = (uint) value.Clamp(0, <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">_length</a>);</div>
@@ -798,15 +755,15 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/IO/<a class="el" href="_unsafe_stream_8cs_source.html">UnsafeStream.cs</a></li>
+<li>BrawlLib/Internal/IO/UnsafeStream.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_afc7e3e1f8874178675ee6b118ef61bbe"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">BrawlLib.Internal.IO.UnsafeStream._position</a></div><div class="ttdeci">uint _position</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_stream_8cs_source.html#l00010">UnsafeStream.cs:10</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a44aa69506cc5b0bca9904d743e711f91"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a44aa69506cc5b0bca9904d743e711f91">BrawlLib.Internal.IO.UnsafeStream.Position</a></div><div class="ttdeci">override long Position</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_stream_8cs_source.html#l00025">UnsafeStream.cs:25</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a85534d8ce62debf41ffe63dde29f6991"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a85534d8ce62debf41ffe63dde29f6991">BrawlLib.Internal.IO.UnsafeStream.Write</a></div><div class="ttdeci">void Write(byte *src, int length)</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_stream_8cs_source.html#l00114">UnsafeStream.cs:114</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a86a6c77b2f538cf49e76fdb78683b2c3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a86a6c77b2f538cf49e76fdb78683b2c3">BrawlLib.Internal.IO.UnsafeStream._address</a></div><div class="ttdeci">readonly byte * _address</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_stream_8cs_source.html#l00008">UnsafeStream.cs:8</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a7a02eb89ed1120eb181a8adc98062d4c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">BrawlLib.Internal.IO.UnsafeStream._length</a></div><div class="ttdeci">readonly uint _length</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_stream_8cs_source.html#l00009">UnsafeStream.cs:9</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_ae2b860719fabc40329dbaca82c0d06b4"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#ae2b860719fabc40329dbaca82c0d06b4">BrawlLib.Internal.IO.UnsafeStream.Read</a></div><div class="ttdeci">int Read(byte *dst, int length)</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_stream_8cs_source.html#l00054">UnsafeStream.cs:54</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_afc7e3e1f8874178675ee6b118ef61bbe"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#afc7e3e1f8874178675ee6b118ef61bbe">BrawlLib.Internal.IO.UnsafeStream._position</a></div><div class="ttdeci">uint _position</div><div class="ttdef"><b>Definition:</b> UnsafeStream.cs:10</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a44aa69506cc5b0bca9904d743e711f91"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a44aa69506cc5b0bca9904d743e711f91">BrawlLib.Internal.IO.UnsafeStream.Position</a></div><div class="ttdeci">override long Position</div><div class="ttdef"><b>Definition:</b> UnsafeStream.cs:25</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a85534d8ce62debf41ffe63dde29f6991"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a85534d8ce62debf41ffe63dde29f6991">BrawlLib.Internal.IO.UnsafeStream.Write</a></div><div class="ttdeci">void Write(byte *src, int length)</div><div class="ttdef"><b>Definition:</b> UnsafeStream.cs:114</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a86a6c77b2f538cf49e76fdb78683b2c3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a86a6c77b2f538cf49e76fdb78683b2c3">BrawlLib.Internal.IO.UnsafeStream._address</a></div><div class="ttdeci">readonly byte * _address</div><div class="ttdef"><b>Definition:</b> UnsafeStream.cs:8</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_a7a02eb89ed1120eb181a8adc98062d4c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#a7a02eb89ed1120eb181a8adc98062d4c">BrawlLib.Internal.IO.UnsafeStream._length</a></div><div class="ttdeci">readonly uint _length</div><div class="ttdef"><b>Definition:</b> UnsafeStream.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream_html_ae2b860719fabc40329dbaca82c0d06b4"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html#ae2b860719fabc40329dbaca82c0d06b4">BrawlLib.Internal.IO.UnsafeStream.Read</a></div><div class="ttdeci">int Read(byte *dst, int length)</div><div class="ttdef"><b>Definition:</b> UnsafeStream.cs:54</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

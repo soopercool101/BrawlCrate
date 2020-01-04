@@ -105,10 +105,7 @@ Package Functions</h2></td></tr>
 <tr class="memitem:afa3ad8fae2cf9781fc66180db4fad2cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#afa3ad8fae2cf9781fc66180db4fad2cd">WriteExpansion</a> (BinaryWriter writer)</td></tr>
 <tr class="separator:afa3ad8fae2cf9781fc66180db4fad2cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01270">1270</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3dfedd0e59274b8554ff705db771aafe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3dfedd0e59274b8554ff705db771aafe">&#9670;&nbsp;</a></span>ModelHeader()</h2>
 
@@ -131,8 +128,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01277">1277</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;        {</div>
 <div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#ad8ab633756e7eda4369bf93f630cf2ba">_modelName</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#afd3cd6d5e543593db9a2d18417e215c5">_comment</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
@@ -166,8 +161,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01285">1285</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        {</div>
 <div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#ad8ab633756e7eda4369bf93f630cf2ba">_modelName</a> = PMDModel.GetString(reader.ReadBytes(20));</div>
 <div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#afd3cd6d5e543593db9a2d18417e215c5">_comment</a> = PMDModel.GetString(reader.ReadBytes(256));</div>
@@ -198,8 +191,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01291">1291</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;        {</div>
 <div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a965fe39ff5aed6d97aa650592d034d2c">_modelNameEnglish</a> = PMDModel.GetString(reader.ReadBytes(20), <span class="keyword">false</span>);</div>
 <div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a5c57ad4c42864384b77aa57aa86183bb">_commentEnglish</a> = PMDModel.GetString(reader.ReadBytes(256), <span class="keyword">false</span>);</div>
@@ -230,8 +221,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01297">1297</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;        {</div>
 <div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#ad8ab633756e7eda4369bf93f630cf2ba">_modelName</a>, 20));</div>
 <div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#afd3cd6d5e543593db9a2d18417e215c5">_comment</a>, 256));</div>
@@ -262,8 +251,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01303">1303</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;        {</div>
 <div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a965fe39ff5aed6d97aa650592d034d2c">_modelNameEnglish</a>, 20));</div>
 <div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a5c57ad4c42864384b77aa57aa86183bb">_commentEnglish</a>, 256));</div>
@@ -284,8 +271,6 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01273">1273</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <a id="a5c57ad4c42864384b77aa57aa86183bb"></a>
@@ -299,8 +284,6 @@ Package Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01275">1275</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 
 </div>
 </div>
@@ -316,8 +299,6 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01272">1272</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <a id="a965fe39ff5aed6d97aa650592d034d2c"></a>
@@ -332,18 +313,16 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01274">1274</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Modeling/<a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a></li>
+<li>BrawlLib/Modeling/PMDModel.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_a965fe39ff5aed6d97aa650592d034d2c"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a965fe39ff5aed6d97aa650592d034d2c">BrawlLib.Modeling.ModelHeader._modelNameEnglish</a></div><div class="ttdeci">string _modelNameEnglish</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01274">PMDModel.cs:1274</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_a5c57ad4c42864384b77aa57aa86183bb"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a5c57ad4c42864384b77aa57aa86183bb">BrawlLib.Modeling.ModelHeader._commentEnglish</a></div><div class="ttdeci">string _commentEnglish</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01275">PMDModel.cs:1275</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_ad8ab633756e7eda4369bf93f630cf2ba"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#ad8ab633756e7eda4369bf93f630cf2ba">BrawlLib.Modeling.ModelHeader._modelName</a></div><div class="ttdeci">string _modelName</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01272">PMDModel.cs:1272</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_afd3cd6d5e543593db9a2d18417e215c5"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#afd3cd6d5e543593db9a2d18417e215c5">BrawlLib.Modeling.ModelHeader._comment</a></div><div class="ttdeci">string _comment</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01273">PMDModel.cs:1273</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_a965fe39ff5aed6d97aa650592d034d2c"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a965fe39ff5aed6d97aa650592d034d2c">BrawlLib.Modeling.ModelHeader._modelNameEnglish</a></div><div class="ttdeci">string _modelNameEnglish</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1274</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_a5c57ad4c42864384b77aa57aa86183bb"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#a5c57ad4c42864384b77aa57aa86183bb">BrawlLib.Modeling.ModelHeader._commentEnglish</a></div><div class="ttdeci">string _commentEnglish</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1275</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_ad8ab633756e7eda4369bf93f630cf2ba"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#ad8ab633756e7eda4369bf93f630cf2ba">BrawlLib.Modeling.ModelHeader._modelName</a></div><div class="ttdeci">string _modelName</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1272</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_header_html_afd3cd6d5e543593db9a2d18417e215c5"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_header.html#afd3cd6d5e543593db9a2d18417e215c5">BrawlLib.Modeling.ModelHeader._comment</a></div><div class="ttdeci">string _comment</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1273</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -103,10 +103,7 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memitem:af7e69f885c6dc1b57b162479b0d12947"><td class="memItemLeft" align="right" valign="top">static unsafe int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#af7e69f885c6dc1b57b162479b0d12947">DecodeRLE</a> (byte *sPtr, byte *dPtr, int stride, int entryBits)</td></tr>
 <tr class="separator:af7e69f885c6dc1b57b162479b0d12947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_t_g_a_image_8cs_source.html#l00119">119</a> of file <a class="el" href="_t_g_a_image_8cs_source.html">TGAImage.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4320233288c325060f0b8aa691054107"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4320233288c325060f0b8aa691054107">&#9670;&nbsp;</a></span>ColorEncoder()</h2>
 
@@ -242,8 +239,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_t_g_a_image_8cs_source.html#l00130">130</a> of file <a class="el" href="_t_g_a_image_8cs_source.html">TGAImage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordtype">int</span> sLen = 0, pControl, pCount;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordtype">int</span> entryLen = entryBits / 8;</div>
@@ -309,8 +304,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_t_g_a_image_8cs_source.html#l00171">171</a> of file <a class="el" href="_t_g_a_image_8cs_source.html">TGAImage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        {</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keyword">using</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a> view = <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#afba027ce44ffc040eaa8b0eb4c813bac">FromFile</a>(path, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">FileMapProtect</a>.Read)</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            ) <span class="comment">// FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))</span></div>
@@ -322,7 +315,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keywordtype">int</span> alphaBits = header-&gt;imageSpecification.AlphaBits;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                ColorPalette palette = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a> format;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                PixelFormat format;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <a class="code" href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#a7dcb4db447006945453587eee59b55ed">ColorParser</a> cParser;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                switch (header-&gt;imageType &amp; (<a class="code" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>) 0x3)</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                {</div>
@@ -331,7 +324,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        <span class="keywordtype">int</span> mapBpp = header-&gt;colorMapSpecification.entrySize;</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                        <span class="keywordflow">if</span> (entryBpp == 4)</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                            format = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format4bppIndexed;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                            format = PixelFormat.Format4bppIndexed;</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                            cParser = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                            {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                                <span class="keywordtype">byte</span> val = ((<span class="keywordtype">byte</span>*) sPtr)[sIndex &gt;&gt; 1], val2 = ((<span class="keywordtype">byte</span>*) dPtr)[dIndex &gt;&gt; 1];</div>
@@ -343,7 +336,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                        }</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (entryBpp == 8)</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                        {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                            format = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format8bppIndexed;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                            format = PixelFormat.Format8bppIndexed;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                            cParser = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                            {</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                ((<span class="keywordtype">byte</span>*) dPtr)[dIndex] = ((<span class="keywordtype">byte</span>*) sPtr)[sIndex];</div>
@@ -395,7 +388,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                    {</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        <span class="keywordflow">if</span> (entryBpp == 15 || entryBpp == 16 &amp;&amp; alphaBits == 0)</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            format = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format16bppRgb555;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            format = PixelFormat.Format16bppRgb555;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                            cParser = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                            {</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                ((RGB555Pixel*) dPtr)[dIndex] = ((RGB555Pixel*) sPtr)[sIndex];</div>
@@ -403,7 +396,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        }</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (entryBpp == 16)</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                        {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                            format = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format16bppArgb1555;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                            format = PixelFormat.Format16bppArgb1555;</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                            cParser = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                            {</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                ((RGB555Pixel*) dPtr)[dIndex] = ((RGB555Pixel*) sPtr)[sIndex];</div>
@@ -411,7 +404,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        }</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (entryBpp == 24)</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                            format = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format24bppRgb;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                            format = PixelFormat.Format24bppRgb;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                            cParser = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                            {</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                ((RGBPixel*) dPtr)[dIndex] = ((RGBPixel*) sPtr)[sIndex];</div>
@@ -419,7 +412,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                        }</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (entryBpp == 32)</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                        {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                            format = alphaBits == 8 ? <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb : <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppRgb;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                            format = alphaBits == 8 ? PixelFormat.Format32bppArgb : PixelFormat.Format32bppRgb;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                            cParser = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                            {</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                ((ARGBPixel*) dPtr)[dIndex] = ((ARGBPixel*) sPtr)[sIndex];</div>
@@ -437,7 +430,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    {</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        <span class="keywordflow">if</span> (entryBpp == 8)</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                            format = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format24bppRgb;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                            format = PixelFormat.Format24bppRgb;</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                            cParser = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                            {</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                                ((RGBPixel*) dPtr)[dIndex] = RGBPixel.FromIntensity(((<span class="keywordtype">byte</span>*) sPtr)[sIndex]);</div>
@@ -594,8 +587,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_t_g_a_image_8cs_source.html#l00516">516</a> of file <a class="el" href="_t_g_a_image_8cs_source.html">TGAImage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        {</div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keyword">using</span> (FileStream stream = <span class="keyword">new</span> FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 8,</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                FileOptions.RandomAccess))</div>
@@ -639,8 +630,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_t_g_a_image_8cs_source.html#l00358">358</a> of file <a class="el" href="_t_g_a_image_8cs_source.html">TGAImage.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        {</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordtype">int</span> w = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, h = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height;</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
@@ -656,8 +645,8 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            header.imageType = <a class="code" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>.UncompressedTrueColor;</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">switch</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat)</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            {</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format4bppIndexed:</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format8bppIndexed:</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format4bppIndexed:</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format8bppIndexed:</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                {</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    pal = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Palette;</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
@@ -673,7 +662,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                        ptr += 3;</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    };</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format4bppIndexed)</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == PixelFormat.Format4bppIndexed)</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    {</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                        cEnc = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                        {</div>
@@ -693,12 +682,12 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                }</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppRgb:</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb:</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format32bppRgb:</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format32bppArgb:</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                {</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                    header.imageSpecification.pixelDepth = 32;</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                    header.imageSpecification.AlphaBits =</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                        <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb ? (byte) 8 : (<span class="keywordtype">byte</span>) 0;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                        <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == PixelFormat.Format32bppArgb ? (byte) 8 : (<span class="keywordtype">byte</span>) 0;</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                    cEnc = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                    {</div>
@@ -707,7 +696,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                }</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format24bppRgb:</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format24bppRgb:</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                {</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                    header.imageSpecification.pixelDepth = 24;</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
@@ -718,7 +707,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                }</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format16bppRgb555:</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format16bppRgb555:</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                {</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                    header.imageSpecification.pixelDepth = 15;</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                    cEnc = delegate(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr, <span class="keywordtype">int</span> sIndex, <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr, <span class="keywordtype">int</span> dIndex)</div>
@@ -728,7 +717,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                }</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format16bppArgb1555:</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format16bppArgb1555:</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                {</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                    header.imageSpecification.pixelDepth = 16;</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                    header.imageSpecification.AlphaBits = 1;</div>
@@ -801,27 +790,26 @@ Static Private Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Imaging/<a class="el" href="_t_g_a_image_8cs_source.html">TGAImage.cs</a></li>
+<li>BrawlLib/Imaging/TGAImage.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_i_o_html_a7ca8f806766fe4589f545c9d78381218"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">BrawlLib.Internal.IO.FileMapProtect</a></div><div class="ttdeci">FileMapProtect</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00174">FileMap.cs:174</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_html_a1d8a53aa2a8c2b44a748fbb264d60a70"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging.html#a1d8a53aa2a8c2b44a748fbb264d60a70">BrawlLib.Internal.Drawing.Imaging.ColorPaletteFlags</a></div><div class="ttdeci">ColorPaletteFlags</div><div class="ttdef"><b>Definition:</b> <a href="_color_palette_extension_8cs_source.html#l00011">ColorPaletteExtension.cs:11</a></div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_i_o_html_a7ca8f806766fe4589f545c9d78381218"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">BrawlLib.Internal.IO.FileMapProtect</a></div><div class="ttdeci">FileMapProtect</div><div class="ttdef"><b>Definition:</b> FileMap.cs:174</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_html_a1d8a53aa2a8c2b44a748fbb264d60a70"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging.html#a1d8a53aa2a8c2b44a748fbb264d60a70">BrawlLib.Internal.Drawing.Imaging.ColorPaletteFlags</a></div><div class="ttdeci">ColorPaletteFlags</div><div class="ttdef"><b>Definition:</b> ColorPaletteExtension.cs:11</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_a7dcb4db447006945453587eee59b55ed"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#a7dcb4db447006945453587eee59b55ed">BrawlLib.Imaging.TGA.ColorParser</a></div><div class="ttdeci">delegate void ColorParser(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html_afb4a44ae3db2849d08af13863b464e1f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html#afb4a44ae3db2849d08af13863b464e1f">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension.CreatePalette</a></div><div class="ttdeci">static ColorPalette CreatePalette(ColorPaletteFlags flags, int entries)</div><div class="ttdef"><b>Definition:</b> <a href="_color_palette_extension_8cs_source.html#l00021">ColorPaletteExtension.cs:21</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a3c7efbb474dd844372c0c6d531dd4ab1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a3c7efbb474dd844372c0c6d531dd4ab1">BrawlLib.Internal.IO.FileMap.FromStream</a></div><div class="ttdeci">static FileMap FromStream(FileStream stream)</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00117">FileMap.cs:117</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html_afb4a44ae3db2849d08af13863b464e1f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html#afb4a44ae3db2849d08af13863b464e1f">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension.CreatePalette</a></div><div class="ttdeci">static ColorPalette CreatePalette(ColorPaletteFlags flags, int entries)</div><div class="ttdef"><b>Definition:</b> ColorPaletteExtension.cs:21</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a3c7efbb474dd844372c0c6d531dd4ab1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a3c7efbb474dd844372c0c6d531dd4ab1">BrawlLib.Internal.IO.FileMap.FromStream</a></div><div class="ttdeci">static FileMap FromStream(FileStream stream)</div><div class="ttdef"><b>Definition:</b> FileMap.cs:117</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_a970631fee2d8e0a009eb05581595f058"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#a970631fee2d8e0a009eb05581595f058">BrawlLib.Imaging.TGA.PaletteEncoder</a></div><div class="ttdeci">delegate void PaletteEncoder(ref VoidPtr data, Color c)</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_html_a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">BrawlLib.Internal.ImageType.bmp</a></div><div class="ttdeci">@ bmp</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_html_a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls.html#a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295">BrawlLib.Internal.Windows.Controls.ValType.Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00009">FileMap.cs:9</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_af7e69f885c6dc1b57b162479b0d12947"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#af7e69f885c6dc1b57b162479b0d12947">BrawlLib.Imaging.TGA.DecodeRLE</a></div><div class="ttdeci">static unsafe int DecodeRLE(byte *sPtr, byte *dPtr, int stride, int entryBits)</div><div class="ttdef"><b>Definition:</b> <a href="_t_g_a_image_8cs_source.html#l00130">TGAImage.cs:130</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_palette_extension_8cs_source.html#l00019">ColorPaletteExtension.cs:19</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_imaging_html_a2bc45223fae4eb191d42b9b0b47d7b6b"><div class="ttname"><a href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">BrawlLib.Imaging.TGAImageType</a></div><div class="ttdeci">TGAImageType</div><div class="ttdef"><b>Definition:</b> <a href="_t_g_a_image_8cs_source.html#l00108">TGAImage.cs:108</a></div></div>
-<div class="ttc" id="a_model_panel_8cs_html_a7bcc7a6d87aeb3b2b14fdec298810f7f"><div class="ttname"><a href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a></div><div class="ttdeci">System.Drawing.Imaging.PixelFormat PixelFormat</div><div class="ttdef"><b>Definition:</b> <a href="_model_panel_8cs_source.html#l00013">ModelPanel.cs:13</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> FileMap.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_af7e69f885c6dc1b57b162479b0d12947"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#af7e69f885c6dc1b57b162479b0d12947">BrawlLib.Imaging.TGA.DecodeRLE</a></div><div class="ttdeci">static unsafe int DecodeRLE(byte *sPtr, byte *dPtr, int stride, int entryBits)</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:130</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension</a></div><div class="ttdef"><b>Definition:</b> ColorPaletteExtension.cs:19</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_imaging_html_a2bc45223fae4eb191d42b9b0b47d7b6b"><div class="ttname"><a href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">BrawlLib.Imaging.TGAImageType</a></div><div class="ttdeci">TGAImageType</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:108</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_ad13718383b57ca848dafcb8bc000689a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#ad13718383b57ca848dafcb8bc000689a">BrawlLib.Imaging.TGA.PaletteParser</a></div><div class="ttdeci">delegate Color PaletteParser(ref VoidPtr data)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_aece2ffe75d782665b0e0fd63852f6d87"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#aece2ffe75d782665b0e0fd63852f6d87">BrawlLib.Imaging.TGA.ToStream</a></div><div class="ttdeci">static unsafe void ToStream(Bitmap bmp, FileStream stream)</div><div class="ttdef"><b>Definition:</b> <a href="_t_g_a_image_8cs_source.html#l00358">TGAImage.cs:358</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> <a href="_void_ptr_8cs_source.html#l00007">VoidPtr.cs:7</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_afba027ce44ffc040eaa8b0eb4c813bac"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#afba027ce44ffc040eaa8b0eb4c813bac">BrawlLib.Internal.IO.FileMap.FromFile</a></div><div class="ttdeci">static FileMap FromFile(string path)</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00048">FileMap.cs:48</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ad16926b6ffda7cc52f6636d26a338511"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">BrawlLib.Internal.IO.FileMap.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00016">FileMap.cs:16</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_aece2ffe75d782665b0e0fd63852f6d87"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#aece2ffe75d782665b0e0fd63852f6d87">BrawlLib.Imaging.TGA.ToStream</a></div><div class="ttdeci">static unsafe void ToStream(Bitmap bmp, FileStream stream)</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:358</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:7</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_afba027ce44ffc040eaa8b0eb4c813bac"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#afba027ce44ffc040eaa8b0eb4c813bac">BrawlLib.Internal.IO.FileMap.FromFile</a></div><div class="ttdeci">static FileMap FromFile(string path)</div><div class="ttdef"><b>Definition:</b> FileMap.cs:48</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ad16926b6ffda7cc52f6636d26a338511"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">BrawlLib.Internal.IO.FileMap.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> FileMap.cs:16</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

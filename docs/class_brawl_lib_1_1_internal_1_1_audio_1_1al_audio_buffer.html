@@ -233,8 +233,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html" title="The alAudioBuffer presents itself to BrawlLib as one buffer big enough to hold the whole IAudioSource...">alAudioBuffer</a> presents itself to <a class="el" href="namespace_brawl_lib.html">BrawlLib</a> as one buffer big enough to hold the whole <a class="el" href="interface_brawl_lib_1_1_internal_1_1_audio_1_1_i_audio_source.html">IAudioSource</a>, while maintaining OpenAL's buffers internally. </p>
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00012">12</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a71d1037276fabbbc17bae15698396355"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71d1037276fabbbc17bae15698396355">&#9670;&nbsp;</a></span>alAudioBuffer()</h2>
@@ -275,8 +273,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00101">101</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#afefbeb8f44e44fe4ed8f692051573e20">_parent</a> = parent;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
@@ -289,7 +285,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ab4af48077335d076e647be18429e0b4d">_internalBuffer</a> = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#ab94d3ed7d3a1110242e64f6b6afe9e20">UnsafeBuffer</a>(size);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ab4af48077335d076e647be18429e0b4d">_internalBuffer</a> = <span class="keyword">new</span> UnsafeBuffer(size);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a58e6f48cf740cf5197b9ffe129862c00">_format</a> = fmt.wFormatTag;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a1b636f7249b673641d49623c268dab8a">_frequency</a> = (int) fmt.nSamplesPerSec;</div>
@@ -325,8 +321,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00191">191</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            lock (<a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a2bc5e954fcd7073b01c57bc9c0ba2ca1">sourceLock</a>)</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
@@ -371,8 +365,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#ac0d87cd5c2eb2a8047c7acb848ad9a2e">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00125">125</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ab4af48077335d076e647be18429e0b4d">_internalBuffer</a>?.<a class="code" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a800cc008f7054b8c9d2f9dfe5bff684b">Dispose</a>();</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ab4af48077335d076e647be18429e0b4d">_internalBuffer</a> = <span class="keyword">null</span>;</div>
@@ -414,8 +406,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00210">210</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        {</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">switch</span> (channels)</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            {</div>
@@ -462,8 +452,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#ac3cca21f807b856dcfb1b77af7dba8d8">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00132">132</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            BufferData data = <span class="keyword">new</span> BufferData();</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
@@ -522,8 +510,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a73c9574e4a911a0edf89e2dd904280e5">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00220">220</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        {</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            lock (<a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a2bc5e954fcd7073b01c57bc9c0ba2ca1">sourceLock</a>)</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            {</div>
@@ -574,8 +560,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a278608d4a4453e510a3ac3a151a44fbd">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00245">245</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        {</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            lock (<a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a2bc5e954fcd7073b01c57bc9c0ba2ca1">sourceLock</a>)</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            {</div>
@@ -622,8 +606,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a9cd0ea486b0f3adcc98f29a8f6675ce2">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00165">165</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordtype">int</span> buffer = AL.GenBuffer();</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            AL.BufferData(buffer, <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#aca0f67463c88951bab45eb497024a34c">GetSoundFormat</a>(<a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#ae45aafcaae199d9a291883e339d95961">_channels</a>, <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a020ef6a758a0cba91dc6dd471c969a89">_bitsPerSample</a>), data.Part1Address, data.Part1Length,</div>
@@ -672,8 +654,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00031">31</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
-
 </div>
 </div>
 <a id="afefbeb8f44e44fe4ed8f692051573e20"></a>
@@ -695,8 +675,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00023">23</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 
 </div>
 </div>
@@ -720,8 +698,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00062">62</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
-
 </div>
 </div>
 <a id="a4cf382dae13a7ed3f57afdc9335a7d69"></a>
@@ -743,8 +719,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00029">29</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 
 </div>
 </div>
@@ -768,8 +742,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00026">26</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -792,8 +764,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00096">96</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keyword">set</span> =&gt; <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
@@ -820,8 +790,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00034">34</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">get</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
@@ -871,8 +839,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="al_audio_buffer_8cs_source.html#l00065">65</a> of file <a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">get</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
@@ -906,30 +872,29 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/Audio/<a class="el" href="al_audio_buffer_8cs_source.html">alAudioBuffer.cs</a></li>
+<li>BrawlLib/Internal/Audio/alAudioBuffer.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_ae45aafcaae199d9a291883e339d95961"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#ae45aafcaae199d9a291883e339d95961">BrawlLib.Internal.Audio.AudioBuffer._channels</a></div><div class="ttdeci">int _channels</div><div class="ttdef"><b>Definition:</b> <a href="_audio_buffer_8cs_source.html#l00023">AudioBuffer.cs:23</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a8f63031ba08a37a50056b34ccb9ecd1b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a8f63031ba08a37a50056b34ccb9ecd1b">BrawlLib.Internal.Audio.alAudioBuffer.Dequeue</a></div><div class="ttdeci">void Dequeue()</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00191">alAudioBuffer.cs:191</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_aca0f67463c88951bab45eb497024a34c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#aca0f67463c88951bab45eb497024a34c">BrawlLib.Internal.Audio.alAudioBuffer.GetSoundFormat</a></div><div class="ttdeci">static ALFormat GetSoundFormat(int channels, int bits)</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00210">alAudioBuffer.cs:210</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a67af361f724516a81bc05172bf5c4104"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a67af361f724516a81bc05172bf5c4104">BrawlLib.Internal.Audio.AudioBuffer._blockAlign</a></div><div class="ttdeci">int _blockAlign</div><div class="ttdef"><b>Definition:</b> <a href="_audio_buffer_8cs_source.html#l00038">AudioBuffer.cs:38</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_ad7408bbe6661cd22d4212118d0164aae"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ad7408bbe6661cd22d4212118d0164aae">BrawlLib.Internal.Audio.alAudioBuffer._volume</a></div><div class="ttdeci">int _volume</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00062">alAudioBuffer.cs:62</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a58e6f48cf740cf5197b9ffe129862c00"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a58e6f48cf740cf5197b9ffe129862c00">BrawlLib.Internal.Audio.AudioBuffer._format</a></div><div class="ttdeci">WaveFormatTag _format</div><div class="ttdef"><b>Definition:</b> <a href="_audio_buffer_8cs_source.html#l00017">AudioBuffer.cs:17</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a1b636f7249b673641d49623c268dab8a"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a1b636f7249b673641d49623c268dab8a">BrawlLib.Internal.Audio.AudioBuffer._frequency</a></div><div class="ttdeci">int _frequency</div><div class="ttdef"><b>Definition:</b> <a href="_audio_buffer_8cs_source.html#l00020">AudioBuffer.cs:20</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a2bc5e954fcd7073b01c57bc9c0ba2ca1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a2bc5e954fcd7073b01c57bc9c0ba2ca1">BrawlLib.Internal.Audio.alAudioBuffer.sourceLock</a></div><div class="ttdeci">readonly alSourceLock sourceLock</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00026">alAudioBuffer.cs:26</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a4cf382dae13a7ed3f57afdc9335a7d69"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a4cf382dae13a7ed3f57afdc9335a7d69">BrawlLib.Internal.Audio.alAudioBuffer.buffersToQueue</a></div><div class="ttdeci">readonly List&lt; int &gt; buffersToQueue</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00029">alAudioBuffer.cs:29</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a19a628243ddcf91d26d19fe20e65b353"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a19a628243ddcf91d26d19fe20e65b353">BrawlLib.Internal.Audio.AudioBuffer._dataLength</a></div><div class="ttdeci">int _dataLength</div><div class="ttdef"><b>Definition:</b> <a href="_audio_buffer_8cs_source.html#l00034">AudioBuffer.cs:34</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_ab4af48077335d076e647be18429e0b4d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ab4af48077335d076e647be18429e0b4d">BrawlLib.Internal.Audio.alAudioBuffer._internalBuffer</a></div><div class="ttdeci">UnsafeBuffer _internalBuffer</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00031">alAudioBuffer.cs:31</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_afefbeb8f44e44fe4ed8f692051573e20"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#afefbeb8f44e44fe4ed8f692051573e20">BrawlLib.Internal.Audio.alAudioBuffer._parent</a></div><div class="ttdeci">readonly alAudioProvider _parent</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00023">alAudioBuffer.cs:23</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a64110932d38d5589023d7aa3e7266d25"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a64110932d38d5589023d7aa3e7266d25">BrawlLib.Internal.UnsafeBuffer.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_buffer_8cs_source.html#l00014">UnsafeBuffer.cs:14</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock_html_a3feed4b5a4d33526b80ea25e0606c2df"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock.html#a3feed4b5a4d33526b80ea25e0606c2df">BrawlLib.Internal.Audio.alAudioBuffer.alSourceLock.addToCursor</a></div><div class="ttdeci">int addToCursor</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00020">alAudioBuffer.cs:20</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a03d0c567e8bccf8f453d75b96476e966"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a03d0c567e8bccf8f453d75b96476e966">BrawlLib.Internal.Audio.AudioBuffer._sampleLength</a></div><div class="ttdeci">int _sampleLength</div><div class="ttdef"><b>Definition:</b> <a href="_audio_buffer_8cs_source.html#l00030">AudioBuffer.cs:30</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a49e0f38b19d107f5986bed7045524dc7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a49e0f38b19d107f5986bed7045524dc7">BrawlLib.Internal.UnsafeBuffer.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_buffer_8cs_source.html#l00009">UnsafeBuffer.cs:9</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock_html_a6171728537ce0b5daff624a7b408d204"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock.html#a6171728537ce0b5daff624a7b408d204">BrawlLib.Internal.Audio.alAudioBuffer.alSourceLock.currentSource</a></div><div class="ttdeci">int currentSource</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00017">alAudioBuffer.cs:17</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a020ef6a758a0cba91dc6dd471c969a89"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a020ef6a758a0cba91dc6dd471c969a89">BrawlLib.Internal.Audio.AudioBuffer._bitsPerSample</a></div><div class="ttdeci">int _bitsPerSample</div><div class="ttdef"><b>Definition:</b> <a href="_audio_buffer_8cs_source.html#l00026">AudioBuffer.cs:26</a></div></div>
-<div class="ttc" id="a_primitive_manager_8cs_html_ab94d3ed7d3a1110242e64f6b6afe9e20"><div class="ttname"><a href="_primitive_manager_8cs.html#ab94d3ed7d3a1110242e64f6b6afe9e20">UnsafeBuffer</a></div><div class="ttdeci">BrawlLib.Internal.UnsafeBuffer UnsafeBuffer</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00013">PrimitiveManager.cs:13</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a9007bfcd17bc77b52bc1dde1d9fabf61"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a9007bfcd17bc77b52bc1dde1d9fabf61">BrawlLib.Internal.Audio.alAudioBuffer.Volume</a></div><div class="ttdeci">override int Volume</div><div class="ttdef"><b>Definition:</b> <a href="al_audio_buffer_8cs_source.html#l00065">alAudioBuffer.cs:65</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a800cc008f7054b8c9d2f9dfe5bff684b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a800cc008f7054b8c9d2f9dfe5bff684b">BrawlLib.Internal.UnsafeBuffer.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_buffer_8cs_source.html#l00032">UnsafeBuffer.cs:32</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_ae45aafcaae199d9a291883e339d95961"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#ae45aafcaae199d9a291883e339d95961">BrawlLib.Internal.Audio.AudioBuffer._channels</a></div><div class="ttdeci">int _channels</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:23</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a8f63031ba08a37a50056b34ccb9ecd1b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a8f63031ba08a37a50056b34ccb9ecd1b">BrawlLib.Internal.Audio.alAudioBuffer.Dequeue</a></div><div class="ttdeci">void Dequeue()</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:191</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_aca0f67463c88951bab45eb497024a34c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#aca0f67463c88951bab45eb497024a34c">BrawlLib.Internal.Audio.alAudioBuffer.GetSoundFormat</a></div><div class="ttdeci">static ALFormat GetSoundFormat(int channels, int bits)</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:210</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a67af361f724516a81bc05172bf5c4104"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a67af361f724516a81bc05172bf5c4104">BrawlLib.Internal.Audio.AudioBuffer._blockAlign</a></div><div class="ttdeci">int _blockAlign</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:38</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_ad7408bbe6661cd22d4212118d0164aae"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ad7408bbe6661cd22d4212118d0164aae">BrawlLib.Internal.Audio.alAudioBuffer._volume</a></div><div class="ttdeci">int _volume</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:62</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a58e6f48cf740cf5197b9ffe129862c00"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a58e6f48cf740cf5197b9ffe129862c00">BrawlLib.Internal.Audio.AudioBuffer._format</a></div><div class="ttdeci">WaveFormatTag _format</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:17</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a1b636f7249b673641d49623c268dab8a"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a1b636f7249b673641d49623c268dab8a">BrawlLib.Internal.Audio.AudioBuffer._frequency</a></div><div class="ttdeci">int _frequency</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:20</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a2bc5e954fcd7073b01c57bc9c0ba2ca1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a2bc5e954fcd7073b01c57bc9c0ba2ca1">BrawlLib.Internal.Audio.alAudioBuffer.sourceLock</a></div><div class="ttdeci">readonly alSourceLock sourceLock</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:26</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a4cf382dae13a7ed3f57afdc9335a7d69"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a4cf382dae13a7ed3f57afdc9335a7d69">BrawlLib.Internal.Audio.alAudioBuffer.buffersToQueue</a></div><div class="ttdeci">readonly List&lt; int &gt; buffersToQueue</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:29</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a19a628243ddcf91d26d19fe20e65b353"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a19a628243ddcf91d26d19fe20e65b353">BrawlLib.Internal.Audio.AudioBuffer._dataLength</a></div><div class="ttdeci">int _dataLength</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:34</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_ab4af48077335d076e647be18429e0b4d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#ab4af48077335d076e647be18429e0b4d">BrawlLib.Internal.Audio.alAudioBuffer._internalBuffer</a></div><div class="ttdeci">UnsafeBuffer _internalBuffer</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:31</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_afefbeb8f44e44fe4ed8f692051573e20"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#afefbeb8f44e44fe4ed8f692051573e20">BrawlLib.Internal.Audio.alAudioBuffer._parent</a></div><div class="ttdeci">readonly alAudioProvider _parent</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:23</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a64110932d38d5589023d7aa3e7266d25"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a64110932d38d5589023d7aa3e7266d25">BrawlLib.Internal.UnsafeBuffer.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:14</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock_html_a3feed4b5a4d33526b80ea25e0606c2df"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock.html#a3feed4b5a4d33526b80ea25e0606c2df">BrawlLib.Internal.Audio.alAudioBuffer.alSourceLock.addToCursor</a></div><div class="ttdeci">int addToCursor</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:20</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a03d0c567e8bccf8f453d75b96476e966"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a03d0c567e8bccf8f453d75b96476e966">BrawlLib.Internal.Audio.AudioBuffer._sampleLength</a></div><div class="ttdeci">int _sampleLength</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:30</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a49e0f38b19d107f5986bed7045524dc7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a49e0f38b19d107f5986bed7045524dc7">BrawlLib.Internal.UnsafeBuffer.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock_html_a6171728537ce0b5daff624a7b408d204"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_1_1al_source_lock.html#a6171728537ce0b5daff624a7b408d204">BrawlLib.Internal.Audio.alAudioBuffer.alSourceLock.currentSource</a></div><div class="ttdeci">int currentSource</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:17</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a020ef6a758a0cba91dc6dd471c969a89"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a020ef6a758a0cba91dc6dd471c969a89">BrawlLib.Internal.Audio.AudioBuffer._bitsPerSample</a></div><div class="ttdeci">int _bitsPerSample</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:26</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer_html_a9007bfcd17bc77b52bc1dde1d9fabf61"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_buffer.html#a9007bfcd17bc77b52bc1dde1d9fabf61">BrawlLib.Internal.Audio.alAudioBuffer.Volume</a></div><div class="ttdeci">override int Volume</div><div class="ttdef"><b>Definition:</b> alAudioBuffer.cs:65</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a800cc008f7054b8c9d2f9dfe5bff684b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a800cc008f7054b8c9d2f9dfe5bff684b">BrawlLib.Internal.UnsafeBuffer.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:32</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

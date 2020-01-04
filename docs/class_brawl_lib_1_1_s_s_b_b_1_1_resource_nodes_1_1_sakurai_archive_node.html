@@ -545,10 +545,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a3cdb2f203043819dc60a5e16411b2771 inherit events_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a136f0527461544b67c947f5c6ce9ff2f">ResourceChildInsertEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a3cdb2f203043819dc60a5e16411b2771">ChildInserted</a></td></tr>
 <tr class="separator:a3cdb2f203043819dc60a5e16411b2771 inherit events_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00010">10</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3606dc9200cdfba0ca9d095215b4e905"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3606dc9200cdfba0ca9d095215b4e905">&#9670;&nbsp;</a></span>Address()</h2>
 
@@ -574,8 +571,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the address at the given offset from the base address. Use this only when parsing or writing. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00412">412</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        {</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6728069a2af6014e2977369391d0a0b9">_initializing</a> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6828850f9f72f3fedc681114fa902cb3">_currentlyBuilding</a> != <span class="keyword">this</span>)</div>
@@ -639,8 +634,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00304">304</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        {</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            Temp[] t = <span class="keyword">new</span> Temp[count];</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
@@ -701,8 +694,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns any entry at the given offset that has been parsed already. Use this only when parsing. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00482">482</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        {</div>
 <div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
 <div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6728069a2af6014e2977369391d0a0b9">_initializing</a>)</div>
@@ -745,8 +736,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a table of offsets with a corresponding data size at each offset. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00148">148</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="comment">//Read lookup offsets first and use them to get entry sizes at each offset.</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* lookup = hdr-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#acc1fc4d2c5f29d2dc017a6f84f909e6e">LookupEntries</a>;</div>
@@ -811,8 +800,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the (assumed) size of the data at the given offset. Use this only when parsing. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00427">427</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        {</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6728069a2af6014e2977369391d0a0b9">_initializing</a>)</div>
@@ -865,8 +852,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00262">262</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        {</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        }</div>
@@ -896,8 +881,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00267">267</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        {</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -928,8 +911,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Initializes all variables. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00119">119</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="comment">//Get header values</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a628f9616816279fbf8b8ec85f09ef384">_dataSize</a> = hdr-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#abbe05129c02f60f9cd5c0450ccd52d0c">_fileSize</a>;</div>
@@ -982,8 +963,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the offset of the given address from the base address. Use this only when parsing or writing. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00397">397</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        {</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6728069a2af6014e2977369391d0a0b9">_initializing</a> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6828850f9f72f3fedc681114fa902cb3">_currentlyBuilding</a> != <span class="keyword">this</span>)</div>
@@ -1021,8 +1000,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00371">371</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        {</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6828850f9f72f3fedc681114fa902cb3">_currentlyBuilding</a> = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordtype">int</span> size = (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a27fdfa7b7f3e7850c7e834d3641b93a8">_builder</a> = <span class="keyword">new</span> SakuraiArchiveBuilder(<span class="keyword">this</span>)).<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a93511a6876fc9751d933767ace4f01d1">GetSize</a>();</div>
@@ -1056,8 +1033,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_entry_node.html#a81160d3233f1329c749bef0b83f97b3e">BrawlLib.SSBB.ResourceNodes.U8EntryNode</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00099">99</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">//Start initializing. </span></div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="comment">//This enables some functions for use.</span></div>
@@ -1117,8 +1092,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a041a23bb933e6da8b0e03fdf664ba5db">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00379">379</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        {</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6828850f9f72f3fedc681114fa902cb3">_currentlyBuilding</a> = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a27fdfa7b7f3e7850c7e834d3641b93a8">_builder</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder.html#a52935316896c53a73da2ab524d42bf1c">Write</a>(<span class="keyword">this</span>, address, length);</div>
@@ -1163,8 +1136,6 @@ Additional Inherited Members</h2></td></tr>
 </dd>
 </dl>
 </div>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00341">341</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                                              : SakuraiEntryNode</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        {</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keywordflow">return</span> SakuraiEntryNode.Parse&lt;<a class="code" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#a75f26a3ecfff8396181d276ac29ff742ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(<span class="keyword">this</span>, <span class="keyword">null</span>, <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a3606dc9200cdfba0ca9d095215b4e905">Address</a>(offset));</div>
@@ -1205,8 +1176,6 @@ Additional Inherited Members</h2></td></tr>
 </dd>
 </dl>
 </div>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00349">349</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                                                   : SakuraiEntryNode</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        {</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordflow">return</span> SakuraiEntryNode.Parse&lt;<a class="code" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#a75f26a3ecfff8396181d276ac29ff742ab9ece18c950afbfa6b0fdbfa4ff731d3">T</a>&gt;(<span class="keyword">this</span>, <span class="keyword">null</span>, address);</div>
@@ -1239,8 +1208,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reads external subroutine references </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00189">189</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        {</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table.html">sStringTable</a>* stringTable = hdr-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a342221093a8f8c15a0b6a48fd8e647d0">StringTable</a>;</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
@@ -1283,8 +1250,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00207">207</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table.html">sStringTable</a>* stringTable = hdr-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a342221093a8f8c15a0b6a48fd8e647d0">StringTable</a>;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
@@ -1363,8 +1328,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00271">271</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        {</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">while</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a130a4cbb3bd3d17869f1667d36714084">_postParseEntries</a>.Count &gt; 0)</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
@@ -1408,8 +1371,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Use this only when parsing. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00448">448</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        {</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="preprocessor">#if DEBUG</span></div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6728069a2af6014e2977369391d0a0b9">_initializing</a>)</div>
@@ -1462,8 +1423,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00369">369</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="aeeef995e331c3b3084f74da46d1ca5a2"></a>
@@ -1485,8 +1444,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00038">38</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1510,8 +1467,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00364">364</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a628f9616816279fbf8b8ec85f09ef384"></a>
@@ -1525,8 +1480,6 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00018">18</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1550,8 +1503,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00091">91</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a6728069a2af6014e2977369391d0a0b9"></a>
@@ -1565,8 +1516,6 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00021">21</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1590,8 +1539,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00083">83</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a130a4cbb3bd3d17869f1667d36714084"></a>
@@ -1605,8 +1552,6 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00093">93</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1630,8 +1575,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00047">47</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="adb50b8ce43f9bb1c14f162422c4fbd0a"></a>
@@ -1653,8 +1596,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00059">59</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1678,8 +1619,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00067">67</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="aea75e4a6c8e66b690a17865991c75418"></a>
@@ -1702,8 +1641,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00075">75</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="aaf8e701bd4e735977431b37bd1fdd404"></a>
@@ -1721,8 +1658,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line">            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#af14948aa0d01937266f99dda5fd24822">Builder</a> == <span class="keyword">null</span> ? <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a> + SakuraiArchiveHeader.Size : <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#af14948aa0d01937266f99dda5fd24822">Builder</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder.html#a26a88d9921a0aeab34c043348277e563">_baseAddress</a></div>
 </div><!-- fragment -->
 <p>Returns the address after the moveset header that all offsets use as a base. This should only be used when parsing or writing. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00028">28</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1748,8 +1683,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the moveset builder of the moveset currently being written. This can only be used while calculating the size or rebuilding a moveset. </p>
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00362">362</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2810c01b4191812822a30d4d576d98d4"></a>
@@ -1766,8 +1699,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns all entries in the moveset that have had a property changed. Changed entries do not necessarily mean that a rebuild is needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00036">36</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a37637c6c05e0c6c240066f33f9b8dd98"></a>
@@ -1781,8 +1712,6 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00016">16</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1800,8 +1729,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Provides easy access to any entry in the moveset using its original offset. Use only when parsing. </p>
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00089">89</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a6f3cae33276a78bc7fad49d0888cfb27"></a>
@@ -1815,8 +1742,6 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00020">20</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1832,8 +1757,6 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00367">367</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a73cf8b4ba7af7789db69248eb7d741ec"></a>
@@ -1847,8 +1770,6 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00366">366</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1866,8 +1787,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Provides the size of any entry based on its offset. </p>
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00081">81</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a4695076a746fe1ec3266cefff22f8e62"></a>
@@ -1883,8 +1802,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns all entries in the moveset that have have had a data size change A rebuild is needed. Can perform an inject, or can rebuild entire moveset. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00045">45</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1902,8 +1819,6 @@ Additional Inherited Members</h2></td></tr>
 
 <p>List of external subroutines located in Fighter.pac. </p>
 
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00065">65</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
-
 </div>
 </div>
 <a id="a71f095e90355987bb3ded0070169d394"></a>
@@ -1919,8 +1834,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>List of important entries located in this moveset file. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00073">73</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 
 </div>
 </div>
@@ -1946,8 +1859,6 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>True if the moveset file has had something added or removed and must be rebuilt. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sakurai_archive_node_8cs_source.html#l00054">54</a> of file <a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#adb50b8ce43f9bb1c14f162422c4fbd0a">_rebuildNeeded</a>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#adb50b8ce43f9bb1c14f162422c4fbd0a">_rebuildNeeded</a> = value;</div>
@@ -1956,53 +1867,53 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/SSBB/ResourceNodes/<a class="el" href="_sakurai_archive_node_8cs_source.html">SakuraiArchiveNode.cs</a></li>
+<li>BrawlLib/SSBB/ResourceNodes/SakuraiArchiveNode.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry_html_a55db05411a65916f26d250e89d1f9c69"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry.html#a55db05411a65916f26d250e89d1f9c69">BrawlLib.SSBB.Types.sStringEntry._dataOffset</a></div><div class="ttdeci">bint _dataOffset</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00067">SakuraiArchive.cs:67</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry.html">BrawlLib.SSBB.Types.sStringEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00065">SakuraiArchive.cs:65</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_ab5faafec68ca14199015330ca76a49af"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#ab5faafec68ca14199015330ca76a49af">BrawlLib.SSBB.Types.SakuraiArchiveHeader._lookupEntryCount</a></div><div class="ttdeci">bint _lookupEntryCount</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00013">SakuraiArchive.cs:13</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_a299721ae87445a501d457014a99b92d5"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a299721ae87445a501d457014a99b92d5">BrawlLib.SSBB.Types.SakuraiArchiveHeader.ExternalSubRoutines</a></div><div class="ttdeci">sStringEntry * ExternalSubRoutines</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00025">SakuraiArchive.cs:25</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_aea75e4a6c8e66b690a17865991c75418"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#aea75e4a6c8e66b690a17865991c75418">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._sectionList</a></div><div class="ttdeci">BindingList&lt; TableEntryNode &gt; _sectionList</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00075">SakuraiArchiveNode.cs:75</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_ad5d7d12102a78c2a84ff71665e9d13c7"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#ad5d7d12102a78c2a84ff71665e9d13c7">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._rebuildEntries</a></div><div class="ttdeci">BindingList&lt; SakuraiEntryNode &gt; _rebuildEntries</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00047">SakuraiArchiveNode.cs:47</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a03ff8d0a7b485bb89d3fadf1514d312c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a03ff8d0a7b485bb89d3fadf1514d312c">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.ParseInternals</a></div><div class="ttdeci">virtual void ParseInternals(SakuraiArchiveHeader *hdr)</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00207">SakuraiArchiveNode.cs:207</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder_html_a52935316896c53a73da2ab524d42bf1c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder.html#a52935316896c53a73da2ab524d42bf1c">BrawlLib.SSBB.SakuraiArchiveBuilder.Write</a></div><div class="ttdeci">unsafe void Write(SakuraiArchiveNode node, VoidPtr address, int length)</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_builder_8cs_source.html#l00185">SakuraiArchiveBuilder.cs:185</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_a342221093a8f8c15a0b6a48fd8e647d0"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a342221093a8f8c15a0b6a48fd8e647d0">BrawlLib.SSBB.Types.SakuraiArchiveHeader.StringTable</a></div><div class="ttdeci">sStringTable * StringTable</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00029">SakuraiArchive.cs:29</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table.html">BrawlLib.SSBB.Types.sStringTable</a></div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00045">SakuraiArchive.cs:45</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> <a href="_resource_node_8cs_source.html#l00158">ResourceNode.cs:158</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_af14948aa0d01937266f99dda5fd24822"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#af14948aa0d01937266f99dda5fd24822">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.Builder</a></div><div class="ttdeci">static SakuraiArchiveBuilder Builder</div><div class="ttdoc">Returns the moveset builder of the moveset currently being written. This can only be used while calcu...</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00362">SakuraiArchiveNode.cs:362</a></div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry_html_a55db05411a65916f26d250e89d1f9c69"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry.html#a55db05411a65916f26d250e89d1f9c69">BrawlLib.SSBB.Types.sStringEntry._dataOffset</a></div><div class="ttdeci">bint _dataOffset</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:67</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_entry.html">BrawlLib.SSBB.Types.sStringEntry</a></div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:65</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_ab5faafec68ca14199015330ca76a49af"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#ab5faafec68ca14199015330ca76a49af">BrawlLib.SSBB.Types.SakuraiArchiveHeader._lookupEntryCount</a></div><div class="ttdeci">bint _lookupEntryCount</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:13</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_a299721ae87445a501d457014a99b92d5"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a299721ae87445a501d457014a99b92d5">BrawlLib.SSBB.Types.SakuraiArchiveHeader.ExternalSubRoutines</a></div><div class="ttdeci">sStringEntry * ExternalSubRoutines</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:25</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_aea75e4a6c8e66b690a17865991c75418"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#aea75e4a6c8e66b690a17865991c75418">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._sectionList</a></div><div class="ttdeci">BindingList&lt; TableEntryNode &gt; _sectionList</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:75</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_ad5d7d12102a78c2a84ff71665e9d13c7"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#ad5d7d12102a78c2a84ff71665e9d13c7">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._rebuildEntries</a></div><div class="ttdeci">BindingList&lt; SakuraiEntryNode &gt; _rebuildEntries</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:47</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a03ff8d0a7b485bb89d3fadf1514d312c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a03ff8d0a7b485bb89d3fadf1514d312c">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.ParseInternals</a></div><div class="ttdeci">virtual void ParseInternals(SakuraiArchiveHeader *hdr)</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:207</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder_html_a52935316896c53a73da2ab524d42bf1c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder.html#a52935316896c53a73da2ab524d42bf1c">BrawlLib.SSBB.SakuraiArchiveBuilder.Write</a></div><div class="ttdeci">unsafe void Write(SakuraiArchiveNode node, VoidPtr address, int length)</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveBuilder.cs:185</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_a342221093a8f8c15a0b6a48fd8e647d0"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a342221093a8f8c15a0b6a48fd8e647d0">BrawlLib.SSBB.Types.SakuraiArchiveHeader.StringTable</a></div><div class="ttdeci">sStringTable * StringTable</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:29</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table.html">BrawlLib.SSBB.Types.sStringTable</a></div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:45</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:158</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_af14948aa0d01937266f99dda5fd24822"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#af14948aa0d01937266f99dda5fd24822">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.Builder</a></div><div class="ttdeci">static SakuraiArchiveBuilder Builder</div><div class="ttdoc">Returns the moveset builder of the moveset currently being written. This can only be used while calcu...</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:362</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_graphics_html_a75f26a3ecfff8396181d276ac29ff742ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#a75f26a3ecfff8396181d276ac29ff742ab9ece18c950afbfa6b0fdbfa4ff731d3">BrawlLib.Wii.Graphics.IndTexAlphaSel.T</a></div><div class="ttdeci">@ T</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a7599f10787631079f877ebe6f47ea61d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a7599f10787631079f877ebe6f47ea61d">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.InitData</a></div><div class="ttdeci">virtual void InitData(SakuraiArchiveHeader *hdr)</div><div class="ttdoc">Initializes all variables.</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00119">SakuraiArchiveNode.cs:119</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_aeac87c5c458ef3f0c2433b6860ebc7ee"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#aeac87c5c458ef3f0c2433b6860ebc7ee">BrawlLib.SSBB.Types.SakuraiArchiveHeader._externalSubRoutineCount</a></div><div class="ttdeci">bint _externalSubRoutineCount</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00015">SakuraiArchive.cs:15</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_addd0712ee24af45c644f042e1354c687"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#addd0712ee24af45c644f042e1354c687">BrawlLib.SSBB.Types.SakuraiArchiveHeader._sectionCount</a></div><div class="ttdeci">bint _sectionCount</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00014">SakuraiArchive.cs:14</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_adb50b8ce43f9bb1c14f162422c4fbd0a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#adb50b8ce43f9bb1c14f162422c4fbd0a">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._rebuildNeeded</a></div><div class="ttdeci">bool _rebuildNeeded</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00059">SakuraiArchiveNode.cs:59</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_aaf8e701bd4e735977431b37bd1fdd404"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#aaf8e701bd4e735977431b37bd1fdd404">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.BaseAddress</a></div><div class="ttdeci">VoidPtr BaseAddress</div><div class="ttdoc">Returns the address after the moveset header that all offsets use as a base. This should only be used...</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00028">SakuraiArchiveNode.cs:28</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_afce2bffa039f7b253a55886dabb4c3f9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#afce2bffa039f7b253a55886dabb4c3f9">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.GetLookupSizes</a></div><div class="ttdeci">void GetLookupSizes(SakuraiArchiveHeader *hdr)</div><div class="ttdoc">Creates a table of offsets with a corresponding data size at each offset.</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00148">SakuraiArchiveNode.cs:148</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a3606dc9200cdfba0ca9d095215b4e905"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a3606dc9200cdfba0ca9d095215b4e905">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.Address</a></div><div class="ttdeci">VoidPtr Address(int offset)</div><div class="ttdoc">Returns the address at the given offset from the base address. Use this only when parsing or writing.</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00412">SakuraiArchiveNode.cs:412</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_ae84563550ab4a05aa5c916f03260d08d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">BrawlLib.SSBB.ResourceNodes.DataSource.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> <a href="_resource_node_8cs_source.html#l00031">ResourceNode.cs:31</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder_html_a26a88d9921a0aeab34c043348277e563"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder.html#a26a88d9921a0aeab34c043348277e563">BrawlLib.SSBB.SakuraiArchiveBuilder._baseAddress</a></div><div class="ttdeci">VoidPtr _baseAddress</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_builder_8cs_source.html#l00029">SakuraiArchiveBuilder.cs:29</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a77cecf1382b70901931e4fc3cd83050f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a77cecf1382b70901931e4fc3cd83050f">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.PostParse</a></div><div class="ttdeci">virtual void PostParse()</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00271">SakuraiArchiveNode.cs:271</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a3f1b95a822253a99033e8c3e72818645"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a3f1b95a822253a99033e8c3e72818645">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._referenceList</a></div><div class="ttdeci">BindingList&lt; TableEntryNode &gt; _referenceList</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00067">SakuraiArchiveNode.cs:67</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_abbe05129c02f60f9cd5c0450ccd52d0c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#abbe05129c02f60f9cd5c0450ccd52d0c">BrawlLib.SSBB.Types.SakuraiArchiveHeader._fileSize</a></div><div class="ttdeci">bint _fileSize</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00011">SakuraiArchive.cs:11</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a27fdfa7b7f3e7850c7e834d3641b93a8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a27fdfa7b7f3e7850c7e834d3641b93a8">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._builder</a></div><div class="ttdeci">SakuraiArchiveBuilder _builder</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00369">SakuraiArchiveNode.cs:369</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table_html_a594ce473eaa08e0cd6a660f93ad44479"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table.html#a594ce473eaa08e0cd6a660f93ad44479">BrawlLib.SSBB.Types.sStringTable.GetString</a></div><div class="ttdeci">string GetString(int offset)</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00058">SakuraiArchive.cs:58</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a2e64c67e58cdac796085adddb17eb1fe"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a2e64c67e58cdac796085adddb17eb1fe">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.HandleSpecialSections</a></div><div class="ttdeci">virtual void HandleSpecialSections(List&lt; TableEntryNode &gt; sections)</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00267">SakuraiArchiveNode.cs:267</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a1f082c1e02efe67e73d9e666d42d2298"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a1f082c1e02efe67e73d9e666d42d2298">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._entryCache</a></div><div class="ttdeci">SortedDictionary&lt; int, SakuraiEntryNode &gt; _entryCache</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00091">SakuraiArchiveNode.cs:91</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a93511a6876fc9751d933767ace4f01d1"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a93511a6876fc9751d933767ace4f01d1">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.GetSize</a></div><div class="ttdeci">int GetSize(int offset)</div><div class="ttdoc">Returns the (assumed) size of the data at the given offset. Use this only when parsing.</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00427">SakuraiArchiveNode.cs:427</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a628f9616816279fbf8b8ec85f09ef384"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a628f9616816279fbf8b8ec85f09ef384">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._dataSize</a></div><div class="ttdeci">int _dataSize</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00018">SakuraiArchiveNode.cs:18</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_ac34815458d3788bfb040e72dd3d0779c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#ac34815458d3788bfb040e72dd3d0779c">BrawlLib.SSBB.Types.SakuraiArchiveHeader._pad1</a></div><div class="ttdeci">int _pad1</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00016">SakuraiArchive.cs:16</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a22541054f10a8d55a2c884fc7a193d6c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a22541054f10a8d55a2c884fc7a193d6c">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.GetTableEntryNode</a></div><div class="ttdeci">virtual TableEntryNode GetTableEntryNode(string name, int index)</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00262">SakuraiArchiveNode.cs:262</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_ac01ad10eeedfa6e122d5f828d04c9e3d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#ac01ad10eeedfa6e122d5f828d04c9e3d">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.ParseExternals</a></div><div class="ttdeci">void ParseExternals(SakuraiArchiveHeader *hdr)</div><div class="ttdoc">Reads external subroutine references</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00189">SakuraiArchiveNode.cs:189</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a263f07d257ec01d6019ce639f4a014a2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a263f07d257ec01d6019ce639f4a014a2">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.Offset</a></div><div class="ttdeci">int Offset(VoidPtr address)</div><div class="ttdoc">Returns the offset of the given address from the base address. Use this only when parsing or writing.</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00397">SakuraiArchiveNode.cs:397</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> <a href="_big_endian_types_8cs_source.html#l00008">BigEndianTypes.cs:8</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a6728069a2af6014e2977369391d0a0b9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6728069a2af6014e2977369391d0a0b9">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._initializing</a></div><div class="ttdeci">bool _initializing</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00021">SakuraiArchiveNode.cs:21</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a130a4cbb3bd3d17869f1667d36714084"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a130a4cbb3bd3d17869f1667d36714084">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._postParseEntries</a></div><div class="ttdeci">List&lt; SakuraiEntryNode &gt; _postParseEntries</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00093">SakuraiArchiveNode.cs:93</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_acc1fc4d2c5f29d2dc017a6f84f909e6e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#acc1fc4d2c5f29d2dc017a6f84f909e6e">BrawlLib.SSBB.Types.SakuraiArchiveHeader.LookupEntries</a></div><div class="ttdeci">bint * LookupEntries</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00021">SakuraiArchive.cs:21</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_ae4a9f4acfc714433b4f99b0383a43eee"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#ae4a9f4acfc714433b4f99b0383a43eee">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._lookupSizes</a></div><div class="ttdeci">SortedList&lt; int, int &gt; _lookupSizes</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00083">SakuraiArchiveNode.cs:83</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_a3b74d55ee92e7368d8b90b0d6b7819bc"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a3b74d55ee92e7368d8b90b0d6b7819bc">BrawlLib.SSBB.Types.SakuraiArchiveHeader.Sections</a></div><div class="ttdeci">sStringEntry * Sections</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00023">SakuraiArchive.cs:23</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html">BrawlLib.SSBB.Types.SakuraiArchiveHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_8cs_source.html#l00007">SakuraiArchive.cs:7</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_aeeef995e331c3b3084f74da46d1ca5a2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#aeeef995e331c3b3084f74da46d1ca5a2">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._changedEntries</a></div><div class="ttdeci">BindingList&lt; SakuraiEntryNode &gt; _changedEntries</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00038">SakuraiArchiveNode.cs:38</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a6828850f9f72f3fedc681114fa902cb3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6828850f9f72f3fedc681114fa902cb3">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._currentlyBuilding</a></div><div class="ttdeci">static SakuraiArchiveNode _currentlyBuilding</div><div class="ttdef"><b>Definition:</b> <a href="_sakurai_archive_node_8cs_source.html#l00364">SakuraiArchiveNode.cs:364</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a7599f10787631079f877ebe6f47ea61d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a7599f10787631079f877ebe6f47ea61d">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.InitData</a></div><div class="ttdeci">virtual void InitData(SakuraiArchiveHeader *hdr)</div><div class="ttdoc">Initializes all variables.</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:119</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_aeac87c5c458ef3f0c2433b6860ebc7ee"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#aeac87c5c458ef3f0c2433b6860ebc7ee">BrawlLib.SSBB.Types.SakuraiArchiveHeader._externalSubRoutineCount</a></div><div class="ttdeci">bint _externalSubRoutineCount</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:15</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_addd0712ee24af45c644f042e1354c687"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#addd0712ee24af45c644f042e1354c687">BrawlLib.SSBB.Types.SakuraiArchiveHeader._sectionCount</a></div><div class="ttdeci">bint _sectionCount</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:14</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_adb50b8ce43f9bb1c14f162422c4fbd0a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#adb50b8ce43f9bb1c14f162422c4fbd0a">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._rebuildNeeded</a></div><div class="ttdeci">bool _rebuildNeeded</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:59</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_aaf8e701bd4e735977431b37bd1fdd404"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#aaf8e701bd4e735977431b37bd1fdd404">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.BaseAddress</a></div><div class="ttdeci">VoidPtr BaseAddress</div><div class="ttdoc">Returns the address after the moveset header that all offsets use as a base. This should only be used...</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:28</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_afce2bffa039f7b253a55886dabb4c3f9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#afce2bffa039f7b253a55886dabb4c3f9">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.GetLookupSizes</a></div><div class="ttdeci">void GetLookupSizes(SakuraiArchiveHeader *hdr)</div><div class="ttdoc">Creates a table of offsets with a corresponding data size at each offset.</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:148</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a3606dc9200cdfba0ca9d095215b4e905"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a3606dc9200cdfba0ca9d095215b4e905">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.Address</a></div><div class="ttdeci">VoidPtr Address(int offset)</div><div class="ttdoc">Returns the address at the given offset from the base address. Use this only when parsing or writing.</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:412</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_ae84563550ab4a05aa5c916f03260d08d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">BrawlLib.SSBB.ResourceNodes.DataSource.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:31</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder_html_a26a88d9921a0aeab34c043348277e563"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder.html#a26a88d9921a0aeab34c043348277e563">BrawlLib.SSBB.SakuraiArchiveBuilder._baseAddress</a></div><div class="ttdeci">VoidPtr _baseAddress</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveBuilder.cs:29</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a77cecf1382b70901931e4fc3cd83050f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a77cecf1382b70901931e4fc3cd83050f">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.PostParse</a></div><div class="ttdeci">virtual void PostParse()</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:271</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a3f1b95a822253a99033e8c3e72818645"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a3f1b95a822253a99033e8c3e72818645">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._referenceList</a></div><div class="ttdeci">BindingList&lt; TableEntryNode &gt; _referenceList</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:67</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_abbe05129c02f60f9cd5c0450ccd52d0c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#abbe05129c02f60f9cd5c0450ccd52d0c">BrawlLib.SSBB.Types.SakuraiArchiveHeader._fileSize</a></div><div class="ttdeci">bint _fileSize</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:11</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a27fdfa7b7f3e7850c7e834d3641b93a8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a27fdfa7b7f3e7850c7e834d3641b93a8">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._builder</a></div><div class="ttdeci">SakuraiArchiveBuilder _builder</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:369</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table_html_a594ce473eaa08e0cd6a660f93ad44479"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1s_string_table.html#a594ce473eaa08e0cd6a660f93ad44479">BrawlLib.SSBB.Types.sStringTable.GetString</a></div><div class="ttdeci">string GetString(int offset)</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:58</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a2e64c67e58cdac796085adddb17eb1fe"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a2e64c67e58cdac796085adddb17eb1fe">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.HandleSpecialSections</a></div><div class="ttdeci">virtual void HandleSpecialSections(List&lt; TableEntryNode &gt; sections)</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:267</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a1f082c1e02efe67e73d9e666d42d2298"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a1f082c1e02efe67e73d9e666d42d2298">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._entryCache</a></div><div class="ttdeci">SortedDictionary&lt; int, SakuraiEntryNode &gt; _entryCache</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:91</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a93511a6876fc9751d933767ace4f01d1"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a93511a6876fc9751d933767ace4f01d1">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.GetSize</a></div><div class="ttdeci">int GetSize(int offset)</div><div class="ttdoc">Returns the (assumed) size of the data at the given offset. Use this only when parsing.</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:427</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a628f9616816279fbf8b8ec85f09ef384"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a628f9616816279fbf8b8ec85f09ef384">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._dataSize</a></div><div class="ttdeci">int _dataSize</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:18</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_ac34815458d3788bfb040e72dd3d0779c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#ac34815458d3788bfb040e72dd3d0779c">BrawlLib.SSBB.Types.SakuraiArchiveHeader._pad1</a></div><div class="ttdeci">int _pad1</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:16</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a22541054f10a8d55a2c884fc7a193d6c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a22541054f10a8d55a2c884fc7a193d6c">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.GetTableEntryNode</a></div><div class="ttdeci">virtual TableEntryNode GetTableEntryNode(string name, int index)</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:262</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_ac01ad10eeedfa6e122d5f828d04c9e3d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#ac01ad10eeedfa6e122d5f828d04c9e3d">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.ParseExternals</a></div><div class="ttdeci">void ParseExternals(SakuraiArchiveHeader *hdr)</div><div class="ttdoc">Reads external subroutine references</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:189</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a263f07d257ec01d6019ce639f4a014a2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a263f07d257ec01d6019ce639f4a014a2">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode.Offset</a></div><div class="ttdeci">int Offset(VoidPtr address)</div><div class="ttdoc">Returns the offset of the given address from the base address. Use this only when parsing or writing.</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:397</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:8</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a6728069a2af6014e2977369391d0a0b9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6728069a2af6014e2977369391d0a0b9">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._initializing</a></div><div class="ttdeci">bool _initializing</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:21</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a130a4cbb3bd3d17869f1667d36714084"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a130a4cbb3bd3d17869f1667d36714084">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._postParseEntries</a></div><div class="ttdeci">List&lt; SakuraiEntryNode &gt; _postParseEntries</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:93</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_acc1fc4d2c5f29d2dc017a6f84f909e6e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#acc1fc4d2c5f29d2dc017a6f84f909e6e">BrawlLib.SSBB.Types.SakuraiArchiveHeader.LookupEntries</a></div><div class="ttdeci">bint * LookupEntries</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:21</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_ae4a9f4acfc714433b4f99b0383a43eee"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#ae4a9f4acfc714433b4f99b0383a43eee">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._lookupSizes</a></div><div class="ttdeci">SortedList&lt; int, int &gt; _lookupSizes</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:83</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html_a3b74d55ee92e7368d8b90b0d6b7819bc"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html#a3b74d55ee92e7368d8b90b0d6b7819bc">BrawlLib.SSBB.Types.SakuraiArchiveHeader.Sections</a></div><div class="ttdeci">sStringEntry * Sections</div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:23</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_sakurai_archive_header.html">BrawlLib.SSBB.Types.SakuraiArchiveHeader</a></div><div class="ttdef"><b>Definition:</b> SakuraiArchive.cs:7</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_aeeef995e331c3b3084f74da46d1ca5a2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#aeeef995e331c3b3084f74da46d1ca5a2">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._changedEntries</a></div><div class="ttdeci">BindingList&lt; SakuraiEntryNode &gt; _changedEntries</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:38</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node_html_a6828850f9f72f3fedc681114fa902cb3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a6828850f9f72f3fedc681114fa902cb3">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode._currentlyBuilding</a></div><div class="ttdeci">static SakuraiArchiveNode _currentlyBuilding</div><div class="ttdef"><b>Definition:</b> SakuraiArchiveNode.cs:364</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

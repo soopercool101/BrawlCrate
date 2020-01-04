@@ -117,18 +117,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a3a5503f8a1c932bfe338e8ac059c0ad6"><td class="memItemLeft" align="right" valign="top">object System.Collections.IEnumerator.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a3a5503f8a1c932bfe338e8ac059c0ad6">Current</a> =&gt; Current</td></tr>
 <tr class="separator:a3a5503f8a1c932bfe338e8ac059c0ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="typeconstraint">
-<dl><dt><b>Type Constraints</b></dt><dd>
-<table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>struct</em></td><td>&#160;</td></tr>
-</table>
-</dd>
-</dl>
-</div>
-
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00007">7</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5c6044292ed7de4db22d6049899fb01e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5c6044292ed7de4db22d6049899fb01e">&#9670;&nbsp;</a></span>MemoryEnumerator()</h2>
 
@@ -162,8 +151,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00014">14</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#ae0690555ea58dcf2e036c68ad4830eb6">_stride</a> = Marshal.SizeOf(typeof(T));</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a871bd06dbdf9ee5f96f03e56a8b8be45">_current</a> = <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a449cb3a9a30d45399821bb2ecaeb9469">_base</a> = (<span class="keywordtype">byte</span>*) address;</div>
@@ -195,8 +182,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00023">23</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -224,8 +209,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00029">29</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a871bd06dbdf9ee5f96f03e56a8b8be45">_current</a> += <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#ae0690555ea58dcf2e036c68ad4830eb6">_stride</a>) &lt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a2efb2a54d94abe6c9b5d491fb9640a6b">_ceil</a>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
@@ -254,8 +237,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00034">34</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a871bd06dbdf9ee5f96f03e56a8b8be45">_current</a> = <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a449cb3a9a30d45399821bb2ecaeb9469">_base</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
@@ -283,8 +264,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00010">10</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2efb2a54d94abe6c9b5d491fb9640a6b"></a>
@@ -306,8 +285,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00012">12</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
 
 </div>
 </div>
@@ -331,8 +308,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00011">11</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
-
 </div>
 </div>
 <a id="ae0690555ea58dcf2e036c68ad4830eb6"></a>
@@ -355,8 +330,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00009">9</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
-
 </div>
 </div>
 <a id="a9087a6ca58279e50154d5c45c5811305"></a>
@@ -370,8 +343,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00021">21</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
 
 </div>
 </div>
@@ -395,18 +366,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_memory_list_8cs_source.html#l00027">27</a> of file <a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/<a class="el" href="_memory_list_8cs_source.html">MemoryList.cs</a></li>
+<li>BrawlLib/Internal/MemoryList.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_a871bd06dbdf9ee5f96f03e56a8b8be45"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a871bd06dbdf9ee5f96f03e56a8b8be45">BrawlLib.Internal.MemoryEnumerator._current</a></div><div class="ttdeci">byte * _current</div><div class="ttdef"><b>Definition:</b> <a href="_memory_list_8cs_source.html#l00011">MemoryList.cs:11</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_ae0690555ea58dcf2e036c68ad4830eb6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#ae0690555ea58dcf2e036c68ad4830eb6">BrawlLib.Internal.MemoryEnumerator._stride</a></div><div class="ttdeci">readonly int _stride</div><div class="ttdef"><b>Definition:</b> <a href="_memory_list_8cs_source.html#l00009">MemoryList.cs:9</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_a449cb3a9a30d45399821bb2ecaeb9469"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a449cb3a9a30d45399821bb2ecaeb9469">BrawlLib.Internal.MemoryEnumerator._base</a></div><div class="ttdeci">readonly byte * _base</div><div class="ttdef"><b>Definition:</b> <a href="_memory_list_8cs_source.html#l00010">MemoryList.cs:10</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_a2efb2a54d94abe6c9b5d491fb9640a6b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a2efb2a54d94abe6c9b5d491fb9640a6b">BrawlLib.Internal.MemoryEnumerator._ceil</a></div><div class="ttdeci">readonly byte * _ceil</div><div class="ttdef"><b>Definition:</b> <a href="_memory_list_8cs_source.html#l00012">MemoryList.cs:12</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_a871bd06dbdf9ee5f96f03e56a8b8be45"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a871bd06dbdf9ee5f96f03e56a8b8be45">BrawlLib.Internal.MemoryEnumerator._current</a></div><div class="ttdeci">byte * _current</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:11</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_ae0690555ea58dcf2e036c68ad4830eb6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#ae0690555ea58dcf2e036c68ad4830eb6">BrawlLib.Internal.MemoryEnumerator._stride</a></div><div class="ttdeci">readonly int _stride</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_a449cb3a9a30d45399821bb2ecaeb9469"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a449cb3a9a30d45399821bb2ecaeb9469">BrawlLib.Internal.MemoryEnumerator._base</a></div><div class="ttdeci">readonly byte * _base</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:10</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_enumerator_html_a2efb2a54d94abe6c9b5d491fb9640a6b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a2efb2a54d94abe6c9b5d491fb9640a6b">BrawlLib.Internal.MemoryEnumerator._ceil</a></div><div class="ttdeci">readonly byte * _ceil</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:12</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -99,10 +99,7 @@ Package Functions</h2></td></tr>
 <tr class="memitem:ae7acffbb88898c46f333e3df082400a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#ae7acffbb88898c46f333e3df082400a8">WriteExpansion</a> (BinaryWriter writer)</td></tr>
 <tr class="separator:ae7acffbb88898c46f333e3df082400a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01779">1779</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1875996ad0d3ab56b8f535402b250e50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1875996ad0d3ab56b8f535402b250e50">&#9670;&nbsp;</a></span>Read()</h2>
 
@@ -136,8 +133,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01786">1786</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01787"></a><span class="lineno"> 1787</span>&#160;        {</div>
 <div class="line"><a name="l01788"></a><span class="lineno"> 1788</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#af9b7931d84be34097f071afa183d7550">_skinName</a> = PMDModel.GetString(reader.ReadBytes(20));</div>
 <div class="line"><a name="l01789"></a><span class="lineno"> 1789</span>&#160;            uint skin_vert_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);</div>
@@ -177,8 +172,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01801">1801</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01802"></a><span class="lineno"> 1802</span>&#160;        {</div>
 <div class="line"><a name="l01803"></a><span class="lineno"> 1803</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#a8f9c19077a0f39f2ad3e926cc8fb3cc0">_skinNameEnglish</a> = PMDModel.GetString(reader.ReadBytes(20), <span class="keyword">false</span>);</div>
 <div class="line"><a name="l01804"></a><span class="lineno"> 1804</span>&#160;        }</div>
@@ -218,8 +211,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01806">1806</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01807"></a><span class="lineno"> 1807</span>&#160;        {</div>
 <div class="line"><a name="l01808"></a><span class="lineno"> 1808</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#af9b7931d84be34097f071afa183d7550">_skinName</a>, 20));</div>
 <div class="line"><a name="l01809"></a><span class="lineno"> 1809</span>&#160;            writer.Write((uint) <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#a7430a459ac158cb95899038e62ae8559">_skinVertDatas</a>.Length);</div>
@@ -255,8 +246,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01817">1817</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01818"></a><span class="lineno"> 1818</span>&#160;        {</div>
 <div class="line"><a name="l01819"></a><span class="lineno"> 1819</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#a8f9c19077a0f39f2ad3e926cc8fb3cc0">_skinNameEnglish</a>, 20));</div>
 <div class="line"><a name="l01820"></a><span class="lineno"> 1820</span>&#160;        }</div>
@@ -276,8 +265,6 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01781">1781</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <a id="a8f9c19077a0f39f2ad3e926cc8fb3cc0"></a>
@@ -291,8 +278,6 @@ Package Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01784">1784</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 
 </div>
 </div>
@@ -308,8 +293,6 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01782">1782</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <a id="a7430a459ac158cb95899038e62ae8559"></a>
@@ -324,20 +307,18 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01783">1783</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Modeling/<a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a></li>
+<li>BrawlLib/Modeling/PMDModel.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data_html_afb49e5e6a7b134cf6f4d667dedec6854"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#afb49e5e6a7b134cf6f4d667dedec6854">BrawlLib.Modeling.ModelSkinVertexData.Write</a></div><div class="ttdeci">void Write(BinaryWriter writer, float CoordZ)</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01767">PMDModel.cs:1767</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_aebc4d164b9599f83d76e2fec9ac4c342"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#aebc4d164b9599f83d76e2fec9ac4c342">BrawlLib.Modeling.ModelSkin._skinType</a></div><div class="ttdeci">byte _skinType</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01782">PMDModel.cs:1782</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_a7430a459ac158cb95899038e62ae8559"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#a7430a459ac158cb95899038e62ae8559">BrawlLib.Modeling.ModelSkin._skinVertDatas</a></div><div class="ttdeci">ModelSkinVertexData[] _skinVertDatas</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01783">PMDModel.cs:1783</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data_html_ad792c35b3aecb022c2960f9bf1d716c9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#ad792c35b3aecb022c2960f9bf1d716c9">BrawlLib.Modeling.ModelSkinVertexData.Read</a></div><div class="ttdeci">void Read(BinaryReader reader, float CoordZ)</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01756">PMDModel.cs:1756</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_a8f9c19077a0f39f2ad3e926cc8fb3cc0"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#a8f9c19077a0f39f2ad3e926cc8fb3cc0">BrawlLib.Modeling.ModelSkin._skinNameEnglish</a></div><div class="ttdeci">string _skinNameEnglish</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01784">PMDModel.cs:1784</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_af9b7931d84be34097f071afa183d7550"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#af9b7931d84be34097f071afa183d7550">BrawlLib.Modeling.ModelSkin._skinName</a></div><div class="ttdeci">string _skinName</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01781">PMDModel.cs:1781</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data_html_afb49e5e6a7b134cf6f4d667dedec6854"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#afb49e5e6a7b134cf6f4d667dedec6854">BrawlLib.Modeling.ModelSkinVertexData.Write</a></div><div class="ttdeci">void Write(BinaryWriter writer, float CoordZ)</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1767</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_aebc4d164b9599f83d76e2fec9ac4c342"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#aebc4d164b9599f83d76e2fec9ac4c342">BrawlLib.Modeling.ModelSkin._skinType</a></div><div class="ttdeci">byte _skinType</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1782</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_a7430a459ac158cb95899038e62ae8559"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#a7430a459ac158cb95899038e62ae8559">BrawlLib.Modeling.ModelSkin._skinVertDatas</a></div><div class="ttdeci">ModelSkinVertexData[] _skinVertDatas</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1783</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data_html_ad792c35b3aecb022c2960f9bf1d716c9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#ad792c35b3aecb022c2960f9bf1d716c9">BrawlLib.Modeling.ModelSkinVertexData.Read</a></div><div class="ttdeci">void Read(BinaryReader reader, float CoordZ)</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1756</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_a8f9c19077a0f39f2ad3e926cc8fb3cc0"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#a8f9c19077a0f39f2ad3e926cc8fb3cc0">BrawlLib.Modeling.ModelSkin._skinNameEnglish</a></div><div class="ttdeci">string _skinNameEnglish</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1784</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_html_af9b7931d84be34097f071afa183d7550"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin.html#af9b7931d84be34097f071afa183d7550">BrawlLib.Modeling.ModelSkin._skinName</a></div><div class="ttdeci">string _skinName</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1781</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

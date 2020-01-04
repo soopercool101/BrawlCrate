@@ -122,10 +122,7 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memdesc:aad34d3a1f74b921cf285fdf40cc9ac78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for Blur.  <a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#aad34d3a1f74b921cf285fdf40cc9ac78">More...</a><br /></td></tr>
 <tr class="separator:aad34d3a1f74b921cf285fdf40cc9ac78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00008">8</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a80612db5809c3de960cff9a758b51969"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a80612db5809c3de960cff9a758b51969">&#9670;&nbsp;</a></span>AlphaSwap()</h2>
 
@@ -151,8 +148,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Swaps the alpha and value channels of a monochrome image. Transparent areas become black, and black areas become transparent. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00013">13</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls.html#a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295">Color</a> c;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a6256fa63e93fdd602f953eb076c62e31">IsSolidColor</a>(source, out c) &amp;&amp; c.A == 0)</div>
@@ -210,8 +205,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00036">36</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            source = <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a17e0b789950461371350cdbdffb5fc35">Resize</a>(source, mask.Size);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            Bitmap ret = <span class="keyword">new</span> Bitmap(source.Width, source.Height);</div>
@@ -266,8 +259,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new image, 2 pixels wider and taller than the original. Each pixel's alpha value is the largest alpha value among adjacent pixels on the original image. The color of each pixel will be the color given in the second argument. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00202">202</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            Bitmap <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a> = <span class="keyword">new</span> Bitmap(orig.Width + 2, orig.Height + 2);</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = -1; y &lt; orig.Height + 1; y++)</div>
@@ -331,8 +322,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a new bitmap with the original bitmap centered on top of the result of the Blur function. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00247">247</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            Bitmap both = <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a3cd803d090b024cf77623227323e4173">Blur</a>(fg, blurColor);</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            Graphics g = Graphics.FromImage(both);</div>
@@ -381,8 +370,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00093">93</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            Bitmap <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a> = <span class="keyword">new</span> Bitmap(orig.Width, orig.Height);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            Graphics g = Graphics.FromImage(b);</div>
@@ -430,8 +417,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Combines two images. The size of the second (foreground) image will be used for the final image. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00057">57</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordtype">int</span> w = fg.Width, h = fg.Height;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            Bitmap both = <span class="keyword">new</span> Bitmap(w, h);</div>
@@ -478,8 +463,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Counts the number of colors in a bitmap, up through the given maximum. If the maximum is reached, the method will return early. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00177">177</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordtype">int</span> count = 0;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            HashSet&lt;Color&gt; colors = <span class="keyword">new</span> HashSet&lt;Color&gt;();</div>
@@ -526,8 +509,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if an image has any transparency. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00127">127</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        {</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height; y++)</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            {</div>
@@ -570,8 +551,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if an image has varying RGB values among pixels that are partially or fully opaque. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00146">146</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        {</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordtype">int</span>? found = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height; y++)</div>
@@ -624,8 +603,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00255">255</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordtype">int</span> w = newBitmap.Width;</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordtype">int</span> h = newBitmap.Height;</div>
@@ -662,8 +639,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inverts the colors in a bitmap. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00070">70</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            Bitmap ret = <span class="keyword">new</span> Bitmap(source.Width, source.Height);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; ret.Width; x++)</div>
@@ -715,8 +690,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if the given bitmap is a single color. If the result is true, its color will be stored in the second parameter. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00107">107</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            c = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.GetPixel(0, 0);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height; y++)</div>
@@ -770,8 +743,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Makes a scaled version of an image using <a class="el" href="namespace_brawl_lib.html">BrawlLib</a>'s texture converter. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00088">88</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> orig.Resize(resizeTo.Width, resizeTo.Height);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
@@ -819,8 +790,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Used for Blur. </p>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_utilities_8cs_source.html#l00232">232</a> of file <a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        {</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">if</span> (x &lt; 0 || x &gt;= <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.Width || y &lt; 0 || y &gt;= <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.Height)</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            {</div>
@@ -835,16 +804,16 @@ Static Private Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/BrawlManagerLib/<a class="el" href="_bitmap_utilities_8cs_source.html">BitmapUtilities.cs</a></li>
+<li>BrawlLib/BrawlManagerLib/BitmapUtilities.cs</li>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_a3cd803d090b024cf77623227323e4173"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a3cd803d090b024cf77623227323e4173">BrawlLib.BrawlManagerLib.BitmapUtilities.Blur</a></div><div class="ttdeci">static Bitmap Blur(Bitmap orig, Color blurColor)</div><div class="ttdoc">Creates a new image, 2 pixels wider and taller than the original. Each pixel's alpha value is the lar...</div><div class="ttdef"><b>Definition:</b> <a href="_bitmap_utilities_8cs_source.html#l00202">BitmapUtilities.cs:202</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_a6256fa63e93fdd602f953eb076c62e31"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a6256fa63e93fdd602f953eb076c62e31">BrawlLib.BrawlManagerLib.BitmapUtilities.IsSolidColor</a></div><div class="ttdeci">static bool IsSolidColor(Bitmap bmp, out Color c)</div><div class="ttdoc">Checks if the given bitmap is a single color. If the result is true, its color will be stored in the ...</div><div class="ttdef"><b>Definition:</b> <a href="_bitmap_utilities_8cs_source.html#l00107">BitmapUtilities.cs:107</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_a3cd803d090b024cf77623227323e4173"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a3cd803d090b024cf77623227323e4173">BrawlLib.BrawlManagerLib.BitmapUtilities.Blur</a></div><div class="ttdeci">static Bitmap Blur(Bitmap orig, Color blurColor)</div><div class="ttdoc">Creates a new image, 2 pixels wider and taller than the original. Each pixel's alpha value is the lar...</div><div class="ttdef"><b>Definition:</b> BitmapUtilities.cs:202</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_a6256fa63e93fdd602f953eb076c62e31"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a6256fa63e93fdd602f953eb076c62e31">BrawlLib.BrawlManagerLib.BitmapUtilities.IsSolidColor</a></div><div class="ttdeci">static bool IsSolidColor(Bitmap bmp, out Color c)</div><div class="ttdoc">Checks if the given bitmap is a single color. If the result is true, its color will be stored in the ...</div><div class="ttdef"><b>Definition:</b> BitmapUtilities.cs:107</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_html_a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">BrawlLib.Internal.ImageType.bmp</a></div><div class="ttdeci">@ bmp</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_html_a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls.html#a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295">BrawlLib.Internal.Windows.Controls.ValType.Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_aad34d3a1f74b921cf285fdf40cc9ac78"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#aad34d3a1f74b921cf285fdf40cc9ac78">BrawlLib.BrawlManagerLib.BitmapUtilities.TryGetAlpha</a></div><div class="ttdeci">static ? byte TryGetAlpha(Bitmap b, int x, int y)</div><div class="ttdoc">Used for Blur.</div><div class="ttdef"><b>Definition:</b> <a href="_bitmap_utilities_8cs_source.html#l00232">BitmapUtilities.cs:232</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_a17e0b789950461371350cdbdffb5fc35"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a17e0b789950461371350cdbdffb5fc35">BrawlLib.BrawlManagerLib.BitmapUtilities.Resize</a></div><div class="ttdeci">static Bitmap Resize(Bitmap orig, Size resizeTo)</div><div class="ttdoc">Makes a scaled version of an image using BrawlLib's texture converter.</div><div class="ttdef"><b>Definition:</b> <a href="_bitmap_utilities_8cs_source.html#l00088">BitmapUtilities.cs:88</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_aad34d3a1f74b921cf285fdf40cc9ac78"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#aad34d3a1f74b921cf285fdf40cc9ac78">BrawlLib.BrawlManagerLib.BitmapUtilities.TryGetAlpha</a></div><div class="ttdeci">static ? byte TryGetAlpha(Bitmap b, int x, int y)</div><div class="ttdoc">Used for Blur.</div><div class="ttdef"><b>Definition:</b> BitmapUtilities.cs:232</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities_html_a17e0b789950461371350cdbdffb5fc35"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a17e0b789950461371350cdbdffb5fc35">BrawlLib.BrawlManagerLib.BitmapUtilities.Resize</a></div><div class="ttdeci">static Bitmap Resize(Bitmap orig, Size resizeTo)</div><div class="ttdoc">Makes a scaled version of an image using BrawlLib's texture converter.</div><div class="ttdef"><b>Definition:</b> BitmapUtilities.cs:88</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

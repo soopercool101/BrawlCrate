@@ -184,10 +184,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1adf811922ab6502d7caab24a80241ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a1adf811922ab6502d7caab24a80241ff">_loopEnd</a></td></tr>
 <tr class="separator:a1adf811922ab6502d7caab24a80241ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00010">10</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae729904721dde0c05ec781e07396faa7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae729904721dde0c05ec781e07396faa7">&#9670;&nbsp;</a></span>PCMStream() <span class="overload">[1/4]</span></h2>
 
@@ -211,8 +208,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00057">57</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a5224564aea644c7b1526c0497ba84b19">_allocatedHGlobal</a> = Marshal.AllocHGlobal(wavData.Length);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            Marshal.Copy(wavData, 0, <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a5224564aea644c7b1526c0497ba84b19">_allocatedHGlobal</a>, wavData.Length);</div>
@@ -292,8 +287,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00084">84</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a76c6c05c7e096565ad3c6fbdf1f2d154">_sourceMap</a> = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
@@ -341,8 +334,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00097">97</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ac6d6b2e6ba3c93192c717e66d279a505">_frequency</a> = pWAVE-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#ab8eaf87248740684896330f10cef63d6">_sampleRate</a>;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af7718829a18cbf223ee8b59e7d4a844b">_numSamples</a> = pWAVE-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a5d821177ef192b8c95886e7f9b438a6a">NumSamples</a>;</div>
@@ -409,8 +400,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00133">133</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html">StrmDataInfo</a>* info = header-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#a8c5d7cf50a3da8ccf685182954f43d21">HEADData</a>-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html#aa8485084e6241cfc15558318e8326f5f">Part1</a>;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> (info-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a7588601e65bb64027386d4353a5ace0b">_format</a>.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a796229699d223efd9a8b48886dceec19">_channels</a> &lt; startChannel + channels)</div>
@@ -513,8 +502,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00236">236</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        {</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a76c6c05c7e096565ad3c6fbdf1f2d154">_sourceMap</a> != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            {</div>
@@ -566,8 +553,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00117">117</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html">HEADHeader</a>* pHeader = pRSTM-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#a8c5d7cf50a3da8ccf685182954f43d21">HEADData</a>;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html">StrmDataInfo</a>* part1 = pHeader-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html#aa8485084e6241cfc15558318e8326f5f">Part1</a>;</div>
@@ -630,8 +615,6 @@ Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The actual number of samples read (per channel).</dd></dl>
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_internal_1_1_audio_1_1_i_audio_stream.html#aa1f9d6fc8e6491e9cef7b6e8c4c27480">BrawlLib.Internal.Audio.IAudioStream</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00211">211</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        {</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordtype">short</span>* sPtr = <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a2ec9188cddb993d847a15167f68be49b">_source</a> + <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a22eea4399afbf4b95072e82075b41ce3">_samplePos</a> * <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a3915f7be7711acb4387c7ce58fa41a31">_numChannels</a>;</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordtype">short</span>* dPtr = (<span class="keywordtype">short</span>*) destAddr;</div>
@@ -677,8 +660,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_internal_1_1_audio_1_1_i_audio_stream.html#ac8c61e1f7c1f43da0d65d6dfabe06dee">BrawlLib.Internal.Audio.IAudioStream</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00231">231</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ad445d478719c194f938a08f07178a237">SamplePosition</a> = <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a96a2ebcd96031a6a79c0d582678cb30f">_loopStart</a>;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
@@ -706,8 +687,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00012">12</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="ac358b2cf8d37810cf902b9c9d99c34ed"></a>
@@ -729,8 +708,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00017">17</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -754,8 +731,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00020">20</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="af041e9e134984f9fdf07c89b1492a8a6"></a>
@@ -777,8 +752,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00023">23</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -802,8 +775,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00025">25</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="a96a2ebcd96031a6a79c0d582678cb30f"></a>
@@ -825,8 +796,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00024">24</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -850,8 +819,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00019">19</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="af7718829a18cbf223ee8b59e7d4a844b"></a>
@@ -873,8 +840,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00018">18</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -898,8 +863,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00021">21</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2ec9188cddb993d847a15167f68be49b"></a>
@@ -921,8 +884,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00015">15</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -946,8 +907,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00013">13</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="ab68e2550f8d3caa1fa28a3df88fb2c57"></a>
@@ -961,8 +920,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00028">28</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -978,8 +935,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00030">30</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="aa8500b1f50b3383148d1266fb56c6213"></a>
@@ -993,8 +948,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00027">27</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -1010,8 +963,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00031">31</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
-
 </div>
 </div>
 <a id="af123ded533c0f372d4b6f239aeb866b4"></a>
@@ -1025,8 +976,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00029">29</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 
 </div>
 </div>
@@ -1050,8 +999,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00034">34</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af041e9e134984f9fdf07c89b1492a8a6">_looped</a>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af041e9e134984f9fdf07c89b1492a8a6">_looped</a> = value;</div>
@@ -1078,8 +1025,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00046">46</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a1adf811922ab6502d7caab24a80241ff">_loopEnd</a>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a1adf811922ab6502d7caab24a80241ff">_loopEnd</a> = value;</div>
@@ -1106,8 +1051,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00040">40</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a96a2ebcd96031a6a79c0d582678cb30f">_loopStart</a>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a96a2ebcd96031a6a79c0d582678cb30f">_loopStart</a> = value;</div>
@@ -1134,8 +1077,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_c_m_stream_8cs_source.html#l00052">52</a> of file <a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a22eea4399afbf4b95072e82075b41ce3">_samplePos</a>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a22eea4399afbf4b95072e82075b41ce3">_samplePos</a> = Math.Max(Math.Min(value, <a class="code" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af7718829a18cbf223ee8b59e7d4a844b">_numSamples</a>), 0);</div>
@@ -1144,43 +1085,43 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/Audio/<a class="el" href="_p_c_m_stream_8cs_source.html">PCMStream.cs</a></li>
+<li>BrawlLib/Internal/Audio/PCMStream.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a473dc8ea856d510d1eaf4c031e1e17e1"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a473dc8ea856d510d1eaf4c031e1e17e1">BrawlLib.SSBB.Types.Audio.StrmDataInfo._numSamples</a></div><div class="ttdeci">bint _numSamples</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00182">RSTM.cs:182</a></div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a473dc8ea856d510d1eaf4c031e1e17e1"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a473dc8ea856d510d1eaf4c031e1e17e1">BrawlLib.SSBB.Types.Audio.StrmDataInfo._numSamples</a></div><div class="ttdeci">bint _numSamples</div><div class="ttdef"><b>Definition:</b> RSTM.cs:182</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ae8ece53e34a2e446cdb98a3f0a244133"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ae8ece53e34a2e446cdb98a3f0a244133">BrawlLib.Internal.IO.FileMap.Dispose</a></div><div class="ttdeci">virtual void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00033">FileMap.cs:33</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_af7718829a18cbf223ee8b59e7d4a844b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af7718829a18cbf223ee8b59e7d4a844b">BrawlLib.Internal.Audio.PCMStream._numSamples</a></div><div class="ttdeci">readonly int _numSamples</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00018">PCMStream.cs:18</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a47641d4d44953d60bef5775d1ae1864c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a47641d4d44953d60bef5775d1ae1864c">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._encoding</a></div><div class="ttdeci">byte _encoding</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00185">RWAV.cs:185</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a22eea4399afbf4b95072e82075b41ce3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a22eea4399afbf4b95072e82075b41ce3">BrawlLib.Internal.Audio.PCMStream._samplePos</a></div><div class="ttdeci">int _samplePos</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00021">PCMStream.cs:21</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a37e7b7e7ecee4c3e594c2dccbb7e6425"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a37e7b7e7ecee4c3e594c2dccbb7e6425">BrawlLib.SSBB.Types.Audio.StrmDataInfo._sampleRate</a></div><div class="ttdeci">bushort _sampleRate</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00179">RSTM.cs:179</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a25d8cb7d716b32400402016f114ec909"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a25d8cb7d716b32400402016f114ec909">BrawlLib.SSBB.Types.Audio.StrmDataInfo._numBlocks</a></div><div class="ttdeci">bint _numBlocks</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00184">RSTM.cs:184</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html">BrawlLib.SSBB.Types.Audio.StrmDataInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00176">RSTM.cs:176</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a2a23b7c998b16ac6260762b4b64b37a7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">BrawlLib.SSBB.Types.Audio.WaveInfo._format</a></div><div class="ttdeci">AudioFormatInfo _format</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00088">RWAV.cs:88</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ac6d6b2e6ba3c93192c717e66d279a505"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ac6d6b2e6ba3c93192c717e66d279a505">BrawlLib.Internal.Audio.PCMStream._frequency</a></div><div class="ttdeci">readonly int _frequency</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00020">PCMStream.cs:20</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a96a2ebcd96031a6a79c0d582678cb30f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a96a2ebcd96031a6a79c0d582678cb30f">BrawlLib.Internal.Audio.PCMStream._loopStart</a></div><div class="ttdeci">int _loopStart</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00024">PCMStream.cs:24</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a8e30f91d5163d6bc75a6e4070fcc7aed"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a8e30f91d5163d6bc75a6e4070fcc7aed">BrawlLib.SSBB.Types.Audio.StrmDataInfo._lastBlockSize</a></div><div class="ttdeci">bint _lastBlockSize</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00187">RSTM.cs:187</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header_html_aa8485084e6241cfc15558318e8326f5f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html#aa8485084e6241cfc15558318e8326f5f">BrawlLib.SSBB.Types.Audio.HEADHeader.Part1</a></div><div class="ttdeci">StrmDataInfo * Part1</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00148">RSTM.cs:148</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a796229699d223efd9a8b48886dceec19"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a796229699d223efd9a8b48886dceec19">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._channels</a></div><div class="ttdeci">byte _channels</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00187">RWAV.cs:187</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ae729904721dde0c05ec781e07396faa7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ae729904721dde0c05ec781e07396faa7">BrawlLib.Internal.Audio.PCMStream.PCMStream</a></div><div class="ttdeci">PCMStream(byte[] wavData)</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00057">PCMStream.cs:57</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a8fea439877bbea174ccf8840aaa65bb7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a8fea439877bbea174ccf8840aaa65bb7">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._looped</a></div><div class="ttdeci">byte _looped</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00186">RWAV.cs:186</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ac358b2cf8d37810cf902b9c9d99c34ed"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ac358b2cf8d37810cf902b9c9d99c34ed">BrawlLib.Internal.Audio.PCMStream._bps</a></div><div class="ttdeci">readonly int _bps</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00017">PCMStream.cs:17</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a3744045948a6c20089c69b19290e9190"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a3744045948a6c20089c69b19290e9190">BrawlLib.SSBB.Types.Audio.WaveInfo.LoopSample</a></div><div class="ttdeci">int LoopSample</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00118">RWAV.cs:118</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html">BrawlLib.SSBB.Types.Audio.HEADHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00066">RSTM.cs:66</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a831d4fa95d080b50ca35b8bcc0f26ad7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a831d4fa95d080b50ca35b8bcc0f26ad7">BrawlLib.SSBB.Types.Audio.StrmDataInfo._blockSize</a></div><div class="ttdeci">bint _blockSize</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00185">RSTM.cs:185</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a7588601e65bb64027386d4353a5ace0b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a7588601e65bb64027386d4353a5ace0b">BrawlLib.SSBB.Types.Audio.StrmDataInfo._format</a></div><div class="ttdeci">AudioFormatInfo _format</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00178">RSTM.cs:178</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a138c844c61d18b967419ae72cfa1bd6d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a138c844c61d18b967419ae72cfa1bd6d">BrawlLib.SSBB.Types.Audio.StrmDataInfo._lastBlockTotal</a></div><div class="ttdeci">bint _lastBlockTotal</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00189">RSTM.cs:189</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_ab8eaf87248740684896330f10cef63d6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#ab8eaf87248740684896330f10cef63d6">BrawlLib.SSBB.Types.Audio.WaveInfo._sampleRate</a></div><div class="ttdeci">bushort _sampleRate</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00090">RWAV.cs:90</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a5d821177ef192b8c95886e7f9b438a6a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a5d821177ef192b8c95886e7f9b438a6a">BrawlLib.SSBB.Types.Audio.WaveInfo.NumSamples</a></div><div class="ttdeci">int NumSamples</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00112">RWAV.cs:112</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header_html_a8c5d7cf50a3da8ccf685182954f43d21"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#a8c5d7cf50a3da8ccf685182954f43d21">BrawlLib.SSBB.Types.Audio.RSTMHeader.HEADData</a></div><div class="ttdeci">HEADHeader * HEADData</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00060">RSTM.cs:60</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a3915f7be7711acb4387c7ce58fa41a31"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a3915f7be7711acb4387c7ce58fa41a31">BrawlLib.Internal.Audio.PCMStream._numChannels</a></div><div class="ttdeci">readonly int _numChannels</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00019">PCMStream.cs:19</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ad445d478719c194f938a08f07178a237"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ad445d478719c194f938a08f07178a237">BrawlLib.Internal.Audio.PCMStream.SamplePosition</a></div><div class="ttdeci">int SamplePosition</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00052">PCMStream.cs:52</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a5224564aea644c7b1526c0497ba84b19"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a5224564aea644c7b1526c0497ba84b19">BrawlLib.Internal.Audio.PCMStream._allocatedHGlobal</a></div><div class="ttdeci">IntPtr _allocatedHGlobal</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00012">PCMStream.cs:12</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a1adf811922ab6502d7caab24a80241ff"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a1adf811922ab6502d7caab24a80241ff">BrawlLib.Internal.Audio.PCMStream._loopEnd</a></div><div class="ttdeci">int _loopEnd</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00025">PCMStream.cs:25</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a76c6c05c7e096565ad3c6fbdf1f2d154"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a76c6c05c7e096565ad3c6fbdf1f2d154">BrawlLib.Internal.Audio.PCMStream._sourceMap</a></div><div class="ttdeci">FileMap _sourceMap</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00013">PCMStream.cs:13</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a2ec9188cddb993d847a15167f68be49b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a2ec9188cddb993d847a15167f68be49b">BrawlLib.Internal.Audio.PCMStream._source</a></div><div class="ttdeci">readonly short * _source</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00015">PCMStream.cs:15</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_af041e9e134984f9fdf07c89b1492a8a6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af041e9e134984f9fdf07c89b1492a8a6">BrawlLib.Internal.Audio.PCMStream._looped</a></div><div class="ttdeci">bool _looped</div><div class="ttdef"><b>Definition:</b> <a href="_p_c_m_stream_8cs_source.html#l00023">PCMStream.cs:23</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a019e43fc346b9b858ded51721cb8ee2b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a019e43fc346b9b858ded51721cb8ee2b">BrawlLib.SSBB.Types.Audio.StrmDataInfo._loopStartSample</a></div><div class="ttdeci">bint _loopStartSample</div><div class="ttdef"><b>Definition:</b> <a href="_r_s_t_m_8cs_source.html#l00181">RSTM.cs:181</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ae8ece53e34a2e446cdb98a3f0a244133"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ae8ece53e34a2e446cdb98a3f0a244133">BrawlLib.Internal.IO.FileMap.Dispose</a></div><div class="ttdeci">virtual void Dispose()</div><div class="ttdef"><b>Definition:</b> FileMap.cs:33</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_af7718829a18cbf223ee8b59e7d4a844b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af7718829a18cbf223ee8b59e7d4a844b">BrawlLib.Internal.Audio.PCMStream._numSamples</a></div><div class="ttdeci">readonly int _numSamples</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:18</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a47641d4d44953d60bef5775d1ae1864c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a47641d4d44953d60bef5775d1ae1864c">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._encoding</a></div><div class="ttdeci">byte _encoding</div><div class="ttdef"><b>Definition:</b> RWAV.cs:185</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a22eea4399afbf4b95072e82075b41ce3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a22eea4399afbf4b95072e82075b41ce3">BrawlLib.Internal.Audio.PCMStream._samplePos</a></div><div class="ttdeci">int _samplePos</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:21</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a37e7b7e7ecee4c3e594c2dccbb7e6425"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a37e7b7e7ecee4c3e594c2dccbb7e6425">BrawlLib.SSBB.Types.Audio.StrmDataInfo._sampleRate</a></div><div class="ttdeci">bushort _sampleRate</div><div class="ttdef"><b>Definition:</b> RSTM.cs:179</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a25d8cb7d716b32400402016f114ec909"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a25d8cb7d716b32400402016f114ec909">BrawlLib.SSBB.Types.Audio.StrmDataInfo._numBlocks</a></div><div class="ttdeci">bint _numBlocks</div><div class="ttdef"><b>Definition:</b> RSTM.cs:184</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html">BrawlLib.SSBB.Types.Audio.StrmDataInfo</a></div><div class="ttdef"><b>Definition:</b> RSTM.cs:176</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a2a23b7c998b16ac6260762b4b64b37a7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">BrawlLib.SSBB.Types.Audio.WaveInfo._format</a></div><div class="ttdeci">AudioFormatInfo _format</div><div class="ttdef"><b>Definition:</b> RWAV.cs:88</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ac6d6b2e6ba3c93192c717e66d279a505"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ac6d6b2e6ba3c93192c717e66d279a505">BrawlLib.Internal.Audio.PCMStream._frequency</a></div><div class="ttdeci">readonly int _frequency</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:20</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a96a2ebcd96031a6a79c0d582678cb30f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a96a2ebcd96031a6a79c0d582678cb30f">BrawlLib.Internal.Audio.PCMStream._loopStart</a></div><div class="ttdeci">int _loopStart</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:24</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a8e30f91d5163d6bc75a6e4070fcc7aed"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a8e30f91d5163d6bc75a6e4070fcc7aed">BrawlLib.SSBB.Types.Audio.StrmDataInfo._lastBlockSize</a></div><div class="ttdeci">bint _lastBlockSize</div><div class="ttdef"><b>Definition:</b> RSTM.cs:187</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header_html_aa8485084e6241cfc15558318e8326f5f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html#aa8485084e6241cfc15558318e8326f5f">BrawlLib.SSBB.Types.Audio.HEADHeader.Part1</a></div><div class="ttdeci">StrmDataInfo * Part1</div><div class="ttdef"><b>Definition:</b> RSTM.cs:148</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a796229699d223efd9a8b48886dceec19"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a796229699d223efd9a8b48886dceec19">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._channels</a></div><div class="ttdeci">byte _channels</div><div class="ttdef"><b>Definition:</b> RWAV.cs:187</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ae729904721dde0c05ec781e07396faa7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ae729904721dde0c05ec781e07396faa7">BrawlLib.Internal.Audio.PCMStream.PCMStream</a></div><div class="ttdeci">PCMStream(byte[] wavData)</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:57</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a8fea439877bbea174ccf8840aaa65bb7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a8fea439877bbea174ccf8840aaa65bb7">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._looped</a></div><div class="ttdeci">byte _looped</div><div class="ttdef"><b>Definition:</b> RWAV.cs:186</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ac358b2cf8d37810cf902b9c9d99c34ed"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ac358b2cf8d37810cf902b9c9d99c34ed">BrawlLib.Internal.Audio.PCMStream._bps</a></div><div class="ttdeci">readonly int _bps</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:17</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a3744045948a6c20089c69b19290e9190"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a3744045948a6c20089c69b19290e9190">BrawlLib.SSBB.Types.Audio.WaveInfo.LoopSample</a></div><div class="ttdeci">int LoopSample</div><div class="ttdef"><b>Definition:</b> RWAV.cs:118</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html">BrawlLib.SSBB.Types.Audio.HEADHeader</a></div><div class="ttdef"><b>Definition:</b> RSTM.cs:66</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a831d4fa95d080b50ca35b8bcc0f26ad7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a831d4fa95d080b50ca35b8bcc0f26ad7">BrawlLib.SSBB.Types.Audio.StrmDataInfo._blockSize</a></div><div class="ttdeci">bint _blockSize</div><div class="ttdef"><b>Definition:</b> RSTM.cs:185</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a7588601e65bb64027386d4353a5ace0b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a7588601e65bb64027386d4353a5ace0b">BrawlLib.SSBB.Types.Audio.StrmDataInfo._format</a></div><div class="ttdeci">AudioFormatInfo _format</div><div class="ttdef"><b>Definition:</b> RSTM.cs:178</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a138c844c61d18b967419ae72cfa1bd6d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a138c844c61d18b967419ae72cfa1bd6d">BrawlLib.SSBB.Types.Audio.StrmDataInfo._lastBlockTotal</a></div><div class="ttdeci">bint _lastBlockTotal</div><div class="ttdef"><b>Definition:</b> RSTM.cs:189</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_ab8eaf87248740684896330f10cef63d6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#ab8eaf87248740684896330f10cef63d6">BrawlLib.SSBB.Types.Audio.WaveInfo._sampleRate</a></div><div class="ttdeci">bushort _sampleRate</div><div class="ttdef"><b>Definition:</b> RWAV.cs:90</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a5d821177ef192b8c95886e7f9b438a6a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a5d821177ef192b8c95886e7f9b438a6a">BrawlLib.SSBB.Types.Audio.WaveInfo.NumSamples</a></div><div class="ttdeci">int NumSamples</div><div class="ttdef"><b>Definition:</b> RWAV.cs:112</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header_html_a8c5d7cf50a3da8ccf685182954f43d21"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#a8c5d7cf50a3da8ccf685182954f43d21">BrawlLib.SSBB.Types.Audio.RSTMHeader.HEADData</a></div><div class="ttdeci">HEADHeader * HEADData</div><div class="ttdef"><b>Definition:</b> RSTM.cs:60</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a3915f7be7711acb4387c7ce58fa41a31"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a3915f7be7711acb4387c7ce58fa41a31">BrawlLib.Internal.Audio.PCMStream._numChannels</a></div><div class="ttdeci">readonly int _numChannels</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:19</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_ad445d478719c194f938a08f07178a237"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#ad445d478719c194f938a08f07178a237">BrawlLib.Internal.Audio.PCMStream.SamplePosition</a></div><div class="ttdeci">int SamplePosition</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:52</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a5224564aea644c7b1526c0497ba84b19"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a5224564aea644c7b1526c0497ba84b19">BrawlLib.Internal.Audio.PCMStream._allocatedHGlobal</a></div><div class="ttdeci">IntPtr _allocatedHGlobal</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:12</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a1adf811922ab6502d7caab24a80241ff"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a1adf811922ab6502d7caab24a80241ff">BrawlLib.Internal.Audio.PCMStream._loopEnd</a></div><div class="ttdeci">int _loopEnd</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:25</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a76c6c05c7e096565ad3c6fbdf1f2d154"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a76c6c05c7e096565ad3c6fbdf1f2d154">BrawlLib.Internal.Audio.PCMStream._sourceMap</a></div><div class="ttdeci">FileMap _sourceMap</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:13</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_a2ec9188cddb993d847a15167f68be49b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#a2ec9188cddb993d847a15167f68be49b">BrawlLib.Internal.Audio.PCMStream._source</a></div><div class="ttdeci">readonly short * _source</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:15</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream_html_af041e9e134984f9fdf07c89b1492a8a6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_p_c_m_stream.html#af041e9e134984f9fdf07c89b1492a8a6">BrawlLib.Internal.Audio.PCMStream._looped</a></div><div class="ttdeci">bool _looped</div><div class="ttdef"><b>Definition:</b> PCMStream.cs:23</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info_html_a019e43fc346b9b858ded51721cb8ee2b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_strm_data_info.html#a019e43fc346b9b858ded51721cb8ee2b">BrawlLib.SSBB.Types.Audio.StrmDataInfo._loopStartSample</a></div><div class="ttdeci">bint _loopStartSample</div><div class="ttdef"><b>Definition:</b> RSTM.cs:181</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

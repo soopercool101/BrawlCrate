@@ -253,10 +253,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a4240a205364751afef1cd6fec5ced982"><td class="memItemLeft" align="right" valign="top">Form&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4240a205364751afef1cd6fec5ced982">owner</a></td></tr>
 <tr class="separator:a4240a205364751afef1cd6fec5ced982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00053">53</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab6d8fbfd29026246f05d868609f48806"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6d8fbfd29026246f05d868609f48806">&#9670;&nbsp;</a></span>DecodeImageData()</h2>
 
@@ -280,8 +277,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Decodes LZW image data into pixel array. Adapted from John Cristy's ImageMagick. </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00433">433</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        {</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordtype">int</span> NullCode = -1;</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            <span class="keywordtype">int</span> npix = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad2a705ac31092723abecb910ab4ddb54">iw</a> * <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6c036f907a36fa47eaa25ad180766e9d">ih</a>;</div>
@@ -473,8 +468,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Returns true if an error was encountered during reading/decoding </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00603">603</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        {</div>
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af57de0c0645ac5fd6d79f59349d77530">status</a> != <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a141a39b46f3e1d236be30ff83afc5943">STATUS_OK</a>;</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        }</div>
@@ -512,8 +505,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>delay in milliseconds </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00140">140</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="comment">//</span></div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a71f12cca4cfb9021a27d3c9fad63cd68">delay</a> = -1;</div>
@@ -552,8 +543,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets the image contents of frame n.</p>
 <dl class="section return"><dt>Returns</dt><dd>BufferedImage representation of frame, or null if n is invalid. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00342">342</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        {</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            Image im = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">if</span> (n &gt;= 0 &amp;&amp; n &lt; <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a457c0f91c87345571d79653eb86e22f7">frameCount</a>)</div>
@@ -589,8 +578,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Gets the number of frames read from file. </p><dl class="section return"><dt>Returns</dt><dd>frame count </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00156">156</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        {</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a457c0f91c87345571d79653eb86e22f7">frameCount</a>;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
@@ -621,8 +608,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets image size.</p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="namespace_brawl_lib_1_1_imaging_1_1_g_i_f.html">GIF</a> image dimensions </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00358">358</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        {</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a61cc33c23ccb906bfbe7916e924bc69aa6f6cb72d544962fa333e2e34ce64f719">Size</a>(<a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac539134de1747a466235e056a7c7a9ae">width</a>, <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6aac4fb622363790d85cacf05cb0325b">height</a>);</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        }</div>
@@ -653,8 +638,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets the first (or only) image read.</p>
 <dl class="section return"><dt>Returns</dt><dd>BufferedImage containing first frame, or null if none. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00166">166</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        {</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a01967c5e8d5cdd32cc40d87920dfd7cd">GetFrame</a>(0);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
@@ -685,8 +668,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets the "Netscape" iteration count, if any. A count of 0 means repeat indefinitiely.</p>
 <dl class="section return"><dt>Returns</dt><dd>iteration count if one was specified, else 1. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00177">177</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aa3a427a3bf8dc89b563632c1864fd644">loopCount</a>;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
@@ -717,8 +698,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Creates new frame image from current data (and previous frames as specified by their disposition codes). </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00186">186</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        {</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordtype">int</span>[] <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ada727b0ad853bcf0c68887e28a8ff07d">pixels</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[3 * <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad87658374bef741c2f76ee36ba00d014">image</a>.Width * <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad87658374bef741c2f76ee36ba00d014">image</a>.Height];</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordtype">int</span> count = 0;</div>
@@ -764,8 +743,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Initializes or re-initializes reader </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00611">611</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        {</div>
 <div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af57de0c0645ac5fd6d79f59349d77530">status</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a141a39b46f3e1d236be30ff83afc5943">STATUS_OK</a>;</div>
 <div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a457c0f91c87345571d79653eb86e22f7">frameCount</a> = 0;</div>
@@ -800,8 +777,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Reads a single byte from the input stream. </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00624">624</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        {</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;            <span class="keywordtype">int</span> curByte = 0;</div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;            <span class="keywordflow">try</span></div>
@@ -849,8 +824,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>read status code (0 = no errors) </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00369">369</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        {</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a192770c458946216b752e2e055da87b9">Init</a>();</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab64ad1595350246ea271a5b18c45bb4b">inStream</a> != <span class="keyword">null</span>)</div>
@@ -920,8 +893,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>read status code (0 = no errors) </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00402">402</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        {</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4240a205364751afef1cd6fec5ced982">owner</a> = o;</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af57de0c0645ac5fd6d79f59349d77530">status</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a141a39b46f3e1d236be30ff83afc5943">STATUS_OK</a>;</div>
@@ -964,8 +935,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Reads next variable length block from input.</p>
 <dl class="section return"><dt>Returns</dt><dd>number of bytes stored in "buffer" </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00644">644</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;        {</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a0dd88cece326ac50486de3b000b0594a">blockSize</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">Read</a>();</div>
 <div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            <span class="keywordtype">int</span> n = 0;</div>
@@ -1031,8 +1000,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int array containing 256 colors (packed ARGB with full alpha) </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00683">683</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        {</div>
 <div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            <span class="keywordtype">int</span> nbytes = 3 * ncolors;</div>
 <div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            <span class="keywordtype">int</span>[] tab = <span class="keyword">null</span>;</div>
@@ -1092,8 +1059,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Main file parser. Reads <a class="el" href="namespace_brawl_lib_1_1_imaging_1_1_g_i_f.html">GIF</a> content blocks. </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00723">723</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        {</div>
 <div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            <span class="keywordtype">long</span> offset = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab64ad1595350246ea271a5b18c45bb4b">inStream</a>.Position;</div>
 <div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160; </div>
@@ -1246,8 +1211,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Reads Graphics Control Extension values </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00854">854</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;        {</div>
 <div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">Read</a>();                         <span class="comment">// block size</span></div>
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;            <span class="keywordtype">int</span> packed = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">Read</a>();            <span class="comment">// packed fields</span></div>
@@ -1288,8 +1251,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Reads <a class="el" href="namespace_brawl_lib_1_1_imaging_1_1_g_i_f.html">GIF</a> file header information. </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00873">873</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;        {</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            <span class="keywordtype">string</span> <span class="keywordtype">id</span> = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 6; i++)</div>
@@ -1336,8 +1297,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Reads next frame image </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00913">913</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;        {</div>
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab9e2bc6b66f4243df87eeba5c0b95022">ix</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#afb6a58e29806e0f7a81bc115a20ec7fd">ReadShort</a>(); <span class="comment">// (sub)image position &amp; size</span></div>
 <div class="line"><a name="l00916"></a><span class="lineno">  916</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a78acaa1bf28bf08eac8ff9a812863ff3">iy</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#afb6a58e29806e0f7a81bc115a20ec7fd">ReadShort</a>();</div>
@@ -1435,8 +1394,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Reads Logical Screen Descriptor </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00989">989</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;        {</div>
 <div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;            <span class="comment">// logical screen size</span></div>
 <div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac539134de1747a466235e056a7c7a9ae">width</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#afb6a58e29806e0f7a81bc115a20ec7fd">ReadShort</a>();</div>
@@ -1478,8 +1435,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Reads Netscape extenstion to obtain iteration count </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l01009">1009</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01010"></a><span class="lineno"> 1010</span>&#160;        {</div>
 <div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;            <span class="keywordflow">do</span></div>
 <div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;            {</div>
@@ -1519,8 +1474,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Reads next 16-bit value, LSB first </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l01027">1027</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01028"></a><span class="lineno"> 1028</span>&#160;        {</div>
 <div class="line"><a name="l01029"></a><span class="lineno"> 1029</span>&#160;            <span class="comment">// read 16-bit value, LSB first</span></div>
 <div class="line"><a name="l01030"></a><span class="lineno"> 1030</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">Read</a>() | (<a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">Read</a>() &lt;&lt; 8);</div>
@@ -1551,8 +1504,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Resets frame state for reading next image. </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l01036">1036</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;        {</div>
 <div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a781dbf64508fb98a4800c6f967e71b56">lastDispose</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a63e1ab61802cd9943757a16e03bf3b31">dispose</a>;</div>
 <div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aa317aa2acf0fb568bfed012e8a656a8d">lastRect</a> = <span class="keyword">new</span> Rectangle(<a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab9e2bc6b66f4243df87eeba5c0b95022">ix</a>, <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a78acaa1bf28bf08eac8ff9a812863ff3">iy</a>, <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad2a705ac31092723abecb910ab4ddb54">iw</a>, <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6c036f907a36fa47eaa25ad180766e9d">ih</a>);</div>
@@ -1588,8 +1539,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00220">220</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        {</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="comment">// expose destination image&#39;s pixels as int array</span></div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="comment">//        int[] dest =</span></div>
@@ -1731,8 +1680,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00207">207</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordtype">int</span> count = 0;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> th = 0; th &lt; <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad87658374bef741c2f76ee36ba00d014">image</a>.Height; th++)</div>
@@ -1770,8 +1717,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Skips variable length blocks up to and including next zero length block. </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l01052">1052</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;        {</div>
 <div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;            <span class="keywordflow">do</span></div>
 <div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;            {</div>
@@ -1803,8 +1748,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00895">895</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00896"></a><span class="lineno">  896</span>&#160;        {</div>
 <div class="line"><a name="l00897"></a><span class="lineno">  897</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab64ad1595350246ea271a5b18c45bb4b">inStream</a>.Seek(8, SeekOrigin.Current);</div>
 <div class="line"><a name="l00898"></a><span class="lineno">  898</span>&#160;            <span class="keywordtype">int</span> packed = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">Read</a>();</div>
@@ -1843,8 +1786,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00419">419</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        {</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <span class="keywordtype">int</span> data_size = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">Read</a>();</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            <span class="keywordtype">int</span> count = 0;</div>
@@ -1877,8 +1818,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00081">81</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2341369ddb47660a2c1cc6f5e70c0007"></a>
@@ -1900,8 +1839,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00084">84</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -1925,8 +1862,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00083">83</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a87802ebcfe090274c44799643777950e"></a>
@@ -1948,8 +1883,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00095">95</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -1973,8 +1906,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00098">98</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a0dd88cece326ac50486de3b000b0594a"></a>
@@ -1996,8 +1927,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00099">99</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2021,8 +1950,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00120">120</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a71f12cca4cfb9021a27d3c9fad63cd68"></a>
@@ -2044,8 +1971,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00107">107</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2069,8 +1994,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00102">102</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a457c0f91c87345571d79653eb86e22f7"></a>
@@ -2092,8 +2015,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00120">120</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2117,8 +2038,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00119">119</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="ad3db7614119a82f7a518733f4d8df9d6"></a>
@@ -2140,8 +2059,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00079">79</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2165,8 +2082,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00075">75</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="abf93b082e24d6765e407a009b7e2c191"></a>
@@ -2188,8 +2103,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00076">76</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2213,8 +2126,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00074">74</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a6c036f907a36fa47eaa25ad180766e9d"></a>
@@ -2236,8 +2147,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00092">92</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2261,8 +2170,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00094">94</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="ab64ad1595350246ea271a5b18c45bb4b"></a>
@@ -2284,8 +2191,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00070">70</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2309,8 +2214,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00089">89</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="ad2a705ac31092723abecb910ab4ddb54"></a>
@@ -2332,8 +2235,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00092">92</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2357,8 +2258,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00092">92</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a78acaa1bf28bf08eac8ff9a812863ff3"></a>
@@ -2380,8 +2279,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00092">92</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2405,8 +2302,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00085">85</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a781dbf64508fb98a4800c6f967e71b56"></a>
@@ -2428,8 +2323,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00105">105</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2453,8 +2346,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00096">96</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="aa317aa2acf0fb568bfed012e8a656a8d"></a>
@@ -2476,8 +2367,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00093">93</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2501,8 +2390,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00080">80</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2542194399b2218cb6c31ff8ba59f81b"></a>
@@ -2524,8 +2411,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00088">88</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2549,8 +2434,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00090">90</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="aa3a427a3bf8dc89b563632c1864fd644"></a>
@@ -2572,8 +2455,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00077">77</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2597,8 +2478,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00110">110</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a4240a205364751afef1cd6fec5ced982"></a>
@@ -2620,8 +2499,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00718">718</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2645,8 +2522,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00086">86</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="ada727b0ad853bcf0c68887e28a8ff07d"></a>
@@ -2668,8 +2543,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00117">117</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2693,8 +2566,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00116">116</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="af844694a6e98fe7d51549d3ce34d37b4"></a>
@@ -2717,8 +2588,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00114">114</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="af57de0c0645ac5fd6d79f59349d77530"></a>
@@ -2740,8 +2609,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00071">71</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2766,8 +2633,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>File read status: Error decoding file (may be partially decoded) </p>
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00063">63</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a141a39b46f3e1d236be30ff83afc5943"></a>
@@ -2790,8 +2655,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>File read status: No errors. </p>
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00058">58</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2816,8 +2679,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>File read status: Unable to open source. </p>
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00068">68</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="a308f4b8cad289d5df0b3a6a7e16f46b2"></a>
@@ -2839,8 +2700,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00115">115</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2864,8 +2723,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00108">108</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <a id="affe7f9791347973eadfa98a0afd0ddf1"></a>
@@ -2887,8 +2744,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00106">106</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
 
 </div>
 </div>
@@ -2912,85 +2767,83 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_gif_decoder_8cs_source.html#l00073">73</a> of file <a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Imaging/GIF/<a class="el" href="_gif_decoder_8cs_source.html">GifDecoder.cs</a></li>
+<li>BrawlLib/Imaging/GIF/GifDecoder.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ada727b0ad853bcf0c68887e28a8ff07d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ada727b0ad853bcf0c68887e28a8ff07d">BrawlLib.Imaging.GIF.GifDecoder.pixels</a></div><div class="ttdeci">byte[] pixels</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00117">GifDecoder.cs:117</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ada727b0ad853bcf0c68887e28a8ff07d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ada727b0ad853bcf0c68887e28a8ff07d">BrawlLib.Imaging.GIF.GifDecoder.pixels</a></div><div class="ttdeci">byte[] pixels</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:117</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_afb6a58e29806e0f7a81bc115a20ec7fd"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#afb6a58e29806e0f7a81bc115a20ec7fd">BrawlLib.Imaging.GIF.GifDecoder.ReadShort</a></div><div class="ttdeci">int ReadShort()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l01027">GifDecoder.cs:1027</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac539134de1747a466235e056a7c7a9ae"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac539134de1747a466235e056a7c7a9ae">BrawlLib.Imaging.GIF.GifDecoder.width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00073">GifDecoder.cs:73</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a3faafb28936891fde9bd35370e4453a5"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a3faafb28936891fde9bd35370e4453a5">BrawlLib.Imaging.GIF.GifDecoder.STATUS_FORMAT_ERROR</a></div><div class="ttdeci">static readonly int STATUS_FORMAT_ERROR</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00063">GifDecoder.cs:63</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_adc89054aeb3179713caa03c20c5ddf01"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#adc89054aeb3179713caa03c20c5ddf01">BrawlLib.Imaging.GIF.GifDecoder.transIndex</a></div><div class="ttdeci">int transIndex</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00108">GifDecoder.cs:108</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a4240a205364751afef1cd6fec5ced982"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4240a205364751afef1cd6fec5ced982">BrawlLib.Imaging.GIF.GifDecoder.owner</a></div><div class="ttdeci">Form owner</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00718">GifDecoder.cs:718</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a426c9eaa1fc383cb6b97e3ada56e61af"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a426c9eaa1fc383cb6b97e3ada56e61af">BrawlLib.Imaging.GIF.GifDecoder.lct</a></div><div class="ttdeci">int[] lct</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00080">GifDecoder.cs:80</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac1b9c82748b663d3933d5b33b0cc3747"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac1b9c82748b663d3933d5b33b0cc3747">BrawlLib.Imaging.GIF.GifDecoder.GetPixels</a></div><div class="ttdeci">int[] GetPixels(Bitmap bitmap)</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00186">GifDecoder.cs:186</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a4d0ffb061228c89a041ac13979c57f1e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4d0ffb061228c89a041ac13979c57f1e">BrawlLib.Imaging.GIF.GifDecoder.ReadLSD</a></div><div class="ttdeci">void ReadLSD()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00989">GifDecoder.cs:989</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a63e1ab61802cd9943757a16e03bf3b31"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a63e1ab61802cd9943757a16e03bf3b31">BrawlLib.Imaging.GIF.GifDecoder.dispose</a></div><div class="ttdeci">int dispose</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00102">GifDecoder.cs:102</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac7cbc74c296fca46e9de1e4a84e56af4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac7cbc74c296fca46e9de1e4a84e56af4">BrawlLib.Imaging.GIF.GifDecoder.Skip</a></div><div class="ttdeci">void Skip()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l01052">GifDecoder.cs:1052</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a1df30df4371488b55146feb8291d0b0c"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a1df30df4371488b55146feb8291d0b0c">BrawlLib.Imaging.GIF.GifDecoder.STATUS_OPEN_ERROR</a></div><div class="ttdeci">static readonly int STATUS_OPEN_ERROR</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00068">GifDecoder.cs:68</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ab64ad1595350246ea271a5b18c45bb4b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab64ad1595350246ea271a5b18c45bb4b">BrawlLib.Imaging.GIF.GifDecoder.inStream</a></div><div class="ttdeci">Stream inStream</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00070">GifDecoder.cs:70</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ab9e2bc6b66f4243df87eeba5c0b95022"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab9e2bc6b66f4243df87eeba5c0b95022">BrawlLib.Imaging.GIF.GifDecoder.ix</a></div><div class="ttdeci">int ix</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00092">GifDecoder.cs:92</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a457c0f91c87345571d79653eb86e22f7"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a457c0f91c87345571d79653eb86e22f7">BrawlLib.Imaging.GIF.GifDecoder.frameCount</a></div><div class="ttdeci">int frameCount</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00120">GifDecoder.cs:120</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a192770c458946216b752e2e055da87b9"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a192770c458946216b752e2e055da87b9">BrawlLib.Imaging.GIF.GifDecoder.Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00611">GifDecoder.cs:611</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a0dd88cece326ac50486de3b000b0594a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a0dd88cece326ac50486de3b000b0594a">BrawlLib.Imaging.GIF.GifDecoder.blockSize</a></div><div class="ttdeci">int blockSize</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00099">GifDecoder.cs:99</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a442701f7b209335a37bff482223a653a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a442701f7b209335a37bff482223a653a">BrawlLib.Imaging.GIF.GifDecoder.ReadHeader</a></div><div class="ttdeci">void ReadHeader()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00873">GifDecoder.cs:873</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_affe7f9791347973eadfa98a0afd0ddf1"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#affe7f9791347973eadfa98a0afd0ddf1">BrawlLib.Imaging.GIF.GifDecoder.transparency</a></div><div class="ttdeci">bool transparency</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00106">GifDecoder.cs:106</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ab6d8fbfd29026246f05d868609f48806"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab6d8fbfd29026246f05d868609f48806">BrawlLib.Imaging.GIF.GifDecoder.DecodeImageData</a></div><div class="ttdeci">void DecodeImageData()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00433">GifDecoder.cs:433</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ad2a705ac31092723abecb910ab4ddb54"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad2a705ac31092723abecb910ab4ddb54">BrawlLib.Imaging.GIF.GifDecoder.iw</a></div><div class="ttdeci">int iw</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00092">GifDecoder.cs:92</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a777d5ef76aefa75b74a6b441bb170bf2"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a777d5ef76aefa75b74a6b441bb170bf2">BrawlLib.Imaging.GIF.GifDecoder.frames</a></div><div class="ttdeci">ArrayList frames</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00119">GifDecoder.cs:119</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a26e7b6461116c629d3643627f4c8d9ee"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a26e7b6461116c629d3643627f4c8d9ee">BrawlLib.Imaging.GIF.GifDecoder.ReadContents</a></div><div class="ttdeci">void ReadContents()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00723">GifDecoder.cs:723</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a6aac4fb622363790d85cacf05cb0325b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6aac4fb622363790d85cacf05cb0325b">BrawlLib.Imaging.GIF.GifDecoder.height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00074">GifDecoder.cs:74</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_afb6a58e29806e0f7a81bc115a20ec7fd"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#afb6a58e29806e0f7a81bc115a20ec7fd">BrawlLib.Imaging.GIF.GifDecoder.ReadShort</a></div><div class="ttdeci">int ReadShort()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:1027</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac539134de1747a466235e056a7c7a9ae"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac539134de1747a466235e056a7c7a9ae">BrawlLib.Imaging.GIF.GifDecoder.width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:73</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a3faafb28936891fde9bd35370e4453a5"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a3faafb28936891fde9bd35370e4453a5">BrawlLib.Imaging.GIF.GifDecoder.STATUS_FORMAT_ERROR</a></div><div class="ttdeci">static readonly int STATUS_FORMAT_ERROR</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:63</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_adc89054aeb3179713caa03c20c5ddf01"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#adc89054aeb3179713caa03c20c5ddf01">BrawlLib.Imaging.GIF.GifDecoder.transIndex</a></div><div class="ttdeci">int transIndex</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:108</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a4240a205364751afef1cd6fec5ced982"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4240a205364751afef1cd6fec5ced982">BrawlLib.Imaging.GIF.GifDecoder.owner</a></div><div class="ttdeci">Form owner</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:718</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a426c9eaa1fc383cb6b97e3ada56e61af"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a426c9eaa1fc383cb6b97e3ada56e61af">BrawlLib.Imaging.GIF.GifDecoder.lct</a></div><div class="ttdeci">int[] lct</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:80</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac1b9c82748b663d3933d5b33b0cc3747"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac1b9c82748b663d3933d5b33b0cc3747">BrawlLib.Imaging.GIF.GifDecoder.GetPixels</a></div><div class="ttdeci">int[] GetPixels(Bitmap bitmap)</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:186</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a4d0ffb061228c89a041ac13979c57f1e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4d0ffb061228c89a041ac13979c57f1e">BrawlLib.Imaging.GIF.GifDecoder.ReadLSD</a></div><div class="ttdeci">void ReadLSD()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:989</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a63e1ab61802cd9943757a16e03bf3b31"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a63e1ab61802cd9943757a16e03bf3b31">BrawlLib.Imaging.GIF.GifDecoder.dispose</a></div><div class="ttdeci">int dispose</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:102</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac7cbc74c296fca46e9de1e4a84e56af4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac7cbc74c296fca46e9de1e4a84e56af4">BrawlLib.Imaging.GIF.GifDecoder.Skip</a></div><div class="ttdeci">void Skip()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:1052</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a1df30df4371488b55146feb8291d0b0c"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a1df30df4371488b55146feb8291d0b0c">BrawlLib.Imaging.GIF.GifDecoder.STATUS_OPEN_ERROR</a></div><div class="ttdeci">static readonly int STATUS_OPEN_ERROR</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:68</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ab64ad1595350246ea271a5b18c45bb4b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab64ad1595350246ea271a5b18c45bb4b">BrawlLib.Imaging.GIF.GifDecoder.inStream</a></div><div class="ttdeci">Stream inStream</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:70</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ab9e2bc6b66f4243df87eeba5c0b95022"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab9e2bc6b66f4243df87eeba5c0b95022">BrawlLib.Imaging.GIF.GifDecoder.ix</a></div><div class="ttdeci">int ix</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:92</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a457c0f91c87345571d79653eb86e22f7"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a457c0f91c87345571d79653eb86e22f7">BrawlLib.Imaging.GIF.GifDecoder.frameCount</a></div><div class="ttdeci">int frameCount</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:120</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a192770c458946216b752e2e055da87b9"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a192770c458946216b752e2e055da87b9">BrawlLib.Imaging.GIF.GifDecoder.Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:611</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a0dd88cece326ac50486de3b000b0594a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a0dd88cece326ac50486de3b000b0594a">BrawlLib.Imaging.GIF.GifDecoder.blockSize</a></div><div class="ttdeci">int blockSize</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:99</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a442701f7b209335a37bff482223a653a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a442701f7b209335a37bff482223a653a">BrawlLib.Imaging.GIF.GifDecoder.ReadHeader</a></div><div class="ttdeci">void ReadHeader()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:873</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_affe7f9791347973eadfa98a0afd0ddf1"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#affe7f9791347973eadfa98a0afd0ddf1">BrawlLib.Imaging.GIF.GifDecoder.transparency</a></div><div class="ttdeci">bool transparency</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:106</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ab6d8fbfd29026246f05d868609f48806"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ab6d8fbfd29026246f05d868609f48806">BrawlLib.Imaging.GIF.GifDecoder.DecodeImageData</a></div><div class="ttdeci">void DecodeImageData()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:433</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ad2a705ac31092723abecb910ab4ddb54"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad2a705ac31092723abecb910ab4ddb54">BrawlLib.Imaging.GIF.GifDecoder.iw</a></div><div class="ttdeci">int iw</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:92</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a777d5ef76aefa75b74a6b441bb170bf2"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a777d5ef76aefa75b74a6b441bb170bf2">BrawlLib.Imaging.GIF.GifDecoder.frames</a></div><div class="ttdeci">ArrayList frames</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:119</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a26e7b6461116c629d3643627f4c8d9ee"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a26e7b6461116c629d3643627f4c8d9ee">BrawlLib.Imaging.GIF.GifDecoder.ReadContents</a></div><div class="ttdeci">void ReadContents()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:723</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a6aac4fb622363790d85cacf05cb0325b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6aac4fb622363790d85cacf05cb0325b">BrawlLib.Imaging.GIF.GifDecoder.height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:74</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa255a5cac7685572274d02f04c37be771"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa255a5cac7685572274d02f04c37be771">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.tw</a></div><div class="ttdeci">@ tw</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a308f4b8cad289d5df0b3a6a7e16f46b2"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a308f4b8cad289d5df0b3a6a7e16f46b2">BrawlLib.Imaging.GIF.GifDecoder.suffix</a></div><div class="ttdeci">byte[] suffix</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00115">GifDecoder.cs:115</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a1c0a488a13026ff299c418adfca5a5c4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a1c0a488a13026ff299c418adfca5a5c4">BrawlLib.Imaging.GIF.GifDecoder.lastBgColor</a></div><div class="ttdeci">int lastBgColor</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00085">GifDecoder.cs:85</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2397337215cbc8b6d486aa22a675a369"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2397337215cbc8b6d486aa22a675a369">BrawlLib.Imaging.GIF.GifDecoder.pixelAspect</a></div><div class="ttdeci">int pixelAspect</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00086">GifDecoder.cs:86</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aaee46a31cb44241d6b0f9b94b3c104d9"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aaee46a31cb44241d6b0f9b94b3c104d9">BrawlLib.Imaging.GIF.GifDecoder.gctFlag</a></div><div class="ttdeci">bool gctFlag</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00075">GifDecoder.cs:75</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ad87658374bef741c2f76ee36ba00d014"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad87658374bef741c2f76ee36ba00d014">BrawlLib.Imaging.GIF.GifDecoder.image</a></div><div class="ttdeci">Image image</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00094">GifDecoder.cs:94</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a308f4b8cad289d5df0b3a6a7e16f46b2"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a308f4b8cad289d5df0b3a6a7e16f46b2">BrawlLib.Imaging.GIF.GifDecoder.suffix</a></div><div class="ttdeci">byte[] suffix</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:115</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a1c0a488a13026ff299c418adfca5a5c4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a1c0a488a13026ff299c418adfca5a5c4">BrawlLib.Imaging.GIF.GifDecoder.lastBgColor</a></div><div class="ttdeci">int lastBgColor</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:85</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2397337215cbc8b6d486aa22a675a369"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2397337215cbc8b6d486aa22a675a369">BrawlLib.Imaging.GIF.GifDecoder.pixelAspect</a></div><div class="ttdeci">int pixelAspect</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:86</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aaee46a31cb44241d6b0f9b94b3c104d9"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aaee46a31cb44241d6b0f9b94b3c104d9">BrawlLib.Imaging.GIF.GifDecoder.gctFlag</a></div><div class="ttdeci">bool gctFlag</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:75</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ad87658374bef741c2f76ee36ba00d014"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad87658374bef741c2f76ee36ba00d014">BrawlLib.Imaging.GIF.GifDecoder.image</a></div><div class="ttdeci">Image image</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:94</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_html_a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls.html#a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295">BrawlLib.Internal.Windows.Controls.ValType.Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ad3db7614119a82f7a518733f4d8df9d6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad3db7614119a82f7a518733f4d8df9d6">BrawlLib.Imaging.GIF.GifDecoder.gct</a></div><div class="ttdeci">int[] gct</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00079">GifDecoder.cs:79</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a8e9be690f6dab87dd998223018483b06"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a8e9be690f6dab87dd998223018483b06">BrawlLib.Imaging.GIF.GifDecoder.MaxStackSize</a></div><div class="ttdeci">static readonly int MaxStackSize</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00110">GifDecoder.cs:110</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_af57de0c0645ac5fd6d79f59349d77530"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af57de0c0645ac5fd6d79f59349d77530">BrawlLib.Imaging.GIF.GifDecoder.status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00071">GifDecoder.cs:71</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_af844694a6e98fe7d51549d3ce34d37b4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af844694a6e98fe7d51549d3ce34d37b4">BrawlLib.Imaging.GIF.GifDecoder.prefix</a></div><div class="ttdeci">short[] prefix</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00114">GifDecoder.cs:114</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html_a4941d08b7c58761a3b965bfdb0bd653f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html#a4941d08b7c58761a3b965bfdb0bd653f">BrawlLib.Internal.Windows.Forms.ProgressWindow.Begin</a></div><div class="ttdeci">void Begin(float min, float max, float current)</div><div class="ttdef"><b>Definition:</b> <a href="_progress_window_8cs_source.html#l00051">ProgressWindow.cs:51</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a4e57382ce5992a039082bd65c82882b2"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4e57382ce5992a039082bd65c82882b2">BrawlLib.Imaging.GIF.GifDecoder.ReadImage</a></div><div class="ttdeci">void ReadImage()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00913">GifDecoder.cs:913</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a781dbf64508fb98a4800c6f967e71b56"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a781dbf64508fb98a4800c6f967e71b56">BrawlLib.Imaging.GIF.GifDecoder.lastDispose</a></div><div class="ttdeci">int lastDispose</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00105">GifDecoder.cs:105</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a6c036f907a36fa47eaa25ad180766e9d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6c036f907a36fa47eaa25ad180766e9d">BrawlLib.Imaging.GIF.GifDecoder.ih</a></div><div class="ttdeci">int ih</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00092">GifDecoder.cs:92</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a6b058ece3e122410787a1415245cddf6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6b058ece3e122410787a1415245cddf6">BrawlLib.Imaging.GIF.GifDecoder.ReadBlock</a></div><div class="ttdeci">int ReadBlock()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00644">GifDecoder.cs:644</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abc7afe299224914a2bd38a6d304e0383"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abc7afe299224914a2bd38a6d304e0383">BrawlLib.Imaging.GIF.GifDecoder.lctSize</a></div><div class="ttdeci">int lctSize</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00090">GifDecoder.cs:90</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a723ab2d0a0396d5fefdcc54345a3ca31"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a723ab2d0a0396d5fefdcc54345a3ca31">BrawlLib.Imaging.GIF.GifDecoder.ReadNetscapeExt</a></div><div class="ttdeci">void ReadNetscapeExt()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l01009">GifDecoder.cs:1009</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aa3a427a3bf8dc89b563632c1864fd644"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aa3a427a3bf8dc89b563632c1864fd644">BrawlLib.Imaging.GIF.GifDecoder.loopCount</a></div><div class="ttdeci">int loopCount</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00077">GifDecoder.cs:77</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a64ff833af47fa683f65252f962bf7bc4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a64ff833af47fa683f65252f962bf7bc4">BrawlLib.Imaging.GIF.GifDecoder.lastImage</a></div><div class="ttdeci">Image lastImage</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00096">GifDecoder.cs:96</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ade8ad550fe2cd2feecee1ff49136a6aa"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ade8ad550fe2cd2feecee1ff49136a6aa">BrawlLib.Imaging.GIF.GifDecoder.block</a></div><div class="ttdeci">byte[] block</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00098">GifDecoder.cs:98</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a141a39b46f3e1d236be30ff83afc5943"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a141a39b46f3e1d236be30ff83afc5943">BrawlLib.Imaging.GIF.GifDecoder.STATUS_OK</a></div><div class="ttdeci">static readonly int STATUS_OK</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00058">GifDecoder.cs:58</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html_a22c2779553b904ed201fda07460d83af"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html#a22c2779553b904ed201fda07460d83af">BrawlLib.Internal.Windows.Forms.ProgressWindow.Update</a></div><div class="ttdeci">void Update(float value)</div><div class="ttdef"><b>Definition:</b> <a href="_progress_window_8cs_source.html#l00079">ProgressWindow.cs:79</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a24d7d4aaa3b40097f7dbad1c06509c43"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a24d7d4aaa3b40097f7dbad1c06509c43">BrawlLib.Imaging.GIF.GifDecoder.SkipImage</a></div><div class="ttdeci">void SkipImage()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00895">GifDecoder.cs:895</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a71f12cca4cfb9021a27d3c9fad63cd68"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a71f12cca4cfb9021a27d3c9fad63cd68">BrawlLib.Imaging.GIF.GifDecoder.delay</a></div><div class="ttdeci">int delay</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00107">GifDecoder.cs:107</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a87802ebcfe090274c44799643777950e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a87802ebcfe090274c44799643777950e">BrawlLib.Imaging.GIF.GifDecoder.bitmap</a></div><div class="ttdeci">Bitmap bitmap</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00095">GifDecoder.cs:95</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abad6551dc0aefe09af4c494427be0d32"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abad6551dc0aefe09af4c494427be0d32">BrawlLib.Imaging.GIF.GifDecoder.currentFrame</a></div><div class="ttdeci">int currentFrame</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00120">GifDecoder.cs:120</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aad791d775579553987a539867c7a7d0e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aad791d775579553987a539867c7a7d0e">BrawlLib.Imaging.GIF.GifDecoder.ResetFrame</a></div><div class="ttdeci">void ResetFrame()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l01036">GifDecoder.cs:1036</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abf93b082e24d6765e407a009b7e2c191"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abf93b082e24d6765e407a009b7e2c191">BrawlLib.Imaging.GIF.GifDecoder.gctSize</a></div><div class="ttdeci">int gctSize</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00076">GifDecoder.cs:76</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ad3db7614119a82f7a518733f4d8df9d6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ad3db7614119a82f7a518733f4d8df9d6">BrawlLib.Imaging.GIF.GifDecoder.gct</a></div><div class="ttdeci">int[] gct</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:79</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a8e9be690f6dab87dd998223018483b06"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a8e9be690f6dab87dd998223018483b06">BrawlLib.Imaging.GIF.GifDecoder.MaxStackSize</a></div><div class="ttdeci">static readonly int MaxStackSize</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:110</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_af57de0c0645ac5fd6d79f59349d77530"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af57de0c0645ac5fd6d79f59349d77530">BrawlLib.Imaging.GIF.GifDecoder.status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:71</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_af844694a6e98fe7d51549d3ce34d37b4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af844694a6e98fe7d51549d3ce34d37b4">BrawlLib.Imaging.GIF.GifDecoder.prefix</a></div><div class="ttdeci">short[] prefix</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:114</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html_a4941d08b7c58761a3b965bfdb0bd653f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html#a4941d08b7c58761a3b965bfdb0bd653f">BrawlLib.Internal.Windows.Forms.ProgressWindow.Begin</a></div><div class="ttdeci">void Begin(float min, float max, float current)</div><div class="ttdef"><b>Definition:</b> ProgressWindow.cs:51</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a4e57382ce5992a039082bd65c82882b2"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a4e57382ce5992a039082bd65c82882b2">BrawlLib.Imaging.GIF.GifDecoder.ReadImage</a></div><div class="ttdeci">void ReadImage()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:913</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a781dbf64508fb98a4800c6f967e71b56"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a781dbf64508fb98a4800c6f967e71b56">BrawlLib.Imaging.GIF.GifDecoder.lastDispose</a></div><div class="ttdeci">int lastDispose</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:105</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a6c036f907a36fa47eaa25ad180766e9d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6c036f907a36fa47eaa25ad180766e9d">BrawlLib.Imaging.GIF.GifDecoder.ih</a></div><div class="ttdeci">int ih</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:92</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a6b058ece3e122410787a1415245cddf6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a6b058ece3e122410787a1415245cddf6">BrawlLib.Imaging.GIF.GifDecoder.ReadBlock</a></div><div class="ttdeci">int ReadBlock()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:644</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abc7afe299224914a2bd38a6d304e0383"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abc7afe299224914a2bd38a6d304e0383">BrawlLib.Imaging.GIF.GifDecoder.lctSize</a></div><div class="ttdeci">int lctSize</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:90</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a723ab2d0a0396d5fefdcc54345a3ca31"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a723ab2d0a0396d5fefdcc54345a3ca31">BrawlLib.Imaging.GIF.GifDecoder.ReadNetscapeExt</a></div><div class="ttdeci">void ReadNetscapeExt()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:1009</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aa3a427a3bf8dc89b563632c1864fd644"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aa3a427a3bf8dc89b563632c1864fd644">BrawlLib.Imaging.GIF.GifDecoder.loopCount</a></div><div class="ttdeci">int loopCount</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:77</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a64ff833af47fa683f65252f962bf7bc4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a64ff833af47fa683f65252f962bf7bc4">BrawlLib.Imaging.GIF.GifDecoder.lastImage</a></div><div class="ttdeci">Image lastImage</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:96</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ade8ad550fe2cd2feecee1ff49136a6aa"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ade8ad550fe2cd2feecee1ff49136a6aa">BrawlLib.Imaging.GIF.GifDecoder.block</a></div><div class="ttdeci">byte[] block</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:98</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a141a39b46f3e1d236be30ff83afc5943"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a141a39b46f3e1d236be30ff83afc5943">BrawlLib.Imaging.GIF.GifDecoder.STATUS_OK</a></div><div class="ttdeci">static readonly int STATUS_OK</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:58</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html_a22c2779553b904ed201fda07460d83af"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html#a22c2779553b904ed201fda07460d83af">BrawlLib.Internal.Windows.Forms.ProgressWindow.Update</a></div><div class="ttdeci">void Update(float value)</div><div class="ttdef"><b>Definition:</b> ProgressWindow.cs:79</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a24d7d4aaa3b40097f7dbad1c06509c43"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a24d7d4aaa3b40097f7dbad1c06509c43">BrawlLib.Imaging.GIF.GifDecoder.SkipImage</a></div><div class="ttdeci">void SkipImage()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:895</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a71f12cca4cfb9021a27d3c9fad63cd68"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a71f12cca4cfb9021a27d3c9fad63cd68">BrawlLib.Imaging.GIF.GifDecoder.delay</a></div><div class="ttdeci">int delay</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:107</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a87802ebcfe090274c44799643777950e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a87802ebcfe090274c44799643777950e">BrawlLib.Imaging.GIF.GifDecoder.bitmap</a></div><div class="ttdeci">Bitmap bitmap</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:95</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abad6551dc0aefe09af4c494427be0d32"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abad6551dc0aefe09af4c494427be0d32">BrawlLib.Imaging.GIF.GifDecoder.currentFrame</a></div><div class="ttdeci">int currentFrame</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:120</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aad791d775579553987a539867c7a7d0e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aad791d775579553987a539867c7a7d0e">BrawlLib.Imaging.GIF.GifDecoder.ResetFrame</a></div><div class="ttdeci">void ResetFrame()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:1036</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abf93b082e24d6765e407a009b7e2c191"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abf93b082e24d6765e407a009b7e2c191">BrawlLib.Imaging.GIF.GifDecoder.gctSize</a></div><div class="ttdeci">int gctSize</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:76</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a61cc33c23ccb906bfbe7916e924bc69aa6f6cb72d544962fa333e2e34ce64f719"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a61cc33c23ccb906bfbe7916e924bc69aa6f6cb72d544962fa333e2e34ce64f719">BrawlLib.SSBB.Types.v9AnimCurveTargetByteFloat.Size</a></div><div class="ttdeci">@ Size</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html">BrawlLib.Internal.Windows.Forms.ProgressWindow</a></div><div class="ttdef"><b>Definition:</b> <a href="_progress_window_8cs_source.html#l00007">ProgressWindow.cs:7</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a03b28b7279e42c65f2b5d23e36cfb2b6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a03b28b7279e42c65f2b5d23e36cfb2b6">BrawlLib.Imaging.GIF.GifDecoder.ReadGraphicControlExt</a></div><div class="ttdeci">void ReadGraphicControlExt()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00854">GifDecoder.cs:854</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a01967c5e8d5cdd32cc40d87920dfd7cd"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a01967c5e8d5cdd32cc40d87920dfd7cd">BrawlLib.Imaging.GIF.GifDecoder.GetFrame</a></div><div class="ttdeci">Image GetFrame(int n)</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00342">GifDecoder.cs:342</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2d41de2dca441186795950de5d85034b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">BrawlLib.Imaging.GIF.GifDecoder.Read</a></div><div class="ttdeci">int Read()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00624">GifDecoder.cs:624</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a063588ba6150c3bde0b35bc150a6ee28"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a063588ba6150c3bde0b35bc150a6ee28">BrawlLib.Imaging.GIF.GifDecoder.interlace</a></div><div class="ttdeci">bool interlace</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00089">GifDecoder.cs:89</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html_a8dc2c3bb6c4f570a903705992f459af5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html#a8dc2c3bb6c4f570a903705992f459af5">BrawlLib.Internal.Windows.Forms.ProgressWindow.Finish</a></div><div class="ttdeci">void Finish()</div><div class="ttdef"><b>Definition:</b> <a href="_progress_window_8cs_source.html#l00086">ProgressWindow.cs:86</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ade30ac947963aa4d72dff3cd8e286ca4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ade30ac947963aa4d72dff3cd8e286ca4">BrawlLib.Imaging.GIF.GifDecoder.ReadColorTable</a></div><div class="ttdeci">int[] ReadColorTable(int ncolors)</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00683">GifDecoder.cs:683</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac69a24bbd124c2fd6c3375155a1d4ca6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac69a24bbd124c2fd6c3375155a1d4ca6">BrawlLib.Imaging.GIF.GifDecoder.bgIndex</a></div><div class="ttdeci">int bgIndex</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00083">GifDecoder.cs:83</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aa317aa2acf0fb568bfed012e8a656a8d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aa317aa2acf0fb568bfed012e8a656a8d">BrawlLib.Imaging.GIF.GifDecoder.lastRect</a></div><div class="ttdeci">Rectangle lastRect</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00093">GifDecoder.cs:93</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2341369ddb47660a2c1cc6f5e70c0007"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2341369ddb47660a2c1cc6f5e70c0007">BrawlLib.Imaging.GIF.GifDecoder.bgColor</a></div><div class="ttdeci">int bgColor</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00084">GifDecoder.cs:84</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_af153f0217554fa842d70d7b70674abea"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af153f0217554fa842d70d7b70674abea">BrawlLib.Imaging.GIF.GifDecoder.act</a></div><div class="ttdeci">int[] act</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00081">GifDecoder.cs:81</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a78acaa1bf28bf08eac8ff9a812863ff3"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a78acaa1bf28bf08eac8ff9a812863ff3">BrawlLib.Imaging.GIF.GifDecoder.iy</a></div><div class="ttdeci">int iy</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00092">GifDecoder.cs:92</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2542194399b2218cb6c31ff8ba59f81b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2542194399b2218cb6c31ff8ba59f81b">BrawlLib.Imaging.GIF.GifDecoder.lctFlag</a></div><div class="ttdeci">bool lctFlag</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00088">GifDecoder.cs:88</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aecf0eb0466f868ade46770de3a6acc1e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aecf0eb0466f868ade46770de3a6acc1e">BrawlLib.Imaging.GIF.GifDecoder.pixelStack</a></div><div class="ttdeci">byte[] pixelStack</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00116">GifDecoder.cs:116</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abf2e375b1967d2e6c4068ecdcc1b3663"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abf2e375b1967d2e6c4068ecdcc1b3663">BrawlLib.Imaging.GIF.GifDecoder.Error</a></div><div class="ttdeci">bool Error()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00603">GifDecoder.cs:603</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aba9f396fa4278e8735b51ae7aa99b586"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aba9f396fa4278e8735b51ae7aa99b586">BrawlLib.Imaging.GIF.GifDecoder.SetPixels</a></div><div class="ttdeci">void SetPixels()</div><div class="ttdef"><b>Definition:</b> <a href="_gif_decoder_8cs_source.html#l00220">GifDecoder.cs:220</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html">BrawlLib.Internal.Windows.Forms.ProgressWindow</a></div><div class="ttdef"><b>Definition:</b> ProgressWindow.cs:7</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a03b28b7279e42c65f2b5d23e36cfb2b6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a03b28b7279e42c65f2b5d23e36cfb2b6">BrawlLib.Imaging.GIF.GifDecoder.ReadGraphicControlExt</a></div><div class="ttdeci">void ReadGraphicControlExt()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:854</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a01967c5e8d5cdd32cc40d87920dfd7cd"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a01967c5e8d5cdd32cc40d87920dfd7cd">BrawlLib.Imaging.GIF.GifDecoder.GetFrame</a></div><div class="ttdeci">Image GetFrame(int n)</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:342</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2d41de2dca441186795950de5d85034b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2d41de2dca441186795950de5d85034b">BrawlLib.Imaging.GIF.GifDecoder.Read</a></div><div class="ttdeci">int Read()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:624</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a063588ba6150c3bde0b35bc150a6ee28"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a063588ba6150c3bde0b35bc150a6ee28">BrawlLib.Imaging.GIF.GifDecoder.interlace</a></div><div class="ttdeci">bool interlace</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:89</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html_a8dc2c3bb6c4f570a903705992f459af5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html#a8dc2c3bb6c4f570a903705992f459af5">BrawlLib.Internal.Windows.Forms.ProgressWindow.Finish</a></div><div class="ttdeci">void Finish()</div><div class="ttdef"><b>Definition:</b> ProgressWindow.cs:86</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ade30ac947963aa4d72dff3cd8e286ca4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ade30ac947963aa4d72dff3cd8e286ca4">BrawlLib.Imaging.GIF.GifDecoder.ReadColorTable</a></div><div class="ttdeci">int[] ReadColorTable(int ncolors)</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:683</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_ac69a24bbd124c2fd6c3375155a1d4ca6"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac69a24bbd124c2fd6c3375155a1d4ca6">BrawlLib.Imaging.GIF.GifDecoder.bgIndex</a></div><div class="ttdeci">int bgIndex</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:83</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aa317aa2acf0fb568bfed012e8a656a8d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aa317aa2acf0fb568bfed012e8a656a8d">BrawlLib.Imaging.GIF.GifDecoder.lastRect</a></div><div class="ttdeci">Rectangle lastRect</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:93</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2341369ddb47660a2c1cc6f5e70c0007"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2341369ddb47660a2c1cc6f5e70c0007">BrawlLib.Imaging.GIF.GifDecoder.bgColor</a></div><div class="ttdeci">int bgColor</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:84</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_af153f0217554fa842d70d7b70674abea"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#af153f0217554fa842d70d7b70674abea">BrawlLib.Imaging.GIF.GifDecoder.act</a></div><div class="ttdeci">int[] act</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:81</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a78acaa1bf28bf08eac8ff9a812863ff3"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a78acaa1bf28bf08eac8ff9a812863ff3">BrawlLib.Imaging.GIF.GifDecoder.iy</a></div><div class="ttdeci">int iy</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:92</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_a2542194399b2218cb6c31ff8ba59f81b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#a2542194399b2218cb6c31ff8ba59f81b">BrawlLib.Imaging.GIF.GifDecoder.lctFlag</a></div><div class="ttdeci">bool lctFlag</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:88</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aecf0eb0466f868ade46770de3a6acc1e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aecf0eb0466f868ade46770de3a6acc1e">BrawlLib.Imaging.GIF.GifDecoder.pixelStack</a></div><div class="ttdeci">byte[] pixelStack</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:116</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_abf2e375b1967d2e6c4068ecdcc1b3663"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abf2e375b1967d2e6c4068ecdcc1b3663">BrawlLib.Imaging.GIF.GifDecoder.Error</a></div><div class="ttdeci">bool Error()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:603</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder_html_aba9f396fa4278e8735b51ae7aa99b586"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#aba9f396fa4278e8735b51ae7aa99b586">BrawlLib.Imaging.GIF.GifDecoder.SetPixels</a></div><div class="ttdeci">void SetPixels()</div><div class="ttdef"><b>Definition:</b> GifDecoder.cs:220</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

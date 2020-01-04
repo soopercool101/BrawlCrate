@@ -97,7 +97,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:afdd74c75906ae9de1216dc1ca935ea3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ed0b281218fc41aada0f8bdceee6d21"><td class="memItemLeft" align="right" valign="top">static Bitmap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a0ed0b281218fc41aada0f8bdceee6d21">Quantize</a> (this Bitmap bmp, <a class="el" href="namespace_brawl_lib_1_1_internal_1_1_drawing.html#a859efba01f19b13631ad10e9dceb5193">QuantizationAlgorithm</a> algorithm, int numColors, <a class="el" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a> texFormat, <a class="el" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a77f62c52d21306f2b937c0e15f3cea8d">WiiPaletteFormat</a> palFormat, <a class="el" href="interface_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_i_progress_tracker.html">IProgressTracker</a> progress)</td></tr>
 <tr class="separator:a0ed0b281218fc41aada0f8bdceee6d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d046352b352e80118004b8a261f82f2"><td class="memItemLeft" align="right" valign="top">static unsafe Bitmap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a1d046352b352e80118004b8a261f82f2">IndexColors</a> (this Bitmap src, ColorPalette palette, <a class="el" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a> format)</td></tr>
+<tr class="memitem:a1d046352b352e80118004b8a261f82f2"><td class="memItemLeft" align="right" valign="top">static unsafe Bitmap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a1d046352b352e80118004b8a261f82f2">IndexColors</a> (this Bitmap src, ColorPalette palette, PixelFormat format)</td></tr>
 <tr class="separator:a1d046352b352e80118004b8a261f82f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e6666919c32512d01cbc9b515dd80cd"><td class="memItemLeft" align="right" valign="top">static unsafe void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a7e6666919c32512d01cbc9b515dd80cd">Clamp</a> (this Bitmap bmp, ColorPalette palette)</td></tr>
 <tr class="separator:a7e6666919c32512d01cbc9b515dd80cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,10 +128,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a6f581d9c06a0fcabe739d92ea989719f"><td class="memItemLeft" align="right" valign="top">unsafe delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a6f581d9c06a0fcabe739d92ea989719f">PixelClamper</a> (<a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a> *src)</td></tr>
 <tr class="separator:a6f581d9c06a0fcabe739d92ea989719f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00015">15</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7e6666919c32512d01cbc9b515dd80cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e6666919c32512d01cbc9b515dd80cd">&#9670;&nbsp;</a></span>Clamp() <span class="overload">[1/2]</span></h2>
 
@@ -165,12 +162,10 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00227">227</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        {</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordtype">int</span> w = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, h = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, e = palette.Entries.Length;</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            BitmapData data = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(<span class="keyword">new</span> Rectangle(0, 0, w, h), ImageLockMode.ReadWrite,</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>* ptr = (<a class="code" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>*) data.Scan0, ceil = ptr + w * h; ptr &lt; ceil;)</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            {</div>
@@ -229,12 +224,10 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00257">257</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordtype">int</span> w = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, h = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            BitmapData data = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(<span class="keyword">new</span> Rectangle(0, 0, w, h), ImageLockMode.ReadWrite,</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a6f581d9c06a0fcabe739d92ea989719f">PixelClamper</a> clmp;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">switch</span> (format)</div>
@@ -338,11 +331,9 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00329">329</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        {</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordtype">int</span> sw = src.Width, sh = src.Height;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a> format = src.PixelFormat;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            PixelFormat format = src.PixelFormat;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            Bitmap dst = <span class="keyword">new</span> Bitmap(width, height, format);</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            BitmapData srcData = src.LockBits(<span class="keyword">new</span> Rectangle(0, 0, sw, sh), ImageLockMode.ReadOnly, format);</div>
@@ -350,7 +341,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordflow">switch</span> (format)</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format4bppIndexed:</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format4bppIndexed:</div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                {</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> sy = skip / 2, dy = 0; sy &lt; sh &amp;&amp; dy &lt; height; dy++, sy += skip)</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                    {</div>
@@ -400,8 +391,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00040">40</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (sourceImage.Palette.Entries.Length &gt; 0)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
@@ -469,8 +458,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00318">318</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        {</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordtype">int</span> w = Math.Min(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, dest.Width);</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordtype">int</span> h = Math.Min(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, dest.Height);</div>
@@ -516,8 +503,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00365">365</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        {</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordflow">if</span> (level &lt;= 1)</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            {</div>
@@ -542,7 +527,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                <span class="keywordtype">float</span> fx, fy;</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                <span class="keywordtype">byte</span>* sPtr, dPtr = (<span class="keywordtype">byte</span>*) dstData.Scan0;</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                if (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format8bppIndexed)</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                if (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == PixelFormat.Format8bppIndexed)</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                {</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    <span class="keywordflow">for</span> (y = 0, fy = 0.5f; y &lt; h; y++, fy += yStep, dPtr += dstData.Stride)</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                    {</div>
@@ -640,13 +625,11 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00084">84</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            HashSet&lt;ARGBPixel&gt; colors = <span class="keyword">new</span> HashSet&lt;ARGBPixel&gt;();</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            BitmapData data = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(<span class="keyword">new</span> Rectangle(0, 0, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height), ImageLockMode.ReadOnly,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>* ptr = (<a class="code" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>*) data.Scan0, c = ptr + <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width * <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height; ptr &lt; c;)</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
@@ -683,8 +666,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00101">101</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            ColorPalette pal = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Palette;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
@@ -725,22 +706,20 @@ Private Member Functions</h2></td></tr>
 
 <p>Guess if the alpha channel of an image might be inverted. (This method should prevent false positives as much as possible.) </p>
 <dl class="section return"><dt>Returns</dt><dd>true if the number of distinct pixel values in the fully transparent section of the image is more than the number elsewhere (including alpha values); false otherwise.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00627">627</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        {</div>
 <div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            <span class="keywordtype">int</span>[] pixels;</div>
 <div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160; </div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb)</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == PixelFormat.Format32bppArgb)</div>
 <div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;            {</div>
 <div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                Rectangle rect = <span class="keyword">new</span> Rectangle(0, 0, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height);</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
 <div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                uint* inPtr = (uint*) inData.Scan0;</div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160; </div>
 <div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;                <span class="keywordtype">int</span> length = Math.Abs(inData.Stride) * <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height / <span class="keyword">sizeof</span>(uint);</div>
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                pixels = <span class="keyword">new</span> <span class="keywordtype">int</span>[length];</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                <a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Runtime.InteropServices.Marshal.Copy((IntPtr) inPtr, pixels, 0, length);</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                System.Runtime.InteropServices.Marshal.Copy((IntPtr) inPtr, pixels, 0, length);</div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
 <div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;                <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.UnlockBits(inData);</div>
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;            }</div>
@@ -805,7 +784,7 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>&#160;</td>
+          <td class="paramtype">PixelFormat&#160;</td>
           <td class="paramname"><em>format</em>&#160;</td>
         </tr>
         <tr>
@@ -820,21 +799,19 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00149">149</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordtype">int</span> w = src.Width, h = src.Height;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordtype">int</span> entries = palette.Entries.Length;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">switch</span> (format)</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format4bppIndexed:</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format4bppIndexed:</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                {</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    entries = Math.Min(entries, 16);</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                }</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format8bppIndexed:</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">case</span> PixelFormat.Format8bppIndexed:</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                {</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                    entries = Math.Min(entries, 256);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                    <span class="keywordflow">break</span>;</div>
@@ -852,7 +829,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            };</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            BitmapData sData = src.LockBits(<span class="keyword">new</span> Rectangle(0, 0, w, h), ImageLockMode.ReadOnly,</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            BitmapData dData = dst.LockBits(<span class="keyword">new</span> Rectangle(0, 0, w, h), ImageLockMode.ReadWrite, format);</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>* sPtr = (<a class="code" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>*) sData.Scan0;</div>
@@ -874,7 +851,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        }</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    }</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="keywordflow">if</span> (format == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format4bppIndexed)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="keywordflow">if</span> (format == PixelFormat.Format4bppIndexed)</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    {</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        <span class="keywordtype">byte</span> val = *dPtr;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                        <span class="keywordflow">if</span> (x % 2 == 0)</div>
@@ -924,16 +901,14 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00506">506</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        {</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb)</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == PixelFormat.Format32bppArgb)</div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;            {</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                Bitmap output = <span class="keyword">new</span> Bitmap(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                Bitmap output = <span class="keyword">new</span> Bitmap(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
 <div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                Rectangle rect = <span class="keyword">new</span> Rectangle(0, 0, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height);</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                uint* inPtr = (uint*) inData.Scan0;</div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                uint* outPtr = (uint*) outData.Scan0;</div>
@@ -993,16 +968,14 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00463">463</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        {</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb)</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == PixelFormat.Format32bppArgb)</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            {</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                Bitmap output = <span class="keyword">new</span> Bitmap(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                Bitmap output = <span class="keyword">new</span> Bitmap(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                Rectangle rect = <span class="keyword">new</span> Rectangle(0, 0, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height);</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                uint* inPtr = (uint*) inData.Scan0;</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                uint* outPtr = (uint*) outData.Scan0;</div>
@@ -1062,10 +1035,8 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00073">73</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat &amp; <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Indexed) != 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat &amp; PixelFormat.Indexed) != 0;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -1153,8 +1124,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00143">143</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        {</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">MedianCut</a>.<a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a8b4422d410c0d6a5cfd92849576cb610">Quantize</a>(bmp, numColors, texFormat, palFormat, progress);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
@@ -1206,8 +1175,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00017">17</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            Bitmap r = <span class="keyword">new</span> Bitmap(width, height);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            r.SetResolution(i.HorizontalResolution, i.VerticalResolution);</div>
@@ -1264,8 +1231,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00685">685</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        {</div>
 <div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html">TGA</a>.<a class="code" href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#aece2ffe75d782665b0e0fd63852f6d87">ToStream</a>(bmp, stream);</div>
 <div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        }</div>
@@ -1305,8 +1270,6 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00680">680</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;        {</div>
 <div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html">TGA</a>.<a class="code" href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#ac824ab2cf27fc9f913ec5fd7b1d8ae1c">ToFile</a>(bmp, path);</div>
 <div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        }</div>
@@ -1336,16 +1299,14 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_bitmap_extension_8cs_source.html#l00556">556</a> of file <a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        {</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb)</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.PixelFormat == PixelFormat.Format32bppArgb)</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            {</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                Bitmap output = <span class="keyword">new</span> Bitmap(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                Bitmap output = <span class="keyword">new</span> Bitmap(<a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height, PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                Rectangle rect = <span class="keyword">new</span> Rectangle(0, 0, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Width, <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height);</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;                BitmapData inData = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                uint* inPtr = (uint*) inData.Scan0;</div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                uint* outPtr = (uint*) outData.Scan0;</div>
@@ -1404,32 +1365,30 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/Drawing/<a class="el" href="_bitmap_extension_8cs_source.html">BitmapExtension.cs</a></li>
+<li>BrawlLib/Internal/Drawing/BitmapExtension.cs</li>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a31c9a00637753a146132a789b0ab5796"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">BrawlLib.Wii.Textures.WiiPixelFormat</a></div><div class="ttdeci">WiiPixelFormat</div><div class="ttdef"><b>Definition:</b> <a href="_textures_2_enum_8cs_source.html#l00003">Enum.cs:3</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html">BrawlLib.Imaging.DIB</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_i_b_8cs_source.html#l00009">DIB.cs:9</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">BrawlLib.Wii.Textures.wRGB5A3Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_wii_2_textures_2_pixel_types_8cs_source.html#l00230">PixelTypes.cs:230</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a4_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a4_pixel.html">BrawlLib.Wii.Textures.IA4Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_a4_8cs_source.html#l00045">IA4.cs:45</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">BrawlLib.Wii.Textures.IA8Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_a8_8cs_source.html#l00045">IA8.cs:45</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">BrawlLib.Wii.Textures.wRGB565Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_wii_2_textures_2_pixel_types_8cs_source.html#l00099">PixelTypes.cs:99</a></div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a31c9a00637753a146132a789b0ab5796"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">BrawlLib.Wii.Textures.WiiPixelFormat</a></div><div class="ttdeci">WiiPixelFormat</div><div class="ttdef"><b>Definition:</b> Enum.cs:3</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html">BrawlLib.Imaging.DIB</a></div><div class="ttdef"><b>Definition:</b> DIB.cs:9</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">BrawlLib.Wii.Textures.wRGB5A3Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:230</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a4_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a4_pixel.html">BrawlLib.Wii.Textures.IA4Pixel</a></div><div class="ttdef"><b>Definition:</b> IA4.cs:45</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">BrawlLib.Wii.Textures.IA8Pixel</a></div><div class="ttdef"><b>Definition:</b> IA8.cs:45</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">BrawlLib.Wii.Textures.wRGB565Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:99</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_html_a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">BrawlLib.Internal.ImageType.bmp</a></div><div class="ttdeci">@ bmp</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a966be78a7a45fb4794297d9ed5d326ea"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a966be78a7a45fb4794297d9ed5d326ea">BrawlLib.Imaging.DIB.ReadBitmap</a></div><div class="ttdeci">void ReadBitmap(Bitmap src)</div><div class="ttdef"><b>Definition:</b> <a href="_d_i_b_8cs_source.html#l00133">DIB.cs:133</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a966be78a7a45fb4794297d9ed5d326ea"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a966be78a7a45fb4794297d9ed5d326ea">BrawlLib.Imaging.DIB.ReadBitmap</a></div><div class="ttdeci">void ReadBitmap(Bitmap src)</div><div class="ttdef"><b>Definition:</b> DIB.cs:133</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_html_a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls.html#a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295">BrawlLib.Internal.Windows.Controls.ValType.Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a8b4422d410c0d6a5cfd92849576cb610"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a8b4422d410c0d6a5cfd92849576cb610">BrawlLib.Imaging.MedianCut.Quantize</a></div><div class="ttdeci">Bitmap Quantize(int targetColors, IProgressTracker progress)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00350">MedianCut.cs:350</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a9ee5eecf091f505bda64d037bf462133"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a9ee5eecf091f505bda64d037bf462133">BrawlLib.Imaging.DIB.WriteBitmap</a></div><div class="ttdeci">void WriteBitmap(Bitmap dst, int width, int height)</div><div class="ttdef"><b>Definition:</b> <a href="_d_i_b_8cs_source.html#l00160">DIB.cs:160</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html">BrawlLib.Imaging.TGA</a></div><div class="ttdef"><b>Definition:</b> <a href="_t_g_a_image_8cs_source.html#l00119">TGAImage.cs:119</a></div></div>
-<div class="ttc" id="a_p_a_t0_offset_control_8cs_html_a4598c6b5042b9ab31ee4f4644765857d"><div class="ttname"><a href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a></div><div class="ttdeci">﻿﻿using System</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_offset_control_8cs_source.html#l00001">PAT0OffsetControl.cs:1</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel.html">BrawlLib.Wii.Textures.I8Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_i8_8cs_source.html#l00044">I8.cs:44</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">BrawlLib.Imaging.ARGBPixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_imaging_2_pixel_types_8cs_source.html#l00015">PixelTypes.cs:15</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">BrawlLib.Imaging.MedianCut</a></div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00017">MedianCut.cs:17</a></div></div>
-<div class="ttc" id="a_model_panel_8cs_html_a7bcc7a6d87aeb3b2b14fdec298810f7f"><div class="ttname"><a href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a></div><div class="ttdeci">System.Drawing.Imaging.PixelFormat PixelFormat</div><div class="ttdef"><b>Definition:</b> <a href="_model_panel_8cs_source.html#l00013">ModelPanel.cs:13</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_aece2ffe75d782665b0e0fd63852f6d87"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#aece2ffe75d782665b0e0fd63852f6d87">BrawlLib.Imaging.TGA.ToStream</a></div><div class="ttdeci">static unsafe void ToStream(Bitmap bmp, FileStream stream)</div><div class="ttdef"><b>Definition:</b> <a href="_t_g_a_image_8cs_source.html#l00358">TGAImage.cs:358</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel.html">BrawlLib.Wii.Textures.I4Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_i4_8cs_source.html#l00047">I4.cs:47</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a8b4422d410c0d6a5cfd92849576cb610"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a8b4422d410c0d6a5cfd92849576cb610">BrawlLib.Imaging.MedianCut.Quantize</a></div><div class="ttdeci">Bitmap Quantize(int targetColors, IProgressTracker progress)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:350</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a9ee5eecf091f505bda64d037bf462133"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a9ee5eecf091f505bda64d037bf462133">BrawlLib.Imaging.DIB.WriteBitmap</a></div><div class="ttdeci">void WriteBitmap(Bitmap dst, int width, int height)</div><div class="ttdef"><b>Definition:</b> DIB.cs:160</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html">BrawlLib.Imaging.TGA</a></div><div class="ttdef"><b>Definition:</b> TGAImage.cs:119</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel.html">BrawlLib.Wii.Textures.I8Pixel</a></div><div class="ttdef"><b>Definition:</b> I8.cs:44</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">BrawlLib.Imaging.ARGBPixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:15</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">BrawlLib.Imaging.MedianCut</a></div><div class="ttdef"><b>Definition:</b> MedianCut.cs:17</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_aece2ffe75d782665b0e0fd63852f6d87"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#aece2ffe75d782665b0e0fd63852f6d87">BrawlLib.Imaging.TGA.ToStream</a></div><div class="ttdeci">static unsafe void ToStream(Bitmap bmp, FileStream stream)</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:358</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel.html">BrawlLib.Wii.Textures.I4Pixel</a></div><div class="ttdef"><b>Definition:</b> I4.cs:47</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension_html_a6f581d9c06a0fcabe739d92ea989719f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a6f581d9c06a0fcabe739d92ea989719f">BrawlLib.Internal.Drawing.BitmapExtension.PixelClamper</a></div><div class="ttdeci">unsafe delegate void PixelClamper(ARGBPixel *src)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_ac824ab2cf27fc9f913ec5fd7b1d8ae1c"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#ac824ab2cf27fc9f913ec5fd7b1d8ae1c">BrawlLib.Imaging.TGA.ToFile</a></div><div class="ttdeci">static unsafe void ToFile(Bitmap bmp, string path)</div><div class="ttdef"><b>Definition:</b> <a href="_t_g_a_image_8cs_source.html#l00516">TGAImage.cs:516</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html_a15c0f8e8e54e4b44044ae259856d648c"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a15c0f8e8e54e4b44044ae259856d648c">BrawlLib.Imaging.ARGBPixel.DistanceTo</a></div><div class="ttdeci">int DistanceTo(Color c)</div><div class="ttdef"><b>Definition:</b> <a href="_imaging_2_pixel_types_8cs_source.html#l00046">PixelTypes.cs:46</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_t_g_a_html_ac824ab2cf27fc9f913ec5fd7b1d8ae1c"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#ac824ab2cf27fc9f913ec5fd7b1d8ae1c">BrawlLib.Imaging.TGA.ToFile</a></div><div class="ttdeci">static unsafe void ToFile(Bitmap bmp, string path)</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:516</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html_a15c0f8e8e54e4b44044ae259856d648c"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a15c0f8e8e54e4b44044ae259856d648c">BrawlLib.Imaging.ARGBPixel.DistanceTo</a></div><div class="ttdeci">int DistanceTo(Color c)</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:46</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

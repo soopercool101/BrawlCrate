@@ -95,10 +95,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a21c6d10fde30653240c63aef759f6ec5"><td class="memItemLeft" align="right" valign="top">override object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_brawl_ex_a_i_controllers.html#a21c6d10fde30653240c63aef759f6ec5">ConvertTo</a> (ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)</td></tr>
 <tr class="separator:a21c6d10fde30653240c63aef759f6ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00470">470</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1f966977f8820cef3233e1f35dea8bdd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1f966977f8820cef3233e1f35dea8bdd">&#9670;&nbsp;</a></span>CanConvertFrom()</h2>
 
@@ -132,8 +129,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00484">484</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        {</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        }</div>
@@ -179,8 +174,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00489">489</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        {</div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            {</div>
@@ -241,8 +234,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00503">503</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        {</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value.GetType() == typeof(uint))</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            {</div>
@@ -283,8 +274,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00477">477</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        {</div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(AIController.aIControllers</div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                                                            .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
@@ -316,8 +305,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00472">472</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        {</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        }</div>
@@ -325,7 +312,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/<a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a></li>
+<li>BrawlLib/Internal/BrawlExDropDownLists.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

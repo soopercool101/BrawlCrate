@@ -93,10 +93,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9f7a1c86e4b6f12d021f3587b90e7c83"><td class="memItemLeft" align="right" valign="top">override object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_vector2_string_converter.html#a9f7a1c86e4b6f12d021f3587b90e7c83">ConvertFrom</a> (ITypeDescriptorContext context, CultureInfo culture, object value)</td></tr>
 <tr class="separator:a9f7a1c86e4b6f12d021f3587b90e7c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_string_converters_8cs_source.html#l00102">102</a> of file <a class="el" href="_string_converters_8cs_source.html">StringConverters.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a05459992a8bb7e961b1d62d3bc430858"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a05459992a8bb7e961b1d62d3bc430858">&#9670;&nbsp;</a></span>CanConvertFrom()</h2>
 
@@ -130,8 +127,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_string_converters_8cs_source.html#l00115">115</a> of file <a class="el" href="_string_converters_8cs_source.html">StringConverters.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
@@ -171,10 +166,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_string_converters_8cs_source.html#l00104">104</a> of file <a class="el" href="_string_converters_8cs_source.html">StringConverters.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span> destinationType == typeof(<a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span> destinationType == typeof(Vector2);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -218,10 +211,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_string_converters_8cs_source.html#l00120">120</a> of file <a class="el" href="_string_converters_8cs_source.html">StringConverters.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a> v = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            Vector2 v = <span class="keyword">new</span> Vector2();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordtype">string</span> s = value?.ToString() ?? <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordtype">string</span>[] arr = s.Split(LanguageCheck.DecimalDelimiters, StringSplitOptions.RemoveEmptyEntries);</div>
@@ -287,8 +278,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_string_converters_8cs_source.html#l00109">109</a> of file <a class="el" href="_string_converters_8cs_source.html">StringConverters.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">return</span> value?.ToString();</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
@@ -296,10 +285,9 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/<a class="el" href="_string_converters_8cs_source.html">StringConverters.cs</a></li>
+<li>BrawlLib/Internal/StringConverters.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="a_primitive_manager_8cs_html_a169087b669368ccf75e8a501677679df"><div class="ttname"><a href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a></div><div class="ttdeci">BrawlLib.Internal.Vector2 Vector2</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00014">PrimitiveManager.cs:14</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

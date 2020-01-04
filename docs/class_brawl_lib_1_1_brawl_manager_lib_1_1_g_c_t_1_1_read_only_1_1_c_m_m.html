@@ -109,10 +109,7 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a3fd109fe391e062635b3c49e68534bab"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song.html">Song</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a3fd109fe391e062635b3c49e68534bab">ReadSongs</a> (byte[] data, int offset, int tracks)</td></tr>
 <tr class="separator:a3fd109fe391e062635b3c49e68534bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00010">10</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae932df9340f3c22b9be17873871f66c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae932df9340f3c22b9be17873871f66c3">&#9670;&nbsp;</a></span>CMM()</h2>
 
@@ -136,8 +133,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00056">56</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> lineskip = 0; lineskip &lt; data.Length; lineskip += 8)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
@@ -196,8 +191,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00038">38</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">byte</span>[] <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a> = <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a6e7c324a0c007d2c094a348abdefe01b">TracklistModifier</a> ?? <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a99001469de7c85697e22a1c5432c6902">StandardCMMTracklistModifierData</a>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.Length; i++)</div>
@@ -253,8 +246,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00089">89</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keyword">using</span> (MemoryStream ms = <span class="keyword">new</span> MemoryStream(data, offset, data.Length - offset))</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
@@ -301,8 +292,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00012">12</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordtype">string</span> s = <span class="stringliteral">@&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="stringliteral">00000102 03040607</span></div>
@@ -321,7 +310,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="stringliteral">5F&quot;</span>.Replace(<span class="stringliteral">&quot; &quot;</span>, <span class="stringliteral">&quot;&quot;</span>).Replace(<span class="stringliteral">&quot;\r&quot;</span>, <span class="stringliteral">&quot;&quot;</span>).Replace(<span class="stringliteral">&quot;\n&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; s.Length; i += 2)</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                yield <span class="keywordflow">return</span> (<span class="keywordtype">byte</span>) <span class="keywordtype">int</span>.Parse(s.Substring(i, 2), <a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Globalization.NumberStyles.HexNumber);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                yield <span class="keywordflow">return</span> (<span class="keywordtype">byte</span>) <span class="keywordtype">int</span>.Parse(s.Substring(i, 2), System.Globalization.NumberStyles.HexNumber);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -339,8 +328,6 @@ Static Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00054">54</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
 
 </div>
 </div>
@@ -366,8 +353,6 @@ Static Private Member Functions</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">            <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ac9f1b476e8287c5c05f4a6a79ce13a4b">StandardCMMTracklistModifierDataSeq</a>().ToArray()</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00035">35</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
-
 </div>
 </div>
 <a id="a6e7c324a0c007d2c094a348abdefe01b"></a>
@@ -382,28 +367,25 @@ Static Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00053">53</a> of file <a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/BrawlManagerLib/GCT/ReadOnly/<a class="el" href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html">CMM.cs</a></li>
+<li>BrawlLib/BrawlManagerLib/GCT/ReadOnly/CMM.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_ac0c0d21394132e5fa7cf8a3581e85009"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ac0c0d21394132e5fa7cf8a3581e85009">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.GetStageByIdInTracklist</a></div><div class="ttdeci">IEnumerable&lt; Stage &gt; GetStageByIdInTracklist(int id)</div><div class="ttdef"><b>Definition:</b> <a href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00038">CMM.cs:38</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a3fd109fe391e062635b3c49e68534bab"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a3fd109fe391e062635b3c49e68534bab">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.ReadSongs</a></div><div class="ttdeci">static IEnumerable&lt; Song &gt; ReadSongs(byte[] data, int offset, int tracks)</div><div class="ttdef"><b>Definition:</b> <a href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00089">CMM.cs:89</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_ac0c0d21394132e5fa7cf8a3581e85009"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ac0c0d21394132e5fa7cf8a3581e85009">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.GetStageByIdInTracklist</a></div><div class="ttdeci">IEnumerable&lt; Stage &gt; GetStageByIdInTracklist(int id)</div><div class="ttdef"><b>Definition:</b> CMM.cs:38</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a3fd109fe391e062635b3c49e68534bab"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a3fd109fe391e062635b3c49e68534bab">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.ReadSongs</a></div><div class="ttdeci">static IEnumerable&lt; Song &gt; ReadSongs(byte[] data, int offset, int tracks)</div><div class="ttdef"><b>Definition:</b> CMM.cs:89</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> <a href="_stage_8cs_source.html#l00006">Stage.cs:6</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_ad8b7cce8233ba087fd848f6a101cc150"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ad8b7cce8233ba087fd848f6a101cc150">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.Map</a></div><div class="ttdeci">readonly Dictionary&lt; int, IEnumerable&lt; Song &gt; &gt; Map</div><div class="ttdef"><b>Definition:</b> <a href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00054">CMM.cs:54</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_html"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song.html">BrawlLib.BrawlManagerLib.Songs.Song</a></div><div class="ttdef"><b>Definition:</b> <a href="_song_8cs_source.html#l00003">Song.cs:3</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_ab07d075440d932e467cdf7691a5be6b3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ab07d075440d932e467cdf7691a5be6b3">BrawlLib.SSBB.Stage.Stages</a></div><div class="ttdeci">static readonly Stage[] Stages</div><div class="ttdef"><b>Definition:</b> <a href="_stage_8cs_source.html#l00199">Stage.cs:199</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_a18bab9734d34ced01749d0fab99d53c3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a18bab9734d34ced01749d0fab99d53c3">BrawlLib.SSBB.Stage.ID</a></div><div class="ttdeci">byte ID</div><div class="ttdoc">The stage ID, as used by the module files and the Custom SSS code.</div><div class="ttdef"><b>Definition:</b> <a href="_stage_8cs_source.html#l00011">Stage.cs:11</a></div></div>
-<div class="ttc" id="a_p_a_t0_offset_control_8cs_html_a4598c6b5042b9ab31ee4f4644765857d"><div class="ttname"><a href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a></div><div class="ttdeci">﻿﻿using System</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_offset_control_8cs_source.html#l00001">PAT0OffsetControl.cs:1</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map_html_a8dc23e7b124d4009bffa7c1feec469a1"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map.html#a8dc23e7b124d4009bffa7c1feec469a1">BrawlLib.BrawlManagerLib.Songs.SongIDMap.Songs</a></div><div class="ttdeci">static IEnumerable&lt; Song &gt; Songs</div><div class="ttdef"><b>Definition:</b> <a href="_song_i_d_map_8cs_source.html#l00008">SongIDMap.cs:8</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_ac9f1b476e8287c5c05f4a6a79ce13a4b"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ac9f1b476e8287c5c05f4a6a79ce13a4b">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.StandardCMMTracklistModifierDataSeq</a></div><div class="ttdeci">static IEnumerable&lt; byte &gt; StandardCMMTracklistModifierDataSeq()</div><div class="ttdef"><b>Definition:</b> <a href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00012">CMM.cs:12</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map.html">BrawlLib.BrawlManagerLib.Songs.SongIDMap</a></div><div class="ttdef"><b>Definition:</b> <a href="_song_i_d_map_8cs_source.html#l00006">SongIDMap.cs:6</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a99001469de7c85697e22a1c5432c6902"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a99001469de7c85697e22a1c5432c6902">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.StandardCMMTracklistModifierData</a></div><div class="ttdeci">static readonly byte[] StandardCMMTracklistModifierData</div><div class="ttdef"><b>Definition:</b> <a href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00035">CMM.cs:35</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a6e7c324a0c007d2c094a348abdefe01b"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a6e7c324a0c007d2c094a348abdefe01b">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.TracklistModifier</a></div><div class="ttdeci">readonly byte[] TracklistModifier</div><div class="ttdef"><b>Definition:</b> <a href="_brawl_manager_lib_2_g_c_t_2_read_only_2_c_m_m_8cs_source.html#l00053">CMM.cs:53</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> Stage.cs:6</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_ad8b7cce8233ba087fd848f6a101cc150"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ad8b7cce8233ba087fd848f6a101cc150">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.Map</a></div><div class="ttdeci">readonly Dictionary&lt; int, IEnumerable&lt; Song &gt; &gt; Map</div><div class="ttdef"><b>Definition:</b> CMM.cs:54</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_html"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song.html">BrawlLib.BrawlManagerLib.Songs.Song</a></div><div class="ttdef"><b>Definition:</b> Song.cs:3</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_ab07d075440d932e467cdf7691a5be6b3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ab07d075440d932e467cdf7691a5be6b3">BrawlLib.SSBB.Stage.Stages</a></div><div class="ttdeci">static readonly Stage[] Stages</div><div class="ttdef"><b>Definition:</b> Stage.cs:199</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_a18bab9734d34ced01749d0fab99d53c3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a18bab9734d34ced01749d0fab99d53c3">BrawlLib.SSBB.Stage.ID</a></div><div class="ttdeci">byte ID</div><div class="ttdoc">The stage ID, as used by the module files and the Custom SSS code.</div><div class="ttdef"><b>Definition:</b> Stage.cs:11</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map_html_a8dc23e7b124d4009bffa7c1feec469a1"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map.html#a8dc23e7b124d4009bffa7c1feec469a1">BrawlLib.BrawlManagerLib.Songs.SongIDMap.Songs</a></div><div class="ttdeci">static IEnumerable&lt; Song &gt; Songs</div><div class="ttdef"><b>Definition:</b> SongIDMap.cs:8</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_ac9f1b476e8287c5c05f4a6a79ce13a4b"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ac9f1b476e8287c5c05f4a6a79ce13a4b">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.StandardCMMTracklistModifierDataSeq</a></div><div class="ttdeci">static IEnumerable&lt; byte &gt; StandardCMMTracklistModifierDataSeq()</div><div class="ttdef"><b>Definition:</b> CMM.cs:12</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map.html">BrawlLib.BrawlManagerLib.Songs.SongIDMap</a></div><div class="ttdef"><b>Definition:</b> SongIDMap.cs:6</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a99001469de7c85697e22a1c5432c6902"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a99001469de7c85697e22a1c5432c6902">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.StandardCMMTracklistModifierData</a></div><div class="ttdeci">static readonly byte[] StandardCMMTracklistModifierData</div><div class="ttdef"><b>Definition:</b> CMM.cs:35</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a6e7c324a0c007d2c094a348abdefe01b"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a6e7c324a0c007d2c094a348abdefe01b">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.TracklistModifier</a></div><div class="ttdeci">readonly byte[] TracklistModifier</div><div class="ttdef"><b>Definition:</b> CMM.cs:53</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

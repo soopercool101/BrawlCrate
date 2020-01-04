@@ -95,10 +95,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6c61e0c76e3b254746da11f1175ee642"><td class="memItemLeft" align="right" valign="top">override object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_a_i_types.html#a6c61e0c76e3b254746da11f1175ee642">ConvertTo</a> (ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)</td></tr>
 <tr class="separator:a6c61e0c76e3b254746da11f1175ee642"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00853">853</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="adf9415e45865ed992ee87993c1feec61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf9415e45865ed992ee87993c1feec61">&#9670;&nbsp;</a></span>CanConvertFrom()</h2>
 
@@ -132,8 +129,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00867">867</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;        {</div>
 <div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
 <div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;        }</div>
@@ -179,8 +174,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00872">872</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;        {</div>
 <div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
 <div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            {</div>
@@ -241,8 +234,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00886">886</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;        {</div>
 <div class="line"><a name="l00889"></a><span class="lineno">  889</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp;</div>
 <div class="line"><a name="l00890"></a><span class="lineno">  890</span>&#160;                (value.GetType() == typeof(<span class="keywordtype">byte</span>) || value.GetType() == typeof(<span class="keywordtype">int</span>)))</div>
@@ -284,8 +275,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00860">860</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;        {</div>
 <div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html">BrawlAITypes</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html#ac74e649ededaadeb5ed86e59879df5ee">AITypes</a></div>
 <div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                                                            .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.AIID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
@@ -317,8 +306,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00855">855</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;        {</div>
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;        }</div>
@@ -326,12 +313,12 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/<a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a></li>
+<li>BrawlLib/Internal/DropDownLists.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types_html_a07aa9239ccefb0f875831de9e79e11f5"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html#a07aa9239ccefb0f875831de9e79e11f5">BrawlLib.SSBB.ResourceNodes.BrawlAITypes.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> <a href="_classic_stage_tbl_node_8cs_source.html#l00592">ClassicStageTblNode.cs:592</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html">BrawlLib.SSBB.ResourceNodes.BrawlAITypes</a></div><div class="ttdef"><b>Definition:</b> <a href="_classic_stage_tbl_node_8cs_source.html#l00589">ClassicStageTblNode.cs:589</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types_html_ac74e649ededaadeb5ed86e59879df5ee"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html#ac74e649ededaadeb5ed86e59879df5ee">BrawlLib.SSBB.ResourceNodes.BrawlAITypes.AITypes</a></div><div class="ttdeci">static readonly BrawlAITypes[] AITypes</div><div class="ttdef"><b>Definition:</b> <a href="_classic_stage_tbl_node_8cs_source.html#l00600">ClassicStageTblNode.cs:600</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types_html_a07aa9239ccefb0f875831de9e79e11f5"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html#a07aa9239ccefb0f875831de9e79e11f5">BrawlLib.SSBB.ResourceNodes.BrawlAITypes.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> ClassicStageTblNode.cs:592</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html">BrawlLib.SSBB.ResourceNodes.BrawlAITypes</a></div><div class="ttdef"><b>Definition:</b> ClassicStageTblNode.cs:589</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types_html_ac74e649ededaadeb5ed86e59879df5ee"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_brawl_a_i_types.html#ac74e649ededaadeb5ed86e59879df5ee">BrawlLib.SSBB.ResourceNodes.BrawlAITypes.AITypes</a></div><div class="ttdeci">static readonly BrawlAITypes[] AITypes</div><div class="ttdef"><b>Definition:</b> ClassicStageTblNode.cs:600</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

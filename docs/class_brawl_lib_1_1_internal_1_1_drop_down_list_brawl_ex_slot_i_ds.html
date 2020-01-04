@@ -95,10 +95,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adfff78b6300f4551690527c7765f4809"><td class="memItemLeft" align="right" valign="top">override object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_brawl_ex_slot_i_ds.html#adfff78b6300f4551690527c7765f4809">ConvertTo</a> (ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)</td></tr>
 <tr class="separator:adfff78b6300f4551690527c7765f4809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00365">365</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a636d40e480f3f020ccfde593b3a44127"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a636d40e480f3f020ccfde593b3a44127">&#9670;&nbsp;</a></span>CanConvertFrom()</h2>
 
@@ -132,8 +129,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00379">379</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        {</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        }</div>
@@ -179,8 +174,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00384">384</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        {</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            {</div>
@@ -241,8 +234,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00398">398</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        {</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value.GetType() == typeof(<span class="keywordtype">byte</span>))</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            {</div>
@@ -284,8 +275,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00372">372</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        {</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html">FighterNameGenerators</a>.<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a61b7803661c7c921809dc60fe02fe2c9">slotIDList</a></div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                                                        .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
@@ -317,8 +306,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html#l00367">367</a> of file <a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        {</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        }</div>
@@ -326,14 +313,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/<a class="el" href="_brawl_ex_drop_down_lists_8cs_source.html">BrawlExDropDownLists.cs</a></li>
+<li>BrawlLib/Internal/BrawlExDropDownLists.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_html"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b.html">BrawlLib.SSBB</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_string_table_8cs_source.html#l00005">BinaryStringTable.cs:5</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_fighter_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_fighter.html">BrawlLib.SSBB.Fighter</a></div><div class="ttdef"><b>Definition:</b> <a href="_fighter_8cs_source.html#l00003">Fighter.cs:3</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html">BrawlLib.CustomLists.FighterNameGenerators</a></div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00010">CustomLists.cs:10</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_a61b7803661c7c921809dc60fe02fe2c9"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a61b7803661c7c921809dc60fe02fe2c9">BrawlLib.CustomLists.FighterNameGenerators.slotIDList</a></div><div class="ttdeci">static List&lt; Fighter &gt; slotIDList</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00015">CustomLists.cs:15</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_html"><div class="ttname"><a href="namespace_brawl_lib.html">BrawlLib</a></div><div class="ttdef"><b>Definition:</b> <a href="_per_session_settings_8cs_source.html#l00001">PerSessionSettings.cs:1</a></div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_html"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b.html">BrawlLib.SSBB</a></div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:5</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_fighter_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_fighter.html">BrawlLib.SSBB.Fighter</a></div><div class="ttdef"><b>Definition:</b> Fighter.cs:3</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html">BrawlLib.CustomLists.FighterNameGenerators</a></div><div class="ttdef"><b>Definition:</b> CustomLists.cs:10</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_a61b7803661c7c921809dc60fe02fe2c9"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a61b7803661c7c921809dc60fe02fe2c9">BrawlLib.CustomLists.FighterNameGenerators.slotIDList</a></div><div class="ttdeci">static List&lt; Fighter &gt; slotIDList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:15</div></div>
+<div class="ttc" id="anamespace_brawl_lib_html"><div class="ttname"><a href="namespace_brawl_lib.html">BrawlLib</a></div><div class="ttdef"><b>Definition:</b> PerSessionSettings.cs:1</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

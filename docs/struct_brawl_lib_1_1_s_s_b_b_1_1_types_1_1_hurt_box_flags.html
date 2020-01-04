@@ -105,10 +105,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a6f420ee2e5c81ac74f93b81aab520752"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#a6f420ee2e5c81ac74f93b81aab520752">dat0</a></td></tr>
 <tr class="separator:a6f420ee2e5c81ac74f93b81aab520752"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00920">920</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a6f420ee2e5c81ac74f93b81aab520752"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f420ee2e5c81ac74f93b81aab520752">&#9670;&nbsp;</a></span>dat0</h2>
 
@@ -129,8 +126,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00928">928</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
-
 </div>
 </div>
 <a id="aa189378f604c43f1821b6d2fac4e2b1f"></a>
@@ -144,8 +139,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00928">928</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
 
 </div>
 </div>
@@ -161,8 +154,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00928">928</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
-
 </div>
 </div>
 <a id="a32e798fcbf800f491bdc7ad94a178894"></a>
@@ -176,8 +167,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00928">928</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
 
 </div>
 </div>
@@ -201,8 +190,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00931">931</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00931"></a><span class="lineno">  931</span>&#160;        {</div>
 <div class="line"><a name="l00932"></a><span class="lineno">  932</span>&#160;            <span class="keyword">get</span> =&gt; (int) ((((<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &gt;&gt; 7) &amp; 1) | (((<span class="keywordtype">int</span>) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#a6f420ee2e5c81ac74f93b81aab520752">dat0</a> &lt;&lt; 1) &amp; 0xFF)) &amp; 0x1FF);</div>
 <div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;            <span class="keyword">set</span></div>
@@ -233,8 +220,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00947">947</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00947"></a><span class="lineno">  947</span>&#160;        {</div>
 <div class="line"><a name="l00948"></a><span class="lineno">  948</span>&#160;            <span class="keyword">get</span> =&gt; (<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &amp; 1) != 0;</div>
 <div class="line"><a name="l00949"></a><span class="lineno">  949</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> = (byte) ((<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &amp; 0xFE) | ((byte) (value ? 1 : 0) &amp; 1));</div>
@@ -261,8 +246,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00953">953</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00953"></a><span class="lineno">  953</span>&#160;        {</div>
 <div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;            <span class="keyword">get</span> =&gt; (<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &gt;&gt; 5) &amp; 3;</div>
 <div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> = (byte) ((<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &amp; 0x9F) | (((byte) value &amp; 3) &lt;&lt; 5));</div>
@@ -289,8 +272,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00959">959</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;        {</div>
 <div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;            <span class="keyword">get</span> =&gt; (<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &gt;&gt; 1) &amp; 3;</div>
 <div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> = (byte) ((<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &amp; 0xF9) | (((byte) value &amp; 3) &lt;&lt; 1));</div>
@@ -317,8 +298,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_fighter_definition_8cs_source.html#l00941">941</a> of file <a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;        {</div>
 <div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;            <span class="keyword">get</span> =&gt; (<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ab69be25c84bf8a677d9e08b23fa8a346">HurtBoxZone</a>) ((<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &gt;&gt; 3) &amp; 3);</div>
 <div class="line"><a name="l00943"></a><span class="lineno">  943</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> = (byte) ((<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">dat1</a> &amp; 0xE7) | (((byte) value &amp; 3) &lt;&lt; 3));</div>
@@ -327,12 +306,12 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>BrawlLib/SSBB/Types/<a class="el" href="_fighter_definition_8cs_source.html">FighterDefinition.cs</a></li>
+<li>BrawlLib/SSBB/Types/FighterDefinition.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags_html_aa189378f604c43f1821b6d2fac4e2b1f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">BrawlLib.SSBB.Types.HurtBoxFlags.dat1</a></div><div class="ttdeci">byte dat1</div><div class="ttdef"><b>Definition:</b> <a href="_fighter_definition_8cs_source.html#l00928">FighterDefinition.cs:928</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_ab69be25c84bf8a677d9e08b23fa8a346"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ab69be25c84bf8a677d9e08b23fa8a346">BrawlLib.SSBB.Types.HurtBoxZone</a></div><div class="ttdeci">HurtBoxZone</div><div class="ttdef"><b>Definition:</b> <a href="_fighter_definition_8cs_source.html#l00912">FighterDefinition.cs:912</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags_html_a6f420ee2e5c81ac74f93b81aab520752"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#a6f420ee2e5c81ac74f93b81aab520752">BrawlLib.SSBB.Types.HurtBoxFlags.dat0</a></div><div class="ttdeci">byte dat0</div><div class="ttdef"><b>Definition:</b> <a href="_fighter_definition_8cs_source.html#l00928">FighterDefinition.cs:928</a></div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags_html_aa189378f604c43f1821b6d2fac4e2b1f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#aa189378f604c43f1821b6d2fac4e2b1f">BrawlLib.SSBB.Types.HurtBoxFlags.dat1</a></div><div class="ttdeci">byte dat1</div><div class="ttdef"><b>Definition:</b> FighterDefinition.cs:928</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_ab69be25c84bf8a677d9e08b23fa8a346"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ab69be25c84bf8a677d9e08b23fa8a346">BrawlLib.SSBB.Types.HurtBoxZone</a></div><div class="ttdeci">HurtBoxZone</div><div class="ttdef"><b>Definition:</b> FighterDefinition.cs:912</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags_html_a6f420ee2e5c81ac74f93b81aab520752"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_hurt_box_flags.html#a6f420ee2e5c81ac74f93b81aab520752">BrawlLib.SSBB.Types.HurtBoxFlags.dat0</a></div><div class="ttdeci">byte dat0</div><div class="ttdef"><b>Definition:</b> FighterDefinition.cs:928</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

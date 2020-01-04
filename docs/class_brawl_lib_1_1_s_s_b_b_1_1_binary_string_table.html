@@ -109,10 +109,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a6ce1c7c406341eac31b787c4abd50ad8"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a> = new <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>(&quot;&quot;, 0)</td></tr>
 <tr class="separator:a6ce1c7c406341eac31b787c4abd50ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00007">7</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7c3a1bff56e6af1930ae9054d14138de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c3a1bff56e6af1930ae9054d14138de">&#9670;&nbsp;</a></span>BinaryStringTable()</h2>
 
@@ -135,8 +132,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00015">15</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Add(<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a>);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
@@ -167,8 +162,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00020">20</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            BinaryStringEntry entry = <span class="keyword">new</span> BinaryStringEntry(s, <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Count);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Add(entry);</div>
@@ -199,8 +192,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00060">60</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Count * 0x10 + 8;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
@@ -230,8 +221,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00027">27</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            BinaryStringEntry current = <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">_left</a>, prev = <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a>;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordtype">bool</span> isRight = <span class="keyword">false</span>;</div>
@@ -289,8 +278,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00065">65</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a>* group = (<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a>*) address;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            group-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#af823408fa57231bb40d9fe997125c9df">_numEntries</a> = <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Count - 1;</div>
@@ -326,8 +313,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00009">9</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
-
 </div>
 </div>
 <a id="a6ce1c7c406341eac31b787c4abd50ad8"></a>
@@ -350,8 +335,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00010">10</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
-
 </div>
 </div>
 <a id="aef5d92c553c67f36432575acfc8215cc"></a>
@@ -365,8 +348,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00012">12</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
 
 </div>
 </div>
@@ -382,24 +363,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_binary_string_table_8cs_source.html#l00013">13</a> of file <a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/SSBB/<a class="el" href="_binary_string_table_8cs_source.html">BinaryStringTable.cs</a></li>
+<li>BrawlLib/SSBB/BinaryStringTable.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a6c9b29ba0d665c00d02ad02d89191746"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6c9b29ba0d665c00d02ad02d89191746">BrawlLib.SSBB.BinaryStringTable.Traverse</a></div><div class="ttdeci">void Traverse(BinaryStringEntry entry)</div><div class="ttdef"><b>Definition:</b> <a href="_binary_string_table_8cs_source.html#l00027">BinaryStringTable.cs:27</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_a4ff3a85eda1d79596de7df724f5d16fd"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#a4ff3a85eda1d79596de7df724f5d16fd">BrawlLib.SSBB.Types.ResourceGroup._first</a></div><div class="ttdeci">ResourceEntry _first</div><div class="ttdef"><b>Definition:</b> <a href="_common_8cs_source.html#l00387">Common.cs:387</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_a2ea527575f08d08f7a599bc28ac9956b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#a2ea527575f08d08f7a599bc28ac9956b">BrawlLib.SSBB.Types.ResourceGroup._totalSize</a></div><div class="ttdeci">bint _totalSize</div><div class="ttdef"><b>Definition:</b> <a href="_common_8cs_source.html#l00385">Common.cs:385</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_af823408fa57231bb40d9fe997125c9df"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#af823408fa57231bb40d9fe997125c9df">BrawlLib.SSBB.Types.ResourceGroup._numEntries</a></div><div class="ttdeci">bint _numEntries</div><div class="ttdef"><b>Definition:</b> <a href="_common_8cs_source.html#l00386">Common.cs:386</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">BrawlLib.SSBB.Types.ResourceGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_8cs_source.html#l00381">Common.cs:381</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_ab88f755a6e62aba6cdee61edf1515ffe"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ab88f755a6e62aba6cdee61edf1515ffe">BrawlLib.SSBB.BinaryStringEntry.GenerateId</a></div><div class="ttdeci">int GenerateId(BinaryStringEntry comparison)</div><div class="ttdef"><b>Definition:</b> <a href="_binary_string_table_8cs_source.html#l00121">BinaryStringTable.cs:121</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a66acb743daec1c1f5bc9fe4710014944"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">BrawlLib.SSBB.BinaryStringTable._entries</a></div><div class="ttdeci">readonly List&lt; BinaryStringEntry &gt; _entries</div><div class="ttdef"><b>Definition:</b> <a href="_binary_string_table_8cs_source.html#l00009">BinaryStringTable.cs:9</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a6ce1c7c406341eac31b787c4abd50ad8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">BrawlLib.SSBB.BinaryStringTable._root</a></div><div class="ttdeci">readonly BinaryStringEntry _root</div><div class="ttdef"><b>Definition:</b> <a href="_binary_string_table_8cs_source.html#l00010">BinaryStringTable.cs:10</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a07ee8dabaad4adaf9d3d0ca99ea074ce"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">BrawlLib.SSBB.BinaryStringEntry._left</a></div><div class="ttdeci">BinaryStringEntry _left</div><div class="ttdef"><b>Definition:</b> <a href="_binary_string_table_8cs_source.html#l00083">BinaryStringTable.cs:83</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">BrawlLib.SSBB.Types.ResourceEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_8cs_source.html#l00473">Common.cs:473</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a6c9b29ba0d665c00d02ad02d89191746"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6c9b29ba0d665c00d02ad02d89191746">BrawlLib.SSBB.BinaryStringTable.Traverse</a></div><div class="ttdeci">void Traverse(BinaryStringEntry entry)</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:27</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_a4ff3a85eda1d79596de7df724f5d16fd"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#a4ff3a85eda1d79596de7df724f5d16fd">BrawlLib.SSBB.Types.ResourceGroup._first</a></div><div class="ttdeci">ResourceEntry _first</div><div class="ttdef"><b>Definition:</b> Common.cs:387</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_a2ea527575f08d08f7a599bc28ac9956b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#a2ea527575f08d08f7a599bc28ac9956b">BrawlLib.SSBB.Types.ResourceGroup._totalSize</a></div><div class="ttdeci">bint _totalSize</div><div class="ttdef"><b>Definition:</b> Common.cs:385</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_af823408fa57231bb40d9fe997125c9df"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#af823408fa57231bb40d9fe997125c9df">BrawlLib.SSBB.Types.ResourceGroup._numEntries</a></div><div class="ttdeci">bint _numEntries</div><div class="ttdef"><b>Definition:</b> Common.cs:386</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">BrawlLib.SSBB.Types.ResourceGroup</a></div><div class="ttdef"><b>Definition:</b> Common.cs:381</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_ab88f755a6e62aba6cdee61edf1515ffe"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ab88f755a6e62aba6cdee61edf1515ffe">BrawlLib.SSBB.BinaryStringEntry.GenerateId</a></div><div class="ttdeci">int GenerateId(BinaryStringEntry comparison)</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:121</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a66acb743daec1c1f5bc9fe4710014944"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">BrawlLib.SSBB.BinaryStringTable._entries</a></div><div class="ttdeci">readonly List&lt; BinaryStringEntry &gt; _entries</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a6ce1c7c406341eac31b787c4abd50ad8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">BrawlLib.SSBB.BinaryStringTable._root</a></div><div class="ttdeci">readonly BinaryStringEntry _root</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:10</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a07ee8dabaad4adaf9d3d0ca99ea074ce"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">BrawlLib.SSBB.BinaryStringEntry._left</a></div><div class="ttdeci">BinaryStringEntry _left</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:83</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">BrawlLib.SSBB.Types.ResourceEntry</a></div><div class="ttdef"><b>Definition:</b> Common.cs:473</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

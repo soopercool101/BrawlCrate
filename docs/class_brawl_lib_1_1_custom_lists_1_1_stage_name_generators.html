@@ -117,10 +117,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:ada8294a5339642df6a8b24858cfb797c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a></td></tr>
 <tr class="separator:ada8294a5339642df6a8b24858cfb797c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00315">315</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a450f499a4f16dc50d10bf14b14365749"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a450f499a4f16dc50d10bf14b14365749">&#9670;&nbsp;</a></span>FromID()</h2>
 
@@ -144,8 +141,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00331">331</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        {</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a>)</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            {</div>
@@ -191,8 +186,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00352">352</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        {</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a>)</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            {</div>
@@ -243,17 +236,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00379">379</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        {</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            Assembly assembly = Assembly.GetExecutingAssembly();</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            {</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                <span class="keywordtype">string</span> resourceName = <span class="stringliteral">&quot;BrawlLib.CustomLists.&quot;</span> +</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                                      (<a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                                      (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                                             .Equals(<span class="stringliteral">&quot;en&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                          ? <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                                          : <a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Threading.Thread.CurrentThread.CurrentUICulture.ToString()</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                                          : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                                                  .Substring(0, 2).ToLower() + <span class="charliteral">&#39;.&#39;</span>) + <span class="stringliteral">&quot;StageList.txt&quot;</span>;</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                <span class="keywordtype">string</span> listDefault = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                <span class="keyword">using</span> (Stream stream = assembly.GetManifestResourceStream(resourceName))</div>
@@ -306,8 +297,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00417">417</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        {</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            Directory.CreateDirectory(<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a788ac5a9d92744743240504e72f18f29">directory</a>);</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <span class="keywordflow">if</span> (!File.Exists(<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>))</div>
@@ -373,8 +362,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00319">319</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
-
 </div>
 </div>
 <a id="ad3e594f29a67c01c94b3009c31e30987"></a>
@@ -396,8 +383,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00317">317</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 
 </div>
 </div>
@@ -421,8 +406,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00323">323</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
-
 </div>
 </div>
 <a id="ada8294a5339642df6a8b24858cfb797c"></a>
@@ -444,8 +427,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00329">329</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 
 </div>
 </div>
@@ -469,8 +450,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00324">324</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
-
 </div>
 </div>
 <a id="aed3c3288e1e77fd894fcd915171ff0f7"></a>
@@ -492,8 +471,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00325">325</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 
 </div>
 </div>
@@ -517,8 +494,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00320">320</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
-
 </div>
 </div>
 <a id="ac052c2bc1e6a2644e674f21ec2fad01e"></a>
@@ -540,8 +515,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00327">327</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 
 </div>
 </div>
@@ -565,8 +538,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00326">326</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2416d7dce9e785d285168449a9aede53"></a>
@@ -588,8 +559,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00318">318</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
 
 </div>
 </div>
@@ -613,29 +582,26 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_custom_lists_8cs_source.html#l00328">328</a> of file <a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/CustomLists/<a class="el" href="_custom_lists_8cs_source.html">CustomLists.cs</a></li>
+<li>BrawlLib/CustomLists/CustomLists.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_afeaf47c63c01dde2d68435ffdee2d070"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#afeaf47c63c01dde2d68435ffdee2d070">BrawlLib.CustomLists.StageNameGenerators.idIndex</a></div><div class="ttdeci">static readonly int idIndex</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00324">CustomLists.cs:324</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a29af3e15d8d59aad8fbfef61e2bd701b"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a29af3e15d8d59aad8fbfef61e2bd701b">BrawlLib.CustomLists.StageNameGenerators.GenerateDefaultList</a></div><div class="ttdeci">static void GenerateDefaultList()</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00379">CustomLists.cs:379</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ad3e594f29a67c01c94b3009c31e30987"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">BrawlLib.CustomLists.StageNameGenerators.fileList</a></div><div class="ttdeci">static List&lt; string &gt; fileList</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00317">CustomLists.cs:317</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> <a href="_stage_8cs_source.html#l00006">Stage.cs:6</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a034b651f59b73606b7fb159f2b128130"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">BrawlLib.CustomLists.StageNameGenerators.nameIndex</a></div><div class="ttdeci">static readonly int nameIndex</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00326">CustomLists.cs:326</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a8780d724f1679bffc04a89848d4f90bf"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">BrawlLib.CustomLists.StageNameGenerators.flagIndex</a></div><div class="ttdeci">static readonly int flagIndex</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00323">CustomLists.cs:323</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a2416d7dce9e785d285168449a9aede53"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">BrawlLib.CustomLists.StageNameGenerators.stageList</a></div><div class="ttdeci">static List&lt; Stage &gt; stageList</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00318">CustomLists.cs:318</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_aed3c3288e1e77fd894fcd915171ff0f7"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#aed3c3288e1e77fd894fcd915171ff0f7">BrawlLib.CustomLists.StageNameGenerators.internalNameIndex</a></div><div class="ttdeci">static readonly int internalNameIndex</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00325">CustomLists.cs:325</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4be5663ce3c616ccc08d0b458f3fb2b0"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4be5663ce3c616ccc08d0b458f3fb2b0">BrawlLib.CustomLists.StageNameGenerators.trimChars</a></div><div class="ttdeci">static readonly char[] trimChars</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00328">CustomLists.cs:328</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a641199c797ea90bae15d8119959c0f23"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">BrawlLib.CustomLists.StageNameGenerators.listName</a></div><div class="ttdeci">static string listName</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00320">CustomLists.cs:320</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ada8294a5339642df6a8b24858cfb797c"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">BrawlLib.CustomLists.StageNameGenerators.generated</a></div><div class="ttdeci">static bool generated</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00329">CustomLists.cs:329</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a788ac5a9d92744743240504e72f18f29"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a788ac5a9d92744743240504e72f18f29">BrawlLib.CustomLists.StageNameGenerators.directory</a></div><div class="ttdeci">static string directory</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00319">CustomLists.cs:319</a></div></div>
-<div class="ttc" id="a_p_a_t0_offset_control_8cs_html_a4598c6b5042b9ab31ee4f4644765857d"><div class="ttname"><a href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a></div><div class="ttdeci">﻿﻿using System</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_offset_control_8cs_source.html#l00001">PAT0OffsetControl.cs:1</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ac052c2bc1e6a2644e674f21ec2fad01e"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ac052c2bc1e6a2644e674f21ec2fad01e">BrawlLib.CustomLists.StageNameGenerators.minimumLength</a></div><div class="ttdeci">static readonly int minimumLength</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00327">CustomLists.cs:327</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4ec7609464439a8351977b77d99bb70f"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">BrawlLib.CustomLists.StageNameGenerators.GenerateList</a></div><div class="ttdeci">static bool GenerateList()</div><div class="ttdef"><b>Definition:</b> <a href="_custom_lists_8cs_source.html#l00417">CustomLists.cs:417</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_afeaf47c63c01dde2d68435ffdee2d070"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#afeaf47c63c01dde2d68435ffdee2d070">BrawlLib.CustomLists.StageNameGenerators.idIndex</a></div><div class="ttdeci">static readonly int idIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:324</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a29af3e15d8d59aad8fbfef61e2bd701b"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a29af3e15d8d59aad8fbfef61e2bd701b">BrawlLib.CustomLists.StageNameGenerators.GenerateDefaultList</a></div><div class="ttdeci">static void GenerateDefaultList()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:379</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ad3e594f29a67c01c94b3009c31e30987"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">BrawlLib.CustomLists.StageNameGenerators.fileList</a></div><div class="ttdeci">static List&lt; string &gt; fileList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:317</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> Stage.cs:6</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a034b651f59b73606b7fb159f2b128130"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">BrawlLib.CustomLists.StageNameGenerators.nameIndex</a></div><div class="ttdeci">static readonly int nameIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:326</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a8780d724f1679bffc04a89848d4f90bf"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">BrawlLib.CustomLists.StageNameGenerators.flagIndex</a></div><div class="ttdeci">static readonly int flagIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:323</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a2416d7dce9e785d285168449a9aede53"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">BrawlLib.CustomLists.StageNameGenerators.stageList</a></div><div class="ttdeci">static List&lt; Stage &gt; stageList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:318</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_aed3c3288e1e77fd894fcd915171ff0f7"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#aed3c3288e1e77fd894fcd915171ff0f7">BrawlLib.CustomLists.StageNameGenerators.internalNameIndex</a></div><div class="ttdeci">static readonly int internalNameIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:325</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4be5663ce3c616ccc08d0b458f3fb2b0"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4be5663ce3c616ccc08d0b458f3fb2b0">BrawlLib.CustomLists.StageNameGenerators.trimChars</a></div><div class="ttdeci">static readonly char[] trimChars</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:328</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a641199c797ea90bae15d8119959c0f23"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">BrawlLib.CustomLists.StageNameGenerators.listName</a></div><div class="ttdeci">static string listName</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:320</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ada8294a5339642df6a8b24858cfb797c"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">BrawlLib.CustomLists.StageNameGenerators.generated</a></div><div class="ttdeci">static bool generated</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:329</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a788ac5a9d92744743240504e72f18f29"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a788ac5a9d92744743240504e72f18f29">BrawlLib.CustomLists.StageNameGenerators.directory</a></div><div class="ttdeci">static string directory</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:319</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ac052c2bc1e6a2644e674f21ec2fad01e"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ac052c2bc1e6a2644e674f21ec2fad01e">BrawlLib.CustomLists.StageNameGenerators.minimumLength</a></div><div class="ttdeci">static readonly int minimumLength</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:327</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4ec7609464439a8351977b77d99bb70f"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">BrawlLib.CustomLists.StageNameGenerators.GenerateList</a></div><div class="ttdeci">static bool GenerateList()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:417</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

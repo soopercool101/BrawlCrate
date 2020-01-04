@@ -117,10 +117,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aa33a643dcfa75af2cfa960a24fcce661"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aa33a643dcfa75af2cfa960a24fcce661">_max</a></td></tr>
 <tr class="separator:aa33a643dcfa75af2cfa960a24fcce661"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00615">615</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7d7c788366faee73b10687da8f8bb4b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7d7c788366faee73b10687da8f8bb4b1">&#9670;&nbsp;</a></span>RenderInfo()</h2>
 
@@ -144,8 +141,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00617">617</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;            {</div>
 <div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a> = manager;</div>
 <div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; i++)</div>
@@ -182,18 +177,16 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00638">638</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            {</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1e1001db14a5b5cea1b90601667398ea">_min</a> = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>(<span class="keywordtype">float</span>.MaxValue);</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aa33a643dcfa75af2cfa960a24fcce661">_max</a> = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>(<span class="keywordtype">float</span>.MinValue);</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1e1001db14a5b5cea1b90601667398ea">_min</a> = <span class="keyword">new</span> Vector2(<span class="keywordtype">float</span>.MaxValue);</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aa33a643dcfa75af2cfa960a24fcce661">_max</a> = <span class="keyword">new</span> Vector2(<span class="keywordtype">float</span>.MinValue);</div>
 <div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>?._faceData != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;                {</div>
 <div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 4; i &lt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>.Length; i++)</div>
 <div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;                    {</div>
 <div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[i] != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a0708d41036483774e21e69cca7c75e5c">_enabled</a>[i - 4])</div>
 <div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;                        {</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;                            <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>* pSrc = (<a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>*) <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[i].Address;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;                            Vector2* pSrc = (Vector2*) <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[i].Address;</div>
 <div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;                            for (<span class="keywordtype">int</span> x = 0; x &lt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1983e4957dd62877ddd9bf3a969164a9">_pointCount</a>; x++, pSrc++)</div>
 <div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;                            {</div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1e1001db14a5b5cea1b90601667398ea">_min</a>.<a class="code" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a7448ac846d0606dd661624a4ebefb6db">Min</a>(*pSrc);</div>
@@ -228,8 +221,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00659">659</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;            {</div>
 <div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a3a6fc8252e21d8307f11d78a39a823a3">_stride</a> = 0;</div>
 <div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1696ea452804d7dddb1cf37f1d3d5ff6">_isEnabled</a>)</div>
@@ -268,8 +259,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00674">674</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            {</div>
 <div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1696ea452804d7dddb1cf37f1d3d5ff6">_isEnabled</a>)</div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                {</div>
@@ -292,7 +281,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160; </div>
 <div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1b0068c29bde5238fdb24b7b632cc687">_renderBuffer</a> == <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;                {</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                    <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1b0068c29bde5238fdb24b7b632cc687">_renderBuffer</a> = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#ab94d3ed7d3a1110242e64f6b6afe9e20">UnsafeBuffer</a>(bufferSize);</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                    <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1b0068c29bde5238fdb24b7b632cc687">_renderBuffer</a> = <span class="keyword">new</span> UnsafeBuffer(bufferSize);</div>
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                    <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a07c3ca256f363d1d664b514cc30ec189">_dirty</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;                }</div>
 <div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160; </div>
@@ -307,7 +296,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160; </div>
 <div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;                GL.EnableClientState(ArrayCap.VertexArray);</div>
 <div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160; </div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>* pData = (<a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>*) <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1b0068c29bde5238fdb24b7b632cc687">_renderBuffer</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a49e0f38b19d107f5986bed7045524dc7">Address</a>;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;                Vector2* pData = (Vector2*) <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1b0068c29bde5238fdb24b7b632cc687">_renderBuffer</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a49e0f38b19d107f5986bed7045524dc7">Address</a>;</div>
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;                for (<span class="keywordtype">int</span> i = 4; i &lt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>.Length; i++)</div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;                {</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[i] != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a0708d41036483774e21e69cca7c75e5c">_enabled</a>[i - 4])</div>
@@ -350,8 +339,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00730">730</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            {</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;                index += 4;</div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[index] == <span class="keyword">null</span> || !<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a0708d41036483774e21e69cca7c75e5c">_enabled</a>[index - 4])</div>
@@ -369,10 +356,10 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                    }</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                }</div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160; </div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>* pSrc = (<a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>*) <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[index].Address;</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                Vector2* pSrc = (Vector2*) <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[index].Address;</div>
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                for (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">_manager</a>.<a class="code" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1983e4957dd62877ddd9bf3a969164a9">_pointCount</a>; i++, pDst += <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a3a6fc8252e21d8307f11d78a39a823a3">_stride</a>)</div>
 <div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                {</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                    *(<a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a>*) pDst = *pSrc++;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                    *(Vector2*) pDst = *pSrc++;</div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                }</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            }</div>
 </div><!-- fragment -->
@@ -391,8 +378,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00634">634</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
-
 </div>
 </div>
 <a id="a0708d41036483774e21e69cca7c75e5c"></a>
@@ -406,8 +391,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00633">633</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -423,8 +406,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00629">629</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
-
 </div>
 </div>
 <a id="aeb13dbe570411d4929519b349a6777ba"></a>
@@ -438,8 +419,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00631">631</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -463,8 +442,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00636">636</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
-
 </div>
 </div>
 <a id="a1e1001db14a5b5cea1b90601667398ea"></a>
@@ -478,8 +455,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00636">636</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
 
 </div>
 </div>
@@ -495,8 +470,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00632">632</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
-
 </div>
 </div>
 <a id="a3a6fc8252e21d8307f11d78a39a823a3"></a>
@@ -511,38 +484,34 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_tex_coord_renderer_8cs_source.html#l00630">630</a> of file <a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/Windows/Controls/<a class="el" href="_tex_coord_renderer_8cs_source.html">TexCoordRenderer.cs</a></li>
+<li>BrawlLib/Internal/Windows/Controls/TexCoordRenderer.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_g_l_primitive_html_a28f3a2ea9668dded1630e601a908e1e7"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_g_l_primitive.html#a28f3a2ea9668dded1630e601a908e1e7">BrawlLib.Modeling.GLPrimitive.Render</a></div><div class="ttdeci">unsafe void Render()</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l02566">PrimitiveManager.cs:2566</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_aa33a643dcfa75af2cfa960a24fcce661"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aa33a643dcfa75af2cfa960a24fcce661">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._max</a></div><div class="ttdeci">Vector2 _max</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00636">TexCoordRenderer.cs:636</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a6631f84d8ca2c5c6faefe20a1a69bac3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a6631f84d8ca2c5c6faefe20a1a69bac3">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo.CalcStride</a></div><div class="ttdeci">void CalcStride()</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00659">TexCoordRenderer.cs:659</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a1983e4957dd62877ddd9bf3a969164a9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1983e4957dd62877ddd9bf3a969164a9">BrawlLib.Modeling.PrimitiveManager._pointCount</a></div><div class="ttdeci">int _pointCount</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00051">PrimitiveManager.cs:51</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a1e1001db14a5b5cea1b90601667398ea"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1e1001db14a5b5cea1b90601667398ea">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._min</a></div><div class="ttdeci">Vector2 _min</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00636">TexCoordRenderer.cs:636</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a0f53e1dae3a1b78cb475bd3decff0096"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f53e1dae3a1b78cb475bd3decff0096">BrawlLib.Modeling.PrimitiveManager._triangles</a></div><div class="ttdeci">GLPrimitive _triangles</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00078">PrimitiveManager.cs:78</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html_a7448ac846d0606dd661624a4ebefb6db"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a7448ac846d0606dd661624a4ebefb6db">BrawlLib.Internal.Vector2.Min</a></div><div class="ttdeci">static Vector2 Min(Vector2 v1, Vector2 v2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00123">Vector2.cs:123</a></div></div>
-<div class="ttc" id="a_primitive_manager_8cs_html_a169087b669368ccf75e8a501677679df"><div class="ttname"><a href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a></div><div class="ttdeci">BrawlLib.Internal.Vector2 Vector2</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00014">PrimitiveManager.cs:14</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a0708d41036483774e21e69cca7c75e5c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a0708d41036483774e21e69cca7c75e5c">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._enabled</a></div><div class="ttdeci">bool[] _enabled</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00633">TexCoordRenderer.cs:633</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a3a6fc8252e21d8307f11d78a39a823a3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a3a6fc8252e21d8307f11d78a39a823a3">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._stride</a></div><div class="ttdeci">int _stride</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00630">TexCoordRenderer.cs:630</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_ac4cd840cd0d6851a3089b7526b0c0326"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#ac4cd840cd0d6851a3089b7526b0c0326">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo.CalcMinMax</a></div><div class="ttdeci">void CalcMinMax()</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00638">TexCoordRenderer.cs:638</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_aeb13dbe570411d4929519b349a6777ba"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._manager</a></div><div class="ttdeci">PrimitiveManager _manager</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00631">TexCoordRenderer.cs:631</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a1696ea452804d7dddb1cf37f1d3d5ff6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1696ea452804d7dddb1cf37f1d3d5ff6">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._isEnabled</a></div><div class="ttdeci">bool _isEnabled</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00629">TexCoordRenderer.cs:629</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a1b0068c29bde5238fdb24b7b632cc687"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1b0068c29bde5238fdb24b7b632cc687">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._renderBuffer</a></div><div class="ttdeci">UnsafeBuffer _renderBuffer</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00632">TexCoordRenderer.cs:632</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a64110932d38d5589023d7aa3e7266d25"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a64110932d38d5589023d7aa3e7266d25">BrawlLib.Internal.UnsafeBuffer.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_buffer_8cs_source.html#l00014">UnsafeBuffer.cs:14</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_adc5baac49f70097c68279716f51155b7"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">BrawlLib.Modeling.PrimitiveManager._faceData</a></div><div class="ttdeci">UnsafeBuffer[] _faceData</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00059">PrimitiveManager.cs:59</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a4116a27d2448777ac32360a18b2fd856"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a4116a27d2448777ac32360a18b2fd856">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo.UpdateStream</a></div><div class="ttdeci">unsafe void UpdateStream(int index)</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00730">TexCoordRenderer.cs:730</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a07c3ca256f363d1d664b514cc30ec189"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a07c3ca256f363d1d664b514cc30ec189">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._dirty</a></div><div class="ttdeci">bool _dirty</div><div class="ttdef"><b>Definition:</b> <a href="_tex_coord_renderer_8cs_source.html#l00634">TexCoordRenderer.cs:634</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a49e0f38b19d107f5986bed7045524dc7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a49e0f38b19d107f5986bed7045524dc7">BrawlLib.Internal.UnsafeBuffer.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_buffer_8cs_source.html#l00009">UnsafeBuffer.cs:9</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a34fafb9c92a20c3a37faef2006bc475d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a34fafb9c92a20c3a37faef2006bc475d">BrawlLib.Modeling.PrimitiveManager._points</a></div><div class="ttdeci">GLPrimitive _points</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00078">PrimitiveManager.cs:78</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html_a39691414d9d98349a81b412b25b95ad8"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a39691414d9d98349a81b412b25b95ad8">BrawlLib.Internal.Vector2.Max</a></div><div class="ttdeci">static Vector2 Max(Vector2 v1, Vector2 v2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00152">Vector2.cs:152</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_ae3caae433e85120ace0fb13876cf8c3e"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae3caae433e85120ace0fb13876cf8c3e">BrawlLib.Modeling.PrimitiveManager._lines</a></div><div class="ttdeci">GLPrimitive _lines</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00078">PrimitiveManager.cs:78</a></div></div>
-<div class="ttc" id="a_primitive_manager_8cs_html_ab94d3ed7d3a1110242e64f6b6afe9e20"><div class="ttname"><a href="_primitive_manager_8cs.html#ab94d3ed7d3a1110242e64f6b6afe9e20">UnsafeBuffer</a></div><div class="ttdeci">BrawlLib.Internal.UnsafeBuffer UnsafeBuffer</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00013">PrimitiveManager.cs:13</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a800cc008f7054b8c9d2f9dfe5bff684b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a800cc008f7054b8c9d2f9dfe5bff684b">BrawlLib.Internal.UnsafeBuffer.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_unsafe_buffer_8cs_source.html#l00032">UnsafeBuffer.cs:32</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_g_l_primitive_html_a28f3a2ea9668dded1630e601a908e1e7"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_g_l_primitive.html#a28f3a2ea9668dded1630e601a908e1e7">BrawlLib.Modeling.GLPrimitive.Render</a></div><div class="ttdeci">unsafe void Render()</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:2566</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_aa33a643dcfa75af2cfa960a24fcce661"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aa33a643dcfa75af2cfa960a24fcce661">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._max</a></div><div class="ttdeci">Vector2 _max</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:636</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a6631f84d8ca2c5c6faefe20a1a69bac3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a6631f84d8ca2c5c6faefe20a1a69bac3">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo.CalcStride</a></div><div class="ttdeci">void CalcStride()</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:659</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a1983e4957dd62877ddd9bf3a969164a9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1983e4957dd62877ddd9bf3a969164a9">BrawlLib.Modeling.PrimitiveManager._pointCount</a></div><div class="ttdeci">int _pointCount</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:51</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a1e1001db14a5b5cea1b90601667398ea"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1e1001db14a5b5cea1b90601667398ea">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._min</a></div><div class="ttdeci">Vector2 _min</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:636</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a0f53e1dae3a1b78cb475bd3decff0096"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f53e1dae3a1b78cb475bd3decff0096">BrawlLib.Modeling.PrimitiveManager._triangles</a></div><div class="ttdeci">GLPrimitive _triangles</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html_a7448ac846d0606dd661624a4ebefb6db"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a7448ac846d0606dd661624a4ebefb6db">BrawlLib.Internal.Vector2.Min</a></div><div class="ttdeci">static Vector2 Min(Vector2 v1, Vector2 v2)</div><div class="ttdef"><b>Definition:</b> Vector2.cs:123</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a0708d41036483774e21e69cca7c75e5c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a0708d41036483774e21e69cca7c75e5c">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._enabled</a></div><div class="ttdeci">bool[] _enabled</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:633</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a3a6fc8252e21d8307f11d78a39a823a3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a3a6fc8252e21d8307f11d78a39a823a3">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._stride</a></div><div class="ttdeci">int _stride</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:630</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_ac4cd840cd0d6851a3089b7526b0c0326"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#ac4cd840cd0d6851a3089b7526b0c0326">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo.CalcMinMax</a></div><div class="ttdeci">void CalcMinMax()</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:638</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_aeb13dbe570411d4929519b349a6777ba"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#aeb13dbe570411d4929519b349a6777ba">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._manager</a></div><div class="ttdeci">PrimitiveManager _manager</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:631</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a1696ea452804d7dddb1cf37f1d3d5ff6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1696ea452804d7dddb1cf37f1d3d5ff6">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._isEnabled</a></div><div class="ttdeci">bool _isEnabled</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:629</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a1b0068c29bde5238fdb24b7b632cc687"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a1b0068c29bde5238fdb24b7b632cc687">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._renderBuffer</a></div><div class="ttdeci">UnsafeBuffer _renderBuffer</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:632</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a64110932d38d5589023d7aa3e7266d25"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a64110932d38d5589023d7aa3e7266d25">BrawlLib.Internal.UnsafeBuffer.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:14</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_adc5baac49f70097c68279716f51155b7"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">BrawlLib.Modeling.PrimitiveManager._faceData</a></div><div class="ttdeci">UnsafeBuffer[] _faceData</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:59</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a4116a27d2448777ac32360a18b2fd856"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a4116a27d2448777ac32360a18b2fd856">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo.UpdateStream</a></div><div class="ttdeci">unsafe void UpdateStream(int index)</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:730</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info_html_a07c3ca256f363d1d664b514cc30ec189"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer_1_1_render_info.html#a07c3ca256f363d1d664b514cc30ec189">BrawlLib.Internal.Windows.Controls.TexCoordRenderer.RenderInfo._dirty</a></div><div class="ttdeci">bool _dirty</div><div class="ttdef"><b>Definition:</b> TexCoordRenderer.cs:634</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a49e0f38b19d107f5986bed7045524dc7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a49e0f38b19d107f5986bed7045524dc7">BrawlLib.Internal.UnsafeBuffer.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a34fafb9c92a20c3a37faef2006bc475d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a34fafb9c92a20c3a37faef2006bc475d">BrawlLib.Modeling.PrimitiveManager._points</a></div><div class="ttdeci">GLPrimitive _points</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html_a39691414d9d98349a81b412b25b95ad8"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a39691414d9d98349a81b412b25b95ad8">BrawlLib.Internal.Vector2.Max</a></div><div class="ttdeci">static Vector2 Max(Vector2 v1, Vector2 v2)</div><div class="ttdef"><b>Definition:</b> Vector2.cs:152</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_ae3caae433e85120ace0fb13876cf8c3e"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae3caae433e85120ace0fb13876cf8c3e">BrawlLib.Modeling.PrimitiveManager._lines</a></div><div class="ttdeci">GLPrimitive _lines</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a800cc008f7054b8c9d2f9dfe5bff684b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a800cc008f7054b8c9d2f9dfe5bff684b">BrawlLib.Internal.UnsafeBuffer.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:32</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

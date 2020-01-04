@@ -100,10 +100,7 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a79f1dd42d3d111c6b3dab27a0e83a3f0"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a79f1dd42d3d111c6b3dab27a0e83a3f0">TempFiles</a> ()</td></tr>
 <tr class="separator:a79f1dd42d3d111c6b3dab27a0e83a3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_temp_files_8cs_source.html#l00019">19</a> of file <a class="el" href="_temp_files_8cs_source.html">TempFiles.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a79f1dd42d3d111c6b3dab27a0e83a3f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79f1dd42d3d111c6b3dab27a0e83a3f0">&#9670;&nbsp;</a></span>TempFiles()</h2>
 
@@ -126,8 +123,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_temp_files_8cs_source.html#l00023">23</a> of file <a class="el" href="_temp_files_8cs_source.html">TempFiles.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordtype">string</span> p = Path.Combine(Path.GetTempPath(), <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">SUBDIR</a>);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> (Directory.Exists(p))</div>
@@ -173,8 +168,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a temporary file in the <a class="el" href="namespace_brawl_lib_1_1_brawl_manager_lib.html">BrawlManagerLib</a> subdirectory of the system temporary folder. This function can be used for image files. For files that can be opened as a ResourceNode, consider using the MakeTempNode function instead. </p>
-
-<p class="definition">Definition at line <a class="el" href="_temp_files_8cs_source.html#l00045">45</a> of file <a class="el" href="_temp_files_8cs_source.html">TempFiles.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> (!extension.StartsWith(<span class="stringliteral">&quot;.&quot;</span>))</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div>
@@ -210,8 +203,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Deletes all files created by the Create function (but not those created by MakeTempNode.) </p>
-
-<p class="definition">Definition at line <a class="el" href="_temp_files_8cs_source.html#l00058">58</a> of file <a class="el" href="_temp_files_8cs_source.html">TempFiles.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            List&lt;Exception&gt; exceptions = <span class="keyword">new</span> List&lt;Exception&gt;();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">try</span></div>
@@ -278,8 +269,6 @@ Static Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Creates a ResourceNode from a temporary file using FileMap.FromTempFile. The file will be deleted when the underlying FileMap's stream is closed. </p>
-
-<p class="definition">Definition at line <a class="el" href="_temp_files_8cs_source.html#l00101">101</a> of file <a class="el" href="_temp_files_8cs_source.html">TempFiles.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordtype">byte</span>[] data = File.ReadAllBytes(path);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
@@ -312,22 +301,20 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_temp_files_8cs_source.html#l00021">21</a> of file <a class="el" href="_temp_files_8cs_source.html">TempFiles.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/BrawlManagerLib/<a class="el" href="_temp_files_8cs_source.html">TempFiles.cs</a></li>
+<li>BrawlLib/BrawlManagerLib/TempFiles.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html">BrawlLib.SSBB.ResourceNodes.NodeFactory</a></div><div class="ttdef"><b>Definition:</b> <a href="_node_factory_8cs_source.html#l00016">NodeFactory.cs:16</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html">BrawlLib.SSBB.ResourceNodes.DataSource</a></div><div class="ttdef"><b>Definition:</b> <a href="_resource_node_8cs_source.html#l00027">ResourceNode.cs:27</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files_html_a494ee0914790edc8956bef75ca7a7483"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">BrawlLib.BrawlManagerLib.TempFiles.SUBDIR</a></div><div class="ttdeci">static readonly string SUBDIR</div><div class="ttdef"><b>Definition:</b> <a href="_temp_files_8cs_source.html#l00021">TempFiles.cs:21</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ab58e1584a3a2d090d808a79140e92b60"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ab58e1584a3a2d090d808a79140e92b60">BrawlLib.Internal.IO.FileMap.FilePath</a></div><div class="ttdeci">string FilePath</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00024">FileMap.cs:24</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_a14c93ab06b84c385d0c29b53f8fe246b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a14c93ab06b84c385d0c29b53f8fe246b">BrawlLib.SSBB.ResourceNodes.NodeFactory.FromSource</a></div><div class="ttdeci">static ResourceNode FromSource(ResourceNode parent, DataSource source)</div><div class="ttdef"><b>Definition:</b> <a href="_node_factory_8cs_source.html#l00124">NodeFactory.cs:124</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00009">FileMap.cs:9</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ad16926b6ffda7cc52f6636d26a338511"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">BrawlLib.Internal.IO.FileMap.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00016">FileMap.cs:16</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a798735b7141405d82cb670ae6790baea"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">BrawlLib.Internal.IO.FileMap.FromTempFile</a></div><div class="ttdeci">static FileMap FromTempFile(int length)</div><div class="ttdef"><b>Definition:</b> <a href="_file_map_8cs_source.html#l00096">FileMap.cs:96</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html">BrawlLib.SSBB.ResourceNodes.NodeFactory</a></div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:16</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html">BrawlLib.SSBB.ResourceNodes.DataSource</a></div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:27</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files_html_a494ee0914790edc8956bef75ca7a7483"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">BrawlLib.BrawlManagerLib.TempFiles.SUBDIR</a></div><div class="ttdeci">static readonly string SUBDIR</div><div class="ttdef"><b>Definition:</b> TempFiles.cs:21</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ab58e1584a3a2d090d808a79140e92b60"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ab58e1584a3a2d090d808a79140e92b60">BrawlLib.Internal.IO.FileMap.FilePath</a></div><div class="ttdeci">string FilePath</div><div class="ttdef"><b>Definition:</b> FileMap.cs:24</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_a14c93ab06b84c385d0c29b53f8fe246b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a14c93ab06b84c385d0c29b53f8fe246b">BrawlLib.SSBB.ResourceNodes.NodeFactory.FromSource</a></div><div class="ttdeci">static ResourceNode FromSource(ResourceNode parent, DataSource source)</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:124</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> FileMap.cs:9</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ad16926b6ffda7cc52f6636d26a338511"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">BrawlLib.Internal.IO.FileMap.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> FileMap.cs:16</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a798735b7141405d82cb670ae6790baea"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">BrawlLib.Internal.IO.FileMap.FromTempFile</a></div><div class="ttdeci">static FileMap FromTempFile(int length)</div><div class="ttdef"><b>Definition:</b> FileMap.cs:96</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

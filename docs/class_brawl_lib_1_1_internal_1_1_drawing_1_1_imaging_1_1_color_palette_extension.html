@@ -87,10 +87,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a02ea76e04c132f92da7bd9a5a11012ba"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html#a02ea76e04c132f92da7bd9a5a11012ba">FindMatch</a> (this ColorPalette pal, <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a> pixel)</td></tr>
 <tr class="separator:a02ea76e04c132f92da7bd9a5a11012ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_color_palette_extension_8cs_source.html#l00019">19</a> of file <a class="el" href="_color_palette_extension_8cs_source.html">ColorPaletteExtension.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a034acb11ea76bb65f60c0de155764853"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a034acb11ea76bb65f60c0de155764853">&#9670;&nbsp;</a></span>Clamp()</h2>
 
@@ -124,8 +121,6 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_color_palette_extension_8cs_source.html#l00036">36</a> of file <a class="el" href="_color_palette_extension_8cs_source.html">ColorPaletteExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">switch</span> (format)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            {</div>
@@ -196,8 +191,6 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_color_palette_extension_8cs_source.html#l00021">21</a> of file <a class="el" href="_color_palette_extension_8cs_source.html">ColorPaletteExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            ColorPalette pal = (ColorPalette) typeof(ColorPalette).InvokeMember(<span class="stringliteral">&quot;&quot;</span>,</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                BindingFlags.CreateInstance | BindingFlags.NonPublic | BindingFlags.Instance, <span class="keyword">null</span>, <span class="keyword">null</span>,</div>
@@ -241,8 +234,6 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_color_palette_extension_8cs_source.html#l00072">72</a> of file <a class="el" href="_color_palette_extension_8cs_source.html">ColorPaletteExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordtype">int</span> bestDist = <span class="keywordtype">int</span>.MaxValue, bestIndex = 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0, c = pal.Entries.Length; i &lt; c; i++)</div>
@@ -298,8 +289,6 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_color_palette_extension_8cs_source.html#l00030">30</a> of file <a class="el" href="_color_palette_extension_8cs_source.html">ColorPaletteExtension.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            typeof(ColorPalette).GetField(<span class="stringliteral">&quot;flags&quot;</span>, BindingFlags.NonPublic | BindingFlags.Instance)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                .SetValue(pal, (<span class="keywordtype">int</span>) flags);</div>
@@ -308,15 +297,15 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/Drawing/Imaging/<a class="el" href="_color_palette_extension_8cs_source.html">ColorPaletteExtension.cs</a></li>
+<li>BrawlLib/Internal/Drawing/Imaging/ColorPaletteExtension.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a77f62c52d21306f2b937c0e15f3cea8d"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a77f62c52d21306f2b937c0e15f3cea8d">BrawlLib.Wii.Textures.WiiPaletteFormat</a></div><div class="ttdeci">WiiPaletteFormat</div><div class="ttdef"><b>Definition:</b> <a href="_textures_2_enum_8cs_source.html#l00056">Enum.cs:56</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">BrawlLib.Wii.Textures.wRGB5A3Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_wii_2_textures_2_pixel_types_8cs_source.html#l00230">PixelTypes.cs:230</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">BrawlLib.Wii.Textures.IA8Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_a8_8cs_source.html#l00045">IA8.cs:45</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">BrawlLib.Wii.Textures.wRGB565Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_wii_2_textures_2_pixel_types_8cs_source.html#l00099">PixelTypes.cs:99</a></div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a77f62c52d21306f2b937c0e15f3cea8d"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a77f62c52d21306f2b937c0e15f3cea8d">BrawlLib.Wii.Textures.WiiPaletteFormat</a></div><div class="ttdeci">WiiPaletteFormat</div><div class="ttdef"><b>Definition:</b> Enum.cs:56</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">BrawlLib.Wii.Textures.wRGB5A3Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:230</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">BrawlLib.Wii.Textures.IA8Pixel</a></div><div class="ttdef"><b>Definition:</b> IA8.cs:45</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">BrawlLib.Wii.Textures.wRGB565Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:99</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_html_a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls.html#a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295">BrawlLib.Internal.Windows.Controls.ValType.Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html_a15c0f8e8e54e4b44044ae259856d648c"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a15c0f8e8e54e4b44044ae259856d648c">BrawlLib.Imaging.ARGBPixel.DistanceTo</a></div><div class="ttdeci">int DistanceTo(Color c)</div><div class="ttdef"><b>Definition:</b> <a href="_imaging_2_pixel_types_8cs_source.html#l00046">PixelTypes.cs:46</a></div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html_a15c0f8e8e54e4b44044ae259856d648c"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a15c0f8e8e54e4b44044ae259856d648c">BrawlLib.Imaging.ARGBPixel.DistanceTo</a></div><div class="ttdeci">int DistanceTo(Color c)</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:46</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

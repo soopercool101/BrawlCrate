@@ -149,8 +149,6 @@ Static Private Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A modification of David Amenta's RecycleBin code </p>
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00011">11</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="ac419a7464e4ccea9543c7d2290cb4642"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac419a7464e4ccea9543c7d2290cb4642">&#9670;&nbsp;</a></span>FileOperationFlags</h2>
@@ -197,8 +195,6 @@ Static Private Member Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ac419a7464e4ccea9543c7d2290cb4642a586fd255f96cf64e04bd34527dfe03a3"></a>FOF_WANTNUKEWARNING&#160;</td><td class="fielddoc"><p>Send a warning if a file or folder is being destroyed during a delete operation rather than recycled. This flag partially overrides FOF_NOCONFIRMATION. </p>
 </td></tr>
 </table>
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00074">74</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                       : ushort</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            FOF_ALLOWUNDO = 0x0040,</div>
@@ -275,8 +271,6 @@ Static Private Member Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a6ff99b07c54f175bf46a0f9d5e3e1036a4b5cf601166910abc86d60586a90351f"></a>FO_RENAME&#160;</td><td class="fielddoc"><p>Rename the object(s) </p>
 </td></tr>
 </table>
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00203">203</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                      : uint</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            FO_MOVE = 0x0001,</div>
@@ -336,8 +330,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00013">13</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="keywordflow">if</span> (File.Exists(path2) &amp;&amp; confirmOverwrite)</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            {</div>
@@ -399,8 +391,6 @@ Static Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00309">309</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        {</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a3bb86e516acc6a850be7efe2d8e29f36">Delete</a>(path, <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#ac419a7464e4ccea9543c7d2290cb4642">FileOperationFlags</a>.FOF_WANTNUKEWARNING);</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        }</div>
@@ -449,8 +439,6 @@ Static Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00274">274</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            {</div>
@@ -505,8 +493,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00264">264</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">return</span> IntPtr.Size == 8;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
@@ -546,8 +532,6 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00042">42</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.Equals(path1, path2, StringComparison.InvariantCultureIgnoreCase))</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
@@ -599,14 +583,12 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_file_operations_8cs_source.html#l00314">314</a> of file <a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        {</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordtype">string</span> invalidChars =</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Text.RegularExpressions.Regex.Escape(<span class="keyword">new</span> <span class="keywordtype">string</span>(Path.GetInvalidFileNameChars()));</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                System.Text.RegularExpressions.Regex.Escape(<span class="keyword">new</span> <span class="keywordtype">string</span>(Path.GetInvalidFileNameChars()));</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordtype">string</span> invalidRegStr = <span class="keywordtype">string</span>.Format(<span class="stringliteral">@&quot;([{0}]*\.+$)|([{0}]+)&quot;</span>, invalidChars);</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Text.RegularExpressions.Regex.Replace(filename, invalidRegStr, <span class="stringliteral">&quot;_&quot;</span>);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">return</span> System.Text.RegularExpressions.Regex.Replace(filename, invalidRegStr, <span class="stringliteral">&quot;_&quot;</span>);</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -664,17 +646,16 @@ Static Private Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/BrawlManagerLib/<a class="el" href="_file_operations_8cs_source.html">FileOperations.cs</a></li>
+<li>BrawlLib/BrawlManagerLib/FileOperations.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_a4edfb399e282a4d88d7cdbf7011282d3"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a4edfb399e282a4d88d7cdbf7011282d3">BrawlLib.BrawlManagerLib.FileOperations.IsWOW64Process</a></div><div class="ttdeci">static bool IsWOW64Process()</div><div class="ttdef"><b>Definition:</b> <a href="_file_operations_8cs_source.html#l00264">FileOperations.cs:264</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_a4edfb399e282a4d88d7cdbf7011282d3"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a4edfb399e282a4d88d7cdbf7011282d3">BrawlLib.BrawlManagerLib.FileOperations.IsWOW64Process</a></div><div class="ttdeci">static bool IsWOW64Process()</div><div class="ttdef"><b>Definition:</b> FileOperations.cs:264</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_af59d002ed59561772d5f37ca28a75d59"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#af59d002ed59561772d5f37ca28a75d59">BrawlLib.BrawlManagerLib.FileOperations.SHFileOperation_x64</a></div><div class="ttdeci">static int SHFileOperation_x64(ref SHFILEOPSTRUCT_x64 FileOp)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_a6ff99b07c54f175bf46a0f9d5e3e1036"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a6ff99b07c54f175bf46a0f9d5e3e1036">BrawlLib.BrawlManagerLib.FileOperations.FileOperationType</a></div><div class="ttdeci">FileOperationType</div><div class="ttdoc">File Operation Function Type for SHFileOperation</div><div class="ttdef"><b>Definition:</b> <a href="_file_operations_8cs_source.html#l00203">FileOperations.cs:203</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_a6ff99b07c54f175bf46a0f9d5e3e1036"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a6ff99b07c54f175bf46a0f9d5e3e1036">BrawlLib.BrawlManagerLib.FileOperations.FileOperationType</a></div><div class="ttdeci">FileOperationType</div><div class="ttdoc">File Operation Function Type for SHFileOperation</div><div class="ttdef"><b>Definition:</b> FileOperations.cs:203</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_html_aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675">BrawlLib.Internal.Windows.Controls.Hex_Editor.FindType.Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Used for Text Find operations</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_ac419a7464e4ccea9543c7d2290cb4642"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#ac419a7464e4ccea9543c7d2290cb4642">BrawlLib.BrawlManagerLib.FileOperations.FileOperationFlags</a></div><div class="ttdeci">FileOperationFlags</div><div class="ttdoc">Possible flags for the SHFileOperation method.</div><div class="ttdef"><b>Definition:</b> <a href="_file_operations_8cs_source.html#l00074">FileOperations.cs:74</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_ac419a7464e4ccea9543c7d2290cb4642"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#ac419a7464e4ccea9543c7d2290cb4642">BrawlLib.BrawlManagerLib.FileOperations.FileOperationFlags</a></div><div class="ttdeci">FileOperationFlags</div><div class="ttdoc">Possible flags for the SHFileOperation method.</div><div class="ttdef"><b>Definition:</b> FileOperations.cs:74</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_a54ae737832afb56aa76418de1808580e"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a54ae737832afb56aa76418de1808580e">BrawlLib.BrawlManagerLib.FileOperations.SHFileOperation_x86</a></div><div class="ttdeci">static int SHFileOperation_x86(ref SHFILEOPSTRUCT_x86 FileOp)</div></div>
-<div class="ttc" id="a_p_a_t0_offset_control_8cs_html_a4598c6b5042b9ab31ee4f4644765857d"><div class="ttname"><a href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a></div><div class="ttdeci">﻿﻿using System</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_offset_control_8cs_source.html#l00001">PAT0OffsetControl.cs:1</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_a3bb86e516acc6a850be7efe2d8e29f36"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a3bb86e516acc6a850be7efe2d8e29f36">BrawlLib.BrawlManagerLib.FileOperations.Delete</a></div><div class="ttdeci">static bool Delete(string path, FileOperationFlags flags)</div><div class="ttdoc">Send file to recycle bin</div><div class="ttdef"><b>Definition:</b> <a href="_file_operations_8cs_source.html#l00274">FileOperations.cs:274</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations_html_a3bb86e516acc6a850be7efe2d8e29f36"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a3bb86e516acc6a850be7efe2d8e29f36">BrawlLib.BrawlManagerLib.FileOperations.Delete</a></div><div class="ttdeci">static bool Delete(string path, FileOperationFlags flags)</div><div class="ttdoc">Send file to recycle bin</div><div class="ttdef"><b>Definition:</b> FileOperations.cs:274</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

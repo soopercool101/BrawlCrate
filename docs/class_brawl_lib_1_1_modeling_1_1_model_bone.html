@@ -111,10 +111,7 @@ Package Functions</h2></td></tr>
 <tr class="memitem:ab3d90e4bf66c7fe60ea51d955b746871"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ab3d90e4bf66c7fe60ea51d955b746871">WriteExpansion</a> (BinaryWriter writer)</td></tr>
 <tr class="separator:ab3d90e4bf66c7fe60ea51d955b746871"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01459">1459</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a873457153a71f0da30304c2828c2f6af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a873457153a71f0da30304c2828c2f6af">&#9670;&nbsp;</a></span>ModelBone()</h2>
 
@@ -137,10 +134,8 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01469">1469</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;        {</div>
-<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a> = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>();</div>
+<div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a> = <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>();</div>
 <div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -179,15 +174,13 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01474">1474</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;        {</div>
 <div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ac9dad0210f4f5c01cd953a460cf5243f">_boneName</a> = PMDModel.GetString(reader.ReadBytes(20));</div>
 <div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a71e65908c74ad6399610fa7a3cd08ebc">_parentBoneIndex</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
 <div class="line"><a name="l01478"></a><span class="lineno"> 1478</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ad9e2162e791d568659b3ee17662a2e9d">_tailPosBoneIndex</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
 <div class="line"><a name="l01479"></a><span class="lineno"> 1479</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#af4b6b36b7a92b380aca16a0ef06547da">_boneType</a> = reader.ReadByte();</div>
 <div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ad6fd53de09ccffc2f05df0d8891b36fd">_IKParentBoneIndex</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a> = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>(BitConverter.ToSingle(reader.ReadBytes(4), 0),</div>
+<div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a> = <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(BitConverter.ToSingle(reader.ReadBytes(4), 0),</div>
 <div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;                BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0));</div>
 <div class="line"><a name="l01483"></a><span class="lineno"> 1483</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a9d6509b02a464dd17474ee95d1416d92">_boneNameEnglish</a> = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l01484"></a><span class="lineno"> 1484</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a>[2] = <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a>[2] * CoordZ;</div>
@@ -218,8 +211,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01487">1487</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01488"></a><span class="lineno"> 1488</span>&#160;        {</div>
 <div class="line"><a name="l01489"></a><span class="lineno"> 1489</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a9d6509b02a464dd17474ee95d1416d92">_boneNameEnglish</a> = PMDModel.GetString(reader.ReadBytes(20), <span class="keyword">false</span>);</div>
 <div class="line"><a name="l01490"></a><span class="lineno"> 1490</span>&#160;        }</div>
@@ -259,8 +250,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01492">1492</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01493"></a><span class="lineno"> 1493</span>&#160;        {</div>
 <div class="line"><a name="l01494"></a><span class="lineno"> 1494</span>&#160;            <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a>[2] = <a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">_wPos</a>[2] * CoordZ;</div>
 <div class="line"><a name="l01495"></a><span class="lineno"> 1495</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ac9dad0210f4f5c01cd953a460cf5243f">_boneName</a>, 20));</div>
@@ -298,8 +287,6 @@ Package Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01505">1505</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;        {</div>
 <div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;            writer.Write(PMDModel.GetBytes(<a class="code" href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a9d6509b02a464dd17474ee95d1416d92">_boneNameEnglish</a>, 20));</div>
 <div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;        }</div>
@@ -319,8 +306,6 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01461">1461</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <a id="a9d6509b02a464dd17474ee95d1416d92"></a>
@@ -334,8 +319,6 @@ Package Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01467">1467</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 
 </div>
 </div>
@@ -351,8 +334,6 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01464">1464</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <a id="ad6fd53de09ccffc2f05df0d8891b36fd"></a>
@@ -366,8 +347,6 @@ Package Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01465">1465</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 
 </div>
 </div>
@@ -383,8 +362,6 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01462">1462</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <a id="ad9e2162e791d568659b3ee17662a2e9d"></a>
@@ -398,8 +375,6 @@ Package Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01463">1463</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
 
 </div>
 </div>
@@ -415,25 +390,23 @@ Package Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_p_m_d_model_8cs_source.html#l01466">1466</a> of file <a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Modeling/<a class="el" href="_p_m_d_model_8cs_source.html">PMDModel.cs</a></li>
+<li>BrawlLib/Modeling/PMDModel.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_a9d6509b02a464dd17474ee95d1416d92"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a9d6509b02a464dd17474ee95d1416d92">BrawlLib.Modeling.ModelBone._boneNameEnglish</a></div><div class="ttdeci">string _boneNameEnglish</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01467">PMDModel.cs:1467</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_ad9e2162e791d568659b3ee17662a2e9d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ad9e2162e791d568659b3ee17662a2e9d">BrawlLib.Modeling.ModelBone._tailPosBoneIndex</a></div><div class="ttdeci">ushort _tailPosBoneIndex</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01463">PMDModel.cs:1463</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_a4276974d2dfb63b5312ada6fe5da98e1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">BrawlLib.Internal.Vector3._y</a></div><div class="ttdeci">float _y</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00041">Vector3.cs:41</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_a44b5ee9b1a7ac3f0e947460acaa9e0d9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">BrawlLib.Modeling.ModelBone._wPos</a></div><div class="ttdeci">Vector3 _wPos</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01466">PMDModel.cs:1466</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_ad6fd53de09ccffc2f05df0d8891b36fd"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ad6fd53de09ccffc2f05df0d8891b36fd">BrawlLib.Modeling.ModelBone._IKParentBoneIndex</a></div><div class="ttdeci">ushort _IKParentBoneIndex</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01465">PMDModel.cs:1465</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_a71e65908c74ad6399610fa7a3cd08ebc"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a71e65908c74ad6399610fa7a3cd08ebc">BrawlLib.Modeling.ModelBone._parentBoneIndex</a></div><div class="ttdeci">ushort _parentBoneIndex</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01462">PMDModel.cs:1462</a></div></div>
-<div class="ttc" id="a_primitive_manager_8cs_html_a808ca50558718f478245b160dc1e84c6"><div class="ttname"><a href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a></div><div class="ttdeci">BrawlLib.Internal.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00015">PrimitiveManager.cs:15</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_a757349307af35a4b08e79a2f294184b9"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">BrawlLib.Internal.Vector3._z</a></div><div class="ttdeci">float _z</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00041">Vector3.cs:41</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_ac9dad0210f4f5c01cd953a460cf5243f"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ac9dad0210f4f5c01cd953a460cf5243f">BrawlLib.Modeling.ModelBone._boneName</a></div><div class="ttdeci">string _boneName</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01461">PMDModel.cs:1461</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_af4b6b36b7a92b380aca16a0ef06547da"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#af4b6b36b7a92b380aca16a0ef06547da">BrawlLib.Modeling.ModelBone._boneType</a></div><div class="ttdeci">byte _boneType</div><div class="ttdef"><b>Definition:</b> <a href="_p_m_d_model_8cs_source.html#l01464">PMDModel.cs:1464</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_ab80d8220f1b53ae9d5956954abc98ecd"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">BrawlLib.Internal.Vector3._x</a></div><div class="ttdeci">float _x</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00041">Vector3.cs:41</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_a9d6509b02a464dd17474ee95d1416d92"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a9d6509b02a464dd17474ee95d1416d92">BrawlLib.Modeling.ModelBone._boneNameEnglish</a></div><div class="ttdeci">string _boneNameEnglish</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1467</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_ad9e2162e791d568659b3ee17662a2e9d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ad9e2162e791d568659b3ee17662a2e9d">BrawlLib.Modeling.ModelBone._tailPosBoneIndex</a></div><div class="ttdeci">ushort _tailPosBoneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1463</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_a4276974d2dfb63b5312ada6fe5da98e1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">BrawlLib.Internal.Vector3._y</a></div><div class="ttdeci">float _y</div><div class="ttdef"><b>Definition:</b> Vector3.cs:41</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_a44b5ee9b1a7ac3f0e947460acaa9e0d9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a44b5ee9b1a7ac3f0e947460acaa9e0d9">BrawlLib.Modeling.ModelBone._wPos</a></div><div class="ttdeci">Vector3 _wPos</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1466</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_ad6fd53de09ccffc2f05df0d8891b36fd"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ad6fd53de09ccffc2f05df0d8891b36fd">BrawlLib.Modeling.ModelBone._IKParentBoneIndex</a></div><div class="ttdeci">ushort _IKParentBoneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1465</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_a71e65908c74ad6399610fa7a3cd08ebc"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#a71e65908c74ad6399610fa7a3cd08ebc">BrawlLib.Modeling.ModelBone._parentBoneIndex</a></div><div class="ttdeci">ushort _parentBoneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1462</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html">BrawlLib.Internal.Vector3</a></div><div class="ttdef"><b>Definition:</b> Vector3.cs:39</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_a757349307af35a4b08e79a2f294184b9"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">BrawlLib.Internal.Vector3._z</a></div><div class="ttdeci">float _z</div><div class="ttdef"><b>Definition:</b> Vector3.cs:41</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_ac9dad0210f4f5c01cd953a460cf5243f"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#ac9dad0210f4f5c01cd953a460cf5243f">BrawlLib.Modeling.ModelBone._boneName</a></div><div class="ttdeci">string _boneName</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1461</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_html_af4b6b36b7a92b380aca16a0ef06547da"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone.html#af4b6b36b7a92b380aca16a0ef06547da">BrawlLib.Modeling.ModelBone._boneType</a></div><div class="ttdeci">byte _boneType</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1464</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_ab80d8220f1b53ae9d5956954abc98ecd"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">BrawlLib.Internal.Vector3._x</a></div><div class="ttdeci">float _x</div><div class="ttdef"><b>Definition:</b> Vector3.cs:41</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

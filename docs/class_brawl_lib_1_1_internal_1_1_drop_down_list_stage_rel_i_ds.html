@@ -95,10 +95,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7df8987fe3b373c48d0572f75c4bd082"><td class="memItemLeft" align="right" valign="top">override object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_stage_rel_i_ds.html#a7df8987fe3b373c48d0572f75c4bd082">ConvertTo</a> (ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)</td></tr>
 <tr class="separator:a7df8987fe3b373c48d0572f75c4bd082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00905">905</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="afdb6d2f7b349b6f81d9c83ce5ba7f873"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdb6d2f7b349b6f81d9c83ce5ba7f873">&#9670;&nbsp;</a></span>CanConvertFrom()</h2>
 
@@ -132,8 +129,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00919">919</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00920"></a><span class="lineno">  920</span>&#160;        {</div>
 <div class="line"><a name="l00921"></a><span class="lineno">  921</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
 <div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160;        }</div>
@@ -179,8 +174,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00924">924</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00925"></a><span class="lineno">  925</span>&#160;        {</div>
 <div class="line"><a name="l00926"></a><span class="lineno">  926</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
 <div class="line"><a name="l00927"></a><span class="lineno">  927</span>&#160;            {</div>
@@ -241,8 +234,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00938">938</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00940"></a><span class="lineno">  940</span>&#160;        {</div>
 <div class="line"><a name="l00941"></a><span class="lineno">  941</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp; value.GetType() == typeof(<span class="keywordtype">int</span>))</div>
 <div class="line"><a name="l00942"></a><span class="lineno">  942</span>&#160;            {</div>
@@ -284,8 +275,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00912">912</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00913"></a><span class="lineno">  913</span>&#160;        {</div>
 <div class="line"><a name="l00914"></a><span class="lineno">  914</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(<a class="code" href="namespace_brawl_lib.html">BrawlLib</a>.<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b.html">SSBB</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a627f7be60c5e5f16be8f3b39c5e22e6d">RelList</a></div>
 <div class="line"><a name="l00915"></a><span class="lineno">  915</span>&#160;                                                        .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
@@ -317,8 +306,6 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_drop_down_lists_8cs_source.html#l00907">907</a> of file <a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00908"></a><span class="lineno">  908</span>&#160;        {</div>
 <div class="line"><a name="l00909"></a><span class="lineno">  909</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00910"></a><span class="lineno">  910</span>&#160;        }</div>
@@ -326,14 +313,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/<a class="el" href="_drop_down_lists_8cs_source.html">DropDownLists.cs</a></li>
+<li>BrawlLib/Internal/DropDownLists.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> <a href="_stage_8cs_source.html#l00006">Stage.cs:6</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_html"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b.html">BrawlLib.SSBB</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_string_table_8cs_source.html#l00005">BinaryStringTable.cs:5</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_acb86abdb931d616c82223892858592bc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#acb86abdb931d616c82223892858592bc">BrawlLib.SSBB.Stage.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdef"><b>Definition:</b> <a href="_stage_8cs_source.html#l00152">Stage.cs:152</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_a627f7be60c5e5f16be8f3b39c5e22e6d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a627f7be60c5e5f16be8f3b39c5e22e6d">BrawlLib.SSBB.Stage.RelList</a></div><div class="ttdeci">static readonly Stage[] RelList</div><div class="ttdef"><b>Definition:</b> <a href="_stage_8cs_source.html#l00444">Stage.cs:444</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_html"><div class="ttname"><a href="namespace_brawl_lib.html">BrawlLib</a></div><div class="ttdef"><b>Definition:</b> <a href="_per_session_settings_8cs_source.html#l00001">PerSessionSettings.cs:1</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> Stage.cs:6</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_html"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b.html">BrawlLib.SSBB</a></div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:5</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_acb86abdb931d616c82223892858592bc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#acb86abdb931d616c82223892858592bc">BrawlLib.SSBB.Stage.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdef"><b>Definition:</b> Stage.cs:152</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_a627f7be60c5e5f16be8f3b39c5e22e6d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a627f7be60c5e5f16be8f3b39c5e22e6d">BrawlLib.SSBB.Stage.RelList</a></div><div class="ttdeci">static readonly Stage[] RelList</div><div class="ttdef"><b>Definition:</b> Stage.cs:444</div></div>
+<div class="ttc" id="anamespace_brawl_lib_html"><div class="ttname"><a href="namespace_brawl_lib.html">BrawlLib</a></div><div class="ttdef"><b>Definition:</b> PerSessionSettings.cs:1</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

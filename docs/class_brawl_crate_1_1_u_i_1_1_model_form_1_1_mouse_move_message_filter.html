@@ -97,7 +97,7 @@ Properties</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ab04954938787ff3a3241e4b2ae807392"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">InForm</a> (Form f, <a class="el" href="_brawl_lib_2_internal_2_windows_2_controls_2_model_viewer_2_main_window_base_2_variables_8cs.html#af7183cff3a6e75db2170da28384d7419">Point</a> screenPoint)</td></tr>
+<tr class="memitem:ab04954938787ff3a3241e4b2ae807392"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">InForm</a> (Form f, Point screenPoint)</td></tr>
 <tr class="separator:ab04954938787ff3a3241e4b2ae807392"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -105,10 +105,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a2fa986b49dce3bc224d204ae1db45266"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a></td></tr>
 <tr class="separator:a2fa986b49dce3bc224d204ae1db45266"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_model_form_8cs_source.html#l00272">272</a> of file <a class="el" href="_model_form_8cs_source.html">ModelForm.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab04954938787ff3a3241e4b2ae807392"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab04954938787ff3a3241e4b2ae807392">&#9670;&nbsp;</a></span>InForm()</h2>
 
@@ -127,7 +124,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_brawl_lib_2_internal_2_windows_2_controls_2_model_viewer_2_main_window_base_2_variables_8cs.html#af7183cff3a6e75db2170da28384d7419">Point</a>&#160;</td>
+          <td class="paramtype">Point&#160;</td>
           <td class="paramname"><em>screenPoint</em>&#160;</td>
         </tr>
         <tr>
@@ -142,10 +139,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_model_form_8cs_source.html#l00307">307</a> of file <a class="el" href="_model_form_8cs_source.html">ModelForm.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                <a class="code" href="_brawl_lib_2_internal_2_windows_2_controls_2_model_viewer_2_main_window_base_2_variables_8cs.html#af7183cff3a6e75db2170da28384d7419">Point</a> p = f.PointToClient(screenPoint);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                Point p = f.PointToClient(screenPoint);</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                <span class="keywordflow">return</span> p.X &gt; 0 &amp;&amp; p.X &lt; f.Size.Width &amp;&amp; p.Y &gt; 0 &amp;&amp; p.Y &lt; f.Size.Height;</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            }</div>
 </div><!-- fragment -->
@@ -174,8 +169,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_model_form_8cs_source.html#l00278">278</a> of file <a class="el" href="_model_form_8cs_source.html">ModelForm.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordtype">int</span> numMsg = m.Msg;</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                <span class="keywordflow">if</span> (numMsg == 0x0200) <span class="comment">//WM_MOUSEMOVE</span></div>
@@ -227,8 +220,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_model_form_8cs_source.html#l00276">276</a> of file <a class="el" href="_model_form_8cs_source.html">ModelForm.cs</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -251,22 +242,19 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_model_form_8cs_source.html#l00274">274</a> of file <a class="el" href="_model_form_8cs_source.html">ModelForm.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlCrate/UI/<a class="el" href="_model_form_8cs_source.html">ModelForm.cs</a></li>
+<li>BrawlCrate/UI/ModelForm.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a2fa986b49dce3bc224d204ae1db45266"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter._mainWindowFocused</a></div><div class="ttdeci">bool _mainWindowFocused</div><div class="ttdef"><b>Definition:</b> <a href="_model_form_8cs_source.html#l00276">ModelForm.cs:276</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base_html_abebbd980ea9b3311925ce980083e6efe"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase.ModelViewerForm</a></div><div class="ttdeci">ModelViewerForm ModelViewerForm</div><div class="ttdef"><b>Definition:</b> <a href="_properties_8cs_source.html#l00228">Properties.cs:228</a></div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_html_a52a26fb66af534e80839bd8ad254dff6"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">BrawlCrate.UI.ModelForm.modelEditControl1</a></div><div class="ttdeci">ModelEditControl modelEditControl1</div><div class="ttdef"><b>Definition:</b> <a href="_model_form_8cs_source.html#l00018">ModelForm.cs:18</a></div></div>
-<div class="ttc" id="a_brawl_lib_2_internal_2_windows_2_controls_2_model_viewer_2_main_window_base_2_variables_8cs_html_af7183cff3a6e75db2170da28384d7419"><div class="ttname"><a href="_brawl_lib_2_internal_2_windows_2_controls_2_model_viewer_2_main_window_base_2_variables_8cs.html#af7183cff3a6e75db2170da28384d7419">Point</a></div><div class="ttdeci">System.Windows.Point Point</div><div class="ttdef"><b>Definition:</b> <a href="_brawl_lib_2_internal_2_windows_2_controls_2_model_viewer_2_main_window_base_2_variables_8cs_source.html#l00010">Variables.cs:10</a></div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a57241f4afa08a5228c7501025f2bb5ad"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.TargetForm</a></div><div class="ttdeci">ModelForm TargetForm</div><div class="ttdef"><b>Definition:</b> <a href="_model_form_8cs_source.html#l00274">ModelForm.cs:274</a></div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_ab04954938787ff3a3241e4b2ae807392"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.InForm</a></div><div class="ttdeci">bool InForm(Form f, Point screenPoint)</div><div class="ttdef"><b>Definition:</b> <a href="_model_form_8cs_source.html#l00307">ModelForm.cs:307</a></div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a2fa986b49dce3bc224d204ae1db45266"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter._mainWindowFocused</a></div><div class="ttdeci">bool _mainWindowFocused</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:276</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base_html_abebbd980ea9b3311925ce980083e6efe"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase.ModelViewerForm</a></div><div class="ttdeci">ModelViewerForm ModelViewerForm</div><div class="ttdef"><b>Definition:</b> Properties.cs:228</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_html_a52a26fb66af534e80839bd8ad254dff6"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">BrawlCrate.UI.ModelForm.modelEditControl1</a></div><div class="ttdeci">ModelEditControl modelEditControl1</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:18</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a57241f4afa08a5228c7501025f2bb5ad"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.TargetForm</a></div><div class="ttdeci">ModelForm TargetForm</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:274</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_ab04954938787ff3a3241e4b2ae807392"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.InForm</a></div><div class="ttdeci">bool InForm(Form f, Point screenPoint)</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:307</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

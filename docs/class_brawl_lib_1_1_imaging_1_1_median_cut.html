@@ -169,7 +169,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a3744dfd70a7de04785fc3c0788eb7fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0c38f77d577297807f2841349061369"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3bd6a543b70cb00b1bc449b254ed1e32">IDConverter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#af0c38f77d577297807f2841349061369">_idConv</a></td></tr>
 <tr class="separator:af0c38f77d577297807f2841349061369"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c4b9487d3fd6430260a8c7c630a766d"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">_outFormat</a></td></tr>
+<tr class="memitem:a3c4b9487d3fd6430260a8c7c630a766d"><td class="memItemLeft" align="right" valign="top">readonly PixelFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">_outFormat</a></td></tr>
 <tr class="separator:a3c4b9487d3fd6430260a8c7c630a766d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
@@ -183,10 +183,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a19fcaf50d5c3a10e2dc8d380f21e6343"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a19fcaf50d5c3a10e2dc8d380f21e6343">A_SCALE</a> = 28</td></tr>
 <tr class="separator:a19fcaf50d5c3a10e2dc8d380f21e6343"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00017">17</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6b856191bfc7582743fbbff77740187e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b856191bfc7582743fbbff77740187e">&#9670;&nbsp;</a></span>MedianCut()</h2>
 
@@ -226,17 +223,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00074">74</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="comment">//Set output format</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (texFormat == <a class="code" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.CI4)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">_outFormat</a> = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format4bppIndexed;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">_outFormat</a> = PixelFormat.Format4bppIndexed;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (texFormat == <a class="code" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.CI8)</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">_outFormat</a> = <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format8bppIndexed;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">_outFormat</a> = PixelFormat.Format8bppIndexed;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
@@ -266,7 +261,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab8d7f055bb439125a257b1afb8bd4bf0">_height</a> = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.Height;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab07bb009329f9b2536e08717b5a51196">_size</a> = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a0e2af6c7a901ee97de6164edd52f41d0">_width</a> * <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab8d7f055bb439125a257b1afb8bd4bf0">_height</a>;</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aba347c18e98c01e65a0b93b08620e286">_srcData</a> = <a class="code" href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">bmp</a>.LockBits(<span class="keyword">new</span> Rectangle(0, 0, <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a0e2af6c7a901ee97de6164edd52f41d0">_width</a>, <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab8d7f055bb439125a257b1afb8bd4bf0">_height</a>), ImageLockMode.ReadOnly,</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format32bppArgb);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                PixelFormat.Format32bppArgb);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#acf94ede64092ed6a34438706d55d2bdf">_srcPixels</a> = (ARGBPixel*) <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aba347c18e98c01e65a0b93b08620e286">_srcData</a>.Scan0;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="comment">//Create buffers</span></div>
@@ -298,8 +293,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00121">121</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ac2b3982a19f43232cbc1ee44b338e6b3">Dispose</a>();</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
@@ -329,8 +322,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00247">247</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="comment">//Clean up</span></div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            ColorBox* boxPtr = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aadb4642ec3c988007a7e960137e89de1">_boxes</a>;</div>
@@ -364,8 +355,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00126">126</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        {</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aadb4642ec3c988007a7e960137e89de1">_boxes</a> != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            {</div>
@@ -425,8 +414,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00057">57</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            outPixel = *(<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">IA8Pixel</a>*) <span class="keywordtype">id</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
@@ -466,8 +453,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00040">40</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            *(<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">IA8Pixel</a>*) <span class="keywordtype">id</span> = inPixel;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
@@ -597,8 +582,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00379">379</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        {</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <span class="keyword">using</span> (<a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a6b856191bfc7582743fbbff77740187e">MedianCut</a> mc = <span class="keyword">new</span> <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a6b856191bfc7582743fbbff77740187e">MedianCut</a>(bmp, texFormat, palFormat))</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            {</div>
@@ -641,8 +624,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00350">350</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        {</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="comment">//Clear group table</span></div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html#a3d9d931c404c7415ef0c587277255a59">Fill</a>(<a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a5611a37399ad8a46afbfc4f6b1e6fd5f">_groupTable</a>, (uint) (65536 * <span class="keyword">sizeof</span>(<span class="keywordtype">void</span>*)), 0);</div>
@@ -706,8 +687,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00062">62</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            outPixel = (ARGBPixel) (*(<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">wRGB565Pixel</a>*) id);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
@@ -747,8 +726,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00045">45</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            *(<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">wRGB565Pixel</a>*) <span class="keywordtype">id</span> = (<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">wRGB565Pixel</a>) inPixel;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
@@ -788,8 +765,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00067">67</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            outPixel = (ARGBPixel) (*(<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">wRGB5A3Pixel</a>*) id);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
@@ -829,8 +804,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00050">50</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            *(<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">wRGB5A3Pixel</a>*) <span class="keywordtype">id</span> = (<a class="code" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">wRGB5A3Pixel</a>) inPixel;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
@@ -860,8 +833,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00151">151</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        {</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            ColorBox* splitBox, boxPtr = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aadb4642ec3c988007a7e960137e89de1">_boxes</a>;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            ARGBPixel* sPtr = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#acf94ede64092ed6a34438706d55d2bdf">_srcPixels</a>;</div>
@@ -945,8 +916,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00211">211</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        {</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="comment">//Sort boxes by luminance</span></div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordtype">void</span>** tableData = stackalloc <span class="keywordtype">void</span>*[<a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aca4dc6abe54b20e6d9ac1ee8c9e9e9b9">_boxCount</a>];</div>
@@ -1007,8 +976,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00307">307</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            ColorBox* pBox = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aadb4642ec3c988007a7e960137e89de1">_boxes</a>;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            ColorEntry* entry = pBox-&gt;<a class="code" href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#adff31dec62c2ca61be98c7ac6179d3ce">_rootEntry</a>-&gt;<a class="code" href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#ad8ae4fc354ac34794fb0315eb8c070b4">_next</a>;</div>
@@ -1065,15 +1032,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00266">266</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            ARGBPixel* sPtr = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#acf94ede64092ed6a34438706d55d2bdf">_srcPixels</a>;</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            ushort id;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordtype">byte</span>* dPtr = (<span class="keywordtype">byte</span>*) destData.Scan0;</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordtype">int</span> step, val;</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            if (destData.PixelFormat == <a class="code" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a>.Format8bppIndexed)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            if (destData.PixelFormat == PixelFormat.Format8bppIndexed)</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                step = destData.Stride - <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a0e2af6c7a901ee97de6164edd52f41d0">_width</a>;</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab8d7f055bb439125a257b1afb8bd4bf0">_height</a>; y++, dPtr += step)</div>
@@ -1132,8 +1097,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00257">257</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            ColorBox* pBox = <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aadb4642ec3c988007a7e960137e89de1">_boxes</a>;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aca4dc6abe54b20e6d9ac1ee8c9e9e9b9">_boxCount</a>; i++, pBox++)</div>
@@ -1165,8 +1128,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00027">27</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="aadb4642ec3c988007a7e960137e89de1"></a>
@@ -1188,8 +1149,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00026">26</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 
 </div>
 </div>
@@ -1213,8 +1172,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00029">29</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="ab8d7f055bb439125a257b1afb8bd4bf0"></a>
@@ -1236,8 +1193,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00022">22</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 
 </div>
 </div>
@@ -1261,8 +1216,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00032">32</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="a3744dfd70a7de04785fc3c0788eb7fde"></a>
@@ -1285,8 +1238,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00031">31</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="a3c4b9487d3fd6430260a8c7c630a766d"></a>
@@ -1299,7 +1250,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly <a class="el" href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a> BrawlLib.Imaging.MedianCut._outFormat</td>
+          <td class="memname">readonly PixelFormat BrawlLib.Imaging.MedianCut._outFormat</td>
         </tr>
       </table>
   </td>
@@ -1308,8 +1259,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00034">34</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 
 </div>
 </div>
@@ -1333,8 +1282,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00022">22</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="ad6ee6ac2f756ac5bd33cdc917c50cafe"></a>
@@ -1356,8 +1303,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00019">19</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 
 </div>
 </div>
@@ -1381,8 +1326,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00020">20</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="acf94ede64092ed6a34438706d55d2bdf"></a>
@@ -1404,8 +1347,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00024">24</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 
 </div>
 </div>
@@ -1429,8 +1370,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00022">22</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="a19fcaf50d5c3a10e2dc8d380f21e6343"></a>
@@ -1452,8 +1391,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00391">391</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 
 </div>
 </div>
@@ -1477,8 +1414,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00390">390</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <a id="aec6c141c1adf1034affb75e678810177"></a>
@@ -1500,8 +1435,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00389">389</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
 
 </div>
 </div>
@@ -1525,62 +1458,59 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_median_cut_8cs_source.html#l00388">388</a> of file <a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Imaging/<a class="el" href="_median_cut_8cs_source.html">MedianCut.cs</a></li>
+<li>BrawlLib/Imaging/MedianCut.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a6b856191bfc7582743fbbff77740187e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a6b856191bfc7582743fbbff77740187e">BrawlLib.Imaging.MedianCut.MedianCut</a></div><div class="ttdeci">MedianCut(Bitmap bmp, WiiPixelFormat texFormat, WiiPaletteFormat palFormat)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00074">MedianCut.cs:74</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a0e2af6c7a901ee97de6164edd52f41d0"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a0e2af6c7a901ee97de6164edd52f41d0">BrawlLib.Imaging.MedianCut._width</a></div><div class="ttdeci">readonly int _width</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00022">MedianCut.cs:22</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a77f62c52d21306f2b937c0e15f3cea8d"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a77f62c52d21306f2b937c0e15f3cea8d">BrawlLib.Wii.Textures.WiiPaletteFormat</a></div><div class="ttdeci">WiiPaletteFormat</div><div class="ttdef"><b>Definition:</b> <a href="_textures_2_enum_8cs_source.html#l00056">Enum.cs:56</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_html_a1d8a53aa2a8c2b44a748fbb264d60a70"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging.html#a1d8a53aa2a8c2b44a748fbb264d60a70">BrawlLib.Internal.Drawing.Imaging.ColorPaletteFlags</a></div><div class="ttdeci">ColorPaletteFlags</div><div class="ttdef"><b>Definition:</b> <a href="_color_palette_extension_8cs_source.html#l00011">ColorPaletteExtension.cs:11</a></div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a31c9a00637753a146132a789b0ab5796"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">BrawlLib.Wii.Textures.WiiPixelFormat</a></div><div class="ttdeci">WiiPixelFormat</div><div class="ttdef"><b>Definition:</b> <a href="_textures_2_enum_8cs_source.html#l00003">Enum.cs:3</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ac3e43d0bef32e66ae7ecce00cd52813a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ac3e43d0bef32e66ae7ecce00cd52813a">BrawlLib.Imaging.MedianCut.SortBoxes</a></div><div class="ttdeci">void SortBoxes()</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00211">MedianCut.cs:211</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a5611a37399ad8a46afbfc4f6b1e6fd5f"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a5611a37399ad8a46afbfc4f6b1e6fd5f">BrawlLib.Imaging.MedianCut._groupTable</a></div><div class="ttdeci">ColorEntry ** _groupTable</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00029">MedianCut.cs:29</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ac2b3982a19f43232cbc1ee44b338e6b3"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ac2b3982a19f43232cbc1ee44b338e6b3">BrawlLib.Imaging.MedianCut.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00126">MedianCut.cs:126</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a9b9520c1774bbe517f413503ce3352f4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a9b9520c1774bbe517f413503ce3352f4">BrawlLib.Imaging.MedianCut.RGB565Converter</a></div><div class="ttdeci">static void RGB565Converter(ushort *id, out ARGBPixel outPixel)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00062">MedianCut.cs:62</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_acf94ede64092ed6a34438706d55d2bdf"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#acf94ede64092ed6a34438706d55d2bdf">BrawlLib.Imaging.MedianCut._srcPixels</a></div><div class="ttdeci">ARGBPixel * _srcPixels</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00024">MedianCut.cs:24</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a8f4aeab2751f34b60c0225c5dbdf404f"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a8f4aeab2751f34b60c0225c5dbdf404f">BrawlLib.Imaging.MedianCut.RGB5A3Converter</a></div><div class="ttdeci">static void RGB5A3Converter(ushort *id, out ARGBPixel outPixel)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00067">MedianCut.cs:67</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_a31a787145a018ab813755e3f845494d8"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#a31a787145a018ab813755e3f845494d8">BrawlLib.Imaging.MedianCut.ColorBox.Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00478">MedianCut.cs:478</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">BrawlLib.Wii.Textures.wRGB5A3Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_wii_2_textures_2_pixel_types_8cs_source.html#l00230">PixelTypes.cs:230</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a56fd65ba32188f720036194ce161e174"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a56fd65ba32188f720036194ce161e174">BrawlLib.Imaging.MedianCut.IA8Converter</a></div><div class="ttdeci">static void IA8Converter(ushort *id, out ARGBPixel outPixel)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00057">MedianCut.cs:57</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html_afb4a44ae3db2849d08af13863b464e1f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html#afb4a44ae3db2849d08af13863b464e1f">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension.CreatePalette</a></div><div class="ttdeci">static ColorPalette CreatePalette(ColorPaletteFlags flags, int entries)</div><div class="ttdef"><b>Definition:</b> <a href="_color_palette_extension_8cs_source.html#l00021">ColorPaletteExtension.cs:21</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_aa80f391a02dfb97db0a77d88af7bde9d"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#aa80f391a02dfb97db0a77d88af7bde9d">BrawlLib.Imaging.MedianCut.ColorEntry._color</a></div><div class="ttdeci">ARGBPixel _color</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00396">MedianCut.cs:396</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_aba347c18e98c01e65a0b93b08620e286"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aba347c18e98c01e65a0b93b08620e286">BrawlLib.Imaging.MedianCut._srcData</a></div><div class="ttdeci">BitmapData _srcData</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00020">MedianCut.cs:20</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_a5e7f95d706f73f82f7f882f30b1c0585"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#a5e7f95d706f73f82f7f882f30b1c0585">BrawlLib.Imaging.MedianCut.ColorBox._index</a></div><div class="ttdeci">int _index</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00457">MedianCut.cs:457</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ae6cb0a89cd89e13c131e1c7d8f4c4dab"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ae6cb0a89cd89e13c131e1c7d8f4c4dab">BrawlLib.Imaging.MedianCut.SpreadColors</a></div><div class="ttdeci">void SpreadColors(int total)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00307">MedianCut.cs:307</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a4ef68dfac350f7af8bcf3e1aa9ed25aa"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a4ef68dfac350f7af8bcf3e1aa9ed25aa">BrawlLib.Imaging.MedianCut.ClearBoxes</a></div><div class="ttdeci">void ClearBoxes()</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00247">MedianCut.cs:247</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_a3d9d931c404c7415ef0c587277255a59"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#a3d9d931c404c7415ef0c587277255a59">BrawlLib.Internal.Memory.Fill</a></div><div class="ttdeci">static unsafe void Fill(VoidPtr dest, uint length, byte value)</div><div class="ttdef"><b>Definition:</b> <a href="_memory_8cs_source.html#l00036">Memory.cs:36</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a3c4b9487d3fd6430260a8c7c630a766d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">BrawlLib.Imaging.MedianCut._outFormat</a></div><div class="ttdeci">readonly PixelFormat _outFormat</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00034">MedianCut.cs:34</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_aca4dc6abe54b20e6d9ac1ee8c9e9e9b9"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aca4dc6abe54b20e6d9ac1ee8c9e9e9b9">BrawlLib.Imaging.MedianCut._boxCount</a></div><div class="ttdeci">int _boxCount</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00027">MedianCut.cs:27</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">BrawlLib.Wii.Textures.IA8Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_a8_8cs_source.html#l00045">IA8.cs:45</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a90a3fadf7a813483ce7c31977e21c6a7"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a90a3fadf7a813483ce7c31977e21c6a7">BrawlLib.Imaging.MedianCut.RGB5A3Handler</a></div><div class="ttdeci">static void RGB5A3Handler(ARGBPixel inPixel, ushort *id)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00050">MedianCut.cs:50</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> <a href="_memory_8cs_source.html#l00007">Memory.cs:7</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_adff31dec62c2ca61be98c7ac6179d3ce"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#adff31dec62c2ca61be98c7ac6179d3ce">BrawlLib.Imaging.MedianCut.ColorBox._rootEntry</a></div><div class="ttdeci">ColorEntry * _rootEntry</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00455">MedianCut.cs:455</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">BrawlLib.Wii.Textures.wRGB565Pixel</a></div><div class="ttdef"><b>Definition:</b> <a href="_wii_2_textures_2_pixel_types_8cs_source.html#l00099">PixelTypes.cs:99</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_ad8ae4fc354ac34794fb0315eb8c070b4"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#ad8ae4fc354ac34794fb0315eb8c070b4">BrawlLib.Imaging.MedianCut.ColorEntry._next</a></div><div class="ttdeci">ColorEntry _next</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00398">MedianCut.cs:398</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ab07bb009329f9b2536e08717b5a51196"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab07bb009329f9b2536e08717b5a51196">BrawlLib.Imaging.MedianCut._size</a></div><div class="ttdeci">readonly int _size</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00022">MedianCut.cs:22</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a6b856191bfc7582743fbbff77740187e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a6b856191bfc7582743fbbff77740187e">BrawlLib.Imaging.MedianCut.MedianCut</a></div><div class="ttdeci">MedianCut(Bitmap bmp, WiiPixelFormat texFormat, WiiPaletteFormat palFormat)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:74</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a0e2af6c7a901ee97de6164edd52f41d0"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a0e2af6c7a901ee97de6164edd52f41d0">BrawlLib.Imaging.MedianCut._width</a></div><div class="ttdeci">readonly int _width</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:22</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a77f62c52d21306f2b937c0e15f3cea8d"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a77f62c52d21306f2b937c0e15f3cea8d">BrawlLib.Wii.Textures.WiiPaletteFormat</a></div><div class="ttdeci">WiiPaletteFormat</div><div class="ttdef"><b>Definition:</b> Enum.cs:56</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_html_a1d8a53aa2a8c2b44a748fbb264d60a70"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging.html#a1d8a53aa2a8c2b44a748fbb264d60a70">BrawlLib.Internal.Drawing.Imaging.ColorPaletteFlags</a></div><div class="ttdeci">ColorPaletteFlags</div><div class="ttdef"><b>Definition:</b> ColorPaletteExtension.cs:11</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a31c9a00637753a146132a789b0ab5796"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">BrawlLib.Wii.Textures.WiiPixelFormat</a></div><div class="ttdeci">WiiPixelFormat</div><div class="ttdef"><b>Definition:</b> Enum.cs:3</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ac3e43d0bef32e66ae7ecce00cd52813a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ac3e43d0bef32e66ae7ecce00cd52813a">BrawlLib.Imaging.MedianCut.SortBoxes</a></div><div class="ttdeci">void SortBoxes()</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:211</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a5611a37399ad8a46afbfc4f6b1e6fd5f"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a5611a37399ad8a46afbfc4f6b1e6fd5f">BrawlLib.Imaging.MedianCut._groupTable</a></div><div class="ttdeci">ColorEntry ** _groupTable</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:29</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ac2b3982a19f43232cbc1ee44b338e6b3"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ac2b3982a19f43232cbc1ee44b338e6b3">BrawlLib.Imaging.MedianCut.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:126</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a9b9520c1774bbe517f413503ce3352f4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a9b9520c1774bbe517f413503ce3352f4">BrawlLib.Imaging.MedianCut.RGB565Converter</a></div><div class="ttdeci">static void RGB565Converter(ushort *id, out ARGBPixel outPixel)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:62</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_acf94ede64092ed6a34438706d55d2bdf"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#acf94ede64092ed6a34438706d55d2bdf">BrawlLib.Imaging.MedianCut._srcPixels</a></div><div class="ttdeci">ARGBPixel * _srcPixels</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:24</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a8f4aeab2751f34b60c0225c5dbdf404f"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a8f4aeab2751f34b60c0225c5dbdf404f">BrawlLib.Imaging.MedianCut.RGB5A3Converter</a></div><div class="ttdeci">static void RGB5A3Converter(ushort *id, out ARGBPixel outPixel)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:67</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_a31a787145a018ab813755e3f845494d8"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#a31a787145a018ab813755e3f845494d8">BrawlLib.Imaging.MedianCut.ColorBox.Destroy</a></div><div class="ttdeci">void Destroy()</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:478</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">BrawlLib.Wii.Textures.wRGB5A3Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:230</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a56fd65ba32188f720036194ce161e174"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a56fd65ba32188f720036194ce161e174">BrawlLib.Imaging.MedianCut.IA8Converter</a></div><div class="ttdeci">static void IA8Converter(ushort *id, out ARGBPixel outPixel)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:57</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html_afb4a44ae3db2849d08af13863b464e1f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html#afb4a44ae3db2849d08af13863b464e1f">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension.CreatePalette</a></div><div class="ttdeci">static ColorPalette CreatePalette(ColorPaletteFlags flags, int entries)</div><div class="ttdef"><b>Definition:</b> ColorPaletteExtension.cs:21</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_aa80f391a02dfb97db0a77d88af7bde9d"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#aa80f391a02dfb97db0a77d88af7bde9d">BrawlLib.Imaging.MedianCut.ColorEntry._color</a></div><div class="ttdeci">ARGBPixel _color</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:396</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_aba347c18e98c01e65a0b93b08620e286"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aba347c18e98c01e65a0b93b08620e286">BrawlLib.Imaging.MedianCut._srcData</a></div><div class="ttdeci">BitmapData _srcData</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:20</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_a5e7f95d706f73f82f7f882f30b1c0585"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#a5e7f95d706f73f82f7f882f30b1c0585">BrawlLib.Imaging.MedianCut.ColorBox._index</a></div><div class="ttdeci">int _index</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:457</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ae6cb0a89cd89e13c131e1c7d8f4c4dab"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ae6cb0a89cd89e13c131e1c7d8f4c4dab">BrawlLib.Imaging.MedianCut.SpreadColors</a></div><div class="ttdeci">void SpreadColors(int total)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:307</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a4ef68dfac350f7af8bcf3e1aa9ed25aa"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a4ef68dfac350f7af8bcf3e1aa9ed25aa">BrawlLib.Imaging.MedianCut.ClearBoxes</a></div><div class="ttdeci">void ClearBoxes()</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:247</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_a3d9d931c404c7415ef0c587277255a59"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#a3d9d931c404c7415ef0c587277255a59">BrawlLib.Internal.Memory.Fill</a></div><div class="ttdeci">static unsafe void Fill(VoidPtr dest, uint length, byte value)</div><div class="ttdef"><b>Definition:</b> Memory.cs:36</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a3c4b9487d3fd6430260a8c7c630a766d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3c4b9487d3fd6430260a8c7c630a766d">BrawlLib.Imaging.MedianCut._outFormat</a></div><div class="ttdeci">readonly PixelFormat _outFormat</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:34</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_aca4dc6abe54b20e6d9ac1ee8c9e9e9b9"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aca4dc6abe54b20e6d9ac1ee8c9e9e9b9">BrawlLib.Imaging.MedianCut._boxCount</a></div><div class="ttdeci">int _boxCount</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:27</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">BrawlLib.Wii.Textures.IA8Pixel</a></div><div class="ttdef"><b>Definition:</b> IA8.cs:45</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a90a3fadf7a813483ce7c31977e21c6a7"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a90a3fadf7a813483ce7c31977e21c6a7">BrawlLib.Imaging.MedianCut.RGB5A3Handler</a></div><div class="ttdeci">static void RGB5A3Handler(ARGBPixel inPixel, ushort *id)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:50</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> Memory.cs:7</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_adff31dec62c2ca61be98c7ac6179d3ce"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#adff31dec62c2ca61be98c7ac6179d3ce">BrawlLib.Imaging.MedianCut.ColorBox._rootEntry</a></div><div class="ttdeci">ColorEntry * _rootEntry</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:455</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">BrawlLib.Wii.Textures.wRGB565Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:99</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_ad8ae4fc354ac34794fb0315eb8c070b4"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#ad8ae4fc354ac34794fb0315eb8c070b4">BrawlLib.Imaging.MedianCut.ColorEntry._next</a></div><div class="ttdeci">ColorEntry _next</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:398</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ab07bb009329f9b2536e08717b5a51196"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab07bb009329f9b2536e08717b5a51196">BrawlLib.Imaging.MedianCut._size</a></div><div class="ttdeci">readonly int _size</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:22</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_html_a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal.html#a63451abfdbaf169fd99cf4da5ed69b95a96a75bdbf222c58cabde08ebe2172c9f">BrawlLib.Internal.ImageType.bmp</a></div><div class="ttdeci">@ bmp</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_html_a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls.html#a405132b1194698c003b88db03a73b809acb5feb1b7314637725a2e73bdc9f7295">BrawlLib.Internal.Windows.Controls.ValType.Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a4e671c5d83df2162d6798f99fb0ea21a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a4e671c5d83df2162d6798f99fb0ea21a">BrawlLib.Imaging.MedianCut.SelectColors</a></div><div class="ttdeci">bool SelectColors(int targetColors)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00151">MedianCut.cs:151</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a5a542bc463339973b49073e18ef6322b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a5a542bc463339973b49073e18ef6322b">BrawlLib.Imaging.MedianCut.IA8Handler</a></div><div class="ttdeci">static void IA8Handler(ARGBPixel inPixel, ushort *id)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00040">MedianCut.cs:40</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_ac7f02b3a5589a5d63ea895b4ab22f92a"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#ac7f02b3a5589a5d63ea895b4ab22f92a">BrawlLib.Imaging.MedianCut.ColorBox._luminance</a></div><div class="ttdeci">float _luminance</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00453">MedianCut.cs:453</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_a5fd528f48396bfc3449e51d63a56757a"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#a5fd528f48396bfc3449e51d63a56757a">BrawlLib.Imaging.MedianCut.ColorEntry.Create</a></div><div class="ttdeci">static ColorEntry * Create()</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00401">MedianCut.cs:401</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ab8d7f055bb439125a257b1afb8bd4bf0"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab8d7f055bb439125a257b1afb8bd4bf0">BrawlLib.Imaging.MedianCut._height</a></div><div class="ttdeci">readonly int _height</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00022">MedianCut.cs:22</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ad560160988c3c6dd5a67ea0fbd881d58"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ad560160988c3c6dd5a67ea0fbd881d58">BrawlLib.Imaging.MedianCut.RGB565Handler</a></div><div class="ttdeci">static void RGB565Handler(ARGBPixel inPixel, ushort *id)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00045">MedianCut.cs:45</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_af0c38f77d577297807f2841349061369"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#af0c38f77d577297807f2841349061369">BrawlLib.Imaging.MedianCut._idConv</a></div><div class="ttdeci">readonly IDConverter _idConv</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00032">MedianCut.cs:32</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a97d60d0da40e23afa690a978e8533953"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a97d60d0da40e23afa690a978e8533953">BrawlLib.Imaging.MedianCut.WritePalette</a></div><div class="ttdeci">void WritePalette(ColorPalette pal)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00257">MedianCut.cs:257</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension</a></div><div class="ttdef"><b>Definition:</b> <a href="_color_palette_extension_8cs_source.html#l00019">ColorPaletteExtension.cs:19</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ac7a902385ad53b65488534c60d6d3e22"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ac7a902385ad53b65488534c60d6d3e22">BrawlLib.Imaging.MedianCut.WriteIndices</a></div><div class="ttdeci">void WriteIndices(BitmapData destData)</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00266">MedianCut.cs:266</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_acb443fa2018cea5caf508aa0dec3c964"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#acb443fa2018cea5caf508aa0dec3c964">BrawlLib.Imaging.MedianCut.ColorEntry._box</a></div><div class="ttdeci">ColorBox * _box</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00399">MedianCut.cs:399</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_aadb4642ec3c988007a7e960137e89de1"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aadb4642ec3c988007a7e960137e89de1">BrawlLib.Imaging.MedianCut._boxes</a></div><div class="ttdeci">ColorBox * _boxes</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00026">MedianCut.cs:26</a></div></div>
-<div class="ttc" id="a_model_panel_8cs_html_a7bcc7a6d87aeb3b2b14fdec298810f7f"><div class="ttname"><a href="_model_panel_8cs.html#a7bcc7a6d87aeb3b2b14fdec298810f7f">PixelFormat</a></div><div class="ttdeci">System.Drawing.Imaging.PixelFormat PixelFormat</div><div class="ttdef"><b>Definition:</b> <a href="_model_panel_8cs_source.html#l00013">ModelPanel.cs:13</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_a622c48d6140a676025e1bc6a7f9c735d"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#a622c48d6140a676025e1bc6a7f9c735d">BrawlLib.Imaging.MedianCut.ColorBox._color</a></div><div class="ttdeci">ARGBPixel _color</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00452">MedianCut.cs:452</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a3744dfd70a7de04785fc3c0788eb7fde"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3744dfd70a7de04785fc3c0788eb7fde">BrawlLib.Imaging.MedianCut._idFunc</a></div><div class="ttdeci">readonly IDHandler _idFunc</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00031">MedianCut.cs:31</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ad6ee6ac2f756ac5bd33cdc917c50cafe"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ad6ee6ac2f756ac5bd33cdc917c50cafe">BrawlLib.Imaging.MedianCut._srcBmp</a></div><div class="ttdeci">Bitmap _srcBmp</div><div class="ttdef"><b>Definition:</b> <a href="_median_cut_8cs_source.html#l00019">MedianCut.cs:19</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a4e671c5d83df2162d6798f99fb0ea21a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a4e671c5d83df2162d6798f99fb0ea21a">BrawlLib.Imaging.MedianCut.SelectColors</a></div><div class="ttdeci">bool SelectColors(int targetColors)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:151</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a5a542bc463339973b49073e18ef6322b"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a5a542bc463339973b49073e18ef6322b">BrawlLib.Imaging.MedianCut.IA8Handler</a></div><div class="ttdeci">static void IA8Handler(ARGBPixel inPixel, ushort *id)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:40</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_ac7f02b3a5589a5d63ea895b4ab22f92a"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#ac7f02b3a5589a5d63ea895b4ab22f92a">BrawlLib.Imaging.MedianCut.ColorBox._luminance</a></div><div class="ttdeci">float _luminance</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:453</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_a5fd528f48396bfc3449e51d63a56757a"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#a5fd528f48396bfc3449e51d63a56757a">BrawlLib.Imaging.MedianCut.ColorEntry.Create</a></div><div class="ttdeci">static ColorEntry * Create()</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:401</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ab8d7f055bb439125a257b1afb8bd4bf0"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ab8d7f055bb439125a257b1afb8bd4bf0">BrawlLib.Imaging.MedianCut._height</a></div><div class="ttdeci">readonly int _height</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:22</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ad560160988c3c6dd5a67ea0fbd881d58"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ad560160988c3c6dd5a67ea0fbd881d58">BrawlLib.Imaging.MedianCut.RGB565Handler</a></div><div class="ttdeci">static void RGB565Handler(ARGBPixel inPixel, ushort *id)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:45</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_af0c38f77d577297807f2841349061369"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#af0c38f77d577297807f2841349061369">BrawlLib.Imaging.MedianCut._idConv</a></div><div class="ttdeci">readonly IDConverter _idConv</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:32</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a97d60d0da40e23afa690a978e8533953"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a97d60d0da40e23afa690a978e8533953">BrawlLib.Imaging.MedianCut.WritePalette</a></div><div class="ttdeci">void WritePalette(ColorPalette pal)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:257</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_1_1_color_palette_extension.html">BrawlLib.Internal.Drawing.Imaging.ColorPaletteExtension</a></div><div class="ttdef"><b>Definition:</b> ColorPaletteExtension.cs:19</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ac7a902385ad53b65488534c60d6d3e22"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ac7a902385ad53b65488534c60d6d3e22">BrawlLib.Imaging.MedianCut.WriteIndices</a></div><div class="ttdeci">void WriteIndices(BitmapData destData)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:266</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry_html_acb443fa2018cea5caf508aa0dec3c964"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_entry.html#acb443fa2018cea5caf508aa0dec3c964">BrawlLib.Imaging.MedianCut.ColorEntry._box</a></div><div class="ttdeci">ColorBox * _box</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:399</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_aadb4642ec3c988007a7e960137e89de1"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#aadb4642ec3c988007a7e960137e89de1">BrawlLib.Imaging.MedianCut._boxes</a></div><div class="ttdeci">ColorBox * _boxes</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:26</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box_html_a622c48d6140a676025e1bc6a7f9c735d"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_median_cut_1_1_color_box.html#a622c48d6140a676025e1bc6a7f9c735d">BrawlLib.Imaging.MedianCut.ColorBox._color</a></div><div class="ttdeci">ARGBPixel _color</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:452</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a3744dfd70a7de04785fc3c0788eb7fde"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a3744dfd70a7de04785fc3c0788eb7fde">BrawlLib.Imaging.MedianCut._idFunc</a></div><div class="ttdeci">readonly IDHandler _idFunc</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:31</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_ad6ee6ac2f756ac5bd33cdc917c50cafe"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#ad6ee6ac2f756ac5bd33cdc917c50cafe">BrawlLib.Imaging.MedianCut._srcBmp</a></div><div class="ttdeci">Bitmap _srcBmp</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:19</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

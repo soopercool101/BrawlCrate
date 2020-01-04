@@ -345,10 +345,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1b4e337c17e77974fb178a81d82a196b"><td class="memItemLeft" align="right" valign="top">fixed float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a> [16]</td></tr>
 <tr class="separator:a1b4e337c17e77974fb178a81d82a196b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00013">13</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab0b09f6b4e966c85aa146fe0b7042cef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab0b09f6b4e966c85aa146fe0b7042cef">&#9670;&nbsp;</a></span>Matrix() <span class="overload">[1/3]</span></h2>
 
@@ -382,8 +379,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00019">19</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; i++)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            {</div>
@@ -416,8 +411,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00283">283</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        {</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -452,8 +445,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00293">293</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        {</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -499,8 +490,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01371">1371</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;        {</div>
 <div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;            <span class="comment">//Equal points will cause a corrupt matrix</span></div>
@@ -511,11 +500,11 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l01379"></a><span class="lineno"> 1379</span>&#160;                point1 = point1.Normalize();</div>
 <div class="line"><a name="l01380"></a><span class="lineno"> 1380</span>&#160;                point2 = point2.Normalize();</div>
 <div class="line"><a name="l01381"></a><span class="lineno"> 1381</span>&#160; </div>
-<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;                <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> vSin = point1.Cross(point2);</div>
-<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;                <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> axis = vSin.Normalize();</div>
+<div class="line"><a name="l01382"></a><span class="lineno"> 1382</span>&#160;                Vector3 vSin = point1.Cross(point2);</div>
+<div class="line"><a name="l01383"></a><span class="lineno"> 1383</span>&#160;                Vector3 axis = vSin.Normalize();</div>
 <div class="line"><a name="l01384"></a><span class="lineno"> 1384</span>&#160; </div>
 <div class="line"><a name="l01385"></a><span class="lineno"> 1385</span>&#160;                <span class="keywordtype">float</span> cos = point1.Dot(point2);</div>
-<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;                <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> vt = axis * (1.0f - cos);</div>
+<div class="line"><a name="l01386"></a><span class="lineno"> 1386</span>&#160;                Vector3 vt = axis * (1.0f - cos);</div>
 <div class="line"><a name="l01387"></a><span class="lineno"> 1387</span>&#160; </div>
 <div class="line"><a name="l01388"></a><span class="lineno"> 1388</span>&#160;                pOut[0] = vt._x * axis._x + cos;</div>
 <div class="line"><a name="l01389"></a><span class="lineno"> 1389</span>&#160;                pOut[5] = vt._y * axis._y + cos;</div>
@@ -560,8 +549,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00278">278</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        {</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a>(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>);</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
@@ -590,15 +577,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01010">1010</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160;        {</div>
 <div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html">FrameState</a> state = <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html">FrameState</a>();</div>
 <div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160; </div>
 <div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;            fixed (<span class="keywordtype">float</span>* p = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
 <div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;            {</div>
 <div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;                <span class="comment">//Translation is easy!</span></div>
-<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;                state.<a class="code" href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#ac795ff8568fd0827ffab5979ad5d36f9">_translate</a> = *(<a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>*) &amp;p[12];</div>
+<div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;                state.<a class="code" href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#ac795ff8568fd0827ffab5979ad5d36f9">_translate</a> = *(Vector3*) &amp;p[12];</div>
 <div class="line"><a name="l01018"></a><span class="lineno"> 1018</span>&#160; </div>
 <div class="line"><a name="l01019"></a><span class="lineno"> 1019</span>&#160;                <span class="comment">//Scale, use sqrt of rotation columns</span></div>
 <div class="line"><a name="l01020"></a><span class="lineno"> 1020</span>&#160;                state.<a class="code" href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#aec749e564c9e650eed17e41c08bd3c60">_scale</a>._x = (float) Math.Round(Math.Sqrt(p[0] * p[0] + p[1] * p[1] + p[2] * p[2]), 4);</div>
@@ -637,8 +622,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01591">1591</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;        {</div>
 <div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160;            <span class="keywordflow">if</span> (obj is <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> matrix)</div>
 <div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;            {</div>
@@ -672,8 +655,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00971">971</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;        {</div>
 <div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;            <span class="keywordtype">float</span> x, y, z, c;</div>
 <div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;            fixed (<span class="keywordtype">float</span>* p = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
@@ -709,7 +690,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;                }</div>
 <div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;            }</div>
 <div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160; </div>
-<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>(x, y, z) * Maths._rad2degf;</div>
+<div class="line"><a name="l01007"></a><span class="lineno"> 1007</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Vector3(x, y, z) * Maths._rad2degf;</div>
 <div class="line"><a name="l01008"></a><span class="lineno"> 1008</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
@@ -736,8 +717,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01601">1601</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;        {</div>
 <div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160;            <span class="keywordflow">return</span> base.GetHashCode();</div>
 <div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;        }</div>
@@ -777,8 +756,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00027">27</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; i++)</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {</div>
@@ -810,12 +787,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00321">321</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        {</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            fixed (<span class="keywordtype">float</span>* p = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            {</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>(p[12], p[13], p[14]);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> Vector3(p[12], p[13], p[14]);</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            }</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -843,8 +818,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00847">847</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;        {</div>
 <div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -924,8 +897,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00903">903</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00904"></a><span class="lineno">  904</span>&#160;        {</div>
 <div class="line"><a name="l00905"></a><span class="lineno">  905</span>&#160;            Vector4 q = <span class="keyword">new</span> Vector4();</div>
 <div class="line"><a name="l00906"></a><span class="lineno">  906</span>&#160; </div>
@@ -999,8 +970,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00953">953</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00954"></a><span class="lineno">  954</span>&#160;        {</div>
 <div class="line"><a name="l00955"></a><span class="lineno">  955</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <span class="keyword">this</span>;</div>
 <div class="line"><a name="l00956"></a><span class="lineno">  956</span>&#160;            Vector4 q = <span class="keyword">new</span> Vector4</div>
@@ -1040,8 +1009,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00825">825</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        {</div>
 <div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -1087,12 +1054,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00329">329</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        {</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            fixed (<span class="keywordtype">float</span>* p = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>(p[0], p[5], p[10]);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> Vector3(p[0], p[5], p[10]);</div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            }</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -1121,8 +1086,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00383">383</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        {</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a>();</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html">BoneWeight</a> w <span class="keywordflow">in</span> weights)</div>
@@ -1160,8 +1123,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01474">1474</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01475"></a><span class="lineno"> 1475</span>&#160;        {</div>
 <div class="line"><a name="l01476"></a><span class="lineno"> 1476</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a9efa360e7c296b6b273bb2323d5353a3">Invert</a>(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l01477"></a><span class="lineno"> 1477</span>&#160;        }</div>
@@ -1191,8 +1152,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01479">1479</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01480"></a><span class="lineno"> 1480</span>&#160;        {</div>
 <div class="line"><a name="l01481"></a><span class="lineno"> 1481</span>&#160;            <span class="keywordtype">int</span>[] colIdx = {0, 0, 0, 0};</div>
 <div class="line"><a name="l01482"></a><span class="lineno"> 1482</span>&#160;            <span class="keywordtype">int</span>[] rowIdx = {0, 0, 0, 0};</div>
@@ -1345,15 +1304,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01407">1407</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01408"></a><span class="lineno"> 1408</span>&#160;        {</div>
-<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> up = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>(-(<span class="keywordtype">float</span>) Math.Sin(roll * Maths._deg2radf),</div>
+<div class="line"><a name="l01409"></a><span class="lineno"> 1409</span>&#160;            Vector3 up = <span class="keyword">new</span> Vector3(-(<span class="keywordtype">float</span>) Math.Sin(roll * Maths._deg2radf),</div>
 <div class="line"><a name="l01410"></a><span class="lineno"> 1410</span>&#160;                (<span class="keywordtype">float</span>) Math.Cos(roll * Maths._deg2radf), 0);</div>
 <div class="line"><a name="l01411"></a><span class="lineno"> 1411</span>&#160; </div>
-<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> zaxis = (eye - target).Normalize();</div>
-<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> xaxis = up.Cross(zaxis).Normalize();</div>
-<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> yaxis = zaxis.Cross(xaxis).Normalize();</div>
+<div class="line"><a name="l01412"></a><span class="lineno"> 1412</span>&#160;            Vector3 zaxis = (eye - target).Normalize();</div>
+<div class="line"><a name="l01413"></a><span class="lineno"> 1413</span>&#160;            Vector3 xaxis = up.Cross(zaxis).Normalize();</div>
+<div class="line"><a name="l01414"></a><span class="lineno"> 1414</span>&#160;            Vector3 yaxis = zaxis.Cross(xaxis).Normalize();</div>
 <div class="line"><a name="l01415"></a><span class="lineno"> 1415</span>&#160; </div>
 <div class="line"><a name="l01416"></a><span class="lineno"> 1416</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l01417"></a><span class="lineno"> 1417</span>&#160;            <span class="keywordtype">float</span>* pOut = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -1402,8 +1359,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00612">612</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        {</div>
 <div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;            fixed (<span class="keywordtype">float</span>* dPtr = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
 <div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            {</div>
@@ -1439,8 +1394,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00623">623</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;        {</div>
 <div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;            <span class="keyword">this</span> *= m;</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        }</div>
@@ -1470,10 +1423,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00541">541</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        {</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> nv = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>();</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            Vector3 nv = <span class="keyword">new</span> Vector3();</div>
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;            fixed (<span class="keywordtype">float</span>* p = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            {</div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                nv._x = p[0] * v._x + p[4] * v._y + p[8] * v._z + p[12];</div>
@@ -1509,10 +1460,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00554">554</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        {</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> nv = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>();</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;            Vector3 nv = <span class="keyword">new</span> Vector3();</div>
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            fixed (<span class="keywordtype">float</span>* p = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            {</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                nv._x = p[0] * v._x + p[1] * v._y + p[2] * v._z;</div>
@@ -1548,8 +1497,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01053">1053</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;        {</div>
 <div class="line"><a name="l01055"></a><span class="lineno"> 1055</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m1;</div>
 <div class="line"><a name="l01056"></a><span class="lineno"> 1056</span>&#160;            <span class="keywordtype">float</span>* sPtr = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -1600,8 +1547,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01079">1079</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01080"></a><span class="lineno"> 1080</span>&#160;        {</div>
 <div class="line"><a name="l01081"></a><span class="lineno"> 1081</span>&#160;            Matrix34 m1;</div>
 <div class="line"><a name="l01082"></a><span class="lineno"> 1082</span>&#160;            <span class="keywordtype">float</span>* sPtr = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -1658,8 +1603,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00722">722</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;        {</div>
 <div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;            <span class="keywordtype">float</span>* p1 = (<span class="keywordtype">float</span>*) &amp;m1;</div>
 <div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;            <span class="keywordtype">float</span>* p2 = (<span class="keywordtype">float</span>*) &amp;m2;</div>
@@ -1710,8 +1653,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00684">684</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        {</div>
 <div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
 <div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; i++)</div>
@@ -1757,10 +1698,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00567">567</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        {</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a> nv;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            Vector2 nv;</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            nv._x = p[0] * v._x + p[4] * v._y + p[8] + p[12];</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            nv._y = p[1] * v._x + p[5] * v._y + p[9] + p[13];</div>
@@ -1805,8 +1744,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00594">594</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        {</div>
 <div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acf930b719b2dfa05f1c4b74fcd0a5488">Transform</a>(v, m);</div>
 <div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        }</div>
@@ -1846,8 +1783,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00599">599</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        {</div>
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            Vector4 nv;</div>
 <div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            <span class="keywordtype">float</span>* dPtr = (<span class="keywordtype">float</span>*) &amp;nv;</div>
@@ -1895,8 +1830,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00628">628</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        {</div>
 <div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> dm;</div>
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            <span class="keywordtype">float</span>* s1 = (<span class="keywordtype">float</span>*) &amp;m2, s2 = (<span class="keywordtype">float</span>*) &amp;m1, d = (<span class="keywordtype">float</span>*) &amp;dm;</div>
@@ -1955,8 +1888,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00589">589</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        {</div>
 <div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acf930b719b2dfa05f1c4b74fcd0a5488">Transform</a>(v, m);</div>
 <div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        }</div>
@@ -1996,8 +1927,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00652">652</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;        {</div>
 <div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            <span class="keywordtype">float</span>* dPtr = (<span class="keywordtype">float</span>*) &amp;m1;</div>
 <div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;            <span class="keywordtype">float</span>* sPtr = (<span class="keywordtype">float</span>*) &amp;m2;</div>
@@ -2034,8 +1963,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00738">738</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;        {</div>
 <div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
 <div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;            <span class="keywordtype">int</span> i = 0;</div>
@@ -2082,8 +2009,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00664">664</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        {</div>
 <div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;            <span class="keywordtype">float</span>* dPtr = (<span class="keywordtype">float</span>*) &amp;m1;</div>
 <div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;            <span class="keywordtype">float</span>* sPtr = (<span class="keywordtype">float</span>*) &amp;m2;</div>
@@ -2130,8 +2055,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00695">695</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;        {</div>
 <div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
 <div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; i++)</div>
@@ -2177,8 +2100,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00706">706</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;        {</div>
 <div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            <span class="keywordtype">float</span>* p1 = (<span class="keywordtype">float</span>*) &amp;m1;</div>
 <div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            <span class="keywordtype">float</span>* p2 = (<span class="keywordtype">float</span>*) &amp;m2;</div>
@@ -2253,8 +2174,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01116">1116</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;        {</div>
 <div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160; </div>
@@ -2322,8 +2241,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01111">1111</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;        {</div>
 <div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a37ae0c5fbc129a1ccb3c0bb311bacee0">OrthographicMatrix</a>(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ);</div>
 <div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;        }</div>
@@ -2369,8 +2286,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01106">1106</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;        {</div>
 <div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a37ae0c5fbc129a1ccb3c0bb311bacee0">OrthographicMatrix</a>(dimensions._x, dimensions._y, dimensions._z, dimensions._w, nearZ, farZ);</div>
 <div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;        }</div>
@@ -2410,8 +2325,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01101">1101</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;        {</div>
 <div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a37ae0c5fbc129a1ccb3c0bb311bacee0">OrthographicMatrix</a>(dimensions, depth._x, depth._y);</div>
 <div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;        }</div>
@@ -2463,8 +2376,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01175">1175</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;        {</div>
 <div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m;</div>
 <div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160; </div>
@@ -2524,8 +2435,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01288">1288</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;        {</div>
 <div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m;</div>
 <div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -2587,8 +2496,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00303">303</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        {</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordtype">float</span>* pOut = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -2631,8 +2538,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00397">397</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        {</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a>();</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html">BoneWeight</a> w <span class="keywordflow">in</span> weights)</div>
@@ -2687,15 +2592,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01438">1438</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01439"></a><span class="lineno"> 1439</span>&#160;        {</div>
-<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> up = <span class="keyword">new</span> <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a>(-(<span class="keywordtype">float</span>) Math.Sin(roll * Maths._deg2radf),</div>
+<div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;            Vector3 up = <span class="keyword">new</span> Vector3(-(<span class="keywordtype">float</span>) Math.Sin(roll * Maths._deg2radf),</div>
 <div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;                (<span class="keywordtype">float</span>) Math.Cos(roll * Maths._deg2radf), 0);</div>
 <div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160; </div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> zaxis = (target - eye).Normalize();</div>
-<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> xaxis = up.Cross(zaxis).Normalize();</div>
-<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> yaxis = xaxis.Cross(zaxis).Normalize();</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;            Vector3 zaxis = (target - eye).Normalize();</div>
+<div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;            Vector3 xaxis = up.Cross(zaxis).Normalize();</div>
+<div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;            Vector3 yaxis = xaxis.Cross(zaxis).Normalize();</div>
 <div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160; </div>
 <div class="line"><a name="l01447"></a><span class="lineno"> 1447</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l01448"></a><span class="lineno"> 1448</span>&#160;            <span class="keywordtype">float</span>* pOut = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -2782,8 +2685,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01153">1153</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;        {</div>
 <div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160; </div>
@@ -2851,8 +2752,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01148">1148</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;        {</div>
 <div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#aa098a0b5c1fef90297a20e00b837a893">ReverseOrthographicMatrix</a>(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ);</div>
 <div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;        }</div>
@@ -2898,8 +2797,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01143">1143</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;        {</div>
 <div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#aa098a0b5c1fef90297a20e00b837a893">ReverseOrthographicMatrix</a>(dimensions._x, dimensions._y, dimensions._z, dimensions._w, nearZ, farZ);</div>
 <div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;        }</div>
@@ -2939,8 +2836,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01138">1138</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;        {</div>
 <div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#aa098a0b5c1fef90297a20e00b837a893">ReverseOrthographicMatrix</a>(dimensions, depth._x, depth._y);</div>
 <div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;        }</div>
@@ -2992,8 +2887,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01194">1194</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;        {</div>
 <div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m;</div>
 <div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160; </div>
@@ -3054,8 +2947,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01326">1326</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01327"></a><span class="lineno"> 1327</span>&#160;        {</div>
 <div class="line"><a name="l01328"></a><span class="lineno"> 1328</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m;</div>
 <div class="line"><a name="l01329"></a><span class="lineno"> 1329</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -3141,8 +3032,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00500">500</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        {</div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            <span class="keywordtype">float</span> cosx = (float) Math.Cos(x * Maths._deg2radf);</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            <span class="keywordtype">float</span> sinx = (float) Math.Sin(x * Maths._deg2radf);</div>
@@ -3192,8 +3081,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00495">495</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        {</div>
 <div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a6a9c813e6e1c416ab6cee0b49a32e794">ReverseRotationMatrix</a>(angles._x, angles._y, angles._z);</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        }</div>
@@ -3239,8 +3126,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01246">1246</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;        {</div>
 <div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;            <span class="keywordtype">float</span> cosx = (float) Math.Cos(rotation._x * Maths._deg2radf);</div>
 <div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;            <span class="keywordtype">float</span> sinx = (float) Math.Sin(rotation._x * Maths._deg2radf);</div>
@@ -3323,8 +3208,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00373">373</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        {</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -3359,8 +3242,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00368">368</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        {</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a4c03c36398313be75a839a1a0f5c9270">ReverseTranslationMatrix</a>(v._x, v._y, v._z);</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        }</div>
@@ -3406,8 +3287,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01047">1047</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;        {</div>
 <div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">RotationMatrix</a>(x, y, z);</div>
 <div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acc809f16e7d86526d2251a277fa1ce56">Multiply</a>(m);</div>
@@ -3438,8 +3317,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01042">1042</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01043"></a><span class="lineno"> 1043</span>&#160;        {</div>
 <div class="line"><a name="l01044"></a><span class="lineno"> 1044</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8b603f62290f3ade152ba56b03335852">Rotate</a>(v._x, v._y, v._z);</div>
 <div class="line"><a name="l01045"></a><span class="lineno"> 1045</span>&#160;        }</div>
@@ -3469,8 +3346,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00750">750</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;        {</div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;            <span class="keywordtype">float</span> var1, var2;</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;            <span class="keywordtype">float</span> cosx = (float) Math.Cos(x / 180.0f * Math.PI);</div>
@@ -3520,8 +3395,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00775">775</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;        {</div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;            <span class="keywordtype">float</span> var1, var2;</div>
 <div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;            <span class="keywordtype">float</span> cosy = (float) Math.Cos(y / 180.0f * Math.PI);</div>
@@ -3571,8 +3444,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00800">800</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;        {</div>
 <div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;            <span class="keywordtype">float</span> var1, var2;</div>
 <div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;            <span class="keywordtype">float</span> cosz = (float) Math.Cos(z / 180.0f * Math.PI);</div>
@@ -3622,8 +3493,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00411">411</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        {</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            angle *= Maths._deg2radf;</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
@@ -3666,8 +3535,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00429">429</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        {</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            angle *= Maths._deg2radf;</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
@@ -3710,8 +3577,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00447">447</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        {</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            angle *= Maths._deg2radf;</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
@@ -3770,8 +3635,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00470">470</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        {</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            <span class="keywordtype">float</span> cosx = (float) Math.Cos(x * Maths._deg2radf);</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="keywordtype">float</span> sinx = (float) Math.Sin(x * Maths._deg2radf);</div>
@@ -3821,8 +3684,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00465">465</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        {</div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">RotationMatrix</a>(angles._x, angles._y, angles._z);</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        }</div>
@@ -3868,8 +3729,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01036">1036</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01037"></a><span class="lineno"> 1037</span>&#160;        {</div>
 <div class="line"><a name="l01038"></a><span class="lineno"> 1038</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">ScaleMatrix</a>(x, y, z);</div>
 <div class="line"><a name="l01039"></a><span class="lineno"> 1039</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acc809f16e7d86526d2251a277fa1ce56">Multiply</a>(m);</div>
@@ -3900,8 +3759,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01031">1031</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01032"></a><span class="lineno"> 1032</span>&#160;        {</div>
 <div class="line"><a name="l01033"></a><span class="lineno"> 1033</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8159f3abffbfb6d32feae184dbe0d62b">Scale</a>(v._x, v._y, v._z);</div>
 <div class="line"><a name="l01034"></a><span class="lineno"> 1034</span>&#160;        }</div>
@@ -3947,8 +3804,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00342">342</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        {</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a>();</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -3984,8 +3839,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00337">337</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        {</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">ScaleMatrix</a>(scale._x, scale._y, scale._z);</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        }</div>
@@ -4014,8 +3867,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01606">1606</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;        {</div>
 <div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160;            <span class="keywordflow">return</span> CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(<span class="stringliteral">&quot;,&quot;</span>)</div>
 <div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;                ? $<span class="stringliteral">&quot;({this[0]} {this[1]} {this[2]} {this[3]})({this[4]} {this[5]} {this[6]} {this[7]})({this[8]} {this[9]} {this[10]} {this[11]})({this[12]} {this[13]} {this[14]} {this[15]})&quot;</span></div>
@@ -4057,10 +3908,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00579">579</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        {</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            <a class="code" href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a> nv;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            Vector3 nv;</div>
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            nv._x = p[0] * v._x + p[4] * v._y + p[8] * v._z + p[12];</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            nv._y = p[1] * v._x + p[5] * v._y + p[9] * v._z + p[13];</div>
@@ -4109,8 +3958,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l01214">1214</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;        {</div>
 <div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m;</div>
 <div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;            <span class="keywordtype">float</span>* d = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -4183,8 +4030,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00530">530</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        {</div>
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            fixed (<span class="keywordtype">float</span>* p = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">_values</a>)</div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;            {</div>
@@ -4220,8 +4065,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00525">525</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        {</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a644cc2e2ad7d02f9663d65607ef412a3">Translate</a>(v._x, v._y, v._z);</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        }</div>
@@ -4267,8 +4110,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00358">358</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        {</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
@@ -4303,8 +4144,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00353">353</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        {</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bd1bf40055909654d230ce4950095e0">TranslationMatrix</a>(v._x, v._y, v._z);</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        }</div>
@@ -4332,8 +4171,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00017">17</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
-
 </div>
 </div>
 <a id="a8bd9d798743493583f030ab636c5cfe1"></a>
@@ -4355,8 +4192,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00015">15</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 
 </div>
 </div>
@@ -4380,8 +4215,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00062">62</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> Vector4(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[0], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[4], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[8], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[12]);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">set</span></div>
@@ -4414,8 +4247,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00074">74</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> Vector4(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[1], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[5], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[9], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[13]);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">set</span></div>
@@ -4448,8 +4279,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00086">86</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> Vector4(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[2], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[6], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[10], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[14]);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keyword">set</span></div>
@@ -4482,8 +4311,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00098">98</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> Vector4(<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[3], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[7], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[11], <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[15]);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keyword">set</span></div>
@@ -4516,8 +4343,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00254">254</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        {</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keyword">get</span></div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            {</div>
@@ -4551,8 +4376,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 1, Column 1 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00113">113</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[0];</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[0] = value;</div>
@@ -4581,8 +4404,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 1, Column 2 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00122">122</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[1];</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[1] = value;</div>
@@ -4611,8 +4432,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 1, Column 3 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00131">131</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[2];</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[2] = value;</div>
@@ -4641,8 +4460,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 1, Column 4 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00140">140</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        {</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[3];</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[3] = value;</div>
@@ -4671,8 +4488,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 2, Column 1 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00149">149</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[4];</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[4] = value;</div>
@@ -4701,8 +4516,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 2, Column 2 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00158">158</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        {</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[5];</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[5] = value;</div>
@@ -4731,8 +4544,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 2, Column 3 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00167">167</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        {</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[6];</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[6] = value;</div>
@@ -4761,8 +4572,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 2, Column 4 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00176">176</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[7];</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[7] = value;</div>
@@ -4791,8 +4600,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 3, Column 1 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00185">185</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[8];</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[8] = value;</div>
@@ -4821,8 +4628,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 3, Column 2 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00194">194</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[9];</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[9] = value;</div>
@@ -4851,8 +4656,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 3, Column 3 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00203">203</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[10];</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[10] = value;</div>
@@ -4881,8 +4684,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 3, Column 4 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00212">212</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        {</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[11];</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[11] = value;</div>
@@ -4911,8 +4712,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 4, Column 1 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00221">221</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        {</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[12];</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[12] = value;</div>
@@ -4941,8 +4740,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 4, Column 2 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00230">230</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        {</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[13];</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[13] = value;</div>
@@ -4971,8 +4768,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 4, Column 3 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00239">239</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[14];</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[14] = value;</div>
@@ -5001,8 +4796,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Row 4, Column 4 </p>
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00248">248</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[15];</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[15] = value;</div>
@@ -5029,8 +4822,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00038">38</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">get</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[0];</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">set</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[0] = value;</div>
@@ -5057,8 +4848,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00044">44</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keyword">get</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[4];</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keyword">set</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[4] = value;</div>
@@ -5085,8 +4874,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00050">50</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">get</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[8];</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">set</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[8] = value;</div>
@@ -5113,8 +4900,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00056">56</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">get</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[12];</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">set</span> =&gt; *(Vector4*) &amp;<a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[12] = value;</div>
@@ -5141,8 +4926,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00271">271</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        {</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[index];</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[index] = value;</div>
@@ -5169,8 +4952,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_matrix_8cs_source.html#l00265">265</a> of file <a class="el" href="_matrix_8cs_source.html">Matrix.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[(y &lt;&lt; 2) + x];</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">Data</a>[(y &lt;&lt; 2) + x] = value;</div>
@@ -5179,42 +4960,40 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>BrawlLib/Internal/<a class="el" href="_matrix_8cs_source.html">Matrix.cs</a></li>
+<li>BrawlLib/Internal/Matrix.cs</li>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html">BrawlLib.Modeling.FrameState</a></div><div class="ttdef"><b>Definition:</b> <a href="_frame_state_8cs_source.html#l00009">FrameState.cs:9</a></div></div>
-<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_bone_node_html_a5e46216dffdcd272cfc9ec0c13eaef7b"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a5e46216dffdcd272cfc9ec0c13eaef7b">BrawlLib.Modeling.IBoneNode.InverseBindMatrix</a></div><div class="ttdeci">Matrix InverseBindMatrix</div><div class="ttdef"><b>Definition:</b> <a href="_i_bone_node_8cs_source.html#l00014">IBoneNode.cs:14</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_aea4d59d65765988b98951224d8115f47"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#aea4d59d65765988b98951224d8115f47">BrawlLib.Modeling.FrameState.CalcTransforms</a></div><div class="ttdeci">void CalcTransforms()</div><div class="ttdef"><b>Definition:</b> <a href="_frame_state_8cs_source.html#l00084">FrameState.cs:84</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_aec749e564c9e650eed17e41c08bd3c60"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#aec749e564c9e650eed17e41c08bd3c60">BrawlLib.Modeling.FrameState._scale</a></div><div class="ttdeci">Vector3 _scale</div><div class="ttdef"><b>Definition:</b> <a href="_frame_state_8cs_source.html#l00012">FrameState.cs:12</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a9efa360e7c296b6b273bb2323d5353a3"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a9efa360e7c296b6b273bb2323d5353a3">BrawlLib.Internal.Matrix.Invert</a></div><div class="ttdeci">Matrix Invert()</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l01474">Matrix.cs:1474</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_aa098a0b5c1fef90297a20e00b837a893"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#aa098a0b5c1fef90297a20e00b837a893">BrawlLib.Internal.Matrix.ReverseOrthographicMatrix</a></div><div class="ttdeci">static Matrix ReverseOrthographicMatrix(Vector4 dimensions, Vector2 depth)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l01138">Matrix.cs:1138</a></div></div>
-<div class="ttc" id="a_primitive_manager_8cs_html_a169087b669368ccf75e8a501677679df"><div class="ttname"><a href="_primitive_manager_8cs.html#a169087b669368ccf75e8a501677679df">Vector2</a></div><div class="ttdeci">BrawlLib.Internal.Vector2 Vector2</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00014">PrimitiveManager.cs:14</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight_html_a79e9bc7dd3ac659e6766195d95dcb1be"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html#a79e9bc7dd3ac659e6766195d95dcb1be">BrawlLib.Wii.Models.BoneWeight.Bone</a></div><div class="ttdeci">IBoneNode Bone</div><div class="ttdef"><b>Definition:</b> <a href="_influence_manager_8cs_source.html#l00387">InfluenceManager.cs:387</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_acf930b719b2dfa05f1c4b74fcd0a5488"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acf930b719b2dfa05f1c4b74fcd0a5488">BrawlLib.Internal.Matrix.Transform</a></div><div class="ttdeci">static Vector3 Transform(Vector3 v, Matrix m)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00579">Matrix.cs:579</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a6a9c813e6e1c416ab6cee0b49a32e794"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a6a9c813e6e1c416ab6cee0b49a32e794">BrawlLib.Internal.Matrix.ReverseRotationMatrix</a></div><div class="ttdeci">static Matrix ReverseRotationMatrix(Vector3 angles)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00495">Matrix.cs:495</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_ab0b09f6b4e966c85aa146fe0b7042cef"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">BrawlLib.Internal.Matrix.Matrix</a></div><div class="ttdeci">Matrix(SerializationInfo info, StreamingContext ctxt)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00019">Matrix.cs:19</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a4c03c36398313be75a839a1a0f5c9270"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a4c03c36398313be75a839a1a0f5c9270">BrawlLib.Internal.Matrix.ReverseTranslationMatrix</a></div><div class="ttdeci">static Matrix ReverseTranslationMatrix(Vector3 v)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00368">Matrix.cs:368</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8b603f62290f3ade152ba56b03335852"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8b603f62290f3ade152ba56b03335852">BrawlLib.Internal.Matrix.Rotate</a></div><div class="ttdeci">void Rotate(Vector3 v)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l01042">Matrix.cs:1042</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a0bca3007956fd51d2eb85828708aa45c"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bca3007956fd51d2eb85828708aa45c">BrawlLib.Internal.Matrix.GetAngles</a></div><div class="ttdeci">Vector3 GetAngles()</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00971">Matrix.cs:971</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8bd9d798743493583f030ab636c5cfe1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">BrawlLib.Internal.Matrix.Identity</a></div><div class="ttdeci">static readonly Matrix Identity</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00015">Matrix.cs:15</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html">BrawlLib.Wii.Models.BoneWeight</a></div><div class="ttdef"><b>Definition:</b> <a href="_influence_manager_8cs_source.html#l00380">InfluenceManager.cs:380</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a644cc2e2ad7d02f9663d65607ef412a3"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a644cc2e2ad7d02f9663d65607ef412a3">BrawlLib.Internal.Matrix.Translate</a></div><div class="ttdeci">void Translate(Vector3 v)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00525">Matrix.cs:525</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a61702fcc9e5f56b90846a0761c6e2ee5"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">BrawlLib.Internal.Matrix.RotationMatrix</a></div><div class="ttdeci">static Matrix RotationMatrix(Vector3 angles)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00465">Matrix.cs:465</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_acc809f16e7d86526d2251a277fa1ce56"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acc809f16e7d86526d2251a277fa1ce56">BrawlLib.Internal.Matrix.Multiply</a></div><div class="ttdeci">Vector3 Multiply(Vector3 v)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00541">Matrix.cs:541</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_ad47698246e93b51c683829ba7d0d3ab1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">BrawlLib.Internal.Matrix.ScaleMatrix</a></div><div class="ttdeci">static Matrix ScaleMatrix(Vector3 scale)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00337">Matrix.cs:337</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_adb1bc05d815c454852cd35195955d4d7"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">BrawlLib.Internal.Matrix.Data</a></div><div class="ttdeci">float * Data</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00254">Matrix.cs:254</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a0bd1bf40055909654d230ce4950095e0"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bd1bf40055909654d230ce4950095e0">BrawlLib.Internal.Matrix.TranslationMatrix</a></div><div class="ttdeci">static Matrix TranslationMatrix(Vector3 v)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00353">Matrix.cs:353</a></div></div>
-<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html_a25ed1bab1a63b1fe76186b433e10d935"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a25ed1bab1a63b1fe76186b433e10d935">BrawlLib.Modeling.IMatrixNode.Matrix</a></div><div class="ttdeci">Matrix Matrix</div><div class="ttdef"><b>Definition:</b> <a href="_i_matrix_node_8cs_source.html#l00012">IMatrixNode.cs:12</a></div></div>
-<div class="ttc" id="a_primitive_manager_8cs_html_a808ca50558718f478245b160dc1e84c6"><div class="ttname"><a href="_primitive_manager_8cs.html#a808ca50558718f478245b160dc1e84c6">Vector3</a></div><div class="ttdeci">BrawlLib.Internal.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_primitive_manager_8cs_source.html#l00015">PrimitiveManager.cs:15</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_ac795ff8568fd0827ffab5979ad5d36f9"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#ac795ff8568fd0827ffab5979ad5d36f9">BrawlLib.Modeling.FrameState._translate</a></div><div class="ttdeci">Vector3 _translate</div><div class="ttdef"><b>Definition:</b> <a href="_frame_state_8cs_source.html#l00014">FrameState.cs:14</a></div></div>
-<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_bone_node_html_affa23bca88e413b5699e29cb53211e4f"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#affa23bca88e413b5699e29cb53211e4f">BrawlLib.Modeling.IBoneNode.BindMatrix</a></div><div class="ttdeci">Matrix BindMatrix</div><div class="ttdef"><b>Definition:</b> <a href="_i_bone_node_8cs_source.html#l00013">IBoneNode.cs:13</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a37ae0c5fbc129a1ccb3c0bb311bacee0"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a37ae0c5fbc129a1ccb3c0bb311bacee0">BrawlLib.Internal.Matrix.OrthographicMatrix</a></div><div class="ttdeci">static Matrix OrthographicMatrix(Vector4 dimensions, Vector2 depth)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l01101">Matrix.cs:1101</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a1b4e337c17e77974fb178a81d82a196b"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">BrawlLib.Internal.Matrix._values</a></div><div class="ttdeci">fixed float _values[16]</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l00017">Matrix.cs:17</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8159f3abffbfb6d32feae184dbe0d62b"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8159f3abffbfb6d32feae184dbe0d62b">BrawlLib.Internal.Matrix.Scale</a></div><div class="ttdeci">void Scale(Vector3 v)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix_8cs_source.html#l01031">Matrix.cs:1031</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_ad8f7dae012fc4b590bf9455e044cfc03"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#ad8f7dae012fc4b590bf9455e044cfc03">BrawlLib.Modeling.FrameState._rotate</a></div><div class="ttdeci">Vector3 _rotate</div><div class="ttdef"><b>Definition:</b> <a href="_frame_state_8cs_source.html#l00013">FrameState.cs:13</a></div></div>
-<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html_aae67afaee586e0a3d3b52496b1a53b29"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#aae67afaee586e0a3d3b52496b1a53b29">BrawlLib.Modeling.IMatrixNode.InverseMatrix</a></div><div class="ttdeci">Matrix InverseMatrix</div><div class="ttdef"><b>Definition:</b> <a href="_i_matrix_node_8cs_source.html#l00013">IMatrixNode.cs:13</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight_html_ab7703b5c89ea704d473eeb3bed364c47"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html#ab7703b5c89ea704d473eeb3bed364c47">BrawlLib.Wii.Models.BoneWeight.Weight</a></div><div class="ttdeci">float Weight</div><div class="ttdef"><b>Definition:</b> <a href="_influence_manager_8cs_source.html#l00388">InfluenceManager.cs:388</a></div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html">BrawlLib.Modeling.FrameState</a></div><div class="ttdef"><b>Definition:</b> FrameState.cs:9</div></div>
+<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_bone_node_html_a5e46216dffdcd272cfc9ec0c13eaef7b"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a5e46216dffdcd272cfc9ec0c13eaef7b">BrawlLib.Modeling.IBoneNode.InverseBindMatrix</a></div><div class="ttdeci">Matrix InverseBindMatrix</div><div class="ttdef"><b>Definition:</b> IBoneNode.cs:14</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_aea4d59d65765988b98951224d8115f47"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#aea4d59d65765988b98951224d8115f47">BrawlLib.Modeling.FrameState.CalcTransforms</a></div><div class="ttdeci">void CalcTransforms()</div><div class="ttdef"><b>Definition:</b> FrameState.cs:84</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_aec749e564c9e650eed17e41c08bd3c60"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#aec749e564c9e650eed17e41c08bd3c60">BrawlLib.Modeling.FrameState._scale</a></div><div class="ttdeci">Vector3 _scale</div><div class="ttdef"><b>Definition:</b> FrameState.cs:12</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a9efa360e7c296b6b273bb2323d5353a3"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a9efa360e7c296b6b273bb2323d5353a3">BrawlLib.Internal.Matrix.Invert</a></div><div class="ttdeci">Matrix Invert()</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1474</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_aa098a0b5c1fef90297a20e00b837a893"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#aa098a0b5c1fef90297a20e00b837a893">BrawlLib.Internal.Matrix.ReverseOrthographicMatrix</a></div><div class="ttdeci">static Matrix ReverseOrthographicMatrix(Vector4 dimensions, Vector2 depth)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1138</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight_html_a79e9bc7dd3ac659e6766195d95dcb1be"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html#a79e9bc7dd3ac659e6766195d95dcb1be">BrawlLib.Wii.Models.BoneWeight.Bone</a></div><div class="ttdeci">IBoneNode Bone</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:387</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_acf930b719b2dfa05f1c4b74fcd0a5488"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acf930b719b2dfa05f1c4b74fcd0a5488">BrawlLib.Internal.Matrix.Transform</a></div><div class="ttdeci">static Vector3 Transform(Vector3 v, Matrix m)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:579</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a6a9c813e6e1c416ab6cee0b49a32e794"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a6a9c813e6e1c416ab6cee0b49a32e794">BrawlLib.Internal.Matrix.ReverseRotationMatrix</a></div><div class="ttdeci">static Matrix ReverseRotationMatrix(Vector3 angles)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:495</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_ab0b09f6b4e966c85aa146fe0b7042cef"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">BrawlLib.Internal.Matrix.Matrix</a></div><div class="ttdeci">Matrix(SerializationInfo info, StreamingContext ctxt)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:19</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a4c03c36398313be75a839a1a0f5c9270"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a4c03c36398313be75a839a1a0f5c9270">BrawlLib.Internal.Matrix.ReverseTranslationMatrix</a></div><div class="ttdeci">static Matrix ReverseTranslationMatrix(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:368</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8b603f62290f3ade152ba56b03335852"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8b603f62290f3ade152ba56b03335852">BrawlLib.Internal.Matrix.Rotate</a></div><div class="ttdeci">void Rotate(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1042</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a0bca3007956fd51d2eb85828708aa45c"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bca3007956fd51d2eb85828708aa45c">BrawlLib.Internal.Matrix.GetAngles</a></div><div class="ttdeci">Vector3 GetAngles()</div><div class="ttdef"><b>Definition:</b> Matrix.cs:971</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8bd9d798743493583f030ab636c5cfe1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">BrawlLib.Internal.Matrix.Identity</a></div><div class="ttdeci">static readonly Matrix Identity</div><div class="ttdef"><b>Definition:</b> Matrix.cs:15</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html">BrawlLib.Wii.Models.BoneWeight</a></div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:380</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a644cc2e2ad7d02f9663d65607ef412a3"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a644cc2e2ad7d02f9663d65607ef412a3">BrawlLib.Internal.Matrix.Translate</a></div><div class="ttdeci">void Translate(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:525</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a61702fcc9e5f56b90846a0761c6e2ee5"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">BrawlLib.Internal.Matrix.RotationMatrix</a></div><div class="ttdeci">static Matrix RotationMatrix(Vector3 angles)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:465</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_acc809f16e7d86526d2251a277fa1ce56"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acc809f16e7d86526d2251a277fa1ce56">BrawlLib.Internal.Matrix.Multiply</a></div><div class="ttdeci">Vector3 Multiply(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:541</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_ad47698246e93b51c683829ba7d0d3ab1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">BrawlLib.Internal.Matrix.ScaleMatrix</a></div><div class="ttdeci">static Matrix ScaleMatrix(Vector3 scale)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:337</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_adb1bc05d815c454852cd35195955d4d7"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#adb1bc05d815c454852cd35195955d4d7">BrawlLib.Internal.Matrix.Data</a></div><div class="ttdeci">float * Data</div><div class="ttdef"><b>Definition:</b> Matrix.cs:254</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a0bd1bf40055909654d230ce4950095e0"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a0bd1bf40055909654d230ce4950095e0">BrawlLib.Internal.Matrix.TranslationMatrix</a></div><div class="ttdeci">static Matrix TranslationMatrix(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:353</div></div>
+<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html_a25ed1bab1a63b1fe76186b433e10d935"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a25ed1bab1a63b1fe76186b433e10d935">BrawlLib.Modeling.IMatrixNode.Matrix</a></div><div class="ttdeci">Matrix Matrix</div><div class="ttdef"><b>Definition:</b> IMatrixNode.cs:12</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_ac795ff8568fd0827ffab5979ad5d36f9"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#ac795ff8568fd0827ffab5979ad5d36f9">BrawlLib.Modeling.FrameState._translate</a></div><div class="ttdeci">Vector3 _translate</div><div class="ttdef"><b>Definition:</b> FrameState.cs:14</div></div>
+<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_bone_node_html_affa23bca88e413b5699e29cb53211e4f"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#affa23bca88e413b5699e29cb53211e4f">BrawlLib.Modeling.IBoneNode.BindMatrix</a></div><div class="ttdeci">Matrix BindMatrix</div><div class="ttdef"><b>Definition:</b> IBoneNode.cs:13</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a37ae0c5fbc129a1ccb3c0bb311bacee0"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a37ae0c5fbc129a1ccb3c0bb311bacee0">BrawlLib.Internal.Matrix.OrthographicMatrix</a></div><div class="ttdeci">static Matrix OrthographicMatrix(Vector4 dimensions, Vector2 depth)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1101</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a1b4e337c17e77974fb178a81d82a196b"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a1b4e337c17e77974fb178a81d82a196b">BrawlLib.Internal.Matrix._values</a></div><div class="ttdeci">fixed float _values[16]</div><div class="ttdef"><b>Definition:</b> Matrix.cs:17</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8159f3abffbfb6d32feae184dbe0d62b"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8159f3abffbfb6d32feae184dbe0d62b">BrawlLib.Internal.Matrix.Scale</a></div><div class="ttdeci">void Scale(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1031</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_frame_state_html_ad8f7dae012fc4b590bf9455e044cfc03"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_frame_state.html#ad8f7dae012fc4b590bf9455e044cfc03">BrawlLib.Modeling.FrameState._rotate</a></div><div class="ttdeci">Vector3 _rotate</div><div class="ttdef"><b>Definition:</b> FrameState.cs:13</div></div>
+<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html_aae67afaee586e0a3d3b52496b1a53b29"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#aae67afaee586e0a3d3b52496b1a53b29">BrawlLib.Modeling.IMatrixNode.InverseMatrix</a></div><div class="ttdeci">Matrix InverseMatrix</div><div class="ttdef"><b>Definition:</b> IMatrixNode.cs:13</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight_html_ab7703b5c89ea704d473eeb3bed364c47"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html#ab7703b5c89ea704d473eeb3bed364c47">BrawlLib.Wii.Models.BoneWeight.Weight</a></div><div class="ttdeci">float Weight</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:388</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

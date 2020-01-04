@@ -129,10 +129,7 @@ Properties</h2></td></tr>
 <tr class="memitem:abe4bae7d2a24a890932209bc2a7db0a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">Address</a><code> [get]</code></td></tr>
 <tr class="separator:abe4bae7d2a24a890932209bc2a7db0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00084">84</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a893f9f9a5f4eead7a67738f2da751f71"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a893f9f9a5f4eead7a67738f2da751f71">&#9670;&nbsp;</a></span>Get()</h2>
 
@@ -156,8 +153,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00123">123</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">_format</a>.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a47641d4d44953d60bef5775d1ae1864c">_encoding</a> == 2 ? value / 16 * 14 + (value % 16 - 2) : value;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
@@ -187,8 +182,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00106">106</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> (ADPCMInfo*) (<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">Address</a> + <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#ae0eaf9387ac1a9ccf6c4403123bae881">GetChannelInfo</a>(index)-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info.html#a95c4e8e4fe18ba1c93773f3c76a063bb">_adpcmInfoOffset</a>);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
@@ -218,8 +211,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00101">101</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span> (ChannelInfo*) (<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">Address</a> + <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a44144ae05ca4f27e9550d7213a58eb86">OffsetTable</a>[index]);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
@@ -248,8 +239,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00144">144</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        {</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#aa6d8351b59053188634983ac437e1c30">Size</a> + <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">_format</a>.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a796229699d223efd9a8b48886dceec19">_channels</a> * (0x20 + <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">_format</a>.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a47641d4d44953d60bef5775d1ae1864c">_encoding</a> == 2 ? 0x30 : 0);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
@@ -279,8 +268,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00128">128</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">_format</a>.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a47641d4d44953d60bef5775d1ae1864c">_encoding</a> == 2 ? (8 * value + 16) / 7 : value;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
@@ -300,8 +287,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00095">95</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
-
 </div>
 </div>
 <a id="a320d3b1af65a38ef9cf18aaba626590a"></a>
@@ -315,8 +300,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00096">96</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 
 </div>
 </div>
@@ -332,8 +315,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00091">91</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2a23b7c998b16ac6260762b4b64b37a7"></a>
@@ -347,8 +328,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00088">88</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 
 </div>
 </div>
@@ -364,8 +343,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00093">93</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
-
 </div>
 </div>
 <a id="a5b7e01e4d773bb40dbb9ad20f7c1f3d6"></a>
@@ -379,8 +356,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00094">94</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 
 </div>
 </div>
@@ -396,8 +371,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00092">92</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
-
 </div>
 </div>
 <a id="a1fb97bc175f6d21967da47fe198f8645"></a>
@@ -411,8 +384,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00097">97</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 
 </div>
 </div>
@@ -428,8 +399,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00090">90</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
-
 </div>
 </div>
 <a id="a44144ae05ca4f27e9550d7213a58eb86"></a>
@@ -443,8 +412,6 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00099">99</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 
 </div>
 </div>
@@ -468,8 +435,6 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00086">86</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -492,8 +457,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00134">134</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keyword">get</span></div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            {</div>
@@ -525,8 +488,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00118">118</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a893f9f9a5f4eead7a67738f2da751f71">Get</a>(<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a76f62a6d55174166dbbcb5afa7ba8325">_loopStartSample</a>);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a76f62a6d55174166dbbcb5afa7ba8325">_loopStartSample</a> = <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a892759834bb428db54eba1d35e3fd03a">Set</a>(value);</div>
@@ -553,8 +514,6 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_r_w_a_v_8cs_source.html#l00112">112</a> of file <a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a893f9f9a5f4eead7a67738f2da751f71">Get</a>(<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a5b7e01e4d773bb40dbb9ad20f7c1f3d6">_nibbles</a>);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a5b7e01e4d773bb40dbb9ad20f7c1f3d6">_nibbles</a> = <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a892759834bb428db54eba1d35e3fd03a">Set</a>(value);</div>
@@ -563,21 +522,21 @@ Properties</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>BrawlLib/SSBB/Types/Audio/<a class="el" href="_r_w_a_v_8cs_source.html">RWAV.cs</a></li>
+<li>BrawlLib/SSBB/Types/Audio/RWAV.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_abe4bae7d2a24a890932209bc2a7db0a4"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">BrawlLib.SSBB.Types.Audio.WaveInfo.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00134">RWAV.cs:134</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_ae0eaf9387ac1a9ccf6c4403123bae881"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#ae0eaf9387ac1a9ccf6c4403123bae881">BrawlLib.SSBB.Types.Audio.WaveInfo.GetChannelInfo</a></div><div class="ttdeci">ChannelInfo * GetChannelInfo(int index)</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00101">RWAV.cs:101</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a47641d4d44953d60bef5775d1ae1864c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a47641d4d44953d60bef5775d1ae1864c">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._encoding</a></div><div class="ttdeci">byte _encoding</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00185">RWAV.cs:185</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a76f62a6d55174166dbbcb5afa7ba8325"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a76f62a6d55174166dbbcb5afa7ba8325">BrawlLib.SSBB.Types.Audio.WaveInfo._loopStartSample</a></div><div class="ttdeci">bint _loopStartSample</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00093">RWAV.cs:93</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_aa6d8351b59053188634983ac437e1c30"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#aa6d8351b59053188634983ac437e1c30">BrawlLib.SSBB.Types.Audio.WaveInfo.Size</a></div><div class="ttdeci">const int Size</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00086">RWAV.cs:86</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a5b7e01e4d773bb40dbb9ad20f7c1f3d6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a5b7e01e4d773bb40dbb9ad20f7c1f3d6">BrawlLib.SSBB.Types.Audio.WaveInfo._nibbles</a></div><div class="ttdeci">bint _nibbles</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00094">RWAV.cs:94</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a2a23b7c998b16ac6260762b4b64b37a7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">BrawlLib.SSBB.Types.Audio.WaveInfo._format</a></div><div class="ttdeci">AudioFormatInfo _format</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00088">RWAV.cs:88</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a796229699d223efd9a8b48886dceec19"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a796229699d223efd9a8b48886dceec19">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._channels</a></div><div class="ttdeci">byte _channels</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00187">RWAV.cs:187</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a893f9f9a5f4eead7a67738f2da751f71"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a893f9f9a5f4eead7a67738f2da751f71">BrawlLib.SSBB.Types.Audio.WaveInfo.Get</a></div><div class="ttdeci">int Get(int value)</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00123">RWAV.cs:123</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a44144ae05ca4f27e9550d7213a58eb86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a44144ae05ca4f27e9550d7213a58eb86">BrawlLib.SSBB.Types.Audio.WaveInfo.OffsetTable</a></div><div class="ttdeci">buint * OffsetTable</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00099">RWAV.cs:99</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info_html_a95c4e8e4fe18ba1c93773f3c76a063bb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info.html#a95c4e8e4fe18ba1c93773f3c76a063bb">BrawlLib.SSBB.Types.Audio.ChannelInfo._adpcmInfoOffset</a></div><div class="ttdeci">bint _adpcmInfoOffset</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00156">RWAV.cs:156</a></div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a892759834bb428db54eba1d35e3fd03a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a892759834bb428db54eba1d35e3fd03a">BrawlLib.SSBB.Types.Audio.WaveInfo.Set</a></div><div class="ttdeci">int Set(int value)</div><div class="ttdef"><b>Definition:</b> <a href="_r_w_a_v_8cs_source.html#l00128">RWAV.cs:128</a></div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_abe4bae7d2a24a890932209bc2a7db0a4"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">BrawlLib.SSBB.Types.Audio.WaveInfo.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> RWAV.cs:134</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_ae0eaf9387ac1a9ccf6c4403123bae881"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#ae0eaf9387ac1a9ccf6c4403123bae881">BrawlLib.SSBB.Types.Audio.WaveInfo.GetChannelInfo</a></div><div class="ttdeci">ChannelInfo * GetChannelInfo(int index)</div><div class="ttdef"><b>Definition:</b> RWAV.cs:101</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a47641d4d44953d60bef5775d1ae1864c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a47641d4d44953d60bef5775d1ae1864c">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._encoding</a></div><div class="ttdeci">byte _encoding</div><div class="ttdef"><b>Definition:</b> RWAV.cs:185</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a76f62a6d55174166dbbcb5afa7ba8325"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a76f62a6d55174166dbbcb5afa7ba8325">BrawlLib.SSBB.Types.Audio.WaveInfo._loopStartSample</a></div><div class="ttdeci">bint _loopStartSample</div><div class="ttdef"><b>Definition:</b> RWAV.cs:93</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_aa6d8351b59053188634983ac437e1c30"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#aa6d8351b59053188634983ac437e1c30">BrawlLib.SSBB.Types.Audio.WaveInfo.Size</a></div><div class="ttdeci">const int Size</div><div class="ttdef"><b>Definition:</b> RWAV.cs:86</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a5b7e01e4d773bb40dbb9ad20f7c1f3d6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a5b7e01e4d773bb40dbb9ad20f7c1f3d6">BrawlLib.SSBB.Types.Audio.WaveInfo._nibbles</a></div><div class="ttdeci">bint _nibbles</div><div class="ttdef"><b>Definition:</b> RWAV.cs:94</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a2a23b7c998b16ac6260762b4b64b37a7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a2a23b7c998b16ac6260762b4b64b37a7">BrawlLib.SSBB.Types.Audio.WaveInfo._format</a></div><div class="ttdeci">AudioFormatInfo _format</div><div class="ttdef"><b>Definition:</b> RWAV.cs:88</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info_html_a796229699d223efd9a8b48886dceec19"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_audio_format_info.html#a796229699d223efd9a8b48886dceec19">BrawlLib.SSBB.Types.Audio.AudioFormatInfo._channels</a></div><div class="ttdeci">byte _channels</div><div class="ttdef"><b>Definition:</b> RWAV.cs:187</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a893f9f9a5f4eead7a67738f2da751f71"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a893f9f9a5f4eead7a67738f2da751f71">BrawlLib.SSBB.Types.Audio.WaveInfo.Get</a></div><div class="ttdeci">int Get(int value)</div><div class="ttdef"><b>Definition:</b> RWAV.cs:123</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a44144ae05ca4f27e9550d7213a58eb86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a44144ae05ca4f27e9550d7213a58eb86">BrawlLib.SSBB.Types.Audio.WaveInfo.OffsetTable</a></div><div class="ttdeci">buint * OffsetTable</div><div class="ttdef"><b>Definition:</b> RWAV.cs:99</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info_html_a95c4e8e4fe18ba1c93773f3c76a063bb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info.html#a95c4e8e4fe18ba1c93773f3c76a063bb">BrawlLib.SSBB.Types.Audio.ChannelInfo._adpcmInfoOffset</a></div><div class="ttdeci">bint _adpcmInfoOffset</div><div class="ttdef"><b>Definition:</b> RWAV.cs:156</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a892759834bb428db54eba1d35e3fd03a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a892759834bb428db54eba1d35e3fd03a">BrawlLib.SSBB.Types.Audio.WaveInfo.Set</a></div><div class="ttdeci">int Set(int value)</div><div class="ttdef"><b>Definition:</b> RWAV.cs:128</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

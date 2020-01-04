@@ -119,8 +119,6 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is an implementation of the 'IComparer' interface. </p>
-
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00794">794</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab5b29dfe7a2c2bf95ab8a54e4a4d9144"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5b29dfe7a2c2bf95ab8a54e4a4d9144">&#9670;&nbsp;</a></span>ListViewColumnSorter()</h2>
@@ -146,8 +144,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Class constructor. Initializes various elements </p>
-
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00814">814</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;        {</div>
 <div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;            <span class="comment">// Initialize the column to &#39;0&#39;</span></div>
 <div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> = 0;</div>
@@ -205,8 +201,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00832">832</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;        {</div>
 <div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;            <span class="keywordtype">int</span> compareResult;</div>
 <div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;            ListViewItem listviewX, listviewY;</div>
@@ -224,9 +218,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> &gt;= 4)</div>
 <div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;            {</div>
 <div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                compareResult = <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a>.Compare(</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                    <span class="keywordtype">int</span>.Parse(listviewX.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2), <a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Globalization.NumberStyles.HexNumber),</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                    <span class="keywordtype">int</span>.Parse(listviewX.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2), System.Globalization.NumberStyles.HexNumber),</div>
 <div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                    <span class="keywordtype">int</span>.Parse(listviewY.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2),</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                        <a class="code" href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a>.Globalization.NumberStyles.HexNumber));</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                        System.Globalization.NumberStyles.HexNumber));</div>
 <div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;            }</div>
 <div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            {</div>
@@ -277,8 +271,6 @@ Private Attributes</h2></td></tr>
 
 <p>Specifies the column to be sorted </p>
 
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00799">799</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
-
 </div>
 </div>
 <a id="a3aaac48e5fc16e8dc95554983aec95f5"></a>
@@ -302,8 +294,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Case insensitive comparer object </p>
-
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00809">809</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
 
 </div>
 </div>
@@ -329,8 +319,6 @@ Private Attributes</h2></td></tr>
 
 <p>Specifies the order in which to sort (i.e. 'Ascending'). </p>
 
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00804">804</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -355,8 +343,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending'). </p>
-
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00891">891</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00891"></a><span class="lineno">  891</span>&#160;        {</div>
 <div class="line"><a name="l00892"></a><span class="lineno">  892</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> = value;</div>
 <div class="line"><a name="l00893"></a><span class="lineno">  893</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a>;</div>
@@ -385,8 +371,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0'). </p>
-
-<p class="definition">Definition at line <a class="el" href="_sound_pack_control_8cs_source.html#l00882">882</a> of file <a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;        {</div>
 <div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160;            <span class="keyword">set</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> = value;</div>
 <div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;            <span class="keyword">get</span> =&gt; <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>;</div>
@@ -395,13 +379,12 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>BrawlLib/Internal/Windows/Controls/<a class="el" href="_sound_pack_control_8cs_source.html">SoundPackControl.cs</a></li>
+<li>BrawlLib/Internal/Windows/Controls/SoundPackControl.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a3aaac48e5fc16e8dc95554983aec95f5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ObjectCompare</a></div><div class="ttdeci">readonly CaseInsensitiveComparer ObjectCompare</div><div class="ttdoc">Case insensitive comparer object</div><div class="ttdef"><b>Definition:</b> <a href="_sound_pack_control_8cs_source.html#l00809">SoundPackControl.cs:809</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a609c0a01b0884031676842a13685480a"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.OrderOfSort</a></div><div class="ttdeci">SortOrder OrderOfSort</div><div class="ttdoc">Specifies the order in which to sort (i.e. 'Ascending').</div><div class="ttdef"><b>Definition:</b> <a href="_sound_pack_control_8cs_source.html#l00804">SoundPackControl.cs:804</a></div></div>
-<div class="ttc" id="a_p_a_t0_offset_control_8cs_html_a4598c6b5042b9ab31ee4f4644765857d"><div class="ttname"><a href="_p_a_t0_offset_control_8cs.html#a4598c6b5042b9ab31ee4f4644765857d">System</a></div><div class="ttdeci">﻿﻿using System</div><div class="ttdef"><b>Definition:</b> <a href="_p_a_t0_offset_control_8cs_source.html#l00001">PAT0OffsetControl.cs:1</a></div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a3f02d8f02b04ee913422d2d099b85236"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ColumnToSort</a></div><div class="ttdeci">int ColumnToSort</div><div class="ttdoc">Specifies the column to be sorted</div><div class="ttdef"><b>Definition:</b> <a href="_sound_pack_control_8cs_source.html#l00799">SoundPackControl.cs:799</a></div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a3aaac48e5fc16e8dc95554983aec95f5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ObjectCompare</a></div><div class="ttdeci">readonly CaseInsensitiveComparer ObjectCompare</div><div class="ttdoc">Case insensitive comparer object</div><div class="ttdef"><b>Definition:</b> SoundPackControl.cs:809</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a609c0a01b0884031676842a13685480a"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.OrderOfSort</a></div><div class="ttdeci">SortOrder OrderOfSort</div><div class="ttdoc">Specifies the order in which to sort (i.e. 'Ascending').</div><div class="ttdef"><b>Definition:</b> SoundPackControl.cs:804</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a3f02d8f02b04ee913422d2d099b85236"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ColumnToSort</a></div><div class="ttdeci">int ColumnToSort</div><div class="ttdoc">Specifies the column to be sorted</div><div class="ttdef"><b>Definition:</b> SoundPackControl.cs:799</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

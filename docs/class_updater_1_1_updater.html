@@ -142,10 +142,7 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a88016f38564ad771b4f1ed18efc42384"><td class="memItemLeft" align="right" valign="top">static readonly GitHubClient&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_updater.html#a88016f38564ad771b4f1ed18efc42384">Github</a></td></tr>
 <tr class="separator:a88016f38564ad771b4f1ed18efc42384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00021">21</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9cda9a1f8f19e0591b1e7d7e1ab0f76f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9cda9a1f8f19e0591b1e7d7e1ab0f76f">&#9670;&nbsp;</a></span>BrawlAPICheckUpdates()</h2>
 
@@ -169,8 +166,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00653">653</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;        {</div>
 <div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;            <span class="comment">// check to see if the user is online, and that github is up and running.</span></div>
 <div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;            Console.Write(<span class="stringliteral">&quot;Checking connection to server... &quot;</span>);</div>
@@ -312,8 +307,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00754">754</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;        {</div>
 <div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;            <span class="keywordtype">string</span> apiPath = $<span class="stringliteral">&quot;{AppPath}\\BrawlAPI\\&quot;</span>;</div>
 <div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;            Directory.CreateDirectory(apiPath);</div>
@@ -342,7 +335,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160; </div>
 <div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;                    <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a>.<a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#af6b7a087fb3cab4590ef6eb0b8c415ae">finished</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;                    <span class="comment">// Download the file into a zip folder</span></div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                    <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a> dlTrack = <span class="keyword">new</span> <a class="code" href="_updater_8cs.html#a9a68e427a9a7e7246a355051d49b189f">DLProgressWindow</a>(</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;                    <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a> dlTrack = <span class="keyword">new</span> <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a>(</div>
 <div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;                        release.Name, <a class="code" href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">AppPath</a>, url, $<span class="stringliteral">&quot;{AppPath}\\BrawlAPI\\temp.zip&quot;</span>);</div>
 <div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                    <span class="keywordflow">while</span> (!<a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a>.<a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#af6b7a087fb3cab4590ef6eb0b8c415ae">finished</a>)</div>
 <div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;                    {</div>
@@ -533,8 +526,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00933">933</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160;        {</div>
 <div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;            <span class="keywordtype">string</span> apiPath = $<span class="stringliteral">&quot;{AppPath}\\BrawlAPI&quot;</span>;</div>
 <div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160; </div>
@@ -621,8 +612,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00561">561</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        {</div>
 <div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            {</div>
@@ -734,8 +723,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00350">350</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        {</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            await <a class="code" href="class_updater_1_1_updater.html#a7e35009ac8c036adf131a0b5e8d2027a">CheckUpdate</a>(<span class="keyword">true</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">true</span>, <span class="keyword">null</span>, <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        }</div>
@@ -765,8 +752,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00355">355</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        {</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            await <a class="code" href="class_updater_1_1_updater.html#a7e35009ac8c036adf131a0b5e8d2027a">CheckUpdate</a>(overwrite, <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">true</span>, <span class="keyword">null</span>, <span class="keyword">true</span>, <span class="keyword">true</span>, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        }</div>
@@ -836,8 +821,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00361">361</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        {</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <span class="comment">// If canary is active, disable it</span></div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keywordflow">if</span> (File.Exists(<a class="code" href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">AppPath</a> + <span class="stringliteral">&quot;\\Canary\\Active&quot;</span>))</div>
@@ -1091,8 +1074,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00977">977</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;        {</div>
 <div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;            {</div>
@@ -1128,7 +1109,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l01011"></a><span class="lineno"> 1011</span>&#160; </div>
 <div class="line"><a name="l01012"></a><span class="lineno"> 1012</span>&#160;                    <span class="comment">// Download the update, using a download tracker</span></div>
 <div class="line"><a name="l01013"></a><span class="lineno"> 1013</span>&#160;                    <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a>.<a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#af6b7a087fb3cab4590ef6eb0b8c415ae">finished</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;                    <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a> dlTrack = <span class="keyword">new</span> <a class="code" href="_updater_8cs.html#a9a68e427a9a7e7246a355051d49b189f">DLProgressWindow</a>(</div>
+<div class="line"><a name="l01014"></a><span class="lineno"> 1014</span>&#160;                    <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a> dlTrack = <span class="keyword">new</span> <a class="code" href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">DLProgressWindow</a>(</div>
 <div class="line"><a name="l01015"></a><span class="lineno"> 1015</span>&#160;                        release.Name + (release.Name.ToLower().Contains(<span class="stringliteral">&quot;canary&quot;</span>)</div>
 <div class="line"><a name="l01016"></a><span class="lineno"> 1016</span>&#160;                            ? <span class="stringliteral">&quot; #&quot;</span> + release.TargetCommitish.Substring(0, 7)</div>
 <div class="line"><a name="l01017"></a><span class="lineno"> 1017</span>&#160;                            : <span class="stringliteral">&quot;&quot;</span>), <a class="code" href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">AppPath</a>, URL);</div>
@@ -1234,8 +1215,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l01100">1100</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;        {</div>
 <div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;            <span class="keywordtype">string</span> repoOwner = <a class="code" href="class_updater_1_1_updater.html#a704e7ebc95f2bda3b707adf9c25f0516">mainRepo</a>.Split(<span class="charliteral">&#39;/&#39;</span>)[0];</div>
 <div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;            <span class="keywordtype">string</span> repoName = <a class="code" href="class_updater_1_1_updater.html#a704e7ebc95f2bda3b707adf9c25f0516">mainRepo</a>.Split(<span class="charliteral">&#39;/&#39;</span>)[1];</div>
@@ -1285,8 +1264,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l01125">1125</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;        {</div>
 <div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;            <a class="code" href="class_updater_1_1_updater.html#a155b0f66d807d619d5aaa821952c7a58">SetCanaryInactive</a>();</div>
 <div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;            <span class="keywordtype">string</span> repoOwner = <a class="code" href="class_updater_1_1_updater.html#a704e7ebc95f2bda3b707adf9c25f0516">mainRepo</a>.Split(<span class="charliteral">&#39;/&#39;</span>)[0];</div>
@@ -1324,8 +1301,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00055">55</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
@@ -1367,8 +1342,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00073">73</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordtype">string</span> p;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">try</span></div>
@@ -1407,8 +1380,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00037">37</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            {</div>
@@ -1450,8 +1421,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l01341">1341</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;        {</div>
 <div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;            Process[] px = Process.GetProcessesByName(<span class="stringliteral">&quot;BrawlCrate&quot;</span>);</div>
 <div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;            Process[] pToFind = px.Where(x =&gt; x.MainModule.FileName.Equals(<a class="code" href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">AppPath</a> + <span class="stringliteral">&quot;\\BrawlCrate.exe&quot;</span>)).ToArray();</div>
@@ -1482,8 +1451,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l01348">1348</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;        {</div>
 <div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;            <span class="comment">//Find and close all windows of the BrawlCrate application that will be overwritten</span></div>
 <div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;            Process[] px = Process.GetProcessesByName(<span class="stringliteral">&quot;BrawlCrate&quot;</span>);</div>
@@ -1536,8 +1503,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00088">88</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            DirectoryInfo CanaryDir = Directory.CreateDirectory(<a class="code" href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">AppPath</a> + <span class="stringliteral">&quot;\\Canary&quot;</span>);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;</div>
@@ -1573,8 +1538,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00100">100</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">if</span> (File.Exists(<a class="code" href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">AppPath</a> + <span class="stringliteral">&quot;\\Canary\\Active&quot;</span>))</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            {</div>
@@ -1606,8 +1569,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00108">108</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordtype">string</span> changelog = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordtype">string</span> newSha;</div>
@@ -1870,8 +1831,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l01219">1219</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;        {</div>
 <div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;            <span class="keyword">using</span> (StreamWriter sw = <span class="keyword">new</span> StreamWriter(<a class="code" href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">AppPath</a> + <span class="stringliteral">&quot;/Update.bat&quot;</span>))</div>
 <div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;            {</div>
@@ -2052,8 +2011,6 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l01151">1151</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 <div class="fragment"><div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;        {</div>
 <div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;            {</div>
@@ -2144,8 +2101,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00023">23</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
-
 </div>
 </div>
 <a id="a2f954d019152a4f8ee1e4053ff08aa60"></a>
@@ -2168,8 +2123,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00034">34</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
-
 </div>
 </div>
 <a id="a45e10c88921bdbac279bae531791c478"></a>
@@ -2191,8 +2144,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00033">33</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 
 </div>
 </div>
@@ -2218,8 +2169,6 @@ Static Private Attributes</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> GitHubClient(<span class="keyword">new</span> ProductHeaderValue(<span class="stringliteral">&quot;BrawlCrate&quot;</span>))</div>
 <div class="line">            {Credentials = <span class="keyword">new</span> Credentials(Encoding.Default.GetString(Program.RawData))}</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00028">28</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
-
 </div>
 </div>
 <a id="ae5e86a2b5e4bd046ea180615174a82cf"></a>
@@ -2241,8 +2190,6 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00026">26</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
 
 </div>
 </div>
@@ -2266,8 +2213,6 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00025">25</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
-
 </div>
 </div>
 <a id="af9478822817d2c4b2532d08538af555c"></a>
@@ -2290,39 +2235,36 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_updater_8cs_source.html#l00035">35</a> of file <a class="el" href="_updater_8cs_source.html">Updater.cs</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>Updater/<a class="el" href="_updater_8cs_source.html">Updater.cs</a></li>
+<li>Updater/Updater.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_updater_1_1_updater_html_a45e10c88921bdbac279bae531791c478"><div class="ttname"><a href="class_updater_1_1_updater.html#a45e10c88921bdbac279bae531791c478">Updater.Updater.currentRepo</a></div><div class="ttdeci">static string currentRepo</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00033">Updater.cs:33</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a8f99cf721cb9563480d1d84bb6fa9762"><div class="ttname"><a href="class_updater_1_1_updater.html#a8f99cf721cb9563480d1d84bb6fa9762">Updater.Updater.DownloadRelease</a></div><div class="ttdeci">static async Task DownloadRelease(Release release, bool overwrite, bool automatic, bool manual, bool documentation, string openFile)</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00977">Updater.cs:977</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a9cda9a1f8f19e0591b1e7d7e1ab0f76f"><div class="ttname"><a href="class_updater_1_1_updater.html#a9cda9a1f8f19e0591b1e7d7e1ab0f76f">Updater.Updater.BrawlAPICheckUpdates</a></div><div class="ttdeci">static async Task BrawlAPICheckUpdates(bool manual)</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00653">Updater.cs:653</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a170e60535430cb0b8066de05c7b3b71b"><div class="ttname"><a href="class_updater_1_1_updater.html#a170e60535430cb0b8066de05c7b3b71b">Updater.Updater.GetOpenWindowsCount</a></div><div class="ttdeci">static int GetOpenWindowsCount()</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l01341">Updater.cs:1341</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html_a2396984a99e973ec8f445e772f16510b"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#a2396984a99e973ec8f445e772f16510b">Updater.UI.DLProgressWindow.MaxValue</a></div><div class="ttdeci">static long MaxValue</div><div class="ttdef"><b>Definition:</b> <a href="_d_l_progress_window_8cs_source.html#l00015">DLProgressWindow.cs:15</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html">Updater.UI.CanaryChangelogViewer</a></div><div class="ttdef"><b>Definition:</b> <a href="_canary_changelog_viewer_8cs_source.html#l00006">CanaryChangelogViewer.cs:6</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a07f1b45efacf87a4c726066c5c9f1caf"><div class="ttname"><a href="class_updater_1_1_updater.html#a07f1b45efacf87a4c726066c5c9f1caf">Updater.Updater.BrawlAPIInstallUpdate</a></div><div class="ttdeci">static async Task BrawlAPIInstallUpdate(string repoOwner, string repoName, bool manual)</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00754">Updater.cs:754</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_af9478822817d2c4b2532d08538af555c"><div class="ttname"><a href="class_updater_1_1_updater.html#af9478822817d2c4b2532d08538af555c">Updater.Updater.platform</a></div><div class="ttdeci">static string platform</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00035">Updater.cs:35</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_ab7bac482b81b149e77005885e792cdc3"><div class="ttname"><a href="class_updater_1_1_updater.html#ab7bac482b81b149e77005885e792cdc3">Updater.Updater.BrawlAPIUninstall</a></div><div class="ttdeci">static void BrawlAPIUninstall(string repoOwner, string repoName, bool manual)</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00933">Updater.cs:933</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_ab005dd1eceb36eee47b55495710d61d2"><div class="ttname"><a href="class_updater_1_1_updater.html#ab005dd1eceb36eee47b55495710d61d2">Updater.Updater.WriteBatchScript</a></div><div class="ttdeci">static void WriteBatchScript(string openFile)</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l01219">Updater.cs:1219</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a88016f38564ad771b4f1ed18efc42384"><div class="ttname"><a href="class_updater_1_1_updater.html#a88016f38564ad771b4f1ed18efc42384">Updater.Updater.Github</a></div><div class="ttdeci">static readonly GitHubClient Github</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00028">Updater.cs:28</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a2f954d019152a4f8ee1e4053ff08aa60"><div class="ttname"><a href="class_updater_1_1_updater.html#a2f954d019152a4f8ee1e4053ff08aa60">Updater.Updater.currentBranch</a></div><div class="ttdeci">static string currentBranch</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00034">Updater.cs:34</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a7e35009ac8c036adf131a0b5e8d2027a"><div class="ttname"><a href="class_updater_1_1_updater.html#a7e35009ac8c036adf131a0b5e8d2027a">Updater.Updater.CheckUpdate</a></div><div class="ttdeci">static async Task CheckUpdate()</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00350">Updater.cs:350</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_aa37a22d4a66c24da38a043d63d706d3e"><div class="ttname"><a href="class_updater_1_1_updater.html#aa37a22d4a66c24da38a043d63d706d3e">Updater.Updater.ForceDownloadDocumentation</a></div><div class="ttdeci">static async Task ForceDownloadDocumentation()</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l01100">Updater.cs:1100</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html_af6b7a087fb3cab4590ef6eb0b8c415ae"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#af6b7a087fb3cab4590ef6eb0b8c415ae">Updater.UI.DLProgressWindow.finished</a></div><div class="ttdeci">static bool finished</div><div class="ttdef"><b>Definition:</b> <a href="_d_l_progress_window_8cs_source.html#l00012">DLProgressWindow.cs:12</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_af46084fd7e7bce4c111b3a37b25cf196"><div class="ttname"><a href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">Updater.Updater.AppPath</a></div><div class="ttdeci">static string AppPath</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00023">Updater.cs:23</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_ae2b08cc302f11fb68d8e8779209a24de"><div class="ttname"><a href="class_updater_1_1_updater.html#ae2b08cc302f11fb68d8e8779209a24de">Updater.Updater.KillOpenWindows</a></div><div class="ttdeci">static async Task KillOpenWindows()</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l01348">Updater.cs:1348</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html_acc83e8109a0ba79acd1e3ef13e59d3d5"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#acc83e8109a0ba79acd1e3ef13e59d3d5">Updater.UI.DLProgressWindow.Dispose</a></div><div class="ttdeci">override void Dispose(bool disposing)</div><div class="ttdoc">Clean up any resources being used.</div><div class="ttdef"><b>Definition:</b> <a href="_d_l_progress_window_8designer_8cs_source.html#l00016">DLProgressWindow.designer.cs:16</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">Updater.UI.DLProgressWindow</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_l_progress_window_8cs_source.html#l00009">DLProgressWindow.cs:9</a></div></div>
-<div class="ttc" id="a_updater_8cs_html_a9a68e427a9a7e7246a355051d49b189f"><div class="ttname"><a href="_updater_8cs.html#a9a68e427a9a7e7246a355051d49b189f">DLProgressWindow</a></div><div class="ttdeci">Updater.UI.DLProgressWindow DLProgressWindow</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00017">Updater.cs:17</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a155b0f66d807d619d5aaa821952c7a58"><div class="ttname"><a href="class_updater_1_1_updater.html#a155b0f66d807d619d5aaa821952c7a58">Updater.Updater.SetCanaryInactive</a></div><div class="ttdeci">static void SetCanaryInactive()</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00100">Updater.cs:100</a></div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a45e10c88921bdbac279bae531791c478"><div class="ttname"><a href="class_updater_1_1_updater.html#a45e10c88921bdbac279bae531791c478">Updater.Updater.currentRepo</a></div><div class="ttdeci">static string currentRepo</div><div class="ttdef"><b>Definition:</b> Updater.cs:33</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a8f99cf721cb9563480d1d84bb6fa9762"><div class="ttname"><a href="class_updater_1_1_updater.html#a8f99cf721cb9563480d1d84bb6fa9762">Updater.Updater.DownloadRelease</a></div><div class="ttdeci">static async Task DownloadRelease(Release release, bool overwrite, bool automatic, bool manual, bool documentation, string openFile)</div><div class="ttdef"><b>Definition:</b> Updater.cs:977</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a9cda9a1f8f19e0591b1e7d7e1ab0f76f"><div class="ttname"><a href="class_updater_1_1_updater.html#a9cda9a1f8f19e0591b1e7d7e1ab0f76f">Updater.Updater.BrawlAPICheckUpdates</a></div><div class="ttdeci">static async Task BrawlAPICheckUpdates(bool manual)</div><div class="ttdef"><b>Definition:</b> Updater.cs:653</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a170e60535430cb0b8066de05c7b3b71b"><div class="ttname"><a href="class_updater_1_1_updater.html#a170e60535430cb0b8066de05c7b3b71b">Updater.Updater.GetOpenWindowsCount</a></div><div class="ttdeci">static int GetOpenWindowsCount()</div><div class="ttdef"><b>Definition:</b> Updater.cs:1341</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html_a2396984a99e973ec8f445e772f16510b"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#a2396984a99e973ec8f445e772f16510b">Updater.UI.DLProgressWindow.MaxValue</a></div><div class="ttdeci">static long MaxValue</div><div class="ttdef"><b>Definition:</b> DLProgressWindow.cs:15</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html">Updater.UI.CanaryChangelogViewer</a></div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.cs:6</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a07f1b45efacf87a4c726066c5c9f1caf"><div class="ttname"><a href="class_updater_1_1_updater.html#a07f1b45efacf87a4c726066c5c9f1caf">Updater.Updater.BrawlAPIInstallUpdate</a></div><div class="ttdeci">static async Task BrawlAPIInstallUpdate(string repoOwner, string repoName, bool manual)</div><div class="ttdef"><b>Definition:</b> Updater.cs:754</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_af9478822817d2c4b2532d08538af555c"><div class="ttname"><a href="class_updater_1_1_updater.html#af9478822817d2c4b2532d08538af555c">Updater.Updater.platform</a></div><div class="ttdeci">static string platform</div><div class="ttdef"><b>Definition:</b> Updater.cs:35</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_ab7bac482b81b149e77005885e792cdc3"><div class="ttname"><a href="class_updater_1_1_updater.html#ab7bac482b81b149e77005885e792cdc3">Updater.Updater.BrawlAPIUninstall</a></div><div class="ttdeci">static void BrawlAPIUninstall(string repoOwner, string repoName, bool manual)</div><div class="ttdef"><b>Definition:</b> Updater.cs:933</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_ab005dd1eceb36eee47b55495710d61d2"><div class="ttname"><a href="class_updater_1_1_updater.html#ab005dd1eceb36eee47b55495710d61d2">Updater.Updater.WriteBatchScript</a></div><div class="ttdeci">static void WriteBatchScript(string openFile)</div><div class="ttdef"><b>Definition:</b> Updater.cs:1219</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a88016f38564ad771b4f1ed18efc42384"><div class="ttname"><a href="class_updater_1_1_updater.html#a88016f38564ad771b4f1ed18efc42384">Updater.Updater.Github</a></div><div class="ttdeci">static readonly GitHubClient Github</div><div class="ttdef"><b>Definition:</b> Updater.cs:28</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a2f954d019152a4f8ee1e4053ff08aa60"><div class="ttname"><a href="class_updater_1_1_updater.html#a2f954d019152a4f8ee1e4053ff08aa60">Updater.Updater.currentBranch</a></div><div class="ttdeci">static string currentBranch</div><div class="ttdef"><b>Definition:</b> Updater.cs:34</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a7e35009ac8c036adf131a0b5e8d2027a"><div class="ttname"><a href="class_updater_1_1_updater.html#a7e35009ac8c036adf131a0b5e8d2027a">Updater.Updater.CheckUpdate</a></div><div class="ttdeci">static async Task CheckUpdate()</div><div class="ttdef"><b>Definition:</b> Updater.cs:350</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_aa37a22d4a66c24da38a043d63d706d3e"><div class="ttname"><a href="class_updater_1_1_updater.html#aa37a22d4a66c24da38a043d63d706d3e">Updater.Updater.ForceDownloadDocumentation</a></div><div class="ttdeci">static async Task ForceDownloadDocumentation()</div><div class="ttdef"><b>Definition:</b> Updater.cs:1100</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html_af6b7a087fb3cab4590ef6eb0b8c415ae"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#af6b7a087fb3cab4590ef6eb0b8c415ae">Updater.UI.DLProgressWindow.finished</a></div><div class="ttdeci">static bool finished</div><div class="ttdef"><b>Definition:</b> DLProgressWindow.cs:12</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_af46084fd7e7bce4c111b3a37b25cf196"><div class="ttname"><a href="class_updater_1_1_updater.html#af46084fd7e7bce4c111b3a37b25cf196">Updater.Updater.AppPath</a></div><div class="ttdeci">static string AppPath</div><div class="ttdef"><b>Definition:</b> Updater.cs:23</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_ae2b08cc302f11fb68d8e8779209a24de"><div class="ttname"><a href="class_updater_1_1_updater.html#ae2b08cc302f11fb68d8e8779209a24de">Updater.Updater.KillOpenWindows</a></div><div class="ttdeci">static async Task KillOpenWindows()</div><div class="ttdef"><b>Definition:</b> Updater.cs:1348</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html_acc83e8109a0ba79acd1e3ef13e59d3d5"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html#acc83e8109a0ba79acd1e3ef13e59d3d5">Updater.UI.DLProgressWindow.Dispose</a></div><div class="ttdeci">override void Dispose(bool disposing)</div><div class="ttdoc">Clean up any resources being used.</div><div class="ttdef"><b>Definition:</b> DLProgressWindow.designer.cs:16</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_window_html"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_window.html">Updater.UI.DLProgressWindow</a></div><div class="ttdef"><b>Definition:</b> DLProgressWindow.cs:9</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a155b0f66d807d619d5aaa821952c7a58"><div class="ttname"><a href="class_updater_1_1_updater.html#a155b0f66d807d619d5aaa821952c7a58">Updater.Updater.SetCanaryInactive</a></div><div class="ttdeci">static void SetCanaryInactive()</div><div class="ttdef"><b>Definition:</b> Updater.cs:100</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_html_ac2516ff5ea868140730c54036525888aab85815d04cec053ce6deb8021f2df1b8"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal.html#ac2516ff5ea868140730c54036525888aab85815d04cec053ce6deb8021f2df1b8">BrawlLib.Internal.HitboxSFX.Ping</a></div><div class="ttdeci">@ Ping</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_html_a7ed96d678c4779438c217fac02f49af5ab8e7b465df7c5979dc731d06e84ce2cf"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a7ed96d678c4779438c217fac02f49af5ab8e7b465df7c5979dc731d06e84ce2cf">BrawlLib.SSBB.Types.Audio.NoteOffType.Release</a></div><div class="ttdeci">@ Release</div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_a704e7ebc95f2bda3b707adf9c25f0516"><div class="ttname"><a href="class_updater_1_1_updater.html#a704e7ebc95f2bda3b707adf9c25f0516">Updater.Updater.mainRepo</a></div><div class="ttdeci">static readonly string mainRepo</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00025">Updater.cs:25</a></div></div>
-<div class="ttc" id="aclass_updater_1_1_updater_html_ae5e86a2b5e4bd046ea180615174a82cf"><div class="ttname"><a href="class_updater_1_1_updater.html#ae5e86a2b5e4bd046ea180615174a82cf">Updater.Updater.mainBranch</a></div><div class="ttdeci">static readonly string mainBranch</div><div class="ttdef"><b>Definition:</b> <a href="_updater_8cs_source.html#l00026">Updater.cs:26</a></div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_a704e7ebc95f2bda3b707adf9c25f0516"><div class="ttname"><a href="class_updater_1_1_updater.html#a704e7ebc95f2bda3b707adf9c25f0516">Updater.Updater.mainRepo</a></div><div class="ttdeci">static readonly string mainRepo</div><div class="ttdef"><b>Definition:</b> Updater.cs:25</div></div>
+<div class="ttc" id="aclass_updater_1_1_updater_html_ae5e86a2b5e4bd046ea180615174a82cf"><div class="ttname"><a href="class_updater_1_1_updater.html#ae5e86a2b5e4bd046ea180615174a82cf">Updater.Updater.mainBranch</a></div><div class="ttdeci">static readonly string mainBranch</div><div class="ttdef"><b>Definition:</b> Updater.cs:26</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
