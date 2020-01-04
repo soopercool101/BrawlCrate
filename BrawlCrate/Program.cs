@@ -39,7 +39,7 @@ namespace BrawlCrate
         /// </summary>
         public static readonly string UpdateMessage =
             @"Updated to BrawlCrate v0.30e! Here's what's new in this release:
-- "Import > Object" option for MDL0 now supports all MDL0 import types
+- 'Import > Object' option for MDL0 now supports all MDL0 import types
 - Add Delete Entries option to Edit All menu for CHR0
 - Improved STPM parsing (credit: MarioDox)
 - Add BrawlCrate documentation hosted at https://soopercool101.github.io/BrawlCrate/ (can be accessed from the help menu)
