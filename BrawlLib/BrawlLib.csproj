@@ -26,7 +26,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <FileVersion>0.30.3.1</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Configurations>Debug;Release;Mono;Canary;Documentation</Configurations>
+    <Configurations>Debug;Release;Mono;Canary</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>DEBUG</DefineConstants>
@@ -35,12 +35,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants />
-    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <DefineConstants />
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
@@ -79,12 +73,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <WarningLevel>4</WarningLevel>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|AnyCPU'">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DefineConstants />
-    <WarningLevel>4</WarningLevel>
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>CANARY</DefineConstants>
@@ -100,11 +88,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants />
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <DefineConstants />
     <WarningLevel>4</WarningLevel>
@@ -126,10 +109,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants />
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DefineConstants />
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x64'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineConstants>CANARY</DefineConstants>
@@ -147,13 +126,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
-    <PlatformTarget>x64</PlatformTarget>
-    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Documentation|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
