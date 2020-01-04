@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zmode_18570',['ZMode',['../struct_brawl_lib_1_1_wii_1_1_graphics_1_1_z_mode.html',1,'BrawlLib::Wii::Graphics']]]
+  ['zmode_18577',['ZMode',['../struct_brawl_lib_1_1_wii_1_1_graphics_1_1_z_mode.html',1,'BrawlLib::Wii::Graphics']]]
 ];
