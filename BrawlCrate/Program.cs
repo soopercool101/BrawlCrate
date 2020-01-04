@@ -344,7 +344,7 @@ Full changelog and documentation can be viewed from the help menu.";
                 {
                     string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
                         UpdateMessage.IndexOf(
-                            "Full changelog can be viewed from the help menu",
+                            "Full changelog",
                             StringComparison.OrdinalIgnoreCase) -
                         UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
                     using (StreamWriter file = new StreamWriter(Path.Combine(AppPath, "changelog-newest.txt")))
