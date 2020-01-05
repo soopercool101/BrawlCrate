@@ -69,13 +69,23 @@ namespace BrawlLib.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         public static System.Drawing.Icon BrawlCrateIcon {
             get {
                 object obj = ResourceManager.GetObject("BrawlCrateIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon BrawlCratePresentIcon {
+            get {
+                object obj = ResourceManager.GetObject("BrawlCratePresentIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -427,9 +437,13 @@ namespace BrawlLib.Properties {
         /// </summary>
         public static System.Drawing.Icon Icon {
             get {
-                if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
+                if (BrawlLib.BrawlCrate.PerSessionSettings.ProgramBirthday)
                 {
                     return PartyBallIcon;
+                }
+                if (BrawlLib.BrawlCrate.PerSessionSettings.BrawlCrateBirthday)
+                {
+                    return BrawlCratePresentIcon;
                 }
 #if CANARY
                 return BrawlCrateCanaryIcon;

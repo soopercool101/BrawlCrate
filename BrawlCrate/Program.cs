@@ -163,7 +163,7 @@ Full changelog and documentation can be viewed from the help menu.";
             AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
             AssemblyTitleFull = "BrawlCrate Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
-            if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
+            if (BrawlLib.BrawlCrate.PerSessionSettings.ProgramBirthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
@@ -172,7 +172,7 @@ Full changelog and documentation can be viewed from the help menu.";
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
                                                                   .GetCustomAttributes(typeof(AssemblyTitleAttribute),
                                                                       false)[0]).Title;
-            if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
+            if (BrawlLib.BrawlCrate.PerSessionSettings.ProgramBirthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
