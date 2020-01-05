@@ -246,6 +246,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override unsafe void Replace(string fileName)
         {
+            if (fileName.EndsWith(".chr0", StringComparison.OrdinalIgnoreCase))
+            {
+                base.Replace(fileName);
+                return;
+            }
             CHR0Node n = CHR0Node.FromFile(fileName);
             n.Name = Name;
             Parent?.InsertChild(n, true, Index + 1);
