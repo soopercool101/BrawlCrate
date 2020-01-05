@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30e
+BrawlCrate - v0.30e Hotfix 1
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,10 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30e Hotfix 1 - (1/5/2020)
+ . Fix bug in which CHR0 could only be replaced with CHR0 files
+ . Add easter egg
  
  - BrawlCrate v0.30e - (1/4/2020)
  . "Import > Object" option for MDL0 now supports all MDL0 import types

@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30e";
+        public static readonly string TagName = "v0.30e-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,7 +38,8 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30e! Here's what's new in this release:
+            @"Updated to BrawlCrate v0.30e Hotfix 1! Here's what's new in this release:
+- (Hotfix 1) CHR0s can now be properly replaced with all animation import types
 - 'Import > Object' option for MDL0 now supports all MDL0 import types
 - Add Delete Entries option to Edit All menu for CHR0
 - Improved STPM parsing (credit: MarioDox)
