@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 #if !MONO
@@ -169,22 +170,36 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             if (charname != "-")
             {
                 int charNum = pmap.CharBustTexFor(charname);
-                int upperBound = 12;
-                for (int i = 0; i < upperBound; i++)
+                foreach (FileInfo f in new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter", charname))
+                                       .GetFiles().Where(o =>
+                                           o.Extension.Equals(".pac", StringComparison.OrdinalIgnoreCase) ||
+                                           o.Extension.Equals(".pcs", StringComparison.OrdinalIgnoreCase)))
                 {
-                    string pathNoExt = Path.Combine(CurrentDirectory, "fighter",
-                        charname + "/fit" + charname + i.ToString("D2"));
-                    listBox2.Items.Add(new FighterFile(pathNoExt + ".pac", charNum, i));
-                    listBox2.Items.Add(new FighterFile(pathNoExt + ".pcs", charNum, i));
-                    if (charname.ToLower() == "kirby")
+                    // Ignore non-costume files
+                    if (f.Name.Equals($"fit{charname}.pac", StringComparison.OrdinalIgnoreCase) ||
+                        f.Name.StartsWith($"fit{charname}motion", StringComparison.OrdinalIgnoreCase) ||
+                        f.Name.StartsWith($"fit{charname}final", StringComparison.OrdinalIgnoreCase) ||
+                        f.Name.StartsWith($"fit{charname}entry", StringComparison.OrdinalIgnoreCase) ||
+                        f.Name.StartsWith($"fit{charname}etc", StringComparison.OrdinalIgnoreCase))
                     {
-                        foreach (string hatchar in PortraitMap.KirbyHats)
+                        continue;
+                    }
+
+                    int costumeNum = -1;
+                    try
+                    {
+                        if (int.TryParse(f.Name.Substring(f.Name.Length - 6, 2), out int i))
                         {
-                            listBox2.Items.Add(new FighterFile(
-                                Path.Combine(CurrentDirectory, "Fighter",
-                                    "kirby/fitkirby" + hatchar + i.ToString("D2") + ".pac"), charNum, i));
+                            costumeNum = i;
                         }
                     }
+                    catch
+                    {
+                        // Ignore, not necessary
+                        costumeNum = -1;
+                    }
+
+                    listBox2.Items.Add(new FighterFile(f.FullName, charNum, costumeNum));
                 }
 
                 listBox2.SelectedIndex = selectedIndex < listBox2.Items.Count ? selectedIndex : 0;
