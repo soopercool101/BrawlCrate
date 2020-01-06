@@ -316,7 +316,23 @@ namespace BrawlLib.SSBB.ResourceNodes
                 newName += "Clear ";
             }
 
-            newName += FighterNameGenerators.FromID(FighterID, FighterNameGenerators.slotIDIndex, "-S");
+            if (FighterID == 0x3E)
+            {
+                if (Index == 0)
+                {
+                    newName += "Select Character";
+                }
+                else
+                {
+                    return "None";
+                }
+            }
+            else
+            {
+                newName += FighterNameGenerators.FromID(FighterID, FighterNameGenerators.slotIDIndex, "-S");
+            }
+
+            newName += $" (Team {Team})";
 
             return newName;
         }
@@ -345,6 +361,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private EventMatchTblHeader _header;
 
         [DisplayName("Event Extension")] public bint EventExtension => _header._eventExtension;
+
+        [DisplayName("Event Match Number")] public int EventNumber => Index + 1;
 
         [Category("Unknown")]
         public int Unknown04
