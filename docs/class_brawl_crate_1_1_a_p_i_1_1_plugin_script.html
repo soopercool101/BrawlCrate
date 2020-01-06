@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30d Hotfix 1</span>
+   &#160;<span id="projectnumber">v0.30e</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -180,9 +180,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_crate_1_1_a_p_i_1_1_plugin_script.html#abbc542a769b886320c2d13cfafcb29bb">_converted</a>)</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <a class="code" href="class_brawl_crate_1_1_a_p_i_1_1_plugin_script.html#abbc542a769b886320c2d13cfafcb29bb">_converted</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="keywordflow">if</span> (BrawlAPI.DepreciatedReplacementStrings.Keys.Any(s =&gt; e.Message.Contains(s)))</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="keywordflow">if</span> (BrawlAPIInternal.DepreciatedReplacementStrings.Keys.Any(s =&gt; e.Message.Contains(s)))</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        BrawlAPI.ConvertPlugin(<a class="code" href="class_brawl_crate_1_1_a_p_i_1_1_plugin_script.html#af051baab31f07030154c0dcad60a74a8">Script</a>.Path);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        BrawlAPIInternal.ConvertPlugin(<a class="code" href="class_brawl_crate_1_1_a_p_i_1_1_plugin_script.html#af051baab31f07030154c0dcad60a74a8">Script</a>.Path);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        <a class="code" href="class_brawl_crate_1_1_a_p_i_1_1_plugin_script.html#ad741d903c460fb575e9e6ee70927f32b">Execute</a>();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    }</div>

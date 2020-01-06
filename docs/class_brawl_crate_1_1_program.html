@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30d Hotfix 1</span>
+   &#160;<span id="projectnumber">v0.30e</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -135,7 +135,7 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a4fef5218dc72336d42f4825b59027fee"><td class="memItemLeft" align="right" valign="top">static readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_program.html#a4fef5218dc72336d42f4825b59027fee">TagName</a> = &quot;v0.30d-h1&quot;</td></tr>
+<tr class="memitem:a4fef5218dc72336d42f4825b59027fee"><td class="memItemLeft" align="right" valign="top">static readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_program.html#a4fef5218dc72336d42f4825b59027fee">TagName</a> = &quot;v0.30e&quot;</td></tr>
 <tr class="memdesc:a4fef5218dc72336d42f4825b59027fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used internally by updater protocols. Checks latest release tag name versus this value.  <a href="class_brawl_crate_1_1_program.html#a4fef5218dc72336d42f4825b59027fee">More...</a><br /></td></tr>
 <tr class="separator:a4fef5218dc72336d42f4825b59027fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e29a8d112f25c7401a53d4bafa7924e"><td class="memItemLeft" align="right" valign="top">static readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_program.html#a6e29a8d112f25c7401a53d4bafa7924e">UpdateMessage</a></td></tr>
@@ -982,7 +982,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                {</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    <span class="keywordtype">string</span> changelog = <a class="code" href="class_brawl_crate_1_1_program.html#a6e29a8d112f25c7401a53d4bafa7924e">UpdateMessage</a>.Substring(<a class="code" href="class_brawl_crate_1_1_program.html#a6e29a8d112f25c7401a53d4bafa7924e">UpdateMessage</a>.IndexOf(<span class="charliteral">&#39;-&#39;</span>),</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        <a class="code" href="class_brawl_crate_1_1_program.html#a6e29a8d112f25c7401a53d4bafa7924e">UpdateMessage</a>.IndexOf(</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                            <span class="stringliteral">&quot;Full changelog can be viewed from the help menu&quot;</span>,</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                            <span class="stringliteral">&quot;Full changelog&quot;</span>,</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                            StringComparison.OrdinalIgnoreCase) -</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        <a class="code" href="class_brawl_crate_1_1_program.html#a6e29a8d112f25c7401a53d4bafa7924e">UpdateMessage</a>.IndexOf(<span class="charliteral">&#39;-&#39;</span>)).Trim(<span class="charliteral">&#39;\r&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>, <span class="charliteral">&#39; &#39;</span>);</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                    <span class="keyword">using</span> (StreamWriter file = <span class="keyword">new</span> StreamWriter(Path.Combine(<a class="code" href="class_brawl_crate_1_1_program.html#a329cd5974e9c8bd501eaa3ef2e2e3b4e">AppPath</a>, <span class="stringliteral">&quot;changelog-newest.txt&quot;</span>)))</div>
@@ -2519,7 +2519,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly string BrawlCrate.Program.TagName = &quot;v0.30d-h1&quot;</td>
+          <td class="memname">readonly string BrawlCrate.Program.TagName = &quot;v0.30e&quot;</td>
         </tr>
       </table>
   </td>
@@ -2554,16 +2554,16 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">            <span class="stringliteral">@&quot;Updated to BrawlCrate v0.30d! This release:</span></div>
-<div class="line"><span class="stringliteral">- (Hotfix 1) Adds support for adding parents directly to bones</span></div>
-<div class="line"><span class="stringliteral">- Adds additional useful functions to BrawlAPI</span></div>
-<div class="line"><span class="stringliteral">- Allows materials and material references to be properly duplicated</span></div>
-<div class="line"><span class="stringliteral">- Moves MDL0 Material Reference HasTextureMatrix property to the Texture Matrix Effect category</span></div>
-<div class="line"><span class="stringliteral">- Fixes crash when parsing unexpected MoveDef children</span></div>
-<div class="line"><span class="stringliteral">- Fixes crash when reading certain REFF animations</span></div>
-<div class="line"><span class="stringliteral">- Fixes error logs when resetting model viewer settings</span></div>
+<div class="line">            <span class="stringliteral">@&quot;Updated to BrawlCrate v0.30e! Here&#39;s what&#39;s new in this release:</span></div>
+<div class="line"><span class="stringliteral">- &#39;Import &gt; Object&#39; option for MDL0 now supports all MDL0 import types</span></div>
+<div class="line"><span class="stringliteral">- Add Delete Entries option to Edit All menu for CHR0</span></div>
+<div class="line"><span class="stringliteral">- Improved STPM parsing (credit: MarioDox)</span></div>
+<div class="line"><span class="stringliteral">- Add BrawlCrate documentation hosted at https://soopercool101.github.io/BrawlCrate/ (can be accessed from the help menu)</span></div>
+<div class="line"><span class="stringliteral">- Fix bug where PAT0 Entries could attempt to access invalid data during duplication</span></div>
+<div class="line"><span class="stringliteral">- Fix bug where the UserFloatInput API member would round to an int value</span></div>
+<div class="line"><span class="stringliteral">- Fix bug where the last user input was not saved for numerical API inputs</span></div>
 <div class="line"><span class="stringliteral"></span> </div>
-<div class="line"><span class="stringliteral">Full changelog can be viewed from the help menu.&quot;</span></div>
+<div class="line"><span class="stringliteral">Full changelog and documentation can be viewed from the help menu.&quot;</span></div>
 </div><!-- fragment -->
 <p>Shows upon first launch of a given stable release assuming that automated updating is on. </p>
 <p>This mirrors what is included in the GitHub release notes, so if automatic updating is off, assume that the user already saw this with the update prompt.</p>
@@ -2665,7 +2665,7 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_issue_dialog_html_a866b9f6281b4602276e2f742f200fe4b"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_issue_dialog.html#a866b9f6281b4602276e2f742f200fe4b">BrawlCrate.UI.IssueDialog.Dispose</a></div><div class="ttdeci">override void Dispose(bool disposing)</div><div class="ttdoc">Clean up any resources being used.</div><div class="ttdef"><b>Definition:</b> IssueDialog.Designer.cs:16</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_provider_html_a3ab3496203ad68fb90fe0f58ea1e6251"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_provider.html#a3ab3496203ad68fb90fe0f58ea1e6251">BrawlLib.Internal.Audio.AudioProvider.AudioProviderType</a></div><div class="ttdeci">AudioProviderType</div><div class="ttdef"><b>Definition:</b> AudioProvider.cs:16</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window_html_a4941d08b7c58761a3b965bfdb0bd653f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_progress_window.html#a4941d08b7c58761a3b965bfdb0bd653f">BrawlLib.Internal.Windows.Forms.ProgressWindow.Begin</a></div><div class="ttdeci">void Begin(float min, float max, float current)</div><div class="ttdef"><b>Definition:</b> ProgressWindow.cs:51</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_recent_file_handler_html_ab93be8dd42b4730cf6758ff0d57b894f"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_recent_file_handler.html#ab93be8dd42b4730cf6758ff0d57b894f">BrawlCrate.UI.RecentFileHandler.AddFile</a></div><div class="ttdeci">void AddFile(string fileName)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2467</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_recent_file_handler_html_ab93be8dd42b4730cf6758ff0d57b894f"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_recent_file_handler.html#ab93be8dd42b4730cf6758ff0d57b894f">BrawlCrate.UI.RecentFileHandler.AddFile</a></div><div class="ttdeci">void AddFile(string fileName)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:2423</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_g_c_t_editor_html_a7485ec7ff7ae592624f9af88df4e4e1f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_g_c_t_editor.html#a7485ec7ff7ae592624f9af88df4e4e1f">BrawlLib.Internal.Windows.Forms.GCTEditor.OpenFileChanged</a></div><div class="ttdeci">EventHandler OpenFileChanged</div><div class="ttdef"><b>Definition:</b> GCTEditor.cs:17</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_program_html_a505b754943f4b7cc43a6a11a9974a5cc"><div class="ttname"><a href="class_brawl_crate_1_1_program.html#a505b754943f4b7cc43a6a11a9974a5cc">BrawlCrate.Program.RootNode</a></div><div class="ttdeci">static ResourceNode RootNode</div><div class="ttdef"><b>Definition:</b> Program.cs:71</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_g_c_t_editor_html_a4c7b698594bec561457e65b72019dc08"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_g_c_t_editor.html#a4c7b698594bec561457e65b72019dc08">BrawlLib.Internal.Windows.Forms.GCTEditor.TargetNode</a></div><div class="ttdeci">GCTNode? TargetNode</div><div class="ttdef"><b>Definition:</b> GCTEditor.cs:62</div></div>

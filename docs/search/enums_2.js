@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['bgimagetype_30143',['BGImageType',['../namespace_brawl_lib_1_1_open_g_l.html#ae471f2c988619ff3845258e8895aa3ca',1,'BrawlLib::OpenGL']]],
-  ['bias_30144',['Bias',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a62f23ab42fd6e79ea3dc66a4e0335ea3',1,'BrawlLib::Wii::Graphics']]],
-  ['billboardahead_30145',['BillboardAhead',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0eb25a557fc8dce3c45e10f7cbdca45b',1,'BrawlLib::SSBB::Types']]],
-  ['billboardassist_30146',['BillboardAssist',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#affd97e4da2c003abbad6685119902e47',1,'BrawlLib::SSBB::Types']]],
-  ['billboardflags_30147',['BillboardFlags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a698b4bd5d661f0d8fb34d72c0f242d5e',1,'BrawlLib::SSBB::Types']]],
-  ['blendfactor_30148',['BlendFactor',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a5cac7fec38a189f6c5fdd6ee7c29ff37',1,'BrawlLib::Wii::Graphics']]],
-  ['boneflags_30149',['BoneFlags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a250ca3408d30336c5103a7fd279be296',1,'BrawlLib::SSBB::Types']]],
-  ['bpmemory_30150',['BPMemory',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a11d14855c13fc7762ec56ea143b0a259',1,'BrawlLib::Wii::Graphics']]],
-  ['bresgrouptype_30151',['BRESGroupType',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html#a883a106f4795baf12cd9fcefe6159f97',1,'BrawlLib::SSBB::ResourceNodes::BRESGroupNode']]]
+  ['bgimagetype_30153',['BGImageType',['../namespace_brawl_lib_1_1_open_g_l.html#ae471f2c988619ff3845258e8895aa3ca',1,'BrawlLib::OpenGL']]],
+  ['bias_30154',['Bias',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a62f23ab42fd6e79ea3dc66a4e0335ea3',1,'BrawlLib::Wii::Graphics']]],
+  ['billboardahead_30155',['BillboardAhead',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0eb25a557fc8dce3c45e10f7cbdca45b',1,'BrawlLib::SSBB::Types']]],
+  ['billboardassist_30156',['BillboardAssist',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#affd97e4da2c003abbad6685119902e47',1,'BrawlLib::SSBB::Types']]],
+  ['billboardflags_30157',['BillboardFlags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a698b4bd5d661f0d8fb34d72c0f242d5e',1,'BrawlLib::SSBB::Types']]],
+  ['blendfactor_30158',['BlendFactor',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a5cac7fec38a189f6c5fdd6ee7c29ff37',1,'BrawlLib::Wii::Graphics']]],
+  ['boneflags_30159',['BoneFlags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a250ca3408d30336c5103a7fd279be296',1,'BrawlLib::SSBB::Types']]],
+  ['bpmemory_30160',['BPMemory',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a11d14855c13fc7762ec56ea143b0a259',1,'BrawlLib::Wii::Graphics']]],
+  ['bresgrouptype_30161',['BRESGroupType',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html#a883a106f4795baf12cd9fcefe6159f97',1,'BrawlLib::SSBB::ResourceNodes::BRESGroupNode']]]
 ];

@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30d-h1";
+        public static readonly string TagName = "v0.30e-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,16 +38,17 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30d! This release:
-- (Hotfix 1) Adds support for adding parents directly to bones
-- Adds additional useful functions to BrawlAPI
-- Allows materials and material references to be properly duplicated
-- Moves MDL0 Material Reference HasTextureMatrix property to the Texture Matrix Effect category
-- Fixes crash when parsing unexpected MoveDef children
-- Fixes crash when reading certain REFF animations
-- Fixes error logs when resetting model viewer settings
+            @"Updated to BrawlCrate v0.30e Hotfix 1! Here's what's new in this release:
+- (Hotfix 1) CHR0s can now be properly replaced with all animation import types
+- 'Import > Object' option for MDL0 now supports all MDL0 import types
+- Add Delete Entries option to Edit All menu for CHR0
+- Improved STPM parsing (credit: MarioDox)
+- Add BrawlCrate documentation hosted at https://soopercool101.github.io/BrawlCrate/ (can be accessed from the help menu)
+- Fix bug where PAT0 Entries could attempt to access invalid data during duplication
+- Fix bug where the UserFloatInput API member would round to an int value
+- Fix bug where the last user input was not saved for numerical API inputs
 
-Full changelog can be viewed from the help menu.";
+Full changelog and documentation can be viewed from the help menu.";
 
         public static readonly string AssemblyTitleFull;
         public static readonly string AssemblyTitleShort;
@@ -163,7 +164,7 @@ Full changelog can be viewed from the help menu.";
             AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
             AssemblyTitleFull = "BrawlCrate Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
-            if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
+            if (BrawlLib.BrawlCrate.PerSessionSettings.ProgramBirthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
@@ -172,7 +173,7 @@ Full changelog can be viewed from the help menu.";
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
                                                                   .GetCustomAttributes(typeof(AssemblyTitleAttribute),
                                                                       false)[0]).Title;
-            if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
+            if (BrawlLib.BrawlCrate.PerSessionSettings.ProgramBirthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
@@ -344,7 +345,7 @@ Full changelog can be viewed from the help menu.";
                 {
                     string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
                         UpdateMessage.IndexOf(
-                            "Full changelog can be viewed from the help menu",
+                            "Full changelog",
                             StringComparison.OrdinalIgnoreCase) -
                         UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
                     using (StreamWriter file = new StreamWriter(Path.Combine(AppPath, "changelog-newest.txt")))

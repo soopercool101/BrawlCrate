@@ -601,7 +601,7 @@ namespace BrawlCrate.API
         #region Strings
 
         // Hidden. Used to determine default text entry when none is defined
-        private static string lastStringInput = "";
+        private static string _lastStringInput = "";
 
         /// <summary>
         ///     Prompts the user to input a string, with a default title and the last BrawlAPI-entered string as the default value.
@@ -611,7 +611,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static string UserStringInput()
         {
-            return UserStringInput("BrawlAPI String Input", lastStringInput);
+            return UserStringInput("BrawlAPI String Input", _lastStringInput);
         }
 
         /// <summary>
@@ -625,7 +625,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static string UserStringInput(string title)
         {
-            return UserStringInput(title, lastStringInput);
+            return UserStringInput(title, _lastStringInput);
         }
 
         /// <summary>
@@ -646,7 +646,7 @@ namespace BrawlCrate.API
             {
                 dialog.Cancellable = false;
                 dialog.ShowDialog();
-                lastStringInput = dialog.resultString;
+                _lastStringInput = dialog.resultString;
                 return dialog.resultString;
             }
         }
@@ -658,7 +658,7 @@ namespace BrawlCrate.API
         #region Integers
 
         // Hidden. Used to determine default integer entry when none is defined
-        private static int lastIntegerInput = 0;
+        private static int _lastIntegerInput;
         
         /// <summary>
         ///     Prompts the user to input an integer.
@@ -668,7 +668,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static int UserIntegerInput()
         {
-            return UserIntegerInput("BrawlAPI Integer Input", "Value:", lastIntegerInput, 0, 0);
+            return UserIntegerInput("BrawlAPI Integer Input", "Value:", _lastIntegerInput, 0, 0);
         }
 
         /// <summary>
@@ -682,7 +682,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static int UserIntegerInput(string title)
         {
-            return UserIntegerInput(title, "Value:", lastIntegerInput, 0, 0);
+            return UserIntegerInput(title, "Value:", _lastIntegerInput, 0, 0);
         }
 
         /// <summary>
@@ -699,7 +699,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static int UserIntegerInput(string title, string description)
         {
-            return UserIntegerInput(title, description, lastIntegerInput, 0, 0);
+            return UserIntegerInput(title, description, _lastIntegerInput, 0, 0);
         }
 
         /// <summary>
@@ -784,6 +784,7 @@ namespace BrawlCrate.API
                     }
                 }
                 dialog.ShowDialog(title, description, defaultValue);
+                _lastIntegerInput = dialog.NewValue;
                 return dialog.NewValue;
             }
         }
@@ -793,7 +794,7 @@ namespace BrawlCrate.API
         #region Floating-Point (Decimal) Numbers
 
         // Hidden. Used to determine default float entry when none is defined
-        private static float lastFloatInput = 0.0f;
+        private static float _lastFloatInput;
 
         /// <summary>
         ///     Prompts the user to input a float.
@@ -806,7 +807,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static float UserFloatInput(string title)
         {
-            return UserFloatInput(title, "Value:", lastFloatInput, 0, 0);
+            return UserFloatInput(title, "Value:", _lastFloatInput, 0, 0);
         }
 
         /// <summary>
@@ -823,7 +824,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static float UserFloatInput(string title, string description)
         {
-            return UserFloatInput(title, description, lastFloatInput, 0, 0);
+            return UserFloatInput(title, description, _lastFloatInput, 0, 0);
         }
 
         /// <summary>
@@ -908,7 +909,8 @@ namespace BrawlCrate.API
                     }
                 }
                 dialog.ShowDialog(title, description, defaultValue);
-                return dialog.NewValue;
+                _lastFloatInput = dialog.NewFloatValue;
+                return dialog.NewFloatValue;
             }
         }
 

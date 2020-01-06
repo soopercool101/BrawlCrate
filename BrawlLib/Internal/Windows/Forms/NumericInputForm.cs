@@ -15,6 +15,8 @@ namespace BrawlLib.Internal.Windows.Forms
 
         public int NewValue => (int) numNewCount.Value;
 
+        public float NewFloatValue => numNewCount.Value;
+
         public new DialogResult ShowDialog()
         {
             Text = title;
