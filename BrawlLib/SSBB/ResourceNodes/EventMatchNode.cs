@@ -136,7 +136,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             Normal = 0,
             Metal = 1,
-            Invisible = 2
+            Clear = 2
         }
 
         private EventMatchFighterHeader data;
@@ -148,8 +148,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 data._fighterID = value;
-                Name = FighterNameGenerators.FromID(data._fighterID,
-                    FighterNameGenerators.slotIDIndex, "-S");
+                Name = GenerateName();
                 SignalPropertyChange();
             }
         }
@@ -160,6 +159,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 data._status = (byte) value;
+                Name = GenerateName();
                 SignalPropertyChange();
             }
         }
@@ -192,6 +192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 data._scale = value;
+                Name = GenerateName();
                 SignalPropertyChange();
             }
         }
@@ -253,9 +254,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                bool changed = HasChanged;
-                UpdateName();
-                HasChanged = changed;
+                _name = GenerateName();
             }
 
             return true;
@@ -295,10 +294,31 @@ namespace BrawlLib.SSBB.ResourceNodes
             return sizeof(EventMatchFighterData);
         }
 
-        public void UpdateName()
+        public string GenerateName()
         {
-            Name = FighterNameGenerators.FromID(FighterID, FighterNameGenerators.slotIDIndex,
-                "-S");
+            string newName = "";
+
+            if (Scale > 1.0f)
+            {
+                newName += "Giant ";
+            }
+            else if (Scale < 1.0f)
+            {
+                newName += "Tiny ";
+            }
+
+            if (Status == StatusEnum.Metal)
+            {
+                newName += "Metal ";
+            }
+            else if (Status == StatusEnum.Clear)
+            {
+                newName += "Clear ";
+            }
+
+            newName += FighterNameGenerators.FromID(FighterID, FighterNameGenerators.slotIDIndex, "-S");
+
+            return newName;
         }
     }
 
