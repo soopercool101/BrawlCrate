@@ -170,6 +170,11 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             if (charname != "-")
             {
                 int charNum = pmap.CharBustTexFor(charname);
+                DirectoryInfo dir = new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter", charname));
+                if (!dir.Exists)
+                {
+                    return;
+                }
                 foreach (FileInfo f in new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter", charname))
                                        .GetFiles().Where(o =>
                                            o.Extension.Equals(".pac", StringComparison.OrdinalIgnoreCase) ||
