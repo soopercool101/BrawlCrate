@@ -8,22 +8,22 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.API
 {
-    public class PluginScript
+    internal class PluginScript
     {
-        public PluginScript(string name, ScriptSource script, ScriptScope scope)
+        internal PluginScript(string name, ScriptSource script, ScriptScope scope)
         {
             Name = name;
             Script = script;
             Scope = scope;
         }
 
-        public string Name { get; set; }
-        public ScriptSource Script { get; set; }
-        public ScriptScope Scope { get; set; }
+        internal string Name { get; set; }
+        internal ScriptSource Script { get; set; }
+        internal ScriptScope Scope { get; set; }
 
         private bool _converted;
 
-        public void Execute()
+        internal void Execute()
         {
             try
             {
@@ -48,6 +48,9 @@ namespace BrawlCrate.API
         }
     }
 
+    /// <summary>
+    ///   Internal class used as a proxy for plugin-defined resource node parsers
+    /// </summary>
     internal class PluginResourceParsers : ResourceNode
     {
         internal static ResourceNode TryParse(DataSource source)
