@@ -160,6 +160,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         public void LoadFile(string path)
         {
+            int index = comboBox1.SelectedIndex;
             if (_root != null)
             {
                 _root.Dispose();
@@ -187,7 +188,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                 if (models.Count > 0)
                 {
                     comboBox1.Items.AddRange(models.ToArray());
-                    comboBox1.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = index > 0 && index <= comboBox1.Items.Count ? index : 0;
                 }
             }
             catch (IOException)

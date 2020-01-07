@@ -63,8 +63,8 @@ namespace BrawlCrate.BrawlManagers.CostumeManager {
 
         #endregion
 
-        private ModelPanel modelPanel1;
-        private ComboBox comboBox1;
+        public ModelPanel modelPanel1;
+        public ComboBox comboBox1;
     }
 }
 

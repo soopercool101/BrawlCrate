@@ -40,7 +40,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         /// <summary>
         /// Name/index pairs that are known to be used in Brawl or Project M 3.0.
         /// </summary>
-        private static Fighter[] KnownFighters =
+        public static readonly Fighter[] KnownFighters =
         {
             new Fighter("mario", 0),
             new Fighter("donkey", 1),
@@ -68,7 +68,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             new Fighter("pikmin", 24),
             new Fighter("lucas", 25),
             new Fighter("diddy", 26),
-            new Fighter("mewtwo", 27), // PM 3.0
+            //new Fighter("mewtwo", 27), // PM 3.0
             new Fighter("poketrainer", 27),
             new Fighter("pokelizardon", 28),
             new Fighter("pokezenigame", 29),
@@ -79,7 +79,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             new Fighter("robot", 34),
             new Fighter("purin", 36),
             new Fighter("wario", 37),
-            new Fighter("roy", 39), // PM 3.0
+            //new Fighter("roy", 39), // PM 3.0
             new Fighter("toonlink", 40),
             new Fighter("wolf", 43),
             new Fighter("snake", 45),
@@ -211,9 +211,9 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             {46, new int[] {0, 5, 4, 2, 1}}
         };
 
-        private static Dictionary<int, int[]> PM35Mappings = CompilePM35Mappings();
+        private static Dictionary<int, int[]> PM36Mappings = CompilePM36Mappings();
 
-        private static Dictionary<int, int[]> CompilePM35Mappings()
+        private static Dictionary<int, int[]> CompilePM36Mappings()
         {
             Dictionary<int, int[]> ret = new Dictionary<int, int[]>();
             for (int key = 0; key <= 46; key++)
@@ -295,9 +295,9 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             public ProjectM(CostumeManagerForm mainForm)
                 : base(mainForm)
             {
-                foreach (int i in PM35Mappings.Keys)
+                foreach (int i in PM36Mappings.Keys)
                 {
-                    AddPortraitMappings(i, PM35Mappings[i]);
+                    AddPortraitMappings(i, PM36Mappings[i]);
                 }
             }
         }
@@ -328,7 +328,11 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         public PortraitMap(CostumeManagerForm mainForm)
         {
             MainForm = mainForm;
-            additionalFighters = new List<Fighter>();
+            additionalFighters = new List<Fighter>
+            {
+                new Fighter("mewtwo", 27), // PM 3.0
+                new Fighter("roy", 39)     // PM 3.0
+            };
             additionalMappings = new Dictionary<int, int[]>();
         }
 
@@ -403,6 +407,11 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         public void ClearAll()
         {
             additionalFighters.Clear();
+            additionalFighters = new List<Fighter>
+            {
+                new Fighter("mewtwo", 27), // PM 3.0
+                new Fighter("roy", 39) // PM 3.0
+            };
             additionalMappings.Clear();
         }
 

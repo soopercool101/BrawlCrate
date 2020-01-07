@@ -1,6 +1,7 @@
 ﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
 using BrawlCrate.UI;
 using BrawlLib.BrawlManagerLib;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 #if !MONO
@@ -89,13 +91,31 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             int selectedIndex = listBox1.SelectedIndex;
             listBox1.Items.Clear();
             listBox1.Items.Add("-");
-            foreach (string charname in pmap.GetKnownFighterNames())
+            DirectoryInfo dir = new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter"));
+
+            IEnumerable<string> knownFighters = pmap.GetKnownFighterNames();
+
+            List<string> fighters = new List<string>();
+
+            if (dir.Exists)
             {
-                if (charname != null)
+                foreach (DirectoryInfo d in dir.GetDirectories())
                 {
-                    listBox1.Items.Add(charname);
+                    fighters.Add(d.Name);
                 }
             }
+
+            foreach (PortraitMap.Fighter f in PortraitMap.KnownFighters)
+            {
+                string charname = f.Name;
+                if (charname != null && !fighters.Any(o => o.Equals(charname, StringComparison.OrdinalIgnoreCase)))
+                {
+                    fighters.Add(charname);
+                }
+            }
+
+            fighters.Sort();
+            listBox1.Items.AddRange(fighters.ToArray());
 
             foreach (PortraitViewer p in portraitViewers)
             {
@@ -163,51 +183,57 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         public void updateCostumeSelectionPane()
         {
-            int selectedIndex = listBox2.SelectedIndex;
+            int selectedIndex = listBox2.SelectedIndex != -1 ? listBox2.SelectedIndex : 0;
 
             string charname = listBox1.SelectedItem.ToString();
             listBox2.Items.Clear();
+            modelManager1.comboBox1.SelectedIndex = -1;
             if (charname != "-")
             {
                 int charNum = pmap.CharBustTexFor(charname);
                 DirectoryInfo dir = new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter", charname));
-                if (!dir.Exists)
+                if (dir.Exists)
                 {
-                    return;
-                }
-                foreach (FileInfo f in new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter", charname))
-                                       .GetFiles().Where(o =>
-                                           o.Extension.Equals(".pac", StringComparison.OrdinalIgnoreCase) ||
-                                           o.Extension.Equals(".pcs", StringComparison.OrdinalIgnoreCase)))
-                {
-                    // Ignore non-costume files
-                    if (f.Name.Equals($"fit{charname}.pac", StringComparison.OrdinalIgnoreCase) ||
-                        f.Name.StartsWith($"fit{charname}motion", StringComparison.OrdinalIgnoreCase) ||
-                        f.Name.StartsWith($"fit{charname}final", StringComparison.OrdinalIgnoreCase) ||
-                        f.Name.StartsWith($"fit{charname}entry", StringComparison.OrdinalIgnoreCase) ||
-                        f.Name.StartsWith($"fit{charname}etc", StringComparison.OrdinalIgnoreCase))
+                    foreach (FileInfo f in new DirectoryInfo(Path.Combine(CurrentDirectory, "fighter", charname))
+                                           .GetFiles().Where(o =>
+                                               o.Extension.Equals(".pac", StringComparison.OrdinalIgnoreCase) ||
+                                               o.Extension.Equals(".pcs", StringComparison.OrdinalIgnoreCase)))
                     {
-                        continue;
-                    }
-
-                    int costumeNum = -1;
-                    try
-                    {
-                        if (int.TryParse(f.Name.Substring(f.Name.Length - 6, 2), out int i))
+                        // Ignore non-costume files
+                        if (f.Name.Equals($"fit{charname}.pac", StringComparison.OrdinalIgnoreCase) ||
+                            f.Name.StartsWith($"fit{charname}motion", StringComparison.OrdinalIgnoreCase) ||
+                            f.Name.StartsWith($"fit{charname}final", StringComparison.OrdinalIgnoreCase) ||
+                            f.Name.StartsWith($"fit{charname}entry", StringComparison.OrdinalIgnoreCase) ||
+                            f.Name.StartsWith($"fit{charname}result", StringComparison.OrdinalIgnoreCase) ||
+                            f.Name.StartsWith($"fit{charname}etc", StringComparison.OrdinalIgnoreCase))
                         {
-                            costumeNum = i;
+                            continue;
                         }
-                    }
-                    catch
-                    {
-                        // Ignore, not necessary
-                        costumeNum = -1;
-                    }
 
-                    listBox2.Items.Add(new FighterFile(f.FullName, charNum, costumeNum));
+                        int costumeNum = -1;
+                        try
+                        {
+                            MatchCollection m = Regex.Matches(f.Name, "[0-9][0-9]");
+                            if (m.Count > 0)
+                            {
+                                if (int.TryParse(m[0].Value, out int i))
+                                {
+                                    costumeNum = i;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            // Ignore, not necessary
+                            costumeNum = -1;
+                        }
+
+                        listBox2.Items.Add(new FighterFile(f.FullName, charNum, costumeNum));
+                    }
                 }
 
-                listBox2.SelectedIndex = selectedIndex < listBox2.Items.Count ? selectedIndex : 0;
+                listBox2.SelectedIndex = selectedIndex < listBox2.Items.Count ? selectedIndex :
+                    listBox2.Items.Count > 0 ? 0 : -1;
             }
         }
 
