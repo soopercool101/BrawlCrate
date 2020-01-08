@@ -38,13 +38,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             // Add all BrawlLib parsers (excluding MoveDefs, as explained below)
             foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()
-                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode)) && t != typeof(MoveDefNode)))
+                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode))
+                                                   // Exclude overly generic parsers (want those to be tried last)
+                                                   && t != typeof(Common2MiscDataNode)
+                                                   && t != typeof(MoveDefNode)))
             {
                 AddParser(t);
             }
 
-            // Add MoveDef. MoveDef is very generalized as a parser and currently encounters many false positives.
-            // Prevent this by trying everything else first
+            // Add generalized parsers to minimize false positives
+            AddParser(typeof(Common2MiscDataNode));
             AddParser(typeof(MoveDefNode));
         }
 
