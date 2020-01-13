@@ -714,24 +714,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public enum MotionEtcTypes
         {
-            SingleSeperate,
+            SingleSeparate,
             SingleMerged,
-            PerCostumeSeperate
+            PerCostumeSeparate
         }
 
         [Category("\tResources")]
-        [Description(@"SingleSeperate: Use a single Motion and a single Etc file for all costumes
+        [Description(@"SingleSeparate: Use a single Motion and a single Etc file for all costumes
 SingleMerged: Use a single MotionEtc file for all costumes
-PerCostumeSeperate: Use a single Motion for all costumes and give each costume its own Etc file")]
+PerCostumeSeparate: Use a single Motion for all costumes and give each costume its own Etc file")]
         [DisplayName("Merge Motion/Etc.")]
         public MotionEtcTypes MotionEtcType
         {
-            get => PerCostumeEtc ? MotionEtcTypes.PerCostumeSeperate : MergeMotionEtc ? MotionEtcTypes.SingleMerged : MotionEtcTypes.SingleSeperate;
+            get => PerCostumeEtc ? MotionEtcTypes.PerCostumeSeparate : MergeMotionEtc ? MotionEtcTypes.SingleMerged : MotionEtcTypes.SingleSeparate;
             set
             {
                 switch(value)
                 {
-                    case MotionEtcTypes.SingleSeperate:
+                    case MotionEtcTypes.SingleSeparate:
                         MergeMotionEtc = false;
                         PerCostumeEtc = false;
                         break;
@@ -739,7 +739,7 @@ PerCostumeSeperate: Use a single Motion for all costumes and give each costume i
                         MergeMotionEtc = true;
                         PerCostumeEtc = false;
                         break;
-                    case MotionEtcTypes.PerCostumeSeperate:
+                    case MotionEtcTypes.PerCostumeSeparate:
                         MergeMotionEtc = false;
                         PerCostumeEtc = true;
                         break;
