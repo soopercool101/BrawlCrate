@@ -583,7 +583,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     if (y == 2 && RootNode.Name == "FitPokeTrainer")
                     {
                         MoveDefSoundDatasNode p = new MoveDefSoundDatasNode
-                            {isExtra = true, Separate = true, _name = "Sound Data 2"};
+                            {isExtra = true, separate = true, _name = "Sound Data 2"};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }

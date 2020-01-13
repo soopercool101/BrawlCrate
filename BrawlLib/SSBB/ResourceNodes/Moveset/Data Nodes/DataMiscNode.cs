@@ -2371,7 +2371,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal FDefListOffset* Header => (FDefListOffset*) WorkingUncompressed.Address;
         internal int StartOffset, ListCount;
-        public bool Separate = false;
+        public bool separate = false;
 
         public override bool OnInitialize()
         {
@@ -2402,7 +2402,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _lookupCount += r.Children.Count > 0 ? 1 : 0;
                 size += 8;
-                if (Separate)
+                if (separate)
                 {
                     size += r.Children.Count * 4;
                 }
@@ -2417,7 +2417,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (MoveDefSoundDataNode r in Children)
             {
                 mainOff += 8;
-                if (Separate)
+                if (separate)
                 {
                     sndOff += r.Children.Count * 4;
                 }
@@ -2445,7 +2445,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (r.Children.Count > 0)
                 {
-                    if (Separate)
+                    if (separate)
                     {
                         sndLists->_startOffset = (int) indices - (int) _rebuildBase;
                     }
@@ -2459,7 +2459,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 (sndLists++)->_listCount = r.Children.Count;
-                if (Separate)
+                if (separate)
                 {
                     foreach (MoveDefIndexNode b in r.Children)
                     {

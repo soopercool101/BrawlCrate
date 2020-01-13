@@ -1499,7 +1499,7 @@ Initial Release (2/19/2015):
     . Fixed collision plane culling (was inside-out) and removed 2D selection overlay from collision viewer
     . Fixed problem where texture matrices would be removed but leave empty bytes in the object
     . Moved collision editor and model viewer code out of Brawllib and into BrawlBox
-    . Removed wireframe mode from the polygons button and moved it to a Separate menu button
+    . Removed wireframe mode from the polygons button and moved it to a separate menu button
     . Added support for viewing THPs (video and audio may desync though)
 
  - v0.68c- (5/27/2013) - BrawlLib v0.15c

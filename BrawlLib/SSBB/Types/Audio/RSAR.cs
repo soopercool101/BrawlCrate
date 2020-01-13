@@ -100,7 +100,7 @@ namespace BrawlLib.SSBB.Types.Audio
         public uint StringCount => StringOffsets[-1];
         public buint* StringOffsets => (buint*) (Address + 8 + _stringOffset + 4);
 
-        //Gets names of file paths Separated by an underscore
+        //Gets names of file paths separated by an underscore
         public string GetStringEntry(int index)
         {
             if (index < 0)
