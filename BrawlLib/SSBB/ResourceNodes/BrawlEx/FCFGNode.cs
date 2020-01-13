@@ -719,11 +719,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             PerCostumeSeparate
         }
 
+        [Browsable(true)]
         [Category("\tResources")]
         [Description(@"SingleSeparate: Use a single Motion and a single Etc file for all costumes
 SingleMerged: Use a single MotionEtc file for all costumes
 PerCostumeSeparate: Use a single Motion for all costumes and give each costume its own Etc file")]
-        [DisplayName("Merge Motion/Etc.")]
+        [DisplayName("MotionEtc Type")]
         public MotionEtcTypes MotionEtcType
         {
             get => PerCostumeEtc ? MotionEtcTypes.PerCostumeSeparate : MergeMotionEtc ? MotionEtcTypes.SingleMerged : MotionEtcTypes.SingleSeparate;
