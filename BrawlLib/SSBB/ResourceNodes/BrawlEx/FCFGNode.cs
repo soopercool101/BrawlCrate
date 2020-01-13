@@ -711,6 +711,45 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Browsable(false)]
+        public enum MotionEtcTypes
+        {
+            SingleSeperate,
+            SingleMerged,
+            PerCostumeSeperate
+        }
+
+        [Category("\tResources")]
+        [Description(@"SingleSeperate: Use a single Motion and a single Etc file for all costumes
+SingleMerged: Use a single MotionEtc file for all costumes
+PerCostumeSeperate: Use a single Motion for all costumes and give each costume its own Etc file")]
+        [DisplayName("Merge Motion/Etc.")]
+        public MotionEtcTypes MotionEtcType
+        {
+            get => PerCostumeEtc ? MotionEtcTypes.PerCostumeSeperate : MergeMotionEtc ? MotionEtcTypes.SingleMerged : MotionEtcTypes.SingleSeperate;
+            set
+            {
+                switch(value)
+                {
+                    case MotionEtcTypes.SingleSeperate:
+                        MergeMotionEtc = false;
+                        PerCostumeEtc = false;
+                        break;
+                    case MotionEtcTypes.SingleMerged:
+                        MergeMotionEtc = true;
+                        PerCostumeEtc = false;
+                        break;
+                    case MotionEtcTypes.PerCostumeSeperate:
+                        MergeMotionEtc = false;
+                        PerCostumeEtc = true;
+                        break;
+                }
+            }
+        }
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
         [Category("\tResources")]
         [Description("Use one MotionEtc file instead of splitting them.")]
         [DisplayName("Merge Motion/Etc.")]
@@ -725,6 +764,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+#if !DEBUG
+        [Browsable(false)]
+#endif
         [Category("\tResources")]
         [Description("Determines whether or not per costume Etc. files are used")]
         [DisplayName("Per Costume Etc.")]
