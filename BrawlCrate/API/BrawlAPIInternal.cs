@@ -320,6 +320,37 @@ namespace BrawlCrate.API
                             }
                         }
                     }
+
+                    string vsPyPath = Path.Combine("C:/", "Program Files (x86)", "Microsoft Visual Studio", "Shared");
+                    if (!found && Directory.Exists(vsPyPath))
+                    {
+                        foreach (DirectoryInfo d in Directory.CreateDirectory(vsPyPath).GetDirectories().Reverse())
+                        {
+                            if (found)
+                            {
+                                break;
+                            }
+                            if (d.Name.StartsWith("Python"))
+                            {
+                                if (Directory.Exists($"{d.FullName}\\Lib"))
+                                {
+                                    searchPaths.Add($"{d.FullName}\\Lib");
+                                    found = true;
+                                    break;
+                                }
+
+                                foreach (DirectoryInfo d2 in d.GetDirectories().Reverse())
+                                {
+                                    if (d2.Name.StartsWith("Python") && Directory.Exists($"{d2.FullName}\\Lib"))
+                                    {
+                                        searchPaths.Add($"{d2.FullName}\\Lib");
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
                 // Search the old installation path for Python
