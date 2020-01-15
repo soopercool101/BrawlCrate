@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30e</span>
+   &#160;<span id="projectnumber">v0.30f</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -238,8 +238,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a8763dacdef8420a7613dab6370bc3b50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a8763dacdef8420a7613dab6370bc3b50">seperate</a> = false</td></tr>
-<tr class="separator:a8763dacdef8420a7613dab6370bc3b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a8c99bbb7fcafb4bc181bc5589dce9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a60a8c99bbb7fcafb4bc181bc5589dce9">separate</a> = false</td></tr>
+<tr class="separator:a60a8c99bbb7fcafb4bc181bc5589dce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_external_node"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_external_node')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_external_node.html">BrawlLib.SSBB.ResourceNodes.MoveDefExternalNode</a></td></tr>
 <tr class="memitem:a8e37afe1e48abcbb5bc88a0fbfe9aa88 inherit pub_attribs_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_external_node"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_external_node.html#a8e37afe1e48abcbb5bc88a0fbfe9aa88">ResourceFileType</a> =&gt; <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180ae22cad2369ae1cc8a1218aa89b719812">ResourceType.NoEditEntry</a></td></tr>
 <tr class="separator:a8e37afe1e48abcbb5bc88a0fbfe9aa88 inherit pub_attribs_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_external_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -468,7 +468,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l02402"></a><span class="lineno"> 2402</span>&#160;            {</div>
 <div class="line"><a name="l02403"></a><span class="lineno"> 2403</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#ae28dfa430630c825789bcb670b8cacc7">_lookupCount</a> += r.Children.Count &gt; 0 ? 1 : 0;</div>
 <div class="line"><a name="l02404"></a><span class="lineno"> 2404</span>&#160;                size += 8;</div>
-<div class="line"><a name="l02405"></a><span class="lineno"> 2405</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a8763dacdef8420a7613dab6370bc3b50">seperate</a>)</div>
+<div class="line"><a name="l02405"></a><span class="lineno"> 2405</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a60a8c99bbb7fcafb4bc181bc5589dce9">separate</a>)</div>
 <div class="line"><a name="l02406"></a><span class="lineno"> 2406</span>&#160;                {</div>
 <div class="line"><a name="l02407"></a><span class="lineno"> 2407</span>&#160;                    size += r.Children.Count * 4;</div>
 <div class="line"><a name="l02408"></a><span class="lineno"> 2408</span>&#160;                }</div>
@@ -596,7 +596,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l02417"></a><span class="lineno"> 2417</span>&#160;            <span class="keywordflow">foreach</span> (MoveDefSoundDataNode r <span class="keywordflow">in</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><a name="l02418"></a><span class="lineno"> 2418</span>&#160;            {</div>
 <div class="line"><a name="l02419"></a><span class="lineno"> 2419</span>&#160;                mainOff += 8;</div>
-<div class="line"><a name="l02420"></a><span class="lineno"> 2420</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a8763dacdef8420a7613dab6370bc3b50">seperate</a>)</div>
+<div class="line"><a name="l02420"></a><span class="lineno"> 2420</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a60a8c99bbb7fcafb4bc181bc5589dce9">separate</a>)</div>
 <div class="line"><a name="l02421"></a><span class="lineno"> 2421</span>&#160;                {</div>
 <div class="line"><a name="l02422"></a><span class="lineno"> 2422</span>&#160;                    sndOff += r.Children.Count * 4;</div>
 <div class="line"><a name="l02423"></a><span class="lineno"> 2423</span>&#160;                }</div>
@@ -624,7 +624,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l02445"></a><span class="lineno"> 2445</span>&#160;            {</div>
 <div class="line"><a name="l02446"></a><span class="lineno"> 2446</span>&#160;                <span class="keywordflow">if</span> (r.Children.Count &gt; 0)</div>
 <div class="line"><a name="l02447"></a><span class="lineno"> 2447</span>&#160;                {</div>
-<div class="line"><a name="l02448"></a><span class="lineno"> 2448</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a8763dacdef8420a7613dab6370bc3b50">seperate</a>)</div>
+<div class="line"><a name="l02448"></a><span class="lineno"> 2448</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a60a8c99bbb7fcafb4bc181bc5589dce9">separate</a>)</div>
 <div class="line"><a name="l02449"></a><span class="lineno"> 2449</span>&#160;                    {</div>
 <div class="line"><a name="l02450"></a><span class="lineno"> 2450</span>&#160;                        sndLists-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_list_offset.html#a48124cd6591ea9f7aa5ac6108fc4c2f4">_startOffset</a> = (int) indices - (<span class="keywordtype">int</span>) <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#a7f17b558dec03769fc85052cc5cba60f">_rebuildBase</a>;</div>
 <div class="line"><a name="l02451"></a><span class="lineno"> 2451</span>&#160;                    }</div>
@@ -638,7 +638,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l02459"></a><span class="lineno"> 2459</span>&#160;                }</div>
 <div class="line"><a name="l02460"></a><span class="lineno"> 2460</span>&#160; </div>
 <div class="line"><a name="l02461"></a><span class="lineno"> 2461</span>&#160;                (sndLists++)-&gt;_listCount = r.Children.Count;</div>
-<div class="line"><a name="l02462"></a><span class="lineno"> 2462</span>&#160;                if (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a8763dacdef8420a7613dab6370bc3b50">seperate</a>)</div>
+<div class="line"><a name="l02462"></a><span class="lineno"> 2462</span>&#160;                if (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a60a8c99bbb7fcafb4bc181bc5589dce9">separate</a>)</div>
 <div class="line"><a name="l02463"></a><span class="lineno"> 2463</span>&#160;                {</div>
 <div class="line"><a name="l02464"></a><span class="lineno"> 2464</span>&#160;                    <span class="keywordflow">foreach</span> (MoveDefIndexNode b <span class="keywordflow">in</span> r.Children)</div>
 <div class="line"><a name="l02465"></a><span class="lineno"> 2465</span>&#160;                    {</div>
@@ -696,14 +696,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a8763dacdef8420a7613dab6370bc3b50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8763dacdef8420a7613dab6370bc3b50">&#9670;&nbsp;</a></span>seperate</h2>
+<a id="a60a8c99bbb7fcafb4bc181bc5589dce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60a8c99bbb7fcafb4bc181bc5589dce9">&#9670;&nbsp;</a></span>separate</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool BrawlLib.SSBB.ResourceNodes.MoveDefSoundDatasNode.seperate = false</td>
+          <td class="memname">bool BrawlLib.SSBB.ResourceNodes.MoveDefSoundDatasNode.separate = false</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -743,8 +743,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node_html_a3f0f82d9c2e8e4547448c2ed7cfe5ff3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a3f0f82d9c2e8e4547448c2ed7cfe5ff3">BrawlLib.SSBB.ResourceNodes.MoveDefSoundDatasNode.Header</a></div><div class="ttdeci">FDefListOffset * Header</div><div class="ttdef"><b>Definition:</b> DataMiscNode.cs:2372</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node_html_a7f17b558dec03769fc85052cc5cba60f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#a7f17b558dec03769fc85052cc5cba60f">BrawlLib.SSBB.ResourceNodes.MoveDefEntryNode._rebuildBase</a></div><div class="ttdeci">VoidPtr _rebuildBase</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:18</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node_html_ad8d282248ae3b1b2b42d8c68716173e0"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#ad8d282248ae3b1b2b42d8c68716173e0">BrawlLib.SSBB.ResourceNodes.MoveDefEntryNode.BaseAddress</a></div><div class="ttdeci">VoidPtr BaseAddress</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:32</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node_html_a60a8c99bbb7fcafb4bc181bc5589dce9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a60a8c99bbb7fcafb4bc181bc5589dce9">BrawlLib.SSBB.ResourceNodes.MoveDefSoundDatasNode.separate</a></div><div class="ttdeci">bool separate</div><div class="ttdef"><b>Definition:</b> DataMiscNode.cs:2374</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:124</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node_html_a8763dacdef8420a7613dab6370bc3b50"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sound_datas_node.html#a8763dacdef8420a7613dab6370bc3b50">BrawlLib.SSBB.ResourceNodes.MoveDefSoundDatasNode.seperate</a></div><div class="ttdeci">bool seperate</div><div class="ttdef"><b>Definition:</b> DataMiscNode.cs:2374</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node_html_aebb885d27cb8dc02c7fa2952573b6bf4"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#aebb885d27cb8dc02c7fa2952573b6bf4">BrawlLib.SSBB.ResourceNodes.MoveDefEntryNode._entryOffset</a></div><div class="ttdeci">VoidPtr _entryOffset</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:23</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html_a6a7b24b95739b872064c0c567d70bab3"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html#a6a7b24b95739b872064c0c567d70bab3">BrawlLib.Internal.bint.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:33</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_list_offset_html_a903d6984c9366a3d9bbe18849c5ef534"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_list_offset.html#a903d6984c9366a3d9bbe18849c5ef534">BrawlLib.SSBB.Types.FDefListOffset._listCount</a></div><div class="ttdeci">bint _listCount</div><div class="ttdef"><b>Definition:</b> FighterDefinition.cs:1090</div></div>
