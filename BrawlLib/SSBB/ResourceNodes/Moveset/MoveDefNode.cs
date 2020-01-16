@@ -288,7 +288,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefHeader* Header => (FDefHeader*) WorkingUncompressed.Address;
         internal int dataSize, lookupOffset, numLookupEntries, numDataTable, numExternalSubRoutine;
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParseGeneric(DataSource source)
         {
             VoidPtr addr = source.Address;
             FDefHeader* header = (FDefHeader*) addr;
