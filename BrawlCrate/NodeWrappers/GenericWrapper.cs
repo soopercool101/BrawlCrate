@@ -396,7 +396,7 @@ namespace BrawlCrate.NodeWrappers
 
             if (rNode2 == null)
             {
-                MessageBox.Show("The node could not be duplicated correctly.");
+                MessageBox.Show("The node could not be duplicated correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
 
@@ -404,11 +404,11 @@ namespace BrawlCrate.NodeWrappers
             rNode2.Remove();
 
             // Copy ARCEntryNode data, which is contained in the containing ARC, not the node itself
-            if (rNode2 is ARCEntryNode)
+            if (rNode2 is ARCEntryNode node)
             {
-                ((ARCEntryNode) rNode2).FileIndex = ((ARCEntryNode) _resource).FileIndex;
-                ((ARCEntryNode) rNode2).FileType = ((ARCEntryNode) _resource).FileType;
-                ((ARCEntryNode) rNode2).GroupID = ((ARCEntryNode) _resource).GroupID;
+                node.FileIndex = ((ARCEntryNode) _resource).FileIndex;
+                node.FileType = ((ARCEntryNode) _resource).FileType;
+                node.GroupID = ((ARCEntryNode) _resource).GroupID;
             }
 
             // Copy the name directly in cases where name isn't saved
@@ -431,9 +431,9 @@ namespace BrawlCrate.NodeWrappers
             _resource.Parent.InsertChild(rNode2, true, index + 1);
 
             // Copy redirect info as necessary
-            if (rNode2 is ARCEntryNode)
+            if (rNode2 is ARCEntryNode entryNode)
             {
-                ((ARCEntryNode)rNode2).RedirectIndex = ((ARCEntryNode)_resource).RedirectIndex;
+                entryNode.RedirectIndex = ((ARCEntryNode)_resource).RedirectIndex;
             }
 
             return rNode2;
