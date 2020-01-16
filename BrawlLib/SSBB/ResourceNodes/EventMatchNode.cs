@@ -318,7 +318,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (FighterID == 0x3E)
             {
-                if (Index == 0)
+                if (Index == 0 || Parent != null && Parent.Name.EndsWith("_2p") && Index == 1)
                 {
                     newName += "Select Character";
                 }

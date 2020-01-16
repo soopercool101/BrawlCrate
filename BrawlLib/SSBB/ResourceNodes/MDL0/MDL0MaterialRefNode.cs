@@ -718,11 +718,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 MDL0TextureNode t = PAT0Textures[PAT0Texture];
                 t.Bind();
-                t.Prepare(this, prog, PAT0Palette);
+                t.Prepare(this, prog, Model, PAT0Palette);
             }
             else
             {
-                _texture?.Prepare(this, prog);
+                _texture?.Prepare(this, prog, Model);
             }
         }
 

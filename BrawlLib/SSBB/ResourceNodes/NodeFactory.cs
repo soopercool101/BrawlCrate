@@ -16,6 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public static class NodeFactory
     {
         private static readonly List<ResourceParser> _parsers = new List<ResourceParser>();
+        private static readonly List<ResourceParser> _parsersGeneric = new List<ResourceParser>();
 
         private static readonly Dictionary<string, Type> Forced = new Dictionary<string, Type>
         {
@@ -38,17 +39,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             // Add all BrawlLib parsers (excluding MoveDefs, as explained below)
             foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()
-                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode))
-                                                   // Exclude overly generic parsers (want those to be tried last)
-                                                   && t != typeof(Common2MiscDataNode)
-                                                   && t != typeof(MoveDefNode)))
+                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
-
-            // Add generalized parsers to minimize false positives
-            AddParser(typeof(Common2MiscDataNode));
-            AddParser(typeof(MoveDefNode));
         }
 
         public static void AddParser(Type t)
@@ -57,6 +51,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (del != null)
             {
                 _parsers.Add(del as ResourceParser);
+                return;
+            }
+            Delegate del2 = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParseGeneric", false, false);
+            if (del2 != null)
+            {
+                _parsersGeneric.Add(del2 as ResourceParser);
             }
         }
 
@@ -170,16 +170,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode GetRaw(DataSource source)
         {
-            ResourceNode n = null;
+            ResourceNode n;
+
             foreach (ResourceParser d in _parsers)
             {
                 if ((n = d(source)) != null)
                 {
-                    break;
+                    return n;
                 }
             }
 
-            return n;
+            foreach (ResourceParser d in _parsersGeneric)
+            {
+                if ((n = d(source)) != null)
+                {
+                    return n;
+                }
+            }
+
+            return null;
         }
 
         public static ResourceNode FromFolder(ResourceNode parent, string path)

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30e</span>
+   &#160;<span id="projectnumber">v0.30f</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -75,6 +75,9 @@ $(function() {
 <div class="title">BrawlCrate.API.PluginResourceParsers Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Internal class used as a proxy for plugin-defined resource node parsers  
+ <a href="class_brawl_crate_1_1_a_p_i_1_1_plugin_resource_parsers.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for BrawlCrate.API.PluginResourceParsers:</div>
 <div class="dyncontent">
@@ -346,7 +349,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a3cdb2f203043819dc60a5e16411b2771 inherit events_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a136f0527461544b67c947f5c6ce9ff2f">ResourceChildInsertEventHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a3cdb2f203043819dc60a5e16411b2771">ChildInserted</a></td></tr>
 <tr class="separator:a3cdb2f203043819dc60a5e16411b2771 inherit events_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Internal class used as a proxy for plugin-defined resource node parsers </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a09e6b277aa42b515831b85cb2aaac15c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a09e6b277aa42b515831b85cb2aaac15c">&#9670;&nbsp;</a></span>TryParse()</h2>
 
@@ -370,21 +375,21 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> n = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">using</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html">UnsafeStream</a> s = <span class="keyword">new</span> <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html">UnsafeStream</a>(source.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>, (uint) source.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>))</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">foreach</span> (PluginResourceParser p <span class="keywordflow">in</span> BrawlAPIInternal.ResourceParsers)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    <span class="keywordflow">if</span> ((n = p.TryParse(s)) != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> n = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">using</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html">UnsafeStream</a> s = <span class="keyword">new</span> <a class="code" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html">UnsafeStream</a>(source.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>, (uint) source.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>))</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordflow">foreach</span> (PluginResourceParser p <span class="keywordflow">in</span> BrawlAPIInternal.ResourceParsers)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    <span class="keywordflow">if</span> ((n = p.TryParse(s)) != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>

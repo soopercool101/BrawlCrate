@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30e</span>
+   &#160;<span id="projectnumber">v0.30f</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -350,8 +350,8 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
 Package Functions</h2></td></tr>
-<tr class="memitem:a19530a0c6788a7dbcb57cc6c556a45bf"><td class="memItemLeft" align="right" valign="top">unsafe void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#a19530a0c6788a7dbcb57cc6c556a45bf">Prepare</a> (<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html">MDL0MaterialRefNode</a> mRef, int shaderProgramHandle, string palette=null)</td></tr>
-<tr class="separator:a19530a0c6788a7dbcb57cc6c556a45bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2be295027c0269a9597f63e709dbf192"><td class="memItemLeft" align="right" valign="top">unsafe void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#a2be295027c0269a9597f63e709dbf192">Prepare</a> (<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html">MDL0MaterialRefNode</a> mRef, int shaderProgramHandle, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html">MDL0Node</a> model=null, string palette=null)</td></tr>
+<tr class="separator:a2be295027c0269a9597f63e709dbf192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16f46455b272e319631d9375690a80c6"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#a16f46455b272e319631d9375690a80c6">Bind</a> ()</td></tr>
 <tr class="separator:a16f46455b272e319631d9375690a80c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab632e523d2186ce07098f29fbd3b43a2"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#ab632e523d2186ce07098f29fbd3b43a2">Unbind</a> ()</td></tr>
@@ -910,8 +910,8 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a19530a0c6788a7dbcb57cc6c556a45bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19530a0c6788a7dbcb57cc6c556a45bf">&#9670;&nbsp;</a></span>Prepare()</h2>
+<a id="a2be295027c0269a9597f63e709dbf192"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2be295027c0269a9597f63e709dbf192">&#9670;&nbsp;</a></span>Prepare()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -930,6 +930,12 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>shaderProgramHandle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_node.html">MDL0Node</a>&#160;</td>
+          <td class="paramname"><em>model</em> = <code>null</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -969,7 +975,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#a0695ba783340324bdcfa9d353e6cb8df">Load</a>(mRef.Index, shaderProgramHandle, <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node.html#a7bd37352de90b8c033d064dd3fc2cb78">Model</a>, mRef.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a242ee860f9342b34b244481e276da55a">Parent</a>?.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4eeada1a3ea6723c51734a6874a28abe">Name</a>.EndsWith(<span class="stringliteral">&quot;_ExtMtl&quot;</span>) ?? <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#a0695ba783340324bdcfa9d353e6cb8df">Load</a>(mRef.Index, shaderProgramHandle, model ?? <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node.html#a7bd37352de90b8c033d064dd3fc2cb78">Model</a>, mRef.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a242ee860f9342b34b244481e276da55a">Parent</a>?.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4eeada1a3ea6723c51734a6874a28abe">Name</a>.EndsWith(<span class="stringliteral">&quot;_ExtMtl&quot;</span>) ?? <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            }</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#a84d1d5534fa173c1f5cdd33f3f09e821">ApplyGLTextureParameters</a>(mRef);</div>

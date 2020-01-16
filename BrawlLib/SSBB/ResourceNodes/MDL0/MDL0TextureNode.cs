@@ -132,7 +132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public PLT0Node _palette;
 
-        internal unsafe void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, string palette = null)
+        internal unsafe void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, MDL0Node model = null, string palette = null)
         {
             string plt = !string.IsNullOrEmpty(palette) ? palette : mRef.Palette;
             if (!string.IsNullOrEmpty(plt))
@@ -153,7 +153,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                Load(mRef.Index, shaderProgramHandle, Model, mRef.Parent?.Name.EndsWith("_ExtMtl") ?? false);
+                Load(mRef.Index, shaderProgramHandle, model ?? Model, mRef.Parent?.Name.EndsWith("_ExtMtl") ?? false);
             }
 
             ApplyGLTextureParameters(mRef);

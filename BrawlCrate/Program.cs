@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30e-h1";
+        public static readonly string TagName = "v0.30f";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,15 +38,11 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30e Hotfix 1! Here's what's new in this release:
-- (Hotfix 1) CHR0s can now be properly replaced with all animation import types
-- 'Import > Object' option for MDL0 now supports all MDL0 import types
-- Add Delete Entries option to Edit All menu for CHR0
-- Improved STPM parsing (credit: MarioDox)
-- Add BrawlCrate documentation hosted at https://soopercool101.github.io/BrawlCrate/ (can be accessed from the help menu)
-- Fix bug where PAT0 Entries could attempt to access invalid data during duplication
-- Fix bug where the UserFloatInput API member would round to an int value
-- Fix bug where the last user input was not saved for numerical API inputs
+            @"Updated to BrawlCrate v0.30f! Here's what's new in this release:
+- Improved event match parsing
+- Improved BrawlEx Fighter Config parsing, including support for per-costume Etc
+- Fix bug in which PAT0 and CLR0 animations would break textures
+- Fix bug in which Stage Tables could not be properly replaced
 
 Full changelog and documentation can be viewed from the help menu.";
 

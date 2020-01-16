@@ -76,12 +76,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Flags]
         public enum CharacterLoadFlags : byte
         {
-            None = 0x00,
-            WorkManageFlag = 0x01,
-            FinalSmashFilesFlag = 0x02,
-            FinalSmashMusicOffFlag = 0x04,
-            IkPhysicsFlag = 0x08,
-            MergeMotionEtcFlag = 0x10
+            None = 0x00,                    // 0000 0000
+            WorkManageFlag = 0x01,          // 0000 0001
+            FinalSmashFilesFlag = 0x02,     // 0000 0010
+            FinalSmashMusicOffFlag = 0x04,  // 0000 0100
+            IkPhysicsFlag = 0x08,           // 0000 1000
+            MergeMotionEtcFlag = 0x10,      // 0001 0000
+            PerCostumeEtc = 0x20,           // 0010 0000
+            UnknownFlag_A = 0x40,           // 0100 0000
+            UnknownFlag_B = 0x80            // 1000 0000
         }
 
         [Browsable(false)]
@@ -708,6 +711,46 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Browsable(false)]
+        public enum MotionEtcTypes
+        {
+            SingleSeparate,
+            SingleMerged,
+            PerCostumeSeparate
+        }
+
+        [Browsable(true)]
+        [Category("\tResources")]
+        [Description(@"SingleSeparate: Use a single Motion and a single Etc file for all costumes
+SingleMerged: Use a single MotionEtc file for all costumes
+PerCostumeSeparate: Use a single Motion for all costumes and give each costume its own Etc file")]
+        [DisplayName("MotionEtc Type")]
+        public MotionEtcTypes MotionEtcType
+        {
+            get => PerCostumeEtc ? MotionEtcTypes.PerCostumeSeparate : MergeMotionEtc ? MotionEtcTypes.SingleMerged : MotionEtcTypes.SingleSeparate;
+            set
+            {
+                switch(value)
+                {
+                    case MotionEtcTypes.SingleSeparate:
+                        MergeMotionEtc = false;
+                        PerCostumeEtc = false;
+                        break;
+                    case MotionEtcTypes.SingleMerged:
+                        MergeMotionEtc = true;
+                        PerCostumeEtc = false;
+                        break;
+                    case MotionEtcTypes.PerCostumeSeparate:
+                        MergeMotionEtc = false;
+                        PerCostumeEtc = true;
+                        break;
+                }
+            }
+        }
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
         [Category("\tResources")]
         [Description("Use one MotionEtc file instead of splitting them.")]
         [DisplayName("Merge Motion/Etc.")]
@@ -718,6 +761,51 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.MergeMotionEtcFlag) |
                                       (value ? CharacterLoadFlags.MergeMotionEtcFlag : 0);
+                SignalPropertyChange();
+            }
+        }
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        [Category("\tResources")]
+        [Description("Determines whether or not per costume Etc. files are used")]
+        [DisplayName("Per Costume Etc.")]
+        public bool PerCostumeEtc
+        {
+            get => (_characterLoadFlags & CharacterLoadFlags.PerCostumeEtc) != 0;
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.PerCostumeEtc) |
+                                      (value ? CharacterLoadFlags.PerCostumeEtc : 0);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("\tResources")]
+        [Description("Unknown and unused in vanilla Brawl")]
+        [DisplayName("Unknown Load Flag A")]
+        public bool UnknownLoadFlagA
+        {
+            get => (_characterLoadFlags & CharacterLoadFlags.UnknownFlag_A) != 0;
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.UnknownFlag_A) |
+                                      (value ? CharacterLoadFlags.UnknownFlag_A : 0);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("\tResources")]
+        [Description("Unknown and unused in vanilla Brawl")]
+        [DisplayName("Unknown Load Flag B")]
+        public bool UnknownLoadFlagB
+        {
+            get => (_characterLoadFlags & CharacterLoadFlags.UnknownFlag_B) != 0;
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.UnknownFlag_B) |
+                                      (value ? CharacterLoadFlags.UnknownFlag_B : 0);
                 SignalPropertyChange();
             }
         }

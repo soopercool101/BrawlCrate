@@ -574,7 +574,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public class HitBox
     {
-        //A seperate class for rendering hitboxes so that the values can be modified by other events.
+        //A separate class for rendering hitboxes so that the values can be modified by other events.
         public HitBox(MoveDefEventNode ev)
         {
             Root = ev.Root;

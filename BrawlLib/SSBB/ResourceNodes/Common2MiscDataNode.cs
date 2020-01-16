@@ -217,7 +217,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParseGeneric(DataSource source)
         {
             Common2TblHeader* header = (Common2TblHeader*) source.Address;
             return header->_Length == source.Length &&

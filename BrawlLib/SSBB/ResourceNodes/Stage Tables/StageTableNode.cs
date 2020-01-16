@@ -335,5 +335,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
+        public override void Replace(string fileName)
+        {
+            EntryList.Clear();
+            base.Replace(fileName);
+        }
     }
 }
