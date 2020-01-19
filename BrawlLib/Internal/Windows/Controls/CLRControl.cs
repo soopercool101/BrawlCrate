@@ -192,6 +192,7 @@ namespace BrawlLib.Internal.Windows.Controls
             allToolStripMenuItem1.Name = "allToolStripMenuItem1";
             allToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             allToolStripMenuItem1.Text = "All";
+            allToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.V;
             allToolStripMenuItem1.Click += new EventHandler(allToolStripMenuItem_Click);
             // 
             // colorToolStripMenuItem1
