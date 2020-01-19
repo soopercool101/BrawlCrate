@@ -407,6 +407,7 @@ namespace BrawlCrate.UI
                             UpdaterHelper.BrawlAPIInstallUpdate(true, repoOwner, repoName, true);
                             GetNewFiles();
                             RefreshList();
+                            MainForm.Instance.reloadPluginsToolStripMenuItem_Click(null, null);
                         }
                     }
                     else

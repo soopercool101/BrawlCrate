@@ -1387,7 +1387,7 @@ namespace BrawlCrate.UI
             }
         }
 
-        private void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
+        public void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BrawlAPIInternal.Plugins.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
