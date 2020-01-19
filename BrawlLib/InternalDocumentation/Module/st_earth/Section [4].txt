@@ -1,0 +1,89 @@
+st_earth Section [4]: 0x00000004
+Left Leaf Landing Vertical Position
+
+The vertical position added to the left leaf when landed on.
+
+Default (Float): -15 (0xC1700000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x00000008
+Center Leaf Landing Vertical Position
+
+The vertical position added to the center leaf when landed on.
+
+Default (Float): -20 (0xC1A00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x0000000C
+Right Leaf Landing Vertical Position
+
+The vertical position added to the right leaf when landed on.
+
+Default (Float): -25 (0xC1C80000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x00000038
+Rain transition removal frames
+
+The number of frames to remove for transition of rain start/end (setting 0 disables rain).
+
+Default (Float): 176 (0x43300000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x000001EC
+Unknown value
+
+When set to 0 disables Pellet Posies' hurtbox.
+
+Default (Integer): 16 (0x00000010)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x000001F8
+Pellet Posies' Stem hurtbox width
+
+The size of the Pellet Posies' stem hurtbox.
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x000001FC
+Pellet Posies' Hurtbox' Z-Axis position
+
+The position of the Pellet Posies' hurtbox in the Z-axis (relative to Pellet Posy's origin).
+
+Default (Float): 22 (0x41200000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x00000200
+Pellet Posies' Pellet Hurtbox Starting Y-Axis
+
+The starting (the bottom) Y-Axis for the Pellet hurtbox (one-shotted on hit). The stem hurtbox extends from the Pellet Posy's origin to the start of the Pellet hurtbox.
+
+Default (Float): 22 (0x41B00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x00000204
+Pellet Posies' Pellet Hurtbox Ending Y-Axis
+
+The ending (the top) Y-Axis for the Pellet hurtbox (one-shotted on hit).
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_earth Section [4]: 0x00000208
+Pellet Posies' Pellet hurtbox width
+
+The size of the Pellet Posies' pellet hurtbox. (destroys Pellet Posy on hit)
+
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
