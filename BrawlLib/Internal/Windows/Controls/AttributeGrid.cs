@@ -368,7 +368,8 @@ namespace BrawlLib.Internal.Windows.Controls
         {
             lblColor.Visible = false;
             lblCNoA.Visible = false;
-            btnInf.Visible = btnMinusInf.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             rdoColor.Enabled = rdoDegrees.Enabled =
                 rdoFlags.Enabled = rdoFloat.Enabled = rdoInt.Enabled = rdoUnknown.Enabled = true;
 
@@ -455,7 +456,8 @@ namespace BrawlLib.Internal.Windows.Controls
 
             lblColor.Visible = false;
             lblCNoA.Visible = false;
-            btnInf.Visible = btnMinusInf.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             if (AttributeArray[index]._type == 5) // Binary
             {
                 string field0 = value.Replace(" ", string.Empty);
@@ -569,6 +571,10 @@ namespace BrawlLib.Internal.Windows.Controls
 
         private void dtgrdAttributes_CurrentCellChanged(object sender, EventArgs e)
         {
+            lblColor.Visible = false;
+            lblCNoA.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             if (dtgrdAttributes.CurrentCell == null)
             {
                 return;
@@ -609,12 +615,6 @@ namespace BrawlLib.Internal.Windows.Controls
                     btnInf.Visible = true;
                     btnMinusInf.Visible = true;
                     break;
-                default:
-                    lblColor.Visible = false;
-                    lblCNoA.Visible = false;
-                    btnInf.Visible = false;
-                    btnMinusInf.Visible = false;
-                    break;
             }
         }
 
@@ -642,6 +642,10 @@ namespace BrawlLib.Internal.Windows.Controls
 
         private void radioButtonsChanged(object sender, EventArgs e)
         {
+            lblColor.Visible = false;
+            lblCNoA.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             if (dtgrdAttributes.CurrentCell == null)
             {
                 return;
@@ -674,12 +678,6 @@ namespace BrawlLib.Internal.Windows.Controls
                 case 2:
                     btnInf.Visible = true;
                     btnMinusInf.Visible = true;
-                    break;
-                default:
-                    lblColor.Visible = false;
-                    lblCNoA.Visible = false;
-                    btnInf.Visible = false;
-                    btnMinusInf.Visible = false;
                     break;
             }
         }
