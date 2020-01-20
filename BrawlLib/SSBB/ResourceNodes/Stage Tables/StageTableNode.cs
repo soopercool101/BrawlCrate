@@ -196,7 +196,50 @@ namespace BrawlLib.SSBB.ResourceNodes
                 hex += EntryList[curIndex].ToString("X2");
             }
 
-            return hex; // + ((int) ((bint*) AttributeAddress)[index]).ToString("X8");
+            return hex;
+        }
+
+        public void SetBytes(int index, params byte[] values)
+        {
+            if (values.Length < 4)
+            {
+                return;
+            }
+            int i = 0;
+            for (int curIndex = index * 4 + 3; curIndex >= index * 4; curIndex--, i++)
+            {
+                EntryList[curIndex] = values[i];
+            }
+        }
+
+        public string GetBytes(int index)
+        {
+            string bytes = "";
+            for (int curIndex = index * 4 + 3; curIndex >= index * 4; curIndex--)
+            {
+                bytes += EntryList[curIndex] + ", ";
+            }
+
+            return bytes.TrimEnd(' ', ',');
+        }
+
+        public void SetShorts(int index, short value1, short value2)
+        {
+            if (!GetShorts(index).Equals($"{value1}, {value2}"))
+            {
+                byte[] newValue = BitConverter.GetBytes(value2);
+                EntryList[index * 4] = newValue[0];
+                EntryList[index * 4 + 1] = newValue[1];
+                newValue = BitConverter.GetBytes(value1);
+                EntryList[index * 4 + 2] = newValue[0];
+                EntryList[index * 4 + 3] = newValue[1];
+                SignalPropertyChange();
+            }
+        }
+
+        public string GetShorts(int index)
+        {
+            return $"{BitConverter.ToInt16( EntryList.ToArray(), index * 4 + 2)}, {BitConverter.ToInt16(EntryList.ToArray(), index * 4)}";
         }
 
         public virtual IEnumerable<AttributeInterpretation> GetPossibleInterpretations()
