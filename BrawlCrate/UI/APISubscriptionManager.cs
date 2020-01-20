@@ -407,7 +407,6 @@ namespace BrawlCrate.UI
                             UpdaterHelper.BrawlAPIInstallUpdate(true, repoOwner, repoName, true);
                             GetNewFiles();
                             RefreshList();
-                            MainForm.Instance.reloadPluginsToolStripMenuItem_Click(null, null);
                         }
                     }
                     else
@@ -447,11 +446,14 @@ namespace BrawlCrate.UI
         {
             //DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s))
             List<string> newLoaders = new List<string>();
+            List<string> newPlugins = new List<string>();
             List<string> dangerousFiles = new List<string>();
             List<FileInfo> newFiles = new List<FileInfo>();
             foreach (FileInfo f in Directory.CreateDirectory(Program.ApiPath).GetFiles("*.new"))
             {
-                newLoaders.AddRange(File.ReadAllLines(f.FullName).Where(o => o.StartsWith("Loaders/")));
+                string[] current = File.ReadAllLines(f.FullName);
+                newLoaders.AddRange(current.Where(o => o.StartsWith("Loaders/")));
+                newPlugins.AddRange(current.Where(o => o.StartsWith("Plugins/")));
                 newFiles.Add(f);
             }
 
@@ -467,6 +469,12 @@ namespace BrawlCrate.UI
                 }
 
                 newFiles.RemoveAt(0);
+            }
+
+            // Refresh the plugin list if plugins were changed
+            if (newPlugins.Any())
+            {
+                MainForm.Instance.reloadPluginsToolStripMenuItem_Click(null, null);
             }
 
             if (newLoaders.Count == 0)
