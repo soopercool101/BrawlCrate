@@ -639,6 +639,7 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             CellEdited?.Invoke(this, EventArgs.Empty);
+            RefreshRow(index);
         }
 
         private void dtgrdAttributes_CurrentCellChanged(object sender, EventArgs e)
