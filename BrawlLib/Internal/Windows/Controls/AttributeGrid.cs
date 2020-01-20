@@ -785,11 +785,8 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             int index = dtgrdAttributes.CurrentCell.RowIndex;
-            if (AttributeArray[index]._type == 0)
-            {
-                TargetNode.SetFloat(index, float.NegativeInfinity);
-                RefreshRow(index);
-            }
+            TargetNode.SetFloat(index, float.NegativeInfinity);
+            RefreshRow(index);
         }
 
         private void btnInf_Click(object sender, EventArgs e)
@@ -800,21 +797,8 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             int index = dtgrdAttributes.CurrentCell.RowIndex;
-            if (AttributeArray[index]._type == 0)
-            {
-                TargetNode.SetFloat(index, float.PositiveInfinity);
-                RefreshRow(index);
-            }
+            TargetNode.SetFloat(index, float.PositiveInfinity);
+            RefreshRow(index);
         }
-    }
-
-    public enum ValType
-    {
-        Float = 0,
-        Int = 1,
-        Degrees = 2,
-        Color = 3,
-        Unknown = 4,
-        Flags = 5
     }
 }
