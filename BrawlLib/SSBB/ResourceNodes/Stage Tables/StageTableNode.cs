@@ -333,9 +333,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 temp = "[" + FileIndex + "]";
             }
 
-
+#if DEBUG
+            DirectoryInfo startingDirectory = new DirectoryInfo(Application.StartupPath);
+            string filename = Path.Combine(startingDirectory.Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib", "InternalDocumentation", DocumentationSubDirectory,
+                root.Name.ToUpper().Replace("STG", "") + temp + ".txt");
+#else
             string filename = Path.Combine(Application.StartupPath, "InternalDocumentation", DocumentationSubDirectory,
                 root.Name.ToUpper().Replace("STG", "") + temp + ".txt");
+#endif
             return new AttributeInterpretation(arr, filename);
         }
 
@@ -344,13 +349,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected virtual void ReadConfig()
         {
-            if (Directory.Exists(Application.StartupPath + "\\InternalDocumentation"))
+#if DEBUG
+            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+#else
+            string startPath = Application.StartupPath;
+#endif
+            if (Directory.Exists(startPath + "\\InternalDocumentation"))
             {
-                if (Directory.Exists(Application.StartupPath + "\\InternalDocumentation\\" +
+                if (Directory.Exists(startPath + "\\InternalDocumentation\\" +
                                      DocumentationSubDirectory))
                 {
                     foreach (string path in Directory.EnumerateFiles(
-                        Application.StartupPath + "\\InternalDocumentation\\" + DocumentationSubDirectory,
+                        startPath + "\\InternalDocumentation\\" + DocumentationSubDirectory,
                         "*.txt"))
                     {
                         if (ConfigPathsRead.Contains(path))
