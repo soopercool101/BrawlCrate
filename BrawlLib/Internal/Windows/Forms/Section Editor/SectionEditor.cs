@@ -142,21 +142,18 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 return;
             }
 
-            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation"))
+#if DEBUG
+            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+#else
+            string startPath = Application.StartupPath;
+#endif
+            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name, $"{_section.Name}.txt");
+            if (Directory.Exists(Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name)))
             {
-                if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module"))
+                if (File.Exists(filename))
                 {
-                    if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" +
-                                         "\\Module\\" + _section.Root.Name))
-                    {
-                        if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
-                                        _section.Root.Name + '\\' + _section.Name + ".txt"))
-                        {
-                            LoadAnnotationsFromFile(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" +
-                                                    "\\Module\\" + _section.Root.Name + '\\' + _section.Name + ".txt");
-                            return;
-                        }
-                    }
+                    LoadAnnotationsFromFile(filename);
+                    return;
                 }
             }
 
@@ -1646,23 +1643,23 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
         public void SaveAnnotation()
         {
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
-                                      _section.Root.Name);
-            string Filename = AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
-                              _section.Root.Name + '\\' + _section.Name + ".txt";
-            string dir = Path.GetDirectoryName(Filename);
-            if (File.Exists(Filename))
+#if DEBUG
+            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+#else
+            string startPath = Application.StartupPath;
+#endif
+            Directory.CreateDirectory(Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name));
+            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name, $"{_section.Name}.txt");
+            if (File.Exists(filename))
             {
-                if (DialogResult.Yes != MessageBox.Show("Overwrite " + Filename + "?", "Overwrite",
+                if (DialogResult.Yes != MessageBox.Show("Overwrite " + filename + "?", "Overwrite",
                         MessageBoxButtons.YesNo))
                 {
                     return;
                 }
             }
 
-            using (StreamWriter sw = new StreamWriter(Filename))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 bool firstLine = true;
                 //foreach (AttributeInfo attr in Array) {
