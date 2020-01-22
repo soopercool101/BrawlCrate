@@ -8,6 +8,7 @@ using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -729,7 +730,9 @@ namespace BrawlCrate.NodeWrappers
         {
             if (Program.OpenFile(FileFilters.MDL0Material, out string path))
             {
-                NewMaterial().Replace(path);
+                MDL0MaterialNode m = NewMaterial();
+                m.Name = Path.GetFileNameWithoutExtension(path);
+                m.Replace(path);
             }
         }
 
