@@ -93,10 +93,13 @@ Default (Float): 20 (0x41A00000)
 	/EndDescription
 0
 
-0x050
-Default (Unknown Type): (0x05000000)
+Max Pellet Posies
+(Byte 1): The maximum number of Pellet Posies that can be present at a given time
+(Bytes 2-4): Unknown
+
+Default (Bytes): 5, 0, 0, 0 (0x05000000)
 	/EndDescription
-4
+6
 
 0x054
 Default (Float): 660 (0x44250000)
