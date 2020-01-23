@@ -155,6 +155,11 @@ namespace BrawlCrate.NodeWrappers
                 mat.Shader = (_resource as MDL0MaterialNode).Shader;
             }
 
+            for (int i = 0; i < rNode.Children.Count && i < Resource.Children.Count; i++)
+            {
+                rNode.Children[i].Name = Resource.Children[i].Name;
+            }
+
             return rNode;
         }
     }
