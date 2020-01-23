@@ -172,6 +172,12 @@ namespace BrawlCrate.UI
             }
             else
             {
+                runScriptToolStripMenuItem.Visible = false;
+                runScriptToolStripMenuItem.Enabled = false;
+                reloadPluginsToolStripMenuItem.Visible = false;
+                reloadPluginsToolStripMenuItem.Enabled = false;
+                toolStripSeparatorAPI.Visible = false;
+                toolStripSeparatorAPI.Enabled = false;
                 pluginToolStripMenuItem.Visible = false;
                 pluginToolStripMenuItem.Enabled = false;
             }
@@ -1381,7 +1387,7 @@ namespace BrawlCrate.UI
             }
         }
 
-        private void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
+        public void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BrawlAPIInternal.Plugins.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
@@ -1527,7 +1533,7 @@ namespace BrawlCrate.UI
             this.costumeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.songManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stageManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparatorAPI = new System.Windows.Forms.ToolStripSeparator();
             this.runScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1823,7 +1829,7 @@ namespace BrawlCrate.UI
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
             this.managersToolStripMenuItem,
-            this.toolStripSeparator2,
+            this.toolStripSeparatorAPI,
             this.runScriptToolStripMenuItem,
             this.reloadPluginsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
@@ -1876,10 +1882,10 @@ namespace BrawlCrate.UI
             this.stageManagerToolStripMenuItem.Text = "Stage Manager";
             this.stageManagerToolStripMenuItem.Click += new System.EventHandler(this.StageManagerToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
+            // toolStripSeparatorAPI
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparatorAPI.Name = "toolStripSeparatorAPI";
+            this.toolStripSeparatorAPI.Size = new System.Drawing.Size(149, 6);
             // 
             // runScriptToolStripMenuItem
             // 
@@ -2340,7 +2346,7 @@ namespace BrawlCrate.UI
         private MDL0ObjectControl mdL0ObjectControl1;
         private HexBox hexBox1;
         private ToolStripMenuItem pluginToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripSeparator toolStripSeparatorAPI;
         private ToolStripMenuItem runScriptToolStripMenuItem;
         private ToolStripMenuItem reloadPluginsToolStripMenuItem;
         private ToolStripMenuItem showChangelogToolStripMenuItem;

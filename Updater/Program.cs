@@ -44,7 +44,7 @@ namespace Updater
                         break;
                     case "-buc": //BrawlCrate Canary update call
                         t = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null,
-                            args.Length > 2 && args[2] != "0", false, args[3] != "0");
+                            args.Length > 2 && args[2] != "0", args[3] != "0", args[4] != "0");
                         t.Wait();
                         break;
                     case "-bi": //BrawlCrate issue call

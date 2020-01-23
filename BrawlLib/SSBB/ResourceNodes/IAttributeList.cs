@@ -20,6 +20,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         RGBAPixel GetRGBAPixel(int index);
         void SetHex(int index, string value);
         string GetHex(int index);
+        void SetBytes(int index, params byte[] values);
+        string GetBytes(int index);
+        void SetShorts(int index, short value1, short value2);
+        string GetShorts(int index);
 
         void SignalPropertyChange();
     }

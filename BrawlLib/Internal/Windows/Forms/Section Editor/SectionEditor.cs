@@ -142,21 +142,18 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 return;
             }
 
-            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation"))
+#if DEBUG
+            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+#else
+            string startPath = Application.StartupPath;
+#endif
+            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name, $"{_section.Name}.txt");
+            if (Directory.Exists(Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name)))
             {
-                if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module"))
+                if (File.Exists(filename))
                 {
-                    if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" +
-                                         "\\Module\\" + _section.Root.Name))
-                    {
-                        if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
-                                        _section.Root.Name + '\\' + _section.Name + ".txt"))
-                        {
-                            LoadAnnotationsFromFile(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" +
-                                                    "\\Module\\" + _section.Root.Name + '\\' + _section.Name + ".txt");
-                            return;
-                        }
-                    }
+                    LoadAnnotationsFromFile(filename);
+                    return;
                 }
             }
 
@@ -170,8 +167,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             for (int i = 0; i * 4 < hexBox1.ByteProvider.Length; i++)
             {
                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
-                byte[] bytes = new byte[]
-                {
+                byte[] bytes = {
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
@@ -226,8 +222,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                             {
                                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" +
                                                      (index * 4).ToString("X8"));
-                                byte[] bytes = new byte[]
-                                {
+                                byte[] bytes = {
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 3),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 2),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 1),
@@ -278,8 +273,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             for (int i = annotationTitles.Count; i * 4 < hexBox1.ByteProvider.Length; i++)
             {
                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
-                byte[] bytes = new byte[]
-                {
+                byte[] bytes = {
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
@@ -452,8 +446,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 grpValue.Enabled = !_section._isBSSSection;
                 if (rdo4byte.Checked)
                 {
-                    byte[] bytes = new byte[]
-                    {
+                    byte[] bytes = {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 3),
                         hexBox1.ByteProvider.ReadByte(t + 2),
@@ -507,12 +500,23 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     txtBin6.Text = bins[5];
                     txtBin7.Text = bins[6];
                     txtBin8.Text = bins[7];
+
+                    if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
+                    {
+                        _updating = false;
+                        annotationDescription.Text = "Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
+                                                     bytes[1].ToString("X2") + bytes[0].ToString("X2");
+                        btn1underline.Checked = true;
+                        btn2underline.Checked = true;
+                        btn3underline.Checked = true;
+                        btn4underline.Checked = true;
+                        _updating = true;
+                    }
                 }
                 else if (rdo2byte.Checked)
                 {
                     t = offset.RoundDown(2);
-                    byte[] bytes = new byte[]
-                    {
+                    byte[] bytes = {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 1),
                         hexBox1.ByteProvider.ReadByte(t + 0)
@@ -551,12 +555,22 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     txtBin6.Text = "";
                     txtBin7.Text = "";
                     txtBin8.Text = "";
+
+                    if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
+                    {
+                        _updating = false;
+                        annotationDescription.Text = "Default: 0x" + bytes[1].ToString("X2") + bytes[0].ToString("X2");
+                        btn1underline.Checked = t % 4 < 2;
+                        btn2underline.Checked = t % 4 < 2;
+                        btn3underline.Checked = t % 4 >= 2;
+                        btn4underline.Checked = t % 4 >= 2;
+                        _updating = true;
+                    }
                 }
                 else if (rdo1byte.Checked)
                 {
                     t = offset;
-                    byte[] bytes = new byte[]
-                    {
+                    byte[] bytes = {
                         hexBox1.ByteProvider.ReadByte(t)
                     };
                     txtByte1.Text = bytes[0].ToString("X2");
@@ -592,6 +606,18 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     txtBin6.Text = "";
                     txtBin7.Text = "";
                     txtBin8.Text = "";
+
+                    if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
+                    {
+                        _updating = false;
+                        annotationDescription.Text = "Default: 0x" + bytes[0].ToString("X2");
+                        btn1underline.Checked = t % 4 == 0;
+                        btn2underline.Checked = t % 4 == 1;
+                        btn3underline.Checked = t % 4 == 2;
+                        btn4underline.Checked = t % 4 == 3;
+                        _updating = true;
+                    }
+
                 }
             }
             else
@@ -1646,30 +1672,30 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
         public void SaveAnnotation()
         {
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module");
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
-                                      _section.Root.Name);
-            string Filename = AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
-                              _section.Root.Name + '\\' + _section.Name + ".txt";
-            string dir = Path.GetDirectoryName(Filename);
-            if (File.Exists(Filename))
+#if DEBUG
+            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+#else
+            string startPath = Application.StartupPath;
+#endif
+            Directory.CreateDirectory(Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name));
+            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name, $"{_section.Name}.txt");
+            if (File.Exists(filename))
             {
-                if (DialogResult.Yes != MessageBox.Show("Overwrite " + Filename + "?", "Overwrite",
+                if (DialogResult.Yes != MessageBox.Show("Overwrite " + filename + "?", "Overwrite",
                         MessageBoxButtons.YesNo))
                 {
                     return;
                 }
             }
 
-            using (StreamWriter sw = new StreamWriter(Filename))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
                 bool firstLine = true;
                 //foreach (AttributeInfo attr in Array) {
                 for (int i = 0; i < annotationTitles.Count && i < annotationDescriptions.Count; i++)
                 {
                     if ((!annotationDescriptions[i].StartsWith("Default: 0x") ||
-                         annotationDescriptions[i].Length != 19) && annotationDescriptions[i].Length > 0)
+                         annotationDescriptions[i].Length > 19) && annotationDescriptions[i].Length > 0)
                     {
                         if (!firstLine)
                         {

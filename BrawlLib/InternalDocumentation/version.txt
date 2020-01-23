@@ -1,10 +1,17 @@
-﻿Documentation_v0.30.0
+﻿Documentation_v0.30.6
 
  =============================================================
 |************ BrawlCrate Documentation Change Log ************|
  =============================================================
  
- Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, HyperL!nk
+ Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, HyperL!nk, Cahalan
+ 
+ - Documentation v0.30.6
+ . Mario Circuit documentation updated to latest understanding:
+   - 0x050 -> Number of Karts
+ . Added STDT documentation for Distant Planet
+ . Added module annotations for Distant Planet (Section [4])
+ . Added module annotations for Menu Main (Section [5])
  
  - Documentation v0.30.0
  . Big Blue STDT documentation updated to latest understanding:

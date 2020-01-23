@@ -66,10 +66,13 @@ Default (Float): 180 (0x43340000)
 	/EndDescription
 0
 
-~0x044
-Default (Unknown Type): (0x08000000)
+Number of Karts
+(Byte 1): The number of karts on the track
+(Bytes 2-4): Unknown
+
+Default (Bytes): 8, 0, 0, 0 (0x08000000)
 	/EndDescription
-4
+6
 
 0x048
 Default (Float): 5400 (0x45A8C000)

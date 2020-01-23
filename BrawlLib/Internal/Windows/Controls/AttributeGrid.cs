@@ -31,6 +31,8 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoFlags = new RadioButton();
             rdoDegrees = new RadioButton();
             rdoUnknown = new RadioButton();
+            rdoBytes = new RadioButton();
+            rdoShorts = new RadioButton();
             ((ISupportInitialize) dtgrdAttributes).BeginInit();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -168,7 +170,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 6;
+            tableLayoutPanel1.ColumnCount = 8;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -178,9 +182,11 @@ namespace BrawlLib.Internal.Windows.Controls
             tableLayoutPanel1.Controls.Add(rdoFloat, 0, 0);
             tableLayoutPanel1.Controls.Add(rdoInt, 1, 0);
             tableLayoutPanel1.Controls.Add(rdoColor, 2, 0);
-            tableLayoutPanel1.Controls.Add(rdoFlags, 3, 0);
-            tableLayoutPanel1.Controls.Add(rdoDegrees, 4, 0);
-            tableLayoutPanel1.Controls.Add(rdoUnknown, 5, 0);
+            tableLayoutPanel1.Controls.Add(rdoBytes, 3, 0);
+            tableLayoutPanel1.Controls.Add(rdoShorts, 4, 0);
+            tableLayoutPanel1.Controls.Add(rdoFlags, 5, 0);
+            tableLayoutPanel1.Controls.Add(rdoDegrees, 6, 0);
+            tableLayoutPanel1.Controls.Add(rdoUnknown, 7, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
             tableLayoutPanel1.Location = new System.Drawing.Point(0, 77);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -232,11 +238,43 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoColor.Margin = new Padding(0);
             rdoColor.Name = "rdoColor";
             rdoColor.Size = new System.Drawing.Size(79, 25);
-            rdoColor.TabIndex = 1;
+            rdoColor.TabIndex = 2;
             rdoColor.TabStop = true;
             rdoColor.Text = "Color";
             rdoColor.UseVisualStyleBackColor = true;
             rdoColor.CheckedChanged += new EventHandler(radioButtonsChanged);
+            // 
+            // rdoBytes
+            // 
+            rdoBytes.Appearance = Appearance.Button;
+            rdoBytes.AutoSize = true;
+            rdoBytes.Dock = DockStyle.Fill;
+            rdoBytes.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoBytes.Location = new System.Drawing.Point(395, 0);
+            rdoBytes.Margin = new Padding(0);
+            rdoBytes.Name = "rdoBytes";
+            rdoBytes.Size = new System.Drawing.Size(84, 25);
+            rdoBytes.TabIndex = 3;
+            rdoBytes.TabStop = true;
+            rdoBytes.Text = "Bytes";
+            rdoBytes.UseVisualStyleBackColor = true;
+            rdoBytes.CheckedChanged += new EventHandler(radioButtonsChanged);
+            // 
+            // rdoShorts
+            // 
+            rdoShorts.Appearance = Appearance.Button;
+            rdoShorts.AutoSize = true;
+            rdoShorts.Dock = DockStyle.Fill;
+            rdoShorts.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoShorts.Location = new System.Drawing.Point(395, 0);
+            rdoShorts.Margin = new Padding(0);
+            rdoShorts.Name = "rdoShorts";
+            rdoShorts.Size = new System.Drawing.Size(84, 25);
+            rdoShorts.TabIndex = 4;
+            rdoShorts.TabStop = true;
+            rdoShorts.Text = "Shorts";
+            rdoShorts.UseVisualStyleBackColor = true;
+            rdoShorts.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoFlags
             // 
@@ -248,7 +286,7 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoFlags.Margin = new Padding(0);
             rdoFlags.Name = "rdoFlags";
             rdoFlags.Size = new System.Drawing.Size(79, 25);
-            rdoFlags.TabIndex = 2;
+            rdoFlags.TabIndex = 5;
             rdoFlags.TabStop = true;
             rdoFlags.Text = "Flags";
             rdoFlags.UseVisualStyleBackColor = true;
@@ -264,7 +302,7 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoDegrees.Margin = new Padding(0);
             rdoDegrees.Name = "rdoDegrees";
             rdoDegrees.Size = new System.Drawing.Size(79, 25);
-            rdoDegrees.TabIndex = 2;
+            rdoDegrees.TabIndex = 6;
             rdoDegrees.TabStop = true;
             rdoDegrees.Text = "Degrees";
             rdoDegrees.UseVisualStyleBackColor = true;
@@ -280,7 +318,7 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoUnknown.Margin = new Padding(0);
             rdoUnknown.Name = "rdoUnknown";
             rdoUnknown.Size = new System.Drawing.Size(84, 25);
-            rdoUnknown.TabIndex = 1;
+            rdoUnknown.TabIndex = 7;
             rdoUnknown.TabStop = true;
             rdoUnknown.Text = "Hex";
             rdoUnknown.UseVisualStyleBackColor = true;
@@ -322,6 +360,8 @@ namespace BrawlLib.Internal.Windows.Controls
         private RadioButton rdoFlags;
         private RadioButton rdoDegrees;
         private RadioButton rdoUnknown;
+        private RadioButton rdoBytes;
+        private RadioButton rdoShorts;
         private Label lblColor;
         private Label lblCNoA;
         private Button btnInf;
@@ -368,7 +408,8 @@ namespace BrawlLib.Internal.Windows.Controls
         {
             lblColor.Visible = false;
             lblCNoA.Visible = false;
-            btnInf.Visible = btnMinusInf.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             rdoColor.Enabled = rdoDegrees.Enabled =
                 rdoFlags.Enabled = rdoFloat.Enabled = rdoInt.Enabled = rdoUnknown.Enabled = true;
 
@@ -428,6 +469,14 @@ namespace BrawlLib.Internal.Windows.Controls
             {
                 attributes.Rows[i][1] = Convert.ToString(TargetNode.GetInt(i), 2).PadLeft(32, '0');
             }
+            else if (AttributeArray[i]._type == 6)
+            {
+                attributes.Rows[i][1] = TargetNode.GetBytes(i);
+            }
+            else if (AttributeArray[i]._type == 7)
+            {
+                attributes.Rows[i][1] = TargetNode.GetShorts(i);
+            }
             else
             {
                 attributes.Rows[i][1] = TargetNode.GetFloat(i);
@@ -455,8 +504,33 @@ namespace BrawlLib.Internal.Windows.Controls
 
             lblColor.Visible = false;
             lblCNoA.Visible = false;
-            btnInf.Visible = btnMinusInf.Visible = false;
-            if (AttributeArray[index]._type == 5) // Binary
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
+            if (AttributeArray[index]._type == 7) // Shorts
+            {
+                string[] values = value.Split();
+                if (values.Length >= 2)
+                {
+                    TargetNode.SetShorts(index, short.Parse(values[0].Trim(' ', ',')), short.Parse(values[1].Trim(' ', ',')));
+                }
+                else if (values.Length == 1)
+                {
+                    TargetNode.SetShorts(index, short.Parse(values[0].Trim(' ', ',')), short.Parse(values[0].Trim(' ', ',')));
+                }
+            }
+            else if (AttributeArray[index]._type == 6) // Bytes
+            {
+                string[] values = value.Split();
+                if (values.Length == 4)
+                {
+                    TargetNode.SetBytes(index, byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[1].Trim(' ', ',')), byte.Parse(values[2].Trim(' ', ',')), byte.Parse(values[3].Trim(' ', ',')));
+                }
+                else if (values.Length == 1)
+                {
+                    TargetNode.SetBytes(index, byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[0].Trim(' ', ',')));
+                }
+            }
+            else if (AttributeArray[index]._type == 5) // Binary
             {
                 string field0 = value.Replace(" ", string.Empty);
                 TargetNode.SetInt(index, Convert.ToInt32(field0, 2));
@@ -484,7 +558,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 RGBAPixel p = new RGBAPixel();
 
                 string s = value;
-                char[] delims = new char[] {',', 'R', 'G', 'B', 'A', ':', ' '};
+                char[] delims = {',', 'R', 'G', 'B', 'A', ':', ' '};
                 string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
 
                 if (arr.Length == 4)
@@ -565,10 +639,15 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             CellEdited?.Invoke(this, EventArgs.Empty);
+            RefreshRow(index);
         }
 
         private void dtgrdAttributes_CurrentCellChanged(object sender, EventArgs e)
         {
+            lblColor.Visible = false;
+            lblCNoA.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             if (dtgrdAttributes.CurrentCell == null)
             {
                 return;
@@ -592,6 +671,8 @@ namespace BrawlLib.Internal.Windows.Controls
                 : AttributeArray[index]._type == 2 ? rdoDegrees
                 : AttributeArray[index]._type == 4 ? rdoUnknown
                 : AttributeArray[index]._type == 5 ? rdoFlags
+                : AttributeArray[index]._type == 6 ? rdoBytes
+                : AttributeArray[index]._type == 7 ? rdoShorts
                 : rdoFloat).Checked = true;
 
             switch (AttributeArray[index]._type)
@@ -608,12 +689,6 @@ namespace BrawlLib.Internal.Windows.Controls
                 case 2:
                     btnInf.Visible = true;
                     btnMinusInf.Visible = true;
-                    break;
-                default:
-                    lblColor.Visible = false;
-                    lblCNoA.Visible = false;
-                    btnInf.Visible = false;
-                    btnMinusInf.Visible = false;
                     break;
             }
         }
@@ -642,6 +717,10 @@ namespace BrawlLib.Internal.Windows.Controls
 
         private void radioButtonsChanged(object sender, EventArgs e)
         {
+            lblColor.Visible = false;
+            lblCNoA.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             if (dtgrdAttributes.CurrentCell == null)
             {
                 return;
@@ -655,6 +734,8 @@ namespace BrawlLib.Internal.Windows.Controls
                 : rdoDegrees.Checked ? 2
                 : rdoUnknown.Checked ? 4
                 : rdoFlags.Checked ? 5
+                : rdoBytes.Checked ? 6
+                : rdoShorts.Checked ? 7
                 : -1;
             if (nType != AttributeArray[index]._type)
             {
@@ -674,12 +755,6 @@ namespace BrawlLib.Internal.Windows.Controls
                 case 2:
                     btnInf.Visible = true;
                     btnMinusInf.Visible = true;
-                    break;
-                default:
-                    lblColor.Visible = false;
-                    lblCNoA.Visible = false;
-                    btnInf.Visible = false;
-                    btnMinusInf.Visible = false;
                     break;
             }
         }
@@ -711,11 +786,8 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             int index = dtgrdAttributes.CurrentCell.RowIndex;
-            if (AttributeArray[index]._type == 0)
-            {
-                TargetNode.SetFloat(index, float.NegativeInfinity);
-                RefreshRow(index);
-            }
+            TargetNode.SetFloat(index, float.NegativeInfinity);
+            RefreshRow(index);
         }
 
         private void btnInf_Click(object sender, EventArgs e)
@@ -726,21 +798,8 @@ namespace BrawlLib.Internal.Windows.Controls
             }
 
             int index = dtgrdAttributes.CurrentCell.RowIndex;
-            if (AttributeArray[index]._type == 0)
-            {
-                TargetNode.SetFloat(index, float.PositiveInfinity);
-                RefreshRow(index);
-            }
+            TargetNode.SetFloat(index, float.PositiveInfinity);
+            RefreshRow(index);
         }
-    }
-
-    public enum ValType
-    {
-        Float = 0,
-        Int = 1,
-        Degrees = 2,
-        Color = 3,
-        Unknown = 4,
-        Flags = 5
     }
 }

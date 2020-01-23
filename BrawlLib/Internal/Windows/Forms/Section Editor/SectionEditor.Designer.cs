@@ -1223,10 +1223,10 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
         public RadioButton rdo4byte;
         public RadioButton rdo2byte;
         public RadioButton rdo1byte;
-        private CheckBox btn4underline;
-        private CheckBox btn1underline;
-        private CheckBox btn2underline;
-        private CheckBox btn3underline;
+        public CheckBox btn4underline;
+        public CheckBox btn1underline;
+        public CheckBox btn2underline;
+        public CheckBox btn3underline;
         private SplitContainer splitContainer1;
     }
 }

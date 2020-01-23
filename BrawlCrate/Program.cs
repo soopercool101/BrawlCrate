@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30f";
+        public static readonly string TagName = "v0.30g";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,11 +38,13 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30f! Here's what's new in this release:
-- Improved event match parsing
-- Improved BrawlEx Fighter Config parsing, including support for per-costume Etc
-- Fix bug in which PAT0 and CLR0 animations would break textures
-- Fix bug in which Stage Tables could not be properly replaced
+            @"Updated to BrawlCrate v0.30g! Here's what's new in this release:
+- Adds support for Byte and Short interpretations to attribute grids
+- Adds support to paste in color+alpha data with Ctrl+V in Color Control
+- Fix bug in which duplicating ARC Entries would result in crashes
+- Fix bug in which new collision objects would not have names and would not be shown in the main form
+- Fix bug in which imported MDL0 materials would be given generic names
+- Fix bug in which duplicated MDL0 materials would not have proper names for their textures
 
 Full changelog and documentation can be viewed from the help menu.";
 

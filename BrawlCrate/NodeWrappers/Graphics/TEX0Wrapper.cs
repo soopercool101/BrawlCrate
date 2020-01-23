@@ -151,7 +151,7 @@ namespace BrawlCrate.NodeWrappers
                     ColorSmashSelectedToolStripMenuItem.Enabled = false;
                     break;
                 }
-                if (((TEX0Wrapper)n)?._resource.Parent != w._resource.Parent)
+                if (((TEX0Wrapper)n)._resource.Parent != w._resource.Parent)
                 {
                     ColorSmashSelectedToolStripMenuItem.Enabled = false;
                 }
