@@ -407,7 +407,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (CHR0Node) NodeFactory.FromFile(null, o.FileName)) != null)
+                if ((external = FromFile(o.FileName)) != null)
                 {
                     MergeWith(external);
                 }

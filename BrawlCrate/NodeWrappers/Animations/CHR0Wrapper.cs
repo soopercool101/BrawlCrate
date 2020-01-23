@@ -187,7 +187,19 @@ namespace BrawlCrate.NodeWrappers
 
         public void Merge()
         {
-            ((CHR0Node) _resource).MergeWith();
+            CHR0Node external;
+            OpenFileDialog o = new OpenFileDialog
+            {
+                Filter = ImportFilter,
+                Title = "Please select an animation to merge with."
+            };
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                if ((external = CHR0Node.FromFile(o.FileName)) != null)
+                {
+                    ((CHR0Node)_resource).MergeWith(external);
+                }
+            }
             BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
