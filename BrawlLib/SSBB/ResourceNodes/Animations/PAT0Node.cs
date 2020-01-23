@@ -441,14 +441,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             return ((PAT0v3*) source.Address)->_header._tag == PAT0v3.Tag ? new PAT0Node() : null;
         }
 
-        public void CreateEntry()
+        public PAT0EntryNode CreateEntry()
+        {
+            return CreateEntry(-1);
+        }
+
+        public PAT0EntryNode CreateEntry(int index)
         {
             PAT0EntryNode n = new PAT0EntryNode
             {
                 Name = FindName(null)
             };
-            AddChild(n);
+            InsertChild(n, index);
             n.CreateEntry();
+            return n;
         }
 
         #region Extra Functions
@@ -773,7 +779,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->ResourceStringAddress = stringTable[Name] + 4;
         }
 
-        public void CreateEntry()
+        public PAT0TextureNode CreateEntry()
         {
             int value = 0;
             foreach (PAT0TextureNode t in Children)
@@ -786,12 +792,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (value == 8)
             {
-                return;
+                return null;
             }
 
             PAT0TextureNode node = new PAT0TextureNode((PAT0Flags) 7, value);
             AddChild(node);
             node.CreateEntry();
+            return node;
         }
     }
 
@@ -1215,7 +1222,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (Index == 0)
                 {
-                    if (Index == Children.Count - 1)
+                    if (Index >= Children.Count - 1)
                     {
                         _frame = 0;
                     }
@@ -1242,7 +1249,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void CheckNext()
         {
-            if (Index == Parent.Children.Count - 1)
+            if (Parent == null || Index == Parent.Children.Count - 1)
             {
                 return;
             }
@@ -1260,7 +1267,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void CheckPrev()
         {
-            if (Index == 0)
+            if (Parent == null || Index == 0)
             {
                 return;
             }
@@ -1284,7 +1291,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _tex;
             set
             {
-                if (!(Parent as PAT0TextureNode)._hasTex || value == _tex)
+                if (Parent == null || !(Parent as PAT0TextureNode)._hasTex || value == _tex)
                 {
                     return;
                 }
@@ -1310,7 +1317,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _plt;
             set
             {
-                if (!(Parent as PAT0TextureNode)._hasPlt || value == _plt)
+                if (Parent == null || !(Parent as PAT0TextureNode)._hasPlt || value == _plt)
                 {
                     return;
                 }
