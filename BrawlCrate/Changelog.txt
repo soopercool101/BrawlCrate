@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30f
+BrawlCrate - v0.30g
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,21 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30g - (1/22/2020)
+ . Update internal documentation to v0.30.6
+ . Add support for Byte and Short interpretations to attribute grids
+ . When an API subscription is added or changed, reload the plugins list
+ . Color control now supports Ctrl+V to paste in color+alpha data
+ . When BrawlAPI is disabled, API-specific menu items are removed from the Tools menu
+ . Default underline values and description for unedited module annotations are now based on current byte mode
+ . Fix bug in which duplicating ARC Entries would result in crashes
+ . Fix bug in which new collision objects would not have names and would not be shown in the main form
+ . Fix bug in which imported MDL0 materials would be given generic names
+ . Fix bug in which duplicated MDL0 materials would not have proper names for their textures
+ . Fix bug in which infinity buttons would not work in degrees mode in the attribute grid
+ . Fix bug in which color and infinity buttons on attribute grid would not be properly removed
+ . Fix bug in which editing values with improper formats would not be properly reflected in attribute
  
  - BrawlCrate v0.30f - (1/15/2020)
  . Improved Event Match parsing:
