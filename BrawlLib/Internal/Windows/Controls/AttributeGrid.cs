@@ -398,7 +398,6 @@ namespace BrawlLib.Internal.Windows.Controls
             //Setup Attribute Table.
             attributes.Columns.Add("Name");
             attributes.Columns.Add("Value");
-            //attributes.Columns[0].ReadOnly = true;
             dtgrdAttributes.DataSource = attributes;
             dtgrdAttributes.CellToolTipTextNeeded += dtgrdAttributes_CellToolTipTextNeeded;
         }
@@ -408,7 +407,15 @@ namespace BrawlLib.Internal.Windows.Controls
         {
             if (e.RowIndex > -1)
             {
-                e.ToolTipText = AttributeArray[e.RowIndex]._description;
+                string text = AttributeArray[e.RowIndex]._description;
+                if (e.ColumnIndex > 0 && text.Contains("Default"))
+                {
+                    e.ToolTipText = text.Substring(text.IndexOf("Default"));
+                }
+                else
+                {
+                    e.ToolTipText = text;
+                }
             }
         }
 
