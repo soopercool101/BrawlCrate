@@ -400,6 +400,16 @@ namespace BrawlLib.Internal.Windows.Controls
             attributes.Columns.Add("Value");
             //attributes.Columns[0].ReadOnly = true;
             dtgrdAttributes.DataSource = attributes;
+            dtgrdAttributes.CellToolTipTextNeeded += dtgrdAttributes_CellToolTipTextNeeded;
+        }
+
+        void dtgrdAttributes_CellToolTipTextNeeded(object sender,
+                                                   DataGridViewCellToolTipTextNeededEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                e.ToolTipText = AttributeArray[e.RowIndex]._description;
+            }
         }
 
         private readonly DataTable attributes = new DataTable();
