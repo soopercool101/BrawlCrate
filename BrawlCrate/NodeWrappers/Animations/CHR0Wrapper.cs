@@ -267,7 +267,7 @@ namespace BrawlCrate.NodeWrappers
         static CHR0EntryWrapper()
         {
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("View Interpolation", null, ViewInterpolation, Keys.Control | Keys.T));
+            _menu.Items.Add(new ToolStripMenuItem("View Interpolation", null, ViewInterpolation, Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
