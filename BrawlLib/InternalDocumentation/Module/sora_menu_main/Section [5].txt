@@ -63,3 +63,323 @@ Main Menu Button IDs:
 Default: 0x01 (Solo)
 	/EndDescription
 0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DC0
+Solo Button: Move Up ID
+The button switched to when pressing up while the Solo button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x04 (Options)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DC4
+Solo Button: Move Down ID
+The button switched to when pressing down while the Solo button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x04 (Options)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DC8
+Solo Button: Move Left ID
+The button switched to when pressing left while the Solo button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x00 (Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DCC
+Solo Button: Move Right  ID
+The button switched to when pressing right while the Solo button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x00 (Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DD0
+Online Button: Move Up ID
+The button switched to when pressing up while the Online button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x00 (Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DD4
+Online Button: Move Down ID
+The button switched to when pressing down while the Online button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x00 (Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DD8
+Online Button: Move Left ID
+The button switched to when pressing left while the Online button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x05 (Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DDC
+Online Button: Move Right ID
+The button switched to when pressing right while the Online button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x03 (Vault)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DE0
+Vault Button: Move Up ID
+The button switched to when pressing up while the Vault button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x00 (Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DE4
+Vault Button: Move Down ID
+The button switched to when pressing down while the Vault button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x00 (Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DE8
+Vault Button: Move Left ID
+The button switched to when pressing left while the Vault button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x02 (Vault)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DEC
+Vault Button: Move Right ID
+The button switched to when pressing right while the Vault button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x04 (Options)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DF0
+Options Button: Move Up ID
+The button switched to when pressing up while the Options button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x01 (Solo)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DF4
+Options Button: Move Down ID
+The button switched to when pressing down while the Options button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x01 (Solo)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DF8
+Options Button: Move Left ID
+The button switched to when pressing left while the Options button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x03 (Vault)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001DFC
+Options Button: Move Right ID
+The button switched to when pressing right while the Options button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x05 (Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E00
+Data Button: Move Up ID
+The button switched to when pressing up while the Data button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x01 (Solo)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E04
+Data Button: Move Down ID
+The button switched to when pressing down while the Data button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x01 (Solo)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E08
+Data Button: Move Left ID
+The button switched to when pressing left while the Data button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x04 (Options)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E0C
+Data Button: Move Right ID
+The button switched to when pressing right while the Data button is selected.
+
+Main Menu Button IDs:
+00 - Versus
+01 - Solo
+02 - Online
+03 - Vault
+04 - Options
+05 - Data
+
+Default: 0x02 (Online)
+	/EndDescription
+0100    // Flags for which bytes are underlined
