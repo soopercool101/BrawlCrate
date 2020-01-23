@@ -503,10 +503,14 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                     if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
                     {
+                        _updating = false;
+                        annotationDescription.Text = "Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
+                                                     bytes[1].ToString("X2") + bytes[0].ToString("X2");
                         btn1underline.Checked = true;
                         btn2underline.Checked = true;
                         btn3underline.Checked = true;
                         btn4underline.Checked = true;
+                        _updating = true;
                     }
                 }
                 else if (rdo2byte.Checked)
@@ -554,10 +558,13 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                     if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
                     {
+                        _updating = false;
+                        annotationDescription.Text = "Default: 0x" + bytes[1].ToString("X2") + bytes[0].ToString("X2");
                         btn1underline.Checked = t % 4 < 2;
                         btn2underline.Checked = t % 4 < 2;
                         btn3underline.Checked = t % 4 >= 2;
                         btn4underline.Checked = t % 4 >= 2;
+                        _updating = true;
                     }
                 }
                 else if (rdo1byte.Checked)
@@ -602,10 +609,13 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                     if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
                     {
+                        _updating = false;
+                        annotationDescription.Text = "Default: 0x" + bytes[0].ToString("X2");
                         btn1underline.Checked = t % 4 == 0;
                         btn2underline.Checked = t % 4 == 1;
                         btn3underline.Checked = t % 4 == 2;
                         btn4underline.Checked = t % 4 == 3;
+                        _updating = true;
                     }
 
                 }
