@@ -187,7 +187,6 @@ namespace BrawlCrate.NodeWrappers
 
         public void Merge()
         {
-            CHR0Node external;
             OpenFileDialog o = new OpenFileDialog
             {
                 Filter = ImportFilter,
@@ -195,6 +194,7 @@ namespace BrawlCrate.NodeWrappers
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
+                CHR0Node external;
                 if ((external = CHR0Node.FromFile(o.FileName)) != null)
                 {
                     ((CHR0Node)_resource).MergeWith(external);
