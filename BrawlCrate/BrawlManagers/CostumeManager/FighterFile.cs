@@ -67,7 +67,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         public override string ToString()
         {
-            return $"  ⮡ {FrameIndex:D2}";
+            return $"  ⮡ {_index:D2}";
         }
     }
 }
