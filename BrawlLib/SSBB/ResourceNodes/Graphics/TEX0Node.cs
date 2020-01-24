@@ -340,6 +340,28 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public override void Remove()
+        {
+            Remove(false);
+        }
+
+        public void Remove(bool forceRemovePalettes)
+        {
+            PLT0Node p = GetPaletteNode();
+            if (HasPalette && p != null && (forceRemovePalettes ||
+                                            MessageBox.Show("Would you like to delete the associated PLT0?",
+                                                $"Deleting {Name}", MessageBoxButtons.YesNo) == DialogResult.Yes))
+            {
+                while ((p = GetPaletteNode()) != null)
+                {
+                    p.Dispose();
+                    p.Remove();
+                }
+            }
+
+            base.Remove();
+        }
+
         protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength,
                                                      StringTable stringTable)
         {

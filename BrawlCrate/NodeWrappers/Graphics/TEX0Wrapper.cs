@@ -456,28 +456,6 @@ namespace BrawlCrate.NodeWrappers
             return null;
         }
 
-        public override void Delete()
-        {
-            if (Parent == null)
-            {
-                return;
-            }
-
-            PLT0Node p = ((TEX0Node) _resource).GetPaletteNode();
-            if (((TEX0Node) _resource).HasPalette && p != null &&
-                MessageBox.Show("Would you like to delete the associated PLT0?", $"Deleting {_resource.Name}",
-                    MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                while ((p = ((TEX0Node) _resource).GetPaletteNode()) != null)
-                {
-                    p.Remove();
-                    p.Dispose();
-                }
-            }
-
-            base.Delete();
-        }
-
         public void ConvertStocks()
         {
             if (Parent == null)
