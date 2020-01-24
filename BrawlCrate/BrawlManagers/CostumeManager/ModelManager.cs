@@ -158,8 +158,18 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             LoadFile(_path);
         }
 
+        private CLR0Node clr;
+        private int frameIndex;
+
         public void LoadFile(string path)
         {
+            LoadFile(path, null, -1);
+        }
+
+        public void LoadFile(string path, CLR0Node clr0, int frame)
+        {
+            clr = clr0;
+            frameIndex = frame;
             int index = comboBox1.SelectedIndex;
             if (_root != null)
             {
@@ -221,6 +231,10 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         {
             model.Populate();
             model.ResetToBindState();
+            if (clr != null && frameIndex >= 0 && clr.FrameCount >= frameIndex)
+            {
+                model.ApplyCLR(clr, frameIndex);
+            }
 
             if (UseExceptions)
             {

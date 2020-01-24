@@ -130,14 +130,26 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         public void LoadFile(string path)
         {
-            modelManager1.LoadFile(path);
+            LoadFile(path, null);
+        }
+
+        public void LoadFile(string path, GameWatchCostumeFile gw)
+        {
+            modelManager1.LoadFile(path, gw?.CLR0Animation, gw?.FrameIndex ?? -1);
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             FighterFile ff = (FighterFile) listBox2.SelectedItem;
             string path = ff.FullName;
-            LoadFile(path);
+            if (listBox2.SelectedItem is GameWatchCostumeFile gw)
+            {
+                LoadFile(path, gw);
+            }
+            else
+            {
+                LoadFile(path);
+            }
             RefreshPortraits();
         }
 

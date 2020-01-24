@@ -186,7 +186,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             {14, new int[] {0, 1, 3, 5, 2, 4}},
             {15, new int[] {0, 1, 3, 4, 2, 5}},
             {16, new int[] {0, 1, 2, 4, 5, 3}},
-            {17, new int[] {0, 1, 2, 3, 4, 5}},
+            {17, new int[] {0, 1, 4, 3, 2, 5}},
             {18, new int[] {0, 5, 3, 1, 2, 4}},
             {19, new int[] {0, 4, 3, 2, 1, 5}},
             {21, new int[] {0, 4, 1, 2, 3, 5}},

@@ -14,15 +14,15 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
 
         public virtual int CostumeNum => costumeNum;
 
-        public FighterFile(FileInfo path, int charNum, int costumeNum)
+        public FighterFile(FileInfo p, int charNum, int costume)
         {
-            this.path = path;
-            this.CharNum = charNum;
-            this.costumeNum = costumeNum;
+            path = p;
+            CharNum = charNum;
+            costumeNum = costume;
         }
 
-        public FighterFile(string path, int charNum, int costumeNum) :
-            this(new FileInfo(path), charNum, costumeNum)
+        public FighterFile(string p, int charNum, int costume) :
+            this(new FileInfo(p), charNum, costume)
         {
         }
 
@@ -52,20 +52,22 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
     {
         public CLR0Node CLR0Animation { get; }
 
-        public int FrameIndex { get; }
+        private int _index;
 
-        public override int CostumeNum => base.CostumeNum < 0 ? base.CostumeNum : base.CostumeNum + FrameIndex;
+        public int FrameIndex => _index + 1;
+
+        public override int CostumeNum => base.CostumeNum < 0 ? base.CostumeNum : base.CostumeNum + _index;
 
         public GameWatchCostumeFile(FighterFile f, CLR0Node clr, int index) :
             base(f)
         {
             CLR0Animation = clr;
-            FrameIndex = index;
+            _index = index;
         }
 
         public override string ToString()
         {
-            return $"⮡ {FrameIndex}";
+            return $"  ⮡ {FrameIndex:D2}";
         }
     }
 }
