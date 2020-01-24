@@ -10,7 +10,7 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class U8Node : ResourceNode
+    public unsafe class U8Node : U8EntryNode
     {
         internal U8* Header => (U8*) WorkingUncompressed.Address;
 
@@ -170,9 +170,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     parentIndex = ((U8EntryNode) node.Parent)._u8Index;
                 }
 
-                if (index < node.Parent.Children.Count)
+                if (index < node.Parent?.Children.Count)
                 {
-                    endIndex = (node.Parent.Children[index] as U8EntryNode)._u8Index;
+                    if (node.Parent.Children[index] is U8EntryNode u8en)
+                    {
+                        endIndex = u8en._u8Index;
+                    }
                 }
 
                 entry->_dataLength = (uint) endIndex;
