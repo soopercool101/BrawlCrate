@@ -1,6 +1,7 @@
 ﻿using Octokit;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -125,9 +126,15 @@ namespace Updater
 
                 if (x != null)
                 {
-                    MessageBox.Show(
-                        $"Your issue can be found at {x.HtmlUrl}. Please add any clarification on the issue there",
-                        "Issue Reported");
+                    if (MessageBox.Show(
+                        $"Your issue can be found at {x.HtmlUrl}. Please add any clarification on the issue there.\n\nWould you like to open this webpage in your browser?",
+                        "Issue Reported", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Process issue = Process.Start(new ProcessStartInfo
+                        {
+                            FileName = x.HtmlUrl
+                        });
+                    }
                 }
             }
             catch

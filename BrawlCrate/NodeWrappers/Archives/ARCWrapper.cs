@@ -634,4 +634,19 @@ namespace BrawlCrate.NodeWrappers
             ((ARCNode) _resource).ReplaceFromFolder(path);
         }
     }
+
+    [NodeWrapper(ResourceType.Redirect)]
+    public class RedirectWrapper : GenericWrapper
+    {
+        public override ResourceNode Duplicate()
+        {
+            ARCNode parentArc = (Parent as ARCWrapper).Resource as ARCNode;
+            ARCEntryNode node = new ARCEntryNode
+                { FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect };
+            parentArc.InsertChild(node, _resource.Index + 1);
+            node.RedirectTarget = (Resource as ARCEntryNode).RedirectTarget;
+            node.Name = Resource.Name;
+            return node;
+        }
+    }
 }
