@@ -1,5 +1,6 @@
 ﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
 using BrawlLib.BrawlManagerLib;
+using System.Windows.Forms;
 
 namespace BrawlCrate.BrawlManagers.CostumeManager {
     partial class CostumeManagerForm {
@@ -31,6 +32,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager {
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openInMainFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToOtherPacpcsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,12 +119,20 @@ namespace BrawlCrate.BrawlManagers.CostumeManager {
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openInMainFormToolStripMenuItem,
             this.copyToToolStripMenuItem,
             this.copyToOtherPacpcsToolStripMenuItem,
             this._deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(193, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // openInMainFormToolStripMenuItem
+            // 
+            this.openInMainFormToolStripMenuItem.Name = "openInMainFormToolStripMenuItem";
+            this.openInMainFormToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.openInMainFormToolStripMenuItem.Text = "Open in BrawlCrate";
+            this.openInMainFormToolStripMenuItem.Click += new System.EventHandler(this.openInMainFormToolStripMenuItem_Click);
             // 
             // copyToToolStripMenuItem
             // 
@@ -473,6 +483,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager {
         private System.Windows.Forms.ToolStripMenuItem cBlissCheckbox;
         private System.Windows.Forms.ToolStripSeparator separator;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem openInMainFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToToolStripMenuItem;
         private BattleSinglePortraitViewer battlePortraitViewer1;

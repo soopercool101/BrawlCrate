@@ -346,6 +346,12 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             }
         }
 
+        private void openInMainFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainForm.Instance.Focus();
+            Program.Open((listBox2.SelectedItem as FighterFile).FullName);
+        }
+
         private void copyToToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog dlg = new SaveFileDialog())
