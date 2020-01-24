@@ -13,6 +13,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "PAC File Archive", "pac"),
             new SupportedFileInfo(true, "PCS Compressed File Archive", "pcs"),
             new SupportedFileInfo(true, "U8 ARC File Archive", "arc"),
+            new SupportedFileInfo(true, "U8 Compressed ARC File Archive", "carc"),
             new SupportedFileInfo(false, "Archive Pair (*.pac & *.pcs)", "pair"),
             new SupportedFileInfo(true, "MRG Resource Group", "mrg"),
             new SupportedFileInfo(true, "MRG Compressed Resource Group", "mrgc"),

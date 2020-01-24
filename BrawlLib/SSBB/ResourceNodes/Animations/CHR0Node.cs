@@ -399,7 +399,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void MergeWith()
         {
-            CHR0Node external = null;
             OpenFileDialog o = new OpenFileDialog
             {
                 Filter = "CHR0 Animation (*.chr0)|*.chr0",
@@ -407,7 +406,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (CHR0Node) NodeFactory.FromFile(null, o.FileName)) != null)
+                CHR0Node external;
+                if ((external = FromFile(o.FileName)) != null)
                 {
                     MergeWith(external);
                 }

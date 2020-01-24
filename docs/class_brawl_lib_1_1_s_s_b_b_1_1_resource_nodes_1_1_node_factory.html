@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30f</span>
+   &#160;<span id="projectnumber">v0.30g</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -112,6 +112,8 @@ Static Private Member Functions</h2></td></tr>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a229795fedba603bc4ed9bf00fd2b53d2"><td class="memItemLeft" align="right" valign="top">static readonly List&lt; <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a229795fedba603bc4ed9bf00fd2b53d2">_parsers</a> = new List&lt;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>&gt;()</td></tr>
 <tr class="separator:a229795fedba603bc4ed9bf00fd2b53d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1267bfff52d16a7fed37b26c98729950"><td class="memItemLeft" align="right" valign="top">static readonly List&lt; <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a1267bfff52d16a7fed37b26c98729950">_parsersGeneric</a> = new List&lt;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>&gt;()</td></tr>
+<tr class="separator:a1267bfff52d16a7fed37b26c98729950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bee84206317b498d4db6e232e9fa132"><td class="memItemLeft" align="right" valign="top">static readonly Dictionary&lt; string, Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a1bee84206317b498d4db6e232e9fa132">Forced</a></td></tr>
 <tr class="separator:a1bee84206317b498d4db6e232e9fa132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -138,28 +140,21 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="comment">// Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">foreach</span> (Type t <span class="keywordflow">in</span> Assembly.GetEntryAssembly()?.GetTypes()</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                       ?.Where(t =&gt; t.IsSubclassOf(typeof(ResourceNode))))</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">AddParser</a>(t);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="comment">// Add all BrawlLib parsers (excluding MoveDefs, as explained below)</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">foreach</span> (Type t <span class="keywordflow">in</span> Assembly.GetExecutingAssembly().GetTypes()</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                       .Where(t =&gt; t.IsSubclassOf(typeof(ResourceNode))</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                   <span class="comment">// Exclude overly generic parsers (want those to be tried last)</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                                   &amp;&amp; t != typeof(Common2MiscDataNode)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                   &amp;&amp; t != typeof(MoveDefNode)))</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">AddParser</a>(t);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="comment">// Add generalized parsers to minimize false positives</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">AddParser</a>(typeof(Common2MiscDataNode));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">AddParser</a>(typeof(MoveDefNode));</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="comment">// Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">foreach</span> (Type t <span class="keywordflow">in</span> Assembly.GetEntryAssembly()?.GetTypes()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                       ?.Where(t =&gt; t.IsSubclassOf(typeof(ResourceNode))))</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">AddParser</a>(t);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">// Add all BrawlLib parsers (excluding MoveDefs, as explained below)</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">foreach</span> (Type t <span class="keywordflow">in</span> Assembly.GetExecutingAssembly().GetTypes()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                       .Where(t =&gt; t.IsSubclassOf(typeof(ResourceNode))))</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">AddParser</a>(t);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -187,11 +182,17 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            Delegate del = Delegate.CreateDelegate(typeof(<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>), t, <span class="stringliteral">&quot;TryParse&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">if</span> (del != <span class="keyword">null</span>)</div>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            Delegate del = Delegate.CreateDelegate(typeof(<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>), t, <span class="stringliteral">&quot;TryParse&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">if</span> (del != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a229795fedba603bc4ed9bf00fd2b53d2">_parsers</a>.Add(del as <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            Delegate del2 = Delegate.CreateDelegate(typeof(<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>), t, <span class="stringliteral">&quot;TryParseGeneric&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">if</span> (del2 != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a229795fedba603bc4ed9bf00fd2b53d2">_parsers</a>.Add(del as <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a1267bfff52d16a7fed37b26c98729950">_parsersGeneric</a>.Add(del2 as <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -493,13 +494,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            FolderNode node = <span class="keyword">new</span> FolderNode();</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            node._origPath = path;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            node.Initialize(parent, <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>(), 0);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            node.OnPopulate();</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">return</span> node;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            FolderNode node = <span class="keyword">new</span> FolderNode();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            node._origPath = path;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            node.Initialize(parent, <span class="keyword">new</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>(), 0);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            node.OnPopulate();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> node;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -640,17 +641,26 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            ResourceNode n = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a> d <span class="keywordflow">in</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a229795fedba603bc4ed9bf00fd2b53d2">_parsers</a>)</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">if</span> ((n = d(source)) != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            ResourceNode n;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a> d <span class="keywordflow">in</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a229795fedba603bc4ed9bf00fd2b53d2">_parsers</a>)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">if</span> ((n = d(source)) != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a> d <span class="keywordflow">in</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a1267bfff52d16a7fed37b26c98729950">_parsersGeneric</a>)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <span class="keywordflow">if</span> ((n = d(source)) != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -716,6 +726,28 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1267bfff52d16a7fed37b26c98729950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1267bfff52d16a7fed37b26c98729950">&#9670;&nbsp;</a></span>_parsersGeneric</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly List&lt;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>&gt; BrawlLib.SSBB.ResourceNodes.NodeFactory._parsersGeneric = new List&lt;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">ResourceParser</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1bee84206317b498d4db6e232e9fa132"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1bee84206317b498d4db6e232e9fa132">&#9670;&nbsp;</a></span>Forced</h2>
 
@@ -752,12 +784,13 @@ Static Private Attributes</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ae8ece53e34a2e446cdb98a3f0a244133"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ae8ece53e34a2e446cdb98a3f0a244133">BrawlLib.Internal.IO.FileMap.Dispose</a></div><div class="ttdeci">virtual void Dispose()</div><div class="ttdef"><b>Definition:</b> FileMap.cs:33</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_aea63c771528abe4805255cc9766a499d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">BrawlLib.SSBB.ResourceNodes.NodeFactory.AddParser</a></div><div class="ttdeci">static void AddParser(Type t)</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:54</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_aea63c771528abe4805255cc9766a499d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#aea63c771528abe4805255cc9766a499d">BrawlLib.SSBB.ResourceNodes.NodeFactory.AddParser</a></div><div class="ttdeci">static void AddParser(Type t)</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:48</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_i_o_html_a7ca8f806766fe4589f545c9d78381218"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">BrawlLib.Internal.IO.FileMapProtect</a></div><div class="ttdeci">FileMapProtect</div><div class="ttdef"><b>Definition:</b> FileMap.cs:174</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_a1267bfff52d16a7fed37b26c98729950"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a1267bfff52d16a7fed37b26c98729950">BrawlLib.SSBB.ResourceNodes.NodeFactory._parsersGeneric</a></div><div class="ttdeci">static readonly List&lt; ResourceParser &gt; _parsersGeneric</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:19</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compressor_html_a9b304ffa6ee17bc963ef640d4583d7c8"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compressor.html#a9b304ffa6ee17bc963ef640d4583d7c8">BrawlLib.Wii.Compressor.TryExpand</a></div><div class="ttdeci">static FileMap TryExpand(ref DataSource source, bool doTest=true)</div><div class="ttdef"><b>Definition:</b> Compressor.cs:153</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compressor_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compressor.html">BrawlLib.Wii.Compressor</a></div><div class="ttdef"><b>Definition:</b> Compressor.cs:36</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_a14c93ab06b84c385d0c29b53f8fe246b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a14c93ab06b84c385d0c29b53f8fe246b">BrawlLib.SSBB.ResourceNodes.NodeFactory.FromSource</a></div><div class="ttdeci">static ResourceNode FromSource(ResourceNode parent, DataSource source)</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:127</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_a1bee84206317b498d4db6e232e9fa132"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a1bee84206317b498d4db6e232e9fa132">BrawlLib.SSBB.ResourceNodes.NodeFactory.Forced</a></div><div class="ttdeci">static readonly Dictionary&lt; string, Type &gt; Forced</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:20</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_a1bee84206317b498d4db6e232e9fa132"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#a1bee84206317b498d4db6e232e9fa132">BrawlLib.SSBB.ResourceNodes.NodeFactory.Forced</a></div><div class="ttdeci">static readonly Dictionary&lt; string, Type &gt; Forced</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:21</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory_html_af41809c82122888cd8fde273fd363a89"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_node_factory.html#af41809c82122888cd8fde273fd363a89">BrawlLib.SSBB.ResourceNodes.NodeFactory.FromFile</a></div><div class="ttdeci">static ResourceNode FromFile(ResourceNode parent, string path)</div><div class="ttdef"><b>Definition:</b> NodeFactory.cs:64</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> FileMap.cs:9</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_html_ab53670ffc5e49e756f4fa59270b5267d"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab53670ffc5e49e756f4fa59270b5267d">BrawlLib.SSBB.ResourceNodes.ResourceParser</a></div><div class="ttdeci">delegate ResourceNode ResourceParser(DataSource source)</div></div>

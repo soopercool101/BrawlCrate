@@ -436,6 +436,9 @@ namespace BrawlCrate.NodeWrappers
                 entryNode.RedirectIndex = ((ARCEntryNode)_resource).RedirectIndex;
             }
 
+            // Update name again in order to refresh things that need refreshing when name is updated
+            rNode2.OnRenamed();
+
             return rNode2;
         }
     }

@@ -869,7 +869,11 @@ Full changelog and documentation can be viewed from the help menu.";
                 }
                 catch (Exception x)
                 {
-                    MessageBox.Show(x.Message);
+                    if (MessageBox.Show(x.Message + "\n\nWould you like to report this as an error?", "Save Error",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                    {
+                        throw;
+                    }
                     _rootNode.SignalPropertyChange();
                 }
 #endif

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30f</span>
+   &#160;<span id="projectnumber">v0.30g</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -150,7 +150,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-buc&quot;</span>: <span class="comment">//BrawlCrate Canary update call</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                        t = <a class="code" href="namespace_updater.html">Updater</a>.CheckCanaryUpdate(args.Length &gt; 1 ? args[1] : <span class="keyword">null</span>,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                            args.Length &gt; 2 &amp;&amp; args[2] != <span class="stringliteral">&quot;0&quot;</span>, <span class="keyword">false</span>, args[3] != <span class="stringliteral">&quot;0&quot;</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                            args.Length &gt; 2 &amp;&amp; args[2] != <span class="stringliteral">&quot;0&quot;</span>, args[3] != <span class="stringliteral">&quot;0&quot;</span>, args[4] != <span class="stringliteral">&quot;0&quot;</span>);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        t.Wait();</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-bi&quot;</span>: <span class="comment">//BrawlCrate issue call</span></div>

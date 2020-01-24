@@ -3,6 +3,7 @@ using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -108,9 +109,9 @@ namespace BrawlCrate.NodeWrappers
 
         public override string ExportFilter => FileFilters.PAT0;
 
-        public void NewEntry()
+        public PAT0EntryNode NewEntry()
         {
-            ((PAT0Node) _resource).CreateEntry();
+            return ((PAT0Node) _resource).CreateEntry();
         }
 
         private void Merge()
@@ -221,6 +222,33 @@ namespace BrawlCrate.NodeWrappers
             PAT0EntryNode n = (PAT0EntryNode) _resource;
             n.CreateEntry();
         }
+
+        public override ResourceNode Duplicate()
+        {
+            PAT0EntryNode dup = ((PAT0Node)_resource.Parent).CreateEntry(_resource.Index + 1);
+            dup.Name = _resource.Name;
+            dup.RemoveChild(dup.Children[0]);
+
+            foreach (PAT0TextureNode pt in _resource.Children)
+            {
+                PAT0TextureNode ptd = new PAT0TextureNode(pt._texFlags, pt.Index);
+                dup.AddChild(ptd);
+                ptd.Children.Clear();
+                foreach (PAT0TextureEntryNode pte in pt.Children)
+                {
+                    ptd.AddChild(new PAT0TextureEntryNode());
+                    if (ptd.Children.Last() is PAT0TextureEntryNode pted)
+                    {
+                        pted.FrameIndex = pte.FrameIndex;
+                        pted.Texture = pte.Texture;
+                        pted.Palette = pte.Palette;
+                        pted.Name = pte.Name;
+                    }
+                }
+            }
+
+            return dup;
+        }
     }
 
     [NodeWrapper(ResourceType.PAT0Texture)]
@@ -301,6 +329,26 @@ namespace BrawlCrate.NodeWrappers
         public PAT0TextureWrapper()
         {
             ContextMenuStrip = _menu;
+        }
+
+        public override ResourceNode Duplicate()
+        {
+            PAT0TextureNode ptd = new PAT0TextureNode(((PAT0TextureNode) _resource)._texFlags,
+                ((PAT0TextureNode) _resource).Index + 1);
+            _resource.Parent.AddChild(ptd);
+            ptd.Children.Clear();
+            foreach (PAT0TextureEntryNode pte in _resource.Children)
+            {
+                ptd.AddChild(new PAT0TextureEntryNode());
+                if (ptd.Children.Last() is PAT0TextureEntryNode pted)
+                {
+                    pted.FrameIndex = pte.FrameIndex;
+                    pted.Texture = pte.Texture;
+                    pted.Palette = pte.Palette;
+                    pted.Name = pte.Name;
+                }
+            }
+            return ptd;
         }
     }
 
@@ -424,6 +472,11 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
             }
+        }
+
+        public override ResourceNode Duplicate()
+        {
+            return base.Duplicate(false);
         }
     }
 }

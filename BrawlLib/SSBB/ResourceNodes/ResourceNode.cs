@@ -211,8 +211,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 _name = value;
                 _changed = true;
-                Renamed?.Invoke(this);
+                OnRenamed();
             }
+        }
+
+        public void OnRenamed()
+        {
+            Renamed?.Invoke(this);
         }
 
         [Browsable(false)]
@@ -747,8 +752,18 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public virtual void InsertChild(ResourceNode child, int index)
+        {
+            InsertChild(child, true, index);
+        }
+
         public virtual void InsertChild(ResourceNode child, bool change, int index)
         {
+            if (index < 0 || index >= Children.Count)
+            {
+                AddChild(child, change);
+                return;
+            }
             Children.Insert(index, child);
             child._parent = this;
             ChildInserted?.Invoke(index, this, child);
