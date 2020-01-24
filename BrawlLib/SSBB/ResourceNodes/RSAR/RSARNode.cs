@@ -112,6 +112,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
+            _major = CommonHeader->VersionMajor;
+            _minor = CommonHeader->VersionMinor;
+            _tag = CommonHeader->_tag;
+            _length = CommonHeader->_length;
+            _endian = CommonHeader->Endian;
             base.OnInitialize();
 
             if (_name == null)
