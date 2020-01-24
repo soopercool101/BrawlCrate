@@ -1,9 +1,9 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class RASDNode : BRESEntryNode
+    public unsafe class RASDNode : ARCEntryNode
     {
         internal RASD* Header => (RASD*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
