@@ -468,8 +468,11 @@ namespace BrawlCrate.NodeWrappers
                 MessageBox.Show("Would you like to delete the associated PLT0?", $"Deleting {_resource.Name}",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                p.Dispose();
-                p.Remove();
+                while ((p = ((TEX0Node) _resource).GetPaletteNode()) != null)
+                {
+                    p.Remove();
+                    p.Dispose();
+                }
             }
 
             base.Delete();
