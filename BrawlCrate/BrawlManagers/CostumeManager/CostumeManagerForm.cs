@@ -1,4 +1,4 @@
-﻿using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
+using BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers;
 using BrawlCrate.UI;
 using BrawlLib.BrawlManagerLib;
 using BrawlLib.Internal;
@@ -228,7 +228,20 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                             costumeNum = -1;
                         }
 
-                        listBox2.Items.Add(new FighterFile(f.FullName, charNum, costumeNum));
+                        FighterFile ff = new FighterFile(f.FullName, charNum, costumeNum);
+                        listBox2.Items.Add(ff);
+                        if (charname.Equals("gamewatch", StringComparison.OrdinalIgnoreCase))
+                        {
+                            ResourceNode n = NodeFactory.FromFile(null, f.FullName);
+                            CLR0Node clrAnim;
+                            if ((clrAnim = n.FindChildByType("FitGameWatchColorAnim", true, ResourceType.CLR0) as CLR0Node) != null)
+                            {
+                                for (int i = 0; i < clrAnim.FrameCount; i++)
+                                {
+                                    listBox2.Items.Add(new GameWatchCostumeFile(ff, clrAnim, i));
+                                }
+                            }
+                        }
                     }
                 }
 
