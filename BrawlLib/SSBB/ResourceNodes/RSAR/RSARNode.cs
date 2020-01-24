@@ -11,18 +11,8 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class RSARNode : ARCEntryNode
+    public unsafe class RSARNode : NW4RArcEntryNode
     {
-        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*)WorkingUncompressed.Address;
-
-        [Category("NW4R Node")] public byte VersionMajor => _major;
-        [Category("NW4R Node")] public byte VersionMinor => _minor;
-        internal byte _minor, _major;
-
-        internal string _tag;
-        internal int _length;
-        internal Endian _endian;
-
         internal RSARHeader* Header => (RSARHeader*) WorkingSource.Address;
         public override ResourceType ResourceFileType => ResourceType.RSAR;
 
@@ -112,11 +102,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            _major = CommonHeader->VersionMajor;
-            _minor = CommonHeader->VersionMinor;
-            _tag = CommonHeader->_tag;
-            _length = CommonHeader->_length;
-            _endian = CommonHeader->Endian;
             base.OnInitialize();
 
             if (_name == null)
