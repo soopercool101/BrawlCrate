@@ -372,6 +372,8 @@ namespace BrawlLib.Internal.Windows.Controls
 
         private IAttributeList _targetNode;
 
+        protected bool somethingChanged;
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IAttributeList TargetNode
@@ -504,6 +506,12 @@ namespace BrawlLib.Internal.Windows.Controls
         {
             if (dtgrdAttributes.CurrentCell == null)
             {
+                return;
+            }
+
+            if (e.ColumnIndex == 0)
+            {
+                somethingChanged = true;
                 return;
             }
 
@@ -724,6 +732,7 @@ namespace BrawlLib.Internal.Windows.Controls
             {
                 AttributeArray[index]._description = description.Text;
                 DictionaryChanged?.Invoke(this, EventArgs.Empty);
+                somethingChanged = true;
             }
         }
 
@@ -774,6 +783,8 @@ namespace BrawlLib.Internal.Windows.Controls
                     btnMinusInf.Visible = true;
                     break;
             }
+
+            somethingChanged = true;
         }
 
         private readonly GoodColorDialog _dlgColor;

@@ -532,6 +532,7 @@ namespace BrawlCrate.UI
             animEditControl.TargetSequence = null;
             texAnimEditControl.TargetSequence = null;
             shpAnimEditControl.TargetSequence = null;
+            attributeGrid1.Clear();
             articleAttributeGrid.TargetNode = null;
             offsetEditor1.TargetNode = null;
             msBinEditor1.CurrentNode = null;
@@ -745,7 +746,6 @@ namespace BrawlCrate.UI
                 }
                 else if (node is StageTableNode stageTableNode)
                 {
-                    attributeGrid1.Clear();
                     attributeGrid1.AddRange(stageTableNode.GetPossibleInterpretations());
                     attributeGrid1.TargetNode = stageTableNode;
                     newControl = attributeGrid1;
