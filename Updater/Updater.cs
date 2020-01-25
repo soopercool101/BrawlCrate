@@ -904,6 +904,19 @@ namespace Updater
                         sw.Close();
                     }
                 }
+
+                // Attempt to delete the file if it exists.
+                try
+                {
+                    if (File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
+                    {
+                        File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
+                    }
+                }
+                catch
+                {
+                    // Ignored
+                }
             }
             catch (Exception e)
             {
