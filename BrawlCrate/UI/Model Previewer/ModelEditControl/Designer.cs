@@ -6,6 +6,7 @@ using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
@@ -2112,7 +2113,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void pnlAnimSave(bool As)
         {
-            foreach (ResourceNode n in rightPanel.pnlOpenedFiles.OpenedFiles)
+            foreach (ResourceNode n in rightPanel.pnlOpenedFiles.OpenedFiles.Where(o => o._origPath != MainForm.Instance.RootNode.Resource._origPath))
             {
                 rightPanel.pnlOpenedFiles.SaveExternal(n, As);
             }
