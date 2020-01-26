@@ -83,7 +83,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 last = current;
             }
 
-            return offsets[0] == index << 2 ? new MSBinNode() : null;
+            // Ensure the offset is correctly bitshifted
+            int offset = offsets[0];
+            int offsetCheck = 0;
+            for (int i = 2; offsetCheck <= offset; i++)
+            {
+                offsetCheck = index << i;
+                if (offsetCheck == offset)
+                {
+                    return new MSBinNode();
+                }
+            }
+            return null;
         }
 
         public override unsafe void Export(string outPath)

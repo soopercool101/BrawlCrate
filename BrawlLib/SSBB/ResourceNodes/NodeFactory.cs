@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Wii;
 using System;
@@ -51,7 +51,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (del != null)
             {
                 _parsers.Add(del as ResourceParser);
-                return;
             }
             Delegate del2 = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParseGeneric", false, false);
             if (del2 != null)
