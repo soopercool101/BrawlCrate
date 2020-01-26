@@ -2112,17 +2112,10 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void pnlAnimSave(bool As)
         {
-            ResourceNode o = null;
-            if (TargetModel != null)
+            foreach (ResourceNode n in rightPanel.pnlOpenedFiles.OpenedFiles)
             {
-                o = ((ResourceNode) TargetModel).RootNode;
+                rightPanel.pnlOpenedFiles.SaveExternal(n, As);
             }
-            else
-            {
-                o = rightPanel.pnlOpenedFiles.SelectedFile;
-            }
-
-            rightPanel.pnlOpenedFiles.SaveExternal(o, As);
         }
 
         public void AppendTarget(CollisionNode collision)
