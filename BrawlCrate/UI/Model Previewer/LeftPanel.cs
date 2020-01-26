@@ -1776,8 +1776,8 @@ namespace BrawlCrate.UI.Model_Previewer
             }
             else
             {
-                sourceToolStripMenuItem.Text = string.Format("Source: {0}",
-                    Path.GetFileName(_mainWindow.TargetAnimation.RootNode._origPath));
+                toolStripMenuItem2.Text =
+                    $"Source: {Path.GetFileName(_mainWindow.TargetAnimation.RootNode._origPath)}";
                 if (matrixModeToolStripMenuItem.Visible = _mainWindow.TargetAnimation is SRT0Node)
                 {
                     SRT0Node node = (SRT0Node) _mainWindow.TargetAnimation;
