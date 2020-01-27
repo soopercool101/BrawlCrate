@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.Modeling.Collada
@@ -547,7 +548,7 @@ namespace BrawlLib.Modeling.Collada
             bindMatrix *= node._matrix;
 
             if (node._type == NodeType.JOINT ||
-                node._type == NodeType.NONE && node._instances.Count == 0 && (node._name != null || node._id != null))
+                (!_importOptions._blenderBoneFix && node._type == NodeType.NONE && node._instances.Count == 0 && (node._name != null || node._id != null)))
             {
                 Error = "There was a problem creating a new bone.";
 
