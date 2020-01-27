@@ -913,8 +913,7 @@ namespace BrawlCrate.NodeWrappers
 
         private void StripModel()
         {
-            MDL0Node model = _resource as MDL0Node;
-            if (model != null)
+            if (_resource is MDL0Node model)
             {
                 model.StripModel();
             }
