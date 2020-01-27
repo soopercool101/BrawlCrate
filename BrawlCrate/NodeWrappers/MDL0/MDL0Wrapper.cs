@@ -728,19 +728,25 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportMaterial()
         {
-            if (Program.OpenFile(FileFilters.MDL0Material, out string path))
+            if (Program.OpenFiles(FileFilters.MDL0Material, out string[] paths) > 0)
             {
-                MDL0MaterialNode m = NewMaterial();
-                m.Name = Path.GetFileNameWithoutExtension(path);
-                m.Replace(path);
+                foreach (string path in paths)
+                {
+                    MDL0MaterialNode m = NewMaterial();
+                    m.Name = Path.GetFileNameWithoutExtension(path);
+                    m.Replace(path);
+                }
             }
         }
 
         public void ImportShader()
         {
-            if (Program.OpenFile(FileFilters.MDL0Shader, out string path))
+            if (Program.OpenFiles(FileFilters.MDL0Shader, out string[] paths) > 0)
             {
-                NewShader()?.Replace(path);
+                foreach (string path in paths)
+                {
+                    NewShader()?.Replace(path);
+                }
             }
         }
 

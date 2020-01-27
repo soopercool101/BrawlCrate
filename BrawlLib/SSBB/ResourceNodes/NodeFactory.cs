@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private static readonly List<ResourceParser> _parsers = new List<ResourceParser>();
         private static readonly List<ResourceParser> _parsersGeneric = new List<ResourceParser>();
 
-        private static readonly Dictionary<string, Type> Forced = new Dictionary<string, Type>
+        private static readonly Dictionary<string, Type> ForcedExtensions = new Dictionary<string, Type>
         {
             {"MRG", typeof(MRGNode)},
             {"MRGC", typeof(MRGNode)}, //Compressed MRG
@@ -87,8 +87,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 
                     if (!(t is null) && (node = Activator.CreateInstance(t) as ResourceNode) != null
-                        || Forced.ContainsKey(ext) &&
-                        (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
+                        || ForcedExtensions.ContainsKey(ext) &&
+                        (node = Activator.CreateInstance(ForcedExtensions[ext]) as ResourceNode) != null)
                     {
                         FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
                         if (uncompressedMap != null)

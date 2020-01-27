@@ -767,7 +767,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (MessageBox.Show(
                         "Would you like to use the detected '" + aslIndicator +
-                        "' as the ASL indicator for the three files?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                        "' as the ASL indicator for the three files?", "", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     aslIndicator = '\0';
                 }
