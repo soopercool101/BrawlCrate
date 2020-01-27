@@ -752,123 +752,106 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportVertex()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw Vertex Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Vertex Set (*.*)|*.*",
-                Title = "Please select a vertex set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewVertex().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewVertex().Replace(path);
+                }
             }
         }
 
         public void ImportNormal()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw Normal Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Normal Set (*.*)|*.*",
-                Title = "Please select a normal set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewNormal().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewNormal().Replace(path);
+                }
             }
         }
 
         public void ImportColor()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw Color Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Color Set (*.*)|*.*",
-                Title = "Please select a color set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewColor().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewColor().Replace(path);
+                }
             }
         }
 
         public void ImportUV()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw UV Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Vertex Set (*.*)|*.*",
-                Title = "Please select a vertex set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewUV().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewUV().Replace(path);
+                }
             }
         }
 
         public void ImportObject()
         {
-            MDL0Node external = null;
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles(ImportFilter, out string[] paths) > 0)
             {
-                Filter = ImportFilter,
-                Title = "Please select a model to import an object from."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                if ((external = MDL0Node.FromFile(o.FileName)) != null)
+                foreach (string path in paths)
                 {
-                    new ObjectImporter().ShowDialog((MDL0Node) _resource, external);
-                }
-                else
-                {
-                    MessageBox.Show("Could not import an object from this model.", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MDL0Node external;
+                    if ((external = MDL0Node.FromFile(path)) != null)
+                    {
+                        new ObjectImporter().ShowDialog((MDL0Node)_resource, external);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Could not import an object from {path}", "Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
         public void SortMaterial()
         {
-            int index = Index;
             ((MDL0Node) _resource).MaterialGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortVertex()
         {
-            int index = Index;
             ((MDL0Node) _resource).VertexGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortNormal()
         {
-            int index = Index;
             ((MDL0Node) _resource).NormalGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortColor()
         {
-            int index = Index;
             ((MDL0Node) _resource).ColorGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortUV()
         {
-            int index = Index;
             ((MDL0Node) _resource).UVGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortObject()
         {
-            int index = Index;
             ((MDL0Node) _resource).PolygonGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortTexture()
         {
-            int index = Index;
             ((MDL0Node) _resource).TextureGroup.SortChildren();
             RefreshView(_resource);
         }
