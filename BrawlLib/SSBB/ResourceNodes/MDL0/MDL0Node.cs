@@ -2577,29 +2577,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static MDL0Node FromFile(string path, FileOptions options = FileOptions.RandomAccess)
         {
-            //string ext = Path.GetExtension(path);
-            if (path.EndsWith(".mdl0", StringComparison.OrdinalIgnoreCase) ||
-                string.IsNullOrEmpty(Path.GetExtension(path)) ||
-                path.EndsWith(".tmp", StringComparison.OrdinalIgnoreCase))
+            if (path.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
             {
-                return NodeFactory.FromFile(null, path, options) as MDL0Node;
+                return new Collada{Text = $"Import Settings - {Path.GetFileName(path)}"}.ShowDialog(path, Collada.ImportType.MDL0) as MDL0Node;
             }
-            else if (path.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
-            {
-                return new Collada().ShowDialog(path, Collada.ImportType.MDL0) as MDL0Node;
-            }
-            else if (path.EndsWith(".pmd", StringComparison.OrdinalIgnoreCase))
+            if (path.EndsWith(".pmd", StringComparison.OrdinalIgnoreCase))
             {
                 return PMDModel.ImportModel(path);
             }
-            //else if (string.Equals(ext, "fbx", StringComparison.OrdinalIgnoreCase))
-            //{
-            //}
-            //else if (string.Equals(ext, "blend", StringComparison.OrdinalIgnoreCase))
-            //{
-            //}
 
-            throw new NotSupportedException("The file extension specified is not of a supported model type.");
+            return NodeFactory.FromFile(null, path, options) as MDL0Node;
         }
 
         #endregion
