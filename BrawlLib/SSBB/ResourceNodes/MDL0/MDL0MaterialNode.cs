@@ -11,12 +11,14 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe partial class MDL0MaterialNode : MDL0EntryNode
+    public unsafe partial class MDL0MaterialNode : MDL0EntryNode, IImageSource
     {
         internal MDL0Material* Header => (MDL0Material*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.MDL0Material;
@@ -2491,6 +2493,11 @@ For example, if the shader has two stages but this number is 1, the second stage
         //    if (!_updating && Model._autoMetal && MetalMaterial != null && !this.isMetal)
         //        MetalMaterial.UpdateAsMetal();
         //}
+        public int ImageCount => Children?.Where(o => o is IImageSource i && i.ImageCount > 0).Count() ?? 0;
+        public Bitmap GetImage(int index)
+        {
+            return ((IImageSource)Children?.Where(o => o is IImageSource i && i.ImageCount > 0).ToArray()[index]).GetImage(0);
+        }
     }
 
     #region Light Channel Info

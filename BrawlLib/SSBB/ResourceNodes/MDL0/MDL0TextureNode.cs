@@ -10,10 +10,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MDL0TextureNode : MDL0EntryNode, IComparable
+    public unsafe class MDL0TextureNode : MDL0EntryNode, IComparable, IImageSource
     {
         static MDL0TextureNode()
         {
@@ -415,6 +416,32 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Texture.Delete();
                 Texture = null;
             }
+        }
+
+        public int ImageCount
+        {
+            get
+            {
+                if (Source == null)
+                {
+                    Load(_index, _program, Model, true);
+                }
+                return (Source is IImageSource i) ? i.ImageCount : 0;
+            }
+        }
+
+        public Bitmap GetImage(int index)
+        {
+            if (Source == null)
+            {
+                Load(_index, _program, Model, true);
+            }
+            if (Source is IImageSource i)
+            {
+                return i.GetImage(index);
+            }
+
+            return null;
         }
     }
 }

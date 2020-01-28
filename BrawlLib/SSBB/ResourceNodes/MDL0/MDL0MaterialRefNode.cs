@@ -1,4 +1,5 @@
-﻿using BrawlLib.Internal;
+﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
@@ -7,11 +8,12 @@ using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MDL0MaterialRefNode : MDL0EntryNode
+    public unsafe class MDL0MaterialRefNode : MDL0EntryNode, IImageSource
     {
         public override ResourceType ResourceFileType => ResourceType.MDL0MaterialEntry;
         internal MDL0TextureRef* Header
@@ -965,6 +967,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     PostProcess(map.Address, map.Address, table);
                 }
             }
+        }
+
+        public int ImageCount => _texture?.ImageCount ?? 0;
+        public Bitmap GetImage(int index)
+        {
+            return _texture.GetImage(index);
         }
     }
 
