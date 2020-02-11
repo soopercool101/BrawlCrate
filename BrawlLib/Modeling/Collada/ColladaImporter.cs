@@ -548,7 +548,7 @@ namespace BrawlLib.Modeling.Collada
             bindMatrix *= node._matrix;
 
             if (node._type == NodeType.JOINT ||
-                (!_importOptions._blenderBoneFix && node._type == NodeType.NONE && node._instances.Count == 0 && (node._name != null || node._id != null)))
+                !_importOptions._blenderBoneFix && node._type == NodeType.NONE && node._instances.Count == 0 && (node._name != null || node._id != null))
             {
                 Error = "There was a problem creating a new bone.";
 

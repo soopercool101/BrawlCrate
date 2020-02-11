@@ -167,8 +167,8 @@ namespace BrawlLib.Internal.Windows.Controls.EditAllDialog
             // 
             // grpBoxTranslate
             // 
-            this.grpBoxTranslate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpBoxTranslate.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
+                                                                                                                    | System.Windows.Forms.AnchorStyles.Left);
             this.grpBoxTranslate.Controls.Add(this.TranslateDoNotChange);
             this.grpBoxTranslate.Controls.Add(this.TranslateDivide);
             this.grpBoxTranslate.Controls.Add(this.TranslateMultiply);
@@ -321,8 +321,8 @@ namespace BrawlLib.Internal.Windows.Controls.EditAllDialog
             // 
             // grpBoxRotate
             // 
-            this.grpBoxRotate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpBoxRotate.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
+                                                                                                                 | System.Windows.Forms.AnchorStyles.Left);
             this.grpBoxRotate.Controls.Add(this.RotateDoNotChange);
             this.grpBoxRotate.Controls.Add(this.RotateDivide);
             this.grpBoxRotate.Controls.Add(this.RotateMultiply);
@@ -475,8 +475,8 @@ namespace BrawlLib.Internal.Windows.Controls.EditAllDialog
             // 
             // grpBoxScale
             // 
-            this.grpBoxScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpBoxScale.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
+                                                                                                                | System.Windows.Forms.AnchorStyles.Left);
             this.grpBoxScale.Controls.Add(this.ScaleDoNotChange);
             this.grpBoxScale.Controls.Add(this.ScaleDivide);
             this.grpBoxScale.Controls.Add(this.ScaleMultiply);

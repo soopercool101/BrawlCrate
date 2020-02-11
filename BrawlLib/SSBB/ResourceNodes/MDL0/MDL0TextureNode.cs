@@ -426,7 +426,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     Load(_index, _program, Model, true);
                 }
-                return (Source is IImageSource i) ? i.ImageCount : 0;
+                return Source is IImageSource i ? i.ImageCount : 0;
             }
         }
 

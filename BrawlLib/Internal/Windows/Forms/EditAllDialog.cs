@@ -38,7 +38,7 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(325, 344);
             this.btnCancel.Name = "btnCancel";
@@ -50,7 +50,7 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // btnOkay
             // 
-            this.btnOkay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOkay.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.btnOkay.Location = new System.Drawing.Point(244, 344);
             this.btnOkay.Name = "btnOkay";
             this.btnOkay.Size = new System.Drawing.Size(75, 23);
@@ -61,9 +61,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // editAllCHR0Editor1
             // 
-            this.editAllCHR0Editor1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.editAllCHR0Editor1.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
+                                                                                                                       | System.Windows.Forms.AnchorStyles.Left 
+                                                                                                                       | System.Windows.Forms.AnchorStyles.Right);
             this.editAllCHR0Editor1.Location = new System.Drawing.Point(0, 0);
             this.editAllCHR0Editor1.Name = "editAllCHR0Editor1";
             this.editAllCHR0Editor1.Size = new System.Drawing.Size(404, 338);
