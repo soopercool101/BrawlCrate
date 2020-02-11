@@ -351,7 +351,7 @@ namespace BrawlLib.SSBB.Types
 
         public void Set(int index, ruint.RefType refType, byte dataType, VoidPtr address)
         {
-            *((ruint*) Address + index) = new ruint(refType, dataType, (int) address - Address);
+            *((ruint*) Address + index) = new ruint(refType, dataType, address - Address);
         }
     }
 
