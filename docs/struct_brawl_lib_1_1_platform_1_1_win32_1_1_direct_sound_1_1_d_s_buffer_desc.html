@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30g</span>
+   &#160;<span id="projectnumber">v0.30h</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -71,7 +71,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc Struct Reference</div>  </div>
@@ -99,11 +98,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a01970a33412dd3d839753bc6797a1731"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a088f5ac64a9dc0d2fdb923acf9b791d9"><td class="memItemLeft" align="right" valign="top">Guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a088f5ac64a9dc0d2fdb923acf9b791d9">guid3DAlgorithm</a></td></tr>
 <tr class="separator:a088f5ac64a9dc0d2fdb923acf9b791d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:ace4513dd2441b0a1d06f1d047b3be58f"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#ace4513dd2441b0a1d06f1d047b3be58f">Size</a> = 36</td></tr>
-<tr class="separator:ace4513dd2441b0a1d06f1d047b3be58f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aee6c393a215e56d3fd43a77191e2ae32"></a>
@@ -139,10 +133,10 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                                                                   : <span class="keyword">this</span>(bufferSize, bufferCaps, <span class="keyword">null</span>,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    Guid.Empty)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                                                   : <span class="keyword">this</span>(bufferSize, bufferCaps, <span class="keyword">null</span>,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    Guid.Empty)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -191,14 +185,14 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a24bd4c8f8eadaff62a76a4b89923a68f">dwSize</a> = <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#ace4513dd2441b0a1d06f1d047b3be58f">Size</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a8032e1a2ff8fe604206a90c8966ad589">dwFlags</a> = bufferCaps;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a45b7035651ac45ac5b2d2114732358c7">dwBufferBytes</a> = bufferSize;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#aba5a4d542677cbb764bea1aee1855f78">dwReserved</a> = 0;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a01970a33412dd3d839753bc6797a1731">lpwfxFormat</a> = format;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a088f5ac64a9dc0d2fdb923acf9b791d9">guid3DAlgorithm</a> = algorithm;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                }</div>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a24bd4c8f8eadaff62a76a4b89923a68f">dwSize</a> = (uint)<span class="keyword">sizeof</span>(<a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#aee6c393a215e56d3fd43a77191e2ae32">DSBufferDesc</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a8032e1a2ff8fe604206a90c8966ad589">dwFlags</a> = bufferCaps;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a45b7035651ac45ac5b2d2114732358c7">dwBufferBytes</a> = bufferSize;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#aba5a4d542677cbb764bea1aee1855f78">dwReserved</a> = 0;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a01970a33412dd3d839753bc6797a1731">lpwfxFormat</a> = format;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    <a class="code" href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a088f5ac64a9dc0d2fdb923acf9b791d9">guid3DAlgorithm</a> = algorithm;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -287,39 +281,17 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ace4513dd2441b0a1d06f1d047b3be58f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace4513dd2441b0a1d06f1d047b3be58f">&#9670;&nbsp;</a></span>Size</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const uint BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.Size = 36</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>BrawlLib/Platform/Win32.DirectSoundBuffer.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_ace4513dd2441b0a1d06f1d047b3be58f"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#ace4513dd2441b0a1d06f1d047b3be58f">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.Size</a></div><div class="ttdeci">const uint Size</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:17</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a088f5ac64a9dc0d2fdb923acf9b791d9"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a088f5ac64a9dc0d2fdb923acf9b791d9">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.guid3DAlgorithm</a></div><div class="ttdeci">Guid guid3DAlgorithm</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:24</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a01970a33412dd3d839753bc6797a1731"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a01970a33412dd3d839753bc6797a1731">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.lpwfxFormat</a></div><div class="ttdeci">WaveFormatEx * lpwfxFormat</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:23</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a8032e1a2ff8fe604206a90c8966ad589"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a8032e1a2ff8fe604206a90c8966ad589">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwFlags</a></div><div class="ttdeci">DSBufferCapsFlags dwFlags</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:20</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a24bd4c8f8eadaff62a76a4b89923a68f"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a24bd4c8f8eadaff62a76a4b89923a68f">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwSize</a></div><div class="ttdeci">uint dwSize</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:19</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_aba5a4d542677cbb764bea1aee1855f78"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#aba5a4d542677cbb764bea1aee1855f78">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwReserved</a></div><div class="ttdeci">uint dwReserved</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:22</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a45b7035651ac45ac5b2d2114732358c7"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a45b7035651ac45ac5b2d2114732358c7">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwBufferBytes</a></div><div class="ttdeci">uint dwBufferBytes</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:21</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a088f5ac64a9dc0d2fdb923acf9b791d9"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a088f5ac64a9dc0d2fdb923acf9b791d9">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.guid3DAlgorithm</a></div><div class="ttdeci">Guid guid3DAlgorithm</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:22</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a01970a33412dd3d839753bc6797a1731"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a01970a33412dd3d839753bc6797a1731">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.lpwfxFormat</a></div><div class="ttdeci">WaveFormatEx * lpwfxFormat</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:21</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a8032e1a2ff8fe604206a90c8966ad589"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a8032e1a2ff8fe604206a90c8966ad589">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwFlags</a></div><div class="ttdeci">DSBufferCapsFlags dwFlags</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:18</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a24bd4c8f8eadaff62a76a4b89923a68f"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a24bd4c8f8eadaff62a76a4b89923a68f">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwSize</a></div><div class="ttdeci">uint dwSize</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:17</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_aba5a4d542677cbb764bea1aee1855f78"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#aba5a4d542677cbb764bea1aee1855f78">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwReserved</a></div><div class="ttdeci">uint dwReserved</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:20</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_aee6c393a215e56d3fd43a77191e2ae32"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#aee6c393a215e56d3fd43a77191e2ae32">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.DSBufferDesc</a></div><div class="ttdeci">DSBufferDesc(uint bufferSize, DSBufferCapsFlags bufferCaps)</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:24</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc_html_a45b7035651ac45ac5b2d2114732358c7"><div class="ttname"><a href="struct_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound_1_1_d_s_buffer_desc.html#a45b7035651ac45ac5b2d2114732358c7">BrawlLib.Platform.Win32.DirectSound.DSBufferDesc.dwBufferBytes</a></div><div class="ttdeci">uint dwBufferBytes</div><div class="ttdef"><b>Definition:</b> Win32.DirectSoundBuffer.cs:19</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
