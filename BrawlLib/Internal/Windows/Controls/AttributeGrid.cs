@@ -765,6 +765,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
                 RefreshRow(index);
+                somethingChanged = true;
             }
 
             switch (nType)
@@ -779,8 +780,6 @@ namespace BrawlLib.Internal.Windows.Controls
                     btnMinusInf.Visible = true;
                     break;
             }
-
-            somethingChanged = true;
         }
 
         private readonly GoodColorDialog _dlgColor;
