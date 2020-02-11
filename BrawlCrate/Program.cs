@@ -29,7 +29,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30g";
+        public static readonly string TagName = "v0.30h";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,13 +38,12 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30g! Here's what's new in this release:
-- Adds support for Byte and Short interpretations to attribute grids
-- Adds support to paste in color+alpha data with Ctrl+V in Color Control
-- Fix bug in which duplicating ARC Entries would result in crashes
-- Fix bug in which new collision objects would not have names and would not be shown in the main form
-- Fix bug in which imported MDL0 materials would be given generic names
-- Fix bug in which duplicated MDL0 materials would not have proper names for their textures
+            @"Updated to BrawlCrate v0.30h! Here's what's new in this release:
+- Add multi-import support for MDL0 subentries
+- Improve MSBin parsing
+- Improve Attribute Grid support
+- Fix SHP0 save corruption
+- Fix various duplication bugs
 
 Full changelog and documentation can be viewed from the help menu.";
 
@@ -176,7 +175,7 @@ Full changelog and documentation can be viewed from the help menu.";
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
 
-            AssemblyTitleShort = AssemblyTitleFull.Replace("Hotfix ", "h");
+            AssemblyTitleShort = AssemblyTitleFull.Replace(" Hotfix ", "-h");
 #endif
 #if DEBUG
             AssemblyTitleFull += " DEBUG";

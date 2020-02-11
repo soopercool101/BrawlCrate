@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30g
+BrawlCrate - v0.30h
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,28 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.30h - (2/11/2020)
+ . CHR0 Merge now works with anim format
+ . MSBin parser now works with MSBins with their data bitshifted further than 2
+ . When a file fails to save, allow it to be reported as an error
+ . Attribute Grid now shows mouseover text
+ . Attribute Grid now warns user when there are unsaved internal documentation changes
+ . MDL0 subentries (Materials, Shaders, UVs, now can be multi-imported
+ . When reporting an error, there is now an option to directly open the webpage with the issue
+ . Delete redundant instances of a palette when deleting a TEX0/PLT0 combination
+ . REFT, MDL0 Materials, and MDL0 Textures now display image previews
+ . Shortcut to preview interpolation has been changed from Ctrl+T to Ctrl+I
+ . Import Settings window for DAE now shows the filename in the title bar
+ . Add context menu item to select redirect target for ARCEntry Redirects
+ . Fix bug in which SHP0 would save some entries and subentries without names
+ . Fix bug in which some bones would be missed by the Blender Bone Fix on some platforms
+ . Fix bug in which Color Smashing would not always correctly update palettes
+ . Fix bug in which Sources wouldn't update in the animation panel's context menus
+ . Fix bug in which the animation panel's save button would only save the currently open file instead of external files
+ . Fix bugs when duplicating PAT0 entries, PAT0 subentries and ARCEntry Redirects
+ . Fix bugs saving RSAR and U8Nodes as entries of a U8Nodes
+ . Fix bug in which using the API updater would leave a "temp.zip" file in the API folder
  
  - BrawlCrate v0.30g - (1/22/2020)
  . Update internal documentation to v0.30.6
