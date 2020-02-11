@@ -125,22 +125,22 @@ namespace BrawlLib.Wii.Audio
             dataAddr = pStr;
 
             //Sounds
-            header->_maskOffset1 = checked((int)(dataAddr - baseAddr));
-            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*)dataAddr, entries._sounds, node, 0);
+            header->_maskOffset1 = dataAddr - baseAddr;
+            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*) dataAddr, entries._sounds, node, 0);
 
             //Player Info
-            header->_maskOffset2 = checked((int)(dataAddr - baseAddr));
-            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*)dataAddr, entries._playerInfo, node, 1);
+            header->_maskOffset2 = dataAddr - baseAddr;
+            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*) dataAddr, entries._playerInfo, node, 1);
 
             //Groups
-            header->_maskOffset3 = checked((int)(dataAddr - baseAddr));
-            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*)dataAddr, entries._groups, node, 2);
+            header->_maskOffset3 = dataAddr - baseAddr;
+            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*) dataAddr, entries._groups, node, 2);
 
             //Banks
-            header->_maskOffset4 = checked((int)(dataAddr - baseAddr));
-            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*)dataAddr, entries._banks, node, 3);
+            header->_maskOffset4 = dataAddr - baseAddr;
+            dataAddr += EncodeMaskGroup(header, (SYMBMaskHeader*) dataAddr, entries._banks, node, 3);
 
-            int temp = checked((int)(dataAddr - header));
+            int temp = (int) dataAddr - (int) header;
             len = temp.Align(0x20);
 
             //Fill padding
@@ -168,7 +168,7 @@ namespace BrawlLib.Wii.Audio
             int index = 0;
 
             //Set up sound ruint list
-            values[0] = (uint)(dataAddr - baseAddr);
+            values[0] = (uint) dataAddr - (uint) baseAddr;
             entryList = (RuintList*) dataAddr;
             entryList->_numEntries = entries._sounds.Count;
             dataAddr += entries._sounds.Count * 8 + 4;
@@ -177,14 +177,14 @@ namespace BrawlLib.Wii.Audio
             foreach (RSAREntryNode r in entries._sounds)
             {
                 r._rebuildBase = baseAddr;
-                entryList->Entries[index++] = (uint)(dataAddr - baseAddr);
+                entryList->Entries[index++] = (uint) dataAddr - (uint) baseAddr;
                 r.Rebuild(dataAddr, r._calcSize, true);
                 dataAddr += r._calcSize;
             }
 
             index = 0;
             //Set up bank ruint list
-            values[1] = (uint)(dataAddr - baseAddr);
+            values[1] = (uint) dataAddr - (uint) baseAddr;
             entryList = (RuintList*) dataAddr;
             entryList->_numEntries = entries._banks.Count;
             dataAddr += entries._banks.Count * 8 + 4;
@@ -193,14 +193,14 @@ namespace BrawlLib.Wii.Audio
             foreach (RSAREntryNode r in entries._banks)
             {
                 r._rebuildBase = baseAddr;
-                entryList->Entries[index++] = (uint)(dataAddr - baseAddr);
+                entryList->Entries[index++] = (uint) dataAddr - (uint) baseAddr;
                 r.Rebuild(dataAddr, r._calcSize, true);
                 dataAddr += r._calcSize;
             }
 
             index = 0;
             //Set up playerInfo ruint list
-            values[2] = (uint)(dataAddr - baseAddr);
+            values[2] = (uint) dataAddr - (uint) baseAddr;
             entryList = (RuintList*) dataAddr;
             entryList->_numEntries = entries._playerInfo.Count;
             dataAddr += entries._playerInfo.Count * 8 + 4;
@@ -209,14 +209,14 @@ namespace BrawlLib.Wii.Audio
             foreach (RSAREntryNode r in entries._playerInfo)
             {
                 r._rebuildBase = baseAddr;
-                entryList->Entries[index++] = (uint)(dataAddr - baseAddr);
+                entryList->Entries[index++] = (uint) dataAddr - (uint) baseAddr;
                 r.Rebuild(dataAddr, r._calcSize, true);
                 dataAddr += r._calcSize;
             }
 
             index = 0;
             //Set up file ruint list
-            values[3] = (uint)(dataAddr - baseAddr);
+            values[3] = (uint) dataAddr - (uint) baseAddr;
             entryList = (RuintList*) dataAddr;
             entryList->_numEntries = entries._files.Count;
             dataAddr += entries._files.Count * 8 + 4;
@@ -227,7 +227,7 @@ namespace BrawlLib.Wii.Audio
                 //if (file._groupRefs.Count == 0 && !(file is RSARExtFileNode))
                 //    continue;
 
-                entryList->Entries[index++] = (uint)(dataAddr - baseAddr);
+                entryList->Entries[index++] = (uint) dataAddr - (uint) baseAddr;
                 INFOFileHeader* fileHdr = (INFOFileHeader*) dataAddr;
                 dataAddr += INFOFileHeader.Size;
                 RuintList* list = (RuintList*) dataAddr;
@@ -303,7 +303,7 @@ namespace BrawlLib.Wii.Audio
 
             index = 0;
             //Set up group ruint list
-            values[4] = (uint)(dataAddr - baseAddr);
+            values[4] = (uint) dataAddr - (uint) baseAddr;
             entryList = (RuintList*) dataAddr;
             entryList->_numEntries = entries._groups.Count;
             dataAddr += entries._groups.Count * 8 + 4;
@@ -312,13 +312,13 @@ namespace BrawlLib.Wii.Audio
             foreach (RSAREntryNode r in entries._groups)
             {
                 r._rebuildBase = baseAddr;
-                entryList->Entries[index++] = (uint)(dataAddr - baseAddr);
+                entryList->Entries[index++] = (uint) dataAddr - (uint) baseAddr;
                 r.Rebuild(dataAddr, r._calcSize, true);
                 dataAddr += r._calcSize;
             }
 
             //Write footer
-            values[5] = (uint)(dataAddr - baseAddr);
+            values[5] = (uint) dataAddr - (uint) baseAddr;
             *(INFOFooter*) dataAddr = node._ftr;
 
             //Set header
@@ -373,7 +373,7 @@ namespace BrawlLib.Wii.Audio
                 g._headerAddr->_waveDataLength = audioLen;
             }
 
-            len = ((int)(addr - (VoidPtr)header)).Align(0x20);
+            len = ((int) addr - (int) (VoidPtr) header).Align(0x20);
 
             //Set header
             header->_header._tag = FILEHeader.Tag;

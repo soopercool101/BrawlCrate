@@ -16,7 +16,7 @@ namespace BrawlLib.Internal
             set => _length = value;
         }
 
-        public unsafe UnsafeBuffer(int size)
+        public UnsafeBuffer(int size)
         {
             _data = Marshal.AllocHGlobal(size);
             _length = size;
@@ -29,7 +29,7 @@ namespace BrawlLib.Internal
 
         public VoidPtr this[int count, int stride] => _data[count, stride];
 
-        public unsafe void Dispose()
+        public void Dispose()
         {
             try
             {

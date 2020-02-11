@@ -1043,7 +1043,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_children != null)
                 {
-                    ulong offset = VoidPtr.MinusUL(address, WorkingSource.Address);
+                    int offset = address - WorkingSource.Address;
                     foreach (ResourceNode n in _children)
                     {
                         n.OnParentMoved(offset);
@@ -1061,7 +1061,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal virtual void OnParentMoved(ulong offset)
+        internal virtual void OnParentMoved(int offset)
         {
             if (_compression == CompressionType.None)
             {
@@ -1100,7 +1100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Memory.Move(address, WorkingUncompressed.Address, (uint) length);
             DataSource newsrc = new DataSource(address, length);
 
-            ulong offset = VoidPtr.MinusUL(address, WorkingUncompressed.Address);
+            int offset = address - WorkingUncompressed.Address;
             foreach (ResourceNode n in Children)
             {
                 n.OnParentMovedUncompressed(offset);
@@ -1110,7 +1110,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _replUncompSrc = newsrc;
         }
 
-        internal virtual void OnParentMovedUncompressed(ulong offset)
+        internal virtual void OnParentMovedUncompressed(int offset)
         {
             if (_replUncompSrc != DataSource.Empty)
             {

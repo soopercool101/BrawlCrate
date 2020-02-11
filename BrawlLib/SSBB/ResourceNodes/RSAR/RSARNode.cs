@@ -391,8 +391,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             INFOHeader* info;
             FILEHeader* data;
 
-            info = (INFOHeader*)checked((uint)symb + (symbLen = _converter.EncodeSYMBBlock(symb, _entryList, this)));
-            data = (FILEHeader*)checked((uint)info + (infoLen = _converter.EncodeINFOBlock(info, _entryList, this)));
+            info = (INFOHeader*) ((int) symb + (symbLen = _converter.EncodeSYMBBlock(symb, _entryList, this)));
+            data = (FILEHeader*) ((int) info + (infoLen = _converter.EncodeINFOBlock(info, _entryList, this)));
             fileLen = _converter.EncodeFILEBlock(data, address, _entryList, this);
 
             rsar->Set(symbLen, infoLen, fileLen, VersionMinor);

@@ -44,7 +44,7 @@ namespace BrawlLib.SSBB
             for (int i = 0; i < count;)
             {
                 label = _labels[i++];
-                list[i] = checked((int)(dataAddr - list));
+                list[i] = (int) dataAddr - (int) list;
                 ((LABLEntry*) dataAddr)->Set(label.Tag, label.String);
                 dataAddr += label.DataLen;
             }
