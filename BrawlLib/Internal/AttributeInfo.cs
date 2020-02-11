@@ -106,8 +106,8 @@ namespace BrawlLib.Internal
 
             if (File.Exists(Filename))
             {
-                if (DialogResult.Yes != MessageBox.Show("Overwrite " + Filename + "?", "Overwrite",
-                        MessageBoxButtons.YesNo))
+                if (MessageBox.Show("Overwrite " + Filename + "?", "Overwrite", MessageBoxButtons.YesNo)
+                    != DialogResult.Yes)
                 {
                     return;
                 }
@@ -131,6 +131,7 @@ namespace BrawlLib.Internal
                         sw.WriteLine();
                     }
                 }
+                sw.Close();
             }
         }
     }

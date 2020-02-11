@@ -394,6 +394,7 @@ namespace BrawlLib.Internal.Windows.Controls
 
         public void LoadData()
         {
+            somethingChanged = false;
             attributes.Columns.Clear();
             attributes.Rows.Clear();
 
@@ -509,18 +510,13 @@ namespace BrawlLib.Internal.Windows.Controls
                 return;
             }
 
-            if (e.ColumnIndex == 0)
-            {
-                somethingChanged = true;
-                return;
-            }
-
             int index = dtgrdAttributes.CurrentCell.RowIndex;
             string value = attributes.Rows[index][1].ToString();
 
             string name = attributes.Rows[index][0].ToString();
             if (AttributeArray[index]._name != name)
             {
+                somethingChanged = true;
                 AttributeArray[index]._name = name;
                 DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
