@@ -17,6 +17,11 @@ namespace BrawlLib.Internal
         public int Int => *(bint*) address;
         public float Single => *(bfloat*) address;
 
+        public static ulong MinusUL(VoidPtr p1, VoidPtr p2)
+        {
+            return checked((ulong)((byte*)p1.address - (byte*)p2.address));
+        }
+
         public static int operator -(VoidPtr p1, VoidPtr p2)
         {
             return checked((int) ((byte*) p1.address - (byte*) p2.address));
