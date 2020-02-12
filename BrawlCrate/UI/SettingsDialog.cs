@@ -239,6 +239,7 @@ namespace BrawlCrate.UI
             int index = 0;
             string cmd;
             _updating = true;
+            chkBoxAssociateAll.Checked = true;
             foreach (ListViewItem i in lstViewFileAssociations.Items)
             {
                 try
@@ -247,16 +248,21 @@ namespace BrawlCrate.UI
                         !string.IsNullOrEmpty(cmd = _typeList[index].GetCommand("open")) &&
                         cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
-                        i.Tag = i.Checked = true;
+                        i.Tag = true;
+                        i.Checked = true;
                     }
                     else
                     {
-                        i.Tag = i.Checked = false;
+                        chkBoxAssociateAll.Checked = false;
+                        i.Tag = false;
+                        i.Checked = false;
                     }
                 }
                 catch
                 {
-                    // ignored
+                    chkBoxAssociateAll.Checked = false;
+                    i.Tag = false;
+                    i.Checked = false;
                 }
 
                 index++;
@@ -269,7 +275,7 @@ namespace BrawlCrate.UI
             }
             catch
             {
-                // ignored
+                datFileAssociation.Checked = false;
             }
 
             try
@@ -279,7 +285,7 @@ namespace BrawlCrate.UI
             }
             catch
             {
-                // ignored
+                binFileAssociation.Checked = false;
             }
 
             chkDocUpdates.Checked = MainForm.Instance.GetDocumentationUpdates;
