@@ -111,9 +111,9 @@ Full changelog can be viewed from the help menu.";
             _folderDlg = new FolderBrowserDialog();
 #endif
 
-			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-			Application.ThreadException += Application_ThreadException;
-			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+			//AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+			//Application.ThreadException += Application_ThreadException;
+			//Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
 			// Set default values for settings immediately, to prevent possible errors down the line
 			if (BrawlLib.Properties.Settings.Default.Codes == null)

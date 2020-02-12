@@ -1,32 +1,28 @@
-﻿using BrawlLib.OpenGL;
-using BrawlLib.SSBBTypes;
-using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
+
+using BrawlLib.OpenGL;
+using BrawlLib.SSBBTypes;
+
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class CollisionNode : ARCEntryNode
+	public unsafe class CollisionNode : ARCEntryNode
     {
         internal CollisionHeader* Header => (CollisionHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CollisionDef;
         public override Type[] AllowedChildTypes => new Type[] {typeof(CollisionObject)};
 
-        [Browsable(false)]
-        public bool IsRendering
-        {
-            get => _render;
-            set => _render = value;
-        }
+		// No reason to use _render if IsRendering functions the same and doesn't use a different access method.
+		// ex: IsRendering {get _render; private set _render = value;} only allows CollisionNode to change _render.
+		[Browsable(false)]
+		public bool IsRendering { get; set; } = true;
 
-        private bool _render = true;
-
-        internal int _unk1;
+		internal int _unk1;
 
         public override bool OnInitialize()
         {
@@ -209,7 +205,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public void Render()
+        public void Render(CollisionObject.CollisionObjectRenderInfo renderInfo)
+        {
+            GL.Disable(EnableCap.Lighting);
+            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
+            GL.Enable(EnableCap.CullFace);
+            GL.CullFace(CullFaceMode.Front);
+
+            foreach (CollisionObject obj in Children)
+            {
+                obj.Render(renderInfo);
+            }
+        }  
+		// A version of render that does not force other renderers to render CollisionObjectRenderInfo.
+		public void Render()
         {
             GL.Disable(EnableCap.Lighting);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
@@ -377,6 +386,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int _unk1, _unk2, _unk3, _unk5, _unk6, _boneIndex;
         public ColObjFlags _flags;
 
+        public List<CollisionLink> _points = new List<CollisionLink>();
         public List<CollisionPlane> _planes = new List<CollisionPlane>();
         public bool _render = true;
         public string _modelName = "", _boneName = "";
@@ -392,8 +402,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             ModuleControlled = 4,
             SSEUnknown = 8,
         }
-
-        public List<CollisionLink> _points = new List<CollisionLink>();
 
         public CollisionObject()
         {
@@ -480,7 +488,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal unsafe void Render()
+		// Internal had to be changed to public so that Paste Options renders.
+		// Or any class that do not have a node.
+        public unsafe void Render(CollisionObjectRenderInfo renderInfo)
         {
             if (!_render)
             {
@@ -489,12 +499,29 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             foreach (CollisionPlane p in _planes)
             {
-                p.Render();
+                p.Render(renderInfo.ColorizePlanesToObjectColor);
             }
 
             foreach (CollisionLink l in _points)
             {
-                l.Render();
+                l.Render(renderInfo);
+            }
+        }
+		public unsafe void Render()
+        {
+            if (!_render)
+            {
+                return;
+            }
+
+            foreach (CollisionPlane p in _planes)
+            {
+                p.Render(false);
+            }
+
+            foreach (CollisionLink l in _points)
+            {
+                l.Render(null);
             }
         }
 
@@ -511,10 +538,37 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.Export(outPath);
         }
 
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+
+
+		// A color that will be used to show the collisions that this object is represented by.
+		// If transparent, then this color will not be used.
+		public System.Drawing.Color CollisionObjectColorRepresentation = System.Drawing.Color.Transparent;
+
+		// This helps in crushing down the amounts of arguments needed to pass just to render.
+		// Not sure if this is a slower/faster method in terms of performance.
+		public class CollisionObjectRenderInfo
+		{
+			// Needed in knowing if the link will be scaled.
+			public bool ScaleLink;
+			// The camera is needed for link scale values.
+			public GLCamera Camera;
+			// Required so that links can colorize based on CollisionObject's Color Representation.
+			// This won't matter if the color representation's alpha is set to 0.
+			public bool ColorizePlanesToObjectColor;
+
+			public CollisionObjectRenderInfo(bool ScaleLink, bool ColorizePlanesToObjectColor, ref GLCamera Camera)
+			{
+				this.ScaleLink = ScaleLink;
+				this.ColorizePlanesToObjectColor = ColorizePlanesToObjectColor;
+				this.Camera = Camera;
+			}
+			public CollisionObjectRenderInfo()
+			{
+				this.ScaleLink = false;
+				this.ColorizePlanesToObjectColor = false;
+				this.Camera = null;
+			}
+		}
     }
 
     public unsafe class CollisionLink
@@ -720,6 +774,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             CollisionLink link1, link2;
             CollisionPlane plane1, plane2;
+
             while (_members.Count != 0)
             {
                 plane1 = _members[0];
@@ -749,7 +804,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public void Render()
+        public void Render(CollisionObject.CollisionObjectRenderInfo renderInfo)
         {
             Color4 clr = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
             float mult = 1.0f;
@@ -850,13 +905,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             Vector2 v = Value;
+			float ScaleBy = 1.0f;
+
+			if (renderInfo != null && renderInfo.ScaleLink && renderInfo.Camera != null)
+			{
+				ScaleBy = GetCamScaledDistance(renderInfo.Camera);
+			}
 
             GL.Disable(EnableCap.CullFace);
             TKContext.DrawBox(
-                new Vector3(v._x - mult * BoxRadius, v._y - mult * BoxRadius, LineWidth),
-                new Vector3(v._x + mult * BoxRadius, v._y + mult * BoxRadius, -LineWidth));
+                new Vector3(v._x - mult * BoxRadius * ScaleBy, v._y - mult * BoxRadius * ScaleBy, LineWidth),
+                new Vector3(v._x + mult * BoxRadius * ScaleBy, v._y + mult * BoxRadius * ScaleBy, -LineWidth));
             GL.Enable(EnableCap.CullFace);
         }
+
+		public float GetCamScaledDistance(GLCamera cam, float Radius = 1.0f)
+		{
+			return ModelEditorBase.CamDistance(new Vector3(Value), cam, Radius);
+		}
     }
 
     public unsafe class CollisionPlane
@@ -971,7 +1037,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _parent._planes.Remove(this);
         }
 
-        internal void Render()
+        internal void Render(bool ColorizePlanesBasedOnObjectColor)
         {
             if (!_render || LinkLeft == LinkRight)
             {
@@ -999,7 +1065,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 lev++;
             }
 
-            if (lev == 1)
+			if (ColorizePlanesBasedOnObjectColor && _parent.CollisionObjectColorRepresentation.A > 0)
+			{
+				float R = _parent.CollisionObjectColorRepresentation.R / 255.0f;
+				float G = _parent.CollisionObjectColorRepresentation.G / 255.0f;
+				float B = _parent.CollisionObjectColorRepresentation.B / 255.0f;
+				float A = _parent.CollisionObjectColorRepresentation.A / 255.0f;
+				GL.Color4(R, G, B, A);
+			}
+            else if (lev == 1)
             {
                 GL.Color4(1.0f, 0.5f, 0.5f, alpha);
             }
@@ -1007,7 +1081,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 GL.Color4(0.9f, 0.0f, 0.9f, alpha);
             }
-            else if (!IsFallThrough)
+
+			else if (!IsFallThrough)
             {
                 switch (GetCurrentType())
                 {

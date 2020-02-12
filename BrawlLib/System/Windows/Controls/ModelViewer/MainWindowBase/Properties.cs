@@ -476,13 +476,13 @@ namespace System.Windows.Forms
 
         public static float CamDistance(Vector3 v, GLCamera cam, float radius = _orbRadius)
         {
-            if (!cam.Orthographic)
+            if (cam.Orthographic)
             {
-                return v.TrueDistance(cam.GetPoint()) / radius * (cam.VerticalFieldOfView / 45.0f) * 0.1f;
+                return cam._scale._x * 80.0f;
             }
             else
             {
-                return cam._scale._x * 80.0f;
+                return v.TrueDistance(cam.GetPoint()) / radius * (cam.VerticalFieldOfView / 45.0f) * 0.1f;
             }
         }
 

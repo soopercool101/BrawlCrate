@@ -333,7 +333,7 @@ namespace BrawlLib.SSBBTypes
 
         public static readonly CollisionTerrain[] Terrains = new CollisionTerrain[]
         {
-            //                   ID    Display Name                                                 Pluck Speed     R       Y       B       P       W
+            //                   ID    Display Name                    Pluck Speed R  Y  B   P    W
             new CollisionTerrain(0x00, Properties.Resources.Collision0x00, "100%", 1, 1, 1, 0.4, 0.5),
             new CollisionTerrain(0x01, Properties.Resources.Collision0x01, "40%", 1, 1, 1, 0.4, 0.5),
             new CollisionTerrain(0x02, Properties.Resources.Collision0x02, "100%", 1, 1, 1, 0.4, 0.5),

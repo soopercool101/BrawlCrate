@@ -70,6 +70,12 @@ namespace System
             _y = s;
             _z = s;
         }
+		public Vector3(Vector2 s)
+        {
+            _x = s._x;
+            _y = s._y;
+            _z = 0;
+        }
 
         public Vector3(SerializationInfo info, StreamingContext context)
         {

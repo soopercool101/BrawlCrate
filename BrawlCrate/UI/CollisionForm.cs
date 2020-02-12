@@ -1,5 +1,7 @@
 ﻿using BrawlCrate;
+
 using BrawlLib.SSBB.ResourceNodes;
+using System.ComponentModel;
 
 namespace System.Windows.Forms
 {
@@ -7,26 +9,26 @@ namespace System.Windows.Forms
     {
         #region Designer
 
-        private CollisionEditor collisionEditor1;
+        private CollisionEditor CollisionEditorControl;
 
         private void InitializeComponent()
         {
-            collisionEditor1 = new CollisionEditor();
+            CollisionEditorControl = new CollisionEditor();
             SuspendLayout();
-            // 
-            // collisionEditor1
-            // 
-            collisionEditor1.BackColor = Drawing.Color.Lavender;
-            collisionEditor1.Dock = DockStyle.Fill;
-            collisionEditor1.Location = new Drawing.Point(0, 0);
-            collisionEditor1.Name = "collisionEditor1";
-            collisionEditor1.Size = new Drawing.Size(800, 600);
-            collisionEditor1.TabIndex = 0;
+			// 
+			// CollisionEditorControl
+			// 
+			CollisionEditorControl.BackColor = Drawing.Color.Lavender;
+			CollisionEditorControl.Dock = DockStyle.Fill;
+			CollisionEditorControl.Location = new Drawing.Point(0, 0);
+			CollisionEditorControl.Name = "collisionEditor1";
+			CollisionEditorControl.Size = new Drawing.Size(800, 600);
+			CollisionEditorControl.TabIndex = 0;
             // 
             // CollisionForm
             // 
             ClientSize = new Drawing.Size(800, 600);
-            Controls.Add(collisionEditor1);
+            Controls.Add(CollisionEditorControl);
             Icon = BrawlLib.Properties.Resources.Icon;
             MinimizeBox = false;
             Name = "CollisionForm";
@@ -60,15 +62,19 @@ namespace System.Windows.Forms
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            collisionEditor1.TargetNode = _node;
-            collisionEditor1._modelPanel.Capture();
+
+			CollisionEditorControl.CollisionFormShown(_node);
+
+			// The text will now tell you what kind of collision you are editing by using the node's name.
+			Text = $"{Program.AssemblyTitleShort} - Editing {_node.Name} - Collision Editor";
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            collisionEditor1.TargetNode = null;
-            collisionEditor1._modelPanel.Release();
+
+			// It was moved so that CollisionEditor takes care of other forms running inside. 
+			CollisionEditorControl.CollisionFormClosing();
         }
 
         protected override void OnClosed(EventArgs e)
@@ -78,5 +84,27 @@ namespace System.Windows.Forms
             MainForm.Instance.Visible = true;
             MainForm.Instance.Refresh();
         }
-    }
+
+		//protected override void OnLostFocus(EventArgs e)
+		//{
+		//	base.OnLostFocus(e);
+		//	this.Focus();
+		//}
+
+		//// These lets us know if the collision form is activated. 
+		//// Useful for showing/hiding other windows that CollisionEditor makes use of.
+		//protected override void OnActivated(EventArgs e)
+		//{
+		//	base.OnActivated(e);
+
+		//	//CollisionEditorControl.EditorFocused();
+		//}
+		//protected override void OnDeactivate(EventArgs e)
+		//{
+		//	base.OnDeactivate(e);
+		//	this.Focus();
+
+		//	CollisionEditorControl.EditorUnfocused();
+		//}
+	}
 }
