@@ -1013,7 +1013,7 @@ namespace BrawlCrate.UI
             chkBoxAssociateAll.TabIndex = 5;
             chkBoxAssociateAll.Text = "Check All";
             chkBoxAssociateAll.UseVisualStyleBackColor = true;
-            chkBoxAssociateAll.CheckedChanged += new EventHandler(CheckBox1_CheckedChanged);
+            chkBoxAssociateAll.CheckedChanged += new EventHandler(ChkBoxAssociateAll_CheckedChanged);
             // 
             // lstViewFileAssociations
             // 
@@ -1577,7 +1577,7 @@ namespace BrawlCrate.UI
             _updating = false;
         }
 
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxAssociateAll_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1660,25 +1660,6 @@ namespace BrawlCrate.UI
 
             MainForm.Instance.UpdateAutomatically = rdoAutoUpdate.Checked;
             MainForm.Instance.CheckUpdatesOnStartup = rdoAutoUpdate.Checked || rdoCheckStartup.Checked;
-        }
-
-        private void BtnCanaryBranch_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show(this,
-                    "Warning: Switching branches or repositories can be unstable unless you know what you're doing. You should generally stay on the brawlcrate-master branch unless directed otherwise for testing purposes. You can reset to the default for either field by leaving it blank.",
-                    "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                //string cRepo = MainForm.currentRepo;
-                //string cBranch = MainForm.currentBranch;
-                //TwoInputStringDialog d = new TwoInputStringDialog();
-                //if (d.ShowDialog(this, "Enter new repo/branch to track", "Repo:", cRepo, "Branch:", cBranch) == DialogResult.OK)
-                //{
-                //    if (!d.InputText1.Equals(cRepo, StringComparison.OrdinalIgnoreCase) || !d.InputText2.Equals(cBranch, StringComparison.OrdinalIgnoreCase))
-                //    {
-                //        MainForm.SetCanaryTracking(d.InputText1, d.InputText2);
-                //    }
-                //}
-            }
         }
 
         private void ChkBoxAutoPlayAudio_CheckedChanged(object sender, EventArgs e)
