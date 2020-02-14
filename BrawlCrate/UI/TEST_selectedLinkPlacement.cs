@@ -28,7 +28,6 @@ namespace System.Windows.Forms
 			}
 
 			this.Invalidate();
-			this.Update();
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
@@ -63,19 +62,18 @@ namespace System.Windows.Forms
 		public TEST_selectedLinkPlacement()
 		{
 			this.InitializeComponent();
+
+			this.SetStyle(ControlStyles.ResizeRedraw, true);
 		}
 
 
 		#region Designer
-
-
-
 		public void InitializeComponent()
 		{
 			this.ResumeLayout(true);
 
 			this.Name = "TEST_selectedLinkPlacement";
-			this.Text = "Link Placement Test";
+			this.Text = "[TEST] Selected Link Associations";
 			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			this.TopMost = true;
 			this.Opacity = 0.8d;

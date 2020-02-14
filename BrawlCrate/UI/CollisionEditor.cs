@@ -68,7 +68,8 @@ namespace System.Windows.Forms
         protected CheckBox UnknownFlagsGroup_Check2;
         protected CheckBox UnknownFlagsGroup_Check3;
         protected CheckBox UnknownFlagsGroup_Check4;
-
+		
+		// Selected point (link) panel items
         protected Panel selectedPointPropsPanel;
         protected Label selectedPointPropsPanel_XLabel;
         protected Label selectedPointPropsPanel_YLabel;
@@ -126,6 +127,10 @@ namespace System.Windows.Forms
 		protected ToolStripMenuItem toolsStrip_Options_SelectOnlyIfObjectEquals;
 		// Shows the center location of the stage, which is (0, 0).
 		protected ToolStripMenuItem toolsStrip_Options_ShowZeroZeroPoint;
+		// Sep# is separator, the reason for Sep1 is because of making things easy to use.
+		protected ToolStripSeparator toolsStrip_Options_Sep1;
+		// TEMP - Shows Selected Link window if set to true. False hides it.
+		protected ToolStripMenuItem toolsStrip_Options_TEST_ShowLinkPlacementWindow;
 
         protected Panel animationPanel;
         protected Button animationPanel_PlayAnimations;
@@ -167,6 +172,7 @@ namespace System.Windows.Forms
         protected ToolStripMenuItem collisionOptions_MoveToNewObject;
         protected ToolStripSeparator collisionOptions_Sep1;
         protected ToolStripSeparator collisionOptions_Sep2;
+        protected ToolStripSeparator collisionOptions_Sep3;
         protected ToolStripMenuItem collisionOptions_Split;
         protected ToolStripMenuItem collisionOptions_Merge;
         protected ToolStripMenuItem collisionOptions_Flip;
@@ -267,18 +273,6 @@ namespace System.Windows.Forms
             toolsStrip_AlignmentSeparator = new ToolStripSeparator();
             toolsStrip_CollisionManipulationSeparator = new ToolStripSeparator();
 
-
-            animationPanel = new Panel();
-            animationPanel_PlayAnimations = new Button();
-            animationPanel_PrevFrame = new Button();
-            animationPanel_NextFrame = new Button();
-
-
-            _modelPanel = new ModelPanel();
-
-
-            toolsStripPanel = new Panel();
-
             toolsStrip_Undo = new ToolStripButton();
             toolsStrip_Redo = new ToolStripButton();
             toolsStrip_Split = new ToolStripButton();
@@ -303,10 +297,21 @@ namespace System.Windows.Forms
 			toolsStrip_Options_ScalePointsWithCamera_DisplayOnly = new ToolStripMenuItem();
 			toolsStrip_Options_SelectOnlyIfObjectEquals = new ToolStripMenuItem();
 			toolsStrip_Options_ShowZeroZeroPoint = new ToolStripMenuItem();
+			toolsStrip_Options_Sep1 = new ToolStripSeparator();
+			toolsStrip_Options_TEST_ShowLinkPlacementWindow = new ToolStripMenuItem();
             
+            toolsStripPanel = new Panel();
+			
 			UNUSED_toolsStripPanel_TrackBarRotation = new TrackBar();
 			UNUSED_toolsStripPanel_ResetRotation = new Button();
 
+
+            animationPanel = new Panel();
+            animationPanel_PlayAnimations = new Button();
+            animationPanel_PrevFrame = new Button();
+            animationPanel_NextFrame = new Button();
+
+            _modelPanel = new ModelPanel();
 
             //Right-click on selected collision/collision view
             collisionOptions = new ContextMenuStrip(components);
@@ -332,6 +337,7 @@ namespace System.Windows.Forms
             collisionOptions_Transform = new ToolStripMenuItem();
             collisionOptions_AlignX = new ToolStripMenuItem();
             collisionOptions_AlignY = new ToolStripMenuItem();
+            collisionOptions_Sep3 = new ToolStripSeparator();
 
 			colorDialog = new GoodColorDialog();
 
@@ -1374,12 +1380,16 @@ namespace System.Windows.Forms
 			//
 			toolsStrip_Options.Name = "toolsStrip_Options";
 			toolsStrip_Options.Text = "Options";
+			toolsStrip_Options.Overflow = ToolStripItemOverflow.AsNeeded;
+			toolsStrip_Options.DisplayStyle = ToolStripItemDisplayStyle.Text;
 			toolsStrip_Options.DropDownItems.AddRange(new ToolStripItem[]
 			{
 				toolsStrip_Options_ScalePointsWithCamera_DisplayOnly,
 				toolsStrip_Options_ScalePointsWithCamera_SelectOnly,
-				toolsStrip_Options_SelectOnlyIfObjectEquals,
-				toolsStrip_Options_ShowZeroZeroPoint
+				toolsStrip_Options_Sep1,
+				toolsStrip_Options_SelectOnlyIfObjectEquals, 
+				toolsStrip_Options_ShowZeroZeroPoint,
+				toolsStrip_Options_TEST_ShowLinkPlacementWindow
 			});
 			//
 			// toolsStrip_Options_ScalePointsWithCamera_DisplayOnly
@@ -1407,11 +1417,23 @@ namespace System.Windows.Forms
 			toolsStrip_Options_ShowZeroZeroPoint.Text = "Show (0, 0) Rectangle";
 			toolsStrip_Options_ShowZeroZeroPoint.CheckOnClick = true;
 			toolsStrip_Options_ShowZeroZeroPoint.CheckedChanged += ToolsStrip_Options_ShowZeroZeroPoint_CheckedChanged;
+			//
+			// toolsStrip_Options_TEST_ShowLinkPlacementWindow
+			//
+			toolsStrip_Options_TEST_ShowLinkPlacementWindow.Name = "toolsStrip_Options_TEST_ShowLinkPlacementWindow";
+			toolsStrip_Options_TEST_ShowLinkPlacementWindow.Text = "[TEMP] Show Selected Link Associations";
+			toolsStrip_Options_TEST_ShowLinkPlacementWindow.CheckOnClick = true;
+			toolsStrip_Options_TEST_ShowLinkPlacementWindow.CheckedChanged += ToolsStrip_Options_TEST_ShowLinkPlacementWindow_CheckedChanged;
+			// 
+			// toolsStrip_Options_Sep1
+			// 
+			toolsStrip_Options_Sep1.Name = "toolsStrip_Options_Sep1";
+			toolsStrip_Options_Sep1.Size = new Drawing.Size(180, 6);
 
-            // 
-            // toolsStrip_Help
-            // 
-            toolsStrip_Help.DisplayStyle = ToolStripItemDisplayStyle.Text;
+			// 
+			// toolsStrip_Help
+			// 
+			toolsStrip_Help.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolsStrip_Help.Image = (Image)resources.GetObject("toolsStrip_Help.Image");
             toolsStrip_Help.ImageTransparentColor = Color.Magenta;
             toolsStrip_Help.Name = "toolsStrip_Help";
@@ -1468,6 +1490,7 @@ namespace System.Windows.Forms
                 collisionOptions_Merge,
                 collisionOptions_Flip,
                 collisionOptions_Delete,
+				collisionOptions_Sep3,
 				clipboardCopyOptions,
 				clipboardPasteOptions
 			});
@@ -1491,10 +1514,15 @@ namespace System.Windows.Forms
             // 
             collisionOptions_Sep2.Name = "collisionOptions_Sep2";
             collisionOptions_Sep2.Size = new Drawing.Size(180, 6);
-            // 
-            // collisionOptions_Split
-            // 
-            collisionOptions_Split.Name = "collisionOptions_Split";
+			// 
+			// collisionOptions_Sep3
+			// 
+			collisionOptions_Sep3.Name = "collisionOptions_Sep3";
+			collisionOptions_Sep3.Size = new Drawing.Size(180, 6);
+			// 
+			// collisionOptions_Split
+			// 
+			collisionOptions_Split.Name = "collisionOptions_Split";
             collisionOptions_Split.Size = new Drawing.Size(183, 22);
             collisionOptions_Split.Text = "Split";
             collisionOptions_Split.Click += btnSplit_Click;
@@ -1704,16 +1732,21 @@ namespace System.Windows.Forms
 		// We copy the selected variables from _selected... so that we have it in memory
 		// Next TODO List: Introduce a UI that stores copies and pastes.
 		//public byte _copyState = 0; // Is this even a good practice? 0 = none, 1 = Copying, 2 = Cutting
-		//public CollisionLink_S[] _copiedLinks = null;
-		//public CollisionPlane_S[] _copiedPlanes = null;
 		public int CurrentCopySaveState = 0;
+		// The maximum amount that it will save to memory in the list.
 		public int MaximumCopySaveState = 10;
+		// When attempting to copy, it will use only the current state to override what was copied and not
+		// create a new state.
+		public bool CopyStateKeepCurrentSaveState = true;
 		public List<CopiedLinkPlaneState> _copiedStates = new List<CopiedLinkPlaneState>();
 
+		// A paste options UI that shows up when the user already has sets of collisions copied.
 		public CollisionEditor_PasteOptions editorPO = null;
 
+		// States that are used for the selection of collisions.
 		protected bool _selecting, _selectInverse;
         protected Vector3 _selectStart, _selectLast, _selectEnd;
+
         protected bool _creating;
 
         protected CollisionState save;
@@ -1760,6 +1793,7 @@ namespace System.Windows.Forms
         {
             ClearSelection();
             UNUSED_toolsStripPanel_TrackBarRotation.Value = 0;
+
             _snapMatrix = Matrix.Identity;
             _selectedObject = null;
 
@@ -1791,46 +1825,73 @@ namespace System.Windows.Forms
             selectedPointPropsPanel.Visible = false;
             selectedMenuPanel.Height = 0;
 
-            //Selected Planes are used for actual planes and overrides the collision data (such as Ground Type, etc.)
-            if (_selectedPlanes.Count > 0)
-            {
-                selectedPlanePropsPanel.Visible = true;
-                selectedMenuPanel.Height = 205;
-            }
-            //Selected links are used for getting an specific point in that collision
-            else if (_selectedLinks.Count == 1)
-            {
-                selectedPointPropsPanel.Visible = true;
+			//Selected Planes are used for actual planes and overrides the collision data (such as Ground Type, etc.)
+			if (_selectedPlanes.Count > 0)
+			{
+				selectedPlanePropsPanel.Visible = true;
+				selectedMenuPanel.Height = 205;
+			}
+			//Selected links are used for getting an specific point in that collision
+			else if (_selectedLinks.Count == 1)
+			{
+				selectedPointPropsPanel.Visible = true;
 				selectedMenuPanel.Height = 70;
 
-				//TEMP TEST
-				if (tslp == null)
-				{
-					tslp = new TEST_selectedLinkPlacement();
-					tslp.Size = lastFormRects.Size;
-					tslp.Location = lastFormRects.Location;
-
-					tslp.Visible = true;
-				}
-
-				CollisionLink l = _selectedLinks[0];
-				tslp.UpdateSelection(ref l);
+				// TEMP TEST
+				ShowTempLinkPlacementWindow(true);
 			}
 			else if (_selectedLinks.Count == 0)
             {
-				if (this.tslp != null)
-				{
-					lastFormRects = this.tslp.DisplayRectangle;
-					this.tslp.Visible = false;
-					this.tslp.Dispose();
-					this.tslp = null;
-				}
+
+				// TEMP TEST
+				ShowTempLinkPlacementWindow(false);
 			}
 
             UpdatePropPanels();
         }
 
+		// TEMP TEST
+		private void ShowTempLinkPlacementWindow(bool Show)
+		{
+			if (Show)
+			{
+				if (this.toolsStrip_Options_TEST_ShowLinkPlacementWindow.Checked)
+				{
+					if (tslp == null)
+					{
+						tslp = new TEST_selectedLinkPlacement();
+
+						if (lastFormRectsExists)
+						{
+							tslp.Location = lastFormRects.Location;
+							tslp.Size = lastFormRects.Size;
+						}
+
+						tslp.Visible = true;
+
+						CollisionLink l = _selectedLinks[0];
+						tslp.UpdateSelection(ref l);
+					}
+				}
+			}
+			else
+			{
+				if (this.tslp != null)
+				{
+					lastFormRects = new Rectangle();
+					lastFormRects.Location = this.tslp.Location;
+					lastFormRects.Size = this.tslp.Size;
+					lastFormRectsExists = true;
+
+					this.tslp.Visible = false;
+					this.tslp.Dispose();
+					this.tslp = null;
+				}
+			}
+		}
+
 		//TEST STUFF
+		private bool lastFormRectsExists = false;
 		private Rectangle lastFormRects;
 		private TEST_selectedLinkPlacement tslp = null;
 
@@ -3258,7 +3319,8 @@ namespace System.Windows.Forms
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                //Moved delete so that it can be used with cutting and don't have to recall this variable multiple times
+                // Moved delete algorithm so that it can be used with cutting and don't have to create
+				// the same algorithm multiple times
                 DeleteSelected();
             }
             else if (ModifierKeys == Keys.Control)
@@ -4972,6 +5034,11 @@ namespace System.Windows.Forms
 		private void ToolsStrip_Options_ShowZeroZeroPoint_CheckedChanged(object sender, EventArgs e)
 		{
 			_modelPanel.Invalidate();
+		}
+		private void ToolsStrip_Options_TEST_ShowLinkPlacementWindow_CheckedChanged(object sender, EventArgs e)
+		{
+			if (!this.toolsStrip_Options_TEST_ShowLinkPlacementWindow.Checked)
+				this.ShowTempLinkPlacementWindow(false);
 		}
 
 		protected void CheckSaveIndex()

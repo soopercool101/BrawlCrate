@@ -21,7 +21,7 @@ namespace System.Windows.Forms
 			CollisionEditorControl.BackColor = Drawing.Color.Lavender;
 			CollisionEditorControl.Dock = DockStyle.Fill;
 			CollisionEditorControl.Location = new Drawing.Point(0, 0);
-			CollisionEditorControl.Name = "collisionEditor1";
+			CollisionEditorControl.Name = "collisionEditorControl";
 			CollisionEditorControl.Size = new Drawing.Size(800, 600);
 			CollisionEditorControl.TabIndex = 0;
             // 
@@ -43,10 +43,10 @@ namespace System.Windows.Forms
         public CollisionForm()
         {
             InitializeComponent();
-            Text = $"{Program.AssemblyTitleShort} - Collision Editor";
-        }
+			Text = $"{Program.AssemblyTitleShort} - Collision Editor";
+		}
 
-        public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)
+		public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)
         {
             _node = node;
             try
@@ -84,27 +84,5 @@ namespace System.Windows.Forms
             MainForm.Instance.Visible = true;
             MainForm.Instance.Refresh();
         }
-
-		//protected override void OnLostFocus(EventArgs e)
-		//{
-		//	base.OnLostFocus(e);
-		//	this.Focus();
-		//}
-
-		//// These lets us know if the collision form is activated. 
-		//// Useful for showing/hiding other windows that CollisionEditor makes use of.
-		//protected override void OnActivated(EventArgs e)
-		//{
-		//	base.OnActivated(e);
-
-		//	//CollisionEditorControl.EditorFocused();
-		//}
-		//protected override void OnDeactivate(EventArgs e)
-		//{
-		//	base.OnDeactivate(e);
-		//	this.Focus();
-
-		//	CollisionEditorControl.EditorUnfocused();
-		//}
 	}
 }
