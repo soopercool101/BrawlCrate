@@ -654,7 +654,7 @@ namespace BrawlLib.SSBB.Types
                     entry--;
                 }
 
-                return (ResourceGroup*) ((uint) entry - 8);
+                return (ResourceGroup*) ((VoidPtr) entry - 8);
             }
         }
     }

@@ -22,7 +22,7 @@ namespace BrawlLib.SSBB.Types
             {
                 fixed (BRESHeader* p = &this)
                 {
-                    return (ROOTHeader*) ((uint) p + _rootOffset);
+                    return (ROOTHeader*)((VoidPtr)p + _rootOffset);
                 }
             }
         }
