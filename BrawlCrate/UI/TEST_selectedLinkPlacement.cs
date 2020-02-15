@@ -76,7 +76,7 @@ namespace System.Windows.Forms
 			this.Text = "[TEST] Selected Link Associations";
 			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			this.TopMost = true;
-			this.Opacity = 0.8d;
+			this.Opacity = 0.9d;
 			this.Width = 200;
 			this.Height = 400;
 

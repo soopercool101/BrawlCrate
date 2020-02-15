@@ -1,5 +1,4 @@
 ﻿using BrawlCrate;
-
 using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
 
@@ -32,7 +31,7 @@ namespace System.Windows.Forms
             Icon = BrawlLib.Properties.Resources.Icon;
             MinimizeBox = false;
             Name = "CollisionForm";
-            Text = "Collision Editor";
+			Text = $"{Program.AssemblyTitleShort} - Collision Editor";
             ResumeLayout(false);
         }
 
@@ -43,7 +42,6 @@ namespace System.Windows.Forms
         public CollisionForm()
         {
             InitializeComponent();
-			Text = $"{Program.AssemblyTitleShort} - Collision Editor";
 		}
 
 		public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)
