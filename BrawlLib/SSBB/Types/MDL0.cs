@@ -371,38 +371,28 @@ namespace BrawlLib.SSBB.Types
         public static object Create(ref VoidPtr addr)
         {
             object n = null;
-            switch (*(byte*) addr++)
+            byte oldByte = addr.Byte;
+            addr++;
+
+            switch (oldByte)
             {
                 case 2:
-                {
                     n = Marshal.PtrToStructure(addr, typeof(MDL0Node2Class));
                     addr += MDL0Node2Class.Size;
                     break;
-                }
-
                 case 3:
-                {
                     n = new MDL0Node3Class((MDL0NodeType3*) addr);
                     addr += ((MDL0Node3Class) n).GetSize();
                     break;
-                }
-
                 case 4:
-                {
                     n = Marshal.PtrToStructure(addr, typeof(MDL0NodeType4));
                     addr += MDL0NodeType4.Size;
                     break;
-                }
-
                 case 5:
-                {
                     n = Marshal.PtrToStructure(addr, typeof(MDL0NodeType5));
                     addr += MDL0NodeType5.Size;
                     break;
-                }
-
                 case 6:
-                    n = null;
                     addr += 4;
                     break;
             }
