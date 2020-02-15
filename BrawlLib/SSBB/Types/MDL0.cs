@@ -372,7 +372,7 @@ namespace BrawlLib.SSBB.Types
         {
             object n = null;
             byte oldByte = addr.Byte;
-            addr++;
+            addr += 1;
 
             switch (oldByte)
             {
