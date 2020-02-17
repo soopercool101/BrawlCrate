@@ -375,7 +375,7 @@ namespace BrawlCrate.NodeWrappers
         {
             OpenFileDialog ofd = new OpenFileDialog
             {
-                Filter = SupportedFilesHandler.GetCompleteFilter("mdl0", "dae"),
+                Filter = ImportFilter,
                 Title = "Please select a model to reimport meshes from."
             };
             if (ofd.ShowDialog() == DialogResult.OK)
