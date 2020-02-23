@@ -13,14 +13,15 @@ namespace BrawlLib.Modeling
     {
         public List<CollisionLink> _collisionLinks;
         public List<Vector2> _linkVectors;
-        public bool _split;
+        
+		public CollisionNode _collisionNode;
+        public CollisionObject _collisionObject;
+        public CollisionPlane _collisionPlane;
+        
+		public bool _split;
         public bool _merge;
         public bool _create;
         public bool _delete;
-
-        public CollisionNode _collisionNode;
-        public CollisionObject _collisionObject;
-        public CollisionPlane _collisionPlane;
     }
 
     public class VertexState : SaveState

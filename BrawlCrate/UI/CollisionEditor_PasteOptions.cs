@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 
+using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
+
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
