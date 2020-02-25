@@ -3648,7 +3648,11 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     {
                         b = _byteProvider.ReadByte(x);
                     }
-                    catch { b = 0; } //HACK: this is probably not the best way to fix the crash
+                    catch
+                    {
+                        // In event of invalid read, stop reading
+                        break;
+                    }
                     bool isSelectedByte =
                         x >= _bytePos && x <= _bytePos + _selectionLength - 1 && _selectionLength != 0;
 
