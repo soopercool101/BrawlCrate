@@ -463,8 +463,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             MDL0CommonHeader* pHeader;
             ResourceNode node;
-            int* offsetCache = stackalloc int[128];
-            int offsetCount = 0, offset, x;
+            VoidPtr* offsetCache = stackalloc VoidPtr[128];
+            VoidPtr offsetCount = 0, offset, x;
 
             foreach (ResourcePair p in *pGroup)
             {

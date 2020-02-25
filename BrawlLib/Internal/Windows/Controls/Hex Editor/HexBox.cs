@@ -3643,8 +3643,12 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     Point gridPoint = GetGridBytePoint(counter);
                     PointF byteStringPointF = GetByteStringPointF(gridPoint);
-
-                    byte b = _byteProvider.ReadByte(x);
+                    byte b;
+                    try
+                    {
+                        b = _byteProvider.ReadByte(x);
+                    }
+                    catch { b = 0; } //HACK: this is probably not the best way to fix the crash
                     bool isSelectedByte =
                         x >= _bytePos && x <= _bytePos + _selectionLength - 1 && _selectionLength != 0;
 
