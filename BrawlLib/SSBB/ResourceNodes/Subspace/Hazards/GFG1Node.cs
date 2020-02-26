@@ -1,4 +1,5 @@
-﻿using BrawlLib.Internal;
+﻿using BrawlLib.CustomLists;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
 using System.ComponentModel;
 
@@ -76,7 +77,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal GFG1Entry* Header => (GFG1Entry*) WorkingUncompressed.Address;
         //public override ResourceType ResourceType { get { return ResourceType.GFG1ENTRY; } }
 
-        public uint _header1; // 0x00
+        public byte _fighterID;
+        public byte _unknown0x01;
+        public byte _unknown0x02;
+        public byte _unknown0x03;
         public byte _unknown0x04;
         public byte _unknown0x05;
         public byte _unknown0x06;
@@ -150,8 +154,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte _unknown0x53;
 
         [Category("Fighter Info")]
+        [TypeConverter(typeof(DropDownListBrawlExSlotIDs))]
+        [DisplayName("Fighter ID")]
+        public byte FighterID
+        {
+            get => _fighterID;
+            set
+            {
+                _fighterID = value;
+                Name = FighterNameGenerators.FromID(_fighterID,
+                    FighterNameGenerators.slotIDIndex, "+S") + $" [{Index}]";
+
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
         [DisplayName("Costume ID")]
-        public byte EnemyID
+        public byte CostumeID
         {
             get => _costumeID;
             set
@@ -211,7 +231,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            _header1 = Header->_header1;
+            _fighterID = Header->_fighterID;
+            _unknown0x01 = Header->_unknown0x01;
+            _unknown0x02 = Header->_unknown0x02;
+            _unknown0x03 = Header->_unknown0x03;
             _unknown0x04 = Header->_unknown0x04;
             _unknown0x05 = Header->_unknown0x05;
             _unknown0x06 = Header->_unknown0x06;
@@ -285,7 +308,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x53 = Header->_unknown0x53;
             if (_name == null)
             {
-                _name = "Entry [" + Index + ']';
+                _name = FighterNameGenerators.FromID(_fighterID,
+                           FighterNameGenerators.slotIDIndex, "+S") + $" [{Index}]";
             }
 
             return false;
@@ -299,7 +323,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             GFG1Entry* hdr = (GFG1Entry*) address;
-            hdr->_header1 = _header1;
+            hdr->_fighterID = _fighterID;
+            hdr->_unknown0x01 = _unknown0x01;
+            hdr->_unknown0x02 = _unknown0x02;
+            hdr->_unknown0x03 = _unknown0x03;
             hdr->_unknown0x04 = _unknown0x04;
             hdr->_unknown0x05 = _unknown0x05;
             hdr->_unknown0x06 = _unknown0x06;

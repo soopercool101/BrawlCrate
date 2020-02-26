@@ -41,7 +41,10 @@ namespace BrawlLib.SSBB.Types.Subspace.Hazards
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GFG1Entry
     {
-        public uint _header1; // 0x00
+        public byte _fighterID;
+        public byte _unknown0x01;
+        public byte _unknown0x02;
+        public byte _unknown0x03;
         public byte _unknown0x04;
         public byte _unknown0x05;
         public byte _unknown0x06;
