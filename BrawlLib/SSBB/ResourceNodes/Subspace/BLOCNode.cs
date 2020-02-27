@@ -126,7 +126,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Entries = Header->_count;
             if (_name == null)
             {
-                _name = Tag;
+                _name = UncompressedSource.Tag;
             }
 
             return Entries > 0;
