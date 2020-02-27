@@ -108,19 +108,44 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class BLOCEntryNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
+        internal BLOCEntry* Header => (BLOCEntry*)WorkingUncompressed.Address;
         public int Entries { get; private set; }
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            byte* _NumFiles = (byte*) WorkingUncompressed.Address + 0x07;
+            Entries = Header->_count;
             if (_name == null)
             {
                 _name = new string((sbyte*) WorkingUncompressed.Address);
             }
 
-            Entries = *(int*) _NumFiles;
-            return false;
+            return Entries > 0;
+        }
+
+        public override void OnPopulate()
+        {
+            for (int i = 0; i < Entries; i++)
+            {
+                //source decleration
+                DataSource source;
+
+                //Enumerate datasources for each child node
+                if (i == Header->_count - 1)
+                {
+                    source = new DataSource((*Header)[i],
+                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
+                }
+                else
+                {
+                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
+                }
+
+
+                //Call NodeFactory on datasource to initiate various files
+                new RawDataNode().Initialize(this, source);
+                Children[i]._name = $"Entry [{i}]";
+            }
         }
     }
 }
