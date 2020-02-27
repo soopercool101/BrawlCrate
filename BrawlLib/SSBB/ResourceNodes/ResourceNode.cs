@@ -33,6 +33,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         public FileMap Map;
         public CompressionType Compression;
 
+        public string Tag
+        {
+            get
+            {
+                if (Length < 4)
+                {
+                    return null;
+                }
+                return new string((sbyte*)Address);
+            }
+        }
+
         public DataSource(VoidPtr addr, int len) : this(addr, len, CompressionType.None)
         {
         }

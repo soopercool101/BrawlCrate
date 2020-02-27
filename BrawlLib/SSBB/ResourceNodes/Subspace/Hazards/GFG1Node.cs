@@ -1,74 +1,19 @@
 ﻿using BrawlLib.CustomLists;
 using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
 using System.ComponentModel;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GFG1Node : ResourceNode
+    public unsafe class GFG1Node : BLOCEntryNode
     {
-        internal GFG1* Header => (GFG1*) WorkingUncompressed.Address;
-
-        //public override ResourceType ResourceType { get { return ResourceType.GFG1; } }
-
-        private const int _entrySize = 0x54; // The constant size of a child entry
-
-        [Category("GFG1")]
-        [DisplayName("Entries")]
-        public int count => Header->_count;
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GFG1EntryNode().Initialize(this, source);
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "GFG1";
-            }
-
-            return Header->_count > 0;
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            return 0x08 + Children.Count * 4 + Children.Count * _entrySize;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GFG1* header = (GFG1*) address;
-            *header = new GFG1(Children.Count);
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                ResourceNode r = Children[i];
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                r.Rebuild(address + offset, _entrySize, true);
-                offset += _entrySize;
-            }
-        }
+        public override Type SubEntryType => typeof(GFG1EntryNode);
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GFG1*) source.Address)->_tag == GFG1.Tag ? new GFG1Node() : null;
+            return source.Tag == "GFG1" ? new GFG1Node() : null;
         }
     }
 

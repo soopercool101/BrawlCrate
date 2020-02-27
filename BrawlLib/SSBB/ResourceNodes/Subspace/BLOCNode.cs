@@ -1,5 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace;
+using System;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -109,15 +111,22 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         internal BLOCEntry* Header => (BLOCEntry*)WorkingUncompressed.Address;
+
+        [Category("BLOC Entry")]
         public int Entries { get; private set; }
+        private uint _rawTag { get; set; }
+
+        public virtual Type SubEntryType => typeof(RawDataNode);
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
+            _rawTag = Header->_tag;
+            
             Entries = Header->_count;
             if (_name == null)
             {
-                _name = new string((sbyte*) WorkingUncompressed.Address);
+                _name = Tag;
             }
 
             return Entries > 0;
@@ -141,10 +150,44 @@ namespace BrawlLib.SSBB.ResourceNodes
                     source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
                 }
 
-
                 //Call NodeFactory on datasource to initiate various files
-                new RawDataNode().Initialize(this, source);
-                Children[i]._name = $"Entry [{i}]";
+                NodeFactory.FromSource(this, source, SubEntryType);
+                if (Children[i]._name == null || Children[i]._name == "<null>")
+                {
+                    Children[i]._name = $"Entry [{i}]";
+                }
+            }
+        }
+
+
+        public override int OnCalculateSize(bool force)
+        {
+            int size = BLOCEntry.Size + Children.Count * 4;
+            foreach (ResourceNode node in Children)
+            {
+                size += node.CalculateSize(force);
+            }
+
+            return size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            BLOCEntry* header = (BLOCEntry*)address;
+            *header = new BLOCEntry();
+            header->_tag = _rawTag;
+            header->_count = Children.Count;
+
+            uint offset = (uint)(BLOCEntry.Size + Children.Count * 4);
+            for (int i = 0; i < Children.Count; i++)
+            {
+                if (i > 0)
+                {
+                    offset += (uint)Children[i - 1].CalculateSize(false);
+                }
+
+                *(buint*)(address + BLOCEntry.Size + i * 4) = offset;
+                _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
             }
         }
     }
