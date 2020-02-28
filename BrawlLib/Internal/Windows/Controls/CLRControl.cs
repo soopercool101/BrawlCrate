@@ -384,7 +384,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     float stepR = (end.R - start.R) / ((float) count - 1);
                     float stepG = (end.G - start.G) / ((float) count - 1);
                     float stepB = (end.B - start.B) / ((float) count - 1);
-                    for (int i = 0; i < count; i++)
+                    for (int i = 0; i < count - 1; i++)
                     {
                         ARGBPixel p = new ARGBPixel(
                             (byte) (start.A + i * stepA),
@@ -394,6 +394,8 @@ namespace BrawlLib.Internal.Windows.Controls
                         lstColors.Items[sorted[i]] = p;
                         _colorSource.SetColor(sorted[i], _colorId, p);
                     }
+                    lstColors.Items[sorted[count - 1]] = end;
+                    _colorSource.SetColor(sorted[count - 1], _colorId, end);
                 }
             }
         }
