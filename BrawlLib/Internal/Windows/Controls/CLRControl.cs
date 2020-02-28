@@ -380,10 +380,10 @@ namespace BrawlLib.Internal.Windows.Controls
                     //Interpolate and apply to each in succession.
                     ARGBPixel start = (ARGBPixel) _dlgGradient.StartColor;
                     ARGBPixel end = (ARGBPixel) _dlgGradient.EndColor;
-                    float stepA = (end.A - start.A) / (float) count;
-                    float stepR = (end.R - start.R) / (float) count;
-                    float stepG = (end.G - start.G) / (float) count;
-                    float stepB = (end.B - start.B) / (float) count;
+                    float stepA = (end.A - start.A) / ((float) count - 1);
+                    float stepR = (end.R - start.R) / ((float) count - 1);
+                    float stepG = (end.G - start.G) / ((float) count - 1);
+                    float stepB = (end.B - start.B) / ((float) count - 1);
                     for (int i = 0; i < count; i++)
                     {
                         ARGBPixel p = new ARGBPixel(
