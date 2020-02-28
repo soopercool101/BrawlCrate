@@ -39,10 +39,8 @@ namespace BrawlLib.SSBB.Types
             {
                 return *(uint*) Address;
             }
-            else
-            {
-                return *(buint*) Address;
-            }
+
+            return *(buint*) Address;
         }
 
         public string Get()

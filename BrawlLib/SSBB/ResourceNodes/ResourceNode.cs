@@ -565,10 +565,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public virtual bool AddDown()
@@ -583,10 +581,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public virtual bool ToParent()
@@ -595,10 +591,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         #endregion
@@ -1662,11 +1656,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return null;
             }
-            else
-            {
-                UnmanagedMemoryStream stream = new UnmanagedMemoryStream((byte*) data.Address, data.Length);
-                return MD5Provider.ComputeHash(stream);
-            }
+
+            UnmanagedMemoryStream stream = new UnmanagedMemoryStream((byte*) data.Address, data.Length);
+            return MD5Provider.ComputeHash(stream);
         }
 
         /// <summary>

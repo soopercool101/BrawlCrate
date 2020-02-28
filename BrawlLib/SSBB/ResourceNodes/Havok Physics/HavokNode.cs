@@ -456,10 +456,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return (int) WorkingUncompressed.Address - (int) p._buffer.Address;
                 }
-                else
-                {
-                    return -1;
-                }
+
+                return -1;
             }
         }
 

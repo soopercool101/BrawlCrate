@@ -173,10 +173,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     return (neg ? "-" : "") + val.ToString("X");
                 }
-                else
-                {
-                    return _value.ToString();
-                }
+
+                return _value.ToString();
             }
             set
             {

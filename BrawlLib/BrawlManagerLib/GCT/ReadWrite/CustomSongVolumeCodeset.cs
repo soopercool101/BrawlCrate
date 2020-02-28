@@ -162,12 +162,10 @@ A7AC0004 2C1D7FFF
                     DataAfter = DataAfter.Take(i).ToArray();
                     break;
                 }
-                else
+
+                if (ByteUtilities.ByteArrayEquals(DataAfter, i, gctfooter, 0, 8))
                 {
-                    if (ByteUtilities.ByteArrayEquals(DataAfter, i, gctfooter, 0, 8))
-                    {
-                        footer_found = true;
-                    }
+                    footer_found = true;
                 }
             }
         }

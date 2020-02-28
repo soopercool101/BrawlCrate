@@ -214,10 +214,6 @@ namespace BrawlLib.BrawlManagerLib
                 e.Graphics.DrawLine(pen, middle, 0, middle, Height);
                 e.Graphics.DrawLine(pen2, middle - 1, 0, middle - 1, Height);
             }
-            else
-            {
-                // square - do nothing
-            }
         }
     }
 }

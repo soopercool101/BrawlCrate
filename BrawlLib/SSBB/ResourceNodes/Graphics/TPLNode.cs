@@ -300,10 +300,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return TextureConverter.DecodeIndexed(_dataAddr, Width, Height, plt.Palette, index + 1, _format);
                 }
-                else
-                {
-                    return TextureConverter.Decode(_dataAddr, Width, Height, index + 1, _format);
-                }
+
+                return TextureConverter.Decode(_dataAddr, Width, Height, index + 1, _format);
             }
             catch
             {

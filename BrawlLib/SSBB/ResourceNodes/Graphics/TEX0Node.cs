@@ -323,16 +323,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                         return TextureConverter.DecodeIndexed(
                             (VoidPtr) CommonHeader + _headerLen, _width, _height, plt.Palette, index + 1, _format);
                     }
-                    else
-                    {
-                        return TextureConverter.Decode(
-                            (VoidPtr) CommonHeader + _headerLen, _width, _height, index + 1, _format);
-                    }
+
+                    return TextureConverter.Decode(
+                        (VoidPtr) CommonHeader + _headerLen, _width, _height, index + 1, _format);
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
             catch
             {

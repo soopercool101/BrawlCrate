@@ -20,10 +20,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return attributeBuffer;
                 }
-                else
-                {
-                    return attributeBuffer = new UnsafeBuffer(0x2E4);
-                }
+
+                return attributeBuffer = new UnsafeBuffer(0x2E4);
             }
         }
 

@@ -214,19 +214,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return _solidColor;
             }
-            else
-            {
-                int colorIndex = (int) Math.Truncate(index);
-                Vector4 color = _colors[colorIndex.Clamp(0, _colors.Count - 1)];
-                if (colorIndex + 1 < _colors.Count)
-                {
-                    float frac = index - colorIndex;
-                    Vector4 interp = _colors[colorIndex + 1];
-                    color += (interp - color) * frac;
-                }
 
-                return color;
+            int colorIndex = (int) Math.Truncate(index);
+            Vector4 color = _colors[colorIndex.Clamp(0, _colors.Count - 1)];
+            if (colorIndex + 1 < _colors.Count)
+            {
+                float frac = index - colorIndex;
+                Vector4 interp = _colors[colorIndex + 1];
+                color += (interp - color) * frac;
             }
+
+            return color;
         }
 
         [Browsable(false)] public int FrameCount => Scene.FrameCount;

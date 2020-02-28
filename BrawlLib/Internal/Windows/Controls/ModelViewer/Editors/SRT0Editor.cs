@@ -579,10 +579,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                 {
                     return SelectedAnimation.FindChild(mr.Parent.Name + "/Texture" + mr.Index, true) as SRT0TextureNode;
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
         }
 

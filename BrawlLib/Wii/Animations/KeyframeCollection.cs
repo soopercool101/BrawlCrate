@@ -480,12 +480,11 @@ namespace BrawlLib.Wii.Animations
 
                     return _keyRoot._prev.Interpolate(offset, span, _keyRoot._next);
                 }
-                else
-                {
-                    return _keyRoot._prev._value;
-                }
+
+                return _keyRoot._prev._value;
             }
-            else if (index < _keyRoot._next._index)
+
+            if (index < _keyRoot._next._index)
             {
                 //If the frame is less than the first keyframe's frame index
                 if (_looped)
@@ -499,10 +498,8 @@ namespace BrawlLib.Wii.Animations
 
                     return _keyRoot._prev.Interpolate(offset, span, _keyRoot._next);
                 }
-                else
-                {
-                    return _keyRoot._next._value;
-                }
+
+                return _keyRoot._next._value;
             }
 
             //Find the entry just before the specified index

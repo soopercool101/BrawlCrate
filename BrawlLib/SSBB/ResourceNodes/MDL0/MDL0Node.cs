@@ -547,21 +547,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                         node._updating = false;
                         continue;
                     }
-                    else
-                    {
-                        if (node.ShaderNode.Stages == 4)
-                        {
-                            foreach (MDL0MaterialNode y in node.ShaderNode._materials)
-                            {
-                                if (!y.IsMetal || y.Children.Count != node.Children.Count)
-                                {
-                                    goto Next;
-                                }
-                            }
 
-                            node.ShaderNode.DefaultAsMetal(node.Children.Count);
-                            continue;
+                    if (node.ShaderNode.Stages == 4)
+                    {
+                        foreach (MDL0MaterialNode y in node.ShaderNode._materials)
+                        {
+                            if (!y.IsMetal || y.Children.Count != node.Children.Count)
+                            {
+                                goto Next;
+                            }
                         }
+
+                        node.ShaderNode.DefaultAsMetal(node.Children.Count);
+                        continue;
                     }
                 }
 

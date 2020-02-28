@@ -23,10 +23,8 @@ namespace BrawlLib.BrawlManagerLib.GCT.ReadOnly
                 {
                     return newStageId;
                 }
-                else
-                {
-                    return id;
-                }
+
+                return id;
             }
         }
 

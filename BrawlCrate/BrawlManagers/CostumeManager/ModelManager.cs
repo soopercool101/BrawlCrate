@@ -206,10 +206,8 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                 {
                     break;
                 }
-                else
-                {
-                    length++;
-                }
+
+                length++;
             }
 
             working = working.Substring(0, length);

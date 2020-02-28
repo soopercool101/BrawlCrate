@@ -478,8 +478,9 @@ namespace BrawlCrate.NodeWrappers
                         ConvertToStock50();
                         return;
                     }
-                    else if (_resource.Name.Substring(_resource.Name.LastIndexOf(".") + 1,
-                                 _resource.Name.Length - (_resource.Name.LastIndexOf(".") + 1)).Length == 4)
+
+                    if (_resource.Name.Substring(_resource.Name.LastIndexOf(".") + 1,
+                            _resource.Name.Length - (_resource.Name.LastIndexOf(".") + 1)).Length == 4)
                     {
                         ConvertToStockDefault();
                         return;

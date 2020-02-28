@@ -249,8 +249,9 @@ namespace BrawlLib.Internal
                 FranchiseIcon icon = FranchiseIcon.Icons.Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (icon == null ? "" : " - " + icon.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -300,8 +301,9 @@ namespace BrawlLib.Internal
                 BrawlExColorID color = BrawlExColorID.Colors.Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (color == null ? "" : " - " + color.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -351,8 +353,9 @@ namespace BrawlLib.Internal
                 RecordBank record = RecordBank.Records.Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (record == null ? "" : " - " + record.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -404,8 +407,9 @@ namespace BrawlLib.Internal
                                                         .Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -457,8 +461,9 @@ namespace BrawlLib.Internal
                                                         .Where(s => s.ID == (uint) value).FirstOrDefault();
                 return "0x" + ((uint) value).ToString("X8") + (fighter == null ? "" : " - " + fighter.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(uint)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(uint)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -508,8 +513,9 @@ namespace BrawlLib.Internal
                 AIController fighter = AIController.aIControllers.Where(s => s.ID == (uint) value).FirstOrDefault();
                 return "0x" + ((uint) value).ToString("X8") + (fighter == null ? "" : " - " + fighter.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(uint)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(uint)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -560,8 +566,9 @@ namespace BrawlLib.Internal
                                                         .Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -612,8 +619,9 @@ namespace BrawlLib.Internal
                                                         .Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }

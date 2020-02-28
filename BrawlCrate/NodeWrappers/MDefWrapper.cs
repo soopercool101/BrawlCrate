@@ -594,10 +594,8 @@ namespace BrawlCrate.NodeWrappers
                                 has = true;
                                 break;
                             }
-                            else
-                            {
-                                continue;
-                            }
+
+                            continue;
                         }
 
                         if (!has)

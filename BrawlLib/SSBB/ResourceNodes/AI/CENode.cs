@@ -320,10 +320,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return Part2Entries[IndexList.IndexOf(id - 0x2000)];
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public int SetPart2(float value, int insertID) //returns id
@@ -334,7 +332,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Part2Entries.Insert(insertID - 0x2000, value);
                 return IndexList[insertID - 0x2000] + 0x2000;
             }
-            else if (GetPart2(insertID) == null) //if insertID is out of range of Part2Entries
+
+            if (GetPart2(insertID) == null) //if insertID is out of range of Part2Entries
             {
                 IndexList.Add(Part2Entries.Count);
                 Part2Entries.Add(value);
@@ -393,10 +392,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return eventSize + part2Size + headerSize + 0x10 - (eventSize + part2Size + headerSize) % 0x10;
             }
-            else
-            {
-                return eventSize + part2Size + headerSize;
-            }
+
+            return eventSize + part2Size + headerSize;
         }
     }
 
@@ -663,10 +660,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return size + 0x10 - size % 0x10;
             }
-            else
-            {
-                return size;
-            }
+
+            return size;
         }
 
         public override unsafe void Export(string outPath)

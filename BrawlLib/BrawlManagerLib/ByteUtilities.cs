@@ -47,10 +47,8 @@ namespace BrawlLib.BrawlManagerLib
             {
                 return MD5Sum(File.ReadAllBytes(path));
             }
-            else
-            {
-                return "File not found";
-            }
+
+            return "File not found";
         }
 
         /// <summary>

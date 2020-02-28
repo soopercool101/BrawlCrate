@@ -95,7 +95,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return false;
                 }
             }
-            else if (Header->_header._tag == FSTMHeader.Tag)
+
+            if (Header->_header._tag == FSTMHeader.Tag)
             {
                 ShowADPCMConversionWarning();
                 byte[] brstm_temp = FSTMConverter.ToRSTM((FSTMHeader*) Header);

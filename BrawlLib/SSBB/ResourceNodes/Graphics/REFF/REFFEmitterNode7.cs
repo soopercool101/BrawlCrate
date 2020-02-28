@@ -886,10 +886,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((BillboardAssist) _drawSetting.typeOption).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -911,10 +909,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((StripeAssist) _drawSetting.typeOption).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -936,10 +932,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((Assist) _drawSetting.typeOption).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -961,10 +955,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((BillboardAhead) _drawSetting.typeDir).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -986,10 +978,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((Ahead) _drawSetting.typeOption).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1024,10 +1014,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((StripeConnect) typeOption2[0, 3]).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1049,10 +1037,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((StripeInitialPrevAxis) typeOption2[3, 3]).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1074,10 +1060,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((StripeTexmapType) typeOption2[6, 1]).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1099,10 +1083,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((DirectionalPivot) typeOption2._data).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1123,10 +1105,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return (_drawSetting.typeOption0 != 0).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1148,10 +1128,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return _drawSetting.typeOption0.ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1178,10 +1156,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((Face) _drawSetting.typeOption1).ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {
@@ -1202,10 +1178,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return _drawSetting.typeOption1.ToString();
                 }
-                else
-                {
-                    return "";
-                }
+
+                return "";
             }
             set
             {

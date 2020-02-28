@@ -27,10 +27,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
             {
                 return File.Equals((SongListItem) obj);
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public override int GetHashCode()

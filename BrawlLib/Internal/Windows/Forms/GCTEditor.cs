@@ -137,7 +137,8 @@ namespace BrawlLib.Internal.Windows.Forms
                 node = GCTNode.FromTXT(path);
                 return node;
             }
-            else if ((node = GCTNode.IsParsable(path)) != null)
+
+            if ((node = GCTNode.IsParsable(path)) != null)
             {
                 return node;
             }

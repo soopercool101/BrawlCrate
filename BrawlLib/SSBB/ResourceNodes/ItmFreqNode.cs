@@ -566,10 +566,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return (int) Data - (int) BaseAddress;
                 }
-                else
-                {
-                    return 0;
-                }
+
+                return 0;
             }
         }
 

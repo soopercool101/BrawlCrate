@@ -342,10 +342,8 @@ namespace BrawlLib.Internal
             {
                 return new StandardValuesCollection(n.Children.Select(r => r.ToString()).ToList());
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 
@@ -364,10 +362,8 @@ namespace BrawlLib.Internal
             {
                 return new StandardValuesCollection(n.Children.Select(r => r.ToString()).ToList());
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 
@@ -831,7 +827,8 @@ namespace BrawlLib.Internal
             {
                 return node.AbsoluteIndex < 0 ? "None" : $"{node.AbsoluteIndex.ToString()}. {node.Name}";
             }
-            else if (destinationType == typeof(ARCEntryNode) && value is string str)
+
+            if (destinationType == typeof(ARCEntryNode) && value is string str)
             {
                 return null;
             }
@@ -892,8 +889,9 @@ namespace BrawlLib.Internal
                 BrawlAITypes stage = BrawlAITypes.AITypes.Where(s => s.AIID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -944,8 +942,9 @@ namespace BrawlLib.Internal
                                                     .FirstOrDefault();
                 return "0x" + ((int) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -1135,8 +1134,9 @@ namespace BrawlLib.Internal
                     BrawlLib.SSBB.Fighter.Fighters.Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }

@@ -20,6 +20,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public int Size => WorkingUncompressed.Length;
 
+        public override bool supportsCompression => false;
+
         public RawDataNode()
         {
         }

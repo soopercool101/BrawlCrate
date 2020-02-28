@@ -451,31 +451,32 @@ namespace BrawlLib.Imaging
                 {
                     return 1;
                 }
-                else if (A < o.A)
+
+                if (A < o.A)
                 {
                     return -1;
                 }
-                else if (R > o.R)
+                if (R > o.R)
                 {
                     return 1;
                 }
-                else if (R < o.R)
+                if (R < o.R)
                 {
                     return -1;
                 }
-                else if (G > o.G)
+                if (G > o.G)
                 {
                     return 1;
                 }
-                else if (G < o.G)
+                if (G < o.G)
                 {
                     return -1;
                 }
-                else if (B > o.B)
+                if (B > o.B)
                 {
                     return 1;
                 }
-                else if (B < o.B)
+                if (B < o.B)
                 {
                     return -1;
                 }

@@ -346,7 +346,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 bmp = TGA.FromFile(file.FullName);
                                 break;
                             }
-                            else if (
+
+                            if (
                                 file.Name.EndsWith(".png") ||
                                 file.Name.EndsWith(".tiff") ||
                                 file.Name.EndsWith(".tif") ||
@@ -398,10 +399,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return Name.CompareTo(((MDL0TextureNode) obj).Name);
             }
-            else
-            {
-                return 1;
-            }
+
+            return 1;
         }
 
         internal override void Bind()

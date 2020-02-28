@@ -26,15 +26,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                            ((int) ColorScale == 3 ? "0.5" : ColorScale == 0 ? "1" : ((int) ColorScale * 2).ToString()) +
                            (ColorClamp ? ");" : ";");
                 }
-                else if (op > 13)
+
+                if (op > 13)
                 {
                     return "d[x] + ((a[x] " + (op % 2 == 0 ? ">" : "==") + " b[x]) ? c[x] : 0 );";
                 }
-                else
-                {
-                    return "d + ((a[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "] " + (op % 2 == 0 ? ">" : "==") +
-                           " b[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "]) ? c : 0 );";
-                }
+                return "d + ((a[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "] " + (op % 2 == 0 ? ">" : "==") +
+                       " b[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "]) ? c : 0 );";
             }
         }
 
@@ -52,15 +50,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                            ((int) AlphaScale == 3 ? "0.5" : AlphaScale == 0 ? "1" : ((int) AlphaScale * 2).ToString()) +
                            (AlphaClamp ? ");" : ";");
                 }
-                else if (op > 13)
+
+                if (op > 13)
                 {
                     return "d[x] + ((a[x] " + (op % 2 == 0 ? ">" : "==") + " b[x]) ? c[x] : 0 );";
                 }
-                else
-                {
-                    return "d + ((a[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "] " + (op % 2 == 0 ? ">" : "==") +
-                           " b[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "]) ? c : 0 );";
-                }
+                return "d + ((a[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "] " + (op % 2 == 0 ? ">" : "==") +
+                       " b[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "]) ? c : 0 );";
             }
         }
 

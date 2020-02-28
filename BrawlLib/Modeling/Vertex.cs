@@ -40,7 +40,8 @@ namespace BrawlLib.Modeling
             {
                 return _parent.MatrixNode;
             }
-            else if (MatrixNode != null)
+
+            if (MatrixNode != null)
             {
                 return MatrixNode;
             }

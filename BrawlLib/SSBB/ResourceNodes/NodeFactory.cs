@@ -120,21 +120,36 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromAddress(ResourceNode parent, VoidPtr address, int length)
         {
-            return FromSource(parent, new DataSource(address, length));
+            return FromSource(parent, new DataSource(address, length), null, true);
         }
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source)
         {
-            return FromSource(parent, source, null);
+            return FromSource(parent, source, null, true);
+        }
+
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source, bool supportCompression)
+        {
+            return FromSource(parent, source, null, supportCompression);
         }
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t)
+        {
+            return FromSource(parent, source, t, true);
+        }
+
+
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t, bool supportCompression)
         {
             ResourceNode n = null;
 
             if (t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
             {
-                FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
+                FileMap uncompressedMap = null;
+                if (supportCompression)
+                {
+                    uncompressedMap = Compressor.TryExpand(ref source, false);
+                }
                 if (uncompressedMap != null)
                 {
                     n.Initialize(parent, source, new DataSource(uncompressedMap));

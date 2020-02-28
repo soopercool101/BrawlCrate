@@ -118,10 +118,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return Enums[_value];
                 }
-                else
-                {
-                    return _value.ToString();
-                }
+
+                return _value.ToString();
             }
             set
             {
@@ -214,10 +212,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return Root.iGFXFiles[index];
                 }
-                else
-                {
-                    return index.ToString();
-                }
+
+                return index.ToString();
             }
             set
             {

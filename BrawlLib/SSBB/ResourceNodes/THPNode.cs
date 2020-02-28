@@ -250,13 +250,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             break;
                         }
-                        else
+
+                        if (begun)
                         {
-                            if (begun)
-                            {
-                                temp.Insert(i + 1, 0);
-                                i++;
-                            }
+                            temp.Insert(i + 1, 0);
+                            i++;
                         }
 
                         if (m == JpegMarkers.StartOfScan)

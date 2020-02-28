@@ -970,10 +970,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                         vis0Editor.listBox1.SelectedIndex = x;
                         break;
                     }
-                    else
-                    {
-                        x++;
-                    }
+
+                    x++;
                 }
 
                 if (x == vis0Editor.listBox1.Items.Count)

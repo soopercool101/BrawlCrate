@@ -91,7 +91,8 @@ namespace BrawlLib.Internal
             {
                 return Equals((PString) obj, false);
             }
-            else if (obj is string)
+
+            if (obj is string)
             {
                 return Equals((string) obj, false);
             }

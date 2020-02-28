@@ -787,10 +787,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                 {
                     return entry;
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
         }
 

@@ -2140,7 +2140,8 @@ namespace BrawlCrate.UI
                         _modelPanel.Invalidate();
                         return;
                     }
-                    else if (_selectedLinks.Count == 1)
+
+                    if (_selectedLinks.Count == 1)
                     {
                         //Create new plane extending to point
                         CollisionLink link = _selectedLinks[0];
@@ -2154,7 +2155,7 @@ namespace BrawlCrate.UI
                         BeginHover(target);
                         return;
                     }
-                    else if (_selectedPlanes.Count > 0)
+                    if (_selectedPlanes.Count > 0)
                     {
                         //Find two closest points and insert between
                         CollisionPlane bestMatch = null;
@@ -2198,43 +2199,40 @@ namespace BrawlCrate.UI
 
                         return;
                     }
-                    else
+                    //Create new planes extending to point
+                    CollisionLink lnk;
+                    List<CollisionLink> links = new List<CollisionLink>();
+                    _creating = true;
+                    foreach (CollisionLink l in _selectedLinks)
                     {
-                        //Create new planes extending to point
-                        CollisionLink link = null;
-                        List<CollisionLink> links = new List<CollisionLink>();
-                        _creating = true;
-                        foreach (CollisionLink l in _selectedLinks)
-                        {
-                            links.Add(l.Branch((Vector2) target));
-                            l._highlight = false;
-                        }
-
-                        link = links[0];
-                        links.RemoveAt(0);
-                        for (int x = 0; x < links.Count;)
-                        {
-                            if (link.Merge(links[x]))
-                            {
-                                links.RemoveAt(x);
-                            }
-                            else
-                            {
-                                x++;
-                            }
-                        }
-
-                        _selectedLinks.Clear();
-                        _selectedLinks.Add(link);
-                        link._highlight = true;
-                        SelectionModified();
-                        _modelPanel.Invalidate();
-
-                        //Hover new point so it can be moved
-                        BeginHover(target);
-
-                        return;
+                        links.Add(l.Branch((Vector2) target));
+                        l._highlight = false;
                     }
+
+                    lnk = links[0];
+                    links.RemoveAt(0);
+                    for (int x = 0; x < links.Count;)
+                    {
+                        if (lnk.Merge(links[x]))
+                        {
+                            links.RemoveAt(x);
+                        }
+                        else
+                        {
+                            x++;
+                        }
+                    }
+
+                    _selectedLinks.Clear();
+                    _selectedLinks.Add(lnk);
+                    lnk._highlight = true;
+                    SelectionModified();
+                    _modelPanel.Invalidate();
+
+                    //Hover new point so it can be moved
+                    BeginHover(target);
+
+                    return;
                 }
 
                 if (move)

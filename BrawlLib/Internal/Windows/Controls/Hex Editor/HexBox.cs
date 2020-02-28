@@ -858,10 +858,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     _hexBox.Invalidate();
                     return true;
                 }
-                else
-                {
-                    return _hexBox.BasePreProcessMessage(ref m);
-                }
+
+                return _hexBox.BasePreProcessMessage(ref m);
             }
 
             protected bool RaiseKeyPress(char keyChar)
@@ -1751,14 +1749,12 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return (int) value;
             }
-            else
-            {
-                double valperc = value / (double) _scrollVmax * 100;
-                int res = (int) Math.Floor(max / (double) 100 * valperc);
-                res = (int) Math.Max(_scrollVmin, res);
-                res = (int) Math.Min(_scrollVmax, res);
-                return res;
-            }
+
+            double valperc = value / (double) _scrollVmax * 100;
+            int res = (int) Math.Floor(max / (double) 100 * valperc);
+            res = (int) Math.Max(_scrollVmin, res);
+            res = (int) Math.Min(_scrollVmax, res);
+            return res;
         }
 
         private long FromScrollPos(int value)
@@ -1768,12 +1764,10 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return value;
             }
-            else
-            {
-                double valperc = value / (double) max * 100;
-                long res = (int) Math.Floor(_scrollVmax / (double) 100 * valperc);
-                return res;
-            }
+
+            double valperc = value / (double) max * 100;
+            long res = (int) Math.Floor(_scrollVmax / (double) 100 * valperc);
+            return res;
         }
 
         private int ToScrollMax(long value)
@@ -1783,10 +1777,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return (int) max;
             }
-            else
-            {
-                return (int) value;
-            }
+
+            return (int) value;
         }
 
         private void PerformScrollToLine(long pos)
@@ -3040,10 +3032,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         /// <summary>
@@ -3869,10 +3859,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return BlackBrush;
             }
-            else
-            {
-                return GrayBrush;
-            }
+
+            return GrayBrush;
         }
 
         private void UpdateVisibilityBytes()
@@ -4521,10 +4509,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     return HexCasing.Upper;
                 }
-                else
-                {
-                    return HexCasing.Lower;
-                }
+
+                return HexCasing.Lower;
             }
             set
             {

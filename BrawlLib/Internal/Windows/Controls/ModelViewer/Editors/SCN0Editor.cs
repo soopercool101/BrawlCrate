@@ -1973,7 +1973,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                 btnRename.Enabled = false;
                 return;
             }
-            else if (btnRename.Enabled == false)
+
+            if (btnRename.Enabled == false)
             {
                 btnRename.Enabled = true;
             }

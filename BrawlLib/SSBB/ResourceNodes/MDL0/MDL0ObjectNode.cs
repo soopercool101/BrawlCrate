@@ -1144,10 +1144,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 return size;
             }
-            else
-            {
-                return base.OnCalculateSize(force);
-            }
+
+            return base.OnCalculateSize(force);
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -1500,10 +1498,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                             GL.Disable(EnableCap.Texture2D);
                             continue;
                         }
-                        else
-                        {
-                            GL.Enable(EnableCap.Texture2D);
-                        }
+
+                        GL.Enable(EnableCap.Texture2D);
 
                         MDL0MaterialRefNode mr = (MDL0MaterialRefNode) material.Children[i];
                         if (mr._texture == null || !mr._texture.Enabled)

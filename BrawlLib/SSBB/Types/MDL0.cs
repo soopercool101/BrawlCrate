@@ -1276,10 +1276,8 @@ namespace BrawlLib.SSBB.Types
             {
                 return (UserData*) (Address + UserDataOffset(version));
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public MatModeBlock* DisplayLists(int version)
@@ -1932,10 +1930,8 @@ namespace BrawlLib.SSBB.Types
             {
                 return (bushort*) (Address + 0x64);
             }
-            else
-            {
-                return (bushort*) (Address + 0x68);
-            }
+
+            return (bushort*) (Address + 0x68);
         }
 
         public VoidPtr PrimitiveData => _primitives.Data;

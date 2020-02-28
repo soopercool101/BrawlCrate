@@ -59,10 +59,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                 {
                     return (PortraitViewer) p;
                 }
-                else
-                {
-                    p = p.Parent;
-                }
+
+                p = p.Parent;
             }
 
             return null;

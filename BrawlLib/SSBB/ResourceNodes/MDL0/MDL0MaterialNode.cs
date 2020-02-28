@@ -107,10 +107,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return _objects.ToArray();
                 }
-                else
-                {
-                    return MetalMaterial == null ? null : MetalMaterial._objects.ToArray();
-                }
+
+                return MetalMaterial == null ? null : MetalMaterial._objects.ToArray();
             }
         }
 
@@ -3018,10 +3016,8 @@ For example, if the shader has two stages but this number is 1, the second stage
                 {
                     return GXAttnFn.None;
                 }
-                else
-                {
-                    return (GXAttnFn) (_binary[10] ? 1 : 0);
-                }
+
+                return (GXAttnFn) (_binary[10] ? 1 : 0);
             }
             set
             {

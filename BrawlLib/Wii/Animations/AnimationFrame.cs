@@ -785,10 +785,8 @@ namespace BrawlLib.Wii.Animations
             {
                 return Rot;
             }
-            else //Aim - calculate rotation facing the position
-            {
-                return GetRotationMatrix(type).GetAngles();
-            }
+
+            return GetRotationMatrix(type).GetAngles();
         }
 
         public Matrix GetRotationMatrix(SCN0CameraType type)
@@ -797,10 +795,8 @@ namespace BrawlLib.Wii.Animations
             {
                 return Matrix.RotationMatrix(Rot);
             }
-            else //Aim - calculate rotation facing the position
-            {
-                return Matrix.RotationMatrix(Aim.LookatAngles(Pos) * Maths._rad2degf) * Matrix.RotationAboutZ(Twist);
-            }
+
+            return Matrix.RotationMatrix(Aim.LookatAngles(Pos) * Maths._rad2degf) * Matrix.RotationAboutZ(Twist);
         }
 
         public CameraAnimationFrame(Vector3 pos, Vector3 rot, Vector3 aim, float t, float f, float h, float a, float nz,

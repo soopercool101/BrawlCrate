@@ -1,50 +1,18 @@
 ﻿using BrawlLib.SSBB.Types.Subspace.Animation;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GMOVNode : ResourceNode
+    public unsafe class GMOVNode : BLOCEntryNode
     {
-        internal GMOV* Header => (GMOV*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GMOVEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GMOV;
-
-        [Category("GMOV")]
-        [DisplayName("Entries")]
-        public int count => Header->_count;
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GMOVEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Movable Grounds";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Movable Platforms";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GMOV*) source.Address)->_tag == GMOV.Tag ? new GMOVNode() : null;
+            return source.Tag == "GMOV" ? new GMOVNode() : null;
         }
     }
 
@@ -53,13 +21,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal GMOVEntry* Header => (GMOVEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        [Category("Movable Ground")]
+        [Category("Movable Platform")]
         [DisplayName("Model Index")]
-        public int MID => *(byte*) (WorkingUncompressed.Address + 0x44);
+        public int ModelIndex => *(byte*) (WorkingUncompressed.Address + 0x44);
 
-        [Category("Movable Ground")]
+        [Category("Movable Platform")]
         [DisplayName("Collision Index")]
-        public int CID
+        public int CollisionIndex
         {
             get
             {
@@ -68,23 +36,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return -1;
                 }
-                else
-                {
-                    return CID;
-                }
+
+                return CID;
             }
         }
 
-        [Category("Movable Ground")]
+        [Category("Movable Platform")]
         [DisplayName("Path Index")]
-        public int PID => *(byte*) (WorkingUncompressed.Address + 0x06);
+        public int PathIndex => *(byte*) (WorkingUncompressed.Address + 0x06);
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
             {
-                _name = "Object[" + Index + ']';
+                _name = "Platform [" + Index + ']';
             }
 
             return false;

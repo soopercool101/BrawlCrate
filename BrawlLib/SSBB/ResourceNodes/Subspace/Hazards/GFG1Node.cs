@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GFG1Node : BLOCEntryNode
     {
-        public override Type SubEntryType => typeof(GFG1EntryNode);
+        protected override Type SubEntryType => typeof(GFG1EntryNode);
 
         internal static ResourceNode TryParse(DataSource source)
         {

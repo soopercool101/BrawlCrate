@@ -559,10 +559,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return (int) Coordinates - (int) TexSourceRow.TexCoord0;
                 }
-                else
-                {
-                    return -1 - (int) Coordinates;
-                }
+
+                return -1 - (int) Coordinates;
             }
         }
 
@@ -848,10 +846,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return _frameState._transform;
             }
-            else
-            {
-                return _frameState._transform * _effectMatrix;
-            }
+
+            return _frameState._transform * _effectMatrix;
         }
 
         public void Default()

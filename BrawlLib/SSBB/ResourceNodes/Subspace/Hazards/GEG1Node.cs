@@ -5,69 +5,15 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GEG1Node : ResourceNode
+    public unsafe class GEG1Node : BLOCEntryNode
     {
-        internal GEG1* Header => (GEG1*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GEG1EntryNode);
         public override ResourceType ResourceFileType => ResourceType.GEG1;
-
-        [Category("GEG1")]
-        [DisplayName("Enemy Count")]
-        public int EnemyCount => Children?.Count ?? 0;
-
-        private const int _entrySize = 0x84; // The constant size of a child entry
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GEG1EntryNode().Initialize(this, source);
-            }
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            return 0x08 + Children.Count * 4 + Children.Count * _entrySize;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GEG1* header = (GEG1*) address;
-            *header = new GEG1(Children.Count);
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                ResourceNode r = Children[i];
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                r.Rebuild(address + offset, _entrySize, true);
-                offset += _entrySize;
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "GEG1";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Subspace Enemies";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GEG1*) source.Address)->_tag == GEG1.Tag ? new GEG1Node() : null;
+            return source.Tag == "GEG1" ? new GEG1Node() : null;
         }
     }
 

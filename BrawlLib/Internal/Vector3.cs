@@ -74,10 +74,8 @@ namespace BrawlLib.Internal
             {
                 return new Vector3(v._x, v._y, v._z);
             }
-            else
-            {
-                return new Vector3(v._x / v._w, v._y / v._w, v._z / v._w);
-            }
+
+            return new Vector3(v._x / v._w, v._y / v._w, v._z / v._w);
         }
 
         public static explicit operator Vector3(OpenTK.Vector3 v)
@@ -623,23 +621,24 @@ namespace BrawlLib.Internal
                 {
                     return 1;
                 }
-                else if (_x < o._x)
+
+                if (_x < o._x)
                 {
                     return -1;
                 }
-                else if (_y > o._y)
+                if (_y > o._y)
                 {
                     return 1;
                 }
-                else if (_y < o._y)
+                if (_y < o._y)
                 {
                     return -1;
                 }
-                else if (_z > o._z)
+                if (_z > o._z)
                 {
                     return 1;
                 }
-                else if (_z < o._z)
+                if (_z < o._z)
                 {
                     return -1;
                 }

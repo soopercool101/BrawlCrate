@@ -176,10 +176,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 {
                                     continue; //Already linked, try again
                                 }
-                                else
-                                {
-                                    pPlane[rlink = tmp]._link1 = (short) iPlane; //Left link, which means the end!
-                                }
+
+                                pPlane[rlink = tmp]._link1 = (short) iPlane; //Left link, which means the end!
                             }
                             else
                             {

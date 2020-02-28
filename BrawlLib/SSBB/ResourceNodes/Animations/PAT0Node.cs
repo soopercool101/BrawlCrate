@@ -959,10 +959,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return prev;
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         /// <summary>

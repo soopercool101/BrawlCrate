@@ -295,9 +295,6 @@ namespace BrawlLib.Modeling.Collada
                                             writer.WriteEndElement(); //texture
                                         }
                                     }
-                                    else
-                                    {
-                                    }
                                 }
                                 writer.WriteEndElement(); //diffuse
                             }

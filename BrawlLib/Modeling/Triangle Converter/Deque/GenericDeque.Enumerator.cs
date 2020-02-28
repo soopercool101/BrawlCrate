@@ -40,7 +40,8 @@ namespace BrawlLib.Modeling.Triangle_Converter.Deque
                 {
                     throw new ObjectDisposedException(GetType().Name);
                 }
-                else if (version != owner.version)
+
+                if (version != owner.version)
                 {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
@@ -62,7 +63,8 @@ namespace BrawlLib.Modeling.Triangle_Converter.Deque
                     {
                         throw new ObjectDisposedException(GetType().Name);
                     }
-                    else if (!moveResult)
+
+                    if (!moveResult)
                     {
                         throw new InvalidOperationException(
                             "The enumerator is positioned before the first " +
@@ -83,7 +85,8 @@ namespace BrawlLib.Modeling.Triangle_Converter.Deque
                 {
                     throw new ObjectDisposedException(GetType().Name);
                 }
-                else if (version != owner.version)
+
+                if (version != owner.version)
                 {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
@@ -120,7 +123,8 @@ namespace BrawlLib.Modeling.Triangle_Converter.Deque
                     {
                         throw new ObjectDisposedException(GetType().Name);
                     }
-                    else if (!moveResult)
+
+                    if (!moveResult)
                     {
                         throw new InvalidOperationException(
                             "The enumerator is positioned before the first " +

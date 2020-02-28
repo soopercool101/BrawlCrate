@@ -200,7 +200,8 @@ namespace BrawlLib.SSBB
             {
                 return _allSupportedFilterEditable;
             }
-            else if (!editableOnly && _allSupportedFilter != null)
+
+            if (!editableOnly && _allSupportedFilter != null)
             {
                 return _allSupportedFilter;
             }
@@ -209,10 +210,8 @@ namespace BrawlLib.SSBB
             {
                 return _allSupportedFilterEditable = GetAllSupportedFilter(Files, true);
             }
-            else
-            {
-                return _allSupportedFilter = GetAllSupportedFilter(Files, false);
-            }
+
+            return _allSupportedFilter = GetAllSupportedFilter(Files, false);
         }
 
         private static readonly int MaxExtensionsInAllFilter = 10;
@@ -269,7 +268,8 @@ namespace BrawlLib.SSBB
             {
                 return _filterListEditable;
             }
-            else if (!editableOnly && _filterList != null)
+
+            if (!editableOnly && _filterList != null)
             {
                 return _filterList;
             }
@@ -278,10 +278,8 @@ namespace BrawlLib.SSBB
             {
                 return _filterListEditable = GetListFilter(Files, true);
             }
-            else
-            {
-                return _filterList = GetListFilter(Files, false);
-            }
+
+            return _filterList = GetListFilter(Files, false);
         }
 
         public static string GetListFilter(SupportedFileInfo[] files, bool editableOnly = false)

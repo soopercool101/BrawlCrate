@@ -178,10 +178,8 @@ namespace BrawlLib.Imaging
                 block._lookup = 0xFFFFFFFF;
                 return block;
             }
-            else
-            {
-                return optimalCompressDXT1(rgba);
-            }
+
+            return optimalCompressDXT1(rgba);
         }
 
         private static int extractColorBlockRGBA(ARGBPixel* colors, Vector3* points)

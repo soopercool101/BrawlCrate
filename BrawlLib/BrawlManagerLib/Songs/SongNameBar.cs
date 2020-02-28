@@ -166,63 +166,59 @@ namespace BrawlLib.BrawlManagerLib.Songs
                 info = NodeFactory.FromFile(null, tempfile) as MSBinNode;
                 return "Loaded .\\Misc Data [140].msbin";
             }
-            else if (new FileInfo("\\Misc Data [140].msbin").Exists)
+
+            if (new FileInfo("\\Misc Data [140].msbin").Exists)
             {
                 _currentFile = "\\Misc Data [140].msbin";
                 File.Copy("\\Misc Data [140].msbin", tempfile, true);
                 info = NodeFactory.FromFile(null, tempfile) as MSBinNode;
                 return "Loaded \\Misc Data [140].msbin";
             }
-            else
+            string[] infopaths = {"..\\..\\info2\\info.pac", "..\\..\\info2\\info_en.pac", "..\\info.pac"};
+
+            foreach (string relativepath in infopaths)
             {
-                string[] infopaths = {"..\\..\\info2\\info.pac", "..\\..\\info2\\info_en.pac", "..\\info.pac"};
-
-                foreach (string relativepath in infopaths)
-                {
-                    if (info == null)
-                    {
-                        string s = Path.GetFullPath(relativepath);
-                        if (new FileInfo(s).Exists)
-                        {
-                            _currentFile = s;
-                            File.Copy(s, tempfile, true);
-                            info_pac = NodeFactory.FromFile(null, tempfile);
-                            info = (MSBinNode) info_pac.FindChild("Misc Data [140]", true);
-                        }
-                    }
-                }
-
                 if (info == null)
                 {
-                    return "No song list loaded";
-                }
-                else
-                {
-                    modifiedStringIndices.Clear();
-                    copyIntoFileStrings();
-
-                    // info found; try info_training in same directory
-                    string trainingpath = _currentFile.Replace("info.pac", "info_training.pac")
-                                                      .Replace("info_en.pac", "info_training_en.pac");
-                    if (trainingpath != _currentFile && new FileInfo(trainingpath).Exists)
+                    string s = Path.GetFullPath(relativepath);
+                    if (new FileInfo(s).Exists)
                     {
-                        _currentTrainingFile = trainingpath;
-                        string tempfile_training = Path.GetTempFileName();
-                        File.Copy(trainingpath, tempfile_training, true);
-                        info_training_pac = NodeFactory.FromFile(null, tempfile_training);
-                        info_training = (MSBinNode) info_training_pac.FindChild("Misc Data [140]", true);
-                        if (info._strings.Count != info_training._strings.Count)
-                        {
-                            MessageBox.Show(
-                                "info.pac and info_training.pac have different Misc Data [140] lengths. Ignoring info_training.pac.");
-                            info_training = null;
-                            info_training_pac = null;
-                        }
+                        _currentFile = s;
+                        File.Copy(s, tempfile, true);
+                        info_pac = NodeFactory.FromFile(null, tempfile);
+                        info = (MSBinNode) info_pac.FindChild("Misc Data [140]", true);
                     }
-
-                    return info_training != null ? "Loaded info.pac and info_training.pac" : "Loaded info.pac";
                 }
             }
+
+            if (info == null)
+            {
+                return "No song list loaded";
+            }
+
+            modifiedStringIndices.Clear();
+            copyIntoFileStrings();
+
+            // info found; try info_training in same directory
+            string trainingpath = _currentFile.Replace("info.pac", "info_training.pac")
+                .Replace("info_en.pac", "info_training_en.pac");
+            if (trainingpath != _currentFile && new FileInfo(trainingpath).Exists)
+            {
+                _currentTrainingFile = trainingpath;
+                string tempfile_training = Path.GetTempFileName();
+                File.Copy(trainingpath, tempfile_training, true);
+                info_training_pac = NodeFactory.FromFile(null, tempfile_training);
+                info_training = (MSBinNode) info_training_pac.FindChild("Misc Data [140]", true);
+                if (info._strings.Count != info_training._strings.Count)
+                {
+                    MessageBox.Show(
+                        "info.pac and info_training.pac have different Misc Data [140] lengths. Ignoring info_training.pac.");
+                    info_training = null;
+                    info_training_pac = null;
+                }
+            }
+
+            return info_training != null ? "Loaded info.pac and info_training.pac" : "Loaded info.pac";
         }
 
         /// <summary>

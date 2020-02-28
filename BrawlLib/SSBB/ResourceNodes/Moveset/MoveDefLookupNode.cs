@@ -39,9 +39,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         Root._lookupSizes[o.DataOffset] = o;
                     }
-                    else
-                    {
-                    }
                 }
                 else
                 {

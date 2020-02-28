@@ -354,11 +354,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         throw new Exception(
                             $"There is more than one node underneath {Name} with the name {entry.Name}.");
                     }
-                    else
-                    {
-                        directChildrenExportedPaths.Add(path);
-                        entry.Export(path);
-                    }
+
+                    directChildrenExportedPaths.Add(path);
+                    entry.Export(path);
                 }
             }
         }
@@ -473,11 +471,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         throw new Exception(
                             $"There is more than one node underneath {Name} with the name {entry.Name}.");
                     }
-                    else
-                    {
-                        directChildrenExportedPaths.Add(path);
-                        entry.Export(path);
-                    }
+
+                    directChildrenExportedPaths.Add(path);
+                    entry.Export(path);
                 }
             }
         }

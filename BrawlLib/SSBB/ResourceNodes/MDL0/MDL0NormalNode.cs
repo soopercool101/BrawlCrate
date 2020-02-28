@@ -102,10 +102,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enc = new VertexCodec(Normals, false, _forceFloat);
                 return _enc._dataLen.Align(0x20) + 0x20;
             }
-            else
-            {
-                return base.OnCalculateSize(force);
-            }
+
+            return base.OnCalculateSize(force);
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)

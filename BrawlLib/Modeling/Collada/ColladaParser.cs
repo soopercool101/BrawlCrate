@@ -902,10 +902,8 @@ namespace BrawlLib.Modeling.Collada
                                 {
                                     break;
                                 }
-                                else
-                                {
-                                    list[i] = (string) _reader.Value;
-                                }
+
+                                list[i] = (string) _reader.Value;
                             }
                         }
                     }

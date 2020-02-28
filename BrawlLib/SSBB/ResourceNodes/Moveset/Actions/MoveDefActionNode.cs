@@ -67,10 +67,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return Name;
             }
-            else
-            {
-                return base.ToString();
-            }
+
+            return base.ToString();
         }
 
         public bool _isBlank;

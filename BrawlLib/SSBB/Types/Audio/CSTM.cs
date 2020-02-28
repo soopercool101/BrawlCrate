@@ -264,11 +264,9 @@ namespace BrawlLib.SSBB.Types.Audio
                 {
                     return (CSTMReference*) ChannelInfoRefTableEnd;
                 }
-                else
-                {
-                    int* ptr = (int*) (TrackInfo + 1);
-                    return (CSTMReference*) ptr;
-                }
+
+                int* ptr = (int*) (TrackInfo + 1);
+                return (CSTMReference*) ptr;
             }
         }
 

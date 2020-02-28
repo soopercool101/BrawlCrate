@@ -230,10 +230,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     nodeTreeError = true;
                                     continue;
                                 }
-                                else
-                                {
-                                    bones.Remove(bone);
-                                }
+
+                                bones.Remove(bone);
                             }
                             else
                             {
@@ -243,10 +241,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     nodeTreeError = true;
                                     continue;
                                 }
-                                else
-                                {
-                                    bones.Remove(bone);
-                                }
+
+                                bones.Remove(bone);
                             }
 
                             pData += 5;

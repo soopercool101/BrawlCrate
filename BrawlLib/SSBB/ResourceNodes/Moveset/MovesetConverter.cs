@@ -429,10 +429,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 return size;
             }
-            else
-            {
-                return 0;
-            }
+
+            return 0;
         }
 
         internal static unsafe void BuildData(MoveDefDataNode node, MovesetHeader* header, VoidPtr address, int length,

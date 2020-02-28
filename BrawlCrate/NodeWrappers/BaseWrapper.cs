@@ -348,19 +348,18 @@ namespace BrawlCrate.NodeWrappers
             {
                 return this;
             }
-            else
+
+            OnExpand();
+            foreach (BaseWrapper c in Nodes)
             {
-                OnExpand();
-                foreach (BaseWrapper c in Nodes)
+                if (c._resource == n)
                 {
-                    if (c._resource == n)
-                    {
-                        return c;
-                    }
-                    else if (searchChildren && (node = c.FindResource(n, true)) != null)
-                    {
-                        return node;
-                    }
+                    return c;
+                }
+
+                if (searchChildren && (node = c.FindResource(n, true)) != null)
+                {
+                    return node;
                 }
             }
 

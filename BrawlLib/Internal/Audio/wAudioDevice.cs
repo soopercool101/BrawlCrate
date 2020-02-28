@@ -96,7 +96,8 @@ namespace BrawlLib.Internal.Audio
                 ((List<AudioDevice>) ctx).Add(new wAudioDevice(*guid, new string(desc), new string(module)));
                 return true;
             }
-            else if (ctx is wAudioDevice)
+
+            if (ctx is wAudioDevice)
             {
                 wAudioDevice dev = ctx as wAudioDevice;
                 if (*guid == dev._guid)

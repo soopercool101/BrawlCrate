@@ -5,34 +5,6 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Subspace.Graphics
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GNDV
-    {
-        public const uint TAG = 0x56444E47; // GNDV
-        public const int SIZE = 0x08;
-
-        public uint _tag;
-        public bint _entryCount;
-
-        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
-
-        public uint Offsets(int index)
-        {
-            return *(buint*) ((byte*) Address + 0x08 + index * 4);
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GNDVEntry
     {
         public const int SIZE = 0x30;

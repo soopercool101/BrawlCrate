@@ -403,7 +403,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 return g;
             }
-            else if (endFound && i > 0)
+
+            if (endFound && i > 0)
             {
                 GCTNode g = new GCTNode();
                 g.Initialize(null, new DataSource(map));

@@ -4,44 +4,6 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Subspace.Hazards
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GEG1
-    {
-        public const uint Tag = 0x31474547;
-        public const int Size = 132;
-        public uint _tag;
-        public bint _count;
-        public bint _DataOffset;
-
-        public GEG1(int count)
-        {
-            _tag = Tag;
-            _count = count;
-            _DataOffset = count * 4;
-        }
-
-        //private GDOR* Address { get { fixed (GDOR* ptr = &this)return ptr; } }
-        //public byte* Data { get { return (byte*)(Address + _DataOffset); } }
-
-        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
-
-        public uint Offsets(int index)
-        {
-            return *(buint*) ((byte*) Address + 0x08 + index * 4);
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GEG1Entry
     {
         // I believe these are constant values for the Header

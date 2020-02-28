@@ -245,9 +245,6 @@ namespace BrawlLib.Wii.Textures
                     {
                         hasAlpha = true;
                     }
-                    else
-                    {
-                    }
                 }
             }
 

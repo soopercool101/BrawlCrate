@@ -55,19 +55,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         //[Category("Animated Object")]
         //[DisplayName("Model Index")]
-        //public int MID { get { return *(byte*)(WorkingUncompressed.Address + 0x3C); } }
+        //public int ModelIndex { get { return *(byte*)(WorkingUncompressed.Address + 0x3C); } }
 
         //[Category("Animated Object")]
         //[DisplayName("Collision Index")]
-        //public int CID
+        //public int CollisionIndex
         //{
         //    get
         //    {
-        //        int CID = *(byte*)(WorkingUncompressed.Address + 0x3D);
-        //        if (CID == 0xFF)
+        //        int CollisionIndex = *(byte*)(WorkingUncompressed.Address + 0x3D);
+        //        if (CollisionIndex == 0xFF)
         //            return -1;
         //        else
-        //            return CID;
+        //            return CollisionIndex;
         //    }
         //}
 

@@ -32,7 +32,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int _extParam = 0;
+        private int _extParam;
 
         public override bool OnInitialize()
         {
@@ -61,7 +61,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 //Call NodeFactory on datasource to initiate various files
-                if (NodeFactory.FromSource(this, source) == null)
+                if (NodeFactory.FromSource(this, source, false) == null)
                 {
                     new BLOCEntryNode().Initialize(this, source);
                 }
@@ -96,7 +96,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     offset += (uint) Children[i - 1].CalculateSize(false);
                 }
 
-                *(buint*) (address + 0x10 + i * 4) = offset;
+                *(buint*) (address + BLOC.Size + i * 4) = offset;
                 _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
             }
         }
@@ -111,12 +111,23 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         internal BLOCEntry* Header => (BLOCEntry*)WorkingUncompressed.Address;
+        public override bool supportsCompression => false;
 
-        [Category("BLOC Entry")]
-        public int Entries { get; private set; }
+        private int Buffer { get; set; }
+        private int Entries { get; set; }
         private uint _rawTag { get; set; }
 
-        public virtual Type SubEntryType => typeof(RawDataNode);
+        protected virtual string baseName => UncompressedSource.Tag;
+
+        public override string Name
+        {
+            get => $"{baseName} [{Index}]";
+            set => base.Name = value;
+        }
+
+        protected virtual Type SubEntryType => typeof(RawDataNode);
+
+        public override Type[] AllowedChildTypes => SubEntryType == typeof(RawDataNode) ? new Type[] { } : new []{ SubEntryType };
 
         public override bool OnInitialize()
         {
@@ -124,6 +135,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             _rawTag = Header->_tag;
             
             Entries = Header->_count;
+            // Get Buffer
+            for (int i = 0; i < Entries; i++)
+            {
+                if (Header->Offsets(i) == 0)
+                {
+                    Buffer++;
+                    i--;
+                }
+                else
+                {
+                    break;
+                }
+            }
             if (_name == null)
             {
                 _name = UncompressedSource.Tag;
@@ -134,13 +158,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            for (int i = 0; i < Entries; i++)
+            for (int i = Buffer; i < Entries + Buffer; i++)
             {
                 //source decleration
                 DataSource source;
 
                 //Enumerate datasources for each child node
-                if (i == Header->_count - 1)
+                if (i - Buffer == Entries - 1)
                 {
                     source = new DataSource((*Header)[i],
                         WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
@@ -151,7 +175,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 //Call NodeFactory on datasource to initiate various files
-                NodeFactory.FromSource(this, source, SubEntryType);
+                NodeFactory.FromSource(this, source, SubEntryType, false);
                 if (Children[i]._name == null || Children[i]._name == "<null>")
                 {
                     Children[i]._name = $"Entry [{i}]";

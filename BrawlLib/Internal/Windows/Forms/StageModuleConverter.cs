@@ -788,10 +788,8 @@ namespace BrawlLib.Internal.Windows.Forms
             {
                 return i;
             }
-            else
-            {
-                return -1;
-            }
+
+            return -1;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

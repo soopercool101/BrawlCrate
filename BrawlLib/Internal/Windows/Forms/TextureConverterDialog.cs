@@ -419,14 +419,12 @@ namespace BrawlLib.Internal.Windows.Forms
             {
                 return LoadImages(TGA.FromFile(path));
             }
-            else if (path.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+
+            if (path.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
             {
                 return LoadImagesPreservingPaletteInfo(path);
             }
-            else
-            {
-                return LoadImages((Bitmap) Image.FromFile(path));
-            }
+            return LoadImages((Bitmap) Image.FromFile(path));
         }
 
         public bool LoadImages()
