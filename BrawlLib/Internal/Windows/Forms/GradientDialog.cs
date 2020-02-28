@@ -13,30 +13,34 @@ namespace BrawlLib.Internal.Windows.Forms
         #region Designer
 
         private Label lblStartText;
-        private Label label2;
+        private Label lblStart;
         private Label lblEndText;
-        private Label label4;
+        private Label lblEnd;
         private Label lblEndColor;
         private Button btnOkay;
         private Button btnCancel;
         private BufferedPanel pnlPreview;
-        private Button btnCopy;
+        private Button btnCopyToEnd;
         private CheckBox chkShowAlpha;
+        private Button btnCopyToStart;
+        private Label lblCopy;
         private Label lblStartColor;
 
         private void InitializeComponent()
         {
             lblStartText = new Label();
-            label2 = new Label();
+            lblStart = new Label();
             lblStartColor = new Label();
             lblEndText = new Label();
-            label4 = new Label();
+            lblEnd = new Label();
             lblEndColor = new Label();
             btnOkay = new Button();
             btnCancel = new Button();
-            btnCopy = new Button();
+            btnCopyToEnd = new Button();
             pnlPreview = new BufferedPanel();
             chkShowAlpha = new CheckBox();
+            btnCopyToStart = new Button();
+            lblCopy = new Label();
             SuspendLayout();
             // 
             // lblStartText
@@ -53,14 +57,14 @@ namespace BrawlLib.Internal.Windows.Forms
             lblStartText.TextAlign = ContentAlignment.MiddleCenter;
             lblStartText.Click += new EventHandler(lblStartText_Click);
             // 
-            // label2
+            // lblStart
             // 
-            label2.Location = new Point(-1, 8);
-            label2.Name = "label2";
-            label2.Size = new Size(71, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Start Color:";
-            label2.TextAlign = ContentAlignment.MiddleRight;
+            lblStart.Location = new Point(-1, 8);
+            lblStart.Name = "lblStart";
+            lblStart.Size = new Size(71, 20);
+            lblStart.TabIndex = 3;
+            lblStart.Text = "Start Color:";
+            lblStart.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblStartColor
             // 
@@ -86,14 +90,14 @@ namespace BrawlLib.Internal.Windows.Forms
             lblEndText.TextAlign = ContentAlignment.MiddleCenter;
             lblEndText.Click += new EventHandler(lblEndText_Click);
             // 
-            // label4
+            // lblEnd
             // 
-            label4.Location = new Point(2, 52);
-            label4.Name = "label4";
-            label4.Size = new Size(68, 20);
-            label4.TabIndex = 3;
-            label4.Text = "End Color:";
-            label4.TextAlign = ContentAlignment.MiddleRight;
+            lblEnd.Location = new Point(2, 52);
+            lblEnd.Name = "lblEnd";
+            lblEnd.Size = new Size(68, 20);
+            lblEnd.TabIndex = 3;
+            lblEnd.Text = "End Color:";
+            lblEnd.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblEndColor
             // 
@@ -127,16 +131,16 @@ namespace BrawlLib.Internal.Windows.Forms
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
-            // btnCopy
+            // btnCopyToEnd
             // 
-            btnCopy.Anchor = AnchorStyles.Top;
-            btnCopy.Location = new Point(129, 30);
-            btnCopy.Name = "btnCopy";
-            btnCopy.Size = new Size(50, 20);
-            btnCopy.TabIndex = 9;
-            btnCopy.Text = "Copy";
-            btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += new EventHandler(btnCopy_Click);
+            btnCopyToEnd.Anchor = AnchorStyles.Top;
+            btnCopyToEnd.Location = new Point(106, 30);
+            btnCopyToEnd.Name = "btnCopyToEnd";
+            btnCopyToEnd.Size = new Size(22, 20);
+            btnCopyToEnd.TabIndex = 9;
+            btnCopyToEnd.Text = "↓";
+            btnCopyToEnd.UseVisualStyleBackColor = true;
+            btnCopyToEnd.Click += new EventHandler(btnCopyToEnd_Click);
             // 
             // pnlPreview
             // 
@@ -152,25 +156,51 @@ namespace BrawlLib.Internal.Windows.Forms
             // chkShowAlpha
             // 
             chkShowAlpha.AutoSize = true;
+            chkShowAlpha.BackColor = Color.Transparent;
             chkShowAlpha.Checked = true;
-            chkShowAlpha.Location = new Point(209, 32);
+            chkShowAlpha.CheckState = CheckState.Checked;
+            chkShowAlpha.Location = new Point(211, 33);
             chkShowAlpha.Name = "chkShowAlpha";
             chkShowAlpha.Size = new Size(83, 17);
             chkShowAlpha.TabIndex = 10;
             chkShowAlpha.Text = "Show Alpha";
-            chkShowAlpha.UseVisualStyleBackColor = true;
+            chkShowAlpha.UseVisualStyleBackColor = false;
             chkShowAlpha.CheckedChanged += new EventHandler(chkShowAlpha_CheckedChanged);
+            // 
+            // btnCopyToStart
+            // 
+            btnCopyToStart.Anchor = AnchorStyles.Top;
+            btnCopyToStart.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            btnCopyToStart.Location = new Point(177, 30);
+            btnCopyToStart.Name = "btnCopyToStart";
+            btnCopyToStart.Size = new Size(22, 20);
+            btnCopyToStart.TabIndex = 11;
+            btnCopyToStart.Text = "↑";
+            btnCopyToStart.UseVisualStyleBackColor = true;
+            btnCopyToStart.Click += new EventHandler(btnCopyToStart_Click);
+            // 
+            // lblCopy
+            // 
+            lblCopy.AutoSize = true;
+            lblCopy.Location = new Point(137, 34);
+            lblCopy.Name = "lblCopy";
+            lblCopy.Size = new Size(31, 13);
+            lblCopy.TabIndex = 12;
+            lblCopy.Text = "Copy";
+            lblCopy.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // GradientDialog
             // 
             ClientSize = new Size(309, 154);
+            Controls.Add(lblCopy);
+            Controls.Add(btnCopyToStart);
             Controls.Add(chkShowAlpha);
             Controls.Add(lblStartColor);
             Controls.Add(lblStartText);
             Controls.Add(lblEndText);
-            Controls.Add(label2);
-            Controls.Add(btnCopy);
-            Controls.Add(label4);
+            Controls.Add(lblStart);
+            Controls.Add(btnCopyToEnd);
+            Controls.Add(lblEnd);
             Controls.Add(lblEndColor);
             Controls.Add(pnlPreview);
             Controls.Add(btnCancel);
@@ -274,10 +304,14 @@ namespace BrawlLib.Internal.Windows.Forms
             }
         }
 
-        private void btnCopy_Click(object sender, EventArgs e)
+        private void btnCopyToStart_Click(object sender, EventArgs e)
         {
-            _endColor = _startColor;
-            UpdateEnd(true);
+            StartColor = _endColor;
+        }
+
+        private void btnCopyToEnd_Click(object sender, EventArgs e)
+        {
+            EndColor = _startColor;
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
