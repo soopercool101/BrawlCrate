@@ -82,7 +82,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = $"Area[{Index}]";
+                _name = $"Area [{Index}]";
             }
 
             _trigger1 = Entry->_trigger1;

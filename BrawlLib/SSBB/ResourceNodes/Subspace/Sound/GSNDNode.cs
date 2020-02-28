@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GSNDNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GSNDNode);
+        protected override Type SubEntryType => typeof(GSNDEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GSND;
         protected override string baseName => "Sound Effects";
 
@@ -97,7 +97,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnInitialize();
             if (_name == null)
             {
-                _name = "Sound[" + Index + ']';
+                _name = "Sound [" + Index + ']';
             }
 
             _Bname = Header->Name;
