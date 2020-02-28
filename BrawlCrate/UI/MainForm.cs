@@ -106,6 +106,7 @@ namespace BrawlCrate.UI
             _displayPropertyDescription = Properties.Settings.Default.DisplayPropertyDescriptionWhenAvailable;
             _updatesOnStartup = Properties.Settings.Default.CheckUpdatesAtStartup;
             _docUpdates = Properties.Settings.Default.GetDocumentationUpdates;
+            _compatibilityMode = BrawlLib.Properties.Settings.Default.CompatibilityMode;
             _showHex = Properties.Settings.Default.ShowHex;
             _autoCompressModules = BrawlLib.Properties.Settings.Default.AutoCompressModules;
             _autoCompressPCS = BrawlLib.Properties.Settings.Default.AutoCompressFighterPCS;
