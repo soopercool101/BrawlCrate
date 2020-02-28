@@ -117,7 +117,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
 #endif
         public int Buffer { get; set; }
-        private int Entries { get; set; }
         private uint _rawTag { get; set; }
 
         protected virtual string baseName => UncompressedSource.Tag;
@@ -136,11 +135,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             _rawTag = Header->_tag;
-            
-            Entries = Header->_count;
+
+            int entries = Header->_count;
             // Get Buffer
             Buffer = 0;
-            for (int i = 0; i < Entries + Buffer; i++)
+            for (int i = 0; i < entries + Buffer; i++)
             {
                 if (Header->Offsets(i) == 0)
                 {
@@ -156,18 +155,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _name = UncompressedSource.Tag;
             }
 
-            return Entries > 0;
+            return entries > 0;
         }
 
         public override void OnPopulate()
         {
-            for (int i = Buffer, j = 0; i < Entries + Buffer; i++, j++)
+            int entries = Header->_count;
+            for (int i = Buffer, j = 0; i < entries + Buffer; i++, j++)
             {
                 //source decleration
                 DataSource source;
 
                 //Enumerate datasources for each child node
-                if (i - Buffer == Entries - 1)
+                if (i - Buffer == entries - 1)
                 {
                     source = new DataSource((*Header)[i],
                         WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);

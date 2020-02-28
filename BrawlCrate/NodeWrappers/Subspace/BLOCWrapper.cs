@@ -43,7 +43,7 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("GCAM Animated Camera File", null, NewGCAMAction),
                 new ToolStripMenuItem("GITM Fighter Trophy File", null, NewGITMAction)
             ));
-
+            _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
