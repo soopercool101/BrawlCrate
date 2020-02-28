@@ -113,7 +113,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal BLOCEntry* Header => (BLOCEntry*)WorkingUncompressed.Address;
         public override bool supportsCompression => false;
 
-        private int Buffer { get; set; }
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public int Buffer { get; set; }
         private int Entries { get; set; }
         private uint _rawTag { get; set; }
 
@@ -136,12 +139,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             
             Entries = Header->_count;
             // Get Buffer
-            for (int i = 0; i < Entries; i++)
+            Buffer = 0;
+            for (int i = 0; i < Entries + Buffer; i++)
             {
                 if (Header->Offsets(i) == 0)
                 {
                     Buffer++;
-                    i--;
                 }
                 else
                 {
@@ -158,7 +161,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            for (int i = Buffer; i < Entries + Buffer; i++)
+            for (int i = Buffer, j = 0; i < Entries + Buffer; i++, j++)
             {
                 //source decleration
                 DataSource source;
@@ -176,9 +179,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 //Call NodeFactory on datasource to initiate various files
                 NodeFactory.FromSource(this, source, SubEntryType, false);
-                if (Children[i]._name == null || Children[i]._name == "<null>")
+                if (Children[j]._name == null || Children[j]._name == "<null>")
                 {
-                    Children[i]._name = $"Entry [{i}]";
+                    Children[j]._name = $"Entry [{j}]";
                 }
             }
         }
@@ -203,15 +206,22 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_count = Children.Count;
 
             uint offset = (uint)(BLOCEntry.Size + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
+            for (int i = 0, j = 0; j < Children.Count; i++)
             {
-                if (i > 0)
+                if (i < Buffer)
                 {
-                    offset += (uint)Children[i - 1].CalculateSize(false);
+                    *(buint*)(address + BLOCEntry.Size + i * 4) = 0;
+                    offset += 4;
+                    continue;
+                }
+                if (j > 0)
+                {
+                    offset += (uint)Children[j - 1].CalculateSize(false);
                 }
 
                 *(buint*)(address + BLOCEntry.Size + i * 4) = offset;
-                _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
+                _children[j].Rebuild(address + offset, _children[j].CalculateSize(false), true);
+                j++;
             }
         }
     }
