@@ -21,6 +21,7 @@ namespace BrawlLib.Internal.Windows.Forms
         private Button btnCancel;
         private BufferedPanel pnlPreview;
         private Button btnCopy;
+        private CheckBox chkShowAlpha;
         private Label lblStartColor;
 
         private void InitializeComponent()
@@ -35,6 +36,7 @@ namespace BrawlLib.Internal.Windows.Forms
             btnCancel = new Button();
             btnCopy = new Button();
             pnlPreview = new BufferedPanel();
+            chkShowAlpha = new CheckBox();
             SuspendLayout();
             // 
             // lblStartText
@@ -147,9 +149,22 @@ namespace BrawlLib.Internal.Windows.Forms
             pnlPreview.TabIndex = 8;
             pnlPreview.Paint += new PaintEventHandler(pnlPreview_Paint);
             // 
+            // chkShowAlpha
+            // 
+            chkShowAlpha.AutoSize = true;
+            chkShowAlpha.Checked = true;
+            chkShowAlpha.Location = new Point(209, 32);
+            chkShowAlpha.Name = "chkShowAlpha";
+            chkShowAlpha.Size = new Size(83, 17);
+            chkShowAlpha.TabIndex = 10;
+            chkShowAlpha.Text = "Show Alpha";
+            chkShowAlpha.UseVisualStyleBackColor = true;
+            chkShowAlpha.CheckedChanged += new EventHandler(chkShowAlpha_CheckedChanged);
+            // 
             // GradientDialog
             // 
             ClientSize = new Size(309, 154);
+            Controls.Add(chkShowAlpha);
             Controls.Add(lblStartColor);
             Controls.Add(lblStartText);
             Controls.Add(lblEndText);
@@ -168,7 +183,7 @@ namespace BrawlLib.Internal.Windows.Forms
             ShowInTaskbar = false;
             Text = "Gradient Fill";
             ResumeLayout(false);
-
+            PerformLayout();
         }
 
         #endregion
@@ -183,7 +198,7 @@ namespace BrawlLib.Internal.Windows.Forms
             set
             {
                 _startColor = value;
-                UpdateStart();
+                UpdateStart(true);
             }
         }
 
@@ -197,33 +212,9 @@ namespace BrawlLib.Internal.Windows.Forms
             set
             {
                 _endColor = value;
-                UpdateEnd();
+                UpdateEnd(true);
             }
         }
-
-        //private int _startIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int StartIndex
-        //{
-        //    get { return _startIndex; }
-        //    set { numStart.Value = _startIndex = value; }
-        //}
-
-        //private int _endIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int EndIndex
-        //{
-        //    get { return _endIndex; }
-        //    set { numStart.Value = _endIndex = value; }
-        //}
-
-        //private int _maxIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int MaxIndex
-        //{
-        //    get { return _maxIndex; }
-        //    set { numStart.Maximum = numEnd.Maximum = _maxIndex = value; }
-        //}
 
         private readonly GoodColorDialog _dlgColor;
         private readonly LinearGradientBrush _gradBrush;
@@ -239,58 +230,54 @@ namespace BrawlLib.Internal.Windows.Forms
                     Color.White, Color.Black, LinearGradientMode.Horizontal);
         }
 
-        private void UpdateStart()
+        private void UpdateStart(bool updateGradient)
         {
             lblStartText.Text = ((ARGBPixel) _startColor).ToString();
-            lblStartColor.BackColor = Color.FromArgb(_startColor.R, _startColor.G, _startColor.B);
-            UpdateBrush();
+            lblStartColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _startColor.A : 255, _startColor.R, _startColor.G, _startColor.B);
+            if (updateGradient)
+            {
+                UpdateBrush();
+            }
         }
 
-        private void UpdateEnd()
+        private void UpdateEnd(bool updateGradient)
         {
             lblEndText.Text = ((ARGBPixel) _endColor).ToString();
-            lblEndColor.BackColor = Color.FromArgb(_endColor.R, _endColor.G, _endColor.B);
-            UpdateBrush();
+            lblEndColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _endColor.A : 255, _endColor.R, _endColor.G, _endColor.B);
+            if (updateGradient)
+            {
+                UpdateBrush();
+            }
         }
 
         private void UpdateBrush()
         {
-            _gradBrush.LinearColors = new Color[] {_startColor, _endColor};
+            _gradBrush.LinearColors = new [] { lblStartColor.BackColor, lblEndColor.BackColor };
             pnlPreview.Invalidate();
         }
-
-        private void numStart_ValueChanged(object sender, EventArgs e)
-        {
-        } // _startIndex = (int)numStart.Value; }
 
         private void lblStartText_Click(object sender, EventArgs e)
         {
             _dlgColor.Color = _startColor;
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
-                _startColor = _dlgColor.Color;
-                UpdateStart();
+                StartColor = _dlgColor.Color;
             }
         }
-
-        private void numEnd_ValueChanged(object sender, EventArgs e)
-        {
-        } // _endIndex = (int)numEnd.Value; }
 
         private void lblEndText_Click(object sender, EventArgs e)
         {
             _dlgColor.Color = _endColor;
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
-                _endColor = _dlgColor.Color;
-                UpdateEnd();
+                EndColor = _dlgColor.Color;
             }
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
             _endColor = _startColor;
-            UpdateEnd();
+            UpdateEnd(true);
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
@@ -311,6 +298,13 @@ namespace BrawlLib.Internal.Windows.Forms
 
             g.FillRectangle(GoodPictureBox._brush, pnlPreview.ClientRectangle);
             g.FillRectangle(_gradBrush, pnlPreview.ClientRectangle);
+        }
+
+        private void chkShowAlpha_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateStart(false);
+            UpdateEnd(false);
+            UpdateBrush();
         }
     }
 }
