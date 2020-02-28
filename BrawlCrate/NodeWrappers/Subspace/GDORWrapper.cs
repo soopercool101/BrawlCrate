@@ -84,7 +84,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GDOREntryNode node = new GDOREntryNode
             {
-                Name = "Door[0]",
+                Name = "Door [0]",
                 Trigger0 = "00000100",
                 Trigger1 = "00000100",
                 Trigger2 = "00000100",
@@ -98,4 +98,7 @@ namespace BrawlCrate.NodeWrappers
             ContextMenuStrip = _menu;
         }
     }
+
+    [NodeWrapper(ResourceType.GDBF)]
+    public class GDBFWrapper : GDORWrapper { }
 }

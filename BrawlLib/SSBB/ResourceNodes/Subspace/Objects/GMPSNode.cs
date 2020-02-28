@@ -1,50 +1,18 @@
 ﻿using BrawlLib.SSBB.Types.Subspace.Objects;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GMPSNode : ResourceNode
+    public unsafe class GMPSNode : BLOCEntryNode
     {
-        internal GMPS* Header => (GMPS*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GMPSEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GMPS;
-
-        [Category("GMPS")]
-        [DisplayName("Entries")]
-        public int count => Header->_count;
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GMPSEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Punch Sliders";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Trackballs";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GMPS*) source.Address)->_tag == GMPS.Tag ? new GMPSNode() : null;
+            return source.Tag == "GMPS" ? new GMPSNode() : null;
         }
     }
 

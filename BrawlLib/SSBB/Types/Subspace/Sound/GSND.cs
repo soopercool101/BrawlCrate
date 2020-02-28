@@ -4,39 +4,6 @@ using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Sound
 {
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GSND
-    {
-        public const uint Tag = 0x444E5347;
-        public const int Size = 0x14;
-        public uint _tag;
-        public bint _count;
-
-        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
-
-        public uint Offsets(int index)
-        {
-            return *(buint*) ((byte*) Address + 0x08 + index * 4);
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public GSND(int count)
-        {
-            _tag = Tag;
-            _count = count;
-        }
-    }
-
     public unsafe struct GSNDEntry
     {
         public bint _infoIndex;

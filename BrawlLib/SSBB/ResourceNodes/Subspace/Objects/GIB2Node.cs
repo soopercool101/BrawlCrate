@@ -1,72 +1,19 @@
 using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Objects;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GIB2Node : ResourceNode
+    public unsafe class GIB2Node : BLOCEntryNode
     {
-        internal GIB2* Header => (GIB2*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GIB2EntryNode);
         public override ResourceType ResourceFileType => ResourceType.GIB2;
-
-        [Category("GIB2")]
-        [DisplayName("Entry Count")]
-        public int Count => Children?.Count ?? 0;
-
-        private const int _entrySize = 0x17; // The constant size of a child entry
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GIB2EntryNode().Initialize(this, source);
-            }
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            return 0x08 + Children.Count * 4 + Children.Count * _entrySize;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GIB2* header = (GIB2*) address;
-            *header = new GIB2(Children.Count);
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                ResourceNode r = Children[i];
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                r.Rebuild(address + offset, _entrySize, true);
-                offset += _entrySize;
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Item Boxes";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Item Boxes";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GIB2*) source.Address)->_tag == GIB2.Tag ? new GIB2Node() : null;
+            return source.Tag == "GIB2" ? new GIB2Node() : null;
         }
     }
 

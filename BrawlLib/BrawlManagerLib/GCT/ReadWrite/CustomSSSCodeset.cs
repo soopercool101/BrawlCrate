@@ -399,8 +399,7 @@ namespace BrawlLib.BrawlManagerLib.GCT.ReadWrite
 
         public override string ToString()
         {
-            return string.Format("Custom SSS: {0}/{1} stages, from pool of {2} pairs",
-                sss1.Length, sss2.Length, sss3.Length / 2);
+            return $"Custom SSS: {sss1.Length}/{sss2.Length} stages, from pool of {sss3.Length / 2} pairs";
         }
     }
 }

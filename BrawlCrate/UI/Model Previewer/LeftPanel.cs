@@ -1001,8 +1001,8 @@ namespace BrawlCrate.UI.Model_Previewer
 
             if (TargetModel is MDL0Node)
             {
-                _AnimGroupBRRES.Header = string.Format("In BRRES ({0})", TargetModel);
-                _AnimGroupNotBRRES.Header = string.Format("Not in BRRES ({0})", TargetModel);
+                _AnimGroupBRRES.Header = $"In BRRES ({TargetModel})";
+                _AnimGroupNotBRRES.Header = $"Not in BRRES ({TargetModel})";
 
                 listAnims.Groups.Add(_AnimGroupBRRES);
                 listAnims.Groups.Add(_AnimGroupNotBRRES);
@@ -1617,15 +1617,15 @@ namespace BrawlCrate.UI.Model_Previewer
                     viewToolStripMenuItem.Enabled = true;
                     replaceTextureToolStripMenuItem.Enabled = true;
                     exportTextureToolStripMenuItem.Enabled = true;
-                    sourceToolStripMenuItem.Text = string.Format("Source: {0}",
-                        Path.GetFileName(((ResourceNode) _selectedTexture.Source).RootNode._origPath));
+                    sourceToolStripMenuItem.Text =
+                        $"Source: {Path.GetFileName(((ResourceNode) _selectedTexture.Source).RootNode._origPath)}";
                 }
                 else if (_selectedTexture.Source is string)
                 {
                     viewToolStripMenuItem.Enabled = true;
                     replaceTextureToolStripMenuItem.Enabled = false;
                     exportTextureToolStripMenuItem.Enabled = false;
-                    sourceToolStripMenuItem.Text = string.Format("Source: {0}", (string) _selectedTexture.Source);
+                    sourceToolStripMenuItem.Text = $"Source: {(string) _selectedTexture.Source}";
                 }
                 else
                 {
@@ -1637,8 +1637,8 @@ namespace BrawlCrate.UI.Model_Previewer
 
                 if (_selectedTexture.Texture != null)
                 {
-                    sizeToolStripMenuItem.Text = string.Format("Size: {0} x {1}", _selectedTexture.Texture.Width,
-                        _selectedTexture.Texture.Height);
+                    sizeToolStripMenuItem.Text =
+                        $"Size: {_selectedTexture.Texture.Width} x {_selectedTexture.Texture.Height}";
                 }
                 else
                 {
@@ -1739,7 +1739,7 @@ namespace BrawlCrate.UI.Model_Previewer
             _updating = true;
             if (listAnims.SelectedItems.Count > 0)
             {
-                createNewToolStripMenuItem.Text = string.Format("Create New {0}0", TargetAnimType.ToString());
+                createNewToolStripMenuItem.Text = $"Create New {TargetAnimType.ToString()}0";
 
                 NW4RAnimationNode n = listAnims.SelectedItems[0].Tag as NW4RAnimationNode;
                 if (n != null)

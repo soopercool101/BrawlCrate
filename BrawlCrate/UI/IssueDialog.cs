@@ -77,14 +77,8 @@ namespace BrawlCrate.UI
                     exceptionMessage += _exception.InnerException.Message.Replace("\"", "\\\"");
                 }
 
-                string args = string.Format("-bi \"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
-                    programTitle,
-                    exceptionMessage,
-                    _exception.StackTrace.Replace("\"", "\\\""),
-                    txtTitle.Text.Replace("\"", "\\\""),
-                    string.IsNullOrEmpty(txtDescription.Text) || txtDescription.ForeColor == Color.Gray
-                        ? ""
-                        : txtDescription.Text.Replace("\"", "\\\""));
+                string args =
+                    $"-bi \"{programTitle}\" \"{exceptionMessage}\" \"{_exception.StackTrace.Replace("\"", "\\\"")}\" \"{txtTitle.Text.Replace("\"", "\\\"")}\" \"{(string.IsNullOrEmpty(txtDescription.Text) || txtDescription.ForeColor == Color.Gray ? "" : txtDescription.Text.Replace("\"", "\\\""))}\"";
 
                 Process.Start(new ProcessStartInfo
                 {
