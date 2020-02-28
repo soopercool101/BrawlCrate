@@ -36,7 +36,6 @@ namespace BrawlCrate.NodeWrappers
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("Ne&w", null,
                 new ToolStripMenuItem("GSND Archive", null, NewGSNDAction),
-                new ToolStripMenuItem("ADSJ Stepjump File", null, NewADSJAction),
                 new ToolStripMenuItem("GDOR Adventure Door File", null, NewGDORAction),
                 new ToolStripMenuItem("GDBF Factory Door File", null, NewGDBFAction),
                 new ToolStripMenuItem("GWAT Swimmable Water File", null, NewGWATAction),
@@ -62,11 +61,6 @@ namespace BrawlCrate.NodeWrappers
         protected static void NewGSNDAction(object sender, EventArgs e)
         {
             GetInstance<BLOCWrapper>().NewGSND();
-        }
-
-        protected static void NewADSJAction(object sender, EventArgs e)
-        {
-            GetInstance<BLOCWrapper>().NewADSJ();
         }
 
         protected static void NewGDORAction(object sender, EventArgs e)
@@ -132,18 +126,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GSNDNode NewGSND()
         {
-            GSNDNode node = new GSNDNode {Name = _resource.FindName("NewGSND")};
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public ADSJNode NewADSJ()
-        {
-            ADSJNode node = new ADSJNode {Name = _resource.FindName("NewADSJ")};
+            GSNDNode node = new GSNDNode();
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -154,7 +137,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GDORNode NewGDOR()
         {
-            GDORNode node = new GDORNode {Name = _resource.FindName("NewGDOR")};
+            GDORNode node = new GDORNode();
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -165,7 +148,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GDBFNode NewGDBF()
         {
-            GDBFNode node = new GDBFNode {Name = _resource.FindName("NewGDBF")};
+            GDBFNode node = new GDBFNode();
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -176,7 +159,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GWATNode NewGWAT()
         {
-            GWATNode node = new GWATNode {Name = _resource.FindName("NewGWAT")};
+            GWATNode node = new GWATNode();
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -187,7 +170,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GEG1Node NewGEG1()
         {
-            GEG1Node node = new GEG1Node {Name = _resource.FindName("NewGEG1")};
+            GEG1Node node = new GEG1Node();
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -198,7 +181,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GCAMNode NewGCAM()
         {
-            GCAMNode node = new GCAMNode {Name = _resource.FindName("NewGCAM")};
+            GCAMNode node = new GCAMNode();
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -209,7 +192,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GITMNode NewGITM()
         {
-            GITMNode node = new GITMNode {Name = _resource.FindName("NewGITM")};
+            GITMNode node = new GITMNode();
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
