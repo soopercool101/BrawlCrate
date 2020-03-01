@@ -6,6 +6,7 @@ using BrawlLib.Wii.Compression;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -56,6 +57,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     if (entry->_dataLength == 0 || (e = NodeFactory.FromSource(this, source) as U8EntryNode) == null)
                     {
                         e = new ARCEntryNode();
+                        e._origSource = source;
+                        e._uncompSource = source;
                     }
 
                     e._name = new string(table + entry->_stringOffset);
@@ -64,7 +67,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     e._u8FirstNotChild = -1;
                     e._u8Type = entry->_type;
 
-                    e.Initialize(this, source);
+                    e.Initialize(this, e.OriginalSource, e.UncompressedSource);
 
                     nodes.Add(e);
                 }
