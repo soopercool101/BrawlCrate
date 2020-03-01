@@ -1,4 +1,4 @@
-﻿using BrawlCrate.NodeWrappers;
+using BrawlCrate.NodeWrappers;
 using BrawlCrate.UI;
 using BrawlCrate.UI.Model_Previewer.ModelEditControl;
 using BrawlLib.Internal;
@@ -14,6 +14,9 @@ using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling.Collada;
 using System.Collections.Specialized;
+#if !DEBUG
+using System.Configuration;
+#endif
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 
