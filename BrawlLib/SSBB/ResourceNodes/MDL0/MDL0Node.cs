@@ -1549,8 +1549,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
             {
                 MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
-                                                              .Substring(0,
-                                                                  MaterialGroup.Children[0].Name.IndexOf("_"));
+                    .Substring(0,
+                        MaterialGroup.Children[0].Name.IndexOf("_"));
             }
 
             if (BoneGroup == null)
@@ -1955,8 +1955,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
             {
                 MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
-                                                              .Substring(0,
-                                                                  MaterialGroup.Children[0].Name.IndexOf("_"));
+                    .Substring(0,
+                        MaterialGroup.Children[0].Name.IndexOf("_"));
             }
 
             foreach (MDL0MaterialNode mat in _matGroup.Children)
@@ -2577,8 +2577,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (path.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
             {
-                return new Collada{Text = $"Import Settings - {Path.GetFileName(path)}"}.ShowDialog(path, Collada.ImportType.MDL0) as MDL0Node;
+                return new Collada {Text = $"Import Settings - {Path.GetFileName(path)}"}.ShowDialog(path,
+                    Collada.ImportType.MDL0) as MDL0Node;
             }
+
             if (path.EndsWith(".pmd", StringComparison.OrdinalIgnoreCase))
             {
                 return PMDModel.ImportModel(path);

@@ -41,7 +41,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (!_replaced)
             {
                 SetSizeInternal(WaveInfo.Size + Info._format._channels *
-                                (4 + ChannelInfo.Size + (Info._format._encoding == 2 ? ADPCMInfo.Size : 0)));
+                    (4 + ChannelInfo.Size + (Info._format._encoding == 2 ? ADPCMInfo.Size : 0)));
             }
 
             return false;

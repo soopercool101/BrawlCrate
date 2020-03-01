@@ -485,8 +485,8 @@ namespace BrawlCrate.NodeWrappers
         public void AutoMetal()
         {
             if (MessageBox.Show(null,
-                    "Are you sure you want to (re)generate metal materials for Brawl?\nAll existing metal materials and shaders will be reset.",
-                    "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                "Are you sure you want to (re)generate metal materials for Brawl?\nAll existing metal materials and shaders will be reset.",
+                "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ((MDL0Node) _resource).GenerateMetalMaterials();
             }
@@ -803,7 +803,7 @@ namespace BrawlCrate.NodeWrappers
                     MDL0Node external;
                     if ((external = MDL0Node.FromFile(path)) != null)
                     {
-                        new ObjectImporter().ShowDialog((MDL0Node)_resource, external);
+                        new ObjectImporter().ShowDialog((MDL0Node) _resource, external);
                     }
                     else
                     {

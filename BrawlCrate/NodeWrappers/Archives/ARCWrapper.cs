@@ -683,6 +683,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
+
         protected static void GoToAction(object sender, EventArgs e)
         {
             GetInstance<RedirectWrapper>().GoTo();
@@ -728,7 +729,8 @@ namespace BrawlCrate.NodeWrappers
             }
             catch
             {
-                MessageBox.Show("The redirect target could not be found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The redirect target could not be found", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -737,7 +739,7 @@ namespace BrawlCrate.NodeWrappers
         {
             ARCNode parentArc = (Parent as ARCWrapper).Resource as ARCNode;
             ARCEntryNode node = new ARCEntryNode
-                { FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect };
+                {FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect};
             parentArc.InsertChild(node, _resource.Index + 1);
             node.RedirectTarget = (Resource as ARCEntryNode).RedirectTarget;
             node.Name = Resource.Name;

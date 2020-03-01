@@ -6,9 +6,9 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
@@ -54,7 +54,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             dlgOpen = new OpenFileDialog();
             dlgSave = new SaveFileDialog();
 #if !MONO
-            folderBrowserDialog1 = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            folderBrowserDialog1 = new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             folderBrowserDialog1 = new FolderBrowserDialog();
 #endif
@@ -90,9 +90,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             pnlKeyframes.BorderStyle = BorderStyle.Fixed3D;
             pnlKeyframes.Controls.Add(pnlBones);
             pnlKeyframes.Dock = DockStyle.Fill;
-            pnlKeyframes.Location = new System.Drawing.Point(0, 0);
+            pnlKeyframes.Location = new Point(0, 0);
             pnlKeyframes.Name = "pnlKeyframes";
-            pnlKeyframes.Size = new System.Drawing.Size(164, 398);
+            pnlKeyframes.Size = new Size(164, 398);
             pnlKeyframes.TabIndex = 26;
             // 
             // pnlBones
@@ -101,9 +101,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             pnlBones.Controls.Add(boneTree);
             pnlBones.Controls.Add(panel1);
             pnlBones.Dock = DockStyle.Fill;
-            pnlBones.Location = new System.Drawing.Point(0, 0);
+            pnlBones.Location = new Point(0, 0);
             pnlBones.Name = "pnlBones";
-            pnlBones.Size = new System.Drawing.Size(160, 394);
+            pnlBones.Size = new Size(160, 394);
             pnlBones.TabIndex = 10;
             // 
             // lstBones
@@ -111,9 +111,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             lstBones.Dock = DockStyle.Fill;
             lstBones.FormattingEnabled = true;
             lstBones.IntegralHeight = false;
-            lstBones.Location = new System.Drawing.Point(0, 21);
+            lstBones.Location = new Point(0, 21);
             lstBones.Name = "lstBones";
-            lstBones.Size = new System.Drawing.Size(160, 373);
+            lstBones.Size = new Size(160, 373);
             lstBones.TabIndex = 32;
             lstBones.ItemCheck += new ItemCheckEventHandler(lstBones_ItemCheck);
             lstBones.SelectedValueChanged += new EventHandler(lstBones_SelectedValueChanged);
@@ -129,9 +129,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             boneTree.HotTracking = true;
             boneTree.Indent = 14;
             boneTree.ItemHeight = 16;
-            boneTree.Location = new System.Drawing.Point(0, 21);
+            boneTree.Location = new Point(0, 21);
             boneTree.Name = "boneTree";
-            boneTree.Size = new System.Drawing.Size(160, 373);
+            boneTree.Size = new Size(160, 373);
             boneTree.TabIndex = 29;
             boneTree.Visible = false;
             boneTree.AfterCheck += new TreeViewEventHandler(boneTree_AfterCheck);
@@ -144,18 +144,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             panel1.Controls.Add(chkContains);
             panel1.Controls.Add(chkFlat);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(160, 21);
+            panel1.Size = new Size(160, 21);
             panel1.TabIndex = 31;
             // 
             // txtSearchBone
             // 
             txtSearchBone.Dock = DockStyle.Fill;
             txtSearchBone.ForeColor = Color.Gray;
-            txtSearchBone.Location = new System.Drawing.Point(44, 0);
+            txtSearchBone.Location = new Point(44, 0);
             txtSearchBone.Name = "txtSearchBone";
-            txtSearchBone.Size = new System.Drawing.Size(46, 20);
+            txtSearchBone.Size = new Size(46, 20);
             txtSearchBone.TabIndex = 30;
             txtSearchBone.Text = "Search for a bone...";
             txtSearchBone.Visible = false;
@@ -167,11 +167,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             // 
             chkContains.AutoSize = true;
             chkContains.Dock = DockStyle.Right;
-            chkContains.Location = new System.Drawing.Point(90, 0);
+            chkContains.Location = new Point(90, 0);
             chkContains.Margin = new Padding(0);
             chkContains.Name = "chkContains";
             chkContains.Padding = new Padding(3, 0, 0, 0);
-            chkContains.Size = new System.Drawing.Size(70, 21);
+            chkContains.Size = new Size(70, 21);
             chkContains.TabIndex = 32;
             chkContains.Text = "Contains";
             chkContains.UseVisualStyleBackColor = false;
@@ -184,11 +184,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             chkFlat.Checked = true;
             chkFlat.CheckState = CheckState.Checked;
             chkFlat.Dock = DockStyle.Left;
-            chkFlat.Location = new System.Drawing.Point(0, 0);
+            chkFlat.Location = new Point(0, 0);
             chkFlat.Margin = new Padding(0);
             chkFlat.Name = "chkFlat";
             chkFlat.Padding = new Padding(1, 0, 0, 0);
-            chkFlat.Size = new System.Drawing.Size(44, 21);
+            chkFlat.Size = new Size(44, 21);
             chkFlat.TabIndex = 31;
             chkFlat.Text = "Flat";
             chkFlat.UseVisualStyleBackColor = false;
@@ -210,85 +210,85 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
                 _moveDownToolStripMenuItem
             });
             ctxBones.Name = "ctxBones";
-            ctxBones.Size = new System.Drawing.Size(175, 192);
+            ctxBones.Size = new Size(175, 192);
             // 
             // nameToolStripMenuItem
             // 
             nameToolStripMenuItem.Enabled = false;
             nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            nameToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            nameToolStripMenuItem.Size = new Size(174, 22);
             nameToolStripMenuItem.Text = "<name>";
             // 
             // boneIndex
             // 
             boneIndex.Enabled = false;
             boneIndex.Name = "boneIndex";
-            boneIndex.Size = new System.Drawing.Size(174, 22);
+            boneIndex.Size = new Size(174, 22);
             boneIndex.Text = "Bone Index";
             // 
             // renameBoneToolStripMenuItem
             // 
             renameBoneToolStripMenuItem.Name = "renameBoneToolStripMenuItem";
-            renameBoneToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            renameBoneToolStripMenuItem.Size = new Size(174, 22);
             renameBoneToolStripMenuItem.Text = "Rename";
             renameBoneToolStripMenuItem.Click += new EventHandler(renameBoneToolStripMenuItem_Click);
             // 
             // ctxBonesDivider1
             // 
             ctxBonesDivider1.Name = "ctxBonesDivider1";
-            ctxBonesDivider1.Size = new System.Drawing.Size(171, 6);
+            ctxBonesDivider1.Size = new Size(171, 6);
             // 
             // addToParentToolStripMenuItem
             // 
             addToParentToolStripMenuItem.Name = "addToParentToolStripMenuItem";
-            addToParentToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            addToParentToolStripMenuItem.Size = new Size(174, 22);
             addToParentToolStripMenuItem.Text = "Add To Parent";
             addToParentToolStripMenuItem.Click += new EventHandler(addToParentToolStripMenuItem_Click);
             // 
             // addToNextUpToolStripMenuItem
             // 
             addToNextUpToolStripMenuItem.Name = "addToNextUpToolStripMenuItem";
-            addToNextUpToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            addToNextUpToolStripMenuItem.Size = new Size(174, 22);
             addToNextUpToolStripMenuItem.Text = "Add To Next Up";
             addToNextUpToolStripMenuItem.Click += new EventHandler(addToNextUpToolStripMenuItem_Click);
             // 
             // addToNextDownToolStripMenuItem
             // 
             addToNextDownToolStripMenuItem.Name = "addToNextDownToolStripMenuItem";
-            addToNextDownToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            addToNextDownToolStripMenuItem.Size = new Size(174, 22);
             addToNextDownToolStripMenuItem.Text = "Add To Next Down";
             addToNextDownToolStripMenuItem.Click += new EventHandler(addToNextDownToolStripMenuItem_Click);
             // 
             // ctxBonesDivider2
             // 
             ctxBonesDivider2.Name = "ctxBonesDivider2";
-            ctxBonesDivider2.Size = new System.Drawing.Size(171, 6);
+            ctxBonesDivider2.Size = new Size(171, 6);
             // 
             // _moveUpToolStripMenuItem
             // 
             _moveUpToolStripMenuItem.Name = "_moveUpToolStripMenuItem";
-            _moveUpToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            _moveUpToolStripMenuItem.Size = new Size(174, 22);
             _moveUpToolStripMenuItem.Text = "Move Up";
             _moveUpToolStripMenuItem.Click += new EventHandler(_moveUpToolStripMenuItem_Click);
             // 
             // _moveDownToolStripMenuItem
             // 
             _moveDownToolStripMenuItem.Name = "_moveDownToolStripMenuItem";
-            _moveDownToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            _moveDownToolStripMenuItem.Size = new Size(174, 22);
             _moveDownToolStripMenuItem.Text = "Move Down";
             _moveDownToolStripMenuItem.Click += new EventHandler(_moveDownToolStripMenuItem_Click);
             // 
             // imageList1
             // 
             imageList1.ColorDepth = ColorDepth.Depth8Bit;
-            imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            imageList1.ImageSize = new Size(16, 16);
             imageList1.TransparentColor = Color.Transparent;
             // 
             // BonesPanel
             // 
             Controls.Add(pnlKeyframes);
             Name = "BonesPanel";
-            Size = new System.Drawing.Size(164, 398);
+            Size = new Size(164, 398);
             SizeChanged += new EventHandler(BonesPanel_SizeChanged);
             pnlKeyframes.ResumeLayout(false);
             pnlBones.ResumeLayout(false);
@@ -480,7 +480,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
             if (txtSearchBone.ForeColor == Color.Gray)
             {
                 txtSearchBone.Text = "";
-                txtSearchBone.Font = new Font(txtSearchBone.Font, System.Drawing.FontStyle.Regular);
+                txtSearchBone.Font = new Font(txtSearchBone.Font, FontStyle.Regular);
                 txtSearchBone.ForeColor = Color.Black;
             }
         }
@@ -489,7 +489,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
         {
             if (txtSearchBone.Text == string.Empty)
             {
-                txtSearchBone.Font = new Font(txtSearchBone.Font, System.Drawing.FontStyle.Italic);
+                txtSearchBone.Font = new Font(txtSearchBone.Font, FontStyle.Italic);
                 txtSearchBone.ForeColor = Color.Gray;
                 txtSearchBone.Text = "Search for a bone...";
             }

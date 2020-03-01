@@ -253,7 +253,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_name == null)
             {
                 _name = FighterNameGenerators.FromID(_fighterID,
-                           FighterNameGenerators.slotIDIndex, "+S") + $" [{Index}]";
+                    FighterNameGenerators.slotIDIndex, "+S") + $" [{Index}]";
             }
 
             return false;

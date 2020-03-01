@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Windows.Forms;
-
 #if !MONO
-    using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.UI
@@ -1704,8 +1704,8 @@ namespace BrawlCrate.UI
             if (chkBoxModuleCompress.Checked)
             {
                 if (MessageBox.Show(
-                        "Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?",
-                        "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    "Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?",
+                    "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     _updating = true;
                     chkBoxModuleCompress.Checked = false;

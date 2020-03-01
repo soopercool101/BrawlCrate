@@ -132,10 +132,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     return "Stage";
                 }
+
                 if (IsItemTable)
                 {
                     return "Item Table";
                 }
+
                 if (Parent is ARCNode)
                 {
                     if (((ARCNode) Parent).SpecialARC.EndsWith("SubNode") ||
@@ -761,8 +763,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 path.LastIndexOf('_') == path.IndexOf('_'))
             {
                 if (MessageBox.Show(
-                        "Would you like to use the detected '" + aslIndicator +
-                        "' as the ASL indicator for the three files?", "", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    "Would you like to use the detected '" + aslIndicator +
+                    "' as the ASL indicator for the three files?", "", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     aslIndicator = '\0';
                 }

@@ -530,7 +530,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             RebuildArticleActions(RootNode, node, ref dataAddress, baseAddress, true, 1);
 
             if ((miscOffsetsAddr->UnkBoneSectionOffset =
-                    Rebuild(RootNode, node.misc.unkBoneSection, ref dataAddress, baseAddress)) > 0)
+                Rebuild(RootNode, node.misc.unkBoneSection, ref dataAddress, baseAddress)) > 0)
             {
                 miscOffsetsAddr->UnkBoneSectionCount = node.misc.unkBoneSection.Children.Count;
             }
@@ -624,7 +624,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Rebuild(RootNode, node.misc.unkSection1, ref dataAddress, baseAddress);
 
             if ((miscOffsetsAddr->HurtBoxOffset =
-                    Rebuild(RootNode, node.misc.hurtBoxes, ref dataAddress, baseAddress)) > 0)
+                Rebuild(RootNode, node.misc.hurtBoxes, ref dataAddress, baseAddress)) > 0)
             {
                 miscOffsetsAddr->HurtBoxCount = node.misc.hurtBoxes.Children.Count;
             }
@@ -640,7 +640,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //            }
 
             if ((miscOffsetsAddr->LedgegrabOffset =
-                    Rebuild(RootNode, node.misc.ledgeGrabs, ref dataAddress, baseAddress)) > 0)
+                Rebuild(RootNode, node.misc.ledgeGrabs, ref dataAddress, baseAddress)) > 0)
             {
                 miscOffsetsAddr->LedgegrabCount = node.misc.ledgeGrabs.Children.Count;
             }
@@ -891,7 +891,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if ((miscOffsetsAddr->UnknownSection2Offset =
-                    Rebuild(RootNode, node.misc.unkSection2, ref dataAddress, baseAddress)) > 0)
+                Rebuild(RootNode, node.misc.unkSection2, ref dataAddress, baseAddress)) > 0)
             {
                 miscOffsetsAddr->UnknownSection2Count = node.misc.unkSection2.Children.Count;
             }

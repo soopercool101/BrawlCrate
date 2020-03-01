@@ -105,10 +105,10 @@ namespace BrawlCrate.NodeWrappers
                 byte nextID =
                     (byte) (((MasqueradeEntryNode) _resource.Children[_resource.Children.Count - 1])._costumeID + 1);
                 if (((MasqueradeNode) _resource)._cosmeticSlot == 21 && (
-                        nextID == 15 ||
-                        nextID == 31 ||
-                        nextID == 47 ||
-                        nextID == 63))
+                    nextID == 15 ||
+                    nextID == 31 ||
+                    nextID == 47 ||
+                    nextID == 63))
                 {
                     ++nextID; // Prevent wario edge cases
                 }

@@ -36,6 +36,7 @@ namespace BrawlLib.Wii.Audio
                 {
                     blockLen = 8;
                 }
+
                 samplesPerBlock = blockLen / 8 * 14;
 
                 //If loop point doesn't land on a block, pad the stream so that it does.
@@ -60,6 +61,7 @@ namespace BrawlLib.Wii.Audio
                 {
                     blockLen = 8;
                 }
+
                 samplesPerBlock = blockLen / 8 * 14;
             }
 

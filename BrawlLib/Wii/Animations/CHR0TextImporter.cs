@@ -121,12 +121,14 @@ namespace BrawlLib.Wii.Animations
                                         rotation = getCoords(reader, out line);
                                         goto retry;
                                     }
+
                                     if (line.CompareTo("Scale") == 0)
                                     {
                                         reader.ReadLine(); //Skip first blank line
                                         scale = getCoords(reader, out line);
                                         goto retry;
                                     }
+
                                     if (line.CompareTo("End of Keyframe Data") == 0
                                     ) //If line equals this now it's time to break
                                     {

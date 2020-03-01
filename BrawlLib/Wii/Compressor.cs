@@ -71,6 +71,7 @@ namespace BrawlLib.Wii
             {
                 return CompressionType.RunLengthYAY0;
             }
+
             CompressionHeader* cmpr = (CompressionHeader*) addr;
 
             if (cmpr->ExpandedSize < length)
@@ -104,6 +105,7 @@ namespace BrawlLib.Wii
             {
                 return ((YAY0*) addr)->_unCompDataLen;
             }
+
             return ((CompressionHeader*) addr)->ExpandedSize;
         }
 

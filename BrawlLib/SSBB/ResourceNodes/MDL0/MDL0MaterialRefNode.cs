@@ -16,6 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MDL0MaterialRefNode : MDL0EntryNode, IImageSource
     {
         public override ResourceType ResourceFileType => ResourceType.MDL0MaterialEntry;
+
         internal MDL0TextureRef* Header
         {
             get => (MDL0TextureRef*) _origSource.Address;
@@ -966,6 +967,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public int ImageCount => _texture?.ImageCount ?? 0;
+
         public Bitmap GetImage(int index)
         {
             return _texture.GetImage(index);

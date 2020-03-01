@@ -300,7 +300,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
         {
             CoordinateType.Local, //T
             CoordinateType.Local, //R
-            CoordinateType.Local //S
+            CoordinateType.Local  //S
         };
 
         #region Transform Control Rendering
@@ -418,11 +418,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             GL.PopMatrix();
 
             panel.SettingsScreenText["X"] = panel.Camera.Project(new Vector3(_axisLDist + 0.1f, 0, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Y"] = panel.Camera.Project(new Vector3(0, _axisLDist + 0.1f, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Z"] = panel.Camera.Project(new Vector3(0, 0, _axisLDist + 0.1f) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
         }
 
         public unsafe void RenderScaleControl(
@@ -442,11 +442,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             GL.PopMatrix();
 
             panel.SettingsScreenText["X"] = panel.Camera.Project(new Vector3(_axisLDist + 0.1f, 0, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Y"] = panel.Camera.Project(new Vector3(0, _axisLDist + 0.1f, 0) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
             panel.SettingsScreenText["Z"] = panel.Camera.Project(new Vector3(0, 0, _axisLDist + 0.1f) * m) -
-                                    new Vector3(8.0f, 8.0f, 0);
+                                            new Vector3(8.0f, 8.0f, 0);
         }
 
         public unsafe void RenderRotationControl(
@@ -502,9 +502,12 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             //Enter local space
             m = Matrix.TransformMatrix(new Vector3(radius), new Vector3(), position) * rotation;
 
-            panel.SettingsScreenText["X"] = panel.Camera.Project(new Vector3(1.1f, 0, 0) * m) - new Vector3(8.0f, 8.0f, 0);
-            panel.SettingsScreenText["Y"] = panel.Camera.Project(new Vector3(0, 1.1f, 0) * m) - new Vector3(8.0f, 8.0f, 0);
-            panel.SettingsScreenText["Z"] = panel.Camera.Project(new Vector3(0, 0, 1.1f) * m) - new Vector3(8.0f, 8.0f, 0);
+            panel.SettingsScreenText["X"] =
+                panel.Camera.Project(new Vector3(1.1f, 0, 0) * m) - new Vector3(8.0f, 8.0f, 0);
+            panel.SettingsScreenText["Y"] =
+                panel.Camera.Project(new Vector3(0, 1.1f, 0) * m) - new Vector3(8.0f, 8.0f, 0);
+            panel.SettingsScreenText["Z"] =
+                panel.Camera.Project(new Vector3(0, 0, 1.1f) * m) - new Vector3(8.0f, 8.0f, 0);
 
             GL.PushMatrix();
             GL.MultMatrix((float*) &m);
@@ -1061,9 +1064,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                                 break;
                             case CoordinateType.Local:
                                 normal = (localTransform * new Vector3(
-                                              selection._snapX ? 1.0f : 0.0f,
-                                              selection._snapY ? 1.0f : 0.0f,
-                                              selection._snapZ ? 1.0f : 0.0f)).Normalize(center);
+                                    selection._snapX ? 1.0f : 0.0f,
+                                    selection._snapY ? 1.0f : 0.0f,
+                                    selection._snapZ ? 1.0f : 0.0f)).Normalize(center);
                                 break;
                             case CoordinateType.World:
                                 normal = new Vector3(

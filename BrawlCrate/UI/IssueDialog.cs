@@ -38,8 +38,8 @@ namespace BrawlCrate.UI
                 {
                     if (Program.CanRunDiscordRPC)
                     {
-                        BrawlCrate.Discord.DiscordRpc.ClearPresence();
-                        BrawlCrate.Discord.DiscordRpc.Shutdown();
+                        Discord.DiscordRpc.ClearPresence();
+                        Discord.DiscordRpc.Shutdown();
                     }
                 }
                 catch

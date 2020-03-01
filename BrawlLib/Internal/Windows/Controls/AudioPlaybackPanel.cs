@@ -267,8 +267,8 @@ namespace BrawlLib.Internal.Windows.Controls
                 }
 
                 //This should really be in the volume property, but this way I don't need to do more calculations
-                BrawlLib.Properties.Settings.Default.AudioVolumePercent = value;
-                BrawlLib.Properties.Settings.Default.Save();
+                Properties.Settings.Default.AudioVolumePercent = value;
+                Properties.Settings.Default.Save();
 
                 if (!_updating)
                 {
@@ -299,7 +299,7 @@ namespace BrawlLib.Internal.Windows.Controls
         public AudioPlaybackPanel()
         {
             InitializeComponent();
-            VolumePercent = BrawlLib.Properties.Settings.Default.AudioVolumePercent;
+            VolumePercent = Properties.Settings.Default.AudioVolumePercent;
 
             chkLoop.CheckedChanged += (o, e) =>
             {

@@ -456,26 +456,32 @@ namespace BrawlLib.Imaging
                 {
                     return -1;
                 }
+
                 if (R > o.R)
                 {
                     return 1;
                 }
+
                 if (R < o.R)
                 {
                     return -1;
                 }
+
                 if (G > o.G)
                 {
                     return 1;
                 }
+
                 if (G < o.G)
                 {
                     return -1;
                 }
+
                 if (B > o.B)
                 {
                     return 1;
                 }
+
                 if (B < o.B)
                 {
                     return -1;

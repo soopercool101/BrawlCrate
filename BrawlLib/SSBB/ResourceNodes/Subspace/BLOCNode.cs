@@ -109,7 +109,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class BLOCEntryNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
-        internal BLOCEntry* Header => (BLOCEntry*)WorkingUncompressed.Address;
+        internal BLOCEntry* Header => (BLOCEntry*) WorkingUncompressed.Address;
         public override bool supportsCompression => false;
 
 #if !DEBUG
@@ -128,7 +128,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected virtual Type SubEntryType => typeof(RawDataNode);
 
-        public override Type[] AllowedChildTypes => SubEntryType == typeof(RawDataNode) ? new Type[] { } : new []{ SubEntryType };
+        public override Type[] AllowedChildTypes =>
+            SubEntryType == typeof(RawDataNode) ? new Type[] { } : new[] {SubEntryType};
 
         public override bool OnInitialize()
         {
@@ -149,6 +150,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     break;
                 }
             }
+
             if (_name == null)
             {
                 _name = UncompressedSource.Tag;
@@ -199,26 +201,27 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            BLOCEntry* header = (BLOCEntry*)address;
+            BLOCEntry* header = (BLOCEntry*) address;
             *header = new BLOCEntry();
             header->_tag = _rawTag;
             header->_count = Children.Count;
 
-            uint offset = (uint)(BLOCEntry.Size + Children.Count * 4);
+            uint offset = (uint) (BLOCEntry.Size + Children.Count * 4);
             for (int i = 0, j = 0; j < Children.Count; i++)
             {
                 if (i < Buffer)
                 {
-                    *(buint*)(address + BLOCEntry.Size + i * 4) = 0;
+                    *(buint*) (address + BLOCEntry.Size + i * 4) = 0;
                     offset += 4;
                     continue;
                 }
+
                 if (j > 0)
                 {
-                    offset += (uint)Children[j - 1].CalculateSize(false);
+                    offset += (uint) Children[j - 1].CalculateSize(false);
                 }
 
-                *(buint*)(address + BLOCEntry.Size + i * 4) = offset;
+                *(buint*) (address + BLOCEntry.Size + i * 4) = offset;
                 _children[j].Rebuild(address + offset, _children[j].CalculateSize(false), true);
                 j++;
             }

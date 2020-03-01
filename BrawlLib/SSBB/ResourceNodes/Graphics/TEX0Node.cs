@@ -53,8 +53,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!_revertingCS && !value)
                 {
                     if (MessageBox.Show(
-                            "Would you like to revert color smashing for the node and all nodes that share data above it? (If your preview looks correct now, say yes. If your preview looks bugged, say no)",
-                            "Warning", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        "Would you like to revert color smashing for the node and all nodes that share data above it? (If your preview looks correct now, say yes. If your preview looks bugged, say no)",
+                        "Warning", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         _sharesData = value;
                         SignalPropertyChange();

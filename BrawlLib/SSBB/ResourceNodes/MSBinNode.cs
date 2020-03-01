@@ -94,6 +94,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return new MSBinNode();
                 }
             }
+
             return null;
         }
 

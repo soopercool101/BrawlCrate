@@ -225,7 +225,7 @@ namespace BrawlCrate.NodeWrappers
 
         public override ResourceNode Duplicate()
         {
-            PAT0EntryNode dup = ((PAT0Node)_resource.Parent).CreateEntry(_resource.Index + 1);
+            PAT0EntryNode dup = ((PAT0Node) _resource.Parent).CreateEntry(_resource.Index + 1);
             dup.Name = _resource.Name;
             dup.RemoveChild(dup.Children[0]);
 
@@ -348,6 +348,7 @@ namespace BrawlCrate.NodeWrappers
                     pted.Name = pte.Name;
                 }
             }
+
             return ptd;
         }
     }

@@ -266,6 +266,7 @@ namespace BrawlLib.Modeling.Collada
             {
                 return node;
             }
+
             if (jointStrings.IndexOf(node._id) >= 0)
             {
                 return node;

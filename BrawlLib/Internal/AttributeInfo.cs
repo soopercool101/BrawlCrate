@@ -131,6 +131,7 @@ namespace BrawlLib.Internal
                         sw.WriteLine();
                     }
                 }
+
                 sw.Close();
             }
         }

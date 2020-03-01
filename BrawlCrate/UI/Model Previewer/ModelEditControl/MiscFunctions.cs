@@ -118,16 +118,16 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         public void CheckDimensions()
         {
             int totalWidth = animEditors.Width;
-            System.Drawing.Size s = new System.Drawing.Size(animCtrlPnl.Width, animEditors.Height);
+            Size s = new Size(animCtrlPnl.Width, animEditors.Height);
             if (_currentControl != null && _currentControl.Visible)
             {
                 s = _currentControl.Visible ? _currentControl is SCN0Editor ? scn0Editor.GetDimensions() :
                     _currentControl.MinimumSize :
-                    !weightEditor.Visible && !vertexEditor.Visible ? new System.Drawing.Size(0, 0) : s;
+                    !weightEditor.Visible && !vertexEditor.Visible ? new Size(0, 0) : s;
             }
             else if (!weightEditor.Visible && !vertexEditor.Visible)
             {
-                s = new System.Drawing.Size(0, 0);
+                s = new Size(0, 0);
             }
             else if (weightEditor.Visible)
             {
@@ -224,7 +224,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         {
             if (_currentControl is SCN0Editor)
             {
-                System.Drawing.Size s = scn0Editor.GetDimensions();
+                Size s = scn0Editor.GetDimensions();
                 animEditors.Height = s.Height;
                 animCtrlPnl.Width = s.Width;
             }
@@ -623,9 +623,9 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         public override void SaveSettings()
         {
-            BrawlCrate.Properties.Settings.Default.ViewerSettings = CollectSettings();
-            BrawlCrate.Properties.Settings.Default.ViewerSettingsSet = true;
-            BrawlCrate.Properties.Settings.Default.Save();
+            Properties.Settings.Default.ViewerSettings = CollectSettings();
+            Properties.Settings.Default.ViewerSettingsSet = true;
+            Properties.Settings.Default.Save();
         }
 
         public ModelEditorSettings CollectSettings()
@@ -636,6 +636,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                 Properties.Settings.Default.ViewerSettingsSet = true;
                 Properties.Settings.Default.Save();
             }
+
             ModelEditorSettings settings = new ModelEditorSettings
             {
                 RetrieveCorrAnims = RetrieveCorrespondingAnimations,
@@ -677,8 +678,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                 _screenCapPath = ScreenCapBgLocText.Text,
                 _liveTexFolderPath = LiveTextureFolderPath.Text,
 
-                _bgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._bgColor,
-                _stgBgColor = BrawlCrate.Properties.Settings.Default.ViewerSettings._stgBgColor,
+                _bgColor = Properties.Settings.Default.ViewerSettings._bgColor,
+                _stgBgColor = Properties.Settings.Default.ViewerSettings._stgBgColor,
 
                 _viewports = ModelPanel.Select(x => ((ModelPanelViewport) x).GetInfo()).ToList()
             };
@@ -741,7 +742,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             SCN0FogNode._generateTangents = settings.GenTansFog;
             SCN0CameraNode._generateTangents = settings.GenTansCam;
 
-            string applicationFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string applicationFolder =
+                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 
             string t = settings._screenCapPath;
             ScreenCapBgLocText.Text = !string.IsNullOrEmpty(t) ? t : applicationFolder + "\\ScreenCaptures";

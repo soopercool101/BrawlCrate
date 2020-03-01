@@ -1,7 +1,7 @@
 ﻿using System;
- using System.Windows.Forms;
+using System.Windows.Forms;
 
- namespace BrawlLib.Internal.Windows.Forms
+namespace BrawlLib.Internal.Windows.Forms
 {
     public class StringInputDialog : Form
     {

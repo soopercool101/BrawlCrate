@@ -71,728 +71,729 @@ namespace BrawlLib.Internal.Windows.Controls.EditAllDialog
 
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chkDeleteEntries = new System.Windows.Forms.CheckBox();
-            this.grpBoxTranslate = new System.Windows.Forms.GroupBox();
-            this.TranslateDoNotChange = new System.Windows.Forms.RadioButton();
-            this.TranslateDivide = new System.Windows.Forms.RadioButton();
-            this.TranslateMultiply = new System.Windows.Forms.RadioButton();
-            this.TranslateSubtract = new System.Windows.Forms.RadioButton();
-            this.TranslateAdd = new System.Windows.Forms.RadioButton();
-            this.TranslateClear = new System.Windows.Forms.RadioButton();
-            this.TranslateReplace = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.TranslateZ = new System.Windows.Forms.TextBox();
-            this.TranslateY = new System.Windows.Forms.TextBox();
-            this.TranslateX = new System.Windows.Forms.TextBox();
-            this.grpBoxRotate = new System.Windows.Forms.GroupBox();
-            this.RotateDoNotChange = new System.Windows.Forms.RadioButton();
-            this.RotateDivide = new System.Windows.Forms.RadioButton();
-            this.RotateMultiply = new System.Windows.Forms.RadioButton();
-            this.RotateSubtract = new System.Windows.Forms.RadioButton();
-            this.RotateAdd = new System.Windows.Forms.RadioButton();
-            this.RotateClear = new System.Windows.Forms.RadioButton();
-            this.RotateReplace = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.RotateZ = new System.Windows.Forms.TextBox();
-            this.RotateY = new System.Windows.Forms.TextBox();
-            this.RotateX = new System.Windows.Forms.TextBox();
-            this.grpBoxScale = new System.Windows.Forms.GroupBox();
-            this.ScaleDoNotChange = new System.Windows.Forms.RadioButton();
-            this.ScaleDivide = new System.Windows.Forms.RadioButton();
-            this.ScaleMultiply = new System.Windows.Forms.RadioButton();
-            this.ScaleSubtract = new System.Windows.Forms.RadioButton();
-            this.ScaleAdd = new System.Windows.Forms.RadioButton();
-            this.ScaleClear = new System.Windows.Forms.RadioButton();
-            this.ScaleReplace = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ScaleZ = new System.Windows.Forms.TextBox();
-            this.ScaleY = new System.Windows.Forms.TextBox();
-            this.ScaleX = new System.Windows.Forms.TextBox();
-            this.keyframeCopy = new System.Windows.Forms.TextBox();
-            this.copyKeyframes = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.name = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.targetName = new System.Windows.Forms.TextBox();
-            this.NameContains = new System.Windows.Forms.CheckBox();
-            this.newName = new System.Windows.Forms.TextBox();
-            this.Rename = new System.Windows.Forms.CheckBox();
-            this.enableLoop = new System.Windows.Forms.CheckBox();
-            this.editLoop = new System.Windows.Forms.CheckBox();
-            this.Port = new System.Windows.Forms.CheckBox();
-            this.Version = new System.Windows.Forms.ComboBox();
-            this.ChangeVersion = new System.Windows.Forms.CheckBox();
-            this.groupBox2.SuspendLayout();
-            this.grpBoxTranslate.SuspendLayout();
-            this.grpBoxRotate.SuspendLayout();
-            this.grpBoxScale.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            groupBox2 = new GroupBox();
+            chkDeleteEntries = new CheckBox();
+            grpBoxTranslate = new GroupBox();
+            TranslateDoNotChange = new RadioButton();
+            TranslateDivide = new RadioButton();
+            TranslateMultiply = new RadioButton();
+            TranslateSubtract = new RadioButton();
+            TranslateAdd = new RadioButton();
+            TranslateClear = new RadioButton();
+            TranslateReplace = new RadioButton();
+            label5 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            TranslateZ = new TextBox();
+            TranslateY = new TextBox();
+            TranslateX = new TextBox();
+            grpBoxRotate = new GroupBox();
+            RotateDoNotChange = new RadioButton();
+            RotateDivide = new RadioButton();
+            RotateMultiply = new RadioButton();
+            RotateSubtract = new RadioButton();
+            RotateAdd = new RadioButton();
+            RotateClear = new RadioButton();
+            RotateReplace = new RadioButton();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            RotateZ = new TextBox();
+            RotateY = new TextBox();
+            RotateX = new TextBox();
+            grpBoxScale = new GroupBox();
+            ScaleDoNotChange = new RadioButton();
+            ScaleDivide = new RadioButton();
+            ScaleMultiply = new RadioButton();
+            ScaleSubtract = new RadioButton();
+            ScaleAdd = new RadioButton();
+            ScaleClear = new RadioButton();
+            ScaleReplace = new RadioButton();
+            label7 = new Label();
+            label6 = new Label();
+            label8 = new Label();
+            ScaleZ = new TextBox();
+            ScaleY = new TextBox();
+            ScaleX = new TextBox();
+            keyframeCopy = new TextBox();
+            copyKeyframes = new CheckBox();
+            label1 = new Label();
+            name = new TextBox();
+            groupBox1 = new GroupBox();
+            targetName = new TextBox();
+            NameContains = new CheckBox();
+            newName = new TextBox();
+            Rename = new CheckBox();
+            enableLoop = new CheckBox();
+            editLoop = new CheckBox();
+            Port = new CheckBox();
+            Version = new ComboBox();
+            ChangeVersion = new CheckBox();
+            groupBox2.SuspendLayout();
+            grpBoxTranslate.SuspendLayout();
+            grpBoxRotate.SuspendLayout();
+            grpBoxScale.SuspendLayout();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chkDeleteEntries);
-            this.groupBox2.Controls.Add(this.grpBoxTranslate);
-            this.groupBox2.Controls.Add(this.grpBoxRotate);
-            this.groupBox2.Controls.Add(this.grpBoxScale);
-            this.groupBox2.Controls.Add(this.keyframeCopy);
-            this.groupBox2.Controls.Add(this.copyKeyframes);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.name);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 89);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(405, 272);
-            this.groupBox2.TabIndex = 87;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "CHR0 Bone Entries";
+            groupBox2.Controls.Add(chkDeleteEntries);
+            groupBox2.Controls.Add(grpBoxTranslate);
+            groupBox2.Controls.Add(grpBoxRotate);
+            groupBox2.Controls.Add(grpBoxScale);
+            groupBox2.Controls.Add(keyframeCopy);
+            groupBox2.Controls.Add(copyKeyframes);
+            groupBox2.Controls.Add(label1);
+            groupBox2.Controls.Add(name);
+            groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Location = new System.Drawing.Point(0, 89);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(405, 272);
+            groupBox2.TabIndex = 87;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "CHR0 Bone Entries";
             // 
             // chkDeleteEntries
             // 
-            this.chkDeleteEntries.AutoSize = true;
-            this.chkDeleteEntries.Location = new System.Drawing.Point(11, 68);
-            this.chkDeleteEntries.Name = "chkDeleteEntries";
-            this.chkDeleteEntries.Size = new System.Drawing.Size(92, 17);
-            this.chkDeleteEntries.TabIndex = 86;
-            this.chkDeleteEntries.Text = "Delete Entries";
-            this.chkDeleteEntries.UseVisualStyleBackColor = true;
-            this.chkDeleteEntries.CheckedChanged += new System.EventHandler(this.chkDeleteEntries_CheckedChanged);
+            chkDeleteEntries.AutoSize = true;
+            chkDeleteEntries.Location = new System.Drawing.Point(11, 68);
+            chkDeleteEntries.Name = "chkDeleteEntries";
+            chkDeleteEntries.Size = new System.Drawing.Size(92, 17);
+            chkDeleteEntries.TabIndex = 86;
+            chkDeleteEntries.Text = "Delete Entries";
+            chkDeleteEntries.UseVisualStyleBackColor = true;
+            chkDeleteEntries.CheckedChanged += new EventHandler(chkDeleteEntries_CheckedChanged);
             // 
             // grpBoxTranslate
             // 
-            this.grpBoxTranslate.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
-                                                                                                                    | System.Windows.Forms.AnchorStyles.Left);
-            this.grpBoxTranslate.Controls.Add(this.TranslateDoNotChange);
-            this.grpBoxTranslate.Controls.Add(this.TranslateDivide);
-            this.grpBoxTranslate.Controls.Add(this.TranslateMultiply);
-            this.grpBoxTranslate.Controls.Add(this.TranslateSubtract);
-            this.grpBoxTranslate.Controls.Add(this.TranslateAdd);
-            this.grpBoxTranslate.Controls.Add(this.TranslateClear);
-            this.grpBoxTranslate.Controls.Add(this.TranslateReplace);
-            this.grpBoxTranslate.Controls.Add(this.label5);
-            this.grpBoxTranslate.Controls.Add(this.label9);
-            this.grpBoxTranslate.Controls.Add(this.label10);
-            this.grpBoxTranslate.Controls.Add(this.TranslateZ);
-            this.grpBoxTranslate.Controls.Add(this.TranslateY);
-            this.grpBoxTranslate.Controls.Add(this.TranslateX);
-            this.grpBoxTranslate.Location = new System.Drawing.Point(272, 91);
-            this.grpBoxTranslate.Name = "grpBoxTranslate";
-            this.grpBoxTranslate.Size = new System.Drawing.Size(126, 175);
-            this.grpBoxTranslate.TabIndex = 39;
-            this.grpBoxTranslate.TabStop = false;
-            this.grpBoxTranslate.Text = "Translate";
+            grpBoxTranslate.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                      | AnchorStyles.Left);
+            grpBoxTranslate.Controls.Add(TranslateDoNotChange);
+            grpBoxTranslate.Controls.Add(TranslateDivide);
+            grpBoxTranslate.Controls.Add(TranslateMultiply);
+            grpBoxTranslate.Controls.Add(TranslateSubtract);
+            grpBoxTranslate.Controls.Add(TranslateAdd);
+            grpBoxTranslate.Controls.Add(TranslateClear);
+            grpBoxTranslate.Controls.Add(TranslateReplace);
+            grpBoxTranslate.Controls.Add(label5);
+            grpBoxTranslate.Controls.Add(label9);
+            grpBoxTranslate.Controls.Add(label10);
+            grpBoxTranslate.Controls.Add(TranslateZ);
+            grpBoxTranslate.Controls.Add(TranslateY);
+            grpBoxTranslate.Controls.Add(TranslateX);
+            grpBoxTranslate.Location = new System.Drawing.Point(272, 91);
+            grpBoxTranslate.Name = "grpBoxTranslate";
+            grpBoxTranslate.Size = new System.Drawing.Size(126, 175);
+            grpBoxTranslate.TabIndex = 39;
+            grpBoxTranslate.TabStop = false;
+            grpBoxTranslate.Text = "Translate";
             // 
             // TranslateDoNotChange
             // 
-            this.TranslateDoNotChange.AutoSize = true;
-            this.TranslateDoNotChange.Checked = true;
-            this.TranslateDoNotChange.Location = new System.Drawing.Point(5, 152);
-            this.TranslateDoNotChange.Name = "TranslateDoNotChange";
-            this.TranslateDoNotChange.Size = new System.Drawing.Size(96, 17);
-            this.TranslateDoNotChange.TabIndex = 48;
-            this.TranslateDoNotChange.TabStop = true;
-            this.TranslateDoNotChange.Text = "Do not change";
-            this.TranslateDoNotChange.UseVisualStyleBackColor = true;
-            this.TranslateDoNotChange.CheckedChanged += new System.EventHandler(this.TranslateClear_CheckedChanged);
+            TranslateDoNotChange.AutoSize = true;
+            TranslateDoNotChange.Checked = true;
+            TranslateDoNotChange.Location = new System.Drawing.Point(5, 152);
+            TranslateDoNotChange.Name = "TranslateDoNotChange";
+            TranslateDoNotChange.Size = new System.Drawing.Size(96, 17);
+            TranslateDoNotChange.TabIndex = 48;
+            TranslateDoNotChange.TabStop = true;
+            TranslateDoNotChange.Text = "Do not change";
+            TranslateDoNotChange.UseVisualStyleBackColor = true;
+            TranslateDoNotChange.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
             // 
             // TranslateDivide
             // 
-            this.TranslateDivide.AutoSize = true;
-            this.TranslateDivide.Location = new System.Drawing.Point(66, 129);
-            this.TranslateDivide.Name = "TranslateDivide";
-            this.TranslateDivide.Size = new System.Drawing.Size(55, 17);
-            this.TranslateDivide.TabIndex = 47;
-            this.TranslateDivide.Text = "Divide";
-            this.TranslateDivide.UseVisualStyleBackColor = true;
-            this.TranslateDivide.CheckedChanged += new System.EventHandler(this.TranslateClear_CheckedChanged);
+            TranslateDivide.AutoSize = true;
+            TranslateDivide.Location = new System.Drawing.Point(66, 129);
+            TranslateDivide.Name = "TranslateDivide";
+            TranslateDivide.Size = new System.Drawing.Size(55, 17);
+            TranslateDivide.TabIndex = 47;
+            TranslateDivide.Text = "Divide";
+            TranslateDivide.UseVisualStyleBackColor = true;
+            TranslateDivide.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
             // 
             // TranslateMultiply
             // 
-            this.TranslateMultiply.AutoSize = true;
-            this.TranslateMultiply.Location = new System.Drawing.Point(5, 129);
-            this.TranslateMultiply.Name = "TranslateMultiply";
-            this.TranslateMultiply.Size = new System.Drawing.Size(60, 17);
-            this.TranslateMultiply.TabIndex = 46;
-            this.TranslateMultiply.Text = "Multiply";
-            this.TranslateMultiply.UseVisualStyleBackColor = true;
-            this.TranslateMultiply.CheckedChanged += new System.EventHandler(this.TranslateClear_CheckedChanged);
+            TranslateMultiply.AutoSize = true;
+            TranslateMultiply.Location = new System.Drawing.Point(5, 129);
+            TranslateMultiply.Name = "TranslateMultiply";
+            TranslateMultiply.Size = new System.Drawing.Size(60, 17);
+            TranslateMultiply.TabIndex = 46;
+            TranslateMultiply.Text = "Multiply";
+            TranslateMultiply.UseVisualStyleBackColor = true;
+            TranslateMultiply.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
             // 
             // TranslateSubtract
             // 
-            this.TranslateSubtract.AutoSize = true;
-            this.TranslateSubtract.Location = new System.Drawing.Point(55, 106);
-            this.TranslateSubtract.Name = "TranslateSubtract";
-            this.TranslateSubtract.Size = new System.Drawing.Size(65, 17);
-            this.TranslateSubtract.TabIndex = 45;
-            this.TranslateSubtract.Text = "Subtract";
-            this.TranslateSubtract.UseVisualStyleBackColor = true;
-            this.TranslateSubtract.CheckedChanged += new System.EventHandler(this.TranslateClear_CheckedChanged);
+            TranslateSubtract.AutoSize = true;
+            TranslateSubtract.Location = new System.Drawing.Point(55, 106);
+            TranslateSubtract.Name = "TranslateSubtract";
+            TranslateSubtract.Size = new System.Drawing.Size(65, 17);
+            TranslateSubtract.TabIndex = 45;
+            TranslateSubtract.Text = "Subtract";
+            TranslateSubtract.UseVisualStyleBackColor = true;
+            TranslateSubtract.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
             // 
             // TranslateAdd
             // 
-            this.TranslateAdd.AutoSize = true;
-            this.TranslateAdd.Location = new System.Drawing.Point(5, 106);
-            this.TranslateAdd.Name = "TranslateAdd";
-            this.TranslateAdd.Size = new System.Drawing.Size(44, 17);
-            this.TranslateAdd.TabIndex = 44;
-            this.TranslateAdd.Text = "Add";
-            this.TranslateAdd.UseVisualStyleBackColor = true;
-            this.TranslateAdd.CheckedChanged += new System.EventHandler(this.TranslateClear_CheckedChanged);
+            TranslateAdd.AutoSize = true;
+            TranslateAdd.Location = new System.Drawing.Point(5, 106);
+            TranslateAdd.Name = "TranslateAdd";
+            TranslateAdd.Size = new System.Drawing.Size(44, 17);
+            TranslateAdd.TabIndex = 44;
+            TranslateAdd.Text = "Add";
+            TranslateAdd.UseVisualStyleBackColor = true;
+            TranslateAdd.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
             // 
             // TranslateClear
             // 
-            this.TranslateClear.AutoSize = true;
-            this.TranslateClear.Location = new System.Drawing.Point(72, 83);
-            this.TranslateClear.Name = "TranslateClear";
-            this.TranslateClear.Size = new System.Drawing.Size(49, 17);
-            this.TranslateClear.TabIndex = 43;
-            this.TranslateClear.Text = "Clear";
-            this.TranslateClear.UseVisualStyleBackColor = true;
-            this.TranslateClear.CheckedChanged += new System.EventHandler(this.TranslateClear_CheckedChanged);
+            TranslateClear.AutoSize = true;
+            TranslateClear.Location = new System.Drawing.Point(72, 83);
+            TranslateClear.Name = "TranslateClear";
+            TranslateClear.Size = new System.Drawing.Size(49, 17);
+            TranslateClear.TabIndex = 43;
+            TranslateClear.Text = "Clear";
+            TranslateClear.UseVisualStyleBackColor = true;
+            TranslateClear.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
             // 
             // TranslateReplace
             // 
-            this.TranslateReplace.AutoSize = true;
-            this.TranslateReplace.Location = new System.Drawing.Point(5, 83);
-            this.TranslateReplace.Name = "TranslateReplace";
-            this.TranslateReplace.Size = new System.Drawing.Size(65, 17);
-            this.TranslateReplace.TabIndex = 42;
-            this.TranslateReplace.Text = "Replace";
-            this.TranslateReplace.UseVisualStyleBackColor = true;
-            this.TranslateReplace.CheckedChanged += new System.EventHandler(this.TranslateClear_CheckedChanged);
+            TranslateReplace.AutoSize = true;
+            TranslateReplace.Location = new System.Drawing.Point(5, 83);
+            TranslateReplace.Name = "TranslateReplace";
+            TranslateReplace.Size = new System.Drawing.Size(65, 17);
+            TranslateReplace.TabIndex = 42;
+            TranslateReplace.Text = "Replace";
+            TranslateReplace.UseVisualStyleBackColor = true;
+            TranslateReplace.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 39);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 13);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "Y:";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(6, 39);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(17, 13);
+            label5.TabIndex = 40;
+            label5.Text = "Y:";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 18);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 13);
-            this.label9.TabIndex = 39;
-            this.label9.Text = "X:";
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(6, 18);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(17, 13);
+            label9.TabIndex = 39;
+            label9.Text = "X:";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 60);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 13);
-            this.label10.TabIndex = 41;
-            this.label10.Text = "Z:";
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(6, 60);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(17, 13);
+            label10.TabIndex = 41;
+            label10.Text = "Z:";
             // 
             // TranslateZ
             // 
-            this.TranslateZ.Enabled = false;
-            this.TranslateZ.Location = new System.Drawing.Point(24, 57);
-            this.TranslateZ.Name = "TranslateZ";
-            this.TranslateZ.Size = new System.Drawing.Size(96, 20);
-            this.TranslateZ.TabIndex = 38;
+            TranslateZ.Enabled = false;
+            TranslateZ.Location = new System.Drawing.Point(24, 57);
+            TranslateZ.Name = "TranslateZ";
+            TranslateZ.Size = new System.Drawing.Size(96, 20);
+            TranslateZ.TabIndex = 38;
             // 
             // TranslateY
             // 
-            this.TranslateY.Enabled = false;
-            this.TranslateY.Location = new System.Drawing.Point(24, 36);
-            this.TranslateY.Name = "TranslateY";
-            this.TranslateY.Size = new System.Drawing.Size(96, 20);
-            this.TranslateY.TabIndex = 37;
+            TranslateY.Enabled = false;
+            TranslateY.Location = new System.Drawing.Point(24, 36);
+            TranslateY.Name = "TranslateY";
+            TranslateY.Size = new System.Drawing.Size(96, 20);
+            TranslateY.TabIndex = 37;
             // 
             // TranslateX
             // 
-            this.TranslateX.Enabled = false;
-            this.TranslateX.Location = new System.Drawing.Point(24, 15);
-            this.TranslateX.Name = "TranslateX";
-            this.TranslateX.Size = new System.Drawing.Size(96, 20);
-            this.TranslateX.TabIndex = 36;
+            TranslateX.Enabled = false;
+            TranslateX.Location = new System.Drawing.Point(24, 15);
+            TranslateX.Name = "TranslateX";
+            TranslateX.Size = new System.Drawing.Size(96, 20);
+            TranslateX.TabIndex = 36;
             // 
             // grpBoxRotate
             // 
-            this.grpBoxRotate.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
-                                                                                                                 | System.Windows.Forms.AnchorStyles.Left);
-            this.grpBoxRotate.Controls.Add(this.RotateDoNotChange);
-            this.grpBoxRotate.Controls.Add(this.RotateDivide);
-            this.grpBoxRotate.Controls.Add(this.RotateMultiply);
-            this.grpBoxRotate.Controls.Add(this.RotateSubtract);
-            this.grpBoxRotate.Controls.Add(this.RotateAdd);
-            this.grpBoxRotate.Controls.Add(this.RotateClear);
-            this.grpBoxRotate.Controls.Add(this.RotateReplace);
-            this.grpBoxRotate.Controls.Add(this.label2);
-            this.grpBoxRotate.Controls.Add(this.label3);
-            this.grpBoxRotate.Controls.Add(this.label4);
-            this.grpBoxRotate.Controls.Add(this.RotateZ);
-            this.grpBoxRotate.Controls.Add(this.RotateY);
-            this.grpBoxRotate.Controls.Add(this.RotateX);
-            this.grpBoxRotate.Location = new System.Drawing.Point(140, 91);
-            this.grpBoxRotate.Name = "grpBoxRotate";
-            this.grpBoxRotate.Size = new System.Drawing.Size(126, 175);
-            this.grpBoxRotate.TabIndex = 38;
-            this.grpBoxRotate.TabStop = false;
-            this.grpBoxRotate.Text = "Rotate";
+            grpBoxRotate.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                   | AnchorStyles.Left);
+            grpBoxRotate.Controls.Add(RotateDoNotChange);
+            grpBoxRotate.Controls.Add(RotateDivide);
+            grpBoxRotate.Controls.Add(RotateMultiply);
+            grpBoxRotate.Controls.Add(RotateSubtract);
+            grpBoxRotate.Controls.Add(RotateAdd);
+            grpBoxRotate.Controls.Add(RotateClear);
+            grpBoxRotate.Controls.Add(RotateReplace);
+            grpBoxRotate.Controls.Add(label2);
+            grpBoxRotate.Controls.Add(label3);
+            grpBoxRotate.Controls.Add(label4);
+            grpBoxRotate.Controls.Add(RotateZ);
+            grpBoxRotate.Controls.Add(RotateY);
+            grpBoxRotate.Controls.Add(RotateX);
+            grpBoxRotate.Location = new System.Drawing.Point(140, 91);
+            grpBoxRotate.Name = "grpBoxRotate";
+            grpBoxRotate.Size = new System.Drawing.Size(126, 175);
+            grpBoxRotate.TabIndex = 38;
+            grpBoxRotate.TabStop = false;
+            grpBoxRotate.Text = "Rotate";
             // 
             // RotateDoNotChange
             // 
-            this.RotateDoNotChange.AutoSize = true;
-            this.RotateDoNotChange.Checked = true;
-            this.RotateDoNotChange.Location = new System.Drawing.Point(5, 152);
-            this.RotateDoNotChange.Name = "RotateDoNotChange";
-            this.RotateDoNotChange.Size = new System.Drawing.Size(96, 17);
-            this.RotateDoNotChange.TabIndex = 37;
-            this.RotateDoNotChange.TabStop = true;
-            this.RotateDoNotChange.Text = "Do not change";
-            this.RotateDoNotChange.UseVisualStyleBackColor = true;
-            this.RotateDoNotChange.CheckedChanged += new System.EventHandler(this.RotateClear_CheckedChanged);
+            RotateDoNotChange.AutoSize = true;
+            RotateDoNotChange.Checked = true;
+            RotateDoNotChange.Location = new System.Drawing.Point(5, 152);
+            RotateDoNotChange.Name = "RotateDoNotChange";
+            RotateDoNotChange.Size = new System.Drawing.Size(96, 17);
+            RotateDoNotChange.TabIndex = 37;
+            RotateDoNotChange.TabStop = true;
+            RotateDoNotChange.Text = "Do not change";
+            RotateDoNotChange.UseVisualStyleBackColor = true;
+            RotateDoNotChange.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
             // 
             // RotateDivide
             // 
-            this.RotateDivide.AutoSize = true;
-            this.RotateDivide.Location = new System.Drawing.Point(66, 129);
-            this.RotateDivide.Name = "RotateDivide";
-            this.RotateDivide.Size = new System.Drawing.Size(55, 17);
-            this.RotateDivide.TabIndex = 47;
-            this.RotateDivide.Text = "Divide";
-            this.RotateDivide.UseVisualStyleBackColor = true;
-            this.RotateDivide.CheckedChanged += new System.EventHandler(this.RotateClear_CheckedChanged);
+            RotateDivide.AutoSize = true;
+            RotateDivide.Location = new System.Drawing.Point(66, 129);
+            RotateDivide.Name = "RotateDivide";
+            RotateDivide.Size = new System.Drawing.Size(55, 17);
+            RotateDivide.TabIndex = 47;
+            RotateDivide.Text = "Divide";
+            RotateDivide.UseVisualStyleBackColor = true;
+            RotateDivide.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
             // 
             // RotateMultiply
             // 
-            this.RotateMultiply.AutoSize = true;
-            this.RotateMultiply.Location = new System.Drawing.Point(5, 129);
-            this.RotateMultiply.Name = "RotateMultiply";
-            this.RotateMultiply.Size = new System.Drawing.Size(60, 17);
-            this.RotateMultiply.TabIndex = 46;
-            this.RotateMultiply.Text = "Multiply";
-            this.RotateMultiply.UseVisualStyleBackColor = true;
-            this.RotateMultiply.CheckedChanged += new System.EventHandler(this.RotateClear_CheckedChanged);
+            RotateMultiply.AutoSize = true;
+            RotateMultiply.Location = new System.Drawing.Point(5, 129);
+            RotateMultiply.Name = "RotateMultiply";
+            RotateMultiply.Size = new System.Drawing.Size(60, 17);
+            RotateMultiply.TabIndex = 46;
+            RotateMultiply.Text = "Multiply";
+            RotateMultiply.UseVisualStyleBackColor = true;
+            RotateMultiply.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
             // 
             // RotateSubtract
             // 
-            this.RotateSubtract.AutoSize = true;
-            this.RotateSubtract.Location = new System.Drawing.Point(55, 106);
-            this.RotateSubtract.Name = "RotateSubtract";
-            this.RotateSubtract.Size = new System.Drawing.Size(65, 17);
-            this.RotateSubtract.TabIndex = 45;
-            this.RotateSubtract.Text = "Subtract";
-            this.RotateSubtract.UseVisualStyleBackColor = true;
-            this.RotateSubtract.CheckedChanged += new System.EventHandler(this.RotateClear_CheckedChanged);
+            RotateSubtract.AutoSize = true;
+            RotateSubtract.Location = new System.Drawing.Point(55, 106);
+            RotateSubtract.Name = "RotateSubtract";
+            RotateSubtract.Size = new System.Drawing.Size(65, 17);
+            RotateSubtract.TabIndex = 45;
+            RotateSubtract.Text = "Subtract";
+            RotateSubtract.UseVisualStyleBackColor = true;
+            RotateSubtract.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
             // 
             // RotateAdd
             // 
-            this.RotateAdd.AutoSize = true;
-            this.RotateAdd.Location = new System.Drawing.Point(5, 106);
-            this.RotateAdd.Name = "RotateAdd";
-            this.RotateAdd.Size = new System.Drawing.Size(44, 17);
-            this.RotateAdd.TabIndex = 44;
-            this.RotateAdd.Text = "Add";
-            this.RotateAdd.UseVisualStyleBackColor = true;
-            this.RotateAdd.CheckedChanged += new System.EventHandler(this.RotateClear_CheckedChanged);
+            RotateAdd.AutoSize = true;
+            RotateAdd.Location = new System.Drawing.Point(5, 106);
+            RotateAdd.Name = "RotateAdd";
+            RotateAdd.Size = new System.Drawing.Size(44, 17);
+            RotateAdd.TabIndex = 44;
+            RotateAdd.Text = "Add";
+            RotateAdd.UseVisualStyleBackColor = true;
+            RotateAdd.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
             // 
             // RotateClear
             // 
-            this.RotateClear.AutoSize = true;
-            this.RotateClear.Location = new System.Drawing.Point(72, 83);
-            this.RotateClear.Name = "RotateClear";
-            this.RotateClear.Size = new System.Drawing.Size(49, 17);
-            this.RotateClear.TabIndex = 43;
-            this.RotateClear.Text = "Clear";
-            this.RotateClear.UseVisualStyleBackColor = true;
-            this.RotateClear.CheckedChanged += new System.EventHandler(this.RotateClear_CheckedChanged);
+            RotateClear.AutoSize = true;
+            RotateClear.Location = new System.Drawing.Point(72, 83);
+            RotateClear.Name = "RotateClear";
+            RotateClear.Size = new System.Drawing.Size(49, 17);
+            RotateClear.TabIndex = 43;
+            RotateClear.Text = "Clear";
+            RotateClear.UseVisualStyleBackColor = true;
+            RotateClear.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
             // 
             // RotateReplace
             // 
-            this.RotateReplace.AutoSize = true;
-            this.RotateReplace.Location = new System.Drawing.Point(5, 83);
-            this.RotateReplace.Name = "RotateReplace";
-            this.RotateReplace.Size = new System.Drawing.Size(65, 17);
-            this.RotateReplace.TabIndex = 42;
-            this.RotateReplace.Text = "Replace";
-            this.RotateReplace.UseVisualStyleBackColor = true;
-            this.RotateReplace.CheckedChanged += new System.EventHandler(this.RotateClear_CheckedChanged);
+            RotateReplace.AutoSize = true;
+            RotateReplace.Location = new System.Drawing.Point(5, 83);
+            RotateReplace.Name = "RotateReplace";
+            RotateReplace.Size = new System.Drawing.Size(65, 17);
+            RotateReplace.TabIndex = 42;
+            RotateReplace.Text = "Replace";
+            RotateReplace.UseVisualStyleBackColor = true;
+            RotateReplace.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 13);
-            this.label2.TabIndex = 40;
-            this.label2.Text = "Y:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(6, 39);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(17, 13);
+            label2.TabIndex = 40;
+            label2.Text = "Y:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 13);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "X:";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(6, 18);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(17, 13);
+            label3.TabIndex = 39;
+            label3.Text = "X:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 60);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 13);
-            this.label4.TabIndex = 41;
-            this.label4.Text = "Z:";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(6, 60);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(17, 13);
+            label4.TabIndex = 41;
+            label4.Text = "Z:";
             // 
             // RotateZ
             // 
-            this.RotateZ.Enabled = false;
-            this.RotateZ.Location = new System.Drawing.Point(24, 57);
-            this.RotateZ.Name = "RotateZ";
-            this.RotateZ.Size = new System.Drawing.Size(96, 20);
-            this.RotateZ.TabIndex = 38;
+            RotateZ.Enabled = false;
+            RotateZ.Location = new System.Drawing.Point(24, 57);
+            RotateZ.Name = "RotateZ";
+            RotateZ.Size = new System.Drawing.Size(96, 20);
+            RotateZ.TabIndex = 38;
             // 
             // RotateY
             // 
-            this.RotateY.Enabled = false;
-            this.RotateY.Location = new System.Drawing.Point(24, 36);
-            this.RotateY.Name = "RotateY";
-            this.RotateY.Size = new System.Drawing.Size(96, 20);
-            this.RotateY.TabIndex = 37;
+            RotateY.Enabled = false;
+            RotateY.Location = new System.Drawing.Point(24, 36);
+            RotateY.Name = "RotateY";
+            RotateY.Size = new System.Drawing.Size(96, 20);
+            RotateY.TabIndex = 37;
             // 
             // RotateX
             // 
-            this.RotateX.Enabled = false;
-            this.RotateX.Location = new System.Drawing.Point(24, 15);
-            this.RotateX.Name = "RotateX";
-            this.RotateX.Size = new System.Drawing.Size(96, 20);
-            this.RotateX.TabIndex = 36;
+            RotateX.Enabled = false;
+            RotateX.Location = new System.Drawing.Point(24, 15);
+            RotateX.Name = "RotateX";
+            RotateX.Size = new System.Drawing.Size(96, 20);
+            RotateX.TabIndex = 36;
             // 
             // grpBoxScale
             // 
-            this.grpBoxScale.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
-                                                                                                                | System.Windows.Forms.AnchorStyles.Left);
-            this.grpBoxScale.Controls.Add(this.ScaleDoNotChange);
-            this.grpBoxScale.Controls.Add(this.ScaleDivide);
-            this.grpBoxScale.Controls.Add(this.ScaleMultiply);
-            this.grpBoxScale.Controls.Add(this.ScaleSubtract);
-            this.grpBoxScale.Controls.Add(this.ScaleAdd);
-            this.grpBoxScale.Controls.Add(this.ScaleClear);
-            this.grpBoxScale.Controls.Add(this.ScaleReplace);
-            this.grpBoxScale.Controls.Add(this.label7);
-            this.grpBoxScale.Controls.Add(this.label6);
-            this.grpBoxScale.Controls.Add(this.label8);
-            this.grpBoxScale.Controls.Add(this.ScaleZ);
-            this.grpBoxScale.Controls.Add(this.ScaleY);
-            this.grpBoxScale.Controls.Add(this.ScaleX);
-            this.grpBoxScale.Location = new System.Drawing.Point(8, 91);
-            this.grpBoxScale.Name = "grpBoxScale";
-            this.grpBoxScale.Size = new System.Drawing.Size(126, 175);
-            this.grpBoxScale.TabIndex = 37;
-            this.grpBoxScale.TabStop = false;
-            this.grpBoxScale.Text = "Scale";
+            grpBoxScale.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                  | AnchorStyles.Left);
+            grpBoxScale.Controls.Add(ScaleDoNotChange);
+            grpBoxScale.Controls.Add(ScaleDivide);
+            grpBoxScale.Controls.Add(ScaleMultiply);
+            grpBoxScale.Controls.Add(ScaleSubtract);
+            grpBoxScale.Controls.Add(ScaleAdd);
+            grpBoxScale.Controls.Add(ScaleClear);
+            grpBoxScale.Controls.Add(ScaleReplace);
+            grpBoxScale.Controls.Add(label7);
+            grpBoxScale.Controls.Add(label6);
+            grpBoxScale.Controls.Add(label8);
+            grpBoxScale.Controls.Add(ScaleZ);
+            grpBoxScale.Controls.Add(ScaleY);
+            grpBoxScale.Controls.Add(ScaleX);
+            grpBoxScale.Location = new System.Drawing.Point(8, 91);
+            grpBoxScale.Name = "grpBoxScale";
+            grpBoxScale.Size = new System.Drawing.Size(126, 175);
+            grpBoxScale.TabIndex = 37;
+            grpBoxScale.TabStop = false;
+            grpBoxScale.Text = "Scale";
             // 
             // ScaleDoNotChange
             // 
-            this.ScaleDoNotChange.AutoSize = true;
-            this.ScaleDoNotChange.Checked = true;
-            this.ScaleDoNotChange.Location = new System.Drawing.Point(5, 152);
-            this.ScaleDoNotChange.Name = "ScaleDoNotChange";
-            this.ScaleDoNotChange.Size = new System.Drawing.Size(96, 17);
-            this.ScaleDoNotChange.TabIndex = 36;
-            this.ScaleDoNotChange.TabStop = true;
-            this.ScaleDoNotChange.Text = "Do not change";
-            this.ScaleDoNotChange.UseVisualStyleBackColor = true;
-            this.ScaleDoNotChange.CheckedChanged += new System.EventHandler(this.ScaleClear_CheckedChanged);
+            ScaleDoNotChange.AutoSize = true;
+            ScaleDoNotChange.Checked = true;
+            ScaleDoNotChange.Location = new System.Drawing.Point(5, 152);
+            ScaleDoNotChange.Name = "ScaleDoNotChange";
+            ScaleDoNotChange.Size = new System.Drawing.Size(96, 17);
+            ScaleDoNotChange.TabIndex = 36;
+            ScaleDoNotChange.TabStop = true;
+            ScaleDoNotChange.Text = "Do not change";
+            ScaleDoNotChange.UseVisualStyleBackColor = true;
+            ScaleDoNotChange.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
             // 
             // ScaleDivide
             // 
-            this.ScaleDivide.AutoSize = true;
-            this.ScaleDivide.Location = new System.Drawing.Point(66, 129);
-            this.ScaleDivide.Name = "ScaleDivide";
-            this.ScaleDivide.Size = new System.Drawing.Size(55, 17);
-            this.ScaleDivide.TabIndex = 35;
-            this.ScaleDivide.Text = "Divide";
-            this.ScaleDivide.UseVisualStyleBackColor = true;
-            this.ScaleDivide.CheckedChanged += new System.EventHandler(this.ScaleClear_CheckedChanged);
+            ScaleDivide.AutoSize = true;
+            ScaleDivide.Location = new System.Drawing.Point(66, 129);
+            ScaleDivide.Name = "ScaleDivide";
+            ScaleDivide.Size = new System.Drawing.Size(55, 17);
+            ScaleDivide.TabIndex = 35;
+            ScaleDivide.Text = "Divide";
+            ScaleDivide.UseVisualStyleBackColor = true;
+            ScaleDivide.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
             // 
             // ScaleMultiply
             // 
-            this.ScaleMultiply.AutoSize = true;
-            this.ScaleMultiply.Location = new System.Drawing.Point(5, 129);
-            this.ScaleMultiply.Name = "ScaleMultiply";
-            this.ScaleMultiply.Size = new System.Drawing.Size(60, 17);
-            this.ScaleMultiply.TabIndex = 34;
-            this.ScaleMultiply.Text = "Multiply";
-            this.ScaleMultiply.UseVisualStyleBackColor = true;
-            this.ScaleMultiply.CheckedChanged += new System.EventHandler(this.ScaleClear_CheckedChanged);
+            ScaleMultiply.AutoSize = true;
+            ScaleMultiply.Location = new System.Drawing.Point(5, 129);
+            ScaleMultiply.Name = "ScaleMultiply";
+            ScaleMultiply.Size = new System.Drawing.Size(60, 17);
+            ScaleMultiply.TabIndex = 34;
+            ScaleMultiply.Text = "Multiply";
+            ScaleMultiply.UseVisualStyleBackColor = true;
+            ScaleMultiply.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
             // 
             // ScaleSubtract
             // 
-            this.ScaleSubtract.AutoSize = true;
-            this.ScaleSubtract.Location = new System.Drawing.Point(55, 106);
-            this.ScaleSubtract.Name = "ScaleSubtract";
-            this.ScaleSubtract.Size = new System.Drawing.Size(65, 17);
-            this.ScaleSubtract.TabIndex = 33;
-            this.ScaleSubtract.Text = "Subtract";
-            this.ScaleSubtract.UseVisualStyleBackColor = true;
-            this.ScaleSubtract.CheckedChanged += new System.EventHandler(this.ScaleClear_CheckedChanged);
+            ScaleSubtract.AutoSize = true;
+            ScaleSubtract.Location = new System.Drawing.Point(55, 106);
+            ScaleSubtract.Name = "ScaleSubtract";
+            ScaleSubtract.Size = new System.Drawing.Size(65, 17);
+            ScaleSubtract.TabIndex = 33;
+            ScaleSubtract.Text = "Subtract";
+            ScaleSubtract.UseVisualStyleBackColor = true;
+            ScaleSubtract.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
             // 
             // ScaleAdd
             // 
-            this.ScaleAdd.AutoSize = true;
-            this.ScaleAdd.Location = new System.Drawing.Point(5, 106);
-            this.ScaleAdd.Name = "ScaleAdd";
-            this.ScaleAdd.Size = new System.Drawing.Size(44, 17);
-            this.ScaleAdd.TabIndex = 32;
-            this.ScaleAdd.Text = "Add";
-            this.ScaleAdd.UseVisualStyleBackColor = true;
-            this.ScaleAdd.CheckedChanged += new System.EventHandler(this.ScaleClear_CheckedChanged);
+            ScaleAdd.AutoSize = true;
+            ScaleAdd.Location = new System.Drawing.Point(5, 106);
+            ScaleAdd.Name = "ScaleAdd";
+            ScaleAdd.Size = new System.Drawing.Size(44, 17);
+            ScaleAdd.TabIndex = 32;
+            ScaleAdd.Text = "Add";
+            ScaleAdd.UseVisualStyleBackColor = true;
+            ScaleAdd.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
             // 
             // ScaleClear
             // 
-            this.ScaleClear.AutoSize = true;
-            this.ScaleClear.Location = new System.Drawing.Point(72, 83);
-            this.ScaleClear.Name = "ScaleClear";
-            this.ScaleClear.Size = new System.Drawing.Size(49, 17);
-            this.ScaleClear.TabIndex = 31;
-            this.ScaleClear.Text = "Clear";
-            this.ScaleClear.UseVisualStyleBackColor = true;
-            this.ScaleClear.CheckedChanged += new System.EventHandler(this.ScaleClear_CheckedChanged);
+            ScaleClear.AutoSize = true;
+            ScaleClear.Location = new System.Drawing.Point(72, 83);
+            ScaleClear.Name = "ScaleClear";
+            ScaleClear.Size = new System.Drawing.Size(49, 17);
+            ScaleClear.TabIndex = 31;
+            ScaleClear.Text = "Clear";
+            ScaleClear.UseVisualStyleBackColor = true;
+            ScaleClear.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
             // 
             // ScaleReplace
             // 
-            this.ScaleReplace.AutoSize = true;
-            this.ScaleReplace.Location = new System.Drawing.Point(5, 83);
-            this.ScaleReplace.Name = "ScaleReplace";
-            this.ScaleReplace.Size = new System.Drawing.Size(65, 17);
-            this.ScaleReplace.TabIndex = 30;
-            this.ScaleReplace.Text = "Replace";
-            this.ScaleReplace.UseVisualStyleBackColor = true;
-            this.ScaleReplace.CheckedChanged += new System.EventHandler(this.ScaleClear_CheckedChanged);
+            ScaleReplace.AutoSize = true;
+            ScaleReplace.Location = new System.Drawing.Point(5, 83);
+            ScaleReplace.Name = "ScaleReplace";
+            ScaleReplace.Size = new System.Drawing.Size(65, 17);
+            ScaleReplace.TabIndex = 30;
+            ScaleReplace.Text = "Replace";
+            ScaleReplace.UseVisualStyleBackColor = true;
+            ScaleReplace.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 39);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Y:";
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(6, 39);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(17, 13);
+            label7.TabIndex = 19;
+            label7.Text = "Y:";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "X:";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(6, 18);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(17, 13);
+            label6.TabIndex = 18;
+            label6.Text = "X:";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 60);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(17, 13);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Z:";
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(6, 60);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(17, 13);
+            label8.TabIndex = 20;
+            label8.Text = "Z:";
             // 
             // ScaleZ
             // 
-            this.ScaleZ.Enabled = false;
-            this.ScaleZ.Location = new System.Drawing.Point(24, 57);
-            this.ScaleZ.Name = "ScaleZ";
-            this.ScaleZ.Size = new System.Drawing.Size(96, 20);
-            this.ScaleZ.TabIndex = 14;
+            ScaleZ.Enabled = false;
+            ScaleZ.Location = new System.Drawing.Point(24, 57);
+            ScaleZ.Name = "ScaleZ";
+            ScaleZ.Size = new System.Drawing.Size(96, 20);
+            ScaleZ.TabIndex = 14;
             // 
             // ScaleY
             // 
-            this.ScaleY.Enabled = false;
-            this.ScaleY.Location = new System.Drawing.Point(24, 36);
-            this.ScaleY.Name = "ScaleY";
-            this.ScaleY.Size = new System.Drawing.Size(96, 20);
-            this.ScaleY.TabIndex = 13;
+            ScaleY.Enabled = false;
+            ScaleY.Location = new System.Drawing.Point(24, 36);
+            ScaleY.Name = "ScaleY";
+            ScaleY.Size = new System.Drawing.Size(96, 20);
+            ScaleY.TabIndex = 13;
             // 
             // ScaleX
             // 
-            this.ScaleX.Enabled = false;
-            this.ScaleX.Location = new System.Drawing.Point(24, 15);
-            this.ScaleX.Name = "ScaleX";
-            this.ScaleX.Size = new System.Drawing.Size(96, 20);
-            this.ScaleX.TabIndex = 12;
+            ScaleX.Enabled = false;
+            ScaleX.Location = new System.Drawing.Point(24, 15);
+            ScaleX.Name = "ScaleX";
+            ScaleX.Size = new System.Drawing.Size(96, 20);
+            ScaleX.TabIndex = 12;
             // 
             // keyframeCopy
             // 
-            this.keyframeCopy.Enabled = false;
-            this.keyframeCopy.Location = new System.Drawing.Point(208, 43);
-            this.keyframeCopy.Name = "keyframeCopy";
-            this.keyframeCopy.Size = new System.Drawing.Size(189, 20);
-            this.keyframeCopy.TabIndex = 34;
+            keyframeCopy.Enabled = false;
+            keyframeCopy.Location = new System.Drawing.Point(208, 43);
+            keyframeCopy.Name = "keyframeCopy";
+            keyframeCopy.Size = new System.Drawing.Size(189, 20);
+            keyframeCopy.TabIndex = 34;
             // 
             // copyKeyframes
             // 
-            this.copyKeyframes.AutoSize = true;
-            this.copyKeyframes.Location = new System.Drawing.Point(208, 26);
-            this.copyKeyframes.Name = "copyKeyframes";
-            this.copyKeyframes.Size = new System.Drawing.Size(127, 17);
-            this.copyKeyframes.TabIndex = 33;
-            this.copyKeyframes.Text = "Copy keyframes from:";
-            this.copyKeyframes.UseVisualStyleBackColor = true;
-            this.copyKeyframes.CheckedChanged += new System.EventHandler(this.copyKeyframes_CheckedChanged);
+            copyKeyframes.AutoSize = true;
+            copyKeyframes.Location = new System.Drawing.Point(208, 26);
+            copyKeyframes.Name = "copyKeyframes";
+            copyKeyframes.Size = new System.Drawing.Size(127, 17);
+            copyKeyframes.TabIndex = 33;
+            copyKeyframes.Text = "Copy keyframes from:";
+            copyKeyframes.UseVisualStyleBackColor = true;
+            copyKeyframes.CheckedChanged += new EventHandler(copyKeyframes_CheckedChanged);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(10, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Change all bone entries with the name:";
+            label1.Location = new System.Drawing.Point(10, 26);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(200, 13);
+            label1.TabIndex = 4;
+            label1.Text = "Change all bone entries with the name:";
             // 
             // name
             // 
-            this.name.HideSelection = false;
-            this.name.Location = new System.Drawing.Point(11, 42);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(187, 20);
-            this.name.TabIndex = 0;
+            name.HideSelection = false;
+            name.Location = new System.Drawing.Point(11, 42);
+            name.Name = "name";
+            name.Size = new System.Drawing.Size(187, 20);
+            name.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.targetName);
-            this.groupBox1.Controls.Add(this.NameContains);
-            this.groupBox1.Controls.Add(this.newName);
-            this.groupBox1.Controls.Add(this.Rename);
-            this.groupBox1.Controls.Add(this.enableLoop);
-            this.groupBox1.Controls.Add(this.editLoop);
-            this.groupBox1.Controls.Add(this.Port);
-            this.groupBox1.Controls.Add(this.Version);
-            this.groupBox1.Controls.Add(this.ChangeVersion);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(405, 89);
-            this.groupBox1.TabIndex = 86;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "CHR0";
+            groupBox1.Controls.Add(targetName);
+            groupBox1.Controls.Add(NameContains);
+            groupBox1.Controls.Add(newName);
+            groupBox1.Controls.Add(Rename);
+            groupBox1.Controls.Add(enableLoop);
+            groupBox1.Controls.Add(editLoop);
+            groupBox1.Controls.Add(Port);
+            groupBox1.Controls.Add(Version);
+            groupBox1.Controls.Add(ChangeVersion);
+            groupBox1.Dock = DockStyle.Top;
+            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(405, 89);
+            groupBox1.TabIndex = 86;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "CHR0";
             // 
             // targetName
             // 
-            this.targetName.Enabled = false;
-            this.targetName.HideSelection = false;
-            this.targetName.Location = new System.Drawing.Point(171, 16);
-            this.targetName.Name = "targetName";
-            this.targetName.Size = new System.Drawing.Size(151, 20);
-            this.targetName.TabIndex = 84;
+            targetName.Enabled = false;
+            targetName.HideSelection = false;
+            targetName.Location = new System.Drawing.Point(171, 16);
+            targetName.Name = "targetName";
+            targetName.Size = new System.Drawing.Size(151, 20);
+            targetName.TabIndex = 84;
             // 
             // NameContains
             // 
-            this.NameContains.Location = new System.Drawing.Point(8, 18);
-            this.NameContains.Name = "NameContains";
-            this.NameContains.Size = new System.Drawing.Size(163, 17);
-            this.NameContains.TabIndex = 85;
-            this.NameContains.Text = "Modify only if name contains: ";
-            this.NameContains.UseVisualStyleBackColor = true;
-            this.NameContains.CheckedChanged += new System.EventHandler(this.NameContains_CheckedChanged);
+            NameContains.Location = new System.Drawing.Point(8, 18);
+            NameContains.Name = "NameContains";
+            NameContains.Size = new System.Drawing.Size(163, 17);
+            NameContains.TabIndex = 85;
+            NameContains.Text = "Modify only if name contains: ";
+            NameContains.UseVisualStyleBackColor = true;
+            NameContains.CheckedChanged += new EventHandler(NameContains_CheckedChanged);
             // 
             // newName
             // 
-            this.newName.Enabled = false;
-            this.newName.HideSelection = false;
-            this.newName.Location = new System.Drawing.Point(203, 39);
-            this.newName.Name = "newName";
-            this.newName.Size = new System.Drawing.Size(119, 20);
-            this.newName.TabIndex = 82;
+            newName.Enabled = false;
+            newName.HideSelection = false;
+            newName.Location = new System.Drawing.Point(203, 39);
+            newName.Name = "newName";
+            newName.Size = new System.Drawing.Size(119, 20);
+            newName.TabIndex = 82;
             // 
             // Rename
             // 
-            this.Rename.Location = new System.Drawing.Point(136, 41);
-            this.Rename.Name = "Rename";
-            this.Rename.Size = new System.Drawing.Size(69, 17);
-            this.Rename.TabIndex = 83;
-            this.Rename.Text = "Rename:";
-            this.Rename.UseVisualStyleBackColor = true;
-            this.Rename.CheckedChanged += new System.EventHandler(this.Rename_CheckedChanged);
+            Rename.Location = new System.Drawing.Point(136, 41);
+            Rename.Name = "Rename";
+            Rename.Size = new System.Drawing.Size(69, 17);
+            Rename.TabIndex = 83;
+            Rename.Text = "Rename:";
+            Rename.UseVisualStyleBackColor = true;
+            Rename.CheckedChanged += new EventHandler(Rename_CheckedChanged);
             // 
             // enableLoop
             // 
-            this.enableLoop.AutoSize = true;
-            this.enableLoop.Enabled = false;
-            this.enableLoop.Location = new System.Drawing.Point(76, 41);
-            this.enableLoop.Name = "enableLoop";
-            this.enableLoop.Size = new System.Drawing.Size(59, 17);
-            this.enableLoop.TabIndex = 39;
-            this.enableLoop.Text = "Enable";
-            this.enableLoop.UseVisualStyleBackColor = true;
+            enableLoop.AutoSize = true;
+            enableLoop.Enabled = false;
+            enableLoop.Location = new System.Drawing.Point(76, 41);
+            enableLoop.Name = "enableLoop";
+            enableLoop.Size = new System.Drawing.Size(59, 17);
+            enableLoop.TabIndex = 39;
+            enableLoop.Text = "Enable";
+            enableLoop.UseVisualStyleBackColor = true;
             // 
             // editLoop
             // 
-            this.editLoop.AutoSize = true;
-            this.editLoop.Location = new System.Drawing.Point(8, 41);
-            this.editLoop.Name = "editLoop";
-            this.editLoop.Size = new System.Drawing.Size(70, 17);
-            this.editLoop.TabIndex = 38;
-            this.editLoop.Text = "Edit loop:";
-            this.editLoop.UseVisualStyleBackColor = true;
-            this.editLoop.CheckedChanged += new System.EventHandler(this.editLoop_CheckedChanged);
+            editLoop.AutoSize = true;
+            editLoop.Location = new System.Drawing.Point(8, 41);
+            editLoop.Name = "editLoop";
+            editLoop.Size = new System.Drawing.Size(70, 17);
+            editLoop.TabIndex = 38;
+            editLoop.Text = "Edit loop:";
+            editLoop.UseVisualStyleBackColor = true;
+            editLoop.CheckedChanged += new EventHandler(editLoop_CheckedChanged);
             // 
             // Port
             // 
-            this.Port.AutoSize = true;
-            this.Port.Location = new System.Drawing.Point(202, 63);
-            this.Port.Name = "Port";
-            this.Port.Size = new System.Drawing.Size(59, 17);
-            this.Port.TabIndex = 37;
-            this.Port.Text = "Port All";
-            this.Port.UseVisualStyleBackColor = true;
+            Port.AutoSize = true;
+            Port.Location = new System.Drawing.Point(202, 63);
+            Port.Name = "Port";
+            Port.Size = new System.Drawing.Size(59, 17);
+            Port.TabIndex = 37;
+            Port.Text = "Port All";
+            Port.UseVisualStyleBackColor = true;
             // 
             // Version
             // 
-            this.Version.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Version.Enabled = false;
-            this.Version.FormattingEnabled = true;
-            this.Version.Items.AddRange(new object[] {
-            "4",
-            "5"});
-            this.Version.Location = new System.Drawing.Point(114, 61);
-            this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(80, 21);
-            this.Version.TabIndex = 36;
+            Version.DropDownStyle = ComboBoxStyle.DropDownList;
+            Version.Enabled = false;
+            Version.FormattingEnabled = true;
+            Version.Items.AddRange(new object[]
+            {
+                "4",
+                "5"
+            });
+            Version.Location = new System.Drawing.Point(114, 61);
+            Version.Name = "Version";
+            Version.Size = new System.Drawing.Size(80, 21);
+            Version.TabIndex = 36;
             // 
             // ChangeVersion
             // 
-            this.ChangeVersion.AutoSize = true;
-            this.ChangeVersion.Location = new System.Drawing.Point(8, 64);
-            this.ChangeVersion.Name = "ChangeVersion";
-            this.ChangeVersion.Size = new System.Drawing.Size(103, 17);
-            this.ChangeVersion.TabIndex = 35;
-            this.ChangeVersion.Text = "Change version:";
-            this.ChangeVersion.UseVisualStyleBackColor = true;
-            this.ChangeVersion.CheckedChanged += new System.EventHandler(this.ChangeVersion_CheckedChanged);
+            ChangeVersion.AutoSize = true;
+            ChangeVersion.Location = new System.Drawing.Point(8, 64);
+            ChangeVersion.Name = "ChangeVersion";
+            ChangeVersion.Size = new System.Drawing.Size(103, 17);
+            ChangeVersion.TabIndex = 35;
+            ChangeVersion.Text = "Change version:";
+            ChangeVersion.UseVisualStyleBackColor = true;
+            ChangeVersion.CheckedChanged += new EventHandler(ChangeVersion_CheckedChanged);
             // 
             // EditAllCHR0Editor
             // 
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "EditAllCHR0Editor";
-            this.Size = new System.Drawing.Size(405, 361);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.grpBoxTranslate.ResumeLayout(false);
-            this.grpBoxTranslate.PerformLayout();
-            this.grpBoxRotate.ResumeLayout(false);
-            this.grpBoxRotate.PerformLayout();
-            this.grpBoxScale.ResumeLayout(false);
-            this.grpBoxScale.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.ResumeLayout(false);
-
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Name = "EditAllCHR0Editor";
+            Size = new System.Drawing.Size(405, 361);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            grpBoxTranslate.ResumeLayout(false);
+            grpBoxTranslate.PerformLayout();
+            grpBoxRotate.ResumeLayout(false);
+            grpBoxRotate.PerformLayout();
+            grpBoxScale.ResumeLayout(false);
+            grpBoxScale.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

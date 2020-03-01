@@ -100,6 +100,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     {
                         e.SuppressKeyPress = true;
                     }
+
                     break;
                 case Keys.Back:
                     break;
@@ -220,6 +221,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     {
                         e.SuppressKeyPress = true;
                     }
+
                     break;
                 case Keys.Escape:
                     UpdateText();

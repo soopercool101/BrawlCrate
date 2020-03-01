@@ -65,7 +65,7 @@ namespace BrawlLib.Internal.Windows.Controls
             {
                 // ignored
             }
-            
+
             if (_targetObject != null)
             {
                 try

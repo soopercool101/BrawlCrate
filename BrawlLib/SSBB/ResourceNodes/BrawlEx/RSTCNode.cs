@@ -25,8 +25,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte
             _randNum; // 0x0F - Number of characters in the random list; should be generated automatically. Max is 100? (Maybe 104, or may have padding).
 
-        public RSTCGroupNode cssList = new RSTCGroupNode { _type = "Character Select" };
-        public RSTCGroupNode randList = new RSTCGroupNode{ _type = "Random Character List" };
+        public RSTCGroupNode cssList = new RSTCGroupNode {_type = "Character Select"};
+        public RSTCGroupNode randList = new RSTCGroupNode {_type = "Random Character List"};
 
         public int NumChars => cssList?.Children?.Count ?? 0;
 
@@ -37,7 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             RSTC* hdr = (RSTC*) address;
             *hdr = new RSTC();
             hdr->_tag = _tag;
-            hdr->_size = (uint)length;
+            hdr->_size = (uint) length;
             hdr->_version = _version;
             hdr->_unknown0x0C = _unknown0x0C;
             hdr->_charNum = (byte) cssList.Children.Count;
@@ -57,13 +57,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             _charNum = Header->_charNum;
             _unknown0x0E = Header->_unknown0x0E;
             _randNum = Header->_randNum;
-            cssList.Initialize(this, new DataSource((*Header)[0], (int)(_size - 0x10)/2));
-            randList.Initialize(this, new DataSource((*Header)[(int)((_size - 0x10) / 2)], (int)(_size - 0x10) / 2));
+            cssList.Initialize(this, new DataSource((*Header)[0], (int) (_size - 0x10) / 2));
+            randList.Initialize(this, new DataSource((*Header)[(int) ((_size - 0x10) / 2)], (int) (_size - 0x10) / 2));
 
             if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
+
             _changed = false;
             return true;
         }
@@ -106,6 +107,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 return HasChildren;
             }
+
             return false;
         }
 

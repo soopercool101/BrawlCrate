@@ -441,7 +441,7 @@ namespace BrawlLib.Modeling.Collada
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                     .Name; // Remove unecessary reference to "end" bones
+                                        .Name; // Remove unecessary reference to "end" bones
                             }
                             else
                             {
@@ -461,7 +461,7 @@ namespace BrawlLib.Modeling.Collada
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                         .Name; // Remove unecessary reference to "end" bones
+                                            .Name; // Remove unecessary reference to "end" bones
                                 }
                                 else
                                 {
@@ -482,7 +482,7 @@ namespace BrawlLib.Modeling.Collada
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                     .Name; // Remove unecessary reference to "end" bones
+                                        .Name; // Remove unecessary reference to "end" bones
                             }
 
                             foreach (DrawCall dc in obj._drawCalls)
@@ -494,7 +494,7 @@ namespace BrawlLib.Modeling.Collada
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                         .Name; // Remove unecessary reference to "end" bones
+                                            .Name; // Remove unecessary reference to "end" bones
                                 }
                             }
                         }
@@ -547,7 +547,8 @@ namespace BrawlLib.Modeling.Collada
             bindMatrix *= node._matrix;
 
             if (node._type == NodeType.JOINT ||
-                !_importOptions._blenderBoneFix && node._type == NodeType.NONE && node._instances.Count == 0 && (node._name != null || node._id != null))
+                !_importOptions._blenderBoneFix && node._type == NodeType.NONE && node._instances.Count == 0 &&
+                (node._name != null || node._id != null))
             {
                 Error = "There was a problem creating a new bone.";
 

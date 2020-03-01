@@ -240,7 +240,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
 
-
             throw new NotSupportedException("The file extension specified is not of a supported animation type.");
         }
 
@@ -251,7 +250,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 base.Replace(fileName);
                 return;
             }
-            CHR0Node n = CHR0Node.FromFile(fileName);
+
+            CHR0Node n = FromFile(fileName);
             n.Name = Name;
             Parent?.InsertChild(n, true, Index + 1);
             Remove();
@@ -417,8 +417,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void MergeWith(CHR0Node external)
         {
             if (external.FrameCount != FrameCount && MessageBox.Show(null,
-                    "Frame counts are not equal; the shorter animation will end early. Do you still wish to continue?",
-                    "Merge Animations", MessageBoxButtons.YesNo) == DialogResult.No)
+                "Frame counts are not equal; the shorter animation will end early. Do you still wish to continue?",
+                "Merge Animations", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 return;
             }
@@ -629,7 +629,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             if ((kfe = tempEntry.GetKeyframe(i, x)) != null)
                             {
                                 newIntEntry.Keyframes.SetFrameValue(i, FrameCount - (x + (Loop ? 0 : 1)), kfe._value)
-                                           ._tangent =
+                                        ._tangent =
                                     kfe._tangent;
                             }
                         }
@@ -912,7 +912,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal KeyframeCollection _keyframes;
 
         [DisplayName("Uncompressed Size (Bytes)")]
-        public override uint UncompressedSize => (uint)(AnimationConverter.CalculateCHR0Size(Keyframes, out _, out _) + _entryLen);
+        public override uint UncompressedSize =>
+            (uint) (AnimationConverter.CalculateCHR0Size(Keyframes, out _, out _) + _entryLen);
 
         [Browsable(false)]
         public KeyframeCollection Keyframes

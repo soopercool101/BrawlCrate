@@ -32,14 +32,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             // Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)
             foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()
-                                       ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
+                ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
 
             // Add all BrawlLib parsers (excluding MoveDefs, as explained below)
             foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()
-                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode))))
+                .Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
@@ -52,6 +52,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _parsers.Add(del as ResourceParser);
             }
+
             Delegate del2 = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParseGeneric", false, false);
             if (del2 != null)
             {
@@ -150,6 +151,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     uncompressedMap = Compressor.TryExpand(ref source, false);
                 }
+
                 if (uncompressedMap != null)
                 {
                     n.Initialize(parent, source, new DataSource(uncompressedMap));

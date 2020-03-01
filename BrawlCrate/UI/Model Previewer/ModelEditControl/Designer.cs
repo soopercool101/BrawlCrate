@@ -2055,7 +2055,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             animEditors.HorizontalScroll.Enabled =
                 !(animEditors.Width - animCtrlPnl.Width >= pnlPlayback.MinimumSize.Width);
 
-            string applicationFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string applicationFolder =
+                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             ScreenCapBgLocText.Text = applicationFolder + "\\ScreenCaptures";
             MDL0TextureNode.TextureOverrideDirectory =
                 LiveTextureFolderPath.Text =
@@ -2113,7 +2114,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void pnlAnimSave(bool As)
         {
-            foreach (ResourceNode n in rightPanel.pnlOpenedFiles.OpenedFiles.Where(o => o._origPath != MainForm.Instance.RootNode.Resource._origPath))
+            foreach (ResourceNode n in rightPanel.pnlOpenedFiles.OpenedFiles.Where(o =>
+                o._origPath != MainForm.Instance.RootNode.Resource._origPath))
             {
                 rightPanel.pnlOpenedFiles.SaveExternal(n, As);
             }

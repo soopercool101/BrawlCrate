@@ -22,7 +22,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public Bitmap GetImage(int index)
         {
-            return ((IImageSource) Children.Where(o => o is IImageSource i && i.ImageCount > 0).ToArray()[index]).GetImage(0);
+            return ((IImageSource) Children.Where(o => o is IImageSource i && i.ImageCount > 0).ToArray()[index])
+                .GetImage(0);
         }
 
         public override bool OnInitialize()
@@ -200,7 +201,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get => HasPlt
                 ? _palette ?? (_palette =
-                      TextureConverter.DecodePalette((byte*) Header + 0x20 + Header->_imagelen, Colors, _pltFormat))
+                    TextureConverter.DecodePalette((byte*) Header + 0x20 + Header->_imagelen, Colors, _pltFormat))
                 : null;
             set
             {

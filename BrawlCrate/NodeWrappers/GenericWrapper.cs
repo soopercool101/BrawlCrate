@@ -39,7 +39,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
-        
+
         private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
 
@@ -90,7 +90,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GetInstance<GenericWrapper>().DeleteSelected();
         }
-        
+
         protected static void DuplicateAction(object sender, EventArgs e)
         {
             GetInstance<GenericWrapper>().Duplicate();
@@ -142,7 +142,7 @@ namespace BrawlCrate.NodeWrappers
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
-        
+
         private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DeleteSelectedToolStripMenuItem.Visible = true;
@@ -260,7 +260,7 @@ namespace BrawlCrate.NodeWrappers
                 g.Delete();
             }
         }
-        
+
         public void ExportSelected()
         {
             string folder = Program.ChooseFolder();
@@ -381,7 +381,7 @@ namespace BrawlCrate.NodeWrappers
         {
             return Duplicate(true);
         }
-        
+
         public virtual ResourceNode Duplicate(bool changeName)
         {
             if (_resource.Parent == null)
@@ -392,11 +392,13 @@ namespace BrawlCrate.NodeWrappers
             string tempPath = Path.GetTempFileName();
             _resource.Export(tempPath);
             // Initialize node as a child of the parent
-            ResourceNode rNode2 = NodeFactory.FromFile(_resource is ARCEntryNode ? null : _resource.Parent, tempPath, _resource.GetType());
+            ResourceNode rNode2 = NodeFactory.FromFile(_resource is ARCEntryNode ? null : _resource.Parent, tempPath,
+                _resource.GetType());
 
             if (rNode2 == null)
             {
-                MessageBox.Show("The node could not be duplicated correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The node could not be duplicated correctly.", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return null;
             }
 
@@ -433,7 +435,7 @@ namespace BrawlCrate.NodeWrappers
             // Copy redirect info as necessary
             if (rNode2 is ARCEntryNode entryNode)
             {
-                entryNode.RedirectIndex = ((ARCEntryNode)_resource).RedirectIndex;
+                entryNode.RedirectIndex = ((ARCEntryNode) _resource).RedirectIndex;
             }
 
             // Update name again in order to refresh things that need refreshing when name is updated

@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 // ReSharper disable UnusedMember.Global
@@ -91,7 +91,7 @@ namespace BrawlCrate.API
             if (RootNode != null)
             {
                 nodes = ResourceNode.FindAllSubNodes(RootNode).Where(n => n.GetType().IsInstanceOfType(typeof(T)))
-                                    .Cast<T>().ToList();
+                    .Cast<T>().ToList();
             }
 
             return nodes;
@@ -489,7 +489,7 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog()
         {
 #if !MONO
-            using (VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
@@ -513,7 +513,7 @@ namespace BrawlCrate.API
         public static string OpenFolderDialog(string description)
         {
 #if !MONO
-            using (VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (VistaFolderBrowserDialog dlg = new VistaFolderBrowserDialog {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
@@ -659,7 +659,7 @@ namespace BrawlCrate.API
 
         // Hidden. Used to determine default integer entry when none is defined
         private static int _lastIntegerInput;
-        
+
         /// <summary>
         ///     Prompts the user to input an integer.
         /// </summary>
@@ -766,7 +766,8 @@ namespace BrawlCrate.API
         /// <returns>
         ///     The user-inputted integer
         /// </returns>
-        public static int UserIntegerInput(string title, string description, int defaultValue, int minimumValue, int maximumValue)
+        public static int UserIntegerInput(string title, string description, int defaultValue, int minimumValue,
+                                           int maximumValue)
         {
             using (NumericInputForm dialog = new NumericInputForm())
             {
@@ -783,6 +784,7 @@ namespace BrawlCrate.API
                         defaultValue = minimumValue;
                     }
                 }
+
                 dialog.ShowDialog(title, description, defaultValue);
                 _lastIntegerInput = dialog.NewValue;
                 return dialog.NewValue;
@@ -891,7 +893,8 @@ namespace BrawlCrate.API
         /// <returns>
         ///     The user-inputted float
         /// </returns>
-        public static float UserFloatInput(string title, string description, float defaultValue, float minimumValue, float maximumValue)
+        public static float UserFloatInput(string title, string description, float defaultValue, float minimumValue,
+                                           float maximumValue)
         {
             using (NumericInputForm dialog = new NumericInputForm())
             {
@@ -908,6 +911,7 @@ namespace BrawlCrate.API
                         defaultValue = minimumValue;
                     }
                 }
+
                 dialog.ShowDialog(title, description, defaultValue);
                 _lastFloatInput = dialog.NewFloatValue;
                 return dialog.NewFloatValue;
@@ -1076,7 +1080,8 @@ namespace BrawlCrate.API
                     }
                 }
 
-                BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper] = BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper].Append(items);
+                BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper] =
+                    BrawlAPIInternal.MultiSelectContextMenuHooks[wrapper].Append(items);
             }
             else
             {

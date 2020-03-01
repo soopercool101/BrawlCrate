@@ -1,4 +1,4 @@
-﻿using BrawlLib.Imaging;
+using BrawlLib.Imaging;
 using BrawlLib.Internal.Drawing;
 using BrawlLib.Internal.Drawing.Imaging;
 using BrawlLib.Internal.IO;
@@ -15,7 +15,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 #if !MONO
-    using System.Windows.Media.Imaging;
+using System.Windows.Media.Imaging;
 #endif
 
 namespace BrawlLib.Internal.Windows.Forms

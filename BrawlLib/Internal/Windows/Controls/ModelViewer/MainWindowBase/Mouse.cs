@@ -1093,7 +1093,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                 //This is the absolute depth value, regardless of obstructions
                 float vertexDepth = screenTemp._z;
 
-                System.Drawing.Point start = panel.CurrentViewport.SelectionStart, end = panel.CurrentViewport.SelectionEnd;
+                Point start = panel.CurrentViewport.SelectionStart, end = panel.CurrentViewport.SelectionEnd;
                 Vector2 min = new Vector2(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y));
                 Vector2 max = new Vector2(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y));
                 if (screenPos <= max && screenPos >= min)

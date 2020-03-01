@@ -99,7 +99,7 @@ namespace BrawlLib.Internal.Windows.Forms
             387,  // st_dxyorster
             2519, // st_croll (NTSC)
             419,  // st_donkey
-            423  // st_halberd, st_jungle, st_mansion
+            423   // st_halberd, st_jungle, st_mansion
         };
 
         public static ReadOnlyCollection<Stage> StageList => Array.AsReadOnly(stageList);
@@ -482,7 +482,8 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // lblCurrentStageDesc
             // 
-            lblCurrentStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold,
+            lblCurrentStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F,
+                System.Drawing.FontStyle.Bold,
                 System.Drawing.GraphicsUnit.Point, 0);
             lblCurrentStageDesc.Location = new System.Drawing.Point(6, 14);
             lblCurrentStageDesc.Name = "lblCurrentStageDesc";

@@ -496,10 +496,10 @@ namespace BrawlLib.Wii.Models
             ElementDecoder decoder = ElementCodec.Decoders[type];
 
             int bytesPerVal = (UVs ? isSpecial + 1 : isSpecial + 2) * (componentType < WiiVertexComponentType.UInt16
-                                  ? 1
-                                  : componentType < WiiVertexComponentType.Float
-                                      ? 2
-                                      : 4);
+                ? 1
+                : componentType < WiiVertexComponentType.Float
+                    ? 2
+                    : 4);
 
             int count = (int) (length / bytesPerVal);
 

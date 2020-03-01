@@ -1088,10 +1088,10 @@ namespace BrawlLib.Modeling.Collada
                             }
 
                             writer.WriteString(Array.IndexOf(bones, w.Bone)
-                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
                             writer.WriteString(" ");
                             writer.WriteString(Array.IndexOf(weightSet, w.Weight)
-                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
                         }
                     }
                 }
@@ -1111,10 +1111,10 @@ namespace BrawlLib.Modeling.Collada
                             }
 
                             writer.WriteString(Array.IndexOf(bones, w.Bone)
-                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
                             writer.WriteString(" ");
                             writer.WriteString(Array.IndexOf(weightSet, w.Weight)
-                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
                         }
                     }
                 }
@@ -1370,8 +1370,8 @@ namespace BrawlLib.Modeling.Collada
 
                                                         writer.WriteString(
                                                             (entry._index / fps).ToString(CultureInfo
-                                                                                          .InvariantCulture
-                                                                                          .NumberFormat));
+                                                                .InvariantCulture
+                                                                .NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array
@@ -1434,7 +1434,7 @@ namespace BrawlLib.Modeling.Collada
 
                                                         writer.WriteString(
                                                             entry._value.ToString(CultureInfo
-                                                                                  .InvariantCulture.NumberFormat));
+                                                                .InvariantCulture.NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array
@@ -1484,7 +1484,7 @@ namespace BrawlLib.Modeling.Collada
 
                                                         writer.WriteString(
                                                             entry._tangent.ToString(CultureInfo
-                                                                                    .InvariantCulture.NumberFormat));
+                                                                .InvariantCulture.NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array
@@ -1534,7 +1534,7 @@ namespace BrawlLib.Modeling.Collada
 
                                                         writer.WriteString(
                                                             entry._tangent.ToString(CultureInfo
-                                                                                    .InvariantCulture.NumberFormat));
+                                                                .InvariantCulture.NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array

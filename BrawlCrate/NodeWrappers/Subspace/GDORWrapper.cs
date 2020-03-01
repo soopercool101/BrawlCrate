@@ -100,5 +100,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.GDBF)]
-    public class GDBFWrapper : GDORWrapper { }
+    public class GDBFWrapper : GDORWrapper
+    {
+    }
 }

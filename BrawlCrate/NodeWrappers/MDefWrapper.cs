@@ -118,7 +118,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(events))
             {
                 if (MessageBox.Show("Do you want to overwrite Events.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -174,7 +174,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(parameters))
             {
                 if (MessageBox.Show("Do you want to overwrite Parameters.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -237,7 +237,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(syntax))
             {
                 if (MessageBox.Show("Do you want to overwrite EventSyntax.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -293,7 +293,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(attributes))
             {
                 if (MessageBox.Show("Do you want to overwrite Attributes.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -333,9 +333,9 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(Params))
             {
                 if (MessageBox.Show(
-                        "Do you want to overwrite " + _resource.Parent.Name +
-                        ".txt in the MovesetData/CharSpecific folder?", "Overwrite Permission",
-                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Do you want to overwrite " + _resource.Parent.Name +
+                    ".txt in the MovesetData/CharSpecific folder?", "Overwrite Permission",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -394,7 +394,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(requirements))
             {
                 if (MessageBox.Show("Do you want to overwrite Requirements.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -451,7 +451,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(airground))
             {
                 if (MessageBox.Show("Do you want to overwrite AirGroundStats.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -479,7 +479,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(collision))
             {
                 if (MessageBox.Show("Do you want to overwrite CollisionStats.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -507,7 +507,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(gfx))
             {
                 if (MessageBox.Show("Do you want to overwrite GFXFiles.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }
@@ -535,7 +535,7 @@ namespace BrawlCrate.NodeWrappers
             if (File.Exists(enums))
             {
                 if (MessageBox.Show("Do you want to overwrite Enums.txt in the MovesetData folder?",
-                        "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    "Overwrite Permission", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     go = true;
                 }

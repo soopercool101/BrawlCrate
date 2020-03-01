@@ -12,9 +12,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.API
@@ -330,6 +330,7 @@ namespace BrawlCrate.API
                             {
                                 break;
                             }
+
                             if (d.Name.StartsWith("Python"))
                             {
                                 if (Directory.Exists($"{d.FullName}\\Lib"))
@@ -409,7 +410,7 @@ namespace BrawlCrate.API
                     {
 #if !MONO
                         using (VistaFolderBrowserDialog dlg
-                            = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+                            = new VistaFolderBrowserDialog {UseDescriptionForTitle = true})
 #else
                         using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif
@@ -467,8 +468,8 @@ namespace BrawlCrate.API
                 if (fsi_path == null)
                 {
                     if (DialogResult.OK == MessageBox.Show(
-                            "F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio? You may have to restart the program for changes to take effect.",
-                            "BrawlAPI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
+                        "F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio? You may have to restart the program for changes to take effect.",
+                        "BrawlAPI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
                     {
                         Process.Start(
                             "https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017");
@@ -538,7 +539,7 @@ namespace BrawlCrate.API
                                     i.Visible = i.Enabled;
                                 }
                             }
-                            
+
                             // If a dropdown has no currently visible items, disable it
                             if (item.DropDownItems.Count > 0 && item.Enabled)
                             {
@@ -570,13 +571,13 @@ namespace BrawlCrate.API
                                     i.Visible = i.Enabled;
                                 }
                             }
-                            
+
                             // If a dropdown has no currently visible items, disable it
                             if (item.DropDownItems.Count > 0 && item.Enabled)
                             {
                                 item.Enabled = item.HasDropDownItems;
                             }
-                            
+
                             if (item.Enabled)
                             {
                                 items.Add(item);
@@ -607,7 +608,7 @@ namespace BrawlCrate.API
                 // Remove plugins list as necessary
                 while (wrapper.ContextMenuStrip != null && wrapper.ContextMenuStrip.Items.Count > 0 &&
                        (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text
-                               .Equals("Plugins") ||
+                            .Equals("Plugins") ||
                         wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
                 {
                     wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Dispose();
@@ -645,7 +646,7 @@ namespace BrawlCrate.API
                                     i.Visible = i.Enabled;
                                 }
                             }
-                            
+
                             // If a dropdown has no currently visible items, disable it
                             if (item.DropDownItems.Count > 0 && item.Enabled)
                             {
@@ -677,13 +678,13 @@ namespace BrawlCrate.API
                                     i.Visible = i.Enabled;
                                 }
                             }
-                            
+
                             // If a dropdown has no currently visible items, disable it
                             if (item.DropDownItems.Count > 0 && item.Enabled)
                             {
                                 item.Enabled = item.HasDropDownItems;
                             }
-                            
+
                             if (item.Enabled)
                             {
                                 items.Add(item);
@@ -698,7 +699,7 @@ namespace BrawlCrate.API
 
                     if (wrapper.ContextMenuStrip.Items.Count == 0 ||
                         !wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text
-                                .Equals("Plugins"))
+                            .Equals("Plugins"))
                     {
                         if (wrapper.ContextMenuStrip.Items.Count != 0)
                         {

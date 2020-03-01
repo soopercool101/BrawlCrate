@@ -8,9 +8,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.BrawlManagers.CostumeManager
@@ -240,7 +240,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         private void changeDirectory_Click(object sender, EventArgs e)
         {
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -309,8 +309,8 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             FileInfo pac = new FileInfo(toDelete + ".pac");
             FileInfo pcs = new FileInfo(toDelete + ".pcs");
             if (DialogResult.Yes == MessageBox.Show(
-                    "Are you sure you want to delete " + pac.Name + "/" + pcs.Name + "?",
-                    "Confirm", MessageBoxButtons.YesNo))
+                "Are you sure you want to delete " + pac.Name + "/" + pcs.Name + "?",
+                "Confirm", MessageBoxButtons.YesNo))
             {
                 modelManager1.LoadFile(null);
                 if (pac.Exists)
@@ -470,7 +470,7 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
             }
 
             if (DialogResult.OK == MessageBox.Show(this, "Copy from " + kirby + " to " + hat + "?", Text,
-                    MessageBoxButtons.OKCancel))
+                MessageBoxButtons.OKCancel))
             {
                 KirbyCopy.Copy(kirby, hat);
             }

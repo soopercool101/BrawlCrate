@@ -227,14 +227,17 @@ namespace BrawlLib.Modeling
             {
                 return TryAdd(p as PointTriangle);
             }
+
             if (p is PointLineStrip)
             {
                 return TryAdd(p as PointLineStrip);
             }
+
             if (p is PointLine)
             {
                 return TryAdd(p as PointLine);
             }
+
             if (p is FPoint)
             {
                 return TryAdd(p as FPoint);

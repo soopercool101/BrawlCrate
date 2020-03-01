@@ -28,7 +28,7 @@ namespace BrawlLib.Platform
 
                 public DSBufferDesc(uint bufferSize, DSBufferCapsFlags bufferCaps, WaveFormatEx* format, Guid algorithm)
                 {
-                    dwSize = (uint)sizeof(DSBufferDesc);
+                    dwSize = (uint) sizeof(DSBufferDesc);
                     dwFlags = bufferCaps;
                     dwBufferBytes = bufferSize;
                     dwReserved = 0;

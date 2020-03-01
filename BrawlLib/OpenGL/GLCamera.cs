@@ -316,10 +316,10 @@ namespace BrawlLib.OpenGL
             //This needs to be a Vector4 converted to a Vector3 in order to work
             //Also the order of the matrix multiplication matters
             return (Vector3) (_matrixInverse * _projectionInverse * new Vector4(
-                                  2.0f * (x / Width) - 1.0f,
-                                  2.0f * ((Height - y) / Height) - 1.0f,
-                                  2.0f * z - 1.0f,
-                                  1.0f));
+                2.0f * (x / Width) - 1.0f,
+                2.0f * ((Height - y) / Height) - 1.0f,
+                2.0f * z - 1.0f,
+                1.0f));
         }
 
         /// <summary>

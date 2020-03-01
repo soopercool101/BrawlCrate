@@ -71,7 +71,7 @@ namespace BrawlLib.CustomLists
                         !s.ToUpper().Substring(flagIndex).StartsWith(flagToIgnore))
                     {
                         string intName = s.Substring(internalNameIndex, nameIndex - internalNameIndex - 1)
-                                          .Trim(trimChars);
+                            .Trim(trimChars);
                         if (intName.Length > 0)
                         {
                             return intName;
@@ -108,10 +108,10 @@ namespace BrawlLib.CustomLists
             {
                 string resourceName = "BrawlLib.CustomLists." +
                                       (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)
-                                             .Equals("en", StringComparison.OrdinalIgnoreCase)
+                                          .Equals("en", StringComparison.OrdinalIgnoreCase)
                                           ? ""
                                           : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()
-                                                  .Substring(0, 2).ToLower() + '.') + "FighterList.txt";
+                                              .Substring(0, 2).ToLower() + '.') + "FighterList.txt";
                 string listDefault = "";
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
                 {
@@ -383,10 +383,10 @@ namespace BrawlLib.CustomLists
             {
                 string resourceName = "BrawlLib.CustomLists." +
                                       (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)
-                                             .Equals("en", StringComparison.OrdinalIgnoreCase)
+                                          .Equals("en", StringComparison.OrdinalIgnoreCase)
                                           ? ""
                                           : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()
-                                                  .Substring(0, 2).ToLower() + '.') + "StageList.txt";
+                                              .Substring(0, 2).ToLower() + '.') + "StageList.txt";
                 string listDefault = "";
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
                 {

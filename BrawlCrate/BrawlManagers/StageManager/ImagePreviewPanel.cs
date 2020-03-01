@@ -160,7 +160,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
             else
             {
                 Stream stream = Assembly.GetExecutingAssembly()
-                                        .GetManifestResourceStream("BrawlCrate.StageManager.border.png");
+                    .GetManifestResourceStream("BrawlCrate.StageManager.border.png");
                 if (stream == null)
                 {
                     MessageBox.Show(

@@ -2506,7 +2506,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                     byteCount -= posOffset;
                                     if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                              .Contains("11"))
+                                        .Contains("11"))
                                     {
                                         SectionEditor.rdo2byte.Checked = true;
                                         byteCount = 2;
@@ -2577,7 +2577,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                 byteCount -= posOffset;
                                 if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                          .Contains("11"))
+                                    .Contains("11"))
                                 {
                                     SectionEditor.rdo2byte.Checked = true;
                                     byteCount = 2;
@@ -2680,7 +2680,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                     byteCount -= posOffset;
                                     if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                              .Contains("11"))
+                                        .Contains("11"))
                                     {
                                         SectionEditor.rdo2byte.Checked = true;
                                         byteCount = 2;
@@ -2751,7 +2751,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                 byteCount -= posOffset;
                                 if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                          .Contains("11"))
+                                    .Contains("11"))
                                 {
                                     SectionEditor.rdo2byte.Checked = true;
                                     byteCount = 2;
@@ -3428,9 +3428,9 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     int.TryParse(
                         Environment.OSVersion.ToString()
-                                   .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
-                                       Environment.OSVersion.ToString().IndexOf(".") -
-                                       (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
+                            .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
+                                Environment.OSVersion.ToString().IndexOf(".") -
+                                (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
                 }
             }
             catch
@@ -3500,9 +3500,9 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     int.TryParse(
                         Environment.OSVersion.ToString()
-                                   .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
-                                       Environment.OSVersion.ToString().IndexOf(".") -
-                                       (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
+                            .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
+                                Environment.OSVersion.ToString().IndexOf(".") -
+                                (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
                 }
             }
             catch
@@ -3643,6 +3643,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                         // In event of invalid read, stop reading
                         break;
                     }
+
                     bool isSelectedByte =
                         x >= _bytePos && x <= _bytePos + _selectionLength - 1 && _selectionLength != 0;
 

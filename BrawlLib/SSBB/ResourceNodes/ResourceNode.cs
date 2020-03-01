@@ -41,7 +41,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return null;
                 }
-                return new string((sbyte*)Address);
+
+                return new string((sbyte*) Address);
             }
         }
 
@@ -770,6 +771,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 AddChild(child, change);
                 return;
             }
+
             Children.Insert(index, child);
             child._parent = this;
             ChildInserted?.Invoke(index, this, child);
@@ -899,11 +901,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
 #endif
-                using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
-                    FileShare.ReadWrite, 8, FileOptions.SequentialScan))
-                {
-                    Export(stream);
-                }
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+            {
+                Export(stream);
+            }
 #if !DEBUG
             }
             catch
@@ -1251,7 +1253,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (path.Contains("/") && path.Substring(0, path.IndexOf('/'))
-                                          .Equals(root.Name, compare))
+                .Equals(root.Name, compare))
             {
                 return root.FindChild(path.Substring(path.IndexOf('/') + 1), searchChildren, compare);
             }
@@ -1489,7 +1491,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         if (tempBres is BRRESNode)
                                         {
                                             foreach (MDL0Node m in ((BRRESNode) tempBres).GetFolder<MDL0Node>()
-                                                                                         .Children)
+                                                .Children)
                                             {
                                                 nodes.Add(m);
                                             }

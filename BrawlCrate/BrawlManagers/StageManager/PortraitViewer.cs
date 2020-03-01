@@ -314,11 +314,13 @@ namespace BrawlCrate.BrawlManagers.StageManager
                     AutoSSS = new CustomSSSCodeset(File.ReadAllBytes(directory.FullName + "/codes/RSBE01.gct"));
                     break;
                 }
+
                 if (File.Exists(directory.FullName + "/LegacyTE/RSBE01.gct"))
                 {
                     AutoSSS = new CustomSSSCodeset(File.ReadAllBytes(directory.FullName + "/LegacyTE/RSBE01.gct"));
                     break;
                 }
+
                 if (File.Exists(directory.FullName + "/LegacyXP/RSBE01.gct"))
                 {
                     AutoSSS = new CustomSSSCodeset(File.ReadAllBytes(directory.FullName + "/LegacyXP/RSBE01.gct"));
@@ -1115,7 +1117,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
         public void updateMuMenumain(string msBinPath = null)
         {
             if (DialogResult.OK == MessageBox.Show("Overwrite the current mu_menumain?", "Overwrite File",
-                    MessageBoxButtons.OKCancel))
+                MessageBoxButtons.OKCancel))
             {
                 using (ResourceNode mu_menumain = TempFiles.MakeTempNode(mu_menumain_path))
                 {
@@ -1181,7 +1183,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
                         i++;
                     }
                     else if (MessageBox.Show(this, "Stop resizing textures here?", Text, MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question) == DialogResult.Yes)
+                        MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         break;
                     }
@@ -1350,8 +1352,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                             if (overlayFile != null)
                             {
                                 Stream stream = Assembly.GetExecutingAssembly()
-                                                        .GetManifestResourceStream(
-                                                            "BrawlCrate.StageManager." + overlayFile);
+                                    .GetManifestResourceStream(
+                                        "BrawlCrate.StageManager." + overlayFile);
                                 if (stream != null)
                                 {
                                     Image overlayImage = Image.FromStream(stream) as Bitmap;

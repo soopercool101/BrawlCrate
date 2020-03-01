@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RWARNode : RSAREntryNode
     {
-        internal Types.Audio.RWAR* Header => (Types.Audio.RWAR*) WorkingUncompressed.Address;
+        internal RWAR* Header => (RWAR*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public override bool OnInitialize()
@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            int size = Types.Audio.RWAR.Size + (12 + Children.Count * 12).Align(0x20) + RWARDataBlock.Size;
+            int size = RWAR.Size + (12 + Children.Count * 12).Align(0x20) + RWARDataBlock.Size;
             foreach (RWAVNode n in Children)
             {
                 size += n.WorkingUncompressed.Length;
@@ -40,9 +40,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            Types.Audio.RWAR* header = (Types.Audio.RWAR*) address;
+            RWAR* header = (RWAR*) address;
             header->_header._version = 0x100;
-            header->_header._tag = Types.Audio.RWAR.Tag;
+            header->_header._tag = RWAR.Tag;
             header->_header.Endian = Endian.Big;
             header->_header._length = length;
             header->_header._firstOffset = 0x20;
@@ -75,7 +75,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((Types.Audio.RWAR*) source.Address)->_header._tag == Types.Audio.RWAR.Tag ? new RWARNode() : null;
+            return ((RWAR*) source.Address)->_header._tag == RWAR.Tag ? new RWARNode() : null;
         }
     }
 }

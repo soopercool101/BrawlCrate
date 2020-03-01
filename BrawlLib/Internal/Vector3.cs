@@ -626,18 +626,22 @@ namespace BrawlLib.Internal
                 {
                     return -1;
                 }
+
                 if (_y > o._y)
                 {
                     return 1;
                 }
+
                 if (_y < o._y)
                 {
                     return -1;
                 }
+
                 if (_z > o._z)
                 {
                     return 1;
                 }
+
                 if (_z < o._z)
                 {
                     return -1;

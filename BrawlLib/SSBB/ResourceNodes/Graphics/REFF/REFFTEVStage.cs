@@ -31,6 +31,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return "d[x] + ((a[x] " + (op % 2 == 0 ? ">" : "==") + " b[x]) ? c[x] : 0 );";
                 }
+
                 return "d + ((a[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "] " + (op % 2 == 0 ? ">" : "==") +
                        " b[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "]) ? c : 0 );";
             }
@@ -55,6 +56,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return "d[x] + ((a[x] " + (op % 2 == 0 ? ">" : "==") + " b[x]) ? c[x] : 0 );";
                 }
+
                 return "d + ((a[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "] " + (op % 2 == 0 ? ">" : "==") +
                        " b[" + (op < 10 ? "R" : op < 12 ? "GR" : "BGR") + "]) ? c : 0 );";
             }

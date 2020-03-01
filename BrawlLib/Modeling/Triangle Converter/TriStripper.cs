@@ -434,6 +434,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                         AddIndex(Tri.A, NotSimulation);
                         return Link;
                     }
+
                     if (Edge.B == Tri.C && Edge.A == Tri.A && TryAddNode(Tri.B))
                     {
                         Order = ClockWise ? TriOrder.CAB : TriOrder.ABC;
@@ -474,6 +475,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                         BackAddIndex(Tri.A);
                         return Link;
                     }
+
                     if (Edge.B == Tri.C && Edge.A == Tri.A && TryAddNode(Tri.B))
                     {
                         Order = ClockWise ? TriOrder.BCA : TriOrder.ABC;

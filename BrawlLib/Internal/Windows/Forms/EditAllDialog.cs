@@ -31,60 +31,59 @@ namespace BrawlLib.Internal.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOkay = new System.Windows.Forms.Button();
-            this.editAllCHR0Editor1 = new BrawlLib.Internal.Windows.Controls.EditAllDialog.EditAllCHR0Editor();
-            this.SuspendLayout();
+            btnCancel = new Button();
+            btnOkay = new Button();
+            editAllCHR0Editor1 = new EditAllCHR0Editor();
+            SuspendLayout();
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(325, 344);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.Location = new System.Drawing.Point(325, 344);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.TabIndex = 2;
+            btnCancel.Text = "&Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
-            this.btnOkay.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            this.btnOkay.Location = new System.Drawing.Point(244, 344);
-            this.btnOkay.Name = "btnOkay";
-            this.btnOkay.Size = new System.Drawing.Size(75, 23);
-            this.btnOkay.TabIndex = 1;
-            this.btnOkay.Text = "&Okay";
-            this.btnOkay.UseVisualStyleBackColor = true;
-            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+            btnOkay.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Location = new System.Drawing.Point(244, 344);
+            btnOkay.Name = "btnOkay";
+            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.TabIndex = 1;
+            btnOkay.Text = "&Okay";
+            btnOkay.UseVisualStyleBackColor = true;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // editAllCHR0Editor1
             // 
-            this.editAllCHR0Editor1.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom 
-                                                                                                                       | System.Windows.Forms.AnchorStyles.Left 
-                                                                                                                       | System.Windows.Forms.AnchorStyles.Right);
-            this.editAllCHR0Editor1.Location = new System.Drawing.Point(0, 0);
-            this.editAllCHR0Editor1.Name = "editAllCHR0Editor1";
-            this.editAllCHR0Editor1.Size = new System.Drawing.Size(404, 338);
-            this.editAllCHR0Editor1.TabIndex = 3;
+            editAllCHR0Editor1.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                         | AnchorStyles.Left
+                                                                         | AnchorStyles.Right);
+            editAllCHR0Editor1.Location = new System.Drawing.Point(0, 0);
+            editAllCHR0Editor1.Name = "editAllCHR0Editor1";
+            editAllCHR0Editor1.Size = new System.Drawing.Size(404, 338);
+            editAllCHR0Editor1.TabIndex = 3;
             // 
             // EditAllDialog
             // 
-            this.AcceptButton = this.btnOkay;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(404, 374);
-            this.Controls.Add(this.editAllCHR0Editor1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOkay);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "EditAllDialog";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Edit All Animations";
-            this.ResumeLayout(false);
-
+            AcceptButton = btnOkay;
+            CancelButton = btnCancel;
+            ClientSize = new System.Drawing.Size(404, 374);
+            Controls.Add(editAllCHR0Editor1);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOkay);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Name = "EditAllDialog";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Edit All Animations";
+            ResumeLayout(false);
         }
 
         #endregion
@@ -115,16 +114,16 @@ namespace BrawlLib.Internal.Windows.Forms
         public void ShowDialog(IWin32Window owner, IEnumerable<ResourceNode> nodes)
         {
             _nodes = nodes
-                     .Select(n => n as CHR0Node)
-                     .Where(n => n != null)
-                     .ToArray();
+                .Select(n => n as CHR0Node)
+                .Where(n => n != null)
+                .ToArray();
             if (!_nodes.Any())
             {
                 editAllCHR0Editor1.OnlyEntryNodesSelected();
                 _entries = nodes
-                           .Select(n => n as CHR0EntryNode)
-                           .Where(n => n != null)
-                           .ToArray();
+                    .Select(n => n as CHR0EntryNode)
+                    .Where(n => n != null)
+                    .ToArray();
             }
 
             _enabled = new bool[5];

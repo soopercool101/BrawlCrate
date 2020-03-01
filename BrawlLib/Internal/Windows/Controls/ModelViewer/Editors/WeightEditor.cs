@@ -39,9 +39,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // btnSetWeight
             // 
             btnSetWeight.Enabled = false;
-            btnSetWeight.Location = new System.Drawing.Point(67, 28);
+            btnSetWeight.Location = new Point(67, 28);
             btnSetWeight.Name = "btnSetWeight";
-            btnSetWeight.Size = new System.Drawing.Size(61, 22);
+            btnSetWeight.Size = new Size(61, 22);
             btnSetWeight.TabIndex = 2;
             btnSetWeight.Text = "Set";
             btnSetWeight.UseVisualStyleBackColor = true;
@@ -49,9 +49,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnBlend
             // 
-            btnBlend.Location = new System.Drawing.Point(129, 28);
+            btnBlend.Location = new Point(129, 28);
             btnBlend.Name = "btnBlend";
-            btnBlend.Size = new System.Drawing.Size(62, 22);
+            btnBlend.Size = new Size(62, 22);
             btnBlend.TabIndex = 4;
             btnBlend.Text = "Blend";
             btnBlend.UseVisualStyleBackColor = true;
@@ -61,9 +61,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // btnAdd
             // 
             btnAdd.Enabled = false;
-            btnAdd.Location = new System.Drawing.Point(67, 52);
+            btnAdd.Location = new Point(67, 52);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new System.Drawing.Size(30, 22);
+            btnAdd.Size = new Size(30, 22);
             btnAdd.TabIndex = 7;
             btnAdd.Text = "+";
             btnAdd.UseVisualStyleBackColor = true;
@@ -72,9 +72,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // btnSubtract
             // 
             btnSubtract.Enabled = false;
-            btnSubtract.Location = new System.Drawing.Point(98, 52);
+            btnSubtract.Location = new Point(98, 52);
             btnSubtract.Name = "btnSubtract";
-            btnSubtract.Size = new System.Drawing.Size(30, 22);
+            btnSubtract.Size = new Size(30, 22);
             btnSubtract.TabIndex = 8;
             btnSubtract.Text = "-";
             btnSubtract.UseVisualStyleBackColor = true;
@@ -83,9 +83,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // btnLock
             // 
             btnLock.Enabled = false;
-            btnLock.Location = new System.Drawing.Point(2, 4);
+            btnLock.Location = new Point(2, 4);
             btnLock.Name = "btnLock";
-            btnLock.Size = new System.Drawing.Size(64, 22);
+            btnLock.Size = new Size(64, 22);
             btnLock.TabIndex = 10;
             btnLock.Text = "Lock";
             btnLock.UseVisualStyleBackColor = true;
@@ -94,18 +94,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // lblBoneName
             // 
             lblBoneName.AutoSize = true;
-            lblBoneName.Location = new System.Drawing.Point(134, 9);
+            lblBoneName.Location = new Point(134, 9);
             lblBoneName.Name = "lblBoneName";
-            lblBoneName.Size = new System.Drawing.Size(32, 13);
+            lblBoneName.Size = new Size(32, 13);
             lblBoneName.TabIndex = 11;
             lblBoneName.Text = "Bone";
             // 
             // btnRemove
             // 
             btnRemove.Enabled = false;
-            btnRemove.Location = new System.Drawing.Point(67, 4);
+            btnRemove.Location = new Point(67, 4);
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new System.Drawing.Size(61, 22);
+            btnRemove.Size = new Size(61, 22);
             btnRemove.TabIndex = 12;
             btnRemove.Text = "Remove";
             btnRemove.UseVisualStyleBackColor = true;
@@ -128,29 +128,29 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             panel1.Controls.Add(lblBoneName);
             panel1.Controls.Add(btnRemove);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new System.Drawing.Point(130, 0);
+            panel1.Location = new Point(130, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(130, 103);
+            panel1.Size = new Size(130, 103);
             panel1.TabIndex = 14;
             // 
             // numMult
             // 
             numMult.Enabled = false;
             numMult.Integral = false;
-            numMult.Location = new System.Drawing.Point(3, 77);
+            numMult.Location = new Point(3, 77);
             numMult.MaximumValue = 3.402823E+38F;
             numMult.MinimumValue = -3.402823E+38F;
             numMult.Name = "numMult";
-            numMult.Size = new System.Drawing.Size(62, 20);
+            numMult.Size = new Size(62, 20);
             numMult.TabIndex = 16;
             numMult.Text = "1.05";
             // 
             // btnMult
             // 
             btnMult.Enabled = false;
-            btnMult.Location = new System.Drawing.Point(67, 76);
+            btnMult.Location = new Point(67, 76);
             btnMult.Name = "btnMult";
-            btnMult.Size = new System.Drawing.Size(30, 22);
+            btnMult.Size = new Size(30, 22);
             btnMult.TabIndex = 14;
             btnMult.Text = "x";
             btnMult.UseVisualStyleBackColor = true;
@@ -159,9 +159,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // btnDiv
             // 
             btnDiv.Enabled = false;
-            btnDiv.Location = new System.Drawing.Point(98, 76);
+            btnDiv.Location = new Point(98, 76);
             btnDiv.Name = "btnDiv";
-            btnDiv.Size = new System.Drawing.Size(30, 22);
+            btnDiv.Size = new Size(30, 22);
             btnDiv.TabIndex = 15;
             btnDiv.Text = "/";
             btnDiv.UseVisualStyleBackColor = true;
@@ -171,11 +171,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             numAdd.Enabled = false;
             numAdd.Integral = false;
-            numAdd.Location = new System.Drawing.Point(3, 53);
+            numAdd.Location = new Point(3, 53);
             numAdd.MaximumValue = 3.402823E+38F;
             numAdd.MinimumValue = -3.402823E+38F;
             numAdd.Name = "numAdd";
-            numAdd.Size = new System.Drawing.Size(62, 20);
+            numAdd.Size = new Size(62, 20);
             numAdd.TabIndex = 13;
             numAdd.Text = "10";
             // 
@@ -183,20 +183,20 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             numWeight.Enabled = false;
             numWeight.Integral = false;
-            numWeight.Location = new System.Drawing.Point(3, 29);
+            numWeight.Location = new Point(3, 29);
             numWeight.MaximumValue = 3.402823E+38F;
             numWeight.MinimumValue = -3.402823E+38F;
             numWeight.Name = "numWeight";
-            numWeight.Size = new System.Drawing.Size(62, 20);
+            numWeight.Size = new Size(62, 20);
             numWeight.TabIndex = 3;
             numWeight.Text = "100";
             numWeight.ValueChanged += new EventHandler(numWeight_ValueChanged);
             // 
             // btnPaste
             // 
-            btnPaste.Location = new System.Drawing.Point(129, 75);
+            btnPaste.Location = new Point(129, 75);
             btnPaste.Name = "btnPaste";
-            btnPaste.Size = new System.Drawing.Size(62, 22);
+            btnPaste.Size = new Size(62, 22);
             btnPaste.TabIndex = 6;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
@@ -205,9 +205,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnCopy
             // 
-            btnCopy.Location = new System.Drawing.Point(129, 51);
+            btnCopy.Location = new Point(129, 51);
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(62, 22);
+            btnCopy.Size = new Size(62, 22);
             btnCopy.TabIndex = 5;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
@@ -220,9 +220,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             lstBoneWeights.DrawMode = DrawMode.OwnerDrawFixed;
             lstBoneWeights.FormattingEnabled = true;
             lstBoneWeights.IntegralHeight = false;
-            lstBoneWeights.Location = new System.Drawing.Point(0, 0);
+            lstBoneWeights.Location = new Point(0, 0);
             lstBoneWeights.Name = "lstBoneWeights";
-            lstBoneWeights.Size = new System.Drawing.Size(130, 103);
+            lstBoneWeights.Size = new Size(130, 103);
             lstBoneWeights.TabIndex = 0;
             lstBoneWeights.DrawItem += new DrawItemEventHandler(lstBoneWeights_DrawItem);
             lstBoneWeights.SelectedIndexChanged += new EventHandler(lstBoneWeights_SelectedIndexChanged);
@@ -231,9 +231,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             Controls.Add(panel1);
             Controls.Add(lstBoneWeights);
-            MinimumSize = new System.Drawing.Size(260, 103);
+            MinimumSize = new Size(260, 103);
             Name = "WeightEditor";
-            Size = new System.Drawing.Size(260, 103);
+            Size = new Size(260, 103);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

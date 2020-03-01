@@ -20,14 +20,14 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             description.BorderStyle = BorderStyle.None;
             description.Cursor = Cursors.Default;
             description.Dock = DockStyle.Fill;
-            description.Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point,
+            description.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point,
                 (byte) 0);
             description.ForeColor = Color.Black;
-            description.Location = new System.Drawing.Point(0, 0);
+            description.Location = new Point(0, 0);
             description.Name = "description";
             description.ReadOnly = true;
             description.ScrollBars = RichTextBoxScrollBars.Vertical;
-            description.Size = new System.Drawing.Size(413, 284);
+            description.Size = new Size(413, 284);
             description.TabIndex = 1;
             description.Text = "No Description Available.";
             description.TextChanged += new EventHandler(description_TextChanged);
@@ -36,7 +36,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             // 
             Controls.Add(description);
             Name = "EventDescription";
-            Size = new System.Drawing.Size(413, 284);
+            Size = new Size(413, 284);
             ResumeLayout(false);
         }
 

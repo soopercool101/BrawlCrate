@@ -38,6 +38,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return -1;
                 }
+
                 return CID;
             }
         }

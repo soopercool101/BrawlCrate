@@ -576,10 +576,12 @@ namespace BrawlCrate.BrawlManagers.StageManager
                     "A04"
                 };
             }
+
             if (dict.TryGetValue(stageId, out string[] ret))
             {
                 return ret;
             }
+
             return new string[0];
         }
     }

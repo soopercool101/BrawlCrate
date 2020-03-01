@@ -70,30 +70,30 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // lblR
             // 
-            lblR.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblR.Location = new System.Drawing.Point(3, 77);
+            lblR.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblR.Location = new Point(3, 77);
             lblR.Name = "lblR";
-            lblR.Size = new System.Drawing.Size(19, 20);
+            lblR.Size = new Size(19, 20);
             lblR.TabIndex = 2;
             lblR.Text = "R";
             lblR.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            label1.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(3, 115);
+            label1.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(3, 115);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(19, 20);
+            label1.Size = new Size(19, 20);
             label1.TabIndex = 3;
             label1.Text = "B";
             label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            label2.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(3, 96);
+            label2.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(3, 96);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(19, 20);
+            label2.Size = new Size(19, 20);
             label2.TabIndex = 4;
             label2.Text = "G";
             label2.TextAlign = ContentAlignment.MiddleRight;
@@ -102,7 +102,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             numB.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numB.Location = new System.Drawing.Point(23, 116);
+            numB.Location = new Point(23, 116);
             numB.Maximum = new decimal(new int[]
             {
                 255,
@@ -111,14 +111,14 @@ namespace BrawlLib.Internal.Windows.Controls
                 0
             });
             numB.Name = "numB";
-            numB.Size = new System.Drawing.Size(47, 20);
+            numB.Size = new Size(47, 20);
             numB.TabIndex = 5;
             // 
             // numG
             // 
             numG.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numG.Location = new System.Drawing.Point(23, 97);
+            numG.Location = new Point(23, 97);
             numG.Maximum = new decimal(new int[]
             {
                 255,
@@ -127,14 +127,14 @@ namespace BrawlLib.Internal.Windows.Controls
                 0
             });
             numG.Name = "numG";
-            numG.Size = new System.Drawing.Size(47, 20);
+            numG.Size = new Size(47, 20);
             numG.TabIndex = 6;
             // 
             // numR
             // 
             numR.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numR.Location = new System.Drawing.Point(23, 78);
+            numR.Location = new Point(23, 78);
             numR.Maximum = new decimal(new int[]
             {
                 255,
@@ -143,14 +143,14 @@ namespace BrawlLib.Internal.Windows.Controls
                 0
             });
             numR.Name = "numR";
-            numR.Size = new System.Drawing.Size(47, 20);
+            numR.Size = new Size(47, 20);
             numR.TabIndex = 7;
             // 
             // numH
             // 
             numH.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numH.Location = new System.Drawing.Point(23, 6);
+            numH.Location = new Point(23, 6);
             numH.Maximum = new decimal(new int[]
             {
                 360,
@@ -159,53 +159,53 @@ namespace BrawlLib.Internal.Windows.Controls
                 0
             });
             numH.Name = "numH";
-            numH.Size = new System.Drawing.Size(47, 20);
+            numH.Size = new Size(47, 20);
             numH.TabIndex = 13;
             // 
             // numS
             // 
             numS.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numS.Location = new System.Drawing.Point(23, 25);
+            numS.Location = new Point(23, 25);
             numS.Name = "numS";
-            numS.Size = new System.Drawing.Size(47, 20);
+            numS.Size = new Size(47, 20);
             numS.TabIndex = 12;
             // 
             // numV
             // 
             numV.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numV.Location = new System.Drawing.Point(23, 44);
+            numV.Location = new Point(23, 44);
             numV.Name = "numV";
-            numV.Size = new System.Drawing.Size(47, 20);
+            numV.Size = new Size(47, 20);
             numV.TabIndex = 11;
             // 
             // label3
             // 
-            label3.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(3, 24);
+            label3.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(3, 24);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(19, 20);
+            label3.Size = new Size(19, 20);
             label3.TabIndex = 10;
             label3.Text = "S";
             label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            label4.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new System.Drawing.Point(3, 43);
+            label4.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(3, 43);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(19, 20);
+            label4.Size = new Size(19, 20);
             label4.TabIndex = 9;
             label4.Text = "V";
             label4.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            label5.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new System.Drawing.Point(3, 5);
+            label5.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(3, 5);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(19, 20);
+            label5.Size = new Size(19, 20);
             label5.TabIndex = 8;
             label5.Text = "H";
             label5.TextAlign = ContentAlignment.MiddleRight;
@@ -214,7 +214,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             numA.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numA.Location = new System.Drawing.Point(23, 135);
+            numA.Location = new Point(23, 135);
             numA.Maximum = new decimal(new int[]
             {
                 255,
@@ -223,7 +223,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 0
             });
             numA.Name = "numA";
-            numA.Size = new System.Drawing.Size(47, 20);
+            numA.Size = new Size(47, 20);
             numA.TabIndex = 15;
             numA.Value = new decimal(new int[]
             {
@@ -235,10 +235,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // lblA
             // 
-            lblA.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblA.Location = new System.Drawing.Point(3, 134);
+            lblA.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblA.Location = new Point(3, 134);
             lblA.Name = "lblA";
-            lblA.Size = new System.Drawing.Size(19, 20);
+            lblA.Size = new Size(19, 20);
             lblA.TabIndex = 14;
             lblA.Text = "A";
             lblA.TextAlign = ContentAlignment.MiddleRight;
@@ -248,17 +248,17 @@ namespace BrawlLib.Internal.Windows.Controls
             panel1.Controls.Add(pnlColorBox);
             panel1.Controls.Add(pnlColorBar);
             panel1.Dock = DockStyle.Left;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(217, 187);
+            panel1.Size = new Size(217, 187);
             panel1.TabIndex = 16;
             // 
             // pnlColorBox
             // 
             pnlColorBox.BackColor = Color.Transparent;
-            pnlColorBox.Location = new System.Drawing.Point(3, 3);
+            pnlColorBox.Location = new Point(3, 3);
             pnlColorBox.Name = "pnlColorBox";
-            pnlColorBox.Size = new System.Drawing.Size(180, 180);
+            pnlColorBox.Size = new Size(180, 180);
             pnlColorBox.TabIndex = 0;
             pnlColorBox.Paint += new PaintEventHandler(pnlColorBox_Paint);
             pnlColorBox.MouseDown += new MouseEventHandler(pnlColorBox_MouseDown);
@@ -268,9 +268,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // pnlColorBar
             // 
             pnlColorBar.BackColor = Color.Transparent;
-            pnlColorBar.Location = new System.Drawing.Point(189, 3);
+            pnlColorBar.Location = new Point(189, 3);
             pnlColorBar.Name = "pnlColorBar";
-            pnlColorBar.Size = new System.Drawing.Size(25, 180);
+            pnlColorBar.Size = new Size(25, 180);
             pnlColorBar.TabIndex = 1;
             pnlColorBar.Paint += new PaintEventHandler(pnlColorBar_Paint);
             pnlColorBar.MouseDown += new MouseEventHandler(pnlColorBar_MouseDown);
@@ -281,9 +281,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             panel2.Controls.Add(pnlAlpha);
             panel2.Dock = DockStyle.Left;
-            panel2.Location = new System.Drawing.Point(217, 0);
+            panel2.Location = new Point(217, 0);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(20, 187);
+            panel2.Size = new Size(20, 187);
             panel2.TabIndex = 17;
             // 
             // pnlAlpha
@@ -291,9 +291,9 @@ namespace BrawlLib.Internal.Windows.Controls
             pnlAlpha.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                | AnchorStyles.Right;
             pnlAlpha.BackColor = Color.Transparent;
-            pnlAlpha.Location = new System.Drawing.Point(3, 3);
+            pnlAlpha.Location = new Point(3, 3);
             pnlAlpha.Name = "pnlAlpha";
-            pnlAlpha.Size = new System.Drawing.Size(14, 180);
+            pnlAlpha.Size = new Size(14, 180);
             pnlAlpha.TabIndex = 2;
             pnlAlpha.Paint += new PaintEventHandler(pnlAlpha_Paint);
             pnlAlpha.MouseDown += new MouseEventHandler(pnlAlpha_MouseDown);
@@ -318,16 +318,16 @@ namespace BrawlLib.Internal.Windows.Controls
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label4);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new System.Drawing.Point(237, 0);
+            panel3.Location = new Point(237, 0);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(77, 187);
+            panel3.Size = new Size(77, 187);
             panel3.TabIndex = 18;
             // 
             // txtColorCode
             // 
-            txtColorCode.Location = new System.Drawing.Point(6, 161);
+            txtColorCode.Location = new Point(6, 161);
             txtColorCode.Name = "txtColorCode";
-            txtColorCode.Size = new System.Drawing.Size(64, 20);
+            txtColorCode.Size = new Size(64, 20);
             txtColorCode.TabIndex = 16;
             txtColorCode.Text = "000000FF";
             txtColorCode.TextAlign = HorizontalAlignment.Center;
@@ -339,9 +339,9 @@ namespace BrawlLib.Internal.Windows.Controls
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            MinimumSize = new System.Drawing.Size(310, 187);
+            MinimumSize = new Size(310, 187);
             Name = "GoodColorControl";
-            Size = new System.Drawing.Size(314, 187);
+            Size = new Size(314, 187);
             ((System.ComponentModel.ISupportInitialize) numB).EndInit();
             ((System.ComponentModel.ISupportInitialize) numG).EndInit();
             ((System.ComponentModel.ISupportInitialize) numR).EndInit();
@@ -792,10 +792,18 @@ namespace BrawlLib.Internal.Windows.Controls
                 txtColorCode.Text = s;
             }
 
-            _rgba.R = s.Length >= 2 ? byte.Parse(s.Substring(0, 2), System.Globalization.NumberStyles.HexNumber) : (byte) 0;
-            _rgba.G = s.Length >= 4 ? byte.Parse(s.Substring(2, 2), System.Globalization.NumberStyles.HexNumber) : (byte) 0;
-            _rgba.B = s.Length >= 6 ? byte.Parse(s.Substring(4, 2), System.Globalization.NumberStyles.HexNumber) : (byte) 0;
-            _rgba.A = s.Length >= 8 ? byte.Parse(s.Substring(6, 2), System.Globalization.NumberStyles.HexNumber) : (byte) 0xFF;
+            _rgba.R = s.Length >= 2
+                ? byte.Parse(s.Substring(0, 2), System.Globalization.NumberStyles.HexNumber)
+                : (byte) 0;
+            _rgba.G = s.Length >= 4
+                ? byte.Parse(s.Substring(2, 2), System.Globalization.NumberStyles.HexNumber)
+                : (byte) 0;
+            _rgba.B = s.Length >= 6
+                ? byte.Parse(s.Substring(4, 2), System.Globalization.NumberStyles.HexNumber)
+                : (byte) 0;
+            _rgba.A = s.Length >= 8
+                ? byte.Parse(s.Substring(6, 2), System.Globalization.NumberStyles.HexNumber)
+                : (byte) 0xFF;
             _updating = false;
 
             OnColorChanged(false);

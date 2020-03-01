@@ -120,7 +120,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     continue;
                 }
-                
+
                 cur.MinimumZ = ext.MinimumZ;
                 cur.MaximumZ = ext.MaximumZ;
                 cur.MinimumTilt = ext.MinimumTilt;
@@ -171,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     continue;
                 }
-                
+
                 cur.Id1 = ext.Id1;
                 cur.Id2 = ext.Id2;
                 cur.Value1 = ext.Value1;

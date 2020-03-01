@@ -710,7 +710,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     //Draw the current image over the previous
                                     //This is because some GIFs use pixels of the previous frame
                                     //in order to compress the overall image data
-                                    using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(prev))
+                                    using (Graphics graphics = Graphics.FromImage(prev))
                                     {
                                         graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
                                         graphics.CompositingQuality = CompositingQuality.HighQuality;

@@ -56,9 +56,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // lblPrimary
             // 
-            lblPrimary.Location = new System.Drawing.Point(5, 2);
+            lblPrimary.Location = new Point(5, 2);
             lblPrimary.Name = "lblPrimary";
-            lblPrimary.Size = new System.Drawing.Size(61, 20);
+            lblPrimary.Size = new Size(61, 20);
             lblPrimary.TabIndex = 0;
             lblPrimary.Text = "Base Color:";
             lblPrimary.TextAlign = ContentAlignment.MiddleLeft;
@@ -70,10 +70,10 @@ namespace BrawlLib.Internal.Windows.Controls
             lstColors.DrawMode = DrawMode.OwnerDrawFixed;
             lstColors.FormattingEnabled = true;
             lstColors.IntegralHeight = false;
-            lstColors.Location = new System.Drawing.Point(0, 24);
+            lstColors.Location = new Point(0, 24);
             lstColors.Name = "lstColors";
             lstColors.SelectionMode = SelectionMode.MultiExtended;
-            lstColors.Size = new System.Drawing.Size(334, 218);
+            lstColors.Size = new Size(334, 218);
             lstColors.TabIndex = 1;
             lstColors.DrawItem += new DrawItemEventHandler(lstColors_DrawItem);
             lstColors.DoubleClick += new EventHandler(lstColors_DoubleClick);
@@ -92,26 +92,26 @@ namespace BrawlLib.Internal.Windows.Controls
                 editToolStripMenuItem
             });
             ctxMenu.Name = "ctxMenu";
-            ctxMenu.Size = new System.Drawing.Size(165, 104);
+            ctxMenu.Size = new Size(165, 104);
             // 
             // selectAllToolStripMenuItem
             // 
             selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             selectAllToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.A;
-            selectAllToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            selectAllToolStripMenuItem.Size = new Size(164, 22);
             selectAllToolStripMenuItem.Text = "Select All";
             selectAllToolStripMenuItem.Click += new EventHandler(selectAllToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new System.Drawing.Size(161, 6);
+            toolStripMenuItem1.Size = new Size(161, 6);
             // 
             // copyToolStripMenuItem
             // 
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             copyToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
-            copyToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            copyToolStripMenuItem.Size = new Size(164, 22);
             copyToolStripMenuItem.Text = "Copy";
             copyToolStripMenuItem.Click += new EventHandler(copyToolStripMenuItem_Click);
             // 
@@ -125,18 +125,18 @@ namespace BrawlLib.Internal.Windows.Controls
             });
             pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             pasteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
-            pasteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            pasteToolStripMenuItem.Size = new Size(164, 22);
             pasteToolStripMenuItem.Text = "Paste";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
+            toolStripSeparator1.Size = new Size(161, 6);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            editToolStripMenuItem.Size = new Size(164, 22);
             editToolStripMenuItem.Text = "Edit...";
             editToolStripMenuItem.Click += new EventHandler(editToolStripMenuItem_Click);
             // 
@@ -145,10 +145,10 @@ namespace BrawlLib.Internal.Windows.Controls
             lblBase.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                               | AnchorStyles.Right;
             lblBase.BackColor = Color.Transparent;
-            lblBase.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblBase.Location = new System.Drawing.Point(72, 2);
+            lblBase.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblBase.Location = new Point(72, 2);
             lblBase.Name = "lblBase";
-            lblBase.Size = new System.Drawing.Size(149, 20);
+            lblBase.Size = new Size(149, 20);
             lblBase.TabIndex = 2;
             lblBase.TextAlign = ContentAlignment.MiddleLeft;
             lblBase.Click += new EventHandler(lblBase_Click);
@@ -157,9 +157,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             lblColor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblColor.BorderStyle = BorderStyle.FixedSingle;
-            lblColor.Location = new System.Drawing.Point(231, 5);
+            lblColor.Location = new Point(231, 5);
             lblColor.Name = "lblColor";
-            lblColor.Size = new System.Drawing.Size(41, 14);
+            lblColor.Size = new Size(41, 14);
             lblColor.TabIndex = 3;
             lblColor.Click += new EventHandler(lblBase_Click);
             // 
@@ -172,25 +172,25 @@ namespace BrawlLib.Internal.Windows.Controls
             pnlPrimary.Controls.Add(lblPrimary);
             pnlPrimary.Controls.Add(lblBase);
             pnlPrimary.Dock = DockStyle.Top;
-            pnlPrimary.Location = new System.Drawing.Point(0, 0);
+            pnlPrimary.Location = new Point(0, 0);
             pnlPrimary.Name = "pnlPrimary";
-            pnlPrimary.Size = new System.Drawing.Size(334, 24);
+            pnlPrimary.Size = new Size(334, 24);
             pnlPrimary.TabIndex = 4;
             // 
             // lblCNoA
             // 
             lblCNoA.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblCNoA.BorderStyle = BorderStyle.FixedSingle;
-            lblCNoA.Location = new System.Drawing.Point(271, 5);
+            lblCNoA.Location = new Point(271, 5);
             lblCNoA.Name = "lblCNoA";
-            lblCNoA.Size = new System.Drawing.Size(41, 14);
+            lblCNoA.Size = new Size(41, 14);
             lblCNoA.TabIndex = 4;
             lblCNoA.Click += new EventHandler(lblBase_Click);
             // 
             // allToolStripMenuItem1
             // 
             allToolStripMenuItem1.Name = "allToolStripMenuItem1";
-            allToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            allToolStripMenuItem1.Size = new Size(152, 22);
             allToolStripMenuItem1.Text = "All";
             allToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.V;
             allToolStripMenuItem1.Click += new EventHandler(allToolStripMenuItem_Click);
@@ -198,14 +198,14 @@ namespace BrawlLib.Internal.Windows.Controls
             // colorToolStripMenuItem1
             // 
             colorToolStripMenuItem1.Name = "colorToolStripMenuItem1";
-            colorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            colorToolStripMenuItem1.Size = new Size(152, 22);
             colorToolStripMenuItem1.Text = "Color";
             colorToolStripMenuItem1.Click += new EventHandler(colorToolStripMenuItem_Click);
             // 
             // alphaToolStripMenuItem1
             // 
             alphaToolStripMenuItem1.Name = "alphaToolStripMenuItem1";
-            alphaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            alphaToolStripMenuItem1.Size = new Size(152, 22);
             alphaToolStripMenuItem1.Text = "Alpha";
             alphaToolStripMenuItem1.Click += new EventHandler(alphaToolStripMenuItem_Click);
             // 
@@ -215,7 +215,7 @@ namespace BrawlLib.Internal.Windows.Controls
             Controls.Add(pnlPrimary);
             DoubleBuffered = true;
             Name = "CLRControl";
-            Size = new System.Drawing.Size(334, 242);
+            Size = new Size(334, 242);
             KeyDown += new KeyEventHandler(CLRControl_KeyDown);
             ctxMenu.ResumeLayout(false);
             pnlPrimary.ResumeLayout(false);
@@ -394,6 +394,7 @@ namespace BrawlLib.Internal.Windows.Controls
                         lstColors.Items[sorted[i]] = p;
                         _colorSource.SetColor(sorted[i], _colorId, p);
                     }
+
                     lstColors.Items[sorted[count - 1]] = end;
                     _colorSource.SetColor(sorted[count - 1], _colorId, end);
                 }

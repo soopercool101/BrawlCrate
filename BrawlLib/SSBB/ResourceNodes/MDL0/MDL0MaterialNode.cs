@@ -1492,8 +1492,8 @@ For example, if the shader has two stages but this number is 1, the second stage
                     if (IsMetal)
                     {
                         if (MessageBox.Show(null,
-                                "This model is currently set to automatically modify metal materials.\nYou cannot make changes unless you turn it off.\nDo you want to turn it off?",
-                                "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            "This model is currently set to automatically modify metal materials.\nYou cannot make changes unless you turn it off.\nDo you want to turn it off?",
+                            "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             Model._autoMetal = false;
                         }
@@ -1970,55 +1970,55 @@ For example, if the shader has two stages but this number is 1, the second stage
                 try
                 {
 #endif
-                    if (_programHandle > 0)
+                if (_programHandle > 0)
+                {
+                    if (_vertexShaderHandle > 0)
                     {
-                        if (_vertexShaderHandle > 0)
-                        {
-                            DeleteShader(ref _vertexShaderHandle);
-                        }
-
-                        if (_fragShaderHandle > 0)
-                        {
-                            DeleteShader(ref _fragShaderHandle);
-                        }
-
-                        GL.DeleteProgram(_programHandle);
-                        _programHandle = 0;
+                        DeleteShader(ref _vertexShaderHandle);
                     }
 
-                    ShaderGenerator.SetTarget(this);
-
-                    if (updateShaderFrag)
+                    if (_fragShaderHandle > 0)
                     {
-                        ShaderNode._fragShaderSource = ShaderGenerator.GenTEVFragShader();
+                        DeleteShader(ref _fragShaderHandle);
                     }
 
-                    if (updateVert)
-                    {
-                        _vertexShaderSource = ShaderGenerator.GenVertexShader();
-                    }
+                    GL.DeleteProgram(_programHandle);
+                    _programHandle = 0;
+                }
 
-                    if (updateMatFrag)
-                    {
-                        _fragShaderSource = ShaderGenerator.GenMaterialFragShader();
-                    }
+                ShaderGenerator.SetTarget(this);
 
-                    string combineFrag = ShaderGenerator.CombineFragShader(
-                        _fragShaderSource,
-                        ShaderNode == null ? null : ShaderNode._fragShaderSource,
-                        ActiveShaderStages);
+                if (updateShaderFrag)
+                {
+                    ShaderNode._fragShaderSource = ShaderGenerator.GenTEVFragShader();
+                }
 
-                    GenShader(ref _vertexShaderHandle, _vertexShaderSource, true);
-                    GenShader(ref _fragShaderHandle, combineFrag, false);
+                if (updateVert)
+                {
+                    _vertexShaderSource = ShaderGenerator.GenVertexShader();
+                }
 
-                    ShaderGenerator.ClearTarget();
+                if (updateMatFrag)
+                {
+                    _fragShaderSource = ShaderGenerator.GenMaterialFragShader();
+                }
 
-                    _programHandle = GL.CreateProgram();
+                string combineFrag = ShaderGenerator.CombineFragShader(
+                    _fragShaderSource,
+                    ShaderNode == null ? null : ShaderNode._fragShaderSource,
+                    ActiveShaderStages);
 
-                    GL.AttachShader(_programHandle, _vertexShaderHandle);
-                    GL.AttachShader(_programHandle, _fragShaderHandle);
+                GenShader(ref _vertexShaderHandle, _vertexShaderSource, true);
+                GenShader(ref _fragShaderHandle, combineFrag, false);
 
-                    GL.LinkProgram(_programHandle);
+                ShaderGenerator.ClearTarget();
+
+                _programHandle = GL.CreateProgram();
+
+                GL.AttachShader(_programHandle, _vertexShaderHandle);
+                GL.AttachShader(_programHandle, _fragShaderHandle);
+
+                GL.LinkProgram(_programHandle);
 
 #if DEBUG
                 GL.GetProgram(_programHandle, ProgramParameter.LinkStatus, out int status);
@@ -2492,9 +2492,11 @@ For example, if the shader has two stages but this number is 1, the second stage
         //        MetalMaterial.UpdateAsMetal();
         //}
         public int ImageCount => Children?.Where(o => o is IImageSource i && i.ImageCount > 0).Count() ?? 0;
+
         public Bitmap GetImage(int index)
         {
-            return ((IImageSource)Children?.Where(o => o is IImageSource i && i.ImageCount > 0).ToArray()[index]).GetImage(0);
+            return ((IImageSource) Children?.Where(o => o is IImageSource i && i.ImageCount > 0).ToArray()[index])
+                .GetImage(0);
         }
     }
 

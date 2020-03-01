@@ -174,6 +174,7 @@ namespace BrawlLib.BrawlManagerLib.Songs
                 info = NodeFactory.FromFile(null, tempfile) as MSBinNode;
                 return "Loaded \\Misc Data [140].msbin";
             }
+
             string[] infopaths = {"..\\..\\info2\\info.pac", "..\\..\\info2\\info_en.pac", "..\\info.pac"};
 
             foreach (string relativepath in infopaths)

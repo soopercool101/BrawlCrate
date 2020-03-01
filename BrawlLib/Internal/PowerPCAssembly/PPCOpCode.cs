@@ -668,10 +668,12 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{9}", formatted);
             }
+
             if (!IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{8}, {9}", formatted);
             }
+
             return string.Format("{7}, {8}, {9}", formatted);
         }
     }
@@ -888,10 +890,12 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{9}", formatted);
             }
+
             if (!IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{8}, {9}", formatted);
             }
+
             return "";
             //return String.Format("{7}, {8}, {9}", formatted);
         }
@@ -1060,10 +1064,12 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{9}", formatted);
             }
+
             if (!IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{8}, {9}", formatted);
             }
+
             return "";
         }
     }

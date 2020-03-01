@@ -590,15 +590,18 @@ namespace BrawlLib.Modeling.Triangle_Converter.Deque
                 throw new ArgumentOutOfRangeException("index", index,
                     "Index is less than zero.");
             }
+
             if (array.Rank > 1)
             {
                 throw new ArgumentException("Array is multidimensional.");
             }
+
             if (index >= array.Length)
             {
                 throw new ArgumentException("Index is equal to or greater " +
                                             "than the length of array.");
             }
+
             if (Count > array.Length - index)
             {
                 throw new ArgumentException(

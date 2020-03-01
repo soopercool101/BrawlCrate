@@ -36,18 +36,18 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
                 "External",
                 "Null"
             });
-            listBox.Location = new System.Drawing.Point(49, 3);
+            listBox.Location = new Point(49, 3);
             listBox.Name = "comboBox1";
-            listBox.Size = new System.Drawing.Size(121, 21);
+            listBox.Size = new Size(121, 21);
             listBox.TabIndex = 0;
             listBox.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(17, 6);
+            label1.Location = new Point(17, 6);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(26, 13);
+            label1.Size = new Size(26, 13);
             label1.TabIndex = 1;
             label1.Text = "List:";
             label1.TextAlign = ContentAlignment.TopRight;
@@ -55,9 +55,9 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(3, 30);
+            label2.Location = new Point(3, 30);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(40, 13);
+            label2.Size = new Size(40, 13);
             label2.TabIndex = 3;
             label2.Text = "Action:";
             label2.TextAlign = ContentAlignment.TopRight;
@@ -66,18 +66,18 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             // 
             indexBox.DropDownStyle = ComboBoxStyle.DropDownList;
             indexBox.FormattingEnabled = true;
-            indexBox.Location = new System.Drawing.Point(49, 27);
+            indexBox.Location = new Point(49, 27);
             indexBox.Name = "comboBox2";
-            indexBox.Size = new System.Drawing.Size(121, 21);
+            indexBox.Size = new Size(121, 21);
             indexBox.TabIndex = 2;
             indexBox.SelectedIndexChanged += new EventHandler(comboBox2_SelectedIndexChanged);
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(176, 6);
+            label3.Location = new Point(176, 6);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(34, 13);
+            label3.Size = new Size(34, 13);
             label3.TabIndex = 5;
             label3.Text = "Type:";
             label3.TextAlign = ContentAlignment.TopRight;
@@ -86,9 +86,9 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             // 
             typeBox.DropDownStyle = ComboBoxStyle.DropDownList;
             typeBox.FormattingEnabled = true;
-            typeBox.Location = new System.Drawing.Point(216, 3);
+            typeBox.Location = new Point(216, 3);
             typeBox.Name = "comboBox3";
-            typeBox.Size = new System.Drawing.Size(74, 21);
+            typeBox.Size = new Size(74, 21);
             typeBox.TabIndex = 4;
             typeBox.SelectedIndexChanged += new EventHandler(comboBox3_SelectedIndexChanged);
             // 
@@ -98,13 +98,13 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.Cursor = Cursors.Default;
             richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point,
+            richTextBox1.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point,
                 (byte) 0);
             richTextBox1.ForeColor = Color.Black;
-            richTextBox1.Location = new System.Drawing.Point(0, 52);
+            richTextBox1.Location = new Point(0, 52);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new System.Drawing.Size(296, 53);
+            richTextBox1.Size = new Size(296, 53);
             richTextBox1.TabIndex = 6;
             richTextBox1.Text = "";
             // 
@@ -118,16 +118,16 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(296, 52);
+            panel1.Size = new Size(296, 52);
             panel1.TabIndex = 7;
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(215, 26);
+            button1.Location = new Point(215, 26);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(76, 23);
+            button1.Size = new Size(76, 23);
             button1.TabIndex = 6;
             button1.Text = "Okay";
             button1.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             Controls.Add(richTextBox1);
             Controls.Add(panel1);
             Name = "OffsetEditor";
-            Size = new System.Drawing.Size(296, 105);
+            Size = new Size(296, 105);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -362,8 +362,8 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
 
                     (_targetNode._extNode =
                             _targetNode.Root._externalRefs[indexBox.SelectedIndex] as MoveDefExternalNode)._refs
-                                                                                                          .Add(
-                                                                                                              _targetNode);
+                        .Add(
+                            _targetNode);
                     _targetNode.Name = _targetNode._extNode.Name;
                 }
             }

@@ -45,11 +45,11 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // lblStartText
             // 
-            lblStartText.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            lblStartText.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                   | AnchorStyles.Right);
             lblStartText.BackColor = Color.White;
             lblStartText.BorderStyle = BorderStyle.FixedSingle;
-            lblStartText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            lblStartText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
             lblStartText.Location = new Point(69, 8);
             lblStartText.Name = "lblStartText";
             lblStartText.Size = new Size(187, 20);
@@ -68,7 +68,7 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // lblStartColor
             // 
-            lblStartColor.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+            lblStartColor.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Right);
             lblStartColor.BorderStyle = BorderStyle.FixedSingle;
             lblStartColor.Location = new Point(255, 8);
             lblStartColor.Name = "lblStartColor";
@@ -78,11 +78,11 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // lblEndText
             // 
-            lblEndText.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            lblEndText.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                 | AnchorStyles.Right);
             lblEndText.BackColor = Color.White;
             lblEndText.BorderStyle = BorderStyle.FixedSingle;
-            lblEndText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            lblEndText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
             lblEndText.Location = new Point(69, 52);
             lblEndText.Name = "lblEndText";
             lblEndText.Size = new Size(187, 20);
@@ -101,7 +101,7 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // lblEndColor
             // 
-            lblEndColor.Anchor = ((AnchorStyles)((AnchorStyles.Top | AnchorStyles.Right)));
+            lblEndColor.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Right);
             lblEndColor.BorderStyle = BorderStyle.FixedSingle;
             lblEndColor.Location = new Point(255, 52);
             lblEndColor.Name = "lblEndColor";
@@ -144,8 +144,8 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // pnlPreview
             // 
-            pnlPreview.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left) 
-            | AnchorStyles.Right)));
+            pnlPreview.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                 | AnchorStyles.Right);
             pnlPreview.BorderStyle = BorderStyle.FixedSingle;
             pnlPreview.Location = new Point(12, 81);
             pnlPreview.Name = "pnlPreview";
@@ -170,7 +170,8 @@ namespace BrawlLib.Internal.Windows.Forms
             // btnCopyToStart
             // 
             btnCopyToStart.Anchor = AnchorStyles.Top;
-            btnCopyToStart.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+            btnCopyToStart.Font =
+                new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
             btnCopyToStart.Location = new Point(177, 30);
             btnCopyToStart.Name = "btnCopyToStart";
             btnCopyToStart.Size = new Size(22, 20);
@@ -263,7 +264,8 @@ namespace BrawlLib.Internal.Windows.Forms
         private void UpdateStart(bool updateGradient)
         {
             lblStartText.Text = ((ARGBPixel) _startColor).ToString();
-            lblStartColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _startColor.A : 255, _startColor.R, _startColor.G, _startColor.B);
+            lblStartColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _startColor.A : 255, _startColor.R,
+                _startColor.G, _startColor.B);
             if (updateGradient)
             {
                 UpdateBrush();
@@ -273,7 +275,8 @@ namespace BrawlLib.Internal.Windows.Forms
         private void UpdateEnd(bool updateGradient)
         {
             lblEndText.Text = ((ARGBPixel) _endColor).ToString();
-            lblEndColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _endColor.A : 255, _endColor.R, _endColor.G, _endColor.B);
+            lblEndColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _endColor.A : 255, _endColor.R, _endColor.G,
+                _endColor.B);
             if (updateGradient)
             {
                 UpdateBrush();
@@ -282,7 +285,7 @@ namespace BrawlLib.Internal.Windows.Forms
 
         private void UpdateBrush()
         {
-            _gradBrush.LinearColors = new [] { lblStartColor.BackColor, lblEndColor.BackColor };
+            _gradBrush.LinearColors = new[] {lblStartColor.BackColor, lblEndColor.BackColor};
             pnlPreview.Invalidate();
         }
 

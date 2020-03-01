@@ -96,7 +96,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Article")] public int DataOffset3 => off3;
 
         public string ArticleStringID => "ArticleType" + (Static ? "2_" : "1_") + (Name == "Entry Article" ? "Entry" :
-                                             Parent.Name == "Static Articles" ? "Static" + Index : offsetID.ToString());
+            Parent.Name == "Static Articles" ? "Static" + Index : offsetID.ToString());
 
         public int id, group, bone, aFlags, sFlags, aStart, sMStart, sGStart, sSStart, visStart, off1, off2, off3;
 
@@ -206,7 +206,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             else
                             {
                                 actions.Children[i].Children
-                                       .Add(new MoveDefActionNode("Entry", true, actions.Children[i]));
+                                    .Add(new MoveDefActionNode("Entry", true, actions.Children[i]));
                             }
 
                             off = *((bint*) (BaseAddress + _extraOffsets[0]) + i);
@@ -218,7 +218,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             else
                             {
                                 actions.Children[i].Children
-                                       .Add(new MoveDefActionNode("Exit", true, actions.Children[i]));
+                                    .Add(new MoveDefActionNode("Exit", true, actions.Children[i]));
                             }
                         }
                         else
@@ -438,11 +438,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                     entry = p;
                 }
                 else if (index == 1 && (
-                             ArticleStringID == "ArticleType1_8" &&
-                             (RootNode.Name == "FitLucas" || RootNode.Name == "FitNess") ||
-                             ArticleStringID == "ArticleType1_11" && RootNode.Name == "FitGameWatch" ||
-                             ArticleStringID == "ArticleType1_4" && RootNode.Name == "FitWario" ||
-                             ArticleStringID == "ArticleType1_5" && RootNode.Name == "FitWarioMan"))
+                    ArticleStringID == "ArticleType1_8" &&
+                    (RootNode.Name == "FitLucas" || RootNode.Name == "FitNess") ||
+                    ArticleStringID == "ArticleType1_11" && RootNode.Name == "FitGameWatch" ||
+                    ArticleStringID == "ArticleType1_4" && RootNode.Name == "FitWario" ||
+                    ArticleStringID == "ArticleType1_5" && RootNode.Name == "FitWarioMan"))
                 {
                     MoveDefParamListNode p = new MoveDefParamListNode {_name = "ParamList" + index};
                     p.Initialize(this, BaseAddress + i, 0);

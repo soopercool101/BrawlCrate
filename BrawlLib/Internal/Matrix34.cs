@@ -708,7 +708,7 @@ namespace BrawlLib.Internal
         private static Matrix34 ProjectionTexMtx(SCN0CameraNode c, float frame)
         {
             CameraAnimationFrame f = c.GetAnimFrame(frame);
-            if (c.ProjectionType == BrawlLib.Wii.Graphics.ProjectionType.Orthographic)
+            if (c.ProjectionType == Wii.Graphics.ProjectionType.Orthographic)
             {
                 return LightMtxOrtho(
                     f.Height / 2.0f,

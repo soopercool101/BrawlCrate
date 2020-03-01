@@ -847,7 +847,8 @@ namespace BrawlLib.Internal.Windows.Controls
             else if (ColumnToSort >= 4)
             {
                 compareResult = ObjectCompare.Compare(
-                    int.Parse(listviewX.SubItems[ColumnToSort].Text.Substring(2), System.Globalization.NumberStyles.HexNumber),
+                    int.Parse(listviewX.SubItems[ColumnToSort].Text.Substring(2),
+                        System.Globalization.NumberStyles.HexNumber),
                     int.Parse(listviewY.SubItems[ColumnToSort].Text.Substring(2),
                         System.Globalization.NumberStyles.HexNumber));
             }
@@ -869,6 +870,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 // Descending sort is selected, return negative result of compare operation
                 return -compareResult;
             }
+
             // Return '0' to indicate they are equal
             return 0;
         }

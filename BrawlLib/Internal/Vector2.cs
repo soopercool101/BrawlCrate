@@ -276,6 +276,7 @@ namespace BrawlLib.Internal
             {
                 return lenX;
             }
+
             return (float) (lenX / Math.Cos(Math.Atan(lenY / lenX)));
         }
 
@@ -323,10 +324,12 @@ namespace BrawlLib.Internal
                 {
                     return -1;
                 }
+
                 if (_y > o._y)
                 {
                     return 1;
                 }
+
                 if (_y < o._y)
                 {
                     return -1;

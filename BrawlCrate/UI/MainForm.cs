@@ -81,9 +81,9 @@ namespace BrawlCrate.UI
             }
 
             editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
-                                                Instance.resourceTree.SelectedNodes.Count > 1
-                                                    ? Instance.resourceTree.GetMultiSelectMenuStrip()
-                                                    : w?.ContextMenuStrip) != null;
+                Instance.resourceTree.SelectedNodes.Count > 1
+                    ? Instance.resourceTree.GetMultiSelectMenuStrip()
+                    : w?.ContextMenuStrip) != null;
         }
 
         private void _disableEditMenu(object sender, EventArgs e)
@@ -570,7 +570,7 @@ namespace BrawlCrate.UI
                         {
                             object scrollOffset = c.GetType().GetMethod("GetScrollOffset").Invoke(c, null);
                             setScrollOffset = () =>
-                                c.GetType().GetMethod("SetScrollOffset").Invoke(c, new [] {scrollOffset});
+                                c.GetType().GetMethod("SetScrollOffset").Invoke(c, new[] {scrollOffset});
                             break;
                         }
                     }
@@ -733,9 +733,9 @@ namespace BrawlCrate.UI
                     }
                 }
                 else if (node is CollisionNode || node is CollisionObject || !CompatibilityMode &&
-                         (node is IRenderedObject io && io.DrawCalls.Count > 0 ||
-                          ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
-                          ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0))
+                    (node is IRenderedObject io && io.DrawCalls.Count > 0 ||
+                     ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
+                     ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0))
                 {
                     newControl = modelPanel1;
                     RenderSelected(node);
@@ -1499,7 +1499,8 @@ namespace BrawlCrate.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport modelPanelViewport2 = new BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport();
+            BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport modelPanelViewport2 =
+                new BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport();
             BrawlLib.OpenGL.GLCamera glCamera2 = new BrawlLib.OpenGL.GLCamera();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.resourceTree = new BrawlCrate.UI.ResourceTree();
@@ -1570,12 +1571,12 @@ namespace BrawlCrate.UI
             this.soundPackControl1 = new BrawlLib.Internal.Windows.Controls.SoundPackControl();
             this.msBinEditor1 = new BrawlLib.Internal.Windows.Controls.MSBinEditor();
             this.documentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -1606,9 +1607,11 @@ namespace BrawlCrate.UI
             // resourceTree
             // 
             this.resourceTree.AllowDrop = true;
-            this.resourceTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resourceTree.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top |
+                                                         System.Windows.Forms.AnchorStyles.Bottom)
+                                                        | System.Windows.Forms.AnchorStyles.Left)
+                                                       | System.Windows.Forms.AnchorStyles.Right)));
             this.resourceTree.HideSelection = false;
             this.resourceTree.ImageIndex = 0;
             this.resourceTree.Indent = 20;
@@ -1624,12 +1627,14 @@ namespace BrawlCrate.UI
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.pluginToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.fileToolStripMenuItem,
+                this.editToolStripMenuItem,
+                this.toolsToolStripMenuItem,
+                this.pluginToolStripMenuItem,
+                this.helpToolStripMenuItem
+            });
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(236, 24);
@@ -1638,39 +1643,45 @@ namespace BrawlCrate.UI
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.openTemplateToolStripMenuItem,
-            this.openFolderToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.closeToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.recentFilesToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.newToolStripMenuItem,
+                this.openToolStripMenuItem,
+                this.openTemplateToolStripMenuItem,
+                this.openFolderToolStripMenuItem,
+                this.saveToolStripMenuItem,
+                this.saveAsToolStripMenuItem,
+                this.closeToolStripMenuItem,
+                this.toolStripMenuItem1,
+                this.recentFilesToolStripMenuItem,
+                this.toolStripSeparator1,
+                this.exitToolStripMenuItem
+            });
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // newToolStripMenuItem
             // 
-            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivesToolStripMenuItem,
-            this.bRSTMAudioStreamToolStripMenuItem,
-            this.effectsToolStripMenuItem});
+            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.archivesToolStripMenuItem,
+                this.bRSTMAudioStreamToolStripMenuItem,
+                this.effectsToolStripMenuItem
+            });
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.newToolStripMenuItem.Text = "&New";
             // 
             // archivesToolStripMenuItem
             // 
-            this.archivesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aRCFileArchiveToolStripMenuItem,
-            this.bRRESResourcePackToolStripMenuItem,
-            this.u8FileArchiveToolStripMenuItem1,
-            this.tPLTextureArchiveToolStripMenuItem1});
+            this.archivesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.aRCFileArchiveToolStripMenuItem,
+                this.bRRESResourcePackToolStripMenuItem,
+                this.u8FileArchiveToolStripMenuItem1,
+                this.tPLTextureArchiveToolStripMenuItem1
+            });
             this.archivesToolStripMenuItem.Name = "archivesToolStripMenuItem";
             this.archivesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.archivesToolStripMenuItem.Text = "Archives";
@@ -1680,42 +1691,49 @@ namespace BrawlCrate.UI
             this.aRCFileArchiveToolStripMenuItem.Name = "aRCFileArchiveToolStripMenuItem";
             this.aRCFileArchiveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.aRCFileArchiveToolStripMenuItem.Text = "ARC File Archive";
-            this.aRCFileArchiveToolStripMenuItem.Click += new System.EventHandler(this.aRCArchiveToolStripMenuItem_Click);
+            this.aRCFileArchiveToolStripMenuItem.Click +=
+                new System.EventHandler(this.aRCArchiveToolStripMenuItem_Click);
             // 
             // bRRESResourcePackToolStripMenuItem
             // 
             this.bRRESResourcePackToolStripMenuItem.Name = "bRRESResourcePackToolStripMenuItem";
             this.bRRESResourcePackToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.bRRESResourcePackToolStripMenuItem.Text = "BRRES Resource Pack";
-            this.bRRESResourcePackToolStripMenuItem.Click += new System.EventHandler(this.brresPackToolStripMenuItem_Click);
+            this.bRRESResourcePackToolStripMenuItem.Click +=
+                new System.EventHandler(this.brresPackToolStripMenuItem_Click);
             // 
             // u8FileArchiveToolStripMenuItem1
             // 
             this.u8FileArchiveToolStripMenuItem1.Name = "u8FileArchiveToolStripMenuItem1";
             this.u8FileArchiveToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
             this.u8FileArchiveToolStripMenuItem1.Text = "U8 File Archive";
-            this.u8FileArchiveToolStripMenuItem1.Click += new System.EventHandler(this.u8FileArchiveToolStripMenuItem_Click);
+            this.u8FileArchiveToolStripMenuItem1.Click +=
+                new System.EventHandler(this.u8FileArchiveToolStripMenuItem_Click);
             // 
             // tPLTextureArchiveToolStripMenuItem1
             // 
             this.tPLTextureArchiveToolStripMenuItem1.Name = "tPLTextureArchiveToolStripMenuItem1";
             this.tPLTextureArchiveToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
             this.tPLTextureArchiveToolStripMenuItem1.Text = "TPL Texture Archive";
-            this.tPLTextureArchiveToolStripMenuItem1.Click += new System.EventHandler(this.tPLTextureArchiveToolStripMenuItem_Click);
+            this.tPLTextureArchiveToolStripMenuItem1.Click +=
+                new System.EventHandler(this.tPLTextureArchiveToolStripMenuItem_Click);
             // 
             // bRSTMAudioStreamToolStripMenuItem
             // 
             this.bRSTMAudioStreamToolStripMenuItem.Name = "bRSTMAudioStreamToolStripMenuItem";
             this.bRSTMAudioStreamToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.bRSTMAudioStreamToolStripMenuItem.Text = "BRSTM Audio Stream";
-            this.bRSTMAudioStreamToolStripMenuItem.Click += new System.EventHandler(this.bRStmAudioToolStripMenuItem_Click);
+            this.bRSTMAudioStreamToolStripMenuItem.Click +=
+                new System.EventHandler(this.bRStmAudioToolStripMenuItem_Click);
             // 
             // effectsToolStripMenuItem
             // 
-            this.effectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eFLSEffectListToolStripMenuItem,
-            this.rEFFParticlesToolStripMenuItem,
-            this.rEFTParticleTexturesToolStripMenuItem});
+            this.effectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.eFLSEffectListToolStripMenuItem,
+                this.rEFFParticlesToolStripMenuItem,
+                this.rEFTParticleTexturesToolStripMenuItem
+            });
             this.effectsToolStripMenuItem.Name = "effectsToolStripMenuItem";
             this.effectsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.effectsToolStripMenuItem.Text = "Particle Effects";
@@ -1725,26 +1743,30 @@ namespace BrawlCrate.UI
             this.eFLSEffectListToolStripMenuItem.Name = "eFLSEffectListToolStripMenuItem";
             this.eFLSEffectListToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.eFLSEffectListToolStripMenuItem.Text = "EFLS Effect List";
-            this.eFLSEffectListToolStripMenuItem.Click += new System.EventHandler(this.eFLSEffectListToolStripMenuItem_Click);
+            this.eFLSEffectListToolStripMenuItem.Click +=
+                new System.EventHandler(this.eFLSEffectListToolStripMenuItem_Click);
             // 
             // rEFFParticlesToolStripMenuItem
             // 
             this.rEFFParticlesToolStripMenuItem.Name = "rEFFParticlesToolStripMenuItem";
             this.rEFFParticlesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.rEFFParticlesToolStripMenuItem.Text = "REFF Particles";
-            this.rEFFParticlesToolStripMenuItem.Click += new System.EventHandler(this.rEFFParticlesToolStripMenuItem_Click);
+            this.rEFFParticlesToolStripMenuItem.Click +=
+                new System.EventHandler(this.rEFFParticlesToolStripMenuItem_Click);
             // 
             // rEFTParticleTexturesToolStripMenuItem
             // 
             this.rEFTParticleTexturesToolStripMenuItem.Name = "rEFTParticleTexturesToolStripMenuItem";
             this.rEFTParticleTexturesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.rEFTParticleTexturesToolStripMenuItem.Text = "REFT Particle Textures";
-            this.rEFTParticleTexturesToolStripMenuItem.Click += new System.EventHandler(this.rEFTParticleTexturesToolStripMenuItem_Click);
+            this.rEFTParticleTexturesToolStripMenuItem.Click +=
+                new System.EventHandler(this.rEFTParticleTexturesToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.openToolStripMenuItem.Text = "&Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -1752,17 +1774,20 @@ namespace BrawlCrate.UI
             // openTemplateToolStripMenuItem
             // 
             this.openTemplateToolStripMenuItem.Name = "openTemplateToolStripMenuItem";
-            this.openTemplateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.O)));
+            this.openTemplateToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) (((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
+                                               | System.Windows.Forms.Keys.O)));
             this.openTemplateToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.openTemplateToolStripMenuItem.Text = "&Open Template...";
-            this.openTemplateToolStripMenuItem.Click += new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
+            this.openTemplateToolStripMenuItem.Click +=
+                new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
             // 
             // openFolderToolStripMenuItem
             // 
             this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-            this.openFolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.O)));
+            this.openFolderToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) (((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+                                               | System.Windows.Forms.Keys.O)));
             this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.openFolderToolStripMenuItem.Text = "Open &Folder...";
             this.openFolderToolStripMenuItem.Click += new System.EventHandler(this.openFolderToolStripMenuItem_Click);
@@ -1771,7 +1796,8 @@ namespace BrawlCrate.UI
             // 
             this.saveToolStripMenuItem.Enabled = false;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
@@ -1780,8 +1806,9 @@ namespace BrawlCrate.UI
             // 
             this.saveAsToolStripMenuItem.Enabled = false;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.S)));
+            this.saveAsToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) (((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+                                               | System.Windows.Forms.Keys.S)));
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
@@ -1804,7 +1831,9 @@ namespace BrawlCrate.UI
             this.recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
             this.recentFilesToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
             this.recentFilesToolStripMenuItem.Text = "Recent Files";
-            this.recentFilesToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.recentFilesToolStripMenuItem_DropDownItemClicked);
+            this.recentFilesToolStripMenuItem.DropDownItemClicked +=
+                new System.Windows.Forms.ToolStripItemClickedEventHandler(this
+                    .recentFilesToolStripMenuItem_DropDownItemClicked);
             // 
             // toolStripSeparator1
             // 
@@ -1827,12 +1856,14 @@ namespace BrawlCrate.UI
             // 
             // toolsToolStripMenuItem
             // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem,
-            this.managersToolStripMenuItem,
-            this.toolStripSeparatorAPI,
-            this.runScriptToolStripMenuItem,
-            this.reloadPluginsToolStripMenuItem});
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.settingsToolStripMenuItem,
+                this.managersToolStripMenuItem,
+                this.toolStripSeparatorAPI,
+                this.runScriptToolStripMenuItem,
+                this.reloadPluginsToolStripMenuItem
+            });
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
@@ -1846,11 +1877,13 @@ namespace BrawlCrate.UI
             // 
             // managersToolStripMenuItem
             // 
-            this.managersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gCTEditorToolStripMenuItem,
-            this.costumeManagerToolStripMenuItem,
-            this.songManagerToolStripMenuItem,
-            this.stageManagerToolStripMenuItem});
+            this.managersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.gCTEditorToolStripMenuItem,
+                this.costumeManagerToolStripMenuItem,
+                this.songManagerToolStripMenuItem,
+                this.stageManagerToolStripMenuItem
+            });
             this.managersToolStripMenuItem.Name = "managersToolStripMenuItem";
             this.managersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.managersToolStripMenuItem.Text = "Managers";
@@ -1867,7 +1900,8 @@ namespace BrawlCrate.UI
             this.costumeManagerToolStripMenuItem.Name = "costumeManagerToolStripMenuItem";
             this.costumeManagerToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.costumeManagerToolStripMenuItem.Text = "Costume Manager";
-            this.costumeManagerToolStripMenuItem.Click += new System.EventHandler(this.CostumeManagerToolStripMenuItem_Click);
+            this.costumeManagerToolStripMenuItem.Click +=
+                new System.EventHandler(this.CostumeManagerToolStripMenuItem_Click);
             // 
             // songManagerToolStripMenuItem
             // 
@@ -1881,7 +1915,8 @@ namespace BrawlCrate.UI
             this.stageManagerToolStripMenuItem.Name = "stageManagerToolStripMenuItem";
             this.stageManagerToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.stageManagerToolStripMenuItem.Text = "Stage Manager";
-            this.stageManagerToolStripMenuItem.Click += new System.EventHandler(this.StageManagerToolStripMenuItem_Click);
+            this.stageManagerToolStripMenuItem.Click +=
+                new System.EventHandler(this.StageManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparatorAPI
             // 
@@ -1900,7 +1935,8 @@ namespace BrawlCrate.UI
             this.reloadPluginsToolStripMenuItem.Name = "reloadPluginsToolStripMenuItem";
             this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reloadPluginsToolStripMenuItem.Text = "Reload Plugins";
-            this.reloadPluginsToolStripMenuItem.Click += new System.EventHandler(this.reloadPluginsToolStripMenuItem_Click);
+            this.reloadPluginsToolStripMenuItem.Click +=
+                new System.EventHandler(this.reloadPluginsToolStripMenuItem_Click);
             // 
             // pluginToolStripMenuItem
             // 
@@ -1910,11 +1946,13 @@ namespace BrawlCrate.UI
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.documentationToolStripMenuItem,
-            this.showChangelogToolStripMenuItem,
-            this.checkForUpdatesToolStripMenuItem});
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.aboutToolStripMenuItem,
+                this.documentationToolStripMenuItem,
+                this.showChangelogToolStripMenuItem,
+                this.checkForUpdatesToolStripMenuItem
+            });
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
@@ -1931,14 +1969,16 @@ namespace BrawlCrate.UI
             this.showChangelogToolStripMenuItem.Name = "showChangelogToolStripMenuItem";
             this.showChangelogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showChangelogToolStripMenuItem.Text = "Show Changelog";
-            this.showChangelogToolStripMenuItem.Click += new System.EventHandler(this.ShowChangelogToolStripMenuItem_Click);
+            this.showChangelogToolStripMenuItem.Click +=
+                new System.EventHandler(this.ShowChangelogToolStripMenuItem_Click);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
             this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
-            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click_1);
+            this.checkForUpdatesToolStripMenuItem.Click +=
+                new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click_1);
             // 
             // splitContainer2
             // 
@@ -1995,23 +2035,30 @@ namespace BrawlCrate.UI
             this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.Categorized;
             this.propertyGrid1.Size = new System.Drawing.Size(436, 211);
             this.propertyGrid1.TabIndex = 2;
-            this.propertyGrid1.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.propertyGrid1_SelectedGridItemChanged);
+            this.propertyGrid1.SelectedGridItemChanged +=
+                new System.Windows.Forms.SelectedGridItemChangedEventHandler(this
+                    .propertyGrid1_SelectedGridItemChanged);
             // 
             // hexBox1
             // 
-            this.hexBox1.BlrColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(100)))));
+            this.hexBox1.BlrColor = System.Drawing.Color.FromArgb(((int) (((byte) (255)))), ((int) (((byte) (255)))),
+                ((int) (((byte) (100)))));
             this.hexBox1.BranchOffsetColor = System.Drawing.Color.Plum;
             this.hexBox1.ColumnDividerColor = System.Drawing.Color.Empty;
-            this.hexBox1.CommandColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(200)))));
-            this.hexBox1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hexBox1.CommandColor = System.Drawing.Color.FromArgb(((int) (((byte) (200)))),
+                ((int) (((byte) (255)))), ((int) (((byte) (200)))));
+            this.hexBox1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.hexBox1.InfoForeColor = System.Drawing.Color.Empty;
             this.hexBox1.LinkedBranchColor = System.Drawing.Color.Orange;
             this.hexBox1.Location = new System.Drawing.Point(85, 27);
             this.hexBox1.Name = "hexBox1";
             this.hexBox1.ReadOnly = true;
             this.hexBox1.SectionEditor = null;
-            this.hexBox1.SelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBox1.SelectedColor = System.Drawing.Color.FromArgb(((int) (((byte) (200)))),
+                ((int) (((byte) (255)))), ((int) (((byte) (255)))));
+            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int) (((byte) (100)))),
+                ((int) (((byte) (60)))), ((int) (((byte) (188)))), ((int) (((byte) (255)))));
             this.hexBox1.Size = new System.Drawing.Size(215, 130);
             this.hexBox1.StringViewVisible = true;
             this.hexBox1.TabIndex = 22;
@@ -2064,7 +2111,8 @@ namespace BrawlCrate.UI
             // 
             // modelPanel1
             // 
-            modelPanelViewport2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            modelPanelViewport2.BackgroundColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))),
+                ((int) (((byte) (240)))), ((int) (((byte) (240)))), ((int) (((byte) (240)))));
             modelPanelViewport2.BackgroundImage = null;
             modelPanelViewport2.BackgroundImageType = BrawlLib.OpenGL.BGImageType.Stretch;
             glCamera2.Aspect = 2.254438F;
@@ -2091,9 +2139,11 @@ namespace BrawlCrate.UI
             // 
             // previewPanel2
             // 
-            this.previewPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.previewPanel2.Anchor =
+                ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top |
+                                                         System.Windows.Forms.AnchorStyles.Bottom)
+                                                        | System.Windows.Forms.AnchorStyles.Left)
+                                                       | System.Windows.Forms.AnchorStyles.Right)));
             this.previewPanel2.CurrentIndex = 0;
             this.previewPanel2.DisposeImage = true;
             this.previewPanel2.Location = new System.Drawing.Point(0, 0);
@@ -2252,7 +2302,8 @@ namespace BrawlCrate.UI
             this.documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
             this.documentationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.documentationToolStripMenuItem.Text = "Documentation";
-            this.documentationToolStripMenuItem.Click += new System.EventHandler(this.documentationToolStripMenuItem_Click);
+            this.documentationToolStripMenuItem.Click +=
+                new System.EventHandler(this.documentationToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -2269,16 +2320,15 @@ namespace BrawlCrate.UI
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -16,9 +16,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.BrawlManagers.StageManager
@@ -29,7 +29,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
         private static SaveFileDialog SaveDialog = new SaveFileDialog();
 #if !MONO
         private static VistaFolderBrowserDialog FolderDialog =
-            new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
         private static FolderBrowserDialog FolderDialog = new FolderBrowserDialog();
 #endif
@@ -244,6 +244,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
                     portraitViewer1.save();
                     return true;
                 }
+
                 if (result == DialogResult.No)
                 {
                     return true;

@@ -205,6 +205,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return;
             }
+
             int i = 0;
             for (int curIndex = index * 4 + 3; curIndex >= index * 4; curIndex--, i++)
             {
@@ -239,7 +240,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public string GetShorts(int index)
         {
-            return $"{BitConverter.ToInt16( EntryList.ToArray(), index * 4 + 2)}, {BitConverter.ToInt16(EntryList.ToArray(), index * 4)}";
+            return
+                $"{BitConverter.ToInt16(EntryList.ToArray(), index * 4 + 2)}, {BitConverter.ToInt16(EntryList.ToArray(), index * 4)}";
         }
 
         public virtual IEnumerable<AttributeInterpretation> GetPossibleInterpretations()
@@ -335,7 +337,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
 #if DEBUG
             DirectoryInfo startingDirectory = new DirectoryInfo(Application.StartupPath);
-            string filename = Path.Combine(startingDirectory.Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib", "InternalDocumentation", DocumentationSubDirectory,
+            string filename = Path.Combine(startingDirectory.Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib",
+                "InternalDocumentation", DocumentationSubDirectory,
                 root.Name.ToUpper().Replace("STG", "") + temp + ".txt");
 #else
             string filename = Path.Combine(Application.StartupPath, "InternalDocumentation", DocumentationSubDirectory,
@@ -350,7 +353,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         protected virtual void ReadConfig()
         {
 #if DEBUG
-            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+            string startPath =
+                Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName,
+                    "BrawlLib");
 #else
             string startPath = Application.StartupPath;
 #endif
