@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.BrawlEx

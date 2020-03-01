@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using System;
-using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Sound
 {

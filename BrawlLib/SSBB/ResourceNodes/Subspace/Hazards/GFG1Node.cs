@@ -1,6 +1,5 @@
 ﻿using BrawlLib.CustomLists;
 using BrawlLib.Internal;
-using BrawlLib.SSBB.Types.Subspace;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
 using System.ComponentModel;
 using System;

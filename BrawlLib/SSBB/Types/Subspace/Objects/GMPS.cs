@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Objects
 {

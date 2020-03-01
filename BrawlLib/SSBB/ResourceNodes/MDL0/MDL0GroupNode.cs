@@ -5,7 +5,6 @@ using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes

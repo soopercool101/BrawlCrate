@@ -4,8 +4,6 @@ using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
 using System;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers

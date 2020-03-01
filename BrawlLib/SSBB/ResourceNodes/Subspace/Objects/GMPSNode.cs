@@ -1,6 +1,5 @@
 ﻿using BrawlLib.SSBB.Types.Subspace.Objects;
 using System;
-using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

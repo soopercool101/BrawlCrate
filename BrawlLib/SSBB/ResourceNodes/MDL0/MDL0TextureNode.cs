@@ -10,7 +10,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

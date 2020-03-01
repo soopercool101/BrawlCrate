@@ -1861,14 +1861,14 @@ namespace BrawlLib.Internal.Windows.Forms
             try
             {
                 Source = Source.SwapAlphaAndRGB();
+                FixImportPaletteFields();
+                UpdatePreview();
             }
             catch (BitmapExtension.NonMonochromeImageException ex)
             {
+                chkSwapAlphaRGB.Checked = false;
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            FixImportPaletteFields();
-            UpdatePreview();
 
             _updating = false;
         }
