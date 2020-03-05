@@ -243,6 +243,7 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
+        public virtual string DefaultName => Text;
         public virtual string ExportFilter => FileFilters.Raw;
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
@@ -315,7 +316,7 @@ namespace BrawlCrate.NodeWrappers
 
         public virtual string Export()
         {
-            int index = Program.SaveFile(ExportFilter, Text, out string outPath);
+            int index = Program.SaveFile(ExportFilter, DefaultName, out string outPath);
             if (index != 0)
             {
                 if (Parent == null)
