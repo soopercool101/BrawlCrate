@@ -200,10 +200,5 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
-
-        public override void OnExport(string outPath, int filterIndex)
-        {
-            ((BLOCNode) _resource).Export(outPath);
-        }
     }
 }

@@ -943,14 +943,13 @@ Full changelog and documentation can be viewed from the help menu.";
             return 0;
         }
 
-        public static int SaveFile(string filter, string name, out string fileName)
+        public static bool SaveFile(string filter, string name, out string fileName)
         {
             return SaveFile(filter, name, out fileName, true);
         }
 
-        public static int SaveFile(string filter, string name, out string fileName, bool categorize)
+        public static bool SaveFile(string filter, string name, out string fileName, bool categorize)
         {
-            int fIndex = 0;
             fileName = null;
 
             SaveDlg.Filter = filter;
@@ -958,6 +957,7 @@ Full changelog and documentation can be viewed from the help menu.";
             SaveDlg.FilterIndex = 1;
             if (SaveDlg.ShowDialog() == DialogResult.OK)
             {
+                int fIndex;
                 if (categorize && SaveDlg.FilterIndex == 1 && Path.HasExtension(SaveDlg.FileName))
                 {
                     fIndex = CategorizeFilter(SaveDlg.FileName, filter);
@@ -969,9 +969,10 @@ Full changelog and documentation can be viewed from the help menu.";
 
                 //Fix extension
                 fileName = ApplyExtension(SaveDlg.FileName, filter, fIndex - 1);
+                return true;
             }
 
-            return fIndex;
+            return false;
         }
 
         public static bool SaveFolder(out string folderName)

@@ -218,7 +218,7 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public override void OnExport(string outPath, int filterIndex)
+        public override void OnExport(string outPath)
         {
             if (outPath.Contains("."))
             {

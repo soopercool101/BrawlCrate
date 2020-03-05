@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
+using System.Text.RegularExpressions;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -271,12 +272,12 @@ namespace BrawlCrate.NodeWrappers
             }
 
             Dictionary<Type, string> extensions = new Dictionary<Type, string>();
-            List<ResourceNode> nodes = new List<ResourceNode>();
+            List<GenericWrapper> nodes = new List<GenericWrapper>();
             foreach (TreeNode tNode in MainForm.Instance.resourceTree.SelectedNodes)
             {
                 if (tNode is GenericWrapper g)
                 {
-                    nodes.Add(g._resource);
+                    nodes.Add(g);
                     if (!extensions.ContainsKey(g._resource.GetType()))
                     {
                         extensions.Add(g._resource.GetType(), g.ExportFilter);
@@ -298,7 +299,7 @@ namespace BrawlCrate.NodeWrappers
             string invalidChars =
                 System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));
             string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
-            foreach (ResourceNode n in nodes)
+            foreach (GenericWrapper n in nodes)
             {
                 chosenExtensions.TryGetValue(n.GetType(), out string ext);
                 if (!string.IsNullOrEmpty(ext) && !ext.StartsWith("."))
@@ -306,8 +307,7 @@ namespace BrawlCrate.NodeWrappers
                     ext = ext.Insert(0, ".");
                 }
 
-                n.Export(
-                    $"{folder}\\{System.Text.RegularExpressions.Regex.Replace($"{n.Name}{ext ?? ""}", invalidRegStr, "")}");
+                n.OnExport($"{folder}\\{Regex.Replace($"{n.DefaultName}{ext ?? ""}", invalidRegStr, "")}");
             }
 
             MessageBox.Show($"{nodes.Count} nodes successfully exported to {folder}", "Export Selected");
@@ -316,21 +316,20 @@ namespace BrawlCrate.NodeWrappers
 
         public virtual string Export()
         {
-            int index = Program.SaveFile(ExportFilter, DefaultName, out string outPath);
-            if (index != 0)
+            if (Program.SaveFile(ExportFilter, DefaultName, out string outPath))
             {
                 if (Parent == null)
                 {
                     _resource.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
                 }
 
-                OnExport(outPath, index);
+                OnExport(outPath);
             }
 
             return outPath;
         }
 
-        public virtual void OnExport(string outPath, int filterIndex)
+        public virtual void OnExport(string outPath)
         {
             _resource.Export(outPath);
         }

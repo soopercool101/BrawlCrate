@@ -1300,6 +1300,14 @@ namespace BrawlCrate.API
             return Program.Close(true);
         }
 
+        /// <summary>
+        ///     Refreshes the preview on the main window.
+        /// </summary>
+        public static void RefreshPreview()
+        {
+            MainForm.Instance.resourceTree_SelectionChanged(null, null);
+        }
+
         #endregion
 
         #region Parsing
