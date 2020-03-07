@@ -10,15 +10,17 @@ namespace BrawlCrate.API
 {
     internal class PluginScript
     {
-        internal PluginScript(string name, ScriptSource script, ScriptScope scope)
+        internal PluginScript(string path, CompiledCode script, ScriptScope scope)
         {
-            Name = name;
-            Script = script;
+            ScriptPath = path;
+            Name = Path.GetFileNameWithoutExtension(path);
+            Code = script;
             Scope = scope;
         }
 
+        internal string ScriptPath { get; set; }
         internal string Name { get; set; }
-        internal ScriptSource Script { get; set; }
+        internal CompiledCode Code { get; set; }
         internal ScriptScope Scope { get; set; }
 
         private bool _converted;
@@ -27,7 +29,7 @@ namespace BrawlCrate.API
         {
             try
             {
-                Script.Execute(Scope);
+                Code.Execute(Scope);
             }
             catch (Exception e)
             {
@@ -36,14 +38,15 @@ namespace BrawlCrate.API
                     _converted = true;
                     if (BrawlAPIInternal.DepreciatedReplacementStrings.Keys.Any(s => e.Message.Contains(s)))
                     {
-                        BrawlAPIInternal.ConvertPlugin(Script.Path);
+                        BrawlAPIInternal.ConvertPlugin(ScriptPath);
+                        Code = BrawlAPIInternal.Engine.CreateScriptSourceFromFile(ScriptPath).Compile();
                         Execute();
                         return;
                     }
                 }
 
-                string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
-                MessageBox.Show(msg, Path.GetFileName(Script.Path));
+                string msg = $"Error running plugin \"{ScriptPath}\"\n{e.Message}";
+                MessageBox.Show(msg, Name);
             }
         }
     }

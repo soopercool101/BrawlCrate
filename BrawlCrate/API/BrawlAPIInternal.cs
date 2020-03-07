@@ -167,8 +167,6 @@ namespace BrawlCrate.API
                 try
                 {
                     ScriptSource script = Engine.CreateScriptSourceFromFile(path);
-                    CompiledCode code = script.Compile();
-                    ScriptScope scope = Engine.CreateScope();
                     script.Execute();
                 }
                 catch (SyntaxErrorException e)
@@ -211,28 +209,26 @@ namespace BrawlCrate.API
                     return false;
                 }
 
-                ScriptSource script = Engine.CreateScriptSourceFromFile(path);
-                CompiledCode code = script.Compile();
-                ScriptScope scope = Engine.CreateScope();
+                CompiledCode code = Engine.CreateScriptSourceFromFile(path).Compile();
                 if (!loader)
                 {
-                    Plugins.Add(new PluginScript(Path.GetFileNameWithoutExtension(path), script, scope));
+                    Plugins.Add(new PluginScript(path, code, Engine.CreateScope()));
                 }
                 else
                 {
-                    script.Execute();
+                    code.Execute();
                 }
 
                 return true;
             }
             catch (SyntaxErrorException e)
             {
-                string msg = $"Syntax error in \"{Path.GetFileName(path)}\"\n{e.Message}";
+                string msg = $"Syntax error in \"{path}\"\n{e.Message}";
                 MessageBox.Show(msg, Path.GetFileName(path));
             }
             catch (SystemExitException e)
             {
-                string msg = $"SystemExit in \"{Path.GetFileName(path)}\"\n{e.Message}";
+                string msg = $"SystemExit in \"{path}\"\n{e.Message}";
                 MessageBox.Show(msg, Path.GetFileName(path));
             }
             catch (Exception e)
@@ -243,7 +239,7 @@ namespace BrawlCrate.API
                     return CreatePlugin(path, loader);
                 }
 
-                string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
+                string msg = $"Error loading plugin or loader \"{path}\"\n{e.Message}";
                 MessageBox.Show(msg, Path.GetFileName(path));
             }
 
