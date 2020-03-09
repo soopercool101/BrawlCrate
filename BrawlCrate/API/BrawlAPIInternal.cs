@@ -365,11 +365,11 @@ namespace BrawlCrate.API
             }
 
             // Then see if there's a directory included in the installation (This can also be used for additional modules or a primary install, so add it in addition)
-            if (Directory.Exists($"{Application.StartupPath}\\Python"))
+            if (Directory.Exists($"{Application.StartupPath}\\BrawlAPI\\Lib"))
             {
-                if (!searchPaths.Contains($"{Application.StartupPath}\\Python"))
+                if (!searchPaths.Contains($"{Application.StartupPath}\\BrawlAPI\\Lib"))
                 {
-                    searchPaths.Add($"{Application.StartupPath}\\Python");
+                    searchPaths.Add($"{Application.StartupPath}\\BrawlAPI\\Lib");
                 }
             }
 
