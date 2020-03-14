@@ -61,10 +61,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MovParameterEntry* Header => (MovParameterEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        private byte echo;
-        private byte id2;
-        private ushort id;
-
         private ParameterValueManager _values = new ParameterValueManager(null);
 
         [Category("MVPM Values")]
@@ -335,7 +331,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = "MVPMEntry " + id;
+                _name = "MVPMEntry " + Index;
             }
 
             _values = new ParameterValueManager((VoidPtr) Header);
