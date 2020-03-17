@@ -199,6 +199,9 @@ namespace BrawlLib.SSBB
         public static string GCT =
             SupportedFilesHandler.GetCompleteFilter("gct", "txt");
 
+        public static string ASLS =
+            SupportedFilesHandler.GetCompleteFilter("asl");
+
         public static string APIScripts =
             SupportedFilesHandler.GetCompleteFilter("py", "fsx");
 

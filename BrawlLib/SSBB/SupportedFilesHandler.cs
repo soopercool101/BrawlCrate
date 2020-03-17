@@ -110,6 +110,9 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
             new SupportedFileInfo(true, "BrawlEx Configuration", "bx"),
             new SupportedFileInfo(true, "Custom My Music Tracklist", "cmm"),
+            new SupportedFileInfo(true, "Alternate Stage Loader Data", "asl"),
+            new SupportedFileInfo(true, "Stage Info Parameters", "param"),
+            new SupportedFileInfo(true, "Stage Tracklist", "tlst"), 
 
             //The following files are not for direct editing
 
@@ -127,6 +130,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(false, "JSON File", "json"),
             new SupportedFileInfo(true, false, "Data File", "dat"),
             new SupportedFileInfo(true, false, "Binary File", "bin"),
+            new SupportedFileInfo(true, false, "Binary Backup File", "bak"),
             new SupportedFileInfo(false, "Raw Data File", "*"),
 
             // BrawlAPI
