@@ -3,6 +3,7 @@ using BrawlLib.SSBB.Types.ProjectPlus;
 using BrawlLib.SSBB.Types.Subspace;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -85,6 +86,9 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     {
         internal ASLSEntry* Header => (ASLSEntry*)WorkingUncompressed.Address;
 
+#if !DEBUG
+        [Browsable(false)]
+#endif
         public ushort ButtonFlags
         {
             get => _buttonFlags;
