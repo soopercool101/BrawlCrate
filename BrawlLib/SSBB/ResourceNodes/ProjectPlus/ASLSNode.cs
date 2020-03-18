@@ -95,6 +95,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
+        [Flags]
         public enum WiiNunchukButtons : ushort
         {
             Left = 0x0001,
@@ -102,9 +103,9 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             Down = 0x0004,
             Up = 0x0008,
             Plus = 0x0010,
-            Unused1 = 0x0020,
-            Unused2 = 0x0040,
-            Unused3 = 0x0080,
+            Unused0x0020 = 0x0020,
+            Unused0x0040 = 0x0040,
+            Unused0x0080 = 0x0080,
             Button2 = 0x0100,
             Button1 = 0x0200,
             B = 0x0400,
@@ -115,6 +116,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             Home = 0x8000
         }
 
+        [Flags]
         public enum GameCubeButtons : ushort
         {
             Left = 0x0001,
@@ -124,17 +126,18 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             Z = 0x0010,
             R = 0x0020,
             L = 0x0040,
-            Unused1 = 0x0080,
+            Unused0x0080 = 0x0080,
             A = 0x0100,
             B = 0x0200,
             X = 0x0400,
             Y = 0x0800,
             Start = 0x1000,
-            Unused2 = 0x2000,
-            Unused3 = 0x4000,
-            Unused4 = 0x8000
+            Unused0x2000 = 0x2000,
+            Unused0x4000 = 0x4000,
+            Unused0x8000 = 0x8000
         }
 
+        [Flags]
         public enum ClassicButtons : ushort
         {
             Up = 0x0001,
@@ -145,10 +148,10 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             Y = 0x0020,
             B = 0x0040,
             ZL = 0x0080,
-            Unused1 = 0x0100,
+            Unused0x0100 = 0x0100,
             R = 0x0200,
             Plus = 0x0400,
-            Unused2 = 0x0800,
+            Unused0x0800 = 0x0800,
             Minus = 0x1000,
             L = 0x2000,
             Down = 0x4000,

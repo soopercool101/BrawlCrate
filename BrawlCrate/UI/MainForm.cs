@@ -18,6 +18,7 @@ using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -750,6 +751,11 @@ namespace BrawlCrate.UI
                     attributeGrid1.AddRange(stageTableNode.GetPossibleInterpretations());
                     attributeGrid1.TargetNode = stageTableNode;
                     newControl = attributeGrid1;
+                }
+                else if (node is ASLSEntryNode aslsEntry)
+                {
+                    aslIndicator1.TargetNode = aslsEntry;
+                    newControl = aslIndicator1;
                 }
 
                 if (node is IColorSource source && !disable2nd)
@@ -1550,6 +1556,7 @@ namespace BrawlCrate.UI
             this.ppcDisassembler1 = new BrawlLib.Internal.Windows.Controls.PPCDisassembler();
             this.texCoordControl1 = new BrawlLib.Internal.Windows.Forms.TexCoordControl();
             this.attributeGrid1 = new BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid();
+            this.aslIndicator1 = new ASLIndicator();
             this.videoPlaybackPanel1 = new BrawlLib.Internal.Windows.Controls.VideoPlaybackPanel();
             this.modelPanel1 = new BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel();
             this.previewPanel2 = new BrawlLib.Internal.Windows.Forms.PreviewPanel();
@@ -1998,6 +2005,7 @@ namespace BrawlCrate.UI
             this.splitContainer2.Panel2.Controls.Add(this.ppcDisassembler1);
             this.splitContainer2.Panel2.Controls.Add(this.texCoordControl1);
             this.splitContainer2.Panel2.Controls.Add(this.attributeGrid1);
+            this.splitContainer2.Panel2.Controls.Add(this.aslIndicator1);
             this.splitContainer2.Panel2.Controls.Add(this.videoPlaybackPanel1);
             this.splitContainer2.Panel2.Controls.Add(this.modelPanel1);
             this.splitContainer2.Panel2.Controls.Add(this.previewPanel2);
@@ -2091,6 +2099,13 @@ namespace BrawlCrate.UI
             this.texCoordControl1.TabIndex = 19;
             this.texCoordControl1.TargetNode = null;
             this.texCoordControl1.Visible = false;
+            // 
+            // aslIndicator1
+            // 
+            this.aslIndicator1.Location = new System.Drawing.Point(46, 56);
+            this.aslIndicator1.Name = "aslIndicator1";
+            this.aslIndicator1.Size = new System.Drawing.Size(479, 305);
+            this.aslIndicator1.Visible = false;
             // 
             // attributeGrid1
             // 
@@ -2355,6 +2370,7 @@ namespace BrawlCrate.UI
         private AnimEditControl animEditControl;
         private MSBinEditor msBinEditor1;
         private MultipleInterpretationAttributeGrid attributeGrid1;
+        private ASLIndicator aslIndicator1;
         private SoundPackControl soundPackControl1;
         private AudioPlaybackPanel audioPlaybackPanel1;
         private CLRControl clrControl;
