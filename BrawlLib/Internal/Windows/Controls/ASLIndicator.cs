@@ -341,6 +341,11 @@ namespace BrawlLib.Internal.Windows.Controls
             chkBoxGCN0x4000.Checked = ((ASLSEntryNode.GameCubeButtons)_targetNode.ButtonFlags & ASLSEntryNode.GameCubeButtons.Unused0x4000) != 0;
             chkBoxGCN0x8000.Checked = ((ASLSEntryNode.GameCubeButtons)_targetNode.ButtonFlags & ASLSEntryNode.GameCubeButtons.Unused0x8000) != 0;
 
+#if !DEBUG
+            grpBoxUnusedGCN.Visible = chkBoxGCN0x0080.Checked || chkBoxGCN0x2000.Checked || chkBoxGCN0x4000.Checked ||
+                                      chkBoxGCN0x8000.Checked;
+#endif
+
             _updating = false;
         }
 
