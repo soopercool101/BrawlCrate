@@ -199,6 +199,9 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <EmbeddedResource Include="HardcodedFiles\Models\Static.mdl0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Internal\Windows\Controls\ASLIndicator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Modeling\Collada\ColladaImportDialog.cs">
       <SubType>Form</SubType>
     </Compile>
