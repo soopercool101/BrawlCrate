@@ -2662,23 +2662,29 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_isImport)
             {
                 int index = 0;
-                foreach (VertexCodec c in _linker._vertices)
+                if (_linker._vertices != null)
                 {
-                    string name = Name + "_" + _objList[index]._name;
-                    MDL0ObjectNode n = (MDL0ObjectNode) _objList[index];
-                    if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
+                    foreach (VertexCodec c in _linker._vertices)
                     {
-                        name += "_" + ((MDL0ObjectNode) _objList[index])._drawCalls[0].MaterialNode._name;
-                    }
+                        string name = Name + "_" + _objList[index]._name;
+                        MDL0ObjectNode n = (MDL0ObjectNode)_objList[index];
+                        if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
+                        {
+                            name += "_" + ((MDL0ObjectNode)_objList[index])._drawCalls[0].MaterialNode._name;
+                        }
 
-                    table.Add(name);
-                    index++;
+                        table.Add(name);
+                        index++;
+                    }
                 }
 
                 index = 0;
-                foreach (VertexCodec c in _linker._uvs)
+                if (_linker._uvs != null)
                 {
-                    table.Add("#" + index++);
+                    foreach (VertexCodec c in _linker._uvs)
+                    {
+                        table.Add("#" + index++);
+                    }
                 }
             }
         }
