@@ -1,4 +1,4 @@
-﻿using BrawlLib.Imaging;
+using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.Types;
@@ -178,7 +178,7 @@ namespace BrawlLib.Modeling.Collada
                                                         {
                                                             foreach (EffectNewParam p2 in eff._newParams)
                                                             {
-                                                                if (p2._sid == p._sampler2D._source)
+                                                                if (p2._sid == p._sampler2D._source && p2._path != null)
                                                                 {
                                                                     path = p2._path;
                                                                 }
@@ -807,27 +807,35 @@ namespace BrawlLib.Modeling.Collada
         private void FinishMDL0(MDL0Node model)
         {
             Error = "There was a problem creating a default material and shader.";
-            if (model._matList.Count == 0 && model._objList.Count != 0)
+            if (model._matList.Count == 0)
             {
-                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default"};
-                (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
+                if (model._objList.Count != 0)
                 {
-                    RasterColor = ColorSelChan.LightChannel0,
-                    AlphaSelectionD = AlphaArg.RasterAlpha,
-                    ColorSelectionD = ColorArg.RasterColor
-                });
-
-                model._shadGroup.AddChild(mat.ShaderNode);
-                model._matGroup.AddChild(mat);
-
-                foreach (MDL0ObjectNode obj in model._objList)
-                {
-                    if (obj._drawCalls.Count == 0)
+                    MDL0MaterialNode mat = new MDL0MaterialNode { _name = "Default" };
+                    (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
                     {
-                        obj._drawCalls.Add(new DrawCall(obj));
-                    }
+                        RasterColor = ColorSelChan.LightChannel0,
+                        AlphaSelectionD = AlphaArg.RasterAlpha,
+                        ColorSelectionD = ColorArg.RasterColor
+                    });
 
-                    obj._drawCalls[0].MaterialNode = mat;
+                    model._shadGroup.AddChild(mat.ShaderNode);
+                    model._matGroup.AddChild(mat);
+
+                    foreach (MDL0ObjectNode obj in model._objList)
+                    {
+                        if (obj._drawCalls.Count == 0)
+                        {
+                            obj._drawCalls.Add(new DrawCall(obj));
+                        }
+
+                        obj._drawCalls[0].MaterialNode = mat;
+                    }
+                }
+                else
+                {
+                    model._shadGroup?.Children.Clear();
+                    model._shadList?.Clear();
                 }
             }
 
