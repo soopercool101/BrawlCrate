@@ -1,12 +1,6 @@
-﻿using BrawlLib.Imaging;
-using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
-using BrawlLib.SSBB.Types;
+﻿using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
 using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace BrawlLib.Internal.Windows.Controls
