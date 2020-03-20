@@ -1,8 +1,5 @@
 ﻿using BrawlLib.Internal;
-using System;
 using System.Runtime.InteropServices;
-using System.Security.RightsManagement;
-using System.Windows.Markup;
 
 namespace BrawlLib.SSBB.Types.ProjectPlus
 {
