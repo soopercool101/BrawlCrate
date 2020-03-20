@@ -1,15 +1,8 @@
-﻿using BrawlLib.CustomLists;
-using BrawlLib.Internal;
-using BrawlLib.SSBB;
+﻿using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
-using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers

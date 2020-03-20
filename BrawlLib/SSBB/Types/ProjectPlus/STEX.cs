@@ -1,10 +1,5 @@
 ﻿using BrawlLib.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrawlLib.SSBB.Types.ProjectPlus
 {
@@ -25,6 +20,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
         public buint _trackListOffset;
         public buint _stageNameOffset;
         public buint _moduleNameOffset;
+        public buint _memoryAllocation;
         public bfloat _wildSpeed;
 
         public VoidPtr this[int index] => (byte*)Address + HeaderSize + (index * 0x04);

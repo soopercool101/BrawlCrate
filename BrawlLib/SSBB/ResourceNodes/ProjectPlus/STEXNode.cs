@@ -1,15 +1,10 @@
 ﻿using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
-using BrawlLib.SSBB.Types.Subspace;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
@@ -42,7 +37,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private string _stageName;
-
         [Category("Stage Parameters")]
         public string StageName
         {
@@ -55,7 +49,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private string _trackList;
-
         [Category("Stage Parameters")]
         public string TrackList
         {
@@ -68,7 +61,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private string _module;
-
         [Category("Stage Parameters")]
         public string Module
         {
@@ -80,20 +72,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        private List<string> _substages = new List<string>();
-
-        public List<string> Substages
-        {
-            get => _substages;
-            set
-            {
-                _substages = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public RGBAPixel _rgbaOverlay;
-
+        private RGBAPixel _rgbaOverlay;
         public RGBAPixel CharacterOverlay
         {
             get => _rgbaOverlay;
@@ -105,7 +84,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
 
-        public ushort _soundBank;
+        private ushort _soundBank;
         public string SoundBank
         {
             get => "0x" + _soundBank.ToString("X4");
@@ -118,7 +97,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        public ushort _effectBank;
+        private ushort _effectBank;
         public string EffectBank
         {
             get => "0x" + _effectBank.ToString("X4");
@@ -131,8 +110,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        public StageFlags _flags;
-
+        private StageFlags _flags;
         public StageFlags Flags
         {
             get => _flags;
@@ -143,8 +121,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        public byte _stageType;
-
+        private byte _stageType;
         public VariantType SubstageVarianceType
         {
             get => (VariantType)_stageType;
@@ -155,7 +132,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        public byte _subStageRange;
+        private byte _subStageRange;
         public byte SubstageRange
         {
             get => _subStageRange;
@@ -166,7 +143,20 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        public float _wildSpeed;
+        private uint _memoryAllocation;
+        public string MemoryAllocation
+        {
+            get => "0x" + _memoryAllocation.ToString("X8");
+            set
+            {
+                string field0 = (value ?? "").Split(' ')[0];
+                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
+                _memoryAllocation = Convert.ToUInt32(field0, fromBase);
+                SignalPropertyChange();
+            }
+        }
+
+        private float _wildSpeed;
         public float WildSpeed
         {
             get => _wildSpeed;
@@ -205,12 +195,9 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             _effectBank = Header->_effectBank;
             _flags = (StageFlags)(ushort)Header->_flags;
             _stageType = Header->_stageType;
-            _subStageRange = Header->_subStageRange; 
+            _subStageRange = Header->_subStageRange;
+            _memoryAllocation = Header->_memoryAllocation;
             _wildSpeed = Header->_wildSpeed;
-            for (int i = 0; i < Header->subStageCount; i++)
-            {
-                _substages.Add(Header->subStageName(i));
-            }
 
             return Header->subStageCount > 0 || Header->_subStageRange > 0;
         }

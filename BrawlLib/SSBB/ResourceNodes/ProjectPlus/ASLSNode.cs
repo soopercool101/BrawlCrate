@@ -1,13 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
-using BrawlLib.SSBB.Types.Subspace;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
