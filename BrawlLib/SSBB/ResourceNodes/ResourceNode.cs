@@ -1475,7 +1475,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             if (a is BRRESNode)
                             {
-                                foreach (MDL0Node m in ((BRRESNode) a).GetFolder<MDL0Node>().Children)
+                                foreach (MDL0Node m in ((BRRESNode) a)?.GetFolder<MDL0Node>()?.Children)
                                 {
                                     nodes.Add(m);
                                 }
