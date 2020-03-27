@@ -476,8 +476,13 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModelPanel.RemoveTarget(TargetModel);
-            _targetModels.Remove(TargetModel);
+            IModel m = TargetModel;
+            ModelPanel.RemoveTarget(m);
+            _targetModels.Remove(m);
+            //if (m is ResourceNode n)
+            //{
+            //    n.Remove();
+            //}
 
             if (_targetModels != null && _targetModels.Count != 0)
             {
@@ -490,27 +495,61 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void hideAllOtherModelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            IModel m = TargetModel;
+            _updating = true;
             foreach (IModel node in _targetModels)
             {
-                if (node != TargetModel)
+                if (node != m)
                 {
                     ModelPanel.RemoveTarget(node);
                 }
             }
+
+            List<CollisionNode> newCollisions = new List<CollisionNode>();
+            foreach (CollisionNode n in _collisions)
+            {
+                CollisionNode newColl = new CollisionNode {Name = n.Name};
+                foreach (CollisionObject o in n.Children)
+                {
+                    if (o.LinkModel == m.ToString())
+                    {
+                        newColl.AddChild(o);
+                    }
+                }
+                newCollisions.Add(newColl);
+            }
+
+            _collisions = newCollisions;
+            OnRenderCollisionsChanged();
+            _updating = false;
 
             ModelPanel.Invalidate();
         }
 
         private void deleteAllOtherModelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (IModel node in _targetModels)
+            IModel m = TargetModel;
+            _updating = true;
+            List<IModel> oldModels = _targetModels;
+            int i = 0;
+            while (i < _targetModels.Count)
             {
+                IModel node = _targetModels[i];
                 if (node != TargetModel)
                 {
                     _targetModels.Remove(node);
                     ModelPanel.RemoveTarget(node);
+                    //if (node is ResourceNode n)
+                    //{
+                    //    n.Remove();
+                    //}
+                }
+                else
+                {
+                    i++;
                 }
             }
+            _updating = false;
 
             ModelPanel.Invalidate();
         }

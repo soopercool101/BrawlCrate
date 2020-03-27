@@ -540,7 +540,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     foreach (CollisionPlane p2 in p.LinkLeft._members.Where(o => !o.Equals(p)))
                     {
-                        if (!p2.IsLeftWall)
+                        if (!p2.IsLeftWall && !p2.IsCeiling)
                         {
                             p.IsLeftLedge = false;
                             break;
@@ -551,7 +551,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     foreach (CollisionPlane p2 in p.LinkRight._members.Where(o => !o.Equals(p)))
                     {
-                        if (!p2.IsRightWall)
+                        if (!p2.IsRightWall && !p2.IsCeiling)
                         {
                             p.IsRightLedge = false;
                             break;

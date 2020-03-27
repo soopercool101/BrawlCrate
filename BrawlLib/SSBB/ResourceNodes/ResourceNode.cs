@@ -1475,7 +1475,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             if (a is BRRESNode)
                             {
-                                foreach (MDL0Node m in ((BRRESNode) a).GetFolder<MDL0Node>().Children)
+                                foreach (MDL0Node m in ((BRRESNode) a)?.GetFolder<MDL0Node>()?.Children ?? new List<ResourceNode>())
                                 {
                                     nodes.Add(m);
                                 }
@@ -1488,18 +1488,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     RedirectStart:
                                     if (tempBres.GroupID != group)
                                     {
-                                        if (tempBres is BRRESNode)
-                                        {
-                                            foreach (MDL0Node m in ((BRRESNode) tempBres).GetFolder<MDL0Node>()
-                                                .Children)
-                                            {
-                                                nodes.Add(m);
-                                            }
-                                        }
-                                        else if (tempBres.RedirectNode != null)
+                                        if (tempBres.RedirectNode != null)
                                         {
                                             tempBres = tempBres.RedirectNode as ARCEntryNode;
                                             goto RedirectStart;
+                                        }
+                                        else if (tempBres is BRRESNode)
+                                        {
+                                            foreach (MDL0Node m in ((BRRESNode) tempBres)?.GetFolder<MDL0Node>()?.Children ?? new List<ResourceNode>())
+                                            {
+                                                nodes.Add(m);
+                                            }
                                         }
                                     }
                                 }
