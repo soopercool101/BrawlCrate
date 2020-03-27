@@ -505,6 +505,22 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                 }
             }
 
+            List<CollisionNode> newCollisions = new List<CollisionNode>();
+            foreach (CollisionNode n in _collisions)
+            {
+                CollisionNode newColl = new CollisionNode {Name = n.Name};
+                foreach (CollisionObject o in n.Children)
+                {
+                    if (o.LinkModel == m.ToString())
+                    {
+                        newColl.AddChild(o);
+                    }
+                }
+                newCollisions.Add(newColl);
+            }
+
+            _collisions = newCollisions;
+            OnRenderCollisionsChanged();
             _updating = false;
 
             ModelPanel.Invalidate();
