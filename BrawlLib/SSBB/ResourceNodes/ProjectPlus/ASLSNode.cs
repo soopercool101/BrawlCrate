@@ -1,13 +1,10 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
-using BrawlLib.SSBB.Types.Subspace;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+#if !DEBUG
+using System.ComponentModel;
+#endif
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
@@ -15,6 +12,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     {
         internal ASLS* Header => (ASLS*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ASLS;
+
+        public override Type[] AllowedChildTypes => new[] {typeof(ASLSEntryNode)};
 
         public override void OnPopulate()
         {
@@ -50,8 +49,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             ASLS* header = (ASLS*)address;
             *header = new ASLS();
             header->_tag = ASLS.Tag;
-            header->_count = (short)Children.Count;
-            header->_nameOffset = (short) (ASLS.HeaderSize + Children.Count * ASLSEntry.Size);
+            header->_count = (ushort)Children.Count;
+            header->_nameOffset = (ushort) (ASLS.HeaderSize + Children.Count * ASLSEntry.Size);
 
             uint offset = ASLS.HeaderSize;
             int strOffset = 0;

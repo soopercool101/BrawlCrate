@@ -7,8 +7,8 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
-    [NodeWrapper(ResourceType.ASLS)]
-    internal class ASLSWrapper : GenericWrapper
+    [NodeWrapper(ResourceType.STEX)]
+    internal class STEXWrapper : GenericWrapper
     {
         #region Menu
 
@@ -33,7 +33,7 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
-        static ASLSWrapper()
+        static STEXWrapper()
         {
             _menu = new ContextMenuStrip();
 
@@ -57,7 +57,7 @@ namespace BrawlCrate.NodeWrappers
 
         protected static void NewEntryAction(object sender, EventArgs e)
         {
-            GetInstance<ASLSWrapper>().NewEntry();
+            GetInstance<STEXWrapper>().NewEntry();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -73,7 +73,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            ASLSWrapper w = GetInstance<ASLSWrapper>();
+            STEXWrapper w = GetInstance<STEXWrapper>();
             _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 50;
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
@@ -85,23 +85,22 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => FileFilters.ASLS;
+        public override string ExportFilter => FileFilters.STEX;
 
-        public ASLSEntryNode NewEntry()
+        public RawDataNode NewEntry()
         {
-            ASLSEntryNode node = new ASLSEntryNode
+            RawDataNode node = new RawDataNode
             {
-                _name = Resource.HasChildren ? Resource.Children[0].Name : ""
+                _name = (((STEXNode)Resource).IsOldSubstage ? "_" : "") + $"{Resource.Children.Count:D2}"
             };
 
             _resource.AddChild(node);
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
             return node;
         }
 
-        public ASLSWrapper()
+        public STEXWrapper()
         {
             ContextMenuStrip = _menu;
         }

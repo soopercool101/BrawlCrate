@@ -1,8 +1,5 @@
 ﻿using BrawlLib.Internal;
-using System;
 using System.Runtime.InteropServices;
-using System.Security.RightsManagement;
-using System.Windows.Markup;
 
 namespace BrawlLib.SSBB.Types.ProjectPlus
 {
@@ -12,10 +9,10 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
         public static readonly uint HeaderSize = 0x08;
         public static readonly uint Tag = 0x41534C53;
         public buint _tag;
-        public bshort _count;
-        public bshort _nameOffset;
+        public bushort _count;
+        public bushort _nameOffset;
 
-        public VoidPtr this[int index] => (byte*) Address + HeaderSize + (index * 0x04);
+        public VoidPtr this[int index] => (byte*) Address + HeaderSize + index * ASLSEntry.Size;
 
         private VoidPtr Address
         {
