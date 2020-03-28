@@ -74,18 +74,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
             foreach (TLSTEntryNode n in Children)
             {
-                if (!string.IsNullOrEmpty(n._name) && n._name != "<null>")
-                {
-                    sbyte* ptr = (sbyte*)(address + offset);
-                    string name = n.Name;
-                    for (int j = 0; j < name.Length; j++)
-                    {
-                        ptr[j] = (sbyte)name[j];
-                    }
-                    ptr[name.Length] = 0;
-                    offset += (uint)(n.Name.Length + 1);
-                }
-
                 if (!string.IsNullOrEmpty(n.SongFileName))
                 {
                     sbyte* ptr = (sbyte*)(address + offset);
@@ -96,6 +84,17 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
                     }
                     ptr[name.Length] = 0;
                     offset += (uint)(n.SongFileName.Length + 1);
+                }
+                if (!string.IsNullOrEmpty(n._name) && n._name != "<null>")
+                {
+                    sbyte* ptr = (sbyte*)(address + offset);
+                    string name = n.Name;
+                    for (int j = 0; j < name.Length; j++)
+                    {
+                        ptr[j] = (sbyte)name[j];
+                    }
+                    ptr[name.Length] = 0;
+                    offset += (uint)(n.Name.Length + 1);
                 }
             }
         }
