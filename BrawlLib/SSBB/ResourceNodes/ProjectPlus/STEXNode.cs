@@ -1,4 +1,4 @@
-﻿using BrawlLib.Imaging;
+using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
@@ -233,12 +233,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             int i;
             for (i = 0; i < Header->subStageCount; i++)
             {
-                Children.Add(new RawDataNode { _name = Header->subStageName(i) });
-            }
-
-            for (; i < Header->_subStageRange; i++)
-            {
-                Children.Add(new RawDataNode { _name = Children.Count.ToString() });
+                new RawDataNode { _name = Header->subStageName(i) }.Initialize(this, null, 0);
             }
         }
 
@@ -265,21 +260,19 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override int OnCalculateSize(bool force)
         {
-            _children = Children.Where(n => n.Name.Length > 0).ToList();
-
             int size = (int)STEX.HeaderSize;
 
             size += 4 * Children.Count;
 
-            if (StageName.Length > 0)
+            if (!string.IsNullOrEmpty(StageName))
             {
                 size += StageName.Length + 1;
             }
-            if (TrackList.Length > 0)
+            if (!string.IsNullOrEmpty(TrackList))
             {
                 size += TrackList.Length + 1;
             }
-            if (Module.Length > 0)
+            if (!string.IsNullOrEmpty(Module))
             {
                 size += Module.Length + 1;
             }
@@ -307,8 +300,9 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             header->_flags = (ushort)_flags;
             header->_stageType = _stageType;
             header->_subStageRange = _subStageRange;
+
             uint curStrOffset = 0x0;
-            if (TrackList.Length > 0)
+            if (!string.IsNullOrEmpty(TrackList))
             {
                 header->_trackListOffset = curStrOffset;
                 curStrOffset += (uint)TrackList.Length + 1;
@@ -317,7 +311,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 header->_trackListOffset = 0xFFFFFFFF;
             }
-            if (StageName.Length > 0)
+            if (!string.IsNullOrEmpty(StageName))
             {
                 header->_stageNameOffset = curStrOffset;
                 curStrOffset += (uint)StageName.Length + 1;
@@ -326,7 +320,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 header->_stageNameOffset = 0xFFFFFFFF;
             }
-            if (Module.Length > 0)
+            if (!string.IsNullOrEmpty(Module))
             {
                 header->_moduleNameOffset = curStrOffset;
                 curStrOffset += (uint)Module.Length + 1;
@@ -337,8 +331,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
             header->_memoryAllocation = _memoryAllocation;
             header->_wildSpeed = _wildSpeed;
-            uint offset = STEX.HeaderSize;
 
+            uint offset = STEX.HeaderSize;
             foreach (ResourceNode n in Children)
             {
                 buint* ptr = (buint*) (address + offset);
