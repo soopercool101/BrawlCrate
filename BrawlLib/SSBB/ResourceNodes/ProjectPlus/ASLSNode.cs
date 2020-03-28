@@ -99,27 +99,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         [Flags]
-        public enum WiiNunchukButtons : ushort
-        {
-            Left = 0x0001,
-            Right = 0x0002,
-            Down = 0x0004,
-            Up = 0x0008,
-            Plus = 0x0010,
-            Unused0x0020 = 0x0020,
-            Unused0x0040 = 0x0040,
-            Unused0x0080 = 0x0080,
-            Button2 = 0x0100,
-            Button1 = 0x0200,
-            B = 0x0400,
-            A = 0x0800,
-            Minus = 0x1000,
-            Z = 0x2000,
-            C = 0x4000,
-            Home = 0x8000
-        }
-
-        [Flags]
         public enum GameCubeButtons : ushort
         {
             Left = 0x0001,
@@ -138,27 +117,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             Unused0x2000 = 0x2000,
             Unused0x4000 = 0x4000,
             Unused0x8000 = 0x8000
-        }
-
-        [Flags]
-        public enum ClassicButtons : ushort
-        {
-            Up = 0x0001,
-            Left = 0x0002,
-            ZR = 0x0004,
-            X = 0x0008,
-            A = 0x0010,
-            Y = 0x0020,
-            B = 0x0040,
-            ZL = 0x0080,
-            Unused0x0100 = 0x0100,
-            R = 0x0200,
-            Plus = 0x0400,
-            Unused0x0800 = 0x0800,
-            Minus = 0x1000,
-            L = 0x2000,
-            Down = 0x4000,
-            Right = 0x8000
         }
 
         private ushort _buttonFlags;
