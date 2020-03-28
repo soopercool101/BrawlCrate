@@ -8,8 +8,8 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
-    [NodeWrapper(ResourceType.ASLS)]
-    internal class ASLSWrapper : GenericWrapper
+    [NodeWrapper(ResourceType.TLST)]
+    internal class TLSTWrapper : GenericWrapper
     {
         #region Menu
 
@@ -34,7 +34,7 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
-        static ASLSWrapper()
+        static TLSTWrapper()
         {
             _menu = new ContextMenuStrip();
 
@@ -58,7 +58,7 @@ namespace BrawlCrate.NodeWrappers
 
         protected static void NewEntryAction(object sender, EventArgs e)
         {
-            GetInstance<ASLSWrapper>().NewEntry();
+            GetInstance<TLSTWrapper>().NewEntry();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -74,7 +74,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            ASLSWrapper w = GetInstance<ASLSWrapper>();
+            TLSTWrapper w = GetInstance<TLSTWrapper>();
             _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 50;
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
@@ -86,14 +86,14 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => FileFilters.ASLS;
+        public override string ExportFilter => FileFilters.TLST;
 
-        public ASLSEntryNode NewEntry()
+        public TLSTEntryNode NewEntry()
         {
-            StringInputDialog d = new StringInputDialog("New ASLS Entry", Resource.HasChildren ? Resource.Children[0].Name : "");
+            StringInputDialog d = new StringInputDialog("New TLST Entry", "");
             if (d.ShowDialog() == DialogResult.OK)
             {
-                ASLSEntryNode node = new ASLSEntryNode
+                TLSTEntryNode node = new TLSTEntryNode
                 {
                     _name = d.resultString
                 };
@@ -108,7 +108,7 @@ namespace BrawlCrate.NodeWrappers
             return null;
         }
 
-        public ASLSWrapper()
+        public TLSTWrapper()
         {
             ContextMenuStrip = _menu;
         }

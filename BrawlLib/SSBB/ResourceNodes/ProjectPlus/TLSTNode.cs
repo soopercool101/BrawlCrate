@@ -226,15 +226,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         {
             TLSTEntry* header = (TLSTEntry*)address;
             *header = new TLSTEntry();
-            if (string.IsNullOrEmpty(_name) || _name == "<null>")
-            {
-                header->_title = 0xFFFF;
-            }
-            else
-            {
-                header->_title = ((TLSTNode) Parent).strOffset;
-                ((TLSTNode) Parent).strOffset += (ushort)(Name.Length + 1);
-            }
             if (string.IsNullOrEmpty(_fileName))
             {
                 header->_fileName = 0xFFFF;
@@ -243,6 +234,15 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 header->_fileName = ((TLSTNode)Parent).strOffset;
                 ((TLSTNode)Parent).strOffset += (ushort)(SongFileName.Length + 1);
+            }
+            if (string.IsNullOrEmpty(_name) || _name == "<null>")
+            {
+                header->_title = 0xFFFF;
+            }
+            else
+            {
+                header->_title = ((TLSTNode)Parent).strOffset;
+                ((TLSTNode)Parent).strOffset += (ushort)(Name.Length + 1);
             }
 
             header->_songID = _songID;
