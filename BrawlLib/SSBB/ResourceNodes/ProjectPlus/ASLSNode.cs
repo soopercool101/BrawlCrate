@@ -13,6 +13,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         internal ASLS* Header => (ASLS*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ASLS;
 
+        public override Type[] AllowedChildTypes => new[] {typeof(ASLSEntryNode)};
+
         public override void OnPopulate()
         {
             for (int i = 0; i < Header->_count; i++)

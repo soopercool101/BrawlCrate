@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
@@ -13,6 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         internal STEX* Header => (STEX*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.STEX;
 
+        public override Type[] AllowedChildTypes => new[] {typeof(RawDataNode)};
 
         [Flags]
         public enum StageFlags : ushort
@@ -73,6 +75,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private RGBAPixel _rgbaOverlay;
+        [Category("Stage Parameters")]
         public RGBAPixel CharacterOverlay
         {
             get => _rgbaOverlay;
@@ -85,6 +88,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
 
         private ushort _soundBank;
+        [Category("Stage Parameters")]
         public string SoundBank
         {
             get => "0x" + _soundBank.ToString("X4");
@@ -98,6 +102,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private ushort _effectBank;
+        [Category("Stage Parameters")]
         public string EffectBank
         {
             get => "0x" + _effectBank.ToString("X4");
@@ -111,6 +116,9 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private StageFlags _flags;
+#if !DEBUG
+        [Browsable(false)]
+#endif
         public StageFlags Flags
         {
             get => _flags;
@@ -121,7 +129,56 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
+        [Category("Stage Flags")]
+        public bool IsFlat
+        {
+            get => (_flags & StageFlags.Flat) != 0;
+            set => _flags = (_flags & ~StageFlags.Flat) |
+                            (value ? StageFlags.Flat : 0);
+        }
+
+        [Category("Stage Flags")]
+        public bool IsFixedCamera
+        {
+            get => (_flags & StageFlags.FixedCamera) != 0;
+            set => _flags = (_flags & ~StageFlags.FixedCamera) |
+                            (value ? StageFlags.FixedCamera : 0);
+        }
+
+        [Category("Stage Flags")]
+        public bool IsSlowStart
+        {
+            get => (_flags & StageFlags.SlowStart) != 0;
+            set => _flags = (_flags & ~StageFlags.SlowStart) |
+                            (value ? StageFlags.SlowStart : 0);
+        }
+
+        [Category("Substage Flags")]
+        public bool IsDualLoad
+        {
+            get => (_flags & StageFlags.DualLoad) != 0;
+            set => _flags = (_flags & ~StageFlags.DualLoad) |
+                            (value ? StageFlags.DualLoad : 0);
+        }
+
+        [Category("Substage Flags")]
+        public bool IsDualShuffle
+        {
+            get => (_flags & StageFlags.DualShuffle) != 0;
+            set => _flags = (_flags & ~StageFlags.DualShuffle) |
+                            (value ? StageFlags.DualShuffle : 0);
+        }
+
+        [Category("Substage Flags")]
+        public bool IsOldSubstage
+        {
+            get => (_flags & StageFlags.OldSubstage) != 0;
+            set => _flags = (_flags & ~StageFlags.OldSubstage) |
+                            (value ? StageFlags.OldSubstage : 0);
+        }
+
         private byte _stageType;
+        [Category("Substage Parameters")]
         public VariantType SubstageVarianceType
         {
             get => (VariantType)_stageType;
@@ -133,6 +190,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private byte _subStageRange;
+        [Category("Substage Parameters")]
         public byte SubstageRange
         {
             get => _subStageRange;
@@ -144,6 +202,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private uint _memoryAllocation;
+        [Category("Stage Parameters")]
         public string MemoryAllocation
         {
             get => "0x" + _memoryAllocation.ToString("X8");
@@ -157,6 +216,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private float _wildSpeed;
+        [Category("Stage Parameters")]
+        [Description("The speed at which the stage operates in \"Wild\" Mode in Project+")]
         public float WildSpeed
         {
             get => _wildSpeed;
@@ -204,14 +265,133 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override int OnCalculateSize(bool force)
         {
+            _children = Children.Where(n => n.Name.Length > 0).ToList();
+
             int size = (int)STEX.HeaderSize;
 
-            return base.OnCalculateSize(force);
+            size += 4 * Children.Count;
+
+            if (StageName.Length > 0)
+            {
+                size += StageName.Length + 1;
+            }
+            if (TrackList.Length > 0)
+            {
+                size += TrackList.Length + 1;
+            }
+            if (Module.Length > 0)
+            {
+                size += Module.Length + 1;
+            }
+
+            foreach (ResourceNode n in Children)
+            {
+                size += n.Name.Length + 1;
+            }
+
+            return size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            base.OnRebuild(address, length, force);
+            uint strOffset = STEX.HeaderSize + (uint)Children.Count * 4;
+
+            STEX* header = (STEX*)address;
+            *header = new STEX();
+            header->_tag = STEX.Tag;
+            header->_stringOffset = strOffset;
+            header->_size = (uint)length;
+            header->_rgbaOverlay = (uint)CharacterOverlay;
+            header->_soundBank = _soundBank;
+            header->_effectBank = _effectBank;
+            header->_flags = (ushort)_flags;
+            header->_stageType = _stageType;
+            header->_subStageRange = _subStageRange;
+            uint curStrOffset = 0x0;
+            if (TrackList.Length > 0)
+            {
+                header->_trackListOffset = curStrOffset;
+                curStrOffset += (uint)TrackList.Length + 1;
+            }
+            else
+            {
+                header->_trackListOffset = 0xFFFFFFFF;
+            }
+            if (StageName.Length > 0)
+            {
+                header->_stageNameOffset = curStrOffset;
+                curStrOffset += (uint)StageName.Length + 1;
+            }
+            else
+            {
+                header->_stageNameOffset = 0xFFFFFFFF;
+            }
+            if (Module.Length > 0)
+            {
+                header->_moduleNameOffset = curStrOffset;
+                curStrOffset += (uint)Module.Length + 1;
+            }
+            else
+            {
+                header->_moduleNameOffset = 0xFFFFFFFF;
+            }
+            header->_memoryAllocation = _memoryAllocation;
+            header->_wildSpeed = _wildSpeed;
+            uint offset = STEX.HeaderSize;
+
+            foreach (ResourceNode n in Children)
+            {
+                buint* ptr = (buint*) (address + offset);
+                ptr[0] = curStrOffset;
+                curStrOffset += (uint)n.Name.Length + 1;
+                offset += 4;
+            }
+
+            if (TrackList.Length > 0)
+            {
+                sbyte* ptr = (sbyte*)(address + offset);
+                string name = TrackList;
+                for (int j = 0; j < name.Length; j++)
+                {
+                    ptr[j] = (sbyte)name[j];
+                }
+                ptr[name.Length] = 0;
+                offset += (uint)(name.Length + 1);
+            }
+            if (StageName.Length > 0)
+            {
+                sbyte* ptr = (sbyte*)(address + offset);
+                string name = StageName;
+                for (int j = 0; j < name.Length; j++)
+                {
+                    ptr[j] = (sbyte)name[j];
+                }
+                ptr[name.Length] = 0;
+                offset += (uint)(name.Length + 1);
+            }
+            if (Module.Length > 0)
+            {
+                sbyte* ptr = (sbyte*)(address + offset);
+                string name = Module;
+                for (int j = 0; j < name.Length; j++)
+                {
+                    ptr[j] = (sbyte)name[j];
+                }
+                ptr[name.Length] = 0;
+                offset += (uint)(name.Length + 1);
+            }
+
+            foreach (ResourceNode n in Children)
+            {
+                sbyte* ptr = (sbyte*)(address + offset);
+                string name = n.Name;
+                for (int j = 0; j < name.Length; j++)
+                {
+                    ptr[j] = (sbyte)name[j];
+                }
+                ptr[name.Length] = 0;
+                offset += (uint)(name.Length + 1);
+            }
         }
 
         internal static ResourceNode TryParse(DataSource source)
