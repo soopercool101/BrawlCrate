@@ -208,6 +208,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(false)] public virtual int Level => _parent == null ? 0 : _parent.Level + 1;
+        [Browsable(false)] public virtual int MaxNameLength => 255;
         [Browsable(false)] public virtual bool AllowDuplicateNames => false;
         [Browsable(false)] public virtual bool AllowNullNames => false;
 

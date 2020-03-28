@@ -56,7 +56,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             int strOffset = 0;
             foreach (ResourceNode n in Children)
             {
-                int size = n.CalculateSize(false);
+                int size = n.CalculateSize(true);
                 ((ASLSEntryNode) n).StrOffset = (ushort)strOffset;
                 n.Rebuild(address + offset, size, true);
                 offset += (uint)size;

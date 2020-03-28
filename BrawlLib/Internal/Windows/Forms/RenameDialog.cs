@@ -17,14 +17,7 @@ namespace BrawlLib.Internal.Windows.Forms
         {
             _node = node;
 
-            if (_node is ARCNode)
-            {
-                txtName.MaxLength = 47;
-            }
-            else
-            {
-                txtName.MaxLength = 255;
-            }
+            txtName.MaxLength = node.MaxNameLength;
 
             txtName.Text = node.Name;
 

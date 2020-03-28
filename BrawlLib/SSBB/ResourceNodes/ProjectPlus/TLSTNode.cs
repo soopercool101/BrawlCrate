@@ -65,7 +65,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             uint offset = TLST.HeaderSize;
             foreach (ResourceNode n in Children)
             {
-                int size = n.CalculateSize(false);
+                int size = n.CalculateSize(true);
                 n.Rebuild(address + offset, size, true);
                 offset += (uint)size;
             }
@@ -105,6 +105,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     public unsafe class TLSTEntryNode : ResourceNode
     {
         internal TLSTEntry* Header => (TLSTEntry*)WorkingUncompressed.Address;
+        [Browsable(false)] public override bool AllowNullNames => true;
+        [Browsable(false)] public override bool AllowDuplicateNames => true;
 
         private uint _songID;
 
