@@ -49,8 +49,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             ASLS* header = (ASLS*)address;
             *header = new ASLS();
             header->_tag = ASLS.Tag;
-            header->_count = (short)Children.Count;
-            header->_nameOffset = (short) (ASLS.HeaderSize + Children.Count * ASLSEntry.Size);
+            header->_count = (ushort)Children.Count;
+            header->_nameOffset = (ushort) (ASLS.HeaderSize + Children.Count * ASLSEntry.Size);
 
             uint offset = ASLS.HeaderSize;
             int strOffset = 0;
