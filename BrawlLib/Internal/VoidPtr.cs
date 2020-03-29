@@ -213,6 +213,11 @@ namespace BrawlLib.Internal
 
         public string GetUTF8String(int offset)
         {
+            return GetUTF8String((uint) offset);
+        }
+
+        public string GetUTF8String(uint offset)
+        {
             byte[] bytes = new byte[new string((sbyte*)(this + offset)).Length];
             for (int i = 0; i < bytes.Length; i++)
             {

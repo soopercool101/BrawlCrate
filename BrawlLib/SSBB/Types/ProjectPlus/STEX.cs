@@ -44,7 +44,8 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
             {
                 return null;
             }
-            return new string((sbyte*)(Address + _stringOffset + this[index].UInt));
+
+            return Address.GetUTF8String(_stringOffset + this[index].UInt);
         }
 
         public string trackListName => _trackListOffset == 0xFFFFFFFF ? null : new string((sbyte*)(Address + _stringOffset + _trackListOffset));
