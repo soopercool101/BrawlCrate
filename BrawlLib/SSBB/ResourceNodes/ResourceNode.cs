@@ -154,8 +154,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Properties
 
+#if !DEBUG
+        [Browsable(false)]
+#endif
         public string FilePath => _origPath;
+#if !DEBUG
+        [Browsable(false)]
+#endif
         public string FileName => Path.GetFileName(_origPath);
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public string DirectoryName => Path.GetDirectoryName(_origPath);
 
 #if !DEBUG
         [Browsable(false)]

@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
 using System.ComponentModel;
@@ -12,6 +13,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         public override ResourceType ResourceFileType => ResourceType.TLST;
 
         public override Type[] AllowedChildTypes => new[] {typeof(TLSTEntryNode)};
+
+        public string STRMPath => Path.Combine(new DirectoryInfo(DirectoryName).Parent.FullName, "strm");
 
         public override void OnPopulate()
         {
@@ -102,11 +105,22 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
     }
 
-    public unsafe class TLSTEntryNode : ResourceNode
+    public unsafe class TLSTEntryNode : ResourceNode, IAudioSource
     {
         internal TLSTEntry* Header => (TLSTEntry*)WorkingUncompressed.Address;
         [Browsable(false)] public override bool AllowNullNames => true;
         [Browsable(false)] public override bool AllowDuplicateNames => true;
+
+        private RSTMNode linkedNode;
+
+        private string rstmPath => Path.Combine(((TLSTNode) Parent).STRMPath, _fileName + ".brstm");
+
+        public IAudioStream[] CreateStreams()
+        {
+            return linkedNode?.CreateStreams();
+        }
+
+        public bool IsLooped => linkedNode?.IsLooped ?? false;
 
         private uint _songID;
 
@@ -171,7 +185,16 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             set
             {
                 _fileName = value;
+                RSTMNode temp = linkedNode;
+                linkedNode = null;
+                UpdateCurrentControl();
+                temp?.Dispose();
+                if (File.Exists(rstmPath))
+                {
+                    linkedNode = (RSTMNode)NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
+                }
                 SignalPropertyChange();
+                UpdateCurrentControl();
             }
         }
 
@@ -264,7 +287,13 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 _fileName = new string((sbyte*)((VoidPtr)((TLSTNode)Parent).Header) +
                                    ((TLSTNode)Parent).Header->_nameOffset + Header->_fileName);
+                if (File.Exists(rstmPath))
+                {
+                    linkedNode = (RSTMNode) NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
+                }
             }
+
+
             _songID = Header->_songID;
             _songDelay = Header->_songDelay;
             _songVolume = Header->_songVolume;

@@ -550,6 +550,7 @@ namespace BrawlCrate.UI
             ppcDisassembler1.SetTarget(null, 0, null);
             modelPanel1.ClearAll();
             mdL0ObjectControl1.SetTarget(null);
+            hexBox1.Visible = false;
             ((DynamicFileByteProvider) hexBox1.ByteProvider)?.Dispose();
 
             Control newControl = null;
