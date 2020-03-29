@@ -16,6 +16,9 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
  
+ - BrawlCrate v0.31 Hotfix 1 - (3/29/2020)
+ . Fix bug in which changing flags would not allow saving for PARAM files
+ 
  - BrawlCrate v0.31 - (3/29/2020)
  . Add support for new Project+ filetypes
    - TLST (Tracklist files)
