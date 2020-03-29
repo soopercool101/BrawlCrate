@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.30h
+BrawlCrate - v0.31
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,32 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.31 - (3/29/2020)
+ . Add support for new Project+ filetypes
+   - TLST (Tracklist files)
+   - ASLS (Alternate Stage Loader Data)
+   - Param/STEX (Stage Load Parameters)
+ . GFG1 now allows Fighter ID to be edited
+ . Add basic support for MVPM (Movie Parameters) files
+ . Unparsed BLOCEntries now properly populate Subentries
+ . BrawlAPI changes:
+   - Add new "RefreshPreview" method
+   - BrawlAPI loaders and plugins now pre-compile on program launch to improve run speed
+   - Add ability to load additional Python modules from /BrawlAPI/Lib
+ . The "Check All" box for File Associations is now checked by default if everything is checked
+ . Add "Show Alpha" checkbox and Copy to Start option for Gradient Generator
+ . Exporting TPL entries now provides a better default name
+ . "Hide All Other Models" option in Model Previewer now hides collisions not bound to the selected model
+ . Fix bug in which chained redirect nodes would not properly be reflected when previewing a specific model group
+ . Fix bug in which "Hide All Other Models" in the Model Previewer would not properly select the current model
+ . Fix bug in which compressed U8 entries would crash on population
+ . Fix bug in which Gradient Generator would not properly reach the end goal
+ . Fix bug in which Gradient Generator was not wide enough to properly display color values
+ . Fix bug in which ADSJ was considered a BLOC Entry
+ . Fix bug in which Compatibility Mode setting checkbox would not properly update
+ . Fix bugs when importing DAE files with unimplemented materials
+ . Fix crash when importing DAE files with no objects
  
  - BrawlCrate v0.30h - (2/11/2020)
  . CHR0 Merge now works with anim format
