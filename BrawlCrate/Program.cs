@@ -42,11 +42,11 @@ namespace BrawlCrate
         /// </summary>
         public static readonly string UpdateMessage =
             @"Updated to BrawlCrate v0.31 Hotfix 1! Here's what's new in this release:
+- (Hotfix 1) Fix inability to save PARAM files with changed flags
 - Integrated support for Project+ files (TSLT, ASLS, and PARAM)
 - Improved subspace support
 - Major fixes to Gradient Generator
 - Various crash fixes
-- (Hotfix 1) Fix inability to save PARAM files with changed flags
 
 Full changelog and documentation can be viewed from the help menu.";
 
