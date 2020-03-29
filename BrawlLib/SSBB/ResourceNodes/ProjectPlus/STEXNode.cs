@@ -133,48 +133,72 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         public bool IsFlat
         {
             get => (_flags & StageFlags.Flat) != 0;
-            set => _flags = (_flags & ~StageFlags.Flat) |
-                            (value ? StageFlags.Flat : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.Flat) |
+                         (value ? StageFlags.Flat : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Stage Flags")]
         public bool IsFixedCamera
         {
             get => (_flags & StageFlags.FixedCamera) != 0;
-            set => _flags = (_flags & ~StageFlags.FixedCamera) |
-                            (value ? StageFlags.FixedCamera : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.FixedCamera) |
+                         (value ? StageFlags.FixedCamera : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Stage Flags")]
         public bool IsSlowStart
         {
             get => (_flags & StageFlags.SlowStart) != 0;
-            set => _flags = (_flags & ~StageFlags.SlowStart) |
-                            (value ? StageFlags.SlowStart : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.SlowStart) |
+                         (value ? StageFlags.SlowStart : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Substage Flags")]
         public bool IsDualLoad
         {
             get => (_flags & StageFlags.DualLoad) != 0;
-            set => _flags = (_flags & ~StageFlags.DualLoad) |
-                            (value ? StageFlags.DualLoad : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.DualLoad) |
+                         (value ? StageFlags.DualLoad : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Substage Flags")]
         public bool IsDualShuffle
         {
             get => (_flags & StageFlags.DualShuffle) != 0;
-            set => _flags = (_flags & ~StageFlags.DualShuffle) |
-                            (value ? StageFlags.DualShuffle : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.DualShuffle) |
+                         (value ? StageFlags.DualShuffle : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Substage Flags")]
         public bool IsOldSubstage
         {
             get => (_flags & StageFlags.OldSubstage) != 0;
-            set => _flags = (_flags & ~StageFlags.OldSubstage) |
-                            (value ? StageFlags.OldSubstage : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.OldSubstage) |
+                         (value ? StageFlags.OldSubstage : 0);
+                SignalPropertyChange();
+            }
         }
 
         private byte _stageType;
