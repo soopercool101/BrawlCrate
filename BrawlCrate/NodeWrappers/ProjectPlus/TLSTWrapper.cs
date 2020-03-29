@@ -4,6 +4,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -93,9 +94,16 @@ namespace BrawlCrate.NodeWrappers
             StringInputDialog d = new StringInputDialog("New TLST Entry", "");
             if (d.ShowDialog() == DialogResult.OK)
             {
+                // Get an unused expanded song id
+                uint songID = 0x0000F000;
+                while (Resource.Children.Count(n => ((TLSTEntryNode)n)._songID == songID) > 0)
+                {
+                    songID++;
+                }
                 TLSTEntryNode node = new TLSTEntryNode
                 {
-                    _name = d.resultString
+                    _name = d.resultString,
+                    _songID = songID
                 };
 
                 _resource.AddChild(node);

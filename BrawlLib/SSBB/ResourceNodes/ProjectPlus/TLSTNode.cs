@@ -129,7 +129,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public bool IsLooped => linkedNode?.IsLooped ?? false;
 
-        private uint _songID;
+        public uint _songID;
 
         [Category("Song Entry")]
         public string SongID
