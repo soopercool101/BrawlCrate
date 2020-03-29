@@ -1,10 +1,12 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.Windows.Controls.Hex_Editor;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
@@ -44,12 +46,12 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
                 size += (int) TLSTEntry.Size;
                 if (!string.IsNullOrEmpty(n._name) && n._name != "<null>")
                 {
-                    size += n.Name.Length + 1;
+                    size += n._name.UTF8Length() + 1;
                 }
 
                 if (!string.IsNullOrEmpty(n.SongFileName))
                 {
-                    size += n.SongFileName.Length + 1;
+                    size += n.SongFileName.UTF8Length() + 1;
                 }
             }
 
@@ -80,28 +82,12 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 if (!string.IsNullOrEmpty(n.SongFileName))
                 {
-                    sbyte* ptr = (sbyte*) (address + offset);
-                    string name = n.SongFileName;
-                    for (int j = 0; j < name.Length; j++)
-                    {
-                        ptr[j] = (sbyte) name[j];
-                    }
-
-                    ptr[name.Length] = 0;
-                    offset += (uint) (n.SongFileName.Length + 1);
+                    offset += address.WriteUTF8String(n.SongFileName, true, offset);
                 }
 
                 if (!string.IsNullOrEmpty(n._name) && n._name != "<null>")
                 {
-                    sbyte* ptr = (sbyte*) (address + offset);
-                    string name = n.Name;
-                    for (int j = 0; j < name.Length; j++)
-                    {
-                        ptr[j] = (sbyte) name[j];
-                    }
-
-                    ptr[name.Length] = 0;
-                    offset += (uint) (n.Name.Length + 1);
+                    offset += address.WriteUTF8String(n._name, true, offset);
                 }
             }
         }
@@ -210,7 +196,14 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             temp?.Dispose();
             if (File.Exists(rstmPath))
             {
-                linkedNode = (RSTMNode)NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
+                try
+                {
+                    linkedNode = (RSTMNode)NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
+                }
+                catch
+                {
+
+                }
             }
             UpdateCurrentControl();
         }
@@ -271,7 +264,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             else
             {
                 header->_fileName = ((TLSTNode) Parent).strOffset;
-                ((TLSTNode) Parent).strOffset += (ushort) (SongFileName.Length + 1);
+                ((TLSTNode) Parent).strOffset += (ushort) (Encoding.UTF8.GetBytes(_fileName).Length + 1);
             }
 
             if (string.IsNullOrEmpty(_name) || _name == "<null>")
@@ -281,7 +274,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             else
             {
                 header->_title = ((TLSTNode) Parent).strOffset;
-                ((TLSTNode) Parent).strOffset += (ushort) (Name.Length + 1);
+                ((TLSTNode) Parent).strOffset += (ushort) (Encoding.UTF8.GetBytes(_name).Length + 1);
             }
 
             header->_songID = _songID;
@@ -297,8 +290,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         {
             if (Header->_title != 0xFFFF)
             {
-                _name = new string((sbyte*) (VoidPtr) ((TLSTNode) Parent).Header +
-                                   ((TLSTNode) Parent).Header->_nameOffset + Header->_title);
+                _name = Parent.WorkingUncompressed.Address.GetUTF8String(((TLSTNode)Parent).Header->_nameOffset + Header->_title);
             }
 
             if (Header->_fileName != 0xFFFF)
@@ -311,7 +303,14 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
             if (File.Exists(rstmPath))
             {
-                linkedNode = (RSTMNode)NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
+                try
+                {
+                    linkedNode = (RSTMNode) NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
+                }
+                catch
+                {
+
+                }
             }
 
             _songDelay = Header->_songDelay;

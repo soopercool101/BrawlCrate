@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace BrawlLib.Internal
 {
@@ -203,6 +204,55 @@ namespace BrawlLib.Internal
             byte f = *p1;
             *p1 = *p2;
             *p2 = f;
+        }
+
+        public string GetUTF8String()
+        {
+            return GetUTF8String(0);
+        }
+
+        public string GetUTF8String(int offset)
+        {
+            byte[] bytes = new byte[new string((sbyte*)(this + offset)).Length];
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                bytes[i] = (this + offset).Byte;
+                offset++;
+            }
+
+            return Encoding.UTF8.GetString(bytes);
+        }
+
+        public uint WriteUTF8String(string s)
+        {
+            return WriteUTF8String(s, true, 0);
+        }
+
+        public uint WriteUTF8String(string s, bool nullTerminated)
+        {
+            return WriteUTF8String(s, nullTerminated, 0);
+        }
+
+        public uint WriteUTF8String(string s, uint offset)
+        {
+            return WriteUTF8String(s, true, offset);
+        }
+
+        public uint WriteUTF8String(string s, bool nullTerminated, uint offset)
+        {
+            byte* ptr = (byte*)(this + offset);
+            byte[] name = Encoding.UTF8.GetBytes(s);
+            for (int j = 0; j < name.Length; j++)
+            {
+                ptr[j] = name[j];
+            }
+
+            if (nullTerminated)
+            {
+                ptr[name.Length] = 0;
+            }
+
+            return (uint) (name.Length + (nullTerminated ? 1 : 0));
         }
     }
 }
