@@ -598,8 +598,8 @@ namespace BrawlLib.Wii.Models
                                        prev._calcSize;
                     }
                     else if ((temp =
-                                 (e._mdlOffset = headerLen + tableLen + groupLen + texLen + defLen + boneLen).Align(
-                                     0x10)) != e._mdlOffset)
+                        (e._mdlOffset = headerLen + tableLen + groupLen + texLen + defLen + boneLen).Align(
+                            0x10)) != e._mdlOffset)
                     {
                         e._dataAlign = temp - e._mdlOffset;
                     }
@@ -852,7 +852,7 @@ namespace BrawlLib.Wii.Models
             if (mdl._hasOpa && polyList != null)
             {
                 DrawCall[] objects = polyList.SelectMany(x => ((MDL0ObjectNode) x)._drawCalls)
-                                             .Where(x => x.DrawPass == DrawCall.DrawPassType.Opaque).ToArray();
+                    .Where(x => x.DrawPass == DrawCall.DrawPassType.Opaque).ToArray();
 
                 Array.Sort(objects, DrawCall.DrawCompare);
 
@@ -879,7 +879,7 @@ namespace BrawlLib.Wii.Models
             if (mdl._hasXlu && polyList != null)
             {
                 DrawCall[] objects = polyList.SelectMany(x => ((MDL0ObjectNode) x)._drawCalls)
-                                             .Where(x => x.DrawPass == DrawCall.DrawPassType.Transparent).ToArray();
+                    .Where(x => x.DrawPass == DrawCall.DrawPassType.Transparent).ToArray();
 
                 Array.Sort(objects, DrawCall.DrawCompare);
 

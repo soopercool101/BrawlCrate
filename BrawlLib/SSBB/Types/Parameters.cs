@@ -8,6 +8,7 @@ namespace BrawlLib.SSBB.Types
     {
         public const string TagSTPM = "STPM";
         public const string TagADPM = "ADPM";
+        public const string TagMVPM = "MVPM";
         public const int Size = 0x10;
 
         public BinTag _tag;
@@ -42,7 +43,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ParameterEntry
+    public unsafe struct StageParameterEntry
     {
         public bushort _id;
         public byte _id2;
@@ -50,12 +51,29 @@ namespace BrawlLib.SSBB.Types
 
         public fixed int _values[64];
 
-        public ParameterEntry(ushort id, byte echo, byte id2)
+        public StageParameterEntry(ushort id, byte echo, byte id2)
         {
             _id = id;
             _echo = echo;
             _id2 = id2;
         }
+
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public unsafe struct MovParameterEntry
+    {
+        public fixed int _values[24];
 
         private VoidPtr Address
         {

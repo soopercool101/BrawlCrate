@@ -271,14 +271,13 @@ namespace BrawlLib.Internal
             {
                 return lenY;
             }
-            else if (lenY == 0.0f)
+
+            if (lenY == 0.0f)
             {
                 return lenX;
             }
-            else
-            {
-                return (float) (lenX / Math.Cos(Math.Atan(lenY / lenX)));
-            }
+
+            return (float) (lenX / Math.Cos(Math.Atan(lenY / lenX)));
         }
 
         public void RemapToRange(float min, float max)
@@ -320,15 +319,18 @@ namespace BrawlLib.Internal
                 {
                     return 1;
                 }
-                else if (_x < o._x)
+
+                if (_x < o._x)
                 {
                     return -1;
                 }
-                else if (_y > o._y)
+
+                if (_y > o._y)
                 {
                     return 1;
                 }
-                else if (_y < o._y)
+
+                if (_y < o._y)
                 {
                     return -1;
                 }

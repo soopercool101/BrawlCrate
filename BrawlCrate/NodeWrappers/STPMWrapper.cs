@@ -129,7 +129,7 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
-        
+
         public void ReplaceGameplay()
         {
             if (Program.OpenFile(ReplaceFilter, out string inPath))
@@ -146,7 +146,7 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
-        
+
         public void ReplaceCosmetic()
         {
             if (Program.OpenFile(ReplaceFilter, out string inPath))

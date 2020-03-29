@@ -224,17 +224,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             _strings.Clear();
             foreach (SHP0EntryNode entry in Children)
             {
-                if (!_strings.Contains(entry.Name))
-                {
-                    _strings.Add(entry.Name);
-                }
+                _strings.Add(entry.Name);
 
                 foreach (SHP0VertexSetNode n in entry.Children)
                 {
-                    if (!_strings.Contains(n.Name))
-                    {
-                        _strings.Add(n.Name);
-                    }
+                    _strings.Add(n.Name);
                 }
             }
 

@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
+using System.Text.RegularExpressions;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -39,7 +40,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
-        
+
         private static readonly ToolStripMenuItem DeleteSelectedToolStripMenuItem =
             new ToolStripMenuItem("&Delete Selected", null, DeleteSelectedAction, Keys.Control | Keys.Delete);
 
@@ -90,7 +91,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GetInstance<GenericWrapper>().DeleteSelected();
         }
-        
+
         protected static void DuplicateAction(object sender, EventArgs e)
         {
             GetInstance<GenericWrapper>().Duplicate();
@@ -142,7 +143,7 @@ namespace BrawlCrate.NodeWrappers
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
-        
+
         private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DeleteSelectedToolStripMenuItem.Visible = true;
@@ -243,6 +244,7 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
+        public virtual string DefaultName => Text;
         public virtual string ExportFilter => FileFilters.Raw;
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
@@ -260,7 +262,7 @@ namespace BrawlCrate.NodeWrappers
                 g.Delete();
             }
         }
-        
+
         public void ExportSelected()
         {
             string folder = Program.ChooseFolder();
@@ -270,12 +272,12 @@ namespace BrawlCrate.NodeWrappers
             }
 
             Dictionary<Type, string> extensions = new Dictionary<Type, string>();
-            List<ResourceNode> nodes = new List<ResourceNode>();
+            List<GenericWrapper> nodes = new List<GenericWrapper>();
             foreach (TreeNode tNode in MainForm.Instance.resourceTree.SelectedNodes)
             {
                 if (tNode is GenericWrapper g)
                 {
-                    nodes.Add(g._resource);
+                    nodes.Add(g);
                     if (!extensions.ContainsKey(g._resource.GetType()))
                     {
                         extensions.Add(g._resource.GetType(), g.ExportFilter);
@@ -297,7 +299,7 @@ namespace BrawlCrate.NodeWrappers
             string invalidChars =
                 System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));
             string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
-            foreach (ResourceNode n in nodes)
+            foreach (GenericWrapper n in nodes)
             {
                 chosenExtensions.TryGetValue(n.GetType(), out string ext);
                 if (!string.IsNullOrEmpty(ext) && !ext.StartsWith("."))
@@ -305,8 +307,7 @@ namespace BrawlCrate.NodeWrappers
                     ext = ext.Insert(0, ".");
                 }
 
-                n.Export(
-                    $"{folder}\\{System.Text.RegularExpressions.Regex.Replace($"{n.Name}{ext ?? ""}", invalidRegStr, "")}");
+                n.OnExport($"{folder}\\{Regex.Replace($"{n.DefaultName}{ext ?? ""}", invalidRegStr, "")}");
             }
 
             MessageBox.Show($"{nodes.Count} nodes successfully exported to {folder}", "Export Selected");
@@ -315,21 +316,20 @@ namespace BrawlCrate.NodeWrappers
 
         public virtual string Export()
         {
-            int index = Program.SaveFile(ExportFilter, Text, out string outPath);
-            if (index != 0)
+            if (Program.SaveFile(ExportFilter, DefaultName, out string outPath))
             {
                 if (Parent == null)
                 {
                     _resource.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
                 }
 
-                OnExport(outPath, index);
+                OnExport(outPath);
             }
 
             return outPath;
         }
 
-        public virtual void OnExport(string outPath, int filterIndex)
+        public virtual void OnExport(string outPath)
         {
             _resource.Export(outPath);
         }
@@ -381,7 +381,7 @@ namespace BrawlCrate.NodeWrappers
         {
             return Duplicate(true);
         }
-        
+
         public virtual ResourceNode Duplicate(bool changeName)
         {
             if (_resource.Parent == null)
@@ -392,11 +392,13 @@ namespace BrawlCrate.NodeWrappers
             string tempPath = Path.GetTempFileName();
             _resource.Export(tempPath);
             // Initialize node as a child of the parent
-            ResourceNode rNode2 = NodeFactory.FromFile(_resource is ARCEntryNode ? null : _resource.Parent, tempPath, _resource.GetType());
+            ResourceNode rNode2 = NodeFactory.FromFile(_resource is ARCEntryNode ? null : _resource.Parent, tempPath,
+                _resource.GetType());
 
             if (rNode2 == null)
             {
-                MessageBox.Show("The node could not be duplicated correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The node could not be duplicated correctly.", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return null;
             }
 
@@ -433,7 +435,7 @@ namespace BrawlCrate.NodeWrappers
             // Copy redirect info as necessary
             if (rNode2 is ARCEntryNode entryNode)
             {
-                entryNode.RedirectIndex = ((ARCEntryNode)_resource).RedirectIndex;
+                entryNode.RedirectIndex = ((ARCEntryNode) _resource).RedirectIndex;
             }
 
             // Update name again in order to refresh things that need refreshing when name is updated

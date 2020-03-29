@@ -270,10 +270,8 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{3}, {4}", formatted);
             }
-            else
-            {
-                return string.Format("{0}, {3}, {4}", formatted);
-            }
+
+            return string.Format("{0}, {3}, {4}", formatted);
         }
     }
 
@@ -339,10 +337,8 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{3}, {4}", formatted);
             }
-            else
-            {
-                return string.Format("{0}, {3}, {4}", formatted);
-            }
+
+            return string.Format("{0}, {3}, {4}", formatted);
         }
     }
 
@@ -448,10 +444,8 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{0}, {2}", formatted);
             }
-            else
-            {
-                return string.Format("{0}, {1}, {2}", formatted);
-            }
+
+            return string.Format("{0}, {1}, {2}", formatted);
         }
     }
 
@@ -666,23 +660,21 @@ namespace BrawlLib.Internal.PowerPCAssembly
                 {
                     return string.Format("{9}", formatted);
                 }
-                else
-                {
-                    return string.Format("{5}, {9}", formatted);
-                }
+
+                return string.Format("{5}, {9}", formatted);
             }
-            else if (IgnoreCr && !IgnoreCtr)
+
+            if (IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{9}", formatted);
             }
-            else if (!IgnoreCr && !IgnoreCtr)
+
+            if (!IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{8}, {9}", formatted);
             }
-            else
-            {
-                return string.Format("{7}, {8}, {9}", formatted);
-            }
+
+            return string.Format("{7}, {8}, {9}", formatted);
         }
     }
 
@@ -890,24 +882,22 @@ namespace BrawlLib.Internal.PowerPCAssembly
                 {
                     return string.Format("{9}", formatted);
                 }
-                else
-                {
-                    return string.Format("{5}, {9}", formatted);
-                }
+
+                return string.Format("{5}, {9}", formatted);
             }
-            else if (IgnoreCr && !IgnoreCtr)
+
+            if (IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{9}", formatted);
             }
-            else if (!IgnoreCr && !IgnoreCtr)
+
+            if (!IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{8}, {9}", formatted);
             }
-            else
-            {
-                return "";
-                //return String.Format("{7}, {8}, {9}", formatted);
-            }
+
+            return "";
+            //return String.Format("{7}, {8}, {9}", formatted);
         }
     }
 
@@ -1066,23 +1056,21 @@ namespace BrawlLib.Internal.PowerPCAssembly
                 {
                     return string.Format("{9}", formatted);
                 }
-                else
-                {
-                    return string.Format("{5}, {9}", formatted);
-                }
+
+                return string.Format("{5}, {9}", formatted);
             }
-            else if (IgnoreCr && !IgnoreCtr)
+
+            if (IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{9}", formatted);
             }
-            else if (!IgnoreCr && !IgnoreCtr)
+
+            if (!IgnoreCr && !IgnoreCtr)
             {
                 return string.Format("{8}, {9}", formatted);
             }
-            else
-            {
-                return "";
-            }
+
+            return "";
         }
     }
 
@@ -1200,10 +1188,8 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{0}, {1}", formatted);
             }
-            else
-            {
-                return string.Format("{0}, {1}, {2}", formatted);
-            }
+
+            return string.Format("{0}, {1}, {2}", formatted);
         }
     }
 
@@ -1329,10 +1315,8 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{2}, {3}", formatted);
             }
-            else
-            {
-                return string.Format("{0}, {2}, {3}", formatted);
-            }
+
+            return string.Format("{0}, {2}, {3}", formatted);
         }
     }
 
@@ -1433,10 +1417,8 @@ namespace BrawlLib.Internal.PowerPCAssembly
             {
                 return string.Format("{2}, {3}", formatted);
             }
-            else
-            {
-                return string.Format("{0}, {2}, {3}", formatted);
-            }
+
+            return string.Format("{0}, {2}, {3}", formatted);
         }
     }
 

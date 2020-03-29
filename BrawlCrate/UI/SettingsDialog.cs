@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Windows.Forms;
-
 #if !MONO
-    using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.UI
@@ -239,6 +239,7 @@ namespace BrawlCrate.UI
             int index = 0;
             string cmd;
             _updating = true;
+            chkBoxAssociateAll.Checked = true;
             foreach (ListViewItem i in lstViewFileAssociations.Items)
             {
                 try
@@ -247,16 +248,21 @@ namespace BrawlCrate.UI
                         !string.IsNullOrEmpty(cmd = _typeList[index].GetCommand("open")) &&
                         cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
-                        i.Tag = i.Checked = true;
+                        i.Tag = true;
+                        i.Checked = true;
                     }
                     else
                     {
-                        i.Tag = i.Checked = false;
+                        chkBoxAssociateAll.Checked = false;
+                        i.Tag = false;
+                        i.Checked = false;
                     }
                 }
                 catch
                 {
-                    // ignored
+                    chkBoxAssociateAll.Checked = false;
+                    i.Tag = false;
+                    i.Checked = false;
                 }
 
                 index++;
@@ -269,7 +275,7 @@ namespace BrawlCrate.UI
             }
             catch
             {
-                // ignored
+                datFileAssociation.Checked = false;
             }
 
             try
@@ -279,7 +285,7 @@ namespace BrawlCrate.UI
             }
             catch
             {
-                // ignored
+                binFileAssociation.Checked = false;
             }
 
             chkDocUpdates.Checked = MainForm.Instance.GetDocumentationUpdates;
@@ -1007,7 +1013,7 @@ namespace BrawlCrate.UI
             chkBoxAssociateAll.TabIndex = 5;
             chkBoxAssociateAll.Text = "Check All";
             chkBoxAssociateAll.UseVisualStyleBackColor = true;
-            chkBoxAssociateAll.CheckedChanged += new EventHandler(CheckBox1_CheckedChanged);
+            chkBoxAssociateAll.CheckedChanged += new EventHandler(ChkBoxAssociateAll_CheckedChanged);
             // 
             // lstViewFileAssociations
             // 
@@ -1571,7 +1577,7 @@ namespace BrawlCrate.UI
             _updating = false;
         }
 
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxAssociateAll_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1656,25 +1662,6 @@ namespace BrawlCrate.UI
             MainForm.Instance.CheckUpdatesOnStartup = rdoAutoUpdate.Checked || rdoCheckStartup.Checked;
         }
 
-        private void BtnCanaryBranch_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show(this,
-                    "Warning: Switching branches or repositories can be unstable unless you know what you're doing. You should generally stay on the brawlcrate-master branch unless directed otherwise for testing purposes. You can reset to the default for either field by leaving it blank.",
-                    "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                //string cRepo = MainForm.currentRepo;
-                //string cBranch = MainForm.currentBranch;
-                //TwoInputStringDialog d = new TwoInputStringDialog();
-                //if (d.ShowDialog(this, "Enter new repo/branch to track", "Repo:", cRepo, "Branch:", cBranch) == DialogResult.OK)
-                //{
-                //    if (!d.InputText1.Equals(cRepo, StringComparison.OrdinalIgnoreCase) || !d.InputText2.Equals(cBranch, StringComparison.OrdinalIgnoreCase))
-                //    {
-                //        MainForm.SetCanaryTracking(d.InputText1, d.InputText2);
-                //    }
-                //}
-            }
-        }
-
         private void ChkBoxAutoPlayAudio_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
@@ -1717,8 +1704,8 @@ namespace BrawlCrate.UI
             if (chkBoxModuleCompress.Checked)
             {
                 if (MessageBox.Show(
-                        "Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?",
-                        "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    "Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?",
+                    "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     _updating = true;
                     chkBoxModuleCompress.Checked = false;

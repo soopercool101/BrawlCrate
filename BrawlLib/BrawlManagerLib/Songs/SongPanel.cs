@@ -138,7 +138,7 @@ namespace BrawlLib.BrawlManagerLib.Songs
             Song song = (from s in SongIDMap.Songs
                          where s.Filename == filename
                          select s)
-                        .DefaultIfEmpty(null).First();
+                .DefaultIfEmpty(null).First();
             if (song != null && CustomSongTitles != null && CustomSongTitles.TryGetValue(song.ID, out string name))
             {
                 songNameBar.Index = -1;

@@ -21,15 +21,15 @@ namespace BrawlLib.Internal.Windows.Forms
             goodColorControl21.Color = Color.Empty;
             goodColorControl21.Dock = DockStyle.Fill;
             goodColorControl21.EditAlpha = true;
-            goodColorControl21.Location = new System.Drawing.Point(0, 0);
+            goodColorControl21.Location = new Point(0, 0);
             goodColorControl21.Name = "goodColorControl21";
             //this.goodColorControl21.ShowOldColor = false;
-            goodColorControl21.Size = new System.Drawing.Size(335, 253);
+            goodColorControl21.Size = new Size(335, 253);
             goodColorControl21.TabIndex = 7;
             // 
             // GoodColorDialog
             // 
-            ClientSize = new System.Drawing.Size(335, 253);
+            ClientSize = new Size(335, 253);
             Controls.Add(goodColorControl21);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;

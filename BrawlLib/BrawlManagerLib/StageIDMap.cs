@@ -70,7 +70,8 @@ namespace BrawlLib.BrawlManagerLib
                     Console.WriteLine("More than one stage matches the search pattern: " + filename);
                     return q.First();
                 }
-                else if (q.Count() < 1)
+
+                if (q.Count() < 1)
                 {
                     Console.WriteLine("No stage matches the search pattern: " + filename);
                     return -1;
@@ -88,18 +89,16 @@ namespace BrawlLib.BrawlManagerLib
             {
                 return "custom" + (stageID - 0x3F).ToString("X2");
             }
-            else
-            {
-                IEnumerable<string> q = from s in Stages
-                                        where s.ID == stageID
-                                        select s.PacBasename;
-                if (!q.Any())
-                {
-                    return null;
-                }
 
-                return q.First();
+            IEnumerable<string> q = from s in Stages
+                                    where s.ID == stageID
+                                    select s.PacBasename;
+            if (!q.Any())
+            {
+                return null;
             }
+
+            return q.First();
         }
 
         public static string RelNameForPac(string filename, bool differentForAlternateStage)
@@ -118,23 +117,21 @@ namespace BrawlLib.BrawlManagerLib
             {
                 return "st_custom" + filename.Substring(9, 2) + asl_append + ".rel";
             }
-            else
-            {
-                IEnumerable<string> q = from s in Stages
-                                        where s.ContainsPac(filename)
-                                        select s.RelName.Replace(".rel", "");
-                if (q.Count() > 1)
-                {
-                    Console.WriteLine("More than one stage matches the search pattern: " + filename);
-                }
-                else if (q.Count() < 1)
-                {
-                    Console.WriteLine("No stage matches the search pattern: " + filename);
-                    return "none";
-                }
 
-                return q.First() + asl_append + ".rel";
+            IEnumerable<string> q = from s in Stages
+                                    where s.ContainsPac(filename)
+                                    select s.RelName.Replace(".rel", "");
+            if (q.Count() > 1)
+            {
+                Console.WriteLine("More than one stage matches the search pattern: " + filename);
             }
+            else if (q.Count() < 1)
+            {
+                Console.WriteLine("No stage matches the search pattern: " + filename);
+                return "none";
+            }
+
+            return q.First() + asl_append + ".rel";
         }
 
         #region sc_selcharacter2

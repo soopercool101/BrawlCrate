@@ -9,13 +9,22 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class REFTNode : NW4RArcEntryNode
+    public unsafe class REFTNode : NW4RArcEntryNode, IImageSource
     {
         internal REFT* Header => (REFT*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.REFT;
+
+        [Browsable(false)] public int ImageCount => Children.Count(o => o is IImageSource i && i.ImageCount > 0);
+
+        public Bitmap GetImage(int index)
+        {
+            return ((IImageSource) Children.Where(o => o is IImageSource i && i.ImageCount > 0).ToArray()[index])
+                .GetImage(0);
+        }
 
         public override bool OnInitialize()
         {
@@ -176,10 +185,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return TextureConverter.DecodeIndexed((byte*) Header + 0x20, Width, Height, Palette, index + 1,
                         _format);
                 }
-                else
-                {
-                    return TextureConverter.Decode((byte*) Header + 0x20, Width, Height, index + 1, _format);
-                }
+
+                return TextureConverter.Decode((byte*) Header + 0x20, Width, Height, index + 1, _format);
             }
             catch
             {
@@ -194,7 +201,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get => HasPlt
                 ? _palette ?? (_palette =
-                      TextureConverter.DecodePalette((byte*) Header + 0x20 + Header->_imagelen, Colors, _pltFormat))
+                    TextureConverter.DecodePalette((byte*) Header + 0x20 + Header->_imagelen, Colors, _pltFormat))
                 : null;
             set
             {

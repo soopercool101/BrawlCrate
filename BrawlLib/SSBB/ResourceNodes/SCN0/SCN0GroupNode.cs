@@ -383,18 +383,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     return dataAddr - start;
                 }
-                else
-                {
-                    *(bint*) valueAddr = (int) thatMatchAddr - (int) valueAddr;
-                    return 0;
-                }
-            }
-            else
-            {
-                flags |= bit;
-                *(RGBAPixel*) valueAddr = solidColor;
+
+                *(bint*) valueAddr = (int) thatMatchAddr - (int) valueAddr;
                 return 0;
             }
+
+            flags |= bit;
+            *(RGBAPixel*) valueAddr = solidColor;
+            return 0;
         }
 
         protected void ReadColors(
@@ -474,12 +470,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 flags &= ~fixedBit;
                 return EncodeKeyframes(kf, dataAddr, offset);
             }
-            else
-            {
-                flags |= fixedBit;
-                *(bfloat*) offset = kf._keyRoot._next._value;
-                return 0;
-            }
+
+            flags |= fixedBit;
+            *(bfloat*) offset = kf._keyRoot._next._value;
+            return 0;
         }
 
         public static int EncodeKeyframes(KeyframeArray kf, VoidPtr dataAddr, VoidPtr offset)

@@ -16,7 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ARCHeader* Header => (ARCHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ARC;
         public override Type[] AllowedChildTypes => new Type[] {typeof(ARCEntryNode)};
-
+        [Browsable(false)] public override int MaxNameLength => 47;
 
         #region SpecialNames
 
@@ -122,7 +122,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return "Fighter";
                 }
-                else if (IsStage)
+
+                if (IsStage)
                 {
                     if (IsSubspace)
                     {
@@ -131,11 +132,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     return "Stage";
                 }
-                else if (IsItemTable)
+
+                if (IsItemTable)
                 {
                     return "Item Table";
                 }
-                else if (Parent is ARCNode)
+
+                if (Parent is ARCNode)
                 {
                     if (((ARCNode) Parent).SpecialARC.EndsWith("SubNode") ||
                         ((ARCNode) Parent).SpecialARC.Equals("<None>"))
@@ -491,11 +494,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         throw new Exception(
                             $"There is more than one node underneath {Name} with the name {entry.Name}.");
                     }
-                    else
-                    {
-                        directChildrenExportedPaths.Add(path);
-                        entry.Export(path);
-                    }
+
+                    directChildrenExportedPaths.Add(path);
+                    entry.Export(path);
                 }
             }
         }
@@ -543,10 +544,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else if (!(node is RELNode))
                 {
                     size += node.OnCalculateSize(force).Align(0x20);
-                }
-                else
-                {
-                    //size += (int)node.uncompSize.Align(0x20);
                 }
             }
 
@@ -766,8 +763,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 path.LastIndexOf('_') == path.IndexOf('_'))
             {
                 if (MessageBox.Show(
-                        "Would you like to use the detected '" + aslIndicator +
-                        "' as the ASL indicator for the three files?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                    "Would you like to use the detected '" + aslIndicator +
+                    "' as the ASL indicator for the three files?", "", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     aslIndicator = '\0';
                 }

@@ -181,6 +181,7 @@ namespace BrawlCrate.NodeWrappers
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
 
+        public override string DefaultName => $"{Parent.Text}-{Resource.Index}";
 
         protected static void ReEncodeAction(object sender, EventArgs e)
         {

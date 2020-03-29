@@ -428,14 +428,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (offset + NameTableSize <= size)
                 {
-                    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*)offset;
+                    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
 
                     _names = new List<string>();
-                    bushort* addr = (bushort*)((VoidPtr)hdr + 4 + hdr->_count * 4);
-                    for (int i = 0; i < hdr->_count; i++, addr = (bushort*)((VoidPtr)addr + 2 + *addr))
+                    bushort* addr = (bushort*) ((VoidPtr) hdr + 4 + hdr->_count * 4);
+                    for (int i = 0; i < hdr->_count; i++, addr = (bushort*) ((VoidPtr) addr + 2 + *addr))
                     {
-                        _names.Add(new string((sbyte*)addr + 2));
+                        _names.Add(new string((sbyte*) addr + 2));
                     }
+
                     offset += NameTableSize;
                 }
             }

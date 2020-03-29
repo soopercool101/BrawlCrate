@@ -215,6 +215,11 @@
         ItemFreqTableGroupNode,
         ItemFreqEntryNode,
 
+        // Project +
+        ASLS,
+        STEX,
+        TLST,
+
         Folder
     }
 }

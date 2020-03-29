@@ -1,80 +1,19 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Sound;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GSNDNode : ResourceNode
+    public unsafe class GSNDNode : BLOCEntryNode
     {
-        internal GSND* Header => (GSND*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GSNDEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GSND;
-
-        [Category("GSND")]
-        [DisplayName("Entries")]
-        public int Count => Children?.Count ?? 0;
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GSNDEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Sound Effects";
-            }
-
-            return Header->_count > 0;
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            int size = 0x08 + Children.Count * 4;
-            foreach (ResourceNode node in Children)
-            {
-                size += 0x50;
-            }
-
-            return size;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GSND* header = (GSND*) address;
-            *header = new GSND(Children.Count);
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                if (i > 0)
-                {
-                    offset += (uint) Children[i - 1].CalculateSize(false);
-                }
-
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
-            }
-        }
-
+        protected override string baseName => "Sound Effects";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GSND*) source.Address)->_tag == GSND.Tag ? new GSNDNode() : null;
+            return source.Tag == "GSND" ? new GSNDNode() : null;
         }
     }
 
@@ -158,7 +97,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnInitialize();
             if (_name == null)
             {
-                _name = "Sound[" + Index + ']';
+                _name = "Sound [" + Index + ']';
             }
 
             _Bname = Header->Name;

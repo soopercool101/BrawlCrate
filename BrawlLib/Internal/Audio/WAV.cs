@@ -39,10 +39,8 @@ namespace BrawlLib.Internal.Audio
                     {
                         return chunk->_smplLoops;
                     }
-                    else // skip chunk and keep looking
-                    {
-                        ptr += chunk->_chunkSize + 8;
-                    }
+
+                    ptr += chunk->_chunkSize + 8;
                 }
 
                 return new smplLoop[0];

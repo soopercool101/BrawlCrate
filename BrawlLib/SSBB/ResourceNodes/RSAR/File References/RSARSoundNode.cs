@@ -350,7 +350,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 SignalPropertyChange();
                                 break;
                             }
-                            else if (SoundFileNode is RSARExtFileNode)
+
+                            if (SoundFileNode is RSARExtFileNode)
                             {
                                 if (uint.TryParse(value, out uint id))
                                 {

@@ -59,10 +59,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                 {
                     return (PortraitViewer) p;
                 }
-                else
-                {
-                    p = p.Parent;
-                }
+
+                p = p.Parent;
             }
 
             return null;
@@ -162,7 +160,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
             else
             {
                 Stream stream = Assembly.GetExecutingAssembly()
-                                        .GetManifestResourceStream("BrawlCrate.StageManager.border.png");
+                    .GetManifestResourceStream("BrawlCrate.StageManager.border.png");
                 if (stream == null)
                 {
                     MessageBox.Show(

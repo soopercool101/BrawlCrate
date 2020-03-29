@@ -20,7 +20,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         private readonly Dictionary<string, TextData> _text = new Dictionary<string, TextData>();
         public int Count => _text.Count;
 
-        private System.Drawing.Size _size;
+        private Size _size;
         private Bitmap _bitmap;
         private int _texId = -1;
 

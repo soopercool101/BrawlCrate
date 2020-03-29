@@ -44,10 +44,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return MoveDefNode.EventDictionary[_event];
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
         }
 
@@ -552,10 +550,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return TreePath;
             }
-            else
-            {
-                return base.ToString();
-            }
+
+            return base.ToString();
         }
 
         public override void Remove()

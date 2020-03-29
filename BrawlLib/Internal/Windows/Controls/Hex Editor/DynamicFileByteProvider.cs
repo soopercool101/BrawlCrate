@@ -97,11 +97,9 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return ReadByteFromFile(fileBlock.FileOffset + index - blockOffset);
             }
-            else
-            {
-                MemoryDataBlock memoryBlock = (MemoryDataBlock) block;
-                return memoryBlock.Data[index - blockOffset];
-            }
+
+            MemoryDataBlock memoryBlock = (MemoryDataBlock) block;
+            return memoryBlock.Data[index - blockOffset];
         }
 
         /// <summary>

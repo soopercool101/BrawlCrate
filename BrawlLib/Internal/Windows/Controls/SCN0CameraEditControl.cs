@@ -347,9 +347,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             groupBox1.Controls.Add(listKeyframes);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(286, 109);
+            groupBox1.Size = new Size(286, 109);
             groupBox1.TabIndex = 24;
             groupBox1.TabStop = false;
             groupBox1.Text = "Keyframes";
@@ -357,14 +357,14 @@ namespace BrawlLib.Internal.Windows.Controls
             // listKeyframes
             // 
             listKeyframes.Dock = DockStyle.Fill;
-            listKeyframes.Font = new Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
+            listKeyframes.Font = new Font("Courier New", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listKeyframes.FormattingEnabled = true;
             listKeyframes.HorizontalScrollbar = true;
             listKeyframes.IntegralHeight = false;
             listKeyframes.ItemHeight = 14;
-            listKeyframes.Location = new System.Drawing.Point(3, 16);
+            listKeyframes.Location = new Point(3, 16);
             listKeyframes.Name = "listKeyframes";
-            listKeyframes.Size = new System.Drawing.Size(280, 90);
+            listKeyframes.Size = new Size(280, 90);
             listKeyframes.TabIndex = 18;
             listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
             // 
@@ -403,18 +403,18 @@ namespace BrawlLib.Internal.Windows.Controls
             panel2.Controls.Add(label1);
             panel2.Controls.Add(label8);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new System.Drawing.Point(0, 109);
+            panel2.Location = new Point(0, 109);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(286, 167);
+            panel2.Size = new Size(286, 167);
             panel2.TabIndex = 25;
             // 
             // numFarZ
             // 
             numFarZ.BorderStyle = BorderStyle.FixedSingle;
-            numFarZ.Location = new System.Drawing.Point(211, 141);
+            numFarZ.Location = new Point(211, 141);
             numFarZ.Margin = new Padding(0, 10, 0, 10);
             numFarZ.Name = "numFarZ";
-            numFarZ.Size = new System.Drawing.Size(70, 20);
+            numFarZ.Size = new Size(70, 20);
             numFarZ.TabIndex = 29;
             numFarZ.Text = "0";
             numFarZ.ValueChanged += new EventHandler(BoxChanged);
@@ -422,10 +422,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numNearZ
             // 
             numNearZ.BorderStyle = BorderStyle.FixedSingle;
-            numNearZ.Location = new System.Drawing.Point(73, 141);
+            numNearZ.Location = new Point(73, 141);
             numNearZ.Margin = new Padding(0, 10, 0, 10);
             numNearZ.Name = "numNearZ";
-            numNearZ.Size = new System.Drawing.Size(70, 20);
+            numNearZ.Size = new Size(70, 20);
             numNearZ.TabIndex = 28;
             numNearZ.Text = "0";
             numNearZ.ValueChanged += new EventHandler(BoxChanged);
@@ -433,11 +433,11 @@ namespace BrawlLib.Internal.Windows.Controls
             // label12
             // 
             label12.BorderStyle = BorderStyle.FixedSingle;
-            label12.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.Location = new System.Drawing.Point(142, 141);
+            label12.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.Location = new Point(142, 141);
             label12.Margin = new Padding(0);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(70, 20);
+            label12.Size = new Size(70, 20);
             label12.TabIndex = 27;
             label12.Text = "Far Z";
             label12.TextAlign = ContentAlignment.MiddleRight;
@@ -445,11 +445,11 @@ namespace BrawlLib.Internal.Windows.Controls
             // label13
             // 
             label13.BorderStyle = BorderStyle.FixedSingle;
-            label13.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new System.Drawing.Point(4, 141);
+            label13.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.Location = new Point(4, 141);
             label13.Margin = new Padding(0);
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(70, 20);
+            label13.Size = new Size(70, 20);
             label13.TabIndex = 26;
             label13.Text = "Near Z";
             label13.TextAlign = ContentAlignment.MiddleRight;
@@ -457,10 +457,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numAspect
             // 
             numAspect.BorderStyle = BorderStyle.FixedSingle;
-            numAspect.Location = new System.Drawing.Point(211, 122);
+            numAspect.Location = new Point(211, 122);
             numAspect.Margin = new Padding(0, 10, 0, 10);
             numAspect.Name = "numAspect";
-            numAspect.Size = new System.Drawing.Size(70, 20);
+            numAspect.Size = new Size(70, 20);
             numAspect.TabIndex = 25;
             numAspect.Text = "0";
             numAspect.ValueChanged += new EventHandler(BoxChanged);
@@ -468,10 +468,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numHeight
             // 
             numHeight.BorderStyle = BorderStyle.FixedSingle;
-            numHeight.Location = new System.Drawing.Point(73, 122);
+            numHeight.Location = new Point(73, 122);
             numHeight.Margin = new Padding(0, 10, 0, 10);
             numHeight.Name = "numHeight";
-            numHeight.Size = new System.Drawing.Size(70, 20);
+            numHeight.Size = new Size(70, 20);
             numHeight.TabIndex = 24;
             numHeight.Text = "0";
             numHeight.ValueChanged += new EventHandler(BoxChanged);
@@ -479,11 +479,11 @@ namespace BrawlLib.Internal.Windows.Controls
             // label10
             // 
             label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new System.Drawing.Point(142, 122);
+            label10.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(142, 122);
             label10.Margin = new Padding(0);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(70, 20);
+            label10.Size = new Size(70, 20);
             label10.TabIndex = 23;
             label10.Text = "Aspect";
             label10.TextAlign = ContentAlignment.MiddleRight;
@@ -491,11 +491,11 @@ namespace BrawlLib.Internal.Windows.Controls
             // label11
             // 
             label11.BorderStyle = BorderStyle.FixedSingle;
-            label11.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new System.Drawing.Point(4, 122);
+            label11.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(4, 122);
             label11.Margin = new Padding(0);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(70, 20);
+            label11.Size = new Size(70, 20);
             label11.TabIndex = 22;
             label11.Text = "Height";
             label11.TextAlign = ContentAlignment.MiddleRight;
@@ -503,10 +503,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numAimY
             // 
             numAimY.BorderStyle = BorderStyle.FixedSingle;
-            numAimY.Location = new System.Drawing.Point(142, 84);
+            numAimY.Location = new Point(142, 84);
             numAimY.Margin = new Padding(0, 10, 0, 10);
             numAimY.Name = "numAimY";
-            numAimY.Size = new System.Drawing.Size(70, 20);
+            numAimY.Size = new Size(70, 20);
             numAimY.TabIndex = 21;
             numAimY.Text = "0";
             numAimY.ValueChanged += new EventHandler(BoxChanged);
@@ -514,19 +514,19 @@ namespace BrawlLib.Internal.Windows.Controls
             // numAimZ
             // 
             numAimZ.BorderStyle = BorderStyle.FixedSingle;
-            numAimZ.Location = new System.Drawing.Point(211, 84);
+            numAimZ.Location = new Point(211, 84);
             numAimZ.Margin = new Padding(0, 10, 0, 10);
             numAimZ.Name = "numAimZ";
-            numAimZ.Size = new System.Drawing.Size(70, 20);
+            numAimZ.Size = new Size(70, 20);
             numAimZ.TabIndex = 19;
             numAimZ.Text = "0";
             numAimZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label7
             // 
-            label7.Location = new System.Drawing.Point(70, 4);
+            label7.Location = new Point(70, 4);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(41, 20);
+            label7.Size = new Size(41, 20);
             label7.TabIndex = 15;
             label7.Text = "Frame:";
             label7.TextAlign = ContentAlignment.MiddleRight;
@@ -534,10 +534,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // label6
             // 
             label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Location = new System.Drawing.Point(211, 27);
+            label6.Location = new Point(211, 27);
             label6.Margin = new Padding(0);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(70, 20);
+            label6.Size = new Size(70, 20);
             label6.TabIndex = 8;
             label6.Text = "Z";
             label6.TextAlign = ContentAlignment.MiddleCenter;
@@ -545,10 +545,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numFovY
             // 
             numFovY.BorderStyle = BorderStyle.FixedSingle;
-            numFovY.Location = new System.Drawing.Point(211, 103);
+            numFovY.Location = new Point(211, 103);
             numFovY.Margin = new Padding(0, 10, 0, 10);
             numFovY.Name = "numFovY";
-            numFovY.Size = new System.Drawing.Size(70, 20);
+            numFovY.Size = new Size(70, 20);
             numFovY.TabIndex = 13;
             numFovY.Text = "0";
             numFovY.ValueChanged += new EventHandler(BoxChanged);
@@ -556,10 +556,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // label3
             // 
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Location = new System.Drawing.Point(4, 65);
+            label3.Location = new Point(4, 65);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(70, 20);
+            label3.Size = new Size(70, 20);
             label3.TabIndex = 2;
             label3.Text = "Rotation";
             label3.TextAlign = ContentAlignment.MiddleRight;
@@ -567,20 +567,20 @@ namespace BrawlLib.Internal.Windows.Controls
             // label2
             // 
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new System.Drawing.Point(4, 84);
+            label2.Location = new Point(4, 84);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(70, 20);
+            label2.Size = new Size(70, 20);
             label2.TabIndex = 1;
             label2.Text = "Aim";
             label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnNext
             // 
-            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNext.Location = new System.Drawing.Point(241, 2);
+            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNext.Location = new Point(241, 2);
             btnNext.Name = "btnNext";
-            btnNext.Size = new System.Drawing.Size(23, 23);
+            btnNext.Size = new Size(23, 23);
             btnNext.TabIndex = 2;
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
@@ -590,10 +590,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // label5
             // 
             label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Location = new System.Drawing.Point(142, 27);
+            label5.Location = new Point(142, 27);
             label5.Margin = new Padding(0);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(70, 20);
+            label5.Size = new Size(70, 20);
             label5.TabIndex = 7;
             label5.Text = "Y";
             label5.TextAlign = ContentAlignment.MiddleCenter;
@@ -601,20 +601,20 @@ namespace BrawlLib.Internal.Windows.Controls
             // label4
             // 
             label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Location = new System.Drawing.Point(73, 27);
+            label4.Location = new Point(73, 27);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(70, 20);
+            label4.Size = new Size(70, 20);
             label4.TabIndex = 4;
             label4.Text = "X";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnPrev
             // 
-            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPrev.Location = new System.Drawing.Point(216, 2);
+            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPrev.Location = new Point(216, 2);
             btnPrev.Name = "btnPrev";
-            btnPrev.Size = new System.Drawing.Size(23, 23);
+            btnPrev.Size = new Size(23, 23);
             btnPrev.TabIndex = 1;
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
@@ -624,10 +624,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numPosY
             // 
             numPosY.BorderStyle = BorderStyle.FixedSingle;
-            numPosY.Location = new System.Drawing.Point(142, 46);
+            numPosY.Location = new Point(142, 46);
             numPosY.Margin = new Padding(0);
             numPosY.Name = "numPosY";
-            numPosY.Size = new System.Drawing.Size(70, 20);
+            numPosY.Size = new Size(70, 20);
             numPosY.TabIndex = 4;
             numPosY.Text = "0";
             numPosY.ValueChanged += new EventHandler(BoxChanged);
@@ -635,19 +635,19 @@ namespace BrawlLib.Internal.Windows.Controls
             // numRotZ
             // 
             numRotZ.BorderStyle = BorderStyle.FixedSingle;
-            numRotZ.Location = new System.Drawing.Point(211, 65);
+            numRotZ.Location = new Point(211, 65);
             numRotZ.Margin = new Padding(0, 10, 0, 10);
             numRotZ.Name = "numRotZ";
-            numRotZ.Size = new System.Drawing.Size(70, 20);
+            numRotZ.Size = new Size(70, 20);
             numRotZ.TabIndex = 8;
             numRotZ.Text = "0";
             numRotZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // lblFrameCount
             // 
-            lblFrameCount.Location = new System.Drawing.Point(181, 4);
+            lblFrameCount.Location = new Point(181, 4);
             lblFrameCount.Name = "lblFrameCount";
-            lblFrameCount.Size = new System.Drawing.Size(29, 20);
+            lblFrameCount.Size = new Size(29, 20);
             lblFrameCount.TabIndex = 17;
             lblFrameCount.Text = "/ 10";
             lblFrameCount.TextAlign = ContentAlignment.MiddleLeft;
@@ -655,10 +655,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numPosX
             // 
             numPosX.BorderStyle = BorderStyle.FixedSingle;
-            numPosX.Location = new System.Drawing.Point(73, 46);
+            numPosX.Location = new Point(73, 46);
             numPosX.Margin = new Padding(0);
             numPosX.Name = "numPosX";
-            numPosX.Size = new System.Drawing.Size(70, 20);
+            numPosX.Size = new Size(70, 20);
             numPosX.TabIndex = 3;
             numPosX.Text = "0";
             numPosX.ValueChanged += new EventHandler(BoxChanged);
@@ -666,10 +666,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numTwist
             // 
             numTwist.BorderStyle = BorderStyle.FixedSingle;
-            numTwist.Location = new System.Drawing.Point(73, 103);
+            numTwist.Location = new Point(73, 103);
             numTwist.Margin = new Padding(0, 10, 0, 10);
             numTwist.Name = "numTwist";
-            numTwist.Size = new System.Drawing.Size(70, 20);
+            numTwist.Size = new Size(70, 20);
             numTwist.TabIndex = 12;
             numTwist.Text = "0";
             numTwist.ValueChanged += new EventHandler(BoxChanged);
@@ -677,17 +677,17 @@ namespace BrawlLib.Internal.Windows.Controls
             // numRotX
             // 
             numRotX.BorderStyle = BorderStyle.FixedSingle;
-            numRotX.Location = new System.Drawing.Point(73, 65);
+            numRotX.Location = new Point(73, 65);
             numRotX.Margin = new Padding(0, 10, 0, 10);
             numRotX.Name = "numRotX";
-            numRotX.Size = new System.Drawing.Size(70, 20);
+            numRotX.Size = new Size(70, 20);
             numRotX.TabIndex = 6;
             numRotX.Text = "0";
             numRotX.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numFrame
             // 
-            numFrame.Location = new System.Drawing.Point(117, 4);
+            numFrame.Location = new Point(117, 4);
             numFrame.Minimum = new decimal(new int[]
             {
                 1,
@@ -696,7 +696,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 0
             });
             numFrame.Name = "numFrame";
-            numFrame.Size = new System.Drawing.Size(58, 20);
+            numFrame.Size = new Size(58, 20);
             numFrame.TabIndex = 0;
             numFrame.Value = new decimal(new int[]
             {
@@ -710,10 +710,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numRotY
             // 
             numRotY.BorderStyle = BorderStyle.FixedSingle;
-            numRotY.Location = new System.Drawing.Point(142, 65);
+            numRotY.Location = new Point(142, 65);
             numRotY.Margin = new Padding(0, 10, 0, 10);
             numRotY.Name = "numRotY";
-            numRotY.Size = new System.Drawing.Size(70, 20);
+            numRotY.Size = new Size(70, 20);
             numRotY.TabIndex = 7;
             numRotY.Text = "0";
             numRotY.ValueChanged += new EventHandler(BoxChanged);
@@ -721,10 +721,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numAimX
             // 
             numAimX.BorderStyle = BorderStyle.FixedSingle;
-            numAimX.Location = new System.Drawing.Point(73, 84);
+            numAimX.Location = new Point(73, 84);
             numAimX.Margin = new Padding(0, 10, 0, 10);
             numAimX.Name = "numAimX";
-            numAimX.Size = new System.Drawing.Size(70, 20);
+            numAimX.Size = new Size(70, 20);
             numAimX.TabIndex = 11;
             numAimX.Text = "0";
             numAimX.ValueChanged += new EventHandler(BoxChanged);
@@ -732,10 +732,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numPosZ
             // 
             numPosZ.BorderStyle = BorderStyle.FixedSingle;
-            numPosZ.Location = new System.Drawing.Point(211, 46);
+            numPosZ.Location = new Point(211, 46);
             numPosZ.Margin = new Padding(0);
             numPosZ.Name = "numPosZ";
-            numPosZ.Size = new System.Drawing.Size(70, 20);
+            numPosZ.Size = new Size(70, 20);
             numPosZ.TabIndex = 5;
             numPosZ.Text = "0";
             numPosZ.ValueChanged += new EventHandler(BoxChanged);
@@ -743,11 +743,11 @@ namespace BrawlLib.Internal.Windows.Controls
             // label9
             // 
             label9.BorderStyle = BorderStyle.FixedSingle;
-            label9.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new System.Drawing.Point(142, 103);
+            label9.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(142, 103);
             label9.Margin = new Padding(0);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(70, 20);
+            label9.Size = new Size(70, 20);
             label9.TabIndex = 10;
             label9.Text = "Fov Y";
             label9.TextAlign = ContentAlignment.MiddleRight;
@@ -755,10 +755,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // label1
             // 
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(4, 46);
+            label1.Location = new Point(4, 46);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(70, 20);
+            label1.Size = new Size(70, 20);
             label1.TabIndex = 0;
             label1.Text = "Position";
             label1.TextAlign = ContentAlignment.MiddleRight;
@@ -766,11 +766,11 @@ namespace BrawlLib.Internal.Windows.Controls
             // label8
             // 
             label8.BorderStyle = BorderStyle.FixedSingle;
-            label8.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new System.Drawing.Point(4, 103);
+            label8.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(4, 103);
             label8.Margin = new Padding(0);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(70, 20);
+            label8.Size = new Size(70, 20);
             label8.TabIndex = 9;
             label8.Text = "Twist";
             label8.TextAlign = ContentAlignment.MiddleRight;
@@ -780,7 +780,7 @@ namespace BrawlLib.Internal.Windows.Controls
             Controls.Add(groupBox1);
             Controls.Add(panel2);
             Name = "SCN0CameraEditControl";
-            Size = new System.Drawing.Size(286, 276);
+            Size = new Size(286, 276);
             groupBox1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

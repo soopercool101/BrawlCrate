@@ -1339,7 +1339,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Vector3 bonerot = BoneNode._frameMatrix.GetAngles();
             Vector3
                 bonescl = BoneNode._frameMatrix
-                                  .GetScale(); // TODO: FIX (maybe), using wrong scale -> should be recursive scale
+                    .GetScale(); // TODO: FIX (maybe), using wrong scale -> should be recursive scale
 
             bonescl *= _radius;
             Matrix m = Matrix.TransformMatrix(bonescl, bonerot, bonepos);

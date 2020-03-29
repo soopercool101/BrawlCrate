@@ -350,8 +350,8 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         public IEnumerable<string> GetKnownFighterNames()
         {
             return (from f in KnownFighters select f.Name)
-                   .Concat(from f in additionalFighters select f.Name)
-                   .Distinct();
+                .Concat(from f in additionalFighters select f.Name)
+                .Distinct();
         }
 
         public virtual bool ContainsMapping(int index)
@@ -370,8 +370,8 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
         private int GetCharBustTexIndex(string name)
         {
             IEnumerable<Fighter> q = additionalFighters.Concat(KnownFighters)
-                                                       .Where(f => string.Equals(f.Name, name,
-                                                           StringComparison.InvariantCultureIgnoreCase));
+                .Where(f => string.Equals(f.Name, name,
+                    StringComparison.InvariantCultureIgnoreCase));
             if (!q.Any())
             {
                 throw new Exception("No known fighter found with name " + name + ".");

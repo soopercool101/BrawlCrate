@@ -100,6 +100,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     {
                         e.SuppressKeyPress = true;
                     }
+
                     break;
                 case Keys.Back:
                     break;
@@ -188,7 +189,7 @@ namespace BrawlLib.Internal.Windows.Controls
 
                 case Keys.Subtract:
                 case Keys.OemMinus:
-                    if (SelectionStart != 0 || (Text.Contains('-') && !SelectedText.Contains('-')))
+                    if (SelectionStart != 0 || Text.Contains('-') && !SelectedText.Contains('-'))
                     {
                         e.SuppressKeyPress = true;
                     }
@@ -220,6 +221,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     {
                         e.SuppressKeyPress = true;
                     }
+
                     break;
                 case Keys.Escape:
                     UpdateText();

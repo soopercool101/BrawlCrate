@@ -3504,7 +3504,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //Offset - Size
         public Dictionary<int, int> _lookupEntries;
 
-        #region Other Data 
+        #region Other Data
 
         public void LoadOtherData()
         {

@@ -883,9 +883,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                             _extraEntries.Add(entry);
                         }
-                        else
-                        {
-                        } //Probably a count
                     }
 
                     y++;

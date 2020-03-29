@@ -66,32 +66,31 @@ namespace BrawlLib.Wii
             {
                 return CompressionType.RunLengthYAZ0;
             }
-            else if (compTag == YAY0.Tag)
+
+            if (compTag == YAY0.Tag)
             {
                 return CompressionType.RunLengthYAY0;
             }
-            else
+
+            CompressionHeader* cmpr = (CompressionHeader*) addr;
+
+            if (cmpr->ExpandedSize < length)
             {
-                CompressionHeader* cmpr = (CompressionHeader*) addr;
-
-                if (cmpr->ExpandedSize < length)
-                {
-                    return CompressionType.None;
-                }
-
-                if (!cmpr->HasLegitCompression())
-                {
-                    return CompressionType.None;
-                }
-
-                //Check to make sure we're not reading a tag
-                if (IsTag((byte*) addr))
-                {
-                    return CompressionType.None;
-                }
-
-                return cmpr->Algorithm;
+                return CompressionType.None;
             }
+
+            if (!cmpr->HasLegitCompression())
+            {
+                return CompressionType.None;
+            }
+
+            //Check to make sure we're not reading a tag
+            if (IsTag((byte*) addr))
+            {
+                return CompressionType.None;
+            }
+
+            return cmpr->Algorithm;
         }
 
         public static uint GetExpandedLength(VoidPtr addr, int length)
@@ -101,14 +100,13 @@ namespace BrawlLib.Wii
             {
                 return ((YAZ0*) addr)->_unCompDataLen;
             }
-            else if (compTag == YAY0.Tag)
+
+            if (compTag == YAY0.Tag)
             {
                 return ((YAY0*) addr)->_unCompDataLen;
             }
-            else
-            {
-                return ((CompressionHeader*) addr)->ExpandedSize;
-            }
+
+            return ((CompressionHeader*) addr)->ExpandedSize;
         }
 
         private static bool IsTag(byte* c)

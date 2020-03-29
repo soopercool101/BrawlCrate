@@ -79,7 +79,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("The ID of the song to show the title for.")]
         public string SongID
         {
-            get => "0x" + ((int)Data._ID).ToString("X8");
+            get => "0x" + ((int) Data._ID).ToString("X8");
             set
             {
                 string field0 = (value ?? "").Split(' ')[0];
@@ -89,7 +89,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 UpdateName();
             }
         }
-        
+
         [Browsable(false)]
         public int ID
         {

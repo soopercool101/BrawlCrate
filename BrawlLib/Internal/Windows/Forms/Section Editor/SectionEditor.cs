@@ -143,11 +143,14 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             }
 
 #if DEBUG
-            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+            string startPath =
+                Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName,
+                    "BrawlLib");
 #else
             string startPath = Application.StartupPath;
 #endif
-            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name, $"{_section.Name}.txt");
+            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name,
+                $"{_section.Name}.txt");
             if (Directory.Exists(Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name)))
             {
                 if (File.Exists(filename))
@@ -167,7 +170,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             for (int i = 0; i * 4 < hexBox1.ByteProvider.Length; i++)
             {
                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
-                byte[] bytes = {
+                byte[] bytes =
+                {
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
@@ -222,7 +226,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                             {
                                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" +
                                                      (index * 4).ToString("X8"));
-                                byte[] bytes = {
+                                byte[] bytes =
+                                {
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 3),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 2),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 1),
@@ -273,7 +278,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             for (int i = annotationTitles.Count; i * 4 < hexBox1.ByteProvider.Length; i++)
             {
                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
-                byte[] bytes = {
+                byte[] bytes =
+                {
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
@@ -446,7 +452,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 grpValue.Enabled = !_section._isBSSSection;
                 if (rdo4byte.Checked)
                 {
-                    byte[] bytes = {
+                    byte[] bytes =
+                    {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 3),
                         hexBox1.ByteProvider.ReadByte(t + 2),
@@ -501,7 +508,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     txtBin7.Text = bins[6];
                     txtBin8.Text = bins[7];
 
-                    if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
+                    if (t / 4 < annotationTitles.Count &&
+                        annotationDescriptions[(int) (t / 4)].StartsWith("Default: 0x"))
                     {
                         _updating = false;
                         annotationDescription.Text = "Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
@@ -516,7 +524,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 else if (rdo2byte.Checked)
                 {
                     t = offset.RoundDown(2);
-                    byte[] bytes = {
+                    byte[] bytes =
+                    {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 1),
                         hexBox1.ByteProvider.ReadByte(t + 0)
@@ -556,7 +565,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     txtBin7.Text = "";
                     txtBin8.Text = "";
 
-                    if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
+                    if (t / 4 < annotationTitles.Count &&
+                        annotationDescriptions[(int) (t / 4)].StartsWith("Default: 0x"))
                     {
                         _updating = false;
                         annotationDescription.Text = "Default: 0x" + bytes[1].ToString("X2") + bytes[0].ToString("X2");
@@ -570,7 +580,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 else if (rdo1byte.Checked)
                 {
                     t = offset;
-                    byte[] bytes = {
+                    byte[] bytes =
+                    {
                         hexBox1.ByteProvider.ReadByte(t)
                     };
                     txtByte1.Text = bytes[0].ToString("X2");
@@ -607,7 +618,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     txtBin7.Text = "";
                     txtBin8.Text = "";
 
-                    if (t / 4 < annotationTitles.Count && annotationDescriptions[(int)(t / 4)].StartsWith("Default: 0x"))
+                    if (t / 4 < annotationTitles.Count &&
+                        annotationDescriptions[(int) (t / 4)].StartsWith("Default: 0x"))
                     {
                         _updating = false;
                         annotationDescription.Text = "Default: 0x" + bytes[0].ToString("X2");
@@ -617,7 +629,6 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                         btn4underline.Checked = t % 4 == 3;
                         _updating = true;
                     }
-
                 }
             }
             else
@@ -1673,16 +1684,19 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
         public void SaveAnnotation()
         {
 #if DEBUG
-            string startPath = Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName, "BrawlLib");
+            string startPath =
+                Path.Combine(new DirectoryInfo(Application.StartupPath).Parent.Parent.Parent.Parent.Parent.FullName,
+                    "BrawlLib");
 #else
             string startPath = Application.StartupPath;
 #endif
             Directory.CreateDirectory(Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name));
-            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name, $"{_section.Name}.txt");
+            string filename = Path.Combine(startPath, "InternalDocumentation", "Module", _section.Root.Name,
+                $"{_section.Name}.txt");
             if (File.Exists(filename))
             {
                 if (DialogResult.Yes != MessageBox.Show("Overwrite " + filename + "?", "Overwrite",
-                        MessageBoxButtons.YesNo))
+                    MessageBoxButtons.YesNo))
                 {
                     return;
                 }
@@ -1781,13 +1795,13 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
         private void btnUnderline_CheckedChanged(object sender, EventArgs e)
         {
             btn1underline.Font = new Font(btn1underline.Font,
-                btn1underline.Checked ? System.Drawing.FontStyle.Underline : System.Drawing.FontStyle.Regular);
+                btn1underline.Checked ? FontStyle.Underline : FontStyle.Regular);
             btn2underline.Font = new Font(btn2underline.Font,
-                btn2underline.Checked ? System.Drawing.FontStyle.Underline : System.Drawing.FontStyle.Regular);
+                btn2underline.Checked ? FontStyle.Underline : FontStyle.Regular);
             btn3underline.Font = new Font(btn3underline.Font,
-                btn3underline.Checked ? System.Drawing.FontStyle.Underline : System.Drawing.FontStyle.Regular);
+                btn3underline.Checked ? FontStyle.Underline : FontStyle.Regular);
             btn4underline.Font = new Font(btn4underline.Font,
-                btn4underline.Checked ? System.Drawing.FontStyle.Underline : System.Drawing.FontStyle.Regular);
+                btn4underline.Checked ? FontStyle.Underline : FontStyle.Regular);
             if (_updating)
             {
                 return;

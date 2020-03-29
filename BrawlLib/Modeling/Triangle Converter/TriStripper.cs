@@ -355,13 +355,11 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 {
                     break;
                 }
-                else
-                {
-                    i = (Node = Link.Terminal).m_Elem.m_Index;
 
-                    Node.m_Elem.SetStripID(m_StripID);
-                    ClockWise = !ClockWise;
-                }
+                i = (Node = Link.Terminal).m_Elem.m_Index;
+
+                Node.m_Elem.SetStripID(m_StripID);
+                ClockWise = !ClockWise;
             }
 
             _checkNodes = false;
@@ -429,13 +427,15 @@ namespace BrawlLib.Modeling.Triangle_Converter
                         AddIndex(Tri.C, NotSimulation);
                         return Link;
                     }
-                    else if (Edge.B == Tri.B && Edge.A == Tri.C && TryAddNode(Tri.A))
+
+                    if (Edge.B == Tri.B && Edge.A == Tri.C && TryAddNode(Tri.A))
                     {
                         Order = ClockWise ? TriOrder.BCA : TriOrder.CAB;
                         AddIndex(Tri.A, NotSimulation);
                         return Link;
                     }
-                    else if (Edge.B == Tri.C && Edge.A == Tri.A && TryAddNode(Tri.B))
+
+                    if (Edge.B == Tri.C && Edge.A == Tri.A && TryAddNode(Tri.B))
                     {
                         Order = ClockWise ? TriOrder.CAB : TriOrder.ABC;
                         AddIndex(Tri.B, NotSimulation);
@@ -468,13 +468,15 @@ namespace BrawlLib.Modeling.Triangle_Converter
                         BackAddIndex(Tri.C);
                         return Link;
                     }
-                    else if (Edge.B == Tri.B && Edge.A == Tri.C && TryAddNode(Tri.A))
+
+                    if (Edge.B == Tri.B && Edge.A == Tri.C && TryAddNode(Tri.A))
                     {
                         Order = ClockWise ? TriOrder.ABC : TriOrder.CAB;
                         BackAddIndex(Tri.A);
                         return Link;
                     }
-                    else if (Edge.B == Tri.C && Edge.A == Tri.A && TryAddNode(Tri.B))
+
+                    if (Edge.B == Tri.C && Edge.A == Tri.A && TryAddNode(Tri.B))
                     {
                         Order = ClockWise ? TriOrder.BCA : TriOrder.ABC;
                         BackAddIndex(Tri.B);

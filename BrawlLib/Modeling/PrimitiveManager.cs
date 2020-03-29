@@ -1921,12 +1921,12 @@ namespace BrawlLib.Modeling
                                 for (int i = 0; i < _pointCount; i++)
                                 {
                                     _facepoints[i]._colorIndices[x - 2] = Array
-                                                                          .IndexOf(
-                                                                              ((MDL0ObjectNode) ((MDL0Node) Collada.Collada
-                                                                                      .CurrentModel)
-                                                                                  ._objList[_newClrObj[x - 2]])
-                                                                              ._manager.GetColors(x - 2, false),
-                                                                              *pIn2++).ClampMin(0);
+                                        .IndexOf(
+                                            ((MDL0ObjectNode) ((MDL0Node) Collada.Collada
+                                                    .CurrentModel)
+                                                ._objList[_newClrObj[x - 2]])
+                                            ._manager.GetColors(x - 2, false),
+                                            *pIn2++).ClampMin(0);
                                 }
                             }
                         }

@@ -1,66 +1,35 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Animation;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GMOTNode : ResourceNode
+    public unsafe class GMOTNode : BLOCEntryNode
     {
-        internal GMOT* Header => (GMOT*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GMOTEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GMOT;
-
-        [Category("GMOT")]
-        [DisplayName("Entries")]
-        public int count => Header->_count;
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GMOTEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Animated Objects";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Animated Objects";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GMOT*) source.Address)->_tag == GMOT.Tag ? new GMOTNode() : null;
+            return source.Tag == "GMOT" ? new GMOTNode() : null;
         }
     }
 
     public unsafe class GMOTEntryNode : ResourceNode
     {
         internal GMOTEntry* Header => (GMOTEntry*) WorkingUncompressed.Address;
+        public override bool supportsCompression => false;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         [Category("Animated Object")]
         [DisplayName("Model Index")]
-        public int MID => *(byte*) (WorkingUncompressed.Address + 0x3C);
+        public int ModelIndex => *(byte*) (WorkingUncompressed.Address + 0x3C);
 
         [Category("Animated Object")]
         [DisplayName("Collision Index")]
-        public int CID
+        public int CollisionIndex
         {
             get
             {
@@ -69,10 +38,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return -1;
                 }
-                else
-                {
-                    return CID;
-                }
+
+                return CID;
             }
         }
 
@@ -85,7 +52,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnInitialize();
             if (_name == null)
             {
-                _name = "Object[" + Index + ']';
+                _name = $"Object [{Index}]";
             }
 
             return false;

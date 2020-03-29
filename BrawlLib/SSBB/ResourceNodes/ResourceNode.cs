@@ -33,6 +33,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         public FileMap Map;
         public CompressionType Compression;
 
+        public string Tag
+        {
+            get
+            {
+                if (Length < 4)
+                {
+                    return null;
+                }
+
+                return new string((sbyte*) Address);
+            }
+        }
+
         public DataSource(VoidPtr addr, int len) : this(addr, len, CompressionType.None)
         {
         }
@@ -195,6 +208,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(false)] public virtual int Level => _parent == null ? 0 : _parent.Level + 1;
+        [Browsable(false)] public virtual int MaxNameLength => 255;
         [Browsable(false)] public virtual bool AllowDuplicateNames => false;
         [Browsable(false)] public virtual bool AllowNullNames => false;
 
@@ -553,10 +567,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public virtual bool AddDown()
@@ -571,10 +583,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public virtual bool ToParent()
@@ -583,10 +593,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         #endregion
@@ -764,6 +772,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 AddChild(child, change);
                 return;
             }
+
             Children.Insert(index, child);
             child._parent = this;
             ChildInserted?.Invoke(index, this, child);
@@ -893,11 +902,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
 #endif
-                using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
-                    FileShare.ReadWrite, 8, FileOptions.SequentialScan))
-                {
-                    Export(stream);
-                }
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+            {
+                Export(stream);
+            }
 #if !DEBUG
             }
             catch
@@ -1245,7 +1254,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (path.Contains("/") && path.Substring(0, path.IndexOf('/'))
-                                          .Equals(root.Name, compare))
+                .Equals(root.Name, compare))
             {
                 return root.FindChild(path.Substring(path.IndexOf('/') + 1), searchChildren, compare);
             }
@@ -1467,7 +1476,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             if (a is BRRESNode)
                             {
-                                foreach (MDL0Node m in ((BRRESNode) a).GetFolder<MDL0Node>().Children)
+                                foreach (MDL0Node m in ((BRRESNode) a)?.GetFolder<MDL0Node>()?.Children ?? new List<ResourceNode>())
                                 {
                                     nodes.Add(m);
                                 }
@@ -1480,18 +1489,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     RedirectStart:
                                     if (tempBres.GroupID != group)
                                     {
-                                        if (tempBres is BRRESNode)
-                                        {
-                                            foreach (MDL0Node m in ((BRRESNode) tempBres).GetFolder<MDL0Node>()
-                                                                                         .Children)
-                                            {
-                                                nodes.Add(m);
-                                            }
-                                        }
-                                        else if (tempBres.RedirectNode != null)
+                                        if (tempBres.RedirectNode != null)
                                         {
                                             tempBres = tempBres.RedirectNode as ARCEntryNode;
                                             goto RedirectStart;
+                                        }
+                                        else if (tempBres is BRRESNode)
+                                        {
+                                            foreach (MDL0Node m in ((BRRESNode) tempBres)?.GetFolder<MDL0Node>()?.Children ?? new List<ResourceNode>())
+                                            {
+                                                nodes.Add(m);
+                                            }
                                         }
                                     }
                                 }
@@ -1650,11 +1658,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return null;
             }
-            else
-            {
-                UnmanagedMemoryStream stream = new UnmanagedMemoryStream((byte*) data.Address, data.Length);
-                return MD5Provider.ComputeHash(stream);
-            }
+
+            UnmanagedMemoryStream stream = new UnmanagedMemoryStream((byte*) data.Address, data.Length);
+            return MD5Provider.ComputeHash(stream);
         }
 
         /// <summary>

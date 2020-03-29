@@ -106,16 +106,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return FullName;
             }
-            else
-            {
-                string[] inheritTypes = new string[_inheritance.Count];
-                for (int i = 0; i < inheritTypes.Length; i++)
-                {
-                    inheritTypes[i] = _inheritance[i]._type.ToString(false);
-                }
 
-                return FullName + " : " + string.Join(", ", inheritTypes);
+            string[] inheritTypes = new string[_inheritance.Count];
+            for (int i = 0; i < inheritTypes.Length; i++)
+            {
+                inheritTypes[i] = _inheritance[i]._type.ToString(false);
             }
+
+            return FullName + " : " + string.Join(", ", inheritTypes);
         }
     }
 

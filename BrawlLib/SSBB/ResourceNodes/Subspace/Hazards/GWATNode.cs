@@ -1,72 +1,19 @@
 using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GWATNode : ResourceNode
+    public unsafe class GWATNode : BLOCEntryNode
     {
-        internal GWAT* Header => (GWAT*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GWATEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GWAT;
-
-        [Category("GWAT")]
-        [DisplayName("Entry Count")]
-        public int Count => Children?.Count ?? 0;
-
-        private const int _entrySize = 0x38; // The constant size of a child entry
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GWATEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            return 0x08 + Children.Count * 4 + Children.Count * _entrySize;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GWAT* header = (GWAT*) address;
-            *header = new GWAT(Children.Count);
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                ResourceNode r = Children[i];
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                r.Rebuild(address + offset, _entrySize, true);
-                offset += _entrySize;
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Swimmable Water";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Swimmable Water";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GWAT*) source.Address)->_tag == GWAT.Tag ? new GWATNode() : null;
+            return source.Tag == "GWAT" ? new GWATNode() : null;
         }
     }
 

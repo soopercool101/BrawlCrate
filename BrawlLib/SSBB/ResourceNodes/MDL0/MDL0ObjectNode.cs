@@ -270,8 +270,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (string.IsNullOrEmpty(value))
                 {
                     if (oldNode != null && MessageBox.Show(RootNode._mainForm,
-                            "Are you sure you want to remove this reference?", "Continue?",
-                            MessageBoxButtons.OKCancel) == DialogResult.OK)
+                        "Are you sure you want to remove this reference?", "Continue?",
+                        MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
                         if (oldNode._objects.Contains(this))
                         {
@@ -339,9 +339,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (string.IsNullOrEmpty(value))
             {
                 if (oldNode != null && (skipDialog || MessageBox.Show(RootNode._mainForm,
-                                            "Are you sure you want to remove this reference?", "Continue?",
-                                            MessageBoxButtons.OKCancel) ==
-                                        DialogResult.OK))
+                        "Are you sure you want to remove this reference?", "Continue?",
+                        MessageBoxButtons.OKCancel) ==
+                    DialogResult.OK))
                 {
                     if (oldNode._objects.Contains(this))
                     {
@@ -367,8 +367,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         if (newNode.NumEntries < oldNode.NumEntries)
                         {
                             if (!skipDialog && MessageBox.Show(null,
-                                    "This node has less colors than in the originally linked color node.\nAny colors that cannot be found will use the first color instead.\nIs this okay?",
-                                    "", MessageBoxButtons.YesNo) == DialogResult.No)
+                                "This node has less colors than in the originally linked color node.\nAny colors that cannot be found will use the first color instead.\nIs this okay?",
+                                "", MessageBoxButtons.YesNo) == DialogResult.No)
                             {
                                 return;
                             }
@@ -428,9 +428,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (string.IsNullOrEmpty(value))
             {
                 if (oldNode != null && (skipDialog || MessageBox.Show(RootNode._mainForm,
-                                            "Are you sure you want to remove this reference?", "Continue?",
-                                            MessageBoxButtons.OKCancel) ==
-                                        DialogResult.OK))
+                        "Are you sure you want to remove this reference?", "Continue?",
+                        MessageBoxButtons.OKCancel) ==
+                    DialogResult.OK))
                 {
                     if (oldNode._objects.Contains(this))
                     {
@@ -1144,10 +1144,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 return size;
             }
-            else
-            {
-                return base.OnCalculateSize(force);
-            }
+
+            return base.OnCalculateSize(force);
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -1500,10 +1498,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                             GL.Disable(EnableCap.Texture2D);
                             continue;
                         }
-                        else
-                        {
-                            GL.Enable(EnableCap.Texture2D);
-                        }
+
+                        GL.Enable(EnableCap.Texture2D);
 
                         MDL0MaterialRefNode mr = (MDL0MaterialRefNode) material.Children[i];
                         if (mr._texture == null || !mr._texture.Enabled)

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30g</span>
+   &#160;<span id="projectnumber">v0.30h</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -1038,9 +1038,13 @@ $(function() {
 , <a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html#afbebd5b44e233af41668d70f1a94083d">BrawlLib.Imaging.IImageSource</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_e_s_group_node.html#adc7180f8a9fe35bd5fd3ed4130f7a3e0">BrawlLib.SSBB.ResourceNodes.BRESGroupNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a969ddb0db19bedc125094a67300acc5f">BrawlLib.SSBB.ResourceNodes.BRRESNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_node.html#a9cf3ceddbfe628681093caa0dcf45544">BrawlLib.SSBB.ResourceNodes.MDL0MaterialNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#aea939c1d115885482fbd62b5b6c838da">BrawlLib.SSBB.ResourceNodes.MDL0MaterialRefNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_texture_node.html#afd038429ef04c0dfca8b321e24ee58d5">BrawlLib.SSBB.ResourceNodes.MDL0TextureNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html#a872629ae97cbdf77d293d5a19e33b668">BrawlLib.SSBB.ResourceNodes.PAT0TextureEntryNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html#a5c207d3d44d1625c664076f07d3a0bb4">BrawlLib.SSBB.ResourceNodes.PAT0TextureNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_f_t_entry_node.html#a160b9613654fbc1b7c4f20da29430d4e">BrawlLib.SSBB.ResourceNodes.REFTEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_f_t_node.html#aad0e76c3e047ce60fc64bf5760fca096">BrawlLib.SSBB.ResourceNodes.REFTNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#aae6ed6edc2f8dd6fa106d2f78b458ad6">BrawlLib.SSBB.ResourceNodes.TEX0Node</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a7816d453a4cfb74da1504b8866d277eb">BrawlLib.SSBB.ResourceNodes.THPFrame</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_node.html#a18293fb158b919e0280464c4ea9faefd">BrawlLib.SSBB.ResourceNodes.THPNode</a>
@@ -1883,7 +1887,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_tex_coord_renderer.html#aa197f6b5d7b39e91cd70c5e7bb63277d">BrawlLib.Internal.Windows.Controls.TexCoordRenderer</a>
 </li>
 <li>GLTexture()
-: <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ac20b9cb995f2a3e4cd98d96a44259f0d">BrawlLib.OpenGL.GLTexture</a>
+: <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af236b020b009f3f85b39b69ed0425a2a">BrawlLib.OpenGL.GLTexture</a>
 </li>
 <li>GLTextureWindow()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_g_l_texture_window.html#a6d8f18be2b9c9b2e214fbb3790c06bcd">BrawlLib.Internal.Windows.Forms.GLTextureWindow</a>
@@ -1918,6 +1922,12 @@ $(function() {
 <li>GoodProgressBar()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_progress_bar.html#a2c4649f1e48b97c2940b03a6b2e5928d">BrawlLib.Internal.Windows.Controls.GoodProgressBar</a>
 </li>
+<li>GoTo()
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_redirect_wrapper.html#a9ec4d8180e816414194077f672b46029">BrawlCrate.NodeWrappers.RedirectWrapper</a>
+</li>
+<li>GoToAction()
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_redirect_wrapper.html#a30afc33c9d1d342f5a18ac04c09422c9">BrawlCrate.NodeWrappers.RedirectWrapper</a>
+</li>
 <li>gotoToolStripMenuItem
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#a579f409f8bdab9e48cf71f64f4be50cd">BrawlLib.Internal.Windows.Controls.Hex_Editor.SectionEditor</a>
 </li>
@@ -1934,7 +1944,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_gradient_dialog.html#aa41a9bc8e7bbc16fb5aaff48de00ec78">BrawlLib.Internal.Windows.Forms.GradientDialog</a>
 </li>
 <li>GraphArray()
-: <a class="el" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_graph_array.html#ac289253869bff426c2a99144223561df">BrawlLib.Modeling.Triangle_Converter.GraphArray&lt; T &gt;</a>
+: <a class="el" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_graph_array.html#a3df4ab671d6b1ead2d89878299a00c9e">BrawlLib.Modeling.Triangle_Converter.GraphArray&lt; T &gt;</a>
 </li>
 <li>Graphic
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_n_d_v_entry_node.html#a4baeb566069fe870414ed5b08b58423c">BrawlLib.SSBB.ResourceNodes.GNDVEntryNode</a>
@@ -2216,7 +2226,7 @@ $(function() {
 : <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_sound_1_1_g_s_n_d_entry.html#af8074a2a618daf3b485adb2e9eb67a8d">BrawlLib.SSBB.Types.Subspace.Sound.GSNDEntry</a>
 </li>
 <li>GSNDWrapper()
-: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_g_s_n_d_wrapper.html#ac2c232a5e7f86ae14460781185eabd08">BrawlCrate.NodeWrappers.GSNDWrapper</a>
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_g_s_n_d_wrapper.html#a0649d559545448e84b1232ed52d8c4fe">BrawlCrate.NodeWrappers.GSNDWrapper</a>
 </li>
 <li>GuessIfAlphaInverted()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#ae2dec045ccd050f4c933bc43b2fb45db">BrawlLib.Internal.Drawing.BitmapExtension</a>

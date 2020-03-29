@@ -41,9 +41,9 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             panel1.Controls.Add(description);
             panel1.Controls.Add(toolStrip1);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new System.Drawing.Point(1, 188);
+            panel1.Location = new Point(1, 188);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(324, 95);
+            panel1.Size = new Size(324, 95);
             panel1.TabIndex = 2;
             // 
             // description
@@ -51,11 +51,11 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             description.BackColor = SystemColors.Control;
             description.BorderStyle = BorderStyle.Fixed3D;
             description.Dock = DockStyle.Fill;
-            description.Font = new Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point,
+            description.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point,
                 (byte) 0);
-            description.Location = new System.Drawing.Point(0, 25);
+            description.Location = new Point(0, 25);
             description.Name = "description";
-            description.Size = new System.Drawing.Size(324, 70);
+            description.Size = new Size(324, 70);
             description.TabIndex = 59;
             // 
             // toolStrip1
@@ -69,9 +69,9 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
                 btnUp,
                 btnDown
             });
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new System.Drawing.Size(324, 25);
+            toolStrip1.Size = new Size(324, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -81,7 +81,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnAdd.Image = (Image) resources.GetObject("btnAdd.Image");
             btnAdd.ImageTransparentColor = Color.Magenta;
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new System.Drawing.Size(33, 22);
+            btnAdd.Size = new Size(33, 22);
             btnAdd.Text = "Add";
             btnAdd.Click += new EventHandler(btnAdd_Click);
             // 
@@ -91,7 +91,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnRemove.Image = (Image) resources.GetObject("btnRemove.Image");
             btnRemove.ImageTransparentColor = Color.Magenta;
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new System.Drawing.Size(54, 22);
+            btnRemove.Size = new Size(54, 22);
             btnRemove.Text = "Remove";
             btnRemove.Click += new EventHandler(btnRemove_Click);
             // 
@@ -101,7 +101,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnModify.Image = (Image) resources.GetObject("btnModify.Image");
             btnModify.ImageTransparentColor = Color.Magenta;
             btnModify.Name = "btnModify";
-            btnModify.Size = new System.Drawing.Size(49, 22);
+            btnModify.Size = new Size(49, 22);
             btnModify.Text = "Modify";
             btnModify.Click += new EventHandler(btnModify_Click);
             // 
@@ -111,7 +111,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnUp.Image = (Image) resources.GetObject("btnUp.Image");
             btnUp.ImageTransparentColor = Color.Magenta;
             btnUp.Name = "btnUp";
-            btnUp.Size = new System.Drawing.Size(23, 22);
+            btnUp.Size = new Size(23, 22);
             btnUp.Text = "▲";
             btnUp.Click += new EventHandler(btnUp_Click);
             // 
@@ -121,7 +121,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnDown.Image = (Image) resources.GetObject("btnDown.Image");
             btnDown.ImageTransparentColor = Color.Magenta;
             btnDown.Name = "btnDown";
-            btnDown.Size = new System.Drawing.Size(23, 22);
+            btnDown.Size = new Size(23, 22);
             btnDown.Text = "▼";
             btnDown.Click += new EventHandler(btnDown_Click);
             // 
@@ -129,9 +129,9 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             // 
             panel2.Controls.Add(toolStrip2);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(1, 1);
+            panel2.Location = new Point(1, 1);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(324, 23);
+            panel2.Size = new Size(324, 23);
             panel2.TabIndex = 15;
             // 
             // toolStrip2
@@ -145,9 +145,9 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
                 btnPaste,
                 btnCopyText
             });
-            toolStrip2.Location = new System.Drawing.Point(0, 0);
+            toolStrip2.Location = new Point(0, 0);
             toolStrip2.Name = "toolStrip2";
-            toolStrip2.Size = new System.Drawing.Size(324, 23);
+            toolStrip2.Size = new Size(324, 23);
             toolStrip2.TabIndex = 1;
             toolStrip2.Text = "toolStrip2";
             // 
@@ -157,7 +157,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnCopy.Image = (Image) resources.GetObject("btnCopy.Image");
             btnCopy.ImageTransparentColor = Color.Magenta;
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(39, 20);
+            btnCopy.Size = new Size(39, 20);
             btnCopy.Text = "Copy";
             btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
@@ -167,7 +167,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnCut.Image = (Image) resources.GetObject("btnCut.Image");
             btnCut.ImageTransparentColor = Color.Magenta;
             btnCut.Name = "btnCut";
-            btnCut.Size = new System.Drawing.Size(30, 20);
+            btnCut.Size = new Size(30, 20);
             btnCut.Text = "Cut";
             btnCut.Click += new EventHandler(btnCut_Click);
             // 
@@ -177,7 +177,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnPaste.Image = (Image) resources.GetObject("btnPaste.Image");
             btnPaste.ImageTransparentColor = Color.Magenta;
             btnPaste.Name = "btnPaste";
-            btnPaste.Size = new System.Drawing.Size(39, 20);
+            btnPaste.Size = new Size(39, 20);
             btnPaste.Text = "Paste";
             btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
@@ -187,7 +187,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             //btnCopyText.Image = (Image) resources.GetObject("btnCopyText.Image");
             btnCopyText.ImageTransparentColor = Color.Magenta;
             btnCopyText.Name = "btnCopyText";
-            btnCopyText.Size = new System.Drawing.Size(64, 20);
+            btnCopyText.Size = new Size(64, 20);
             btnCopyText.Text = "Copy Text";
             btnCopyText.Click += new EventHandler(btnCopyText_Click);
             // 
@@ -197,10 +197,10 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             EventList.FormattingEnabled = true;
             EventList.HorizontalScrollbar = true;
             EventList.IntegralHeight = false;
-            EventList.Location = new System.Drawing.Point(1, 24);
+            EventList.Location = new Point(1, 24);
             EventList.Name = "EventList";
             EventList.SelectionMode = SelectionMode.MultiExtended;
-            EventList.Size = new System.Drawing.Size(324, 161);
+            EventList.Size = new Size(324, 161);
             EventList.TabIndex = 16;
             EventList.SelectedIndexChanged += new EventHandler(EventList_SelectedIndexChanged);
             EventList.DoubleClick += new EventHandler(EventList_DoubleClick);
@@ -208,9 +208,9 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             // splitter1
             // 
             splitter1.Dock = DockStyle.Bottom;
-            splitter1.Location = new System.Drawing.Point(1, 185);
+            splitter1.Location = new Point(1, 185);
             splitter1.Name = "splitter1";
-            splitter1.Size = new System.Drawing.Size(324, 3);
+            splitter1.Size = new Size(324, 3);
             splitter1.TabIndex = 60;
             splitter1.TabStop = false;
             // 
@@ -222,7 +222,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             Controls.Add(panel1);
             Name = "ScriptEditor";
             Padding = new Padding(1);
-            Size = new System.Drawing.Size(326, 284);
+            Size = new Size(326, 284);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             toolStrip1.ResumeLayout(false);
@@ -510,7 +510,8 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
                             TargetNode.Root.GetBoneIndex(ref id);
                         }
 
-                        if (_targetNode.Model?._linker.BoneCache != null && _targetNode.Model._linker.BoneCache.Length > id && id >= 0)
+                        if (_targetNode.Model?._linker.BoneCache != null &&
+                            _targetNode.Model._linker.BoneCache.Length > id && id >= 0)
                         {
                             return _targetNode.Model._linker.BoneCache[id].Name;
                         }

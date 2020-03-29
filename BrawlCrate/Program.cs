@@ -1,4 +1,4 @@
-﻿using BrawlCrate.NodeWrappers;
+using BrawlCrate.NodeWrappers;
 using BrawlCrate.UI;
 using BrawlCrate.UI.Model_Previewer.ModelEditControl;
 using BrawlLib.Internal;
@@ -14,9 +14,12 @@ using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling.Collada;
 using System.Collections.Specialized;
+#if !DEBUG
 using System.Configuration;
+#endif
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate
@@ -29,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.30g";
+        public static readonly string TagName = "v0.30h";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -38,13 +41,12 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.30g! Here's what's new in this release:
-- Adds support for Byte and Short interpretations to attribute grids
-- Adds support to paste in color+alpha data with Ctrl+V in Color Control
-- Fix bug in which duplicating ARC Entries would result in crashes
-- Fix bug in which new collision objects would not have names and would not be shown in the main form
-- Fix bug in which imported MDL0 materials would be given generic names
-- Fix bug in which duplicated MDL0 materials would not have proper names for their textures
+            @"Updated to BrawlCrate v0.30h! Here's what's new in this release:
+- Add multi-import support for MDL0 subentries
+- Improve MSBin parsing
+- Improve Attribute Grid support
+- Fix SHP0 save corruption
+- Fix various duplication bugs
 
 Full changelog and documentation can be viewed from the help menu.";
 
@@ -169,14 +171,14 @@ Full changelog and documentation can be viewed from the help menu.";
             AssemblyTitleShort = AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8);
 #else
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
-                                                                  .GetCustomAttributes(typeof(AssemblyTitleAttribute),
-                                                                      false)[0]).Title;
+                .GetCustomAttributes(typeof(AssemblyTitleAttribute),
+                    false)[0]).Title;
             if (BrawlLib.BrawlCrate.PerSessionSettings.ProgramBirthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
 
-            AssemblyTitleShort = AssemblyTitleFull.Replace("Hotfix ", "h");
+            AssemblyTitleShort = AssemblyTitleFull.Replace(" Hotfix ", "-h");
 #endif
 #if DEBUG
             AssemblyTitleFull += " DEBUG";
@@ -184,24 +186,24 @@ Full changelog and documentation can be viewed from the help menu.";
 #endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
-                                                .GetExecutingAssembly()
-                                                .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
+                    .GetExecutingAssembly()
+                    .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
                 .Description;
             AssemblyCopyright =
                 ((AssemblyCopyrightAttribute) Assembly
-                                              .GetExecutingAssembly()
-                                              .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
+                    .GetExecutingAssembly()
+                    .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
                 .Copyright;
             BrawlLibTitle = ((AssemblyTitleAttribute) Assembly
-                                                      .GetAssembly(typeof(ResourceNode))
-                                                      .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
+                    .GetAssembly(typeof(ResourceNode))
+                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
             OpenDlg = new OpenFileDialog {Title = "Open File"};
             MultiFileOpenDlg = new OpenFileDialog {Title = "Open Files", Multiselect = true};
             SaveDlg = new SaveFileDialog();
 #if !MONO
-            FolderDlg = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            FolderDlg = new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             FolderDlg = new FolderBrowserDialog();
 #endif
@@ -350,10 +352,12 @@ Full changelog and documentation can be viewed from the help menu.";
                     {
                         file.Write(changelog);
                     }
+
                     using (StreamWriter file = new StreamWriter(Path.Combine(AppPath, "title.txt")))
                     {
                         file.Write(AssemblyTitleFull);
                     }
+
                     return;
                 }
 
@@ -615,20 +619,20 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-                if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
-                {
-                    MainForm.Instance.Reset();
-                    MainForm.Instance.RecentFilesHandler.AddFile(path);
-                    return true;
-                }
-
-                _rootPath = null;
-                if (showErrors)
-                {
-                    MessageBox.Show("Unable to recognize input file.");
-                }
-
+            if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
+            {
                 MainForm.Instance.Reset();
+                MainForm.Instance.RecentFilesHandler.AddFile(path);
+                return true;
+            }
+
+            _rootPath = null;
+            if (showErrors)
+            {
+                MessageBox.Show("Unable to recognize input file.");
+            }
+
+            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -675,19 +679,19 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-                if ((_rootNode = NodeFactory.FromFile(null, path)) != null)
-                {
-                    MainForm.Instance.Reset();
-                    return true;
-                }
-
-                _rootPath = null;
-                if (showErrors)
-                {
-                    MessageBox.Show("Unable to recognize template file.");
-                }
-
+            if ((_rootNode = NodeFactory.FromFile(null, path)) != null)
+            {
                 MainForm.Instance.Reset();
+                return true;
+            }
+
+            _rootPath = null;
+            if (showErrors)
+            {
+                MessageBox.Show("Unable to recognize template file.");
+            }
+
+            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -710,11 +714,11 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-                if (FolderDlg.ShowDialog() == DialogResult.OK)
-                {
-                    fileName = FolderDlg.SelectedPath;
-                    return true;
-                }
+            if (FolderDlg.ShowDialog() == DialogResult.OK)
+            {
+                fileName = FolderDlg.SelectedPath;
+                return true;
+            }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -768,20 +772,20 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-                if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
-                {
-                    MainForm.Instance.Reset();
-                    MainForm.Instance.RecentFilesHandler.AddFile(path);
-                    return true;
-                }
-
-                _rootPath = null;
-                if (showErrors)
-                {
-                    MessageBox.Show("Unable to recognize input file.");
-                }
-
+            if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
+            {
                 MainForm.Instance.Reset();
+                MainForm.Instance.RecentFilesHandler.AddFile(path);
+                return true;
+            }
+
+            _rootPath = null;
+            if (showErrors)
+            {
+                MessageBox.Show("Unable to recognize input file.");
+            }
+
+            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -843,28 +847,28 @@ Full changelog and documentation can be viewed from the help menu.";
                 try
                 {
 #endif
-                    if (_rootPath == null)
-                    {
-                        return SaveAs();
-                    }
+                if (_rootPath == null)
+                {
+                    return SaveAs();
+                }
 
-                    bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
-                    if (!force && !_rootNode.IsDirty)
-                    {
-                        MessageBox.Show("No changes have been made.");
-                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                        return false;
-                    }
-
-                    if (!(_rootNode is FolderNode))
-                    {
-                        _rootNode.Merge(force);
-                    }
-
-                    _rootNode.Export(_rootPath);
-                    _rootNode.IsDirty = false;
+                bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
+                if (!force && !_rootNode.IsDirty)
+                {
+                    MessageBox.Show("No changes have been made.");
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                    return true;
+                    return false;
+                }
+
+                if (!(_rootNode is FolderNode))
+                {
+                    _rootNode.Merge(force);
+                }
+
+                _rootNode.Export(_rootPath);
+                _rootNode.IsDirty = false;
+                MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                return true;
 #if !DEBUG
                 }
                 catch (Exception x)
@@ -900,11 +904,11 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-                if (OpenDlg.ShowDialog() == DialogResult.OK)
-                {
-                    fileName = OpenDlg.FileName;
-                    return true;
-                }
+            if (OpenDlg.ShowDialog() == DialogResult.OK)
+            {
+                fileName = OpenDlg.FileName;
+                return true;
+            }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -923,11 +927,11 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-                if (MultiFileOpenDlg.ShowDialog() == DialogResult.OK)
-                {
-                    fileNames = MultiFileOpenDlg.FileNames;
-                    return fileNames.Length;
-                }
+            if (MultiFileOpenDlg.ShowDialog() == DialogResult.OK)
+            {
+                fileNames = MultiFileOpenDlg.FileNames;
+                return fileNames.Length;
+            }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -939,14 +943,13 @@ Full changelog and documentation can be viewed from the help menu.";
             return 0;
         }
 
-        public static int SaveFile(string filter, string name, out string fileName)
+        public static bool SaveFile(string filter, string name, out string fileName)
         {
             return SaveFile(filter, name, out fileName, true);
         }
 
-        public static int SaveFile(string filter, string name, out string fileName, bool categorize)
+        public static bool SaveFile(string filter, string name, out string fileName, bool categorize)
         {
-            int fIndex = 0;
             fileName = null;
 
             SaveDlg.Filter = filter;
@@ -954,6 +957,7 @@ Full changelog and documentation can be viewed from the help menu.";
             SaveDlg.FilterIndex = 1;
             if (SaveDlg.ShowDialog() == DialogResult.OK)
             {
+                int fIndex;
                 if (categorize && SaveDlg.FilterIndex == 1 && Path.HasExtension(SaveDlg.FileName))
                 {
                     fIndex = CategorizeFilter(SaveDlg.FileName, filter);
@@ -965,9 +969,10 @@ Full changelog and documentation can be viewed from the help menu.";
 
                 //Fix extension
                 fileName = ApplyExtension(SaveDlg.FileName, filter, fIndex - 1);
+                return true;
             }
 
-            return fIndex;
+            return false;
         }
 
         public static bool SaveFolder(out string folderName)
@@ -1036,23 +1041,23 @@ Full changelog and documentation can be viewed from the help menu.";
                 try
                 {
 #endif
-                    GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
-                    string path = w.Export();
-                    if (path != null)
+                GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
+                string path = w.Export();
+                if (path != null)
+                {
+                    _rootPath = path;
+                    RootNode._origPath = path;
+                    if (w is FolderWrapper)
                     {
-                        _rootPath = path;
-                        RootNode._origPath = path;
-                        if (w is FolderWrapper)
-                        {
-                            w.Resource.Name = w.Resource.FileName;
-                            w.Text = w.Resource.Name;
-                        }
-
-                        MainForm.Instance.UpdateName();
-                        w.Resource.IsDirty = false;
-                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                        return true;
+                        w.Resource.Name = w.Resource.FileName;
+                        w.Text = w.Resource.Name;
                     }
+
+                    MainForm.Instance.UpdateName();
+                    w.Resource.IsDirty = false;
+                    MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                    return true;
+                }
 #if !DEBUG
                 }
                 catch (Exception x)

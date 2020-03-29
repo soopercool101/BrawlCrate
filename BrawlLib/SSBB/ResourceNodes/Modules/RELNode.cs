@@ -800,8 +800,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private unsafe bool nodeContainsString(string s)
         {
             return arrayIndexOf(WorkingUncompressed.Address,
-                       WorkingUncompressed.Length,
-                       Encoding.UTF8.GetBytes(s)) > 0;
+                WorkingUncompressed.Length,
+                Encoding.UTF8.GetBytes(s)) > 0;
         }
 
         /* These are absolute offsets - land within section 1.

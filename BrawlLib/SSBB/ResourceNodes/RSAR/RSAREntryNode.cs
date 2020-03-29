@@ -86,10 +86,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((uint) (Data - RSARNode.Header)).ToString("X");
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
         }
 

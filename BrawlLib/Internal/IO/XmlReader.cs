@@ -87,7 +87,8 @@ namespace BrawlLib.Internal.IO
                     inStr = true;
                     continue;
                 }
-                else if (*_ptr == '<' || *_ptr == '>' || *_ptr == '/')
+
+                if (*_ptr == '<' || *_ptr == '>' || *_ptr == '/')
                 {
                     if (!inStr)
                     {

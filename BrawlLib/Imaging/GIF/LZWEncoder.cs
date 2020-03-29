@@ -226,7 +226,8 @@ namespace BrawlLib.Imaging.GIF
                     ent = codetab[i];
                     continue;
                 }
-                else if (htab[i] >= 0) // non-empty slot
+
+                if (htab[i] >= 0) // non-empty slot
                 {
                     disp = hsize_reg - i; // secondary hash (after G. Knott)
                     if (i == 0)

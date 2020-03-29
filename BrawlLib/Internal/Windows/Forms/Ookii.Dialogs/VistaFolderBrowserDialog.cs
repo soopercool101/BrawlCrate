@@ -270,8 +270,8 @@ namespace BrawlLib.Internal.Windows.Forms.Ookii.Dialogs
             if (_downlevelDialog != null)
             {
                 return _downlevelDialog.ShowDialog(hwndOwner == IntPtr.Zero
-                           ? null
-                           : new WindowHandleWrapper(hwndOwner)) == DialogResult.OK;
+                    ? null
+                    : new WindowHandleWrapper(hwndOwner)) == DialogResult.OK;
             }
 
             IFileDialog dialog = null;

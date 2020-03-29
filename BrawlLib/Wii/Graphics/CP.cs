@@ -273,10 +273,8 @@ namespace BrawlLib.Wii.Graphics
             {
                 return new CPElementDef((_grp0 >> 21) & 0x1FF);
             }
-            else
-            {
-                return new CPElementDef((uint) ((_grp12 >> (--index * 9)) & 0x1FF));
-            }
+
+            return new CPElementDef((uint) ((_grp12 >> (--index * 9)) & 0x1FF));
         }
 
         public void SetUVDef(int index, CPElementDef def)

@@ -196,7 +196,8 @@ namespace BrawlLib.Internal.Windows.Controls
                 {
                     return _frameLimit - 1;
                 }
-                else if (_selKey != null)
+
+                if (_selKey != null)
                 {
                     return GetKeyframeMaxIndex() - GetKeyframeMinIndex();
                 }
@@ -271,10 +272,8 @@ namespace BrawlLib.Internal.Windows.Controls
                     {
                         return _selKey._index;
                     }
-                    else
-                    {
-                        return _selKey._next._index;
-                    }
+
+                    return _selKey._next._index;
                 }
             }
             else
@@ -295,10 +294,8 @@ namespace BrawlLib.Internal.Windows.Controls
                     {
                         return _selKey._index;
                     }
-                    else
-                    {
-                        return _selKey._prev._index;
-                    }
+
+                    return _selKey._prev._index;
                 }
             }
             else
@@ -362,11 +359,9 @@ namespace BrawlLib.Internal.Windows.Controls
                         two = entry._next._value;
                         return true;
                     }
-                    else
-                    {
-                        one = entry._value;
-                        return false;
-                    }
+
+                    one = entry._value;
+                    return false;
                 }
             }
 

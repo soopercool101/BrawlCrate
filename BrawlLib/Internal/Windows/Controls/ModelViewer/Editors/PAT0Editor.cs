@@ -28,9 +28,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(56, 23);
+            label1.Location = new Point(56, 23);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(46, 13);
+            label1.Size = new Size(46, 13);
             label1.TabIndex = 1;
             label1.Text = "Texture:";
             // 
@@ -39,9 +39,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             texBox.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                              | AnchorStyles.Right;
             texBox.FormattingEnabled = true;
-            texBox.Location = new System.Drawing.Point(108, 20);
+            texBox.Location = new Point(108, 20);
             texBox.Name = "texBox";
-            texBox.Size = new System.Drawing.Size(288, 21);
+            texBox.Size = new Size(288, 21);
             texBox.TabIndex = 2;
             texBox.ValueChanged += new EventHandler(TexChanged);
             // 
@@ -51,18 +51,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                                              | AnchorStyles.Right;
             pltBox.BackColor = SystemColors.Window;
             pltBox.FormattingEnabled = true;
-            pltBox.Location = new System.Drawing.Point(108, 47);
+            pltBox.Location = new Point(108, 47);
             pltBox.Name = "pltBox";
-            pltBox.Size = new System.Drawing.Size(288, 21);
+            pltBox.Size = new Size(288, 21);
             pltBox.TabIndex = 4;
             pltBox.ValueChanged += new EventHandler(TexChanged);
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(59, 50);
+            label2.Location = new Point(59, 50);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(43, 13);
+            label2.Size = new Size(43, 13);
             label2.TabIndex = 3;
             label2.Text = "Palette:";
             // 
@@ -76,18 +76,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             grpEdit.Controls.Add(btnCut);
             grpEdit.Controls.Add(label2);
             grpEdit.Dock = DockStyle.Fill;
-            grpEdit.Location = new System.Drawing.Point(0, 0);
+            grpEdit.Location = new Point(0, 0);
             grpEdit.Name = "grpEdit";
-            grpEdit.Size = new System.Drawing.Size(402, 77);
+            grpEdit.Size = new Size(402, 77);
             grpEdit.TabIndex = 28;
             grpEdit.TabStop = false;
             grpEdit.Text = "Edit Frame";
             // 
             // btnPaste
             // 
-            btnPaste.Location = new System.Drawing.Point(3, 54);
+            btnPaste.Location = new Point(3, 54);
             btnPaste.Name = "btnPaste";
-            btnPaste.Size = new System.Drawing.Size(50, 20);
+            btnPaste.Size = new Size(50, 20);
             btnPaste.TabIndex = 26;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
@@ -95,9 +95,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnCopy
             // 
-            btnCopy.Location = new System.Drawing.Point(3, 35);
+            btnCopy.Location = new Point(3, 35);
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(50, 20);
+            btnCopy.Size = new Size(50, 20);
             btnCopy.TabIndex = 25;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
@@ -105,9 +105,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnCut
             // 
-            btnCut.Location = new System.Drawing.Point(3, 16);
+            btnCut.Location = new Point(3, 16);
             btnCut.Name = "btnCut";
-            btnCut.Size = new System.Drawing.Size(50, 20);
+            btnCut.Size = new Size(50, 20);
             btnCut.TabIndex = 24;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
@@ -116,9 +116,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // PAT0Editor
             // 
             Controls.Add(grpEdit);
-            MinimumSize = new System.Drawing.Size(402, 77);
+            MinimumSize = new Size(402, 77);
             Name = "PAT0Editor";
-            Size = new System.Drawing.Size(402, 77);
+            Size = new Size(402, 77);
             grpEdit.ResumeLayout(false);
             grpEdit.PerformLayout();
             ResumeLayout(false);

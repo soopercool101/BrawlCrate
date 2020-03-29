@@ -15,7 +15,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
     {
         private static Image SPEAKER =
             new Bitmap(Assembly.GetExecutingAssembly()
-                               .GetManifestResourceStream("BrawlCrate.BrawlManagers.SongManager.speaker.png"));
+                .GetManifestResourceStream("BrawlCrate.BrawlManagers.SongManager.speaker.png"));
 
         public bool ChangeMadeSinceCSVLoaded { get; private set; }
 

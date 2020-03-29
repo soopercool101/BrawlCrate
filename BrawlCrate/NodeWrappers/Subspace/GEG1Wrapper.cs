@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.GEG1)]
-    internal class GEG1Wrapper : GenericWrapper
+    public class GEG1Wrapper : GenericWrapper
     {
         #region Menu
 

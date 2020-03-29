@@ -13,7 +13,7 @@ using System.Reflection;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MDL0TextureNode : MDL0EntryNode, IComparable
+    public unsafe class MDL0TextureNode : MDL0EntryNode, IComparable, IImageSource
     {
         static MDL0TextureNode()
         {
@@ -132,7 +132,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public PLT0Node _palette;
 
-        internal unsafe void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, MDL0Node model = null, string palette = null)
+        internal unsafe void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, MDL0Node model = null,
+                                     string palette = null)
         {
             string plt = !string.IsNullOrEmpty(palette) ? palette : mRef.Palette;
             if (!string.IsNullOrEmpty(plt))
@@ -234,7 +235,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             Bitmap bmp = null;
             BRRESNode bres = model?.BRESNode;
 
-            if (!(_folderWatcher.EnableRaisingEvents && !string.IsNullOrEmpty(_folderWatcher.Path) && (bmp = SearchDirectory(Path.Combine(_folderWatcher.Path, Name))) != null))
+            if (!(_folderWatcher.EnableRaisingEvents && !string.IsNullOrEmpty(_folderWatcher.Path) &&
+                  (bmp = SearchDirectory(Path.Combine(_folderWatcher.Path, Name))) != null))
             {
                 GetSource();
                 if (Source != null && Source is TEX0Node t)
@@ -345,7 +347,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 bmp = TGA.FromFile(file.FullName);
                                 break;
                             }
-                            else if (
+
+                            if (
                                 file.Name.EndsWith(".png") ||
                                 file.Name.EndsWith(".tiff") ||
                                 file.Name.EndsWith(".tif") ||
@@ -397,10 +400,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return Name.CompareTo(((MDL0TextureNode) obj).Name);
             }
-            else
-            {
-                return 1;
-            }
+
+            return 1;
         }
 
         internal override void Bind()
@@ -415,6 +416,34 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Texture.Delete();
                 Texture = null;
             }
+        }
+
+        public int ImageCount
+        {
+            get
+            {
+                if (Source == null)
+                {
+                    Load(_index, _program, Model, true);
+                }
+
+                return Source is IImageSource i ? i.ImageCount : 0;
+            }
+        }
+
+        public Bitmap GetImage(int index)
+        {
+            if (Source == null)
+            {
+                Load(_index, _program, Model, true);
+            }
+
+            if (Source is IImageSource i)
+            {
+                return i.GetImage(index);
+            }
+
+            return null;
         }
     }
 }

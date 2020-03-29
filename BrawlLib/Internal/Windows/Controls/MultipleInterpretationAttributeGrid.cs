@@ -85,6 +85,17 @@ namespace BrawlLib.Internal.Windows.Controls
 
         public void Clear()
         {
+            if (somethingChanged)
+            {
+                if (MessageBox.Show("There are unsaved changes to your documentation, would you like to save them?",
+                    "BrawlCrate", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    save_Click(null, null);
+                }
+
+                somethingChanged = false;
+            }
+
             chooser.Items.Clear();
             AttributeArray = null;
         }

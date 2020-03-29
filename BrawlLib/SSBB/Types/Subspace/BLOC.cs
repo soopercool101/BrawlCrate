@@ -19,7 +19,32 @@ namespace BrawlLib.SSBB.Types.Subspace
 
         public uint Offsets(int index)
         {
-            return *(buint*) ((byte*) Address + 0x10 + index * 4);
+            return *(buint*) ((byte*) Address + Size + index * 4);
+        }
+
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+    }
+
+    public unsafe struct BLOCEntry
+    {
+        public uint _tag;
+        public bint _count;
+        public const int Size = 0x08;
+
+        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
+
+        public uint Offsets(int index)
+        {
+            return *(buint*) ((byte*) Address + Size + index * 4);
         }
 
         private VoidPtr Address

@@ -39,10 +39,8 @@ namespace BrawlLib.SSBB.Types
             {
                 return *(uint*) Address;
             }
-            else
-            {
-                return *(buint*) Address;
-            }
+
+            return *(buint*) Address;
         }
 
         public string Get()
@@ -351,7 +349,7 @@ namespace BrawlLib.SSBB.Types
 
         public void Set(int index, ruint.RefType refType, byte dataType, VoidPtr address)
         {
-            *((ruint*) Address + index) = new ruint(refType, dataType, (int) address - Address);
+            *((ruint*) Address + index) = new ruint(refType, dataType, address - Address);
         }
     }
 
@@ -654,7 +652,7 @@ namespace BrawlLib.SSBB.Types
                     entry--;
                 }
 
-                return (ResourceGroup*) ((uint) entry - 8);
+                return (ResourceGroup*) ((VoidPtr) entry - 8);
             }
         }
     }

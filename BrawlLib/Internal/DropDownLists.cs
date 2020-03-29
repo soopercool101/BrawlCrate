@@ -342,10 +342,8 @@ namespace BrawlLib.Internal
             {
                 return new StandardValuesCollection(n.Children.Select(r => r.ToString()).ToList());
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 
@@ -364,10 +362,8 @@ namespace BrawlLib.Internal
             {
                 return new StandardValuesCollection(n.Children.Select(r => r.ToString()).ToList());
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 
@@ -418,7 +414,7 @@ namespace BrawlLib.Internal
         {
             RSAREntryNode n = context.Instance as RSAREntryNode;
             return new StandardValuesCollection(n.RSARNode.Files.Where(x => x is RBNKNode || x is RSARExtFileNode)
-                                                 .Select(r => r.ToString()).ToList());
+                .Select(r => r.ToString()).ToList());
         }
     }
 
@@ -478,7 +474,7 @@ namespace BrawlLib.Internal
         {
             RSARFileEntryNode n = context.Instance as RSARFileEntryNode;
             return new StandardValuesCollection(n.Parent.Parent.Children[1].Children.Select(r => r.ToString())
-                                                 .ToList());
+                .ToList());
         }
     }
 
@@ -498,7 +494,7 @@ namespace BrawlLib.Internal
             }
 
             return new StandardValuesCollection(n.SoundFileNode.Children[0].Children.Select(r => r.ToString())
-                                                 .ToList());
+                .ToList());
         }
     }
 
@@ -831,7 +827,8 @@ namespace BrawlLib.Internal
             {
                 return node.AbsoluteIndex < 0 ? "None" : $"{node.AbsoluteIndex.ToString()}. {node.Name}";
             }
-            else if (destinationType == typeof(ARCEntryNode) && value is string str)
+
+            if (destinationType == typeof(ARCEntryNode) && value is string str)
             {
                 return null;
             }
@@ -860,8 +857,8 @@ namespace BrawlLib.Internal
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlAITypes.AITypes
-                                                            .Select(s => "0x" + s.AIID.ToString("X2") + " - " + s.Name)
-                                                            .ToList());
+                .Select(s => "0x" + s.AIID.ToString("X2") + " - " + s.Name)
+                .ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -892,8 +889,9 @@ namespace BrawlLib.Internal
                 BrawlAITypes stage = BrawlAITypes.AITypes.Where(s => s.AIID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -911,9 +909,9 @@ namespace BrawlLib.Internal
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(BrawlLib.SSBB.Stage.RelList
-                                                        .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name)
-                                                        .ToList());
+            return new StandardValuesCollection(SSBB.Stage.RelList
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name)
+                .ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -940,12 +938,13 @@ namespace BrawlLib.Internal
         {
             if (destinationType == typeof(string) && value != null && value.GetType() == typeof(int))
             {
-                BrawlLib.SSBB.Stage stage = BrawlLib.SSBB.Stage.RelList.Where(s => s.ID == (int) value)
-                                                    .FirstOrDefault();
+                SSBB.Stage stage = SSBB.Stage.RelList.Where(s => s.ID == (int) value)
+                    .FirstOrDefault();
                 return "0x" + ((int) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }
@@ -963,9 +962,8 @@ namespace BrawlLib.Internal
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(BrawlLib
-                                                .SSBB.Stage.Stages
-                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+            return new StandardValuesCollection(SSBB.Stage.Stages
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -992,7 +990,7 @@ namespace BrawlLib.Internal
         {
             if (destinationType == typeof(string) && value != null && value.GetType() == typeof(int))
             {
-                BrawlLib.SSBB.Stage stage = BrawlLib.SSBB.Stage.Stages.Where(s => s.ID == (int) value).FirstOrDefault();
+                SSBB.Stage stage = SSBB.Stage.Stages.Where(s => s.ID == (int) value).FirstOrDefault();
                 return "0x" + ((int) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
 
@@ -1009,9 +1007,8 @@ namespace BrawlLib.Internal
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(BrawlLib
-                                                .SSBB.Item.Items
-                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+            return new StandardValuesCollection(SSBB.Item.Items
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -1038,7 +1035,7 @@ namespace BrawlLib.Internal
         {
             if (destinationType == typeof(string) && value != null && value.GetType() == typeof(int))
             {
-                BrawlLib.SSBB.Item item = BrawlLib.SSBB.Item.Items.Where(s => s.ID == (int) value).FirstOrDefault();
+                SSBB.Item item = SSBB.Item.Items.Where(s => s.ID == (int) value).FirstOrDefault();
                 return "0x" + ((int) value).ToString("X2") + (item == null ? "" : " - " + item.Name);
             }
 
@@ -1055,9 +1052,8 @@ namespace BrawlLib.Internal
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(BrawlLib
-                                                .SSBB.Fighter.Fighters
-                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+            return new StandardValuesCollection(SSBB.Fighter.Fighters
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -1084,8 +1080,8 @@ namespace BrawlLib.Internal
         {
             if (destinationType == typeof(string) && value.GetType() == typeof(byte))
             {
-                BrawlLib.SSBB.Fighter fighter =
-                    BrawlLib.SSBB.Fighter.Fighters.Where(s => s.ID == (byte) value).FirstOrDefault();
+                SSBB.Fighter fighter =
+                    SSBB.Fighter.Fighters.Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
             }
 
@@ -1102,9 +1098,9 @@ namespace BrawlLib.Internal
 
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return new StandardValuesCollection(BrawlLib.SSBB.Fighter.Fighters
-                                                        .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name)
-                                                        .ToList());
+            return new StandardValuesCollection(SSBB.Fighter.Fighters
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name)
+                .ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -1131,12 +1127,13 @@ namespace BrawlLib.Internal
         {
             if (destinationType == typeof(string) && value.GetType() == typeof(byte))
             {
-                BrawlLib.SSBB.Fighter fighter =
-                    BrawlLib.SSBB.Fighter.Fighters.Where(s => s.ID == (byte) value).FirstOrDefault();
+                SSBB.Fighter fighter =
+                    SSBB.Fighter.Fighters.Where(s => s.ID == (byte) value).FirstOrDefault();
                 return "0x" + ((byte) value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
             }
-            else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
-                     value.GetType() == typeof(string))
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
             {
                 return 0;
             }

@@ -547,21 +547,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                         node._updating = false;
                         continue;
                     }
-                    else
-                    {
-                        if (node.ShaderNode.Stages == 4)
-                        {
-                            foreach (MDL0MaterialNode y in node.ShaderNode._materials)
-                            {
-                                if (!y.IsMetal || y.Children.Count != node.Children.Count)
-                                {
-                                    goto Next;
-                                }
-                            }
 
-                            node.ShaderNode.DefaultAsMetal(node.Children.Count);
-                            continue;
+                    if (node.ShaderNode.Stages == 4)
+                    {
+                        foreach (MDL0MaterialNode y in node.ShaderNode._materials)
+                        {
+                            if (!y.IsMetal || y.Children.Count != node.Children.Count)
+                            {
+                                goto Next;
+                            }
                         }
+
+                        node.ShaderNode.DefaultAsMetal(node.Children.Count);
+                        continue;
                     }
                 }
 
@@ -1551,8 +1549,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
             {
                 MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
-                                                              .Substring(0,
-                                                                  MaterialGroup.Children[0].Name.IndexOf("_"));
+                    .Substring(0,
+                        MaterialGroup.Children[0].Name.IndexOf("_"));
             }
 
             if (BoneGroup == null)
@@ -1957,8 +1955,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (MaterialGroup.Children.Count == 1 && MaterialGroup.Children[0].Name.IndexOf("_") > 0)
             {
                 MaterialGroup.Children[0].Name = MaterialGroup.Children[0].Name
-                                                              .Substring(0,
-                                                                  MaterialGroup.Children[0].Name.IndexOf("_"));
+                    .Substring(0,
+                        MaterialGroup.Children[0].Name.IndexOf("_"));
             }
 
             foreach (MDL0MaterialNode mat in _matGroup.Children)
@@ -2577,29 +2575,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static MDL0Node FromFile(string path, FileOptions options = FileOptions.RandomAccess)
         {
-            //string ext = Path.GetExtension(path);
-            if (path.EndsWith(".mdl0", StringComparison.OrdinalIgnoreCase) ||
-                string.IsNullOrEmpty(Path.GetExtension(path)) ||
-                path.EndsWith(".tmp", StringComparison.OrdinalIgnoreCase))
+            if (path.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
             {
-                return NodeFactory.FromFile(null, path, options) as MDL0Node;
+                return new Collada {Text = $"Import Settings - {Path.GetFileName(path)}"}.ShowDialog(path,
+                    Collada.ImportType.MDL0) as MDL0Node;
             }
-            else if (path.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
-            {
-                return new Collada().ShowDialog(path, Collada.ImportType.MDL0) as MDL0Node;
-            }
-            else if (path.EndsWith(".pmd", StringComparison.OrdinalIgnoreCase))
+
+            if (path.EndsWith(".pmd", StringComparison.OrdinalIgnoreCase))
             {
                 return PMDModel.ImportModel(path);
             }
-            //else if (string.Equals(ext, "fbx", StringComparison.OrdinalIgnoreCase))
-            //{
-            //}
-            //else if (string.Equals(ext, "blend", StringComparison.OrdinalIgnoreCase))
-            //{
-            //}
 
-            throw new NotSupportedException("The file extension specified is not of a supported model type.");
+            return NodeFactory.FromFile(null, path, options) as MDL0Node;
         }
 
         #endregion
@@ -2675,23 +2662,29 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_isImport)
             {
                 int index = 0;
-                foreach (VertexCodec c in _linker._vertices)
+                if (_linker._vertices != null)
                 {
-                    string name = Name + "_" + _objList[index]._name;
-                    MDL0ObjectNode n = (MDL0ObjectNode) _objList[index];
-                    if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
+                    foreach (VertexCodec c in _linker._vertices)
                     {
-                        name += "_" + ((MDL0ObjectNode) _objList[index])._drawCalls[0].MaterialNode._name;
-                    }
+                        string name = Name + "_" + _objList[index]._name;
+                        MDL0ObjectNode n = (MDL0ObjectNode)_objList[index];
+                        if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
+                        {
+                            name += "_" + ((MDL0ObjectNode)_objList[index])._drawCalls[0].MaterialNode._name;
+                        }
 
-                    table.Add(name);
-                    index++;
+                        table.Add(name);
+                        index++;
+                    }
                 }
 
                 index = 0;
-                foreach (VertexCodec c in _linker._uvs)
+                if (_linker._uvs != null)
                 {
-                    table.Add("#" + index++);
+                    foreach (VertexCodec c in _linker._uvs)
+                    {
+                        table.Add("#" + index++);
+                    }
                 }
             }
         }

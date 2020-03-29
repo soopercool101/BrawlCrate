@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.GWAT)]
-    internal class GWATWrapper : GenericWrapper
+    public class GWATWrapper : GenericWrapper
     {
         #region Menu
 
@@ -53,8 +53,6 @@ namespace BrawlCrate.NodeWrappers
         }
 
         #endregion
-
-        //public override string ExportFilter { get { return FileFilters.GWAT; } }
 
         public void NewEntry()
         {

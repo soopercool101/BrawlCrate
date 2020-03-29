@@ -120,7 +120,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     continue;
                 }
-                
+
                 cur.MinimumZ = ext.MinimumZ;
                 cur.MaximumZ = ext.MaximumZ;
                 cur.MinimumTilt = ext.MinimumTilt;
@@ -171,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     continue;
                 }
-                
+
                 cur.Id1 = ext.Id1;
                 cur.Id2 = ext.Id2;
                 cur.Value1 = ext.Value1;
@@ -207,7 +207,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class STPMEntryNode : ResourceNode
     {
-        internal ParameterEntry* Header => (ParameterEntry*) WorkingUncompressed.Address;
+        internal StageParameterEntry* Header => (StageParameterEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private byte echo;
@@ -1004,8 +1004,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ParameterEntry* header = (ParameterEntry*) address;
-            *header = new ParameterEntry(id, echo, id2);
+            StageParameterEntry* header = (StageParameterEntry*) address;
+            *header = new StageParameterEntry(id, echo, id2);
             byte* pOut = (byte*) header + 4;
             byte* pIn = (byte*) _values._values.Address;
             for (int i = 0; i < 64 * 4; i++)

@@ -76,15 +76,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Flags]
         public enum CharacterLoadFlags : byte
         {
-            None = 0x00,                    // 0000 0000
-            WorkManageFlag = 0x01,          // 0000 0001
-            FinalSmashFilesFlag = 0x02,     // 0000 0010
-            FinalSmashMusicOffFlag = 0x04,  // 0000 0100
-            IkPhysicsFlag = 0x08,           // 0000 1000
-            MergeMotionEtcFlag = 0x10,      // 0001 0000
-            PerCostumeEtc = 0x20,           // 0010 0000
-            UnknownFlag_A = 0x40,           // 0100 0000
-            UnknownFlag_B = 0x80            // 1000 0000
+            None = 0x00,                   // 0000 0000
+            WorkManageFlag = 0x01,         // 0000 0001
+            FinalSmashFilesFlag = 0x02,    // 0000 0010
+            FinalSmashMusicOffFlag = 0x04, // 0000 0100
+            IkPhysicsFlag = 0x08,          // 0000 1000
+            MergeMotionEtcFlag = 0x10,     // 0001 0000
+            PerCostumeEtc = 0x20,          // 0010 0000
+            UnknownFlag_A = 0x40,          // 0100 0000
+            UnknownFlag_B = 0x80           // 1000 0000
         }
 
         [Browsable(false)]
@@ -727,10 +727,11 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [DisplayName("MotionEtc Type")]
         public MotionEtcTypes MotionEtcType
         {
-            get => PerCostumeEtc ? MotionEtcTypes.PerCostumeSeparate : MergeMotionEtc ? MotionEtcTypes.SingleMerged : MotionEtcTypes.SingleSeparate;
+            get => PerCostumeEtc ? MotionEtcTypes.PerCostumeSeparate :
+                MergeMotionEtc ? MotionEtcTypes.SingleMerged : MotionEtcTypes.SingleSeparate;
             set
             {
-                switch(value)
+                switch (value)
                 {
                     case MotionEtcTypes.SingleSeparate:
                         MergeMotionEtc = false;
@@ -1215,17 +1216,17 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             }
 
             _pacName = Encoding.UTF8.GetString(_pacNameArray)
-                             .Substring(0, Encoding.UTF8.GetString(_pacNameArray).IndexOf('\0'))
-                             .TrimEnd('\0');
+                .Substring(0, Encoding.UTF8.GetString(_pacNameArray).IndexOf('\0'))
+                .TrimEnd('\0');
             _kirbyPacName = Encoding.UTF8.GetString(_kirbyPacNameArray)
-                                  .Substring(0, Encoding.UTF8.GetString(_kirbyPacNameArray).IndexOf('\0'))
-                                  .TrimEnd('\0');
+                .Substring(0, Encoding.UTF8.GetString(_kirbyPacNameArray).IndexOf('\0'))
+                .TrimEnd('\0');
             _moduleName = Encoding.UTF8.GetString(_moduleNameArray)
-                                .Substring(0, Encoding.UTF8.GetString(_moduleNameArray).IndexOf('\0'))
-                                .TrimEnd('\0');
+                .Substring(0, Encoding.UTF8.GetString(_moduleNameArray).IndexOf('\0'))
+                .TrimEnd('\0');
             _internalName = Encoding.UTF8.GetString(_internalNameArray)
-                                  .Substring(0, Encoding.UTF8.GetString(_internalNameArray).IndexOf('\0'))
-                                  .TrimEnd('\0');
+                .Substring(0, Encoding.UTF8.GetString(_internalNameArray).IndexOf('\0'))
+                .TrimEnd('\0');
             try
             {
                 if (_pacName.ToUpper().LastIndexOf(".PAC") > 0 && _pacName.ToUpper().Contains("/FIT"))

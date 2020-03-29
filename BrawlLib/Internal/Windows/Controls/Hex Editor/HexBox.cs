@@ -858,10 +858,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     _hexBox.Invalidate();
                     return true;
                 }
-                else
-                {
-                    return _hexBox.BasePreProcessMessage(ref m);
-                }
+
+                return _hexBox.BasePreProcessMessage(ref m);
             }
 
             protected bool RaiseKeyPress(char keyChar)
@@ -1751,14 +1749,12 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return (int) value;
             }
-            else
-            {
-                double valperc = value / (double) _scrollVmax * 100;
-                int res = (int) Math.Floor(max / (double) 100 * valperc);
-                res = (int) Math.Max(_scrollVmin, res);
-                res = (int) Math.Min(_scrollVmax, res);
-                return res;
-            }
+
+            double valperc = value / (double) _scrollVmax * 100;
+            int res = (int) Math.Floor(max / (double) 100 * valperc);
+            res = (int) Math.Max(_scrollVmin, res);
+            res = (int) Math.Min(_scrollVmax, res);
+            return res;
         }
 
         private long FromScrollPos(int value)
@@ -1768,12 +1764,10 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return value;
             }
-            else
-            {
-                double valperc = value / (double) max * 100;
-                long res = (int) Math.Floor(_scrollVmax / (double) 100 * valperc);
-                return res;
-            }
+
+            double valperc = value / (double) max * 100;
+            long res = (int) Math.Floor(_scrollVmax / (double) 100 * valperc);
+            return res;
         }
 
         private int ToScrollMax(long value)
@@ -1783,10 +1777,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return (int) max;
             }
-            else
-            {
-                return (int) value;
-            }
+
+            return (int) value;
         }
 
         private void PerformScrollToLine(long pos)
@@ -2514,7 +2506,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                     byteCount -= posOffset;
                                     if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                              .Contains("11"))
+                                        .Contains("11"))
                                     {
                                         SectionEditor.rdo2byte.Checked = true;
                                         byteCount = 2;
@@ -2585,7 +2577,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                 byteCount -= posOffset;
                                 if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                          .Contains("11"))
+                                    .Contains("11"))
                                 {
                                     SectionEditor.rdo2byte.Checked = true;
                                     byteCount = 2;
@@ -2688,7 +2680,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                     byteCount -= posOffset;
                                     if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                              .Contains("11"))
+                                        .Contains("11"))
                                     {
                                         SectionEditor.rdo2byte.Checked = true;
                                         byteCount = 2;
@@ -2759,7 +2751,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
                                 byteCount -= posOffset;
                                 if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
-                                                                                          .Contains("11"))
+                                    .Contains("11"))
                                 {
                                     SectionEditor.rdo2byte.Checked = true;
                                     byteCount = 2;
@@ -3040,10 +3032,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         /// <summary>
@@ -3438,9 +3428,9 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     int.TryParse(
                         Environment.OSVersion.ToString()
-                                   .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
-                                       Environment.OSVersion.ToString().IndexOf(".") -
-                                       (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
+                            .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
+                                Environment.OSVersion.ToString().IndexOf(".") -
+                                (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
                 }
             }
             catch
@@ -3510,9 +3500,9 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     int.TryParse(
                         Environment.OSVersion.ToString()
-                                   .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
-                                       Environment.OSVersion.ToString().IndexOf(".") -
-                                       (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
+                            .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
+                                Environment.OSVersion.ToString().IndexOf(".") -
+                                (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
                 }
             }
             catch
@@ -3643,8 +3633,17 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     Point gridPoint = GetGridBytePoint(counter);
                     PointF byteStringPointF = GetByteStringPointF(gridPoint);
+                    byte b;
+                    try
+                    {
+                        b = _byteProvider.ReadByte(x);
+                    }
+                    catch
+                    {
+                        // In event of invalid read, stop reading
+                        break;
+                    }
 
-                    byte b = _byteProvider.ReadByte(x);
                     bool isSelectedByte =
                         x >= _bytePos && x <= _bytePos + _selectionLength - 1 && _selectionLength != 0;
 
@@ -3861,10 +3860,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return BlackBrush;
             }
-            else
-            {
-                return GrayBrush;
-            }
+
+            return GrayBrush;
         }
 
         private void UpdateVisibilityBytes()
@@ -4513,10 +4510,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 {
                     return HexCasing.Upper;
                 }
-                else
-                {
-                    return HexCasing.Lower;
-                }
+
+                return HexCasing.Lower;
             }
             set
             {

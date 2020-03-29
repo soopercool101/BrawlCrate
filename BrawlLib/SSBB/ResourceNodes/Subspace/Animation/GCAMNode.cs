@@ -1,72 +1,19 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Animation;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GCAMNode : ResourceNode
+    public unsafe class GCAMNode : BLOCEntryNode
     {
-        internal GCAM* Header => (GCAM*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GCAMEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GCAM;
-
-        [Category("GCAM")]
-        [DisplayName("Entry Count")]
-        public int EntryCount => Children?.Count ?? 0;
-
-        private const int _entrySize = 0x23; // The constant size of a child entry
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GCAMEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            return 0x08 + Children.Count * 4 + Children.Count * _entrySize;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GCAM* header = (GCAM*) address;
-            *header = new GCAM(Children.Count);
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                ResourceNode r = Children[i];
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                r.Rebuild(address + offset, _entrySize, true);
-                offset += _entrySize;
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Animated Camera";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Animated Camera";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GCAM*) source.Address)->_tag == GCAM.Tag ? new GCAMNode() : null;
+            return source.Tag == "GCAM" ? new GCAMNode() : null;
         }
     }
 

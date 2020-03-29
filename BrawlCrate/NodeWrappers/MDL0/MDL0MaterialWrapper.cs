@@ -4,8 +4,6 @@ using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
 using System;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -130,7 +128,7 @@ namespace BrawlCrate.NodeWrappers
                 string[] t = ShaderGenerator.GenTEVFragShader();
                 System.IO.File.WriteAllText(s.FileName,
                     ShaderGenerator.CombineFragShader(m, t, mat.ActiveShaderStages)
-                                   .Replace("\n", Environment.NewLine));
+                        .Replace("\n", Environment.NewLine));
             }
 
             ShaderGenerator.ClearTarget();

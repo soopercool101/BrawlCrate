@@ -41,9 +41,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // btnOkay
             // 
             btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnOkay.Location = new System.Drawing.Point(200, 221);
+            btnOkay.Location = new Point(200, 221);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(59, 24);
+            btnOkay.Size = new Size(59, 24);
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
@@ -52,9 +52,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancel.Location = new System.Drawing.Point(267, 221);
+            btnCancel.Location = new Point(267, 221);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(59, 24);
+            btnCancel.Size = new Size(59, 24);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -66,18 +66,18 @@ namespace BrawlLib.Internal.Windows.Controls
                                                 | AnchorStyles.Left;
             pnlColors.Controls.Add(pnlNew);
             pnlColors.Controls.Add(pnlOld);
-            pnlColors.Location = new System.Drawing.Point(14, 207);
+            pnlColors.Location = new Point(14, 207);
             pnlColors.Name = "pnlColors";
-            pnlColors.Size = new System.Drawing.Size(180, 37);
+            pnlColors.Size = new Size(180, 37);
             pnlColors.TabIndex = 3;
             // 
             // lblOld
             // 
             lblOld.BackColor = Color.White;
             lblOld.BorderStyle = BorderStyle.FixedSingle;
-            lblOld.Location = new System.Drawing.Point(9, 198);
+            lblOld.Location = new Point(9, 198);
             lblOld.Name = "lblOld";
-            lblOld.Size = new System.Drawing.Size(35, 15);
+            lblOld.Size = new Size(35, 15);
             lblOld.TabIndex = 4;
             lblOld.Text = "Old";
             lblOld.TextAlign = ContentAlignment.MiddleCenter;
@@ -86,9 +86,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             lblNew.BackColor = Color.White;
             lblNew.BorderStyle = BorderStyle.FixedSingle;
-            lblNew.Location = new System.Drawing.Point(99, 198);
+            lblNew.Location = new Point(99, 198);
             lblNew.Name = "lblNew";
-            lblNew.Size = new System.Drawing.Size(35, 15);
+            lblNew.Size = new Size(35, 15);
             lblNew.TabIndex = 5;
             lblNew.Text = "New";
             lblNew.TextAlign = ContentAlignment.MiddleCenter;
@@ -97,9 +97,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             chkAlpha.Checked = true;
             chkAlpha.CheckState = CheckState.Checked;
-            chkAlpha.Location = new System.Drawing.Point(221, 200);
+            chkAlpha.Location = new Point(221, 200);
             chkAlpha.Name = "chkAlpha";
-            chkAlpha.Size = new System.Drawing.Size(90, 18);
+            chkAlpha.Size = new Size(90, 18);
             chkAlpha.TabIndex = 6;
             chkAlpha.Text = "Show Alpha";
             chkAlpha.UseVisualStyleBackColor = true;
@@ -108,29 +108,29 @@ namespace BrawlLib.Internal.Windows.Controls
             // pnlNew
             // 
             pnlNew.Dock = DockStyle.Fill;
-            pnlNew.Location = new System.Drawing.Point(90, 0);
+            pnlNew.Location = new Point(90, 0);
             pnlNew.Name = "pnlNew";
-            pnlNew.Size = new System.Drawing.Size(90, 37);
+            pnlNew.Size = new Size(90, 37);
             pnlNew.TabIndex = 6;
             pnlNew.Paint += new PaintEventHandler(pnlNew_Paint);
             // 
             // pnlOld
             // 
             pnlOld.Dock = DockStyle.Left;
-            pnlOld.Location = new System.Drawing.Point(0, 0);
+            pnlOld.Location = new Point(0, 0);
             pnlOld.Name = "pnlOld";
-            pnlOld.Size = new System.Drawing.Size(90, 37);
+            pnlOld.Size = new Size(90, 37);
             pnlOld.TabIndex = 5;
             pnlOld.Paint += new PaintEventHandler(pnlOld_Paint);
             // 
             // goodColorControl1
             // 
             goodColorControl1.Color = Color.FromArgb(0, 0, 0, 0);
-            goodColorControl1.Location = new System.Drawing.Point(12, 10);
-            goodColorControl1.MinimumSize = new System.Drawing.Size(310, 186);
+            goodColorControl1.Location = new Point(12, 10);
+            goodColorControl1.MinimumSize = new Size(310, 186);
             goodColorControl1.Name = "goodColorControl1";
             goodColorControl1.ShowAlpha = true;
-            goodColorControl1.Size = new System.Drawing.Size(314, 186);
+            goodColorControl1.Size = new Size(314, 186);
             goodColorControl1.TabIndex = 2;
             goodColorControl1.ColorChanged += new EventHandler(goodColorControl1_ColorChanged);
             // 
@@ -144,7 +144,7 @@ namespace BrawlLib.Internal.Windows.Controls
             Controls.Add(btnCancel);
             Controls.Add(btnOkay);
             Name = "GoodColorControl2";
-            Size = new System.Drawing.Size(335, 253);
+            Size = new Size(335, 253);
             pnlColors.ResumeLayout(false);
             ResumeLayout(false);
         }

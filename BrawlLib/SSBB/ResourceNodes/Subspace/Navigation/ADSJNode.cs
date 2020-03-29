@@ -10,12 +10,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ADSJ* Header => (ADSJ*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ADSJ;
 
-        private int _count;
-
-        [Category("ADSJ")]
-        [DisplayName("Entries")]
-        public int count => _count;
-
         public override void OnPopulate()
         {
             for (int i = 0; i < Header->_count; i++)
@@ -40,11 +34,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             ARCFileHeader* header = (ARCFileHeader*) (WorkingUncompressed.Address - 0x20);
             int index = header->_index;
 
-            _count = Header->_count;
-
             if (_name == null)
             {
-                _name = $"Stepjumps[{index}]";
+                _name = $"Stepjumps [{index}]";
             }
 
             return Header->_count > 0;

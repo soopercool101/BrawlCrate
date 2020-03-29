@@ -235,10 +235,8 @@ namespace BrawlLib.BrawlManagerLib
             {
                 return null;
             }
-            else
-            {
-                return b.GetPixel(x, y).A;
-            }
+
+            return b.GetPixel(x, y).A;
         }
 
         /// <summary>

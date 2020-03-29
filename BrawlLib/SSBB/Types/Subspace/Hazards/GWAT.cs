@@ -4,41 +4,6 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Subspace.Hazards
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GWAT
-    {
-        public const uint Tag = 0x54415747;
-        public const int Size = 132;
-        public uint _tag;
-        public bint _count;
-        public bint _DataOffset;
-
-        public GWAT(int count)
-        {
-            _tag = Tag;
-            _count = count;
-            _DataOffset = count * 4;
-        }
-
-        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
-
-        public uint Offsets(int index)
-        {
-            return *(buint*) ((byte*) Address + 0x08 + index * 4);
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GWATEntry
     {
         public byte _unknown0x00;

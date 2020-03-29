@@ -528,9 +528,9 @@ namespace Updater
                 else // Allow the user to choose whether or not to download a release if not using the automatic updater
                 {
                     if (MessageBox.Show(
-                            release.Name + " is available!\n\nThis release:\n\n" + release.Body + "\n\nUpdate now?" +
-                            (manual ? "\n\nThe program will be closed, and changes will not be saved!" : ""), "Update",
-                            MessageBoxButtons.YesNo) != DialogResult.Yes)
+                        release.Name + " is available!\n\nThis release:\n\n" + release.Body + "\n\nUpdate now?" +
+                        (manual ? "\n\nThe program will be closed, and changes will not be saved!" : ""), "Update",
+                        MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         return;
                     }
@@ -622,9 +622,9 @@ namespace Updater
                 }
 
                 if ((manual || GetOpenWindowsCount() > 1) && MessageBox.Show(
-                        "Update to #" + release.TargetCommitish +
-                        " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!",
-                        "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    "Update to #" + release.TargetCommitish +
+                    " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!",
+                    "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     return;
                 }
@@ -690,7 +690,7 @@ namespace Updater
                         // Username and repo are separated by a " " in the filename as a unique identifier
                         // This works due to " " being an invalid character for github repos and names
                         string[] repoData = Regex.Matches(f.Name, "([^ .]+)").Cast<Match>().Select(m => m.Value)
-                                                 .ToArray();
+                            .ToArray();
                         // Assert username and repo should be two things
                         if (repoData.Length == 2 && !f.Name.Contains(".") ||
                             repoData.Length == 3 && f.Name.Contains("."))
@@ -904,6 +904,19 @@ namespace Updater
                         sw.Close();
                     }
                 }
+
+                // Attempt to delete the file if it exists.
+                try
+                {
+                    if (File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
+                    {
+                        File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
+                    }
+                }
+                catch
+                {
+                    // Ignored
+                }
             }
             catch (Exception e)
             {
@@ -1006,7 +1019,7 @@ namespace Updater
 
                     // The browser download link to the self extracting archive, hosted on github
                     string URL = html.Substring(html.IndexOf("browser_download_url\":\""))
-                                     .TrimEnd('}', '"');
+                        .TrimEnd('}', '"');
                     URL = URL.Substring(URL.IndexOf("http"));
 
                     // Download the update, using a download tracker
@@ -1055,7 +1068,7 @@ namespace Updater
 
                             MessageBox.Show("Documentation was successfully updated to " +
                                             (release.Name.StartsWith("BrawlCrate Documentation",
-                                                 StringComparison.OrdinalIgnoreCase) && release.Name.Length > 26
+                                                StringComparison.OrdinalIgnoreCase) && release.Name.Length > 26
                                                 ? release.Name.Substring(25)
                                                 : release.Name) +
                                             (automatic ? "\nThis documentation release:\n" + release.Body : ""));
@@ -1103,7 +1116,7 @@ namespace Updater
             string repoName = mainRepo.Split('/')[1];
             // get Release
             IReadOnlyList<Release> releases = (await Github.Repository.Release.GetAll(repoOwner, repoName))
-                                              .Where(r => r.Prerelease).ToList();
+                .Where(r => r.Prerelease).ToList();
             Release release = null;
 
             // This track is shared by canary updates. Ensure that a documentation release is found.
@@ -1129,7 +1142,7 @@ namespace Updater
             string repoName = mainRepo.Split('/')[1];
             // get Release
             IReadOnlyList<Release> releases = (await Github.Repository.Release.GetAll(repoOwner, repoName))
-                                              .Where(r => !r.Prerelease).ToList();
+                .Where(r => !r.Prerelease).ToList();
             if (releases.Count > 0)
             {
                 await DownloadRelease(releases[0], true, true, false, false, openFile);

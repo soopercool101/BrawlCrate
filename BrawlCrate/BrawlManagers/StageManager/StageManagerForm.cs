@@ -16,9 +16,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.BrawlManagers.StageManager
@@ -29,7 +29,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
         private static SaveFileDialog SaveDialog = new SaveFileDialog();
 #if !MONO
         private static VistaFolderBrowserDialog FolderDialog =
-            new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
         private static FolderBrowserDialog FolderDialog = new FolderBrowserDialog();
 #endif
@@ -95,10 +95,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                 {
                     return controls[0];
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
             set
             {
@@ -246,13 +244,15 @@ namespace BrawlCrate.BrawlManagers.StageManager
                 {
                     return false;
                 }
-                else if (result == DialogResult.Yes)
+
+                if (result == DialogResult.Yes)
                 {
                     songPanel1.save();
                     portraitViewer1.save();
                     return true;
                 }
-                else if (result == DialogResult.No)
+
+                if (result == DialogResult.No)
                 {
                     return true;
                 }
@@ -423,10 +423,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                         {
                             return portraitViewer1.BestSSS.GetSong(fi.Name, element).Filename;
                         }
-                        else
-                        {
-                            return filename;
-                        }
+
+                        return filename;
                     }).ToArray();
                     if (arr != null)
                     {

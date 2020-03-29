@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.BrawlEx
@@ -10,8 +9,8 @@ namespace BrawlLib.SSBB.Types.BrawlEx
         public const uint Tag = 0x43545352;
         public const int Size = 0xE0;
         public uint _tag;         // 0x00 - Uneditable; RSTC
-        public buint _size;        // 0x04 - Uneditable. Default is "E0". Larger may use 210
-        public buint _version;     // 0x08 - Version; Only parses "1" currently
+        public buint _size;       // 0x04 - Uneditable. Default is "E0". Larger may use 210
+        public buint _version;    // 0x08 - Version; Only parses "1" currently
         public byte _unknown0x0C; // 0x0C - Unused?
 
         public byte _charNum; // 0x0D - Number of characters in the char list; should be generated automatically.
@@ -21,7 +20,7 @@ namespace BrawlLib.SSBB.Types.BrawlEx
         public byte _randNum; // 0x0F - Number of characters in the random list; should be generated automatically
 
         public VoidPtr this[int index] => (byte*) Address + 0x10 + index;
-        
+
         private VoidPtr Address
         {
             get

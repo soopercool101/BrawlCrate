@@ -362,9 +362,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 currentPath = currentPath.Substring(0,
                     currentPath.LastIndexOf("brawlex", StringComparison.OrdinalIgnoreCase));
                 List<string> internalNames = FighterNameGenerators
-                                                       .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
-                                                           FighterNameGenerators.cosmeticIDIndex, "+S")
-                                                       .Split('/').ToList();
+                    .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
+                        FighterNameGenerators.cosmeticIDIndex, "+S")
+                    .Split('/').ToList();
                 foreach (string s in internalNames)
                 {
                     if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +

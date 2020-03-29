@@ -58,10 +58,8 @@ namespace BrawlLib.Internal
                     {
                         goto case PlatformID.MacOSX;
                     }
-                    else
-                    {
-                        Linux.memset(dest, value, length);
-                    }
+
+                    Linux.memset(dest, value, length);
 
                     break;
                 }

@@ -5,8 +5,10 @@ using BrawlLib.SSBB.Types;
 using BrawlLib.Wii.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
+#if !DEBUG
+using System.ComponentModel;
+#endif
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -230,10 +232,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     nodeTreeError = true;
                                     continue;
                                 }
-                                else
-                                {
-                                    bones.Remove(bone);
-                                }
+
+                                bones.Remove(bone);
                             }
                             else
                             {
@@ -243,10 +243,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     nodeTreeError = true;
                                     continue;
                                 }
-                                else
-                                {
-                                    bones.Remove(bone);
-                                }
+
+                                bones.Remove(bone);
                             }
 
                             pData += 5;
@@ -463,8 +461,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             MDL0CommonHeader* pHeader;
             ResourceNode node;
-            int* offsetCache = stackalloc int[128];
-            int offsetCount = 0, offset, x;
+            VoidPtr* offsetCache = stackalloc VoidPtr[128];
+            VoidPtr offsetCount = 0, offset, x;
 
             foreach (ResourcePair p in *pGroup)
             {

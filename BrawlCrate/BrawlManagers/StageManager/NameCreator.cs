@@ -18,10 +18,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                 {
                     return d.Settings;
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
         }
 

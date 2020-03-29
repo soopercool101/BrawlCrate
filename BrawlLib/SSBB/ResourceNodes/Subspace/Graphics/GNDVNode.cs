@@ -1,70 +1,17 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Graphics;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GNDVNode : ResourceNode
+    public unsafe class GNDVNode : BLOCEntryNode
     {
-        protected internal GNDV* Header => (GNDV*) WorkingUncompressed.Address;
-
-        public override bool OnInitialize()
-        {
-            if (_name == null)
-            {
-                _name = "GNDV";
-            }
-
-            return Header->_entryCount > 0;
-        }
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_entryCount; i++)
-            {
-                DataSource source;
-                if (i == Header->_entryCount - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GNDVEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            return GNDV.SIZE + Children.Count * 4 + Children.Count * GNDVEntry.SIZE;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GNDV* header = (GNDV*) address;
-            *header = new GNDV();
-            header->_tag = GNDV.TAG;
-            header->_entryCount = Children.Count;
-
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                if (i > 0)
-                {
-                    offset += (uint) Children[i - 1].CalculateSize(false);
-                }
-
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
-            }
-        }
+        protected override Type SubEntryType => typeof(GNDVEntryNode);
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GNDV*) source.Address)->_tag == GNDV.TAG ? new GNDVNode() : null;
+            return source.Tag == "GNDV" ? new GNDVNode() : null;
         }
     }
 

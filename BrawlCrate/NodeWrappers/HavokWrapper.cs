@@ -87,7 +87,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ExportPatched()
         {
-            if (Program.SaveFile(ExportFilter, Text, out string outPath) != 0)
+            if (Program.SaveFile(ExportFilter, Text, out string outPath))
             {
                 if (Parent == null)
                 {

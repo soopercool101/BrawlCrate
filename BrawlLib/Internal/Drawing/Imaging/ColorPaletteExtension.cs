@@ -30,7 +30,7 @@ namespace BrawlLib.Internal.Drawing.Imaging
         public static void SetFlags(this ColorPalette pal, ColorPaletteFlags flags)
         {
             typeof(ColorPalette).GetField("flags", BindingFlags.NonPublic | BindingFlags.Instance)
-                                .SetValue(pal, (int) flags);
+                .SetValue(pal, (int) flags);
         }
 
         public static void Clamp(this ColorPalette pal, WiiPaletteFormat format)

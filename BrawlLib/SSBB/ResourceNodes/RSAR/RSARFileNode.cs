@@ -105,10 +105,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((uint) (_infoHdr - RSARNode.Header)).ToString("X");
                 }
-                else
-                {
-                    return "0";
-                }
+
+                return "0";
             }
         }
 
@@ -126,10 +124,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((uint) (_audioSource.Address - RSARNode.Header)).ToString("X");
                 }
-                else
-                {
-                    return "0";
-                }
+
+                return "0";
             }
         }
 
@@ -147,10 +143,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((uint) (Data - RSARNode.Header)).ToString("X");
                 }
-                else
-                {
-                    return "0";
-                }
+
+                return "0";
             }
         }
 

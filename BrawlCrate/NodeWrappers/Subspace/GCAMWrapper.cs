@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.GCAM)]
-    internal class GCAMWrapper : GenericWrapper
+    public class GCAMWrapper : GenericWrapper
     {
         #region Menu
 

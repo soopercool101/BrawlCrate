@@ -1092,7 +1092,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Entries = Header->Entries;
                 return true;
             }
-            else if (_name == null)
+
+            if (_name == null)
             {
                 _name = "NULL";
             }
@@ -1134,10 +1135,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return size + 0x1; //0x1 is size of 00 of each entry's last
             }
-            else
-            {
-                return 0x0;
-            }
+
+            return 0x0;
         }
     }
 

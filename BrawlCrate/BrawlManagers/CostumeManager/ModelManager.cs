@@ -102,9 +102,9 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                             if (pac.Exists || pcs.Exists)
                             {
                                 cont = DialogResult.OK == MessageBox.Show(
-                                           "Replace " + pac.Name + "/" + pcs.Name + "?",
-                                           "Overwrite?",
-                                           MessageBoxButtons.OKCancel);
+                                    "Replace " + pac.Name + "/" + pcs.Name + "?",
+                                    "Overwrite?",
+                                    MessageBoxButtons.OKCancel);
                             }
 
                             if (!cont)
@@ -217,10 +217,8 @@ namespace BrawlCrate.BrawlManagers.CostumeManager
                 {
                     break;
                 }
-                else
-                {
-                    length++;
-                }
+
+                length++;
             }
 
             working = working.Substring(0, length);

@@ -286,9 +286,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             panel1.Controls.Add(tabControl1);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(221, 200);
+            panel1.Size = new Size(221, 200);
             panel1.TabIndex = 23;
             // 
             // tabControl1
@@ -296,19 +296,19 @@ namespace BrawlLib.Internal.Windows.Controls
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new System.Drawing.Point(0, 0);
+            tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(221, 200);
+            tabControl1.Size = new Size(221, 200);
             tabControl1.TabIndex = 18;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(panel2);
-            tabPage1.Location = new System.Drawing.Point(4, 22);
+            tabPage1.Location = new Point(4, 22);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new System.Drawing.Size(213, 174);
+            tabPage1.Size = new Size(213, 174);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Lighting";
             tabPage1.UseVisualStyleBackColor = true;
@@ -317,9 +317,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             groupBox1.Controls.Add(listKeyframes);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(213, 102);
+            groupBox1.Size = new Size(213, 102);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Keyframes";
@@ -327,13 +327,13 @@ namespace BrawlLib.Internal.Windows.Controls
             // listKeyframes
             // 
             listKeyframes.Dock = DockStyle.Fill;
-            listKeyframes.Font = new Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
+            listKeyframes.Font = new Font("Courier New", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listKeyframes.FormattingEnabled = true;
             listKeyframes.IntegralHeight = false;
             listKeyframes.ItemHeight = 14;
-            listKeyframes.Location = new System.Drawing.Point(3, 16);
+            listKeyframes.Location = new Point(3, 16);
             listKeyframes.Name = "listKeyframes";
-            listKeyframes.Size = new System.Drawing.Size(207, 83);
+            listKeyframes.Size = new Size(207, 83);
             listKeyframes.TabIndex = 18;
             listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
             // 
@@ -350,16 +350,16 @@ namespace BrawlLib.Internal.Windows.Controls
             panel2.Controls.Add(numFrame);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new System.Drawing.Point(0, 102);
+            panel2.Location = new Point(0, 102);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(213, 72);
+            panel2.Size = new Size(213, 72);
             panel2.TabIndex = 22;
             // 
             // label7
             // 
-            label7.Location = new System.Drawing.Point(3, 3);
+            label7.Location = new Point(3, 3);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(41, 20);
+            label7.Size = new Size(41, 20);
             label7.TabIndex = 15;
             label7.Text = "Frame:";
             label7.TextAlign = ContentAlignment.MiddleRight;
@@ -367,20 +367,20 @@ namespace BrawlLib.Internal.Windows.Controls
             // label3
             // 
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Location = new System.Drawing.Point(6, 45);
+            label3.Location = new Point(6, 45);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(70, 20);
+            label3.Size = new Size(70, 20);
             label3.TabIndex = 2;
             label3.Text = "End Point Z";
             label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnNext
             // 
-            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNext.Location = new System.Drawing.Point(187, 1);
+            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNext.Location = new Point(187, 1);
             btnNext.Name = "btnNext";
-            btnNext.Size = new System.Drawing.Size(23, 23);
+            btnNext.Size = new Size(23, 23);
             btnNext.TabIndex = 2;
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
@@ -389,10 +389,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // btnPrev
             // 
-            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPrev.Location = new System.Drawing.Point(162, 1);
+            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPrev.Location = new Point(162, 1);
             btnPrev.Name = "btnPrev";
-            btnPrev.Size = new System.Drawing.Size(23, 23);
+            btnPrev.Size = new Size(23, 23);
             btnPrev.TabIndex = 1;
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
@@ -401,9 +401,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // lblFrameCount
             // 
-            lblFrameCount.Location = new System.Drawing.Point(114, 3);
+            lblFrameCount.Location = new Point(114, 3);
             lblFrameCount.Name = "lblFrameCount";
-            lblFrameCount.Size = new System.Drawing.Size(51, 20);
+            lblFrameCount.Size = new Size(51, 20);
             lblFrameCount.TabIndex = 17;
             lblFrameCount.Text = "/ 10";
             lblFrameCount.TextAlign = ContentAlignment.MiddleLeft;
@@ -411,10 +411,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // numStart
             // 
             numStart.BorderStyle = BorderStyle.FixedSingle;
-            numStart.Location = new System.Drawing.Point(75, 26);
+            numStart.Location = new Point(75, 26);
             numStart.Margin = new Padding(0);
             numStart.Name = "numStart";
-            numStart.Size = new System.Drawing.Size(70, 20);
+            numStart.Size = new Size(70, 20);
             numStart.TabIndex = 3;
             numStart.Text = "0";
             numStart.ValueChanged += new EventHandler(BoxChanged);
@@ -422,17 +422,17 @@ namespace BrawlLib.Internal.Windows.Controls
             // numEnd
             // 
             numEnd.BorderStyle = BorderStyle.FixedSingle;
-            numEnd.Location = new System.Drawing.Point(75, 45);
+            numEnd.Location = new Point(75, 45);
             numEnd.Margin = new Padding(0, 10, 0, 10);
             numEnd.Name = "numEnd";
-            numEnd.Size = new System.Drawing.Size(70, 20);
+            numEnd.Size = new Size(70, 20);
             numEnd.TabIndex = 6;
             numEnd.Text = "0";
             numEnd.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numFrame
             // 
-            numFrame.Location = new System.Drawing.Point(50, 3);
+            numFrame.Location = new Point(50, 3);
             numFrame.Minimum = new decimal(new int[]
             {
                 1,
@@ -441,7 +441,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 0
             });
             numFrame.Name = "numFrame";
-            numFrame.Size = new System.Drawing.Size(58, 20);
+            numFrame.Size = new Size(58, 20);
             numFrame.TabIndex = 0;
             numFrame.Value = new decimal(new int[]
             {
@@ -455,10 +455,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // label1
             // 
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(6, 26);
+            label1.Location = new Point(6, 26);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(70, 20);
+            label1.Size = new Size(70, 20);
             label1.TabIndex = 0;
             label1.Text = "Start Point Z";
             label1.TextAlign = ContentAlignment.MiddleRight;
@@ -466,9 +466,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // tabPage3
             // 
             tabPage3.Controls.Add(lightCtrl);
-            tabPage3.Location = new System.Drawing.Point(4, 22);
+            tabPage3.Location = new Point(4, 22);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new System.Drawing.Size(213, 174);
+            tabPage3.Size = new Size(213, 174);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Light Color";
             tabPage3.UseVisualStyleBackColor = true;
@@ -476,16 +476,16 @@ namespace BrawlLib.Internal.Windows.Controls
             // lightCtrl
             // 
             lightCtrl.Dock = DockStyle.Fill;
-            lightCtrl.Location = new System.Drawing.Point(0, 0);
+            lightCtrl.Location = new Point(0, 0);
             lightCtrl.Name = "lightCtrl";
-            lightCtrl.Size = new System.Drawing.Size(213, 174);
+            lightCtrl.Size = new Size(213, 174);
             lightCtrl.TabIndex = 0;
             // 
             // SCN0FogEditControl
             // 
             Controls.Add(panel1);
             Name = "SCN0FogEditControl";
-            Size = new System.Drawing.Size(221, 200);
+            Size = new Size(221, 200);
             panel1.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.GITM)]
-    internal class GITMWrapper : GenericWrapper
+    public class GITMWrapper : GenericWrapper
     {
         #region Menu
 

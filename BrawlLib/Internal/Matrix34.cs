@@ -699,18 +699,16 @@ namespace BrawlLib.Internal
                     c._orthoDimensions[1],
                     0.5f, -0.5f, 0.5f, 0.5f);
             }
-            else
-            {
-                return LightMtxPersp(
-                    c._fovY, 1.0f,
-                    0.5f, -0.5f, 0.5f, 0.5f);
-            }
+
+            return LightMtxPersp(
+                c._fovY, 1.0f,
+                0.5f, -0.5f, 0.5f, 0.5f);
         }
 
         private static Matrix34 ProjectionTexMtx(SCN0CameraNode c, float frame)
         {
             CameraAnimationFrame f = c.GetAnimFrame(frame);
-            if (c.ProjectionType == BrawlLib.Wii.Graphics.ProjectionType.Orthographic)
+            if (c.ProjectionType == Wii.Graphics.ProjectionType.Orthographic)
             {
                 return LightMtxOrtho(
                     f.Height / 2.0f,
@@ -719,12 +717,10 @@ namespace BrawlLib.Internal
                     f.Height * f.Aspect / 2.0f,
                     0.5f, -0.5f, 0.5f, 0.5f);
             }
-            else
-            {
-                return LightMtxPersp(
-                    f.FovY, 1.0f,
-                    0.5f, -0.5f, 0.5f, 0.5f);
-            }
+
+            return LightMtxPersp(
+                f.FovY, 1.0f,
+                0.5f, -0.5f, 0.5f, 0.5f);
         }
 
         private static Matrix34 LightMtxPersp(float fovY, float aspect, float scaleS, float scaleT, float transS,
@@ -874,10 +870,8 @@ namespace BrawlLib.Internal
             {
                 return hTmp.Normalize();
             }
-            else //The singular case returns zero vector
-            {
-                return hTmp;
-            }
+
+            return hTmp;
         }
 
         /// <summary>

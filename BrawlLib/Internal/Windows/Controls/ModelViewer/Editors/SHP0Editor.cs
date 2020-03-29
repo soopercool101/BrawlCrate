@@ -45,18 +45,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             listBox1.Dock = DockStyle.Fill;
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
-            listBox1.Location = new System.Drawing.Point(0, 0);
+            listBox1.Location = new Point(0, 0);
             listBox1.Name = "listBox1";
-            listBox1.Size = new System.Drawing.Size(256, 49);
+            listBox1.Size = new Size(256, 49);
             listBox1.TabIndex = 0;
             listBox1.SelectedValueChanged += new EventHandler(listBox1_SelectedValueChanged);
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(4, 31);
+            label1.Location = new Point(4, 31);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(95, 13);
+            label1.Size = new Size(95, 13);
             label1.TabIndex = 1;
             label1.Text = "Target Vertex Sets";
             // 
@@ -65,26 +65,26 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             listBox2.Dock = DockStyle.Fill;
             listBox2.FormattingEnabled = true;
             listBox2.IntegralHeight = false;
-            listBox2.Location = new System.Drawing.Point(3, 0);
+            listBox2.Location = new Point(3, 0);
             listBox2.Name = "listBox2";
-            listBox2.Size = new System.Drawing.Size(261, 49);
+            listBox2.Size = new Size(261, 49);
             listBox2.TabIndex = 2;
             listBox2.SelectedValueChanged += new EventHandler(listBox2_SelectedValueChanged);
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(267, 31);
+            label2.Location = new Point(267, 31);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(117, 13);
+            label2.Size = new Size(117, 13);
             label2.TabIndex = 3;
             label2.Text = "Destination Vertex Sets";
             // 
             // button1
             // 
-            button1.Location = new System.Drawing.Point(429, 27);
+            button1.Location = new Point(429, 27);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(37, 20);
+            button1.Size = new Size(37, 20);
             button1.TabIndex = 4;
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = true;
@@ -94,18 +94,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(4, 8);
+            label3.Location = new Point(4, 8);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(98, 13);
+            label3.Size = new Size(98, 13);
             label3.TabIndex = 5;
             label3.Text = "Morph Percentage:";
             // 
             // trackBar1
             // 
-            trackBar1.Location = new System.Drawing.Point(126, 4);
+            trackBar1.Location = new Point(126, 4);
             trackBar1.Maximum = 1000;
             trackBar1.Name = "trackBar1";
-            trackBar1.Size = new System.Drawing.Size(204, 45);
+            trackBar1.Size = new Size(204, 45);
             trackBar1.TabIndex = 6;
             trackBar1.TickStyle = TickStyle.None;
             trackBar1.Scroll += new EventHandler(trackBar1_Scroll);
@@ -113,35 +113,35 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(108, 8);
+            label4.Location = new Point(108, 8);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(21, 13);
+            label4.Size = new Size(21, 13);
             label4.TabIndex = 7;
             label4.Text = "0%";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(326, 8);
+            label5.Location = new Point(326, 8);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(33, 13);
+            label5.Size = new Size(33, 13);
             label5.TabIndex = 8;
             label5.Text = "100%";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(365, 8);
+            label6.Location = new Point(365, 8);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(40, 13);
+            label6.Size = new Size(40, 13);
             label6.TabIndex = 10;
             label6.Text = "Value: ";
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(472, 27);
+            button2.Location = new Point(472, 27);
             button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(56, 20);
+            button2.Size = new Size(56, 20);
             button2.TabIndex = 11;
             button2.Text = "Remove";
             button2.UseVisualStyleBackColor = true;
@@ -151,17 +151,17 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(446, 8);
+            label7.Location = new Point(446, 8);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(15, 13);
+            label7.Size = new Size(15, 13);
             label7.TabIndex = 12;
             label7.Text = "%";
             // 
             // button3
             // 
-            button3.Location = new System.Drawing.Point(209, 27);
+            button3.Location = new Point(209, 27);
             button3.Name = "button3";
-            button3.Size = new System.Drawing.Size(56, 20);
+            button3.Size = new Size(56, 20);
             button3.TabIndex = 14;
             button3.Text = "Remove";
             button3.UseVisualStyleBackColor = true;
@@ -169,9 +169,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // button4
             // 
-            button4.Location = new System.Drawing.Point(166, 27);
+            button4.Location = new Point(166, 27);
             button4.Name = "button4";
-            button4.Size = new System.Drawing.Size(37, 20);
+            button4.Size = new Size(37, 20);
             button4.TabIndex = 13;
             button4.Text = "Add";
             button4.UseVisualStyleBackColor = true;
@@ -180,9 +180,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // splitter1
             // 
-            splitter1.Location = new System.Drawing.Point(0, 0);
+            splitter1.Location = new Point(0, 0);
             splitter1.Name = "splitter1";
-            splitter1.Size = new System.Drawing.Size(3, 49);
+            splitter1.Size = new Size(3, 49);
             splitter1.TabIndex = 15;
             splitter1.TabStop = false;
             // 
@@ -191,25 +191,25 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             panel1.Controls.Add(listBox2);
             panel1.Controls.Add(splitter1);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new System.Drawing.Point(256, 0);
+            panel1.Location = new Point(256, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(264, 49);
+            panel1.Size = new Size(264, 49);
             panel1.TabIndex = 16;
             // 
             // panel2
             // 
             panel2.Controls.Add(listBox1);
             panel2.Controls.Add(panel1);
-            panel2.Location = new System.Drawing.Point(7, 49);
+            panel2.Location = new Point(7, 49);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(520, 49);
+            panel2.Size = new Size(520, 49);
             panel2.TabIndex = 17;
             // 
             // button5
             // 
-            button5.Location = new System.Drawing.Point(472, 5);
+            button5.Location = new Point(472, 5);
             button5.Name = "button5";
-            button5.Size = new System.Drawing.Size(55, 20);
+            button5.Size = new Size(55, 20);
             button5.TabIndex = 18;
             button5.Text = "Set";
             button5.UseVisualStyleBackColor = true;
@@ -218,12 +218,12 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // textBox1
             // 
             textBox1.Integral = false;
-            textBox1.Location = new System.Drawing.Point(404, 5);
+            textBox1.Location = new Point(404, 5);
             textBox1.MaximumValue = 3.402823E+38F;
             textBox1.MaxLength = 999999;
             textBox1.MinimumValue = -3.402823E+38F;
             textBox1.Name = "textBox1";
-            textBox1.Size = new System.Drawing.Size(41, 20);
+            textBox1.Size = new Size(41, 20);
             textBox1.TabIndex = 9;
             textBox1.Text = "0";
             textBox1.ValueChanged += new EventHandler(PercentChanged);
@@ -245,9 +245,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             Controls.Add(trackBar1);
             Controls.Add(label6);
             Controls.Add(label1);
-            MinimumSize = new System.Drawing.Size(533, 106);
+            MinimumSize = new Size(533, 106);
             Name = "SHP0Editor";
-            Size = new System.Drawing.Size(533, 106);
+            Size = new Size(533, 106);
             ((ISupportInitialize) trackBar1).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -637,8 +637,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             }
 
             if (MessageBox.Show(this,
-                    "Are you sure you want to continue?\nThis will edit the model and make the selected object's vertices, normals and/or colors default to the current morph.",
-                    "Are you sure?", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                "Are you sure you want to continue?\nThis will edit the model and make the selected object's vertices, normals and/or colors default to the current morph.",
+                "Are you sure?", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
             {
                 return;
             }

@@ -13,96 +13,108 @@ namespace BrawlLib.Internal.Windows.Forms
         #region Designer
 
         private Label lblStartText;
-        private Label label2;
+        private Label lblStart;
         private Label lblEndText;
-        private Label label4;
+        private Label lblEnd;
         private Label lblEndColor;
         private Button btnOkay;
         private Button btnCancel;
         private BufferedPanel pnlPreview;
-        private Button btnCopy;
+        private Button btnCopyToEnd;
+        private CheckBox chkShowAlpha;
+        private Button btnCopyToStart;
+        private Label lblCopy;
         private Label lblStartColor;
 
         private void InitializeComponent()
         {
             lblStartText = new Label();
-            label2 = new Label();
+            lblStart = new Label();
             lblStartColor = new Label();
             lblEndText = new Label();
-            label4 = new Label();
+            lblEnd = new Label();
             lblEndColor = new Label();
             btnOkay = new Button();
             btnCancel = new Button();
-            btnCopy = new Button();
+            btnCopyToEnd = new Button();
             pnlPreview = new BufferedPanel();
+            chkShowAlpha = new CheckBox();
+            btnCopyToStart = new Button();
+            lblCopy = new Label();
             SuspendLayout();
             // 
             // lblStartText
             // 
+            lblStartText.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                   | AnchorStyles.Right);
             lblStartText.BackColor = Color.White;
             lblStartText.BorderStyle = BorderStyle.FixedSingle;
-            lblStartText.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblStartText.Location = new System.Drawing.Point(69, 8);
+            lblStartText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
+            lblStartText.Location = new Point(69, 8);
             lblStartText.Name = "lblStartText";
-            lblStartText.Size = new System.Drawing.Size(154, 20);
+            lblStartText.Size = new Size(187, 20);
             lblStartText.TabIndex = 4;
             lblStartText.TextAlign = ContentAlignment.MiddleCenter;
             lblStartText.Click += new EventHandler(lblStartText_Click);
             // 
-            // label2
+            // lblStart
             // 
-            label2.Location = new System.Drawing.Point(-1, 8);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(71, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Start Color:";
-            label2.TextAlign = ContentAlignment.MiddleRight;
+            lblStart.Location = new Point(-1, 8);
+            lblStart.Name = "lblStart";
+            lblStart.Size = new Size(71, 20);
+            lblStart.TabIndex = 3;
+            lblStart.Text = "Start Color:";
+            lblStart.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblStartColor
             // 
+            lblStartColor.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Right);
             lblStartColor.BorderStyle = BorderStyle.FixedSingle;
-            lblStartColor.Location = new System.Drawing.Point(222, 8);
+            lblStartColor.Location = new Point(255, 8);
             lblStartColor.Name = "lblStartColor";
-            lblStartColor.Size = new System.Drawing.Size(40, 20);
+            lblStartColor.Size = new Size(40, 20);
             lblStartColor.TabIndex = 2;
             lblStartColor.Click += new EventHandler(lblStartText_Click);
             // 
             // lblEndText
             // 
+            lblEndText.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                 | AnchorStyles.Right);
             lblEndText.BackColor = Color.White;
             lblEndText.BorderStyle = BorderStyle.FixedSingle;
-            lblEndText.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblEndText.Location = new System.Drawing.Point(69, 52);
+            lblEndText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
+            lblEndText.Location = new Point(69, 52);
             lblEndText.Name = "lblEndText";
-            lblEndText.Size = new System.Drawing.Size(154, 20);
+            lblEndText.Size = new Size(187, 20);
             lblEndText.TabIndex = 4;
             lblEndText.TextAlign = ContentAlignment.MiddleCenter;
             lblEndText.Click += new EventHandler(lblEndText_Click);
             // 
-            // label4
+            // lblEnd
             // 
-            label4.Location = new System.Drawing.Point(2, 52);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(68, 20);
-            label4.TabIndex = 3;
-            label4.Text = "End Color:";
-            label4.TextAlign = ContentAlignment.MiddleRight;
+            lblEnd.Location = new Point(2, 52);
+            lblEnd.Name = "lblEnd";
+            lblEnd.Size = new Size(68, 20);
+            lblEnd.TabIndex = 3;
+            lblEnd.Text = "End Color:";
+            lblEnd.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblEndColor
             // 
+            lblEndColor.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Right);
             lblEndColor.BorderStyle = BorderStyle.FixedSingle;
-            lblEndColor.Location = new System.Drawing.Point(222, 52);
+            lblEndColor.Location = new Point(255, 52);
             lblEndColor.Name = "lblEndColor";
-            lblEndColor.Size = new System.Drawing.Size(40, 20);
+            lblEndColor.Size = new Size(40, 20);
             lblEndColor.TabIndex = 2;
             lblEndColor.Click += new EventHandler(lblEndText_Click);
             // 
             // btnOkay
             // 
             btnOkay.Anchor = AnchorStyles.Bottom;
-            btnOkay.Location = new System.Drawing.Point(70, 119);
+            btnOkay.Location = new Point(86, 119);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(65, 23);
+            btnOkay.Size = new Size(65, 23);
             btnOkay.TabIndex = 6;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
@@ -111,42 +123,85 @@ namespace BrawlLib.Internal.Windows.Forms
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom;
-            btnCancel.Location = new System.Drawing.Point(141, 119);
+            btnCancel.Location = new Point(157, 119);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(65, 23);
+            btnCancel.Size = new Size(65, 23);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
-            // btnCopy
+            // btnCopyToEnd
             // 
-            btnCopy.Location = new System.Drawing.Point(113, 30);
-            btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(50, 20);
-            btnCopy.TabIndex = 9;
-            btnCopy.Text = "Copy";
-            btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += new EventHandler(btnCopy_Click);
+            btnCopyToEnd.Anchor = AnchorStyles.Top;
+            btnCopyToEnd.Location = new Point(106, 30);
+            btnCopyToEnd.Name = "btnCopyToEnd";
+            btnCopyToEnd.Size = new Size(22, 20);
+            btnCopyToEnd.TabIndex = 9;
+            btnCopyToEnd.Text = "↓";
+            btnCopyToEnd.UseVisualStyleBackColor = true;
+            btnCopyToEnd.Click += new EventHandler(btnCopyToEnd_Click);
             // 
             // pnlPreview
             // 
+            pnlPreview.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                 | AnchorStyles.Right);
             pnlPreview.BorderStyle = BorderStyle.FixedSingle;
-            pnlPreview.Location = new System.Drawing.Point(12, 81);
+            pnlPreview.Location = new Point(12, 81);
             pnlPreview.Name = "pnlPreview";
-            pnlPreview.Size = new System.Drawing.Size(250, 27);
+            pnlPreview.Size = new Size(283, 27);
             pnlPreview.TabIndex = 8;
             pnlPreview.Paint += new PaintEventHandler(pnlPreview_Paint);
             // 
+            // chkShowAlpha
+            // 
+            chkShowAlpha.AutoSize = true;
+            chkShowAlpha.BackColor = Color.Transparent;
+            chkShowAlpha.Checked = true;
+            chkShowAlpha.CheckState = CheckState.Checked;
+            chkShowAlpha.Location = new Point(211, 33);
+            chkShowAlpha.Name = "chkShowAlpha";
+            chkShowAlpha.Size = new Size(83, 17);
+            chkShowAlpha.TabIndex = 10;
+            chkShowAlpha.Text = "Show Alpha";
+            chkShowAlpha.UseVisualStyleBackColor = false;
+            chkShowAlpha.CheckedChanged += new EventHandler(chkShowAlpha_CheckedChanged);
+            // 
+            // btnCopyToStart
+            // 
+            btnCopyToStart.Anchor = AnchorStyles.Top;
+            btnCopyToStart.Font =
+                new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
+            btnCopyToStart.Location = new Point(177, 30);
+            btnCopyToStart.Name = "btnCopyToStart";
+            btnCopyToStart.Size = new Size(22, 20);
+            btnCopyToStart.TabIndex = 11;
+            btnCopyToStart.Text = "↑";
+            btnCopyToStart.UseVisualStyleBackColor = true;
+            btnCopyToStart.Click += new EventHandler(btnCopyToStart_Click);
+            // 
+            // lblCopy
+            // 
+            lblCopy.AutoSize = true;
+            lblCopy.Location = new Point(137, 34);
+            lblCopy.Name = "lblCopy";
+            lblCopy.Size = new Size(31, 13);
+            lblCopy.TabIndex = 12;
+            lblCopy.Text = "Copy";
+            lblCopy.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // GradientDialog
             // 
-            ClientSize = new System.Drawing.Size(276, 154);
+            ClientSize = new Size(309, 154);
+            Controls.Add(lblCopy);
+            Controls.Add(btnCopyToStart);
+            Controls.Add(chkShowAlpha);
             Controls.Add(lblStartColor);
             Controls.Add(lblStartText);
             Controls.Add(lblEndText);
-            Controls.Add(label2);
-            Controls.Add(btnCopy);
-            Controls.Add(label4);
+            Controls.Add(lblStart);
+            Controls.Add(btnCopyToEnd);
+            Controls.Add(lblEnd);
             Controls.Add(lblEndColor);
             Controls.Add(pnlPreview);
             Controls.Add(btnCancel);
@@ -159,6 +214,7 @@ namespace BrawlLib.Internal.Windows.Forms
             ShowInTaskbar = false;
             Text = "Gradient Fill";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -173,7 +229,7 @@ namespace BrawlLib.Internal.Windows.Forms
             set
             {
                 _startColor = value;
-                UpdateStart();
+                UpdateStart(true);
             }
         }
 
@@ -187,33 +243,9 @@ namespace BrawlLib.Internal.Windows.Forms
             set
             {
                 _endColor = value;
-                UpdateEnd();
+                UpdateEnd(true);
             }
         }
-
-        //private int _startIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int StartIndex
-        //{
-        //    get { return _startIndex; }
-        //    set { numStart.Value = _startIndex = value; }
-        //}
-
-        //private int _endIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int EndIndex
-        //{
-        //    get { return _endIndex; }
-        //    set { numStart.Value = _endIndex = value; }
-        //}
-
-        //private int _maxIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int MaxIndex
-        //{
-        //    get { return _maxIndex; }
-        //    set { numStart.Maximum = numEnd.Maximum = _maxIndex = value; }
-        //}
 
         private readonly GoodColorDialog _dlgColor;
         private readonly LinearGradientBrush _gradBrush;
@@ -229,58 +261,60 @@ namespace BrawlLib.Internal.Windows.Forms
                     Color.White, Color.Black, LinearGradientMode.Horizontal);
         }
 
-        private void UpdateStart()
+        private void UpdateStart(bool updateGradient)
         {
             lblStartText.Text = ((ARGBPixel) _startColor).ToString();
-            lblStartColor.BackColor = Color.FromArgb(_startColor.R, _startColor.G, _startColor.B);
-            UpdateBrush();
+            lblStartColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _startColor.A : 255, _startColor.R,
+                _startColor.G, _startColor.B);
+            if (updateGradient)
+            {
+                UpdateBrush();
+            }
         }
 
-        private void UpdateEnd()
+        private void UpdateEnd(bool updateGradient)
         {
             lblEndText.Text = ((ARGBPixel) _endColor).ToString();
-            lblEndColor.BackColor = Color.FromArgb(_endColor.R, _endColor.G, _endColor.B);
-            UpdateBrush();
+            lblEndColor.BackColor = Color.FromArgb(chkShowAlpha.Checked ? _endColor.A : 255, _endColor.R, _endColor.G,
+                _endColor.B);
+            if (updateGradient)
+            {
+                UpdateBrush();
+            }
         }
 
         private void UpdateBrush()
         {
-            _gradBrush.LinearColors = new Color[] {_startColor, _endColor};
+            _gradBrush.LinearColors = new[] {lblStartColor.BackColor, lblEndColor.BackColor};
             pnlPreview.Invalidate();
         }
-
-        private void numStart_ValueChanged(object sender, EventArgs e)
-        {
-        } // _startIndex = (int)numStart.Value; }
 
         private void lblStartText_Click(object sender, EventArgs e)
         {
             _dlgColor.Color = _startColor;
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
-                _startColor = _dlgColor.Color;
-                UpdateStart();
+                StartColor = _dlgColor.Color;
             }
         }
-
-        private void numEnd_ValueChanged(object sender, EventArgs e)
-        {
-        } // _endIndex = (int)numEnd.Value; }
 
         private void lblEndText_Click(object sender, EventArgs e)
         {
             _dlgColor.Color = _endColor;
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
-                _endColor = _dlgColor.Color;
-                UpdateEnd();
+                EndColor = _dlgColor.Color;
             }
         }
 
-        private void btnCopy_Click(object sender, EventArgs e)
+        private void btnCopyToStart_Click(object sender, EventArgs e)
         {
-            _endColor = _startColor;
-            UpdateEnd();
+            StartColor = _endColor;
+        }
+
+        private void btnCopyToEnd_Click(object sender, EventArgs e)
+        {
+            EndColor = _startColor;
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
@@ -301,6 +335,13 @@ namespace BrawlLib.Internal.Windows.Forms
 
             g.FillRectangle(GoodPictureBox._brush, pnlPreview.ClientRectangle);
             g.FillRectangle(_gradBrush, pnlPreview.ClientRectangle);
+        }
+
+        private void chkShowAlpha_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateStart(false);
+            UpdateEnd(false);
+            UpdateBrush();
         }
     }
 }

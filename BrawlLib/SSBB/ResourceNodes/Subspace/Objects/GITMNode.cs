@@ -1,72 +1,19 @@
 using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Objects;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GITMNode : ResourceNode
+    public unsafe class GITMNode : BLOCEntryNode
     {
-        internal GITM* Header => (GITM*) WorkingUncompressed.Address;
+        protected override Type SubEntryType => typeof(GITMEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GITM;
-
-        [Category("GITM")]
-        [DisplayName("Entry Count")]
-        public int Count => Children?.Count ?? 0;
-
-        private const int _entrySize = 0x17; // The constant size of a child entry
-
-        public override void OnPopulate()
-        {
-            for (int i = 0; i < Header->_count; i++)
-            {
-                DataSource source;
-                if (i == Header->_count - 1)
-                {
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                }
-                else
-                {
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
-                }
-
-                new GITMEntryNode().Initialize(this, source);
-            }
-        }
-
-        public override int OnCalculateSize(bool force)
-        {
-            return 0x08 + Children.Count * 4 + Children.Count * _entrySize;
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            GITM* header = (GITM*) address;
-            *header = new GITM(Children.Count);
-            uint offset = (uint) (0x08 + Children.Count * 4);
-            for (int i = 0; i < Children.Count; i++)
-            {
-                ResourceNode r = Children[i];
-                *(buint*) (address + 0x08 + i * 4) = offset;
-                r.Rebuild(address + offset, _entrySize, true);
-                offset += _entrySize;
-            }
-        }
-
-        public override bool OnInitialize()
-        {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = "Fighter Trophies (unlock)";
-            }
-
-            return Header->_count > 0;
-        }
+        protected override string baseName => "Fighter Trophies";
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((GITM*) source.Address)->_tag == GITM.Tag ? new GITMNode() : null;
+            return source.Tag == "GITM" ? new GITMNode() : null;
         }
     }
 

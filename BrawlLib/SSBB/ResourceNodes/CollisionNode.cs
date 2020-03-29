@@ -6,6 +6,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -176,10 +177,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 {
                                     continue; //Already linked, try again
                                 }
-                                else
-                                {
-                                    pPlane[rlink = tmp]._link1 = (short) iPlane; //Left link, which means the end!
-                                }
+
+                                pPlane[rlink = tmp]._link1 = (short) iPlane; //Left link, which means the end!
                             }
                             else
                             {
@@ -511,6 +510,55 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             base.Export(outPath);
+        }
+
+        // Utility functions
+
+        public CollisionLink FindLink(CollisionLink l)
+        {
+            return FindLink(l._rawValue);
+        }
+
+        public CollisionLink FindLink(Vector2 position)
+        {
+            foreach (CollisionLink l in _points)
+            {
+                if (l.Value == position)
+                {
+                    return l;
+                }
+            }
+
+            return null;
+        }
+
+        public void FixLedges()
+        {
+            foreach (CollisionPlane p in _planes.Where(o => o.IsFloor && o.IsLedge))
+            {
+                if (p.IsLeftLedge)
+                {
+                    foreach (CollisionPlane p2 in p.LinkLeft._members.Where(o => !o.Equals(p)))
+                    {
+                        if (!p2.IsLeftWall && !p2.IsCeiling)
+                        {
+                            p.IsLeftLedge = false;
+                            break;
+                        }
+                    }
+                }
+                if (p.IsRightLedge)
+                {
+                    foreach (CollisionPlane p2 in p.LinkRight._members.Where(o => !o.Equals(p)))
+                    {
+                        if (!p2.IsRightWall && !p2.IsCeiling)
+                        {
+                            p.IsRightLedge = false;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -986,6 +1034,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => (_flags & CollisionPlaneFlags.DropThrough) != 0;
             set => _flags = (_flags & ~CollisionPlaneFlags.DropThrough) | (value ? CollisionPlaneFlags.DropThrough : 0);
         }
+
+        public bool IsLedge => IsRightLedge || IsLeftLedge;
 
         public bool IsRightLedge
         {

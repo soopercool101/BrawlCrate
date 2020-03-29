@@ -261,7 +261,7 @@ namespace BrawlCrate.UI
             // 
             undoToolStrip.Dock = DockStyle.Fill;
             undoToolStrip.FixedPanel = FixedPanel.Panel1;
-            undoToolStrip.Location = new System.Drawing.Point(0, 0);
+            undoToolStrip.Location = new Point(0, 0);
             undoToolStrip.Name = "undoToolStrip";
             // 
             // undoToolStrip.Panel1
@@ -272,14 +272,14 @@ namespace BrawlCrate.UI
             // 
             undoToolStrip.Panel2.Controls.Add(_modelPanel);
             undoToolStrip.Panel2.Controls.Add(panel1);
-            undoToolStrip.Size = new System.Drawing.Size(694, 467);
+            undoToolStrip.Size = new Size(694, 467);
             undoToolStrip.SplitterDistance = 209;
             undoToolStrip.TabIndex = 1;
             // 
             // redoToolStrip
             // 
             redoToolStrip.Dock = DockStyle.Fill;
-            redoToolStrip.Location = new System.Drawing.Point(0, 0);
+            redoToolStrip.Location = new Point(0, 0);
             redoToolStrip.Name = "redoToolStrip";
             redoToolStrip.Orientation = Orientation.Horizontal;
             // 
@@ -293,7 +293,7 @@ namespace BrawlCrate.UI
             redoToolStrip.Panel2.Controls.Add(lstObjects);
             redoToolStrip.Panel2.Controls.Add(panel3);
             redoToolStrip.Panel2.Controls.Add(panel4);
-            redoToolStrip.Size = new System.Drawing.Size(209, 467);
+            redoToolStrip.Size = new Size(209, 467);
             redoToolStrip.SplitterDistance = 242;
             redoToolStrip.TabIndex = 2;
             // 
@@ -304,9 +304,9 @@ namespace BrawlCrate.UI
             modelTree.ContextMenuStrip = contextMenuStrip2;
             modelTree.Dock = DockStyle.Fill;
             modelTree.HideSelection = false;
-            modelTree.Location = new System.Drawing.Point(0, 17);
+            modelTree.Location = new Point(0, 17);
             modelTree.Name = "modelTree";
-            modelTree.Size = new System.Drawing.Size(209, 225);
+            modelTree.Size = new Size(209, 225);
             modelTree.TabIndex = 4;
             modelTree.AfterCheck += new TreeViewEventHandler(modelTree_AfterCheck);
             modelTree.BeforeSelect += new TreeViewCancelEventHandler(modelTree_BeforeSelect);
@@ -322,32 +322,32 @@ namespace BrawlCrate.UI
                 snapToolStripMenuItem1
             });
             contextMenuStrip2.Name = "contextMenuStrip2";
-            contextMenuStrip2.Size = new System.Drawing.Size(239, 76);
+            contextMenuStrip2.Size = new Size(239, 76);
             contextMenuStrip2.Opening += new CancelEventHandler(contextMenuStrip2_Opening);
             // 
             // assignToolStripMenuItem
             // 
             assignToolStripMenuItem.Name = "assignToolStripMenuItem";
-            assignToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            assignToolStripMenuItem.Size = new Size(238, 22);
             assignToolStripMenuItem.Text = "Assign";
             assignToolStripMenuItem.Click += new EventHandler(btnRelink_Click);
             // 
             // assignNoMoveToolStripMenuItem
             // 
             assignNoMoveToolStripMenuItem.Name = "assignNoMoveToolStripMenuItem";
-            assignNoMoveToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            assignNoMoveToolStripMenuItem.Size = new Size(238, 22);
             assignNoMoveToolStripMenuItem.Text = "Assign (No relative movement)";
             assignNoMoveToolStripMenuItem.Click += new EventHandler(btnRelinkNoMove_Click);
             // 
             // assignSeperatorToolStripMenuItem
             // 
             assignSeperatorToolStripMenuItem.Name = "assignSeperatorToolStripMenuItem";
-            assignSeperatorToolStripMenuItem.Size = new System.Drawing.Size(235, 6);
+            assignSeperatorToolStripMenuItem.Size = new Size(235, 6);
             // 
             // snapToolStripMenuItem1
             // 
             snapToolStripMenuItem1.Name = "snapToolStripMenuItem1";
-            snapToolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
+            snapToolStripMenuItem1.Size = new Size(238, 22);
             snapToolStripMenuItem1.Text = "Snap";
             snapToolStripMenuItem1.Click += new EventHandler(snapToolStripMenuItem1_Click);
             // 
@@ -357,17 +357,17 @@ namespace BrawlCrate.UI
             panel2.Controls.Add(chkPoly);
             panel2.Controls.Add(chkAllModels);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(0, 0);
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(209, 17);
+            panel2.Size = new Size(209, 17);
             panel2.TabIndex = 3;
             // 
             // chkBones
             // 
-            chkBones.Location = new System.Drawing.Point(100, 0);
+            chkBones.Location = new Point(100, 0);
             chkBones.Name = "chkBones";
             chkBones.Padding = new Padding(1, 0, 0, 0);
-            chkBones.Size = new System.Drawing.Size(67, 17);
+            chkBones.Size = new Size(67, 17);
             chkBones.TabIndex = 4;
             chkBones.Text = "Bones";
             chkBones.UseVisualStyleBackColor = true;
@@ -377,10 +377,10 @@ namespace BrawlCrate.UI
             // 
             chkPoly.Checked = true;
             chkPoly.CheckState = CheckState.Checked;
-            chkPoly.Location = new System.Drawing.Point(44, 0);
+            chkPoly.Location = new Point(44, 0);
             chkPoly.Name = "chkPoly";
             chkPoly.Padding = new Padding(1, 0, 0, 0);
-            chkPoly.Size = new System.Drawing.Size(54, 17);
+            chkPoly.Size = new Size(54, 17);
             chkPoly.TabIndex = 3;
             chkPoly.Text = "Poly";
             chkPoly.ThreeState = true;
@@ -391,10 +391,10 @@ namespace BrawlCrate.UI
             // 
             chkAllModels.Checked = true;
             chkAllModels.CheckState = CheckState.Checked;
-            chkAllModels.Location = new System.Drawing.Point(0, 0);
+            chkAllModels.Location = new Point(0, 0);
             chkAllModels.Name = "chkAllModels";
             chkAllModels.Padding = new Padding(1, 0, 0, 0);
-            chkAllModels.Size = new System.Drawing.Size(41, 17);
+            chkAllModels.Size = new Size(41, 17);
             chkAllModels.TabIndex = 2;
             chkAllModels.Text = "All";
             chkAllModels.UseVisualStyleBackColor = true;
@@ -407,9 +407,9 @@ namespace BrawlCrate.UI
             lstObjects.Dock = DockStyle.Fill;
             lstObjects.FormattingEnabled = true;
             lstObjects.IntegralHeight = false;
-            lstObjects.Location = new System.Drawing.Point(0, 0);
+            lstObjects.Location = new Point(0, 0);
             lstObjects.Name = "lstObjects";
-            lstObjects.Size = new System.Drawing.Size(209, 82);
+            lstObjects.Size = new Size(209, 82);
             lstObjects.TabIndex = 1;
             lstObjects.ItemCheck += new ItemCheckEventHandler(lstObjects_ItemCheck);
             lstObjects.SelectedValueChanged += new EventHandler(lstObjects_SelectedValueChanged);
@@ -429,57 +429,57 @@ namespace BrawlCrate.UI
                 _deleteToolStripMenuItem
             });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new System.Drawing.Size(238, 132);
+            contextMenuStrip1.Size = new Size(238, 132);
             contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
             // 
             // newObjectToolStripMenuItem
             // 
             newObjectToolStripMenuItem.Name = "newObjectToolStripMenuItem";
-            newObjectToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            newObjectToolStripMenuItem.Size = new Size(237, 22);
             newObjectToolStripMenuItem.Text = "New Object";
             newObjectToolStripMenuItem.Click += new EventHandler(newObjectToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new System.Drawing.Size(234, 6);
+            toolStripMenuItem3.Size = new Size(234, 6);
             // 
             // unlinkToolStripMenuItem
             // 
             unlinkToolStripMenuItem.Name = "unlinkToolStripMenuItem";
-            unlinkToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            unlinkToolStripMenuItem.Size = new Size(237, 22);
             unlinkToolStripMenuItem.Text = "Unlink";
             unlinkToolStripMenuItem.Click += new EventHandler(btnUnlink_Click);
             // 
             // unlinkNoMoveToolStripMenuItem
             // 
             unlinkNoMoveToolStripMenuItem.Name = "unlinkNoMoveToolStripMenuItem";
-            unlinkNoMoveToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            unlinkNoMoveToolStripMenuItem.Size = new Size(237, 22);
             unlinkNoMoveToolStripMenuItem.Text = "Unlink (No relative movement)";
             unlinkNoMoveToolStripMenuItem.Click += new EventHandler(btnUnlinkNoMove_Click);
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new System.Drawing.Size(234, 6);
+            toolStripMenuItem2.Size = new Size(234, 6);
             // 
             // snapToolStripMenuItem
             // 
             snapToolStripMenuItem.Name = "snapToolStripMenuItem";
-            snapToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            snapToolStripMenuItem.Size = new Size(237, 22);
             snapToolStripMenuItem.Text = "Snap";
             snapToolStripMenuItem.Click += new EventHandler(snapToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new System.Drawing.Size(234, 6);
+            toolStripMenuItem1.Size = new Size(234, 6);
             // 
             // _deleteToolStripMenuItem
             // 
             _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
             _deleteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Delete;
-            _deleteToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            _deleteToolStripMenuItem.Size = new Size(237, 22);
             _deleteToolStripMenuItem.Text = "Delete";
             _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
@@ -489,9 +489,9 @@ namespace BrawlCrate.UI
             panel3.Controls.Add(pnlPointProps);
             panel3.Controls.Add(pnlObjProps);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new System.Drawing.Point(0, 82);
+            panel3.Location = new Point(0, 82);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(209, 115);
+            panel3.Size = new Size(209, 115);
             panel3.TabIndex = 16;
             // 
             // pnlPlaneProps
@@ -504,9 +504,9 @@ namespace BrawlCrate.UI
             pnlPlaneProps.Controls.Add(label5);
             pnlPlaneProps.Controls.Add(labelType);
             pnlPlaneProps.Dock = DockStyle.Bottom;
-            pnlPlaneProps.Location = new System.Drawing.Point(0, -273);
+            pnlPlaneProps.Location = new Point(0, -273);
             pnlPlaneProps.Name = "pnlPlaneProps";
-            pnlPlaneProps.Size = new System.Drawing.Size(209, 188);
+            pnlPlaneProps.Size = new Size(209, 188);
             pnlPlaneProps.TabIndex = 0;
             pnlPlaneProps.Visible = false;
             // 
@@ -518,20 +518,20 @@ namespace BrawlCrate.UI
             groupBoxFlags2.Controls.Add(chkFlagUnknown2);
             groupBoxFlags2.Controls.Add(chkFlagUnknown3);
             groupBoxFlags2.Controls.Add(chkFlagUnknown4);
-            groupBoxFlags2.Location = new System.Drawing.Point(104, 102);
+            groupBoxFlags2.Location = new Point(104, 102);
             groupBoxFlags2.Margin = new Padding(0);
             groupBoxFlags2.Name = "groupBoxFlags2";
             groupBoxFlags2.Padding = new Padding(0);
-            groupBoxFlags2.Size = new System.Drawing.Size(105, 160);
+            groupBoxFlags2.Size = new Size(105, 160);
             groupBoxFlags2.TabIndex = 14;
             groupBoxFlags2.TabStop = false;
             // 
             // chkFlagUnknown1
             // 
-            chkFlagUnknown1.Location = new System.Drawing.Point(8, 17);
+            chkFlagUnknown1.Location = new Point(8, 17);
             chkFlagUnknown1.Margin = new Padding(0);
             chkFlagUnknown1.Name = "chkFlagUnknown1";
-            chkFlagUnknown1.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown1.Size = new Size(86, 18);
             chkFlagUnknown1.TabIndex = 3;
             chkFlagUnknown1.Text = "Unknown 1";
             chkFlagUnknown1.UseVisualStyleBackColor = true;
@@ -539,10 +539,10 @@ namespace BrawlCrate.UI
             // 
             // chkFlagUnknown2
             // 
-            chkFlagUnknown2.Location = new System.Drawing.Point(8, 33);
+            chkFlagUnknown2.Location = new Point(8, 33);
             chkFlagUnknown2.Margin = new Padding(0);
             chkFlagUnknown2.Name = "chkFlagUnknown2";
-            chkFlagUnknown2.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown2.Size = new Size(86, 18);
             chkFlagUnknown2.TabIndex = 3;
             chkFlagUnknown2.Text = "Unknown 2";
             chkFlagUnknown2.UseVisualStyleBackColor = true;
@@ -550,10 +550,10 @@ namespace BrawlCrate.UI
             // 
             // chkFlagUnknown3
             // 
-            chkFlagUnknown3.Location = new System.Drawing.Point(8, 49);
+            chkFlagUnknown3.Location = new Point(8, 49);
             chkFlagUnknown3.Margin = new Padding(0);
             chkFlagUnknown3.Name = "chkFlagUnknown3";
-            chkFlagUnknown3.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown3.Size = new Size(86, 18);
             chkFlagUnknown3.TabIndex = 3;
             chkFlagUnknown3.Text = "Unknown 3";
             chkFlagUnknown3.UseVisualStyleBackColor = true;
@@ -561,10 +561,10 @@ namespace BrawlCrate.UI
             // 
             // chkFlagUnknown4
             // 
-            chkFlagUnknown4.Location = new System.Drawing.Point(8, 65);
+            chkFlagUnknown4.Location = new Point(8, 65);
             chkFlagUnknown4.Margin = new Padding(0);
             chkFlagUnknown4.Name = "chkFlagUnknown4";
-            chkFlagUnknown4.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown4.Size = new Size(86, 18);
             chkFlagUnknown4.TabIndex = 3;
             chkFlagUnknown4.Text = "Unknown 4";
             chkFlagUnknown4.UseVisualStyleBackColor = true;
@@ -579,21 +579,21 @@ namespace BrawlCrate.UI
             groupBoxFlags1.Controls.Add(chkRightLedge);
             groupBoxFlags1.Controls.Add(chkTypeRotating);
             groupBoxFlags1.Controls.Add(chkFallThrough);
-            groupBoxFlags1.Location = new System.Drawing.Point(0, 102);
+            groupBoxFlags1.Location = new Point(0, 102);
             groupBoxFlags1.Margin = new Padding(0);
             groupBoxFlags1.Name = "groupBoxFlags1";
             groupBoxFlags1.Padding = new Padding(0);
-            groupBoxFlags1.Size = new System.Drawing.Size(104, 160);
+            groupBoxFlags1.Size = new Size(104, 160);
             groupBoxFlags1.TabIndex = 13;
             groupBoxFlags1.TabStop = false;
             groupBoxFlags1.Text = "Flags";
             // 
             // chkLeftLedge
             // 
-            chkLeftLedge.Location = new System.Drawing.Point(8, 33);
+            chkLeftLedge.Location = new Point(8, 33);
             chkLeftLedge.Margin = new Padding(0);
             chkLeftLedge.Name = "chkLeftLedge";
-            chkLeftLedge.Size = new System.Drawing.Size(86, 18);
+            chkLeftLedge.Size = new Size(86, 18);
             chkLeftLedge.TabIndex = 4;
             chkLeftLedge.Text = "Left Ledge";
             chkLeftLedge.UseVisualStyleBackColor = true;
@@ -601,10 +601,10 @@ namespace BrawlCrate.UI
             // 
             // chkNoWalljump
             // 
-            chkNoWalljump.Location = new System.Drawing.Point(8, 65);
+            chkNoWalljump.Location = new Point(8, 65);
             chkNoWalljump.Margin = new Padding(0);
             chkNoWalljump.Name = "chkNoWalljump";
-            chkNoWalljump.Size = new System.Drawing.Size(90, 18);
+            chkNoWalljump.Size = new Size(90, 18);
             chkNoWalljump.TabIndex = 2;
             chkNoWalljump.Text = "No Walljump";
             chkNoWalljump.UseVisualStyleBackColor = true;
@@ -612,10 +612,10 @@ namespace BrawlCrate.UI
             // 
             // chkRightLedge
             // 
-            chkRightLedge.Location = new System.Drawing.Point(8, 49);
+            chkRightLedge.Location = new Point(8, 49);
             chkRightLedge.Margin = new Padding(0);
             chkRightLedge.Name = "chkRightLedge";
-            chkRightLedge.Size = new System.Drawing.Size(86, 18);
+            chkRightLedge.Size = new Size(86, 18);
             chkRightLedge.TabIndex = 1;
             chkRightLedge.Text = "Right Ledge";
             chkRightLedge.UseVisualStyleBackColor = true;
@@ -623,10 +623,10 @@ namespace BrawlCrate.UI
             // 
             // chkTypeRotating
             // 
-            chkTypeRotating.Location = new System.Drawing.Point(8, 81);
+            chkTypeRotating.Location = new Point(8, 81);
             chkTypeRotating.Margin = new Padding(0);
             chkTypeRotating.Name = "chkTypeRotating";
-            chkTypeRotating.Size = new System.Drawing.Size(86, 18);
+            chkTypeRotating.Size = new Size(86, 18);
             chkTypeRotating.TabIndex = 4;
             chkTypeRotating.Text = "Rotating";
             chkTypeRotating.UseVisualStyleBackColor = true;
@@ -634,10 +634,10 @@ namespace BrawlCrate.UI
             // 
             // chkFallThrough
             // 
-            chkFallThrough.Location = new System.Drawing.Point(8, 17);
+            chkFallThrough.Location = new Point(8, 17);
             chkFallThrough.Margin = new Padding(0);
             chkFallThrough.Name = "chkFallThrough";
-            chkFallThrough.Size = new System.Drawing.Size(90, 18);
+            chkFallThrough.Size = new Size(90, 18);
             chkFallThrough.TabIndex = 0;
             chkFallThrough.Text = "Fall-Through";
             chkFallThrough.UseVisualStyleBackColor = true;
@@ -650,21 +650,21 @@ namespace BrawlCrate.UI
             groupBoxTargets.Controls.Add(chkTypePokemonTrainer);
             groupBoxTargets.Controls.Add(chkTypeItems);
             groupBoxTargets.Controls.Add(chkTypeCharacters);
-            groupBoxTargets.Location = new System.Drawing.Point(0, 50);
+            groupBoxTargets.Location = new Point(0, 50);
             groupBoxTargets.Margin = new Padding(0);
             groupBoxTargets.Name = "groupBoxTargets";
             groupBoxTargets.Padding = new Padding(0);
-            groupBoxTargets.Size = new System.Drawing.Size(208, 71);
+            groupBoxTargets.Size = new Size(208, 71);
             groupBoxTargets.TabIndex = 14;
             groupBoxTargets.TabStop = false;
             groupBoxTargets.Text = "Collision Targets";
             // 
             // chkTypePokemonTrainer
             // 
-            chkTypePokemonTrainer.Location = new System.Drawing.Point(82, 33);
+            chkTypePokemonTrainer.Location = new Point(82, 33);
             chkTypePokemonTrainer.Margin = new Padding(0);
             chkTypePokemonTrainer.Name = "chkTypePokemonTrainer";
-            chkTypePokemonTrainer.Size = new System.Drawing.Size(116, 18);
+            chkTypePokemonTrainer.Size = new Size(116, 18);
             chkTypePokemonTrainer.TabIndex = 3;
             chkTypePokemonTrainer.Text = "Pokémon Trainer";
             chkTypePokemonTrainer.UseVisualStyleBackColor = true;
@@ -672,10 +672,10 @@ namespace BrawlCrate.UI
             // 
             // chkTypeItems
             // 
-            chkTypeItems.Location = new System.Drawing.Point(8, 33);
+            chkTypeItems.Location = new Point(8, 33);
             chkTypeItems.Margin = new Padding(0);
             chkTypeItems.Name = "chkTypeItems";
-            chkTypeItems.Size = new System.Drawing.Size(86, 18);
+            chkTypeItems.Size = new Size(86, 18);
             chkTypeItems.TabIndex = 3;
             chkTypeItems.Text = "Items";
             chkTypeItems.UseVisualStyleBackColor = true;
@@ -683,10 +683,10 @@ namespace BrawlCrate.UI
             // 
             // chkTypeCharacters
             // 
-            chkTypeCharacters.Location = new System.Drawing.Point(8, 17);
+            chkTypeCharacters.Location = new Point(8, 17);
             chkTypeCharacters.Margin = new Padding(0);
             chkTypeCharacters.Name = "chkTypeCharacters";
-            chkTypeCharacters.Size = new System.Drawing.Size(194, 18);
+            chkTypeCharacters.Size = new Size(194, 18);
             chkTypeCharacters.TabIndex = 4;
             chkTypeCharacters.Text = "Everything";
             chkTypeCharacters.UseVisualStyleBackColor = true;
@@ -696,9 +696,9 @@ namespace BrawlCrate.UI
             // 
             cboMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMaterial.FormattingEnabled = true;
-            cboMaterial.Location = new System.Drawing.Point(66, 25);
+            cboMaterial.Location = new Point(66, 25);
             cboMaterial.Name = "cboMaterial";
-            cboMaterial.Size = new System.Drawing.Size(139, 21);
+            cboMaterial.Size = new Size(139, 21);
             cboMaterial.TabIndex = 12;
             cboMaterial.SelectedIndexChanged += new EventHandler(cboMaterial_SelectedIndexChanged);
             cboMaterial.Anchor = AnchorStyles.Top | AnchorStyles.Right
@@ -708,9 +708,9 @@ namespace BrawlCrate.UI
             // 
             cboType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboType.FormattingEnabled = true;
-            cboType.Location = new System.Drawing.Point(66, 4);
+            cboType.Location = new Point(66, 4);
             cboType.Name = "cboType";
-            cboType.Size = new System.Drawing.Size(139, 21);
+            cboType.Size = new Size(139, 21);
             cboType.TabIndex = 5;
             cboType.SelectedIndexChanged += new EventHandler(cboType_SelectedIndexChanged);
             cboType.Anchor = AnchorStyles.Top | AnchorStyles.Right
@@ -718,18 +718,18 @@ namespace BrawlCrate.UI
             // 
             // label5
             // 
-            label5.Location = new System.Drawing.Point(7, 25);
+            label5.Location = new Point(7, 25);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(53, 21);
+            label5.Size = new Size(53, 21);
             label5.TabIndex = 8;
             label5.Text = "Material:";
             label5.TextAlign = ContentAlignment.MiddleRight;
             // 
             // labelType
             // 
-            labelType.Location = new System.Drawing.Point(7, 4);
+            labelType.Location = new Point(7, 4);
             labelType.Name = "labelType";
-            labelType.Size = new System.Drawing.Size(53, 21);
+            labelType.Size = new Size(53, 21);
             labelType.TabIndex = 8;
             labelType.Text = "Type:";
             labelType.TextAlign = ContentAlignment.MiddleRight;
@@ -741,18 +741,18 @@ namespace BrawlCrate.UI
             pnlPointProps.Controls.Add(label1);
             pnlPointProps.Controls.Add(numX);
             pnlPointProps.Dock = DockStyle.Bottom;
-            pnlPointProps.Location = new System.Drawing.Point(0, -85);
+            pnlPointProps.Location = new Point(0, -85);
             pnlPointProps.Name = "pnlPointProps";
-            pnlPointProps.Size = new System.Drawing.Size(209, 70);
+            pnlPointProps.Size = new Size(209, 70);
             pnlPointProps.TabIndex = 15;
             pnlPointProps.Visible = false;
             // 
             // label2
             // 
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new System.Drawing.Point(18, 32);
+            label2.Location = new Point(18, 32);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(42, 20);
+            label2.Size = new Size(42, 20);
             label2.TabIndex = 3;
             label2.Text = "Y";
             label2.TextAlign = ContentAlignment.MiddleRight;
@@ -761,11 +761,11 @@ namespace BrawlCrate.UI
             // 
             numY.BorderStyle = BorderStyle.FixedSingle;
             numY.Integral = false;
-            numY.Location = new System.Drawing.Point(59, 32);
+            numY.Location = new Point(59, 32);
             numY.MaximumValue = 3.402823E+38F;
             numY.MinimumValue = -3.402823E+38F;
             numY.Name = "numY";
-            numY.Size = new System.Drawing.Size(100, 20);
+            numY.Size = new Size(100, 20);
             numY.TabIndex = 2;
             numY.Text = "0";
             numY.ValueChanged += new EventHandler(numY_ValueChanged);
@@ -773,9 +773,9 @@ namespace BrawlCrate.UI
             // label1
             // 
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(18, 13);
+            label1.Location = new Point(18, 13);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(42, 20);
+            label1.Size = new Size(42, 20);
             label1.TabIndex = 1;
             label1.Text = "X";
             label1.TextAlign = ContentAlignment.MiddleRight;
@@ -784,11 +784,11 @@ namespace BrawlCrate.UI
             // 
             numX.BorderStyle = BorderStyle.FixedSingle;
             numX.Integral = false;
-            numX.Location = new System.Drawing.Point(59, 13);
+            numX.Location = new Point(59, 13);
             numX.MaximumValue = 3.402823E+38F;
             numX.MinimumValue = -3.402823E+38F;
             numX.Name = "numX";
-            numX.Size = new System.Drawing.Size(100, 20);
+            numX.Size = new Size(100, 20);
             numX.TabIndex = 0;
             numX.Text = "0";
             numX.ValueChanged += new EventHandler(numX_ValueChanged);
@@ -805,18 +805,18 @@ namespace BrawlCrate.UI
             pnlObjProps.Controls.Add(txtModel);
             pnlObjProps.Controls.Add(label3);
             pnlObjProps.Dock = DockStyle.Bottom;
-            pnlObjProps.Location = new System.Drawing.Point(0, -15);
+            pnlObjProps.Location = new Point(0, -15);
             pnlObjProps.Name = "pnlObjProps";
-            pnlObjProps.Size = new System.Drawing.Size(209, 130);
+            pnlObjProps.Size = new Size(209, 130);
             pnlObjProps.TabIndex = 1;
             pnlObjProps.Visible = false;
             // 
             // chkObjSSEUnk
             // 
             chkObjSSEUnk.AutoSize = true;
-            chkObjSSEUnk.Location = new System.Drawing.Point(10, 102);
+            chkObjSSEUnk.Location = new Point(10, 102);
             chkObjSSEUnk.Name = "chkObjSSEUnk";
-            chkObjSSEUnk.Size = new System.Drawing.Size(96, 17);
+            chkObjSSEUnk.Size = new Size(96, 17);
             chkObjSSEUnk.TabIndex = 15;
             chkObjSSEUnk.Text = "SSE Unknown";
             chkObjSSEUnk.UseVisualStyleBackColor = true;
@@ -825,9 +825,9 @@ namespace BrawlCrate.UI
             // chkObjModule
             // 
             chkObjModule.AutoSize = true;
-            chkObjModule.Location = new System.Drawing.Point(10, 79);
+            chkObjModule.Location = new Point(10, 79);
             chkObjModule.Name = "chkObjModule";
-            chkObjModule.Size = new System.Drawing.Size(111, 17);
+            chkObjModule.Size = new Size(111, 17);
             chkObjModule.TabIndex = 14;
             chkObjModule.Text = "Module Controlled";
             chkObjModule.UseVisualStyleBackColor = true;
@@ -836,9 +836,9 @@ namespace BrawlCrate.UI
             // chkObjUnk
             // 
             chkObjUnk.AutoSize = true;
-            chkObjUnk.Location = new System.Drawing.Point(10, 56);
+            chkObjUnk.Location = new Point(10, 56);
             chkObjUnk.Name = "chkObjUnk";
-            chkObjUnk.Size = new System.Drawing.Size(72, 17);
+            chkObjUnk.Size = new Size(72, 17);
             chkObjUnk.TabIndex = 13;
             chkObjUnk.Text = "Unknown";
             chkObjUnk.UseVisualStyleBackColor = true;
@@ -846,9 +846,9 @@ namespace BrawlCrate.UI
             // 
             // btnUnlink
             // 
-            btnUnlink.Location = new System.Drawing.Point(177, 22);
+            btnUnlink.Location = new Point(177, 22);
             btnUnlink.Name = "btnUnlink";
-            btnUnlink.Size = new System.Drawing.Size(28, 21);
+            btnUnlink.Size = new Size(28, 21);
             btnUnlink.TabIndex = 12;
             btnUnlink.Text = "-";
             btnUnlink.UseVisualStyleBackColor = true;
@@ -856,9 +856,9 @@ namespace BrawlCrate.UI
             // 
             // btnRelink
             // 
-            btnRelink.Location = new System.Drawing.Point(177, 2);
+            btnRelink.Location = new Point(177, 2);
             btnRelink.Name = "btnRelink";
-            btnRelink.Size = new System.Drawing.Size(28, 21);
+            btnRelink.Size = new Size(28, 21);
             btnRelink.TabIndex = 4;
             btnRelink.Text = "+";
             btnRelink.UseVisualStyleBackColor = true;
@@ -866,34 +866,34 @@ namespace BrawlCrate.UI
             // 
             // txtBone
             // 
-            txtBone.Location = new System.Drawing.Point(49, 23);
+            txtBone.Location = new Point(49, 23);
             txtBone.Name = "txtBone";
             txtBone.ReadOnly = true;
-            txtBone.Size = new System.Drawing.Size(126, 20);
+            txtBone.Size = new Size(126, 20);
             txtBone.TabIndex = 3;
             // 
             // label4
             // 
-            label4.Location = new System.Drawing.Point(4, 23);
+            label4.Location = new Point(4, 23);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(42, 20);
+            label4.Size = new Size(42, 20);
             label4.TabIndex = 2;
             label4.Text = "Bone:";
             label4.TextAlign = ContentAlignment.MiddleRight;
             // 
             // txtModel
             // 
-            txtModel.Location = new System.Drawing.Point(49, 3);
+            txtModel.Location = new Point(49, 3);
             txtModel.Name = "txtModel";
             txtModel.ReadOnly = true;
-            txtModel.Size = new System.Drawing.Size(126, 20);
+            txtModel.Size = new Size(126, 20);
             txtModel.TabIndex = 1;
             // 
             // label3
             // 
-            label3.Location = new System.Drawing.Point(4, 3);
+            label3.Location = new Point(4, 3);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(42, 20);
+            label3.Size = new Size(42, 20);
             label3.TabIndex = 0;
             label3.Text = "Model:";
             label3.TextAlign = ContentAlignment.MiddleRight;
@@ -905,18 +905,18 @@ namespace BrawlCrate.UI
             panel4.Controls.Add(btnNextFrame);
             panel4.Dock = DockStyle.Bottom;
             panel4.Enabled = false;
-            panel4.Location = new System.Drawing.Point(0, 197);
+            panel4.Location = new Point(0, 197);
             panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(209, 24);
+            panel4.Size = new Size(209, 24);
             panel4.TabIndex = 17;
             panel4.Visible = false;
             // 
             // btnPlayAnims
             // 
             btnPlayAnims.Dock = DockStyle.Fill;
-            btnPlayAnims.Location = new System.Drawing.Point(35, 0);
+            btnPlayAnims.Location = new Point(35, 0);
             btnPlayAnims.Name = "btnPlayAnims";
-            btnPlayAnims.Size = new System.Drawing.Size(139, 24);
+            btnPlayAnims.Size = new Size(139, 24);
             btnPlayAnims.TabIndex = 16;
             btnPlayAnims.Text = "Play Animations";
             btnPlayAnims.UseVisualStyleBackColor = true;
@@ -925,9 +925,9 @@ namespace BrawlCrate.UI
             // btnPrevFrame
             // 
             btnPrevFrame.Dock = DockStyle.Left;
-            btnPrevFrame.Location = new System.Drawing.Point(0, 0);
+            btnPrevFrame.Location = new Point(0, 0);
             btnPrevFrame.Name = "btnPrevFrame";
-            btnPrevFrame.Size = new System.Drawing.Size(35, 24);
+            btnPrevFrame.Size = new Size(35, 24);
             btnPrevFrame.TabIndex = 18;
             btnPrevFrame.Text = "<";
             btnPrevFrame.UseVisualStyleBackColor = true;
@@ -936,9 +936,9 @@ namespace BrawlCrate.UI
             // btnNextFrame
             // 
             btnNextFrame.Dock = DockStyle.Right;
-            btnNextFrame.Location = new System.Drawing.Point(174, 0);
+            btnNextFrame.Location = new Point(174, 0);
             btnNextFrame.Name = "btnNextFrame";
-            btnNextFrame.Size = new System.Drawing.Size(35, 24);
+            btnNextFrame.Size = new Size(35, 24);
             btnNextFrame.TabIndex = 17;
             btnNextFrame.Text = ">";
             btnNextFrame.UseVisualStyleBackColor = true;
@@ -947,9 +947,9 @@ namespace BrawlCrate.UI
             // _modelPanel
             // 
             _modelPanel.Dock = DockStyle.Fill;
-            _modelPanel.Location = new System.Drawing.Point(0, 25);
+            _modelPanel.Location = new Point(0, 25);
             _modelPanel.Name = "_modelPanel";
-            _modelPanel.Size = new System.Drawing.Size(481, 442);
+            _modelPanel.Size = new Size(481, 442);
             _modelPanel.TabIndex = 0;
             _modelPanel.PreRender += new GLRenderEventHandler(_modelPanel_PreRender);
             _modelPanel.PostRender += new GLRenderEventHandler(_modelPanel_PostRender);
@@ -965,9 +965,9 @@ namespace BrawlCrate.UI
             panel1.Controls.Add(btnResetRot);
             panel1.Controls.Add(trackBar1);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(481, 25);
+            panel1.Size = new Size(481, 25);
             panel1.TabIndex = 2;
             // 
             // toolStrip1
@@ -1000,9 +1000,9 @@ namespace BrawlCrate.UI
                 btnResetSnap,
                 btnHelp
             });
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new System.Drawing.Size(335, 25);
+            toolStrip1.Size = new Size(335, 25);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -1012,7 +1012,7 @@ namespace BrawlCrate.UI
             btnUndo.Enabled = false;
             btnUndo.ImageTransparentColor = Color.Magenta;
             btnUndo.Name = "btnUndo";
-            btnUndo.Size = new System.Drawing.Size(40, 22);
+            btnUndo.Size = new Size(40, 22);
             btnUndo.Text = "Undo";
             btnUndo.Click += new EventHandler(Undo);
             // 
@@ -1022,14 +1022,14 @@ namespace BrawlCrate.UI
             btnRedo.Enabled = false;
             btnRedo.ImageTransparentColor = Color.Magenta;
             btnRedo.Name = "btnRedo";
-            btnRedo.Size = new System.Drawing.Size(38, 22);
+            btnRedo.Size = new Size(38, 22);
             btnRedo.Text = "Redo";
             btnRedo.Click += new EventHandler(Redo);
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator3.Size = new Size(6, 25);
             // 
             // btnTransform
             // 
@@ -1037,7 +1037,7 @@ namespace BrawlCrate.UI
             btnTransform.Enabled = false;
             btnTransform.ImageTransparentColor = Color.Magenta;
             btnTransform.Name = "btnTransform";
-            btnTransform.Size = new System.Drawing.Size(34, 22);
+            btnTransform.Size = new Size(34, 22);
             btnTransform.Text = "Transform";
             btnTransform.Click += new EventHandler(transformToolStripMenuItem_Click);
             // 
@@ -1047,7 +1047,7 @@ namespace BrawlCrate.UI
             btnSplit.Enabled = false;
             btnSplit.ImageTransparentColor = Color.Magenta;
             btnSplit.Name = "btnSplit";
-            btnSplit.Size = new System.Drawing.Size(34, 22);
+            btnSplit.Size = new Size(34, 22);
             btnSplit.Text = "Split";
             btnSplit.Click += new EventHandler(btnSplit_Click);
             // 
@@ -1057,7 +1057,7 @@ namespace BrawlCrate.UI
             btnMerge.Enabled = false;
             btnMerge.ImageTransparentColor = Color.Magenta;
             btnMerge.Name = "btnMerge";
-            btnMerge.Size = new System.Drawing.Size(45, 22);
+            btnMerge.Size = new Size(45, 22);
             btnMerge.Text = "Merge";
             btnMerge.Click += new EventHandler(btnMerge_Click);
             // 
@@ -1067,7 +1067,7 @@ namespace BrawlCrate.UI
             btnFlipColl.Enabled = false;
             btnFlipColl.ImageTransparentColor = Color.Magenta;
             btnFlipColl.Name = "btnFlipColl";
-            btnFlipColl.Size = new System.Drawing.Size(30, 22);
+            btnFlipColl.Size = new Size(30, 22);
             btnFlipColl.Text = "Flip";
             btnFlipColl.Click += new EventHandler(btnFlipColl_Click);
             // 
@@ -1077,21 +1077,21 @@ namespace BrawlCrate.UI
             btnDelete.Enabled = false;
             btnDelete.ImageTransparentColor = Color.Magenta;
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new System.Drawing.Size(44, 22);
+            btnDelete.Size = new Size(44, 22);
             btnDelete.Text = "Delete";
             btnDelete.Click += new EventHandler(btnDelete_Click);
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator2.Size = new Size(6, 25);
             // 
             // btnSameX
             // 
             btnSameX.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnSameX.ImageTransparentColor = Color.Magenta;
             btnSameX.Name = "btnSameX";
-            btnSameX.Size = new System.Drawing.Size(49, 22);
+            btnSameX.Size = new Size(49, 22);
             btnSameX.Text = "Align X";
             btnSameX.Click += new EventHandler(btnSameX_Click);
             // 
@@ -1100,14 +1100,14 @@ namespace BrawlCrate.UI
             btnSameY.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnSameY.ImageTransparentColor = Color.Magenta;
             btnSameY.Name = "btnSameY";
-            btnSameY.Size = new System.Drawing.Size(49, 19);
+            btnSameY.Size = new Size(49, 19);
             btnSameY.Text = "Align Y";
             btnSameY.Click += new EventHandler(btnSameY_Click);
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator1.Size = new Size(6, 25);
             // 
             // btnPerspectiveCam
             // 
@@ -1116,7 +1116,7 @@ namespace BrawlCrate.UI
             btnPerspectiveCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnPerspectiveCam.ImageTransparentColor = Color.Magenta;
             btnPerspectiveCam.Name = "btnPerspectiveCam";
-            btnPerspectiveCam.Size = new System.Drawing.Size(71, 19);
+            btnPerspectiveCam.Size = new Size(71, 19);
             btnPerspectiveCam.Text = "Perspective";
             btnPerspectiveCam.Click += new EventHandler(btnPerspectiveCam_Click);
             // 
@@ -1125,7 +1125,7 @@ namespace BrawlCrate.UI
             btnOrthographicCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnOrthographicCam.ImageTransparentColor = Color.Magenta;
             btnOrthographicCam.Name = "btnOrthographicCam";
-            btnOrthographicCam.Size = new System.Drawing.Size(82, 19);
+            btnOrthographicCam.Size = new Size(82, 19);
             btnOrthographicCam.Text = "Orthographic";
             btnOrthographicCam.Click += new EventHandler(btnOrthographicCam_Click);
             // 
@@ -1134,21 +1134,21 @@ namespace BrawlCrate.UI
             btnResetCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnResetCam.ImageTransparentColor = Color.Magenta;
             btnResetCam.Name = "btnResetCam";
-            btnResetCam.Size = new System.Drawing.Size(67, 19);
+            btnResetCam.Size = new Size(67, 19);
             btnResetCam.Text = "Reset Cam";
             btnResetCam.Click += new EventHandler(btnResetCam_Click);
             // 
             // toolStripSeparatorCamera
             // 
             toolStripSeparatorCamera.Name = "toolStripSeparatorCamera";
-            toolStripSeparatorCamera.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparatorCamera.Size = new Size(6, 25);
             // 
             // btnSpawns
             // 
             btnSpawns.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnSpawns.ImageTransparentColor = Color.Magenta;
             btnSpawns.Name = "btnSpawns";
-            btnSpawns.Size = new System.Drawing.Size(51, 19);
+            btnSpawns.Size = new Size(51, 19);
             btnSpawns.Text = "Spawns";
             btnSpawns.Click += new EventHandler(btnSpawns_Click);
             // 
@@ -1157,7 +1157,7 @@ namespace BrawlCrate.UI
             btnItems.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnItems.ImageTransparentColor = Color.Magenta;
             btnItems.Name = "btnItems";
-            btnItems.Size = new System.Drawing.Size(40, 19);
+            btnItems.Size = new Size(40, 19);
             btnItems.Text = "Items";
             btnItems.Click += new EventHandler(btnItems_Click);
             // 
@@ -1168,21 +1168,21 @@ namespace BrawlCrate.UI
             btnBoundaries.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnBoundaries.ImageTransparentColor = Color.Magenta;
             btnBoundaries.Name = "btnBoundaries";
-            btnBoundaries.Size = new System.Drawing.Size(70, 19);
+            btnBoundaries.Size = new Size(70, 19);
             btnBoundaries.Text = "Boundaries";
             btnBoundaries.Click += new EventHandler(btnBoundaries_Click);
             // 
             // toolStripSeparatorOverlays
             // 
             toolStripSeparatorOverlays.Name = "toolStripSeparatorOverlays";
-            toolStripSeparatorOverlays.Size = new System.Drawing.Size(6, 6);
+            toolStripSeparatorOverlays.Size = new Size(6, 6);
             // 
             // btnResetSnap
             // 
             btnResetSnap.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnResetSnap.ImageTransparentColor = Color.Magenta;
             btnResetSnap.Name = "btnResetSnap";
-            btnResetSnap.Size = new System.Drawing.Size(57, 19);
+            btnResetSnap.Size = new Size(57, 19);
             btnResetSnap.Text = "Un-Snap";
             btnResetSnap.Click += new EventHandler(btnResetSnap_Click);
             // 
@@ -1192,7 +1192,7 @@ namespace BrawlCrate.UI
             btnHelp.Image = (Image) resources.GetObject("btnHelp.Image");
             btnHelp.ImageTransparentColor = Color.Magenta;
             btnHelp.Name = "btnHelp";
-            btnHelp.Size = new System.Drawing.Size(36, 19);
+            btnHelp.Size = new Size(36, 19);
             btnHelp.Text = "Help";
             btnHelp.Click += new EventHandler(btnHelp_Click);
             // 
@@ -1202,9 +1202,9 @@ namespace BrawlCrate.UI
             btnResetRot.Enabled = false;
             btnResetRot.FlatAppearance.BorderSize = 0;
             btnResetRot.FlatStyle = FlatStyle.Flat;
-            btnResetRot.Location = new System.Drawing.Point(335, 0);
+            btnResetRot.Location = new Point(335, 0);
             btnResetRot.Name = "btnResetRot";
-            btnResetRot.Size = new System.Drawing.Size(16, 25);
+            btnResetRot.Size = new Size(16, 25);
             btnResetRot.TabIndex = 4;
             btnResetRot.Text = "*";
             btnResetRot.UseVisualStyleBackColor = true;
@@ -1215,11 +1215,11 @@ namespace BrawlCrate.UI
             // 
             trackBar1.Dock = DockStyle.Right;
             trackBar1.Enabled = false;
-            trackBar1.Location = new System.Drawing.Point(351, 0);
+            trackBar1.Location = new Point(351, 0);
             trackBar1.Maximum = 180;
             trackBar1.Minimum = -180;
             trackBar1.Name = "trackBar1";
-            trackBar1.Size = new System.Drawing.Size(130, 25);
+            trackBar1.Size = new Size(130, 25);
             trackBar1.TabIndex = 3;
             trackBar1.TickStyle = TickStyle.None;
             trackBar1.Visible = false;
@@ -1240,66 +1240,66 @@ namespace BrawlCrate.UI
                 _deleteToolStripMenuItem1
             });
             contextMenuStrip3.Name = "contextMenuStrip3";
-            contextMenuStrip3.Size = new System.Drawing.Size(184, 208);
+            contextMenuStrip3.Size = new Size(184, 208);
             contextMenuStrip3.Opening += new CancelEventHandler(contextMenuStrip3_Opening);
             // 
             // moveToNewObjectToolStripMenuItem
             // 
             moveToNewObjectToolStripMenuItem.Name = "moveToNewObjectToolStripMenuItem";
-            moveToNewObjectToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            moveToNewObjectToolStripMenuItem.Size = new Size(183, 22);
             moveToNewObjectToolStripMenuItem.Text = "Move to New Object";
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new System.Drawing.Size(180, 6);
+            toolStripSeparator4.Size = new Size(180, 6);
             // 
             // splitToolStripMenuItem
             // 
             splitToolStripMenuItem.Name = "splitToolStripMenuItem";
-            splitToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            splitToolStripMenuItem.Size = new Size(183, 22);
             splitToolStripMenuItem.Text = "Split";
             splitToolStripMenuItem.Click += new EventHandler(btnSplit_Click);
             // 
             // mergeToolStripMenuItem
             // 
             mergeToolStripMenuItem.Name = "mergeToolStripMenuItem";
-            mergeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            mergeToolStripMenuItem.Size = new Size(183, 22);
             mergeToolStripMenuItem.Text = "Merge";
             mergeToolStripMenuItem.Click += new EventHandler(btnMerge_Click);
             // 
             // flipToolStripMenuItem
             // 
             flipToolStripMenuItem.Name = "flipToolStripMenuItem";
-            flipToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            flipToolStripMenuItem.Size = new Size(183, 22);
             flipToolStripMenuItem.Text = "Flip";
             flipToolStripMenuItem.Click += new EventHandler(btnFlipColl_Click);
             // 
             // _deleteToolStripMenuItem1
             // 
             _deleteToolStripMenuItem1.Name = "_deleteToolStripMenuItem1";
-            _deleteToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
+            _deleteToolStripMenuItem1.Size = new Size(183, 22);
             _deleteToolStripMenuItem1.Text = "Delete";
             _deleteToolStripMenuItem1.Click += new EventHandler(btnDelete_Click);
             // 
             // transformToolStripMenuItem
             // 
             transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            transformToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            transformToolStripMenuItem.Size = new Size(183, 22);
             transformToolStripMenuItem.Text = "Transform";
             alignXToolStripMenuItem.Click += new EventHandler(transformToolStripMenuItem_Click);
             // 
             // alignXToolStripMenuItem
             // 
             alignXToolStripMenuItem.Name = "alignXToolStripMenuItem";
-            alignXToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            alignXToolStripMenuItem.Size = new Size(183, 22);
             alignXToolStripMenuItem.Text = "Align X";
             alignXToolStripMenuItem.Click += new EventHandler(btnSameX_Click);
             // 
             // alignYToolStripMenuItem
             // 
             alignYToolStripMenuItem.Name = "alignYToolStripMenuItem";
-            alignYToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            alignYToolStripMenuItem.Size = new Size(183, 22);
             alignYToolStripMenuItem.Text = "Align Y";
             alignYToolStripMenuItem.Click += new EventHandler(btnSameY_Click);
             // 
@@ -1308,7 +1308,7 @@ namespace BrawlCrate.UI
             BackColor = Color.Lavender;
             Controls.Add(undoToolStrip);
             Name = "CollisionEditor";
-            Size = new System.Drawing.Size(694, 467);
+            Size = new Size(694, 467);
             undoToolStrip.Panel1.ResumeLayout(false);
             undoToolStrip.Panel2.ResumeLayout(false);
             ((ISupportInitialize) undoToolStrip).EndInit();
@@ -1567,11 +1567,11 @@ namespace BrawlCrate.UI
                     lstObjects.Items.Add(obj, true);
 
                     MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
-                                            .FirstOrDefault() as MDL0Node;
+                        .FirstOrDefault() as MDL0Node;
 
                     MDL0BoneNode bone =
                         model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                             .FirstOrDefault() as MDL0BoneNode;
+                            .FirstOrDefault() as MDL0BoneNode;
                     if (bone != null)
                     {
                         obj._linkedBone = bone;
@@ -1641,7 +1641,7 @@ namespace BrawlCrate.UI
 
         protected void newObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _selectedObject = new CollisionObject { Name = $"Collision Object [{_targetNode.Children.Count + 1}]" };
+            _selectedObject = new CollisionObject {Name = $"Collision Object [{_targetNode.Children.Count + 1}]"};
             _targetNode.AddChild(_selectedObject);
             lstObjects.Items.Add(_selectedObject, true);
             lstObjects.SelectedItem = _selectedObject;
@@ -2140,7 +2140,8 @@ namespace BrawlCrate.UI
                         _modelPanel.Invalidate();
                         return;
                     }
-                    else if (_selectedLinks.Count == 1)
+
+                    if (_selectedLinks.Count == 1)
                     {
                         //Create new plane extending to point
                         CollisionLink link = _selectedLinks[0];
@@ -2154,7 +2155,8 @@ namespace BrawlCrate.UI
                         BeginHover(target);
                         return;
                     }
-                    else if (_selectedPlanes.Count > 0)
+
+                    if (_selectedPlanes.Count > 0)
                     {
                         //Find two closest points and insert between
                         CollisionPlane bestMatch = null;
@@ -2198,43 +2200,41 @@ namespace BrawlCrate.UI
 
                         return;
                     }
-                    else
+
+                    //Create new planes extending to point
+                    CollisionLink lnk;
+                    List<CollisionLink> links = new List<CollisionLink>();
+                    _creating = true;
+                    foreach (CollisionLink l in _selectedLinks)
                     {
-                        //Create new planes extending to point
-                        CollisionLink link = null;
-                        List<CollisionLink> links = new List<CollisionLink>();
-                        _creating = true;
-                        foreach (CollisionLink l in _selectedLinks)
-                        {
-                            links.Add(l.Branch((Vector2) target));
-                            l._highlight = false;
-                        }
-
-                        link = links[0];
-                        links.RemoveAt(0);
-                        for (int x = 0; x < links.Count;)
-                        {
-                            if (link.Merge(links[x]))
-                            {
-                                links.RemoveAt(x);
-                            }
-                            else
-                            {
-                                x++;
-                            }
-                        }
-
-                        _selectedLinks.Clear();
-                        _selectedLinks.Add(link);
-                        link._highlight = true;
-                        SelectionModified();
-                        _modelPanel.Invalidate();
-
-                        //Hover new point so it can be moved
-                        BeginHover(target);
-
-                        return;
+                        links.Add(l.Branch((Vector2) target));
+                        l._highlight = false;
                     }
+
+                    lnk = links[0];
+                    links.RemoveAt(0);
+                    for (int x = 0; x < links.Count;)
+                    {
+                        if (lnk.Merge(links[x]))
+                        {
+                            links.RemoveAt(x);
+                        }
+                        else
+                        {
+                            x++;
+                        }
+                    }
+
+                    _selectedLinks.Clear();
+                    _selectedLinks.Add(lnk);
+                    lnk._highlight = true;
+                    SelectionModified();
+                    _modelPanel.Invalidate();
+
+                    //Hover new point so it can be moved
+                    BeginHover(target);
+
+                    return;
                 }
 
                 if (move)

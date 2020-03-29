@@ -493,10 +493,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             {
                 return v.TrueDistance(cam.GetPoint()) / radius * (cam.VerticalFieldOfView / 45.0f) * 0.1f;
             }
-            else
-            {
-                return cam._scale._x * 80.0f;
-            }
+
+            return cam._scale._x * 80.0f;
         }
 
         public static float OrbRadius(IBoneNode b, GLViewport viewport, float radius = _orbRadius)

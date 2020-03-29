@@ -1,4 +1,4 @@
-﻿using BrawlLib.Imaging;
+using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.Types;
@@ -173,12 +173,12 @@ namespace BrawlLib.Modeling.Collada
                                                 {
                                                     if (p._sid == l._texture)
                                                     {
-                                                        path = p._sampler2D._url.Trim();
+                                                        path = p._sampler2D._url?.Trim();
                                                         if (!string.IsNullOrEmpty(p._sampler2D._source))
                                                         {
                                                             foreach (EffectNewParam p2 in eff._newParams)
                                                             {
-                                                                if (p2._sid == p._sampler2D._source)
+                                                                if (p2._sid == p._sampler2D._source && p2._path != null)
                                                                 {
                                                                     path = p2._path;
                                                                 }
@@ -441,7 +441,7 @@ namespace BrawlLib.Modeling.Collada
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                     .Name; // Remove unecessary reference to "end" bones
+                                        .Name; // Remove unecessary reference to "end" bones
                             }
                             else
                             {
@@ -461,7 +461,7 @@ namespace BrawlLib.Modeling.Collada
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                         .Name; // Remove unecessary reference to "end" bones
+                                            .Name; // Remove unecessary reference to "end" bones
                                 }
                                 else
                                 {
@@ -482,7 +482,7 @@ namespace BrawlLib.Modeling.Collada
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                     .Name; // Remove unecessary reference to "end" bones
+                                        .Name; // Remove unecessary reference to "end" bones
                             }
 
                             foreach (DrawCall dc in obj._drawCalls)
@@ -494,7 +494,7 @@ namespace BrawlLib.Modeling.Collada
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                         .Name; // Remove unecessary reference to "end" bones
+                                            .Name; // Remove unecessary reference to "end" bones
                                 }
                             }
                         }
@@ -547,7 +547,8 @@ namespace BrawlLib.Modeling.Collada
             bindMatrix *= node._matrix;
 
             if (node._type == NodeType.JOINT ||
-                node._type == NodeType.NONE && node._instances.Count == 0 && (node._name != null || node._id != null))
+                !_importOptions._blenderBoneFix && node._type == NodeType.NONE && node._instances.Count == 0 &&
+                (node._name != null || node._id != null))
             {
                 Error = "There was a problem creating a new bone.";
 
@@ -806,27 +807,35 @@ namespace BrawlLib.Modeling.Collada
         private void FinishMDL0(MDL0Node model)
         {
             Error = "There was a problem creating a default material and shader.";
-            if (model._matList.Count == 0 && model._objList.Count != 0)
+            if (model._matList.Count == 0)
             {
-                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default"};
-                (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
+                if (model._objList.Count != 0)
                 {
-                    RasterColor = ColorSelChan.LightChannel0,
-                    AlphaSelectionD = AlphaArg.RasterAlpha,
-                    ColorSelectionD = ColorArg.RasterColor
-                });
-
-                model._shadGroup.AddChild(mat.ShaderNode);
-                model._matGroup.AddChild(mat);
-
-                foreach (MDL0ObjectNode obj in model._objList)
-                {
-                    if (obj._drawCalls.Count == 0)
+                    MDL0MaterialNode mat = new MDL0MaterialNode { _name = "Default" };
+                    (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
                     {
-                        obj._drawCalls.Add(new DrawCall(obj));
-                    }
+                        RasterColor = ColorSelChan.LightChannel0,
+                        AlphaSelectionD = AlphaArg.RasterAlpha,
+                        ColorSelectionD = ColorArg.RasterColor
+                    });
 
-                    obj._drawCalls[0].MaterialNode = mat;
+                    model._shadGroup.AddChild(mat.ShaderNode);
+                    model._matGroup.AddChild(mat);
+
+                    foreach (MDL0ObjectNode obj in model._objList)
+                    {
+                        if (obj._drawCalls.Count == 0)
+                        {
+                            obj._drawCalls.Add(new DrawCall(obj));
+                        }
+
+                        obj._drawCalls[0].MaterialNode = mat;
+                    }
+                }
+                else
+                {
+                    model._shadGroup?.Children.Clear();
+                    model._shadList?.Clear();
                 }
             }
 

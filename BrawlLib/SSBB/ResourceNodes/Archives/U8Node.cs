@@ -56,6 +56,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     if (entry->_dataLength == 0 || (e = NodeFactory.FromSource(this, source) as U8EntryNode) == null)
                     {
                         e = new ARCEntryNode();
+                        e._origSource = source;
+                        e._uncompSource = source;
                     }
 
                     e._name = new string(table + entry->_stringOffset);
@@ -64,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     e._u8FirstNotChild = -1;
                     e._u8Type = entry->_type;
 
-                    e.Initialize(this, source);
+                    e.Initialize(this, e.OriginalSource, e.UncompressedSource);
 
                     nodes.Add(e);
                 }
@@ -354,11 +356,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         throw new Exception(
                             $"There is more than one node underneath {Name} with the name {entry.Name}.");
                     }
-                    else
-                    {
-                        directChildrenExportedPaths.Add(path);
-                        entry.Export(path);
-                    }
+
+                    directChildrenExportedPaths.Add(path);
+                    entry.Export(path);
                 }
             }
         }
@@ -473,11 +473,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         throw new Exception(
                             $"There is more than one node underneath {Name} with the name {entry.Name}.");
                     }
-                    else
-                    {
-                        directChildrenExportedPaths.Add(path);
-                        entry.Export(path);
-                    }
+
+                    directChildrenExportedPaths.Add(path);
+                    entry.Export(path);
                 }
             }
         }

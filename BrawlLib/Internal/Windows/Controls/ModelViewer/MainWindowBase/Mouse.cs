@@ -126,9 +126,6 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                             SelectVertex(_hiVertex, false);
                             verticesChanged = true;
                         }
-                        else
-                        {
-                        }
                     }
                     else
                     {
@@ -407,10 +404,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             {
                 return SelectedBone.FrameState._transform.GetRotationMatrix() * SelectedBone.InverseMatrix;
             }
-            else
-            {
-                return SelectedBone.InverseMatrix;
-            }
+
+            return SelectedBone.InverseMatrix;
         }
 
         public Matrix GetBoneWorldMtx()
@@ -426,10 +421,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             {
                 return SelectedBone.Matrix * SelectedBone.FrameState._iTransform.GetRotationMatrix();
             }
-            else
-            {
-                return SelectedBone.Matrix;
-            }
+
+            return SelectedBone.Matrix;
         }
 
         public Matrix GetBoneParentTransformMtx()
@@ -445,10 +438,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             {
                 return SelectedBone.FrameState._transform * SelectedBone.FrameState._iTransform.GetRotationMatrix();
             }
-            else
-            {
-                return SelectedBone.FrameState._transform;
-            }
+
+            return SelectedBone.FrameState._transform;
         }
 
         private bool _createdNewBone;
@@ -1102,7 +1093,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                 //This is the absolute depth value, regardless of obstructions
                 float vertexDepth = screenTemp._z;
 
-                System.Drawing.Point start = panel.CurrentViewport.SelectionStart, end = panel.CurrentViewport.SelectionEnd;
+                Point start = panel.CurrentViewport.SelectionStart, end = panel.CurrentViewport.SelectionEnd;
                 Vector2 min = new Vector2(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y));
                 Vector2 max = new Vector2(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y));
                 if (screenPos <= max && screenPos >= min)

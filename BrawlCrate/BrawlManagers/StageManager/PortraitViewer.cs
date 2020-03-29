@@ -307,17 +307,20 @@ namespace BrawlCrate.BrawlManagers.StageManager
                         File.ReadAllBytes(directory.FullName + "/data/gecko/codes/RSBE01.gct"));
                     break;
                 }
-                else if (File.Exists(directory.FullName + "/codes/RSBE01.gct"))
+
+                if (File.Exists(directory.FullName + "/codes/RSBE01.gct"))
                 {
                     AutoSSS = new CustomSSSCodeset(File.ReadAllBytes(directory.FullName + "/codes/RSBE01.gct"));
                     break;
                 }
-                else if (File.Exists(directory.FullName + "/LegacyTE/RSBE01.gct"))
+
+                if (File.Exists(directory.FullName + "/LegacyTE/RSBE01.gct"))
                 {
                     AutoSSS = new CustomSSSCodeset(File.ReadAllBytes(directory.FullName + "/LegacyTE/RSBE01.gct"));
                     break;
                 }
-                else if (File.Exists(directory.FullName + "/LegacyXP/RSBE01.gct"))
+
+                if (File.Exists(directory.FullName + "/LegacyXP/RSBE01.gct"))
                 {
                     AutoSSS = new CustomSSSCodeset(File.ReadAllBytes(directory.FullName + "/LegacyXP/RSBE01.gct"));
                     break;
@@ -394,7 +397,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                     AddNewTEX0(sender, filename);
                     return;
                 }
-                else if (useTextureConverter)
+
+                if (useTextureConverter)
                 {
                     using (TextureConverterDialog dlg = new TextureConverterDialog())
                     {
@@ -708,10 +712,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
 
                     return previousTexture;
                 }
-                else
-                {
-                    return defaultName ?? basename + "." + iconNum.ToString("D2");
-                }
+
+                return defaultName ?? basename + "." + iconNum.ToString("D2");
             };
 
             for (int i = 1; i <= 80; i++)
@@ -819,10 +821,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                     {
                         return false;
                     }
-                    else
-                    {
-                        name = nameDialog.NameText;
-                    }
+
+                    name = nameDialog.NameText;
                 }
             }
 
@@ -1116,7 +1116,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
         public void updateMuMenumain(string msBinPath = null)
         {
             if (DialogResult.OK == MessageBox.Show("Overwrite the current mu_menumain?", "Overwrite File",
-                    MessageBoxButtons.OKCancel))
+                MessageBoxButtons.OKCancel))
             {
                 using (ResourceNode mu_menumain = TempFiles.MakeTempNode(mu_menumain_path))
                 {
@@ -1182,7 +1182,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
                         i++;
                     }
                     else if (MessageBox.Show(this, "Stop resizing textures here?", Text, MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question) == DialogResult.Yes)
+                        MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         break;
                     }
@@ -1351,8 +1351,8 @@ namespace BrawlCrate.BrawlManagers.StageManager
                             if (overlayFile != null)
                             {
                                 Stream stream = Assembly.GetExecutingAssembly()
-                                                        .GetManifestResourceStream(
-                                                            "BrawlCrate.StageManager." + overlayFile);
+                                    .GetManifestResourceStream(
+                                        "BrawlCrate.StageManager." + overlayFile);
                                 if (stream != null)
                                 {
                                     Image overlayImage = Image.FromStream(stream) as Bitmap;

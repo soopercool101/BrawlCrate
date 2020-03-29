@@ -959,10 +959,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return prev;
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         /// <summary>
@@ -1324,7 +1322,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 _plt = value;
                 _paletteNode = null;
-                ((PAT0Node)Parent?.Parent?.Parent)?.RegeneratePaletteList();
+                ((PAT0Node) Parent?.Parent?.Parent)?.RegeneratePaletteList();
 
                 SignalPropertyChange();
             }
@@ -1334,7 +1332,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _tex = value;
             _textureNode = null;
-            ((PAT0Node)Parent?.Parent?.Parent)?.RegenerateTextureList();
+            ((PAT0Node) Parent?.Parent?.Parent)?.RegenerateTextureList();
         }
 
         [Browsable(false)]

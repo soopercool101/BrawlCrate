@@ -579,7 +579,7 @@ namespace BrawlLib.Internal.Drawing
                         if (R != G || G != B)
                         {
                             throw new NonMonochromeImageException(
-                                "Cannot swap alpha and value channels on a monochrome image.");
+                                "Cannot swap alpha and value channels on a non-monochrome image.");
                         }
 
                         outPtr[i] = (uint) ((R << 24) | (A << 16) | (A << 8) | A);
@@ -605,7 +605,7 @@ namespace BrawlLib.Internal.Drawing
                         if (c.R != c.G || c.G != c.B)
                         {
                             throw new NonMonochromeImageException(
-                                "Cannot swap alpha and value channels on a monochrome image.");
+                                "Cannot swap alpha and value channels on a non-monochrome image.");
                         }
 
                         c = Color.FromArgb(c.R, c.A, c.A, c.A);

@@ -114,19 +114,22 @@ namespace BrawlLib.Wii.Animations
                                         translation = getCoords(reader, out line);
                                         goto retry;
                                     }
-                                    else if (line.CompareTo("Rotation") == 0)
+
+                                    if (line.CompareTo("Rotation") == 0)
                                     {
                                         reader.ReadLine(); //Skip first blank line
                                         rotation = getCoords(reader, out line);
                                         goto retry;
                                     }
-                                    else if (line.CompareTo("Scale") == 0)
+
+                                    if (line.CompareTo("Scale") == 0)
                                     {
                                         reader.ReadLine(); //Skip first blank line
                                         scale = getCoords(reader, out line);
                                         goto retry;
                                     }
-                                    else if (line.CompareTo("End of Keyframe Data") == 0
+
+                                    if (line.CompareTo("End of Keyframe Data") == 0
                                     ) //If line equals this now it's time to break
                                     {
                                         break;

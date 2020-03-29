@@ -37,10 +37,10 @@ namespace BrawlLib.Internal.Windows.Controls
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
             listBox1.ItemHeight = 10;
-            listBox1.Location = new System.Drawing.Point(0, 20);
+            listBox1.Location = new Point(0, 20);
             listBox1.Name = "listBox1";
             listBox1.SelectionMode = SelectionMode.MultiExtended;
-            listBox1.Size = new System.Drawing.Size(310, 264);
+            listBox1.Size = new Size(310, 264);
             listBox1.TabIndex = 0;
             listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
             listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
@@ -55,17 +55,17 @@ namespace BrawlLib.Internal.Windows.Controls
             panel1.Controls.Add(btnInvert);
             panel1.Controls.Add(btnAll);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(310, 20);
+            panel1.Size = new Size(310, 20);
             panel1.TabIndex = 1;
             // 
             // btnToggle
             // 
             btnToggle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnToggle.Location = new System.Drawing.Point(257, 0);
+            btnToggle.Location = new Point(257, 0);
             btnToggle.Name = "btnToggle";
-            btnToggle.Size = new System.Drawing.Size(50, 20);
+            btnToggle.Size = new Size(50, 20);
             btnToggle.TabIndex = 5;
             btnToggle.Text = "&Toggle";
             btnToggle.UseVisualStyleBackColor = true;
@@ -74,9 +74,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // btnSet
             // 
             btnSet.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSet.Location = new System.Drawing.Point(206, 0);
+            btnSet.Location = new Point(206, 0);
             btnSet.Name = "btnSet";
-            btnSet.Size = new System.Drawing.Size(50, 20);
+            btnSet.Size = new Size(50, 20);
             btnSet.TabIndex = 4;
             btnSet.Text = "&Set";
             btnSet.UseVisualStyleBackColor = true;
@@ -85,9 +85,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // btnClear
             // 
             btnClear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnClear.Location = new System.Drawing.Point(155, 0);
+            btnClear.Location = new Point(155, 0);
             btnClear.Name = "btnClear";
-            btnClear.Size = new System.Drawing.Size(50, 20);
+            btnClear.Size = new Size(50, 20);
             btnClear.TabIndex = 3;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -95,9 +95,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // btnInvert
             // 
-            btnInvert.Location = new System.Drawing.Point(64, 0);
+            btnInvert.Location = new Point(64, 0);
             btnInvert.Name = "btnInvert";
-            btnInvert.Size = new System.Drawing.Size(50, 20);
+            btnInvert.Size = new Size(50, 20);
             btnInvert.TabIndex = 2;
             btnInvert.Text = "&Invert";
             btnInvert.UseVisualStyleBackColor = true;
@@ -105,9 +105,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // btnAll
             // 
-            btnAll.Location = new System.Drawing.Point(3, 0);
+            btnAll.Location = new Point(3, 0);
             btnAll.Name = "btnAll";
-            btnAll.Size = new System.Drawing.Size(60, 20);
+            btnAll.Size = new Size(60, 20);
             btnAll.TabIndex = 1;
             btnAll.Text = "Select &All";
             btnAll.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@ namespace BrawlLib.Internal.Windows.Controls
             Controls.Add(listBox1);
             Controls.Add(panel1);
             Name = "VisEditor";
-            Size = new System.Drawing.Size(310, 284);
+            Size = new Size(310, 284);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

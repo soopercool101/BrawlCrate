@@ -77,8 +77,8 @@ namespace BrawlLib.Wii.Audio
             foreach (RSARFileNode s in entries._files)
             {
                 files += INFOFileHeader.Size + 4 + (!(s is RSARExtFileNode)
-                             ? s._groupRefs.Count * (8 + INFOFileEntry.Size)
-                             : (((RSARExtFileNode) s)._extPath.Length + 1).Align(4));
+                    ? s._groupRefs.Count * (8 + INFOFileEntry.Size)
+                    : (((RSARExtFileNode) s)._extPath.Length + 1).Align(4));
             }
 
             //Footer and Align
@@ -479,10 +479,10 @@ namespace BrawlLib.Wii.Audio
             for (int i = 0; i < 4; ++i)
             {
                 _strings.AddRange(_tempStrings
-                                  .Where(x => x._type == i)
-                                  .OrderBy(x => x._index)
-                                  .Select(x => x._name
-                                                .ToString()));
+                    .Where(x => x._type == i)
+                    .OrderBy(x => x._index)
+                    .Select(x => x._name
+                        .ToString()));
             }
 
             foreach (string s in _strings)

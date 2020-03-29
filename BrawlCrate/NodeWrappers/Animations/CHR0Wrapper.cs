@@ -145,7 +145,7 @@ namespace BrawlCrate.NodeWrappers
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
-        
+
         private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DeleteSelectedToolStripMenuItem.Visible = true;
@@ -197,9 +197,10 @@ namespace BrawlCrate.NodeWrappers
                 CHR0Node external;
                 if ((external = CHR0Node.FromFile(o.FileName)) != null)
                 {
-                    ((CHR0Node)_resource).MergeWith(external);
+                    ((CHR0Node) _resource).MergeWith(external);
                 }
             }
+
             BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
@@ -279,7 +280,8 @@ namespace BrawlCrate.NodeWrappers
         static CHR0EntryWrapper()
         {
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("View Interpolation", null, ViewInterpolation, Keys.Control | Keys.I));
+            _menu.Items.Add(new ToolStripMenuItem("View Interpolation", null, ViewInterpolation,
+                Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -341,7 +343,7 @@ namespace BrawlCrate.NodeWrappers
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
-        
+
         private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DeleteSelectedToolStripMenuItem.Visible = true;

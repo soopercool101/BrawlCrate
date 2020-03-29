@@ -1,5 +1,9 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace;
+using System;
+#if !DEBUG
+using System.ComponentModel;
+#endif
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -30,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int _extParam = 0;
+        private int _extParam;
 
         public override bool OnInitialize()
         {
@@ -59,7 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 //Call NodeFactory on datasource to initiate various files
-                if (NodeFactory.FromSource(this, source) == null)
+                if (NodeFactory.FromSource(this, source, false) == null)
                 {
                     new BLOCEntryNode().Initialize(this, source);
                 }
@@ -94,7 +98,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     offset += (uint) Children[i - 1].CalculateSize(false);
                 }
 
-                *(buint*) (address + 0x10 + i * 4) = offset;
+                *(buint*) (address + BLOC.Size + i * 4) = offset;
                 _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
             }
         }
@@ -108,19 +112,122 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class BLOCEntryNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
-        public int Entries { get; private set; }
+        internal BLOCEntry* Header => (BLOCEntry*) WorkingUncompressed.Address;
+        public override bool supportsCompression => false;
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public int Buffer { get; set; }
+        private uint _rawTag { get; set; }
+
+        protected virtual string baseName => UncompressedSource.Tag;
+
+        public override string Name
+        {
+            get => $"{baseName} [{Index}]";
+            set => base.Name = value;
+        }
+
+        protected virtual Type SubEntryType => typeof(RawDataNode);
+
+        public override Type[] AllowedChildTypes =>
+            SubEntryType == typeof(RawDataNode) ? new Type[] { } : new[] {SubEntryType};
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            byte* _NumFiles = (byte*) WorkingUncompressed.Address + 0x07;
-            if (_name == null)
+            _rawTag = Header->_tag;
+
+            int entries = Header->_count;
+            // Get Buffer
+            Buffer = 0;
+            for (int i = 0; i < entries + Buffer; i++)
             {
-                _name = new string((sbyte*) WorkingUncompressed.Address);
+                if (Header->Offsets(i) == 0)
+                {
+                    Buffer++;
+                }
+                else
+                {
+                    break;
+                }
             }
 
-            Entries = *(int*) _NumFiles;
-            return false;
+            if (_name == null)
+            {
+                _name = UncompressedSource.Tag;
+            }
+
+            return entries > 0;
+        }
+
+        public override void OnPopulate()
+        {
+            int entries = Header->_count;
+            for (int i = Buffer, j = 0; i < entries + Buffer; i++, j++)
+            {
+                //source decleration
+                DataSource source;
+
+                //Enumerate datasources for each child node
+                if (i - Buffer == entries - 1)
+                {
+                    source = new DataSource((*Header)[i],
+                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
+                }
+                else
+                {
+                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
+                }
+
+                //Call NodeFactory on datasource to initiate various files
+                NodeFactory.FromSource(this, source, SubEntryType, false);
+                if (Children[j]._name == null || Children[j]._name == "<null>")
+                {
+                    Children[j]._name = $"Entry [{j}]";
+                }
+            }
+        }
+
+
+        public override int OnCalculateSize(bool force)
+        {
+            int size = BLOCEntry.Size + Children.Count * 4;
+            foreach (ResourceNode node in Children)
+            {
+                size += node.CalculateSize(force);
+            }
+
+            return size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            BLOCEntry* header = (BLOCEntry*) address;
+            *header = new BLOCEntry();
+            header->_tag = _rawTag;
+            header->_count = Children.Count;
+
+            uint offset = (uint) (BLOCEntry.Size + Children.Count * 4);
+            for (int i = 0, j = 0; j < Children.Count; i++)
+            {
+                if (i < Buffer)
+                {
+                    *(buint*) (address + BLOCEntry.Size + i * 4) = 0;
+                    offset += 4;
+                    continue;
+                }
+
+                if (j > 0)
+                {
+                    offset += (uint) Children[j - 1].CalculateSize(false);
+                }
+
+                *(buint*) (address + BLOCEntry.Size + i * 4) = offset;
+                _children[j].Rebuild(address + offset, _children[j].CalculateSize(false), true);
+                j++;
+            }
         }
     }
 }

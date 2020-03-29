@@ -349,7 +349,7 @@ namespace BrawlCrate.UI
             if (Directory.Exists(Program.ApiPath))
             {
                 foreach (FileInfo repo in Directory.CreateDirectory(Program.ApiPath).GetFiles()
-                                                   .Where(f => string.IsNullOrWhiteSpace(f.Extension)))
+                    .Where(f => string.IsNullOrWhiteSpace(f.Extension)))
                 {
                     string[] repoInfo = repo.Name.Split(' ');
                     if (repoInfo.Length == 2)
@@ -512,7 +512,7 @@ namespace BrawlCrate.UI
                 foreach (string s in newLoaders)
                 {
                     if (!Properties.Settings.Default.APILoadersBlacklist.Cast<string>().ToArray()
-                                   .Any(o => o.Equals(s, StringComparison.OrdinalIgnoreCase)))
+                        .Any(o => o.Equals(s, StringComparison.OrdinalIgnoreCase)))
                     {
                         message += s + '\n';
                         loadersToDisable.Add(s);

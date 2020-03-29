@@ -168,12 +168,7 @@ namespace BrawlCrate.ExternalInterfacing
 
             foreach (TEX0Node t in textureList)
             {
-                if (t.HasPalette && t.GetPaletteNode() != null)
-                {
-                    t.GetPaletteNode().Remove();
-                }
-
-                t.Remove();
+                t.Remove(true);
             }
 
             ColorSmasher(paletteCount, b, index, names);

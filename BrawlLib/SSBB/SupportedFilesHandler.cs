@@ -110,6 +110,9 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
             new SupportedFileInfo(true, "BrawlEx Configuration", "bx"),
             new SupportedFileInfo(true, "Custom My Music Tracklist", "cmm"),
+            new SupportedFileInfo(true, "Alternate Stage Loader Data", "asl"),
+            new SupportedFileInfo(true, "Stage Info Parameters", "param"),
+            new SupportedFileInfo(true, "Stage Tracklist", "tlst"), 
 
             //The following files are not for direct editing
 
@@ -127,6 +130,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(false, "JSON File", "json"),
             new SupportedFileInfo(true, false, "Data File", "dat"),
             new SupportedFileInfo(true, false, "Binary File", "bin"),
+            new SupportedFileInfo(true, false, "Binary Backup File", "bak"),
             new SupportedFileInfo(false, "Raw Data File", "*"),
 
             // BrawlAPI
@@ -200,7 +204,8 @@ namespace BrawlLib.SSBB
             {
                 return _allSupportedFilterEditable;
             }
-            else if (!editableOnly && _allSupportedFilter != null)
+
+            if (!editableOnly && _allSupportedFilter != null)
             {
                 return _allSupportedFilter;
             }
@@ -209,10 +214,8 @@ namespace BrawlLib.SSBB
             {
                 return _allSupportedFilterEditable = GetAllSupportedFilter(Files, true);
             }
-            else
-            {
-                return _allSupportedFilter = GetAllSupportedFilter(Files, false);
-            }
+
+            return _allSupportedFilter = GetAllSupportedFilter(Files, false);
         }
 
         private static readonly int MaxExtensionsInAllFilter = 10;
@@ -269,7 +272,8 @@ namespace BrawlLib.SSBB
             {
                 return _filterListEditable;
             }
-            else if (!editableOnly && _filterList != null)
+
+            if (!editableOnly && _filterList != null)
             {
                 return _filterList;
             }
@@ -278,10 +282,8 @@ namespace BrawlLib.SSBB
             {
                 return _filterListEditable = GetListFilter(Files, true);
             }
-            else
-            {
-                return _filterList = GetListFilter(Files, false);
-            }
+
+            return _filterList = GetListFilter(Files, false);
         }
 
         public static string GetListFilter(SupportedFileInfo[] files, bool editableOnly = false)

@@ -10,9 +10,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.BrawlManagers.SongManager
@@ -410,7 +410,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         private void changeDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -424,7 +424,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         private void openFallbackDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -539,7 +539,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         private void saveGCTCodesetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(this, "Overwrite " + Path.GetFileName(csvPath) + "?", "Overwrite",
-                    MessageBoxButtons.OKCancel) == DialogResult.OK)
+                MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 File.WriteAllBytes(csvPath, csv.ExportGCT());
             }
@@ -622,7 +622,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
                     MessageBoxIcon.Error);
             }
             else if (DialogResult.OK == MessageBox.Show("Overwrite the current mu_menumain?", "Overwrite File",
-                         MessageBoxButtons.OKCancel))
+                MessageBoxButtons.OKCancel))
             {
                 string tempfile = Path.GetTempFileName();
                 string infotmp = Path.GetTempFileName();
@@ -668,7 +668,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif
@@ -711,7 +711,7 @@ namespace BrawlCrate.BrawlManagers.SongManager
         {
             CloseCurrentResources();
 #if !MONO
-            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog { UseDescriptionForTitle = true };
+            VistaFolderBrowserDialog fbd = new VistaFolderBrowserDialog {UseDescriptionForTitle = true};
 #else
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 #endif

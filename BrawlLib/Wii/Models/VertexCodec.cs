@@ -496,10 +496,10 @@ namespace BrawlLib.Wii.Models
             ElementDecoder decoder = ElementCodec.Decoders[type];
 
             int bytesPerVal = (UVs ? isSpecial + 1 : isSpecial + 2) * (componentType < WiiVertexComponentType.UInt16
-                                  ? 1
-                                  : componentType < WiiVertexComponentType.Float
-                                      ? 2
-                                      : 4);
+                ? 1
+                : componentType < WiiVertexComponentType.Float
+                    ? 2
+                    : 4);
 
             int count = (int) (length / bytesPerVal);
 
@@ -567,10 +567,8 @@ namespace BrawlLib.Wii.Models
                 return ExtractVertices(vertices->Data, vertices->_numVertices, vertices->_isXYZ != 0, vertices->Type,
                     1 << vertices->_divisor);
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public static Vector3[] ExtractVertices(MDL0FurPosData* vertices)
@@ -580,10 +578,8 @@ namespace BrawlLib.Wii.Models
                 return ExtractVertices(vertices->Data, vertices->_numVertices, vertices->_isXYZ != 0, vertices->Type,
                     1 << vertices->_divisor);
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public static Vector3[] ExtractNormals(MDL0NormalData* normals)

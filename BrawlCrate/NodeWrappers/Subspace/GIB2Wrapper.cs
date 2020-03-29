@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.GIB2)]
-    internal class GIB2Wrapper : GenericWrapper
+    public class GIB2Wrapper : GenericWrapper
     {
         #region Menu
 

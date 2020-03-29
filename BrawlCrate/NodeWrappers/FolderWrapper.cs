@@ -60,7 +60,7 @@ namespace BrawlCrate.NodeWrappers
             }
 
             if (MessageBox.Show("Are you sure you would like to delete this folder and all files contained within it?",
-                    "Delete Folder", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                "Delete Folder", MessageBoxButtons.YesNo) != DialogResult.Yes)
             {
                 return;
             }

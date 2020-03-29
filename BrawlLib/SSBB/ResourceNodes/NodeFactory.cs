@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Wii;
 using System;
@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private static readonly List<ResourceParser> _parsers = new List<ResourceParser>();
         private static readonly List<ResourceParser> _parsersGeneric = new List<ResourceParser>();
 
-        private static readonly Dictionary<string, Type> Forced = new Dictionary<string, Type>
+        private static readonly Dictionary<string, Type> ForcedExtensions = new Dictionary<string, Type>
         {
             {"MRG", typeof(MRGNode)},
             {"MRGC", typeof(MRGNode)}, //Compressed MRG
@@ -32,14 +32,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             // Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)
             foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()
-                                       ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
+                ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
 
             // Add all BrawlLib parsers (excluding MoveDefs, as explained below)
             foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()
-                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode))))
+                .Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
@@ -51,8 +51,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (del != null)
             {
                 _parsers.Add(del as ResourceParser);
-                return;
             }
+
             Delegate del2 = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParseGeneric", false, false);
             if (del2 != null)
             {
@@ -88,8 +88,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 
                     if (!(t is null) && (node = Activator.CreateInstance(t) as ResourceNode) != null
-                        || Forced.ContainsKey(ext) &&
-                        (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
+                        || ForcedExtensions.ContainsKey(ext) &&
+                        (node = Activator.CreateInstance(ForcedExtensions[ext]) as ResourceNode) != null)
                     {
                         FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
                         if (uncompressedMap != null)
@@ -121,21 +121,37 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromAddress(ResourceNode parent, VoidPtr address, int length)
         {
-            return FromSource(parent, new DataSource(address, length));
+            return FromSource(parent, new DataSource(address, length), null, true);
         }
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source)
         {
-            return FromSource(parent, source, null);
+            return FromSource(parent, source, null, true);
+        }
+
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source, bool supportCompression)
+        {
+            return FromSource(parent, source, null, supportCompression);
         }
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t)
+        {
+            return FromSource(parent, source, t, true);
+        }
+
+
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t, bool supportCompression)
         {
             ResourceNode n = null;
 
             if (t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
             {
-                FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
+                FileMap uncompressedMap = null;
+                if (supportCompression)
+                {
+                    uncompressedMap = Compressor.TryExpand(ref source, false);
+                }
+
                 if (uncompressedMap != null)
                 {
                     n.Initialize(parent, source, new DataSource(uncompressedMap));

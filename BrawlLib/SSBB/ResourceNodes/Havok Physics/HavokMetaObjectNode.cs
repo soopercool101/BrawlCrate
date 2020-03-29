@@ -217,7 +217,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    writer.WriteComment(string.Format(" {0} SERIALIZE_IGNORED ", i.Name));
+                    writer.WriteComment($" {i.Name} SERIALIZE_IGNORED ");
                 }
             }
         }

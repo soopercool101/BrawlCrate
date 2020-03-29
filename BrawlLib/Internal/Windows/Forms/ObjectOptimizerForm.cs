@@ -33,7 +33,7 @@ namespace BrawlLib.Internal.Windows.Forms
             b.WorkerReportsProgress = false;
 
             _updating = true;
-            Collada.ImportOptions i = BrawlLib.Properties.Settings.Default.ColladaImportOptions;
+            Collada.ImportOptions i = Properties.Settings.Default.ColladaImportOptions;
             numCacheSize.Value = i._cacheSize;
             numMinStripLen.Value = i._minStripLen;
             chkPushCacheHits.Checked = i._pushCacheHits;
@@ -191,7 +191,7 @@ namespace BrawlLib.Internal.Windows.Forms
 
             _target.SignalPropertyChange();
             _target.UpdateProperties();
-            BrawlLib.Properties.Settings.Default.Save();
+            Properties.Settings.Default.Save();
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -225,11 +225,11 @@ namespace BrawlLib.Internal.Windows.Forms
 
             _updating = false;
 
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._cacheSize = (uint) numCacheSize.Value;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._minStripLen = (uint) numMinStripLen.Value;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._pushCacheHits = chkPushCacheHits.Checked;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._useTristrips = chkUseStrips.Checked;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._forceCCW = chkForceCCW.Checked;
+            Properties.Settings.Default.ColladaImportOptions._cacheSize = (uint) numCacheSize.Value;
+            Properties.Settings.Default.ColladaImportOptions._minStripLen = (uint) numMinStripLen.Value;
+            Properties.Settings.Default.ColladaImportOptions._pushCacheHits = chkPushCacheHits.Checked;
+            Properties.Settings.Default.ColladaImportOptions._useTristrips = chkUseStrips.Checked;
+            Properties.Settings.Default.ColladaImportOptions._forceCCW = chkForceCCW.Checked;
 
             Optimize();
         }

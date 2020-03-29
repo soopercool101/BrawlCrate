@@ -371,8 +371,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             _loop = PlaybackPanel.chkLoop.Checked;
 
             if (MessageBox.Show(this,
-                    "Animated GIF successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder now?",
-                    "GIF saved", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                "Animated GIF successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder now?",
+                "GIF saved", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Process.Start("explorer.exe", path);
             }
@@ -450,9 +450,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
                     if (okay)
                     {
                         if (MessageBox.Show(this,
-                                "Screenshot successfully saved to \"" + outPath.Replace("\\", "/") +
-                                "\".\nOpen the folder containing the screenshot now?", "Screenshot saved",
-                                MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            "Screenshot successfully saved to \"" + outPath.Replace("\\", "/") +
+                            "\".\nOpen the folder containing the screenshot now?", "Screenshot saved",
+                            MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             Process.Start("explorer.exe", path);
                         }

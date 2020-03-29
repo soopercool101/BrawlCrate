@@ -191,10 +191,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 if (((MasqueradeNode) Parent)._cosmeticSlot == 21 && (
-                        value == 15 ||
-                        value == 31 ||
-                        value == 47 ||
-                        value == 63))
+                    value == 15 ||
+                    value == 31 ||
+                    value == 47 ||
+                    value == 63))
                 {
                     if (System.Windows.Forms.MessageBox.Show(
                             "Costume slot " + value +
@@ -277,8 +277,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 currentPath = currentPath.Substring(0,
                     currentPath.LastIndexOf("info", StringComparison.OrdinalIgnoreCase));
                 List<string> internalNames = MasqueradeNode
-                                             .MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot]
-                                             .Split('/').ToList();
+                    .MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot]
+                    .Split('/').ToList();
                 foreach (string s in internalNames)
                 {
                     if (File.Exists($"{currentPath}\\fighter\\{s}\\Fit{s}{_costumeID:00}.pac"))

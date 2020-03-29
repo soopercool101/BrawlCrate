@@ -69,8 +69,8 @@ namespace BrawlLib.Internal.Windows.Forms
             }
 
             string s = Path.GetFileName(listBox1.SelectedItem.ToString() == "<null>"
-                            ? "null"
-                            : listBox1.SelectedItem.ToString());
+                ? "null"
+                : listBox1.SelectedItem.ToString());
             label1.Text = $"{s} - Has {(SelectedFile.IsDirty ? "" : "not ")}changed";
         }
 
@@ -99,8 +99,8 @@ namespace BrawlLib.Internal.Windows.Forms
         {
             ResourceNode r = SelectedFile;
             if (MessageBox.Show(this,
-                    $"Are you sure you want to save {Path.GetFileName(r._origPath)}?", "Are you sure?",
-                    MessageBoxButtons.OKCancel) != DialogResult.OK)
+                $"Are you sure you want to save {Path.GetFileName(r._origPath)}?", "Are you sure?",
+                MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
                 return;
             }
@@ -257,27 +257,27 @@ namespace BrawlLib.Internal.Windows.Forms
             try
             {
 #endif
-                if (As)
+            if (As)
+            {
+                using (SaveFileDialog d = new SaveFileDialog())
                 {
-                    using (SaveFileDialog d = new SaveFileDialog())
+                    d.InitialDirectory = current._origPath.Substring(0, current._origPath.LastIndexOf('\\'));
+                    d.Filter = string.Format("(*{0})|*{0}", Path.GetExtension(current._origPath));
+                    d.Title = "Please choose a location to save this file.";
+                    if (d.ShowDialog(this) == DialogResult.OK)
                     {
-                        d.InitialDirectory = current._origPath.Substring(0, current._origPath.LastIndexOf('\\'));
-                        d.Filter = string.Format("(*{0})|*{0}", Path.GetExtension(current._origPath));
-                        d.Title = "Please choose a location to save this file.";
-                        if (d.ShowDialog(this) == DialogResult.OK)
-                        {
-                            current.Merge();
-                            current.Export(d.FileName);
-                        }
+                        current.Merge();
+                        current.Export(d.FileName);
                     }
                 }
-                else
-                {
-                    current.Merge();
-                    current.Export(current._origPath);
-                }
+            }
+            else
+            {
+                current.Merge();
+                current.Export(current._origPath);
+            }
 
-                return true;
+            return true;
 #if !DEBUG
             }
             catch (Exception x)

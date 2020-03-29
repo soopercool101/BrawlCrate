@@ -261,11 +261,13 @@ namespace BrawlLib.Modeling.Collada
             {
                 return node;
             }
-            else if (jointStrings.IndexOf(node._sid) >= 0)
+
+            if (jointStrings.IndexOf(node._sid) >= 0)
             {
                 return node;
             }
-            else if (jointStrings.IndexOf(node._id) >= 0)
+
+            if (jointStrings.IndexOf(node._id) >= 0)
             {
                 return node;
             }

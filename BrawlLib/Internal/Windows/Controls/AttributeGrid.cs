@@ -50,7 +50,7 @@ namespace BrawlLib.Internal.Windows.Controls
             dtgrdAttributes.ColumnHeadersVisible = false;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular,
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular,
                 GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.Format = "N4";
@@ -63,7 +63,7 @@ namespace BrawlLib.Internal.Windows.Controls
             dtgrdAttributes.EditMode = DataGridViewEditMode.EditOnKeystroke;
             dtgrdAttributes.EnableHeadersVisualStyles = false;
             dtgrdAttributes.GridColor = SystemColors.ControlLight;
-            dtgrdAttributes.Location = new System.Drawing.Point(0, 0);
+            dtgrdAttributes.Location = new Point(0, 0);
             dtgrdAttributes.MultiSelect = false;
             dtgrdAttributes.Name = "dtgrdAttributes";
             dtgrdAttributes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -72,7 +72,7 @@ namespace BrawlLib.Internal.Windows.Controls
             dtgrdAttributes.RowTemplate.Height = 16;
             dtgrdAttributes.ScrollBars = ScrollBars.Vertical;
             dtgrdAttributes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgrdAttributes.Size = new System.Drawing.Size(479, 200);
+            dtgrdAttributes.Size = new Size(479, 200);
             dtgrdAttributes.TabIndex = 5;
             dtgrdAttributes.CellEndEdit += new DataGridViewCellEventHandler(dtgrdAttributes_CellEndEdit);
             dtgrdAttributes.CurrentCellChanged += new EventHandler(dtgrdAttributes_CurrentCellChanged);
@@ -85,13 +85,13 @@ namespace BrawlLib.Internal.Windows.Controls
             description.BackColor = SystemColors.Control;
             description.BorderStyle = BorderStyle.None;
             description.Cursor = Cursors.Default;
-            description.Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point,
+            description.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point,
                 0);
             description.ForeColor = Color.Black;
-            description.Location = new System.Drawing.Point(0, 0);
+            description.Location = new Point(0, 0);
             description.Name = "description";
             description.ScrollBars = RichTextBoxScrollBars.Vertical;
-            description.Size = new System.Drawing.Size(479, 74);
+            description.Size = new Size(479, 74);
             description.TabIndex = 6;
             description.Text = "No Description Available.";
             description.LinkClicked += new LinkClickedEventHandler(description_LinkClicked);
@@ -100,9 +100,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // splitter1
             // 
             splitter1.Dock = DockStyle.Bottom;
-            splitter1.Location = new System.Drawing.Point(0, 200);
+            splitter1.Location = new Point(0, 200);
             splitter1.Name = "splitter1";
-            splitter1.Size = new System.Drawing.Size(479, 3);
+            splitter1.Size = new Size(479, 3);
             splitter1.TabIndex = 7;
             splitter1.TabStop = false;
             // 
@@ -115,18 +115,18 @@ namespace BrawlLib.Internal.Windows.Controls
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Controls.Add(description);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new System.Drawing.Point(0, 203);
+            panel1.Location = new Point(0, 203);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(479, 102);
+            panel1.Size = new Size(479, 102);
             panel1.TabIndex = 8;
             // 
             // btnInf
             // 
             btnInf.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnInf.Font = new Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnInf.Location = new System.Drawing.Point(446, 44);
+            btnInf.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnInf.Location = new Point(446, 44);
             btnInf.Name = "btnInf";
-            btnInf.Size = new System.Drawing.Size(30, 30);
+            btnInf.Size = new Size(30, 30);
             btnInf.TabIndex = 13;
             btnInf.Text = "∞";
             btnInf.UseVisualStyleBackColor = true;
@@ -136,10 +136,10 @@ namespace BrawlLib.Internal.Windows.Controls
             // btnMinusInf
             // 
             btnMinusInf.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnMinusInf.Font = new Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnMinusInf.Location = new System.Drawing.Point(412, 44);
+            btnMinusInf.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMinusInf.Location = new Point(412, 44);
             btnMinusInf.Name = "btnMinusInf";
-            btnMinusInf.Size = new System.Drawing.Size(30, 30);
+            btnMinusInf.Size = new Size(30, 30);
             btnMinusInf.TabIndex = 12;
             btnMinusInf.Text = "-∞";
             btnMinusInf.UseVisualStyleBackColor = true;
@@ -150,9 +150,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             lblColor.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblColor.BorderStyle = BorderStyle.FixedSingle;
-            lblColor.Location = new System.Drawing.Point(394, 60);
+            lblColor.Location = new Point(394, 60);
             lblColor.Name = "lblColor";
-            lblColor.Size = new System.Drawing.Size(41, 14);
+            lblColor.Size = new Size(41, 14);
             lblColor.TabIndex = 10;
             lblColor.Visible = false;
             lblColor.Click += new EventHandler(lblColor_Click);
@@ -161,9 +161,9 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             lblCNoA.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblCNoA.BorderStyle = BorderStyle.FixedSingle;
-            lblCNoA.Location = new System.Drawing.Point(434, 60);
+            lblCNoA.Location = new Point(434, 60);
             lblCNoA.Name = "lblCNoA";
-            lblCNoA.Size = new System.Drawing.Size(41, 14);
+            lblCNoA.Size = new Size(41, 14);
             lblCNoA.TabIndex = 11;
             lblCNoA.Visible = false;
             lblCNoA.Click += new EventHandler(lblColor_Click);
@@ -188,12 +188,12 @@ namespace BrawlLib.Internal.Windows.Controls
             tableLayoutPanel1.Controls.Add(rdoDegrees, 6, 0);
             tableLayoutPanel1.Controls.Add(rdoUnknown, 7, 0);
             tableLayoutPanel1.Dock = DockStyle.Bottom;
-            tableLayoutPanel1.Location = new System.Drawing.Point(0, 77);
+            tableLayoutPanel1.Location = new Point(0, 77);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(479, 25);
+            tableLayoutPanel1.Size = new Size(479, 25);
             tableLayoutPanel1.TabIndex = 9;
             // 
             // rdoFloat
@@ -201,11 +201,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoFloat.Appearance = Appearance.Button;
             rdoFloat.AutoSize = true;
             rdoFloat.Dock = DockStyle.Fill;
-            rdoFloat.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoFloat.Location = new System.Drawing.Point(0, 0);
+            rdoFloat.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoFloat.Location = new Point(0, 0);
             rdoFloat.Margin = new Padding(0);
             rdoFloat.Name = "rdoFloat";
-            rdoFloat.Size = new System.Drawing.Size(79, 25);
+            rdoFloat.Size = new Size(79, 25);
             rdoFloat.TabIndex = 0;
             rdoFloat.TabStop = true;
             rdoFloat.Text = "Float";
@@ -217,11 +217,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoInt.Appearance = Appearance.Button;
             rdoInt.AutoSize = true;
             rdoInt.Dock = DockStyle.Fill;
-            rdoInt.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoInt.Location = new System.Drawing.Point(79, 0);
+            rdoInt.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoInt.Location = new Point(79, 0);
             rdoInt.Margin = new Padding(0);
             rdoInt.Name = "rdoInt";
-            rdoInt.Size = new System.Drawing.Size(79, 25);
+            rdoInt.Size = new Size(79, 25);
             rdoInt.TabIndex = 1;
             rdoInt.TabStop = true;
             rdoInt.Text = "Integer";
@@ -233,11 +233,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoColor.Appearance = Appearance.Button;
             rdoColor.AutoSize = true;
             rdoColor.Dock = DockStyle.Fill;
-            rdoColor.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoColor.Location = new System.Drawing.Point(158, 0);
+            rdoColor.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoColor.Location = new Point(158, 0);
             rdoColor.Margin = new Padding(0);
             rdoColor.Name = "rdoColor";
-            rdoColor.Size = new System.Drawing.Size(79, 25);
+            rdoColor.Size = new Size(79, 25);
             rdoColor.TabIndex = 2;
             rdoColor.TabStop = true;
             rdoColor.Text = "Color";
@@ -249,11 +249,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoBytes.Appearance = Appearance.Button;
             rdoBytes.AutoSize = true;
             rdoBytes.Dock = DockStyle.Fill;
-            rdoBytes.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoBytes.Location = new System.Drawing.Point(395, 0);
+            rdoBytes.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoBytes.Location = new Point(395, 0);
             rdoBytes.Margin = new Padding(0);
             rdoBytes.Name = "rdoBytes";
-            rdoBytes.Size = new System.Drawing.Size(84, 25);
+            rdoBytes.Size = new Size(84, 25);
             rdoBytes.TabIndex = 3;
             rdoBytes.TabStop = true;
             rdoBytes.Text = "Bytes";
@@ -265,11 +265,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoShorts.Appearance = Appearance.Button;
             rdoShorts.AutoSize = true;
             rdoShorts.Dock = DockStyle.Fill;
-            rdoShorts.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoShorts.Location = new System.Drawing.Point(395, 0);
+            rdoShorts.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoShorts.Location = new Point(395, 0);
             rdoShorts.Margin = new Padding(0);
             rdoShorts.Name = "rdoShorts";
-            rdoShorts.Size = new System.Drawing.Size(84, 25);
+            rdoShorts.Size = new Size(84, 25);
             rdoShorts.TabIndex = 4;
             rdoShorts.TabStop = true;
             rdoShorts.Text = "Shorts";
@@ -281,11 +281,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoFlags.Appearance = Appearance.Button;
             rdoFlags.AutoSize = true;
             rdoFlags.Dock = DockStyle.Fill;
-            rdoFlags.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoFlags.Location = new System.Drawing.Point(237, 0);
+            rdoFlags.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoFlags.Location = new Point(237, 0);
             rdoFlags.Margin = new Padding(0);
             rdoFlags.Name = "rdoFlags";
-            rdoFlags.Size = new System.Drawing.Size(79, 25);
+            rdoFlags.Size = new Size(79, 25);
             rdoFlags.TabIndex = 5;
             rdoFlags.TabStop = true;
             rdoFlags.Text = "Flags";
@@ -297,11 +297,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoDegrees.Appearance = Appearance.Button;
             rdoDegrees.AutoSize = true;
             rdoDegrees.Dock = DockStyle.Fill;
-            rdoDegrees.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoDegrees.Location = new System.Drawing.Point(316, 0);
+            rdoDegrees.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoDegrees.Location = new Point(316, 0);
             rdoDegrees.Margin = new Padding(0);
             rdoDegrees.Name = "rdoDegrees";
-            rdoDegrees.Size = new System.Drawing.Size(79, 25);
+            rdoDegrees.Size = new Size(79, 25);
             rdoDegrees.TabIndex = 6;
             rdoDegrees.TabStop = true;
             rdoDegrees.Text = "Degrees";
@@ -313,11 +313,11 @@ namespace BrawlLib.Internal.Windows.Controls
             rdoUnknown.Appearance = Appearance.Button;
             rdoUnknown.AutoSize = true;
             rdoUnknown.Dock = DockStyle.Fill;
-            rdoUnknown.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoUnknown.Location = new System.Drawing.Point(395, 0);
+            rdoUnknown.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdoUnknown.Location = new Point(395, 0);
             rdoUnknown.Margin = new Padding(0);
             rdoUnknown.Name = "rdoUnknown";
-            rdoUnknown.Size = new System.Drawing.Size(84, 25);
+            rdoUnknown.Size = new Size(84, 25);
             rdoUnknown.TabIndex = 7;
             rdoUnknown.TabStop = true;
             rdoUnknown.Text = "Hex";
@@ -330,7 +330,7 @@ namespace BrawlLib.Internal.Windows.Controls
             Controls.Add(splitter1);
             Controls.Add(panel1);
             Name = "AttributeGrid";
-            Size = new System.Drawing.Size(479, 305);
+            Size = new Size(479, 305);
             ((ISupportInitialize) dtgrdAttributes).EndInit();
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
@@ -372,6 +372,8 @@ namespace BrawlLib.Internal.Windows.Controls
 
         private IAttributeList _targetNode;
 
+        protected bool somethingChanged;
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IAttributeList TargetNode
@@ -392,6 +394,7 @@ namespace BrawlLib.Internal.Windows.Controls
 
         public void LoadData()
         {
+            somethingChanged = false;
             attributes.Columns.Clear();
             attributes.Rows.Clear();
 
@@ -402,8 +405,8 @@ namespace BrawlLib.Internal.Windows.Controls
             dtgrdAttributes.CellToolTipTextNeeded += dtgrdAttributes_CellToolTipTextNeeded;
         }
 
-        void dtgrdAttributes_CellToolTipTextNeeded(object sender,
-                                                   DataGridViewCellToolTipTextNeededEventArgs e)
+        private void dtgrdAttributes_CellToolTipTextNeeded(object sender,
+                                                           DataGridViewCellToolTipTextNeededEventArgs e)
         {
             if (e.RowIndex > -1)
             {
@@ -513,6 +516,7 @@ namespace BrawlLib.Internal.Windows.Controls
             string name = attributes.Rows[index][0].ToString();
             if (AttributeArray[index]._name != name)
             {
+                somethingChanged = true;
                 AttributeArray[index]._name = name;
                 DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
@@ -528,11 +532,13 @@ namespace BrawlLib.Internal.Windows.Controls
                 string[] values = value.Split();
                 if (values.Length >= 2)
                 {
-                    TargetNode.SetShorts(index, short.Parse(values[0].Trim(' ', ',')), short.Parse(values[1].Trim(' ', ',')));
+                    TargetNode.SetShorts(index, short.Parse(values[0].Trim(' ', ',')),
+                        short.Parse(values[1].Trim(' ', ',')));
                 }
                 else if (values.Length == 1)
                 {
-                    TargetNode.SetShorts(index, short.Parse(values[0].Trim(' ', ',')), short.Parse(values[0].Trim(' ', ',')));
+                    TargetNode.SetShorts(index, short.Parse(values[0].Trim(' ', ',')),
+                        short.Parse(values[0].Trim(' ', ',')));
                 }
             }
             else if (AttributeArray[index]._type == 6) // Bytes
@@ -540,11 +546,15 @@ namespace BrawlLib.Internal.Windows.Controls
                 string[] values = value.Split();
                 if (values.Length == 4)
                 {
-                    TargetNode.SetBytes(index, byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[1].Trim(' ', ',')), byte.Parse(values[2].Trim(' ', ',')), byte.Parse(values[3].Trim(' ', ',')));
+                    TargetNode.SetBytes(index, byte.Parse(values[0].Trim(' ', ',')),
+                        byte.Parse(values[1].Trim(' ', ',')), byte.Parse(values[2].Trim(' ', ',')),
+                        byte.Parse(values[3].Trim(' ', ',')));
                 }
                 else if (values.Length == 1)
                 {
-                    TargetNode.SetBytes(index, byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[0].Trim(' ', ',')));
+                    TargetNode.SetBytes(index, byte.Parse(values[0].Trim(' ', ',')),
+                        byte.Parse(values[0].Trim(' ', ',')), byte.Parse(values[0].Trim(' ', ',')),
+                        byte.Parse(values[0].Trim(' ', ',')));
                 }
             }
             else if (AttributeArray[index]._type == 5) // Binary
@@ -724,6 +734,7 @@ namespace BrawlLib.Internal.Windows.Controls
             {
                 AttributeArray[index]._description = description.Text;
                 DictionaryChanged?.Invoke(this, EventArgs.Empty);
+                somethingChanged = true;
             }
         }
 
@@ -760,6 +771,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
                 RefreshRow(index);
+                somethingChanged = true;
             }
 
             switch (nType)

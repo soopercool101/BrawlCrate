@@ -135,7 +135,8 @@ namespace BrawlLib.Modeling.Triangle_Converter.Deque
                 {
                     return true;
                 }
-                else if (o.Equals(obj))
+
+                if (o.Equals(obj))
                 {
                     return true;
                 }
@@ -818,21 +819,25 @@ namespace BrawlLib.Modeling.Triangle_Converter.Deque
             {
                 throw new ArgumentNullException("array");
             }
-            else if (index < 0)
+
+            if (index < 0)
             {
                 throw new ArgumentOutOfRangeException("index", index,
                     "Index is less than zero.");
             }
-            else if (array.Rank > 1)
+
+            if (array.Rank > 1)
             {
                 throw new ArgumentException("Array is multidimensional.");
             }
-            else if (index >= array.Length)
+
+            if (index >= array.Length)
             {
                 throw new ArgumentException("Index is equal to or greater " +
                                             "than the length of array.");
             }
-            else if (Count > array.Length - index)
+
+            if (Count > array.Length - index)
             {
                 throw new ArgumentException(
                     "The number of elements in the source Deque is greater " +

@@ -22,10 +22,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return ((uint) (Header - (VoidPtr) RSARNode.Header)).ToString("X");
                 }
-                else
-                {
-                    return "0";
-                }
+
+                return "0";
             }
         }
 
@@ -59,8 +57,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else
                 {
                     _extPath = value
-                               .Substring(RootNode._origPath.Substring(0, RootNode._origPath.LastIndexOf('\\')).Length +
-                                          1).Replace('\\', '/');
+                        .Substring(RootNode._origPath.Substring(0, RootNode._origPath.LastIndexOf('\\')).Length +
+                                   1).Replace('\\', '/');
                 }
 
                 SignalPropertyChange();

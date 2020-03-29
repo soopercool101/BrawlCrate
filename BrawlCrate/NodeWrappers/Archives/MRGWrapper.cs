@@ -192,12 +192,6 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-
-        public override void OnExport(string outPath, int filterIndex)
-        {
-            ((MRGNode) _resource).Export(outPath);
-        }
-
         public void ExportAll()
         {
             string path = Program.ChooseFolder();

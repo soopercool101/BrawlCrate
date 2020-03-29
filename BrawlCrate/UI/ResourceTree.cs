@@ -118,7 +118,8 @@ namespace BrawlCrate.UI
                 m.Result = IntPtr.Zero;
                 return;
             }
-            else if (m.Msg == 0x205)
+
+            if (m.Msg == 0x205)
             {
                 int x = (int) m.LParam & 0xFFFF, y = (int) m.LParam >> 16;
 

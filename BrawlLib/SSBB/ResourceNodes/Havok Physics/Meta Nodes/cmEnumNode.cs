@@ -49,14 +49,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     return display;
                 }
-                else
+
+                foreach (KeyValuePair<string, int> p in _enums)
                 {
-                    foreach (KeyValuePair<string, int> p in _enums)
+                    if (p.Value == _value)
                     {
-                        if (p.Value == _value)
-                        {
-                            return p.Key;
-                        }
+                        return p.Key;
                     }
                 }
 

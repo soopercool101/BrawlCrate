@@ -6,6 +6,7 @@ using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
@@ -2054,7 +2055,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             animEditors.HorizontalScroll.Enabled =
                 !(animEditors.Width - animCtrlPnl.Width >= pnlPlayback.MinimumSize.Width);
 
-            string applicationFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string applicationFolder =
+                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             ScreenCapBgLocText.Text = applicationFolder + "\\ScreenCaptures";
             MDL0TextureNode.TextureOverrideDirectory =
                 LiveTextureFolderPath.Text =
@@ -2112,17 +2114,11 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void pnlAnimSave(bool As)
         {
-            ResourceNode o = null;
-            if (TargetModel != null)
+            foreach (ResourceNode n in rightPanel.pnlOpenedFiles.OpenedFiles.Where(o =>
+                o._origPath != MainForm.Instance.RootNode.Resource._origPath))
             {
-                o = ((ResourceNode) TargetModel).RootNode;
+                rightPanel.pnlOpenedFiles.SaveExternal(n, As);
             }
-            else
-            {
-                o = rightPanel.pnlOpenedFiles.SelectedFile;
-            }
-
-            rightPanel.pnlOpenedFiles.SaveExternal(o, As);
         }
 
         public void AppendTarget(CollisionNode collision)

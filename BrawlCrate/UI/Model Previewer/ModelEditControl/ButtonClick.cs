@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
+
 #endif
 
 namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
@@ -157,7 +157,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private void ScreenCapBgLocText_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog d = new FolderBrowserDialog())
 #endif
@@ -193,7 +193,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private void imageFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Just use an existing dialog with the same basic function
-            using (ExportAllFormatDialog d = new ExportAllFormatDialog("Choose Texture Format:", typeof(TEX0Node), FileFilters.TEX0))
+            using (ExportAllFormatDialog d =
+                new ExportAllFormatDialog("Choose Texture Format:", typeof(TEX0Node), FileFilters.TEX0))
             {
                 d.comboBox1.Items.RemoveAt(6); //TEX0
                 if (d.ShowDialog(this) == DialogResult.OK)
@@ -391,7 +392,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private void LiveTextureFolderPath_Click(object sender, EventArgs e)
         {
 #if !MONO
-            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog { UseDescriptionForTitle = true })
+            using (VistaFolderBrowserDialog d = new VistaFolderBrowserDialog {UseDescriptionForTitle = true})
 #else
             using (FolderBrowserDialog d = new FolderBrowserDialog())
 #endif
@@ -406,7 +407,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
             if (string.IsNullOrEmpty(LiveTextureFolderPath.Text))
             {
-                LiveTextureFolderPath.Text = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                LiveTextureFolderPath.Text =
+                    System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             }
 
             modelPanel.RefreshReferences();
@@ -440,8 +442,8 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
         private void newSceneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(this,
-                    "Are you sure you want to clear the current scene?\nYou will lose any unsaved data.", "Continue?",
-                    MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                "Are you sure you want to clear the current scene?\nYou will lose any unsaved data.", "Continue?",
+                MessageBoxButtons.OKCancel) == DialogResult.Cancel)
             {
                 return;
             }
@@ -474,8 +476,13 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModelPanel.RemoveTarget(TargetModel);
-            _targetModels.Remove(TargetModel);
+            IModel m = TargetModel;
+            ModelPanel.RemoveTarget(m);
+            _targetModels.Remove(m);
+            //if (m is ResourceNode n)
+            //{
+            //    n.Remove();
+            //}
 
             if (_targetModels != null && _targetModels.Count != 0)
             {
@@ -488,27 +495,61 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 
         private void hideAllOtherModelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            IModel m = TargetModel;
+            _updating = true;
             foreach (IModel node in _targetModels)
             {
-                if (node != TargetModel)
+                if (node != m)
                 {
                     ModelPanel.RemoveTarget(node);
                 }
             }
+
+            List<CollisionNode> newCollisions = new List<CollisionNode>();
+            foreach (CollisionNode n in _collisions)
+            {
+                CollisionNode newColl = new CollisionNode {Name = n.Name};
+                foreach (CollisionObject o in n.Children)
+                {
+                    if (o.LinkModel == m.ToString())
+                    {
+                        newColl.AddChild(o);
+                    }
+                }
+                newCollisions.Add(newColl);
+            }
+
+            _collisions = newCollisions;
+            OnRenderCollisionsChanged();
+            _updating = false;
 
             ModelPanel.Invalidate();
         }
 
         private void deleteAllOtherModelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (IModel node in _targetModels)
+            IModel m = TargetModel;
+            _updating = true;
+            List<IModel> oldModels = _targetModels;
+            int i = 0;
+            while (i < _targetModels.Count)
             {
+                IModel node = _targetModels[i];
                 if (node != TargetModel)
                 {
                     _targetModels.Remove(node);
                     ModelPanel.RemoveTarget(node);
+                    //if (node is ResourceNode n)
+                    //{
+                    //    n.Remove();
+                    //}
+                }
+                else
+                {
+                    i++;
                 }
             }
+            _updating = false;
 
             ModelPanel.Invalidate();
         }

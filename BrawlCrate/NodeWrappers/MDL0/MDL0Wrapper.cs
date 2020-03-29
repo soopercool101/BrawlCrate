@@ -375,7 +375,7 @@ namespace BrawlCrate.NodeWrappers
         {
             OpenFileDialog ofd = new OpenFileDialog
             {
-                Filter = SupportedFilesHandler.GetCompleteFilter("mdl0", "dae"),
+                Filter = ImportFilter,
                 Title = "Please select a model to reimport meshes from."
             };
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -485,8 +485,8 @@ namespace BrawlCrate.NodeWrappers
         public void AutoMetal()
         {
             if (MessageBox.Show(null,
-                    "Are you sure you want to (re)generate metal materials for Brawl?\nAll existing metal materials and shaders will be reset.",
-                    "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                "Are you sure you want to (re)generate metal materials for Brawl?\nAll existing metal materials and shaders will be reset.",
+                "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 ((MDL0Node) _resource).GenerateMetalMaterials();
             }
@@ -728,141 +728,130 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportMaterial()
         {
-            if (Program.OpenFile(FileFilters.MDL0Material, out string path))
+            if (Program.OpenFiles(FileFilters.MDL0Material, out string[] paths) > 0)
             {
-                MDL0MaterialNode m = NewMaterial();
-                m.Name = Path.GetFileNameWithoutExtension(path);
-                m.Replace(path);
+                foreach (string path in paths)
+                {
+                    MDL0MaterialNode m = NewMaterial();
+                    m.Name = Path.GetFileNameWithoutExtension(path);
+                    m.Replace(path);
+                }
             }
         }
 
         public void ImportShader()
         {
-            if (Program.OpenFile(FileFilters.MDL0Shader, out string path))
+            if (Program.OpenFiles(FileFilters.MDL0Shader, out string[] paths) > 0)
             {
-                NewShader()?.Replace(path);
+                foreach (string path in paths)
+                {
+                    NewShader()?.Replace(path);
+                }
             }
         }
 
         public void ImportVertex()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw Vertex Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Vertex Set (*.*)|*.*",
-                Title = "Please select a vertex set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewVertex().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewVertex().Replace(path);
+                }
             }
         }
 
         public void ImportNormal()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw Normal Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Normal Set (*.*)|*.*",
-                Title = "Please select a normal set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewNormal().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewNormal().Replace(path);
+                }
             }
         }
 
         public void ImportColor()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw Color Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Color Set (*.*)|*.*",
-                Title = "Please select a color set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewColor().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewColor().Replace(path);
+                }
             }
         }
 
         public void ImportUV()
         {
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles("Raw UV Set (*.*)|*.*", out string[] paths) > 0)
             {
-                Filter = "Raw Vertex Set (*.*)|*.*",
-                Title = "Please select a vertex set to import."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                NewUV().Replace(o.FileName);
+                foreach (string path in paths)
+                {
+                    NewUV().Replace(path);
+                }
             }
         }
 
         public void ImportObject()
         {
-            MDL0Node external = null;
-            OpenFileDialog o = new OpenFileDialog
+            if (Program.OpenFiles(ImportFilter, out string[] paths) > 0)
             {
-                Filter = ImportFilter,
-                Title = "Please select a model to import an object from."
-            };
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                if ((external = MDL0Node.FromFile(o.FileName)) != null)
+                foreach (string path in paths)
                 {
-                    new ObjectImporter().ShowDialog((MDL0Node) _resource, external);
-                }
-                else
-                {
-                    MessageBox.Show("Could not import an object from this model.", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MDL0Node external;
+                    if ((external = MDL0Node.FromFile(path)) != null)
+                    {
+                        new ObjectImporter().ShowDialog((MDL0Node) _resource, external);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Could not import an object from {path}", "Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
         public void SortMaterial()
         {
-            int index = Index;
             ((MDL0Node) _resource).MaterialGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortVertex()
         {
-            int index = Index;
             ((MDL0Node) _resource).VertexGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortNormal()
         {
-            int index = Index;
             ((MDL0Node) _resource).NormalGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortColor()
         {
-            int index = Index;
             ((MDL0Node) _resource).ColorGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortUV()
         {
-            int index = Index;
             ((MDL0Node) _resource).UVGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortObject()
         {
-            int index = Index;
             ((MDL0Node) _resource).PolygonGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortTexture()
         {
-            int index = Index;
             ((MDL0Node) _resource).TextureGroup.SortChildren();
             RefreshView(_resource);
         }
@@ -924,8 +913,7 @@ namespace BrawlCrate.NodeWrappers
 
         private void StripModel()
         {
-            MDL0Node model = _resource as MDL0Node;
-            if (model != null)
+            if (_resource is MDL0Node model)
             {
                 model.StripModel();
             }

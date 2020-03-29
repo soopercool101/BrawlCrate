@@ -167,6 +167,9 @@ namespace BrawlCrate.UI
             {ResourceType.ItemFreqTableGroupNode, Resources.Folder},
             {ResourceType.ItemFreqEntryNode, Resources.itembox},
 
+            //P+
+            {ResourceType.ASLS, Resources.Folder},
+
             {ResourceType.Folder, Resources.Folder}
         };
 

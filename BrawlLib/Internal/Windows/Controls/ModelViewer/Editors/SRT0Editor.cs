@@ -66,9 +66,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             FrameScale.AutoSize = true;
             FrameScale.Checked = true;
             FrameScale.CheckState = CheckState.Checked;
-            FrameScale.Location = new System.Drawing.Point(249, 58);
+            FrameScale.Location = new Point(249, 58);
             FrameScale.Name = "FrameScale";
-            FrameScale.Size = new System.Drawing.Size(53, 17);
+            FrameScale.Size = new Size(53, 17);
             FrameScale.TabIndex = 35;
             FrameScale.Text = "Scale";
             FrameScale.UseVisualStyleBackColor = true;
@@ -76,14 +76,14 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // toolStripMenuItem7
             // 
             toolStripMenuItem7.Name = "toolStripMenuItem7";
-            toolStripMenuItem7.Size = new System.Drawing.Size(100, 22);
+            toolStripMenuItem7.Size = new Size(100, 22);
             toolStripMenuItem7.Text = "+45";
             // 
             // btnPaste
             // 
-            btnPaste.Location = new System.Drawing.Point(101, 55);
+            btnPaste.Location = new Point(101, 55);
             btnPaste.Name = "btnPaste";
-            btnPaste.Size = new System.Drawing.Size(50, 20);
+            btnPaste.Size = new Size(50, 20);
             btnPaste.TabIndex = 23;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new System.Drawing.Size(100, 22);
+            toolStripMenuItem4.Size = new Size(100, 22);
             toolStripMenuItem4.Text = "+90";
             // 
             // FrameRot
@@ -100,18 +100,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             FrameRot.AutoSize = true;
             FrameRot.Checked = true;
             FrameRot.CheckState = CheckState.Checked;
-            FrameRot.Location = new System.Drawing.Point(208, 58);
+            FrameRot.Location = new Point(208, 58);
             FrameRot.Name = "FrameRot";
-            FrameRot.Size = new System.Drawing.Size(43, 17);
+            FrameRot.Size = new Size(43, 17);
             FrameRot.TabIndex = 34;
             FrameRot.Text = "Rot";
             FrameRot.UseVisualStyleBackColor = true;
             // 
             // btnCopy
             // 
-            btnCopy.Location = new System.Drawing.Point(52, 55);
+            btnCopy.Location = new Point(52, 55);
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(50, 20);
+            btnCopy.Size = new Size(50, 20);
             btnCopy.TabIndex = 22;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
@@ -120,14 +120,14 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new System.Drawing.Size(100, 22);
+            toolStripMenuItem3.Size = new Size(100, 22);
             toolStripMenuItem3.Text = "+180";
             // 
             // btnCut
             // 
-            btnCut.Location = new System.Drawing.Point(3, 55);
+            btnCut.Location = new Point(3, 55);
             btnCut.Name = "btnCut";
-            btnCut.Size = new System.Drawing.Size(50, 20);
+            btnCut.Size = new Size(50, 20);
             btnCut.TabIndex = 21;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
@@ -142,25 +142,25 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                 toolStripMenuItem8
             });
             subtract.Name = "subtract";
-            subtract.Size = new System.Drawing.Size(166, 22);
+            subtract.Size = new Size(166, 22);
             subtract.Text = "Subtract From All";
             // 
             // toolStripMenuItem5
             // 
             toolStripMenuItem5.Name = "toolStripMenuItem5";
-            toolStripMenuItem5.Size = new System.Drawing.Size(97, 22);
+            toolStripMenuItem5.Size = new Size(97, 22);
             toolStripMenuItem5.Text = "-180";
             // 
             // toolStripMenuItem6
             // 
             toolStripMenuItem6.Name = "toolStripMenuItem6";
-            toolStripMenuItem6.Size = new System.Drawing.Size(97, 22);
+            toolStripMenuItem6.Size = new Size(97, 22);
             toolStripMenuItem6.Text = "-90";
             // 
             // toolStripMenuItem8
             // 
             toolStripMenuItem8.Name = "toolStripMenuItem8";
-            toolStripMenuItem8.Size = new System.Drawing.Size(97, 22);
+            toolStripMenuItem8.Size = new Size(97, 22);
             toolStripMenuItem8.Text = "-45";
             // 
             // FrameTrans
@@ -168,9 +168,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             FrameTrans.AutoSize = true;
             FrameTrans.Checked = true;
             FrameTrans.CheckState = CheckState.Checked;
-            FrameTrans.Location = new System.Drawing.Point(155, 58);
+            FrameTrans.Location = new Point(155, 58);
             FrameTrans.Name = "FrameTrans";
-            FrameTrans.Size = new System.Drawing.Size(53, 17);
+            FrameTrans.Size = new Size(53, 17);
             FrameTrans.TabIndex = 33;
             FrameTrans.Text = "Trans";
             FrameTrans.UseVisualStyleBackColor = true;
@@ -179,11 +179,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             numScaleY.BorderStyle = BorderStyle.FixedSingle;
             numScaleY.Integral = false;
-            numScaleY.Location = new System.Drawing.Point(154, 35);
+            numScaleY.Location = new Point(154, 35);
             numScaleY.MaximumValue = 3.402823E+38F;
             numScaleY.MinimumValue = -3.402823E+38F;
             numScaleY.Name = "numScaleY";
-            numScaleY.Size = new System.Drawing.Size(82, 20);
+            numScaleY.Size = new Size(82, 20);
             numScaleY.TabIndex = 18;
             numScaleY.Text = "0";
             numScaleY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
@@ -198,18 +198,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                 toolStripMenuItem7
             });
             add.Name = "add";
-            add.Size = new System.Drawing.Size(166, 22);
+            add.Size = new Size(166, 22);
             add.Text = "Add To All";
             // 
             // numRot
             // 
             numRot.BorderStyle = BorderStyle.FixedSingle;
             numRot.Integral = false;
-            numRot.Location = new System.Drawing.Point(235, 35);
+            numRot.Location = new Point(235, 35);
             numRot.MaximumValue = 3.402823E+38F;
             numRot.MinimumValue = -3.402823E+38F;
             numRot.Name = "numRot";
-            numRot.Size = new System.Drawing.Size(82, 20);
+            numRot.Size = new Size(82, 20);
             numRot.TabIndex = 15;
             numRot.Text = "0";
             numRot.ValueChanged += new EventHandler(BoxChangedCreateUndo);
@@ -218,24 +218,24 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
+            toolStripSeparator1.Size = new Size(163, 6);
             // 
             // Source
             // 
             Source.Enabled = false;
             Source.Name = "Source";
-            Source.Size = new System.Drawing.Size(166, 22);
+            Source.Size = new Size(166, 22);
             Source.Text = "Source";
             // 
             // numTransX
             // 
             numTransX.BorderStyle = BorderStyle.FixedSingle;
             numTransX.Integral = false;
-            numTransX.Location = new System.Drawing.Point(73, 16);
+            numTransX.Location = new Point(73, 16);
             numTransX.MaximumValue = 3.402823E+38F;
             numTransX.MinimumValue = -3.402823E+38F;
             numTransX.Name = "numTransX";
-            numTransX.Size = new System.Drawing.Size(82, 20);
+            numTransX.Size = new Size(82, 20);
             numTransX.TabIndex = 3;
             numTransX.Text = "0";
             numTransX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
@@ -245,11 +245,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             numTransY.BorderStyle = BorderStyle.FixedSingle;
             numTransY.Integral = false;
-            numTransY.Location = new System.Drawing.Point(154, 16);
+            numTransY.Location = new Point(154, 16);
             numTransY.MaximumValue = 3.402823E+38F;
             numTransY.MinimumValue = -3.402823E+38F;
             numTransY.Name = "numTransY";
-            numTransY.Size = new System.Drawing.Size(82, 20);
+            numTransY.Size = new Size(82, 20);
             numTransY.TabIndex = 13;
             numTransY.Text = "0";
             numTransY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
@@ -258,9 +258,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // lblTransX
             // 
             lblTransX.BorderStyle = BorderStyle.FixedSingle;
-            lblTransX.Location = new System.Drawing.Point(4, 16);
+            lblTransX.Location = new Point(4, 16);
             lblTransX.Name = "lblTransX";
-            lblTransX.Size = new System.Drawing.Size(70, 20);
+            lblTransX.Size = new Size(70, 20);
             lblTransX.TabIndex = 4;
             lblTransX.Text = "Translation:";
             lblTransX.TextAlign = ContentAlignment.MiddleRight;
@@ -268,15 +268,15 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // removeAllToolStripMenuItem
             // 
             removeAllToolStripMenuItem.Name = "removeAllToolStripMenuItem";
-            removeAllToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            removeAllToolStripMenuItem.Size = new Size(166, 22);
             removeAllToolStripMenuItem.Text = "Remove All";
             // 
             // lblRot
             // 
             lblRot.BorderStyle = BorderStyle.FixedSingle;
-            lblRot.Location = new System.Drawing.Point(235, 16);
+            lblRot.Location = new Point(235, 16);
             lblRot.Name = "lblRot";
-            lblRot.Size = new System.Drawing.Size(82, 20);
+            lblRot.Size = new Size(82, 20);
             lblRot.TabIndex = 7;
             lblRot.Text = "Rotation:";
             lblRot.TextAlign = ContentAlignment.MiddleLeft;
@@ -293,20 +293,20 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                 addCustomAmountToolStripMenuItem
             });
             ctxBox.Name = "ctxBox";
-            ctxBox.Size = new System.Drawing.Size(167, 120);
+            ctxBox.Size = new Size(167, 120);
             // 
             // addCustomAmountToolStripMenuItem
             // 
             addCustomAmountToolStripMenuItem.Name = "addCustomAmountToolStripMenuItem";
-            addCustomAmountToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            addCustomAmountToolStripMenuItem.Size = new Size(166, 22);
             addCustomAmountToolStripMenuItem.Text = "Edit All...";
             addCustomAmountToolStripMenuItem.Click += new EventHandler(addCustomAmountToolStripMenuItem_Click_1);
             // 
             // btnDelete
             // 
-            btnDelete.Location = new System.Drawing.Point(6, 16);
+            btnDelete.Location = new Point(6, 16);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new System.Drawing.Size(50, 20);
+            btnDelete.Size = new Size(50, 20);
             btnDelete.TabIndex = 25;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -330,9 +330,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             grpTransform.Controls.Add(lblRot);
             grpTransform.Dock = DockStyle.Left;
             grpTransform.Enabled = false;
-            grpTransform.Location = new System.Drawing.Point(0, 0);
+            grpTransform.Location = new Point(0, 0);
             grpTransform.Name = "grpTransform";
-            grpTransform.Size = new System.Drawing.Size(321, 78);
+            grpTransform.Size = new Size(321, 78);
             grpTransform.TabIndex = 28;
             grpTransform.TabStop = false;
             grpTransform.Text = "Transform Frame";
@@ -340,9 +340,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // lblScaleX
             // 
             lblScaleX.BorderStyle = BorderStyle.FixedSingle;
-            lblScaleX.Location = new System.Drawing.Point(4, 35);
+            lblScaleX.Location = new Point(4, 35);
             lblScaleX.Name = "lblScaleX";
-            lblScaleX.Size = new System.Drawing.Size(70, 20);
+            lblScaleX.Size = new Size(70, 20);
             lblScaleX.TabIndex = 37;
             lblScaleX.Text = "Scale:";
             lblScaleX.TextAlign = ContentAlignment.MiddleRight;
@@ -351,11 +351,11 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             numScaleX.BorderStyle = BorderStyle.FixedSingle;
             numScaleX.Integral = false;
-            numScaleX.Location = new System.Drawing.Point(73, 35);
+            numScaleX.Location = new Point(73, 35);
             numScaleX.MaximumValue = 3.402823E+38F;
             numScaleX.MinimumValue = -3.402823E+38F;
             numScaleX.Name = "numScaleX";
-            numScaleX.Size = new System.Drawing.Size(82, 20);
+            numScaleX.Size = new Size(82, 20);
             numScaleX.TabIndex = 36;
             numScaleX.Text = "0";
             numScaleX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
@@ -366,9 +366,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             AllScale.AutoSize = true;
             AllScale.Checked = true;
             AllScale.CheckState = CheckState.Checked;
-            AllScale.Location = new System.Drawing.Point(108, 57);
+            AllScale.Location = new Point(108, 57);
             AllScale.Name = "AllScale";
-            AllScale.Size = new System.Drawing.Size(53, 17);
+            AllScale.Size = new Size(53, 17);
             AllScale.TabIndex = 32;
             AllScale.Text = "Scale";
             AllScale.UseVisualStyleBackColor = true;
@@ -386,9 +386,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             grpTransAll.Controls.Add(btnDelete);
             grpTransAll.Dock = DockStyle.Fill;
             grpTransAll.Enabled = false;
-            grpTransAll.Location = new System.Drawing.Point(321, 0);
+            grpTransAll.Location = new Point(321, 0);
             grpTransAll.Name = "grpTransAll";
-            grpTransAll.Size = new System.Drawing.Size(162, 78);
+            grpTransAll.Size = new Size(162, 78);
             grpTransAll.TabIndex = 29;
             grpTransAll.TabStop = false;
             grpTransAll.Text = "Transform All";
@@ -398,9 +398,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             AllRot.AutoSize = true;
             AllRot.Checked = true;
             AllRot.CheckState = CheckState.Checked;
-            AllRot.Location = new System.Drawing.Point(108, 38);
+            AllRot.Location = new Point(108, 38);
             AllRot.Name = "AllRot";
-            AllRot.Size = new System.Drawing.Size(43, 17);
+            AllRot.Size = new Size(43, 17);
             AllRot.TabIndex = 31;
             AllRot.Text = "Rot";
             AllRot.UseVisualStyleBackColor = true;
@@ -410,18 +410,18 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             AllTrans.AutoSize = true;
             AllTrans.Checked = true;
             AllTrans.CheckState = CheckState.Checked;
-            AllTrans.Location = new System.Drawing.Point(108, 19);
+            AllTrans.Location = new Point(108, 19);
             AllTrans.Name = "AllTrans";
-            AllTrans.Size = new System.Drawing.Size(53, 17);
+            AllTrans.Size = new Size(53, 17);
             AllTrans.TabIndex = 30;
             AllTrans.Text = "Trans";
             AllTrans.UseVisualStyleBackColor = true;
             // 
             // btnClean
             // 
-            btnClean.Location = new System.Drawing.Point(55, 35);
+            btnClean.Location = new Point(55, 35);
             btnClean.Name = "btnClean";
-            btnClean.Size = new System.Drawing.Size(50, 20);
+            btnClean.Size = new Size(50, 20);
             btnClean.TabIndex = 29;
             btnClean.Text = "Clean";
             btnClean.UseVisualStyleBackColor = true;
@@ -429,9 +429,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnPasteAll
             // 
-            btnPasteAll.Location = new System.Drawing.Point(6, 35);
+            btnPasteAll.Location = new Point(6, 35);
             btnPasteAll.Name = "btnPasteAll";
-            btnPasteAll.Size = new System.Drawing.Size(50, 20);
+            btnPasteAll.Size = new Size(50, 20);
             btnPasteAll.TabIndex = 28;
             btnPasteAll.Text = "Paste";
             btnPasteAll.UseVisualStyleBackColor = true;
@@ -439,9 +439,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnCopyAll
             // 
-            btnCopyAll.Location = new System.Drawing.Point(6, 54);
+            btnCopyAll.Location = new Point(6, 54);
             btnCopyAll.Name = "btnCopyAll";
-            btnCopyAll.Size = new System.Drawing.Size(50, 20);
+            btnCopyAll.Size = new Size(50, 20);
             btnCopyAll.TabIndex = 27;
             btnCopyAll.Text = "Copy";
             btnCopyAll.UseVisualStyleBackColor = true;
@@ -449,9 +449,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnClear
             // 
-            btnClear.Location = new System.Drawing.Point(55, 16);
+            btnClear.Location = new Point(55, 16);
             btnClear.Name = "btnClear";
-            btnClear.Size = new System.Drawing.Size(50, 20);
+            btnClear.Size = new Size(50, 20);
             btnClear.TabIndex = 26;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -459,9 +459,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             // btnInsert
             // 
-            btnInsert.Location = new System.Drawing.Point(55, 54);
+            btnInsert.Location = new Point(55, 54);
             btnInsert.Name = "btnInsert";
-            btnInsert.Size = new System.Drawing.Size(50, 20);
+            btnInsert.Size = new Size(50, 20);
             btnInsert.TabIndex = 24;
             btnInsert.Text = "Insert";
             btnInsert.UseVisualStyleBackColor = true;
@@ -471,9 +471,9 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             // 
             Controls.Add(grpTransAll);
             Controls.Add(grpTransform);
-            MinimumSize = new System.Drawing.Size(483, 78);
+            MinimumSize = new Size(483, 78);
             Name = "SRT0Editor";
-            Size = new System.Drawing.Size(483, 78);
+            Size = new Size(483, 78);
             ctxBox.ResumeLayout(false);
             grpTransform.ResumeLayout(false);
             grpTransform.PerformLayout();
@@ -579,10 +579,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
                 {
                     return SelectedAnimation.FindChild(mr.Parent.Name + "/Texture" + mr.Index, true) as SRT0TextureNode;
                 }
-                else
-                {
-                    return null;
-                }
+
+                return null;
             }
         }
 
@@ -1152,7 +1150,8 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
         private void removeAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SRT0TextureNode _target =
-                SelectedAnimation?.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
+                SelectedAnimation?.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
+                    SRT0TextureNode;
             if (_target != null)
             {
                 _target.Keyframes._keyArrays[type]._keyRoot = new KeyframeEntry(-1, type < 2 ? 1 : 0);
