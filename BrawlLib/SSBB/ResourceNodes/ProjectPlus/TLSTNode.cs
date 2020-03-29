@@ -264,7 +264,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             else
             {
                 header->_fileName = ((TLSTNode) Parent).strOffset;
-                ((TLSTNode) Parent).strOffset += (ushort) (Encoding.UTF8.GetBytes(_fileName).Length + 1);
+                ((TLSTNode) Parent).strOffset += (ushort) (_fileName.UTF8Length() + 1);
             }
 
             if (string.IsNullOrEmpty(_name) || _name == "<null>")
@@ -274,7 +274,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             else
             {
                 header->_title = ((TLSTNode) Parent).strOffset;
-                ((TLSTNode) Parent).strOffset += (ushort) (Encoding.UTF8.GetBytes(_name).Length + 1);
+                ((TLSTNode) Parent).strOffset += (ushort) (_name.UTF8Length() + 1);
             }
 
             header->_songID = _songID;
@@ -295,8 +295,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
             if (Header->_fileName != 0xFFFF)
             {
-                _fileName = new string((sbyte*) (VoidPtr) ((TLSTNode) Parent).Header +
-                                       ((TLSTNode) Parent).Header->_nameOffset + Header->_fileName);
+                _fileName = Parent.WorkingUncompressed.Address.GetUTF8String(((TLSTNode)Parent).Header->_nameOffset + Header->_fileName);
             }
 
             _songID = Header->_songID;
