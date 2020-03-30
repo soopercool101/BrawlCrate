@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -163,14 +163,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;                                     : base(value)</div>
-<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;        {</div>
-<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;andi.&quot;</span>);</div>
-<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;andis.&quot;</span>);</div>
-<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 21, 0x1F));     <span class="comment">//  [0] Left Register</span></div>
-<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 16, 0x1F));     <span class="comment">//  [1] Right Register</span></div>
-<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.VAL, 0, 0x7FFF, 0x8000)); <span class="comment">//  [2] Immediate Value</span></div>
-<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;                                     : base(value)</div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;        {</div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;andi.&quot;</span>);</div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;andis.&quot;</span>);</div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 21, 0x1F));     <span class="comment">//  [0] Left Register</span></div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 16, 0x1F));     <span class="comment">//  [1] Right Register</span></div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.VAL, 0, 0x7FFF, 0x8000)); <span class="comment">//  [2] Immediate Value</span></div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -199,9 +199,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a1337b2b41a713b5a623973b2eb4f7995">BrawlLib.Internal.PowerPCAssembly.PPCOpCode</a>.</p>
-<div class="fragment"><div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;        {</div>
-<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[0] + (<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_andi.html#a35e96b3c564a2fea7cb6e62bdd398dea">Shifted</a> ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;        {</div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[0] + (<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_andi.html#a35e96b3c564a2fea7cb6e62bdd398dea">Shifted</a> ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,7 +226,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a25006d052f28cb48b4eff5c2c6c96540"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._operands</a></div><div class="ttdeci">List&lt; PPCOperand &gt; _operands</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:13</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a614e7b0f9a08a82be3d0319b3ef4c66f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._names</a></div><div class="ttdeci">List&lt; string &gt; _names</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:12</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_andi_html_a35e96b3c564a2fea7cb6e62bdd398dea"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_andi.html#a35e96b3c564a2fea7cb6e62bdd398dea">BrawlLib.Internal.PowerPCAssembly.PPCAndi.Shifted</a></div><div class="ttdeci">bool Shifted</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:1267</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_andi_html_a35e96b3c564a2fea7cb6e62bdd398dea"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_andi.html#a35e96b3c564a2fea7cb6e62bdd398dea">BrawlLib.Internal.PowerPCAssembly.PPCAndi.Shifted</a></div><div class="ttdeci">bool Shifted</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:1253</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ad6e0e3039e7bb1238a1d6d757f0893b0"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">BrawlLib.Internal.PowerPCAssembly.OperandType</a></div><div class="ttdeci">OperandType</div><div class="ttdef"><b>Definition:</b> OperandType.cs:3</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

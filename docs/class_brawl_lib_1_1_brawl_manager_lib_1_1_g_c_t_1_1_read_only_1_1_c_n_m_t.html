@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -150,11 +150,11 @@ Public Attributes</h2></td></tr>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordtype">int</span> bytes = data[lineskip + 7];</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordtype">byte</span>[] byteArray = data</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                   .Skip(lineskip)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                   .Skip(8)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                   .Take(bytes)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                   .TakeWhile(c =&gt; c != 0)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                   .ToArray();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    .Skip(lineskip)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    .Skip(8)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    .Take(bytes)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    .TakeWhile(c =&gt; c != 0)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    .ToArray();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordtype">string</span> str = Encoding.UTF8.GetString(byteArray);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_n_m_t.html#a9f722d1962c23f350af4535cca5d3c97">Map</a>.TryGetValue((ushort) songId1, out <span class="keywordtype">string</span> existing) &amp;&amp; existing != str)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                {</div>

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -598,8 +598,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        {</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            IEnumerable&lt;Fighter&gt; q = <a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_costume_manager_1_1_portrait_map.html#abfaa18b8d4ba74e4fdb76fb2cd61060f">additionalFighters</a>.Concat(<a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_costume_manager_1_1_portrait_map.html#a6ce9bbff0f97305e93aab96bdbe98618">KnownFighters</a>)</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                                                       .Where(f =&gt; <span class="keywordtype">string</span>.Equals(f.Name, name,</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                                                           StringComparison.InvariantCultureIgnoreCase));</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                .Where(f =&gt; <span class="keywordtype">string</span>.Equals(f.Name, name,</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                    StringComparison.InvariantCultureIgnoreCase));</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="keywordflow">if</span> (!q.Any())</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            {</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(<span class="stringliteral">&quot;No known fighter found with name &quot;</span> + name + <span class="stringliteral">&quot;.&quot;</span>);</div>
@@ -718,8 +718,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        {</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordflow">return</span> (from f in <a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_costume_manager_1_1_portrait_map.html#a6ce9bbff0f97305e93aab96bdbe98618">KnownFighters</a> select f.<a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_costume_manager_1_1_portrait_map_1_1_fighter.html#aaa9147de2bdd4eaafd1ff63d7a89faac">Name</a>)</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                   .Concat(from f in <a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_costume_manager_1_1_portrait_map.html#abfaa18b8d4ba74e4fdb76fb2cd61060f">additionalFighters</a> select f.Name)</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                   .Distinct();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                .Concat(from f in <a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_costume_manager_1_1_portrait_map.html#abfaa18b8d4ba74e4fdb76fb2cd61060f">additionalFighters</a> select f.Name)</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                .Distinct();</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>

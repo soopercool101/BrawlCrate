@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -315,6 +315,9 @@ $(function() {
 <li>CharacterName
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_o_s_c_node.html#aac857bfc8002509fa7716bc88a1773c2">BrawlLib.SSBB.ResourceNodes.COSCNode</a>
 </li>
+<li>CharacterOverlay
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_project_plus_1_1_s_t_e_x_node.html#a778529d74f9e3bc75b818ac73632069e">BrawlLib.SSBB.ResourceNodes.ProjectPlus.STEXNode</a>
+</li>
 <li>CharacterWindEnabled
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_entry_node.html#ad2facf7bf2b68834a7d551afaf5d1f25">BrawlLib.SSBB.ResourceNodes.STPMEntryNode</a>
 </li>
@@ -351,8 +354,6 @@ $(function() {
 </li>
 <li>CID
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_b_l_k_entry_node.html#aea2df73911286f25f5722749ed0d2b5e">BrawlLib.SSBB.ResourceNodes.GBLKEntryNode</a>
-, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_t_entry_node.html#a84bfc287df79e7e2db22b633caa749ea">BrawlLib.SSBB.ResourceNodes.GMOTEntryNode</a>
-, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_v_entry_node.html#ab21633acd7b22cc010af339a48752715">BrawlLib.SSBB.ResourceNodes.GMOVEntryNode</a>
 </li>
 <li>Clamp
 : <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_alpha_env.html#a9fc36ad8ed26e21f4c5590f365eb05d3">BrawlLib.Wii.Graphics.AlphaEnv</a>
@@ -379,7 +380,8 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#a18e877d6d2c1178e9369423c9aeaac9a">BrawlLib.BrawlManagerLib.GCT.ReadWrite.CustomSSSCodeset</a>
 </li>
 <li>Code
-: <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry.html#a6530d92c40e228d0f547e89ffb9d47a8">BrawlLib.SSBB.Types.Animations.CHR0Entry</a>
+: <a class="el" href="class_brawl_crate_1_1_a_p_i_1_1_plugin_script.html#aa3192f99c773971aa78f621603200875">BrawlCrate.API.PluginScript</a>
+, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry.html#a6530d92c40e228d0f547e89ffb9d47a8">BrawlLib.SSBB.Types.Animations.CHR0Entry</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_texture_entry.html#a8f858504ef8b4db31121727994727a0a">BrawlLib.SSBB.Types.Animations.SRT0TextureEntry</a>
 </li>
 <li>Coefs
@@ -403,6 +405,10 @@ $(function() {
 </li>
 <li>Col3
 : <a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a07e454d56d1fdf7312bab00c1b0a561b">BrawlLib.Internal.Matrix</a>
+</li>
+<li>CollisionIndex
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_t_entry_node.html#a789d1c274807d41d800c7b609572013c">BrawlLib.SSBB.ResourceNodes.GMOTEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_v_entry_node.html#ab0d1dee8a2cca2e4a3ac0936d7cc7e75">BrawlLib.SSBB.ResourceNodes.GMOVEntryNode</a>
 </li>
 <li>CollisionMaterialID
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_entry_node.html#afb24ee9c1351c7ceb9d221c1ca7435b1">BrawlLib.SSBB.ResourceNodes.SCLAEntryNode</a>
@@ -690,6 +696,7 @@ $(function() {
 <li>CostumeID
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_difficulty_node.html#a5db3f475ce44e55de95ca158f31a8662">BrawlLib.SSBB.ResourceNodes.ClassicDifficultyNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_s_s_c_entry_node.html#a65d06df6fac96511114e366a374a4284">BrawlLib.SSBB.ResourceNodes.CSSCEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_f_g1_entry_node.html#ac764706e441a21a334f9462298594070">BrawlLib.SSBB.ResourceNodes.GFG1EntryNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_masquerade_entry_node.html#a95c8ac9104c84a1c9b278a235dcbbd68">BrawlLib.SSBB.ResourceNodes.MasqueradeEntryNode</a>
 </li>
 <li>Count

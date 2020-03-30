@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -116,44 +116,34 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        {</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            <span class="keywordtype">object</span> n = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">switch</span> (*(<span class="keywordtype">byte</span>*) addr++)</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                <span class="keywordflow">case</span> 2:</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                {</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    n = Marshal.PtrToStructure(addr, typeof(MDL0Node2Class));</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    addr += MDL0Node2Class.Size;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                }</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordtype">byte</span> oldByte = addr.Byte;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            addr += 1;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">switch</span> (oldByte)</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    n = Marshal.PtrToStructure(addr, typeof(MDL0Node2Class));</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                    addr += MDL0Node2Class.Size;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                <span class="keywordflow">case</span> 3:</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                {</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    n = <span class="keyword">new</span> MDL0Node3Class((MDL0NodeType3*) addr);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    addr += ((MDL0Node3Class) n).GetSize();</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                <span class="keywordflow">case</span> 4:</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                {</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    n = Marshal.PtrToStructure(addr, typeof(MDL0NodeType4));</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                    addr += MDL0NodeType4.Size;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    n = <span class="keyword">new</span> MDL0Node3Class((MDL0NodeType3*) addr);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                    addr += ((MDL0Node3Class) n).GetSize();</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                    n = Marshal.PtrToStructure(addr, typeof(MDL0NodeType4));</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    addr += MDL0NodeType4.Size;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                <span class="keywordflow">case</span> 5:</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                    n = Marshal.PtrToStructure(addr, typeof(MDL0NodeType5));</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                    addr += MDL0NodeType5.Size;</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                <span class="keywordflow">case</span> 5:</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                {</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                    n = Marshal.PtrToStructure(addr, typeof(MDL0NodeType5));</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                    addr += MDL0NodeType5.Size;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                }</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                <span class="keywordflow">case</span> 6:</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                    n = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    addr += 4;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            }</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="keywordflow">return</span> n;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                <span class="keywordflow">case</span> 6:</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                    addr += 4;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>

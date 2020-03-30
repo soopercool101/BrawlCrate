@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -240,14 +240,15 @@ Public Member Functions</h2></td></tr>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                FranchiseIcon icon = FranchiseIcon.Icons.Where(s =&gt; s.ID == (<span class="keywordtype">byte</span>) value).FirstOrDefault();</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0x&quot;</span> + ((byte) value).ToString(<span class="stringliteral">&quot;X2&quot;</span>) + (icon == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; - &quot;</span> + icon.Name);</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((destinationType == typeof(<span class="keywordtype">int</span>) || destinationType == typeof(<span class="keywordtype">byte</span>)) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                     value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            }</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destinationType);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">if</span> ((destinationType == typeof(<span class="keywordtype">int</span>) || destinationType == typeof(<span class="keywordtype">byte</span>)) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destinationType);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,8 +277,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        {</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(FranchiseIcon.Icons</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                                             .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                                             .ToList());</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                .ToList());</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>

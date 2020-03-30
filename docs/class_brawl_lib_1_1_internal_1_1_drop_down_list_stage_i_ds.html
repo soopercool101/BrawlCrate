@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -129,9 +129,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;        {</div>
-<div class="line"><a name="l00973"></a><span class="lineno">  973</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
-<div class="line"><a name="l00974"></a><span class="lineno">  974</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00970"></a><span class="lineno">  970</span>&#160;        {</div>
+<div class="line"><a name="l00971"></a><span class="lineno">  971</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
+<div class="line"><a name="l00972"></a><span class="lineno">  972</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,18 +174,18 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;        {</div>
-<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
-<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;            {</div>
-<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;                <span class="keywordtype">string</span> field0 = (value.ToString() ?? <span class="stringliteral">&quot;&quot;</span>).Split(<span class="charliteral">&#39; &#39;</span>)[0];</div>
-<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;                <span class="keywordtype">int</span> fromBase = field0.StartsWith(<span class="stringliteral">&quot;0x&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
-<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;                    ? 16</div>
-<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;                    : 10;</div>
-<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;                <span class="keywordflow">return</span> Convert.ToInt32(field0, fromBase);</div>
-<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;            }</div>
-<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160; </div>
-<div class="line"><a name="l00987"></a><span class="lineno">  987</span>&#160;            <span class="keywordflow">return</span> base.ConvertFrom(context, culture, value);</div>
-<div class="line"><a name="l00988"></a><span class="lineno">  988</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00975"></a><span class="lineno">  975</span>&#160;        {</div>
+<div class="line"><a name="l00976"></a><span class="lineno">  976</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
+<div class="line"><a name="l00977"></a><span class="lineno">  977</span>&#160;            {</div>
+<div class="line"><a name="l00978"></a><span class="lineno">  978</span>&#160;                <span class="keywordtype">string</span> field0 = (value.ToString() ?? <span class="stringliteral">&quot;&quot;</span>).Split(<span class="charliteral">&#39; &#39;</span>)[0];</div>
+<div class="line"><a name="l00979"></a><span class="lineno">  979</span>&#160;                <span class="keywordtype">int</span> fromBase = field0.StartsWith(<span class="stringliteral">&quot;0x&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
+<div class="line"><a name="l00980"></a><span class="lineno">  980</span>&#160;                    ? 16</div>
+<div class="line"><a name="l00981"></a><span class="lineno">  981</span>&#160;                    : 10;</div>
+<div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;                <span class="keywordflow">return</span> Convert.ToInt32(field0, fromBase);</div>
+<div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;            }</div>
+<div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160; </div>
+<div class="line"><a name="l00985"></a><span class="lineno">  985</span>&#160;            <span class="keywordflow">return</span> base.ConvertFrom(context, culture, value);</div>
+<div class="line"><a name="l00986"></a><span class="lineno">  986</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -234,15 +234,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;        {</div>
-<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp; value.GetType() == typeof(<span class="keywordtype">int</span>))</div>
-<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;            {</div>
-<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;                <a class="code" href="namespace_brawl_lib.html">BrawlLib</a>.<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b.html">SSBB</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a> stage = <a class="code" href="namespace_brawl_lib.html">BrawlLib</a>.<a class="code" href="namespace_brawl_lib_1_1_s_s_b_b.html">SSBB</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a>.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ab07d075440d932e467cdf7691a5be6b3">Stages</a>.Where(s =&gt; s.ID == (<span class="keywordtype">int</span>) value).FirstOrDefault();</div>
-<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0x&quot;</span> + ((int) value).<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#acb86abdb931d616c82223892858592bc">ToString</a>(<span class="stringliteral">&quot;X2&quot;</span>) + (stage == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; - &quot;</span> + stage.Name);</div>
-<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;            }</div>
-<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160; </div>
-<div class="line"><a name="l00999"></a><span class="lineno">  999</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destinationType);</div>
-<div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00990"></a><span class="lineno">  990</span>&#160;        {</div>
+<div class="line"><a name="l00991"></a><span class="lineno">  991</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp; value.GetType() == typeof(<span class="keywordtype">int</span>))</div>
+<div class="line"><a name="l00992"></a><span class="lineno">  992</span>&#160;            {</div>
+<div class="line"><a name="l00993"></a><span class="lineno">  993</span>&#160;                SSBB.Stage stage = SSBB.Stage.Stages.Where(s =&gt; s.ID == (<span class="keywordtype">int</span>) value).FirstOrDefault();</div>
+<div class="line"><a name="l00994"></a><span class="lineno">  994</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0x&quot;</span> + ((int) value).ToString(<span class="stringliteral">&quot;X2&quot;</span>) + (stage == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; - &quot;</span> + stage.Name);</div>
+<div class="line"><a name="l00995"></a><span class="lineno">  995</span>&#160;            }</div>
+<div class="line"><a name="l00996"></a><span class="lineno">  996</span>&#160; </div>
+<div class="line"><a name="l00997"></a><span class="lineno">  997</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destinationType);</div>
+<div class="line"><a name="l00998"></a><span class="lineno">  998</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -269,11 +269,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;        {</div>
-<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(<a class="code" href="namespace_brawl_lib.html">BrawlLib</a></div>
-<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;                                                .SSBB.Stage.Stages</div>
-<div class="line"><a name="l00968"></a><span class="lineno">  968</span>&#160;                                                .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name).ToList());</div>
-<div class="line"><a name="l00969"></a><span class="lineno">  969</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00964"></a><span class="lineno">  964</span>&#160;        {</div>
+<div class="line"><a name="l00965"></a><span class="lineno">  965</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(SSBB.Stage.Stages</div>
+<div class="line"><a name="l00966"></a><span class="lineno">  966</span>&#160;                .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name).ToList());</div>
+<div class="line"><a name="l00967"></a><span class="lineno">  967</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -300,9 +299,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;        {</div>
-<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00962"></a><span class="lineno">  962</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00959"></a><span class="lineno">  959</span>&#160;        {</div>
+<div class="line"><a name="l00960"></a><span class="lineno">  960</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00961"></a><span class="lineno">  961</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -310,11 +309,6 @@ Public Member Functions</h2></td></tr>
 <li>BrawlLib/Internal/DropDownLists.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> Stage.cs:6</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_html"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b.html">BrawlLib.SSBB</a></div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:5</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_acb86abdb931d616c82223892858592bc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#acb86abdb931d616c82223892858592bc">BrawlLib.SSBB.Stage.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdef"><b>Definition:</b> Stage.cs:152</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_ab07d075440d932e467cdf7691a5be6b3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ab07d075440d932e467cdf7691a5be6b3">BrawlLib.SSBB.Stage.Stages</a></div><div class="ttdeci">static readonly Stage[] Stages</div><div class="ttdef"><b>Definition:</b> Stage.cs:199</div></div>
-<div class="ttc" id="anamespace_brawl_lib_html"><div class="ttname"><a href="namespace_brawl_lib.html">BrawlLib</a></div><div class="ttdef"><b>Definition:</b> PerSessionSettings.cs:1</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

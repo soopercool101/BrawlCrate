@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -363,10 +363,10 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordtype">string</span> resourceName = <span class="stringliteral">&quot;BrawlLib.CustomLists.&quot;</span> +</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                      (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                             .Equals(<span class="stringliteral">&quot;en&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                          .Equals(<span class="stringliteral">&quot;en&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                          ? <span class="stringliteral">&quot;&quot;</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                          : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                                  .Substring(0, 2).ToLower() + <span class="charliteral">&#39;.&#39;</span>) + <span class="stringliteral">&quot;FighterList.txt&quot;</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                              .Substring(0, 2).ToLower() + <span class="charliteral">&#39;.&#39;</span>) + <span class="stringliteral">&quot;FighterList.txt&quot;</span>;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordtype">string</span> listDefault = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keyword">using</span> (Stream stream = assembly.GetManifestResourceStream(resourceName))</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                {</div>
@@ -650,7 +650,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        !s.ToUpper().Substring(<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#aa3778b0050e1c1e62aeb8e3aee51d63c">flagIndex</a>).StartsWith(flagToIgnore))</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="keywordtype">string</span> intName = s.Substring(<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afb0dcb910e235cdb762e82e010019ca4">internalNameIndex</a>, <a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a71ddb7dc0ef6e292f0961e7d8f98beee">nameIndex</a> - <a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afb0dcb910e235cdb762e82e010019ca4">internalNameIndex</a> - 1)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                          .Trim(<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">trimChars</a>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                            .Trim(<a class="code" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">trimChars</a>);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        <span class="keywordflow">if</span> (intName.Length &gt; 0)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                            <span class="keywordflow">return</span> intName;</div>

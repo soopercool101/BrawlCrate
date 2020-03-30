@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -1324,7 +1324,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                        <span class="keywordflow">if</span> (R != G || G != B)</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;                        {</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                            <span class="keywordflow">throw</span> <span class="keyword">new</span> NonMonochromeImageException(</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                                <span class="stringliteral">&quot;Cannot swap alpha and value channels on a monochrome image.&quot;</span>);</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                                <span class="stringliteral">&quot;Cannot swap alpha and value channels on a non-monochrome image.&quot;</span>);</div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;                        }</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                        outPtr[i] = (uint) ((R &lt;&lt; 24) | (A &lt;&lt; 16) | (A &lt;&lt; 8) | A);</div>
@@ -1350,7 +1350,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;                        <span class="keywordflow">if</span> (c.R != c.G || c.G != c.B)</div>
 <div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                        {</div>
 <div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                            <span class="keywordflow">throw</span> <span class="keyword">new</span> NonMonochromeImageException(</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                                <span class="stringliteral">&quot;Cannot swap alpha and value channels on a monochrome image.&quot;</span>);</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                                <span class="stringliteral">&quot;Cannot swap alpha and value channels on a non-monochrome image.&quot;</span>);</div>
 <div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;                        }</div>
 <div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160; </div>
 <div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;                        c = <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels.html#a6d5b7585874e984d83c5cd31fb3c8ab8acb5feb1b7314637725a2e73bdc9f7295">Color</a>.FromArgb(c.R, c.A, c.A, c.A);</div>

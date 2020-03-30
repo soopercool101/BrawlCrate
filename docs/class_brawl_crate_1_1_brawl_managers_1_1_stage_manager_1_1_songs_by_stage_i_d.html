@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -210,23 +210,23 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                    <span class="stringliteral">&quot;A10&quot;</span></div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                };</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            }</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stageId == 5 &amp;&amp; filename.StartsWith(<span class="stringliteral">&quot;stgmariopast_01&quot;</span>))</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            {</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span>[]</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                {</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                    <span class="stringliteral">&quot;A02&quot;</span>,</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                    <span class="stringliteral">&quot;A03&quot;</span>,</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                    <span class="stringliteral">&quot;A04&quot;</span></div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                };</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            }</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d.html#ab897db0d8bf2cfc54baf797579839549">dict</a>.TryGetValue(stageId, out <span class="keywordtype">string</span>[] ret))</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            {</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;                <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            }</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            {</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <span class="keywordtype">string</span>[0];</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            }</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160; </div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            <span class="keywordflow">if</span> (stageId == 5 &amp;&amp; filename.StartsWith(<span class="stringliteral">&quot;stgmariopast_01&quot;</span>))</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span>[]</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                {</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                    <span class="stringliteral">&quot;A02&quot;</span>,</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                    <span class="stringliteral">&quot;A03&quot;</span>,</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                    <span class="stringliteral">&quot;A04&quot;</span></div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;                };</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            }</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160; </div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d.html#ab897db0d8bf2cfc54baf797579839549">dict</a>.TryGetValue(stageId, out <span class="keywordtype">string</span>[] ret))</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;            {</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;                <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            }</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <span class="keywordtype">string</span>[0];</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>

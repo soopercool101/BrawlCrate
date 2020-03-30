@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -186,16 +186,16 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Calculates the MD5 sum of the data in a byte array. </p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordtype">byte</span>[] hash = <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a7aa146b93e1c3fc9b714bd9ba11f2f95">md5provider</a>.ComputeHash(data);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">foreach</span> (<span class="keywordtype">byte</span> b <span class="keywordflow">in</span> hash)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                sb.Append(<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.ToString(<span class="stringliteral">&quot;x2&quot;</span>).ToLower());</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> sb.ToString();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordtype">byte</span>[] hash = <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a7aa146b93e1c3fc9b714bd9ba11f2f95">md5provider</a>.ComputeHash(data);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">foreach</span> (<span class="keywordtype">byte</span> b <span class="keywordflow">in</span> hash)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                sb.Append(<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.ToString(<span class="stringliteral">&quot;x2&quot;</span>).ToLower());</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">return</span> sb.ToString();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -229,11 +229,9 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a8c837a6a38991fdb89d79ef7499bfe3b">MD5Sum</a>(File.ReadAllBytes(path));</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;File not found&quot;</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">return</span> <span class="stringliteral">&quot;File not found&quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>

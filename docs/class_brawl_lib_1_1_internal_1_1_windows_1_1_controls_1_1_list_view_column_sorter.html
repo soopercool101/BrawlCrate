@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -218,32 +218,32 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> &gt;= 4)</div>
 <div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;            {</div>
 <div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                compareResult = <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a>.Compare(</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                    <span class="keywordtype">int</span>.Parse(listviewX.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2), System.Globalization.NumberStyles.HexNumber),</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                    <span class="keywordtype">int</span>.Parse(listviewY.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2),</div>
-<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                        System.Globalization.NumberStyles.HexNumber));</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;            }</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            {</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;                compareResult = <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a>.Compare(listviewX.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text,</div>
-<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                    listviewY.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text);</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;            }</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160; </div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;            <span class="comment">// Calculate correct return value based on object comparison</span></div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> == SortOrder.Ascending)</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;            {</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;                <span class="comment">// Ascending sort is selected, return normal result of compare operation</span></div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;                <span class="keywordflow">return</span> compareResult;</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;            }</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> == SortOrder.Descending)</div>
-<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;            {</div>
-<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;                <span class="comment">// Descending sort is selected, return negative result of compare operation</span></div>
-<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;                <span class="keywordflow">return</span> -compareResult;</div>
-<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;            }</div>
-<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            {</div>
-<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;                <span class="comment">// Return &#39;0&#39; to indicate they are equal</span></div>
-<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;                <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            }</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                    <span class="keywordtype">int</span>.Parse(listviewX.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2),</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                        System.Globalization.NumberStyles.HexNumber),</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                    <span class="keywordtype">int</span>.Parse(listviewY.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2),</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                        System.Globalization.NumberStyles.HexNumber));</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;            }</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;            {</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;                compareResult = <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a>.Compare(listviewX.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text,</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                    listviewY.SubItems[<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text);</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;            }</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160; </div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;            <span class="comment">// Calculate correct return value based on object comparison</span></div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> == SortOrder.Ascending)</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;            {</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;                <span class="comment">// Ascending sort is selected, return normal result of compare operation</span></div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;                <span class="keywordflow">return</span> compareResult;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            }</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160; </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> == SortOrder.Descending)</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;            {</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;                <span class="comment">// Descending sort is selected, return negative result of compare operation</span></div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;                <span class="keywordflow">return</span> -compareResult;</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;            }</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160; </div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;            <span class="comment">// Return &#39;0&#39; to indicate they are equal</span></div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>

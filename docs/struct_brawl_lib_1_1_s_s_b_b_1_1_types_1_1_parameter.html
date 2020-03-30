@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -105,6 +105,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:ae57567acf277a328959413f286e27108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba081dcbdb3c24b97888bacbcfb54cca"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#aba081dcbdb3c24b97888bacbcfb54cca">TagADPM</a> = &quot;ADPM&quot;</td></tr>
 <tr class="separator:aba081dcbdb3c24b97888bacbcfb54cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e3a5a46926a1007055d499cf1acfa7c"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a7e3a5a46926a1007055d499cf1acfa7c">TagMVPM</a> = &quot;MVPM&quot;</td></tr>
+<tr class="separator:a7e3a5a46926a1007055d499cf1acfa7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeabaebdb697a8463f9166bb8c8289fce"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#aeabaebdb697a8463f9166bb8c8289fce">Size</a> = 0x10</td></tr>
 <tr class="separator:aeabaebdb697a8463f9166bb8c8289fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -147,11 +149,11 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a317e617390842e3a1a4dcf916d4921b5">_tag</a> = tag;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#afa6a4b4d69502c9f737359a67e60c417">_count</a> = count;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a04e033f1f02310c35814f5acb726f21e">pad0</a> = <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a67ef53cc2bcc8fbdc7348e74b5833528">pad1</a> = 0;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a317e617390842e3a1a4dcf916d4921b5">_tag</a> = tag;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#afa6a4b4d69502c9f737359a67e60c417">_count</a> = count;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a04e033f1f02310c35814f5acb726f21e">pad0</a> = <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a67ef53cc2bcc8fbdc7348e74b5833528">pad1</a> = 0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -179,9 +181,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">return</span> *((<a class="code" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">Address</a> + 4 + index);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">return</span> *((<a class="code" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">Address</a> + 4 + index);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -286,6 +288,28 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a7e3a5a46926a1007055d499cf1acfa7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e3a5a46926a1007055d499cf1acfa7c">&#9670;&nbsp;</a></span>TagMVPM</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string BrawlLib.SSBB.Types.Parameter.TagMVPM = &quot;MVPM&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae57567acf277a328959413f286e27108"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae57567acf277a328959413f286e27108">&#9670;&nbsp;</a></span>TagSTPM</h2>
 
@@ -342,28 +366,28 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <span class="keywordflow">return</span> ptr;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>BrawlLib/SSBB/Types/STPM.cs</li>
+<li>BrawlLib/SSBB/Types/Parameters.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_a317e617390842e3a1a4dcf916d4921b5"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a317e617390842e3a1a4dcf916d4921b5">BrawlLib.SSBB.Types.Parameter._tag</a></div><div class="ttdeci">BinTag _tag</div><div class="ttdef"><b>Definition:</b> STPM.cs:13</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_afa6a4b4d69502c9f737359a67e60c417"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#afa6a4b4d69502c9f737359a67e60c417">BrawlLib.SSBB.Types.Parameter._count</a></div><div class="ttdeci">bint _count</div><div class="ttdef"><b>Definition:</b> STPM.cs:14</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_a67ef53cc2bcc8fbdc7348e74b5833528"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a67ef53cc2bcc8fbdc7348e74b5833528">BrawlLib.SSBB.Types.Parameter.pad1</a></div><div class="ttdeci">int pad1</div><div class="ttdef"><b>Definition:</b> STPM.cs:16</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_a317e617390842e3a1a4dcf916d4921b5"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a317e617390842e3a1a4dcf916d4921b5">BrawlLib.SSBB.Types.Parameter._tag</a></div><div class="ttdeci">BinTag _tag</div><div class="ttdef"><b>Definition:</b> Parameters.cs:14</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_afa6a4b4d69502c9f737359a67e60c417"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#afa6a4b4d69502c9f737359a67e60c417">BrawlLib.SSBB.Types.Parameter._count</a></div><div class="ttdeci">bint _count</div><div class="ttdef"><b>Definition:</b> Parameters.cs:15</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_a67ef53cc2bcc8fbdc7348e74b5833528"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a67ef53cc2bcc8fbdc7348e74b5833528">BrawlLib.SSBB.Types.Parameter.pad1</a></div><div class="ttdeci">int pad1</div><div class="ttdef"><b>Definition:</b> Parameters.cs:17</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:58</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_acf7a2576a98248c9799348fbae532d9e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">BrawlLib.SSBB.Types.Parameter.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> STPM.cs:33</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_a04e033f1f02310c35814f5acb726f21e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a04e033f1f02310c35814f5acb726f21e">BrawlLib.SSBB.Types.Parameter.pad0</a></div><div class="ttdeci">int pad0</div><div class="ttdef"><b>Definition:</b> STPM.cs:15</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_acf7a2576a98248c9799348fbae532d9e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">BrawlLib.SSBB.Types.Parameter.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> Parameters.cs:34</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_a04e033f1f02310c35814f5acb726f21e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a04e033f1f02310c35814f5acb726f21e">BrawlLib.SSBB.Types.Parameter.pad0</a></div><div class="ttdeci">int pad0</div><div class="ttdef"><b>Definition:</b> Parameters.cs:16</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

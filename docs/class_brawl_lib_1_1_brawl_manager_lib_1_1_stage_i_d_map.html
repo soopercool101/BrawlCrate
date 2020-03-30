@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -178,24 +178,22 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (stageID &gt;= 0x40)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;custom&quot;</span> + (stageID - 0x3F).ToString(<span class="stringliteral">&quot;X2&quot;</span>);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                IEnumerable&lt;string&gt; q = from s in <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a8dcc65b61c819ff5cb170c3855139db3">Stages</a></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                        where s.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a18bab9734d34ced01749d0fab99d53c3">ID</a> == stageID</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                        select s.PacBasename;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">if</span> (!q.Any())</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (stageID &gt;= 0x40)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;custom&quot;</span> + (stageID - 0x3F).ToString(<span class="stringliteral">&quot;X2&quot;</span>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            IEnumerable&lt;string&gt; q = from s in <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a8dcc65b61c819ff5cb170c3855139db3">Stages</a></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                    where s.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a18bab9734d34ced01749d0fab99d53c3">ID</a> == stageID</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                    select s.PacBasename;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">if</span> (!q.Any())</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">return</span> q.First();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">return</span> q.First();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -280,39 +278,37 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordtype">string</span> asl_append = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">if</span> (differentForAlternateStage)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordtype">string</span> lastsix = (<span class="stringliteral">&quot;++++++&quot;</span> + filename).Substring(filename.Length, 6);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">if</span> (lastsix[0] == <span class="charliteral">&#39;_&#39;</span>)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    asl_append = <span class="stringliteral">&quot;_&quot;</span> + lastsix[1];</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">if</span> (filename.StartsWith(<span class="stringliteral">&quot;STGCUSTOM&quot;</span>, StringComparison.InvariantCultureIgnoreCase))</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;st_custom&quot;</span> + filename.Substring(9, 2) + asl_append + <span class="stringliteral">&quot;.rel&quot;</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                IEnumerable&lt;string&gt; q = from s in <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a8dcc65b61c819ff5cb170c3855139db3">Stages</a></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                        where s.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ae2623e9f4fda68f2d309ee68873b36ae">ContainsPac</a>(filename)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                        select s.RelName.Replace(<span class="stringliteral">&quot;.rel&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">if</span> (q.Count() &gt; 1)</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                    Console.WriteLine(<span class="stringliteral">&quot;More than one stage matches the search pattern: &quot;</span> + filename);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (q.Count() &lt; 1)</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                    Console.WriteLine(<span class="stringliteral">&quot;No stage matches the search pattern: &quot;</span> + filename);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;none&quot;</span>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                }</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">return</span> q.First() + asl_append + <span class="stringliteral">&quot;.rel&quot;</span>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordtype">string</span> asl_append = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span> (differentForAlternateStage)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordtype">string</span> lastsix = (<span class="stringliteral">&quot;++++++&quot;</span> + filename).Substring(filename.Length, 6);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">if</span> (lastsix[0] == <span class="charliteral">&#39;_&#39;</span>)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    asl_append = <span class="stringliteral">&quot;_&quot;</span> + lastsix[1];</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (filename.StartsWith(<span class="stringliteral">&quot;STGCUSTOM&quot;</span>, StringComparison.InvariantCultureIgnoreCase))</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;st_custom&quot;</span> + filename.Substring(9, 2) + asl_append + <span class="stringliteral">&quot;.rel&quot;</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            IEnumerable&lt;string&gt; q = from s in <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a8dcc65b61c819ff5cb170c3855139db3">Stages</a></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                    where s.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ae2623e9f4fda68f2d309ee68873b36ae">ContainsPac</a>(filename)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                    select s.RelName.Replace(<span class="stringliteral">&quot;.rel&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> (q.Count() &gt; 1)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                Console.WriteLine(<span class="stringliteral">&quot;More than one stage matches the search pattern: &quot;</span> + filename);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (q.Count() &lt; 1)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                Console.WriteLine(<span class="stringliteral">&quot;No stage matches the search pattern: &quot;</span> + filename);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;none&quot;</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">return</span> q.First() + asl_append + <span class="stringliteral">&quot;.rel&quot;</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -339,19 +335,19 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordtype">int</span> index = -1;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">sc_selcharacter2_icon_from_sss3_index</a>.Length; i++)</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">sc_selcharacter2_icon_from_sss3_index</a>[i] == selcharacter2Icon)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    index = i;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> index;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordtype">int</span> index = -1;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">sc_selcharacter2_icon_from_sss3_index</a>.Length; i++)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">sc_selcharacter2_icon_from_sss3_index</a>[i] == selcharacter2Icon)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    index = i;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> index;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -394,17 +390,18 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    Console.WriteLine(<span class="stringliteral">&quot;More than one stage matches the search pattern: &quot;</span> + filename);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    <span class="keywordflow">return</span> q.First();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (q.Count() &lt; 1)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    Console.WriteLine(<span class="stringliteral">&quot;No stage matches the search pattern: &quot;</span> + filename);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                stageID = q.First();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> stageID;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (q.Count() &lt; 1)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    Console.WriteLine(<span class="stringliteral">&quot;No stage matches the search pattern: &quot;</span> + filename);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                stageID = q.First();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> stageID;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -482,13 +479,13 @@ Static Private Attributes</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_a7948d4fd036a23512e6ba1411294f927"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7948d4fd036a23512e6ba1411294f927">BrawlLib.BrawlManagerLib.StageIDMap.PacBasenameForStageID</a></div><div class="ttdeci">static string PacBasenameForStageID(int stageID)</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:85</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_a7948d4fd036a23512e6ba1411294f927"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7948d4fd036a23512e6ba1411294f927">BrawlLib.BrawlManagerLib.StageIDMap.PacBasenameForStageID</a></div><div class="ttdeci">static string PacBasenameForStageID(int stageID)</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:86</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_a8dcc65b61c819ff5cb170c3855139db3"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a8dcc65b61c819ff5cb170c3855139db3">BrawlLib.BrawlManagerLib.StageIDMap.Stages</a></div><div class="ttdeci">static Stage[] Stages</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:12</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_ae2623e9f4fda68f2d309ee68873b36ae"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ae2623e9f4fda68f2d309ee68873b36ae">BrawlLib.SSBB.Stage.ContainsPac</a></div><div class="ttdeci">bool ContainsPac(string filename)</div><div class="ttdef"><b>Definition:</b> Stage.cs:71</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_a7a0952c599b363d3d4cfe0316747bce5"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7a0952c599b363d3d4cfe0316747bce5">BrawlLib.BrawlManagerLib.StageIDMap.StagesByID</a></div><div class="ttdeci">static ReadOnlyCollection&lt; KeyValuePair&lt; byte, string &gt; &gt; StagesByID</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:13</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset_html_a55be3ae315138af545e27d6ed8cee125"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#a55be3ae315138af545e27d6ed8cee125">BrawlLib.BrawlManagerLib.GCT.ReadWrite.CustomSSSCodeset.StageIDsInOrder</a></div><div class="ttdeci">byte[] StageIDsInOrder</div><div class="ttdef"><b>Definition:</b> CustomSSSCodeset.cs:180</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_a18bab9734d34ced01749d0fab99d53c3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#a18bab9734d34ced01749d0fab99d53c3">BrawlLib.SSBB.Stage.ID</a></div><div class="ttdeci">byte ID</div><div class="ttdoc">The stage ID, as used by the module files and the Custom SSS code.</div><div class="ttdef"><b>Definition:</b> Stage.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_ad82a1c746243d81a28cdad3a786ab720"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">BrawlLib.BrawlManagerLib.StageIDMap.sc_selcharacter2_icon_from_sss3_index</a></div><div class="ttdeci">static int[] sc_selcharacter2_icon_from_sss3_index</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:143</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_ad82a1c746243d81a28cdad3a786ab720"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">BrawlLib.BrawlManagerLib.StageIDMap.sc_selcharacter2_icon_from_sss3_index</a></div><div class="ttdeci">static int[] sc_selcharacter2_icon_from_sss3_index</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:140</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

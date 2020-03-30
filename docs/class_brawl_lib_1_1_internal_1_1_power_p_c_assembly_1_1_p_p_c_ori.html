@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -165,15 +165,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;                                    : base(value)</div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;        {</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;ori&quot;</span>);</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;xori&quot;</span>);</div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;nop&quot;</span>);</div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 21, 0x1F));     <span class="comment">//  [0] Left Register</span></div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 16, 0x1F));     <span class="comment">//  [1] Right Register</span></div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.VAL, 0, 0x7FFF, 0x8000)); <span class="comment">//  [2] Immediate Value</span></div>
-<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;                                    : base(value)</div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;        {</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;ori&quot;</span>);</div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;xori&quot;</span>);</div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>.Add(<span class="stringliteral">&quot;nop&quot;</span>);</div>
+<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 21, 0x1F));     <span class="comment">//  [0] Left Register</span></div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.REGISTER, 16, 0x1F));     <span class="comment">//  [1] Right Register</span></div>
+<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;            <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>.Add(<span class="keyword">new</span> PPCOperand(<span class="keyword">this</span>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">OperandType</a>.VAL, 0, 0x7FFF, 0x8000)); <span class="comment">//  [2] Immediate Value</span></div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,14 +202,14 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#acec596c040bde296bf60edda50e87cc0">BrawlLib.Internal.PowerPCAssembly.PPCOpCode</a>.</p>
-<div class="fragment"><div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;        {</div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">Exclusive</a> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[0].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[1].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[2].Value == 0)</div>
-<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;            {</div>
-<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;            }</div>
-<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160; </div>
-<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;            <span class="keywordflow">return</span> base.GetFormattedOperands();</div>
-<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;        {</div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">Exclusive</a> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[0].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[1].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[2].Value == 0)</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;            {</div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;            }</div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160; </div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;            <span class="keywordflow">return</span> base.GetFormattedOperands();</div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -237,30 +237,30 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a1337b2b41a713b5a623973b2eb4f7995">BrawlLib.Internal.PowerPCAssembly.PPCOpCode</a>.</p>
-<div class="fragment"><div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;        {</div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">Exclusive</a> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[0].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[1].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[2].Value == 0)</div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;            {</div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[2];</div>
-<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;            }</div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160; </div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;            <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="fragment"><div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;        {</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">Exclusive</a> &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[0].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[1].Value == 0 &amp;&amp; <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a>[2].Value == 0)</div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;            {</div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[2];</div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;            }</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160; </div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;            <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160; </div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">Exclusive</a>)</div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;            {</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;                name = <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[0];</div>
+<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;            }</div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;            {</div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;                name = <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[1];</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;            }</div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160; </div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#ae5d63ae3368a0dd4b1417d2722ac521c">Shifted</a>)</div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;            {</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;                name += <span class="stringliteral">&quot;s&quot;</span>;</div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;            }</div>
 <div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160; </div>
-<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">Exclusive</a>)</div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;            {</div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;                name = <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[0];</div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;            }</div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;            {</div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;                name = <a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a>[1];</div>
-<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;            }</div>
-<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160; </div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#ae5d63ae3368a0dd4b1417d2722ac521c">Shifted</a>)</div>
-<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;            {</div>
-<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;                name += <span class="stringliteral">&quot;s&quot;</span>;</div>
-<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;            }</div>
-<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160; </div>
-<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;            <span class="keywordflow">return</span> name;</div>
-<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;        }</div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;            <span class="keywordflow">return</span> name;</div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -314,10 +314,10 @@ Additional Inherited Members</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a25006d052f28cb48b4eff5c2c6c96540"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._operands</a></div><div class="ttdeci">List&lt; PPCOperand &gt; _operands</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:13</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori_html_ae5d63ae3368a0dd4b1417d2722ac521c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#ae5d63ae3368a0dd4b1417d2722ac521c">BrawlLib.Internal.PowerPCAssembly.PPCOri.Shifted</a></div><div class="ttdeci">bool Shifted</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:1213</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori_html_ae5d63ae3368a0dd4b1417d2722ac521c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#ae5d63ae3368a0dd4b1417d2722ac521c">BrawlLib.Internal.PowerPCAssembly.PPCOri.Shifted</a></div><div class="ttdeci">bool Shifted</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:1199</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a614e7b0f9a08a82be3d0319b3ef4c66f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._names</a></div><div class="ttdeci">List&lt; string &gt; _names</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:12</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ad6e0e3039e7bb1238a1d6d757f0893b0"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0">BrawlLib.Internal.PowerPCAssembly.OperandType</a></div><div class="ttdeci">OperandType</div><div class="ttdef"><b>Definition:</b> OperandType.cs:3</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori_html_a1b0263785eaf0770a57d753d4b8a79c1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">BrawlLib.Internal.PowerPCAssembly.PPCOri.Exclusive</a></div><div class="ttdeci">bool Exclusive</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:1215</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori_html_a1b0263785eaf0770a57d753d4b8a79c1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_ori.html#a1b0263785eaf0770a57d753d4b8a79c1">BrawlLib.Internal.PowerPCAssembly.PPCOri.Exclusive</a></div><div class="ttdeci">bool Exclusive</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:1201</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -606,15 +606,13 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                    <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#abfa9c803de6d29c4dfb2cbd13fe06165">DataAfter</a> = <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#abfa9c803de6d29c4dfb2cbd13fe06165">DataAfter</a>.Take(i).ToArray();</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                {</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                    <span class="keywordflow">if</span> (ByteUtilities.ByteArrayEquals(<a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#abfa9c803de6d29c4dfb2cbd13fe06165">DataAfter</a>, i, <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#a3de9ff586232da25993458fa39879eaf">gctfooter</a>, 0, 8))</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                    {</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                        footer_found = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    }</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            }</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                <span class="keywordflow">if</span> (ByteUtilities.ByteArrayEquals(<a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#abfa9c803de6d29c4dfb2cbd13fe06165">DataAfter</a>, i, <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#a3de9ff586232da25993458fa39879eaf">gctfooter</a>, 0, 8))</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                    footer_found = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -717,10 +715,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        {</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;Custom SSS: {0}/{1} stages, from pool of {2} pairs&quot;</span>,</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#af0a16dfeba867b8696ce9d81a92855b3">sss1</a>.Length, <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#adc58f2558934b0f7e3e3e82b172f3c18">sss2</a>.Length, <a class="code" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#acd9527b6f92eb98a299fc87326466d60">sss3</a>.Length / 2);</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="keywordflow">return</span> $<span class="stringliteral">&quot;Custom SSS: {sss1.Length}/{sss2.Length} stages, from pool of {sss3.Length / 2} pairs&quot;</span>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>

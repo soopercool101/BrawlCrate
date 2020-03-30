@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -117,8 +117,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a0a3dc280f531d979b62c777052595439"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a513cacda392512181b523e35a56261ef"><td class="memItemLeft" align="right" valign="top">readonly Dictionary&lt; string, <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler_1_1_text_data.html">TextData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a513cacda392512181b523e35a56261ef">_text</a> = new Dictionary&lt;string, <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler_1_1_text_data.html">TextData</a>&gt;()</td></tr>
 <tr class="separator:a513cacda392512181b523e35a56261ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b84cfd98f6462737d1b28f898cf7068"><td class="memItemLeft" align="right" valign="top">System.Drawing.Size&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a></td></tr>
-<tr class="separator:a1b84cfd98f6462737d1b28f898cf7068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac255c229aa411ecabba86841a411ebb2"><td class="memItemLeft" align="right" valign="top">Size&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a></td></tr>
+<tr class="separator:ac255c229aa411ecabba86841a411ebb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b89c5a90fbb36bd683594e21f69082b"><td class="memItemLeft" align="right" valign="top">Bitmap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a3b89c5a90fbb36bd683594e21f69082b">_bitmap</a></td></tr>
 <tr class="separator:a3b89c5a90fbb36bd683594e21f69082b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4491a4cea495d1685033e90cfc4a3b52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a4491a4cea495d1685033e90cfc4a3b52">_texId</a> = -1</td></tr>
@@ -218,11 +218,11 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            GL.TexEnv(TextureEnvTarget.TextureEnv, TextureEnvParameter.TextureEnvMode, (<span class="keywordtype">float</span>) TextureEnvMode.Replace);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a> != <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a0a3dc280f531d979b62c777052595439">_viewport</a>.<a class="code" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad427e3f5069e3725719307d7ffd30a6a">Region</a>.Size ||</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a> != <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a0a3dc280f531d979b62c777052595439">_viewport</a>.<a class="code" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad427e3f5069e3725719307d7ffd30a6a">Region</a>.Size ||</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a0a3dc280f531d979b62c777052595439">_viewport</a>.<a class="code" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad427e3f5069e3725719307d7ffd30a6a">Region</a>.Size.Width == 0 ||</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a0a3dc280f531d979b62c777052595439">_viewport</a>.<a class="code" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad427e3f5069e3725719307d7ffd30a6a">Region</a>.Size.Height == 0)</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a> = <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a0a3dc280f531d979b62c777052595439">_viewport</a>.<a class="code" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad427e3f5069e3725719307d7ffd30a6a">Region</a>.Size;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a> = <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a0a3dc280f531d979b62c777052595439">_viewport</a>.<a class="code" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad427e3f5069e3725719307d7ffd30a6a">Region</a>.Size;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a3b89c5a90fbb36bd683594e21f69082b">_bitmap</a>?.Dispose();</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
@@ -232,13 +232,13 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a4491a4cea495d1685033e90cfc4a3b52">_texId</a> = -1;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Width == 0 || <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Height == 0)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Width == 0 || <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Height == 0)</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="comment">//Create a texture over the whole model panel</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a3b89c5a90fbb36bd683594e21f69082b">_bitmap</a> = <span class="keyword">new</span> Bitmap(<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Width, <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Height);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a3b89c5a90fbb36bd683594e21f69082b">_bitmap</a> = <span class="keyword">new</span> Bitmap(<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Width, <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Height);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a3b89c5a90fbb36bd683594e21f69082b">_bitmap</a>.MakeTransparent();</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
@@ -287,13 +287,13 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            GL.Vertex2(0.0f, 0.0f);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            GL.TexCoord2(1.0f, 0.0f);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            GL.Vertex2(<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Width, 0.0f);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            GL.Vertex2(<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Width, 0.0f);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            GL.TexCoord2(1.0f, 1.0f);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            GL.Vertex2(<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Width, <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Height);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            GL.Vertex2(<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Width, <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Height);</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            GL.TexCoord2(0.0f, 1.0f);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            GL.Vertex2(0.0f, <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">_size</a>.Height);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            GL.Vertex2(0.0f, <a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">_size</a>.Height);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            GL.End();</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
@@ -348,8 +348,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1b84cfd98f6462737d1b28f898cf7068"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b84cfd98f6462737d1b28f898cf7068">&#9670;&nbsp;</a></span>_size</h2>
+<a id="ac255c229aa411ecabba86841a411ebb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac255c229aa411ecabba86841a411ebb2">&#9670;&nbsp;</a></span>_size</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -358,7 +358,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">System.Drawing.Size BrawlLib.Internal.Windows.Controls.Model_Panel.ScreenTextHandler._size</td>
+          <td class="memname">Size BrawlLib.Internal.Windows.Controls.Model_Panel.ScreenTextHandler._size</td>
         </tr>
       </table>
   </td>
@@ -510,7 +510,6 @@ Static Private Attributes</h2></td></tr>
 <li>BrawlLib/Internal/Windows/Controls/Model Panel/ScreenTextHandler.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler_html_a1b84cfd98f6462737d1b28f898cf7068"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a1b84cfd98f6462737d1b28f898cf7068">BrawlLib.Internal.Windows.Controls.Model_Panel.ScreenTextHandler._size</a></div><div class="ttdeci">System.Drawing.Size _size</div><div class="ttdef"><b>Definition:</b> ScreenTextHandler.cs:23</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler_html_a4491a4cea495d1685033e90cfc4a3b52"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a4491a4cea495d1685033e90cfc4a3b52">BrawlLib.Internal.Windows.Controls.Model_Panel.ScreenTextHandler._texId</a></div><div class="ttdeci">int _texId</div><div class="ttdef"><b>Definition:</b> ScreenTextHandler.cs:25</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport_html_a68d75f2b3fefa06049f378dc77b1f5bb"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#a68d75f2b3fefa06049f378dc77b1f5bb">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.Width</a></div><div class="ttdeci">int Width</div><div class="ttdef"><b>Definition:</b> modelpanelviewport.cs:187</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler_html_af7cd503cc11401bec51f4caa07e015cd"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#af7cd503cc11401bec51f4caa07e015cd">BrawlLib.Internal.Windows.Controls.Model_Panel.ScreenTextHandler._textFont</a></div><div class="ttdeci">static readonly Font _textFont</div><div class="ttdef"><b>Definition:</b> ScreenTextHandler.cs:18</div></div>
@@ -520,6 +519,7 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport_html_a42445a577faf8b39e71a817572623744"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#a42445a577faf8b39e71a817572623744">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.Height</a></div><div class="ttdeci">int Height</div><div class="ttdef"><b>Definition:</b> modelpanelviewport.cs:188</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler_html_a3b89c5a90fbb36bd683594e21f69082b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#a3b89c5a90fbb36bd683594e21f69082b">BrawlLib.Internal.Windows.Controls.Model_Panel.ScreenTextHandler._bitmap</a></div><div class="ttdeci">Bitmap _bitmap</div><div class="ttdef"><b>Definition:</b> ScreenTextHandler.cs:24</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels_html_a6d5b7585874e984d83c5cd31fb3c8ab8acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels.html#a6d5b7585874e984d83c5cd31fb3c8ab8acb5feb1b7314637725a2e73bdc9f7295">BrawlLib.Internal.Windows.Controls.ModelViewer.Panels.FrameType.Color</a></div><div class="ttdeci">@ Color</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler_html_ac255c229aa411ecabba86841a411ebb2"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_screen_text_handler.html#ac255c229aa411ecabba86841a411ebb2">BrawlLib.Internal.Windows.Controls.Model_Panel.ScreenTextHandler._size</a></div><div class="ttdeci">Size _size</div><div class="ttdef"><b>Definition:</b> ScreenTextHandler.cs:23</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

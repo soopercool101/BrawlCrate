@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -139,10 +139,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a639056cd2269ad51700ef65b25bd1bf2">_source</a> = <span class="keyword">new</span> DataSource(addr, (<span class="keywordtype">int</span>) size);</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a3bd66ef63a3d309fdd8bfd29a1a726b8">_node</a> = node;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a639056cd2269ad51700ef65b25bd1bf2">_source</a> = <span class="keyword">new</span> DataSource(addr, (<span class="keywordtype">int</span>) size);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a3bd66ef63a3d309fdd8bfd29a1a726b8">_node</a> = node;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -213,35 +213,33 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                        {</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                        }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                            <span class="keywordflow">if</span> (begun)</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                temp.Insert(i + 1, 0);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                i++;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                            }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                        <span class="keywordflow">if</span> (m == <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#add592c198a54493ad0659bc44f0de0cb">JpegMarkers</a>.StartOfScan)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                        {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                            begun = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    }</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        <span class="keywordflow">if</span> (begun)</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                            temp.Insert(i + 1, 0);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                            i++;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                    }</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        <span class="keywordflow">if</span> (begun)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            temp.Insert(i + 1, 0);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                            i++;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        <span class="keywordflow">if</span> (m == <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#add592c198a54493ad0659bc44f0de0cb">JpegMarkers</a>.StartOfScan)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                            begun = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        <span class="keywordflow">if</span> (begun)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                            temp.Insert(i + 1, 0);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                            i++;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                    }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            buffer = temp.ToArray();</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            buffer = temp.ToArray();</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">return</span> (Bitmap) <span class="keyword">new</span> ImageConverter().ConvertFrom(buffer);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">return</span> (Bitmap) <span class="keyword">new</span> ImageConverter().ConvertFrom(buffer);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -322,10 +320,10 @@ Private Attributes</h2></td></tr>
 <li>BrawlLib/SSBB/ResourceNodes/THPNode.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame_html_ac209b585364eeaa538c57a01834149db"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#ac209b585364eeaa538c57a01834149db">BrawlLib.SSBB.ResourceNodes.THPFrame.Header</a></div><div class="ttdeci">THPFrameHeader * Header</div><div class="ttdef"><b>Definition:</b> THPNode.cs:284</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame_html_ac209b585364eeaa538c57a01834149db"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#ac209b585364eeaa538c57a01834149db">BrawlLib.SSBB.ResourceNodes.THPFrame.Header</a></div><div class="ttdeci">THPFrameHeader * Header</div><div class="ttdef"><b>Definition:</b> THPNode.cs:282</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame_html_a3bd66ef63a3d309fdd8bfd29a1a726b8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a3bd66ef63a3d309fdd8bfd29a1a726b8">BrawlLib.SSBB.ResourceNodes.THPFrame._node</a></div><div class="ttdeci">readonly THPNode _node</div><div class="ttdef"><b>Definition:</b> THPNode.cs:206</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_node_html_a4fa2c7fd4f360770c4aa97e4209552b1"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_node.html#a4fa2c7fd4f360770c4aa97e4209552b1">BrawlLib.SSBB.ResourceNodes.THPNode._componentTypes</a></div><div class="ttdeci">List&lt; byte &gt; _componentTypes</div><div class="ttdef"><b>Definition:</b> THPNode.cs:41</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame_html_a639056cd2269ad51700ef65b25bd1bf2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a639056cd2269ad51700ef65b25bd1bf2">BrawlLib.SSBB.ResourceNodes.THPFrame._source</a></div><div class="ttdeci">DataSource _source</div><div class="ttdef"><b>Definition:</b> THPNode.cs:283</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame_html_a639056cd2269ad51700ef65b25bd1bf2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_frame.html#a639056cd2269ad51700ef65b25bd1bf2">BrawlLib.SSBB.ResourceNodes.THPFrame._source</a></div><div class="ttdeci">DataSource _source</div><div class="ttdef"><b>Definition:</b> THPNode.cs:281</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header_html_a21c8980449441202e00e76ddf0e9426b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#a21c8980449441202e00e76ddf0e9426b">BrawlLib.SSBB.Types.THPFrameHeader.CompAddr</a></div><div class="ttdeci">buint * CompAddr</div><div class="ttdef"><b>Definition:</b> THP.cs:79</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header_html_a3a5dc4163e11f4a4865d3a1c4b674c8f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#a3a5dc4163e11f4a4865d3a1c4b674c8f">BrawlLib.SSBB.Types.THPFrameHeader.GetComp</a></div><div class="ttdeci">VoidPtr GetComp(int numComp, int index)</div><div class="ttdef"><b>Definition:</b> THP.cs:81</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_html_add592c198a54493ad0659bc44f0de0cb"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#add592c198a54493ad0659bc44f0de0cb">BrawlLib.SSBB.ResourceNodes.JpegMarkers</a></div><div class="ttdeci">JpegMarkers</div><div class="ttdef"><b>Definition:</b> THPNode.cs:117</div></div>

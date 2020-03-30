@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.30h</span>
+   &#160;<span id="projectnumber">v0.31</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -361,17 +361,15 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#aa805d88bb0273643a13f497e94e5b846">FullName</a>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordtype">string</span>[] inheritTypes = <span class="keyword">new</span> <span class="keywordtype">string</span>[<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#a2253d00505f857c7228531bd9a82764d">_inheritance</a>.Count];</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; inheritTypes.Length; i++)</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    inheritTypes[i] = <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#a2253d00505f857c7228531bd9a82764d">_inheritance</a>[i]._type.ToString(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#aa805d88bb0273643a13f497e94e5b846">FullName</a> + <span class="stringliteral">&quot; : &quot;</span> + <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;, &quot;</span>, inheritTypes);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordtype">string</span>[] inheritTypes = <span class="keyword">new</span> <span class="keywordtype">string</span>[<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#a2253d00505f857c7228531bd9a82764d">_inheritance</a>.Count];</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; inheritTypes.Length; i++)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                inheritTypes[i] = <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#a2253d00505f857c7228531bd9a82764d">_inheritance</a>[i]._type.ToString(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#aa805d88bb0273643a13f497e94e5b846">FullName</a> + <span class="stringliteral">&quot; : &quot;</span> + <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;, &quot;</span>, inheritTypes);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
