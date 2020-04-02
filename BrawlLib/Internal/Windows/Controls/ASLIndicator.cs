@@ -43,8 +43,8 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // grpBoxUnusedGCN
             // 
-            this.grpBoxUnusedGCN.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxUnusedGCN.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left 
+                                                                                                                       | System.Windows.Forms.AnchorStyles.Right);
             this.grpBoxUnusedGCN.Controls.Add(this.chkBoxGCN0x8000);
             this.grpBoxUnusedGCN.Controls.Add(this.chkBoxGCN0x4000);
             this.grpBoxUnusedGCN.Controls.Add(this.chkBoxGCN0x2000);
@@ -102,7 +102,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNB
             // 
-            this.chkBoxGCNB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxGCNB.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.chkBoxGCNB.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxGCNB.Location = new System.Drawing.Point(380, 250);
             this.chkBoxGCNB.Name = "chkBoxGCNB";
@@ -115,7 +115,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNX
             // 
-            this.chkBoxGCNX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxGCNX.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.chkBoxGCNX.Location = new System.Drawing.Point(436, 245);
             this.chkBoxGCNX.Name = "chkBoxGCNX";
             this.chkBoxGCNX.Size = new System.Drawing.Size(33, 17);
@@ -126,7 +126,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNY
             // 
-            this.chkBoxGCNY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxGCNY.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.chkBoxGCNY.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxGCNY.Location = new System.Drawing.Point(409, 209);
             this.chkBoxGCNY.Name = "chkBoxGCNY";
@@ -139,7 +139,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNDown
             // 
-            this.chkBoxGCNDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkBoxGCNDown.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.chkBoxGCNDown.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxGCNDown.Location = new System.Drawing.Point(52, 252);
             this.chkBoxGCNDown.Name = "chkBoxGCNDown";
@@ -152,7 +152,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNRight
             // 
-            this.chkBoxGCNRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkBoxGCNRight.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.chkBoxGCNRight.Location = new System.Drawing.Point(74, 245);
             this.chkBoxGCNRight.Name = "chkBoxGCNRight";
             this.chkBoxGCNRight.Size = new System.Drawing.Size(37, 17);
@@ -163,7 +163,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNUp
             // 
-            this.chkBoxGCNUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkBoxGCNUp.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.chkBoxGCNUp.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxGCNUp.Location = new System.Drawing.Point(52, 212);
             this.chkBoxGCNUp.Name = "chkBoxGCNUp";
@@ -176,7 +176,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNLeft
             // 
-            this.chkBoxGCNLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkBoxGCNLeft.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             this.chkBoxGCNLeft.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkBoxGCNLeft.Location = new System.Drawing.Point(9, 245);
             this.chkBoxGCNLeft.Name = "chkBoxGCNLeft";
@@ -188,7 +188,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNZ
             // 
-            this.chkBoxGCNZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxGCNZ.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this.chkBoxGCNZ.Location = new System.Drawing.Point(429, 33);
             this.chkBoxGCNZ.Name = "chkBoxGCNZ";
             this.chkBoxGCNZ.Size = new System.Drawing.Size(33, 17);
@@ -199,7 +199,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNR
             // 
-            this.chkBoxGCNR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxGCNR.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             this.chkBoxGCNR.Location = new System.Drawing.Point(429, 10);
             this.chkBoxGCNR.Name = "chkBoxGCNR";
             this.chkBoxGCNR.Size = new System.Drawing.Size(34, 17);
@@ -221,7 +221,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNA
             // 
-            this.chkBoxGCNA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxGCNA.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.chkBoxGCNA.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxGCNA.Location = new System.Drawing.Point(406, 238);
             this.chkBoxGCNA.Name = "chkBoxGCNA";
@@ -234,7 +234,7 @@ namespace BrawlLib.Internal.Windows.Controls
             // 
             // chkBoxGCNStart
             // 
-            this.chkBoxGCNStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBoxGCNStart.Anchor = (System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             this.chkBoxGCNStart.AutoSize = true;
             this.chkBoxGCNStart.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkBoxGCNStart.Location = new System.Drawing.Point(336, 199);

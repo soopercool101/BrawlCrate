@@ -245,19 +245,33 @@ namespace BrawlLib.Internal
 
         public uint WriteUTF8String(string s, bool nullTerminated, uint offset)
         {
+            return WriteUTF8String(s, nullTerminated, offset, (uint)(s.UTF8Length() + (nullTerminated ? 1 : 0)));
+        }
+
+        public uint WriteUTF8String(string s, bool nullTerminated, uint offset, uint size)
+        {
             byte* ptr = (byte*)(this + offset);
             byte[] name = Encoding.UTF8.GetBytes(s);
-            for (int j = 0; j < name.Length; j++)
+            for (int j = 0; j < name.Length && j < size; j++)
             {
                 ptr[j] = name[j];
             }
 
-            if (nullTerminated)
+            if (name.Length < size && nullTerminated)
             {
                 ptr[name.Length] = 0;
             }
+            else if (nullTerminated)
+            {
+                ptr[name.Length - 1] = 0;
+            }
 
-            return (uint) (name.Length + (nullTerminated ? 1 : 0));
+            for (int j = name.Length; j < size; j++)
+            {
+                ptr[j] = 0;
+            }
+
+            return size;
         }
     }
 }

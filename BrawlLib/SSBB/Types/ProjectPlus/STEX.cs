@@ -23,7 +23,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
         public buint _memoryAllocation;
         public bfloat _wildSpeed;
 
-        public VoidPtr this[int index] => (byte*)Address + HeaderSize + (index * 0x04);
+        public VoidPtr this[int index] => (byte*)Address + HeaderSize + index * 0x04;
 
         public uint subStageCount => (_stringOffset - 0x2C) / 4;
 
