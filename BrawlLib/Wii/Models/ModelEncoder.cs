@@ -781,7 +781,7 @@ namespace BrawlLib.Wii.Models
                 int bCount = linker.BoneCache.Length;
                 for (int i = 0; i < bCount; i++)
                 {
-                    MDL0BoneNode bone = linker.BoneCache[i] as MDL0BoneNode;
+                    MDL0BoneNode bone = linker.BoneCache[i];
 
                     *pData = 2; //Entry tag
                     *(bushort*) (pData + 1) = (ushort) bone._entryIndex;

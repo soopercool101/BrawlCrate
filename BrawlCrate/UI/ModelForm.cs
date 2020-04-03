@@ -201,12 +201,12 @@ namespace BrawlCrate.UI
                             continue;
                         }
 
-                        MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
-                            .FirstOrDefault() as MDL0Node;
+                        MDL0Node model = _models
+                            .FirstOrDefault(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName) as MDL0Node;
 
                         MDL0BoneNode bone =
-                            model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                                .FirstOrDefault() as MDL0BoneNode;
+                            (model?._linker.BoneCache)
+                            .FirstOrDefault(b => b.Name == obj._boneName);
                         if (bone != null)
                         {
                             obj._linkedBone = bone;

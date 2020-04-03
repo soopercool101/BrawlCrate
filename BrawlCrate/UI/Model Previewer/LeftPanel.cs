@@ -1794,7 +1794,7 @@ namespace BrawlCrate.UI.Model_Previewer
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BRESEntryNode node;
-            if ((node = _mainWindow.TargetAnimation as BRESEntryNode) == null)
+            if ((node = _mainWindow.TargetAnimation) == null)
             {
                 return;
             }
@@ -1834,7 +1834,7 @@ namespace BrawlCrate.UI.Model_Previewer
         private void _replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BRESEntryNode node;
-            if ((node = _mainWindow.TargetAnimation as BRESEntryNode) == null)
+            if ((node = _mainWindow.TargetAnimation) == null)
             {
                 return;
             }

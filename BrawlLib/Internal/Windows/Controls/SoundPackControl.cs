@@ -614,7 +614,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     continue;
                 }
 
-                ListViewItem v = i as ListViewItem;
+                ListViewItem v = i;
                 string type = v.SubItems[1].Text;
                 string dir = "\\" + type + "\\";
                 string fileName = i._node.Name.Replace('/', '_').Replace('<', '(').Replace('>', ')') + ".b" +
@@ -746,7 +746,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     continue;
                 }
 
-                ListViewItem v = i as ListViewItem;
+                ListViewItem v = i;
                 string type = v.SubItems[1].ToString();
 
                 i._node.Remove();

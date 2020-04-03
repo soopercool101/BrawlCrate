@@ -1571,7 +1571,7 @@ namespace BrawlCrate.UI
 
                     MDL0BoneNode bone =
                         model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                            .FirstOrDefault() as MDL0BoneNode;
+                            .FirstOrDefault();
                     if (bone != null)
                     {
                         obj._linkedBone = bone;

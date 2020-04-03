@@ -459,7 +459,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
                 if (KeyframePanel != null)
                 {
-                    KeyframePanel.TargetSequence = _targetVisEntry as ResourceNode;
+                    KeyframePanel.TargetSequence = _targetVisEntry;
                     KeyframePanel.chkConstant.Checked = _targetVisEntry._flags.HasFlag(VIS0Flags.Constant);
                     KeyframePanel.chkEnabled.Checked = _targetVisEntry._flags.HasFlag(VIS0Flags.Enabled);
                 }

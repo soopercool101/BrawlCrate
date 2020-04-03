@@ -669,7 +669,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _stream = null;
             if (_soundFileNode is RWSDNode)
             {
-                RWSDDataNode d = _waveDataNode as RWSDDataNode;
+                RWSDDataNode d = _waveDataNode;
                 if (d != null && _soundFileNode.Children.Count > 1 &&
                     _soundFileNode.Children[1].Children.Count > d._part3._waveIndex && d._part3._waveIndex >= 0)
                 {

@@ -30,7 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 INFOGroupEntry* entry = (INFOGroupEntry*) list->Get(offset, i);
                 int id = entry->_fileId;
-                _files.Add(rsar.Files[id] as RSARFileNode);
+                _files.Add(rsar.Files[id]);
                 rsar.Files[id]._groupRefs.Add(this);
             }
 

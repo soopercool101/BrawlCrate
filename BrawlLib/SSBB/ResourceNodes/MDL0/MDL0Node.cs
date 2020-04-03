@@ -1121,7 +1121,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 repObj.DeferUpdateAssets();
                 if (repObj.MatrixNode is MDL0BoneNode)
                 {
-                    repObj.MatrixNode = FindOrAddBoneCopy(repObj.MatrixNode as MDL0BoneNode) as IMatrixNode;
+                    repObj.MatrixNode = FindOrAddBoneCopy(repObj.MatrixNode as MDL0BoneNode);
                 }
                 else
                 {

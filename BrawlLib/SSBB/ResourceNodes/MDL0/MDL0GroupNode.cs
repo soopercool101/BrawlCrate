@@ -171,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     if (b._boneFlags.HasFlag(BoneFlags.HasBillboardParent))
                     {
-                        b._bbRefNode = model._linker.BoneCache[header->_bbIndex] as MDL0BoneNode;
+                        b._bbRefNode = model._linker.BoneCache[header->_bbIndex];
                     }
                 }
 
@@ -200,7 +200,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 int count = linker.BoneCache.Length;
                 for (int i = 0; i < count; i++)
                 {
-                    linker.NodeCache[(bone = linker.BoneCache[i] as MDL0BoneNode)._nodeIndex] = bone;
+                    linker.NodeCache[(bone = linker.BoneCache[i])._nodeIndex] = bone;
                 }
 
                 int nullCount = 0;
@@ -222,7 +222,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         STop:
                         if (*pData == 2)
                         {
-                            bone = linker.BoneCache[*(bushort*) (pData + 1)] as MDL0BoneNode;
+                            bone = linker.BoneCache[*(bushort*) (pData + 1)];
                             index = *(bushort*) (pData + 3); //Parent bone node index
 
                             if (bone.Header->_parentOffset == 0)
@@ -394,7 +394,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             MDL0BoneNode visBone = null;
                             if (linker.BoneCache != null && boneIndex >= 0 && boneIndex < linker.BoneCache.Length)
                             {
-                                visBone = linker.BoneCache[boneIndex] as MDL0BoneNode;
+                                visBone = linker.BoneCache[boneIndex];
                             }
 
                             obj._drawCalls.Add(new DrawCall(obj)
