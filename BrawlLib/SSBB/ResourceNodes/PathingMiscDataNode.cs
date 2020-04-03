@@ -10,12 +10,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class PathingMiscDataNode : ARCEntryNode
     {
-        internal PathingMiscData* Header => (PathingMiscData*)WorkingUncompressed.Address;
+        internal PathingMiscData* Header => (PathingMiscData*) WorkingUncompressed.Address;
         //public override ResourceType ResourceFileType => ResourceType.PathingMiscData;
 
-        public override Type[] AllowedChildTypes => new[] { typeof(PathingMiscDataEntryNode) };
+        public override Type[] AllowedChildTypes => new[] {typeof(PathingMiscDataEntryNode)};
 
         public float _unknown0x08;
+
         public float Unknown0x08
         {
             get => _unknown0x08;
@@ -27,6 +28,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x0C;
+
         public float Unknown0x0C
         {
             get => _unknown0x0C;
@@ -38,6 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x10;
+
         public float Unknown0x10
         {
             get => _unknown0x10;
@@ -49,6 +52,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x14;
+
         public float Unknown0x14
         {
             get => _unknown0x14;
@@ -60,6 +64,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x18;
+
         public float Unknown0x18
         {
             get => _unknown0x18;
@@ -71,6 +76,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x1C;
+
         public float Unknown0x1C
         {
             get => _unknown0x1C;
@@ -85,19 +91,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Header->_count; i++)
             {
-                DataSource source = new DataSource((*Header)[i], (int)PathingMiscDataEntry.Size);
+                DataSource source = new DataSource((*Header)[i], (int) PathingMiscDataEntry.Size);
                 new PathingMiscDataEntryNode().Initialize(this, source);
-                int length;
-                if (i == Header->_count - 1)
-                {
-                    length = (int)(WorkingUncompressed.Length - ((PathingMiscDataEntry*) (*Header)[i])->_dataOffset);
-                }
-                else
-                {
-                    length = (int) (((PathingMiscDataEntry*)(*Header)[i + 1])->_dataOffset - ((PathingMiscDataEntry*)(*Header)[i])->_dataOffset);
-                }
-                DataSource data = new DataSource(Header->GetDataBlock(i), length);
-                new RawDataNode {_name = "Data"}.Initialize(Children.Last(), data);
+                Children.Last().Populate();
             }
         }
 
@@ -114,11 +110,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            int size = (int)Header->_headerSize;
+            int size = (int) Header->_headerSize;
             foreach (ResourceNode n in Children.Where(n => n.HasChildren))
             {
-                size += (int)PathingMiscDataEntry.Size;
-                size += n.Children[0].CalculateSize(force);
+                size += n.OnCalculateSize(true);
+                foreach (ResourceNode c in n.Children)
+                {
+                    size += c.OnCalculateSize(true);
+                }
             }
 
             return size;
@@ -130,13 +129,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         internal uint curDataOffset;
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            curDataOffset = (uint)(Header->_headerSize + Children.Count * PathingMiscDataEntry.Size);
+            curDataOffset = (uint) (Header->_headerSize + Children.Count * PathingMiscDataEntry.Size);
             uint headerSize = Header->_headerSize;
-            PathingMiscData* header = (PathingMiscData*)address;
+            PathingMiscData* header = (PathingMiscData*) address;
             *header = new PathingMiscData();
-            header->_count = (uint)Children.Count;
+            header->_count = (uint) Children.Count;
             header->_headerSize = headerSize;
             header->_unknown0x08 = _unknown0x08;
             header->_unknown0x0C = _unknown0x0C;
@@ -145,59 +145,54 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_unknown0x18 = _unknown0x18;
             header->_unknown0x1C = _unknown0x1C;
             uint offset = headerSize;
-            IEnumerable<ResourceNode> validChildren = Children.Where(n => n.HasChildren);
-            foreach(ResourceNode n in validChildren)
+            ResourceNode[] validChildren = Children.Where(n => n.HasChildren).ToArray();
+            foreach (ResourceNode n in validChildren)
             {
-                int size = n.CalculateSize(force);
-                n.Rebuild(address + offset, size, force);
-                offset += (uint)size;
+                int size = n.CalculateSize(true);
+                n.Rebuild(address + offset, size, true);
+                offset += (uint) size;
             }
 
             foreach (ResourceNode n in validChildren)
             {
-                int size = n.Children[0].CalculateSize(force);
-                n.Children[0].Rebuild(address + offset, size, force);
-                offset += (uint)size;
+                foreach (ResourceNode c in n.Children)
+                {
+                    int size = c.CalculateSize(true);
+                    c.Rebuild(address + offset, size, true);
+                    offset += (uint)size;
+                }
             }
         }
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((PathingMiscData*)source.Address)->_headerSize == 0x20 && ((PathingMiscData*)source.Address)->_count < 10000 ? new PathingMiscDataNode() : null;
+            return ((PathingMiscData*) source.Address)->_headerSize == 0x20 &&
+                   ((PathingMiscData*) source.Address)->_count < 10000
+                ? new PathingMiscDataNode()
+                : null;
         }
     }
 
     public unsafe class PathingMiscDataEntryNode : ResourceNode
     {
-        internal PathingMiscDataEntry* Header => (PathingMiscDataEntry*)WorkingUncompressed.Address;
+        internal PathingMiscDataEntry* Header => (PathingMiscDataEntry*) WorkingUncompressed.Address;
         public override int MaxNameLength => 0x20;
 
-        public ushort _id1;
-        public ushort _id2;
+        public ushort _id;
 
         [Category("ID")]
-        public ushort ID1
+        public ushort ID
         {
-            get => _id1;
+            get => _id;
             set
             {
-                _id1 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ID")]
-        public ushort ID2
-        {
-            get => _id2;
-            set
-            {
-                _id2 = value;
+                _id = value;
                 SignalPropertyChange();
             }
         }
 
         public float _unknown0x08;
+
         public float Unknown0x08
         {
             get => _unknown0x08;
@@ -209,6 +204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x0C;
+
         public float Unknown0x0C
         {
             get => _unknown0x0C;
@@ -220,6 +216,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x10;
+
         public float Unknown0x10
         {
             get => _unknown0x10;
@@ -231,6 +228,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x14;
+
         public float Unknown0x14
         {
             get => _unknown0x14;
@@ -242,6 +240,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x18;
+
         public float Unknown0x18
         {
             get => _unknown0x18;
@@ -253,6 +252,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public float _unknown0x1C;
+
         public float Unknown0x1C
         {
             get => _unknown0x1C;
@@ -263,19 +263,35 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public override void OnPopulate()
+        {
+            PathingMiscData* parentData = (PathingMiscData*) Parent.WorkingUncompressed.Address;
+            uint currentOffset = Header->_dataOffset;
+            for (int i = 0; i < Header->_count; i++)
+            {
+                DataSource source = new DataSource(Parent.WorkingUncompressed.Address + currentOffset,
+                    (int) PathingMiscDataSubEntry.Size);
+                new PathingMiscDataSubEntryNode { _name = $"Entry [{i}]"}.Initialize(this, source);
+                currentOffset += PathingMiscDataSubEntry.Size;
+            }
+        }
+
         public override int OnCalculateSize(bool force)
         {
-            return (int)PathingMiscDataEntry.Size;
+            return (int) PathingMiscDataEntry.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            PathingMiscDataEntry* header = (PathingMiscDataEntry*)address;
+            PathingMiscDataEntry* header = (PathingMiscDataEntry*) address;
             *header = new PathingMiscDataEntry();
-            header->_id1 = header->_id1;
-            header->_id2 = header->_id2;
+            header->_count = (ushort)(Children?.Count ?? 0);
+            header->_id = _id;
             header->_dataOffset = ((PathingMiscDataNode) Parent).curDataOffset;
-            ((PathingMiscDataNode) Parent).curDataOffset += (uint)Children[0].CalculateSize(force);
+            foreach (ResourceNode n in Children)
+            {
+                ((PathingMiscDataNode)Parent).curDataOffset += (uint)n.OnCalculateSize(true);
+            }
             header->_unknown0x08 = _unknown0x08;
             header->_unknown0x0C = _unknown0x0C;
             header->_unknown0x10 = _unknown0x10;
@@ -288,15 +304,51 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             _name = Header->Name;
-            _id1 = Header->_id1;
-            _id2 = Header->_id2;
+            _id = Header->_id;
             _unknown0x08 = Header->_unknown0x08;
             _unknown0x0C = Header->_unknown0x0C;
             _unknown0x10 = Header->_unknown0x10;
             _unknown0x14 = Header->_unknown0x14;
             _unknown0x18 = Header->_unknown0x18;
             _unknown0x1C = Header->_unknown0x1C;
-            return Header->_dataOffset != 0xFFFFFFFF;
+            return Header->_dataOffset != 0xFFFFFFFF && Header->_count > 0;
+        }
+    }
+
+    public unsafe class PathingMiscDataSubEntryNode : ResourceNode
+    {
+        internal PathingMiscDataSubEntry* Header => (PathingMiscDataSubEntry*)WorkingUncompressed.Address;
+
+        private Vector3 _value;
+
+        [TypeConverter(typeof(Vector3StringConverter))]
+        public Vector3 Value
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                SignalPropertyChange();
+            }
+        }
+        public override int OnCalculateSize(bool force)
+        {
+            return (int)PathingMiscDataSubEntry.Size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            PathingMiscDataSubEntry* header = (PathingMiscDataSubEntry*)address;
+            *header = new PathingMiscDataSubEntry();
+            header->_x = Value._x;
+            header->_y = Value._y;
+            header->_z = Value._z;
+        }
+
+        public override bool OnInitialize()
+        {
+            _value = new Vector3(Header->_x, Header->_y, Header->_z);
+            return false;
         }
     }
 }

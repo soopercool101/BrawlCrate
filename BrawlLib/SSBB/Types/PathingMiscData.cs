@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.Types
         public bfloat _unknown0x18;
         public bfloat _unknown0x1C;
 
-        public VoidPtr this[int index] => (byte*)Address + _headerSize + index * PathingMiscDataEntry.Size;
+        public VoidPtr this[int index] => (byte*) Address + _headerSize + index * PathingMiscDataEntry.Size;
 
         public VoidPtr GetDataBlock(int index)
         {
@@ -25,7 +25,7 @@ namespace BrawlLib.SSBB.Types
             {
                 return null;
             }
-            
+
             return Address + ((PathingMiscDataEntry*) this[index])->_dataOffset;
         }
 
@@ -45,8 +45,8 @@ namespace BrawlLib.SSBB.Types
     public unsafe struct PathingMiscDataEntry
     {
         public static readonly uint Size = 0x40;
-        public bushort _id1;
-        public bushort _id2;
+        public bushort _count;
+        public bushort _id;
         public buint _dataOffset;
         public bfloat _unknown0x08;
         public bfloat _unknown0x0C;
@@ -77,5 +77,15 @@ namespace BrawlLib.SSBB.Types
                 }
             }
         }
+    }
+
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public unsafe struct PathingMiscDataSubEntry
+    {
+        public static readonly uint Size = 0x0C;
+        public bfloat _x;
+        public bfloat _y;
+        public bfloat _z;
     }
 }
