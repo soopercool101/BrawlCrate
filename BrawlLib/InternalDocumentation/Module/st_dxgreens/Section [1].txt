@@ -1,0 +1,9 @@
+st_dxgreens Section [1]: 0x0000336C
+Bomb Block Damage
+
+The amount of damage the Bomb Blocks deal to players when detonated.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 20 (0x0014)
+	/EndDescription
+0011    // Flags for which bytes are underlined
