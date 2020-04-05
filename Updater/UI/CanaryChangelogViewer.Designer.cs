@@ -1,4 +1,6 @@
-﻿namespace Updater.UI
+﻿using System.Windows.Forms;
+
+namespace Updater.UI
 {
     partial class CanaryChangelogViewer
     {
@@ -39,6 +41,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(362, 450);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.LinkClicked += new LinkClickedEventHandler(this.richTextBox1_LinkClicked);
             // 
             // CanaryChangelogViewer
             // 
