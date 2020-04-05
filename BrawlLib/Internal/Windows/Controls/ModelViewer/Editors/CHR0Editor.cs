@@ -1522,6 +1522,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             _mainWindow.UpdateModel();
 
             _mainWindow.Updating = true;
+            _mainWindow.PlaybackPanel.numFrameIndex.Maximum++;
             _mainWindow.PlaybackPanel.numTotalFrames.Value++;
             _mainWindow._maxFrame++;
             _mainWindow.Updating = false;
@@ -1538,6 +1539,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             _mainWindow.UpdateModel();
 
             _mainWindow.Updating = true;
+            _mainWindow.PlaybackPanel.numFrameIndex.Maximum--;
             _mainWindow.PlaybackPanel.numTotalFrames.Value--;
             _mainWindow._maxFrame--;
             _mainWindow.Updating = false;
