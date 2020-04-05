@@ -107,7 +107,9 @@ namespace BrawlCrate.NodeWrappers
                 TLSTEntryNode node = new TLSTEntryNode
                 {
                     _name = d.resultString,
-                    _songID = songID
+                    _songID = songID,
+                    Volume = 80,
+                    Frequency = 40
                 };
 
                 _resource.AddChild(node);
