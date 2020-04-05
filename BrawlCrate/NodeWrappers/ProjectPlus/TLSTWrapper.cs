@@ -76,7 +76,7 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             TLSTWrapper w = GetInstance<TLSTWrapper>();
-            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 16;
+            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 64;
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
@@ -91,7 +91,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TLSTEntryNode NewEntry()
         {
-            if (Resource.Children.Count >= 16)
+            if (Resource.Children.Count >= 64)
             {
                 return null;
             }
