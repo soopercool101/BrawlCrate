@@ -317,7 +317,7 @@ namespace BrawlCrate.UI
                 //UnknownFlags
                 chkFlagUnknown1.Checked = p.IsUnknownSSE;
                 chkFlagUnknown2.Checked = p.IsUnknownFlag1;
-                chkFlagUnknown3.Checked = p.IsUnknownFlag3;
+                chkFlagSuperSoft.Checked = p.IsSuperSoft;
                 chkFlagUnknown4.Checked = p.IsUnknownFlag4;
             }
             else if (pnlPointProps.Visible)

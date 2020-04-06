@@ -1067,10 +1067,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _flags = (_flags & ~CollisionPlaneFlags.Rotating) | (value ? CollisionPlaneFlags.Rotating : 0);
         }
 
-        public bool IsUnknownFlag3
+        public bool IsSuperSoft
         {
-            get => (_flags & CollisionPlaneFlags.Unknown3) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.Unknown3) | (value ? CollisionPlaneFlags.Unknown3 : 0);
+            get => (_flags & CollisionPlaneFlags.SuperSoft) != 0;
+            set => _flags = (_flags & ~CollisionPlaneFlags.SuperSoft) | (value ? CollisionPlaneFlags.SuperSoft : 0);
         }
 
         public bool IsUnknownFlag4
@@ -1079,7 +1079,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _flags = (_flags & ~CollisionPlaneFlags.Unknown4) | (value ? CollisionPlaneFlags.Unknown4 : 0);
         }
 
-        public bool HasUnknownFlag => IsUnknownFlag1 || IsUnknownFlag3 || IsUnknownFlag4 || IsUnknownSSE;
+        public bool HasUnknownFlag => IsUnknownFlag1 || IsSuperSoft || IsUnknownFlag4 || IsUnknownSSE;
 
         public double GetAngleRadians()
         {
