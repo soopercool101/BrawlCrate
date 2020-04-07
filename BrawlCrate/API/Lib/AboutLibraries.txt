@@ -1,0 +1,3 @@
+﻿BrawlAPI Library
+
+This folder can contain additional python modules with common functions to be used by BrawlAPI scripts
