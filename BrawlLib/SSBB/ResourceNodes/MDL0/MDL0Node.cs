@@ -1265,6 +1265,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             replacement.Populate();
             replacement.ResetToBindState();
 
+            // Save texture matrix settings
+            Dictionary<string, bool[]> texMatrixSettings = new Dictionary<string, bool[]>();
+            if (_matGroup != null && _matGroup.Children.Count > 0)
+            {
+                foreach (MDL0MaterialNode m in _matGroup.Children.Where(m => m.HasChildren))
+                {
+                    bool[] texRefSettings = new bool[m.Children.Count];
+                    foreach (MDL0MaterialRefNode r in m.Children)
+                    {
+                        texRefSettings[r.Index] = r.HasTextureMatrix;
+                    }
+                    texMatrixSettings.Add(m.Name, texRefSettings);
+                }
+            }
+
             bool[] addGroup = new bool[8];
             while (replacement._objList != null && replacement._objList.Count > 0)
             {
@@ -1277,6 +1292,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             FinishReplace(addGroup);
+
+            // Copy texture matrix settings from before
+            if (_matGroup != null && _matGroup.Children.Count > 0)
+            {
+                foreach (MDL0MaterialNode m in _matGroup.Children.Where(m => m.HasChildren && texMatrixSettings.ContainsKey(m.Name)))
+                {
+                    if (texMatrixSettings[m.Name].Length == m.Children.Count)
+                    {
+                        foreach (MDL0MaterialRefNode r in m.Children)
+                        {
+                            r.HasTextureMatrix = texMatrixSettings[m.Name][r.Index];
+                        }
+                    }
+                }
+            }
         }
 
         private void FinishReplace(bool[] addGroup)
