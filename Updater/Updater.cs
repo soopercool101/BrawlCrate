@@ -820,7 +820,8 @@ namespace Updater
                                 string name = archive.Entries[0].FullName.Trim();
                                 // If it's a source code download, make sure to remove the containing file
                                 if (!name.Equals("Plugins/", StringComparison.OrdinalIgnoreCase) &&
-                                    !name.Equals("Loaders/", StringComparison.OrdinalIgnoreCase))
+                                    !name.Equals("Loaders/", StringComparison.OrdinalIgnoreCase) &&
+                                    !name.Equals("Lib/", StringComparison.OrdinalIgnoreCase))
                                 {
                                     bool isContainingFolder = true;
                                     foreach (ZipArchiveEntry e in archive.Entries)
@@ -865,7 +866,8 @@ namespace Updater
                                     else if (!string.IsNullOrWhiteSpace(fullName) && !fullName.EndsWith("\\") &&
                                              !fullName.EndsWith("/")
                                              && (fullName.StartsWith("Plugins/", StringComparison.OrdinalIgnoreCase) ||
-                                                 fullName.StartsWith("Loaders/", StringComparison.OrdinalIgnoreCase)))
+                                                 fullName.StartsWith("Loaders/", StringComparison.OrdinalIgnoreCase) ||
+                                                 fullName.StartsWith("Lib/", StringComparison.OrdinalIgnoreCase)))
                                     {
                                         // Extract the other files and add them to the file list where specified
                                         string path =
