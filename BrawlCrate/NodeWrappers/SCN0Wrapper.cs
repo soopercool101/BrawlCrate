@@ -6,6 +6,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Animations;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -48,6 +49,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
+            _menu.Items.Add(new ToolStripMenuItem("&Replace (Keep Camera)", null, ReplaceKeepCameraAction));
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(MoveUpToolStripMenuItem);
@@ -82,6 +84,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void newCameraAction(object sender, EventArgs e)
         {
             GetInstance<SCN0Wrapper>().newCamera();
+        }
+
+        protected static void ReplaceKeepCameraAction(object sender, EventArgs e)
+        {
+            GetInstance<SCN0Wrapper>().replaceKeepCamera();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -153,6 +160,31 @@ namespace BrawlCrate.NodeWrappers
             BaseWrapper res = FindResource(node, true);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
+        }
+
+        public void replaceKeepCamera()
+        {
+            if (Program.OpenFile(ReplaceFilter, out string inPath))
+            {
+                using (SCN0Node ext = NodeFactory.FromFile(null, inPath, typeof(SCN0Node)) as SCN0Node)
+                {
+                    if (ext == null)
+                    {
+                        MessageBox.Show("The selected SCN0 file could not be read.");
+                        return;
+                    }
+                    ext.Populate();
+                    ext.CameraGroup.Children.Clear();
+                    foreach (ResourceNode n in ((SCN0Node)Resource).CameraGroup.Children)
+                    {
+                        ext.CameraGroup.AddChild(n);
+                    }
+
+                    string s = Path.GetTempFileName() + ".scn0";
+                    ext.Export(s);
+                    Resource.Replace(s);
+                }
+            }
         }
     }
 
