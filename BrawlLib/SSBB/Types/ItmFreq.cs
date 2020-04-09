@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.ProjectPlus;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types
@@ -11,7 +12,7 @@ namespace BrawlLib.SSBB.Types
         public bint _Length;
         public bint _DataLength;
         public bint _OffCount;
-        public bint _DataTable;
+        public bint _DataTable; // Should be "1"
         public int _pad0;
         public int _pad1;
         public int _pad2;
@@ -29,7 +30,7 @@ namespace BrawlLib.SSBB.Types
             }
         }
 
-        public string Str => new string((sbyte*) Address + _DataLength + _OffCount * 4 + 0x20 + _DataTable * 8);
+        public string Str => (Address + _DataLength + _OffCount * 4 + Size + _DataTable * ItmFreqOffPair.Size).GetUTF8String();
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -68,6 +69,8 @@ namespace BrawlLib.SSBB.Types
 
         public ItmFreqOffEntry* Entries => (ItmFreqOffEntry*) Address;
 
+        public VoidPtr this[int index] => (byte*)Address + index * ItmFreqOffEntry.Size;
+
         private VoidPtr Address
         {
             get
@@ -88,8 +91,8 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown0;
         public bint _unknown1;
         public bint _unknown2;
-        public bint _entryOffset;
-        public bint _entryCount;
+        public buint _entryOffset;
+        public buint _entryCount;
         public bint _unknown3;
 
         public VoidPtr Address
@@ -109,8 +112,8 @@ namespace BrawlLib.SSBB.Types
     {
         public const int Size = 0x08;
 
-        public bint _offset;
-        public bint _count;
+        public buint _offset;
+        public buint _count;
 
         private VoidPtr Address
         {
@@ -129,10 +132,10 @@ namespace BrawlLib.SSBB.Types
     {
         public const int Size = 0x08;
 
-        public bint _offset1;
-        public bint _offset2;
+        public buint _offset1;
+        public buint _offset2;
 
-        public ItmFreqOffPair(bint off1, bint off2)
+        public ItmFreqOffPair(buint off1, buint off2)
         {
             _offset1 = off1;
             _offset2 = off2;
