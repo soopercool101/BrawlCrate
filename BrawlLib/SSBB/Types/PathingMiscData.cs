@@ -8,6 +8,8 @@ namespace BrawlLib.SSBB.Types
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct PathingMiscData
     {
+        public static readonly uint HeaderSize = 0x20;
+
         public buint _count;
         public buint _headerSize; // 0x20
         public bfloat _unknown0x08;

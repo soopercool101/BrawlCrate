@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
@@ -166,10 +166,24 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
-            return ((PathingMiscData*) source.Address)->_headerSize == 0x20 &&
-                   ((PathingMiscData*) source.Address)->_count < 10000
-                ? new PathingMiscDataNode()
-                : null;
+            PathingMiscData* p = (PathingMiscData*)source.Address;
+            uint sizeCheck = PathingMiscData.HeaderSize + PathingMiscDataEntry.Size * p->_count;
+            if (p->_headerSize == PathingMiscData.HeaderSize && source.Length > sizeCheck)
+            {
+                for (int i = 0; i < p->_count; i++)
+                {
+                    PathingMiscDataEntry* pe = (PathingMiscDataEntry*)(*p)[i];
+                    sizeCheck += PathingMiscDataSubEntry.Size * pe->_count;
+                    if (sizeCheck > source.Length)
+                    {
+                        return null;
+                    }
+                }
+
+                return sizeCheck == source.Length ? new PathingMiscDataNode() : null;
+            }
+
+            return null;
         }
     }
 
