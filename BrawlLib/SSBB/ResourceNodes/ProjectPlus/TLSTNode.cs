@@ -1,12 +1,10 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.Audio;
-using BrawlLib.Internal.Windows.Controls.Hex_Editor;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Text;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
