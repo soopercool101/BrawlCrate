@@ -264,7 +264,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((CSSC*) source.Address)->_tag == CSSC.Tag ? new CSSCNode() : null;
         }

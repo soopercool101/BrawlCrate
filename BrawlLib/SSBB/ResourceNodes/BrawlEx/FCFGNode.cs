@@ -1290,7 +1290,7 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             return false;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((FCFG*) source.Address)->_tag == FCFG.Tag1 || ((FCFG*) source.Address)->_tag == FCFG.Tag2
                 ? new FCFGNode()

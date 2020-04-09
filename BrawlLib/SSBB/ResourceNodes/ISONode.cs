@@ -52,7 +52,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             ISOPartitionHeader* header = (ISOPartitionHeader*) source.Address;
             bool GCMatch = header->_tagGC == ISOPartitionHeader.GCTag;

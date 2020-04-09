@@ -822,7 +822,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((ARCHeader*) source.Address)->_tag == ARCHeader.Tag ? new ARCNode() : null;
         }

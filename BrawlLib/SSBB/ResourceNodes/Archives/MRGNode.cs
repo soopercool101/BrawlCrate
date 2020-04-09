@@ -138,7 +138,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //internal static ResourceNode TryParse(DataSource source) 
+        //internal static ResourceNode TryParse(DataSource source, ResourceNode parent) 
         //{
         //    buint* addr = (buint*)source.Address;
 

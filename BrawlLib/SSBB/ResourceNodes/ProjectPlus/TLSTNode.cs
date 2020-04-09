@@ -92,7 +92,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "TLST" ? new TLSTNode() : null;
         }

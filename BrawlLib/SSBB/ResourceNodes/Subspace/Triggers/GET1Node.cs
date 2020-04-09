@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         protected override Type SubEntryType => typeof(GET1EntryNode);
         protected override string baseName => "Area Triggers";
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GET1" ? new GET1Node() : null;
         }

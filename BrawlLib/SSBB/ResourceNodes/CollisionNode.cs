@@ -235,7 +235,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return box;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             CollisionHeader* header = (CollisionHeader*) source.Address;
 

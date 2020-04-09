@@ -164,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((PathingMiscData*) source.Address)->_headerSize == 0x20 &&
                    ((PathingMiscData*) source.Address)->_count < 10000

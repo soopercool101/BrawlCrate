@@ -84,7 +84,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.Remove();
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((RSEQHeader*) source.Address)->_header._tag == RSEQHeader.Tag ? new RSEQNode() : null;
         }

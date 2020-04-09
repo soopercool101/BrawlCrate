@@ -815,7 +815,7 @@ Full changelog and documentation can be viewed from the help menu.";
                 {
                     ResourceNode n = null;
                     DataSource d = new DataSource(&data[i], 0);
-                    if ((n = NodeFactory.GetRaw(d)) != null)
+                    if ((n = NodeFactory.GetRaw(d, null)) != null)
                     {
                         if (!(n is MSBinNode))
                         {

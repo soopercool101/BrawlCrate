@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_dataLength = data->_header._length;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((RWAR*) source.Address)->_header._tag == RWAR.Tag ? new RWARNode() : null;
         }

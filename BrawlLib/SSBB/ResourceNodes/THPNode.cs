@@ -96,7 +96,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnRebuild(address, length, force);
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((THPHeader*) source.Address)->_tag == THPHeader.Tag ? new THPNode() : null;
         }

@@ -818,7 +818,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             RELHeader* header = (RELHeader*) source.Address;
             return header->_info._id <= 0x7E &&

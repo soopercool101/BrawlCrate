@@ -163,7 +163,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.Remove();
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((RBNKHeader*) source.Address)->_header._tag == RBNKHeader.Tag ? new RBNKNode() : null;
         }

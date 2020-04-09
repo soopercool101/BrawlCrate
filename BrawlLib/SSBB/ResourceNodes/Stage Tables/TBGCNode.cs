@@ -62,7 +62,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((TBGC*) source.Address)->_tag == TBGC.Tag ? new TBGCNode(0) : null;
         }

@@ -164,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((PLT0v1*) source.Address)->_bresEntry._tag == PLT0v1.Tag ? new PLT0Node() : null;
         }

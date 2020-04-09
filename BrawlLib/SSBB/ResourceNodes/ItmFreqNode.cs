@@ -171,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             ItmFreqHeader* header = (ItmFreqHeader*) source.Address;
             return header->_Length == source.Length &&

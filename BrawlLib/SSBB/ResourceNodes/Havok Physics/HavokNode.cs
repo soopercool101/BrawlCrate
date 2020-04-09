@@ -406,7 +406,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.Replace(fileName, prot, options);
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((HKXHeader*) source.Address)->_tag1 == HKXHeader.Tag1 ? new HavokNode() : null;
         }

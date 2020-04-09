@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         protected override Type SubEntryType => typeof(GNDVEntryNode);
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GNDV" ? new GNDVNode() : null;
         }

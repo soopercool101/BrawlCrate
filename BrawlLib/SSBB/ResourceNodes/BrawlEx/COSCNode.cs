@@ -523,7 +523,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((COSC*) source.Address)->_tag == COSC.Tag ? new COSCNode() : null;
         }

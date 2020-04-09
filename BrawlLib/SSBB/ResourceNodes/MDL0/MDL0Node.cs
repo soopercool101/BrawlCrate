@@ -3573,7 +3573,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((MDL0Header*) source.Address)->_header._tag == MDL0Header.Tag ? new MDL0Node() : null;
         }
