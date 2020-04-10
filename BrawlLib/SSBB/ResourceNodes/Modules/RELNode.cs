@@ -146,7 +146,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Stage module conversion - designer properties
 
         [Category("Brawl Stage Module")]
-        [TypeConverter(typeof(DropDownListStageIDs))]
+        [TypeConverter(typeof(DropDownListStageRelIDs))]
         public int? StageID
         {
             get => _stageID;
