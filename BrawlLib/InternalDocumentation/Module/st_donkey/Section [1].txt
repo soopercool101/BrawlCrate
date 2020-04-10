@@ -1,3 +1,31 @@
+st_donkey Section [1]: 0x00001A58
+Parasol Score Increment Value
+
+The value that collected parasol power-ups add to the score.
+
+Default: 800 (0x0320)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x00001A94
+Handbag Score Increment Value
+
+The value that collected handbag power-ups add to the score.
+
+Default: 800 (0x0320)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x00001AD0
+Hat Score Increment Value
+
+The value that collected hat power-ups add to the score.
+
+Default: 800 (0x0320)
+
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
 st_donkey Section [1]: 0x00004CDC
 Donkey Kong Sound Effect
 
