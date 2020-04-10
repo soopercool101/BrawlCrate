@@ -827,7 +827,7 @@ namespace BrawlLib.SSBB.Types
 
         public WiiColorComponentType Type => (WiiColorComponentType) (int) _format;
 
-        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+        public string ResourceString => ResourceStringAddress == null ? "" : new string((sbyte*) ResourceStringAddress);
 
         public VoidPtr ResourceStringAddress
         {
