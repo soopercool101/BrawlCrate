@@ -301,7 +301,7 @@ namespace BrawlCrate.NodeWrappers
             string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
             foreach (GenericWrapper n in nodes)
             {
-                chosenExtensions.TryGetValue(n.GetType(), out string ext);
+                chosenExtensions.TryGetValue(n._resource.GetType(), out string ext);
                 if (!string.IsNullOrEmpty(ext) && !ext.StartsWith("."))
                 {
                     ext = ext.Insert(0, ".");
