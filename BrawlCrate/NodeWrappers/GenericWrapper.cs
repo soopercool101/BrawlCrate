@@ -296,8 +296,7 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
 
-            string invalidChars =
-                System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+            string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
             string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
             foreach (GenericWrapper n in nodes)
             {
