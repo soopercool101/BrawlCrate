@@ -89,6 +89,7 @@
         MDL0Bone,
         MDL0Object,
         MDL0Shader,
+        MDL0Color,
         TEVStage,
         MDL0Material,
         MDL0MaterialEntry,
