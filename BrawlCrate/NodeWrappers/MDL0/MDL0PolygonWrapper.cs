@@ -2,6 +2,7 @@
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -65,9 +66,17 @@ namespace BrawlCrate.NodeWrappers
         public override ResourceNode Duplicate()
         {
             MDL0ObjectNode node = ((MDL0ObjectNode) _resource).HardCopy();
-            node.Name += " - Copy";
-            ((MDL0ObjectNode) _resource).Model._objGroup.AddChild(node);
-            //((MDL0ObjectNode)_resource).Model.Rebuild(true);
+            // Set the name programatically (based on Windows' implementation)
+            int index = _resource.Index;
+            int n = 0;
+            while (_resource.Parent.FindChildrenByName(node.Name).Length >= 1)
+            {
+                // Get the last index of the last duplicated node in order to place it after that one
+                index = Math.Max(index, _resource.Parent.FindChildrenByName(node.Name).Last().Index);
+                // Set the name based on the number of duplicate nodes found
+                node.Name = $"{_resource.Name} ({++n})";
+            }
+            ((MDL0ObjectNode) _resource).Model._objGroup.InsertChild(node, true, index + 1);
             return node;
         }
 
