@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MDL0Material)]
-    public class MDL0MaterialWrapper : GenericWrapper
+    public class MDL0MaterialWrapper : MDL0EntryWrapper
     {
         #region Menu
 
