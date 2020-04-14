@@ -1641,7 +1641,7 @@ namespace BrawlCrate.UI
 
         protected void newObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _selectedObject = new CollisionObject {Name = $"Collision Object [{_targetNode.Children.Count + 1}]"};
+            _selectedObject = new CollisionObject {Name = $"Collision Object [{_targetNode.Children.Count + 1}]", Independent = true};
             _targetNode.AddChild(_selectedObject);
             lstObjects.Items.Add(_selectedObject, true);
             lstObjects.SelectedItem = _selectedObject;
