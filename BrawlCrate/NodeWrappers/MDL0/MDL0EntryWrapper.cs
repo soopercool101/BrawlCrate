@@ -23,7 +23,38 @@ namespace BrawlCrate.NodeWrappers
             string tempPath = Path.GetTempFileName();
             _resource.Export(tempPath);
             // Initialize node in a way that will not cause crashes
-            ResourceNode rNode2 = new RawDataNode { _name = _resource.Name };
+            ResourceNode rNode2;
+            switch (Resource.ResourceFileType)
+            {
+                case ResourceType.MDL0Color:
+                    rNode2 = new MDL0ColorNode();
+                    break;
+                case ResourceType.MDL0UV:
+                    rNode2 = new MDL0UVNode();
+                    break;
+                case ResourceType.MDL0Material:
+                    rNode2 = new MDL0MaterialNode();
+                    break;
+                case ResourceType.MDL0Shader:
+                    rNode2 = new MDL0ShaderNode();
+                    break;
+                case ResourceType.MDL0Texture:
+                    rNode2 = new MDL0TextureNode();
+                    break;
+                case ResourceType.MDL0Normal:
+                    rNode2 = new MDL0NormalNode();
+                    break;
+                case ResourceType.MDL0Bone:
+                    rNode2 = new MDL0BoneNode();
+                    break;
+                case ResourceType.MDL0Vertex:
+                    rNode2 = new MDL0VertexNode();
+                    break;
+                default:
+                    throw new NotSupportedException("Unsupported type for MDL0 Duplication");
+            }
+            
+            rNode2._name = _resource.Name;
             rNode2.Replace(tempPath);
 
             if (rNode2 == null)

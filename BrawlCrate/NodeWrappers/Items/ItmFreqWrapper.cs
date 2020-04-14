@@ -1,6 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers

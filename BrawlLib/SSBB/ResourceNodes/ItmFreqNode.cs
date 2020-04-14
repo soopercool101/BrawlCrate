@@ -1,11 +1,9 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types;
-using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

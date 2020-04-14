@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -291,6 +292,28 @@ namespace BrawlCrate.NodeWrappers
         public MDL0BoneWrapper()
         {
             ContextMenuStrip = _menu;
+        }
+
+        public override ResourceNode Duplicate(bool changeName)
+        {
+            ResourceNode b = base.Duplicate(changeName);
+            string suffix = b.Name.Substring(Resource.Name.Length);
+            DuplicateHelper(Resource, b, suffix);
+            return b;
+        }
+
+        private void DuplicateHelper(ResourceNode originalParent, ResourceNode duplicatedParent, string suffix)
+        {
+            foreach (ResourceNode n in originalParent.Children)
+            {
+                string tempPath = Path.GetTempFileName();
+                _resource.Export(tempPath);
+                // Initialize node in a way that will not cause crashes
+                ResourceNode rNode2 = new MDL0BoneNode { _name = n.Name + suffix };
+                rNode2.Replace(tempPath);
+                duplicatedParent.AddChild(rNode2);
+                DuplicateHelper(n, rNode2, suffix);
+            }
         }
     }
 }
