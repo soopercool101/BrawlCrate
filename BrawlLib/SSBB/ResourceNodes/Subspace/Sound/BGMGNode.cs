@@ -80,8 +80,6 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal BGMGEntry* Header => (BGMGEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
-        public int Entries { get; private set; }
-
 
         private string _stageID;
 
