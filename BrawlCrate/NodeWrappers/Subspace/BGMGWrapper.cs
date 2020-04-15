@@ -1,13 +1,12 @@
-﻿using BrawlLib.SSBB;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers
+namespace BrawlCrate.NodeWrappers.Subspace
 {
-    [NodeWrapper(ResourceType.ADSJ)]
-    public class ADSJWrapper : GenericWrapper
+    [NodeWrapper(ResourceType.BGMG)]
+    public class BGMGWrapper : GenericWrapper
     {
         #region Menu
 
@@ -31,7 +30,7 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
-        static ADSJWrapper()
+        static BGMGWrapper()
         {
             _menu = new ContextMenuStrip();
 
@@ -54,7 +53,7 @@ namespace BrawlCrate.NodeWrappers
 
         protected static void NewEntryAction(object sender, EventArgs e)
         {
-            GetInstance<ADSJWrapper>().NewEntry();
+            GetInstance<BGMGWrapper>().NewEntry();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -69,7 +68,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            ADSJWrapper w = GetInstance<ADSJWrapper>();
+            BGMGWrapper w = GetInstance<BGMGWrapper>();
 
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
@@ -81,15 +80,17 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => FileFilters.ADSJ;
-
         public void NewEntry()
         {
-            ADSJEntryNode node = new ADSJEntryNode {DoorID = "00000000", SendingID = "00000000", JumpBone = "NewJump"};
+            BGMGEntryNode node = new BGMGEntryNode {_name = $"Song [{Resource.Children.Count}]", InfoIndex = -1, Volume = 100};
             _resource.AddChild(node);
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
         }
 
-        public ADSJWrapper()
+        public BGMGWrapper()
         {
             ContextMenuStrip = _menu;
         }

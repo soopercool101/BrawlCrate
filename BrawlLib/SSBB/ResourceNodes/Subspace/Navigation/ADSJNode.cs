@@ -28,17 +28,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 new ADSJEntryNode().Initialize(this, source);
             }
         }
+        protected override string GetName()
+        {
+            return base.GetName("Stepjumps");
+        }
 
         public override bool OnInitialize()
         {
-            ARCFileHeader* header = (ARCFileHeader*) (WorkingUncompressed.Address - 0x20);
-            int index = header->_index;
-
-            if (_name == null)
-            {
-                _name = $"Stepjumps [{index}]";
-            }
-
             return Header->_count > 0;
         }
 

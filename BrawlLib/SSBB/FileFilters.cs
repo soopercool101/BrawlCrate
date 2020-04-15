@@ -151,6 +151,9 @@ namespace BrawlLib.SSBB
             SupportedFilesHandler.GetCompleteFilter("tbst");
 
         // Subspace files
+        public static string ADSJ =
+            SupportedFilesHandler.GetCompleteFilter("adsj");
+
         public static string GEG1 =
             SupportedFilesHandler.GetCompleteFilter("geg1");
 

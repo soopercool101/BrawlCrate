@@ -9,21 +9,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.BGMG;
         internal BGMG* Header => (BGMG*) WorkingUncompressed.Address;
 
-        private int _entries;
-        public int Entries => _entries;
+        protected override string GetName()
+        {
+            return base.GetName("BGMG");
+        }
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            _entries = Header->_count;
-
-            if (_name == null)
-            {
-                _name = "BGMG";
-            }
 
             return Header->_count > 0;
         }
+
 
         public override void OnPopulate()
         {
@@ -141,7 +138,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = $"Song[{Index}]";
+                _name = $"Song [{Index}]";
             }
 
             return false;
