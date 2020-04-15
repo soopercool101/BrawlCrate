@@ -62,13 +62,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             uint offset = (uint) (0x10 + Children.Count * 4);
             for (int i = 0; i < Children.Count; i++)
             {
-                if (i > 0)
-                {
-                    offset += (uint) Children[i - 1].CalculateSize(false);
-                }
+                int size = _children[i].CalculateSize(true);
 
                 *(buint*) (address + 0x10 + i * 4) = offset;
-                _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
+                _children[i].Rebuild(address + offset, size, true);
+                offset += (uint)size;
             }
         }
 
@@ -142,6 +140,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             return false;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            BGMGEntry* header = (BGMGEntry*)address;
+            *header = new BGMGEntry(StageID, InfoIndex, Volume);
         }
     }
 }
