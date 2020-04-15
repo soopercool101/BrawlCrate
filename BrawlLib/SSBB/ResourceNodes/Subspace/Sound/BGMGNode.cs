@@ -142,6 +142,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
+        public override int OnCalculateSize(bool force)
+        {
+            return BGMGEntry.Size;
+        }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             BGMGEntry* header = (BGMGEntry*)address;
