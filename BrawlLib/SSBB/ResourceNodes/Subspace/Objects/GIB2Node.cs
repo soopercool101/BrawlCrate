@@ -64,12 +64,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte _collisiondataid;
         public byte _unknown0x2E;
         public byte _unknown0x2F;
-        public float _unkflag6;
-        public float _unkflag7;
-        public byte _unknown0x38;
-        public byte _unknown0x39;
-        public byte _unknown0x3A;
-        public byte _unkflag8;
+        public float _posX;
+        public float _posY;
+        public int _itemspawngroup;
         public byte _unknown0x3C;
         public byte _unknown0x3D;
         public byte _unknown0x3E;
@@ -162,37 +159,38 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Box")]
-        [DisplayName("Unk6")]
-        public float Unk6
+        [DisplayName("PositionX")]
+        public float PosX
         {
-            get => _unkflag6;
+            get => _posX;
             set
             {
-                _unkflag6 = value;
+                PosX = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Item Box")]
-        [DisplayName("Unk7")]
-        public float Unk7
+        [DisplayName("PositionY")]
+        public float PosY
         {
-            get => _unkflag7;
+            get => _posY;
             set
             {
-                _unkflag7 = value;
+                _posY = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Item Box")]
-        [DisplayName("Unk8")]
-        public byte Unk8
+        [DisplayName("Item Group")]
+        [Description("Group to spawn items from in the stage's ItemGen table")]
+        public int ItemSpawnGroup
         {
-            get => _unkflag8;
+            get => _itemspawngroup;
             set
             {
-                _unkflag8 = value;
+                _itemspawngroup = value;
                 SignalPropertyChange();
             }
         }
@@ -245,7 +243,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Triggers")]
+        [Category("Item Box")]
         [DisplayName("Trigger1")]
         [TypeConverter(typeof(HexTypeConverter))]
         public uint Trigger1
@@ -258,7 +256,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Triggers")]
+        [Category("Item Box")]
         [DisplayName("Trigger2")]
         [TypeConverter(typeof(HexTypeConverter))]
         public uint Trigger2
@@ -271,7 +269,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Triggers")]
+        [Category("Item Box")]
         [DisplayName("Trigger3")]
         [TypeConverter(typeof(HexTypeConverter))]
         public uint Trigger3
@@ -328,12 +326,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _collisiondataid = Header->_collisiondataid;
             _unknown0x2E = Header->_unknown0x2E;
             _unknown0x2F = Header->_unknown0x2F;
-            _unkflag6 = Header->_unkflag6;
-            _unkflag7 = Header->_unkflag7;
-            _unknown0x38 = Header->_unknown0x38;
-            _unknown0x39 = Header->_unknown0x39;
-            _unknown0x3A = Header->_unknown0x3A;
-            _unkflag8 = Header->_unkflag8;
+            _posX = Header->_posX;
+            _posY = Header->_posY;
+            _itemspawngroup = Header->_itemspawngroup;
             _unknown0x3C = Header->_unknown0x3C;
             _unknown0x3D = Header->_unknown0x3D;
             _unknown0x3E = Header->_unknown0x3E;
@@ -407,12 +402,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_collisiondataid = _collisiondataid;
             hdr->_unknown0x2E = _unknown0x2E;
             hdr->_unknown0x2F = _unknown0x2F;
-            hdr->_unkflag6 = _unkflag6;
-            hdr->_unkflag7 = _unkflag7;
-            hdr->_unknown0x38 = _unknown0x38;
-            hdr->_unknown0x39 = _unknown0x39;
-            hdr->_unknown0x3A = _unknown0x3A;
-            hdr->_unkflag8 = _unkflag8;
+            hdr->_posX = _posX;
+            hdr->_posY = _posY;
+            hdr->_itemspawngroup = _itemspawngroup;
             hdr->_unknown0x3C = _unknown0x3C;
             hdr->_unknown0x3D = _unknown0x3D;
             hdr->_unknown0x3E = _unknown0x3E;

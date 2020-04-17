@@ -31,7 +31,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _unknown0x17;
         public byte _unknown0x18;
         public byte _unknown0x19;
-        public float _unkflag2;
+        public bfloat _unkflag2;
         public byte _unknown0x1E;
         public byte _unknown0x1F;
         public byte _unknown0x20;
@@ -50,12 +50,9 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _collisiondataid;
         public byte _unknown0x2E;
         public byte _unknown0x2F;
-        public float _unkflag6;
-        public float _unkflag7;
-        public byte _unknown0x38;
-        public byte _unknown0x39;
-        public byte _unknown0x3A;
-        public byte _unkflag8;
+        public bfloat _posX;
+        public bfloat _posY;
+        public bint _itemspawngroup;
         public byte _unknown0x3C;
         public byte _unknown0x3D;
         public byte _unknown0x3E;
