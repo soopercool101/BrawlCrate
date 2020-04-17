@@ -75,11 +75,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte _unknown0x41;
         public byte _unknown0x42;
         public byte _unknown0x43;
-        public byte _unknown0x44;
-        public byte _unkflag9;
+        public short _unkflag9;
         public byte _unkflag10;
         public byte _unkflag11;
-        public byte _unkflag12;
         public uint _trigger1;
         public uint _trigger2;
         public uint _trigger3;
@@ -197,7 +195,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Box")]
         [DisplayName("Unk9")]
-        public byte Unk9
+        public short Unk9
         {
             get => _unkflag9;
             set
@@ -227,18 +225,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 _unkflag11 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Item Box")]
-        [DisplayName("Unk12")]
-        public byte Unk12
-        {
-            get => _unkflag12;
-            set
-            {
-                _unkflag12 = value;
                 SignalPropertyChange();
             }
         }
@@ -337,7 +323,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x41 = Header->_unknown0x41;
             _unknown0x42 = Header->_unknown0x42;
             _unknown0x43 = Header->_unknown0x43;
-            _unknown0x44 = Header->_unknown0x44;
             _unkflag9 = Header->_unkflag9;
             _unkflag10 = Header->_unkflag10;
             _unkflag11 = Header->_unkflag11;
@@ -413,7 +398,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_unknown0x41 = _unknown0x41;
             hdr->_unknown0x42 = _unknown0x42;
             hdr->_unknown0x43 = _unknown0x43;
-            hdr->_unknown0x44 = _unknown0x44;
             hdr->_unkflag9 = _unkflag9;
             hdr->_unkflag10 = _unkflag10;
             hdr->_unkflag11 = _unkflag11;

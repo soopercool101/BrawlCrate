@@ -63,6 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("General")]
         [DisplayName("Graphic ID")]
+        [TypeConverter(typeof(HexTypeConverter))]
         public uint Graphic
         {
             get => _gfx;
@@ -77,6 +78,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Triggers")]
         [DisplayName("TriggerID")]
+        [TypeConverter(typeof(HexTypeConverter))]
         public uint TriggerID
         {
             get => _triggerID;

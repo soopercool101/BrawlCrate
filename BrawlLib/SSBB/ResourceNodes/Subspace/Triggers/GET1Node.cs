@@ -50,7 +50,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Triggers")]
         [DisplayName("Trigger1")]
-        //[TypeConverter(typeof(UInt32HexTypeConverter))]
+        [TypeConverter(typeof(HexTypeConverter))]
         public uint Trigger
         {
             get => _trigger1;
@@ -65,7 +65,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Triggers")]
         [DisplayName("Trigger2")]
-        //[TypeConverter(typeof(UInt32HexTypeConverter))]
+        [TypeConverter(typeof(HexTypeConverter))]
         public uint Trigger2
         {
             get => _trigger2;
