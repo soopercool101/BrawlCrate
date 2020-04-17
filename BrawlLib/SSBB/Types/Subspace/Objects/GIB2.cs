@@ -6,6 +6,8 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GIB2Entry
     {
+        public const int SIZE = 0x54;
+
         public bfloat _header;
         public byte _unknown0x04;
         public byte _unkflag0;
@@ -45,7 +47,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _unknown0x2A;
         public byte _unkflag3;
         public byte _modeldataid;
-        public byte _unkflag5;
+        public byte _collisiondataid;
         public byte _unknown0x2E;
         public byte _unknown0x2F;
         public float _unkflag6;
@@ -66,19 +68,9 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _unkflag9;
         public byte _unkflag10;
         public byte _unkflag11;
-        public byte _unkflag12;
-        public byte _unknown0x48;
-        public byte _unknown0x49;
-        public byte _unkflag13;
-        public byte _unknown0x4B;
-        public byte _unknown0x4C;
-        public byte _unknown0x4D;
-        public byte _unkflag14;
-        public byte _unknown0x4F;
-        public byte _unknown0x50;
-        public byte _unknown0x51;
-        public byte _unkflag15;
-        public byte _unknown0x53;
+        public buint _trigger1;
+        public buint _trigger2;
+        public buint _trigger3;
 
         private VoidPtr Address
         {
