@@ -61,8 +61,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _unknown0x41;
         public byte _unknown0x42;
         public byte _unknown0x43;
-        public byte _unknown0x44;
-        public byte _unkflag9;
+        public bshort _unkflag9;
         public byte _unkflag10;
         public byte _unkflag11;
         public buint _trigger1;
