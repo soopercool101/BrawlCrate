@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GLK2Node : BLOCEntryNode
+    public class GLK2Node : BLOCEntryNode
     {
         protected override Type SubEntryType => typeof(GLK2EntryNode);
         public override ResourceType ResourceFileType => ResourceType.Unknown;
@@ -22,15 +22,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal GLK2Entry* Header => (GLK2Entry*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        public int _unkown0x00;
-        public byte _unkflag1;
-        public byte _unkflag2;
-        public byte _unkflag3;
-        public byte _unkflag4;
-        public uint _trigger1;
-        public uint _trigger2;
-        public uint _trigger3;
-        public uint _trigger4;
+        private int _unkown0x00;
+        private byte _unkflag1;
+        private byte _unkflag2;
+        private byte _unkflag3;
+        private byte _unkflag4;
+        private uint _trigger1;
+        private uint _trigger2;
+        private uint _trigger3;
+        private uint _trigger4;
 
         [Category("Camera")]
         [DisplayName("Unk0")]

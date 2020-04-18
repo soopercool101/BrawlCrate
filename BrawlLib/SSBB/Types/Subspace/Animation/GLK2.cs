@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Animation
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GLK2Entry
     {
-        public const int SIZE = 0x18;
+        public static readonly int SIZE = 0x18;
 
         public bint _unknown0x00;
         public byte _unkflag1;
@@ -17,16 +17,5 @@ namespace BrawlLib.SSBB.Types.Subspace.Animation
         public buint _trigger2;
         public buint _trigger3;
         public buint _trigger4;
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
     }
 }
