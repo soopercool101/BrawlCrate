@@ -83,7 +83,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
                 DataSource source = new DataSource(map);
-                if ((node = FromSource(parent, source, t)) == null)
+
+                bool supportsCompression = true;
+                if(!(t is null))
+                {
+                    ResourceNode n = Activator.CreateInstance(t) as ResourceNode;
+                    supportsCompression = n?.supportsCompression ?? true;
+                }
+
+                if ((node = FromSource(parent, source, t, supportsCompression)) == null)
                 {
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 
