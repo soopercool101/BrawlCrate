@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.31
+BrawlCrate - v0.32
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,27 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.32 - (4/19/2020)
+ . Add initial support for Pathing Data found in STGDOLPIC, STGKART, and STGGREENHILL
+ . Fix rebuilding for Item Generation nodes, add support for adding additional groups and entries
+ . Add support for Super Soft collisions
+ . Add support for adding new entries to BGMG
+ . Add support for editing subspace item block position, triggers, and collision data
+ . Add support for GLK2 and GLOK nodes
+ . Increase TLST max children from 50 to 64
+ . TLST entries now start with default 80 volume and 40 frequency
+ . Add Replace (Keep Camera) option to SCN0
+ . Update Octokit installation from v0.36.0 to v0.46.0
+ . Allow Python libraries to be included in BrawlAPI subscriptions
+ . Fix bug in which edits to BGMG Entries would not be saved
+ . Fix crash when attempting to duplicate MDL0 subentries
+ . Fix bug in which exporting materials would throw errors under certain circumstances
+ . Fix bug in which Stage ID for modules used the incorrect values for custom stages
+ . Fix bug in which previewing all models would throw an error if a collision was bound to a non-existant bone
+ . Fix bug in which resizing animations from the animation editor would not properly update frame count for previewer
+ . Fix bug in which material ref node texture matrix settings would not be kept when reimporting meshes
+ . Fix bug in which the listed Python path for additional libraries was not correct
  
  - BrawlCrate v0.31 Hotfix 1 - (3/29/2020)
  . Fix bug in which changing flags would not allow saving for PARAM files

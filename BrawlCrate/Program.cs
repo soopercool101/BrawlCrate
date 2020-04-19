@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.31-h1";
+        public static readonly string TagName = "v0.32";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,12 +41,11 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.31 Hotfix 1! Here's what's new in this release:
-- (Hotfix 1) Fix inability to save PARAM files with changed flags
-- Integrated support for Project+ files (TSLT, ASLS, and PARAM)
-- Improved subspace support
-- Major fixes to Gradient Generator
-- Various crash fixes
+            @"Updated to BrawlCrate v0.32! Here's what's new in this release:
+- Add support for pathing data
+- Fix ItmGen rebuilding
+- Add support for Super Soft collisions
+- Various subspace improvements
 
 Full changelog and documentation can be viewed from the help menu.";
 
