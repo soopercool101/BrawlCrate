@@ -150,7 +150,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t, bool supportCompression)
         {
-            ResourceNode n = null;
+            ResourceNode n;
 
             if (t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
             {
