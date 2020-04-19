@@ -196,7 +196,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int size = BLOCEntry.Size + Children.Count * 4;
             foreach (ResourceNode node in Children)
             {
-                size += node.CalculateSize(force);
+                size += node.OnCalculateSize(force);
             }
 
             return size;
