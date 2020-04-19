@@ -21,6 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal GIB2Entry* Header => (GIB2Entry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
+        public override bool supportsCompression => false;
 
         public bfloat _header;
         public byte _unknown0x04;
