@@ -22,7 +22,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal GLK2Entry* Header => (GLK2Entry*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        private int _unkown0x00;
+        private int _unknown0x00;
         private byte _unkflag1;
         private byte _unkflag2;
         private byte _unkflag3;
@@ -36,10 +36,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [DisplayName("Unk0")]
         public int Unk1
         {
-            get => _unkown0x00;
+            get => _unknown0x00;
             set
             {
-                _unkown0x00 = value;
+                _unknown0x00 = value;
                 SignalPropertyChange();
             }
         }
@@ -139,7 +139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            _unkown0x00 = Header->_unknown0x00;
+            _unknown0x00 = Header->_unknown0x00;
             _unkflag1 = Header->_unkflag1;
             _unkflag2 = Header->_unkflag2;
             _unkflag3 = Header->_unkflag3;
@@ -165,7 +165,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             GLK2Entry* hdr = (GLK2Entry*)address;
-            hdr->_unknown0x00 = _unkown0x00;
+            hdr->_unknown0x00 = _unknown0x00;
             hdr->_unkflag1 = _unkflag1;
             hdr->_unkflag2 = _unkflag2;
             hdr->_unkflag3 = _unkflag3;
