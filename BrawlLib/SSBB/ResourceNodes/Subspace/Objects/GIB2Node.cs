@@ -65,8 +65,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte _collisiondataid;
         public byte _unknown0x2E;
         public byte _unknown0x2F;
-        public float _posX;
-        public float _posY;
+        public Vector2 _pos;
         public int _itemspawngroup;
         public byte _unknown0x3C;
         public byte _unknown0x3D;
@@ -158,25 +157,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Box")]
-        [DisplayName("PositionX")]
-        public float PosX
+        [TypeConverter(typeof(Vector2StringConverter))]
+        public Vector2 Position
         {
-            get => _posX;
+            get => _pos;
             set
             {
-                PosX = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Item Box")]
-        [DisplayName("PositionY")]
-        public float PosY
-        {
-            get => _posY;
-            set
-            {
-                _posY = value;
+                _pos = value;
                 SignalPropertyChange();
             }
         }
@@ -313,8 +300,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _collisiondataid = Header->_collisiondataid;
             _unknown0x2E = Header->_unknown0x2E;
             _unknown0x2F = Header->_unknown0x2F;
-            _posX = Header->_posX;
-            _posY = Header->_posY;
+            _pos = new Vector2(Header->_posX, Header->_posY);
             _itemspawngroup = Header->_itemspawngroup;
             _unknown0x3C = Header->_unknown0x3C;
             _unknown0x3D = Header->_unknown0x3D;
@@ -388,8 +374,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_collisiondataid = _collisiondataid;
             hdr->_unknown0x2E = _unknown0x2E;
             hdr->_unknown0x2F = _unknown0x2F;
-            hdr->_posX = _posX;
-            hdr->_posY = _posY;
+            hdr->_posX = _pos._x;
+            hdr->_posY = _pos._y;
             hdr->_itemspawngroup = _itemspawngroup;
             hdr->_unknown0x3C = _unknown0x3C;
             hdr->_unknown0x3D = _unknown0x3D;
