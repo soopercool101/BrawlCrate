@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Animation
         public static readonly int SIZE = 0x18;
 
         public bint _unknown0x00;
-        public byte _unkflag1;
+        public byte _modelDataID;
         public byte _unkflag2;
         public byte _unkflag3;
         public byte _unkflag4;
