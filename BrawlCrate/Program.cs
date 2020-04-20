@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.32";
+        public static readonly string TagName = "v0.32-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -42,6 +42,7 @@ namespace BrawlCrate
         /// </summary>
         public static readonly string UpdateMessage =
             @"Updated to BrawlCrate v0.32! Here's what's new in this release:
+- (Hotfix 1) Improve boot times when the automatic updater is active
 - Add support for pathing data
 - Fix ItmGen rebuilding
 - Add support for Super Soft collisions
