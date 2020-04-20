@@ -209,7 +209,7 @@ namespace BrawlCrate.UI
                         changelog?.WaitForExit();
                     }
 #else
-                    UpdaterHelper.CheckUpdate(manual || Properties.Settings.Default.APIAutoUpdate, true,
+                    UpdaterHelper.CheckUpdate(manual, true,
                         Program.TagName, manual, Program.RootPath ?? "<null>",
                         _docUpdates, !manual && _autoUpdate, Properties.Settings.Default.APIAutoUpdate);
 #endif
