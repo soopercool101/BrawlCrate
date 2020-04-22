@@ -15,6 +15,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
 
+        private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
+            new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
+
         static ItmFreqTableGroupWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -23,6 +26,8 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
+            _menu.Items.Add(new ToolStripSeparator());
+            _menu.Items.Add(DeleteToolStripMenuItem);
         }
 
         private static void NewEntryAction(object sender, EventArgs e)
