@@ -3,6 +3,7 @@ using BrawlLib.Internal.Audio;
 using BrawlLib.SSBB.Types.Audio;
 using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -747,8 +748,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 IAudioStream stream = CreateStreams()[0];
                 if (stream == null)
                 {
-                    throw new Exception(
-                        $"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" cannot be exported to WAV.");
+                    MessageBox.Show($"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" has no associated sound data and cannot be exported to WAV.");
+                    return;
                 }
 
                 WAV.ToFile(stream, outPath);
