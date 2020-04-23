@@ -73,10 +73,10 @@ namespace BrawlLib.SSBB.Types
         public bint _brresOffset;
         public bint _unknown0x0C;
         public bint _unknown0x10;
-        public bint _unknown0x14;
-        public bshort _order1; // 0x1C
-        public bshort _order2; // 0x1E
-        public bshort _unknown0x20; // 0x20
-        public blong _characterFlags; //0x22
+        public bshort _order1; // 0x14
+        public bshort _alphabeticalOrder; // 0x16
+        public bshort _unknown0x18; // 0x18
+        public bshort _unknown0x1A; // 0x1A
+        public blong _characterFlags; //0x1C
     }
 }
