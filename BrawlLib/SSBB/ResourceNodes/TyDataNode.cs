@@ -99,7 +99,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal TySeal* Header => (TySeal*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Sticker;
 
-        internal string _brres;
+        private string _brres;
 
         [Category("Sticker Data")]
         public string BRRES
@@ -113,7 +113,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
 
-        internal int _id;
+        private int _id;
 
         [Category("Sticker Data")]
         public int ID
@@ -126,7 +126,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public int _unknown0x0C;
+        private int _unknown0x0C;
 
         [Category("Sticker Data")]
         public int Unknown0x0C
@@ -139,7 +139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public int _unknown0x10;
+        private int _unknown0x10;
 
         [Category("Sticker Data")]
         public int Unknown0x10
@@ -153,20 +153,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
 
-        public short _order1;
+        private short _unknown0x14;
 
         [Category("Sticker Data")]
-        public short Order1
+        public short Unknown0x14
         {
-            get => _order1;
+            get => _unknown0x14;
             set
             {
-                _order1 = value;
+                _unknown0x14 = value;
                 SignalPropertyChange();
             }
         }
 
-        public short _alphabeticalOrder;
+        private short _alphabeticalOrder;
 
         [Category("Sticker Data")]
         public short AlphabeticalOrder
@@ -179,7 +179,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public short _unknown0x18;
+        private short _unknown0x18;
 
         [Category("Sticker Data")]
         public short Unknown0x18
@@ -192,7 +192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public short _unknown0x1A;
+        private short _unknown0x1A;
 
         [Category("Sticker Data")]
         public short Unknown0x1A
@@ -205,7 +205,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public CharacterStickerFlags _characterFlags;
+        private CharacterStickerFlags _characterFlags;
 
         [Category("Sticker Data")]
         public CharacterStickerFlags CharacterFlags
@@ -261,6 +261,241 @@ namespace BrawlLib.SSBB.ResourceNodes
             AllCharacters = 0x3FF97FEF00000FF8
         }
 
+        private int _unknown0x24;
+
+        [Category("Sticker Data")]
+        public int Unknown0x24
+        {
+            get => _unknown0x24;
+            set
+            {
+                _unknown0x24 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private uint _unknown0x28;
+
+        [Category("Sticker Data")]
+        public uint Unknown0x28
+        {
+            get => _unknown0x28;
+            set
+            {
+                _unknown0x28 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _effectType;
+
+        [Category("Sticker Data")]
+        public int EffectType
+        {
+            get => _effectType;
+            set
+            {
+                _effectType = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _effectStrength;
+
+        [Category("Sticker Data")]
+        public float EffectStrength
+        {
+            get => _effectStrength;
+            set
+            {
+                _effectStrength = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x34;
+
+        [Category("Sticker Data")]
+        public float Unknown0x34
+        {
+            get => _unknown0x34;
+            set
+            {
+                _unknown0x34 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x38;
+
+        [Category("Sticker Data")]
+        public float Unknown0x38
+        {
+            get => _unknown0x38;
+            set
+            {
+                _unknown0x38 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x3C;
+
+        [Category("Padding?")]
+        public int Pad0x3C
+        {
+            get => _pad0x3C;
+            set
+            {
+                _pad0x3C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x40;
+
+        [Category("Padding?")]
+        public int Pad0x40
+        {
+            get => _pad0x40;
+            set
+            {
+                _pad0x40 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x44;
+
+        [Category("Padding?")]
+        public int Pad0x44
+        {
+            get => _pad0x44;
+            set
+            {
+                _pad0x44 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x48;
+
+        [Category("Padding?")]
+        public int Pad0x48
+        {
+            get => _pad0x48;
+            set
+            {
+                _pad0x48 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x4C;
+
+        [Category("Sticker Data")]
+        public float Unknown0x4C
+        {
+            get => _unknown0x4C;
+            set
+            {
+                _unknown0x4C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private short _unknown0x50;
+
+        [Category("Sticker Data")]
+        public short Unknown0x50
+        {
+            get => _unknown0x50;
+            set
+            {
+                _unknown0x50 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private short _unknown0x52;
+
+        [Category("Sticker Data")]
+        public short Unknown0x52
+        {
+            get => _unknown0x52;
+            set
+            {
+                _unknown0x52 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private short _unknown0x54;
+
+        [Category("Sticker Data")]
+        public short Unknown0x54
+        {
+            get => _unknown0x54;
+            set
+            {
+                _unknown0x54 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private short _unknown0x56;
+
+        [Category("Sticker Data")]
+        public short Unknown0x56
+        {
+            get => _unknown0x56;
+            set
+            {
+                _unknown0x56 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _sizeOrder;
+
+        [Category("Sticker Data")]
+        public int SizeOrder
+        {
+            get => _sizeOrder;
+            set
+            {
+                _sizeOrder = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x5C;
+
+        [Category("Padding?")]
+        public int Pad0x5C
+        {
+            get => _pad0x5C;
+            set
+            {
+                _pad0x5C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x60;
+
+        [Category("Padding?")]
+        public int Pad0x60
+        {
+            get => _pad0x60;
+            set
+            {
+                _pad0x60 = value;
+                SignalPropertyChange();
+            }
+        }
+
+
         public override bool OnInitialize()
         {
             VoidPtr tydata = Parent.Parent.WorkingUncompressed.Address;
@@ -269,11 +504,29 @@ namespace BrawlLib.SSBB.ResourceNodes
             _brres = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_brresOffset);
             _unknown0x0C = Header->_unknown0x0C;
             _unknown0x10 = Header->_unknown0x10;
-            _order1 = Header->_order1;
+            _unknown0x14 = Header->_unknown0x14;
             _alphabeticalOrder = Header->_alphabeticalOrder;
             _unknown0x18 = Header->_unknown0x18;
             _unknown0x1A = Header->_unknown0x1A;
             _characterFlags = (CharacterStickerFlags)(long)Header->_characterFlags;
+            _unknown0x24 = Header->_unknown0x24;
+            _unknown0x28 = Header->_unknown0x28;
+            _effectType = Header->_effectType;
+            _effectStrength = Header->_effectStrength;
+            _unknown0x34 = Header->_unknown0x34;
+            _unknown0x38 = Header->_unknown0x38;
+            _pad0x40 = Header->_pad0x40;
+            _pad0x40 = Header->_pad0x40;
+            _pad0x44 = Header->_pad0x44;
+            _pad0x48 = Header->_pad0x48;
+            _unknown0x4C = Header->_unknown0x4C;
+            _unknown0x50 = Header->_unknown0x50;
+            _unknown0x52 = Header->_unknown0x52;
+            _unknown0x54 = Header->_unknown0x54;
+            _unknown0x56 = Header->_unknown0x56;
+            _sizeOrder = Header->_sizeOrder;
+            _pad0x5C = Header->_pad0x5C;
+            _pad0x60 = Header->_pad0x60;
             return false;
         }
     }

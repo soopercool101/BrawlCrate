@@ -68,15 +68,35 @@ namespace BrawlLib.SSBB.Types
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct TySeal
     {
+        public static readonly int Size = 0x64;
+
         public bint _id;
         public bint _nameOffset;
         public bint _brresOffset;
         public bint _unknown0x0C;
         public bint _unknown0x10;
-        public bshort _order1; // 0x14
+        public bshort _unknown0x14;
         public bshort _alphabeticalOrder; // 0x16
         public bshort _unknown0x18; // 0x18
         public bshort _unknown0x1A; // 0x1A
         public blong _characterFlags; //0x1C
+        public bint _unknown0x24; // Ranges from 0-3, Enum?
+        public buint _unknown0x28; // Always 0x00030000, offset?
+        public bint _effectType; // 0x2C
+        public bfloat _effectStrength; // 0x30
+        public bfloat _unknown0x34; // 0 for item carry, 1 otherwise?
+        public bfloat _unknown0x38; // Rarity?
+        public bint _pad0x3C; // Always 0?
+        public bint _pad0x40; // Always 0?
+        public bint _pad0x44; // Always 0?
+        public bint _pad0x48; // Always 0?
+        public bfloat _unknown0x4C; // Always 1.0?
+        public bshort _unknown0x50; // Something to do with size?
+        public bshort _unknown0x52; // Something to do with size?
+        public bshort _unknown0x54; // Something to do with size?
+        public bshort _unknown0x56; // Something to do with size?
+        public bint _sizeOrder; // 0x58
+        public bint _pad0x5C; // Always 0?
+        public bint _pad0x60; // Always 0?
     }
 }
