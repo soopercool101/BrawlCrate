@@ -55,6 +55,7 @@
         SndBgmTitleDataEntry,
         SndBgmTitleDataFolder,
         ClassicStageTbl,
+        Sticker,
 
         //Stage Tables
         TBCL,
