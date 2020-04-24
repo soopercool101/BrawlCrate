@@ -61,7 +61,7 @@ namespace BrawlLib.SSBB.Types
     public unsafe struct TyEntry
     {
         public static readonly uint Size = 0x08;
-        public buint _unknown;
+        public buint _offset;
         public buint _strOffset;
     }
 
@@ -71,8 +71,8 @@ namespace BrawlLib.SSBB.Types
         public static readonly int Size = 0x64;
 
         public bint _id;
-        public bint _nameOffset;
-        public bint _brresOffset;
+        public buint _nameOffset;
+        public buint _brresOffset;
         public bint _unknown0x0C;
         public bint _unknown0x10;
         public bshort _unknown0x14;
