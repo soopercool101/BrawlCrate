@@ -91,12 +91,41 @@ namespace BrawlLib.SSBB.Types
         public bint _pad0x44; // Always 0?
         public bint _pad0x48; // Always 0?
         public bfloat _unknown0x4C; // Always 1.0?
-        public bshort _unknown0x50; // Something to do with size?
-        public bshort _unknown0x52; // Something to do with size?
-        public bshort _unknown0x54; // Something to do with size?
-        public bshort _unknown0x56; // Something to do with size?
+        public bshort _textureWidthSmall; // Something to do with size?
+        public bshort _textureLengthSmall; // Something to do with size?
+        public bshort _textureWidth; // Something to do with size?
+        public bshort _textureLength; // Something to do with size?
         public bint _sizeOrder; // 0x58
         public bint _pad0x5C; // Always 0?
         public bint _pad0x60; // Always 0?
+    }
+
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public unsafe struct TySealVertData
+    {
+        public static readonly uint HeaderSize = 0x04;
+        public buint _entries;
+
+        public VoidPtr this[int index] => (byte*)Address + HeaderSize + index * TySealVertDataEntry.Size;
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public unsafe struct TySealVertDataEntry
+    {
+        public static readonly uint Size = 0x08;
+
+        public bint _unknown0x00;
+        public bint _unknown0x04;
     }
 }

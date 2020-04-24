@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,6 +46,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     case "tySealList":
                         node = new TySealList();
                         break;
+                    case "tySealVertData":
+                        node = new TySealVertDataNode();
+                        break;
                     default:
                         node = new RawDataNode();
                         break;
@@ -54,12 +58,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParseGeneric(DataSource source, ResourceNode parent)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             VoidPtr addr = source.Address;
             TyDataHeader* header = (TyDataHeader*)addr;
 
-            if (header->_size != source.Length || header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0 || header->_pad4 != 0 || header->_dataOffset > source.Length || header->_dataOffset + header->_dataEntries * 4 > source.Length)
+            if (header->_size != source.Length || header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0 ||
+                header->_pad4 != 0 || header->_dataOffset > source.Length ||
+                header->_dataOffset + header->_dataEntries * 4 > source.Length)
             {
                 return null;
             }
@@ -86,12 +92,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                 offset += 100;
             }
         }
-    }
-
-    public class StickerData
-    {
-        public string InternalName;
-        public string BrresName;
     }
 
     public unsafe class TySealNode : ResourceNode
@@ -404,54 +404,56 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private short _unknown0x50;
+        private short _textureWidth;
 
         [Category("Sticker Data")]
-        public short Unknown0x50
+        public short TextureWidth
         {
-            get => _unknown0x50;
+            get => _textureWidth;
             set
             {
-                _unknown0x50 = value;
+                _textureWidth = value;
+                _textureWidthSmall = (short)Math.Ceiling(value / 2.0f);
                 SignalPropertyChange();
             }
         }
 
-        private short _unknown0x52;
+        private short _textureLength;
 
         [Category("Sticker Data")]
-        public short Unknown0x52
+        public short TextureLength
         {
-            get => _unknown0x52;
+            get => _textureLength;
             set
             {
-                _unknown0x52 = value;
+                _textureLength = value;
+                _textureLengthSmall = (short) Math.Ceiling(value / 2.0f);
                 SignalPropertyChange();
             }
         }
 
-        private short _unknown0x54;
+        private short _textureWidthSmall;
 
         [Category("Sticker Data")]
-        public short Unknown0x54
+        public short TextureWidthSmall
         {
-            get => _unknown0x54;
+            get => _textureWidthSmall;
             set
             {
-                _unknown0x54 = value;
+                _textureWidthSmall = value;
                 SignalPropertyChange();
             }
         }
 
-        private short _unknown0x56;
+        private short _textureLengthSmall;
 
         [Category("Sticker Data")]
-        public short Unknown0x56
+        public short TextureLengthSmall
         {
-            get => _unknown0x56;
+            get => _textureLengthSmall;
             set
             {
-                _unknown0x56 = value;
+                _textureLengthSmall = value;
                 SignalPropertyChange();
             }
         }
@@ -520,13 +522,66 @@ namespace BrawlLib.SSBB.ResourceNodes
             _pad0x44 = Header->_pad0x44;
             _pad0x48 = Header->_pad0x48;
             _unknown0x4C = Header->_unknown0x4C;
-            _unknown0x50 = Header->_unknown0x50;
-            _unknown0x52 = Header->_unknown0x52;
-            _unknown0x54 = Header->_unknown0x54;
-            _unknown0x56 = Header->_unknown0x56;
+            _textureWidthSmall = Header->_textureWidthSmall;
+            _textureLengthSmall = Header->_textureLengthSmall;
+            _textureWidth = Header->_textureWidth;
+            _textureLength = Header->_textureLength;
             _sizeOrder = Header->_sizeOrder;
             _pad0x5C = Header->_pad0x5C;
             _pad0x60 = Header->_pad0x60;
+            return false;
+        }
+    }
+
+    public unsafe class TySealVertDataNode : ResourceNode
+    {
+        internal TySealVertData* Header => (TySealVertData*)WorkingUncompressed.Address;
+
+        public override bool OnInitialize()
+        {
+            return Header->_entries > 0;
+        }
+
+        public override void OnPopulate()
+        {
+            for (int i = 0; i < Header->_entries; i++)
+            {
+                new TySealVertDataEntryNode { _name = $"Entry [{i}]" }.Initialize(this, (*Header)[i], (int)TySealVertDataEntry.Size);
+            }
+        }
+    }
+
+    public unsafe class TySealVertDataEntryNode : ResourceNode
+    {
+        internal TySealVertDataEntry* Header => (TySealVertDataEntry*)WorkingUncompressed.Address;
+
+        private int _unknown0x00;
+
+        public int Unknown0x00
+        {
+            get => _unknown0x00;
+            set
+            {
+                _unknown0x00 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _unknown0x04;
+        public int Unknown0x04
+        {
+            get => _unknown0x04;
+            set
+            {
+                _unknown0x04 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public override bool OnInitialize()
+        {
+            _unknown0x00 = Header->_unknown0x00;
+            _unknown0x04 = Header->_unknown0x04;
             return false;
         }
     }
