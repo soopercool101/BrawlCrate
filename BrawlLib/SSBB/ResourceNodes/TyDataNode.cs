@@ -119,9 +119,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             // Write each child
             foreach (TyEntryNode n in Children)
             {
+                n.EntryOffset = offset;
                 int size = n.OnCalculateSize(true);
                 n.OnRebuild(address + offset, size, true);
-                n.EntryOffset = offset;
                 offset += (uint)size;
             }
             // Write data section
@@ -213,7 +213,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     address.WriteUTF8String(sticker.BRRES, true, offset, lengthCalc);
                     sticker._nameOffset = offset - TyDataHeader.HeaderSize;
                     sticker._brresOffset = offset - TyDataHeader.HeaderSize;
-                    offset += lengthCalc;
+                    offset += lengthCalc + 4;
                 }
                 else
                 {
@@ -221,7 +221,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     address.WriteUTF8String(sticker.Name, true, offset, lengthCalc);
                     sticker._nameOffset = offset - TyDataHeader.HeaderSize;
                     offset += lengthCalc;
-                    lengthCalc = (uint)(sticker.BRRES.UTF8Length() + 1).Align(8);
+                    lengthCalc = (uint)(sticker.BRRES.UTF8Length() + 1).Align(4);
                     address.WriteUTF8String(sticker.BRRES, true, offset, lengthCalc);
                     sticker._brresOffset = offset - TyDataHeader.HeaderSize;
                     offset += lengthCalc;
@@ -240,13 +240,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                     string.IsNullOrEmpty(sticker.BRRES) || sticker.Name.Equals(sticker.BRRES))
                 {
                     uint lengthCalc = (uint)(sticker.BRRES.UTF8Length() + 1).Align(4);
-                    sizeCalc += lengthCalc;
+                    sizeCalc += lengthCalc + 4;
                 }
                 else
                 {
                     uint lengthCalc = (uint)(sticker.Name.UTF8Length() + 1).Align(4);
                     sizeCalc += lengthCalc;
-                    lengthCalc = (uint)(sticker.BRRES.UTF8Length() + 1).Align(8);
+                    lengthCalc = (uint)(sticker.BRRES.UTF8Length() + 1).Align(4);
                     sizeCalc += lengthCalc;
                 }
             }
@@ -265,7 +265,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 int size = n.OnCalculateSize(true);
                 n.OnRebuild(address + offset, size, true);
-                n._offset = (uint)offset;
+                n._offset = EntryOffset + (uint)offset;
                 offset += size;
             }
         }
