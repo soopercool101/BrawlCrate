@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;

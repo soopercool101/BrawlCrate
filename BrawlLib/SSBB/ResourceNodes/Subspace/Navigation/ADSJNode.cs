@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Navigation;
 using System.ComponentModel;
 

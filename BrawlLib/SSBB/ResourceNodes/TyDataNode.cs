@@ -3,10 +3,6 @@ using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -795,6 +791,31 @@ namespace BrawlLib.SSBB.ResourceNodes
                 new TySealVertDataEntryNode { _name = $"Entry [{i}]" }.Initialize(this, (*Header)[i], (int)TySealVertDataEntry.Size);
             }
         }
+
+        public override int OnCalculateSize(bool force)
+        {
+            int size = (int)TySealVertData.HeaderSize;
+            foreach (ResourceNode n in Children)
+            {
+                size += n.OnCalculateSize(true);
+            }
+
+            return size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            TySealVertData* header = (TySealVertData*)address;
+            *header = new TySealVertData();
+            header->_entries = (uint)Children.Count;
+            uint offset = 0;
+            foreach (ResourceNode n in Children)
+            {
+                int size = n.OnCalculateSize(true);
+                n.OnRebuild(address + offset, size, true);
+                offset += (uint)size;
+            }
+        }
     }
 
     public unsafe class TySealVertDataEntryNode : ResourceNode
@@ -829,6 +850,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x00 = Header->_unknown0x00;
             _unknown0x04 = Header->_unknown0x04;
             return false;
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return (int)TySealVertDataEntry.Size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            TySealVertDataEntry* header = (TySealVertDataEntry*)address;
+            *header = new TySealVertDataEntry();
+            header->_unknown0x00 = _unknown0x00;
+            header->_unknown0x04 = _unknown0x04;
         }
     }
 }
