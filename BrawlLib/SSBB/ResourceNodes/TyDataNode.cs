@@ -808,7 +808,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             TySealVertData* header = (TySealVertData*)address;
             *header = new TySealVertData();
             header->_entries = (uint)Children.Count;
-            uint offset = 0;
+            uint offset = TySealVertData.HeaderSize;
             foreach (ResourceNode n in Children)
             {
                 int size = n.OnCalculateSize(true);
