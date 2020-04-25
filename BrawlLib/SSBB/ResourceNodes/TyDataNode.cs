@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class TyDataNode : ResourceNode
+    public unsafe class TyDataNode : ARCEntryNode
     {
         internal TyDataHeader* Header => (TyDataHeader*)WorkingUncompressed.Address;
         public override Type[] AllowedChildTypes => new[] {typeof(TyEntryNode)};
