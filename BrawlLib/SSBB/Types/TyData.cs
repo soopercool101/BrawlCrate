@@ -122,4 +122,13 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown0x00;
         public bint _unknown0x04;
     }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public unsafe struct TyDataListEntry // Trophy Data
+    {
+        public static readonly uint Size = 0x60;
+
+        public buint _unknown0x00;
+        public buint _nameOffset;
+    }
 }

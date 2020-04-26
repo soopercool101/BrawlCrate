@@ -56,6 +56,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     case "tySealVertData":
                         node = new TySealVertDataNode();
                         break;
+                    case "tyDataList":
+                        node = new TyDataListNode();
+                        break;
                     default:
                         node = new TyEntryNode();
                         break;
@@ -863,6 +866,38 @@ namespace BrawlLib.SSBB.ResourceNodes
             *header = new TySealVertDataEntry();
             header->_unknown0x00 = _unknown0x00;
             header->_unknown0x04 = _unknown0x04;
+        }
+    }
+
+    public unsafe class TyDataListNode : TyEntryNode
+    {
+        public override bool OnInitialize()
+        {
+            return WorkingUncompressed.Length >= TyDataListEntry.Size;
+        }
+
+        public override void OnPopulate()
+        {
+            TyDataHeader* parentData = (TyDataHeader*)Parent.WorkingUncompressed.Address;
+            uint offset = 0;
+            while (offset + TyDataListEntry.Size <= WorkingUncompressed.Length)
+            {
+                new TyDataListEntryNode().Initialize(this, WorkingUncompressed.Address + offset, (int)TyDataListEntry.Size);
+                offset += TyDataListEntry.Size;
+            }
+        }
+    }
+
+    public unsafe class TyDataListEntryNode : ResourceNode
+    {
+        internal TyDataListEntry* Header => (TyDataListEntry*)WorkingUncompressed.Address;
+
+        public override bool OnInitialize()
+        {
+            VoidPtr tydata = Parent.Parent.WorkingUncompressed.Address;
+            _name = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_nameOffset);
+            //_brres = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_brresOffset);
+            return false;
         }
     }
 }
