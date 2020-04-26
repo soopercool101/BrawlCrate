@@ -897,11 +897,24 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal TyDataListEntry* Header => (TyDataListEntry*)WorkingUncompressed.Address;
 
+        private string _brres;
+
+        [Category("Trophy Data")]
+        public string BRRES
+        {
+            get => _brres;
+            set
+            {
+                _brres = value;
+                SignalPropertyChange();
+            }
+        }
+
         public override bool OnInitialize()
         {
             VoidPtr tydata = Parent.Parent.WorkingUncompressed.Address;
             _name = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_nameOffset);
-            //_brres = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_brresOffset);
+            _brres = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_brresOffset);
             return false;
         }
     }

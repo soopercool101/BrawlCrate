@@ -130,5 +130,8 @@ namespace BrawlLib.SSBB.Types
 
         public buint _id;
         public buint _nameOffset;
+        public buint _brresOffset;
+        public buint _gameIcon1;
+        public buint _gameIcon2;
     }
 }
