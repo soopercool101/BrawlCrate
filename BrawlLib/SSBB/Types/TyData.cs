@@ -128,7 +128,7 @@ namespace BrawlLib.SSBB.Types
     {
         public static readonly uint Size = 0x60;
 
-        public buint _unknown0x00;
+        public buint _id;
         public buint _nameOffset;
     }
 }

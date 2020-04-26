@@ -74,8 +74,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             TyDataHeader* header = (TyDataHeader*)addr;
 
             if (header->_size != source.Length || header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0 ||
-                header->_pad4 != 0 || header->_dataOffset > source.Length ||
+                header->_pad4 != 0 || header->_dataOffset > source.Length || header->_entries <= 0 ||
                 header->_dataOffset + header->_dataEntries * 4 > source.Length)
+            {
+                return null;
+            }
+
+            if (!header->GetEntryName(0).StartsWith("ty"))
             {
                 return null;
             }
