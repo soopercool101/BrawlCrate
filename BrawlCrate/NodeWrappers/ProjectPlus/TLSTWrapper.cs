@@ -42,6 +42,7 @@ namespace BrawlCrate.NodeWrappers
             _menu = new ContextMenuStrip();
             _menu.Items.Add(_newEntryToolStripMenuItem =
                 new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
+            _menu.Items.Add(new ToolStripMenuItem("Re-assign Custom IDs", null, RegenIDsAction));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -60,6 +61,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void NewEntryAction(object sender, EventArgs e)
         {
             GetInstance<TLSTWrapper>().NewEntry();
+        }
+
+        protected static void RegenIDsAction(object sender, EventArgs e)
+        {
+            GetInstance<TLSTWrapper>().RegenIDs();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -120,6 +126,18 @@ namespace BrawlCrate.NodeWrappers
             }
 
             return null;
+        }
+
+        public void RegenIDs()
+        {
+            uint currentID = 0xF000;
+            foreach(TLSTEntryNode t in Resource.Children)
+            {
+                if (!string.IsNullOrEmpty(t.SongFileName))
+                {
+                    t._songID = currentID++;
+                }
+            }
         }
 
         public TLSTWrapper()
