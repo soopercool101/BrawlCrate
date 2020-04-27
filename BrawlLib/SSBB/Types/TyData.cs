@@ -128,10 +128,21 @@ namespace BrawlLib.SSBB.Types
     {
         public static readonly uint Size = 0x60;
 
-        public buint _id;
+        public bint _id;
         public buint _nameOffset;
         public buint _brresOffset;
-        public buint _gameIcon1;
-        public buint _gameIcon2;
+        public bint _gameIcon1;
+        public bint _gameIcon2;
+        public bint _unknown0x14;
+        public bint _unknown0x18;
+        public bint _unknown0x1C;
+        public bint _series;
+        public bint _category;
+        public bint _pad0x28;
+        public bint _pad0x2C;
+        public bint _pad0x30;
+        public bfloat _unknown0x34; // Always 1?
+        public bfloat _unknown0x38; // Always 1?
+
     }
 }
