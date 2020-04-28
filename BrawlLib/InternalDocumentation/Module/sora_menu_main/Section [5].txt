@@ -1,6 +1,1498 @@
+sora_menu_main Section [5]: 0x000019D8
+Classic Button: Move Up ID
+The button switched to when pressing up while the Classic button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x03 (Events)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019DC
+Classic Button: Move Down ID
+The button switched to when pressing down while the Classic button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x02 (All-Star)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019E0
+Classic Button: Move Left ID
+The button switched to when pressing left while the Classic button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019E4
+Classic Button: Move Right ID
+The button switched to when pressing right while the Classic button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019E8
+Subspace Button: Move Up ID
+The button switched to when pressing up while the Subspace button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x04 (Stadium)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019EC
+Subspace Button: Move Down ID
+The button switched to when pressing down while the Subspace button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x04 (Stadium)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019F0
+Subspace Button: Move Left ID
+The button switched to when pressing left while the Subspace button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x00 (Classic)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019F4
+Subspace Button: Move Right ID
+The button switched to when pressing right while the Subspace button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x00 (Classic)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019F8
+All-Star Button: Move Up ID
+The button switched to when pressing up while the All-Star button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x00 (Classic)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000019FC
+All-Star Button: Move Down ID
+The button switched to when pressing down while the All-Star button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x03 (Events)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A00
+All-Star Button: Move Left ID
+The button switched to when pressing left while the All-Star button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A04
+All-Star Button: Move Right ID
+The button switched to when pressing right while the All-Star button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A08
+Events Button: Move Up ID
+The button switched to when pressing up while the Events button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x02 (All-Star)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A0C
+Events Button: Move Down ID
+The button switched to when pressing down while the Events button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x00 (Classic)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A10
+Events Button: Move Left ID
+The button switched to when pressing left while the Events button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x05 (Training)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A14
+Events Button: Move Right ID
+The button switched to when pressing right while the Events button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x04 (Stadium)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A08
+Stadium Button: Move Up ID
+The button switched to when pressing up while the Stadium button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A0C
+Stadium Button: Move Down ID
+The button switched to when pressing down while the Stadium button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A10
+Stadium Button: Move Left ID
+The button switched to when pressing left while the Stadium button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x03 (Events)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A14
+Stadium Button: Move Right ID
+The button switched to when pressing right while the Stadium button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x05 (Training)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A18
+Training Button: Move Up ID
+The button switched to when pressing up while the Training button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A1C
+Training Button: Move Down ID
+The button switched to when pressing down while the Training button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x01 (Subspace Emissary)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A20
+Training Button: Move Left ID
+The button switched to when pressing left while the Training button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x04 (Stadium)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001A24
+Training Button: Move Right ID
+The button switched to when pressing right while the Training button is selected.
+
+Solo Menu Button IDs:
+00 - Classic
+01 - Subspace Emissary
+02 - All-Star
+03 - Events
+04 - Stadium
+05 - Training
+
+Default: 0x03 (Events)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AC0
+Trophies and Stickers Button: Move Up ID
+The button switched to when pressing up while the Trophies and Stickers button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x03 (Challenges)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AC4
+Trophies and Stickers Button: Move Down ID
+The button switched to when pressing down while the Trophies and Stickers button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x03 (Challenges)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AC8
+Trophies and Stickers Button: Move Left ID
+The button switched to when pressing left while the Trophies and Stickers button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x02 (Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001ACC
+Trophies and Stickers Button: Move Right ID
+The button switched to when pressing right while the Trophies and Stickers button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x01 (Stage Builder)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AD0
+Stage Builder Button: Move Up ID
+The button switched to when pressing up while the Stage Builder button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x04 (Replays)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AD4
+Stage Builder Button: Move Down ID
+The button switched to when pressing down while the Stage Builder button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x04 (Replays)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AD8
+Stage Builder Button: Move Left ID
+The button switched to when pressing left while the Stage Builder button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x00 (Trophies and Stickers)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001ADC
+Stage Builder Button: Move Right ID
+The button switched to when pressing right while the Stage Builder button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x02 (Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AE0
+Album Button: Move Up ID
+The button switched to when pressing up while the Album button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x05 (Masterpieces)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AE4
+Album Button: Move Down ID
+The button switched to when pressing down while the Album button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x05 (Masterpieces)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AE8
+Album Button: Move Left ID
+The button switched to when pressing left while the Album button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x01 (Stage Builder)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AEC
+Album Button: Move Right ID
+The button switched to when pressing right while the Album button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x00 (Trophies and Stickers)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AF0
+Challenges Button: Move Up ID
+The button switched to when pressing up while the Challenges button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x00 (Trophies and Stickers)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AF4
+Challenges Button: Move Down ID
+The button switched to when pressing down while the Challenges button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x00 (Trophies and Stickers)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AF8
+Challenges Button: Move Left ID
+The button switched to when pressing left while the Challenges button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x06 (Chronicle)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001AFC
+Challenges Button: Move Right ID
+The button switched to when pressing right while the Challenges button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x04 (Replays)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B00
+Replays Button: Move Up ID
+The button switched to when pressing up while the Replays button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x01 (Stage Builder)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B04
+Replays Button: Move Down ID
+The button switched to when pressing down while the Replays button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x01 (Stage Builder)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B08
+Replays Button: Move Left ID
+The button switched to when pressing left while the Replays button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x03 (Challenges)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B0C
+Replays Button: Move Right ID
+The button switched to when pressing right while the Replays button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x05 (Masterpieces)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B10
+Masterpieces Button: Move Up ID
+The button switched to when pressing up while the Masterpieces button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x02 (Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B14
+Masterpieces Button: Move Down ID
+The button switched to when pressing down while the Masterpieces button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x02 (Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B18
+Masterpieces Button: Move Left ID
+The button switched to when pressing left while the Masterpieces button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x04 (Replays)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B1C
+Masterpieces Button: Move Right ID
+The button switched to when pressing right while the Masterpieces button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x06 (Chronicle)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B10
+Chronicle Button: Move Up ID
+The button switched to when pressing up while the Chronicle button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x02 (Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B14
+Chronicle Button: Move Down ID
+The button switched to when pressing down while the Chronicle button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x02 (Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B18
+Chronicle Button: Move Left ID
+The button switched to when pressing left while the Chronicle button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x05 (Masterpieces)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001B1C
+Chronicle Button: Move Right ID
+The button switched to when pressing right while the Chronicle button is selected.
+
+Vault Menu Button IDs:
+00 - Trophies and Stickers
+01 - Stage Builder
+02 - Album
+03 - Challenges
+04 - Replays
+05 - Masterpieces
+06 - Chronicle
+
+Default: 0x03 (Challenges)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C00
+Movies Button: Move Up ID
+The button switched to when pressing up while the Movies button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x01 (Sound Test)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C04
+Movies Button: Move Down ID
+The button switched to when pressing down while the Movies button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x01 (Sound Test)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C08
+Movies Button: Move Left ID
+The button switched to when pressing left while the Movies button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x02 (Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C0C
+Movies Button: Move Right ID
+The button switched to when pressing right while the Movies button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x02 (Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C10
+Sound Test Button: Move Up ID
+The button switched to when pressing up while the Sound Test button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x00 (Movies)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C14
+Sound Test Button: Move Down ID
+The button switched to when pressing down while the Sound Test button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x00 (Movies)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C18
+Sound Test Button: Move Left ID
+The button switched to when pressing left while the Sound Test button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x01 (Sound Test)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C1C
+Sound Test Button: Move Right ID
+The button switched to when pressing right while the Sound Test button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x01 (Sound Test)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C20
+Records Button: Move Up ID
+The button switched to when pressing up while the Records button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x01 (Sound Test)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C24
+Records Button: Move Down ID
+The button switched to when pressing down while the Records button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x01 (Sound Test)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C28
+Records Button: Move Left ID
+The button switched to when pressing left while the Records button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x00 (Movies)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C2C
+Records Button: Move Right ID
+The button switched to when pressing right while the Records button is selected.
+
+Data Menu Button IDs:
+00 - Movies
+01 - Sound Test
+02 - Records
+
+Default: 0x00 (Movies)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C78
+Screen Button: Move Up ID
+The button switched to when pressing up while the Screen button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x04 (Sound)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C7C
+Screen Button: Move Down ID
+The button switched to when pressing down while the Screen button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x04 (Sound)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C80
+Screen Button: Move Left ID
+The button switched to when pressing left while the Screen button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x03 (Controls)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C84
+Screen Button: Move Right ID
+The button switched to when pressing right while the Screen button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x01 (Deflicker)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C88
+Deflicker Button: Move Up ID
+The button switched to when pressing up while the Deflicker button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x05 (My Music)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C8C
+Deflicker Button: Move Down ID
+The button switched to when pressing down while the Deflicker button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x05 (My Music)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C90
+Deflicker Button: Move Left ID
+The button switched to when pressing left while the Deflicker button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x00 (Screen)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C94
+Deflicker Button: Move Right ID
+The button switched to when pressing right while the Deflicker button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x02 (Rumble)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C98
+Rumble Button: Move Up ID
+The button switched to when pressing up while the Rumble button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x06 (Erase Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001C9C
+Rumble Button: Move Down ID
+The button switched to when pressing down while the Rumble button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x06 (Erase Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CA0
+Rumble Button: Move Left ID
+The button switched to when pressing left while the Rumble button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x01 (Deflicker)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CA4
+Rumble Button: Move Right ID
+The button switched to when pressing right while the Rumble button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x03 (Controls)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CA8
+Controls Button: Move Up ID
+The button switched to when pressing up while the Controls button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x06 (Erase Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CAC
+Controls Button: Move Down ID
+The button switched to when pressing down while the Controls button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x06 (Erase Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CB0
+Controls Button: Move Left ID
+The button switched to when pressing left while the Controls button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x02 (Rumble)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CB4
+Controls Button: Move Right ID
+The button switched to when pressing right while the Controls button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x00 (Screen)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CB8
+Sound Button: Move Up ID
+The button switched to when pressing up while the Sound button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x00 (Screen)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CBC
+Sound Button: Move Down ID
+The button switched to when pressing down while the Sound button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x00 (Screen)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CC0
+Sound Button: Move Left ID
+The button switched to when pressing left while the Sound button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x06 (Erase Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CC4
+Sound Button: Move Right ID
+The button switched to when pressing right while the Sound button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x05 (My Music)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CC8
+My Music Button: Move Up ID
+The button switched to when pressing up while the My Music button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x01 (Deflicker)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CCC
+My Music Button: Move Down ID
+The button switched to when pressing down while the My Music button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x01 (Deflicker)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CD0
+My Music Button: Move Left ID
+The button switched to when pressing left while the My Music button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x04 (Sound)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CD4
+My Music Button: Move Right ID
+The button switched to when pressing right while the My Music button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x06 (Erase Data)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CD8
+Erase Data Button: Move Up ID
+The button switched to when pressing up while the Erase Data button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x02 (Rumble)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CDC
+Erase Data Button: Move Down ID
+The button switched to when pressing down while the Erase Data button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x02 (Rumble)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CE0
+Erase Data Button: Move Left ID
+The button switched to when pressing left while the Erase Data button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x05 (My Music)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001CE4
+Erase Data Button: Move Right ID
+The button switched to when pressing right while the Erase Data button is selected.
+
+Options Menu Button IDs:
+00 - Screen
+01 - Deflicker
+02 - Rumble
+03 - Controls
+04 - Sound
+05 - My Music
+06 - Erase Data
+
+Default: 0x04 (Sound)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
 sora_menu_main Section [5]: 0x00001DB0
 Versus Button: Move Up ID
-The button switched to when pressing up while the VS button is selected.
+The button switched to when pressing up while the Versus button is selected.
 
 Main Menu Button IDs:
 00 - Versus
@@ -16,7 +1508,7 @@ Default: 0x02 (Online)
 
 sora_menu_main Section [5]: 0x00001DB4
 Versus Button: Move Down ID
-The button switched to when pressing down while the VS button is selected.
+The button switched to when pressing down while the Versus button is selected.
 
 Main Menu Button IDs:
 00 - Versus
@@ -381,5 +1873,689 @@ Main Menu Button IDs:
 05 - Data
 
 Default: 0x02 (Online)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E58
+Fight Button: Move Up ID
+The button switched to when pressing up while the Fight button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x03 (Rotation)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E5C
+Fight Button: Move Down ID
+The button switched to when pressing down while the Fight button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x03 (Rotation)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E60
+Fight Button: Move Left ID
+The button switched to when pressing left while the Fight button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x04 (Rules)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E64
+Fight Button: Move Right ID
+The button switched to when pressing right while the Fight button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x04 (Rules)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E68
+Special Versus Button: Move Up ID
+The button switched to when pressing up while the Special Versus button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x04 (Rules)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E6C
+Special Versus Button: Move Down ID
+The button switched to when pressing down while the Special Versus button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x02 (Tourney)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E70
+Special Versus Button: Move Left ID
+The button switched to when pressing left while the Special Versus button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x00 (Fight)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E74
+Special Versus Button: Move Right ID
+The button switched to when pressing right while the Special Versus button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x00 (Fight)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E78
+Tourney Button: Move Up ID
+The button switched to when pressing up while the Tourney button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x01 (Special Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E7C
+Tourney Button: Move Down ID
+The button switched to when pressing down while the Tourney button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x04 (Rules)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E80
+Tourney Button: Move Left ID
+The button switched to when pressing left while the Tourney button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x03 (Rotation)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E84
+Tourney Button: Move Right ID
+The button switched to when pressing right while the Tourney button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x05 (Names)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E88
+Rotation Button: Move Up ID
+The button switched to when pressing up while the Rotation button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x00 (Fight)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E8C
+Rotation Button: Move Down ID
+The button switched to when pressing down while the Rotation button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x00 (Fight)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E90
+Rotation Button: Move Left ID
+The button switched to when pressing left while the Rotation button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x05 (Names)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E94
+Rotation Button: Move Right ID
+The button switched to when pressing right while the Rotation button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x02 (Tourney)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E98
+Rules Button: Move Up ID
+The button switched to when pressing up while the Rules button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x02 (Tourney)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001E9C
+Rules Button: Move Down ID
+The button switched to when pressing down while the Rules button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x01 (Special Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001EA0
+Rules Button: Move Left ID
+The button switched to when pressing left while the Rules button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x00 (Fight)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001EA4
+Rules Button: Move Right ID
+The button switched to when pressing right while the Rules button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x00 (Fight)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001EA8
+Names Button: Move Up ID
+The button switched to when pressing up while the Names button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x01 (Special Versus)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001EAC
+Names Button: Move Down ID
+The button switched to when pressing down while the Names button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x04 (Rules)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001EB0
+Names Button: Move Left ID
+The button switched to when pressing left while the Names button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x02 (Tourney)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00001EB4
+Names Button: Move Right ID
+The button switched to when pressing right while the Names button is selected.
+
+Versus Menu Button IDs:
+00 - Fight
+01 - Special Versus
+02 - Tourney (Legacy TE - Codes)
+03 - Rotation
+04 - Rules
+05 - Names
+
+Default: 0x03 (Rotation)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00003780
+Trophy Gallery Button: Move Up ID
+The button switched to when pressing up while the Trophy Gallery button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x04 (Sticker Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00003784
+Trophy Gallery Button: Move Down ID
+The button switched to when pressing down while the Trophy Gallery button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x04 (Sticker Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00003788
+Trophy Gallery Button: Move Left ID
+The button switched to when pressing left while the Trophy Gallery button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x02 (Coin Launcher)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x0000378C
+Trophy Gallery Button: Move Right ID
+The button switched to when pressing right while the Trophy Gallery button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x01 (Trophy Hoard)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00003790
+Trophy Hoard Button: Move Up ID
+The button switched to when pressing up while the Trophy Hoard button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x03 (Sticker Center)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00003794
+Trophy Hoard Button: Move Down ID
+The button switched to when pressing down while the Trophy Hoard button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x03 (Sticker Center)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x00003798
+Trophy Hoard Button: Move Left ID
+The button switched to when pressing left while the Trophy Hoard button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x00 (Trophy Gallery)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x0000379C
+Trophy Hoard Button: Move Right ID
+The button switched to when pressing right while the Trophy Hoard button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x02 (Coin Launcher)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037A0
+Coin Launcher Button: Move Up ID
+The button switched to when pressing up while the Coin Launcher button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x03 (Sticker Center)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037A4
+Coin Launcher Button: Move Down ID
+The button switched to when pressing down while the Coin Launcher button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x03 (Sticker Center)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037A8
+Coin Launcher Button: Move Left ID
+The button switched to when pressing left while the Coin Launcher button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x01 (Trophy Hoard)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037AC
+Coin Launcher Button: Move Right ID
+The button switched to when pressing right while the Coin Launcher button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x00 (Trophy Gallery)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037B0
+Sticker Center Button: Move Up ID
+The button switched to when pressing up while the Sticker Center button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x01 (Trophy Hoard)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037B4
+Sticker Center Button: Move Down ID
+The button switched to when pressing down while the Sticker Center button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x01 (Trophy Hoard)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037B8
+Sticker Center Button: Move Left ID
+The button switched to when pressing left while the Sticker Center button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x04 (Sticker Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037BC
+Sticker Center Button: Move Right ID
+The button switched to when pressing right while the Sticker Center button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x04 (Sticker Album)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037C0
+Sticker Album Button: Move Up ID
+The button switched to when pressing up while the Sticker Album button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x00 (Trophy Gallery)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037C4
+Sticker Album Button: Move Down ID
+The button switched to when pressing down while the Sticker Album button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x00 (Trophy Gallery)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037C8
+Sticker Album Button: Move Left ID
+The button switched to when pressing left while the Sticker Album button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x03 (Sticker Center)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_menu_main Section [5]: 0x000037CC
+Sticker Album Button: Move Right ID
+The button switched to when pressing right while the Sticker Album button is selected.
+
+Trophies and Stickers Menu Button IDs:
+00 - Trophy Gallery
+01 - Trophy Hoard
+02 - Coin Launcher
+03 - Sticker Center
+04 - Sticker Album
+
+Default: 0x03 (Sticker Center)
 	/EndDescription
 0100    // Flags for which bytes are underlined

@@ -1,11 +1,14 @@
-﻿Documentation_v0.30.6
+﻿Documentation_v0.32.1
 
  =============================================================
 |************ BrawlCrate Documentation Change Log ************|
  =============================================================
  
- Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, HyperL!nk, Cahalan
+ Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan
  
+ - Documentation v0.32.1
+ . Menu Main Section [5] documentation updated to include all known menu values
+
  - Documentation v0.30.6
  . Mario Circuit documentation updated to latest understanding:
    - 0x050 -> Number of Karts
