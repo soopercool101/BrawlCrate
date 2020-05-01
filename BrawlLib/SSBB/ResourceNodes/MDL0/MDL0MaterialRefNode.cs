@@ -100,22 +100,25 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                foreach (MDL0ObjectNode n in Material.Objects)
+                if (Material.Objects != null)
                 {
-                    if (n.Weighted)
+                    foreach (MDL0ObjectNode n in Material.Objects)
                     {
-                        n._manager.HasTextureMatrix[Index] = value;
-                        n._forceRebuild = true;
-                        n.SignalPropertyChange();
-
-                        if (n._vertexNode.Format != WiiVertexComponentType.Float)
+                        if (n.Weighted)
                         {
-                            n._vertexNode.ForceRebuild = n._vertexNode.ForceFloat = value;
+                            n._manager.HasTextureMatrix[Index] = value;
+                            n._forceRebuild = true;
+                            n.SignalPropertyChange();
+
+                            if (n._vertexNode.Format != WiiVertexComponentType.Float)
+                            {
+                                n._vertexNode.ForceRebuild = n._vertexNode.ForceFloat = value;
+                            }
                         }
                     }
-                }
 
-                SignalPropertyChange();
+                    SignalPropertyChange();
+                }
             }
         }
 

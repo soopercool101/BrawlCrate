@@ -1276,7 +1276,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         texRefSettings[r.Index] = r.HasTextureMatrix;
                     }
-                    texMatrixSettings.Add(m.Name, texRefSettings);
+
+                    if (!texMatrixSettings.ContainsKey(m.Name))
+                    {
+                        texMatrixSettings.Add(m.Name, texRefSettings);
+                    }
                 }
             }
 
