@@ -143,6 +143,14 @@ namespace BrawlLib.SSBB.Types
         public bint _pad0x30;
         public bfloat _unknown0x34; // Always 1?
         public bfloat _unknown0x38; // Always 1?
-
+        public bint _pad0x3C;
+        public bint _unknown0x40; // Unlock criteria?
+        public bint _unknown0x44; // Always 1?
+        public bint _pad0x48;
+        public bint _id2; // Always the same as ID 1?
+        public bfloat _unknown0x50;
+        public bfloat _unknown0x54;
+        public bfloat _unknown0x58;
+        public bfloat _unknown0x5C;
     }
 }

@@ -910,11 +910,319 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        private int _id;
+
+        [Category("Trophy Data")]
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _id2;
+
+        [Category("Trophy Data")]
+        public int Id2
+        {
+            get => _id2;
+            set
+            {
+                _id2 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _gameIcon1;
+
+        [Category("Trophy Data")]
+        public int GameIcon1
+        {
+            get => _gameIcon1;
+            set
+            {
+                _gameIcon1 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _gameIcon2;
+
+        [Category("Trophy Data")]
+        public int GameIcon2
+        {
+            get => _gameIcon2;
+            set
+            {
+                _gameIcon2 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _unknown0x14;
+
+        [Category("Trophy Data")]
+        public int Unknown0x14
+        {
+            get => _unknown0x14;
+            set
+            {
+                _unknown0x14 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _unknown0x18;
+
+        [Category("Trophy Data")]
+        public int Unknown0x18
+        {
+            get => _unknown0x18;
+            set
+            {
+                _unknown0x18 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _unknown0x1C;
+
+        [Category("Trophy Data")]
+        public int Unknown0x1C
+        {
+            get => _unknown0x1C;
+            set
+            {
+                _unknown0x1C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _series;
+
+        [Category("Trophy Data")]
+        public int Series
+        {
+            get => _series;
+            set
+            {
+                _series = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _category;
+
+        [Category("Trophy Data")]
+        public int Category
+        {
+            get => _category;
+            set
+            {
+                _category = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x28;
+
+        [Category("Padding?")]
+        public int Pad0x28
+        {
+            get => _pad0x28;
+            set
+            {
+                _pad0x28 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x2C;
+
+        [Category("Padding?")]
+        public int Pad0x2C
+        {
+            get => _pad0x2C;
+            set
+            {
+                _pad0x2C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x30;
+
+        [Category("Padding?")]
+        public int Pad0x30
+        {
+            get => _pad0x30;
+            set
+            {
+                _pad0x30 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x34;
+
+        [Category("Trophy Data")]
+        public float Unknown0x34
+        {
+            get => _unknown0x34;
+            set
+            {
+                _unknown0x34 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x38;
+
+        [Category("Trophy Data")]
+        public float Unknown0x38
+        {
+            get => _unknown0x38;
+            set
+            {
+                _unknown0x38 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x3C;
+
+        [Category("Padding?")]
+        public int Pad0x3C
+        {
+            get => _pad0x3C;
+            set
+            {
+                _pad0x3C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _unknown0x40;
+
+        [Category("Trophy Data")]
+        public int Unknown0x40
+        {
+            get => _unknown0x40;
+            set
+            {
+                _unknown0x40 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _unknown0x44;
+
+        [Category("Trophy Data")]
+        public int Unknown0x44
+        {
+            get => _unknown0x44;
+            set
+            {
+                _unknown0x44 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private int _pad0x48;
+
+        [Category("Padding?")]
+        public int Pad0x48
+        {
+            get => _pad0x48;
+            set
+            {
+                _pad0x48 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x50;
+
+        [Category("Trophy Data")]
+        public float Unknown0x50
+        {
+            get => _unknown0x50;
+            set
+            {
+                _unknown0x50 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x54;
+
+        [Category("Trophy Data")]
+        public float Unknown0x54
+        {
+            get => _unknown0x54;
+            set
+            {
+                _unknown0x54 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x58;
+
+        [Category("Trophy Data")]
+        public float Unknown0x58
+        {
+            get => _unknown0x58;
+            set
+            {
+                _unknown0x58 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        private float _unknown0x5C;
+
+        [Category("Trophy Data")]
+        public float Unknown0x5C
+        {
+            get => _unknown0x5C;
+            set
+            {
+                _unknown0x5C = value;
+                SignalPropertyChange();
+            }
+        }
+
         public override bool OnInitialize()
         {
             VoidPtr tydata = Parent.Parent.WorkingUncompressed.Address;
             _name = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_nameOffset);
             _brres = (tydata + TyDataHeader.HeaderSize).GetUTF8String(Header->_brresOffset);
+            _id = Header->_id;
+            _gameIcon1 = Header->_gameIcon1;
+            _gameIcon2 = Header->_gameIcon2;
+            _unknown0x14 = Header->_unknown0x14;
+            _unknown0x18 = Header->_unknown0x18;
+            _unknown0x1C = Header->_unknown0x1C;
+            _series = Header->_series;
+            _category = Header->_category;
+            _pad0x28 = Header->_pad0x28;
+            _pad0x2C = Header->_pad0x2C;
+            _pad0x30 = Header->_pad0x30;
+            _unknown0x34 = Header->_unknown0x34;
+            _unknown0x38 = Header->_unknown0x38;
+            _pad0x3C = Header->_pad0x3C;
+            _unknown0x40 = Header->_unknown0x40;
+            _unknown0x44 = Header->_unknown0x44;
+            _pad0x48 = Header->_pad0x48;
+            _id2 = Header->_id2;
+            _unknown0x50 = Header->_unknown0x50;
+            _unknown0x54 = Header->_unknown0x54;
+            _unknown0x58 = Header->_unknown0x58;
+            _unknown0x5C = Header->_unknown0x5C;
             return false;
         }
     }
