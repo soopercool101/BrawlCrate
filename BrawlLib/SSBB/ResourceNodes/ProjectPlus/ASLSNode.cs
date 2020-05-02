@@ -78,9 +78,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     {
         internal ASLSEntry* Header => (ASLSEntry*)WorkingUncompressed.Address;
 
-#if !DEBUG
-        [Browsable(false)]
-#endif
         public ushort ButtonFlags
         {
             get => _buttonFlags;
