@@ -97,7 +97,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TLSTEntryNode NewEntry()
         {
-            if (Resource.Children.Count >= 64)
+            if (Resource.Children.Count >= 255)
             {
                 return null;
             }
