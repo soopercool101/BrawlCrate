@@ -1,6 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
+using System.ComponentModel;
 using System.IO;
 #if !DEBUG
 using System.ComponentModel;
@@ -78,6 +79,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     {
         internal ASLSEntry* Header => (ASLSEntry*)WorkingUncompressed.Address;
 
+        [TypeConverter(typeof(HexUShortConverter))]
         public ushort ButtonFlags
         {
             get => _buttonFlags;

@@ -219,7 +219,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Box")]
         [DisplayName("Trigger1")]
-        [TypeConverter(typeof(HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger1
         {
             get => _trigger1;
@@ -232,7 +232,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Box")]
         [DisplayName("Trigger2")]
-        [TypeConverter(typeof(HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger2
         {
             get => _trigger2;
@@ -245,7 +245,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Box")]
         [DisplayName("Trigger3")]
-        [TypeConverter(typeof(HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger3
         {
             get => _trigger3;

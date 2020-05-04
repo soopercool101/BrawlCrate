@@ -85,7 +85,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         [Category("Camera")]
-        [TypeConverter(typeof(HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger1
         {
             get => _trigger1;
@@ -96,7 +96,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         [Category("Camera")]
-        [TypeConverter(typeof(HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger2
         {
             get => _trigger2;
@@ -107,7 +107,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         [Category("Camera")]
-        [TypeConverter(typeof(HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger3
         {
             get => _trigger3;
@@ -118,7 +118,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         [Category("Camera")]
-        [TypeConverter(typeof(HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger4
         {
             get => _trigger4;

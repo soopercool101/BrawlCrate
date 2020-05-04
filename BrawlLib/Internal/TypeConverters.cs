@@ -14,10 +14,8 @@ namespace BrawlLib.Internal
             {
                 return true;
             }
-            else
-            {
-                return base.CanConvertFrom(context, sourceType);
-            }
+
+            return base.CanConvertFrom(context, sourceType);
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
@@ -26,41 +24,62 @@ namespace BrawlLib.Internal
             {
                 return true;
             }
-            else
-            {
-                return base.CanConvertTo(context, destinationType);
-            }
+
+            return base.CanConvertTo(context, destinationType);
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value.GetType() == typeof(UInt32))
+            if (destinationType == typeof(string) && value is uint || value is int)
             {
-                return string.Format("0x{0:X8}", value);
+                return $"0x{value:X8}";
             }
-            else
+            if (destinationType == typeof(string) && value is ushort || value is short)
             {
-                return base.ConvertTo(context, culture, value, destinationType);
+                return $"0x{value:X4}";
             }
+            if (destinationType == typeof(string) && value is byte || value is sbyte)
+            {
+                return $"0x{value:X2}";
+            }
+            return base.ConvertTo(context, culture, value, destinationType);
         }
 
-        public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
-        {
-            if (value.GetType() == typeof(string))
-            {
-                string input = (string)value;
+    }
 
+    internal class HexUIntConverter : HexTypeConverter
+    {
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is string input)
+            {
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
                 }
 
-                return UInt32.Parse(input, System.Globalization.NumberStyles.HexNumber, culture);
+                return uint.Parse(input, NumberStyles.HexNumber, culture);
             }
-            else
+
+            return base.ConvertFrom(context, culture, value);
+        }
+    }
+
+    internal class HexUShortConverter : HexTypeConverter
+    {
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is string input)
             {
-                return base.ConvertFrom(context, culture, value);
+                if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+                {
+                    input = input.Substring(2);
+                }
+
+                return ushort.Parse(input, NumberStyles.HexNumber, culture);
             }
+
+            return base.ConvertFrom(context, culture, value);
         }
     }
 
