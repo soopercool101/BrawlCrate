@@ -212,12 +212,15 @@ Full changelog and documentation can be viewed from the help menu.";
             ApiPath = Path.Combine(AppPath, "BrawlAPI");
             ApiPluginPath = Path.Combine(ApiPath, "Plugins");
             ApiLoaderPath = Path.Combine(ApiPath, "Loaders");
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            Application.ThreadException += Application_ThreadException;
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
-            // Set default values for settings immediately, to prevent possible errors down the line
-            if (BrawlLib.Properties.Settings.Default.Codes == null)
+#if !DEBUG
+			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+			Application.ThreadException += Application_ThreadException;
+			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+#endif
+
+			// Set default values for settings immediately, to prevent possible errors down the line
+			if (BrawlLib.Properties.Settings.Default.Codes == null)
             {
                 BrawlLib.Properties.Settings.Default.Codes = new List<CodeStorage>();
                 BrawlLib.Properties.Settings.Default.Save();
