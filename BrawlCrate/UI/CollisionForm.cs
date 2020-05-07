@@ -51,7 +51,7 @@ namespace BrawlCrate.UI
             Icon = BrawlLib.Properties.Resources.Icon;
             MinimizeBox = false;
             Name = "CollisionForm";
-            Text = $"{Program.AssemblyTitleShort} - Collision Editor";
+            //Text = $"{Program.AssemblyTitleShort} - Collision Editor";
 
 			ResumeLayout(false);
         }
@@ -83,7 +83,7 @@ namespace BrawlCrate.UI
         {
             base.OnShown(e);
 
-			// The text will now tell you what kind of collision you are editing by using the node's name.
+			// The text will now tell you what kind of collision you are editing by using the collision node's name.
 			Text = $"{Program.AssemblyTitleShort} - Editing {_node.Name} - Collision Editor";
 
 			if (UseOld)

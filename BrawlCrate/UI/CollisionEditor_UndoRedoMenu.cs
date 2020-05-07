@@ -304,21 +304,18 @@ namespace System.Windows.Forms
 
 		// If Steps is negative, it is undoing; if 0, then nothing will happen; if
 		// positive, then it is redoing.
-		// CurrentStep is used to know where in which part of the index is the
+		// CurrentIndex is used to know where in which part of the index is the
 		// current undo/redo state is on.
-		public void UpdateCollisionEditorStates(int Steps, int CurrentStep)
+		public void UpdateCollisionEditorStates(int Steps, int CurrentIndex)
 		{
-			Trace.WriteLine("Steps: " + Steps + " | Current Index: " + CurrentStep);
+			Trace.WriteLine("Steps: " + Steps + " | Current Index: " + CurrentIndex);
 
-			if (Steps == 0 || CurrentStep < 0)
+			if (Steps == 0 || CurrentIndex < 0)
 				return;
 
-			List<CollisionState> UndoStates = parentEditor.undoSaves;
-			List<CollisionState> RedoStates = parentEditor.redoSaves;
+			int undoSavesCount = parentEditor.undoSaves.Count;
 
 			parentEditor._selectedLinks.Clear();
-
-			//Math.Abs()
 
 			// Undoing steps
 			if (Steps < 0)
@@ -332,14 +329,14 @@ namespace System.Windows.Forms
 				{
 					// Takes the current step (which is an index used in the current undo/redo state) 
 					// and reduce it by the amount of steps to get the item.
-					int UndoIndex = CurrentStep - step - 1;
+					int UndoIndex = CurrentIndex - step - 1;
 
 					// Make sure that undo indexing is not less than zero. If it is, then
 					// stop the step process.
 					if (UndoIndex < 0)
 						break;
 
-					if (UndoIndex >= UndoStates.Count)
+					if (UndoIndex >= undoSavesCount)
 						continue;
 
 					// This is such a weird issue, why do you have to clear the selected
@@ -359,9 +356,14 @@ namespace System.Windows.Forms
 				parentEditor.toolsStrip_Redo.Enabled = true;
 				parentEditor.toolsStrip_UndoRedoMenu.Enabled = true;
 
-				int index = CurrentStep - 1 - StatesUndone.Count;
-				//int index = CurrentStep + 1 - StatesUndone.Count;
-				parentEditor.saveIndex = (index >= 0) ? index : 0;
+				int index = CurrentIndex - StatesUndone.Count;
+				int finalIndex = (index >= 0) ? index : 0;
+				//int index = CurrentIndex - 1 - StatesUndone.Count;
+				//int index = CurrentIndex + 1 - StatesUndone.Count;
+				parentEditor.saveIndex = finalIndex;
+
+				if (finalIndex <= 0)
+					parentEditor.toolsStrip_Undo.Enabled = false;
 
 				parentEditor._modelPanel.Invalidate();
 				parentEditor.UpdatePropPanels();
@@ -383,19 +385,20 @@ namespace System.Windows.Forms
 				}
 
 				int StatesRedone = 0;
+				int CurrentStateCount = undoSavesCount - CurrentIndex - 1;
 
-				for (int step = 0; step < Steps; ++step)
+				//for (int step = StepsRedo - 1; step >= 0; --step)
+				for (int step = 0; step < StepsRedo; ++step)
 				{
-					int RedoIndex = step;
-					//int RedoIndex = StepsRedo + step;
+					int RedoIndex = CurrentStateCount - step;
 
-					if (step >= RedoStates.Count)
-						break;	
+					if (RedoIndex < 0 || RedoIndex >= parentEditor.redoSaves.Count)
+						continue;	
 
 					parentEditor._selectedLinks.Clear();
 
-					parentEditor.PerformRedoState(step);
-					parentEditor.redoSaves.RemoveAt(step);
+					parentEditor.PerformRedoState(RedoIndex);
+					parentEditor.redoSaves.RemoveAt(RedoIndex);
 
 					++StatesRedone;
 				}
@@ -405,7 +408,7 @@ namespace System.Windows.Forms
 				parentEditor.toolsStrip_Undo.Enabled = true;
 				parentEditor.toolsStrip_UndoRedoMenu.Enabled = true;
 
-				int index = CurrentStep + StatesRedone + 1;
+				int index = CurrentIndex + StatesRedone;
 				parentEditor.saveIndex = index;
 
 				parentEditor._modelPanel.Invalidate();

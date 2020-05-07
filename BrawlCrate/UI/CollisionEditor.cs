@@ -58,9 +58,10 @@ namespace System.Windows.Forms
         protected TrackBar UNUSED_toolsStripPanel_TrackBarRotation;
 
 		// BrawlCrate buttons
-		protected ToolStripSeparator toolsStrip_CameraSeparator; // Seperator for Camera controls
-		protected ToolStripButton toolsStrip_PerspectiveCam;     // Goes into perspective mode
-		protected ToolStripButton toolsStrip_OrthographicCam;    // Goes into orthographic mode
+		protected ToolStripSeparator toolsStrip_CameraSeparator;				// Seperator for Camera controls
+		protected ToolStripButton toolsStrip_PerspectiveCam;					// Goes into perspective mode
+		protected ToolStripButton toolsStrip_OrthographicCam;					// Goes into orthographic mode
+		protected ToolStripButton toolsStrip_TogglePerspectiveOrthographicCam;	// Switches between Perspective and Orthographic
 		protected ToolStripButton toolsStrip_FlipCollision;
 		protected ToolStripButton toolsStrip_ShowBoundaries;
 		protected ToolStripButton toolsStrip_ShowSpawns;
@@ -303,6 +304,7 @@ namespace System.Windows.Forms
 
             toolsStrip_PerspectiveCam = new ToolStripButton();
             toolsStrip_OrthographicCam = new ToolStripButton();
+            toolsStrip_TogglePerspectiveOrthographicCam = new ToolStripButton();
             toolsStrip_CameraSeparator = new ToolStripSeparator();
             toolsStrip_ShowSpawns = new ToolStripButton();
             toolsStrip_ShowItems = new ToolStripButton();
@@ -1214,8 +1216,9 @@ namespace System.Windows.Forms
                 toolsStrip_AlignX,
                 toolsStrip_AlignY,
                 toolsStrip_AlignmentSeparator,
-                toolsStrip_PerspectiveCam,
-                toolsStrip_OrthographicCam,
+                //toolsStrip_PerspectiveCam,
+                //toolsStrip_OrthographicCam,
+				toolsStrip_TogglePerspectiveOrthographicCam,
                 toolsStrip_ResetCam,
 				toolsStrip_CameraOptions,
                 toolsStrip_CameraSeparator,
@@ -1349,6 +1352,16 @@ namespace System.Windows.Forms
             toolsStrip_OrthographicCam.Size = new Drawing.Size(82, 19);
             toolsStrip_OrthographicCam.Text = "Orthographic";
             toolsStrip_OrthographicCam.Click += SetOrthographicCam_Click;
+			// 
+			// toolsStrip_TogglePerspectiveOrthographicCam
+			// 
+			toolsStrip_TogglePerspectiveOrthographicCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
+			toolsStrip_TogglePerspectiveOrthographicCam.ImageTransparentColor = Color.Magenta;
+			toolsStrip_TogglePerspectiveOrthographicCam.Name = "toolsStrip_TogglePerspectiveOrthographicCam";
+			toolsStrip_TogglePerspectiveOrthographicCam.Size = new Drawing.Size(82, 19);
+			toolsStrip_TogglePerspectiveOrthographicCam.Text = "Perspective";
+			toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Orthographic.";
+			toolsStrip_TogglePerspectiveOrthographicCam.Click += SetToggledPerspectiveOrthographicCam_Click;
             // 
             // toolsStrip_ResetCam
             // 
@@ -2922,6 +2935,8 @@ namespace System.Windows.Forms
 							{
 								toolsStrip_Undo.Enabled = false;
 							}
+
+							UpdateUndoRedoMenu();
 						}
 					}
                 }
@@ -3593,6 +3608,36 @@ namespace System.Windows.Forms
 			{
 				_modelPanel.ResetCamera();
 				_modelPanel.CurrentViewport.ViewType = ViewportProjection.Orthographic;
+			}
+		}
+		// BrawlCrate Toggle viewer
+		protected void SetToggledPerspectiveOrthographicCam_Click(object sender, EventArgs e)
+		{
+			if (_updating)
+				return;
+
+			switch (_modelPanel.CurrentViewport.ViewType)
+			{
+				case ViewportProjection.Perspective:
+				{
+					_modelPanel.ResetCamera();
+					_modelPanel.CurrentViewport.ViewType = ViewportProjection.Orthographic;
+
+					toolsStrip_TogglePerspectiveOrthographicCam.Text = "Orthographic";
+					toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Perspective.";
+
+					break;
+				}
+				case ViewportProjection.Orthographic:
+				{
+					_modelPanel.ResetCamera();
+					_modelPanel.CurrentViewport.ViewType = ViewportProjection.Perspective;
+
+					toolsStrip_TogglePerspectiveOrthographicCam.Text = "Perspective";
+					toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Orthographic.";
+
+					break;
+				}
 			}
 		}
 
@@ -5385,7 +5430,7 @@ namespace System.Windows.Forms
 
             int index = undoSaves.Count - saveIndex - 1;
 
-			if (index >= redoSaves.Count)
+			if (index < 0 || index >= redoSaves.Count)
 			{
 				toolsStrip_Redo.Enabled = false;
 				return;
