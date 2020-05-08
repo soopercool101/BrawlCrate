@@ -647,10 +647,19 @@ namespace System.Windows.Forms
             lstCollObjectsMenu_AssignObjectColor.Name = "lstCollObjectsMenu_AssignObjectColor";
             lstCollObjectsMenu_AssignObjectColor.Size = new Drawing.Size(237, 22);
             lstCollObjectsMenu_AssignObjectColor.Text = "Set Color for Collisions";
-			lstCollObjectsMenu_AssignObjectColor.Click += LstCollObjectsMenu_AssignObjectColor_Click;
+			lstCollObjectsMenu_AssignObjectColor.Click += lstCollObjectsMenu_AssignObjectColor_Click;
 			lstCollObjectsMenu_AssignObjectColor.ToolTipText = "Sets a color for this object." +
 			"\n\nIf alpha is set to 0, then the color will be ignored and return back to its default collision display." +
 			"\nNote: Assigning a color will not apply it to the actual collision data; it only applies it to the object for display purposes.";
+			// 
+            // lstCollObjectsMenu_SetObjectTemporary
+            // 
+            lstCollObjectsMenu_SetObjectTemporary.Name = "lstCollObjectsMenu_SetObjectTemporary";
+            lstCollObjectsMenu_SetObjectTemporary.Size = new Drawing.Size(237, 22);
+            lstCollObjectsMenu_SetObjectTemporary.Text = "Set As Temporary Object";
+			lstCollObjectsMenu_SetObjectTemporary.CheckOnClick = true;
+			lstCollObjectsMenu_SetObjectTemporary.ToolTipText = "If checked, then the selected object will be deleted when the editor closes.";
+			lstCollObjectsMenu_SetObjectTemporary.CheckStateChanged += lstCollObjectsMenu_SetObjectTemporary_CheckStateChanged;
 			// 
             // lstCollObjectsMenu_HowManyLinks
             // 
@@ -665,15 +674,6 @@ namespace System.Windows.Forms
             lstCollObjectsMenu_HowManyPlanes.Size = new Drawing.Size(237, 22);
             lstCollObjectsMenu_HowManyPlanes.Text = "Planes: ??";
 			lstCollObjectsMenu_HowManyPlanes.Enabled = false;
-			// 
-            // lstCollObjectsMenu_SetObjectTemporary
-            // 
-            lstCollObjectsMenu_SetObjectTemporary.Name = "lstCollObjectsMenu_SetObjectTemporary";
-            lstCollObjectsMenu_SetObjectTemporary.Size = new Drawing.Size(237, 22);
-            lstCollObjectsMenu_SetObjectTemporary.Text = "Set As Temporary Object";
-			lstCollObjectsMenu_SetObjectTemporary.CheckOnClick = true;
-			lstCollObjectsMenu_SetObjectTemporary.Enabled = false;
-			lstCollObjectsMenu_SetObjectTemporary.ToolTipText = "This object will be deleted if this editor is closed.";
 
 
             // 
@@ -2198,7 +2198,7 @@ namespace System.Windows.Forms
             _selectedObject = null;
             ClearSelection();
 
-            if (lstCollObjects.Items.Count > 0)
+            if (lstCollObjects.Items.Count > 0) 
             {
                 if (lstCollObjects.Items.Count > index)
                 {
@@ -2225,7 +2225,7 @@ namespace System.Windows.Forms
             //TargetNode.SignalPropertyChange();
         }
 
-		private void LstCollObjectsMenu_AssignObjectColor_Click(object sender, EventArgs e)
+		private void lstCollObjectsMenu_AssignObjectColor_Click(object sender, EventArgs e)
 		{
 			if (_selectedObject == null)
 				return;
@@ -2240,6 +2240,14 @@ namespace System.Windows.Forms
 				lstCollObjects.Invalidate();
 				_modelPanel.Invalidate();
 			}
+		}
+
+		private void lstCollObjectsMenu_SetObjectTemporary_CheckStateChanged(object Sender, EventArgs e)
+		{
+			if (_selectedObject == null)
+				return;
+
+			_selectedObject.isTemporaryObject = lstCollObjectsMenu_SetObjectTemporary.Checked;
 		}
 
 		private void ColorDialog_OnColorChanged(Color selection)
@@ -3031,8 +3039,47 @@ namespace System.Windows.Forms
 			TargetNode = _node;
 			_modelPanel.Capture();
 		}
-		public void CollisionFormClosing()
+		/// <summary>
+		/// Called when the collision form is about to close.
+		/// </summary>
+		/// <returns>True if the collision form should NOT close; otherwise false.</returns>
+		public bool CollisionFormClosing()
 		{
+			bool SelectionAlreadyCleared = false;
+			
+			// Clear any objects that have temporary object set to true.
+			for (int i = 0; i < _targetNode.Children.Count; ++i)
+			{
+				// This borrows code from lstCollObjectsMenu_DeleteObject_Click but tweaked in a way so that
+				// it is run as an item and not call lstCollObjects as we do not need it anymore since it is being closed.
+				var CollObject = (CollisionObject)_targetNode.Children[i];
+
+				// If the object is nothing (shouldn't really happen, but there for just in case) or
+				// it is not a temporary object, then skip as there is no reason to remove it from the
+				// children node.
+				if (CollObject == null || !CollObject.isTemporaryObject)
+					continue;
+
+				// Just checks to make sure that the selection gets cleared before removing the children node,
+				// which is CollObject.
+				if (!SelectionAlreadyCleared)
+				{
+					SelectionAlreadyCleared = true;
+					ClearSelection();
+				}
+				 
+				// Remove the object (CollObject) from the list of children node.
+				_targetNode.Children.Remove(CollObject);
+				//lstCollObjects.Items.Remove(CollObject); // If closing, does really removing items even matter?
+
+				// Nullify the Collision Object now that it is not needed anymore.
+				CollObject = null;
+
+				// Signals a property change to the target node.
+				_targetNode.SignalPropertyChange();
+			}
+
+
 			TargetNode = null;
 			_modelPanel.Release();
 
@@ -3046,6 +3093,8 @@ namespace System.Windows.Forms
 			{
 				NullifyUndoRedoMenu();
 			}
+
+			return false;
 		}
 
 		// 0 = No form is focused at the moment, 1 = Only CE is focused, 2 = Another form is focused
@@ -3589,6 +3638,7 @@ namespace System.Windows.Forms
 
 			toolsStrip_PerspectiveCam.Checked = true;
 			toolsStrip_OrthographicCam.Checked = false;
+
 			if (_modelPanel.CurrentViewport.ViewType != ViewportProjection.Perspective)
 			{
 				_modelPanel.ResetCamera();
@@ -3604,6 +3654,7 @@ namespace System.Windows.Forms
 
 			toolsStrip_PerspectiveCam.Checked = false;
 			toolsStrip_OrthographicCam.Checked = true;
+
 			if (_modelPanel.CurrentViewport.ViewType != ViewportProjection.Orthographic)
 			{
 				_modelPanel.ResetCamera();
@@ -4778,6 +4829,8 @@ namespace System.Windows.Forms
             {
 				lstCollObjectsMenu_HowManyLinks.Text = $"Points/Links: {_selectedObject._points.Count}";
 				lstCollObjectsMenu_HowManyPlanes.Text = $"Planes: {_selectedObject._planes.Count}";
+
+				lstCollObjectsMenu_SetObjectTemporary.Checked = _selectedObject.isTemporaryObject;
             }
             else
             {

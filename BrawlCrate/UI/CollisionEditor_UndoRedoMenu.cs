@@ -308,8 +308,6 @@ namespace System.Windows.Forms
 		// current undo/redo state is on.
 		public void UpdateCollisionEditorStates(int Steps, int CurrentIndex)
 		{
-			Trace.WriteLine("Steps: " + Steps + " | Current Index: " + CurrentIndex);
-
 			if (Steps == 0 || CurrentIndex < 0)
 				return;
 
@@ -347,8 +345,6 @@ namespace System.Windows.Forms
 					var UndoSave = parentEditor.CreateUndoState(UndoIndex);
 					// It is added as a item into the list.
 					StatesUndone.Add(UndoSave);
-
-					//UndoSave = null;
 				}
 
 				parentEditor.redoSaves.AddRange(StatesUndone);
@@ -358,8 +354,6 @@ namespace System.Windows.Forms
 
 				int index = CurrentIndex - StatesUndone.Count;
 				int finalIndex = (index >= 0) ? index : 0;
-				//int index = CurrentIndex - 1 - StatesUndone.Count;
-				//int index = CurrentIndex + 1 - StatesUndone.Count;
 				parentEditor.saveIndex = finalIndex;
 
 				if (finalIndex <= 0)
@@ -374,9 +368,6 @@ namespace System.Windows.Forms
 			else
 			{
 				int StepsRedo = Steps;
-				//int StepsRedo = UndoStates.Count - CurrentStep - 1;
-
-				Trace.WriteLine("StepsRedo: "+StepsRedo+" | RedoSaves: "+parentEditor.redoSaves.Count);
 
 				if (StepsRedo > parentEditor.redoSaves.Count)
 				{
