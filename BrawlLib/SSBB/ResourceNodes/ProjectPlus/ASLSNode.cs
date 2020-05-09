@@ -3,9 +3,6 @@ using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
 using System.ComponentModel;
 using System.IO;
-#if !DEBUG
-using System.ComponentModel;
-#endif
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
