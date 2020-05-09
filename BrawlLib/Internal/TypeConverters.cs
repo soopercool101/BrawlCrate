@@ -167,9 +167,9 @@ namespace BrawlLib.Internal
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
                                          Type destType)
         {
-            if (destType == typeof(string) && value is UserDataClass)
+            if (destType == typeof(string) && value is UserDataClass u)
             {
-                return ((UserDataClass) value).ToString();
+                return u.ToString();
             }
 
             return base.ConvertTo(context, culture, value, destType);
@@ -177,11 +177,10 @@ namespace BrawlLib.Internal
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            if (value is string)
+            if (value is string s)
             {
                 try
                 {
-                    string s = (string) value;
                     string[] s2 = s.Split(':');
                     string[] s3 = s2[1].Split(',');
 
@@ -207,12 +206,12 @@ namespace BrawlLib.Internal
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destType)
         {
-            return destType == typeof(UserDataClass) ? true : base.CanConvertTo(context, destType);
+            return destType == typeof(UserDataClass) || base.CanConvertTo(context, destType);
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
-            return sourceType == typeof(string) ? true : base.CanConvertFrom(context, sourceType);
+            return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
         }
     }
 

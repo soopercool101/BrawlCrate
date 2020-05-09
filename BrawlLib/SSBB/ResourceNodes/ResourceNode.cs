@@ -302,7 +302,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             return childrenAndSubchildren;
         }
 
-        [Browsable(false)] public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);
+#if !DEBUG
+        [Browsable(false)] 
+#endif
+        public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);
         [Browsable(false)] public bool IsCompressed => _compression != CompressionType.None;
 
         //Properties or compression have changed
