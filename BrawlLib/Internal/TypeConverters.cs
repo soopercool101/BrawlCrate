@@ -43,6 +43,8 @@ namespace BrawlLib.Internal
                     case byte _:
                     case sbyte _:
                         return $"0x{value:X2}";
+                    default:
+                        return base.ConvertTo(context, culture, value, destinationType);
                 }
             }
             return base.ConvertTo(context, culture, value, destinationType);
