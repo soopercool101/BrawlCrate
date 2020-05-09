@@ -109,7 +109,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private ushort _buttonFlags;
-        public ushort StrOffset;
+        internal ushort StrOffset;
 
         public override int OnCalculateSize(bool force)
         {
