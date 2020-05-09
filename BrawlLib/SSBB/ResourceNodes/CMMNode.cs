@@ -13,14 +13,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.CMM;
 
         [Category("Custom My Music")]
-        public string TracklistID
+        [TypeConverter(typeof(HexByteConverter))]
+        public byte TracklistID
         {
-            get => "0x" + _tracklistID.ToString("X2");
+            get => _tracklistID;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _tracklistID = Convert.ToByte(field0, fromBase);
+                _tracklistID = value;
                 SignalPropertyChange();
             }
         }
@@ -90,16 +89,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         public uint _songID;
 
         [Category("Custom My Music")]
-        public string SongID
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint SongID
         {
-            get => "0x" + _songID.ToString("X8");
+            get => _songID;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _songID = Convert.ToUInt32(field0, fromBase);
+                _songID = value;
                 SignalPropertyChange();
-                Name = SongID;
+                Name = $"0x{SongID:X8}";
             }
         }
 
@@ -149,7 +147,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             TrackListID = Header->_trackListID;
             _sliderSetting = Header->_sliderSetting;
 
-            _name = SongID;
+            _name = SongID.ToString("X8");
 
             return false;
         }

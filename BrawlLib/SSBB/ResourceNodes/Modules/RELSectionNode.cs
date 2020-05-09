@@ -25,14 +25,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public string DataAlign => "0x" + _dataAlign.ToString("X");
 
-        public string EndBufferSize
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint EndBufferSize
         {
-            get => "0x" + _endBufferSize.ToString("X");
+            get => _endBufferSize;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase) ? 16 : 10;
-                if (Convert.ToByte(field0, fromBase) % 4 != 0 &&
+                if (value % 4 != 0 &&
                     MessageBox.Show(
                         "Buffers should generally be multiples of 0x4, are you sure you want to set this? (It may make the module unreadable!)",
                         "", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -40,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return;
                 }
 
-                _endBufferSize = Convert.ToByte(field0, fromBase);
+                _endBufferSize = value;
                 SignalPropertyChange();
             }
         }

@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.BrawlEx;
 using System;
 using System.ComponentModel;
@@ -103,14 +103,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Cosmetics")]
         [DisplayName("Cosmetic ID")]
-        public string CosmeticID
+        [TypeConverter(typeof(HexByteConverter))]
+        public byte CosmeticID
         {
-            get => "0x" + _cosmeticID.ToString("X2");
+            get => _cosmeticID;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _cosmeticID = Convert.ToByte(field0, fromBase);
+                _cosmeticID = value;
                 SignalPropertyChange();
             }
         }
@@ -130,14 +129,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Cosmetics")]
         [DisplayName("Announcer Call")]
-        public string AnnouncerID
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint AnnouncerID
         {
-            get => "0x" + _announcerSFX.ToString("X8");
+            get => _announcerSFX;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _announcerSFX = Convert.ToUInt32(field0, fromBase);
+                _announcerSFX = value;
                 SignalPropertyChange();
             }
         }

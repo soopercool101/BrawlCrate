@@ -87,28 +87,26 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         private ushort _soundBank;
         [Category("Stage Parameters")]
-        public string SoundBank
+        [TypeConverter(typeof(HexUShortConverter))]
+        public ushort SoundBank
         {
-            get => "0x" + _soundBank.ToString("X4");
+            get => _soundBank;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _soundBank = Convert.ToUInt16(field0, fromBase);
+                _soundBank = value;
                 SignalPropertyChange();
             }
         }
 
         private ushort _effectBank;
         [Category("Stage Parameters")]
-        public string EffectBank
+        [TypeConverter(typeof(HexUShortConverter))]
+        public ushort EffectBank
         {
-            get => "0x" + _effectBank.ToString("X4");
+            get => _effectBank;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _effectBank = Convert.ToUInt16(field0, fromBase);
+                _effectBank = value;
                 SignalPropertyChange();
             }
         }
@@ -225,14 +223,13 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         private uint _memoryAllocation;
         [Category("Stage Parameters")]
-        public string MemoryAllocation
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint MemoryAllocation
         {
-            get => "0x" + _memoryAllocation.ToString("X8");
+            get => _memoryAllocation;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _memoryAllocation = Convert.ToUInt32(field0, fromBase);
+                _memoryAllocation = value;
                 SignalPropertyChange();
             }
         }

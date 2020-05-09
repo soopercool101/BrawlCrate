@@ -6,7 +6,7 @@ using System.Globalization;
 namespace BrawlLib.Internal
 {
 
-    internal class HexTypeConverter : TypeConverter
+    internal class HexConverterBase : TypeConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -50,7 +50,7 @@ namespace BrawlLib.Internal
 
     }
 
-    internal class HexUIntConverter : HexTypeConverter
+    internal class HexUIntConverter : HexConverterBase
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -72,7 +72,7 @@ namespace BrawlLib.Internal
         }
     }
 
-    internal class HexIntConverter : HexTypeConverter
+    internal class HexIntConverter : HexConverterBase
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -94,7 +94,7 @@ namespace BrawlLib.Internal
         }
     }
 
-    internal class HexUShortConverter : HexTypeConverter
+    internal class HexUShortConverter : HexConverterBase
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -116,7 +116,7 @@ namespace BrawlLib.Internal
         }
     }
 
-    internal class HexShortConverter : HexTypeConverter
+    internal class HexShortConverter : HexConverterBase
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -138,7 +138,7 @@ namespace BrawlLib.Internal
         }
     }
 
-    internal class HexByteConverter : HexTypeConverter
+    internal class HexByteConverter : HexConverterBase
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {

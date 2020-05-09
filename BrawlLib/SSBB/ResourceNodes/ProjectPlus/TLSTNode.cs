@@ -116,14 +116,13 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         public uint _songID;
 
         [Category("Song Entry")]
-        public string SongID
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint SongID
         {
-            get => "0x" + _songID.ToString("X8");
+            get => _songID;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _songID = Convert.ToUInt32(field0, fromBase);
+                _songID = value;
 
                 updateBRSTM();
 

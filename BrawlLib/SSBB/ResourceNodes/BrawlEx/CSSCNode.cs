@@ -121,27 +121,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Cosmetics")]
         [DisplayName("Wiimote SFX")]
-        public string WiimoteSFX
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint WiimoteSFX
         {
-            get => "0x" + _wiimoteSFX.ToString("X8");
+            get => _wiimoteSFX;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _wiimoteSFX = Convert.ToUInt32(field0, fromBase);
+                _wiimoteSFX = value;
                 SignalPropertyChange();
             }
         }
 
         [DisplayName("Status")]
-        public string Status
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint Status
         {
-            get => "0x" + _status.ToString("X8");
+            get => _status;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _status = Convert.ToUInt32(field0, fromBase);
+                _status = value;
                 SignalPropertyChange();
             }
         }
