@@ -30,17 +30,20 @@ namespace BrawlLib.Internal
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is uint || value is int)
+            if (destinationType == typeof(string))
             {
-                return $"0x{value:X8}";
-            }
-            if (destinationType == typeof(string) && value is ushort || value is short)
-            {
-                return $"0x{value:X4}";
-            }
-            if (destinationType == typeof(string) && value is byte || value is sbyte)
-            {
-                return $"0x{value:X2}";
+                switch (value)
+                {
+                    case uint _:
+                    case int _:
+                        return $"0x{value:X8}";
+                    case ushort _:
+                    case short _:
+                        return $"0x{value:X4}";
+                    case byte _:
+                    case sbyte _:
+                        return $"0x{value:X2}";
+                }
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }
@@ -53,12 +56,16 @@ namespace BrawlLib.Internal
         {
             if (value is string input)
             {
+                NumberStyles style = NumberStyles.None;
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
+                    style = NumberStyles.HexNumber;
                 }
 
-                return uint.Parse(input, NumberStyles.HexNumber, culture);
+                input = input.Trim();
+
+                return uint.Parse(input, style, culture);
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -71,12 +78,16 @@ namespace BrawlLib.Internal
         {
             if (value is string input)
             {
+                NumberStyles style = NumberStyles.None;
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
+                    style = NumberStyles.HexNumber;
                 }
 
-                return ushort.Parse(input, NumberStyles.HexNumber, culture);
+                input = input.Trim();
+
+                return ushort.Parse(input, style, culture);
             }
 
             return base.ConvertFrom(context, culture, value);
