@@ -215,19 +215,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     uint lengthCalc = (uint)(sticker.BRRES.UTF8Length() + 1).Align(4);
                     address.WriteUTF8String(sticker.BRRES, true, offset, lengthCalc);
-                    sticker._nameOffset = offset - TyDataHeader.HeaderSize;
-                    sticker._brresOffset = offset - TyDataHeader.HeaderSize;
+                    sticker.NameOffset = offset - TyDataHeader.HeaderSize;
+                    sticker.BrresOffset = offset - TyDataHeader.HeaderSize;
                     offset += lengthCalc + 4;
                 }
                 else
                 {
                     uint lengthCalc = (uint)(sticker.Name.UTF8Length() + 1).Align(4);
                     address.WriteUTF8String(sticker.Name, true, offset, lengthCalc);
-                    sticker._nameOffset = offset - TyDataHeader.HeaderSize;
+                    sticker.NameOffset = offset - TyDataHeader.HeaderSize;
                     offset += lengthCalc;
                     lengthCalc = (uint)(sticker.BRRES.UTF8Length() + 1).Align(4);
                     address.WriteUTF8String(sticker.BRRES, true, offset, lengthCalc);
-                    sticker._brresOffset = offset - TyDataHeader.HeaderSize;
+                    sticker.BrresOffset = offset - TyDataHeader.HeaderSize;
                     offset += lengthCalc;
                 }
             }
@@ -262,6 +262,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             return (uint) (Children.Count * 2);
         }
 
+        public override uint WriteData(VoidPtr address, uint initialOffset)
+        {
+            uint offset = initialOffset;
+            foreach (TySealNode s in Children)
+            {
+                ((buint*)(address + offset))[0] = s.Offset - 0x1C;
+                offset += 4;
+                ((buint*)(address + offset))[0] = (s.Offset - 0x1C) + 4;
+                offset += 4;
+            }
+
+            return offset;
+        }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             int offset = 0;
@@ -269,7 +283,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 int size = n.OnCalculateSize(true);
                 n.OnRebuild(address + offset, size, true);
-                n._offset = EntryOffset + (uint)offset;
+                n.Offset = EntryOffset + (uint)offset;
                 offset += size;
             }
         }
@@ -283,20 +297,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             return size;
-        }
-
-        public override uint WriteData(VoidPtr address, uint initialOffset)
-        {
-            uint offset = initialOffset;
-            foreach (TySealNode s in Children)
-            {
-                ((buint*) (address + offset))[0] = s._offset - 0x1C;
-                offset += 4;
-                ((buint*)(address + offset))[0] = (s._offset - 0x1C) + 4;
-                offset += 4;
-            }
-
-            return offset;
         }
     }
 
@@ -739,17 +739,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-
-        internal uint _nameOffset;
-        internal uint _brresOffset;
-        internal uint _offset;
+        internal uint NameOffset;
+        internal uint BrresOffset;
+        internal uint Offset;
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             TySeal* header = (TySeal*)address;
             *header = new TySeal();
             header->_id = _id;
-            header->_nameOffset = _nameOffset;
-            header->_brresOffset = _brresOffset;
+            header->_nameOffset = NameOffset;
+            header->_brresOffset = BrresOffset;
             header->_unknown0x0C = _unknown0x0C;
             header->_unknown0x10 = _unknown0x10;
             header->_unknown0x14 = _unknown0x14;
@@ -876,6 +875,79 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TyDataListNode : TyEntryNode
     {
+        public override Type[] AllowedChildTypes => new[] {typeof(TyDataListEntryNode)};
+
+        public override uint WriteStrings(VoidPtr address, uint initialOffset)
+        {
+            uint offset = initialOffset;
+            foreach (TyDataListEntryNode toy in Children)
+            {
+                if ((toy.Name == "<null>" || string.IsNullOrEmpty(toy.Name)) &&
+                    string.IsNullOrEmpty(toy.BRRES) || toy.Name.Equals(toy.BRRES))
+                {
+                    uint lengthCalc = (uint)(toy.BRRES.UTF8Length() + 1).Align(4);
+                    address.WriteUTF8String(toy.BRRES, true, offset, lengthCalc);
+                    toy.NameOffset = offset - TyDataHeader.HeaderSize;
+                    toy.BrresOffset = offset - TyDataHeader.HeaderSize;
+                    offset += lengthCalc + 4;
+                }
+                else
+                {
+                    uint lengthCalc = (uint)(toy.Name.UTF8Length() + 1).Align(4);
+                    address.WriteUTF8String(toy.Name, true, offset, lengthCalc);
+                    toy.NameOffset = offset - TyDataHeader.HeaderSize;
+                    offset += lengthCalc;
+                    lengthCalc = (uint)(toy.BRRES.UTF8Length() + 1).Align(4);
+                    address.WriteUTF8String(toy.BRRES, true, offset, lengthCalc);
+                    toy.BrresOffset = offset - TyDataHeader.HeaderSize;
+                    offset += lengthCalc;
+                }
+            }
+
+            return offset;
+        }
+
+        public override uint GetStringsLength()
+        {
+            uint sizeCalc = 0;
+            foreach (TyDataListEntryNode toy in Children)
+            {
+                if ((toy.Name == "<null>" || string.IsNullOrEmpty(toy.Name)) &&
+                    string.IsNullOrEmpty(toy.BRRES) || toy.Name.Equals(toy.BRRES))
+                {
+                    uint lengthCalc = (uint)(toy.BRRES.UTF8Length() + 1).Align(4);
+                    sizeCalc += lengthCalc + 4;
+                }
+                else
+                {
+                    uint lengthCalc = (uint)(toy.Name.UTF8Length() + 1).Align(4);
+                    sizeCalc += lengthCalc;
+                    lengthCalc = (uint)(toy.BRRES.UTF8Length() + 1).Align(4);
+                    sizeCalc += lengthCalc;
+                }
+            }
+            return sizeCalc;
+        }
+
+        public override uint GetDataEntryCount()
+        {
+            return (uint)(Children.Count * 2);
+        }
+
+        public override uint WriteData(VoidPtr address, uint initialOffset)
+        {
+            uint offset = initialOffset;
+            foreach (TyDataListEntryNode t in Children)
+            {
+                ((buint*)(address + offset))[0] = t.Offset - 0x1C;
+                offset += 4;
+                ((buint*)(address + offset))[0] = (t.Offset - 0x1C) + 4;
+                offset += 4;
+            }
+
+            return offset;
+        }
+
         public override bool OnInitialize()
         {
             return WorkingUncompressed.Length >= TyDataListEntry.Size;
@@ -890,6 +962,29 @@ namespace BrawlLib.SSBB.ResourceNodes
                 new TyDataListEntryNode().Initialize(this, WorkingUncompressed.Address + offset, (int)TyDataListEntry.Size);
                 offset += TyDataListEntry.Size;
             }
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            int offset = 0;
+            foreach (TyDataListEntryNode n in Children)
+            {
+                int size = n.OnCalculateSize(true);
+                n.OnRebuild(address + offset, size, true);
+                n.Offset = EntryOffset + (uint)offset;
+                offset += size;
+            }
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            int size = 0;
+            foreach (ResourceNode n in Children)
+            {
+                size += n.OnCalculateSize(true);
+            }
+
+            return size;
         }
     }
 
@@ -1224,6 +1319,44 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x58 = Header->_unknown0x58;
             _unknown0x5C = Header->_unknown0x5C;
             return false;
+        }
+
+        internal uint NameOffset;
+        internal uint BrresOffset;
+        internal uint Offset;
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            TyDataListEntry* header = (TyDataListEntry*)address;
+            *header = new TyDataListEntry();
+            header->_id = _id;
+            header->_nameOffset = NameOffset;
+            header->_brresOffset = BrresOffset;
+            header->_gameIcon1 = _gameIcon1;
+            header->_gameIcon2 = _gameIcon2;
+            header->_unknown0x14 = _unknown0x14;
+            header->_unknown0x18 = _unknown0x18;
+            header->_unknown0x1C = _unknown0x1C;
+            header->_series = _series;
+            header->_category = _category;
+            header->_pad0x28 = _pad0x28;
+            header->_pad0x2C = _pad0x2C;
+            header->_pad0x30 = _pad0x30;
+            header->_unknown0x34 = _unknown0x34;
+            header->_unknown0x38 = _unknown0x38;
+            header->_pad0x3C = _pad0x3C;
+            header->_unknown0x40 = _unknown0x40;
+            header->_unknown0x44 = _unknown0x44;
+            header->_pad0x48 = _pad0x48;
+            header->_id2 = _id2;
+            header->_unknown0x50 = _unknown0x50;
+            header->_unknown0x54 = _unknown0x54;
+            header->_unknown0x58 = _unknown0x58;
+            header->_unknown0x5C = _unknown0x5C;
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return (int)TyDataListEntry.Size;
         }
     }
 }
