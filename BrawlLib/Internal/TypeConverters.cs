@@ -72,6 +72,28 @@ namespace BrawlLib.Internal
         }
     }
 
+    internal class HexIntConverter : HexTypeConverter
+    {
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is string input)
+            {
+                NumberStyles style = NumberStyles.None;
+                if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+                {
+                    input = input.Substring(2);
+                    style = NumberStyles.HexNumber;
+                }
+
+                input = input.Trim();
+
+                return int.Parse(input, style, culture);
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+    }
+
     internal class HexUShortConverter : HexTypeConverter
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
@@ -88,6 +110,50 @@ namespace BrawlLib.Internal
                 input = input.Trim();
 
                 return ushort.Parse(input, style, culture);
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+    }
+
+    internal class HexShortConverter : HexTypeConverter
+    {
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is string input)
+            {
+                NumberStyles style = NumberStyles.None;
+                if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+                {
+                    input = input.Substring(2);
+                    style = NumberStyles.HexNumber;
+                }
+
+                input = input.Trim();
+
+                return short.Parse(input, style, culture);
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+    }
+
+    internal class HexByteConverter : HexTypeConverter
+    {
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is string input)
+            {
+                NumberStyles style = NumberStyles.None;
+                if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+                {
+                    input = input.Substring(2);
+                    style = NumberStyles.HexNumber;
+                }
+
+                input = input.Trim();
+
+                return byte.Parse(input, style, culture);
             }
 
             return base.ConvertFrom(context, culture, value);
