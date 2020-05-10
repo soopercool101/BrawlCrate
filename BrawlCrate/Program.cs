@@ -44,7 +44,7 @@ namespace BrawlCrate
             @"Updated to BrawlCrate v0.33! Here's what's new in this release:
 - Add support for basic Trophy and Sticker mods
 - Allow ItmGen Groups to be deleted
-- Add "Re-assign Custom IDs" option to TLST files
+- Add 'Re-assign Custom IDs' option to TLST files
 
 Full changelog and documentation can be viewed from the help menu.";
 
