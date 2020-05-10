@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.32 Hotfix 1
+BrawlCrate - v0.33
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,15 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.33 - (5/10/2020)
+ . Add TyData parsing and editing for Stickers and Trophies
+ . Add support for the deletion of ItmGen groups
+ . Add "Re-assign Custom IDs" option to TLST files
+ . ASLS Button Flags are now directly editable as hex
+ . All hex converters now allow and will convert from decimal inputs
+ . MSBin Editor now displays the index of the selected string
+ . Auto-decompress Fighter PACs setting is now off by default
  
  - BrawlCrate v0.32 Hotfix 1 - (4/20/2020)
  . Improve boot times when automatic updates are enabled

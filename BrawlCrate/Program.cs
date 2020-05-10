@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.32-h1";
+        public static readonly string TagName = "v0.33";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,12 +41,10 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.32! Here's what's new in this release:
-- (Hotfix 1) Improve boot times when the automatic updater is active
-- Add support for pathing data
-- Fix ItmGen rebuilding
-- Add support for Super Soft collisions
-- Various subspace improvements
+            @"Updated to BrawlCrate v0.33! Here's what's new in this release:
+- Add support for basic Trophy and Sticker mods
+- Allow ItmGen Groups to be deleted
+- Add "Re-assign Custom IDs" option to TLST files
 
 Full changelog and documentation can be viewed from the help menu.";
 
