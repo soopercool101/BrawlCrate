@@ -25,6 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {"DOL", typeof(DOLNode)},
             {"REL", typeof(RELNode)},
             {"MASQ", typeof(MasqueradeNode)},
+            {"MSBIN", typeof(MSBinNode)},
             {"CMM", typeof(CMMNode)}
         };
 

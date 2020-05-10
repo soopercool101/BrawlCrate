@@ -133,9 +133,9 @@ namespace BrawlLib.SSBB.Types
         public buint _brresOffset;
         public bint _gameIcon1;
         public bint _gameIcon2;
-        public bint _unknown0x14;
-        public bint _unknown0x18;
-        public bint _unknown0x1C;
+        public bint _nameIndex; // Name
+        public bint _gameIndex; // Games 
+        public bint _descriptionIndex; // Description
         public bint _series;
         public bint _category;
         public bint _pad0x28;
@@ -147,7 +147,7 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown0x40; // Unlock criteria?
         public bint _unknown0x44; // Always 1?
         public bint _pad0x48;
-        public bint _id2; // Always the same as ID 1?
+        public bint _thumbnail; // Icon
         public bfloat _unknown0x50;
         public bfloat _unknown0x54;
         public bfloat _unknown0x58;

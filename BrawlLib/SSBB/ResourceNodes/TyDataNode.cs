@@ -1018,15 +1018,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int _id2;
+        private int _thumbnail;
 
         [Category("Trophy Data")]
-        public int Id2
+        [Description("The index of the trophy's thumbnail in figure.brres")]
+        public int ThumbnailIndex
         {
-            get => _id2;
+            get => _thumbnail;
             set
             {
-                _id2 = value;
+                _thumbnail = value;
                 SignalPropertyChange();
             }
         }
@@ -1034,6 +1035,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _gameIcon1;
 
         [Category("Trophy Data")]
+        [Description("The index of the trophy's first game icon in the PAT0 in figure.brres")]
         public int GameIcon1
         {
             get => _gameIcon1;
@@ -1047,6 +1049,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _gameIcon2;
 
         [Category("Trophy Data")]
+        [Description("The index of the trophy's second game icon in the PAT0 in figure.brres")]
         public int GameIcon2
         {
             get => _gameIcon2;
@@ -1057,41 +1060,44 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int _unknown0x14;
+        private int _nameIndex;
 
         [Category("Trophy Data")]
-        public int Unknown0x14
+        [Description("The index of the trophy's display name in ty_fig_name_list")]
+        public int NameIndex
         {
-            get => _unknown0x14;
+            get => _nameIndex;
             set
             {
-                _unknown0x14 = value;
+                _nameIndex = value;
                 SignalPropertyChange();
             }
         }
 
-        private int _unknown0x18;
+        private int _gameIndex;
 
         [Category("Trophy Data")]
-        public int Unknown0x18
+        [Description("The index of the trophy's game appearance(s) in ty_fig_name_list")]
+        public int GameIndex
         {
-            get => _unknown0x18;
+            get => _gameIndex;
             set
             {
-                _unknown0x18 = value;
+                _gameIndex = value;
                 SignalPropertyChange();
             }
         }
 
-        private int _unknown0x1C;
+        private int _descriptionIndex;
 
         [Category("Trophy Data")]
-        public int Unknown0x1C
+        [Description("The index of the trophy's description in ty_fig_ext_list")]
+        public int DescriptionIndex
         {
-            get => _unknown0x1C;
+            get => _descriptionIndex;
             set
             {
-                _unknown0x1C = value;
+                _descriptionIndex = value;
                 SignalPropertyChange();
             }
         }
@@ -1099,7 +1105,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _series;
 
         [Category("Trophy Data")]
-        public int Series
+        [Description("The index of the trophy's series in ty_fig_category")]
+        public int SeriesIndex
         {
             get => _series;
             set
@@ -1112,7 +1119,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _category;
 
         [Category("Trophy Data")]
-        public int Category
+        [Description("The index of the trophy's category in ty_fig_category")]
+        public int CategoryIndex
         {
             get => _category;
             set
@@ -1299,9 +1307,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _id = Header->_id;
             _gameIcon1 = Header->_gameIcon1;
             _gameIcon2 = Header->_gameIcon2;
-            _unknown0x14 = Header->_unknown0x14;
-            _unknown0x18 = Header->_unknown0x18;
-            _unknown0x1C = Header->_unknown0x1C;
+            _nameIndex = Header->_nameIndex;
+            _gameIndex = Header->_gameIndex;
+            _descriptionIndex = Header->_descriptionIndex;
             _series = Header->_series;
             _category = Header->_category;
             _pad0x28 = Header->_pad0x28;
@@ -1313,7 +1321,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x40 = Header->_unknown0x40;
             _unknown0x44 = Header->_unknown0x44;
             _pad0x48 = Header->_pad0x48;
-            _id2 = Header->_id2;
+            _thumbnail = Header->_thumbnail;
             _unknown0x50 = Header->_unknown0x50;
             _unknown0x54 = Header->_unknown0x54;
             _unknown0x58 = Header->_unknown0x58;
@@ -1333,9 +1341,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_brresOffset = BrresOffset;
             header->_gameIcon1 = _gameIcon1;
             header->_gameIcon2 = _gameIcon2;
-            header->_unknown0x14 = _unknown0x14;
-            header->_unknown0x18 = _unknown0x18;
-            header->_unknown0x1C = _unknown0x1C;
+            header->_nameIndex = _nameIndex;
+            header->_gameIndex = _gameIndex;
+            header->_descriptionIndex = _descriptionIndex;
             header->_series = _series;
             header->_category = _category;
             header->_pad0x28 = _pad0x28;
@@ -1347,7 +1355,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_unknown0x40 = _unknown0x40;
             header->_unknown0x44 = _unknown0x44;
             header->_pad0x48 = _pad0x48;
-            header->_id2 = _id2;
+            header->_thumbnail = _thumbnail;
             header->_unknown0x50 = _unknown0x50;
             header->_unknown0x54 = _unknown0x54;
             header->_unknown0x58 = _unknown0x58;

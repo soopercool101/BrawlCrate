@@ -143,29 +143,17 @@ namespace BrawlLib.Internal.Windows.Controls
                 btnRemove.Enabled = false;
                 btnMoveUp.Enabled = false;
                 btnMoveDown.Enabled = false;
+                lblSelectedIndex.Visible = false;
             }
             else
             {
                 txtEditor.Text = listBox1.SelectedItem as string;
                 txtEditor.Enabled = true;
                 btnRemove.Enabled = true;
-                if (listBox1.SelectedIndex > 0)
-                {
-                    btnMoveUp.Enabled = true;
-                }
-                else
-                {
-                    btnMoveUp.Enabled = false;
-                }
-
-                if (listBox1.SelectedIndex < listBox1.Items.Count - 1)
-                {
-                    btnMoveDown.Enabled = true;
-                }
-                else
-                {
-                    btnMoveDown.Enabled = false;
-                }
+                lblSelectedIndex.Text = $"Index: {listBox1.SelectedIndex}";
+                lblSelectedIndex.Visible = true;
+                btnMoveUp.Enabled = listBox1.SelectedIndex > 0;
+                btnMoveDown.Enabled = listBox1.SelectedIndex < listBox1.Items.Count - 1;
             }
         }
 
@@ -204,162 +192,176 @@ namespace BrawlLib.Internal.Windows.Controls
         private SplitContainer splitContainer2;
         private Button btnMoveUp;
         private Button btnMoveDown;
+        private Label lblSelectedIndex;
         private Button btnAdd;
 
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
-            panel2 = new Panel();
-            btnRemove = new Button();
-            btnAdd = new Button();
-            txtEditor = new TextBox();
-            splitContainer1 = new SplitContainer();
-            splitContainer2 = new SplitContainer();
-            btnMoveDown = new Button();
-            btnMoveUp = new Button();
-            panel2.SuspendLayout();
-            ((ISupportInitialize) splitContainer1).BeginInit();
-            splitContainer1.Panel1.SuspendLayout();
-            splitContainer1.SuspendLayout();
-            ((ISupportInitialize) splitContainer2).BeginInit();
-            splitContainer2.Panel1.SuspendLayout();
-            splitContainer2.Panel2.SuspendLayout();
-            splitContainer2.SuspendLayout();
-            SuspendLayout();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnMoveUp = new System.Windows.Forms.Button();
+            this.btnMoveDown = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtEditor = new System.Windows.Forms.TextBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lblSelectedIndex = new System.Windows.Forms.Label();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.SuspendLayout();
             // 
             // listBox1
             // 
-            listBox1.Dock = DockStyle.Fill;
-            listBox1.FormattingEnabled = true;
-            listBox1.IntegralHeight = false;
-            listBox1.Location = new System.Drawing.Point(0, 0);
-            listBox1.Margin = new Padding(0);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new System.Drawing.Size(219, 113);
-            listBox1.TabIndex = 1;
-            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.IntegralHeight = false;
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(219, 113);
+            this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // panel2
             // 
-            panel2.Controls.Add(btnMoveUp);
-            panel2.Controls.Add(btnMoveDown);
-            panel2.Controls.Add(btnRemove);
-            panel2.Controls.Add(btnAdd);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new System.Drawing.Point(219, 0);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(58, 113);
-            panel2.TabIndex = 2;
-            // 
-            // btnRemove
-            // 
-            btnRemove.Location = new System.Drawing.Point(32, 32);
-            btnRemove.Name = "btnRemove";
-            btnRemove.Size = new System.Drawing.Size(23, 23);
-            btnRemove.TabIndex = 4;
-            btnRemove.Text = "-";
-            btnRemove.UseVisualStyleBackColor = true;
-            btnRemove.Click += new EventHandler(btnRemove_Click);
-            // 
-            // btnAdd
-            // 
-            btnAdd.Location = new System.Drawing.Point(32, 3);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new System.Drawing.Size(23, 23);
-            btnAdd.TabIndex = 3;
-            btnAdd.Text = "+";
-            btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += new EventHandler(btnAdd_Click);
-            // 
-            // txtEditor
-            // 
-            txtEditor.Dock = DockStyle.Fill;
-            txtEditor.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular,
-                System.Drawing.GraphicsUnit.Point, 0);
-            txtEditor.Location = new System.Drawing.Point(0, 0);
-            txtEditor.Margin = new Padding(0);
-            txtEditor.Multiline = true;
-            txtEditor.Name = "txtEditor";
-            txtEditor.ScrollBars = ScrollBars.Both;
-            txtEditor.Size = new System.Drawing.Size(277, 164);
-            txtEditor.TabIndex = 3;
-            txtEditor.TextChanged += new EventHandler(txtEditor_TextChanged);
-            txtEditor.KeyDown += new KeyEventHandler(txtEditor_KeyDown);
-            // 
-            // splitContainer1
-            // 
-            splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.Location = new System.Drawing.Point(0, 0);
-            splitContainer1.Name = "splitContainer1";
-            splitContainer1.Orientation = Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            splitContainer1.Panel1.Controls.Add(txtEditor);
-            // 
-            // splitContainer1.Panel2
-            // 
-            splitContainer1.Panel2.Paint += new PaintEventHandler(splitContainer1_Panel2_Paint);
-            splitContainer1.Panel2Collapsed = true;
-            splitContainer1.Size = new System.Drawing.Size(277, 164);
-            splitContainer1.SplitterDistance = 74;
-            splitContainer1.TabIndex = 5;
-            // 
-            // splitContainer2
-            // 
-            splitContainer2.Dock = DockStyle.Fill;
-            splitContainer2.Location = new System.Drawing.Point(0, 0);
-            splitContainer2.Name = "splitContainer2";
-            splitContainer2.Orientation = Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            splitContainer2.Panel1.Controls.Add(listBox1);
-            splitContainer2.Panel1.Controls.Add(panel2);
-            // 
-            // splitContainer2.Panel2
-            // 
-            splitContainer2.Panel2.Controls.Add(splitContainer1);
-            splitContainer2.Size = new System.Drawing.Size(277, 281);
-            splitContainer2.SplitterDistance = 113;
-            splitContainer2.TabIndex = 6;
-            // 
-            // btnMoveDown
-            // 
-            btnMoveDown.Location = new System.Drawing.Point(3, 32);
-            btnMoveDown.Name = "btnMoveDown";
-            btnMoveDown.Size = new System.Drawing.Size(23, 23);
-            btnMoveDown.TabIndex = 5;
-            btnMoveDown.Text = "↓";
-            btnMoveDown.UseVisualStyleBackColor = true;
-            btnMoveDown.Click += btnMoveDown_Click;
+            this.panel2.Controls.Add(this.lblSelectedIndex);
+            this.panel2.Controls.Add(this.btnMoveUp);
+            this.panel2.Controls.Add(this.btnMoveDown);
+            this.panel2.Controls.Add(this.btnRemove);
+            this.panel2.Controls.Add(this.btnAdd);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(219, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(58, 113);
+            this.panel2.TabIndex = 2;
             // 
             // btnMoveUp
             // 
-            btnMoveUp.Location = new System.Drawing.Point(3, 3);
-            btnMoveUp.Name = "btnMoveUp";
-            btnMoveUp.Size = new System.Drawing.Size(23, 23);
-            btnMoveUp.TabIndex = 6;
-            btnMoveUp.Text = "↑";
-            btnMoveUp.UseVisualStyleBackColor = true;
-            btnMoveUp.Click += btnMoveUp_Click;
+            this.btnMoveUp.Location = new System.Drawing.Point(3, 3);
+            this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Size = new System.Drawing.Size(23, 23);
+            this.btnMoveUp.TabIndex = 6;
+            this.btnMoveUp.Text = "↑";
+            this.btnMoveUp.UseVisualStyleBackColor = true;
+            // 
+            // btnMoveDown
+            // 
+            this.btnMoveDown.Location = new System.Drawing.Point(3, 32);
+            this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Size = new System.Drawing.Size(23, 23);
+            this.btnMoveDown.TabIndex = 5;
+            this.btnMoveDown.Text = "↓";
+            this.btnMoveDown.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(32, 32);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(23, 23);
+            this.btnRemove.TabIndex = 4;
+            this.btnRemove.Text = "-";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(32, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(23, 23);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // txtEditor
+            // 
+            this.txtEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEditor.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditor.Location = new System.Drawing.Point(0, 0);
+            this.txtEditor.Margin = new System.Windows.Forms.Padding(0);
+            this.txtEditor.Multiline = true;
+            this.txtEditor.Name = "txtEditor";
+            this.txtEditor.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtEditor.Size = new System.Drawing.Size(277, 164);
+            this.txtEditor.TabIndex = 3;
+            this.txtEditor.TextChanged += new System.EventHandler(this.txtEditor_TextChanged);
+            this.txtEditor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEditor_KeyDown);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.txtEditor);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Panel2Collapsed = true;
+            this.splitContainer1.Size = new System.Drawing.Size(277, 164);
+            this.splitContainer1.SplitterDistance = 74;
+            this.splitContainer1.TabIndex = 5;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.listBox1);
+            this.splitContainer2.Panel1.Controls.Add(this.panel2);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer1);
+            this.splitContainer2.Size = new System.Drawing.Size(277, 281);
+            this.splitContainer2.SplitterDistance = 113;
+            this.splitContainer2.TabIndex = 6;
+            // 
+            // lblSelectedIndex
+            // 
+            this.lblSelectedIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSelectedIndex.AutoSize = true;
+            this.lblSelectedIndex.Location = new System.Drawing.Point(0, 100);
+            this.lblSelectedIndex.Name = "lblSelectedIndex";
+            this.lblSelectedIndex.Size = new System.Drawing.Size(45, 13);
+            this.lblSelectedIndex.TabIndex = 7;
+            this.lblSelectedIndex.Text = "Index: 0";
+            this.lblSelectedIndex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSelectedIndex.Visible = false;
             // 
             // MSBinEditor
             // 
-            Controls.Add(splitContainer2);
-            Name = "MSBinEditor";
-            Size = new System.Drawing.Size(277, 281);
-            panel2.ResumeLayout(false);
-            splitContainer1.Panel1.ResumeLayout(false);
-            splitContainer1.Panel1.PerformLayout();
-            ((ISupportInitialize) splitContainer1).EndInit();
-            splitContainer1.ResumeLayout(false);
-            splitContainer2.Panel1.ResumeLayout(false);
-            splitContainer2.Panel2.ResumeLayout(false);
-            ((ISupportInitialize) splitContainer2).EndInit();
-            splitContainer2.ResumeLayout(false);
-            ResumeLayout(false);
+            this.Controls.Add(this.splitContainer2);
+            this.Name = "MSBinEditor";
+            this.Size = new System.Drawing.Size(277, 281);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
