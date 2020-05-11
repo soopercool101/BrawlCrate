@@ -890,7 +890,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     address.WriteUTF8String(toy.BRRES, true, offset, lengthCalc);
                     toy.NameOffset = offset - TyDataHeader.HeaderSize;
                     toy.BrresOffset = offset - TyDataHeader.HeaderSize;
-                    offset += lengthCalc + 4;
+                    offset += lengthCalc;
                 }
                 else
                 {
@@ -917,7 +917,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     string.IsNullOrEmpty(toy.BRRES) || toy.Name.Equals(toy.BRRES))
                 {
                     uint lengthCalc = (uint)(toy.BRRES.UTF8Length() + 1).Align(4);
-                    sizeCalc += lengthCalc + 4;
+                    sizeCalc += lengthCalc;
                 }
                 else
                 {
