@@ -56,6 +56,7 @@
         SndBgmTitleDataFolder,
         ClassicStageTbl,
         Sticker,
+        TrophyList,
         Trophy,
 
         //Stage Tables

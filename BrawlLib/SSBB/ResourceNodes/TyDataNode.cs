@@ -876,6 +876,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class TyDataListNode : TyEntryNode
     {
         public override Type[] AllowedChildTypes => new[] {typeof(TyDataListEntryNode)};
+        public override ResourceType ResourceFileType => ResourceType.TrophyList;
 
         public override uint WriteStrings(VoidPtr address, uint initialOffset)
         {
