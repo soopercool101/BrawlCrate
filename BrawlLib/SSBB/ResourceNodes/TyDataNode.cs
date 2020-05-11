@@ -991,6 +991,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class TyDataListEntryNode : ResourceNode
     {
         internal TyDataListEntry* Header => (TyDataListEntry*)WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.Trophy;
 
         private string _brres;
 
