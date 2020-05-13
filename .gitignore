@@ -122,3 +122,6 @@ Thumbs.db
 
 # Doxygen upgrade backup
 doxygen.conf.bak
+
+# Brawl Module Maps (Not being included in case of copyright)
+BrawlLib/InternalDocumentation/Module/maps/*.map
