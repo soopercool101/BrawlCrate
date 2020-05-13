@@ -47,6 +47,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             ModuleSectionNode section = Location;
+
+            if (TargetSection == 1 && ModuleMapLoader.MapFiles.ContainsKey(TargetModule))
+            {
+                if (ModuleMapLoader.MapFiles[TargetModule].ContainsKey(TargetOffset))
+                {
+                    _name = ModuleMapLoader.MapFiles[TargetModule][TargetOffset];
+                }
+            }
+
             if (section == null || !Header)
             {
                 return false;
@@ -73,14 +82,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _manager.AddTag(0, FullName + " Start");
                 _manager.AddTag(_codeLen / 4 - 1, FullName + " End");
-            }
-
-            if (TargetSection == 1 && ModuleMapLoader.MapFiles.ContainsKey(TargetModule))
-            {
-                if (ModuleMapLoader.MapFiles[TargetModule].ContainsKey(TargetOffset))
-                {
-                    _name = ModuleMapLoader.MapFiles[TargetModule][TargetOffset];
-                }
             }
 
             return false;
