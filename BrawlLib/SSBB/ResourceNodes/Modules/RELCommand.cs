@@ -24,26 +24,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Relocation Command")]
         [Description("The offset relative to the start of the target section.")]
-        public string TargetOffset
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint TargetOffset
         {
-            get => "0x" + _addend.ToString("X");
+            get => _addend;
             set
             {
-                string s = value.StartsWith("0x")
-                    ? value.Substring(2, Math.Min(value.Length - 2, 8))
-                    : value.Substring(0, Math.Min(value.Length, 8));
-                if (uint.TryParse(s, System.Globalization.NumberStyles.HexNumber, null, out uint offset))
+                if ((_section.Root as ModuleNode).ID == _moduleID)
                 {
-                    if ((_section.Root as ModuleNode).ID == _moduleID)
-                    {
-                        ModuleSectionNode section = Sections[TargetSectionID];
-                        int x = section._dataBuffer.Length - 2;
-                        offset = offset.Clamp(0, (uint) (x < 0 ? 0 : x));
-                    }
-
-                    _addend = offset;
-                    _section.SignalPropertyChange();
+                    ModuleSectionNode section = Sections[TargetSectionID];
+                    int x = section._dataBuffer.Length - 2;
+                    value = value.Clamp(0, (uint) (x < 0 ? 0 : x));
                 }
+
+                _addend = value;
+                _section.SignalPropertyChange();
             }
         }
 

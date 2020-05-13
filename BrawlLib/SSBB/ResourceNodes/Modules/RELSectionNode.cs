@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using System;
 using System.ComponentModel;
@@ -26,6 +26,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public string DataAlign => "0x" + _dataAlign.ToString("X");
 
         [TypeConverter(typeof(HexUIntConverter))]
+        [Category("End Buffer")]
         public uint EndBufferSize
         {
             get => _endBufferSize;
@@ -42,6 +43,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _endBufferSize = value;
                 SignalPropertyChange();
             }
+        }
+
+
+        private bool _expand = false;
+        [Category("End Buffer")]
+        public bool ExpandSection
+        {
+            get => _expand;
+            set
+            {
+                _expand = value;
+                SignalPropertyChange();
+            }
+
         }
 
         [Category("REL Section")] public bool HasCommands => _manager._commands.Count > 0;
@@ -63,6 +78,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
+            _expand = false;
             if (_name == null)
             {
                 if (_dataSize > 0)

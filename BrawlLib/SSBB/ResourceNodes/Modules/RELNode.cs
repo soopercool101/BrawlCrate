@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.PowerPCAssembly;
 using BrawlLib.SSBB.Types;
 using System;
@@ -403,6 +403,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int offset = findStageIDOffset();
             _stageID = offset < 0 ? (byte?) null : bptr[offset];
 
+            // ReSharper disable once StringLiteralTypo (Typo is present in vBrawl)
             if (nodeContainsString("stOnlineTrainning"))
             {
                 // File must be online training room .rel file
@@ -636,7 +637,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     int i = s.Index;
 
-                    sections[i]._size = (uint) (s._calcSize - s._endBufferSize);
+                    sections[i]._size = (uint) (s._calcSize - (s.ExpandSection ? 0 : s.EndBufferSize));
 
                     //Align sections 4 and 5?
                     //if (i > 3)
@@ -661,7 +662,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         sections[i]._offset = 0;
 
                         header->_bssSection = 0; //This is always 0 it seems
-                        header->_bssSize = (uint) (s._calcSize - s._endBufferSize);
+                        header->_bssSize = (uint) (s._calcSize - (s.ExpandSection ? 0 : s.EndBufferSize));
                     }
                 }
             }
