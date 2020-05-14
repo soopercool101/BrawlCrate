@@ -29,12 +29,20 @@ namespace BrawlLib.Internal
                             continue;
                         }
 
-                        uint key = uint.Parse(s.Substring(0, 8), NumberStyles.HexNumber);
-                        if (currentMap.ContainsKey(key))
+                        try
                         {
-                            continue;
+                            uint key = uint.Parse(s.Substring(0, 8), NumberStyles.HexNumber);
+                            if (currentMap.ContainsKey(key))
+                            {
+                                continue;
+                            }
+
+                            currentMap.Add(key, s.Substring(9));
                         }
-                        currentMap.Add(key, s.Substring(9));
+                        catch
+                        {
+                            // continue
+                        }
                     }
                     MapFiles.Add(Path.GetFileNameWithoutExtension(map.FullName), currentMap);
                 }

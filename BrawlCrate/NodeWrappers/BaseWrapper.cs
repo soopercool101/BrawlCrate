@@ -323,13 +323,13 @@ namespace BrawlCrate.NodeWrappers
                 {
                     if (_resource._isPopulating)
                     {
-                        while (_resource._isPopulating)
+                        while (_resource != null && _resource._isPopulating)
                         {
                             Application.DoEvents();
                         }
                     }
 
-                    if (_resource.HasChildren)
+                    if (_resource != null && _resource.HasChildren)
                     {
                         foreach (ResourceNode n in _resource.Children)
                         {
