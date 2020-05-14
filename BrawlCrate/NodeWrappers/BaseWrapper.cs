@@ -319,17 +319,23 @@ namespace BrawlCrate.NodeWrappers
             {
                 Nodes.Clear();
 
-                if (_resource._isPopulating)
+                if (_resource != null)
                 {
-                    while (_resource._isPopulating)
+                    if (_resource._isPopulating)
                     {
-                        Application.DoEvents();
+                        while (_resource._isPopulating)
+                        {
+                            Application.DoEvents();
+                        }
                     }
-                }
 
-                foreach (ResourceNode n in _resource.Children)
-                {
-                    Nodes.Add(Wrap(_owner, n));
+                    if (_resource.HasChildren)
+                    {
+                        foreach (ResourceNode n in _resource.Children)
+                        {
+                            Nodes.Add(Wrap(_owner, n));
+                        }
+                    }
                 }
 
                 _discovered = true;
