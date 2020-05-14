@@ -40,7 +40,7 @@ namespace BrawlLib.Internal
                                 continue;
                             }
 
-                            currentMap.Add(key, s.Substring(mapName.Equals("RSBE01", StringComparison.OrdinalIgnoreCase) ? 29 : 9));
+                            currentMap.Add(key, s.Trim().Substring(s.LastIndexOf(' ')).Trim());
                         }
                         catch
                         {
