@@ -58,16 +58,16 @@ namespace BrawlLib.Internal
         {
             if (value is string input)
             {
-                NumberStyles style = NumberStyles.None;
+                int inputBase = 10;
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
-                    style = NumberStyles.HexNumber;
+                    inputBase = 16;
                 }
 
                 input = input.Trim();
 
-                return uint.Parse(input, style, culture);
+                return Convert.ToUInt32(input, inputBase);
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -80,16 +80,16 @@ namespace BrawlLib.Internal
         {
             if (value is string input)
             {
-                NumberStyles style = NumberStyles.None;
+                int inputBase = 10;
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
-                    style = NumberStyles.HexNumber;
+                    inputBase = 16;
                 }
 
                 input = input.Trim();
 
-                return int.Parse(input, style, culture);
+                return Convert.ToInt32(input, inputBase);
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -102,16 +102,16 @@ namespace BrawlLib.Internal
         {
             if (value is string input)
             {
-                NumberStyles style = NumberStyles.None;
+                int inputBase = 10;
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
-                    style = NumberStyles.HexNumber;
+                    inputBase = 16;
                 }
 
                 input = input.Trim();
 
-                return ushort.Parse(input, style, culture);
+                return Convert.ToUInt16(input, inputBase);
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -124,16 +124,16 @@ namespace BrawlLib.Internal
         {
             if (value is string input)
             {
-                NumberStyles style = NumberStyles.None;
+                int inputBase = 10;
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
-                    style = NumberStyles.HexNumber;
+                    inputBase = 16;
                 }
 
                 input = input.Trim();
 
-                return short.Parse(input, style, culture);
+                return Convert.ToInt16(input, inputBase);
             }
 
             return base.ConvertFrom(context, culture, value);
@@ -146,16 +146,16 @@ namespace BrawlLib.Internal
         {
             if (value is string input)
             {
-                NumberStyles style = NumberStyles.None;
+                int inputBase = 10;
                 if (input.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
                 {
                     input = input.Substring(2);
-                    style = NumberStyles.HexNumber;
+                    inputBase = 16;
                 }
 
                 input = input.Trim();
 
-                return byte.Parse(input, style, culture);
+                return Convert.ToByte(input, inputBase);
             }
 
             return base.ConvertFrom(context, culture, value);
