@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.34";
+        public static readonly string TagName = "v0.34-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,7 +41,8 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.33! Here's what's new in this release:
+            @"Updated to BrawlCrate v0.34! Here's what's new in this release:
+- (Hotfix 1) Fixes loading for sora.map
 - Adds support for Module Maps to be loaded from InternalDocumentation/Module/maps
 - Adds option to standardize Trophy internal names to BRRES names
 - Improve TrophyData saving
