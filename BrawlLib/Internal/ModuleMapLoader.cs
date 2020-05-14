@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,6 +21,8 @@ namespace BrawlLib.Internal
                 {
                     Dictionary<uint, string> currentMap = new Dictionary<uint, string>();
                     List<string> fileList = new List<string>(File.ReadAllLines(map.FullName));
+                    string mapName = Path.GetFileNameWithoutExtension(map.FullName);
+                    bool mainDol = mapName.Equals("RSBE01", StringComparison.OrdinalIgnoreCase) || mapName.Equals("main.dol", StringComparison.OrdinalIgnoreCase);
                     foreach (string s in fileList)
                     {
                         if (string.IsNullOrWhiteSpace(s))
@@ -31,20 +32,27 @@ namespace BrawlLib.Internal
 
                         try
                         {
-                            uint key = uint.Parse(s.Substring(0, 8), NumberStyles.HexNumber);
+                            string offset = s.Substring(0, 8);
+                            
+                            uint key = Convert.ToUInt32(offset, 16);
                             if (currentMap.ContainsKey(key))
                             {
                                 continue;
                             }
 
-                            currentMap.Add(key, s.Substring(9));
+                            currentMap.Add(key, s.Substring(mainDol ? 29 : 9));
                         }
                         catch
                         {
                             // continue
                         }
                     }
-                    MapFiles.Add(Path.GetFileNameWithoutExtension(map.FullName), currentMap);
+
+                    string mapKey = mainDol ? "main.dol" : mapName;
+                    if (!MapFiles.ContainsKey(mapKey))
+                    {
+                        MapFiles.Add(mapKey, currentMap);
+                    }
                 }
             }
         }

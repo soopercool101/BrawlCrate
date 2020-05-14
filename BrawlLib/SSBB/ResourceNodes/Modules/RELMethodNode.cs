@@ -48,7 +48,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             ModuleSectionNode section = Location;
 
-            if (TargetSection == 1 && ModuleMapLoader.MapFiles.ContainsKey(TargetModule))
+            if ((TargetSection == 1 || TargetModule.Equals("main.dol")) && ModuleMapLoader.MapFiles.ContainsKey(TargetModule))
             {
                 if (ModuleMapLoader.MapFiles[TargetModule].ContainsKey(TargetOffset))
                 {
