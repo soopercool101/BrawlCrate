@@ -22,7 +22,7 @@ namespace BrawlLib.Internal
                     Dictionary<uint, string> currentMap = new Dictionary<uint, string>();
                     List<string> fileList = new List<string>(File.ReadAllLines(map.FullName));
                     string mapName = Path.GetFileNameWithoutExtension(map.FullName);
-                    bool mainDol = mapName.Equals("RSBE01", StringComparison.OrdinalIgnoreCase) || mapName.Equals("main.dol", StringComparison.OrdinalIgnoreCase);
+                    bool mainDol = mapName.Equals("RSBE01", StringComparison.OrdinalIgnoreCase) || mapName.Equals("sora", StringComparison.OrdinalIgnoreCase);
                     foreach (string s in fileList)
                     {
                         if (string.IsNullOrWhiteSpace(s))
@@ -40,7 +40,7 @@ namespace BrawlLib.Internal
                                 continue;
                             }
 
-                            currentMap.Add(key, s.Substring(mainDol ? 29 : 9));
+                            currentMap.Add(key, s.Substring(mapName.Equals("RSBE01", StringComparison.OrdinalIgnoreCase) ? 29 : 9));
                         }
                         catch
                         {
