@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.34 Hotfix 1
+BrawlCrate - v0.34 Hotfix 2
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -16,7 +16,10 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
  
- - BrawlCrate v0.34 - (5/14/2020)
+ - BrawlCrate v0.34 Hotfix 2 - (5/14/2020)
+ . Function names load correctly from differing maps
+ 
+ - BrawlCrate v0.34 Hotfix 1 - (5/14/2020)
  . sora.map now loads correctly for main.dol
  
  - BrawlCrate v0.34 - (5/14/2020)
@@ -25,6 +28,7 @@ they be held accountable for the manner in which it is used.
  . Add option to standardize internal trophy names to brres name
  . Trophy TyData now uses a more optimized saving method to save some space
  . Fix crash when converting to 50cc if stocks didn't have palettes
+ . Fix bug where higher uint hex entries would not parse properly
  
  - BrawlCrate v0.33 - (5/10/2020)
  . Add TyData parsing and editing for Stickers and Trophies
