@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -92,6 +93,15 @@ namespace BrawlCrate.NodeWrappers
 
         public void Link(ResourceNode res)
         {
+            if (DefaultBackColor != null)
+            {
+                BackColor = (Color) DefaultBackColor;
+            }
+
+            if (DefaultForeColor != null)
+            {
+                ForeColor = (Color) DefaultForeColor;
+            }
             Unlink();
             if (res != null)
             {
@@ -312,6 +322,9 @@ namespace BrawlCrate.NodeWrappers
         protected internal virtual void OnPropertyChanged(ResourceNode node)
         {
         }
+
+        public virtual Color? DefaultBackColor => null;
+        public virtual Color? DefaultForeColor => null;
 
         protected internal virtual void OnExpand()
         {
