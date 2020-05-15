@@ -2591,7 +2591,7 @@ namespace System.Windows.Forms
 			if (editorPasteOptions != null && editorPasteOptions.SetPointMode)
 			{
 				float depth = _modelPanel.GetDepth(e.X, e.Y);
-				editorPasteOptions.CenterPointSet(_modelPanel.CurrentViewport, e.Location, depth);
+				editorPasteOptions.CustomUserPointSet(_modelPanel.CurrentViewport, e.Location, depth);
 
 				return;
 			}
