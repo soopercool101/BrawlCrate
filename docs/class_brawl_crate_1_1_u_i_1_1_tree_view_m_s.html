@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -523,13 +523,25 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels.html#a6d5b7585874e984d83c5cd31fb3c8ab8acb5feb1b7314637725a2e73bdc9f7295">Color</a> back = n0.TreeView.BackColor;</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels.html#a6d5b7585874e984d83c5cd31fb3c8ab8acb5feb1b7314637725a2e73bdc9f7295">Color</a> fore = n0.TreeView.ForeColor;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">foreach</span> (TreeNode n <span class="keywordflow">in</span> <a class="code" href="class_brawl_crate_1_1_u_i_1_1_tree_view_m_s.html#a5994962d78b115d332d73c83caee1477">m_coll</a>)</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                n.BackColor = back;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                n.ForeColor = fore;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (n0 is <a class="code" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html">BaseWrapper</a> b)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.DefaultBackColor != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                    back = (<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels.html#a6d5b7585874e984d83c5cd31fb3c8ab8acb5feb1b7314637725a2e73bdc9f7295">Color</a>) <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.DefaultBackColor;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.DefaultForeColor != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    fore = (<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels.html#a6d5b7585874e984d83c5cd31fb3c8ab8acb5feb1b7314637725a2e73bdc9f7295">Color</a>) <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">b</a>.DefaultForeColor;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keywordflow">foreach</span> (TreeNode n <span class="keywordflow">in</span> <a class="code" href="class_brawl_crate_1_1_u_i_1_1_tree_view_m_s.html#a5994962d78b115d332d73c83caee1477">m_coll</a>)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                n.BackColor = back;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                n.ForeColor = fore;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -685,6 +697,8 @@ Private Attributes</h2></td></tr>
 <li>BrawlCrate/UI/TreeViewMS.cs</li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html">BrawlCrate.NodeWrappers.BaseWrapper</a></div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:70</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43daa92eb5ffee6ae2fec3ad71c777531578f">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic.b</a></div><div class="ttdeci">@ b</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_tree_view_m_s_html_ac8668a164b09ddc286bb7a99e0c93896"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_tree_view_m_s.html#ac8668a164b09ddc286bb7a99e0c93896">BrawlCrate.UI.TreeViewMS.SelectedNodes</a></div><div class="ttdeci">List&lt; TreeNode &gt; SelectedNodes</div><div class="ttdef"><b>Definition:</b> TreeViewMS.cs:32</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_tree_view_m_s_html_a3f104c90b67441a5714ca0252c186fc4"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_tree_view_m_s.html#a3f104c90b67441a5714ca0252c186fc4">BrawlCrate.UI.TreeViewMS.isParent</a></div><div class="ttdeci">bool isParent(TreeNode parentNode, TreeNode childNode)</div><div class="ttdef"><b>Definition:</b> TreeViewMS.cs:244</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_tree_view_m_s_html_a749bbaa2e6f4e7a96c7de91096ff9d5d"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_tree_view_m_s.html#a749bbaa2e6f4e7a96c7de91096ff9d5d">BrawlCrate.UI.TreeViewMS.paintSelectedNodes</a></div><div class="ttdeci">void paintSelectedNodes()</div><div class="ttdef"><b>Definition:</b> TreeViewMS.cs:262</div></div>

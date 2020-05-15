@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -92,6 +92,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a00439911699a7c434d6b5b44c0ef484f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a398852d2235e07fc301b2409c3ac7b5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_off_entry.html">ItmFreqOffEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_table_list.html#a398852d2235e07fc301b2409c3ac7b5b">Entries</a> =&gt; (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_off_entry.html">ItmFreqOffEntry</a>*) <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_table_list.html#ab098ba55abb8da0ce74bb4d2826b112d">Address</a></td></tr>
 <tr class="separator:a398852d2235e07fc301b2409c3ac7b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bddc8b726a79ec755664ef66d502def"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_table_list.html#a7bddc8b726a79ec755664ef66d502def">this[int index]</a> =&gt; (byte*)<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_table_list.html#ab098ba55abb8da0ce74bb4d2826b112d">Address</a> + index * <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_off_entry.html#a87b1d353496ab78742197300bf9df548">ItmFreqOffEntry.Size</a></td></tr>
+<tr class="separator:a7bddc8b726a79ec755664ef66d502def"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -210,6 +212,20 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a7bddc8b726a79ec755664ef66d502def"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bddc8b726a79ec755664ef66d502def">&#9670;&nbsp;</a></span>this[int index]</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.ItmFreqTableList.this[int index] =&gt; (byte*)<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_table_list.html#ab098ba55abb8da0ce74bb4d2826b112d">Address</a> + index * <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_off_entry.html#a87b1d353496ab78742197300bf9df548">ItmFreqOffEntry.Size</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="ab098ba55abb8da0ce74bb4d2826b112d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab098ba55abb8da0ce74bb4d2826b112d">&#9670;&nbsp;</a></span>Address</h2>
@@ -230,15 +246,15 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keyword">get</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="keywordflow">return</span> ptr;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>

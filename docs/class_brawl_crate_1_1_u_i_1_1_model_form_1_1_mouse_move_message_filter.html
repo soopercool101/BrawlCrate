@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -139,10 +139,10 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            {</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                Point p = f.PointToClient(screenPoint);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                <span class="keywordflow">return</span> p.X &gt; 0 &amp;&amp; p.X &lt; f.Size.Width &amp;&amp; p.Y &gt; 0 &amp;&amp; p.Y &lt; f.Size.Height;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            }</div>
+<div class="fragment"><div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                Point p = f.PointToClient(screenPoint);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                <span class="keywordflow">return</span> p.X &gt; 0 &amp;&amp; p.X &lt; f.Size.Width &amp;&amp; p.Y &gt; 0 &amp;&amp; p.Y &lt; f.Size.Height;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -169,33 +169,33 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordtype">int</span> numMsg = m.Msg;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                <span class="keywordflow">if</span> (numMsg == 0x0200) <span class="comment">//WM_MOUSEMOVE</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                {</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">modelEditControl1</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">ModelViewerForm</a> != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">InForm</a>(<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">modelEditControl1</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">ModelViewerForm</a>, MousePosition))</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        {</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a>)</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                            {</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">modelEditControl1</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">ModelViewerForm</a>.Focus();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                            }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                        }</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">InForm</a>(<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>, MousePosition))</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a>)</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                            {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.Focus();</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                            }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                        }</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    }</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            }</div>
+<div class="fragment"><div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordtype">int</span> numMsg = m.Msg;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                <span class="keywordflow">if</span> (numMsg == 0x0200) <span class="comment">//WM_MOUSEMOVE</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">modelEditControl1</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">ModelViewerForm</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">InForm</a>(<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">modelEditControl1</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">ModelViewerForm</a>, MousePosition))</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                            <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a>)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                            {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">modelEditControl1</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">ModelViewerForm</a>.Focus();</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                            }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">InForm</a>(<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>, MousePosition))</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                        {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                            <span class="keywordflow">if</span> (!<a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a>)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                            {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">TargetForm</a>.Focus();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                <a class="code" href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">_mainWindowFocused</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                            }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -242,7 +242,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -250,11 +250,11 @@ Private Attributes</h2></td></tr>
 <li>BrawlCrate/UI/ModelForm.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a2fa986b49dce3bc224d204ae1db45266"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter._mainWindowFocused</a></div><div class="ttdeci">bool _mainWindowFocused</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:276</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a2fa986b49dce3bc224d204ae1db45266"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a2fa986b49dce3bc224d204ae1db45266">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter._mainWindowFocused</a></div><div class="ttdeci">bool _mainWindowFocused</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:274</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base_html_abebbd980ea9b3311925ce980083e6efe"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#abebbd980ea9b3311925ce980083e6efe">BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase.ModelViewerForm</a></div><div class="ttdeci">ModelViewerForm ModelViewerForm</div><div class="ttdef"><b>Definition:</b> Properties.cs:228</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_html_a52a26fb66af534e80839bd8ad254dff6"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form.html#a52a26fb66af534e80839bd8ad254dff6">BrawlCrate.UI.ModelForm.modelEditControl1</a></div><div class="ttdeci">ModelEditControl modelEditControl1</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:18</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a57241f4afa08a5228c7501025f2bb5ad"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.TargetForm</a></div><div class="ttdeci">ModelForm TargetForm</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:274</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_ab04954938787ff3a3241e4b2ae807392"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.InForm</a></div><div class="ttdeci">bool InForm(Form f, Point screenPoint)</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:307</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_a57241f4afa08a5228c7501025f2bb5ad"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#a57241f4afa08a5228c7501025f2bb5ad">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.TargetForm</a></div><div class="ttdeci">ModelForm TargetForm</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:272</div></div>
+<div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter_html_ab04954938787ff3a3241e4b2ae807392"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_model_form_1_1_mouse_move_message_filter.html#ab04954938787ff3a3241e4b2ae807392">BrawlCrate.UI.ModelForm.MouseMoveMessageFilter.InForm</a></div><div class="ttdeci">bool InForm(Form f, Point screenPoint)</div><div class="ttdef"><b>Definition:</b> ModelForm.cs:305</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -179,6 +179,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:afa739ea8b13cb681a635301ca13b4b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af73644b660b43601ea2292991331d8ee"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#af73644b660b43601ea2292991331d8ee">TBST</a></td></tr>
 <tr class="separator:af73644b660b43601ea2292991331d8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d0421474e5105532d6978f06794018e"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a5d0421474e5105532d6978f06794018e">ADSJ</a></td></tr>
+<tr class="separator:a5d0421474e5105532d6978f06794018e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9e7f3a40a29270f81488eaeb7ab9ce0"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ae9e7f3a40a29270f81488eaeb7ab9ce0">GEG1</a></td></tr>
 <tr class="separator:ae9e7f3a40a29270f81488eaeb7ab9ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e38d44f66e232de0d9e75bfe35d3ba2"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a1e38d44f66e232de0d9e75bfe35d3ba2">MDL0Material</a></td></tr>
@@ -246,29 +248,53 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordtype">string</span> ext = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordflow">while</span> (type != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">DefaultExportAllExtensions</a>.TryGetValue(type, out ext))</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    <span class="keywordflow">if</span> (!ext.StartsWith(<span class="stringliteral">&quot;.&quot;</span>))</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        ext = <span class="stringliteral">&quot;.&quot;</span> + ext;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    }</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                }</div>
+<div class="fragment"><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordtype">string</span> ext = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">while</span> (type != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">DefaultExportAllExtensions</a>.TryGetValue(type, out ext))</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    <span class="keywordflow">if</span> (!ext.StartsWith(<span class="stringliteral">&quot;.&quot;</span>))</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                        ext = <span class="stringliteral">&quot;.&quot;</span> + ext;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    }</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                type = type.BaseType;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                }</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">return</span> ext ?? <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                type = type.BaseType;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">return</span> ext ?? <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5d0421474e5105532d6978f06794018e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d0421474e5105532d6978f06794018e">&#9670;&nbsp;</a></span>ADSJ</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string BrawlLib.SSBB.FileFilters.ADSJ</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            SupportedFilesHandler.GetCompleteFilter(<span class="stringliteral">&quot;adsj&quot;</span>)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a513d62bc5daf2ddab2e3019073eab8e6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a513d62bc5daf2ddab2e3019073eab8e6">&#9670;&nbsp;</a></span>APIScripts</h2>
 
@@ -1859,7 +1885,7 @@ Static Private Attributes</h2></td></tr>
 <li>BrawlLib/SSBB/FileFilters.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a64493b4875447b1f17cc09b39e3c0e33"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">BrawlLib.SSBB.FileFilters.DefaultExportAllExtensions</a></div><div class="ttdeci">static readonly Dictionary&lt; Type, string &gt; DefaultExportAllExtensions</div><div class="ttdoc">Maps node types to the default extension when using Export All. Nodes that are inside a BRES do not n...</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:218</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a64493b4875447b1f17cc09b39e3c0e33"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">BrawlLib.SSBB.FileFilters.DefaultExportAllExtensions</a></div><div class="ttdeci">static readonly Dictionary&lt; Type, string &gt; DefaultExportAllExtensions</div><div class="ttdoc">Maps node types to the default extension when using Export All. Nodes that are inside a BRES do not n...</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:221</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

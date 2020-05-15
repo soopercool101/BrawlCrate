@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -280,6 +280,9 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_h_p_stream.html#a09ed31c4b1762d7281d3ca9b7a66c994">BrawlLib.SSBB.ResourceNodes.THPStream</a>
 , <a class="el" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_a_d_p_c_m_stream.html#a153247e6208ec2cbe22d6be9b87ef4d6">BrawlLib.Wii.Audio.ADPCMStream</a>
 </li>
+<li>CharacterLoadLong
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_seal_node.html#a4037e242acee3ea0556861e228b97685">BrawlLib.SSBB.ResourceNodes.TySealNode</a>
+</li>
 <li>CharacterPosition
 : <a class="el" href="struct_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_byte_position_info.html#a3619010af0ed74ff301f964ed37d6cbf">BrawlLib.Internal.Windows.Controls.Hex_Editor.BytePositionInfo</a>
 </li>
@@ -298,6 +301,9 @@ $(function() {
 </li>
 <li>checkForUpdatesToolStripMenuItem
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a1877999c4e71487f46c30fb343a82513">BrawlCrate.UI.MainForm</a>
+</li>
+<li>ChildCount
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_table_group_node.html#a544959170a14d94ec82169af63a59d2c">BrawlLib.SSBB.ResourceNodes.ItmTableGroupNode</a>
 </li>
 <li>ChildEndIndex
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_entry_node.html#a392812643aafce4769ce29c0e51f5ef9">BrawlLib.SSBB.ResourceNodes.U8EntryNode</a>
@@ -526,14 +532,14 @@ $(function() {
 <li>chkFallThrough
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a0e258dcd5ac4998e82cb6193987b2f76">BrawlCrate.UI.CollisionEditor</a>
 </li>
+<li>chkFlagSuperSoft
+: <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a8f5dcb1699ca6f18691d5cd0f5256374">BrawlCrate.UI.CollisionEditor</a>
+</li>
 <li>chkFlagUnknown1
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a66d0b29e70dab1da62ca8dbc629139df">BrawlCrate.UI.CollisionEditor</a>
 </li>
 <li>chkFlagUnknown2
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a66401764b9373bb15bcd5bc56299a633">BrawlCrate.UI.CollisionEditor</a>
-</li>
-<li>chkFlagUnknown3
-: <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#adf155d81f2ce5adbb2a9b2c601ceb872">BrawlCrate.UI.CollisionEditor</a>
 </li>
 <li>chkFlagUnknown4
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#aa660cae686b002af69c74e58cdb7f2a7">BrawlCrate.UI.CollisionEditor</a>
@@ -1355,20 +1361,19 @@ $(function() {
 </li>
 <li>Count
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_hit_data_list_offset_node.html#a69bfa9381a9fb4c3fc7fbd02a8f37534">BrawlLib.SSBB.ResourceNodes.HitDataListOffsetNode</a>
-, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_table_group_node.html#a4d852c225e206b7383d87bf4a0a1abb4">BrawlLib.SSBB.ResourceNodes.ItmTableGroupNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_list_offset.html#af842ab91564f99bf67ae82051bee024e">BrawlLib.SSBB.ResourceNodes.ListOffset</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_lookup_manager.html#a0035cb5d6d0848ae1c99e9b96bdb6ea3">BrawlLib.SSBB.ResourceNodes.LookupManager</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_action_flags_node.html#a13f6dd5c770367e1b27f32328cf2843e">BrawlLib.SSBB.ResourceNodes.MoveDefActionFlagsNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_action_interrupts_node.html#a6c4a98d20c4864960bccbaa99840fa2e">BrawlLib.SSBB.ResourceNodes.MoveDefActionInterruptsNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_action_pre_node.html#a72087b9954ee56a711750c75deb38fc3">BrawlLib.SSBB.ResourceNodes.MoveDefActionPreNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_bone_indices_node.html#acff8f0d23aac46ed9ccf116595849b08">BrawlLib.SSBB.ResourceNodes.MoveDefBoneIndicesNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_bone_switch_node.html#abfb937c09dfd80f5900fdf0a3938a1ad">BrawlLib.SSBB.ResourceNodes.MoveDefBoneSwitchNode</a>
 </li>
 <li>count
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_bone_switch_node.html#abbf8a406daff3f4a1da52e73bee7a91b">BrawlLib.SSBB.ResourceNodes.MoveDefBoneSwitchNode</a>
 </li>
 <li>Count
-: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_bone_switch_node.html#abfb937c09dfd80f5900fdf0a3938a1ad">BrawlLib.SSBB.ResourceNodes.MoveDefBoneSwitchNode</a>
-, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_common_unk7_entry_node.html#ad0914dd6fdd8d798d08e20ba2d592a27">BrawlLib.SSBB.ResourceNodes.MoveDefCommonUnk7EntryNode</a>
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_common_unk7_entry_node.html#ad0914dd6fdd8d798d08e20ba2d592a27">BrawlLib.SSBB.ResourceNodes.MoveDefCommonUnk7EntryNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_indices_node.html#ad519b5f25ea5377ed8c617ecdf13c3be">BrawlLib.SSBB.ResourceNodes.MoveDefIndicesNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_ledgegrabs_node.html#a49c5c48bc5b5a7f1f6fa7070ea79dfce">BrawlLib.SSBB.ResourceNodes.MoveDefLedgegrabsNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_list_offset_node.html#ae0e0d4bc70728e63569db08c8ee89b98">BrawlLib.SSBB.ResourceNodes.MoveDefListOffsetNode</a>
@@ -1550,6 +1555,9 @@ $(function() {
 </li>
 <li>cur_bits
 : <a class="el" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_l_z_w_encoder.html#aa03aef9cc7f2128f82c359ff6f2f2c54">BrawlLib.Imaging.GIF.LZWEncoder</a>
+</li>
+<li>curDataOffset
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_pathing_misc_data_node.html#aaf9249a7b2075ebe4370db8cea54b961">BrawlLib.SSBB.ResourceNodes.PathingMiscDataNode</a>
 </li>
 <li>curPixel
 : <a class="el" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_l_z_w_encoder.html#a771823c376045322bdc0b1a33f5442e6">BrawlLib.Imaging.GIF.LZWEncoder</a>

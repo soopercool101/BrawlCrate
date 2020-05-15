@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -102,16 +102,11 @@ $(function() {
 : <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_hitbox_flags.html#a484e96525ac1e883ef36b482691f1b10">BrawlLib.SSBB.ResourceNodes.HitboxFlags</a>
 </li>
 <li>Data
-: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_freq_base_node.html#a6d74d2e478f79c0668be459d209715e5">BrawlLib.SSBB.ResourceNodes.ItmFreqBaseNode</a>
-</li>
-<li>data
-: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#adda4491ed01105464684115341b36248">BrawlLib.SSBB.ResourceNodes.MoveDefEntryNode</a>
-</li>
-<li>Data
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#a683d541d3f7d1c0ca0e4641e61adb5ea">BrawlLib.SSBB.ResourceNodes.MoveDefEntryNode</a>
 </li>
 <li>data
-: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a8be8df799f451ab7b202e3ebe6f8e353">BrawlLib.SSBB.ResourceNodes.MoveDefNode</a>
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_entry_node.html#adda4491ed01105464684115341b36248">BrawlLib.SSBB.ResourceNodes.MoveDefEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a8be8df799f451ab7b202e3ebe6f8e353">BrawlLib.SSBB.ResourceNodes.MoveDefNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_raw_data_node.html#a721f86a4b6da3acd7d89b7a4d2142d1d">BrawlLib.SSBB.ResourceNodes.MoveDefRawDataNode</a>
 </li>
 <li>Data
@@ -530,11 +525,18 @@ $(function() {
 , <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_z_mode.html#aa15c505f03d285f525346238364754eb">BrawlLib.Wii.Graphics.ZMode</a>
 , <a class="el" href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html#a7354ac154ce2f43ef90e4dc2dcb323a5">BrawlLib.Wii.Models.AnimationCode</a>
 </li>
+<li>DefaultBackColor
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a3b2b98bec7d2e669f44301a4f5455395">BrawlCrate.NodeWrappers.BaseWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_r_e_l_external_method_wrapper.html#af9ff9e3549e266fe8f37b9aec22e9376">BrawlCrate.NodeWrappers.RELExternalMethodWrapper</a>
+</li>
 <li>DefaultBufferSpan
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a03d168d0210f1306dfb22489b05fc27b">BrawlLib.Internal.Audio.AudioBuffer</a>
 </li>
 <li>DefaultExportAllExtensions
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">BrawlLib.SSBB.FileFilters</a>
+</li>
+<li>DefaultForeColor
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a57f01b5510d8b075b2b1df32fc60fab1">BrawlCrate.NodeWrappers.BaseWrapper</a>
 </li>
 <li>defaultGroup
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_bone_switch_node.html#ade04fafefb219feb95405556e108a0c8">BrawlLib.SSBB.ResourceNodes.MoveDefBoneSwitchNode</a>
@@ -656,6 +658,7 @@ $(function() {
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_generic_wrapper.html#a28998deee0370bf16b2426e17d6b38d2">BrawlCrate.NodeWrappers.GenericWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_g_s_n_d_wrapper.html#a39e416813385deda6b4c5abc4a478d3f">BrawlCrate.NodeWrappers.GSNDWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_havok_wrapper.html#a6f71c8b715e935adb2ee21d05d5a33c0">BrawlCrate.NodeWrappers.HavokWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_itm_freq_table_group_wrapper.html#ab8f4b11379b75c1e4ddfd267a989dc74">BrawlCrate.NodeWrappers.ItmFreqTableGroupWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_masquerade_entry_wrapper.html#a92926d06314757f3059dd312ea7b3c9d">BrawlCrate.NodeWrappers.MasqueradeEntryWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_masquerade_wrapper.html#a16073e2fda0a5689277942e0f46038d4">BrawlCrate.NodeWrappers.MasqueradeWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_m_d_l0_bone_wrapper.html#aac51b22b68c3c249b1c0e81c3f8e4dcd">BrawlCrate.NodeWrappers.MDL0BoneWrapper</a>
@@ -698,11 +701,15 @@ $(function() {
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_stage_table_wrapper.html#ab63e571851c3eaaf486ba4135e85e447">BrawlCrate.NodeWrappers.StageTableWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_s_t_e_x_wrapper.html#a3da29590b9898686c396bc2cf32e8351">BrawlCrate.NodeWrappers.STEXWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_s_t_p_m_wrapper.html#a8760086d7c5883105e571f077cdaf4bf">BrawlCrate.NodeWrappers.STPMWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_subspace_1_1_b_g_m_g_wrapper.html#a084b0434987fe624dca604773e45e3d4">BrawlCrate.NodeWrappers.Subspace.BGMGWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_v_stage_wrapper.html#a899fae49cea148f777153bb9f2fa00f9">BrawlCrate.NodeWrappers.TEVStageWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html#ac997015070cba5e885425e708cf356bd">BrawlCrate.NodeWrappers.TEX0Wrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_l_s_t_wrapper.html#ae7242da94e8bac15e3102946133a94eb">BrawlCrate.NodeWrappers.TLSTWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_p_l_texture_node_wrapper.html#a6ecc5e228339ddd2542d127a348f022f">BrawlCrate.NodeWrappers.TPLTextureNodeWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_p_l_wrapper.html#a6d310775fef972c65b8e0e00d354f040">BrawlCrate.NodeWrappers.TPLWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_ty_data_list_entry_wrapper.html#a913b92e4a77beea9121e3d1a79dc94a7">BrawlCrate.NodeWrappers.TyDataListEntryWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_ty_data_list_wrapper.html#a757f88ffe709022655fabfef36347229">BrawlCrate.NodeWrappers.TyDataListWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_ty_seal_wrapper.html#aae9a578e083caa7aca4889e1271a59d9">BrawlCrate.NodeWrappers.TySealWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_u8_folder_wrapper.html#aaae0ca6db65566dd7b35f4a2f8ae1dac">BrawlCrate.NodeWrappers.U8FolderWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_u8_wrapper.html#a348a42c25d4b720ae04501c82b381b6c">BrawlCrate.NodeWrappers.U8Wrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_v_i_s0_wrapper.html#a45bd3f1b593227d21b9f1f51ce121e11">BrawlCrate.NodeWrappers.VIS0Wrapper</a>
@@ -1001,10 +1008,14 @@ $(function() {
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_stage_table_wrapper.html#a2a2836557f1e6c66347fbec2398c6268">BrawlCrate.NodeWrappers.StageTableWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_s_t_e_x_wrapper.html#a3406974a62fb9af04203d852e3bda139">BrawlCrate.NodeWrappers.STEXWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_s_t_p_m_wrapper.html#a5048f6002be0d602c6a7aaec700a6bee">BrawlCrate.NodeWrappers.STPMWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_subspace_1_1_b_g_m_g_wrapper.html#abafa906cb0153d3a4c27fd16895f8d7e">BrawlCrate.NodeWrappers.Subspace.BGMGWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_e_x0_wrapper.html#a6c50756c8e67f394c3da7d73071c43d1">BrawlCrate.NodeWrappers.TEX0Wrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_l_s_t_wrapper.html#af125d5de02228510aed445e6bd770dbf">BrawlCrate.NodeWrappers.TLSTWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_p_l_texture_node_wrapper.html#abb8f7933e6d39f0db25c70e4069e0e12">BrawlCrate.NodeWrappers.TPLTextureNodeWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_t_p_l_wrapper.html#a5cc63e53bb811a7a3c9ef6791d0c67d4">BrawlCrate.NodeWrappers.TPLWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_ty_data_list_entry_wrapper.html#ac3edce3b40231405bea557a1e22243bb">BrawlCrate.NodeWrappers.TyDataListEntryWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_ty_data_list_wrapper.html#a19eb53afdea1ba514a70ffa958798473">BrawlCrate.NodeWrappers.TyDataListWrapper</a>
+, <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_ty_seal_wrapper.html#aaaee0ea080954c6f8237d0f73739e44b">BrawlCrate.NodeWrappers.TySealWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_u8_folder_wrapper.html#a76232aa46d71e8ca19874c563c342440">BrawlCrate.NodeWrappers.U8FolderWrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_u8_wrapper.html#a59a94a28d84c0acf36c523e99a6ce860">BrawlCrate.NodeWrappers.U8Wrapper</a>
 , <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_v_i_s0_wrapper.html#ab2d85012c6e197ec8a3a1677caa94753">BrawlCrate.NodeWrappers.VIS0Wrapper</a>

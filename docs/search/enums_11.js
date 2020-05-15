@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quantizationalgorithm_30528',['QuantizationAlgorithm',['../namespace_brawl_lib_1_1_internal_1_1_drawing.html#a859efba01f19b13631ad10e9dceb5193',1,'BrawlLib::Internal::Drawing']]]
+  ['quantizationalgorithm_30795',['QuantizationAlgorithm',['../namespace_brawl_lib_1_1_internal_1_1_drawing.html#a859efba01f19b13631ad10e9dceb5193',1,'BrawlLib::Internal::Drawing']]]
 ];

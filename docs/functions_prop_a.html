@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -319,6 +319,8 @@ $(function() {
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">BrawlLib.SSBB.Types.Parameter</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_partition_info.html#a0990eb28dcb97f929cd33e4987e6d75f">BrawlLib.SSBB.Types.PartitionInfo</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_partition_table_entry.html#a130bf90e447cda8cf3c60b96bc5c572e">BrawlLib.SSBB.Types.PartitionTableEntry</a>
+, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data.html#a52728ef5360a24cb3e1b4aa2ae61d51e">BrawlLib.SSBB.Types.PathingMiscData</a>
+, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry.html#ac2f8ab280ec19892a6a3e03959d4d4d1">BrawlLib.SSBB.Types.PathingMiscDataEntry</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1pattern_power_mul.html#a1d29fd10934efdb5d3abd0eaa812c9c0">BrawlLib.SSBB.Types.patternPowerMul</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_physics_class_name.html#a15f14ee202f64792a9833e83f34a5a95">BrawlLib.SSBB.Types.PhysicsClassName</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_physics_offset_section.html#ae31a4f16e5825e21ca653d68723771b6">BrawlLib.SSBB.Types.PhysicsOffsetSection</a>
@@ -406,6 +408,8 @@ $(function() {
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#ac2b6d47309cd166757307fa12db0560a">BrawlLib.SSBB.Types.TPLHeader</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_palette_header.html#a488dd0e90f397a4b511da3b4679d15a8">BrawlLib.SSBB.Types.TPLPaletteHeader</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#ade202cbf33146d5a48979e4610d654c0">BrawlLib.SSBB.Types.TPLTextureHeader</a>
+, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_ty_data_header.html#a1dcbcf7b4f500c280d3ef21ae066ec0f">BrawlLib.SSBB.Types.TyDataHeader</a>
+, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_ty_seal_vert_data.html#a3e91c20194e49fa642ec0418644c1a25">BrawlLib.SSBB.Types.TySealVertData</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_u8.html#aa3c425d013982d82253d433fc85fb973">BrawlLib.SSBB.Types.U8</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_u8_entry.html#ad148da5a0bb32b3f1aec202424eff630">BrawlLib.SSBB.Types.U8Entry</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_virtual_function_table.html#a2ce3db49b37b3ad6404f789fa09f5074">BrawlLib.SSBB.Types.VirtualFunctionTable</a>
@@ -481,6 +485,9 @@ $(function() {
 </li>
 <li>AlphaAttenuation
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_light_channel.html#a86ff548a361c6c30f552a28796bc226e">BrawlLib.SSBB.ResourceNodes.LightChannel</a>
+</li>
+<li>AlphabeticalOrder
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_seal_node.html#a13a90b80c9b477c40de1da0a4e9dde76">BrawlLib.SSBB.ResourceNodes.TySealNode</a>
 </li>
 <li>AlphaBias
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_t_e_v_stage_node.html#aecb00720ae0c6227a5080125a6c76cae">BrawlLib.SSBB.ResourceNodes.MDL0TEVStageNode</a>
@@ -651,8 +658,8 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_special_hitbox_flags_node.html#a2edabceef05879dbd14079b76f5aa2ea">BrawlLib.SSBB.ResourceNodes.SpecialHitboxFlagsNode</a>
 </li>
 <li>AnnouncerID
-: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_o_s_c_node.html#a1dc3a0a4eff5ffe64c6ad96f1b643821">BrawlLib.SSBB.ResourceNodes.COSCNode</a>
-, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_l_t_c_node.html#a656f0005a842ead5dcf747ac319184d0">BrawlLib.SSBB.ResourceNodes.SLTCNode</a>
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_o_s_c_node.html#ad0f173162196d97acf78aa884e43cdd1">BrawlLib.SSBB.ResourceNodes.COSCNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_l_t_c_node.html#a62f34ac4276c431852734a182fd616f0">BrawlLib.SSBB.ResourceNodes.SLTCNode</a>
 </li>
 <li>ApplyBillboardBones
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#ae4fa9351ee87169dec846c359cbb5709">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel</a>

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -127,9 +127,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) ? true : base.CanConvertFrom(context, sourceType);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -166,9 +166,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> destType == typeof(<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a>) ? true : base.CanConvertTo(context, destType);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">return</span> destType == typeof(<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a>) || base.CanConvertTo(context, destType);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -211,34 +211,33 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">if</span> (value is <span class="keywordtype">string</span>)</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    <span class="keywordtype">string</span> s = (string) value;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    <span class="keywordtype">string</span>[] s2 = s.Split(<span class="charliteral">&#39;:&#39;</span>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    <span class="keywordtype">string</span>[] s3 = s2[1].Split(<span class="charliteral">&#39;,&#39;</span>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                    <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a> d = <span class="keyword">new</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        Name = s2[0]</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                    };</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> i <span class="keywordflow">in</span> s3)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        d.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html#a667ca927df76e61e594d3e748a32c9ee">_entries</a>.Add(i);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    <span class="keywordflow">return</span> d;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">catch</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    <span class="comment">// ignored</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> base.ConvertFrom(context, culture, value);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span> (value is <span class="keywordtype">string</span> s)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    <span class="keywordtype">string</span>[] s2 = s.Split(<span class="charliteral">&#39;:&#39;</span>);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    <span class="keywordtype">string</span>[] s3 = s2[1].Split(<span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a> d = <span class="keyword">new</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        Name = s2[0]</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    };</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> i <span class="keywordflow">in</span> s3)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                        d.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html#a667ca927df76e61e594d3e748a32c9ee">_entries</a>.Add(i);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    <span class="keywordflow">return</span> d;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keywordflow">catch</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    <span class="comment">// ignored</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">return</span> base.ConvertFrom(context, culture, value);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -287,14 +286,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keywordflow">if</span> (destType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value is <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a>)</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                <span class="keywordflow">return</span> ((<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a>) value).ToString();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destType);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">if</span> (destType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value is <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html">UserDataClass</a> u)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="keywordflow">return</span> u.ToString();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destType);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>

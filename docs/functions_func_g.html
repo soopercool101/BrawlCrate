@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -624,6 +624,15 @@ $(function() {
 </li>
 <li>GetDataBlock()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_dynamic_file_byte_provider.html#accc378f708195addad3e6ae73c2b50a8">BrawlLib.Internal.Windows.Controls.Hex_Editor.DynamicFileByteProvider</a>
+, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data.html#a0fbc313efdc964dab76019ee22cad87b">BrawlLib.SSBB.Types.PathingMiscData</a>
+</li>
+<li>GetDataEntryCount()
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_data_list_node.html#aaee568e25e28d8bf887802ce3ae2e037">BrawlLib.SSBB.ResourceNodes.TyDataListNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_entry_node.html#a7c2664f63e4c94343a99823549cdb49c">BrawlLib.SSBB.ResourceNodes.TyEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_seal_list.html#a887ebd1a3430542bee7e8053acf09822">BrawlLib.SSBB.ResourceNodes.TySealList</a>
+</li>
+<li>GetDataEntryOffset()
+: <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_ty_data_header.html#a4de51221018eb4b1b358ca8c991df2f7">BrawlLib.SSBB.Types.TyDataHeader</a>
 </li>
 <li>GetDC()
 : <a class="el" href="class_brawl_lib_1_1_platform_1_1_win32.html#a6ec031e5cc35d92f74db6d8bf575d0ff">BrawlLib.Platform.Win32</a>
@@ -662,7 +671,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#ac5ddcda53a32862161b962550b8b863f">BrawlLib.Imaging.GIF.GifDecoder</a>
 </li>
 <li>GetDepth()
-: <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a716355c34c55fcf5c1883ed3e3c54e8a">BrawlLib.OpenGL.GLPanel</a>
+: <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a15be66d19b9b8fd941181dc53406629e">BrawlLib.OpenGL.GLPanel</a>
 </li>
 <li>GetDeviceID()
 : <a class="el" href="class_brawl_lib_1_1_platform_1_1_win32_1_1_direct_sound.html#aff808b78efd5df0c46cd6ada015dfa04">BrawlLib.Platform.Win32.DirectSound</a>
@@ -711,6 +720,10 @@ $(function() {
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_w_a_r_data_block.html#aac81f841ca3cd527fe55962386307a79">BrawlLib.SSBB.Types.Audio.RWARDataBlock</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_w_a_v_e_header.html#a2c786b6334aa0bac7df504e1c30a7c15">BrawlLib.SSBB.Types.Audio.WAVEHeader</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_header.html#a637e6a9f2211fc3900f7d43a13709e42">BrawlLib.SSBB.Types.MDL0Header</a>
+, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_ty_data_header.html#a675df8904c82217057c6f1b9502a1ab4">BrawlLib.SSBB.Types.TyDataHeader</a>
+</li>
+<li>GetEntryName()
+: <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_ty_data_header.html#a30ecfaeec0068ce823801463136f35e8">BrawlLib.SSBB.Types.TyDataHeader</a>
 </li>
 <li>GetEntrySize()
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_node.html#a8091cbb61bc312dbf06fcd7b95f1943e">BrawlLib.SSBB.ResourceNodes.U8Node</a>
@@ -1101,10 +1114,14 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_sub.html#a3a115975f183b240e8643591db0408d4">BrawlLib.Internal.PowerPCAssembly.PPCSub</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_subc.html#a84c196b55ed539d13f54f29687db33bf">BrawlLib.Internal.PowerPCAssembly.PPCSubc</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_p_m_node.html#ad836dbf0634093f1db5d0a4bf4f86213">BrawlLib.SSBB.ResourceNodes.ADPMNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_s_j_node.html#aab839992d67372528df027c3a11f780f">BrawlLib.SSBB.ResourceNodes.ADSJNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a9ff6f45b0dd89bcdf69af043703a6307">BrawlLib.SSBB.ResourceNodes.ARCEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_g_m_g_node.html#ab2f3c1cd61acf281bb9b864cb21e7752">BrawlLib.SSBB.ResourceNodes.BGMGNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html#acd7a3886ee66b277eb1ef8a61800f20c">BrawlLib.SSBB.ResourceNodes.CollisionNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html#a3a5449cc25e7de5eecea3d8c88b736ef">BrawlLib.SSBB.ResourceNodes.HavokNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_freq_node.html#a4e515ef03eda28e34d9fecce44ef87c5">BrawlLib.SSBB.ResourceNodes.ItmFreqNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_v_p_m_node.html#a3f2e89bce9ed7681cf9f4b9a2687f711">BrawlLib.SSBB.ResourceNodes.MVPMNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_pathing_misc_data_node.html#a037400a96965f39f740a028486543bbf">BrawlLib.SSBB.ResourceNodes.PathingMiscDataNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html#a966b87879e7590cdec2da06d48fb345b">BrawlLib.SSBB.ResourceNodes.RELType</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html#ade53bc3844d9cf5d88aeda8deda542cd">BrawlLib.SSBB.ResourceNodes.RSARFileNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_w_s_d_data_node.html#aff7acbcaa6108f5e4b8bb1376a5d37e6">BrawlLib.SSBB.ResourceNodes.RWSDDataNode</a>
@@ -1348,7 +1365,7 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#ad26ed1eda28445f50bd4b51cc5d29c43">BrawlLib.SSBB.ResourceNodes.MoveDefNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_moveset_converter.html#ad3a013d341495aa4a8cb567fbb810523">BrawlLib.SSBB.ResourceNodes.MovesetConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_archive_node.html#a93511a6876fc9751d933767ace4f01d1">BrawlLib.SSBB.ResourceNodes.SakuraiArchiveNode</a>
-, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a69e2d33d6cb75ef21b3911d871b3b303">BrawlLib.SSBB.ResourceNodes.SakuraiEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a0c60c9970f6981e0487d5f5e99b52bd2">BrawlLib.SSBB.ResourceNodes.SakuraiEntryNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_sakurai_archive_builder.html#afb70aacc523a99b019724d3f2e005866">BrawlLib.SSBB.SakuraiArchiveBuilder</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a1a6355e913176b28f2614f87e3bddbd5">BrawlLib.SSBB.Types.Audio.WaveInfo</a>
 , <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_d_o_l_header.html#a00b59398bacb400f39812922c54d771e">BrawlLib.SSBB.Types.DOLHeader</a>
@@ -1576,6 +1593,11 @@ $(function() {
 <li>GetStringSize()
 : <a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7db421d77b9bb517f270dcdff968f407">BrawlLib.Wii.MSBinDecoder</a>
 </li>
+<li>GetStringsLength()
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_data_list_node.html#a20e5484d2a38254cd40588e83039fa83">BrawlLib.SSBB.ResourceNodes.TyDataListNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_entry_node.html#a28d16855fbaba055bf9c7c6b94a74638">BrawlLib.SSBB.ResourceNodes.TyEntryNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_seal_list.html#ad40e07b817ace593eb69d314ab4141b9">BrawlLib.SSBB.ResourceNodes.TySealList</a>
+</li>
 <li>GetStruct()
 : <a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a53c2a8e55e7a0a6274a969377a181f35">BrawlCrate.Discord.DiscordRpc.RichPresence</a>
 </li>
@@ -1709,7 +1731,7 @@ $(function() {
 : <a class="el" href="struct_brawl_lib_1_1_wii_1_1_animations_1_1_g_l_s_l_light_frame.html#acd52da918ccef4efe4e31704352fe8f6">BrawlLib.Wii.Animations.GLSLLightFrame</a>
 </li>
 <li>GLTexture()
-: <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ac20b9cb995f2a3e4cd98d96a44259f0d">BrawlLib.OpenGL.GLTexture</a>
+: <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a932681fe2a591aec1534671fe5a5d562">BrawlLib.OpenGL.GLTexture</a>
 </li>
 <li>GLTextureWindow()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_g_l_texture_window.html#a6d8f18be2b9c9b2e214fbb3790c06bcd">BrawlLib.Internal.Windows.Forms.GLTextureWindow</a>
@@ -1754,7 +1776,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_gradient_dialog.html#aa41a9bc8e7bbc16fb5aaff48de00ec78">BrawlLib.Internal.Windows.Forms.GradientDialog</a>
 </li>
 <li>GraphArray()
-: <a class="el" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_graph_array.html#a3df4ab671d6b1ead2d89878299a00c9e">BrawlLib.Modeling.Triangle_Converter.GraphArray&lt; T &gt;</a>
+: <a class="el" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_graph_array.html#ac289253869bff426c2a99144223561df">BrawlLib.Modeling.Triangle_Converter.GraphArray&lt; T &gt;</a>
 </li>
 <li>grdDisassembler_DoubleClick()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#ada00974b678a3d309bb248f3b2f8301c">BrawlLib.Internal.Windows.Controls.PPCDisassembler</a>
@@ -1782,7 +1804,7 @@ $(function() {
 : <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_sound_1_1_g_s_n_d_entry.html#af8074a2a618daf3b485adb2e9eb67a8d">BrawlLib.SSBB.Types.Subspace.Sound.GSNDEntry</a>
 </li>
 <li>GSNDWrapper()
-: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_g_s_n_d_wrapper.html#a0649d559545448e84b1232ed52d8c4fe">BrawlCrate.NodeWrappers.GSNDWrapper</a>
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_g_s_n_d_wrapper.html#ac2c232a5e7f86ae14460781185eabd08">BrawlCrate.NodeWrappers.GSNDWrapper</a>
 </li>
 <li>GuessIfAlphaInverted()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#ae2dec045ccd050f4c933bc43b2fb45db">BrawlLib.Internal.Drawing.BitmapExtension</a>

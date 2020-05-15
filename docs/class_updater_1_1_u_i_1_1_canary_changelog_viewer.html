@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -100,6 +100,8 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:abb2d919e2777589ef98df8eab744abb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#abb2d919e2777589ef98df8eab744abb0">richTextBox1_LinkClicked</a> (object sender, LinkClickedEventArgs e)</td></tr>
+<tr class="separator:abb2d919e2777589ef98df8eab744abb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4868d55fc150e7372c9f9db5038421c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a4868d55fc150e7372c9f9db5038421c0">CanaryChangelogViewer_Load</a> (object sender, EventArgs e)</td></tr>
 <tr class="separator:a4868d55fc150e7372c9f9db5038421c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dec41f3cfd5daa6771f01fd3746c7e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a6dec41f3cfd5daa6771f01fd3746c7e9">InitializeComponent</a> ()</td></tr>
@@ -148,14 +150,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a6dec41f3cfd5daa6771f01fd3746c7e9">InitializeComponent</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675">Text</a> = <span class="stringliteral">&quot;Canary Changelog #&quot;</span> + commitID;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Text =</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                <span class="stringliteral">&quot;Here&#39;s what&#39;s changed since your last update (oldest to newest). Full changelog can be found on Github or Discord&quot;</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Text += changelog;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.ReadOnly = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a6dec41f3cfd5daa6771f01fd3746c7e9">InitializeComponent</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675">Text</a> = <span class="stringliteral">&quot;Canary Changelog #&quot;</span> + commitID;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Text =</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                <span class="stringliteral">&quot;Here&#39;s what&#39;s changed since your last update (oldest to newest). Full changelog can be found on Github or Discord&quot;</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Text += changelog;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.ReadOnly = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -193,9 +195,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.ReadOnly = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.ReadOnly = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -230,13 +232,13 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">if</span> (disposing &amp;&amp; (<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a79ae39263346dc8a56c46b6c6d462406">components</a> != <span class="keyword">null</span>))</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a79ae39263346dc8a56c46b6c6d462406">components</a>.Dispose();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            base.Dispose(disposing);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">if</span> (disposing &amp;&amp; (<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a79ae39263346dc8a56c46b6c6d462406">components</a> != <span class="keyword">null</span>))</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a79ae39263346dc8a56c46b6c6d462406">components</a>.Dispose();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            base.Dispose(disposing);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -264,33 +266,34 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Required method for Designer support - do not modify the contents of this method with the code editor. </p>
-<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a> = <span class="keyword">new</span> System.Windows.Forms.RichTextBox();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this.SuspendLayout();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="comment">// </span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="comment">// richTextBox1</span></div>
+<div class="fragment"><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a> = <span class="keyword">new</span> System.Windows.Forms.RichTextBox();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            this.SuspendLayout();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="comment">// </span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Dock = System.Windows.Forms.DockStyle.Fill;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Location = <span class="keyword">new</span> System.Drawing.Point(0, 0);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Name = <span class="stringliteral">&quot;richTextBox1&quot;</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Size = <span class="keyword">new</span> System.Drawing.Size(362, 450);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.TabIndex = 0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Text = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="comment">// </span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="comment">// CanaryChangelogViewer</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">// </span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            this.AutoScaleDimensions = <span class="keyword">new</span> System.Drawing.SizeF(6F, 13F);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            this.ClientSize = <span class="keyword">new</span> System.Drawing.Size(362, 450);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            this.Controls.Add(this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            this.Name = <span class="stringliteral">&quot;CanaryChangelogViewer&quot;</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            this.ShowIcon = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            this.<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675">Text</a> = <span class="stringliteral">&quot;CanaryChangelogViewer&quot;</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            this.Load += <span class="keyword">new</span> System.EventHandler(this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a4868d55fc150e7372c9f9db5038421c0">CanaryChangelogViewer_Load</a>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            this.ResumeLayout(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="comment">// richTextBox1</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="comment">// </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Dock = System.Windows.Forms.DockStyle.Fill;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Location = <span class="keyword">new</span> System.Drawing.Point(0, 0);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Name = <span class="stringliteral">&quot;richTextBox1&quot;</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Size = <span class="keyword">new</span> System.Drawing.Size(362, 450);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.TabIndex = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.Text = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>.LinkClicked += <span class="keyword">new</span> LinkClickedEventHandler(this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#abb2d919e2777589ef98df8eab744abb0">richTextBox1_LinkClicked</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="comment">// </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="comment">// CanaryChangelogViewer</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="comment">// </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            this.AutoScaleDimensions = <span class="keyword">new</span> System.Drawing.SizeF(6F, 13F);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            this.ClientSize = <span class="keyword">new</span> System.Drawing.Size(362, 450);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            this.Controls.Add(this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">richTextBox1</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            this.Name = <span class="stringliteral">&quot;CanaryChangelogViewer&quot;</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            this.ShowIcon = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            this.<a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675">Text</a> = <span class="stringliteral">&quot;CanaryChangelogViewer&quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            this.Load += <span class="keyword">new</span> System.EventHandler(this.<a class="code" href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a4868d55fc150e7372c9f9db5038421c0">CanaryChangelogViewer_Load</a>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            this.ResumeLayout(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -317,10 +320,49 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            Focus();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            base.OnShown(e);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            Focus();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            base.OnShown(e);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abb2d919e2777589ef98df8eab744abb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb2d919e2777589ef98df8eab744abb0">&#9670;&nbsp;</a></span>richTextBox1_LinkClicked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Updater.UI.CanaryChangelogViewer.richTextBox1_LinkClicked </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LinkClickedEventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            Process.Start(e.LinkText);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -376,11 +418,12 @@ Private Attributes</h2></td></tr>
 <li>Updater/UI/CanaryChangelogViewer.Designer.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_a6dec41f3cfd5daa6771f01fd3746c7e9"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a6dec41f3cfd5daa6771f01fd3746c7e9">Updater.UI.CanaryChangelogViewer.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">Required method for Designer support - do not modify the contents of this method with the code editor...</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.Designer.cs:29</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_a6dec41f3cfd5daa6771f01fd3746c7e9"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a6dec41f3cfd5daa6771f01fd3746c7e9">Updater.UI.CanaryChangelogViewer.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">Required method for Designer support - do not modify the contents of this method with the code editor...</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.Designer.cs:31</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_html_aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#aee624a5d480988500ed9d4a5f33e24b8a9dffbf69ffba8bc38bc4e01abf4b1675">BrawlLib.Internal.Windows.Controls.Hex_Editor.FindType.Text</a></div><div class="ttdeci">@ Text</div><div class="ttdoc">Used for Text Find operations</div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_a79ae39263346dc8a56c46b6c6d462406"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a79ae39263346dc8a56c46b6c6d462406">Updater.UI.CanaryChangelogViewer.components</a></div><div class="ttdeci">System.ComponentModel.IContainer components</div><div class="ttdoc">Required designer variable.</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.Designer.cs:8</div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_ad63c1caba2cb16b3c68a551a289a22dd"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">Updater.UI.CanaryChangelogViewer.richTextBox1</a></div><div class="ttdeci">System.Windows.Forms.RichTextBox richTextBox1</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.Designer.cs:60</div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_a4868d55fc150e7372c9f9db5038421c0"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a4868d55fc150e7372c9f9db5038421c0">Updater.UI.CanaryChangelogViewer.CanaryChangelogViewer_Load</a></div><div class="ttdeci">void CanaryChangelogViewer_Load(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.cs:18</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_a79ae39263346dc8a56c46b6c6d462406"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a79ae39263346dc8a56c46b6c6d462406">Updater.UI.CanaryChangelogViewer.components</a></div><div class="ttdeci">System.ComponentModel.IContainer components</div><div class="ttdoc">Required designer variable.</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.Designer.cs:10</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_abb2d919e2777589ef98df8eab744abb0"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#abb2d919e2777589ef98df8eab744abb0">Updater.UI.CanaryChangelogViewer.richTextBox1_LinkClicked</a></div><div class="ttdeci">void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.cs:19</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_ad63c1caba2cb16b3c68a551a289a22dd"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#ad63c1caba2cb16b3c68a551a289a22dd">Updater.UI.CanaryChangelogViewer.richTextBox1</a></div><div class="ttdeci">System.Windows.Forms.RichTextBox richTextBox1</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.Designer.cs:63</div></div>
+<div class="ttc" id="aclass_updater_1_1_u_i_1_1_canary_changelog_viewer_html_a4868d55fc150e7372c9f9db5038421c0"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_canary_changelog_viewer.html#a4868d55fc150e7372c9f9db5038421c0">Updater.UI.CanaryChangelogViewer.CanaryChangelogViewer_Load</a></div><div class="ttdeci">void CanaryChangelogViewer_Load(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> CanaryChangelogViewer.cs:24</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

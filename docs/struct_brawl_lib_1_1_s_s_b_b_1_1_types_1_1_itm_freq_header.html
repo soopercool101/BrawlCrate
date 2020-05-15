@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -96,7 +96,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af27ceb1c7200e5c5541206b454546538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca54ff88f426e94e41bdc71b4510eb39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#aca54ff88f426e94e41bdc71b4510eb39">_pad3</a></td></tr>
 <tr class="separator:aca54ff88f426e94e41bdc71b4510eb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa99a506d518b3771cbc88440209d935c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#aa99a506d518b3771cbc88440209d935c">Str</a> =&gt; new string((sbyte*) <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#a5346ee69cf67bb14c5a004dd01c722c0">Address</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab7084db0042d4617f94978a4f272751b">_DataLength</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab76c2d91c0de124c7e6dff791177db4f">_OffCount</a> * 4 + 0x20 + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#abc8d91058f0c6aeacb2045ee39cbc127">_DataTable</a> * 8)</td></tr>
+<tr class="memitem:aa99a506d518b3771cbc88440209d935c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#aa99a506d518b3771cbc88440209d935c">Str</a> =&gt; (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#a5346ee69cf67bb14c5a004dd01c722c0">Address</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab7084db0042d4617f94978a4f272751b">_DataLength</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab76c2d91c0de124c7e6dff791177db4f">_OffCount</a> * 4 + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#abf37dee04273a9f107529869b424ed7e">Size</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#abc8d91058f0c6aeacb2045ee39cbc127">_DataTable</a> * <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_off_pair.html#a2d9019bfdd3e765fd72ffc67e2d09ad6">ItmFreqOffPair.Size</a>).GetUTF8String()</td></tr>
 <tr class="separator:aa99a506d518b3771cbc88440209d935c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
@@ -251,7 +251,7 @@ Properties</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">string BrawlLib.SSBB.Types.ItmFreqHeader.Str =&gt; new string((sbyte*) <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#a5346ee69cf67bb14c5a004dd01c722c0">Address</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab7084db0042d4617f94978a4f272751b">_DataLength</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab76c2d91c0de124c7e6dff791177db4f">_OffCount</a> * 4 + 0x20 + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#abc8d91058f0c6aeacb2045ee39cbc127">_DataTable</a> * 8)</td>
+          <td class="memname">string BrawlLib.SSBB.Types.ItmFreqHeader.Str =&gt; (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#a5346ee69cf67bb14c5a004dd01c722c0">Address</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab7084db0042d4617f94978a4f272751b">_DataLength</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#ab76c2d91c0de124c7e6dff791177db4f">_OffCount</a> * 4 + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#abf37dee04273a9f107529869b424ed7e">Size</a> + <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_header.html#abc8d91058f0c6aeacb2045ee39cbc127">_DataTable</a> * <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_itm_freq_off_pair.html#a2d9019bfdd3e765fd72ffc67e2d09ad6">ItmFreqOffPair.Size</a>).GetUTF8String()</td>
         </tr>
       </table>
 </div><div class="memdoc">

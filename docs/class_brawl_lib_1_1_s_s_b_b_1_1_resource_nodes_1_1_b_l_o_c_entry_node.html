@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -94,12 +94,14 @@ Inheritance diagram for BrawlLib.SSBB.ResourceNodes.BLOCEntryNode:</div>
 <area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_f_g1_node.html" alt="BrawlLib.SSBB.ResourceNodes.GFG1Node" shape="rect" coords="299,448,588,472"/>
 <area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_i_b2_node.html" alt="BrawlLib.SSBB.ResourceNodes.GIB2Node" shape="rect" coords="299,504,588,528"/>
 <area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_i_t_m_node.html" alt="BrawlLib.SSBB.ResourceNodes.GITMNode" shape="rect" coords="299,560,588,584"/>
-<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_t_node.html" alt="BrawlLib.SSBB.ResourceNodes.GMOTNode" shape="rect" coords="299,616,588,640"/>
-<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_v_node.html" alt="BrawlLib.SSBB.ResourceNodes.GMOVNode" shape="rect" coords="299,672,588,696"/>
-<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_p_s_node.html" alt="BrawlLib.SSBB.ResourceNodes.GMPSNode" shape="rect" coords="299,728,588,752"/>
-<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_n_d_v_node.html" alt="BrawlLib.SSBB.ResourceNodes.GNDVNode" shape="rect" coords="299,784,588,808"/>
-<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_s_n_d_node.html" alt="BrawlLib.SSBB.ResourceNodes.GSNDNode" shape="rect" coords="299,840,588,864"/>
-<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_w_a_t_node.html" alt="BrawlLib.SSBB.ResourceNodes.GWATNode" shape="rect" coords="299,896,588,920"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_l_k2_node.html" alt="BrawlLib.SSBB.ResourceNodes.GLK2Node" shape="rect" coords="299,616,588,640"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_l_o_k_node.html" alt="BrawlLib.SSBB.ResourceNodes.GLOKNode" shape="rect" coords="299,672,588,696"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_t_node.html" alt="BrawlLib.SSBB.ResourceNodes.GMOTNode" shape="rect" coords="299,728,588,752"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_o_v_node.html" alt="BrawlLib.SSBB.ResourceNodes.GMOVNode" shape="rect" coords="299,784,588,808"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_m_p_s_node.html" alt="BrawlLib.SSBB.ResourceNodes.GMPSNode" shape="rect" coords="299,840,588,864"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_n_d_v_node.html" alt="BrawlLib.SSBB.ResourceNodes.GNDVNode" shape="rect" coords="299,896,588,920"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_s_n_d_node.html" alt="BrawlLib.SSBB.ResourceNodes.GSNDNode" shape="rect" coords="299,952,588,976"/>
+<area href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_w_a_t_node.html" alt="BrawlLib.SSBB.ResourceNodes.GWATNode" shape="rect" coords="299,1008,588,1032"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -430,7 +432,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordtype">int</span> size = <a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_entry.html">BLOCEntry</a>.<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_entry.html#ac3a11057d7db1d1d1c588ff9bce2a007">Size</a> + <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count * 4;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">foreach</span> (ResourceNode node <span class="keywordflow">in</span> <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                size += node.CalculateSize(force);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                size += node.OnCalculateSize(force);</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            }</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">return</span> size;</div>
@@ -808,7 +810,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:137</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_entry_node_html_a7e538b9f79a8f400654e68eb36d70cc6"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_entry_node.html#a7e538b9f79a8f400654e68eb36d70cc6">BrawlLib.SSBB.ResourceNodes.BLOCEntryNode.SubEntryType</a></div><div class="ttdeci">virtual Type SubEntryType</div><div class="ttdef"><b>Definition:</b> BLOCNode.cs:132</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:58</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ad9688db6e97ee62b1eb0fc4592b48cbd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ad9688db6e97ee62b1eb0fc4592b48cbd">BrawlLib.SSBB.ResourceNodes.ResourceNode.CalculateSize</a></div><div class="ttdeci">virtual int CalculateSize(bool force)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1159</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ad9688db6e97ee62b1eb0fc4592b48cbd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ad9688db6e97ee62b1eb0fc4592b48cbd">BrawlLib.SSBB.ResourceNodes.ResourceNode.CalculateSize</a></div><div class="ttdeci">virtual int CalculateSize(bool force)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1162</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_ae84563550ab4a05aa5c916f03260d08d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">BrawlLib.SSBB.ResourceNodes.DataSource.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:31</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_entry_html_aa2c33294fa7e467d40a72c5aa7da4766"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_entry.html#aa2c33294fa7e467d40a72c5aa7da4766">BrawlLib.SSBB.Types.Subspace.BLOCEntry.Offsets</a></div><div class="ttdeci">uint Offsets(int index)</div><div class="ttdef"><b>Definition:</b> BLOC.cs:45</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_entry_node_html_a1404fef057f3c43fe685832ce7b5619c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_entry_node.html#a1404fef057f3c43fe685832ce7b5619c">BrawlLib.SSBB.ResourceNodes.BLOCEntryNode._rawTag</a></div><div class="ttdeci">uint _rawTag</div><div class="ttdef"><b>Definition:</b> BLOCNode.cs:122</div></div>

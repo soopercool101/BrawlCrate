@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -211,6 +211,7 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_stage_i_ds.html#ad71269456f9e91a64f73fbd2efee886a">BrawlLib.Internal.DropDownListStageIDs</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_stage_rel_i_ds.html#afdb6d2f7b349b6f81d9c83ce5ba7f873">BrawlLib.Internal.DropDownListStageRelIDs</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_g_x_color_s10_string_converter.html#acc9f90cfd594ee4dd94946275d4a8f3f">BrawlLib.Internal.GXColorS10StringConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_converter_base.html#a16b7555247dc0ce0204ce67eb925fae4">BrawlLib.Internal.HexConverterBase</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix43_string_converter.html#a17cc1acd16188b4a7b96736fa5e57790">BrawlLib.Internal.Matrix43StringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix_string_converter.html#a4ebcfea194d0eb819415d8568e6b67f7">BrawlLib.Internal.MatrixStringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_quaternion_string_converter.html#a840c65487685436d2db150275303bd67">BrawlLib.Internal.QuaternionStringConverter</a>
@@ -225,6 +226,7 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_bin32_string_converter.html#a1db0217fee814f3ed08cd0913ec96453">BrawlLib.Internal.Bin32StringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_bin8_string_converter.html#a6a75d82aa36f449aa0d01a123035e360">BrawlLib.Internal.Bin8StringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_g_x_color_s10_string_converter.html#ab34226d4d6296a88c14bab66e0df86d7">BrawlLib.Internal.GXColorS10StringConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_converter_base.html#a5f11088de13e4ffb159b4ebb53c8b7e1">BrawlLib.Internal.HexConverterBase</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix43_string_converter.html#aa754caa5946d2b40ccb416e5c463cfab">BrawlLib.Internal.Matrix43StringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix_string_converter.html#ae8519ce73e934c16e8ed13793065103d">BrawlLib.Internal.MatrixStringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_quaternion_string_converter.html#adb545d7a390b382f0f4ea1582d2ccd09">BrawlLib.Internal.QuaternionStringConverter</a>
@@ -609,14 +611,14 @@ $(function() {
 <li>chkFallThrough_CheckedChanged_NoErrorHandling()
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a2710f9e7c5526165eb66256c605f8143">BrawlCrate.UI.CollisionEditor</a>
 </li>
+<li>chkFlagSuperSoft_CheckedChanged()
+: <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a0849be1ae75ddec8902ba2f0a14ec4fb">BrawlCrate.UI.CollisionEditor</a>
+</li>
 <li>chkFlagUnknown1_CheckedChanged()
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a75afb74bfce4ccba26efd8884a6cd3ed">BrawlCrate.UI.CollisionEditor</a>
 </li>
 <li>chkFlagUnknown2_CheckedChanged()
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#aab66aea4f1bf9235e27b7a45a49c744a">BrawlCrate.UI.CollisionEditor</a>
-</li>
-<li>chkFlagUnknown3_CheckedChanged()
-: <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#a7736a34694fb0a02699950c79991c21e">BrawlCrate.UI.CollisionEditor</a>
 </li>
 <li>chkFlagUnknown4_CheckedChanged()
 : <a class="el" href="class_brawl_crate_1_1_u_i_1_1_collision_editor.html#aeacbbf45c67cd5e1b6103cccbc97d726">BrawlCrate.UI.CollisionEditor</a>
@@ -1118,7 +1120,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#ae932df9340f3c22b9be17873871f66c3">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM</a>
 </li>
 <li>CMMWrapper()
-: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_c_m_m_wrapper.html#a83e5fe70627bfad12c36cc953d81bf56">BrawlCrate.NodeWrappers.CMMWrapper</a>
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_c_m_m_wrapper.html#a5a6e7c630c52134c9c4842e3d455cf17">BrawlCrate.NodeWrappers.CMMWrapper</a>
 </li>
 <li>CNMT()
 : <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_n_m_t.html#a8a5921393d8e0ba1dd8e2fb817a1909b">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CNMT</a>
@@ -1148,13 +1150,13 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#acdd6db9b13fc03c7bd66cae101217dde">BrawlLib.SSBB.ResourceNodes.CollisionObject</a>
 </li>
 <li>CollisionPlane()
-: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#ad4df375df9f108369447e4066600de35">BrawlLib.SSBB.ResourceNodes.CollisionPlane</a>
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a70c7589a10bf3f59d7a4f1e17c22c6e4">BrawlLib.SSBB.ResourceNodes.CollisionPlane</a>
 </li>
 <li>CollisionPlaneInteractionType()
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_plane_interaction_type.html#a68fc676dfe69265d24b72ff721fbd51c">BrawlLib.SSBB.Types.CollisionPlaneInteractionType</a>
 </li>
 <li>CollisionTerrain()
-: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_terrain.html#a21bab7cc5b5ed75f6061a67cc391fb9d">BrawlLib.SSBB.Types.CollisionTerrain</a>
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_terrain.html#a6aa615d7dc9977041bef4643315a1003">BrawlLib.SSBB.Types.CollisionTerrain</a>
 </li>
 <li>CollisionWrapper()
 : <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_collision_wrapper.html#a1cd8fec83b8d0b909f4bc7be45f641d5">BrawlCrate.NodeWrappers.CollisionWrapper</a>
@@ -1222,7 +1224,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_imaging_1_1_t_g_a.html#a4320233288c325060f0b8aa691054107">BrawlLib.Imaging.TGA</a>
 </li>
 <li>ColorEnv()
-: <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_color_env.html#ac3fbd8b45119265cb5f1e5f0de4bbaa6">BrawlLib.Wii.Graphics.ColorEnv</a>
+: <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_color_env.html#acc7f508142fc0d297f9b520d108c6e45">BrawlLib.Wii.Graphics.ColorEnv</a>
 </li>
 <li>ColorF4()
 : <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a72592c53c715735aa7c4a92dac4c51ec">BrawlLib.Imaging.ColorF4</a>
@@ -1390,17 +1392,17 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a6b2b577eec770853f47a3cbd7e41ceef">BrawlLib.Wii.Compression.LZ77</a>
 </li>
 <li>Contained()
-: <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a1f03c48076f7f7d021b53db18f8c1d2f">BrawlLib.Internal.Vector2</a>
-, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a93279a9bd512bd454402e66cb2fa3e42">BrawlLib.Internal.Vector3</a>
+: <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#abe447d28cb45682d79dc985bd9937b6c">BrawlLib.Internal.Vector2</a>
+, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4d723d8e484903ca62111fa0adff4639">BrawlLib.Internal.Vector3</a>
 </li>
 <li>Contains()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a593cbf7866d4da3a85f8e7ccd0e0a528">BrawlLib.Internal.MemoryList&lt; T &gt;</a>
-, <a class="el" href="class_brawl_lib_1_1_internal_1_1_string_extension.html#a99ef27a579cdd1ac9910ca9473cac068">BrawlLib.Internal.StringExtension</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_string_extension.html#a35511622705ac673dff9018a75efbeae">BrawlLib.Internal.StringExtension</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_byte_collection.html#a5a8c7fd6289af8aa594b1daf059c729b">BrawlLib.Internal.Windows.Controls.Hex_Editor.ByteCollection</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_byte_provider_1_1_write_collection.html#a681cab47bd3e48c138b3cc5c17ef3519">BrawlLib.Internal.Windows.Controls.Hex_Editor.FileByteProvider.WriteCollection</a>
 , <a class="el" href="class_brawl_lib_1_1_modeling_1_1_point_line.html#add98e74f62e6516497891e8f2bf00d68">BrawlLib.Modeling.PointLine</a>
 , <a class="el" href="class_brawl_lib_1_1_modeling_1_1_point_triangle.html#a288edbfdf61c509a41717ad30805def1">BrawlLib.Modeling.PointTriangle</a>
-, <a class="el" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_deque_1_1_deque.html#a2b99366706cd1036a8292d5233cb0168">BrawlLib.Modeling.Triangle_Converter.Deque.Deque&lt; T &gt;</a>
+, <a class="el" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_deque_1_1_deque.html#a258f67e9f892ea9e258d840bfe8b6311">BrawlLib.Modeling.Triangle_Converter.Deque.Deque&lt; T &gt;</a>
 , <a class="el" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_deque_1_1_deque_1_1_synchronized_deque.html#abc63be16da2f6a184bf8f08f7f35f0e6">BrawlLib.Modeling.Triangle_Converter.Deque.Deque&lt; T &gt;.SynchronizedDeque</a>
 </li>
 <li>ContainsMapping()
@@ -1468,6 +1470,11 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_stage_i_ds.html#a67959a7369d03ca1bef493f600794609">BrawlLib.Internal.DropDownListStageIDs</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_stage_rel_i_ds.html#ad9d8476adcd221aaea900a0bfcabe5b5">BrawlLib.Internal.DropDownListStageRelIDs</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_g_x_color_s10_string_converter.html#a8cd76e4835870f292a8d20d74c1a490a">BrawlLib.Internal.GXColorS10StringConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_byte_converter.html#a98892eeeb5d546d847875cd6df4cb53a">BrawlLib.Internal.HexByteConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_int_converter.html#a04516c4d7311350ed7a01542f82bd5f6">BrawlLib.Internal.HexIntConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_short_converter.html#a2e5b3560c03f37e02ada39ca98dec84e">BrawlLib.Internal.HexShortConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_u_int_converter.html#afc30f5c12ba8dcf090947331bb853a56">BrawlLib.Internal.HexUIntConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_u_short_converter.html#a555d5e8a7d96f9cb645cdd48b1d7de25">BrawlLib.Internal.HexUShortConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix43_string_converter.html#a9453fa37bfe4e3db5abeb2b3b55c2d67">BrawlLib.Internal.Matrix43StringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix_string_converter.html#a8fed38aeddef3fe3b475502ad1d69dac">BrawlLib.Internal.MatrixStringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_quaternion_string_converter.html#a619114e4bbe146104870ea9394a9c961">BrawlLib.Internal.QuaternionStringConverter</a>
@@ -1513,6 +1520,7 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_drop_down_list_stage_rel_i_ds.html#a7df8987fe3b373c48d0572f75c4bd082">BrawlLib.Internal.DropDownListStageRelIDs</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_expandable_object_custom_converter.html#a0ba0ecb3dd878197aa65302a3dfbe2b1">BrawlLib.Internal.ExpandableObjectCustomConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_g_x_color_s10_string_converter.html#a99898219a7c63c5ef58432211ecd3e0c">BrawlLib.Internal.GXColorS10StringConverter</a>
+, <a class="el" href="class_brawl_lib_1_1_internal_1_1_hex_converter_base.html#a8b8a26353a257da104e3049c50c8abbe">BrawlLib.Internal.HexConverterBase</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix43_string_converter.html#a6beed7173751c85b6c0e65a5799c06fc">BrawlLib.Internal.Matrix43StringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_matrix_string_converter.html#ac1f293fbfd720773201424b4b85c3eeb">BrawlLib.Internal.MatrixStringConverter</a>
 , <a class="el" href="class_brawl_lib_1_1_internal_1_1_quaternion_string_converter.html#aed82a1f16156a0034cc0be2614881a93">BrawlLib.Internal.QuaternionStringConverter</a>
@@ -1634,7 +1642,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_bitmap_utilities.html#a0219e7dd8f56d3335eb1cd3032265234">BrawlLib.BrawlManagerLib.BitmapUtilities</a>
 </li>
 <li>CPElementDef()
-: <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#ad34b96854ba246d12bb07058cffdea4f">BrawlLib.Wii.Graphics.CPElementDef</a>
+: <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#a50e1ceac9607f7618a4d6a869fbdbedf">BrawlLib.Wii.Graphics.CPElementDef</a>
 </li>
 <li>CPElementSpec()
 : <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a49882a4ba1fe055121820b763e8b5a91">BrawlLib.Wii.Graphics.CPElementSpec</a>
@@ -1714,7 +1722,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ad6493fc3c5c9b0ab7439938074bd77ce">BrawlLib.Modeling.PrimitiveManager</a>
 </li>
 <li>createImage()
-: <a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator.html#a17e0a1a44c530b1c2a7c6f31b7fe9629">BrawlCrate.BrawlManagers.StageManager.NameCreator</a>
+: <a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator.html#ab8cbe89a744ce97ea718c236bbd7ffa9">BrawlCrate.BrawlManagers.StageManager.NameCreator</a>
 </li>
 <li>CreateIssue()
 : <a class="el" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#aed2d9aabedc615c1888894ae201619c9">BrawlCrate.ExternalInterfacing.UpdaterHelper</a>
@@ -1809,7 +1817,7 @@ $(function() {
 : <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_c_s_s_c_entry_wrapper.html#aee3a7bbcf08cdc5d543eb57e35a81350">BrawlCrate.NodeWrappers.CSSCEntryWrapper</a>
 </li>
 <li>CSSCWrapper()
-: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_c_s_s_c_wrapper.html#acf181ad060cd9cea29a415fff0623131">BrawlCrate.NodeWrappers.CSSCWrapper</a>
+: <a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_c_s_s_c_wrapper.html#a38aed79630797c1297fea1b1feedb37f">BrawlCrate.NodeWrappers.CSSCWrapper</a>
 </li>
 <li>CSSPortraitViewer()
 : <a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_costume_manager_1_1_portrait___viewers_1_1_c_s_s_portrait_viewer.html#a0ea1525ae649cf206ec16725ad88c576">BrawlCrate.BrawlManagers.CostumeManager.Portrait_Viewers.CSSPortraitViewer</a>
@@ -1861,7 +1869,7 @@ $(function() {
 : <a class="el" href="class_brawl_crate_1_1_program.html#a28b6262ee89f7f81f2431b12b2251bcd">BrawlCrate.Program</a>
 </li>
 <li>CustomSongVolumeCodeset()
-: <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset.html#a3e8f7795cd5344fc4911ab7dbc82363f">BrawlLib.BrawlManagerLib.GCT.ReadWrite.CustomSongVolumeCodeset</a>
+: <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset.html#af8c0026f48eb78b4314327c3fb25f4f4">BrawlLib.BrawlManagerLib.GCT.ReadWrite.CustomSongVolumeCodeset</a>
 </li>
 <li>CustomSongVolumeEditor()
 : <a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_custom_song_volume_editor.html#a92501566a524cccf0ce879b445a25709">BrawlCrate.BrawlManagers.SongManager.CustomSongVolumeEditor</a>
@@ -1879,7 +1887,7 @@ $(function() {
 : <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_songs_1_1_song_i_d_map.html#ac8de7b8f722a5e710c4b41c271882c89">BrawlLib.BrawlManagerLib.Songs.SongIDMap</a>
 </li>
 <li>CustomSSSCodeset()
-: <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#aa3c0ec3b9250faa66626ac8d6ed867f1">BrawlLib.BrawlManagerLib.GCT.ReadWrite.CustomSSSCodeset</a>
+: <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_s_s_s_codeset.html#a49328e7d4c162bbc7af03fe945d3e956">BrawlLib.BrawlManagerLib.GCT.ReadWrite.CustomSSSCodeset</a>
 </li>
 <li>customTrackBar1_UserSeek()
 : <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_brstm_converter_dialog.html#a382f07ba4aaa47da589a3ba175866f3c">BrawlLib.Internal.Windows.Forms.BrstmConverterDialog</a>

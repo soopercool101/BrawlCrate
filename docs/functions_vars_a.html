@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -250,6 +250,9 @@ $(function() {
 <li>ADPCMConversionWarningShown
 : <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_t_m_node.html#a0f008a6c8d852866ce4b820983c18e1f">BrawlLib.SSBB.ResourceNodes.RSTMNode</a>
 </li>
+<li>ADSJ
+: <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a5d0421474e5105532d6978f06794018e">BrawlLib.SSBB.FileFilters</a>
+</li>
 <li>Aerial
 : <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_hitbox_flags.html#ae318a4fbb1a86c178d2232fac625558c">BrawlLib.SSBB.ResourceNodes.HitboxFlags</a>
 </li>
@@ -313,9 +316,13 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_l_r0_node.html#ae168d5f0c07ec6be65059294e420c2b2">BrawlLib.SSBB.ResourceNodes.CLR0Node</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_m_m_node.html#a783a517b304208164ab73b246846f734">BrawlLib.SSBB.ResourceNodes.CMMNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html#a9c9eabd688b482f1fccaa546bb3598a6">BrawlLib.SSBB.ResourceNodes.CollisionNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_freq_node.html#acc7c41e327777806beb91e03aedf362b">BrawlLib.SSBB.ResourceNodes.ItmFreqNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_table_group_node.html#af4142b34b4c1c267c9f0d00af480781b">BrawlLib.SSBB.ResourceNodes.ItmTableGroupNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_table_node.html#a2fb01e082c3a51523ca7aab39a4d0419">BrawlLib.SSBB.ResourceNodes.ItmTableNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_entry_node.html#a1fd8e7ff90bc561e18c16bf63b9cf460">BrawlLib.SSBB.ResourceNodes.PAT0EntryNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_node.html#aca5b670597f3090741d7ada3e838640f">BrawlLib.SSBB.ResourceNodes.PAT0Node</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html#af3160b4a902ac6628b6403f458212382">BrawlLib.SSBB.ResourceNodes.PAT0TextureNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_pathing_misc_data_node.html#a6d56ed7b4ed521d26fca3334cad94e53">BrawlLib.SSBB.ResourceNodes.PathingMiscDataNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_project_plus_1_1_a_s_l_s_node.html#a6442a8c1b8bc4e14bc0019d7dd98dfec">BrawlLib.SSBB.ResourceNodes.ProjectPlus.ASLSNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_project_plus_1_1_s_t_e_x_node.html#af342cf6850522595445bd509c076cf89">BrawlLib.SSBB.ResourceNodes.ProjectPlus.STEXNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_project_plus_1_1_t_l_s_t_node.html#aa8d807e26eafb7a6a50a513c712418a2">BrawlLib.SSBB.ResourceNodes.ProjectPlus.TLSTNode</a>
@@ -325,6 +332,9 @@ $(function() {
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_h_p0_node.html#a70c53187bbac67205f416de4b5962f60">BrawlLib.SSBB.ResourceNodes.SHP0Node</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_r_t0_entry_node.html#abbd38fff929c9d0ce4b59ceade541dde">BrawlLib.SSBB.ResourceNodes.SRT0EntryNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_r_t0_node.html#a49583741b66b5441029dd55c471ca898">BrawlLib.SSBB.ResourceNodes.SRT0Node</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_data_list_node.html#afe725793db7fa8cf93bbbc5225aeb36b">BrawlLib.SSBB.ResourceNodes.TyDataListNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_data_node.html#a05d966e21630c99c21250bc3c85c3742">BrawlLib.SSBB.ResourceNodes.TyDataNode</a>
+, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_ty_seal_list.html#a8f2dacbdd0a049a70ebd496055b59e2a">BrawlLib.SSBB.ResourceNodes.TySealList</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_folder_node.html#a0d09e1ea25465df2901555540473e8b7">BrawlLib.SSBB.ResourceNodes.U8FolderNode</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_u8_node.html#a5ce6d08d568fee93fccc4a38da17d8b2">BrawlLib.SSBB.ResourceNodes.U8Node</a>
 , <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_v_i_s0_node.html#adb73869d5e45cb09aa7e0b89580454ea">BrawlLib.SSBB.ResourceNodes.VIS0Node</a>

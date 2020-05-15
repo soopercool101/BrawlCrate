@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -98,6 +98,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a75f98f23989ffbaee1988719159c47af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae80cfd3a306dad58accaf550642b9edd"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html#ae80cfd3a306dad58accaf550642b9edd">WriteUTF8String</a> (string s, bool nullTerminated, uint offset)</td></tr>
 <tr class="separator:ae80cfd3a306dad58accaf550642b9edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaf7160e0fb6a098bba0020d191cffc0"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html#acaf7160e0fb6a098bba0020d191cffc0">WriteUTF8String</a> (string s, bool nullTerminated, uint offset, uint size)</td></tr>
+<tr class="separator:acaf7160e0fb6a098bba0020d191cffc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -1508,7 +1510,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a97b7fa82f86e1c1e3a8edf49ef3cda8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97b7fa82f86e1c1e3a8edf49ef3cda8c">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a97b7fa82f86e1c1e3a8edf49ef3cda8c">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1537,7 +1539,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a8d0cd58a6b37798200c93abf0aef363a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d0cd58a6b37798200c93abf0aef363a">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d0cd58a6b37798200c93abf0aef363a">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1576,7 +1578,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="ae80cfd3a306dad58accaf550642b9edd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae80cfd3a306dad58accaf550642b9edd">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae80cfd3a306dad58accaf550642b9edd">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1615,25 +1617,85 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordtype">byte</span>* ptr = (<span class="keywordtype">byte</span>*)(<span class="keyword">this</span> + offset);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordtype">byte</span>[] name = Encoding.UTF8.GetBytes(s);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; name.Length; j++)</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                ptr[j] = name[j];</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordflow">if</span> (nullTerminated)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html#a97b7fa82f86e1c1e3a8edf49ef3cda8c">WriteUTF8String</a>(s, nullTerminated, offset, (uint)(s.UTF8Length() + (nullTerminated ? 1 : 0)));</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acaf7160e0fb6a098bba0020d191cffc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaf7160e0fb6a098bba0020d191cffc0">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint BrawlLib.Internal.VoidPtr.WriteUTF8String </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>nullTerminated</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordtype">byte</span>* ptr = (<span class="keywordtype">byte</span>*)(<span class="keyword">this</span> + offset);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordtype">byte</span>[] name = Encoding.UTF8.GetBytes(s);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; name.Length &amp;&amp; j &lt; size; j++)</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                ptr[name.Length] = 0;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                ptr[j] = name[j];</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            }</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">return</span> (uint) (name.Length + (nullTerminated ? 1 : 0));</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">if</span> (name.Length &lt; size &amp;&amp; nullTerminated)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                ptr[name.Length] = 0;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nullTerminated)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                ptr[name.Length - 1] = 0;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = name.Length; j &lt; size; j++)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                ptr[j] = 0;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">return</span> size;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="a75f98f23989ffbaee1988719159c47af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75f98f23989ffbaee1988719159c47af">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f98f23989ffbaee1988719159c47af">&#9670;&nbsp;</a></span>WriteUTF8String() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

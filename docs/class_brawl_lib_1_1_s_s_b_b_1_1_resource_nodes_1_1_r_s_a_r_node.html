@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.31</span>
+   &#160;<span id="projectnumber">v0.34-h3</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -337,8 +337,8 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-static-methods"></a>
 Static Package Functions</h2></td></tr>
-<tr class="memitem:a3d0d366de1b3170036c9233dd9d9721c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_node.html#a3d0d366de1b3170036c9233dd9d9721c">TryParse</a> (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html">DataSource</a> source)</td></tr>
-<tr class="separator:a3d0d366de1b3170036c9233dd9d9721c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc1d4ff44cb758a53a537d3505e6b8e4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_node.html#abc1d4ff44cb758a53a537d3505e6b8e4">TryParse</a> (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html">DataSource</a> source, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> parent)</td></tr>
+<tr class="separator:abc1d4ff44cb758a53a537d3505e6b8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
 Package Attributes</h2></td></tr>
@@ -663,7 +663,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    <span class="comment">//Create node and parse</span></div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    source = <span class="keyword">new</span> DataSource((<span class="keywordtype">int</span>) rsar + group-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_group_header.html#a8e1e035b4905e5601b7892894e4037c4">_headerOffset</a> + gEntry-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_group_entry.html#a7ee767ca8904b0e1e88374b30bd6257e">_headerOffset</a>,</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        gEntry-&gt;<a class="code" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_group_entry.html#ae98904adc609687eef48a5502f369639">_headerLength</a>);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    <span class="keywordflow">if</span> ((n = NodeFactory.GetRaw(source) as RSARFileNode) == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    <span class="keywordflow">if</span> ((n = NodeFactory.GetRaw(source, <span class="keyword">this</span>) as RSARFileNode) == <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    {</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        n = <span class="keyword">new</span> RSARFileNode();</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                    }</div>
@@ -971,8 +971,8 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a3d0d366de1b3170036c9233dd9d9721c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d0d366de1b3170036c9233dd9d9721c">&#9670;&nbsp;</a></span>TryParse()</h2>
+<a id="abc1d4ff44cb758a53a537d3505e6b8e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc1d4ff44cb758a53a537d3505e6b8e4">&#9670;&nbsp;</a></span>TryParse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -984,8 +984,18 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">static <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> BrawlLib.SSBB.ResourceNodes.RSARNode.TryParse </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html">DataSource</a>&#160;</td>
-          <td class="paramname"><em>source</em></td><td>)</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a>&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -1372,7 +1382,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_footer_html_a3af2dbfa91c29339f46f3c7e53209028"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_footer.html#a3af2dbfa91c29339f46f3c7e53209028">BrawlLib.SSBB.Types.Audio.INFOFooter._seqTrackCount</a></div><div class="ttdeci">bushort _seqTrackCount</div><div class="ttdef"><b>Definition:</b> RSAR.cs:559</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a713872ebf7495715a72583a8ebe07891"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">BrawlLib.SSBB.ResourceNodes.ResourceNode._children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; _children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:141</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_node_html_a54f0c6429a075f076bd8767a2b88ebe0"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_node.html#a54f0c6429a075f076bd8767a2b88ebe0">BrawlLib.SSBB.ResourceNodes.RSARNode._entryList</a></div><div class="ttdeci">readonly RSAREntryList _entryList</div><div class="ttdef"><b>Definition:</b> RSARNode.cs:348</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7d6d973b631a29f1f86bff9500bbb7eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">BrawlLib.SSBB.ResourceNodes.ResourceNode.SignalPropertyChange</a></div><div class="ttdeci">virtual void SignalPropertyChange()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:316</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7d6d973b631a29f1f86bff9500bbb7eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">BrawlLib.SSBB.ResourceNodes.ResourceNode.SignalPropertyChange</a></div><div class="ttdeci">virtual void SignalPropertyChange()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:319</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list_html_a6adc87c6fc8dde2dd2ae14858085ed45"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a6adc87c6fc8dde2dd2ae14858085ed45">BrawlLib.Wii.Audio.RSAREntryList.SortStrings</a></div><div class="ttdeci">void SortStrings()</div><div class="ttdef"><b>Definition:</b> RSARConverter.cs:474</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_header.html">BrawlLib.SSBB.Types.Audio.INFOHeader</a></div><div class="ttdef"><b>Definition:</b> RSAR.cs:502</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_file_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_i_n_f_o_file_entry.html">BrawlLib.SSBB.Types.Audio.INFOFileEntry</a></div><div class="ttdef"><b>Definition:</b> RSAR.cs:724</div></div>
