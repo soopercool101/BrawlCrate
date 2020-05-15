@@ -93,15 +93,6 @@ namespace BrawlCrate.NodeWrappers
 
         public void Link(ResourceNode res)
         {
-            if (DefaultBackColor != null)
-            {
-                BackColor = (Color) DefaultBackColor;
-            }
-
-            if (DefaultForeColor != null)
-            {
-                ForeColor = (Color) DefaultForeColor;
-            }
             Unlink();
             if (res != null)
             {
@@ -183,6 +174,15 @@ namespace BrawlCrate.NodeWrappers
             }
 
             _resource = res;
+            if (DefaultBackColor != null)
+            {
+                BackColor = (Color)DefaultBackColor;
+            }
+
+            if (DefaultForeColor != null)
+            {
+                ForeColor = (Color)DefaultForeColor;
+            }
         }
 
         public void Unlink()
@@ -242,6 +242,17 @@ namespace BrawlCrate.NodeWrappers
         protected internal virtual void OnUpdateProperties(object sender, EventArgs e)
         {
             MainForm.Instance.propertyGrid1.Refresh();
+
+            // Update coloration in event of variable color nodes
+            if (DefaultBackColor != null)
+            {
+                BackColor = (Color)DefaultBackColor;
+            }
+
+            if (DefaultForeColor != null)
+            {
+                ForeColor = (Color)DefaultForeColor;
+            }
         }
 
         protected internal virtual void OnUpdateCurrentControl(object sender, EventArgs e)
