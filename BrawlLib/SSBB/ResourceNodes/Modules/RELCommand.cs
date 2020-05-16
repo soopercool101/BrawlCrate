@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
@@ -94,6 +94,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _section.SignalPropertyChange();
             }
         }
+
+        [Category("Relocation Command")]
+        [Description("The targetted function name (if known).")]
+        public string TargetFunction =>
+            (TargetSectionID == 1 || TargetSectionID == 4 && TargetModuleID.Equals("main.dol")) &&
+            ModuleMapLoader.MapFiles.ContainsKey(TargetModuleID) &&
+            ModuleMapLoader.MapFiles[TargetModuleID].ContainsKey(TargetOffset)
+                ? ModuleMapLoader.MapFiles[TargetModuleID][TargetOffset]
+                : "";
 
         public RELCommandType _command;
         public int _modifiedSectionId;
