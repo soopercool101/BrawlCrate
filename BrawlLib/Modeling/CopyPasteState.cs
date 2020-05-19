@@ -495,8 +495,10 @@ namespace BrawlLib.Modeling
 
 		public void ClearLinksAndPlanes()
 		{
-			CreatedLinks.Clear();
-			CreatedPlanes.Clear();
+			if (CreatedLinks != null)
+				CreatedLinks.Clear();
+			if (CreatedPlanes != null)
+				CreatedPlanes.Clear();
 
 			CreatedObject = null;
 			CreatedLinks = null;

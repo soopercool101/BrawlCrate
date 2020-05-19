@@ -3376,7 +3376,57 @@ namespace System.Windows.Forms
 
         protected void _modelPanel_KeyDown(object sender, KeyEventArgs e)
         {
-			if (e.KeyCode == Keys.Escape)
+			if (ModifierKeys == Keys.Control)
+            {
+				switch (e.KeyCode)
+				{
+					case Keys.Z:
+						if (_hovering)
+						{
+							CancelHover();
+						}
+						else if (toolsStrip_Undo.Enabled)
+						{
+							Undo(this, null);
+						}
+						break;
+
+					case Keys.Y:
+						if (_hovering)
+						{
+							CancelHover();
+						}
+						else if (toolsStrip_Redo.Enabled)
+						{
+							Redo(this, null);
+						}
+						break;
+
+					case Keys.X: // Cuts selected collisions, if any.
+						CutSelected();
+						break;
+
+					case Keys.C: // Copies selected collisions.
+						CopySelected();
+						break;
+
+					case Keys.V: // Paste collisions directly.
+						PasteCopiedCollisions(false);
+						break;
+
+				}
+            }
+			else if (ModifierKeys.HasFlag(Keys.Control | Keys.Shift))
+			{
+				switch (e.KeyCode)
+				{
+					case Keys.V: // Paste collisions, but it opens an Advanced Paste Options dialog.
+						ShowAdvancedPasteOptions();
+
+						break;
+				}
+			}
+			else if (e.KeyCode == Keys.Escape)
             {
                 if (_hovering)
                 {
@@ -3394,34 +3444,9 @@ namespace System.Windows.Forms
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                // Moved delete algorithm so that it can be used with cutting and don't have to create
-				// the same algorithm multiple times
+                // Moved delete functionality so that it can be used with cutting and don't have to create
+				// the same function multiple times
                 DeleteSelected();
-            }
-            else if (ModifierKeys == Keys.Control)
-            {
-                if (e.KeyCode == Keys.Z)
-                {
-                    if (_hovering)
-                    {
-                        CancelHover();
-                    }
-                    else if (toolsStrip_Undo.Enabled)
-                    {
-                        Undo(this, null);
-                    }
-                }
-                else if (e.KeyCode == Keys.Y)
-                {
-                    if (_hovering)
-                    {
-                        CancelHover();
-                    }
-                    else if (toolsStrip_Redo.Enabled)
-                    {
-                        Redo(this, null);
-                    }
-                }
             }
             else if (e.KeyCode == Keys.OemOpenBrackets)
             {
@@ -4892,9 +4917,7 @@ namespace System.Windows.Forms
         //Here we check the amount of selected items, copy its selections first then delete the selected collisions
         protected void btnCut_Click(object sender, EventArgs e)
         {
-            CopySelected();
-            DeleteSelected(true);
-
+			CutSelected();
             //_copyState = 2;
         }
         //Here we check the amount of selected items and copy it
@@ -4936,29 +4959,40 @@ namespace System.Windows.Forms
         }
 
 
-		public void ShowAdvancedPasteOptions()
+		// Returns true if advanced paste options in showing the option was successful; 
+		// otherwise it failed to do so.
+		public bool ShowAdvancedPasteOptions()
         {
-            // Show the dialog and check if there is anything copied.
-            if (editorPasteOptions == null)
-            {
-				if (_copiedStates[0] == null)
-				{
-					MessageBox.Show("Paste Options cannot be used if there is nothing copied.");
-				}
-				else
-				{
-					editorPasteOptions = new CollisionEditor_PasteOptions(this, _copiedStates[0]);
-					editorPasteOptions.TopMost = true;
-					editorPasteOptions.Show();
-				}
-            }
+			// While Advanced Paste Options would not need a selected object to be required, it will be required
+			// once the user decides to actually paste it.
+			//if (_selectedObject == null)
+			//{
+			//	MessageBox.Show("You cannot paste collisions without first selecting an object.");
+			//	return false;
+			//}
+			if (_copiedStates == null || _copiedStates.Count <= 0 || _copiedStates[0] == null || _copiedStates[0].CopiedLinks.Length == 0)
+			{
+				MessageBox.Show("Paste Options cannot be used if there is nothing copied.");
+				return false;
+			}
+
+			// Show the dialog and check if there is anything copied.
+			if (editorPasteOptions == null)
+			{
+				editorPasteOptions = new CollisionEditor_PasteOptions(this, _copiedStates[0]);
+				editorPasteOptions.TopMost = true;
+				editorPasteOptions.Show();
+			}
             // Else then we have to either make a new dialog that supports multi-pasting ui options
             // (to be honest, it is good for mutiple paste edits) or stick to letting the user know 
 			// that a dialog is already open. (boo!)
             else
             {
                 if (editorPasteOptions.Visible)
+				{
                     MessageBox.Show("Advanced Paste Options is already open.");
+					return false;
+				}
                 else
                 {
 					editorPasteOptions.TopMost = false;
@@ -4966,15 +5000,23 @@ namespace System.Windows.Forms
                     ShowAdvancedPasteOptions();
                 }
             }
+
+			return true;
         }
         #endregion
 
-        protected void CopySelected()
+		protected void CutSelected()
+		{
+			if (CopySelected())
+				DeleteSelected(true);
+		}
+		// Returns true if the copy was successful; otherwise it failed to do so.
+        protected bool CopySelected()
         {
             if (_selectedLinks.Count == 0)
             {
                 MessageBox.Show("There is nothing to copy.");
-                return;
+                return false;
             }
 
 			_copiedStates.Clear();
@@ -4985,20 +5027,20 @@ namespace System.Windows.Forms
 			_copiedStates.Add(state);
 
 			this.SelectionModified();
+            return true;
         }
 
 		// Returns true if the collision was successfully copied. False if there was at least an issue.
         public bool PasteCopiedCollisions(bool fromPasteOptions)
         {
-			if (_copiedStates[0] == null || _copiedStates[0].CopiedLinks.Length == 0)
-			{
-				MessageBox.Show("You do not have anything copied.");
-				return false;
-			}
-			
 			if (_selectedObject == null)
 			{
 				MessageBox.Show("You cannot paste collisions without first selecting an object.");
+				return false;
+			}
+			if (_copiedStates == null || _copiedStates.Count <= 0 || _copiedStates[0] == null || _copiedStates[0].CopiedLinks.Length == 0)
+			{
+				MessageBox.Show("You do not have anything copied.");
 				return false;
 			}
 
@@ -5007,25 +5049,17 @@ namespace System.Windows.Forms
 				return false;
 			}
 
+			// At the moment, it would be a good thing if undo creation was a real thing, but due to how BrawlCrate works,
+			// it does not work properly as it only undo/redo collisions if they exist. Sometimes they can be redone but
+			// the new value that held the previous value if it is overwritten to a new location, then the new location will
+			// inherit the the undo's location.
 			//CreateUndo();
 
             if (clipboardPasteOptions_PasteOverrideSelected.Checked)
             {
                 if (_selectedLinks.Count == 1)
                 {
-                    //Create new plane extending to point
-                    //CollisionLink link = _selectedLinks[0];
 
-                    //_copiedLinks[0]
-
-                    //_selectedLinks[0] = link.Branch((Vector2)target);
-                    //_selectedLinks[0]._highlight = true;
-                    //link._highlight = false;
-                    //SelectionModified();
-                    //_modelPanel.Invalidate();
-
-                    ////Hover new point so it can be moved
-                    //BeginHover(target);
                 }
                 else if (_selectedPlanes.Count > 0)
                 {

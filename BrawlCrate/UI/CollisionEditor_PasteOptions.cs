@@ -992,8 +992,8 @@ namespace System.Windows.Forms
 
 		private void PasteCollision_Click(object sender, EventArgs e)
 		{
-			parentEditor.PasteCopiedCollisions(true);
-			Close();
+			if (parentEditor.PasteCopiedCollisions(true))
+				Close();
 		}
 
 		private void Cancel_Click(object sender, EventArgs e)
