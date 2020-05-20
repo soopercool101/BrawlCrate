@@ -36,16 +36,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_numObjects > 0;
         }
 
-        public override void OnPopulate()
-        {
-            ColObject* obj = Header->Objects;
-            for (int i = Header->_numObjects; --i > 0;)
-            {
-                new CollisionObject().Initialize(this, new DataSource(++obj, ColObject.Size));
-            }
-        }
+		public override void OnPopulate()
+		{
+			ColObject* obj = Header->Objects;
+			for (int i = Header->_numObjects; i-- > 0;)
+			{
+				new CollisionObject().Initialize(this, new DataSource(obj++, ColObject.Size));
+			}
+		}
 
-        protected override string GetName()
+		protected override string GetName()
         {
             return base.GetName("Collision Data");
         }
