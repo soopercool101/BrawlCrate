@@ -34,7 +34,7 @@ Default (Float): 240 (0x43700000)
 0
 
 Bell Start Timer
-(Frames) The amount of frames to remove from the transformation duration to start ringing the bell (applies to all transformations).
+(Float) The amount of frames to remove from the transformation duration to start ringing the bell (applies to all transformations).
 
 Default (Float): 300 (0x43960000)
 	/EndDescription
