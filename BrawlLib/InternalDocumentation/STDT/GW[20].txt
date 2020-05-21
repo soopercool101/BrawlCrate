@@ -1,0 +1,186 @@
+﻿Transformation Min Timer
+(Float) The minimum amount of frames to wait before transforming.
+
+Default (Float): 1500 (0x44BB8000)
+	/EndDescription
+0
+
+Transformation Max Timer
+(Float) The maximum amount of frames to wait before transforming.
+
+Default (Float): 2100 (0x45034000)
+	/EndDescription
+0
+
+Transformation Min Duration
+(Float) The minimum amount of frames for the transformations' duration.
+
+Default (Float): 1500 (0x44BB8000)
+	/EndDescription
+0
+
+Transformation Max Duration
+(Float) The maximum amount of frames for the transformations' duration.
+
+Default (Float): 2100 (0x45034000)
+	/EndDescription
+0
+
+Fire: Support Minigame Duration
+(Float) The duration of the Support minigame in the Fire transformation.
+
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+Bell Start Timer
+(Frames) The amount of frames to remove from the transformation duration to start ringing the bell (applies to all transformations).
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 0.33 (0x3EA8F5C3)
+	/EndDescription
+0
+
+0x038
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 8 (0x41000000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 0.65 (0x3F266666)
+	/EndDescription
+0
+
+0x044
+Default (Float): 700 (0x442F0000)
+	/EndDescription
+0
+
+0x048
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 150 (0x43160000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 0.6 (0x3F19999A)
+	/EndDescription
+0
+
+0x064
+Default (Float): 32 (0x42000000)
+	/EndDescription
+0
+
+0x068
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x070
+Default (Float): 12 (0x41400000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x078
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 8 (0x41000000)
+	/EndDescription
+0
+
+0x080
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+0x084
+Default (Float): 16 (0x41800000)
+	/EndDescription
+0
+
+0x088
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+0x08C
+Default (Float): 50 (0x42480000)
+	/EndDescription
+0
+
+0x090
+Default (Float): 32 (0x42000000)
+	/EndDescription
+0
+
+0x094
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x098
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x09C
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
