@@ -98,7 +98,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Relocation Command")]
         [Description("The targetted function name (if known).")]
         public string TargetFunction =>
-            (TargetSectionID == 1 || TargetSectionID == 4 && TargetModuleID.Equals("main.dol")) &&
+            (TargetSectionID == 1 || TargetModuleID.Equals("main.dol")) &&
             ModuleMapLoader.MapFiles.ContainsKey(TargetModuleID) &&
             ModuleMapLoader.MapFiles[TargetModuleID].ContainsKey(TargetOffset)
                 ? ModuleMapLoader.MapFiles[TargetModuleID][TargetOffset]
