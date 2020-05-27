@@ -459,11 +459,11 @@ namespace BrawlLib.Internal.Windows.Forms
         {
 #if !MONO
             Stream sourceStream = new FileStream(_imageSource, FileMode.Open, FileAccess.Read, FileShare.Read);
-            PngBitmapDecoder decoder = new PngBitmapDecoder(sourceStream, BitmapCreateOptions.PreservePixelFormat,
-                BitmapCacheOption.Default);
-            BitmapSource preservedImage = decoder.Frames[0];
             try
             {
+                PngBitmapDecoder decoder = new PngBitmapDecoder(sourceStream, BitmapCreateOptions.PreservePixelFormat,
+                    BitmapCacheOption.Default);
+                BitmapSource preservedImage = decoder.Frames[0];
                 if (preservedImage.Format == System.Windows.Media.PixelFormats.Indexed8)
                 {
                     Bitmap bmp;
