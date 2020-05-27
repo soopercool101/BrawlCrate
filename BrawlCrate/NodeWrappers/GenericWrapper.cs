@@ -290,9 +290,14 @@ namespace BrawlCrate.NodeWrappers
             {
                 ExportAllFormatDialog dialog = new ExportAllFormatDialog("Export Selected", ext.Key, ext.Value);
 
-                if (dialog.AutoSelect || dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
+                DialogResult? d = null;
+                if (dialog.AutoSelect || dialog.Valid && (d = dialog.ShowDialog()) == DialogResult.OK)
                 {
                     chosenExtensions.Add(ext.Key, dialog.SelectedExtension);
+                }
+                else if (d != null)
+                {
+                    return;
                 }
             }
 
