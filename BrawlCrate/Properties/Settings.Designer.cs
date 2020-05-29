@@ -12,7 +12,7 @@ namespace BrawlCrate.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -315,6 +315,29 @@ namespace BrawlCrate.Properties {
             }
             set {
                 this["APIAutoUpdate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::BrawlCrate.UI.Collision_Editor.CollisionEditorSettings_Data CollisionEditorSettings {
+            get {
+                return ((global::BrawlCrate.UI.Collision_Editor.CollisionEditorSettings_Data)(this["CollisionEditorSettings"]));
+            }
+            set {
+                this["CollisionEditorSettings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CollisionEditorSettingsSet {
+            get {
+                return ((bool)(this["CollisionEditorSettingsSet"]));
+            }
+            set {
+                this["CollisionEditorSettingsSet"] = value;
             }
         }
     }

@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.UI
 {
-    public unsafe class CollisionEditor : UserControl
+    public unsafe class CollisionEditorOld : UserControl
     {
         protected virtual bool ErrorChecking => true;
 
@@ -1189,7 +1189,7 @@ namespace BrawlCrate.UI
             // btnHelp
             // 
             btnHelp.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnHelp.Image = (Image) resources.GetObject("btnHelp.Image");
+            //btnHelp.Image = (Image) resources.GetObject("btnHelp.Image");
             btnHelp.ImageTransparentColor = Color.Magenta;
             btnHelp.Name = "btnHelp";
             btnHelp.Size = new Size(36, 19);
@@ -1373,7 +1373,7 @@ namespace BrawlCrate.UI
         protected int saveIndex;
         protected bool hasMoved;
 
-        public CollisionEditor()
+        public CollisionEditorOld()
         {
             InitializeComponent();
 
@@ -1836,14 +1836,20 @@ namespace BrawlCrate.UI
             UpdateTools();
         }
 
-        protected void UpdateHover(int x, int y)
-        {
-            if (!_hovering)
-            {
-                return;
-            }
+		int tempV = 0;
+		protected void UpdateHover(int x, int y)
+		{
+			++tempV;
 
-            _selectEnd = Vector3.IntersectZ(_modelPanel.CurrentViewport.UnProject(x, y, 0.0f),
+			if (!_hovering)
+			{
+				System.Diagnostics.Trace.WriteLine($"[{tempV}] Hover is disabled!");
+				return;
+			}
+
+			System.Diagnostics.Trace.WriteLine($"[{tempV}] Hover is being updated...");
+
+			_selectEnd = Vector3.IntersectZ(_modelPanel.CurrentViewport.UnProject(x, y, 0.0f),
                 _modelPanel.CurrentViewport.UnProject(x, y, 1.0f), _selectLast._z);
 
             //Apply difference in start/end
@@ -1966,10 +1972,11 @@ namespace BrawlCrate.UI
                 bool move = ModifierKeys == (Keys.Control | Keys.Shift);
 
                 float depth = _modelPanel.GetDepth(e.X, e.Y);
-                Vector3 target = _modelPanel.CurrentViewport.UnProject(e.X, e.Y, depth);
+                
+				Vector3 target = _modelPanel.CurrentViewport.UnProject(e.X, e.Y, depth);
                 Vector2 point;
 
-                if (!move && depth < 1.0f)
+				if (!move && depth < 1.0f)
                 {
                     point = (Vector2) target;
 
