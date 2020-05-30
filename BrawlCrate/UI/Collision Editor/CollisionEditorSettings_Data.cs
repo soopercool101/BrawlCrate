@@ -1,0 +1,73 @@
+﻿using System;
+using System.Reflection;
+using System.Runtime.Serialization;
+
+using BrawlLib.Imaging;
+using BrawlLib.OpenGL;
+
+namespace BrawlCrate.UI.Collision_Editor
+{
+	[Serializable]
+	public class CollisionEditorSettings_Data : ISerializable
+	{
+		public bool ScalePointsWithCamera_Display;
+		public bool ScalePointsWithCamera_Selection;
+		public bool ReplaceSingleButtonCamPerspectiveWithTwo;
+
+		public bool OnlySelectObjectIfCollisionObjectEquals;
+		public bool AlwaysShowUndoRedoMenuOnStart;
+		public int MaximumUndoRedoCount;
+
+		public bool Copy_OnlySelectObjectIfCollisionObjectEquals;
+		public bool Paste_UseWorldLinkValues;
+		public bool Paste_RemoveSelectedCollisionsWhenPasting;
+
+		public ARGBPixel BackgroundColor;
+
+		public bool ShowStagePosition_Spawns;
+		public bool ShowStagePosition_Items;
+		public bool ShowStagePosition_Boundaries;
+
+		public ViewportProjection CurrentViewportProjection;
+
+		public void GetObjectData(SerializationInfo info, StreamingContext context)
+		{
+			FieldInfo[] fields = GetType().GetFields();
+			foreach (FieldInfo f in fields)
+			{
+				Type t = f.FieldType;
+				info.AddValue(f.Name, f.GetValue(this));
+			}
+		}
+
+		/// <summary>
+		/// The settings used when Collision Editor is opened for the first time or if something 
+		/// invalid happens such as the settings not being recognized.
+		/// </summary>
+		public static CollisionEditorSettings_Data DefaultValues()
+		{
+			return new CollisionEditorSettings_Data
+			{
+				ScalePointsWithCamera_Display = false,
+				ScalePointsWithCamera_Selection = false,
+				ReplaceSingleButtonCamPerspectiveWithTwo = false,
+
+				OnlySelectObjectIfCollisionObjectEquals = false,
+				AlwaysShowUndoRedoMenuOnStart = false,
+				MaximumUndoRedoCount = 25,
+
+				Copy_OnlySelectObjectIfCollisionObjectEquals = false,
+				Paste_UseWorldLinkValues = true,
+				Paste_RemoveSelectedCollisionsWhenPasting = false,
+
+				BackgroundColor = new ARGBPixel(255, 0, 0, 0),
+
+				ShowStagePosition_Spawns = true,
+				ShowStagePosition_Items = false,
+				ShowStagePosition_Boundaries = true,
+
+				CurrentViewportProjection = ViewportProjection.Perspective
+			};
+		}
+	}
+}

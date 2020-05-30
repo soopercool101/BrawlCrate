@@ -108,7 +108,7 @@ namespace BrawlCrate.UI
 			else
 			{
 				// It was moved so that CollisionEditor takes care of other forms running inside
-				// plus manage the ability to either cancel the event or not.
+				// plus manage the ability to either cancel the window from closing or not.
 
 				if (CollisionEditorControl.CollisionFormClosing())
 					e.Cancel = true;

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-
+using BrawlCrate.UI.Collision_Editor;
 using BrawlCrate.UI.Model_Previewer;
 
 using BrawlLib.Internal;
@@ -61,7 +61,7 @@ namespace System.Windows.Forms
 		protected ToolStripSeparator toolsStrip_CameraSeparator;				// Seperator for Camera controls
 		protected ToolStripButton toolsStrip_PerspectiveCam;					// Goes into perspective mode
 		protected ToolStripButton toolsStrip_OrthographicCam;					// Goes into orthographic mode
-		protected ToolStripButton toolsStrip_TogglePerspectiveOrthographicCam;	// Switches between Perspective and Orthographic
+		public ToolStripButton toolsStrip_TogglePerspectiveOrthographicCam;		// Switches between Perspective and Orthographic
 		protected ToolStripButton toolsStrip_FlipCollision;
 		protected ToolStripButton toolsStrip_ShowBoundaries;
 		protected ToolStripButton toolsStrip_ShowSpawns;
@@ -69,12 +69,14 @@ namespace System.Windows.Forms
         protected ToolStripDropDownButton toolsStrip_Options;
 		protected ToolStripDropDownButton toolsStrip_CameraOptions;
 
+		// Shows a dialog that allows the user to change the behavior of CollisionEditor.
+		protected ToolStripMenuItem toolsStrip_Options_Settings;
 		// Helps in the selection of collisions to be specific so that points in a small distance can click a plane.
-		protected ToolStripMenuItem toolsStrip_Options_ScalePointsWithCamera_SelectOnly;
+		public ToolStripMenuItem toolsStrip_Options_ScalePointsWithCamera_SelectOnly;
 		// Kind of useless, but there if you'd like to see collision points as you scale.
-		protected ToolStripMenuItem toolsStrip_Options_ScalePointsWithCamera_DisplayOnly;
+		public ToolStripMenuItem toolsStrip_Options_ScalePointsWithCamera_DisplayOnly;
 		// Allows the selection of links/planes if they are associated with the object that is currently selected.
-		protected ToolStripMenuItem toolsStrip_Options_SelectOnlyIfObjectEquals;
+		public ToolStripMenuItem toolsStrip_Options_SelectOnlyIfObjectEquals;
 		// Shows the center location of the stage, which is (0, 0).
 		protected ToolStripMenuItem toolsStrip_Options_ShowZeroZeroPoint;
 		// Sep# is separator, the reason for Sep1 is because the number makes it easy to separate without having to deal with clones.
@@ -175,12 +177,12 @@ namespace System.Windows.Forms
         protected ToolStripMenuItem clipboardDelete;
         protected ToolStripMenuItem clipboardCopyOptions;
 		// Ignores other collision objects if they are not the same as the selected one
-        protected ToolStripMenuItem clipboardCopyOptions_IgnoreOtherObjects;
-        protected ToolStripMenuItem clipboardPasteOptions;
+        public ToolStripMenuItem clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals;
+        public ToolStripMenuItem clipboardPasteOptions;
         // This allows the collisions to be removed and have it pasted
-        protected ToolStripMenuItem clipboardPasteOptions_PasteRemoveSelected;
+        public ToolStripMenuItem clipboardPasteOptions_PasteRemoveSelected;
         // This allows the collisions to be removed and combine them together
-        protected ToolStripMenuItem clipboardPasteOptions_PasteOverrideSelected; 
+        public ToolStripMenuItem clipboardPasteOptions_PasteOverrideSelected; 
 		// Takes acutal points value when pasting links.
         public ToolStripMenuItem clipboardPasteOptions_ActualPointsValuesAreUsed;
 
@@ -320,6 +322,7 @@ namespace System.Windows.Forms
 			toolsStrip_Options_ShowZeroZeroPoint = new ToolStripMenuItem();
 			toolsStrip_Options_Sep1 = new ToolStripSeparator();
 			toolsStrip_Options_TEST_ShowLinkPlacementWindow = new ToolStripMenuItem();
+			toolsStrip_Options_Settings = new ToolStripMenuItem();
             
 			toolsStrip_CameraOptions = new ToolStripDropDownButton();
 			toolsStrip_CameraOptions_FitEntireStage_CamLimit = new ToolStripMenuItem();
@@ -346,7 +349,7 @@ namespace System.Windows.Forms
 			clipboardPaste_PasteDirectly = new ToolStripMenuItem();
 			clipboardPaste_AdvancedPasteOptions = new ToolStripMenuItem();
 			clipboardCopyOptions = new ToolStripMenuItem();
-			clipboardCopyOptions_IgnoreOtherObjects = new ToolStripMenuItem();
+			clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals = new ToolStripMenuItem();
             clipboardPasteOptions = new ToolStripMenuItem();
 			clipboardPasteOptions_PasteRemoveSelected = new ToolStripMenuItem();
 			clipboardPasteOptions_PasteOverrideSelected = new ToolStripMenuItem();
@@ -1216,8 +1219,8 @@ namespace System.Windows.Forms
                 toolsStrip_AlignX,
                 toolsStrip_AlignY,
                 toolsStrip_AlignmentSeparator,
-                //toolsStrip_PerspectiveCam,
-                //toolsStrip_OrthographicCam,
+				toolsStrip_PerspectiveCam,
+				toolsStrip_OrthographicCam,
 				toolsStrip_TogglePerspectiveOrthographicCam,
                 toolsStrip_ResetCam,
 				toolsStrip_CameraOptions,
@@ -1263,7 +1266,7 @@ namespace System.Windows.Forms
 			toolsStrip_UndoRedoMenu.Name = "toolsStrip_UndoRedoMenu";
 			toolsStrip_UndoRedoMenu.Size = new Drawing.Size(38, 22);
 			toolsStrip_UndoRedoMenu.Text = "Undo/Redo Menu";
-			toolsStrip_UndoRedoMenu.Click += UndoRedoMenu;
+			toolsStrip_UndoRedoMenu.Click += toolsStrip_UndoRedoMenu_Click;
 
             // toolsStrip_UndoRedoSeparator
             toolsStrip_UndoRedoSeparator.Name = "toolsStrip_UndoRedoSeparator";
@@ -1342,6 +1345,7 @@ namespace System.Windows.Forms
             toolsStrip_PerspectiveCam.Name = "toolsStrip_PerspectiveCam";
             toolsStrip_PerspectiveCam.Size = new Drawing.Size(71, 19);
             toolsStrip_PerspectiveCam.Text = "Perspective";
+			toolsStrip_PerspectiveCam.Visible = false;
             toolsStrip_PerspectiveCam.Click += SetPerspectiveCam_Click;
             // 
             // toolsStrip_OrthographicCam
@@ -1351,6 +1355,7 @@ namespace System.Windows.Forms
             toolsStrip_OrthographicCam.Name = "toolsStrip_OrthographicCam";
             toolsStrip_OrthographicCam.Size = new Drawing.Size(82, 19);
             toolsStrip_OrthographicCam.Text = "Orthographic";
+			toolsStrip_OrthographicCam.Visible = false;
             toolsStrip_OrthographicCam.Click += SetOrthographicCam_Click;
 			// 
 			// toolsStrip_TogglePerspectiveOrthographicCam
@@ -1361,6 +1366,7 @@ namespace System.Windows.Forms
 			toolsStrip_TogglePerspectiveOrthographicCam.Size = new Drawing.Size(82, 19);
 			toolsStrip_TogglePerspectiveOrthographicCam.Text = "Perspective";
 			toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Orthographic.";
+			toolsStrip_TogglePerspectiveOrthographicCam.Visible = true;
 			toolsStrip_TogglePerspectiveOrthographicCam.Click += SetToggledPerspectiveOrthographicCam_Click;
             // 
             // toolsStrip_ResetCam
@@ -1429,46 +1435,55 @@ namespace System.Windows.Forms
 			toolsStrip_Options.DisplayStyle = ToolStripItemDisplayStyle.Text;
 			toolsStrip_Options.DropDownItems.AddRange(new ToolStripItem[]
 			{
+				toolsStrip_Options_Settings,
+				toolsStrip_Options_Sep1,
 				toolsStrip_Options_ScalePointsWithCamera_DisplayOnly,
 				toolsStrip_Options_ScalePointsWithCamera_SelectOnly,
-				toolsStrip_Options_Sep1,
 				toolsStrip_Options_SelectOnlyIfObjectEquals, 
 				toolsStrip_Options_ShowZeroZeroPoint,
 				toolsStrip_Options_TEST_ShowLinkPlacementWindow
 			});
+			//
+			// toolsStrip_Options_Settings
+			//
+			toolsStrip_Options_Settings.Name = "toolsStrip_Options_Settings";
+			toolsStrip_Options_Settings.Text = "Settings";
+			toolsStrip_Options_Settings.Click += toolsStrip_Options_Settings_Click;
 			//
 			// toolsStrip_Options_ScalePointsWithCamera_DisplayOnly
 			//
 			toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.Name = "toolsStrip_Options_ScalePointsWithCamera_DisplayOnly";
 			toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.Text = "Scale Points With Camera (Display Only)";
 			toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.CheckOnClick = true;
-			toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.CheckedChanged += ToolsStrip_Options_ScalePointsWithCamera_DisplayOnly_CheckedChanged;
+			toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.CheckedChanged += toolsStrip_Options_ScalePointsWithCamera_DisplayOnly_CheckedChanged;
 			//
 			// toolsStrip_Options_ScalePointsWithCamera_SelectOnly
 			//
 			toolsStrip_Options_ScalePointsWithCamera_SelectOnly.Name = "toolsStrip_Options_ScalePointsWithCamera_SelectOnly";
 			toolsStrip_Options_ScalePointsWithCamera_SelectOnly.Text = "Scale Points With Camera (Selection Only)";
 			toolsStrip_Options_ScalePointsWithCamera_SelectOnly.CheckOnClick = true;
+			toolsStrip_Options_ScalePointsWithCamera_SelectOnly.CheckedChanged += toolsStrip_Options_ScalePointsWithCamera_SelectOnly_CheckedChanged;
 			//
 			// toolsStrip_Options_SelectOnlyIfObjectEquals
 			//
 			toolsStrip_Options_SelectOnlyIfObjectEquals.Name = "toolsStrip_Options_ScalePointsWithCamera_SelectOnly";
 			toolsStrip_Options_SelectOnlyIfObjectEquals.Text = "Only Select if Collision's Object Equals to Selected Object";
 			toolsStrip_Options_SelectOnlyIfObjectEquals.CheckOnClick = true;
+			toolsStrip_Options_SelectOnlyIfObjectEquals.CheckedChanged += toolsStrip_Options_SelectOnlyIfObjectEquals_CheckedChanged;
 			//
 			// toolsStrip_Options_ShowZeroZeroPoint
 			//
 			toolsStrip_Options_ShowZeroZeroPoint.Name = "toolsStrip_Options_ShowZeroZeroPoint";
 			toolsStrip_Options_ShowZeroZeroPoint.Text = "Show (0, 0) Rectangle";
 			toolsStrip_Options_ShowZeroZeroPoint.CheckOnClick = true;
-			toolsStrip_Options_ShowZeroZeroPoint.CheckedChanged += ToolsStrip_Options_ShowZeroZeroPoint_CheckedChanged;
+			toolsStrip_Options_ShowZeroZeroPoint.CheckedChanged += toolsStrip_Options_ShowZeroZeroPoint_CheckedChanged;
 			//
 			// toolsStrip_Options_TEST_ShowLinkPlacementWindow
 			//
 			toolsStrip_Options_TEST_ShowLinkPlacementWindow.Name = "toolsStrip_Options_TEST_ShowLinkPlacementWindow";
 			toolsStrip_Options_TEST_ShowLinkPlacementWindow.Text = "[TEMP] Show Selected Link Associations";
 			toolsStrip_Options_TEST_ShowLinkPlacementWindow.CheckOnClick = true;
-			toolsStrip_Options_TEST_ShowLinkPlacementWindow.CheckedChanged += ToolsStrip_Options_TEST_ShowLinkPlacementWindow_CheckedChanged;
+			toolsStrip_Options_TEST_ShowLinkPlacementWindow.CheckedChanged += toolsStrip_Options_TEST_ShowLinkPlacementWindow_CheckedChanged;
 			// 
 			// toolsStrip_Options_Sep1
 			// 
@@ -1654,22 +1669,23 @@ namespace System.Windows.Forms
 			// 
 			clipboardCopyOptions.DropDown.Items.AddRange(new ToolStripItem[]
 			{
-				clipboardCopyOptions_IgnoreOtherObjects
+				clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals
 			});
 			clipboardCopyOptions.Name = "clipboardCopyOptions";
 			clipboardCopyOptions.Size = new Drawing.Size(183, 22);
 			clipboardCopyOptions.Text = "Copy Options";
             // 
-            // clipboardCopyOptions_IgnoreOtherObjects
+            // clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals
             // 
-            clipboardCopyOptions_IgnoreOtherObjects.Name = "clipboardCopyOptions_IgnoreOtherObjects";
-			clipboardCopyOptions_IgnoreOtherObjects.Size = new Drawing.Size(183, 22);
-			clipboardCopyOptions_IgnoreOtherObjects.Text = "Ignore Other Objects When Copying";
-			clipboardCopyOptions_IgnoreOtherObjects.CheckOnClick = true;
-            // 
-            // clipboardPaste
-            // 
-            clipboardPaste.Name = "clipboardPaste";
+            clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.Name = "clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals";
+			clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.Size = new Drawing.Size(183, 22);
+			clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.Text = "Only Copy if Collision Object Equals";
+			clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.CheckOnClick = true;
+			clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.CheckedChanged += clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals_CheckedChanged;
+			// 
+			// clipboardPaste
+			// 
+			clipboardPaste.Name = "clipboardPaste";
             clipboardPaste.Size = new Drawing.Size(183, 22);
             clipboardPaste.Text = "Paste";
             clipboardPaste.Click += btnPaste_Click;
@@ -1710,8 +1726,9 @@ namespace System.Windows.Forms
 			// 
 			clipboardPasteOptions_PasteRemoveSelected.Name = "clipboardPaste_PasteRemoveSelected";
 			clipboardPasteOptions_PasteRemoveSelected.Size = new Drawing.Size(183, 22);
-			clipboardPasteOptions_PasteRemoveSelected.Text = "Remove Selected Collisions and Place";
+			clipboardPasteOptions_PasteRemoveSelected.Text = "Remove Selected Collisions";
 			clipboardPasteOptions_PasteRemoveSelected.CheckOnClick = true;
+			clipboardPasteOptions_PasteRemoveSelected.CheckedChanged += clipboardPasteOptions_PasteRemoveSelected_CheckedChanged;
 			// 
 			// 
 			// clipboardPasteOptions_ActualPointsValuesAreUsed
@@ -1720,6 +1737,7 @@ namespace System.Windows.Forms
 			clipboardPasteOptions_ActualPointsValuesAreUsed.Size = new Drawing.Size(183, 22);
 			clipboardPasteOptions_ActualPointsValuesAreUsed.Text = "Use Actual Link Values Instead of Raw";
 			clipboardPasteOptions_ActualPointsValuesAreUsed.CheckOnClick = true;
+			clipboardPasteOptions_ActualPointsValuesAreUsed.CheckedChanged += clipboardPasteOptions_ActualPointsValuesAreUsed_CheckedChanged;
 			// 
 			// clipboardPasteOptions_PasteOverrideSelected
 			// 
@@ -1815,6 +1833,9 @@ namespace System.Windows.Forms
 		// A undo/redo menu that allows changing the current save index and maximum save count, thus
 		// provides a faster way to undo/redo at the expense of more memory at short time.
 		public CollisionEditor_UndoRedoMenu editorUndoRedoMenu = null;
+		// Opens up a collision editor settings that works a bit similar to Model Preview, but instead
+		// shows available options.
+		public CollisionEditorSettings editorSettings = null;
 
 
 		// States that are used for the selection of collisions.
@@ -1823,13 +1844,12 @@ namespace System.Windows.Forms
 
         protected bool _creating;
 
-        //public CollisionState save;
         public List<CollisionState> undoSaves = new List<CollisionState>();
         public List<CollisionState> redoSaves = new List<CollisionState>();
 		
 		// The current index for Undo/Redo actions.
         public int saveIndex = 0;
-        // Why limit the amount of saves to 25? An option would be nice.
+        // The maximum index for Undo/Redo actions.
         public int maxSaveCount = 25;
 
         protected bool hasMoved = false;
@@ -2628,7 +2648,14 @@ namespace System.Windows.Forms
 
 							if (toolsStrip_Options_ScalePointsWithCamera_SelectOnly.Checked)
 							{
-								SelectRadius = p.GetCamScaledDistance(_modelPanel.CurrentViewport.Camera, PointSelectRadius);
+								float ScaleBy = p.GetCamScaledDistance(_modelPanel.CurrentViewport.Camera, PointSelectRadius);
+
+								ScaleBy -= 2.5f;
+
+								if (ScaleBy < 0.05f)
+									ScaleBy = 0.05f;
+
+								SelectRadius *= ScaleBy;
 							}
 
 							if (p.Value.Contained(point, point, SelectRadius))
@@ -3038,6 +3065,9 @@ namespace System.Windows.Forms
 		{
 			TargetNode = _node;
 			_modelPanel.Capture();
+
+			ReadSettings();
+
 		}
 		/// <summary>
 		/// Called when the collision form is about to close.
@@ -3083,6 +3113,8 @@ namespace System.Windows.Forms
 			TargetNode = null;
 			_modelPanel.Release();
 
+			SaveSettings();
+
 			// Any forms shown here will be closed and then nullified to prevent them from being used outside
 			// of the collision editor.
 			if (editorPasteOptions != null)
@@ -3092,6 +3124,10 @@ namespace System.Windows.Forms
 			if (editorUndoRedoMenu != null)
 			{
 				NullifyUndoRedoMenu();
+			}
+			if (editorSettings != null)
+			{
+				NullifyEditorSettings();
 			}
 
 			return false;
@@ -3152,10 +3188,10 @@ namespace System.Windows.Forms
 
 				_targetNode.Render(new CollisionObject.CollisionObjectRenderInfo(
 				toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.Checked, lstCollObjects.Focused, ref cam));
-            }
+			}
 
 			// Render bones
-            if (_modelPanel.RenderBones)
+			if (_modelPanel.RenderBones)
             {
                 foreach (IRenderedObject o in _modelPanel._renderList)
                 {
@@ -3661,13 +3697,15 @@ namespace System.Windows.Forms
 			if (_updating)
 				return;
 
-			toolsStrip_PerspectiveCam.Checked = true;
-			toolsStrip_OrthographicCam.Checked = false;
-
 			if (_modelPanel.CurrentViewport.ViewType != ViewportProjection.Perspective)
 			{
-				_modelPanel.ResetCamera();
-				_modelPanel.CurrentViewport.ViewType = ViewportProjection.Perspective;
+				UpdateViewportProjection(ViewportProjection.Perspective);
+
+				//toolsStrip_PerspectiveCam.Checked = true;
+				//toolsStrip_OrthographicCam.Checked = false;
+
+				//_modelPanel.ResetCamera();
+				//_modelPanel.CurrentViewport.ViewType = ViewportProjection.Perspective;
 			}
 		}
 
@@ -3677,13 +3715,15 @@ namespace System.Windows.Forms
 			if (_updating)
 				return;
 
-			toolsStrip_PerspectiveCam.Checked = false;
-			toolsStrip_OrthographicCam.Checked = true;
-
 			if (_modelPanel.CurrentViewport.ViewType != ViewportProjection.Orthographic)
 			{
-				_modelPanel.ResetCamera();
-				_modelPanel.CurrentViewport.ViewType = ViewportProjection.Orthographic;
+				UpdateViewportProjection(ViewportProjection.Orthographic);
+
+				//toolsStrip_PerspectiveCam.Checked = false;
+				//toolsStrip_OrthographicCam.Checked = true;
+
+				//_modelPanel.ResetCamera();
+				//_modelPanel.CurrentViewport.ViewType = ViewportProjection.Orthographic;
 			}
 		}
 		// BrawlCrate Toggle viewer
@@ -3692,25 +3732,30 @@ namespace System.Windows.Forms
 			if (_updating)
 				return;
 
+			
 			switch (_modelPanel.CurrentViewport.ViewType)
 			{
 				case ViewportProjection.Perspective:
 				{
-					_modelPanel.ResetCamera();
-					_modelPanel.CurrentViewport.ViewType = ViewportProjection.Orthographic;
+					UpdateViewportProjection(ViewportProjection.Orthographic);
 
-					toolsStrip_TogglePerspectiveOrthographicCam.Text = "Orthographic";
-					toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Perspective.";
+					//_modelPanel.ResetCamera();
+					//_modelPanel.CurrentViewport.ViewType = ViewportProjection.Orthographic;
+
+					//toolsStrip_TogglePerspectiveOrthographicCam.Text = "Orthographic";
+					//toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Perspective.";
 
 					break;
 				}
-				case ViewportProjection.Orthographic:
+				default:
 				{
-					_modelPanel.ResetCamera();
-					_modelPanel.CurrentViewport.ViewType = ViewportProjection.Perspective;
+					UpdateViewportProjection(ViewportProjection.Perspective);
 
-					toolsStrip_TogglePerspectiveOrthographicCam.Text = "Perspective";
-					toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Orthographic.";
+					//_modelPanel.ResetCamera();
+					//_modelPanel.CurrentViewport.ViewType = ViewportProjection.Perspective;
+
+					//toolsStrip_TogglePerspectiveOrthographicCam.Text = "Perspective";
+					//toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Orthographic.";
 
 					break;
 				}
@@ -5023,7 +5068,7 @@ namespace System.Windows.Forms
 
 			CopiedLinkPlaneState state = new CopiedLinkPlaneState();
 			state.CreateCopyLinksAndPlanes(ref _selectedLinks, ref _selectedPlanes, 
-			clipboardCopyOptions_IgnoreOtherObjects.Checked, ref _selectedObject);
+			clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.Checked, ref _selectedObject);
 			_copiedStates.Add(state);
 
 			this.SelectionModified();
@@ -5232,7 +5277,7 @@ namespace System.Windows.Forms
 				{
 					CollisionPlane plane = _selectedPlanes[i];
 
-					if (fromCut && this.clipboardCopyOptions_IgnoreOtherObjects.Checked)
+					if (fromCut && this.clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.Checked)
 					{
 						//if (plane._parent == _selectedObject)
 						if (ReferenceEquals(plane._parent, _selectedObject))
@@ -5297,23 +5342,57 @@ namespace System.Windows.Forms
             _modelPanel.Invalidate();
         }
 
-		private void ToolsStrip_Options_ScalePointsWithCamera_DisplayOnly_CheckedChanged(object sender, EventArgs e)
+		private void toolsStrip_Options_ScalePointsWithCamera_DisplayOnly_CheckedChanged(object sender, EventArgs e)
 		{
+			UpdateEditorSettings();
 			_modelPanel.Invalidate();
 		}
-		private void ToolsStrip_Options_ShowZeroZeroPoint_CheckedChanged(object sender, EventArgs e)
+		private void toolsStrip_Options_ScalePointsWithCamera_SelectOnly_CheckedChanged(object sender, EventArgs e)
+		{
+			UpdateEditorSettings();
+		}
+		private void toolsStrip_Options_SelectOnlyIfObjectEquals_CheckedChanged(object sender, EventArgs e)
+		{
+			UpdateEditorSettings();
+		}
+		private void toolsStrip_Options_ShowZeroZeroPoint_CheckedChanged(object sender, EventArgs e)
 		{
 			_modelPanel.Invalidate();
 		} 
-		private void ToolsStrip_Options_TEST_ShowLinkPlacementWindow_CheckedChanged(object sender, EventArgs e)
+		private void toolsStrip_CameraOptions_FitEntireStage_CamLimit_Click(object sender, EventArgs e)
+		{
+			FitEntireStage_CamDeathBoundaryLimit(false);
+		} 
+		private void clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals_CheckedChanged(object sender, EventArgs e)
+		{
+			UpdateEditorSettings();
+		}
+		private void clipboardPasteOptions_PasteRemoveSelected_CheckedChanged(object sender, EventArgs e)
+		{
+			UpdateEditorSettings();
+		}
+		private void clipboardPasteOptions_ActualPointsValuesAreUsed_CheckedChanged(object sender, EventArgs e)
+		{
+			UpdateEditorSettings();
+		}
+
+		private void toolsStrip_Options_TEST_ShowLinkPlacementWindow_CheckedChanged(object sender, EventArgs e)
 		{
 			if (!this.toolsStrip_Options_TEST_ShowLinkPlacementWindow.Checked)
 				this.ShowTempLinkPlacementWindow(false);
 		}
-		private void toolsStrip_CameraOptions_FitEntireStage_CamLimit_Click(object sender, EventArgs e)
+		private void toolsStrip_Options_Settings_Click(object sender, EventArgs e)
 		{
-			FitEntireStage_CamDeathBoundaryLimit(false);
+			if (editorSettings == null)
+			{
+				editorSettings = new CollisionEditorSettings(this);
+				editorSettings.TopMost = true;
+				editorSettings.Visible = true;
+			}
+
+			editorSettings.BringToFront();
 		}
+
 		private void toolsStrip_CameraOptions_FitEntireStage_DeathBoundaryLimit_Click(object sender, EventArgs e)
 		{
 			FitEntireStage_CamDeathBoundaryLimit(true);
@@ -5576,7 +5655,7 @@ namespace System.Windows.Forms
 			}
 		}
 
-		protected void UndoRedoMenu(object sender, EventArgs e)
+		protected void toolsStrip_UndoRedoMenu_Click(object sender, EventArgs e)
 		{
 			if (editorUndoRedoMenu == null)
 			{
@@ -5585,14 +5664,7 @@ namespace System.Windows.Forms
 			}
 
 			editorUndoRedoMenu.Visible = true;
-			editorUndoRedoMenu.Focus();
-		}
-		protected void UpdateUndoRedoMenu()
-		{
-			if (editorUndoRedoMenu != null)
-			{
-				editorUndoRedoMenu.UpdateMenu();
-			}
+			editorUndoRedoMenu.BringToFront();
 		}
 
         protected void selectedObjPropsPanel_CheckUnknown_CheckedChanged(object sender, EventArgs e)
@@ -5708,6 +5780,191 @@ namespace System.Windows.Forms
 			editorUndoRedoMenu.Dispose();
 			editorUndoRedoMenu = null;
 		}
+		public void NullifyEditorSettings()
+		{
+			if (editorSettings == null)
+				return;
+
+			editorSettings.Dispose();
+			editorSettings = null;
+		}
+
+		protected void UpdateUndoRedoMenu()
+		{
+			if (editorUndoRedoMenu != null)
+			{
+				editorUndoRedoMenu.UpdateMenu();
+			}
+		}
+		protected void UpdateEditorSettings()
+		{
+			if (editorSettings != null)
+			{
+				editorSettings.UpdateSettings(false);
+			}
+		}
+
+		public void UpdateViewportProjection(ViewportProjection NewProjection)
+		{
+			_updating = true;
+
+			toolsStrip_PerspectiveCam.Checked = false;
+			toolsStrip_OrthographicCam.Checked = false;
+
+			_modelPanel.ResetCamera();
+			
+			switch (NewProjection)
+			{
+				case ViewportProjection.Perspective:
+				{
+					toolsStrip_TogglePerspectiveOrthographicCam.Text = "Perspective";
+					toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Orthographic.";
+					
+					toolsStrip_PerspectiveCam.Checked = true;
+
+					break;
+				}
+				case ViewportProjection.Orthographic:
+				{
+					toolsStrip_TogglePerspectiveOrthographicCam.Text = "Orthographic";
+					toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Perspective.";
+
+					toolsStrip_OrthographicCam.Checked = true;
+
+					break;
+				}
+
+				default:
+				{
+					toolsStrip_TogglePerspectiveOrthographicCam.Text = NewProjection.ToString();
+					toolsStrip_TogglePerspectiveOrthographicCam.ToolTipText = "Click to change to Perspective.";
+
+					break;
+				}
+			}
+
+			_modelPanel.CurrentViewport.ViewType = NewProjection;
+
+			_updating = false;
+		}
+
+		private void ReadSettings()
+		{
+			CollisionEditorSettings_Data Settings = RetrieveSettings();
+
+			DistributeSettings(Settings);
+
+			// Shows the undo/redo menu when initializing the collision editor.
+			if (Settings.AlwaysShowUndoRedoMenuOnStart)
+			{
+				toolsStrip_UndoRedoMenu_Click(null, null);
+			}
+		}
+
+		public void DistributeSettings(CollisionEditorSettings_Data settings)
+		{
+			if (settings == null || _updating)
+				return;
+
+			_updating = true;
+			 
+			toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.Checked = settings.ScalePointsWithCamera_Display;
+			toolsStrip_Options_ScalePointsWithCamera_SelectOnly.Checked = settings.ScalePointsWithCamera_Selection;
+
+			ToggleViewportButtonVisibility(settings.ReplaceSingleButtonCamPerspectiveWithTwo);
+
+			maxSaveCount = settings.MaximumUndoRedoCount;
+			 
+			clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.Checked = settings.Copy_OnlySelectObjectIfCollisionObjectEquals;
+			clipboardPasteOptions_ActualPointsValuesAreUsed.Checked = settings.Paste_UseWorldLinkValues;
+			clipboardPasteOptions_PasteRemoveSelected.Checked = settings.Paste_RemoveSelectedCollisionsWhenPasting;
+
+			toolsStrip_ShowSpawns.Checked = settings.ShowStagePosition_Spawns;
+			toolsStrip_ShowItems.Checked = settings.ShowStagePosition_Items;
+			toolsStrip_ShowBoundaries.Checked = settings.ShowStagePosition_Boundaries;
+
+			_modelPanel.CurrentViewport.BackgroundColor = (Color)settings.BackgroundColor;
+			UpdateViewportProjection(settings.CurrentViewportProjection);
+
+			UpdateEditorSettings();
+
+			_updating = false;
+		}
+
+		public CollisionEditorSettings_Data RetrieveSettings()
+		{
+			BrawlCrate.Properties.Settings crateSettings = BrawlCrate.Properties.Settings.Default;
+
+			return crateSettings.CollisionEditorSettingsSet ? 
+			crateSettings.CollisionEditorSettings : CollisionEditorSettings_Data.DefaultValues();
+		}
+
+		public void SaveSettings()
+		{
+			BrawlCrate.Properties.Settings.Default.CollisionEditorSettings = CollectSettings();
+			BrawlCrate.Properties.Settings.Default.CollisionEditorSettingsSet = true;
+			BrawlCrate.Properties.Settings.Default.Save();
+		}
+		public CollisionEditorSettings_Data CollectSettings()
+		{
+			CollisionEditorSettings_Data settingsData = RetrieveSettings();
+
+			//if (BrawlCrate.Properties.Settings.Default.CollisionEditorSettings == null)
+			//	settingsData = CollisionEditorSettings_Data.DefaultValues();
+			//else
+			//	settingsData = BrawlCrate.Properties.Settings.Default.CollisionEditorSettings;
+
+			return new CollisionEditorSettings_Data
+			{
+				ScalePointsWithCamera_Display = toolsStrip_Options_ScalePointsWithCamera_DisplayOnly.Checked,
+				ScalePointsWithCamera_Selection = toolsStrip_Options_ScalePointsWithCamera_SelectOnly.Checked,
+				ReplaceSingleButtonCamPerspectiveWithTwo = !toolsStrip_TogglePerspectiveOrthographicCam.Visible,
+
+				OnlySelectObjectIfCollisionObjectEquals = toolsStrip_Options_SelectOnlyIfObjectEquals.Checked,
+				AlwaysShowUndoRedoMenuOnStart = settingsData.AlwaysShowUndoRedoMenuOnStart,
+				MaximumUndoRedoCount = maxSaveCount,
+
+				Copy_OnlySelectObjectIfCollisionObjectEquals = clipboardCopyOptions_OnlySelectObjectIfCollisionObjectEquals.Checked,
+				Paste_UseWorldLinkValues = clipboardPasteOptions_ActualPointsValuesAreUsed.Checked,
+				Paste_RemoveSelectedCollisionsWhenPasting = clipboardPasteOptions_PasteRemoveSelected.Checked,
+
+				BackgroundColor = settingsData.BackgroundColor,
+
+				ShowStagePosition_Spawns = toolsStrip_ShowSpawns.Checked,
+				ShowStagePosition_Items = toolsStrip_ShowItems.Checked,
+				ShowStagePosition_Boundaries = toolsStrip_ShowBoundaries.Checked,
+
+				CurrentViewportProjection = _modelPanel.CurrentViewport.ViewType
+			};
+		}
+
+		public bool CreateCollisionEditorSettingsIfNotExists()
+		{
+			if (BrawlCrate.Properties.Settings.Default.CollisionEditorSettingsSet)
+				return true;
+
+			BrawlCrate.Properties.Settings.Default.CollisionEditorSettings = CollisionEditorSettings_Data.DefaultValues();
+			BrawlCrate.Properties.Settings.Default.CollisionEditorSettingsSet = true;
+			BrawlCrate.Properties.Settings.Default.Save();
+
+			return false;
+		}
+
+		public void UpdateViewportBackgroundColor(int A, int R, int G, int B)
+		{
+			_modelPanel.CurrentViewport.BackgroundColor = Color.FromArgb(A, R, G, B);
+			
+			if (_updating)
+				return;
+
+			_modelPanel.Invalidate();
+		}
+
+		public void ToggleViewportButtonVisibility(bool ShowMultipleButtons)
+		{
+			toolsStrip_TogglePerspectiveOrthographicCam.Visible = !ShowMultipleButtons;
+			toolsStrip_PerspectiveCam.Visible = toolsStrip_OrthographicCam.Visible = ShowMultipleButtons;
+		}
 
 		public static VisualStyles.CheckBoxState TranslateCheckState(CheckState State)
 		{
@@ -5739,7 +5996,7 @@ namespace System.Windows.Forms
 	}
 
 	// A state that reports on what it had in Undo and Redo.
-	// Useful for Undo/Redo UI to report on.
+	// Useful for Undo/Redo UI to report what kind of state it represents.
 	public enum CollisionStateAction
 	{
 		// Just moves these objects by a unit to the desired direction
@@ -5805,14 +6062,8 @@ namespace System.Windows.Forms
 				// the rectangle (selection rectangle) up.
 				if (@object.CollisionObjectColorRepresentation.A > 0.0f)
 				{
-					//int A = @object.CollisionObjectColorRepresentation.A;
-					//int R = @object.CollisionObjectColorRepresentation.R;
-					//int G = @object.CollisionObjectColorRepresentation.G;
-					//int B = @object.CollisionObjectColorRepresentation.B;
-
 					// Making an attempt in saving memory in the most basic way.
 					SolidBrush rectanglecolor = new SolidBrush(CollisionEditor.convertColor4ToDrawingColor(@object.CollisionObjectColorRepresentation));
-					//SolidBrush rectanglecolor = new SolidBrush(Color.FromArgb(A, R, G, B));
 					g.FillRectangle(rectanglecolor, b);
 					// Try disposing the brush now that we do not need it anymore.
 					rectanglecolor.Dispose();

@@ -1,19 +1,24 @@
-using BrawlCrate.NodeWrappers;
-using BrawlCrate.UI;
-using BrawlCrate.UI.Model_Previewer.ModelEditControl;
-using BrawlLib.Internal;
-using BrawlLib.Internal.Audio;
-using BrawlLib.Internal.IO;
-using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using BrawlLib.Modeling.Collada;
 using System.Collections.Specialized;
+
+using BrawlCrate.NodeWrappers;
+using BrawlCrate.UI;
+using BrawlCrate.UI.Model_Previewer.ModelEditControl;
+using BrawlCrate.UI.Collision_Editor;
+
+using BrawlLib.Internal;
+using BrawlLib.Internal.Audio;
+using BrawlLib.Internal.IO;
+using BrawlLib.Internal.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.Modeling.Collada;
+
+
 #if !DEBUG
 using System.Configuration;
 #endif
@@ -256,6 +261,13 @@ Full changelog and documentation can be viewed from the help menu.";
                 Properties.Settings.Default.APILoadersBlacklist = new StringCollection();
                 Properties.Settings.Default.Save();
             }
+
+			if (Properties.Settings.Default.CollisionEditorSettings == null)
+			{
+				Properties.Settings.Default.CollisionEditorSettings = CollisionEditorSettings_Data.DefaultValues();
+				Properties.Settings.Default.CollisionEditorSettingsSet = true;
+                Properties.Settings.Default.Save();
+			}
 
             try
             {

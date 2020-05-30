@@ -932,12 +932,20 @@ namespace BrawlLib.SSBB.ResourceNodes
 			if (renderInfo != null && renderInfo.ScaleLink && renderInfo.Camera != null)
 			{
 				ScaleBy = GetCamScaledDistance(renderInfo.Camera);
+
+				ScaleBy -= 2.5f;
+
+				if (ScaleBy < 0.05f)
+					ScaleBy = 0.05f;
 			}
+
+			float multF = mult * ScaleBy;
+			//System.Diagnostics.Trace.WriteLine($"ScaleBy Value: {ScaleBy.ToString()} | multF: {mult.ToString()}");
 
 			GL.Disable(EnableCap.CullFace);
             TKContext.DrawBox(
-                new Vector3(v._x - mult * BoxRadius, v._y - mult * BoxRadius, LineWidth),
-                new Vector3(v._x + mult * BoxRadius, v._y + mult * BoxRadius, -LineWidth));
+                new Vector3(v._x - multF * BoxRadius, v._y - multF * BoxRadius, LineWidth),
+                new Vector3(v._x + multF * BoxRadius, v._y + multF * BoxRadius, -LineWidth));
             GL.Enable(EnableCap.CullFace);
         }
 

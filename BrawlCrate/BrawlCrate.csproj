@@ -295,6 +295,7 @@
     <PackageReference Include="IronPython" Version="2.7.9" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="mscorlib" />
     <Reference Include="OpenTK">
       <HintPath>..\BrawlLib\OpenTK.dll</HintPath>
     </Reference>
@@ -306,6 +307,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="UI\TreeViewMS.cs">
       <SubType>Component</SubType>
@@ -324,7 +326,7 @@
     <Compile Update="UI\CloneSoundDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\CollisionEditorOld.cs">
+    <Compile Update="UI\Collision Editor\CollisionEditorOld.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UI\CollisionForm.cs">
@@ -382,7 +384,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="UI\CollisionEditorOld.resx">
+    <EmbeddedResource Update="UI\Collision Editor\CollisionEditorOld.resx">
       <DependentUpon>CollisionEditorOld.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
