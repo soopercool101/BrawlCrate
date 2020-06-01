@@ -113,9 +113,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.main_bottomPanel.Controls.Add(this.ResetButton);
 			this.main_bottomPanel.Controls.Add(this.OkayButton);
 			this.main_bottomPanel.Dock = DockStyle.Bottom;
-			this.main_bottomPanel.Location = new System.Drawing.Point(0, 419);
+			this.main_bottomPanel.Location = new Point(0, 419);
 			this.main_bottomPanel.Name = "main_bottomPanel";
-			this.main_bottomPanel.Size = new System.Drawing.Size(352, 35);
+			this.main_bottomPanel.Size = new Size(352, 35);
 			this.main_bottomPanel.TabIndex = 0;
 			// 
 			// tabC (Tab Control)
@@ -123,10 +123,10 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.tabC.Controls.Add(this.GEN);
 			this.tabC.Controls.Add(this.COPYPASTE);
 			this.tabC.Dock = DockStyle.Fill;
-			this.tabC.Location = new System.Drawing.Point(0, 0);
+			this.tabC.Location = new Point(0, 0);
 			this.tabC.Name = "tabC";
 			this.tabC.SelectedIndex = 0;
-			this.tabC.Size = new System.Drawing.Size(352, 419);
+			this.tabC.Size = new Size(352, 419);
 			this.tabC.TabIndex = 1;
 			// 
 			// GEN (General Tab Page)
@@ -138,10 +138,10 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN.Controls.Add(this.GEN_Check_AlwaysShowUndoRedoMenuOnStart);
 			this.GEN.Controls.Add(this.GEN_maxUndoRedo_Value);
 			this.GEN.Controls.Add(this.GEN_maxUndoRedo_Label);
-			this.GEN.Location = new System.Drawing.Point(4, 22);
+			this.GEN.Location = new Point(4, 22);
 			this.GEN.Name = "GEN";
 			this.GEN.Padding = new Padding(3);
-			this.GEN.Size = new System.Drawing.Size(344, 393);
+			this.GEN.Size = new Size(344, 393);
 			this.GEN.TabIndex = 0;
 			this.GEN.Text = "General";
 			this.GEN.UseVisualStyleBackColor = true;
@@ -150,10 +150,10 @@ namespace BrawlCrate.UI.Collision_Editor
 			// 
 			this.COPYPASTE.Controls.Add(this.PASTE_GB_Paste);
 			this.COPYPASTE.Controls.Add(this.COPY_GB_Copy);
-			this.COPYPASTE.Location = new System.Drawing.Point(4, 22);
+			this.COPYPASTE.Location = new Point(4, 22);
 			this.COPYPASTE.Name = "COPYPASTE";
 			this.COPYPASTE.Padding = new Padding(3);
-			this.COPYPASTE.Size = new System.Drawing.Size(344, 393);
+			this.COPYPASTE.Size = new Size(344, 393);
 			this.COPYPASTE.TabIndex = 1;
 			this.COPYPASTE.Text = "Copy/Paste Options";
 			this.COPYPASTE.UseVisualStyleBackColor = true;
@@ -162,9 +162,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// OkayButton 
 			// 
 			this.OkayButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-			this.OkayButton.Location = new System.Drawing.Point(271, 6);
+			this.OkayButton.Location = new Point(271, 6);
 			this.OkayButton.Name = "OkayButton";
-			this.OkayButton.Size = new System.Drawing.Size(75, 23);
+			this.OkayButton.Size = new Size(75, 23);
 			this.OkayButton.TabIndex = 0;
 			this.OkayButton.Text = "&Okay";
 			this.OkayButton.UseVisualStyleBackColor = true;
@@ -173,9 +173,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// ResetButton
 			// 
 			this.ResetButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-			this.ResetButton.Location = new System.Drawing.Point(6, 6);
+			this.ResetButton.Location = new Point(6, 6);
 			this.ResetButton.Name = "ResetButton";
-			this.ResetButton.Size = new System.Drawing.Size(75, 23);
+			this.ResetButton.Size = new Size(75, 23);
 			this.ResetButton.TabIndex = 0;
 			this.ResetButton.Text = "&Reset";
 			this.ResetButton.UseVisualStyleBackColor = true;
@@ -187,9 +187,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_GB_Scaling.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			this.GEN_GB_Scaling.Controls.Add(this.GEN_GB_Scaling_Selection);
 			this.GEN_GB_Scaling.Controls.Add(this.GEN_GB_Scaling_Display);
-			this.GEN_GB_Scaling.Location = new System.Drawing.Point(6, 6);
+			this.GEN_GB_Scaling.Location = new Point(6, 6);
 			this.GEN_GB_Scaling.Name = "GEN_GB_Scaling";
-			this.GEN_GB_Scaling.Size = new System.Drawing.Size(332, 43);
+			this.GEN_GB_Scaling.Size = new Size(332, 43);
 			this.GEN_GB_Scaling.TabIndex = 3;
 			this.GEN_GB_Scaling.TabStop = false;
 			this.GEN_GB_Scaling.Text = "Scale Points With Camera";
@@ -197,9 +197,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_GB_Scaling_Display
 			// 
 			this.GEN_GB_Scaling_Display.AutoSize = true;
-			this.GEN_GB_Scaling_Display.Location = new System.Drawing.Point(6, 19);
+			this.GEN_GB_Scaling_Display.Location = new Point(6, 19);
 			this.GEN_GB_Scaling_Display.Name = "GEN_GB_Scaling_Display";
-			this.GEN_GB_Scaling_Display.Size = new System.Drawing.Size(60, 17);
+			this.GEN_GB_Scaling_Display.Size = new Size(60, 17);
 			this.GEN_GB_Scaling_Display.TabIndex = 2;
 			this.GEN_GB_Scaling_Display.Text = "Display";
 			this.GEN_GB_Scaling_Display.UseVisualStyleBackColor = true;
@@ -208,9 +208,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_GB_Scaling_Selection
 			// 
 			this.GEN_GB_Scaling_Selection.AutoSize = true;
-			this.GEN_GB_Scaling_Selection.Location = new System.Drawing.Point(149, 19);
+			this.GEN_GB_Scaling_Selection.Location = new Point(149, 19);
 			this.GEN_GB_Scaling_Selection.Name = "GEN_GB_Scaling_Selection";
-			this.GEN_GB_Scaling_Selection.Size = new System.Drawing.Size(70, 17);
+			this.GEN_GB_Scaling_Selection.Size = new Size(70, 17);
 			this.GEN_GB_Scaling_Selection.TabIndex = 2;
 			this.GEN_GB_Scaling_Selection.Text = "Selection";
 			this.GEN_GB_Scaling_Selection.UseVisualStyleBackColor = true;
@@ -224,8 +224,8 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_GB_Viewport.Controls.Add(this.GEN_GB_Viewport_DefaultProjection);
 			this.GEN_GB_Viewport.Controls.Add(this.GEN_GB_Viewport_DefaultProjectionLabel);
 			this.GEN_GB_Viewport.Controls.Add(this.GEN_GB_Viewport_Colors);
-			this.GEN_GB_Viewport.Location = new System.Drawing.Point(6, 52);
-			this.GEN_GB_Viewport.Size = new System.Drawing.Size(332, 120);
+			this.GEN_GB_Viewport.Location = new Point(6, 52);
+			this.GEN_GB_Viewport.Size = new Size(332, 120);
 			this.GEN_GB_Viewport.Name = "GEN_GB_Viewport";
 			this.GEN_GB_Viewport.TabIndex = 3;
 			this.GEN_GB_Viewport.TabStop = false;
@@ -234,9 +234,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_GB_Viewport_DefaultProjection
 			//
 			this.GEN_GB_Viewport_DefaultProjection.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			this.GEN_GB_Viewport_DefaultProjection.Location = new System.Drawing.Point(79, 19);
+			this.GEN_GB_Viewport_DefaultProjection.Location = new Point(79, 19);
 			this.GEN_GB_Viewport_DefaultProjection.Name = "GEN_GB_Viewport_DefaultProjection";
-			this.GEN_GB_Viewport_DefaultProjection.Size = new System.Drawing.Size(241, 19);
+			this.GEN_GB_Viewport_DefaultProjection.Size = new Size(241, 19);
 			this.GEN_GB_Viewport_DefaultProjection.TabIndex = 3;
 			this.GEN_GB_Viewport_DefaultProjection.TabStop = true;
 			this.GEN_GB_Viewport_DefaultProjection.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -245,11 +245,11 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_GB_Viewport_DefaultProjectionLabel
 			//
 			this.GEN_GB_Viewport_DefaultProjectionLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-			this.GEN_GB_Viewport_DefaultProjectionLabel.Location = new System.Drawing.Point(10, 19);
+			this.GEN_GB_Viewport_DefaultProjectionLabel.Location = new Point(10, 19);
 			this.GEN_GB_Viewport_DefaultProjectionLabel.BorderStyle = BorderStyle.FixedSingle;
 			this.GEN_GB_Viewport_DefaultProjectionLabel.Name = "GEN_GB_Viewport_DefaultProjectionLabel";
-			this.GEN_GB_Viewport_DefaultProjectionLabel.Size = new System.Drawing.Size(70, 21);
-			this.GEN_GB_Viewport_DefaultProjectionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.GEN_GB_Viewport_DefaultProjectionLabel.Size = new Size(70, 21);
+			this.GEN_GB_Viewport_DefaultProjectionLabel.TextAlign = ContentAlignment.MiddleRight;
 			this.GEN_GB_Viewport_DefaultProjectionLabel.TabIndex = 3;
 			this.GEN_GB_Viewport_DefaultProjectionLabel.Text = "Projection:";
 			this.GEN_GB_Viewport_DefaultProjectionLabel.TabStop = false;
@@ -263,9 +263,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_GB_Viewport_Colors.Controls.Add(this.GEN_GB_Viewport_Colors__Color);
 			this.GEN_GB_Viewport_Colors.Controls.Add(this.GEN_GB_Viewport_Colors__ColorText);
 			this.GEN_GB_Viewport_Colors.Controls.Add(this.GEN_GB_Viewport_Colors__Label);
-			this.GEN_GB_Viewport_Colors.Location = new System.Drawing.Point(6, 48);
+			this.GEN_GB_Viewport_Colors.Location = new Point(6, 48);
 			this.GEN_GB_Viewport_Colors.Name = "GEN_GB_Viewport_Colors";
-			this.GEN_GB_Viewport_Colors.Size = new System.Drawing.Size(320, 66);
+			this.GEN_GB_Viewport_Colors.Size = new Size(320, 66);
 			this.GEN_GB_Viewport_Colors.TabIndex = 3;
 			this.GEN_GB_Viewport_Colors.TabStop = false;
 			this.GEN_GB_Viewport_Colors.Text = "Colors";
@@ -274,20 +274,20 @@ namespace BrawlCrate.UI.Collision_Editor
 			// 
 			this.GEN_GB_Viewport_Colors_Background_Color.AutoSize = false;
 			this.GEN_GB_Viewport_Colors_Background_Color.BorderStyle = BorderStyle.FixedSingle;
-			this.GEN_GB_Viewport_Colors_Background_Color.Location = new System.Drawing.Point(258, 19);
+			this.GEN_GB_Viewport_Colors_Background_Color.Location = new Point(269, 19);
 			this.GEN_GB_Viewport_Colors_Background_Color.Name = "GEN_GB_Viewport_Colors_Background_Color";
-			this.GEN_GB_Viewport_Colors_Background_Color.Size = new System.Drawing.Size(40, 20);
+			this.GEN_GB_Viewport_Colors_Background_Color.Size = new Size(40, 20);
 			this.GEN_GB_Viewport_Colors_Background_Color.TabIndex = 0;
 			this.GEN_GB_Viewport_Colors_Background_Color.Click += GEN_GB_Viewport_Colors_Background_UpdateColor_Click;
 			// 
 			// GEN_GB_Viewport_Colors_Background_ColorText
 			// 
 			this.GEN_GB_Viewport_Colors_Background_ColorText.AutoSize = false;
-			this.GEN_GB_Viewport_Colors_Background_ColorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.GEN_GB_Viewport_Colors_Background_ColorText.TextAlign = ContentAlignment.MiddleCenter;
 			this.GEN_GB_Viewport_Colors_Background_ColorText.BorderStyle = BorderStyle.FixedSingle;
-			this.GEN_GB_Viewport_Colors_Background_ColorText.Location = new System.Drawing.Point(79, 19);
+			this.GEN_GB_Viewport_Colors_Background_ColorText.Location = new Point(79, 19);
 			this.GEN_GB_Viewport_Colors_Background_ColorText.Name = "GEN_GB_Viewport_Colors_Background_ColorText";
-			this.GEN_GB_Viewport_Colors_Background_ColorText.Size = new System.Drawing.Size(179, 20);
+			this.GEN_GB_Viewport_Colors_Background_ColorText.Size = new Size(191, 20);
 			this.GEN_GB_Viewport_Colors_Background_ColorText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
 			this.GEN_GB_Viewport_Colors_Background_ColorText.TabIndex = 0;
 			this.GEN_GB_Viewport_Colors_Background_ColorText.Text = "";
@@ -296,11 +296,11 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_GB_Viewport_Colors_Background_Label
 			// 
 			this.GEN_GB_Viewport_Colors_Background_Label.AutoSize = false;
-			this.GEN_GB_Viewport_Colors_Background_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.GEN_GB_Viewport_Colors_Background_Label.TextAlign = ContentAlignment.MiddleRight;
 			this.GEN_GB_Viewport_Colors_Background_Label.BorderStyle = BorderStyle.FixedSingle;
-			this.GEN_GB_Viewport_Colors_Background_Label.Location = new System.Drawing.Point(10, 19);
+			this.GEN_GB_Viewport_Colors_Background_Label.Location = new Point(10, 19);
 			this.GEN_GB_Viewport_Colors_Background_Label.Name = "GEN_GB_Viewport_Colors_Background_Label";
-			this.GEN_GB_Viewport_Colors_Background_Label.Size = new System.Drawing.Size(70, 20);
+			this.GEN_GB_Viewport_Colors_Background_Label.Size = new Size(70, 20);
 			this.GEN_GB_Viewport_Colors_Background_Label.TabIndex = 0;
 			this.GEN_GB_Viewport_Colors_Background_Label.Text = "Background:";
 			this.GEN_GB_Viewport_Colors_Background_Label.Click += GEN_GB_Viewport_Colors_Background_UpdateColor_Click;
@@ -309,20 +309,20 @@ namespace BrawlCrate.UI.Collision_Editor
 			// 
 			this.GEN_GB_Viewport_Colors__Color.AutoSize = false;
 			this.GEN_GB_Viewport_Colors__Color.BorderStyle = BorderStyle.FixedSingle;
-			this.GEN_GB_Viewport_Colors__Color.Location = new System.Drawing.Point(258, 38);
+			this.GEN_GB_Viewport_Colors__Color.Location = new Point(269, 38);
 			this.GEN_GB_Viewport_Colors__Color.Name = "GEN_GB_Viewport_Colors__Color";
-			this.GEN_GB_Viewport_Colors__Color.Size = new System.Drawing.Size(40, 20);
+			this.GEN_GB_Viewport_Colors__Color.Size = new Size(40, 20);
 			this.GEN_GB_Viewport_Colors__Color.TabIndex = 0;
 			//this.GEN_GB_Viewport_Colors__Color.Click += GEN_GB_Viewport_Colors__UpdateColor_Click;
 			// 
 			// GEN_GB_Viewport_Colors__ColorText
 			// 
 			this.GEN_GB_Viewport_Colors__ColorText.AutoSize = false;
-			this.GEN_GB_Viewport_Colors__ColorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.GEN_GB_Viewport_Colors__ColorText.TextAlign = ContentAlignment.MiddleCenter;
 			this.GEN_GB_Viewport_Colors__ColorText.BorderStyle = BorderStyle.FixedSingle;
-			this.GEN_GB_Viewport_Colors__ColorText.Location = new System.Drawing.Point(79, 38);
+			this.GEN_GB_Viewport_Colors__ColorText.Location = new Point(79, 38);
 			this.GEN_GB_Viewport_Colors__ColorText.Name = "GEN_GB_Viewport_Colors__ColorText";
-			this.GEN_GB_Viewport_Colors__ColorText.Size = new System.Drawing.Size(179, 20);
+			this.GEN_GB_Viewport_Colors__ColorText.Size = new Size(191, 20);
 			this.GEN_GB_Viewport_Colors__ColorText.Font = new Font("Courier New", 9F, FontStyle.Regular, GraphicsUnit.Point, (byte)0);
 			this.GEN_GB_Viewport_Colors__ColorText.TabIndex = 0;
 			this.GEN_GB_Viewport_Colors__ColorText.Text = "";
@@ -331,11 +331,11 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_GB_Viewport_Colors__Label
 			// 
 			this.GEN_GB_Viewport_Colors__Label.AutoSize = false;
-			this.GEN_GB_Viewport_Colors__Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.GEN_GB_Viewport_Colors__Label.TextAlign = ContentAlignment.MiddleRight;
 			this.GEN_GB_Viewport_Colors__Label.BorderStyle = BorderStyle.FixedSingle;
-			this.GEN_GB_Viewport_Colors__Label.Location = new System.Drawing.Point(10, 38);
+			this.GEN_GB_Viewport_Colors__Label.Location = new Point(10, 38);
 			this.GEN_GB_Viewport_Colors__Label.Name = "GEN_GB_Viewport_Colors__Label";
-			this.GEN_GB_Viewport_Colors__Label.Size = new System.Drawing.Size(70, 20);
+			this.GEN_GB_Viewport_Colors__Label.Size = new Size(70, 20);
 			this.GEN_GB_Viewport_Colors__Label.TabIndex = 0;
 			this.GEN_GB_Viewport_Colors__Label.Text = "";
 			//this.GEN_GB_Viewport_Colors__Label.Click += GEN_GB_Viewport_Colors__UpdateColor_Click;
@@ -345,9 +345,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_Check_OnlySelectIfObjectEquals (Check - CheckBox)
 			// 
 			this.GEN_Check_OnlySelectIfObjectEquals.AutoSize = true;
-			this.GEN_Check_OnlySelectIfObjectEquals.Location = new System.Drawing.Point(6, 180);
+			this.GEN_Check_OnlySelectIfObjectEquals.Location = new Point(6, 180);
 			this.GEN_Check_OnlySelectIfObjectEquals.Name = "GEN_Check_OnlySelectIfObjectEquals";
-			this.GEN_Check_OnlySelectIfObjectEquals.Size = new System.Drawing.Size(279, 17);
+			this.GEN_Check_OnlySelectIfObjectEquals.Size = new Size(279, 17);
 			this.GEN_Check_OnlySelectIfObjectEquals.TabIndex = 2;
 			this.GEN_Check_OnlySelectIfObjectEquals.Text = "Only select if collision object equals to selected object";
 			this.GEN_Check_OnlySelectIfObjectEquals.UseVisualStyleBackColor = true;
@@ -356,9 +356,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_Check_ReplaceSingleButtonCam
 			// 
 			this.GEN_Check_ReplaceSingleButtonCam.AutoSize = true;
-			this.GEN_Check_ReplaceSingleButtonCam.Location = new System.Drawing.Point(6, 203);
+			this.GEN_Check_ReplaceSingleButtonCam.Location = new Point(6, 203);
 			this.GEN_Check_ReplaceSingleButtonCam.Name = "GEN_Check_ReplaceSingleButtonCam";
-			this.GEN_Check_ReplaceSingleButtonCam.Size = new System.Drawing.Size(270, 30);
+			this.GEN_Check_ReplaceSingleButtonCam.Size = new Size(270, 30);
 			this.GEN_Check_ReplaceSingleButtonCam.TabIndex = 2;
 			this.GEN_Check_ReplaceSingleButtonCam.Text = "Replace single-button camera perspective type with\r\ntwo buttons";
 			this.GEN_Check_ReplaceSingleButtonCam.UseVisualStyleBackColor = true;
@@ -367,9 +367,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_Check_AlwaysShowUndoRedoMenuOnStart
 			// 
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.AutoSize = true;
-			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.Location = new System.Drawing.Point(6, 236);
+			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.Location = new Point(6, 236);
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.Name = "GEN_Check_AlwaysShowUndoRedoMenuOnStart";
-			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.Size = new System.Drawing.Size(270, 30);
+			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.Size = new Size(270, 30);
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.TabIndex = 2;
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.Text = "Always show Undo/Redo Menu at start";
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.UseVisualStyleBackColor = true;
@@ -381,9 +381,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// GEN_maxUndoRedo_Label
 			// 
 			this.GEN_maxUndoRedo_Label.AutoSize = true;
-			this.GEN_maxUndoRedo_Label.Location = new System.Drawing.Point(4, 367);
+			this.GEN_maxUndoRedo_Label.Location = new Point(4, 367);
 			this.GEN_maxUndoRedo_Label.Name = "GEN_maxUndoRedo_Label";
-			this.GEN_maxUndoRedo_Label.Size = new System.Drawing.Size(145, 13);
+			this.GEN_maxUndoRedo_Label.Size = new Size(145, 13);
 			this.GEN_maxUndoRedo_Label.TabIndex = 0;
 			this.GEN_maxUndoRedo_Label.Text = "Maximum Undo/Redo Count:";
 			// 
@@ -391,11 +391,11 @@ namespace BrawlCrate.UI.Collision_Editor
 			// 
 			this.GEN_maxUndoRedo_Value.Integer = true;
 			this.GEN_maxUndoRedo_Value.Integral = true;
-			this.GEN_maxUndoRedo_Value.Location = new System.Drawing.Point(155, 364);
+			this.GEN_maxUndoRedo_Value.Location = new Point(155, 364);
 			this.GEN_maxUndoRedo_Value.MaximumValue = 3.402823E+38F;
 			this.GEN_maxUndoRedo_Value.MinimumValue = 0;
 			this.GEN_maxUndoRedo_Value.Name = "GEN_maxUndoRedo_Value";
-			this.GEN_maxUndoRedo_Value.Size = new System.Drawing.Size(66, 20);
+			this.GEN_maxUndoRedo_Value.Size = new Size(66, 20);
 			this.GEN_maxUndoRedo_Value.TabIndex = 1;
 			this.GEN_maxUndoRedo_Value.Text = "0";
 			this.GEN_maxUndoRedo_Value.ValueChanged += GEN_maxUndoRedo_Value_ValueChanged;
@@ -406,9 +406,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// 
 			this.COPY_GB_Copy.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			this.COPY_GB_Copy.Controls.Add(this.COPY_GB_Copy_CB_SelObjectEquals);
-			this.COPY_GB_Copy.Location = new System.Drawing.Point(6, 6);
+			this.COPY_GB_Copy.Location = new Point(6, 6);
 			this.COPY_GB_Copy.Name = "COPY_GB_Copy";
-			this.COPY_GB_Copy.Size = new System.Drawing.Size(332, 42);
+			this.COPY_GB_Copy.Size = new Size(332, 42);
 			this.COPY_GB_Copy.TabIndex = 4;
 			this.COPY_GB_Copy.TabStop = false;
 			this.COPY_GB_Copy.Text = "Copy Options";
@@ -416,9 +416,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// COPY_GB_Copy_CB_SelObjectEquals
 			// 
 			this.COPY_GB_Copy_CB_SelObjectEquals.AutoSize = true;
-			this.COPY_GB_Copy_CB_SelObjectEquals.Location = new System.Drawing.Point(6, 19);
+			this.COPY_GB_Copy_CB_SelObjectEquals.Location = new Point(6, 19);
 			this.COPY_GB_Copy_CB_SelObjectEquals.Name = "COPY_GB_Copy_CB_SelObjectEquals";
-			this.COPY_GB_Copy_CB_SelObjectEquals.Size = new System.Drawing.Size(258, 17);
+			this.COPY_GB_Copy_CB_SelObjectEquals.Size = new Size(258, 17);
 			this.COPY_GB_Copy_CB_SelObjectEquals.TabIndex = 2;
 			this.COPY_GB_Copy_CB_SelObjectEquals.Text = "Copy if selected object equals to collision\'s object";
 			this.COPY_GB_Copy_CB_SelObjectEquals.UseVisualStyleBackColor = true;
@@ -430,9 +430,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.PASTE_GB_Paste.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			this.PASTE_GB_Paste.Controls.Add(this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting);
 			this.PASTE_GB_Paste.Controls.Add(this.PASTE_GB_Paste_CB_UseWorldLinkValues);
-			this.PASTE_GB_Paste.Location = new System.Drawing.Point(6, 54);
+			this.PASTE_GB_Paste.Location = new Point(6, 54);
 			this.PASTE_GB_Paste.Name = "PASTE_GB_Paste";
-			this.PASTE_GB_Paste.Size = new System.Drawing.Size(332, 66);
+			this.PASTE_GB_Paste.Size = new Size(332, 66);
 			this.PASTE_GB_Paste.TabIndex = 4;
 			this.PASTE_GB_Paste.TabStop = false;
 			this.PASTE_GB_Paste.Text = "Paste Options";
@@ -440,9 +440,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// PASTE_GB_Paste_CB_RemSelCollsWhenPasting
 			// 
 			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.AutoSize = true;
-			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.Location = new System.Drawing.Point(6, 42);
+			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.Location = new Point(6, 42);
 			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.Name = "checkBox3";
-			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.Size = new System.Drawing.Size(220, 17);
+			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.Size = new Size(220, 17);
 			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.TabIndex = 2;
 			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.Text = "Remove selected collisions when pasting";
 			this.PASTE_GB_Paste_CB_RemSelCollsWhenPasting.UseVisualStyleBackColor = true;
@@ -451,9 +451,9 @@ namespace BrawlCrate.UI.Collision_Editor
 			// PASTE_GB_Paste_CB_UseWorldLinkValues
 			// 
 			this.PASTE_GB_Paste_CB_UseWorldLinkValues.AutoSize = true;
-			this.PASTE_GB_Paste_CB_UseWorldLinkValues.Location = new System.Drawing.Point(6, 19);
+			this.PASTE_GB_Paste_CB_UseWorldLinkValues.Location = new Point(6, 19);
 			this.PASTE_GB_Paste_CB_UseWorldLinkValues.Name = "PASTE_GB_Paste_CB_UseWorldLinkValues";
-			this.PASTE_GB_Paste_CB_UseWorldLinkValues.Size = new System.Drawing.Size(239, 17);
+			this.PASTE_GB_Paste_CB_UseWorldLinkValues.Size = new Size(239, 17);
 			this.PASTE_GB_Paste_CB_UseWorldLinkValues.TabIndex = 2;
 			this.PASTE_GB_Paste_CB_UseWorldLinkValues.Text = "Use actual link values instead of raw variants";
 			this.PASTE_GB_Paste_CB_UseWorldLinkValues.UseVisualStyleBackColor = true;
@@ -463,12 +463,16 @@ namespace BrawlCrate.UI.Collision_Editor
 			// 
 			// BrawlCrate_Settings_CollisionEditor
 			// 
-			this.ClientSize = new System.Drawing.Size(352, 454);
+			this.ClientSize = new Size(352, 454);
 			this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+			this.Icon = BrawlLib.Properties.Resources.Icon;
 			this.Controls.Add(this.tabC);
 			this.Controls.Add(this.main_bottomPanel);
 			this.Name = "CollisionEditorSettings";
 			this.Text = "Collision Editor Settings";
+			this.MinimumSize = this.Size;
+			this.MaximumSize = this.Size;
+			this.MaximizeBox = false;
 
 			this.main_bottomPanel.ResumeLayout(false);
 			

@@ -31,7 +31,6 @@ namespace System.Windows.Forms
         protected SplitContainer mainSplitter;
         protected SplitContainer collisionControlSplitter;
 
-        protected CheckBox visibilityCheckPanel_ShowAllModels;
         protected Panel selectedPlanePropsPanel;
         protected Label selectedPlanePropsPanel_MaterialLabel;
         protected Label selectedPlanePropsPanel_TypeLabel;
@@ -144,6 +143,7 @@ namespace System.Windows.Forms
         protected ToolStripSeparator modelTreeMenu_Sep1;
 
         protected Panel visibilityCheckPanel;
+        protected CheckBox visibilityCheckPanel_ShowAllModels;
         protected CheckBox visibilityCheckPanel_ShowPolygons;
         protected CheckBox visibilityCheckPanel_ShowBones;
 
@@ -5883,6 +5883,10 @@ namespace System.Windows.Forms
 			toolsStrip_ShowItems.Checked = settings.ShowStagePosition_Items;
 			toolsStrip_ShowBoundaries.Checked = settings.ShowStagePosition_Boundaries;
 
+			visibilityCheckPanel_ShowAllModels.Checked = settings.VisibilityCheck_ShowAllModels;
+			visibilityCheckPanel_ShowPolygons.CheckState = (CheckState)settings.VisibilityCheck_ShowPolygons;
+			visibilityCheckPanel_ShowBones.Checked = settings.VisibilityCheck_ShowBones;
+
 			_modelPanel.CurrentViewport.BackgroundColor = (Color)settings.BackgroundColor;
 			UpdateViewportProjection(settings.CurrentViewportProjection);
 
@@ -5928,11 +5932,15 @@ namespace System.Windows.Forms
 				Paste_UseWorldLinkValues = clipboardPasteOptions_ActualPointsValuesAreUsed.Checked,
 				Paste_RemoveSelectedCollisionsWhenPasting = clipboardPasteOptions_PasteRemoveSelected.Checked,
 
-				BackgroundColor = settingsData.BackgroundColor,
-
 				ShowStagePosition_Spawns = toolsStrip_ShowSpawns.Checked,
 				ShowStagePosition_Items = toolsStrip_ShowItems.Checked,
 				ShowStagePosition_Boundaries = toolsStrip_ShowBoundaries.Checked,
+
+				VisibilityCheck_ShowAllModels = visibilityCheckPanel_ShowAllModels.Checked,
+				VisibilityCheck_ShowPolygons = (byte)visibilityCheckPanel_ShowPolygons.CheckState,
+				VisibilityCheck_ShowBones = visibilityCheckPanel_ShowBones.Checked,
+
+				BackgroundColor = settingsData.BackgroundColor,
 
 				CurrentViewportProjection = _modelPanel.CurrentViewport.ViewType
 			};

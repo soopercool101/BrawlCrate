@@ -60,7 +60,7 @@ namespace System.Windows.Forms
 			this.CollisionStateInfoButton.Click += CollisionStateInfoButton_Click;
 
 			// ClearHistoryButton
-			this.ClearHistoryButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			this.ClearHistoryButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			this.ClearHistoryButton.Enabled = false;
 			this.ClearHistoryButton.Location = new Drawing.Point(137, 328);
 			this.ClearHistoryButton.Size = new Drawing.Size(122, 24);
@@ -70,14 +70,14 @@ namespace System.Windows.Forms
 			this.ClearHistoryButton.Click += ClearHistoryButton_Click;
 
 			// UndoRedoSetMaxLimitButton
-			this.UndoRedoSetMaxLimitButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-			this.UndoRedoSetMaxLimitButton.Enabled = true;
+			this.UndoRedoSetMaxLimitButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			this.UndoRedoSetMaxLimitButton.Enabled = false;
 			this.UndoRedoSetMaxLimitButton.Location = new Drawing.Point(11, 328);
 			this.UndoRedoSetMaxLimitButton.Size = new Drawing.Size(122, 24);
 			this.UndoRedoSetMaxLimitButton.TabIndex = 2;
 			this.UndoRedoSetMaxLimitButton.Text = "Set Max Undo Limit";
 			this.UndoRedoSetMaxLimitButton.Name = "UndoRedoSetMaxLimitButton";
-			this.UndoRedoSetMaxLimitButton.Click += UndoRedoSetMaxLimitButton_Click; ;
+			this.UndoRedoSetMaxLimitButton.Click += UndoRedoSetMaxLimitButton_Click;
 
 			// CollisionEditor_UndoRedoMenu
 			this.ClientSize = new Drawing.Size(270, 362);
@@ -125,8 +125,6 @@ namespace System.Windows.Forms
 		}
 		private void UndoRedoListBox_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			//Trace.WriteLine("KeyChar: " + e.KeyChar+" | KeyInt: "+(int)e.KeyChar);
-
 			if (e.KeyChar == 13)
 			{
 				UpdateCollisionEditorStates(UndoRedoListBox.UndoRedoSteps, UndoRedoListBox.CurrentUndoRedoIndex);
@@ -167,21 +165,16 @@ namespace System.Windows.Forms
 		{
 			// Clear all items and reset their ordering.
 			UndoRedoListBox.Items.Clear();
-			//UndoRedoListBox.CurrentHoveredIndex = -1;
 			UndoRedoListBox.CurrentUndoRedoIndex = -1;
 
 			// Retrieve all available undo/redo items and start creating items
 			// for the list box.
 			List<CollisionState> UndoStates = parentEditor.undoSaves;
-			List<CollisionState> RedoStates = parentEditor.redoSaves;
 
-			List<CollisionState> CombinedStates = new List<CollisionState>();
-			CombinedStates.AddRange(UndoStates);
-			//CombinedStates.AddRange(RedoStates);
 
 
 			string displayText = "Initial State";
-			CollisionState State = (CombinedStates.Count > 0 && CombinedStates[0] != null) ? CombinedStates[0] : null;
+			CollisionState State = (UndoStates.Count > 0 && UndoStates[0] != null) ? UndoStates[0] : null;
 
 			if (State != null && State._tag != null && State._tag.GetType() == typeof(CollisionStateAction))
 			{
@@ -196,15 +189,11 @@ namespace System.Windows.Forms
 			UndoRedoListBox.Items.Add(CollisionStateItem);
 
 
-			Trace.WriteLine(String.Format("UndoStates: {0} | RedoStates: {1} | Combined: {2}", UndoStates.Count, RedoStates.Count, CombinedStates.Count));
-
-			for (int i = 0; i < CombinedStates.Count; ++i)
+			for (int i = 0; i < UndoStates.Count; ++i)
 			{
-				State = CombinedStates[i];
-				//CollisionState State = CombinedStates[i];
+				State = UndoStates[i];
 
 				displayText = "Unknown";
-				//string displayText = "Unknown";
 
 				if (State._tag != null && State._tag.GetType() == typeof(CollisionStateAction))
 				{
@@ -213,7 +202,6 @@ namespace System.Windows.Forms
 				}
 
 				CollisionStateItem = new StateItem();
-				//StateItem CollisionStateItem = new StateItem();
 				CollisionStateItem.State = State;
 				CollisionStateItem.StateDisplay = displayText;
 				CollisionStateItem.isRedo = i >= UndoStates.Count;
@@ -223,10 +211,7 @@ namespace System.Windows.Forms
 
 			// Set the current undo/redo index based on the CollisionEditor form.
 			int ToIndex = parentEditor.saveIndex;
-			//int ToIndex = parentEditor.saveIndex - 1;
-
 			UndoRedoListBox.CurrentUndoRedoIndex = ToIndex;
-			//Trace.WriteLine("CurrentUndoRedoIndex: " + ToIndex + " | ParentEditorSaveIndex: " + parentEditor.saveIndex);
 
 			ClearHistoryButton.Enabled = UndoRedoListBox.Items.Count > 0;
 
