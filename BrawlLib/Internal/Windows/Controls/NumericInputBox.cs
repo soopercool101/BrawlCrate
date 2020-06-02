@@ -288,9 +288,10 @@ namespace BrawlLib.Internal.Windows.Controls
                 return;
             }
 
-            if (Text == "")
+            if (string.IsNullOrWhiteSpace(Text))
             {
-                val = float.NaN;
+				_value = float.NaN;
+				return;
             }
             else if (!_integral)
             {

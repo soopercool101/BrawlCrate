@@ -30,6 +30,10 @@ namespace BrawlCrate.UI.Collision_Editor
 
 		public ViewportProjection CurrentViewportProjection;
 
+		public bool VisibilityCheck_ShowBones;
+		public byte VisibilityCheck_ShowPolygons;
+		public bool VisibilityCheck_ShowAllModels;
+
 		public void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
 			FieldInfo[] fields = GetType().GetFields();
@@ -65,6 +69,10 @@ namespace BrawlCrate.UI.Collision_Editor
 				ShowStagePosition_Spawns = true,
 				ShowStagePosition_Items = false,
 				ShowStagePosition_Boundaries = true,
+
+				VisibilityCheck_ShowAllModels = true,
+				VisibilityCheck_ShowPolygons = 1,
+				VisibilityCheck_ShowBones = false,
 
 				CurrentViewportProjection = ViewportProjection.Perspective
 			};
