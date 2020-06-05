@@ -52,7 +52,6 @@ namespace BrawlCrate.UI
             Icon = BrawlLib.Properties.Resources.Icon;
             MinimizeBox = false;
             Name = "CollisionForm";
-            //Text = $"{Program.AssemblyTitleShort} - Collision Editor";
 
 			ResumeLayout(false);
         }

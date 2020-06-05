@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 
 using BrawlLib.Imaging;
+using BrawlLib.Internal;
 using BrawlLib.OpenGL;
 
 namespace BrawlCrate.UI.Collision_Editor
@@ -33,6 +34,16 @@ namespace BrawlCrate.UI.Collision_Editor
 		public bool VisibilityCheck_ShowBones;
 		public byte VisibilityCheck_ShowPolygons;
 		public bool VisibilityCheck_ShowAllModels;
+
+		public Vector3 PerspectiveCameraLocation;
+		public Vector3 PerspectiveCameraRotation;
+		// Z value of orthographic location is used for scale as there's no such thing such as Z.
+		// Only X and Y are actual values.
+		public Vector3 OrthographicCameraLocation;
+
+		public bool ResetPerspectiveOrthographicCameraToZeroZero;
+		public bool ShowRectangleInZeroZero;
+
 
 		public void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
@@ -74,7 +85,14 @@ namespace BrawlCrate.UI.Collision_Editor
 				VisibilityCheck_ShowPolygons = 1,
 				VisibilityCheck_ShowBones = false,
 
-				CurrentViewportProjection = ViewportProjection.Perspective
+				CurrentViewportProjection = ViewportProjection.Perspective,
+
+				PerspectiveCameraLocation = new Vector3(0, 0, 0),
+				PerspectiveCameraRotation = new Vector3(0, 0, 0),
+				OrthographicCameraLocation = new Vector3(0, 0, 0),
+				ResetPerspectiveOrthographicCameraToZeroZero = false,
+
+				ShowRectangleInZeroZero = false
 			};
 		}
 	}
