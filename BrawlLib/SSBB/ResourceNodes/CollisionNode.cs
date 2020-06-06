@@ -1227,6 +1227,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 alpha = 0.5f;
             }
+            else if (IsSuperSoft)
+            {
+                alpha = 0.65f;
+            }
 
             Vector2 l = _linkLeft.Value;
             Vector2 r = _linkRight.Value;
