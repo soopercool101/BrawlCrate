@@ -31,9 +31,6 @@ namespace BrawlCrate.UI.Collision_Editor
 		private GroupBox GEN_GB_Scaling;
 		private CheckBox GEN_GB_Scaling_Display;
 		private CheckBox GEN_GB_Scaling_Selection;
-		private CheckBox GEN_Check_OnlySelectIfObjectEquals;
-		private CheckBox GEN_Check_ReplaceSingleButtonCam;
-		private CheckBox GEN_Check_AlwaysShowUndoRedoMenuOnStart;
 		private GroupBox GEN_GB_Viewport;
 		private ComboBox GEN_GB_Viewport_DefaultProjection;
 		private Label GEN_GB_Viewport_DefaultProjectionLabel;
@@ -44,6 +41,10 @@ namespace BrawlCrate.UI.Collision_Editor
 		private Panel GEN_GB_Viewport_Colors__Color;
 		private Label GEN_GB_Viewport_Colors__ColorText;
 		private Label GEN_GB_Viewport_Colors__Label;
+		private CheckBox GEN_Check_OnlySelectIfObjectEquals;
+		private CheckBox GEN_Check_ReplaceSingleButtonCam;
+		private CheckBox GEN_Check_AlwaysShowUndoRedoMenuOnStart;
+		private CheckBox GEN_Check_ResetPerspectiveOrthoCamToZeroZero;
 		
 		private GroupBox COPY_GB_Copy;
 		private CheckBox COPY_GB_Copy_CB_SelObjectEquals;
@@ -67,9 +68,6 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_GB_Scaling = new GroupBox();
 			this.GEN_GB_Scaling_Display = new CheckBox();
 			this.GEN_GB_Scaling_Selection = new CheckBox();
-			this.GEN_Check_OnlySelectIfObjectEquals = new CheckBox();
-			this.GEN_Check_ReplaceSingleButtonCam = new CheckBox();
-			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart = new CheckBox();
 			this.GEN_maxUndoRedo_Label = new Label();
 			this.GEN_maxUndoRedo_Value = new NumericInputBox();
 			this.GEN_GB_Viewport = new GroupBox();
@@ -82,6 +80,10 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_GB_Viewport_Colors__Color = new Panel();
 			this.GEN_GB_Viewport_Colors__ColorText = new Label();
 			this.GEN_GB_Viewport_Colors__Label = new Label();
+			this.GEN_Check_OnlySelectIfObjectEquals = new CheckBox();
+			this.GEN_Check_ReplaceSingleButtonCam = new CheckBox();
+			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart = new CheckBox();
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero = new CheckBox();
 
 			this.COPY_GB_Copy = new GroupBox();
 			this.COPY_GB_Copy_CB_SelObjectEquals = new CheckBox();
@@ -136,6 +138,7 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN.Controls.Add(this.GEN_Check_OnlySelectIfObjectEquals);
 			this.GEN.Controls.Add(this.GEN_Check_ReplaceSingleButtonCam);
 			this.GEN.Controls.Add(this.GEN_Check_AlwaysShowUndoRedoMenuOnStart);
+			this.GEN.Controls.Add(this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero);
 			this.GEN.Controls.Add(this.GEN_maxUndoRedo_Value);
 			this.GEN.Controls.Add(this.GEN_maxUndoRedo_Label);
 			this.GEN.Location = new Point(4, 22);
@@ -229,7 +232,7 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_GB_Viewport.Name = "GEN_GB_Viewport";
 			this.GEN_GB_Viewport.TabIndex = 3;
 			this.GEN_GB_Viewport.TabStop = false;
-			this.GEN_GB_Viewport.Text = "All Viewports";
+			this.GEN_GB_Viewport.Text = "Viewport";
 			//
 			// GEN_GB_Viewport_DefaultProjection
 			//
@@ -374,6 +377,17 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.Text = "Always show Undo/Redo Menu at start";
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.UseVisualStyleBackColor = true;
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.CheckedChanged += GEN_Check_AlwaysShowUndoRedoMenuOnStart_CheckedChanged;
+			// 
+			// GEN_Check_AlwaysShowUndoRedoMenuOnStart
+			// 
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.AutoSize = true;
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.Location = new Point(6, 259);
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.Name = "GEN_Check_ResetPerspectiveOrthoCamToZeroZero";
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.Size = new Size(270, 30);
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.TabIndex = 2;
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.Text = "Reset Perspective and Orthographic to its default location\r\n(will not affect saved camera points)";
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.UseVisualStyleBackColor = true;
+			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.CheckedChanged += GEN_Check_ResetPerspectiveOrthoCamToZeroZero_CheckedChanged;
 
 			
 			
@@ -528,7 +542,7 @@ namespace BrawlCrate.UI.Collision_Editor
 		private void ResetButton_Click(object sender, EventArgs e)
 		{
 			if (MessageBox.Show(this, "Are you sure you want to reset all settings to its default state?", "Reset Settings",
-				MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != DialogResult.OK)
+				MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
 			{
 				return;
 			}
@@ -648,6 +662,19 @@ namespace BrawlCrate.UI.Collision_Editor
 			Properties.Settings.Default.CollisionEditorSettings.AlwaysShowUndoRedoMenuOnStart = GEN_Check_AlwaysShowUndoRedoMenuOnStart.Checked;
 			Properties.Settings.Default.Save();
 		}
+		private void GEN_Check_ResetPerspectiveOrthoCamToZeroZero_CheckedChanged(object sender, EventArgs e)
+		{
+			if (Updating)
+				return;
+
+			ParentEditor.CreateCollisionEditorSettingsIfNotExists();
+
+			ParentEditor.toolsStrip_CameraOptions_SaveCameraPoint.Enabled =
+			!(Properties.Settings.Default.CollisionEditorSettings.ResetPerspectiveOrthographicCameraToZeroZero = 
+			GEN_Check_ResetPerspectiveOrthoCamToZeroZero.Checked);
+			
+			Properties.Settings.Default.Save();
+		}
 
 		private void COPY_GB_Copy_CB_SelObjectEquals_CheckedChanged(object sender, EventArgs e)
 		{
@@ -719,6 +746,8 @@ namespace BrawlCrate.UI.Collision_Editor
 				// To combat the issue in the viewport being updated when we are just updating the settings, we add the event after it.
 				this.GEN_GB_Viewport_DefaultProjection.SelectedIndexChanged += GEN_GB_Viewport_DefaultProjection_SelectedIndexChanged;
 			}
+
+			GEN_Check_ResetPerspectiveOrthoCamToZeroZero.Checked = settings.ResetPerspectiveOrthographicCameraToZeroZero;
 
 			UpdateViewportBGColor();
 

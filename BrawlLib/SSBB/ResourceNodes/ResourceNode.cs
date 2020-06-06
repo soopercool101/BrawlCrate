@@ -901,32 +901,36 @@ namespace BrawlLib.SSBB.ResourceNodes
             Replaced?.Invoke(this);
         }
 
-        #endregion
+		#endregion
 
-        #region Export
+		#region Export
 
-        public virtual unsafe void Export(string outPath)
-        {
-            Rebuild(); //Apply changes the user has made by rebuilding.
+		public virtual unsafe void Export(string outPath)
+		{
+			Rebuild(); //Apply changes the user has made by rebuilding.
 #if !DEBUG
-            try
-            {
+			try
+			{
 #endif
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
-                FileShare.ReadWrite, 8, FileOptions.SequentialScan))
-            {
-                Export(stream);
-            }
+			using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+					FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+			{
+				Export(stream);
+			}
 #if !DEBUG
-            }
+			}
+			catch (UnauthorizedAccessException)
+			{
+				MessageBox.Show("Unable to write file due to lack of access.");
+			}
             catch
             {
                 MessageBox.Show("Unable to open file for write access.");
             }
 #endif
-        }
+		}
 
-        public void Export(FileStream outStream)
+		public void Export(FileStream outStream)
         {
             if (WorkingSource.Length != 0)
             {
@@ -975,9 +979,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        #endregion
+#endregion
 
-        #region Rebuilding
+#region Rebuilding
 
         //Combines node and children into single (temp) file map.
         //Does nothing if node is not dirty or rebuild is not forced.
@@ -1149,9 +1153,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        #endregion
+#endregion
 
-        #region Size Calculation
+#region Size Calculation
 
         //Calculate size to be passed to parent node.
         //If node is compressed, rebuild now and compress to temp file. Return temp file size.
@@ -1179,9 +1183,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             return WorkingUncompressed.Length;
         }
 
-        #endregion
+#endregion
 
-        #region Merging
+#region Merging
 
         //Combines deviated tree into backing tree. Backing tree will have moved completely to a temporary file.
         //All references to backing tree will be gone! Including file handles.
@@ -1232,9 +1236,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        #endregion
+#endregion
 
-        #region Child Node Searches
+#region Child Node Searches
 
         public static ResourceNode[] FindAllSubNodes(ResourceNode root)
         {
@@ -1637,9 +1641,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             return null;
         }
 
-        #endregion
+#endregion
 
-        #region MD5
+#region MD5
 
         private static MD5CryptoServiceProvider _md5provider;
 
@@ -1702,7 +1706,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        #endregion
+#endregion
 
         public ResourceNode PrevSibling()
         {
