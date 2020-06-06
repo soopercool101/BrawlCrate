@@ -320,11 +320,39 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Collision Binding")]
         [DisplayName("Linked Model")]
-        public string LinkModel => _modelName;
+        public string LinkModel
+        {
+            get => _modelName;
+            set
+            {
+                _modelName = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Collision Binding")]
+        [DisplayName("Linked Bone Index")]
+        public int LinkBoneIndex
+        {
+            get => _boneIndex;
+            set
+            {
+                _boneIndex = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Category("Collision Binding")]
         [DisplayName("Linked Bone")]
-        public string LinkBone => _boneName;
+        public string LinkBone
+        {
+            get => _boneName;
+            set
+            {
+                _boneName = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Category("Flags")]
         public bool UnknownFlag
