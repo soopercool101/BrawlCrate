@@ -378,7 +378,7 @@ namespace BrawlCrate.UI.Collision_Editor
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.UseVisualStyleBackColor = true;
 			this.GEN_Check_AlwaysShowUndoRedoMenuOnStart.CheckedChanged += GEN_Check_AlwaysShowUndoRedoMenuOnStart_CheckedChanged;
 			// 
-			// GEN_Check_AlwaysShowUndoRedoMenuOnStart
+			// GEN_Check_ResetPerspectiveOrthoCamToZeroZero
 			// 
 			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.AutoSize = true;
 			this.GEN_Check_ResetPerspectiveOrthoCamToZeroZero.Location = new Point(6, 259);
