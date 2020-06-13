@@ -885,6 +885,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         alpha = 0.5f;
                     }
+                    else if (IsSuperSoft)
+                    {
+                        alpha = 0.75f;
+                    }
 
                     if (!p.IsFallThrough)
                     {
