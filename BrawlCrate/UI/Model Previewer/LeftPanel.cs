@@ -1580,19 +1580,19 @@ namespace BrawlCrate.UI.Model_Previewer
                 try
                 {
 #endif
-                if (_openDlg.ShowDialog() == DialogResult.OK)
-                {
-                    string fileName = _openDlg.FileName;
-                    node.Replace(fileName);
-                    _updating = true;
-                    _selectedTexture.Reload(_selectedTexture.Model,
-                        _selectedTexture.Parent?.Name.EndsWith("_ExtMtl") ?? false);
-                    lstTextures.SetItemCheckState(index, CheckState.Checked);
-                    lstTextures.SetSelected(index, false);
-                    _updating = false;
+                    if (_openDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        string fileName = _openDlg.FileName;
+                        node.Replace(fileName);
+                        _updating = true;
+                        _selectedTexture.Reload(_selectedTexture.Model,
+                            _selectedTexture.Parent?.Name.EndsWith("_ExtMtl") ?? false);
+                        lstTextures.SetItemCheckState(index, CheckState.Checked);
+                        lstTextures.SetSelected(index, false);
+                        _updating = false;
 
-                    _mainWindow.ModelPanel.Invalidate();
-                }
+                        _mainWindow.ModelPanel.Invalidate();
+                    }
 #if !DEBUG
                 }
                 catch (Exception ex)

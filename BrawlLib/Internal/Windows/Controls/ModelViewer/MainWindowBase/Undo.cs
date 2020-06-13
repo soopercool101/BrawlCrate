@@ -3,6 +3,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+
 #if DEBUG
 using System;
 

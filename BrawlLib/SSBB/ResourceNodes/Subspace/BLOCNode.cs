@@ -1,9 +1,9 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace;
 using System;
-
 #if !DEBUG
 using System.ComponentModel;
+
 #endif
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -120,6 +120,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
 #endif
         public int Buffer { get; set; }
+
         private uint _rawTag { get; set; }
 
         protected virtual string baseName => UncompressedSource.Tag;

@@ -306,6 +306,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
 #endif
         public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);
+
         [Browsable(false)] public bool IsCompressed => _compression != CompressionType.None;
 
         //Properties or compression have changed
@@ -912,20 +913,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             Rebuild(); //Apply changes the user has made by rebuilding.
 #if !DEBUG
-			try
-			{
-#endif
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
-                FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+            try
             {
-                Export(stream);
-            }
+#endif
+                using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                    FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+                {
+                    Export(stream);
+                }
 #if !DEBUG
-			}
-			catch (UnauthorizedAccessException)
-			{
-				MessageBox.Show("Unable to write file due to lack of access.");
-			}
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Unable to write file due to lack of access.");
+            }
             catch
             {
                 MessageBox.Show("Unable to open file for write access.");

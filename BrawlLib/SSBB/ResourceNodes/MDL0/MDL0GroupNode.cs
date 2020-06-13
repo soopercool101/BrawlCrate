@@ -6,9 +6,9 @@ using BrawlLib.Wii.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 #if !DEBUG
 using System.ComponentModel;
+
 #endif
 
 namespace BrawlLib.SSBB.ResourceNodes

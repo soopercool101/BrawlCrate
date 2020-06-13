@@ -117,7 +117,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 #if !DEBUG
         [Browsable(false)]
 #endif
-        [Category("Custom My Music")] public byte TrackListID { get; set; }
+        [Category("Custom My Music")]
+        public byte TrackListID { get; set; }
 
         private byte _sliderSetting;
 

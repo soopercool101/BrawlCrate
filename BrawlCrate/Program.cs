@@ -136,9 +136,9 @@ Full changelog and documentation can be viewed from the help menu.";
                 if (Directory.Exists(settingsPath))
                 {
                     if (MessageBox.Show(
-                            "Settings corruption has been detected. You can either reset your settings or fix them manually.\n" +
-                            "Would you like to reset them? Note that if they are not reset the program may not start correctly.",
-                            "BrawlCrate", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                        "Settings corruption has been detected. You can either reset your settings or fix them manually.\n" +
+                        "Would you like to reset them? Note that if they are not reset the program may not start correctly.",
+                        "BrawlCrate", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                     {
                         foreach (DirectoryInfo d in Directory.CreateDirectory(settingsPath).GetDirectories())
                         {
@@ -217,9 +217,9 @@ Full changelog and documentation can be viewed from the help menu.";
             ApiLoaderPath = Path.Combine(ApiPath, "Loaders");
 
 #if !DEBUG
-			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-			Application.ThreadException += Application_ThreadException;
-			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            Application.ThreadException += Application_ThreadException;
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 #endif
 
             // Set default values for settings immediately, to prevent possible errors down the line
@@ -632,20 +632,20 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-            if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
-            {
+                if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    MainForm.Instance.RecentFilesHandler.AddFile(path);
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize input file.");
+                }
+
                 MainForm.Instance.Reset();
-                MainForm.Instance.RecentFilesHandler.AddFile(path);
-                return true;
-            }
-
-            _rootPath = null;
-            if (showErrors)
-            {
-                MessageBox.Show("Unable to recognize input file.");
-            }
-
-            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -692,19 +692,19 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-            if ((_rootNode = NodeFactory.FromFile(null, path)) != null)
-            {
+                if ((_rootNode = NodeFactory.FromFile(null, path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize template file.");
+                }
+
                 MainForm.Instance.Reset();
-                return true;
-            }
-
-            _rootPath = null;
-            if (showErrors)
-            {
-                MessageBox.Show("Unable to recognize template file.");
-            }
-
-            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -727,11 +727,11 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-            if (FolderDlg.ShowDialog() == DialogResult.OK)
-            {
-                fileName = FolderDlg.SelectedPath;
-                return true;
-            }
+                if (FolderDlg.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = FolderDlg.SelectedPath;
+                    return true;
+                }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -785,20 +785,20 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-            if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
-            {
+                if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    MainForm.Instance.RecentFilesHandler.AddFile(path);
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize input file.");
+                }
+
                 MainForm.Instance.Reset();
-                MainForm.Instance.RecentFilesHandler.AddFile(path);
-                return true;
-            }
-
-            _rootPath = null;
-            if (showErrors)
-            {
-                MessageBox.Show("Unable to recognize input file.");
-            }
-
-            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -860,37 +860,38 @@ Full changelog and documentation can be viewed from the help menu.";
                 try
                 {
 #endif
-                if (_rootPath == null)
-                {
-                    return SaveAs();
-                }
+                    if (_rootPath == null)
+                    {
+                        return SaveAs();
+                    }
 
-                bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
-                if (!force && !_rootNode.IsDirty)
-                {
-                    MessageBox.Show("No changes have been made.");
+                    bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
+                    if (!force && !_rootNode.IsDirty)
+                    {
+                        MessageBox.Show("No changes have been made.");
+                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                        return false;
+                    }
+
+                    if (!(_rootNode is FolderNode))
+                    {
+                        _rootNode.Merge(force);
+                    }
+
+                    _rootNode.Export(_rootPath);
+                    _rootNode.IsDirty = false;
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                    return false;
-                }
-
-                if (!(_rootNode is FolderNode))
-                {
-                    _rootNode.Merge(force);
-                }
-
-                _rootNode.Export(_rootPath);
-                _rootNode.IsDirty = false;
-                MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                return true;
+                    return true;
 #if !DEBUG
                 }
                 catch (Exception x)
                 {
                     if (MessageBox.Show(x.Message + "\n\nWould you like to report this as an error?", "Save Error",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                     {
                         throw;
                     }
+
                     _rootNode.SignalPropertyChange();
                 }
 #endif
@@ -917,11 +918,11 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-            if (OpenDlg.ShowDialog() == DialogResult.OK)
-            {
-                fileName = OpenDlg.FileName;
-                return true;
-            }
+                if (OpenDlg.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = OpenDlg.FileName;
+                    return true;
+                }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -940,11 +941,11 @@ Full changelog and documentation can be viewed from the help menu.";
             try
             {
 #endif
-            if (MultiFileOpenDlg.ShowDialog() == DialogResult.OK)
-            {
-                fileNames = MultiFileOpenDlg.FileNames;
-                return fileNames.Length;
-            }
+                if (MultiFileOpenDlg.ShowDialog() == DialogResult.OK)
+                {
+                    fileNames = MultiFileOpenDlg.FileNames;
+                    return fileNames.Length;
+                }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -1054,23 +1055,23 @@ Full changelog and documentation can be viewed from the help menu.";
                 try
                 {
 #endif
-                GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
-                string path = w.Export();
-                if (path != null)
-                {
-                    _rootPath = path;
-                    RootNode._origPath = path;
-                    if (w is FolderWrapper)
+                    GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
+                    string path = w.Export();
+                    if (path != null)
                     {
-                        w.Resource.Name = w.Resource.FileName;
-                        w.Text = w.Resource.Name;
-                    }
+                        _rootPath = path;
+                        RootNode._origPath = path;
+                        if (w is FolderWrapper)
+                        {
+                            w.Resource.Name = w.Resource.FileName;
+                            w.Text = w.Resource.Name;
+                        }
 
-                    MainForm.Instance.UpdateName();
-                    w.Resource.IsDirty = false;
-                    MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                    return true;
-                }
+                        MainForm.Instance.UpdateName();
+                        w.Resource.IsDirty = false;
+                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                        return true;
+                    }
 #if !DEBUG
                 }
                 catch (Exception x)
