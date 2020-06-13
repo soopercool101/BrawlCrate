@@ -747,10 +747,10 @@ namespace BrawlCrate.UI
                     previewPanel2.RenderingTarget = i;
                     newControl = previewPanel2;
                 }
-                else if (node is StageTableNode stageTableNode)
+                else if (node is MultipleInterpretationIAttributeList table && table.NumEntries > 0)
                 {
-                    attributeGrid1.AddRange(stageTableNode.GetPossibleInterpretations());
-                    attributeGrid1.TargetNode = stageTableNode;
+                    attributeGrid1.AddRange(table.GetPossibleInterpretations());
+                    attributeGrid1.TargetNode = table;
                     newControl = attributeGrid1;
                 }
                 else if (node is ASLSEntryNode aslsEntry)
