@@ -13,8 +13,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override Type[] AllowedChildTypes => new[] {typeof(ItmTableNode)};
         public override bool supportsCompression => false;
 
-        internal ItmFreqHeader* Header => (ItmFreqHeader*)WorkingUncompressed.Address;
-        internal ItmFreqTableList* TableList => (ItmFreqTableList*) (WorkingUncompressed.Address + Header->_DataLength - 0x08);
+        internal ItmFreqHeader* Header => (ItmFreqHeader*) WorkingUncompressed.Address;
+
+        internal ItmFreqTableList* TableList =>
+            (ItmFreqTableList*) (WorkingUncompressed.Address + Header->_DataLength - 0x08);
 
         protected override string GetName()
         {
@@ -44,7 +46,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ItmFreqHeader* header = (ItmFreqHeader*)address;
+            ItmFreqHeader* header = (ItmFreqHeader*) address;
             *header = new ItmFreqHeader();
             header->_Length = length;
             int offCount = 0; // save for later;
@@ -78,11 +80,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                             {
                                 int size = item.OnCalculateSize(true);
                                 item.OnRebuild(address + offset, size, true);
-                                offset += (uint)size;
+                                offset += (uint) size;
                                 table._dataSize += (uint) size;
                             }
                         }
                     }
+
                     // Rebuild the table's groups
                     table._offset = offset - ItmFreqHeader.Size;
                     foreach (ResourceNode group in table.Children)
@@ -93,22 +96,24 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             groupOffsets.Add(offset - 0x14);
                         }
-                        offset += (uint)size;
-                        table._dataSize += (uint)size;
+
+                        offset += (uint) size;
+                        table._dataSize += (uint) size;
                     }
                 }
 
                 // Add padding to match vBrawl
                 if (table.HasChildren && (table.NextSibling()?.HasChildren ?? true))
                 {
-                    buint* ptr = (buint*)(address + offset);
+                    buint* ptr = (buint*) (address + offset);
                     ptr[0] = 0;
                     offset += 4;
                 }
             }
 
             header->_OffCount = offCount;
-            header->_DataLength = length - (ItmFreqHeader.Size + (offCount + 2) * 0x04 + "genParamSet".UTF8Length() + 1);
+            header->_DataLength =
+                length - (ItmFreqHeader.Size + (offCount + 2) * 0x04 + "genParamSet".UTF8Length() + 1);
 
             // Finally, rebuild tables
             foreach (ResourceNode table in Children)
@@ -119,31 +124,32 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     tableOffsets.Add(offset - 0x14 - 0x0C);
                 }
-                offset += (uint)size;
+
+                offset += (uint) size;
             }
 
             foreach (uint i in groupOffsets)
             {
-                buint* ptr = (buint*)(address + offset);
+                buint* ptr = (buint*) (address + offset);
                 ptr[0] = i;
                 offset += 4;
             }
 
             foreach (uint i in tableOffsets)
             {
-                buint* ptr = (buint*)(address + offset);
+                buint* ptr = (buint*) (address + offset);
                 ptr[0] = i;
                 offset += 4;
             }
 
             if (tableOffsets.Count > 0)
             {
-                buint* ptr = (buint*)(address + offset);
+                buint* ptr = (buint*) (address + offset);
                 ptr[0] = tableOffsets[0];
                 offset += 4;
             }
 
-            buint* clear = (buint*)(address + offset);
+            buint* clear = (buint*) (address + offset);
             clear[0] = 0;
             offset += 4;
 
@@ -172,6 +178,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             }
                         }
                     }
+
                     if (table.HasChildren && (table.NextSibling()?.HasChildren ?? true))
                     {
                         size += 4;
@@ -198,8 +205,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ItmTableNode : ResourceNode
     {
-        internal ItmFreqOffEntry* Header => (ItmFreqOffEntry*)WorkingUncompressed.Address;
-        public override Type[] AllowedChildTypes => new[] { typeof(ItmTableGroupNode) };
+        internal ItmFreqOffEntry* Header => (ItmFreqOffEntry*) WorkingUncompressed.Address;
+        public override Type[] AllowedChildTypes => new[] {typeof(ItmTableGroupNode)};
         public override ResourceType ResourceFileType => ResourceType.ItemFreqTableNode;
         public override bool supportsCompression => false;
 
@@ -226,12 +233,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal uint _offset = 0;
         internal uint _dataSize = 0;
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ItmFreqOffEntry* header = (ItmFreqOffEntry*)address;
+            ItmFreqOffEntry* header = (ItmFreqOffEntry*) address;
             *header = new ItmFreqOffEntry();
             header->_offset = HasChildren ? _offset : 0;
-            header->_count = (uint)Children.Count;
+            header->_count = (uint) Children.Count;
         }
 
         public override int OnCalculateSize(bool force)
@@ -242,8 +250,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ItmTableGroupNode : ResourceNode
     {
-        internal ItmFreqGroup* Header => (ItmFreqGroup*)WorkingUncompressed.Address;
-        public override Type[] AllowedChildTypes => new[] { typeof(ItmFreqEntryNode) };
+        internal ItmFreqGroup* Header => (ItmFreqGroup*) WorkingUncompressed.Address;
+        public override Type[] AllowedChildTypes => new[] {typeof(ItmFreqEntryNode)};
         public override ResourceType ResourceFileType => ResourceType.ItemFreqTableGroupNode;
         public override bool supportsCompression => false;
 
@@ -328,12 +336,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         internal uint _offset = 0;
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ItmFreqGroup* header = (ItmFreqGroup*)address;
+            ItmFreqGroup* header = (ItmFreqGroup*) address;
             *header = new ItmFreqGroup();
             header->_entryOffset = _offset;
-            header->_entryCount = (uint)Children.Count;
+            header->_entryCount = (uint) Children.Count;
             header->_unknown0 = _unk0;
             header->_unknown1 = _unk1;
             header->_unknown2 = _unk2;
@@ -348,7 +357,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ItmFreqEntryNode : ResourceNode
     {
-        internal ItmFreqEntry* Header => (ItmFreqEntry*)WorkingUncompressed.Address;
+        internal ItmFreqEntry* Header => (ItmFreqEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ItemFreqEntryNode;
         public override bool supportsCompression => false;
 

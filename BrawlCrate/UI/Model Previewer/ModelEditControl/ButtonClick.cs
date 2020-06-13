@@ -516,6 +516,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                         newColl.AddChild(o);
                     }
                 }
+
                 newCollisions.Add(newColl);
             }
 
@@ -549,6 +550,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                     i++;
                 }
             }
+
             _updating = false;
 
             ModelPanel.Invalidate();

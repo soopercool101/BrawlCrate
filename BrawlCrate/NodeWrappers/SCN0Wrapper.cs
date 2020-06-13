@@ -173,9 +173,10 @@ namespace BrawlCrate.NodeWrappers
                         MessageBox.Show("The selected SCN0 file could not be read.");
                         return;
                     }
+
                     ext.Populate();
                     ext.CameraGroup.Children.Clear();
-                    foreach (ResourceNode n in ((SCN0Node)Resource).CameraGroup.Children)
+                    foreach (ResourceNode n in ((SCN0Node) Resource).CameraGroup.Children)
                     {
                         ext.CameraGroup.AddChild(n);
                     }

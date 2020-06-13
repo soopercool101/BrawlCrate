@@ -596,14 +596,14 @@ namespace BrawlLib.Internal.PowerPCAssembly
             _operands.Add(new PPCOperand(this, OperandType.VAL, 22,
                 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
             _operands.Add(new PPCOperand(this, OperandType.VAL, 21,
-                0x1));                                                                  //  [4] Hint 0=unlikely, 1=likely (BI)
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7));        //  [5] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));              //  [6] Compare Type        (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [7] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [8] Branch Options (BI)
+                0x1)); //  [4] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [5] Condition Register  (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [6] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [7] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [8] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [9] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [10] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [11] Link
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [10] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [11] Link
         }
 
         public override string GetName()
@@ -830,14 +830,14 @@ namespace BrawlLib.Internal.PowerPCAssembly
             _operands.Add(new PPCOperand(this, OperandType.VAL, 22,
                 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
             _operands.Add(new PPCOperand(this, OperandType.VAL, 21,
-                0x1));                                                                  //  [4] Hint 0=unlikely, 1=likely (BI)
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7));        //  [5] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));              //  [6] Compare Type        (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [7] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [8] Branch Options (BI)
+                0x1)); //  [4] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [5] Condition Register  (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [6] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [7] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [8] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [9] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [10] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [11] Link
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [10] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [11] Link
         }
 
         public override string GetName()
@@ -996,10 +996,10 @@ namespace BrawlLib.Internal.PowerPCAssembly
             _operands.Add(new PPCOperand(this, OperandType.VAL, 23,
                 0x1)); //  [2] Ignore Ctr                      (BI)
             _operands.Add(new PPCOperand(this, OperandType.VAL, 22,
-                0x1));                                                           //  [3] Ctr State 0=not zero, 1=zero    (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));       //  [-] Hint 0=unlikely, 1=likely (BI)
+                0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [-] Hint 0=unlikely, 1=likely (BI)
             _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [4] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));       //  [5] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [5] Compare Type        (BO)
 
             _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [6] Branch Inputs (BO)
             _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [7] Branch Options (BI)

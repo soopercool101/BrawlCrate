@@ -96,6 +96,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return 0;
             }
+
             FileDataBlock fileBlock = block as FileDataBlock;
             if (fileBlock != null)
             {
@@ -492,6 +493,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 return null;
             }
+
             for (DataBlock block = _dataMap.FirstBlock; block != null; block = block.NextBlock)
             {
                 if (blockOffset <= findOffset && blockOffset + block.Length > findOffset || block.NextBlock == null)

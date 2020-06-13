@@ -218,7 +218,7 @@ namespace BrawlLib.Internal
 
         public string GetUTF8String(uint offset)
         {
-            byte[] bytes = new byte[new string((sbyte*)(this + offset)).Length];
+            byte[] bytes = new byte[new string((sbyte*) (this + offset)).Length];
             for (int i = 0; i < bytes.Length; i++)
             {
                 bytes[i] = (this + offset).Byte;
@@ -245,12 +245,12 @@ namespace BrawlLib.Internal
 
         public uint WriteUTF8String(string s, bool nullTerminated, uint offset)
         {
-            return WriteUTF8String(s, nullTerminated, offset, (uint)(s.UTF8Length() + (nullTerminated ? 1 : 0)));
+            return WriteUTF8String(s, nullTerminated, offset, (uint) (s.UTF8Length() + (nullTerminated ? 1 : 0)));
         }
 
         public uint WriteUTF8String(string s, bool nullTerminated, uint offset, uint size)
         {
-            byte* ptr = (byte*)(this + offset);
+            byte* ptr = (byte*) (this + offset);
             byte[] name = Encoding.UTF8.GetBytes(s);
             for (int j = 0; j < name.Length && j < size; j++)
             {

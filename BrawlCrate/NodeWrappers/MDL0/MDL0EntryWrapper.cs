@@ -53,7 +53,7 @@ namespace BrawlCrate.NodeWrappers
                 default:
                     throw new NotSupportedException("Unsupported type for MDL0 Duplication");
             }
-            
+
             rNode2._name = _resource.Name;
             rNode2.Replace(tempPath);
 

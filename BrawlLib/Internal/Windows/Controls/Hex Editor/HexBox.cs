@@ -953,10 +953,10 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                             {Keys.End, new MessageDelegate(PreProcessWmKeyDown_End)},       // move to end
                             {
                                 Keys.ShiftKey | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftShiftKey)
-                            },                                                                          // begin selection process
+                            }, // begin selection process
                             {Keys.C | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlC)}, // copy 
                             {Keys.X | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlX)}, // cut
-                            {Keys.V | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlV)}  // paste
+                            {Keys.V | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlV)} // paste
                         };
                     }
 

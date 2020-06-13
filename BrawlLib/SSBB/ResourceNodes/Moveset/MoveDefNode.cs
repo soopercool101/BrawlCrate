@@ -882,7 +882,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             "Undefined(0)", "Can drop off side of stage", "Can't drop off side of stage",
                             "Undefined(3)",
-                            "Undefined(4)", "In Air; Can leave stage vertically",
+                            "Undefined(4)", "In Air; Can leave stage vertically"
                         }
                     }
                 }
@@ -2834,7 +2834,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             EventDictionary.Add(0x02050400, new ActionEventInfo(02050400, "Actions 05 Value",
                 "Undefined.",
                 new string[] {"Interrupt ID?", "Status ID?", "Requirement", "Value"},
-                new string[] {"Undefined.", "Undefined.", "Undefined.", "Value applied to the requirement.",},
+                new string[] {"Undefined.", "Undefined.", "Undefined.", "Value applied to the requirement."},
                 "\\name(): Interrupt=\\unhex(\\value(0)), Status ID=\\unhex(\\value(1)), Requirement=\\value(2): \\value(3)",
                 new long[] { }));
 

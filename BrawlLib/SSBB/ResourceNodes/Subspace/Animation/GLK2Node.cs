@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GLK2EntryNode : ResourceNode
     {
-        internal GLK2Entry* Header => (GLK2Entry*)WorkingUncompressed.Address;
+        internal GLK2Entry* Header => (GLK2Entry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private int _unknown0x00;
@@ -42,6 +42,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         [DisplayName("Model Data ID")]
         [Description("File Index to stgposition model to use for this lock.")]
@@ -163,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            GLK2Entry* hdr = (GLK2Entry*)address;
+            GLK2Entry* hdr = (GLK2Entry*) address;
             hdr->_unknown0x00 = _unknown0x00;
             hdr->_modelDataID = _modelDataID;
             hdr->_unkflag2 = _unkflag2;

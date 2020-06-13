@@ -131,7 +131,7 @@ namespace BrawlLib.Modeling
                 _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, BeginMode.Lines),
                 _points = _points == null ? null : new GLPrimitive(_points._indices.Length, BeginMode.Points),
                 _dirty = new bool[] {true, true, true, true, true, true, true, true, true, true, true, true},
-                _primGroups = _primGroups,
+                _primGroups = _primGroups
             };
             Memory.Move(p._indices.Address, _indices.Address, (uint) _indices.Length);
             for (int i = 0; i < 12; i++)

@@ -113,7 +113,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Custom My Music Tracklist", "cmm"),
             new SupportedFileInfo(true, "Alternate Stage Loader Data", "asl"),
             new SupportedFileInfo(true, "Stage Info Parameters", "param"),
-            new SupportedFileInfo(true, "Stage Tracklist", "tlst"), 
+            new SupportedFileInfo(true, "Stage Tracklist", "tlst"),
 
             //The following files are not for direct editing
 

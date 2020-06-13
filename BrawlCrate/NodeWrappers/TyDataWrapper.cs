@@ -7,9 +7,8 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
-
     [NodeWrapper(ResourceType.TrophyList)]
-    class TyDataListWrapper : GenericWrapper
+    internal class TyDataListWrapper : GenericWrapper
     {
         #region Menu
 
@@ -102,7 +101,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.Trophy)]
-    class TyDataListEntryWrapper : GenericWrapper
+    internal class TyDataListEntryWrapper : GenericWrapper
     {
         #region Menu
 
@@ -171,7 +170,7 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             TyDataListEntryWrapper w = GetInstance<TyDataListEntryWrapper>();
-            TyDataListEntryNode entry = (TyDataListEntryNode)w._resource;
+            TyDataListEntryNode entry = (TyDataListEntryNode) w._resource;
             string dir = entry.RootNode.DirectoryName;
             if (entry.RootNode is TyDataNode && File.Exists(Path.Combine(dir, $"{entry.BRRES}.brres")) ||
                 entry.RootNode is ARCNode && new DirectoryInfo(dir).Parent != null && File.Exists(
@@ -200,7 +199,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void OpenBRRES()
         {
-            TyDataListEntryNode entry = (TyDataListEntryNode)Resource;
+            TyDataListEntryNode entry = (TyDataListEntryNode) Resource;
             string dir = Resource.RootNode.DirectoryName;
             string file = Resource.RootNode is ARCNode && new DirectoryInfo(dir).Parent != null
                 ? Path.Combine(new DirectoryInfo(dir).Parent?.FullName ?? "", "toy", "fig", $"{entry.BRRES}.brres")

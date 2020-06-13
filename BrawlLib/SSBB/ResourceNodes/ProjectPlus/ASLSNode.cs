@@ -28,12 +28,13 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
+
             return Header->_count > 0;
         }
 
         public override int OnCalculateSize(bool force)
         {
-            int size = (int)ASLS.HeaderSize;
+            int size = (int) ASLS.HeaderSize;
             foreach (ResourceNode n in Children)
             {
                 size += (int) ASLSEntry.Size + n.Name.Length + 1;
@@ -44,10 +45,10 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ASLS* header = (ASLS*)address;
+            ASLS* header = (ASLS*) address;
             *header = new ASLS();
             header->_tag = ASLS.Tag;
-            header->_count = (ushort)Children.Count;
+            header->_count = (ushort) Children.Count;
             header->_nameOffset = (ushort) (ASLS.HeaderSize + Children.Count * ASLSEntry.Size);
 
             uint offset = ASLS.HeaderSize;
@@ -55,11 +56,12 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             foreach (ResourceNode n in Children)
             {
                 int size = n.CalculateSize(true);
-                ((ASLSEntryNode) n).StrOffset = (ushort)strOffset;
+                ((ASLSEntryNode) n).StrOffset = (ushort) strOffset;
                 n.Rebuild(address + offset, size, true);
-                offset += (uint)size;
+                offset += (uint) size;
                 strOffset += n.Name.UTF8Length() + 1;
             }
+
             foreach (ResourceNode n in Children)
             {
                 offset += address.WriteUTF8String(n.Name, true, offset);
@@ -74,7 +76,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
     public unsafe class ASLSEntryNode : ResourceNode
     {
-        internal ASLSEntry* Header => (ASLSEntry*)WorkingUncompressed.Address;
+        internal ASLSEntry* Header => (ASLSEntry*) WorkingUncompressed.Address;
 
         [TypeConverter(typeof(HexUShortConverter))]
         public ushort ButtonFlags
@@ -113,12 +115,12 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override int OnCalculateSize(bool force)
         {
-            return (int)ASLSEntry.Size;
+            return (int) ASLSEntry.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ASLSEntry* header = (ASLSEntry*)address;
+            ASLSEntry* header = (ASLSEntry*) address;
             *header = new ASLSEntry();
             header->_buttonFlags = _buttonFlags;
             header->_nameOffset = StrOffset;

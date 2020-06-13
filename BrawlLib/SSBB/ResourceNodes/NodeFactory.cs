@@ -86,7 +86,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 DataSource source = new DataSource(map);
 
                 bool supportsCompression = true;
-                if(!(t is null))
+                if (!(t is null))
                 {
                     ResourceNode n = Activator.CreateInstance(t) as ResourceNode;
                     supportsCompression = n?.supportsCompression ?? true;

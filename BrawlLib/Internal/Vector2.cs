@@ -341,9 +341,9 @@ namespace BrawlLib.Internal
             return 1;
         }
 
-		public Vector3 ToVector3()
-		{
-			return new Vector3(_x, _y, 0);
-		}
+        public Vector3 ToVector3()
+        {
+            return new Vector3(_x, _y, 0);
+        }
     }
 }

@@ -5,7 +5,6 @@ using System.Globalization;
 
 namespace BrawlLib.Internal
 {
-
     internal class HexConverterBase : TypeConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -28,7 +27,8 @@ namespace BrawlLib.Internal
             return base.CanConvertTo(context, destinationType);
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+                                         Type destinationType)
         {
             if (destinationType == typeof(string))
             {
@@ -47,9 +47,9 @@ namespace BrawlLib.Internal
                         return base.ConvertTo(context, culture, value, destinationType);
                 }
             }
+
             return base.ConvertTo(context, culture, value, destinationType);
         }
-
     }
 
     internal class HexUIntConverter : HexConverterBase

@@ -1300,7 +1300,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             // Copy texture matrix settings from before
             if (_matGroup != null && _matGroup.Children.Count > 0)
             {
-                foreach (MDL0MaterialNode m in _matGroup.Children.Where(m => m.HasChildren && texMatrixSettings.ContainsKey(m.Name)))
+                foreach (MDL0MaterialNode m in _matGroup.Children.Where(m =>
+                    m.HasChildren && texMatrixSettings.ContainsKey(m.Name)))
                 {
                     if (texMatrixSettings[m.Name].Length == m.Children.Count)
                     {
@@ -2701,10 +2702,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     foreach (VertexCodec c in _linker._vertices)
                     {
                         string name = Name + "_" + _objList[index]._name;
-                        MDL0ObjectNode n = (MDL0ObjectNode)_objList[index];
+                        MDL0ObjectNode n = (MDL0ObjectNode) _objList[index];
                         if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
                         {
-                            name += "_" + ((MDL0ObjectNode)_objList[index])._drawCalls[0].MaterialNode._name;
+                            name += "_" + ((MDL0ObjectNode) _objList[index])._drawCalls[0].MaterialNode._name;
                         }
 
                         table.Add(name);

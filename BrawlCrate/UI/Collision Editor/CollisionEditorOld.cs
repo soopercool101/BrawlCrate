@@ -1641,7 +1641,8 @@ namespace BrawlCrate.UI
 
         protected void newObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _selectedObject = new CollisionObject {Name = $"Collision Object [{_targetNode.Children.Count + 1}]", Independent = true};
+            _selectedObject = new CollisionObject
+                {Name = $"Collision Object [{_targetNode.Children.Count + 1}]", Independent = true};
             _targetNode.AddChild(_selectedObject);
             lstObjects.Items.Add(_selectedObject, true);
             lstObjects.SelectedItem = _selectedObject;
@@ -1836,20 +1837,21 @@ namespace BrawlCrate.UI
             UpdateTools();
         }
 
-		int tempV = 0;
-		protected void UpdateHover(int x, int y)
-		{
-			++tempV;
+        private int tempV = 0;
 
-			if (!_hovering)
-			{
-				System.Diagnostics.Trace.WriteLine($"[{tempV}] Hover is disabled!");
-				return;
-			}
+        protected void UpdateHover(int x, int y)
+        {
+            ++tempV;
 
-			System.Diagnostics.Trace.WriteLine($"[{tempV}] Hover is being updated...");
+            if (!_hovering)
+            {
+                System.Diagnostics.Trace.WriteLine($"[{tempV}] Hover is disabled!");
+                return;
+            }
 
-			_selectEnd = Vector3.IntersectZ(_modelPanel.CurrentViewport.UnProject(x, y, 0.0f),
+            System.Diagnostics.Trace.WriteLine($"[{tempV}] Hover is being updated...");
+
+            _selectEnd = Vector3.IntersectZ(_modelPanel.CurrentViewport.UnProject(x, y, 0.0f),
                 _modelPanel.CurrentViewport.UnProject(x, y, 1.0f), _selectLast._z);
 
             //Apply difference in start/end
@@ -1972,11 +1974,11 @@ namespace BrawlCrate.UI
                 bool move = ModifierKeys == (Keys.Control | Keys.Shift);
 
                 float depth = _modelPanel.GetDepth(e.X, e.Y);
-                
-				Vector3 target = _modelPanel.CurrentViewport.UnProject(e.X, e.Y, depth);
+
+                Vector3 target = _modelPanel.CurrentViewport.UnProject(e.X, e.Y, depth);
                 Vector2 point;
 
-				if (!move && depth < 1.0f)
+                if (!move && depth < 1.0f)
                 {
                     point = (Vector2) target;
 

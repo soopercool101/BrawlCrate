@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.Sticker)]
-    class TySealWrapper : GenericWrapper
+    internal class TySealWrapper : GenericWrapper
     {
         #region Menu
 
@@ -78,8 +78,8 @@ namespace BrawlCrate.NodeWrappers
         {
             TySealWrapper w = GetInstance<TySealWrapper>();
 
-            TySealNode tySealNode = (TySealNode)w._resource;
-            if(File.Exists(Path.Combine(w._resource.RootNode.DirectoryName, tySealNode.BRRES)))
+            TySealNode tySealNode = (TySealNode) w._resource;
+            if (File.Exists(Path.Combine(w._resource.RootNode.DirectoryName, tySealNode.BRRES)))
             {
                 _openBrresToolStripMenuItem.Enabled = true;
                 _openBrresToolStripMenuItem.Visible = true;
@@ -104,8 +104,8 @@ namespace BrawlCrate.NodeWrappers
 
         public void OpenBRRES()
         {
-            string file = Path.Combine(Resource.RootNode.DirectoryName, ((TySealNode)Resource).BRRES);
-            if(File.Exists(file))
+            string file = Path.Combine(Resource.RootNode.DirectoryName, ((TySealNode) Resource).BRRES);
+            if (File.Exists(file))
             {
                 Process.Start(new ProcessStartInfo
                 {

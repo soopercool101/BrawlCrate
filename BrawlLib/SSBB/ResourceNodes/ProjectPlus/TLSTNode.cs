@@ -104,7 +104,9 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         private RSTMNode linkedNode;
 
-        public string rstmPath => Path.Combine(((TLSTNode) Parent).STRMPath, (string.IsNullOrEmpty(_fileName) && BrawlBRSTMs.ContainsKey(_songID) ? BrawlBRSTMs[_songID] : _fileName) + ".brstm");
+        public string rstmPath => Path.Combine(((TLSTNode) Parent).STRMPath,
+            (string.IsNullOrEmpty(_fileName) && BrawlBRSTMs.ContainsKey(_songID) ? BrawlBRSTMs[_songID] : _fileName) +
+            ".brstm");
 
         public IAudioStream[] CreateStreams()
         {
@@ -195,13 +197,13 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 try
                 {
-                    linkedNode = (RSTMNode)NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
+                    linkedNode = (RSTMNode) NodeFactory.FromFile(null, rstmPath, typeof(RSTMNode));
                 }
                 catch
                 {
-
                 }
             }
+
             UpdateCurrentControl();
         }
 
@@ -287,12 +289,14 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         {
             if (Header->_title != 0xFFFF)
             {
-                _name = Parent.WorkingUncompressed.Address.GetUTF8String(((TLSTNode)Parent).Header->_nameOffset + Header->_title);
+                _name = Parent.WorkingUncompressed.Address.GetUTF8String(
+                    ((TLSTNode) Parent).Header->_nameOffset + Header->_title);
             }
 
             if (Header->_fileName != 0xFFFF)
             {
-                _fileName = Parent.WorkingUncompressed.Address.GetUTF8String(((TLSTNode)Parent).Header->_nameOffset + Header->_fileName);
+                _fileName = Parent.WorkingUncompressed.Address.GetUTF8String(
+                    ((TLSTNode) Parent).Header->_nameOffset + Header->_fileName);
             }
 
             _songID = Header->_songID;
@@ -305,7 +309,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
                 }
                 catch
                 {
-
                 }
             }
 

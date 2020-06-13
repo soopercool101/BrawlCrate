@@ -90,7 +90,8 @@ namespace BrawlCrate.NodeWrappers
 
         public ASLSEntryNode NewEntry()
         {
-            StringInputDialog d = new StringInputDialog("New ASLS Entry", Resource.HasChildren ? Resource.Children[0].Name : "");
+            StringInputDialog d =
+                new StringInputDialog("New ASLS Entry", Resource.HasChildren ? Resource.Children[0].Name : "");
             if (d.ShowDialog() == DialogResult.OK)
             {
                 ASLSEntryNode node = new ASLSEntryNode

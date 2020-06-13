@@ -202,11 +202,12 @@ namespace BrawlCrate.UI
                         }
 
                         MDL0Node model = _models
-                            .FirstOrDefault(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName) as MDL0Node;
+                            .FirstOrDefault(m =>
+                                m is MDL0Node && ((ResourceNode) m).Name == obj._modelName) as MDL0Node;
 
                         MDL0BoneNode bone =
                             model?._linker?.BoneCache?
-                            .FirstOrDefault(b => b.Name == obj._boneName);
+                                .FirstOrDefault(b => b.Name == obj._boneName);
                         if (bone != null)
                         {
                             obj._linkedBone = bone;

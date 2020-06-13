@@ -688,8 +688,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             MDL0TextureRef* header = (MDL0TextureRef*) dataAddress;
 
-            header->_texOffset = _texture != null && stringTable != null ? (int) stringTable[_texture.Name] + 4 - (int) dataAddress : 0;
-            header->_pltOffset = _palette != null && stringTable != null ? (int) stringTable[_palette.Name] + 4 - (int) dataAddress : 0;
+            header->_texOffset = _texture != null && stringTable != null
+                ? (int) stringTable[_texture.Name] + 4 - (int) dataAddress
+                : 0;
+            header->_pltOffset = _palette != null && stringTable != null
+                ? (int) stringTable[_palette.Name] + 4 - (int) dataAddress
+                : 0;
             header->_texPtr = 0;
             header->_pltPtr = 0;
             header->_index1 = Index;

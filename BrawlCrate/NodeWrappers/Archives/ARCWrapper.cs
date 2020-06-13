@@ -367,7 +367,7 @@ namespace BrawlCrate.NodeWrappers
 
         public ADSJNode NewADSJ()
         {
-            ADSJNode node = new ADSJNode { FileType = ARCFileType.MiscData };
+            ADSJNode node = new ADSJNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

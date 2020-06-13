@@ -82,7 +82,8 @@ namespace BrawlCrate.NodeWrappers.Subspace
 
         public void NewEntry()
         {
-            BGMGEntryNode node = new BGMGEntryNode {_name = $"Song [{Resource.Children.Count}]", InfoIndex = -1, Volume = 100};
+            BGMGEntryNode node = new BGMGEntryNode
+                {_name = $"Song [{Resource.Children.Count}]", InfoIndex = -1, Volume = 100};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

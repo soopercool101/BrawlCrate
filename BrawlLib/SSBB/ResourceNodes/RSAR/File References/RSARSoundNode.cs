@@ -748,7 +748,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 IAudioStream stream = CreateStreams()[0];
                 if (stream == null)
                 {
-                    MessageBox.Show($"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" has no associated sound data and cannot be exported to WAV.");
+                    MessageBox.Show(
+                        $"{_soundFileNode?.GetType().Name ?? ""} \"{Name}\" has no associated sound data and cannot be exported to WAV.");
                     return;
                 }
 

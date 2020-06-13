@@ -7,9 +7,7 @@ using System.Windows.Forms;
 
 namespace System.Windows.Forms
 {
-	public class CollisionEditor_ClipboardMenu : Form
-	{
-		
-
-	}
+    public class CollisionEditor_ClipboardMenu : Form
+    {
+    }
 }

@@ -141,9 +141,9 @@ namespace BrawlLib.Internal.Windows.Forms.Ookii.Dialogs
                 WM_USER + 107, // wParam = 0 (stop marquee), wParam != 0 (start marquee), lparam = speed (milliseconds between repaints)
 
             SetElementText =
-                WM_USER + 108,                 // wParam = element (TASKDIALOG_ELEMENTS), lParam = new element text (LPCWSTR)
-            ClickRadioButton = WM_USER + 110,  // wParam = Radio Button ID
-            EnableButton = WM_USER + 111,      // lParam = 0 (disable), lParam != 0 (enable), wParam = Button ID
+                WM_USER + 108, // wParam = element (TASKDIALOG_ELEMENTS), lParam = new element text (LPCWSTR)
+            ClickRadioButton = WM_USER + 110, // wParam = Radio Button ID
+            EnableButton = WM_USER + 111, // lParam = 0 (disable), lParam != 0 (enable), wParam = Button ID
             EnableRadioButton = WM_USER + 112, // lParam = 0 (disable), lParam != 0 (enable), wParam = Radio Button ID
             ClickVerification = WM_USER + 113, // wParam = 0 (unchecked), 1 (checked), lParam = 1 (set key focus)
 

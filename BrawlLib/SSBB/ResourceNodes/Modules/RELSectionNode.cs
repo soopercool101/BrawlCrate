@@ -47,6 +47,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
 
         private bool _expand = false;
+
         [Category("End Buffer")]
         public bool ExpandSection
         {
@@ -56,7 +57,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _expand = value;
                 SignalPropertyChange();
             }
-
         }
 
         [Category("REL Section")] public bool HasCommands => _manager._commands.Count > 0;

@@ -176,12 +176,12 @@ namespace BrawlCrate.NodeWrappers
             _resource = res;
             if (DefaultBackColor != null)
             {
-                BackColor = (Color)DefaultBackColor;
+                BackColor = (Color) DefaultBackColor;
             }
 
             if (DefaultForeColor != null)
             {
-                ForeColor = (Color)DefaultForeColor;
+                ForeColor = (Color) DefaultForeColor;
             }
         }
 
@@ -246,12 +246,12 @@ namespace BrawlCrate.NodeWrappers
             // Update coloration in event of variable color nodes
             if (DefaultBackColor != null)
             {
-                BackColor = (Color)DefaultBackColor;
+                BackColor = (Color) DefaultBackColor;
             }
 
             if (DefaultForeColor != null)
             {
-                ForeColor = (Color)DefaultForeColor;
+                ForeColor = (Color) DefaultForeColor;
             }
         }
 

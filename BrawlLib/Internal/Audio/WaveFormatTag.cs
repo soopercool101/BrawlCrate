@@ -145,15 +145,15 @@
         WAVE_FORMAT_MPEG_RAW_AAC = 0x1601,            /* Microsoft Corporation */
 
         WAVE_FORMAT_MPEG_LOAS =
-            0x1602,                                  /* Microsoft Corporation (MPEG-4 Audio Transport Streams (LOAS/LATM) */
-        WAVE_FORMAT_NOKIA_MPEG_ADTS_AAC = 0x1608,    /* Microsoft Corporation */
-        WAVE_FORMAT_NOKIA_MPEG_RAW_AAC = 0x1609,     /* Microsoft Corporation */
+            0x1602, /* Microsoft Corporation (MPEG-4 Audio Transport Streams (LOAS/LATM) */
+        WAVE_FORMAT_NOKIA_MPEG_ADTS_AAC = 0x1608, /* Microsoft Corporation */
+        WAVE_FORMAT_NOKIA_MPEG_RAW_AAC = 0x1609, /* Microsoft Corporation */
         WAVE_FORMAT_VODAFONE_MPEG_ADTS_AAC = 0x160A, /* Microsoft Corporation */
-        WAVE_FORMAT_VODAFONE_MPEG_RAW_AAC = 0x160B,  /* Microsoft Corporation */
+        WAVE_FORMAT_VODAFONE_MPEG_RAW_AAC = 0x160B, /* Microsoft Corporation */
 
         WAVE_FORMAT_MPEG_HEAAC =
-            0x1610,                     /* Microsoft Corporation (MPEG-2 AAC or MPEG-4 HE-AAC v1/v2 streams with any payload (ADTS, ADIF, LOAS/LATM, RAW). Format block includes MP4 AudioSpecificConfig() -- see HEAACWAVEFORMAT below */
-        WAVE_FORMAT_DVM = 0x2000,       /* FAST Multimedia AG */
+            0x1610, /* Microsoft Corporation (MPEG-2 AAC or MPEG-4 HE-AAC v1/v2 streams with any payload (ADTS, ADIF, LOAS/LATM, RAW). Format block includes MP4 AudioSpecificConfig() -- see HEAACWAVEFORMAT below */
+        WAVE_FORMAT_DVM = 0x2000, /* FAST Multimedia AG */
         WAVE_FORMAT_EXTENSIBLE = 0xFFFE /* Microsoft */
     };
 }

@@ -91,7 +91,7 @@ namespace BrawlCrate.NodeWrappers
         {
             RawDataNode node = new RawDataNode
             {
-                _name = (((STEXNode)Resource).IsOldSubstage ? "_" : "") + $"{Resource.Children.Count:D2}"
+                _name = (((STEXNode) Resource).IsOldSubstage ? "_" : "") + $"{Resource.Children.Count:D2}"
             };
 
             _resource.AddChild(node);

@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
     public unsafe class STEXNode : ResourceNode
     {
-        internal STEX* Header => (STEX*)WorkingUncompressed.Address;
+        internal STEX* Header => (STEX*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.STEX;
 
         public override Type[] AllowedChildTypes => new[] {typeof(RawDataNode)};
@@ -37,6 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private string _stageName;
+
         [Category("Stage Parameters")]
         public string StageName
         {
@@ -49,6 +50,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private string _trackList;
+
         [Category("Stage Parameters")]
         public string TrackList
         {
@@ -61,6 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private string _module;
+
         [Category("Stage Parameters")]
         public string Module
         {
@@ -73,6 +76,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private RGBAPixel _rgbaOverlay;
+
         [Category("Stage Parameters")]
         public RGBAPixel CharacterOverlay
         {
@@ -86,6 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
 
         private ushort _soundBank;
+
         [Category("Stage Parameters")]
         [TypeConverter(typeof(HexUShortConverter))]
         public ushort SoundBank
@@ -99,6 +104,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private ushort _effectBank;
+
         [Category("Stage Parameters")]
         [TypeConverter(typeof(HexUShortConverter))]
         public ushort EffectBank
@@ -198,18 +204,20 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private byte _stageType;
+
         [Category("Substage Parameters")]
         public VariantType SubstageVarianceType
         {
-            get => (VariantType)_stageType;
+            get => (VariantType) _stageType;
             set
             {
-                _stageType = (byte)value;
+                _stageType = (byte) value;
                 SignalPropertyChange();
             }
         }
 
         private byte _subStageRange;
+
         [Category("Substage Parameters")]
         public byte SubstageRange
         {
@@ -222,6 +230,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private uint _memoryAllocation;
+
         [Category("Stage Parameters")]
         [TypeConverter(typeof(HexUIntConverter))]
         public uint MemoryAllocation
@@ -235,6 +244,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private float _wildSpeed;
+
         [Category("Stage Parameters")]
         [Description("The speed at which the stage operates in \"Wild\" Mode in Project+")]
         public float WildSpeed
@@ -252,7 +262,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             int i;
             for (i = 0; i < Header->subStageCount; i++)
             {
-                new RawDataNode { _name = Header->subStageName(i) }.Initialize(this, null, 0);
+                new RawDataNode {_name = Header->subStageName(i)}.Initialize(this, null, 0);
             }
         }
 
@@ -262,13 +272,14 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
+
             _stageName = Header->stageName;
             _trackList = Header->trackListName;
             _module = Header->moduleName;
-            _rgbaOverlay = (uint)Header->_rgbaOverlay;
+            _rgbaOverlay = (uint) Header->_rgbaOverlay;
             _soundBank = Header->_soundBank;
             _effectBank = Header->_effectBank;
-            _flags = (StageFlags)(ushort)Header->_flags;
+            _flags = (StageFlags) (ushort) Header->_flags;
             _stageType = Header->_stageType;
             _subStageRange = Header->_subStageRange;
             _memoryAllocation = Header->_memoryAllocation;
@@ -279,7 +290,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override int OnCalculateSize(bool force)
         {
-            int size = (int)STEX.HeaderSize;
+            int size = (int) STEX.HeaderSize;
 
             size += 4 * Children.Count;
 
@@ -287,10 +298,12 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 size += StageName.UTF8Length() + 1;
             }
+
             if (!string.IsNullOrEmpty(TrackList))
             {
                 size += TrackList.UTF8Length() + 1;
             }
+
             if (!string.IsNullOrEmpty(Module))
             {
                 size += Module.UTF8Length() + 1;
@@ -306,17 +319,17 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            uint strOffset = STEX.HeaderSize + (uint)Children.Count * 4;
+            uint strOffset = STEX.HeaderSize + (uint) Children.Count * 4;
 
-            STEX* header = (STEX*)address;
+            STEX* header = (STEX*) address;
             *header = new STEX();
             header->_tag = STEX.Tag;
             header->_stringOffset = strOffset;
-            header->_size = (uint)length;
-            header->_rgbaOverlay = (uint)CharacterOverlay;
+            header->_size = (uint) length;
+            header->_rgbaOverlay = (uint) CharacterOverlay;
             header->_soundBank = _soundBank;
             header->_effectBank = _effectBank;
-            header->_flags = (ushort)_flags;
+            header->_flags = (ushort) _flags;
             header->_stageType = _stageType;
             header->_subStageRange = _subStageRange;
 
@@ -324,30 +337,33 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             if (!string.IsNullOrEmpty(TrackList))
             {
                 header->_trackListOffset = curStrOffset;
-                curStrOffset += (uint)TrackList.UTF8Length() + 1;
+                curStrOffset += (uint) TrackList.UTF8Length() + 1;
             }
             else
             {
                 header->_trackListOffset = 0xFFFFFFFF;
             }
+
             if (!string.IsNullOrEmpty(StageName))
             {
                 header->_stageNameOffset = curStrOffset;
-                curStrOffset += (uint)StageName.UTF8Length() + 1;
+                curStrOffset += (uint) StageName.UTF8Length() + 1;
             }
             else
             {
                 header->_stageNameOffset = 0xFFFFFFFF;
             }
+
             if (!string.IsNullOrEmpty(Module))
             {
                 header->_moduleNameOffset = curStrOffset;
-                curStrOffset += (uint)Module.UTF8Length() + 1;
+                curStrOffset += (uint) Module.UTF8Length() + 1;
             }
             else
             {
                 header->_moduleNameOffset = 0xFFFFFFFF;
             }
+
             header->_memoryAllocation = _memoryAllocation;
             header->_wildSpeed = _wildSpeed;
 
@@ -356,7 +372,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 buint* ptr = (buint*) (address + offset);
                 ptr[0] = curStrOffset;
-                curStrOffset += (uint)n.Name.UTF8Length() + 1;
+                curStrOffset += (uint) n.Name.UTF8Length() + 1;
                 offset += 4;
             }
 
@@ -364,10 +380,12 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 offset += address.WriteUTF8String(TrackList, true, offset);
             }
+
             if (StageName?.UTF8Length() > 0)
             {
                 offset += address.WriteUTF8String(StageName, true, offset);
             }
+
             if (Module?.UTF8Length() > 0)
             {
                 offset += address.WriteUTF8String(Module, true, offset);

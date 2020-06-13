@@ -76,6 +76,7 @@ namespace BrawlCrate.NodeWrappers
                 // Set the name based on the number of duplicate nodes found
                 node.Name = $"{_resource.Name} ({++n})";
             }
+
             ((MDL0ObjectNode) _resource).Model._objGroup.InsertChild(node, true, index + 1);
             return node;
         }

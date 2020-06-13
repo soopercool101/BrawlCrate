@@ -17,12 +17,14 @@ namespace BrawlLib.Internal
             if (Directory.Exists(mapPath))
             {
                 DirectoryInfo d = new DirectoryInfo(mapPath);
-                foreach (FileInfo map in d.GetFiles().Where(f => f.Extension.Equals(".map", StringComparison.OrdinalIgnoreCase)))
+                foreach (FileInfo map in d.GetFiles()
+                    .Where(f => f.Extension.Equals(".map", StringComparison.OrdinalIgnoreCase)))
                 {
                     Dictionary<uint, string> currentMap = new Dictionary<uint, string>();
                     List<string> fileList = new List<string>(File.ReadAllLines(map.FullName));
                     string mapName = Path.GetFileNameWithoutExtension(map.FullName);
-                    bool mainDol = mapName.Equals("RSBE01", StringComparison.OrdinalIgnoreCase) || mapName.Equals("sora", StringComparison.OrdinalIgnoreCase);
+                    bool mainDol = mapName.Equals("RSBE01", StringComparison.OrdinalIgnoreCase) ||
+                                   mapName.Equals("sora", StringComparison.OrdinalIgnoreCase);
                     foreach (string s in fileList)
                     {
                         if (string.IsNullOrWhiteSpace(s))
@@ -33,7 +35,7 @@ namespace BrawlLib.Internal
                         try
                         {
                             string offset = s.Substring(0, 8);
-                            
+
                             uint key = Convert.ToUInt32(offset, 16);
                             if (currentMap.ContainsKey(key))
                             {

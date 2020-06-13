@@ -422,6 +422,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _itemIDs = new byte[EarthItemOffsets.Length];
                 _itemIDOffsets = EarthItemOffsets;
             }
+
             for (int i = 0; i < _itemIDOffsets?.Length; i++)
             {
                 _itemIDs[i] = bptr[_itemIDOffsets[i]];

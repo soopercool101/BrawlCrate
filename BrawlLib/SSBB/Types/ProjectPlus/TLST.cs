@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
         public bushort _fileSize;
         public bushort _nameOffset;
 
-        public VoidPtr this[int index] => (byte*)Address + HeaderSize + index * TLSTEntry.Size;
+        public VoidPtr this[int index] => (byte*) Address + HeaderSize + index * TLSTEntry.Size;
 
         private VoidPtr Address
         {

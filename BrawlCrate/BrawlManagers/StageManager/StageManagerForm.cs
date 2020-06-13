@@ -481,7 +481,7 @@ namespace BrawlCrate.BrawlManagers.StageManager
         private void changeDirectory(DirectoryInfo path)
         {
             CurrentDirectory =
-                path.FullName;                                                  // Update the program's working directory
+                path.FullName; // Update the program's working directory
             Text = Text.Substring(0, Text.IndexOf('-')) + "- " + path.FullName; // Update titlebar
 
             RightControl = null;

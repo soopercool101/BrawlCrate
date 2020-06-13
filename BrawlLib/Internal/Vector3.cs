@@ -40,7 +40,7 @@ namespace BrawlLib.Internal
     {
         public float _x, _y, _z;
 
-		public Vector3(float x, float y, float z)
+        public Vector3(float x, float y, float z)
         {
             _x = x;
             _y = y;
@@ -61,7 +61,7 @@ namespace BrawlLib.Internal
             _z = info.GetSingle("_z");
         }
 
-		public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("_x", _x);
             info.AddValue("_y", _y);

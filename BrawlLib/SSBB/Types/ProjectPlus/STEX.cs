@@ -23,7 +23,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
         public buint _memoryAllocation;
         public bfloat _wildSpeed;
 
-        public VoidPtr this[int index] => (byte*)Address + HeaderSize + index * 0x04;
+        public VoidPtr this[int index] => (byte*) Address + HeaderSize + index * 0x04;
 
         public uint subStageCount => (_stringOffset - 0x2C) / 4;
 
@@ -48,8 +48,16 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
             return Address.GetUTF8String(_stringOffset + this[index].UInt);
         }
 
-        public string trackListName => _trackListOffset == 0xFFFFFFFF ? null : new string((sbyte*)(Address + _stringOffset + _trackListOffset));
-        public string stageName => _stageNameOffset == 0xFFFFFFFF ? null : new string((sbyte*)(Address + _stringOffset + _stageNameOffset));
-        public string moduleName => _moduleNameOffset == 0xFFFFFFFF ? null : new string((sbyte*)(Address + _stringOffset + _moduleNameOffset));
+        public string trackListName => _trackListOffset == 0xFFFFFFFF
+            ? null
+            : new string((sbyte*) (Address + _stringOffset + _trackListOffset));
+
+        public string stageName => _stageNameOffset == 0xFFFFFFFF
+            ? null
+            : new string((sbyte*) (Address + _stringOffset + _stageNameOffset));
+
+        public string moduleName => _moduleNameOffset == 0xFFFFFFFF
+            ? null
+            : new string((sbyte*) (Address + _stringOffset + _moduleNameOffset));
     }
 }

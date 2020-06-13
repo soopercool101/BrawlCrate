@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-
 using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.Types;
-
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
@@ -20,12 +18,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.CollisionDef;
         public override Type[] AllowedChildTypes => new Type[] {typeof(CollisionObject)};
 
-		// No reason to use _render if IsRendering functions the same and doesn't use a different access method.
-		// ex: IsRendering {get _render; private set _render = value;} only allows CollisionNode to change _render.
-		[Browsable(false)]
-		public bool IsRendering { get; set; } = true;
+        // No reason to use _render if IsRendering functions the same and doesn't use a different access method.
+        // ex: IsRendering {get _render; private set _render = value;} only allows CollisionNode to change _render.
+        [Browsable(false)] public bool IsRendering { get; set; } = true;
 
-		internal int _unk1;
+        internal int _unk1;
 
         public override bool OnInitialize()
         {
@@ -36,16 +33,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_numObjects > 0;
         }
 
-		public override void OnPopulate()
-		{
-			ColObject* obj = Header->Objects;
-			for (int i = Header->_numObjects; i-- > 0;)
-			{
-				new CollisionObject().Initialize(this, new DataSource(obj++, ColObject.Size));
-			}
-		}
+        public override void OnPopulate()
+        {
+            ColObject* obj = Header->Objects;
+            for (int i = Header->_numObjects; i-- > 0;)
+            {
+                new CollisionObject().Initialize(this, new DataSource(obj++, ColObject.Size));
+            }
+        }
 
-		protected override string GetName()
+        protected override string GetName()
         {
             return base.GetName("Collision Data");
         }
@@ -67,8 +64,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void CalculateCamBoundaries(out float? minX, out float? minY, out float? maxX, out float? maxY)
         {
-            minX = null; minY = null;
-            maxX = null; maxY = null;
+            minX = null;
+            minY = null;
+            maxX = null;
+            maxY = null;
 
             foreach (CollisionObject o in Children)
             {
@@ -205,7 +204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-		// A version of render that does not force other renderers to render CollisionObjectRenderInfo.
+        // A version of render that does not force other renderers to render CollisionObjectRenderInfo.
         public void Render()
         {
             GL.Disable(EnableCap.Lighting);
@@ -219,7 +218,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-		public void Render(CollisionObject.CollisionObjectRenderInfo renderInfo)
+        public void Render(CollisionObject.CollisionObjectRenderInfo renderInfo)
         {
             GL.Disable(EnableCap.Lighting);
             GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
@@ -230,7 +229,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 obj.Render(renderInfo);
             }
-        }  
+        }
 
         public Box GetBox()
         {
@@ -423,15 +422,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public bool hasSingleLinkedCollisions;
 
-		// This and the next one, CollisionObjectColorRepresentation should NOT be part of the collision object
-		// data as it is only meant for the Collision Editor to keep track of what this object should be doing.
-		public bool isTemporaryObject = false;
+        // This and the next one, CollisionObjectColorRepresentation should NOT be part of the collision object
+        // data as it is only meant for the Collision Editor to keep track of what this object should be doing.
+        public bool isTemporaryObject = false;
 
-		// A color that will be used to show the collisions that this object is represented by.
-		// If transparent, then this color will not be used.
-		public Color4 CollisionObjectColorRepresentation = Color4.Transparent;
+        // A color that will be used to show the collisions that this object is represented by.
+        // If transparent, then this color will not be used.
+        public Color4 CollisionObjectColorRepresentation = Color4.Transparent;
 
-		[Flags]
+        [Flags]
         public enum ColObjFlags : ushort
         {
             None = 0,
@@ -449,7 +448,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal ColObject* Header => (ColObject*) WorkingUncompressed.Address;
 
-		public override bool OnInitialize()
+        public override bool OnInitialize()
         {
             CollisionNode parentColl = Parent as CollisionNode;
             _name = $"Collision Object [{Parent.Children.Count}]";
@@ -528,45 +527,45 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-		public unsafe void Render()
-		{
-			if (!_render)
-			{
-				return;
-			}
+        public unsafe void Render()
+        {
+            if (!_render)
+            {
+                return;
+            }
 
-			foreach (CollisionPlane p in _planes)
-			{
-				p.Render(false);
-			}
+            foreach (CollisionPlane p in _planes)
+            {
+                p.Render(false);
+            }
 
-			foreach (CollisionLink l in _points)
-			{
-				l.Render(null);
-			}
-		}
+            foreach (CollisionLink l in _points)
+            {
+                l.Render(null);
+            }
+        }
 
-		// Internal had to be changed to public so that Paste Options renders.
-		// Or any class that do not have a node.
-		public unsafe void Render(CollisionObjectRenderInfo renderInfo)
-		{
-			if (!_render)
-			{
-				return;
-			}
+        // Internal had to be changed to public so that Paste Options renders.
+        // Or any class that do not have a node.
+        public unsafe void Render(CollisionObjectRenderInfo renderInfo)
+        {
+            if (!_render)
+            {
+                return;
+            }
 
-			foreach (CollisionPlane p in _planes)
-			{
-				p.Render(renderInfo.ColorizePlanesToObjectColor);
-			}
+            foreach (CollisionPlane p in _planes)
+            {
+                p.Render(renderInfo.ColorizePlanesToObjectColor);
+            }
 
-			foreach (CollisionLink l in _points)
-			{
-				l.Render(renderInfo);
-			}
-		}
+            foreach (CollisionLink l in _points)
+            {
+                l.Render(renderInfo);
+            }
+        }
 
-		public override unsafe void Export(string outPath)
+        public override unsafe void Export(string outPath)
         {
             if (outPath.EndsWith(".coll", StringComparison.OrdinalIgnoreCase))
             {
@@ -615,6 +614,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                     }
                 }
+
                 if (p.IsRightLedge)
                 {
                     foreach (CollisionPlane p2 in p.LinkRight._members.Where(o => !o.Equals(p)))
@@ -630,32 +630,35 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
 
-		// This helps in crushing down the amounts of arguments needed to pass just to render.
-		// Not sure if this is a slower/faster method in terms of performance.
-		public class CollisionObjectRenderInfo
-		{
-			// Needed in knowing if the link will be scaled.
-			public bool ScaleLink;
-			// The camera is needed for link scale values.
-			public GLCamera Camera;
-			// Required so that links can colorize based on CollisionObject's Color Representation.
-			// This won't matter if the color representation's alpha is set to 0.
-			public bool ColorizePlanesToObjectColor;
+        // This helps in crushing down the amounts of arguments needed to pass just to render.
+        // Not sure if this is a slower/faster method in terms of performance.
+        public class CollisionObjectRenderInfo
+        {
+            // Needed in knowing if the link will be scaled.
+            public bool ScaleLink;
 
-			public CollisionObjectRenderInfo(bool ScaleLink, bool ColorizePlanesToObjectColor, ref GLCamera Camera)
-			{
-				this.ScaleLink = ScaleLink;
-				this.ColorizePlanesToObjectColor = ColorizePlanesToObjectColor;
-				this.Camera = Camera;
-			}
-			public CollisionObjectRenderInfo()
-			{
-				this.ScaleLink = false;
-				this.ColorizePlanesToObjectColor = false;
-				this.Camera = null;
-			}
-		}
-	}
+            // The camera is needed for link scale values.
+            public GLCamera Camera;
+
+            // Required so that links can colorize based on CollisionObject's Color Representation.
+            // This won't matter if the color representation's alpha is set to 0.
+            public bool ColorizePlanesToObjectColor;
+
+            public CollisionObjectRenderInfo(bool ScaleLink, bool ColorizePlanesToObjectColor, ref GLCamera Camera)
+            {
+                this.ScaleLink = ScaleLink;
+                this.ColorizePlanesToObjectColor = ColorizePlanesToObjectColor;
+                this.Camera = Camera;
+            }
+
+            public CollisionObjectRenderInfo()
+            {
+                ScaleLink = false;
+                ColorizePlanesToObjectColor = false;
+                Camera = null;
+            }
+        }
+    }
 
     public unsafe class CollisionLink
     {
@@ -959,33 +962,35 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             Vector2 v = Value;
-			float ScaleBy = 1.0f;
+            float ScaleBy = 1.0f;
 
-			if (renderInfo != null && renderInfo.ScaleLink && renderInfo.Camera != null)
-			{
-				ScaleBy = GetCamScaledDistance(renderInfo.Camera);
+            if (renderInfo != null && renderInfo.ScaleLink && renderInfo.Camera != null)
+            {
+                ScaleBy = GetCamScaledDistance(renderInfo.Camera);
 
-				ScaleBy -= 2.5f;
+                ScaleBy -= 2.5f;
 
-				if (ScaleBy < 0.05f)
-					ScaleBy = 0.05f;
-			}
+                if (ScaleBy < 0.05f)
+                {
+                    ScaleBy = 0.05f;
+                }
+            }
 
-			float multF = mult * ScaleBy;
-			//System.Diagnostics.Trace.WriteLine($"ScaleBy Value: {ScaleBy.ToString()} | multF: {mult.ToString()}");
+            float multF = mult * ScaleBy;
+            //System.Diagnostics.Trace.WriteLine($"ScaleBy Value: {ScaleBy.ToString()} | multF: {mult.ToString()}");
 
-			GL.Disable(EnableCap.CullFace);
+            GL.Disable(EnableCap.CullFace);
             TKContext.DrawBox(
                 new Vector3(v._x - multF * BoxRadius, v._y - multF * BoxRadius, LineWidth),
                 new Vector3(v._x + multF * BoxRadius, v._y + multF * BoxRadius, -LineWidth));
             GL.Enable(EnableCap.CullFace);
         }
 
-		public float GetCamScaledDistance(GLCamera cam, float Radius = 1.0f)
-		{
-			return ModelEditorBase.CamDistance(Value.ToVector3(), cam, Radius);
-		}
-	}
+        public float GetCamScaledDistance(GLCamera cam, float Radius = 1.0f)
+        {
+            return ModelEditorBase.CamDistance(Value.ToVector3(), cam, Radius);
+        }
+    }
 
     public unsafe class CollisionPlane
     {
@@ -1003,212 +1008,244 @@ namespace BrawlLib.SSBB.ResourceNodes
         public CollisionObject _parent;
 
 
-		public CollisionPlane(CollisionObject parent, CollisionLink left, CollisionLink right)
-		{
-			_parent = parent;
-			_parent._planes.Add(this);
+        public CollisionPlane(CollisionObject parent, CollisionLink left, CollisionLink right)
+        {
+            _parent = parent;
+            _parent._planes.Add(this);
 
-			_linkLeft = left;
-			_linkLeft._members.Add(this);
-			_linkRight = right;
-			if (_linkLeft != _linkRight)
-			{
-				_linkRight._members.Add(this);
-			}
-		}
+            _linkLeft = left;
+            _linkLeft._members.Add(this);
+            _linkRight = right;
+            if (_linkLeft != _linkRight)
+            {
+                _linkRight._members.Add(this);
+            }
+        }
 
-		public CollisionPlane(CollisionObject parent, ColPlane* entry, int offset)
-			: this(parent, parent._points[entry->_point1 - offset], parent._points[entry->_point2 - offset])
-		{
-			_material = entry->_material;
-			_flags = entry->_flags;
-			_type = entry->Type;
-			_flags2 = entry->Flags2;
-		}
+        public CollisionPlane(CollisionObject parent, ColPlane* entry, int offset)
+            : this(parent, parent._points[entry->_point1 - offset], parent._points[entry->_point2 - offset])
+        {
+            _material = entry->_material;
+            _flags = entry->_flags;
+            _type = entry->Type;
+            _flags2 = entry->Flags2;
+        }
 
-		public static bool PlaneEquals(CollisionPlane plane1, CollisionPlane plane2)
-		{
-			bool p1N = plane1 == null; bool p2N = plane2 == null;
+        public static bool PlaneEquals(CollisionPlane plane1, CollisionPlane plane2)
+        {
+            bool p1N = plane1 == null;
+            bool p2N = plane2 == null;
 
-			if (p1N && p2N)
-				return true;
-			if ((p1N && !p2N) || (!p1N && p2N))
-				return false;
+            if (p1N && p2N)
+            {
+                return true;
+            }
 
-			if (plane1._encodeIndex != plane2._encodeIndex)
-				return false;
-			if (plane1._type != plane2._type)
-				return false;
-			if (plane1._flags != plane2._flags)
-				return false;
-			if (plane1._flags2 != plane2._flags2)
-				return false;
+            if (p1N && !p2N || !p1N && p2N)
+            {
+                return false;
+            }
 
-			p1N = plane1.PointLeft == null; p2N = plane2.PointLeft == null;
-			bool p3N = plane1.PointRight == null; bool p4N = plane2.PointRight == null;
+            if (plane1._encodeIndex != plane2._encodeIndex)
+            {
+                return false;
+            }
 
-			if ((p1N && p2N) && (p3N && p4N))
-				return true;
-			if ((p1N && !p2N) || (!p1N && p2N))
-				return false;
-			if ((p3N && !p4N) || (!p3N && p4N))
-				return false;
+            if (plane1._type != plane2._type)
+            {
+                return false;
+            }
 
-			if (plane1.PointLeft != plane2.PointLeft)
-				return false;
-			if (plane1.PointRight != plane2.PointRight)
-				return false;
+            if (plane1._flags != plane2._flags)
+            {
+                return false;
+            }
 
-			return true;
-		}
+            if (plane1._flags2 != plane2._flags2)
+            {
+                return false;
+            }
 
-		public CollisionLink Split(Vector2 point)
-		{
-			CollisionLink link = new CollisionLink(_parent, point);
-			CollisionPlane plane = new CollisionPlane(_parent, link, _linkRight)
-			{
-				_material = _material,
-				_flags = _flags,
-				_flags2 = _flags2,
-				_type = _type
-			};
-			if (IsRightLedge)
-			{
-				IsRightLedge = false;
-			}
+            p1N = plane1.PointLeft == null;
+            p2N = plane2.PointLeft == null;
+            bool p3N = plane1.PointRight == null;
+            bool p4N = plane2.PointRight == null;
 
-			if (IsLeftLedge)
-			{
-				plane.IsLeftLedge = false;
-			}
+            if (p1N && p2N && p3N && p4N)
+            {
+                return true;
+            }
 
-			LinkRight = link;
-			return link;
-		}
+            if (p1N && !p2N || !p1N && p2N)
+            {
+                return false;
+            }
 
-		public void SwapLinks()
-		{
-			CollisionLink l = _linkLeft;
-			_linkLeft = _linkRight;
-			_linkRight = l;
-		}
+            if (p3N && !p4N || !p3N && p4N)
+            {
+                return false;
+            }
 
-		public void Delete()
-		{
-			LinkLeft = null;
-			LinkRight = null;
-			_parent._planes.Remove(this);
-		}
+            if (plane1.PointLeft != plane2.PointLeft)
+            {
+                return false;
+            }
 
-		internal void Render(bool ColorizePlanesBasedOnObjectColor)
-		{
-			if (!_render || LinkLeft == LinkRight)
-			{
-				return;
-			}
+            if (plane1.PointRight != plane2.PointRight)
+            {
+                return false;
+            }
 
-			float alpha = 0.8f;
+            return true;
+        }
 
-			if (!CollidableByCharacters)
-			{
-				alpha = 0.5f;
-			}
+        public CollisionLink Split(Vector2 point)
+        {
+            CollisionLink link = new CollisionLink(_parent, point);
+            CollisionPlane plane = new CollisionPlane(_parent, link, _linkRight)
+            {
+                _material = _material,
+                _flags = _flags,
+                _flags2 = _flags2,
+                _type = _type
+            };
+            if (IsRightLedge)
+            {
+                IsRightLedge = false;
+            }
 
-			Vector2 l = _linkLeft.Value;
-			Vector2 r = _linkRight.Value;
+            if (IsLeftLedge)
+            {
+                plane.IsLeftLedge = false;
+            }
 
-			int lev = 0;
-			if (_linkLeft._highlight)
-			{
-				lev++;
-			}
+            LinkRight = link;
+            return link;
+        }
 
-			if (_linkRight._highlight)
-			{
-				lev++;
-			}
+        public void SwapLinks()
+        {
+            CollisionLink l = _linkLeft;
+            _linkLeft = _linkRight;
+            _linkRight = l;
+        }
 
-			// Apply a customized color to this plane if the following values are set to true. These are the following:
-			// ColorizePlanesBasedOnObjectColor and if the parent collision object's color has more than 0 on the alpha.
-			if (ColorizePlanesBasedOnObjectColor && _parent.CollisionObjectColorRepresentation.A > 0.0f)
-			{
-				//float R = _parent.CollisionObjectColorRepresentation.R / 255.0f;
-				//float G = _parent.CollisionObjectColorRepresentation.G / 255.0f;
-				//float B = _parent.CollisionObjectColorRepresentation.B / 255.0f;
-				//float A = _parent.CollisionObjectColorRepresentation.A / 255.0f;
-				//GL.Color4(R, G, B, A);
+        public void Delete()
+        {
+            LinkLeft = null;
+            LinkRight = null;
+            _parent._planes.Remove(this);
+        }
 
-				GL.Color4(_parent.CollisionObjectColorRepresentation);
-			}
-			else if (lev == 1)
-			{
-				GL.Color4(1.0f, 0.5f, 0.5f, alpha);
-			}
-			else if (lev != 0)
-			{
-				GL.Color4(0.9f, 0.0f, 0.9f, alpha);
-			}
-			else if (!IsFallThrough)
-			{
-				switch (GetCurrentType())
-				{
-					case CollisionPlaneType.None:
-						GL.Color4(1.0f, 1.0f, 1.0f, alpha);
-						break;
-					case CollisionPlaneType.Floor:
-						GL.Color4(0.0f, 0.9f, 0.9f, alpha);
-						break;
-					case CollisionPlaneType.Ceiling:
-						GL.Color4(0.9f, 0.0f, 0.0f, alpha);
-						break;
-					case CollisionPlaneType.LeftWall:
-					case CollisionPlaneType.RightWall:
-						GL.Color4(0.0f, 0.9f, 0.0f, alpha);
-						break;
-					default:
-						GL.Color4(0.0f, 0.0f, 0.0f, alpha);
-						break;
-				}
-			}
-			else
-			{
-				switch (GetCurrentType())
-				{
-					case CollisionPlaneType.None:
-						GL.Color4(0.65f, 0.65f, 0.35f, alpha);
-						break;
-					case CollisionPlaneType.Floor:
-						GL.Color4(1.0f, 1.0f, 0.0f, alpha);
-						break;
-					case CollisionPlaneType.Ceiling:
-						GL.Color4(0.9f, 0.3f, 0.0f, alpha);
-						break;
-					case CollisionPlaneType.LeftWall:
-					case CollisionPlaneType.RightWall:
-						GL.Color4(0.45f, 1.0f, 0.0f, alpha);
-						break;
-					default:
-						GL.Color4(0.5f, 0.5f, 0.0f, alpha);
-						break;
-				}
-			}
+        internal void Render(bool ColorizePlanesBasedOnObjectColor)
+        {
+            if (!_render || LinkLeft == LinkRight)
+            {
+                return;
+            }
 
-			GL.Begin(BeginMode.Quads);
-			GL.Vertex3(l._x, l._y, 10.0f);
-			GL.Vertex3(l._x, l._y, -10.0f);
-			GL.Vertex3(r._x, r._y, -10.0f);
-			GL.Vertex3(r._x, r._y, 10.0f);
-			GL.End();
+            float alpha = 0.8f;
 
-			GL.Begin(BeginMode.Lines);
-			GL.Vertex3(l._x, l._y, 10.0f);
-			GL.Vertex3(r._x, r._y, 10.0f);
-			GL.Vertex3(l._x, l._y, -10.0f);
-			GL.Vertex3(r._x, r._y, -10.0f);
-			GL.End();
-		}
+            if (!CollidableByCharacters)
+            {
+                alpha = 0.5f;
+            }
 
-		public CollisionPlaneType Type
+            Vector2 l = _linkLeft.Value;
+            Vector2 r = _linkRight.Value;
+
+            int lev = 0;
+            if (_linkLeft._highlight)
+            {
+                lev++;
+            }
+
+            if (_linkRight._highlight)
+            {
+                lev++;
+            }
+
+            // Apply a customized color to this plane if the following values are set to true. These are the following:
+            // ColorizePlanesBasedOnObjectColor and if the parent collision object's color has more than 0 on the alpha.
+            if (ColorizePlanesBasedOnObjectColor && _parent.CollisionObjectColorRepresentation.A > 0.0f)
+            {
+                //float R = _parent.CollisionObjectColorRepresentation.R / 255.0f;
+                //float G = _parent.CollisionObjectColorRepresentation.G / 255.0f;
+                //float B = _parent.CollisionObjectColorRepresentation.B / 255.0f;
+                //float A = _parent.CollisionObjectColorRepresentation.A / 255.0f;
+                //GL.Color4(R, G, B, A);
+
+                GL.Color4(_parent.CollisionObjectColorRepresentation);
+            }
+            else if (lev == 1)
+            {
+                GL.Color4(1.0f, 0.5f, 0.5f, alpha);
+            }
+            else if (lev != 0)
+            {
+                GL.Color4(0.9f, 0.0f, 0.9f, alpha);
+            }
+            else if (!IsFallThrough)
+            {
+                switch (GetCurrentType())
+                {
+                    case CollisionPlaneType.None:
+                        GL.Color4(1.0f, 1.0f, 1.0f, alpha);
+                        break;
+                    case CollisionPlaneType.Floor:
+                        GL.Color4(0.0f, 0.9f, 0.9f, alpha);
+                        break;
+                    case CollisionPlaneType.Ceiling:
+                        GL.Color4(0.9f, 0.0f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.LeftWall:
+                    case CollisionPlaneType.RightWall:
+                        GL.Color4(0.0f, 0.9f, 0.0f, alpha);
+                        break;
+                    default:
+                        GL.Color4(0.0f, 0.0f, 0.0f, alpha);
+                        break;
+                }
+            }
+            else
+            {
+                switch (GetCurrentType())
+                {
+                    case CollisionPlaneType.None:
+                        GL.Color4(0.65f, 0.65f, 0.35f, alpha);
+                        break;
+                    case CollisionPlaneType.Floor:
+                        GL.Color4(1.0f, 1.0f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.Ceiling:
+                        GL.Color4(0.9f, 0.3f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.LeftWall:
+                    case CollisionPlaneType.RightWall:
+                        GL.Color4(0.45f, 1.0f, 0.0f, alpha);
+                        break;
+                    default:
+                        GL.Color4(0.5f, 0.5f, 0.0f, alpha);
+                        break;
+                }
+            }
+
+            GL.Begin(BeginMode.Quads);
+            GL.Vertex3(l._x, l._y, 10.0f);
+            GL.Vertex3(l._x, l._y, -10.0f);
+            GL.Vertex3(r._x, r._y, -10.0f);
+            GL.Vertex3(r._x, r._y, 10.0f);
+            GL.End();
+
+            GL.Begin(BeginMode.Lines);
+            GL.Vertex3(l._x, l._y, 10.0f);
+            GL.Vertex3(r._x, r._y, 10.0f);
+            GL.Vertex3(l._x, l._y, -10.0f);
+            GL.Vertex3(r._x, r._y, -10.0f);
+            GL.End();
+        }
+
+        public CollisionPlaneType Type
         {
             get => _type;
             set
@@ -1476,5 +1513,5 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-	}
+    }
 }

@@ -66,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 *(buint*) (address + 0x10 + i * 4) = offset;
                 _children[i].Rebuild(address + offset, size, true);
-                offset += (uint)size;
+                offset += (uint) size;
             }
         }
 
@@ -147,7 +147,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            BGMGEntry* header = (BGMGEntry*)address;
+            BGMGEntry* header = (BGMGEntry*) address;
             *header = new BGMGEntry(StageID, InfoIndex, Volume);
         }
     }

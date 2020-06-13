@@ -101,15 +101,17 @@ namespace BrawlCrate.NodeWrappers
             {
                 return null;
             }
+
             StringInputDialog d = new StringInputDialog("New TLST Entry", "");
             if (d.ShowDialog() == DialogResult.OK)
             {
                 // Get an unused expanded song id
                 uint songID = 0x0000F000;
-                while (Resource.Children.Count(n => ((TLSTEntryNode)n)._songID == songID) > 0)
+                while (Resource.Children.Count(n => ((TLSTEntryNode) n)._songID == songID) > 0)
                 {
                     songID++;
                 }
+
                 TLSTEntryNode node = new TLSTEntryNode
                 {
                     _name = d.resultString,
@@ -131,7 +133,7 @@ namespace BrawlCrate.NodeWrappers
         public void RegenIDs()
         {
             uint currentID = 0xF000;
-            foreach(TLSTEntryNode t in Resource.Children)
+            foreach (TLSTEntryNode t in Resource.Children)
             {
                 if (!string.IsNullOrEmpty(t.SongFileName))
                 {

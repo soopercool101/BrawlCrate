@@ -1,6 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace;
 using System;
+
 #if !DEBUG
 using System.ComponentModel;
 #endif

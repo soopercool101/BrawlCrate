@@ -811,7 +811,7 @@ namespace BrawlLib.Modeling.Collada
             {
                 if (model._objList.Count != 0)
                 {
-                    MDL0MaterialNode mat = new MDL0MaterialNode { _name = "Default" };
+                    MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default"};
                     (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
                     {
                         RasterColor = ColorSelChan.LightChannel0,

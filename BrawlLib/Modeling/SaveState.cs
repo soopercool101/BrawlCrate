@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
-
 using System.Collections.Generic;
 
 namespace BrawlLib.Modeling
@@ -9,11 +8,11 @@ namespace BrawlLib.Modeling
     {
         public bool _isUndo = true;
 
-		// This is an object that stores extra data information
-		// for just in case if something needs to be stored and 
-		// later retrieve it.
-		public object _tag = null;
-	}
+        // This is an object that stores extra data information
+        // for just in case if something needs to be stored and 
+        // later retrieve it.
+        public object _tag = null;
+    }
 
     public class CollisionState : SaveState
     {
@@ -23,8 +22,8 @@ namespace BrawlLib.Modeling
         public CollisionNode _collisionNode;
         public CollisionObject _collisionObject;
         public CollisionPlane _collisionPlane;
-        
-		public bool _split;
+
+        public bool _split;
         public bool _merge;
         public bool _create;
         public bool _delete;

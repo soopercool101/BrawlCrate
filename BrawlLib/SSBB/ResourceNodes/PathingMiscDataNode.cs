@@ -157,20 +157,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     int size = c.CalculateSize(true);
                     c.Rebuild(address + offset, size, true);
-                    offset += (uint)size;
+                    offset += (uint) size;
                 }
             }
         }
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
-            PathingMiscData* p = (PathingMiscData*)source.Address;
+            PathingMiscData* p = (PathingMiscData*) source.Address;
             uint sizeCheck = PathingMiscData.HeaderSize + PathingMiscDataEntry.Size * p->_count;
             if (p->_headerSize == PathingMiscData.HeaderSize && source.Length > sizeCheck)
             {
                 for (int i = 0; i < p->_count; i++)
                 {
-                    PathingMiscDataEntry* pe = (PathingMiscDataEntry*)(*p)[i];
+                    PathingMiscDataEntry* pe = (PathingMiscDataEntry*) (*p)[i];
                     sizeCheck += PathingMiscDataSubEntry.Size * pe->_count;
                     if (sizeCheck > source.Length)
                     {
@@ -283,7 +283,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 DataSource source = new DataSource(Parent.WorkingUncompressed.Address + currentOffset,
                     (int) PathingMiscDataSubEntry.Size);
-                new PathingMiscDataSubEntryNode { _name = $"Entry [{i}]"}.Initialize(this, source);
+                new PathingMiscDataSubEntryNode {_name = $"Entry [{i}]"}.Initialize(this, source);
                 currentOffset += PathingMiscDataSubEntry.Size;
             }
         }
@@ -297,13 +297,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             PathingMiscDataEntry* header = (PathingMiscDataEntry*) address;
             *header = new PathingMiscDataEntry();
-            header->_count = (ushort)(Children?.Count ?? 0);
+            header->_count = (ushort) (Children?.Count ?? 0);
             header->_id = _id;
             header->_dataOffset = ((PathingMiscDataNode) Parent).curDataOffset;
             foreach (ResourceNode n in Children)
             {
-                ((PathingMiscDataNode)Parent).curDataOffset += (uint)n.OnCalculateSize(true);
+                ((PathingMiscDataNode) Parent).curDataOffset += (uint) n.OnCalculateSize(true);
             }
+
             header->_unknown0x08 = _unknown0x08;
             header->_unknown0x0C = _unknown0x0C;
             header->_unknown0x10 = _unknown0x10;
@@ -329,7 +330,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class PathingMiscDataSubEntryNode : ResourceNode
     {
-        internal PathingMiscDataSubEntry* Header => (PathingMiscDataSubEntry*)WorkingUncompressed.Address;
+        internal PathingMiscDataSubEntry* Header => (PathingMiscDataSubEntry*) WorkingUncompressed.Address;
 
         private Vector3 _value;
 
@@ -343,14 +344,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         public override int OnCalculateSize(bool force)
         {
-            return (int)PathingMiscDataSubEntry.Size;
+            return (int) PathingMiscDataSubEntry.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            PathingMiscDataSubEntry* header = (PathingMiscDataSubEntry*)address;
+            PathingMiscDataSubEntry* header = (PathingMiscDataSubEntry*) address;
             *header = new PathingMiscDataSubEntry();
             header->_x = Value._x;
             header->_y = Value._y;

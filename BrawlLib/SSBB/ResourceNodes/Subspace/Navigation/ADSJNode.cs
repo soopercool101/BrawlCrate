@@ -27,6 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 new ADSJEntryNode().Initialize(this, source);
             }
         }
+
         protected override string GetName()
         {
             return base.GetName("Stepjumps");

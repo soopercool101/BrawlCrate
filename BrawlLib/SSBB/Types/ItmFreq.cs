@@ -29,7 +29,8 @@ namespace BrawlLib.SSBB.Types
             }
         }
 
-        public string Str => (Address + _DataLength + _OffCount * 4 + Size + _DataTable * ItmFreqOffPair.Size).GetUTF8String();
+        public string Str => (Address + _DataLength + _OffCount * 4 + Size + _DataTable * ItmFreqOffPair.Size)
+            .GetUTF8String();
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -68,7 +69,7 @@ namespace BrawlLib.SSBB.Types
 
         public ItmFreqOffEntry* Entries => (ItmFreqOffEntry*) Address;
 
-        public VoidPtr this[int index] => (byte*)Address + index * ItmFreqOffEntry.Size;
+        public VoidPtr this[int index] => (byte*) Address + index * ItmFreqOffEntry.Size;
 
         private VoidPtr Address
         {

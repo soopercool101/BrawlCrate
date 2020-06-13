@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 #if !MONO
 using System.Windows.Media.Imaging;
+
 #endif
 
 namespace BrawlLib.Internal.Windows.Forms
@@ -53,7 +54,7 @@ namespace BrawlLib.Internal.Windows.Forms
         }
 
         [Browsable(false)] [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public System.Drawing.Size? InitialSize;
+        public Size? InitialSize;
 
         [Browsable(false)] [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public WiiPixelFormat? InitialFormat;
@@ -424,6 +425,7 @@ namespace BrawlLib.Internal.Windows.Forms
             {
                 return LoadImagesPreservingPaletteInfo(path);
             }
+
             return LoadImages((Bitmap) Image.FromFile(path));
         }
 
@@ -493,6 +495,7 @@ namespace BrawlLib.Internal.Windows.Forms
             {
                 // Palette could not properly be parsed, load regular bitmap instead
             }
+
             sourceStream.Close();
 #endif
             return LoadImages((Bitmap) Image.FromFile(path));
@@ -999,7 +1002,8 @@ namespace BrawlLib.Internal.Windows.Forms
             }
             else if (_reftParent != null)
             {
-                _reftParent.AddChild(_origREFT = new REFTEntryNode {Name = Path.GetFileNameWithoutExtension(_imageSource)});
+                _reftParent.AddChild(_origREFT = new REFTEntryNode
+                    {Name = Path.GetFileNameWithoutExtension(_imageSource)});
                 _origREFT.ReplaceRaw(_textureData);
             }
             else if (_origTEX0 != null)
@@ -1177,9 +1181,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             chkPreview.Checked = true;
             chkPreview.CheckState = CheckState.Checked;
-            chkPreview.Location = new System.Drawing.Point(9, 15);
+            chkPreview.Location = new Point(9, 15);
             chkPreview.Name = "chkPreview";
-            chkPreview.Size = new System.Drawing.Size(66, 21);
+            chkPreview.Size = new Size(66, 21);
             chkPreview.TabIndex = 0;
             chkPreview.Text = "Preview";
             chkPreview.UseVisualStyleBackColor = true;
@@ -1193,9 +1197,9 @@ namespace BrawlLib.Internal.Windows.Forms
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(cboFormat);
             groupBox1.Controls.Add(label4);
-            groupBox1.Location = new System.Drawing.Point(3, 108);
+            groupBox1.Location = new Point(3, 108);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(179, 71);
+            groupBox1.Size = new Size(179, 71);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Image";
@@ -1204,7 +1208,7 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             numLOD.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                              | AnchorStyles.Right;
-            numLOD.Location = new System.Drawing.Point(75, 42);
+            numLOD.Location = new Point(75, 42);
             numLOD.Minimum = new decimal(new int[]
             {
                 1,
@@ -1213,7 +1217,7 @@ namespace BrawlLib.Internal.Windows.Forms
                 0
             });
             numLOD.Name = "numLOD";
-            numLOD.Size = new System.Drawing.Size(98, 20);
+            numLOD.Size = new Size(98, 20);
             numLOD.TabIndex = 3;
             numLOD.Value = new decimal(new int[]
             {
@@ -1226,9 +1230,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // label5
             // 
-            label5.Location = new System.Drawing.Point(6, 42);
+            label5.Location = new Point(6, 42);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(63, 20);
+            label5.Size = new Size(63, 20);
             label5.TabIndex = 2;
             label5.Text = "MIP Levels:";
             label5.TextAlign = ContentAlignment.MiddleRight;
@@ -1239,17 +1243,17 @@ namespace BrawlLib.Internal.Windows.Forms
                                                 | AnchorStyles.Right;
             cboFormat.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormat.FormattingEnabled = true;
-            cboFormat.Location = new System.Drawing.Point(75, 15);
+            cboFormat.Location = new Point(75, 15);
             cboFormat.Name = "cboFormat";
-            cboFormat.Size = new System.Drawing.Size(98, 21);
+            cboFormat.Size = new Size(98, 21);
             cboFormat.TabIndex = 1;
             cboFormat.SelectedIndexChanged += new EventHandler(cboFormat_SelectedIndexChanged);
             // 
             // label4
             // 
-            label4.Location = new System.Drawing.Point(6, 16);
+            label4.Location = new Point(6, 16);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(63, 20);
+            label4.Size = new Size(63, 20);
             label4.TabIndex = 0;
             label4.Text = "Format:";
             label4.TextAlign = ContentAlignment.MiddleRight;
@@ -1258,9 +1262,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             btnRecommend.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                    | AnchorStyles.Right;
-            btnRecommend.Location = new System.Drawing.Point(75, 14);
+            btnRecommend.Location = new Point(75, 14);
             btnRecommend.Name = "btnRecommend";
-            btnRecommend.Size = new System.Drawing.Size(98, 21);
+            btnRecommend.Size = new Size(98, 21);
             btnRecommend.TabIndex = 1;
             btnRecommend.Text = "Recommend";
             btnRecommend.UseVisualStyleBackColor = true;
@@ -1278,18 +1282,18 @@ namespace BrawlLib.Internal.Windows.Forms
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
-            groupBox2.Location = new System.Drawing.Point(3, 3);
+            groupBox2.Location = new Point(3, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(179, 99);
+            groupBox2.Size = new Size(179, 99);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Info";
             // 
             // label9
             // 
-            label9.Location = new System.Drawing.Point(6, 71);
+            label9.Location = new Point(6, 71);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(85, 20);
+            label9.Size = new Size(85, 20);
             label9.TabIndex = 6;
             label9.Text = "Data Size:";
             label9.TextAlign = ContentAlignment.MiddleRight;
@@ -1298,9 +1302,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             lblTransparencies.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                         | AnchorStyles.Right;
-            lblTransparencies.Location = new System.Drawing.Point(97, 51);
+            lblTransparencies.Location = new Point(97, 51);
             lblTransparencies.Name = "lblTransparencies";
-            lblTransparencies.Size = new System.Drawing.Size(76, 20);
+            lblTransparencies.Size = new Size(76, 20);
             lblTransparencies.TabIndex = 5;
             lblTransparencies.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -1308,9 +1312,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             lblDataSize.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                   | AnchorStyles.Right;
-            lblDataSize.Location = new System.Drawing.Point(97, 71);
+            lblDataSize.Location = new Point(97, 71);
             lblDataSize.Name = "lblDataSize";
-            lblDataSize.Size = new System.Drawing.Size(76, 20);
+            lblDataSize.Size = new Size(76, 20);
             lblDataSize.TabIndex = 7;
             lblDataSize.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -1318,9 +1322,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             lblColors.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                 | AnchorStyles.Right;
-            lblColors.Location = new System.Drawing.Point(97, 31);
+            lblColors.Location = new Point(97, 31);
             lblColors.Name = "lblColors";
-            lblColors.Size = new System.Drawing.Size(76, 20);
+            lblColors.Size = new Size(76, 20);
             lblColors.TabIndex = 3;
             lblColors.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -1328,35 +1332,35 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             lblSize.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                               | AnchorStyles.Right;
-            lblSize.Location = new System.Drawing.Point(94, 11);
+            lblSize.Location = new Point(94, 11);
             lblSize.Name = "lblSize";
-            lblSize.Size = new System.Drawing.Size(79, 20);
+            lblSize.Size = new Size(79, 20);
             lblSize.TabIndex = 1;
             lblSize.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
-            label3.Location = new System.Drawing.Point(6, 51);
+            label3.Location = new Point(6, 51);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(85, 20);
+            label3.Size = new Size(85, 20);
             label3.TabIndex = 4;
             label3.Text = "Transparent:";
             label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            label2.Location = new System.Drawing.Point(6, 31);
+            label2.Location = new Point(6, 31);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(85, 20);
+            label2.Size = new Size(85, 20);
             label2.TabIndex = 2;
             label2.Text = "Colors:";
             label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            label1.Location = new System.Drawing.Point(6, 11);
+            label1.Location = new Point(6, 11);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(85, 20);
+            label1.Size = new Size(85, 20);
             label1.TabIndex = 0;
             label1.Text = "Size:";
             label1.TextAlign = ContentAlignment.MiddleRight;
@@ -1364,9 +1368,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // btnOkay
             // 
             btnOkay.Anchor = AnchorStyles.Bottom;
-            btnOkay.Location = new System.Drawing.Point(8, 157);
+            btnOkay.Location = new Point(8, 157);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(80, 23);
+            btnOkay.Size = new Size(80, 23);
             btnOkay.TabIndex = 11;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
@@ -1375,9 +1379,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom;
-            btnCancel.Location = new System.Drawing.Point(94, 157);
+            btnCancel.Location = new Point(94, 157);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(80, 23);
+            btnCancel.Size = new Size(80, 23);
             btnCancel.TabIndex = 12;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -1394,19 +1398,19 @@ namespace BrawlLib.Internal.Windows.Forms
             grpPalette.Controls.Add(label7);
             grpPalette.Controls.Add(cboPaletteFormat);
             grpPalette.Controls.Add(label6);
-            grpPalette.Location = new System.Drawing.Point(3, 185);
+            grpPalette.Location = new Point(3, 185);
             grpPalette.Name = "grpPalette";
             grpPalette.RightToLeft = RightToLeft.No;
-            grpPalette.Size = new System.Drawing.Size(179, 118);
+            grpPalette.Size = new Size(179, 118);
             grpPalette.TabIndex = 5;
             grpPalette.TabStop = false;
             grpPalette.Text = "Palette";
             // 
             // chkImportPalette
             // 
-            ChkImportPalette.Location = new System.Drawing.Point(9, 95);
+            ChkImportPalette.Location = new Point(9, 95);
             ChkImportPalette.Name = "ChkImportPalette";
-            ChkImportPalette.Size = new System.Drawing.Size(164, 17);
+            ChkImportPalette.Size = new Size(164, 17);
             ChkImportPalette.TabIndex = 6;
             ChkImportPalette.Text = "Import Palette";
             ChkImportPalette.UseVisualStyleBackColor = true;
@@ -1418,17 +1422,17 @@ namespace BrawlLib.Internal.Windows.Forms
                                                    | AnchorStyles.Right;
             cboAlgorithm.DropDownStyle = ComboBoxStyle.DropDownList;
             cboAlgorithm.FormattingEnabled = true;
-            cboAlgorithm.Location = new System.Drawing.Point(75, 68);
+            cboAlgorithm.Location = new Point(75, 68);
             cboAlgorithm.Name = "cboAlgorithm";
-            cboAlgorithm.Size = new System.Drawing.Size(98, 21);
+            cboAlgorithm.Size = new Size(98, 21);
             cboAlgorithm.TabIndex = 5;
             cboAlgorithm.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label8
             // 
-            label8.Location = new System.Drawing.Point(6, 69);
+            label8.Location = new Point(6, 69);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(63, 20);
+            label8.Size = new Size(63, 20);
             label8.TabIndex = 4;
             label8.Text = "Algorithm:";
             label8.TextAlign = ContentAlignment.MiddleRight;
@@ -1444,7 +1448,7 @@ namespace BrawlLib.Internal.Windows.Forms
                 0,
                 0
             });
-            numPaletteCount.Location = new System.Drawing.Point(75, 42);
+            numPaletteCount.Location = new Point(75, 42);
             numPaletteCount.Maximum = new decimal(new int[]
             {
                 256,
@@ -1460,7 +1464,7 @@ namespace BrawlLib.Internal.Windows.Forms
                 0
             });
             numPaletteCount.Name = "numPaletteCount";
-            numPaletteCount.Size = new System.Drawing.Size(97, 20);
+            numPaletteCount.Size = new Size(97, 20);
             numPaletteCount.TabIndex = 3;
             numPaletteCount.Value = new decimal(new int[]
             {
@@ -1473,9 +1477,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // label7
             // 
-            label7.Location = new System.Drawing.Point(6, 42);
+            label7.Location = new Point(6, 42);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(63, 20);
+            label7.Size = new Size(63, 20);
             label7.TabIndex = 2;
             label7.Text = "Colors:";
             label7.TextAlign = ContentAlignment.MiddleRight;
@@ -1486,17 +1490,17 @@ namespace BrawlLib.Internal.Windows.Forms
                                                        | AnchorStyles.Right;
             cboPaletteFormat.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPaletteFormat.FormattingEnabled = true;
-            cboPaletteFormat.Location = new System.Drawing.Point(75, 15);
+            cboPaletteFormat.Location = new Point(75, 15);
             cboPaletteFormat.Name = "cboPaletteFormat";
-            cboPaletteFormat.Size = new System.Drawing.Size(98, 21);
+            cboPaletteFormat.Size = new Size(98, 21);
             cboPaletteFormat.TabIndex = 1;
             cboPaletteFormat.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label6
             // 
-            label6.Location = new System.Drawing.Point(6, 16);
+            label6.Location = new Point(6, 16);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(63, 20);
+            label6.Size = new Size(63, 20);
             label6.TabIndex = 0;
             label6.Text = "Format:";
             label6.TextAlign = ContentAlignment.MiddleRight;
@@ -1519,18 +1523,18 @@ namespace BrawlLib.Internal.Windows.Forms
             groupBox4.Controls.Add(btnRecommend);
             groupBox4.Controls.Add(chkPreview);
             groupBox4.Controls.Add(btnCancel);
-            groupBox4.Location = new System.Drawing.Point(3, 309);
+            groupBox4.Location = new Point(3, 309);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new System.Drawing.Size(179, 189);
+            groupBox4.Size = new Size(179, 189);
             groupBox4.TabIndex = 7;
             groupBox4.TabStop = false;
             // 
             // chkSwapRGB
             // 
             chkSwapRGB.AutoSize = true;
-            chkSwapRGB.Location = new System.Drawing.Point(9, 110);
+            chkSwapRGB.Location = new Point(9, 110);
             chkSwapRGB.Name = "chkSwapRGB";
-            chkSwapRGB.Size = new System.Drawing.Size(79, 17);
+            chkSwapRGB.Size = new Size(79, 17);
             chkSwapRGB.TabIndex = 8;
             chkSwapRGB.Text = "Swap RGB";
             chkSwapRGB.UseVisualStyleBackColor = true;
@@ -1539,9 +1543,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // chkSwapAlpha
             // 
             chkSwapAlpha.AutoSize = true;
-            chkSwapAlpha.Location = new System.Drawing.Point(94, 110);
+            chkSwapAlpha.Location = new Point(94, 110);
             chkSwapAlpha.Name = "chkSwapAlpha";
-            chkSwapAlpha.Size = new System.Drawing.Size(83, 17);
+            chkSwapAlpha.Size = new Size(83, 17);
             chkSwapAlpha.TabIndex = 9;
             chkSwapAlpha.Text = "Swap Alpha";
             chkSwapAlpha.UseVisualStyleBackColor = true;
@@ -1552,9 +1556,9 @@ namespace BrawlLib.Internal.Windows.Forms
             chkConstrainProps.AutoSize = true;
             chkConstrainProps.Checked = true;
             chkConstrainProps.CheckState = CheckState.Checked;
-            chkConstrainProps.Location = new System.Drawing.Point(9, 87);
+            chkConstrainProps.Location = new Point(9, 87);
             chkConstrainProps.Name = "chkConstrainProps";
-            chkConstrainProps.Size = new System.Drawing.Size(126, 17);
+            chkConstrainProps.Size = new Size(126, 17);
             chkConstrainProps.TabIndex = 7;
             chkConstrainProps.Text = "Constrain Proportions";
             chkConstrainProps.UseVisualStyleBackColor = true;
@@ -1564,9 +1568,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             btnApplyDims.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                    | AnchorStyles.Right;
-            btnApplyDims.Location = new System.Drawing.Point(125, 60);
+            btnApplyDims.Location = new Point(125, 60);
             btnApplyDims.Name = "btnApplyDims";
-            btnApplyDims.Size = new System.Drawing.Size(48, 21);
+            btnApplyDims.Size = new Size(48, 21);
             btnApplyDims.TabIndex = 6;
             btnApplyDims.Text = "Apply";
             btnApplyDims.UseVisualStyleBackColor = true;
@@ -1574,9 +1578,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // label11
             // 
-            label11.Location = new System.Drawing.Point(58, 60);
+            label11.Location = new Point(58, 60);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(15, 21);
+            label11.Size = new Size(15, 21);
             label11.TabIndex = 4;
             label11.Text = "X";
             label11.TextAlign = ContentAlignment.MiddleCenter;
@@ -1585,7 +1589,7 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             numH.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numH.Location = new System.Drawing.Point(73, 60);
+            numH.Location = new Point(73, 60);
             numH.Maximum = new decimal(new int[]
             {
                 1024,
@@ -1601,7 +1605,7 @@ namespace BrawlLib.Internal.Windows.Forms
                 0
             });
             numH.Name = "numH";
-            numH.Size = new System.Drawing.Size(46, 20);
+            numH.Size = new Size(46, 20);
             numH.TabIndex = 5;
             numH.Value = new decimal(new int[]
             {
@@ -1616,7 +1620,7 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             numW.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
-            numW.Location = new System.Drawing.Point(9, 61);
+            numW.Location = new Point(9, 61);
             numW.Maximum = new decimal(new int[]
             {
                 1024,
@@ -1632,7 +1636,7 @@ namespace BrawlLib.Internal.Windows.Forms
                 0
             });
             numW.Name = "numW";
-            numW.Size = new System.Drawing.Size(46, 20);
+            numW.Size = new Size(46, 20);
             numW.TabIndex = 3;
             numW.Value = new decimal(new int[]
             {
@@ -1645,9 +1649,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // 
             // label10
             // 
-            label10.Location = new System.Drawing.Point(6, 38);
+            label10.Location = new Point(6, 38);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(81, 20);
+            label10.Size = new Size(81, 20);
             label10.TabIndex = 2;
             label10.Text = "Dimensions:";
             label10.TextAlign = ContentAlignment.MiddleLeft;
@@ -1659,19 +1663,19 @@ namespace BrawlLib.Internal.Windows.Forms
             panel1.Controls.Add(groupBox4);
             panel1.Controls.Add(grpPalette);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new System.Drawing.Point(379, 0);
+            panel1.Location = new Point(379, 0);
             panel1.Margin = new Padding(3, 3, 0, 3);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(185, 501);
+            panel1.Size = new Size(185, 501);
             panel1.TabIndex = 9;
             // 
             // txtPath
             // 
             txtPath.Dock = DockStyle.Fill;
-            txtPath.Location = new System.Drawing.Point(92, 0);
+            txtPath.Location = new Point(92, 0);
             txtPath.Name = "txtPath";
             txtPath.ReadOnly = true;
-            txtPath.Size = new System.Drawing.Size(212, 20);
+            txtPath.Size = new Size(212, 20);
             txtPath.TabIndex = 2;
             // 
             // panel2
@@ -1681,15 +1685,15 @@ namespace BrawlLib.Internal.Windows.Forms
             panel2.Controls.Add(label12);
             panel2.Controls.Add(button1);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(0, 0);
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(379, 20);
+            panel2.Size = new Size(379, 20);
             panel2.TabIndex = 1;
             // 
             // numMIPPreview
             // 
             numMIPPreview.Dock = DockStyle.Left;
-            numMIPPreview.Location = new System.Drawing.Point(41, 0);
+            numMIPPreview.Location = new Point(41, 0);
             numMIPPreview.Minimum = new decimal(new int[]
             {
                 1,
@@ -1698,7 +1702,7 @@ namespace BrawlLib.Internal.Windows.Forms
                 0
             });
             numMIPPreview.Name = "numMIPPreview";
-            numMIPPreview.Size = new System.Drawing.Size(51, 20);
+            numMIPPreview.Size = new Size(51, 20);
             numMIPPreview.TabIndex = 1;
             numMIPPreview.Value = new decimal(new int[]
             {
@@ -1713,9 +1717,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // label12
             // 
             label12.Dock = DockStyle.Left;
-            label12.Location = new System.Drawing.Point(0, 0);
+            label12.Location = new Point(0, 0);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(41, 20);
+            label12.Size = new Size(41, 20);
             label12.TabIndex = 0;
             label12.Text = "MIP:";
             label12.TextAlign = ContentAlignment.MiddleCenter;
@@ -1724,9 +1728,9 @@ namespace BrawlLib.Internal.Windows.Forms
             // button1
             // 
             button1.Dock = DockStyle.Right;
-            button1.Location = new System.Drawing.Point(304, 0);
+            button1.Location = new Point(304, 0);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(75, 20);
+            button1.Size = new Size(75, 20);
             button1.TabIndex = 3;
             button1.Text = "Browse...";
             button1.UseVisualStyleBackColor = true;
@@ -1735,19 +1739,19 @@ namespace BrawlLib.Internal.Windows.Forms
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new System.Drawing.Point(0, 20);
+            pictureBox1.Location = new Point(0, 20);
             pictureBox1.Margin = new Padding(0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Picture = null;
-            pictureBox1.Size = new System.Drawing.Size(379, 481);
+            pictureBox1.Size = new Size(379, 481);
             pictureBox1.TabIndex = 0;
             // 
             // chkSwapAlphaRGB
             // 
             chkSwapAlphaRGB.AutoSize = true;
-            chkSwapAlphaRGB.Location = new System.Drawing.Point(9, 133);
+            chkSwapAlphaRGB.Location = new Point(9, 133);
             chkSwapAlphaRGB.Name = "chkSwapAlphaRGB";
-            chkSwapAlphaRGB.Size = new System.Drawing.Size(131, 17);
+            chkSwapAlphaRGB.Size = new Size(131, 17);
             chkSwapAlphaRGB.TabIndex = 10;
             chkSwapAlphaRGB.Text = "Swap Alpha with RGB";
             chkSwapAlphaRGB.UseVisualStyleBackColor = true;
@@ -1756,12 +1760,12 @@ namespace BrawlLib.Internal.Windows.Forms
             // TextureConverterDialog
             // 
             AcceptButton = btnOkay;
-            ClientSize = new System.Drawing.Size(564, 501);
+            ClientSize = new Size(564, 501);
             Controls.Add(pictureBox1);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            MinimumSize = new System.Drawing.Size(0, 470);
+            MinimumSize = new Size(0, 470);
             Name = "TextureConverterDialog";
             ShowIcon = false;
             ShowInTaskbar = false;

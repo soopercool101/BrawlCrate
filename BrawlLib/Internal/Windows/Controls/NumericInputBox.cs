@@ -290,8 +290,8 @@ namespace BrawlLib.Internal.Windows.Controls
 
             if (string.IsNullOrWhiteSpace(Text))
             {
-				_value = float.NaN;
-				return;
+                _value = float.NaN;
+                return;
             }
             else if (!_integral)
             {

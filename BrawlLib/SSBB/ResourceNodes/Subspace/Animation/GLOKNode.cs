@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GLOKEntryNode : ResourceNode
     {
-        internal GLOKEntry* Header => (GLOKEntry*)WorkingUncompressed.Address;
+        internal GLOKEntry* Header => (GLOKEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private int _unknown0x00;
@@ -42,6 +42,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         [DisplayName("Model Data ID")]
         [Description("File Index to stgposition model to use for this lock.")]
@@ -54,6 +55,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         public byte Unk2
         {
@@ -64,6 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         public byte Unk3
         {
@@ -74,6 +77,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         public byte Unk4
         {
@@ -84,6 +88,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger1
@@ -95,6 +100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger2
@@ -106,6 +112,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger3
@@ -117,6 +124,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("Camera")]
         [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger4
@@ -156,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            GLOKEntry* hdr = (GLOKEntry*)address;
+            GLOKEntry* hdr = (GLOKEntry*) address;
             hdr->_unknown0x00 = _unknown0x00;
             hdr->_modelDataID = _modelDataID;
             hdr->_unkflag2 = _unkflag2;

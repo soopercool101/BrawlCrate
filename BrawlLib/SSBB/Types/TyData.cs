@@ -35,10 +35,12 @@ namespace BrawlLib.SSBB.Types
         public string GetEntryName(int index)
         {
             return (Address + HeaderSize + _dataOffset + _dataEntries * 4 + _entries * TyEntry.Size +
-                   ((TyEntry*) this[index])->_strOffset).GetUTF8String();
+                    ((TyEntry*) this[index])->_strOffset).GetUTF8String();
         }
 
-        public VoidPtr this[int index] => (byte*)Address + HeaderSize + _dataOffset + _dataEntries * 4 + index * TyEntry.Size;
+        public VoidPtr this[int index] =>
+            (byte*) Address + HeaderSize + _dataOffset + _dataEntries * 4 + index * TyEntry.Size;
+
         private VoidPtr Address
         {
             get
@@ -70,28 +72,28 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown0x0C;
         public bint _unknown0x10;
         public bshort _unknown0x14;
-        public bshort _alphabeticalOrder; // 0x16
-        public bshort _unknown0x18; // 0x18
-        public bshort _unknown0x1A; // 0x1A
-        public blong _characterFlags; //0x1C
-        public bint _unknown0x24; // Ranges from 0-3, Enum?
-        public buint _unknown0x28; // Always 0x00030000, offset?
-        public bint _effectType; // 0x2C
-        public bfloat _effectStrength; // 0x30
-        public bfloat _unknown0x34; // 0 for item carry, 1 otherwise?
-        public bfloat _unknown0x38; // Rarity?
-        public bint _pad0x3C; // Always 0?
-        public bint _pad0x40; // Always 0?
-        public bint _pad0x44; // Always 0?
-        public bint _pad0x48; // Always 0?
-        public bfloat _unknown0x4C; // Always 1.0?
-        public bshort _textureWidthSmall; // Something to do with size?
+        public bshort _alphabeticalOrder;  // 0x16
+        public bshort _unknown0x18;        // 0x18
+        public bshort _unknown0x1A;        // 0x1A
+        public blong _characterFlags;      //0x1C
+        public bint _unknown0x24;          // Ranges from 0-3, Enum?
+        public buint _unknown0x28;         // Always 0x00030000, offset?
+        public bint _effectType;           // 0x2C
+        public bfloat _effectStrength;     // 0x30
+        public bfloat _unknown0x34;        // 0 for item carry, 1 otherwise?
+        public bfloat _unknown0x38;        // Rarity?
+        public bint _pad0x3C;              // Always 0?
+        public bint _pad0x40;              // Always 0?
+        public bint _pad0x44;              // Always 0?
+        public bint _pad0x48;              // Always 0?
+        public bfloat _unknown0x4C;        // Always 1.0?
+        public bshort _textureWidthSmall;  // Something to do with size?
         public bshort _textureLengthSmall; // Something to do with size?
-        public bshort _textureWidth; // Something to do with size?
-        public bshort _textureLength; // Something to do with size?
-        public bint _sizeOrder; // 0x58
-        public bint _pad0x5C; // Always 0?
-        public bint _pad0x60; // Always 0?
+        public bshort _textureWidth;       // Something to do with size?
+        public bshort _textureLength;      // Something to do with size?
+        public bint _sizeOrder;            // 0x58
+        public bint _pad0x5C;              // Always 0?
+        public bint _pad0x60;              // Always 0?
     }
 
 
@@ -101,7 +103,8 @@ namespace BrawlLib.SSBB.Types
         public static readonly uint HeaderSize = 0x04;
         public buint _entries;
 
-        public VoidPtr this[int index] => (byte*)Address + HeaderSize + index * TySealVertDataEntry.Size;
+        public VoidPtr this[int index] => (byte*) Address + HeaderSize + index * TySealVertDataEntry.Size;
+
         private VoidPtr Address
         {
             get
@@ -133,8 +136,8 @@ namespace BrawlLib.SSBB.Types
         public buint _brresOffset;
         public bint _gameIcon1;
         public bint _gameIcon2;
-        public bint _nameIndex; // Name
-        public bint _gameIndex; // Games 
+        public bint _nameIndex;        // Name
+        public bint _gameIndex;        // Games 
         public bint _descriptionIndex; // Description
         public bint _series;
         public bint _category;

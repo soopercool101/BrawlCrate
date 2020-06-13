@@ -309,7 +309,7 @@ namespace BrawlCrate.NodeWrappers
                 string tempPath = Path.GetTempFileName();
                 _resource.Export(tempPath);
                 // Initialize node in a way that will not cause crashes
-                ResourceNode rNode2 = new MDL0BoneNode { _name = n.Name + suffix };
+                ResourceNode rNode2 = new MDL0BoneNode {_name = n.Name + suffix};
                 rNode2.Replace(tempPath);
                 duplicatedParent.AddChild(rNode2);
                 DuplicateHelper(n, rNode2, suffix);
