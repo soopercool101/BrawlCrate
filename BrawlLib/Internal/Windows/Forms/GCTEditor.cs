@@ -197,8 +197,8 @@ namespace BrawlLib.Internal.Windows.Forms
                     }
                     else
                     {
-                        node._writeInfo = writeInfo;
                         node.Merge();
+                        node.Rebuild(true);
                         node.Export(node._origPath = path);
                         node.IsDirty = false;
                         txtPath.Text = path;
