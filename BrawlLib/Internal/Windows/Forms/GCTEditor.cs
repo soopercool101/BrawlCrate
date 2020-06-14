@@ -1,4 +1,4 @@
-﻿using BrawlLib.SSBB;
+using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
@@ -197,6 +197,7 @@ namespace BrawlLib.Internal.Windows.Forms
                     }
                     else
                     {
+                        node._writeInfo = writeInfo;
                         node.Merge();
                         node.Rebuild(true);
                         node.Export(node._origPath = path);
