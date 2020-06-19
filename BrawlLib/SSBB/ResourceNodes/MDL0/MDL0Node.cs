@@ -126,7 +126,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("G3D Model")]
         [Description(
             "How many points are stored in the model file and sent to the GPU every frame. A lower value is better.")]
-        public int NumFacepoints => _numFacepoints;
+        public int NumFacepoints
+        {
+            get
+            {
+                if (_objList == null)
+                {
+                    return 0;
+                }
+
+                int i = 0;
+                foreach (MDL0ObjectNode n in _objList)
+                {
+                    i += n._numFacepoints;
+                }
+
+                return i;
+            }
+        }
 
         [Category("G3D Model")]
         [Description(
@@ -152,11 +169,28 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("G3D Model")]
         [Description("The number of individual triangle faces this model has.")]
-        public int NumTriangles => _numTriangles;
+        public int NumTriangles
+        {
+            get
+            {
+                if (_objList == null)
+                {
+                    return 0;
+                }
+
+                int i = 0;
+                foreach (MDL0ObjectNode n in _objList)
+                {
+                    i += n._numFaces;
+                }
+
+                return i;
+            }
+        }
 
         [Category("G3D Model")]
         [Description("The number of matrices used in this model (bones + weighted influences).")]
-        public int NumNodes => _numNodes;
+        public int NumNodes => _influences.Count + _linker.BoneCache.Length;
 
         protected override void OnVersionChanged(int previousVersion)
         {
