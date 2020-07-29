@@ -227,6 +227,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return CHR0JsonImporter.Convert(path);
                 }
 
+                if (path.EndsWith(".smd", StringComparison.OrdinalIgnoreCase))
+                {
+                    return CHR0SMDImporter.Convert(path);
+                }
+
                 //if (path.EndsWith(".bvh", StringComparison.OrdinalIgnoreCase))
                 //    return BVH.Import(path);
                 //if (path.EndsWith(".vmd", StringComparison.OrdinalIgnoreCase))
