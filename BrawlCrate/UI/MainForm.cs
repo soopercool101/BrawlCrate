@@ -508,7 +508,7 @@ namespace BrawlCrate.UI
                 string fileName = ShowFullPath
                     ? Program.RootPath
                     : Program.RootPath.TrimEnd('\\').Substring(Program.RootPath.TrimEnd('\\').LastIndexOf('\\') + 1);
-                Text = $"{Program.AssemblyTitleShort} - {fileName}";
+                Text = ShowFullPath ? $"{Program.AssemblyTitleShort} - {fileName}" : $"{fileName} - {Program.AssemblyTitleFull}";
             }
             else
             {
