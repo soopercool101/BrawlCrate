@@ -680,7 +680,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _origPath = origSource.Map.FilePath;
             }
 
-            Parent = parent;
+            _parent = parent;
+            _parent?.Children.Add(this);
 
             _children = null;
 

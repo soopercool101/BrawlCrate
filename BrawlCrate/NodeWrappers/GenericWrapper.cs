@@ -405,6 +405,7 @@ namespace BrawlCrate.NodeWrappers
                     MessageBoxIcon.Error);
                 return null;
             }
+            rNode2._name = "";
 
             // Remove the node from the parent temporarily
             rNode2.Remove();
