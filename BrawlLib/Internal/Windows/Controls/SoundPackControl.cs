@@ -616,11 +616,11 @@ namespace BrawlLib.Internal.Windows.Controls
 
                 ListViewItem v = i;
                 string type = v.SubItems[1].Text;
-                string dir = "\\" + type + "\\";
+                string dir = type + "\\";
                 string fileName = i._node.Name.Replace('/', '_').Replace('<', '(').Replace('>', ')') + ".b" +
                                   type.ToLower();
 
-                string newPath = _targetNode._origPath.Substring(0, _targetNode._origPath.LastIndexOf('\\')) + dir;
+                string newPath = _targetNode._origPath.Substring(0, _targetNode._origPath.LastIndexOf('\\')) + "\\" + dir;
                 if (!Directory.Exists(newPath))
                 {
                     Directory.CreateDirectory(newPath);
