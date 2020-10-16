@@ -612,7 +612,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public void Reverse(bool appendReverse)
+        public CHR0Node Reverse(bool appendReverse)
         {
             using (CHR0Node tempReversedCHR0 = new CHR0Node
                 {Name = Name, Loop = Loop, FrameCount = FrameCount})
@@ -641,10 +641,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (appendReverse)
                 {
                     Append(tempReversedCHR0);
+                    return this;
                 }
                 else
                 {
                     Replace(tempReversedCHR0);
+                    return tempReversedCHR0;
                 }
             }
         }

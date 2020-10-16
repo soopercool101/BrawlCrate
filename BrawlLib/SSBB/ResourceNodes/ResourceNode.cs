@@ -121,6 +121,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             return base.GetHashCode();
         }
+
+        public byte this[uint i] => (Address + i).Byte;
     }
 
     public abstract class ResourceNode : IDisposable

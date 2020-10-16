@@ -2260,6 +2260,162 @@ Default: 0x03 (Rotation)
 	/EndDescription
 0100    // Flags for which bytes are underlined
 
+sora_main_main Section [5]: 0x00002680
+Group Records Button: Move Up ID
+The button switched to when pressing up while the Group Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x02 (Notices)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x00002684
+Group Records Button: Move Down ID
+The button switched to when pressing down while the Group Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x02 (Notices)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x00002688
+Group Records Button: Move Left ID
+The button switched to when pressing left while the Group Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x01 (Smash Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x0000268C
+Group Records Button: Move Right ID
+The button switched to when pressing right while the Group Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x01 (Smash Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x00002690
+Smash Records Button: Move Up ID
+The button switched to when pressing up while the Smash Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x02 (Notices)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x00002694
+Smash Records Button: Move Down ID
+The button switched to when pressing down while the Smash Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x02 (Notices)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x00002698
+Smash Records Button: Move Left ID
+The button switched to when pressing left while the Smash Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x00 (Group Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x0000269C
+Smash Records Button: Move Right ID
+The button switched to when pressing right while the Smash Records button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x00 (Group Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x000026A0
+Notices Button: Move Up ID
+The button switched to when pressing up while the Notices button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x00 (Group Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x000026A4
+Notices Button: Move Down ID
+The button switched to when pressing down while the Notices button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x00 (Group Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x000026A8
+Notices Button: Move Left ID
+The button switched to when pressing left while the Notices button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x00 (Group Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
+sora_main_main Section [5]: 0x000026AC
+Notices Button: Move Right ID
+The button switched to when pressing right while the Notices button is selected.
+
+Records Menu Button IDs:
+00 - Group Records
+01 - Smash Records
+02 - Notices
+
+Default: 0x00 (Group Records)
+	/EndDescription
+0100    // Flags for which bytes are underlined
+
 sora_menu_main Section [5]: 0x00003780
 Trophy Gallery Button: Move Up ID
 The button switched to when pressing up while the Trophy Gallery button is selected.
