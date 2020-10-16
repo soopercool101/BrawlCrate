@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.34-h3";
+        public static readonly string TagName = "v0.35";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,14 +41,18 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.34! Here's what's new in this release:
-- (Hotfix 3) External Module Functions will now keep their red background after selection
-- (Hotfix 2) Fixes function name loading for maps
-- (Hotfix 1) Fixes loading for sora.map
-- Adds support for Module Maps to be loaded from InternalDocumentation/Module/maps
-- Adds option to standardize Trophy internal names to BRRES names
-- Improve TrophyData saving
-- Fix crash when using 50cc conversion without stock palettes
+            @"Updated to BrawlCrate v0.35! Here's what's new in this release:
+- Adds TargetFunction string to REL Commands when loading Module Maps
+- Facepoint and Triangle counters now update in real time rather than on save
+- Item IDs now populate for Green Greens and Distant Planet modules
+- Allow cancellation of Export Selected
+- Supersoft collisions now render with more transparency
+- Allow manual linking of a Collision Object's linked model and bone
+- Update internal documentation
+- Show filename before program name if not using the full filepath
+- Fix bug in which exporting an unchanged text codeset would fail
+- Fix bug in which P+ Knuckles would not properly load MASQ data
+- Fix bug in which duplicating a TEX0 with a palette would prompt to delete its palette
 
 Full changelog and documentation can be viewed from the help menu.";
 

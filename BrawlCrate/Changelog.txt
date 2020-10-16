@@ -1,4 +1,4 @@
-﻿
+
 BrawlCrate - v0.34 Hotfix 3
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
@@ -16,6 +16,19 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
  
+ - BrawlCrate v0.35 - (10/16/2020)
+ . Adds TargetFunction string to REL Commands when loading Module Maps
+ . Facepoint and Triangle counters now update in real time rather than on save
+ . Item IDs now populate for Green Greens and Distant Planet modules
+ . Allow cancellation of Export Selected
+ . Supersoft collisions now render with more transparency
+ . Allow manual linking of a Collision Object's linked model and bone
+ . Update internal documentation to v0.35
+ . Show filename before program name if not using the full filepath
+ . Fix bug in which exporting an unchanged text codeset would fail
+ . Fix bug in which P+ Knuckles would not properly load MASQ data
+ . Fix bug in which duplicating a TEX0 with a palette would prompt to delete its palette
+
  - BrawlCrate v0.34 Hotfix 3 - (5/15/2020)
  . Wrappers with backcolors will now properly keep their color after selection
  
