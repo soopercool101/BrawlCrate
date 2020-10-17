@@ -42,7 +42,7 @@ namespace BrawlCrate
         /// </summary>
         public static readonly string UpdateMessage =
             @"Updated to BrawlCrate v0.35 Hotfix 1! Here's what's new in this release:
-- (Hotfix 1) Fix bug in which TPL files would not be properly duplicated
+- (Hotfix 1) Fix bug in which TPL files would not be properly populated
 - Adds TargetFunction string to REL Commands when loading Module Maps
 - Facepoint and Triangle counters now update in real time rather than on save
 - Item IDs now populate for Green Greens and Distant Planet modules
