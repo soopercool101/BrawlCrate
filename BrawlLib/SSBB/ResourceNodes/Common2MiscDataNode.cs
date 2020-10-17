@@ -198,7 +198,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (currentString - address > length)
             {
-                throw new Exception($"Wrong amount of memory allocated for rebuild of common2 data (Expected: {Header->_Length} | Actual: {length})");
+                throw new Exception($"Wrong amount of memory allocated for rebuild of common2 data (Expected: {currentString - address} | Actual: {length})");
             }
 
             Header->_Length = length;
