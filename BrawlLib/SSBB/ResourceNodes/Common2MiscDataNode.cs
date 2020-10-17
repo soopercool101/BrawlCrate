@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
@@ -200,7 +200,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (Header->_Length != length)
             {
-                throw new Exception("Wrong amount of memory allocated for rebuild of common2 data");
+                throw new Exception($"Wrong amount of memory allocated for rebuild of common2 data (Expected: {Header->_Length} | Actual: {length})");
             }
         }
 
