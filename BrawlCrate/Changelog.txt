@@ -18,6 +18,8 @@ they be held accountable for the manner in which it is used.
  
  - BrawlCrate v0.35 Hotfix 1 - (10/17/2020)
  . Fix bug in which TPL files would populate improperly
+ . Update IronPython from 2.7.9 to 2.7.10
+ . Update Octokit from 0.46.0 to 0.48.0
  
  - BrawlCrate v0.35 - (10/16/2020)
  . Adds TargetFunction string to REL Commands when loading Module Maps
