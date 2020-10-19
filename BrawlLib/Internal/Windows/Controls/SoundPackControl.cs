@@ -692,7 +692,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 };
                 _targetNode.Files.Insert(i.Index, ext);
 
-                ext.ExtPath = (dir + fileName).Replace('\\', '/');
+                ext.ExtPath = (dir + fileName).Replace('\\', '/').Substring(1);
                 ext.Name = $"[{i.Index}] {ext.ExtPath}";
 
                 if ((i._node is RBNKNode || i._node is RSARExtFileNode) && rbnkRefs != null)
