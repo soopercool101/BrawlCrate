@@ -294,12 +294,45 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public RGBAPixel Value5
+        public byte MusicVolume
         {
-            get => _values.GetRGBA(4);
+            get => _values.GetByte(4, 0);
             set
             {
-                _values.SetRGBA(4, value);
+                _values.SetByte(4, 0, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte SoundVolume
+        {
+            get => _values.GetByte(4, 1);
+            set
+            {
+                _values.SetByte(4, 1, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte Value5c
+        {
+            get => _values.GetByte(4, 2);
+            set
+            {
+                _values.SetByte(4, 2, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte Value5d
+        {
+            get => _values.GetByte(4, 3);
+            set
+            {
+                _values.SetByte(4, 3, value);
                 SignalPropertyChange();
             }
         }
