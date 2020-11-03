@@ -1,4 +1,4 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -251,6 +251,7 @@ namespace BrawlLib.Internal.Windows.Controls
             this.btnMoveUp.TabIndex = 6;
             this.btnMoveUp.Text = "↑";
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
@@ -260,6 +261,7 @@ namespace BrawlLib.Internal.Windows.Controls
             this.btnMoveDown.TabIndex = 5;
             this.btnMoveDown.Text = "↓";
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // btnRemove
             // 
