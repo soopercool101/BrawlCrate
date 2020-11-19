@@ -35,7 +35,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnRebuild(address, length, force);
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((RASD*) source.Address)->_header._tag == RASD.Tag ? new RASDNode() : null;
         }

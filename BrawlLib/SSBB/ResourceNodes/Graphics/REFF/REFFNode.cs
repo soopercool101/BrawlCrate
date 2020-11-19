@@ -82,7 +82,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((REFF*) source.Address)->_tag == REFF.Tag ? new REFFNode() : null;
         }

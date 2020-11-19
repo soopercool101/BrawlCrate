@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public abstract unsafe class StageTableNode : ARCEntryNode, IAttributeList
+    public abstract unsafe class StageTableNode : ARCEntryNode, MultipleInterpretationIAttributeList
     {
         internal virtual int EntrySize => 4;
 
@@ -244,7 +244,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 $"{BitConverter.ToInt16(EntryList.ToArray(), index * 4 + 2)}, {BitConverter.ToInt16(EntryList.ToArray(), index * 4)}";
         }
 
-        public virtual IEnumerable<AttributeInterpretation> GetPossibleInterpretations()
+        public IEnumerable<AttributeInterpretation> GetPossibleInterpretations()
         {
             ReadConfig();
             ResourceNode root = this;

@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    internal delegate ResourceNode ResourceParser(DataSource source);
+    internal delegate ResourceNode ResourceParser(DataSource source, ResourceNode parent);
 
     //Factory is for initializing root node, and unknown child nodes.
     public static class NodeFactory
@@ -25,6 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {"DOL", typeof(DOLNode)},
             {"REL", typeof(RELNode)},
             {"MASQ", typeof(MasqueradeNode)},
+            {"MSBIN", typeof(MSBinNode)},
             {"CMM", typeof(CMMNode)}
         };
 
@@ -83,7 +84,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
                 DataSource source = new DataSource(map);
-                if ((node = FromSource(parent, source, t)) == null)
+
+                bool supportsCompression = true;
+                if(!(t is null))
+                {
+                    ResourceNode n = Activator.CreateInstance(t) as ResourceNode;
+                    supportsCompression = n?.supportsCompression ?? true;
+                }
+
+                if ((node = FromSource(parent, source, t, supportsCompression)) == null)
                 {
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 
@@ -142,7 +151,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromSource(ResourceNode parent, DataSource source, Type t, bool supportCompression)
         {
-            ResourceNode n = null;
+            ResourceNode n;
 
             if (t != null && (n = Activator.CreateInstance(t) as ResourceNode) != null)
             {
@@ -161,7 +170,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     n.Initialize(parent, source);
                 }
             }
-            else if ((n = GetRaw(source)) != null)
+            else if ((n = GetRaw(source, parent)) != null)
             {
                 n.Initialize(parent, source);
             }
@@ -171,7 +180,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (uncomp != null)
                 {
                     DataSource d = new DataSource(uncomp);
-                    n = GetRaw(d);
+                    n = GetRaw(d, parent);
                     n?.Initialize(parent, source, d);
                 }
             }
@@ -181,16 +190,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode GetRaw(VoidPtr address, int length)
         {
-            return GetRaw(new DataSource(address, length));
+            return GetRaw(new DataSource(address, length), null);
         }
 
-        public static ResourceNode GetRaw(DataSource source)
+        public static ResourceNode GetRaw(DataSource source, ResourceNode parent)
         {
             ResourceNode n;
 
             foreach (ResourceParser d in _parsers)
             {
-                if ((n = d(source)) != null)
+                if ((n = d(source, parent)) != null)
                 {
                     return n;
                 }
@@ -198,7 +207,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             foreach (ResourceParser d in _parsersGeneric)
             {
-                if ((n = d(source)) != null)
+                if ((n = d(source, parent)) != null)
                 {
                     return n;
                 }

@@ -346,7 +346,7 @@ namespace BrawlLib.Internal.Windows.Forms.Moveset
             if (_targetNode.action != null)
             {
                 _targetNode._value = -1;
-                (_targetNode as MoveDefEventOffsetNode).action._actionRefs.Remove(_targetNode);
+                _targetNode.action._actionRefs.Remove(_targetNode);
             }
 
             if (listBox.SelectedIndex >= 3)

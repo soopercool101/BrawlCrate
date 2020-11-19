@@ -88,10 +88,12 @@ namespace BrawlCrate.API
         {
             List<T> nodes = new List<T>();
 
-            if (RootNode != null)
+            foreach (ResourceNode node in NodeList)
             {
-                nodes = ResourceNode.FindAllSubNodes(RootNode).Where(n => n.GetType().IsInstanceOfType(typeof(T)))
-                    .Cast<T>().ToList();
+                if (node is T typedNode)
+                {
+                    nodes.Add(typedNode);
+                }
             }
 
             return nodes;
@@ -181,14 +183,17 @@ namespace BrawlCrate.API
         /// </summary>
         public static List<T> NodeWrapperListOfType<T>() where T : BaseWrapper
         {
-            List<T> nodes = new List<T>();
+            List<T> wrappers = new List<T>();
 
-            if (RootNodeWrapper != null)
+            foreach (BaseWrapper wrapper in NodeWrapperList)
             {
-                nodes = NodeWrapperList.Where(n => n.GetType().IsInstanceOfType(typeof(T))).Cast<T>().ToList();
+                if (wrapper is T typedWrapper)
+                {
+                    wrappers.Add(typedWrapper);
+                }
             }
 
-            return nodes;
+            return wrappers;
         }
 
         #endregion

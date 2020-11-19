@@ -209,7 +209,7 @@ namespace BrawlCrate.UI
                         changelog?.WaitForExit();
                     }
 #else
-                    UpdaterHelper.CheckUpdate(manual || Properties.Settings.Default.APIAutoUpdate, true,
+                    UpdaterHelper.CheckUpdate(manual, true,
                         Program.TagName, manual, Program.RootPath ?? "<null>",
                         _docUpdates, !manual && _autoUpdate, Properties.Settings.Default.APIAutoUpdate);
 #endif
@@ -508,7 +508,7 @@ namespace BrawlCrate.UI
                 string fileName = ShowFullPath
                     ? Program.RootPath
                     : Program.RootPath.TrimEnd('\\').Substring(Program.RootPath.TrimEnd('\\').LastIndexOf('\\') + 1);
-                Text = $"{Program.AssemblyTitleShort} - {fileName}";
+                Text = ShowFullPath ? $"{Program.AssemblyTitleShort} - {fileName}" : $"{fileName} - {Program.AssemblyTitleFull}";
             }
             else
             {
@@ -550,6 +550,7 @@ namespace BrawlCrate.UI
             ppcDisassembler1.SetTarget(null, 0, null);
             modelPanel1.ClearAll();
             mdL0ObjectControl1.SetTarget(null);
+            hexBox1.Visible = false;
             ((DynamicFileByteProvider) hexBox1.ByteProvider)?.Dispose();
 
             Control newControl = null;
@@ -746,10 +747,10 @@ namespace BrawlCrate.UI
                     previewPanel2.RenderingTarget = i;
                     newControl = previewPanel2;
                 }
-                else if (node is StageTableNode stageTableNode)
+                else if (node is MultipleInterpretationIAttributeList table && table.NumEntries > 0)
                 {
-                    attributeGrid1.AddRange(stageTableNode.GetPossibleInterpretations());
-                    attributeGrid1.TargetNode = stageTableNode;
+                    attributeGrid1.AddRange(table.GetPossibleInterpretations());
+                    attributeGrid1.TargetNode = table;
                     newControl = attributeGrid1;
                 }
                 else if (node is ASLSEntryNode aslsEntry)

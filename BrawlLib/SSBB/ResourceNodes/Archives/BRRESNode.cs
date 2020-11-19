@@ -767,7 +767,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((BRESHeader*) source.Address)->_tag == BRESHeader.Tag ? new BRRESNode() : null;
         }

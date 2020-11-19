@@ -46,7 +46,8 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Collision", null, NewCollisionAction),
                 new ToolStripMenuItem("MSBin", null, NewMSBinAction),
                 new ToolStripMenuItem("Redirect", null, NewRedirectAction),
-                new ToolStripMenuItem("SCLA", null, NewSCLAAction),
+                new ToolStripMenuItem("Stage Collision Attributes", null, NewSCLAAction),
+                new ToolStripMenuItem("Stage Parameters", null, NewSTPMAction),
                 new ToolStripMenuItem("Stage Table", null,
                     new ToolStripMenuItem("STDT", null, NewStageTableAction<STDTNode>),
                     new ToolStripMenuItem("TBCL", null, NewStageTableAction<TBCLNode>),
@@ -57,7 +58,7 @@ namespace BrawlCrate.NodeWrappers
                     new ToolStripMenuItem("TBRM", null, NewStageTableAction<TBRMNode>),
                     new ToolStripMenuItem("TBST", null, NewStageTableAction<TBSTNode>)
                 ),
-                new ToolStripMenuItem("STPM", null, NewSTPMAction)
+                new ToolStripMenuItem("Stepjump", null, NewADSJAction)
             ));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
                 new ToolStripMenuItem("ARChive", null, ImportARCAction),
@@ -66,7 +67,8 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Collision", null, ImportCollisionAction),
                 new ToolStripMenuItem("Havok Data", null, ImportHavokAction),
                 new ToolStripMenuItem("MSBin", null, ImportMSBinAction),
-                new ToolStripMenuItem("SCLA", null, ImportSCLAAction),
+                new ToolStripMenuItem("Stage Collision Attributes", null, ImportSCLAAction),
+                new ToolStripMenuItem("Stage Parameters", null, ImportSTPMAction),
                 new ToolStripMenuItem("Stage Table", null,
                     new ToolStripMenuItem("STDT", null, ImportSTDTAction),
                     new ToolStripMenuItem("TBCL", null, ImportTBCLAction),
@@ -77,7 +79,7 @@ namespace BrawlCrate.NodeWrappers
                     new ToolStripMenuItem("TBRM", null, ImportTBRMAction),
                     new ToolStripMenuItem("TBST", null, ImportTBSTAction)
                 ),
-                new ToolStripMenuItem("STPM", null, ImportSTPMAction)
+                new ToolStripMenuItem("Stepjump", null, ImportADSJAction)
             ));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Preview All Models", null, PreviewAllAction));
@@ -131,6 +133,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void NewSTPMAction(object sender, EventArgs e)
         {
             GetInstance<ARCWrapper>().NewSTPM();
+        }
+
+        protected static void NewADSJAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewADSJ();
         }
 
         protected static void NewStageTableAction<T>(object sender, EventArgs e) where T : StageTableNode, new()
@@ -187,6 +194,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void ImportSTPMAction(object sender, EventArgs e)
         {
             GetInstance<ARCWrapper>().ImportSTPM();
+        }
+
+        protected static void ImportADSJAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportADSJ();
         }
 
         protected static void ImportTBCLAction(object sender, EventArgs e)
@@ -345,6 +357,17 @@ namespace BrawlCrate.NodeWrappers
         public STPMNode NewSTPM()
         {
             STPMNode node = new STPMNode {FileType = ARCFileType.MiscData};
+            _resource.AddChild(node);
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public ADSJNode NewADSJ()
+        {
+            ADSJNode node = new ADSJNode { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -570,6 +593,17 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     NewHavok().Replace(path);
+                }
+            }
+        }
+
+        public void ImportADSJ()
+        {
+            if (Program.OpenFiles(FileFilters.ADSJ, out string[] paths) > 0)
+            {
+                foreach (string path in paths)
+                {
+                    NewADSJ().Replace(path);
                 }
             }
         }

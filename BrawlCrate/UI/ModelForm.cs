@@ -201,12 +201,12 @@ namespace BrawlCrate.UI
                             continue;
                         }
 
-                        MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
-                            .FirstOrDefault() as MDL0Node;
+                        MDL0Node model = _models
+                            .FirstOrDefault(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName) as MDL0Node;
 
                         MDL0BoneNode bone =
-                            model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                                .FirstOrDefault() as MDL0BoneNode;
+                            model?._linker?.BoneCache?
+                            .FirstOrDefault(b => b.Name == obj._boneName);
                         if (bone != null)
                         {
                             obj._linkedBone = bone;
@@ -224,9 +224,7 @@ namespace BrawlCrate.UI
         protected override void OnClosed(EventArgs e)
         {
             MainForm.Instance.Visible =
-                Properties.Settings.Default.ViewerSettings.HideMainWindow
-                    ? ModelEditControl.Instances.Count == 0
-                    : true;
+                !Properties.Settings.Default.ViewerSettings.HideMainWindow || ModelEditControl.Instances.Count == 0;
 
             MainForm.Instance.modelPanel1.Capture();
             MainForm.Instance.resourceTree_SelectionChanged(this, null);
@@ -258,8 +256,8 @@ namespace BrawlCrate.UI
         {
             if (modelEditControl1.TargetModel != null)
             {
-                Text = string.Format("{1} - Advanced Model Editor - {0}",
-                    ((ResourceNode) modelEditControl1.TargetModel).Name, Program.AssemblyTitleShort);
+                Text =
+                    $"{Program.AssemblyTitleShort} - Advanced Model Editor - {((ResourceNode) modelEditControl1.TargetModel).Name}";
             }
             else
             {

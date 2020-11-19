@@ -9,6 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MDL0UVNode : MDL0EntryNode
     {
         internal MDL0UVData* Header => (MDL0UVData*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.MDL0UV;
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
         private MDL0UVData _hdr = new MDL0UVData {_format = (int) WiiVertexComponentType.Float};

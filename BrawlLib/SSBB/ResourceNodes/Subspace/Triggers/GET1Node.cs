@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         protected override Type SubEntryType => typeof(GET1EntryNode);
         protected override string baseName => "Area Triggers";
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GET1" ? new GET1Node() : null;
         }
@@ -50,7 +50,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Triggers")]
         [DisplayName("Trigger1")]
-        //[TypeConverter(typeof(UInt32HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger
         {
             get => _trigger1;
@@ -65,7 +65,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Triggers")]
         [DisplayName("Trigger2")]
-        //[TypeConverter(typeof(UInt32HexTypeConverter))]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Trigger2
         {
             get => _trigger2;

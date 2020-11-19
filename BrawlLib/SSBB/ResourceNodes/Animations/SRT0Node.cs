@@ -272,7 +272,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((BRESCommonHeader*) source.Address)->_tag == SRT0v4.Tag ? new SRT0Node() : null;
         }

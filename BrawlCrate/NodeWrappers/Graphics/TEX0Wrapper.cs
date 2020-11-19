@@ -543,9 +543,9 @@ namespace BrawlCrate.NodeWrappers
                     }
 
                     tx0.Name = "InfStc." + tx0.texSortNum.ToString("0000");
-                    if (((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
-                        .FindChildrenByName("InfStc." + x.ToString("000"))
-                        .Count() > 0)
+                    if (((BRRESNode) _resource.Parent?.Parent)?.GetFolder<PLT0Node>() != null &&
+                        ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
+                        .FindChildrenByName("InfStc." + x.ToString("000")).Any())
                     {
                         foreach (PLT0Node p in ((BRRESNode) _resource.Parent.Parent).GetFolder<PLT0Node>()
                             .FindChildrenByName(

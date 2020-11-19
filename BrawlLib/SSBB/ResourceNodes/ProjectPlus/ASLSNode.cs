@@ -1,10 +1,8 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
-using System.IO;
-#if !DEBUG
 using System.ComponentModel;
-#endif
+using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
@@ -60,22 +58,15 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
                 ((ASLSEntryNode) n).StrOffset = (ushort)strOffset;
                 n.Rebuild(address + offset, size, true);
                 offset += (uint)size;
-                strOffset += n.Name.Length + 1;
+                strOffset += n.Name.UTF8Length() + 1;
             }
             foreach (ResourceNode n in Children)
             {
-                sbyte* ptr = (sbyte*)(address + offset);
-                string name = n.Name;
-                for (int j = 0; j < name.Length; j++)
-                {
-                    ptr[j] = (sbyte)name[j];
-                }
-                ptr[name.Length] = 0;
-                offset += (uint)(n.Name.Length + 1);
+                offset += address.WriteUTF8String(n.Name, true, offset);
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "ASLS" ? new ASLSNode() : null;
         }
@@ -85,9 +76,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     {
         internal ASLSEntry* Header => (ASLSEntry*)WorkingUncompressed.Address;
 
-#if !DEBUG
-        [Browsable(false)]
-#endif
+        [TypeConverter(typeof(HexUShortConverter))]
         public ushort ButtonFlags
         {
             get => _buttonFlags;
@@ -120,7 +109,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         private ushort _buttonFlags;
-        public ushort StrOffset;
+        internal ushort StrOffset;
 
         public override int OnCalculateSize(bool force)
         {
@@ -138,8 +127,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         public override bool OnInitialize()
         {
             _buttonFlags = Header->_buttonFlags;
-            _name = new string((sbyte*) ((VoidPtr) ((ASLSNode) Parent).Header) +
-                               ((ASLSNode) Parent).Header->_nameOffset + Header->_nameOffset);
+            _name = Parent.WorkingUncompressed.Address.GetUTF8String(
+                ((ASLSNode) Parent).Header->_nameOffset + Header->_nameOffset);
             return false;
         }
     }

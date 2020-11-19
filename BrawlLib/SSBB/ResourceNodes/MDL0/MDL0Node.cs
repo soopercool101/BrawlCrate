@@ -126,7 +126,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("G3D Model")]
         [Description(
             "How many points are stored in the model file and sent to the GPU every frame. A lower value is better.")]
-        public int NumFacepoints => _numFacepoints;
+        public int NumFacepoints
+        {
+            get
+            {
+                if (_objList == null)
+                {
+                    return 0;
+                }
+
+                int i = 0;
+                foreach (MDL0ObjectNode n in _objList)
+                {
+                    i += n._numFacepoints;
+                }
+
+                return i;
+            }
+        }
 
         [Category("G3D Model")]
         [Description(
@@ -152,11 +169,28 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("G3D Model")]
         [Description("The number of individual triangle faces this model has.")]
-        public int NumTriangles => _numTriangles;
+        public int NumTriangles
+        {
+            get
+            {
+                if (_objList == null)
+                {
+                    return 0;
+                }
+
+                int i = 0;
+                foreach (MDL0ObjectNode n in _objList)
+                {
+                    i += n._numFaces;
+                }
+
+                return i;
+            }
+        }
 
         [Category("G3D Model")]
         [Description("The number of matrices used in this model (bones + weighted influences).")]
-        public int NumNodes => _numNodes;
+        public int NumNodes => _influences.Count + _linker.BoneCache.Length;
 
         protected override void OnVersionChanged(int previousVersion)
         {
@@ -1121,7 +1155,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 repObj.DeferUpdateAssets();
                 if (repObj.MatrixNode is MDL0BoneNode)
                 {
-                    repObj.MatrixNode = FindOrAddBoneCopy(repObj.MatrixNode as MDL0BoneNode) as IMatrixNode;
+                    repObj.MatrixNode = FindOrAddBoneCopy(repObj.MatrixNode as MDL0BoneNode);
                 }
                 else
                 {
@@ -1265,6 +1299,25 @@ namespace BrawlLib.SSBB.ResourceNodes
             replacement.Populate();
             replacement.ResetToBindState();
 
+            // Save texture matrix settings
+            Dictionary<string, bool[]> texMatrixSettings = new Dictionary<string, bool[]>();
+            if (_matGroup != null && _matGroup.Children.Count > 0)
+            {
+                foreach (MDL0MaterialNode m in _matGroup.Children.Where(m => m.HasChildren))
+                {
+                    bool[] texRefSettings = new bool[m.Children.Count];
+                    foreach (MDL0MaterialRefNode r in m.Children)
+                    {
+                        texRefSettings[r.Index] = r.HasTextureMatrix;
+                    }
+
+                    if (!texMatrixSettings.ContainsKey(m.Name))
+                    {
+                        texMatrixSettings.Add(m.Name, texRefSettings);
+                    }
+                }
+            }
+
             bool[] addGroup = new bool[8];
             while (replacement._objList != null && replacement._objList.Count > 0)
             {
@@ -1277,6 +1330,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             FinishReplace(addGroup);
+
+            // Copy texture matrix settings from before
+            if (_matGroup != null && _matGroup.Children.Count > 0)
+            {
+                foreach (MDL0MaterialNode m in _matGroup.Children.Where(m => m.HasChildren && texMatrixSettings.ContainsKey(m.Name)))
+                {
+                    if (texMatrixSettings[m.Name].Length == m.Children.Count)
+                    {
+                        foreach (MDL0MaterialRefNode r in m.Children)
+                        {
+                            r.HasTextureMatrix = texMatrixSettings[m.Name][r.Index];
+                        }
+                    }
+                }
+            }
         }
 
         private void FinishReplace(bool[] addGroup)
@@ -3543,7 +3611,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((MDL0Header*) source.Address)->_header._tag == MDL0Header.Tag ? new MDL0Node() : null;
         }

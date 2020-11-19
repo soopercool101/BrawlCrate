@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Updater.UI
@@ -13,6 +14,11 @@ namespace Updater.UI
                 "Here's what's changed since your last update (oldest to newest). Full changelog can be found on Github or Discord";
             richTextBox1.Text += changelog;
             richTextBox1.ReadOnly = true;
+        }
+
+        private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(e.LinkText);
         }
 
         private void CanaryChangelogViewer_Load(object sender, EventArgs e)

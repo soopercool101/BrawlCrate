@@ -235,7 +235,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return box;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             CollisionHeader* header = (CollisionHeader*) source.Address;
 
@@ -320,11 +320,39 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Collision Binding")]
         [DisplayName("Linked Model")]
-        public string LinkModel => _modelName;
+        public string LinkModel
+        {
+            get => _modelName;
+            set
+            {
+                _modelName = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Collision Binding")]
+        [DisplayName("Linked Bone Index")]
+        public int LinkBoneIndex
+        {
+            get => _boneIndex;
+            set
+            {
+                _boneIndex = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Category("Collision Binding")]
         [DisplayName("Linked Bone")]
-        public string LinkBone => _boneName;
+        public string LinkBone
+        {
+            get => _boneName;
+            set
+            {
+                _boneName = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Category("Flags")]
         public bool UnknownFlag
@@ -1067,10 +1095,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _flags = (_flags & ~CollisionPlaneFlags.Rotating) | (value ? CollisionPlaneFlags.Rotating : 0);
         }
 
-        public bool IsUnknownFlag3
+        public bool IsSuperSoft
         {
-            get => (_flags & CollisionPlaneFlags.Unknown3) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.Unknown3) | (value ? CollisionPlaneFlags.Unknown3 : 0);
+            get => (_flags & CollisionPlaneFlags.SuperSoft) != 0;
+            set => _flags = (_flags & ~CollisionPlaneFlags.SuperSoft) | (value ? CollisionPlaneFlags.SuperSoft : 0);
         }
 
         public bool IsUnknownFlag4
@@ -1079,7 +1107,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _flags = (_flags & ~CollisionPlaneFlags.Unknown4) | (value ? CollisionPlaneFlags.Unknown4 : 0);
         }
 
-        public bool HasUnknownFlag => IsUnknownFlag1 || IsUnknownFlag3 || IsUnknownFlag4 || IsUnknownSSE;
+        public bool HasUnknownFlag => IsUnknownFlag1 || IsUnknownFlag4 || IsUnknownSSE;
 
         public double GetAngleRadians()
         {
@@ -1226,6 +1254,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (!CollidableByCharacters)
             {
                 alpha = 0.5f;
+            }
+            else if (IsSuperSoft)
+            {
+                alpha = 0.65f;
             }
 
             Vector2 l = _linkLeft.Value;

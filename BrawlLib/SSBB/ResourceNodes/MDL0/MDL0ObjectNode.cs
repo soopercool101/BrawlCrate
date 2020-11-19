@@ -1068,11 +1068,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                         else if (model._linker.BoneCache != null && model._linker.BoneCache.Length > 0)
                         {
-                            MatrixNode = model._linker.BoneCache[0] as IMatrixNode;
+                            MatrixNode = model._linker.BoneCache[0];
                         }
                         else if (model._linker.NodeCache != null && model._linker.NodeCache.Length > 0)
                         {
-                            MatrixNode = model._linker.NodeCache[0] as IMatrixNode;
+                            MatrixNode = model._linker.NodeCache[0];
                         }
 
                         //At this point, if a single bind still hasn't been found

@@ -455,14 +455,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("\tCharacteristics")]
         [Description("Usage Unknown.")]
         [DisplayName("Jab Flag")]
-        public string JabFlag
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint JabFlag
         {
-            get => "0x" + _jabFlag.ToString("X8");
+            get => _jabFlag;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _jabFlag = Convert.ToUInt32(field0, fromBase);
+                _jabFlag = value;
                 SignalPropertyChange();
             }
         }
@@ -939,14 +938,13 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("\tSound")]
         [Description("Specifies the sound bank that is loaded for the fighter.")]
         [DisplayName("Sound Bank")]
-        public string SoundBank
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint SoundBank
         {
-            get => "0x" + _soundbank.ToString("X8");
+            get => _soundbank;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _soundbank = Convert.ToUInt32(field0, fromBase);
+                _soundbank = value;
                 SignalPropertyChange();
             }
         }
@@ -954,14 +952,13 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("\tSound")]
         [Description("Specifies the sound bank that is loaded for the fighter.")]
         [DisplayName("Kirby Sound Bank")]
-        public string KirbySoundBank
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint KirbySoundBank
         {
-            get => "0x" + _kirbySoundbank.ToString("X8");
+            get => _kirbySoundbank;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _kirbySoundbank = Convert.ToUInt32(field0, fromBase);
+                _kirbySoundbank = value;
                 SignalPropertyChange();
             }
         }
@@ -982,14 +979,13 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("Misc")]
         [Description("Usage Unknown.")]
         [DisplayName("Entry Flag")]
-        public string EntryFlag
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint EntryFlag
         {
-            get => "0x" + _entryArticleFlag.ToString("X8");
+            get => _entryArticleFlag;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _entryArticleFlag = Convert.ToUInt32(field0, fromBase);
+                _entryArticleFlag = value;
                 SignalPropertyChange();
             }
         }
@@ -1011,14 +1007,13 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("Misc")]
         [Description("Specifies what Texture Loader to use when loading the fighter's entry articles.")]
         [DisplayName("Texture Loader")]
-        public string TextureLoader
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint TextureLoader
         {
-            get => "0x" + _textureLoad.ToString("X8");
+            get => _textureLoad;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _textureLoad = Convert.ToUInt32(field0, fromBase);
+                _textureLoad = value;
                 SignalPropertyChange();
             }
         }
@@ -1026,14 +1021,13 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("Misc")]
         [Description("Usage Unknown.")]
         [DisplayName("U12 Flag")]
-        public string U12Flag
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint U12Flag
         {
-            get => "0x" + _u12Flag.ToString("X8");
+            get => _u12Flag;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _u12Flag = Convert.ToUInt32(field0, fromBase);
+                _u12Flag = value;
                 SignalPropertyChange();
             }
         }
@@ -1041,14 +1035,13 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("Misc")]
         [Description("Usage Unknown.")]
         [DisplayName("U13 Flag")]
-        public string U13Flag
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint U13Flag
         {
-            get => "0x" + _u13Flag.ToString("X8");
+            get => _u13Flag;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _u13Flag = Convert.ToUInt32(field0, fromBase);
+                _u13Flag = value;
                 SignalPropertyChange();
             }
         }
@@ -1290,7 +1283,7 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             return false;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((FCFG*) source.Address)->_tag == FCFG.Tag1 || ((FCFG*) source.Address)->_tag == FCFG.Tag2
                 ? new FCFGNode()

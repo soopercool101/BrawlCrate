@@ -59,7 +59,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             "38 - Snake",
             "39 - Sonic",
             "40 - Mewtwo",
-            "41 - Roy"
+            "41 - Roy",
+            "42 - Knuckles"
         };
 
         public static readonly string[] MasqueradeInternalNames =
@@ -105,7 +106,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             "Snake",
             "Sonic",
             "Mewtwo",
-            "Roy"
+            "Roy",
+            "Knuckles"
         };
 
         public override void OnPopulate()

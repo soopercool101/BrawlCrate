@@ -6,7 +6,7 @@ There are some software requirements to set up the solution:
 
 1.  [Visual Studio (2017 or later)](https://visualstudio.microsoft.com/vs/)
 2.  [.NET Framework v4.7.2 Developer Pack](https://dotnet.microsoft.com/download/thank-you/net472-developer-pack)
-3.  [Rustup](https://win.rustup.rs/) (i686-pc-windows-mvsc toolchain)
+3.  [Rustup](https://win.rustup.rs/) (i686-pc-windows-msvc host triple)
 
 Building the project on non-Windows operating systems is not officially supported at this time.
 

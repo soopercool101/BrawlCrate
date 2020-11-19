@@ -157,7 +157,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((EFLSHeader*) source.Address)->_tag == EFLSHeader.Tag ? new EFLSNode() : null;
         }

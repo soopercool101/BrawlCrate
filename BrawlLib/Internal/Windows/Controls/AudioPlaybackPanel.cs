@@ -523,6 +523,10 @@ namespace BrawlLib.Internal.Windows.Controls
                         AudioEnded?.Invoke(this, new EventArgs());
                     }
                 }
+                else if (CurrentBuffer.ReadSample >= _targetStream.Samples)
+                {
+                    Seek(0);
+                }
             }
         }
 

@@ -199,7 +199,7 @@ namespace BrawlCrate.UI.Model_Previewer
 
             UpdateAll();
 
-            base.Show(_form as IWin32Window);
+            base.Show(_form);
         }
 
         private ModelPanelViewport current;

@@ -290,18 +290,22 @@ namespace BrawlCrate.NodeWrappers
             {
                 ExportAllFormatDialog dialog = new ExportAllFormatDialog("Export Selected", ext.Key, ext.Value);
 
-                if (dialog.AutoSelect || dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
+                DialogResult? d = null;
+                if (dialog.AutoSelect || dialog.Valid && (d = dialog.ShowDialog()) == DialogResult.OK)
                 {
                     chosenExtensions.Add(ext.Key, dialog.SelectedExtension);
                 }
+                else if (d != null)
+                {
+                    return;
+                }
             }
 
-            string invalidChars =
-                System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+            string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
             string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
             foreach (GenericWrapper n in nodes)
             {
-                chosenExtensions.TryGetValue(n.GetType(), out string ext);
+                chosenExtensions.TryGetValue(n._resource.GetType(), out string ext);
                 if (!string.IsNullOrEmpty(ext) && !ext.StartsWith("."))
                 {
                     ext = ext.Insert(0, ".");
@@ -401,6 +405,7 @@ namespace BrawlCrate.NodeWrappers
                     MessageBoxIcon.Error);
                 return null;
             }
+            rNode2._name = "";
 
             // Remove the node from the parent temporarily
             rNode2.Remove();

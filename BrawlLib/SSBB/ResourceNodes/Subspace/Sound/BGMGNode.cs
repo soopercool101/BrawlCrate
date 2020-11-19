@@ -9,21 +9,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.BGMG;
         internal BGMG* Header => (BGMG*) WorkingUncompressed.Address;
 
-        private int _entries;
-        public int Entries => _entries;
+        protected override string GetName()
+        {
+            return base.GetName("BGMG");
+        }
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            _entries = Header->_count;
-
-            if (_name == null)
-            {
-                _name = "BGMG";
-            }
 
             return Header->_count > 0;
         }
+
 
         public override void OnPopulate()
         {
@@ -65,17 +62,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             uint offset = (uint) (0x10 + Children.Count * 4);
             for (int i = 0; i < Children.Count; i++)
             {
-                if (i > 0)
-                {
-                    offset += (uint) Children[i - 1].CalculateSize(false);
-                }
+                int size = _children[i].CalculateSize(true);
 
                 *(buint*) (address + 0x10 + i * 4) = offset;
-                _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
+                _children[i].Rebuild(address + offset, size, true);
+                offset += (uint)size;
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((BGMG*) source.Address)->_tag == BGMG.Tag ? new BGMGNode() : null;
         }
@@ -85,8 +80,6 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal BGMGEntry* Header => (BGMGEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
-        public int Entries { get; private set; }
-
 
         private string _stageID;
 
@@ -141,10 +134,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = $"Song[{Index}]";
+                _name = $"Song [{Index}]";
             }
 
             return false;
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return BGMGEntry.Size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            BGMGEntry* header = (BGMGEntry*)address;
+            *header = new BGMGEntry(StageID, InfoIndex, Volume);
         }
     }
 }

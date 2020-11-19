@@ -267,7 +267,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     //Create node and parse
                     source = new DataSource((int) rsar + group->_headerOffset + gEntry->_headerOffset,
                         gEntry->_headerLength);
-                    if ((n = NodeFactory.GetRaw(source) as RSARFileNode) == null)
+                    if ((n = NodeFactory.GetRaw(source, this) as RSARFileNode) == null)
                     {
                         n = new RSARFileNode();
                     }
@@ -400,7 +400,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _entryList.Clear();
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((RSARHeader*) source.Address)->_header._tag == RSARHeader.Tag ? new RSARNode() : null;
         }

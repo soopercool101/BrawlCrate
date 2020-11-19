@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Models;
 using System;
@@ -41,12 +41,7 @@ namespace BrawlLib.Modeling
                 return _parent.MatrixNode;
             }
 
-            if (MatrixNode != null)
-            {
-                return MatrixNode;
-            }
-
-            return null;
+            return MatrixNode;
         }
 
         public Matrix GetMatrix()

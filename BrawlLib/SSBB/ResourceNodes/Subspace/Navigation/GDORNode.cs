@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.GDOR;
         protected override string baseName => "Subspace Doors";
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GDOR" ? new GDORNode() : null;
         }
@@ -22,7 +22,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.GDBF;
         protected override string baseName => "Factory Doors";
 
-        internal new static ResourceNode TryParse(DataSource source)
+        internal new static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GDBF" ? new GDBFNode() : null;
         }

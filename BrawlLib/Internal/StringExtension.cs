@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace BrawlLib.Internal
 {
@@ -157,6 +158,11 @@ namespace BrawlLib.Internal
             }
 
             return m;
+        }
+
+        public static int UTF8Length(this string s)
+        {
+            return Encoding.UTF8.GetByteCount(s);
         }
     }
 }

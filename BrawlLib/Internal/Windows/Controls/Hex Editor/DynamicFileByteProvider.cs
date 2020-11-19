@@ -92,6 +92,10 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
         public byte ReadByte(long index)
         {
             DataBlock block = GetDataBlock(index, out long blockOffset);
+            if (block == null)
+            {
+                return 0;
+            }
             FileDataBlock fileBlock = block as FileDataBlock;
             if (fileBlock != null)
             {
@@ -484,6 +488,10 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
 
             // Iterate over the blocks until the block containing the required offset is encountered.
             blockOffset = 0;
+            if (_dataMap == null)
+            {
+                return null;
+            }
             for (DataBlock block = _dataMap.FirstBlock; block != null; block = block.NextBlock)
             {
                 if (blockOffset <= findOffset && blockOffset + block.Length > findOffset || block.NextBlock == null)

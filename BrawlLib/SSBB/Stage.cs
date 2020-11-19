@@ -444,7 +444,7 @@ namespace BrawlLib.SSBB
         public static readonly Stage[] RelList = new Stage[]
         {
             //        ID    Display Name                .rel filename           Name without STG
-            new Stage(0x00, "STGCUSTOM##.pac", "st_custom##.rel", "custom"),
+            new Stage(0x00, "STGCUSTOM##.pac / STGEX##.pac", "st_custom##.rel /  st_ex##.rel", "custom / ex"),
             new Stage(0x01, "Battlefield", "st_battle.rel", "battlefield"),
             new Stage(0x02, "Final Destination", "st_final.rel", "final"),
             new Stage(0x03, "Delfino Plaza", "st_dolpic.rel", "dolpic"),

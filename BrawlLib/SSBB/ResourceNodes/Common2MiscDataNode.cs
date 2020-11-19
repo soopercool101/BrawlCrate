@@ -196,12 +196,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            Header->_Length = currentString - address;
-
-            if (Header->_Length != length)
+            if (currentString - address > length)
             {
-                throw new Exception("Wrong amount of memory allocated for rebuild of common2 data");
+                throw new Exception($"Wrong amount of memory allocated for rebuild of common2 data (Expected: {currentString - address} | Actual: {length})");
             }
+
+            Header->_Length = length;
         }
 
         public override int OnCalculateSize(bool force)
@@ -217,7 +217,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        internal static ResourceNode TryParseGeneric(DataSource source)
+        internal static ResourceNode TryParseGeneric(DataSource source, ResourceNode parent)
         {
             Common2TblHeader* header = (Common2TblHeader*) source.Address;
             return header->_Length == source.Length &&

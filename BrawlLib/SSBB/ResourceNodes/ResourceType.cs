@@ -55,6 +55,9 @@
         SndBgmTitleDataEntry,
         SndBgmTitleDataFolder,
         ClassicStageTbl,
+        Sticker,
+        TrophyList,
+        Trophy,
 
         //Stage Tables
         TBCL,
@@ -89,6 +92,11 @@
         MDL0Bone,
         MDL0Object,
         MDL0Shader,
+        MDL0Color,
+        MDL0UV,
+        MDL0Normal,
+        MDL0Texture,
+        MDL0Vertex,
         TEVStage,
         MDL0Material,
         MDL0MaterialEntry,

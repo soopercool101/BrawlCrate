@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.GMOV;
         protected override string baseName => "Movable Platforms";
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GMOV" ? new GMOVNode() : null;
         }

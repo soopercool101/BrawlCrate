@@ -15,6 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0TextureNode : MDL0EntryNode, IComparable, IImageSource
     {
+        public override ResourceType ResourceFileType => ResourceType.MDL0Texture;
         static MDL0TextureNode()
         {
             _folderWatcher = new FileSystemWatcher {Filter = "*.*", IncludeSubdirectories = false};

@@ -105,7 +105,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((AIPD*) source.Address)->_tag == AIPD.Tag ? new AIPDNode() : null;
         }

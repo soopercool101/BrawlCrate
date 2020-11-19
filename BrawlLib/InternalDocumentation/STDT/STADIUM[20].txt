@@ -53,14 +53,14 @@ Default (Float): 0.2 (0x3E4CCCCD)
 	/EndDescription
 0
 
-Initial Transformation Minimum Timer
+Transformation (From Normal) Minimum Timer
 (Float) Minimum amount of frames before the stage can change from its Normal form
 
 Default (Float): 2400 (0x45160000)
 	/EndDescription
 0
 
-Initial Transformation Maximum Timer
+Transformation (From Normal) Maximum Timer
 (Float) Maximum amount of frames before the stage will change from its Normal form (unless the minimum has yet to be reached)
 
 Default (Float): 3000 (0x453B8000)

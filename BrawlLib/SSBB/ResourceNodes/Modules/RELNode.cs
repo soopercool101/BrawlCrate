@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.PowerPCAssembly;
 using BrawlLib.SSBB.Types;
 using System;
@@ -146,7 +146,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Stage module conversion - designer properties
 
         [Category("Brawl Stage Module")]
-        [TypeConverter(typeof(DropDownListStageIDs))]
+        [TypeConverter(typeof(DropDownListStageRelIDs))]
         public int? StageID
         {
             get => _stageID;
@@ -166,11 +166,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID1
         {
-            get => _itemIDs?[0];
+            get => _itemIDs?.Length > 0 ? _itemIDs?[0] : null;
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || value == null || value < 0 && value > 255)
+                if (_itemIDs == null || _itemIDs.Length <= 0 || value == null || value < 0 && value > 255)
                 {
                     return;
                 }
@@ -184,11 +184,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID2
         {
-            get => _itemIDs?[1];
+            get => _itemIDs?.Length > 1 ? _itemIDs?[1] : null;
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || value == null || value < 0 && value > 255)
+                if (_itemIDs == null || _itemIDs.Length <= 1 || value == null || value < 0 && value > 255)
                 {
                     return;
                 }
@@ -202,11 +202,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID3
         {
-            get => _itemIDs?[2];
+            get => _itemIDs?.Length > 2 ? _itemIDs?[2] : null;
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || value == null || value < 0 && value > 255)
+                if (_itemIDs == null || _itemIDs.Length <= 2 || value == null || value < 0 && value > 255)
                 {
                     return;
                 }
@@ -220,11 +220,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int? ItemID4
         {
-            get => _itemIDs?[3];
+            get => _itemIDs?.Length > 3 ? _itemIDs?[3] : null;
             set
             {
                 // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || value == null || value < 0 && value > 255)
+                if (_itemIDs == null || _itemIDs.Length <= 3 || value == null || value < 0 && value > 255)
                 {
                     return;
                 }
@@ -307,6 +307,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public SortedDictionary<uint, List<RELLink>> _imports = new SortedDictionary<uint, List<RELLink>>();
+
+        private int[] _itemIDOffsets;
 
         public override void OnPopulate()
         {
@@ -402,15 +404,27 @@ namespace BrawlLib.SSBB.ResourceNodes
             byte* bptr = (byte*) WorkingUncompressed.Address;
             int offset = findStageIDOffset();
             _stageID = offset < 0 ? (byte?) null : bptr[offset];
-
+            _itemIDOffsets = null;
+            // ReSharper disable once StringLiteralTypo (Typo is present in vBrawl)
             if (nodeContainsString("stOnlineTrainning"))
             {
                 // File must be online training room .rel file
                 _itemIDs = new byte[OTrainItemOffsets.Length];
-                for (int i = 0; i < OTrainItemOffsets.Length; i++)
-                {
-                    _itemIDs[i] = bptr[OTrainItemOffsets[i]];
-                }
+                _itemIDOffsets = OTrainItemOffsets;
+            }
+            else if (nodeContainsString("stDxGreens"))
+            {
+                _itemIDs = new byte[DxGreensItemOffsets.Length];
+                _itemIDOffsets = DxGreensItemOffsets;
+            }
+            else if (nodeContainsString("stEarth"))
+            {
+                _itemIDs = new byte[EarthItemOffsets.Length];
+                _itemIDOffsets = EarthItemOffsets;
+            }
+            for (int i = 0; i < _itemIDOffsets?.Length; i++)
+            {
+                _itemIDs[i] = bptr[_itemIDOffsets[i]];
             }
         }
 
@@ -636,7 +650,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     int i = s.Index;
 
-                    sections[i]._size = (uint) (s._calcSize - s._endBufferSize);
+                    sections[i]._size = (uint) (s._calcSize - (s.ExpandSection ? 0 : s.EndBufferSize));
 
                     //Align sections 4 and 5?
                     //if (i > 3)
@@ -661,7 +675,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         sections[i]._offset = 0;
 
                         header->_bssSection = 0; //This is always 0 it seems
-                        header->_bssSize = (uint) (s._calcSize - s._endBufferSize);
+                        header->_bssSize = (uint) (s._calcSize - (s.ExpandSection ? 0 : s.EndBufferSize));
                     }
                 }
             }
@@ -731,13 +745,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_itemIDs != null)
             {
                 // File must be online training room .rel file
-                for (int i = 0; i < _itemIDs.Length; i++)
+                for (int i = 0; i < _itemIDs.Length && i < _itemIDOffsets.Length; i++)
                 {
-                    int offset = OTrainItemOffsets[i];
-                    if (bptr[offset - 3] != 0x38 || bptr[offset - 2] != 0x80 || bptr[offset - 1] != 0x00)
-                    {
-                        throw new Exception("Rebuilding st_otrain module file has moved the item IDs");
-                    }
+                    int offset = _itemIDOffsets[i];
+                    //if (bptr[offset - 3] != 0x38 || bptr[offset - 2] != 0x80 || bptr[offset - 1] != 0x00)
+                    //{
+                    //    throw new Exception("Rebuilding the module file has moved the item IDs");
+                    //}
 
                     bptr[offset] = _itemIDs[i];
                 }
@@ -804,9 +818,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Encoding.UTF8.GetBytes(s)) > 0;
         }
 
-        /* These are absolute offsets - land within section 1.
-         * When BrawlCrate rebuilds st_otrain.rel, it cuts out 16 bytes from 0xA50-0xA60,
-         * but those come after these, so we should be ok. */
+        /* These are absolute offsets - land within section 1.*/
         private static readonly int[] OTrainItemOffsets =
         {
             // Changing some values but not others has strange effects
@@ -816,9 +828,25 @@ namespace BrawlLib.SSBB.ResourceNodes
             1627
         };
 
+        /* These are absolute offsets - land within section 1.*/
+        private static readonly int[] DxGreensItemOffsets =
+        {
+            0x1653,
+            0xB9EF,
+            0xBA5F
+        };
+
+        /* These are absolute offsets - land within section 1.*/
+        private static readonly int[] EarthItemOffsets =
+        {
+            0x2A7B,
+            0x885B,
+            0xF85B
+        };
+
         #endregion
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             RELHeader* header = (RELHeader*) source.Address;
             return header->_info._id <= 0x7E &&

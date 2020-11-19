@@ -614,7 +614,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     continue;
                 }
 
-                ListViewItem v = i as ListViewItem;
+                ListViewItem v = i;
                 string type = v.SubItems[1].Text;
                 string dir = "\\" + type + "\\";
                 string fileName = i._node.Name.Replace('/', '_').Replace('<', '(').Replace('>', ')') + ".b" +
@@ -692,7 +692,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 };
                 _targetNode.Files.Insert(i.Index, ext);
 
-                ext.ExtPath = (dir + fileName).Replace('\\', '/');
+                ext.ExtPath = (dir + fileName).Replace('\\', '/').Substring(1);
                 ext.Name = $"[{i.Index}] {ext.ExtPath}";
 
                 if ((i._node is RBNKNode || i._node is RSARExtFileNode) && rbnkRefs != null)
@@ -746,7 +746,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     continue;
                 }
 
-                ListViewItem v = i as ListViewItem;
+                ListViewItem v = i;
                 string type = v.SubItems[1].ToString();
 
                 i._node.Remove();

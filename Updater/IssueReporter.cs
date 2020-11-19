@@ -76,29 +76,26 @@ namespace Updater
                 bool found = false;
                 if (issues != null && !string.IsNullOrEmpty(StackTrace))
                 {
-                    foreach (Issue i in issues)
+                    foreach (Issue i in issues.Where(i => i.State == ItemState.Open))
                     {
-                        if (i.State == ItemState.Open)
+                        string desc = i.Body;
+                        if (desc.Contains(StackTrace) &&
+                            desc.Contains(ExceptionMessage))
                         {
-                            string desc = i.Body;
-                            if (desc.Contains(StackTrace) &&
-                                desc.Contains(ExceptionMessage))
-                            {
-                                found = true;
-                                IssueUpdate update = i.ToUpdate();
+                            found = true;
+                            IssueUpdate update = i.ToUpdate();
 
-                                update.Body =
-                                    Title +
-                                    Environment.NewLine +
-                                    Description +
-                                    Environment.NewLine +
-                                    Environment.NewLine +
-                                    TagName +
-                                    Environment.NewLine +
-                                    i.Body;
+                            update.Body =
+                                Title +
+                                Environment.NewLine +
+                                Description +
+                                Environment.NewLine +
+                                Environment.NewLine +
+                                TagName +
+                                Environment.NewLine +
+                                i.Body;
 
-                                x = await github.Issue.Update("BrawlCrate", "BrawlCrateIssues", i.Number, update);
-                            }
+                            x = await github.Issue.Update("BrawlCrate", "BrawlCrateIssues", i.Number, update);
                         }
                     }
                 }

@@ -491,7 +491,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((SCN0v4*) source.Address)->_header._tag == SCN0v4.Tag ? new SCN0Node() : null;
         }

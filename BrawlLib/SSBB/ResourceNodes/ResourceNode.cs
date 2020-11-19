@@ -121,6 +121,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             return base.GetHashCode();
         }
+
+        public byte this[uint i] => (Address + i).Byte;
     }
 
     public abstract class ResourceNode : IDisposable
@@ -154,8 +156,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Properties
 
+#if !DEBUG
+        [Browsable(false)]
+#endif
         public string FilePath => _origPath;
+#if !DEBUG
+        [Browsable(false)]
+#endif
         public string FileName => Path.GetFileName(_origPath);
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public string DirectoryName => Path.GetDirectoryName(_origPath);
 
 #if !DEBUG
         [Browsable(false)]
@@ -292,7 +304,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             return childrenAndSubchildren;
         }
 
-        [Browsable(false)] public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);
+#if !DEBUG
+        [Browsable(false)] 
+#endif
+        public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);
         [Browsable(false)] public bool IsCompressed => _compression != CompressionType.None;
 
         //Properties or compression have changed
@@ -667,8 +682,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _origPath = origSource.Map.FilePath;
             }
 
-            Parent = parent;
-
+            if (_parent != parent)
+            {
+                _parent = parent;
+                _parent?.Children.Add(this);
+            }
+            
             _children = null;
 
             if (Parent != null && Parent._replaced)

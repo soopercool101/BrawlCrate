@@ -2451,7 +2451,7 @@ For example, if the shader has two stages but this number is 1, the second stage
         {
             base.Replace(fileName);
 
-            Model.CheckTextures();
+            Model?.CheckTextures();
         }
 
         public override void Remove()

@@ -1,9 +1,10 @@
-﻿using BrawlLib.Internal.Windows.Controls.Hex_Editor;
+using BrawlLib.Internal.Windows.Controls.Hex_Editor;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -409,10 +410,7 @@ namespace BrawlCrate.NodeWrappers
     [NodeWrapper(ResourceType.RELExternalMethod)]
     public class RELExternalMethodWrapper : GenericWrapper
     {
-        public RELExternalMethodWrapper()
-        {
-            BackColor = System.Drawing.Color.FromArgb(255, 255, 180, 180);
-        }
+        public override Color? DefaultBackColor => Color.FromArgb(255, 255, 180, 180);
     }
 
     [NodeWrapper(ResourceType.RELInheritance)]

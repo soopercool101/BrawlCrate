@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         protected override Type SubEntryType => typeof(GNDVEntryNode);
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GNDV" ? new GNDVNode() : null;
         }
@@ -63,6 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("General")]
         [DisplayName("Graphic ID")]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint Graphic
         {
             get => _gfx;
@@ -77,6 +78,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Triggers")]
         [DisplayName("TriggerID")]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint TriggerID
         {
             get => _triggerID;

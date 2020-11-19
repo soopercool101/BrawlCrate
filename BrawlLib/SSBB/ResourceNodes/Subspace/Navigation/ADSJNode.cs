@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Navigation;
 using System.ComponentModel;
 
@@ -28,17 +27,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 new ADSJEntryNode().Initialize(this, source);
             }
         }
+        protected override string GetName()
+        {
+            return base.GetName("Stepjumps");
+        }
 
         public override bool OnInitialize()
         {
-            ARCFileHeader* header = (ARCFileHeader*) (WorkingUncompressed.Address - 0x20);
-            int index = header->_index;
-
-            if (_name == null)
-            {
-                _name = $"Stepjumps [{index}]";
-            }
-
             return Header->_count > 0;
         }
 
@@ -70,7 +65,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((ADSJ*) source.Address)->_tag == ADSJ.Tag ? new ADSJNode() : null;
         }

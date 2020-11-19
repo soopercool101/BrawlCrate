@@ -283,6 +283,18 @@ namespace BrawlCrate.UI
 
             Color back = n0.TreeView.BackColor;
             Color fore = n0.TreeView.ForeColor;
+            if (n0 is BaseWrapper b)
+            {
+                if (b.DefaultBackColor != null)
+                {
+                    back = (Color) b.DefaultBackColor;
+                }
+
+                if (b.DefaultForeColor != null)
+                {
+                    fore = (Color) b.DefaultForeColor;
+                }
+            }
 
             foreach (TreeNode n in m_coll)
             {

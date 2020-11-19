@@ -74,7 +74,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Math.Max(cssList?.Children?.Count ?? 0, randList?.Children?.Count ?? 0) > 104 ? 0x210 : 0xE0;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((RSTC*) source.Address)->_tag == RSTC.Tag ? new RSTCNode() : null;
         }

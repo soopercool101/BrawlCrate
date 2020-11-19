@@ -95,6 +95,7 @@ namespace BrawlLib.SSBB
                 "tengan"),
 
             //Brawl Subspace Emissary files
+            new SupportedFileInfo(true, "Adventure Stepjump", "adsj"),
             new SupportedFileInfo(true, "BLOC Adventure Archive", "bloc"),
             new SupportedFileInfo(true, "Brawl GEG1 File", "geg1"),
 

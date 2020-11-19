@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         protected override Type SubEntryType => typeof(GFG1EntryNode);
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GFG1" ? new GFG1Node() : null;
         }

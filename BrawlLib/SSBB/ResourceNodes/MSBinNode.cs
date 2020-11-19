@@ -61,7 +61,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             *offsets = (int) current - (int) address;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             int length = source.Length;
             bint* offsets = (bint*) source.Address;

@@ -11,6 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MDL0NormalData* Header => (MDL0NormalData*) WorkingUncompressed.Address;
         //protected override int DataLength { get { return Header->_dataLen; } }
 
+        public override ResourceType ResourceFileType => ResourceType.MDL0Normal;
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
         private MDL0NormalData _hdr = new MDL0NormalData {_type = (int) WiiVertexComponentType.Float};

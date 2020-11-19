@@ -771,7 +771,6 @@ namespace BrawlLib.Internal.Windows.Controls
                 DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
                 RefreshRow(index);
-                somethingChanged = true;
             }
 
             switch (nType)

@@ -1,0 +1,17 @@
+st_stadium Section [4]: 0x0000001C
+Transformation (To Normal) Minimum Timer
+
+Minimum amount of frames before the stage can change back to its Normal form after transforming.
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000020
+Transformation (To Normal) Maximum Timer
+
+Maximum amount of frames before the stage will change back to its Normal form after transforming.
+
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+1111    // Flags for which bytes are underlined

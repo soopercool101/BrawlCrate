@@ -1,9 +1,11 @@
 ﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+#if DEBUG
+using System;
+#endif
 
 namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 {

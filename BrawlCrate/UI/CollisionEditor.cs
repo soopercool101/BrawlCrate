@@ -59,7 +59,7 @@ namespace BrawlCrate.UI
         protected GroupBox groupBoxTargets;
         protected CheckBox chkFlagUnknown1;
         protected CheckBox chkFlagUnknown2;
-        protected CheckBox chkFlagUnknown3;
+        protected CheckBox chkFlagSuperSoft;
         protected CheckBox chkFlagUnknown4;
 
         protected Panel pnlPointProps;
@@ -160,7 +160,7 @@ namespace BrawlCrate.UI
             groupBoxFlags2 = new GroupBox();
             chkFlagUnknown1 = new CheckBox();
             chkFlagUnknown2 = new CheckBox();
-            chkFlagUnknown3 = new CheckBox();
+            chkFlagSuperSoft = new CheckBox();
             chkFlagUnknown4 = new CheckBox();
             groupBoxFlags1 = new GroupBox();
             chkLeftLedge = new CheckBox();
@@ -514,9 +514,9 @@ namespace BrawlCrate.UI
             // 
             groupBoxFlags2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
                                                      | AnchorStyles.Left;
+            groupBoxFlags2.Controls.Add(chkFlagSuperSoft);
             groupBoxFlags2.Controls.Add(chkFlagUnknown1);
             groupBoxFlags2.Controls.Add(chkFlagUnknown2);
-            groupBoxFlags2.Controls.Add(chkFlagUnknown3);
             groupBoxFlags2.Controls.Add(chkFlagUnknown4);
             groupBoxFlags2.Location = new Point(104, 102);
             groupBoxFlags2.Margin = new Padding(0);
@@ -528,7 +528,7 @@ namespace BrawlCrate.UI
             // 
             // chkFlagUnknown1
             // 
-            chkFlagUnknown1.Location = new Point(8, 17);
+            chkFlagUnknown1.Location = new Point(8, 33);
             chkFlagUnknown1.Margin = new Padding(0);
             chkFlagUnknown1.Name = "chkFlagUnknown1";
             chkFlagUnknown1.Size = new Size(86, 18);
@@ -539,7 +539,7 @@ namespace BrawlCrate.UI
             // 
             // chkFlagUnknown2
             // 
-            chkFlagUnknown2.Location = new Point(8, 33);
+            chkFlagUnknown2.Location = new Point(8, 49);
             chkFlagUnknown2.Margin = new Padding(0);
             chkFlagUnknown2.Name = "chkFlagUnknown2";
             chkFlagUnknown2.Size = new Size(86, 18);
@@ -548,16 +548,16 @@ namespace BrawlCrate.UI
             chkFlagUnknown2.UseVisualStyleBackColor = true;
             chkFlagUnknown2.CheckedChanged += new EventHandler(chkFlagUnknown2_CheckedChanged);
             // 
-            // chkFlagUnknown3
+            // chkFlagSuperSoft
             // 
-            chkFlagUnknown3.Location = new Point(8, 49);
-            chkFlagUnknown3.Margin = new Padding(0);
-            chkFlagUnknown3.Name = "chkFlagUnknown3";
-            chkFlagUnknown3.Size = new Size(86, 18);
-            chkFlagUnknown3.TabIndex = 3;
-            chkFlagUnknown3.Text = "Unknown 3";
-            chkFlagUnknown3.UseVisualStyleBackColor = true;
-            chkFlagUnknown3.CheckedChanged += new EventHandler(chkFlagUnknown3_CheckedChanged);
+            chkFlagSuperSoft.Location = new Point(8, 17);
+            chkFlagSuperSoft.Margin = new Padding(0);
+            chkFlagSuperSoft.Name = "chkFlagSuperSoft";
+            chkFlagSuperSoft.Size = new Size(86, 18);
+            chkFlagSuperSoft.TabIndex = 3;
+            chkFlagSuperSoft.Text = "Super Soft";
+            chkFlagSuperSoft.UseVisualStyleBackColor = true;
+            chkFlagSuperSoft.CheckedChanged += new EventHandler(chkFlagSuperSoft_CheckedChanged);
             // 
             // chkFlagUnknown4
             // 
@@ -566,7 +566,7 @@ namespace BrawlCrate.UI
             chkFlagUnknown4.Name = "chkFlagUnknown4";
             chkFlagUnknown4.Size = new Size(86, 18);
             chkFlagUnknown4.TabIndex = 3;
-            chkFlagUnknown4.Text = "Unknown 4";
+            chkFlagUnknown4.Text = "Unknown 3";
             chkFlagUnknown4.UseVisualStyleBackColor = true;
             chkFlagUnknown4.CheckedChanged += new EventHandler(chkFlagUnknown4_CheckedChanged);
             // 
@@ -1490,7 +1490,7 @@ namespace BrawlCrate.UI
                 //UnknownFlags
                 chkFlagUnknown1.Checked = p.IsUnknownSSE;
                 chkFlagUnknown2.Checked = p.IsUnknownFlag1;
-                chkFlagUnknown3.Checked = p.IsUnknownFlag3;
+                chkFlagSuperSoft.Checked = p.IsSuperSoft;
                 chkFlagUnknown4.Checked = p.IsUnknownFlag4;
             }
             else if (pnlPointProps.Visible)
@@ -1571,7 +1571,7 @@ namespace BrawlCrate.UI
 
                     MDL0BoneNode bone =
                         model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                            .FirstOrDefault() as MDL0BoneNode;
+                            .FirstOrDefault();
                     if (bone != null)
                     {
                         obj._linkedBone = bone;
@@ -1641,7 +1641,7 @@ namespace BrawlCrate.UI
 
         protected void newObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _selectedObject = new CollisionObject {Name = $"Collision Object [{_targetNode.Children.Count + 1}]"};
+            _selectedObject = new CollisionObject {Name = $"Collision Object [{_targetNode.Children.Count + 1}]", Independent = true};
             _targetNode.AddChild(_selectedObject);
             lstObjects.Items.Add(_selectedObject, true);
             lstObjects.SelectedItem = _selectedObject;
@@ -3699,7 +3699,7 @@ namespace BrawlCrate.UI
             }
         }
 
-        protected void chkFlagUnknown3_CheckedChanged(object sender, EventArgs e)
+        protected void chkFlagSuperSoft_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
             {
@@ -3709,7 +3709,7 @@ namespace BrawlCrate.UI
             TargetNode.SignalPropertyChange();
             foreach (CollisionPlane p in _selectedPlanes)
             {
-                p.IsUnknownFlag3 = chkFlagUnknown3.Checked;
+                p.IsSuperSoft = chkFlagSuperSoft.Checked;
             }
         }
 

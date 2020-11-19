@@ -131,28 +131,26 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Victory")]
         [DisplayName("Victory Theme")]
-        public string VictoryTheme
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint VictoryTheme
         {
-            get => "0x" + _victoryTheme.ToString("X8");
+            get => _victoryTheme;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _victoryTheme = Convert.ToUInt32(field0, fromBase);
+                _victoryTheme = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Victory")]
         [DisplayName("Announcer Call")]
-        public string AnnouncerID
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint AnnouncerID
         {
-            get => "0x" + _announcerSFX.ToString("X8");
+            get => _announcerSFX;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _announcerSFX = Convert.ToUInt32(field0, fromBase);
+                _announcerSFX = value;
                 SignalPropertyChange();
             }
         }
@@ -275,7 +273,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((SLTC*) source.Address)->_tag == SLTC.Tag ? new SLTCNode() : null;
         }

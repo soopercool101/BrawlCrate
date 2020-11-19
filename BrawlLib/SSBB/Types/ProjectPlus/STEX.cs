@@ -23,7 +23,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
         public buint _memoryAllocation;
         public bfloat _wildSpeed;
 
-        public VoidPtr this[int index] => (byte*)Address + HeaderSize + (index * 0x04);
+        public VoidPtr this[int index] => (byte*)Address + HeaderSize + index * 0x04;
 
         public uint subStageCount => (_stringOffset - 0x2C) / 4;
 
@@ -44,7 +44,8 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
             {
                 return null;
             }
-            return new string((sbyte*)(Address + _stringOffset + this[index].UInt));
+
+            return Address.GetUTF8String(_stringOffset + this[index].UInt);
         }
 
         public string trackListName => _trackListOffset == 0xFFFFFFFF ? null : new string((sbyte*)(Address + _stringOffset + _trackListOffset));

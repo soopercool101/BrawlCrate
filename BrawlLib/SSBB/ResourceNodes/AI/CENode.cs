@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             new CEGroupNode("Strings").Initialize(this, new DataSource(Header, 0x0));
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             CEHeader* header = (CEHeader*) source.Address;
             if (header->_numEntries <= 0 || header->_numEntries > 0x100 || header->_unk1 != 0 ||

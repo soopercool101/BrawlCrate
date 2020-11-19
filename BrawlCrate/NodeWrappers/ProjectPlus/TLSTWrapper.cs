@@ -4,6 +4,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
@@ -41,6 +42,7 @@ namespace BrawlCrate.NodeWrappers
             _menu = new ContextMenuStrip();
             _menu.Items.Add(_newEntryToolStripMenuItem =
                 new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
+            _menu.Items.Add(new ToolStripMenuItem("Re-assign Custom IDs", null, RegenIDsAction));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -61,6 +63,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<TLSTWrapper>().NewEntry();
         }
 
+        protected static void RegenIDsAction(object sender, EventArgs e)
+        {
+            GetInstance<TLSTWrapper>().RegenIDs();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _newEntryToolStripMenuItem.Enabled = true;
@@ -75,7 +82,7 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             TLSTWrapper w = GetInstance<TLSTWrapper>();
-            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 50;
+            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 64;
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
@@ -90,12 +97,25 @@ namespace BrawlCrate.NodeWrappers
 
         public TLSTEntryNode NewEntry()
         {
+            if (Resource.Children.Count >= 255)
+            {
+                return null;
+            }
             StringInputDialog d = new StringInputDialog("New TLST Entry", "");
             if (d.ShowDialog() == DialogResult.OK)
             {
+                // Get an unused expanded song id
+                uint songID = 0x0000F000;
+                while (Resource.Children.Count(n => ((TLSTEntryNode)n)._songID == songID) > 0)
+                {
+                    songID++;
+                }
                 TLSTEntryNode node = new TLSTEntryNode
                 {
-                    _name = d.resultString
+                    _name = d.resultString,
+                    _songID = songID,
+                    Volume = 80,
+                    Frequency = 40
                 };
 
                 _resource.AddChild(node);
@@ -106,6 +126,18 @@ namespace BrawlCrate.NodeWrappers
             }
 
             return null;
+        }
+
+        public void RegenIDs()
+        {
+            uint currentID = 0xF000;
+            foreach(TLSTEntryNode t in Resource.Children)
+            {
+                if (!string.IsNullOrEmpty(t.SongFileName))
+                {
+                    t._songID = currentID++;
+                }
+            }
         }
 
         public TLSTWrapper()

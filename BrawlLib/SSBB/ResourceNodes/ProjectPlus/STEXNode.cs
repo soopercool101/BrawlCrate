@@ -2,10 +2,8 @@ using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 {
@@ -89,28 +87,26 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         private ushort _soundBank;
         [Category("Stage Parameters")]
-        public string SoundBank
+        [TypeConverter(typeof(HexUShortConverter))]
+        public ushort SoundBank
         {
-            get => "0x" + _soundBank.ToString("X4");
+            get => _soundBank;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _soundBank = Convert.ToUInt16(field0, fromBase);
+                _soundBank = value;
                 SignalPropertyChange();
             }
         }
 
         private ushort _effectBank;
         [Category("Stage Parameters")]
-        public string EffectBank
+        [TypeConverter(typeof(HexUShortConverter))]
+        public ushort EffectBank
         {
-            get => "0x" + _effectBank.ToString("X4");
+            get => _effectBank;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _effectBank = Convert.ToUInt16(field0, fromBase);
+                _effectBank = value;
                 SignalPropertyChange();
             }
         }
@@ -133,48 +129,72 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         public bool IsFlat
         {
             get => (_flags & StageFlags.Flat) != 0;
-            set => _flags = (_flags & ~StageFlags.Flat) |
-                            (value ? StageFlags.Flat : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.Flat) |
+                         (value ? StageFlags.Flat : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Stage Flags")]
         public bool IsFixedCamera
         {
             get => (_flags & StageFlags.FixedCamera) != 0;
-            set => _flags = (_flags & ~StageFlags.FixedCamera) |
-                            (value ? StageFlags.FixedCamera : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.FixedCamera) |
+                         (value ? StageFlags.FixedCamera : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Stage Flags")]
         public bool IsSlowStart
         {
             get => (_flags & StageFlags.SlowStart) != 0;
-            set => _flags = (_flags & ~StageFlags.SlowStart) |
-                            (value ? StageFlags.SlowStart : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.SlowStart) |
+                         (value ? StageFlags.SlowStart : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Substage Flags")]
         public bool IsDualLoad
         {
             get => (_flags & StageFlags.DualLoad) != 0;
-            set => _flags = (_flags & ~StageFlags.DualLoad) |
-                            (value ? StageFlags.DualLoad : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.DualLoad) |
+                         (value ? StageFlags.DualLoad : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Substage Flags")]
         public bool IsDualShuffle
         {
             get => (_flags & StageFlags.DualShuffle) != 0;
-            set => _flags = (_flags & ~StageFlags.DualShuffle) |
-                            (value ? StageFlags.DualShuffle : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.DualShuffle) |
+                         (value ? StageFlags.DualShuffle : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("Substage Flags")]
         public bool IsOldSubstage
         {
             get => (_flags & StageFlags.OldSubstage) != 0;
-            set => _flags = (_flags & ~StageFlags.OldSubstage) |
-                            (value ? StageFlags.OldSubstage : 0);
+            set
+            {
+                _flags = (_flags & ~StageFlags.OldSubstage) |
+                         (value ? StageFlags.OldSubstage : 0);
+                SignalPropertyChange();
+            }
         }
 
         private byte _stageType;
@@ -203,14 +223,13 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         private uint _memoryAllocation;
         [Category("Stage Parameters")]
-        public string MemoryAllocation
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint MemoryAllocation
         {
-            get => "0x" + _memoryAllocation.ToString("X8");
+            get => _memoryAllocation;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
-                _memoryAllocation = Convert.ToUInt32(field0, fromBase);
+                _memoryAllocation = value;
                 SignalPropertyChange();
             }
         }
@@ -266,20 +285,20 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
             if (!string.IsNullOrEmpty(StageName))
             {
-                size += StageName.Length + 1;
+                size += StageName.UTF8Length() + 1;
             }
             if (!string.IsNullOrEmpty(TrackList))
             {
-                size += TrackList.Length + 1;
+                size += TrackList.UTF8Length() + 1;
             }
             if (!string.IsNullOrEmpty(Module))
             {
-                size += Module.Length + 1;
+                size += Module.UTF8Length() + 1;
             }
 
             foreach (ResourceNode n in Children)
             {
-                size += n.Name.Length + 1;
+                size += n.Name.UTF8Length() + 1;
             }
 
             return size;
@@ -305,7 +324,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             if (!string.IsNullOrEmpty(TrackList))
             {
                 header->_trackListOffset = curStrOffset;
-                curStrOffset += (uint)TrackList.Length + 1;
+                curStrOffset += (uint)TrackList.UTF8Length() + 1;
             }
             else
             {
@@ -314,7 +333,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             if (!string.IsNullOrEmpty(StageName))
             {
                 header->_stageNameOffset = curStrOffset;
-                curStrOffset += (uint)StageName.Length + 1;
+                curStrOffset += (uint)StageName.UTF8Length() + 1;
             }
             else
             {
@@ -323,7 +342,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             if (!string.IsNullOrEmpty(Module))
             {
                 header->_moduleNameOffset = curStrOffset;
-                curStrOffset += (uint)Module.Length + 1;
+                curStrOffset += (uint)Module.UTF8Length() + 1;
             }
             else
             {
@@ -337,58 +356,30 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             {
                 buint* ptr = (buint*) (address + offset);
                 ptr[0] = curStrOffset;
-                curStrOffset += (uint)n.Name.Length + 1;
+                curStrOffset += (uint)n.Name.UTF8Length() + 1;
                 offset += 4;
             }
 
-            if (TrackList.Length > 0)
+            if (TrackList?.UTF8Length() > 0)
             {
-                sbyte* ptr = (sbyte*)(address + offset);
-                string name = TrackList;
-                for (int j = 0; j < name.Length; j++)
-                {
-                    ptr[j] = (sbyte)name[j];
-                }
-                ptr[name.Length] = 0;
-                offset += (uint)(name.Length + 1);
+                offset += address.WriteUTF8String(TrackList, true, offset);
             }
-            if (StageName.Length > 0)
+            if (StageName?.UTF8Length() > 0)
             {
-                sbyte* ptr = (sbyte*)(address + offset);
-                string name = StageName;
-                for (int j = 0; j < name.Length; j++)
-                {
-                    ptr[j] = (sbyte)name[j];
-                }
-                ptr[name.Length] = 0;
-                offset += (uint)(name.Length + 1);
+                offset += address.WriteUTF8String(StageName, true, offset);
             }
-            if (Module.Length > 0)
+            if (Module?.UTF8Length() > 0)
             {
-                sbyte* ptr = (sbyte*)(address + offset);
-                string name = Module;
-                for (int j = 0; j < name.Length; j++)
-                {
-                    ptr[j] = (sbyte)name[j];
-                }
-                ptr[name.Length] = 0;
-                offset += (uint)(name.Length + 1);
+                offset += address.WriteUTF8String(Module, true, offset);
             }
 
             foreach (ResourceNode n in Children)
             {
-                sbyte* ptr = (sbyte*)(address + offset);
-                string name = n.Name;
-                for (int j = 0; j < name.Length; j++)
-                {
-                    ptr[j] = (sbyte)name[j];
-                }
-                ptr[name.Length] = 0;
-                offset += (uint)(name.Length + 1);
+                offset += address.WriteUTF8String(n.Name, true, offset);
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "STEX" ? new STEXNode() : null;
         }

@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.GBLK;
         protected override string baseName => "Breakable Blocks";
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GBLK" ? new GBLKNode() : null;
         }

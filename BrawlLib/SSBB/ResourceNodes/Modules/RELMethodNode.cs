@@ -1,6 +1,8 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.PowerPCAssembly;
+using OpenTK.Graphics.ES20;
 using System.ComponentModel;
+using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -36,7 +38,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Method")]
         [DisplayName("Section Offset")]
         [Description("Offset of the method's asssembly code within the target module, relative to the target section")]
-        public string TargetOffset => _cmd.TargetOffset;
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint TargetOffset => _cmd.TargetOffset;
 
         public int _codeStart, _codeLen;
         public RelocationManager _manager;
@@ -44,6 +47,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             ModuleSectionNode section = Location;
+
+            if ((TargetSection == 1 || TargetModule.Equals("main.dol")) && ModuleMapLoader.MapFiles.ContainsKey(TargetModule))
+            {
+                if (ModuleMapLoader.MapFiles[TargetModule].ContainsKey(TargetOffset))
+                {
+                    _name = ModuleMapLoader.MapFiles[TargetModule][TargetOffset];
+                }
+            }
+
             if (section == null || !Header)
             {
                 return false;

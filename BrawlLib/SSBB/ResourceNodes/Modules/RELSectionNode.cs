@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using System;
 using System.ComponentModel;
@@ -25,14 +25,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public string DataAlign => "0x" + _dataAlign.ToString("X");
 
-        public string EndBufferSize
+        [TypeConverter(typeof(HexUIntConverter))]
+        [Category("End Buffer")]
+        public uint EndBufferSize
         {
-            get => "0x" + _endBufferSize.ToString("X");
+            get => _endBufferSize;
             set
             {
-                string field0 = (value ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase) ? 16 : 10;
-                if (Convert.ToByte(field0, fromBase) % 4 != 0 &&
+                if (value % 4 != 0 &&
                     MessageBox.Show(
                         "Buffers should generally be multiples of 0x4, are you sure you want to set this? (It may make the module unreadable!)",
                         "", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -40,9 +40,23 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return;
                 }
 
-                _endBufferSize = Convert.ToByte(field0, fromBase);
+                _endBufferSize = value;
                 SignalPropertyChange();
             }
+        }
+
+
+        private bool _expand = false;
+        [Category("End Buffer")]
+        public bool ExpandSection
+        {
+            get => _expand;
+            set
+            {
+                _expand = value;
+                SignalPropertyChange();
+            }
+
         }
 
         [Category("REL Section")] public bool HasCommands => _manager._commands.Count > 0;
@@ -64,6 +78,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
+            _expand = false;
             if (_name == null)
             {
                 if (_dataSize > 0)

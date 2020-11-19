@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -173,6 +174,15 @@ namespace BrawlCrate.NodeWrappers
             }
 
             _resource = res;
+            if (DefaultBackColor != null)
+            {
+                BackColor = (Color)DefaultBackColor;
+            }
+
+            if (DefaultForeColor != null)
+            {
+                ForeColor = (Color)DefaultForeColor;
+            }
         }
 
         public void Unlink()
@@ -232,6 +242,17 @@ namespace BrawlCrate.NodeWrappers
         protected internal virtual void OnUpdateProperties(object sender, EventArgs e)
         {
             MainForm.Instance.propertyGrid1.Refresh();
+
+            // Update coloration in event of variable color nodes
+            if (DefaultBackColor != null)
+            {
+                BackColor = (Color)DefaultBackColor;
+            }
+
+            if (DefaultForeColor != null)
+            {
+                ForeColor = (Color)DefaultForeColor;
+            }
         }
 
         protected internal virtual void OnUpdateCurrentControl(object sender, EventArgs e)
@@ -313,23 +334,32 @@ namespace BrawlCrate.NodeWrappers
         {
         }
 
+        public virtual Color? DefaultBackColor => null;
+        public virtual Color? DefaultForeColor => null;
+
         protected internal virtual void OnExpand()
         {
             if (!_discovered)
             {
                 Nodes.Clear();
 
-                if (_resource._isPopulating)
+                if (_resource != null)
                 {
-                    while (_resource._isPopulating)
+                    if (_resource._isPopulating)
                     {
-                        Application.DoEvents();
+                        while (_resource != null && _resource._isPopulating)
+                        {
+                            Application.DoEvents();
+                        }
                     }
-                }
 
-                foreach (ResourceNode n in _resource.Children)
-                {
-                    Nodes.Add(Wrap(_owner, n));
+                    if (_resource != null && _resource.HasChildren)
+                    {
+                        foreach (ResourceNode n in _resource.Children)
+                        {
+                            Nodes.Add(Wrap(_owner, n));
+                        }
+                    }
                 }
 
                 _discovered = true;

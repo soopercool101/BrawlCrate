@@ -56,7 +56,7 @@ namespace BrawlCrate.API
     /// </summary>
     internal class PluginResourceParsers : ResourceNode
     {
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             ResourceNode n = null;
             using (UnsafeStream s = new UnsafeStream(source.Address, (uint) source.Length))

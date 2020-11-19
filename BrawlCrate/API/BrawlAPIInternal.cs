@@ -381,7 +381,7 @@ namespace BrawlCrate.API
                     {
                         MessageBox.Show(
                             "Python was found to be installed in: \n" + searchPaths[0] +
-                            "\nAdditional modules can be installed in this path or by placing them in the \"Python\" folder in your BrawlCrate installation.",
+                            "\nAdditional modules can be installed in this path or by placing them in the \"BrawlAPI\\Lib\" folder in your BrawlCrate installation.",
                             "BrawlAPI");
                     }
 

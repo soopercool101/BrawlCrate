@@ -1,0 +1,232 @@
+﻿Transformation Min Timer
+(Float) The minimum amount of frames to wait before transforming.
+
+Default (Float): 1500 (0x44BB8000)
+	/EndDescription
+0
+
+Transformation Max Timer
+(Float) The maximum amount of frames to wait before transforming.
+
+Default (Float): 2100 (0x45034000)
+	/EndDescription
+0
+
+Transformation Min Duration
+(Float) The minimum amount of frames for the transformations' duration.
+
+Default (Float): 1500 (0x44BB8000)
+	/EndDescription
+0
+
+Transformation Max Duration
+(Float) The maximum amount of frames for the transformations' duration.
+
+Default (Float): 2100 (0x45034000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+Bell Start Timer
+(Float) The amount of frames to remove from the transformation duration to start ringing the bell (applies to all transformations).
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+Fire: Manhole Platforms Min Timer
+(Float) The minimum amount of frames to wait before the Manhole platforms change position.
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+Fire: Manhole Platforms Max Timer
+(Float) The maximum amount of frames to wait before the Manhole platforms change position.
+
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+Fire: Treasure Diver Chance
+(Float) The chance for Treasure Diver to appear when there's an item on the floor.
+
+Default (Float): 0.33 (0x3EA8F5C3)
+	/EndDescription
+0
+
+Fire: Treasure Diver Frame Speed
+(Float) The amount of frames to wait for the Treasure Diver to do the next step.
+
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+Fire: Treasure Diver Walking Distance
+(Float) The distance of each step the Treasure Diver takes.
+
+Default (Float): 8 (0x41000000)
+	/EndDescription
+0
+
+Fire: Trampoline Chance
+(Float) The chance for the Trampoline minigame to happen.
+
+Default (Float): 0.65 (0x3F266666)
+	/EndDescription
+0
+
+Fire: Trampoline Min Timer
+(Float) Minimum amount of frames to wait for the Trampoline minigame to start.
+
+Default (Float): 700 (0x442F0000)
+	/EndDescription
+0
+
+Fire: Trampoline Max Timer
+(Float) Maximum amount of frames to wait for the Trampoline minigame to start.
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Fire: Trampoline Move Timer
+(Float) Amount of frames to wait for the Trampoline to move left or right.
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+Fire: Jumping Man Min Timer
+(Float) The minimum amount of frames to wait for a man to jump off the building.
+
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+Fire: Jumping Man Max Timer
+(Float) The maximum amount of frames to wait for a man to jump off the building.
+
+Default (Float): 150 (0x43160000)
+	/EndDescription
+0
+
+Fire: Jumping Man Chance
+(Float) The chance for a man to jump off the building.
+
+Default (Float): 0.6 (0x3F19999A)
+	/EndDescription
+0
+
+Fire: Jumping Man Frame Speed
+(Float) The amount of frames to wait for the jumping man to move after jumping.
+
+Default (Float): 32 (0x42000000)
+	/EndDescription
+0
+
+Lion: Cage Tamers Min Timer
+(Float) The minimum amount of frames to wait for the Cage Tamers to move.
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+Lion: Cage Tamers Max Timer
+(Float) The minimum amount of frames to wait for the Cage Tamers to move.
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x070
+Default (Float): 12 (0x41400000)
+	/EndDescription
+0
+
+Oil Panic: People Min Timer
+(Float) The minimum amount of frames to wait for the people to move.
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Oil Panic: People Max Timer
+(Float) The maximum amount of frames to wait for the people to move.
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 8 (0x41000000)
+	/EndDescription
+0
+
+Oil Panic: Attack Duration
+(Float) Amount of frames the people's attack will last. Setting 30 or less will make the woman not be able to attack.
+
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+Chef: Chef Min Timer
+(Float) The minimum amount of frames to wait for the Chef to move left or right.
+
+Default (Float): 16 (0x41800000)
+	/EndDescription
+0
+
+Chef: Chef Max Timer
+(Float) The maximum amount of frames to wait for the Chef to move left or right.
+
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+0x08C
+Default (Float): 50 (0x42480000)
+	/EndDescription
+0
+
+Chef: Food Frame Speed
+(Float) The amount of frames to wait for the food to move.
+
+Default (Float): 32 (0x42000000)
+	/EndDescription
+0
+
+Chef: Food Min Timer
+(Float) The minimum amount of frames to wait for food to spawn.
+
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+Chef: Food Max Timer
+(Float) The maximum amount of frames to wait for food to spawn.
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+Chef: Food Chance
+(Float) The chance for food to spawn.
+
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0

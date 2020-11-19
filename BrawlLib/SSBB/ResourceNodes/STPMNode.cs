@@ -51,7 +51,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((Parameter*) source.Address)->_tag == Parameter.TagSTPM ? new STPMNode() : null;
         }
@@ -178,7 +178,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 cur.Value2 = ext.Value2;
                 cur.Value3 = ext.Value3;
                 cur.Value4 = ext.Value4;
-                cur.Value5 = ext.Value5;
+                cur.MusicVolume = ext.MusicVolume;
+                cur.SoundVolume = ext.SoundVolume;
+                cur.Value5c = ext.Value5c;
+                cur.Value5d = ext.Value5d;
                 cur.ShadowPitch = ext.ShadowPitch;
                 cur.ShadowYaw = ext.ShadowYaw;
                 cur.Value8 = ext.Value8;
@@ -294,12 +297,45 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public RGBAPixel Value5
+        public byte MusicVolume
         {
-            get => _values.GetRGBA(4);
+            get => _values.GetByte(4, 0);
             set
             {
-                _values.SetRGBA(4, value);
+                _values.SetByte(4, 0, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte SoundVolume
+        {
+            get => _values.GetByte(4, 1);
+            set
+            {
+                _values.SetByte(4, 1, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte Value5c
+        {
+            get => _values.GetByte(4, 2);
+            set
+            {
+                _values.SetByte(4, 2, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("STPM Values")]
+        public byte Value5d
+        {
+            get => _values.GetByte(4, 3);
+            set
+            {
+                _values.SetByte(4, 3, value);
                 SignalPropertyChange();
             }
         }

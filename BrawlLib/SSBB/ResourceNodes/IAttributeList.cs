@@ -1,4 +1,6 @@
 ﻿using BrawlLib.Imaging;
+using BrawlLib.Internal;
+using System.Collections.Generic;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -26,5 +28,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         string GetShorts(int index);
 
         void SignalPropertyChange();
+    }
+
+    public interface MultipleInterpretationIAttributeList : IAttributeList
+    {
+        IEnumerable<AttributeInterpretation> GetPossibleInterpretations();
     }
 }

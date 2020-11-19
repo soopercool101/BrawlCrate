@@ -10,6 +10,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0ColorNode : MDL0EntryNode, IColorSource
     {
+        public override ResourceType ResourceFileType => ResourceType.MDL0Color;
+
         internal MDL0ColorData* Header => (MDL0ColorData*) WorkingUncompressed.Address;
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();

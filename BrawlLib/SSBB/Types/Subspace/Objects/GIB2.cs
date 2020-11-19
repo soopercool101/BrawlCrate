@@ -6,6 +6,8 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GIB2Entry
     {
+        public const int SIZE = 0x54;
+
         public bfloat _header;
         public byte _unknown0x04;
         public byte _unkflag0;
@@ -29,7 +31,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _unknown0x17;
         public byte _unknown0x18;
         public byte _unknown0x19;
-        public float _unkflag2;
+        public bfloat _unkflag2;
         public byte _unknown0x1E;
         public byte _unknown0x1F;
         public byte _unknown0x20;
@@ -45,15 +47,12 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _unknown0x2A;
         public byte _unkflag3;
         public byte _modeldataid;
-        public byte _unkflag5;
+        public byte _collisiondataid;
         public byte _unknown0x2E;
         public byte _unknown0x2F;
-        public float _unkflag6;
-        public float _unkflag7;
-        public byte _unknown0x38;
-        public byte _unknown0x39;
-        public byte _unknown0x3A;
-        public byte _unkflag8;
+        public bfloat _posX;
+        public bfloat _posY;
+        public bint _itemspawngroup;
         public byte _unknown0x3C;
         public byte _unknown0x3D;
         public byte _unknown0x3E;
@@ -62,23 +61,12 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public byte _unknown0x41;
         public byte _unknown0x42;
         public byte _unknown0x43;
-        public byte _unknown0x44;
-        public byte _unkflag9;
+        public bshort _unkflag9;
         public byte _unkflag10;
         public byte _unkflag11;
-        public byte _unkflag12;
-        public byte _unknown0x48;
-        public byte _unknown0x49;
-        public byte _unkflag13;
-        public byte _unknown0x4B;
-        public byte _unknown0x4C;
-        public byte _unknown0x4D;
-        public byte _unkflag14;
-        public byte _unknown0x4F;
-        public byte _unknown0x50;
-        public byte _unknown0x51;
-        public byte _unkflag15;
-        public byte _unknown0x53;
+        public buint _trigger1;
+        public buint _trigger2;
+        public buint _trigger3;
 
         private VoidPtr Address
         {
