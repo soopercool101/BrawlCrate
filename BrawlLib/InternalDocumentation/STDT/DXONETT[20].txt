@@ -1,56 +1,79 @@
-0x014
+Smoke Min Timer
+(Float) The minimum amount of frames before smoke appears.
+
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x018
+Smoke Max Timer
+(Float) The maximum amount of frames before smoke appears.
+
 Default (Float): 1200 (0x44960000)
 	/EndDescription
 0
 
-0x01C
+Smoke Min Timer 2
+(Float) The minimum amount of frames before smoke appears (Multiple bursts?).
+
 Default (Float): 300 (0x43960000)
 	/EndDescription
 0
 
-0x020
+Smoke Max Timer 2
+(Float) The maximum amount of frames before smoke appears (Multiple bursts?).
+
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-~0x024
-Default (Unknown Type): (0x05070000)
-	/EndDescription
-4
+Canopies Landing Amount
+Byte 1: Number of landings to make sign fall
+Byte 2: Number of landings to break canopies.
+Byte 3: Unused.
+Byte 4: Unused.
 
-0x028
+Default (Bytes): (0x05070000)
+	/EndDescription
+6
+
+Canopies Min Respawn Timer
+(Float) The minimum amount of frames for the canopies to respawn.
+
 Default (Float): 300 (0x43960000)
 	/EndDescription
 0
 
-0x02C
+Canopies Max Respawn Timer
+(Float) The maximum amount of frames for the canopies to respawn.
+
 Default (Float): 500 (0x43FA0000)
 	/EndDescription
 0
 
-0x030
+Car Speed
+(Float) The amount of speed of the car.
+
 Default (Float): 3 (0x40400000)
 	/EndDescription
 0
 
-0x034
+Car Speed while going to the right?
+(Float) The amount of speed of the car when passing through the foreground?
+
 Default (Float): 2 (0x40000000)
 	/EndDescription
 0
 
-Car Timer
-(Float) The number of frames before cars appear. (Setting to infinity disables the hazard. Setting too low can cause crashes)
+Car Timer Max
+(Float) The maximum amount of frames before cars appear. (Setting to infinity disables the hazard.)
 
 Default (Float): 300 (0x43960000)
 	/EndDescription
 0
 
-0x03C
+Car Timer Min
+(Float) The minimum amount of frames before cars appear. (Setting to infinity disables the hazard.)
+
 Default (Float): 100 (0x42C80000)
 	/EndDescription
 0
@@ -65,22 +88,30 @@ Default (Float): 16 (0x41800000)
 	/EndDescription
 0
 
-0x048
+Car Speed Multiplier on hit
+(Float) The speed multiplier when a car spins after contact.
+
 Default (Float): 0.75 (0x3F400000)
 	/EndDescription
 0
 
-0x04C
+Car Chance to spin
+(Float) The chance for a car to spin after contact.
+
 Default (Float): 0.5 (0x3F000000)
 	/EndDescription
 0
 
-0x050
+Smoke Spawn Chance?
+(Float) Chance for smoke to spawn?
+
 Default (Float): 0.25 (0x3E800000)
 	/EndDescription
 0
 
-0x054
+Car Spin Speed
+(Float) The rotation speed of the car when spinning.
+
 Default (Float): 24 (0x41C00000)
 	/EndDescription
 0
@@ -90,7 +121,9 @@ Default (Float): 60 (0x42700000)
 	/EndDescription
 0
 
-0x05C
+Car Honk SFX Distance
+(Float) The distance required for the cars to play Honk SFX when passing through.
+
 Default (Float): 320 (0x43A00000)
 	/EndDescription
 0
