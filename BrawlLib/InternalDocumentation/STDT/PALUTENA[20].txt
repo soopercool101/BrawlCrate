@@ -52,27 +52,37 @@ Default (Float): 0.5 (0x3F000000)
 	/EndDescription
 0
 
-0x03C
+Platform Respawn Timer
+(Float) The amount of frames for a broken platform to respawn.
+
 Default (Float): 840 (0x44520000)
 	/EndDescription
 0
 
-0x040
+Platform Stretch Timer
+(Float) Amount of frames to remove from Respawn Timer to start stretching animation. Needs to be lower than the Respawn Timer.
+
 Default (Float): 120 (0x42F00000)
 	/EndDescription
 0
 
-0x044
+Chained Platform Outward Timer
+(Float) The amount of frames for the chained platform to move outwards.
+
 Default (Float): 1800 (0x44E10000)
 	/EndDescription
 0
 
-0x048
+Chained Platform Inward Timer
+(Float) The amount of frames for the chained platform to move inwards. Starts when the Outward Timer starts counting.
+
 Default (Float): 3600 (0x45610000)
 	/EndDescription
 0
 
-0x04C
+Chained Platform Move Chance
+(Float) The chance for the chained platform to move.
+
 Default (Float): 0.3 (0x3E99999A)
 	/EndDescription
 0
@@ -127,24 +137,30 @@ Default (Float): 300 (0x43960000)
 	/EndDescription
 0
 
-0x078
+Bottom Platform Min Respawn Timer
+(Float) The minimum amount of frames for the bottom platform to spawn.
+
 Default (Float): 180 (0x43340000)
 	/EndDescription
 0
 
-Platform Respawn Timer
-The amount of frames it takes for broken platforms to respawn (May be delayed by about a second or 2)
+Bottom Platform Max Respawn Timer
+(Float) The maximum amount of frames for the bottom platform to spawn.
 
 Default (Float): 480 (0x43F00000)
 	/EndDescription
 0
 
-0x080
+Bottom Platform Right Spawn Chance
+(Float) The chance for the bottom platform to spawn from the right.
+
 Default (Float): 0.2 (0x3E4CCCCD)
 	/EndDescription
 0
 
-0x084
+Bottom Platform Moving Speed
+(Float) The speed of the bottom platform.
+
 Default (Float): 0.56 (0x3F0F5C29)
 	/EndDescription
 0
