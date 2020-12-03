@@ -9,7 +9,17 @@ namespace BrawlLib.Internal
     public unsafe struct Vector2 : IComparable
     {
         public float _x;
+        public float X
+        {
+            get => _x;
+            set => _x = value;
+        }
         public float _y;
+        public float Y
+        {
+            get => _y;
+            set => _y = value;
+        }
 
         public Vector2(float x, float y)
         {

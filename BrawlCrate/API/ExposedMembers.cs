@@ -814,7 +814,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static float UserFloatInput(string title)
         {
-            return UserFloatInput(title, "Value:", _lastFloatInput, 0, 0);
+            return UserFloatInput(title, "Value:", _lastFloatInput, float.MinValue, float.MaxValue);
         }
 
         /// <summary>
@@ -831,7 +831,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static float UserFloatInput(string title, string description)
         {
-            return UserFloatInput(title, description, _lastFloatInput, 0, 0);
+            return UserFloatInput(title, description, _lastFloatInput, float.MinValue, float.MaxValue);
         }
 
         /// <summary>
@@ -851,7 +851,7 @@ namespace BrawlCrate.API
         /// </returns>
         public static float UserFloatInput(string title, string description, float defaultValue)
         {
-            return UserFloatInput(title, description, defaultValue, 0, 0);
+            return UserFloatInput(title, description, defaultValue, float.MinValue, float.MaxValue);
         }
 
         /// <summary>
@@ -905,6 +905,7 @@ namespace BrawlCrate.API
             {
                 dialog.Cancellable = false;
                 dialog.numNewCount.Integer = false;
+                dialog.numNewCount.Integral = false;
                 // Set minimum and maximum values if applicable
                 if (minimumValue != maximumValue)
                 {
@@ -915,6 +916,11 @@ namespace BrawlCrate.API
                     {
                         defaultValue = minimumValue;
                     }
+                }
+                else
+                {
+                    dialog.numNewCount.MinimumValue = float.MinValue;
+                    dialog.numNewCount.MaximumValue = float.MaxValue;
                 }
 
                 dialog.ShowDialog(title, description, defaultValue);
