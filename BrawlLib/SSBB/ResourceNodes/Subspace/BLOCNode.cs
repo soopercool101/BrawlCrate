@@ -118,7 +118,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
 #endif
         public int Buffer { get; set; }
-        private uint _rawTag { get; set; }
+        private uint _rawTag;
 
         protected virtual string baseName => UncompressedSource.Tag;
 

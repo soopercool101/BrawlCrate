@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.BrawlEx;
-using System;
 using System.ComponentModel;
 using System.IO;
 

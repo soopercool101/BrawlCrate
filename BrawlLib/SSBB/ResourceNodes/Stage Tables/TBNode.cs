@@ -1,19 +1,12 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Stage_Tables;
-using BrawlLib.SSBB.Types.Subspace;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public abstract unsafe class TBNode : ARCEntryNode
     {
         internal TB* Header => (TB*) WorkingUncompressed.Address;
-        public override bool supportsCompression => false;
 
         private uint _rawTag;
 

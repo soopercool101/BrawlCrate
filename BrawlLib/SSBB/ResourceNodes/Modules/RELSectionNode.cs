@@ -1,6 +1,5 @@
 using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
-using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;

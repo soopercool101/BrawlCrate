@@ -6,7 +6,6 @@ using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;

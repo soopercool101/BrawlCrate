@@ -1,8 +1,6 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.PowerPCAssembly;
-using OpenTK.Graphics.ES20;
 using System.ComponentModel;
-using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
