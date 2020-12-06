@@ -49,14 +49,14 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Stage Collision Attributes", null, NewSCLAAction),
                 new ToolStripMenuItem("Stage Parameters", null, NewSTPMAction),
                 new ToolStripMenuItem("Stage Table", null,
-                    new ToolStripMenuItem("STDT", null, NewStageTableAction<STDTNode>),
-                    new ToolStripMenuItem("TBCL", null, NewStageTableAction<TBCLNode>),
-                    new ToolStripMenuItem("TBGC", null, NewStageTableAction<TBGCNode>),
-                    new ToolStripMenuItem("TBGD", null, NewStageTableAction<TBGDNode>),
-                    new ToolStripMenuItem("TBGM", null, NewStageTableAction<TBGMNode>),
-                    new ToolStripMenuItem("TBLV", null, NewStageTableAction<TBLVNode>),
-                    new ToolStripMenuItem("TBRM", null, NewStageTableAction<TBRMNode>),
-                    new ToolStripMenuItem("TBST", null, NewStageTableAction<TBSTNode>)
+                    new ToolStripMenuItem("STDT", null, NewStageTableAction<STDTNode>)
+                    //new ToolStripMenuItem("TBCL", null, NewStageTableAction<TBCLNode>),
+                    //new ToolStripMenuItem("TBGC", null, NewStageTableAction<TBGCNode>),
+                    //new ToolStripMenuItem("TBGD", null, NewStageTableAction<TBGDNode>),
+                    //new ToolStripMenuItem("TBGM", null, NewStageTableAction<TBGMNode>),
+                    //new ToolStripMenuItem("TBLV", null, NewStageTableAction<TBLVNode>),
+                    //new ToolStripMenuItem("TBRM", null, NewStageTableAction<TBRMNode>),
+                    //new ToolStripMenuItem("TBST", null, NewStageTableAction<TBSTNode>)
                 ),
                 new ToolStripMenuItem("Stepjump", null, NewADSJAction)
             ));
@@ -515,7 +515,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBCLNode>().Replace(path);
+                    //NewStageTable<TBCLNode>().Replace(path);
                 }
             }
         }
@@ -526,7 +526,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBGCNode>().Replace(path);
+                    //NewStageTable<TBGCNode>().Replace(path);
                 }
             }
         }
@@ -537,7 +537,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBGDNode>().Replace(path);
+                    //NewStageTable<TBGDNode>().Replace(path);
                 }
             }
         }
@@ -548,7 +548,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBGMNode>().Replace(path);
+                    //NewStageTable<TBGMNode>().Replace(path);
                 }
             }
         }
@@ -559,7 +559,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBLVNode>().Replace(path);
+                    //NewStageTable<TBLVNode>().Replace(path);
                 }
             }
         }
@@ -570,7 +570,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBRMNode>().Replace(path);
+                    //NewStageTable<TBRMNode>().Replace(path);
                 }
             }
         }
@@ -581,7 +581,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    NewStageTable<TBSTNode>().Replace(path);
+                    //NewStageTable<TBSTNode>().Replace(path);
                 }
             }
         }

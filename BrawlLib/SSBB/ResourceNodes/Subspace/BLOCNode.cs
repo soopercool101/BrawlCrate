@@ -111,7 +111,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class BLOCEntryNode : ResourceNode
     {
-        public override ResourceType ResourceFileType => ResourceType.Unknown;
         internal BLOCEntry* Header => (BLOCEntry*) WorkingUncompressed.Address;
         public override bool supportsCompression => false;
 
@@ -136,7 +135,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            base.OnInitialize();
             _rawTag = Header->_tag;
 
             int entries = Header->_count;
