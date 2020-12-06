@@ -37,7 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected virtual Type SubEntryType => typeof(RawDataNode);
+        public virtual Type SubEntryType => typeof(RawDataNode);
 
         public override Type[] AllowedChildTypes =>
             SubEntryType == typeof(RawDataNode) ? new Type[] { } : new[] {SubEntryType};

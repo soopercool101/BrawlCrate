@@ -18,8 +18,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public UnsafeBuffer _buffer;
 
-        public int Size => WorkingUncompressed.Length;
-
         public RawDataNode()
         {
         }

@@ -1,19 +1,26 @@
-﻿using BrawlCrate.UI;
-using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using BrawlLib.Internal.Windows.Forms;
-using BrawlLib.SSBB;
+﻿using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
-    public class StageTableWrapper : GenericWrapper
+    public abstract class TBWrapper : GenericWrapper
     {
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
+        private static readonly ToolStripMenuItem AddEntryToolStripMenuItem =
+            new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J);
+
+        private static readonly ToolStripSeparator AddEntryToolStripSeparator =
+            new ToolStripSeparator();
 
         private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
             new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
@@ -33,11 +40,13 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
-        static StageTableWrapper()
+        static TBWrapper()
         {
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("Resize", null, ResizeAction));
-            _menu.Items.Add(new ToolStripSeparator());
+
+            _menu = new ContextMenuStrip();
+            _menu.Items.Add(AddEntryToolStripMenuItem);
+            _menu.Items.Add(AddEntryToolStripSeparator);
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
@@ -52,9 +61,9 @@ namespace BrawlCrate.NodeWrappers
             _menu.Closing += MenuClosing;
         }
 
-        protected static void ResizeAction(object sender, EventArgs e)
+        protected static void NewEntryAction(object sender, EventArgs e)
         {
-            GetInstance<STDTWrapper>().Resize();
+            GetInstance<TBWrapper>().NewEntry();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -69,7 +78,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            StageTableWrapper w = GetInstance<StageTableWrapper>();
+            TBWrapper w = GetInstance<TBWrapper>();
 
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
@@ -81,32 +90,71 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public StageTableWrapper()
+        public virtual void NewEntry()
+        {
+            // Redirect to NewEntry<T> for children
+        }
+
+        public void NewEntry<T>() where T : ResourceNode, new()
+        {
+            if (typeof(T) != typeof(RawDataNode))
+            {
+                T node = new T { Name = "NewEntry" };
+                _resource.AddChild(node);
+            }
+        }
+
+        public TBWrapper()
         {
             ContextMenuStrip = _menu;
         }
+    }
 
-        public void Resize()
+
+    [NodeWrapper(ResourceType.TBCL)]
+    public class TBCLWrapper : TBWrapper
+    {
+        public override string ExportFilter => FileFilters.TBCL;
+
+        public override void NewEntry()
         {
-            NumericInputForm n = new NumericInputForm();
-            if (_resource is StageTableNode t &&
-                n.ShowDialog("Resize", "Enter the new size:", t.NumEntries) == DialogResult.OK)
-            {
-                List<byte> newList = new List<byte>();
-                for (int i = 0; i < n.NewValue * t.NumEntries; i++)
-                {
-                    newList.Add(i < t.EntryList.Count ? t.EntryList[i] : (byte) 0);
-                }
-
-                t.EntryList = newList;
-                MainForm.Instance.resourceTree_SelectionChanged(this, null);
-            }
+            NewEntry<TBCLEntryNode>();
         }
     }
 
-    [NodeWrapper(ResourceType.STDT)]
-    public class STDTWrapper : StageTableWrapper
+    [NodeWrapper(ResourceType.TBGC)]
+    public class TBGCWrapper : TBWrapper
     {
-        public override string ExportFilter => FileFilters.STDT;
+        public override string ExportFilter => FileFilters.TBGC;
+    }
+
+    [NodeWrapper(ResourceType.TBGD)]
+    public class TBGDWrapper : TBWrapper
+    {
+        public override string ExportFilter => FileFilters.TBGD;
+    }
+
+    [NodeWrapper(ResourceType.TBGM)]
+    public class TBGMWrapper : TBWrapper
+    {
+        public override string ExportFilter => FileFilters.TBGM;
+    }
+
+    [NodeWrapper(ResourceType.TBLV)]
+    public class TBLVWrapper : TBWrapper
+    {
+        public override string ExportFilter => FileFilters.TBLV;
+    }
+
+    [NodeWrapper(ResourceType.TBRM)]
+    public class TBRMWrapper : TBWrapper
+    {
+        public override string ExportFilter => FileFilters.TBRM;
+    }
+
+    [NodeWrapper(ResourceType.TBST)]
+    public class TBSTWrapper : TBWrapper
+    {
+        public override string ExportFilter => FileFilters.TBST;
     }
 }
