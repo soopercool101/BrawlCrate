@@ -734,7 +734,7 @@ namespace BrawlCrate.UI
                         newControl = audioPlaybackPanel1;
                     }
                 }
-                else if (node is CollisionNode || node is CollisionObject || !CompatibilityMode &&
+                else if (node is CollisionNode || node is CollisionObject || node is TBCLEntryNode || !CompatibilityMode &&
                     (node is IRenderedObject io && io.DrawCalls.Count > 0 ||
                      ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
                      ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0))
@@ -898,6 +898,29 @@ namespace BrawlCrate.UI
                     Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
                     Instance.modelPanel1.AddTarget(collNodeTemp, false);
                     collNodeTemp.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
+                    break;
+                case TBCLEntryNode tbclEntry:
+                    if (tbclEntry.Parent?.Parent != null)
+                    {
+                        try
+                        {
+                            CollisionNode coll =
+                                tbclEntry.Parent.Parent.FindChildrenByClassType("", typeof(CollisionNode))[0] as CollisionNode;
+                            CollisionNode temp = new CollisionNode();
+                            for (int i = 0; i < tbclEntry.Count; i++)
+                            {
+                                temp.AddChild(coll.Children[(int)tbclEntry.CollisionObjects[i]]);
+                            }
+                            Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
+                            Instance.modelPanel1.AddTarget(temp, false);
+                            temp.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
+                        }
+                        catch
+                        {
+                            // ignore
+                        }
+                    }
+
                     break;
                 case ARCNode arcNode:
                     RenderARC(arcNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);

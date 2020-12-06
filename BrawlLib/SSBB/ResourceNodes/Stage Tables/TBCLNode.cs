@@ -227,6 +227,26 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Browsable(false)]
+        public float[] CollisionObjects =>
+            new[]
+            {
+                CollisionObject1,
+                CollisionObject2,
+                CollisionObject3,
+                CollisionObject4,
+                CollisionObject5,
+                CollisionObject6,
+                CollisionObject7,
+                CollisionObject8,
+                CollisionObject9,
+                CollisionObject10,
+                CollisionObject11,
+                CollisionObject12,
+                CollisionObject13,
+                CollisionObject14
+            };
+
         public byte _unk0x1;
 
         [Category("TBCL Entry")]
