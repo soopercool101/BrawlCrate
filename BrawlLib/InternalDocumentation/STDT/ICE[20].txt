@@ -58,77 +58,87 @@ Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x03C
+Icicle Initial Min Timer
 Default (Float): 300 (0x43960000)
 	/EndDescription
 0
 
-0x040
+Icicle Initial Max Timer
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x044
+Redo Min Timer
 Default (Float): 120 (0x42F00000)
 	/EndDescription
 0
 
-0x048
+Redo Max Timer
 Default (Float): 180 (0x43340000)
 	/EndDescription
 0
 
-0x04C
+Icicle Damage?
 Default (Float): 10 (0x41200000)
 	/EndDescription
 0
 
-0x050
+Falling Platform Timer
 Default (Float): 120 (0x42F00000)
 	/EndDescription
 0
 
-0x054
+Tipping Speed 
 Default (Float): 1 (0x3F800000)
 	/EndDescription
 0
 
-0x058
+Initial Tipping Speed
 Default (Float): 4 (0x40800000)
 	/EndDescription
 0
 
-0x05C
+Turnaround Angle of Tipping Platform
 Default (Float): 100 (0x42C80000)
 	/EndDescription
 0
 
-0x060
+Tipping Platform Deceleration
+(Float) Deceleration of tipping platform once past max angle.
+
 Default (Float): 0.8 (0x3F4CCCCD)
 	/EndDescription
 0
 
-0x064
+Tipping Platform Respawn Time
+(Float) Time to respawn the tipping platform after fully stablizing.
+
 Default (Float): 150 (0x43160000)
 	/EndDescription
 0
 
-0x068
+Tipping Platform Return Speed
+(Float) Speed at which tipping platform returns to an upright position.
+
 Default (Float): 0.5 (0x3F000000)
 	/EndDescription
 0
 
-0x06C
+Food Spawn Min Timer
+(Float) Minimum timer before custom food items can be spawned.
+
 Default (Float): 1800 (0x44E10000)
 	/EndDescription
 0
 
-0x070
+Food Spawn Max Timer
+(Float) Maximum timer before custom food items will be spawned.
+
 Default (Float): 2700 (0x4528C000)
 	/EndDescription
 0
 
-0x074
+Food Spawn Chance
 Default (Float): 0.25 (0x3E800000)
 	/EndDescription
 0
@@ -153,32 +163,36 @@ Default (Float): 0.5 (0x3F000000)
 	/EndDescription
 0
 
-0x088
+Cloud Platform Spawn Min Timer
+(Float) Minimum frames before cloud platform can be spawned.
+
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x08C
+Cloud Platform Spawn Max Timer
+(Float) Maximum frames before cloud platform will be spawned.
+
 Default (Float): 900 (0x44610000)
 	/EndDescription
 0
 
-0x090
+Speed of Cloud Platform
 Default (Float): 0.7 (0x3F333333)
 	/EndDescription
 0
 
-0x094
+Chance of Fish some more?
 Default: 0 (Could be int or float - be careful)
 	/EndDescription
 0
 
-0x098
+Max Frames of Fish Lockout?
 Default (Float): 45 (0x42340000)
 	/EndDescription
 0
 
-0x09C
+Chance of Fish?
 Default (Float): 1 (0x3F800000)
 	/EndDescription
 0
@@ -188,72 +202,90 @@ Default (Float): 2 (0x40000000)
 	/EndDescription
 0
 
-0x0A4
+Polar Bear Jump Min Timer
+(Float) Minimum frames before Polar Bear can jump.
+
 Default (Float): 240 (0x43700000)
 	/EndDescription
 0
 
-0x0A8
+Polar Bear Jump Max Timer
+(Float) Maximum frames before Polar Bear will jump.
+
 Default (Float): 660 (0x44250000)
 	/EndDescription
 0
 
-0x0AC
+Polar Bear Jump Chance
 Default (Float): 0.25 (0x3E800000)
 	/EndDescription
 0
 
-0x0B0
+Polar Bear Jump Magnitude Min
+(Float) The minimum depth the platform will drop when the polar bear lands from its jump.
+
 Default (Float): 10 (0x41200000)
 	/EndDescription
 0
 
-0x0B4
+Polar Bear Jump Magnitude Max
+(Float) The maximum depth the platform will drop when the polar bear lands from its jump.
+
 Default (Float): 22 (0x41B00000)
 	/EndDescription
 0
 
-0x0B8
+Mountain Sink Acceleration
+(Float) Rate at which platform will accelerate downward when polar bear lands from its jump.
+
 Default (Float): 0.1 (0x3DCCCCCD)
 	/EndDescription
 0
 
-0x0BC
+Mountain Sink Max Speed
+(Float) Max speed at which platform will plunge downward when polar bear lands from its jump.
+
 Default (Float): 2.5 (0x40200000)
 	/EndDescription
 0
 
-0x0C0
+Mountain Minimum Sunk Timer
+(Float) Minimum frames the mountain will remain submerged after being sunk.
+
 Default (Float): 240 (0x43700000)
 	/EndDescription
 0
 
-0x0C4
+Mountain Maximum Sunk Timer
+(Float) Maximum frames the mountain will remain submerged after being sunk.
+
 Default (Float): 420 (0x43D20000)
 	/EndDescription
 0
 
-0x0C8
+Mountain Float Speed
+(Float) The speed at which the mountain will return to the surface after being sunk.
+
 Default (Float): 0.2 (0x3E4CCCCD)
 	/EndDescription
 0
 
-0x0CC
+Time Grounded Min
 Default (Float): 240 (0x43700000)
 	/EndDescription
 0
 
-0x0D0
+Time Grounded Max
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x0D4
+Speed Of Ascent?
 Default (Float): 0.3 (0x3E99999A)
 	/EndDescription
 0
 
-0x0D8
+Ice Floating Platform Tilt Speed
 Default (Float): 0.25 (0x3E800000)
 	/EndDescription
 0
@@ -263,7 +295,7 @@ Default (Float): 60 (0x42700000)
 	/EndDescription
 0
 
-0x0E0
+Ice Floating Platform Fast Speed
 Default (Float): 0.45 (0x3EE66666)
 	/EndDescription
 0
@@ -273,7 +305,7 @@ Default (Float): 30 (0x41F00000)
 	/EndDescription
 0
 
-0x0E8
+Ice Floating Platform Sinking Speed?
 Default (Float): 0.2 (0x3E4CCCCD)
 	/EndDescription
 0
