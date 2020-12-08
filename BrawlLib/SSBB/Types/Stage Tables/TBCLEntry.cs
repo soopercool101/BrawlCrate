@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Stage_Tables
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct TBCLEntry
+    public struct TBCLEntry
     {
         public const int Size = 0x3C;
 
