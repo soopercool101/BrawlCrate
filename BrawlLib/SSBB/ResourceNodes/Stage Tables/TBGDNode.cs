@@ -272,6 +272,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             TBGDEntry* hdr = (TBGDEntry*)address;
+            hdr->_unk0x00 = _unk0x00;
             hdr->_unk0x01 = _unk0x01;
             hdr->_unk0x02 = _unk0x02;
             hdr->_unk0x03 = _unk0x03;
