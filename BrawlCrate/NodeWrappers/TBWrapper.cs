@@ -134,12 +134,22 @@ namespace BrawlCrate.NodeWrappers
     public class TBGMWrapper : TBWrapper
     {
         public override string ExportFilter => FileFilters.TBGM;
+
+        public override void NewEntry()
+        {
+            NewEntry<TBGMEntryNode>();
+        }
     }
 
     [NodeWrapper(ResourceType.TBLV)]
     public class TBLVWrapper : TBWrapper
     {
         public override string ExportFilter => FileFilters.TBLV;
+
+        public override void NewEntry()
+        {
+            NewEntry<TBLVEntryNode>();
+        }
     }
 
     [NodeWrapper(ResourceType.TBRM)]
