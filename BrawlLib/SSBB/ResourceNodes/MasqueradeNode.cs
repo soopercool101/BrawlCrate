@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MasqueradeNode : ResourceNode
+    public class MasqueradeNode : ResourceNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.MASQ;

@@ -62,7 +62,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct sStringEntry
+    public struct sStringEntry
     {
         public bint _dataOffset;
         public bint _stringOffset; //Base is string table

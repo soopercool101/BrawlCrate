@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class RSARFileEntryNode : ResourceNode
+    public class RSARFileEntryNode : ResourceNode
     {
         internal RSARNode RSARNode
         {
@@ -66,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Init(_dataAddr, (int) _audioLen, (WaveInfo*) WorkingUncompressed.Address);
         }
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             if (fileName.EndsWith(".wav"))
             {
@@ -101,7 +101,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             RSARNode?.SignalPropertyChange();
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".wav"))
             {

@@ -551,7 +551,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct INFOFooter
+    internal struct INFOFooter
     {
         public const int Size = 0x10;
 
@@ -601,7 +601,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct Sound3DParam
+    public struct Sound3DParam
     {
         public const int Size = 0xC;
 
@@ -614,7 +614,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct SeqSoundInfo
+    public struct SeqSoundInfo
     {
         public const int Size = 0x14;
 
@@ -629,7 +629,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct StrmSoundInfo
+    public struct StrmSoundInfo
     {
         public const int Size = 0xC;
 
@@ -640,7 +640,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct WaveSoundInfo
+    public struct WaveSoundInfo
     {
         public const int Size = 0x10;
 
@@ -658,7 +658,7 @@ namespace BrawlLib.SSBB.Types.Audio
     #region Banks
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct INFOBankEntry
+    internal struct INFOBankEntry
     {
         public const int Size = 0xC;
 
@@ -672,7 +672,7 @@ namespace BrawlLib.SSBB.Types.Audio
     #region Player Info
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct INFOPlayerInfoEntry
+    internal struct INFOPlayerInfoEntry
     {
         public const int Size = 0x10;
 
@@ -721,7 +721,7 @@ namespace BrawlLib.SSBB.Types.Audio
 
     //Attached to a RuintList from INFOSetHeader
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct INFOFileEntry
+    internal struct INFOFileEntry
     {
         public const int Size = 0x8;
 
@@ -779,7 +779,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct INFOGroupEntry
+    internal struct INFOGroupEntry
     {
         public const int Size = 0x18;
 

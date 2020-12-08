@@ -136,7 +136,7 @@ namespace BrawlLib.Modeling.Collada
             writer.WriteEndElement(); //library_images
         }
 
-        private static unsafe void WriteMaterials(MDL0Node model, XmlWriter writer)
+        private static void WriteMaterials(MDL0Node model, XmlWriter writer)
         {
             ResourceNode node = model._matGroup;
             if (node == null)
@@ -167,7 +167,7 @@ namespace BrawlLib.Modeling.Collada
             writer.WriteEndElement();
         }
 
-        private static unsafe void WriteEffects(MDL0Node model, XmlWriter writer)
+        private static void WriteEffects(MDL0Node model, XmlWriter writer)
         {
             ResourceNode node = model._matGroup;
             if (node == null)
@@ -310,7 +310,7 @@ namespace BrawlLib.Modeling.Collada
             writer.WriteEndElement(); //library
         }
 
-        private static unsafe void WriteGeometry(MDL0Node model, XmlWriter writer)
+        private static void WriteGeometry(MDL0Node model, XmlWriter writer)
         {
             ResourceNode grp = model._objGroup;
             if (grp == null)
@@ -693,8 +693,8 @@ namespace BrawlLib.Modeling.Collada
             writer.WriteEndElement(); //source
         }
 
-        private static unsafe void WritePrimitive(MDL0ObjectNode poly, MDL0MaterialNode mat, GLPrimitive prim,
-                                                  XmlWriter writer)
+        private static void WritePrimitive(MDL0ObjectNode poly, MDL0MaterialNode mat, GLPrimitive prim,
+                                           XmlWriter writer)
         {
             PrimitiveManager manager = poly._manager;
             int count;
@@ -829,7 +829,7 @@ namespace BrawlLib.Modeling.Collada
             writer.WriteEndElement(); //primitive
         }
 
-        private static unsafe void WriteControllers(MDL0Node model, XmlWriter writer)
+        private static void WriteControllers(MDL0Node model, XmlWriter writer)
         {
             if (model._objList == null)
             {
@@ -1128,7 +1128,7 @@ namespace BrawlLib.Modeling.Collada
             writer.WriteEndElement();
         }
 
-        private static unsafe void WriteNodes(MDL0Node model, XmlWriter writer)
+        private static void WriteNodes(MDL0Node model, XmlWriter writer)
         {
             if (model._boneList != null)
             {
@@ -1151,7 +1151,7 @@ namespace BrawlLib.Modeling.Collada
             }
         }
 
-        private static unsafe void WriteBone(MDL0BoneNode bone, XmlWriter writer, bool useMatrix = false)
+        private static void WriteBone(MDL0BoneNode bone, XmlWriter writer, bool useMatrix = false)
         {
             writer.WriteStartElement("node");
             writer.WriteAttributeString("id", bone.Name);
@@ -1268,7 +1268,7 @@ namespace BrawlLib.Modeling.Collada
             writer.WriteEndElement(); //node
         }
 
-        private static unsafe string WriteMatrix(Matrix m)
+        private static string WriteMatrix(Matrix m)
         {
             string s = "";
             float* p = (float*) &m;

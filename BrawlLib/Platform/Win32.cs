@@ -45,7 +45,7 @@ namespace BrawlLib.Platform
                 return new SafeHandle(handle);
             }
 
-            internal static unsafe SafeHandle Duplicate(VoidPtr hFile)
+            internal static SafeHandle Duplicate(VoidPtr hFile)
             {
                 VoidPtr hProc = Process.GetCurrentProcess().Handle;
                 if (!DuplicateHandle(hProc, hFile, hProc, out hFile, 0, false, 2))

@@ -49,7 +49,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ClassicFighterData
+    public struct ClassicFighterData
     {
         public const int Size = 0x50;
 
@@ -68,7 +68,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ClassicDifficultyData
+    public struct ClassicDifficultyData
     {
         public const int Size = 0x0E;
 

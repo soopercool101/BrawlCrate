@@ -42,7 +42,7 @@ namespace BrawlLib.Wii.Animations
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct I12Entry
+    public struct I12Entry
     {
         public const int Size = 12;
 
@@ -130,7 +130,7 @@ namespace BrawlLib.Wii.Animations
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct I6Entry
+    internal struct I6Entry
     {
         public const int Size = 6;
 
@@ -210,7 +210,7 @@ namespace BrawlLib.Wii.Animations
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct I4Entry
+    internal struct I4Entry
     {
         public const int Size = 4;
 

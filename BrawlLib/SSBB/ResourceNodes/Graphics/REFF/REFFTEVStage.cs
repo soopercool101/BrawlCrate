@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class REFFTEVStage : ResourceNode
+    public class REFFTEVStage : ResourceNode
     {
         public REFFTEVStage(int index)
         {

@@ -769,7 +769,7 @@ namespace BrawlLib.Wii.Models
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public unsafe struct ElementDef
+        public struct ElementDef
         {
             public byte Format; //Input format
             public byte Output; //Output size/decoder
@@ -793,7 +793,7 @@ namespace BrawlLib.Wii.Models
             ElementIndexed
         }
 
-        internal unsafe List<Vertex3> Finish(Vector3* pVert, IMatrixNode[] nodeTable)
+        internal List<Vertex3> Finish(Vector3* pVert, IMatrixNode[] nodeTable)
         {
             //Create vertex list from remap table
             List<Vertex3> list = new List<Vertex3>(RemapTable.Count);

@@ -3,7 +3,7 @@ using System.IO.Ports;
 
 namespace BrawlLib.Internal.IO
 {
-    public unsafe class GeckoStream
+    public class GeckoStream
     {
         public SerialPort _port;
         public Stream _stream => _port.BaseStream;

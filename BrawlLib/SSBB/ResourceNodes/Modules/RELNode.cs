@@ -762,7 +762,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Stage module conversion
 
-        private static unsafe int arrayIndexOf(void* haystack, int length, byte[] needle)
+        private static int arrayIndexOf(void* haystack, int length, byte[] needle)
         {
             byte?[] b = new byte?[needle.Length];
             for (int i = 0; i < b.Length; i++)
@@ -773,7 +773,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return arrayIndexOf(haystack, length, b);
         }
 
-        private static unsafe int arrayIndexOf(void* haystack, int length, byte?[] needle)
+        private static int arrayIndexOf(void* haystack, int length, byte?[] needle)
         {
             byte* ptr = (byte*) haystack;
             int indexToCheck = 0;
@@ -797,7 +797,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return -1;
         }
 
-        private unsafe int findStageIDOffset()
+        private int findStageIDOffset()
         {
             byte?[] searchFor =
             {
@@ -811,7 +811,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 : index + 11;
         }
 
-        private unsafe bool nodeContainsString(string s)
+        private bool nodeContainsString(string s)
         {
             return arrayIndexOf(WorkingUncompressed.Address,
                 WorkingUncompressed.Length,

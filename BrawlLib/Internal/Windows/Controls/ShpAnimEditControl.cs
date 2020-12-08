@@ -130,7 +130,7 @@ namespace BrawlLib.Internal.Windows.Controls
             }
         }
 
-        private unsafe void BoxChanged(object sender, EventArgs e)
+        private void BoxChanged(object sender, EventArgs e)
         {
             NumericInputBox box = sender as NumericInputBox;
             FloatKeyframe kf;

@@ -407,7 +407,7 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        public unsafe void ZoomExtents(Vector3 point, float distance)
+        public void ZoomExtents(Vector3 point, float distance)
         {
             if (!_ortho)
             {

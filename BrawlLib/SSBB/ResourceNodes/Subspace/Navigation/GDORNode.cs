@@ -5,7 +5,7 @@ using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GDORNode : BLOCEntryNode
+    public class GDORNode : BLOCEntryNode
     {
         protected override Type SubEntryType => typeof(GDOREntryNode);
         public override ResourceType ResourceFileType => ResourceType.GDOR;
@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class GDBFNode : GDORNode
+    public class GDBFNode : GDORNode
     {
         public override ResourceType ResourceFileType => ResourceType.GDBF;
         protected override string baseName => "Factory Doors";

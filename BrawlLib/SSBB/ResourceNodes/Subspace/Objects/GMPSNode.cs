@@ -3,7 +3,7 @@ using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GMPSNode : BLOCEntryNode
+    public class GMPSNode : BLOCEntryNode
     {
         protected override Type SubEntryType => typeof(GMPSEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GMPS;

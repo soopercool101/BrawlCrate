@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.Internal.Windows.Controls
 {
-    public unsafe class ASLIndicator : UserControl
+    public class ASLIndicator : UserControl
     {
         #region Designer
 
@@ -313,7 +313,7 @@ namespace BrawlLib.Internal.Windows.Controls
             }
         }
 
-        public unsafe void TargetChanged()
+        public void TargetChanged()
         {
             _updating = true;
 

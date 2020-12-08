@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.Internal.Audio
 {
-    internal unsafe class alAudioProvider : AudioProvider
+    internal class alAudioProvider : AudioProvider
     {
         private AudioContext context;
 

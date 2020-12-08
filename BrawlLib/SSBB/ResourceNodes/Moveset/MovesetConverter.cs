@@ -433,8 +433,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 0;
         }
 
-        internal static unsafe void BuildData(MoveDefDataNode node, MovesetHeader* header, VoidPtr address, int length,
-                                              bool force)
+        internal static void BuildData(MoveDefDataNode node, MovesetHeader* header, VoidPtr address, int length,
+                                       bool force)
         {
             MoveDefNode RootNode = node.Parent.Parent as MoveDefNode;
 
@@ -1416,7 +1416,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 0;
         }
 
-        internal static unsafe void BuildDataCommon(MoveDefDataCommonNode node, int length, bool force)
+        internal static void BuildDataCommon(MoveDefDataCommonNode node, int length, bool force)
         {
         }
     }

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MDL0DefNode : MDL0EntryNode
+    public class MDL0DefNode : MDL0EntryNode
     {
         internal List<object> _items = new List<object>();
         private int _len;

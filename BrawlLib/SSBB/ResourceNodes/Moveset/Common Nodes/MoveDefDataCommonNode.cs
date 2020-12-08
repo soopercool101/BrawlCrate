@@ -715,7 +715,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefCommonActionNode : MoveDefActionNode
+    public class MoveDefCommonActionNode : MoveDefActionNode
     {
         public byte Unk1
         {

@@ -109,7 +109,7 @@ namespace BrawlLib.Platform
 
             [Guid("C50A7E93-F395-4834-9EF6-7FA99DE50966")]
             [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-            public unsafe interface IDirectSound8
+            public interface IDirectSound8
             {
                 void CreateSoundBuffer(ref DSBufferDesc pcDSBufferDesc, out IDirectSoundBuffer8 ppDSBuffer,
                                        IntPtr pUnkOuter);

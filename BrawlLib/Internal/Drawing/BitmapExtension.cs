@@ -315,7 +315,7 @@ namespace BrawlLib.Internal.Drawing
             bmp.UnlockBits(data);
         }
 
-        public static unsafe void CopyTo(this Bitmap bmp, Bitmap dest)
+        public static void CopyTo(this Bitmap bmp, Bitmap dest)
         {
             int w = Math.Min(bmp.Width, dest.Width);
             int h = Math.Min(bmp.Height, dest.Height);

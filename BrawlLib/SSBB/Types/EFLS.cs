@@ -51,7 +51,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct EFLSEntry
+    public struct EFLSEntry
     {
         public const int Size = 0x10;
 

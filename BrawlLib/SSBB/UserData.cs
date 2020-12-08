@@ -306,7 +306,7 @@ namespace BrawlLib.SSBB
     }
 
     [TypeConverter(typeof(UserDataConverter))]
-    public unsafe class UserDataClass
+    public class UserDataClass
     {
         public string _name = "";
 

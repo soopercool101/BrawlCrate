@@ -486,7 +486,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Panels
 
         public bool _updating;
 
-        private unsafe void listKeyframes_SelectedIndexChanged(object sender, EventArgs e)
+        private void listKeyframes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_updating)
             {

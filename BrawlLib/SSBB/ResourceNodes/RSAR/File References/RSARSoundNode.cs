@@ -741,7 +741,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             *(Sound3DParam*) addr = _sound3dParam;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".wav"))
             {

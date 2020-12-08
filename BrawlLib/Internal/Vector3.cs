@@ -9,7 +9,7 @@ namespace BrawlLib.Internal
 {
     [Serializable]
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct PartialVector3
+    public struct PartialVector3
     {
         public float? _x, _y, _z;
 
@@ -460,7 +460,7 @@ namespace BrawlLib.Internal
             return Contained(this, start, end, expansion);
         }
 
-        public static unsafe bool Contained(Vector3 point, Vector3 start, Vector3 end, float expansion)
+        public static bool Contained(Vector3 point, Vector3 start, Vector3 end, float expansion)
         {
             float* sPtr = (float*) &point;
             float* s1 = (float*) &start, s2 = (float*) &end;
@@ -569,7 +569,7 @@ namespace BrawlLib.Internal
             return false;
         }
 
-        public unsafe float this[int index]
+        public float this[int index]
         {
             get
             {

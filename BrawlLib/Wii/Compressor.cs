@@ -226,8 +226,8 @@ namespace BrawlLib.Wii
             RunLength.ExpandYAY0(header, dstAddr, dstLen);
         }
 
-        public static unsafe void Compact(CompressionType type, VoidPtr srcAddr, int srcLen, Stream outStream,
-                                          ResourceNode r)
+        public static void Compact(CompressionType type, VoidPtr srcAddr, int srcLen, Stream outStream,
+                                   ResourceNode r)
         {
             switch (type)
             {

@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
     }
 
-    public unsafe class RELEntryNode : ResourceNode
+    public class RELEntryNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         internal VoidPtr Data => WorkingUncompressed.Address;

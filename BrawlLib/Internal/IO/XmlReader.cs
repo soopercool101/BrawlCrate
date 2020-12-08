@@ -352,7 +352,7 @@ namespace BrawlLib.Internal.IO
             return false;
         }
 
-        private unsafe bool LeaveTag()
+        private bool LeaveTag()
         {
             if (!_inTag)
             {
@@ -376,7 +376,7 @@ namespace BrawlLib.Internal.IO
             return false;
         }
 
-        public unsafe bool ReadValue(float* pOut)
+        public bool ReadValue(float* pOut)
         {
             if (!LeaveTag())
             {
@@ -396,7 +396,7 @@ namespace BrawlLib.Internal.IO
             return false;
         }
 
-        public unsafe bool ReadValue(float* pOut, float scale)
+        public bool ReadValue(float* pOut, float scale)
         {
             if (!LeaveTag())
             {
@@ -416,7 +416,7 @@ namespace BrawlLib.Internal.IO
             return false;
         }
 
-        public unsafe bool ReadValue(int* pOut)
+        public bool ReadValue(int* pOut)
         {
             if (!LeaveTag())
             {

@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace BrawlLib.SSBB.ResourceNodes
 {
     [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-    public unsafe class RelCommand
+    public class RelCommand
     {
         private readonly ModuleDataNode _section;
 

@@ -98,7 +98,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return null;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".txt"))
             {
@@ -116,7 +116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             if (fileName.EndsWith(".txt"))
             {

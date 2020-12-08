@@ -9,7 +9,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
         Hex
     }
 
-    public unsafe class PPCFormat
+    public class PPCFormat
     {
         public static DisplayType disassemblerDisplay = DisplayType.Decimal;
 

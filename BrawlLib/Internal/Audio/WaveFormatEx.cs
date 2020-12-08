@@ -3,7 +3,7 @@
 namespace BrawlLib.Internal.Audio
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct WaveFormatEx
+    public struct WaveFormatEx
     {
         public WaveFormatTag wFormatTag;
         public ushort nChannels;

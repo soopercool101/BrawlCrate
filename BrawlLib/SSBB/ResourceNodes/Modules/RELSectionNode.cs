@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class ModuleSectionNode : ModuleDataNode
+    public class ModuleSectionNode : ModuleDataNode
     {
         private ObjectParser _parser;
 
@@ -150,7 +150,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //    }
         //}
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
                 FileShare.None, 8, FileOptions.RandomAccess))

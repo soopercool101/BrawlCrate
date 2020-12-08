@@ -265,7 +265,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
 
         private bool _updating;
 
-        internal unsafe void TexChanged(object sender, EventArgs e)
+        internal void TexChanged(object sender, EventArgs e)
         {
             MDL0MaterialRefNode mr = TargetTexRef;
             PAT0TextureNode node;

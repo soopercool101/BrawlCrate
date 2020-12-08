@@ -218,7 +218,7 @@ namespace BrawlLib.SSBB.Types.Audio
         public bshort _lyn2; //History data for the loop point. If the sample does not loop, this value is zero.
         public short _pad;
 
-        public unsafe ADPCMInfo(CSTMADPCMInfo o, ushort gain = 0)
+        public ADPCMInfo(CSTMADPCMInfo o, ushort gain = 0)
         {
             fixed (short* ptr = _coefs)
             {
@@ -239,7 +239,7 @@ namespace BrawlLib.SSBB.Types.Audio
             _pad = o._pad;
         }
 
-        public unsafe ADPCMInfo(FSTMADPCMInfo o, ushort gain = 0)
+        public ADPCMInfo(FSTMADPCMInfo o, ushort gain = 0)
         {
             fixed (short* ptr = _coefs)
             {

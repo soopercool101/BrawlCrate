@@ -105,7 +105,7 @@ namespace BrawlLib.Modeling
 
         private bool _updateAssets = true;
 
-        public unsafe void ChangeInfluence(IMatrixNode newMatrixNode)
+        public void ChangeInfluence(IMatrixNode newMatrixNode)
         {
             if (_parent == null)
             {

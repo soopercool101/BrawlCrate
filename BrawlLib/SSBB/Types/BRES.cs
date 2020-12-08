@@ -55,7 +55,7 @@ namespace BrawlLib.SSBB.Types
     //}
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ROOTHeader
+    public struct ROOTHeader
     {
         public const string Tag = "root";
 

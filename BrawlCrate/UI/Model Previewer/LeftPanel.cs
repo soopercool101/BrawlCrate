@@ -1870,7 +1870,7 @@ namespace BrawlCrate.UI.Model_Previewer
             }
         }
 
-        private unsafe void portToolStripMenuItem_Click(object sender, EventArgs e)
+        private void portToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (TargetAnimType != 0 || SelectedCHR0 == null || !(TargetModel is MDL0Node))
             {

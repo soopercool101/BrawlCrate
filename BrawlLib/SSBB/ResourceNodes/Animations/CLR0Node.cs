@@ -578,7 +578,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             int length = 12 + (_numEntries != 0 ? _colors.Count * 4 : 4);
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,

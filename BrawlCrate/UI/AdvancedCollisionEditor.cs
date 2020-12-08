@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.UI
 {
-    public unsafe class AdvancedCollisionEditor : CollisionEditor
+    public class AdvancedCollisionEditor : CollisionEditor
     {
         protected override bool ErrorChecking => false;
 

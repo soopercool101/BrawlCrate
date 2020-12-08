@@ -82,7 +82,7 @@ namespace BrawlLib.SSBB.Types
 
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct PathingMiscDataSubEntry
+    public struct PathingMiscDataSubEntry
     {
         public static readonly uint Size = 0x0C;
         public bfloat _x;

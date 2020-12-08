@@ -133,8 +133,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public PLT0Node _palette;
 
-        internal unsafe void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, MDL0Node model = null,
-                                     string palette = null)
+        internal void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, MDL0Node model = null,
+                              string palette = null)
         {
             string plt = !string.IsNullOrEmpty(palette) ? palette : mRef.Palette;
             if (!string.IsNullOrEmpty(plt))
@@ -219,7 +219,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _index = -1;
         private int _program = -1;
 
-        private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
+        private void Load(int index, int program, MDL0Node model, bool isMetal)
         {
             _index = index;
             _program = program;

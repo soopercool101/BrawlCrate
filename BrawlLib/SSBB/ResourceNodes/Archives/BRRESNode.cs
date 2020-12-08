@@ -1090,7 +1090,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             strings.Add(Name);
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             Rebuild();
 
@@ -1138,7 +1138,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// Before calculating the checksum, the data will be copied to a
         /// temporary area in memory and PostProcess will be run just as in Export().
         /// </summary>
-        public override unsafe byte[] MD5()
+        public override byte[] MD5()
         {
             if (WorkingUncompressed.Address == null || WorkingUncompressed.Length == 0)
             {

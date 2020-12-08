@@ -299,7 +299,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_entry3 = _sub3;
         }
 
-        public unsafe class SCLASubEntryClass
+        public class SCLASubEntryClass
         {
             public SCLAEntryNode _parent;
 

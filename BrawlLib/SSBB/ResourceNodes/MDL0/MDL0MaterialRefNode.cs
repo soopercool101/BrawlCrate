@@ -942,14 +942,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             base.Replace(fileName);
 
             Model.CheckTextures();
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             StringTable table = new StringTable();
             GetStrings(table);

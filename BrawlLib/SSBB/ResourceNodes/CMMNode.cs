@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class CMMNode : ResourceNode
+    public class CMMNode : ResourceNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
         public override Type[] AllowedChildTypes => new[] {typeof(CMMEntryNode)};

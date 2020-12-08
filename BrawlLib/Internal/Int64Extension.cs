@@ -2,7 +2,7 @@
 {
     public static class Int64Extension
     {
-        public static unsafe long Reverse(this long value)
+        public static long Reverse(this long value)
         {
             return
                 ((value >> 56) & 0xFF) | ((value & 0xFF) << 56) |

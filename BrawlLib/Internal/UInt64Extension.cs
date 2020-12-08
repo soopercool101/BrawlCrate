@@ -2,7 +2,7 @@
 {
     public static class UInt64Extension
     {
-        public static unsafe ulong Reverse(this ulong value)
+        public static ulong Reverse(this ulong value)
         {
             return
                 ((value >> 56) & 0xFF) | ((value & 0xFF) << 56) |

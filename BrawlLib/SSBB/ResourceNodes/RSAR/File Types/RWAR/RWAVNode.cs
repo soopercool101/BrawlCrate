@@ -155,7 +155,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             if (fileName.EndsWith(".wav"))
             {
@@ -182,7 +182,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             RSARNode?.SignalPropertyChange();
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".wav"))
             {

@@ -392,7 +392,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe interface ModuleNode
+    public interface ModuleNode
     {
         uint ID { get; set; }
         ModuleSectionNode[] Sections { get; }

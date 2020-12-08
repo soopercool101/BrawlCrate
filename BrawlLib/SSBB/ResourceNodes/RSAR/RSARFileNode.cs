@@ -179,7 +179,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public VoidPtr _rebuildAudioAddr = null;
         public int _headerLen = 0, _audioLen = 0;
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             LabelBuilder labl;
             int lablLen, size;

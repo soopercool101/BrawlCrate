@@ -345,7 +345,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Keyframes.FrameLimit = numFrames + (looped ? 1 : 0);
         }
 
-        internal unsafe Vector3 GetPosition(float index)
+        internal Vector3 GetPosition(float index)
         {
             return new Vector3(PosX.GetFrameValue(index), PosY.GetFrameValue(index), PosZ.GetFrameValue(index));
         }

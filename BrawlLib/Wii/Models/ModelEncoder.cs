@@ -653,12 +653,12 @@ namespace BrawlLib.Wii.Models
                 (linker.Version > 9 ? model._userEntries.GetSize() : 0);
         }
 
-        internal static unsafe void Build(ModelLinker linker, MDL0Header* header, int length, bool force)
+        internal static void Build(ModelLinker linker, MDL0Header* header, int length, bool force)
         {
             Build(null, linker, header, length, force);
         }
 
-        internal static unsafe void Build(Collada form, ModelLinker linker, MDL0Header* header, int length, bool force)
+        internal static void Build(Collada form, ModelLinker linker, MDL0Header* header, int length, bool force)
         {
             byte* groupAddr = (byte*) header + linker._headerLen + linker._tableLen;
             byte* dataAddr = groupAddr + linker._groupLen + linker._texLen; //Definitions start here

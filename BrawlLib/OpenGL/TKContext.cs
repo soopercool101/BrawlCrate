@@ -11,7 +11,7 @@ namespace BrawlLib.OpenGL
 {
     public delegate T GLCreateHandler<T>();
 
-    public unsafe class TKContext : IDisposable
+    public class TKContext : IDisposable
     {
         private IGraphicsContext _context;
         private IWindowInfo _winInfo;
@@ -227,12 +227,12 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        public static unsafe void DrawWireframeBox(Box value)
+        public static void DrawWireframeBox(Box value)
         {
             DrawWireframeBox(value.Min, value.Max);
         }
 
-        public static unsafe void DrawWireframeBox(Vector3 min, Vector3 max)
+        public static void DrawWireframeBox(Vector3 min, Vector3 max)
         {
             GL.Begin(BeginMode.LineStrip);
 
@@ -264,12 +264,12 @@ namespace BrawlLib.OpenGL
             GL.End();
         }
 
-        public static unsafe void DrawBox(Box value)
+        public static void DrawBox(Box value)
         {
             DrawBox(value.Min, value.Max);
         }
 
-        public static unsafe void DrawBox(Vector3 p1, Vector3 p2)
+        public static void DrawBox(Vector3 p1, Vector3 p2)
         {
             GL.Begin(BeginMode.QuadStrip);
 
@@ -301,12 +301,12 @@ namespace BrawlLib.OpenGL
             GL.End();
         }
 
-        public static unsafe void DrawInvertedBox(Box value)
+        public static void DrawInvertedBox(Box value)
         {
             DrawInvertedBox(value.Min, value.Max);
         }
 
-        public static unsafe void DrawInvertedBox(Vector3 p1, Vector3 p2)
+        public static void DrawInvertedBox(Vector3 p1, Vector3 p2)
         {
             GL.Begin(BeginMode.QuadStrip);
 

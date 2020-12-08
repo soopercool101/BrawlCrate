@@ -52,7 +52,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct TyEntry
+    public struct TyEntry
     {
         public static readonly uint Size = 0x08;
         public buint _offset;
@@ -60,7 +60,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct TySeal
+    public struct TySeal
     {
         public static readonly int Size = 0x64;
 
@@ -115,7 +115,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct TySealVertDataEntry
+    public struct TySealVertDataEntry
     {
         public static readonly uint Size = 0x08;
 
@@ -124,7 +124,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct TyDataListEntry // Trophy Data
+    public struct TyDataListEntry // Trophy Data
     {
         public static readonly uint Size = 0x60;
 

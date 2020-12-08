@@ -126,7 +126,7 @@ namespace BrawlCrate.UI
             Show(owner);
         }
 
-        public unsafe void ReadSettings()
+        public void ReadSettings()
         {
             Properties.Settings settings = Properties.Settings.Default;
 

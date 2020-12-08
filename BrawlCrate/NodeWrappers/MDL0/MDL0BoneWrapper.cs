@@ -146,7 +146,7 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public unsafe void AddUp()
+        public void AddUp()
         {
             //try
             //{

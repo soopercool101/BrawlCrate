@@ -315,7 +315,7 @@ namespace BrawlLib.Wii.Models
             }
         }
 
-        public override unsafe string ToString()
+        public override string ToString()
         {
             //sbyte* buffer = stackalloc sbyte[39];
 

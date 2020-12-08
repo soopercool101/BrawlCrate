@@ -159,7 +159,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class TyEntryNode : ResourceNode
+    public class TyEntryNode : ResourceNode
     {
         public override bool supportsCompression => false;
 

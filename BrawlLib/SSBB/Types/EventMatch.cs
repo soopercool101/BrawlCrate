@@ -63,7 +63,7 @@ namespace BrawlLib.SSBB.Types
         }
     }
 
-    public unsafe struct EventMatchFighterData
+    public struct EventMatchFighterData
     {
         public const int Size = 0x36;
 
@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB.Types
         public EventMatchDifficultyData _hard;
     }
 
-    public unsafe struct EventMatchFighterHeader
+    public struct EventMatchFighterHeader
     {
         public const int Size = 0x0C;
 
@@ -88,7 +88,7 @@ namespace BrawlLib.SSBB.Types
         public byte _unknown0b;
     }
 
-    public unsafe struct EventMatchDifficultyData
+    public struct EventMatchDifficultyData
     {
         public const int Size = 0x0E;
 

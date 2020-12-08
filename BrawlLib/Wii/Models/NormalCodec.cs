@@ -1,7 +1,7 @@
 ﻿namespace BrawlLib.Wii.Models
 {
     //Need to use this for NBT normals. For now, VertexCodec works fine.
-    public unsafe class NormalCodec
+    public class NormalCodec
     {
         //public static Vector3[] Extract(MDL0NormalData* data)
         //{

@@ -120,7 +120,7 @@ namespace BrawlLib.Internal.Windows.Forms
             _internalModel.ReplaceOrAddMesh(node, false, false, true);
         }
 
-        private unsafe void btnOkay_Click(object sender, EventArgs e)
+        private void btnOkay_Click(object sender, EventArgs e)
         {
             switch (comboBox3.SelectedIndex)
             {

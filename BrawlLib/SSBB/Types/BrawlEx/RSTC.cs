@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.Types.BrawlEx
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct RSTCEntry
+    public struct RSTCEntry
     {
         public const int Size = 0x01;
         public byte _fighterID;

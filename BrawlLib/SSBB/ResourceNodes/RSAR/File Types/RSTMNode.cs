@@ -142,7 +142,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".wav"))
             {
@@ -202,7 +202,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             IAudioStream stream = null;
 

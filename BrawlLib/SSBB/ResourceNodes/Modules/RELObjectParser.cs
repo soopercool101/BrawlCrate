@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private RelocationManager Manager => _objectSection._manager;
 
-        public unsafe void Parse()
+        public void Parse()
         {
             if (_objectSection == null)
             {
@@ -100,7 +100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return type;
         }
 
-        private unsafe RELObjectNode ParseObject(ref int rel)
+        private RELObjectNode ParseObject(ref int rel)
         {
             RelCommand cmd = Manager.GetCommand(rel);
 

@@ -43,7 +43,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct FDefLookupOffset
+    public struct FDefLookupOffset
     {
         public const int Size = 4;
 
@@ -51,7 +51,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct FDefStringEntry
+    public struct FDefStringEntry
     {
         public bint _dataOffset;
         public bint _stringOffset; //Base is string table
@@ -208,7 +208,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct patternPowerMulEntry
+    public struct patternPowerMulEntry
     {
         public FDefEvent _event1;
         public FDefEvent _event2;
@@ -344,7 +344,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct Article
+    public struct Article
     {
         public const int Size = 56;
 
@@ -838,7 +838,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct FDefModelDisplay
+    public struct FDefModelDisplay
     {
         public bint _entryOffset;
         public bint _entryCount;
@@ -847,7 +847,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct FDefUnk22
+    public struct FDefUnk22
     {
         public bint _unk1;
         public bint _unk2;
@@ -855,7 +855,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct Unk17Entry
+    public struct Unk17Entry
     {
         public const int Size = 0x1C;
 
@@ -865,7 +865,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct DataUnk23
+    public struct DataUnk23
     {
         public const int Size = 0x20;
 
@@ -881,7 +881,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ActionFlags
+    public struct ActionFlags
     {
         public bint _flags1; //Sometimes -1
         public bint _flags2; //Sometimes -1
@@ -1102,7 +1102,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct FDefAttributes
+    public struct FDefAttributes
     {
         public const int Size = 0x2E4;
 

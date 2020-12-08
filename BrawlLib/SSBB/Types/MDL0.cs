@@ -402,7 +402,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe class MDL0Node2Class : MDL0NodeClass
+    public class MDL0Node2Class : MDL0NodeClass
     {
         public const uint Size = 0x04;
 
@@ -432,7 +432,7 @@ namespace BrawlLib.SSBB.Types
         public bushort _id;
         public List<MDL0NodeType3Entry> _entries = new List<MDL0NodeType3Entry>();
 
-        public unsafe MDL0Node3Class(MDL0NodeType3* ptr)
+        public MDL0Node3Class(MDL0NodeType3* ptr)
         {
             _id = ptr->_id;
             for (int i = 0; i < ptr->_numEntries; i++)
@@ -461,7 +461,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct MDL0NodeType2
+    public struct MDL0NodeType2
     {
         public const int Size = 0x04;
 
@@ -526,7 +526,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct MDL0NodeType3Entry
+    public struct MDL0NodeType3Entry
     {
         public const int Size = 0x06;
 
@@ -552,7 +552,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct MDL0NodeType4
+    public struct MDL0NodeType4
     {
         public const uint Size = 0x07;
 
@@ -593,7 +593,7 @@ namespace BrawlLib.SSBB.Types
 
     //Links node IDs with indexes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct MDL0NodeType5
+    public struct MDL0NodeType5
     {
         public const uint Size = 0x04;
 
@@ -1119,7 +1119,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct MDL0MaterialLighting
+    public struct MDL0MaterialLighting
     {
         public buint flags0;
         public RGBAPixel c00;
@@ -2003,7 +2003,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct MDL0TextureEntry
+    public struct MDL0TextureEntry
     {
         public bint _mat; //Material offset
         public bint _ref; //Reference offset

@@ -489,7 +489,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class RBNKNullNode : RBNKDataEntryNode
+    public class RBNKNullNode : RBNKDataEntryNode
     {
         public bool _invalid;
 

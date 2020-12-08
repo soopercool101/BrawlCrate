@@ -23,7 +23,7 @@ namespace BrawlLib.OpenGL
 
     public delegate void ViewportAction(GLViewport p);
 
-    public abstract unsafe class GLPanel : UserControl, IEnumerable<GLViewport>
+    public abstract class GLPanel : UserControl, IEnumerable<GLViewport>
     {
         public static GLPanel Current
         {

@@ -295,7 +295,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct WarioExtraParams6
+    public struct WarioExtraParams6
     {
         public byte _unk1;
         public byte _unk2;
@@ -546,7 +546,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct YoshiExtraParams9
+    public struct YoshiExtraParams9
     {
         public bfloat _unk1;
         public bfloat _unk2;
@@ -638,7 +638,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GWArticle6
+    public struct GWArticle6
     {
         public bfloat _unk1;
         public bint _unk2;
@@ -752,7 +752,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct p7r13
+    public struct p7r13
     {
         public FDefListOffset _list;
         public bfloat _unk1;
@@ -960,7 +960,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct actionOffFlags
+    public struct actionOffFlags
     {
         public bint _offset;
         public bshort _unk1;
@@ -1046,7 +1046,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct f11f9w11a6
+    public struct f11f9w11a6
     {
         public bint _startOffset;
         public bint _listCount;
@@ -1132,7 +1132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct f11f9w11a3
+    public struct f11f9w11a3
     {
         public bint _startOffset1;
         public bint _startOffset2;

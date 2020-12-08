@@ -86,7 +86,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             Directory.CreateDirectory(outPath);
             foreach (ResourceNode c in Children)

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MoveDefEntryNode : ResourceNode
+    public class MoveDefEntryNode : ResourceNode
     {
         //Variables specific for rebuilding
         [Browsable(false)] public VoidPtr _rebuildBase => Root._rebuildBase;
@@ -263,7 +263,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public abstract unsafe class MoveDefExternalNode : MoveDefEntryNode
+    public abstract class MoveDefExternalNode : MoveDefEntryNode
     {
         public override ResourceType ResourceFileType => ResourceType.NoEditEntry;
 

@@ -124,7 +124,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             node.Export(path);
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".pac", StringComparison.OrdinalIgnoreCase) ||
                 outPath.EndsWith(".pcs", StringComparison.OrdinalIgnoreCase) ||

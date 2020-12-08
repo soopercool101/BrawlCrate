@@ -527,7 +527,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct AIUnkDef2
+    internal struct AIUnkDef2
     {
         public bfloat _unk1;
         public bfloat _unk2;

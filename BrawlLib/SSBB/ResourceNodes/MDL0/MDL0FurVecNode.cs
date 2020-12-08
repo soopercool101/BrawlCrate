@@ -59,7 +59,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnRebuild(address, length, force);
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             base.Export(outPath);
         }

@@ -49,7 +49,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct TPLTableOffset
+    internal struct TPLTableOffset
     {
         public const int Size = 8;
 

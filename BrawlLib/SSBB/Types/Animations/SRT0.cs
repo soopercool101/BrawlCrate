@@ -242,7 +242,7 @@ namespace BrawlLib.SSBB.Types.Animations
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct SRT0EntryType2
+    internal struct SRT0EntryType2
     {
         private bint _unk1; //entry count?
     }

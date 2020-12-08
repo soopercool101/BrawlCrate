@@ -9,7 +9,7 @@ namespace BrawlLib.Internal.Audio
     /// to hold the whole IAudioSource, while maintaining OpenAL's buffers
     /// internally.
     /// </summary>
-    internal unsafe class alAudioBuffer : AudioBuffer
+    internal class alAudioBuffer : AudioBuffer
     {
         // This class stores the source id and the length of discarded buffers.
         private class alSourceLock

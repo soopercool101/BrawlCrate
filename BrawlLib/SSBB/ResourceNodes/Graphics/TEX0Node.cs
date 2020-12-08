@@ -407,7 +407,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ReplaceRaw(tMap);
         }
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             string ext = Path.GetExtension(fileName);
             if (!string.Equals(ext, ".tex0", StringComparison.OrdinalIgnoreCase))

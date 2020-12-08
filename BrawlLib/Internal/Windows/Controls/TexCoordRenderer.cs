@@ -270,7 +270,7 @@ namespace BrawlLib.Internal.Windows.Controls
             Invalidate();
         }
 
-        internal override unsafe void OnInit(TKContext ctx)
+        internal override void OnInit(TKContext ctx)
         {
             //Set caps
             GL.Enable(EnableCap.Blend);
@@ -671,7 +671,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 }
             }
 
-            public unsafe void PrepareStream()
+            public void PrepareStream()
             {
                 if (!_isEnabled)
                 {
@@ -727,7 +727,7 @@ namespace BrawlLib.Internal.Windows.Controls
                 GL.DisableClientState(ArrayCap.VertexArray);
             }
 
-            private unsafe void UpdateStream(int index)
+            private void UpdateStream(int index)
             {
                 index += 4;
                 if (_manager._faceData[index] == null || !_enabled[index - 4])

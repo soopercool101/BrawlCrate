@@ -55,7 +55,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ColPlane
+    public struct ColPlane
     {
         public const int Size = 0x10;
 

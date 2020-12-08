@@ -1,6 +1,6 @@
 ﻿namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class RELDeConStructorNode : RELMethodNode
+    public class RELDeConStructorNode : RELMethodNode
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 

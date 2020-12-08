@@ -755,7 +755,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ParticleParameterDesc
+    public struct ParticleParameterDesc
     {
         public RGBAPixel mColor11;
         public RGBAPixel mColor12;

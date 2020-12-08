@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BrawlLib.Internal
 {
-    public static unsafe class ArrayExtension
+    public static class ArrayExtension
     {
         public static int[] FindAllOccurences(this Array a, object o)
         {

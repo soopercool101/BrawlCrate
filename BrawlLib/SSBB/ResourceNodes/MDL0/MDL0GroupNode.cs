@@ -12,7 +12,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public abstract unsafe class MDL0EntryNode : ResourceNode
+    public abstract class MDL0EntryNode : ResourceNode
     {
         internal virtual void GetStrings(StringTable table)
         {

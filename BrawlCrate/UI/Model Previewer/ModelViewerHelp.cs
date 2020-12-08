@@ -28,7 +28,7 @@ namespace BrawlCrate.UI.Model_Previewer
             Show(owner);
         }
 
-        private unsafe void btnOkay_Click(object sender, EventArgs e)
+        private void btnOkay_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
             Close();

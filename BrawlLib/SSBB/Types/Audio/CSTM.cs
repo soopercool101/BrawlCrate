@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.Types.Audio
     /// A type/offset pair similar to ruint.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct CSTMReference
+    public struct CSTMReference
     {
         public enum RefType : short
         {
@@ -122,7 +122,7 @@ namespace BrawlLib.SSBB.Types.Audio
     /// Represents a single TrackInfo segment (with the assumption that there will be only one in a file.) Some unknown data (the Byte Table) is hardcoded in the constructor.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct CSTMTrackInfoStub
+    public struct CSTMTrackInfoStub
     {
         public byte _volume;
         public byte _pan;
@@ -326,7 +326,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct CSTMDataInfo
+    internal struct CSTMDataInfo
     {
         public AudioFormatInfo _format;
         public int _sampleRate;

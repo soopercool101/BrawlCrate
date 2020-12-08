@@ -503,7 +503,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             listBox2.EndUpdate();
         }
 
-        internal unsafe void PercentChanged(object sender, EventArgs e)
+        internal void PercentChanged(object sender, EventArgs e)
         {
             if (SelectedSource == null || SelectedDestination == null || updating)
             {
@@ -551,7 +551,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
 
         private bool updating;
 
-        public unsafe void ResetBox()
+        public void ResetBox()
         {
             SHP0EntryNode entry;
             SHP0VertexSetNode v;
@@ -619,7 +619,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
         {
         }
 
-        private unsafe void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
             //Set vertices (0), normals (1), and/or colors (2, 3)
             //UVs are not morphed so there's no need to set them

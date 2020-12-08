@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Subspace.Triggers
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GET1Entry
+    public struct GET1Entry
     {
         public const int SIZE = 0x18;
 

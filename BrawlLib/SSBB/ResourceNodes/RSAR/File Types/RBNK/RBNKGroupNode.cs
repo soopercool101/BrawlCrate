@@ -4,7 +4,7 @@ using BrawlLib.SSBB.Types.Audio;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class RBNKEntryNode : ResourceNode
+    public class RBNKEntryNode : ResourceNode
     {
         internal VoidPtr _offset;
         internal VoidPtr _rebuildBase;

@@ -67,7 +67,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     #region Value Nodes
 
-    public unsafe class MoveDefEventValueNode : MoveDefEventParameterNode
+    public class MoveDefEventValueNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Value;
 
@@ -102,7 +102,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventValueEnumNode : MoveDefEventParameterNode
+    public class MoveDefEventValueEnumNode : MoveDefEventParameterNode
     {
         public string[] Enums = new string[0];
 
@@ -154,7 +154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventValue2HalfNode : MoveDefEventParameterNode
+    public class MoveDefEventValue2HalfNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Value;
 
@@ -197,7 +197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventValue2HalfGFXNode : MoveDefEventParameterNode
+    public class MoveDefEventValue2HalfGFXNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Value;
 
@@ -259,7 +259,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventValueHalf2ByteNode : MoveDefEventParameterNode
+    public class MoveDefEventValueHalf2ByteNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Value;
 
@@ -313,7 +313,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventValue2ByteHalfNode : MoveDefEventParameterNode
+    public class MoveDefEventValue2ByteHalfNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Value;
 
@@ -367,7 +367,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventValue4ByteNode : MoveDefEventParameterNode
+    public class MoveDefEventValue4ByteNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Value;
 
@@ -434,7 +434,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     #endregion
 
-    public unsafe class MoveDefEventUnkNode : MoveDefEventParameterNode
+    public class MoveDefEventUnkNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Unknown;
 
@@ -647,7 +647,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventScalarNode : MoveDefEventParameterNode
+    public class MoveDefEventScalarNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Scalar;
 
@@ -682,7 +682,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventBoolNode : MoveDefEventParameterNode
+    public class MoveDefEventBoolNode : MoveDefEventParameterNode
     {
         [Browsable(false)] public override ArgVarType _type => ArgVarType.Boolean;
 
@@ -714,7 +714,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventVariableNode : MoveDefEventParameterNode
+    public class MoveDefEventVariableNode : MoveDefEventParameterNode
     {
         internal string val;
 
@@ -851,7 +851,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class MoveDefEventRequirementNode : MoveDefEventParameterNode
+    public class MoveDefEventRequirementNode : MoveDefEventParameterNode
     {
         internal string val;
 
@@ -953,7 +953,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     #region htBoxes
 
-    public unsafe class HitboxFlagsNode : MoveDefEventParameterNode
+    public class HitboxFlagsNode : MoveDefEventParameterNode
     {
         internal HitboxFlags val;
 
@@ -1190,7 +1190,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int data;
     }
 
-    public unsafe class SpecialHitboxFlagsNode : MoveDefEventParameterNode
+    public class SpecialHitboxFlagsNode : MoveDefEventParameterNode
     {
         internal SpecialHitboxFlags val;
 

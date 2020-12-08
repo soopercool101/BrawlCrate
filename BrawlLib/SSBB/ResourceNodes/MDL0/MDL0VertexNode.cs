@@ -132,7 +132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".obj"))
             {

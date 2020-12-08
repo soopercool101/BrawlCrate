@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BrawlLib.Internal.PowerPCAssembly
 {
-    public abstract unsafe partial class PPCOpCode : ICloneable
+    public abstract partial class PPCOpCode : ICloneable
     {
         protected Bin32 _data = 0;
 
@@ -91,7 +91,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  .word
-    public unsafe class PPCWord : PPCOpCode
+    public class PPCWord : PPCOpCode
     {
         internal PPCWord(uint value) : base(value)
         {
@@ -105,7 +105,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  vaddubm
-    public unsafe class PPCVaddubm : PPCOpCode
+    public class PPCVaddubm : PPCOpCode
     {
         internal PPCVaddubm(uint value) : base(value)
         {
@@ -119,7 +119,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  mulli
-    public unsafe class PPCMulli : PPCOpCode
+    public class PPCMulli : PPCOpCode
     {
         public int LeftRegister
         {
@@ -149,7 +149,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  mullw
-    public unsafe class PPCMullw : PPCOpCode
+    public class PPCMullw : PPCOpCode
     {
         public int LeftRegister
         {
@@ -179,7 +179,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  subfic
-    public unsafe class PPCSubfic : PPCOpCode
+    public class PPCSubfic : PPCOpCode
     {
         public int LeftRegister
         {
@@ -209,7 +209,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  cmplwi, cmpldi
-    public unsafe class PPCCmpli : PPCOpCode
+    public class PPCCmpli : PPCOpCode
     {
         public int ConditionRegister
         {
@@ -276,7 +276,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  cmpwi, cmpdi
-    public unsafe class PPCCmpi : PPCOpCode
+    public class PPCCmpi : PPCOpCode
     {
         public int ConditionRegister
         {
@@ -343,7 +343,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  addic, subic, addic., subic.
-    public unsafe class PPCAddic : PPCOpCode
+    public class PPCAddic : PPCOpCode
     {
         public bool SetCr => Operation == PPCMnemonic.addic_D;
 
@@ -397,7 +397,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  addi, addis, subi, subis, li, lis
-    public unsafe class PPCAddi : PPCOpCode
+    public class PPCAddi : PPCOpCode
     {
         public bool Shifted => Operation == PPCMnemonic.addis;
 
@@ -449,7 +449,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
         }
     }
 
-    public unsafe class PPCBranch : PPCOpCode
+    public class PPCBranch : PPCOpCode
     {
         internal PPCBranch(uint value) : base(value)
         {
@@ -500,7 +500,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  bc, bdnz, bdnzf, bdnzt, bdz, bdzf, bdzt, beq, bne, bgt, blt, bge, ble
-    public unsafe class PPCBc : PPCBranch
+    public class PPCBc : PPCBranch
     {
         public bool IgnoreCr
         {
@@ -679,7 +679,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  b, bl, ba, bla
-    public unsafe class PPCbx : PPCBranch
+    public class PPCbx : PPCBranch
     {
         //public string Offset
         //{
@@ -734,7 +734,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  blr
-    public unsafe class PPCblr : PPCBranch
+    public class PPCblr : PPCBranch
     {
         public bool IgnoreCr
         {
@@ -902,7 +902,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  bctr
-    public unsafe class PPCbctr : PPCBranch
+    public class PPCbctr : PPCBranch
     {
         public bool IgnoreCr
         {
@@ -1075,7 +1075,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  rlwimi
-    public unsafe class PPCRlwimi : PPCOpCode
+    public class PPCRlwimi : PPCOpCode
     {
         public bool SetCr
         {
@@ -1101,7 +1101,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  rlwinm
-    public unsafe class PPCRlwinm : PPCOpCode
+    public class PPCRlwinm : PPCOpCode
     {
         public bool SetCr => (this & 0x1) != 0;
 
@@ -1123,7 +1123,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  rlwmn
-    public unsafe class OpRlwmn : PPCOpCode
+    public class OpRlwmn : PPCOpCode
     {
         public bool SetCr => (this & 0x1) != 0;
 
@@ -1145,7 +1145,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  xor
-    public unsafe class PPCXor : PPCOpCode
+    public class PPCXor : PPCOpCode
     {
         internal PPCXor(uint value)
             : base(value)
@@ -1158,7 +1158,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  or, mr
-    public unsafe class PPCOr : PPCOpCode
+    public class PPCOr : PPCOpCode
     {
         internal PPCOr(uint value)
             : base(value)
@@ -1194,7 +1194,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  ori, oris, xori, xoris, nop
-    public unsafe class PPCOri : PPCOpCode
+    public class PPCOri : PPCOpCode
     {
         private bool Shifted => Operation == PPCMnemonic.oris || Operation == PPCMnemonic.xoris;
 
@@ -1248,7 +1248,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  andi., andis.
-    public unsafe class PPCAndi : PPCOpCode
+    public class PPCAndi : PPCOpCode
     {
         public bool Shifted => Operation == PPCMnemonic.andis_D;
 
@@ -1268,7 +1268,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  rldicl
-    public unsafe class PPCRldicl : PPCOpCode
+    public class PPCRldicl : PPCOpCode
     {
         public PPCRldicl(uint value) : base(value)
         {
@@ -1282,7 +1282,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     // cmpw, cmpd
-    public unsafe class PPCCmp : PPCOpCode
+    public class PPCCmp : PPCOpCode
     {
         private bool IsDouble => _operands[1].Value != 0;
 
@@ -1321,7 +1321,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  subc
-    public unsafe class PPCSubc : PPCOpCode
+    public class PPCSubc : PPCOpCode
     {
         public bool SetCr => (this & 0x00000001) != 0;
 
@@ -1342,7 +1342,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  slw
-    public unsafe class PPCSlw : PPCOpCode
+    public class PPCSlw : PPCOpCode
     {
         public bool SetCr => (this & 0x00000001) != 0;
 
@@ -1363,7 +1363,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  and
-    public unsafe class PPCAnd : PPCOpCode
+    public class PPCAnd : PPCOpCode
     {
         public bool SetCr => (this & 0x00000001) != 0;
 
@@ -1383,7 +1383,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  cmplw, cmpld
-    public unsafe class PPCCmpl : PPCOpCode
+    public class PPCCmpl : PPCOpCode
     {
         private bool IsDouble => (this & 0x00200000) != 0;
 
@@ -1423,7 +1423,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  sub
-    public unsafe class PPCSub : PPCOpCode
+    public class PPCSub : PPCOpCode
     {
         public bool SetCr => (this & 0x00000001) != 0;
 
@@ -1445,7 +1445,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
 
 
     //  cntlzw
-    public unsafe class PPCCntlzw : PPCOpCode
+    public class PPCCntlzw : PPCOpCode
     {
         public bool SetCr => (this & 0x00000001) != 0;
 
@@ -1465,7 +1465,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  cntlzd
-    public unsafe class PPCCntlzd : PPCOpCode
+    public class PPCCntlzd : PPCOpCode
     {
         public bool SetCr => (this & 0x00000001) != 0;
 
@@ -1485,7 +1485,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  add
-    public unsafe class PPCAdd : PPCOpCode
+    public class PPCAdd : PPCOpCode
     {
         public bool SetCr => (this & 0x00000001) != 0;
 
@@ -1506,7 +1506,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  mfspr
-    public unsafe class PPCMfspr : PPCOpCode
+    public class PPCMfspr : PPCOpCode
     {
         internal PPCMfspr(uint value) : base(value)
         {
@@ -1517,7 +1517,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  mtspr
-    public unsafe class PPCMtspr : PPCOpCode
+    public class PPCMtspr : PPCOpCode
     {
         public PPCMtspr(uint value) : base(value)
         {
@@ -1538,7 +1538,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  extsh
-    public unsafe class PPCExtsh : PPCOpCode
+    public class PPCExtsh : PPCOpCode
     {
         public bool SetCr
         {
@@ -1562,7 +1562,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  extsb
-    public unsafe class PPCExtsb : PPCOpCode
+    public class PPCExtsb : PPCOpCode
     {
         public bool SetCr
         {
@@ -1586,7 +1586,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  lwz, lwzu, lbz, lbzu, lhz, lhzu, lha, lhau, ld
-    public unsafe class PPCLwz : PPCOpCode
+    public class PPCLwz : PPCOpCode
     {
         internal PPCLwz(uint value) : base(value)
         {
@@ -1659,7 +1659,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  stw, stwu, stb, stbu, sth, sthu, std
-    public unsafe class PPCStw : PPCOpCode
+    public class PPCStw : PPCOpCode
     {
         internal PPCStw(uint value) : base(value)
         {
@@ -1726,7 +1726,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  lfs, lfsu, lfd, lfdu
-    public unsafe class PPCLfs : PPCOpCode
+    public class PPCLfs : PPCOpCode
     {
         internal PPCLfs(uint value) : base(value)
         {
@@ -1767,7 +1767,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  stfs, stfsu, stfd, stfdu
-    public unsafe class PPCStfs : PPCOpCode
+    public class PPCStfs : PPCOpCode
     {
         internal PPCStfs(uint value) : base(value)
         {
@@ -1808,7 +1808,7 @@ namespace BrawlLib.Internal.PowerPCAssembly
     }
 
     //  fcmpu
-    public unsafe class OpFcmpu : PPCOpCode
+    public class OpFcmpu : PPCOpCode
     {
         internal OpFcmpu(uint value) : base(value)
         {

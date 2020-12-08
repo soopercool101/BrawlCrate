@@ -161,7 +161,7 @@ namespace BrawlLib.Internal
             }
         }
 
-        public unsafe float this[int index]
+        public float this[int index]
         {
             get
             {

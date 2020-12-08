@@ -1220,7 +1220,7 @@ namespace BrawlLib.Modeling
 
         #region MDL0 to PMD
 
-        public static unsafe void MDL02PMD(MDL0Node model)
+        public static void MDL02PMD(MDL0Node model)
         {
             _header = new ModelHeader
             {

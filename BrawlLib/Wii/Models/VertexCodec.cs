@@ -9,7 +9,7 @@ namespace BrawlLib.Wii.Models
     {
         private const float _maxError = 0.0005f;
 
-        public unsafe Vector2* Address;
+        public Vector2* Address;
         public Vector3 _min, _max;
         public bool _hasZ;
         public WiiVertexComponentType _type;

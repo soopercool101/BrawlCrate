@@ -289,7 +289,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    internal unsafe class THPAudioBlock
+    internal class THPAudioBlock
     {
         public uint _srcLen;
         public uint _numSamples;

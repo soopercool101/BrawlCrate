@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe partial class MDL0TEVStageNode : MDL0EntryNode
+    public partial class MDL0TEVStageNode : MDL0EntryNode
     {
         public override ResourceType ResourceFileType => ResourceType.TEVStage;
 

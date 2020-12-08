@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct THPAudioInfo
+    internal struct THPAudioInfo
     {
         public buint _sndChannels;
         public buint _sndFrequency;
@@ -48,7 +48,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct THPVideoInfo
+    internal struct THPVideoInfo
     {
         public buint _xSize; // width  of video
         public buint _ySize; // height of video
@@ -102,7 +102,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct THPFile
+    internal struct THPFile
     {
         public THPHeader _header;
         public THPFrameCompInfo _frameCompInfo;

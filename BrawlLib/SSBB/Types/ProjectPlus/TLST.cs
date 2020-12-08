@@ -28,7 +28,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct TLSTEntry
+    public struct TLSTEntry
     {
         public static readonly uint Size = 0x10;
         public buint _songID;

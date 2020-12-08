@@ -192,7 +192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
             {
@@ -243,7 +243,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             throw new NotSupportedException("The file extension specified is not of a supported animation type.");
         }
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             if (fileName.EndsWith(".chr0", StringComparison.OrdinalIgnoreCase))
             {
@@ -1037,7 +1037,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             StringTable table = new StringTable
             {

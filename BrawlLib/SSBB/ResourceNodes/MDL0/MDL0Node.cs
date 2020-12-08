@@ -2757,7 +2757,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Replace(string fileName, FileMapProtect prot, FileOptions options)
+        public override void Replace(string fileName, FileMapProtect prot, FileOptions options)
         {
             MDL0Node node = FromFile(fileName, FileOptions.SequentialScan);
             if (node == null)
@@ -2776,7 +2776,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ReplaceRaw(m.Map);
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.ToUpper().EndsWith(".DAE"))
             {

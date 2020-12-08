@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public abstract unsafe class SakuraiEntryNode
+    public abstract class SakuraiEntryNode
     {
         public string EntryOffset => "0x" + _offset.ToString("X");
         public string EntrySize => "0x" + _initSize.ToString("X");

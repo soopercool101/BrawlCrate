@@ -44,7 +44,7 @@ namespace BrawlLib.Wii.Textures
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct I4Pixel
+    internal struct I4Pixel
     {
         public byte _data;
 

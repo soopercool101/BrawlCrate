@@ -6,7 +6,7 @@ namespace BrawlLib.Internal
 {
     public static unsafe class Memory
     {
-        public static unsafe void Move(VoidPtr dst, VoidPtr src, uint size)
+        public static void Move(VoidPtr dst, VoidPtr src, uint size)
         {
             switch (Environment.OSVersion.Platform)
             {
@@ -33,7 +33,7 @@ namespace BrawlLib.Internal
             }
         }
 
-        internal static unsafe void Fill(VoidPtr dest, uint length, byte value)
+        internal static void Fill(VoidPtr dest, uint length, byte value)
         {
             switch (Environment.OSVersion.Platform)
             {

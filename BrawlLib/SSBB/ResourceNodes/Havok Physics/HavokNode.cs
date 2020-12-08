@@ -355,7 +355,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return e;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.ToUpper().EndsWith(".XML"))
             {
@@ -401,7 +401,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Replace(string fileName, FileMapProtect prot, FileOptions options)
+        public override void Replace(string fileName, FileMapProtect prot, FileOptions options)
         {
             base.Replace(fileName, prot, options);
         }
@@ -427,7 +427,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public abstract unsafe class HavokEntryNode : ResourceNode
+    public abstract class HavokEntryNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.NoEditEntry;
 
@@ -478,12 +478,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public string DataSize => "0x" + WorkingUncompressed.Length.ToString("X");
     }
 
-    public unsafe class HavokGroupNode : HavokEntryNode
+    public class HavokGroupNode : HavokEntryNode
     {
         public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
     }
 
-    public abstract unsafe class HavokClassNode : HavokEntryNode
+    public abstract class HavokClassNode : HavokEntryNode
     {
         [Category("Havok Class")] public string ClassName => _className;
         public string _className;
@@ -494,7 +494,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class HavokSectionNode : HavokEntryNode
+    public class HavokSectionNode : HavokEntryNode
     {
         public override ResourceType ResourceFileType => ResourceType.HavokGroup;
 

@@ -25,7 +25,7 @@ namespace BrawlLib.Internal.Windows.Controls
             }
         }
 
-        internal override unsafe void OnInit(TKContext ctx)
+        internal override void OnInit(TKContext ctx)
         {
             //Set caps
             GL.Enable(EnableCap.Blend);
@@ -63,13 +63,13 @@ namespace BrawlLib.Internal.Windows.Controls
             GL.Ortho(0.0f, 1.0f, 1.0f, 0.0f, -0.1f, 1.0f);
         }
 
-        public static unsafe void RenderBGTexture(int width, int height, GLTexture texture)
+        public static void RenderBGTexture(int width, int height, GLTexture texture)
         {
             float[] points = new float[8];
             RenderBGTexture(width, height, texture, ref points);
         }
 
-        public static unsafe void RenderBGTexture(int width, int height, GLTexture texture, ref float[] points)
+        public static void RenderBGTexture(int width, int height, GLTexture texture, ref float[] points)
         {
             GLTexture bgTex = TKContext.FindOrCreate("TexBG", CreateBG);
             bgTex.Bind();

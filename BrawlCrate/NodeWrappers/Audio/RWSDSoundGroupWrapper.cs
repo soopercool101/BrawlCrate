@@ -53,7 +53,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RWSDSoundGroupWrapper>().Import();
         }
 
-        private unsafe void Import()
+        private void Import()
         {
             if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path))
             {

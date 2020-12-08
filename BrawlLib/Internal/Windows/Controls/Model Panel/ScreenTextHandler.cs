@@ -48,7 +48,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             _text.Clear();
         }
 
-        public unsafe void Draw()
+        public void Draw()
         {
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);

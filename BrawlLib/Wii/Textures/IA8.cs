@@ -42,7 +42,7 @@ namespace BrawlLib.Wii.Textures
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct IA8Pixel
+    internal struct IA8Pixel
     {
         public byte alpha;
         public byte intensity;

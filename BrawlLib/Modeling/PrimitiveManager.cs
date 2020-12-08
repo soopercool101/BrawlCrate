@@ -2089,7 +2089,7 @@ namespace BrawlLib.Modeling
             }
         }
 
-        public unsafe void BindStream()
+        public void BindStream()
         {
             byte* pData = (byte*) _graphicsBuffer.Address;
             for (int i = 0; i < 12; i++)
@@ -2126,7 +2126,7 @@ namespace BrawlLib.Modeling
             }
         }
 
-        internal unsafe void DetachStreams()
+        internal void DetachStreams()
         {
             for (int i = 0; i < 8; i++)
             {
@@ -2204,8 +2204,8 @@ namespace BrawlLib.Modeling
         public bool _render = true;
         public bool _renderNormals = true;
 
-        internal unsafe void RenderVertices(IMatrixNode singleBind, IBoneNode weightTarget, bool depthPass,
-                                            GLCamera camera)
+        internal void RenderVertices(IMatrixNode singleBind, IBoneNode weightTarget, bool depthPass,
+                                     GLCamera camera)
         {
             if (!_render)
             {
@@ -2235,7 +2235,7 @@ namespace BrawlLib.Modeling
             }
         }
 
-        internal unsafe void RenderNormals()
+        internal void RenderNormals()
         {
             if (!_render || _faceData[1] == null)
             {
@@ -2280,7 +2280,7 @@ namespace BrawlLib.Modeling
         //TODO: try to preserve vertex, normal and color array indices
         //otherwise SHP0 morph sets won't work anymore
 
-        public unsafe void PositionsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
+        public void PositionsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
             if (obj == null || obj.Deleting || _vertices == null)
             {
@@ -2353,7 +2353,7 @@ namespace BrawlLib.Modeling
             }
         }
 
-        public unsafe void NormalsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
+        public void NormalsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
             if (obj == null || obj.Deleting || _faceData[1] == null)
             {
@@ -2423,7 +2423,7 @@ namespace BrawlLib.Modeling
             }
         }
 
-        public unsafe void ColorsChanged(MDL0ObjectNode obj, int id, bool forceNewNode = false)
+        public void ColorsChanged(MDL0ObjectNode obj, int id, bool forceNewNode = false)
         {
             id = id.Clamp(0, 1);
 
@@ -2487,7 +2487,7 @@ namespace BrawlLib.Modeling
             }
         }
 
-        public unsafe void UVsChanged(MDL0ObjectNode obj, int id, bool forceNewNode = false)
+        public void UVsChanged(MDL0ObjectNode obj, int id, bool forceNewNode = false)
         {
             id = id.Clamp(0, 7);
 
@@ -2552,7 +2552,7 @@ namespace BrawlLib.Modeling
         }
     }
 
-    public unsafe class GLPrimitive
+    public class GLPrimitive
     {
         public BeginMode _type;
         public uint[] _indices;
@@ -2563,7 +2563,7 @@ namespace BrawlLib.Modeling
             _indices = new uint[elements];
         }
 
-        public unsafe void Render()
+        public void Render()
         {
             GL.DrawElements(_type, _indices.Length, DrawElementsType.UnsignedInt, _indices);
         }

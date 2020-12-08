@@ -24,7 +24,7 @@ namespace BrawlLib.Internal.Windows.Forms
             return ShowDialog(owner);
         }
 
-        private unsafe void btnOkay_Click(object sender, EventArgs e)
+        private void btnOkay_Click(object sender, EventArgs e)
         {
             KeyframeEntry kfe;
             if (amount.Text != null)

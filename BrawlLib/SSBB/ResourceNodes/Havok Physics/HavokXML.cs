@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class HavokXML
+    public class HavokXML
     {
         private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings
             {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};

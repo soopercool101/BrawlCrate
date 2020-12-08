@@ -29,7 +29,7 @@ namespace BrawlLib.Internal.Windows.Forms
             }
         }
 
-        private unsafe void btnOkay_Click(object sender, EventArgs e)
+        private void btnOkay_Click(object sender, EventArgs e)
         {
             resultString = txtName.Text;
             DialogResult = DialogResult.OK;

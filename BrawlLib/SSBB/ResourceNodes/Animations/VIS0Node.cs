@@ -46,7 +46,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public unsafe VIS0EntryNode CreateEntry()
+        public VIS0EntryNode CreateEntry()
         {
             VIS0EntryNode entry = new VIS0EntryNode
             {

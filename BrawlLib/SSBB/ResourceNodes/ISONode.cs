@@ -83,7 +83,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class ISOPartitionNode : ISOEntryNode, IBufferNode
+    public class ISOPartitionNode : ISOEntryNode, IBufferNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
 

@@ -513,7 +513,7 @@ namespace BrawlLib.Imaging
             bmp.UnlockBits(data);
         }
 
-        public static unsafe void ToFile(Bitmap bmp, string path)
+        public static void ToFile(Bitmap bmp, string path)
         {
             using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 8,
                 FileOptions.RandomAccess))

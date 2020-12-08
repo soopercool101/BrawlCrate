@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public abstract unsafe class ClassMemberInstanceNode : HavokClassNode
+    public abstract class ClassMemberInstanceNode : HavokClassNode
     {
         [Browsable(false)] protected VoidPtr Data => WorkingUncompressed.Address;
 

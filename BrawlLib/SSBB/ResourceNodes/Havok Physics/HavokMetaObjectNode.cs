@@ -7,7 +7,7 @@ using System.Linq;
 namespace BrawlLib.SSBB.ResourceNodes
 {
     //Parses instance data with class meta
-    public unsafe class HavokMetaObjectNode : ClassMemberInstanceNode
+    public class HavokMetaObjectNode : ClassMemberInstanceNode
     {
         public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
 

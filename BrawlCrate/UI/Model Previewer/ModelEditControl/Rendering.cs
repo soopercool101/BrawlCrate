@@ -11,7 +11,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
 {
     public partial class ModelEditControl : ModelEditorBase
     {
-        public override unsafe void modelPanel1_PostRender(ModelPanelViewport panel)
+        public override void modelPanel1_PostRender(ModelPanelViewport panel)
         {
             RenderBrawlStageData(panel);
             base.modelPanel1_PostRender(panel);

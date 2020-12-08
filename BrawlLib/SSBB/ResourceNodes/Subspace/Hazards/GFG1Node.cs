@@ -6,7 +6,7 @@ using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GFG1Node : BLOCEntryNode
+    public class GFG1Node : BLOCEntryNode
     {
         protected override Type SubEntryType => typeof(GFG1EntryNode);
 

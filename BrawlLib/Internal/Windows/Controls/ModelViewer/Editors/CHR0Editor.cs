@@ -841,7 +841,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             }
         }
 
-        public unsafe void BoxChangedCreateUndo(object sender, EventArgs e)
+        public void BoxChangedCreateUndo(object sender, EventArgs e)
         {
             if (TargetBone == null)
             {

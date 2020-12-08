@@ -354,7 +354,7 @@ namespace BrawlLib.Internal
             return m;
         }
 
-        private unsafe delegate void MtxFunc(float* d, TextureFrameState state);
+        private delegate void MtxFunc(float* d, TextureFrameState state);
 
         private static readonly MtxFunc[] MtxArray =
         {
@@ -980,7 +980,7 @@ namespace BrawlLib.Internal
             return (Matrix) (finalMtx * m34);
         }
 
-        private static unsafe Vector3 GetLightLook(
+        private static Vector3 GetLightLook(
             SCN0Node node, int refLight, Matrix invCamMtx, ModelPanelViewport v, float frame, out bool specEnabled)
         {
             Vector3 start, end;

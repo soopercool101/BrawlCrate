@@ -298,7 +298,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             leftPanel.UpdatePAT0Selection(node);
         }
 
-        protected override unsafe void modelPanel1_MouseMove(object sender, MouseEventArgs e)
+        protected override void modelPanel1_MouseMove(object sender, MouseEventArgs e)
         {
             base.modelPanel1_MouseMove(sender, e);
 

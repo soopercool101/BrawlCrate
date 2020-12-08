@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.Internal.Windows.Controls
 {
-    public unsafe class AttributeGrid : UserControl
+    public class AttributeGrid : UserControl
     {
         #region Designer
 
@@ -424,7 +424,7 @@ namespace BrawlLib.Internal.Windows.Controls
 
         private readonly DataTable attributes = new DataTable();
 
-        public unsafe void TargetChanged()
+        public void TargetChanged()
         {
             lblColor.Visible = false;
             lblCNoA.Visible = false;
@@ -503,7 +503,7 @@ namespace BrawlLib.Internal.Windows.Controls
             }
         }
 
-        private unsafe void dtgrdAttributes_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dtgrdAttributes_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgrdAttributes.CurrentCell == null)
             {

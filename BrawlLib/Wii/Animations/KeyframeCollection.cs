@@ -350,7 +350,7 @@ namespace BrawlLib.Wii.Animations
         }
     }
 
-    public unsafe class KeyframeArray
+    public class KeyframeArray
     {
         internal KeyframeEntry _keyRoot;
         internal int _keyCount;

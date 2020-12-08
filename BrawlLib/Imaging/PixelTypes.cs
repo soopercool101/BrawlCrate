@@ -183,18 +183,18 @@ namespace BrawlLib.Imaging
             return false;
         }
 
-        internal unsafe ARGBPixel Inverse()
+        internal ARGBPixel Inverse()
         {
             return new ARGBPixel(A, (byte) (255 - R), (byte) (255 - G), (byte) (255 - B));
         }
 
-        internal unsafe ARGBPixel Lighten(int amount)
+        internal ARGBPixel Lighten(int amount)
         {
             return new ARGBPixel(A, (byte) Math.Min(R + amount, 255), (byte) Math.Min(G + amount, 255),
                 (byte) Math.Min(B + amount, 255));
         }
 
-        internal unsafe ARGBPixel Darken(int amount)
+        internal ARGBPixel Darken(int amount)
         {
             return new ARGBPixel(A, (byte) Math.Max(R - amount, 0), (byte) Math.Max(G - amount, 0),
                 (byte) Math.Max(B - amount, 0));
@@ -545,7 +545,7 @@ namespace BrawlLib.Imaging
             }
         }
 
-        public static unsafe RGBAPixel Parse(string s)
+        public static RGBAPixel Parse(string s)
         {
             RGBAPixel p;
             byte* ptr = (byte*) &p;
@@ -609,7 +609,7 @@ namespace BrawlLib.Imaging
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct ColorF4
+    internal struct ColorF4
     {
         private const float ColorFactor = 1.0f / 255.0f;
 

@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GET1Node : BLOCEntryNode
+    public class GET1Node : BLOCEntryNode
     {
         protected override Type SubEntryType => typeof(GET1EntryNode);
         protected override string baseName => "Area Triggers";

@@ -677,7 +677,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct UnkDataMiscOff2
+    public struct UnkDataMiscOff2
     {
         public byte unk1;
         public byte unk2;
@@ -1270,7 +1270,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Rendering
 
-        public unsafe void Render(bool selected, int type)
+        public void Render(bool selected, int type)
         {
             if (BoneNode == null)
             {

@@ -508,7 +508,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal unsafe void Render()
+        internal void Render()
         {
             if (!_render)
             {
@@ -526,7 +526,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".coll", StringComparison.OrdinalIgnoreCase))
             {
@@ -590,7 +590,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class CollisionLink
+    public class CollisionLink
     {
         private const float BoxRadius = 0.15f;
         private const float LineWidth = 11.0f;
@@ -716,7 +716,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         //Connects two points together to create a plane
-        public unsafe CollisionPlane Connect(CollisionLink p)
+        public CollisionPlane Connect(CollisionLink p)
         {
             //Don't connect if not on same object
             if (p == this || _parent != p._parent)

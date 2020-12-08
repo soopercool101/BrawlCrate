@@ -64,7 +64,7 @@ namespace BrawlLib.Internal.Windows.Forms
             }
         }
 
-        private unsafe void btnExport_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
             //TODO: get this working
 

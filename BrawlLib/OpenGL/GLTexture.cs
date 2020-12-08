@@ -27,14 +27,14 @@ namespace BrawlLib.OpenGL
         {
         }
 
-        public unsafe GLTexture(int width, int height)
+        public GLTexture(int width, int height)
         {
             _width = width;
             _height = height;
             _source = null;
         }
 
-        public unsafe GLTexture(Bitmap b)
+        public GLTexture(Bitmap b)
         {
             _width = b.Width;
             _height = b.Height;
@@ -45,7 +45,7 @@ namespace BrawlLib.OpenGL
             _source = null;
         }
 
-        public unsafe int Initialize()
+        public int Initialize()
         {
             if (_remake && _textures != null)
             {
@@ -93,7 +93,7 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        private unsafe void ClearTexture()
+        private void ClearTexture()
         {
             if (_texId != 0)
             {
@@ -103,7 +103,7 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        public unsafe void SetPalette(PLT0Node plt)
+        public void SetPalette(PLT0Node plt)
         {
             if (_source is TEX0Node)
             {
@@ -111,7 +111,7 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        public unsafe void Attach(TEX0Node tex, PLT0Node plt)
+        public void Attach(TEX0Node tex, PLT0Node plt)
         {
             ClearImages();
 
@@ -148,7 +148,7 @@ namespace BrawlLib.OpenGL
             Initialize();
         }
 
-        public unsafe void Attach(Bitmap bmp)
+        public void Attach(Bitmap bmp)
         {
             ClearImages();
 
@@ -194,7 +194,7 @@ namespace BrawlLib.OpenGL
             GL.BindTexture(TextureTarget.Texture2D, Initialize());
         }
 
-        public unsafe void Delete()
+        public void Delete()
         {
             ClearImages();
             ClearTexture();

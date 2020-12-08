@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Subspace.Animation
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GLOKEntry
+    public struct GLOKEntry
     {
         public static readonly int SIZE = 0x18;
 

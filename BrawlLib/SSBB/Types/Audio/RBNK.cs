@@ -125,7 +125,7 @@ namespace BrawlLib.SSBB.Types.Audio
 
     //These entries are embedded in a list, using RuintList
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct RBNKInstParam
+    public struct RBNKInstParam
     {
         public const int Size = 0x30;
 

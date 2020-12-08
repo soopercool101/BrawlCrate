@@ -277,7 +277,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return ((BRESCommonHeader*) source.Address)->_tag == SRT0v4.Tag ? new SRT0Node() : null;
         }
 
-        public unsafe SRT0TextureNode FindOrCreateEntry(string name, int index, bool ind)
+        public SRT0TextureNode FindOrCreateEntry(string name, int index, bool ind)
         {
             foreach (SRT0EntryNode t in Children)
             {
@@ -869,7 +869,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             AnimationConverter.EncodeSRT0Keyframes(_keyframes, address, _dataAddr, _code);
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             int dataLen = OnCalculateSize(true);
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,

@@ -1894,7 +1894,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             StringTable table = new StringTable();
             GetStrings(table);
@@ -2225,7 +2225,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             }
         }
 
-        internal unsafe void ApplyPAT0(PAT0Node node, float index)
+        internal void ApplyPAT0(PAT0Node node, float index)
         {
             PAT0EntryNode e;
 
@@ -2260,7 +2260,7 @@ For example, if the shader has two stages but this number is 1, the second stage
         public FogAnimationFrame _fog;
         public GLSLLightFrame[] _lights = new GLSLLightFrame[8];
 
-        internal unsafe void ApplySCN(SCN0Node node, float index)
+        internal void ApplySCN(SCN0Node node, float index)
         {
             if (node == null || index <= 0)
             {
@@ -2447,7 +2447,7 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         #endregion
 
-        public override unsafe void Replace(string fileName)
+        public override void Replace(string fileName)
         {
             base.Replace(fileName);
 

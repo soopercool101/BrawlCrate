@@ -2,7 +2,7 @@
 
 namespace BrawlLib.Internal.PowerPCAssembly
 {
-    public abstract unsafe partial class PPCOpCode
+    public abstract partial class PPCOpCode
     {
         public class PPCOperand
         {

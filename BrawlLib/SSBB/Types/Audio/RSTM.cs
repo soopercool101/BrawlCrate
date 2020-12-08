@@ -173,7 +173,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct StrmDataInfo
+    internal struct StrmDataInfo
     {
         public AudioFormatInfo _format;
         public bushort _sampleRate; //0x7D00
@@ -190,7 +190,7 @@ namespace BrawlLib.SSBB.Types.Audio
         public bint _dataInterval;   //0x3800
         public bint _bitsPerSample;
 
-        public unsafe StrmDataInfo(CSTMDataInfo o, int dataOffset)
+        public StrmDataInfo(CSTMDataInfo o, int dataOffset)
         {
             _format = o._format;
             _sampleRate = checked((ushort) o._sampleRate);
@@ -208,7 +208,7 @@ namespace BrawlLib.SSBB.Types.Audio
             _bitsPerSample = o._bitsPerSample;
         }
 
-        public unsafe StrmDataInfo(FSTMDataInfo o, int dataOffset)
+        public StrmDataInfo(FSTMDataInfo o, int dataOffset)
         {
             _format = o._format;
             _sampleRate = checked((ushort) (int) o._sampleRate);

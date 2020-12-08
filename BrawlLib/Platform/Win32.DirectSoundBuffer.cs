@@ -181,7 +181,7 @@ namespace BrawlLib.Platform
 
             [Guid("B0210783-89CD-11D0-AF08-00A0C925CD16")]
             [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-            internal unsafe interface IDirectSound8Notify
+            internal interface IDirectSound8Notify
             {
                 void SetNotificationPositions(uint dwPositionNotifies,
                                               [MarshalAs(UnmanagedType.LPArray)]

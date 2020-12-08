@@ -91,7 +91,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct RWSD_WSDEntry
+    public struct RWSD_WSDEntry
     {
         public const int Size = 0x20;
 
@@ -111,7 +111,7 @@ namespace BrawlLib.SSBB.Types.Audio
 
     //These entries are embedded in a list of lists, using RuintList
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct RWSD_NoteEvent
+    public struct RWSD_NoteEvent
     {
         public const int Size = 0x10;
 
@@ -123,7 +123,7 @@ namespace BrawlLib.SSBB.Types.Audio
 
     //These entries are embedded in a list, using RuintList
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct RWSD_NoteInfo
+    public struct RWSD_NoteInfo
     {
         public const int Size = 0x30;
 

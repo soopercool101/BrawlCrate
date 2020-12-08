@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.UI
 {
-    public unsafe class CollisionEditor : UserControl
+    public class CollisionEditor : UserControl
     {
         protected virtual bool ErrorChecking => true;
 
@@ -2355,7 +2355,7 @@ namespace BrawlCrate.UI
         {
         }
 
-        protected unsafe void _modelPanel_PostRender(object sender)
+        protected void _modelPanel_PostRender(object sender)
         {
             //Clear depth buffer so we can hit-detect
             GL.Clear(ClearBufferMask.DepthBufferBit);

@@ -16,7 +16,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 {
     public delegate void GLRenderEventHandler(ModelPanelViewport sender);
 
-    public unsafe class ModelPanel : GLPanel
+    public class ModelPanel : GLPanel
     {
         public ModelPanel()
         {
@@ -615,7 +615,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
 
         #region OpenGL
 
-        internal override unsafe void OnInit(TKContext ctx)
+        internal override void OnInit(TKContext ctx)
         {
             Vector3 v = (Vector3) BackColor;
             GL.ClearColor(v._x, v._y, v._z, 0.0f);

@@ -77,7 +77,7 @@ namespace BrawlLib.Internal.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct fmtChunk
+    internal struct fmtChunk
     {
         public const uint fmtTag = 0x20746D66;
 
@@ -193,7 +193,7 @@ namespace BrawlLib.Internal.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct smplLoop
+    internal struct smplLoop
     {
         public uint _dwIdentifier;
         public uint _dwType;

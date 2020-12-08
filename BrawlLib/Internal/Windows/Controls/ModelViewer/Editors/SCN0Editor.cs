@@ -1894,7 +1894,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             }
         }
 
-        public unsafe void ResetBox(int index)
+        public void ResetBox(int index)
         {
             NumericInputBox box = _transBoxes[_tabIndex - 2][index];
 
@@ -1915,7 +1915,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             }
         }
 
-        internal unsafe void BoxChanged(object sender, EventArgs e)
+        internal void BoxChanged(object sender, EventArgs e)
         {
             NumericInputBox box = sender as NumericInputBox;
             int index = (int) box.Tag;

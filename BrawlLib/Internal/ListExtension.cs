@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BrawlLib.Internal
 {
-    public static unsafe class ListExtension
+    public static class ListExtension
     {
         public static int[] FindAllOccurences(this IList a, object o)
         {

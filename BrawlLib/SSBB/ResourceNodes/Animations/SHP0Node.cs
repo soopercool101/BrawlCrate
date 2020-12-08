@@ -299,7 +299,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return ((BRESCommonHeader*) source.Address)->_tag == SHP0v3.Tag ? new SHP0Node() : null;
         }
 
-        public unsafe SHP0EntryNode FindOrCreateEntry(string name)
+        public SHP0EntryNode FindOrCreateEntry(string name)
         {
             foreach (SHP0EntryNode t in Children)
             {
@@ -656,7 +656,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_fixedFlags = (int) fixedflags;
         }
 
-        public unsafe SHP0VertexSetNode FindOrCreateEntry(string name)
+        public SHP0VertexSetNode FindOrCreateEntry(string name)
         {
             foreach (SHP0VertexSetNode t in Children)
             {
@@ -746,7 +746,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             int length = OnCalculateSize(true);
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,

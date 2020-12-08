@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class HavokCommonArrayNode : ClassMemberInstanceNode
+    public class HavokCommonArrayNode : ClassMemberInstanceNode
     {
         protected VoidPtr dataAddr = null;
         protected int count;

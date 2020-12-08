@@ -229,7 +229,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             ExportNonYaz0(outPath);
         }
@@ -382,7 +382,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class U8FolderNode : U8EntryNode
+    public class U8FolderNode : U8EntryNode
     {
         public override ResourceType ResourceFileType => ResourceType.U8Folder;
         public override Type[] AllowedChildTypes => new Type[] {typeof(U8EntryNode)};

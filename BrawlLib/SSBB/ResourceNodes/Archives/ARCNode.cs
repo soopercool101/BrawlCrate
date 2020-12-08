@@ -583,7 +583,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             if (outPath.EndsWith(".pair", StringComparison.OrdinalIgnoreCase))
             {
@@ -828,7 +828,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class ARCEntryGroup : ResourceNode
+    public class ARCEntryGroup : ResourceNode
     {
         internal byte _group;
 

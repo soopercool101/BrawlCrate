@@ -810,7 +810,7 @@ namespace BrawlLib.Internal.Windows.Controls
 
         #region Rendering
 
-        internal override unsafe void OnInit(TKContext ctx)
+        internal override void OnInit(TKContext ctx)
         {
             GL.Enable(EnableCap.Blend);
             GL.Enable(EnableCap.Texture2D);

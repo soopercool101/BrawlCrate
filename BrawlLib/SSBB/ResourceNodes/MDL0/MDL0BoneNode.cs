@@ -1181,7 +1181,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             _inverseFrameMatrix = worldState._iTransform * mInv;
         }
 
-        public unsafe void DrawBox(bool drawChildren, bool bindBox)
+        public void DrawBox(bool drawChildren, bool bindBox)
         {
             Box box = bindBox ? _extents : GetBox();
 
@@ -1236,7 +1236,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             }
         }
 
-        public unsafe List<MDL0BoneNode> ChildTree(List<MDL0BoneNode> list)
+        public List<MDL0BoneNode> ChildTree(List<MDL0BoneNode> list)
         {
             list.Add(this);
             foreach (MDL0BoneNode c in _children)

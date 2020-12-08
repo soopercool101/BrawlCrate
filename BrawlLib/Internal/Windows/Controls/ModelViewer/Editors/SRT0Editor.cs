@@ -657,7 +657,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.Editors
             }
         }
 
-        internal unsafe void BoxChangedCreateUndo(object sender, EventArgs e)
+        internal void BoxChangedCreateUndo(object sender, EventArgs e)
         {
             CreateUndo?.Invoke(sender, null);
 

@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GBLKNode : BLOCEntryNode
+    public class GBLKNode : BLOCEntryNode
     {
         protected override Type SubEntryType => typeof(GBLKEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GBLK;

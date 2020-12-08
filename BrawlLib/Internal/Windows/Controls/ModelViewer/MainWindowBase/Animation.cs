@@ -94,7 +94,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
         /// <param name="index">0 = X, 1 = Y, 2 = Z</param>
         /// <param name="offset">The amount to add to the current rotation displayed in the CHR0 editor box.</param>
-        protected unsafe void ApplyAngle(int index, float offset)
+        protected void ApplyAngle(int index, float offset)
         {
             if (offset == 0.0f)
             {
@@ -112,7 +112,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
         /// <param name="index">0 = X, 1 = Y, 2 = Z</param>
         /// <param name="offset">The amount to add to the current translation displayed in the CHR0 editor box.</param>
-        protected unsafe void ApplyTranslation(int index, float offset)
+        protected void ApplyTranslation(int index, float offset)
         {
             if (offset == 0.0f)
             {
@@ -130,7 +130,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
         /// <param name="index">0 = X, 1 = Y, 2 = Z</param>
         /// <param name="offset">The multiplier for the current scale displayed in the CHR0 editor box.</param>
-        protected unsafe void ApplyScale(int index, float scale)
+        protected void ApplyScale(int index, float scale)
         {
             if (scale == 0.0f || scale == 1.0f)
             {

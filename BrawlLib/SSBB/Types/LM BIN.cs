@@ -52,7 +52,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct LMBinTexture
+    public struct LMBinTexture
     {
         public const int Size = 0xC;
 
@@ -109,7 +109,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct LMBinPart
+    public struct LMBinPart
     {
         public const int Size = 4;
 

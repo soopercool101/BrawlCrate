@@ -444,7 +444,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
         private bool _createdNewBone;
 
-        protected virtual unsafe void modelPanel1_MouseMove(object sender, MouseEventArgs e)
+        protected virtual void modelPanel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (_playing)
             {

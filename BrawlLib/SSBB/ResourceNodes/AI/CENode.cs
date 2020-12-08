@@ -664,7 +664,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             uint dataLen = (uint) OnCalculateSize(true);
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,

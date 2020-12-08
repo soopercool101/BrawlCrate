@@ -78,7 +78,7 @@ namespace BrawlLib.Wii.Graphics
         //Fragment shader variables
         private const string LightChannelName = "lightChannel";
 
-        public static unsafe void SetUniforms(MDL0MaterialNode mat)
+        public static void SetUniforms(MDL0MaterialNode mat)
         {
             int pHandle = mat._programHandle;
 

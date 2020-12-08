@@ -85,7 +85,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             //using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
             //{

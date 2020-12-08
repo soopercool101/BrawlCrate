@@ -411,7 +411,7 @@ namespace BrawlCrate.UI.Model_Previewer
             _updating = false;
         }
 
-        private unsafe void btnOkay_Click(object sender, EventArgs e)
+        private void btnOkay_Click(object sender, EventArgs e)
         {
             //if (Math.Abs(_boxes[5].Value) == Math.Abs(_boxes[6].Value) &&
             //    _boxes[5].Value % 180.0f == 0 &&

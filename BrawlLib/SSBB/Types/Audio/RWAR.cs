@@ -58,7 +58,7 @@ namespace BrawlLib.SSBB.Types.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct TableItem
+    internal struct TableItem
     {
         public ruint waveFileRef; //Offset to RWAV, base is DataBlock
         public buint waveFileSize;

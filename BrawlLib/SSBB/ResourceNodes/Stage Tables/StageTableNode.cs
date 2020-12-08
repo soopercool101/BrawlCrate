@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public abstract unsafe class StageTableNode : ARCEntryNode, MultipleInterpretationIAttributeList
+    public abstract class StageTableNode : ARCEntryNode, MultipleInterpretationIAttributeList
     {
         internal virtual int EntrySize => 4;
 

@@ -12,7 +12,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 {
     public partial class ModelEditorBase : UserControl
     {
-        public virtual unsafe void modelPanel1_PreRender(ModelPanelViewport vp)
+        public virtual void modelPanel1_PreRender(ModelPanelViewport vp)
         {
             if (vp != null)
             {
@@ -26,7 +26,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             }
         }
 
-        public virtual unsafe void modelPanel1_PostRender(ModelPanelViewport vp)
+        public virtual void modelPanel1_PostRender(ModelPanelViewport vp)
         {
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
@@ -305,7 +305,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
         #region Transform Control Rendering
 
-        public unsafe void RenderTransformControls(ModelPanelViewport panel)
+        public void RenderTransformControls(ModelPanelViewport panel)
         {
             if (_playing || ControlType == TransformType.None)
             {
@@ -944,7 +944,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 #if DEBUG
         protected bool _renderDepth;
 #endif
-        public virtual unsafe void RenderDepth(ModelPanelViewport v)
+        public virtual void RenderDepth(ModelPanelViewport v)
         {
             if (v._grabbing || v._scrolling || _playing)
             {
@@ -1263,7 +1263,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
 
         #endregion
 
-        public static unsafe void OnRenderLightDisplay(ModelPanelViewport v)
+        public static void OnRenderLightDisplay(ModelPanelViewport v)
         {
             GL.PushAttrib(AttribMask.AllAttribBits);
             GL.MatrixMode(MatrixMode.Modelview);

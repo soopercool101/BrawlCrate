@@ -234,7 +234,7 @@ namespace BrawlLib.Wii.Audio
             //return coefs;
         }
 
-        public static unsafe void EncodeBlock(short* source, int samples, byte* dest, short* coefs)
+        public static void EncodeBlock(short* source, int samples, byte* dest, short* coefs)
         {
             for (int i = 0; i < samples; i += 14, source += 14, dest += 8)
             {
@@ -243,7 +243,7 @@ namespace BrawlLib.Wii.Audio
         }
 
         //Make sure source includes the yn values (16 samples total)
-        private static unsafe void EncodeChunk(short* source, int samples, byte* dest, short* coefs)
+        private static void EncodeChunk(short* source, int samples, byte* dest, short* coefs)
         {
             //int* sampleBuffer = stackalloc int[14];
             int* buffer1 = stackalloc int[128];
@@ -394,8 +394,8 @@ namespace BrawlLib.Wii.Audio
             }
         }
 
-        private static unsafe void Something10(double** bufferArray, int mask, double** multiBuffer, int multiIndex,
-                                               double val)
+        private static void Something10(double** bufferArray, int mask, double** multiBuffer, int multiIndex,
+                                        double val)
         {
             double** bufferList = stackalloc double*[mask];
 
@@ -480,7 +480,7 @@ namespace BrawlLib.Wii.Audio
             }
         }
 
-        private static unsafe double Something11(double* source1, double* source2)
+        private static double Something11(double* source1, double* source2)
         {
             double* b = stackalloc double[3];
             Something12(source2, b);
@@ -490,7 +490,7 @@ namespace BrawlLib.Wii.Audio
             return b[0] * val1 + 2.0 * b[1] * val2 + 2.0 * b[2] * val3;
         }
 
-        private static unsafe void Something12(double* source, double* dest)
+        private static void Something12(double* source, double* dest)
         {
             double v2 = -source[1], v3 = -source[2];
             double val = (v3 * v2 + v2) / (1.0 - v3 * v3);
@@ -500,7 +500,7 @@ namespace BrawlLib.Wii.Audio
             dest[2] = v2 * dest[1] + v3 * dest[0];
         }
 
-        private static unsafe void Something9(double** bufferArray, double* buffer2, int mask, double value)
+        private static void Something9(double** bufferArray, double* buffer2, int mask, double value)
         {
             for (int i = 0; i < mask; i++)
             {
@@ -511,7 +511,7 @@ namespace BrawlLib.Wii.Audio
             }
         }
 
-        private static unsafe int Something8(double* src, double* omgBuffer, double* dst, double* outVar)
+        private static int Something8(double* src, double* omgBuffer, double* dst, double* outVar)
         {
             int count = 0;
             double val = src[0];
@@ -553,7 +553,7 @@ namespace BrawlLib.Wii.Audio
             return count;
         }
 
-        private static unsafe void Something7(double* src, double* dst)
+        private static void Something7(double* src, double* dst)
         {
             //double v1, v2, v3;
             double* buffer = stackalloc double[9];
@@ -850,7 +850,7 @@ namespace BrawlLib.Wii.Audio
             return Math.Abs(v1) > 1.0 ? 1 : 0;
         }
 
-        private static unsafe void Something6(double* omgBuffer, double* buffer)
+        private static void Something6(double* omgBuffer, double* buffer)
         {
             //buffer[0] = 1.0;
 

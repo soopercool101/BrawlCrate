@@ -56,7 +56,7 @@ namespace BrawlLib.Internal.Windows.Forms
             return ShowDialog();
         }
 
-        private unsafe void btnOkay_Click(object sender, EventArgs e)
+        private void btnOkay_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
             audioPlaybackPanel1.TargetSource = null;

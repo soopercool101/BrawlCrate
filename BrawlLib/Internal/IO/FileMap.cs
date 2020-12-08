@@ -224,7 +224,7 @@ namespace BrawlLib.Internal.IO
     }
 
 
-    public unsafe class cFileMap : FileMap
+    public class cFileMap : FileMap
     {
         protected MemoryMappedFile _mappedFile;
         protected MemoryMappedViewAccessor _mappedFileAccessor;

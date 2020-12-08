@@ -834,25 +834,25 @@ namespace BrawlLib.SSBB.ResourceNodes
         //Replace will reference the file in a new DataSource.
         public bool _replaced;
 
-        public virtual unsafe void Replace(string fileName)
+        public virtual void Replace(string fileName)
         {
             Replace(fileName, FileMapProtect.Read, FileOptions.SequentialScan);
         }
 
-        public virtual unsafe void Replace(ResourceNode node)
+        public virtual void Replace(ResourceNode node)
         {
             string path = Path.GetTempFileName();
             node.Export(path);
             Replace(path);
         }
 
-        public virtual unsafe void Replace(string fileName, FileMapProtect prot, FileOptions options)
+        public virtual void Replace(string fileName, FileMapProtect prot, FileOptions options)
         {
             //Name = Path.GetFileNameWithoutExtension(fileName);
             ReplaceRaw(FileMap.FromFile(fileName, prot, 0, 0, options));
         }
 
-        public virtual unsafe void ReplaceRaw(VoidPtr address, int length)
+        public virtual void ReplaceRaw(VoidPtr address, int length)
         {
             FileMap map = FileMap.FromTempFile(length);
             Memory.Move(map.Address, address, (uint) length);
@@ -863,7 +863,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public virtual bool supportsCompression => true;
 
-        public virtual unsafe void ReplaceRaw(FileMap map)
+        public virtual void ReplaceRaw(FileMap map)
         {
             if (_children != null && !RetainChildrenOnReplace)
             {
@@ -914,7 +914,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Export
 
-        public virtual unsafe void Export(string outPath)
+        public virtual void Export(string outPath)
         {
             Rebuild(); //Apply changes the user has made by rebuilding.
 #if !DEBUG
@@ -1687,7 +1687,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// If MD5() returns null, this method will return an empty string.
         /// </summary>
         [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptions]
-        public unsafe string MD5Str()
+        public string MD5Str()
         {
             try
             {

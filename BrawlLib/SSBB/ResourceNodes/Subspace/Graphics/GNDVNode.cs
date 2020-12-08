@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class GNDVNode : BLOCEntryNode
+    public class GNDVNode : BLOCEntryNode
     {
         protected override Type SubEntryType => typeof(GNDVEntryNode);
 

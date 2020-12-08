@@ -80,7 +80,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class RSTCGroupNode : ResourceNode
+    public class RSTCGroupNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.RSTCGroup;
         public string _type;
