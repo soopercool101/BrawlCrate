@@ -122,6 +122,11 @@ namespace BrawlCrate.NodeWrappers
     public class TBGCWrapper : TBWrapper
     {
         public override string ExportFilter => FileFilters.TBGC;
+
+        public override void NewEntry()
+        {
+            NewEntry<TBGCEntryNode>();
+        }
     }
 
     [NodeWrapper(ResourceType.TBGD)]
@@ -161,11 +166,21 @@ namespace BrawlCrate.NodeWrappers
     public class TBRMWrapper : TBWrapper
     {
         public override string ExportFilter => FileFilters.TBRM;
+
+        public override void NewEntry()
+        {
+            NewEntry<TBRMEntryNode>();
+        }
     }
 
     [NodeWrapper(ResourceType.TBST)]
     public class TBSTWrapper : TBWrapper
     {
         public override string ExportFilter => FileFilters.TBST;
+
+        public override void NewEntry()
+        {
+            NewEntry<TBSTEntryNode>();
+        }
     }
 }
