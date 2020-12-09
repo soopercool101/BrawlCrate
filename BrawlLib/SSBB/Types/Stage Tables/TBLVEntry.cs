@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.Types.Stage_Tables
     {
         public const int Size = 0x10;
 
-        public bfloat _unk0x0;
+        public bfloat _height; // Lava Height
         public bfloat _unk0x4;
         public bfloat _unk0x8;
     }

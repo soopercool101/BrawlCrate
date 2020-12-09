@@ -18,15 +18,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TBLVEntryNode : ResourceNode
     {
-        public float _unk0x0;
+        public float _height;
 
         [Category("TBLV Entry")]
-        public float Unknown0x0
+        [DisplayName("Lava Height")]
+        public float LavaHeight
         {
-            get => _unk0x0;
+            get => _height;
             set
             {
-                _unk0x0 = value;
+                _height = value;
                 SignalPropertyChange();
             }
         }
@@ -67,7 +68,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             TBLVEntry* header = (TBLVEntry*)WorkingUncompressed.Address;
 
-            _unk0x0 = header->_unk0x0;
+            _height = header->_height;
             _unk0x4 = header->_unk0x4;
             _unk0x8 = header->_unk0x8;
 
@@ -78,7 +79,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             TBLVEntry* hdr = (TBLVEntry*)address;
 
-            hdr->_unk0x0 = _unk0x0;
+            hdr->_height = _height;
             hdr->_unk0x4 = _unk0x4;
             hdr->_unk0x8 = _unk0x8;
         }
