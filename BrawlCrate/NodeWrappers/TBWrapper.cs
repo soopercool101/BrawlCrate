@@ -128,6 +128,11 @@ namespace BrawlCrate.NodeWrappers
     public class TBGDWrapper : TBWrapper
     {
         public override string ExportFilter => FileFilters.TBGD;
+
+        public override void NewEntry()
+        {
+            NewEntry<TBGDEntryNode>();
+        }
     }
 
     [NodeWrapper(ResourceType.TBGM)]
