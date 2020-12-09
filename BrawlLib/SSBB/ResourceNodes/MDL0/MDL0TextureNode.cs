@@ -251,10 +251,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (bmp == null && !(Source is TEX0Node) &&
                 TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
             {
-                List<ResourceNode> nodes = RootNode.GetChildrenRecursive();
+                List<ResourceNode> nodes;
                 if (model?.BRESNode?.Parent != null)
                 {
                     nodes = model.BRESNode.Parent.Children;
+                }
+                else
+                {
+                    nodes = model.RootNode.GetChildrenRecursive();
                 }
 
                 foreach (ResourceNode n in nodes)
