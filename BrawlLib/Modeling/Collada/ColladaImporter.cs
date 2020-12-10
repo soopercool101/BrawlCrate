@@ -528,10 +528,9 @@ namespace BrawlLib.Modeling.Collada
 
         private bool ensureBoneIsUnused(MDL0BoneNode b)
         {
-            return b.Parent != null && (b.Children == null || b.Children.Count == 0) &&
-                   b.Visible ==
-                   ((MDL0BoneNode) b.Parent)
-                   .Visible; //&& b.Scale == new Vector3(1, 1, 1) && b.Translation == new Vector3(0, 0, 0) && b.Rotation == new Vector3(0, 0, 0));
+            return b.Parent != null && b.Parent is MDL0BoneNode par &&
+                   (b.Children == null || b.Children.Count == 0) &&
+                   b.Visible == par.Visible;
         }
 
         private void EnumNode(
