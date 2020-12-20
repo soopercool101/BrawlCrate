@@ -1,5 +1,5 @@
 
-BrawlCrate - v0.35 Hotfix 1
+BrawlCrate - v0.36
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,20 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.36
+ . TB nodes now parse children properly
+ . Add parsing for STPM Music and Sound volume values
+ . Update internal documentation to v0.36
+ . Fix common errors rebuilding Common2 entries
+ . Fix missing texture preview bug for PAT0
+ . Fix certain nonfunctional and error-prone BrawlAPI functions:
+   - NodeWrapperListOfType (Returned empty list)
+   - NodeListOfType (Returned empty list)
+   - UserFloatInput (Only worked with integers)
+ . Fix incorrect conversion of BRSAR to use of external files
+ . Fix move line buttons not working on MSBin Editor
+ . Fix possible crash when importing dae models
  
  - BrawlCrate v0.35 Hotfix 1 - (10/17/2020)
  . Fix bug in which TPL files would populate improperly

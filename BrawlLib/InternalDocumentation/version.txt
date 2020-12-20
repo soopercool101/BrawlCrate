@@ -1,10 +1,77 @@
-Documentation_v0.35
+Documentation_v0.36
 
  =============================================================
 |************ BrawlCrate Documentation Change Log ************|
  =============================================================
  
- Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan
+ Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan, Eon
+ 
+ - Documentation v0.36
+ . Onett STDT documentation updated to latest understanding:
+   - 0x014 -> Smoke Min Timer
+   - 0x018 -> Smoke Max Timer
+   - 0x01C -> Smoke Min Timer 2
+   - 0x020 -> Smoke Max Timer 2
+   - 0x024 -> Canopies Landing Amount
+     > Type changed from Unknown to Bytes
+   - 0x028 -> Canopies Min Respawn Timer
+   - 0x02C -> Canopies Max Respawn Timer
+   - 0x030 -> Car Speed
+   - 0x034 -> Car Speed while going to the right?
+   - Car Timer -> Car Timer Max
+   - 0x03C -> Car Timer Min
+   - 0x048 -> Car Speed Multiplier on hit
+   - 0x04C -> Car Chance to spin
+   - 0x050 -> Smoke Spawn Chance?
+   - 0x054 -> Car Spin Speed
+   - 0x05C -> Car Honk SFX Distance
+ . Skyworld STDT documentation updated to latest understanding:
+   - 0x03C -> Platform Respawn Timer
+   - 0x040 -> Platform Stretch Timer
+   - 0x044 -> Chained Platform Outward Timer
+   - 0x048 -> Chained Platform Inward Timer
+   - 0x04C -> Chained Platform Move Chance
+   - 0x078 -> Bottom Platform Min Respawn Timer
+   - Platform Respawn Timer -> Bottom Platform Max Respawn Timer
+   - 0x080 -> Bottom Platform Right Spawn Chance
+   - 0x084 -> Bottom Platform Moving Speed
+ . Summit STDT documentaion updated to latest understanding:
+   - 0x03C -> Icicle Initial Min Timer
+   - 0x040 -> Icicle Initial Max Timer
+   - 0x044 -> Redo Min Timer
+   - 0x048 -> Redo Max Timer
+   - 0x04C -> Icicle Damage?
+   - 0x050 -> Falling Platform Timer
+   - 0x054 -> Tipping Speed
+   - 0x05C -> Turnaround Angle of Tipping Platform
+   - 0x060 -> Tipping Platform Deceleration
+   - 0x064 -> Tipping Platform Respawn Time
+   - 0x068 -> Tipping Platform Return Speed
+   - 0x06C -> Food Spawn Min Timer
+   - 0x070 -> Food Spawn Max Timer
+   - 0x074 -> Food Spawn Chance
+   - 0x088 -> Cloud Platform Spawn Min Timer
+   - 0x08C -> Cloud Platform Spawn Max Timer
+   - 0x090 -> Speed of Cloud Platform
+   - 0x094 -> Chance of Fish some more?
+   - 0x098 -> Max Frames of Fish Lockout?
+   - 0x09C -> Chance of Fish?
+   - 0x0A4 -> Polar Bear Jump Min Timer
+   - 0x0A8 -> Polar Bear Jump Max Timer
+   - 0x0AC -> Polar Bear Jump Chance
+   - 0x0B0 -> Polar Bear Jump Magnitude Min
+   - 0x0B4 -> Polar Bear Jump Magnitude Max
+   - 0x0B8 -> Mountain Sink Acceleration
+   - 0x0BC -> Mountain Sink Max Speed
+   - 0x0C0 -> Mountain Minimum Sunk Timer
+   - 0x0C4 -> Mountain Maximum Sunk Timer
+   - 0x0C8 -> Mountain Float Speed
+   - 0x0CC -> Time Grounded Min
+   - 0x0D0 -> Time Grounded Max
+   - 0x0D4 -> Speed of Ascent?
+   - 0x0D8 -> Ice Floating Platform Tilt Speed
+   - 0x0E0 -> Ice Floating Platform Fast Speed
+   - 0x0E8 -> Ice Floating Platform Sinking Speed?
  
  - Documentation v0.35
  . Added STDT documentation for Flat Zone 2

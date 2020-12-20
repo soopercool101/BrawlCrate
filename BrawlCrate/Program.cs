@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.35-h1";
+        public static readonly string TagName = "v0.36";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,19 +41,12 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.35 Hotfix 1! Here's what's new in this release:
-- (Hotfix 1) Fix bug in which TPL files would not be properly populated
-- Adds TargetFunction string to REL Commands when loading Module Maps
-- Facepoint and Triangle counters now update in real time rather than on save
-- Item IDs now populate for Green Greens and Distant Planet modules
-- Allow cancellation of Export Selected
-- Supersoft collisions now render with more transparency
-- Allow manual linking of a Collision Object's linked model and bone
-- Update internal documentation
-- Show filename before program name if not using the full filepath
-- Fix bug in which exporting an unchanged text codeset would fail
-- Fix bug in which P+ Knuckles would not properly load MASQ data
-- Fix bug in which duplicating a TEX0 with a palette would prompt to delete its palette
+            @"Updated to BrawlCrate v0.36! Here's what's new in this release:
+- Stage TB nodes now properly parse with children
+- STPM now parses Music and Sound volume
+- Fixes errors building Common2
+- Fixes errors previewing PAT0
+- Fix some crashes when importing DAE files
 
 Full changelog and documentation can be viewed from the help menu.";
 
