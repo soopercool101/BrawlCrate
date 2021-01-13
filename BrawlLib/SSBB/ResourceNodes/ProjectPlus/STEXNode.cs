@@ -313,7 +313,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             header->_tag = STEX.Tag;
             header->_stringOffset = strOffset;
             header->_size = (uint)length;
-            header->_rgbaOverlay = (uint)CharacterOverlay;
+            header->_rgbaOverlay = ((uint)_rgbaOverlay).Reverse();
             header->_soundBank = _soundBank;
             header->_effectBank = _effectBank;
             header->_flags = (ushort)_flags;
