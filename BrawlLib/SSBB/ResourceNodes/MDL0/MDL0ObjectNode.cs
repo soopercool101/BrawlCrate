@@ -2189,12 +2189,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             //Compare draw priorities
             if (n1.DrawPriority > n2.DrawPriority)
             {
-                return 1;
+                return -1;
             }
 
             if (n1.DrawPriority < n2.DrawPriority)
             {
-                return -1;
+                return 1;
             }
 
             //Make sure the node isn't null
@@ -2216,12 +2216,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             //Now check material draw index
             if (n1.MaterialNode.Index > n2.MaterialNode.Index)
             {
-                return 1;
+                return -1;
             }
 
             if (n1.MaterialNode.Index < n2.MaterialNode.Index)
             {
-                return -1;
+                return 1;
             }
 
             //Compare the object index
