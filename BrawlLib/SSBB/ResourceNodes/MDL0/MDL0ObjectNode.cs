@@ -10,6 +10,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -2173,81 +2174,53 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static int DrawCompare(DrawCall n1, DrawCall n2)
         {
+            DrawPassType __n1DrawPass = n1.MaterialNode == null ? DrawPassType.Opaque : n1.DrawPass;
+            DrawPassType __n2DrawPass = n2.MaterialNode == null ? DrawPassType.Opaque : n2.DrawPass;
+
             //First compare with render pass
-            if ((n1.DrawPass == DrawPassType.Opaque || n1.MaterialNode == null) &&
-                n2.DrawPass == DrawPassType.Transparent && n2.MaterialNode != null)
+            if (__n1DrawPass == DrawPassType.Opaque && __n2DrawPass == DrawPassType.Transparent)
             {
                 return -1;
             }
 
-            if ((n2.DrawPass == DrawPassType.Opaque || n2.MaterialNode == null) &&
-                n1.DrawPass == DrawPassType.Transparent && n1.MaterialNode != null)
+            if (__n2DrawPass == DrawPassType.Opaque && __n1DrawPass == DrawPassType.Transparent)
             {
                 return 1;
             }
+
+            Debug.Assert(__n1DrawPass == __n2DrawPass);
+            DrawPassType __drawPass = __n1DrawPass;
+            Debug.Assert(__drawPass == DrawPassType.Opaque || __drawPass == DrawPassType.Transparent);
 
             //Compare draw priorities
-            if (n1.DrawPriority > n2.DrawPriority)
-            {
-                return 1;
-            }
-
             if (n1.DrawPriority < n2.DrawPriority)
             {
                 return -1;
             }
 
-            //Make sure the node isn't null
-            if (n1.MaterialNode != null && n2.MaterialNode == null)
+            if (n1.DrawPriority > n2.DrawPriority)
             {
                 return 1;
             }
 
-            if (n1.MaterialNode == null && n2.MaterialNode != null)
+            if (__drawPass == DrawPassType.Transparent) // Not doing this for both render pass types is probably a bug in NW4R
             {
-                return -1;
+                int __n1MaterialNodeIndex = n1.MaterialNode == null ? -1 : n1.MaterialNode.Index;
+                int __n2MaterialNodeIndex = n2.MaterialNode == null ? -1 : n2.MaterialNode.Index;
+
+                //Now check material draw index
+                if (__n1MaterialNodeIndex < __n2MaterialNodeIndex)
+                {
+                    return -1;
+                }
+
+                if (__n1MaterialNodeIndex > __n2MaterialNodeIndex)
+                {
+                    return 1;
+                }
             }
 
-            if (n1.MaterialNode == null && n2.MaterialNode == null)
-            {
-                return 0;
-            }
-
-            //Now check material draw index
-            if (n1.MaterialNode.Index > n2.MaterialNode.Index)
-            {
-                return 1;
-            }
-
-            if (n1.MaterialNode.Index < n2.MaterialNode.Index)
-            {
-                return -1;
-            }
-
-            //Compare the object index
-            if (n1._parentObject.Index > n2._parentObject.Index)
-            {
-                return 1;
-            }
-
-            if (n1._parentObject.Index < n2._parentObject.Index)
-            {
-                return -1;
-            }
-
-            //Same object, so compare draw call index
-            if (n1._parentObject._drawCalls.IndexOf(n1) > n2._parentObject._drawCalls.IndexOf(n2))
-            {
-                return 1;
-            }
-
-            if (n1._parentObject._drawCalls.IndexOf(n1) < n2._parentObject._drawCalls.IndexOf(n2))
-            {
-                return -1;
-            }
-
-            //Should never return equal
-            return 0;
+            return 1;
         }
 
         public override void Bind()
@@ -2305,21 +2278,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     mat.ApplyViewportLighting(viewport);
                 }
 
-                float polyOffset = DrawPriority;
-                if (attrib._renderWireframe)
-                {
-                    polyOffset -= 1.0f;
-                }
-
-                if (polyOffset != 0.0f)
-                {
-                    GL.Enable(EnableCap.PolygonOffsetFill);
-                    GL.PolygonOffset(1.0f, -polyOffset);
-                }
-                else
-                {
-                    GL.Disable(EnableCap.PolygonOffsetFill);
-                }
+                GL.Enable(EnableCap.PolygonOffsetFill);
+                GL.PolygonOffset(0, 0f);
 
                 GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
                 _parentObject.Render(false, shaders, mat);
