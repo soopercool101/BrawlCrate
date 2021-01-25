@@ -2278,21 +2278,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     mat.ApplyViewportLighting(viewport);
                 }
 
-                float polyOffset = DrawPriority;
-                if (attrib._renderWireframe)
-                {
-                    polyOffset -= 1.0f;
-                }
-
-                if (polyOffset != 0.0f)
-                {
-                    GL.Enable(EnableCap.PolygonOffsetFill);
-                    GL.PolygonOffset(1.0f, -polyOffset);
-                }
-                else
-                {
-                    GL.Disable(EnableCap.PolygonOffsetFill);
-                }
+                GL.Enable(EnableCap.PolygonOffsetFill);
+                GL.PolygonOffset(0, 0f);
 
                 GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
                 _parentObject.Render(false, shaders, mat);
