@@ -2842,7 +2842,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             {
                 string s = "";
                 bool first = true;
-                int i = 0;
+                int i = (int)(SelectionStart % 4);
 
                 foreach (byte b in buffer)
                 {
@@ -2853,7 +2853,7 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     else if (i == 4)
                     {
                         s += " ";
-                        i = -1;
+                        i = 0;
                     }
 
                     s += b.ToString("X2");
