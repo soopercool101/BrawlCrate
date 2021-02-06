@@ -1043,6 +1043,51 @@ namespace BrawlLib.Internal
         }
     }
 
+    public class DropDownListByteItemIDs : ByteConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+
+        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            return new StandardValuesCollection(SSBB.Item.Items.Where(i => i.ID >= 0 && i.ID <= 255)
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+        }
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value?.GetType() == typeof(string))
+            {
+                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase)
+                    ? 16
+                    : 10;
+                return Convert.ToByte(field0, fromBase);
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+                                         Type destinationType)
+        {
+            if (destinationType == typeof(string) && value != null && value.GetType() == typeof(byte))
+            {
+                SSBB.Item item = SSBB.Item.Items.Where(s => s.ID == (byte)value).FirstOrDefault();
+                return "0x" + ((byte)value).ToString("X2") + (item == null ? "" : " - " + item.Name);
+            }
+
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
+
     public class DropDownListFighterIDs : ByteConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)

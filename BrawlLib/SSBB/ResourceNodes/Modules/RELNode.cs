@@ -1,5 +1,6 @@
 using BrawlLib.Internal;
 using BrawlLib.Internal.PowerPCAssembly;
+using BrawlLib.Internal.Windows.Controls.Hex_Editor;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
@@ -162,75 +163,132 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public void UpdateItemIDs()
+        {
+            for (int i = 0; i < _itemIDOffsets?.Length; i++)
+            {
+                _itemIDs[i] = Sections[1]._dataBuffer[_itemIDOffsets[i], 1].Byte;
+            }
+        }
+
+        public void SaveItems()
+        {
+            if (_itemIDOffsets.Length == 0)
+            {
+                return;
+            }
+
+            ModuleSectionNode section = Sections[1];
+
+            DynamicFileByteProvider d =
+                new DynamicFileByteProvider(new UnmanagedMemoryStream((byte*) section._dataBuffer.Address,
+                        section._dataBuffer.Length, section._dataBuffer.Length, FileAccess.ReadWrite))
+                    { _supportsInsDel = false };
+
+            for (int i = 0; i < _itemIDOffsets.Length; i++)
+            {
+                d.WriteByte(_itemIDOffsets[i], _itemIDs[i]);
+            }
+            
+            if (!d.HasChanges())
+            {
+                return;
+            }
+            
+            UnsafeBuffer newBuffer = new UnsafeBuffer((int)d.Length);
+
+            int amt = Math.Min(section._dataBuffer.Length, newBuffer.Length);
+            if (amt > 0)
+            {
+                Memory.Move(newBuffer.Address, section._dataBuffer.Address, (uint)amt);
+                if (newBuffer.Length - amt > 0)
+                {
+                    Memory.Fill(newBuffer.Address + amt, (uint)(newBuffer.Length - amt), 0);
+                }
+            }
+
+            d._stream?.Dispose();
+
+            d._stream = new UnmanagedMemoryStream((byte*)newBuffer.Address, newBuffer.Length, newBuffer.Length,
+                FileAccess.ReadWrite);
+
+            d.ApplyChanges();
+
+            section._dataBuffer.Dispose();
+            section._dataBuffer = newBuffer;
+            section.SignalPropertyChange();
+            d.Dispose();
+        }
+
         [Category("Brawl Stage Module")]
-        [TypeConverter(typeof(DropDownListItemIDs))]
-        public int? ItemID1
+        [TypeConverter(typeof(DropDownListByteItemIDs))]
+        public byte? ItemID1
         {
             get => _itemIDs?.Length > 0 ? _itemIDs?[0] : null;
             set
             {
-                // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || _itemIDs.Length <= 0 || value == null || value < 0 && value > 255)
+                // Don't try to set the item ID if there are none known
+                if (_itemIDs == null || _itemIDs.Length <= 0 || value == null)
                 {
                     return;
                 }
 
-                _itemIDs[0] = (byte) value.Value;
-                SignalPropertyChange();
+                _itemIDs[0] = value.Value;
+                SaveItems();
             }
         }
 
         [Category("Brawl Stage Module")]
-        [TypeConverter(typeof(DropDownListItemIDs))]
-        public int? ItemID2
+        [TypeConverter(typeof(DropDownListByteItemIDs))]
+        public byte? ItemID2
         {
             get => _itemIDs?.Length > 1 ? _itemIDs?[1] : null;
             set
             {
-                // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || _itemIDs.Length <= 1 || value == null || value < 0 && value > 255)
+                // Don't try to set the item ID if there are not 2 known
+                if (_itemIDs == null || _itemIDs.Length <= 1 || value == null)
                 {
                     return;
                 }
 
-                _itemIDs[1] = (byte) value.Value;
-                SignalPropertyChange();
+                _itemIDs[1] = value.Value;
+                SaveItems();
             }
         }
 
         [Category("Brawl Stage Module")]
-        [TypeConverter(typeof(DropDownListItemIDs))]
-        public int? ItemID3
+        [TypeConverter(typeof(DropDownListByteItemIDs))]
+        public byte? ItemID3
         {
             get => _itemIDs?.Length > 2 ? _itemIDs?[2] : null;
             set
             {
-                // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || _itemIDs.Length <= 2 || value == null || value < 0 && value > 255)
+                // Don't try to set the item ID if there are not 3 known
+                if (_itemIDs == null || _itemIDs.Length <= 2 || value == null)
                 {
                     return;
                 }
 
-                _itemIDs[2] = (byte) value.Value;
-                SignalPropertyChange();
+                _itemIDs[2] = value.Value;
+                SaveItems();
             }
         }
 
         [Category("Brawl Stage Module")]
-        [TypeConverter(typeof(DropDownListItemIDs))]
-        public int? ItemID4
+        [TypeConverter(typeof(DropDownListByteItemIDs))]
+        public byte? ItemID4
         {
             get => _itemIDs?.Length > 3 ? _itemIDs?[3] : null;
             set
             {
-                // Don't try to set the item ID if it's not an Online Training Room module
-                if (_itemIDs == null || _itemIDs.Length <= 3 || value == null || value < 0 && value > 255)
+                // Don't try to set the item ID if there are not 4 known
+                if (_itemIDs == null || _itemIDs.Length <= 3 || value == null)
                 {
                     return;
                 }
 
-                _itemIDs[3] = (byte) value.Value;
-                SignalPropertyChange();
+                _itemIDs[3] = value.Value;
+                SaveItems();
             }
         }
 
@@ -422,10 +480,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _itemIDs = new byte[EarthItemOffsets.Length];
                 _itemIDOffsets = EarthItemOffsets;
             }
-            for (int i = 0; i < _itemIDOffsets?.Length; i++)
+            else if (nodeContainsString("stVillage"))
             {
-                _itemIDs[i] = bptr[_itemIDOffsets[i]];
+                _itemIDs = new byte[VillageItemOffsets.Length];
+                _itemIDOffsets = VillageItemOffsets;
             }
+            else if (nodeContainsString("stCrayon"))
+            {
+                _itemIDs = new byte[CrayonItemOffsets.Length];
+                _itemIDOffsets = CrayonItemOffsets;
+            }
+            UpdateItemIDs();
         }
 
         public void ApplyRelocations()
@@ -450,7 +515,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                     else
                     {
-                        offset += (ushort) link._prevOffset;
+                        offset += link._prevOffset;
 
                         if (link._type == RELLinkType.End || link._type == RELLinkType.IncrementOffset)
                         {
@@ -741,21 +806,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 bptr[findStageIDOffset()] = _stageID.Value;
             }
-
-            if (_itemIDs != null)
-            {
-                // File must be online training room .rel file
-                for (int i = 0; i < _itemIDs.Length && i < _itemIDOffsets.Length; i++)
-                {
-                    int offset = _itemIDOffsets[i];
-                    //if (bptr[offset - 3] != 0x38 || bptr[offset - 2] != 0x80 || bptr[offset - 1] != 0x00)
-                    //{
-                    //    throw new Exception("Rebuilding the module file has moved the item IDs");
-                    //}
-
-                    bptr[offset] = _itemIDs[i];
-                }
-            }
         }
 
         public static Dictionary<uint, RELNode> _files = new Dictionary<uint, RELNode>();
@@ -818,30 +868,44 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Encoding.UTF8.GetBytes(s)) > 0;
         }
 
-        /* These are absolute offsets - land within section 1.*/
+        /* These are section 1 offsets*/
         private static readonly int[] OTrainItemOffsets =
         {
             // Changing some values but not others has strange effects
-            1223,
-            1347, // this appears to be some sort of "if" condition
-            1371,
-            1627
+            0x3FB,
+            0x477, // this appears to be some sort of "if" condition
+            0x48F,
+            0x58F
         };
 
-        /* These are absolute offsets - land within section 1.*/
+        /* These are section 1 offsets*/
         private static readonly int[] DxGreensItemOffsets =
         {
-            0x1653,
-            0xB9EF,
-            0xBA5F
+            0x1587,
+            0xB923,
+            0xB993
         };
 
-        /* These are absolute offsets - land within section 1.*/
+        /* These are section 1 offsets*/
         private static readonly int[] EarthItemOffsets =
         {
-            0x2A7B,
-            0x885B,
-            0xF85B
+            0x29AF,
+            0x878F,
+            0xF78F
+        };
+
+        /* These are section 1 offsets*/
+        private static readonly int[] CrayonItemOffsets =
+        {
+            0x4743,
+            0x3787
+        };
+
+        /* These are section 1 offsets*/
+        private static readonly int[] VillageItemOffsets =
+        {
+            0x7083,
+            0x74c3
         };
 
         #endregion

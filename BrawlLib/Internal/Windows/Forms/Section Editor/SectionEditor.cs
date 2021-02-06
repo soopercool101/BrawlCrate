@@ -795,11 +795,11 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
             //    btnRemoveWord.Enabled = false;
             //}
             //else 
-            if ((propertyGrid1.SelectedObject = _manager.GetCommand(SelectedRelocationIndex)) != null)
+            if ((propertyGrid1.SelectedObject = _manager?.GetCommand(SelectedRelocationIndex)) != null)
             {
                 btnNewCmd.Enabled = false;
                 btnDelCmd.Enabled = true;
-                btnOpenTarget.Enabled = _manager.GetCommand(SelectedRelocationIndex).GetTargetRelocation() != null;
+                btnOpenTarget.Enabled = _manager?.GetCommand(SelectedRelocationIndex).GetTargetRelocation() != null;
                 btnRemoveWord.Enabled = true;
             }
             else
@@ -1387,10 +1387,10 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                     _section.SignalPropertyChange();
                 }
 
-                if (_section.Root is RELNode)
-                {
-                    RELNode r = _section.Root as RELNode;
+                RELNode r = _section.Root as RELNode;
 
+                if (r != null)
+                {
                     if (r.PrologSection == _section.Index && r._prologOffset / 4 != _manager._constructorIndex)
                     {
                         r._prologOffset = (uint) _manager._constructorIndex * 4;
@@ -1438,6 +1438,8 @@ namespace BrawlLib.Internal.Windows.Controls.Hex_Editor
                 _section._dataBuffer.Dispose();
                 _section._dataBuffer = newBuffer;
                 _section.SignalPropertyChange();
+
+                r?.UpdateItemIDs();
 
                 //if (_relocationsChanged)
                 //{
