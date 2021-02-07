@@ -12,78 +12,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         //public override ResourceType ResourceFileType => ResourceType.PathingMiscData;
 
         public override Type[] AllowedChildTypes => new[] {typeof(PathingMiscDataEntryNode)};
+        
+        [Category("Pathing Data")]
+        public float MinX => Children.Count > 0 ? Children.Cast<PathingMiscDataEntryNode>().Min(n => n.MinX) : 0;
+        [Category("Pathing Data")]
+        public float MinY => Children.Count > 0 ? Children.Cast<PathingMiscDataEntryNode>().Min(n => n.MinY) : 0;
+        [Category("Pathing Data")]
+        public float MinZ => Children.Count > 0 ? Children.Cast<PathingMiscDataEntryNode>().Min(n => n.MinZ) : 0;
 
-        public float _unknown0x08;
-
-        public float Unknown0x08
-        {
-            get => _unknown0x08;
-            set
-            {
-                _unknown0x08 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x0C;
-
-        public float Unknown0x0C
-        {
-            get => _unknown0x0C;
-            set
-            {
-                _unknown0x0C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x10;
-
-        public float Unknown0x10
-        {
-            get => _unknown0x10;
-            set
-            {
-                _unknown0x10 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x14;
-
-        public float Unknown0x14
-        {
-            get => _unknown0x14;
-            set
-            {
-                _unknown0x14 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x18;
-
-        public float Unknown0x18
-        {
-            get => _unknown0x18;
-            set
-            {
-                _unknown0x18 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x1C;
-
-        public float Unknown0x1C
-        {
-            get => _unknown0x1C;
-            set
-            {
-                _unknown0x1C = value;
-                SignalPropertyChange();
-            }
-        }
+        [Category("Pathing Data")]
+        public float MaxX => Children.Count > 0 ? Children.Cast<PathingMiscDataEntryNode>().Max(n => n.MaxX) : 0;
+        [Category("Pathing Data")]
+        public float MaxY => Children.Count > 0 ? Children.Cast<PathingMiscDataEntryNode>().Max(n => n.MaxY) : 0;
+        [Category("Pathing Data")]
+        public float MaxZ => Children.Count > 0 ? Children.Cast<PathingMiscDataEntryNode>().Max(n => n.MaxZ) : 0;
 
         public override void OnPopulate()
         {
@@ -97,12 +39,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            _unknown0x08 = Header->_unknown0x08;
-            _unknown0x0C = Header->_unknown0x0C;
-            _unknown0x10 = Header->_unknown0x10;
-            _unknown0x14 = Header->_unknown0x14;
-            _unknown0x18 = Header->_unknown0x18;
-            _unknown0x1C = Header->_unknown0x1C;
             return Header->_count > 0;
         }
 
@@ -136,12 +72,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             *header = new PathingMiscData();
             header->_count = (uint) Children.Count;
             header->_headerSize = headerSize;
-            header->_unknown0x08 = _unknown0x08;
-            header->_unknown0x0C = _unknown0x0C;
-            header->_unknown0x10 = _unknown0x10;
-            header->_unknown0x14 = _unknown0x14;
-            header->_unknown0x18 = _unknown0x18;
-            header->_unknown0x1C = _unknown0x1C;
+            header->_minX = MinX;
+            header->_minY = MinY;
+            header->_minZ = MinZ;
+            header->_maxX = MaxX;
+            header->_maxY = MaxY;
+            header->_maxZ = MaxZ;
             uint offset = headerSize;
             ResourceNode[] validChildren = Children.Where(n => n.HasChildren).ToArray();
             foreach (ResourceNode n in validChildren)
@@ -202,78 +138,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+        
+        [Category("Pathing Data Entry")]
+        public float MinX => Children.Count > 0 ? Children.Cast<PathingMiscDataSubEntryNode>().Min(n => n.Value._x) : 0;
+        [Category("Pathing Data Entry")]
+        public float MinY=> Children.Count > 0 ? Children.Cast<PathingMiscDataSubEntryNode>().Min(n => n.Value._y) : 0;
+        [Category("Pathing Data Entry")]
+        public float MinZ => Children.Count > 0 ? Children.Cast<PathingMiscDataSubEntryNode>().Min(n => n.Value._z) : 0;
 
-        public float _unknown0x08;
-
-        public float Unknown0x08
-        {
-            get => _unknown0x08;
-            set
-            {
-                _unknown0x08 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x0C;
-
-        public float Unknown0x0C
-        {
-            get => _unknown0x0C;
-            set
-            {
-                _unknown0x0C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x10;
-
-        public float Unknown0x10
-        {
-            get => _unknown0x10;
-            set
-            {
-                _unknown0x10 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x14;
-
-        public float Unknown0x14
-        {
-            get => _unknown0x14;
-            set
-            {
-                _unknown0x14 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x18;
-
-        public float Unknown0x18
-        {
-            get => _unknown0x18;
-            set
-            {
-                _unknown0x18 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public float _unknown0x1C;
-
-        public float Unknown0x1C
-        {
-            get => _unknown0x1C;
-            set
-            {
-                _unknown0x1C = value;
-                SignalPropertyChange();
-            }
-        }
+        [Category("Pathing Data Entry")]
+        public float MaxX => Children.Count > 0 ? Children.Cast<PathingMiscDataSubEntryNode>().Max(n => n.Value._x) : 0;
+        [Category("Pathing Data Entry")]
+        public float MaxY => Children.Count > 0 ? Children.Cast<PathingMiscDataSubEntryNode>().Max(n => n.Value._y) : 0;
+        [Category("Pathing Data Entry")]
+        public float MaxZ => Children.Count > 0 ? Children.Cast<PathingMiscDataSubEntryNode>().Max(n => n.Value._z) : 0;
 
         public override void OnPopulate()
         {
@@ -304,12 +182,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 ((PathingMiscDataNode)Parent).curDataOffset += (uint)n.OnCalculateSize(true);
             }
-            header->_unknown0x08 = _unknown0x08;
-            header->_unknown0x0C = _unknown0x0C;
-            header->_unknown0x10 = _unknown0x10;
-            header->_unknown0x14 = _unknown0x14;
-            header->_unknown0x18 = _unknown0x18;
-            header->_unknown0x1C = _unknown0x1C;
+            header->_minX = MinX;
+            header->_minY = MinY;
+            header->_minZ = MinZ;
+            header->_maxX = MaxX;
+            header->_maxY = MaxY;
+            header->_maxZ = MaxZ;
             address.WriteUTF8String(Name, false, 0x20, 0x20);
         }
 
@@ -317,12 +195,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _name = Header->Name;
             _id = Header->_id;
-            _unknown0x08 = Header->_unknown0x08;
-            _unknown0x0C = Header->_unknown0x0C;
-            _unknown0x10 = Header->_unknown0x10;
-            _unknown0x14 = Header->_unknown0x14;
-            _unknown0x18 = Header->_unknown0x18;
-            _unknown0x1C = Header->_unknown0x1C;
             return Header->_dataOffset != 0xFFFFFFFF && Header->_count > 0;
         }
     }

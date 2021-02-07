@@ -11,12 +11,12 @@ namespace BrawlLib.SSBB.Types
 
         public buint _count;
         public buint _headerSize; // 0x20
-        public bfloat _unknown0x08;
-        public bfloat _unknown0x0C;
-        public bfloat _unknown0x10;
-        public bfloat _unknown0x14;
-        public bfloat _unknown0x18;
-        public bfloat _unknown0x1C;
+        public bfloat _minX;
+        public bfloat _minY;
+        public bfloat _minZ;
+        public bfloat _maxX;
+        public bfloat _maxY;
+        public bfloat _maxZ;
 
         public VoidPtr this[int index] => (byte*) Address + _headerSize + index * PathingMiscDataEntry.Size;
 
@@ -49,12 +49,12 @@ namespace BrawlLib.SSBB.Types
         public bushort _count;
         public bushort _id;
         public buint _dataOffset;
-        public bfloat _unknown0x08;
-        public bfloat _unknown0x0C;
-        public bfloat _unknown0x10;
-        public bfloat _unknown0x14;
-        public bfloat _unknown0x18;
-        public bfloat _unknown0x1C;
+        public bfloat _minX;
+        public bfloat _minY;
+        public bfloat _minZ;
+        public bfloat _maxX;
+        public bfloat _maxY;
+        public bfloat _maxZ;
         private fixed byte _name[0x20];
 
         public string Name
