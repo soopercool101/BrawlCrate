@@ -1,5 +1,5 @@
 
-BrawlCrate - v0.36
+BrawlCrate - v0.36b
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -16,7 +16,14 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
  
- - BrawlCrate v0.36
+ - BrawlCrate v0.36b - (2/7/2021)
+ . Update Model Previewer draw priority to be more accurate to in-game (thanks to aboood40091!)
+ . Parse Item IDs for Smashville and Yoshi's Island (Brawl)
+ . Pathing Data now properly updates Minimum and Maximum values automatically
+ . Fix bug in which spaces were not properly placed when copying and pasting from a hex box
+ . Fix bug in which Module Item IDs would overwrite changes made in the section editor
+ 
+ - BrawlCrate v0.36 - (12/20/2020)
  . TB nodes now parse children properly
  . Add parsing for STPM Music and Sound volume values
  . Update internal documentation to v0.36

@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.36";
+        public static readonly string TagName = "v0.36b";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,12 +41,12 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.36! Here's what's new in this release:
-- Stage TB nodes now properly parse with children
-- STPM now parses Music and Sound volume
-- Fixes errors building Common2
-- Fixes errors previewing PAT0
-- Fix some crashes when importing DAE files
+            @"Updated to BrawlCrate v0.36b! Here's what's new in this release:
+- Model Previewer draw priority has been updated to be more accurate to in-game (thanks to aboood40091!)
+- Adds Item IDs for Smashville and Yoshi's Island (Brawl)
+- Pathing Data now properly updates Minimum and Maximum values automatically
+- Fix bug in which spaces were not properly placed when copying and pasting from a hex box
+- Fix bug in which Module Item IDs would overwrite changes made in the section editor
 
 Full changelog and documentation can be viewed from the help menu.";
 
