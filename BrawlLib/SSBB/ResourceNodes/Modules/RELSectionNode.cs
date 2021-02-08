@@ -18,15 +18,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool _isCodeSection = false;
         public bool _isBSSSection;
         public int _dataOffset;
-        public uint _endBufferSize;
+        public int _endBufferSize;
         public uint _dataSize;
         public int _dataAlign;
 
         public string DataAlign => "0x" + _dataAlign.ToString("X");
-
-        [TypeConverter(typeof(HexUIntConverter))]
+        
         [Category("End Buffer")]
-        public uint EndBufferSize
+        public int EndBufferSize
         {
             get => _endBufferSize;
             set
@@ -34,7 +33,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (value % 4 != 0 &&
                     MessageBox.Show(
                         "Buffers should generally be multiples of 0x4, are you sure you want to set this? (It may make the module unreadable!)",
-                        "", MessageBoxButtons.YesNo) == DialogResult.No)
+                        "", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                if (value < 0 && !ExpandSection)
                 {
                     return;
                 }
@@ -116,7 +120,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            return _dataBuffer.Length + (int) _endBufferSize;
+            return _dataBuffer.Length + _endBufferSize;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -125,7 +129,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             address += _dataBuffer.Length;
             if (_endBufferSize > 0)
             {
-                Memory.Fill(address, _endBufferSize, 0x00);
+                Memory.Fill(address, (uint)_endBufferSize, 0x00);
             }
         }
 

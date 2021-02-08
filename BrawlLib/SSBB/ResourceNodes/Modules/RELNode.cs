@@ -387,7 +387,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 // Calculate buffer
                 if (!Properties.Settings.Default.AutoCompressModules && i > 0 && dataOffset > 0)
                 {
-                    _sections[i - 1]._endBufferSize = (uint) (dataOffset - prevOffset).ClampMin(0);
+                    _sections[i - 1]._endBufferSize = (dataOffset - prevOffset).ClampMin(0);
                     lastDataSection = i;
                 }
 
@@ -406,7 +406,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RELSectionEntry entry = Header->SectionInfo[lastDataSection];
                 int dataOffset = entry.Offset, dataSize = (int) (uint) entry._size;
                 _sections[lastDataSection]._endBufferSize =
-                    (uint) ((int) (_impOffset - (dataOffset + dataSize))).ClampMin(0);
+                    ((int) (_impOffset - (dataOffset + dataSize))).ClampMin(0);
             }
 
             //Larger modules may take slightly longer to relocate
