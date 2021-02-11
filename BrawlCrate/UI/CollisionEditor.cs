@@ -538,9 +538,9 @@ namespace BrawlCrate.UI
             chkFlagBucculus.Location = new Point(8, 65);
             chkFlagBucculus.Margin = new Padding(0);
             chkFlagBucculus.Name = "chkFlagCrush";
-            chkFlagBucculus.Size = new Size(86, 18);
+            chkFlagBucculus.Size = new Size(105, 18);
             chkFlagBucculus.TabIndex = 3;
-            chkFlagBucculus.Text = "Bucculus";
+            chkFlagBucculus.Text = "Bucculus (SSE)";
             chkFlagBucculus.UseVisualStyleBackColor = true;
             chkFlagBucculus.CheckedChanged += new EventHandler(chkFlagBucculus_CheckedChanged);
             // 
