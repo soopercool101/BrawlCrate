@@ -192,7 +192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     //Create entry
                     pPlane[current._encodeIndex = iPlane++] = new ColPlane(lind, rind, llink, rlink, current._type,
-                        current._flags2, current._flags, current._material);
+                        current._typeFlags, current._materialFlags, current._material);
 
                     //Traverse
                     if (next != null)
@@ -904,9 +904,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public CollisionLink _linkLeft, _linkRight;
 
         public byte _material;
-        public CollisionPlaneFlags _flags;
+        public CollisionPlaneMaterialFlags _materialFlags;
         public CollisionPlaneType _type;
-        public CollisionPlaneFlags2 _flags2;
+        public CollisionPlaneTypeFlags _typeFlags;
 
         public bool _render = true;
 
@@ -1032,82 +1032,132 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public bool IsCharacters
         {
-            get => (_flags2 & CollisionPlaneFlags2.Characters) != 0;
-            set => _flags2 = (_flags2 & ~CollisionPlaneFlags2.Characters) |
-                             (value ? CollisionPlaneFlags2.Characters : 0);
+            get => (_typeFlags & CollisionPlaneTypeFlags.Characters) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Characters) |
+                             (value ? CollisionPlaneTypeFlags.Characters : 0);
         }
 
         public bool IsItems
         {
-            get => (_flags2 & CollisionPlaneFlags2.Items) != 0;
-            set => _flags2 = (_flags2 & ~CollisionPlaneFlags2.Items) | (value ? CollisionPlaneFlags2.Items : 0);
+            get => (_typeFlags & CollisionPlaneTypeFlags.Items) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Items) | (value ? CollisionPlaneTypeFlags.Items : 0);
         }
 
         public bool IsPokemonTrainer
         {
-            get => (_flags2 & CollisionPlaneFlags2.PokemonTrainer) != 0;
-            set => _flags2 = (_flags2 & ~CollisionPlaneFlags2.PokemonTrainer) |
-                             (value ? CollisionPlaneFlags2.PokemonTrainer : 0);
+            get => (_typeFlags & CollisionPlaneTypeFlags.PokemonTrainer) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.PokemonTrainer) |
+                             (value ? CollisionPlaneTypeFlags.PokemonTrainer : 0);
+        }
+        public bool IsCrush
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Crush) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Crush) |
+                             (value ? CollisionPlaneTypeFlags.Crush : 0);
         }
 
-        public bool IsUnknownSSE
+        public bool IsBucculusBury
         {
-            get => (_flags2 & CollisionPlaneFlags2.UnknownSSE) != 0;
-            set => _flags2 = (_flags2 & ~CollisionPlaneFlags2.UnknownSSE) |
-                             (value ? CollisionPlaneFlags2.UnknownSSE : 0);
+            get => (_typeFlags & CollisionPlaneTypeFlags.Bucculus) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Bucculus) |
+                             (value ? CollisionPlaneTypeFlags.Bucculus : 0);
+        }
+        public bool IsTypeUnknown0x0200
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Unknown0x0200) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Unknown0x0200) |
+                             (value ? CollisionPlaneTypeFlags.Unknown0x0200 : 0);
+        }
+        public bool IsTypeUnknown0x0400
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Unknown0x0400) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Unknown0x0400) |
+                             (value ? CollisionPlaneTypeFlags.Unknown0x0400 : 0);
+        }
+        public bool IsTypeUnknown0x0800
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Unknown0x0800) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Unknown0x0800) |
+                             (value ? CollisionPlaneTypeFlags.Unknown0x0800 : 0);
+        }
+        public bool IsTypeUnknown0x1000
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Unknown0x1000) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Unknown0x1000) |
+                             (value ? CollisionPlaneTypeFlags.Unknown0x1000 : 0);
+        }
+        public bool IsTypeUnknown0x2000
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Unknown0x2000) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Unknown0x2000) |
+                             (value ? CollisionPlaneTypeFlags.Unknown0x2000 : 0);
+        }
+        public bool IsTypeUnknown0x4000
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Unknown0x4000) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Unknown0x4000) |
+                             (value ? CollisionPlaneTypeFlags.Unknown0x4000 : 0);
+        }
+        public bool IsTypeUnknown0x8000
+        {
+            get => (_typeFlags & CollisionPlaneTypeFlags.Unknown0x8000) != 0;
+            set => _typeFlags = (_typeFlags & ~CollisionPlaneTypeFlags.Unknown0x8000) |
+                             (value ? CollisionPlaneTypeFlags.Unknown0x8000 : 0);
         }
 
         public bool IsFallThrough
         {
-            get => (_flags & CollisionPlaneFlags.DropThrough) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.DropThrough) | (value ? CollisionPlaneFlags.DropThrough : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.DropThrough) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.DropThrough) | (value ? CollisionPlaneMaterialFlags.DropThrough : 0);
         }
 
         public bool IsLedge => IsRightLedge || IsLeftLedge;
 
         public bool IsRightLedge
         {
-            get => (_flags & CollisionPlaneFlags.RightLedge) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.RightLedge) | (value ? CollisionPlaneFlags.RightLedge : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.RightLedge) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.RightLedge) | (value ? CollisionPlaneMaterialFlags.RightLedge : 0);
         }
 
         public bool IsLeftLedge
         {
-            get => (_flags & CollisionPlaneFlags.LeftLedge) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.LeftLedge) | (value ? CollisionPlaneFlags.LeftLedge : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.LeftLedge) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.LeftLedge) | (value ? CollisionPlaneMaterialFlags.LeftLedge : 0);
         }
 
         public bool IsNoWalljump
         {
-            get => (_flags & CollisionPlaneFlags.NoWalljump) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.NoWalljump) | (value ? CollisionPlaneFlags.NoWalljump : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.NoWalljump) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.NoWalljump) | (value ? CollisionPlaneMaterialFlags.NoWalljump : 0);
         }
 
-        public bool IsUnknownFlag1
+        public bool IsMatUnknown0x02
         {
-            get => (_flags & CollisionPlaneFlags.Unknown1) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.Unknown1) | (value ? CollisionPlaneFlags.Unknown1 : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.Unknown0x02) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.Unknown0x02) | (value ? CollisionPlaneMaterialFlags.Unknown0x02 : 0);
         }
 
         public bool IsRotating
         {
-            get => (_flags & CollisionPlaneFlags.Rotating) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.Rotating) | (value ? CollisionPlaneFlags.Rotating : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.Rotating) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.Rotating) | (value ? CollisionPlaneMaterialFlags.Rotating : 0);
         }
 
         public bool IsSuperSoft
         {
-            get => (_flags & CollisionPlaneFlags.SuperSoft) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.SuperSoft) | (value ? CollisionPlaneFlags.SuperSoft : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.SuperSoft) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.SuperSoft) | (value ? CollisionPlaneMaterialFlags.SuperSoft : 0);
         }
 
-        public bool IsUnknownFlag4
+        public bool IsMatUnknown0x10
         {
-            get => (_flags & CollisionPlaneFlags.Unknown4) != 0;
-            set => _flags = (_flags & ~CollisionPlaneFlags.Unknown4) | (value ? CollisionPlaneFlags.Unknown4 : 0);
+            get => (_materialFlags & CollisionPlaneMaterialFlags.Unknown0x10) != 0;
+            set => _materialFlags = (_materialFlags & ~CollisionPlaneMaterialFlags.Unknown0x10) | (value ? CollisionPlaneMaterialFlags.Unknown0x10 : 0);
         }
 
-        public bool HasUnknownFlag => IsUnknownFlag1 || IsUnknownFlag4 || IsUnknownSSE;
+        public bool HasUnknownFlag => IsTypeUnknown0x0200 || IsTypeUnknown0x0400 || IsTypeUnknown0x0800 ||
+                                      IsTypeUnknown0x1000 || IsTypeUnknown0x2000 || IsTypeUnknown0x4000 ||
+                                      IsTypeUnknown0x8000 || IsMatUnknown0x02 || IsMatUnknown0x10;
 
         public double GetAngleRadians()
         {
@@ -1199,9 +1249,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             : this(parent, parent._points[entry->_point1 - offset], parent._points[entry->_point2 - offset])
         {
             _material = entry->_material;
-            _flags = entry->_flags;
+            _materialFlags = entry->_materialFlags;
             _type = entry->Type;
-            _flags2 = entry->Flags2;
+            _typeFlags = entry->TypeFlags;
         }
 
         public CollisionLink Split(Vector2 point)
@@ -1210,8 +1260,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             CollisionPlane plane = new CollisionPlane(_parent, link, _linkRight)
             {
                 _material = _material,
-                _flags = _flags,
-                _flags2 = _flags2,
+                _materialFlags = _materialFlags,
+                _typeFlags = _typeFlags,
                 _type = _type
             };
             if (IsRightLedge)

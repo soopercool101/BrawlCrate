@@ -1,4 +1,4 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Linq;
@@ -314,11 +314,10 @@ namespace BrawlCrate.UI
                 chkTypeItems.Checked = p.IsItems;
                 chkTypePokemonTrainer.Checked = p.IsPokemonTrainer;
                 chkTypeRotating.Checked = p.IsRotating;
-                //UnknownFlags
-                chkFlagUnknown1.Checked = p.IsUnknownSSE;
-                chkFlagUnknown2.Checked = p.IsUnknownFlag1;
+                chkFlagCrush.Checked = p.IsCrush;
                 chkFlagSuperSoft.Checked = p.IsSuperSoft;
-                chkFlagUnknown4.Checked = p.IsUnknownFlag4;
+                chkFlagBucculus.Checked = p.IsBucculusBury;
+                //UnknownFlags
             }
             else if (pnlPointProps.Visible)
             {

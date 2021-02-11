@@ -65,19 +65,19 @@ namespace BrawlLib.SSBB.Types
         public bshort _link2;
         public bint _magic; //-1
         public bushort _type;
-        public CollisionPlaneFlags _flags;
+        public CollisionPlaneMaterialFlags _materialFlags;
         public byte _material;
 
         public ColPlane(int pInd1, int pInd2, int pLink1, int pLink2, CollisionPlaneType type,
-                        CollisionPlaneFlags2 flags2, CollisionPlaneFlags flags, byte material)
+                        CollisionPlaneTypeFlags typeFlags, CollisionPlaneMaterialFlags materialFlags, byte material)
         {
             _point1 = (short) pInd1;
             _point2 = (short) pInd2;
             _link1 = (short) pLink1;
             _link2 = (short) pLink2;
             _magic = -1;
-            _type = (ushort) ((int) flags2 | (int) type);
-            _flags = flags;
+            _type = (ushort) ((int) typeFlags | (int) type);
+            _materialFlags = materialFlags;
             _material = material;
         }
 
@@ -87,9 +87,9 @@ namespace BrawlLib.SSBB.Types
             set => _type = (ushort) ((_type & 0xFFF0) | (int) value);
         }
 
-        public CollisionPlaneFlags2 Flags2
+        public CollisionPlaneTypeFlags TypeFlags
         {
-            get => (CollisionPlaneFlags2) (_type & 0xFFF0);
+            get => (CollisionPlaneTypeFlags) (_type & 0xFFF0);
             set => _type = (ushort) ((_type & 0x000F) | (int) value);
         }
     }
@@ -622,34 +622,42 @@ namespace BrawlLib.SSBB.Types
     }
 
     [Flags]
-    public enum CollisionPlaneType
+    public enum CollisionPlaneType : byte
     {
-        None = 0x0000,      // 0000
-        Floor = 0x0001,     // 0001
-        Ceiling = 0x0002,   // 0010
-        RightWall = 0x0004, // 0100
-        LeftWall = 0x0008   // 1000
+        None = 0x0,      // 0000
+        Floor = 0x1,     // 0001
+        Ceiling = 0x2,   // 0010
+        RightWall = 0x4, // 0100
+        LeftWall = 0x8   // 1000
     }
 
     [Flags]
-    public enum CollisionPlaneFlags2
+    public enum CollisionPlaneTypeFlags
     {
         None = 0x0000,
         Characters = 0x0010,     // Characters (Also allows Items and PT to interact)
         Items = 0x0020,          // Items
         PokemonTrainer = 0x0040, // Pokemon Trainer
-        UnknownSSE = 0x0080      // Unknown, used in the SSE
+        Bucculus = 0x0080,       // Allows the Bucculus subspace enemy to bury itself in this collision
+        Crush = 0x0100,          // Crush collision when used in SSE
+        Unknown0x0200 = 0x0200,
+        Unknown0x0400 = 0x0400,
+        Unknown0x0800 = 0x0800,
+        Unknown0x1000 = 0x1000,
+        Unknown0x2000 = 0x2000,
+        Unknown0x4000 = 0x4000,
+        Unknown0x8000 = 0x8000
     }
 
     [Flags]
-    public enum CollisionPlaneFlags : byte
+    public enum CollisionPlaneMaterialFlags : byte
     {
         None = 0x00,
         DropThrough = 0x01, // Can fall through a floor by pressing down
-        Unknown1 = 0x02,    // 
+        Unknown0x02 = 0x02, // 
         Rotating = 0x04,    // Automatically changes between floor/wall/ceiling based on angle
         SuperSoft = 0x08,   // Allows fighters to be knocked through this collision at high %
-        Unknown4 = 0x10,    //
+        Unknown0x10 = 0x10, //
         LeftLedge = 0x20,   // Can grab ledge from the left
         RightLedge = 0x40,  // Can grab ledge from the right
         NoWalljump = 0x80   // Cannot walljump off when set
