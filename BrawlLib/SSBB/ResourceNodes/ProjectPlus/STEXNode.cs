@@ -2,6 +2,7 @@ using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.ProjectPlus;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 
@@ -11,6 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     {
         internal STEX* Header => (STEX*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.STEX;
+        [Browsable(false)] public override bool AllowDuplicateNames => true;
 
         public override Type[] AllowedChildTypes => new[] {typeof(RawDataNode)};
 
@@ -296,8 +298,14 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
                 size += Module.UTF8Length() + 1;
             }
 
+            List<string> names = new List<string>();
             foreach (ResourceNode n in Children)
             {
+                if (names.Contains(n.Name))
+                {
+                    continue;
+                }
+                names.Add(n.Name);
                 size += n.Name.UTF8Length() + 1;
             }
 
@@ -352,12 +360,19 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             header->_wildSpeed = _wildSpeed;
 
             uint offset = STEX.HeaderSize;
+            Dictionary<string, uint> names = new Dictionary<string, uint>();
             foreach (ResourceNode n in Children)
             {
                 buint* ptr = (buint*) (address + offset);
-                ptr[0] = curStrOffset;
-                curStrOffset += (uint)n.Name.UTF8Length() + 1;
                 offset += 4;
+                if (names.ContainsKey(n.Name))
+                {
+                    ptr[0] = names[n.Name];
+                    continue;
+                }
+                ptr[0] = curStrOffset;
+                names.Add(n.Name, curStrOffset);
+                curStrOffset += (uint)n.Name.UTF8Length() + 1;
             }
 
             if (TrackList?.UTF8Length() > 0)

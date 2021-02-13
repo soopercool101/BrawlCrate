@@ -18,6 +18,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public UnsafeBuffer _buffer;
 
+        [Browsable(false)] public override bool AllowDuplicateNames => true;
+
         public RawDataNode()
         {
         }
