@@ -1,0 +1,136 @@
+st_orpheon Section [4]: 0x00000000
+Default Stage Angle
+
+Changing this value tends to break things.
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000004
+Flipped Stage Angle
+
+The angle when the stage is flipped by the parasite queen.
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x0000001C
+Camera Zoom Out Duration
+
+The time in frames that the camera zooms out during a stage rotation.
+
+Default (Float): 400 (0x43C80000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000020
+Camera Zoom Out Distance
+
+Affects the distance of the camera zoom when the stage is rotating.
+
+Default (Float): 440 (0x43DC0000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000024
+Stage Rotation Start Timer
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000028
+Collision Toggle Timer
+
+The timer used to swap active collisions when the stage is rotating. Setting to 0 breaks the stage.
+
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x0000002C
+Reset Camera Timer
+
+Affects the time needed to return the camera to normal after the stage rotation completes.
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000030
+Turning Speed
+
+Lower is faster.
+
+Default (Float): 10 (0x41200000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000038
+Parasite Turning Speed
+
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x0000003C
+Parasite Movement Speed
+
+Movement speed of the parasite when stage is rotating. Negative values break the stage.
+
+Default (Float): 0.01 (0x3C23D70A)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000040
+Parasite/Platform Movement Interpolation
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000044
+Platform Movement Speed Between Transitions
+
+Default (Float): 0.005 (0x3BA3D70A)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000048
+Phase 1 Platform Center Position
+
+Default (Float): 0.505 (0x3F0147AE)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x0000004C
+Phase 1 Platform Movement Timer
+
+Default (Float): 360 (0x43B40000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000050
+Platform Wait Timer
+
+Time in frames before platforms start moving again after a rotation.
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000054
+Phase 2 Right Platform Movement Timer
+
+Default (Float): 240 (0x43700000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_orpheon Section [4]: 0x00000058
+Phase 2 Left Platform Movement Timer
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+1111    // Flags for which bytes are underlined

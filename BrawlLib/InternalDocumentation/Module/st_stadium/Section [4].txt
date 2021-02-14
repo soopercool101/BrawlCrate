@@ -1,3 +1,12 @@
+st_stadium Section [4]: 0x00000004
+Scale Factor
+
+Affects scaling factor applied to platforms, transformations, Pokémon, and screen zoom
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
 st_stadium Section [4]: 0x0000001C
 Transformation (To Normal) Minimum Timer
 
@@ -13,5 +22,86 @@ Transformation (To Normal) Maximum Timer
 Maximum amount of frames before the stage will change back to its Normal form after transforming.
 
 Default (Float): 1800 (0x44E10000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000024
+Monitor Update Duration
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000028
+Stage Update Duration
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x0000003C
+Monitor Swap SFX Frequency
+
+Default (Float): 50 (0x42480000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000044
+Pokémon Minimum Scale
+
+The minimum scale that Pokémon will scale to during transitions
+
+Default (Float): 0.001 (0x3A83126F)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000048
+Transformation Camera Distance
+
+Default (Float): 310 (0x439B0000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x0000004C
+Stage Minimum Scale
+
+The minimum scale that the stage will scale to during transitions
+
+Default (Float): 0.0001 (0x38D1B717)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000054
+Monitor Camera X-Position
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000058
+Monitor Camera Distance
+
+Default (Float): 0.08 (0x3DA3D70A)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x0000005C
+Transformation Delay Multiplier (Inverse; 1/2)
+
+Default (Float): 0.04 (0x3D23D70A)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000060
+Transformation Delay Multiplier (Inverse; 2/2)
+
+Default (Float): 0.02 (0x3CA3D70A)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_stadium Section [4]: 0x00000064
+Monitor Camera Zoom?
+
+Default (Float): 4 (0x40800000)
 	/EndDescription
 1111    // Flags for which bytes are underlined

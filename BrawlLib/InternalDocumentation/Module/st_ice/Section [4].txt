@@ -1,0 +1,85 @@
+st_ice Section [4]: 0x0000002C
+Slide Timer
+
+Frame timer based on scene data, affects gfx/sfx/hitbox activation/camera
+
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000030
+Sliding Camera Minimum Distance
+
+The minimum distance that the camera will hold itself while the summit is sliding down the mountain.
+
+Default (Float): 280 (0x438C0000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000034
+Sliding Camera Maximum Distance
+
+The maximum distance that the camera will hold itself while the summit is sliding down the mountain.
+
+Default (Float): 320 (0x43A00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000038
+Water Phase Timer
+
+Frame timer based on scene data, affects gfx/sfx
+
+Default (Float): 3050 (0x453EA000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x0000003C
+Cycle End Timer
+
+Frame timer based on scene data, affects gfx/sfx
+
+Default (Float): 5640 (0x45B04000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000040
+Water Phase Camera/Water Boundary
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000044
+Water Height
+
+Default (Float): 50 (0x42480000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000090
+Ice Cracking SFX Timer
+
+Frame timer based on scene data, controls the cracking sound that is played before the summit begins to slide down the mountain.
+
+Default (Float): 1840 (0x44E60000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000094
+Slide Phase Gravity Multiplier
+
+Gravity multiplier applied to fighters when the summit is sliding down the mountain
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_ice Section [4]: 0x00000098
+Rising Phase Gravity Multiplier
+
+Gravity multiplier applied to fighters when the summit is returning to the mountain peak
+
+Default (Float): 1.25 (0x3FA00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined

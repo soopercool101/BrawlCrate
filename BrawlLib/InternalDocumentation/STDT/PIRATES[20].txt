@@ -1,0 +1,223 @@
+Water Velocity
+(Float) The speed and direction of the swimmable water.
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x020
+May affect catapult?
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x028
+Setting to 0 causes the catapult sound to repeat endlessly.
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x02C
+Setting to negative or 0 causes the catapult sound to repeat endlessly.
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x030
+Setting to negative causes the catapult sound to repeat endlessly.
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x034
+Setting to negative causes the catapult sound to repeat endlessly.
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x03C
+Affects how often the King of Red Lions appears
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x040
+May affect catapult?
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x044
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x048
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x054
+Affects the amount of time between everything?
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+Cloudy Weather Frequency
+(Float) Frequency of cloudy weather (not to be confused with storms)
+
+Default (Float): 0.35 (0x3EB33333)
+	/EndDescription
+0
+
+Storm Frequency
+(Float) Frequency of stormy weather, including tornadoes
+
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+Enemy Lookout Frequency
+(Float) Frequency of the Enemy Lookout Tower appearing
+
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+Rock Crash Frequency
+(Float) Frequency of the ship crashing on a rock
+
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+0x06C
+Affects frequency of rock crash?
+
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x070
+Affects timing of stage elements somehow
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 0.7 (0x3F333333)
+	/EndDescription
+0
+
+0x078
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x080
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x084
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x088
+Default (Float): 1500 (0x44BB8000)
+	/EndDescription
+0
+
+Bomb Shot Minimum Timer
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+Bomb Shot Maximum Timer
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x094
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+Crash Alert Timer
+(Floats) Time in frames the crash alert appears to. Setting to 0 causes the ship to never crash.
+
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+Ship Crash Timer
+(Float) Length of time ship stays crashed on rock
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+0x0A0
+Default (Float): 100 (0x42C80000)
+	/EndDescription
+0
+
+0x0A4
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x0A8
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0

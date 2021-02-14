@@ -1,0 +1,105 @@
+st_plankton Section [4]: 0x00000000
+Water X-Position
+
+X-Position at which the water object is placed.
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000004
+Water Width (1)
+
+Affects the width of the water object
+
+Default (Float): 32 (0x42000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000008
+Water Width (2)
+
+Affects the width of the water object?
+
+Default (Float): 0.0078125 (0x3C000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x0000000C
+Water Bounciness (and Width?)
+
+Affects bounciness (and potentially width?) of the water.
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000010
+Water Border Size
+
+Default (Float): 100 (0x42C80000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000014
+Water Shade Size/Z-Position
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000018
+Water Bounciness Offset
+
+Default (Float): 191 (0x433F0000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000050
+Water Interpolation
+
+Default (Float): 3.6 (0x40666666)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000054
+Water Wave Duration
+
+Default (Float): 50 (0x42480000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000058
+Water Wave Strength
+
+Default (Float): 252 (0x437C0000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000060
+Water Bounce Offset
+
+Default (Float): 192 (0x43400000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000064
+Water Bounce Strength
+
+Default (Float): 40 (0x42200000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x00000068
+Water Bounce Strength Multiplier
+
+Default (Float): 0.9 (0x3F666666)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [4]: 0x0000006C
+Water Bounce Strength 2
+
+Default (Float): 3 (0x40400000)
+	/EndDescription
+1111    // Flags for which bytes are underlined

@@ -77,7 +77,9 @@ Default (Float): 1800 (0x44E10000)
 	/EndDescription
 0
 
-0x050
+Transformation Swap Timer
+(Float) Time in frames it takes to swap between transformations
+
 Default (Float): 120 (0x42F00000)
 	/EndDescription
 0
