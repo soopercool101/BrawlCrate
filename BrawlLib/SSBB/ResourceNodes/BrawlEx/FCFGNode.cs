@@ -132,8 +132,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public enum FinalLoadFlags : byte
         {
-            None = 0x01,
-            Single = 0x00,
+            None = 0x00,
+            Single = 0x01,
             PerColor = 0x02,
             UseFitFoxFinal = 0x03
         }
