@@ -130,7 +130,16 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(false)]
-        public enum FinalLoadFlags : byte
+        public enum FinalLoadFlagsV1 : byte // Used in BrawlEx 1.0
+        {
+            None = 0x01,
+            Single = 0x00,
+            PerColor = 0x02,
+            UseFitFoxFinal = 0x03
+        }
+
+        [Browsable(false)]
+        public enum FinalLoadFlags : byte // Used in BrawlEx 2.0 and onward
         {
             None = 0x00,
             Single = 0x01,
@@ -888,6 +897,17 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             }
         }
 
+        [Category("Fighter Config")]
+        public uint Version
+        {
+            get => _version;
+            set
+            {
+                _version = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Browsable(false)]
         [Category("\tResources")]
         [Description("Whether to load a FitFinal")]
@@ -1074,7 +1094,7 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             FCFG* hdr = (FCFG*) address;
-            hdr->_tag = FCFG.Tag1;
+            hdr->_tag = _tag;
             hdr->_size = _size;
             hdr->_version = _version;
             hdr->_editFlag1 = _editFlag1;
@@ -1086,6 +1106,18 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             hdr->_resultColorFlags = _resultColorFlags;
             hdr->_characterLoadFlags = (byte) _characterLoadFlags;
             hdr->_finalSmashColorFlags = _finalSmashColorFlags;
+            if (_version == 1) // None and Single Final Smash Load Flags were switched in v1, correct here
+            {
+                switch ((FinalLoadFlags)_finalSmashColorFlags)
+                {
+                    case FinalLoadFlags.Single:
+                        hdr->_finalSmashColorFlags = (byte)FinalLoadFlagsV1.Single;
+                        break;
+                    case FinalLoadFlags.None:
+                        hdr->_finalSmashColorFlags = (byte)FinalLoadFlagsV1.None;
+                        break;
+                }
+            }
             hdr->_unknown0x15 = _unknown0x15;
             hdr->_colorFlags = (ushort) _colorFlags;
             hdr->_entryArticleFlag = _entryArticleFlag;
@@ -1185,6 +1217,17 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
             _resultColorFlags = Header->_resultColorFlags;
             _characterLoadFlags = (CharacterLoadFlags) Header->_characterLoadFlags;
             _finalSmashColorFlags = Header->_finalSmashColorFlags;
+            if (_version == 1) // None and Single Final Smash Load Flags were switched in v1, correct here
+            {
+                if ((FinalLoadFlagsV1)_finalSmashColorFlags == FinalLoadFlagsV1.Single)
+                {
+                    _finalSmashColorFlags = (byte)FinalLoadFlags.Single;
+                }
+                else if ((FinalLoadFlagsV1)_finalSmashColorFlags == FinalLoadFlagsV1.None)
+                {
+                    _finalSmashColorFlags = (byte)FinalLoadFlags.None;
+                }
+            }
             _unknown0x15 = Header->_unknown0x15;
             _colorFlags = (CostumeLoadFlags) (ushort) Header->_colorFlags;
             _entryArticleFlag = Header->_entryArticleFlag;

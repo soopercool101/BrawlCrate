@@ -9,9 +9,9 @@ namespace BrawlLib.SSBB.Types.BrawlEx
         public const uint Tag1 = 0x47464346; // FGFC
         public const uint Tag2 = 0x43544946; // FITC
         public const int Size = 0x100;
-        public uint _tag;                  // 0x00 - Uneditable; COSC
-        public uint _size;                 // 0x04 - Uneditable; Should be "100"
-        public uint _version;              // 0x08 - Version; Only parses "2" currently
+        public uint _tag;                  // 0x00 - Uneditable, FCFG or FITC both work here
+        public buint _size;                // 0x04 - Uneditable; Should be "100"
+        public buint _version;             // 0x08 - Version; Currently allows 1 or 2
         public byte _editFlag1;            // 0x0C - Unused?
         public byte _editFlag2;            // 0x0D - Unused?
         public byte _editFlag3;            // 0X0E - Unused?
