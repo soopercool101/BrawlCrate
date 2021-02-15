@@ -760,7 +760,6 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("\tResources")]
         [Description("Use one MotionEtc file instead of splitting them.")]
         [DisplayName("Merge Motion/Etc.")]
-        [Browsable(false)]
         public bool MergeMotionEtc
         {
             get => (_characterLoadFlags & CharacterLoadFlags.MergeMotionEtcFlag) != 0;
@@ -778,7 +777,6 @@ PerCostumeSeparate: Use a single Motion for all costumes and give each costume i
         [Category("\tResources")]
         [Description("Determines whether or not per costume Etc. files are used")]
         [DisplayName("Per Costume Etc.")]
-        [Browsable(false)]
         public bool PerCostumeEtc
         {
             get => (_characterLoadFlags & CharacterLoadFlags.PerCostumeEtc) != 0;
