@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.Types.BrawlEx
     public unsafe struct RSTC
     {
         public const uint Tag = 0x43545352;
-        public const int Size = 0xE0;
+        public const int Size = 0x10;
         public uint _tag;         // 0x00 - Uneditable; RSTC
         public buint _size;       // 0x04 - Uneditable. Default is "E0". Larger may use 210
         public buint _version;    // 0x08 - Version; Only parses "1" currently
@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.Types.BrawlEx
 
         public byte _randNum; // 0x0F - Number of characters in the random list; should be generated automatically
 
-        public VoidPtr this[int index] => (byte*) Address + 0x10 + index;
+        public VoidPtr this[int index] => (byte*) Address + Size + index;
 
         private VoidPtr Address
         {

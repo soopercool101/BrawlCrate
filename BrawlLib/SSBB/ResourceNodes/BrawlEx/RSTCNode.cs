@@ -25,6 +25,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte
             _randNum; // 0x0F - Number of characters in the random list; should be generated automatically. Max is 100? (Maybe 104, or may have padding).
 
+        [Browsable(false)]
+        public int MaxEntries => (int) ((_size - RSTC.Size) / 2);
+
         public RSTCGroupNode cssList = new RSTCGroupNode {_type = "Character Select"};
         public RSTCGroupNode randList = new RSTCGroupNode {_type = "Random Character List"};
 
@@ -40,9 +43,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_size = (uint) length;
             hdr->_version = _version;
             hdr->_unknown0x0C = _unknown0x0C;
-            hdr->_charNum = (byte) cssList.Children.Count;
+            hdr->_charNum = (byte) Math.Min(cssList.Children.Count, (length - RSTC.Size) / 2);
             hdr->_unknown0x0E = _unknown0x0E;
-            hdr->_randNum = (byte) randList.Children.Count;
+            hdr->_randNum = (byte)Math.Min(randList.Children.Count, (length - RSTC.Size) / 2);
             int entrySize = (length - 0x10) / 2;
             cssList.Rebuild(address + 0x10, entrySize, force);
             randList.Rebuild(address + 0x10 + entrySize, entrySize, force);
@@ -57,8 +60,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _charNum = Header->_charNum;
             _unknown0x0E = Header->_unknown0x0E;
             _randNum = Header->_randNum;
-            cssList.Initialize(this, new DataSource((*Header)[0], (int) (_size - 0x10) / 2));
-            randList.Initialize(this, new DataSource((*Header)[(int) ((_size - 0x10) / 2)], (int) (_size - 0x10) / 2));
+            cssList.Initialize(this, new DataSource((*Header)[0], MaxEntries));
+            randList.Initialize(this, new DataSource((*Header)[MaxEntries], MaxEntries));
 
             if (_name == null && _origPath != null)
             {
@@ -71,7 +74,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            return Math.Max(cssList?.Children?.Count ?? 0, randList?.Children?.Count ?? 0) > 104 ? 0x210 : 0xE0;
+            return (int) _size;
         }
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)

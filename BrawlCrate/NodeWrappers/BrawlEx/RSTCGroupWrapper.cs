@@ -59,7 +59,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            if (_resource.Children.Count >= 256)
+            if (_resource.Children.Count >= ((RSTCNode)_resource.Parent).MaxEntries)
             {
                 return;
             }
