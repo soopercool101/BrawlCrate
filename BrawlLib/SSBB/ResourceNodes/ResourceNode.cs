@@ -931,6 +931,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             catch
             {
                 MessageBox.Show("Unable to open file for write access.");
+                IsDirty = true;
             }
 #endif
         }
