@@ -135,7 +135,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 if (!string.IsNullOrEmpty(t.SongFileName))
                 {
-                    t._songID = currentID++;
+                    t.SongID = currentID++;
                 }
             }
         }
