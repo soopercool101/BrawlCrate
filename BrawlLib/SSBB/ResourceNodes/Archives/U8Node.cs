@@ -162,7 +162,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                  ref VoidPtr dataAddr, bool force)
         {
             entry->_type = (byte) (node is U8FolderNode ? 1 : 0);
-            entry->_stringOffset.Value = (uint) _stringTable[node.Name] - (uint) sTableStart;
+            entry->_stringOffset.Value = checked((uint) ( _stringTable[node.Name] - sTableStart));
             if (entry->_type == 1)
             {
                 int index = node.Index + 1, parentIndex = 0, endIndex = _entrySize / 12;
@@ -194,8 +194,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                entry->_dataOffset = (uint) dataAddr - (uint) header;
-                entry->_dataLength = (uint) node._calcSize;
+                entry->_dataOffset = checked((uint) (dataAddr - header));
+                entry->_dataLength = checked((uint) node._calcSize);
                 entry++;
 
                 node.Rebuild(dataAddr, node._calcSize, force);

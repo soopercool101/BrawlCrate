@@ -33,7 +33,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             // Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)
             foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()
-                ?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
+                ?.Where(t => t.IsSubclassOf(typeof(ResourceNode)))
+                ?? Enumerable.Empty<Type>())
             {
                 AddParser(t);
             }
