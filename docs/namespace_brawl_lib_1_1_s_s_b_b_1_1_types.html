@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.35</span>
+   &#160;<span id="projectnumber">v0.36c</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -678,41 +678,51 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a57606938d06f854a5a4a568f5d455e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3739f396eb02106909e68eddaa34fdc6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6">CollisionPlaneType</a> { <br />
-&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6a6adf97f83acf6453d4a6a4b1070f3754">CollisionPlaneType.None</a> = 0x0000, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6af3f6d0343d56ce88ce7958170ed05cb3">CollisionPlaneType.Floor</a> = 0x0001, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6a3237fbc8204064c106cb9080088a17cb">CollisionPlaneType.Ceiling</a> = 0x0002, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6aa75362476760e09c2e0a9cb45bf274bf">CollisionPlaneType.RightWall</a> = 0x0004, 
+<tr class="memitem:a57184f2999ad004d886224bb7f4a563f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a> : byte { <br />
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563fa6adf97f83acf6453d4a6a4b1070f3754">CollisionPlaneType.None</a> = 0x0, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563faf3f6d0343d56ce88ce7958170ed05cb3">CollisionPlaneType.Floor</a> = 0x1, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563fa3237fbc8204064c106cb9080088a17cb">CollisionPlaneType.Ceiling</a> = 0x2, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563faa75362476760e09c2e0a9cb45bf274bf">CollisionPlaneType.RightWall</a> = 0x4, 
 <br />
-&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6ad0a56af8fbec5e2e91c45a7e3333c21b">CollisionPlaneType.LeftWall</a> = 0x0008
-<br />
- }</td></tr>
-<tr class="separator:a3739f396eb02106909e68eddaa34fdc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5a1b4c3c89bdc68715acc694194a838"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838">CollisionPlaneFlags2</a> { <br />
-&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838a6adf97f83acf6453d4a6a4b1070f3754">CollisionPlaneFlags2.None</a> = 0x0000, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838a994d06622c761cbceb384fd10a0b53f3">CollisionPlaneFlags2.Characters</a> = 0x0010, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838a9dea4016dbcc290b773ab2fae678aaa8">CollisionPlaneFlags2.Items</a> = 0x0020, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838ae89bbf915810f499f654e74e02f8ee79">CollisionPlaneFlags2.PokemonTrainer</a> = 0x0040, 
-<br />
-&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838a8e3fdda7290a3da8682999ea03cc386e">CollisionPlaneFlags2.UnknownSSE</a> = 0x0080
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563fad0a56af8fbec5e2e91c45a7e3333c21b">CollisionPlaneType.LeftWall</a> = 0x8
 <br />
  }</td></tr>
-<tr class="separator:af5a1b4c3c89bdc68715acc694194a838"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ef3098b2d78b40c06ecc372fca00ba0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0">CollisionPlaneFlags</a> : byte { <br />
-&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a6adf97f83acf6453d4a6a4b1070f3754">CollisionPlaneFlags.None</a> = 0x00, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0ab9358ef7da2777f4e825f6ae9d8ceada">CollisionPlaneFlags.DropThrough</a> = 0x01, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a28c5637b237d55031f1b3772d731c041">CollisionPlaneFlags.Unknown1</a> = 0x02, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a0c607bfa6cdf8ff5cfa6e349c65731d6">CollisionPlaneFlags.Rotating</a> = 0x04, 
+<tr class="separator:a57184f2999ad004d886224bb7f4a563f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0518d2807af0217c7522158396c4c73f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73f">CollisionPlaneTypeFlags</a> { <br />
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa6adf97f83acf6453d4a6a4b1070f3754">CollisionPlaneTypeFlags.None</a> = 0x0000, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa994d06622c761cbceb384fd10a0b53f3">CollisionPlaneTypeFlags.Characters</a> = 0x0010, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa9dea4016dbcc290b773ab2fae678aaa8">CollisionPlaneTypeFlags.Items</a> = 0x0020, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fae89bbf915810f499f654e74e02f8ee79">CollisionPlaneTypeFlags.PokemonTrainer</a> = 0x0040, 
 <br />
-&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0ae859b6156784b27d417f8973147ae5c7">CollisionPlaneFlags.SuperSoft</a> = 0x08, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a5adad30d647e2e10b57045c5b488d77e">CollisionPlaneFlags.Unknown4</a> = 0x10, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a168d3416111267a7dc457363192e4ad9">CollisionPlaneFlags.LeftLedge</a> = 0x20, 
-<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0afce4280408cef83d54918d9617b9bef1">CollisionPlaneFlags.RightLedge</a> = 0x40, 
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa1837d29b10254d7fc64cce4b1b29e3f1">CollisionPlaneTypeFlags.Bucculus</a> = 0x0080, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73faacc9e045e4b8f5172d0ac72a8ef49476">CollisionPlaneTypeFlags.Crush</a> = 0x0100, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa8b8fd83e8cc30f580e618b1f5d44b18c">CollisionPlaneTypeFlags.Unknown0x0200</a> = 0x0200, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa2dec32066832495ae02b1af8fc2dbd45">CollisionPlaneTypeFlags.Unknown0x0400</a> = 0x0400, 
 <br />
-&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a708da212d3e91728d3f39ac3e0b719b3">CollisionPlaneFlags.NoWalljump</a> = 0x80
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa41384168cf44c35ad1fcd2acccea50d2">CollisionPlaneTypeFlags.Unknown0x0800</a> = 0x0800, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa461cd29ba1afa067272c3c7e08154553">CollisionPlaneTypeFlags.Unknown0x1000</a> = 0x1000, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa85c462a9461747467f7ddfd15d89cf7a">CollisionPlaneTypeFlags.Unknown0x2000</a> = 0x2000, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73faaa11bbd766f6e553af3cc84abc414340">CollisionPlaneTypeFlags.Unknown0x4000</a> = 0x4000, 
+<br />
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fae633a0feafb7cdd93f3cc5028d092938">CollisionPlaneTypeFlags.Unknown0x8000</a> = 0x8000
 <br />
  }</td></tr>
-<tr class="separator:a8ef3098b2d78b40c06ecc372fca00ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a0518d2807af0217c7522158396c4c73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade271614f07be50cacf467e3e3c61d79"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79">CollisionPlaneMaterialFlags</a> : byte { <br />
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a6adf97f83acf6453d4a6a4b1070f3754">CollisionPlaneMaterialFlags.None</a> = 0x00, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79ab9358ef7da2777f4e825f6ae9d8ceada">CollisionPlaneMaterialFlags.DropThrough</a> = 0x01, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a186fb3d7fe8d53eccaa91afd4694c585">CollisionPlaneMaterialFlags.Unknown0x02</a> = 0x02, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a0c607bfa6cdf8ff5cfa6e349c65731d6">CollisionPlaneMaterialFlags.Rotating</a> = 0x04, 
+<br />
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79ae859b6156784b27d417f8973147ae5c7">CollisionPlaneMaterialFlags.SuperSoft</a> = 0x08, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a6ea098836804c6c990990576e0298566">CollisionPlaneMaterialFlags.Unknown0x10</a> = 0x10, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a168d3416111267a7dc457363192e4ad9">CollisionPlaneMaterialFlags.LeftLedge</a> = 0x20, 
+<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79afce4280408cef83d54918d9617b9bef1">CollisionPlaneMaterialFlags.RightLedge</a> = 0x40, 
+<br />
+&#160;&#160;<a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a708da212d3e91728d3f39ac3e0b719b3">CollisionPlaneMaterialFlags.NoWalljump</a> = 0x80
+<br />
+ }</td></tr>
+<tr class="separator:ade271614f07be50cacf467e3e3c61d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c43134908e46e1aa0e3f615e97440ff"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a7c43134908e46e1aa0e3f615e97440ff">Endian</a> { <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a7c43134908e46e1aa0e3f615e97440ffad491538da818a2ba11a3195ba035cfd3">Endian.Big</a> = 0xFEFF, 
 <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a7c43134908e46e1aa0e3f615e97440ffa0f9197b3e286a7522984831949087332">Endian.Little</a> = 0xFFFE
  }</td></tr>
@@ -2676,8 +2686,8 @@ Enumerations</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a8ef3098b2d78b40c06ecc372fca00ba0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ef3098b2d78b40c06ecc372fca00ba0">&#9670;&nbsp;</a></span>CollisionPlaneFlags</h2>
+<a id="ade271614f07be50cacf467e3e3c61d79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade271614f07be50cacf467e3e3c61d79">&#9670;&nbsp;</a></span>CollisionPlaneMaterialFlags</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2686,7 +2696,7 @@ Enumerations</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0">BrawlLib.SSBB.Types.CollisionPlaneFlags</a> : byte</td>
+          <td class="memname">enum <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79">BrawlLib.SSBB.Types.CollisionPlaneMaterialFlags</a> : byte</td>
         </tr>
       </table>
   </td>
@@ -2696,32 +2706,32 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0ab9358ef7da2777f4e825f6ae9d8ceada"></a>DropThrough&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0a28c5637b237d55031f1b3772d731c041"></a>Unknown1&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0a0c607bfa6cdf8ff5cfa6e349c65731d6"></a>Rotating&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0ae859b6156784b27d417f8973147ae5c7"></a>SuperSoft&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0a5adad30d647e2e10b57045c5b488d77e"></a>Unknown4&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0a168d3416111267a7dc457363192e4ad9"></a>LeftLedge&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0afce4280408cef83d54918d9617b9bef1"></a>RightLedge&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8ef3098b2d78b40c06ecc372fca00ba0a708da212d3e91728d3f39ac3e0b719b3"></a>NoWalljump&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79ab9358ef7da2777f4e825f6ae9d8ceada"></a>DropThrough&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79a186fb3d7fe8d53eccaa91afd4694c585"></a>Unknown0x02&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79a0c607bfa6cdf8ff5cfa6e349c65731d6"></a>Rotating&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79ae859b6156784b27d417f8973147ae5c7"></a>SuperSoft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79a6ea098836804c6c990990576e0298566"></a>Unknown0x10&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79a168d3416111267a7dc457363192e4ad9"></a>LeftLedge&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79afce4280408cef83d54918d9617b9bef1"></a>RightLedge&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ade271614f07be50cacf467e3e3c61d79a708da212d3e91728d3f39ac3e0b719b3"></a>NoWalljump&#160;</td><td class="fielddoc"></td></tr>
 </table>
-<div class="fragment"><div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    {</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base.html#a3e5999d6e42155c1b4b2d7324fcb7170a6dd08874f83507e9c7b23f1a46b7fa7c">None</a> = 0x00,</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        DropThrough = 0x01, <span class="comment">// Can fall through a floor by pressing down</span></div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;        Unknown1 = 0x02,    <span class="comment">// </span></div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;        Rotating = 0x04,    <span class="comment">// Automatically changes between floor/wall/ceiling based on angle</span></div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        SuperSoft = 0x08,   <span class="comment">// Allows fighters to be knocked through this collision at high %</span></div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;        Unknown4 = 0x10,    <span class="comment">//</span></div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;        LeftLedge = 0x20,   <span class="comment">// Can grab ledge from the left</span></div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;        RightLedge = 0x40,  <span class="comment">// Can grab ledge from the right</span></div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a6adf97f83acf6453d4a6a4b1070f3754">NoWalljump</a> = 0x80   <span class="comment">// Cannot walljump off when set</span></div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    {</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base.html#a3e5999d6e42155c1b4b2d7324fcb7170a6dd08874f83507e9c7b23f1a46b7fa7c">None</a> = 0x00,</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;        DropThrough = 0x01, <span class="comment">// Can fall through a floor by pressing down</span></div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;        Unknown0x02 = 0x02, <span class="comment">// </span></div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;        Rotating = 0x04,    <span class="comment">// Automatically changes between floor/wall/ceiling based on angle</span></div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;        SuperSoft = 0x08,   <span class="comment">// Allows fighters to be knocked through this collision at high %</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;        Unknown0x10 = 0x10, <span class="comment">//</span></div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;        LeftLedge = 0x20,   <span class="comment">// Can grab ledge from the left</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;        RightLedge = 0x40,  <span class="comment">// Can grab ledge from the right</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a6adf97f83acf6453d4a6a4b1070f3754">NoWalljump</a> = 0x80   <span class="comment">// Cannot walljump off when set</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af5a1b4c3c89bdc68715acc694194a838"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5a1b4c3c89bdc68715acc694194a838">&#9670;&nbsp;</a></span>CollisionPlaneFlags2</h2>
+<a id="a57184f2999ad004d886224bb7f4a563f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57184f2999ad004d886224bb7f4a563f">&#9670;&nbsp;</a></span>CollisionPlaneType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2730,7 +2740,7 @@ Enumerations</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838">BrawlLib.SSBB.Types.CollisionPlaneFlags2</a></td>
+          <td class="memname">enum <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">BrawlLib.SSBB.Types.CollisionPlaneType</a> : byte</td>
         </tr>
       </table>
   </td>
@@ -2740,55 +2750,71 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af5a1b4c3c89bdc68715acc694194a838a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5a1b4c3c89bdc68715acc694194a838a994d06622c761cbceb384fd10a0b53f3"></a>Characters&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5a1b4c3c89bdc68715acc694194a838a9dea4016dbcc290b773ab2fae678aaa8"></a>Items&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5a1b4c3c89bdc68715acc694194a838ae89bbf915810f499f654e74e02f8ee79"></a>PokemonTrainer&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af5a1b4c3c89bdc68715acc694194a838a8e3fdda7290a3da8682999ea03cc386e"></a>UnknownSSE&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a57184f2999ad004d886224bb7f4a563fa6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a57184f2999ad004d886224bb7f4a563faf3f6d0343d56ce88ce7958170ed05cb3"></a>Floor&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a57184f2999ad004d886224bb7f4a563fa3237fbc8204064c106cb9080088a17cb"></a>Ceiling&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a57184f2999ad004d886224bb7f4a563faa75362476760e09c2e0a9cb45bf274bf"></a>RightWall&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a57184f2999ad004d886224bb7f4a563fad0a56af8fbec5e2e91c45a7e3333c21b"></a>LeftWall&#160;</td><td class="fielddoc"></td></tr>
+</table>
+<div class="fragment"><div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    {</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base.html#a3e5999d6e42155c1b4b2d7324fcb7170a6dd08874f83507e9c7b23f1a46b7fa7c">None</a> = 0x0,      <span class="comment">// 0000</span></div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        Floor = 0x1,     <span class="comment">// 0001</span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        Ceiling = 0x2,   <span class="comment">// 0010</span></div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        RightWall = 0x4, <span class="comment">// 0100</span></div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563fa6adf97f83acf6453d4a6a4b1070f3754">LeftWall</a> = 0x8   <span class="comment">// 1000</span></div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0518d2807af0217c7522158396c4c73f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0518d2807af0217c7522158396c4c73f">&#9670;&nbsp;</a></span>CollisionPlaneTypeFlags</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73f">BrawlLib.SSBB.Types.CollisionPlaneTypeFlags</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa994d06622c761cbceb384fd10a0b53f3"></a>Characters&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa9dea4016dbcc290b773ab2fae678aaa8"></a>Items&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fae89bbf915810f499f654e74e02f8ee79"></a>PokemonTrainer&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa1837d29b10254d7fc64cce4b1b29e3f1"></a>Bucculus&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73faacc9e045e4b8f5172d0ac72a8ef49476"></a>Crush&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa8b8fd83e8cc30f580e618b1f5d44b18c"></a>Unknown0x0200&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa2dec32066832495ae02b1af8fc2dbd45"></a>Unknown0x0400&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa41384168cf44c35ad1fcd2acccea50d2"></a>Unknown0x0800&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa461cd29ba1afa067272c3c7e08154553"></a>Unknown0x1000&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fa85c462a9461747467f7ddfd15d89cf7a"></a>Unknown0x2000&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73faaa11bbd766f6e553af3cc84abc414340"></a>Unknown0x4000&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0518d2807af0217c7522158396c4c73fae633a0feafb7cdd93f3cc5028d092938"></a>Unknown0x8000&#160;</td><td class="fielddoc"></td></tr>
 </table>
 <div class="fragment"><div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    {</div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base.html#a3e5999d6e42155c1b4b2d7324fcb7170a6dd08874f83507e9c7b23f1a46b7fa7c">None</a> = 0x0000,</div>
 <div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        Characters = 0x0010,     <span class="comment">// Characters (Also allows Items and PT to interact)</span></div>
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        Items = 0x0020,          <span class="comment">// Items</span></div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        PokemonTrainer = 0x0040, <span class="comment">// Pokemon Trainer</span></div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838a6adf97f83acf6453d4a6a4b1070f3754">UnknownSSE</a> = 0x0080      <span class="comment">// Unknown, used in the SSE</span></div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a3739f396eb02106909e68eddaa34fdc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3739f396eb02106909e68eddaa34fdc6">&#9670;&nbsp;</a></span>CollisionPlaneType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6">BrawlLib.SSBB.Types.CollisionPlaneType</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3739f396eb02106909e68eddaa34fdc6a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3739f396eb02106909e68eddaa34fdc6af3f6d0343d56ce88ce7958170ed05cb3"></a>Floor&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3739f396eb02106909e68eddaa34fdc6a3237fbc8204064c106cb9080088a17cb"></a>Ceiling&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3739f396eb02106909e68eddaa34fdc6aa75362476760e09c2e0a9cb45bf274bf"></a>RightWall&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3739f396eb02106909e68eddaa34fdc6ad0a56af8fbec5e2e91c45a7e3333c21b"></a>LeftWall&#160;</td><td class="fielddoc"></td></tr>
-</table>
-<div class="fragment"><div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    {</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base.html#a3e5999d6e42155c1b4b2d7324fcb7170a6dd08874f83507e9c7b23f1a46b7fa7c">None</a> = 0x0000,      <span class="comment">// 0000</span></div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        Floor = 0x0001,     <span class="comment">// 0001</span></div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        Ceiling = 0x0002,   <span class="comment">// 0010</span></div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        RightWall = 0x0004, <span class="comment">// 0100</span></div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6a6adf97f83acf6453d4a6a4b1070f3754">LeftWall</a> = 0x0008   <span class="comment">// 1000</span></div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    }</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;        Bucculus = 0x0080,       <span class="comment">// Allows the Bucculus subspace enemy to bury itself in this collision</span></div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;        Crush = 0x0100,          <span class="comment">// Crush collision when used in SSE</span></div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;        Unknown0x0200 = 0x0200,</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;        Unknown0x0400 = 0x0400,</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;        Unknown0x0800 = 0x0800,</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;        Unknown0x1000 = 0x1000,</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        Unknown0x2000 = 0x2000,</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        Unknown0x4000 = 0x4000,</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;        <a class="code" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa6adf97f83acf6453d4a6a4b1070f3754">Unknown0x8000</a> = 0x8000</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5225,10 +5251,10 @@ Enumerations</h2></td></tr>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a379254a69c9b7c9a1918154d7813fa48a0d653b465c761303aa7c33b072e261e4"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a379254a69c9b7c9a1918154d7813fa48a0d653b465c761303aa7c33b072e261e4">BrawlLib.SSBB.Types.AnimCurveType.ParticleByte</a></div><div class="ttdeci">@ ParticleByte</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a3fb11af7479a2c3efa2942d6fd29d065afbb09a82eafab60150d0996e8fe46560"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3fb11af7479a2c3efa2942d6fd29d065afbb09a82eafab60150d0996e8fe46560">BrawlLib.SSBB.Types.StripeTexmapType.Stretch</a></div><div class="ttdeci">@ Stretch</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_aeae291ea16f477d0772fae9eda06580aa6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#aeae291ea16f477d0772fae9eda06580aa6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.StripeConnect.None</a></div><div class="ttdeci">@ None</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_af5a1b4c3c89bdc68715acc694194a838a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af5a1b4c3c89bdc68715acc694194a838a6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.CollisionPlaneFlags2.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a9ecd66f6e7fbcce925201fb2d4b257afa00d23a76e43b46dae9ec7aa9dcbebb32"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a9ecd66f6e7fbcce925201fb2d4b257afa00d23a76e43b46dae9ec7aa9dcbebb32">BrawlLib.SSBB.Types.TexFlags.Enabled</a></div><div class="ttdeci">@ Enabled</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a861939016d40ba3b04eec3b50af258cea6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a861939016d40ba3b04eec3b50af258cea6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.SCN0AmbLightFlags.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a698b4bd5d661f0d8fb34d72c0f242d5ead15305d7a4e34e02489c74a5ef542f36"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a698b4bd5d661f0d8fb34d72c0f242d5ead15305d7a4e34e02489c74a5ef542f36">BrawlLib.SSBB.Types.BillboardFlags.Off</a></div><div class="ttdeci">@ Off</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a0518d2807af0217c7522158396c4c73fa6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0518d2807af0217c7522158396c4c73fa6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.CollisionPlaneTypeFlags.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a6f6ef1bcab4d48f81c9a1ec9275adff8aa6eb85b92aeb502200b525213387d132"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a6f6ef1bcab4d48f81c9a1ec9275adff8aa6eb85b92aeb502200b525213387d132">BrawlLib.SSBB.Types.DrawFlag.ZCompEnable</a></div><div class="ttdeci">@ ZCompEnable</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a9d6933987232359e6ee0628a7d45dd41a960b44c579bc2f6818d2daaf9e4c16f0"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a9d6933987232359e6ee0628a7d45dd41a960b44c579bc2f6818d2daaf9e4c16f0">BrawlLib.SSBB.Types.StripeAssist.Normal</a></div><div class="ttdeci">@ Normal</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_ae0f32071027304f15c9069c3731df619a5eaf6bdc825738c156a12481182720f8"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ae0f32071027304f15c9069c3731df619a5eaf6bdc825738c156a12481182720f8">BrawlLib.SSBB.Types.v9AnimCurveTargetEmitterFloat.CommonParam</a></div><div class="ttdeci">@ CommonParam</div></div>
@@ -5236,10 +5262,12 @@ Enumerations</h2></td></tr>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a74ca3d0d02d0082dc3b6e070b9901d19a0f3f7853879becd54c0272cbcbea30b4"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a74ca3d0d02d0082dc3b6e070b9901d19a0f3f7853879becd54c0272cbcbea30b4">BrawlLib.SSBB.Types.RotateAxis.OnlyX</a></div><div class="ttdeci">@ OnlyX</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_af1e007dacde9d6ff43dcbeb6e85133cba6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#af1e007dacde9d6ff43dcbeb6e85133cba6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.AnimationFlags.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a7c43134908e46e1aa0e3f615e97440ffad491538da818a2ba11a3195ba035cfd3"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a7c43134908e46e1aa0e3f615e97440ffad491538da818a2ba11a3195ba035cfd3">BrawlLib.SSBB.Types.Endian.Big</a></div><div class="ttdeci">@ Big</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a57184f2999ad004d886224bb7f4a563fa6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563fa6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.CollisionPlaneType.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_aaad761010924c80f010fe1ed40c6d4e6a2ac07a20dd2dd7e0125834a9c777cd6b"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#aaad761010924c80f010fe1ed40c6d4e6a2ac07a20dd2dd7e0125834a9c777cd6b">BrawlLib.SSBB.Types.CullMode.Cull_None</a></div><div class="ttdeci">@ Cull_None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_aee48afce3162f75d9f96bd4acb5bd0f5a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#aee48afce3162f75d9f96bd4acb5bd0f5a6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.ObjFlag.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a61cc33c23ccb906bfbe7916e924bc69aa368180d9cc30ec9fd23c2fabbd077bfe"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a61cc33c23ccb906bfbe7916e924bc69aa368180d9cc30ec9fd23c2fabbd077bfe">BrawlLib.SSBB.Types.v9AnimCurveTargetByteFloat.Color0Primary</a></div><div class="ttdeci">@ Color0Primary</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_acb8923d932490252ed7b4e087f37749ba44877c6aa8e93fa5a91c9361211464fb"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#acb8923d932490252ed7b4e087f37749ba44877c6aa8e93fa5a91c9361211464fb">BrawlLib.SSBB.Types.Ahead.Speed</a></div><div class="ttdeci">@ Speed</div></div>
+<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_ade271614f07be50cacf467e3e3c61d79a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ade271614f07be50cacf467e3e3c61d79a6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.CollisionPlaneMaterialFlags.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a7cf06825bce19fe2674bd34e3a5f1494a83379e9a45fa2e2462f3871b8e23c4fc"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a7cf06825bce19fe2674bd34e3a5f1494a83379e9a45fa2e2462f3871b8e23c4fc">BrawlLib.SSBB.Types.AnimCurveTarget.COLOR0PRI</a></div><div class="ttdeci">@ COLOR0PRI</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a3a1585cb0b55e48ba8cd168818710df8a960b44c579bc2f6818d2daaf9e4c16f0"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3a1585cb0b55e48ba8cd168818710df8a960b44c579bc2f6818d2daaf9e4c16f0">BrawlLib.SSBB.Types.Assist.Normal</a></div><div class="ttdeci">@ Normal</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_affd97e4da2c003abbad6685119902e47a960b44c579bc2f6818d2daaf9e4c16f0"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#affd97e4da2c003abbad6685119902e47a960b44c579bc2f6818d2daaf9e4c16f0">BrawlLib.SSBB.Types.BillboardAssist.Normal</a></div><div class="ttdeci">@ Normal</div></div>
@@ -5270,10 +5298,8 @@ Enumerations</h2></td></tr>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a614615e1eda07c39af881834c54e9c40a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a614615e1eda07c39af881834c54e9c40a6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.IndirectTargetStage.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a2481617352728ece56c6a7def19dd0cba74c53bcd3dcb2bb79993b2fec37d362a"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a2481617352728ece56c6a7def19dd0cba74c53bcd3dcb2bb79993b2fec37d362a">BrawlLib.SSBB.Types.Face.XY</a></div><div class="ttdeci">@ XY</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a66f2abb10ab6e3e2998e8829aa0e72d2a8d2de5368588552fbae54044ac5c7b3d"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a66f2abb10ab6e3e2998e8829aa0e72d2a8d2de5368588552fbae54044ac5c7b3d">BrawlLib.SSBB.Types.SCN0CameraType.Rotate</a></div><div class="ttdeci">@ Rotate</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a3739f396eb02106909e68eddaa34fdc6a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3739f396eb02106909e68eddaa34fdc6a6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.CollisionPlaneType.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a0e8ba60fe9e05100c62b5994f3760af9a2a3cd5946cfd317eb99c3d32e35e2d4c"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a0e8ba60fe9e05100c62b5994f3760af9a2a3cd5946cfd317eb99c3d32e35e2d4c">BrawlLib.SSBB.Types.ReffType.Point</a></div><div class="ttdeci">@ Point</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_adda4e9bf7a50500f549c8db6c875dce6a689202409e48743b914713f96d93947c"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#adda4e9bf7a50500f549c8db6c875dce6a689202409e48743b914713f96d93947c">BrawlLib.SSBB.Types.ArgVarType.Value</a></div><div class="ttdeci">@ Value</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a8ef3098b2d78b40c06ecc372fca00ba0a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a8ef3098b2d78b40c06ecc372fca00ba0a6adf97f83acf6453d4a6a4b1070f3754">BrawlLib.SSBB.Types.CollisionPlaneFlags.None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_ae26875bce89a02d25d4f594bcaf11a67a960b44c579bc2f6818d2daaf9e4c16f0"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ae26875bce89a02d25d4f594bcaf11a67a960b44c579bc2f6818d2daaf9e4c16f0">BrawlLib.SSBB.Types.MDLEnvelopeMatrixMode.Normal</a></div><div class="ttdeci">@ Normal</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

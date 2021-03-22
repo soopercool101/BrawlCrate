@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.35</span>
+   &#160;<span id="projectnumber">v0.36c</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -130,7 +130,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                <a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html">PLT0Node</a> pn = tex0.GetPaletteNode();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                tMap = <a class="code" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html">TextureConverter</a>.<a class="code" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#aa76d81cb0198ff421b35cfcf788364b3">Get</a>(tex0.Format).<a class="code" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#ad183ffaed6fa0830af9902e7a66a7ac3">EncodeTextureIndexed</a>(bmp, tex0.LevelOfDetail, paletteSize,</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                    pn.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_l_t0_node.html#a00a9b48501162a2a6c405b6c6faa7fc9">Format</a>, <a class="code" href="namespace_brawl_lib_1_1_internal_1_1_drawing.html#a859efba01f19b13631ad10e9dceb5193">QuantizationAlgorithm</a>.MedianCut, out pMap);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                pn.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa7084c37ef74ddcce429621fcbc8769c">ReplaceRaw</a>(pMap);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                pn.<a class="code" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7bbbc3813a157f7ee83b31e399cad820">ReplaceRaw</a>(pMap);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            }</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            {</div>
@@ -180,7 +180,7 @@ Static Public Member Functions</h2></td></tr>
 <li>BrawlCrate/BrawlManagers/StageManager/TEX0Extension.cs</li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_aa7084c37ef74ddcce429621fcbc8769c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa7084c37ef74ddcce429621fcbc8769c">BrawlLib.SSBB.ResourceNodes.ResourceNode.ReplaceRaw</a></div><div class="ttdeci">virtual unsafe void ReplaceRaw(VoidPtr address, int length)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:852</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7bbbc3813a157f7ee83b31e399cad820"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7bbbc3813a157f7ee83b31e399cad820">BrawlLib.SSBB.ResourceNodes.ResourceNode.ReplaceRaw</a></div><div class="ttdeci">virtual void ReplaceRaw(VoidPtr address, int length)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:855</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter_html_aa76d81cb0198ff421b35cfcf788364b3"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#aa76d81cb0198ff421b35cfcf788364b3">BrawlLib.Wii.Textures.TextureConverter.Get</a></div><div class="ttdeci">static TextureConverter Get(WiiPixelFormat format)</div><div class="ttdef"><b>Definition:</b> TextureConverter.cs:415</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html">BrawlLib.Wii.Textures.TextureConverter</a></div><div class="ttdef"><b>Definition:</b> TextureConverter.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter_html_a4343422488528ca10739b24ff3540982"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#a4343422488528ca10739b24ff3540982">BrawlLib.Wii.Textures.TextureConverter.EncodeTEX0Texture</a></div><div class="ttdeci">virtual FileMap EncodeTEX0Texture(Bitmap src, int mipLevels)</div><div class="ttdef"><b>Definition:</b> TextureConverter.cs:203</div></div>

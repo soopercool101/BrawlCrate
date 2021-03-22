@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.35</span>
+   &#160;<span id="projectnumber">v0.36c</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -129,9 +129,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l01107"></a><span class="lineno"> 1107</span>&#160;        {</div>
-<div class="line"><a name="l01108"></a><span class="lineno"> 1108</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
-<div class="line"><a name="l01109"></a><span class="lineno"> 1109</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;        {</div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;            <span class="keywordflow">return</span> sourceType == typeof(<span class="keywordtype">string</span>) || base.CanConvertFrom(context, sourceType);</div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,18 +174,18 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;        {</div>
-<div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
-<div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;            {</div>
-<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;                <span class="keywordtype">string</span> field0 = (value.ToString() ?? <span class="stringliteral">&quot;&quot;</span>).Split(<span class="charliteral">&#39; &#39;</span>)[0];</div>
-<div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;                <span class="keywordtype">int</span> fromBase = field0.StartsWith(<span class="stringliteral">&quot;0x&quot;</span>, StringComparison.InvariantCultureIgnoreCase)</div>
-<div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;                    ? 16</div>
-<div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;                    : 10;</div>
-<div class="line"><a name="l01119"></a><span class="lineno"> 1119</span>&#160;                <span class="keywordflow">return</span> Convert.ToByte(field0, fromBase);</div>
-<div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;            }</div>
-<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160; </div>
-<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;            <span class="keywordflow">return</span> base.ConvertFrom(context, culture, value);</div>
-<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;        {</div>
+<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;            <span class="keywordflow">if</span> (value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
+<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;            {</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;                <span class="keywordtype">string</span> field0 = (value.ToString() ?? <span class="stringliteral">&quot;&quot;</span>).Split(<span class="charliteral">&#39; &#39;</span>)[0];</div>
+<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;                <span class="keywordtype">int</span> fromBase = field0.StartsWith(<span class="stringliteral">&quot;0x&quot;</span>, StringComparison.InvariantCultureIgnoreCase)</div>
+<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;                    ? 16</div>
+<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;                    : 10;</div>
+<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;                <span class="keywordflow">return</span> Convert.ToByte(field0, fromBase);</div>
+<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;            }</div>
+<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160; </div>
+<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;            <span class="keywordflow">return</span> base.ConvertFrom(context, culture, value);</div>
+<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -234,22 +234,22 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;        {</div>
-<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value.GetType() == typeof(<span class="keywordtype">byte</span>))</div>
-<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;            {</div>
-<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;                SSBB.Fighter fighter =</div>
-<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;                    SSBB.Fighter.Fighters.Where(s =&gt; s.ID == (<span class="keywordtype">byte</span>) value).FirstOrDefault();</div>
-<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0x&quot;</span> + ((byte) value).ToString(<span class="stringliteral">&quot;X2&quot;</span>) + (fighter == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; - &quot;</span> + fighter.Name);</div>
-<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;            }</div>
-<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160; </div>
-<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;            <span class="keywordflow">if</span> ((destinationType == typeof(<span class="keywordtype">int</span>) || destinationType == typeof(<span class="keywordtype">byte</span>)) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp;</div>
-<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;                value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
-<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;            {</div>
-<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;                <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;            }</div>
-<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160; </div>
-<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destinationType);</div>
-<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;        {</div>
+<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;            <span class="keywordflow">if</span> (destinationType == typeof(<span class="keywordtype">string</span>) &amp;&amp; value.GetType() == typeof(<span class="keywordtype">byte</span>))</div>
+<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;            {</div>
+<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;                SSBB.Fighter fighter =</div>
+<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;                    SSBB.Fighter.Fighters.Where(s =&gt; s.ID == (<span class="keywordtype">byte</span>) value).FirstOrDefault();</div>
+<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;0x&quot;</span> + ((byte) value).ToString(<span class="stringliteral">&quot;X2&quot;</span>) + (fighter == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; - &quot;</span> + fighter.Name);</div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;            }</div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160; </div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;            <span class="keywordflow">if</span> ((destinationType == typeof(<span class="keywordtype">int</span>) || destinationType == typeof(<span class="keywordtype">byte</span>)) &amp;&amp; value != <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;                value.GetType() == typeof(<span class="keywordtype">string</span>))</div>
+<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;            {</div>
+<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;            }</div>
+<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160; </div>
+<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;            <span class="keywordflow">return</span> base.ConvertTo(context, culture, value, destinationType);</div>
+<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -276,11 +276,11 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l01100"></a><span class="lineno"> 1100</span>&#160;        {</div>
-<div class="line"><a name="l01101"></a><span class="lineno"> 1101</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(SSBB.Fighter.Fighters</div>
-<div class="line"><a name="l01102"></a><span class="lineno"> 1102</span>&#160;                .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
-<div class="line"><a name="l01103"></a><span class="lineno"> 1103</span>&#160;                .ToList());</div>
-<div class="line"><a name="l01104"></a><span class="lineno"> 1104</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;        {</div>
+<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(SSBB.Fighter.Fighters</div>
+<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;                .Select(s =&gt; <span class="stringliteral">&quot;0x&quot;</span> + s.ID.ToString(<span class="stringliteral">&quot;X2&quot;</span>) + <span class="stringliteral">&quot; - &quot;</span> + s.Name)</div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;                .ToList());</div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -307,9 +307,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l01095"></a><span class="lineno"> 1095</span>&#160;        {</div>
-<div class="line"><a name="l01096"></a><span class="lineno"> 1096</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l01097"></a><span class="lineno"> 1097</span>&#160;        }</div>
+<div class="fragment"><div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;        {</div>
+<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;        }</div>
 </div><!-- fragment -->
 </div>
 </div>

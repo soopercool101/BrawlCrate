@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">BrawlCrate
-   &#160;<span id="projectnumber">v0.35</span>
+   &#160;<span id="projectnumber">v0.36c</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -622,7 +622,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr = (int) <a class="code" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a06333b2c6094159ac61a66da7e023817">_scan0</a> + <a class="code" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a447ec6df03831390891332a12e6e5d86">_stride</a> * (y + y2) + xStart;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr = (int) data.Scan0 + data.Stride * (y + y2) + xStart;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html#a8341d77a514902d2318a17c5b3095755">Move</a>(dPtr, sPtr, (uint) sStride);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(dPtr, sPtr, (uint) sStride);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            }</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            src.UnlockBits(data);</div>
@@ -691,7 +691,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; height; i++, dest += linelen, src += <a class="code" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a447ec6df03831390891332a12e6e5d86">_stride</a>)</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            {</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html#a8341d77a514902d2318a17c5b3095755">Move</a>(dest, src, (uint) linelen);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(dest, src, (uint) linelen);</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            }</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        }</div>
 </div><!-- fragment -->
@@ -871,7 +871,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            {</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> sPtr = (int) <a class="code" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a06333b2c6094159ac61a66da7e023817">_scan0</a> + <a class="code" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a447ec6df03831390891332a12e6e5d86">_stride</a> * (y + y2) + xStart;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <a class="code" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dPtr = (int) data.Scan0 + data.Stride * (y + y2) + xStart;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html#a8341d77a514902d2318a17c5b3095755">Move</a>(dPtr, sPtr, (uint) sStride);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(dPtr, sPtr, (uint) sStride);</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            dst.UnlockBits(data);</div>
@@ -1105,6 +1105,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_aeabf60924a1524477084e78862036bb1"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#aeabf60924a1524477084e78862036bb1">BrawlLib.Imaging.DIB._format</a></div><div class="ttdeci">readonly PixelFormat _format</div><div class="ttdef"><b>Definition:</b> DIB.cs:12</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_ade458d54541af3e792fa8e591e234cc3"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#ade458d54541af3e792fa8e591e234cc3">BrawlLib.Imaging.DIB._height</a></div><div class="ttdeci">readonly int _height</div><div class="ttdef"><b>Definition:</b> DIB.cs:11</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a8168e56a99d1ea951085c60b9b3be41a"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a8168e56a99d1ea951085c60b9b3be41a">BrawlLib.Imaging.DIB.FromBitmap</a></div><div class="ttdeci">static DIB FromBitmap(Bitmap src)</div><div class="ttdef"><b>Definition:</b> DIB.cs:58</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_a22c0cb3641b22e5ce664d45ad2f10132"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">BrawlLib.Internal.Memory.Move</a></div><div class="ttdeci">static void Move(VoidPtr dst, VoidPtr src, uint size)</div><div class="ttdef"><b>Definition:</b> Memory.cs:9</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a5b911880f69dcdb7460289f071da1aed"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a5b911880f69dcdb7460289f071da1aed">BrawlLib.Imaging.DIB.Width</a></div><div class="ttdeci">int Width</div><div class="ttdef"><b>Definition:</b> DIB.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> Memory.cs:8</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a2bc65c7b099ab53a0dabde926de9614e"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a2bc65c7b099ab53a0dabde926de9614e">BrawlLib.Imaging.DIB._width</a></div><div class="ttdeci">readonly int _width</div><div class="ttdef"><b>Definition:</b> DIB.cs:11</div></div>
@@ -1116,7 +1117,6 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a7dc10616ccac3875ced4219e47230c3c"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a7dc10616ccac3875ced4219e47230c3c">BrawlLib.Imaging.DIB.BitmapData</a></div><div class="ttdeci">BitmapData BitmapData</div><div class="ttdef"><b>Definition:</b> DIB.cs:22</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a384b78b6d6b5669e3934f9077674d46d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a384b78b6d6b5669e3934f9077674d46d">BrawlLib.Imaging.DIB.DIB</a></div><div class="ttdeci">DIB(int width, int height, PixelFormat format)</div><div class="ttdef"><b>Definition:</b> DIB.cs:37</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a9952b7bf7bebe6e636c1758a51d48761"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a9952b7bf7bebe6e636c1758a51d48761">BrawlLib.Imaging.DIB.ToBitmap</a></div><div class="ttdeci">Bitmap ToBitmap()</div><div class="ttdef"><b>Definition:</b> DIB.cs:121</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_a8341d77a514902d2318a17c5b3095755"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#a8341d77a514902d2318a17c5b3095755">BrawlLib.Internal.Memory.Move</a></div><div class="ttdeci">static unsafe void Move(VoidPtr dst, VoidPtr src, uint size)</div><div class="ttdef"><b>Definition:</b> Memory.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a182acd91ece1b3d4da1468e85565399d"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a182acd91ece1b3d4da1468e85565399d">BrawlLib.Imaging.DIB.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> DIB.cs:86</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a3be7c08bae8e768873973a98c45e33e4"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a3be7c08bae8e768873973a98c45e33e4">BrawlLib.Imaging.DIB.Stride</a></div><div class="ttdeci">int Stride</div><div class="ttdef"><b>Definition:</b> DIB.cs:17</div></div>
