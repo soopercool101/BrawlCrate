@@ -1,10 +1,32 @@
-Documentation_v0.36
+Documentation_v0.36c
 
  =============================================================
 |************ BrawlCrate Documentation Change Log ************|
  =============================================================
  
  Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan, Eon
+ 
+ - Documentation v0.36c
+ . Added STDT documentaion for Pirate Ship
+ . Added module annotations for Hanenbow (Section [4])
+ . Added module annotations for Frigate Orpheon (Section [4])
+ . Added module annotations for Summit (Section [4])
+ . Added module annotations for Jungle Japes (Section [4])
+ . Pokémon Stadium 2 STDT documentaion updated to latest understanding:
+   - 0x050 -> Transformation Swap Timer
+ . Pokémon Stadium 2 Section [4] documentaion updated to latest understanding:
+   - 0x004 -> Scale Factor
+   - 0x024 -> Monitor Update Duration
+   - 0x028 -> Stage Update Duration
+   - 0x03C -> Monitor Swap SFX Frequency
+   - 0x044 -> Pokémon Minimum Scale
+   - 0x048 -> Transformation Camera Distance
+   - 0x04C -> Stage Minimum Scale
+   - 0x054 -> Monitor Camera X-Position
+   - 0x058 -> Monitor Camera Distance
+   - 0x05C -> Transformation Delay Multiplier (Inverse; 1/2)
+   - 0x060 -> Transformation Delay Multiplier (Inverse; 2/2)
+   - 0x064 -> Monitor Camera Zoom?
  
  - Documentation v0.36
  . Onett STDT documentation updated to latest understanding:

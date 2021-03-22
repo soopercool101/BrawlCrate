@@ -1,5 +1,5 @@
 
-BrawlCrate - v0.36b
+BrawlCrate - v0.36c
 Copyright © 2018 - 2020 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,23 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.36c - (3/22/2021)
+ . Add Crush (SSE) flag to Collision Editor
+   - When set, this flag allows collisions to instantly KO a fighter when smashed between two collisions of this type, though only in Subspace without code edits
+ . Add Bucculus (SSE) flag to Collision Editor
+   - This flag is used to determine what ground the Bucculus enemy in subspace can bury itself in
+ . Rearrange standard collision editor to no longer show unused flags
+   - Add all unused flags to the advanced editor
+ . Add support for any-sized RSTC file
+ . Add support for shrinking of module sections via negative buffer and expandsection
+ . Update internal documentation to v0.36c
+ . Add minor 64-bit fixes (thanks libertyernie!)
+ . Fix bug in which STEX would not allow multiple children with the same name
+ . Fix bug in which Final Load Flags were incorrect for BrawlEx v2.0.0 configs
+ . Fix bug in which FCFG/FITC file magic was not maintained between edits and would always set to FCFG
+ . Fix bug in which auto-generating IDs for a TLST would not allow saving without further edits
+ . Fix bug in which failing to save a file would prevent another save attempt
  
  - BrawlCrate v0.36b - (2/7/2021)
  . Update Model Previewer draw priority to be more accurate to in-game (thanks to aboood40091!)

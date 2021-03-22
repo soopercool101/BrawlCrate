@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.36b";
+        public static readonly string TagName = "v0.36c";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,12 +41,10 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.36b! Here's what's new in this release:
-- Model Previewer draw priority has been updated to be more accurate to in-game (thanks to aboood40091!)
-- Adds Item IDs for Smashville and Yoshi's Island (Brawl)
-- Pathing Data now properly updates Minimum and Maximum values automatically
-- Fix bug in which spaces were not properly placed when copying and pasting from a hex box
-- Fix bug in which Module Item IDs would overwrite changes made in the section editor
+            @"Updated to BrawlCrate v0.36c! Here's what's new in this release:
+- Add full editing support for all used collision flags in Brawl
+- Heavily improve BrawlEx config support
+- Fixes a few minor bugs with Project+ config file editing
 
 Full changelog and documentation can be viewed from the help menu.";
 
