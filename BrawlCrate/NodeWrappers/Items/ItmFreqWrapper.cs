@@ -4,7 +4,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.ItemFreqNode)]
-    internal class ItemFreqWrapper : GenericWrapper
+    public class ItemFreqWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
 

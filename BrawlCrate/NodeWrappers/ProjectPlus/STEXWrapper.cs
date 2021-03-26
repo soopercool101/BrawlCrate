@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.STEX)]
-    internal class STEXWrapper : GenericWrapper
+    public class STEXWrapper : GenericWrapper
     {
         #region Menu
 

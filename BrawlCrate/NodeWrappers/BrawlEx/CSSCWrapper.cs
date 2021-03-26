@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.CSSC)]
-    internal class CSSCWrapper : GenericWrapper
+    public class CSSCWrapper : GenericWrapper
     {
         #region Menu
 
@@ -125,7 +125,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.CSSCEntry)]
-    internal class CSSCEntryWrapper : GenericWrapper
+    public class CSSCEntryWrapper : GenericWrapper
     {
         #region Menu
 

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.ASLS)]
-    internal class ASLSWrapper : GenericWrapper
+    public class ASLSWrapper : GenericWrapper
     {
         #region Menu
 

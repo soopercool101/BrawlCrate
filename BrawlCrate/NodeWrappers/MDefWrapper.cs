@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MDef)]
-    internal class MDefWrapper : GenericWrapper
+    public class MDefWrapper : GenericWrapper
     {
         #region Menu
 
@@ -666,7 +666,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.Event)]
-    internal class MDefEventWrapper : GenericWrapper
+    public class MDefEventWrapper : GenericWrapper
     {
         #region Menu
 
@@ -862,7 +862,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.Parameter)]
-    internal class MDefEventParameterWrapper : GenericWrapper
+    public class MDefEventParameterWrapper : GenericWrapper
     {
         #region Menu
 
@@ -995,7 +995,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefHurtboxList)]
-    internal class MDefHurtboxListWrapper : GenericWrapper
+    public class MDefHurtboxListWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1042,7 +1042,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefActionList)]
-    internal class MDefActionListWrapper : GenericWrapper
+    public class MDefActionListWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1140,7 +1140,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefSubActionGroup)]
-    internal class MDefSubActionGroupWrapper : GenericWrapper
+    public class MDefSubActionGroupWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1180,7 +1180,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefActionGroup)]
-    internal class MDefActionGroupWrapper : GenericWrapper
+    public class MDefActionGroupWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1376,7 +1376,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefMdlVisRef)]
-    internal class MDefMdlVisRefWrapper : GenericWrapper
+    public class MDefMdlVisRefWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1432,7 +1432,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefMdlVisSwitch)]
-    internal class MDefMdlVisSwitchWrapper : GenericWrapper
+    public class MDefMdlVisSwitchWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1539,7 +1539,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefMdlVisGroup)]
-    internal class MDefMdlVisGroupWrapper : GenericWrapper
+    public class MDefMdlVisGroupWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1595,7 +1595,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefSubroutineList)]
-    internal class MDefSubroutineListWrapper : GenericWrapper
+    public class MDefSubroutineListWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1652,7 +1652,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefActionOverrideList)]
-    internal class MDefActionOverrideListWrapper : GenericWrapper
+    public class MDefActionOverrideListWrapper : GenericWrapper
     {
         #region Menu
 
@@ -1700,7 +1700,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MDefRefList)]
-    internal class MDefRefListWrapper : GenericWrapper
+    public class MDefRefListWrapper : GenericWrapper
     {
         private static bool shown;
 

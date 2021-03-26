@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.CMM)]
-    internal class CMMWrapper : GenericWrapper
+    public class CMMWrapper : GenericWrapper
     {
         #region Menu
 

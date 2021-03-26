@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.TLST)]
-    internal class TLSTWrapper : GenericWrapper
+    public class TLSTWrapper : GenericWrapper
     {
         #region Menu
 

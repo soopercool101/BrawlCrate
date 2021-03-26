@@ -192,7 +192,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.RELSection)]
-    internal class RELSectionWrapper : GenericWrapper
+    public class RELSectionWrapper : GenericWrapper
     {
         #region Menu
 

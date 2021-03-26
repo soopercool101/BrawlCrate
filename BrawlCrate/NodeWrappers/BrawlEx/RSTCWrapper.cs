@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSTC)]
-    internal class RSTCWrapper : GenericWrapper
+    public class RSTCWrapper : GenericWrapper
     {
         #region Menu
 

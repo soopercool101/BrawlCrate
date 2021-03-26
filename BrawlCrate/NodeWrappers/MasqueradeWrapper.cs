@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MASQ)]
-    internal class MasqueradeWrapper : GenericWrapper
+    public class MasqueradeWrapper : GenericWrapper
     {
         #region Menu
 
@@ -127,7 +127,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.MASQEntry)]
-    internal class MasqueradeEntryWrapper : GenericWrapper
+    public class MasqueradeEntryWrapper : GenericWrapper
     {
         #region Menu
 
