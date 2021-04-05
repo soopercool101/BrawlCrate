@@ -1,6 +1,6 @@
 
-BrawlCrate - v0.36c
-Copyright © 2018 - 2020 soopercool101, Simon381, Onium
+BrawlCrate - v0.36c Hotfix 1
+Copyright © 2018 - 2021 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
@@ -16,6 +16,10 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
  
+ - BrawlCrate v0.36c Hotfix 1 - (4/5/2021)
+ . Fix PAT0 preview bug where textures contained in the same BRRES as a MDL0 would not display properly
+ . Fix issue where certain wrappers were not being properly exposed to the API
+
  - BrawlCrate v0.36c - (3/22/2021)
  . Add Crush (SSE) flag to Collision Editor
    - When set, this flag allows collisions to instantly KO a fighter when smashed between two collisions of this type, though only in Subspace without code edits

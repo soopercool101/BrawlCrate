@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.36c";
+        public static readonly string TagName = "v0.36c-h1";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,7 +41,9 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.36c! Here's what's new in this release:
+            @"Updated to BrawlCrate v0.36c Hotfix 1! Here's what's new in this release:
+- (Hotfix 1) Fix preview bugs for PAT0 where the textures and models are contained in the same BRRES
+- (Hotfix 1) Add API access to all wrappers
 - Add full editing support for all used collision flags in Brawl
 - Heavily improve BrawlEx config support
 - Fixes a few minor bugs with Project+ config file editing
