@@ -261,6 +261,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                     nodes = model.RootNode.GetChildrenRecursive();
                 }
 
+                //Search BRES first
+                if (bres != null && (tNode = bres.FindChild("Textures(NW4R)/" + Name, false, StringComparison.Ordinal) as TEX0Node) !=
+                    null)
+                {
+                    Source = tNode;
+                    Texture.Attach(tNode, _palette);
+                    return;
+                }
+
                 foreach (ResourceNode n in nodes)
                 {
                     ARCEntryNode a;
