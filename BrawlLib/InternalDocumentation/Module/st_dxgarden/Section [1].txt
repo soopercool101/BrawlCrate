@@ -1,0 +1,53 @@
+st_dxgarden Section [1]: 0x000025F8
+Klaptrap Hitbox Effect
+
+The hitbox type used by the Klaptrap hazard.
+To edit, select the italicized value and use the menu on the right in 1-Byte mode. The byte value will be your hitbox effect.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_28-32_.28Effect.29
+
+Default (Byte): 2 (Slash) (0x02)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_dxgarden Section [1]: 0x00002620
+Klaptrap Damage
+
+The amount of damage the Klaptrap hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 30 (0x001E)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_dxgarden Section [1]: 0x00002628
+Klaptrap Knockback Angle
+
+The angle at which the Klaptrap hazard sends the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback angle.
+
+Resource on Knockback Angles: https://cdn.discordapp.com/attachments/309574190556774402/372782979644129282/unknown-2.png
+
+Default (Short): 245 (0x00F5)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_dxgarden Section [1]: 0x0000262C
+Klaptrap Knockback Growth
+
+The knockback growth for the Klaptrap hazard.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback growth.
+
+Default (Short): 100 (0x0064)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_dxgarden Section [1]: 0x00002638
+Klaptrap Base Knockback
+
+The base knockback for the Klaptrap hazard.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your base knockback.
+
+Default (Short): 10 (0x000A)
+	/EndDescription
+0011    // Flags for which bytes are underlined
