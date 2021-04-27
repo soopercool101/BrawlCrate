@@ -222,6 +222,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Common2TblHeader* header = (Common2TblHeader*) source.Address;
             return header->_Length == source.Length &&
                    header->_DataLength < source.Length &&
+                   header->_DataTable > 0 &&
                    header->_OffCount == 0 // BrawlLib cannot properly rebuild nodes with _OffCount != 0 yet
                 ? new Common2MiscDataNode()
                 : null;

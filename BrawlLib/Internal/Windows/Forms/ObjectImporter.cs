@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal.Windows.Controls.Model_Panel;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Models;
@@ -193,7 +193,14 @@ namespace BrawlLib.Internal.Windows.Forms
                 if (least != int.MaxValue)
                 {
                     MDL0BoneNode temp = boneCache[least];
-                    _baseInf = (IMatrixNode) temp.Parent;
+                    if (temp?.Parent is IMatrixNode im)
+                    {
+                        _baseInf = im;
+                    }
+                    else if (temp is IMatrixNode im2)
+                    {
+                        _baseInf = im2;
+                    }
                 }
             }
             else
