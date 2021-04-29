@@ -22,25 +22,28 @@ namespace BrawlCrate.API
 
         /// <summary>
         ///     The root node of the opened file.
-        ///
-        ///     Returns null if there is no open file.
         /// </summary>
+        /// <returns>
+        ///     The current Root Node, or null if there is no current nodetree.
+        /// </returns>
         public static ResourceNode RootNode => MainForm.Instance?.RootNode?.Resource;
 
         /// <summary>
         ///     The currently selected node on the Main Form. Useful for context menu items.
-        ///
-        ///     Returns null if there is no selected node.
         /// </summary>
+        /// <returns>
+        ///     The currently selected node, or null if no node is currently selected.
+        /// </returns>
         public static ResourceNode SelectedNode => MainForm.Instance?.resourceTree.SelectedNode != null
             ? ((BaseWrapper) MainForm.Instance?.resourceTree.SelectedNode).Resource
             : null;
 
         /// <summary>
-        ///     The currently selected nodes on the Main Form, if multiple are selected
-        ///
-        ///     Returns an empty list if there are no selected nodes.
+        ///     The currently selected nodes on the Main Form.
         /// </summary>
+        /// <returns>
+        ///     A list of all current selected nodes, or an empty list if no nodes are selected.
+        /// </returns>
         public static List<ResourceNode> SelectedNodes
         {
             get
@@ -1184,13 +1187,28 @@ namespace BrawlCrate.API
         public static string LoaderPath => Path.GetFullPath(Program.ApiLoaderPath);
 
         /// <summary>
+        ///     Creates a new ResourceNode of type T and attempts to set it as the root node.
+        /// </summary>
+        /// <typeparam name="T">
+        ///     The type of ResourceNode to create.
+        /// </typeparam>
+        /// <returns>
+        ///     True if the file was successfully created, returns false otherwise.
+        /// </returns>
+        public static bool New<T>() where T : ResourceNode
+        {
+            return Program.New<T>();
+        }
+
+        /// <summary>
         ///     Attempts to open the file using a given path.
-        ///
-        ///     Returns true if the file is successfully loaded, and false otherwise.
         /// </summary>
         /// <param name="path">
         ///     The path of the file that is to be opened.
         /// </param>
+        /// <returns>
+        ///     True if the file is successfully loaded, and false otherwise.
+        /// </returns>
         public static bool OpenFile(string path)
         {
             return Program.Open(path);
@@ -1199,12 +1217,11 @@ namespace BrawlCrate.API
         /// <summary>
         ///     Attempts to open the file using a given path.
         ///     Any error messages (including "file not found") are not shown to the user.
-        ///
-        ///     Returns true if the file is successfully loaded, and false otherwise.
         /// </summary>
         /// <param name="path">
         ///     The path of the file that is to be opened.
         /// </param>
+        /// <returns>True if the file is successfully loaded, and false otherwise.</returns>
         public static bool OpenFileNoErrors(string path)
         {
             return Program.Open(path, false);
