@@ -35,12 +35,12 @@ namespace BrawlLib.Internal.Windows.Forms
 
         public DialogResult ShowDialog(MDL0Node internalModel, MDL0Node externalModel)
         {
-            if (_internalModel?._linker?.BoneCache == null || _internalModel._linker.BoneCache.Length == 0)
+            if (internalModel?._linker?.BoneCache == null || internalModel._linker.BoneCache.Length == 0)
             {
                 MessageBox.Show("The target model must have at least one bone.", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return DialogResult.Cancel;
             }
-            ResourceNode[] objects = _externalModel.FindChild("Objects", true)?.Children.ToArray();
+            ResourceNode[] objects = externalModel.FindChild("Objects", true)?.Children.ToArray();
             if (objects == null || objects.Length == 0)
             {
                 MessageBox.Show("The imported model must have at least one object.", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
