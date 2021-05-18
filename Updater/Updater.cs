@@ -26,7 +26,7 @@ namespace Updater
         public static readonly string mainBranch = "master";
 
         private static readonly GitHubClient Github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
-            {Credentials = new Credentials(Encoding.Default.GetString(Program.RawData))};
+            {Credentials = Program.RawData.Length == 0 ? null : new Credentials(Encoding.Default.GetString(Program.RawData))};
 
         #region Canary Variables/Helpers
 

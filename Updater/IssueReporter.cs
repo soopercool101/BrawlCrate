@@ -31,7 +31,9 @@ namespace Updater
             try
             {
                 Issue x = null;
-                Credentials cr = new Credentials(Encoding.Default.GetString(Program.RawData));
+                Credentials cr = Program.RawData.Length == 0
+                    ? null
+                    : new Credentials(Encoding.Default.GetString(Program.RawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Issue> issues = null;
                 if (!TagName.ToLower().Contains("canary"))
