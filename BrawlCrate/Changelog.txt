@@ -1,5 +1,5 @@
 
-BrawlCrate - v0.36c Hotfix 1
+BrawlCrate - v0.37
 Copyright © 2018 - 2021 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,13 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.37 - (5/18/2021)
+ . GitHub broke the automatic updater with a security update. This has been fixed to never happen again.
+ . Update internal documentation to v0.37
+ . BrawlAPI: Add New<T> to exposed members (Note: syntax in Python is New[T])
+ . Add error messages for common issues when importing new objects
+ . Fix bug in which the object importer would crash if any objects were weighted to the topmost bone in a tree
  
  - BrawlCrate v0.36c Hotfix 1 - (4/5/2021)
  . Fix PAT0 preview bug where textures contained in the same BRRES as a MDL0 would not display properly

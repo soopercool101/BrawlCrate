@@ -136,9 +136,9 @@ namespace Updater
                 {
                     string cred = Encoding.Default.GetString(RawData);
                     try
-                    { 
-                        // This throws an exception if it fails to authenticate. If this fails, the updater will still work at a limited capacity but issue reporting will not
+                    {
                         client.Credentials = new Credentials(cred);
+                        // This throws an exception if it fails to authenticate. If this fails, the updater will still work at a limited capacity but issue reporting will not
                         client.Repository.Release.GetLatest("soopercool101", "BrawlCrate").Wait();
                     }
                     catch

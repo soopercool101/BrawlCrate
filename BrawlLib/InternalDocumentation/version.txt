@@ -1,10 +1,13 @@
-Documentation_v0.36c
+Documentation_v0.37
 
  =============================================================
 |************ BrawlCrate Documentation Change Log ************|
  =============================================================
  
  Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan, Eon
+ 
+ - Documentation v0.37
+ . Added module annotations for Jungle Japes (Section [1])
  
  - Documentation v0.36c
  . Added STDT documentaion for Pirate Ship

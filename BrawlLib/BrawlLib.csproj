@@ -18,12 +18,12 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>BrawlCrateLib v0.36c Hotfix 1</AssemblyTitle>
+    <AssemblyTitle>BrawlCrateLib v0.37</AssemblyTitle>
     <Product>BrawlCrateLib</Product>
     <Copyright>Copyright © 2018 - 2021 soopercool101, Simon381, Onium
 BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Copyright>
-    <AssemblyVersion>0.36.2.1</AssemblyVersion>
-    <FileVersion>0.36.2.1</FileVersion>
+    <AssemblyVersion>0.37.0.0</AssemblyVersion>
+    <FileVersion>0.37.0.0</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Configurations>Debug;Release;Mono;Canary</Configurations>
@@ -158,7 +158,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <PackageId>BrawlCrateLib</PackageId>
     <Company>BrawlCrateLib</Company>
     <Authors>soopercool101, Simon381, Onium, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
-    <Version>36.2.1</Version>
+    <Version>37.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CustomLists\FighterList.txt" />
