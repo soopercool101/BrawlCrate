@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Octokit;
+using System;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
 
 namespace Updater
 {
@@ -120,7 +123,36 @@ namespace Updater
             }
         }
 
-        internal static readonly byte[] RawData =
+        private static GitHubClient _github;
+
+        internal static GitHubClient Github
+        {
+            get
+            {
+                if (_github != null)
+                    return _github;
+                GitHubClient client = new GitHubClient(new ProductHeaderValue("BrawlCrate"));
+                if (RawData.Length > 0)
+                {
+                    string cred = Encoding.Default.GetString(RawData);
+                    try
+                    { 
+                        // This throws an exception if it fails to authenticate. If this fails, the updater will still work at a limited capacity but issue reporting will not
+                        client.Authorization.CheckApplicationAuthentication("BrawlCrate", cred).Wait();
+                        client.Credentials = new Credentials(cred);
+                    }
+                    catch
+                    {
+                        // Ignore, ensuring default credentials are used
+                    }
+                }
+
+                _github = client;
+                return _github;
+            }
+        }
+
+        private static readonly byte[] RawData =
         {
             // Placeholder!
         };

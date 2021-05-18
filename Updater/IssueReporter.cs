@@ -31,22 +31,18 @@ namespace Updater
             try
             {
                 Issue x = null;
-                Credentials cr = Program.RawData.Length == 0
-                    ? null
-                    : new Credentials(Encoding.Default.GetString(Program.RawData));
-                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Issue> issues = null;
                 if (!TagName.ToLower().Contains("canary"))
                 {
                     IReadOnlyList<Release> releases;
                     try
                     {
-                        releases = await github.Repository.Release.GetAll("soopercool101", "BrawlCrate");
+                        releases = await Program.Github.Repository.Release.GetAll("soopercool101", "BrawlCrate");
 
                         // Remove all pre-release (Documentation) versions from the list
                         releases = releases.Where(r => !r.Prerelease).ToList();
 
-                        issues = await github.Issue.GetAllForRepository("BrawlCrate", "BrawlCrateIssues");
+                        issues = await Program.Github.Issue.GetAllForRepository("BrawlCrate", "BrawlCrateIssues");
                     }
                     catch (HttpRequestException)
                     {
@@ -97,7 +93,7 @@ namespace Updater
                                 Environment.NewLine +
                                 i.Body;
 
-                            x = await github.Issue.Update("BrawlCrate", "BrawlCrateIssues", i.Number, update);
+                            x = await Program.Github.Issue.Update("BrawlCrate", "BrawlCrateIssues", i.Number, update);
                         }
                     }
                 }
@@ -120,7 +116,7 @@ namespace Updater
                             Environment.NewLine +
                             "```"
                     };
-                    x = await github.Issue.Create("BrawlCrate", "BrawlCrateIssues", issue);
+                    x = await Program.Github.Issue.Create("BrawlCrate", "BrawlCrateIssues", issue);
                 }
 
                 if (x != null)

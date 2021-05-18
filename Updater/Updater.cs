@@ -24,10 +24,7 @@ namespace Updater
 
         public static readonly string mainRepo = "soopercool101/BrawlCrate";
         public static readonly string mainBranch = "master";
-
-        private static readonly GitHubClient Github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
-            {Credentials = Program.RawData.Length == 0 ? null : new Credentials(Encoding.Default.GetString(Program.RawData))};
-
+        
         #region Canary Variables/Helpers
 
         public static string currentRepo = GetCurrentRepo();
@@ -235,7 +232,7 @@ namespace Updater
             {
                 try
                 {
-                    await Github.Repository.Branch.Get(repoData[0], repoData[1], currentBranch);
+                    await Program.Github.Repository.Branch.Get(repoData[0], repoData[1], currentBranch);
                 }
                 catch
                 {
@@ -250,7 +247,7 @@ namespace Updater
                     PageCount = 1
                 };
                 List<GitHubCommit> commits =
-                    (await Github.Repository.Commit.GetAll(repoData[0], repoData[1],
+                    (await Program.Github.Repository.Commit.GetAll(repoData[0], repoData[1],
                         new CommitRequest {Sha = currentBranch}, options)).ToList();
                 int i;
                 bool foundCurrentCommit = false;
@@ -399,7 +396,7 @@ namespace Updater
                 // Initiate the github client.
 
                 // get Release
-                IReadOnlyList<Release> AllReleases = await Github.Repository.Release.GetAll(repoOwner, repoName);
+                IReadOnlyList<Release> AllReleases = await Program.Github.Repository.Release.GetAll(repoOwner, repoName);
                 IReadOnlyList<Release> releases = null;
                 Release release = null;
                 bool documentation = false;
@@ -565,7 +562,7 @@ namespace Updater
                 char[] slashes = {'\\', '/'};
                 string[] repoData = currentRepo.Split(slashes);
                 Release release =
-                    await Github.Repository.Release.Get(repoData[0], repoData[1], $"Canary-{currentBranch}");
+                    await Program.Github.Repository.Release.Get(repoData[0], repoData[1], $"Canary-{currentBranch}");
 
                 if (release == null || release.Assets.Count == 0)
                 {
@@ -600,7 +597,7 @@ namespace Updater
                     if (Asset != null)
                     {
                         GitHubCommit c =
-                            await Github.Repository.Commit.Get(repoData[0], repoData[1], release.TargetCommitish);
+                            await Program.Github.Repository.Commit.Get(repoData[0], repoData[1], release.TargetCommitish);
                         if (Asset.CreatedAt.UtcDateTime <= c.Commit.Committer.Date)
                         {
                             // Asset has not yet been updated
@@ -706,7 +703,7 @@ namespace Updater
                             if (lines.Length > 1)
                             {
                                 // Get the latest release of this script repo
-                                Release release = await Github.Repository.Release.GetLatest(repoData[0], repoData[1]);
+                                Release release = await Program.Github.Repository.Release.GetLatest(repoData[0], repoData[1]);
                                 // Check version against downloaded version
                                 if (!release.TagName.Equals(lines[0]) || !release.TargetCommitish.Equals(lines[1]))
                                 {
@@ -764,7 +761,7 @@ namespace Updater
                 }
 
                 // Get the latest release of this script repo
-                Release release = await Github.Repository.Release.GetLatest(repoOwner, repoName);
+                Release release = await Program.Github.Repository.Release.GetLatest(repoOwner, repoName);
                 using (WebClient client = new WebClient())
                 {
                     // Add the user agent header, otherwise we will get access denied.
@@ -1117,7 +1114,7 @@ namespace Updater
             string repoOwner = mainRepo.Split('/')[0];
             string repoName = mainRepo.Split('/')[1];
             // get Release
-            IReadOnlyList<Release> releases = (await Github.Repository.Release.GetAll(repoOwner, repoName))
+            IReadOnlyList<Release> releases = (await Program.Github.Repository.Release.GetAll(repoOwner, repoName))
                 .Where(r => r.Prerelease).ToList();
             Release release = null;
 
@@ -1143,7 +1140,7 @@ namespace Updater
             string repoOwner = mainRepo.Split('/')[0];
             string repoName = mainRepo.Split('/')[1];
             // get Release
-            IReadOnlyList<Release> releases = (await Github.Repository.Release.GetAll(repoOwner, repoName))
+            IReadOnlyList<Release> releases = (await Program.Github.Repository.Release.GetAll(repoOwner, repoName))
                 .Where(r => !r.Prerelease).ToList();
             if (releases.Count > 0)
             {
@@ -1201,9 +1198,9 @@ namespace Updater
                 string repoOwner = repo.Split('/')[0];
                 string repoName = repo.Split('/')[1];
 
-                Branch branch = await Github.Repository.Branch.Get(repoOwner, repoName, branchName);
+                Branch branch = await Program.Github.Repository.Branch.Get(repoOwner, repoName, branchName);
                 GitHubCommit result =
-                    await Github.Repository.Commit.Get(repoOwner, repoName, commitID ?? branch.Commit.Sha);
+                    await Program.Github.Repository.Commit.Get(repoOwner, repoName, commitID ?? branch.Commit.Sha);
                 DateTimeOffset buildDate = DateTimeOffset.UtcNow;
                 string filename = AppPath + "\\Canary\\New";
                 if (File.Exists(filename))
