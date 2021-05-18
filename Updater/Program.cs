@@ -1,4 +1,4 @@
-﻿using Octokit;
+using Octokit;
 using System;
 using System.IO;
 using System.Net;
@@ -138,12 +138,13 @@ namespace Updater
                     try
                     { 
                         // This throws an exception if it fails to authenticate. If this fails, the updater will still work at a limited capacity but issue reporting will not
-                        client.Authorization.CheckApplicationAuthentication("BrawlCrate", cred).Wait();
                         client.Credentials = new Credentials(cred);
+                        client.Repository.Release.GetLatest("soopercool101", "BrawlCrate").Wait();
                     }
                     catch
                     {
-                        // Ignore, ensuring default credentials are used
+                        // Ignore, use default credentials.
+                        client.Credentials = Credentials.Anonymous;
                     }
                 }
 
