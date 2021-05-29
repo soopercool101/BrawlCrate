@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB.Types
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct MovParameterEntry
     {
-        public fixed int _values[24];
+        public fixed int _values[22];
 
         private VoidPtr Address
         {

@@ -55,6 +55,16 @@ namespace BrawlLib.SSBB
             ((bint*) _values.Address)[index] = value;
         }
 
+        public short GetShort(int index, int index2)
+        {
+            return ((bshort*)_values.Address)[index * 2 + index2];
+        }
+
+        public void SetShort(int index, int index2, short value)
+        {
+            ((bshort*)_values.Address)[index * 2 + index2] = value;
+        }
+
         public RGBAPixel GetRGBA(int index)
         {
             return ((RGBAPixel*) _values.Address)[index];

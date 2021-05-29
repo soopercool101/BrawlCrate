@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return base.GetName("Movie Parameters");
         }
 
-        private const int _entrySize = 96;
+        private const int _entrySize = 88;
 
         public override void OnPopulate()
         {
@@ -64,18 +64,30 @@ namespace BrawlLib.SSBB.ResourceNodes
         private ParameterValueManager _values = new ParameterValueManager(null);
 
         [Category("MVPM Values")]
-        public int Value1
+        public short ID
         {
-            get => _values.GetInt(0);
+            get => _values.GetShort(0, 0);
             set
             {
-                _values.SetInt(0, value);
+                _values.SetShort(0, 0, value);
                 SignalPropertyChange();
             }
         }
 
         [Category("MVPM Values")]
-        public int Value2
+        public short Value1b
+        {
+            get => _values.GetShort(0, 1);
+            set
+            {
+                _values.SetShort(0, 1, value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("MVPM Values")]
+        [Description("The frame at which the first character name card (first texture in Model Data [1]) is displayed")]
+        public int CharacterNameCardDisplay1
         {
             get => _values.GetInt(1);
             set
@@ -97,7 +109,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value4
+        [Description("The amount of frames that the first character name card stays out for after being displayed")]
+        public int CharacterNameCardDisplayLength1
         {
             get => _values.GetInt(3);
             set
@@ -119,7 +132,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value6
+        [Description("The frame at which the second character name card (second texture in Model Data [1]) is displayed")]
+        public int CharacterNameCardDisplay2
         {
             get => _values.GetInt(5);
             set
@@ -141,7 +155,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value8
+        [Description("The amount of frames that the second character name card stays out for after being displayed")]
+        public int CharacterNameCardDisplayLength2
         {
             get => _values.GetInt(7);
             set
@@ -163,7 +178,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value10
+        [Description("The frame at which the third character name card (third texture in Model Data [1]) is displayed")]
+        public int CharacterNameCardDisplay3
         {
             get => _values.GetInt(9);
             set
@@ -185,7 +201,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value12
+        [Description("The amount of frames that the third character name card stays out for after being displayed")]
+        public int CharacterNameCardDisplayLength3
         {
             get => _values.GetInt(11);
             set
@@ -207,7 +224,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value14
+        [Description("The frame at which the fourth character name card (fourth texture in Model Data [1]) is displayed")]
+        public int CharacterNameCardDisplay4
         {
             get => _values.GetInt(13);
             set
@@ -229,7 +247,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value16
+        [Description("The amount of frames that the fourth character name card stays out for after being displayed")]
+        public int CharacterNameCardDisplayLength4
         {
             get => _values.GetInt(15);
             set
@@ -295,34 +314,34 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value22
+        public byte Value22a
         {
-            get => _values.GetInt(21);
+            get => _values.GetByte(21, 0);
             set
             {
-                _values.SetInt(21, value);
+                _values.SetByte(21, 0, value);
                 SignalPropertyChange();
             }
         }
 
         [Category("MVPM Values")]
-        public int Value23
+        public byte Value22b
         {
-            get => _values.GetInt(22);
+            get => _values.GetByte(21, 1);
             set
             {
-                _values.SetInt(22, value);
+                _values.SetByte(21, 1, value);
                 SignalPropertyChange();
             }
         }
 
         [Category("MVPM Values")]
-        public int Value24
+        public short Value22c
         {
-            get => _values.GetInt(23);
+            get => _values.GetShort(21, 1);
             set
             {
-                _values.SetInt(23, value);
+                _values.SetShort(21, 1, value);
                 SignalPropertyChange();
             }
         }
@@ -345,7 +364,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             *header = new MovParameterEntry();
             byte* pOut = (byte*) header;
             byte* pIn = (byte*) _values._values.Address;
-            for (int i = 0; i < 24 * 4; i++)
+            for (int i = 0; i < 22 * 4; i++)
             {
                 *pOut++ = *pIn++;
             }
