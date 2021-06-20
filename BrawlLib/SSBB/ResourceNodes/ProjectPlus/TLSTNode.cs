@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override Type[] AllowedChildTypes => new[] {typeof(TLSTEntryNode)};
 
-        public string STRMPath => Path.Combine(new DirectoryInfo(DirectoryName).Parent.FullName, "strm");
+        public string STRMPath => string.IsNullOrEmpty(DirectoryName) ? "" : Path.Combine(new DirectoryInfo(DirectoryName).Parent?.FullName ?? "", "strm");
 
         public override void OnPopulate()
         {
@@ -263,7 +263,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
                 header->_fileName = ((TLSTNode) Parent).strOffset;
                 ((TLSTNode) Parent).strOffset += (ushort) (_fileName.UTF8Length() + 1);
             }
-
             if (string.IsNullOrEmpty(_name) || _name == "<null>")
             {
                 header->_title = 0xFFFF;
