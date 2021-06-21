@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         public override Type[] AllowedChildTypes => new[] {typeof(TLSTEntryNode)};
 
-        public string STRMPath => string.IsNullOrEmpty(DirectoryName) ? "" : Path.Combine(new DirectoryInfo(DirectoryName).Parent?.FullName ?? "", "strm");
+        public string STRMPath => string.IsNullOrEmpty(DirectoryName) ? string.Empty : Path.Combine(new DirectoryInfo(DirectoryName).Parent?.FullName ?? "", "strm");
 
         public override void OnPopulate()
         {
@@ -104,7 +104,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
 
         private RSTMNode linkedNode;
 
-        public string rstmPath => Path.Combine(((TLSTNode) Parent).STRMPath, (string.IsNullOrEmpty(_fileName) && BrawlBRSTMs.ContainsKey(_songID) ? BrawlBRSTMs[_songID] : _fileName) + ".brstm");
+        public string rstmPath => (!(Parent is TLSTNode t) || string.IsNullOrEmpty(t.STRMPath)) ? string.Empty : Path.Combine(((TLSTNode) Parent).STRMPath, (string.IsNullOrEmpty(_fileName) && BrawlBRSTMs.ContainsKey(_songID) ? BrawlBRSTMs[_songID] : _fileName) + ".brstm");
 
         public IAudioStream[] CreateStreams()
         {
