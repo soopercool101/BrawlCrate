@@ -299,7 +299,7 @@ namespace BrawlLib.Internal.Windows.Controls
             else
             {
                 int.TryParse(Text, out val2);
-                //val2 = val2.Clamp(Convert.ToInt32(_minValue.Clamp((float)int.MinValue, (float)int.MaxValue)), Convert.ToInt32(_maxValue.Clamp((float)int.MinValue, (float)int.MaxValue)));
+                val2 = val2.Clamp(_minValue == float.MinValue ? int.MinValue : (int)_minValue, _maxValue == float.MaxValue ? int.MaxValue : (int)_maxValue);
             }
 
             if (!_integral)
