@@ -125,3 +125,8 @@ doxygen.conf.bak
 
 # Brawl Module Maps (Not being included in case of copyright)
 BrawlLib/InternalDocumentation/Module/maps/*.map
+
+# Plugins (Plugins can be placecd in these folders for testing purposes, but should never be included in the program)
+BrawlCrate/BrawlCrate/API/Lib/*.py
+BrawlCrate/BrawlCrate/API/Loaders/*.py
+BrawlCrate/BrawlCrate/API/Plugins/*.py
