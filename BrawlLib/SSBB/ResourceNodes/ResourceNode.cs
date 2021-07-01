@@ -192,12 +192,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 #endif
         public virtual ResourceType ResourceFileType => ResourceType.Unknown;
 
-#if DEBUG
-        [Category("DEBUG")]
-        [Browsable(true)]
-#else
-        [Browsable(false)]
-#endif
         public string NodeType => GetType().ToString();
 
         [Browsable(false)]
