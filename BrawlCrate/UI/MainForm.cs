@@ -583,7 +583,9 @@ namespace BrawlCrate.UI
                     {
                         if (c.GetType().Name == "PropertyGridView")
                         {
-                            c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] {0});
+                            setScrollOffset = () =>
+                                c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] {0});
+                            setScrollOffset?.Invoke();
                             break;
                         }
                     }
