@@ -1,4 +1,4 @@
-﻿using BrawlCrate.API;
+using BrawlCrate.API;
 using BrawlCrate.BrawlManagers.CostumeManager;
 using BrawlCrate.BrawlManagers.SongManager;
 using BrawlCrate.BrawlManagers.StageManager;
@@ -585,6 +585,7 @@ namespace BrawlCrate.UI
                         {
                             setScrollOffset = () =>
                                 c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] {0});
+                            setScrollOffset?.Invoke();
                             break;
                         }
                     }
