@@ -14,7 +14,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.MASQ;
 
         public byte _cosmeticSlot; // Recieved from filename since it isn't referenced internally
-        public static readonly byte Size = 0x66;
+
+        public int Size { get; private set; }
 
         public static readonly string[] MasqueradeIDs =
         {
@@ -159,6 +160,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = _cosmeticSlot >= MasqueradeIDs.Length ? $"{_cosmeticSlot}" : MasqueradeIDs[_cosmeticSlot];
             }
+
+            Size = OriginalSource.Length;
 
             return true;
         }

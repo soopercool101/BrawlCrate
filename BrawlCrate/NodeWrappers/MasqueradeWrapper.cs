@@ -76,7 +76,7 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MasqueradeWrapper w = GetInstance<MasqueradeWrapper>();
-            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 50;
+            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < ((MasqueradeNode)w._resource).Size/2;
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
@@ -91,7 +91,8 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            if (_resource.Children.Count >= 50)
+            MasqueradeNode m = _resource as MasqueradeNode;
+            if (_resource.Children.Count >= m.Size/2)
             {
                 return;
             }
