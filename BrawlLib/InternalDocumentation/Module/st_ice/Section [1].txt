@@ -1,0 +1,6 @@
+st_ice Section [1]: 0x00004A44
+Sliding Mountain Hazard Damage
+
+Default: 0x0012
+	/EndDescription
+0011    // Flags for which bytes are underlined
