@@ -27,7 +27,10 @@ Default (Float): 640 (0x44200000)
 	/EndDescription
 0
 
-0x028
+Klap Trap X Axis Position
+(Float) The position on the x axis Klap Trap will spawn. Positive Values are right -->  
+Negative Values are left <---
+
 Default (Float): -30 (0xC1F00000)
 	/EndDescription
 0

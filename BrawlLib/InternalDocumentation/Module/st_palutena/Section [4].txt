@@ -1,0 +1,38 @@
+st_palutena Section [4]: 0x0000001C
+Controls the width of the hurtbox for the stage's first and second platforms.
+(AshibaA01 And AshibaA02) 
+
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_palutena Section [4]: 0x00000030
+Controls the location of the hurtbox of the stage's first, second, and ninth platforms (AshibaA01 And AshibaA02, AshibaD01) on the Y axis.  This specific block of code also handles the "height" of every platform's hurtbox, resizing all hurtboxes but also moves the first, second and ninth platforms on the y axis. Negative numbers will move the hurtbox up, positive will move it down on the y azis.
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_palutena Section [4]: 0x00000064
+Controls the width of the hurtbox for the stage's third,fourth, and ninth Platforms.
+(AshibaB01, AshibaB02, AshibaD01)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_palutena Section [4]: 0x00000068
+Controls the width of the hurtbox for the stage's fifth platform. (AshibaC01)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_palutena Section [4]: 0x0000006C
+Controls the width of the hurtbox for the stage's sixth, seventh, and eighth Platforms.
+(AshibaC02, AshibaC03, AshibaC04)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_palutena Section [4]: 0x00000070
+Controls the location of the hurtbox of the stage's third, and fourth platforms, (AshibaB01, AshibaB02) on the Y axis. Negative numbers will move the hurtbox up, positive will move it down on the y azis.
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_palutena Section [4]: 0x00000074
+Controls the location of the hurtbox of the stage's fifth, sixth, seventh, and eight platforms (AshibaC01, AshibaC02, AshibaC03, and AshibaC04) on the Y axis. Negative numbers will move the hurtbox up, positive will move it down on the y azis.
+	/EndDescription
+1111    // Flags for which bytes are underlined

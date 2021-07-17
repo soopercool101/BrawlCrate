@@ -26,6 +26,20 @@ Default (Float): 0.5 (0x3F000000)
 	/EndDescription
 1111    // Flags for which bytes are underlined
 
+st_dxgarden Section [4]: 0x0000004C
+Klaptrap SFX Timer (Jump SFX): Controls the timing of the sfx when klaptrap jumps out of the water should play.
+
+Default (Float): 40 (0x43480000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgarden Section [4]: 0x00000050
+Klaptrap SFX Timer (Going Back Into Water SFX): Controls the timing of the sfx that occurs when Klaptrap lands back in the water after a jump..
+
+Default (Float): 107  (0x42D60000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
 st_dxgarden Section [4]: 0x00000058
 Klaptrap Hitbox Duration
 
