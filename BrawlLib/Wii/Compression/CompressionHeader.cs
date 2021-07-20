@@ -73,7 +73,7 @@ namespace BrawlLib.Wii.Compression
             get => LargeSize ? _extSize : (uint) _size;
             set
             {
-                if ((value & 0xFFFFFF) != value) //Use extended header for sizes > 24 bits
+                if (value > 0xFFFFFF) //Use extended header for sizes > 24 bits
                 {
                     _extSize = value;
                     _size = 0;
