@@ -1,0 +1,100 @@
+st_dxgreens Section [4]: 0x00000008
+Max Block Columns
+
+This value holds the maximum number of columns in which the blocks will fall. Increasing the number will crash if a block tries to fall in a column that doesn't exist.
+
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000010
+Block Hurtbox Position Allignment
+
+Increases or decreases the position of the block hurtbox in the forward (Z) and right (X) direction.
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000044
+Block Explosion Hitstun and SDI Multiplier
+
+Increases/Decreases the block explosion's hitstun and SDI multiplier.
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x0000004C
+Block Explosion Size
+
+The size of the explosion hitbox.
+
+Default (Float): 15 (0x41700000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000050
+Block Normal Animation Frame
+
+The frame of the pat0 animation that normal blocks will use.
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000054
+Block Explosive Animation Frame
+
+The frame of the pat0 animation that explosive blocks will use.
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000064
+Whispy Windbox Horizontal Position
+
+This alters the X position of the windbox position, both left and right.
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000068
+Wind Effect Angle (Right)
+
+The angle that the wind effect will use when Whispy is blowing to the right.
+
+Default (Float): 45 (0x42340000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x0000006C
+Wind Effect Angle (Left)
+
+The angle that the wind effect will use when Whispy is blowing to the left.
+
+Default (Float): -45 (0xC2340000)
+
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000070
+Wind Direction (Right)
+
+The direction in which players are pushed when Whispy is blowing wind to the right.
+
+Default (Float): 10 (0x41200000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxgreens Section [4]: 0x00000074
+Wind Direction (Left)
+
+The direction in which players are pushed when Whispy is blowing wind to the left.
+
+Default (Float): 170 (0x432A0000)
+
+	/EndDescription
+1111    // Flags for which bytes are underlined
