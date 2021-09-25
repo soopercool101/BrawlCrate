@@ -421,6 +421,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             SSEUnknown = 8
         }
 
+        [Category("Collision Data")]
+        public List<CollisionLink> Points => _points;
+
         public List<CollisionLink> _points = new List<CollisionLink>();
 
         public CollisionObject()
@@ -600,6 +603,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool _highlight;
 
         public Vector2 _rawValue;
+
+        public override string ToString()
+        {
+            return $"{_rawValue}";
+        }
 
         public Vector2 Value
         {
@@ -902,6 +910,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int _encodeIndex;
 
         public CollisionLink _linkLeft, _linkRight;
+
+        public override string ToString()
+        {
+            return $"L: {_linkLeft} | R: {_linkRight}";
+        }
 
         public byte _material;
         public CollisionPlaneMaterialFlags _materialFlags;
