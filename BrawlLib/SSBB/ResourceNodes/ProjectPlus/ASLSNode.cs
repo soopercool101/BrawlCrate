@@ -22,6 +22,8 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             }
         }
 
+        public override bool AllowDuplicateNames => true;
+
         public override bool OnInitialize()
         {
             if (_name == null && _origPath != null)
@@ -75,6 +77,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
     public unsafe class ASLSEntryNode : ResourceNode
     {
         internal ASLSEntry* Header => (ASLSEntry*)WorkingUncompressed.Address;
+        public override bool AllowDuplicateNames => true;
 
         [TypeConverter(typeof(HexUShortConverter))]
         public ushort ButtonFlags
