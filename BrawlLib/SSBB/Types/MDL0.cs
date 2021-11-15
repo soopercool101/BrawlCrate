@@ -1005,7 +1005,7 @@ namespace BrawlLib.SSBB.Types
             set => _mapMode = (byte) value;
         }
 
-        private bool IdentityMatrix
+        public bool IdentityMatrix
         {
             get => _identity == 0 ? false : true;
             set => _identity = (byte) (value ? 1 : 0);

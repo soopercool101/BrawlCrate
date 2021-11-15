@@ -1,4 +1,4 @@
-﻿using BrawlLib.Imaging;
+using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
@@ -213,8 +213,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Texture Matrix Effect")]
+        public bool IdentityMatrix
+        {
+            get => _texMatrixEffect.IdentityMatrix;
+            set
+            {
+                if (CheckIfMetal())
+                    return;
+                _texMatrixEffect.IdentityMatrix = value;
+                SignalPropertyChange();
+                UpdateCurrentControl();
+            }
+        }
+
+        [Category("Texture Matrix Effect")]
         [TypeConverter(typeof(Matrix43StringConverter))]
-        [Browsable(false)]
         public Matrix34 EffectMatrix
         {
             get => _texMatrixEffect.TextureMatrix;
