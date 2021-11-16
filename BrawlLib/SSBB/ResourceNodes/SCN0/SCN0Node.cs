@@ -17,6 +17,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             _version = 4;
         }
 
+        public void ReplaceCamera(SCN0Node camNode)
+        {
+            CameraGroup.Children.Clear();
+            foreach (ResourceNode n in camNode.CameraGroup.Children)
+            {
+                CameraGroup.AddChild(n);
+            }
+        }
+
         private const string _category = "Scene Definition";
         public int _specLights, _lightsets, _amblights, _lights, _fogs, _cameras;
 
