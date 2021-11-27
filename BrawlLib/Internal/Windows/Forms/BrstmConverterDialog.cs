@@ -47,7 +47,7 @@ namespace BrawlLib.Internal.Windows.Forms
 
             public void Wrap()
             {
-                BaseStream.Wrap();
+                SamplePosition = LoopStartSample;
             }
 
             public void Dispose()
