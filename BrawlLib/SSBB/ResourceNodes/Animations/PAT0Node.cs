@@ -1138,12 +1138,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public void CreateEntry()
+        public PAT0TextureEntryNode CreateEntry()
         {
             float value = Children.Count > 0 ? ((PAT0TextureEntryNode) Children[Children.Count - 1])._frame + 1 : 0;
             PAT0TextureEntryNode node = new PAT0TextureEntryNode {_frame = value};
             AddChild(node);
             node.Texture = "NewTexture";
+            return node;
         }
 
         /// <summary>
