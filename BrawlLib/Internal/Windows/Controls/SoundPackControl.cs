@@ -340,6 +340,18 @@ namespace BrawlLib.Internal.Windows.Controls
             list.EndUpdate();
         }
 
+        private void AddFile(ListView list, RSARFileNode file)
+        {
+            list.BeginUpdate();
+            if (_targetNode != null)
+            {
+                list.Items.Add(new SoundPackItem(file));
+            }
+
+            list.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            list.EndUpdate();
+        }
+
         private delegate void delUpdate(ListView list);
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -537,7 +549,7 @@ namespace BrawlLib.Internal.Windows.Controls
             node._parent = _targetNode;
             _targetNode.Files.Add(node);
             node.SignalPropertyChange();
-            Update(lstSets);
+            AddFile(lstSets, node);
         }
 
         private void rSEQToolStripMenuItem_Click(object sender, EventArgs e)
@@ -550,7 +562,7 @@ namespace BrawlLib.Internal.Windows.Controls
             node._parent = _targetNode;
             _targetNode.Files.Add(node);
             node.SignalPropertyChange();
-            Update(lstSets);
+            AddFile(lstSets, node);
         }
 
         private void rBNKToolStripMenuItem_Click(object sender, EventArgs e)
@@ -564,7 +576,7 @@ namespace BrawlLib.Internal.Windows.Controls
             node._parent = _targetNode;
             _targetNode.Files.Add(node);
             node.SignalPropertyChange();
-            Update(lstSets);
+            AddFile(lstSets, node);
         }
 
         private void externalReferenceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -577,7 +589,7 @@ namespace BrawlLib.Internal.Windows.Controls
             node._parent = _targetNode;
             _targetNode.Files.Add(node);
             node.SignalPropertyChange();
-            Update(lstSets);
+            AddFile(lstSets, node);
         }
 
         private void rSTMToolStripMenuItem_Click(object sender, EventArgs e)
@@ -600,7 +612,7 @@ namespace BrawlLib.Internal.Windows.Controls
                     r._parent = _targetNode;
                     _targetNode.Files.Add(r);
                     r.SignalPropertyChange();
-                    Update(lstSets);
+                    AddFile(lstSets, r);
                 }
             }
         }

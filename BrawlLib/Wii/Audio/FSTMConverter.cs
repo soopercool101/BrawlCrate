@@ -67,7 +67,8 @@ namespace BrawlLib.Wii.Audio
 
                 VoidPtr dataFrom = rstm->DATAData->Data;
                 VoidPtr dataTo = data->Data;
-                Memory.Move(dataTo, dataFrom, (uint) data->_length);
+                VoidPtr dataEnd = address + array.LongLength;
+                Memory.Move(dataTo, dataFrom, (uint)(dataEnd - dataTo));
             }
 
             return array;

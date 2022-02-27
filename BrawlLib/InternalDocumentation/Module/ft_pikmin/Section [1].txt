@@ -1,0 +1,9 @@
+ft_pikmin Section [1]: 0x0000A287
+Default Starting Pikmin Count
+
+The number of Pikmin Olimar starts with in modes such as Training Mode.
+
+Default (Byte): 03 (0x03)
+
+	/EndDescription
+0001    // Flags for which bytes are underlined

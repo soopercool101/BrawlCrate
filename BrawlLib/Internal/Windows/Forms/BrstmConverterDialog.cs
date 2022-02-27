@@ -40,14 +40,29 @@ namespace BrawlLib.Internal.Windows.Forms
                 set => BaseStream.SamplePosition = value;
             }
 
-            public int ReadSamples(VoidPtr destAddr, int numSamples)
-            {
-                return BaseStream.ReadSamples(destAddr, numSamples);
+            public unsafe int ReadSamples(VoidPtr destAddr, int numSamples) {
+                if (BaseStream.Channels <= 2) {
+                    return BaseStream.ReadSamples(destAddr, numSamples);
+                } else {
+                    int r = 0;
+                    short* out_ptr = (short*)(void*)destAddr;
+                    short[] buffer = new short[BaseStream.Channels];
+                    fixed (short* buffer_ptr = buffer) {
+                        while (r < numSamples) {
+                            int q = BaseStream.ReadSamples(buffer_ptr, 1);
+                            r += q;
+                            *out_ptr++ = buffer[0];
+                            *out_ptr++ = buffer[1];
+                            if (q == 0) break;
+                        }
+                    }
+                    return r;
+                }
             }
 
             public void Wrap()
             {
-                BaseStream.Wrap();
+                SamplePosition = LoopStartSample;
             }
 
             public void Dispose()
