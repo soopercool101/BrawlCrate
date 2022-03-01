@@ -458,7 +458,7 @@ namespace BrawlLib.Internal.Windows.Forms
         private bool LoadImagesPreservingPaletteInfo(string path)
         {
 #if !MONO
-            Stream sourceStream = new FileStream(_imageSource, FileMode.Open, FileAccess.Read, FileShare.Read);
+            Stream sourceStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
             try
             {
                 PngBitmapDecoder decoder = new PngBitmapDecoder(sourceStream, BitmapCreateOptions.PreservePixelFormat,
