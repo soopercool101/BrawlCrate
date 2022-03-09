@@ -473,7 +473,7 @@ namespace BrawlLib.Internal.Windows.Forms
         private bool LoadImagesPreservingPaletteInfo(string path)
         {
 #if !MONO
-            Stream sourceStream = new FileStream(_imageSource, FileMode.Open, FileAccess.Read, FileShare.Read);
+            Stream sourceStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
             try
             {
                 if (TryLoadPngWithPalette(sourceStream, out BitmapSource preservedImage) && preservedImage.Format == System.Windows.Media.PixelFormats.Indexed8)
