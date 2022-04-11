@@ -25,8 +25,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte
             _randNum; // 0x0F - Number of characters in the random list; should be generated automatically. Max is 100? (Maybe 104, or may have padding).
 
-        [Browsable(false)]
-        public int MaxEntries => (int) ((_size - RSTC.Size) / 2);
+        [Description("Editing this may result in the file no longer working, this needs code changes to function properly")]
+        public int MaxEntries
+        {
+            get
+            {
+                return (int)((_size - RSTC.Size) / 2);
+            }
+            set
+            {
+                _size = (uint)((value * 2) + RSTC.Size);
+                SignalPropertyChange();
+            }
+        }
+
 
         public RSTCGroupNode cssList = new RSTCGroupNode {_type = "Character Select"};
         public RSTCGroupNode randList = new RSTCGroupNode {_type = "Random Character List"};
