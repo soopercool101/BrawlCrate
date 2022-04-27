@@ -124,6 +124,14 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct TySealVertListEntry
+    {
+        public static readonly uint Size = 0x04;
+
+        public bfloat _value;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct TyDataListEntry // Trophy Data
     {
         public static readonly uint Size = 0x60;

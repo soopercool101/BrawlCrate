@@ -56,6 +56,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     case "tySealVertData":
                         node = new TySealVertDataNode();
                         break;
+                    case "tySealVertList":
+                        node = new TySealVertListNode();
+                        break;
                     case "tyDataList":
                         node = new TyDataListNode();
                         break;
@@ -831,7 +834,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private int _unknown0x00;
 
-        public int Unknown0x00
+        public int VertListIndex1
         {
             get => _unknown0x00;
             set
@@ -842,7 +845,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         private int _unknown0x04;
-        public int Unknown0x04
+        public int VertListIndex2
         {
             get => _unknown0x04;
             set
@@ -1367,6 +1370,77 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int OnCalculateSize(bool force)
         {
             return (int)TyDataListEntry.Size;
+        }
+    }
+
+    public unsafe class TySealVertListNode : TyEntryNode
+    {
+        public override bool OnInitialize()
+        {
+            return WorkingUncompressed.Length / 4 > 0;
+        }
+
+        public override void OnPopulate()
+        {
+            for (int i = 0; i < WorkingUncompressed.Length / 4; i++)
+            {
+                new TySealVertListEntryNode { _name = $"Entry [{i}]" }.Initialize(this, WorkingUncompressed.Address[i, 4], (int)TySealVertListEntry.Size);
+            }
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            int size = 0;
+            foreach (ResourceNode n in Children)
+            {
+                size += n.OnCalculateSize(true);
+            }
+
+            return size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            uint offset = 0;
+            foreach (ResourceNode n in Children)
+            {
+                int size = n.OnCalculateSize(true);
+                n.OnRebuild(address + offset, size, true);
+                offset += (uint)size;
+            }
+        }
+    }
+
+    public unsafe class TySealVertListEntryNode : ResourceNode
+    {
+        private float _value;
+
+        public float Value
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public override bool OnInitialize()
+        {
+            _value = ((bfloat*)WorkingUncompressed.Address)->Value;
+            return false;
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return (int)TySealVertListEntry.Size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            TySealVertListEntry* header = (TySealVertListEntry*)address;
+            *header = new TySealVertListEntry();
+            header->_value = _value;
         }
     }
 }
