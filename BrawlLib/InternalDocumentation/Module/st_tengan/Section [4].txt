@@ -1,0 +1,17 @@
+st_tengan Section [4]: 0x00000014
+Cresselia Rotation
+
+Cresselia's model rotation on the Y-Axis
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_tengan Section [4]: 0x00000078
+Cresselia Hazard Variable
+
+Likely activation chance. Setting to negative disables Cresselia's attacks.
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+1111    // Flags for which bytes are underlined
