@@ -754,7 +754,7 @@ namespace BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase
             BRRESNode group = null;
             BRESEntryNode n = null;
             if ((n = TargetAnimation) != null &&
-                (group = n.Parent.Parent as BRRESNode) != null)
+                (group = n.Parent?.Parent as BRRESNode) != null)
             {
                 _vis0 = group.CreateResource<VIS0Node>(SelectedCHR0.Name);
                 foreach (string s in VIS0Indices.Keys)
