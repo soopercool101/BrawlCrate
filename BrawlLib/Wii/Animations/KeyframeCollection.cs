@@ -346,8 +346,6 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            if (_prev == null || _next == null || _value == null)
-                return "";
             return $"Prev={_prev}, Next={_next}, Value={_value}";
         }
     }
