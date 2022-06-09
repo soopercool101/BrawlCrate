@@ -1,0 +1,8 @@
+ft_snake Section [1]: 0x00010783
+Neutral Special Item
+The item spawned with neutral special. Usually a grenade.
+
+Default (Byte): 89 (0x59)
+
+	/EndDescription
+0001    // Flags for which bytes are underlined
