@@ -855,6 +855,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public int Difference => VertListIndex1 - VertListIndex2;
+
         public override bool OnInitialize()
         {
             _unknown0x00 = Header->_unknown0x00;

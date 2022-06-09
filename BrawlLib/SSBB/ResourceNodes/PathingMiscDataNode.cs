@@ -1,5 +1,7 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.OpenGL;
 using BrawlLib.SSBB.Types;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -119,6 +121,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return null;
         }
+
     }
 
     public unsafe class PathingMiscDataEntryNode : ResourceNode
@@ -197,6 +200,45 @@ namespace BrawlLib.SSBB.ResourceNodes
             _id = Header->_id;
             return Header->_dataOffset != 0xFFFFFFFF && Header->_count > 0;
         }
+
+        internal void Render()
+        {
+            PathingMiscDataSubEntryNode lastChild = null;
+            GL.Disable(EnableCap.CullFace);
+            foreach (PathingMiscDataSubEntryNode child in Children)
+            {
+                if (child.Highlight)
+                {
+                    GL.Color4(1.0f, 0.5f, 0.5f, 0.8f);
+                }
+                else
+                {
+                    GL.Color4(0.9f, 0.0f, 0.9f, 0.8f);
+                }
+                GL.Begin(BeginMode.Points);
+                TKContext.DrawBox(
+                    new Vector3(child.Value._x - 1 * 0.15f, child.Value._y - 1 * 0.15f, child.Value._z - 1 * 0.15f),
+                    new Vector3(child.Value._x + 1 * 0.15f, child.Value._y + 1 * 0.15f, child.Value._z + 1 * 0.15f));
+                if (lastChild != null)
+                {
+                    if (lastChild.Highlight && child.Highlight)
+                    {
+                        GL.Color4(1.0f, 0.5f, 0.5f, 0.4f);
+                    }
+                    else
+                    {
+                        GL.Color4(1.0f, 1.0f, 1.0f, 0.4f);
+                    }
+                    GL.Begin(BeginMode.Lines);
+                    GL.Vertex3(lastChild.Value._x, lastChild.Value._y, lastChild.Value._z);
+                    GL.Vertex3(child.Value._x, child.Value._y, child.Value._z);
+                    GL.End();
+                }
+
+                lastChild = child;
+            }
+            GL.Enable(EnableCap.CullFace);
+        }
     }
 
     public unsafe class PathingMiscDataSubEntryNode : ResourceNode
@@ -215,6 +257,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
+        internal bool Highlight = false;
+
         public override int OnCalculateSize(bool force)
         {
             return (int)PathingMiscDataSubEntry.Size;

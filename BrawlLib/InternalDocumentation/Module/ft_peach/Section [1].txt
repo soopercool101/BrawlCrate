@@ -1,0 +1,25 @@
+ft_peach Section [1]: 0x0000A89B
+Turnip Item ID
+The item spawned with down B. Usually turnip.
+
+Default (Byte): 86 (0x56)
+
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+ft_peach Section [1]: 0x000102E3
+Peach Blossom Item Spawned
+The item spawned with Peach Blossom. Usually food.
+
+Default (Byte): 64 (0x40)
+
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+ft_peach Section [1]: 0x000102E7
+Peach Blossom Food ID. Setting this to 0 allows you to spawn other items with Peach Blossom instead of food.
+
+Default (Byte): 28 (0x1C)
+
+	/EndDescription
+0001    // Flags for which bytes are underlined
