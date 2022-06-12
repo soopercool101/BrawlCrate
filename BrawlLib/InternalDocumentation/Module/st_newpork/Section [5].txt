@@ -1,0 +1,39 @@
+st_newpork Section [5]: 0x00000034
+Initial Ultimate Chimera Timer
+The initial timer for the Ultimate Chimera's appearance.
+
+Default (Byte): 1200 (0x44960000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_newpork Section [5]: 0x00000038
+Random Ultimate Chimera Timer Minimum
+The minimum amount of frames it takes for the Ultimate Chimera to appear after the initial timer.
+
+Default (Byte): 1800 (0x44E10000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_newpork Section [5]: 0x0000003C
+Random Ultimate Chimera Timer Maximum
+The maximum amount of frames it takes for the Ultimate Chimera to appear after the initial timer.
+
+Default (Byte): 2700 (0x4528C000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_newpork Section [5]: 0x00000048
+Ultimate Chimera Length
+How many frames the Ultimate Chimera stays out for.
+
+Default (Byte): 900 (0x44610000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_newpork Section [5]: 0x0000004C
+Ultimate Chimera Fixed Time
+The number of frames it takes for the random calcs to start after the UC disappears.
+
+Default (Byte): 3600 (0x45610000)
+	/EndDescription
+1111    // Flags for which bytes are underlined

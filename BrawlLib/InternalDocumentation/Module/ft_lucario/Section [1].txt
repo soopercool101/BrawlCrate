@@ -1,0 +1,8 @@
+ft_lucario Section [1]: 0x0000F474
+Extreme Speed Bound Action
+The action called when Lucario collides with a surface while using Up Special.
+
+Default (Byte): 285 (0x11D)
+
+	/EndDescription
+0011    // Flags for which bytes are underlined
