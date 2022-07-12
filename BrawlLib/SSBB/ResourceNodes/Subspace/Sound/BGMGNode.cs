@@ -96,16 +96,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
 
-        private int _infoIndex;
+        private int _songID;
 
         [Category("BGMG")]
-        [DisplayName("Infoindex")]
-        public int InfoIndex
+        [DisplayName("Song ID")]
+        [TypeConverter(typeof(HexIntConverter))]
+        public int SongID
         {
-            get => _infoIndex;
+            get => _songID;
             set
             {
-                _infoIndex = value;
+                _songID = value;
                 SignalPropertyChange();
             }
         }
@@ -125,12 +126,27 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        private float _playOffsetFrame;
+
+        [Category("BGMG")]
+        [DisplayName("Play Offset Frame")]
+        public float PlayOffsetFrame
+        {
+            get => _playOffsetFrame;
+            set
+            {
+                _playOffsetFrame = value;
+                SignalPropertyChange();
+            }
+        }
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
             _stageID = Header->StageID;
-            _infoIndex = Header->_infoIndex;
+            _songID = Header->_songID;
             _volume = Header->_volume;
+            _playOffsetFrame = Header->_playOffsetFrame;
 
             if (_name == null)
             {
@@ -148,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             BGMGEntry* header = (BGMGEntry*)address;
-            *header = new BGMGEntry(StageID, InfoIndex, Volume);
+            *header = new BGMGEntry(StageID, SongID, Volume, PlayOffsetFrame);
         }
     }
 }

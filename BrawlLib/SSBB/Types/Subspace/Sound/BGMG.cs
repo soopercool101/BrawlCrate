@@ -48,15 +48,23 @@ namespace BrawlLib.SSBB.Types.Subspace.Sound
     {
         public const int Size = 0x10;
         private fixed byte _stageID[4];
-        public bint _infoIndex;
+        public bint _songID;
         public bint _volume;
-        public int _pad;
+        public bfloat _playOffsetFrame;
 
-        public BGMGEntry(string ID, int InfoIndex, int Volume)
+        public BGMGEntry(string ID, int SongID, int Volume)
         {
-            _infoIndex = InfoIndex;
+            _songID = SongID;
             _volume = Volume;
-            _pad = 0;
+            _playOffsetFrame = 0;
+            StageID = ID;
+        }
+
+        public BGMGEntry(string ID, int SongID, int Volume, float playOffset)
+        {
+            _songID = SongID;
+            _volume = Volume;
+            _playOffsetFrame = playOffset;
             StageID = ID;
         }
 
