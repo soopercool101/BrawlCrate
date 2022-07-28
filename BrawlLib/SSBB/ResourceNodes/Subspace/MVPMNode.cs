@@ -270,18 +270,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("MVPM Values")]
-        public int Value18
+        [Description("The ID of the song to play when the movie is playing")]
+        public string SongID
         {
-            get => _values.GetInt(17);
+            get => _values.GetHex(17);
             set
             {
-                _values.SetInt(17, value);
+                _values.SetHex(17, value);
                 SignalPropertyChange();
             }
         }
 
         [Category("MVPM Values")]
-        public int Value19
+        [Description("The number of frames before the song starts")]
+        public int SongDelay
         {
             get => _values.GetInt(18);
             set
