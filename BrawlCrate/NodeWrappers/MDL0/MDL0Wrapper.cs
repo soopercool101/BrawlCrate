@@ -112,7 +112,7 @@ namespace BrawlCrate.NodeWrappers
                         Keys.Control | Keys.Shift | Keys.D3)
                 )
             ));
-            _menu.Items.Add(new ToolStripMenuItem("&Reimport Meshes", null, ReimportAction));
+            _menu.Items.Add(new ToolStripMenuItem("&Reimport Meshes", null, ReimportAction, Keys.Control | Keys.Shift | Keys.R));
             _menu.Items.Add(new ToolStripMenuItem("&Optimize Meshes", null, OptimizeAction));
             _menu.Items.Add(new ToolStripMenuItem("&Recalculate Bounding Boxes", null, RecalcBBsOption));
             _menu.Items.Add(new ToolStripSeparator());

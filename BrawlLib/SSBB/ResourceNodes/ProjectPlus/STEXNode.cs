@@ -69,7 +69,11 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
             get => _module;
             set
             {
-                _module = value;
+                _module = value.Substring(0, value.Length > 32 ? 32 : value.Length);
+                while (_module.UTF8Length() > 32)
+                {
+                    _module = value.Substring(0, _module.Length - 1);
+                }
                 SignalPropertyChange();
             }
         }

@@ -1,4 +1,5 @@
-﻿using BrawlLib.Internal.Windows.Forms;
+﻿using BrawlCrate.UI;
+using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
@@ -130,7 +131,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void RegenIDs()
         {
-            uint currentID = 0xF000;
+            uint currentID = Resource.FilePath.EndsWith("menu.tlst", StringComparison.OrdinalIgnoreCase) ? (uint)0xF040 : 0xF000;
             foreach(TLSTEntryNode t in Resource.Children)
             {
                 if (!string.IsNullOrEmpty(t.SongFileName))

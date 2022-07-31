@@ -1,4 +1,5 @@
 ﻿using BrawlCrate.UI;
+using BrawlLib.Imaging;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB;
@@ -7,7 +8,9 @@ using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
+using static IronPython.Modules.PythonIterTools;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -648,8 +651,21 @@ namespace BrawlCrate.NodeWrappers
             {
                 return;
             }
+            var hasTextures = Resource.GetChildrenRecursive().Any(c => c is TEX0Node);
+            if (hasTextures)
+            {
+                ExportAllFormatDialog dialog =
+                    new ExportAllFormatDialog("Export All", typeof(TEX0Node), FileFilters.TEX0);
 
-            ((ARCNode) _resource).ExtractToFolder(path);
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ((ARCNode)_resource).ExtractToFolder(path, dialog.SelectedExtension);
+                }
+            }
+            else
+            {
+                ((ARCNode)_resource).ExtractToFolder(path);
+            }
         }
 
         public void ReplaceAll()
