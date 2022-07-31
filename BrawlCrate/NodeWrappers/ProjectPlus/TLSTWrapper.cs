@@ -1,5 +1,4 @@
-﻿using BrawlCrate.UI;
-using BrawlLib.Internal.Windows.Forms;
+﻿using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.ProjectPlus;

@@ -1,5 +1,4 @@
 ﻿using BrawlCrate.UI;
-using BrawlLib.Imaging;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB;
@@ -10,7 +9,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-using static IronPython.Modules.PythonIterTools;
 
 namespace BrawlCrate.NodeWrappers
 {
