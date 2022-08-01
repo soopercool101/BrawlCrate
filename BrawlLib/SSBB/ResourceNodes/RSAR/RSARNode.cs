@@ -16,6 +16,64 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal RSARHeader* Header => (RSARHeader*) WorkingSource.Address;
         public override ResourceType ResourceFileType => ResourceType.RSAR;
 
+        public override bool IsDirty
+        {
+            get
+            {
+                if (!AllowSaving)
+                {
+                    return false;
+                }
+
+                if (HasChanged)
+                {
+                    return true;
+                }
+
+                if (_children != null)
+                {
+                    foreach (ResourceNode n in _children)
+                    {
+                        if (n.HasChanged || n.IsBranch || n.IsDirty)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                if (Files != null)
+                {
+                    foreach (ResourceNode n in Files)
+                    {
+                        if (n.HasChanged || n.IsBranch || n.IsDirty)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
+            }
+            set
+            {
+                _changed = value;
+                if (_children != null)
+                {
+                    foreach (ResourceNode r in Children)
+                    {
+                        if (r._children != null)
+                        {
+                            r.IsDirty = value;
+                        }
+                        else
+                        {
+                            r._changed = value;
+                        }
+                    }
+                }
+            }
+        }
+
         [Category("Sound Archive")]
         public ushort SeqSoundCount
         {
