@@ -48,7 +48,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
         public byte _unk0;
         public byte _unk1;
         public byte _unk2;
-        public byte _unk3;
+        public sbyte _unk3;
         private fixed byte _sendingID[4];
         private fixed sbyte _jumpBone[0x20];
 
@@ -156,7 +156,8 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
 
         public ADSJEntry(string Stage, string SendingID, string Bone)
         {
-            _unk0 = _unk1 = _unk2 = _unk3 = 0;
+            _unk0 = _unk1 = _unk2 = 0;
+            _unk3 = 0;
             DoorID = Stage;
             SendStage = SendingID;
             JumpBone = Bone;
