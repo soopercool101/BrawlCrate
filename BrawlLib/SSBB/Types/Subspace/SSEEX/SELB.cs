@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.SSEEX
 {
-    //Alot of this was reused from STPM
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct SELB
     {

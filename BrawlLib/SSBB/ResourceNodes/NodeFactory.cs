@@ -28,7 +28,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {"MASQ", typeof(MasqueradeNode)},
             {"MSBIN", typeof(MSBinNode)},
             {"CMM", typeof(CMMNode)},
-            {"SELB", typeof(SELBNode)}
+            {"SELB", typeof(SELBNode)},
+            {"SELC", typeof(SELCNode)}
         };
 
         static NodeFactory()

@@ -114,8 +114,8 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Alternate Stage Loader Data", "asl"),
             new SupportedFileInfo(true, "Stage Info Parameters", "param"),
             new SupportedFileInfo(true, "Stage Tracklist", "tlst"),
-            new SupportedFileInfo(true, "SELB", "selb"),
-            new SupportedFileInfo(true, "SELC", "selc"),
+            new SupportedFileInfo(true, "Adventure Character Selection B", "selb"),
+            new SupportedFileInfo(true, "Adventure Character Selection C", "selc"),
 
             //The following files are not for direct editing
 

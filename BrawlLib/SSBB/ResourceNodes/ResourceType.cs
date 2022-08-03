@@ -233,6 +233,6 @@
 
         // SSEEX
         SELB,
-        SELC
+        SELCTeam
     }
 }

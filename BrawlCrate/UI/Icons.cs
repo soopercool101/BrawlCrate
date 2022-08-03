@@ -170,7 +170,8 @@ namespace BrawlCrate.UI
             //P+
             {ResourceType.ASLS, Resources.Folder},
 
-            {ResourceType.Folder, Resources.Folder}
+            {ResourceType.Folder, Resources.Folder},
+            {ResourceType.SELCTeam, Resources.Folder}
         };
 
         public static int getImageIndex(ResourceType resResourceFileType)
