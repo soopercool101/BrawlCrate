@@ -33,5 +33,10 @@
         {
             return value <= min ? min : value >= max ? max : value;
         }
+
+        public static sbyte Clamp(this sbyte value, sbyte min, sbyte max)
+        {
+            return value <= min ? min : value >= max ? max : value;
+        }
     }
 }

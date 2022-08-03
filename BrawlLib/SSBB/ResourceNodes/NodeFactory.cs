@@ -1,5 +1,6 @@
 using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
+using BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX;
 using BrawlLib.Wii;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {"REL", typeof(RELNode)},
             {"MASQ", typeof(MasqueradeNode)},
             {"MSBIN", typeof(MSBinNode)},
-            {"CMM", typeof(CMMNode)}
+            {"CMM", typeof(CMMNode)},
+            {"SELB", typeof(SELBNode)}
         };
 
         static NodeFactory()
