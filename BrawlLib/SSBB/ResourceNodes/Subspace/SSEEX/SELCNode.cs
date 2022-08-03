@@ -80,12 +80,13 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
         }
 
         public byte _randomCharacters;
+        [Description("The number of characters added to the random pool. This pool starts from the first entry in Team 1, and continues down in order")]
         public byte RandomCharacters
         {
             get => _randomCharacters;
             set
             {
-                _randomCharacters = value;
+                _randomCharacters = value.Clamp(0, (byte)Entries);
                 SignalPropertyChange();
             }
         }
@@ -150,7 +151,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             header->_unlockSetting = (byte) _unlockSetting;
             header->_disableSubfighterSelection = (byte)(_disableSubfighterSelection ? 1 : 0);
             header->_teamAffectsSublevel = (byte)(_teamAffectsSublevel ? 1 : 0);
-            header->_randomCharacters = _randomCharacters;
+            header->_randomCharacters = _randomCharacters.Clamp(0, (byte)Entries);
             header->_minimumUnlocks = _minimumUnlocks;
             header->_pad0x7 = 0;
             header->_team1Count = (byte)Children[0].Children.Count;
