@@ -98,7 +98,7 @@ namespace BrawlCrate.UI
             editToolStripMenuItem.Enabled = false;
         }
 
-        public MainForm()
+        private MainForm()
         {
             InitializeComponent();
             Text = Program.AssemblyTitleFull;
