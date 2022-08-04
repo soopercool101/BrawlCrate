@@ -186,16 +186,21 @@ namespace BrawlCrate.ExternalInterfacing
                 if (Program.OpenFiles("Portable Network Graphics|*.png", out string[] fileNames) > 0 &&
                     frm.ShowDialog("Color Smasher", "How many colors?", 256) == DialogResult.OK)
                 {
-                    Dictionary<int, string> names = new Dictionary<int, string>();
-                    foreach (string s in fileNames)
-                    {
-                        File.Copy(s, Path.Combine(InputDir.FullName, $"{names.Count:D5}.png"));
-                        names.Add(names.Count, Path.GetFileNameWithoutExtension(s));
-                    }
-
-                    ColorSmasher(frm.NewValue, b, b.ImageCount, names);
+                    ColorSmashImport(b, fileNames, frm.NewValue);
                 }
             }
+        }
+
+        public static void ColorSmashImport(BRRESNode b, string[] fileNames, int colors)
+        {
+            Dictionary<int, string> names = new Dictionary<int, string>();
+            foreach (string s in fileNames)
+            {
+                File.Copy(s, Path.Combine(InputDir.FullName, $"{names.Count:D5}.png"));
+                names.Add(names.Count, Path.GetFileNameWithoutExtension(s));
+            }
+
+            ColorSmasher(colors, b, b.ImageCount, names);
         }
 
         public static void ColorSmasher(int paletteCount, BRRESNode b, int index, Dictionary<int, string> names)
