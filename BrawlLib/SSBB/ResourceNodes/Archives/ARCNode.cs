@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.SSBB.Types;
 using BrawlLib.Wii;
@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -358,6 +359,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private readonly Dictionary<ResourceNode, ARCFileHeader> _originalHeaders =
             new Dictionary<ResourceNode, ARCFileHeader>();
+
+        public void SortChildrenByFileIndex()
+        {
+            if (Children == null || Children.Count <= 0)
+            {
+                return;
+            }
+
+            _children = _children.OrderBy(o => (o as ARCEntryNode)?.FileIndex ?? -1).ToList();
+            SignalPropertyChange();
+        }
 
         public override void OnPopulate()
         {
