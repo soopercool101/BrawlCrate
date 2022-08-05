@@ -26,6 +26,10 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
         }
 
         public sbyte _stockCount;
+        [Description(@"Number of stocks for players. Special values:
+-1 = Use the character count
+-2 = Keep previous stock count
+-3 = Add character count to previous stock count")]
         public sbyte StockCount
         {
             get => _stockCount;

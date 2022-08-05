@@ -29,6 +29,10 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
         }
 
         public sbyte _stockCount;
+        [Description(@"Number of stocks for players. Special values:
+-1 = Use the character count
+-2 = Keep previous stock count
+-3 = Add character count to previous stock count")]
         public sbyte StockCount
         {
             get => _stockCount;
@@ -79,14 +83,20 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             }
         }
 
-        public byte _randomCharacters;
-        [Description("The number of characters added to the random pool. This pool starts from the first entry in Team 1, and continues down in order")]
-        public byte RandomCharacters
+        public enum RosterModes : byte
         {
-            get => _randomCharacters;
+            Normal = 0,
+            Randomize = 1,
+            Smashdown = 2
+        }
+
+        public RosterModes _rosterMode;
+        public RosterModes RosterMode
+        {
+            get => _rosterMode;
             set
             {
-                _randomCharacters = value.Clamp(0, (byte)Entries);
+                _rosterMode = value;
                 SignalPropertyChange();
             }
         }
@@ -145,7 +155,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             _unlockSetting = (SSEEXUnlockSettings) Header->_unlockSetting;
             _disableSubfighterSelection = Header->_disableSubfighterSelection == 1;
             _teamAffectsSublevel = Header->_teamAffectsSublevel == 1;
-            _randomCharacters = Header->_randomCharacters;
+            _rosterMode = (RosterModes)Header->_rosterMode;
             _minimumUnlocks = Header->_minimumUnlocks;
             _replenishRoster = Header->_replenishRoster == 1;
             return true;
@@ -165,7 +175,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             header->_unlockSetting = (byte) _unlockSetting;
             header->_disableSubfighterSelection = (byte)(_disableSubfighterSelection ? 1 : 0);
             header->_teamAffectsSublevel = (byte)(_teamAffectsSublevel ? 1 : 0);
-            header->_randomCharacters = _randomCharacters.Clamp(0, (byte)Entries);
+            header->_rosterMode = (byte)_rosterMode;
             header->_minimumUnlocks = _minimumUnlocks;
             header->_replenishRoster = (byte)(_replenishRoster ? 1 : 0);
             header->_team1Count = (byte)Children[0].Children.Count;
