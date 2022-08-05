@@ -31,7 +31,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             get => _stockCount;
             set
             {
-                _stockCount = value.Clamp(-1, 10);
+                _stockCount = value.Clamp(-3, 10);
                 SignalPropertyChange();
             }
         }

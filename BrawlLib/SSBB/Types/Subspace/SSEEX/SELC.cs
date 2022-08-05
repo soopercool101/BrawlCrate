@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.Types.Subspace.SSEEX
         public byte _teamAffectsSublevel;
         public byte _randomCharacters;
         public byte _minimumUnlocks;
-        public byte _pad0x7;
+        public byte _replenishRoster;
         public byte _team1Count;
         public byte _team2Count;
         public byte _team3Count;

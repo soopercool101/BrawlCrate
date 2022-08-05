@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             get => _stockCount;
             set
             {
-                _stockCount = value.Clamp(-1, 10);
+                _stockCount = value.Clamp(-3, 10);
                 SignalPropertyChange();
             }
         }
@@ -103,6 +103,19 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             }
         }
 
+        public bool _replenishRoster;
+
+        [Description("When true, adds back previously alive members to the roster")]
+        public bool ReplenishRoster
+        {
+            get => _replenishRoster;
+            set
+            {
+                _replenishRoster = value;
+                SignalPropertyChange();
+            }
+        }
+
         public override void OnPopulate()
         {
             var currentOffset = 0;
@@ -134,6 +147,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             _teamAffectsSublevel = Header->_teamAffectsSublevel == 1;
             _randomCharacters = Header->_randomCharacters;
             _minimumUnlocks = Header->_minimumUnlocks;
+            _replenishRoster = Header->_replenishRoster == 1;
             return true;
         }
 
@@ -153,7 +167,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             header->_teamAffectsSublevel = (byte)(_teamAffectsSublevel ? 1 : 0);
             header->_randomCharacters = _randomCharacters.Clamp(0, (byte)Entries);
             header->_minimumUnlocks = _minimumUnlocks;
-            header->_pad0x7 = 0;
+            header->_replenishRoster = (byte)(_replenishRoster ? 1 : 0);
             header->_team1Count = (byte)Children[0].Children.Count;
             header->_team2Count = (byte)Children[1].Children.Count;
             header->_team3Count = (byte)Children[2].Children.Count;
@@ -162,7 +176,6 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             header->_team6Count = (byte)Children[5].Children.Count;
             header->_team7Count = (byte)Children[6].Children.Count;
             header->_team8Count = (byte)Children[7].Children.Count;
-            
             uint offset = SELC.Size;
             foreach (ResourceNode n in Children)
             {
@@ -210,6 +223,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
 
     public unsafe class SELCEntryNode : ResourceNode
     {
+        public override bool supportsCompression => false;
+
         public byte _cssID;
         [DisplayName("CSS ID")]
         [TypeConverter(typeof(DropDownListBrawlExCSSIDs))]
