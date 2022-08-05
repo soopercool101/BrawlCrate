@@ -27,15 +27,17 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
 
         public sbyte _stockCount;
         [Description(@"Number of stocks for players. Special values:
--1 = Use the character count
--2 = Keep previous stock count
--3 = Add character count to previous stock count")]
+-1: Use the character count
+-2: Keep previous stock count
+-3: Make stock count = character count + previous stock count
+-4: Make character count = character count + previous stock count
+-5: Make character and stock count = character count + previous stock count")]
         public sbyte StockCount
         {
             get => _stockCount;
             set
             {
-                _stockCount = value.Clamp(-3, 10);
+                _stockCount = value.Clamp(-5, 10);
                 SignalPropertyChange();
             }
         }
