@@ -71,7 +71,7 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Stage Collision Attributes", null, ImportSCLAAction),
                 new ToolStripMenuItem("Stage Parameters", null, ImportSTPMAction),
                 new ToolStripMenuItem("Stage Table", null,
-                    new ToolStripMenuItem("STDT", null, ImportSTDTAction),
+                    new ToolStripMenuItem("STDT", null, ImportSTDTAction)
                     //new ToolStripMenuItem("TBCL", null, ImportTBCLAction),
                     //new ToolStripMenuItem("TBGC", null, ImportTBGCAction),
                     //new ToolStripMenuItem("TBGD", null, ImportTBGDAction),
