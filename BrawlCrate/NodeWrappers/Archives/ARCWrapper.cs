@@ -72,13 +72,13 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Stage Parameters", null, ImportSTPMAction),
                 new ToolStripMenuItem("Stage Table", null,
                     new ToolStripMenuItem("STDT", null, ImportSTDTAction),
-                    new ToolStripMenuItem("TBCL", null, ImportTBCLAction),
-                    new ToolStripMenuItem("TBGC", null, ImportTBGCAction),
-                    new ToolStripMenuItem("TBGD", null, ImportTBGDAction),
-                    new ToolStripMenuItem("TBGM", null, ImportTBGMAction),
-                    new ToolStripMenuItem("TBLV", null, ImportTBLVAction),
-                    new ToolStripMenuItem("TBRM", null, ImportTBRMAction),
-                    new ToolStripMenuItem("TBST", null, ImportTBSTAction)
+                    //new ToolStripMenuItem("TBCL", null, ImportTBCLAction),
+                    //new ToolStripMenuItem("TBGC", null, ImportTBGCAction),
+                    //new ToolStripMenuItem("TBGD", null, ImportTBGDAction),
+                    //new ToolStripMenuItem("TBGM", null, ImportTBGMAction),
+                    //new ToolStripMenuItem("TBLV", null, ImportTBLVAction),
+                    //new ToolStripMenuItem("TBRM", null, ImportTBRMAction),
+                    //new ToolStripMenuItem("TBST", null, ImportTBSTAction)
                 ),
                 new ToolStripMenuItem("Stepjump", null, ImportADSJAction)
             ));
@@ -664,6 +664,12 @@ namespace BrawlCrate.NodeWrappers
             {
                 ((ARCNode)_resource).ExtractToFolder(path);
             }
+        }
+        
+        public void SortChildrenByFileIndex()
+        {
+            ((ARCNode)_resource).SortChildrenByFileIndex();
+            RefreshView(_resource);
         }
 
         public void ReplaceAll()
