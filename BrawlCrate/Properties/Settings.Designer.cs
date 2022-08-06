@@ -13,7 +13,7 @@ namespace BrawlCrate.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.3.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -26,7 +26,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UpdateSettings {
+        internal bool UpdateSettings {
             get {
                 return ((bool)(this["UpdateSettings"]));
             }
@@ -49,7 +49,7 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection RecentFiles {
+        internal global::System.Collections.Specialized.StringCollection RecentFiles {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["RecentFiles"]));
             }
@@ -132,7 +132,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool APIEnabled {
+        internal bool APIEnabled {
             get {
                 return ((bool)(this["APIEnabled"]));
             }
@@ -144,7 +144,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string PythonInstallationPath {
+        internal string PythonInstallationPath {
             get {
                 return ((string)(this["PythonInstallationPath"]));
             }
@@ -156,7 +156,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string FSharpInstallationPath {
+        internal string FSharpInstallationPath {
             get {
                 return ((string)(this["FSharpInstallationPath"]));
             }
@@ -168,7 +168,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CheckUpdatesAtStartup {
+        internal bool CheckUpdatesAtStartup {
             get {
                 return ((bool)(this["CheckUpdatesAtStartup"]));
             }
@@ -180,7 +180,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool GetDocumentationUpdates {
+        internal bool GetDocumentationUpdates {
             get {
                 return ((bool)(this["GetDocumentationUpdates"]));
             }
@@ -192,7 +192,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool UpdateAutomatically {
+        internal bool UpdateAutomatically {
             get {
                 return ((bool)(this["UpdateAutomatically"]));
             }
@@ -204,7 +204,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool DiscordRPCEnabled {
+        internal bool DiscordRPCEnabled {
             get {
                 return ((bool)(this["DiscordRPCEnabled"]));
             }
@@ -215,7 +215,7 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Nullable<BrawlCrate.Discord.DiscordSettings.ModNameType> DiscordRPCNameType {
+        internal global::System.Nullable<BrawlCrate.Discord.DiscordSettings.ModNameType> DiscordRPCNameType {
             get {
                 return ((global::System.Nullable<BrawlCrate.Discord.DiscordSettings.ModNameType>)(this["DiscordRPCNameType"]));
             }
@@ -227,7 +227,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("My Mod")]
-        public string DiscordRPCNameCustom {
+        internal string DiscordRPCNameCustom {
             get {
                 return ((string)(this["DiscordRPCNameCustom"]));
             }
@@ -274,7 +274,7 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection APILoadersBlacklist {
+        internal global::System.Collections.Specialized.StringCollection APILoadersBlacklist {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["APILoadersBlacklist"]));
             }
@@ -285,7 +285,7 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection APILoadersWhitelist {
+        internal global::System.Collections.Specialized.StringCollection APILoadersWhitelist {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["APILoadersWhitelist"]));
             }
@@ -297,7 +297,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool APIOnlyAllowLoadersFromWhitelist {
+        internal bool APIOnlyAllowLoadersFromWhitelist {
             get {
                 return ((bool)(this["APIOnlyAllowLoadersFromWhitelist"]));
             }
@@ -309,7 +309,7 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool APIAutoUpdate {
+        internal bool APIAutoUpdate {
             get {
                 return ((bool)(this["APIAutoUpdate"]));
             }
