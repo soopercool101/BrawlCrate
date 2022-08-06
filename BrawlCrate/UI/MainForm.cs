@@ -35,6 +35,8 @@ namespace BrawlCrate.UI
         private static MainForm _instance;
         public static MainForm Instance => _instance ?? (_instance = new MainForm());
 
+        public static string BuildPath => Properties.Settings.Default.BuildPath;
+
         public BaseWrapper RootNode { get; private set; }
 
         private SettingsDialog _settings;
