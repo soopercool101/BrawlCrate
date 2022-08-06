@@ -74,13 +74,20 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             }
         }
 
-        public bool _teamAffectsSublevel;
-        public bool TeamAffectsSublevel
+        public enum SublevelChanges : byte
         {
-            get => _teamAffectsSublevel;
+            None = 0,
+            Team = 1,
+            Cooperative = 2,
+            Difficulty = 3
+        }
+        public SublevelChanges _sublevelChanger;
+        public SublevelChanges SublevelChanger
+        {
+            get => _sublevelChanger;
             set
             {
-                _teamAffectsSublevel = value;
+                _sublevelChanger = value;
                 SignalPropertyChange();
             }
         }
@@ -115,15 +122,15 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             }
         }
 
-        public bool _replenishRoster;
+        public bool _addSurvivingMembers;
 
         [Description("When true, adds back previously alive members to the roster")]
-        public bool ReplenishRoster
+        public bool AddSurvivingMembers
         {
-            get => _replenishRoster;
+            get => _addSurvivingMembers;
             set
             {
-                _replenishRoster = value;
+                _addSurvivingMembers = value;
                 SignalPropertyChange();
             }
         }
@@ -156,10 +163,10 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             _stockCount = Header->_stockCount;
             _unlockSetting = (SSEEXUnlockSettings) Header->_unlockSetting;
             _disableSubfighterSelection = Header->_disableSubfighterSelection == 1;
-            _teamAffectsSublevel = Header->_teamAffectsSublevel == 1;
+            _sublevelChanger = (SublevelChanges) Header->_sublevelChanger;
             _rosterMode = (RosterModes)Header->_rosterMode;
             _minimumUnlocks = Header->_minimumUnlocks;
-            _replenishRoster = Header->_replenishRoster == 1;
+            _addSurvivingMembers = Header->_addSurvivingMembers == 1;
             return true;
         }
 
@@ -176,10 +183,10 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             header->_stockCount = StockCount;
             header->_unlockSetting = (byte) _unlockSetting;
             header->_disableSubfighterSelection = (byte)(_disableSubfighterSelection ? 1 : 0);
-            header->_teamAffectsSublevel = (byte)(_teamAffectsSublevel ? 1 : 0);
+            header->_sublevelChanger = (byte)_sublevelChanger;
             header->_rosterMode = (byte)_rosterMode;
             header->_minimumUnlocks = _minimumUnlocks;
-            header->_replenishRoster = (byte)(_replenishRoster ? 1 : 0);
+            header->_addSurvivingMembers = (byte)(_addSurvivingMembers ? 1 : 0);
             header->_team1Count = (byte)Children[0].Children.Count;
             header->_team2Count = (byte)Children[1].Children.Count;
             header->_team3Count = (byte)Children[2].Children.Count;

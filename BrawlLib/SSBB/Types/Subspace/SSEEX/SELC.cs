@@ -12,10 +12,10 @@ namespace BrawlLib.SSBB.Types.Subspace.SSEEX
         public sbyte _stockCount;
         public byte _unlockSetting;
         public byte _disableSubfighterSelection;
-        public byte _teamAffectsSublevel;
+        public byte _sublevelChanger;
         public byte _rosterMode;
         public byte _minimumUnlocks;
-        public byte _replenishRoster;
+        public byte _addSurvivingMembers;
         public byte _team1Count;
         public byte _team2Count;
         public byte _team3Count;
