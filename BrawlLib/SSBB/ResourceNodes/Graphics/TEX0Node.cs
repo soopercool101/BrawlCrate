@@ -4,12 +4,16 @@ using BrawlLib.Internal.Drawing;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.Types;
+using BrawlLib.SSBB.Types.Animations;
 using BrawlLib.Wii.Textures;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -477,6 +481,235 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return ((TEX0v1*) source.Address)->_header._tag == TEX0v1.Tag ? new TEX0Node() : null;
+        }
+
+        public PAT0Node GeneratePAT0()
+        {
+            return GeneratePAT0(false);
+        }
+
+        public PAT0Node GeneratePAT0(bool force)
+        {
+            if (Parent == null)
+            {
+                return null;
+            }
+
+            if (Parent is BRESGroupNode && Parent.Parent != null && Parent.Parent is BRRESNode)
+            {
+                // Check if this is part of a sequence
+                if (Regex.Match(Name, @"(\.\d+)?$").Success && Name.LastIndexOf(".") > 0 &&
+                    Name.LastIndexOf(".") <= Name.Length && int.TryParse(
+                        Name.Substring(Name.LastIndexOf(".") + 1,
+                            Name.Length - (Name.LastIndexOf(".") + 1)), out int n))
+                {
+                    //Console.WriteLine(_resource.Name.Substring(0, _resource.Name.LastIndexOf(".")) + " is part of a sequence");
+                    //Console.WriteLine(_resource.Name.Substring(_resource.Name.LastIndexOf(".") + 1, _resource.Name.Length - (_resource.Name.LastIndexOf(".") + 1)));
+                    // Determine the name to match
+                    string matchName = Name.Substring(0, Name.LastIndexOf(".")) + ".";
+                    BRESGroupNode paletteGroup = ((BRRESNode)Parent.Parent).GetFolder<PLT0Node>();
+                    List<string> textureList = new List<string>();
+                    List<PLT0Node> paletteList = new List<PLT0Node>();
+                    int highestNum = -1;
+                    bool isStock = false;
+                    bool isStockEx = false;
+                    if (matchName.Equals("InfStc.", StringComparison.OrdinalIgnoreCase))
+                    {
+                        isStock = true;
+                        if (Name.Length >= 11)
+                        {
+                            isStockEx = true;
+                        }
+                    }
+
+                    foreach (TEX0Node tx0 in Parent.Children)
+                    {
+                        if (tx0.Name.StartsWith(matchName) && tx0.Name.LastIndexOf(".") > 0 &&
+                            tx0.Name.LastIndexOf(".") <= tx0.Name.Length &&
+                            int.TryParse(
+                                tx0.Name.Substring(tx0.Name.LastIndexOf(".") + 1,
+                                    tx0.Name.Length - (tx0.Name.LastIndexOf(".") + 1)), out int n2) && n2 >= 0 &&
+                            !textureList.Contains(tx0.Name))
+                        {
+                            if (isStock)
+                            {
+                                if (isStockEx && tx0.Name.Length < 11)
+                                {
+                                    continue;
+                                }
+                            }
+
+                            // Add the matching texture to the texture list for the PAT0
+                            textureList.Add(tx0.Name);
+                            // Determine the highest number used
+                            if (n2 > highestNum)
+                            {
+                                highestNum = n2;
+                            }
+
+                            Console.WriteLine(tx0.Name);
+                            Console.WriteLine(tx0.HasPalette);
+                            if (tx0.HasPalette)
+                            {
+                                paletteList.Add(tx0.GetPaletteNode());
+                            }
+                            else
+                            {
+                                paletteList.Add(null);
+                            }
+                        }
+                    }
+
+                    if (textureList.Count <= 0)
+                    {
+                        return null;
+                    }
+
+                    PAT0Node newPat0 = new PAT0Node
+                    {
+                        Name = Name.Substring(0, Name.LastIndexOf(".")).Equals("InfStc")
+                            ? "InfStockface_TopN__0"
+                            : Name.Substring(0, Name.LastIndexOf(".")),
+                        _numFrames = highestNum + 1
+                    };
+                    PAT0EntryNode pat0Entry = new PAT0EntryNode();
+                    newPat0.AddChild(pat0Entry);
+                    pat0Entry.Name = Name.Substring(0, Name.LastIndexOf(".")).Equals("InfStc")
+                        ? "lambert87"
+                        : Name.Substring(0, Name.LastIndexOf("."));
+                    PAT0TextureNode pat0Tex = new PAT0TextureNode((PAT0Flags)7, 0);
+                    pat0Entry.AddChild(pat0Tex);
+                    if (((BRRESNode)Parent.Parent).GetFolder<PAT0Node>() != null &&
+                        ((BRRESNode)Parent.Parent).GetFolder<PAT0Node>().FindChildrenByName(newPat0.Name)
+                        .Length > 0)
+                    {
+                        if (force)
+                        {
+                            while (((BRRESNode)Parent.Parent).GetFolder<PAT0Node>()
+                                .FindChildrenByName(newPat0.Name).Length > 0)
+                            {
+                                ((BRRESNode)Parent.Parent).GetFolder<PAT0Node>()
+                                    .FindChildrenByName(newPat0.Name)[0].Remove();
+                            }
+                        }
+                        else
+                        {
+                            DialogResult d = MessageBox.Show(
+                                "Would you like to replace the currently existing \"" + newPat0.Name +
+                                "\" PAT0 animation?", "PAT0 Generator", MessageBoxButtons.YesNoCancel);
+                            if (d == DialogResult.Cancel || d == DialogResult.Abort)
+                            {
+                                return null;
+                            }
+
+                            if (d == DialogResult.Yes)
+                            {
+                                while (((BRRESNode)Parent.Parent).GetFolder<PAT0Node>()
+                                       .FindChildrenByName(newPat0.Name).Length >
+                                       0)
+                                {
+                                    ((BRRESNode)Parent.Parent).GetFolder<PAT0Node>()
+                                        .FindChildrenByName(newPat0.Name)[0].Remove();
+                                }
+                            }
+                        }
+                    }
+
+                    if (isStock && !isStockEx && !textureList.Contains("InfStc.000"))
+                    {
+                        textureList.Add("InfStc.000");
+                        paletteList.Add(null);
+                    }
+                    else if (isStock && isStockEx && !textureList.Contains("InfStc.0000"))
+                    {
+                        textureList.Add("InfStc.0000");
+                        paletteList.Add(null);
+                    }
+
+                    //foreach(string s in textureList)
+                    for (int i = 0; i < textureList.Count; ++i)
+                    {
+                        string s = textureList[i];
+                        if (float.TryParse(s.Substring(s.LastIndexOf(".") + 1, s.Length - (s.LastIndexOf(".") + 1)),
+                            out float fr))
+                        {
+                            PAT0TextureEntryNode pat0texEntry = new PAT0TextureEntryNode();
+                            pat0Tex.AddChild(pat0texEntry);
+                            pat0texEntry.Name = s;
+                            pat0texEntry._frame = fr;
+                            if (paletteList[i] != null)
+                            {
+                                pat0Tex.HasPalette = true;
+                                pat0texEntry._plt = paletteList[i].Name;
+                            }
+                            else if ((s == "InfStc.000" || s == "InfStc.0000") && pat0Tex.HasPalette)
+                            {
+                                pat0texEntry._plt = s;
+                            }
+
+                            if (fr == 0)
+                            {
+                                PAT0TextureEntryNode pat0texEntryFinal = new PAT0TextureEntryNode();
+                                pat0Tex.AddChild(pat0texEntryFinal);
+                                pat0texEntryFinal.Name = s;
+                                pat0texEntryFinal._frame = highestNum + 1;
+                                if (paletteList[i] != null)
+                                {
+                                    pat0Tex.HasPalette = true;
+                                    pat0texEntryFinal.Palette = paletteList[i].Name;
+                                }
+                                else if ((s == "InfStc.000" || s == "InfStc.0000") && pat0Tex.HasPalette)
+                                {
+                                    pat0texEntryFinal._plt = s;
+                                }
+                            }
+                        }
+
+                        //newPat0.AddChild
+                    }
+
+                    pat0Tex._children = pat0Tex._children.OrderBy(o => ((PAT0TextureEntryNode)o)._frame).ToList();
+                    if (isStock && !isStockEx && newPat0.FrameCount < 501)
+                    {
+                        newPat0.FrameCount = 501;
+                    }
+                    else if (isStockEx && newPat0.FrameCount < 9201)
+                    {
+                        newPat0.FrameCount = 9201;
+                    }
+
+                    ((BRRESNode)Parent.Parent).GetOrCreateFolder<PAT0Node>().AddChild(newPat0);
+
+                    return newPat0;
+                }
+                else
+                {
+                    PAT0Node newPat0 = new PAT0Node
+                    {
+                        Name = Name,
+                        _numFrames = 1
+                    };
+                    PAT0EntryNode pat0Entry = new PAT0EntryNode();
+                    newPat0.AddChild(pat0Entry);
+                    pat0Entry.Name = Name;
+                    PAT0TextureNode pat0Tex = new PAT0TextureNode((PAT0Flags)7, 0);
+                    pat0Entry.AddChild(pat0Tex);
+                    PAT0TextureEntryNode pat0texEntry = new PAT0TextureEntryNode();
+                    pat0Tex.AddChild(pat0texEntry);
+                    pat0texEntry.Name = Name;
+                    pat0texEntry._frame = 0;
+                    if (HasPalette)
+                    {
+                        pat0Tex.HasPalette = true;
+                        pat0texEntry.Palette = GetPaletteNode().Name;
+                    }
+
+                    ((BRRESNode)Parent.Parent).GetOrCreateFolder<PAT0Node>().AddChild(newPat0);
+                    return newPat0;
+                }
+            }
+
+            return null;
         }
     }
 }
