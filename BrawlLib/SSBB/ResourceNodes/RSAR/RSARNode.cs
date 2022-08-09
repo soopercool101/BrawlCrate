@@ -43,7 +43,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (Files != null)
                 {
-                    foreach (ResourceNode n in Files)
+                    foreach (var n in Files)
                     {
                         if (n.HasChanged || n.IsBranch || n.IsDirty)
                         {
@@ -60,6 +60,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (_children != null)
                 {
                     foreach (ResourceNode r in Children)
+                    {
+                        if (r._children != null)
+                        {
+                            r.IsDirty = value;
+                        }
+                        else
+                        {
+                            r._changed = value;
+                        }
+                    }
+                }
+
+                if (Files != null)
+                {
+                    foreach (var r in Files)
                     {
                         if (r._children != null)
                         {
