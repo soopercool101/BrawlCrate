@@ -1265,7 +1265,7 @@ namespace BrawlCrate.API
         /// </summary>
         public static bool SaveFile()
         {
-            return Program.Save();
+            return Program.Save(false);
         }
 
         /// <summary>

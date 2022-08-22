@@ -834,7 +834,7 @@ Full changelog and documentation can be viewed from the help menu.";
             }
         }
 
-        public static bool Save()
+        public static bool Save(bool showMessages = true)
         {
             MainForm.Instance.resourceTree_SelectionChanged("Saving File", EventArgs.Empty);
             if (_rootNode != null)
@@ -851,7 +851,10 @@ Full changelog and documentation can be viewed from the help menu.";
                 bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
                 if (!force && !_rootNode.IsDirty)
                 {
-                    MessageBox.Show("No changes have been made.");
+                    if (showMessages)
+                    {
+                        MessageBox.Show("No changes have been made.");
+                    }
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
                     return false;
                 }
