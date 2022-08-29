@@ -79,7 +79,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             None = 0,
             Team = 1,
             Cooperative = 2,
-            Difficulty = 3
+            Difficulty = 3,
+            DifficultyMinusGameOvers = 4
         }
         public SublevelChanges _sublevelChanger;
         public SublevelChanges SublevelChanger
@@ -92,8 +93,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             }
         }
 
-        public enum RosterModes : byte
+        public enum RosterModes : sbyte
         {
+            None = -1,
             Normal = 0,
             Randomize = 1,
             Smashdown = 2
@@ -122,10 +124,17 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             }
         }
 
-        public bool _addSurvivingMembers;
 
-        [Description("When true, adds back previously alive members to the roster")]
-        public bool AddSurvivingMembers
+        public enum SurvivingMembersOptions : byte
+        {
+            No = 0,
+            Yes = 1,
+            Smashup = 2
+        }
+        public SurvivingMembersOptions _addSurvivingMembers;
+
+        [Description("Whether to add back previously alive members to the roster")]
+        public SurvivingMembersOptions AddSurvivingMembers
         {
             get => _addSurvivingMembers;
             set
@@ -166,7 +175,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             _sublevelChanger = (SublevelChanges) Header->_sublevelChanger;
             _rosterMode = (RosterModes)Header->_rosterMode;
             _minimumUnlocks = Header->_minimumUnlocks;
-            _addSurvivingMembers = Header->_addSurvivingMembers == 1;
+            _addSurvivingMembers = (SurvivingMembersOptions) Header->_addSurvivingMembers;
             return true;
         }
 
@@ -184,9 +193,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             header->_unlockSetting = (byte) _unlockSetting;
             header->_disableSubfighterSelection = (byte)(_disableSubfighterSelection ? 1 : 0);
             header->_sublevelChanger = (byte)_sublevelChanger;
-            header->_rosterMode = (byte)_rosterMode;
+            header->_rosterMode = (sbyte)_rosterMode;
             header->_minimumUnlocks = _minimumUnlocks;
-            header->_addSurvivingMembers = (byte)(_addSurvivingMembers ? 1 : 0);
+            header->_addSurvivingMembers = (byte)_addSurvivingMembers;
             header->_team1Count = (byte)Children[0].Children.Count;
             header->_team2Count = (byte)Children[1].Children.Count;
             header->_team3Count = (byte)Children[2].Children.Count;

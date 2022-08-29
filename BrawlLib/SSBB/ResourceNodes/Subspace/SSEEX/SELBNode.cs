@@ -41,6 +41,17 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
                 SignalPropertyChange();
             }
         }
+        
+        public SELCNode.SublevelChanges _sublevelChanger;
+        public SELCNode.SublevelChanges SublevelChanger
+        {
+            get => _sublevelChanger;
+            set
+            {
+                _sublevelChanger = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override void OnPopulate()
         {
@@ -79,6 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
             *header = new SELB();
             header->_characterCount = CharacterCount;
             header->_stockCount = StockCount;
+            header->_sublevelChanger = (byte) SublevelChanger;
             header->_pad = 0;
 
             uint offset = SELB.Size;

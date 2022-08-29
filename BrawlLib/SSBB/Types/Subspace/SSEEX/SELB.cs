@@ -10,7 +10,8 @@ namespace BrawlLib.SSBB.Types.Subspace.SSEEX
 
         public byte _characterCount;
         public sbyte _stockCount;
-        public short _pad;
+        public byte _sublevelChanger;
+        public byte _pad;
 
         public VoidPtr this[int index] => (byte*)Address + Size + index * SELBEntry.Size;
 
