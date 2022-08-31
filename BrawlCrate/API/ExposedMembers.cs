@@ -1177,6 +1177,11 @@ namespace BrawlCrate.API
         public static string APIPath => Path.GetFullPath(Program.ApiPath);
 
         /// <summary>
+        ///     The folder in which API libraries are located.
+        /// </summary>
+        public static string LibPath => Path.GetFullPath(Program.ApiLibPath);
+
+        /// <summary>
         ///     The folder in which plugins are located.
         /// </summary>
         public static string PluginPath => Path.GetFullPath(Program.ApiPluginPath);
@@ -1185,6 +1190,11 @@ namespace BrawlCrate.API
         ///     The folder in which loaders are located.
         /// </summary>
         public static string LoaderPath => Path.GetFullPath(Program.ApiLoaderPath);
+
+        /// <summary>
+        ///     The folder in which API resources are located.
+        /// </summary>
+        public static string ResourcesPath => Path.GetFullPath(Program.ApiResourcePath);
 
         /// <summary>
         ///     Creates a new ResourceNode of type T and attempts to set it as the root node.
