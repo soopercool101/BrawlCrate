@@ -1,6 +1,6 @@
 
-BrawlCrate - v0.37
-Copyright © 2018 - 2021 soopercool101, Simon381, Onium
+BrawlCrate - v0.38
+Copyright © 2018 - 2022 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
@@ -15,6 +15,55 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.38 - (8/31/2022)
+ . Add support for SSEEX structures (SELC and SELB)
+   - ADSJ Flag3 is now considered a signed byte (useful for SSEEX)
+ . Fix MVPM save corruption, parse known values
+   - Value1 => Split into ID and Value1b
+   - Value2 => CharacterNameCardDisplay1
+   - Value4 => CharacterNameCardDisplayLength1
+   - Value6 => CharacterNameCardDisplay2
+   - Value8 => CharacterNameCardDisplayLength2
+   - Value10 => CharacterNameCardDisplay3
+   - Value12 => CharacterNameCardDisplayLength3
+   - Value14 => CharacterNameCardDisplay4
+   - Value16 => CharacterNameCardDisplayLength4
+   - Value18 => SongID
+   - Value19 => SongDelay
+   - Value22 => Split into 22a,b,c
+   - Value23 and 24 were removed. They didn't actually exist and were the cause of save corruption
+ . Update BGMG parsing to current understanding
+   - InfoIndex => SongID
+   - Pad => PlayOffsetFrame
+ . Add basic parsing and editing to tySealVertList
+ . EffectMatrix and IdentityMatrix can now be manually edited via the property grid
+ . MASQ files will now maintain their original length, fixing issues with certain custom implementations
+ . RSTC files can now have their Max Entries count edited
+ . Nodes now expose the "NodeType" property to the property grid
+ . Collision Objects now expose the Points collection to the property grid
+ . New/Import for BRES now shows shorthand for the various animation types
+ . Ctrl+Shift+R is now a shortcut to reimport meshes on MDL0
+ . Menu.tlst now starts from ID 0xF040 rather than 0xF000
+ . ARC Export All now prompts for texture format if relevant
+ . Update internal documentation to v0.38
+ . Fix bug in which CSTM and RSTM would write past where it should, causing file corruption
+ . Fix bug in which a BRSAR would not be able to be saved unless direct children are edited
+ . Fix bug in which scroll wheel would not work in the property grid upon switching between different types of nodes
+ . Fix bug in which ASLS would not allow duplicate child names
+ . Fix bug in which STEX files would allow inputting a module name of greater length than allowed
+ . Fix bug in which the texture converter dialog would not properly remember the original path, causing crashes
+ . Fix bug in which item frequency tables could be duplicated, leading to potential corruption
+ . Fix crash that occurred when toggling the visibility of an MDL0 when it was open by itself or in a folder
+ . [API] Add support for new "Resources" folder for subscriptions to use
+ . [API] Fix crash when a new TLST was created
+ . [API] PAT0TextureNode.NewEntry() now returns the created node
+ . [API] Fix bug in which NumericInputBox would not properly respect set minimums/maximums when used in integer mode
+ . [API] BrawlAPI.Save() will no longer show "No changes" message
+ . [API] Add ColorSmashImport helper function to allow bypassing prompts
+ . [API] Fix issue where scripts could create their own instance of the Main Form
+ . [API] Add ARCNode.SortChildrenByFileIndex()
+ . [API] Expose BuildPath as MainForm.BuildPath
  
  - BrawlCrate v0.37 - (5/18/2021)
  . GitHub broke the automatic updater with a security update. This has been fixed to never happen again.

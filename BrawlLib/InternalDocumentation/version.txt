@@ -1,10 +1,27 @@
-Documentation_v0.37
+Documentation_v0.38
 
  =============================================================
 |************ BrawlCrate Documentation Change Log ************|
  =============================================================
  
- Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan, Eon
+ Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan, Eon, WTails358, RedipsTheCooler, Escope12
+ 
+ - Documentation v0.38
+ . Added module annotations for Diddy Kong (Section [1])
+ . Added module annotations for Lucario (Section [1])
+ . Added module annotations for Olimar (Section [1])
+ . Added module annotations for Peach (Section [1])
+ . Added module annotations for Snake (Section [1])
+ . Added module annotations for Green Greens (Section [4])
+ . Added module annotations for New Pork City (Section [5])
+ . Added module annotations for Skyworld (Section [4])
+ . Added module annotations for Spear Pillar (Section [4])
+ . Added module annotations for Summit (Section [1])
+ . Jungle Japes Section [4] documentation updated to latest understanding:
+   - 0x04C -> Klaptrap SFX Timer (Jump SFX)
+   - 0x050 -> Klaptrap SFX Timer (Going Back Into Water SFX)
+ . Jungle Japes STDT documentation updated to latest understanding:
+   - 0x028 -> Klap Trap X-Axis Position
  
  - Documentation v0.37
  . Added module annotations for Jungle Japes (Section [1])
