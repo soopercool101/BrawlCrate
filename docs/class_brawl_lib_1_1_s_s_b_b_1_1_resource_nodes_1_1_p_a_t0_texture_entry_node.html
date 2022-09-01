@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.PAT0TextureEntryNode Class Reference</div></div>
 </div><!--header-->
@@ -384,11 +383,6 @@ Properties</h2></td></tr>
 <tr class="inherit_header properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html">BrawlLib.Imaging.IImageSource</a></td></tr>
 <tr class="memitem:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html#ae71d17da39076b4ac407b94ba7af3dee">ImageCount</a><code> [get]</code></td></tr>
 <tr class="separator:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ab51174057b4e4bda7c67c0ad0bab53cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html#ab51174057b4e4bda7c67c0ad0bab53cc">SetTexture</a> (string value)</td></tr>
-<tr class="separator:ab51174057b4e4bda7c67c0ad0bab53cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -787,37 +781,6 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab51174057b4e4bda7c67c0ad0bab53cc" name="ab51174057b4e4bda7c67c0ad0bab53cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab51174057b4e4bda7c67c0ad0bab53cc">&#9670;&#160;</a></span>SetTexture()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.SSBB.ResourceNodes.PAT0TextureEntryNode.SetTexture </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1333</span>        {</div>
-<div class="line"><span class="lineno"> 1334</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html#a95012f7de68ded066c30a8ed093fc9fe">_tex</a> = value;</div>
-<div class="line"><span class="lineno"> 1335</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html#ab9b7005d6f644d293e10702c58268e1f">_textureNode</a> = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno"> 1336</span>            ((PAT0Node) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a>?.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a>?.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a>)?.RegenerateTextureList();</div>
-<div class="line"><span class="lineno"> 1337</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a5edaeb357c74635b6a58e427af841472" name="a5edaeb357c74635b6a58e427af841472"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5edaeb357c74635b6a58e427af841472">&#9670;&#160;</a></span>_frame</h2>
@@ -1079,10 +1042,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1343</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno"> 1344</span>            {</div>
 <div class="line"><span class="lineno"> 1345</span>                base.Name = value;</div>
-<div class="line"><span class="lineno"> 1346</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html#ab51174057b4e4bda7c67c0ad0bab53cc">SetTexture</a>(value);</div>
+<div class="line"><span class="lineno"> 1346</span>                SetTexture(value);</div>
 <div class="line"><span class="lineno"> 1347</span>            }</div>
 <div class="line"><span class="lineno"> 1348</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node_html_ab51174057b4e4bda7c67c0ad0bab53cc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html#ab51174057b4e4bda7c67c0ad0bab53cc">BrawlLib.SSBB.ResourceNodes.PAT0TextureEntryNode.SetTexture</a></div><div class="ttdeci">void SetTexture(string value)</div><div class="ttdef"><b>Definition:</b> PAT0Node.cs:1332</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1180,7 +1142,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1301</span>                }</div>
 <div class="line"><span class="lineno"> 1302</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno"> 1303</span>                {</div>
-<div class="line"><span class="lineno"> 1304</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html#ab51174057b4e4bda7c67c0ad0bab53cc">SetTexture</a>(value);</div>
+<div class="line"><span class="lineno"> 1304</span>                    SetTexture(value);</div>
 <div class="line"><span class="lineno"> 1305</span>                }</div>
 <div class="line"><span class="lineno"> 1306</span> </div>
 <div class="line"><span class="lineno"> 1307</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>

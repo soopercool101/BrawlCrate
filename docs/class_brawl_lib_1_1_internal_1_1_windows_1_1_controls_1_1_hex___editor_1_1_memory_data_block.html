@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.Hex_Editor.MemoryDataBlock Class Reference</div></div>
 </div><!--header-->
@@ -126,11 +125,6 @@ Properties</h2></td></tr>
 <tr class="memitem:ac887904d47ce235b06ea9e370787a33e inherit properties_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html">DataBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html#ac887904d47ce235b06ea9e370787a33e">PreviousBlock</a><code> [get]</code></td></tr>
 <tr class="separator:ac887904d47ce235b06ea9e370787a33e inherit properties_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aaeb54e38844e0269d111815030283968"><td class="memItemLeft" align="right" valign="top">byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a></td></tr>
-<tr class="separator:aaeb54e38844e0269d111815030283968"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pac_attribs_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block"><td colspan="2" onclick="javascript:toggleInherit('pac_attribs_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block')"><img src="closed.png" alt="-"/>&#160;Package Attributes inherited from <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html">BrawlLib.Internal.Windows.Controls.Hex_Editor.DataBlock</a></td></tr>
@@ -166,9 +160,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   10</span>        {</div>
-<div class="line"><span class="lineno">   11</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a> = <span class="keyword">new</span> <span class="keywordtype">byte</span>[] {data};</div>
+<div class="line"><span class="lineno">   11</span>            _data = <span class="keyword">new</span> <span class="keywordtype">byte</span>[] {data};</div>
 <div class="line"><span class="lineno">   12</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block_html_aaeb54e38844e0269d111815030283968"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">BrawlLib.Internal.Windows.Controls.Hex_Editor.MemoryDataBlock._data</a></div><div class="ttdeci">byte[] _data</div><div class="ttdef"><b>Definition:</b> MemoryDataBlock.cs:7</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -201,7 +194,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   18</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;data&quot;</span>);</div>
 <div class="line"><span class="lineno">   19</span>            }</div>
 <div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a> = (<span class="keywordtype">byte</span>[]) data.Clone();</div>
+<div class="line"><span class="lineno">   21</span>            _data = (<span class="keywordtype">byte</span>[]) data.Clone();</div>
 <div class="line"><span class="lineno">   22</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -232,9 +225,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   29</span>        {</div>
 <div class="line"><span class="lineno">   30</span>            <span class="keywordtype">byte</span>[] newData = <span class="keyword">new</span> <span class="keywordtype">byte</span>[_data.LongLength + 1];</div>
-<div class="line"><span class="lineno">   31</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>.CopyTo(newData, 0);</div>
+<div class="line"><span class="lineno">   31</span>            _data.CopyTo(newData, 0);</div>
 <div class="line"><span class="lineno">   32</span>            newData[newData.LongLength - 1] = value;</div>
-<div class="line"><span class="lineno">   33</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a> = newData;</div>
+<div class="line"><span class="lineno">   33</span>            _data = newData;</div>
 <div class="line"><span class="lineno">   34</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -265,8 +258,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   37</span>        {</div>
 <div class="line"><span class="lineno">   38</span>            <span class="keywordtype">byte</span>[] newData = <span class="keyword">new</span> <span class="keywordtype">byte</span>[_data.LongLength + 1];</div>
 <div class="line"><span class="lineno">   39</span>            newData[0] = value;</div>
-<div class="line"><span class="lineno">   40</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>.CopyTo(newData, 1);</div>
-<div class="line"><span class="lineno">   41</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a> = newData;</div>
+<div class="line"><span class="lineno">   40</span>            _data.CopyTo(newData, 1);</div>
+<div class="line"><span class="lineno">   41</span>            _data = newData;</div>
 <div class="line"><span class="lineno">   42</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -308,16 +301,16 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   46</span>            <span class="keywordtype">byte</span>[] newData = <span class="keyword">new</span> <span class="keywordtype">byte</span>[_data.LongLength + data.LongLength];</div>
 <div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (position &gt; 0)</div>
 <div class="line"><span class="lineno">   48</span>            {</div>
-<div class="line"><span class="lineno">   49</span>                Array.Copy(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>, 0, newData, 0, position);</div>
+<div class="line"><span class="lineno">   49</span>                Array.Copy(_data, 0, newData, 0, position);</div>
 <div class="line"><span class="lineno">   50</span>            }</div>
 <div class="line"><span class="lineno">   51</span> </div>
 <div class="line"><span class="lineno">   52</span>            Array.Copy(data, 0, newData, position, data.LongLength);</div>
-<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> (position &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>.LongLength)</div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> (position &lt; _data.LongLength)</div>
 <div class="line"><span class="lineno">   54</span>            {</div>
-<div class="line"><span class="lineno">   55</span>                Array.Copy(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>, position, newData, position + data.LongLength, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>.LongLength - position);</div>
+<div class="line"><span class="lineno">   55</span>                Array.Copy(_data, position, newData, position + data.LongLength, _data.LongLength - position);</div>
 <div class="line"><span class="lineno">   56</span>            }</div>
 <div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a> = newData;</div>
+<div class="line"><span class="lineno">   58</span>            _data = newData;</div>
 <div class="line"><span class="lineno">   59</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -362,40 +355,17 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   64</span> </div>
 <div class="line"><span class="lineno">   65</span>            <span class="keywordflow">if</span> (position &gt; 0)</div>
 <div class="line"><span class="lineno">   66</span>            {</div>
-<div class="line"><span class="lineno">   67</span>                Array.Copy(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>, 0, newData, 0, position);</div>
+<div class="line"><span class="lineno">   67</span>                Array.Copy(_data, 0, newData, 0, position);</div>
 <div class="line"><span class="lineno">   68</span>            }</div>
 <div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">if</span> (position + count &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>.LongLength)</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">if</span> (position + count &lt; _data.LongLength)</div>
 <div class="line"><span class="lineno">   71</span>            {</div>
-<div class="line"><span class="lineno">   72</span>                Array.Copy(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a>, position + count, newData, position, newData.LongLength - position);</div>
+<div class="line"><span class="lineno">   72</span>                Array.Copy(_data, position + count, newData, position, newData.LongLength - position);</div>
 <div class="line"><span class="lineno">   73</span>            }</div>
 <div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_memory_data_block.html#aaeb54e38844e0269d111815030283968">_data</a> = newData;</div>
+<div class="line"><span class="lineno">   75</span>            _data = newData;</div>
 <div class="line"><span class="lineno">   76</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aaeb54e38844e0269d111815030283968" name="aaeb54e38844e0269d111815030283968"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaeb54e38844e0269d111815030283968">&#9670;&#160;</a></span>_data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte [] BrawlLib.Internal.Windows.Controls.Hex_Editor.MemoryDataBlock._data</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

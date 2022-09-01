@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Imaging.ARGBPixel Struct Reference</div></div>
 </div><!--header-->
@@ -173,11 +172,6 @@ Package Functions</h2></td></tr>
 <tr class="separator:a27ff029ca97eb5c35d6b285c29e06bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac046dba4a6c44484ebaabb920924d2fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#ac046dba4a6c44484ebaabb920924d2fb">Darken</a> (int amount)</td></tr>
 <tr class="separator:ac046dba4a6c44484ebaabb920924d2fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a99f4fc224e4e2ea8573b1d3259b5c7f6"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a> = 1.0f / 255.0f</td></tr>
-<tr class="separator:a99f4fc224e4e2ea8573b1d3259b5c7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a743b64fdc63506bce6c7977902011954" name="a743b64fdc63506bce6c7977902011954"></a>
@@ -919,9 +913,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  117</span>        {</div>
-<div class="line"><span class="lineno">  118</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(p.R * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a>, p.G * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a>, p.B * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a>);</div>
+<div class="line"><span class="lineno">  118</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(p.R * ColorFactor, p.G * ColorFactor, p.B * ColorFactor);</div>
 <div class="line"><span class="lineno">  119</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html_a99f4fc224e4e2ea8573b1d3259b5c7f6"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">BrawlLib.Imaging.ARGBPixel.ColorFactor</a></div><div class="ttdeci">const float ColorFactor</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:17</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html">BrawlLib.Internal.Vector3</a></div><div class="ttdef"><b>Definition:</b> Vector3.cs:40</div></div>
 </div><!-- fragment -->
 </div>
@@ -950,7 +943,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  122</span>        {</div>
-<div class="line"><span class="lineno">  123</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector4.html">Vector4</a>(p.R * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a>, p.G * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a>, p.B * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a>, p.A * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a99f4fc224e4e2ea8573b1d3259b5c7f6">ColorFactor</a>);</div>
+<div class="line"><span class="lineno">  123</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector4.html">Vector4</a>(p.R * ColorFactor, p.G * ColorFactor, p.B * ColorFactor, p.A * ColorFactor);</div>
 <div class="line"><span class="lineno">  124</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector4_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector4.html">BrawlLib.Internal.Vector4</a></div><div class="ttdef"><b>Definition:</b> Vector4.cs:12</div></div>
 </div><!-- fragment -->
@@ -1199,28 +1192,6 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">byte BrawlLib.Imaging.ARGBPixel.B</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a99f4fc224e4e2ea8573b1d3259b5c7f6" name="a99f4fc224e4e2ea8573b1d3259b5c7f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99f4fc224e4e2ea8573b1d3259b5c7f6">&#9670;&#160;</a></span>ColorFactor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.Imaging.ARGBPixel.ColorFactor = 1.0f / 255.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

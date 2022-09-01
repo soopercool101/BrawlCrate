@@ -80,8 +80,6 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.OpenGL.GLTexture Class Reference</div></div>
 </div><!--header-->
@@ -136,22 +134,6 @@ Properties</h2></td></tr>
 <tr class="separator:a27cee53cd668c3e4908fa32bd3a279c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84136e8963bb386ce66ac8c4bd9d9ca1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a84136e8963bb386ce66ac8c4bd9d9ca1">Height</a><code> [get]</code></td></tr>
 <tr class="separator:a84136e8963bb386ce66ac8c4bd9d9ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:af7a7de3f7650c02203ac94bd58584c7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af7a7de3f7650c02203ac94bd58584c7d">ClearImages</a> ()</td></tr>
-<tr class="separator:af7a7de3f7650c02203ac94bd58584c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9345546be0ec9b06610270f72214a102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a9345546be0ec9b06610270f72214a102">ClearTexture</a> ()</td></tr>
-<tr class="separator:a9345546be0ec9b06610270f72214a102"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a622c29027d9a3917c99b22e49fedc9fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a622c29027d9a3917c99b22e49fedc9fe">_remake</a> = true</td></tr>
-<tr class="separator:a622c29027d9a3917c99b22e49fedc9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5198bef90f122ed664379a1f0d0a53ce"><td class="memItemLeft" align="right" valign="top">Bitmap[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a></td></tr>
-<tr class="separator:a5198bef90f122ed664379a1f0d0a53ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a093ab3d90ab502013b4601c63ae6b9ac"><td class="memItemLeft" align="right" valign="top">PixelInternalFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a093ab3d90ab502013b4601c63ae6b9ac">ifmt</a> = PixelInternalFormat.Four</td></tr>
-<tr class="separator:a093ab3d90ab502013b4601c63ae6b9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af236b020b009f3f85b39b69ed0425a2a" name="af236b020b009f3f85b39b69ed0425a2a"></a>
@@ -251,16 +233,12 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   38</span>        {</div>
 <div class="line"><span class="lineno">   39</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a1747db92d3a3685915eac47bf6950367">_width</a> = b.Width;</div>
 <div class="line"><span class="lineno">   40</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ae749530244448ae871dbd2920e08c2a3">_height</a> = b.Height;</div>
-<div class="line"><span class="lineno">   41</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af7a7de3f7650c02203ac94bd58584c7d">ClearImages</a>();</div>
-<div class="line"><span class="lineno">   42</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a9345546be0ec9b06610270f72214a102">ClearTexture</a>();</div>
-<div class="line"><span class="lineno">   43</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a> = <span class="keyword">new</span> Bitmap[] {b};</div>
-<div class="line"><span class="lineno">   44</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a622c29027d9a3917c99b22e49fedc9fe">_remake</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   41</span>            ClearImages();</div>
+<div class="line"><span class="lineno">   42</span>            ClearTexture();</div>
+<div class="line"><span class="lineno">   43</span>            _textures = <span class="keyword">new</span> Bitmap[] {b};</div>
+<div class="line"><span class="lineno">   44</span>            _remake = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   45</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ad4f3b5c36f2282947b06242d4f8bed71">_source</a> = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   46</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_a5198bef90f122ed664379a1f0d0a53ce"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">BrawlLib.OpenGL.GLTexture._textures</a></div><div class="ttdeci">Bitmap[] _textures</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:18</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_a622c29027d9a3917c99b22e49fedc9fe"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a622c29027d9a3917c99b22e49fedc9fe">BrawlLib.OpenGL.GLTexture._remake</a></div><div class="ttdeci">bool _remake</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:17</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_a9345546be0ec9b06610270f72214a102"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a9345546be0ec9b06610270f72214a102">BrawlLib.OpenGL.GLTexture.ClearTexture</a></div><div class="ttdeci">void ClearTexture()</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:96</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_af7a7de3f7650c02203ac94bd58584c7d"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af7a7de3f7650c02203ac94bd58584c7d">BrawlLib.OpenGL.GLTexture.ClearImages</a></div><div class="ttdeci">void ClearImages()</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:83</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -289,24 +267,23 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  152</span>        {</div>
-<div class="line"><span class="lineno">  153</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af7a7de3f7650c02203ac94bd58584c7d">ClearImages</a>();</div>
+<div class="line"><span class="lineno">  153</span>            ClearImages();</div>
 <div class="line"><span class="lineno">  154</span> </div>
 <div class="line"><span class="lineno">  155</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ad4f3b5c36f2282947b06242d4f8bed71">_source</a> = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  156</span> </div>
-<div class="line"><span class="lineno">  157</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a> = <span class="keyword">new</span> Bitmap[] {bmp};</div>
+<div class="line"><span class="lineno">  157</span>            _textures = <span class="keyword">new</span> Bitmap[] {bmp};</div>
 <div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>.Length != 0)</div>
+<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (_textures.Length != 0)</div>
 <div class="line"><span class="lineno">  160</span>            {</div>
-<div class="line"><span class="lineno">  161</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a1747db92d3a3685915eac47bf6950367">_width</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>[0].Width;</div>
-<div class="line"><span class="lineno">  162</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ae749530244448ae871dbd2920e08c2a3">_height</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>[0].Height;</div>
+<div class="line"><span class="lineno">  161</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a1747db92d3a3685915eac47bf6950367">_width</a> = _textures[0].Width;</div>
+<div class="line"><span class="lineno">  162</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ae749530244448ae871dbd2920e08c2a3">_height</a> = _textures[0].Height;</div>
 <div class="line"><span class="lineno">  163</span>            }</div>
 <div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a093ab3d90ab502013b4601c63ae6b9ac">ifmt</a> = PixelInternalFormat.Four;</div>
+<div class="line"><span class="lineno">  165</span>            ifmt = PixelInternalFormat.Four;</div>
 <div class="line"><span class="lineno">  166</span> </div>
-<div class="line"><span class="lineno">  167</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a622c29027d9a3917c99b22e49fedc9fe">_remake</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  167</span>            _remake = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  168</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ad4b4878c9a2ddefb884d96e1ba491773">Initialize</a>();</div>
 <div class="line"><span class="lineno">  169</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_a093ab3d90ab502013b4601c63ae6b9ac"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a093ab3d90ab502013b4601c63ae6b9ac">BrawlLib.OpenGL.GLTexture.ifmt</a></div><div class="ttdeci">PixelInternalFormat ifmt</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:20</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_ad4b4878c9a2ddefb884d96e1ba491773"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ad4b4878c9a2ddefb884d96e1ba491773">BrawlLib.OpenGL.GLTexture.Initialize</a></div><div class="ttdeci">int Initialize()</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:48</div></div>
 </div><!-- fragment -->
 </div>
@@ -345,38 +322,38 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  115</span>        {</div>
-<div class="line"><span class="lineno">  116</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af7a7de3f7650c02203ac94bd58584c7d">ClearImages</a>();</div>
+<div class="line"><span class="lineno">  116</span>            ClearImages();</div>
 <div class="line"><span class="lineno">  117</span> </div>
 <div class="line"><span class="lineno">  118</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ad4f3b5c36f2282947b06242d4f8bed71">_source</a> = tex;</div>
 <div class="line"><span class="lineno">  119</span> </div>
-<div class="line"><span class="lineno">  120</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a> = <span class="keyword">new</span> Bitmap[tex.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">LevelOfDetail</a>];</div>
+<div class="line"><span class="lineno">  120</span>            _textures = <span class="keyword">new</span> Bitmap[tex.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">LevelOfDetail</a>];</div>
 <div class="line"><span class="lineno">  121</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; tex.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#adddf8f24ccaf247e7b25cb8db3510757">LevelOfDetail</a>; i++)</div>
 <div class="line"><span class="lineno">  122</span>            {</div>
-<div class="line"><span class="lineno">  123</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>[i] = tex.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#aae6ed6edc2f8dd6fa106d2f78b458ad6">GetImage</a>(i, plt);</div>
+<div class="line"><span class="lineno">  123</span>                _textures[i] = tex.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#aae6ed6edc2f8dd6fa106d2f78b458ad6">GetImage</a>(i, plt);</div>
 <div class="line"><span class="lineno">  124</span>            }</div>
 <div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>.Length != 0 &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>[0] != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  126</span>            <span class="keywordflow">if</span> (_textures.Length != 0 &amp;&amp; _textures[0] != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  127</span>            {</div>
-<div class="line"><span class="lineno">  128</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a1747db92d3a3685915eac47bf6950367">_width</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>[0].Width;</div>
-<div class="line"><span class="lineno">  129</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ae749530244448ae871dbd2920e08c2a3">_height</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>[0].Height;</div>
+<div class="line"><span class="lineno">  128</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a1747db92d3a3685915eac47bf6950367">_width</a> = _textures[0].Width;</div>
+<div class="line"><span class="lineno">  129</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ae749530244448ae871dbd2920e08c2a3">_height</a> = _textures[0].Height;</div>
 <div class="line"><span class="lineno">  130</span>            }</div>
 <div class="line"><span class="lineno">  131</span> </div>
 <div class="line"><span class="lineno">  132</span>            <span class="keywordflow">switch</span> (tex.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#ad1f48eea2685bf888584cf02c4656776">Format</a>)</div>
 <div class="line"><span class="lineno">  133</span>            {</div>
 <div class="line"><span class="lineno">  134</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.I4:</div>
 <div class="line"><span class="lineno">  135</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.I8:</div>
-<div class="line"><span class="lineno">  136</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a093ab3d90ab502013b4601c63ae6b9ac">ifmt</a> = PixelInternalFormat.Intensity;</div>
+<div class="line"><span class="lineno">  136</span>                    ifmt = PixelInternalFormat.Intensity;</div>
 <div class="line"><span class="lineno">  137</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  138</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.IA4:</div>
 <div class="line"><span class="lineno">  139</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.IA8:</div>
-<div class="line"><span class="lineno">  140</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a093ab3d90ab502013b4601c63ae6b9ac">ifmt</a> = PixelInternalFormat.Luminance8Alpha8;</div>
+<div class="line"><span class="lineno">  140</span>                    ifmt = PixelInternalFormat.Luminance8Alpha8;</div>
 <div class="line"><span class="lineno">  141</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  142</span>                <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  143</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a093ab3d90ab502013b4601c63ae6b9ac">ifmt</a> = PixelInternalFormat.Four;</div>
+<div class="line"><span class="lineno">  143</span>                    ifmt = PixelInternalFormat.Four;</div>
 <div class="line"><span class="lineno">  144</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  145</span>            }</div>
 <div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a622c29027d9a3917c99b22e49fedc9fe">_remake</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  147</span>            _remake = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  148</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#ad4b4878c9a2ddefb884d96e1ba491773">Initialize</a>();</div>
 <div class="line"><span class="lineno">  149</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node_html_aae6ed6edc2f8dd6fa106d2f78b458ad6"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html#aae6ed6edc2f8dd6fa106d2f78b458ad6">BrawlLib.SSBB.ResourceNodes.TEX0Node.GetImage</a></div><div class="ttdeci">Bitmap GetImage(int index)</div><div class="ttdef"><b>Definition:</b> TEX0Node.cs:308</div></div>
@@ -459,76 +436,6 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af7a7de3f7650c02203ac94bd58584c7d" name="af7a7de3f7650c02203ac94bd58584c7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7a7de3f7650c02203ac94bd58584c7d">&#9670;&#160;</a></span>ClearImages()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.OpenGL.GLTexture.ClearImages </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   84</span>        {</div>
-<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   86</span>            {</div>
-<div class="line"><span class="lineno">   87</span>                <span class="keywordflow">foreach</span> (Bitmap bmp <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>)</div>
-<div class="line"><span class="lineno">   88</span>                {</div>
-<div class="line"><span class="lineno">   89</span>                    bmp?.Dispose();</div>
-<div class="line"><span class="lineno">   90</span>                }</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a> = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   93</span>            }</div>
-<div class="line"><span class="lineno">   94</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a9345546be0ec9b06610270f72214a102" name="a9345546be0ec9b06610270f72214a102"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9345546be0ec9b06610270f72214a102">&#9670;&#160;</a></span>ClearTexture()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.OpenGL.GLTexture.ClearTexture </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   97</span>        {</div>
-<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">_texId</a> != 0)</div>
-<div class="line"><span class="lineno">   99</span>            {</div>
-<div class="line"><span class="lineno">  100</span>                <span class="keywordtype">int</span> <span class="keywordtype">id</span> = <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">_texId</a>;</div>
-<div class="line"><span class="lineno">  101</span>                GL.DeleteTexture(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  102</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">_texId</a> = 0;</div>
-<div class="line"><span class="lineno">  103</span>            }</div>
-<div class="line"><span class="lineno">  104</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_abb5f4e4a7f49d04fceb550100affa917"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">BrawlLib.OpenGL.GLTexture._texId</a></div><div class="ttdeci">int _texId</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:13</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a6a9cb1857577c2fb52b92659019742c3" name="a6a9cb1857577c2fb52b92659019742c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a9cb1857577c2fb52b92659019742c3">&#9670;&#160;</a></span>Default()</h2>
 
@@ -587,8 +494,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  198</span>        {</div>
-<div class="line"><span class="lineno">  199</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af7a7de3f7650c02203ac94bd58584c7d">ClearImages</a>();</div>
-<div class="line"><span class="lineno">  200</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a9345546be0ec9b06610270f72214a102">ClearTexture</a>();</div>
+<div class="line"><span class="lineno">  199</span>            ClearImages();</div>
+<div class="line"><span class="lineno">  200</span>            ClearTexture();</div>
 <div class="line"><span class="lineno">  201</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -616,38 +523,39 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   49</span>        {</div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a622c29027d9a3917c99b22e49fedc9fe">_remake</a> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (_remake &amp;&amp; _textures != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   51</span>            {</div>
-<div class="line"><span class="lineno">   52</span>                <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a9345546be0ec9b06610270f72214a102">ClearTexture</a>();</div>
+<div class="line"><span class="lineno">   52</span>                ClearTexture();</div>
 <div class="line"><span class="lineno">   53</span> </div>
 <div class="line"><span class="lineno">   54</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">_texId</a> = GL.GenTexture();</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>                GL.BindTexture(TextureTarget.Texture2D, <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">_texId</a>);</div>
 <div class="line"><span class="lineno">   57</span>                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureBaseLevel, 0);</div>
-<div class="line"><span class="lineno">   58</span>                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMaxLevel, <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>.Length - 1);</div>
+<div class="line"><span class="lineno">   58</span>                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMaxLevel, _textures.Length - 1);</div>
 <div class="line"><span class="lineno">   59</span>                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinLod, 0);</div>
-<div class="line"><span class="lineno">   60</span>                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMaxLod, <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>.Length - 1);</div>
+<div class="line"><span class="lineno">   60</span>                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMaxLod, _textures.Length - 1);</div>
 <div class="line"><span class="lineno">   61</span>                <span class="comment">//GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.GenerateMipmap, 1);</span></div>
 <div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>.Length; i++)</div>
+<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _textures.Length; i++)</div>
 <div class="line"><span class="lineno">   64</span>                {</div>
-<div class="line"><span class="lineno">   65</span>                    Bitmap bmp = <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a5198bef90f122ed664379a1f0d0a53ce">_textures</a>[i];</div>
+<div class="line"><span class="lineno">   65</span>                    Bitmap bmp = _textures[i];</div>
 <div class="line"><span class="lineno">   66</span>                    <span class="keywordflow">if</span> (bmp != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   67</span>                    {</div>
 <div class="line"><span class="lineno">   68</span>                        BitmapData data = bmp.LockBits(<span class="keyword">new</span> Rectangle(0, 0, bmp.Width, bmp.Height),</div>
 <div class="line"><span class="lineno">   69</span>                            ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);</div>
-<div class="line"><span class="lineno">   70</span>                        GL.TexImage2D(TextureTarget.Texture2D, i, <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a093ab3d90ab502013b4601c63ae6b9ac">ifmt</a>, data.Width, data.Height, 0,</div>
+<div class="line"><span class="lineno">   70</span>                        GL.TexImage2D(TextureTarget.Texture2D, i, ifmt, data.Width, data.Height, 0,</div>
 <div class="line"><span class="lineno">   71</span>                            OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);</div>
 <div class="line"><span class="lineno">   72</span>                        bmp.UnlockBits(data);</div>
 <div class="line"><span class="lineno">   73</span>                    }</div>
 <div class="line"><span class="lineno">   74</span>                }</div>
 <div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#a622c29027d9a3917c99b22e49fedc9fe">_remake</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   77</span>                <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#af7a7de3f7650c02203ac94bd58584c7d">ClearImages</a>();</div>
+<div class="line"><span class="lineno">   76</span>                _remake = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   77</span>                ClearImages();</div>
 <div class="line"><span class="lineno">   78</span>            }</div>
 <div class="line"><span class="lineno">   79</span> </div>
 <div class="line"><span class="lineno">   80</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">_texId</a>;</div>
 <div class="line"><span class="lineno">   81</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_texture_html_abb5f4e4a7f49d04fceb550100affa917"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html#abb5f4e4a7f49d04fceb550100affa917">BrawlLib.OpenGL.GLTexture._texId</a></div><div class="ttdeci">int _texId</div><div class="ttdef"><b>Definition:</b> GLTexture.cs:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -750,28 +658,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a622c29027d9a3917c99b22e49fedc9fe" name="a622c29027d9a3917c99b22e49fedc9fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a622c29027d9a3917c99b22e49fedc9fe">&#9670;&#160;</a></span>_remake</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlLib.OpenGL.GLTexture._remake = true</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ad4f3b5c36f2282947b06242d4f8bed71" name="ad4f3b5c36f2282947b06242d4f8bed71"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad4f3b5c36f2282947b06242d4f8bed71">&#9670;&#160;</a></span>_source</h2>
 
@@ -800,28 +686,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5198bef90f122ed664379a1f0d0a53ce" name="a5198bef90f122ed664379a1f0d0a53ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5198bef90f122ed664379a1f0d0a53ce">&#9670;&#160;</a></span>_textures</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Bitmap [] BrawlLib.OpenGL.GLTexture._textures</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a1747db92d3a3685915eac47bf6950367" name="a1747db92d3a3685915eac47bf6950367"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1747db92d3a3685915eac47bf6950367">&#9670;&#160;</a></span>_width</h2>
 
@@ -838,28 +702,6 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a093ab3d90ab502013b4601c63ae6b9ac" name="a093ab3d90ab502013b4601c63ae6b9ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a093ab3d90ab502013b4601c63ae6b9ac">&#9670;&#160;</a></span>ifmt</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">PixelInternalFormat BrawlLib.OpenGL.GLTexture.ifmt = PixelInternalFormat.Four</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

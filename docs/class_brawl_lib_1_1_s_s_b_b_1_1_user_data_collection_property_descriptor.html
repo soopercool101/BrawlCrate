@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.UserDataCollectionPropertyDescriptor Class Reference</div></div>
 </div><!--header-->
@@ -121,13 +120,6 @@ Properties</h2></td></tr>
 <tr class="separator:a07e0d161214d88913b9e6b36d7203ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0951b45648a0009f9eb0cfdf21dab659"><td class="memItemLeft" align="right" valign="top">override Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a0951b45648a0009f9eb0cfdf21dab659">PropertyType</a><code> [get]</code></td></tr>
 <tr class="separator:a0951b45648a0009f9eb0cfdf21dab659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a656dad6fc22a149c52b5ed474e7c3366"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html">UserDataCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a656dad6fc22a149c52b5ed474e7c3366">collection</a></td></tr>
-<tr class="separator:a656dad6fc22a149c52b5ed474e7c3366"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56beda1172b4a35d5a4c94d9e24b1d07"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a56beda1172b4a35d5a4c94d9e24b1d07">index</a> = -1</td></tr>
-<tr class="separator:a56beda1172b4a35d5a4c94d9e24b1d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad2b7c5215312ce4d0b0c3dbba43364d7" name="ad2b7c5215312ce4d0b0c3dbba43364d7"></a>
@@ -165,11 +157,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   17</span>                                                                                      : base(<span class="stringliteral">&quot;#&quot;</span> + idx, <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   18</span>        {</div>
-<div class="line"><span class="lineno">   19</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a656dad6fc22a149c52b5ed474e7c3366">collection</a> = coll;</div>
-<div class="line"><span class="lineno">   20</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a56beda1172b4a35d5a4c94d9e24b1d07">index</a> = idx;</div>
+<div class="line"><span class="lineno">   19</span>            collection = coll;</div>
+<div class="line"><span class="lineno">   20</span>            index = idx;</div>
 <div class="line"><span class="lineno">   21</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor_html_a56beda1172b4a35d5a4c94d9e24b1d07"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a56beda1172b4a35d5a4c94d9e24b1d07">BrawlLib.SSBB.UserDataCollectionPropertyDescriptor.index</a></div><div class="ttdeci">readonly int index</div><div class="ttdef"><b>Definition:</b> UserData.cs:15</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor_html_a656dad6fc22a149c52b5ed474e7c3366"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a656dad6fc22a149c52b5ed474e7c3366">BrawlLib.SSBB.UserDataCollectionPropertyDescriptor.collection</a></div><div class="ttdeci">readonly UserDataCollection collection</div><div class="ttdef"><b>Definition:</b> UserData.cs:14</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -227,7 +217,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   38</span>        {</div>
-<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a656dad6fc22a149c52b5ed474e7c3366">collection</a>[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a56beda1172b4a35d5a4c94d9e24b1d07">index</a>];</div>
+<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">return</span> collection[index];</div>
 <div class="line"><span class="lineno">   40</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -294,7 +284,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   56</span>        {</div>
-<div class="line"><span class="lineno">   57</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a656dad6fc22a149c52b5ed474e7c3366">collection</a>[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html#a56beda1172b4a35d5a4c94d9e24b1d07">index</a>] = (UserDataClass) value;</div>
+<div class="line"><span class="lineno">   57</span>            collection[index] = (UserDataClass) value;</div>
 <div class="line"><span class="lineno">   58</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -326,51 +316,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   52</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   53</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a656dad6fc22a149c52b5ed474e7c3366" name="a656dad6fc22a149c52b5ed474e7c3366"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a656dad6fc22a149c52b5ed474e7c3366">&#9670;&#160;</a></span>collection</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html">UserDataCollection</a> BrawlLib.SSBB.UserDataCollectionPropertyDescriptor.collection</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a56beda1172b4a35d5a4c94d9e24b1d07" name="a56beda1172b4a35d5a4c94d9e24b1d07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56beda1172b4a35d5a4c94d9e24b1d07">&#9670;&#160;</a></span>index</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int BrawlLib.SSBB.UserDataCollectionPropertyDescriptor.index = -1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

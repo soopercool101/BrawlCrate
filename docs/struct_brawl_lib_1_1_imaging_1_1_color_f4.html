@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_imaging_1_1_color_f4-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Imaging.ColorF4 Struct Reference</div></div>
 </div><!--header-->
@@ -147,11 +146,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9d43e45d259168fdd7b4c0e850526b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1184bbd2366e1131df2c689867140ee3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a1184bbd2366e1131df2c689867140ee3">B</a></td></tr>
 <tr class="separator:a1184bbd2366e1131df2c689867140ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a3e7865587945784f5dc51b718cf7dc65"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a> = 1.0f / 255.0f</td></tr>
-<tr class="separator:a3e7865587945784f5dc51b718cf7dc65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a72592c53c715735aa7c4a92dac4c51ec" name="a72592c53c715735aa7c4a92dac4c51ec"></a>
@@ -423,9 +417,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  661</span>        {</div>
-<div class="line"><span class="lineno">  662</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a72592c53c715735aa7c4a92dac4c51ec">ColorF4</a>(p.A * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>, p.R * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>, p.G * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>, p.B * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>);</div>
+<div class="line"><span class="lineno">  662</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a72592c53c715735aa7c4a92dac4c51ec">ColorF4</a>(p.A * ColorFactor, p.R * ColorFactor, p.G * ColorFactor, p.B * ColorFactor);</div>
 <div class="line"><span class="lineno">  663</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_color_f4_html_a3e7865587945784f5dc51b718cf7dc65"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">BrawlLib.Imaging.ColorF4.ColorFactor</a></div><div class="ttdeci">const float ColorFactor</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:614</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -453,7 +446,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  666</span>        {</div>
-<div class="line"><span class="lineno">  667</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a72592c53c715735aa7c4a92dac4c51ec">ColorF4</a>(p.A * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>, p.R * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>, p.G * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>, p.B * <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a>);</div>
+<div class="line"><span class="lineno">  667</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_function" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a72592c53c715735aa7c4a92dac4c51ec">ColorF4</a>(p.A * ColorFactor, p.R * ColorFactor, p.G * ColorFactor, p.B * ColorFactor);</div>
 <div class="line"><span class="lineno">  668</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -1027,8 +1020,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  639</span>        {</div>
-<div class="line"><span class="lineno">  640</span>            <span class="keywordflow">return</span> Color.FromArgb((<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a2a296b84e02334ec73900afd96233c95">A</a> / <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a> + 0.5f), (<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#acdd5a7adfd460c80ea561c36db5ee198">R</a> / <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a> + 0.5f),</div>
-<div class="line"><span class="lineno">  641</span>                (<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a9d43e45d259168fdd7b4c0e850526b30">G</a> / <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a> + 0.5f), (<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a1184bbd2366e1131df2c689867140ee3">B</a> / <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a3e7865587945784f5dc51b718cf7dc65">ColorFactor</a> + 0.5f));</div>
+<div class="line"><span class="lineno">  640</span>            <span class="keywordflow">return</span> Color.FromArgb((<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a2a296b84e02334ec73900afd96233c95">A</a> / ColorFactor + 0.5f), (<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#acdd5a7adfd460c80ea561c36db5ee198">R</a> / ColorFactor + 0.5f),</div>
+<div class="line"><span class="lineno">  641</span>                (<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a9d43e45d259168fdd7b4c0e850526b30">G</a> / ColorFactor + 0.5f), (<span class="keywordtype">int</span>) (<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_color_f4.html#a1184bbd2366e1131df2c689867140ee3">B</a> / ColorFactor + 0.5f));</div>
 <div class="line"><span class="lineno">  642</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -1058,28 +1051,6 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">float BrawlLib.Imaging.ColorF4.B</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3e7865587945784f5dc51b718cf7dc65" name="a3e7865587945784f5dc51b718cf7dc65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e7865587945784f5dc51b718cf7dc65">&#9670;&#160;</a></span>ColorFactor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.Imaging.ColorF4.ColorFactor = 1.0f / 255.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_maths-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Maths Class Reference</div></div>
 </div><!--header-->
@@ -167,11 +166,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a2ff7c0eddd1814421441f6d8d4dd56c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d95bf287d92e0c1f04e6ec3b202e5ee"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_maths.html#a0d95bf287d92e0c1f04e6ec3b202e5ee">_halfPif</a> = (float) (Math.PI / 2.0)</td></tr>
 <tr class="separator:a0d95bf287d92e0c1f04e6ec3b202e5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a74810cd556326676bad06db52ddf6fbc"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_maths.html#a74810cd556326676bad06db52ddf6fbc">_double2fixmagic</a> = 68719476736.0f * 1.5f</td></tr>
-<tr class="separator:a74810cd556326676bad06db52ddf6fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a28919a9f03f0013dbd3061d77ebd2577" name="a28919a9f03f0013dbd3061d77ebd2577"></a>
@@ -438,11 +432,10 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  126</span>            <span class="keywordtype">int</span> i = 3;</div>
 <div class="line"><span class="lineno">  127</span>            <span class="keywordflow">while</span> (i-- &gt; 0)</div>
 <div class="line"><span class="lineno">  128</span>            {</div>
-<div class="line"><span class="lineno">  129</span>                d = v[i] + <a class="code hl_variable" href="class_brawl_lib_1_1_maths.html#a74810cd556326676bad06db52ddf6fbc">_double2fixmagic</a>;</div>
+<div class="line"><span class="lineno">  129</span>                d = v[i] + _double2fixmagic;</div>
 <div class="line"><span class="lineno">  130</span>                v[i] = *p &gt;&gt; 16;</div>
 <div class="line"><span class="lineno">  131</span>            }</div>
 <div class="line"><span class="lineno">  132</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_maths_html_a74810cd556326676bad06db52ddf6fbc"><div class="ttname"><a href="class_brawl_lib_1_1_maths.html#a74810cd556326676bad06db52ddf6fbc">BrawlLib.Maths._double2fixmagic</a></div><div class="ttdeci">const double _double2fixmagic</div><div class="ttdef"><b>Definition:</b> Maths.cs:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1672,28 +1665,6 @@ Static Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a74810cd556326676bad06db52ddf6fbc" name="a74810cd556326676bad06db52ddf6fbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74810cd556326676bad06db52ddf6fbc">&#9670;&#160;</a></span>_double2fixmagic</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const double BrawlLib.Maths._double2fixmagic = 68719476736.0f * 1.5f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

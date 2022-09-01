@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Audio.RSARConverter Class Reference</div></div>
 </div><!--header-->
@@ -105,11 +104,6 @@ Package Functions</h2></td></tr>
 <tr class="separator:a7103979c43302ac52cf3432ac391acf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6cae5d8544844a0dc14756083075619"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter.html#af6cae5d8544844a0dc14756083075619">EncodeFILEBlock</a> (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_f_i_l_e_header.html">FILEHeader</a> *header, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> baseAddress, <a class="el" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html">RSAREntryList</a> entries, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_node.html">RSARNode</a> node)</td></tr>
 <tr class="separator:af6cae5d8544844a0dc14756083075619"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a6fab9adc8df9f7708ba9bcf5df38c267"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter.html#a6fab9adc8df9f7708ba9bcf5df38c267">EncodeMaskGroup</a> (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_header.html">SYMBHeader</a> *symb, <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a> *header, List&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> &gt; gList, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_node.html">RSARNode</a> n, int grp)</td></tr>
-<tr class="separator:a6fab9adc8df9f7708ba9bcf5df38c267"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a04742a299a3b2628daa5dbe49b7d48da" name="a04742a299a3b2628daa5dbe49b7d48da"></a>
@@ -606,69 +600,6 @@ Static Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6fab9adc8df9f7708ba9bcf5df38c267" name="a6fab9adc8df9f7708ba9bcf5df38c267"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fab9adc8df9f7708ba9bcf5df38c267">&#9670;&#160;</a></span>EncodeMaskGroup()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int BrawlLib.Wii.Audio.RSARConverter.EncodeMaskGroup </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_header.html">SYMBHeader</a> *&#160;</td>
-          <td class="paramname"><em>symb</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a> *&#160;</td>
-          <td class="paramname"><em>header</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">List&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> &gt;&#160;</td>
-          <td class="paramname"><em>gList</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_node.html">RSARNode</a>&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>grp</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  387</span>        {</div>
-<div class="line"><span class="lineno">  388</span>            <span class="keywordtype">int</span>[] stringIds = gList.Select(x =&gt; x._rebuildStringId).Where(x =&gt; x &gt;= 0).ToArray();</div>
-<div class="line"><span class="lineno">  389</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry.html">SYMBMaskEntry</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry.html#a44a9cbfe92ae76fbac6c424761cd7d02">Build</a>(stringIds, symb, header, header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html#a6684da377607aa2f887230b712d75e82">Entries</a>);</div>
-<div class="line"><span class="lineno">  390</span>            <span class="keywordflow">return</span> SYMBMaskHeader.Size + (stringIds.Length * 2 - 1) * <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry.html">SYMBMaskEntry</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry.html#a6331ba6cf24c8f2cc2c4aa31716c0a68">Size</a>;</div>
-<div class="line"><span class="lineno">  391</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry.html">BrawlLib.SSBB.Types.Audio.SYMBMaskEntry</a></div><div class="ttdef"><b>Definition:</b> RSAR.cs:144</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry_html_a44a9cbfe92ae76fbac6c424761cd7d02"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry.html#a44a9cbfe92ae76fbac6c424761cd7d02">BrawlLib.SSBB.Types.Audio.SYMBMaskEntry.Build</a></div><div class="ttdeci">static void Build(int[] indices, SYMBHeader *header, SYMBMaskHeader *maskHeader, SYMBMaskEntry *entries)</div><div class="ttdef"><b>Definition:</b> RSAR.cs:194</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry_html_a6331ba6cf24c8f2cc2c4aa31716c0a68"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_entry.html#a6331ba6cf24c8f2cc2c4aa31716c0a68">BrawlLib.SSBB.Types.Audio.SYMBMaskEntry.Size</a></div><div class="ttdeci">const int Size</div><div class="ttdef"><b>Definition:</b> RSAR.cs:145</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header_html_a6684da377607aa2f887230b712d75e82"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html#a6684da377607aa2f887230b712d75e82">BrawlLib.SSBB.Types.Audio.SYMBMaskHeader.Entries</a></div><div class="ttdeci">SYMBMaskEntry * Entries</div><div class="ttdef"><b>Definition:</b> RSAR.cs:139</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a50660bfc03310441048a9f25efb656b2" name="a50660bfc03310441048a9f25efb656b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50660bfc03310441048a9f25efb656b2">&#9670;&#160;</a></span>EncodeSYMBBlock()</h2>
 
@@ -729,19 +660,19 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  126</span> </div>
 <div class="line"><span class="lineno">  127</span>            <span class="comment">//Sounds</span></div>
 <div class="line"><span class="lineno">  128</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_header.html#ad8f876af178058bcc606aed9e92faefb">_maskOffset1</a> = dataAddr - baseAddr;</div>
-<div class="line"><span class="lineno">  129</span>            dataAddr += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter.html#a6fab9adc8df9f7708ba9bcf5df38c267">EncodeMaskGroup</a>(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._sounds, node, 0);</div>
+<div class="line"><span class="lineno">  129</span>            dataAddr += EncodeMaskGroup(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._sounds, node, 0);</div>
 <div class="line"><span class="lineno">  130</span> </div>
 <div class="line"><span class="lineno">  131</span>            <span class="comment">//Player Info</span></div>
 <div class="line"><span class="lineno">  132</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_header.html#abed5694507165da164972c304c136b0a">_maskOffset2</a> = dataAddr - baseAddr;</div>
-<div class="line"><span class="lineno">  133</span>            dataAddr += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter.html#a6fab9adc8df9f7708ba9bcf5df38c267">EncodeMaskGroup</a>(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._playerInfo, node, 1);</div>
+<div class="line"><span class="lineno">  133</span>            dataAddr += EncodeMaskGroup(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._playerInfo, node, 1);</div>
 <div class="line"><span class="lineno">  134</span> </div>
 <div class="line"><span class="lineno">  135</span>            <span class="comment">//Groups</span></div>
 <div class="line"><span class="lineno">  136</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_header.html#ab56315232df7c4c343a79aff5219c1b9">_maskOffset3</a> = dataAddr - baseAddr;</div>
-<div class="line"><span class="lineno">  137</span>            dataAddr += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter.html#a6fab9adc8df9f7708ba9bcf5df38c267">EncodeMaskGroup</a>(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._groups, node, 2);</div>
+<div class="line"><span class="lineno">  137</span>            dataAddr += EncodeMaskGroup(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._groups, node, 2);</div>
 <div class="line"><span class="lineno">  138</span> </div>
 <div class="line"><span class="lineno">  139</span>            <span class="comment">//Banks</span></div>
 <div class="line"><span class="lineno">  140</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_header.html#a7021343b535912e0f1d78f800e287b31">_maskOffset4</a> = dataAddr - baseAddr;</div>
-<div class="line"><span class="lineno">  141</span>            dataAddr += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter.html#a6fab9adc8df9f7708ba9bcf5df38c267">EncodeMaskGroup</a>(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._banks, node, 3);</div>
+<div class="line"><span class="lineno">  141</span>            dataAddr += EncodeMaskGroup(header, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_s_y_m_b_mask_header.html">SYMBMaskHeader</a>*) dataAddr, entries._banks, node, 3);</div>
 <div class="line"><span class="lineno">  142</span> </div>
 <div class="line"><span class="lineno">  143</span>            <span class="keywordtype">int</span> temp = (int) dataAddr - (<span class="keywordtype">int</span>) header;</div>
 <div class="line"><span class="lineno">  144</span>            len = temp.Align(0x20);</div>
@@ -759,7 +690,6 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  156</span> </div>
 <div class="line"><span class="lineno">  157</span>            <span class="keywordflow">return</span> len;</div>
 <div class="line"><span class="lineno">  158</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter_html_a6fab9adc8df9f7708ba9bcf5df38c267"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_converter.html#a6fab9adc8df9f7708ba9bcf5df38c267">BrawlLib.Wii.Audio.RSARConverter.EncodeMaskGroup</a></div><div class="ttdeci">static int EncodeMaskGroup(SYMBHeader *symb, SYMBMaskHeader *header, List&lt; RSAREntryNode &gt; gList, RSARNode n, int grp)</div><div class="ttdef"><b>Definition:</b> RSARConverter.cs:385</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_p_string_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_p_string.html">BrawlLib.Internal.PString</a></div><div class="ttdef"><b>Definition:</b> PString.cs:7</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_p_string_html_a0b9e7f603b1d047418448f0e05c42866"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a0b9e7f603b1d047418448f0e05c42866">BrawlLib.Internal.PString.Write</a></div><div class="ttdeci">void Write(string s)</div><div class="ttdef"><b>Definition:</b> PString.cs:222</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:9</div></div>

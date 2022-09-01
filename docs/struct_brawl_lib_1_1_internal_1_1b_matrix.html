@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_internal_1_1b_matrix-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.bMatrix Struct Reference</div></div>
 </div><!--header-->
@@ -105,11 +104,6 @@ Properties</h2></td></tr>
 <tr class="separator:aff079997d17ebd9657c7ffc0d228f1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a331300aa904d800a55fe54185fcc239a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1b_matrix.html#a331300aa904d800a55fe54185fcc239a">this[int index]</a><code> [get, set]</code></td></tr>
 <tr class="separator:a331300aa904d800a55fe54185fcc239a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a3a839ed9047debbb50eee0045f8daf26"><td class="memItemLeft" align="right" valign="top">fixed float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1b_matrix.html#a3a839ed9047debbb50eee0045f8daf26">_data</a> [16]</td></tr>
-<tr class="separator:a3a839ed9047debbb50eee0045f8daf26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a49d64b00812f78aacb9ad78c10950f3c" name="a49d64b00812f78aacb9ad78c10950f3c"></a>
@@ -216,29 +210,6 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a3a839ed9047debbb50eee0045f8daf26" name="a3a839ed9047debbb50eee0045f8daf26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a839ed9047debbb50eee0045f8daf26">&#9670;&#160;</a></span>_data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">fixed float BrawlLib.Internal.bMatrix._data[16]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a96a1dc0f580aa6957582ed1593099e7c" name="a96a1dc0f580aa6957582ed1593099e7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a96a1dc0f580aa6957582ed1593099e7c">&#9670;&#160;</a></span>Data</h2>
@@ -262,13 +233,12 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  558</span>        {</div>
 <div class="line"><span class="lineno">  559</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">  560</span>            {</div>
-<div class="line"><span class="lineno">  561</span>                fixed (<span class="keywordtype">float</span>* ptr = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1b_matrix.html#a3a839ed9047debbb50eee0045f8daf26">_data</a>)</div>
+<div class="line"><span class="lineno">  561</span>                fixed (<span class="keywordtype">float</span>* ptr = _data)</div>
 <div class="line"><span class="lineno">  562</span>                {</div>
 <div class="line"><span class="lineno">  563</span>                    <span class="keywordflow">return</span> (bfloat*) ptr;</div>
 <div class="line"><span class="lineno">  564</span>                }</div>
 <div class="line"><span class="lineno">  565</span>            }</div>
 <div class="line"><span class="lineno">  566</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1b_matrix_html_a3a839ed9047debbb50eee0045f8daf26"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1b_matrix.html#a3a839ed9047debbb50eee0045f8daf26">BrawlLib.Internal.bMatrix._data</a></div><div class="ttdeci">fixed float _data[16]</div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:555</div></div>
 </div><!-- fragment -->
 </div>
 </div>

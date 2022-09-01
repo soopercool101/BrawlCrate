@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.BRRESNode Class Reference</div></div>
 </div><!--header-->
@@ -411,17 +410,6 @@ Properties</h2></td></tr>
 <tr class="inherit_header properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html">BrawlLib.Imaging.IImageSource</a></td></tr>
 <tr class="memitem:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html#ae71d17da39076b4ac407b94ba7af3dee">ImageCount</a><code> [get]</code></td></tr>
 <tr class="separator:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ac94ba55d134938c09f951479d03af648"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ac94ba55d134938c09f951479d03af648">_numEntries</a></td></tr>
-<tr class="separator:ac94ba55d134938c09f951479d03af648"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c410840c299843358270e11799b9354"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a1c410840c299843358270e11799b9354">_strOffset</a></td></tr>
-<tr class="separator:a1c410840c299843358270e11799b9354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26db567f9d07f41f2f7a8075b8f46de9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a26db567f9d07f41f2f7a8075b8f46de9">_rootSize</a></td></tr>
-<tr class="separator:a26db567f9d07f41f2f7a8075b8f46de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7e39484c58806674edca61f43a722aa"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html">StringTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a> = new <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html">StringTable</a>()</td></tr>
-<tr class="separator:ae7e39484c58806674edca61f43a722aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -1320,42 +1308,38 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  553</span>        {</div>
 <div class="line"><span class="lineno">  554</span>            <span class="keywordtype">int</span> size = <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html">BRESHeader</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html#aba86804d2a9a986e57e0b876d54d49e5">Size</a>;</div>
-<div class="line"><span class="lineno">  555</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a26db567f9d07f41f2f7a8075b8f46de9">_rootSize</a> = 0x20 + Children.Count * 0x10;</div>
+<div class="line"><span class="lineno">  555</span>            _rootSize = 0x20 + Children.Count * 0x10;</div>
 <div class="line"><span class="lineno">  556</span> </div>
 <div class="line"><span class="lineno">  557</span>            <span class="comment">//Get entry count and data start</span></div>
-<div class="line"><span class="lineno">  558</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ac94ba55d134938c09f951479d03af648">_numEntries</a> = 0;</div>
+<div class="line"><span class="lineno">  558</span>            _numEntries = 0;</div>
 <div class="line"><span class="lineno">  559</span>            <span class="comment">//Children.Sort(NodeComparer.Instance);</span></div>
 <div class="line"><span class="lineno">  560</span>            <span class="keywordflow">foreach</span> (BRESGroupNode n <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><span class="lineno">  561</span>            {</div>
 <div class="line"><span class="lineno">  562</span>                <span class="comment">//n.Children.Sort(NodeComparer.Instance);</span></div>
-<div class="line"><span class="lineno">  563</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a26db567f9d07f41f2f7a8075b8f46de9">_rootSize</a> += n.Children.Count * 0x10 + 0x18;</div>
-<div class="line"><span class="lineno">  564</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ac94ba55d134938c09f951479d03af648">_numEntries</a> += n.Children.Count;</div>
+<div class="line"><span class="lineno">  563</span>                _rootSize += n.Children.Count * 0x10 + 0x18;</div>
+<div class="line"><span class="lineno">  564</span>                _numEntries += n.Children.Count;</div>
 <div class="line"><span class="lineno">  565</span>            }</div>
 <div class="line"><span class="lineno">  566</span> </div>
-<div class="line"><span class="lineno">  567</span>            size += <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a26db567f9d07f41f2f7a8075b8f46de9">_rootSize</a>;</div>
+<div class="line"><span class="lineno">  567</span>            size += _rootSize;</div>
 <div class="line"><span class="lineno">  568</span> </div>
 <div class="line"><span class="lineno">  569</span>            <span class="comment">//Get strings and advance entry offset</span></div>
-<div class="line"><span class="lineno">  570</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a6450f1b1efc7c629c3197ae23acbdae0">Clear</a>();</div>
+<div class="line"><span class="lineno">  570</span>            _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a6450f1b1efc7c629c3197ae23acbdae0">Clear</a>();</div>
 <div class="line"><span class="lineno">  571</span>            <span class="keywordflow">foreach</span> (BRESGroupNode n <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><span class="lineno">  572</span>            {</div>
-<div class="line"><span class="lineno">  573</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a27a7679dda8bcc3fb5dbe154ce1f11ba">Add</a>(n.Name);</div>
+<div class="line"><span class="lineno">  573</span>                _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a27a7679dda8bcc3fb5dbe154ce1f11ba">Add</a>(n.Name);</div>
 <div class="line"><span class="lineno">  574</span>                <span class="keywordflow">foreach</span> (BRESEntryNode c <span class="keywordflow">in</span> n.Children)</div>
 <div class="line"><span class="lineno">  575</span>                {</div>
 <div class="line"><span class="lineno">  576</span>                    size = size.Align(c.DataAlign) + c.CalculateSize(force);</div>
-<div class="line"><span class="lineno">  577</span>                    c.GetStrings(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>);</div>
+<div class="line"><span class="lineno">  577</span>                    c.GetStrings(_stringTable);</div>
 <div class="line"><span class="lineno">  578</span>                }</div>
 <div class="line"><span class="lineno">  579</span>            }</div>
 <div class="line"><span class="lineno">  580</span> </div>
-<div class="line"><span class="lineno">  581</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a1c410840c299843358270e11799b9354">_strOffset</a> = size = size.Align(4);</div>
+<div class="line"><span class="lineno">  581</span>            _strOffset = size = size.Align(4);</div>
 <div class="line"><span class="lineno">  582</span> </div>
-<div class="line"><span class="lineno">  583</span>            size += <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a2603f34972b6da724bd3d1b9ffd116f7">GetTotalSize</a>();</div>
+<div class="line"><span class="lineno">  583</span>            size += _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a2603f34972b6da724bd3d1b9ffd116f7">GetTotalSize</a>();</div>
 <div class="line"><span class="lineno">  584</span> </div>
 <div class="line"><span class="lineno">  585</span>            <span class="keywordflow">return</span> size.Align(0x80);</div>
 <div class="line"><span class="lineno">  586</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html_a1c410840c299843358270e11799b9354"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a1c410840c299843358270e11799b9354">BrawlLib.SSBB.ResourceNodes.BRRESNode._strOffset</a></div><div class="ttdeci">int _strOffset</div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:549</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html_a26db567f9d07f41f2f7a8075b8f46de9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a26db567f9d07f41f2f7a8075b8f46de9">BrawlLib.SSBB.ResourceNodes.BRRESNode._rootSize</a></div><div class="ttdeci">int _rootSize</div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:549</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html_ac94ba55d134938c09f951479d03af648"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ac94ba55d134938c09f951479d03af648">BrawlLib.SSBB.ResourceNodes.BRRESNode._numEntries</a></div><div class="ttdeci">int _numEntries</div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:549</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html_ae7e39484c58806674edca61f43a722aa"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">BrawlLib.SSBB.ResourceNodes.BRRESNode._stringTable</a></div><div class="ttdeci">readonly StringTable _stringTable</div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:550</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_string_table_html_a2603f34972b6da724bd3d1b9ffd116f7"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a2603f34972b6da724bd3d1b9ffd116f7">BrawlLib.SSBB.StringTable.GetTotalSize</a></div><div class="ttdeci">int GetTotalSize()</div><div class="ttdef"><b>Definition:</b> StringTable.cs:21</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_string_table_html_a27a7679dda8bcc3fb5dbe154ce1f11ba"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a27a7679dda8bcc3fb5dbe154ce1f11ba">BrawlLib.SSBB.StringTable.Add</a></div><div class="ttdeci">void Add(string s)</div><div class="ttdef"><b>Definition:</b> StringTable.cs:13</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_string_table_html_a6450f1b1efc7c629c3197ae23acbdae0"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a6450f1b1efc7c629c3197ae23acbdae0">BrawlLib.SSBB.StringTable.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> StringTable.cs:32</div></div>
@@ -1481,23 +1465,23 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a041a23bb933e6da8b0e03fdf664ba5db">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  589</span>        {</div>
 <div class="line"><span class="lineno">  590</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html">BRESHeader</a>* header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html">BRESHeader</a>*) address;</div>
-<div class="line"><span class="lineno">  591</span>            *header = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html">BRESHeader</a>(size, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ac94ba55d134938c09f951479d03af648">_numEntries</a> + 1);</div>
+<div class="line"><span class="lineno">  591</span>            *header = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html">BRESHeader</a>(size, _numEntries + 1);</div>
 <div class="line"><span class="lineno">  592</span> </div>
 <div class="line"><span class="lineno">  593</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_o_o_t_header.html">ROOTHeader</a>* rootHeader = header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html#a9c9efb473c5d7fe0e51611bd41932552">First</a>;</div>
-<div class="line"><span class="lineno">  594</span>            *rootHeader = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_o_o_t_header.html">ROOTHeader</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a26db567f9d07f41f2f7a8075b8f46de9">_rootSize</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count);</div>
+<div class="line"><span class="lineno">  594</span>            *rootHeader = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_o_o_t_header.html">ROOTHeader</a>(_rootSize, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count);</div>
 <div class="line"><span class="lineno">  595</span> </div>
 <div class="line"><span class="lineno">  596</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a>* pMaster = &amp;rootHeader-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_o_o_t_header.html#a5b6d80be70276ab5d80e26c3be35b50c">_master</a>;</div>
 <div class="line"><span class="lineno">  597</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a>* rGroup = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a>*) pMaster-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#ade676a728d0f25699134c8b29acd727d">EndAddress</a>;</div>
 <div class="line"><span class="lineno">  598</span> </div>
 <div class="line"><span class="lineno">  599</span>            <span class="comment">//Write string table</span></div>
-<div class="line"><span class="lineno">  600</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a1ac18cf181214a63ab2f8eb6c3e9bb62">WriteTable</a>(address + <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a1c410840c299843358270e11799b9354">_strOffset</a>);</div>
+<div class="line"><span class="lineno">  600</span>            _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a1ac18cf181214a63ab2f8eb6c3e9bb62">WriteTable</a>(address + _strOffset);</div>
 <div class="line"><span class="lineno">  601</span> </div>
-<div class="line"><span class="lineno">  602</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dataAddr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) rootHeader + <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#a26db567f9d07f41f2f7a8075b8f46de9">_rootSize</a>;</div>
+<div class="line"><span class="lineno">  602</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dataAddr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) rootHeader + _rootSize;</div>
 <div class="line"><span class="lineno">  603</span> </div>
 <div class="line"><span class="lineno">  604</span>            <span class="keywordtype">int</span> gIndex = 1;</div>
 <div class="line"><span class="lineno">  605</span>            <span class="keywordflow">foreach</span> (BRESGroupNode g <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><span class="lineno">  606</span>            {</div>
-<div class="line"><span class="lineno">  607</span>                <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">ResourceEntry</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html#aa89d2e75c1190ca489feb72e7617a05d">Build</a>(pMaster, gIndex++, rGroup, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html">BRESString</a>*) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>[g.Name]);</div>
+<div class="line"><span class="lineno">  607</span>                <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">ResourceEntry</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html#aa89d2e75c1190ca489feb72e7617a05d">Build</a>(pMaster, gIndex++, rGroup, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html">BRESString</a>*) _stringTable[g.Name]);</div>
 <div class="line"><span class="lineno">  608</span> </div>
 <div class="line"><span class="lineno">  609</span>                *rGroup = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a>(g.Children.Count);</div>
 <div class="line"><span class="lineno">  610</span>                <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">ResourceEntry</a>* nEntry = rGroup-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#aafa587aeed1a64dbf4404fa3088c5169">First</a>;</div>
@@ -1508,12 +1492,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  615</span>                    <span class="comment">//Align data</span></div>
 <div class="line"><span class="lineno">  616</span>                    dataAddr = ((int) dataAddr).Align(n.DataAlign);</div>
 <div class="line"><span class="lineno">  617</span> </div>
-<div class="line"><span class="lineno">  618</span>                    <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">ResourceEntry</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html#aa89d2e75c1190ca489feb72e7617a05d">Build</a>(rGroup, rIndex++, dataAddr, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html">BRESString</a>*) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>[n.Name]);</div>
+<div class="line"><span class="lineno">  618</span>                    <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">ResourceEntry</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html#aa89d2e75c1190ca489feb72e7617a05d">Build</a>(rGroup, rIndex++, dataAddr, (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html">BRESString</a>*) _stringTable[n.Name]);</div>
 <div class="line"><span class="lineno">  619</span> </div>
 <div class="line"><span class="lineno">  620</span>                    <span class="comment">//Rebuild entry</span></div>
 <div class="line"><span class="lineno">  621</span>                    <span class="keywordtype">int</span> len = n._calcSize;</div>
 <div class="line"><span class="lineno">  622</span>                    n.Rebuild(dataAddr, len, force);</div>
-<div class="line"><span class="lineno">  623</span>                    n.PostProcess(address, dataAddr, len, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>);</div>
+<div class="line"><span class="lineno">  623</span>                    n.PostProcess(address, dataAddr, len, _stringTable);</div>
 <div class="line"><span class="lineno">  624</span>                    dataAddr += len;</div>
 <div class="line"><span class="lineno">  625</span>                }</div>
 <div class="line"><span class="lineno">  626</span> </div>
@@ -1523,7 +1507,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  630</span>                rGroup = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a>*) rGroup-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#ade676a728d0f25699134c8b29acd727d">EndAddress</a>;</div>
 <div class="line"><span class="lineno">  631</span>            }</div>
 <div class="line"><span class="lineno">  632</span> </div>
-<div class="line"><span class="lineno">  633</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html#ae7e39484c58806674edca61f43a722aa">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a6450f1b1efc7c629c3197ae23acbdae0">Clear</a>();</div>
+<div class="line"><span class="lineno">  633</span>            _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a6450f1b1efc7c629c3197ae23acbdae0">Clear</a>();</div>
 <div class="line"><span class="lineno">  634</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_string_table_html_a1ac18cf181214a63ab2f8eb6c3e9bb62"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a1ac18cf181214a63ab2f8eb6c3e9bb62">BrawlLib.SSBB.StringTable.WriteTable</a></div><div class="ttdeci">void WriteTable(VoidPtr address)</div><div class="ttdef"><b>Definition:</b> StringTable.cs:50</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header_html_a9c9efb473c5d7fe0e51611bd41932552"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html#a9c9efb473c5d7fe0e51611bd41932552">BrawlLib.SSBB.Types.BRESHeader.First</a></div><div class="ttdeci">ROOTHeader * First</div><div class="ttdef"><b>Definition:</b> BRES.cs:20</div></div>
@@ -1701,95 +1685,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  772</span>            <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_header.html">BRESHeader</a>*) source.Address)-&gt;_tag == BRESHeader.Tag ? <span class="keyword">new</span> BRRESNode() : null;</div>
 <div class="line"><span class="lineno">  773</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac94ba55d134938c09f951479d03af648" name="ac94ba55d134938c09f951479d03af648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac94ba55d134938c09f951479d03af648">&#9670;&#160;</a></span>_numEntries</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.SSBB.ResourceNodes.BRRESNode._numEntries</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a26db567f9d07f41f2f7a8075b8f46de9" name="a26db567f9d07f41f2f7a8075b8f46de9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26db567f9d07f41f2f7a8075b8f46de9">&#9670;&#160;</a></span>_rootSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.SSBB.ResourceNodes.BRRESNode._rootSize</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae7e39484c58806674edca61f43a722aa" name="ae7e39484c58806674edca61f43a722aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7e39484c58806674edca61f43a722aa">&#9670;&#160;</a></span>_stringTable</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html">StringTable</a> BrawlLib.SSBB.ResourceNodes.BRRESNode._stringTable = new <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html">StringTable</a>()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1c410840c299843358270e11799b9354" name="a1c410840c299843358270e11799b9354"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c410840c299843358270e11799b9354">&#9670;&#160;</a></span>_strOffset</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.SSBB.ResourceNodes.BRRESNode._strOffset</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

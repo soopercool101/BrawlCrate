@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.TPLTextureNode Class Reference</div></div>
 </div><!--header-->
@@ -393,15 +392,6 @@ Properties</h2></td></tr>
 <tr class="memitem:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html#ae71d17da39076b4ac407b94ba7af3dee">ImageCount</a><code> [get]</code></td></tr>
 <tr class="separator:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a094efd7df9f67acdc929aa1d9ebed4cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a094efd7df9f67acdc929aa1d9ebed4cb">_width</a></td></tr>
-<tr class="separator:a094efd7df9f67acdc929aa1d9ebed4cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4c865434adc61668400f882cfd6fc07"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ac4c865434adc61668400f882cfd6fc07">_height</a></td></tr>
-<tr class="separator:ac4c865434adc61668400f882cfd6fc07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab562c9aee9459b6cfa038bfc8a8cf034"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab562c9aee9459b6cfa038bfc8a8cf034">_format</a></td></tr>
-<tr class="separator:ab562c9aee9459b6cfa038bfc8a8cf034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -632,10 +622,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  298</span>                TPLPaletteNode plt = <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a1c0ec3d22fda63a5fcecad1a3a714fdb">GetPaletteNode</a>();</div>
 <div class="line"><span class="lineno">  299</span>                <span class="keywordflow">if</span> (plt != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  300</span>                {</div>
-<div class="line"><span class="lineno">  301</span>                    <span class="keywordflow">return</span> <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html">TextureConverter</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#a15f4511bebd304b3cc768c37733bd6f0">DecodeIndexed</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab935cabbfd978c715106c22fcfdb75a2">_dataAddr</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addcf8e934662736971bf3b13ee821e29">Width</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addaf77e105d9ff0cddab0dc2d342afef">Height</a>, plt.Palette, index + 1, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab562c9aee9459b6cfa038bfc8a8cf034">_format</a>);</div>
+<div class="line"><span class="lineno">  301</span>                    <span class="keywordflow">return</span> <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html">TextureConverter</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#a15f4511bebd304b3cc768c37733bd6f0">DecodeIndexed</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab935cabbfd978c715106c22fcfdb75a2">_dataAddr</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addcf8e934662736971bf3b13ee821e29">Width</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addaf77e105d9ff0cddab0dc2d342afef">Height</a>, plt.Palette, index + 1, _format);</div>
 <div class="line"><span class="lineno">  302</span>                }</div>
 <div class="line"><span class="lineno">  303</span> </div>
-<div class="line"><span class="lineno">  304</span>                <span class="keywordflow">return</span> <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html">TextureConverter</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#aacbc27096677f0f0044fcf709fcac658">Decode</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab935cabbfd978c715106c22fcfdb75a2">_dataAddr</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addcf8e934662736971bf3b13ee821e29">Width</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addaf77e105d9ff0cddab0dc2d342afef">Height</a>, index + 1, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab562c9aee9459b6cfa038bfc8a8cf034">_format</a>);</div>
+<div class="line"><span class="lineno">  304</span>                <span class="keywordflow">return</span> <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html">TextureConverter</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#aacbc27096677f0f0044fcf709fcac658">Decode</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab935cabbfd978c715106c22fcfdb75a2">_dataAddr</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addcf8e934662736971bf3b13ee821e29">Width</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#addaf77e105d9ff0cddab0dc2d342afef">Height</a>, index + 1, _format);</div>
 <div class="line"><span class="lineno">  305</span>            }</div>
 <div class="line"><span class="lineno">  306</span>            <span class="keywordflow">catch</span></div>
 <div class="line"><span class="lineno">  307</span>            {</div>
@@ -643,7 +633,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  309</span>            }</div>
 <div class="line"><span class="lineno">  310</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node_html_a1c0ec3d22fda63a5fcecad1a3a714fdb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a1c0ec3d22fda63a5fcecad1a3a714fdb">BrawlLib.SSBB.ResourceNodes.TPLTextureNode.GetPaletteNode</a></div><div class="ttdeci">TPLPaletteNode GetPaletteNode()</div><div class="ttdef"><b>Definition:</b> TPLNode.cs:263</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node_html_ab562c9aee9459b6cfa038bfc8a8cf034"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab562c9aee9459b6cfa038bfc8a8cf034">BrawlLib.SSBB.ResourceNodes.TPLTextureNode._format</a></div><div class="ttdeci">WiiPixelFormat _format</div><div class="ttdef"><b>Definition:</b> TPLNode.cs:182</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node_html_ab935cabbfd978c715106c22fcfdb75a2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab935cabbfd978c715106c22fcfdb75a2">BrawlLib.SSBB.ResourceNodes.TPLTextureNode._dataAddr</a></div><div class="ttdeci">VoidPtr _dataAddr</div><div class="ttdef"><b>Definition:</b> TPLNode.cs:173</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html">BrawlLib.Wii.Textures.TextureConverter</a></div><div class="ttdef"><b>Definition:</b> TextureConverter.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter_html_a15f4511bebd304b3cc768c37733bd6f0"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_textures_1_1_texture_converter.html#a15f4511bebd304b3cc768c37733bd6f0">BrawlLib.Wii.Textures.TextureConverter.DecodeIndexed</a></div><div class="ttdeci">static Bitmap DecodeIndexed(TEX0v1 *texture, PLT0v1 *palette, int mipLevel)</div><div class="ttdef"><b>Definition:</b> TextureConverter.cs:439</div></div>
@@ -742,9 +731,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  271</span> </div>
 <div class="line"><span class="lineno">  272</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = <span class="stringliteral">&quot;Texture&quot;</span>;</div>
 <div class="line"><span class="lineno">  273</span> </div>
-<div class="line"><span class="lineno">  274</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a094efd7df9f67acdc929aa1d9ebed4cb">_width</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#ae569e7852e59271ed0180cbad2069ecf">_width</a>;</div>
-<div class="line"><span class="lineno">  275</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ac4c865434adc61668400f882cfd6fc07">_height</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#ac8f45562417df4c64d4412d5dd85165b">_height</a>;</div>
-<div class="line"><span class="lineno">  276</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ab562c9aee9459b6cfa038bfc8a8cf034">_format</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#a9813d42667f1241caab6a9f666d044cf">PixelFormat</a>;</div>
+<div class="line"><span class="lineno">  274</span>            _width = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#ae569e7852e59271ed0180cbad2069ecf">_width</a>;</div>
+<div class="line"><span class="lineno">  275</span>            _height = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#ac8f45562417df4c64d4412d5dd85165b">_height</a>;</div>
+<div class="line"><span class="lineno">  276</span>            _format = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#a9813d42667f1241caab6a9f666d044cf">PixelFormat</a>;</div>
 <div class="line"><span class="lineno">  277</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ae035c060d6799ce98119f3a098c57b2d">_uWrap</a> = (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a66b4fa1f30bca615b98ca86271440f1f">MatWrapMode</a>) (uint) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#a72a0de87febf8497581b92727d36f263">_wrapS</a>;</div>
 <div class="line"><span class="lineno">  278</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#add7baddee00a14b88bd65f63ff22af11">_vWrap</a> = (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a66b4fa1f30bca615b98ca86271440f1f">MatWrapMode</a>) (uint) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#a74f72c2fc992cb9207a8c2b16995d8e9">_wrapT</a>;</div>
 <div class="line"><span class="lineno">  279</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a7833cab31f3254755cf594c2b7357b6d">_minFltr</a> = (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a1036195b4e97203c50fdfb60d9eefdc3">MatTextureMinFilter</a>) (uint) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_texture_header.html#a4d4764e21b57be0c527ad87bcef97ec2">_minFilter</a>;</div>
@@ -761,9 +750,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  290</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a1dd1ddeee36a09b27c98d95d2415a1d9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a1dd1ddeee36a09b27c98d95d2415a1d9">BrawlLib.SSBB.ResourceNodes.ResourceNode._replaced</a></div><div class="ttdeci">bool _replaced</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:829</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node_html_a094efd7df9f67acdc929aa1d9ebed4cb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a094efd7df9f67acdc929aa1d9ebed4cb">BrawlLib.SSBB.ResourceNodes.TPLTextureNode._width</a></div><div class="ttdeci">int _width</div><div class="ttdef"><b>Definition:</b> TPLNode.cs:181</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node_html_a5a3c4aab244ea7b056e50374517dbddb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#a5a3c4aab244ea7b056e50374517dbddb">BrawlLib.SSBB.ResourceNodes.TPLTextureNode.Header</a></div><div class="ttdeci">TPLTextureHeader * Header</div><div class="ttdef"><b>Definition:</b> TPLNode.cs:171</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node_html_ac4c865434adc61668400f882cfd6fc07"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ac4c865434adc61668400f882cfd6fc07">BrawlLib.SSBB.ResourceNodes.TPLTextureNode._height</a></div><div class="ttdeci">int _height</div><div class="ttdef"><b>Definition:</b> TPLNode.cs:181</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node_html_ad5e7f644da97eef1e8e91b0c5cc6be99"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_p_l_texture_node.html#ad5e7f644da97eef1e8e91b0c5cc6be99">BrawlLib.SSBB.ResourceNodes.TPLTextureNode._lod</a></div><div class="ttdeci">int _lod</div><div class="ttdef"><b>Definition:</b> TPLNode.cs:188</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_html_a1036195b4e97203c50fdfb60d9eefdc3"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a1036195b4e97203c50fdfb60d9eefdc3">BrawlLib.SSBB.ResourceNodes.MatTextureMinFilter</a></div><div class="ttdeci">MatTextureMinFilter</div><div class="ttdef"><b>Definition:</b> MDL0MaterialRefNode.cs:1008</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_html_a555214f10de806b0ed5be99ad89a12e8"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a555214f10de806b0ed5be99ad89a12e8">BrawlLib.SSBB.ResourceNodes.MatTextureMagFilter</a></div><div class="ttdeci">MatTextureMagFilter</div><div class="ttdef"><b>Definition:</b> MDL0MaterialRefNode.cs:1018</div></div>
@@ -976,50 +963,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ab562c9aee9459b6cfa038bfc8a8cf034" name="ab562c9aee9459b6cfa038bfc8a8cf034"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab562c9aee9459b6cfa038bfc8a8cf034">&#9670;&#160;</a></span>_format</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a> BrawlLib.SSBB.ResourceNodes.TPLTextureNode._format</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac4c865434adc61668400f882cfd6fc07" name="ac4c865434adc61668400f882cfd6fc07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4c865434adc61668400f882cfd6fc07">&#9670;&#160;</a></span>_height</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.SSBB.ResourceNodes.TPLTextureNode._height</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ad5e7f644da97eef1e8e91b0c5cc6be99" name="ad5e7f644da97eef1e8e91b0c5cc6be99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5e7f644da97eef1e8e91b0c5cc6be99">&#9670;&#160;</a></span>_lod</h2>
 
@@ -1146,28 +1089,6 @@ Additional Inherited Members</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a094efd7df9f67acdc929aa1d9ebed4cb" name="a094efd7df9f67acdc929aa1d9ebed4cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a094efd7df9f67acdc929aa1d9ebed4cb">&#9670;&#160;</a></span>_width</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.SSBB.ResourceNodes.TPLTextureNode._width</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

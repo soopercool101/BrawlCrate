@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Audio.wAudioBuffer Class Reference</div></div>
 </div><!--header-->
@@ -177,13 +176,6 @@ Properties</h2></td></tr>
 <tr class="memitem:af202af1ff212565b965d00efcb5b83f1 inherit properties_class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer"><td class="memItemLeft" align="right" valign="top">abstract int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#af202af1ff212565b965d00efcb5b83f1">Pan</a><code> [get, set]</code></td></tr>
 <tr class="separator:af202af1ff212565b965d00efcb5b83f1 inherit properties_class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a0d7c95a12cc77f8dc337b43377184596"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_provider.html">wAudioProvider</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a0d7c95a12cc77f8dc337b43377184596">_parent</a></td></tr>
-<tr class="separator:a0d7c95a12cc77f8dc337b43377184596"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eee46bf173d139f67288cd514bdeec8"><td class="memItemLeft" align="right" valign="top">DS.IDirectSoundBuffer8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a></td></tr>
-<tr class="separator:a8eee46bf173d139f67288cd514bdeec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pac_attribs_class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer"><td colspan="2" onclick="javascript:toggleInherit('pac_attribs_class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer')"><img src="closed.png" alt="-"/>&#160;Package Attributes inherited from <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html">BrawlLib.Internal.Audio.AudioBuffer</a></td></tr>
@@ -254,14 +246,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   45</span>        {</div>
-<div class="line"><span class="lineno">   46</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a0d7c95a12cc77f8dc337b43377184596">_parent</a> = parent;</div>
+<div class="line"><span class="lineno">   46</span>            _parent = parent;</div>
 <div class="line"><span class="lineno">   47</span> </div>
 <div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> (desc.dwBufferBytes == 0)</div>
 <div class="line"><span class="lineno">   49</span>            {</div>
 <div class="line"><span class="lineno">   50</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   51</span>            }</div>
 <div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a0d7c95a12cc77f8dc337b43377184596">_parent</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_provider.html#ad775612391beffc998127cef7a6477ed">_ds8</a>.CreateSoundBuffer(ref desc, out <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>, IntPtr.Zero);</div>
+<div class="line"><span class="lineno">   53</span>            _parent.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_provider.html#ad775612391beffc998127cef7a6477ed">_ds8</a>.CreateSoundBuffer(ref desc, out _dsb8, IntPtr.Zero);</div>
 <div class="line"><span class="lineno">   54</span> </div>
 <div class="line"><span class="lineno">   55</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a58e6f48cf740cf5197b9ffe129862c00">_format</a> = desc.lpwfxFormat-&gt;wFormatTag;</div>
 <div class="line"><span class="lineno">   56</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a1b636f7249b673641d49623c268dab8a">_frequency</a> = (int) desc.lpwfxFormat-&gt;nSamplesPerSec;</div>
@@ -278,8 +270,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a58e6f48cf740cf5197b9ffe129862c00"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a58e6f48cf740cf5197b9ffe129862c00">BrawlLib.Internal.Audio.AudioBuffer._format</a></div><div class="ttdeci">WaveFormatTag _format</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:17</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_a67af361f724516a81bc05172bf5c4104"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a67af361f724516a81bc05172bf5c4104">BrawlLib.Internal.Audio.AudioBuffer._blockAlign</a></div><div class="ttdeci">int _blockAlign</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:38</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer_html_ae45aafcaae199d9a291883e339d95961"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#ae45aafcaae199d9a291883e339d95961">BrawlLib.Internal.Audio.AudioBuffer._channels</a></div><div class="ttdeci">int _channels</div><div class="ttdef"><b>Definition:</b> AudioBuffer.cs:23</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer_html_a0d7c95a12cc77f8dc337b43377184596"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a0d7c95a12cc77f8dc337b43377184596">BrawlLib.Internal.Audio.wAudioBuffer._parent</a></div><div class="ttdeci">readonly wAudioProvider _parent</div><div class="ttdef"><b>Definition:</b> wAudioBuffer.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer_html_a8eee46bf173d139f67288cd514bdeec8"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">BrawlLib.Internal.Audio.wAudioBuffer._dsb8</a></div><div class="ttdeci">DS.IDirectSoundBuffer8 _dsb8</div><div class="ttdef"><b>Definition:</b> wAudioBuffer.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_provider_html_ad775612391beffc998127cef7a6477ed"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_provider.html#ad775612391beffc998127cef7a6477ed">BrawlLib.Internal.Audio.wAudioProvider._ds8</a></div><div class="ttdeci">DS.IDirectSound8 _ds8</div><div class="ttdef"><b>Definition:</b> wAudioProvider.cs:10</div></div>
 </div><!-- fragment -->
 </div>
@@ -310,10 +300,10 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#ac0d87cd5c2eb2a8047c7acb848ad9a2e">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   65</span>        {</div>
-<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> (_dsb8 != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   67</span>            {</div>
-<div class="line"><span class="lineno">   68</span>                Marshal.FinalReleaseComObject(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>);</div>
-<div class="line"><span class="lineno">   69</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   68</span>                Marshal.FinalReleaseComObject(_dsb8);</div>
+<div class="line"><span class="lineno">   69</span>                _dsb8 = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   70</span>            }</div>
 <div class="line"><span class="lineno">   71</span> </div>
 <div class="line"><span class="lineno">   72</span>            base.Dispose();</div>
@@ -369,7 +359,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   86</span> </div>
 <div class="line"><span class="lineno">   87</span>            <span class="keywordflow">if</span> (length != 0)</div>
 <div class="line"><span class="lineno">   88</span>            {</div>
-<div class="line"><span class="lineno">   89</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.Lock((uint) offset, (uint) length, out IntPtr addr1, out uint len1, out IntPtr addr2,</div>
+<div class="line"><span class="lineno">   89</span>                _dsb8.Lock((uint) offset, (uint) length, out IntPtr addr1, out uint len1, out IntPtr addr2,</div>
 <div class="line"><span class="lineno">   90</span>                    out uint len2, 0);</div>
 <div class="line"><span class="lineno">   91</span> </div>
 <div class="line"><span class="lineno">   92</span>                data._part1Address = addr1;</div>
@@ -413,7 +403,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  110</span>        {</div>
 <div class="line"><span class="lineno">  111</span>            <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  112</span>            {</div>
-<div class="line"><span class="lineno">  113</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.Play(0, 0, DS.DSBufferPlayFlags.Looping);</div>
+<div class="line"><span class="lineno">  113</span>                _dsb8.Play(0, 0, DS.DSBufferPlayFlags.Looping);</div>
 <div class="line"><span class="lineno">  114</span>            }</div>
 <div class="line"><span class="lineno">  115</span>            <span class="keywordflow">catch</span></div>
 <div class="line"><span class="lineno">  116</span>            {</div>
@@ -448,7 +438,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a278608d4a4453e510a3ac3a151a44fbd">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  122</span>        {</div>
-<div class="line"><span class="lineno">  123</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.Stop();</div>
+<div class="line"><span class="lineno">  123</span>            _dsb8.Stop();</div>
 <div class="line"><span class="lineno">  124</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -479,54 +469,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_buffer.html#a9cd0ea486b0f3adcc98f29a8f6675ce2">BrawlLib.Internal.Audio.AudioBuffer</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  105</span>        {</div>
-<div class="line"><span class="lineno">  106</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.Unlock(data._part1Address, (uint) data._part1Length, data._part2Address, (uint) data._part2Length);</div>
+<div class="line"><span class="lineno">  106</span>            _dsb8.Unlock(data._part1Address, (uint) data._part1Length, data._part2Address, (uint) data._part2Length);</div>
 <div class="line"><span class="lineno">  107</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a8eee46bf173d139f67288cd514bdeec8" name="a8eee46bf173d139f67288cd514bdeec8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8eee46bf173d139f67288cd514bdeec8">&#9670;&#160;</a></span>_dsb8</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">DS.IDirectSoundBuffer8 BrawlLib.Internal.Audio.wAudioBuffer._dsb8</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0d7c95a12cc77f8dc337b43377184596" name="a0d7c95a12cc77f8dc337b43377184596"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d7c95a12cc77f8dc337b43377184596">&#9670;&#160;</a></span>_parent</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_provider.html">wAudioProvider</a> BrawlLib.Internal.Audio.wAudioBuffer._parent</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -552,10 +497,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
 <div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   36</span>            {</div>
-<div class="line"><span class="lineno">   37</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.GetPan(out <span class="keywordtype">int</span> pan);</div>
+<div class="line"><span class="lineno">   37</span>                _dsb8.GetPan(out <span class="keywordtype">int</span> pan);</div>
 <div class="line"><span class="lineno">   38</span>                <span class="keywordflow">return</span> pan;</div>
 <div class="line"><span class="lineno">   39</span>            }</div>
-<div class="line"><span class="lineno">   40</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.SetPan(value);</div>
+<div class="line"><span class="lineno">   40</span>            <span class="keyword">set</span> =&gt; _dsb8.SetPan(value);</div>
 <div class="line"><span class="lineno">   41</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -583,10 +528,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   14</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   15</span>            {</div>
 <div class="line"><span class="lineno">   16</span>                uint pos;</div>
-<div class="line"><span class="lineno">   17</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.GetCurrentPosition(&amp;pos, <span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">   17</span>                _dsb8.GetCurrentPosition(&amp;pos, <span class="keyword">null</span>);</div>
 <div class="line"><span class="lineno">   18</span>                <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) pos;</div>
 <div class="line"><span class="lineno">   19</span>            }</div>
-<div class="line"><span class="lineno">   20</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.SetCurrentPosition((uint) value);</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keyword">set</span> =&gt; _dsb8.SetCurrentPosition((uint) value);</div>
 <div class="line"><span class="lineno">   21</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -613,10 +558,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
 <div class="line"><span class="lineno">   25</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   26</span>            {</div>
-<div class="line"><span class="lineno">   27</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.GetVolume(out <span class="keywordtype">int</span> vol);</div>
+<div class="line"><span class="lineno">   27</span>                _dsb8.GetVolume(out <span class="keywordtype">int</span> vol);</div>
 <div class="line"><span class="lineno">   28</span>                <span class="keywordflow">return</span> vol;</div>
 <div class="line"><span class="lineno">   29</span>            }</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1w_audio_buffer.html#a8eee46bf173d139f67288cd514bdeec8">_dsb8</a>.SetVolume(value);</div>
+<div class="line"><span class="lineno">   30</span>            <span class="keyword">set</span> =&gt; _dsb8.SetVolume(value);</div>
 <div class="line"><span class="lineno">   31</span>        }</div>
 </div><!-- fragment -->
 </div>

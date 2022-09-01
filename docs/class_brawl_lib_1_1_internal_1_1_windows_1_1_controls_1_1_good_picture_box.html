@@ -80,7 +80,6 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pac-static-attribs">Static Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.GoodPictureBox Class Reference</div></div>
 </div><!--header-->
@@ -111,11 +110,6 @@ Static Package Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:ab3190a99b74e1ed8afbb406692cd7cc4"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#ab3190a99b74e1ed8afbb406692cd7cc4">Picture</a><code> [get, set]</code></td></tr>
 <tr class="separator:ab3190a99b74e1ed8afbb406692cd7cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:af6e7d746a8ccaec152b83ce45ef54357"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">_target</a></td></tr>
-<tr class="separator:af6e7d746a8ccaec152b83ce45ef54357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae56ff7bb61dbf3791614dbe3bbdbed48" name="ae56ff7bb61dbf3791614dbe3bbdbed48"></a>
@@ -176,12 +170,12 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   40</span>            Graphics g = e.Graphics;</div>
 <div class="line"><span class="lineno">   41</span>            g.Clear(BackColor);</div>
 <div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">_target</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">if</span> (_target == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   44</span>            {</div>
 <div class="line"><span class="lineno">   45</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   46</span>            }</div>
 <div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordtype">int</span> w = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">_target</a>.Width, h = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">_target</a>.Height;</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordtype">int</span> w = _target.Width, h = _target.Height;</div>
 <div class="line"><span class="lineno">   49</span>            Rectangle client = ClientRectangle;</div>
 <div class="line"><span class="lineno">   50</span>            Rectangle bounds = <span class="keyword">new</span> Rectangle(0, 0, w, h);</div>
 <div class="line"><span class="lineno">   51</span> </div>
@@ -204,7 +198,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   68</span>            <span class="comment">//g.SetClip(bounds);</span></div>
 <div class="line"><span class="lineno">   69</span> </div>
 <div class="line"><span class="lineno">   70</span>            g.FillRectangle(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#a2c9c879a3e12575c0ca929e93e836980">_brush</a>, bounds);</div>
-<div class="line"><span class="lineno">   71</span>            g.DrawImage(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">_target</a>, bounds);</div>
+<div class="line"><span class="lineno">   71</span>            g.DrawImage(_target, bounds);</div>
 <div class="line"><span class="lineno">   72</span>            <span class="comment">//g.TranslateTransform(bounds.X, bounds.Y);</span></div>
 <div class="line"><span class="lineno">   73</span>            <span class="comment">//g.ScaleTransform(scale, scale);</span></div>
 <div class="line"><span class="lineno">   74</span> </div>
@@ -214,7 +208,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   78</span>            g.Flush();</div>
 <div class="line"><span class="lineno">   79</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box_html_a2c9c879a3e12575c0ca929e93e836980"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#a2c9c879a3e12575c0ca929e93e836980">BrawlLib.Internal.Windows.Controls.GoodPictureBox._brush</a></div><div class="ttdeci">static HatchBrush _brush</div><div class="ttdef"><b>Definition:</b> GoodPictureBox.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box_html_af6e7d746a8ccaec152b83ce45ef54357"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">BrawlLib.Internal.Windows.Controls.GoodPictureBox._target</a></div><div class="ttdeci">Image _target</div><div class="ttdef"><b>Definition:</b> GoodPictureBox.cs:19</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -243,28 +236,6 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af6e7d746a8ccaec152b83ce45ef54357" name="af6e7d746a8ccaec152b83ce45ef54357"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6e7d746a8ccaec152b83ce45ef54357">&#9670;&#160;</a></span>_target</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Image BrawlLib.Internal.Windows.Controls.GoodPictureBox._target</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="ab3190a99b74e1ed8afbb406692cd7cc4" name="ab3190a99b74e1ed8afbb406692cd7cc4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3190a99b74e1ed8afbb406692cd7cc4">&#9670;&#160;</a></span>Picture</h2>
@@ -286,10 +257,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   22</span>        {</div>
-<div class="line"><span class="lineno">   23</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">_target</a>;</div>
+<div class="line"><span class="lineno">   23</span>            <span class="keyword">get</span> =&gt; _target;</div>
 <div class="line"><span class="lineno">   24</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   25</span>            {</div>
-<div class="line"><span class="lineno">   26</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#af6e7d746a8ccaec152b83ce45ef54357">_target</a> = value;</div>
+<div class="line"><span class="lineno">   26</span>                _target = value;</div>
 <div class="line"><span class="lineno">   27</span>                Invalidate();</div>
 <div class="line"><span class="lineno">   28</span>            }</div>
 <div class="line"><span class="lineno">   29</span>        }</div>

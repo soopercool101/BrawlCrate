@@ -186,8 +186,6 @@ Properties</h2></td></tr>
 <tr class="separator:a7f8a4c04f0c8f8e5cfd2d8081dfd6d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f21711c4268248441721116bd0105a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a84f21711c4268248441721116bd0105a">ResourceStringAddress</a><code> [get, set]</code></td></tr>
 <tr class="separator:a84f21711c4268248441721116bd0105a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3d9fc5167d76c57c27b9260d92d69c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ab3d9fc5167d76c57c27b9260d92d69c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a254e86fcfd559f1ac2ef58596f4a4fbc" name="a254e86fcfd559f1ac2ef58596f4a4fbc"></a>
@@ -281,9 +279,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1284</span>        {</div>
-<div class="line"><span class="lineno"> 1285</span>            <span class="keywordflow">return</span> (MatModeBlock*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version));</div>
+<div class="line"><span class="lineno"> 1285</span>            <span class="keywordflow">return</span> (MatModeBlock*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version));</div>
 <div class="line"><span class="lineno"> 1286</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material_html_ab3d9fc5167d76c57c27b9260d92d69c7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">BrawlLib.SSBB.Types.MDL0Material.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> MDL0.cs:1314</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material_html_ad2de8419e6365b5c5bfce5a1eb1a5fd0"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">BrawlLib.SSBB.Types.MDL0Material.DisplayListOffset</a></div><div class="ttdeci">int DisplayListOffset(int version)</div><div class="ttdef"><b>Definition:</b> MDL0.cs:1225</div></div>
 </div><!-- fragment -->
 </div>
@@ -349,7 +346,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1300</span>        {</div>
-<div class="line"><span class="lineno"> 1301</span>            <span class="keywordflow">return</span> (MatIndMtxBlock*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version) + MatModeBlock.Size + MatTevColorBlock.Size +</div>
+<div class="line"><span class="lineno"> 1301</span>            <span class="keywordflow">return</span> (MatIndMtxBlock*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version) + MatModeBlock.Size + MatTevColorBlock.Size +</div>
 <div class="line"><span class="lineno"> 1302</span>                                      MatTevKonstBlock.Size);</div>
 <div class="line"><span class="lineno"> 1303</span>        }</div>
 </div><!-- fragment -->
@@ -379,7 +376,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1268</span>        {</div>
-<div class="line"><span class="lineno"> 1269</span>            <span class="keywordflow">return</span> (MDL0MaterialLighting*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + 0x3E8 +</div>
+<div class="line"><span class="lineno"> 1269</span>            <span class="keywordflow">return</span> (MDL0MaterialLighting*) (Address + 0x3E8 +</div>
 <div class="line"><span class="lineno"> 1270</span>                                            (<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a93966e9bcb15818900cd0eb37b8a14a2">_matRefOffset</a> == 0 ? version &lt; 10 ? 4 : 8 : <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a93966e9bcb15818900cd0eb37b8a14a2">_matRefOffset</a> &amp; 0xF));</div>
 <div class="line"><span class="lineno"> 1271</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material_html_a93966e9bcb15818900cd0eb37b8a14a2"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a93966e9bcb15818900cd0eb37b8a14a2">BrawlLib.SSBB.Types.MDL0Material._matRefOffset</a></div><div class="ttdeci">bint _matRefOffset</div><div class="ttdef"><b>Definition:</b> MDL0.cs:1214</div></div>
@@ -410,7 +407,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1289</span>        {</div>
-<div class="line"><span class="lineno"> 1290</span>            <span class="keywordflow">return</span> (MatTevColorBlock*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version) + MatModeBlock.Size);</div>
+<div class="line"><span class="lineno"> 1290</span>            <span class="keywordflow">return</span> (MatTevColorBlock*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version) + MatModeBlock.Size);</div>
 <div class="line"><span class="lineno"> 1291</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -439,7 +436,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1294</span>        {</div>
-<div class="line"><span class="lineno"> 1295</span>            <span class="keywordflow">return</span> (MatTevKonstBlock*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version) + MatModeBlock.Size +</div>
+<div class="line"><span class="lineno"> 1295</span>            <span class="keywordflow">return</span> (MatTevKonstBlock*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ad2de8419e6365b5c5bfce5a1eb1a5fd0">DisplayListOffset</a>(version) + MatModeBlock.Size +</div>
 <div class="line"><span class="lineno"> 1296</span>                                        MatTevColorBlock.Size);</div>
 <div class="line"><span class="lineno"> 1297</span>        }</div>
 </div><!-- fragment -->
@@ -469,7 +466,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1262</span>        {</div>
-<div class="line"><span class="lineno"> 1263</span>            <span class="keywordflow">return</span> (MDL0TexSRTData*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + 0x1A0 +</div>
+<div class="line"><span class="lineno"> 1263</span>            <span class="keywordflow">return</span> (MDL0TexSRTData*) (Address + 0x1A0 +</div>
 <div class="line"><span class="lineno"> 1264</span>                                      (<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a93966e9bcb15818900cd0eb37b8a14a2">_matRefOffset</a> == 0 ? version &lt; 10 ? 4 : 8 : <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a93966e9bcb15818900cd0eb37b8a14a2">_matRefOffset</a> &amp; 0xF));</div>
 <div class="line"><span class="lineno"> 1265</span>        }</div>
 </div><!-- fragment -->
@@ -501,7 +498,7 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno"> 1274</span>        {</div>
 <div class="line"><span class="lineno"> 1275</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a3c914342aca5897b135d1810c6b72d78">UserDataOffset</a>(version) &gt; 0)</div>
 <div class="line"><span class="lineno"> 1276</span>            {</div>
-<div class="line"><span class="lineno"> 1277</span>                <span class="keywordflow">return</span> (UserData*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a3c914342aca5897b135d1810c6b72d78">UserDataOffset</a>(version));</div>
+<div class="line"><span class="lineno"> 1277</span>                <span class="keywordflow">return</span> (UserData*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a3c914342aca5897b135d1810c6b72d78">UserDataOffset</a>(version));</div>
 <div class="line"><span class="lineno"> 1278</span>            }</div>
 <div class="line"><span class="lineno"> 1279</span> </div>
 <div class="line"><span class="lineno"> 1280</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
@@ -964,37 +961,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ab3d9fc5167d76c57c27b9260d92d69c7" name="ab3d9fc5167d76c57c27b9260d92d69c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3d9fc5167d76c57c27b9260d92d69c7">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.MDL0Material.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1314</span>        {</div>
-<div class="line"><span class="lineno"> 1315</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno"> 1316</span>            {</div>
-<div class="line"><span class="lineno"> 1317</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno"> 1318</span>                {</div>
-<div class="line"><span class="lineno"> 1319</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno"> 1320</span>                }</div>
-<div class="line"><span class="lineno"> 1321</span>            }</div>
-<div class="line"><span class="lineno"> 1322</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="aec22d0d3a3eb0424c4201d70bd20e02b" name="aec22d0d3a3eb0424c4201d70bd20e02b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec22d0d3a3eb0424c4201d70bd20e02b">&#9670;&#160;</a></span>First</h2>
 
@@ -1081,8 +1047,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1308</span>        {</div>
-<div class="line"><span class="lineno"> 1309</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#adc3c89d3771038549ff2a2028525d908">_stringOffset</a>;</div>
-<div class="line"><span class="lineno"> 1310</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#adc3c89d3771038549ff2a2028525d908">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#ab3d9fc5167d76c57c27b9260d92d69c7">Address</a>;</div>
+<div class="line"><span class="lineno"> 1309</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#adc3c89d3771038549ff2a2028525d908">_stringOffset</a>;</div>
+<div class="line"><span class="lineno"> 1310</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#adc3c89d3771038549ff2a2028525d908">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno"> 1311</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material_html_adc3c89d3771038549ff2a2028525d908"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#adc3c89d3771038549ff2a2028525d908">BrawlLib.SSBB.Types.MDL0Material._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> MDL0.cs:1168</div></div>
 </div><!-- fragment -->

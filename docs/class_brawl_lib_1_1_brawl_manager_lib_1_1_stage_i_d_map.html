@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.BrawlManagerLib.StageIDMap Class Reference</div></div>
 </div><!--header-->
@@ -102,62 +100,9 @@ Static Public Member Functions</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a8dcc65b61c819ff5cb170c3855139db3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a8dcc65b61c819ff5cb170c3855139db3">Stages</a><code> [get]</code></td></tr>
 <tr class="separator:a8dcc65b61c819ff5cb170c3855139db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a0952c599b363d3d4cfe0316747bce5"><td class="memItemLeft" align="right" valign="top">static ReadOnlyCollection&lt; KeyValuePair&lt; byte, string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7a0952c599b363d3d4cfe0316747bce5">StagesByID</a><code> [get, private set]</code></td></tr>
+<tr class="memitem:a7a0952c599b363d3d4cfe0316747bce5"><td class="memItemLeft" align="right" valign="top">static ReadOnlyCollection&lt; KeyValuePair&lt; byte, string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7a0952c599b363d3d4cfe0316747bce5">StagesByID</a><code> [get]</code></td></tr>
 <tr class="separator:a7a0952c599b363d3d4cfe0316747bce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a6493058703a93ff56c01b062e2a49b34"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a6493058703a93ff56c01b062e2a49b34">StageIDMap</a> ()</td></tr>
-<tr class="separator:a6493058703a93ff56c01b062e2a49b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ad82a1c746243d81a28cdad3a786ab720"><td class="memItemLeft" align="right" valign="top">static int[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">sc_selcharacter2_icon_from_sss3_index</a></td></tr>
-<tr class="separator:ad82a1c746243d81a28cdad3a786ab720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6493058703a93ff56c01b062e2a49b34" name="a6493058703a93ff56c01b062e2a49b34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6493058703a93ff56c01b062e2a49b34">&#9670;&#160;</a></span>StageIDMap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static BrawlLib.BrawlManagerLib.StageIDMap.StageIDMap </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   16</span>        {</div>
-<div class="line"><span class="lineno">   17</span>            <span class="comment">// static initializer</span></div>
-<div class="line"><span class="lineno">   18</span> </div>
-<div class="line"><span class="lineno">   19</span>            List&lt;KeyValuePair&lt;byte, string&gt;&gt; byID = <span class="keyword">new</span> List&lt;KeyValuePair&lt;byte, string&gt;&gt;();</div>
-<div class="line"><span class="lineno">   20</span>            <span class="keywordflow">for</span> (<span class="keywordtype">byte</span> b = 1; b &lt;= 103; b++)</div>
-<div class="line"><span class="lineno">   21</span>            {</div>
-<div class="line"><span class="lineno">   22</span>                <span class="keywordtype">string</span> pac = <a class="code hl_function" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7948d4fd036a23512e6ba1411294f927">PacBasenameForStageID</a>(b);</div>
-<div class="line"><span class="lineno">   23</span>                <span class="keywordflow">if</span> (pac != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   24</span>                {</div>
-<div class="line"><span class="lineno">   25</span>                    byID.Add(<span class="keyword">new</span> KeyValuePair&lt;byte, string&gt;(b, pac.ToUpper()));</div>
-<div class="line"><span class="lineno">   26</span>                }</div>
-<div class="line"><span class="lineno">   27</span>            }</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>            <a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7a0952c599b363d3d4cfe0316747bce5">StagesByID</a> = byID.AsReadOnly();</div>
-<div class="line"><span class="lineno">   30</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_a7948d4fd036a23512e6ba1411294f927"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7948d4fd036a23512e6ba1411294f927">BrawlLib.BrawlManagerLib.StageIDMap.PacBasenameForStageID</a></div><div class="ttdeci">static string PacBasenameForStageID(int stageID)</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:86</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_a7a0952c599b363d3d4cfe0316747bce5"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#a7a0952c599b363d3d4cfe0316747bce5">BrawlLib.BrawlManagerLib.StageIDMap.StagesByID</a></div><div class="ttdeci">static ReadOnlyCollection&lt; KeyValuePair&lt; byte, string &gt; &gt; StagesByID</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:13</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7948d4fd036a23512e6ba1411294f927" name="a7948d4fd036a23512e6ba1411294f927"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7948d4fd036a23512e6ba1411294f927">&#9670;&#160;</a></span>PacBasenameForStageID()</h2>
@@ -346,9 +291,9 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  186</span>        {</div>
 <div class="line"><span class="lineno">  187</span>            <span class="keywordtype">int</span> index = -1;</div>
-<div class="line"><span class="lineno">  188</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">sc_selcharacter2_icon_from_sss3_index</a>.Length; i++)</div>
+<div class="line"><span class="lineno">  188</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; sc_selcharacter2_icon_from_sss3_index.Length; i++)</div>
 <div class="line"><span class="lineno">  189</span>            {</div>
-<div class="line"><span class="lineno">  190</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">sc_selcharacter2_icon_from_sss3_index</a>[i] == selcharacter2Icon)</div>
+<div class="line"><span class="lineno">  190</span>                <span class="keywordflow">if</span> (sc_selcharacter2_icon_from_sss3_index[i] == selcharacter2Icon)</div>
 <div class="line"><span class="lineno">  191</span>                {</div>
 <div class="line"><span class="lineno">  192</span>                    index = i;</div>
 <div class="line"><span class="lineno">  193</span>                    <span class="keywordflow">break</span>;</div>
@@ -357,7 +302,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  196</span> </div>
 <div class="line"><span class="lineno">  197</span>            <span class="keywordflow">return</span> index;</div>
 <div class="line"><span class="lineno">  198</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map_html_ad82a1c746243d81a28cdad3a786ab720"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_stage_i_d_map.html#ad82a1c746243d81a28cdad3a786ab720">BrawlLib.BrawlManagerLib.StageIDMap.sc_selcharacter2_icon_from_sss3_index</a></div><div class="ttdeci">static int[] sc_selcharacter2_icon_from_sss3_index</div><div class="ttdef"><b>Definition:</b> StageIDMap.cs:140</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -415,29 +359,6 @@ Static Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ad82a1c746243d81a28cdad3a786ab720" name="ad82a1c746243d81a28cdad3a786ab720"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad82a1c746243d81a28cdad3a786ab720">&#9670;&#160;</a></span>sc_selcharacter2_icon_from_sss3_index</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int [] BrawlLib.BrawlManagerLib.StageIDMap.sc_selcharacter2_icon_from_sss3_index</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a8dcc65b61c819ff5cb170c3855139db3" name="a8dcc65b61c819ff5cb170c3855139db3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8dcc65b61c819ff5cb170c3855139db3">&#9670;&#160;</a></span>Stages</h2>
@@ -476,7 +397,7 @@ Static Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

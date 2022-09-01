@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.BrawlManagerLib.ByteUtilities Class Reference</div></div>
 </div><!--header-->
@@ -95,11 +94,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a5d8fe1edb61c99bcac851da21bd3d2e8"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a5d8fe1edb61c99bcac851da21bd3d2e8">MD5Sum</a> (byte[] data)</td></tr>
 <tr class="memdesc:a5d8fe1edb61c99bcac851da21bd3d2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the MD5 sum of the data in a byte array.   <a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a5d8fe1edb61c99bcac851da21bd3d2e8">More...</a><br /></td></tr>
 <tr class="separator:a5d8fe1edb61c99bcac851da21bd3d2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a7aa146b93e1c3fc9b714bd9ba11f2f95"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a7aa146b93e1c3fc9b714bd9ba11f2f95">md5provider</a> = new MD5CryptoServiceProvider()</td></tr>
-<tr class="separator:a7aa146b93e1c3fc9b714bd9ba11f2f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6001d7df31293f27346a4f6174f012ac" name="a6001d7df31293f27346a4f6174f012ac"></a>
@@ -193,7 +187,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Calculates the MD5 sum of the data in a byte array.  </p>
 <div class="fragment"><div class="line"><span class="lineno">   58</span>        {</div>
-<div class="line"><span class="lineno">   59</span>            <span class="keywordtype">byte</span>[] hash = <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a7aa146b93e1c3fc9b714bd9ba11f2f95">md5provider</a>.ComputeHash(data);</div>
+<div class="line"><span class="lineno">   59</span>            <span class="keywordtype">byte</span>[] hash = md5provider.ComputeHash(data);</div>
 <div class="line"><span class="lineno">   60</span>            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</div>
 <div class="line"><span class="lineno">   61</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">byte</span> b <span class="keywordflow">in</span> hash)</div>
 <div class="line"><span class="lineno">   62</span>            {</div>
@@ -202,7 +196,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   65</span> </div>
 <div class="line"><span class="lineno">   66</span>            <span class="keywordflow">return</span> sb.ToString();</div>
 <div class="line"><span class="lineno">   67</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities_html_a7aa146b93e1c3fc9b714bd9ba11f2f95"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_byte_utilities.html#a7aa146b93e1c3fc9b714bd9ba11f2f95">BrawlLib.BrawlManagerLib.ByteUtilities.md5provider</a></div><div class="ttdeci">static MD5CryptoServiceProvider md5provider</div><div class="ttdef"><b>Definition:</b> ByteUtilities.cs:39</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -280,29 +273,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   23</span>            <span class="keywordflow">return</span> b;</div>
 <div class="line"><span class="lineno">   24</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7aa146b93e1c3fc9b714bd9ba11f2f95" name="a7aa146b93e1c3fc9b714bd9ba11f2f95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7aa146b93e1c3fc9b714bd9ba11f2f95">&#9670;&#160;</a></span>md5provider</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MD5CryptoServiceProvider BrawlLib.BrawlManagerLib.ByteUtilities.md5provider = new MD5CryptoServiceProvider()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

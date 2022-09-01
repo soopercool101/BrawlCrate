@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode Class Reference</div></div>
 </div><!--header-->
@@ -425,13 +424,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a3fe9557eb66bbed2e8b2a37ab8885db2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html">ObjectParser</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a3fe9557eb66bbed2e8b2a37ab8885db2">_parser</a></td></tr>
-<tr class="separator:a3fe9557eb66bbed2e8b2a37ab8885db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dc25cff01b3e3169861e3aee227b844"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a5dc25cff01b3e3169861e3aee227b844">_expand</a> = false</td></tr>
-<tr class="separator:a5dc25cff01b3e3169861e3aee227b844"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -686,7 +678,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca8bfdd04f5339dd3135a9daf03495a8">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   83</span>        {</div>
-<div class="line"><span class="lineno">   84</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a5dc25cff01b3e3169861e3aee227b844">_expand</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   84</span>            _expand = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   85</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   86</span>            {</div>
 <div class="line"><span class="lineno">   87</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a791ee2e4caea38dd7015d4007229eab2">_dataSize</a> &gt; 0)</div>
@@ -710,16 +702,14 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  105</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#aace785370f70e513e2be11a76b3f8b0c">InitBuffer</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a791ee2e4caea38dd7015d4007229eab2">_dataSize</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#adbf4615538f3dbdc16ee3fb4949052a9">Header</a>);</div>
 <div class="line"><span class="lineno">  106</span>                <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abf66d99943b69f99b65b96e94b1ba617">Index</a> == 5)</div>
 <div class="line"><span class="lineno">  107</span>                {</div>
-<div class="line"><span class="lineno">  108</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a3fe9557eb66bbed2e8b2a37ab8885db2">_parser</a> = <span class="keyword">new</span> ObjectParser(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  108</span>                    _parser = <span class="keyword">new</span> ObjectParser(<span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">  109</span>                }</div>
 <div class="line"><span class="lineno">  110</span>            }</div>
 <div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a3fe9557eb66bbed2e8b2a37ab8885db2">_parser</a> != <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">return</span> _parser != <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  113</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_a27694e4bfc0ceceeb1012c5b6420b37b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a27694e4bfc0ceceeb1012c5b6420b37b">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._dataOffset</a></div><div class="ttdeci">int _dataOffset</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:20</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_a3b8197c69a1edee2745e80c054cc1886"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a3b8197c69a1edee2745e80c054cc1886">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._isBSSSection</a></div><div class="ttdeci">bool _isBSSSection</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:19</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_a3fe9557eb66bbed2e8b2a37ab8885db2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a3fe9557eb66bbed2e8b2a37ab8885db2">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._parser</a></div><div class="ttdeci">ObjectParser _parser</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_a5dc25cff01b3e3169861e3aee227b844"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a5dc25cff01b3e3169861e3aee227b844">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._expand</a></div><div class="ttdeci">bool _expand</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:52</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_a791ee2e4caea38dd7015d4007229eab2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a791ee2e4caea38dd7015d4007229eab2">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._dataSize</a></div><div class="ttdeci">uint _dataSize</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:22</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_adbf4615538f3dbdc16ee3fb4949052a9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#adbf4615538f3dbdc16ee3fb4949052a9">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode.Header</a></div><div class="ttdeci">VoidPtr Header</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:13</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
@@ -754,8 +744,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acc31994201c76c84a2518686a093fea1">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  116</span>        {</div>
-<div class="line"><span class="lineno">  117</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a3fe9557eb66bbed2e8b2a37ab8885db2">_parser</a>?.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a52909cb35f7fff8598cb8cbda4bdfd52">Parse</a>();</div>
-<div class="line"><span class="lineno">  118</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a3fe9557eb66bbed2e8b2a37ab8885db2">_parser</a>?.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ad333dd71ff867c0aa057300d2fdfe82b">Populate</a>();</div>
+<div class="line"><span class="lineno">  117</span>            _parser?.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a52909cb35f7fff8598cb8cbda4bdfd52">Parse</a>();</div>
+<div class="line"><span class="lineno">  118</span>            _parser?.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ad333dd71ff867c0aa057300d2fdfe82b">Populate</a>();</div>
 <div class="line"><span class="lineno">  119</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_a52909cb35f7fff8598cb8cbda4bdfd52"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a52909cb35f7fff8598cb8cbda4bdfd52">BrawlLib.SSBB.ResourceNodes.ObjectParser.Parse</a></div><div class="ttdeci">void Parse()</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:22</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_ad333dd71ff867c0aa057300d2fdfe82b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ad333dd71ff867c0aa057300d2fdfe82b">BrawlLib.SSBB.ResourceNodes.ObjectParser.Populate</a></div><div class="ttdeci">void Populate()</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:193</div></div>
@@ -872,28 +862,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a5dc25cff01b3e3169861e3aee227b844" name="a5dc25cff01b3e3169861e3aee227b844"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dc25cff01b3e3169861e3aee227b844">&#9670;&#160;</a></span>_expand</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._expand = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a3b8197c69a1edee2745e80c054cc1886" name="a3b8197c69a1edee2745e80c054cc1886"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b8197c69a1edee2745e80c054cc1886">&#9670;&#160;</a></span>_isBSSSection</h2>
 
@@ -918,28 +886,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">bool BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._isCodeSection = false</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3fe9557eb66bbed2e8b2a37ab8885db2" name="a3fe9557eb66bbed2e8b2a37ab8885db2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fe9557eb66bbed2e8b2a37ab8885db2">&#9670;&#160;</a></span>_parser</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html">ObjectParser</a> BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._parser</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -1054,10 +1000,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   55</span>        {</div>
-<div class="line"><span class="lineno">   56</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a5dc25cff01b3e3169861e3aee227b844">_expand</a>;</div>
+<div class="line"><span class="lineno">   56</span>            <span class="keyword">get</span> =&gt; _expand;</div>
 <div class="line"><span class="lineno">   57</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   58</span>            {</div>
-<div class="line"><span class="lineno">   59</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a5dc25cff01b3e3169861e3aee227b844">_expand</a> = value;</div>
+<div class="line"><span class="lineno">   59</span>                _expand = value;</div>
 <div class="line"><span class="lineno">   60</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
 <div class="line"><span class="lineno">   61</span>            }</div>
 <div class="line"><span class="lineno">   62</span> </div>

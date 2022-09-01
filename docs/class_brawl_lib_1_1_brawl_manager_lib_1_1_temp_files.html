@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.BrawlManagerLib.TempFiles Class Reference</div></div>
 </div><!--header-->
@@ -100,55 +99,7 @@ Static Public Member Functions</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a494ee0914790edc8956bef75ca7a7483"><td class="memItemLeft" align="right" valign="top">static readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">SUBDIR</a> = &quot;BrawlManagerLib-&quot; + Guid.NewGuid()</td></tr>
 <tr class="separator:a494ee0914790edc8956bef75ca7a7483"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a79f1dd42d3d111c6b3dab27a0e83a3f0"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a79f1dd42d3d111c6b3dab27a0e83a3f0">TempFiles</a> ()</td></tr>
-<tr class="separator:a79f1dd42d3d111c6b3dab27a0e83a3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a79f1dd42d3d111c6b3dab27a0e83a3f0" name="a79f1dd42d3d111c6b3dab27a0e83a3f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79f1dd42d3d111c6b3dab27a0e83a3f0">&#9670;&#160;</a></span>TempFiles()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static BrawlLib.BrawlManagerLib.TempFiles.TempFiles </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
-<div class="line"><span class="lineno">   25</span>            <span class="keywordtype">string</span> p = Path.Combine(Path.GetTempPath(), <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">SUBDIR</a>);</div>
-<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">if</span> (Directory.Exists(p))</div>
-<div class="line"><span class="lineno">   27</span>            {</div>
-<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">   29</span>                {</div>
-<div class="line"><span class="lineno">   30</span>                    Directory.Delete(p, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   31</span>                }</div>
-<div class="line"><span class="lineno">   32</span>                <span class="keywordflow">catch</span> (IOException)</div>
-<div class="line"><span class="lineno">   33</span>                {</div>
-<div class="line"><span class="lineno">   34</span>                    Console.WriteLine(<span class="stringliteral">&quot;could not clear out &quot;</span> + p + <span class="stringliteral">&quot; (files probably in use)&quot;</span>);</div>
-<div class="line"><span class="lineno">   35</span>                }</div>
-<div class="line"><span class="lineno">   36</span>            }</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>            Directory.CreateDirectory(p);</div>
-<div class="line"><span class="lineno">   39</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files_html_a494ee0914790edc8956bef75ca7a7483"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">BrawlLib.BrawlManagerLib.TempFiles.SUBDIR</a></div><div class="ttdeci">static readonly string SUBDIR</div><div class="ttdef"><b>Definition:</b> TempFiles.cs:21</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad9089d1b3950352ca6e275534a6cbaac" name="ad9089d1b3950352ca6e275534a6cbaac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad9089d1b3950352ca6e275534a6cbaac">&#9670;&#160;</a></span>Create()</h2>
@@ -183,6 +134,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   51</span> </div>
 <div class="line"><span class="lineno">   52</span>            <span class="keywordflow">return</span> Path.Combine(Path.GetTempPath(), <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">SUBDIR</a>, Guid.NewGuid() + extension);</div>
 <div class="line"><span class="lineno">   53</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files_html_a494ee0914790edc8956bef75ca7a7483"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_temp_files.html#a494ee0914790edc8956bef75ca7a7483">BrawlLib.BrawlManagerLib.TempFiles.SUBDIR</a></div><div class="ttdeci">static readonly string SUBDIR</div><div class="ttdef"><b>Definition:</b> TempFiles.cs:21</div></div>
 </div><!-- fragment -->
 </div>
 </div>

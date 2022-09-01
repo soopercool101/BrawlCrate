@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_double_extension-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.DoubleExtension Class Reference</div></div>
 </div><!--header-->
@@ -89,11 +88,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a0e07c0c2359371c6732efa65fc747a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9669dea06ac2b9c6abe2caf3f75869f8"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_double_extension.html#a9669dea06ac2b9c6abe2caf3f75869f8">Clamp</a> (this double value, double min, double max)</td></tr>
 <tr class="separator:a9669dea06ac2b9c6abe2caf3f75869f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ac236165ba15c9a9d9eff625c3382f335"><td class="memItemLeft" align="right" valign="top">static readonly float[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_double_extension.html#ac236165ba15c9a9d9eff625c3382f335">_quantTable</a></td></tr>
-<tr class="separator:ac236165ba15c9a9d9eff625c3382f335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9669dea06ac2b9c6abe2caf3f75869f8" name="a9669dea06ac2b9c6abe2caf3f75869f8"></a>
@@ -183,42 +177,12 @@ Static Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   13</span>        {</div>
 <div class="line"><span class="lineno">   14</span>            <span class="keywordtype">float</span> value;</div>
 <div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>            <span class="keywordtype">float</span> scaleVal = scale &lt; 32 ? 1.0f / <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_double_extension.html#ac236165ba15c9a9d9eff625c3382f335">_quantTable</a>[scale] : <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_double_extension.html#ac236165ba15c9a9d9eff625c3382f335">_quantTable</a>[64 - scale];</div>
+<div class="line"><span class="lineno">   16</span>            <span class="keywordtype">float</span> scaleVal = scale &lt; 32 ? 1.0f / _quantTable[scale] : _quantTable[64 - scale];</div>
 <div class="line"><span class="lineno">   17</span> </div>
 <div class="line"><span class="lineno">   18</span>            value = data[0] * scaleVal;</div>
 <div class="line"><span class="lineno">   19</span> </div>
 <div class="line"><span class="lineno">   20</span>            <span class="keywordflow">return</span> value;</div>
 <div class="line"><span class="lineno">   21</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_double_extension_html_ac236165ba15c9a9d9eff625c3382f335"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_double_extension.html#ac236165ba15c9a9d9eff625c3382f335">BrawlLib.Internal.DoubleExtension._quantTable</a></div><div class="ttdeci">static readonly float[] _quantTable</div><div class="ttdef"><b>Definition:</b> DoubleExtension.cs:5</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac236165ba15c9a9d9eff625c3382f335" name="ac236165ba15c9a9d9eff625c3382f335"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac236165ba15c9a9d9eff625c3382f335">&#9670;&#160;</a></span>_quantTable</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly float [] BrawlLib.Internal.DoubleExtension._quantTable</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> <span class="keywordtype">float</span>[]</div>
-<div class="line">        {</div>
-<div class="line">            1f, 2f, 4f, 8f, 16f, 32f, 64f, 128f, 256f, 512f, 1024f, 2048f, 4096f, 8192f, 16384f, 32768f,</div>
-<div class="line">            65536f, 131072f, 262144f, 524288f, 1048576f, 2097152f, 4194304f, 8388608f, 16777216f, 33554432f, 67108864f,</div>
-<div class="line">            134217728f, 268435456f, 536870912f, 1073741824f, 2147483648f, 4294967296f</div>
-<div class="line">        }</div>
 </div><!-- fragment -->
 </div>
 </div>

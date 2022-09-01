@@ -78,9 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.ObjectParser Class Reference</div></div>
 </div><!--header-->
@@ -101,23 +98,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a28e01f025c899b24e6e39b50367e8dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7bea798fe3cfea72804c18a2505d8a7"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_object_node.html">RELObjectNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ab7bea798fe3cfea72804c18a2505d8a7">_objects</a> = new List&lt;<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_object_node.html">RELObjectNode</a>&gt;()</td></tr>
 <tr class="separator:ab7bea798fe3cfea72804c18a2505d8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a10b67749e61fba629654aeeaa7be741b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html">RelocationManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a><code> [get]</code></td></tr>
-<tr class="separator:a10b67749e61fba629654aeeaa7be741b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a6da7fe1ee321d44d2e212f7dade8b6f3"><td class="memItemLeft" align="right" valign="top">unsafe <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html">RELType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a6da7fe1ee321d44d2e212f7dade8b6f3">ParseDeclaration</a> (int index)</td></tr>
-<tr class="separator:a6da7fe1ee321d44d2e212f7dade8b6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace9f50cd1e8b3f1227e28a8231ce36f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_object_node.html">RELObjectNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ace9f50cd1e8b3f1227e28a8231ce36f8">ParseObject</a> (ref int rel)</td></tr>
-<tr class="separator:ace9f50cd1e8b3f1227e28a8231ce36f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:af21983de01f53b0c574645fa5746cfe9"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html">ModuleSectionNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a></td></tr>
-<tr class="separator:af21983de01f53b0c574645fa5746cfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad9c8c4def85e84c709651bfa1c67d24f" name="ad9c8c4def85e84c709651bfa1c67d24f"></a>
@@ -146,11 +126,10 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   14</span>        {</div>
 <div class="line"><span class="lineno">   15</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ab7bea798fe3cfea72804c18a2505d8a7">_objects</a> = <span class="keyword">new</span> List&lt;RELObjectNode&gt;();</div>
 <div class="line"><span class="lineno">   16</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a28e01f025c899b24e6e39b50367e8dbc">_types</a> = <span class="keyword">new</span> Dictionary&lt;int, RELType&gt;();</div>
-<div class="line"><span class="lineno">   17</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a> = section;</div>
+<div class="line"><span class="lineno">   17</span>            _objectSection = section;</div>
 <div class="line"><span class="lineno">   18</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_a28e01f025c899b24e6e39b50367e8dbc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a28e01f025c899b24e6e39b50367e8dbc">BrawlLib.SSBB.ResourceNodes.ObjectParser._types</a></div><div class="ttdeci">Dictionary&lt; int, RELType &gt; _types</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_ab7bea798fe3cfea72804c18a2505d8a7"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ab7bea798fe3cfea72804c18a2505d8a7">BrawlLib.SSBB.ResourceNodes.ObjectParser._objects</a></div><div class="ttdeci">List&lt; RELObjectNode &gt; _objects</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_af21983de01f53b0c574645fa5746cfe9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">BrawlLib.SSBB.ResourceNodes.ObjectParser._objectSection</a></div><div class="ttdeci">readonly ModuleSectionNode _objectSection</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -178,237 +157,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   23</span>        {</div>
-<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">if</span> (_objectSection == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   25</span>            {</div>
 <div class="line"><span class="lineno">   26</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   27</span>            }</div>
 <div class="line"><span class="lineno">   28</span> </div>
 <div class="line"><span class="lineno">   29</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> rel = 0; rel &lt; _objectSection._dataBuffer.Length / 4; rel++)</div>
 <div class="line"><span class="lineno">   30</span>            {</div>
-<div class="line"><span class="lineno">   31</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a6da7fe1ee321d44d2e212f7dade8b6f3">ParseDeclaration</a>(rel);</div>
+<div class="line"><span class="lineno">   31</span>                ParseDeclaration(rel);</div>
 <div class="line"><span class="lineno">   32</span>            }</div>
 <div class="line"><span class="lineno">   33</span> </div>
 <div class="line"><span class="lineno">   34</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> rel = 0; rel &lt; _objectSection._dataBuffer.Length / 4; rel++)</div>
 <div class="line"><span class="lineno">   35</span>            {</div>
-<div class="line"><span class="lineno">   36</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ace9f50cd1e8b3f1227e28a8231ce36f8">ParseObject</a>(ref rel);</div>
+<div class="line"><span class="lineno">   36</span>                ParseObject(ref rel);</div>
 <div class="line"><span class="lineno">   37</span>            }</div>
 <div class="line"><span class="lineno">   38</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_a6da7fe1ee321d44d2e212f7dade8b6f3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a6da7fe1ee321d44d2e212f7dade8b6f3">BrawlLib.SSBB.ResourceNodes.ObjectParser.ParseDeclaration</a></div><div class="ttdeci">unsafe RELType ParseDeclaration(int index)</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:40</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_ace9f50cd1e8b3f1227e28a8231ce36f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ace9f50cd1e8b3f1227e28a8231ce36f8">BrawlLib.SSBB.ResourceNodes.ObjectParser.ParseObject</a></div><div class="ttdeci">RELObjectNode ParseObject(ref int rel)</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:103</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6da7fe1ee321d44d2e212f7dade8b6f3" name="a6da7fe1ee321d44d2e212f7dade8b6f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6da7fe1ee321d44d2e212f7dade8b6f3">&#9670;&#160;</a></span>ParseDeclaration()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsafe <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html">RELType</a> BrawlLib.SSBB.ResourceNodes.ObjectParser.ParseDeclaration </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   41</span>        {</div>
-<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a28e01f025c899b24e6e39b50367e8dbc">_types</a>.TryGetValue(index, out RELType type))</div>
-<div class="line"><span class="lineno">   43</span>            {</div>
-<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">return</span> type;</div>
-<div class="line"><span class="lineno">   45</span>            }</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>            RelCommand cmd = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">GetCommand</a>(index);</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>            RelocationTarget target = cmd?.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html#a1aeac42454c2a0c9308fb726a4c58c9a">GetTargetRelocation</a>();</div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (target == <span class="keyword">null</span> || target._sectionID != <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abf66d99943b69f99b65b96e94b1ba617">Index</a>)</div>
-<div class="line"><span class="lineno">   51</span>            {</div>
-<div class="line"><span class="lineno">   52</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   53</span>            }</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>            uint relOffset = cmd.Apply(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a00034cf6c092070fe859dadb23ad2bbd">GetUint</a>(index), 0);</div>
-<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">if</span> (relOffset &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a27694e4bfc0ceceeb1012c5b6420b37b">_dataOffset</a> + <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a791ee2e4caea38dd7015d4007229eab2">_dataSize</a>)</div>
-<div class="line"><span class="lineno">   57</span>            {</div>
-<div class="line"><span class="lineno">   58</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   59</span>            }</div>
-<div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>            <span class="keywordtype">string</span> name = <span class="keyword">new</span> string((sbyte*) (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#adbf4615538f3dbdc16ee3fb4949052a9">Header</a> + relOffset));</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrWhiteSpace(name))</div>
-<div class="line"><span class="lineno">   64</span>            {</div>
-<div class="line"><span class="lineno">   65</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   66</span>            }</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>            type = <span class="keyword">new</span> RELType(name);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>            <span class="comment">//Get inheritances, if any.</span></div>
-<div class="line"><span class="lineno">   71</span>            cmd = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">GetCommand</a>(index + 1);</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">if</span> (cmd != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   73</span>            {</div>
-<div class="line"><span class="lineno">   74</span>                <span class="keywordflow">for</span> (RelocationTarget r = cmd.GetTargetRelocation();</div>
-<div class="line"><span class="lineno">   75</span>                    r != <span class="keyword">null</span> &amp;&amp; (cmd = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">GetCommand</a>(r._index)) != <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   76</span>                    r._index += 2)</div>
-<div class="line"><span class="lineno">   77</span>                {</div>
-<div class="line"><span class="lineno">   78</span>                    RelocationTarget inheritTarget = cmd.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html#a1aeac42454c2a0c9308fb726a4c58c9a">GetTargetRelocation</a>();</div>
-<div class="line"><span class="lineno">   79</span>                    RELType inheritance = <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a6da7fe1ee321d44d2e212f7dade8b6f3">ParseDeclaration</a>(inheritTarget._index);</div>
-<div class="line"><span class="lineno">   80</span>                    <span class="keywordflow">if</span> (inheritance != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   81</span>                    {</div>
-<div class="line"><span class="lineno">   82</span>                        InheritanceItemNode typeNode =</div>
-<div class="line"><span class="lineno">   83</span>                            <span class="keyword">new</span> InheritanceItemNode(inheritance, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a00034cf6c092070fe859dadb23ad2bbd">GetUint</a>(r._index + 1));</div>
-<div class="line"><span class="lineno">   84</span>                        typeNode.Initialize(<span class="keyword">null</span>, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#adbf4615538f3dbdc16ee3fb4949052a9">Header</a> + r._index * 4, 0);</div>
-<div class="line"><span class="lineno">   85</span>                        type.Inheritance.Add(typeNode);</div>
-<div class="line"><span class="lineno">   86</span>                        inheritance.Inherited = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   87</span>                    }</div>
-<div class="line"><span class="lineno">   88</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   89</span>                    {</div>
-<div class="line"><span class="lineno">   90</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   91</span>                    }</div>
-<div class="line"><span class="lineno">   92</span>                }</div>
-<div class="line"><span class="lineno">   93</span>            }</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#ae3dd842fb5e0711c471e08bcc28dfb1d">AddTag</a>(index, type.FormalName + <span class="stringliteral">&quot; Declaration&quot;</span>);</div>
-<div class="line"><span class="lineno">   96</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#ae3dd842fb5e0711c471e08bcc28dfb1d">AddTag</a>(index + 1, type.FormalName + <span class="stringliteral">&quot;-&gt;Inheritances&quot;</span>);</div>
-<div class="line"><span class="lineno">   97</span> </div>
-<div class="line"><span class="lineno">   98</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a28e01f025c899b24e6e39b50367e8dbc">_types</a>.Add(index, type);</div>
-<div class="line"><span class="lineno">   99</span> </div>
-<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">return</span> type;</div>
-<div class="line"><span class="lineno">  101</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_a27694e4bfc0ceceeb1012c5b6420b37b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a27694e4bfc0ceceeb1012c5b6420b37b">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._dataOffset</a></div><div class="ttdeci">int _dataOffset</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:20</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_a791ee2e4caea38dd7015d4007229eab2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#a791ee2e4caea38dd7015d4007229eab2">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode._dataSize</a></div><div class="ttdeci">uint _dataSize</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:22</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node_html_adbf4615538f3dbdc16ee3fb4949052a9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html#adbf4615538f3dbdc16ee3fb4949052a9">BrawlLib.SSBB.ResourceNodes.ModuleSectionNode.Header</a></div><div class="ttdeci">VoidPtr Header</div><div class="ttdef"><b>Definition:</b> RELSectionNode.cs:13</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser_html_a10b67749e61fba629654aeeaa7be741b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">BrawlLib.SSBB.ResourceNodes.ObjectParser.Manager</a></div><div class="ttdeci">RelocationManager Manager</div><div class="ttdef"><b>Definition:</b> RELObjectParser.cs:20</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command_html_a1aeac42454c2a0c9308fb726a4c58c9a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html#a1aeac42454c2a0c9308fb726a4c58c9a">BrawlLib.SSBB.ResourceNodes.RelCommand.GetTargetRelocation</a></div><div class="ttdeci">RelocationTarget GetTargetRelocation()</div><div class="ttdef"><b>Definition:</b> RELCommand.cs:126</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_a00034cf6c092070fe859dadb23ad2bbd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a00034cf6c092070fe859dadb23ad2bbd">BrawlLib.SSBB.ResourceNodes.RelocationManager.GetUint</a></div><div class="ttdeci">uint GetUint(int index)</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:65</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_a6022b9827ed0a56763482b0b1a17963b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">BrawlLib.SSBB.ResourceNodes.RelocationManager.GetCommand</a></div><div class="ttdeci">RelCommand GetCommand(int index)</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:179</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_ae3dd842fb5e0711c471e08bcc28dfb1d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#ae3dd842fb5e0711c471e08bcc28dfb1d">BrawlLib.SSBB.ResourceNodes.RelocationManager.AddTag</a></div><div class="ttdeci">void AddTag(int index, string tag)</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:463</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abf66d99943b69f99b65b96e94b1ba617"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abf66d99943b69f99b65b96e94b1ba617">BrawlLib.SSBB.ResourceNodes.ResourceNode.Index</a></div><div class="ttdeci">int Index</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:304</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ace9f50cd1e8b3f1227e28a8231ce36f8" name="ace9f50cd1e8b3f1227e28a8231ce36f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace9f50cd1e8b3f1227e28a8231ce36f8">&#9670;&#160;</a></span>ParseObject()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_object_node.html">RELObjectNode</a> BrawlLib.SSBB.ResourceNodes.ObjectParser.ParseObject </td>
-          <td>(</td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>rel</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  104</span>        {</div>
-<div class="line"><span class="lineno">  105</span>            RelCommand cmd = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">GetCommand</a>(rel);</div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>            RelocationTarget target = cmd?.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html#a1aeac42454c2a0c9308fb726a4c58c9a">GetTargetRelocation</a>();</div>
-<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">if</span> (target == <span class="keyword">null</span> || target._sectionID != <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abf66d99943b69f99b65b96e94b1ba617">Index</a>)</div>
-<div class="line"><span class="lineno">  109</span>            {</div>
-<div class="line"><span class="lineno">  110</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  111</span>            }</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a28e01f025c899b24e6e39b50367e8dbc">_types</a>.TryGetValue(target._index, out RELType declaration) || declaration.Inherited)</div>
-<div class="line"><span class="lineno">  115</span>            {</div>
-<div class="line"><span class="lineno">  116</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  117</span>            }</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>            RELObjectNode obj = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">foreach</span> (RELObjectNode node <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ab7bea798fe3cfea72804c18a2505d8a7">_objects</a>)</div>
-<div class="line"><span class="lineno">  121</span>            {</div>
-<div class="line"><span class="lineno">  122</span>                <span class="keywordflow">if</span> (node._name == declaration.FullName)</div>
-<div class="line"><span class="lineno">  123</span>                {</div>
-<div class="line"><span class="lineno">  124</span>                    obj = node;</div>
-<div class="line"><span class="lineno">  125</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  126</span>                }</div>
-<div class="line"><span class="lineno">  127</span>            }</div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">if</span> (obj == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  130</span>            {</div>
-<div class="line"><span class="lineno">  131</span>                obj = <span class="keyword">new</span> RELObjectNode(declaration)</div>
-<div class="line"><span class="lineno">  132</span>                {</div>
-<div class="line"><span class="lineno">  133</span>                    _parent = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a></div>
-<div class="line"><span class="lineno">  134</span>                };</div>
-<div class="line"><span class="lineno">  135</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a>.Add(obj);</div>
-<div class="line"><span class="lineno">  136</span>                <span class="keyword">new</span> RELGroupNode {_name = <span class="stringliteral">&quot;Inheritance&quot;</span>}.Parent = obj;</div>
-<div class="line"><span class="lineno">  137</span>                <span class="keywordflow">foreach</span> (InheritanceItemNode n <span class="keywordflow">in</span> declaration.Inheritance)</div>
-<div class="line"><span class="lineno">  138</span>                {</div>
-<div class="line"><span class="lineno">  139</span>                    n.Parent = obj.Children[0];</div>
-<div class="line"><span class="lineno">  140</span>                }</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>                <span class="keyword">new</span> RELGroupNode {_name = <span class="stringliteral">&quot;Functions&quot;</span>}.Parent = obj;</div>
-<div class="line"><span class="lineno">  143</span>            }</div>
-<div class="line"><span class="lineno">  144</span> </div>
-<div class="line"><span class="lineno">  145</span>            <span class="keywordtype">int</span> baseRel = rel;</div>
-<div class="line"><span class="lineno">  146</span>            RelCommand baseCmd = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">GetCommand</a>(baseRel);</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>            <span class="keywordtype">int</span> methodIndex = 0;</div>
-<div class="line"><span class="lineno">  149</span>            <span class="keywordtype">int</span> setIndex = 0;</div>
-<div class="line"><span class="lineno">  150</span> </div>
-<div class="line"><span class="lineno">  151</span>            <span class="comment">//Read object methods.</span></div>
-<div class="line"><span class="lineno">  152</span>            <span class="keywordflow">while</span> ((cmd = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">GetCommand</a>(rel)) != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  153</span>            {</div>
-<div class="line"><span class="lineno">  154</span>                RelocationTarget t = cmd.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html#a1aeac42454c2a0c9308fb726a4c58c9a">GetTargetRelocation</a>();</div>
-<div class="line"><span class="lineno">  155</span>                <span class="keywordflow">if</span> (cmd.Apply(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a00034cf6c092070fe859dadb23ad2bbd">GetUint</a>(rel), 0) != baseCmd.Apply(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a00034cf6c092070fe859dadb23ad2bbd">GetUint</a>(baseRel), 0))</div>
-<div class="line"><span class="lineno">  156</span>                {</div>
-<div class="line"><span class="lineno">  157</span>                    <span class="keywordtype">string</span> methodName = $<span class="stringliteral">&quot;Function[{setIndex}][{methodIndex}]&quot;</span>;</div>
-<div class="line"><span class="lineno">  158</span>                    <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> addr = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  159</span>                    <span class="keywordflow">if</span> (t != <span class="keyword">null</span> &amp;&amp; t._moduleID == (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_entry_node.html#ad739f360e67c7a5724c19cde548b086c">Root</a> as ModuleNode).ID)</div>
-<div class="line"><span class="lineno">  160</span>                    {</div>
-<div class="line"><span class="lineno">  161</span>                        addr = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_entry_node.html#ad739f360e67c7a5724c19cde548b086c">Root</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>[t._sectionID].WorkingUncompressed.Address + t._index * 4;</div>
-<div class="line"><span class="lineno">  162</span>                    }</div>
-<div class="line"><span class="lineno">  163</span> </div>
-<div class="line"><span class="lineno">  164</span>                    <span class="keyword">new</span> RELMethodNode</div>
-<div class="line"><span class="lineno">  165</span>                        {</div>
-<div class="line"><span class="lineno">  166</span>                            _name = methodName,</div>
-<div class="line"><span class="lineno">  167</span>                            _cmd = cmd</div>
-<div class="line"><span class="lineno">  168</span>                        }</div>
-<div class="line"><span class="lineno">  169</span>                        .Initialize(obj.Children[1], addr, 0);</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>                    methodIndex++;</div>
-<div class="line"><span class="lineno">  172</span>                }</div>
-<div class="line"><span class="lineno">  173</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  174</span>                {</div>
-<div class="line"><span class="lineno">  175</span>                    <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a00034cf6c092070fe859dadb23ad2bbd">GetUint</a>(rel + 1) != 0)</div>
-<div class="line"><span class="lineno">  176</span>                    {</div>
-<div class="line"><span class="lineno">  177</span>                        setIndex++;</div>
-<div class="line"><span class="lineno">  178</span>                    }</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>                    methodIndex = 0;</div>
-<div class="line"><span class="lineno">  181</span>                    rel++;</div>
-<div class="line"><span class="lineno">  182</span>                }</div>
-<div class="line"><span class="lineno">  183</span> </div>
-<div class="line"><span class="lineno">  184</span>                rel++;</div>
-<div class="line"><span class="lineno">  185</span>            }</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#a10b67749e61fba629654aeeaa7be741b">Manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#ae3dd842fb5e0711c471e08bcc28dfb1d">AddTag</a>(baseRel, obj.Type.FullName);</div>
-<div class="line"><span class="lineno">  188</span> </div>
-<div class="line"><span class="lineno">  189</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ab7bea798fe3cfea72804c18a2505d8a7">_objects</a>.Add(obj);</div>
-<div class="line"><span class="lineno">  190</span>            <span class="keywordflow">return</span> obj;</div>
-<div class="line"><span class="lineno">  191</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_entry_node_html_ad739f360e67c7a5724c19cde548b086c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_entry_node.html#ad739f360e67c7a5724c19cde548b086c">BrawlLib.SSBB.ResourceNodes.RELEntryNode.Root</a></div><div class="ttdeci">ResourceNode Root</div><div class="ttdef"><b>Definition:</b> RELMiscNodes.cs:25</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a713872ebf7495715a72583a8ebe07891"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">BrawlLib.SSBB.ResourceNodes.ResourceNode._children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; _children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:143</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -438,10 +201,11 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  195</span>            <span class="keywordflow">foreach</span> (RELObjectNode obj <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#ab7bea798fe3cfea72804c18a2505d8a7">_objects</a>)</div>
 <div class="line"><span class="lineno">  196</span>            {</div>
 <div class="line"><span class="lineno">  197</span>                obj._parent = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  198</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a>.Remove(obj);</div>
-<div class="line"><span class="lineno">  199</span>                obj.Parent = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_object_parser.html#af21983de01f53b0c574645fa5746cfe9">_objectSection</a>;</div>
+<div class="line"><span class="lineno">  198</span>                _objectSection.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">_children</a>.Remove(obj);</div>
+<div class="line"><span class="lineno">  199</span>                obj.Parent = _objectSection;</div>
 <div class="line"><span class="lineno">  200</span>            }</div>
 <div class="line"><span class="lineno">  201</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a713872ebf7495715a72583a8ebe07891"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">BrawlLib.SSBB.ResourceNodes.ResourceNode._children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; _children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:143</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -460,28 +224,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af21983de01f53b0c574645fa5746cfe9" name="af21983de01f53b0c574645fa5746cfe9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af21983de01f53b0c574645fa5746cfe9">&#9670;&#160;</a></span>_objectSection</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_section_node.html">ModuleSectionNode</a> BrawlLib.SSBB.ResourceNodes.ObjectParser._objectSection</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a28e01f025c899b24e6e39b50367e8dbc" name="a28e01f025c899b24e6e39b50367e8dbc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28e01f025c899b24e6e39b50367e8dbc">&#9670;&#160;</a></span>_types</h2>
 
@@ -492,29 +234,6 @@ Private Attributes</h2></td></tr>
           <td class="memname">Dictionary&lt;int, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html">RELType</a>&gt; BrawlLib.SSBB.ResourceNodes.ObjectParser._types = new Dictionary&lt;int, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_type.html">RELType</a>&gt;()</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="a10b67749e61fba629654aeeaa7be741b" name="a10b67749e61fba629654aeeaa7be741b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10b67749e61fba629654aeeaa7be741b">&#9670;&#160;</a></span>Manager</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html">RelocationManager</a> BrawlLib.SSBB.ResourceNodes.ObjectParser.Manager</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

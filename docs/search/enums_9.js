@@ -13,6 +13,5 @@ var searchData=
   ['indtexstageid_10',['IndTexStageID',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a5b1d6cacdbec37175905fadf38b9d380',1,'BrawlLib::Wii::Graphics']]],
   ['indtextureindices_11',['IndTextureIndices',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations.html#af55a381d6cbbb9ef1875ee050ea03f91',1,'BrawlLib::SSBB::Types::Animations']]],
   ['indtexwrap_12',['IndTexWrap',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a94babd8bae22049c4fbf8558f709f287',1,'BrawlLib::Wii::Graphics']]],
-  ['instancetype_13',['InstanceType',['../class_brawl_lib_1_1_modeling_1_1_collada_1_1_collada.html#a9e243f1f6be413b7a6f015e530e8516b',1,'BrawlLib::Modeling::Collada::Collada']]],
-  ['itemlevelenum_14',['ItemLevelEnum',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#ae0ddcad83907accaa5508d766d9ac247',1,'BrawlLib::SSBB::ResourceNodes::EventMatchNode']]]
+  ['itemlevelenum_13',['ItemLevelEnum',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#ae0ddcad83907accaa5508d766d9ac247',1,'BrawlLib::SSBB::ResourceNodes::EventMatchNode']]]
 ];

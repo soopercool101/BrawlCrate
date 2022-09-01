@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.Hex_Editor.FileDataBlock Class Reference</div></div>
 </div><!--header-->
@@ -123,13 +122,6 @@ Properties</h2></td></tr>
 <tr class="separator:acb693eae109ff85045f5495f651c540b inherit properties_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac887904d47ce235b06ea9e370787a33e inherit properties_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html">DataBlock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html#ac887904d47ce235b06ea9e370787a33e">PreviousBlock</a><code> [get]</code></td></tr>
 <tr class="separator:ac887904d47ce235b06ea9e370787a33e inherit properties_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:abb96e141f04a60bf24d3bbf436b2750d"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a></td></tr>
-<tr class="separator:abb96e141f04a60bf24d3bbf436b2750d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa522dc3d4b8aa808567713c677a7ba28"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a></td></tr>
-<tr class="separator:aa522dc3d4b8aa808567713c677a7ba28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -176,11 +168,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   11</span>        {</div>
-<div class="line"><span class="lineno">   12</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a> = fileOffset;</div>
-<div class="line"><span class="lineno">   13</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a> = length;</div>
+<div class="line"><span class="lineno">   12</span>            _fileOffset = fileOffset;</div>
+<div class="line"><span class="lineno">   13</span>            _length = length;</div>
 <div class="line"><span class="lineno">   14</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block_html_aa522dc3d4b8aa808567713c677a7ba28"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">BrawlLib.Internal.Windows.Controls.Hex_Editor.FileDataBlock._fileOffset</a></div><div class="ttdeci">long _fileOffset</div><div class="ttdef"><b>Definition:</b> FileDataBlock.cs:8</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block_html_abb96e141f04a60bf24d3bbf436b2750d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">BrawlLib.Internal.Windows.Controls.Hex_Editor.FileDataBlock._length</a></div><div class="ttdeci">long _length</div><div class="ttdef"><b>Definition:</b> FileDataBlock.cs:7</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -221,39 +211,39 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html#a72be8fa1a44a49986057e8d44775d498">BrawlLib.Internal.Windows.Controls.Hex_Editor.DataBlock</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   47</span>        {</div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> (position &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a>)</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> (position &gt; _length)</div>
 <div class="line"><span class="lineno">   49</span>            {</div>
 <div class="line"><span class="lineno">   50</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;position&quot;</span>);</div>
 <div class="line"><span class="lineno">   51</span>            }</div>
 <div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> (position + count &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a>)</div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> (position + count &gt; _length)</div>
 <div class="line"><span class="lineno">   54</span>            {</div>
 <div class="line"><span class="lineno">   55</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;count&quot;</span>);</div>
 <div class="line"><span class="lineno">   56</span>            }</div>
 <div class="line"><span class="lineno">   57</span> </div>
 <div class="line"><span class="lineno">   58</span>            <span class="keywordtype">long</span> prefixLength = position;</div>
-<div class="line"><span class="lineno">   59</span>            <span class="keywordtype">long</span> prefixFileOffset = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a>;</div>
+<div class="line"><span class="lineno">   59</span>            <span class="keywordtype">long</span> prefixFileOffset = _fileOffset;</div>
 <div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>            <span class="keywordtype">long</span> suffixLength = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a> - count - prefixLength;</div>
-<div class="line"><span class="lineno">   62</span>            <span class="keywordtype">long</span> suffixFileOffset = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a> + position + count;</div>
+<div class="line"><span class="lineno">   61</span>            <span class="keywordtype">long</span> suffixLength = _length - count - prefixLength;</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordtype">long</span> suffixFileOffset = _fileOffset + position + count;</div>
 <div class="line"><span class="lineno">   63</span> </div>
 <div class="line"><span class="lineno">   64</span>            <span class="keywordflow">if</span> (prefixLength &gt; 0 &amp;&amp; suffixLength &gt; 0)</div>
 <div class="line"><span class="lineno">   65</span>            {</div>
-<div class="line"><span class="lineno">   66</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a> = prefixFileOffset;</div>
-<div class="line"><span class="lineno">   67</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a> = prefixLength;</div>
+<div class="line"><span class="lineno">   66</span>                _fileOffset = prefixFileOffset;</div>
+<div class="line"><span class="lineno">   67</span>                _length = prefixLength;</div>
 <div class="line"><span class="lineno">   68</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html#ae4b588784ead5e56c892767a7af8aec7">_map</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_map.html#ad532665d7f65757b8a597341c593854a">AddAfter</a>(<span class="keyword">this</span>, <span class="keyword">new</span> <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#a99ef852c8103b1a8e01ba946f476d628">FileDataBlock</a>(suffixFileOffset, suffixLength));</div>
 <div class="line"><span class="lineno">   69</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   70</span>            }</div>
 <div class="line"><span class="lineno">   71</span> </div>
 <div class="line"><span class="lineno">   72</span>            <span class="keywordflow">if</span> (prefixLength &gt; 0)</div>
 <div class="line"><span class="lineno">   73</span>            {</div>
-<div class="line"><span class="lineno">   74</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a> = prefixFileOffset;</div>
-<div class="line"><span class="lineno">   75</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a> = prefixLength;</div>
+<div class="line"><span class="lineno">   74</span>                _fileOffset = prefixFileOffset;</div>
+<div class="line"><span class="lineno">   75</span>                _length = prefixLength;</div>
 <div class="line"><span class="lineno">   76</span>            }</div>
 <div class="line"><span class="lineno">   77</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   78</span>            {</div>
-<div class="line"><span class="lineno">   79</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a> = suffixFileOffset;</div>
-<div class="line"><span class="lineno">   80</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a> = suffixLength;</div>
+<div class="line"><span class="lineno">   79</span>                _fileOffset = suffixFileOffset;</div>
+<div class="line"><span class="lineno">   80</span>                _length = suffixLength;</div>
 <div class="line"><span class="lineno">   81</span>            }</div>
 <div class="line"><span class="lineno">   82</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block_html_ae4b588784ead5e56c892767a7af8aec7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_data_block.html#ae4b588784ead5e56c892767a7af8aec7">BrawlLib.Internal.Windows.Controls.Hex_Editor.DataBlock._map</a></div><div class="ttdeci">DataMap _map</div><div class="ttdef"><b>Definition:</b> DataBlock.cs:5</div></div>
@@ -286,12 +276,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   26</span>        {</div>
-<div class="line"><span class="lineno">   27</span>            <span class="keywordflow">if</span> (count &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a>)</div>
+<div class="line"><span class="lineno">   27</span>            <span class="keywordflow">if</span> (count &gt; _length)</div>
 <div class="line"><span class="lineno">   28</span>            {</div>
 <div class="line"><span class="lineno">   29</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;count&quot;</span>);</div>
 <div class="line"><span class="lineno">   30</span>            }</div>
 <div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a> -= count;</div>
+<div class="line"><span class="lineno">   32</span>            _length -= count;</div>
 <div class="line"><span class="lineno">   33</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -320,13 +310,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   36</span>        {</div>
-<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span> (count &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a>)</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span> (count &gt; _length)</div>
 <div class="line"><span class="lineno">   38</span>            {</div>
 <div class="line"><span class="lineno">   39</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;count&quot;</span>);</div>
 <div class="line"><span class="lineno">   40</span>            }</div>
 <div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a> += count;</div>
-<div class="line"><span class="lineno">   43</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#abb96e141f04a60bf24d3bbf436b2750d">_length</a> -= count;</div>
+<div class="line"><span class="lineno">   42</span>            _fileOffset += count;</div>
+<div class="line"><span class="lineno">   43</span>            _length -= count;</div>
 <div class="line"><span class="lineno">   44</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -355,54 +345,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   21</span>        {</div>
-<div class="line"><span class="lineno">   22</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_data_block.html#aa522dc3d4b8aa808567713c677a7ba28">_fileOffset</a> = value;</div>
+<div class="line"><span class="lineno">   22</span>            _fileOffset = value;</div>
 <div class="line"><span class="lineno">   23</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa522dc3d4b8aa808567713c677a7ba28" name="aa522dc3d4b8aa808567713c677a7ba28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa522dc3d4b8aa808567713c677a7ba28">&#9670;&#160;</a></span>_fileOffset</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long BrawlLib.Internal.Windows.Controls.Hex_Editor.FileDataBlock._fileOffset</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="abb96e141f04a60bf24d3bbf436b2750d" name="abb96e141f04a60bf24d3bbf436b2750d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb96e141f04a60bf24d3bbf436b2750d">&#9670;&#160;</a></span>_length</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long BrawlLib.Internal.Windows.Controls.Hex_Editor.FileDataBlock._length</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

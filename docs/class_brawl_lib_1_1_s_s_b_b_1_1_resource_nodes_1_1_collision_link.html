@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.CollisionLink Class Reference</div></div>
 </div><!--header-->
@@ -127,13 +126,6 @@ Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a1c5dd2544a419ef853280b652898621a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a1c5dd2544a419ef853280b652898621a">Value</a><code> [get, set]</code></td></tr>
 <tr class="separator:a1c5dd2544a419ef853280b652898621a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:aea4e1634d41478b17e3dadacf28fd803"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#aea4e1634d41478b17e3dadacf28fd803">BoxRadius</a> = 0.15f</td></tr>
-<tr class="separator:aea4e1634d41478b17e3dadacf28fd803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d1a8af901cc4795fbc707a47101906e"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a9d1a8af901cc4795fbc707a47101906e">LineWidth</a> = 11.0f</td></tr>
-<tr class="separator:a9d1a8af901cc4795fbc707a47101906e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6aafd87ccd74c72623539fd553f2f284" name="a6aafd87ccd74c72623539fd553f2f284"></a>
@@ -589,15 +581,13 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  899</span> </div>
 <div class="line"><span class="lineno">  900</span>            GL.Disable(EnableCap.CullFace);</div>
 <div class="line"><span class="lineno">  901</span>            <a class="code hl_class" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#acfc5d2c357ea5773971d6505549f0f1d">DrawBox</a>(</div>
-<div class="line"><span class="lineno">  902</span>                <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a> - mult * <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#aea4e1634d41478b17e3dadacf28fd803">BoxRadius</a>, v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a> - mult * <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#aea4e1634d41478b17e3dadacf28fd803">BoxRadius</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a9d1a8af901cc4795fbc707a47101906e">LineWidth</a>),</div>
-<div class="line"><span class="lineno">  903</span>                <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a> + mult * <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#aea4e1634d41478b17e3dadacf28fd803">BoxRadius</a>, v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a> + mult * <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#aea4e1634d41478b17e3dadacf28fd803">BoxRadius</a>, -<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a9d1a8af901cc4795fbc707a47101906e">LineWidth</a>));</div>
+<div class="line"><span class="lineno">  902</span>                <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a> - mult * BoxRadius, v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a> - mult * BoxRadius, LineWidth),</div>
+<div class="line"><span class="lineno">  903</span>                <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a> + mult * BoxRadius, v.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a> + mult * BoxRadius, -LineWidth));</div>
 <div class="line"><span class="lineno">  904</span>            GL.Enable(EnableCap.CullFace);</div>
 <div class="line"><span class="lineno">  905</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">BrawlLib.OpenGL.TKContext</a></div><div class="ttdef"><b>Definition:</b> TKContext.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_acfc5d2c357ea5773971d6505549f0f1d"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#acfc5d2c357ea5773971d6505549f0f1d">BrawlLib.OpenGL.TKContext.DrawBox</a></div><div class="ttdeci">static void DrawBox(Box value)</div><div class="ttdef"><b>Definition:</b> TKContext.cs:267</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link_html_a6c394e1c430b4e986eb1517c483ec925"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a6c394e1c430b4e986eb1517c483ec925">BrawlLib.SSBB.ResourceNodes.CollisionLink._highlight</a></div><div class="ttdeci">bool _highlight</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:603</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link_html_a9d1a8af901cc4795fbc707a47101906e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a9d1a8af901cc4795fbc707a47101906e">BrawlLib.SSBB.ResourceNodes.CollisionLink.LineWidth</a></div><div class="ttdeci">const float LineWidth</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:599</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link_html_aea4e1634d41478b17e3dadacf28fd803"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#aea4e1634d41478b17e3dadacf28fd803">BrawlLib.SSBB.ResourceNodes.CollisionLink.BoxRadius</a></div><div class="ttdeci">const float BoxRadius</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:598</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_af07ac63666ae1d42cdd428f7f786701a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#af07ac63666ae1d42cdd428f7f786701a">BrawlLib.SSBB.ResourceNodes.CollisionObject.hasSingleLinkedCollisions</a></div><div class="ttdeci">bool hasSingleLinkedCollisions</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:412</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a57184f2999ad004d886224bb7f4a563f"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">BrawlLib.SSBB.Types.CollisionPlaneType</a></div><div class="ttdeci">CollisionPlaneType</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:626</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html">BrawlLib.Internal.Vector2</a></div><div class="ttdef"><b>Definition:</b> Vector2.cs:10</div></div>
@@ -745,50 +735,6 @@ Static Private Attributes</h2></td></tr>
           <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a> BrawlLib.SSBB.ResourceNodes.CollisionLink._rawValue</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aea4e1634d41478b17e3dadacf28fd803" name="aea4e1634d41478b17e3dadacf28fd803"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea4e1634d41478b17e3dadacf28fd803">&#9670;&#160;</a></span>BoxRadius</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.SSBB.ResourceNodes.CollisionLink.BoxRadius = 0.15f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9d1a8af901cc4795fbc707a47101906e" name="a9d1a8af901cc4795fbc707a47101906e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d1a8af901cc4795fbc707a47101906e">&#9670;&#160;</a></span>LineWidth</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.SSBB.ResourceNodes.CollisionLink.LineWidth = 11.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

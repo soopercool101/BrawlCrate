@@ -116,8 +116,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a0d66dca47de1142a2647ebc06f8c78c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a0d66dca47de1142a2647ebc06f8c78c5">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a0d66dca47de1142a2647ebc06f8c78c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bc9ea088d551a828a5428e9af63f453"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a4bc9ea088d551a828a5428e9af63f453">Group</a><code> [get]</code></td></tr>
 <tr class="separator:a4bc9ea088d551a828a5428e9af63f453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61a98feb5e15afecc07fb6f7e6a2d161"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a61a98feb5e15afecc07fb6f7e6a2d161">OrigPath</a><code> [get]</code></td></tr>
@@ -343,37 +341,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a0d66dca47de1142a2647ebc06f8c78c5" name="a0d66dca47de1142a2647ebc06f8c78c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d66dca47de1142a2647ebc06f8c78c5">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.Animations.CLR0v3.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   38</span>        {</div>
-<div class="line"><span class="lineno">   39</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   40</span>            {</div>
-<div class="line"><span class="lineno">   41</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   42</span>                {</div>
-<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   44</span>                }</div>
-<div class="line"><span class="lineno">   45</span>            }</div>
-<div class="line"><span class="lineno">   46</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a4bc9ea088d551a828a5428e9af63f453" name="a4bc9ea088d551a828a5428e9af63f453"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4bc9ea088d551a828a5428e9af63f453">&#9670;&#160;</a></span>Group</h2>
 
@@ -438,10 +405,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   53</span>        {</div>
-<div class="line"><span class="lineno">   54</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a0d66dca47de1142a2647ebc06f8c78c5">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#aae9d6168d0be253af806520e1b189b2a">_origPathOffset</a>;</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#aae9d6168d0be253af806520e1b189b2a">_origPathOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a0d66dca47de1142a2647ebc06f8c78c5">Address</a>;</div>
+<div class="line"><span class="lineno">   54</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#aae9d6168d0be253af806520e1b189b2a">_origPathOffset</a>;</div>
+<div class="line"><span class="lineno">   55</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#aae9d6168d0be253af806520e1b189b2a">_origPathOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">   56</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3_html_a0d66dca47de1142a2647ebc06f8c78c5"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a0d66dca47de1142a2647ebc06f8c78c5">BrawlLib.SSBB.Types.Animations.CLR0v3.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> CLR0.cs:38</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -487,8 +453,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   61</span>        {</div>
-<div class="line"><span class="lineno">   62</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a0d66dca47de1142a2647ebc06f8c78c5">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a04f341de55c2f80f2719af6f1959d332">_stringOffset</a>;</div>
-<div class="line"><span class="lineno">   63</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a04f341de55c2f80f2719af6f1959d332">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a0d66dca47de1142a2647ebc06f8c78c5">Address</a>;</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a04f341de55c2f80f2719af6f1959d332">_stringOffset</a>;</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0v3.html#a04f341de55c2f80f2719af6f1959d332">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">   64</span>        }</div>
 </div><!-- fragment -->
 </div>

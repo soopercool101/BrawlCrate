@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.FileFilters Class Reference</div></div>
 </div><!--header-->
@@ -223,12 +222,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a4a2eac5c4fe808bcbba391bfbb837ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a513d62bc5daf2ddab2e3019073eab8e6"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a513d62bc5daf2ddab2e3019073eab8e6">APIScripts</a></td></tr>
 <tr class="separator:a513d62bc5daf2ddab2e3019073eab8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a64493b4875447b1f17cc09b39e3c0e33"><td class="memItemLeft" align="right" valign="top">static readonly Dictionary&lt; Type, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">DefaultExportAllExtensions</a></td></tr>
-<tr class="memdesc:a64493b4875447b1f17cc09b39e3c0e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps node types to the default extension when using Export All. Nodes that are inside a BRES do not need to be defined here - they will get an extension assigned in BRRESNode.cs.   <a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">More...</a><br /></td></tr>
-<tr class="separator:a64493b4875447b1f17cc09b39e3c0e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aed51b4b474d66fcc09cc05b8095283a1" name="aed51b4b474d66fcc09cc05b8095283a1"></a>
@@ -258,7 +251,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  256</span>            <span class="keywordtype">string</span> ext = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  257</span>            <span class="keywordflow">while</span> (type != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  258</span>            {</div>
-<div class="line"><span class="lineno">  259</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">DefaultExportAllExtensions</a>.TryGetValue(type, out ext))</div>
+<div class="line"><span class="lineno">  259</span>                <span class="keywordflow">if</span> (DefaultExportAllExtensions.TryGetValue(type, out ext))</div>
 <div class="line"><span class="lineno">  260</span>                {</div>
 <div class="line"><span class="lineno">  261</span>                    <span class="keywordflow">if</span> (!ext.StartsWith(<span class="stringliteral">&quot;.&quot;</span>))</div>
 <div class="line"><span class="lineno">  262</span>                    {</div>
@@ -273,7 +266,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  271</span> </div>
 <div class="line"><span class="lineno">  272</span>            <span class="keywordflow">return</span> ext ?? <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><span class="lineno">  273</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a64493b4875447b1f17cc09b39e3c0e33"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a64493b4875447b1f17cc09b39e3c0e33">BrawlLib.SSBB.FileFilters.DefaultExportAllExtensions</a></div><div class="ttdeci">static readonly Dictionary&lt; Type, string &gt; DefaultExportAllExtensions</div><div class="ttdoc">Maps node types to the default extension when using Export All. Nodes that are inside a BRES do not n...</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:221</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -614,30 +606,6 @@ Static Private Attributes</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">            SupportedFilesHandler.GetCompleteFilter(<span class="stringliteral">&quot;dat&quot;</span>, <span class="stringliteral">&quot;bx&quot;</span>)</div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="a64493b4875447b1f17cc09b39e3c0e33" name="a64493b4875447b1f17cc09b39e3c0e33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64493b4875447b1f17cc09b39e3c0e33">&#9670;&#160;</a></span>DefaultExportAllExtensions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly Dictionary&lt;Type, string&gt; BrawlLib.SSBB.FileFilters.DefaultExportAllExtensions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Maps node types to the default extension when using Export All. Nodes that are inside a BRES do not need to be defined here - they will get an extension assigned in BRRESNode.cs.  </p>
-
 </div>
 </div>
 <a id="ae3b7f7438e584c442676ffe17c277b96" name="ae3b7f7438e584c442676ffe17c277b96"></a>

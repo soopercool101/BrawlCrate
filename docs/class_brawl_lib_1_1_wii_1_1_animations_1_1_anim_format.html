@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Animations.AnimFormat Class Reference</div></div>
 </div><!--header-->
@@ -91,13 +90,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ad611a76a357fe33cb018d2c18e7d020c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74015094b428dcf9ebb264f67b6a9d5a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_h_r0_node.html">CHR0Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format.html#a74015094b428dcf9ebb264f67b6a9d5a">Read</a> (string input)</td></tr>
 <tr class="separator:a74015094b428dcf9ebb264f67b6a9d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a3a2d26f28c48133cbfa253d431f9ade9"><td class="memItemLeft" align="right" valign="top">static readonly string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format.html#a3a2d26f28c48133cbfa253d431f9ade9">types</a> = {&quot;scale&quot;, &quot;rotate&quot;, &quot;translate&quot;}</td></tr>
-<tr class="separator:a3a2d26f28c48133cbfa253d431f9ade9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a94021ec9b924ac14dd80ff9ec7fdff"><td class="memItemLeft" align="right" valign="top">static readonly string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format.html#a4a94021ec9b924ac14dd80ff9ec7fdff">axes</a> = {&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;}</td></tr>
-<tr class="separator:a4a94021ec9b924ac14dd80ff9ec7fdff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a74015094b428dcf9ebb264f67b6a9d5a" name="a74015094b428dcf9ebb264f67b6a9d5a"></a>
@@ -558,7 +550,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   63</span>                            <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">   64</span>                        }</div>
 <div class="line"><span class="lineno">   65</span> </div>
-<div class="line"><span class="lineno">   66</span>                        file.WriteLine(<span class="stringliteral">&quot;anim {0}.{0}{1} {0}{1} {2} {3} {4} {5};&quot;</span>, <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format.html#a3a2d26f28c48133cbfa253d431f9ade9">types</a>[index / 3], <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format.html#a4a94021ec9b924ac14dd80ff9ec7fdff">axes</a>[index % 3],</div>
+<div class="line"><span class="lineno">   66</span>                        file.WriteLine(<span class="stringliteral">&quot;anim {0}.{0}{1} {0}{1} {2} {3} {4} {5};&quot;</span>, types[index / 3], axes[index % 3],</div>
 <div class="line"><span class="lineno">   67</span>                            e.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">Name</a>, 0, b.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count, counter);</div>
 <div class="line"><span class="lineno">   68</span>                        file.WriteLine(<span class="stringliteral">&quot;animData {&quot;</span>);</div>
 <div class="line"><span class="lineno">   69</span>                        file.WriteLine(<span class="stringliteral">&quot;  input time;&quot;</span>);</div>
@@ -597,55 +589,8 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abfa51c429fe706bd4af8810b7fe320fc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">BrawlLib.SSBB.ResourceNodes.ResourceNode.Name</a></div><div class="ttdeci">virtual string Name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:223</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_aca9218a7c5999d578533211edf0d7320"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca9218a7c5999d578533211edf0d7320">BrawlLib.SSBB.ResourceNodes.ResourceNode.Populate</a></div><div class="ttdeci">void Populate(int levels=-1)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:615</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format_html_a3a2d26f28c48133cbfa253d431f9ade9"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format.html#a3a2d26f28c48133cbfa253d431f9ade9">BrawlLib.Wii.Animations.AnimFormat.types</a></div><div class="ttdeci">static readonly string[] types</div><div class="ttdef"><b>Definition:</b> AnimFormat.cs:12</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format_html_a4a94021ec9b924ac14dd80ff9ec7fdff"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_anim_format.html#a4a94021ec9b924ac14dd80ff9ec7fdff">BrawlLib.Wii.Animations.AnimFormat.axes</a></div><div class="ttdeci">static readonly string[] axes</div><div class="ttdef"><b>Definition:</b> AnimFormat.cs:13</div></div>
 <div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_bone_node_html_a7f79faca14836a08f06119e84e70fd76"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">BrawlLib.Modeling.IBoneNode.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> IBoneNode.cs:11</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4a94021ec9b924ac14dd80ff9ec7fdff" name="a4a94021ec9b924ac14dd80ff9ec7fdff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a94021ec9b924ac14dd80ff9ec7fdff">&#9670;&#160;</a></span>axes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly string [] BrawlLib.Wii.Animations.AnimFormat.axes = {&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3a2d26f28c48133cbfa253d431f9ade9" name="a3a2d26f28c48133cbfa253d431f9ade9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a2d26f28c48133cbfa253d431f9ade9">&#9670;&#160;</a></span>types</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly string [] BrawlLib.Wii.Animations.AnimFormat.types = {&quot;scale&quot;, &quot;rotate&quot;, &quot;translate&quot;}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

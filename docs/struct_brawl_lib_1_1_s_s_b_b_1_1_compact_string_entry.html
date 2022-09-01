@@ -90,8 +90,6 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a69c1dfb8497d6a08dafd275c37394c0f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_compact_string_entry.html#a69c1dfb8497d6a08dafd275c37394c0f">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a69c1dfb8497d6a08dafd275c37394c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71f3f56d0c204d9fac3358c781515049"><td class="memItemLeft" align="right" valign="top">sbyte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_compact_string_entry.html#a71f3f56d0c204d9fac3358c781515049">Data</a><code> [get]</code></td></tr>
 <tr class="separator:a71f3f56d0c204d9fac3358c781515049"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b7400f08c4a858f3d339367fe4b52d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_compact_string_entry.html#a3b7400f08c4a858f3d339367fe4b52d8">Length</a><code> [get]</code></td></tr>
@@ -119,37 +117,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a69c1dfb8497d6a08dafd275c37394c0f" name="a69c1dfb8497d6a08dafd275c37394c0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69c1dfb8497d6a08dafd275c37394c0f">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* BrawlLib.SSBB.CompactStringEntry.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   63</span>        {</div>
-<div class="line"><span class="lineno">   64</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   65</span>            {</div>
-<div class="line"><span class="lineno">   66</span>                fixed (<span class="keywordtype">void</span>* p = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   67</span>                {</div>
-<div class="line"><span class="lineno">   68</span>                    <span class="keywordflow">return</span> p;</div>
-<div class="line"><span class="lineno">   69</span>                }</div>
-<div class="line"><span class="lineno">   70</span>            }</div>
-<div class="line"><span class="lineno">   71</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a71f3f56d0c204d9fac3358c781515049" name="a71f3f56d0c204d9fac3358c781515049"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71f3f56d0c204d9fac3358c781515049">&#9670;&#160;</a></span>Data</h2>
 
@@ -194,7 +161,7 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   95</span>        {</div>
 <div class="line"><span class="lineno">   96</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   97</span>            {</div>
-<div class="line"><span class="lineno">   98</span>                CompactStringEntry* p = (CompactStringEntry*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_compact_string_entry.html#a69c1dfb8497d6a08dafd275c37394c0f">Address</a>;</div>
+<div class="line"><span class="lineno">   98</span>                CompactStringEntry* p = (CompactStringEntry*) Address;</div>
 <div class="line"><span class="lineno">   99</span>                <span class="keywordflow">while</span> (p-&gt;Length != 0)</div>
 <div class="line"><span class="lineno">  100</span>                {</div>
 <div class="line"><span class="lineno">  101</span>                    p = p-&gt;Next;</div>
@@ -203,7 +170,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  104</span>                <span class="keywordflow">return</span> p;</div>
 <div class="line"><span class="lineno">  105</span>            }</div>
 <div class="line"><span class="lineno">  106</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_compact_string_entry_html_a69c1dfb8497d6a08dafd275c37394c0f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_compact_string_entry.html#a69c1dfb8497d6a08dafd275c37394c0f">BrawlLib.SSBB.CompactStringEntry.Address</a></div><div class="ttdeci">void * Address</div><div class="ttdef"><b>Definition:</b> CompactStringTable.cs:63</div></div>
 </div><!-- fragment -->
 </div>
 </div>

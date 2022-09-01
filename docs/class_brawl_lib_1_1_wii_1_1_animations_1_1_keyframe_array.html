@@ -79,8 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Animations.KeyframeArray Class Reference</div></div>
 </div><!--header-->
@@ -122,16 +120,6 @@ Properties</h2></td></tr>
 <tr class="separator:a90b0efc840fc5e77a8523c8af40fe9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7281d76147989dc1eec1e76b81a541eb"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a7281d76147989dc1eec1e76b81a541eb">this[int index]</a><code> [get, set]</code></td></tr>
 <tr class="separator:a7281d76147989dc1eec1e76b81a541eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ae3f42780cb230b827c0a7945e1df6051"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae3f42780cb230b827c0a7945e1df6051">_looped</a></td></tr>
-<tr class="separator:ae3f42780cb230b827c0a7945e1df6051"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ae0a68ca8f8abdb063b1ca0b96472ce8c"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae0a68ca8f8abdb063b1ca0b96472ce8c">_cleanDistance</a> = 0.00001f</td></tr>
-<tr class="separator:ae0a68ca8f8abdb063b1ca0b96472ce8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5dec5ded4b8ae8ea9ec5bf70f0b06f9a" name="a5dec5ded4b8ae8ea9ec5bf70f0b06f9a"></a>
@@ -226,12 +214,12 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  421</span> </div>
 <div class="line"><span class="lineno">  422</span>                <span class="keywordflow">if</span> ((flag &amp; 1) != 0)</div>
 <div class="line"><span class="lineno">  423</span>                {</div>
-<div class="line"><span class="lineno">  424</span>                    res |= Math.Abs(entry._next._value - entry._value) &lt;= <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae0a68ca8f8abdb063b1ca0b96472ce8c">_cleanDistance</a> ? 1 : 0;</div>
+<div class="line"><span class="lineno">  424</span>                    res |= Math.Abs(entry._next._value - entry._value) &lt;= _cleanDistance ? 1 : 0;</div>
 <div class="line"><span class="lineno">  425</span>                }</div>
 <div class="line"><span class="lineno">  426</span> </div>
 <div class="line"><span class="lineno">  427</span>                <span class="keywordflow">if</span> ((flag &amp; 2) != 0)</div>
 <div class="line"><span class="lineno">  428</span>                {</div>
-<div class="line"><span class="lineno">  429</span>                    res |= Math.Abs(entry._prev._value - entry._value) &lt;= <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae0a68ca8f8abdb063b1ca0b96472ce8c">_cleanDistance</a> ? 2 : 0;</div>
+<div class="line"><span class="lineno">  429</span>                    res |= Math.Abs(entry._prev._value - entry._value) &lt;= _cleanDistance ? 2 : 0;</div>
 <div class="line"><span class="lineno">  430</span>                }</div>
 <div class="line"><span class="lineno">  431</span> </div>
 <div class="line"><span class="lineno">  432</span>                <span class="keywordflow">if</span> (flag == res &amp;&amp; res != 0)</div>
@@ -251,7 +239,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  446</span>            <span class="keywordflow">return</span> removed;</div>
 <div class="line"><span class="lineno">  447</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a1df5e1409674cd615ae7ac6bd4d57b6d"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a1df5e1409674cd615ae7ac6bd4d57b6d">BrawlLib.Wii.Animations.KeyframeArray._keyCount</a></div><div class="ttdeci">int _keyCount</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:356</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_ae0a68ca8f8abdb063b1ca0b96472ce8c"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae0a68ca8f8abdb063b1ca0b96472ce8c">BrawlLib.Wii.Animations.KeyframeArray._cleanDistance</a></div><div class="ttdeci">const float _cleanDistance</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:394</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_af89389da5087e8c243418f56288a8e86"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">BrawlLib.Wii.Animations.KeyframeEntry._next</a></div><div class="ttdeci">KeyframeEntry _next</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:174</div></div>
 </div><!-- fragment -->
 </div>
@@ -335,7 +322,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  469</span>            <span class="keywordflow">if</span> (index &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a5fde939251926c8ae7d062d5d73046db">_keyRoot</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>)</div>
 <div class="line"><span class="lineno">  470</span>            {</div>
 <div class="line"><span class="lineno">  471</span>                <span class="comment">//If the frame is greater than the last keyframe&#39;s frame index</span></div>
-<div class="line"><span class="lineno">  472</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae3f42780cb230b827c0a7945e1df6051">_looped</a>)</div>
+<div class="line"><span class="lineno">  472</span>                <span class="keywordflow">if</span> (_looped)</div>
 <div class="line"><span class="lineno">  473</span>                {</div>
 <div class="line"><span class="lineno">  474</span>                    <span class="keywordtype">float</span> span = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a5fde939251926c8ae7d062d5d73046db">_keyRoot</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) +</div>
 <div class="line"><span class="lineno">  475</span>                                 <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a5fde939251926c8ae7d062d5d73046db">_keyRoot</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>);</div>
@@ -353,7 +340,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  487</span>            <span class="keywordflow">if</span> (index &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a5fde939251926c8ae7d062d5d73046db">_keyRoot</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>)</div>
 <div class="line"><span class="lineno">  488</span>            {</div>
 <div class="line"><span class="lineno">  489</span>                <span class="comment">//If the frame is less than the first keyframe&#39;s frame index</span></div>
-<div class="line"><span class="lineno">  490</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae3f42780cb230b827c0a7945e1df6051">_looped</a>)</div>
+<div class="line"><span class="lineno">  490</span>                <span class="keywordflow">if</span> (_looped)</div>
 <div class="line"><span class="lineno">  491</span>                {</div>
 <div class="line"><span class="lineno">  492</span>                    <span class="keywordtype">float</span> span = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a5fde939251926c8ae7d062d5d73046db">_keyRoot</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) +</div>
 <div class="line"><span class="lineno">  493</span>                                 <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a5fde939251926c8ae7d062d5d73046db">_keyRoot</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>);</div>
@@ -393,7 +380,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  527</span>            <span class="keywordflow">return</span> entry._prev.Interpolate(index - entry._prev._index);</div>
 <div class="line"><span class="lineno">  528</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a90b0efc840fc5e77a8523c8af40fe9e7"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">BrawlLib.Wii.Animations.KeyframeArray.FrameLimit</a></div><div class="ttdeci">int FrameLimit</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:369</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_ae3f42780cb230b827c0a7945e1df6051"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae3f42780cb230b827c0a7945e1df6051">BrawlLib.Wii.Animations.KeyframeArray._looped</a></div><div class="ttdeci">bool _looped</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:358</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a71010e425cc2b8b9a4f1d5c2ae1f77b2"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a71010e425cc2b8b9a4f1d5c2ae1f77b2">BrawlLib.Wii.Animations.KeyframeEntry._value</a></div><div class="ttdeci">float _value</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:176</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a81d53406c3690a26afe8693daf83ae37"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a81d53406c3690a26afe8693daf83ae37">BrawlLib.Wii.Animations.KeyframeEntry.Interpolate</a></div><div class="ttdeci">float Interpolate(float offset, float span, KeyframeEntry next, bool forceLinear=false)</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:233</div></div>
 </div><!-- fragment -->
@@ -604,28 +590,6 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae0a68ca8f8abdb063b1ca0b96472ce8c" name="ae0a68ca8f8abdb063b1ca0b96472ce8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0a68ca8f8abdb063b1ca0b96472ce8c">&#9670;&#160;</a></span>_cleanDistance</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.Wii.Animations.KeyframeArray._cleanDistance = 0.00001f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a49531aa9d36f44c83952127824e5d7d3" name="a49531aa9d36f44c83952127824e5d7d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a49531aa9d36f44c83952127824e5d7d3">&#9670;&#160;</a></span>_frameLimit</h2>
 
@@ -692,28 +656,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae3f42780cb230b827c0a7945e1df6051" name="ae3f42780cb230b827c0a7945e1df6051"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3f42780cb230b827c0a7945e1df6051">&#9670;&#160;</a></span>_looped</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlLib.Wii.Animations.KeyframeArray._looped</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a90b0efc840fc5e77a8523c8af40fe9e7" name="a90b0efc840fc5e77a8523c8af40fe9e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a90b0efc840fc5e77a8523c8af40fe9e7">&#9670;&#160;</a></span>FrameLimit</h2>
@@ -770,8 +712,8 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  361</span>        {</div>
-<div class="line"><span class="lineno">  362</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae3f42780cb230b827c0a7945e1df6051">_looped</a>;</div>
-<div class="line"><span class="lineno">  363</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ae3f42780cb230b827c0a7945e1df6051">_looped</a> = value;</div>
+<div class="line"><span class="lineno">  362</span>            <span class="keyword">get</span> =&gt; _looped;</div>
+<div class="line"><span class="lineno">  363</span>            <span class="keyword">set</span> =&gt; _looped = value;</div>
 <div class="line"><span class="lineno">  364</span>        }</div>
 </div><!-- fragment -->
 </div>

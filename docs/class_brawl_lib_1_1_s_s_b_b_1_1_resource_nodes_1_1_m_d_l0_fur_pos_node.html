@@ -81,7 +81,6 @@ $(function() {
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.MDL0FurPosNode Class Reference</div></div>
 </div><!--header-->
@@ -450,11 +449,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ad8612cb056cf68de59f253a1179547b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_pos_data.html">MDL0FurPosData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ad8612cb056cf68de59f253a1179547b5">hdr</a></td></tr>
-<tr class="separator:ad8612cb056cf68de59f253a1179547b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -583,10 +577,10 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca8bfdd04f5339dd3135a9daf03495a8">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   73</span>        {</div>
-<div class="line"><span class="lineno">   74</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ad8612cb056cf68de59f253a1179547b5">hdr</a> = *<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ab9f6a3dc3729e7f33cd298bf0bda8622">Header</a>;</div>
+<div class="line"><span class="lineno">   74</span>            hdr = *<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ab9f6a3dc3729e7f33cd298bf0bda8622">Header</a>;</div>
 <div class="line"><span class="lineno">   75</span>            base.OnInitialize();</div>
 <div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a384ea38cd23782ee0a5c817c15a6f322">SetSizeInternal</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ad8612cb056cf68de59f253a1179547b5">hdr</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_pos_data.html#af9a2d46f38ebf6b5dc6618dfcb9205d1">_dataLen</a>);</div>
+<div class="line"><span class="lineno">   77</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a384ea38cd23782ee0a5c817c15a6f322">SetSizeInternal</a>(hdr.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_pos_data.html#af9a2d46f38ebf6b5dc6618dfcb9205d1">_dataLen</a>);</div>
 <div class="line"><span class="lineno">   78</span> </div>
 <div class="line"><span class="lineno">   79</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> == <span class="keyword">null</span> &amp;&amp; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ab9f6a3dc3729e7f33cd298bf0bda8622">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_pos_data.html#aca865d5f72bd618d7590c3a216f26b63">_stringOffset</a> != 0)</div>
 <div class="line"><span class="lineno">   80</span>            {</div>
@@ -596,7 +590,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   84</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   85</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node_html_ab9f6a3dc3729e7f33cd298bf0bda8622"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ab9f6a3dc3729e7f33cd298bf0bda8622">BrawlLib.SSBB.ResourceNodes.MDL0FurPosNode.Header</a></div><div class="ttdeci">MDL0FurPosData * Header</div><div class="ttdef"><b>Definition:</b> MDL0FurPosNode.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node_html_ad8612cb056cf68de59f253a1179547b5"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_fur_pos_node.html#ad8612cb056cf68de59f253a1179547b5">BrawlLib.SSBB.ResourceNodes.MDL0FurPosNode.hdr</a></div><div class="ttdeci">MDL0FurPosData hdr</div><div class="ttdef"><b>Definition:</b> MDL0FurPosNode.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a384ea38cd23782ee0a5c817c15a6f322"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a384ea38cd23782ee0a5c817c15a6f322">BrawlLib.SSBB.ResourceNodes.ResourceNode.SetSizeInternal</a></div><div class="ttdeci">void SetSizeInternal(int size)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:801</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_pos_data_html_aca865d5f72bd618d7590c3a216f26b63"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_pos_data.html#aca865d5f72bd618d7590c3a216f26b63">BrawlLib.SSBB.Types.MDL0FurPosData._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> MDL0.cs:920</div></div>
@@ -825,28 +818,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> [] BrawlLib.SSBB.ResourceNodes.MDL0FurPosNode._vertices</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad8612cb056cf68de59f253a1179547b5" name="ad8612cb056cf68de59f253a1179547b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8612cb056cf68de59f253a1179547b5">&#9670;&#160;</a></span>hdr</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_pos_data.html">MDL0FurPosData</a> BrawlLib.SSBB.ResourceNodes.MDL0FurPosNode.hdr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

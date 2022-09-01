@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.Types.ARCHeader Struct Reference</div></div>
 </div><!--header-->
@@ -115,15 +114,6 @@ Properties</h2></td></tr>
 <tr class="separator:aed8a1b878b9b46b19c784216b49e3679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b58f1e82cbab65208d8bc38f70d727a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_file_header.html">ARCFileHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a1b58f1e82cbab65208d8bc38f70d727a">First</a><code> [get]</code></td></tr>
 <tr class="separator:a1b58f1e82cbab65208d8bc38f70d727a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:abe2fa704039c6256ee7bc49ea21315df"><td class="memItemLeft" align="right" valign="top">readonly uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#abe2fa704039c6256ee7bc49ea21315df">_unk1</a></td></tr>
-<tr class="separator:abe2fa704039c6256ee7bc49ea21315df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0392b1aabadf6dcee1c7a609bf19a96d"><td class="memItemLeft" align="right" valign="top">readonly uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a0392b1aabadf6dcee1c7a609bf19a96d">_unk2</a></td></tr>
-<tr class="separator:a0392b1aabadf6dcee1c7a609bf19a96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef074adbdf0eeec218069429a0560b9a"><td class="memItemLeft" align="right" valign="top">fixed sbyte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#aef074adbdf0eeec218069429a0560b9a">_name</a> [48]</td></tr>
-<tr class="separator:aef074adbdf0eeec218069429a0560b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0f85e8cc7c6df4fa41422defc1ef5b64" name="a0f85e8cc7c6df4fa41422defc1ef5b64"></a>
@@ -163,43 +153,19 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   60</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a8504d16a3b6a62d1df1d39ab33efd31a">_tag</a> = <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#ac7186fe350804f9a476a1bad2d08bb1e">Tag</a>;</div>
 <div class="line"><span class="lineno">   61</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a235f7f030187f20937bead540068776d">_version</a> = 0x0101;</div>
 <div class="line"><span class="lineno">   62</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a021aea3503cdcf94cc85da21965f0908">_numFiles</a> = numFiles;</div>
-<div class="line"><span class="lineno">   63</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#abe2fa704039c6256ee7bc49ea21315df">_unk1</a> = 0;</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a0392b1aabadf6dcee1c7a609bf19a96d">_unk2</a> = 0;</div>
+<div class="line"><span class="lineno">   63</span>            _unk1 = 0;</div>
+<div class="line"><span class="lineno">   64</span>            _unk2 = 0;</div>
 <div class="line"><span class="lineno">   65</span>            <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#aed8a1b878b9b46b19c784216b49e3679">Name</a> = name;</div>
 <div class="line"><span class="lineno">   66</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_a021aea3503cdcf94cc85da21965f0908"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a021aea3503cdcf94cc85da21965f0908">BrawlLib.SSBB.Types.ARCHeader._numFiles</a></div><div class="ttdeci">bushort _numFiles</div><div class="ttdef"><b>Definition:</b> ARC.cs:14</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_a0392b1aabadf6dcee1c7a609bf19a96d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a0392b1aabadf6dcee1c7a609bf19a96d">BrawlLib.SSBB.Types.ARCHeader._unk2</a></div><div class="ttdeci">readonly uint _unk2</div><div class="ttdef"><b>Definition:</b> ARC.cs:16</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_a235f7f030187f20937bead540068776d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a235f7f030187f20937bead540068776d">BrawlLib.SSBB.Types.ARCHeader._version</a></div><div class="ttdeci">ushort _version</div><div class="ttdef"><b>Definition:</b> ARC.cs:13</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_a8504d16a3b6a62d1df1d39ab33efd31a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#a8504d16a3b6a62d1df1d39ab33efd31a">BrawlLib.SSBB.Types.ARCHeader._tag</a></div><div class="ttdeci">uint _tag</div><div class="ttdef"><b>Definition:</b> ARC.cs:12</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_abe2fa704039c6256ee7bc49ea21315df"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#abe2fa704039c6256ee7bc49ea21315df">BrawlLib.SSBB.Types.ARCHeader._unk1</a></div><div class="ttdeci">readonly uint _unk1</div><div class="ttdef"><b>Definition:</b> ARC.cs:15</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_ac7186fe350804f9a476a1bad2d08bb1e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#ac7186fe350804f9a476a1bad2d08bb1e">BrawlLib.SSBB.Types.ARCHeader.Tag</a></div><div class="ttdeci">const uint Tag</div><div class="ttdef"><b>Definition:</b> ARC.cs:10</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_aed8a1b878b9b46b19c784216b49e3679"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#aed8a1b878b9b46b19c784216b49e3679">BrawlLib.SSBB.Types.ARCHeader.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> ARC.cs:31</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aef074adbdf0eeec218069429a0560b9a" name="aef074adbdf0eeec218069429a0560b9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef074adbdf0eeec218069429a0560b9a">&#9670;&#160;</a></span>_name</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">fixed sbyte BrawlLib.SSBB.Types.ARCHeader._name[48]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a021aea3503cdcf94cc85da21965f0908" name="a021aea3503cdcf94cc85da21965f0908"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a021aea3503cdcf94cc85da21965f0908">&#9670;&#160;</a></span>_numFiles</h2>
 
@@ -224,50 +190,6 @@ Private Attributes</h2></td></tr>
           <td class="memname">uint BrawlLib.SSBB.Types.ARCHeader._tag</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="abe2fa704039c6256ee7bc49ea21315df" name="abe2fa704039c6256ee7bc49ea21315df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe2fa704039c6256ee7bc49ea21315df">&#9670;&#160;</a></span>_unk1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly uint BrawlLib.SSBB.Types.ARCHeader._unk1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0392b1aabadf6dcee1c7a609bf19a96d" name="a0392b1aabadf6dcee1c7a609bf19a96d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0392b1aabadf6dcee1c7a609bf19a96d">&#9670;&#160;</a></span>_unk2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly uint BrawlLib.SSBB.Types.ARCHeader._unk2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -412,7 +334,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   37</span>                    value = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><span class="lineno">   38</span>                }</div>
 <div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>                fixed (sbyte* ptr = <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#aef074adbdf0eeec218069429a0560b9a">_name</a>)</div>
+<div class="line"><span class="lineno">   40</span>                fixed (sbyte* ptr = _name)</div>
 <div class="line"><span class="lineno">   41</span>                {</div>
 <div class="line"><span class="lineno">   42</span>                    <span class="keywordtype">int</span> i = 0;</div>
 <div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">while</span> (i &lt; 47 &amp;&amp; i &lt; value.Length)</div>
@@ -428,7 +350,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   53</span>            }</div>
 <div class="line"><span class="lineno">   54</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_aca7f4a0443b1fb11f1cdb08409fc0af6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#aca7f4a0443b1fb11f1cdb08409fc0af6">BrawlLib.SSBB.Types.ARCHeader.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> ARC.cs:20</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header_html_aef074adbdf0eeec218069429a0560b9a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_a_r_c_header.html#aef074adbdf0eeec218069429a0560b9a">BrawlLib.SSBB.Types.ARCHeader._name</a></div><div class="ttdeci">fixed sbyte _name[48]</div><div class="ttdef"><b>Definition:</b> ARC.cs:17</div></div>
 </div><!-- fragment -->
 </div>
 </div>

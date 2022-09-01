@@ -110,8 +110,6 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:aad371d6d5676cf3b6a2cb5b4d05866d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">Address</a><code> [get]</code></td></tr>
-<tr class="separator:aad371d6d5676cf3b6a2cb5b4d05866d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1851f56f96c4204ad9e9160991f5e582"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a1851f56f96c4204ad9e9160991f5e582">ResourceString</a><code> [get]</code></td></tr>
 <tr class="separator:a1851f56f96c4204ad9e9160991f5e582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa63fa5ac30a2c44f850337a513fe1161"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aa63fa5ac30a2c44f850337a513fe1161">ResourceStringAddress</a><code> [get, set]</code></td></tr>
@@ -235,10 +233,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  187</span>        {</div>
-<div class="line"><span class="lineno">  188</span>            <span class="keywordflow">return</span> (SRT0TextureEntry*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a36ecd88967538bd0a9a13bdbf4da3285">GetOffset</a>(index));</div>
+<div class="line"><span class="lineno">  188</span>            <span class="keywordflow">return</span> (SRT0TextureEntry*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a36ecd88967538bd0a9a13bdbf4da3285">GetOffset</a>(index));</div>
 <div class="line"><span class="lineno">  189</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry_html_a36ecd88967538bd0a9a13bdbf4da3285"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a36ecd88967538bd0a9a13bdbf4da3285">BrawlLib.SSBB.Types.Animations.SRT0Entry.GetOffset</a></div><div class="ttdeci">int GetOffset(int index)</div><div class="ttdef"><b>Definition:</b> SRT0.cs:196</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry_html_aad371d6d5676cf3b6a2cb5b4d05866d9"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">BrawlLib.SSBB.Types.Animations.SRT0Entry.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> SRT0.cs:176</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -266,7 +263,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  197</span>        {</div>
-<div class="line"><span class="lineno">  198</span>            <span class="keywordflow">return</span> *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">Address</a> + 12 + index * 4);</div>
+<div class="line"><span class="lineno">  198</span>            <span class="keywordflow">return</span> *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) (Address + 12 + index * 4);</div>
 <div class="line"><span class="lineno">  199</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:9</div></div>
 </div><!-- fragment -->
@@ -306,7 +303,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  192</span>        {</div>
-<div class="line"><span class="lineno">  193</span>            *(SRT0TextureEntry*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a36ecd88967538bd0a9a13bdbf4da3285">GetOffset</a>(index)) = value;</div>
+<div class="line"><span class="lineno">  193</span>            *(SRT0TextureEntry*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a36ecd88967538bd0a9a13bdbf4da3285">GetOffset</a>(index)) = value;</div>
 <div class="line"><span class="lineno">  194</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -345,7 +342,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  202</span>        {</div>
-<div class="line"><span class="lineno">  203</span>            *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">Address</a> + 12 + index * 4) = value;</div>
+<div class="line"><span class="lineno">  203</span>            *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) (Address + 12 + index * 4) = value;</div>
 <div class="line"><span class="lineno">  204</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -394,37 +391,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="aad371d6d5676cf3b6a2cb5b4d05866d9" name="aad371d6d5676cf3b6a2cb5b4d05866d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad371d6d5676cf3b6a2cb5b4d05866d9">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.Animations.SRT0Entry.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  176</span>        {</div>
-<div class="line"><span class="lineno">  177</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  178</span>            {</div>
-<div class="line"><span class="lineno">  179</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  180</span>                {</div>
-<div class="line"><span class="lineno">  181</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  182</span>                }</div>
-<div class="line"><span class="lineno">  183</span>            }</div>
-<div class="line"><span class="lineno">  184</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a1851f56f96c4204ad9e9160991f5e582" name="a1851f56f96c4204ad9e9160991f5e582"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1851f56f96c4204ad9e9160991f5e582">&#9670;&#160;</a></span>ResourceString</h2>
 
@@ -467,8 +433,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  209</span>        {</div>
-<div class="line"><span class="lineno">  210</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a4fb0ce7a8b9c31b66182f7f9cbc0b43d">_stringOffset</a>;</div>
-<div class="line"><span class="lineno">  211</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a4fb0ce7a8b9c31b66182f7f9cbc0b43d">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#aad371d6d5676cf3b6a2cb5b4d05866d9">Address</a>;</div>
+<div class="line"><span class="lineno">  210</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a4fb0ce7a8b9c31b66182f7f9cbc0b43d">_stringOffset</a>;</div>
+<div class="line"><span class="lineno">  211</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_entry.html#a4fb0ce7a8b9c31b66182f7f9cbc0b43d">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">  212</span>        }</div>
 </div><!-- fragment -->
 </div>

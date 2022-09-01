@@ -114,8 +114,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ae26c7d8c832b3b74ef749a34f324559a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#ae26c7d8c832b3b74ef749a34f324559a">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ae26c7d8c832b3b74ef749a34f324559a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c5d7cf50a3da8ccf685182954f43d21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_h_e_a_d_header.html">HEADHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#a8c5d7cf50a3da8ccf685182954f43d21">HEADData</a><code> [get]</code></td></tr>
 <tr class="separator:a8c5d7cf50a3da8ccf685182954f43d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dc4dc82f973e57349ed84d9d782908c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_a_d_p_c_header.html">ADPCHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#a5dc4dc82f973e57349ed84d9d782908c">ADPCData</a><code> [get]</code></td></tr>
@@ -189,7 +187,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   54</span>            _header._length = len + dataLen;</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>            <span class="comment">//Fill padding</span></div>
-<div class="line"><span class="lineno">   57</span>            <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#aa2bc2004fc7bdc6c3cccadf8806e11cb">Fill</a>(<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#ae26c7d8c832b3b74ef749a34f324559a">Address</a> + 0x28, 0x18, 0);</div>
+<div class="line"><span class="lineno">   57</span>            <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#aa2bc2004fc7bdc6c3cccadf8806e11cb">Fill</a>(Address + 0x28, 0x18, 0);</div>
 <div class="line"><span class="lineno">   58</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> Memory.cs:8</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_aa2bc2004fc7bdc6c3cccadf8806e11cb"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#aa2bc2004fc7bdc6c3cccadf8806e11cb">BrawlLib.Internal.Memory.Fill</a></div><div class="ttdeci">static void Fill(VoidPtr dest, uint length, byte value)</div><div class="ttdef"><b>Definition:</b> Memory.cs:36</div></div>
@@ -201,7 +199,6 @@ Properties</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header_html_ab95088dc03ccedb80f38b19161458b1f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#ab95088dc03ccedb80f38b19161458b1f">BrawlLib.SSBB.Types.Audio.RSTMHeader.Tag</a></div><div class="ttdeci">const uint Tag</div><div class="ttdef"><b>Definition:</b> RSTM.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header_html_aca83a2bdc0ee79328c8b67fb13437233"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#aca83a2bdc0ee79328c8b67fb13437233">BrawlLib.SSBB.Types.Audio.RSTMHeader._dataLength</a></div><div class="ttdeci">bint _dataLength</div><div class="ttdef"><b>Definition:</b> RSTM.cs:17</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header_html_ade24f6d37554471b77f5550cb93b2c9f"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#ade24f6d37554471b77f5550cb93b2c9f">BrawlLib.SSBB.Types.Audio.RSTMHeader._headOffset</a></div><div class="ttdeci">bint _headOffset</div><div class="ttdef"><b>Definition:</b> RSTM.cs:12</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header_html_ae26c7d8c832b3b74ef749a34f324559a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_r_s_t_m_header.html#ae26c7d8c832b3b74ef749a34f324559a">BrawlLib.SSBB.Types.Audio.RSTMHeader.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> RSTM.cs:20</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -327,37 +324,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ae26c7d8c832b3b74ef749a34f324559a" name="ae26c7d8c832b3b74ef749a34f324559a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae26c7d8c832b3b74ef749a34f324559a">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.Audio.RSTMHeader.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   20</span>        {</div>
-<div class="line"><span class="lineno">   21</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   22</span>            {</div>
-<div class="line"><span class="lineno">   23</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   24</span>                {</div>
-<div class="line"><span class="lineno">   25</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   26</span>                }</div>
-<div class="line"><span class="lineno">   27</span>            }</div>
-<div class="line"><span class="lineno">   28</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a5dc4dc82f973e57349ed84d9d782908c" name="a5dc4dc82f973e57349ed84d9d782908c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5dc4dc82f973e57349ed84d9d782908c">&#9670;&#160;</a></span>ADPCData</h2>
 

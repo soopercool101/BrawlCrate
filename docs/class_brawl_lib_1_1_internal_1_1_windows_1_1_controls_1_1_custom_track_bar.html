@@ -79,7 +79,6 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.CustomTrackBar Class Reference</div></div>
 </div><!--header-->
@@ -107,11 +106,6 @@ Properties</h2></td></tr>
 Events</h2></td></tr>
 <tr class="memitem:afd03188b28f123e586156dd597da16f3"><td class="memItemLeft" align="right" valign="top">EventHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#afd03188b28f123e586156dd597da16f3">UserSeek</a></td></tr>
 <tr class="separator:afd03188b28f123e586156dd597da16f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a97a017be66e0fd18648d8bfebbc13ade"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#a97a017be66e0fd18648d8bfebbc13ade">_isScrolling</a></td></tr>
-<tr class="separator:a97a017be66e0fd18648d8bfebbc13ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="af73183ed1f0849d836e53c4f290586e8" name="af73183ed1f0849d836e53c4f290586e8"></a>
@@ -140,7 +134,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
 <div class="line"><span class="lineno">   26</span>            base.OnMouseDown(e);</div>
 <div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#a97a017be66e0fd18648d8bfebbc13ade">_isScrolling</a> || e.Button != MouseButtons.Left)</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">if</span> (_isScrolling || e.Button != MouseButtons.Left)</div>
 <div class="line"><span class="lineno">   29</span>            {</div>
 <div class="line"><span class="lineno">   30</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   31</span>            }</div>
@@ -156,7 +150,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   41</span>            <span class="keywordtype">float</span> scale = ((float) e.X - x) / (w - x);</div>
 <div class="line"><span class="lineno">   42</span>            <span class="keywordtype">int</span> pos = (int) (Maximum * scale);</div>
 <div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#a97a017be66e0fd18648d8bfebbc13ade">_isScrolling</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   44</span>            _isScrolling = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   45</span> </div>
 <div class="line"><span class="lineno">   46</span>            <span class="keywordflow">if</span> (base.Value &gt; pos - 10 &amp;&amp; base.Value &lt; pos + 10)</div>
 <div class="line"><span class="lineno">   47</span>            {</div>
@@ -175,7 +169,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   60</span>            };</div>
 <div class="line"><span class="lineno">   61</span>            base.WndProc(ref msg);</div>
 <div class="line"><span class="lineno">   62</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar_html_a97a017be66e0fd18648d8bfebbc13ade"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#a97a017be66e0fd18648d8bfebbc13ade">BrawlLib.Internal.Windows.Controls.CustomTrackBar._isScrolling</a></div><div class="ttdeci">bool _isScrolling</div><div class="ttdef"><b>Definition:</b> CustomTrackBar.cs:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -208,37 +201,14 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   68</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   69</span>            }</div>
 <div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#a97a017be66e0fd18648d8bfebbc13ade">_isScrolling</a>)</div>
+<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">if</span> (_isScrolling)</div>
 <div class="line"><span class="lineno">   72</span>            {</div>
-<div class="line"><span class="lineno">   73</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#a97a017be66e0fd18648d8bfebbc13ade">_isScrolling</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   73</span>                _isScrolling = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   74</span>                <a class="code hl_event" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#afd03188b28f123e586156dd597da16f3">UserSeek</a>?.Invoke(<span class="keyword">this</span>, <span class="keyword">null</span>);</div>
 <div class="line"><span class="lineno">   75</span>            }</div>
 <div class="line"><span class="lineno">   76</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar_html_afd03188b28f123e586156dd597da16f3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#afd03188b28f123e586156dd597da16f3">BrawlLib.Internal.Windows.Controls.CustomTrackBar.UserSeek</a></div><div class="ttdeci">EventHandler UserSeek</div><div class="ttdef"><b>Definition:</b> CustomTrackBar.cs:10</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a97a017be66e0fd18648d8bfebbc13ade" name="a97a017be66e0fd18648d8bfebbc13ade"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97a017be66e0fd18648d8bfebbc13ade">&#9670;&#160;</a></span>_isScrolling</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlLib.Internal.Windows.Controls.CustomTrackBar._isScrolling</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -265,7 +235,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   14</span>            <span class="keyword">get</span> =&gt; base.Value;</div>
 <div class="line"><span class="lineno">   15</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   16</span>            {</div>
-<div class="line"><span class="lineno">   17</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_custom_track_bar.html#a97a017be66e0fd18648d8bfebbc13ade">_isScrolling</a>)</div>
+<div class="line"><span class="lineno">   17</span>                <span class="keywordflow">if</span> (!_isScrolling)</div>
 <div class="line"><span class="lineno">   18</span>                {</div>
 <div class="line"><span class="lineno">   19</span>                    base.Value = value;</div>
 <div class="line"><span class="lineno">   20</span>                }</div>

@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.ClassicStageBlockNode Class Reference</div></div>
 </div><!--header-->
@@ -326,11 +325,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aeb10231ec5b924db397c5dafed8e9da8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html">ClassicStageBlockStageData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a></td></tr>
-<tr class="separator:aeb10231ec5b924db397c5dafed8e9da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -507,7 +501,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   92</span>            }</div>
 <div class="line"><span class="lineno">   93</span> </div>
 <div class="line"><span class="lineno">   94</span>            <span class="comment">// Copy the data from the address</span></div>
-<div class="line"><span class="lineno">   95</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a> = ((<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html">ClassicStageBlock</a>*) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>)-&gt;_stages;</div>
+<div class="line"><span class="lineno">   95</span>            data = ((<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html">ClassicStageBlock</a>*) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>)-&gt;_stages;</div>
 <div class="line"><span class="lineno">   96</span> </div>
 <div class="line"><span class="lineno">   97</span>            List&lt;string&gt; stageList = <span class="keyword">new</span> List&lt;string&gt;();</div>
 <div class="line"><span class="lineno">   98</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> stageID <span class="keywordflow">in</span> <span class="keyword">new</span> <span class="keywordtype">int</span>[] {<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a1acc9882dc018aa2a8f38035a1322fd1">StageID1</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a9cbc4a6073de760a98e08bbc3d171704">StageID2</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a88254221f6ac3c80ebd89c78565f64e1">StageID3</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a3d68081e74ea8a6d8f2af1f86393e707">StageID4</a>})</div>
@@ -529,7 +523,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node_html_a3d68081e74ea8a6d8f2af1f86393e707"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a3d68081e74ea8a6d8f2af1f86393e707">BrawlLib.SSBB.ResourceNodes.ClassicStageBlockNode.StageID4</a></div><div class="ttdeci">int StageID4</div><div class="ttdef"><b>Definition:</b> ClassicStageTblNode.cs:69</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node_html_a88254221f6ac3c80ebd89c78565f64e1"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a88254221f6ac3c80ebd89c78565f64e1">BrawlLib.SSBB.ResourceNodes.ClassicStageBlockNode.StageID3</a></div><div class="ttdeci">int StageID3</div><div class="ttdef"><b>Definition:</b> ClassicStageTblNode.cs:57</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node_html_a9cbc4a6073de760a98e08bbc3d171704"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a9cbc4a6073de760a98e08bbc3d171704">BrawlLib.SSBB.ResourceNodes.ClassicStageBlockNode.StageID2</a></div><div class="ttdeci">int StageID2</div><div class="ttdef"><b>Definition:</b> ClassicStageTblNode.cs:45</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node_html_aeb10231ec5b924db397c5dafed8e9da8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">BrawlLib.SSBB.ResourceNodes.ClassicStageBlockNode.data</a></div><div class="ttdeci">ClassicStageBlockStageData data</div><div class="ttdef"><b>Definition:</b> ClassicStageTblNode.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:183</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_a0f9a87e8ce6929677cf3b301b82e9c86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">BrawlLib.SSBB.ResourceNodes.DataSource.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:32</div></div>
@@ -618,11 +611,11 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  126</span>        {</div>
 <div class="line"><span class="lineno">  127</span>            <span class="comment">// Copy the data back to the address</span></div>
 <div class="line"><span class="lineno">  128</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html">ClassicStageBlock</a>* dataPtr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html">ClassicStageBlock</a>*) address;</div>
-<div class="line"><span class="lineno">  129</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#abd83e99e983015f5598a257b300a3306">_battleType</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#abd83e99e983015f5598a257b300a3306">_battleType</a>;</div>
-<div class="line"><span class="lineno">  130</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a0f3944cb9eb06ddf0539973e40747ad4">_stageID1</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a0f3944cb9eb06ddf0539973e40747ad4">_stageID1</a>;</div>
-<div class="line"><span class="lineno">  131</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a9bb98c63e58c8b2f90e9bf11e7c7e2b0">_stageID2</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a9bb98c63e58c8b2f90e9bf11e7c7e2b0">_stageID2</a>;</div>
-<div class="line"><span class="lineno">  132</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#ad3fc34e52786ede57cf0406ad184feae">_stageID3</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#ad3fc34e52786ede57cf0406ad184feae">_stageID3</a>;</div>
-<div class="line"><span class="lineno">  133</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a8c8a10db02c3b7722c251991630c4046">_stageID4</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a8c8a10db02c3b7722c251991630c4046">_stageID4</a>;</div>
+<div class="line"><span class="lineno">  129</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#abd83e99e983015f5598a257b300a3306">_battleType</a> = data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#abd83e99e983015f5598a257b300a3306">_battleType</a>;</div>
+<div class="line"><span class="lineno">  130</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a0f3944cb9eb06ddf0539973e40747ad4">_stageID1</a> = data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a0f3944cb9eb06ddf0539973e40747ad4">_stageID1</a>;</div>
+<div class="line"><span class="lineno">  131</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a9bb98c63e58c8b2f90e9bf11e7c7e2b0">_stageID2</a> = data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a9bb98c63e58c8b2f90e9bf11e7c7e2b0">_stageID2</a>;</div>
+<div class="line"><span class="lineno">  132</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#ad3fc34e52786ede57cf0406ad184feae">_stageID3</a> = data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#ad3fc34e52786ede57cf0406ad184feae">_stageID3</a>;</div>
+<div class="line"><span class="lineno">  133</span>            dataPtr-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html#ae438fbb1d2e9aa31af798cbb42b42aad">_stages</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a8c8a10db02c3b7722c251991630c4046">_stageID4</a> = data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a8c8a10db02c3b7722c251991630c4046">_stageID4</a>;</div>
 <div class="line"><span class="lineno">  134</span> </div>
 <div class="line"><span class="lineno">  135</span>            <span class="comment">// Rebuild children using new address</span></div>
 <div class="line"><span class="lineno">  136</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_fighter_data.html">ClassicFighterData</a>* ptr = &amp;((<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block.html">ClassicStageBlock</a>*) address)-&gt;_opponent1;</div>
@@ -640,29 +633,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data_html_abd83e99e983015f5598a257b300a3306"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#abd83e99e983015f5598a257b300a3306">BrawlLib.SSBB.Types.ClassicStageBlockStageData._battleType</a></div><div class="ttdeci">bint _battleType</div><div class="ttdef"><b>Definition:</b> ClassicStageTbl.cs:33</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data_html_ad3fc34e52786ede57cf0406ad184feae"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#ad3fc34e52786ede57cf0406ad184feae">BrawlLib.SSBB.Types.ClassicStageBlockStageData._stageID3</a></div><div class="ttdeci">bint _stageID3</div><div class="ttdef"><b>Definition:</b> ClassicStageTbl.cs:36</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aeb10231ec5b924db397c5dafed8e9da8" name="aeb10231ec5b924db397c5dafed8e9da8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb10231ec5b924db397c5dafed8e9da8">&#9670;&#160;</a></span>data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html">ClassicStageBlockStageData</a> BrawlLib.SSBB.ResourceNodes.ClassicStageBlockNode.data</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -686,7 +656,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   21</span>        {</div>
-<div class="line"><span class="lineno">   22</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a0e52139ff36b6ff37efffd6853472afd">ClassicBattleType</a>) (<span class="keywordtype">int</span>) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#abd83e99e983015f5598a257b300a3306">_battleType</a>;</div>
+<div class="line"><span class="lineno">   22</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#a0e52139ff36b6ff37efffd6853472afd">ClassicBattleType</a>) (<span class="keywordtype">int</span>) data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#abd83e99e983015f5598a257b300a3306">_battleType</a>;</div>
 <div class="line"><span class="lineno">   23</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   24</span>            {</div>
 <div class="line"><span class="lineno">   25</span>                data._battleType = (int) value;</div>
@@ -740,7 +710,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   33</span>        {</div>
-<div class="line"><span class="lineno">   34</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a0f3944cb9eb06ddf0539973e40747ad4">_stageID1</a>;</div>
+<div class="line"><span class="lineno">   34</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a0f3944cb9eb06ddf0539973e40747ad4">_stageID1</a>;</div>
 <div class="line"><span class="lineno">   35</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   36</span>            {</div>
 <div class="line"><span class="lineno">   37</span>                data._stageID1 = (ushort) value;</div>
@@ -770,7 +740,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   45</span>        {</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a9bb98c63e58c8b2f90e9bf11e7c7e2b0">_stageID2</a>;</div>
+<div class="line"><span class="lineno">   46</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a9bb98c63e58c8b2f90e9bf11e7c7e2b0">_stageID2</a>;</div>
 <div class="line"><span class="lineno">   47</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   48</span>            {</div>
 <div class="line"><span class="lineno">   49</span>                data._stageID2 = (ushort) value;</div>
@@ -800,7 +770,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   57</span>        {</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#ad3fc34e52786ede57cf0406ad184feae">_stageID3</a>;</div>
+<div class="line"><span class="lineno">   58</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#ad3fc34e52786ede57cf0406ad184feae">_stageID3</a>;</div>
 <div class="line"><span class="lineno">   59</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   60</span>            {</div>
 <div class="line"><span class="lineno">   61</span>                data._stageID3 = (ushort) value;</div>
@@ -830,7 +800,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   69</span>        {</div>
-<div class="line"><span class="lineno">   70</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_classic_stage_block_node.html#aeb10231ec5b924db397c5dafed8e9da8">data</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a8c8a10db02c3b7722c251991630c4046">_stageID4</a>;</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keyword">get</span> =&gt; data.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_classic_stage_block_stage_data.html#a8c8a10db02c3b7722c251991630c4046">_stageID4</a>;</div>
 <div class="line"><span class="lineno">   71</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   72</span>            {</div>
 <div class="line"><span class="lineno">   73</span>                data._stageID4 = (ushort) value;</div>

@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Animations.KeyframeEntry Class Reference</div></div>
 </div><!--header-->
@@ -124,13 +123,6 @@ Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a0ac800d97fb4095227cb090c9a3d5e4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html">KeyframeEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a0ac800d97fb4095227cb090c9a3d5e4b">Second</a><code> [get, set]</code></td></tr>
 <tr class="separator:a0ac800d97fb4095227cb090c9a3d5e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:af1be38b4c5c234e8596df7566ca14060"><td class="memItemLeft" align="right" valign="top">const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af1be38b4c5c234e8596df7566ca14060">RoundTangent</a> = true</td></tr>
-<tr class="separator:af1be38b4c5c234e8596df7566ca14060"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c678da28acaa6d0c4a638fbc20d90d7"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a8c678da28acaa6d0c4a638fbc20d90d7">TangetDecimalPlaces</a> = 3</td></tr>
-<tr class="separator:a8c678da28acaa6d0c4a638fbc20d90d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a729d5b6e266ccc7370f2b88d5b69e80c" name="a729d5b6e266ccc7370f2b88d5b69e80c"></a>
@@ -243,17 +235,15 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  336</span>                }</div>
 <div class="line"><span class="lineno">  337</span>            }</div>
 <div class="line"><span class="lineno">  338</span> </div>
-<div class="line"><span class="lineno">  339</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af1be38b4c5c234e8596df7566ca14060">RoundTangent</a>)</div>
+<div class="line"><span class="lineno">  339</span>            <span class="keywordflow">if</span> (RoundTangent)</div>
 <div class="line"><span class="lineno">  340</span>            {</div>
-<div class="line"><span class="lineno">  341</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#ae3bae58b10295d0b0d061813d256e877">_tangent</a> = (float) Math.Round(<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#ae3bae58b10295d0b0d061813d256e877">_tangent</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a8c678da28acaa6d0c4a638fbc20d90d7">TangetDecimalPlaces</a>);</div>
+<div class="line"><span class="lineno">  341</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#ae3bae58b10295d0b0d061813d256e877">_tangent</a> = (float) Math.Round(<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#ae3bae58b10295d0b0d061813d256e877">_tangent</a>, TangetDecimalPlaces);</div>
 <div class="line"><span class="lineno">  342</span>            }</div>
 <div class="line"><span class="lineno">  343</span> </div>
 <div class="line"><span class="lineno">  344</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#ae3bae58b10295d0b0d061813d256e877">_tangent</a>;</div>
 <div class="line"><span class="lineno">  345</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a0ac800d97fb4095227cb090c9a3d5e4b"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a0ac800d97fb4095227cb090c9a3d5e4b">BrawlLib.Wii.Animations.KeyframeEntry.Second</a></div><div class="ttdeci">KeyframeEntry Second</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:180</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a8c678da28acaa6d0c4a638fbc20d90d7"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a8c678da28acaa6d0c4a638fbc20d90d7">BrawlLib.Wii.Animations.KeyframeEntry.TangetDecimalPlaces</a></div><div class="ttdeci">const int TangetDecimalPlaces</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:294</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_ae3bae58b10295d0b0d061813d256e877"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#ae3bae58b10295d0b0d061813d256e877">BrawlLib.Wii.Animations.KeyframeEntry._tangent</a></div><div class="ttdeci">float _tangent</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:177</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_af1be38b4c5c234e8596df7566ca14060"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af1be38b4c5c234e8596df7566ca14060">BrawlLib.Wii.Animations.KeyframeEntry.RoundTangent</a></div><div class="ttdeci">const bool RoundTangent</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:293</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -586,50 +576,6 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">float BrawlLib.Wii.Animations.KeyframeEntry._value</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af1be38b4c5c234e8596df7566ca14060" name="af1be38b4c5c234e8596df7566ca14060"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1be38b4c5c234e8596df7566ca14060">&#9670;&#160;</a></span>RoundTangent</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const bool BrawlLib.Wii.Animations.KeyframeEntry.RoundTangent = true</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8c678da28acaa6d0c4a638fbc20d90d7" name="a8c678da28acaa6d0c4a638fbc20d90d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c678da28acaa6d0c4a638fbc20d90d7">&#9670;&#160;</a></span>TangetDecimalPlaces</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int BrawlLib.Wii.Animations.KeyframeEntry.TangetDecimalPlaces = 3</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

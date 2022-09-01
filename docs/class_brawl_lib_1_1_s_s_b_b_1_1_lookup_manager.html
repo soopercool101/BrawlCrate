@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.LookupManager Class Reference</div></div>
 </div><!--header-->
@@ -113,16 +111,6 @@ Properties</h2></td></tr>
 <tr class="separator:a166bd2cbb8813560a5fb077dde51878c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef3fe071514295a2b5952b38db106f0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aef3fe071514295a2b5952b38db106f0e">this[int index]</a><code> [get, set]</code></td></tr>
 <tr class="separator:aef3fe071514295a2b5952b38db106f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:aded1cd8a0b9115aecd92a3c0fa9b7f6b"><td class="memItemLeft" align="right" valign="top">System.Collections.IEnumerator System.Collections.IEnumerable.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aded1cd8a0b9115aecd92a3c0fa9b7f6b">GetEnumerator</a> ()</td></tr>
-<tr class="separator:aded1cd8a0b9115aecd92a3c0fa9b7f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aaebd31c3e97bd82c0b9b6b96c6e87f87"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a> = new List&lt;<a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&gt;()</td></tr>
-<tr class="separator:aaebd31c3e97bd82c0b9b6b96c6e87f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >When rebuilding, add the addresses of all offset values to this collection  </p>
@@ -153,19 +141,18 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   35</span>        {</div>
 <div class="line"><span class="lineno">   36</span>            <span class="keywordflow">foreach</span> (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> value <span class="keywordflow">in</span> valueAddrs)</div>
 <div class="line"><span class="lineno">   37</span>            {</div>
-<div class="line"><span class="lineno">   38</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>.Contains(value))</div>
+<div class="line"><span class="lineno">   38</span>                <span class="keywordflow">if</span> (!_values.Contains(value))</div>
 <div class="line"><span class="lineno">   39</span>                {</div>
-<div class="line"><span class="lineno">   40</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>.Add(value);</div>
+<div class="line"><span class="lineno">   40</span>                    _values.Add(value);</div>
 <div class="line"><span class="lineno">   41</span>                }</div>
 <div class="line"><span class="lineno">   42</span>            }</div>
 <div class="line"><span class="lineno">   43</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager_html_aaebd31c3e97bd82c0b9b6b96c6e87f87"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">BrawlLib.SSBB.LookupManager._values</a></div><div class="ttdeci">readonly List&lt; VoidPtr &gt; _values</div><div class="ttdef"><b>Definition:</b> SakuraiLookupManager.cs:11</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="afd7875d6ad4c79bcc0bf3e11a831c870" name="afd7875d6ad4c79bcc0bf3e11a831c870"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd7875d6ad4c79bcc0bf3e11a831c870">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afd7875d6ad4c79bcc0bf3e11a831c870">&#9670;&#160;</a></span>GetEnumerator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,37 +174,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   69</span>        {</div>
-<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>.GetEnumerator();</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">return</span> _values.GetEnumerator();</div>
 <div class="line"><span class="lineno">   71</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aded1cd8a0b9115aecd92a3c0fa9b7f6b" name="aded1cd8a0b9115aecd92a3c0fa9b7f6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aded1cd8a0b9115aecd92a3c0fa9b7f6b">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.Collections.IEnumerator System.Collections.IEnumerable. BrawlLib.SSBB.LookupManager.GetEnumerator </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   74</span>        {</div>
-<div class="line"><span class="lineno">   75</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#afd7875d6ad4c79bcc0bf3e11a831c870">GetEnumerator</a>();</div>
-<div class="line"><span class="lineno">   76</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager_html_afd7875d6ad4c79bcc0bf3e11a831c870"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#afd7875d6ad4c79bcc0bf3e11a831c870">BrawlLib.SSBB.LookupManager.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; VoidPtr &gt; GetEnumerator()</div><div class="ttdef"><b>Definition:</b> SakuraiLookupManager.cs:68</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -244,7 +202,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   46</span>        {</div>
-<div class="line"><span class="lineno">   47</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>.Sort();</div>
+<div class="line"><span class="lineno">   47</span>            _values.Sort();</div>
 <div class="line"><span class="lineno">   48</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -318,29 +276,6 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aaebd31c3e97bd82c0b9b6b96c6e87f87" name="aaebd31c3e97bd82c0b9b6b96c6e87f87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaebd31c3e97bd82c0b9b6b96c6e87f87">&#9670;&#160;</a></span>_values</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly List&lt;<a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&gt; BrawlLib.SSBB.LookupManager._values = new List&lt;<a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a166bd2cbb8813560a5fb077dde51878c" name="a166bd2cbb8813560a5fb077dde51878c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a166bd2cbb8813560a5fb077dde51878c">&#9670;&#160;</a></span>Count</h2>
@@ -386,18 +321,18 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   15</span>        {</div>
 <div class="line"><span class="lineno">   16</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   17</span>            {</div>
-<div class="line"><span class="lineno">   18</span>                <span class="keywordflow">if</span> (index &gt;= 0 &amp;&amp; index &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>.Count)</div>
+<div class="line"><span class="lineno">   18</span>                <span class="keywordflow">if</span> (index &gt;= 0 &amp;&amp; index &lt; _values.Count)</div>
 <div class="line"><span class="lineno">   19</span>                {</div>
-<div class="line"><span class="lineno">   20</span>                    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>[index];</div>
+<div class="line"><span class="lineno">   20</span>                    <span class="keywordflow">return</span> _values[index];</div>
 <div class="line"><span class="lineno">   21</span>                }</div>
 <div class="line"><span class="lineno">   22</span> </div>
 <div class="line"><span class="lineno">   23</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   24</span>            }</div>
 <div class="line"><span class="lineno">   25</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   26</span>            {</div>
-<div class="line"><span class="lineno">   27</span>                <span class="keywordflow">if</span> (index &gt;= 0 &amp;&amp; index &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>.Count)</div>
+<div class="line"><span class="lineno">   27</span>                <span class="keywordflow">if</span> (index &gt;= 0 &amp;&amp; index &lt; _values.Count)</div>
 <div class="line"><span class="lineno">   28</span>                {</div>
-<div class="line"><span class="lineno">   29</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_lookup_manager.html#aaebd31c3e97bd82c0b9b6b96c6e87f87">_values</a>[index] = value;</div>
+<div class="line"><span class="lineno">   29</span>                    _values[index] = value;</div>
 <div class="line"><span class="lineno">   30</span>                }</div>
 <div class="line"><span class="lineno">   31</span>            }</div>
 <div class="line"><span class="lineno">   32</span>        }</div>

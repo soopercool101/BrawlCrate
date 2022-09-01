@@ -128,8 +128,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a15a40bde37c4a14de668ee3b9d0bd641"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a15a40bde37c4a14de668ee3b9d0bd641">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a15a40bde37c4a14de668ee3b9d0bd641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf8eec192796415aa58df865d53bf82d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_header.html">MDL0Header</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#adf8eec192796415aa58df865d53bf82d">MDL0</a><code> [get]</code></td></tr>
 <tr class="separator:adf8eec192796415aa58df865d53bf82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a9e90a25a1d6a8aa49f582991610eab"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a5a9e90a25a1d6a8aa49f582991610eab">OrigPath</a><code> [get]</code></td></tr>
@@ -495,37 +493,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a15a40bde37c4a14de668ee3b9d0bd641" name="a15a40bde37c4a14de668ee3b9d0bd641"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15a40bde37c4a14de668ee3b9d0bd641">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.MDL0Props.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  268</span>        {</div>
-<div class="line"><span class="lineno">  269</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  270</span>            {</div>
-<div class="line"><span class="lineno">  271</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  272</span>                {</div>
-<div class="line"><span class="lineno">  273</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  274</span>                }</div>
-<div class="line"><span class="lineno">  275</span>            }</div>
-<div class="line"><span class="lineno">  276</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="af35add42bd0f911a66928e12b69640c7" name="af35add42bd0f911a66928e12b69640c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af35add42bd0f911a66928e12b69640c7">&#9670;&#160;</a></span>IndexTable</h2>
 
@@ -612,10 +579,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  283</span>        {</div>
-<div class="line"><span class="lineno">  284</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a15a40bde37c4a14de668ee3b9d0bd641">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a7bd6f1777877858122c80f032a07362d">_origPathOffset</a>;</div>
-<div class="line"><span class="lineno">  285</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a7bd6f1777877858122c80f032a07362d">_origPathOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a15a40bde37c4a14de668ee3b9d0bd641">Address</a>;</div>
+<div class="line"><span class="lineno">  284</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a7bd6f1777877858122c80f032a07362d">_origPathOffset</a>;</div>
+<div class="line"><span class="lineno">  285</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a7bd6f1777877858122c80f032a07362d">_origPathOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">  286</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props_html_a15a40bde37c4a14de668ee3b9d0bd641"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_props.html#a15a40bde37c4a14de668ee3b9d0bd641">BrawlLib.SSBB.Types.MDL0Props.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> MDL0.cs:268</div></div>
 </div><!-- fragment -->
 </div>
 </div>

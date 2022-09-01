@@ -112,8 +112,6 @@ Static Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:adb7ca77eca33c3e86426e25f1d7e10a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_table_offset.html">TPLTableOffset</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">Offsets</a><code> [get]</code></td></tr>
 <tr class="separator:adb7ca77eca33c3e86426e25f1d7e10a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2b6d47309cd166757307fa12db0560a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#ac2b6d47309cd166757307fa12db0560a">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ac2b6d47309cd166757307fa12db0560a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="abb56ebfb925fb2519054c8004dd0393c" name="abb56ebfb925fb2519054c8004dd0393c"></a>
@@ -142,12 +140,11 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   30</span>        {</div>
 <div class="line"><span class="lineno">   31</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">Offsets</a>[index]._paletteOffset &gt; 0)</div>
 <div class="line"><span class="lineno">   32</span>            {</div>
-<div class="line"><span class="lineno">   33</span>                <span class="keywordflow">return</span> (TPLPaletteHeader*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#ac2b6d47309cd166757307fa12db0560a">Address</a> + <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">Offsets</a>[index].<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_table_offset.html#a0aa0d388bf92d00f5e30c45ca485ece6">_paletteOffset</a>);</div>
+<div class="line"><span class="lineno">   33</span>                <span class="keywordflow">return</span> (TPLPaletteHeader*) (Address + <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">Offsets</a>[index].<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_table_offset.html#a0aa0d388bf92d00f5e30c45ca485ece6">_paletteOffset</a>);</div>
 <div class="line"><span class="lineno">   34</span>            }</div>
 <div class="line"><span class="lineno">   35</span> </div>
 <div class="line"><span class="lineno">   36</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   37</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header_html_ac2b6d47309cd166757307fa12db0560a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#ac2b6d47309cd166757307fa12db0560a">BrawlLib.SSBB.Types.TPLHeader.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> TPL.cs:40</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header_html_adb7ca77eca33c3e86426e25f1d7e10a3"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">BrawlLib.SSBB.Types.TPLHeader.Offsets</a></div><div class="ttdeci">TPLTableOffset * Offsets</div><div class="ttdef"><b>Definition:</b> TPL.cs:17</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_table_offset_html_a0aa0d388bf92d00f5e30c45ca485ece6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_table_offset.html#a0aa0d388bf92d00f5e30c45ca485ece6">BrawlLib.SSBB.Types.TPLTableOffset._paletteOffset</a></div><div class="ttdeci">buint _paletteOffset</div><div class="ttdef"><b>Definition:</b> TPL.cs:57</div></div>
 </div><!-- fragment -->
@@ -179,7 +176,7 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   20</span>        {</div>
 <div class="line"><span class="lineno">   21</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">Offsets</a>[index]._textureOffset &gt; 0)</div>
 <div class="line"><span class="lineno">   22</span>            {</div>
-<div class="line"><span class="lineno">   23</span>                <span class="keywordflow">return</span> (TPLTextureHeader*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#ac2b6d47309cd166757307fa12db0560a">Address</a> + <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">Offsets</a>[index].<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_table_offset.html#a123454563f093c78372aba1af038ab1a">_textureOffset</a>);</div>
+<div class="line"><span class="lineno">   23</span>                <span class="keywordflow">return</span> (TPLTextureHeader*) (Address + <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_header.html#adb7ca77eca33c3e86426e25f1d7e10a3">Offsets</a>[index].<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_p_l_table_offset.html#a123454563f093c78372aba1af038ab1a">_textureOffset</a>);</div>
 <div class="line"><span class="lineno">   24</span>            }</div>
 <div class="line"><span class="lineno">   25</span> </div>
 <div class="line"><span class="lineno">   26</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
@@ -276,37 +273,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ac2b6d47309cd166757307fa12db0560a" name="ac2b6d47309cd166757307fa12db0560a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2b6d47309cd166757307fa12db0560a">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.TPLHeader.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   40</span>        {</div>
-<div class="line"><span class="lineno">   41</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   42</span>            {</div>
-<div class="line"><span class="lineno">   43</span>                fixed (<span class="keywordtype">void</span>* p = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   44</span>                {</div>
-<div class="line"><span class="lineno">   45</span>                    <span class="keywordflow">return</span> p;</div>
-<div class="line"><span class="lineno">   46</span>                }</div>
-<div class="line"><span class="lineno">   47</span>            }</div>
-<div class="line"><span class="lineno">   48</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="adb7ca77eca33c3e86426e25f1d7e10a3" name="adb7ca77eca33c3e86426e25f1d7e10a3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb7ca77eca33c3e86426e25f1d7e10a3">&#9670;&#160;</a></span>Offsets</h2>
 

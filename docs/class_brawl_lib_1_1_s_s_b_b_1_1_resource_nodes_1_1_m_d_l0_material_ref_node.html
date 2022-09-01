@@ -81,7 +81,6 @@ $(function() {
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.MDL0MaterialRefNode Class Reference</div></div>
 </div><!--header-->
@@ -545,11 +544,6 @@ Properties</h2></td></tr>
 <tr class="inherit_header properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html">BrawlLib.Imaging.IImageSource</a></td></tr>
 <tr class="memitem:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_image_source.html#ae71d17da39076b4ac407b94ba7af3dee">ImageCount</a><code> [get]</code></td></tr>
 <tr class="separator:ae71d17da39076b4ac407b94ba7af3dee inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_image_source"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a47bfe9e33e82e0cbebf74e1672a38aff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> = Matrix.Identity</td></tr>
-<tr class="separator:a47bfe9e33e82e0cbebf74e1672a38aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -1075,14 +1069,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  861</span>        {</div>
-<div class="line"><span class="lineno">  862</span>            <span class="keywordflow">if</span> (!useEffectMtx || <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> == <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>)</div>
+<div class="line"><span class="lineno">  862</span>            <span class="keywordflow">if</span> (!useEffectMtx || _effectMatrix == <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>)</div>
 <div class="line"><span class="lineno">  863</span>            {</div>
 <div class="line"><span class="lineno">  864</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#ad756dd77d4dcdd4e5c3b4275694bda8f">_frameState</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_modeling_1_1_texture_frame_state.html#afe6621a77a5046aa9d7b668304c2ae8f">_transform</a>;</div>
 <div class="line"><span class="lineno">  865</span>            }</div>
 <div class="line"><span class="lineno">  866</span> </div>
-<div class="line"><span class="lineno">  867</span>            <span class="keywordflow">return</span> _frameState._transform * <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a>;</div>
+<div class="line"><span class="lineno">  867</span>            <span class="keywordflow">return</span> _frameState._transform * _effectMatrix;</div>
 <div class="line"><span class="lineno">  868</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node_html_a47bfe9e33e82e0cbebf74e1672a38aff"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">BrawlLib.SSBB.ResourceNodes.MDL0MaterialRefNode._effectMatrix</a></div><div class="ttdeci">Matrix _effectMatrix</div><div class="ttdef"><b>Definition:</b> MDL0MaterialRefNode.cs:858</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html">BrawlLib.Internal.Matrix</a></div><div class="ttdef"><b>Definition:</b> Matrix.cs:14</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8bd9d798743493583f030ab636c5cfe1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">BrawlLib.Internal.Matrix.Identity</a></div><div class="ttdeci">static readonly Matrix Identity</div><div class="ttdef"><b>Definition:</b> Matrix.cs:15</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_modeling_1_1_texture_frame_state_html_afe6621a77a5046aa9d7b668304c2ae8f"><div class="ttname"><a href="struct_brawl_lib_1_1_modeling_1_1_texture_frame_state.html#afe6621a77a5046aa9d7b668304c2ae8f">BrawlLib.Modeling.TextureFrameState._transform</a></div><div class="ttdeci">Matrix _transform</div><div class="ttdef"><b>Definition:</b> FrameState.cs:111</div></div>
@@ -1575,25 +1568,25 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  833</span>                <span class="keywordflow">switch</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a0b7113123ead9ba493fba33fe525eb0a">MapMode</a>)</div>
 <div class="line"><span class="lineno">  834</span>                {</div>
 <div class="line"><span class="lineno">  835</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a99493b011074649073ea84c7f88e24f9">MappingMethod</a>.Projection:</div>
-<div class="line"><span class="lineno">  836</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ad281ffff3935a7585f04edce21916db9">ProjectionMapping</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a2371fe9feb789f5ec4e470aea3c2c54a">SCN0RefCamera</a>, node, v, frame);</div>
+<div class="line"><span class="lineno">  836</span>                        _effectMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ad281ffff3935a7585f04edce21916db9">ProjectionMapping</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a2371fe9feb789f5ec4e470aea3c2c54a">SCN0RefCamera</a>, node, v, frame);</div>
 <div class="line"><span class="lineno">  837</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  838</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a99493b011074649073ea84c7f88e24f9">MappingMethod</a>.EnvSpec:</div>
-<div class="line"><span class="lineno">  839</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a822d759e64c6e2bb5cb9e993f8fa2969">EnvSpecMap</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a2371fe9feb789f5ec4e470aea3c2c54a">SCN0RefCamera</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a1d734724729d4a39e18909084b5acacd">SCN0RefLight</a>, node, v, frame);</div>
+<div class="line"><span class="lineno">  839</span>                        _effectMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a822d759e64c6e2bb5cb9e993f8fa2969">EnvSpecMap</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a2371fe9feb789f5ec4e470aea3c2c54a">SCN0RefCamera</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a1d734724729d4a39e18909084b5acacd">SCN0RefLight</a>, node, v, frame);</div>
 <div class="line"><span class="lineno">  840</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  841</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a99493b011074649073ea84c7f88e24f9">MappingMethod</a>.EnvLight:</div>
-<div class="line"><span class="lineno">  842</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a98ab03af8fa8da6474186a97b49b99c1">EnvLightMap</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a1d734724729d4a39e18909084b5acacd">SCN0RefLight</a>, node, v, frame);</div>
+<div class="line"><span class="lineno">  842</span>                        _effectMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a98ab03af8fa8da6474186a97b49b99c1">EnvLightMap</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a1d734724729d4a39e18909084b5acacd">SCN0RefLight</a>, node, v, frame);</div>
 <div class="line"><span class="lineno">  843</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  844</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a99493b011074649073ea84c7f88e24f9">MappingMethod</a>.EnvCamera:</div>
-<div class="line"><span class="lineno">  845</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a247b9b7e28ae0ad6df01b368a6debfd4">EnvCamMap</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a2371fe9feb789f5ec4e470aea3c2c54a">SCN0RefCamera</a>, node, v, frame);</div>
+<div class="line"><span class="lineno">  845</span>                        _effectMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a247b9b7e28ae0ad6df01b368a6debfd4">EnvCamMap</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a2371fe9feb789f5ec4e470aea3c2c54a">SCN0RefCamera</a>, node, v, frame);</div>
 <div class="line"><span class="lineno">  846</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  847</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  848</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
+<div class="line"><span class="lineno">  848</span>                        _effectMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><span class="lineno">  849</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  850</span>                }</div>
 <div class="line"><span class="lineno">  851</span>            }</div>
 <div class="line"><span class="lineno">  852</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  853</span>            {</div>
-<div class="line"><span class="lineno">  854</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a47bfe9e33e82e0cbebf74e1672a38aff">_effectMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
+<div class="line"><span class="lineno">  854</span>                _effectMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><span class="lineno">  855</span>            }</div>
 <div class="line"><span class="lineno">  856</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node_html_a0b7113123ead9ba493fba33fe525eb0a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html#a0b7113123ead9ba493fba33fe525eb0a">BrawlLib.SSBB.ResourceNodes.MDL0MaterialRefNode.MapMode</a></div><div class="ttdeci">MappingMethod MapMode</div><div class="ttdef"><b>Definition:</b> MDL0MaterialRefNode.cs:202</div></div>
@@ -1689,28 +1682,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname"><a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_x_f_dual_tex.html">XFDualTex</a> BrawlLib.SSBB.ResourceNodes.MDL0MaterialRefNode._dualTexFlags</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a47bfe9e33e82e0cbebf74e1672a38aff" name="a47bfe9e33e82e0cbebf74e1672a38aff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47bfe9e33e82e0cbebf74e1672a38aff">&#9670;&#160;</a></span>_effectMatrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a> BrawlLib.SSBB.ResourceNodes.MDL0MaterialRefNode._effectMatrix = Matrix.Identity</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

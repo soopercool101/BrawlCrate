@@ -110,8 +110,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ab022fbf108efe232a724a3a969df1104"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#ab022fbf108efe232a724a3a969df1104">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ab022fbf108efe232a724a3a969df1104"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e46f72eb3f71441237b6019ec93e6f9"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#a7e46f72eb3f71441237b6019ec93e6f9">IdString</a><code> [get, set]</code></td></tr>
 <tr class="separator:a7e46f72eb3f71441237b6019ec93e6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad124fec91787838d3ed93eac0806d253"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_type_object_table.html">REFTypeObjectTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#ad124fec91787838d3ed93eac0806d253">Table</a><code> [get]</code></td></tr>
@@ -253,37 +251,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ab022fbf108efe232a724a3a969df1104" name="ab022fbf108efe232a724a3a969df1104"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab022fbf108efe232a724a3a969df1104">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.REFT.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   23</span>        {</div>
-<div class="line"><span class="lineno">   24</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   25</span>            {</div>
-<div class="line"><span class="lineno">   26</span>                fixed (<span class="keywordtype">void</span>* p = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   27</span>                {</div>
-<div class="line"><span class="lineno">   28</span>                    <span class="keywordflow">return</span> p;</div>
-<div class="line"><span class="lineno">   29</span>                }</div>
-<div class="line"><span class="lineno">   30</span>            }</div>
-<div class="line"><span class="lineno">   31</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a7e46f72eb3f71441237b6019ec93e6f9" name="a7e46f72eb3f71441237b6019ec93e6f9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e46f72eb3f71441237b6019ec93e6f9">&#9670;&#160;</a></span>IdString</h2>
 
@@ -304,13 +271,13 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
-<div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> string((sbyte*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#ab022fbf108efe232a724a3a969df1104">Address</a> + 0x28);</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> string((sbyte*) Address + 0x28);</div>
 <div class="line"><span class="lineno">   36</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   37</span>            {</div>
 <div class="line"><span class="lineno">   38</span>                <span class="keywordtype">int</span> len = value.Length + 1;</div>
 <div class="line"><span class="lineno">   39</span>                <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#a7b0bd6f6155836ec0d627271b3aea9fa">_stringLen</a> = (short) len;</div>
 <div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>                <span class="keywordtype">byte</span>* dPtr = (<span class="keywordtype">byte</span>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#ab022fbf108efe232a724a3a969df1104">Address</a> + 0x28;</div>
+<div class="line"><span class="lineno">   41</span>                <span class="keywordtype">byte</span>* dPtr = (<span class="keywordtype">byte</span>*) Address + 0x28;</div>
 <div class="line"><span class="lineno">   42</span>                fixed (<span class="keywordtype">char</span>* sPtr = value)</div>
 <div class="line"><span class="lineno">   43</span>                {</div>
 <div class="line"><span class="lineno">   44</span>                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len; i++)</div>
@@ -327,7 +294,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   55</span>            }</div>
 <div class="line"><span class="lineno">   56</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t_html_a7b0bd6f6155836ec0d627271b3aea9fa"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#a7b0bd6f6155836ec0d627271b3aea9fa">BrawlLib.SSBB.Types.REFT._stringLen</a></div><div class="ttdeci">bshort _stringLen</div><div class="ttdef"><b>Definition:</b> REFT.cs:19</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t_html_ab022fbf108efe232a724a3a969df1104"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_r_e_f_t.html#ab022fbf108efe232a724a3a969df1104">BrawlLib.SSBB.Types.REFT.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> REFT.cs:23</div></div>
 </div><!-- fragment -->
 </div>
 </div>

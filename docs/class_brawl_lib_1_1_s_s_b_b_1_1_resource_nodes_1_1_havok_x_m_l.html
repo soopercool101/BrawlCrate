@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.HavokXML Class Reference</div></div>
 </div><!--header-->
@@ -100,18 +98,6 @@ Static Public Member Functions</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:aa96e9537e8353da4d29a7ef040cb671b"><td class="memItemLeft" align="right" valign="top">static readonly Dictionary&lt; string, KeyValuePair&lt; string, string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#aa96e9537e8353da4d29a7ef040cb671b">HardcodedName</a></td></tr>
 <tr class="separator:aa96e9537e8353da4d29a7ef040cb671b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a31ef72c479e1b6cf382492e8b5fc3bd8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a31ef72c479e1b6cf382492e8b5fc3bd8">RecursiveGetClassIDsData</a> (ref Dictionary&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_class_node.html">HavokClassNode</a>, int &gt; classIDs, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a> node, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> e)</td></tr>
-<tr class="separator:a31ef72c479e1b6cf382492e8b5fc3bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdf6220274408a0f4152b5c2766f9b12"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#afdf6220274408a0f4152b5c2766f9b12">RecursiveGetClassIDsClasses</a> (ref Dictionary&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_class_node.html">HavokClassNode</a>, int &gt; classIDs, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a> node, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> e)</td></tr>
-<tr class="separator:afdf6220274408a0f4152b5c2766f9b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a5a8a0b6d160c7764eb31d62db15db94c"><td class="memItemLeft" align="right" valign="top">static readonly XmlWriterSettings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a5a8a0b6d160c7764eb31d62db15db94c">_writerSettings</a></td></tr>
-<tr class="separator:a5a8a0b6d160c7764eb31d62db15db94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad0d247f130bf211c0378980effaef61d" name="ad0d247f130bf211c0378980effaef61d"></a>
@@ -188,138 +174,6 @@ Static Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="afdf6220274408a0f4152b5c2766f9b12" name="afdf6220274408a0f4152b5c2766f9b12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdf6220274408a0f4152b5c2766f9b12">&#9670;&#160;</a></span>RecursiveGetClassIDsClasses()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.SSBB.ResourceNodes.HavokXML.RecursiveGetClassIDsClasses </td>
-          <td>(</td>
-          <td class="paramtype">ref Dictionary&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_class_node.html">HavokClassNode</a>, int &gt;&#160;</td>
-          <td class="paramname"><em>classIDs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a>&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a>&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  120</span>        {</div>
-<div class="line"><span class="lineno">  121</span>            <span class="keywordflow">if</span> (e is hkClassNode)</div>
-<div class="line"><span class="lineno">  122</span>            {</div>
-<div class="line"><span class="lineno">  123</span>                hkClassNode type = e as hkClassNode;</div>
-<div class="line"><span class="lineno">  124</span>                <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(type.ParentClass))</div>
-<div class="line"><span class="lineno">  125</span>                {</div>
-<div class="line"><span class="lineno">  126</span>                    HavokClassNode c = node.GetClassNode(type.ParentClass);</div>
-<div class="line"><span class="lineno">  127</span>                    classIDs.Add(c, classIDs.Count + 1);</div>
-<div class="line"><span class="lineno">  128</span>                }</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>                ResourceNode members = type.FindChild(<span class="stringliteral">&quot;Members&quot;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">foreach</span> (hkClassMemberNode member <span class="keywordflow">in</span> members.Children)</div>
-<div class="line"><span class="lineno">  132</span>                {</div>
-<div class="line"><span class="lineno">  133</span>                    <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(member._class))</div>
-<div class="line"><span class="lineno">  134</span>                    {</div>
-<div class="line"><span class="lineno">  135</span>                        HavokClassNode c = node.GetClassNode(member._class);</div>
-<div class="line"><span class="lineno">  136</span>                        classIDs.Add(c, classIDs.Count + 1);</div>
-<div class="line"><span class="lineno">  137</span>                    }</div>
-<div class="line"><span class="lineno">  138</span> </div>
-<div class="line"><span class="lineno">  139</span>                    <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(member._enum))</div>
-<div class="line"><span class="lineno">  140</span>                    {</div>
-<div class="line"><span class="lineno">  141</span>                        HavokClassNode c = node.GetClassNode(member._enum);</div>
-<div class="line"><span class="lineno">  142</span>                        classIDs.Add(c, classIDs.Count + 1);</div>
-<div class="line"><span class="lineno">  143</span>                    }</div>
-<div class="line"><span class="lineno">  144</span>                }</div>
-<div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span>                <span class="keywordflow">if</span> (!classIDs.ContainsKey(type))</div>
-<div class="line"><span class="lineno">  147</span>                {</div>
-<div class="line"><span class="lineno">  148</span>                    classIDs.Add(type, classIDs.Count + 1);</div>
-<div class="line"><span class="lineno">  149</span>                }</div>
-<div class="line"><span class="lineno">  150</span>            }</div>
-<div class="line"><span class="lineno">  151</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a31ef72c479e1b6cf382492e8b5fc3bd8" name="a31ef72c479e1b6cf382492e8b5fc3bd8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31ef72c479e1b6cf382492e8b5fc3bd8">&#9670;&#160;</a></span>RecursiveGetClassIDsData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.SSBB.ResourceNodes.HavokXML.RecursiveGetClassIDsData </td>
-          <td>(</td>
-          <td class="paramtype">ref Dictionary&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_class_node.html">HavokClassNode</a>, int &gt;&#160;</td>
-          <td class="paramname"><em>classIDs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a>&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a>&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  103</span>        {</div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">if</span> (e is HavokMetaObjectNode || e is hkClassNode)</div>
-<div class="line"><span class="lineno">  105</span>            {</div>
-<div class="line"><span class="lineno">  106</span>                HavokClassNode data = e as HavokClassNode;</div>
-<div class="line"><span class="lineno">  107</span>                HavokClassNode type = node.GetClassNode(data._className);</div>
-<div class="line"><span class="lineno">  108</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#afdf6220274408a0f4152b5c2766f9b12">RecursiveGetClassIDsClasses</a>(ref classIDs, node, type);</div>
-<div class="line"><span class="lineno">  109</span>                classIDs.Add(data, classIDs.Count + 1);</div>
-<div class="line"><span class="lineno">  110</span>            }</div>
-<div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = e.Children.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><span class="lineno">  113</span>            {</div>
-<div class="line"><span class="lineno">  114</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a31ef72c479e1b6cf382492e8b5fc3bd8">RecursiveGetClassIDsData</a>(ref classIDs, node, e.Children[i]);</div>
-<div class="line"><span class="lineno">  115</span>            }</div>
-<div class="line"><span class="lineno">  116</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l_html_a31ef72c479e1b6cf382492e8b5fc3bd8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a31ef72c479e1b6cf382492e8b5fc3bd8">BrawlLib.SSBB.ResourceNodes.HavokXML.RecursiveGetClassIDsData</a></div><div class="ttdeci">static void RecursiveGetClassIDsData(ref Dictionary&lt; HavokClassNode, int &gt; classIDs, HavokNode node, ResourceNode e)</div><div class="ttdef"><b>Definition:</b> HavokXML.cs:101</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l_html_afdf6220274408a0f4152b5c2766f9b12"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#afdf6220274408a0f4152b5c2766f9b12">BrawlLib.SSBB.ResourceNodes.HavokXML.RecursiveGetClassIDsClasses</a></div><div class="ttdeci">static void RecursiveGetClassIDsClasses(ref Dictionary&lt; HavokClassNode, int &gt; classIDs, HavokNode node, ResourceNode e)</div><div class="ttdef"><b>Definition:</b> HavokXML.cs:118</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a6ae2f29c4c1b6b1af10425052d659923" name="a6ae2f29c4c1b6b1af10425052d659923"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ae2f29c4c1b6b1af10425052d659923">&#9670;&#160;</a></span>Serialize()</h2>
 
@@ -357,7 +211,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   15</span>            <span class="keyword">using</span> (FileStream stream = <span class="keyword">new</span> FileStream(outFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None,</div>
 <div class="line"><span class="lineno">   16</span>                0x1000, FileOptions.SequentialScan))</div>
 <div class="line"><span class="lineno">   17</span>            {</div>
-<div class="line"><span class="lineno">   18</span>                <span class="keyword">using</span> (XmlWriter writer = XmlWriter.Create(stream, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a5a8a0b6d160c7764eb31d62db15db94c">_writerSettings</a>))</div>
+<div class="line"><span class="lineno">   18</span>                <span class="keyword">using</span> (XmlWriter writer = XmlWriter.Create(stream, _writerSettings))</div>
 <div class="line"><span class="lineno">   19</span>                {</div>
 <div class="line"><span class="lineno">   20</span>                    writer.Flush();</div>
 <div class="line"><span class="lineno">   21</span>                    stream.Position = 0;</div>
@@ -436,7 +290,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   94</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l_html_a2f2e61a6518f1894ada38b581bc203b3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a2f2e61a6518f1894ada38b581bc203b3">BrawlLib.SSBB.ResourceNodes.HavokXML.GetSignature</a></div><div class="ttdeci">static string GetSignature(string className)</div><div class="ttdef"><b>Definition:</b> HavokXML.cs:163</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l_html_a521351176fc1433c3d3c0f5c963f5e6f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a521351176fc1433c3d3c0f5c963f5e6f">BrawlLib.SSBB.ResourceNodes.HavokXML.SwapName</a></div><div class="ttdeci">static string SwapName(string className)</div><div class="ttdef"><b>Definition:</b> HavokXML.cs:153</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l_html_a5a8a0b6d160c7764eb31d62db15db94c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#a5a8a0b6d160c7764eb31d62db15db94c">BrawlLib.SSBB.ResourceNodes.HavokXML._writerSettings</a></div><div class="ttdeci">static readonly XmlWriterSettings _writerSettings</div><div class="ttdef"><b>Definition:</b> HavokXML.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l_html_ad0d247f130bf211c0378980effaef61d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_x_m_l.html#ad0d247f130bf211c0378980effaef61d">BrawlLib.SSBB.ResourceNodes.HavokXML.GetObjectName</a></div><div class="ttdeci">static string GetObjectName(Dictionary&lt; HavokClassNode, int &gt; classNodes, HavokClassNode classNode)</div><div class="ttdef"><b>Definition:</b> HavokXML.cs:96</div></div>
 </div><!-- fragment -->
 </div>
@@ -476,30 +329,6 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5a8a0b6d160c7764eb31d62db15db94c" name="a5a8a0b6d160c7764eb31d62db15db94c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a8a0b6d160c7764eb31d62db15db94c">&#9670;&#160;</a></span>_writerSettings</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly XmlWriterSettings BrawlLib.SSBB.ResourceNodes.HavokXML._writerSettings</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <span class="keyword">new</span> XmlWriterSettings</div>
-<div class="line">            {Indent = <span class="keyword">true</span>, IndentChars = <span class="stringliteral">&quot;\t&quot;</span>, NewLineChars = <span class="stringliteral">&quot;\r\n&quot;</span>, NewLineHandling = NewLineHandling.Replace}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="aa96e9537e8353da4d29a7ef040cb671b" name="aa96e9537e8353da4d29a7ef040cb671b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa96e9537e8353da4d29a7ef040cb671b">&#9670;&#160;</a></span>HardcodedName</h2>
 

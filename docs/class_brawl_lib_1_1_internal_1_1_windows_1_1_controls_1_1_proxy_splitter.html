@@ -80,7 +80,6 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.ProxySplitter Class Reference</div></div>
 </div><!--header-->
@@ -115,15 +114,6 @@ Properties</h2></td></tr>
 Events</h2></td></tr>
 <tr class="memitem:a988971c1e893c4c40691cd9d82934a16"><td class="memItemLeft" align="right" valign="top">SplitterEventHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a988971c1e893c4c40691cd9d82934a16">Dragged</a></td></tr>
 <tr class="separator:a988971c1e893c4c40691cd9d82934a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:acb6fcb2233a7ad26d9c172be72bb10a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#acb6fcb2233a7ad26d9c172be72bb10a5">_dragging</a></td></tr>
-<tr class="separator:acb6fcb2233a7ad26d9c172be72bb10a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a429ec0670d966794f19948df5fa9818c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a429ec0670d966794f19948df5fa9818c">_lastX</a></td></tr>
-<tr class="separator:a429ec0670d966794f19948df5fa9818c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04ed2f9132240867f8859e4be1b9bc04"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a04ed2f9132240867f8859e4be1b9bc04">_lastY</a></td></tr>
-<tr class="separator:a04ed2f9132240867f8859e4be1b9bc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac5dbd3be7dce6d6c32196a97f880a2e9" name="ac5dbd3be7dce6d6c32196a97f880a2e9"></a>
@@ -183,12 +173,11 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   40</span>        {</div>
 <div class="line"><span class="lineno">   41</span>            <span class="keywordflow">if</span> (e.Button == MouseButtons.Left)</div>
 <div class="line"><span class="lineno">   42</span>            {</div>
-<div class="line"><span class="lineno">   43</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#acb6fcb2233a7ad26d9c172be72bb10a5">_dragging</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   43</span>                _dragging = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   44</span>            }</div>
 <div class="line"><span class="lineno">   45</span> </div>
 <div class="line"><span class="lineno">   46</span>            base.OnMouseDown(e);</div>
 <div class="line"><span class="lineno">   47</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter_html_acb6fcb2233a7ad26d9c172be72bb10a5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#acb6fcb2233a7ad26d9c172be72bb10a5">BrawlLib.Internal.Windows.Controls.ProxySplitter._dragging</a></div><div class="ttdeci">bool _dragging</div><div class="ttdef"><b>Definition:</b> ProxySplitter.cs:36</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -218,20 +207,18 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   60</span>        {</div>
 <div class="line"><span class="lineno">   61</span>            <span class="keywordtype">int</span> x = Cursor.Position.X;</div>
 <div class="line"><span class="lineno">   62</span>            <span class="keywordtype">int</span> y = Cursor.Position.Y;</div>
-<div class="line"><span class="lineno">   63</span>            <span class="keywordtype">int</span> xDiff = x - <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a429ec0670d966794f19948df5fa9818c">_lastX</a>;</div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordtype">int</span> yDiff = y - <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a04ed2f9132240867f8859e4be1b9bc04">_lastY</a>;</div>
-<div class="line"><span class="lineno">   65</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a429ec0670d966794f19948df5fa9818c">_lastX</a> = x;</div>
-<div class="line"><span class="lineno">   66</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a04ed2f9132240867f8859e4be1b9bc04">_lastY</a> = y;</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keywordtype">int</span> xDiff = x - _lastX;</div>
+<div class="line"><span class="lineno">   64</span>            <span class="keywordtype">int</span> yDiff = y - _lastY;</div>
+<div class="line"><span class="lineno">   65</span>            _lastX = x;</div>
+<div class="line"><span class="lineno">   66</span>            _lastY = y;</div>
 <div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#acb6fcb2233a7ad26d9c172be72bb10a5">_dragging</a>)</div>
+<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">if</span> (_dragging)</div>
 <div class="line"><span class="lineno">   69</span>            {</div>
 <div class="line"><span class="lineno">   70</span>                <a class="code hl_event" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a988971c1e893c4c40691cd9d82934a16">Dragged</a>?.Invoke(<span class="keyword">this</span>, <span class="keyword">new</span> SplitterEventArgs(xDiff, yDiff, Left, Top));</div>
 <div class="line"><span class="lineno">   71</span>            }</div>
 <div class="line"><span class="lineno">   72</span> </div>
 <div class="line"><span class="lineno">   73</span>            base.OnMouseMove(e);</div>
 <div class="line"><span class="lineno">   74</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter_html_a04ed2f9132240867f8859e4be1b9bc04"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a04ed2f9132240867f8859e4be1b9bc04">BrawlLib.Internal.Windows.Controls.ProxySplitter._lastY</a></div><div class="ttdeci">int _lastY</div><div class="ttdef"><b>Definition:</b> ProxySplitter.cs:37</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter_html_a429ec0670d966794f19948df5fa9818c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a429ec0670d966794f19948df5fa9818c">BrawlLib.Internal.Windows.Controls.ProxySplitter._lastX</a></div><div class="ttdeci">int _lastX</div><div class="ttdef"><b>Definition:</b> ProxySplitter.cs:37</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter_html_a988971c1e893c4c40691cd9d82934a16"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#a988971c1e893c4c40691cd9d82934a16">BrawlLib.Internal.Windows.Controls.ProxySplitter.Dragged</a></div><div class="ttdeci">SplitterEventHandler Dragged</div><div class="ttdef"><b>Definition:</b> ProxySplitter.cs:28</div></div>
 </div><!-- fragment -->
 </div>
@@ -262,79 +249,12 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   50</span>        {</div>
 <div class="line"><span class="lineno">   51</span>            <span class="keywordflow">if</span> (e.Button == MouseButtons.Left)</div>
 <div class="line"><span class="lineno">   52</span>            {</div>
-<div class="line"><span class="lineno">   53</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_proxy_splitter.html#acb6fcb2233a7ad26d9c172be72bb10a5">_dragging</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   53</span>                _dragging = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   54</span>            }</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>            base.OnMouseUp(e);</div>
 <div class="line"><span class="lineno">   57</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="acb6fcb2233a7ad26d9c172be72bb10a5" name="acb6fcb2233a7ad26d9c172be72bb10a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb6fcb2233a7ad26d9c172be72bb10a5">&#9670;&#160;</a></span>_dragging</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlLib.Internal.Windows.Controls.ProxySplitter._dragging</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a429ec0670d966794f19948df5fa9818c" name="a429ec0670d966794f19948df5fa9818c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a429ec0670d966794f19948df5fa9818c">&#9670;&#160;</a></span>_lastX</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.Internal.Windows.Controls.ProxySplitter._lastX</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a04ed2f9132240867f8859e4be1b9bc04" name="a04ed2f9132240867f8859e4be1b9bc04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04ed2f9132240867f8859e4be1b9bc04">&#9670;&#160;</a></span>_lastY</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.Internal.Windows.Controls.ProxySplitter._lastY</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

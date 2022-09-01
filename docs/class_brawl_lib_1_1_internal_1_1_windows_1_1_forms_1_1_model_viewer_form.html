@@ -79,8 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Forms.ModelViewerForm Class Reference</div></div>
 </div><!--header-->
@@ -109,18 +107,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae3445f9fb11d7775e4f0f6444f917d38"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#ae3445f9fb11d7775e4f0f6444f917d38">Dispose</a> (bool disposing)</td></tr>
 <tr class="memdesc:ae3445f9fb11d7775e4f0f6444f917d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up any resources being used.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#ae3445f9fb11d7775e4f0f6444f917d38">More...</a><br /></td></tr>
 <tr class="separator:ae3445f9fb11d7775e4f0f6444f917d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:abe74ec535220641d4c4ee92baf85e209"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#abe74ec535220641d4c4ee92baf85e209">InitializeComponent</a> ()</td></tr>
-<tr class="memdesc:abe74ec535220641d4c4ee92baf85e209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required method for Designer support - do not modify the contents of this method with the code editor.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#abe74ec535220641d4c4ee92baf85e209">More...</a><br /></td></tr>
-<tr class="separator:abe74ec535220641d4c4ee92baf85e209"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a02cc4525106f542c083180930d0edd78"><td class="memItemLeft" align="right" valign="top">System.ComponentModel.IContainer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#a02cc4525106f542c083180930d0edd78">components</a> = null</td></tr>
-<tr class="memdesc:a02cc4525106f542c083180930d0edd78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required designer variable.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#a02cc4525106f542c083180930d0edd78">More...</a><br /></td></tr>
-<tr class="separator:a02cc4525106f542c083180930d0edd78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8202e620cd140cc231be4555b1babaea" name="a8202e620cd140cc231be4555b1babaea"></a>
@@ -147,10 +133,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   11</span>        {</div>
-<div class="line"><span class="lineno">   12</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#abe74ec535220641d4c4ee92baf85e209">InitializeComponent</a>();</div>
+<div class="line"><span class="lineno">   12</span>            InitializeComponent();</div>
 <div class="line"><span class="lineno">   13</span>            TopMost = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   14</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form_html_abe74ec535220641d4c4ee92baf85e209"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#abe74ec535220641d4c4ee92baf85e209">BrawlLib.Internal.Windows.Forms.ModelViewerForm.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">Required method for Designer support - do not modify the contents of this method with the code editor...</div><div class="ttdef"><b>Definition:</b> ModelViewerForm.Designer.cs:31</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -187,68 +172,12 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <div class="fragment"><div class="line"><span class="lineno">   17</span>        {</div>
-<div class="line"><span class="lineno">   18</span>            <span class="keywordflow">if</span> (disposing &amp;&amp; (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#a02cc4525106f542c083180930d0edd78">components</a> != <span class="keyword">null</span>))</div>
+<div class="line"><span class="lineno">   18</span>            <span class="keywordflow">if</span> (disposing &amp;&amp; (components != <span class="keyword">null</span>))</div>
 <div class="line"><span class="lineno">   19</span>            {</div>
-<div class="line"><span class="lineno">   20</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#a02cc4525106f542c083180930d0edd78">components</a>.Dispose();</div>
+<div class="line"><span class="lineno">   20</span>                components.Dispose();</div>
 <div class="line"><span class="lineno">   21</span>            }</div>
 <div class="line"><span class="lineno">   22</span>            base.Dispose(disposing);</div>
 <div class="line"><span class="lineno">   23</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form_html_a02cc4525106f542c083180930d0edd78"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#a02cc4525106f542c083180930d0edd78">BrawlLib.Internal.Windows.Forms.ModelViewerForm.components</a></div><div class="ttdeci">System.ComponentModel.IContainer components</div><div class="ttdoc">Required designer variable.</div><div class="ttdef"><b>Definition:</b> ModelViewerForm.Designer.cs:10</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="abe74ec535220641d4c4ee92baf85e209" name="abe74ec535220641d4c4ee92baf85e209"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe74ec535220641d4c4ee92baf85e209">&#9670;&#160;</a></span>InitializeComponent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Forms.ModelViewerForm.InitializeComponent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Required method for Designer support - do not modify the contents of this method with the code editor.  </p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>        {</div>
-<div class="line"><span class="lineno">   33</span>            this.modelPanel1 = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html">ModelPanel</a>();</div>
-<div class="line"><span class="lineno">   34</span>            this.SuspendLayout();</div>
-<div class="line"><span class="lineno">   35</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   36</span>            <span class="comment">// modelPanel1</span></div>
-<div class="line"><span class="lineno">   37</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   38</span>            this.modelPanel1.Cursor = System.Windows.Forms.Cursors.Default;</div>
-<div class="line"><span class="lineno">   39</span>            this.modelPanel1.Dock = System.Windows.Forms.DockStyle.Fill;</div>
-<div class="line"><span class="lineno">   40</span>            this.modelPanel1.Location = <span class="keyword">new</span> System.Drawing.Point(0, 0);</div>
-<div class="line"><span class="lineno">   41</span>            this.modelPanel1.Name = <span class="stringliteral">&quot;modelPanel1&quot;</span>;</div>
-<div class="line"><span class="lineno">   42</span>            this.modelPanel1.Size = <span class="keyword">new</span> System.Drawing.Size(521, 439);</div>
-<div class="line"><span class="lineno">   43</span>            this.modelPanel1.TabIndex = 0;</div>
-<div class="line"><span class="lineno">   44</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   45</span>            <span class="comment">// ModelViewerForm</span></div>
-<div class="line"><span class="lineno">   46</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   47</span>            this.AutoScaleDimensions = <span class="keyword">new</span> System.Drawing.SizeF(6F, 13F);</div>
-<div class="line"><span class="lineno">   48</span>            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;</div>
-<div class="line"><span class="lineno">   49</span>            this.ClientSize = <span class="keyword">new</span> System.Drawing.Size(521, 439);</div>
-<div class="line"><span class="lineno">   50</span>            this.Controls.Add(this.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#a05905faeded3d54f6be564559a233ed7">modelPanel1</a>);</div>
-<div class="line"><span class="lineno">   51</span>            this.Icon = <a class="code hl_namespace" href="namespace_brawl_lib.html">BrawlLib</a>.Properties.Resources.Icon;</div>
-<div class="line"><span class="lineno">   52</span>            this.Name = <span class="stringliteral">&quot;ModelViewerForm&quot;</span>;</div>
-<div class="line"><span class="lineno">   53</span>            this.Text = <span class="stringliteral">&quot;Model Viewer&quot;</span>;</div>
-<div class="line"><span class="lineno">   54</span>            this.ResumeLayout(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel</a></div><div class="ttdef"><b>Definition:</b> ModelPanel.cs:20</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form_html_a05905faeded3d54f6be564559a233ed7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_model_viewer_form.html#a05905faeded3d54f6be564559a233ed7">BrawlLib.Internal.Windows.Forms.ModelViewerForm.modelPanel1</a></div><div class="ttdeci">ModelPanel modelPanel1</div><div class="ttdef"><b>Definition:</b> ModelViewerForm.Designer.cs:60</div></div>
-<div class="ttc" id="anamespace_brawl_lib_html"><div class="ttname"><a href="namespace_brawl_lib.html">BrawlLib</a></div><div class="ttdef"><b>Definition:</b> PerSessionSettings.cs:2</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -264,30 +193,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="a02cc4525106f542c083180930d0edd78" name="a02cc4525106f542c083180930d0edd78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02cc4525106f542c083180930d0edd78">&#9670;&#160;</a></span>components</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.ComponentModel.IContainer BrawlLib.Internal.Windows.Forms.ModelViewerForm.components = null</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Required designer variable.  </p>
 
 </div>
 </div>

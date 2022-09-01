@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.GCTNode Class Reference</div></div>
 </div><!--header-->
@@ -373,13 +372,6 @@ Properties</h2></td></tr>
 <tr class="separator:a1d20a6bd10cd2d7cfa8d398b11fbab93 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a34b2c3ae42b9c2bfc4a8695896a89a59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html">GCTHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a></td></tr>
-<tr class="separator:a34b2c3ae42b9c2bfc4a8695896a89a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a89f84a7724840037e59a8c82dd650"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html">CompactStringTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a></td></tr>
-<tr class="separator:ac7a89f84a7724840037e59a8c82dd650"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -743,25 +735,25 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   87</span> </div>
 <div class="line"><span class="lineno">   88</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a1d0da370677627905703275b6e042c31">_writeInfo</a>)</div>
 <div class="line"><span class="lineno">   89</span>            {</div>
-<div class="line"><span class="lineno">   90</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a> = <span class="keyword">new</span> CompactStringTable();</div>
-<div class="line"><span class="lineno">   91</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a>);</div>
+<div class="line"><span class="lineno">   90</span>                _stringTable = <span class="keyword">new</span> CompactStringTable();</div>
+<div class="line"><span class="lineno">   91</span>                _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a>);</div>
 <div class="line"><span class="lineno">   92</span>                <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a>))</div>
 <div class="line"><span class="lineno">   93</span>                {</div>
-<div class="line"><span class="lineno">   94</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a>);</div>
+<div class="line"><span class="lineno">   94</span>                    _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a>);</div>
 <div class="line"><span class="lineno">   95</span>                }</div>
 <div class="line"><span class="lineno">   96</span> </div>
 <div class="line"><span class="lineno">   97</span>                size += 12;</div>
 <div class="line"><span class="lineno">   98</span>                <span class="keywordflow">foreach</span> (GCTCodeEntryNode n <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><span class="lineno">   99</span>                {</div>
 <div class="line"><span class="lineno">  100</span>                    size += 16;</div>
-<div class="line"><span class="lineno">  101</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(n._name);</div>
+<div class="line"><span class="lineno">  101</span>                    _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(n._name);</div>
 <div class="line"><span class="lineno">  102</span>                    <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(n._description))</div>
 <div class="line"><span class="lineno">  103</span>                    {</div>
-<div class="line"><span class="lineno">  104</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(n._description);</div>
+<div class="line"><span class="lineno">  104</span>                        _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(n._description);</div>
 <div class="line"><span class="lineno">  105</span>                    }</div>
 <div class="line"><span class="lineno">  106</span>                }</div>
 <div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>                size += <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#a3aea45fdce596e25f784722d46b4b174">TotalSize</a>;</div>
+<div class="line"><span class="lineno">  108</span>                size += _stringTable.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#a3aea45fdce596e25f784722d46b4b174">TotalSize</a>;</div>
 <div class="line"><span class="lineno">  109</span>            }</div>
 <div class="line"><span class="lineno">  110</span> </div>
 <div class="line"><span class="lineno">  111</span>            <span class="keywordflow">return</span> size;</div>
@@ -770,7 +762,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table_html_ac23df2487639fbd9ef163e4d1dab3bbc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">BrawlLib.SSBB.ResourceNodes.CompactStringTable.Add</a></div><div class="ttdeci">void Add(string s)</div><div class="ttdef"><b>Definition:</b> MoveDefStringTables.cs:62</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node_html_a1d0da370677627905703275b6e042c31"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a1d0da370677627905703275b6e042c31">BrawlLib.SSBB.ResourceNodes.GCTNode._writeInfo</a></div><div class="ttdeci">bool _writeInfo</div><div class="ttdef"><b>Definition:</b> GCTNode.cs:78</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node_html_aae666030eea7e92d9a01cd20693dc63b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">BrawlLib.SSBB.ResourceNodes.GCTNode._gameName</a></div><div class="ttdeci">string _gameName</div><div class="ttdef"><b>Definition:</b> GCTNode.cs:19</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node_html_ac7a89f84a7724840037e59a8c82dd650"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">BrawlLib.SSBB.ResourceNodes.GCTNode._stringTable</a></div><div class="ttdeci">CompactStringTable _stringTable</div><div class="ttdef"><b>Definition:</b> GCTNode.cs:76</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
 </div><!-- fragment -->
 </div>
@@ -812,15 +803,15 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   44</span>                }</div>
 <div class="line"><span class="lineno">   45</span>            }</div>
 <div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a> = (GCTHeader*) lines;</div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> ((uint) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a> - (uint) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a14122ec987986f0fd74c49e8351f0332">Data</a> &lt; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>)</div>
+<div class="line"><span class="lineno">   47</span>            _header = (GCTHeader*) lines;</div>
+<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">if</span> ((uint) _header - (uint) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a14122ec987986f0fd74c49e8351f0332">Data</a> &lt; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">Length</a>)</div>
 <div class="line"><span class="lineno">   49</span>            {</div>
-<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#a77fa059c793f5a8717ff26b032d2516c">_nameOffset</a> &gt; 0)</div>
+<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">if</span> (_header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#a77fa059c793f5a8717ff26b032d2516c">_nameOffset</a> &gt; 0)</div>
 <div class="line"><span class="lineno">   51</span>                {</div>
-<div class="line"><span class="lineno">   52</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a>-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#a5b0f9fe918cd0243cc6c5dd4ba4c2658">GameName</a>;</div>
+<div class="line"><span class="lineno">   52</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a> = _header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#a5b0f9fe918cd0243cc6c5dd4ba4c2658">GameName</a>;</div>
 <div class="line"><span class="lineno">   53</span>                }</div>
 <div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a>-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#a3ddae0bc4440387afe1bf7058d32cf9d">GameID</a>;</div>
+<div class="line"><span class="lineno">   55</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = _header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#a3ddae0bc4440387afe1bf7058d32cf9d">GameID</a>;</div>
 <div class="line"><span class="lineno">   56</span>            }</div>
 <div class="line"><span class="lineno">   57</span> </div>
 <div class="line"><span class="lineno">   58</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> == <span class="keyword">null</span>)</div>
@@ -828,10 +819,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   60</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = Path.GetFileNameWithoutExtension(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>);</div>
 <div class="line"><span class="lineno">   61</span>            }</div>
 <div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">return</span> WorkingUncompressed.Length &gt; 16 &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#af4b1320b4554d225f63e476f1d73667e">_count</a> &gt; 0;</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">return</span> WorkingUncompressed.Length &gt; 16 &amp;&amp; _header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#af4b1320b4554d225f63e476f1d73667e">_count</a> &gt; 0;</div>
 <div class="line"><span class="lineno">   64</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node_html_a14122ec987986f0fd74c49e8351f0332"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a14122ec987986f0fd74c49e8351f0332">BrawlLib.SSBB.ResourceNodes.GCTNode.Data</a></div><div class="ttdeci">byte * Data</div><div class="ttdef"><b>Definition:</b> GCTNode.cs:14</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node_html_a34b2c3ae42b9c2bfc4a8695896a89a59"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">BrawlLib.SSBB.ResourceNodes.GCTNode._header</a></div><div class="ttdeci">GCTHeader * _header</div><div class="ttdef"><b>Definition:</b> GCTNode.cs:31</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:183</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_a0f9a87e8ce6929677cf3b301b82e9c86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#a0f9a87e8ce6929677cf3b301b82e9c86">BrawlLib.SSBB.ResourceNodes.DataSource.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:32</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header_html_a3ddae0bc4440387afe1bf7058d32cf9d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#a3ddae0bc4440387afe1bf7058d32cf9d">BrawlLib.SSBB.ResourceNodes.GCTHeader.GameID</a></div><div class="ttdeci">string GameID</div><div class="ttdef"><b>Definition:</b> GCTNode.cs:501</div></div>
@@ -866,8 +856,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acc31994201c76c84a2518686a093fea1">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   67</span>        {</div>
-<div class="line"><span class="lineno">   68</span>            GCTCodeEntry* entry = (GCTCodeEntry*) (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a> + 1);</div>
-<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a34b2c3ae42b9c2bfc4a8695896a89a59">_header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#af4b1320b4554d225f63e476f1d73667e">_count</a>; i++)</div>
+<div class="line"><span class="lineno">   68</span>            GCTCodeEntry* entry = (GCTCodeEntry*) (_header + 1);</div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html#af4b1320b4554d225f63e476f1d73667e">_count</a>; i++)</div>
 <div class="line"><span class="lineno">   70</span>            {</div>
 <div class="line"><span class="lineno">   71</span>                <span class="keyword">new</span> GCTCodeEntryNode(&amp;entry[i]).Initialize(<span class="keyword">this</span>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#a14122ec987986f0fd74c49e8351f0332">Data</a> + entry[i]._codeOffset,</div>
 <div class="line"><span class="lineno">   72</span>                    (<span class="keywordtype">int</span>) entry[i]._lineCount * GCTCodeLine.Size);</div>
@@ -938,12 +928,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  133</span>                hdr-&gt;_count = (uint) enabledChildren.Count;</div>
 <div class="line"><span class="lineno">  134</span> </div>
 <div class="line"><span class="lineno">  135</span>                <span class="keywordtype">int</span> offset = 12 + enabledChildren.Count * 16;</div>
-<div class="line"><span class="lineno">  136</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#a2494432e837e7f840715ab331110c3c1">WriteTable</a>((<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) hdr + offset);</div>
+<div class="line"><span class="lineno">  136</span>                _stringTable.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#a2494432e837e7f840715ab331110c3c1">WriteTable</a>((<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) hdr + offset);</div>
 <div class="line"><span class="lineno">  137</span> </div>
-<div class="line"><span class="lineno">  138</span>                hdr-&gt;_idOffset = (uint) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a>] - (uint) hdr;</div>
+<div class="line"><span class="lineno">  138</span>                hdr-&gt;_idOffset = (uint) _stringTable[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a>] - (uint) hdr;</div>
 <div class="line"><span class="lineno">  139</span>                <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a>))</div>
 <div class="line"><span class="lineno">  140</span>                {</div>
-<div class="line"><span class="lineno">  141</span>                    hdr-&gt;_nameOffset = (uint) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a>] - (uint) hdr;</div>
+<div class="line"><span class="lineno">  141</span>                    hdr-&gt;_nameOffset = (uint) _stringTable[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#aae666030eea7e92d9a01cd20693dc63b">_gameName</a>] - (uint) hdr;</div>
 <div class="line"><span class="lineno">  142</span>                }</div>
 <div class="line"><span class="lineno">  143</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  144</span>                {</div>
@@ -958,10 +948,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  153</span>                    codeOffset += (uint) n._lines.Length * 8;</div>
 <div class="line"><span class="lineno">  154</span> </div>
 <div class="line"><span class="lineno">  155</span>                    entry-&gt;_lineCount = (uint) n._lines.Length;</div>
-<div class="line"><span class="lineno">  156</span>                    entry-&gt;_nameOffset = (uint) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>[n._name] - (uint) entry;</div>
+<div class="line"><span class="lineno">  156</span>                    entry-&gt;_nameOffset = (uint) _stringTable[n._name] - (uint) entry;</div>
 <div class="line"><span class="lineno">  157</span>                    <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(n._description))</div>
 <div class="line"><span class="lineno">  158</span>                    {</div>
-<div class="line"><span class="lineno">  159</span>                        entry-&gt;_descOffset = (uint) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_node.html#ac7a89f84a7724840037e59a8c82dd650">_stringTable</a>[n._description] - (uint) entry;</div>
+<div class="line"><span class="lineno">  159</span>                        entry-&gt;_descOffset = (uint) _stringTable[n._description] - (uint) entry;</div>
 <div class="line"><span class="lineno">  160</span>                    }</div>
 <div class="line"><span class="lineno">  161</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  162</span>                    {</div>
@@ -1067,50 +1057,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">string BrawlLib.SSBB.ResourceNodes.GCTNode._gameName</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a34b2c3ae42b9c2bfc4a8695896a89a59" name="a34b2c3ae42b9c2bfc4a8695896a89a59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34b2c3ae42b9c2bfc4a8695896a89a59">&#9670;&#160;</a></span>_header</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_c_t_header.html">GCTHeader</a>* BrawlLib.SSBB.ResourceNodes.GCTNode._header</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac7a89f84a7724840037e59a8c82dd650" name="ac7a89f84a7724840037e59a8c82dd650"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7a89f84a7724840037e59a8c82dd650">&#9670;&#160;</a></span>_stringTable</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html">CompactStringTable</a> BrawlLib.SSBB.ResourceNodes.GCTNode._stringTable</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

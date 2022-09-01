@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.LabelBuilder Class Reference</div></div>
 </div><!--header-->
@@ -99,11 +98,6 @@ Public Member Functions</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a28bab1b145312786cb84f52bcf32c810"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a28bab1b145312786cb84f52bcf32c810">Count</a><code> [get]</code></td></tr>
 <tr class="separator:a28bab1b145312786cb84f52bcf32c810"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a9fd92765ed925db492c8b67c181bb7b1"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_label_item.html">LabelItem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a9fd92765ed925db492c8b67c181bb7b1">_labels</a> = new List&lt;<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_label_item.html">LabelItem</a>&gt;()</td></tr>
-<tr class="separator:a9fd92765ed925db492c8b67c181bb7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4efdfdfc7b9530de42c9fbd51eb02302" name="a4efdfdfc7b9530de42c9fbd51eb02302"></a>
@@ -140,9 +134,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   19</span>        {</div>
-<div class="line"><span class="lineno">   20</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a9fd92765ed925db492c8b67c181bb7b1">_labels</a>.Add(<span class="keyword">new</span> LabelItem {Tag = tag, String = str});</div>
+<div class="line"><span class="lineno">   20</span>            _labels.Add(<span class="keyword">new</span> LabelItem {Tag = tag, String = str});</div>
 <div class="line"><span class="lineno">   21</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_label_builder_html_a9fd92765ed925db492c8b67c181bb7b1"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a9fd92765ed925db492c8b67c181bb7b1">BrawlLib.SSBB.LabelBuilder._labels</a></div><div class="ttdeci">readonly List&lt; LabelItem &gt; _labels</div><div class="ttdef"><b>Definition:</b> LabelBuilder.cs:9</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -169,7 +162,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   14</span>        {</div>
-<div class="line"><span class="lineno">   15</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a9fd92765ed925db492c8b67c181bb7b1">_labels</a>.Clear();</div>
+<div class="line"><span class="lineno">   15</span>            _labels.Clear();</div>
 <div class="line"><span class="lineno">   16</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -198,7 +191,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
 <div class="line"><span class="lineno">   25</span>            <span class="keywordtype">int</span> len = 12;</div>
-<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">foreach</span> (LabelItem label <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a9fd92765ed925db492c8b67c181bb7b1">_labels</a>)</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">foreach</span> (LabelItem label <span class="keywordflow">in</span> _labels)</div>
 <div class="line"><span class="lineno">   27</span>            {</div>
 <div class="line"><span class="lineno">   28</span>                len += label.DataLen + 4;</div>
 <div class="line"><span class="lineno">   29</span>            }</div>
@@ -233,7 +226,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   35</span>        {</div>
 <div class="line"><span class="lineno">   36</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html">LABLHeader</a>* header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html">LABLHeader</a>*) address;</div>
-<div class="line"><span class="lineno">   37</span>            <span class="keywordtype">int</span> count = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a9fd92765ed925db492c8b67c181bb7b1">_labels</a>.Count;</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordtype">int</span> count = _labels.Count;</div>
 <div class="line"><span class="lineno">   38</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dataAddr = address + 12 + count * 4;</div>
 <div class="line"><span class="lineno">   39</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* list = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) (address + 8);</div>
 <div class="line"><span class="lineno">   40</span>            LabelItem label;</div>
@@ -242,7 +235,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   43</span> </div>
 <div class="line"><span class="lineno">   44</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count;)</div>
 <div class="line"><span class="lineno">   45</span>            {</div>
-<div class="line"><span class="lineno">   46</span>                label = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_label_builder.html#a9fd92765ed925db492c8b67c181bb7b1">_labels</a>[i++];</div>
+<div class="line"><span class="lineno">   46</span>                label = _labels[i++];</div>
 <div class="line"><span class="lineno">   47</span>                list[i] = (int) dataAddr - (<span class="keywordtype">int</span>) list;</div>
 <div class="line"><span class="lineno">   48</span>                ((<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_entry.html">LABLEntry</a>*) dataAddr)-&gt;Set(label.Tag, label.String);</div>
 <div class="line"><span class="lineno">   49</span>                dataAddr += label.DataLen;</div>
@@ -262,29 +255,6 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html">BrawlLib.SSBB.Types.Audio.LABLHeader</a></div><div class="ttdef"><b>Definition:</b> RSEQ.cs:260</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header_html_a88b775b5e5dfe5c217cb5f978735a577"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html#a88b775b5e5dfe5c217cb5f978735a577">BrawlLib.SSBB.Types.Audio.LABLHeader.Set</a></div><div class="ttdeci">void Set(int size, int count)</div><div class="ttdef"><b>Definition:</b> RSEQ.cs:267</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9fd92765ed925db492c8b67c181bb7b1" name="a9fd92765ed925db492c8b67c181bb7b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fd92765ed925db492c8b67c181bb7b1">&#9670;&#160;</a></span>_labels</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly List&lt;<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_label_item.html">LabelItem</a>&gt; BrawlLib.SSBB.LabelBuilder._labels = new List&lt;<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_label_item.html">LabelItem</a>&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

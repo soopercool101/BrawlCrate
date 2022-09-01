@@ -80,8 +80,6 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Animations.KeyframeCollection Class Reference</div></div>
 </div><!--header-->
@@ -134,18 +132,6 @@ Properties</h2></td></tr>
 <tr class="separator:a63827098466762ab6901bf62adab490f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b3918b40f0743dd5613e23059326b16"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a5b3918b40f0743dd5613e23059326b16">ArrayCount</a><code> [get]</code></td></tr>
 <tr class="separator:a5b3918b40f0743dd5613e23059326b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:acd810395602ba7e126c94239fac17fe5"><td class="memItemLeft" align="right" valign="top">System.Collections.IEnumerator System.Collections.IEnumerable.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#acd810395602ba7e126c94239fac17fe5">GetEnumerator</a> ()</td></tr>
-<tr class="separator:acd810395602ba7e126c94239fac17fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a4b1bc10763b46fa3fa5310ab217f843f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a4b1bc10763b46fa3fa5310ab217f843f">_looped</a></td></tr>
-<tr class="separator:a4b1bc10763b46fa3fa5310ab217f843f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a906302eed856e0e1cff548e907501700"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a906302eed856e0e1cff548e907501700">_frameLimit</a></td></tr>
-<tr class="separator:a906302eed856e0e1cff548e907501700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a69e2c29cad76d176dbd143c807a02f06" name="a69e2c29cad76d176dbd143c807a02f06"></a>
@@ -188,7 +174,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   53</span>        {</div>
-<div class="line"><span class="lineno">   54</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a906302eed856e0e1cff548e907501700">_frameLimit</a> = numFrames;</div>
+<div class="line"><span class="lineno">   54</span>            _frameLimit = numFrames;</div>
 <div class="line"><span class="lineno">   55</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a230ae40383e583c0334ea446c50651f0">_keyArrays</a> = <span class="keyword">new</span> KeyframeArray[arrayCount];</div>
 <div class="line"><span class="lineno">   56</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; arrayCount; i++)</div>
 <div class="line"><span class="lineno">   57</span>            {</div>
@@ -196,7 +182,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   59</span>            }</div>
 <div class="line"><span class="lineno">   60</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection_html_a230ae40383e583c0334ea446c50651f0"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a230ae40383e583c0334ea446c50651f0">BrawlLib.Wii.Animations.KeyframeCollection._keyArrays</a></div><div class="ttdeci">KeyframeArray[] _keyArrays</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:18</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection_html_a906302eed856e0e1cff548e907501700"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a906302eed856e0e1cff548e907501700">BrawlLib.Wii.Animations.KeyframeCollection._frameLimit</a></div><div class="ttdeci">int _frameLimit</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:37</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -294,7 +279,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a6d0bf72b6fd5dd656e12fae3c272dedb" name="a6d0bf72b6fd5dd656e12fae3c272dedb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d0bf72b6fd5dd656e12fae3c272dedb">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d0bf72b6fd5dd656e12fae3c272dedb">&#9670;&#160;</a></span>GetEnumerator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -319,34 +304,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  162</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a6d0bf72b6fd5dd656e12fae3c272dedb">GetEnumerator</a>();</div>
 <div class="line"><span class="lineno">  163</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection_html_a6d0bf72b6fd5dd656e12fae3c272dedb"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a6d0bf72b6fd5dd656e12fae3c272dedb">BrawlLib.Wii.Animations.KeyframeCollection.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; KeyframeArray &gt; GetEnumerator()</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:160</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="acd810395602ba7e126c94239fac17fe5" name="acd810395602ba7e126c94239fac17fe5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd810395602ba7e126c94239fac17fe5">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.Collections.IEnumerator System.Collections.IEnumerable. BrawlLib.Wii.Animations.KeyframeCollection.GetEnumerator </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  166</span>        {</div>
-<div class="line"><span class="lineno">  167</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a230ae40383e583c0334ea446c50651f0">_keyArrays</a>.GetEnumerator();</div>
-<div class="line"><span class="lineno">  168</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -476,7 +433,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  116</span>                root = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a230ae40383e583c0334ea446c50651f0">_keyArrays</a>[x].<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a5fde939251926c8ae7d062d5d73046db">_keyRoot</a>;</div>
 <div class="line"><span class="lineno">  117</span>                <span class="keywordflow">for</span> (entry = root._prev; entry != root &amp;&amp; entry._index &gt;= index; entry = entry._prev)</div>
 <div class="line"><span class="lineno">  118</span>                {</div>
-<div class="line"><span class="lineno">  119</span>                    <span class="keywordflow">if</span> (++entry._index &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a906302eed856e0e1cff548e907501700">_frameLimit</a>)</div>
+<div class="line"><span class="lineno">  119</span>                    <span class="keywordflow">if</span> (++entry._index &gt;= _frameLimit)</div>
 <div class="line"><span class="lineno">  120</span>                    {</div>
 <div class="line"><span class="lineno">  121</span>                        entry = entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>;</div>
 <div class="line"><span class="lineno">  122</span>                        entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a45c6439b172c594ae6d596d67679d453">Remove</a>();</div>
@@ -597,28 +554,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a906302eed856e0e1cff548e907501700" name="a906302eed856e0e1cff548e907501700"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a906302eed856e0e1cff548e907501700">&#9670;&#160;</a></span>_frameLimit</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.Wii.Animations.KeyframeCollection._frameLimit</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a230ae40383e583c0334ea446c50651f0" name="a230ae40383e583c0334ea446c50651f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a230ae40383e583c0334ea446c50651f0">&#9670;&#160;</a></span>_keyArrays</h2>
 
@@ -629,28 +564,6 @@ Private Attributes</h2></td></tr>
           <td class="memname"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html">KeyframeArray</a> [] BrawlLib.Wii.Animations.KeyframeCollection._keyArrays</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4b1bc10763b46fa3fa5310ab217f843f" name="a4b1bc10763b46fa3fa5310ab217f843f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b1bc10763b46fa3fa5310ab217f843f">&#9670;&#160;</a></span>_looped</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlLib.Wii.Animations.KeyframeCollection._looped</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -731,13 +644,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   40</span>        {</div>
-<div class="line"><span class="lineno">   41</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a906302eed856e0e1cff548e907501700">_frameLimit</a>;</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keyword">get</span> =&gt; _frameLimit;</div>
 <div class="line"><span class="lineno">   42</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   43</span>            {</div>
-<div class="line"><span class="lineno">   44</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a906302eed856e0e1cff548e907501700">_frameLimit</a> = value;</div>
+<div class="line"><span class="lineno">   44</span>                _frameLimit = value;</div>
 <div class="line"><span class="lineno">   45</span>                <span class="keywordflow">foreach</span> (KeyframeArray r <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a230ae40383e583c0334ea446c50651f0">_keyArrays</a>)</div>
 <div class="line"><span class="lineno">   46</span>                {</div>
-<div class="line"><span class="lineno">   47</span>                    r.FrameLimit = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a906302eed856e0e1cff548e907501700">_frameLimit</a>;</div>
+<div class="line"><span class="lineno">   47</span>                    r.FrameLimit = _frameLimit;</div>
 <div class="line"><span class="lineno">   48</span>                }</div>
 <div class="line"><span class="lineno">   49</span>            }</div>
 <div class="line"><span class="lineno">   50</span>        }</div>
@@ -764,17 +677,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
-<div class="line"><span class="lineno">   26</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a4b1bc10763b46fa3fa5310ab217f843f">_looped</a>;</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keyword">get</span> =&gt; _looped;</div>
 <div class="line"><span class="lineno">   27</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   28</span>            {</div>
-<div class="line"><span class="lineno">   29</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a4b1bc10763b46fa3fa5310ab217f843f">_looped</a> = value;</div>
+<div class="line"><span class="lineno">   29</span>                _looped = value;</div>
 <div class="line"><span class="lineno">   30</span>                <span class="keywordflow">foreach</span> (KeyframeArray a <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a230ae40383e583c0334ea446c50651f0">_keyArrays</a>)</div>
 <div class="line"><span class="lineno">   31</span>                {</div>
-<div class="line"><span class="lineno">   32</span>                    a.Loop = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a4b1bc10763b46fa3fa5310ab217f843f">_looped</a>;</div>
+<div class="line"><span class="lineno">   32</span>                    a.Loop = _looped;</div>
 <div class="line"><span class="lineno">   33</span>                }</div>
 <div class="line"><span class="lineno">   34</span>            }</div>
 <div class="line"><span class="lineno">   35</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection_html_a4b1bc10763b46fa3fa5310ab217f843f"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html#a4b1bc10763b46fa3fa5310ab217f843f">BrawlLib.Wii.Animations.KeyframeCollection._looped</a></div><div class="ttdeci">bool _looped</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>

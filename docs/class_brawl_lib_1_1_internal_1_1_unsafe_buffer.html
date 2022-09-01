@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.UnsafeBuffer Class Reference</div></div>
 </div><!--header-->
@@ -106,18 +104,6 @@ Properties</h2></td></tr>
 <tr class="separator:a64110932d38d5589023d7aa3e7266d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64f51899689d7bbc3a350113e661bf6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a64f51899689d7bbc3a350113e661bf6b">this[int count, int stride]</a><code> [get]</code></td></tr>
 <tr class="separator:a64f51899689d7bbc3a350113e661bf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a7256273f34c5e12df14e9d776a158726"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a7256273f34c5e12df14e9d776a158726">~UnsafeBuffer</a> ()</td></tr>
-<tr class="separator:a7256273f34c5e12df14e9d776a158726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a13f6d261562759c08d2bbd8c745b7ee0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a13f6d261562759c08d2bbd8c745b7ee0">_data</a></td></tr>
-<tr class="separator:a13f6d261562759c08d2bbd8c745b7ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05d7e3114ff2f29fa97c47ddae85c1d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a05d7e3114ff2f29fa97c47ddae85c1d7">_length</a></td></tr>
-<tr class="separator:a05d7e3114ff2f29fa97c47ddae85c1d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a20428b652a193bcb0b75d75b24de328e" name="a20428b652a193bcb0b75d75b24de328e"></a>
@@ -144,40 +130,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   20</span>        {</div>
-<div class="line"><span class="lineno">   21</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a13f6d261562759c08d2bbd8c745b7ee0">_data</a> = Marshal.AllocHGlobal(size);</div>
-<div class="line"><span class="lineno">   22</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a05d7e3114ff2f29fa97c47ddae85c1d7">_length</a> = size;</div>
+<div class="line"><span class="lineno">   21</span>            _data = Marshal.AllocHGlobal(size);</div>
+<div class="line"><span class="lineno">   22</span>            _length = size;</div>
 <div class="line"><span class="lineno">   23</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a05d7e3114ff2f29fa97c47ddae85c1d7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a05d7e3114ff2f29fa97c47ddae85c1d7">BrawlLib.Internal.UnsafeBuffer._length</a></div><div class="ttdeci">int _length</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a13f6d261562759c08d2bbd8c745b7ee0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a13f6d261562759c08d2bbd8c745b7ee0">BrawlLib.Internal.UnsafeBuffer._data</a></div><div class="ttdeci">VoidPtr _data</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:8</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a7256273f34c5e12df14e9d776a158726" name="a7256273f34c5e12df14e9d776a158726"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7256273f34c5e12df14e9d776a158726">&#9670;&#160;</a></span>~UnsafeBuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BrawlLib.Internal.UnsafeBuffer.~UnsafeBuffer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   26</span>        {</div>
-<div class="line"><span class="lineno">   27</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a800cc008f7054b8c9d2f9dfe5bff684b">Dispose</a>();</div>
-<div class="line"><span class="lineno">   28</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html_a800cc008f7054b8c9d2f9dfe5bff684b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a800cc008f7054b8c9d2f9dfe5bff684b">BrawlLib.Internal.UnsafeBuffer.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:32</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -207,10 +162,10 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   33</span>        {</div>
 <div class="line"><span class="lineno">   34</span>            <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">   35</span>            {</div>
-<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a13f6d261562759c08d2bbd8c745b7ee0">_data</a>)</div>
+<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">if</span> (_data)</div>
 <div class="line"><span class="lineno">   37</span>                {</div>
-<div class="line"><span class="lineno">   38</span>                    Marshal.FreeHGlobal(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a13f6d261562759c08d2bbd8c745b7ee0">_data</a>);</div>
-<div class="line"><span class="lineno">   39</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a13f6d261562759c08d2bbd8c745b7ee0">_data</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   38</span>                    Marshal.FreeHGlobal(_data);</div>
+<div class="line"><span class="lineno">   39</span>                    _data = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   40</span>                    GC.SuppressFinalize(<span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">   41</span>                }</div>
 <div class="line"><span class="lineno">   42</span>            }</div>
@@ -220,51 +175,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   46</span>            }</div>
 <div class="line"><span class="lineno">   47</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a13f6d261562759c08d2bbd8c745b7ee0" name="a13f6d261562759c08d2bbd8c745b7ee0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13f6d261562759c08d2bbd8c745b7ee0">&#9670;&#160;</a></span>_data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.Internal.UnsafeBuffer._data</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a05d7e3114ff2f29fa97c47ddae85c1d7" name="a05d7e3114ff2f29fa97c47ddae85c1d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05d7e3114ff2f29fa97c47ddae85c1d7">&#9670;&#160;</a></span>_length</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.Internal.UnsafeBuffer._length</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -310,8 +220,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   14</span>        {</div>
-<div class="line"><span class="lineno">   15</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a05d7e3114ff2f29fa97c47ddae85c1d7">_length</a>;</div>
-<div class="line"><span class="lineno">   16</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a05d7e3114ff2f29fa97c47ddae85c1d7">_length</a> = value;</div>
+<div class="line"><span class="lineno">   15</span>            <span class="keyword">get</span> =&gt; _length;</div>
+<div class="line"><span class="lineno">   16</span>            <span class="keyword">set</span> =&gt; _length = value;</div>
 <div class="line"><span class="lineno">   17</span>        }</div>
 </div><!-- fragment -->
 </div>

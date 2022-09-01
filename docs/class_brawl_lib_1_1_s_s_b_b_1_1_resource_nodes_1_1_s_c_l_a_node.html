@@ -80,7 +80,6 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.SCLANode Class Reference</div></div>
 </div><!--header-->
@@ -386,11 +385,6 @@ Properties</h2></td></tr>
 <tr class="separator:a1d20a6bd10cd2d7cfa8d398b11fbab93 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a0d8b98e2e1fd022d0ca11b25847d0d93"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a0d8b98e2e1fd022d0ca11b25847d0d93">_entrySize</a> = 0x54</td></tr>
-<tr class="separator:a0d8b98e2e1fd022d0ca11b25847d0d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -714,9 +708,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> 0x10 + Children.Count * 4 + Children.Count * <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a0d8b98e2e1fd022d0ca11b25847d0d93">_entrySize</a>;</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> 0x10 + Children.Count * 4 + Children.Count * _entrySize;</div>
 <div class="line"><span class="lineno">   50</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node_html_a0d8b98e2e1fd022d0ca11b25847d0d93"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a0d8b98e2e1fd022d0ca11b25847d0d93">BrawlLib.SSBB.ResourceNodes.SCLANode._entrySize</a></div><div class="ttdeci">const int _entrySize</div><div class="ttdef"><b>Definition:</b> SCLANode.cs:32</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -781,7 +774,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   35</span>        {</div>
 <div class="line"><span class="lineno">   36</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a2cb438225f7311037df502b907a805cd">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_l_a.html#ac7e2fde33d23e82183869d2d6e50343a">_count</a>; i++)</div>
 <div class="line"><span class="lineno">   37</span>            {</div>
-<div class="line"><span class="lineno">   38</span>                <span class="keyword">new</span> SCLAEntryNode().Initialize(<span class="keyword">this</span>, <span class="keyword">new</span> DataSource((*<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a2cb438225f7311037df502b907a805cd">Header</a>)[i], <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a0d8b98e2e1fd022d0ca11b25847d0d93">_entrySize</a>));</div>
+<div class="line"><span class="lineno">   38</span>                <span class="keyword">new</span> SCLAEntryNode().Initialize(<span class="keyword">this</span>, <span class="keyword">new</span> DataSource((*<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a2cb438225f7311037df502b907a805cd">Header</a>)[i], _entrySize));</div>
 <div class="line"><span class="lineno">   39</span>            }</div>
 <div class="line"><span class="lineno">   40</span>        }</div>
 </div><!-- fragment -->
@@ -836,8 +829,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   58</span>            {</div>
 <div class="line"><span class="lineno">   59</span>                ResourceNode r = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>[i];</div>
 <div class="line"><span class="lineno">   60</span>                *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (address + 0x10 + i * 4) = offset;</div>
-<div class="line"><span class="lineno">   61</span>                r.Rebuild(address + offset, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a0d8b98e2e1fd022d0ca11b25847d0d93">_entrySize</a>, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   62</span>                offset += <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a0d8b98e2e1fd022d0ca11b25847d0d93">_entrySize</a>;</div>
+<div class="line"><span class="lineno">   61</span>                r.Rebuild(address + offset, _entrySize, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   62</span>                offset += _entrySize;</div>
 <div class="line"><span class="lineno">   63</span>            }</div>
 <div class="line"><span class="lineno">   64</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:59</div></div>
@@ -883,29 +876,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  115</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node_html_a1c3bdd2fc978ab555fae93111fb25184"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html#a1c3bdd2fc978ab555fae93111fb25184">BrawlLib.SSBB.ResourceNodes.SCLANode.SCLANode</a></div><div class="ttdeci">SCLANode()</div><div class="ttdef"><b>Definition:</b> SCLANode.cs:12</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a0d8b98e2e1fd022d0ca11b25847d0d93" name="a0d8b98e2e1fd022d0ca11b25847d0d93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d8b98e2e1fd022d0ca11b25847d0d93">&#9670;&#160;</a></span>_entrySize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int BrawlLib.SSBB.ResourceNodes.SCLANode._entrySize = 0x54</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

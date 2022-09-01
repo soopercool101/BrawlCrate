@@ -146,8 +146,6 @@ Properties</h2></td></tr>
 <tr class="separator:af53b60cdddfa319323a8aebe7c9eb500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a226e274c05cf97e9c67428e1cff33952"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_part_lists.html">ISOPartLists</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header.html#a226e274c05cf97e9c67428e1cff33952">Partitions</a><code> [get]</code></td></tr>
 <tr class="separator:a226e274c05cf97e9c67428e1cff33952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c26128c5f356c7a6abbde591aaf6424"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header.html#a0c26128c5f356c7a6abbde591aaf6424">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a0c26128c5f356c7a6abbde591aaf6424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a59c097b4bec90ea19fa37985553caa7d" name="a59c097b4bec90ea19fa37985553caa7d"></a>
@@ -475,37 +473,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a0c26128c5f356c7a6abbde591aaf6424" name="a0c26128c5f356c7a6abbde591aaf6424"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c26128c5f356c7a6abbde591aaf6424">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.ISOPartitionHeader.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   59</span>        {</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   61</span>            {</div>
-<div class="line"><span class="lineno">   62</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   63</span>                {</div>
-<div class="line"><span class="lineno">   64</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   65</span>                }</div>
-<div class="line"><span class="lineno">   66</span>            }</div>
-<div class="line"><span class="lineno">   67</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ab5a646d7a2bcb48bd1ba78933b9674eb" name="ab5a646d7a2bcb48bd1ba78933b9674eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5a646d7a2bcb48bd1ba78933b9674eb">&#9670;&#160;</a></span>GameID</h2>
 
@@ -526,10 +493,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   40</span>        {</div>
-<div class="line"><span class="lineno">   41</span>            <span class="keyword">get</span> =&gt; *(BinTag*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header.html#a0c26128c5f356c7a6abbde591aaf6424">Address</a>;</div>
-<div class="line"><span class="lineno">   42</span>            <span class="keyword">set</span> =&gt; *(BinTag*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header.html#a0c26128c5f356c7a6abbde591aaf6424">Address</a> = value;</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keyword">get</span> =&gt; *(BinTag*) Address;</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keyword">set</span> =&gt; *(BinTag*) Address = value;</div>
 <div class="line"><span class="lineno">   43</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header_html_a0c26128c5f356c7a6abbde591aaf6424"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header.html#a0c26128c5f356c7a6abbde591aaf6424">BrawlLib.SSBB.Types.ISOPartitionHeader.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> ISO.cs:59</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -553,8 +519,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
-<div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> string((sbyte*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header.html#a0c26128c5f356c7a6abbde591aaf6424">Address</a> + 0x20);</div>
-<div class="line"><span class="lineno">   36</span>            <span class="keyword">set</span> =&gt; value.Write((sbyte*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_i_s_o_partition_header.html#a0c26128c5f356c7a6abbde591aaf6424">Address</a> + 0x20);</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> string((sbyte*) Address + 0x20);</div>
+<div class="line"><span class="lineno">   36</span>            <span class="keyword">set</span> =&gt; value.Write((sbyte*) Address + 0x20);</div>
 <div class="line"><span class="lineno">   37</span>        }</div>
 </div><!-- fragment -->
 </div>

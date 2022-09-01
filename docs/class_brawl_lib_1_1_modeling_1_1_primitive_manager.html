@@ -82,9 +82,6 @@ $(function() {
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.PrimitiveManager Class Reference</div></div>
 </div><!--header-->
@@ -273,41 +270,6 @@ Properties</h2></td></tr>
 <tr class="separator:aa9883eeb948a4bd43a3cc1c3a2e6a06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a08288724b36feedf407d8ed8536267"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1a08288724b36feedf407d8ed8536267">HasTexMtx</a><code> [get]</code></td></tr>
 <tr class="separator:a1a08288724b36feedf407d8ed8536267"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a5afdd3aaf613cc5eb23219bf9307c86d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a5afdd3aaf613cc5eb23219bf9307c86d">~PrimitiveManager</a> ()</td></tr>
-<tr class="separator:a5afdd3aaf613cc5eb23219bf9307c86d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae348e6c321b7e7fc9cc27a4dfd5a0447"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae348e6c321b7e7fc9cc27a4dfd5a0447">FindPointCount</a> (byte *pData, int stride, uint length=0)</td></tr>
-<tr class="separator:ae348e6c321b7e7fc9cc27a4dfd5a0447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcfeda520603923dadf4dc7bf3272d6c"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_group.html">PrimitiveGroup</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abcfeda520603923dadf4dc7bf3272d6c">ReadPrimitives</a> (byte *pStart, ref <a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html">ElementDescriptor</a> desc, byte **pOut, byte **pAssets, <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a>[] cache, ref int triCount, ref int lineCount, ref int pointCount, uint length=0)</td></tr>
-<tr class="separator:abcfeda520603923dadf4dc7bf3272d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6493fc3c5c9b0ab7439938074bd77ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ad6493fc3c5c9b0ab7439938074bd77ce">CreateGLPrimitives</a> (int triCount, int lineCount, int pointCount)</td></tr>
-<tr class="separator:ad6493fc3c5c9b0ab7439938074bd77ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a239eb36f926cfc0b081fea9d4382da77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a239eb36f926cfc0b081fea9d4382da77">ExtractIndices</a> (byte *pData, int stride, ref uint p3, ref uint p2, ref uint p1, uint length=0)</td></tr>
-<tr class="separator:a239eb36f926cfc0b081fea9d4382da77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bfbbd2f0b82dd6e337d30930f90bfc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1bfbbd2f0b82dd6e337d30930f90bfc1">CalcStride</a> ()</td></tr>
-<tr class="separator:a1bfbbd2f0b82dd6e337d30930f90bfc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a45e2599ae1c338571867347d7e011156"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_object.html">IObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45e2599ae1c338571867347d7e011156">_owner</a></td></tr>
-<tr class="separator:a45e2599ae1c338571867347d7e011156"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abed29b1e4e1e55de76f7c5300eb3e18e"><td class="memItemLeft" align="right" valign="top">readonly bool[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abed29b1e4e1e55de76f7c5300eb3e18e">_changed</a> = new bool[12]</td></tr>
-<tr class="separator:abed29b1e4e1e55de76f7c5300eb3e18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a995648c039a582064e7a571f2bb495eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">_rawVertices</a></td></tr>
-<tr class="separator:a995648c039a582064e7a571f2bb495eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a75ba4a397da4b688f03c0a99649c0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">_rawNormals</a></td></tr>
-<tr class="separator:a6a75ba4a397da4b688f03c0a99649c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae0d5915a2a60d51d9d5c2d8afb34f02"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>[][]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">_uvs</a> = new <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>[8][]</td></tr>
-<tr class="separator:aae0d5915a2a60d51d9d5c2d8afb34f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97c5ed2fd369e800acdf137a3f08be12"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>[][]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">_colors</a> = new <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>[2][]</td></tr>
-<tr class="separator:a97c5ed2fd369e800acdf137a3f08be12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a1e97a15a91c8a8fd45ca20fc72734b7a"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1e97a15a91c8a8fd45ca20fc72734b7a">_nodeAdj</a> = 0.01f</td></tr>
-<tr class="separator:a1e97a15a91c8a8fd45ca20fc72734b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af567fddb478c9e6d1327b751d4483eaf" name="af567fddb478c9e6d1327b751d4483eaf"></a>
@@ -383,7 +345,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  366</span>        {</div>
-<div class="line"><span class="lineno">  367</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45e2599ae1c338571867347d7e011156">_owner</a> = owner;</div>
+<div class="line"><span class="lineno">  367</span>            _owner = owner;</div>
 <div class="line"><span class="lineno">  368</span> </div>
 <div class="line"><span class="lineno">  369</span>            <span class="keywordtype">byte</span>*[] pAssetList = <span class="keyword">new</span> <span class="keywordtype">byte</span>*[12];</div>
 <div class="line"><span class="lineno">  370</span>            <span class="keywordtype">byte</span>*[] pFaceBuffers = <span class="keyword">new</span> <span class="keywordtype">byte</span>*[12];</div>
@@ -442,15 +404,15 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  423</span>            {</div>
 <div class="line"><span class="lineno">  424</span>                fixed (<span class="keywordtype">byte</span>** pAssets = pAssetList)</div>
 <div class="line"><span class="lineno">  425</span>                {</div>
-<div class="line"><span class="lineno">  426</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1432e898361786ca1c0beca0fd21715d">_primGroups</a> = <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abcfeda520603923dadf4dc7bf3272d6c">ReadPrimitives</a>(pData, ref desc, pOut, pAssets, nodes, ref triCount, ref lineCount,</div>
+<div class="line"><span class="lineno">  426</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1432e898361786ca1c0beca0fd21715d">_primGroups</a> = ReadPrimitives(pData, ref desc, pOut, pAssets, nodes, ref triCount, ref lineCount,</div>
 <div class="line"><span class="lineno">  427</span>                        ref pointCount);</div>
 <div class="line"><span class="lineno">  428</span>                }</div>
 <div class="line"><span class="lineno">  429</span>            }</div>
 <div class="line"><span class="lineno">  430</span> </div>
-<div class="line"><span class="lineno">  431</span>            <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ad6493fc3c5c9b0ab7439938074bd77ce">CreateGLPrimitives</a>(triCount, lineCount, pointCount);</div>
+<div class="line"><span class="lineno">  431</span>            CreateGLPrimitives(triCount, lineCount, pointCount);</div>
 <div class="line"><span class="lineno">  432</span> </div>
 <div class="line"><span class="lineno">  433</span>            uint p3 = 0, p2 = 0, p1 = 0;</div>
-<div class="line"><span class="lineno">  434</span>            <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a239eb36f926cfc0b081fea9d4382da77">ExtractIndices</a>(pData, desc.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#ae4ed30a6abdb3dacc8d0622ed5fe080a">Stride</a>, ref p3, ref p2, ref p1);</div>
+<div class="line"><span class="lineno">  434</span>            ExtractIndices(pData, desc.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#ae4ed30a6abdb3dacc8d0622ed5fe080a">Stride</a>, ref p3, ref p2, ref p1);</div>
 <div class="line"><span class="lineno">  435</span> </div>
 <div class="line"><span class="lineno">  436</span>            <span class="comment">//Compile merged vertex list</span></div>
 <div class="line"><span class="lineno">  437</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45bd651cd311fb660a2edf7380f6eaf5">_vertices</a> = desc.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#ae2bc7e31705f6311d55c45a570ac74d1">Finish</a>((<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>*) pAssetList[0], nodes);</div>
@@ -466,7 +428,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  447</span> </div>
 <div class="line"><span class="lineno">  448</span>            <span class="keywordflow">foreach</span> (Vertex3 v <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45bd651cd311fb660a2edf7380f6eaf5">_vertices</a>)</div>
 <div class="line"><span class="lineno">  449</span>            {</div>
-<div class="line"><span class="lineno">  450</span>                v.Parent = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45e2599ae1c338571867347d7e011156">_owner</a> as <a class="code hl_interface" href="interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_i_matrix_node_user.html">IMatrixNodeUser</a>;</div>
+<div class="line"><span class="lineno">  450</span>                v.Parent = _owner as <a class="code hl_interface" href="interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_i_matrix_node_user.html">IMatrixNodeUser</a>;</div>
 <div class="line"><span class="lineno">  451</span>            }</div>
 <div class="line"><span class="lineno">  452</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_unsafe_buffer_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html">BrawlLib.Internal.UnsafeBuffer</a></div><div class="ttdef"><b>Definition:</b> UnsafeBuffer.cs:7</div></div>
@@ -475,13 +437,9 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a0b78870947f6d738954d775bf116d7bc"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0b78870947f6d738954d775bf116d7bc">BrawlLib.Modeling.PrimitiveManager._arrayFlags</a></div><div class="ttdeci">XFArrayFlags _arrayFlags</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:105</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a1432e898361786ca1c0beca0fd21715d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1432e898361786ca1c0beca0fd21715d">BrawlLib.Modeling.PrimitiveManager._primGroups</a></div><div class="ttdeci">List&lt; PrimitiveGroup &gt; _primGroups</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:107</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a1983e4957dd62877ddd9bf3a969164a9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1983e4957dd62877ddd9bf3a969164a9">BrawlLib.Modeling.PrimitiveManager._pointCount</a></div><div class="ttdeci">int _pointCount</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:51</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a239eb36f926cfc0b081fea9d4382da77"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a239eb36f926cfc0b081fea9d4382da77">BrawlLib.Modeling.PrimitiveManager.ExtractIndices</a></div><div class="ttdeci">void ExtractIndices(byte *pData, int stride, ref uint p3, ref uint p2, ref uint p1, uint length=0)</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:648</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a2e219900d679525eca0b8d1b89ada677"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a2e219900d679525eca0b8d1b89ada677">BrawlLib.Modeling.PrimitiveManager.HasTextureMatrix</a></div><div class="ttdeci">bool[] HasTextureMatrix</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:96</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a45bd651cd311fb660a2edf7380f6eaf5"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45bd651cd311fb660a2edf7380f6eaf5">BrawlLib.Modeling.PrimitiveManager._vertices</a></div><div class="ttdeci">List&lt; Vertex3 &gt; _vertices</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:48</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a45e2599ae1c338571867347d7e011156"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45e2599ae1c338571867347d7e011156">BrawlLib.Modeling.PrimitiveManager._owner</a></div><div class="ttdeci">readonly IObject _owner</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:46</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a588b721dae5ea59f33c020d2e726344e"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a588b721dae5ea59f33c020d2e726344e">BrawlLib.Modeling.PrimitiveManager._faceCount</a></div><div class="ttdeci">int _faceCount</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:51</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_abcfeda520603923dadf4dc7bf3272d6c"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abcfeda520603923dadf4dc7bf3272d6c">BrawlLib.Modeling.PrimitiveManager.ReadPrimitives</a></div><div class="ttdeci">List&lt; PrimitiveGroup &gt; ReadPrimitives(byte *pStart, ref ElementDescriptor desc, byte **pOut, byte **pAssets, IMatrixNode[] cache, ref int triCount, ref int lineCount, ref int pointCount, uint length=0)</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:526</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_ad6493fc3c5c9b0ab7439938074bd77ce"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ad6493fc3c5c9b0ab7439938074bd77ce">BrawlLib.Modeling.PrimitiveManager.CreateGLPrimitives</a></div><div class="ttdeci">void CreateGLPrimitives(int triCount, int lineCount, int pointCount)</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:641</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_adc5baac49f70097c68279716f51155b7"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">BrawlLib.Modeling.PrimitiveManager._faceData</a></div><div class="ttdeci">UnsafeBuffer[] _faceData</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:59</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_asset_storage_html_aa4bce05cd810e89dfffaaf4105973398"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_asset_storage.html#aa4bce05cd810e89dfffaaf4105973398">BrawlLib.Wii.Models.AssetStorage.Assets</a></div><div class="ttdeci">UnsafeBuffer[][] Assets</div><div class="ttdef"><b>Definition:</b> AssetStorage.cs:9</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html">BrawlLib.Wii.Models.ElementDescriptor</a></div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:274</div></div>
@@ -501,35 +459,6 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_object_html_a82ec02c7cabe96133c8d864dad641feb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_object.html#a82ec02c7cabe96133c8d864dad641feb">BrawlLib.SSBB.Types.MDL0Object._numFaces</a></div><div class="ttdeci">bint _numFaces</div><div class="ttdef"><b>Definition:</b> MDL0.cs:1888</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_object_html_abbfbd3888f9053a27b59e5171dd3a2c6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_object.html#abbfbd3888f9053a27b59e5171dd3a2c6">BrawlLib.SSBB.Types.MDL0Object.PrimitiveData</a></div><div class="ttdeci">VoidPtr PrimitiveData</div><div class="ttdef"><b>Definition:</b> MDL0.cs:1937</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_graphics_1_1_x_f_array_flags_html_a59671e4c12ed7e5538f53e7dbad549f6"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_x_f_array_flags.html#a59671e4c12ed7e5538f53e7dbad549f6">BrawlLib.Wii.Graphics.XFArrayFlags.GetHasTexMatrix</a></div><div class="ttdeci">bool GetHasTexMatrix(int index)</div><div class="ttdef"><b>Definition:</b> XF.cs:387</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a5afdd3aaf613cc5eb23219bf9307c86d" name="a5afdd3aaf613cc5eb23219bf9307c86d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5afdd3aaf613cc5eb23219bf9307c86d">&#9670;&#160;</a></span>~PrimitiveManager()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BrawlLib.Modeling.PrimitiveManager.~PrimitiveManager </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  455</span>        {</div>
-<div class="line"><span class="lineno">  456</span>            <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f21193f293e961f8e72c4f7fb30ffd2">Dispose</a>();</div>
-<div class="line"><span class="lineno">  457</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a0f21193f293e961f8e72c4f7fb30ffd2"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f21193f293e961f8e72c4f7fb30ffd2">BrawlLib.Modeling.PrimitiveManager.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:459</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -652,57 +581,6 @@ Static Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a1bfbbd2f0b82dd6e337d30930f90bfc1" name="a1bfbbd2f0b82dd6e337d30930f90bfc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bfbbd2f0b82dd6e337d30930f90bfc1">&#9670;&#160;</a></span>CalcStride()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.PrimitiveManager.CalcStride </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1764</span>        {</div>
-<div class="line"><span class="lineno"> 1765</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0699df70167c93e5c44c04d139ce4163">_renderStride</a> = 0;</div>
-<div class="line"><span class="lineno"> 1766</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 2; i++)</div>
-<div class="line"><span class="lineno"> 1767</span>            {</div>
-<div class="line"><span class="lineno"> 1768</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[i] != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno"> 1769</span>                {</div>
-<div class="line"><span class="lineno"> 1770</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0699df70167c93e5c44c04d139ce4163">_renderStride</a> += 12;</div>
-<div class="line"><span class="lineno"> 1771</span>                }</div>
-<div class="line"><span class="lineno"> 1772</span>            }</div>
-<div class="line"><span class="lineno"> 1773</span> </div>
-<div class="line"><span class="lineno"> 1774</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 2; i &lt; 4; i++)</div>
-<div class="line"><span class="lineno"> 1775</span>            {</div>
-<div class="line"><span class="lineno"> 1776</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[i] != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno"> 1777</span>                {</div>
-<div class="line"><span class="lineno"> 1778</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0699df70167c93e5c44c04d139ce4163">_renderStride</a> += 4;</div>
-<div class="line"><span class="lineno"> 1779</span>                }</div>
-<div class="line"><span class="lineno"> 1780</span>            }</div>
-<div class="line"><span class="lineno"> 1781</span> </div>
-<div class="line"><span class="lineno"> 1782</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 4; i &lt; 12; i++)</div>
-<div class="line"><span class="lineno"> 1783</span>            {</div>
-<div class="line"><span class="lineno"> 1784</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[i] != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno"> 1785</span>                {</div>
-<div class="line"><span class="lineno"> 1786</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0699df70167c93e5c44c04d139ce4163">_renderStride</a> += 8;</div>
-<div class="line"><span class="lineno"> 1787</span>                }</div>
-<div class="line"><span class="lineno"> 1788</span>            }</div>
-<div class="line"><span class="lineno"> 1789</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ae2078a7bcd519c43b4cdf7041d697391" name="ae2078a7bcd519c43b4cdf7041d697391"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2078a7bcd519c43b4cdf7041d697391">&#9670;&#160;</a></span>ColorsChanged()</h2>
 
@@ -822,56 +700,6 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac3b33c6e8495209753fbc3774709172a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">BrawlLib.SSBB.ResourceNodes.ResourceNode.AddChild</a></div><div class="ttdeci">virtual void AddChild(ResourceNode child)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:759</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_models_html_a0a6bfaac1bc782504be7d79af8fa6d0b"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_models.html#a0a6bfaac1bc782504be7d79af8fa6d0b">BrawlLib.Wii.Models.MDLResourceType</a></div><div class="ttdeci">MDLResourceType</div><div class="ttdef"><b>Definition:</b> ModelLinker.cs:15</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">BrawlLib.Imaging.RGBAPixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:327</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad6493fc3c5c9b0ab7439938074bd77ce" name="ad6493fc3c5c9b0ab7439938074bd77ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6493fc3c5c9b0ab7439938074bd77ce">&#9670;&#160;</a></span>CreateGLPrimitives()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.PrimitiveManager.CreateGLPrimitives </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>triCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>lineCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pointCount</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  642</span>        {</div>
-<div class="line"><span class="lineno">  643</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f53e1dae3a1b78cb475bd3decff0096">_triangles</a> = triCount &gt; 0 ? <span class="keyword">new</span> GLPrimitive(triCount, BeginMode.Triangles) : null;</div>
-<div class="line"><span class="lineno">  644</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae3caae433e85120ace0fb13876cf8c3e">_lines</a> = lineCount &gt; 0 ? <span class="keyword">new</span> GLPrimitive(lineCount, BeginMode.Lines) : null;</div>
-<div class="line"><span class="lineno">  645</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a34fafb9c92a20c3a37faef2006bc475d">_points</a> = pointCount &gt; 0 ? <span class="keyword">new</span> GLPrimitive(pointCount, BeginMode.Points) : null;</div>
-<div class="line"><span class="lineno">  646</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a0f53e1dae3a1b78cb475bd3decff0096"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f53e1dae3a1b78cb475bd3decff0096">BrawlLib.Modeling.PrimitiveManager._triangles</a></div><div class="ttdeci">GLPrimitive _triangles</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a34fafb9c92a20c3a37faef2006bc475d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a34fafb9c92a20c3a37faef2006bc475d">BrawlLib.Modeling.PrimitiveManager._points</a></div><div class="ttdeci">GLPrimitive _points</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_ae3caae433e85120ace0fb13876cf8c3e"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae3caae433e85120ace0fb13876cf8c3e">BrawlLib.Modeling.PrimitiveManager._lines</a></div><div class="ttdeci">GLPrimitive _lines</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -998,266 +826,6 @@ Static Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a239eb36f926cfc0b081fea9d4382da77" name="a239eb36f926cfc0b081fea9d4382da77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a239eb36f926cfc0b081fea9d4382da77">&#9670;&#160;</a></span>ExtractIndices()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.PrimitiveManager.ExtractIndices </td>
-          <td>(</td>
-          <td class="paramtype">byte *&#160;</td>
-          <td class="paramname"><em>pData</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>stride</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref uint&#160;</td>
-          <td class="paramname"><em>p3</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref uint&#160;</td>
-          <td class="paramname"><em>p2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref uint&#160;</td>
-          <td class="paramname"><em>p1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>length</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  649</span>        {</div>
-<div class="line"><span class="lineno">  650</span>            uint[] p1arr = <span class="keyword">null</span>, p2arr = <span class="keyword">null</span>, p3arr = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  651</span>            ushort count;</div>
-<div class="line"><span class="lineno">  652</span>            uint index = 0, temp;</div>
-<div class="line"><span class="lineno">  653</span> </div>
-<div class="line"><span class="lineno">  654</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a34fafb9c92a20c3a37faef2006bc475d">_points</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  655</span>            {</div>
-<div class="line"><span class="lineno">  656</span>                p1arr = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a34fafb9c92a20c3a37faef2006bc475d">_points</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_g_l_primitive.html#ae3eef145e324bfd1950cfe1943010513">_indices</a>;</div>
-<div class="line"><span class="lineno">  657</span>            }</div>
-<div class="line"><span class="lineno">  658</span> </div>
-<div class="line"><span class="lineno">  659</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae3caae433e85120ace0fb13876cf8c3e">_lines</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  660</span>            {</div>
-<div class="line"><span class="lineno">  661</span>                p2arr = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae3caae433e85120ace0fb13876cf8c3e">_lines</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_g_l_primitive.html#ae3eef145e324bfd1950cfe1943010513">_indices</a>;</div>
-<div class="line"><span class="lineno">  662</span>            }</div>
-<div class="line"><span class="lineno">  663</span> </div>
-<div class="line"><span class="lineno">  664</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f53e1dae3a1b78cb475bd3decff0096">_triangles</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  665</span>            {</div>
-<div class="line"><span class="lineno">  666</span>                p3arr = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f53e1dae3a1b78cb475bd3decff0096">_triangles</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_g_l_primitive.html#ae3eef145e324bfd1950cfe1943010513">_indices</a>;</div>
-<div class="line"><span class="lineno">  667</span>            }</div>
-<div class="line"><span class="lineno">  668</span> </div>
-<div class="line"><span class="lineno">  669</span>            <span class="keywordtype">byte</span>* pEnd = pData + length;</div>
-<div class="line"><span class="lineno">  670</span> </div>
-<div class="line"><span class="lineno">  671</span>            <span class="comment">//Extract indices in reverse order, this way we get CCW winding.</span></div>
-<div class="line"><span class="lineno">  672</span>            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><span class="lineno">  673</span>            {</div>
-<div class="line"><span class="lineno">  674</span>                <span class="keywordflow">switch</span> ((<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>) (*pData++))</div>
-<div class="line"><span class="lineno">  675</span>                {</div>
-<div class="line"><span class="lineno">  676</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexA:</div>
-<div class="line"><span class="lineno">  677</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexB:</div>
-<div class="line"><span class="lineno">  678</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexC:</div>
-<div class="line"><span class="lineno">  679</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexD:</div>
-<div class="line"><span class="lineno">  680</span>                        pData += 4; <span class="comment">//Skip</span></div>
-<div class="line"><span class="lineno">  681</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  682</span> </div>
-<div class="line"><span class="lineno">  683</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawQuads:</div>
-<div class="line"><span class="lineno">  684</span>                        count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  685</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i += 4)</div>
-<div class="line"><span class="lineno">  686</span>                        {</div>
-<div class="line"><span class="lineno">  687</span>                            p3arr[p3++] = index;</div>
-<div class="line"><span class="lineno">  688</span>                            p3arr[p3++] = index + 2;</div>
-<div class="line"><span class="lineno">  689</span>                            p3arr[p3++] = index + 1;</div>
-<div class="line"><span class="lineno">  690</span>                            p3arr[p3++] = index;</div>
-<div class="line"><span class="lineno">  691</span>                            p3arr[p3++] = index + 3;</div>
-<div class="line"><span class="lineno">  692</span>                            p3arr[p3++] = index + 2;</div>
-<div class="line"><span class="lineno">  693</span>                            index += 4;</div>
-<div class="line"><span class="lineno">  694</span>                        }</div>
-<div class="line"><span class="lineno">  695</span> </div>
-<div class="line"><span class="lineno">  696</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  697</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangles:</div>
-<div class="line"><span class="lineno">  698</span>                        count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  699</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i += 3)</div>
-<div class="line"><span class="lineno">  700</span>                        {</div>
-<div class="line"><span class="lineno">  701</span>                            p3arr[p3++] = index + 2;</div>
-<div class="line"><span class="lineno">  702</span>                            p3arr[p3++] = index + 1;</div>
-<div class="line"><span class="lineno">  703</span>                            p3arr[p3++] = index;</div>
-<div class="line"><span class="lineno">  704</span>                            index += 3;</div>
-<div class="line"><span class="lineno">  705</span>                        }</div>
-<div class="line"><span class="lineno">  706</span> </div>
-<div class="line"><span class="lineno">  707</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  708</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangleFan:</div>
-<div class="line"><span class="lineno">  709</span>                        count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  710</span>                        temp = index++;</div>
-<div class="line"><span class="lineno">  711</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 2; i &lt; count; i++)</div>
-<div class="line"><span class="lineno">  712</span>                        {</div>
-<div class="line"><span class="lineno">  713</span>                            p3arr[p3++] = temp;</div>
-<div class="line"><span class="lineno">  714</span>                            p3arr[p3++] = index + 1;</div>
-<div class="line"><span class="lineno">  715</span>                            p3arr[p3++] = index++;</div>
-<div class="line"><span class="lineno">  716</span>                        }</div>
-<div class="line"><span class="lineno">  717</span> </div>
-<div class="line"><span class="lineno">  718</span>                        index++;</div>
-<div class="line"><span class="lineno">  719</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  720</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangleStrip:</div>
-<div class="line"><span class="lineno">  721</span>                        count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  722</span>                        index += 2;</div>
-<div class="line"><span class="lineno">  723</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 2; i &lt; count; i++)</div>
-<div class="line"><span class="lineno">  724</span>                        {</div>
-<div class="line"><span class="lineno">  725</span>                            p3arr[p3++] = index;</div>
-<div class="line"><span class="lineno">  726</span>                            p3arr[p3++] = (uint) (index - 1 - (i &amp; 1));</div>
-<div class="line"><span class="lineno">  727</span>                            p3arr[p3++] = (uint) (index++ - 2 + (i &amp; 1));</div>
-<div class="line"><span class="lineno">  728</span>                        }</div>
-<div class="line"><span class="lineno">  729</span> </div>
-<div class="line"><span class="lineno">  730</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  731</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawLines:</div>
-<div class="line"><span class="lineno">  732</span>                        count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  733</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
-<div class="line"><span class="lineno">  734</span>                        {</div>
-<div class="line"><span class="lineno">  735</span>                            p2arr[p2++] = index++;</div>
-<div class="line"><span class="lineno">  736</span>                        }</div>
-<div class="line"><span class="lineno">  737</span> </div>
-<div class="line"><span class="lineno">  738</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  739</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawLineStrip:</div>
-<div class="line"><span class="lineno">  740</span>                        count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  741</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; count; i++)</div>
-<div class="line"><span class="lineno">  742</span>                        {</div>
-<div class="line"><span class="lineno">  743</span>                            p2arr[p2++] = index++;</div>
-<div class="line"><span class="lineno">  744</span>                            p2arr[p2++] = index;</div>
-<div class="line"><span class="lineno">  745</span>                        }</div>
-<div class="line"><span class="lineno">  746</span> </div>
-<div class="line"><span class="lineno">  747</span>                        index++;</div>
-<div class="line"><span class="lineno">  748</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  749</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawPoints:</div>
-<div class="line"><span class="lineno">  750</span>                        count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  751</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
-<div class="line"><span class="lineno">  752</span>                        {</div>
-<div class="line"><span class="lineno">  753</span>                            p1arr[p1++] = index++;</div>
-<div class="line"><span class="lineno">  754</span>                        }</div>
-<div class="line"><span class="lineno">  755</span> </div>
-<div class="line"><span class="lineno">  756</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  757</span>                    <span class="keywordflow">default</span>: <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  758</span>                }</div>
-<div class="line"><span class="lineno">  759</span> </div>
-<div class="line"><span class="lineno">  760</span>                pData += 2 + count * stride;</div>
-<div class="line"><span class="lineno">  761</span> </div>
-<div class="line"><span class="lineno">  762</span>                <span class="keywordflow">if</span> (length &gt; 0 &amp;&amp; pData &gt;= pEnd)</div>
-<div class="line"><span class="lineno">  763</span>                {</div>
-<div class="line"><span class="lineno">  764</span>                    <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  765</span>                }</div>
-<div class="line"><span class="lineno">  766</span>            }</div>
-<div class="line"><span class="lineno">  767</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_g_l_primitive_html_ae3eef145e324bfd1950cfe1943010513"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_g_l_primitive.html#ae3eef145e324bfd1950cfe1943010513">BrawlLib.Modeling.GLPrimitive._indices</a></div><div class="ttdeci">uint[] _indices</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:2558</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_graphics_html_afda46c1fd4a6aa155ca3e1f5bfc4f8fc"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">BrawlLib.Wii.Graphics.GXListCommand</a></div><div class="ttdeci">GXListCommand</div><div class="ttdef"><b>Definition:</b> Enum.cs:4</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bushort_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bushort.html">BrawlLib.Internal.bushort</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:192</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ae348e6c321b7e7fc9cc27a4dfd5a0447" name="ae348e6c321b7e7fc9cc27a4dfd5a0447"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae348e6c321b7e7fc9cc27a4dfd5a0447">&#9670;&#160;</a></span>FindPointCount()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.Modeling.PrimitiveManager.FindPointCount </td>
-          <td>(</td>
-          <td class="paramtype">byte *&#160;</td>
-          <td class="paramname"><em>pData</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>stride</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>length</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  489</span>        {</div>
-<div class="line"><span class="lineno">  490</span>            <span class="keywordtype">int</span> count, pointCount = 0;</div>
-<div class="line"><span class="lineno">  491</span>            <span class="keywordtype">byte</span>* pEnd = pData + length;</div>
-<div class="line"><span class="lineno">  492</span>            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><span class="lineno">  493</span>            {</div>
-<div class="line"><span class="lineno">  494</span>                <span class="keywordflow">switch</span> ((<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>) (*pData++))</div>
-<div class="line"><span class="lineno">  495</span>                {</div>
-<div class="line"><span class="lineno">  496</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexA:</div>
-<div class="line"><span class="lineno">  497</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexB:</div>
-<div class="line"><span class="lineno">  498</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexC:</div>
-<div class="line"><span class="lineno">  499</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexD:</div>
-<div class="line"><span class="lineno">  500</span>                        pData += 4;</div>
-<div class="line"><span class="lineno">  501</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  502</span> </div>
-<div class="line"><span class="lineno">  503</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawQuads:</div>
-<div class="line"><span class="lineno">  504</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangles:</div>
-<div class="line"><span class="lineno">  505</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangleFan:</div>
-<div class="line"><span class="lineno">  506</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangleStrip:</div>
-<div class="line"><span class="lineno">  507</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawLines:</div>
-<div class="line"><span class="lineno">  508</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawLineStrip:</div>
-<div class="line"><span class="lineno">  509</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawPoints:</div>
-<div class="line"><span class="lineno">  510</span>                        pointCount += count = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  511</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  512</span> </div>
-<div class="line"><span class="lineno">  513</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  514</span>                        <span class="keywordflow">return</span> pointCount;</div>
-<div class="line"><span class="lineno">  515</span>                }</div>
-<div class="line"><span class="lineno">  516</span> </div>
-<div class="line"><span class="lineno">  517</span>                pData += 2 + count * stride;</div>
-<div class="line"><span class="lineno">  518</span> </div>
-<div class="line"><span class="lineno">  519</span>                <span class="keywordflow">if</span> (length &gt; 0 &amp;&amp; pData &gt; pEnd)</div>
-<div class="line"><span class="lineno">  520</span>                {</div>
-<div class="line"><span class="lineno">  521</span>                    <span class="keywordflow">return</span> pointCount;</div>
-<div class="line"><span class="lineno">  522</span>                }</div>
-<div class="line"><span class="lineno">  523</span>            }</div>
-<div class="line"><span class="lineno">  524</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ab15ac723e6c9bf8f4ec4ad2143e08ad6" name="ab15ac723e6c9bf8f4ec4ad2143e08ad6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab15ac723e6c9bf8f4ec4ad2143e08ad6">&#9670;&#160;</a></span>GetColors()</h2>
 
@@ -1304,9 +872,9 @@ Static Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  267</span>        {</div>
 <div class="line"><span class="lineno">  268</span>            index = index.Clamp(0, 1);</div>
 <div class="line"><span class="lineno">  269</span> </div>
-<div class="line"><span class="lineno">  270</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">_colors</a>[index] != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">_colors</a>[index].Length != 0 &amp;&amp; !force)</div>
+<div class="line"><span class="lineno">  270</span>            <span class="keywordflow">if</span> (_colors[index] != <span class="keyword">null</span> &amp;&amp; _colors[index].Length != 0 &amp;&amp; !force)</div>
 <div class="line"><span class="lineno">  271</span>            {</div>
-<div class="line"><span class="lineno">  272</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">_colors</a>[index];</div>
+<div class="line"><span class="lineno">  272</span>                <span class="keywordflow">return</span> _colors[index];</div>
 <div class="line"><span class="lineno">  273</span>            }</div>
 <div class="line"><span class="lineno">  274</span> </div>
 <div class="line"><span class="lineno">  275</span>            HashSet&lt;RGBAPixel&gt; list = <span class="keyword">new</span> HashSet&lt;RGBAPixel&gt;();</div>
@@ -1319,12 +887,11 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  282</span>                }</div>
 <div class="line"><span class="lineno">  283</span>            }</div>
 <div class="line"><span class="lineno">  284</span> </div>
-<div class="line"><span class="lineno">  285</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">_colors</a>[index] = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>[list.Count];</div>
-<div class="line"><span class="lineno">  286</span>            list.CopyTo(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">_colors</a>[index]);</div>
+<div class="line"><span class="lineno">  285</span>            _colors[index] = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>[list.Count];</div>
+<div class="line"><span class="lineno">  286</span>            list.CopyTo(_colors[index]);</div>
 <div class="line"><span class="lineno">  287</span> </div>
-<div class="line"><span class="lineno">  288</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">_colors</a>[index];</div>
+<div class="line"><span class="lineno">  288</span>            <span class="keywordflow">return</span> _colors[index];</div>
 <div class="line"><span class="lineno">  289</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a97c5ed2fd369e800acdf137a3f08be12"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a97c5ed2fd369e800acdf137a3f08be12">BrawlLib.Modeling.PrimitiveManager._colors</a></div><div class="ttdeci">readonly RGBAPixel[][] _colors</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:291</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1446,9 +1013,9 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 <div class="fragment"><div class="line"><span class="lineno">  203</span>        {</div>
-<div class="line"><span class="lineno">  204</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">_rawNormals</a> != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">_rawNormals</a>.Length != 0 &amp;&amp; !force)</div>
+<div class="line"><span class="lineno">  204</span>            <span class="keywordflow">if</span> (_rawNormals != <span class="keyword">null</span> &amp;&amp; _rawNormals.Length != 0 &amp;&amp; !force)</div>
 <div class="line"><span class="lineno">  205</span>            {</div>
-<div class="line"><span class="lineno">  206</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">_rawNormals</a>;</div>
+<div class="line"><span class="lineno">  206</span>                <span class="keywordflow">return</span> _rawNormals;</div>
 <div class="line"><span class="lineno">  207</span>            }</div>
 <div class="line"><span class="lineno">  208</span> </div>
 <div class="line"><span class="lineno">  209</span>            HashSet&lt;Vector3&gt; list = <span class="keyword">new</span> HashSet&lt;Vector3&gt;();</div>
@@ -1461,12 +1028,11 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  216</span>                }</div>
 <div class="line"><span class="lineno">  217</span>            }</div>
 <div class="line"><span class="lineno">  218</span> </div>
-<div class="line"><span class="lineno">  219</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">_rawNormals</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>[list.Count];</div>
-<div class="line"><span class="lineno">  220</span>            list.CopyTo(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">_rawNormals</a>);</div>
+<div class="line"><span class="lineno">  219</span>            _rawNormals = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>[list.Count];</div>
+<div class="line"><span class="lineno">  220</span>            list.CopyTo(_rawNormals);</div>
 <div class="line"><span class="lineno">  221</span> </div>
-<div class="line"><span class="lineno">  222</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">_rawNormals</a>;</div>
+<div class="line"><span class="lineno">  222</span>            <span class="keywordflow">return</span> _rawNormals;</div>
 <div class="line"><span class="lineno">  223</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a6a75ba4a397da4b688f03c0a99649c0b"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a6a75ba4a397da4b688f03c0a99649c0b">BrawlLib.Modeling.PrimitiveManager._rawNormals</a></div><div class="ttdeci">Vector3[] _rawNormals</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:225</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1516,9 +1082,9 @@ Static Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  234</span>        {</div>
 <div class="line"><span class="lineno">  235</span>            index = index.Clamp(0, 7);</div>
 <div class="line"><span class="lineno">  236</span> </div>
-<div class="line"><span class="lineno">  237</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">_uvs</a>[index] != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">_uvs</a>[index].Length != 0 &amp;&amp; !force)</div>
+<div class="line"><span class="lineno">  237</span>            <span class="keywordflow">if</span> (_uvs[index] != <span class="keyword">null</span> &amp;&amp; _uvs[index].Length != 0 &amp;&amp; !force)</div>
 <div class="line"><span class="lineno">  238</span>            {</div>
-<div class="line"><span class="lineno">  239</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">_uvs</a>[index];</div>
+<div class="line"><span class="lineno">  239</span>                <span class="keywordflow">return</span> _uvs[index];</div>
 <div class="line"><span class="lineno">  240</span>            }</div>
 <div class="line"><span class="lineno">  241</span> </div>
 <div class="line"><span class="lineno">  242</span>            HashSet&lt;Vector2&gt; list = <span class="keyword">new</span> HashSet&lt;Vector2&gt;();</div>
@@ -1531,12 +1097,11 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  249</span>                }</div>
 <div class="line"><span class="lineno">  250</span>            }</div>
 <div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">_uvs</a>[index] = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>[list.Count];</div>
-<div class="line"><span class="lineno">  253</span>            list.CopyTo(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">_uvs</a>[index]);</div>
+<div class="line"><span class="lineno">  252</span>            _uvs[index] = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>[list.Count];</div>
+<div class="line"><span class="lineno">  253</span>            list.CopyTo(_uvs[index]);</div>
 <div class="line"><span class="lineno">  254</span> </div>
-<div class="line"><span class="lineno">  255</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">_uvs</a>[index];</div>
+<div class="line"><span class="lineno">  255</span>            <span class="keywordflow">return</span> _uvs[index];</div>
 <div class="line"><span class="lineno">  256</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_aae0d5915a2a60d51d9d5c2d8afb34f02"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#aae0d5915a2a60d51d9d5c2d8afb34f02">BrawlLib.Modeling.PrimitiveManager._uvs</a></div><div class="ttdeci">readonly Vector2[][] _uvs</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:258</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html">BrawlLib.Internal.Vector2</a></div><div class="ttdef"><b>Definition:</b> Vector2.cs:10</div></div>
 </div><!-- fragment -->
 </div>
@@ -1574,21 +1139,20 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 <div class="fragment"><div class="line"><span class="lineno">  179</span>        {</div>
-<div class="line"><span class="lineno">  180</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">_rawVertices</a> != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">_rawVertices</a>.Length != 0 &amp;&amp; !force)</div>
+<div class="line"><span class="lineno">  180</span>            <span class="keywordflow">if</span> (_rawVertices != <span class="keyword">null</span> &amp;&amp; _rawVertices.Length != 0 &amp;&amp; !force)</div>
 <div class="line"><span class="lineno">  181</span>            {</div>
-<div class="line"><span class="lineno">  182</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">_rawVertices</a>;</div>
+<div class="line"><span class="lineno">  182</span>                <span class="keywordflow">return</span> _rawVertices;</div>
 <div class="line"><span class="lineno">  183</span>            }</div>
 <div class="line"><span class="lineno">  184</span> </div>
 <div class="line"><span class="lineno">  185</span>            <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><span class="lineno">  186</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">_rawVertices</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>[<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45bd651cd311fb660a2edf7380f6eaf5">_vertices</a>.Count];</div>
+<div class="line"><span class="lineno">  186</span>            _rawVertices = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>[<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45bd651cd311fb660a2edf7380f6eaf5">_vertices</a>.Count];</div>
 <div class="line"><span class="lineno">  187</span>            <span class="keywordflow">foreach</span> (Vertex3 v <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a45bd651cd311fb660a2edf7380f6eaf5">_vertices</a>)</div>
 <div class="line"><span class="lineno">  188</span>            {</div>
-<div class="line"><span class="lineno">  189</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">_rawVertices</a>[i++] = v.Position;</div>
+<div class="line"><span class="lineno">  189</span>                _rawVertices[i++] = v.Position;</div>
 <div class="line"><span class="lineno">  190</span>            }</div>
 <div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">_rawVertices</a>;</div>
+<div class="line"><span class="lineno">  192</span>            <span class="keywordflow">return</span> _rawVertices;</div>
 <div class="line"><span class="lineno">  193</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a995648c039a582064e7a571f2bb495eb"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a995648c039a582064e7a571f2bb495eb">BrawlLib.Modeling.PrimitiveManager._rawVertices</a></div><div class="ttdeci">Vector3[] _rawVertices</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:195</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1765,7 +1329,11 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  947</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1432e898361786ca1c0beca0fd21715d">_primGroups</a>.AddRange(groups);</div>
 <div class="line"><span class="lineno">  948</span>            }</div>
 <div class="line"><span class="lineno">  949</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_g_l_primitive_html_ae3eef145e324bfd1950cfe1943010513"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_g_l_primitive.html#ae3eef145e324bfd1950cfe1943010513">BrawlLib.Modeling.GLPrimitive._indices</a></div><div class="ttdeci">uint[] _indices</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:2558</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a0f53e1dae3a1b78cb475bd3decff0096"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0f53e1dae3a1b78cb475bd3decff0096">BrawlLib.Modeling.PrimitiveManager._triangles</a></div><div class="ttdeci">GLPrimitive _triangles</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a34fafb9c92a20c3a37faef2006bc475d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a34fafb9c92a20c3a37faef2006bc475d">BrawlLib.Modeling.PrimitiveManager._points</a></div><div class="ttdeci">GLPrimitive _points</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_acab0c68370d20e1a59d02665b39033fe"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#acab0c68370d20e1a59d02665b39033fe">BrawlLib.Modeling.PrimitiveManager.MergeInternalFaceData</a></div><div class="ttdeci">Facepoint[] MergeInternalFaceData()</div><div class="ttdoc">Merges vertex data into facepoint indices using internal buffers.</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:1860</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_ae3caae433e85120ace0fb13876cf8c3e"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ae3caae433e85120ace0fb13876cf8c3e">BrawlLib.Modeling.PrimitiveManager._lines</a></div><div class="ttdeci">GLPrimitive _lines</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:78</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_triangle_converter_html"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_triangle_converter.html">BrawlLib.Modeling.Triangle_Converter.TriangleConverter</a></div><div class="ttdef"><b>Definition:</b> TriangleConverter.cs:8</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_triangle_converter_html_a55e185edccff4ce497ab4d87dbc5965a"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_triangle_converter.html#a55e185edccff4ce497ab4d87dbc5965a">BrawlLib.Modeling.Triangle_Converter.TriangleConverter.GroupPrimitives</a></div><div class="ttdeci">List&lt; PrimitiveGroup &gt; GroupPrimitives(Facepoint[] points, out int pointCount, out int faceCount)</div><div class="ttdef"><b>Definition:</b> TriangleConverter.cs:24</div></div>
 </div><!-- fragment -->
@@ -1997,7 +1565,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1888</span> </div>
 <div class="line"><span class="lineno"> 1889</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 1; x &lt; 12; x++)</div>
 <div class="line"><span class="lineno"> 1890</span>            {</div>
-<div class="line"><span class="lineno"> 1891</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[x] == <span class="keyword">null</span> || !isModelImport &amp;&amp; !<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abed29b1e4e1e55de76f7c5300eb3e18e">_changed</a>[x])</div>
+<div class="line"><span class="lineno"> 1891</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#adc5baac49f70097c68279716f51155b7">_faceData</a>[x] == <span class="keyword">null</span> || !isModelImport &amp;&amp; !_changed[x])</div>
 <div class="line"><span class="lineno"> 1892</span>                {</div>
 <div class="line"><span class="lineno"> 1893</span>                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno"> 1894</span>                }</div>
@@ -2064,7 +1632,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1955</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a23443a9c9fff56096d4f01056925b1e0"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a23443a9c9fff56096d4f01056925b1e0">BrawlLib.Modeling.PrimitiveManager.GetNormals</a></div><div class="ttdeci">Vector3[] GetNormals(bool force)</div><div class="ttdoc">Retrieves normals from raw facedata in a remapped array.</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:202</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a9d4b8c98d776ff46972d77eb41aab944"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a9d4b8c98d776ff46972d77eb41aab944">BrawlLib.Modeling.PrimitiveManager.GetUVs</a></div><div class="ttdeci">Vector2[] GetUVs(int index, bool force)</div><div class="ttdoc">Retrieves texture coordinates from raw facedata in a remapped array.</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:233</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_abed29b1e4e1e55de76f7c5300eb3e18e"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abed29b1e4e1e55de76f7c5300eb3e18e">BrawlLib.Modeling.PrimitiveManager._changed</a></div><div class="ttdeci">readonly bool[] _changed</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:61</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_ace84361a2cf39832230febdd73c57c7d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#ace84361a2cf39832230febdd73c57c7d">BrawlLib.Modeling.PrimitiveManager._newClrObj</a></div><div class="ttdeci">int[] _newClrObj</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:109</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_object_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_object_node.html">BrawlLib.SSBB.ResourceNodes.MDL0ObjectNode</a></div><div class="ttdef"><b>Definition:</b> MDL0ObjectNode.cs:21</div></div>
 </div><!-- fragment -->
@@ -2313,7 +1880,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 2061</span>        {</div>
-<div class="line"><span class="lineno"> 2062</span>            <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1bfbbd2f0b82dd6e337d30930f90bfc1">CalcStride</a>();</div>
+<div class="line"><span class="lineno"> 2062</span>            CalcStride();</div>
 <div class="line"><span class="lineno"> 2063</span>            <span class="keywordtype">int</span> bufferSize = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0699df70167c93e5c44c04d139ce4163">_renderStride</a> * <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1983e4957dd62877ddd9bf3a969164a9">_pointCount</a>;</div>
 <div class="line"><span class="lineno"> 2064</span> </div>
 <div class="line"><span class="lineno"> 2065</span>            <span class="comment">//Dispose of buffer if size doesn&#39;t match</span></div>
@@ -2343,191 +1910,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 2089</span>            }</div>
 <div class="line"><span class="lineno"> 2090</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a0d303040ef4eae7563a8ddc7af61956e"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0d303040ef4eae7563a8ddc7af61956e">BrawlLib.Modeling.PrimitiveManager.UpdateStream</a></div><div class="ttdeci">void UpdateStream(int index)</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:1984</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_a1bfbbd2f0b82dd6e337d30930f90bfc1"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a1bfbbd2f0b82dd6e337d30930f90bfc1">BrawlLib.Modeling.PrimitiveManager.CalcStride</a></div><div class="ttdeci">void CalcStride()</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:1763</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="abcfeda520603923dadf4dc7bf3272d6c" name="abcfeda520603923dadf4dc7bf3272d6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcfeda520603923dadf4dc7bf3272d6c">&#9670;&#160;</a></span>ReadPrimitives()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt; <a class="el" href="class_brawl_lib_1_1_modeling_1_1_primitive_group.html">PrimitiveGroup</a> &gt; BrawlLib.Modeling.PrimitiveManager.ReadPrimitives </td>
-          <td>(</td>
-          <td class="paramtype">byte *&#160;</td>
-          <td class="paramname"><em>pStart</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref <a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html">ElementDescriptor</a>&#160;</td>
-          <td class="paramname"><em>desc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte **&#160;</td>
-          <td class="paramname"><em>pOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte **&#160;</td>
-          <td class="paramname"><em>pAssets</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a>[]&#160;</td>
-          <td class="paramname"><em>cache</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>triCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>lineCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>pointCount</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>length</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  536</span>        {</div>
-<div class="line"><span class="lineno">  537</span>            <span class="keywordtype">byte</span>* pData = pStart;</div>
-<div class="line"><span class="lineno">  538</span>            <span class="keywordtype">byte</span>* pEnd = pStart + length;</div>
-<div class="line"><span class="lineno">  539</span>            ushort* indices = (ushort*) <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a0addbb9bc4eb73567f466d55f25f2574">_indices</a>.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html#a49e0f38b19d107f5986bed7045524dc7">Address</a>;</div>
-<div class="line"><span class="lineno">  540</span> </div>
-<div class="line"><span class="lineno">  541</span>            List&lt;PrimitiveGroup&gt; groups = <span class="keyword">new</span> List&lt;PrimitiveGroup&gt;();</div>
-<div class="line"><span class="lineno">  542</span>            PrimitiveGroup group = <span class="keyword">new</span> PrimitiveGroup();</div>
-<div class="line"><span class="lineno">  543</span>            <span class="keywordtype">bool</span> newGroup = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  544</span> </div>
-<div class="line"><span class="lineno">  545</span>            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><span class="lineno">  546</span>            {</div>
-<div class="line"><span class="lineno">  547</span>                <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a> cmd = (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>) (*pData++);</div>
-<div class="line"><span class="lineno">  548</span>                ushort value = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) pData;</div>
-<div class="line"><span class="lineno">  549</span> </div>
-<div class="line"><span class="lineno">  550</span>                <span class="keywordflow">if</span> (cmd &lt;= GXListCommand.LoadIndexD &amp;&amp; cmd &gt;= <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexA)</div>
-<div class="line"><span class="lineno">  551</span>                {</div>
-<div class="line"><span class="lineno">  552</span>                    <span class="keywordflow">if</span> (newGroup == <span class="keyword">false</span>)</div>
-<div class="line"><span class="lineno">  553</span>                    {</div>
-<div class="line"><span class="lineno">  554</span>                        groups.Add(group);</div>
-<div class="line"><span class="lineno">  555</span>                        group = <span class="keyword">new</span> PrimitiveGroup {_offset = (uint) (pData - 1 - pStart)};</div>
-<div class="line"><span class="lineno">  556</span>                        newGroup = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  557</span>                    }</div>
-<div class="line"><span class="lineno">  558</span> </div>
-<div class="line"><span class="lineno">  559</span>                    <span class="keywordflow">if</span> (!group._nodes.Contains(value) &amp;&amp; value != ushort.MaxValue)</div>
-<div class="line"><span class="lineno">  560</span>                    {</div>
-<div class="line"><span class="lineno">  561</span>                        group._nodes.Add(value);</div>
-<div class="line"><span class="lineno">  562</span>                    }</div>
-<div class="line"><span class="lineno">  563</span> </div>
-<div class="line"><span class="lineno">  564</span>                    <span class="keywordflow">if</span> (cmd != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexD) <span class="comment">//How does the light command work? Never seen it used</span></div>
-<div class="line"><span class="lineno">  565</span>                    {</div>
-<div class="line"><span class="lineno">  566</span>                        <span class="keywordflow">if</span> (value &lt; cache.Length &amp;&amp; value &gt;= 0)</div>
-<div class="line"><span class="lineno">  567</span>                        {</div>
-<div class="line"><span class="lineno">  568</span>                            group._nodeOffsets.Add(</div>
-<div class="line"><span class="lineno">  569</span>                                <span class="keyword">new</span> NodeOffset((uint) (pData - pStart) - group._offset, cache[value]));</div>
-<div class="line"><span class="lineno">  570</span>                        }</div>
-<div class="line"><span class="lineno">  571</span> </div>
-<div class="line"><span class="lineno">  572</span>                        <span class="keywordflow">if</span> (cmd == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.LoadIndexA)</div>
-<div class="line"><span class="lineno">  573</span>                        {</div>
-<div class="line"><span class="lineno">  574</span>                            desc.SetNode(pData); <span class="comment">//Set weight</span></div>
-<div class="line"><span class="lineno">  575</span>                        }</div>
-<div class="line"><span class="lineno">  576</span>                    }</div>
-<div class="line"><span class="lineno">  577</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  578</span>                    {</div>
-<div class="line"><span class="lineno">  579</span>                        Console.WriteLine(<span class="stringliteral">&quot;There are lights in here!&quot;</span>);</div>
-<div class="line"><span class="lineno">  580</span>                    }</div>
-<div class="line"><span class="lineno">  581</span> </div>
-<div class="line"><span class="lineno">  582</span>                    pData += 4;</div>
-<div class="line"><span class="lineno">  583</span>                    <span class="keywordflow">goto</span> Next;</div>
-<div class="line"><span class="lineno">  584</span>                }</div>
-<div class="line"><span class="lineno">  585</span> </div>
-<div class="line"><span class="lineno">  586</span>                <span class="keywordflow">switch</span> (cmd)</div>
-<div class="line"><span class="lineno">  587</span>                {</div>
-<div class="line"><span class="lineno">  588</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawQuads:</div>
-<div class="line"><span class="lineno">  589</span>                        triCount += value / 2 * 3;</div>
-<div class="line"><span class="lineno">  590</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  591</span> </div>
-<div class="line"><span class="lineno">  592</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangles:</div>
-<div class="line"><span class="lineno">  593</span>                        triCount += value;</div>
-<div class="line"><span class="lineno">  594</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  595</span> </div>
-<div class="line"><span class="lineno">  596</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangleFan:</div>
-<div class="line"><span class="lineno">  597</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawTriangleStrip:</div>
-<div class="line"><span class="lineno">  598</span>                        triCount += (value - 2) * 3;</div>
-<div class="line"><span class="lineno">  599</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  600</span> </div>
-<div class="line"><span class="lineno">  601</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawLines:</div>
-<div class="line"><span class="lineno">  602</span>                        lineCount += value;</div>
-<div class="line"><span class="lineno">  603</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  604</span> </div>
-<div class="line"><span class="lineno">  605</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawLineStrip:</div>
-<div class="line"><span class="lineno">  606</span>                        lineCount += (value - 1) * 2;</div>
-<div class="line"><span class="lineno">  607</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  608</span> </div>
-<div class="line"><span class="lineno">  609</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_graphics.html#afda46c1fd4a6aa155ca3e1f5bfc4f8fc">GXListCommand</a>.DrawPoints:</div>
-<div class="line"><span class="lineno">  610</span>                        pointCount += value;</div>
-<div class="line"><span class="lineno">  611</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  612</span> </div>
-<div class="line"><span class="lineno">  613</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  614</span>                        <span class="keywordflow">goto</span> Finish;</div>
-<div class="line"><span class="lineno">  615</span>                }</div>
-<div class="line"><span class="lineno">  616</span> </div>
-<div class="line"><span class="lineno">  617</span>                <span class="keywordflow">if</span> (newGroup)</div>
-<div class="line"><span class="lineno">  618</span>                {</div>
-<div class="line"><span class="lineno">  619</span>                    newGroup = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  620</span>                }</div>
-<div class="line"><span class="lineno">  621</span> </div>
-<div class="line"><span class="lineno">  622</span>                group._headers.Add(<span class="keyword">new</span> PrimitiveHeader {Type = (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#ab175ebe1c9a8c2871641e5f706bacbed">WiiBeginMode</a>) cmd, Entries = value});</div>
-<div class="line"><span class="lineno">  623</span> </div>
-<div class="line"><span class="lineno">  624</span>                pData += 2;</div>
-<div class="line"><span class="lineno">  625</span> </div>
-<div class="line"><span class="lineno">  626</span>                <span class="comment">//Extract facepoints here!</span></div>
-<div class="line"><span class="lineno">  627</span>                desc.Run(ref pData, pAssets, pOut, value, group, ref indices, cache, <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#afb33fb060e854e224c29410ae14c1866">UseIdentityTexMtx</a>);</div>
-<div class="line"><span class="lineno">  628</span> </div>
-<div class="line"><span class="lineno">  629</span>                Next:</div>
-<div class="line"><span class="lineno">  630</span>                <span class="keywordflow">if</span> (length &gt; 0 &amp;&amp; pData &gt;= pEnd)</div>
-<div class="line"><span class="lineno">  631</span>                {</div>
-<div class="line"><span class="lineno">  632</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  633</span>                }</div>
-<div class="line"><span class="lineno">  634</span>            }</div>
-<div class="line"><span class="lineno">  635</span> </div>
-<div class="line"><span class="lineno">  636</span>            Finish:</div>
-<div class="line"><span class="lineno">  637</span>            groups.Add(group);</div>
-<div class="line"><span class="lineno">  638</span>            <span class="keywordflow">return</span> groups;</div>
-<div class="line"><span class="lineno">  639</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_afb33fb060e854e224c29410ae14c1866"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#afb33fb060e854e224c29410ae14c1866">BrawlLib.Modeling.PrimitiveManager.UseIdentityTexMtx</a></div><div class="ttdeci">bool[] UseIdentityTexMtx</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:97</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_models_html_ab175ebe1c9a8c2871641e5f706bacbed"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_models.html#ab175ebe1c9a8c2871641e5f706bacbed">BrawlLib.Wii.Models.WiiBeginMode</a></div><div class="ttdeci">WiiBeginMode</div><div class="ttdef"><b>Definition:</b> Enum.cs:31</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2740,7 +2122,7 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   64</span>        {</div>
 <div class="line"><span class="lineno">   65</span>            <span class="comment">//Signal that facepoints need to be reindexed with a new asset array</span></div>
-<div class="line"><span class="lineno">   66</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abed29b1e4e1e55de76f7c5300eb3e18e">_changed</a>[index] = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   66</span>            _changed[index] = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   67</span> </div>
 <div class="line"><span class="lineno">   68</span>            <span class="comment">//Update render buffer</span></div>
 <div class="line"><span class="lineno">   69</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#a233fa33b21c147a014c14ffa2a8ce0ae">_dirty</a>[index] = <span class="keyword">true</span>;</div>
@@ -3993,6 +3375,8 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1210</span>                }</div>
 <div class="line"><span class="lineno"> 1211</span>            }</div>
 <div class="line"><span class="lineno"> 1212</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_manager_html_afb33fb060e854e224c29410ae14c1866"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#afb33fb060e854e224c29410ae14c1866">BrawlLib.Modeling.PrimitiveManager.UseIdentityTexMtx</a></div><div class="ttdeci">bool[] UseIdentityTexMtx</div><div class="ttdef"><b>Definition:</b> PrimitiveManager.cs:97</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bushort_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bushort.html">BrawlLib.Internal.bushort</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:192</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_graphics_1_1_facepoint_attribute_html_a036d8e697bdbe2e6c78c5480179f4cf1"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_facepoint_attribute.html#a036d8e697bdbe2e6c78c5480179f4cf1">BrawlLib.Wii.Graphics.FacepointAttribute._type</a></div><div class="ttdeci">XFDataFormat _type</div><div class="ttdef"><b>Definition:</b> XF.cs:476</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_graphics_1_1_facepoint_attribute_html_a6b5c0be03a5512c24e32bd6f4b569f7d"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_facepoint_attribute.html#a6b5c0be03a5512c24e32bd6f4b569f7d">BrawlLib.Wii.Graphics.FacepointAttribute._attr</a></div><div class="ttdeci">GXAttribute _attr</div><div class="ttdef"><b>Definition:</b> XF.cs:475</div></div>
 </div><!-- fragment -->
@@ -4549,50 +3933,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abed29b1e4e1e55de76f7c5300eb3e18e" name="abed29b1e4e1e55de76f7c5300eb3e18e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abed29b1e4e1e55de76f7c5300eb3e18e">&#9670;&#160;</a></span>_changed</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly bool [] BrawlLib.Modeling.PrimitiveManager._changed = new bool[12]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a97c5ed2fd369e800acdf137a3f08be12" name="a97c5ed2fd369e800acdf137a3f08be12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97c5ed2fd369e800acdf137a3f08be12">&#9670;&#160;</a></span>_colors</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a> [][] BrawlLib.Modeling.PrimitiveManager._colors = new <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>[2][]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac5c0bfa56db15554859ca2bf0158f5f4" name="ac5c0bfa56db15554859ca2bf0158f5f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac5c0bfa56db15554859ca2bf0158f5f4">&#9670;&#160;</a></span>_descList</h2>
 
@@ -4777,28 +4117,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1e97a15a91c8a8fd45ca20fc72734b7a" name="a1e97a15a91c8a8fd45ca20fc72734b7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e97a15a91c8a8fd45ca20fc72734b7a">&#9670;&#160;</a></span>_nodeAdj</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.Modeling.PrimitiveManager._nodeAdj = 0.01f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a344955ff8b27011ce5911a58bdd8381b" name="a344955ff8b27011ce5911a58bdd8381b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a344955ff8b27011ce5911a58bdd8381b">&#9670;&#160;</a></span>_nodeRadius</h2>
 
@@ -4837,28 +4155,6 @@ Static Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a45e2599ae1c338571867347d7e011156" name="a45e2599ae1c338571867347d7e011156"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45e2599ae1c338571867347d7e011156">&#9670;&#160;</a></span>_owner</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_object.html">IObject</a> BrawlLib.Modeling.PrimitiveManager._owner</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -4925,50 +4221,6 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">int BrawlLib.Modeling.PrimitiveManager._primitiveSize</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6a75ba4a397da4b688f03c0a99649c0b" name="a6a75ba4a397da4b688f03c0a99649c0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a75ba4a397da4b688f03c0a99649c0b">&#9670;&#160;</a></span>_rawNormals</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> [] BrawlLib.Modeling.PrimitiveManager._rawNormals</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a995648c039a582064e7a571f2bb495eb" name="a995648c039a582064e7a571f2bb495eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a995648c039a582064e7a571f2bb495eb">&#9670;&#160;</a></span>_rawVertices</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> [] BrawlLib.Modeling.PrimitiveManager._rawVertices</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -5045,28 +4297,6 @@ Static Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aae0d5915a2a60d51d9d5c2d8afb34f02" name="aae0d5915a2a60d51d9d5c2d8afb34f02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae0d5915a2a60d51d9d5c2d8afb34f02">&#9670;&#160;</a></span>_uvs</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a> [][] BrawlLib.Modeling.PrimitiveManager._uvs = new <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>[8][]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -5226,7 +4456,7 @@ Static Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
 <div class="line"><span class="lineno">   25</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   26</span>            {</div>
-<div class="line"><span class="lineno">   27</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">bool</span> b <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abed29b1e4e1e55de76f7c5300eb3e18e">_changed</a>)</div>
+<div class="line"><span class="lineno">   27</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">bool</span> b <span class="keywordflow">in</span> _changed)</div>
 <div class="line"><span class="lineno">   28</span>                {</div>
 <div class="line"><span class="lineno">   29</span>                    <span class="keywordflow">if</span> (b)</div>
 <div class="line"><span class="lineno">   30</span>                    {</div>
@@ -5238,9 +4468,9 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   36</span>            }</div>
 <div class="line"><span class="lineno">   37</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   38</span>            {</div>
-<div class="line"><span class="lineno">   39</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abed29b1e4e1e55de76f7c5300eb3e18e">_changed</a>.Length; i++)</div>
+<div class="line"><span class="lineno">   39</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _changed.Length; i++)</div>
 <div class="line"><span class="lineno">   40</span>                {</div>
-<div class="line"><span class="lineno">   41</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_manager.html#abed29b1e4e1e55de76f7c5300eb3e18e">_changed</a>[i] = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   41</span>                    _changed[i] = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   42</span>                }</div>
 <div class="line"><span class="lineno">   43</span>            }</div>
 <div class="line"><span class="lineno">   44</span>        }</div>

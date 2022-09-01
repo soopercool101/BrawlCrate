@@ -116,8 +116,6 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a2fcc82db12d2a0e8a7d2818226f4b03c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a2fcc82db12d2a0e8a7d2818226f4b03c">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a2fcc82db12d2a0e8a7d2818226f4b03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2642426f0780987760cdd861d1635014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a2642426f0780987760cdd861d1635014">Data</a><code> [get]</code></td></tr>
 <tr class="separator:a2642426f0780987760cdd861d1635014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeea0d7c0ab8cfaa5bc04e636e28b6e0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a37e23d9f04f9f5724b4483c9f8a783b1">WiiVertexComponentType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#aeea0d7c0ab8cfaa5bc04e636e28b6e0e">Type</a><code> [get]</code></td></tr>
@@ -325,37 +323,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a2fcc82db12d2a0e8a7d2818226f4b03c" name="a2fcc82db12d2a0e8a7d2818226f4b03c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fcc82db12d2a0e8a7d2818226f4b03c">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.MDL0VertexData.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  736</span>        {</div>
-<div class="line"><span class="lineno">  737</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  738</span>            {</div>
-<div class="line"><span class="lineno">  739</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  740</span>                {</div>
-<div class="line"><span class="lineno">  741</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  742</span>                }</div>
-<div class="line"><span class="lineno">  743</span>            }</div>
-<div class="line"><span class="lineno">  744</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a2642426f0780987760cdd861d1635014" name="a2642426f0780987760cdd861d1635014"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2642426f0780987760cdd861d1635014">&#9670;&#160;</a></span>Data</h2>
 
@@ -420,10 +387,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  757</span>        {</div>
-<div class="line"><span class="lineno">  758</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a2fcc82db12d2a0e8a7d2818226f4b03c">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a5ae7fd093678a92d9cbb7bede090bac8">_stringOffset</a>;</div>
-<div class="line"><span class="lineno">  759</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a5ae7fd093678a92d9cbb7bede090bac8">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a2fcc82db12d2a0e8a7d2818226f4b03c">Address</a>;</div>
+<div class="line"><span class="lineno">  758</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a5ae7fd093678a92d9cbb7bede090bac8">_stringOffset</a>;</div>
+<div class="line"><span class="lineno">  759</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a5ae7fd093678a92d9cbb7bede090bac8">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">  760</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data_html_a2fcc82db12d2a0e8a7d2818226f4b03c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a2fcc82db12d2a0e8a7d2818226f4b03c">BrawlLib.SSBB.Types.MDL0VertexData.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> MDL0.cs:736</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data_html_a5ae7fd093678a92d9cbb7bede090bac8"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_vertex_data.html#a5ae7fd093678a92d9cbb7bede090bac8">BrawlLib.SSBB.Types.MDL0VertexData._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> MDL0.cs:723</div></div>
 </div><!-- fragment -->
 </div>

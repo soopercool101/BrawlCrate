@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_internal_1_1_b_box-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.BBox Struct Reference</div></div>
 </div><!--header-->
@@ -101,15 +100,6 @@ Properties</h2></td></tr>
 <tr class="separator:af5136a64cd4fd87f10bfb8b964cdbdd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab92f3e9127635ce207a0bb8f7e6a3788"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#ab92f3e9127635ce207a0bb8f7e6a3788">Max</a><code> [get, set]</code></td></tr>
 <tr class="separator:ab92f3e9127635ce207a0bb8f7e6a3788"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0729d664646b0e9b3d639b62a41d0009"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#a0729d664646b0e9b3d639b62a41d0009">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a0729d664646b0e9b3d639b62a41d0009"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a77ba14cecfc01ef6d0dd1e1a47178f83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_vec3.html">BVec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#a77ba14cecfc01ef6d0dd1e1a47178f83">_min</a></td></tr>
-<tr class="separator:a77ba14cecfc01ef6d0dd1e1a47178f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcdb3569df3a6e8f19710c63ea23e22b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_vec3.html">BVec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#adcdb3569df3a6e8f19710c63ea23e22b">_max</a></td></tr>
-<tr class="separator:adcdb3569df3a6e8f19710c63ea23e22b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3663fcf65c0efec4a71c1661c9a882cb" name="a3663fcf65c0efec4a71c1661c9a882cb"></a>
@@ -146,11 +136,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   83</span>        {</div>
-<div class="line"><span class="lineno">   84</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#a77ba14cecfc01ef6d0dd1e1a47178f83">_min</a> = min;</div>
-<div class="line"><span class="lineno">   85</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#adcdb3569df3a6e8f19710c63ea23e22b">_max</a> = max;</div>
+<div class="line"><span class="lineno">   84</span>            _min = min;</div>
+<div class="line"><span class="lineno">   85</span>            _max = max;</div>
 <div class="line"><span class="lineno">   86</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_b_box_html_a77ba14cecfc01ef6d0dd1e1a47178f83"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_b_box.html#a77ba14cecfc01ef6d0dd1e1a47178f83">BrawlLib.Internal.BBox._min</a></div><div class="ttdeci">BVec3 _min</div><div class="ttdef"><b>Definition:</b> Box.cs:68</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_b_box_html_adcdb3569df3a6e8f19710c63ea23e22b"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_b_box.html#adcdb3569df3a6e8f19710c63ea23e22b">BrawlLib.Internal.BBox._max</a></div><div class="ttdeci">BVec3 _max</div><div class="ttdef"><b>Definition:</b> Box.cs:68</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -185,83 +173,7 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="adcdb3569df3a6e8f19710c63ea23e22b" name="adcdb3569df3a6e8f19710c63ea23e22b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcdb3569df3a6e8f19710c63ea23e22b">&#9670;&#160;</a></span>_max</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_vec3.html">BVec3</a> BrawlLib.Internal.BBox._max</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a77ba14cecfc01ef6d0dd1e1a47178f83" name="a77ba14cecfc01ef6d0dd1e1a47178f83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77ba14cecfc01ef6d0dd1e1a47178f83">&#9670;&#160;</a></span>_min</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_vec3.html">BVec3</a> BrawlLib.Internal.BBox._min</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a0729d664646b0e9b3d639b62a41d0009" name="a0729d664646b0e9b3d639b62a41d0009"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0729d664646b0e9b3d639b62a41d0009">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.Internal.BBox.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   89</span>        {</div>
-<div class="line"><span class="lineno">   90</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   91</span>            {</div>
-<div class="line"><span class="lineno">   92</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   93</span>                {</div>
-<div class="line"><span class="lineno">   94</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   95</span>                }</div>
-<div class="line"><span class="lineno">   96</span>            }</div>
-<div class="line"><span class="lineno">   97</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ab92f3e9127635ce207a0bb8f7e6a3788" name="ab92f3e9127635ce207a0bb8f7e6a3788"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab92f3e9127635ce207a0bb8f7e6a3788">&#9670;&#160;</a></span>Max</h2>
 
@@ -282,8 +194,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   77</span>        {</div>
-<div class="line"><span class="lineno">   78</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#adcdb3569df3a6e8f19710c63ea23e22b">_max</a>;</div>
-<div class="line"><span class="lineno">   79</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#adcdb3569df3a6e8f19710c63ea23e22b">_max</a> = value;</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keyword">get</span> =&gt; _max;</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keyword">set</span> =&gt; _max = value;</div>
 <div class="line"><span class="lineno">   80</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -308,8 +220,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   71</span>        {</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#a77ba14cecfc01ef6d0dd1e1a47178f83">_min</a>;</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_b_box.html#a77ba14cecfc01ef6d0dd1e1a47178f83">_min</a> = value;</div>
+<div class="line"><span class="lineno">   72</span>            <span class="keyword">get</span> =&gt; _min;</div>
+<div class="line"><span class="lineno">   73</span>            <span class="keyword">set</span> =&gt; _min = value;</div>
 <div class="line"><span class="lineno">   74</span>        }</div>
 </div><!-- fragment -->
 </div>

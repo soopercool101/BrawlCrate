@@ -82,8 +82,6 @@ $(function() {
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.OpenGL.GLPanel Class Reference</div></div>
 </div><!--header-->
@@ -194,20 +192,6 @@ Properties</h2></td></tr>
 Events</h2></td></tr>
 <tr class="memitem:a1a7581f53f986e8018b265d69407a8d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_brawl_lib_1_1_open_g_l.html#a9725910feb4b308a11e0adba1189c150">ViewportAction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a1a7581f53f986e8018b265d69407a8d9">OnCurrentViewportChanged</a></td></tr>
 <tr class="separator:a1a7581f53f986e8018b265d69407a8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a9d21553e9f5539389dbf8a3007f40050"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9d21553e9f5539389dbf8a3007f40050">DisposeContext</a> ()</td></tr>
-<tr class="separator:a9d21553e9f5539389dbf8a3007f40050"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a684d8f741f99db1096185ea51d5de1dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a684d8f741f99db1096185ea51d5de1dd">InitializeComponent</a> ()</td></tr>
-<tr class="separator:a684d8f741f99db1096185ea51d5de1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae186d21f4483b8ff6b8af536a15fe215"><td class="memItemLeft" align="right" valign="top">System.Collections.IEnumerator System.Collections.IEnumerable.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ae186d21f4483b8ff6b8af536a15fe215">GetEnumerator</a> ()</td></tr>
-<tr class="separator:ae186d21f4483b8ff6b8af536a15fe215"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ac3c7da1f85a900b4813b32fa779c6671"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html">GLPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ac3c7da1f85a900b4813b32fa779c6671">_currentPanel</a></td></tr>
-<tr class="separator:ac3c7da1f85a900b4813b32fa779c6671"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5b4743a3dd15aaee3f3cd24bf747dc0e" name="a5b4743a3dd15aaee3f3cd24bf747dc0e"></a>
@@ -438,10 +422,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  308</span>        {</div>
-<div class="line"><span class="lineno">  309</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9d21553e9f5539389dbf8a3007f40050">DisposeContext</a>();</div>
+<div class="line"><span class="lineno">  309</span>            DisposeContext();</div>
 <div class="line"><span class="lineno">  310</span>            base.DestroyHandle();</div>
 <div class="line"><span class="lineno">  311</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_panel_html_a9d21553e9f5539389dbf8a3007f40050"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9d21553e9f5539389dbf8a3007f40050">BrawlLib.OpenGL.GLPanel.DisposeContext</a></div><div class="ttdeci">void DisposeContext()</div><div class="ttdef"><b>Definition:</b> GLPanel.cs:155</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -469,44 +452,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  150</span>        {</div>
-<div class="line"><span class="lineno">  151</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9d21553e9f5539389dbf8a3007f40050">DisposeContext</a>();</div>
+<div class="line"><span class="lineno">  151</span>            DisposeContext();</div>
 <div class="line"><span class="lineno">  152</span>            base.Dispose(disposing);</div>
 <div class="line"><span class="lineno">  153</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a9d21553e9f5539389dbf8a3007f40050" name="a9d21553e9f5539389dbf8a3007f40050"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d21553e9f5539389dbf8a3007f40050">&#9670;&#160;</a></span>DisposeContext()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.OpenGL.GLPanel.DisposeContext </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  156</span>        {</div>
-<div class="line"><span class="lineno">  157</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  158</span>            {</div>
-<div class="line"><span class="lineno">  159</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a8a251157a84921bb1b7fd8dfd50140b4">Unbind</a>();</div>
-<div class="line"><span class="lineno">  160</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#aa3b6e4f7b4a042637ddb4e7dc0bd803b">Dispose</a>();</div>
-<div class="line"><span class="lineno">  161</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a> = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  162</span>            }</div>
-<div class="line"><span class="lineno">  163</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_a8a251157a84921bb1b7fd8dfd50140b4"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a8a251157a84921bb1b7fd8dfd50140b4">BrawlLib.OpenGL.TKContext.Unbind</a></div><div class="ttdeci">void Unbind()</div><div class="ttdef"><b>Definition:</b> TKContext.cs:44</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_aa3b6e4f7b4a042637ddb4e7dc0bd803b"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#aa3b6e4f7b4a042637ddb4e7dc0bd803b">BrawlLib.OpenGL.TKContext.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> TKContext.cs:103</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -718,7 +666,7 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="abd3c296b89590ae44c54f0ee325049db" name="abd3c296b89590ae44c54f0ee325049db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd3c296b89590ae44c54f0ee325049db">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abd3c296b89590ae44c54f0ee325049db">&#9670;&#160;</a></span>GetEnumerator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -742,35 +690,6 @@ Static Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  501</span>        {</div>
 <div class="line"><span class="lineno">  502</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a794041d2cecfeb728213fcdd2261dd3e">_viewports</a>.GetEnumerator();</div>
 <div class="line"><span class="lineno">  503</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ae186d21f4483b8ff6b8af536a15fe215" name="ae186d21f4483b8ff6b8af536a15fe215"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae186d21f4483b8ff6b8af536a15fe215">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.Collections.IEnumerator System.Collections.IEnumerable. BrawlLib.OpenGL.GLPanel.GetEnumerator </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  506</span>        {</div>
-<div class="line"><span class="lineno">  507</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#abd3c296b89590ae44c54f0ee325049db">GetEnumerator</a>();</div>
-<div class="line"><span class="lineno">  508</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_panel_html_abd3c296b89590ae44c54f0ee325049db"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#abd3c296b89590ae44c54f0ee325049db">BrawlLib.OpenGL.GLPanel.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; GLViewport &gt; GetEnumerator()</div><div class="ttdef"><b>Definition:</b> GLPanel.cs:500</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -838,39 +757,6 @@ Static Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a684d8f741f99db1096185ea51d5de1dd" name="a684d8f741f99db1096185ea51d5de1dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a684d8f741f99db1096185ea51d5de1dd">&#9670;&#160;</a></span>InitializeComponent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.OpenGL.GLPanel.InitializeComponent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  491</span>        {</div>
-<div class="line"><span class="lineno">  492</span>            SuspendLayout();</div>
-<div class="line"><span class="lineno">  493</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">  494</span>            <span class="comment">// GLPanel</span></div>
-<div class="line"><span class="lineno">  495</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">  496</span>            Name = <span class="stringliteral">&quot;GLPanel&quot;</span>;</div>
-<div class="line"><span class="lineno">  497</span>            ResumeLayout(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  498</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a6bc88444d5657845c8dea5d6cfecd40c" name="a6bc88444d5657845c8dea5d6cfecd40c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6bc88444d5657845c8dea5d6cfecd40c">&#9670;&#160;</a></span>OnContextChanged()</h2>
 
@@ -903,9 +789,8 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  301</span>                <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#aeab7b5e665fff442e9921f1c9fcb5546">OnResize</a>(EventArgs.Empty);</div>
 <div class="line"><span class="lineno">  302</span>            }</div>
 <div class="line"><span class="lineno">  303</span> </div>
-<div class="line"><span class="lineno">  304</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ac3c7da1f85a900b4813b32fa779c6671">_currentPanel</a> = isNowCurrent ? this : <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  304</span>            _currentPanel = isNowCurrent ? this : <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  305</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_panel_html_ac3c7da1f85a900b4813b32fa779c6671"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ac3c7da1f85a900b4813b32fa779c6671">BrawlLib.OpenGL.GLPanel._currentPanel</a></div><div class="ttdeci">static GLPanel _currentPanel</div><div class="ttdef"><b>Definition:</b> GLPanel.cs:41</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_panel_html_aeab7b5e665fff442e9921f1c9fcb5546"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#aeab7b5e665fff442e9921f1c9fcb5546">BrawlLib.OpenGL.GLPanel.OnResize</a></div><div class="ttdeci">override void OnResize(EventArgs e)</div><div class="ttdef"><b>Definition:</b> GLPanel.cs:463</div></div>
 </div><!-- fragment -->
 </div>
@@ -934,7 +819,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  314</span>        {</div>
-<div class="line"><span class="lineno">  315</span>            <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9d21553e9f5539389dbf8a3007f40050">DisposeContext</a>();</div>
+<div class="line"><span class="lineno">  315</span>            DisposeContext();</div>
 <div class="line"><span class="lineno">  316</span>            base.OnHandleDestroyed(e);</div>
 <div class="line"><span class="lineno">  317</span>        }</div>
 </div><!-- fragment -->
@@ -1504,28 +1389,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac3c7da1f85a900b4813b32fa779c6671" name="ac3c7da1f85a900b4813b32fa779c6671"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3c7da1f85a900b4813b32fa779c6671">&#9670;&#160;</a></span>_currentPanel</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html">GLPanel</a> BrawlLib.OpenGL.GLPanel._currentPanel</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a326f1f0b7630e2f02fc27b8d3372ca6c" name="a326f1f0b7630e2f02fc27b8d3372ca6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a326f1f0b7630e2f02fc27b8d3372ca6c">&#9670;&#160;</a></span>_currentViewport</h2>
 
@@ -1659,12 +1522,12 @@ Static Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   29</span>        {</div>
 <div class="line"><span class="lineno">   30</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   31</span>            {</div>
-<div class="line"><span class="lineno">   32</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ac3c7da1f85a900b4813b32fa779c6671">_currentPanel</a> == <span class="keyword">null</span> &amp;&amp; TKContext.CurrentContext != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   32</span>                <span class="keywordflow">if</span> (_currentPanel == <span class="keyword">null</span> &amp;&amp; TKContext.CurrentContext != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   33</span>                {</div>
 <div class="line"><span class="lineno">   34</span>                    TKContext.CurrentContext.Capture(<span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">   35</span>                }</div>
 <div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ac3c7da1f85a900b4813b32fa779c6671">_currentPanel</a>;</div>
+<div class="line"><span class="lineno">   37</span>                <span class="keywordflow">return</span> _currentPanel;</div>
 <div class="line"><span class="lineno">   38</span>            }</div>
 <div class="line"><span class="lineno">   39</span>        }</div>
 </div><!-- fragment -->

@@ -114,8 +114,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ad855d35b4d97d986d1477daffc53138a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_header.html#ad855d35b4d97d986d1477daffc53138a">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ad855d35b4d97d986d1477daffc53138a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75c23ee8e79f1018c13741f3c0ec46ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_entry.html">EFLSEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_header.html#a75c23ee8e79f1018c13741f3c0ec46ff">Entries</a><code> [get]</code></td></tr>
 <tr class="separator:a75c23ee8e79f1018c13741f3c0ec46ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -212,10 +210,9 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   46</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;&lt;null&gt;&quot;</span>;</div>
 <div class="line"><span class="lineno">   47</span>            }</div>
 <div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> string((sbyte*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_header.html#ad855d35b4d97d986d1477daffc53138a">Address</a> + entry-&gt;_stringOffset);</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> string((sbyte*) Address + entry-&gt;_stringOffset);</div>
 <div class="line"><span class="lineno">   50</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_header_html_a75c23ee8e79f1018c13741f3c0ec46ff"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_header.html#a75c23ee8e79f1018c13741f3c0ec46ff">BrawlLib.SSBB.Types.EFLSHeader.Entries</a></div><div class="ttdeci">EFLSEntry * Entries</div><div class="ttdef"><b>Definition:</b> EFLS.cs:39</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_header_html_ad855d35b4d97d986d1477daffc53138a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_e_f_l_s_header.html#ad855d35b4d97d986d1477daffc53138a">BrawlLib.SSBB.Types.EFLSHeader.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> EFLS.cs:28</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -335,37 +332,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ad855d35b4d97d986d1477daffc53138a" name="ad855d35b4d97d986d1477daffc53138a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad855d35b4d97d986d1477daffc53138a">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.EFLSHeader.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   28</span>        {</div>
-<div class="line"><span class="lineno">   29</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   30</span>            {</div>
-<div class="line"><span class="lineno">   31</span>                fixed (<span class="keywordtype">void</span>* p = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   32</span>                {</div>
-<div class="line"><span class="lineno">   33</span>                    <span class="keywordflow">return</span> p;</div>
-<div class="line"><span class="lineno">   34</span>                }</div>
-<div class="line"><span class="lineno">   35</span>            }</div>
-<div class="line"><span class="lineno">   36</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a75c23ee8e79f1018c13741f3c0ec46ff" name="a75c23ee8e79f1018c13741f3c0ec46ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a75c23ee8e79f1018c13741f3c0ec46ff">&#9670;&#160;</a></span>Entries</h2>
 

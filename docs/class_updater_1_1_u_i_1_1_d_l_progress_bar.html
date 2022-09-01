@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_updater_1_1_u_i_1_1_d_l_progress_bar-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Updater.UI.DLProgressBar Class Reference</div></div>
 </div><!--header-->
@@ -111,11 +110,6 @@ Properties</h2></td></tr>
 <tr class="separator:af2b64a17e4123892ad598fd31ffe1311"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a6f05db871fb3d057c960c920a82395"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a7a6f05db871fb3d057c960c920a82395">Percent</a><code> [get, set]</code></td></tr>
 <tr class="separator:a7a6f05db871fb3d057c960c920a82395"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a3bd1c1d2728fcfc442c112204712bd53"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a3bd1c1d2728fcfc442c112204712bd53">_current</a></td></tr>
-<tr class="separator:a3bd1c1d2728fcfc442c112204712bd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a74698ceafd3f7ee3ccedd988d6ca2106" name="a74698ceafd3f7ee3ccedd988d6ca2106"></a>
@@ -207,29 +201,6 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a3bd1c1d2728fcfc442c112204712bd53" name="a3bd1c1d2728fcfc442c112204712bd53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bd1c1d2728fcfc442c112204712bd53">&#9670;&#160;</a></span>_current</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Updater.UI.DLProgressBar._current</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="af2b64a17e4123892ad598fd31ffe1311" name="af2b64a17e4123892ad598fd31ffe1311"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af2b64a17e4123892ad598fd31ffe1311">&#9670;&#160;</a></span>CurrentValue</h2>
@@ -251,15 +222,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
-<div class="line"><span class="lineno">   25</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a3bd1c1d2728fcfc442c112204712bd53">_current</a>;</div>
+<div class="line"><span class="lineno">   25</span>            <span class="keyword">get</span> =&gt; _current;</div>
 <div class="line"><span class="lineno">   26</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   27</span>            {</div>
-<div class="line"><span class="lineno">   28</span>                <a class="code hl_variable" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a3bd1c1d2728fcfc442c112204712bd53">_current</a> = Math.Max(Math.Min(value, <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#acffd0a0e5af1158ea1549f984de17ce8">MaxValue</a>), <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">MinValue</a>);</div>
+<div class="line"><span class="lineno">   28</span>                _current = Math.Max(Math.Min(value, <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#acffd0a0e5af1158ea1549f984de17ce8">MaxValue</a>), <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">MinValue</a>);</div>
 <div class="line"><span class="lineno">   29</span>                Invalidate();</div>
 <div class="line"><span class="lineno">   30</span>            }</div>
 <div class="line"><span class="lineno">   31</span>        }</div>
 <div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_bar_html_a301058cce3fdcc2494963172a98c473b"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">Updater.UI.DLProgressBar.MinValue</a></div><div class="ttdeci">float MinValue</div><div class="ttdef"><b>Definition:</b> DLProgressBar.cs:19</div></div>
-<div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_bar_html_a3bd1c1d2728fcfc442c112204712bd53"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a3bd1c1d2728fcfc442c112204712bd53">Updater.UI.DLProgressBar._current</a></div><div class="ttdeci">float _current</div><div class="ttdef"><b>Definition:</b> DLProgressBar.cs:10</div></div>
 <div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_bar_html_acffd0a0e5af1158ea1549f984de17ce8"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#acffd0a0e5af1158ea1549f984de17ce8">Updater.UI.DLProgressBar.MaxValue</a></div><div class="ttdeci">float MaxValue</div><div class="ttdef"><b>Definition:</b> DLProgressBar.cs:21</div></div>
 </div><!-- fragment -->
 </div>
@@ -330,7 +300,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
-<div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a3bd1c1d2728fcfc442c112204712bd53">_current</a> - <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">MinValue</a>) / (<a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#acffd0a0e5af1158ea1549f984de17ce8">MaxValue</a> - <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">MinValue</a>);</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span> =&gt; (_current - <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">MinValue</a>) / (<a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#acffd0a0e5af1158ea1549f984de17ce8">MaxValue</a> - <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">MinValue</a>);</div>
 <div class="line"><span class="lineno">   36</span>            <span class="keyword">set</span> =&gt; <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#af2b64a17e4123892ad598fd31ffe1311">CurrentValue</a> = (<a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#acffd0a0e5af1158ea1549f984de17ce8">MaxValue</a> - <a class="code hl_property" href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a301058cce3fdcc2494963172a98c473b">MinValue</a>) * value;</div>
 <div class="line"><span class="lineno">   37</span>        }</div>
 <div class="ttc" id="aclass_updater_1_1_u_i_1_1_d_l_progress_bar_html_af2b64a17e4123892ad598fd31ffe1311"><div class="ttname"><a href="class_updater_1_1_u_i_1_1_d_l_progress_bar.html#af2b64a17e4123892ad598fd31ffe1311">Updater.UI.DLProgressBar.CurrentValue</a></div><div class="ttdeci">float CurrentValue</div><div class="ttdef"><b>Definition:</b> DLProgressBar.cs:24</div></div>

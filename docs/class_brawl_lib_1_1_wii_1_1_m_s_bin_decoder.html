@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pac-static-methods">Static Package Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.MSBinDecoder Class Reference</div></div>
 </div><!--header-->
@@ -95,21 +94,6 @@ Static Public Member Functions</h2></td></tr>
 Static Package Functions</h2></td></tr>
 <tr class="memitem:a38e20b617728e663730fa3a970e5772a"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a38e20b617728e663730fa3a970e5772a">DecodeString</a> (byte *sPtr, int len)</td></tr>
 <tr class="separator:a38e20b617728e663730fa3a970e5772a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a7cfec7da8d7c1e9274b35523a7ee516c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7cfec7da8d7c1e9274b35523a7ee516c">WriteString</a> (ref byte *dPtr, string value)</td></tr>
-<tr class="separator:a7cfec7da8d7c1e9274b35523a7ee516c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef1547346855f504e5807ba2840473b9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#aef1547346855f504e5807ba2840473b9">WriteHex</a> (ref byte *dPtr, ref byte *sPtr, int len)</td></tr>
-<tr class="separator:aef1547346855f504e5807ba2840473b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c47787878c1c9253530434d6027c325"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a3c47787878c1c9253530434d6027c325">ReadHex</a> (ref byte *dPtr, ref byte *sPtr, int len)</td></tr>
-<tr class="separator:a3c47787878c1c9253530434d6027c325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1dc46fd8acca53f2b20b72044b9607c8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a1dc46fd8acca53f2b20b72044b9607c8">ToLower</a> (byte *ptr, int len)</td></tr>
-<tr class="separator:a1dc46fd8acca53f2b20b72044b9607c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2815bd6e2f33282b13fd8457b1e5e09f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a2815bd6e2f33282b13fd8457b1e5e09f">IndexOf</a> (byte *ptr, int len, string s)</td></tr>
-<tr class="separator:a2815bd6e2f33282b13fd8457b1e5e09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a086a944b55efac86746da347f1dad53a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a086a944b55efac86746da347f1dad53a">StrContains</a> (byte *ptr, int len, string s)</td></tr>
-<tr class="separator:a086a944b55efac86746da347f1dad53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a38e20b617728e663730fa3a970e5772a" name="a38e20b617728e663730fa3a970e5772a"></a>
@@ -170,8 +154,8 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   32</span> </div>
 <div class="line"><span class="lineno">   33</span>                    <span class="keywordflow">case</span> 0x11:</div>
 <div class="line"><span class="lineno">   34</span>                        *dPtr++ = 0x5B; <span class="comment">// [</span></div>
-<div class="line"><span class="lineno">   35</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7cfec7da8d7c1e9274b35523a7ee516c">WriteString</a>(ref dPtr, <span class="stringliteral">&quot;border=&quot;</span>);</div>
-<div class="line"><span class="lineno">   36</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#aef1547346855f504e5807ba2840473b9">WriteHex</a>(ref dPtr, ref sPtr, 4);</div>
+<div class="line"><span class="lineno">   35</span>                        WriteString(ref dPtr, <span class="stringliteral">&quot;border=&quot;</span>);</div>
+<div class="line"><span class="lineno">   36</span>                        WriteHex(ref dPtr, ref sPtr, 4);</div>
 <div class="line"><span class="lineno">   37</span>                        *dPtr++ = 0x5D; <span class="comment">// ]</span></div>
 <div class="line"><span class="lineno">   38</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   39</span> </div>
@@ -188,13 +172,13 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   50</span>                            <span class="keywordflow">switch</span> (*sPtr++)</div>
 <div class="line"><span class="lineno">   51</span>                            {</div>
 <div class="line"><span class="lineno">   52</span>                                <span class="keywordflow">case</span> 0x0C: <span class="comment">//color</span></div>
-<div class="line"><span class="lineno">   53</span>                                    <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7cfec7da8d7c1e9274b35523a7ee516c">WriteString</a>(ref dPtr, <span class="stringliteral">&quot;color=&quot;</span>);</div>
-<div class="line"><span class="lineno">   54</span>                                    <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#aef1547346855f504e5807ba2840473b9">WriteHex</a>(ref dPtr, ref sPtr, 4);</div>
+<div class="line"><span class="lineno">   53</span>                                    WriteString(ref dPtr, <span class="stringliteral">&quot;color=&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>                                    WriteHex(ref dPtr, ref sPtr, 4);</div>
 <div class="line"><span class="lineno">   55</span>                                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   56</span> </div>
 <div class="line"><span class="lineno">   57</span>                                <span class="keywordflow">case</span> 0x0D: <span class="comment">//flags</span></div>
-<div class="line"><span class="lineno">   58</span>                                    <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7cfec7da8d7c1e9274b35523a7ee516c">WriteString</a>(ref dPtr, <span class="stringliteral">&quot;size=&quot;</span>);</div>
-<div class="line"><span class="lineno">   59</span>                                    <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#aef1547346855f504e5807ba2840473b9">WriteHex</a>(ref dPtr, ref sPtr, 2);</div>
+<div class="line"><span class="lineno">   58</span>                                    WriteString(ref dPtr, <span class="stringliteral">&quot;size=&quot;</span>);</div>
+<div class="line"><span class="lineno">   59</span>                                    WriteHex(ref dPtr, ref sPtr, 2);</div>
 <div class="line"><span class="lineno">   60</span>                                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   61</span>                            }</div>
 <div class="line"><span class="lineno">   62</span>                        }</div>
@@ -203,7 +187,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   65</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   66</span> </div>
 <div class="line"><span class="lineno">   67</span>                    <span class="keywordflow">case</span> 0x13:</div>
-<div class="line"><span class="lineno">   68</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7cfec7da8d7c1e9274b35523a7ee516c">WriteString</a>(ref dPtr, <span class="stringliteral">&quot;&lt;/end&gt;&quot;</span>);</div>
+<div class="line"><span class="lineno">   68</span>                        WriteString(ref dPtr, <span class="stringliteral">&quot;&lt;/end&gt;&quot;</span>);</div>
 <div class="line"><span class="lineno">   69</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   70</span> </div>
 <div class="line"><span class="lineno">   71</span>                    <span class="keywordflow">default</span>:</div>
@@ -223,8 +207,6 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   85</span> </div>
 <div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> string(buffer2);</div>
 <div class="line"><span class="lineno">   87</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_m_s_bin_decoder_html_a7cfec7da8d7c1e9274b35523a7ee516c"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7cfec7da8d7c1e9274b35523a7ee516c">BrawlLib.Wii.MSBinDecoder.WriteString</a></div><div class="ttdeci">static void WriteString(ref byte *dPtr, string value)</div><div class="ttdef"><b>Definition:</b> MSBinDecoder.cs:378</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_m_s_bin_decoder_html_aef1547346855f504e5807ba2840473b9"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#aef1547346855f504e5807ba2840473b9">BrawlLib.Wii.MSBinDecoder.WriteHex</a></div><div class="ttdeci">static void WriteHex(ref byte *dPtr, ref byte *sPtr, int len)</div><div class="ttdef"><b>Definition:</b> MSBinDecoder.cs:391</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -325,37 +307,37 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  151</span>                        {</div>
 <div class="line"><span class="lineno">  152</span>                            sPtr = last;</div>
 <div class="line"><span class="lineno">  153</span>                            bLen = (int) tPtr - (<span class="keywordtype">int</span>) buffer;</div>
-<div class="line"><span class="lineno">  154</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a1dc46fd8acca53f2b20b72044b9607c8">ToLower</a>(buffer, bLen);</div>
+<div class="line"><span class="lineno">  154</span>                            ToLower(buffer, bLen);</div>
 <div class="line"><span class="lineno">  155</span> </div>
 <div class="line"><span class="lineno">  156</span>                            <span class="keywordtype">byte</span>* control = dPtr;</div>
 <div class="line"><span class="lineno">  157</span>                            <span class="keywordtype">byte</span>* flag = dPtr + 1;</div>
 <div class="line"><span class="lineno">  158</span>                            <span class="keywordtype">byte</span>* data = dPtr + 2;</div>
 <div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>                            <span class="keywordflow">if</span> ((sizeIndex = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a2815bd6e2f33282b13fd8457b1e5e09f">IndexOf</a>(buffer, bLen, <span class="stringliteral">&quot;size=&quot;</span>)) &gt;= 0)</div>
+<div class="line"><span class="lineno">  160</span>                            <span class="keywordflow">if</span> ((sizeIndex = IndexOf(buffer, bLen, <span class="stringliteral">&quot;size=&quot;</span>)) &gt;= 0)</div>
 <div class="line"><span class="lineno">  161</span>                            {</div>
 <div class="line"><span class="lineno">  162</span>                                *control = 0x12;</div>
 <div class="line"><span class="lineno">  163</span>                                *flag |= 1;</div>
 <div class="line"><span class="lineno">  164</span>                                *data++ = 0x0D;</div>
 <div class="line"><span class="lineno">  165</span> </div>
 <div class="line"><span class="lineno">  166</span>                                tPtr = buffer + sizeIndex + 5;</div>
-<div class="line"><span class="lineno">  167</span>                                <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a3c47787878c1c9253530434d6027c325">ReadHex</a>(ref data, ref tPtr, 2);</div>
+<div class="line"><span class="lineno">  167</span>                                ReadHex(ref data, ref tPtr, 2);</div>
 <div class="line"><span class="lineno">  168</span> </div>
 <div class="line"><span class="lineno">  169</span>                                dPtr = data;</div>
 <div class="line"><span class="lineno">  170</span>                            }</div>
 <div class="line"><span class="lineno">  171</span> </div>
-<div class="line"><span class="lineno">  172</span>                            <span class="keywordflow">if</span> ((colorIndex = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a2815bd6e2f33282b13fd8457b1e5e09f">IndexOf</a>(buffer, bLen, <span class="stringliteral">&quot;color=&quot;</span>)) &gt;= 0)</div>
+<div class="line"><span class="lineno">  172</span>                            <span class="keywordflow">if</span> ((colorIndex = IndexOf(buffer, bLen, <span class="stringliteral">&quot;color=&quot;</span>)) &gt;= 0)</div>
 <div class="line"><span class="lineno">  173</span>                            {</div>
 <div class="line"><span class="lineno">  174</span>                                *control = 0x12;</div>
 <div class="line"><span class="lineno">  175</span>                                *flag |= 2;</div>
 <div class="line"><span class="lineno">  176</span>                                *data++ = 0x0C;</div>
 <div class="line"><span class="lineno">  177</span> </div>
 <div class="line"><span class="lineno">  178</span>                                tPtr = buffer + colorIndex + 6;</div>
-<div class="line"><span class="lineno">  179</span>                                <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a3c47787878c1c9253530434d6027c325">ReadHex</a>(ref data, ref tPtr, 4);</div>
+<div class="line"><span class="lineno">  179</span>                                ReadHex(ref data, ref tPtr, 4);</div>
 <div class="line"><span class="lineno">  180</span> </div>
 <div class="line"><span class="lineno">  181</span>                                dPtr = data;</div>
 <div class="line"><span class="lineno">  182</span>                            }</div>
 <div class="line"><span class="lineno">  183</span> </div>
-<div class="line"><span class="lineno">  184</span>                            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a086a944b55efac86746da347f1dad53a">StrContains</a>(buffer, bLen, <span class="stringliteral">&quot;end&quot;</span>))</div>
+<div class="line"><span class="lineno">  184</span>                            <span class="keywordflow">if</span> (StrContains(buffer, bLen, <span class="stringliteral">&quot;end&quot;</span>))</div>
 <div class="line"><span class="lineno">  185</span>                            {</div>
 <div class="line"><span class="lineno">  186</span>                                *dPtr++ = 0x13;</div>
 <div class="line"><span class="lineno">  187</span>                            }</div>
@@ -381,14 +363,14 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  207</span>                        {</div>
 <div class="line"><span class="lineno">  208</span>                            sPtr = last;</div>
 <div class="line"><span class="lineno">  209</span>                            bLen = (int) tPtr - (<span class="keywordtype">int</span>) buffer;</div>
-<div class="line"><span class="lineno">  210</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a1dc46fd8acca53f2b20b72044b9607c8">ToLower</a>(buffer, bLen);</div>
+<div class="line"><span class="lineno">  210</span>                            ToLower(buffer, bLen);</div>
 <div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>                            <span class="keywordflow">if</span> ((colorIndex = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a2815bd6e2f33282b13fd8457b1e5e09f">IndexOf</a>(buffer, bLen, <span class="stringliteral">&quot;border=&quot;</span>)) &gt;= 0)</div>
+<div class="line"><span class="lineno">  212</span>                            <span class="keywordflow">if</span> ((colorIndex = IndexOf(buffer, bLen, <span class="stringliteral">&quot;border=&quot;</span>)) &gt;= 0)</div>
 <div class="line"><span class="lineno">  213</span>                            {</div>
 <div class="line"><span class="lineno">  214</span>                                tPtr = buffer + colorIndex + 7;</div>
 <div class="line"><span class="lineno">  215</span> </div>
 <div class="line"><span class="lineno">  216</span>                                *dPtr++ = 0x11;</div>
-<div class="line"><span class="lineno">  217</span>                                <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a3c47787878c1c9253530434d6027c325">ReadHex</a>(ref dPtr, ref tPtr, 4);</div>
+<div class="line"><span class="lineno">  217</span>                                ReadHex(ref dPtr, ref tPtr, 4);</div>
 <div class="line"><span class="lineno">  218</span>                            }</div>
 <div class="line"><span class="lineno">  219</span>                        }</div>
 <div class="line"><span class="lineno">  220</span>                    }</div>
@@ -411,10 +393,6 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  237</span> </div>
 <div class="line"><span class="lineno">  238</span>            <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) dPtr - (int) first;</div>
 <div class="line"><span class="lineno">  239</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_m_s_bin_decoder_html_a086a944b55efac86746da347f1dad53a"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a086a944b55efac86746da347f1dad53a">BrawlLib.Wii.MSBinDecoder.StrContains</a></div><div class="ttdeci">static bool StrContains(byte *ptr, int len, string s)</div><div class="ttdef"><b>Definition:</b> MSBinDecoder.cs:469</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_m_s_bin_decoder_html_a1dc46fd8acca53f2b20b72044b9607c8"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a1dc46fd8acca53f2b20b72044b9607c8">BrawlLib.Wii.MSBinDecoder.ToLower</a></div><div class="ttdeci">static void ToLower(byte *ptr, int len)</div><div class="ttdef"><b>Definition:</b> MSBinDecoder.cs:435</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_m_s_bin_decoder_html_a2815bd6e2f33282b13fd8457b1e5e09f"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a2815bd6e2f33282b13fd8457b1e5e09f">BrawlLib.Wii.MSBinDecoder.IndexOf</a></div><div class="ttdeci">static int IndexOf(byte *ptr, int len, string s)</div><div class="ttdef"><b>Definition:</b> MSBinDecoder.cs:448</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_m_s_bin_decoder_html_a3c47787878c1c9253530434d6027c325"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a3c47787878c1c9253530434d6027c325">BrawlLib.Wii.MSBinDecoder.ReadHex</a></div><div class="ttdeci">static void ReadHex(ref byte *dPtr, ref byte *sPtr, int len)</div><div class="ttdef"><b>Definition:</b> MSBinDecoder.cs:403</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -505,14 +483,14 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  303</span>                        {</div>
 <div class="line"><span class="lineno">  304</span>                            sPtr = last;</div>
 <div class="line"><span class="lineno">  305</span>                            bLen = (int) tPtr - (<span class="keywordtype">int</span>) buffer;</div>
-<div class="line"><span class="lineno">  306</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a1dc46fd8acca53f2b20b72044b9607c8">ToLower</a>(buffer, bLen);</div>
+<div class="line"><span class="lineno">  306</span>                            ToLower(buffer, bLen);</div>
 <div class="line"><span class="lineno">  307</span> </div>
-<div class="line"><span class="lineno">  308</span>                            <span class="keywordflow">if</span> (hasColor = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a086a944b55efac86746da347f1dad53a">StrContains</a>(buffer, bLen, <span class="stringliteral">&quot;color=&quot;</span>))</div>
+<div class="line"><span class="lineno">  308</span>                            <span class="keywordflow">if</span> (hasColor = StrContains(buffer, bLen, <span class="stringliteral">&quot;color=&quot;</span>))</div>
 <div class="line"><span class="lineno">  309</span>                            {</div>
 <div class="line"><span class="lineno">  310</span>                                len += 5;</div>
 <div class="line"><span class="lineno">  311</span>                            }</div>
 <div class="line"><span class="lineno">  312</span> </div>
-<div class="line"><span class="lineno">  313</span>                            <span class="keywordflow">if</span> (hasSize = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a086a944b55efac86746da347f1dad53a">StrContains</a>(buffer, bLen, <span class="stringliteral">&quot;size=&quot;</span>))</div>
+<div class="line"><span class="lineno">  313</span>                            <span class="keywordflow">if</span> (hasSize = StrContains(buffer, bLen, <span class="stringliteral">&quot;size=&quot;</span>))</div>
 <div class="line"><span class="lineno">  314</span>                            {</div>
 <div class="line"><span class="lineno">  315</span>                                len += 3;</div>
 <div class="line"><span class="lineno">  316</span>                            }</div>
@@ -522,7 +500,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  320</span>                                len += 2;</div>
 <div class="line"><span class="lineno">  321</span>                            }</div>
 <div class="line"><span class="lineno">  322</span> </div>
-<div class="line"><span class="lineno">  323</span>                            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a086a944b55efac86746da347f1dad53a">StrContains</a>(buffer, bLen, <span class="stringliteral">&quot;end&quot;</span>))</div>
+<div class="line"><span class="lineno">  323</span>                            <span class="keywordflow">if</span> (StrContains(buffer, bLen, <span class="stringliteral">&quot;end&quot;</span>))</div>
 <div class="line"><span class="lineno">  324</span>                            {</div>
 <div class="line"><span class="lineno">  325</span>                                len++;</div>
 <div class="line"><span class="lineno">  326</span>                            }</div>
@@ -548,9 +526,9 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  346</span>                        {</div>
 <div class="line"><span class="lineno">  347</span>                            sPtr = last;</div>
 <div class="line"><span class="lineno">  348</span>                            bLen = (int) tPtr - (<span class="keywordtype">int</span>) buffer;</div>
-<div class="line"><span class="lineno">  349</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a1dc46fd8acca53f2b20b72044b9607c8">ToLower</a>(buffer, bLen);</div>
+<div class="line"><span class="lineno">  349</span>                            ToLower(buffer, bLen);</div>
 <div class="line"><span class="lineno">  350</span> </div>
-<div class="line"><span class="lineno">  351</span>                            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a086a944b55efac86746da347f1dad53a">StrContains</a>(buffer, bLen, <span class="stringliteral">&quot;border=&quot;</span>))</div>
+<div class="line"><span class="lineno">  351</span>                            <span class="keywordflow">if</span> (StrContains(buffer, bLen, <span class="stringliteral">&quot;border=&quot;</span>))</div>
 <div class="line"><span class="lineno">  352</span>                            {</div>
 <div class="line"><span class="lineno">  353</span>                                len += 5;</div>
 <div class="line"><span class="lineno">  354</span>                            }</div>
@@ -576,346 +554,6 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  374</span> </div>
 <div class="line"><span class="lineno">  375</span>            <span class="keywordflow">return</span> len;</div>
 <div class="line"><span class="lineno">  376</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a2815bd6e2f33282b13fd8457b1e5e09f" name="a2815bd6e2f33282b13fd8457b1e5e09f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2815bd6e2f33282b13fd8457b1e5e09f">&#9670;&#160;</a></span>IndexOf()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int BrawlLib.Wii.MSBinDecoder.IndexOf </td>
-          <td>(</td>
-          <td class="paramtype">byte *&#160;</td>
-          <td class="paramname"><em>ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>s</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  449</span>        {</div>
-<div class="line"><span class="lineno">  450</span>            <span class="keywordtype">int</span> slen = s.Length;</div>
-<div class="line"><span class="lineno">  451</span>            <span class="keywordtype">int</span> x, y;</div>
-<div class="line"><span class="lineno">  452</span> </div>
-<div class="line"><span class="lineno">  453</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> start = 0, end = slen - 1; end &lt; len; start++, end++)</div>
-<div class="line"><span class="lineno">  454</span>            {</div>
-<div class="line"><span class="lineno">  455</span>                <span class="keywordflow">for</span> (x = start, y = 0; y &lt; slen &amp;&amp; ptr[x++] == s[y++];)</div>
-<div class="line"><span class="lineno">  456</span>                {</div>
-<div class="line"><span class="lineno">  457</span>                    ;</div>
-<div class="line"><span class="lineno">  458</span>                }</div>
-<div class="line"><span class="lineno">  459</span> </div>
-<div class="line"><span class="lineno">  460</span>                <span class="keywordflow">if</span> (y == slen)</div>
-<div class="line"><span class="lineno">  461</span>                {</div>
-<div class="line"><span class="lineno">  462</span>                    <span class="keywordflow">return</span> start;</div>
-<div class="line"><span class="lineno">  463</span>                }</div>
-<div class="line"><span class="lineno">  464</span>            }</div>
-<div class="line"><span class="lineno">  465</span> </div>
-<div class="line"><span class="lineno">  466</span>            <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  467</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a3c47787878c1c9253530434d6027c325" name="a3c47787878c1c9253530434d6027c325"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c47787878c1c9253530434d6027c325">&#9670;&#160;</a></span>ReadHex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.Wii.MSBinDecoder.ReadHex </td>
-          <td>(</td>
-          <td class="paramtype">ref byte *&#160;</td>
-          <td class="paramname"><em>dPtr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref byte *&#160;</td>
-          <td class="paramname"><em>sPtr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  404</span>        {</div>
-<div class="line"><span class="lineno">  405</span>            <span class="keywordtype">byte</span>* buffer = stackalloc <span class="keywordtype">byte</span>[2];</div>
-<div class="line"><span class="lineno">  406</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i++ &lt; len;)</div>
-<div class="line"><span class="lineno">  407</span>            {</div>
-<div class="line"><span class="lineno">  408</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 2; x++)</div>
-<div class="line"><span class="lineno">  409</span>                {</div>
-<div class="line"><span class="lineno">  410</span>                    <span class="keywordtype">byte</span> b = *sPtr++;</div>
-<div class="line"><span class="lineno">  411</span>                    <span class="keywordflow">if</span> (b &gt;= 0x30 &amp;&amp; b &lt;= 0x39)</div>
-<div class="line"><span class="lineno">  412</span>                    {</div>
-<div class="line"><span class="lineno">  413</span>                        b -= 0x30;</div>
-<div class="line"><span class="lineno">  414</span>                    }</div>
-<div class="line"><span class="lineno">  415</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (b &gt;= 0x41 &amp;&amp; b &lt;= 0x5A)</div>
-<div class="line"><span class="lineno">  416</span>                    {</div>
-<div class="line"><span class="lineno">  417</span>                        b -= 0x37;</div>
-<div class="line"><span class="lineno">  418</span>                    }</div>
-<div class="line"><span class="lineno">  419</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (b &gt;= 0x61 &amp;&amp; b &lt;= 0x7A)</div>
-<div class="line"><span class="lineno">  420</span>                    {</div>
-<div class="line"><span class="lineno">  421</span>                        b -= 0x57;</div>
-<div class="line"><span class="lineno">  422</span>                    }</div>
-<div class="line"><span class="lineno">  423</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  424</span>                    {</div>
-<div class="line"><span class="lineno">  425</span>                        b = 0;</div>
-<div class="line"><span class="lineno">  426</span>                    }</div>
-<div class="line"><span class="lineno">  427</span> </div>
-<div class="line"><span class="lineno">  428</span>                    buffer[x] = b;</div>
-<div class="line"><span class="lineno">  429</span>                }</div>
-<div class="line"><span class="lineno">  430</span> </div>
-<div class="line"><span class="lineno">  431</span>                *dPtr++ = (byte) ((buffer[0] &lt;&lt; 4) | buffer[1]);</div>
-<div class="line"><span class="lineno">  432</span>            }</div>
-<div class="line"><span class="lineno">  433</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a086a944b55efac86746da347f1dad53a" name="a086a944b55efac86746da347f1dad53a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a086a944b55efac86746da347f1dad53a">&#9670;&#160;</a></span>StrContains()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static bool BrawlLib.Wii.MSBinDecoder.StrContains </td>
-          <td>(</td>
-          <td class="paramtype">byte *&#160;</td>
-          <td class="paramname"><em>ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>s</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  470</span>        {</div>
-<div class="line"><span class="lineno">  471</span>            <span class="keywordtype">int</span> slen = s.Length;</div>
-<div class="line"><span class="lineno">  472</span>            <span class="keywordtype">int</span> x, y;</div>
-<div class="line"><span class="lineno">  473</span> </div>
-<div class="line"><span class="lineno">  474</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> start = 0, end = slen - 1; end &lt; len; start++, end++)</div>
-<div class="line"><span class="lineno">  475</span>            {</div>
-<div class="line"><span class="lineno">  476</span>                <span class="keywordflow">for</span> (x = start, y = 0; y &lt; slen &amp;&amp; ptr[x++] == s[y++];)</div>
-<div class="line"><span class="lineno">  477</span>                {</div>
-<div class="line"><span class="lineno">  478</span>                    ;</div>
-<div class="line"><span class="lineno">  479</span>                }</div>
-<div class="line"><span class="lineno">  480</span> </div>
-<div class="line"><span class="lineno">  481</span>                <span class="keywordflow">if</span> (y == slen)</div>
-<div class="line"><span class="lineno">  482</span>                {</div>
-<div class="line"><span class="lineno">  483</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  484</span>                }</div>
-<div class="line"><span class="lineno">  485</span>            }</div>
-<div class="line"><span class="lineno">  486</span> </div>
-<div class="line"><span class="lineno">  487</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  488</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a1dc46fd8acca53f2b20b72044b9607c8" name="a1dc46fd8acca53f2b20b72044b9607c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dc46fd8acca53f2b20b72044b9607c8">&#9670;&#160;</a></span>ToLower()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.Wii.MSBinDecoder.ToLower </td>
-          <td>(</td>
-          <td class="paramtype">byte *&#160;</td>
-          <td class="paramname"><em>ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  436</span>        {</div>
-<div class="line"><span class="lineno">  437</span>            <span class="keywordtype">byte</span> b;</div>
-<div class="line"><span class="lineno">  438</span>            <span class="keywordflow">for</span> (<span class="keywordtype">byte</span>* ceil = ptr + len; ptr &lt; ceil; ptr++)</div>
-<div class="line"><span class="lineno">  439</span>            {</div>
-<div class="line"><span class="lineno">  440</span>                b = *ptr;</div>
-<div class="line"><span class="lineno">  441</span>                <span class="keywordflow">if</span> (b &gt; 0x40 &amp;&amp; b &lt; 0x5B)</div>
-<div class="line"><span class="lineno">  442</span>                {</div>
-<div class="line"><span class="lineno">  443</span>                    *ptr = (byte) (b + 0x20);</div>
-<div class="line"><span class="lineno">  444</span>                }</div>
-<div class="line"><span class="lineno">  445</span>            }</div>
-<div class="line"><span class="lineno">  446</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aef1547346855f504e5807ba2840473b9" name="aef1547346855f504e5807ba2840473b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef1547346855f504e5807ba2840473b9">&#9670;&#160;</a></span>WriteHex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.Wii.MSBinDecoder.WriteHex </td>
-          <td>(</td>
-          <td class="paramtype">ref byte *&#160;</td>
-          <td class="paramname"><em>dPtr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref byte *&#160;</td>
-          <td class="paramname"><em>sPtr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  392</span>        {</div>
-<div class="line"><span class="lineno">  393</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i++ &lt; len;)</div>
-<div class="line"><span class="lineno">  394</span>            {</div>
-<div class="line"><span class="lineno">  395</span>                <span class="keywordtype">byte</span> b = *sPtr++;</div>
-<div class="line"><span class="lineno">  396</span>                *dPtr++ = b &gt;= 0xA0 ? (byte) ((b &gt;&gt; 4) + 0x37) : (<span class="keywordtype">byte</span>) ((b &gt;&gt; 4) + 0x30);</div>
-<div class="line"><span class="lineno">  397</span> </div>
-<div class="line"><span class="lineno">  398</span>                b &amp;= 0x0F;</div>
-<div class="line"><span class="lineno">  399</span>                *dPtr++ = b &gt;= 0x0A ? (byte) (b + 0x37) : (byte) (b + 0x30);</div>
-<div class="line"><span class="lineno">  400</span>            }</div>
-<div class="line"><span class="lineno">  401</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a7cfec7da8d7c1e9274b35523a7ee516c" name="a7cfec7da8d7c1e9274b35523a7ee516c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cfec7da8d7c1e9274b35523a7ee516c">&#9670;&#160;</a></span>WriteString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.Wii.MSBinDecoder.WriteString </td>
-          <td>(</td>
-          <td class="paramtype">ref byte *&#160;</td>
-          <td class="paramname"><em>dPtr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  379</span>        {</div>
-<div class="line"><span class="lineno">  380</span>            <span class="keywordtype">int</span> len = value.Length;</div>
-<div class="line"><span class="lineno">  381</span> </div>
-<div class="line"><span class="lineno">  382</span>            fixed (<span class="keywordtype">char</span>* sPtr = value)</div>
-<div class="line"><span class="lineno">  383</span>            {</div>
-<div class="line"><span class="lineno">  384</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len;)</div>
-<div class="line"><span class="lineno">  385</span>                {</div>
-<div class="line"><span class="lineno">  386</span>                    *dPtr++ = (byte) sPtr[i++];</div>
-<div class="line"><span class="lineno">  387</span>                }</div>
-<div class="line"><span class="lineno">  388</span>            }</div>
-<div class="line"><span class="lineno">  389</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -116,8 +116,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ab345eb842ce019084549e064476a677d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#ab345eb842ce019084549e064476a677d">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ab345eb842ce019084549e064476a677d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafa587aeed1a64dbf4404fa3088c5169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">ResourceEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#aafa587aeed1a64dbf4404fa3088c5169">First</a><code> [get]</code></td></tr>
 <tr class="separator:aafa587aeed1a64dbf4404fa3088c5169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade676a728d0f25699134c8b29acd727d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#ade676a728d0f25699134c8b29acd727d">EndAddress</a><code> [get]</code></td></tr>
@@ -182,9 +180,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  409</span>        {</div>
-<div class="line"><span class="lineno">  410</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> ResourceEnumerator((ResourceGroup*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#ab345eb842ce019084549e064476a677d">Address</a>);</div>
+<div class="line"><span class="lineno">  410</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> ResourceEnumerator((ResourceGroup*) Address);</div>
 <div class="line"><span class="lineno">  411</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_ab345eb842ce019084549e064476a677d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#ab345eb842ce019084549e064476a677d">BrawlLib.SSBB.Types.ResourceGroup.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> Common.cs:395</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -211,7 +208,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  414</span>        {</div>
-<div class="line"><span class="lineno">  415</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> ResourceEnumerator((ResourceGroup*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#ab345eb842ce019084549e064476a677d">Address</a>);</div>
+<div class="line"><span class="lineno">  415</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> ResourceEnumerator((ResourceGroup*) Address);</div>
 <div class="line"><span class="lineno">  416</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -282,37 +279,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ab345eb842ce019084549e064476a677d" name="ab345eb842ce019084549e064476a677d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab345eb842ce019084549e064476a677d">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.ResourceGroup.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  395</span>        {</div>
-<div class="line"><span class="lineno">  396</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  397</span>            {</div>
-<div class="line"><span class="lineno">  398</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  399</span>                {</div>
-<div class="line"><span class="lineno">  400</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  401</span>                }</div>
-<div class="line"><span class="lineno">  402</span>            }</div>
-<div class="line"><span class="lineno">  403</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ade676a728d0f25699134c8b29acd727d" name="ade676a728d0f25699134c8b29acd727d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade676a728d0f25699134c8b29acd727d">&#9670;&#160;</a></span>EndAddress</h2>
 

@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Drawing.BitmapExtension Class Reference</div></div>
 </div><!--header-->
@@ -128,11 +127,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:abba78ef3ba04f2fa7508a92f70ffa528"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c3f41788f7b99778450aa583d01c3f7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a0c3f41788f7b99778450aa583d01c3f7">SaveTGA</a> (this Bitmap bmp, FileStream stream)</td></tr>
 <tr class="separator:a0c3f41788f7b99778450aa583d01c3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a6f581d9c06a0fcabe739d92ea989719f"><td class="memItemLeft" align="right" valign="top">unsafe delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a6f581d9c06a0fcabe739d92ea989719f">PixelClamper</a> (<a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a> *src)</td></tr>
-<tr class="separator:a6f581d9c06a0fcabe739d92ea989719f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7e6666919c32512d01cbc9b515dd80cd" name="a7e6666919c32512d01cbc9b515dd80cd"></a>
@@ -236,7 +230,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  260</span>            BitmapData data = bmp.LockBits(<span class="keyword">new</span> Rectangle(0, 0, w, h), ImageLockMode.ReadWrite,</div>
 <div class="line"><span class="lineno">  261</span>                PixelFormat.Format32bppArgb);</div>
 <div class="line"><span class="lineno">  262</span> </div>
-<div class="line"><span class="lineno">  263</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a6f581d9c06a0fcabe739d92ea989719f">PixelClamper</a> clmp;</div>
+<div class="line"><span class="lineno">  263</span>            PixelClamper clmp;</div>
 <div class="line"><span class="lineno">  264</span>            <span class="keywordflow">switch</span> (format)</div>
 <div class="line"><span class="lineno">  265</span>            {</div>
 <div class="line"><span class="lineno">  266</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.I4:</div>
@@ -290,7 +284,6 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  314</span> </div>
 <div class="line"><span class="lineno">  315</span>            bmp.UnlockBits(data);</div>
 <div class="line"><span class="lineno">  316</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension_html_a6f581d9c06a0fcabe739d92ea989719f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a6f581d9c06a0fcabe739d92ea989719f">BrawlLib.Internal.Drawing.BitmapExtension.PixelClamper</a></div><div class="ttdeci">unsafe delegate void PixelClamper(ARGBPixel *src)</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a31c9a00637753a146132a789b0ab5796"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">BrawlLib.Wii.Textures.WiiPixelFormat</a></div><div class="ttdeci">WiiPixelFormat</div><div class="ttdef"><b>Definition:</b> Enum.cs:4</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel.html">BrawlLib.Wii.Textures.I4Pixel</a></div><div class="ttdef"><b>Definition:</b> I4.cs:48</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel.html">BrawlLib.Wii.Textures.I8Pixel</a></div><div class="ttdef"><b>Definition:</b> I8.cs:45</div></div>
@@ -1060,32 +1053,6 @@ Private Member Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a6f581d9c06a0fcabe739d92ea989719f" name="a6f581d9c06a0fcabe739d92ea989719f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f581d9c06a0fcabe739d92ea989719f">&#9670;&#160;</a></span>PixelClamper()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsafe delegate void BrawlLib.Internal.Drawing.BitmapExtension.PixelClamper </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a> *&#160;</td>
-          <td class="paramname"><em>src</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a0ed0b281218fc41aada0f8bdceee6d21" name="a0ed0b281218fc41aada0f8bdceee6d21"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ed0b281218fc41aada0f8bdceee6d21">&#9670;&#160;</a></span>Quantize()</h2>
 
@@ -1144,10 +1111,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  145</span>        {</div>
-<div class="line"><span class="lineno">  146</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">MedianCut</a>.<a class="code hl_function" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a8b4422d410c0d6a5cfd92849576cb610">Quantize</a>(bmp, numColors, texFormat, palFormat, progress);</div>
+<div class="line"><span class="lineno">  146</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">MedianCut</a>.Quantize(bmp, numColors, texFormat, palFormat, progress);</div>
 <div class="line"><span class="lineno">  147</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">BrawlLib.Imaging.MedianCut</a></div><div class="ttdef"><b>Definition:</b> MedianCut.cs:18</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html_a8b4422d410c0d6a5cfd92849576cb610"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html#a8b4422d410c0d6a5cfd92849576cb610">BrawlLib.Imaging.MedianCut.Quantize</a></div><div class="ttdeci">Bitmap Quantize(int targetColors, IProgressTracker progress)</div><div class="ttdef"><b>Definition:</b> MedianCut.cs:350</div></div>
 </div><!-- fragment -->
 </div>
 </div>

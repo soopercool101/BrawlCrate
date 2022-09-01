@@ -112,8 +112,6 @@ Static Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a72bb269eea8fb7b9af41f091184bcf8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#a72bb269eea8fb7b9af41f091184bcf8e">this[int index]</a><code> [get]</code></td></tr>
 <tr class="separator:a72bb269eea8fb7b9af41f091184bcf8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae39e5ce44b2d3631adddfd42eefa4364"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ae39e5ce44b2d3631adddfd42eefa4364">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ae39e5ce44b2d3631adddfd42eefa4364"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae03c24f4643e2b3a6407b8b1dc69b381" name="ae03c24f4643e2b3a6407b8b1dc69b381"></a>
@@ -140,10 +138,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   21</span>        {</div>
-<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span> *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) ((<span class="keywordtype">byte</span>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ae39e5ce44b2d3631adddfd42eefa4364">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af454129b084a857546fbb3735757b40b">Size</a> + index * 4);</div>
+<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span> *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) ((<span class="keywordtype">byte</span>*) Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af454129b084a857546fbb3735757b40b">Size</a> + index * 4);</div>
 <div class="line"><span class="lineno">   23</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:59</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_html_ae39e5ce44b2d3631adddfd42eefa4364"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#ae39e5ce44b2d3631adddfd42eefa4364">BrawlLib.SSBB.Types.Subspace.BLOC.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> BLOC.cs:26</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c_html_af454129b084a857546fbb3735757b40b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_b_l_o_c.html#af454129b084a857546fbb3735757b40b">BrawlLib.SSBB.Types.Subspace.BLOC.Size</a></div><div class="ttdeci">const int Size</div><div class="ttdef"><b>Definition:</b> BLOC.cs:11</div></div>
 </div><!-- fragment -->
 </div>
@@ -250,37 +247,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ae39e5ce44b2d3631adddfd42eefa4364" name="ae39e5ce44b2d3631adddfd42eefa4364"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae39e5ce44b2d3631adddfd42eefa4364">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.Subspace.BLOC.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   26</span>        {</div>
-<div class="line"><span class="lineno">   27</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   28</span>            {</div>
-<div class="line"><span class="lineno">   29</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   30</span>                {</div>
-<div class="line"><span class="lineno">   31</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   32</span>                }</div>
-<div class="line"><span class="lineno">   33</span>            }</div>
-<div class="line"><span class="lineno">   34</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a72bb269eea8fb7b9af41f091184bcf8e" name="a72bb269eea8fb7b9af41f091184bcf8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72bb269eea8fb7b9af41f091184bcf8e">&#9670;&#160;</a></span>this[int index]</h2>
 

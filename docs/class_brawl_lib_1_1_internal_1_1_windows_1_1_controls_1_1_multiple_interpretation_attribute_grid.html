@@ -77,8 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid Class Reference</div></div>
 </div><!--header-->
@@ -112,18 +110,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9605907d11f2d25abf4e9e30de86b80b inherit pub_methods_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae64a53decd4238161a7515b0db6107a6 inherit pub_methods_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#ae64a53decd4238161a7515b0db6107a6">TargetChanged</a> ()</td></tr>
 <tr class="separator:ae64a53decd4238161a7515b0db6107a6 inherit pub_methods_class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:aa6954262e3e348a3d06ea1a1d4c50863"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#aa6954262e3e348a3d06ea1a1d4c50863">save_Click</a> (object sender, EventArgs e)</td></tr>
-<tr class="separator:aa6954262e3e348a3d06ea1a1d4c50863"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3db55de89142a7e20482b8e2e661ec14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a3db55de89142a7e20482b8e2e661ec14">chooser_SelectedIndexChanged</a> (object sender, EventArgs e)</td></tr>
-<tr class="separator:a3db55de89142a7e20482b8e2e661ec14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a14a98037745ac0bb9c678003d4a85355"><td class="memItemLeft" align="right" valign="top">readonly ComboBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a></td></tr>
-<tr class="separator:a14a98037745ac0bb9c678003d4a85355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -171,37 +157,34 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   11</span>                                                     : base()</div>
 <div class="line"><span class="lineno">   12</span>        {</div>
-<div class="line"><span class="lineno">   13</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a> = <span class="keyword">new</span> ComboBox</div>
+<div class="line"><span class="lineno">   13</span>            chooser = <span class="keyword">new</span> ComboBox</div>
 <div class="line"><span class="lineno">   14</span>            {</div>
 <div class="line"><span class="lineno">   15</span>                Dock = DockStyle.Fill,</div>
 <div class="line"><span class="lineno">   16</span>                DropDownStyle = ComboBoxStyle.DropDownList</div>
 <div class="line"><span class="lineno">   17</span>            };</div>
-<div class="line"><span class="lineno">   18</span>            chooser.SelectedIndexChanged += <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a3db55de89142a7e20482b8e2e661ec14">chooser_SelectedIndexChanged</a>;</div>
+<div class="line"><span class="lineno">   18</span>            chooser.SelectedIndexChanged += chooser_SelectedIndexChanged;</div>
 <div class="line"><span class="lineno">   19</span> </div>
 <div class="line"><span class="lineno">   20</span>            Button save = <span class="keyword">new</span> Button</div>
 <div class="line"><span class="lineno">   21</span>            {</div>
 <div class="line"><span class="lineno">   22</span>                Dock = DockStyle.Right,</div>
 <div class="line"><span class="lineno">   23</span>                Text = <span class="stringliteral">&quot;Save&quot;</span></div>
 <div class="line"><span class="lineno">   24</span>            };</div>
-<div class="line"><span class="lineno">   25</span>            save.Click += <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#aa6954262e3e348a3d06ea1a1d4c50863">save_Click</a>;</div>
+<div class="line"><span class="lineno">   25</span>            save.Click += save_Click;</div>
 <div class="line"><span class="lineno">   26</span> </div>
 <div class="line"><span class="lineno">   27</span>            Panel p = <span class="keyword">new</span> Panel</div>
 <div class="line"><span class="lineno">   28</span>            {</div>
 <div class="line"><span class="lineno">   29</span>                Dock = DockStyle.Top,</div>
 <div class="line"><span class="lineno">   30</span>                Size = chooser.PreferredSize</div>
 <div class="line"><span class="lineno">   31</span>            };</div>
-<div class="line"><span class="lineno">   32</span>            p.Controls.Add(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a>);</div>
+<div class="line"><span class="lineno">   32</span>            p.Controls.Add(chooser);</div>
 <div class="line"><span class="lineno">   33</span>            p.Controls.Add(save);</div>
 <div class="line"><span class="lineno">   34</span>            Controls.Add(p);</div>
 <div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">foreach</span> (Control c <span class="keywordflow">in</span> <span class="keyword">new</span> Control[] {<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a>, save, p})</div>
+<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">foreach</span> (Control c <span class="keywordflow">in</span> <span class="keyword">new</span> Control[] {chooser, save, p})</div>
 <div class="line"><span class="lineno">   37</span>            {</div>
 <div class="line"><span class="lineno">   38</span>                c.Margin = <span class="keyword">new</span> Padding(0);</div>
 <div class="line"><span class="lineno">   39</span>            }</div>
 <div class="line"><span class="lineno">   40</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid_html_a14a98037745ac0bb9c678003d4a85355"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid.chooser</a></div><div class="ttdeci">readonly ComboBox chooser</div><div class="ttdef"><b>Definition:</b> MultipleInterpretationAttributeGrid.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid_html_a3db55de89142a7e20482b8e2e661ec14"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a3db55de89142a7e20482b8e2e661ec14">BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid.chooser_SelectedIndexChanged</a></div><div class="ttdeci">void chooser_SelectedIndexChanged(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> MultipleInterpretationAttributeGrid.cs:48</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid_html_aa6954262e3e348a3d06ea1a1d4c50863"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#aa6954262e3e348a3d06ea1a1d4c50863">BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid.save_Click</a></div><div class="ttdeci">void save_Click(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> MultipleInterpretationAttributeGrid.cs:42</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -230,7 +213,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   59</span>        {</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keywordtype">int</span> i = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a>.Items.Add(arr);</div>
+<div class="line"><span class="lineno">   60</span>            <span class="keywordtype">int</span> i = chooser.Items.Add(arr);</div>
 <div class="line"><span class="lineno">   61</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#a91bcd46f557fd4f10115f5cf0e8e1231">AttributeArray</a> == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   62</span>            {</div>
 <div class="line"><span class="lineno">   63</span>                chooser.SelectedIndex = i;</div>
@@ -275,51 +258,6 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a3db55de89142a7e20482b8e2e661ec14" name="a3db55de89142a7e20482b8e2e661ec14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3db55de89142a7e20482b8e2e661ec14">&#9670;&#160;</a></span>chooser_SelectedIndexChanged()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid.chooser_SelectedIndexChanged </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">EventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   49</span>        {</div>
-<div class="line"><span class="lineno">   50</span>            AttributeInterpretation item = (AttributeInterpretation) <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a>.SelectedItem;</div>
-<div class="line"><span class="lineno">   51</span>            if (item != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   52</span>            {</div>
-<div class="line"><span class="lineno">   53</span>                <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#a91bcd46f557fd4f10115f5cf0e8e1231">AttributeArray</a> = item.Array;</div>
-<div class="line"><span class="lineno">   54</span>                <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#ae64a53decd4238161a7515b0db6107a6">TargetChanged</a>();</div>
-<div class="line"><span class="lineno">   55</span>            }</div>
-<div class="line"><span class="lineno">   56</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid_html_ae64a53decd4238161a7515b0db6107a6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#ae64a53decd4238161a7515b0db6107a6">BrawlLib.Internal.Windows.Controls.AttributeGrid.TargetChanged</a></div><div class="ttdeci">void TargetChanged()</div><div class="ttdef"><b>Definition:</b> AttributeGrid.cs:427</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a244d8ba56c700144f87ab9891af3e2b3" name="a244d8ba56c700144f87ab9891af3e2b3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a244d8ba56c700144f87ab9891af3e2b3">&#9670;&#160;</a></span>Clear()</h2>
 
@@ -348,13 +286,13 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   90</span>                <span class="keywordflow">if</span> (MessageBox.Show(<span class="stringliteral">&quot;There are unsaved changes to your documentation, would you like to save them?&quot;</span>,</div>
 <div class="line"><span class="lineno">   91</span>                    <span class="stringliteral">&quot;BrawlCrate&quot;</span>, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)</div>
 <div class="line"><span class="lineno">   92</span>                {</div>
-<div class="line"><span class="lineno">   93</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#aa6954262e3e348a3d06ea1a1d4c50863">save_Click</a>(<span class="keyword">null</span>, <span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">   93</span>                    save_Click(<span class="keyword">null</span>, <span class="keyword">null</span>);</div>
 <div class="line"><span class="lineno">   94</span>                }</div>
 <div class="line"><span class="lineno">   95</span> </div>
 <div class="line"><span class="lineno">   96</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#a955f8a6cd54a2c5b376163339761f0d6">somethingChanged</a> = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   97</span>            }</div>
 <div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a>.Items.Clear();</div>
+<div class="line"><span class="lineno">   99</span>            chooser.Items.Clear();</div>
 <div class="line"><span class="lineno">  100</span>            <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#a91bcd46f557fd4f10115f5cf0e8e1231">AttributeArray</a> = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  101</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid_html_a955f8a6cd54a2c5b376163339761f0d6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#a955f8a6cd54a2c5b376163339761f0d6">BrawlLib.Internal.Windows.Controls.AttributeGrid.somethingChanged</a></div><div class="ttdeci">bool somethingChanged</div><div class="ttdef"><b>Definition:</b> AttributeGrid.cs:375</div></div>
@@ -385,76 +323,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   78</span>        {</div>
-<div class="line"><span class="lineno">   79</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a>.Items.Remove(arr);</div>
+<div class="line"><span class="lineno">   79</span>            chooser.Items.Remove(arr);</div>
 <div class="line"><span class="lineno">   80</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#a91bcd46f557fd4f10115f5cf0e8e1231">AttributeArray</a> == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   81</span>            {</div>
 <div class="line"><span class="lineno">   82</span>                <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_attribute_grid.html#a91bcd46f557fd4f10115f5cf0e8e1231">AttributeArray</a> = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   83</span>            }</div>
 <div class="line"><span class="lineno">   84</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="aa6954262e3e348a3d06ea1a1d4c50863" name="aa6954262e3e348a3d06ea1a1d4c50863"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6954262e3e348a3d06ea1a1d4c50863">&#9670;&#160;</a></span>save_Click()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid.save_Click </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">EventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   43</span>        {</div>
-<div class="line"><span class="lineno">   44</span>            AttributeInterpretation item = (AttributeInterpretation) <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html#a14a98037745ac0bb9c678003d4a85355">chooser</a>.SelectedItem;</div>
-<div class="line"><span class="lineno">   45</span>            item?.Save();</div>
-<div class="line"><span class="lineno">   46</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a14a98037745ac0bb9c678003d4a85355" name="a14a98037745ac0bb9c678003d4a85355"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14a98037745ac0bb9c678003d4a85355">&#9670;&#160;</a></span>chooser</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly ComboBox BrawlLib.Internal.Windows.Controls.MultipleInterpretationAttributeGrid.chooser</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

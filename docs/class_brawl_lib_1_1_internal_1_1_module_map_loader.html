@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_module_map_loader-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.ModuleMapLoader Class Reference</div></div>
 </div><!--header-->
@@ -87,84 +86,7 @@ $(function() {
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:af13778ab926041efb990eb9977075832"><td class="memItemLeft" align="right" valign="top">static readonly Dictionary&lt; string, Dictionary&lt; uint, string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_module_map_loader.html#af13778ab926041efb990eb9977075832">MapFiles</a></td></tr>
 <tr class="separator:af13778ab926041efb990eb9977075832"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:ab402265a5c4e658c9f3ae958ec31a100"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_module_map_loader.html#ab402265a5c4e658c9f3ae958ec31a100">ModuleMapLoader</a> ()</td></tr>
-<tr class="separator:ab402265a5c4e658c9f3ae958ec31a100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab402265a5c4e658c9f3ae958ec31a100" name="ab402265a5c4e658c9f3ae958ec31a100"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab402265a5c4e658c9f3ae958ec31a100">&#9670;&#160;</a></span>ModuleMapLoader()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static BrawlLib.Internal.ModuleMapLoader.ModuleMapLoader </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   14</span>        {</div>
-<div class="line"><span class="lineno">   15</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_module_map_loader.html#af13778ab926041efb990eb9977075832">MapFiles</a> = <span class="keyword">new</span> Dictionary&lt;string, Dictionary&lt;uint, string&gt;&gt;();</div>
-<div class="line"><span class="lineno">   16</span>            <span class="keywordtype">string</span> mapPath = Path.Combine(Application.StartupPath, <span class="stringliteral">&quot;InternalDocumentation&quot;</span>, <span class="stringliteral">&quot;Module&quot;</span>, <span class="stringliteral">&quot;maps&quot;</span>);</div>
-<div class="line"><span class="lineno">   17</span>            <span class="keywordflow">if</span> (Directory.Exists(mapPath))</div>
-<div class="line"><span class="lineno">   18</span>            {</div>
-<div class="line"><span class="lineno">   19</span>                DirectoryInfo d = <span class="keyword">new</span> DirectoryInfo(mapPath);</div>
-<div class="line"><span class="lineno">   20</span>                <span class="keywordflow">foreach</span> (FileInfo map <span class="keywordflow">in</span> d.GetFiles().Where(f =&gt; f.Extension.Equals(<span class="stringliteral">&quot;.map&quot;</span>, StringComparison.OrdinalIgnoreCase)))</div>
-<div class="line"><span class="lineno">   21</span>                {</div>
-<div class="line"><span class="lineno">   22</span>                    Dictionary&lt;uint, string&gt; currentMap = <span class="keyword">new</span> Dictionary&lt;uint, string&gt;();</div>
-<div class="line"><span class="lineno">   23</span>                    List&lt;string&gt; fileList = <span class="keyword">new</span> List&lt;string&gt;(File.ReadAllLines(map.FullName));</div>
-<div class="line"><span class="lineno">   24</span>                    <span class="keywordtype">string</span> mapName = Path.GetFileNameWithoutExtension(map.FullName);</div>
-<div class="line"><span class="lineno">   25</span>                    <span class="keywordtype">bool</span> mainDol = mapName.Equals(<span class="stringliteral">&quot;RSBE01&quot;</span>, StringComparison.OrdinalIgnoreCase) || mapName.Equals(<span class="stringliteral">&quot;sora&quot;</span>, StringComparison.OrdinalIgnoreCase);</div>
-<div class="line"><span class="lineno">   26</span>                    <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> fileList)</div>
-<div class="line"><span class="lineno">   27</span>                    {</div>
-<div class="line"><span class="lineno">   28</span>                        <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrWhiteSpace(s))</div>
-<div class="line"><span class="lineno">   29</span>                        {</div>
-<div class="line"><span class="lineno">   30</span>                            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   31</span>                        }</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>                        <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">   34</span>                        {</div>
-<div class="line"><span class="lineno">   35</span>                            <span class="keywordtype">string</span> offset = s.Substring(0, 8);</div>
-<div class="line"><span class="lineno">   36</span>                            </div>
-<div class="line"><span class="lineno">   37</span>                            uint key = Convert.ToUInt32(offset, 16);</div>
-<div class="line"><span class="lineno">   38</span>                            <span class="keywordflow">if</span> (currentMap.ContainsKey(key))</div>
-<div class="line"><span class="lineno">   39</span>                            {</div>
-<div class="line"><span class="lineno">   40</span>                                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   41</span>                            }</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>                            currentMap.Add(key, s.Trim().Substring(s.LastIndexOf(<span class="charliteral">&#39; &#39;</span>)).Trim());</div>
-<div class="line"><span class="lineno">   44</span>                        }</div>
-<div class="line"><span class="lineno">   45</span>                        <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">   46</span>                        {</div>
-<div class="line"><span class="lineno">   47</span>                            <span class="comment">// continue</span></div>
-<div class="line"><span class="lineno">   48</span>                        }</div>
-<div class="line"><span class="lineno">   49</span>                    }</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>                    <span class="keywordtype">string</span> mapKey = mainDol ? <span class="stringliteral">&quot;main.dol&quot;</span> : mapName;</div>
-<div class="line"><span class="lineno">   52</span>                    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_module_map_loader.html#af13778ab926041efb990eb9977075832">MapFiles</a>.ContainsKey(mapKey))</div>
-<div class="line"><span class="lineno">   53</span>                    {</div>
-<div class="line"><span class="lineno">   54</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_module_map_loader.html#af13778ab926041efb990eb9977075832">MapFiles</a>.Add(mapKey, currentMap);</div>
-<div class="line"><span class="lineno">   55</span>                    }</div>
-<div class="line"><span class="lineno">   56</span>                }</div>
-<div class="line"><span class="lineno">   57</span>            }</div>
-<div class="line"><span class="lineno">   58</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_module_map_loader_html_af13778ab926041efb990eb9977075832"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_module_map_loader.html#af13778ab926041efb990eb9977075832">BrawlLib.Internal.ModuleMapLoader.MapFiles</a></div><div class="ttdeci">static readonly Dictionary&lt; string, Dictionary&lt; uint, string &gt; &gt; MapFiles</div><div class="ttdef"><b>Definition:</b> ModuleMapLoader.cs:11</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="af13778ab926041efb990eb9977075832" name="af13778ab926041efb990eb9977075832"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af13778ab926041efb990eb9977075832">&#9670;&#160;</a></span>MapFiles</h2>

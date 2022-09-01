@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.BrawlManagers.StageManager.SongsByStageID Class Reference</div></div>
 </div><!--header-->
@@ -89,11 +88,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a7505182bcb71da377568315dd13fd79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa597335881ca0d29870380cc4c8efc9c"><td class="memItemLeft" align="right" valign="top">static string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d.html#aa597335881ca0d29870380cc4c8efc9c">ForPac</a> (<a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html">TracklistModifier</a> modifier, <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html">CMM</a> cmm, string filename)</td></tr>
 <tr class="separator:aa597335881ca0d29870380cc4c8efc9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ab897db0d8bf2cfc54baf797579839549"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; int, string[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d.html#ab897db0d8bf2cfc54baf797579839549">dict</a></td></tr>
-<tr class="separator:ab897db0d8bf2cfc54baf797579839549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7505182bcb71da377568315dd13fd79d" name="a7505182bcb71da377568315dd13fd79d"></a>
@@ -230,14 +224,13 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  577</span>                };</div>
 <div class="line"><span class="lineno">  578</span>            }</div>
 <div class="line"><span class="lineno">  579</span> </div>
-<div class="line"><span class="lineno">  580</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d.html#ab897db0d8bf2cfc54baf797579839549">dict</a>.TryGetValue(stageId, out <span class="keywordtype">string</span>[] ret))</div>
+<div class="line"><span class="lineno">  580</span>            <span class="keywordflow">if</span> (dict.TryGetValue(stageId, out <span class="keywordtype">string</span>[] ret))</div>
 <div class="line"><span class="lineno">  581</span>            {</div>
 <div class="line"><span class="lineno">  582</span>                <span class="keywordflow">return</span> ret;</div>
 <div class="line"><span class="lineno">  583</span>            }</div>
 <div class="line"><span class="lineno">  584</span> </div>
 <div class="line"><span class="lineno">  585</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <span class="keywordtype">string</span>[0];</div>
 <div class="line"><span class="lineno">  586</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d_html_ab897db0d8bf2cfc54baf797579839549"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_songs_by_stage_i_d.html#ab897db0d8bf2cfc54baf797579839549">BrawlCrate.BrawlManagers.StageManager.SongsByStageID.dict</a></div><div class="ttdeci">static Dictionary&lt; int, string[]&gt; dict</div><div class="ttdef"><b>Definition:</b> SongsByStageID.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM</a></div><div class="ttdef"><b>Definition:</b> CMM.cs:11</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a6e7c324a0c007d2c094a348abdefe01b"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a6e7c324a0c007d2c094a348abdefe01b">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.TracklistModifier</a></div><div class="ttdeci">readonly byte[] TracklistModifier</div><div class="ttdef"><b>Definition:</b> CMM.cs:53</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m_html_a99001469de7c85697e22a1c5432c6902"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_c_m_m.html#a99001469de7c85697e22a1c5432c6902">BrawlLib.BrawlManagerLib.GCT.ReadOnly.CMM.StandardCMMTracklistModifierData</a></div><div class="ttdeci">static readonly byte[] StandardCMMTracklistModifierData</div><div class="ttdef"><b>Definition:</b> CMM.cs:35</div></div>
@@ -247,29 +240,6 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> Stage.cs:7</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html_ab07d075440d932e467cdf7691a5be6b3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html#ab07d075440d932e467cdf7691a5be6b3">BrawlLib.SSBB.Stage.Stages</a></div><div class="ttdeci">static readonly Stage[] Stages</div><div class="ttdef"><b>Definition:</b> Stage.cs:199</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab897db0d8bf2cfc54baf797579839549" name="ab897db0d8bf2cfc54baf797579839549"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab897db0d8bf2cfc54baf797579839549">&#9670;&#160;</a></span>dict</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;int, string[]&gt; BrawlCrate.BrawlManagers.StageManager.SongsByStageID.dict</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

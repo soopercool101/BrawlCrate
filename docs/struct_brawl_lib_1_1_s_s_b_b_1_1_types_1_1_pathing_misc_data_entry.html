@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.Types.PathingMiscDataEntry Struct Reference</div></div>
 </div><!--header-->
@@ -115,13 +114,6 @@ Static Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a3a2619677675729fafc8d19585358c63"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry.html#a3a2619677675729fafc8d19585358c63">Name</a><code> [get]</code></td></tr>
 <tr class="separator:a3a2619677675729fafc8d19585358c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2f8ab280ec19892a6a3e03959d4d4d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry.html#ac2f8ab280ec19892a6a3e03959d4d4d1">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ac2f8ab280ec19892a6a3e03959d4d4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a9a529752aaf985456a73c59a1ff86503"><td class="memItemLeft" align="right" valign="top">fixed byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry.html#a9a529752aaf985456a73c59a1ff86503">_name</a> [0x20]</td></tr>
-<tr class="separator:a9a529752aaf985456a73c59a1ff86503"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a2bab73f0a6124506f88f1257d917e421" name="a2bab73f0a6124506f88f1257d917e421"></a>
@@ -250,28 +242,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a9a529752aaf985456a73c59a1ff86503" name="a9a529752aaf985456a73c59a1ff86503"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a529752aaf985456a73c59a1ff86503">&#9670;&#160;</a></span>_name</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">fixed byte BrawlLib.SSBB.Types.PathingMiscDataEntry._name[0x20]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a0bfb8b6d99f70bfae39deb5cf1a319c7" name="a0bfb8b6d99f70bfae39deb5cf1a319c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0bfb8b6d99f70bfae39deb5cf1a319c7">&#9670;&#160;</a></span>Size</h2>
 
@@ -295,37 +265,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ac2f8ab280ec19892a6a3e03959d4d4d1" name="ac2f8ab280ec19892a6a3e03959d4d4d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2f8ab280ec19892a6a3e03959d4d4d1">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.PathingMiscDataEntry.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   72</span>        {</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   74</span>            {</div>
-<div class="line"><span class="lineno">   75</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   76</span>                {</div>
-<div class="line"><span class="lineno">   77</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   78</span>                }</div>
-<div class="line"><span class="lineno">   79</span>            }</div>
-<div class="line"><span class="lineno">   80</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a3a2619677675729fafc8d19585358c63" name="a3a2619677675729fafc8d19585358c63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a2619677675729fafc8d19585358c63">&#9670;&#160;</a></span>Name</h2>
 
@@ -348,13 +287,12 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   61</span>        {</div>
 <div class="line"><span class="lineno">   62</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   63</span>            {</div>
-<div class="line"><span class="lineno">   64</span>                fixed (<span class="keywordtype">byte</span>* name = <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry.html#a9a529752aaf985456a73c59a1ff86503">_name</a>)</div>
+<div class="line"><span class="lineno">   64</span>                fixed (<span class="keywordtype">byte</span>* name = _name)</div>
 <div class="line"><span class="lineno">   65</span>                {</div>
 <div class="line"><span class="lineno">   66</span>                    <span class="keywordflow">return</span> Encoding.UTF8.GetString(name, 0x20);</div>
 <div class="line"><span class="lineno">   67</span>                }</div>
 <div class="line"><span class="lineno">   68</span>            }</div>
 <div class="line"><span class="lineno">   69</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry_html_a9a529752aaf985456a73c59a1ff86503"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_pathing_misc_data_entry.html#a9a529752aaf985456a73c59a1ff86503">BrawlLib.SSBB.Types.PathingMiscDataEntry._name</a></div><div class="ttdeci">fixed byte _name[0x20]</div><div class="ttdef"><b>Definition:</b> PathingMiscData.cs:58</div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pac-static-methods">Static Package Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.ExternalInterfacing.UpdaterHelper Class Reference</div></div>
 </div><!--header-->
@@ -101,11 +100,6 @@ Static Package Functions</h2></td></tr>
 <tr class="separator:a61a4b01db1080e8d3e3ec6b01bc826d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed2d9aabedc615c1888894ae201619c9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#aed2d9aabedc615c1888894ae201619c9">CreateIssue</a> (bool waitForExit, string TagName, string ExceptionMessage, string StackTrace, string Title, string Description)</td></tr>
 <tr class="separator:aed2d9aabedc615c1888894ae201619c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a23870e23d0b423213ae7e5d0eb9ca4b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a> (bool waitForExit, params string[] args)</td></tr>
-<tr class="separator:a23870e23d0b423213ae7e5d0eb9ca4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a76084b1d198f7830bb98764b3262d869" name="a76084b1d198f7830bb98764b3262d869"></a>
@@ -142,9 +136,8 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
-<div class="line"><span class="lineno">   35</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, <span class="stringliteral">&quot;-apiUpdate&quot;</span>, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>            RunWithArgs(waitForExit, <span class="stringliteral">&quot;-apiUpdate&quot;</span>, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
 <div class="line"><span class="lineno">   36</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_updater_helper_html_a23870e23d0b423213ae7e5d0eb9ca4b5"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">BrawlCrate.ExternalInterfacing.UpdaterHelper.RunWithArgs</a></div><div class="ttdeci">static void RunWithArgs(bool waitForExit, params string[] args)</div><div class="ttdef"><b>Definition:</b> UpdaterHelper.cs:65</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -194,7 +187,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   39</span>        {</div>
-<div class="line"><span class="lineno">   40</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, <span class="stringliteral">&quot;-apiInstall&quot;</span>, repoOwner, repoName, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
+<div class="line"><span class="lineno">   40</span>            RunWithArgs(waitForExit, <span class="stringliteral">&quot;-apiInstall&quot;</span>, repoOwner, repoName, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
 <div class="line"><span class="lineno">   41</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -245,7 +238,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   44</span>        {</div>
-<div class="line"><span class="lineno">   45</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, <span class="stringliteral">&quot;-apiUninstall&quot;</span>, repoOwner, repoName, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span>            RunWithArgs(waitForExit, <span class="stringliteral">&quot;-apiUninstall&quot;</span>, repoOwner, repoName, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
 <div class="line"><span class="lineno">   46</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -302,7 +295,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   24</span>        {</div>
-<div class="line"><span class="lineno">   25</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, <span class="stringliteral">&quot;-buc&quot;</span>, openFile, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, force ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, checkForAPI ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
+<div class="line"><span class="lineno">   25</span>            RunWithArgs(waitForExit, <span class="stringliteral">&quot;-buc&quot;</span>, openFile, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, force ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, checkForAPI ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
 <div class="line"><span class="lineno">   26</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -341,7 +334,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   11</span>        {</div>
-<div class="line"><span class="lineno">   12</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, overwrite ? <span class="stringliteral">&quot;-r&quot;</span> : <span class="stringliteral">&quot;-n&quot;</span>);</div>
+<div class="line"><span class="lineno">   12</span>            RunWithArgs(waitForExit, overwrite ? <span class="stringliteral">&quot;-r&quot;</span> : <span class="stringliteral">&quot;-n&quot;</span>);</div>
 <div class="line"><span class="lineno">   13</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -416,7 +409,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   17</span>        {</div>
-<div class="line"><span class="lineno">   18</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, <span class="stringliteral">&quot;-bu&quot;</span>, overwrite ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, releaseTag, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, openFile,</div>
+<div class="line"><span class="lineno">   18</span>            RunWithArgs(waitForExit, <span class="stringliteral">&quot;-bu&quot;</span>, overwrite ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, releaseTag, manual ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, openFile,</div>
 <div class="line"><span class="lineno">   19</span>                checkDocumentation ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, automatic ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>, checkForAPI ? <span class="stringliteral">&quot;1&quot;</span> : <span class="stringliteral">&quot;0&quot;</span>);</div>
 <div class="line"><span class="lineno">   20</span>        }</div>
 </div><!-- fragment -->
@@ -480,7 +473,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   59</span>        {</div>
-<div class="line"><span class="lineno">   60</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, <span class="stringliteral">&quot;-bi&quot;</span>, TagName, ExceptionMessage, StackTrace, Title, Description);</div>
+<div class="line"><span class="lineno">   60</span>            RunWithArgs(waitForExit, <span class="stringliteral">&quot;-bi&quot;</span>, TagName, ExceptionMessage, StackTrace, Title, Description);</div>
 <div class="line"><span class="lineno">   61</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -519,62 +512,8 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   29</span>        {</div>
-<div class="line"><span class="lineno">   30</span>            <a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a23870e23d0b423213ae7e5d0eb9ca4b5">RunWithArgs</a>(waitForExit, <span class="stringliteral">&quot;-dlStable&quot;</span>, openFile);</div>
+<div class="line"><span class="lineno">   30</span>            RunWithArgs(waitForExit, <span class="stringliteral">&quot;-dlStable&quot;</span>, openFile);</div>
 <div class="line"><span class="lineno">   31</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a23870e23d0b423213ae7e5d0eb9ca4b5" name="a23870e23d0b423213ae7e5d0eb9ca4b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23870e23d0b423213ae7e5d0eb9ca4b5">&#9670;&#160;</a></span>RunWithArgs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlCrate.ExternalInterfacing.UpdaterHelper.RunWithArgs </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>waitForExit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">params string[]&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   66</span>        {</div>
-<div class="line"><span class="lineno">   67</span>            <span class="keywordflow">if</span> (Program.CanRunGithubApp(<span class="keyword">false</span>, out <span class="keywordtype">string</span> path))</div>
-<div class="line"><span class="lineno">   68</span>            {</div>
-<div class="line"><span class="lineno">   69</span>                <span class="keywordtype">string</span> argument = args.Aggregate(<span class="stringliteral">&quot;&quot;</span>, (current, arg) =&gt; current + $<span class="stringliteral">&quot;\&quot;{arg}\&quot; &quot;</span>).Trim();</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>                <span class="comment">// Run the process with the given arguments. </span></div>
-<div class="line"><span class="lineno">   72</span>                Process updater = Process.Start(<span class="keyword">new</span> ProcessStartInfo</div>
-<div class="line"><span class="lineno">   73</span>                {</div>
-<div class="line"><span class="lineno">   74</span>                    FileName = path,</div>
-<div class="line"><span class="lineno">   75</span>                    WindowStyle = ProcessWindowStyle.Hidden,</div>
-<div class="line"><span class="lineno">   76</span>                    Arguments = argument</div>
-<div class="line"><span class="lineno">   77</span>                });</div>
-<div class="line"><span class="lineno">   78</span>                <span class="keywordflow">if</span> (waitForExit)</div>
-<div class="line"><span class="lineno">   79</span>                {</div>
-<div class="line"><span class="lineno">   80</span>                    updater?.WaitForExit();</div>
-<div class="line"><span class="lineno">   81</span>                }</div>
-<div class="line"><span class="lineno">   82</span>            }</div>
-<div class="line"><span class="lineno">   83</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

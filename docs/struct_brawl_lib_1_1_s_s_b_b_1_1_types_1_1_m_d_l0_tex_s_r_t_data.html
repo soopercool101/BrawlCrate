@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#properties">Properties</a> &#124;
 <a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.Types.MDL0TexSRTData Struct Reference</div></div>
 </div><!--header-->
@@ -139,11 +138,6 @@ Public Attributes</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:aade2ac66943e5649fbcca770b103eec5"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html">MDL0TexSRTData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html#aade2ac66943e5649fbcca770b103eec5">Default</a></td></tr>
 <tr class="separator:aade2ac66943e5649fbcca770b103eec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:afe75f37db5ef0a22b0ab851a33ed14d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html#afe75f37db5ef0a22b0ab851a33ed14d0">Address</a><code> [get]</code></td></tr>
-<tr class="separator:afe75f37db5ef0a22b0ab851a33ed14d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aaa80ac8e91782cb6803d6404a565b143" name="aaa80ac8e91782cb6803d6404a565b143"></a>
@@ -170,9 +164,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1111</span>        {</div>
-<div class="line"><span class="lineno"> 1112</span>            <span class="keywordflow">return</span> *(TexMtxEffect*) ((<span class="keywordtype">byte</span>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html#afe75f37db5ef0a22b0ab851a33ed14d0">Address</a> + 168 + Index * 52);</div>
+<div class="line"><span class="lineno"> 1112</span>            <span class="keywordflow">return</span> *(TexMtxEffect*) ((<span class="keywordtype">byte</span>*) Address + 168 + Index * 52);</div>
 <div class="line"><span class="lineno"> 1113</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data_html_afe75f37db5ef0a22b0ab851a33ed14d0"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html#afe75f37db5ef0a22b0ab851a33ed14d0">BrawlLib.SSBB.Types.MDL0TexSRTData.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> MDL0.cs:1090</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -200,7 +193,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1101</span>        {</div>
-<div class="line"><span class="lineno"> 1102</span>            <span class="keywordflow">return</span> *(TextureSRT*) ((<span class="keywordtype">byte</span>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html#afe75f37db5ef0a22b0ab851a33ed14d0">Address</a> + 8 + Index * 20);</div>
+<div class="line"><span class="lineno"> 1102</span>            <span class="keywordflow">return</span> *(TextureSRT*) ((<span class="keywordtype">byte</span>*) Address + 8 + Index * 20);</div>
 <div class="line"><span class="lineno"> 1103</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -239,7 +232,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1116</span>        {</div>
-<div class="line"><span class="lineno"> 1117</span>            *(TexMtxEffect*) ((<span class="keywordtype">byte</span>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html#afe75f37db5ef0a22b0ab851a33ed14d0">Address</a> + 168 + Index * 52) = value;</div>
+<div class="line"><span class="lineno"> 1117</span>            *(TexMtxEffect*) ((<span class="keywordtype">byte</span>*) Address + 168 + Index * 52) = value;</div>
 <div class="line"><span class="lineno"> 1118</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -278,7 +271,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1106</span>        {</div>
-<div class="line"><span class="lineno"> 1107</span>            *(TextureSRT*) ((<span class="keywordtype">byte</span>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_tex_s_r_t_data.html#afe75f37db5ef0a22b0ab851a33ed14d0">Address</a> + 8 + Index * 20) = value;</div>
+<div class="line"><span class="lineno"> 1107</span>            *(TextureSRT*) ((<span class="keywordtype">byte</span>*) Address + 8 + Index * 20) = value;</div>
 <div class="line"><span class="lineno"> 1108</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -594,38 +587,6 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="afe75f37db5ef0a22b0ab851a33ed14d0" name="afe75f37db5ef0a22b0ab851a33ed14d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe75f37db5ef0a22b0ab851a33ed14d0">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.MDL0TexSRTData.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1090</span>        {</div>
-<div class="line"><span class="lineno"> 1091</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno"> 1092</span>            {</div>
-<div class="line"><span class="lineno"> 1093</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno"> 1094</span>                {</div>
-<div class="line"><span class="lineno"> 1095</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno"> 1096</span>                }</div>
-<div class="line"><span class="lineno"> 1097</span>            }</div>
-<div class="line"><span class="lineno"> 1098</span>        }</div>
-</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>

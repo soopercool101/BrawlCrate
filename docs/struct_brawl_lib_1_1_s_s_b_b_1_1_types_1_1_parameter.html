@@ -118,8 +118,6 @@ Static Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a269d8da5f2ee447dd0dd0f0e5d09790e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#a269d8da5f2ee447dd0dd0f0e5d09790e">this[int index]</a><code> [get]</code></td></tr>
 <tr class="separator:a269d8da5f2ee447dd0dd0f0e5d09790e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf7a2576a98248c9799348fbae532d9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">Address</a><code> [get]</code></td></tr>
-<tr class="separator:acf7a2576a98248c9799348fbae532d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afb3fb865df244944db5790e573e59e73" name="afb3fb865df244944db5790e573e59e73"></a>
@@ -192,10 +190,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   29</span>        {</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">return</span> *((<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">Address</a> + 4 + index);</div>
+<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">return</span> *((<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) Address + 4 + index);</div>
 <div class="line"><span class="lineno">   31</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:59</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter_html_acf7a2576a98248c9799348fbae532d9e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#acf7a2576a98248c9799348fbae532d9e">BrawlLib.SSBB.Types.Parameter.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> Parameters.cs:34</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -345,37 +342,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="acf7a2576a98248c9799348fbae532d9e" name="acf7a2576a98248c9799348fbae532d9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf7a2576a98248c9799348fbae532d9e">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.Parameter.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
-<div class="line"><span class="lineno">   35</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   36</span>            {</div>
-<div class="line"><span class="lineno">   37</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   38</span>                {</div>
-<div class="line"><span class="lineno">   39</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   40</span>                }</div>
-<div class="line"><span class="lineno">   41</span>            }</div>
-<div class="line"><span class="lineno">   42</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a269d8da5f2ee447dd0dd0f0e5d09790e" name="a269d8da5f2ee447dd0dd0f0e5d09790e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a269d8da5f2ee447dd0dd0f0e5d09790e">&#9670;&#160;</a></span>this[int index]</h2>
 

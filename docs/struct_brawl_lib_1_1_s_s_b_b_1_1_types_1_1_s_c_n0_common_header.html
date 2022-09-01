@@ -104,8 +104,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:accd2ac609ce1d422ea82ca2dce946f94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#accd2ac609ce1d422ea82ca2dce946f94">Address</a><code> [get]</code></td></tr>
-<tr class="separator:accd2ac609ce1d422ea82ca2dce946f94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c03c07dd29d2c43e1a08fd7e816a9d6"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#a5c03c07dd29d2c43e1a08fd7e816a9d6">ResourceString</a><code> [get]</code></td></tr>
 <tr class="separator:a5c03c07dd29d2c43e1a08fd7e816a9d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a952224d37d626885d63d72dbe0b15f34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#a952224d37d626885d63d72dbe0b15f34">ResourceStringAddress</a><code> [get, set]</code></td></tr>
@@ -205,37 +203,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="accd2ac609ce1d422ea82ca2dce946f94" name="accd2ac609ce1d422ea82ca2dce946f94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accd2ac609ce1d422ea82ca2dce946f94">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.SCN0CommonHeader.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  231</span>        {</div>
-<div class="line"><span class="lineno">  232</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  233</span>            {</div>
-<div class="line"><span class="lineno">  234</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  235</span>                {</div>
-<div class="line"><span class="lineno">  236</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  237</span>                }</div>
-<div class="line"><span class="lineno">  238</span>            }</div>
-<div class="line"><span class="lineno">  239</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a5c03c07dd29d2c43e1a08fd7e816a9d6" name="a5c03c07dd29d2c43e1a08fd7e816a9d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5c03c07dd29d2c43e1a08fd7e816a9d6">&#9670;&#160;</a></span>ResourceString</h2>
 
@@ -278,11 +245,10 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  244</span>        {</div>
-<div class="line"><span class="lineno">  245</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#accd2ac609ce1d422ea82ca2dce946f94">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#a127459b356ebbffe33de6667b1d58538">_stringOffset</a>;</div>
-<div class="line"><span class="lineno">  246</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#a127459b356ebbffe33de6667b1d58538">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#accd2ac609ce1d422ea82ca2dce946f94">Address</a>;</div>
+<div class="line"><span class="lineno">  245</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#a127459b356ebbffe33de6667b1d58538">_stringOffset</a>;</div>
+<div class="line"><span class="lineno">  246</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#a127459b356ebbffe33de6667b1d58538">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">  247</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header_html_a127459b356ebbffe33de6667b1d58538"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#a127459b356ebbffe33de6667b1d58538">BrawlLib.SSBB.Types.SCN0CommonHeader._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> SCN0.cs:226</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header_html_accd2ac609ce1d422ea82ca2dce946f94"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_common_header.html#accd2ac609ce1d422ea82ca2dce946f94">BrawlLib.SSBB.Types.SCN0CommonHeader.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> SCN0.cs:231</div></div>
 </div><!-- fragment -->
 </div>
 </div>

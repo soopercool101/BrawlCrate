@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Audio.alAudioProvider Class Reference</div></div>
 </div><!--header-->
@@ -114,11 +113,6 @@ Public Member Functions</h2></td></tr>
 Package Functions</h2></td></tr>
 <tr class="memitem:a7bf0ca2aaeb1d79aaf36fb0ed0301f84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html#a7bf0ca2aaeb1d79aaf36fb0ed0301f84">alAudioProvider</a> ()</td></tr>
 <tr class="separator:a7bf0ca2aaeb1d79aaf36fb0ed0301f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ae211569c7decb6e1ff09948b67b7dfe9"><td class="memItemLeft" align="right" valign="top">AudioContext&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html#ae211569c7decb6e1ff09948b67b7dfe9">context</a></td></tr>
-<tr class="separator:ae211569c7decb6e1ff09948b67b7dfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -166,9 +160,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   11</span>        {</div>
-<div class="line"><span class="lineno">   12</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html#ae211569c7decb6e1ff09948b67b7dfe9">context</a> = <span class="keyword">new</span> AudioContext();</div>
+<div class="line"><span class="lineno">   12</span>            context = <span class="keyword">new</span> AudioContext();</div>
 <div class="line"><span class="lineno">   13</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider_html_ae211569c7decb6e1ff09948b67b7dfe9"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html#ae211569c7decb6e1ff09948b67b7dfe9">BrawlLib.Internal.Audio.alAudioProvider.context</a></div><div class="ttdeci">AudioContext context</div><div class="ttdef"><b>Definition:</b> alAudioProvider.cs:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -264,9 +257,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_provider.html#a0979d4a63bb8b6ec2327c371bb43c5c1">BrawlLib.Internal.Audio.AudioProvider</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   16</span>        {</div>
 <div class="line"><span class="lineno">   17</span>            base.Dispose();</div>
-<div class="line"><span class="lineno">   18</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html#ae211569c7decb6e1ff09948b67b7dfe9">context</a>?.Dispose();</div>
+<div class="line"><span class="lineno">   18</span>            context?.Dispose();</div>
 <div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html#ae211569c7decb6e1ff09948b67b7dfe9">context</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   20</span>            context = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   21</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -297,29 +290,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   38</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;OpenAL wrapper&quot;</span>;</div>
 <div class="line"><span class="lineno">   39</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae211569c7decb6e1ff09948b67b7dfe9" name="ae211569c7decb6e1ff09948b67b7dfe9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae211569c7decb6e1ff09948b67b7dfe9">&#9670;&#160;</a></span>context</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">AudioContext BrawlLib.Internal.Audio.alAudioProvider.context</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

@@ -81,7 +81,6 @@ $(function() {
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode Class Reference</div></div>
 </div><!--header-->
@@ -491,17 +490,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a32238641fb60864d8645af8d300b8aa5 inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_color_source"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_color_source.html#a32238641fb60864d8645af8d300b8aa5">TypeCount</a><code> [get]</code></td></tr>
 <tr class="separator:a32238641fb60864d8645af8d300b8aa5 inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_color_source"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a3be61fafc5d6bdf028410739c83589e6"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a3be61fafc5d6bdf028410739c83589e6">_fixedFlags</a></td></tr>
-<tr class="separator:a3be61fafc5d6bdf028410739c83589e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c1610af2664054ee2d81dc51df69d0d"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> = 3</td></tr>
-<tr class="separator:a0c1610af2664054ee2d81dc51df69d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad279205d3294010336c37dea7bbc1f9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html">SCN0AmbientLightNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#ad279205d3294010336c37dea7bbc1f9b">_match</a></td></tr>
-<tr class="separator:ad279205d3294010336c37dea7bbc1f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a612c0402f8fa6ee38dd62dbf06baef0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a612c0402f8fa6ee38dd62dbf06baef0d">_matchAddr</a></td></tr>
-<tr class="separator:a612c0402f8fa6ee38dd62dbf06baef0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode</a></td></tr>
@@ -857,34 +845,32 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  279</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a35ef577f5dd2c0255d0bfb8e64993767">_dataLengths</a>[i] = 0;</div>
 <div class="line"><span class="lineno">  280</span>            }</div>
 <div class="line"><span class="lineno">  281</span> </div>
-<div class="line"><span class="lineno">  282</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#ad279205d3294010336c37dea7bbc1f9b">_match</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  282</span>            _match = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  283</span> </div>
 <div class="line"><span class="lineno">  284</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> == <span class="stringliteral">&quot;&lt;null&gt;&quot;</span>)</div>
 <div class="line"><span class="lineno">  285</span>            {</div>
 <div class="line"><span class="lineno">  286</span>                <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html">SCN0AmbientLight</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#a702cf8a9b82c5bac3bd7efd91605b231">Size</a>;</div>
 <div class="line"><span class="lineno">  287</span>            }</div>
 <div class="line"><span class="lineno">  288</span> </div>
-<div class="line"><span class="lineno">  289</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#ad279205d3294010336c37dea7bbc1f9b">_match</a> = <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#af3ad0b9bebd3383801c8e1521ced09e4">FindColorMatch</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a2ac860f53fef78356270e9032faf79dd">_constant</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#aae7d9c253cd417a32650efc20f8f9fc3">FrameCount</a>, 0) as SCN0AmbientLightNode;</div>
-<div class="line"><span class="lineno">  290</span>            if (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#ad279205d3294010336c37dea7bbc1f9b">_match</a> == null &amp;&amp; !<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a2ac860f53fef78356270e9032faf79dd">_constant</a>)</div>
+<div class="line"><span class="lineno">  289</span>            _match = <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#af3ad0b9bebd3383801c8e1521ced09e4">FindColorMatch</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a2ac860f53fef78356270e9032faf79dd">_constant</a>, <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#aae7d9c253cd417a32650efc20f8f9fc3">FrameCount</a>, 0) as SCN0AmbientLightNode;</div>
+<div class="line"><span class="lineno">  290</span>            if (_match == null &amp;&amp; !<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a2ac860f53fef78356270e9032faf79dd">_constant</a>)</div>
 <div class="line"><span class="lineno">  291</span>            {</div>
 <div class="line"><span class="lineno">  292</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a35ef577f5dd2c0255d0bfb8e64993767">_dataLengths</a>[1] += 4 * (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#aae7d9c253cd417a32650efc20f8f9fc3">FrameCount</a> + 1);</div>
 <div class="line"><span class="lineno">  293</span>            }</div>
 <div class="line"><span class="lineno">  294</span> </div>
 <div class="line"><span class="lineno">  295</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a2ac860f53fef78356270e9032faf79dd">_constant</a>)</div>
 <div class="line"><span class="lineno">  296</span>            {</div>
-<div class="line"><span class="lineno">  297</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a3be61fafc5d6bdf028410739c83589e6">_fixedFlags</a> |= 0x80;</div>
+<div class="line"><span class="lineno">  297</span>                _fixedFlags |= 0x80;</div>
 <div class="line"><span class="lineno">  298</span>            }</div>
 <div class="line"><span class="lineno">  299</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  300</span>            {</div>
-<div class="line"><span class="lineno">  301</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a3be61fafc5d6bdf028410739c83589e6">_fixedFlags</a> &amp;= 0x7F;</div>
+<div class="line"><span class="lineno">  301</span>                _fixedFlags &amp;= 0x7F;</div>
 <div class="line"><span class="lineno">  302</span>            }</div>
 <div class="line"><span class="lineno">  303</span> </div>
 <div class="line"><span class="lineno">  304</span>            <span class="keywordflow">return</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html">SCN0AmbientLight</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#a702cf8a9b82c5bac3bd7efd91605b231">Size</a>;</div>
 <div class="line"><span class="lineno">  305</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node_html_a3be61fafc5d6bdf028410739c83589e6"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a3be61fafc5d6bdf028410739c83589e6">BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._fixedFlags</a></div><div class="ttdeci">byte _fixedFlags</div><div class="ttdef"><b>Definition:</b> SCN0AmbientLightNode.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node_html_aae7d9c253cd417a32650efc20f8f9fc3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#aae7d9c253cd417a32650efc20f8f9fc3">BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode.FrameCount</a></div><div class="ttdeci">int FrameCount</div><div class="ttdef"><b>Definition:</b> SCN0AmbientLightNode.cs:230</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node_html_ad279205d3294010336c37dea7bbc1f9b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#ad279205d3294010336c37dea7bbc1f9b">BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._match</a></div><div class="ttdeci">SCN0AmbientLightNode _match</div><div class="ttdef"><b>Definition:</b> SCN0AmbientLightNode.cs:273</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node_html_a35ef577f5dd2c0255d0bfb8e64993767"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a35ef577f5dd2c0255d0bfb8e64993767">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode._dataLengths</a></div><div class="ttdeci">int[] _dataLengths</div><div class="ttdef"><b>Definition:</b> SCN0GroupNode.cs:256</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node_html_af3ad0b9bebd3383801c8e1521ced09e4"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#af3ad0b9bebd3383801c8e1521ced09e4">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode.FindColorMatch</a></div><div class="ttdeci">IColorSource FindColorMatch(bool constant, int frameCount, int id)</div><div class="ttdef"><b>Definition:</b> SCN0GroupNode.cs:314</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html">BrawlLib.SSBB.Types.SCN0AmbientLight</a></div><div class="ttdef"><b>Definition:</b> SCN0.cs:323</div></div>
@@ -924,8 +910,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  248</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a1f70d035f0d70afdec7eeb2f9fb2f7c5">_colors</a> = <span class="keyword">new</span> List&lt;RGBAPixel&gt;();</div>
 <div class="line"><span class="lineno">  249</span> </div>
 <div class="line"><span class="lineno">  250</span>            <span class="comment">//Read header values</span></div>
-<div class="line"><span class="lineno">  251</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a3be61fafc5d6bdf028410739c83589e6">_fixedFlags</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a54afa2b078dc389a0d44b43d7425b0cd">Data</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#adbaca352898d4c247029a2965ca212a2">_fixedFlags</a>;</div>
-<div class="line"><span class="lineno">  252</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a54afa2b078dc389a0d44b43d7425b0cd">Data</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#a334ddbe35644bbd7faf07df52092aa8f">_flags</a>;</div>
+<div class="line"><span class="lineno">  251</span>            _fixedFlags = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a54afa2b078dc389a0d44b43d7425b0cd">Data</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#adbaca352898d4c247029a2965ca212a2">_fixedFlags</a>;</div>
+<div class="line"><span class="lineno">  252</span>            _usageFlags = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a54afa2b078dc389a0d44b43d7425b0cd">Data</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#a334ddbe35644bbd7faf07df52092aa8f">_flags</a>;</div>
 <div class="line"><span class="lineno">  253</span> </div>
 <div class="line"><span class="lineno">  254</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> == <span class="stringliteral">&quot;&lt;null&gt;&quot;</span>)</div>
 <div class="line"><span class="lineno">  255</span>            {</div>
@@ -934,7 +920,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  258</span> </div>
 <div class="line"><span class="lineno">  259</span>            <span class="comment">//Read ambient light color</span></div>
 <div class="line"><span class="lineno">  260</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a7a872ccd4a23258813abc4453feb0e50">ReadColors</a>(</div>
-<div class="line"><span class="lineno">  261</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a3be61fafc5d6bdf028410739c83589e6">_fixedFlags</a>,</div>
+<div class="line"><span class="lineno">  261</span>                _fixedFlags,</div>
 <div class="line"><span class="lineno">  262</span>                1 &lt;&lt; 7,</div>
 <div class="line"><span class="lineno">  263</span>                ref <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a2b3b1f629f9b95c39cf4f8248b0185e6">_solidColor</a>,</div>
 <div class="line"><span class="lineno">  264</span>                ref <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a1f70d035f0d70afdec7eeb2f9fb2f7c5">_colors</a>,</div>
@@ -945,7 +931,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  269</span> </div>
 <div class="line"><span class="lineno">  270</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  271</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node_html_a0c1610af2664054ee2d81dc51df69d0d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._usageFlags</a></div><div class="ttdeci">byte _usageFlags</div><div class="ttdef"><b>Definition:</b> SCN0AmbientLightNode.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node_html_a54afa2b078dc389a0d44b43d7425b0cd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a54afa2b078dc389a0d44b43d7425b0cd">BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode.Data</a></div><div class="ttdeci">SCN0AmbientLight * Data</div><div class="ttdef"><b>Definition:</b> SCN0AmbientLightNode.cs:12</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node_html_a7a872ccd4a23258813abc4453feb0e50"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a7a872ccd4a23258813abc4453feb0e50">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode.ReadColors</a></div><div class="ttdeci">void ReadColors(uint flags, uint bit, ref RGBAPixel solidColor, ref List&lt; RGBAPixel &gt; colors, int frameCount, VoidPtr address, ref bool constant, ref int numEntries)</div><div class="ttdef"><b>Definition:</b> SCN0GroupNode.cs:396</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html_abf46f7cb049aeda4920f5eeaa8f89b87"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html#abf46f7cb049aeda4920f5eeaa8f89b87">BrawlLib.Imaging.RGBAPixel.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:538</div></div>
@@ -999,7 +984,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  310</span>        {</div>
 <div class="line"><span class="lineno">  311</span>            base.OnRebuild(address, length, force);</div>
 <div class="line"><span class="lineno">  312</span> </div>
-<div class="line"><span class="lineno">  313</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a612c0402f8fa6ee38dd62dbf06baef0d">_matchAddr</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  313</span>            _matchAddr = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  314</span> </div>
 <div class="line"><span class="lineno">  315</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html">SCN0AmbientLight</a>* header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html">SCN0AmbientLight</a>*) address;</div>
 <div class="line"><span class="lineno">  316</span> </div>
@@ -1011,7 +996,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  322</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  323</span>            }</div>
 <div class="line"><span class="lineno">  324</span> </div>
-<div class="line"><span class="lineno">  325</span>            <span class="keywordtype">int</span> flags = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a3be61fafc5d6bdf028410739c83589e6">_fixedFlags</a>;</div>
+<div class="line"><span class="lineno">  325</span>            <span class="keywordtype">int</span> flags = _fixedFlags;</div>
 <div class="line"><span class="lineno">  326</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a9e8fe8085344c728f43b0d9dfe3bc2eb">_dataAddrs</a>[1] += <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a5b59d3afa89ff35cdd5e7f8ad77a9a7e">WriteColors</a>(</div>
 <div class="line"><span class="lineno">  327</span>                ref flags,</div>
 <div class="line"><span class="lineno">  328</span>                0x80,</div>
@@ -1020,14 +1005,13 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  331</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a2ac860f53fef78356270e9032faf79dd">_constant</a>,</div>
 <div class="line"><span class="lineno">  332</span>                <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#aae7d9c253cd417a32650efc20f8f9fc3">FrameCount</a>,</div>
 <div class="line"><span class="lineno">  333</span>                header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#af89c59585d405bcc49f97fe63b860bc0">_lighting</a>.<a class="code hl_property" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html#abf46f7cb049aeda4920f5eeaa8f89b87">Address</a>,</div>
-<div class="line"><span class="lineno">  334</span>                ref <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a612c0402f8fa6ee38dd62dbf06baef0d">_matchAddr</a>,</div>
-<div class="line"><span class="lineno">  335</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#ad279205d3294010336c37dea7bbc1f9b">_match</a> == <span class="keyword">null</span> ? <span class="keyword">null</span> : <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#ad279205d3294010336c37dea7bbc1f9b">_match</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a612c0402f8fa6ee38dd62dbf06baef0d">_matchAddr</a>,</div>
+<div class="line"><span class="lineno">  334</span>                ref _matchAddr,</div>
+<div class="line"><span class="lineno">  335</span>                _match == <span class="keyword">null</span> ? <span class="keyword">null</span> : _match._matchAddr,</div>
 <div class="line"><span class="lineno">  336</span>                (<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>*) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a9e8fe8085344c728f43b0d9dfe3bc2eb">_dataAddrs</a>[1]);</div>
 <div class="line"><span class="lineno">  337</span> </div>
 <div class="line"><span class="lineno">  338</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#adbaca352898d4c247029a2965ca212a2">_fixedFlags</a> = (byte) flags;</div>
-<div class="line"><span class="lineno">  339</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#a334ddbe35644bbd7faf07df52092aa8f">_flags</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a>;</div>
+<div class="line"><span class="lineno">  339</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_ambient_light.html#a334ddbe35644bbd7faf07df52092aa8f">_flags</a> = _usageFlags;</div>
 <div class="line"><span class="lineno">  340</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node_html_a612c0402f8fa6ee38dd62dbf06baef0d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a612c0402f8fa6ee38dd62dbf06baef0d">BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._matchAddr</a></div><div class="ttdeci">VoidPtr _matchAddr</div><div class="ttdef"><b>Definition:</b> SCN0AmbientLightNode.cs:307</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node_html_a5b59d3afa89ff35cdd5e7f8ad77a9a7e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a5b59d3afa89ff35cdd5e7f8ad77a9a7e">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode.WriteColors</a></div><div class="ttdeci">int WriteColors(ref int flags, int bit, RGBAPixel solidColor, List&lt; RGBAPixel &gt; colors, bool constant, int frameCount, VoidPtr valueAddr, ref VoidPtr thisMatchAddr, VoidPtr thatMatchAddr, RGBAPixel *dataAddr)</div><div class="ttdef"><b>Definition:</b> SCN0GroupNode.cs:353</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node_html_a9e8fe8085344c728f43b0d9dfe3bc2eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html#a9e8fe8085344c728f43b0d9dfe3bc2eb">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode._dataAddrs</a></div><div class="ttdeci">VoidPtr[] _dataAddrs</div><div class="ttdef"><b>Definition:</b> SCN0GroupNode.cs:257</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">BrawlLib.Imaging.RGBAPixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:327</div></div>
@@ -1275,72 +1259,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a3be61fafc5d6bdf028410739c83589e6" name="a3be61fafc5d6bdf028410739c83589e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3be61fafc5d6bdf028410739c83589e6">&#9670;&#160;</a></span>_fixedFlags</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._fixedFlags</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad279205d3294010336c37dea7bbc1f9b" name="ad279205d3294010336c37dea7bbc1f9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad279205d3294010336c37dea7bbc1f9b">&#9670;&#160;</a></span>_match</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html">SCN0AmbientLightNode</a> BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._match</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a612c0402f8fa6ee38dd62dbf06baef0d" name="a612c0402f8fa6ee38dd62dbf06baef0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a612c0402f8fa6ee38dd62dbf06baef0d">&#9670;&#160;</a></span>_matchAddr</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._matchAddr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a20b1fe661b45c5f37604d0ff75fa8c9b" name="a20b1fe661b45c5f37604d0ff75fa8c9b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20b1fe661b45c5f37604d0ff75fa8c9b">&#9670;&#160;</a></span>_numEntries</h2>
 
@@ -1385,28 +1303,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a0c1610af2664054ee2d81dc51df69d0d" name="a0c1610af2664054ee2d81dc51df69d0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c1610af2664054ee2d81dc51df69d0d">&#9670;&#160;</a></span>_usageFlags</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte BrawlLib.SSBB.ResourceNodes.SCN0AmbientLightNode._usageFlags = 3</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a474f3ce2ba91f9c9c0be71de6c8656e9" name="a474f3ce2ba91f9c9c0be71de6c8656e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a474f3ce2ba91f9c9c0be71de6c8656e9">&#9670;&#160;</a></span>AlphaEnabled</h2>
@@ -1428,16 +1324,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   38</span>        {</div>
-<div class="line"><span class="lineno">   39</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> &amp; 2) != 0;</div>
+<div class="line"><span class="lineno">   39</span>            <span class="keyword">get</span> =&gt; (_usageFlags &amp; 2) != 0;</div>
 <div class="line"><span class="lineno">   40</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   41</span>            {</div>
 <div class="line"><span class="lineno">   42</span>                <span class="keywordflow">if</span> (value)</div>
 <div class="line"><span class="lineno">   43</span>                {</div>
-<div class="line"><span class="lineno">   44</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> |= 2;</div>
+<div class="line"><span class="lineno">   44</span>                    _usageFlags |= 2;</div>
 <div class="line"><span class="lineno">   45</span>                }</div>
 <div class="line"><span class="lineno">   46</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   47</span>                {</div>
-<div class="line"><span class="lineno">   48</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> &amp;= 1;</div>
+<div class="line"><span class="lineno">   48</span>                    _usageFlags &amp;= 1;</div>
 <div class="line"><span class="lineno">   49</span>                }</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
@@ -1466,16 +1362,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   19</span>        {</div>
-<div class="line"><span class="lineno">   20</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> &amp; 1) != 0;</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keyword">get</span> =&gt; (_usageFlags &amp; 1) != 0;</div>
 <div class="line"><span class="lineno">   21</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   22</span>            {</div>
 <div class="line"><span class="lineno">   23</span>                <span class="keywordflow">if</span> (value)</div>
 <div class="line"><span class="lineno">   24</span>                {</div>
-<div class="line"><span class="lineno">   25</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> |= 1;</div>
+<div class="line"><span class="lineno">   25</span>                    _usageFlags |= 1;</div>
 <div class="line"><span class="lineno">   26</span>                }</div>
 <div class="line"><span class="lineno">   27</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   28</span>                {</div>
-<div class="line"><span class="lineno">   29</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_ambient_light_node.html#a0c1610af2664054ee2d81dc51df69d0d">_usageFlags</a> &amp;= 2;</div>
+<div class="line"><span class="lineno">   29</span>                    _usageFlags &amp;= 2;</div>
 <div class="line"><span class="lineno">   30</span>                }</div>
 <div class="line"><span class="lineno">   31</span> </div>
 <div class="line"><span class="lineno">   32</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>

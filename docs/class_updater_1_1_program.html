@@ -77,8 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_updater_1_1_program-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Updater.Program Class Reference</div></div>
 </div><!--header-->
@@ -88,229 +86,7 @@ $(function() {
 Properties</h2></td></tr>
 <tr class="memitem:a79655105c551b82e2c2d53e444c0dfe6"><td class="memItemLeft" align="right" valign="top">static GitHubClient&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_program.html#a79655105c551b82e2c2d53e444c0dfe6">Github</a><code> [get]</code></td></tr>
 <tr class="separator:a79655105c551b82e2c2d53e444c0dfe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a3651814f56e55be647b28db37688cb24"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_program.html#a3651814f56e55be647b28db37688cb24">Main</a> (string[] args)</td></tr>
-<tr class="separator:a3651814f56e55be647b28db37688cb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a6910f52b888fdc1730c4b58ce9dd713a"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_program.html#a6910f52b888fdc1730c4b58ce9dd713a">Usage</a> = @&quot;Usage: -n = New Folder&quot;</td></tr>
-<tr class="separator:a6910f52b888fdc1730c4b58ce9dd713a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a151080238d5780cfef3d80d163a62585"><td class="memItemLeft" align="right" valign="top">static GitHubClient&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_program.html#a151080238d5780cfef3d80d163a62585">_github</a></td></tr>
-<tr class="separator:a151080238d5780cfef3d80d163a62585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0dad12d8be22e21a132eedeb5f789da"><td class="memItemLeft" align="right" valign="top">static readonly byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_updater_1_1_program.html#aa0dad12d8be22e21a132eedeb5f789da">RawData</a></td></tr>
-<tr class="separator:aa0dad12d8be22e21a132eedeb5f789da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3651814f56e55be647b28db37688cb24" name="a3651814f56e55be647b28db37688cb24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3651814f56e55be647b28db37688cb24">&#9670;&#160;</a></span>Main()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Updater.Program.Main </td>
-          <td>(</td>
-          <td class="paramtype">string[]&#160;</td>
-          <td class="paramname"><em>args</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   17</span>        {</div>
-<div class="line"><span class="lineno">   18</span>            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>            Application.EnableVisualStyles();</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>            <span class="comment">//Prevent crash that occurs when this dll is not present</span></div>
-<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">if</span> (!File.Exists(Application.StartupPath + <span class="stringliteral">&quot;/Octokit.dll&quot;</span>))</div>
-<div class="line"><span class="lineno">   24</span>            {</div>
-<div class="line"><span class="lineno">   25</span>                MessageBox.Show(<span class="stringliteral">&quot;Unable to find Octokit.dll.&quot;</span>);</div>
-<div class="line"><span class="lineno">   26</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   27</span>            }</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>            <span class="keywordtype">bool</span> somethingDone = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   30</span>            Task t;</div>
-<div class="line"><span class="lineno">   31</span>            <span class="keywordflow">if</span> (args.Length &gt; 0)</div>
-<div class="line"><span class="lineno">   32</span>            {</div>
-<div class="line"><span class="lineno">   33</span>                <span class="keywordflow">switch</span> (args[0])</div>
-<div class="line"><span class="lineno">   34</span>                {</div>
-<div class="line"><span class="lineno">   35</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-r&quot;</span>: <span class="comment">//overwrite</span></div>
-<div class="line"><span class="lineno">   36</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.CheckUpdate(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   37</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   38</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   39</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-n&quot;</span>: <span class="comment">// Update in new folder</span></div>
-<div class="line"><span class="lineno">   40</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.CheckUpdate(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   41</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   42</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-bu&quot;</span>: <span class="comment">//BrawlCrate update call</span></div>
-<div class="line"><span class="lineno">   44</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.CheckUpdate(args[1] != <span class="stringliteral">&quot;0&quot;</span>, args[2], args[3] != <span class="stringliteral">&quot;0&quot;</span>, args[4], args[5] != <span class="stringliteral">&quot;0&quot;</span>,</div>
-<div class="line"><span class="lineno">   45</span>                            args[6] != <span class="stringliteral">&quot;0&quot;</span>, args[7] != <span class="stringliteral">&quot;0&quot;</span>);</div>
-<div class="line"><span class="lineno">   46</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   47</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   48</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-buc&quot;</span>: <span class="comment">//BrawlCrate Canary update call</span></div>
-<div class="line"><span class="lineno">   49</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.CheckCanaryUpdate(args.Length &gt; 1 ? args[1] : <span class="keyword">null</span>,</div>
-<div class="line"><span class="lineno">   50</span>                            args.Length &gt; 2 &amp;&amp; args[2] != <span class="stringliteral">&quot;0&quot;</span>, args[3] != <span class="stringliteral">&quot;0&quot;</span>, args[4] != <span class="stringliteral">&quot;0&quot;</span>);</div>
-<div class="line"><span class="lineno">   51</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   52</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   53</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-bi&quot;</span>: <span class="comment">//BrawlCrate issue call</span></div>
-<div class="line"><span class="lineno">   54</span>                        t = IssueReporter.CreateIssue(args[1], args[2], args[3], args[4], args[5]);</div>
-<div class="line"><span class="lineno">   55</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   56</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   57</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-bcommitTime&quot;</span>: <span class="comment">//Called on build to ensure time is saved</span></div>
-<div class="line"><span class="lineno">   58</span>                        <span class="keywordtype">string</span> t4arg1 = args.Length &gt; 1 ? args[1] : <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   59</span>                        <span class="keywordtype">string</span> t4arg2 = args.Length &gt; 2 ? args[2] : <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   60</span>                        <span class="keywordtype">string</span> t4arg3 = args.Length &gt; 3 ? args[3] : <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   61</span>                        <span class="keywordtype">string</span> t4arg4 = args.Length &gt; 4 ? args[4] : <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.WriteCanaryTime(t4arg1, t4arg2, t4arg3, t4arg4);</div>
-<div class="line"><span class="lineno">   64</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   65</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   66</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-dlCanary&quot;</span>: <span class="comment">// Force download the latest Canary build</span></div>
-<div class="line"><span class="lineno">   67</span>                        <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.SetCanaryActive();</div>
-<div class="line"><span class="lineno">   68</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.CheckCanaryUpdate(args.Length &gt; 1 ? args[1] : <span class="keyword">null</span>, <span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   69</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   70</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   71</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-dlStable&quot;</span>: <span class="comment">// Force download the latest Stable build</span></div>
-<div class="line"><span class="lineno">   72</span>                        <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.SetCanaryInactive();</div>
-<div class="line"><span class="lineno">   73</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.ForceDownloadStable(args.Length &gt; 1 ? args[1] : <span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">   74</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   75</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   76</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-dlDoc&quot;</span>: <span class="comment">// Force download the latest Documentation build</span></div>
-<div class="line"><span class="lineno">   77</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.ForceDownloadDocumentation();</div>
-<div class="line"><span class="lineno">   78</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   79</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   80</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-canarylog&quot;</span>: <span class="comment">// Show changelog for canary</span></div>
-<div class="line"><span class="lineno">   81</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.ShowCanaryChangelog();</div>
-<div class="line"><span class="lineno">   82</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   83</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   84</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-canaryOn&quot;</span>: <span class="comment">// Activate canary build</span></div>
-<div class="line"><span class="lineno">   85</span>                        <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.SetCanaryActive();</div>
-<div class="line"><span class="lineno">   86</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   87</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-canaryOff&quot;</span>:</div>
-<div class="line"><span class="lineno">   88</span>                        <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.SetCanaryInactive();</div>
-<div class="line"><span class="lineno">   89</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   90</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-killAll&quot;</span>:</div>
-<div class="line"><span class="lineno">   91</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.KillOpenWindows();</div>
-<div class="line"><span class="lineno">   92</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   93</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   94</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-apiUpdate&quot;</span>:</div>
-<div class="line"><span class="lineno">   95</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.BrawlAPICheckUpdates(args.Length &gt; 1 &amp;&amp; args[1] == <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><span class="lineno">   96</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">   97</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   98</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-apiInstall&quot;</span>:</div>
-<div class="line"><span class="lineno">   99</span>                        t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.BrawlAPIInstallUpdate(args[1], args[2], args.Length &gt; 3 &amp;&amp; args[3] == <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><span class="lineno">  100</span>                        t.Wait();</div>
-<div class="line"><span class="lineno">  101</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  102</span>                    <span class="keywordflow">case</span> <span class="stringliteral">&quot;-apiUninstall&quot;</span>:</div>
-<div class="line"><span class="lineno">  103</span>                        <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.BrawlAPIUninstall(args[1], args[2], args.Length &gt; 3 &amp;&amp; args[3] == <span class="stringliteral">&quot;1&quot;</span>);</div>
-<div class="line"><span class="lineno">  104</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  105</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  106</span>                        somethingDone = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  107</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  108</span>                }</div>
-<div class="line"><span class="lineno">  109</span>            }</div>
-<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (args.Length == 0)</div>
-<div class="line"><span class="lineno">  111</span>            {</div>
-<div class="line"><span class="lineno">  112</span><span class="preprocessor">#if CANARY</span></div>
-<div class="line"><span class="lineno">  113</span>                t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.CheckCanaryUpdate(<span class="stringliteral">&quot;&quot;</span>, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  114</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">  115</span>                t = <a class="code hl_namespace" href="namespace_updater.html">Updater</a>.CheckUpdate(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  116</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  117</span>                t.Wait();</div>
-<div class="line"><span class="lineno">  118</span>            }</div>
-<div class="line"><span class="lineno">  119</span> </div>
-<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">if</span> (!somethingDone)</div>
-<div class="line"><span class="lineno">  121</span>            {</div>
-<div class="line"><span class="lineno">  122</span>                Console.WriteLine(<a class="code hl_variable" href="class_updater_1_1_program.html#a6910f52b888fdc1730c4b58ce9dd713a">Usage</a>);</div>
-<div class="line"><span class="lineno">  123</span>            }</div>
-<div class="line"><span class="lineno">  124</span>        }</div>
-<div class="ttc" id="aclass_updater_1_1_program_html_a6910f52b888fdc1730c4b58ce9dd713a"><div class="ttname"><a href="class_updater_1_1_program.html#a6910f52b888fdc1730c4b58ce9dd713a">Updater.Program.Usage</a></div><div class="ttdeci">const string Usage</div><div class="ttdef"><b>Definition:</b> Program.cs:14</div></div>
-<div class="ttc" id="anamespace_updater_html"><div class="ttname"><a href="namespace_updater.html">Updater</a></div><div class="ttdef"><b>Definition:</b> IssueReporter.cs:12</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a151080238d5780cfef3d80d163a62585" name="a151080238d5780cfef3d80d163a62585"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a151080238d5780cfef3d80d163a62585">&#9670;&#160;</a></span>_github</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">GitHubClient Updater.Program._github</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa0dad12d8be22e21a132eedeb5f789da" name="aa0dad12d8be22e21a132eedeb5f789da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0dad12d8be22e21a132eedeb5f789da">&#9670;&#160;</a></span>RawData</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly byte [] Updater.Program.RawData</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">        {</div>
-<div class="line">            </div>
-<div class="line">        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6910f52b888fdc1730c4b58ce9dd713a" name="a6910f52b888fdc1730c4b58ce9dd713a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6910f52b888fdc1730c4b58ce9dd713a">&#9670;&#160;</a></span>Usage</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const string Updater.Program.Usage = @&quot;Usage: -n = New Folder&quot;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a79655105c551b82e2c2d53e444c0dfe6" name="a79655105c551b82e2c2d53e444c0dfe6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79655105c551b82e2c2d53e444c0dfe6">&#9670;&#160;</a></span>Github</h2>
@@ -334,12 +110,12 @@ Static Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  129</span>        {</div>
 <div class="line"><span class="lineno">  130</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">  131</span>            {</div>
-<div class="line"><span class="lineno">  132</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_updater_1_1_program.html#a151080238d5780cfef3d80d163a62585">_github</a> != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  133</span>                    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_updater_1_1_program.html#a151080238d5780cfef3d80d163a62585">_github</a>;</div>
+<div class="line"><span class="lineno">  132</span>                <span class="keywordflow">if</span> (_github != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  133</span>                    <span class="keywordflow">return</span> _github;</div>
 <div class="line"><span class="lineno">  134</span>                GitHubClient client = <span class="keyword">new</span> GitHubClient(<span class="keyword">new</span> ProductHeaderValue(<span class="stringliteral">&quot;BrawlCrate&quot;</span>));</div>
-<div class="line"><span class="lineno">  135</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_updater_1_1_program.html#aa0dad12d8be22e21a132eedeb5f789da">RawData</a>.Length &gt; 0)</div>
+<div class="line"><span class="lineno">  135</span>                <span class="keywordflow">if</span> (RawData.Length &gt; 0)</div>
 <div class="line"><span class="lineno">  136</span>                {</div>
-<div class="line"><span class="lineno">  137</span>                    <span class="keywordtype">string</span> cred = Encoding.Default.GetString(<a class="code hl_variable" href="class_updater_1_1_program.html#aa0dad12d8be22e21a132eedeb5f789da">RawData</a>);</div>
+<div class="line"><span class="lineno">  137</span>                    <span class="keywordtype">string</span> cred = Encoding.Default.GetString(RawData);</div>
 <div class="line"><span class="lineno">  138</span>                    <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  139</span>                    {</div>
 <div class="line"><span class="lineno">  140</span>                        client.Credentials = <span class="keyword">new</span> Credentials(cred);</div>
@@ -353,12 +129,10 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  148</span>                    }</div>
 <div class="line"><span class="lineno">  149</span>                }</div>
 <div class="line"><span class="lineno">  150</span> </div>
-<div class="line"><span class="lineno">  151</span>                <a class="code hl_variable" href="class_updater_1_1_program.html#a151080238d5780cfef3d80d163a62585">_github</a> = client;</div>
-<div class="line"><span class="lineno">  152</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_updater_1_1_program.html#a151080238d5780cfef3d80d163a62585">_github</a>;</div>
+<div class="line"><span class="lineno">  151</span>                _github = client;</div>
+<div class="line"><span class="lineno">  152</span>                <span class="keywordflow">return</span> _github;</div>
 <div class="line"><span class="lineno">  153</span>            }</div>
 <div class="line"><span class="lineno">  154</span>        }</div>
-<div class="ttc" id="aclass_updater_1_1_program_html_a151080238d5780cfef3d80d163a62585"><div class="ttname"><a href="class_updater_1_1_program.html#a151080238d5780cfef3d80d163a62585">Updater.Program._github</a></div><div class="ttdeci">static GitHubClient _github</div><div class="ttdef"><b>Definition:</b> Program.cs:126</div></div>
-<div class="ttc" id="aclass_updater_1_1_program_html_aa0dad12d8be22e21a132eedeb5f789da"><div class="ttname"><a href="class_updater_1_1_program.html#aa0dad12d8be22e21a132eedeb5f789da">Updater.Program.RawData</a></div><div class="ttdeci">static readonly byte[] RawData</div><div class="ttdef"><b>Definition:</b> Program.cs:156</div></div>
 </div><!-- fragment -->
 </div>
 </div>

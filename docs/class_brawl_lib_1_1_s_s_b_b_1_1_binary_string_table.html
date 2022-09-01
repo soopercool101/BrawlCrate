@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.BinaryStringTable Class Reference</div></div>
 </div><!--header-->
@@ -102,18 +100,6 @@ Properties</h2></td></tr>
 <tr class="separator:aef5d92c553c67f36432575acfc8215cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab26d0c7f7a89a2d357610beca612041f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#ab26d0c7f7a89a2d357610beca612041f">RootEntry</a><code> [get]</code></td></tr>
 <tr class="separator:ab26d0c7f7a89a2d357610beca612041f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a6c9b29ba0d665c00d02ad02d89191746"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6c9b29ba0d665c00d02ad02d89191746">Traverse</a> (<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a> entry)</td></tr>
-<tr class="separator:a6c9b29ba0d665c00d02ad02d89191746"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a66acb743daec1c1f5bc9fe4710014944"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a> = new List&lt;<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&gt;()</td></tr>
-<tr class="separator:a66acb743daec1c1f5bc9fe4710014944"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ce1c7c406341eac31b787c4abd50ad8"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a> = new <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>(&quot;&quot;, 0)</td></tr>
-<tr class="separator:a6ce1c7c406341eac31b787c4abd50ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7c3a1bff56e6af1930ae9054d14138de" name="a7c3a1bff56e6af1930ae9054d14138de"></a>
@@ -139,10 +125,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   16</span>        {</div>
-<div class="line"><span class="lineno">   17</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Add(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a>);</div>
+<div class="line"><span class="lineno">   17</span>            _entries.Add(_root);</div>
 <div class="line"><span class="lineno">   18</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a66acb743daec1c1f5bc9fe4710014944"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">BrawlLib.SSBB.BinaryStringTable._entries</a></div><div class="ttdeci">readonly List&lt; BinaryStringEntry &gt; _entries</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a6ce1c7c406341eac31b787c4abd50ad8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">BrawlLib.SSBB.BinaryStringTable._root</a></div><div class="ttdeci">readonly BinaryStringEntry _root</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:10</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -171,11 +155,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   21</span>        {</div>
-<div class="line"><span class="lineno">   22</span>            BinaryStringEntry entry = <span class="keyword">new</span> BinaryStringEntry(s, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Count);</div>
-<div class="line"><span class="lineno">   23</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>.Add(entry);</div>
-<div class="line"><span class="lineno">   24</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6c9b29ba0d665c00d02ad02d89191746">Traverse</a>(entry);</div>
+<div class="line"><span class="lineno">   22</span>            BinaryStringEntry entry = <span class="keyword">new</span> BinaryStringEntry(s, _entries.Count);</div>
+<div class="line"><span class="lineno">   23</span>            _entries.Add(entry);</div>
+<div class="line"><span class="lineno">   24</span>            Traverse(entry);</div>
 <div class="line"><span class="lineno">   25</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table_html_a6c9b29ba0d665c00d02ad02d89191746"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6c9b29ba0d665c00d02ad02d89191746">BrawlLib.SSBB.BinaryStringTable.Traverse</a></div><div class="ttdeci">void Traverse(BinaryStringEntry entry)</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:27</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -204,65 +187,6 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   61</span>        {</div>
 <div class="line"><span class="lineno">   62</span>            <span class="keywordflow">return</span> _entries.Count * 0x10 + 8;</div>
 <div class="line"><span class="lineno">   63</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6c9b29ba0d665c00d02ad02d89191746" name="a6c9b29ba0d665c00d02ad02d89191746"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c9b29ba0d665c00d02ad02d89191746">&#9670;&#160;</a></span>Traverse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.SSBB.BinaryStringTable.Traverse </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&#160;</td>
-          <td class="paramname"><em>entry</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   28</span>        {</div>
-<div class="line"><span class="lineno">   29</span>            BinaryStringEntry current = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">_left</a>, prev = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a6ce1c7c406341eac31b787c4abd50ad8">_root</a>;</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keywordtype">bool</span> isRight = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">while</span> (entry._id &lt;= current._id)</div>
-<div class="line"><span class="lineno">   33</span>            {</div>
-<div class="line"><span class="lineno">   34</span>                <span class="keywordflow">if</span> (entry._id == current._id)</div>
-<div class="line"><span class="lineno">   35</span>                {</div>
-<div class="line"><span class="lineno">   36</span>                    entry.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ab88f755a6e62aba6cdee61edf1515ffe">GenerateId</a>(current);</div>
-<div class="line"><span class="lineno">   37</span>                }</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>                isRight = current.IsRight(entry);</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>                prev = current;</div>
-<div class="line"><span class="lineno">   42</span>                current = isRight ? current._right : current._left;</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">if</span> (prev._id &lt;= current._id)</div>
-<div class="line"><span class="lineno">   45</span>                {</div>
-<div class="line"><span class="lineno">   46</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   47</span>                }</div>
-<div class="line"><span class="lineno">   48</span>            }</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (isRight)</div>
-<div class="line"><span class="lineno">   51</span>            {</div>
-<div class="line"><span class="lineno">   52</span>                prev.InsertRight(entry);</div>
-<div class="line"><span class="lineno">   53</span>            }</div>
-<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   55</span>            {</div>
-<div class="line"><span class="lineno">   56</span>                prev.InsertLeft(entry);</div>
-<div class="line"><span class="lineno">   57</span>            }</div>
-<div class="line"><span class="lineno">   58</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a07ee8dabaad4adaf9d3d0ca99ea074ce"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">BrawlLib.SSBB.BinaryStringEntry._left</a></div><div class="ttdeci">BinaryStringEntry _left</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:83</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_ab88f755a6e62aba6cdee61edf1515ffe"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ab88f755a6e62aba6cdee61edf1515ffe">BrawlLib.SSBB.BinaryStringEntry.GenerateId</a></div><div class="ttdeci">int GenerateId(BinaryStringEntry comparison)</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:121</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -295,7 +219,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   69</span>            group-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#a2ea527575f08d08f7a599bc28ac9956b">_totalSize</a> = _entries.Count * 0x10 + 8;</div>
 <div class="line"><span class="lineno">   70</span> </div>
 <div class="line"><span class="lineno">   71</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">ResourceEntry</a>* pEntry = &amp;group-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#a4ff3a85eda1d79596de7df724f5d16fd">_first</a>;</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">foreach</span> (BinaryStringEntry e <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_table.html#a66acb743daec1c1f5bc9fe4710014944">_entries</a>)</div>
+<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">foreach</span> (BinaryStringEntry e <span class="keywordflow">in</span> _entries)</div>
 <div class="line"><span class="lineno">   73</span>            {</div>
 <div class="line"><span class="lineno">   74</span>                *pEntry++ = e.GetEntry();</div>
 <div class="line"><span class="lineno">   75</span>            }</div>
@@ -306,51 +230,6 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_a4ff3a85eda1d79596de7df724f5d16fd"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#a4ff3a85eda1d79596de7df724f5d16fd">BrawlLib.SSBB.Types.ResourceGroup._first</a></div><div class="ttdeci">ResourceEntry _first</div><div class="ttdef"><b>Definition:</b> Common.cs:385</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html_af823408fa57231bb40d9fe997125c9df"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html#af823408fa57231bb40d9fe997125c9df">BrawlLib.SSBB.Types.ResourceGroup._numEntries</a></div><div class="ttdeci">bint _numEntries</div><div class="ttdef"><b>Definition:</b> Common.cs:384</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a66acb743daec1c1f5bc9fe4710014944" name="a66acb743daec1c1f5bc9fe4710014944"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66acb743daec1c1f5bc9fe4710014944">&#9670;&#160;</a></span>_entries</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly List&lt;<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&gt; BrawlLib.SSBB.BinaryStringTable._entries = new List&lt;<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6ce1c7c406341eac31b787c4abd50ad8" name="a6ce1c7c406341eac31b787c4abd50ad8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ce1c7c406341eac31b787c4abd50ad8">&#9670;&#160;</a></span>_root</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a> BrawlLib.SSBB.BinaryStringTable._root = new <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>(&quot;&quot;, 0)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

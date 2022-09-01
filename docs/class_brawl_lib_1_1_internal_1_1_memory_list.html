@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_memory_list-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.MemoryList&lt; T &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -128,24 +126,6 @@ Properties</h2></td></tr>
 <tr class="separator:afb17c60f5f0e44d7ef2d801648fb33ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53362ce9210e1f7acbe9a15e58ca0676"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a53362ce9210e1f7acbe9a15e58ca0676">IsReadOnly</a><code> [get]</code></td></tr>
 <tr class="separator:a53362ce9210e1f7acbe9a15e58ca0676"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a6297bc8dcaf796f7baf24cabff890a61"><td class="memItemLeft" align="right" valign="top">System.Collections.IEnumerator System.Collections.IEnumerable.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a6297bc8dcaf796f7baf24cabff890a61">GetEnumerator</a> ()</td></tr>
-<tr class="separator:a6297bc8dcaf796f7baf24cabff890a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ab9520ccd864e23ba10a770bfb36ce59e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a></td></tr>
-<tr class="separator:ab9520ccd864e23ba10a770bfb36ce59e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84bee63127df4acc2cf24b0ca19a3198"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a84bee63127df4acc2cf24b0ca19a3198">_cap</a></td></tr>
-<tr class="separator:a84bee63127df4acc2cf24b0ca19a3198"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a458733a27b62807f6b2db4cbc41662c3"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a></td></tr>
-<tr class="separator:a458733a27b62807f6b2db4cbc41662c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c108be273d8c50767a7beac98ecde8e"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">_readOnly</a></td></tr>
-<tr class="separator:a5c108be273d8c50767a7beac98ecde8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ed3406a4c8401070a3ed2b0843bd318"><td class="memItemLeft" align="right" valign="top">readonly byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a></td></tr>
-<tr class="separator:a9ed3406a4c8401070a3ed2b0843bd318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa138177051f90e6fe4cea33979649f9b" name="aa138177051f90e6fe4cea33979649f9b"></a>
@@ -278,17 +258,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   57</span>        {</div>
-<div class="line"><span class="lineno">   58</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> = count;</div>
-<div class="line"><span class="lineno">   59</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a84bee63127df4acc2cf24b0ca19a3198">_cap</a> = capacity;</div>
-<div class="line"><span class="lineno">   60</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">_readOnly</a> = readOnly;</div>
-<div class="line"><span class="lineno">   61</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a> = Marshal.SizeOf(typeof(T));</div>
-<div class="line"><span class="lineno">   62</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a> = (<span class="keywordtype">byte</span>*) address;</div>
+<div class="line"><span class="lineno">   58</span>            _count = count;</div>
+<div class="line"><span class="lineno">   59</span>            _cap = capacity;</div>
+<div class="line"><span class="lineno">   60</span>            _readOnly = readOnly;</div>
+<div class="line"><span class="lineno">   61</span>            _stride = Marshal.SizeOf(typeof(T));</div>
+<div class="line"><span class="lineno">   62</span>            _base = (<span class="keywordtype">byte</span>*) address;</div>
 <div class="line"><span class="lineno">   63</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_list_html_a458733a27b62807f6b2db4cbc41662c3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">BrawlLib.Internal.MemoryList._stride</a></div><div class="ttdeci">readonly int _stride</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:44</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_list_html_a5c108be273d8c50767a7beac98ecde8e"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">BrawlLib.Internal.MemoryList._readOnly</a></div><div class="ttdeci">readonly bool _readOnly</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:45</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_list_html_a84bee63127df4acc2cf24b0ca19a3198"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a84bee63127df4acc2cf24b0ca19a3198">BrawlLib.Internal.MemoryList._cap</a></div><div class="ttdeci">readonly int _cap</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:43</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_list_html_a9ed3406a4c8401070a3ed2b0843bd318"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">BrawlLib.Internal.MemoryList._base</a></div><div class="ttdeci">readonly byte * _base</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:46</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_list_html_ab9520ccd864e23ba10a770bfb36ce59e"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">BrawlLib.Internal.MemoryList._count</a></div><div class="ttdeci">int _count</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:42</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -317,13 +292,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  141</span>        {</div>
-<div class="line"><span class="lineno">  142</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">_readOnly</a> || <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a84bee63127df4acc2cf24b0ca19a3198">_cap</a>)</div>
+<div class="line"><span class="lineno">  142</span>            <span class="keywordflow">if</span> (_readOnly || _count &gt;= _cap)</div>
 <div class="line"><span class="lineno">  143</span>            {</div>
 <div class="line"><span class="lineno">  144</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> AccessViolationException();</div>
 <div class="line"><span class="lineno">  145</span>            }</div>
 <div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>            Marshal.StructureToPtr(item, (IntPtr) (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a> + <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> * <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>), <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  148</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a>++;</div>
+<div class="line"><span class="lineno">  147</span>            Marshal.StructureToPtr(item, (IntPtr) (_base + _count * _stride), <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  148</span>            _count++;</div>
 <div class="line"><span class="lineno">  149</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -351,7 +326,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  152</span>        {</div>
-<div class="line"><span class="lineno">  153</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> = 0;</div>
+<div class="line"><span class="lineno">  153</span>            _count = 0;</div>
 <div class="line"><span class="lineno">  154</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -420,7 +395,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  162</span>        {</div>
-<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">if</span> (arrayIndex + <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> &gt; array.Length)</div>
+<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">if</span> (arrayIndex + _count &gt; array.Length)</div>
 <div class="line"><span class="lineno">  164</span>            {</div>
 <div class="line"><span class="lineno">  165</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException();</div>
 <div class="line"><span class="lineno">  166</span>            }</div>
@@ -435,7 +410,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="ad347791047149bae0f9f5cd123cabf84" name="ad347791047149bae0f9f5cd123cabf84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad347791047149bae0f9f5cd123cabf84">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad347791047149bae0f9f5cd123cabf84">&#9670;&#160;</a></span>GetEnumerator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,37 +432,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  197</span>        {</div>
-<div class="line"><span class="lineno">  198</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> MemoryEnumerator&lt;T&gt;(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a>);</div>
+<div class="line"><span class="lineno">  198</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> MemoryEnumerator&lt;T&gt;(_base, _count);</div>
 <div class="line"><span class="lineno">  199</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6297bc8dcaf796f7baf24cabff890a61" name="a6297bc8dcaf796f7baf24cabff890a61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6297bc8dcaf796f7baf24cabff890a61">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.Collections.IEnumerator System.Collections.IEnumerable. <a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html">BrawlLib.Internal.MemoryList</a>&lt; T &gt;.GetEnumerator </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  202</span>        {</div>
-<div class="line"><span class="lineno">  203</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ad347791047149bae0f9f5cd123cabf84">GetEnumerator</a>();</div>
-<div class="line"><span class="lineno">  204</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_list_html_ad347791047149bae0f9f5cd123cabf84"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ad347791047149bae0f9f5cd123cabf84">BrawlLib.Internal.MemoryList.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; T &gt; GetEnumerator()</div><div class="ttdef"><b>Definition:</b> MemoryList.cs:196</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -515,8 +461,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   66</span>        {</div>
-<div class="line"><span class="lineno">   67</span>            <span class="keywordtype">byte</span>* p = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a>;</div>
-<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a>; i++, p += <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>)</div>
+<div class="line"><span class="lineno">   67</span>            <span class="keywordtype">byte</span>* p = _base;</div>
+<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _count; i++, p += _stride)</div>
 <div class="line"><span class="lineno">   69</span>            {</div>
 <div class="line"><span class="lineno">   70</span>                <span class="keywordflow">if</span> (item.Equals(Marshal.PtrToStructure((IntPtr) p, typeof(T))))</div>
 <div class="line"><span class="lineno">   71</span>                {</div>
@@ -563,19 +509,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   80</span>        {</div>
-<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">_readOnly</a> || <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a84bee63127df4acc2cf24b0ca19a3198">_cap</a>)</div>
+<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (_readOnly || _count &gt;= _cap)</div>
 <div class="line"><span class="lineno">   82</span>            {</div>
 <div class="line"><span class="lineno">   83</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> AccessViolationException();</div>
 <div class="line"><span class="lineno">   84</span>            }</div>
 <div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">if</span> (index &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> || index &lt; 0)</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">if</span> (index &gt;= _count || index &lt; 0)</div>
 <div class="line"><span class="lineno">   87</span>            {</div>
 <div class="line"><span class="lineno">   88</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> IndexOutOfRangeException();</div>
 <div class="line"><span class="lineno">   89</span>            }</div>
 <div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>            <span class="keywordtype">byte</span>* p = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a> + index * <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>;</div>
-<div class="line"><span class="lineno">   92</span>            Memory.Move(p + <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>, p, (uint) ((<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> - index) * <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>));</div>
-<div class="line"><span class="lineno">   93</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a>++;</div>
+<div class="line"><span class="lineno">   91</span>            <span class="keywordtype">byte</span>* p = _base + index * _stride;</div>
+<div class="line"><span class="lineno">   92</span>            Memory.Move(p + _stride, p, (uint) ((_count - index) * _stride));</div>
+<div class="line"><span class="lineno">   93</span>            _count++;</div>
 <div class="line"><span class="lineno">   94</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -604,7 +550,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  180</span>        {</div>
-<div class="line"><span class="lineno">  181</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">_readOnly</a>)</div>
+<div class="line"><span class="lineno">  181</span>            <span class="keywordflow">if</span> (_readOnly)</div>
 <div class="line"><span class="lineno">  182</span>            {</div>
 <div class="line"><span class="lineno">  183</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> AccessViolationException();</div>
 <div class="line"><span class="lineno">  184</span>            }</div>
@@ -646,132 +592,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   97</span>        {</div>
-<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">_readOnly</a>)</div>
+<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">if</span> (_readOnly)</div>
 <div class="line"><span class="lineno">   99</span>            {</div>
 <div class="line"><span class="lineno">  100</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> AccessViolationException();</div>
 <div class="line"><span class="lineno">  101</span>            }</div>
 <div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span> (index &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> || index &lt; 0)</div>
+<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span> (index &gt;= _count || index &lt; 0)</div>
 <div class="line"><span class="lineno">  104</span>            {</div>
 <div class="line"><span class="lineno">  105</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> IndexOutOfRangeException();</div>
 <div class="line"><span class="lineno">  106</span>            }</div>
 <div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>            <span class="keywordtype">byte</span>* p = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a> + index * <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>;</div>
-<div class="line"><span class="lineno">  109</span>            Memory.Move(p, p + <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>, (uint) ((<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> - 1 - index) * <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>));</div>
-<div class="line"><span class="lineno">  110</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a>--;</div>
+<div class="line"><span class="lineno">  108</span>            <span class="keywordtype">byte</span>* p = _base + index * _stride;</div>
+<div class="line"><span class="lineno">  109</span>            Memory.Move(p, p + _stride, (uint) ((_count - 1 - index) * _stride));</div>
+<div class="line"><span class="lineno">  110</span>            _count--;</div>
 <div class="line"><span class="lineno">  111</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9ed3406a4c8401070a3ed2b0843bd318" name="a9ed3406a4c8401070a3ed2b0843bd318"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ed3406a4c8401070a3ed2b0843bd318">&#9670;&#160;</a></span>_base</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly byte* <a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html">BrawlLib.Internal.MemoryList</a>&lt; T &gt;._base</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a84bee63127df4acc2cf24b0ca19a3198" name="a84bee63127df4acc2cf24b0ca19a3198"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84bee63127df4acc2cf24b0ca19a3198">&#9670;&#160;</a></span>_cap</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int <a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html">BrawlLib.Internal.MemoryList</a>&lt; T &gt;._cap</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab9520ccd864e23ba10a770bfb36ce59e" name="ab9520ccd864e23ba10a770bfb36ce59e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9520ccd864e23ba10a770bfb36ce59e">&#9670;&#160;</a></span>_count</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html">BrawlLib.Internal.MemoryList</a>&lt; T &gt;._count</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5c108be273d8c50767a7beac98ecde8e" name="a5c108be273d8c50767a7beac98ecde8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c108be273d8c50767a7beac98ecde8e">&#9670;&#160;</a></span>_readOnly</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly bool <a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html">BrawlLib.Internal.MemoryList</a>&lt; T &gt;._readOnly</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a458733a27b62807f6b2db4cbc41662c3" name="a458733a27b62807f6b2db4cbc41662c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a458733a27b62807f6b2db4cbc41662c3">&#9670;&#160;</a></span>_stride</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int <a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_list.html">BrawlLib.Internal.MemoryList</a>&lt; T &gt;._stride</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -863,26 +698,26 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  114</span>        {</div>
 <div class="line"><span class="lineno">  115</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">  116</span>            {</div>
-<div class="line"><span class="lineno">  117</span>                <span class="keywordflow">if</span> (index &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> || index &lt; 0)</div>
+<div class="line"><span class="lineno">  117</span>                <span class="keywordflow">if</span> (index &gt;= _count || index &lt; 0)</div>
 <div class="line"><span class="lineno">  118</span>                {</div>
 <div class="line"><span class="lineno">  119</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> IndexOutOfRangeException();</div>
 <div class="line"><span class="lineno">  120</span>                }</div>
 <div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>                <span class="keywordflow">return</span> (T) Marshal.PtrToStructure((IntPtr) (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a> + index * <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>), typeof(T));</div>
+<div class="line"><span class="lineno">  122</span>                <span class="keywordflow">return</span> (T) Marshal.PtrToStructure((IntPtr) (_base + index * _stride), typeof(T));</div>
 <div class="line"><span class="lineno">  123</span>            }</div>
 <div class="line"><span class="lineno">  124</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  125</span>            {</div>
-<div class="line"><span class="lineno">  126</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a5c108be273d8c50767a7beac98ecde8e">_readOnly</a>)</div>
+<div class="line"><span class="lineno">  126</span>                <span class="keywordflow">if</span> (_readOnly)</div>
 <div class="line"><span class="lineno">  127</span>                {</div>
 <div class="line"><span class="lineno">  128</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> AccessViolationException();</div>
 <div class="line"><span class="lineno">  129</span>                }</div>
 <div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">if</span> (index &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#ab9520ccd864e23ba10a770bfb36ce59e">_count</a> || index &lt; 0)</div>
+<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">if</span> (index &gt;= _count || index &lt; 0)</div>
 <div class="line"><span class="lineno">  132</span>                {</div>
 <div class="line"><span class="lineno">  133</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> IndexOutOfRangeException();</div>
 <div class="line"><span class="lineno">  134</span>                }</div>
 <div class="line"><span class="lineno">  135</span> </div>
-<div class="line"><span class="lineno">  136</span>                Marshal.StructureToPtr(value, (IntPtr) (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a9ed3406a4c8401070a3ed2b0843bd318">_base</a> + index * <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_memory_list.html#a458733a27b62807f6b2db4cbc41662c3">_stride</a>), <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  136</span>                Marshal.StructureToPtr(value, (IntPtr) (_base + index * _stride), <span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">  137</span>            }</div>
 <div class="line"><span class="lineno">  138</span>        }</div>
 </div><!-- fragment -->

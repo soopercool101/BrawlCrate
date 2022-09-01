@@ -110,8 +110,6 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:afb850f0f86910c7ccd84c14f7ee5893d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#afb850f0f86910c7ccd84c14f7ee5893d">Node</a><code> [get]</code></td></tr>
-<tr class="separator:afb850f0f86910c7ccd84c14f7ee5893d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13ea844e0cd947f0d28c9a6f6741974f"><td class="memItemLeft" align="right" valign="top">ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#a13ea844e0cd947f0d28c9a6f6741974f">NodeID</a><code> [get]</code></td></tr>
 <tr class="separator:a13ea844e0cd947f0d28c9a6f6741974f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a27b359065de8638f9ce55d5f83fb89"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#a5a27b359065de8638f9ce55d5f83fb89">VertexIndex</a><code> [get]</code></td></tr>
@@ -330,28 +328,6 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="afb850f0f86910c7ccd84c14f7ee5893d" name="afb850f0f86910c7ccd84c14f7ee5893d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb850f0f86910c7ccd84c14f7ee5893d">&#9670;&#160;</a></span>Node</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a> BrawlLib.Modeling.Facepoint.Node</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a13ea844e0cd947f0d28c9a6f6741974f" name="a13ea844e0cd947f0d28c9a6f6741974f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13ea844e0cd947f0d28c9a6f6741974f">&#9670;&#160;</a></span>NodeID</h2>
 
@@ -374,15 +350,14 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   17</span>        {</div>
 <div class="line"><span class="lineno">   18</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   19</span>            {</div>
-<div class="line"><span class="lineno">   20</span>                <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#afb850f0f86910c7ccd84c14f7ee5893d">Node</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   20</span>                <span class="keywordflow">if</span> (Node != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   21</span>                {</div>
-<div class="line"><span class="lineno">   22</span>                    <span class="keywordflow">return</span> (ushort) <a class="code hl_property" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#afb850f0f86910c7ccd84c14f7ee5893d">Node</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#adf08427e3ff1b52a9a7177aba0f504e5">NodeIndex</a>;</div>
+<div class="line"><span class="lineno">   22</span>                    <span class="keywordflow">return</span> (ushort) Node.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#adf08427e3ff1b52a9a7177aba0f504e5">NodeIndex</a>;</div>
 <div class="line"><span class="lineno">   23</span>                }</div>
 <div class="line"><span class="lineno">   24</span> </div>
 <div class="line"><span class="lineno">   25</span>                <span class="keywordflow">return</span> ushort.MaxValue;</div>
 <div class="line"><span class="lineno">   26</span>            }</div>
 <div class="line"><span class="lineno">   27</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_facepoint_html_afb850f0f86910c7ccd84c14f7ee5893d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#afb850f0f86910c7ccd84c14f7ee5893d">BrawlLib.Modeling.Facepoint.Node</a></div><div class="ttdeci">IMatrixNode Node</div><div class="ttdef"><b>Definition:</b> Face.cs:14</div></div>
 <div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html_adf08427e3ff1b52a9a7177aba0f504e5"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#adf08427e3ff1b52a9a7177aba0f504e5">BrawlLib.Modeling.IMatrixNode.NodeIndex</a></div><div class="ttdeci">int NodeIndex</div><div class="ttdef"><b>Definition:</b> IMatrixNode.cs:11</div></div>
 </div><!-- fragment -->
 </div>

@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.FolderNode Class Reference</div></div>
 </div><!--header-->
@@ -351,13 +350,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a322dd7303e8b23dc7b0faf08ee8b38e0"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a322dd7303e8b23dc7b0faf08ee8b38e0">_directories</a></td></tr>
-<tr class="separator:a322dd7303e8b23dc7b0faf08ee8b38e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09958f1cb21ccb23845d49b87cf777d1"><td class="memItemLeft" align="right" valign="top">string[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a09958f1cb21ccb23845d49b87cf777d1">_files</a></td></tr>
-<tr class="separator:a09958f1cb21ccb23845d49b87cf777d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -486,15 +478,13 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca8bfdd04f5339dd3135a9daf03495a8">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  123</span>        {</div>
 <div class="line"><span class="lineno">  124</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = <span class="keyword">new</span> DirectoryInfo(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>).Name;</div>
-<div class="line"><span class="lineno">  125</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a322dd7303e8b23dc7b0faf08ee8b38e0">_directories</a> = Directory.GetDirectories(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>);</div>
-<div class="line"><span class="lineno">  126</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a09958f1cb21ccb23845d49b87cf777d1">_files</a> = Directory.GetFiles(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>);</div>
+<div class="line"><span class="lineno">  125</span>            _directories = Directory.GetDirectories(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>);</div>
+<div class="line"><span class="lineno">  126</span>            _files = Directory.GetFiles(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">_origPath</a>);</div>
 <div class="line"><span class="lineno">  127</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a0b650423bf17ff100b1fa517cf26cd39">IsDirty</a> = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  128</span>            base.OnInitialize();</div>
 <div class="line"><span class="lineno">  129</span> </div>
 <div class="line"><span class="lineno">  130</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  131</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node_html_a09958f1cb21ccb23845d49b87cf777d1"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a09958f1cb21ccb23845d49b87cf777d1">BrawlLib.SSBB.ResourceNodes.FolderNode._files</a></div><div class="ttdeci">string[] _files</div><div class="ttdef"><b>Definition:</b> FolderNode.cs:17</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node_html_a322dd7303e8b23dc7b0faf08ee8b38e0"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a322dd7303e8b23dc7b0faf08ee8b38e0">BrawlLib.SSBB.ResourceNodes.FolderNode._directories</a></div><div class="ttdeci">string[] _directories</div><div class="ttdef"><b>Definition:</b> FolderNode.cs:16</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a8a3a2097354831c43d47ab029479522a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a8a3a2097354831c43d47ab029479522a">BrawlLib.SSBB.ResourceNodes.ResourceNode._origPath</a></div><div class="ttdeci">string _origPath</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
 </div><!-- fragment -->
@@ -525,12 +515,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acc31994201c76c84a2518686a093fea1">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  104</span>        {</div>
-<div class="line"><span class="lineno">  105</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a322dd7303e8b23dc7b0faf08ee8b38e0">_directories</a>)</div>
+<div class="line"><span class="lineno">  105</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> _directories)</div>
 <div class="line"><span class="lineno">  106</span>            {</div>
 <div class="line"><span class="lineno">  107</span>                NodeFactory.FromFolder(<span class="keyword">this</span>, s);</div>
 <div class="line"><span class="lineno">  108</span>            }</div>
 <div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_folder_node.html#a09958f1cb21ccb23845d49b87cf777d1">_files</a>)</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> _files)</div>
 <div class="line"><span class="lineno">  111</span>            {</div>
 <div class="line"><span class="lineno">  112</span>                ResourceNode node = NodeFactory.FromFile(<span class="keyword">this</span>, s);</div>
 <div class="line"><span class="lineno">  113</span>                <span class="keywordflow">if</span> (node != <span class="keyword">null</span>)</div>
@@ -545,50 +535,6 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a322dd7303e8b23dc7b0faf08ee8b38e0" name="a322dd7303e8b23dc7b0faf08ee8b38e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a322dd7303e8b23dc7b0faf08ee8b38e0">&#9670;&#160;</a></span>_directories</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string [] BrawlLib.SSBB.ResourceNodes.FolderNode._directories</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a09958f1cb21ccb23845d49b87cf777d1" name="a09958f1cb21ccb23845d49b87cf777d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09958f1cb21ccb23845d49b87cf777d1">&#9670;&#160;</a></span>_files</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string [] BrawlLib.SSBB.ResourceNodes.FolderNode._files</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a673de070d7ed9ca64634fdfee7bf83ed" name="a673de070d7ed9ca64634fdfee7bf83ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a673de070d7ed9ca64634fdfee7bf83ed">&#9670;&#160;</a></span>_list</h2>
 

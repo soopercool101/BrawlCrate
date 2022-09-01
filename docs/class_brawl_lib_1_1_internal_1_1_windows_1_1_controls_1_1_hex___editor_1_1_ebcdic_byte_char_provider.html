@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_ebcdic_byte_char_provider-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.Hex_Editor.EbcdicByteCharProvider Class Reference</div></div>
 </div><!--header-->
@@ -112,12 +111,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af2a1a5695560c48cea39d7549af638cd"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_i_byte_char_converter.html#af2a1a5695560c48cea39d7549af638cd">ToByte</a> (char c)</td></tr>
 <tr class="memdesc:af2a1a5695560c48cea39d7549af638cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the byte to use when the character passed across is entered during editing.   <a href="interface_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_i_byte_char_converter.html#af2a1a5695560c48cea39d7549af638cd">More...</a><br /></td></tr>
 <tr class="separator:af2a1a5695560c48cea39d7549af638cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ac9a79361dd8398a29ea126a2371d548d"><td class="memItemLeft" align="right" valign="top">readonly Encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_ebcdic_byte_char_provider.html#ac9a79361dd8398a29ea126a2371d548d">_ebcdicEncoding</a> = Encoding.GetEncoding(500)</td></tr>
-<tr class="memdesc:ac9a79361dd8398a29ea126a2371d548d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The IBM EBCDIC code page 500 encoding. Note that this is not always supported by .NET, the underlying platform has to provide support for it.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_ebcdic_byte_char_provider.html#ac9a79361dd8398a29ea126a2371d548d">More...</a><br /></td></tr>
-<tr class="separator:ac9a79361dd8398a29ea126a2371d548d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A byte char provider that can translate bytes encoded in codepage 500 EBCDIC  </p>
@@ -157,10 +150,9 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_i_byte_char_converter.html#af2a1a5695560c48cea39d7549af638cd">BrawlLib.Internal.Windows.Controls.Hex_Editor.IByteCharConverter</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   88</span>        {</div>
-<div class="line"><span class="lineno">   89</span>            <span class="keywordtype">byte</span>[] decoded = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_ebcdic_byte_char_provider.html#ac9a79361dd8398a29ea126a2371d548d">_ebcdicEncoding</a>.GetBytes(<span class="keyword">new</span> <span class="keywordtype">char</span>[] {c});</div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordtype">byte</span>[] decoded = _ebcdicEncoding.GetBytes(<span class="keyword">new</span> <span class="keywordtype">char</span>[] {c});</div>
 <div class="line"><span class="lineno">   90</span>            <span class="keywordflow">return</span> decoded.Length &gt; 0 ? decoded[0] : (byte) 0;</div>
 <div class="line"><span class="lineno">   91</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_ebcdic_byte_char_provider_html_ac9a79361dd8398a29ea126a2371d548d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_ebcdic_byte_char_provider.html#ac9a79361dd8398a29ea126a2371d548d">BrawlLib.Internal.Windows.Controls.Hex_Editor.EbcdicByteCharProvider._ebcdicEncoding</a></div><div class="ttdeci">readonly Encoding _ebcdicEncoding</div><div class="ttdoc">The IBM EBCDIC code page 500 encoding. Note that this is not always supported by ....</div><div class="ttdef"><b>Definition:</b> ByteCharConverters.cs:69</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -199,7 +191,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_i_byte_char_converter.html#ab670de7449e5db95de35963a6be188d4">BrawlLib.Internal.Windows.Controls.Hex_Editor.IByteCharConverter</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   77</span>        {</div>
-<div class="line"><span class="lineno">   78</span>            <span class="keywordtype">string</span> encoded = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_ebcdic_byte_char_provider.html#ac9a79361dd8398a29ea126a2371d548d">_ebcdicEncoding</a>.GetString(<span class="keyword">new</span> <span class="keywordtype">byte</span>[] {b});</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordtype">string</span> encoded = _ebcdicEncoding.GetString(<span class="keyword">new</span> <span class="keywordtype">byte</span>[] {b});</div>
 <div class="line"><span class="lineno">   79</span>            <span class="keywordflow">return</span> encoded.Length &gt; 0 ? encoded[0] : <span class="charliteral">&#39;.&#39;</span>;</div>
 <div class="line"><span class="lineno">   80</span>        }</div>
 </div><!-- fragment -->
@@ -234,31 +226,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   99</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;EBCDIC (Code Page 500)&quot;</span>;</div>
 <div class="line"><span class="lineno">  100</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac9a79361dd8398a29ea126a2371d548d" name="ac9a79361dd8398a29ea126a2371d548d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9a79361dd8398a29ea126a2371d548d">&#9670;&#160;</a></span>_ebcdicEncoding</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly Encoding BrawlLib.Internal.Windows.Controls.Hex_Editor.EbcdicByteCharProvider._ebcdicEncoding = Encoding.GetEncoding(500)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The IBM EBCDIC code page 500 encoding. Note that this is not always supported by .NET, the underlying platform has to provide support for it.  </p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

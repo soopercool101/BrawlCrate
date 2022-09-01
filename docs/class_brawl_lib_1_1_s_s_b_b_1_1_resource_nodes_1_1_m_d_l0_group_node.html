@@ -81,7 +81,6 @@ $(function() {
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_group_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.MDL0GroupNode Class Reference</div></div>
 </div><!--header-->
@@ -401,11 +400,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ad45049be3a3f3b12b14a715c72a938f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_group_node.html#ad45049be3a3f3b12b14a715c72a938f6">ExtractGroup</a> (<a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a> *pGroup, Type t)</td></tr>
-<tr class="separator:ad45049be3a3f3b12b14a715c72a938f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -495,96 +489,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  544</span>            }</div>
 <div class="line"><span class="lineno">  545</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad45049be3a3f3b12b14a715c72a938f6" name="ad45049be3a3f3b12b14a715c72a938f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad45049be3a3f3b12b14a715c72a938f6">&#9670;&#160;</a></span>ExtractGroup()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.SSBB.ResourceNodes.MDL0GroupNode.ExtractGroup </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">ResourceGroup</a> *&#160;</td>
-          <td class="paramname"><em>pGroup</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Type&#160;</td>
-          <td class="paramname"><em>t</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  457</span>        {</div>
-<div class="line"><span class="lineno">  458</span>            <span class="comment">//If using shaders, cache results instead of unique entries</span></div>
-<div class="line"><span class="lineno">  459</span>            <span class="comment">//This is because shaders can appear multiple times, but with different names</span></div>
-<div class="line"><span class="lineno">  460</span>            <span class="keywordtype">bool</span> useCache = t == typeof(MDL0ShaderNode);</div>
-<div class="line"><span class="lineno">  461</span> </div>
-<div class="line"><span class="lineno">  462</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_common_header.html">MDL0CommonHeader</a>* pHeader;</div>
-<div class="line"><span class="lineno">  463</span>            ResourceNode node;</div>
-<div class="line"><span class="lineno">  464</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>* offsetCache = stackalloc <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>[128];</div>
-<div class="line"><span class="lineno">  465</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> offsetCount = 0, offset, x;</div>
-<div class="line"><span class="lineno">  466</span> </div>
-<div class="line"><span class="lineno">  467</span>            <span class="keywordflow">foreach</span> (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html">ResourcePair</a> p <span class="keywordflow">in</span> *pGroup)</div>
-<div class="line"><span class="lineno">  468</span>            {</div>
-<div class="line"><span class="lineno">  469</span>                <span class="comment">//Get data offset</span></div>
-<div class="line"><span class="lineno">  470</span>                offset = p.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html#aa6e633080160876d248a2d593fbfce07">Data</a>;</div>
-<div class="line"><span class="lineno">  471</span>                <span class="keywordflow">if</span> (useCache)</div>
-<div class="line"><span class="lineno">  472</span>                {</div>
-<div class="line"><span class="lineno">  473</span>                    <span class="comment">//search for entry within offset cache</span></div>
-<div class="line"><span class="lineno">  474</span>                    <span class="keywordflow">for</span> (x = 0; x &lt; offsetCount &amp;&amp; offsetCache[x] != offset; x++)</div>
-<div class="line"><span class="lineno">  475</span>                    {</div>
-<div class="line"><span class="lineno">  476</span>                        ;</div>
-<div class="line"><span class="lineno">  477</span>                    }</div>
-<div class="line"><span class="lineno">  478</span> </div>
-<div class="line"><span class="lineno">  479</span>                    <span class="comment">//If found, skip to next entry</span></div>
-<div class="line"><span class="lineno">  480</span>                    <span class="keywordflow">if</span> (x &lt; offsetCount)</div>
-<div class="line"><span class="lineno">  481</span>                    {</div>
-<div class="line"><span class="lineno">  482</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  483</span>                    }</div>
-<div class="line"><span class="lineno">  484</span> </div>
-<div class="line"><span class="lineno">  485</span>                    <span class="comment">//Otherwise, store offset</span></div>
-<div class="line"><span class="lineno">  486</span>                    offsetCache[offsetCount++] = offset;</div>
-<div class="line"><span class="lineno">  487</span>                }</div>
-<div class="line"><span class="lineno">  488</span> </div>
-<div class="line"><span class="lineno">  489</span>                <span class="comment">//Create resource instance</span></div>
-<div class="line"><span class="lineno">  490</span>                pHeader = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_common_header.html">MDL0CommonHeader</a>*) p.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html#aa6e633080160876d248a2d593fbfce07">Data</a>;</div>
-<div class="line"><span class="lineno">  491</span>                node = Activator.CreateInstance(t) as ResourceNode;</div>
-<div class="line"><span class="lineno">  492</span> </div>
-<div class="line"><span class="lineno">  493</span>                <span class="comment">//Initialize</span></div>
-<div class="line"><span class="lineno">  494</span>                node.Initialize(<span class="keyword">this</span>, pHeader, pHeader-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_common_header.html#a8ff34557249f7235161441729ca6b24b">_size</a>);</div>
-<div class="line"><span class="lineno">  495</span> </div>
-<div class="line"><span class="lineno">  496</span>                <span class="comment">//Set the name of the node. This is necessary for defs.</span></div>
-<div class="line"><span class="lineno">  497</span>                <span class="comment">//Make sure we&#39;re not naming the shaders,</span></div>
-<div class="line"><span class="lineno">  498</span>                <span class="comment">//or it will name it the name of the first material it&#39;s linked to.</span></div>
-<div class="line"><span class="lineno">  499</span>                <span class="keywordflow">if</span> (t != typeof(MDL0ShaderNode))</div>
-<div class="line"><span class="lineno">  500</span>                {</div>
-<div class="line"><span class="lineno">  501</span>                    node._name = (string) p.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html#a20f00fd9a571b82bd07ddf3b0079f4c2">Name</a>;</div>
-<div class="line"><span class="lineno">  502</span>                }</div>
-<div class="line"><span class="lineno">  503</span>            }</div>
-<div class="line"><span class="lineno">  504</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_common_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_common_header.html">BrawlLib.SSBB.Types.MDL0CommonHeader</a></div><div class="ttdef"><b>Definition:</b> MDL0.cs:293</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_common_header_html_a8ff34557249f7235161441729ca6b24b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_common_header.html#a8ff34557249f7235161441729ca6b24b">BrawlLib.SSBB.Types.MDL0CommonHeader._size</a></div><div class="ttdeci">bint _size</div><div class="ttdef"><b>Definition:</b> MDL0.cs:294</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html">BrawlLib.SSBB.Types.ResourcePair</a></div><div class="ttdef"><b>Definition:</b> Common.cs:421</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair_html_a20f00fd9a571b82bd07ddf3b0079f4c2"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html#a20f00fd9a571b82bd07ddf3b0079f4c2">BrawlLib.SSBB.Types.ResourcePair.Name</a></div><div class="ttdeci">PString Name</div><div class="ttdef"><b>Definition:</b> Common.cs:422</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair_html_aa6e633080160876d248a2d593fbfce07"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html#aa6e633080160876d248a2d593fbfce07">BrawlLib.SSBB.Types.ResourcePair.Data</a></div><div class="ttdeci">VoidPtr Data</div><div class="ttdef"><b>Definition:</b> Common.cs:423</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -700,7 +604,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  125</span>            {</div>
 <div class="line"><span class="lineno">  126</span>                <span class="keywordflow">if</span> (gList[typeIndex] != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  127</span>                {</div>
-<div class="line"><span class="lineno">  128</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_group_node.html#ad45049be3a3f3b12b14a715c72a938f6">ExtractGroup</a>(gList[typeIndex], <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_model_linker.html">ModelLinker</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_model_linker.html#acf78424e52f1d73fc51606a55fde38bc">TypeBank</a>[typeIndex]);</div>
+<div class="line"><span class="lineno">  128</span>                    ExtractGroup(gList[typeIndex], <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_model_linker.html">ModelLinker</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_model_linker.html#acf78424e52f1d73fc51606a55fde38bc">TypeBank</a>[typeIndex]);</div>
 <div class="line"><span class="lineno">  129</span>                }</div>
 <div class="line"><span class="lineno">  130</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  131</span>                {</div>
@@ -1026,7 +930,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  451</span>                }</div>
 <div class="line"><span class="lineno">  452</span>            }</div>
 <div class="line"><span class="lineno">  453</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_group_node_html_ad45049be3a3f3b12b14a715c72a938f6"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_group_node.html#ad45049be3a3f3b12b14a715c72a938f6">BrawlLib.SSBB.ResourceNodes.MDL0GroupNode.ExtractGroup</a></div><div class="ttdeci">void ExtractGroup(ResourceGroup *pGroup, Type t)</div><div class="ttdef"><b>Definition:</b> MDL0GroupNode.cs:456</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a390294b21218af6211793dc142907447"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a390294b21218af6211793dc142907447">BrawlLib.SSBB.ResourceNodes.ResourceNode._parent</a></div><div class="ttdeci">ResourceNode _parent</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:142</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a713872ebf7495715a72583a8ebe07891"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">BrawlLib.SSBB.ResourceNodes.ResourceNode._children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; _children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:143</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_aa2ac75c861a66d004f89ae1186256310"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">BrawlLib.SSBB.ResourceNodes.ResourceNode.Parent</a></div><div class="ttdeci">ResourceNode Parent</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:245</div></div>
@@ -1051,6 +954,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_node_type3_entry_html_a1bef5694699f3e106b7cec6682d2d0a0"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_node_type3_entry.html#a1bef5694699f3e106b7cec6682d2d0a0">BrawlLib.SSBB.Types.MDL0NodeType3Entry._id</a></div><div class="ttdeci">bushort _id</div><div class="ttdef"><b>Definition:</b> MDL0.cs:533</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_node_type3_entry_html_ac11f10997cea530a2f4e1d72dce3fd55"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_node_type3_entry.html#ac11f10997cea530a2f4e1d72dce3fd55">BrawlLib.SSBB.Types.MDL0NodeType3Entry._value</a></div><div class="ttdeci">bfloat _value</div><div class="ttdef"><b>Definition:</b> MDL0.cs:534</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_group.html">BrawlLib.SSBB.Types.ResourceGroup</a></div><div class="ttdef"><b>Definition:</b> Common.cs:380</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html">BrawlLib.SSBB.Types.ResourcePair</a></div><div class="ttdef"><b>Definition:</b> Common.cs:421</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair_html_a20f00fd9a571b82bd07ddf3b0079f4c2"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html#a20f00fd9a571b82bd07ddf3b0079f4c2">BrawlLib.SSBB.Types.ResourcePair.Name</a></div><div class="ttdeci">PString Name</div><div class="ttdef"><b>Definition:</b> Common.cs:422</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair_html_aa6e633080160876d248a2d593fbfce07"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_pair.html#aa6e633080160876d248a2d593fbfce07">BrawlLib.SSBB.Types.ResourcePair.Data</a></div><div class="ttdeci">VoidPtr Data</div><div class="ttdef"><b>Definition:</b> Common.cs:423</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1124,6 +1030,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  535</span>                }</div>
 <div class="line"><span class="lineno">  536</span>            }</div>
 <div class="line"><span class="lineno">  537</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html">BrawlLib.SSBB.Types.BRESString</a></div><div class="ttdef"><b>Definition:</b> BRES.cs:126</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html">BrawlLib.SSBB.Types.ResourceEntry</a></div><div class="ttdef"><b>Definition:</b> Common.cs:472</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry_html_aa89d2e75c1190ca489feb72e7617a05d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_resource_entry.html#aa89d2e75c1190ca489feb72e7617a05d">BrawlLib.SSBB.Types.ResourceEntry.Build</a></div><div class="ttdeci">static void Build(ResourceGroup *group, int index, VoidPtr dataAddress, BRESString *pString)</div><div class="ttdef"><b>Definition:</b> Common.cs:557</div></div>

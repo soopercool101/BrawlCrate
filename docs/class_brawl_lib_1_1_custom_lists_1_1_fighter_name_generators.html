@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.CustomLists.FighterNameGenerators Class Reference</div></div>
 </div><!--header-->
@@ -147,13 +146,6 @@ Properties</h2></td></tr>
 <tr class="separator:ad3ae8be3762690a01f33c469a680ab85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68fe33d48d95f00ccfe2eb890b1c498c"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a68fe33d48d95f00ccfe2eb890b1c498c">listName</a><code> [get]</code></td></tr>
 <tr class="separator:a68fe33d48d95f00ccfe2eb890b1c498c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ac56783d32e35cdd21b45c899f3de5170"><td class="memItemLeft" align="right" valign="top">static readonly char[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">trimChars</a> = {' ', '\t'}</td></tr>
-<tr class="separator:ac56783d32e35cdd21b45c899f3de5170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afca95d70fc23e383fd97cbfefe65475f"><td class="memItemLeft" align="right" valign="top">static readonly byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afca95d70fc23e383fd97cbfefe65475f">listV1Hash</a></td></tr>
-<tr class="separator:afca95d70fc23e383fd97cbfefe65475f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="af303452bd2f849d14b4064b8a170aeea" name="af303452bd2f849d14b4064b8a170aeea"></a>
@@ -209,7 +201,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   47</span>                    <span class="keywordflow">if</span> (!s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#aa3778b0050e1c1e62aeb8e3aee51d63c">flagIndex</a>).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
 <div class="line"><span class="lineno">   48</span>                        !s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#aa3778b0050e1c1e62aeb8e3aee51d63c">flagIndex</a>).StartsWith(flagToIgnore))</div>
 <div class="line"><span class="lineno">   49</span>                    {</div>
-<div class="line"><span class="lineno">   50</span>                        <span class="keywordflow">return</span> s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a71ddb7dc0ef6e292f0961e7d8f98beee">nameIndex</a>).Trim(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">trimChars</a>);</div>
+<div class="line"><span class="lineno">   50</span>                        <span class="keywordflow">return</span> s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a71ddb7dc0ef6e292f0961e7d8f98beee">nameIndex</a>).Trim(trimChars);</div>
 <div class="line"><span class="lineno">   51</span>                    }</div>
 <div class="line"><span class="lineno">   52</span>                }</div>
 <div class="line"><span class="lineno">   53</span>            }</div>
@@ -221,7 +213,6 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_a8703b5e3c250820e0d5e27e45558b95c"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a8703b5e3c250820e0d5e27e45558b95c">BrawlLib.CustomLists.FighterNameGenerators.generated</a></div><div class="ttdeci">static bool generated</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:33</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_aa3778b0050e1c1e62aeb8e3aee51d63c"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#aa3778b0050e1c1e62aeb8e3aee51d63c">BrawlLib.CustomLists.FighterNameGenerators.flagIndex</a></div><div class="ttdeci">static readonly int flagIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:24</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_ab682baeb2bd92d1b928ca79eb0c55dac"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ab682baeb2bd92d1b928ca79eb0c55dac">BrawlLib.CustomLists.FighterNameGenerators.fileList</a></div><div class="ttdeci">static List&lt; string &gt; fileList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:12</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_ac56783d32e35cdd21b45c899f3de5170"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">BrawlLib.CustomLists.FighterNameGenerators.trimChars</a></div><div class="ttdeci">static readonly char[] trimChars</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:32</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_afcc81140e7fa669fe9232d2f26ab1e3a"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afcc81140e7fa669fe9232d2f26ab1e3a">BrawlLib.CustomLists.FighterNameGenerators.GenerateLists</a></div><div class="ttdeci">static bool GenerateLists()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:145</div></div>
 </div><!-- fragment -->
 </div>
@@ -259,7 +250,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   94</span>            {</div>
 <div class="line"><span class="lineno">   95</span>                <span class="keywordflow">if</span> (s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afb0dcb910e235cdb762e82e010019ca4">internalNameIndex</a>).StartsWith(pacName.ToUpper()))</div>
 <div class="line"><span class="lineno">   96</span>                {</div>
-<div class="line"><span class="lineno">   97</span>                    <span class="keywordflow">return</span> s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a71ddb7dc0ef6e292f0961e7d8f98beee">nameIndex</a>).Trim(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">trimChars</a>);</div>
+<div class="line"><span class="lineno">   97</span>                    <span class="keywordflow">return</span> s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a71ddb7dc0ef6e292f0961e7d8f98beee">nameIndex</a>).Trim(trimChars);</div>
 <div class="line"><span class="lineno">   98</span>                }</div>
 <div class="line"><span class="lineno">   99</span>            }</div>
 <div class="line"><span class="lineno">  100</span> </div>
@@ -511,12 +502,12 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  154</span>                    <span class="keyword">using</span> (FileStream stream = File.OpenRead(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a68fe33d48d95f00ccfe2eb890b1c498c">listName</a>))</div>
 <div class="line"><span class="lineno">  155</span>                    {</div>
 <div class="line"><span class="lineno">  156</span>                        <span class="keywordtype">byte</span>[] hash = md5.ComputeHash(stream);</div>
-<div class="line"><span class="lineno">  157</span>                        <span class="keywordflow">if</span> (hash.Length == <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afca95d70fc23e383fd97cbfefe65475f">listV1Hash</a>.Length)</div>
+<div class="line"><span class="lineno">  157</span>                        <span class="keywordflow">if</span> (hash.Length == listV1Hash.Length)</div>
 <div class="line"><span class="lineno">  158</span>                        {</div>
 <div class="line"><span class="lineno">  159</span>                            fileOutdated = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  160</span>                            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; hash.Length; i++)</div>
 <div class="line"><span class="lineno">  161</span>                            {</div>
-<div class="line"><span class="lineno">  162</span>                                <span class="keywordflow">if</span> (hash[i] != <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afca95d70fc23e383fd97cbfefe65475f">listV1Hash</a>[i])</div>
+<div class="line"><span class="lineno">  162</span>                                <span class="keywordflow">if</span> (hash[i] != listV1Hash[i])</div>
 <div class="line"><span class="lineno">  163</span>                                {</div>
 <div class="line"><span class="lineno">  164</span>                                    fileOutdated = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  165</span>                                    <span class="keywordflow">break</span>;</div>
@@ -553,7 +544,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  196</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ab682baeb2bd92d1b928ca79eb0c55dac">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ab682baeb2bd92d1b928ca79eb0c55dac">fileList</a>[i].Substring(0, commentIndex);</div>
 <div class="line"><span class="lineno">  197</span>                }</div>
 <div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ab682baeb2bd92d1b928ca79eb0c55dac">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ab682baeb2bd92d1b928ca79eb0c55dac">fileList</a>[i].TrimEnd(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">trimChars</a>);</div>
+<div class="line"><span class="lineno">  199</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ab682baeb2bd92d1b928ca79eb0c55dac">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ab682baeb2bd92d1b928ca79eb0c55dac">fileList</a>[i].TrimEnd(trimChars);</div>
 <div class="line"><span class="lineno">  200</span>            }</div>
 <div class="line"><span class="lineno">  201</span> </div>
 <div class="line"><span class="lineno">  202</span>            <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#adb9fed5597cea9417d5161b9d41d01e1">GenerateSlotLists</a>();</div>
@@ -576,7 +567,6 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_a6de8bd38fbc83ee1cc862d5a000b037e"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a6de8bd38fbc83ee1cc862d5a000b037e">BrawlLib.CustomLists.FighterNameGenerators.singlePlayerSlotIDList</a></div><div class="ttdeci">static List&lt; Fighter &gt; singlePlayerSlotIDList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:14</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_ad3ae8be3762690a01f33c469a680ab85"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ad3ae8be3762690a01f33c469a680ab85">BrawlLib.CustomLists.FighterNameGenerators.directory</a></div><div class="ttdeci">static string directory</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:20</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_adb9fed5597cea9417d5161b9d41d01e1"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#adb9fed5597cea9417d5161b9d41d01e1">BrawlLib.CustomLists.FighterNameGenerators.GenerateSlotLists</a></div><div class="ttdeci">static void GenerateSlotLists()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:216</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_afca95d70fc23e383fd97cbfefe65475f"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afca95d70fc23e383fd97cbfefe65475f">BrawlLib.CustomLists.FighterNameGenerators.listV1Hash</a></div><div class="ttdeci">static readonly byte[] listV1Hash</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:142</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators_html_afcd7b9867485dc4d835ca98467828b4e"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afcd7b9867485dc4d835ca98467828b4e">BrawlLib.CustomLists.FighterNameGenerators.GenerateFighterLists</a></div><div class="ttdeci">static void GenerateFighterLists()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:245</div></div>
 </div><!-- fragment -->
 </div>
@@ -688,7 +678,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   71</span>                        !s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#aa3778b0050e1c1e62aeb8e3aee51d63c">flagIndex</a>).StartsWith(flagToIgnore))</div>
 <div class="line"><span class="lineno">   72</span>                    {</div>
 <div class="line"><span class="lineno">   73</span>                        <span class="keywordtype">string</span> intName = s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afb0dcb910e235cdb762e82e010019ca4">internalNameIndex</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a71ddb7dc0ef6e292f0961e7d8f98beee">nameIndex</a> - <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#afb0dcb910e235cdb762e82e010019ca4">internalNameIndex</a> - 1)</div>
-<div class="line"><span class="lineno">   74</span>                            .Trim(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#ac56783d32e35cdd21b45c899f3de5170">trimChars</a>);</div>
+<div class="line"><span class="lineno">   74</span>                            .Trim(trimChars);</div>
 <div class="line"><span class="lineno">   75</span>                        <span class="keywordflow">if</span> (intName.Length &gt; 0)</div>
 <div class="line"><span class="lineno">   76</span>                        {</div>
 <div class="line"><span class="lineno">   77</span>                            <span class="keywordflow">return</span> intName;</div>
@@ -945,30 +935,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afca95d70fc23e383fd97cbfefe65475f" name="afca95d70fc23e383fd97cbfefe65475f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afca95d70fc23e383fd97cbfefe65475f">&#9670;&#160;</a></span>listV1Hash</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly byte [] BrawlLib.CustomLists.FighterNameGenerators.listV1Hash</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">            {0xD2, 0x03, 0xA9, 0x9E, 0x92, 0xD4, 0xCC, 0xCB, 0xD4, 0xBD, 0x85, 0x28, 0xD8, 0x7C, 0x72, 0xB4}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a0b209e5033483772b1e975ac0f2c0dc2" name="a0b209e5033483772b1e975ac0f2c0dc2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b209e5033483772b1e975ac0f2c0dc2">&#9670;&#160;</a></span>minimumLength</h2>
 
@@ -1073,28 +1039,6 @@ Static Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac56783d32e35cdd21b45c899f3de5170" name="ac56783d32e35cdd21b45c899f3de5170"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac56783d32e35cdd21b45c899f3de5170">&#9670;&#160;</a></span>trimChars</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly char [] BrawlLib.CustomLists.FighterNameGenerators.trimChars = {' ', '\t'}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

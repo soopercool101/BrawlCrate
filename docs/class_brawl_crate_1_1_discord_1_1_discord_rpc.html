@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_brawl_crate_1_1_discord_1_1_discord_rpc-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.Discord.DiscordRpc Class Reference</div></div>
 </div><!--header-->
@@ -131,11 +130,6 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af3e481c8cc454def3f6c782138e9c785"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc.html#af3e481c8cc454def3f6c782138e9c785">UpdatePresence</a> (<a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html">RichPresence</a> presence)</td></tr>
 <tr class="separator:af3e481c8cc454def3f6c782138e9c785"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ac5c41bbe183cb50e9f03681828e46467"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc.html#ac5c41bbe183cb50e9f03681828e46467">UpdatePresenceNative</a> (ref <a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a> presence)</td></tr>
-<tr class="separator:ac5c41bbe183cb50e9f03681828e46467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="aeaa805de06569dc0034609d9f8097fc8" name="aeaa805de06569dc0034609d9f8097fc8"></a>
@@ -429,37 +423,10 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   95</span>        {</div>
 <div class="line"><span class="lineno">   96</span>            RichPresenceStruct presencestruct = presence.GetStruct();</div>
-<div class="line"><span class="lineno">   97</span>            <a class="code hl_function" href="class_brawl_crate_1_1_discord_1_1_discord_rpc.html#ac5c41bbe183cb50e9f03681828e46467">UpdatePresenceNative</a>(ref presencestruct);</div>
+<div class="line"><span class="lineno">   97</span>            UpdatePresenceNative(ref presencestruct);</div>
 <div class="line"><span class="lineno">   98</span>            presence.FreeMem();</div>
 <div class="line"><span class="lineno">   99</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_html_ac5c41bbe183cb50e9f03681828e46467"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc.html#ac5c41bbe183cb50e9f03681828e46467">BrawlCrate.Discord.DiscordRpc.UpdatePresenceNative</a></div><div class="ttdeci">static void UpdatePresenceNative(ref RichPresenceStruct presence)</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="ac5c41bbe183cb50e9f03681828e46467" name="ac5c41bbe183cb50e9f03681828e46467"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5c41bbe183cb50e9f03681828e46467">&#9670;&#160;</a></span>UpdatePresenceNative()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlCrate.Discord.DiscordRpc.UpdatePresenceNative </td>
-          <td>(</td>
-          <td class="paramtype">ref <a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a>&#160;</td>
-          <td class="paramname"><em>presence</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

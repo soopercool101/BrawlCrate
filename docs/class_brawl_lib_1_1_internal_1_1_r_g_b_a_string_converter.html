@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_r_g_b_a_string_converter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.RGBAStringConverter Class Reference</div></div>
 </div><!--header-->
@@ -99,11 +98,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a921ee891eee4f0c071f2de338575b494"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4c5e5511f48425e0f0d14a82a0ee203"><td class="memItemLeft" align="right" valign="top">override object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_r_g_b_a_string_converter.html#ab4c5e5511f48425e0f0d14a82a0ee203">ConvertFrom</a> (ITypeDescriptorContext context, CultureInfo culture, object value)</td></tr>
 <tr class="separator:ab4c5e5511f48425e0f0d14a82a0ee203"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:adf727a1e8e4e3d72a2498f696e5b4fb1"><td class="memItemLeft" align="right" valign="top">static readonly char[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_r_g_b_a_string_converter.html#adf727a1e8e4e3d72a2498f696e5b4fb1">Delims</a> = {',', 'R', 'G', 'B', 'A', ':', ' '}</td></tr>
-<tr class="separator:adf727a1e8e4e3d72a2498f696e5b4fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a921ee891eee4f0c071f2de338575b494" name="a921ee891eee4f0c071f2de338575b494"></a>
@@ -228,7 +222,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  164</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a> p = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>();</div>
 <div class="line"><span class="lineno">  165</span> </div>
 <div class="line"><span class="lineno">  166</span>            <span class="keywordtype">string</span> s = value?.ToString() ?? <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  167</span>            <span class="keywordtype">string</span>[] arr = s.Split(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_r_g_b_a_string_converter.html#adf727a1e8e4e3d72a2498f696e5b4fb1">Delims</a>, StringSplitOptions.RemoveEmptyEntries);</div>
+<div class="line"><span class="lineno">  167</span>            <span class="keywordtype">string</span>[] arr = s.Split(Delims, StringSplitOptions.RemoveEmptyEntries);</div>
 <div class="line"><span class="lineno">  168</span> </div>
 <div class="line"><span class="lineno">  169</span>            <span class="keywordflow">if</span> (arr.Length == 4)</div>
 <div class="line"><span class="lineno">  170</span>            {</div>
@@ -247,7 +241,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  183</span> </div>
 <div class="line"><span class="lineno">  184</span>            <span class="keywordflow">return</span> p;</div>
 <div class="line"><span class="lineno">  185</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_r_g_b_a_string_converter_html_adf727a1e8e4e3d72a2498f696e5b4fb1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_r_g_b_a_string_converter.html#adf727a1e8e4e3d72a2498f696e5b4fb1">BrawlLib.Internal.RGBAStringConverter.Delims</a></div><div class="ttdeci">static readonly char[] Delims</div><div class="ttdef"><b>Definition:</b> StringConverters.cs:144</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html_a022033fdc6f00273bcd84fe8efc5baa2"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html#a022033fdc6f00273bcd84fe8efc5baa2">BrawlLib.Imaging.RGBAPixel.R</a></div><div class="ttdeci">byte R</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:330</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html_a79cce54a371c6b333606655b7415c9d2"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html#a79cce54a371c6b333606655b7415c9d2">BrawlLib.Imaging.RGBAPixel.G</a></div><div class="ttdeci">byte G</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:330</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html_ae20304b804de88cef2960dd98ac68ddd"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html#ae20304b804de88cef2960dd98ac68ddd">BrawlLib.Imaging.RGBAPixel.A</a></div><div class="ttdeci">byte A</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:330</div></div>
@@ -304,29 +297,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  154</span>            <span class="keywordflow">return</span> value?.ToString();</div>
 <div class="line"><span class="lineno">  155</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="adf727a1e8e4e3d72a2498f696e5b4fb1" name="adf727a1e8e4e3d72a2498f696e5b4fb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf727a1e8e4e3d72a2498f696e5b4fb1">&#9670;&#160;</a></span>Delims</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly char [] BrawlLib.Internal.RGBAStringConverter.Delims = {',', 'R', 'G', 'B', 'A', ':', ' '}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

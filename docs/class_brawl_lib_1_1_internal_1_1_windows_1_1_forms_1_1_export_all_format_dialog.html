@@ -80,8 +80,6 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog Class Reference</div></div>
 </div><!--header-->
@@ -119,22 +117,6 @@ Properties</h2></td></tr>
 <tr class="separator:a70174be9d825ae602ed4be62c3ac5aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabd1ed403a59cb231f4d959f83f87d10"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#aabd1ed403a59cb231f4d959f83f87d10">AutoSelect</a><code> [get]</code></td></tr>
 <tr class="separator:aabd1ed403a59cb231f4d959f83f87d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a51395e592557b2b9ab7c516e4501392b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a51395e592557b2b9ab7c516e4501392b">InitializeComponent</a> ()</td></tr>
-<tr class="memdesc:a51395e592557b2b9ab7c516e4501392b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required method for Designer support - do not modify the contents of this method with the code editor.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a51395e592557b2b9ab7c516e4501392b">More...</a><br /></td></tr>
-<tr class="separator:a51395e592557b2b9ab7c516e4501392b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ad051f0f3437c73c53a6030fd8e5fd775"><td class="memItemLeft" align="right" valign="top">System.ComponentModel.IContainer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#ad051f0f3437c73c53a6030fd8e5fd775">components</a> = null</td></tr>
-<tr class="memdesc:ad051f0f3437c73c53a6030fd8e5fd775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required designer variable.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#ad051f0f3437c73c53a6030fd8e5fd775">More...</a><br /></td></tr>
-<tr class="separator:ad051f0f3437c73c53a6030fd8e5fd775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a662f38152cb8fbf762e516ab229476d4"><td class="memItemLeft" align="right" valign="top">System.Windows.Forms.Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a662f38152cb8fbf762e516ab229476d4">button1</a></td></tr>
-<tr class="separator:a662f38152cb8fbf762e516ab229476d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f033ee8be84e17e310330e5a469d70"><td class="memItemLeft" align="right" valign="top">System.Windows.Forms.Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#aa2f033ee8be84e17e310330e5a469d70">button2</a></td></tr>
-<tr class="separator:aa2f033ee8be84e17e310330e5a469d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af3bbca5808a0864242d9c6414d9ad6ca" name="af3bbca5808a0864242d9c6414d9ad6ca"></a>
@@ -177,7 +159,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">    9</span>        {</div>
-<div class="line"><span class="lineno">   10</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a51395e592557b2b9ab7c516e4501392b">InitializeComponent</a>();</div>
+<div class="line"><span class="lineno">   10</span>            InitializeComponent();</div>
 <div class="line"><span class="lineno">   11</span>            Icon = Properties.Resources.Icon;</div>
 <div class="line"><span class="lineno">   12</span>            Text = title;</div>
 <div class="line"><span class="lineno">   13</span>            label1.Text = $<span class="stringliteral">&quot;Output format for {t.Name}:&quot;</span>;</div>
@@ -197,7 +179,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   27</span> </div>
 <div class="line"><span class="lineno">   28</span>            comboBox1.SelectedIndex = 0;</div>
 <div class="line"><span class="lineno">   29</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog_html_a51395e592557b2b9ab7c516e4501392b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a51395e592557b2b9ab7c516e4501392b">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdoc">Required method for Designer support - do not modify the contents of this method with the code editor...</div><div class="ttdef"><b>Definition:</b> ExportAllAskFormat.designer.cs:29</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog_html_a910a423c588f94512102c1ae301383a2"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a910a423c588f94512102c1ae301383a2">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.comboBox1</a></div><div class="ttdeci">System.Windows.Forms.ComboBox comboBox1</div><div class="ttdef"><b>Definition:</b> ExportAllAskFormat.designer.cs:94</div></div>
 </div><!-- fragment -->
 </div>
@@ -235,150 +216,16 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <div class="fragment"><div class="line"><span class="lineno">   15</span>        {</div>
-<div class="line"><span class="lineno">   16</span>            <span class="keywordflow">if</span> (disposing &amp;&amp; (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#ad051f0f3437c73c53a6030fd8e5fd775">components</a> != <span class="keyword">null</span>))</div>
+<div class="line"><span class="lineno">   16</span>            <span class="keywordflow">if</span> (disposing &amp;&amp; (components != <span class="keyword">null</span>))</div>
 <div class="line"><span class="lineno">   17</span>            {</div>
-<div class="line"><span class="lineno">   18</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#ad051f0f3437c73c53a6030fd8e5fd775">components</a>.Dispose();</div>
+<div class="line"><span class="lineno">   18</span>                components.Dispose();</div>
 <div class="line"><span class="lineno">   19</span>            }</div>
 <div class="line"><span class="lineno">   20</span>            base.Dispose(disposing);</div>
 <div class="line"><span class="lineno">   21</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog_html_ad051f0f3437c73c53a6030fd8e5fd775"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#ad051f0f3437c73c53a6030fd8e5fd775">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.components</a></div><div class="ttdeci">System.ComponentModel.IContainer components</div><div class="ttdoc">Required designer variable.</div><div class="ttdef"><b>Definition:</b> ExportAllAskFormat.designer.cs:8</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a51395e592557b2b9ab7c516e4501392b" name="a51395e592557b2b9ab7c516e4501392b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51395e592557b2b9ab7c516e4501392b">&#9670;&#160;</a></span>InitializeComponent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.InitializeComponent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Required method for Designer support - do not modify the contents of this method with the code editor.  </p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>        {</div>
-<div class="line"><span class="lineno">   31</span>            this.label1 = <span class="keyword">new</span> System.Windows.Forms.Label();</div>
-<div class="line"><span class="lineno">   32</span>            this.comboBox1 = <span class="keyword">new</span> System.Windows.Forms.ComboBox();</div>
-<div class="line"><span class="lineno">   33</span>            this.button1 = <span class="keyword">new</span> System.Windows.Forms.Button();</div>
-<div class="line"><span class="lineno">   34</span>            this.button2 = <span class="keyword">new</span> System.Windows.Forms.Button();</div>
-<div class="line"><span class="lineno">   35</span>            this.SuspendLayout();</div>
-<div class="line"><span class="lineno">   36</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   37</span>            <span class="comment">// label1</span></div>
-<div class="line"><span class="lineno">   38</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   39</span>            this.label1.AutoSize = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   40</span>            this.label1.Location = <span class="keyword">new</span> System.Drawing.Point(15, 15);</div>
-<div class="line"><span class="lineno">   41</span>            this.label1.Name = <span class="stringliteral">&quot;label1&quot;</span>;</div>
-<div class="line"><span class="lineno">   42</span>            this.label1.Size = <span class="keyword">new</span> System.Drawing.Size(150, 15);</div>
-<div class="line"><span class="lineno">   43</span>            this.label1.TabIndex = 0;</div>
-<div class="line"><span class="lineno">   44</span>            this.label1.Text = <span class="stringliteral">&quot;Output format for textures:&quot;</span>;</div>
-<div class="line"><span class="lineno">   45</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   46</span>            <span class="comment">// comboBox1</span></div>
-<div class="line"><span class="lineno">   47</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   48</span>            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;</div>
-<div class="line"><span class="lineno">   49</span>            this.comboBox1.FormattingEnabled = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   50</span>            this.comboBox1.Location = <span class="keyword">new</span> System.Drawing.Point(14, 35);</div>
-<div class="line"><span class="lineno">   51</span>            this.comboBox1.Name = <span class="stringliteral">&quot;comboBox1&quot;</span>;</div>
-<div class="line"><span class="lineno">   52</span>            this.comboBox1.Size = <span class="keyword">new</span> System.Drawing.Size(312, 23);</div>
-<div class="line"><span class="lineno">   53</span>            this.comboBox1.TabIndex = 2;</div>
-<div class="line"><span class="lineno">   54</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   55</span>            <span class="comment">// button1</span></div>
-<div class="line"><span class="lineno">   56</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   57</span>            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;</div>
-<div class="line"><span class="lineno">   58</span>            this.button1.Location = <span class="keyword">new</span> System.Drawing.Point(233, 66);</div>
-<div class="line"><span class="lineno">   59</span>            this.button1.Name = <span class="stringliteral">&quot;button1&quot;</span>;</div>
-<div class="line"><span class="lineno">   60</span>            this.button1.Size = <span class="keyword">new</span> System.Drawing.Size(93, 27);</div>
-<div class="line"><span class="lineno">   61</span>            this.button1.TabIndex = 1;</div>
-<div class="line"><span class="lineno">   62</span>            this.button1.Text = <span class="stringliteral">&quot;Cancel&quot;</span>;</div>
-<div class="line"><span class="lineno">   63</span>            this.button1.UseVisualStyleBackColor = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   64</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   65</span>            <span class="comment">// button2</span></div>
-<div class="line"><span class="lineno">   66</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   67</span>            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;</div>
-<div class="line"><span class="lineno">   68</span>            this.button2.Location = <span class="keyword">new</span> System.Drawing.Point(133, 66);</div>
-<div class="line"><span class="lineno">   69</span>            this.button2.Name = <span class="stringliteral">&quot;button2&quot;</span>;</div>
-<div class="line"><span class="lineno">   70</span>            this.button2.Size = <span class="keyword">new</span> System.Drawing.Size(93, 27);</div>
-<div class="line"><span class="lineno">   71</span>            this.button2.TabIndex = 0;</div>
-<div class="line"><span class="lineno">   72</span>            this.button2.Text = <span class="stringliteral">&quot;OK&quot;</span>;</div>
-<div class="line"><span class="lineno">   73</span>            this.button2.UseVisualStyleBackColor = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   74</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   75</span>            <span class="comment">// ExportAllFormatDialog</span></div>
-<div class="line"><span class="lineno">   76</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   77</span>            this.AutoScaleDimensions = <span class="keyword">new</span> System.Drawing.SizeF(7F, 15F);</div>
-<div class="line"><span class="lineno">   78</span>            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;</div>
-<div class="line"><span class="lineno">   79</span>            this.ClientSize = <span class="keyword">new</span> System.Drawing.Size(341, 106);</div>
-<div class="line"><span class="lineno">   80</span>            this.Controls.Add(this.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#aa2f033ee8be84e17e310330e5a469d70">button2</a>);</div>
-<div class="line"><span class="lineno">   81</span>            this.Controls.Add(this.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a662f38152cb8fbf762e516ab229476d4">button1</a>);</div>
-<div class="line"><span class="lineno">   82</span>            this.Controls.Add(this.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a910a423c588f94512102c1ae301383a2">comboBox1</a>);</div>
-<div class="line"><span class="lineno">   83</span>            this.Controls.Add(this.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#ab25c41ef285ee329794ca4824891952f">label1</a>);</div>
-<div class="line"><span class="lineno">   84</span>            this.Name = <span class="stringliteral">&quot;ExportAllFormatDialog&quot;</span>;</div>
-<div class="line"><span class="lineno">   85</span>            this.Text = <span class="stringliteral">&quot;Export All&quot;</span>;</div>
-<div class="line"><span class="lineno">   86</span>            this.ResumeLayout(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   87</span>            this.PerformLayout();</div>
-<div class="line"><span class="lineno">   88</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog_html_a662f38152cb8fbf762e516ab229476d4"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a662f38152cb8fbf762e516ab229476d4">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.button1</a></div><div class="ttdeci">System.Windows.Forms.Button button1</div><div class="ttdef"><b>Definition:</b> ExportAllAskFormat.designer.cs:92</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog_html_aa2f033ee8be84e17e310330e5a469d70"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#aa2f033ee8be84e17e310330e5a469d70">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.button2</a></div><div class="ttdeci">System.Windows.Forms.Button button2</div><div class="ttdef"><b>Definition:</b> ExportAllAskFormat.designer.cs:93</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog_html_ab25c41ef285ee329794ca4824891952f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#ab25c41ef285ee329794ca4824891952f">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.label1</a></div><div class="ttdeci">System.Windows.Forms.Label label1</div><div class="ttdef"><b>Definition:</b> ExportAllAskFormat.designer.cs:95</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a662f38152cb8fbf762e516ab229476d4" name="a662f38152cb8fbf762e516ab229476d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a662f38152cb8fbf762e516ab229476d4">&#9670;&#160;</a></span>button1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.Windows.Forms.Button BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.button1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa2f033ee8be84e17e310330e5a469d70" name="aa2f033ee8be84e17e310330e5a469d70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2f033ee8be84e17e310330e5a469d70">&#9670;&#160;</a></span>button2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.Windows.Forms.Button BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.button2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a910a423c588f94512102c1ae301383a2" name="a910a423c588f94512102c1ae301383a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a910a423c588f94512102c1ae301383a2">&#9670;&#160;</a></span>comboBox1</h2>
 
@@ -390,30 +237,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad051f0f3437c73c53a6030fd8e5fd775" name="ad051f0f3437c73c53a6030fd8e5fd775"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad051f0f3437c73c53a6030fd8e5fd775">&#9670;&#160;</a></span>components</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">System.ComponentModel.IContainer BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog.components = null</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Required designer variable.  </p>
 
 </div>
 </div>

@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_crate_1_1_discord_1_1_discord_controller-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.Discord.DiscordController Class Reference</div></div>
 </div><!--header-->
@@ -100,13 +99,6 @@ Static Public Member Functions</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a1be58c60fa6b4c2298f579ba8051fbc0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html">DiscordRpc.RichPresence</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a1be58c60fa6b4c2298f579ba8051fbc0">presence</a></td></tr>
 <tr class="separator:a1be58c60fa6b4c2298f579ba8051fbc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a849f4e0d388d0a63b2b641f9dabc9076"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_event_handlers.html">DiscordRpc.EventHandlers</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a849f4e0d388d0a63b2b641f9dabc9076">handlers</a></td></tr>
-<tr class="separator:a849f4e0d388d0a63b2b641f9dabc9076"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e3c63215934e2181cca20cd4497721e"><td class="memItemLeft" align="right" valign="top">static readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a6e3c63215934e2181cca20cd4497721e">applicationId</a></td></tr>
-<tr class="separator:a6e3c63215934e2181cca20cd4497721e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab000ed15250a6318c89a0c7f8a63bf0f" name="ab000ed15250a6318c89a0c7f8a63bf0f"></a>
@@ -217,17 +209,15 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   23</span>            DiscordRpc.ClearPresence();</div>
 <div class="line"><span class="lineno">   24</span>            DiscordRpc.Shutdown();</div>
 <div class="line"><span class="lineno">   25</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a1be58c60fa6b4c2298f579ba8051fbc0">presence</a> = <span class="keyword">new</span> DiscordRpc.<a class="code hl_class" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html">RichPresence</a>();</div>
-<div class="line"><span class="lineno">   26</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a849f4e0d388d0a63b2b641f9dabc9076">handlers</a> = <span class="keyword">new</span> DiscordRpc.EventHandlers</div>
+<div class="line"><span class="lineno">   26</span>            handlers = <span class="keyword">new</span> DiscordRpc.EventHandlers</div>
 <div class="line"><span class="lineno">   27</span>            {</div>
 <div class="line"><span class="lineno">   28</span>                readyCallback = <a class="code hl_function" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#ae74d7ed7b58fd5185f90fe4b2d453807">ReadyCallback</a></div>
 <div class="line"><span class="lineno">   29</span>            };</div>
 <div class="line"><span class="lineno">   30</span>            handlers.disconnectedCallback += <a class="code hl_function" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#ab000ed15250a6318c89a0c7f8a63bf0f">DisconnectedCallback</a>;</div>
 <div class="line"><span class="lineno">   31</span>            handlers.errorCallback += <a class="code hl_function" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#ab0b4494c0fd197fc68d3441ca8836c11">ErrorCallback</a>;</div>
-<div class="line"><span class="lineno">   32</span>            DiscordRpc.Initialize(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a6e3c63215934e2181cca20cd4497721e">applicationId</a>, ref <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a849f4e0d388d0a63b2b641f9dabc9076">handlers</a>, <span class="keyword">true</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   32</span>            DiscordRpc.Initialize(applicationId, ref handlers, <span class="keyword">true</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><span class="lineno">   33</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_controller_html_a1be58c60fa6b4c2298f579ba8051fbc0"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a1be58c60fa6b4c2298f579ba8051fbc0">BrawlCrate.Discord.DiscordController.presence</a></div><div class="ttdeci">static DiscordRpc.RichPresence presence</div><div class="ttdef"><b>Definition:</b> DiscordController.cs:8</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_controller_html_a6e3c63215934e2181cca20cd4497721e"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a6e3c63215934e2181cca20cd4497721e">BrawlCrate.Discord.DiscordController.applicationId</a></div><div class="ttdeci">static readonly string applicationId</div><div class="ttdef"><b>Definition:</b> DiscordController.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_controller_html_a849f4e0d388d0a63b2b641f9dabc9076"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#a849f4e0d388d0a63b2b641f9dabc9076">BrawlCrate.Discord.DiscordController.handlers</a></div><div class="ttdeci">static DiscordRpc.EventHandlers handlers</div><div class="ttdef"><b>Definition:</b> DiscordController.cs:9</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_controller_html_ab000ed15250a6318c89a0c7f8a63bf0f"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#ab000ed15250a6318c89a0c7f8a63bf0f">BrawlCrate.Discord.DiscordController.DisconnectedCallback</a></div><div class="ttdeci">static void DisconnectedCallback(int errorCode, string message)</div><div class="ttdef"><b>Definition:</b> DiscordController.cs:40</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_controller_html_ab0b4494c0fd197fc68d3441ca8836c11"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#ab0b4494c0fd197fc68d3441ca8836c11">BrawlCrate.Discord.DiscordController.ErrorCallback</a></div><div class="ttdeci">static void ErrorCallback(int errorCode, string message)</div><div class="ttdef"><b>Definition:</b> DiscordController.cs:45</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_controller_html_ae74d7ed7b58fd5185f90fe4b2d453807"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_controller.html#ae74d7ed7b58fd5185f90fe4b2d453807">BrawlCrate.Discord.DiscordController.ReadyCallback</a></div><div class="ttdeci">static void ReadyCallback()</div><div class="ttdef"><b>Definition:</b> DiscordController.cs:35</div></div>
@@ -264,55 +254,6 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a6e3c63215934e2181cca20cd4497721e" name="a6e3c63215934e2181cca20cd4497721e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e3c63215934e2181cca20cd4497721e">&#9670;&#160;</a></span>applicationId</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly string BrawlCrate.Discord.DiscordController.applicationId</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">            <span class="stringliteral">&quot;545732315658059801&quot;</span></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a849f4e0d388d0a63b2b641f9dabc9076" name="a849f4e0d388d0a63b2b641f9dabc9076"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a849f4e0d388d0a63b2b641f9dabc9076">&#9670;&#160;</a></span>handlers</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_event_handlers.html">DiscordRpc.EventHandlers</a> BrawlCrate.Discord.DiscordController.handlers</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a1be58c60fa6b4c2298f579ba8051fbc0" name="a1be58c60fa6b4c2298f579ba8051fbc0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1be58c60fa6b4c2298f579ba8051fbc0">&#9670;&#160;</a></span>presence</h2>
 

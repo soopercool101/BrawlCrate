@@ -81,7 +81,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Models.ElementDescriptor Class Reference</div></div>
 </div><!--header-->
@@ -131,11 +130,6 @@ Public Attributes</h2></td></tr>
 Package Functions</h2></td></tr>
 <tr class="memitem:ae2bc7e31705f6311d55c45a570ac74d1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">Vertex3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#ae2bc7e31705f6311d55c45a570ac74d1">Finish</a> (<a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> *pVert, <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a>[] nodeTable)</td></tr>
 <tr class="separator:ae2bc7e31705f6311d55c45a570ac74d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a71a987bbb208d58a0b92514aa058b0bc"><td class="memItemLeft" align="right" valign="top">readonly ushort[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a71a987bbb208d58a0b92514aa058b0bc">Nodes</a></td></tr>
-<tr class="separator:a71a987bbb208d58a0b92514aa058b0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a5ca79fff15b572849d0c15f35ce99e07" name="a5ca79fff15b572849d0c15f35ce99e07"></a>
@@ -193,7 +187,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  286</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a7d0204eb2f161ea470fbd05fb33afed0">RemapTable</a> = <span class="keyword">new</span> List&lt;int&gt;();</div>
 <div class="line"><span class="lineno">  287</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#ae4ed30a6abdb3dacc8d0622ed5fe080a">Stride</a> = 0;</div>
 <div class="line"><span class="lineno">  288</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a69e5f7e96098d5b0f7215a1ef78c112b">HasData</a> = <span class="keyword">new</span> <span class="keywordtype">bool</span>[12];</div>
-<div class="line"><span class="lineno">  289</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a71a987bbb208d58a0b92514aa058b0bc">Nodes</a> = <span class="keyword">new</span> ushort[16];</div>
+<div class="line"><span class="lineno">  289</span>            Nodes = <span class="keyword">new</span> ushort[16];</div>
 <div class="line"><span class="lineno">  290</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a74adf1788ae3e8676b13cc3a35bc2d6e">Commands</a> = <span class="keyword">new</span> <span class="keywordtype">byte</span>[31];</div>
 <div class="line"><span class="lineno">  291</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a325788758b0bf6173ea1f604233815b9">Defs</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[12];</div>
 <div class="line"><span class="lineno">  292</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#aeef3df4093c585f0b27baa3ccfcc477c">Weighted</a> = <span class="keyword">false</span>;</div>
@@ -202,7 +196,6 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html_a325788758b0bf6173ea1f604233815b9"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a325788758b0bf6173ea1f604233815b9">BrawlLib.Wii.Models.ElementDescriptor.Defs</a></div><div class="ttdeci">int[] Defs</div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:279</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html_a69e5f7e96098d5b0f7215a1ef78c112b"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a69e5f7e96098d5b0f7215a1ef78c112b">BrawlLib.Wii.Models.ElementDescriptor.HasData</a></div><div class="ttdeci">bool[] HasData</div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:277</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html_a6bcd4c8a537bda573623215a5b54a50a"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a6bcd4c8a537bda573623215a5b54a50a">BrawlLib.Wii.Models.ElementDescriptor._points</a></div><div class="ttdeci">List&lt; List&lt; Facepoint &gt; &gt; _points</div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:282</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html_a71a987bbb208d58a0b92514aa058b0bc"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a71a987bbb208d58a0b92514aa058b0bc">BrawlLib.Wii.Models.ElementDescriptor.Nodes</a></div><div class="ttdeci">readonly ushort[] Nodes</div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:280</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html_a74adf1788ae3e8676b13cc3a35bc2d6e"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a74adf1788ae3e8676b13cc3a35bc2d6e">BrawlLib.Wii.Models.ElementDescriptor.Commands</a></div><div class="ttdeci">byte[] Commands</div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:278</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html_a7d0204eb2f161ea470fbd05fb33afed0"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a7d0204eb2f161ea470fbd05fb33afed0">BrawlLib.Wii.Models.ElementDescriptor.RemapTable</a></div><div class="ttdeci">List&lt; int &gt; RemapTable</div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:281</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor_html_ae4ed30a6abdb3dacc8d0622ed5fe080a"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#ae4ed30a6abdb3dacc8d0622ed5fe080a">BrawlLib.Wii.Models.ElementDescriptor.Stride</a></div><div class="ttdeci">int Stride</div><div class="ttdef"><b>Definition:</b> ElementCodec.cs:275</div></div>
@@ -382,7 +375,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  614</span>            group.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_primitive_group.html#a8ad7d76270e7178551e9e259549571ba">_facePoints</a>.Add(<span class="keyword">new</span> List&lt;Facepoint&gt;());</div>
 <div class="line"><span class="lineno">  615</span> </div>
 <div class="line"><span class="lineno">  616</span>            <span class="comment">//Iterate commands in list</span></div>
-<div class="line"><span class="lineno">  617</span>            fixed (ushort* pNode = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a71a987bbb208d58a0b92514aa058b0bc">Nodes</a>)</div>
+<div class="line"><span class="lineno">  617</span>            fixed (ushort* pNode = Nodes)</div>
 <div class="line"><span class="lineno">  618</span>            {</div>
 <div class="line"><span class="lineno">  619</span>                fixed (<span class="keywordtype">int</span>* pDefData = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a325788758b0bf6173ea1f604233815b9">Defs</a>)</div>
 <div class="line"><span class="lineno">  620</span>                {</div>
@@ -579,7 +572,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  572</span>            <span class="comment">//Divide by 12, the number of float values per 4x3 matrix, to get the actual index</span></div>
 <div class="line"><span class="lineno">  573</span>            <span class="keywordtype">int</span> index = (*(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) (pIn + 2) &amp; 0xFFF) / 12;</div>
 <div class="line"><span class="lineno">  574</span>            <span class="comment">//Assign node ID to cache, using index</span></div>
-<div class="line"><span class="lineno">  575</span>            fixed (ushort* n = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a71a987bbb208d58a0b92514aa058b0bc">Nodes</a>)</div>
+<div class="line"><span class="lineno">  575</span>            fixed (ushort* n = Nodes)</div>
 <div class="line"><span class="lineno">  576</span>            {</div>
 <div class="line"><span class="lineno">  577</span>                n[index] = node;</div>
 <div class="line"><span class="lineno">  578</span>            }</div>
@@ -621,7 +614,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  582</span>        {</div>
-<div class="line"><span class="lineno">  583</span>            fixed (ushort* n = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a71a987bbb208d58a0b92514aa058b0bc">Nodes</a>)</div>
+<div class="line"><span class="lineno">  583</span>            fixed (ushort* n = Nodes)</div>
 <div class="line"><span class="lineno">  584</span>            {</div>
 <div class="line"><span class="lineno">  585</span>                n[index] = node;</div>
 <div class="line"><span class="lineno">  586</span>            }</div>
@@ -904,28 +897,6 @@ Private Attributes</h2></td></tr>
           <td class="memname">bool [] BrawlLib.Wii.Models.ElementDescriptor.HasData</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a71a987bbb208d58a0b92514aa058b0bc" name="a71a987bbb208d58a0b92514aa058b0bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71a987bbb208d58a0b92514aa058b0bc">&#9670;&#160;</a></span>Nodes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly ushort [] BrawlLib.Wii.Models.ElementDescriptor.Nodes</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

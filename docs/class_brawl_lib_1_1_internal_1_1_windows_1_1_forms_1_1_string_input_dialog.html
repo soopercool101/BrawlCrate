@@ -79,8 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Forms.StringInputDialog Class Reference</div></div>
 </div><!--header-->
@@ -108,24 +106,6 @@ Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a38c8de03f56f9512253b94108888a8b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a38c8de03f56f9512253b94108888a8b5">Cancellable</a><code> [get, set]</code></td></tr>
 <tr class="separator:a38c8de03f56f9512253b94108888a8b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a5a9bc5d2e774be9fdf77e4295591f2d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a5a9bc5d2e774be9fdf77e4295591f2d0">btnOkay_Click</a> (object sender, EventArgs e)</td></tr>
-<tr class="separator:a5a9bc5d2e774be9fdf77e4295591f2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad269d9a95b69b3f3ceaa53386f419b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#aad269d9a95b69b3f3ceaa53386f419b1">btnCancel_Click</a> (object sender, EventArgs e)</td></tr>
-<tr class="separator:aad269d9a95b69b3f3ceaa53386f419b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8972a4d9cd861cc92afbe808d6228741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a8972a4d9cd861cc92afbe808d6228741">InitializeComponent</a> ()</td></tr>
-<tr class="separator:a8972a4d9cd861cc92afbe808d6228741"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ac00de1939dbb38a0fefa8590a0d92d7f"><td class="memItemLeft" align="right" valign="top">TextBox&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac00de1939dbb38a0fefa8590a0d92d7f">txtName</a></td></tr>
-<tr class="separator:ac00de1939dbb38a0fefa8590a0d92d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1331f9c54c6a72791c49c663c4d878b5"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a1331f9c54c6a72791c49c663c4d878b5">btnCancel</a></td></tr>
-<tr class="separator:a1331f9c54c6a72791c49c663c4d878b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac341566dd4e7474a0278610a965c5f61"><td class="memItemLeft" align="right" valign="top">Button&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac341566dd4e7474a0278610a965c5f61">btnOkay</a></td></tr>
-<tr class="separator:ac341566dd4e7474a0278610a965c5f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6c59203a992e2ebc7a1b541faabc0343" name="a6c59203a992e2ebc7a1b541faabc0343"></a>
@@ -151,9 +131,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">    9</span>        {</div>
-<div class="line"><span class="lineno">   10</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a8972a4d9cd861cc92afbe808d6228741">InitializeComponent</a>();</div>
+<div class="line"><span class="lineno">   10</span>            InitializeComponent();</div>
 <div class="line"><span class="lineno">   11</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog_html_a8972a4d9cd861cc92afbe808d6228741"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a8972a4d9cd861cc92afbe808d6228741">BrawlLib.Internal.Windows.Forms.StringInputDialog.InitializeComponent</a></div><div class="ttdeci">void InitializeComponent()</div><div class="ttdef"><b>Definition:</b> StringInputDialog.cs:52</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -191,225 +170,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   14</span>        {</div>
-<div class="line"><span class="lineno">   15</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a8972a4d9cd861cc92afbe808d6228741">InitializeComponent</a>();</div>
+<div class="line"><span class="lineno">   15</span>            InitializeComponent();</div>
 <div class="line"><span class="lineno">   16</span>            Text = title;</div>
 <div class="line"><span class="lineno">   17</span>            txtName.Text = defaultText;</div>
 <div class="line"><span class="lineno">   18</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="aad269d9a95b69b3f3ceaa53386f419b1" name="aad269d9a95b69b3f3ceaa53386f419b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad269d9a95b69b3f3ceaa53386f419b1">&#9670;&#160;</a></span>btnCancel_Click()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Forms.StringInputDialog.btnCancel_Click </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">EventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   40</span>        {</div>
-<div class="line"><span class="lineno">   41</span>            DialogResult = DialogResult.Cancel;</div>
-<div class="line"><span class="lineno">   42</span>            Close();</div>
-<div class="line"><span class="lineno">   43</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a5a9bc5d2e774be9fdf77e4295591f2d0" name="a5a9bc5d2e774be9fdf77e4295591f2d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a9bc5d2e774be9fdf77e4295591f2d0">&#9670;&#160;</a></span>btnOkay_Click()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Forms.StringInputDialog.btnOkay_Click </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">EventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   33</span>        {</div>
-<div class="line"><span class="lineno">   34</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a7e5acad38492623938bb201392db22d0">resultString</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac00de1939dbb38a0fefa8590a0d92d7f">txtName</a>.Text;</div>
-<div class="line"><span class="lineno">   35</span>            DialogResult = DialogResult.OK;</div>
-<div class="line"><span class="lineno">   36</span>            Close();</div>
-<div class="line"><span class="lineno">   37</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog_html_a7e5acad38492623938bb201392db22d0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a7e5acad38492623938bb201392db22d0">BrawlLib.Internal.Windows.Forms.StringInputDialog.resultString</a></div><div class="ttdeci">string resultString</div><div class="ttdef"><b>Definition:</b> StringInputDialog.cs:20</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog_html_ac00de1939dbb38a0fefa8590a0d92d7f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac00de1939dbb38a0fefa8590a0d92d7f">BrawlLib.Internal.Windows.Forms.StringInputDialog.txtName</a></div><div class="ttdeci">TextBox txtName</div><div class="ttdef"><b>Definition:</b> StringInputDialog.cs:48</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a8972a4d9cd861cc92afbe808d6228741" name="a8972a4d9cd861cc92afbe808d6228741"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8972a4d9cd861cc92afbe808d6228741">&#9670;&#160;</a></span>InitializeComponent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Forms.StringInputDialog.InitializeComponent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   53</span>        {</div>
-<div class="line"><span class="lineno">   54</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac00de1939dbb38a0fefa8590a0d92d7f">txtName</a> = <span class="keyword">new</span> TextBox();</div>
-<div class="line"><span class="lineno">   55</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a1331f9c54c6a72791c49c663c4d878b5">btnCancel</a> = <span class="keyword">new</span> Button();</div>
-<div class="line"><span class="lineno">   56</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac341566dd4e7474a0278610a965c5f61">btnOkay</a> = <span class="keyword">new</span> Button();</div>
-<div class="line"><span class="lineno">   57</span>            SuspendLayout();</div>
-<div class="line"><span class="lineno">   58</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   59</span>            <span class="comment">// txtName</span></div>
-<div class="line"><span class="lineno">   60</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   61</span>            txtName.HideSelection = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   62</span>            txtName.Location = <span class="keyword">new</span> System.Drawing.Point(12, 12);</div>
-<div class="line"><span class="lineno">   63</span>            txtName.Name = <span class="stringliteral">&quot;txtName&quot;</span>;</div>
-<div class="line"><span class="lineno">   64</span>            txtName.Size = <span class="keyword">new</span> System.Drawing.Size(260, 20);</div>
-<div class="line"><span class="lineno">   65</span>            txtName.TabIndex = 0;</div>
-<div class="line"><span class="lineno">   66</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   67</span>            <span class="comment">// btnCancel</span></div>
-<div class="line"><span class="lineno">   68</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   69</span>            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;</div>
-<div class="line"><span class="lineno">   70</span>            btnCancel.DialogResult = DialogResult.Cancel;</div>
-<div class="line"><span class="lineno">   71</span>            btnCancel.Location = <span class="keyword">new</span> System.Drawing.Point(197, 38);</div>
-<div class="line"><span class="lineno">   72</span>            btnCancel.Name = <span class="stringliteral">&quot;btnCancel&quot;</span>;</div>
-<div class="line"><span class="lineno">   73</span>            btnCancel.Size = <span class="keyword">new</span> System.Drawing.Size(75, 23);</div>
-<div class="line"><span class="lineno">   74</span>            btnCancel.TabIndex = 2;</div>
-<div class="line"><span class="lineno">   75</span>            btnCancel.Text = <span class="stringliteral">&quot;&amp;Cancel&quot;</span>;</div>
-<div class="line"><span class="lineno">   76</span>            btnCancel.UseVisualStyleBackColor = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   77</span>            btnCancel.Click += <span class="keyword">new</span> EventHandler(<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#aad269d9a95b69b3f3ceaa53386f419b1">btnCancel_Click</a>);</div>
-<div class="line"><span class="lineno">   78</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   79</span>            <span class="comment">// btnOkay</span></div>
-<div class="line"><span class="lineno">   80</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   81</span>            btnOkay.Anchor = AnchorStyles.Top | AnchorStyles.Right;</div>
-<div class="line"><span class="lineno">   82</span>            btnOkay.Location = <span class="keyword">new</span> System.Drawing.Point(116, 38);</div>
-<div class="line"><span class="lineno">   83</span>            btnOkay.Name = <span class="stringliteral">&quot;btnOkay&quot;</span>;</div>
-<div class="line"><span class="lineno">   84</span>            btnOkay.Size = <span class="keyword">new</span> System.Drawing.Size(75, 23);</div>
-<div class="line"><span class="lineno">   85</span>            btnOkay.TabIndex = 1;</div>
-<div class="line"><span class="lineno">   86</span>            btnOkay.Text = <span class="stringliteral">&quot;&amp;Okay&quot;</span>;</div>
-<div class="line"><span class="lineno">   87</span>            btnOkay.UseVisualStyleBackColor = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   88</span>            btnOkay.Click += <span class="keyword">new</span> EventHandler(<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a5a9bc5d2e774be9fdf77e4295591f2d0">btnOkay_Click</a>);</div>
-<div class="line"><span class="lineno">   89</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   90</span>            <span class="comment">// StringInputDialog</span></div>
-<div class="line"><span class="lineno">   91</span>            <span class="comment">// </span></div>
-<div class="line"><span class="lineno">   92</span>            AcceptButton = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac341566dd4e7474a0278610a965c5f61">btnOkay</a>;</div>
-<div class="line"><span class="lineno">   93</span>            CancelButton = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a1331f9c54c6a72791c49c663c4d878b5">btnCancel</a>;</div>
-<div class="line"><span class="lineno">   94</span>            ClientSize = <span class="keyword">new</span> System.Drawing.Size(284, 69);</div>
-<div class="line"><span class="lineno">   95</span>            Controls.Add(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac341566dd4e7474a0278610a965c5f61">btnOkay</a>);</div>
-<div class="line"><span class="lineno">   96</span>            Controls.Add(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a1331f9c54c6a72791c49c663c4d878b5">btnCancel</a>);</div>
-<div class="line"><span class="lineno">   97</span>            Controls.Add(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac00de1939dbb38a0fefa8590a0d92d7f">txtName</a>);</div>
-<div class="line"><span class="lineno">   98</span>            FormBorderStyle = FormBorderStyle.FixedToolWindow;</div>
-<div class="line"><span class="lineno">   99</span>            Name = <span class="stringliteral">&quot;StringInputDialog&quot;</span>;</div>
-<div class="line"><span class="lineno">  100</span>            ShowIcon = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  101</span>            ShowInTaskbar = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  102</span>            StartPosition = FormStartPosition.CenterParent;</div>
-<div class="line"><span class="lineno">  103</span>            Text = <span class="stringliteral">&quot;String Input Dialog&quot;</span>;</div>
-<div class="line"><span class="lineno">  104</span>            ResumeLayout(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  105</span>            PerformLayout();</div>
-<div class="line"><span class="lineno">  106</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog_html_a1331f9c54c6a72791c49c663c4d878b5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a1331f9c54c6a72791c49c663c4d878b5">BrawlLib.Internal.Windows.Forms.StringInputDialog.btnCancel</a></div><div class="ttdeci">Button btnCancel</div><div class="ttdef"><b>Definition:</b> StringInputDialog.cs:49</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog_html_a5a9bc5d2e774be9fdf77e4295591f2d0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a5a9bc5d2e774be9fdf77e4295591f2d0">BrawlLib.Internal.Windows.Forms.StringInputDialog.btnOkay_Click</a></div><div class="ttdeci">void btnOkay_Click(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> StringInputDialog.cs:32</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog_html_aad269d9a95b69b3f3ceaa53386f419b1"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#aad269d9a95b69b3f3ceaa53386f419b1">BrawlLib.Internal.Windows.Forms.StringInputDialog.btnCancel_Click</a></div><div class="ttdeci">void btnCancel_Click(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> StringInputDialog.cs:39</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog_html_ac341566dd4e7474a0278610a965c5f61"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#ac341566dd4e7474a0278610a965c5f61">BrawlLib.Internal.Windows.Forms.StringInputDialog.btnOkay</a></div><div class="ttdeci">Button btnOkay</div><div class="ttdef"><b>Definition:</b> StringInputDialog.cs:50</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1331f9c54c6a72791c49c663c4d878b5" name="a1331f9c54c6a72791c49c663c4d878b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1331f9c54c6a72791c49c663c4d878b5">&#9670;&#160;</a></span>btnCancel</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Button BrawlLib.Internal.Windows.Forms.StringInputDialog.btnCancel</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac341566dd4e7474a0278610a965c5f61" name="ac341566dd4e7474a0278610a965c5f61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac341566dd4e7474a0278610a965c5f61">&#9670;&#160;</a></span>btnOkay</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Button BrawlLib.Internal.Windows.Forms.StringInputDialog.btnOkay</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a7e5acad38492623938bb201392db22d0" name="a7e5acad38492623938bb201392db22d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e5acad38492623938bb201392db22d0">&#9670;&#160;</a></span>resultString</h2>
 
@@ -420,28 +188,6 @@ Private Attributes</h2></td></tr>
           <td class="memname">string BrawlLib.Internal.Windows.Forms.StringInputDialog.resultString = null</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac00de1939dbb38a0fefa8590a0d92d7f" name="ac00de1939dbb38a0fefa8590a0d92d7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac00de1939dbb38a0fefa8590a0d92d7f">&#9670;&#160;</a></span>txtName</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">TextBox BrawlLib.Internal.Windows.Forms.StringInputDialog.txtName</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -467,7 +213,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   23</span>        {</div>
-<div class="line"><span class="lineno">   24</span>            <span class="keyword">get</span> =&gt; btnCancel.Enabled &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_string_input_dialog.html#a1331f9c54c6a72791c49c663c4d878b5">btnCancel</a>.Visible;</div>
+<div class="line"><span class="lineno">   24</span>            <span class="keyword">get</span> =&gt; btnCancel.Enabled &amp;&amp; btnCancel.Visible;</div>
 <div class="line"><span class="lineno">   25</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   26</span>            {</div>
 <div class="line"><span class="lineno">   27</span>                btnCancel.Enabled = value;</div>

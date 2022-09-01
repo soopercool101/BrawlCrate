@@ -104,8 +104,6 @@ Properties</h2></td></tr>
 <tr class="separator:a15e3eb646989d909626bfac16fa785e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add407f0e1df813f82d3ac06a4cb07d43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0_material_entry.html#add407f0e1df813f82d3ac06a4cb07d43">Data</a><code> [get]</code></td></tr>
 <tr class="separator:add407f0e1df813f82d3ac06a4cb07d43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ca81e7673458e8e239904ebff5e0735"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0_material_entry.html#a7ca81e7673458e8e239904ebff5e0735">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a7ca81e7673458e8e239904ebff5e0735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a270855950f57124d3d7bfdd406faeaba" name="a270855950f57124d3d7bfdd406faeaba"></a>
@@ -220,37 +218,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a7ca81e7673458e8e239904ebff5e0735" name="a7ca81e7673458e8e239904ebff5e0735"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ca81e7673458e8e239904ebff5e0735">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.Animations.CLR0MaterialEntry.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  256</span>        {</div>
-<div class="line"><span class="lineno">  257</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  258</span>            {</div>
-<div class="line"><span class="lineno">  259</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  260</span>                {</div>
-<div class="line"><span class="lineno">  261</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  262</span>                }</div>
-<div class="line"><span class="lineno">  263</span>            }</div>
-<div class="line"><span class="lineno">  264</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="add407f0e1df813f82d3ac06a4cb07d43" name="add407f0e1df813f82d3ac06a4cb07d43"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add407f0e1df813f82d3ac06a4cb07d43">&#9670;&#160;</a></span>Data</h2>
 
@@ -293,11 +260,10 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  236</span>        {</div>
-<div class="line"><span class="lineno">  237</span>            <span class="keyword">get</span> =&gt; *(<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0_material_entry.html#a7ca81e7673458e8e239904ebff5e0735">Address</a> + 4);</div>
-<div class="line"><span class="lineno">  238</span>            <span class="keyword">set</span> =&gt; *(<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0_material_entry.html#a7ca81e7673458e8e239904ebff5e0735">Address</a> + 4) = value;</div>
+<div class="line"><span class="lineno">  237</span>            <span class="keyword">get</span> =&gt; *(<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>*) (Address + 4);</div>
+<div class="line"><span class="lineno">  238</span>            <span class="keyword">set</span> =&gt; *(<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>*) (Address + 4) = value;</div>
 <div class="line"><span class="lineno">  239</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">BrawlLib.Imaging.RGBAPixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:327</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0_material_entry_html_a7ca81e7673458e8e239904ebff5e0735"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_l_r0_material_entry.html#a7ca81e7673458e8e239904ebff5e0735">BrawlLib.SSBB.Types.Animations.CLR0MaterialEntry.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> CLR0.cs:256</div></div>
 </div><!-- fragment -->
 </div>
 </div>

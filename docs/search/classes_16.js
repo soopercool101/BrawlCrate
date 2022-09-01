@@ -25,6 +25,5 @@ var searchData=
   ['wrgba6pixel_22',['wRGBA6Pixel',['../struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b_a6_pixel.html',1,'BrawlLib::Wii::Textures']]],
   ['wrgbapixel_23',['wRGBAPixel',['../struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b_a_pixel.html',1,'BrawlLib::Wii::Textures']]],
   ['wrgbpixel_24',['wRGBPixel',['../struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b_pixel.html',1,'BrawlLib::Wii::Textures']]],
-  ['wrgbxpixel_25',['wRGBXPixel',['../struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b_x_pixel.html',1,'BrawlLib::Wii::Textures']]],
-  ['writecollection_26',['WriteCollection',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_file_byte_provider_1_1_write_collection.html',1,'BrawlLib::Internal::Windows::Controls::Hex_Editor::FileByteProvider']]]
+  ['wrgbxpixel_25',['wRGBXPixel',['../struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b_x_pixel.html',1,'BrawlLib::Wii::Textures']]]
 ];

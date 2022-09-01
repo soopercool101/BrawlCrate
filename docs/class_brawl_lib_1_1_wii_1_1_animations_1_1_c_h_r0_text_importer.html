@@ -78,26 +78,15 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Animations.CHR0TextImporter Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer_1_1_coords.html">Coords</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2a787f2c1abef2d7c0decdfdfb3e479"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_h_r0_node.html">CHR0Node</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer.html#ad2a787f2c1abef2d7c0decdfdfb3e479">Convert</a> (string input)</td></tr>
 <tr class="separator:ad2a787f2c1abef2d7c0decdfdfb3e479"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a09d19e128ccfc56a808842ef58152ba7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer_1_1_coords.html">Coords</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer.html#a09d19e128ccfc56a808842ef58152ba7">getCoords</a> (TextReader reader, out string line)</td></tr>
-<tr class="separator:a09d19e128ccfc56a808842ef58152ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad2a787f2c1abef2d7c0decdfdfb3e479" name="ad2a787f2c1abef2d7c0decdfdfb3e479"></a>
@@ -169,21 +158,21 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  111</span>                                    <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;Translation&quot;</span>) == 0)</div>
 <div class="line"><span class="lineno">  112</span>                                    {</div>
 <div class="line"><span class="lineno">  113</span>                                        reader.ReadLine(); <span class="comment">//Skip first blank line</span></div>
-<div class="line"><span class="lineno">  114</span>                                        translation = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer.html#a09d19e128ccfc56a808842ef58152ba7">getCoords</a>(reader, out line);</div>
+<div class="line"><span class="lineno">  114</span>                                        translation = getCoords(reader, out line);</div>
 <div class="line"><span class="lineno">  115</span>                                        <span class="keywordflow">goto</span> retry;</div>
 <div class="line"><span class="lineno">  116</span>                                    }</div>
 <div class="line"><span class="lineno">  117</span> </div>
 <div class="line"><span class="lineno">  118</span>                                    <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;Rotation&quot;</span>) == 0)</div>
 <div class="line"><span class="lineno">  119</span>                                    {</div>
 <div class="line"><span class="lineno">  120</span>                                        reader.ReadLine(); <span class="comment">//Skip first blank line</span></div>
-<div class="line"><span class="lineno">  121</span>                                        rotation = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer.html#a09d19e128ccfc56a808842ef58152ba7">getCoords</a>(reader, out line);</div>
+<div class="line"><span class="lineno">  121</span>                                        rotation = getCoords(reader, out line);</div>
 <div class="line"><span class="lineno">  122</span>                                        <span class="keywordflow">goto</span> retry;</div>
 <div class="line"><span class="lineno">  123</span>                                    }</div>
 <div class="line"><span class="lineno">  124</span> </div>
 <div class="line"><span class="lineno">  125</span>                                    <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;Scale&quot;</span>) == 0)</div>
 <div class="line"><span class="lineno">  126</span>                                    {</div>
 <div class="line"><span class="lineno">  127</span>                                        reader.ReadLine(); <span class="comment">//Skip first blank line</span></div>
-<div class="line"><span class="lineno">  128</span>                                        scale = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer.html#a09d19e128ccfc56a808842ef58152ba7">getCoords</a>(reader, out line);</div>
+<div class="line"><span class="lineno">  128</span>                                        scale = getCoords(reader, out line);</div>
 <div class="line"><span class="lineno">  129</span>                                        <span class="keywordflow">goto</span> retry;</div>
 <div class="line"><span class="lineno">  130</span>                                    }</div>
 <div class="line"><span class="lineno">  131</span> </div>
@@ -278,81 +267,6 @@ Static Private Member Functions</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_h_r0_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_h_r0_node.html">BrawlLib.SSBB.ResourceNodes.CHR0Node</a></div><div class="ttdef"><b>Definition:</b> CHR0Node.cs:17</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_h_r0_node_html_ac18f0b36540e22f4a387c32bde8ff353"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_c_h_r0_node.html#ac18f0b36540e22f4a387c32bde8ff353">BrawlLib.SSBB.ResourceNodes.CHR0Node.Loop</a></div><div class="ttdeci">override bool Loop</div><div class="ttdef"><b>Definition:</b> CHR0Node.cs:40</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac3b33c6e8495209753fbc3774709172a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">BrawlLib.SSBB.ResourceNodes.ResourceNode.AddChild</a></div><div class="ttdeci">virtual void AddChild(ResourceNode child)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:759</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer_html_a09d19e128ccfc56a808842ef58152ba7"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer.html#a09d19e128ccfc56a808842ef58152ba7">BrawlLib.Wii.Animations.CHR0TextImporter.getCoords</a></div><div class="ttdeci">static Coords getCoords(TextReader reader, out string line)</div><div class="ttdef"><b>Definition:</b> CHR0TextImporter.cs:27</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a09d19e128ccfc56a808842ef58152ba7" name="a09d19e128ccfc56a808842ef58152ba7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09d19e128ccfc56a808842ef58152ba7">&#9670;&#160;</a></span>getCoords()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_c_h_r0_text_importer_1_1_coords.html">Coords</a> BrawlLib.Wii.Animations.CHR0TextImporter.getCoords </td>
-          <td>(</td>
-          <td class="paramtype">TextReader&#160;</td>
-          <td class="paramname"><em>reader</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">out string&#160;</td>
-          <td class="paramname"><em>line</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   28</span>        {</div>
-<div class="line"><span class="lineno">   29</span>            Coords output = <span class="keyword">new</span> Coords();</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">for</span> (line = reader.ReadLine();</div>
-<div class="line"><span class="lineno">   31</span>                line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0 &amp;&amp;</div>
-<div class="line"><span class="lineno">   32</span>                (line.CompareTo(<span class="stringliteral">&quot;X&quot;</span>) == 0 || line.CompareTo(<span class="stringliteral">&quot;Y&quot;</span>) == 0 || line.CompareTo(<span class="stringliteral">&quot;Z&quot;</span>) == 0);</div>
-<div class="line"><span class="lineno">   33</span>                line = reader.ReadLine())</div>
-<div class="line"><span class="lineno">   34</span>            {</div>
-<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;X&quot;</span>) == 0)</div>
-<div class="line"><span class="lineno">   36</span>                {</div>
-<div class="line"><span class="lineno">   37</span>                    <span class="keywordflow">for</span> (line = reader.ReadLine();</div>
-<div class="line"><span class="lineno">   38</span>                        line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0;</div>
-<div class="line"><span class="lineno">   39</span>                        line = reader.ReadLine())</div>
-<div class="line"><span class="lineno">   40</span>                    {</div>
-<div class="line"><span class="lineno">   41</span>                        output.x.Add(<span class="keywordtype">float</span>.Parse(line));</div>
-<div class="line"><span class="lineno">   42</span>                    }</div>
-<div class="line"><span class="lineno">   43</span>                }</div>
-<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;Y&quot;</span>) == 0)</div>
-<div class="line"><span class="lineno">   45</span>                {</div>
-<div class="line"><span class="lineno">   46</span>                    <span class="keywordflow">for</span> (line = reader.ReadLine();</div>
-<div class="line"><span class="lineno">   47</span>                        line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0;</div>
-<div class="line"><span class="lineno">   48</span>                        line = reader.ReadLine())</div>
-<div class="line"><span class="lineno">   49</span>                    {</div>
-<div class="line"><span class="lineno">   50</span>                        output.y.Add(<span class="keywordtype">float</span>.Parse(line));</div>
-<div class="line"><span class="lineno">   51</span>                    }</div>
-<div class="line"><span class="lineno">   52</span>                }</div>
-<div class="line"><span class="lineno">   53</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;Z&quot;</span>) == 0)</div>
-<div class="line"><span class="lineno">   54</span>                {</div>
-<div class="line"><span class="lineno">   55</span>                    <span class="keywordflow">for</span> (line = reader.ReadLine();</div>
-<div class="line"><span class="lineno">   56</span>                        line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0;</div>
-<div class="line"><span class="lineno">   57</span>                        line = reader.ReadLine())</div>
-<div class="line"><span class="lineno">   58</span>                    {</div>
-<div class="line"><span class="lineno">   59</span>                        output.z.Add(<span class="keywordtype">float</span>.Parse(line));</div>
-<div class="line"><span class="lineno">   60</span>                    }</div>
-<div class="line"><span class="lineno">   61</span>                }</div>
-<div class="line"><span class="lineno">   62</span>            }</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">return</span> output;</div>
-<div class="line"><span class="lineno">   65</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

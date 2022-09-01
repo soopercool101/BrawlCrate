@@ -81,7 +81,6 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.NumericInputBox Class Reference</div></div>
 </div><!--header-->
@@ -137,13 +136,6 @@ Properties</h2></td></tr>
 Events</h2></td></tr>
 <tr class="memitem:a0d5d861b5f053710d5a45d5323577fc8"><td class="memItemLeft" align="right" valign="top">EventHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a0d5d861b5f053710d5a45d5323577fc8">ValueChanged</a></td></tr>
 <tr class="separator:a0d5d861b5f053710d5a45d5323577fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a2397d2727c88701e919aa8c509b46369"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2397d2727c88701e919aa8c509b46369">UpdateText</a> ()</td></tr>
-<tr class="separator:a2397d2727c88701e919aa8c509b46369"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca813339dad0914f3f7d3a44f8236cd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a> ()</td></tr>
-<tr class="separator:aca813339dad0914f3f7d3a44f8236cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3fdde710d50d86d9cc3b41070d52b434" name="a3fdde710d50d86d9cc3b41070d52b434"></a>
@@ -169,89 +161,12 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   33</span>        {</div>
-<div class="line"><span class="lineno">   34</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2397d2727c88701e919aa8c509b46369">UpdateText</a>();</div>
+<div class="line"><span class="lineno">   34</span>            UpdateText();</div>
 <div class="line"><span class="lineno">   35</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a2397d2727c88701e919aa8c509b46369"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2397d2727c88701e919aa8c509b46369">BrawlLib.Internal.Windows.Controls.NumericInputBox.UpdateText</a></div><div class="ttdeci">void UpdateText()</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:268</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aca813339dad0914f3f7d3a44f8236cd9" name="aca813339dad0914f3f7d3a44f8236cd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca813339dad0914f3f7d3a44f8236cd9">&#9670;&#160;</a></span>Apply()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Controls.NumericInputBox.Apply </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  281</span>        {</div>
-<div class="line"><span class="lineno">  282</span>            <span class="keywordtype">float</span> val = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> ?? 0.0f;</div>
-<div class="line"><span class="lineno">  283</span>            <span class="keywordtype">int</span> val2 = (int) val;</div>
-<div class="line"><span class="lineno">  284</span> </div>
-<div class="line"><span class="lineno">  285</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> != <span class="keyword">null</span> &amp;&amp; val.ToString() == Text)</div>
-<div class="line"><span class="lineno">  286</span>            {</div>
-<div class="line"><span class="lineno">  287</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  288</span>            }</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>            <span class="keywordflow">if</span> (Text == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><span class="lineno">  291</span>            {</div>
-<div class="line"><span class="lineno">  292</span>                val = <span class="keywordtype">float</span>.NaN;</div>
-<div class="line"><span class="lineno">  293</span>            }</div>
-<div class="line"><span class="lineno">  294</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2dbbaddd8a346ee692d7e7f5fb93a7e7">_integral</a>)</div>
-<div class="line"><span class="lineno">  295</span>            {</div>
-<div class="line"><span class="lineno">  296</span>                <span class="keywordtype">float</span>.TryParse(Text, out val);</div>
-<div class="line"><span class="lineno">  297</span>                val = val.Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>);</div>
-<div class="line"><span class="lineno">  298</span>            }</div>
-<div class="line"><span class="lineno">  299</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  300</span>            {</div>
-<div class="line"><span class="lineno">  301</span>                <span class="keywordtype">int</span>.TryParse(Text, out val2);</div>
-<div class="line"><span class="lineno">  302</span>                val2 = val2.Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a> == <span class="keywordtype">float</span>.MinValue ? <span class="keywordtype">int</span>.MinValue : (<span class="keywordtype">int</span>)<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a> == float.MaxValue ? int.MaxValue : (int)<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>);</div>
-<div class="line"><span class="lineno">  303</span>            }</div>
-<div class="line"><span class="lineno">  304</span> </div>
-<div class="line"><span class="lineno">  305</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2dbbaddd8a346ee692d7e7f5fb93a7e7">_integral</a>)</div>
-<div class="line"><span class="lineno">  306</span>            {</div>
-<div class="line"><span class="lineno">  307</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> != val)</div>
-<div class="line"><span class="lineno">  308</span>                {</div>
-<div class="line"><span class="lineno">  309</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a940d4b3a5732310f0e184108f0af4cd5">_previousValue</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> ?? 0.0f;</div>
-<div class="line"><span class="lineno">  310</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> = val;</div>
-<div class="line"><span class="lineno">  311</span>                    <a class="code hl_event" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a0d5d861b5f053710d5a45d5323577fc8">ValueChanged</a>?.Invoke(<span class="keyword">this</span>, <span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">  312</span>                }</div>
-<div class="line"><span class="lineno">  313</span>            }</div>
-<div class="line"><span class="lineno">  314</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  315</span>            {</div>
-<div class="line"><span class="lineno">  316</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> != val2)</div>
-<div class="line"><span class="lineno">  317</span>                {</div>
-<div class="line"><span class="lineno">  318</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a940d4b3a5732310f0e184108f0af4cd5">_previousValue</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> ?? 0.0f;</div>
-<div class="line"><span class="lineno">  319</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> = val2;</div>
-<div class="line"><span class="lineno">  320</span>                    <a class="code hl_event" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a0d5d861b5f053710d5a45d5323577fc8">ValueChanged</a>?.Invoke(<span class="keyword">this</span>, <span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">  321</span>                }</div>
-<div class="line"><span class="lineno">  322</span>            }</div>
-<div class="line"><span class="lineno">  323</span> </div>
-<div class="line"><span class="lineno">  324</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2397d2727c88701e919aa8c509b46369">UpdateText</a>();</div>
-<div class="line"><span class="lineno">  325</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a0d5d861b5f053710d5a45d5323577fc8"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a0d5d861b5f053710d5a45d5323577fc8">BrawlLib.Internal.Windows.Controls.NumericInputBox.ValueChanged</a></div><div class="ttdeci">EventHandler ValueChanged</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:66</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a1a146248925b16e989c369705cb086b0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">BrawlLib.Internal.Windows.Controls.NumericInputBox._value</a></div><div class="ttdeci">float? _value</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a2dbbaddd8a346ee692d7e7f5fb93a7e7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2dbbaddd8a346ee692d7e7f5fb93a7e7">BrawlLib.Internal.Windows.Controls.NumericInputBox._integral</a></div><div class="ttdeci">bool _integral</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:63</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a33a862659916edd31cdba8296b386730"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">BrawlLib.Internal.Windows.Controls.NumericInputBox._minValue</a></div><div class="ttdeci">float _minValue</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:61</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a940d4b3a5732310f0e184108f0af4cd5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a940d4b3a5732310f0e184108f0af4cd5">BrawlLib.Internal.Windows.Controls.NumericInputBox._previousValue</a></div><div class="ttdeci">float _previousValue</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:10</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_ac95fa5d657a70ac3707cb913ffa084e6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">BrawlLib.Internal.Windows.Controls.NumericInputBox._maxValue</a></div><div class="ttdeci">float _maxValue</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:62</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a5a63e55878977b7fa47fae30f51f87c9" name="a5a63e55878977b7fa47fae30f51f87c9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a63e55878977b7fa47fae30f51f87c9">&#9670;&#160;</a></span>OnKeyDown()</h2>
 
@@ -313,7 +228,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  110</span>                        <span class="keywordflow">if</span> (e.Control)</div>
 <div class="line"><span class="lineno">  111</span>                        {</div>
 <div class="line"><span class="lineno">  112</span>                            Text = (val - 90f).Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>).ToString();</div>
-<div class="line"><span class="lineno">  113</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  113</span>                            Apply();</div>
 <div class="line"><span class="lineno">  114</span>                            e.Handled = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  115</span>                            e.SuppressKeyPress = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  116</span>                        }</div>
@@ -321,7 +236,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  118</span>                        <span class="keywordflow">if</span> (e.Shift)</div>
 <div class="line"><span class="lineno">  119</span>                        {</div>
 <div class="line"><span class="lineno">  120</span>                            Text = (val - 180f).Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>).ToString();</div>
-<div class="line"><span class="lineno">  121</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  121</span>                            Apply();</div>
 <div class="line"><span class="lineno">  122</span>                            e.Handled = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  123</span>                            e.SuppressKeyPress = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  124</span>                        }</div>
@@ -335,7 +250,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  132</span>                        <span class="keywordflow">if</span> (e.Control)</div>
 <div class="line"><span class="lineno">  133</span>                        {</div>
 <div class="line"><span class="lineno">  134</span>                            Text = (val + 90f).Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>).ToString();</div>
-<div class="line"><span class="lineno">  135</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  135</span>                            Apply();</div>
 <div class="line"><span class="lineno">  136</span>                            e.Handled = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  137</span>                            e.SuppressKeyPress = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  138</span>                        }</div>
@@ -343,7 +258,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  140</span>                        <span class="keywordflow">if</span> (e.Shift)</div>
 <div class="line"><span class="lineno">  141</span>                        {</div>
 <div class="line"><span class="lineno">  142</span>                            Text = (val + 180f).Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>).ToString();</div>
-<div class="line"><span class="lineno">  143</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  143</span>                            Apply();</div>
 <div class="line"><span class="lineno">  144</span>                            e.Handled = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  145</span>                            e.SuppressKeyPress = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  146</span>                        }</div>
@@ -363,7 +278,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  160</span>                            Text = (val + 0.1f).Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>).ToString();</div>
 <div class="line"><span class="lineno">  161</span>                        }</div>
 <div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  163</span>                        Apply();</div>
 <div class="line"><span class="lineno">  164</span>                    }</div>
 <div class="line"><span class="lineno">  165</span> </div>
 <div class="line"><span class="lineno">  166</span>                    e.Handled = <span class="keyword">true</span>;</div>
@@ -382,7 +297,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  179</span>                            Text = (val - 0.1f).Clamp(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">_minValue</a>, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">_maxValue</a>).ToString();</div>
 <div class="line"><span class="lineno">  180</span>                        }</div>
 <div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  182</span>                        Apply();</div>
 <div class="line"><span class="lineno">  183</span>                    }</div>
 <div class="line"><span class="lineno">  184</span> </div>
 <div class="line"><span class="lineno">  185</span>                    e.Handled = <span class="keyword">true</span>;</div>
@@ -426,12 +341,12 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  223</span> </div>
 <div class="line"><span class="lineno">  224</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  225</span>                <span class="keywordflow">case</span> Keys.Escape:</div>
-<div class="line"><span class="lineno">  226</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2397d2727c88701e919aa8c509b46369">UpdateText</a>();</div>
+<div class="line"><span class="lineno">  226</span>                    UpdateText();</div>
 <div class="line"><span class="lineno">  227</span>                    e.SuppressKeyPress = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  228</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  229</span> </div>
 <div class="line"><span class="lineno">  230</span>                <span class="keywordflow">case</span> Keys.Enter:</div>
-<div class="line"><span class="lineno">  231</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  231</span>                    Apply();</div>
 <div class="line"><span class="lineno">  232</span>                    e.Handled = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  233</span>                    e.SuppressKeyPress = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  234</span>                    <span class="keywordflow">break</span>;</div>
@@ -443,7 +358,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  240</span>                        {</div>
 <div class="line"><span class="lineno">  241</span>                            val = <span class="keywordtype">float</span>.NaN;</div>
 <div class="line"><span class="lineno">  242</span>                            Text = val.ToString();</div>
-<div class="line"><span class="lineno">  243</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">  243</span>                            Apply();</div>
 <div class="line"><span class="lineno">  244</span>                        }</div>
 <div class="line"><span class="lineno">  245</span>                    }</div>
 <div class="line"><span class="lineno">  246</span> </div>
@@ -468,7 +383,9 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  265</span>            base.OnKeyDown(e);</div>
 <div class="line"><span class="lineno">  266</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a2d2a30e128e037d86cb44613a630b908"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2d2a30e128e037d86cb44613a630b908">BrawlLib.Internal.Windows.Controls.NumericInputBox.Integer</a></div><div class="ttdeci">bool Integer</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:56</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_aca813339dad0914f3f7d3a44f8236cd9"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">BrawlLib.Internal.Windows.Controls.NumericInputBox.Apply</a></div><div class="ttdeci">void Apply()</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:280</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a2dbbaddd8a346ee692d7e7f5fb93a7e7"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2dbbaddd8a346ee692d7e7f5fb93a7e7">BrawlLib.Internal.Windows.Controls.NumericInputBox._integral</a></div><div class="ttdeci">bool _integral</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:63</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a33a862659916edd31cdba8296b386730"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a33a862659916edd31cdba8296b386730">BrawlLib.Internal.Windows.Controls.NumericInputBox._minValue</a></div><div class="ttdeci">float _minValue</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:61</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_ac95fa5d657a70ac3707cb913ffa084e6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#ac95fa5d657a70ac3707cb913ffa084e6">BrawlLib.Internal.Windows.Controls.NumericInputBox._maxValue</a></div><div class="ttdeci">float _maxValue</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:62</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -496,44 +413,9 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   69</span>        {</div>
-<div class="line"><span class="lineno">   70</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">   70</span>            Apply();</div>
 <div class="line"><span class="lineno">   71</span>            base.OnLostFocus(e);</div>
 <div class="line"><span class="lineno">   72</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a2397d2727c88701e919aa8c509b46369" name="a2397d2727c88701e919aa8c509b46369"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2397d2727c88701e919aa8c509b46369">&#9670;&#160;</a></span>UpdateText()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Controls.NumericInputBox.UpdateText </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  269</span>        {</div>
-<div class="line"><span class="lineno">  270</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> == <span class="keywordtype">float</span>.NaN)</div>
-<div class="line"><span class="lineno">  271</span>            {</div>
-<div class="line"><span class="lineno">  272</span>                Text = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  273</span>            }</div>
-<div class="line"><span class="lineno">  274</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  275</span>            {</div>
-<div class="line"><span class="lineno">  276</span>                Text = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a>.ToString();</div>
-<div class="line"><span class="lineno">  277</span>            }</div>
-<div class="line"><span class="lineno">  278</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -752,7 +634,7 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   17</span>            {</div>
 <div class="line"><span class="lineno">   18</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   19</span>                {</div>
-<div class="line"><span class="lineno">   20</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#aca813339dad0914f3f7d3a44f8236cd9">Apply</a>();</div>
+<div class="line"><span class="lineno">   20</span>                    Apply();</div>
 <div class="line"><span class="lineno">   21</span>                }</div>
 <div class="line"><span class="lineno">   22</span> </div>
 <div class="line"><span class="lineno">   23</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a>.Value;</div>
@@ -760,9 +642,10 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   25</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   26</span>            {</div>
 <div class="line"><span class="lineno">   27</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">_value</a> = value; <span class="comment">//Clamp(_minValue, _maxValue);</span></div>
-<div class="line"><span class="lineno">   28</span>                <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a2397d2727c88701e919aa8c509b46369">UpdateText</a>();</div>
+<div class="line"><span class="lineno">   28</span>                UpdateText();</div>
 <div class="line"><span class="lineno">   29</span>            }</div>
 <div class="line"><span class="lineno">   30</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box_html_a1a146248925b16e989c369705cb086b0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_numeric_input_box.html#a1a146248925b16e989c369705cb086b0">BrawlLib.Internal.Windows.Controls.NumericInputBox._value</a></div><div class="ttdeci">float? _value</div><div class="ttdef"><b>Definition:</b> NumericInputBox.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>

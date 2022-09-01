@@ -80,7 +80,6 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.STPMNode Class Reference</div></div>
 </div><!--header-->
@@ -385,11 +384,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:aaa2c91a49ba14e059933ae17b2bd6e10"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aaa2c91a49ba14e059933ae17b2bd6e10">_entrySize</a> = 260</td></tr>
-<tr class="separator:aaa2c91a49ba14e059933ae17b2bd6e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -555,9 +549,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   36</span>        {</div>
-<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">return</span> 0x10 + Children.Count * 4 + Children.Count * <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aaa2c91a49ba14e059933ae17b2bd6e10">_entrySize</a>;</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">return</span> 0x10 + Children.Count * 4 + Children.Count * _entrySize;</div>
 <div class="line"><span class="lineno">   38</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node_html_aaa2c91a49ba14e059933ae17b2bd6e10"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aaa2c91a49ba14e059933ae17b2bd6e10">BrawlLib.SSBB.ResourceNodes.STPMNode._entrySize</a></div><div class="ttdeci">const int _entrySize</div><div class="ttdef"><b>Definition:</b> STPMNode.cs:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -622,7 +615,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   28</span>        {</div>
 <div class="line"><span class="lineno">   29</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aad2350f809c8a09b752790b4df223d9d">Header</a>-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html#afa6a4b4d69502c9f737359a67e60c417">_count</a>; i++)</div>
 <div class="line"><span class="lineno">   30</span>            {</div>
-<div class="line"><span class="lineno">   31</span>                <span class="keyword">new</span> STPMEntryNode().Initialize(<span class="keyword">this</span>, <span class="keyword">new</span> DataSource((*<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aad2350f809c8a09b752790b4df223d9d">Header</a>)[i], <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aaa2c91a49ba14e059933ae17b2bd6e10">_entrySize</a>));</div>
+<div class="line"><span class="lineno">   31</span>                <span class="keyword">new</span> STPMEntryNode().Initialize(<span class="keyword">this</span>, <span class="keyword">new</span> DataSource((*<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aad2350f809c8a09b752790b4df223d9d">Header</a>)[i], _entrySize));</div>
 <div class="line"><span class="lineno">   32</span>            }</div>
 <div class="line"><span class="lineno">   33</span>        }</div>
 </div><!-- fragment -->
@@ -677,8 +670,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   46</span>            {</div>
 <div class="line"><span class="lineno">   47</span>                ResourceNode r = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>[i];</div>
 <div class="line"><span class="lineno">   48</span>                *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (address + 0x10 + i * 4) = offset;</div>
-<div class="line"><span class="lineno">   49</span>                r.Rebuild(address + offset, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aaa2c91a49ba14e059933ae17b2bd6e10">_entrySize</a>, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   50</span>                offset += <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html#aaa2c91a49ba14e059933ae17b2bd6e10">_entrySize</a>;</div>
+<div class="line"><span class="lineno">   49</span>                r.Rebuild(address + offset, _entrySize, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   50</span>                offset += _entrySize;</div>
 <div class="line"><span class="lineno">   51</span>            }</div>
 <div class="line"><span class="lineno">   52</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
@@ -948,29 +941,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   56</span>            <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_parameter.html">Parameter</a>*) source.Address)-&gt;_tag == Parameter.TagSTPM ? <span class="keyword">new</span> STPMNode() : null;</div>
 <div class="line"><span class="lineno">   57</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aaa2c91a49ba14e059933ae17b2bd6e10" name="aaa2c91a49ba14e059933ae17b2bd6e10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa2c91a49ba14e059933ae17b2bd6e10">&#9670;&#160;</a></span>_entrySize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int BrawlLib.SSBB.ResourceNodes.STPMNode._entrySize = 260</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

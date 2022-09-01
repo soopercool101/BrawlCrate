@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Drawing.ColorInformation Struct Reference</div></div>
 </div><!--header-->
@@ -99,15 +98,6 @@ Properties</h2></td></tr>
 <tr class="separator:af38898dfeb6e3c026d46189bc30f982f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b079a0011b56f249e46652886cd22d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a5b079a0011b56f249e46652886cd22d8">IsGreyscale</a><code> [get]</code></td></tr>
 <tr class="separator:a5b079a0011b56f249e46652886cd22d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a7bb4fba25c2b74ac68e13b9b525bd946"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a7bb4fba25c2b74ac68e13b9b525bd946">_colors</a></td></tr>
-<tr class="separator:a7bb4fba25c2b74ac68e13b9b525bd946"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bca93b294aa82dd62845d7d464ff625"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a9bca93b294aa82dd62845d7d464ff625">_alphaColors</a></td></tr>
-<tr class="separator:a9bca93b294aa82dd62845d7d464ff625"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae90bef7048a9e24afd9b5d4fb9061621"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#ae90bef7048a9e24afd9b5d4fb9061621">_isGreyscale</a></td></tr>
-<tr class="separator:ae90bef7048a9e24afd9b5d4fb9061621"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae6cbb8cd34149f98c44bf66ce20348a8" name="ae6cbb8cd34149f98c44bf66ce20348a8"></a>
@@ -134,96 +124,26 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  703</span>        {</div>
-<div class="line"><span class="lineno">  704</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a7bb4fba25c2b74ac68e13b9b525bd946">_colors</a> = colors;</div>
-<div class="line"><span class="lineno">  705</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a9bca93b294aa82dd62845d7d464ff625">_alphaColors</a> = 0;</div>
-<div class="line"><span class="lineno">  706</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#ae90bef7048a9e24afd9b5d4fb9061621">_isGreyscale</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  704</span>            _colors = colors;</div>
+<div class="line"><span class="lineno">  705</span>            _alphaColors = 0;</div>
+<div class="line"><span class="lineno">  706</span>            _isGreyscale = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  707</span>            <span class="keywordflow">foreach</span> (<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a> p <span class="keywordflow">in</span> colors)</div>
 <div class="line"><span class="lineno">  708</span>            {</div>
 <div class="line"><span class="lineno">  709</span>                <span class="keywordflow">if</span> (p.<a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a60f5e8eddf500f59b613629f59be1519">A</a> != 0xFF)</div>
 <div class="line"><span class="lineno">  710</span>                {</div>
-<div class="line"><span class="lineno">  711</span>                    <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a9bca93b294aa82dd62845d7d464ff625">_alphaColors</a>++;</div>
+<div class="line"><span class="lineno">  711</span>                    _alphaColors++;</div>
 <div class="line"><span class="lineno">  712</span>                }</div>
 <div class="line"><span class="lineno">  713</span> </div>
-<div class="line"><span class="lineno">  714</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#ae90bef7048a9e24afd9b5d4fb9061621">_isGreyscale</a> &amp;&amp; !p.<a class="code hl_function" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a830dd154fc905e4ec7dd22de0a2a806b">IsGreyscale</a>())</div>
+<div class="line"><span class="lineno">  714</span>                <span class="keywordflow">if</span> (_isGreyscale &amp;&amp; !p.<a class="code hl_function" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a830dd154fc905e4ec7dd22de0a2a806b">IsGreyscale</a>())</div>
 <div class="line"><span class="lineno">  715</span>                {</div>
-<div class="line"><span class="lineno">  716</span>                    <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#ae90bef7048a9e24afd9b5d4fb9061621">_isGreyscale</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  716</span>                    _isGreyscale = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  717</span>                }</div>
 <div class="line"><span class="lineno">  718</span>            }</div>
 <div class="line"><span class="lineno">  719</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">BrawlLib.Imaging.ARGBPixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:16</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html_a60f5e8eddf500f59b613629f59be1519"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a60f5e8eddf500f59b613629f59be1519">BrawlLib.Imaging.ARGBPixel.A</a></div><div class="ttdeci">byte A</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:20</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel_html_a830dd154fc905e4ec7dd22de0a2a806b"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html#a830dd154fc905e4ec7dd22de0a2a806b">BrawlLib.Imaging.ARGBPixel.IsGreyscale</a></div><div class="ttdeci">bool IsGreyscale()</div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:76</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information_html_a7bb4fba25c2b74ac68e13b9b525bd946"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a7bb4fba25c2b74ac68e13b9b525bd946">BrawlLib.Internal.Drawing.ColorInformation._colors</a></div><div class="ttdeci">readonly ARGBPixel[] _colors</div><div class="ttdef"><b>Definition:</b> BitmapExtension.cs:693</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information_html_a9bca93b294aa82dd62845d7d464ff625"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#a9bca93b294aa82dd62845d7d464ff625">BrawlLib.Internal.Drawing.ColorInformation._alphaColors</a></div><div class="ttdeci">readonly int _alphaColors</div><div class="ttdef"><b>Definition:</b> BitmapExtension.cs:694</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information_html_ae90bef7048a9e24afd9b5d4fb9061621"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_drawing_1_1_color_information.html#ae90bef7048a9e24afd9b5d4fb9061621">BrawlLib.Internal.Drawing.ColorInformation._isGreyscale</a></div><div class="ttdeci">readonly bool _isGreyscale</div><div class="ttdef"><b>Definition:</b> BitmapExtension.cs:695</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9bca93b294aa82dd62845d7d464ff625" name="a9bca93b294aa82dd62845d7d464ff625"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bca93b294aa82dd62845d7d464ff625">&#9670;&#160;</a></span>_alphaColors</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int BrawlLib.Internal.Drawing.ColorInformation._alphaColors</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7bb4fba25c2b74ac68e13b9b525bd946" name="a7bb4fba25c2b74ac68e13b9b525bd946"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bb4fba25c2b74ac68e13b9b525bd946">&#9670;&#160;</a></span>_colors</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly <a class="el" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a> [] BrawlLib.Internal.Drawing.ColorInformation._colors</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae90bef7048a9e24afd9b5d4fb9061621" name="ae90bef7048a9e24afd9b5d4fb9061621"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae90bef7048a9e24afd9b5d4fb9061621">&#9670;&#160;</a></span>_isGreyscale</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly bool BrawlLib.Internal.Drawing.ColorInformation._isGreyscale</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

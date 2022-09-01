@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1cm_enum_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.cmEnumNode Class Reference</div></div>
 </div><!--header-->
@@ -406,11 +405,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:ad4b273813f2cc8270a8735b4446b246a"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1cm_enum_node.html#ad4b273813f2cc8270a8735b4446b246a">Acceptable</a> = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,&quot;</td></tr>
-<tr class="separator:ad4b273813f2cc8270a8735b4446b246a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -709,28 +703,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad4b273813f2cc8270a8735b4446b246a" name="ad4b273813f2cc8270a8735b4446b246a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4b273813f2cc8270a8735b4446b246a">&#9670;&#160;</a></span>Acceptable</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const string BrawlLib.SSBB.ResourceNodes.cmEnumNode.Acceptable = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,&quot;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="aca365efaab027f022ff332b9c51604de" name="aca365efaab027f022ff332b9c51604de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aca365efaab027f022ff332b9c51604de">&#9670;&#160;</a></span>BitFlags</h2>
@@ -812,7 +784,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   62</span>            }</div>
 <div class="line"><span class="lineno">   63</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   64</span>            {</div>
-<div class="line"><span class="lineno">   65</span>                <span class="keywordtype">string</span>[] entries = <span class="keyword">new</span> string(value.Where(x =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1cm_enum_node.html#ad4b273813f2cc8270a8735b4446b246a">Acceptable</a>.Contains(x)).ToArray()).Split(<span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><span class="lineno">   65</span>                <span class="keywordtype">string</span>[] entries = <span class="keyword">new</span> string(value.Where(x =&gt; Acceptable.Contains(x)).ToArray()).Split(<span class="charliteral">&#39;,&#39;</span>);</div>
 <div class="line"><span class="lineno">   66</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1cm_enum_node.html#a35b997fff9da84bf8f51ec7dc3ff56c4">_bitFlags</a>)</div>
 <div class="line"><span class="lineno">   67</span>                {</div>
 <div class="line"><span class="lineno">   68</span>                    <span class="keywordtype">int</span> enumValue = 0;</div>
@@ -838,7 +810,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   88</span>            }</div>
 <div class="line"><span class="lineno">   89</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7d6d973b631a29f1f86bff9500bbb7eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">BrawlLib.SSBB.ResourceNodes.ResourceNode.SignalPropertyChange</a></div><div class="ttdeci">virtual void SignalPropertyChange()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:315</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1cm_enum_node_html_ad4b273813f2cc8270a8735b4446b246a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1cm_enum_node.html#ad4b273813f2cc8270a8735b4446b246a">BrawlLib.SSBB.ResourceNodes.cmEnumNode.Acceptable</a></div><div class="ttdeci">const string Acceptable</div><div class="ttdef"><b>Definition:</b> cmEnumNode.cs:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>

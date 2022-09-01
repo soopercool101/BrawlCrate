@@ -77,8 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.BrawlManagerLib.GCT.ReadOnly.AlternateStageLoaderData Class Reference</div></div>
 </div><!--header-->
@@ -90,18 +88,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a120e888cc88ceb36b95ea0f8c2da42a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe00da01608dfad24d515d90b8f0bcc6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#afe00da01608dfad24d515d90b8f0bcc6">TryGetDefinition</a> (string key, out <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_alternate_stage_entry.html">AlternateStageEntry</a> value)</td></tr>
 <tr class="separator:afe00da01608dfad24d515d90b8f0bcc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:af44b72207ca55b194acc3b05c084c462"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_alternate_stage_entry.html">AlternateStageEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#af44b72207ca55b194acc3b05c084c462">AlternatesByStage</a><code> [get, set]</code></td></tr>
-<tr class="separator:af44b72207ca55b194acc3b05c084c462"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a5067093d2566b3351a949319bf5d7319"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a5067093d2566b3351a949319bf5d7319">HEADER_BRAWL</a></td></tr>
-<tr class="separator:a5067093d2566b3351a949319bf5d7319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1913f8a9e539578a5c7ad923e8c0aeae"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a1913f8a9e539578a5c7ad923e8c0aeae">HEADER_PM36</a></td></tr>
-<tr class="separator:a1913f8a9e539578a5c7ad923e8c0aeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a120e888cc88ceb36b95ea0f8c2da42a6" name="a120e888cc88ceb36b95ea0f8c2da42a6"></a>
@@ -128,12 +114,12 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   28</span>        {</div>
-<div class="line"><span class="lineno">   29</span>            <a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#af44b72207ca55b194acc3b05c084c462">AlternatesByStage</a> = <span class="keyword">new</span> Dictionary&lt;string, AlternateStageEntry&gt;();</div>
+<div class="line"><span class="lineno">   29</span>            AlternatesByStage = <span class="keyword">new</span> Dictionary&lt;string, AlternateStageEntry&gt;();</div>
 <div class="line"><span class="lineno">   30</span> </div>
 <div class="line"><span class="lineno">   31</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> index = 0; index &lt; data.Length; index += 8)</div>
 <div class="line"><span class="lineno">   32</span>            {</div>
-<div class="line"><span class="lineno">   33</span>                <span class="keywordflow">if</span> (ByteUtilities.ByteArrayEquals(data, index, <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a5067093d2566b3351a949319bf5d7319">HEADER_BRAWL</a>, 0, <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a5067093d2566b3351a949319bf5d7319">HEADER_BRAWL</a>.Length) ||</div>
-<div class="line"><span class="lineno">   34</span>                    ByteUtilities.ByteArrayEquals(data, index, <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a1913f8a9e539578a5c7ad923e8c0aeae">HEADER_PM36</a>, 0, <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a1913f8a9e539578a5c7ad923e8c0aeae">HEADER_PM36</a>.Length))</div>
+<div class="line"><span class="lineno">   33</span>                <span class="keywordflow">if</span> (ByteUtilities.ByteArrayEquals(data, index, HEADER_BRAWL, 0, HEADER_BRAWL.Length) ||</div>
+<div class="line"><span class="lineno">   34</span>                    ByteUtilities.ByteArrayEquals(data, index, HEADER_PM36, 0, HEADER_PM36.Length))</div>
 <div class="line"><span class="lineno">   35</span>                {</div>
 <div class="line"><span class="lineno">   36</span>                    <span class="keywordtype">int</span> countbyte = data[index + 19];</div>
 <div class="line"><span class="lineno">   37</span>                    index += 24;</div>
@@ -195,7 +181,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   93</span>                            });</div>
 <div class="line"><span class="lineno">   94</span>                        }</div>
 <div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>                        <a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#af44b72207ca55b194acc3b05c084c462">AlternatesByStage</a>.Add(<span class="keyword">new</span> <span class="keywordtype">string</span>(name), <span class="keyword">new</span> AlternateStageEntry</div>
+<div class="line"><span class="lineno">   96</span>                        AlternatesByStage.Add(<span class="keyword">new</span> <span class="keywordtype">string</span>(name), <span class="keyword">new</span> AlternateStageEntry</div>
 <div class="line"><span class="lineno">   97</span>                        {</div>
 <div class="line"><span class="lineno">   98</span>                            Random = random,</div>
 <div class="line"><span class="lineno">   99</span>                            ButtonActivated = buttonActivated</div>
@@ -206,9 +192,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  104</span>                }</div>
 <div class="line"><span class="lineno">  105</span>            }</div>
 <div class="line"><span class="lineno">  106</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data_html_a1913f8a9e539578a5c7ad923e8c0aeae"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a1913f8a9e539578a5c7ad923e8c0aeae">BrawlLib.BrawlManagerLib.GCT.ReadOnly.AlternateStageLoaderData.HEADER_PM36</a></div><div class="ttdeci">static byte[] HEADER_PM36</div><div class="ttdef"><b>Definition:</b> AlternateStageLoaderData.cs:17</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data_html_a5067093d2566b3351a949319bf5d7319"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#a5067093d2566b3351a949319bf5d7319">BrawlLib.BrawlManagerLib.GCT.ReadOnly.AlternateStageLoaderData.HEADER_BRAWL</a></div><div class="ttdeci">static byte[] HEADER_BRAWL</div><div class="ttdef"><b>Definition:</b> AlternateStageLoaderData.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data_html_af44b72207ca55b194acc3b05c084c462"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#af44b72207ca55b194acc3b05c084c462">BrawlLib.BrawlManagerLib.GCT.ReadOnly.AlternateStageLoaderData.AlternatesByStage</a></div><div class="ttdeci">Dictionary&lt; string, AlternateStageEntry &gt; AlternatesByStage</div><div class="ttdef"><b>Definition:</b> AlternateStageLoaderData.cs:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -274,91 +257,8 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  134</span>            }</div>
 <div class="line"><span class="lineno">  135</span>            <span class="comment">// Not sure about GW yet</span></div>
 <div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>            <span class="keywordflow">return</span> <a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_alternate_stage_loader_data.html#af44b72207ca55b194acc3b05c084c462">AlternatesByStage</a>.TryGetValue(key, out value);</div>
+<div class="line"><span class="lineno">  137</span>            <span class="keywordflow">return</span> AlternatesByStage.TryGetValue(key, out value);</div>
 <div class="line"><span class="lineno">  138</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5067093d2566b3351a949319bf5d7319" name="a5067093d2566b3351a949319bf5d7319"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5067093d2566b3351a949319bf5d7319">&#9670;&#160;</a></span>HEADER_BRAWL</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte [] BrawlLib.BrawlManagerLib.GCT.ReadOnly.AlternateStageLoaderData.HEADER_BRAWL</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">        {</div>
-<div class="line">            0x46, 0x00, 0x00, 0x10,</div>
-<div class="line">            0x00, 0x00, 0x00, 0x00,</div>
-<div class="line">            0x44, 0x00, 0x00, 0x00,</div>
-<div class="line">            0x00, 0x5A, 0x7D, 0x00</div>
-<div class="line">        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a1913f8a9e539578a5c7ad923e8c0aeae" name="a1913f8a9e539578a5c7ad923e8c0aeae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1913f8a9e539578a5c7ad923e8c0aeae">&#9670;&#160;</a></span>HEADER_PM36</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte [] BrawlLib.BrawlManagerLib.GCT.ReadOnly.AlternateStageLoaderData.HEADER_PM36</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">        {</div>
-<div class="line">            0x46, 0x00, 0x00, 0x10,</div>
-<div class="line">            0x00, 0x00, 0x00, 0x00,</div>
-<div class="line">            0x44, 0x00, 0x00, 0x00,</div>
-<div class="line">            0x00, 0x5A, 0x7C, 0xB0</div>
-<div class="line">        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="af44b72207ca55b194acc3b05c084c462" name="af44b72207ca55b194acc3b05c084c462"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af44b72207ca55b194acc3b05c084c462">&#9670;&#160;</a></span>AlternatesByStage</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;string, <a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_alternate_stage_entry.html">AlternateStageEntry</a>&gt; BrawlLib.BrawlManagerLib.GCT.ReadOnly.AlternateStageLoaderData.AlternatesByStage</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   25</span>{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -102,8 +102,6 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a33f57e001fdfa0d92fd4402a74f57cdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a33f57e001fdfa0d92fd4402a74f57cdb">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a33f57e001fdfa0d92fd4402a74f57cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87168f0c93f53b6e0a1f63dabdf289a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_b_vec3.html">BVec3</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a87168f0c93f53b6e0a1f63dabdf289a6">Entries</a><code> [get]</code></td></tr>
 <tr class="separator:a87168f0c93f53b6e0a1f63dabdf289a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28432de1db8b3db7ada1e1854d4a6a9e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a28432de1db8b3db7ada1e1854d4a6a9e">ResourceString</a><code> [get]</code></td></tr>
@@ -211,37 +209,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a33f57e001fdfa0d92fd4402a74f57cdb" name="a33f57e001fdfa0d92fd4402a74f57cdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33f57e001fdfa0d92fd4402a74f57cdb">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.MDL0FurVecData.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  893</span>        {</div>
-<div class="line"><span class="lineno">  894</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  895</span>            {</div>
-<div class="line"><span class="lineno">  896</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  897</span>                {</div>
-<div class="line"><span class="lineno">  898</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  899</span>                }</div>
-<div class="line"><span class="lineno">  900</span>            }</div>
-<div class="line"><span class="lineno">  901</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a87168f0c93f53b6e0a1f63dabdf289a6" name="a87168f0c93f53b6e0a1f63dabdf289a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87168f0c93f53b6e0a1f63dabdf289a6">&#9670;&#160;</a></span>Entries</h2>
 
@@ -306,11 +273,10 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  908</span>        {</div>
-<div class="line"><span class="lineno">  909</span>            <span class="keyword">get</span> =&gt; <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a33f57e001fdfa0d92fd4402a74f57cdb">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a199a473c979d09d232cef7b45d6abf62">_stringOffset</a>;</div>
-<div class="line"><span class="lineno">  910</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a199a473c979d09d232cef7b45d6abf62">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a33f57e001fdfa0d92fd4402a74f57cdb">Address</a>;</div>
+<div class="line"><span class="lineno">  909</span>            <span class="keyword">get</span> =&gt; Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a199a473c979d09d232cef7b45d6abf62">_stringOffset</a>;</div>
+<div class="line"><span class="lineno">  910</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a199a473c979d09d232cef7b45d6abf62">_stringOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">  911</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data_html_a199a473c979d09d232cef7b45d6abf62"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a199a473c979d09d232cef7b45d6abf62">BrawlLib.SSBB.Types.MDL0FurVecData._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> MDL0.cs:886</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data_html_a33f57e001fdfa0d92fd4402a74f57cdb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_fur_vec_data.html#a33f57e001fdfa0d92fd4402a74f57cdb">BrawlLib.SSBB.Types.MDL0FurVecData.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> MDL0.cs:893</div></div>
 </div><!-- fragment -->
 </div>
 </div>

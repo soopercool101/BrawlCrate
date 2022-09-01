@@ -90,8 +90,6 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:af0da79a182948a451ce0c8f0e75cda2c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_reference_string.html#af0da79a182948a451ce0c8f0e75cda2c">Address</a><code> [get]</code></td></tr>
-<tr class="separator:af0da79a182948a451ce0c8f0e75cda2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04358212e534f2bacc48c9d8edf79092"><td class="memItemLeft" align="right" valign="top">sbyte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_reference_string.html#a04358212e534f2bacc48c9d8edf79092">Data</a><code> [get]</code></td></tr>
 <tr class="separator:a04358212e534f2bacc48c9d8edf79092"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a130d3f938d12046971ae9dd1994c823d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_reference_string.html#a130d3f938d12046971ae9dd1994c823d">Length</a><code> [get]</code></td></tr>
@@ -119,37 +117,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="af0da79a182948a451ce0c8f0e75cda2c" name="af0da79a182948a451ce0c8f0e75cda2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0da79a182948a451ce0c8f0e75cda2c">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* BrawlLib.SSBB.Types.FDefReferenceString.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  644</span>        {</div>
-<div class="line"><span class="lineno">  645</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  646</span>            {</div>
-<div class="line"><span class="lineno">  647</span>                fixed (<span class="keywordtype">void</span>* p = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  648</span>                {</div>
-<div class="line"><span class="lineno">  649</span>                    <span class="keywordflow">return</span> p;</div>
-<div class="line"><span class="lineno">  650</span>                }</div>
-<div class="line"><span class="lineno">  651</span>            }</div>
-<div class="line"><span class="lineno">  652</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a04358212e534f2bacc48c9d8edf79092" name="a04358212e534f2bacc48c9d8edf79092"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a04358212e534f2bacc48c9d8edf79092">&#9670;&#160;</a></span>Data</h2>
 
@@ -194,7 +161,7 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  688</span>        {</div>
 <div class="line"><span class="lineno">  689</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">  690</span>            {</div>
-<div class="line"><span class="lineno">  691</span>                FDefReferenceString* p = (FDefReferenceString*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_reference_string.html#af0da79a182948a451ce0c8f0e75cda2c">Address</a>;</div>
+<div class="line"><span class="lineno">  691</span>                FDefReferenceString* p = (FDefReferenceString*) Address;</div>
 <div class="line"><span class="lineno">  692</span>                <span class="keywordflow">while</span> (p-&gt;Length != 0)</div>
 <div class="line"><span class="lineno">  693</span>                {</div>
 <div class="line"><span class="lineno">  694</span>                    p = p-&gt;Next;</div>
@@ -203,7 +170,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  697</span>                <span class="keywordflow">return</span> p;</div>
 <div class="line"><span class="lineno">  698</span>            }</div>
 <div class="line"><span class="lineno">  699</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_reference_string_html_af0da79a182948a451ce0c8f0e75cda2c"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_reference_string.html#af0da79a182948a451ce0c8f0e75cda2c">BrawlLib.SSBB.Types.FDefReferenceString.Address</a></div><div class="ttdeci">void * Address</div><div class="ttdef"><b>Definition:</b> FighterDefinition.cs:644</div></div>
 </div><!-- fragment -->
 </div>
 </div>

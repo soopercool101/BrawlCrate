@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.BinaryStringEntry Class Reference</div></div>
 </div><!--header-->
@@ -111,11 +110,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a07ee8dabaad4adaf9d3d0ca99ea074ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4325f0df4e8909695090be91629047d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html">BinaryStringEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a4325f0df4e8909695090be91629047d5">_right</a></td></tr>
 <tr class="separator:a4325f0df4e8909695090be91629047d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:ac15c6916003e8698f3c710c8173652a5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ac15c6916003e8698f3c710c8173652a5">CompareBits</a> (int b1, int b2)</td></tr>
-<tr class="separator:ac15c6916003e8698f3c710c8173652a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afc212f9c8e6da3330f8fc1383f7b6a3a" name="afc212f9c8e6da3330f8fc1383f7b6a3a"></a>
@@ -155,65 +149,17 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   87</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a21d156d4939224a7c6253208fc6c95c4">_name</a> = name;</div>
 <div class="line"><span class="lineno">   88</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a6d1ec0a1c540beb1574c7d361c0060ba">_index</a> = index;</div>
 <div class="line"><span class="lineno">   89</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">_left</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a4325f0df4e8909695090be91629047d5">_right</a> = <span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   90</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a031f28ebcb6bcb590cba78c1ac3d86ff">_id</a> = name == <span class="stringliteral">&quot;&quot;</span> ? -1 : ((name.Length - 1) &lt;&lt; 3) | <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ac15c6916003e8698f3c710c8173652a5">CompareBits</a>(name[name.Length - 1], 0);</div>
+<div class="line"><span class="lineno">   90</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a031f28ebcb6bcb590cba78c1ac3d86ff">_id</a> = name == <span class="stringliteral">&quot;&quot;</span> ? -1 : ((name.Length - 1) &lt;&lt; 3) | CompareBits(name[name.Length - 1], 0);</div>
 <div class="line"><span class="lineno">   91</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a031f28ebcb6bcb590cba78c1ac3d86ff"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a031f28ebcb6bcb590cba78c1ac3d86ff">BrawlLib.SSBB.BinaryStringEntry._id</a></div><div class="ttdeci">int _id</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:82</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a07ee8dabaad4adaf9d3d0ca99ea074ce"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">BrawlLib.SSBB.BinaryStringEntry._left</a></div><div class="ttdeci">BinaryStringEntry _left</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:83</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a21d156d4939224a7c6253208fc6c95c4"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a21d156d4939224a7c6253208fc6c95c4">BrawlLib.SSBB.BinaryStringEntry._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:81</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a4325f0df4e8909695090be91629047d5"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a4325f0df4e8909695090be91629047d5">BrawlLib.SSBB.BinaryStringEntry._right</a></div><div class="ttdeci">BinaryStringEntry _right</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:83</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_a6d1ec0a1c540beb1574c7d361c0060ba"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a6d1ec0a1c540beb1574c7d361c0060ba">BrawlLib.SSBB.BinaryStringEntry._index</a></div><div class="ttdeci">int _index</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:82</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry_html_ac15c6916003e8698f3c710c8173652a5"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ac15c6916003e8698f3c710c8173652a5">BrawlLib.SSBB.BinaryStringEntry.CompareBits</a></div><div class="ttdeci">static int CompareBits(int b1, int b2)</div><div class="ttdef"><b>Definition:</b> BinaryStringTable.cs:156</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac15c6916003e8698f3c710c8173652a5" name="ac15c6916003e8698f3c710c8173652a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac15c6916003e8698f3c710c8173652a5">&#9670;&#160;</a></span>CompareBits()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int BrawlLib.SSBB.BinaryStringEntry.CompareBits </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>b1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>b2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  157</span>        {</div>
-<div class="line"><span class="lineno">  158</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 8, b = 0x80; i-- != 0; b &gt;&gt;= 1)</div>
-<div class="line"><span class="lineno">  159</span>            {</div>
-<div class="line"><span class="lineno">  160</span>                <span class="keywordflow">if</span> ((b1 &amp; b) != (b2 &amp; b))</div>
-<div class="line"><span class="lineno">  161</span>                {</div>
-<div class="line"><span class="lineno">  162</span>                    <span class="keywordflow">return</span> i;</div>
-<div class="line"><span class="lineno">  163</span>                }</div>
-<div class="line"><span class="lineno">  164</span>            }</div>
-<div class="line"><span class="lineno">  165</span> </div>
-<div class="line"><span class="lineno">  166</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  167</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ab88f755a6e62aba6cdee61edf1515ffe" name="ab88f755a6e62aba6cdee61edf1515ffe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab88f755a6e62aba6cdee61edf1515ffe">&#9670;&#160;</a></span>GenerateId()</h2>
 
@@ -242,7 +188,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  124</span>            {</div>
 <div class="line"><span class="lineno">  125</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a21d156d4939224a7c6253208fc6c95c4">_name</a>[i] != comparison._name[i])</div>
 <div class="line"><span class="lineno">  126</span>                {</div>
-<div class="line"><span class="lineno">  127</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a031f28ebcb6bcb590cba78c1ac3d86ff">_id</a> = (i &lt;&lt; 3) | <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#ac15c6916003e8698f3c710c8173652a5">CompareBits</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a21d156d4939224a7c6253208fc6c95c4">_name</a>[i], comparison._name[i]);</div>
+<div class="line"><span class="lineno">  127</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a031f28ebcb6bcb590cba78c1ac3d86ff">_id</a> = (i &lt;&lt; 3) | CompareBits(<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a21d156d4939224a7c6253208fc6c95c4">_name</a>[i], comparison._name[i]);</div>
 <div class="line"><span class="lineno">  128</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a704137df0f92dc435ec2b24bb8911098">IsRight</a>(comparison))</div>
 <div class="line"><span class="lineno">  129</span>                    {</div>
 <div class="line"><span class="lineno">  130</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_binary_string_entry.html#a07ee8dabaad4adaf9d3d0ca99ea074ce">_left</a> = <span class="keyword">this</span>;</div>

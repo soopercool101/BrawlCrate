@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter Class Reference</div></div>
 </div><!--header-->
@@ -110,18 +109,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a03fd6fbbff918a77ec6ce6a77ba64c69"><td class="memItemLeft" align="right" valign="top">SortOrder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a03fd6fbbff918a77ec6ce6a77ba64c69">Order</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a03fd6fbbff918a77ec6ce6a77ba64c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a03fd6fbbff918a77ec6ce6a77ba64c69">More...</a><br /></td></tr>
 <tr class="separator:a03fd6fbbff918a77ec6ce6a77ba64c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a3f02d8f02b04ee913422d2d099b85236"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a></td></tr>
-<tr class="memdesc:a3f02d8f02b04ee913422d2d099b85236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the column to be sorted   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">More...</a><br /></td></tr>
-<tr class="separator:a3f02d8f02b04ee913422d2d099b85236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a609c0a01b0884031676842a13685480a"><td class="memItemLeft" align="right" valign="top">SortOrder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a></td></tr>
-<tr class="memdesc:a609c0a01b0884031676842a13685480a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the order in which to sort (i.e. 'Ascending').   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">More...</a><br /></td></tr>
-<tr class="separator:a609c0a01b0884031676842a13685480a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3aaac48e5fc16e8dc95554983aec95f5"><td class="memItemLeft" align="right" valign="top">readonly CaseInsensitiveComparer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a></td></tr>
-<tr class="memdesc:a3aaac48e5fc16e8dc95554983aec95f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Case insensitive comparer object   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">More...</a><br /></td></tr>
-<tr class="separator:a3aaac48e5fc16e8dc95554983aec95f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >This class is an implementation of the 'IComparer' interface.  </p>
@@ -152,17 +139,14 @@ Private Attributes</h2></td></tr>
 <p>Class constructor. Initializes various elements  </p>
 <div class="fragment"><div class="line"><span class="lineno">  827</span>        {</div>
 <div class="line"><span class="lineno">  828</span>            <span class="comment">// Initialize the column to &#39;0&#39;</span></div>
-<div class="line"><span class="lineno">  829</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> = 0;</div>
+<div class="line"><span class="lineno">  829</span>            ColumnToSort = 0;</div>
 <div class="line"><span class="lineno">  830</span> </div>
 <div class="line"><span class="lineno">  831</span>            <span class="comment">// Initialize the sort order to &#39;none&#39;</span></div>
-<div class="line"><span class="lineno">  832</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> = SortOrder.None;</div>
+<div class="line"><span class="lineno">  832</span>            OrderOfSort = SortOrder.None;</div>
 <div class="line"><span class="lineno">  833</span> </div>
 <div class="line"><span class="lineno">  834</span>            <span class="comment">// Initialize the CaseInsensitiveComparer object</span></div>
-<div class="line"><span class="lineno">  835</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a> = <span class="keyword">new</span> CaseInsensitiveComparer();</div>
+<div class="line"><span class="lineno">  835</span>            ObjectCompare = <span class="keyword">new</span> CaseInsensitiveComparer();</div>
 <div class="line"><span class="lineno">  836</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a3aaac48e5fc16e8dc95554983aec95f5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ObjectCompare</a></div><div class="ttdeci">readonly CaseInsensitiveComparer ObjectCompare</div><div class="ttdoc">Case insensitive comparer object</div><div class="ttdef"><b>Definition:</b> SoundPackControl.cs:821</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a3f02d8f02b04ee913422d2d099b85236"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ColumnToSort</a></div><div class="ttdeci">int ColumnToSort</div><div class="ttdoc">Specifies the column to be sorted</div><div class="ttdef"><b>Definition:</b> SoundPackControl.cs:811</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter_html_a609c0a01b0884031676842a13685480a"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.OrderOfSort</a></div><div class="ttdeci">SortOrder OrderOfSort</div><div class="ttdoc">Specifies the order in which to sort (i.e. 'Ascending').</div><div class="ttdef"><b>Definition:</b> SoundPackControl.cs:816</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -219,33 +203,33 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  851</span>            listviewY = (ListViewItem) y;</div>
 <div class="line"><span class="lineno">  852</span> </div>
 <div class="line"><span class="lineno">  853</span>            <span class="comment">// Compare the two items</span></div>
-<div class="line"><span class="lineno">  854</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> == 0)</div>
+<div class="line"><span class="lineno">  854</span>            <span class="keywordflow">if</span> (ColumnToSort == 0)</div>
 <div class="line"><span class="lineno">  855</span>            {</div>
-<div class="line"><span class="lineno">  856</span>                compareResult = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a>.Compare(<span class="keywordtype">int</span>.Parse(listviewX.SubItems[<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text),</div>
-<div class="line"><span class="lineno">  857</span>                    <span class="keywordtype">int</span>.Parse(listviewY.SubItems[<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text));</div>
+<div class="line"><span class="lineno">  856</span>                compareResult = ObjectCompare.Compare(<span class="keywordtype">int</span>.Parse(listviewX.SubItems[ColumnToSort].Text),</div>
+<div class="line"><span class="lineno">  857</span>                    <span class="keywordtype">int</span>.Parse(listviewY.SubItems[ColumnToSort].Text));</div>
 <div class="line"><span class="lineno">  858</span>            }</div>
-<div class="line"><span class="lineno">  859</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> &gt;= 4)</div>
+<div class="line"><span class="lineno">  859</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ColumnToSort &gt;= 4)</div>
 <div class="line"><span class="lineno">  860</span>            {</div>
-<div class="line"><span class="lineno">  861</span>                compareResult = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a>.Compare(</div>
-<div class="line"><span class="lineno">  862</span>                    <span class="keywordtype">int</span>.Parse(listviewX.SubItems[<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2),</div>
+<div class="line"><span class="lineno">  861</span>                compareResult = ObjectCompare.Compare(</div>
+<div class="line"><span class="lineno">  862</span>                    <span class="keywordtype">int</span>.Parse(listviewX.SubItems[ColumnToSort].Text.Substring(2),</div>
 <div class="line"><span class="lineno">  863</span>                        System.Globalization.NumberStyles.HexNumber),</div>
-<div class="line"><span class="lineno">  864</span>                    <span class="keywordtype">int</span>.Parse(listviewY.SubItems[<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text.Substring(2),</div>
+<div class="line"><span class="lineno">  864</span>                    <span class="keywordtype">int</span>.Parse(listviewY.SubItems[ColumnToSort].Text.Substring(2),</div>
 <div class="line"><span class="lineno">  865</span>                        System.Globalization.NumberStyles.HexNumber));</div>
 <div class="line"><span class="lineno">  866</span>            }</div>
 <div class="line"><span class="lineno">  867</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  868</span>            {</div>
-<div class="line"><span class="lineno">  869</span>                compareResult = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3aaac48e5fc16e8dc95554983aec95f5">ObjectCompare</a>.Compare(listviewX.SubItems[<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text,</div>
-<div class="line"><span class="lineno">  870</span>                    listviewY.SubItems[<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>].Text);</div>
+<div class="line"><span class="lineno">  869</span>                compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text,</div>
+<div class="line"><span class="lineno">  870</span>                    listviewY.SubItems[ColumnToSort].Text);</div>
 <div class="line"><span class="lineno">  871</span>            }</div>
 <div class="line"><span class="lineno">  872</span> </div>
 <div class="line"><span class="lineno">  873</span>            <span class="comment">// Calculate correct return value based on object comparison</span></div>
-<div class="line"><span class="lineno">  874</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> == SortOrder.Ascending)</div>
+<div class="line"><span class="lineno">  874</span>            <span class="keywordflow">if</span> (OrderOfSort == SortOrder.Ascending)</div>
 <div class="line"><span class="lineno">  875</span>            {</div>
 <div class="line"><span class="lineno">  876</span>                <span class="comment">// Ascending sort is selected, return normal result of compare operation</span></div>
 <div class="line"><span class="lineno">  877</span>                <span class="keywordflow">return</span> compareResult;</div>
 <div class="line"><span class="lineno">  878</span>            }</div>
 <div class="line"><span class="lineno">  879</span> </div>
-<div class="line"><span class="lineno">  880</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> == SortOrder.Descending)</div>
+<div class="line"><span class="lineno">  880</span>            <span class="keywordflow">if</span> (OrderOfSort == SortOrder.Descending)</div>
 <div class="line"><span class="lineno">  881</span>            {</div>
 <div class="line"><span class="lineno">  882</span>                <span class="comment">// Descending sort is selected, return negative result of compare operation</span></div>
 <div class="line"><span class="lineno">  883</span>                <span class="keywordflow">return</span> -compareResult;</div>
@@ -255,79 +239,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  887</span>            <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  888</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a3f02d8f02b04ee913422d2d099b85236" name="a3f02d8f02b04ee913422d2d099b85236"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f02d8f02b04ee913422d2d099b85236">&#9670;&#160;</a></span>ColumnToSort</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ColumnToSort</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Specifies the column to be sorted  </p>
-
-</div>
-</div>
-<a id="a3aaac48e5fc16e8dc95554983aec95f5" name="a3aaac48e5fc16e8dc95554983aec95f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3aaac48e5fc16e8dc95554983aec95f5">&#9670;&#160;</a></span>ObjectCompare</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly CaseInsensitiveComparer BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.ObjectCompare</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Case insensitive comparer object  </p>
-
-</div>
-</div>
-<a id="a609c0a01b0884031676842a13685480a" name="a609c0a01b0884031676842a13685480a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a609c0a01b0884031676842a13685480a">&#9670;&#160;</a></span>OrderOfSort</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">SortOrder BrawlLib.Internal.Windows.Controls.ListViewColumnSorter.OrderOfSort</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Specifies the order in which to sort (i.e. 'Ascending').  </p>
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -353,8 +264,8 @@ Private Attributes</h2></td></tr>
 
 <p>Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').  </p>
 <div class="fragment"><div class="line"><span class="lineno">  903</span>        {</div>
-<div class="line"><span class="lineno">  904</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a> = value;</div>
-<div class="line"><span class="lineno">  905</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a609c0a01b0884031676842a13685480a">OrderOfSort</a>;</div>
+<div class="line"><span class="lineno">  904</span>            <span class="keyword">set</span> =&gt; OrderOfSort = value;</div>
+<div class="line"><span class="lineno">  905</span>            <span class="keyword">get</span> =&gt; OrderOfSort;</div>
 <div class="line"><span class="lineno">  906</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -381,8 +292,8 @@ Private Attributes</h2></td></tr>
 
 <p>Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').  </p>
 <div class="fragment"><div class="line"><span class="lineno">  894</span>        {</div>
-<div class="line"><span class="lineno">  895</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a> = value;</div>
-<div class="line"><span class="lineno">  896</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_list_view_column_sorter.html#a3f02d8f02b04ee913422d2d099b85236">ColumnToSort</a>;</div>
+<div class="line"><span class="lineno">  895</span>            <span class="keyword">set</span> =&gt; ColumnToSort = value;</div>
+<div class="line"><span class="lineno">  896</span>            <span class="keyword">get</span> =&gt; ColumnToSort;</div>
 <div class="line"><span class="lineno">  897</span>        }</div>
 </div><!-- fragment -->
 </div>

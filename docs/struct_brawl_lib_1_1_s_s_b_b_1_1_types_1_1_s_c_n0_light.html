@@ -126,8 +126,6 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a26eabf730d8315e6add5fb41c52654fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a26eabf730d8315e6add5fb41c52654fe">Address</a><code> [get]</code></td></tr>
-<tr class="separator:a26eabf730d8315e6add5fb41c52654fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff6d8ed26dd9f6d8f3bf0e4c8420202c"><td class="memItemLeft" align="right" valign="top">byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#aff6d8ed26dd9f6d8f3bf0e4c8420202c">VisBitEntries</a><code> [get]</code></td></tr>
 <tr class="separator:aff6d8ed26dd9f6d8f3bf0e4c8420202c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad48b9fcf261b63ac207fe1c1773aa052"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#ad48b9fcf261b63ac207fe1c1773aa052">LightColorEntries</a><code> [get]</code></td></tr>
@@ -385,37 +383,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a26eabf730d8315e6add5fb41c52654fe" name="a26eabf730d8315e6add5fb41c52654fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26eabf730d8315e6add5fb41c52654fe">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.SCN0Light.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  397</span>        {</div>
-<div class="line"><span class="lineno">  398</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  399</span>            {</div>
-<div class="line"><span class="lineno">  400</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  401</span>                {</div>
-<div class="line"><span class="lineno">  402</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  403</span>                }</div>
-<div class="line"><span class="lineno">  404</span>            }</div>
-<div class="line"><span class="lineno">  405</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ad48b9fcf261b63ac207fe1c1773aa052" name="ad48b9fcf261b63ac207fe1c1773aa052"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad48b9fcf261b63ac207fe1c1773aa052">&#9670;&#160;</a></span>LightColorEntries</h2>
 
@@ -480,10 +447,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  414</span>        {</div>
-<div class="line"><span class="lineno">  415</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a61dacb847b436d98fcd205f9403a79f8">_userDataOffset</a> == 0 ? null : <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a26eabf730d8315e6add5fb41c52654fe">Address</a> + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a61dacb847b436d98fcd205f9403a79f8">_userDataOffset</a>;</div>
-<div class="line"><span class="lineno">  416</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a61dacb847b436d98fcd205f9403a79f8">_userDataOffset</a> = (int) value - (<span class="keywordtype">int</span>) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a26eabf730d8315e6add5fb41c52654fe">Address</a>;</div>
+<div class="line"><span class="lineno">  415</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a61dacb847b436d98fcd205f9403a79f8">_userDataOffset</a> == 0 ? null : Address + <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a61dacb847b436d98fcd205f9403a79f8">_userDataOffset</a>;</div>
+<div class="line"><span class="lineno">  416</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a61dacb847b436d98fcd205f9403a79f8">_userDataOffset</a> = (int) value - (<span class="keywordtype">int</span>) Address;</div>
 <div class="line"><span class="lineno">  417</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light_html_a26eabf730d8315e6add5fb41c52654fe"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a26eabf730d8315e6add5fb41c52654fe">BrawlLib.SSBB.Types.SCN0Light.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> SCN0.cs:397</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light_html_a61dacb847b436d98fcd205f9403a79f8"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_s_c_n0_light.html#a61dacb847b436d98fcd205f9403a79f8">BrawlLib.SSBB.Types.SCN0Light._userDataOffset</a></div><div class="ttdeci">bint _userDataOffset</div><div class="ttdef"><b>Definition:</b> SCN0.cs:373</div></div>
 </div><!-- fragment -->
 </div>

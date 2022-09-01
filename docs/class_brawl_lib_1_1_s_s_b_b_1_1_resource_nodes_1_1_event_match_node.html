@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.EventMatchNode Class Reference</div></div>
 </div><!--header-->
@@ -382,11 +381,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:afcc3acb31b0499a3cecb581b04e87247"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html">EventMatchTblHeader</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a></td></tr>
-<tr class="separator:afcc3acb31b0499a3cecb581b04e87247"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -586,11 +580,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  740</span> </div>
 <div class="line"><span class="lineno">  741</span>            <span class="comment">// Copy the data from the address</span></div>
 <div class="line"><span class="lineno">  742</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html">EventMatchTblHeader</a>* dataPtr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html">EventMatchTblHeader</a>*) <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">WorkingUncompressed</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">Address</a>;</div>
-<div class="line"><span class="lineno">  743</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a> = *dataPtr;</div>
+<div class="line"><span class="lineno">  743</span>            _header = *dataPtr;</div>
 <div class="line"><span class="lineno">  744</span> </div>
 <div class="line"><span class="lineno">  745</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  746</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node_html_afcc3acb31b0499a3cecb581b04e87247"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">BrawlLib.SSBB.ResourceNodes.EventMatchNode._header</a></div><div class="ttdeci">EventMatchTblHeader _header</div><div class="ttdef"><b>Definition:</b> EventMatchNode.cs:361</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_acba0e48a7ed4557ceefbbc7b19c36b2d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#acba0e48a7ed4557ceefbbc7b19c36b2d">BrawlLib.SSBB.ResourceNodes.ResourceNode.WorkingUncompressed</a></div><div class="ttdeci">DataSource WorkingUncompressed</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:183</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source_html_ae84563550ab4a05aa5c916f03260d08d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_data_source.html#ae84563550ab4a05aa5c916f03260d08d">BrawlLib.SSBB.ResourceNodes.DataSource.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:31</div></div>
 </div><!-- fragment -->
@@ -707,7 +700,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  789</span> </div>
 <div class="line"><span class="lineno">  790</span>            <span class="comment">// Copy the data back to the address</span></div>
 <div class="line"><span class="lineno">  791</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html">EventMatchTblHeader</a>* dataPtr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html">EventMatchTblHeader</a>*) address;</div>
-<div class="line"><span class="lineno">  792</span>            *dataPtr = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>;</div>
+<div class="line"><span class="lineno">  792</span>            *dataPtr = _header;</div>
 <div class="line"><span class="lineno">  793</span> </div>
 <div class="line"><span class="lineno">  794</span>            <span class="comment">// Rebuild children using new address</span></div>
 <div class="line"><span class="lineno">  795</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> ptr = address + <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html">EventMatchTblHeader</a>);</div>
@@ -718,29 +711,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  800</span>            }</div>
 <div class="line"><span class="lineno">  801</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="afcc3acb31b0499a3cecb581b04e87247" name="afcc3acb31b0499a3cecb581b04e87247"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcc3acb31b0499a3cecb581b04e87247">&#9670;&#160;</a></span>_header</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html">EventMatchTblHeader</a> BrawlLib.SSBB.ResourceNodes.EventMatchNode._header</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -764,7 +734,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  666</span>        {</div>
-<div class="line"><span class="lineno">  667</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a87f958c04597d938ffb566bbf171e795">_cameraShakeControl</a>;</div>
+<div class="line"><span class="lineno">  667</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a87f958c04597d938ffb566bbf171e795">_cameraShakeControl</a>;</div>
 <div class="line"><span class="lineno">  668</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  669</span>            {</div>
 <div class="line"><span class="lineno">  670</span>                _header._cameraShakeControl = value;</div>
@@ -840,7 +810,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  655</span>        {</div>
-<div class="line"><span class="lineno">  656</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a4786f44a0b9c173148cc4312f7420fb3">_gameSpeed</a>;</div>
+<div class="line"><span class="lineno">  656</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a4786f44a0b9c173148cc4312f7420fb3">_gameSpeed</a>;</div>
 <div class="line"><span class="lineno">  657</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  658</span>            {</div>
 <div class="line"><span class="lineno">  659</span>                _header._gameSpeed = value;</div>
@@ -871,7 +841,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  717</span>        {</div>
-<div class="line"><span class="lineno">  718</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a13111ab58cf620c3db0a1002332dfad3">_globalDefenseRatio</a>;</div>
+<div class="line"><span class="lineno">  718</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a13111ab58cf620c3db0a1002332dfad3">_globalDefenseRatio</a>;</div>
 <div class="line"><span class="lineno">  719</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  720</span>            {</div>
 <div class="line"><span class="lineno">  721</span>                _header._globalDefenseRatio = value;</div>
@@ -902,7 +872,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  706</span>        {</div>
-<div class="line"><span class="lineno">  707</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#adf83219f392636a304025591beeffcaa">_globalOffenseRatio</a>;</div>
+<div class="line"><span class="lineno">  707</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#adf83219f392636a304025591beeffcaa">_globalOffenseRatio</a>;</div>
 <div class="line"><span class="lineno">  708</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  709</span>            {</div>
 <div class="line"><span class="lineno">  710</span>                _header._globalOffenseRatio = value;</div>
@@ -1037,7 +1007,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  525</span>        {</div>
-<div class="line"><span class="lineno">  526</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#ae0ddcad83907accaa5508d766d9ac247">ItemLevelEnum</a>) (<span class="keywordtype">short</span>) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a4fe08ba3d8385402cd18ad23c3e14e55">_itemLevel</a>;</div>
+<div class="line"><span class="lineno">  526</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#ae0ddcad83907accaa5508d766d9ac247">ItemLevelEnum</a>) (<span class="keywordtype">short</span>) _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a4fe08ba3d8385402cd18ad23c3e14e55">_itemLevel</a>;</div>
 <div class="line"><span class="lineno">  527</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  528</span>            {</div>
 <div class="line"><span class="lineno">  529</span>                _header._itemLevel = (short) value;</div>
@@ -1069,10 +1039,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  376</span>        {</div>
-<div class="line"><span class="lineno">  377</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#af59a45343068107b3d8a512da53816a1">MatchTypeEnum</a>) <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#afaa5f8cf99714dca046cdfa83d783d2e">_matchType</a>;</div>
+<div class="line"><span class="lineno">  377</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#af59a45343068107b3d8a512da53816a1">MatchTypeEnum</a>) _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#afaa5f8cf99714dca046cdfa83d783d2e">_matchType</a>;</div>
 <div class="line"><span class="lineno">  378</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  379</span>            {</div>
-<div class="line"><span class="lineno">  380</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#afaa5f8cf99714dca046cdfa83d783d2e">_matchType</a> = (<span class="keywordtype">byte</span>) value;</div>
+<div class="line"><span class="lineno">  380</span>                _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#afaa5f8cf99714dca046cdfa83d783d2e">_matchType</a> = (<span class="keywordtype">byte</span>) value;</div>
 <div class="line"><span class="lineno">  381</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
 <div class="line"><span class="lineno">  382</span>            }</div>
 <div class="line"><span class="lineno">  383</span>        }</div>
@@ -1154,7 +1124,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  695</span>        {</div>
-<div class="line"><span class="lineno">  696</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a7f94c0439e34a9754ad0ab1eb94f71b8">_songID</a>;</div>
+<div class="line"><span class="lineno">  696</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a7f94c0439e34a9754ad0ab1eb94f71b8">_songID</a>;</div>
 <div class="line"><span class="lineno">  697</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  698</span>            {</div>
 <div class="line"><span class="lineno">  699</span>                _header._songID = value;</div>
@@ -1185,7 +1155,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  559</span>        {</div>
-<div class="line"><span class="lineno">  560</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#ac13ae13e3133035c0ef87fddece381dc">_stageID</a>;</div>
+<div class="line"><span class="lineno">  560</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#ac13ae13e3133035c0ef87fddece381dc">_stageID</a>;</div>
 <div class="line"><span class="lineno">  561</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  562</span>            {</div>
 <div class="line"><span class="lineno">  563</span>                _header._stageID = (ushort) value;</div>
@@ -1216,7 +1186,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  420</span>        {</div>
-<div class="line"><span class="lineno">  421</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#af28c32a18630e67e964464aee94c33a9">_timeLimit</a>;</div>
+<div class="line"><span class="lineno">  421</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#af28c32a18630e67e964464aee94c33a9">_timeLimit</a>;</div>
 <div class="line"><span class="lineno">  422</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  423</span>            {</div>
 <div class="line"><span class="lineno">  424</span>                _header._timeLimit = value;</div>
@@ -1284,7 +1254,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  369</span>        {</div>
-<div class="line"><span class="lineno">  370</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1d8d4e18f630e2ea36df749d36210127">_unknown04</a>;</div>
+<div class="line"><span class="lineno">  370</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1d8d4e18f630e2ea36df749d36210127">_unknown04</a>;</div>
 <div class="line"><span class="lineno">  371</span>            <span class="keyword">set</span> =&gt; _header._unknown04 = value;</div>
 <div class="line"><span class="lineno">  372</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header_html_a1d8d4e18f630e2ea36df749d36210127"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1d8d4e18f630e2ea36df749d36210127">BrawlLib.SSBB.Types.EventMatchTblHeader._unknown04</a></div><div class="ttdeci">bint _unknown04</div><div class="ttdef"><b>Definition:</b> EventMatch.cs:15</div></div>
@@ -1311,7 +1281,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  387</span>        {</div>
-<div class="line"><span class="lineno">  388</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a748b5589173bfbc7beb95f99dd578028">_unknown09</a>;</div>
+<div class="line"><span class="lineno">  388</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a748b5589173bfbc7beb95f99dd578028">_unknown09</a>;</div>
 <div class="line"><span class="lineno">  389</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  390</span>            {</div>
 <div class="line"><span class="lineno">  391</span>                _header._unknown09 = value;</div>
@@ -1342,7 +1312,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  398</span>        {</div>
-<div class="line"><span class="lineno">  399</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1a493c65dae0f37a76e77f953c1ee4a3">_unknown0a</a>;</div>
+<div class="line"><span class="lineno">  399</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1a493c65dae0f37a76e77f953c1ee4a3">_unknown0a</a>;</div>
 <div class="line"><span class="lineno">  400</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  401</span>            {</div>
 <div class="line"><span class="lineno">  402</span>                _header._unknown0a = value;</div>
@@ -1373,7 +1343,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  409</span>        {</div>
-<div class="line"><span class="lineno">  410</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a10cee08c97b4a5f0f3d109a854ebac47">_unknown0b</a>;</div>
+<div class="line"><span class="lineno">  410</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a10cee08c97b4a5f0f3d109a854ebac47">_unknown0b</a>;</div>
 <div class="line"><span class="lineno">  411</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  412</span>            {</div>
 <div class="line"><span class="lineno">  413</span>                _header._unknown0b = value;</div>
@@ -1404,7 +1374,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  485</span>        {</div>
-<div class="line"><span class="lineno">  486</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1e8367a62bb0130351baf4989f3386bb">_unknown14</a>;</div>
+<div class="line"><span class="lineno">  486</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1e8367a62bb0130351baf4989f3386bb">_unknown14</a>;</div>
 <div class="line"><span class="lineno">  487</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  488</span>            {</div>
 <div class="line"><span class="lineno">  489</span>                _header._unknown14 = value;</div>
@@ -1435,7 +1405,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  536</span>        {</div>
-<div class="line"><span class="lineno">  537</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#aa99699b74026a75fdc3aa80b7f0c41f0">_unknown1c</a>;</div>
+<div class="line"><span class="lineno">  537</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#aa99699b74026a75fdc3aa80b7f0c41f0">_unknown1c</a>;</div>
 <div class="line"><span class="lineno">  538</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  539</span>            {</div>
 <div class="line"><span class="lineno">  540</span>                _header._unknown1c = value;</div>
@@ -1466,7 +1436,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  547</span>        {</div>
-<div class="line"><span class="lineno">  548</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#aaaa643854429dbc3516b9820f4764505">_unknown1d</a>;</div>
+<div class="line"><span class="lineno">  548</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#aaaa643854429dbc3516b9820f4764505">_unknown1d</a>;</div>
 <div class="line"><span class="lineno">  549</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  550</span>            {</div>
 <div class="line"><span class="lineno">  551</span>                _header._unknown1d = value;</div>
@@ -1497,7 +1467,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  600</span>        {</div>
-<div class="line"><span class="lineno">  601</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a214e2702763d3b0525cb173670935dcf">_unknown24</a>;</div>
+<div class="line"><span class="lineno">  601</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a214e2702763d3b0525cb173670935dcf">_unknown24</a>;</div>
 <div class="line"><span class="lineno">  602</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  603</span>            {</div>
 <div class="line"><span class="lineno">  604</span>                _header._unknown24 = value;</div>
@@ -1528,7 +1498,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  611</span>        {</div>
-<div class="line"><span class="lineno">  612</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1fb0b50a1da5090088947dce7b0bbb21">_unknown28</a>;</div>
+<div class="line"><span class="lineno">  612</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a1fb0b50a1da5090088947dce7b0bbb21">_unknown28</a>;</div>
 <div class="line"><span class="lineno">  613</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  614</span>            {</div>
 <div class="line"><span class="lineno">  615</span>                _header._unknown28 = value;</div>
@@ -1559,7 +1529,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  622</span>        {</div>
-<div class="line"><span class="lineno">  623</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a8827d4ae2e989094bca4b0826b7d55a1">_unknown2c</a>;</div>
+<div class="line"><span class="lineno">  623</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a8827d4ae2e989094bca4b0826b7d55a1">_unknown2c</a>;</div>
 <div class="line"><span class="lineno">  624</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  625</span>            {</div>
 <div class="line"><span class="lineno">  626</span>                _header._unknown2c = value;</div>
@@ -1590,7 +1560,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  633</span>        {</div>
-<div class="line"><span class="lineno">  634</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a4efc34ff08d5ec495cceba64d851322b">_unknown30</a>;</div>
+<div class="line"><span class="lineno">  634</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a4efc34ff08d5ec495cceba64d851322b">_unknown30</a>;</div>
 <div class="line"><span class="lineno">  635</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  636</span>            {</div>
 <div class="line"><span class="lineno">  637</span>                _header._unknown30 = value;</div>
@@ -1621,7 +1591,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  644</span>        {</div>
-<div class="line"><span class="lineno">  645</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a06c6fdec5605622847ec1c70728e6ffc">_unknown34</a>;</div>
+<div class="line"><span class="lineno">  645</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a06c6fdec5605622847ec1c70728e6ffc">_unknown34</a>;</div>
 <div class="line"><span class="lineno">  646</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  647</span>            {</div>
 <div class="line"><span class="lineno">  648</span>                _header._unknown34 = value;</div>
@@ -1652,7 +1622,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  728</span>        {</div>
-<div class="line"><span class="lineno">  729</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#afcc3acb31b0499a3cecb581b04e87247">_header</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a2e6b67dc93846cf5b33b7ca320082260">_unknown4c</a>;</div>
+<div class="line"><span class="lineno">  729</span>            <span class="keyword">get</span> =&gt; _header.<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_event_match_tbl_header.html#a2e6b67dc93846cf5b33b7ca320082260">_unknown4c</a>;</div>
 <div class="line"><span class="lineno">  730</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  731</span>            {</div>
 <div class="line"><span class="lineno">  732</span>                _header._unknown4c = value;</div>

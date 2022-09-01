@@ -132,8 +132,6 @@ Properties</h2></td></tr>
 <tr class="separator:a5d821177ef192b8c95886e7f9b438a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3744045948a6c20089c69b19290e9190"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a3744045948a6c20089c69b19290e9190">LoopSample</a><code> [get, set]</code></td></tr>
 <tr class="separator:a3744045948a6c20089c69b19290e9190"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe4bae7d2a24a890932209bc2a7db0a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">Address</a><code> [get]</code></td></tr>
-<tr class="separator:abe4bae7d2a24a890932209bc2a7db0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a893f9f9a5f4eead7a67738f2da751f71" name="a893f9f9a5f4eead7a67738f2da751f71"></a>
@@ -189,11 +187,10 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  107</span>        {</div>
-<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">return</span> (ADPCMInfo*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">Address</a> + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a9d2495e4175b8ad7c98d07f54d883e1e">GetChannelInfo</a>(index)-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info.html#a95c4e8e4fe18ba1c93773f3c76a063bb">_adpcmInfoOffset</a>);</div>
+<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">return</span> (ADPCMInfo*) (Address + <a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a9d2495e4175b8ad7c98d07f54d883e1e">GetChannelInfo</a>(index)-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info.html#a95c4e8e4fe18ba1c93773f3c76a063bb">_adpcmInfoOffset</a>);</div>
 <div class="line"><span class="lineno">  109</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info_html_a95c4e8e4fe18ba1c93773f3c76a063bb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_channel_info.html#a95c4e8e4fe18ba1c93773f3c76a063bb">BrawlLib.SSBB.Types.Audio.ChannelInfo._adpcmInfoOffset</a></div><div class="ttdeci">bint _adpcmInfoOffset</div><div class="ttdef"><b>Definition:</b> RWAV.cs:156</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a9d2495e4175b8ad7c98d07f54d883e1e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a9d2495e4175b8ad7c98d07f54d883e1e">BrawlLib.SSBB.Types.Audio.WaveInfo.GetChannelInfo</a></div><div class="ttdeci">ChannelInfo * GetChannelInfo(int index)</div><div class="ttdef"><b>Definition:</b> RWAV.cs:101</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_abe4bae7d2a24a890932209bc2a7db0a4"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">BrawlLib.SSBB.Types.Audio.WaveInfo.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> RWAV.cs:134</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -221,7 +218,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  102</span>        {</div>
-<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">return</span> (ChannelInfo*) (<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#abe4bae7d2a24a890932209bc2a7db0a4">Address</a> + <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a44144ae05ca4f27e9550d7213a58eb86">OffsetTable</a>[index]);</div>
+<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">return</span> (ChannelInfo*) (Address + <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a44144ae05ca4f27e9550d7213a58eb86">OffsetTable</a>[index]);</div>
 <div class="line"><span class="lineno">  104</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info_html_a44144ae05ca4f27e9550d7213a58eb86"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_wave_info.html#a44144ae05ca4f27e9550d7213a58eb86">BrawlLib.SSBB.Types.Audio.WaveInfo.OffsetTable</a></div><div class="ttdeci">buint * OffsetTable</div><div class="ttdef"><b>Definition:</b> RWAV.cs:99</div></div>
 </div><!-- fragment -->
@@ -435,37 +432,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="abe4bae7d2a24a890932209bc2a7db0a4" name="abe4bae7d2a24a890932209bc2a7db0a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe4bae7d2a24a890932209bc2a7db0a4">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.Audio.WaveInfo.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  134</span>        {</div>
-<div class="line"><span class="lineno">  135</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  136</span>            {</div>
-<div class="line"><span class="lineno">  137</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  138</span>                {</div>
-<div class="line"><span class="lineno">  139</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  140</span>                }</div>
-<div class="line"><span class="lineno">  141</span>            }</div>
-<div class="line"><span class="lineno">  142</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a3744045948a6c20089c69b19290e9190" name="a3744045948a6c20089c69b19290e9190"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3744045948a6c20089c69b19290e9190">&#9670;&#160;</a></span>LoopSample</h2>
 

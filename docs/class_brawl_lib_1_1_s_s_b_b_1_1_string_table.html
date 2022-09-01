@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.StringTable Class Reference</div></div>
 </div><!--header-->
@@ -108,16 +106,6 @@ Public Member Functions</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:abbf7bb46d21ceab7c600f27f15179d88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#abbf7bb46d21ceab7c600f27f15179d88">this[string s]</a><code> [get]</code></td></tr>
 <tr class="separator:abbf7bb46d21ceab7c600f27f15179d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:af52c380f356da27e543ec79c0c541ad7"><td class="memItemLeft" align="right" valign="top">IEnumerator IEnumerable.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#af52c380f356da27e543ec79c0c541ad7">GetEnumerator</a> ()</td></tr>
-<tr class="separator:af52c380f356da27e543ec79c0c541ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a61f3e306facd4026fadd4b90c0ef5827"><td class="memItemLeft" align="right" valign="top">readonly SortedList&lt; string, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a> = new SortedList&lt;string, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&gt;(StringComparer.Ordinal)</td></tr>
-<tr class="separator:a61f3e306facd4026fadd4b90c0ef5827"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a27a7679dda8bcc3fb5dbe154ce1f11ba" name="a27a7679dda8bcc3fb5dbe154ce1f11ba"></a>
@@ -144,12 +132,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   14</span>        {</div>
-<div class="line"><span class="lineno">   15</span>            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(s) &amp;&amp; !<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.ContainsKey(s))</div>
+<div class="line"><span class="lineno">   15</span>            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(s) &amp;&amp; !_table.ContainsKey(s))</div>
 <div class="line"><span class="lineno">   16</span>            {</div>
-<div class="line"><span class="lineno">   17</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Add(s, 0);</div>
+<div class="line"><span class="lineno">   17</span>                _table.Add(s, 0);</div>
 <div class="line"><span class="lineno">   18</span>            }</div>
 <div class="line"><span class="lineno">   19</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_string_table_html_a61f3e306facd4026fadd4b90c0ef5827"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">BrawlLib.SSBB.StringTable._table</a></div><div class="ttdeci">readonly SortedList&lt; string, VoidPtr &gt; _table</div><div class="ttdef"><b>Definition:</b> StringTable.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -176,13 +163,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   33</span>        {</div>
-<div class="line"><span class="lineno">   34</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Clear();</div>
+<div class="line"><span class="lineno">   34</span>            _table.Clear();</div>
 <div class="line"><span class="lineno">   35</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <a id="ac67b7ea2948fb5b323be7cd54a089b46" name="ac67b7ea2948fb5b323be7cd54a089b46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac67b7ea2948fb5b323be7cd54a089b46">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67b7ea2948fb5b323be7cd54a089b46">&#9670;&#160;</a></span>GetEnumerator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,36 +191,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   63</span>        {</div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Keys.GetEnumerator();</div>
+<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">return</span> _table.Keys.GetEnumerator();</div>
 <div class="line"><span class="lineno">   65</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="af52c380f356da27e543ec79c0c541ad7" name="af52c380f356da27e543ec79c0c541ad7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af52c380f356da27e543ec79c0c541ad7">&#9670;&#160;</a></span>GetEnumerator() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">IEnumerator IEnumerable. BrawlLib.SSBB.StringTable.GetEnumerator </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   68</span>        {</div>
-<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Keys.GetEnumerator();</div>
-<div class="line"><span class="lineno">   70</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -261,7 +220,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   22</span>        {</div>
 <div class="line"><span class="lineno">   23</span>            <span class="keywordtype">int</span> len = 0;</div>
-<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Keys)</div>
+<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> _table.Keys)</div>
 <div class="line"><span class="lineno">   25</span>            {</div>
 <div class="line"><span class="lineno">   26</span>                len += (s.Length + 5).Align(4);</div>
 <div class="line"><span class="lineno">   27</span>            }</div>
@@ -296,10 +255,10 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   51</span>        {</div>
 <div class="line"><span class="lineno">   52</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html">BRESString</a>* entry = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html">BRESString</a>*) address;</div>
-<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Count; i++)</div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _table.Count; i++)</div>
 <div class="line"><span class="lineno">   54</span>            {</div>
-<div class="line"><span class="lineno">   55</span>                <span class="keywordtype">string</span> s = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Keys[i];</div>
-<div class="line"><span class="lineno">   56</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>[s] = entry;</div>
+<div class="line"><span class="lineno">   55</span>                <span class="keywordtype">string</span> s = _table.Keys[i];</div>
+<div class="line"><span class="lineno">   56</span>                _table[s] = entry;</div>
 <div class="line"><span class="lineno">   57</span>                entry-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html#a40861344ce047545aec7e511f65ad8e1">Value</a> = s;</div>
 <div class="line"><span class="lineno">   58</span>                entry = entry-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html#a82b3b01577f51f185b714dc4beeb8cec">Next</a>;</div>
 <div class="line"><span class="lineno">   59</span>            }</div>
@@ -308,29 +267,6 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string_html_a40861344ce047545aec7e511f65ad8e1"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html#a40861344ce047545aec7e511f65ad8e1">BrawlLib.SSBB.Types.BRESString.Value</a></div><div class="ttdeci">string Value</div><div class="ttdef"><b>Definition:</b> BRES.cs:146</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string_html_a82b3b01577f51f185b714dc4beeb8cec"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_b_r_e_s_string.html#a82b3b01577f51f185b714dc4beeb8cec">BrawlLib.SSBB.Types.BRESString.Next</a></div><div class="ttdeci">BRESString * Next</div><div class="ttdef"><b>Definition:</b> BRES.cs:168</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a61f3e306facd4026fadd4b90c0ef5827" name="a61f3e306facd4026fadd4b90c0ef5827"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61f3e306facd4026fadd4b90c0ef5827">&#9670;&#160;</a></span>_table</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly SortedList&lt;string, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&gt; BrawlLib.SSBB.StringTable._table = new SortedList&lt;string, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&gt;(StringComparer.Ordinal)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -356,12 +292,12 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   38</span>        {</div>
 <div class="line"><span class="lineno">   39</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   40</span>            {</div>
-<div class="line"><span class="lineno">   41</span>                <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(s) &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.ContainsKey(s))</div>
+<div class="line"><span class="lineno">   41</span>                <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(s) &amp;&amp; _table.ContainsKey(s))</div>
 <div class="line"><span class="lineno">   42</span>                {</div>
-<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>[s];</div>
+<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">return</span> _table[s];</div>
 <div class="line"><span class="lineno">   44</span>                }</div>
 <div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_string_table.html#a61f3e306facd4026fadd4b90c0ef5827">_table</a>.Values[0];</div>
+<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">return</span> _table.Values[0];</div>
 <div class="line"><span class="lineno">   47</span>            }</div>
 <div class="line"><span class="lineno">   48</span>        }</div>
 </div><!-- fragment -->

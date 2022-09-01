@@ -83,7 +83,6 @@ $(function() {
 <a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.MoveDefNode Class Reference</div></div>
 </div><!--header-->
@@ -576,11 +575,6 @@ Properties</h2></td></tr>
 <tr class="separator:a1d20a6bd10cd2d7cfa8d398b11fbab93 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:abd031b2bf726677b1c805dd4ffea611e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#abd031b2bf726677b1c805dd4ffea611e">refCount</a></td></tr>
-<tr class="separator:abd031b2bf726677b1c805dd4ffea611e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -5277,7 +5271,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 4805</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a7894ad0a61c7bf2a5807876f06b1149b">refTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(e.Name);</div>
 <div class="line"><span class="lineno"> 4806</span>            }</div>
 <div class="line"><span class="lineno"> 4807</span> </div>
-<div class="line"><span class="lineno"> 4808</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#abd031b2bf726677b1c805dd4ffea611e">refCount</a> = 0;</div>
+<div class="line"><span class="lineno"> 4808</span>            refCount = 0;</div>
 <div class="line"><span class="lineno"> 4809</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a33c73fe267cbdfa98e92acde66b77008">references</a> != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno"> 4810</span>            {</div>
 <div class="line"><span class="lineno"> 4811</span>                <span class="keywordflow">foreach</span> (MoveDefExternalNode e <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a33c73fe267cbdfa98e92acde66b77008">references</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
@@ -5286,7 +5280,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 4814</span>                    {</div>
 <div class="line"><span class="lineno"> 4815</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a7894ad0a61c7bf2a5807876f06b1149b">refTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#ac23df2487639fbd9ef163e4d1dab3bbc">Add</a>(e.Name);</div>
 <div class="line"><span class="lineno"> 4816</span>                        size += 8;</div>
-<div class="line"><span class="lineno"> 4817</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#abd031b2bf726677b1c805dd4ffea611e">refCount</a>++;</div>
+<div class="line"><span class="lineno"> 4817</span>                        refCount++;</div>
 <div class="line"><span class="lineno"> 4818</span>                    }</div>
 <div class="line"><span class="lineno"> 4819</span> </div>
 <div class="line"><span class="lineno"> 4820</span>                    <span class="comment">//references don&#39;t use lookup table</span></div>
@@ -5305,7 +5299,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node_html_a4b32ddbc75bc37b28613e25c31adb952"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a4b32ddbc75bc37b28613e25c31adb952">BrawlLib.SSBB.ResourceNodes.MoveDefNode.sections</a></div><div class="ttdeci">MoveDefSectionNode sections</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:3456</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node_html_a6e5a9cefc3436cc41f80d3d85029ed9c"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a6e5a9cefc3436cc41f80d3d85029ed9c">BrawlLib.SSBB.ResourceNodes.MoveDefNode._lookupOffsets</a></div><div class="ttdeci">static LookupManager _lookupOffsets</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:4742</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node_html_a7894ad0a61c7bf2a5807876f06b1149b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a7894ad0a61c7bf2a5807876f06b1149b">BrawlLib.SSBB.ResourceNodes.MoveDefNode.refTable</a></div><div class="ttdeci">CompactStringTable refTable</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:3459</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node_html_abd031b2bf726677b1c805dd4ffea611e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#abd031b2bf726677b1c805dd4ffea611e">BrawlLib.SSBB.ResourceNodes.MoveDefNode.refCount</a></div><div class="ttdeci">int refCount</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:4828</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_section_node_html_a2a5c62f41e725a05af6210c8d10eed25"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_section_node.html#a2a5c62f41e725a05af6210c8d10eed25">BrawlLib.SSBB.ResourceNodes.MoveDefSectionNode._sectionList</a></div><div class="ttdeci">List&lt; MoveDefEntryNode &gt; _sectionList</div><div class="ttdef"><b>Definition:</b> MoveDefNode.cs:5123</div></div>
 </div><!-- fragment -->
 </div>
@@ -5551,7 +5544,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 4835</span> </div>
 <div class="line"><span class="lineno"> 4836</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html">FDefHeader</a>* header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html">FDefHeader</a>*) address;</div>
 <div class="line"><span class="lineno"> 4837</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#ae543f9a8c765ee2fcf9c658615532d17">_fileSize</a> = length;</div>
-<div class="line"><span class="lineno"> 4838</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#ad200572583d194121137adefbf6c2fc1">_externalSubRoutineCount</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#abd031b2bf726677b1c805dd4ffea611e">refCount</a>;</div>
+<div class="line"><span class="lineno"> 4838</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#ad200572583d194121137adefbf6c2fc1">_externalSubRoutineCount</a> = refCount;</div>
 <div class="line"><span class="lineno"> 4839</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#a033c1ee771c0f70010fcc794df27ce3f">_dataTableEntryCount</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a4b32ddbc75bc37b28613e25c31adb952">sections</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_section_node.html#a2a5c62f41e725a05af6210c8d10eed25">_sectionList</a>.Count;</div>
 <div class="line"><span class="lineno"> 4840</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#a79fc4c303ffef628dcf3612e19926199">_lookupEntryCount</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a0055a59a7767c8901fdb079e11fa8a31">lookupCount</a>;</div>
 <div class="line"><span class="lineno"> 4841</span>            header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#ac1b1585d0aabe4145babb18ec94a77c0">_pad1</a> = header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#aacb4eb864c80ddd1fdcce906be883097">_pad2</a> = header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_f_def_header.html#a5aa13611bd959f15e8a3e1f72628d874">_pad3</a> = 0;</div>
@@ -5694,7 +5687,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 4978</span>            }</div>
 <div class="line"><span class="lineno"> 4979</span> </div>
 <div class="line"><span class="lineno"> 4980</span>            dataAddress = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) values;</div>
-<div class="line"><span class="lineno"> 4981</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> refTableAddr = dataAddress + sections._sectionList.Count * 8 + <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#abd031b2bf726677b1c805dd4ffea611e">refCount</a> * 8;</div>
+<div class="line"><span class="lineno"> 4981</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> refTableAddr = dataAddress + sections._sectionList.Count * 8 + refCount * 8;</div>
 <div class="line"><span class="lineno"> 4982</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a7894ad0a61c7bf2a5807876f06b1149b">refTable</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_compact_string_table.html#a2494432e837e7f840715ab331110c3c1">WriteTable</a>(refTableAddr);</div>
 <div class="line"><span class="lineno"> 4983</span> </div>
 <div class="line"><span class="lineno"> 4984</span>            <span class="keywordflow">foreach</span> (MoveDefEntryNode e <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_node.html#a4b32ddbc75bc37b28613e25c31adb952">sections</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_section_node.html#a2a5c62f41e725a05af6210c8d10eed25">_sectionList</a>)</div>
@@ -6408,28 +6401,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">Dictionary&lt;string, <a class="el" href="class_brawl_lib_1_1_internal_1_1_section_param_info.html">SectionParamInfo</a>&gt; BrawlLib.SSBB.ResourceNodes.MoveDefNode.Params</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="abd031b2bf726677b1c805dd4ffea611e" name="abd031b2bf726677b1c805dd4ffea611e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd031b2bf726677b1c805dd4ffea611e">&#9670;&#160;</a></span>refCount</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.SSBB.ResourceNodes.MoveDefNode.refCount</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

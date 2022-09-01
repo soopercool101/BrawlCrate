@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.CustomLists.StageNameGenerators Class Reference</div></div>
 </div><!--header-->
@@ -109,23 +108,6 @@ Properties</h2></td></tr>
 <tr class="separator:a788ac5a9d92744743240504e72f18f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a641199c797ea90bae15d8119959c0f23"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a><code> [get]</code></td></tr>
 <tr class="separator:a641199c797ea90bae15d8119959c0f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a8780d724f1679bffc04a89848d4f90bf"><td class="memItemLeft" align="right" valign="top">static readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">flagIndex</a> = 0</td></tr>
-<tr class="separator:a8780d724f1679bffc04a89848d4f90bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeaf47c63c01dde2d68435ffdee2d070"><td class="memItemLeft" align="right" valign="top">static readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#afeaf47c63c01dde2d68435ffdee2d070">idIndex</a> = 8</td></tr>
-<tr class="separator:afeaf47c63c01dde2d68435ffdee2d070"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed3c3288e1e77fd894fcd915171ff0f7"><td class="memItemLeft" align="right" valign="top">static readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#aed3c3288e1e77fd894fcd915171ff0f7">internalNameIndex</a> = 16</td></tr>
-<tr class="separator:aed3c3288e1e77fd894fcd915171ff0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a034b651f59b73606b7fb159f2b128130"><td class="memItemLeft" align="right" valign="top">static readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">nameIndex</a> = 32</td></tr>
-<tr class="separator:a034b651f59b73606b7fb159f2b128130"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac052c2bc1e6a2644e674f21ec2fad01e"><td class="memItemLeft" align="right" valign="top">static readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ac052c2bc1e6a2644e674f21ec2fad01e">minimumLength</a> = <a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">nameIndex</a> + 1</td></tr>
-<tr class="separator:ac052c2bc1e6a2644e674f21ec2fad01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4be5663ce3c616ccc08d0b458f3fb2b0"><td class="memItemLeft" align="right" valign="top">static readonly char[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4be5663ce3c616ccc08d0b458f3fb2b0">trimChars</a> = {' ', '\t'}</td></tr>
-<tr class="separator:a4be5663ce3c616ccc08d0b458f3fb2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada8294a5339642df6a8b24858cfb797c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a></td></tr>
-<tr class="separator:ada8294a5339642df6a8b24858cfb797c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a450f499a4f16dc50d10bf14b14365749" name="a450f499a4f16dc50d10bf14b14365749"></a>
@@ -152,32 +134,26 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  332</span>        {</div>
-<div class="line"><span class="lineno">  333</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a>)</div>
+<div class="line"><span class="lineno">  333</span>            <span class="keywordflow">if</span> (!generated)</div>
 <div class="line"><span class="lineno">  334</span>            {</div>
-<div class="line"><span class="lineno">  335</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a> = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
+<div class="line"><span class="lineno">  335</span>                generated = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
 <div class="line"><span class="lineno">  336</span>            }</div>
 <div class="line"><span class="lineno">  337</span> </div>
 <div class="line"><span class="lineno">  338</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
 <div class="line"><span class="lineno">  339</span>            {</div>
-<div class="line"><span class="lineno">  340</span>                <span class="keywordflow">if</span> (s.Length &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ac052c2bc1e6a2644e674f21ec2fad01e">minimumLength</a> &amp;&amp;</div>
-<div class="line"><span class="lineno">  341</span>                    s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#afeaf47c63c01dde2d68435ffdee2d070">idIndex</a>).StartsWith(<span class="stringliteral">&quot;0X&quot;</span> + <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X2&quot;</span>).ToUpper()) &amp;&amp;</div>
-<div class="line"><span class="lineno">  342</span>                    !s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">flagIndex</a>).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
-<div class="line"><span class="lineno">  343</span>                    !s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">flagIndex</a>).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
+<div class="line"><span class="lineno">  340</span>                <span class="keywordflow">if</span> (s.Length &gt;= minimumLength &amp;&amp;</div>
+<div class="line"><span class="lineno">  341</span>                    s.ToUpper().Substring(idIndex).StartsWith(<span class="stringliteral">&quot;0X&quot;</span> + <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X2&quot;</span>).ToUpper()) &amp;&amp;</div>
+<div class="line"><span class="lineno">  342</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  343</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
 <div class="line"><span class="lineno">  344</span>                {</div>
-<div class="line"><span class="lineno">  345</span>                    <span class="keywordflow">return</span> s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">nameIndex</a>).Trim(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4be5663ce3c616ccc08d0b458f3fb2b0">trimChars</a>);</div>
+<div class="line"><span class="lineno">  345</span>                    <span class="keywordflow">return</span> s.Substring(nameIndex).Trim(trimChars);</div>
 <div class="line"><span class="lineno">  346</span>                }</div>
 <div class="line"><span class="lineno">  347</span>            }</div>
 <div class="line"><span class="lineno">  348</span> </div>
 <div class="line"><span class="lineno">  349</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Stage 0x&quot;</span> + <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X2&quot;</span>);</div>
 <div class="line"><span class="lineno">  350</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a034b651f59b73606b7fb159f2b128130"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">BrawlLib.CustomLists.StageNameGenerators.nameIndex</a></div><div class="ttdeci">static readonly int nameIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:326</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4be5663ce3c616ccc08d0b458f3fb2b0"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4be5663ce3c616ccc08d0b458f3fb2b0">BrawlLib.CustomLists.StageNameGenerators.trimChars</a></div><div class="ttdeci">static readonly char[] trimChars</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:328</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4ec7609464439a8351977b77d99bb70f"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">BrawlLib.CustomLists.StageNameGenerators.GenerateList</a></div><div class="ttdeci">static bool GenerateList()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:417</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a8780d724f1679bffc04a89848d4f90bf"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">BrawlLib.CustomLists.StageNameGenerators.flagIndex</a></div><div class="ttdeci">static readonly int flagIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:323</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ac052c2bc1e6a2644e674f21ec2fad01e"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ac052c2bc1e6a2644e674f21ec2fad01e">BrawlLib.CustomLists.StageNameGenerators.minimumLength</a></div><div class="ttdeci">static readonly int minimumLength</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:327</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ad3e594f29a67c01c94b3009c31e30987"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">BrawlLib.CustomLists.StageNameGenerators.fileList</a></div><div class="ttdeci">static List&lt; string &gt; fileList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:317</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ada8294a5339642df6a8b24858cfb797c"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">BrawlLib.CustomLists.StageNameGenerators.generated</a></div><div class="ttdeci">static bool generated</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:329</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_afeaf47c63c01dde2d68435ffdee2d070"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#afeaf47c63c01dde2d68435ffdee2d070">BrawlLib.CustomLists.StageNameGenerators.idIndex</a></div><div class="ttdeci">static readonly int idIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:324</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -205,9 +181,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  353</span>        {</div>
-<div class="line"><span class="lineno">  354</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a>)</div>
+<div class="line"><span class="lineno">  354</span>            <span class="keywordflow">if</span> (!generated)</div>
 <div class="line"><span class="lineno">  355</span>            {</div>
-<div class="line"><span class="lineno">  356</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a> = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
+<div class="line"><span class="lineno">  356</span>                generated = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
 <div class="line"><span class="lineno">  357</span>            }</div>
 <div class="line"><span class="lineno">  358</span> </div>
 <div class="line"><span class="lineno">  359</span>            <span class="keywordtype">string</span> exID = <span class="stringliteral">&quot;NULL&quot;</span>;</div>
@@ -220,16 +196,15 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  366</span> </div>
 <div class="line"><span class="lineno">  367</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
 <div class="line"><span class="lineno">  368</span>            {</div>
-<div class="line"><span class="lineno">  369</span>                <span class="keywordflow">if</span> (s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#aed3c3288e1e77fd894fcd915171ff0f7">internalNameIndex</a>).StartsWith(pacName.ToUpper()) ||</div>
-<div class="line"><span class="lineno">  370</span>                    isExStage &amp;&amp; s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#aed3c3288e1e77fd894fcd915171ff0f7">internalNameIndex</a>).StartsWith(<span class="stringliteral">&quot;EX&quot;</span> + exID))</div>
+<div class="line"><span class="lineno">  369</span>                <span class="keywordflow">if</span> (s.ToUpper().Substring(internalNameIndex).StartsWith(pacName.ToUpper()) ||</div>
+<div class="line"><span class="lineno">  370</span>                    isExStage &amp;&amp; s.ToUpper().Substring(internalNameIndex).StartsWith(<span class="stringliteral">&quot;EX&quot;</span> + exID))</div>
 <div class="line"><span class="lineno">  371</span>                {</div>
-<div class="line"><span class="lineno">  372</span>                    <span class="keywordflow">return</span> s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">nameIndex</a>).Trim(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4be5663ce3c616ccc08d0b458f3fb2b0">trimChars</a>);</div>
+<div class="line"><span class="lineno">  372</span>                    <span class="keywordflow">return</span> s.Substring(nameIndex).Trim(trimChars);</div>
 <div class="line"><span class="lineno">  373</span>                }</div>
 <div class="line"><span class="lineno">  374</span>            }</div>
 <div class="line"><span class="lineno">  375</span> </div>
 <div class="line"><span class="lineno">  376</span>            <span class="keywordflow">return</span> pacName.ToUpper();</div>
 <div class="line"><span class="lineno">  377</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_aed3c3288e1e77fd894fcd915171ff0f7"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#aed3c3288e1e77fd894fcd915171ff0f7">BrawlLib.CustomLists.StageNameGenerators.internalNameIndex</a></div><div class="ttdeci">static readonly int internalNameIndex</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:325</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -329,7 +304,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  427</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  428</span>            }</div>
 <div class="line"><span class="lineno">  429</span> </div>
-<div class="line"><span class="lineno">  430</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ada8294a5339642df6a8b24858cfb797c">generated</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  430</span>            generated = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  431</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a> = <span class="keyword">new</span> List&lt;string&gt;(File.ReadAllLines(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>));</div>
 <div class="line"><span class="lineno">  432</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a> = <span class="keyword">new</span> List&lt;Stage&gt;();</div>
 <div class="line"><span class="lineno">  433</span>            <span class="comment">// Remove descriptor strings and unecessary spaces</span></div>
@@ -341,16 +316,16 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  439</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].Substring(0, commentIndex);</div>
 <div class="line"><span class="lineno">  440</span>                }</div>
 <div class="line"><span class="lineno">  441</span> </div>
-<div class="line"><span class="lineno">  442</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].TrimEnd(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4be5663ce3c616ccc08d0b458f3fb2b0">trimChars</a>);</div>
+<div class="line"><span class="lineno">  442</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].TrimEnd(trimChars);</div>
 <div class="line"><span class="lineno">  443</span>            }</div>
 <div class="line"><span class="lineno">  444</span> </div>
 <div class="line"><span class="lineno">  445</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
 <div class="line"><span class="lineno">  446</span>            {</div>
-<div class="line"><span class="lineno">  447</span>                <span class="keywordflow">if</span> (s.Length &gt;= <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ac052c2bc1e6a2644e674f21ec2fad01e">minimumLength</a> &amp;&amp; s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#afeaf47c63c01dde2d68435ffdee2d070">idIndex</a>).StartsWith(<span class="stringliteral">&quot;0X&quot;</span>) &amp;&amp;</div>
-<div class="line"><span class="lineno">  448</span>                    !s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">flagIndex</a>).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
-<div class="line"><span class="lineno">  449</span>                    !s.ToUpper().Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a8780d724f1679bffc04a89848d4f90bf">flagIndex</a>).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
+<div class="line"><span class="lineno">  447</span>                <span class="keywordflow">if</span> (s.Length &gt;= minimumLength &amp;&amp; s.ToUpper().Substring(idIndex).StartsWith(<span class="stringliteral">&quot;0X&quot;</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  448</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  449</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
 <div class="line"><span class="lineno">  450</span>                {</div>
-<div class="line"><span class="lineno">  451</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a>.Add(<span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a>(Convert.ToByte(s.Substring(<a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#afeaf47c63c01dde2d68435ffdee2d070">idIndex</a> + 2, 2), 16), <span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  451</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a>.Add(<span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a>(Convert.ToByte(s.Substring(idIndex + 2, 2), 16), <span class="keyword">true</span>));</div>
 <div class="line"><span class="lineno">  452</span>                }</div>
 <div class="line"><span class="lineno">  453</span>            }</div>
 <div class="line"><span class="lineno">  454</span> </div>
@@ -388,138 +363,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8780d724f1679bffc04a89848d4f90bf" name="a8780d724f1679bffc04a89848d4f90bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8780d724f1679bffc04a89848d4f90bf">&#9670;&#160;</a></span>flagIndex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int BrawlLib.CustomLists.StageNameGenerators.flagIndex = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ada8294a5339642df6a8b24858cfb797c" name="ada8294a5339642df6a8b24858cfb797c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada8294a5339642df6a8b24858cfb797c">&#9670;&#160;</a></span>generated</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlLib.CustomLists.StageNameGenerators.generated</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afeaf47c63c01dde2d68435ffdee2d070" name="afeaf47c63c01dde2d68435ffdee2d070"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afeaf47c63c01dde2d68435ffdee2d070">&#9670;&#160;</a></span>idIndex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int BrawlLib.CustomLists.StageNameGenerators.idIndex = 8</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aed3c3288e1e77fd894fcd915171ff0f7" name="aed3c3288e1e77fd894fcd915171ff0f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed3c3288e1e77fd894fcd915171ff0f7">&#9670;&#160;</a></span>internalNameIndex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int BrawlLib.CustomLists.StageNameGenerators.internalNameIndex = 16</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac052c2bc1e6a2644e674f21ec2fad01e" name="ac052c2bc1e6a2644e674f21ec2fad01e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac052c2bc1e6a2644e674f21ec2fad01e">&#9670;&#160;</a></span>minimumLength</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int BrawlLib.CustomLists.StageNameGenerators.minimumLength = <a class="el" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a034b651f59b73606b7fb159f2b128130">nameIndex</a> + 1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a034b651f59b73606b7fb159f2b128130" name="a034b651f59b73606b7fb159f2b128130"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a034b651f59b73606b7fb159f2b128130">&#9670;&#160;</a></span>nameIndex</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly int BrawlLib.CustomLists.StageNameGenerators.nameIndex = 32</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a2416d7dce9e785d285168449a9aede53" name="a2416d7dce9e785d285168449a9aede53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2416d7dce9e785d285168449a9aede53">&#9670;&#160;</a></span>stageList</h2>
 
@@ -536,28 +379,6 @@ Static Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4be5663ce3c616ccc08d0b458f3fb2b0" name="a4be5663ce3c616ccc08d0b458f3fb2b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4be5663ce3c616ccc08d0b458f3fb2b0">&#9670;&#160;</a></span>trimChars</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly char [] BrawlLib.CustomLists.StageNameGenerators.trimChars = {' ', '\t'}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

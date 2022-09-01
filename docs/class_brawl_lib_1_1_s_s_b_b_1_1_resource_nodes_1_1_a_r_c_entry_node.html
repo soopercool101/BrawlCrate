@@ -82,7 +82,6 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.ARCEntryNode Class Reference</div></div>
 </div><!--header-->
@@ -471,12 +470,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a8f0d7557a5cd2fd24fd562170fcb013f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a8f0d7557a5cd2fd24fd562170fcb013f">UpdateRedirectTarget</a> ()</td></tr>
-<tr class="memdesc:a8f0d7557a5cd2fd24fd562170fcb013f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the Redirect Target Node based on the RedirectIndex.  <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a8f0d7557a5cd2fd24fd562170fcb013f">More...</a><br /></td></tr>
-<tr class="separator:a8f0d7557a5cd2fd24fd562170fcb013f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -656,7 +649,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1123</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a296903524465c931baeb07b79768e762">_redirectIndex</a> != -1 &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a698ed8282921064f3fd3da64df3f3535">_resourceType</a> != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.MSBin)</div>
 <div class="line"><span class="lineno"> 1124</span>                    {</div>
 <div class="line"><span class="lineno"> 1125</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a698ed8282921064f3fd3da64df3f3535">_resourceType</a> = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.Redirect;</div>
-<div class="line"><span class="lineno"> 1126</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a8f0d7557a5cd2fd24fd562170fcb013f">UpdateRedirectTarget</a>();</div>
+<div class="line"><span class="lineno"> 1126</span>                        UpdateRedirectTarget();</div>
 <div class="line"><span class="lineno"> 1127</span>                    }</div>
 <div class="line"><span class="lineno"> 1128</span> </div>
 <div class="line"><span class="lineno"> 1129</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a9ff6f45b0dd89bcdf69af043703a6307">GetName</a>();</div>
@@ -669,11 +662,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1136</span> </div>
 <div class="line"><span class="lineno"> 1137</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#acc7ad472b776be7d25cbb6e63fd116f9">RedirectIndex</a> != -1)</div>
 <div class="line"><span class="lineno"> 1138</span>            {</div>
-<div class="line"><span class="lineno"> 1139</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a8f0d7557a5cd2fd24fd562170fcb013f">UpdateRedirectTarget</a>();</div>
+<div class="line"><span class="lineno"> 1139</span>                UpdateRedirectTarget();</div>
 <div class="line"><span class="lineno"> 1140</span>            }</div>
 <div class="line"><span class="lineno"> 1141</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html_a698ed8282921064f3fd3da64df3f3535"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a698ed8282921064f3fd3da64df3f3535">BrawlLib.SSBB.ResourceNodes.ARCEntryNode._resourceType</a></div><div class="ttdeci">ResourceType _resourceType</div><div class="ttdef"><b>Definition:</b> ARCNode.cs:874</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html_a8f0d7557a5cd2fd24fd562170fcb013f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a8f0d7557a5cd2fd24fd562170fcb013f">BrawlLib.SSBB.ResourceNodes.ARCEntryNode.UpdateRedirectTarget</a></div><div class="ttdeci">ResourceNode UpdateRedirectTarget()</div><div class="ttdoc">Sets the Redirect Target Node based on the RedirectIndex.</div><div class="ttdef"><b>Definition:</b> ARCNode.cs:1038</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html_acc7ad472b776be7d25cbb6e63fd116f9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#acc7ad472b776be7d25cbb6e63fd116f9">BrawlLib.SSBB.ResourceNodes.ARCEntryNode.RedirectIndex</a></div><div class="ttdeci">short RedirectIndex</div><div class="ttdef"><b>Definition:</b> ARCNode.cs:934</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html_af8b693f481d7fa25ae6698a88c7107e3"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#af8b693f481d7fa25ae6698a88c7107e3">BrawlLib.SSBB.ResourceNodes.ARCEntryNode._fileIndex</a></div><div class="ttdeci">short _fileIndex</div><div class="ttdef"><b>Definition:</b> ARCNode.cs:898</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a713872ebf7495715a72583a8ebe07891"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a713872ebf7495715a72583a8ebe07891">BrawlLib.SSBB.ResourceNodes.ResourceNode._children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; _children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:143</div></div>
@@ -777,50 +769,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1094</span>            }</div>
 <div class="line"><span class="lineno"> 1095</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abfa51c429fe706bd4af8810b7fe320fc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">BrawlLib.SSBB.ResourceNodes.ResourceNode.Name</a></div><div class="ttdeci">virtual string Name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:223</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a8f0d7557a5cd2fd24fd562170fcb013f" name="a8f0d7557a5cd2fd24fd562170fcb013f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f0d7557a5cd2fd24fd562170fcb013f">&#9670;&#160;</a></span>UpdateRedirectTarget()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> BrawlLib.SSBB.ResourceNodes.ARCEntryNode.UpdateRedirectTarget </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets the Redirect Target Node based on the RedirectIndex. </p>
-<p >In the interest of keeping redirects node-centric, should be called only on load unless RedirectIndex is set manually.  </p><dl class="section return"><dt>Returns</dt><dd>Returns the new Redirect Target. </dd></dl>
-<div class="fragment"><div class="line"><span class="lineno"> 1039</span>        {</div>
-<div class="line"><span class="lineno"> 1040</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#acc7ad472b776be7d25cbb6e63fd116f9">RedirectIndex</a> &lt; 0 || <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a> == <span class="keyword">null</span> || <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count &lt;= <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#acc7ad472b776be7d25cbb6e63fd116f9">RedirectIndex</a>)</div>
-<div class="line"><span class="lineno"> 1041</span>            {</div>
-<div class="line"><span class="lineno"> 1042</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a81038e1e65686dba2a3cdc0e7f5b058d">redirectTargetNode</a> = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno"> 1043</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac5c3c7c106dfc1106e98271a124605ad">UpdateProperties</a>();</div>
-<div class="line"><span class="lineno"> 1044</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno"> 1045</span>            }</div>
-<div class="line"><span class="lineno"> 1046</span> </div>
-<div class="line"><span class="lineno"> 1047</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a81038e1e65686dba2a3cdc0e7f5b058d">redirectTargetNode</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a>?.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>[<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#acc7ad472b776be7d25cbb6e63fd116f9">RedirectIndex</a>];</div>
-<div class="line"><span class="lineno"> 1048</span> </div>
-<div class="line"><span class="lineno"> 1049</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac5c3c7c106dfc1106e98271a124605ad">UpdateProperties</a>();</div>
-<div class="line"><span class="lineno"> 1050</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a81038e1e65686dba2a3cdc0e7f5b058d">redirectTargetNode</a>;</div>
-<div class="line"><span class="lineno"> 1051</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html_a81038e1e65686dba2a3cdc0e7f5b058d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a81038e1e65686dba2a3cdc0e7f5b058d">BrawlLib.SSBB.ResourceNodes.ARCEntryNode.redirectTargetNode</a></div><div class="ttdeci">ResourceNode redirectTargetNode</div><div class="ttdef"><b>Definition:</b> ARCNode.cs:1028</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac5c3c7c106dfc1106e98271a124605ad"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac5c3c7c106dfc1106e98271a124605ad">BrawlLib.SSBB.ResourceNodes.ResourceNode.UpdateProperties</a></div><div class="ttdeci">void UpdateProperties()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:479</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1130,10 +1078,11 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  949</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a698ed8282921064f3fd3da64df3f3535">_resourceType</a> = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.Redirect;</div>
 <div class="line"><span class="lineno">  950</span>                }</div>
 <div class="line"><span class="lineno">  951</span> </div>
-<div class="line"><span class="lineno">  952</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a8f0d7557a5cd2fd24fd562170fcb013f">UpdateRedirectTarget</a>();</div>
+<div class="line"><span class="lineno">  952</span>                UpdateRedirectTarget();</div>
 <div class="line"><span class="lineno">  953</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a711f79ce5e8c1f7883a6c8372ab6a3bd">UpdateName</a>();</div>
 <div class="line"><span class="lineno">  954</span>            }</div>
 <div class="line"><span class="lineno">  955</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1221,6 +1170,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno"> 1020</span>            }</div>
 <div class="line"><span class="lineno"> 1021</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html_a23f9e5b49d2ecaf5d6b48094f280a990"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a23f9e5b49d2ecaf5d6b48094f280a990">BrawlLib.SSBB.ResourceNodes.ARCEntryNode.RedirectTargetName</a></div><div class="ttdeci">string RedirectTargetName</div><div class="ttdef"><b>Definition:</b> ARCNode.cs:960</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html_a81038e1e65686dba2a3cdc0e7f5b058d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html#a81038e1e65686dba2a3cdc0e7f5b058d">BrawlLib.SSBB.ResourceNodes.ARCEntryNode.redirectTargetNode</a></div><div class="ttdeci">ResourceNode redirectTargetNode</div><div class="ttdef"><b>Definition:</b> ARCNode.cs:1028</div></div>
 </div><!-- fragment -->
 </div>
 </div>

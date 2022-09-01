@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_internal_1_1_p_string-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.PString Struct Reference</div></div>
 </div><!--header-->
@@ -151,11 +150,6 @@ Properties</h2></td></tr>
 <tr class="separator:a9bbde021611bba76edddd6789f1341fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3197af08e3f8186842ca553a8279f95a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a3197af08e3f8186842ca553a8279f95a">Length</a><code> [get]</code></td></tr>
 <tr class="separator:a3197af08e3f8186842ca553a8279f95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a6dbfccb741a74a77f36d679d5f5f7ede"><td class="memItemLeft" align="right" valign="top">byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a></td></tr>
-<tr class="separator:a6dbfccb741a74a77f36d679d5f5f7ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aedbd64121fb93db6f8b1a47ba2c3bb8f" name="aedbd64121fb93db6f8b1a47ba2c3bb8f"></a>
@@ -182,9 +176,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   11</span>        {</div>
-<div class="line"><span class="lineno">   12</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a> = address;</div>
+<div class="line"><span class="lineno">   12</span>            _address = address;</div>
 <div class="line"><span class="lineno">   13</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_p_string_html_a6dbfccb741a74a77f36d679d5f5f7ede"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">BrawlLib.Internal.PString._address</a></div><div class="ttdeci">byte * _address</div><div class="ttdef"><b>Definition:</b> PString.cs:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -263,7 +256,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  114</span>        {</div>
-<div class="line"><span class="lineno">  115</span>            <span class="keywordtype">byte</span>* pStr1 = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a>;</div>
+<div class="line"><span class="lineno">  115</span>            <span class="keywordtype">byte</span>* pStr1 = _address;</div>
 <div class="line"><span class="lineno">  116</span>            <span class="keywordtype">byte</span>* pStr2 = s._address;</div>
 <div class="line"><span class="lineno">  117</span>            <span class="keywordtype">byte</span> b1, b2;</div>
 <div class="line"><span class="lineno">  118</span> </div>
@@ -424,7 +417,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  151</span>        {</div>
-<div class="line"><span class="lineno">  152</span>            <span class="keywordtype">byte</span>* pStr1 = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a>;</div>
+<div class="line"><span class="lineno">  152</span>            <span class="keywordtype">byte</span>* pStr1 = _address;</div>
 <div class="line"><span class="lineno">  153</span>            <span class="keywordtype">char</span>* pStr2;</div>
 <div class="line"><span class="lineno">  154</span>            <span class="keywordtype">byte</span> b1, b2;</div>
 <div class="line"><span class="lineno">  155</span> </div>
@@ -1019,7 +1012,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  251</span>        {</div>
-<div class="line"><span class="lineno">  252</span>            <span class="keywordtype">byte</span>* s = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a>;</div>
+<div class="line"><span class="lineno">  252</span>            <span class="keywordtype">byte</span>* s = _address;</div>
 <div class="line"><span class="lineno">  253</span>            p += offset;</div>
 <div class="line"><span class="lineno">  254</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len; i++)</div>
 <div class="line"><span class="lineno">  255</span>            {</div>
@@ -1069,7 +1062,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  241</span>        {</div>
-<div class="line"><span class="lineno">  242</span>            <span class="keywordtype">byte</span>* s = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a>;</div>
+<div class="line"><span class="lineno">  242</span>            <span class="keywordtype">byte</span>* s = _address;</div>
 <div class="line"><span class="lineno">  243</span>            p += offset;</div>
 <div class="line"><span class="lineno">  244</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len; i++)</div>
 <div class="line"><span class="lineno">  245</span>            {</div>
@@ -1196,29 +1189,6 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a6dbfccb741a74a77f36d679d5f5f7ede" name="a6dbfccb741a74a77f36d679d5f5f7ede"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dbfccb741a74a77f36d679d5f5f7ede">&#9670;&#160;</a></span>_address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte* BrawlLib.Internal.PString._address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a3197af08e3f8186842ca553a8279f95a" name="a3197af08e3f8186842ca553a8279f95a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3197af08e3f8186842ca553a8279f95a">&#9670;&#160;</a></span>Length</h2>
@@ -1243,7 +1213,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  209</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">  210</span>            {</div>
 <div class="line"><span class="lineno">  211</span>                <span class="keywordtype">int</span> len = 0;</div>
-<div class="line"><span class="lineno">  212</span>                <span class="keywordtype">byte</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a>;</div>
+<div class="line"><span class="lineno">  212</span>                <span class="keywordtype">byte</span>* p = _address;</div>
 <div class="line"><span class="lineno">  213</span>                <span class="keywordflow">while</span> (*p++ != 0)</div>
 <div class="line"><span class="lineno">  214</span>                {</div>
 <div class="line"><span class="lineno">  215</span>                    len++;</div>
@@ -1275,8 +1245,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  202</span>        {</div>
-<div class="line"><span class="lineno">  203</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a>[index];</div>
-<div class="line"><span class="lineno">  204</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_p_string.html#a6dbfccb741a74a77f36d679d5f5f7ede">_address</a>[index] = value;</div>
+<div class="line"><span class="lineno">  203</span>            <span class="keyword">get</span> =&gt; _address[index];</div>
+<div class="line"><span class="lineno">  204</span>            <span class="keyword">set</span> =&gt; _address[index] = value;</div>
 <div class="line"><span class="lineno">  205</span>        }</div>
 </div><!-- fragment -->
 </div>

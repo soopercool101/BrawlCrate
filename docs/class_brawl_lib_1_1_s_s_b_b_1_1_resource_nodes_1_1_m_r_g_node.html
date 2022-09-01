@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.MRGNode Class Reference</div></div>
 </div><!--header-->
@@ -321,11 +320,6 @@ Properties</h2></td></tr>
 <tr class="separator:a1d20a6bd10cd2d7cfa8d398b11fbab93 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memItemLeft" align="right" valign="top">static MD5CryptoServiceProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a696ea2cc5631b17d54370848c2261553">MD5Provider</a><code> [get]</code></td></tr>
 <tr class="separator:a696ea2cc5631b17d54370848c2261553 inherit properties_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:af2fead0f4d32051f018e6fc70c553a36"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node.html#af2fead0f4d32051f018e6fc70c553a36">offset</a></td></tr>
-<tr class="separator:af2fead0f4d32051f018e6fc70c553a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -613,7 +607,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   92</span>        {</div>
-<div class="line"><span class="lineno">   93</span>            <span class="keywordtype">int</span> size = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node.html#af2fead0f4d32051f018e6fc70c553a36">offset</a> = 0x20 + Children.Count * 0x20;</div>
+<div class="line"><span class="lineno">   93</span>            <span class="keywordtype">int</span> size = offset = 0x20 + Children.Count * 0x20;</div>
 <div class="line"><span class="lineno">   94</span>            <span class="keywordflow">foreach</span> (ResourceNode node <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><span class="lineno">   95</span>            {</div>
 <div class="line"><span class="lineno">   96</span>                size += node.CalculateSize(force);</div>
@@ -621,7 +615,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   98</span> </div>
 <div class="line"><span class="lineno">   99</span>            <span class="keywordflow">return</span> size;</div>
 <div class="line"><span class="lineno">  100</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node_html_af2fead0f4d32051f018e6fc70c553a36"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node.html#af2fead0f4d32051f018e6fc70c553a36">BrawlLib.SSBB.ResourceNodes.MRGNode.offset</a></div><div class="ttdeci">int offset</div><div class="ttdef"><b>Definition:</b> MRGNode.cs:89</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -749,9 +742,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  107</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_r_g_file_header.html">MRGFileHeader</a>* entry = header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_r_g_header.html#a2c338e562984bd701de3a69237dd8a11">First</a>;</div>
 <div class="line"><span class="lineno">  108</span>            <span class="keywordflow">foreach</span> (ARCEntryNode node <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
 <div class="line"><span class="lineno">  109</span>            {</div>
-<div class="line"><span class="lineno">  110</span>                *entry = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_r_g_file_header.html">MRGFileHeader</a>(node._calcSize, <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node.html#af2fead0f4d32051f018e6fc70c553a36">offset</a>);</div>
+<div class="line"><span class="lineno">  110</span>                *entry = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_r_g_file_header.html">MRGFileHeader</a>(node._calcSize, offset);</div>
 <div class="line"><span class="lineno">  111</span>                node.Rebuild(header + entry-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_r_g_file_header.html#a943a645a98de11854650c40add082264">Data</a>, node._calcSize, force);</div>
-<div class="line"><span class="lineno">  112</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node.html#af2fead0f4d32051f018e6fc70c553a36">offset</a> += node._calcSize;</div>
+<div class="line"><span class="lineno">  112</span>                offset += node._calcSize;</div>
 <div class="line"><span class="lineno">  113</span>                entry = entry-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_r_g_file_header.html#a5aac4d1077cd4a472f2ac023de665562">Next</a>;</div>
 <div class="line"><span class="lineno">  114</span>            }</div>
 <div class="line"><span class="lineno">  115</span>        }</div>
@@ -814,29 +807,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   87</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node_html_ab8ace60b45f7cafbcde94006d2d41697"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_r_g_node.html#ab8ace60b45f7cafbcde94006d2d41697">BrawlLib.SSBB.ResourceNodes.MRGNode.ReplaceFromFolder</a></div><div class="ttdeci">void ReplaceFromFolder(string inFolder)</div><div class="ttdef"><b>Definition:</b> MRGNode.cs:58</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="af2fead0f4d32051f018e6fc70c553a36" name="af2fead0f4d32051f018e6fc70c553a36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2fead0f4d32051f018e6fc70c553a36">&#9670;&#160;</a></span>offset</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.SSBB.ResourceNodes.MRGNode.offset</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

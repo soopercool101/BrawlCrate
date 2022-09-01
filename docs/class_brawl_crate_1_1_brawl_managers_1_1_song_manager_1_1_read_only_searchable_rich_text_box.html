@@ -78,8 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox Class Reference</div></div>
 </div><!--header-->
@@ -108,22 +106,6 @@ Public Member Functions</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a2cd965df760554a9d02bd19e37550482"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a2cd965df760554a9d02bd19e37550482">HELP</a></td></tr>
 <tr class="separator:a2cd965df760554a9d02bd19e37550482"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a00409d933753f8a0d764b1fe0f6f892e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a00409d933753f8a0d764b1fe0f6f892e">SelectBypass</a> (int index, int length)</td></tr>
-<tr class="separator:a00409d933753f8a0d764b1fe0f6f892e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3b16e0a5a123337aad567c7697db18e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#aa3b16e0a5a123337aad567c7697db18e">SearchLook</a> (int startIndex)</td></tr>
-<tr class="separator:aa3b16e0a5a123337aad567c7697db18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3973ab60b13988f7be58a6f87ad981eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a3973ab60b13988f7be58a6f87ad981eb">ReadOnlySearchableRichTextBox_KeyPress</a> (object sender, KeyPressEventArgs e)</td></tr>
-<tr class="separator:a3973ab60b13988f7be58a6f87ad981eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ae1f5f209afe9f0fbb2b27a01c5d5220e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a></td></tr>
-<tr class="separator:ae1f5f209afe9f0fbb2b27a01c5d5220e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84f298ea07a4512baf9566497220bac5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a84f298ea07a4512baf9566497220bac5">bypassSelectionChangedHandler</a></td></tr>
-<tr class="separator:a84f298ea07a4512baf9566497220bac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac880d55f08f745eaed5ae8c37eaa953a" name="ac880d55f08f745eaed5ae8c37eaa953a"></a>
@@ -149,10 +131,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   15</span>        {</div>
-<div class="line"><span class="lineno">   16</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   16</span>            search = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><span class="lineno">   17</span>            ReadOnly = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   18</span> </div>
-<div class="line"><span class="lineno">   19</span>            KeyPress += <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a3973ab60b13988f7be58a6f87ad981eb">ReadOnlySearchableRichTextBox_KeyPress</a>;</div>
+<div class="line"><span class="lineno">   19</span>            KeyPress += ReadOnlySearchableRichTextBox_KeyPress;</div>
 <div class="line"><span class="lineno">   20</span>            KeyDown += (o, e) =&gt;</div>
 <div class="line"><span class="lineno">   21</span>            {</div>
 <div class="line"><span class="lineno">   22</span>                <span class="keywordflow">if</span> (e.Modifiers == Keys.None)</div>
@@ -162,83 +144,16 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   26</span>            };</div>
 <div class="line"><span class="lineno">   27</span>            SelectionChanged += (o, e) =&gt;</div>
 <div class="line"><span class="lineno">   28</span>            {</div>
-<div class="line"><span class="lineno">   29</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a84f298ea07a4512baf9566497220bac5">bypassSelectionChangedHandler</a>)</div>
+<div class="line"><span class="lineno">   29</span>                <span class="keywordflow">if</span> (!bypassSelectionChangedHandler)</div>
 <div class="line"><span class="lineno">   30</span>                {</div>
-<div class="line"><span class="lineno">   31</span>                    <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   31</span>                    search = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><span class="lineno">   32</span>                }</div>
 <div class="line"><span class="lineno">   33</span>            };</div>
 <div class="line"><span class="lineno">   34</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_a3973ab60b13988f7be58a6f87ad981eb"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a3973ab60b13988f7be58a6f87ad981eb">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.ReadOnlySearchableRichTextBox_KeyPress</a></div><div class="ttdeci">void ReadOnlySearchableRichTextBox_KeyPress(object sender, KeyPressEventArgs e)</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:87</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_a84f298ea07a4512baf9566497220bac5"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a84f298ea07a4512baf9566497220bac5">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.bypassSelectionChangedHandler</a></div><div class="ttdeci">bool bypassSelectionChangedHandler</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_ae1f5f209afe9f0fbb2b27a01c5d5220e"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.search</a></div><div class="ttdeci">string search</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3973ab60b13988f7be58a6f87ad981eb" name="a3973ab60b13988f7be58a6f87ad981eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3973ab60b13988f7be58a6f87ad981eb">&#9670;&#160;</a></span>ReadOnlySearchableRichTextBox_KeyPress()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.ReadOnlySearchableRichTextBox_KeyPress </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">KeyPressEventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   88</span>        {</div>
-<div class="line"><span class="lineno">   89</span>            e.Handled = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   90</span>            <span class="keywordflow">if</span> (!<span class="keywordtype">char</span>.IsControl(e.KeyChar))</div>
-<div class="line"><span class="lineno">   91</span>            {</div>
-<div class="line"><span class="lineno">   92</span>                <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a90092bcf5dcdbc1ea8d873d59f310c17">SearchAdd</a>(e.KeyChar);</div>
-<div class="line"><span class="lineno">   93</span>            }</div>
-<div class="line"><span class="lineno">   94</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (e.KeyChar == 8)</div>
-<div class="line"><span class="lineno">   95</span>            {</div>
-<div class="line"><span class="lineno">   96</span>                <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a39fd7d9f218379a8f381910af77398ef">SearchBackspace</a>();</div>
-<div class="line"><span class="lineno">   97</span>            }</div>
-<div class="line"><span class="lineno">   98</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (e.KeyChar == 27)</div>
-<div class="line"><span class="lineno">   99</span>            {</div>
-<div class="line"><span class="lineno">  100</span>                <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae4d795c0f0d9d756462c739ab5cd8d32">SearchClear</a>();</div>
-<div class="line"><span class="lineno">  101</span>            }</div>
-<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (e.KeyChar == 13)</div>
-<div class="line"><span class="lineno">  103</span>            {</div>
-<div class="line"><span class="lineno">  104</span>                <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ab93dff45750f2c72eb4582cad40d2055">SearchNext</a>();</div>
-<div class="line"><span class="lineno">  105</span>            }</div>
-<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  107</span>            {</div>
-<div class="line"><span class="lineno">  108</span>                Console.WriteLine((<span class="keywordtype">int</span>) e.KeyChar);</div>
-<div class="line"><span class="lineno">  109</span>                e.Handled = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  110</span>            }</div>
-<div class="line"><span class="lineno">  111</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_a39fd7d9f218379a8f381910af77398ef"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a39fd7d9f218379a8f381910af77398ef">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SearchBackspace</a></div><div class="ttdeci">void SearchBackspace()</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:68</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_a90092bcf5dcdbc1ea8d873d59f310c17"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a90092bcf5dcdbc1ea8d873d59f310c17">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SearchAdd</a></div><div class="ttdeci">void SearchAdd(char c)</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:62</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_ab93dff45750f2c72eb4582cad40d2055"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ab93dff45750f2c72eb4582cad40d2055">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SearchNext</a></div><div class="ttdeci">void SearchNext()</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:79</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_ae4d795c0f0d9d756462c739ab5cd8d32"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae4d795c0f0d9d756462c739ab5cd8d32">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SearchClear</a></div><div class="ttdeci">void SearchClear()</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:56</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a90092bcf5dcdbc1ea8d873d59f310c17" name="a90092bcf5dcdbc1ea8d873d59f310c17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a90092bcf5dcdbc1ea8d873d59f310c17">&#9670;&#160;</a></span>SearchAdd()</h2>
 
@@ -263,10 +178,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   63</span>        {</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a> += c;</div>
-<div class="line"><span class="lineno">   65</span>            <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#aa3b16e0a5a123337aad567c7697db18e">SearchLook</a>(SelectionStart);</div>
+<div class="line"><span class="lineno">   64</span>            search += c;</div>
+<div class="line"><span class="lineno">   65</span>            SearchLook(SelectionStart);</div>
 <div class="line"><span class="lineno">   66</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_aa3b16e0a5a123337aad567c7697db18e"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#aa3b16e0a5a123337aad567c7697db18e">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SearchLook</a></div><div class="ttdeci">void SearchLook(int startIndex)</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:43</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -293,13 +207,13 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   69</span>        {</div>
-<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a>.Length == 0)</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">if</span> (search.Length == 0)</div>
 <div class="line"><span class="lineno">   71</span>            {</div>
 <div class="line"><span class="lineno">   72</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   73</span>            }</div>
 <div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a> = <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a>.Substring(0, <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a>.Length - 1);</div>
-<div class="line"><span class="lineno">   76</span>            <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#aa3b16e0a5a123337aad567c7697db18e">SearchLook</a>(SelectionStart);</div>
+<div class="line"><span class="lineno">   75</span>            search = search.Substring(0, search.Length - 1);</div>
+<div class="line"><span class="lineno">   76</span>            SearchLook(SelectionStart);</div>
 <div class="line"><span class="lineno">   77</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -327,47 +241,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   57</span>        {</div>
-<div class="line"><span class="lineno">   58</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   59</span>            <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a00409d933753f8a0d764b1fe0f6f892e">SelectBypass</a>(SelectionStart, 0);</div>
+<div class="line"><span class="lineno">   58</span>            search = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   59</span>            SelectBypass(SelectionStart, 0);</div>
 <div class="line"><span class="lineno">   60</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box_html_a00409d933753f8a0d764b1fe0f6f892e"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a00409d933753f8a0d764b1fe0f6f892e">BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SelectBypass</a></div><div class="ttdeci">void SelectBypass(int index, int length)</div><div class="ttdef"><b>Definition:</b> ReadOnlySearchableRichTextBox.cs:36</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="aa3b16e0a5a123337aad567c7697db18e" name="aa3b16e0a5a123337aad567c7697db18e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3b16e0a5a123337aad567c7697db18e">&#9670;&#160;</a></span>SearchLook()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SearchLook </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>startIndex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   44</span>        {</div>
-<div class="line"><span class="lineno">   45</span>            <span class="keywordtype">int</span> index = Text.IndexOf(<a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a>, startIndex, StringComparison.InvariantCultureIgnoreCase);</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">if</span> (index &gt;= 0)</div>
-<div class="line"><span class="lineno">   47</span>            {</div>
-<div class="line"><span class="lineno">   48</span>                <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a00409d933753f8a0d764b1fe0f6f892e">SelectBypass</a>(index, <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#ae1f5f209afe9f0fbb2b27a01c5d5220e">search</a>.Length);</div>
-<div class="line"><span class="lineno">   49</span>            }</div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (startIndex &gt; 0)</div>
-<div class="line"><span class="lineno">   51</span>            {</div>
-<div class="line"><span class="lineno">   52</span>                <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#aa3b16e0a5a123337aad567c7697db18e">SearchLook</a>(0);</div>
-<div class="line"><span class="lineno">   53</span>            }</div>
-<div class="line"><span class="lineno">   54</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -396,76 +272,13 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   80</span>        {</div>
 <div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (SelectionLength &gt; 0)</div>
 <div class="line"><span class="lineno">   82</span>            {</div>
-<div class="line"><span class="lineno">   83</span>                <a class="code hl_function" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#aa3b16e0a5a123337aad567c7697db18e">SearchLook</a>(SelectionStart + 1);</div>
+<div class="line"><span class="lineno">   83</span>                SearchLook(SelectionStart + 1);</div>
 <div class="line"><span class="lineno">   84</span>            }</div>
 <div class="line"><span class="lineno">   85</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a00409d933753f8a0d764b1fe0f6f892e" name="a00409d933753f8a0d764b1fe0f6f892e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00409d933753f8a0d764b1fe0f6f892e">&#9670;&#160;</a></span>SelectBypass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.SelectBypass </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   37</span>        {</div>
-<div class="line"><span class="lineno">   38</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a84f298ea07a4512baf9566497220bac5">bypassSelectionChangedHandler</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   39</span>            Select(index, length);</div>
-<div class="line"><span class="lineno">   40</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_read_only_searchable_rich_text_box.html#a84f298ea07a4512baf9566497220bac5">bypassSelectionChangedHandler</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   41</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a84f298ea07a4512baf9566497220bac5" name="a84f298ea07a4512baf9566497220bac5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84f298ea07a4512baf9566497220bac5">&#9670;&#160;</a></span>bypassSelectionChangedHandler</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.bypassSelectionChangedHandler</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a2cd965df760554a9d02bd19e37550482" name="a2cd965df760554a9d02bd19e37550482"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2cd965df760554a9d02bd19e37550482">&#9670;&#160;</a></span>HELP</h2>
 
@@ -488,28 +301,6 @@ Private Attributes</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">            <span class="stringliteral">&quot;[To search this text box, click anywhere in it and start typing! Use the Enter key to find the next match, and clear the selection to reset your search query.]&quot;</span></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="ae1f5f209afe9f0fbb2b27a01c5d5220e" name="ae1f5f209afe9f0fbb2b27a01c5d5220e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1f5f209afe9f0fbb2b27a01c5d5220e">&#9670;&#160;</a></span>search</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string BrawlCrate.BrawlManagers.SongManager.ReadOnlySearchableRichTextBox.search</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

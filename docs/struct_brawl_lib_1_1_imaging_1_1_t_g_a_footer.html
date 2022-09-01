@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Imaging.TGAFooter Struct Reference</div></div>
 </div><!--header-->
@@ -103,11 +102,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a5938730ead45691fdc8ee59d1c982d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cf8ea09643e174cd05beb171c6733df"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a2cf8ea09643e174cd05beb171c6733df">Signature</a> = &quot;TRUEVISION-XFILE.&quot;</td></tr>
 <tr class="separator:a2cf8ea09643e174cd05beb171c6733df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a68244b716c49c7758a3fae876a49d21a"><td class="memItemLeft" align="right" valign="top">fixed byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a68244b716c49c7758a3fae876a49d21a">signature</a> [18]</td></tr>
-<tr class="separator:a68244b716c49c7758a3fae876a49d21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac7ec9ff803fa796228f60c25967b542f" name="ac7ec9ff803fa796228f60c25967b542f"></a>
@@ -146,7 +140,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   85</span>        {</div>
 <div class="line"><span class="lineno">   86</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#af172ed9f924a256d5f2932c6b1294f67">extensionAreaOffset</a> = extOffset;</div>
 <div class="line"><span class="lineno">   87</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a980392f867440de418ed56b28ac0dd9d">developerDirectoryOffset</a> = devOffset;</div>
-<div class="line"><span class="lineno">   88</span>            fixed (<span class="keywordtype">byte</span>* ptr = <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a68244b716c49c7758a3fae876a49d21a">signature</a>)</div>
+<div class="line"><span class="lineno">   88</span>            fixed (<span class="keywordtype">byte</span>* ptr = signature)</div>
 <div class="line"><span class="lineno">   89</span>            {</div>
 <div class="line"><span class="lineno">   90</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a2cf8ea09643e174cd05beb171c6733df">Signature</a>.Length; i++)</div>
 <div class="line"><span class="lineno">   91</span>                {</div>
@@ -157,7 +151,6 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   96</span>            }</div>
 <div class="line"><span class="lineno">   97</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_t_g_a_footer_html_a2cf8ea09643e174cd05beb171c6733df"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a2cf8ea09643e174cd05beb171c6733df">BrawlLib.Imaging.TGAFooter.Signature</a></div><div class="ttdeci">const string Signature</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:78</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_t_g_a_footer_html_a68244b716c49c7758a3fae876a49d21a"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a68244b716c49c7758a3fae876a49d21a">BrawlLib.Imaging.TGAFooter.signature</a></div><div class="ttdeci">fixed byte signature[18]</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:82</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_t_g_a_footer_html_a980392f867440de418ed56b28ac0dd9d"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#a980392f867440de418ed56b28ac0dd9d">BrawlLib.Imaging.TGAFooter.developerDirectoryOffset</a></div><div class="ttdeci">uint developerDirectoryOffset</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:81</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_imaging_1_1_t_g_a_footer_html_af172ed9f924a256d5f2932c6b1294f67"><div class="ttname"><a href="struct_brawl_lib_1_1_imaging_1_1_t_g_a_footer.html#af172ed9f924a256d5f2932c6b1294f67">BrawlLib.Imaging.TGAFooter.extensionAreaOffset</a></div><div class="ttdeci">uint extensionAreaOffset</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:80</div></div>
 </div><!-- fragment -->
@@ -208,28 +201,6 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a68244b716c49c7758a3fae876a49d21a" name="a68244b716c49c7758a3fae876a49d21a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68244b716c49c7758a3fae876a49d21a">&#9670;&#160;</a></span>signature</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">fixed byte BrawlLib.Imaging.TGAFooter.signature[18]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.MDL0ColorNode Class Reference</div></div>
 </div><!--header-->
@@ -441,13 +440,6 @@ Properties</h2></td></tr>
 <tr class="memitem:a32238641fb60864d8645af8d300b8aa5 inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_color_source"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_brawl_lib_1_1_imaging_1_1_i_color_source.html#a32238641fb60864d8645af8d300b8aa5">TypeCount</a><code> [get]</code></td></tr>
 <tr class="separator:a32238641fb60864d8645af8d300b8aa5 inherit properties_interface_brawl_lib_1_1_imaging_1_1_i_color_source"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:af71a5c38b51970f7c1a0116bbcfdbcf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_color_data.html">MDL0ColorData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#af71a5c38b51970f7c1a0116bbcfdbcf0">_hdr</a></td></tr>
-<tr class="separator:af71a5c38b51970f7c1a0116bbcfdbcf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accbb04c5609830701d1e6782239eebdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#accbb04c5609830701d1e6782239eebdd">_colors</a></td></tr>
-<tr class="separator:accbb04c5609830701d1e6782239eebdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></td></tr>
@@ -740,9 +732,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   42</span>        {</div>
 <div class="line"><span class="lineno">   43</span>            <span class="comment">//Clear the colors so they&#39;re reparsed,</span></div>
 <div class="line"><span class="lineno">   44</span>            <span class="comment">//just in case the node has been replaced.</span></div>
-<div class="line"><span class="lineno">   45</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#accbb04c5609830701d1e6782239eebdd">_colors</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   45</span>            _colors = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#af71a5c38b51970f7c1a0116bbcfdbcf0">_hdr</a> = *<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#a24a6235213d9d2240c2bc0c13c25542b">Header</a>;</div>
+<div class="line"><span class="lineno">   47</span>            _hdr = *<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#a24a6235213d9d2240c2bc0c13c25542b">Header</a>;</div>
 <div class="line"><span class="lineno">   48</span> </div>
 <div class="line"><span class="lineno">   49</span>            <span class="comment">//SetSizeInternal(_hdr._dataLen);</span></div>
 <div class="line"><span class="lineno">   50</span> </div>
@@ -754,8 +746,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   56</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   57</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node_html_a24a6235213d9d2240c2bc0c13c25542b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#a24a6235213d9d2240c2bc0c13c25542b">BrawlLib.SSBB.ResourceNodes.MDL0ColorNode.Header</a></div><div class="ttdeci">MDL0ColorData * Header</div><div class="ttdef"><b>Definition:</b> MDL0ColorNode.cs:15</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node_html_accbb04c5609830701d1e6782239eebdd"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#accbb04c5609830701d1e6782239eebdd">BrawlLib.SSBB.ResourceNodes.MDL0ColorNode._colors</a></div><div class="ttdeci">RGBAPixel[] _colors</div><div class="ttdef"><b>Definition:</b> MDL0ColorNode.cs:26</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node_html_af71a5c38b51970f7c1a0116bbcfdbcf0"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#af71a5c38b51970f7c1a0116bbcfdbcf0">BrawlLib.SSBB.ResourceNodes.MDL0ColorNode._hdr</a></div><div class="ttdeci">MDL0ColorData _hdr</div><div class="ttdef"><b>Definition:</b> MDL0ColorNode.cs:18</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_color_data_html_a56983cfa6a507c6a5f7fb381e1143531"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_color_data.html#a56983cfa6a507c6a5f7fb381e1143531">BrawlLib.SSBB.Types.MDL0ColorData.ResourceString</a></div><div class="ttdeci">string ResourceString</div><div class="ttdef"><b>Definition:</b> MDL0.cs:830</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_color_data_html_aa93c317edb36cc9ccf6c7a74389c7575"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_color_data.html#aa93c317edb36cc9ccf6c7a74389c7575">BrawlLib.SSBB.Types.MDL0ColorData._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> MDL0.cs:807</div></div>
@@ -1061,28 +1051,6 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="accbb04c5609830701d1e6782239eebdd" name="accbb04c5609830701d1e6782239eebdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accbb04c5609830701d1e6782239eebdd">&#9670;&#160;</a></span>_colors</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a> [] BrawlLib.SSBB.ResourceNodes.MDL0ColorNode._colors</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a04aa73a477c54643ef5afb6359b229b9" name="a04aa73a477c54643ef5afb6359b229b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a04aa73a477c54643ef5afb6359b229b9">&#9670;&#160;</a></span>_enc</h2>
 
@@ -1093,28 +1061,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html">ColorCodec</a> BrawlLib.SSBB.ResourceNodes.MDL0ColorNode._enc</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af71a5c38b51970f7c1a0116bbcfdbcf0" name="af71a5c38b51970f7c1a0116bbcfdbcf0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af71a5c38b51970f7c1a0116bbcfdbcf0">&#9670;&#160;</a></span>_hdr</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_color_data.html">MDL0ColorData</a> BrawlLib.SSBB.ResourceNodes.MDL0ColorNode._hdr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -1154,12 +1100,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   30</span>        {</div>
-<div class="line"><span class="lineno">   31</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#accbb04c5609830701d1e6782239eebdd">_colors</a> == <span class="keyword">null</span> &amp;&amp; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#a24a6235213d9d2240c2bc0c13c25542b">Header</a> != <span class="keyword">null</span></div>
-<div class="line"><span class="lineno">   32</span>                ? <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#accbb04c5609830701d1e6782239eebdd">_colors</a> = <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html">ColorCodec</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#a9b6c3a9dead1aacdcabe57e4ef8f909b">ExtractColors</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#a24a6235213d9d2240c2bc0c13c25542b">Header</a>).Select(n =&gt; (<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>) n).ToArray()</div>
-<div class="line"><span class="lineno">   33</span>                : <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#accbb04c5609830701d1e6782239eebdd">_colors</a>;</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keyword">get</span> =&gt; _colors == <span class="keyword">null</span> &amp;&amp; <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#a24a6235213d9d2240c2bc0c13c25542b">Header</a> != <span class="keyword">null</span></div>
+<div class="line"><span class="lineno">   32</span>                ? _colors = <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html">ColorCodec</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#a9b6c3a9dead1aacdcabe57e4ef8f909b">ExtractColors</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#a24a6235213d9d2240c2bc0c13c25542b">Header</a>).Select(n =&gt; (<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_r_g_b_a_pixel.html">RGBAPixel</a>) n).ToArray()</div>
+<div class="line"><span class="lineno">   33</span>                : _colors;</div>
 <div class="line"><span class="lineno">   34</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   35</span>            {</div>
-<div class="line"><span class="lineno">   36</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_color_node.html#accbb04c5609830701d1e6782239eebdd">_colors</a> = value;</div>
+<div class="line"><span class="lineno">   36</span>                _colors = value;</div>
 <div class="line"><span class="lineno">   37</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node.html#ae850f1ebd8d9f3c896f21b13e4409e18">SignalPropertyChange</a>();</div>
 <div class="line"><span class="lineno">   38</span>            }</div>
 <div class="line"><span class="lineno">   39</span>        }</div>

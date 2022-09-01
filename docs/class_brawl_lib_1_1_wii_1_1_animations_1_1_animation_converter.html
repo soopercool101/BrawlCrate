@@ -77,8 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Animations.AnimationConverter Class Reference</div></div>
 </div><!--header-->
@@ -104,24 +102,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a6892e86ce7c595813658655d7e4e6545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a086bb9b7566f050e7b89f20f3d7466"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a4a086bb9b7566f050e7b89f20f3d7466">EvalSpan</a> (int maxSpan, int maxIterations, float valBase, float valStride, <a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html">KeyframeEntry</a> root, bool evalAll)</td></tr>
 <tr class="separator:a4a086bb9b7566f050e7b89f20f3d7466"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:ae46dc9b9e306aa283b3e6e372f32dc42"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a> (<a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a> kf, void *dataAddr, <a class="el" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a> format, params int[] arrays)</td></tr>
-<tr class="separator:ae46dc9b9e306aa283b3e6e372f32dc42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac28a5a8f4b33717818ed5d193d186c21"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ac28a5a8f4b33717818ed5d193d186c21">EvaluateCHR0Group</a> (ref <a class="el" href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html">AnimationCode</a> code, <a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a> kf, int group, ref int entrySize)</td></tr>
-<tr class="separator:ac28a5a8f4b33717818ed5d193d186c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31d478f74917396cbb60d81b19c9ca38"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a31d478f74917396cbb60d81b19c9ca38">EvaluateSRT0Group</a> (ref <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_code.html">SRT0Code</a> code, <a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a> kf, int group, ref int entrySize)</td></tr>
-<tr class="separator:a31d478f74917396cbb60d81b19c9ca38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5548cbf6fdce096088cfb59a78cc261b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a5548cbf6fdce096088cfb59a78cc261b">EncodeEntry</a> (int index, <a class="el" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a> format, <a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a> kf, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> addr)</td></tr>
-<tr class="separator:a5548cbf6fdce096088cfb59a78cc261b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a7543699ebc131de95560314eaf160fdc"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a7543699ebc131de95560314eaf160fdc">scaleError</a> = 0.0005f</td></tr>
-<tr class="separator:a7543699ebc131de95560314eaf160fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95689346527e95fe09ca196c45c218da"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a95689346527e95fe09ca196c45c218da">tanError</a> = 0.001f</td></tr>
-<tr class="separator:a95689346527e95fe09ca196c45c218da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a91874e69a04bf9b1703bd99d55f17a58" name="a91874e69a04bf9b1703bd99d55f17a58"></a>
@@ -171,7 +151,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  427</span> </div>
 <div class="line"><span class="lineno">  428</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++)</div>
 <div class="line"><span class="lineno">  429</span>            {</div>
-<div class="line"><span class="lineno">  430</span>                dataSize += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ac28a5a8f4b33717818ed5d193d186c21">EvaluateCHR0Group</a>(ref code, kf, i, ref entrySize);</div>
+<div class="line"><span class="lineno">  430</span>                dataSize += EvaluateCHR0Group(ref code, kf, i, ref entrySize);</div>
 <div class="line"><span class="lineno">  431</span>            }</div>
 <div class="line"><span class="lineno">  432</span> </div>
 <div class="line"><span class="lineno">  433</span>            <span class="keywordflow">if</span> (!code.HasRotation &amp;&amp; !code.HasTranslation)</div>
@@ -187,7 +167,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  443</span> </div>
 <div class="line"><span class="lineno">  444</span>            <span class="keywordflow">return</span> dataSize;</div>
 <div class="line"><span class="lineno">  445</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter_html_ac28a5a8f4b33717818ed5d193d186c21"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ac28a5a8f4b33717818ed5d193d186c21">BrawlLib.Wii.Animations.AnimationConverter.EvaluateCHR0Group</a></div><div class="ttdeci">static int EvaluateCHR0Group(ref AnimationCode code, KeyframeCollection kf, int group, ref int entrySize)</div><div class="ttdef"><b>Definition:</b> AnimationConverter.cs:465</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html">BrawlLib.Wii.Models.AnimationCode</a></div><div class="ttdef"><b>Definition:</b> AnimationCode.cs:20</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code_html_a7354ac154ce2f43ef90e4dc2dcb323a5"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html#a7354ac154ce2f43ef90e4dc2dcb323a5">BrawlLib.Wii.Models.AnimationCode.Default</a></div><div class="ttdeci">static AnimationCode Default</div><div class="ttdef"><b>Definition:</b> AnimationCode.cs:21</div></div>
 </div><!-- fragment -->
@@ -240,12 +219,11 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  453</span> </div>
 <div class="line"><span class="lineno">  454</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++)</div>
 <div class="line"><span class="lineno">  455</span>            {</div>
-<div class="line"><span class="lineno">  456</span>                dataSize += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a31d478f74917396cbb60d81b19c9ca38">EvaluateSRT0Group</a>(ref code, kf, i, ref entrySize);</div>
+<div class="line"><span class="lineno">  456</span>                dataSize += EvaluateSRT0Group(ref code, kf, i, ref entrySize);</div>
 <div class="line"><span class="lineno">  457</span>            }</div>
 <div class="line"><span class="lineno">  458</span> </div>
 <div class="line"><span class="lineno">  459</span>            <span class="keywordflow">return</span> dataSize;</div>
 <div class="line"><span class="lineno">  460</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter_html_a31d478f74917396cbb60d81b19c9ca38"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a31d478f74917396cbb60d81b19c9ca38">BrawlLib.Wii.Animations.AnimationConverter.EvaluateSRT0Group</a></div><div class="ttdeci">static int EvaluateSRT0Group(ref SRT0Code code, KeyframeCollection kf, int group, ref int entrySize)</div><div class="ttdef"><b>Definition:</b> AnimationConverter.cs:773</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_code_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_code.html">BrawlLib.SSBB.Types.Animations.SRT0Code</a></div><div class="ttdef"><b>Definition:</b> SRT0.cs:309</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_code_html_a69ae5eff12ef98f0ac381beb840455d7"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_code.html#a69ae5eff12ef98f0ac381beb840455d7">BrawlLib.SSBB.Types.Animations.SRT0Code.Default</a></div><div class="ttdeci">static SRT0Code Default</div><div class="ttdef"><b>Definition:</b> SRT0.cs:310</div></div>
 </div><!-- fragment -->
@@ -307,7 +285,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  171</span>                    }</div>
 <div class="line"><span class="lineno">  172</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  173</span>                    {</div>
-<div class="line"><span class="lineno">  174</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 0, 1, 2);</div>
+<div class="line"><span class="lineno">  174</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 0, 1, 2);</div>
 <div class="line"><span class="lineno">  175</span>                    }</div>
 <div class="line"><span class="lineno">  176</span>                }</div>
 <div class="line"><span class="lineno">  177</span>                <span class="keywordflow">else</span></div>
@@ -318,7 +296,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  182</span>                    }</div>
 <div class="line"><span class="lineno">  183</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  184</span>                    {</div>
-<div class="line"><span class="lineno">  185</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 0);</div>
+<div class="line"><span class="lineno">  185</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 0);</div>
 <div class="line"><span class="lineno">  186</span>                    }</div>
 <div class="line"><span class="lineno">  187</span> </div>
 <div class="line"><span class="lineno">  188</span>                    <span class="keywordflow">if</span> (code.IsScaleYFixed)</div>
@@ -327,7 +305,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  191</span>                    }</div>
 <div class="line"><span class="lineno">  192</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  193</span>                    {</div>
-<div class="line"><span class="lineno">  194</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 1);</div>
+<div class="line"><span class="lineno">  194</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 1);</div>
 <div class="line"><span class="lineno">  195</span>                    }</div>
 <div class="line"><span class="lineno">  196</span> </div>
 <div class="line"><span class="lineno">  197</span>                    <span class="keywordflow">if</span> (code.IsScaleZFixed)</div>
@@ -336,7 +314,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  200</span>                    }</div>
 <div class="line"><span class="lineno">  201</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  202</span>                    {</div>
-<div class="line"><span class="lineno">  203</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 2);</div>
+<div class="line"><span class="lineno">  203</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 2);</div>
 <div class="line"><span class="lineno">  204</span>                    }</div>
 <div class="line"><span class="lineno">  205</span>                }</div>
 <div class="line"><span class="lineno">  206</span>            }</div>
@@ -352,7 +330,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  216</span>                    }</div>
 <div class="line"><span class="lineno">  217</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  218</span>                    {</div>
-<div class="line"><span class="lineno">  219</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 3, 4, 5);</div>
+<div class="line"><span class="lineno">  219</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 3, 4, 5);</div>
 <div class="line"><span class="lineno">  220</span>                    }</div>
 <div class="line"><span class="lineno">  221</span>                }</div>
 <div class="line"><span class="lineno">  222</span>                <span class="keywordflow">else</span></div>
@@ -363,7 +341,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  227</span>                    }</div>
 <div class="line"><span class="lineno">  228</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  229</span>                    {</div>
-<div class="line"><span class="lineno">  230</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 3);</div>
+<div class="line"><span class="lineno">  230</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 3);</div>
 <div class="line"><span class="lineno">  231</span>                    }</div>
 <div class="line"><span class="lineno">  232</span> </div>
 <div class="line"><span class="lineno">  233</span>                    <span class="keywordflow">if</span> (code.IsRotationYFixed)</div>
@@ -372,7 +350,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  236</span>                    }</div>
 <div class="line"><span class="lineno">  237</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  238</span>                    {</div>
-<div class="line"><span class="lineno">  239</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 4);</div>
+<div class="line"><span class="lineno">  239</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 4);</div>
 <div class="line"><span class="lineno">  240</span>                    }</div>
 <div class="line"><span class="lineno">  241</span> </div>
 <div class="line"><span class="lineno">  242</span>                    <span class="keywordflow">if</span> (code.IsRotationZFixed)</div>
@@ -381,7 +359,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  245</span>                    }</div>
 <div class="line"><span class="lineno">  246</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  247</span>                    {</div>
-<div class="line"><span class="lineno">  248</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 5);</div>
+<div class="line"><span class="lineno">  248</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 5);</div>
 <div class="line"><span class="lineno">  249</span>                    }</div>
 <div class="line"><span class="lineno">  250</span>                }</div>
 <div class="line"><span class="lineno">  251</span>            }</div>
@@ -397,7 +375,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  261</span>                    }</div>
 <div class="line"><span class="lineno">  262</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  263</span>                    {</div>
-<div class="line"><span class="lineno">  264</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 6, 7, 8);</div>
+<div class="line"><span class="lineno">  264</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 6, 7, 8);</div>
 <div class="line"><span class="lineno">  265</span>                    }</div>
 <div class="line"><span class="lineno">  266</span>                }</div>
 <div class="line"><span class="lineno">  267</span>                <span class="keywordflow">else</span></div>
@@ -408,7 +386,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  272</span>                    }</div>
 <div class="line"><span class="lineno">  273</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  274</span>                    {</div>
-<div class="line"><span class="lineno">  275</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 6);</div>
+<div class="line"><span class="lineno">  275</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 6);</div>
 <div class="line"><span class="lineno">  276</span>                    }</div>
 <div class="line"><span class="lineno">  277</span> </div>
 <div class="line"><span class="lineno">  278</span>                    <span class="keywordflow">if</span> (code.IsTranslationYFixed)</div>
@@ -417,7 +395,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  281</span>                    }</div>
 <div class="line"><span class="lineno">  282</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  283</span>                    {</div>
-<div class="line"><span class="lineno">  284</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 7);</div>
+<div class="line"><span class="lineno">  284</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 7);</div>
 <div class="line"><span class="lineno">  285</span>                    }</div>
 <div class="line"><span class="lineno">  286</span> </div>
 <div class="line"><span class="lineno">  287</span>                    <span class="keywordflow">if</span> (code.IsTranslationZFixed)</div>
@@ -426,182 +404,19 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  290</span>                    }</div>
 <div class="line"><span class="lineno">  291</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  292</span>                    {</div>
-<div class="line"><span class="lineno">  293</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 8);</div>
+<div class="line"><span class="lineno">  293</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) entry + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, format, 8);</div>
 <div class="line"><span class="lineno">  294</span>                    }</div>
 <div class="line"><span class="lineno">  295</span>                }</div>
 <div class="line"><span class="lineno">  296</span>            }</div>
 <div class="line"><span class="lineno">  297</span> </div>
 <div class="line"><span class="lineno">  298</span>            <span class="keywordflow">return</span> kf;</div>
 <div class="line"><span class="lineno">  299</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter_html_ae46dc9b9e306aa283b3e6e372f32dc42"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">BrawlLib.Wii.Animations.AnimationConverter.DecodeFrames</a></div><div class="ttdeci">static void DecodeFrames(KeyframeCollection kf, void *dataAddr, AnimDataFormat format, params int[] arrays)</div><div class="ttdef"><b>Definition:</b> AnimationConverter.cs:301</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_models_html_a5b7df835f9135fb4052993d18c9ccaac"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">BrawlLib.Wii.Models.AnimDataFormat</a></div><div class="ttdeci">AnimDataFormat</div><div class="ttdef"><b>Definition:</b> AnimationCode.cs:8</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bfloat_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bfloat.html">BrawlLib.Internal.bfloat</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:109</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:59</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry_html_a6530d92c40e228d0f547e89ffb9d47a8"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry.html#a6530d92c40e228d0f547e89ffb9d47a8">BrawlLib.SSBB.Types.Animations.CHR0Entry.Code</a></div><div class="ttdeci">AnimationCode Code</div><div class="ttdef"><b>Definition:</b> CHR0.cs:155</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry_html_a75322c3cd7f9db0910b1bbb55250f93d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry.html#a75322c3cd7f9db0910b1bbb55250f93d">BrawlLib.SSBB.Types.Animations.CHR0Entry.Data</a></div><div class="ttdeci">VoidPtr Data</div><div class="ttdef"><b>Definition:</b> CHR0.cs:152</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ae46dc9b9e306aa283b3e6e372f32dc42" name="ae46dc9b9e306aa283b3e6e372f32dc42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae46dc9b9e306aa283b3e6e372f32dc42">&#9670;&#160;</a></span>DecodeFrames()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.Wii.Animations.AnimationConverter.DecodeFrames </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a>&#160;</td>
-          <td class="paramname"><em>kf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>dataAddr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">params int[]&#160;</td>
-          <td class="paramname"><em>arrays</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  303</span>        {</div>
-<div class="line"><span class="lineno">  304</span>            <span class="keywordtype">int</span> fCount;</div>
-<div class="line"><span class="lineno">  305</span>            <span class="keywordtype">float</span> vStep, vBase;</div>
-<div class="line"><span class="lineno">  306</span>            <span class="keywordflow">switch</span> (format)</div>
-<div class="line"><span class="lineno">  307</span>            {</div>
-<div class="line"><span class="lineno">  308</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I4:</div>
-<div class="line"><span class="lineno">  309</span>                {</div>
-<div class="line"><span class="lineno">  310</span>                    I4Header* header = (I4Header*) dataAddr;</div>
-<div class="line"><span class="lineno">  311</span>                    fCount = header-&gt;_entries;</div>
-<div class="line"><span class="lineno">  312</span>                    vStep = header-&gt;_step;</div>
-<div class="line"><span class="lineno">  313</span>                    vBase = header-&gt;_base;</div>
-<div class="line"><span class="lineno">  314</span> </div>
-<div class="line"><span class="lineno">  315</span>                    <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> x <span class="keywordflow">in</span> arrays)</div>
-<div class="line"><span class="lineno">  316</span>                    {</div>
-<div class="line"><span class="lineno">  317</span>                        I4Entry* entry = header-&gt;Data;</div>
-<div class="line"><span class="lineno">  318</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; fCount; i++, entry++)</div>
-<div class="line"><span class="lineno">  319</span>                        {</div>
-<div class="line"><span class="lineno">  320</span>                            kf.SetFrameValue(x, entry-&gt;FrameIndex, vBase + entry-&gt;Step * vStep, <span class="keyword">true</span>)._tangent =</div>
-<div class="line"><span class="lineno">  321</span>                                entry-&gt;Tangent;</div>
-<div class="line"><span class="lineno">  322</span>                        }</div>
-<div class="line"><span class="lineno">  323</span>                    }</div>
-<div class="line"><span class="lineno">  324</span> </div>
-<div class="line"><span class="lineno">  325</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  326</span>                }</div>
-<div class="line"><span class="lineno">  327</span> </div>
-<div class="line"><span class="lineno">  328</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I6:</div>
-<div class="line"><span class="lineno">  329</span>                {</div>
-<div class="line"><span class="lineno">  330</span>                    I6Header* header = (I6Header*) dataAddr;</div>
-<div class="line"><span class="lineno">  331</span>                    fCount = header-&gt;_numFrames;</div>
-<div class="line"><span class="lineno">  332</span>                    vStep = header-&gt;_step;</div>
-<div class="line"><span class="lineno">  333</span>                    vBase = header-&gt;_base;</div>
-<div class="line"><span class="lineno">  334</span> </div>
-<div class="line"><span class="lineno">  335</span>                    <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> x <span class="keywordflow">in</span> arrays)</div>
-<div class="line"><span class="lineno">  336</span>                    {</div>
-<div class="line"><span class="lineno">  337</span>                        I6Entry* entry = header-&gt;Data;</div>
-<div class="line"><span class="lineno">  338</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; fCount; i++, entry++)</div>
-<div class="line"><span class="lineno">  339</span>                        {</div>
-<div class="line"><span class="lineno">  340</span>                            kf.SetFrameValue(x, entry-&gt;FrameIndex, vBase + entry-&gt;_step * vStep, <span class="keyword">true</span>)._tangent =</div>
-<div class="line"><span class="lineno">  341</span>                                entry-&gt;Tangent;</div>
-<div class="line"><span class="lineno">  342</span>                        }</div>
-<div class="line"><span class="lineno">  343</span>                    }</div>
-<div class="line"><span class="lineno">  344</span> </div>
-<div class="line"><span class="lineno">  345</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  346</span>                }</div>
-<div class="line"><span class="lineno">  347</span> </div>
-<div class="line"><span class="lineno">  348</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12:</div>
-<div class="line"><span class="lineno">  349</span>                {</div>
-<div class="line"><span class="lineno">  350</span>                    I12Header* header = (I12Header*) dataAddr;</div>
-<div class="line"><span class="lineno">  351</span>                    fCount = header-&gt;_numFrames;</div>
-<div class="line"><span class="lineno">  352</span> </div>
-<div class="line"><span class="lineno">  353</span>                    <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> x <span class="keywordflow">in</span> arrays)</div>
-<div class="line"><span class="lineno">  354</span>                    {</div>
-<div class="line"><span class="lineno">  355</span>                        I12Entry* entry = header-&gt;Data;</div>
-<div class="line"><span class="lineno">  356</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; fCount; i++, entry++)</div>
-<div class="line"><span class="lineno">  357</span>                        {</div>
-<div class="line"><span class="lineno">  358</span>                            kf.SetFrameValue(x, (<span class="keywordtype">int</span>) entry-&gt;_index, entry-&gt;_value, <span class="keyword">true</span>)._tangent = entry-&gt;_tangent;</div>
-<div class="line"><span class="lineno">  359</span>                        }</div>
-<div class="line"><span class="lineno">  360</span>                    }</div>
-<div class="line"><span class="lineno">  361</span> </div>
-<div class="line"><span class="lineno">  362</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  363</span>                }</div>
-<div class="line"><span class="lineno">  364</span> </div>
-<div class="line"><span class="lineno">  365</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L1:</div>
-<div class="line"><span class="lineno">  366</span>                {</div>
-<div class="line"><span class="lineno">  367</span>                    L1Header* header = (L1Header*) dataAddr;</div>
-<div class="line"><span class="lineno">  368</span>                    vStep = header-&gt;_step;</div>
-<div class="line"><span class="lineno">  369</span>                    vBase = header-&gt;_base;</div>
-<div class="line"><span class="lineno">  370</span> </div>
-<div class="line"><span class="lineno">  371</span>                    <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> x <span class="keywordflow">in</span> arrays)</div>
-<div class="line"><span class="lineno">  372</span>                    {</div>
-<div class="line"><span class="lineno">  373</span>                        <span class="keywordtype">byte</span>* sPtr = header-&gt;Data;</div>
-<div class="line"><span class="lineno">  374</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; kf.FrameLimit; i++)</div>
-<div class="line"><span class="lineno">  375</span>                        {</div>
-<div class="line"><span class="lineno">  376</span>                            kf.SetFrameValue(x, i, vBase + *sPtr++ * vStep, <span class="keyword">true</span>).GenerateTangent();</div>
-<div class="line"><span class="lineno">  377</span>                        }</div>
-<div class="line"><span class="lineno">  378</span>                    }</div>
-<div class="line"><span class="lineno">  379</span> </div>
-<div class="line"><span class="lineno">  380</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  381</span>                }</div>
-<div class="line"><span class="lineno">  382</span> </div>
-<div class="line"><span class="lineno">  383</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L2:</div>
-<div class="line"><span class="lineno">  384</span>                {</div>
-<div class="line"><span class="lineno">  385</span>                    L1Header* header = (L1Header*) dataAddr;</div>
-<div class="line"><span class="lineno">  386</span>                    vStep = header-&gt;_step;</div>
-<div class="line"><span class="lineno">  387</span>                    vBase = header-&gt;_base;</div>
-<div class="line"><span class="lineno">  388</span> </div>
-<div class="line"><span class="lineno">  389</span>                    <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> x <span class="keywordflow">in</span> arrays)</div>
-<div class="line"><span class="lineno">  390</span>                    {</div>
-<div class="line"><span class="lineno">  391</span>                        <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>* sPtr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bushort.html">bushort</a>*) header-&gt;Data;</div>
-<div class="line"><span class="lineno">  392</span>                        for (<span class="keywordtype">int</span> i = 0; i &lt; kf.FrameLimit; i++)</div>
-<div class="line"><span class="lineno">  393</span>                        {</div>
-<div class="line"><span class="lineno">  394</span>                            kf.SetFrameValue(x, i, vBase + *sPtr++ * vStep, <span class="keyword">true</span>).GenerateTangent();</div>
-<div class="line"><span class="lineno">  395</span>                        }</div>
-<div class="line"><span class="lineno">  396</span>                    }</div>
-<div class="line"><span class="lineno">  397</span> </div>
-<div class="line"><span class="lineno">  398</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  399</span>                }</div>
-<div class="line"><span class="lineno">  400</span> </div>
-<div class="line"><span class="lineno">  401</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L4:</div>
-<div class="line"><span class="lineno">  402</span>                {</div>
-<div class="line"><span class="lineno">  403</span>                    <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> x <span class="keywordflow">in</span> arrays)</div>
-<div class="line"><span class="lineno">  404</span>                    {</div>
-<div class="line"><span class="lineno">  405</span>                        <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bfloat.html">bfloat</a>* sPtr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bfloat.html">bfloat</a>*) dataAddr;</div>
-<div class="line"><span class="lineno">  406</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; kf.FrameLimit; i++)</div>
-<div class="line"><span class="lineno">  407</span>                        {</div>
-<div class="line"><span class="lineno">  408</span>                            kf.SetFrameValue(x, i, *sPtr++, <span class="keyword">true</span>).GenerateTangent();</div>
-<div class="line"><span class="lineno">  409</span>                        }</div>
-<div class="line"><span class="lineno">  410</span>                    }</div>
-<div class="line"><span class="lineno">  411</span> </div>
-<div class="line"><span class="lineno">  412</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  413</span>                }</div>
-<div class="line"><span class="lineno">  414</span>            }</div>
-<div class="line"><span class="lineno">  415</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bushort_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bushort.html">BrawlLib.Internal.bushort</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:192</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -806,7 +621,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   86</span>                    }</div>
 <div class="line"><span class="lineno">   87</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   88</span>                    {</div>
-<div class="line"><span class="lineno">   89</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 0, 1);</div>
+<div class="line"><span class="lineno">   89</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 0, 1);</div>
 <div class="line"><span class="lineno">   90</span>                    }</div>
 <div class="line"><span class="lineno">   91</span>                }</div>
 <div class="line"><span class="lineno">   92</span>                <span class="keywordflow">else</span></div>
@@ -817,7 +632,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   97</span>                    }</div>
 <div class="line"><span class="lineno">   98</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   99</span>                    {</div>
-<div class="line"><span class="lineno">  100</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 0);</div>
+<div class="line"><span class="lineno">  100</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 0);</div>
 <div class="line"><span class="lineno">  101</span>                    }</div>
 <div class="line"><span class="lineno">  102</span> </div>
 <div class="line"><span class="lineno">  103</span>                    <span class="keywordflow">if</span> (code.FixedScaleY)</div>
@@ -826,7 +641,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  106</span>                    }</div>
 <div class="line"><span class="lineno">  107</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  108</span>                    {</div>
-<div class="line"><span class="lineno">  109</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 1);</div>
+<div class="line"><span class="lineno">  109</span>                        DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 1);</div>
 <div class="line"><span class="lineno">  110</span>                    }</div>
 <div class="line"><span class="lineno">  111</span>                }</div>
 <div class="line"><span class="lineno">  112</span>            }</div>
@@ -839,7 +654,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  119</span>                }</div>
 <div class="line"><span class="lineno">  120</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  121</span>                {</div>
-<div class="line"><span class="lineno">  122</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 2);</div>
+<div class="line"><span class="lineno">  122</span>                    DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 2);</div>
 <div class="line"><span class="lineno">  123</span>                }</div>
 <div class="line"><span class="lineno">  124</span>            }</div>
 <div class="line"><span class="lineno">  125</span> </div>
@@ -851,7 +666,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  131</span>                }</div>
 <div class="line"><span class="lineno">  132</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  133</span>                {</div>
-<div class="line"><span class="lineno">  134</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 3);</div>
+<div class="line"><span class="lineno">  134</span>                    DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 3);</div>
 <div class="line"><span class="lineno">  135</span>                }</div>
 <div class="line"><span class="lineno">  136</span> </div>
 <div class="line"><span class="lineno">  137</span>                <span class="keywordflow">if</span> (code.FixedY)</div>
@@ -860,7 +675,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  140</span>                }</div>
 <div class="line"><span class="lineno">  141</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  142</span>                {</div>
-<div class="line"><span class="lineno">  143</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#ae46dc9b9e306aa283b3e6e372f32dc42">DecodeFrames</a>(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 4);</div>
+<div class="line"><span class="lineno">  143</span>                    DecodeFrames(kf, (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>) sPtr + *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) sPtr++, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, 4);</div>
 <div class="line"><span class="lineno">  144</span>                }</div>
 <div class="line"><span class="lineno">  145</span>            }</div>
 <div class="line"><span class="lineno">  146</span> </div>
@@ -938,7 +753,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  926</span>                        <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  927</span>                        {</div>
 <div class="line"><span class="lineno">  928</span>                            *pOffset++ = dataAddress - entryAddress;</div>
-<div class="line"><span class="lineno">  929</span>                            dataAddress += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a5548cbf6fdce096088cfb59a78cc261b">EncodeEntry</a>(x, format, kf, dataAddress);</div>
+<div class="line"><span class="lineno">  929</span>                            dataAddress += EncodeEntry(x, format, kf, dataAddress);</div>
 <div class="line"><span class="lineno">  930</span>                        }</div>
 <div class="line"><span class="lineno">  931</span>                    }</div>
 <div class="line"><span class="lineno">  932</span>                    <span class="keywordflow">else</span></div>
@@ -952,14 +767,13 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  940</span>                            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  941</span>                            {</div>
 <div class="line"><span class="lineno">  942</span>                                *pOffset++ = dataAddress - entryAddress;</div>
-<div class="line"><span class="lineno">  943</span>                                dataAddress += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a5548cbf6fdce096088cfb59a78cc261b">EncodeEntry</a>(z, format, kf, dataAddress);</div>
+<div class="line"><span class="lineno">  943</span>                                dataAddress += EncodeEntry(z, format, kf, dataAddress);</div>
 <div class="line"><span class="lineno">  944</span>                            }</div>
 <div class="line"><span class="lineno">  945</span>                        }</div>
 <div class="line"><span class="lineno">  946</span>                    }</div>
 <div class="line"><span class="lineno">  947</span>                }</div>
 <div class="line"><span class="lineno">  948</span>            }</div>
 <div class="line"><span class="lineno">  949</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter_html_a5548cbf6fdce096088cfb59a78cc261b"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a5548cbf6fdce096088cfb59a78cc261b">BrawlLib.Wii.Animations.AnimationConverter.EncodeEntry</a></div><div class="ttdeci">static int EncodeEntry(int index, AnimDataFormat format, KeyframeCollection kf, VoidPtr addr)</div><div class="ttdef"><b>Definition:</b> AnimationConverter.cs:1017</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry_html_a0812c4dc7fa9f2e7b5b7ef70b3c56b55"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry.html#a0812c4dc7fa9f2e7b5b7ef70b3c56b55">BrawlLib.SSBB.Types.Animations.CHR0Entry._code</a></div><div class="ttdeci">buint _code</div><div class="ttdef"><b>Definition:</b> CHR0.cs:139</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry_html_a3a1605f005a53b617e53080b087db95e"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_c_h_r0_entry.html#a3a1605f005a53b617e53080b087db95e">BrawlLib.SSBB.Types.Animations.CHR0Entry._stringOffset</a></div><div class="ttdeci">bint _stringOffset</div><div class="ttdef"><b>Definition:</b> CHR0.cs:138</div></div>
@@ -968,185 +782,6 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code_html_ae6b84f52e6d0b5e81f472c76b8590874"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html#ae6b84f52e6d0b5e81f472c76b8590874">BrawlLib.Wii.Models.AnimationCode.GetIsIsotropic</a></div><div class="ttdeci">bool GetIsIsotropic(int i)</div><div class="ttdef"><b>Definition:</b> AnimationCode.cs:270</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code_html_af16a657ec55a0d0f1bd80bbc8fc3cf7c"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html#af16a657ec55a0d0f1bd80bbc8fc3cf7c">BrawlLib.Wii.Models.AnimationCode.GetIsFixed</a></div><div class="ttdeci">bool GetIsFixed(int i)</div><div class="ttdef"><b>Definition:</b> AnimationCode.cs:260</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code_html_af219dd61aa55488997a2f302c1bb69c6"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html#af219dd61aa55488997a2f302c1bb69c6">BrawlLib.Wii.Models.AnimationCode._data</a></div><div class="ttdeci">Bin32 _data</div><div class="ttdef"><b>Definition:</b> AnimationCode.cs:23</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a5548cbf6fdce096088cfb59a78cc261b" name="a5548cbf6fdce096088cfb59a78cc261b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5548cbf6fdce096088cfb59a78cc261b">&#9670;&#160;</a></span>EncodeEntry()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int BrawlLib.Wii.Animations.AnimationConverter.EncodeEntry </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a>&#160;</td>
-          <td class="paramname"><em>kf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td>
-          <td class="paramname"><em>addr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1018</span>        {</div>
-<div class="line"><span class="lineno"> 1019</span>            <span class="keywordtype">int</span> numFrames = kf.FrameLimit;</div>
-<div class="line"><span class="lineno"> 1020</span>            KeyframeEntry frame, root = kf._keyArrays[index]._keyRoot;</div>
-<div class="line"><span class="lineno"> 1021</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bfloat.html">bfloat</a>* pVal = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bfloat.html">bfloat</a>*) addr;</div>
-<div class="line"><span class="lineno"> 1022</span>            <span class="keywordtype">float</span> val, frameScale = numFrames &lt;= 1 ? 1 : 1.0f / (numFrames - 1);</div>
-<div class="line"><span class="lineno"> 1023</span>            <span class="keywordtype">float</span> min, max, stride, step;</div>
-<div class="line"><span class="lineno"> 1024</span>            <span class="keywordtype">int</span> span, i;</div>
-<div class="line"><span class="lineno"> 1025</span>            <span class="keywordtype">int</span> keyCount = kf._keyArrays[index]._keyCount;</div>
-<div class="line"><span class="lineno"> 1026</span> </div>
-<div class="line"><span class="lineno"> 1027</span>            <span class="keywordflow">if</span> (format == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L4)</div>
-<div class="line"><span class="lineno"> 1028</span>            {</div>
-<div class="line"><span class="lineno"> 1029</span>                <span class="comment">//Use all frames, just in case not all frames are key.</span></div>
-<div class="line"><span class="lineno"> 1030</span>                <span class="keywordflow">for</span> (i = 0; i &lt; numFrames; i++)</div>
-<div class="line"><span class="lineno"> 1031</span>                {</div>
-<div class="line"><span class="lineno"> 1032</span>                    *pVal++ = kf[i, index];</div>
-<div class="line"><span class="lineno"> 1033</span>                }</div>
-<div class="line"><span class="lineno"> 1034</span> </div>
-<div class="line"><span class="lineno"> 1035</span>                <span class="keywordflow">return</span> numFrames * 4;</div>
-<div class="line"><span class="lineno"> 1036</span>            }</div>
-<div class="line"><span class="lineno"> 1037</span> </div>
-<div class="line"><span class="lineno"> 1038</span>            <span class="keywordflow">if</span> (format == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12)</div>
-<div class="line"><span class="lineno"> 1039</span>            {</div>
-<div class="line"><span class="lineno"> 1040</span>                I12Header* header = (I12Header*) addr;</div>
-<div class="line"><span class="lineno"> 1041</span>                *header = <span class="keyword">new</span> I12Header(keyCount, frameScale);</div>
-<div class="line"><span class="lineno"> 1042</span> </div>
-<div class="line"><span class="lineno"> 1043</span>                I12Entry* entry = header-&gt;Data;</div>
-<div class="line"><span class="lineno"> 1044</span>                <span class="keywordflow">for</span> (frame = root._next; frame._index != -1; frame = frame._next)</div>
-<div class="line"><span class="lineno"> 1045</span>                {</div>
-<div class="line"><span class="lineno"> 1046</span>                    *entry++ = <span class="keyword">new</span> I12Entry(frame._index, frame._value, frame._tangent);</div>
-<div class="line"><span class="lineno"> 1047</span>                }</div>
-<div class="line"><span class="lineno"> 1048</span> </div>
-<div class="line"><span class="lineno"> 1049</span>                <span class="keywordflow">return</span> keyCount * 12 + 8;</div>
-<div class="line"><span class="lineno"> 1050</span>            }</div>
-<div class="line"><span class="lineno"> 1051</span> </div>
-<div class="line"><span class="lineno"> 1052</span>            <span class="comment">//Get floor/ceil/stride</span></div>
-<div class="line"><span class="lineno"> 1053</span>            min = <span class="keywordtype">float</span>.MaxValue;</div>
-<div class="line"><span class="lineno"> 1054</span>            max = <span class="keywordtype">float</span>.MinValue;</div>
-<div class="line"><span class="lineno"> 1055</span>            <span class="keywordflow">for</span> (frame = root._next; frame != root; frame = frame._next)</div>
-<div class="line"><span class="lineno"> 1056</span>            {</div>
-<div class="line"><span class="lineno"> 1057</span>                val = frame._value;</div>
-<div class="line"><span class="lineno"> 1058</span> </div>
-<div class="line"><span class="lineno"> 1059</span>                <span class="keywordflow">if</span> (val &gt; max)</div>
-<div class="line"><span class="lineno"> 1060</span>                {</div>
-<div class="line"><span class="lineno"> 1061</span>                    max = val;</div>
-<div class="line"><span class="lineno"> 1062</span>                }</div>
-<div class="line"><span class="lineno"> 1063</span> </div>
-<div class="line"><span class="lineno"> 1064</span>                <span class="keywordflow">if</span> (val &lt; min)</div>
-<div class="line"><span class="lineno"> 1065</span>                {</div>
-<div class="line"><span class="lineno"> 1066</span>                    min = val;</div>
-<div class="line"><span class="lineno"> 1067</span>                }</div>
-<div class="line"><span class="lineno"> 1068</span>            }</div>
-<div class="line"><span class="lineno"> 1069</span> </div>
-<div class="line"><span class="lineno"> 1070</span>            stride = max - min;</div>
-<div class="line"><span class="lineno"> 1071</span> </div>
-<div class="line"><span class="lineno"> 1072</span>            <span class="keywordflow">if</span> (format == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L1)</div>
-<div class="line"><span class="lineno"> 1073</span>            {</div>
-<div class="line"><span class="lineno"> 1074</span>                <span class="comment">//Find best span</span></div>
-<div class="line"><span class="lineno"> 1075</span>                span = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a4a086bb9b7566f050e7b89f20f3d7466">EvalSpan</a>(255, 32, min, stride, root, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno"> 1076</span>                step = stride / span;</div>
-<div class="line"><span class="lineno"> 1077</span> </div>
-<div class="line"><span class="lineno"> 1078</span>                L1Header* header = (L1Header*) addr;</div>
-<div class="line"><span class="lineno"> 1079</span>                *header = <span class="keyword">new</span> L1Header(step, min);</div>
-<div class="line"><span class="lineno"> 1080</span> </div>
-<div class="line"><span class="lineno"> 1081</span>                <span class="keywordtype">byte</span>* dPtr = header-&gt;Data;</div>
-<div class="line"><span class="lineno"> 1082</span>                <span class="keywordflow">for</span> (i = 0; i &lt; numFrames; i++)</div>
-<div class="line"><span class="lineno"> 1083</span>                {</div>
-<div class="line"><span class="lineno"> 1084</span>                    *dPtr++ = (byte) ((kf[i, index] - min) / step + 0.5f);</div>
-<div class="line"><span class="lineno"> 1085</span>                }</div>
-<div class="line"><span class="lineno"> 1086</span> </div>
-<div class="line"><span class="lineno"> 1087</span>                <span class="comment">//Fill remaining bytes</span></div>
-<div class="line"><span class="lineno"> 1088</span>                <span class="keywordflow">while</span> ((i++ &amp; 3) != 0)</div>
-<div class="line"><span class="lineno"> 1089</span>                {</div>
-<div class="line"><span class="lineno"> 1090</span>                    *dPtr++ = 0;</div>
-<div class="line"><span class="lineno"> 1091</span>                }</div>
-<div class="line"><span class="lineno"> 1092</span> </div>
-<div class="line"><span class="lineno"> 1093</span>                <span class="keywordflow">return</span> (8 + numFrames).Align(4);</div>
-<div class="line"><span class="lineno"> 1094</span>            }</div>
-<div class="line"><span class="lineno"> 1095</span> </div>
-<div class="line"><span class="lineno"> 1096</span>            <span class="keywordflow">if</span> (format == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I4)</div>
-<div class="line"><span class="lineno"> 1097</span>            {</div>
-<div class="line"><span class="lineno"> 1098</span>                <span class="comment">//Find best span</span></div>
-<div class="line"><span class="lineno"> 1099</span>                span = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a4a086bb9b7566f050e7b89f20f3d7466">EvalSpan</a>(4095, 32, min, stride, root, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno"> 1100</span>                step = stride / span;</div>
-<div class="line"><span class="lineno"> 1101</span> </div>
-<div class="line"><span class="lineno"> 1102</span>                I4Header* header = (I4Header*) addr;</div>
-<div class="line"><span class="lineno"> 1103</span>                *header = <span class="keyword">new</span> I4Header(keyCount, frameScale, step, min);</div>
-<div class="line"><span class="lineno"> 1104</span> </div>
-<div class="line"><span class="lineno"> 1105</span>                I4Entry* entry = header-&gt;Data;</div>
-<div class="line"><span class="lineno"> 1106</span> </div>
-<div class="line"><span class="lineno"> 1107</span>                <span class="keywordflow">for</span> (frame = root._next; frame._index != -1; frame = frame._next)</div>
-<div class="line"><span class="lineno"> 1108</span>                {</div>
-<div class="line"><span class="lineno"> 1109</span>                    val = (frame._value - min) / step;</div>
-<div class="line"><span class="lineno"> 1110</span>                    val += val &lt; 0 ? -0.5f : 0.5f;</div>
-<div class="line"><span class="lineno"> 1111</span> </div>
-<div class="line"><span class="lineno"> 1112</span>                    *entry++ = <span class="keyword">new</span> I4Entry(frame._index, (<span class="keywordtype">int</span>) val, frame._tangent);</div>
-<div class="line"><span class="lineno"> 1113</span>                }</div>
-<div class="line"><span class="lineno"> 1114</span> </div>
-<div class="line"><span class="lineno"> 1115</span>                <span class="keywordflow">return</span> keyCount * 4 + 16;</div>
-<div class="line"><span class="lineno"> 1116</span>            }</div>
-<div class="line"><span class="lineno"> 1117</span> </div>
-<div class="line"><span class="lineno"> 1118</span>            <span class="keywordflow">if</span> (format == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I6)</div>
-<div class="line"><span class="lineno"> 1119</span>            {</div>
-<div class="line"><span class="lineno"> 1120</span>                <span class="comment">//Find best span</span></div>
-<div class="line"><span class="lineno"> 1121</span>                span = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a4a086bb9b7566f050e7b89f20f3d7466">EvalSpan</a>(65535, 32, min, stride, root, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno"> 1122</span>                step = stride / span;</div>
-<div class="line"><span class="lineno"> 1123</span> </div>
-<div class="line"><span class="lineno"> 1124</span>                I6Header* header = (I6Header*) addr;</div>
-<div class="line"><span class="lineno"> 1125</span>                *header = <span class="keyword">new</span> I6Header(keyCount, frameScale, step, min);</div>
-<div class="line"><span class="lineno"> 1126</span> </div>
-<div class="line"><span class="lineno"> 1127</span>                I6Entry* entry = header-&gt;Data;</div>
-<div class="line"><span class="lineno"> 1128</span> </div>
-<div class="line"><span class="lineno"> 1129</span>                <span class="keywordflow">for</span> (frame = root._next; frame._index != -1; frame = frame._next)</div>
-<div class="line"><span class="lineno"> 1130</span>                {</div>
-<div class="line"><span class="lineno"> 1131</span>                    val = (frame._value - min) / step;</div>
-<div class="line"><span class="lineno"> 1132</span>                    val += val &lt; 0 ? -0.5f : 0.5f;</div>
-<div class="line"><span class="lineno"> 1133</span> </div>
-<div class="line"><span class="lineno"> 1134</span>                    *entry++ = <span class="keyword">new</span> I6Entry(frame._index, (<span class="keywordtype">int</span>) val, frame._tangent);</div>
-<div class="line"><span class="lineno"> 1135</span>                }</div>
-<div class="line"><span class="lineno"> 1136</span> </div>
-<div class="line"><span class="lineno"> 1137</span>                <span class="comment">//Fill remaining bytes</span></div>
-<div class="line"><span class="lineno"> 1138</span>                <span class="keywordflow">if</span> ((keyCount &amp; 1) != 0)</div>
-<div class="line"><span class="lineno"> 1139</span>                {</div>
-<div class="line"><span class="lineno"> 1140</span>                    entry-&gt;_data = 0;</div>
-<div class="line"><span class="lineno"> 1141</span>                }</div>
-<div class="line"><span class="lineno"> 1142</span> </div>
-<div class="line"><span class="lineno"> 1143</span>                <span class="keywordflow">return</span> (keyCount * 6 + 16).Align(4);</div>
-<div class="line"><span class="lineno"> 1144</span>            }</div>
-<div class="line"><span class="lineno"> 1145</span> </div>
-<div class="line"><span class="lineno"> 1146</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno"> 1147</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter_html_a4a086bb9b7566f050e7b89f20f3d7466"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a4a086bb9b7566f050e7b89f20f3d7466">BrawlLib.Wii.Animations.AnimationConverter.EvalSpan</a></div><div class="ttdeci">static int EvalSpan(int maxSpan, int maxIterations, float valBase, float valStride, KeyframeEntry root, bool evalAll)</div><div class="ttdef"><b>Definition:</b> AnimationConverter.cs:1149</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1236,7 +871,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  991</span>                                {</div>
 <div class="line"><span class="lineno">  992</span>                                    *pOffset = (int) dataAddress - (<span class="keywordtype">int</span>) pOffset;</div>
 <div class="line"><span class="lineno">  993</span>                                    pOffset++;</div>
-<div class="line"><span class="lineno">  994</span>                                    dataAddress += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a5548cbf6fdce096088cfb59a78cc261b">EncodeEntry</a>(index, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, kf, dataAddress);</div>
+<div class="line"><span class="lineno">  994</span>                                    dataAddress += EncodeEntry(index, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, kf, dataAddress);</div>
 <div class="line"><span class="lineno">  995</span>                                }</div>
 <div class="line"><span class="lineno">  996</span>                            }</div>
 <div class="line"><span class="lineno">  997</span>                        }</div>
@@ -1251,7 +886,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1006</span>                            {</div>
 <div class="line"><span class="lineno"> 1007</span>                                *pOffset = (int) dataAddress - (<span class="keywordtype">int</span>) pOffset;</div>
 <div class="line"><span class="lineno"> 1008</span>                                pOffset++;</div>
-<div class="line"><span class="lineno"> 1009</span>                                dataAddress += <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a5548cbf6fdce096088cfb59a78cc261b">EncodeEntry</a>(index, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, kf, dataAddress);</div>
+<div class="line"><span class="lineno"> 1009</span>                                dataAddress += EncodeEntry(index, <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12, kf, dataAddress);</div>
 <div class="line"><span class="lineno"> 1010</span>                            }</div>
 <div class="line"><span class="lineno"> 1011</span>                        }</div>
 <div class="line"><span class="lineno"> 1012</span>                    }</div>
@@ -1358,7 +993,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1182</span>                        error = (val - valBase) / step + 0.5f;</div>
 <div class="line"><span class="lineno"> 1183</span>                        error = Math.Abs(val - (valBase + (<span class="keywordtype">int</span>) error * step));</div>
 <div class="line"><span class="lineno"> 1184</span> </div>
-<div class="line"><span class="lineno"> 1185</span>                        <span class="keywordflow">if</span> (error &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a7543699ebc131de95560314eaf160fdc">scaleError</a>)</div>
+<div class="line"><span class="lineno"> 1185</span>                        <span class="keywordflow">if</span> (error &gt; scaleError)</div>
 <div class="line"><span class="lineno"> 1186</span>                        {</div>
 <div class="line"><span class="lineno"> 1187</span>                            <span class="keywordflow">goto</span> Next;</div>
 <div class="line"><span class="lineno"> 1188</span>                        }</div>
@@ -1382,581 +1017,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1206</span> </div>
 <div class="line"><span class="lineno"> 1207</span>            <span class="keywordflow">return</span> bestSpan;</div>
 <div class="line"><span class="lineno"> 1208</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter_html_a7543699ebc131de95560314eaf160fdc"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a7543699ebc131de95560314eaf160fdc">BrawlLib.Wii.Animations.AnimationConverter.scaleError</a></div><div class="ttdeci">const float scaleError</div><div class="ttdef"><b>Definition:</b> AnimationConverter.cs:462</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="ac28a5a8f4b33717818ed5d193d186c21" name="ac28a5a8f4b33717818ed5d193d186c21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac28a5a8f4b33717818ed5d193d186c21">&#9670;&#160;</a></span>EvaluateCHR0Group()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int BrawlLib.Wii.Animations.AnimationConverter.EvaluateCHR0Group </td>
-          <td>(</td>
-          <td class="paramtype">ref <a class="el" href="struct_brawl_lib_1_1_wii_1_1_models_1_1_animation_code.html">AnimationCode</a>&#160;</td>
-          <td class="paramname"><em>code</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a>&#160;</td>
-          <td class="paramname"><em>kf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>group</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>entrySize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  467</span>        {</div>
-<div class="line"><span class="lineno">  468</span>            <span class="keywordtype">int</span> index = group * 3;</div>
-<div class="line"><span class="lineno">  469</span>            <span class="keywordtype">int</span> numFrames = kf.FrameLimit;</div>
-<div class="line"><span class="lineno">  470</span>            <span class="keywordtype">int</span> dataLen = 0;</div>
-<div class="line"><span class="lineno">  471</span>            <span class="keywordtype">int</span> maxEntries;</div>
-<div class="line"><span class="lineno">  472</span>            <span class="keywordtype">int</span> evalCount;</div>
-<div class="line"><span class="lineno">  473</span>            <span class="keywordtype">int</span> scaleSpan;</div>
-<div class="line"><span class="lineno">  474</span>            <span class="comment">//bool useLinear = group == 1;</span></div>
-<div class="line"><span class="lineno">  475</span> </div>
-<div class="line"><span class="lineno">  476</span>            <span class="keywordtype">bool</span> exist = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  477</span>            <span class="keywordtype">bool</span> isotropic = group == 0;</div>
-<div class="line"><span class="lineno">  478</span>            <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a> format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.None;</div>
-<div class="line"><span class="lineno">  479</span> </div>
-<div class="line"><span class="lineno">  480</span>            KeyframeEntry[] roots = <span class="keyword">new</span> KeyframeEntry[3];</div>
-<div class="line"><span class="lineno">  481</span> </div>
-<div class="line"><span class="lineno">  482</span>            KeyframeEntry[][] arr = <span class="keyword">new</span> KeyframeEntry[3][];</div>
-<div class="line"><span class="lineno">  483</span>            <span class="keywordtype">int</span>[] count = <span class="keyword">new</span> <span class="keywordtype">int</span>[3];</div>
-<div class="line"><span class="lineno">  484</span>            <span class="keywordtype">bool</span>[] isExist = <span class="keyword">new</span> <span class="keywordtype">bool</span>[3];</div>
-<div class="line"><span class="lineno">  485</span>            <span class="keywordtype">bool</span>[] isFixed = <span class="keyword">new</span> <span class="keywordtype">bool</span>[3];</div>
-<div class="line"><span class="lineno">  486</span>            <span class="keywordtype">bool</span>[] isScalable = <span class="keyword">new</span> <span class="keywordtype">bool</span>[3];</div>
-<div class="line"><span class="lineno">  487</span>            <span class="keywordtype">float</span>[] floor = <span class="keyword">new</span> <span class="keywordtype">float</span>[3];</div>
-<div class="line"><span class="lineno">  488</span>            <span class="keywordtype">float</span>[] ceil = <span class="keyword">new</span> <span class="keywordtype">float</span>[3];</div>
-<div class="line"><span class="lineno">  489</span> </div>
-<div class="line"><span class="lineno">  490</span>            KeyframeEntry entry;</div>
-<div class="line"><span class="lineno">  491</span>            <span class="keywordtype">int</span> eCount = 0;</div>
-<div class="line"><span class="lineno">  492</span> </div>
-<div class="line"><span class="lineno">  493</span>            <span class="keywordtype">float</span> min;</div>
-<div class="line"><span class="lineno">  494</span>            <span class="keywordtype">float</span> max;</div>
-<div class="line"><span class="lineno">  495</span>            <span class="keywordtype">int</span> maxIndex = 0;</div>
-<div class="line"><span class="lineno">  496</span> </div>
-<div class="line"><span class="lineno">  497</span>            <span class="comment">//Initialize values</span></div>
-<div class="line"><span class="lineno">  498</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++)</div>
-<div class="line"><span class="lineno">  499</span>            {</div>
-<div class="line"><span class="lineno">  500</span>                entry = roots[i] = kf._keyArrays[index + i]._keyRoot;</div>
-<div class="line"><span class="lineno">  501</span>                count[i] = kf._keyArrays[index + i]._keyCount;</div>
-<div class="line"><span class="lineno">  502</span>                isExist[i] = count[i] &gt; 0;</div>
-<div class="line"><span class="lineno">  503</span>                isFixed[i] = count[i] &lt;= 1;</div>
-<div class="line"><span class="lineno">  504</span> </div>
-<div class="line"><span class="lineno">  505</span>                <span class="keywordflow">if</span> (!isFixed[i])</div>
-<div class="line"><span class="lineno">  506</span>                {</div>
-<div class="line"><span class="lineno">  507</span>                    min = <span class="keywordtype">float</span>.MaxValue;</div>
-<div class="line"><span class="lineno">  508</span>                    max = <span class="keywordtype">float</span>.MinValue;</div>
-<div class="line"><span class="lineno">  509</span> </div>
-<div class="line"><span class="lineno">  510</span>                    <span class="keywordflow">for</span> (entry = entry._next; entry._index != -1; entry = entry._next)</div>
-<div class="line"><span class="lineno">  511</span>                    {</div>
-<div class="line"><span class="lineno">  512</span>                        min = Math.Min(entry._value, min);</div>
-<div class="line"><span class="lineno">  513</span>                        max = Math.Max(entry._value, max);</div>
-<div class="line"><span class="lineno">  514</span>                    }</div>
-<div class="line"><span class="lineno">  515</span> </div>
-<div class="line"><span class="lineno">  516</span>                    floor[i] = min;</div>
-<div class="line"><span class="lineno">  517</span>                    ceil[i] = max;</div>
-<div class="line"><span class="lineno">  518</span> </div>
-<div class="line"><span class="lineno">  519</span>                    maxIndex = Math.Max(entry._prev._index, maxIndex);</div>
-<div class="line"><span class="lineno">  520</span>                }</div>
-<div class="line"><span class="lineno">  521</span>            }</div>
-<div class="line"><span class="lineno">  522</span> </div>
-<div class="line"><span class="lineno">  523</span>            <span class="keywordflow">if</span> (exist = isExist[0] || isExist[1] || isExist[2])</div>
-<div class="line"><span class="lineno">  524</span>            {</div>
-<div class="line"><span class="lineno">  525</span>                <span class="keywordflow">if</span> (group == 0)</div>
-<div class="line"><span class="lineno">  526</span>                {</div>
-<div class="line"><span class="lineno">  527</span>                    <span class="keywordflow">if</span> (isFixed[0] != isFixed[1] || isFixed[0] != isFixed[2])</div>
-<div class="line"><span class="lineno">  528</span>                    {</div>
-<div class="line"><span class="lineno">  529</span>                        isotropic = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  530</span>                    }</div>
-<div class="line"><span class="lineno">  531</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (count[0] != count[1] || count[0] != count[2])</div>
-<div class="line"><span class="lineno">  532</span>                    {</div>
-<div class="line"><span class="lineno">  533</span>                        isotropic = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  534</span>                    }</div>
-<div class="line"><span class="lineno">  535</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  536</span>                    {</div>
-<div class="line"><span class="lineno">  537</span>                        KeyframeEntry e1 = roots[0], e2 = roots[1], e3 = roots[2];</div>
-<div class="line"><span class="lineno">  538</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = count[0]; i-- &gt; 0;)</div>
-<div class="line"><span class="lineno">  539</span>                        {</div>
-<div class="line"><span class="lineno">  540</span>                            e1 = e1._next;</div>
-<div class="line"><span class="lineno">  541</span>                            e2 = e2._next;</div>
-<div class="line"><span class="lineno">  542</span>                            e3 = e3._next;</div>
-<div class="line"><span class="lineno">  543</span>                            <span class="keywordflow">if</span> (e1._index != e2._index || e1._index != e3._index ||</div>
-<div class="line"><span class="lineno">  544</span>                                e1._value != e2._value || e1._value != e3._value)</div>
-<div class="line"><span class="lineno">  545</span>                            {</div>
-<div class="line"><span class="lineno">  546</span>                                isotropic = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  547</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  548</span>                            }</div>
-<div class="line"><span class="lineno">  549</span>                        }</div>
-<div class="line"><span class="lineno">  550</span>                    }</div>
-<div class="line"><span class="lineno">  551</span>                }</div>
-<div class="line"><span class="lineno">  552</span> </div>
-<div class="line"><span class="lineno">  553</span>                <span class="keywordflow">if</span> (isotropic)</div>
-<div class="line"><span class="lineno">  554</span>                {</div>
-<div class="line"><span class="lineno">  555</span>                    evalCount = 1;</div>
-<div class="line"><span class="lineno">  556</span>                    maxEntries = count[0];</div>
-<div class="line"><span class="lineno">  557</span>                }</div>
-<div class="line"><span class="lineno">  558</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  559</span>                {</div>
-<div class="line"><span class="lineno">  560</span>                    evalCount = 3;</div>
-<div class="line"><span class="lineno">  561</span>                    maxEntries = Math.Max(Math.Max(count[0], count[1]), count[2]);</div>
-<div class="line"><span class="lineno">  562</span>                    <span class="comment">//useLinear &amp;= (count[0] == numFrames) &amp;&amp; (count[1] == numFrames) &amp;&amp; (count[2] == numFrames);</span></div>
-<div class="line"><span class="lineno">  563</span>                }</div>
-<div class="line"><span class="lineno">  564</span> </div>
-<div class="line"><span class="lineno">  565</span>                scaleSpan = @group == 1 ? 255 : maxIndex &lt;= 255 ? 4095 : maxIndex &lt;= 2047 ? 65535 : -1;</div>
-<div class="line"><span class="lineno">  566</span>                <span class="comment">//scaleSpan = useLinear ? 255 : 4095;</span></div>
-<div class="line"><span class="lineno">  567</span> </div>
-<div class="line"><span class="lineno">  568</span>                <span class="comment">//Determine if values are scalable</span></div>
-<div class="line"><span class="lineno">  569</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; evalCount; i++)</div>
-<div class="line"><span class="lineno">  570</span>                {</div>
-<div class="line"><span class="lineno">  571</span>                    isScalable[i] = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  572</span>                    <span class="keywordflow">if</span> (isFixed[i] || scaleSpan == -1)</div>
-<div class="line"><span class="lineno">  573</span>                    {</div>
-<div class="line"><span class="lineno">  574</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  575</span>                    }</div>
-<div class="line"><span class="lineno">  576</span> </div>
-<div class="line"><span class="lineno">  577</span>                    <span class="comment">//float* pValue = value[i];</span></div>
-<div class="line"><span class="lineno">  578</span>                    eCount = count[i];</div>
-<div class="line"><span class="lineno">  579</span> </div>
-<div class="line"><span class="lineno">  580</span>                    <span class="keywordtype">float</span> basev, range, step, distance, val;</div>
-<div class="line"><span class="lineno">  581</span> </div>
-<div class="line"><span class="lineno">  582</span>                    basev = floor[i];</div>
-<div class="line"><span class="lineno">  583</span>                    range = ceil[i] - basev;</div>
-<div class="line"><span class="lineno">  584</span> </div>
-<div class="line"><span class="lineno">  585</span> </div>
-<div class="line"><span class="lineno">  586</span>                    <span class="comment">//Evaluate spans until we reach a success.</span></div>
-<div class="line"><span class="lineno">  587</span>                    <span class="comment">//A success means that compression using that span is possible. </span></div>
-<div class="line"><span class="lineno">  588</span>                    <span class="comment">//No further evaluation necessary.</span></div>
-<div class="line"><span class="lineno">  589</span>                    SpanBegin:</div>
-<div class="line"><span class="lineno">  590</span>                    <span class="keywordtype">int</span> span = scaleSpan;</div>
-<div class="line"><span class="lineno">  591</span>                    <span class="keywordtype">int</span> spanEval = scaleSpan - 32;</div>
-<div class="line"><span class="lineno">  592</span> </div>
-<div class="line"><span class="lineno">  593</span>                    <span class="keywordtype">float</span> tanScale = scaleSpan == 4095 ? 32.0f : 256.0f;</div>
-<div class="line"><span class="lineno">  594</span>                    <span class="keywordflow">if</span> (scaleSpan != 255)</div>
-<div class="line"><span class="lineno">  595</span>                    {</div>
-<div class="line"><span class="lineno">  596</span>                        <span class="keywordflow">for</span> (entry = roots[i]._next; entry._index != -1; entry = entry._next)</div>
-<div class="line"><span class="lineno">  597</span>                        {</div>
-<div class="line"><span class="lineno">  598</span>                            <span class="comment">//Ignore entries that don&#39;t need interp.</span></div>
-<div class="line"><span class="lineno">  599</span>                            <span class="keywordflow">if</span> (entry._index - entry._prev._index &gt;= 1 &amp;&amp; entry._prev._index != -1 ||</div>
-<div class="line"><span class="lineno">  600</span>                                entry._next._index - entry._index &gt;= 1 &amp;&amp; entry._next._index != -1)</div>
-<div class="line"><span class="lineno">  601</span>                            {</div>
-<div class="line"><span class="lineno">  602</span>                                val = entry._tangent * tanScale;</div>
-<div class="line"><span class="lineno">  603</span>                                val += val &lt; 0 ? -0.5f : 0.5f;</div>
-<div class="line"><span class="lineno">  604</span>                                <span class="keywordflow">if</span> (Math.Abs((<span class="keywordtype">int</span>) val / tanScale - entry._tangent) &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a95689346527e95fe09ca196c45c218da">tanError</a>)</div>
-<div class="line"><span class="lineno">  605</span>                                {</div>
-<div class="line"><span class="lineno">  606</span>                                    span = spanEval;</div>
-<div class="line"><span class="lineno">  607</span>                                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  608</span>                                }</div>
-<div class="line"><span class="lineno">  609</span>                            }</div>
-<div class="line"><span class="lineno">  610</span>                        }</div>
-<div class="line"><span class="lineno">  611</span>                    }</div>
-<div class="line"><span class="lineno">  612</span> </div>
-<div class="line"><span class="lineno">  613</span>                    <span class="keywordflow">if</span> (span &gt; spanEval &amp;&amp; range == 0.0f)</div>
-<div class="line"><span class="lineno">  614</span>                    {</div>
-<div class="line"><span class="lineno">  615</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  616</span>                    }</div>
-<div class="line"><span class="lineno">  617</span> </div>
-<div class="line"><span class="lineno">  618</span>                    SpanStep:</div>
-<div class="line"><span class="lineno">  619</span>                    <span class="keywordflow">if</span> (span &gt; spanEval)</div>
-<div class="line"><span class="lineno">  620</span>                    {</div>
-<div class="line"><span class="lineno">  621</span>                        step = range / span;</div>
-<div class="line"><span class="lineno">  622</span> </div>
-<div class="line"><span class="lineno">  623</span>                        <span class="comment">//if span &lt;= 255, check every frame instead!</span></div>
-<div class="line"><span class="lineno">  624</span>                        <span class="keywordflow">if</span> (span &lt;= 255)</div>
-<div class="line"><span class="lineno">  625</span>                        {</div>
-<div class="line"><span class="lineno">  626</span>                            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; numFrames; x++)</div>
-<div class="line"><span class="lineno">  627</span>                            {</div>
-<div class="line"><span class="lineno">  628</span>                                val = kf[x, index + i];</div>
-<div class="line"><span class="lineno">  629</span>                                distance = (val - basev) / step + 0.5f;</div>
-<div class="line"><span class="lineno">  630</span>                                distance = Math.Abs(val - (basev + (<span class="keywordtype">int</span>) distance * step));</div>
-<div class="line"><span class="lineno">  631</span> </div>
-<div class="line"><span class="lineno">  632</span>                                <span class="comment">//If distance is too large change span and retry</span></div>
-<div class="line"><span class="lineno">  633</span>                                <span class="keywordflow">if</span> (distance &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a7543699ebc131de95560314eaf160fdc">scaleError</a>)</div>
-<div class="line"><span class="lineno">  634</span>                                {</div>
-<div class="line"><span class="lineno">  635</span>                                    span--;</div>
-<div class="line"><span class="lineno">  636</span>                                    <span class="keywordflow">goto</span> SpanStep;</div>
-<div class="line"><span class="lineno">  637</span>                                }</div>
-<div class="line"><span class="lineno">  638</span>                            }</div>
-<div class="line"><span class="lineno">  639</span>                        }</div>
-<div class="line"><span class="lineno">  640</span>                        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  641</span>                        {</div>
-<div class="line"><span class="lineno">  642</span>                            <span class="keywordflow">for</span> (entry = roots[i]._next; entry._index != -1; entry = entry._next)</div>
-<div class="line"><span class="lineno">  643</span>                            {</div>
-<div class="line"><span class="lineno">  644</span>                                val = entry._value;</div>
-<div class="line"><span class="lineno">  645</span>                                distance = (val - basev) / step + 0.5f;</div>
-<div class="line"><span class="lineno">  646</span>                                distance = Math.Abs(val - (basev + (<span class="keywordtype">int</span>) distance * step));</div>
-<div class="line"><span class="lineno">  647</span> </div>
-<div class="line"><span class="lineno">  648</span>                                <span class="comment">//If distance is too large change span and retry</span></div>
-<div class="line"><span class="lineno">  649</span>                                <span class="keywordflow">if</span> (distance &gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a7543699ebc131de95560314eaf160fdc">scaleError</a>)</div>
-<div class="line"><span class="lineno">  650</span>                                {</div>
-<div class="line"><span class="lineno">  651</span>                                    span--;</div>
-<div class="line"><span class="lineno">  652</span>                                    <span class="keywordflow">goto</span> SpanStep;</div>
-<div class="line"><span class="lineno">  653</span>                                }</div>
-<div class="line"><span class="lineno">  654</span>                            }</div>
-<div class="line"><span class="lineno">  655</span>                        }</div>
-<div class="line"><span class="lineno">  656</span>                    }</div>
-<div class="line"><span class="lineno">  657</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  658</span>                    {</div>
-<div class="line"><span class="lineno">  659</span>                        <span class="keywordflow">if</span> (scaleSpan &lt;= 255 &amp;&amp; maxIndex &lt;= 255)</div>
-<div class="line"><span class="lineno">  660</span>                        {</div>
-<div class="line"><span class="lineno">  661</span>                            scaleSpan = 4095;</div>
-<div class="line"><span class="lineno">  662</span>                        }</div>
-<div class="line"><span class="lineno">  663</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (scaleSpan &lt;= 4095 &amp;&amp; maxIndex &lt;= 2047)</div>
-<div class="line"><span class="lineno">  664</span>                        {</div>
-<div class="line"><span class="lineno">  665</span>                            scaleSpan = 65535;</div>
-<div class="line"><span class="lineno">  666</span>                        }</div>
-<div class="line"><span class="lineno">  667</span>                        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  668</span>                        {</div>
-<div class="line"><span class="lineno">  669</span>                            scaleSpan = -1;</div>
-<div class="line"><span class="lineno">  670</span>                            isScalable[i] = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  671</span>                            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  672</span>                        }</div>
-<div class="line"><span class="lineno">  673</span> </div>
-<div class="line"><span class="lineno">  674</span>                        <span class="keywordflow">goto</span> SpanBegin;</div>
-<div class="line"><span class="lineno">  675</span>                    }</div>
-<div class="line"><span class="lineno">  676</span>                }</div>
-<div class="line"><span class="lineno">  677</span> </div>
-<div class="line"><span class="lineno">  678</span>                <span class="comment">//Determine format only if there are unfixed entries</span></div>
-<div class="line"><span class="lineno">  679</span>                <span class="keywordflow">if</span> (!isFixed[0] || !isFixed[1] || !isFixed[2])</div>
-<div class="line"><span class="lineno">  680</span>                {</div>
-<div class="line"><span class="lineno">  681</span>                    <span class="keywordtype">bool</span> scale = isotropic ? isScalable[0] : isScalable[0] &amp;&amp; isScalable[1] &amp;&amp; isScalable[2];</div>
-<div class="line"><span class="lineno">  682</span>                    <span class="keywordtype">float</span> frameSpan = (float) numFrames / maxEntries;</div>
-<div class="line"><span class="lineno">  683</span> </div>
-<div class="line"><span class="lineno">  684</span>                    <span class="keywordflow">if</span> (scale)</div>
-<div class="line"><span class="lineno">  685</span>                    {</div>
-<div class="line"><span class="lineno">  686</span>                        <span class="keywordflow">if</span> (@group == 1 &amp;&amp; scaleSpan &lt;= 255 &amp;&amp; frameSpan &lt; 4.0f)</div>
-<div class="line"><span class="lineno">  687</span>                        {</div>
-<div class="line"><span class="lineno">  688</span>                            format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L1;</div>
-<div class="line"><span class="lineno">  689</span>                        }</div>
-<div class="line"><span class="lineno">  690</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (scaleSpan &lt;= 4095 &amp;&amp; maxIndex &lt;= 255)</div>
-<div class="line"><span class="lineno">  691</span>                        {</div>
-<div class="line"><span class="lineno">  692</span>                            format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I4;</div>
-<div class="line"><span class="lineno">  693</span>                        }</div>
-<div class="line"><span class="lineno">  694</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (frameSpan &gt; 1.5f &amp;&amp; maxIndex &lt;= 2047)</div>
-<div class="line"><span class="lineno">  695</span>                        {</div>
-<div class="line"><span class="lineno">  696</span>                            format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I6;</div>
-<div class="line"><span class="lineno">  697</span>                        }</div>
-<div class="line"><span class="lineno">  698</span>                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (@group == 1 &amp;&amp; frameSpan &lt;= 3.0f)</div>
-<div class="line"><span class="lineno">  699</span>                        {</div>
-<div class="line"><span class="lineno">  700</span>                            format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L4;</div>
-<div class="line"><span class="lineno">  701</span>                        }</div>
-<div class="line"><span class="lineno">  702</span>                        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  703</span>                        {</div>
-<div class="line"><span class="lineno">  704</span>                            format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12;</div>
-<div class="line"><span class="lineno">  705</span>                        }</div>
-<div class="line"><span class="lineno">  706</span>                    }</div>
-<div class="line"><span class="lineno">  707</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (@group == 1 &amp;&amp; frameSpan &lt;= 3.0f)</div>
-<div class="line"><span class="lineno">  708</span>                    {</div>
-<div class="line"><span class="lineno">  709</span>                        format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L4;</div>
-<div class="line"><span class="lineno">  710</span>                    }</div>
-<div class="line"><span class="lineno">  711</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  712</span>                    {</div>
-<div class="line"><span class="lineno">  713</span>                        format = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12;</div>
-<div class="line"><span class="lineno">  714</span>                    }</div>
-<div class="line"><span class="lineno">  715</span>                }</div>
-<div class="line"><span class="lineno">  716</span> </div>
-<div class="line"><span class="lineno">  717</span>                <span class="comment">//calculate size</span></div>
-<div class="line"><span class="lineno">  718</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; evalCount; i++)</div>
-<div class="line"><span class="lineno">  719</span>                {</div>
-<div class="line"><span class="lineno">  720</span>                    entrySize += 4;</div>
-<div class="line"><span class="lineno">  721</span> </div>
-<div class="line"><span class="lineno">  722</span>                    <span class="keywordflow">if</span> (!isFixed[i])</div>
-<div class="line"><span class="lineno">  723</span>                    {</div>
-<div class="line"><span class="lineno">  724</span>                        <span class="keywordflow">switch</span> (format)</div>
-<div class="line"><span class="lineno">  725</span>                        {</div>
-<div class="line"><span class="lineno">  726</span>                            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I12:</div>
-<div class="line"><span class="lineno">  727</span>                                dataLen += 8 + count[i] * 12;</div>
-<div class="line"><span class="lineno">  728</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  729</span> </div>
-<div class="line"><span class="lineno">  730</span>                            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I4:</div>
-<div class="line"><span class="lineno">  731</span>                                dataLen += 16 + count[i] * 4;</div>
-<div class="line"><span class="lineno">  732</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  733</span> </div>
-<div class="line"><span class="lineno">  734</span>                            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.I6:</div>
-<div class="line"><span class="lineno">  735</span>                                dataLen += (16 + count[i] * 6).Align(4);</div>
-<div class="line"><span class="lineno">  736</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  737</span> </div>
-<div class="line"><span class="lineno">  738</span>                            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L1:</div>
-<div class="line"><span class="lineno">  739</span>                                dataLen += (8 + numFrames).Align(4);</div>
-<div class="line"><span class="lineno">  740</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  741</span> </div>
-<div class="line"><span class="lineno">  742</span>                            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a5b7df835f9135fb4052993d18c9ccaac">AnimDataFormat</a>.L4:</div>
-<div class="line"><span class="lineno">  743</span>                                dataLen += numFrames * 4;</div>
-<div class="line"><span class="lineno">  744</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  745</span>                        }</div>
-<div class="line"><span class="lineno">  746</span>                    }</div>
-<div class="line"><span class="lineno">  747</span>                }</div>
-<div class="line"><span class="lineno">  748</span> </div>
-<div class="line"><span class="lineno">  749</span>                <span class="comment">//Should we compress here?</span></div>
-<div class="line"><span class="lineno">  750</span>            }</div>
-<div class="line"><span class="lineno">  751</span>            <span class="keywordflow">else</span> <span class="comment">//Set isotropic to true, so it sets the default value.</span></div>
-<div class="line"><span class="lineno">  752</span>            {</div>
-<div class="line"><span class="lineno">  753</span>                isotropic = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  754</span>            }</div>
-<div class="line"><span class="lineno">  755</span> </div>
-<div class="line"><span class="lineno">  756</span>            <span class="keywordflow">if</span> (group == 0)</div>
-<div class="line"><span class="lineno">  757</span>            {</div>
-<div class="line"><span class="lineno">  758</span>                code.IgnoreScale = !exist;</div>
-<div class="line"><span class="lineno">  759</span>            }</div>
-<div class="line"><span class="lineno">  760</span> </div>
-<div class="line"><span class="lineno">  761</span>            code.SetExists(group, exist);</div>
-<div class="line"><span class="lineno">  762</span>            code.SetIsIsotropic(group, isotropic);</div>
-<div class="line"><span class="lineno">  763</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++)</div>
-<div class="line"><span class="lineno">  764</span>            {</div>
-<div class="line"><span class="lineno">  765</span>                code.SetIsFixed(index + i, isFixed[i]);</div>
-<div class="line"><span class="lineno">  766</span>            }</div>
-<div class="line"><span class="lineno">  767</span> </div>
-<div class="line"><span class="lineno">  768</span>            code.SetFormat(group, format);</div>
-<div class="line"><span class="lineno">  769</span> </div>
-<div class="line"><span class="lineno">  770</span>            <span class="keywordflow">return</span> dataLen;</div>
-<div class="line"><span class="lineno">  771</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter_html_a95689346527e95fe09ca196c45c218da"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_animation_converter.html#a95689346527e95fe09ca196c45c218da">BrawlLib.Wii.Animations.AnimationConverter.tanError</a></div><div class="ttdeci">const float tanError</div><div class="ttdef"><b>Definition:</b> AnimationConverter.cs:463</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a31d478f74917396cbb60d81b19c9ca38" name="a31d478f74917396cbb60d81b19c9ca38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31d478f74917396cbb60d81b19c9ca38">&#9670;&#160;</a></span>EvaluateSRT0Group()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static int BrawlLib.Wii.Animations.AnimationConverter.EvaluateSRT0Group </td>
-          <td>(</td>
-          <td class="paramtype">ref <a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations_1_1_s_r_t0_code.html">SRT0Code</a>&#160;</td>
-          <td class="paramname"><em>code</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_collection.html">KeyframeCollection</a>&#160;</td>
-          <td class="paramname"><em>kf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>group</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ref int&#160;</td>
-          <td class="paramname"><em>entrySize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  774</span>        {</div>
-<div class="line"><span class="lineno">  775</span>            <span class="comment">//SRT0s always use I12</span></div>
-<div class="line"><span class="lineno">  776</span> </div>
-<div class="line"><span class="lineno">  777</span>            <span class="comment">//group</span></div>
-<div class="line"><span class="lineno">  778</span>            <span class="comment">//0 = scale</span></div>
-<div class="line"><span class="lineno">  779</span>            <span class="comment">//1 = rot</span></div>
-<div class="line"><span class="lineno">  780</span>            <span class="comment">//2 = trans</span></div>
-<div class="line"><span class="lineno">  781</span> </div>
-<div class="line"><span class="lineno">  782</span>            <span class="keywordtype">int</span> index = group == 0 ? 0 : group == 1 ? 2 : 3;</div>
-<div class="line"><span class="lineno">  783</span>            <span class="keywordtype">int</span> numFrames = kf.FrameLimit;</div>
-<div class="line"><span class="lineno">  784</span>            <span class="keywordtype">int</span> dataLen = 0;</div>
-<div class="line"><span class="lineno">  785</span>            KeyframeEntry[] roots = <span class="keyword">new</span> KeyframeEntry[2];</div>
-<div class="line"><span class="lineno">  786</span>            <span class="keywordtype">bool</span> exist = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  787</span>            <span class="keywordtype">bool</span> isotropic = group == 0;</div>
-<div class="line"><span class="lineno">  788</span>            <span class="keywordtype">int</span>[] count = <span class="keyword">new</span> <span class="keywordtype">int</span>[2];</div>
-<div class="line"><span class="lineno">  789</span>            <span class="keywordtype">bool</span>[] isExist = <span class="keyword">new</span> <span class="keywordtype">bool</span>[2];</div>
-<div class="line"><span class="lineno">  790</span>            <span class="keywordtype">bool</span>[] isFixed = <span class="keyword">new</span> <span class="keywordtype">bool</span>[2];</div>
-<div class="line"><span class="lineno">  791</span> </div>
-<div class="line"><span class="lineno">  792</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (group == 1 ? 1 : 2); i++)</div>
-<div class="line"><span class="lineno">  793</span>            {</div>
-<div class="line"><span class="lineno">  794</span>                roots[i] = kf._keyArrays[index + i]._keyRoot;</div>
-<div class="line"><span class="lineno">  795</span>                count[i] = kf._keyArrays[index + i]._keyCount;</div>
-<div class="line"><span class="lineno">  796</span>                isExist[i] = count[i] &gt; 0;</div>
-<div class="line"><span class="lineno">  797</span>                isFixed[i] = count[i] &lt;= 1;</div>
-<div class="line"><span class="lineno">  798</span>            }</div>
-<div class="line"><span class="lineno">  799</span> </div>
-<div class="line"><span class="lineno">  800</span>            <span class="keywordflow">if</span> (exist = isExist[0] || isExist[1])</div>
-<div class="line"><span class="lineno">  801</span>            {</div>
-<div class="line"><span class="lineno">  802</span>                <span class="keywordflow">if</span> (group == 0)</div>
-<div class="line"><span class="lineno">  803</span>                {</div>
-<div class="line"><span class="lineno">  804</span>                    <span class="keywordflow">if</span> (isFixed[0] != isFixed[1])</div>
-<div class="line"><span class="lineno">  805</span>                    {</div>
-<div class="line"><span class="lineno">  806</span>                        isotropic = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  807</span>                    }</div>
-<div class="line"><span class="lineno">  808</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (count[0] != count[1])</div>
-<div class="line"><span class="lineno">  809</span>                    {</div>
-<div class="line"><span class="lineno">  810</span>                        isotropic = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  811</span>                    }</div>
-<div class="line"><span class="lineno">  812</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  813</span>                    {</div>
-<div class="line"><span class="lineno">  814</span>                        KeyframeEntry e1 = roots[0], e2 = roots[1];</div>
-<div class="line"><span class="lineno">  815</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = count[0]; i-- &gt; 0;)</div>
-<div class="line"><span class="lineno">  816</span>                        {</div>
-<div class="line"><span class="lineno">  817</span>                            e1 = e1._next;</div>
-<div class="line"><span class="lineno">  818</span>                            e2 = e2._next;</div>
-<div class="line"><span class="lineno">  819</span>                            <span class="keywordflow">if</span> (e1._index != e2._index ||</div>
-<div class="line"><span class="lineno">  820</span>                                e1._value != e2._value)</div>
-<div class="line"><span class="lineno">  821</span>                            {</div>
-<div class="line"><span class="lineno">  822</span>                                isotropic = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  823</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  824</span>                            }</div>
-<div class="line"><span class="lineno">  825</span>                        }</div>
-<div class="line"><span class="lineno">  826</span>                    }</div>
-<div class="line"><span class="lineno">  827</span>                }</div>
-<div class="line"><span class="lineno">  828</span>            }</div>
-<div class="line"><span class="lineno">  829</span> </div>
-<div class="line"><span class="lineno">  830</span>            <span class="keywordflow">if</span> (group == 0 &amp;&amp; !isotropic)</div>
-<div class="line"><span class="lineno">  831</span>            {</div>
-<div class="line"><span class="lineno">  832</span>                code.ScaleIsotropic = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  833</span>            }</div>
-<div class="line"><span class="lineno">  834</span> </div>
-<div class="line"><span class="lineno">  835</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (group == 1 ? 1 : 2); i++)</div>
-<div class="line"><span class="lineno">  836</span>            {</div>
-<div class="line"><span class="lineno">  837</span>                <span class="keywordflow">if</span> (exist)</div>
-<div class="line"><span class="lineno">  838</span>                {</div>
-<div class="line"><span class="lineno">  839</span>                    <span class="keywordflow">switch</span> (group)</div>
-<div class="line"><span class="lineno">  840</span>                    {</div>
-<div class="line"><span class="lineno">  841</span>                        <span class="keywordflow">case</span> 0:</div>
-<div class="line"><span class="lineno">  842</span>                            code.NoScale = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  843</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  844</span>                        <span class="keywordflow">case</span> 1:</div>
-<div class="line"><span class="lineno">  845</span>                            code.NoRotation = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  846</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  847</span>                        <span class="keywordflow">case</span> 2:</div>
-<div class="line"><span class="lineno">  848</span>                            code.NoTranslation = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  849</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  850</span>                    }</div>
-<div class="line"><span class="lineno">  851</span> </div>
-<div class="line"><span class="lineno">  852</span>                    <span class="keywordflow">if</span> (!(group == 0 &amp;&amp; i == 1 &amp;&amp; code.ScaleIsotropic))</div>
-<div class="line"><span class="lineno">  853</span>                    {</div>
-<div class="line"><span class="lineno">  854</span>                        entrySize += 4;</div>
-<div class="line"><span class="lineno">  855</span>                    }</div>
-<div class="line"><span class="lineno">  856</span> </div>
-<div class="line"><span class="lineno">  857</span>                    <span class="keywordflow">if</span> (!isFixed[i])</div>
-<div class="line"><span class="lineno">  858</span>                    {</div>
-<div class="line"><span class="lineno">  859</span>                        <span class="keywordflow">switch</span> (group)</div>
-<div class="line"><span class="lineno">  860</span>                        {</div>
-<div class="line"><span class="lineno">  861</span>                            <span class="keywordflow">case</span> 0:</div>
-<div class="line"><span class="lineno">  862</span>                                <span class="keywordflow">switch</span> (i)</div>
-<div class="line"><span class="lineno">  863</span>                                {</div>
-<div class="line"><span class="lineno">  864</span>                                    <span class="keywordflow">case</span> 0:</div>
-<div class="line"><span class="lineno">  865</span>                                        code.FixedScaleX = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  866</span>                                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  867</span>                                    <span class="keywordflow">case</span> 1:</div>
-<div class="line"><span class="lineno">  868</span>                                        code.FixedScaleY = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  869</span>                                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  870</span>                                }</div>
-<div class="line"><span class="lineno">  871</span> </div>
-<div class="line"><span class="lineno">  872</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  873</span>                            <span class="keywordflow">case</span> 1:</div>
-<div class="line"><span class="lineno">  874</span>                                code.FixedRotation = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  875</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  876</span>                            <span class="keywordflow">case</span> 2:</div>
-<div class="line"><span class="lineno">  877</span>                                <span class="keywordflow">switch</span> (i)</div>
-<div class="line"><span class="lineno">  878</span>                                {</div>
-<div class="line"><span class="lineno">  879</span>                                    <span class="keywordflow">case</span> 0:</div>
-<div class="line"><span class="lineno">  880</span>                                        code.FixedX = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  881</span>                                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  882</span>                                    <span class="keywordflow">case</span> 1:</div>
-<div class="line"><span class="lineno">  883</span>                                        code.FixedY = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  884</span>                                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  885</span>                                }</div>
-<div class="line"><span class="lineno">  886</span> </div>
-<div class="line"><span class="lineno">  887</span>                                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  888</span>                        }</div>
-<div class="line"><span class="lineno">  889</span> </div>
-<div class="line"><span class="lineno">  890</span>                        <span class="keywordflow">if</span> (!(group == 0 &amp;&amp; i == 1 &amp;&amp; code.ScaleIsotropic))</div>
-<div class="line"><span class="lineno">  891</span>                        {</div>
-<div class="line"><span class="lineno">  892</span>                            dataLen += 8 + count[i] * 12;</div>
-<div class="line"><span class="lineno">  893</span>                        }</div>
-<div class="line"><span class="lineno">  894</span>                    }</div>
-<div class="line"><span class="lineno">  895</span>                }</div>
-<div class="line"><span class="lineno">  896</span>            }</div>
-<div class="line"><span class="lineno">  897</span> </div>
-<div class="line"><span class="lineno">  898</span>            <span class="keywordflow">return</span> dataLen;</div>
-<div class="line"><span class="lineno">  899</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7543699ebc131de95560314eaf160fdc" name="a7543699ebc131de95560314eaf160fdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7543699ebc131de95560314eaf160fdc">&#9670;&#160;</a></span>scaleError</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.Wii.Animations.AnimationConverter.scaleError = 0.0005f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a95689346527e95fe09ca196c45c218da" name="a95689346527e95fe09ca196c45c218da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95689346527e95fe09ca196c45c218da">&#9670;&#160;</a></span>tanError</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const float BrawlLib.Wii.Animations.AnimationConverter.tanError = 0.001f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

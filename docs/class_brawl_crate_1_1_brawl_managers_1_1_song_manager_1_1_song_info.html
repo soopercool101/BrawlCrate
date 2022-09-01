@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.BrawlManagers.SongManager.SongInfo Class Reference</div></div>
 </div><!--header-->
@@ -97,15 +96,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a870ee3f9478c39859038f69ab3ffbfd6"><td class="memItemLeft" align="right" valign="top">FileInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a870ee3f9478c39859038f69ab3ffbfd6">File</a><code> [get, private set]</code></td></tr>
+<tr class="memitem:a870ee3f9478c39859038f69ab3ffbfd6"><td class="memItemLeft" align="right" valign="top">FileInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a870ee3f9478c39859038f69ab3ffbfd6">File</a><code> [get]</code></td></tr>
 <tr class="separator:a870ee3f9478c39859038f69ab3ffbfd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:af4a1e1f5b16bf2b005624ec987dae018"><td class="memItemLeft" align="right" valign="top">ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#af4a1e1f5b16bf2b005624ec987dae018">ID</a></td></tr>
-<tr class="separator:af4a1e1f5b16bf2b005624ec987dae018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b505378f71bbd8cd614e4cfc3a55ec6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset.html">CustomSongVolumeCodeset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a7b505378f71bbd8cd614e4cfc3a55ec6">CSV</a></td></tr>
-<tr class="separator:a7b505378f71bbd8cd614e4cfc3a55ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab0af5d36c4779a27cffba503511fc382" name="ab0af5d36c4779a27cffba503511fc382"></a>
@@ -205,11 +197,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   23</span>                        where b.ID == <span class="keywordtype">id</span></div>
 <div class="line"><span class="lineno">   24</span>                        select b.Filename).FirstOrDefault() ?? <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X4&quot;</span>);</div>
 <div class="line"><span class="lineno">   25</span>            <a class="code hl_property" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a870ee3f9478c39859038f69ab3ffbfd6">File</a> = <span class="keyword">new</span> FileInfo(s + <span class="stringliteral">&quot;.brstm&quot;</span>);</div>
-<div class="line"><span class="lineno">   26</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#af4a1e1f5b16bf2b005624ec987dae018">ID</a> = id;</div>
-<div class="line"><span class="lineno">   27</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a7b505378f71bbd8cd614e4cfc3a55ec6">CSV</a> = csv;</div>
+<div class="line"><span class="lineno">   26</span>            ID = id;</div>
+<div class="line"><span class="lineno">   27</span>            CSV = csv;</div>
 <div class="line"><span class="lineno">   28</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info_html_a7b505378f71bbd8cd614e4cfc3a55ec6"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a7b505378f71bbd8cd614e4cfc3a55ec6">BrawlCrate.BrawlManagers.SongManager.SongInfo.CSV</a></div><div class="ttdeci">CustomSongVolumeCodeset CSV</div><div class="ttdef"><b>Definition:</b> SongInfo.cs:33</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info_html_af4a1e1f5b16bf2b005624ec987dae018"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#af4a1e1f5b16bf2b005624ec987dae018">BrawlCrate.BrawlManagers.SongManager.SongInfo.ID</a></div><div class="ttdeci">ushort ID</div><div class="ttdef"><b>Definition:</b> SongInfo.cs:32</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -247,60 +237,15 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   44</span>                s = <span class="stringliteral">&quot;  &quot;</span> + s;</div>
 <div class="line"><span class="lineno">   45</span>            }</div>
 <div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a7b505378f71bbd8cd614e4cfc3a55ec6">CSV</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (CSV != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   48</span>            {</div>
-<div class="line"><span class="lineno">   49</span>                s += <span class="stringliteral">&quot; - &quot;</span> + <a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#a7b505378f71bbd8cd614e4cfc3a55ec6">CSV</a>.<a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset.html#af53f1e1b2e9ce885ad94380c00e8a4e8">Settings</a>[<a class="code hl_variable" href="class_brawl_crate_1_1_brawl_managers_1_1_song_manager_1_1_song_info.html#af4a1e1f5b16bf2b005624ec987dae018">ID</a>];</div>
+<div class="line"><span class="lineno">   49</span>                s += <span class="stringliteral">&quot; - &quot;</span> + CSV.<a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset.html#af53f1e1b2e9ce885ad94380c00e8a4e8">Settings</a>[ID];</div>
 <div class="line"><span class="lineno">   50</span>            }</div>
 <div class="line"><span class="lineno">   51</span> </div>
 <div class="line"><span class="lineno">   52</span>            <span class="keywordflow">return</span> s;</div>
 <div class="line"><span class="lineno">   53</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset_html_af53f1e1b2e9ce885ad94380c00e8a4e8"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset.html#af53f1e1b2e9ce885ad94380c00e8a4e8">BrawlLib.BrawlManagerLib.GCT.ReadWrite.CustomSongVolumeCodeset.Settings</a></div><div class="ttdeci">Dictionary&lt; ushort, byte &gt; Settings</div><div class="ttdef"><b>Definition:</b> CustomSongVolumeCodeset.cs:22</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7b505378f71bbd8cd614e4cfc3a55ec6" name="a7b505378f71bbd8cd614e4cfc3a55ec6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b505378f71bbd8cd614e4cfc3a55ec6">&#9670;&#160;</a></span>CSV</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_write_1_1_custom_song_volume_codeset.html">CustomSongVolumeCodeset</a> BrawlCrate.BrawlManagers.SongManager.SongInfo.CSV</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af4a1e1f5b16bf2b005624ec987dae018" name="af4a1e1f5b16bf2b005624ec987dae018"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4a1e1f5b16bf2b005624ec987dae018">&#9670;&#160;</a></span>ID</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ushort BrawlCrate.BrawlManagers.SongManager.SongInfo.ID</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -319,7 +264,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

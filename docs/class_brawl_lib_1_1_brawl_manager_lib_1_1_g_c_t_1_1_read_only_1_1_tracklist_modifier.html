@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.BrawlManagerLib.GCT.ReadOnly.TracklistModifier Class Reference</div></div>
 </div><!--header-->
@@ -94,15 +93,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ac71f47b242a990470cd1300d952f5b02"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; byte, byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#ac71f47b242a990470cd1300d952f5b02">StageIdMap</a><code> [get, set]</code></td></tr>
-<tr class="separator:ac71f47b242a990470cd1300d952f5b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b369723f205b819e873aeba429185ae"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#a0b369723f205b819e873aeba429185ae">this[int stageId]</a><code> [get]</code></td></tr>
 <tr class="separator:a0b369723f205b819e873aeba429185ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a2bc974be607c0af31d5634ca6a253471"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#a2bc974be607c0af31d5634ca6a253471">HEADER</a> = {0xC2, 0x10, 0xF9, 0xB4, 0x00, 0x00, 0x00}</td></tr>
-<tr class="separator:a2bc974be607c0af31d5634ca6a253471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Allows read-only access to the Tracklist Modifier code in a <a class="el" href="namespace_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t.html">GCT</a> codeset.  </p>
@@ -145,7 +137,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   44</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   45</span>                    }</div>
 <div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>                    <span class="keywordflow">if</span> (ByteUtilities.ByteArrayEquals(line, 0, <a class="code hl_variable" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#a2bc974be607c0af31d5634ca6a253471">HEADER</a>, 0, 7))</div>
+<div class="line"><span class="lineno">   47</span>                    <span class="keywordflow">if</span> (ByteUtilities.ByteArrayEquals(line, 0, HEADER, 0, 7))</div>
 <div class="line"><span class="lineno">   48</span>                    {</div>
 <div class="line"><span class="lineno">   49</span>                        <span class="keywordtype">int</span> lines = line[7];</div>
 <div class="line"><span class="lineno">   50</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lines; i++)</div>
@@ -179,12 +171,12 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   78</span>                }</div>
 <div class="line"><span class="lineno">   79</span>            }</div>
 <div class="line"><span class="lineno">   80</span> </div>
-<div class="line"><span class="lineno">   81</span>            <a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#ac71f47b242a990470cd1300d952f5b02">StageIdMap</a> = <span class="keyword">new</span> Dictionary&lt;byte, byte&gt;();</div>
+<div class="line"><span class="lineno">   81</span>            StageIdMap = <span class="keyword">new</span> Dictionary&lt;byte, byte&gt;();</div>
 <div class="line"><span class="lineno">   82</span>            <span class="keywordflow">foreach</span> (KeyValuePair&lt;byte, byte&gt; pair <span class="keywordflow">in</span> map1)</div>
 <div class="line"><span class="lineno">   83</span>            {</div>
 <div class="line"><span class="lineno">   84</span>                <span class="keywordflow">if</span> (map2.TryGetValue(pair.Value, out <span class="keywordtype">byte</span> newStageId))</div>
 <div class="line"><span class="lineno">   85</span>                {</div>
-<div class="line"><span class="lineno">   86</span>                    <a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#ac71f47b242a990470cd1300d952f5b02">StageIdMap</a>.Add(pair.Key, newStageId);</div>
+<div class="line"><span class="lineno">   86</span>                    StageIdMap.Add(pair.Key, newStageId);</div>
 <div class="line"><span class="lineno">   87</span>                }</div>
 <div class="line"><span class="lineno">   88</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   89</span>                {</div>
@@ -193,58 +185,10 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   92</span>                }</div>
 <div class="line"><span class="lineno">   93</span>            }</div>
 <div class="line"><span class="lineno">   94</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier_html_a2bc974be607c0af31d5634ca6a253471"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#a2bc974be607c0af31d5634ca6a253471">BrawlLib.BrawlManagerLib.GCT.ReadOnly.TracklistModifier.HEADER</a></div><div class="ttdeci">static byte[] HEADER</div><div class="ttdef"><b>Definition:</b> TracklistModifier.cs:13</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier_html_ac71f47b242a990470cd1300d952f5b02"><div class="ttname"><a href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#ac71f47b242a990470cd1300d952f5b02">BrawlLib.BrawlManagerLib.GCT.ReadOnly.TracklistModifier.StageIdMap</a></div><div class="ttdeci">Dictionary&lt; byte, byte &gt; StageIdMap</div><div class="ttdef"><b>Definition:</b> TracklistModifier.cs:15</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2bc974be607c0af31d5634ca6a253471" name="a2bc974be607c0af31d5634ca6a253471"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bc974be607c0af31d5634ca6a253471">&#9670;&#160;</a></span>HEADER</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte [] BrawlLib.BrawlManagerLib.GCT.ReadOnly.TracklistModifier.HEADER = {0xC2, 0x10, 0xF9, 0xB4, 0x00, 0x00, 0x00}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ac71f47b242a990470cd1300d952f5b02" name="ac71f47b242a990470cd1300d952f5b02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac71f47b242a990470cd1300d952f5b02">&#9670;&#160;</a></span>StageIdMap</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;byte, byte&gt; BrawlLib.BrawlManagerLib.GCT.ReadOnly.TracklistModifier.StageIdMap</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   15</span>{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a0b369723f205b819e873aeba429185ae" name="a0b369723f205b819e873aeba429185ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b369723f205b819e873aeba429185ae">&#9670;&#160;</a></span>this[int stageId]</h2>
 
@@ -268,7 +212,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   19</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   20</span>            {</div>
 <div class="line"><span class="lineno">   21</span>                <span class="keywordtype">byte</span> <span class="keywordtype">id</span> = (byte) stageId;</div>
-<div class="line"><span class="lineno">   22</span>                <span class="keywordflow">if</span> (<span class="keywordtype">id</span> == stageId &amp;&amp; <a class="code hl_property" href="class_brawl_lib_1_1_brawl_manager_lib_1_1_g_c_t_1_1_read_only_1_1_tracklist_modifier.html#ac71f47b242a990470cd1300d952f5b02">StageIdMap</a>.TryGetValue(<span class="keywordtype">id</span>, out <span class="keywordtype">byte</span> newStageId))</div>
+<div class="line"><span class="lineno">   22</span>                <span class="keywordflow">if</span> (<span class="keywordtype">id</span> == stageId &amp;&amp; StageIdMap.TryGetValue(<span class="keywordtype">id</span>, out <span class="keywordtype">byte</span> newStageId))</div>
 <div class="line"><span class="lineno">   23</span>                {</div>
 <div class="line"><span class="lineno">   24</span>                    <span class="keywordflow">return</span> newStageId;</div>
 <div class="line"><span class="lineno">   25</span>                }</div>
