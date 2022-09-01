@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.PPCDisassembler Class Reference</div></div>
 </div><!--header-->
@@ -124,13 +123,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ad28ac7e184e82859cd6ea2b5a6a799fb"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#ad28ac7e184e82859cd6ea2b5a6a799fb">Dispose</a> (bool disposing)</td></tr>
 <tr class="memdesc:ad28ac7e184e82859cd6ea2b5a6a799fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up any resources being used.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#ad28ac7e184e82859cd6ea2b5a6a799fb">More...</a><br /></td></tr>
 <tr class="separator:ad28ac7e184e82859cd6ea2b5a6a799fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a07932bf4efd1962263997d5fb1a99198"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html">RelocationManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a></td></tr>
-<tr class="separator:a07932bf4efd1962263997d5fb1a99198"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51a1c93720805df4b0a13b1c393c8388"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_op_code_edit_control.html">PPCOpCodeEditControl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a51a1c93720805df4b0a13b1c393c8388">ppcOpCodeEditControl1</a></td></tr>
-<tr class="separator:a51a1c93720805df4b0a13b1c393c8388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9731df55d066732c79633a2fab925838" name="a9731df55d066732c79633a2fab925838"></a>
@@ -308,13 +300,13 @@ Package Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   49</span>                <span class="keywordtype">int</span> startIndex = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7d263a4859102e90a55b027a7bcf4e98">_sectionOffset</a> / 4;</div>
 <div class="line"><span class="lineno">   50</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7dae4b197c3f9f3d911185ac2948aa36">_codes</a>.Count; i++)</div>
 <div class="line"><span class="lineno">   51</span>                {</div>
-<div class="line"><span class="lineno">   52</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#afea8e9b6ee68a7327f9f675cc02f6606">ClearColor</a>(startIndex + i);</div>
+<div class="line"><span class="lineno">   52</span>                    _manager.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#afea8e9b6ee68a7327f9f675cc02f6606">ClearColor</a>(startIndex + i);</div>
 <div class="line"><span class="lineno">   53</span>                }</div>
 <div class="line"><span class="lineno">   54</span>            }</div>
 <div class="line"><span class="lineno">   55</span> </div>
 <div class="line"><span class="lineno">   56</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7dae4b197c3f9f3d911185ac2948aa36">_codes</a> = relocations;</div>
 <div class="line"><span class="lineno">   57</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7d263a4859102e90a55b027a7bcf4e98">_sectionOffset</a> = sectionOffset;</div>
-<div class="line"><span class="lineno">   58</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a> = manager;</div>
+<div class="line"><span class="lineno">   58</span>            _manager = manager;</div>
 <div class="line"><span class="lineno">   59</span> </div>
 <div class="line"><span class="lineno">   60</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7dae4b197c3f9f3d911185ac2948aa36">_codes</a> != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   61</span>            {</div>
@@ -322,13 +314,12 @@ Package Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   63</span>                <span class="keywordtype">int</span> startIndex = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7d263a4859102e90a55b027a7bcf4e98">_sectionOffset</a> / 4;</div>
 <div class="line"><span class="lineno">   64</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7dae4b197c3f9f3d911185ac2948aa36">_codes</a>.Count; i++)</div>
 <div class="line"><span class="lineno">   65</span>                {</div>
-<div class="line"><span class="lineno">   66</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a0564652cf124175d4a65b74e91dca32b">SetColor</a>(startIndex + i, c);</div>
+<div class="line"><span class="lineno">   66</span>                    _manager.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a0564652cf124175d4a65b74e91dca32b">SetColor</a>(startIndex + i, c);</div>
 <div class="line"><span class="lineno">   67</span>                }</div>
 <div class="line"><span class="lineno">   68</span>            }</div>
 <div class="line"><span class="lineno">   69</span> </div>
 <div class="line"><span class="lineno">   70</span>            Display();</div>
 <div class="line"><span class="lineno">   71</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler_html_a07932bf4efd1962263997d5fb1a99198"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">BrawlLib.Internal.Windows.Controls.PPCDisassembler._manager</a></div><div class="ttdeci">RelocationManager _manager</div><div class="ttdef"><b>Definition:</b> PowerPcDisassembler.cs:14</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler_html_a7d263a4859102e90a55b027a7bcf4e98"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7d263a4859102e90a55b027a7bcf4e98">BrawlLib.Internal.Windows.Controls.PPCDisassembler._sectionOffset</a></div><div class="ttdeci">int _sectionOffset</div><div class="ttdef"><b>Definition:</b> PowerPcDisassembler.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler_html_a7dae4b197c3f9f3d911185ac2948aa36"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7dae4b197c3f9f3d911185ac2948aa36">BrawlLib.Internal.Windows.Controls.PPCDisassembler._codes</a></div><div class="ttdeci">List&lt; PPCOpCode &gt; _codes</div><div class="ttdef"><b>Definition:</b> PowerPcDisassembler.cs:16</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_a0564652cf124175d4a65b74e91dca32b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a0564652cf124175d4a65b74e91dca32b">BrawlLib.SSBB.ResourceNodes.RelocationManager.SetColor</a></div><div class="ttdeci">void SetColor(int index, Color color)</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:299</div></div>
@@ -365,7 +356,7 @@ Package Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   24</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7dae4b197c3f9f3d911185ac2948aa36">_codes</a> = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   25</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7d263a4859102e90a55b027a7bcf4e98">_sectionOffset</a> = 0;</div>
 <div class="line"><span class="lineno">   26</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a350e01d58e60e3e76a27ebf911d35e93">_baseOffset</a> = 0;</div>
-<div class="line"><span class="lineno">   27</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   27</span>                _manager = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   28</span>            }</div>
 <div class="line"><span class="lineno">   29</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   30</span>            {</div>
@@ -377,7 +368,7 @@ Package Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   36</span> </div>
 <div class="line"><span class="lineno">   37</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a7d263a4859102e90a55b027a7bcf4e98">_sectionOffset</a> = 0;</div>
 <div class="line"><span class="lineno">   38</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a350e01d58e60e3e76a27ebf911d35e93">_baseOffset</a> = (int) node.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_method_node.html#a87cafd666765c8630f6eec46a6b507ee">_cmd</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html#a71ff75ac9a763e279df87a00414c5a81">_addend</a>;</div>
-<div class="line"><span class="lineno">   39</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a> = node.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_method_node.html#a5809d88b6e633466cb902151cf175b15">_manager</a>;</div>
+<div class="line"><span class="lineno">   39</span>                _manager = node.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_l_method_node.html#a5809d88b6e633466cb902151cf175b15">_manager</a>;</div>
 <div class="line"><span class="lineno">   40</span>            }</div>
 <div class="line"><span class="lineno">   41</span> </div>
 <div class="line"><span class="lineno">   42</span>            Display();</div>
@@ -430,10 +421,10 @@ Package Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  103</span>            row.Cells[1].Value = opcode.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#ae47b9ca13f34ce0477e5da6b9aa9fd3b">Name</a>;</div>
 <div class="line"><span class="lineno">  104</span>            row.Cells[2].Value = opcode.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#acec596c040bde296bf60edda50e87cc0">GetFormattedOperands</a>();</div>
 <div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span>            List&lt;string&gt; s = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#add2e58d4a3c83d68276c71fce4e85e6f">GetTags</a>(index);</div>
+<div class="line"><span class="lineno">  106</span>            List&lt;string&gt; s = _manager.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#add2e58d4a3c83d68276c71fce4e85e6f">GetTags</a>(index);</div>
 <div class="line"><span class="lineno">  107</span>            row.Cells[3].Value = s == <span class="keyword">null</span> ? <span class="stringliteral">&quot;&quot;</span> : <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;; &quot;</span>, s);</div>
 <div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>            row.DefaultCellStyle.BackColor = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_disassembler.html#a07932bf4efd1962263997d5fb1a99198">_manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#ae63c18ff8f3bd72d8a5636355153d95e">GetStatusColorFromIndex</a>(index);</div>
+<div class="line"><span class="lineno">  109</span>            row.DefaultCellStyle.BackColor = _manager.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#ae63c18ff8f3bd72d8a5636355153d95e">GetStatusColorFromIndex</a>(index);</div>
 <div class="line"><span class="lineno">  110</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_format_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_format.html">BrawlLib.Internal.PowerPCAssembly.PPCFormat</a></div><div class="ttdef"><b>Definition:</b> PPCFormat.cs:13</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_format_html_af6272d532c11c306caa05a1fafe73a19"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_format.html#af6272d532c11c306caa05a1fafe73a19">BrawlLib.Internal.PowerPCAssembly.PPCFormat.Offset</a></div><div class="ttdeci">static string Offset(int val)</div><div class="ttdef"><b>Definition:</b> PPCFormat.cs:70</div></div>
@@ -488,28 +479,6 @@ Package Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a07932bf4efd1962263997d5fb1a99198" name="a07932bf4efd1962263997d5fb1a99198"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07932bf4efd1962263997d5fb1a99198">&#9670;&#160;</a></span>_manager</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html">RelocationManager</a> BrawlLib.Internal.Windows.Controls.PPCDisassembler._manager</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a7d263a4859102e90a55b027a7bcf4e98" name="a7d263a4859102e90a55b027a7bcf4e98"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7d263a4859102e90a55b027a7bcf4e98">&#9670;&#160;</a></span>_sectionOffset</h2>
 
@@ -548,28 +517,6 @@ Package Attributes</h2></td></tr>
           <td class="memname">System.Windows.Forms.DataGridView BrawlLib.Internal.Windows.Controls.PPCDisassembler.grdDisassembler</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a51a1c93720805df4b0a13b1c393c8388" name="a51a1c93720805df4b0a13b1c393c8388"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51a1c93720805df4b0a13b1c393c8388">&#9670;&#160;</a></span>ppcOpCodeEditControl1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_p_p_c_op_code_edit_control.html">PPCOpCodeEditControl</a> BrawlLib.Internal.Windows.Controls.PPCDisassembler.ppcOpCodeEditControl1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

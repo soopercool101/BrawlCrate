@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1w_file_map-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.IO.wFileMap Class Reference</div></div>
 </div><!--header-->
@@ -98,11 +97,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a419d9ad6d13b5a9dffb4f8d18dd80789"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8ece53e34a2e446cdb98a3f0a244133"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ae8ece53e34a2e446cdb98a3f0a244133">Dispose</a> ()</td></tr>
 <tr class="separator:ae8ece53e34a2e446cdb98a3f0a244133"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:afc2749fbe001a8783a5c045ddd4000ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1w_file_map.html#afc2749fbe001a8783a5c045ddd4000ce">wFileMap</a> (<a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> hFile, <a class="el" href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">FileMapProtect</a> protect, long offset, uint length)</td></tr>
-<tr class="separator:afc2749fbe001a8783a5c045ddd4000ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -146,95 +140,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a56dab79545f88727c8a019bd0bbfd211 inherit properties_class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map"><td class="memItemLeft" align="right" valign="top">FileStream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a56dab79545f88727c8a019bd0bbfd211">BaseStream</a><code> [get]</code></td></tr>
 <tr class="separator:a56dab79545f88727c8a019bd0bbfd211 inherit properties_class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="afc2749fbe001a8783a5c045ddd4000ce" name="afc2749fbe001a8783a5c045ddd4000ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc2749fbe001a8783a5c045ddd4000ce">&#9670;&#160;</a></span>wFileMap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BrawlLib.Internal.IO.wFileMap.wFileMap </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td>
-          <td class="paramname"><em>hFile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">FileMapProtect</a>&#160;</td>
-          <td class="paramname"><em>protect</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  183</span>        {</div>
-<div class="line"><span class="lineno">  184</span>            <span class="keywordtype">long</span> maxSize = offset + length;</div>
-<div class="line"><span class="lineno">  185</span>            uint maxHigh = (uint) (maxSize &gt;&gt; 32);</div>
-<div class="line"><span class="lineno">  186</span>            uint maxLow = (uint) maxSize;</div>
-<div class="line"><span class="lineno">  187</span>            <a class="code hl_enumeration" href="class_brawl_lib_1_1_platform_1_1_win32.html#aa21f4be2e992fe11edbb601ce8ce792e">Win32._FileMapProtect</a> mProtect;</div>
-<div class="line"><span class="lineno">  188</span>            <a class="code hl_enumeration" href="class_brawl_lib_1_1_platform_1_1_win32.html#a873a18526b23d72baf60bd9289acd66e">Win32._FileMapAccess</a> mAccess;</div>
-<div class="line"><span class="lineno">  189</span>            <span class="keywordflow">if</span> (protect == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">FileMapProtect</a>.ReadWrite)</div>
-<div class="line"><span class="lineno">  190</span>            {</div>
-<div class="line"><span class="lineno">  191</span>                mProtect = <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_enumeration" href="class_brawl_lib_1_1_platform_1_1_win32.html#aa21f4be2e992fe11edbb601ce8ce792e">_FileMapProtect</a>.ReadWrite;</div>
-<div class="line"><span class="lineno">  192</span>                mAccess = <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_enumeration" href="class_brawl_lib_1_1_platform_1_1_win32.html#a873a18526b23d72baf60bd9289acd66e">_FileMapAccess</a>.Write;</div>
-<div class="line"><span class="lineno">  193</span>            }</div>
-<div class="line"><span class="lineno">  194</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  195</span>            {</div>
-<div class="line"><span class="lineno">  196</span>                mProtect = <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_enumeration" href="class_brawl_lib_1_1_platform_1_1_win32.html#aa21f4be2e992fe11edbb601ce8ce792e">_FileMapProtect</a>.ReadOnly;</div>
-<div class="line"><span class="lineno">  197</span>                mAccess = <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_enumeration" href="class_brawl_lib_1_1_platform_1_1_win32.html#a873a18526b23d72baf60bd9289acd66e">_FileMapAccess</a>.Read;</div>
-<div class="line"><span class="lineno">  198</span>            }</div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle.html">Win32.SafeHandle</a> h = <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_win32.html#a4c8b238d98b4d15104e37fbd1c671a9d">CreateFileMapping</a>(hFile, <span class="keyword">null</span>, mProtect, maxHigh, maxLow, <span class="keyword">null</span>))</div>
-<div class="line"><span class="lineno">  201</span>            {</div>
-<div class="line"><span class="lineno">  202</span>                h.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle.html#a0a27a751e1e3619798316917fdedc186">ErrorCheck</a>();</div>
-<div class="line"><span class="lineno">  203</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a> = <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_win32.html#acc6284ff67cc0cb817a433c2ac086b60">MapViewOfFile</a>(h.<a class="code hl_property" href="class_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle.html#a9c5be85360afc835d874362a410cc76c">Handle</a>, mAccess, (uint) (offset &gt;&gt; 32), (uint) offset, length);</div>
-<div class="line"><span class="lineno">  204</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a>)</div>
-<div class="line"><span class="lineno">  205</span>                {</div>
-<div class="line"><span class="lineno">  206</span>                    Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());</div>
-<div class="line"><span class="lineno">  207</span>                }</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">_length</a> = (int) length;</div>
-<div class="line"><span class="lineno">  210</span>            }</div>
-<div class="line"><span class="lineno">  211</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a4a4c95bfa86ea2a2f7276d73128f209e"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">BrawlLib.Internal.IO.FileMap._addr</a></div><div class="ttdeci">VoidPtr _addr</div><div class="ttdef"><b>Definition:</b> FileMap.cs:11</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ac61ac90ba661af602ab93b34a32bf24d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">BrawlLib.Internal.IO.FileMap._length</a></div><div class="ttdeci">int _length</div><div class="ttdef"><b>Definition:</b> FileMap.cs:12</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle_html"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle.html">BrawlLib.Platform.Win32.SafeHandle</a></div><div class="ttdef"><b>Definition:</b> Win32.cs:12</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle_html_a0a27a751e1e3619798316917fdedc186"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle.html#a0a27a751e1e3619798316917fdedc186">BrawlLib.Platform.Win32.SafeHandle.ErrorCheck</a></div><div class="ttdeci">void ErrorCheck()</div><div class="ttdef"><b>Definition:</b> Win32.cs:35</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle_html_a9c5be85360afc835d874362a410cc76c"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32_1_1_safe_handle.html#a9c5be85360afc835d874362a410cc76c">BrawlLib.Platform.Win32.SafeHandle.Handle</a></div><div class="ttdeci">VoidPtr Handle</div><div class="ttdef"><b>Definition:</b> Win32.cs:14</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html">BrawlLib.Platform.Win32</a></div><div class="ttdef"><b>Definition:</b> Win32.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_a4c8b238d98b4d15104e37fbd1c671a9d"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#a4c8b238d98b4d15104e37fbd1c671a9d">BrawlLib.Platform.Win32.CreateFileMapping</a></div><div class="ttdeci">static VoidPtr CreateFileMapping(VoidPtr hFile, VoidPtr lpAttributes, _FileMapProtect flProtect, uint dwMaximumSizeHigh, uint dwMaximumSizeLow, string lpName)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_a873a18526b23d72baf60bd9289acd66e"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#a873a18526b23d72baf60bd9289acd66e">BrawlLib.Platform.Win32._FileMapAccess</a></div><div class="ttdeci">_FileMapAccess</div><div class="ttdef"><b>Definition:</b> Win32.cs:157</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_aa21f4be2e992fe11edbb601ce8ce792e"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#aa21f4be2e992fe11edbb601ce8ce792e">BrawlLib.Platform.Win32._FileMapProtect</a></div><div class="ttdeci">_FileMapProtect</div><div class="ttdef"><b>Definition:</b> Win32.cs:139</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_acc6284ff67cc0cb817a433c2ac086b60"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#acc6284ff67cc0cb817a433c2ac086b60">BrawlLib.Platform.Win32.MapViewOfFile</a></div><div class="ttdeci">static VoidPtr MapViewOfFile(VoidPtr hFileMappingObject, _FileMapAccess dwDesiredAccess, uint dwFileOffsetHigh, uint dwFileOffsetLow, uint dwNumberOfBytesToMap)</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_i_o_html_a7ca8f806766fe4589f545c9d78381218"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">BrawlLib.Internal.IO.FileMapProtect</a></div><div class="ttdeci">FileMapProtect</div><div class="ttdef"><b>Definition:</b> FileMap.cs:175</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a419d9ad6d13b5a9dffb4f8d18dd80789" name="a419d9ad6d13b5a9dffb4f8d18dd80789"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a419d9ad6d13b5a9dffb4f8d18dd80789">&#9670;&#160;</a></span>Dispose()</h2>
@@ -263,15 +168,14 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  214</span>        {</div>
 <div class="line"><span class="lineno">  215</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a>)</div>
 <div class="line"><span class="lineno">  216</span>            {</div>
-<div class="line"><span class="lineno">  217</span>                <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_win32.html#acdff3491d424861c5ee757a507ecaef9">FlushViewOfFile</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a>, 0);</div>
-<div class="line"><span class="lineno">  218</span>                <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_win32.html#aeaee0c534ee82a85ea1c4dc643e5e652">UnmapViewOfFile</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a>);</div>
+<div class="line"><span class="lineno">  217</span>                Win32.FlushViewOfFile(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a>, 0);</div>
+<div class="line"><span class="lineno">  218</span>                Win32.UnmapViewOfFile(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a>);</div>
 <div class="line"><span class="lineno">  219</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a> = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  220</span>            }</div>
 <div class="line"><span class="lineno">  221</span> </div>
 <div class="line"><span class="lineno">  222</span>            base.Dispose();</div>
 <div class="line"><span class="lineno">  223</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_acdff3491d424861c5ee757a507ecaef9"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#acdff3491d424861c5ee757a507ecaef9">BrawlLib.Platform.Win32.FlushViewOfFile</a></div><div class="ttdeci">static bool FlushViewOfFile(VoidPtr lpBaseAddress, uint dwNumberOfBytesToFlush)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_aeaee0c534ee82a85ea1c4dc643e5e652"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#aeaee0c534ee82a85ea1c4dc643e5e652">BrawlLib.Platform.Win32.UnmapViewOfFile</a></div><div class="ttdeci">static bool UnmapViewOfFile(VoidPtr lpBaseAddress)</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a4a4c95bfa86ea2a2f7276d73128f209e"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">BrawlLib.Internal.IO.FileMap._addr</a></div><div class="ttdeci">VoidPtr _addr</div><div class="ttdef"><b>Definition:</b> FileMap.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>

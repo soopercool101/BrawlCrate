@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.ModelSkinVertexData Class Reference</div></div>
 </div><!--header-->
@@ -95,13 +94,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a3415151a5b63005fe0c7df9696c399ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a451125c91cda3f85f91a83a8b900fc22"><td class="memItemLeft" align="right" valign="top">float[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a></td></tr>
 <tr class="separator:a451125c91cda3f85f91a83a8b900fc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:ad792c35b3aecb022c2960f9bf1d716c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#ad792c35b3aecb022c2960f9bf1d716c9">Read</a> (BinaryReader reader, float CoordZ)</td></tr>
-<tr class="separator:ad792c35b3aecb022c2960f9bf1d716c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb49e5e6a7b134cf6f4d667dedec6854"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#afb49e5e6a7b134cf6f4d667dedec6854">Write</a> (BinaryWriter writer, float CoordZ)</td></tr>
-<tr class="separator:afb49e5e6a7b134cf6f4d667dedec6854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a66a7c8fa2d6693d6f019a4825f3fb6c1" name="a66a7c8fa2d6693d6f019a4825f3fb6c1"></a>
@@ -130,97 +122,6 @@ Package Functions</h2></td></tr>
 <div class="line"><span class="lineno"> 1753</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a> = <span class="keyword">new</span> <span class="keywordtype">float</span>[3];</div>
 <div class="line"><span class="lineno"> 1754</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data_html_a451125c91cda3f85f91a83a8b900fc22"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">BrawlLib.Modeling.ModelSkinVertexData._skinVertPos</a></div><div class="ttdeci">float[] _skinVertPos</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1749</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad792c35b3aecb022c2960f9bf1d716c9" name="ad792c35b3aecb022c2960f9bf1d716c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad792c35b3aecb022c2960f9bf1d716c9">&#9670;&#160;</a></span>Read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelSkinVertexData.Read </td>
-          <td>(</td>
-          <td class="paramtype">BinaryReader&#160;</td>
-          <td class="paramname"><em>reader</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>CoordZ</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1757</span>        {</div>
-<div class="line"><span class="lineno"> 1758</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a3415151a5b63005fe0c7df9696c399ee">_skinVertIndex</a> = BitConverter.ToUInt32(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1759</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1760</span>            {</div>
-<div class="line"><span class="lineno"> 1761</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a>[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1762</span>            }</div>
-<div class="line"><span class="lineno"> 1763</span> </div>
-<div class="line"><span class="lineno"> 1764</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a>[2] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1765</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data_html_a3415151a5b63005fe0c7df9696c399ee"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a3415151a5b63005fe0c7df9696c399ee">BrawlLib.Modeling.ModelSkinVertexData._skinVertIndex</a></div><div class="ttdeci">uint _skinVertIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1748</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="afb49e5e6a7b134cf6f4d667dedec6854" name="afb49e5e6a7b134cf6f4d667dedec6854"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb49e5e6a7b134cf6f4d667dedec6854">&#9670;&#160;</a></span>Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelSkinVertexData.Write </td>
-          <td>(</td>
-          <td class="paramtype">BinaryWriter&#160;</td>
-          <td class="paramname"><em>writer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>CoordZ</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1768</span>        {</div>
-<div class="line"><span class="lineno"> 1769</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a>[2] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1770</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a3415151a5b63005fe0c7df9696c399ee">_skinVertIndex</a>);</div>
-<div class="line"><span class="lineno"> 1771</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1772</span>            {</div>
-<div class="line"><span class="lineno"> 1773</span>                writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_skin_vertex_data.html#a451125c91cda3f85f91a83a8b900fc22">_skinVertPos</a>[i]);</div>
-<div class="line"><span class="lineno"> 1774</span>            }</div>
-<div class="line"><span class="lineno"> 1775</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

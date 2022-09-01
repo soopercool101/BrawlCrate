@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.ModelBoneDispName Class Reference</div></div>
 </div><!--header-->
@@ -89,138 +88,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a4e39f4d2ad1a3efed77a08fc2a405eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa04a2a9d825dab378864f874791bb533"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#aa04a2a9d825dab378864f874791bb533">_boneDispNameEnglish</a></td></tr>
 <tr class="separator:aa04a2a9d825dab378864f874791bb533"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a14eb2f890dd34c5e0245e7bdcc863ac4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#a14eb2f890dd34c5e0245e7bdcc863ac4">Read</a> (BinaryReader reader)</td></tr>
-<tr class="separator:a14eb2f890dd34c5e0245e7bdcc863ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07468b1e6fb5862871de6fe4532e1bfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#a07468b1e6fb5862871de6fe4532e1bfb">ReadExpansion</a> (BinaryReader reader)</td></tr>
-<tr class="separator:a07468b1e6fb5862871de6fe4532e1bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95760edbda7165370b2452d4dba1f77d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#a95760edbda7165370b2452d4dba1f77d">Write</a> (BinaryWriter writer)</td></tr>
-<tr class="separator:a95760edbda7165370b2452d4dba1f77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b7a34286091e4e25ef933c286d6ba54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#a1b7a34286091e4e25ef933c286d6ba54">WriteExpansion</a> (BinaryWriter writer)</td></tr>
-<tr class="separator:a1b7a34286091e4e25ef933c286d6ba54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a14eb2f890dd34c5e0245e7bdcc863ac4" name="a14eb2f890dd34c5e0245e7bdcc863ac4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14eb2f890dd34c5e0245e7bdcc863ac4">&#9670;&#160;</a></span>Read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelBoneDispName.Read </td>
-          <td>(</td>
-          <td class="paramtype">BinaryReader&#160;</td>
-          <td class="paramname"><em>reader</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1535</span>        {</div>
-<div class="line"><span class="lineno"> 1536</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#a4e39f4d2ad1a3efed77a08fc2a405eaf">_boneDispName</a> = PMDModel.GetString(reader.ReadBytes(50));</div>
-<div class="line"><span class="lineno"> 1537</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#aa04a2a9d825dab378864f874791bb533">_boneDispNameEnglish</a> = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno"> 1538</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_disp_name_html_a4e39f4d2ad1a3efed77a08fc2a405eaf"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#a4e39f4d2ad1a3efed77a08fc2a405eaf">BrawlLib.Modeling.ModelBoneDispName._boneDispName</a></div><div class="ttdeci">string _boneDispName</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1531</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_disp_name_html_aa04a2a9d825dab378864f874791bb533"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#aa04a2a9d825dab378864f874791bb533">BrawlLib.Modeling.ModelBoneDispName._boneDispNameEnglish</a></div><div class="ttdeci">string _boneDispNameEnglish</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1532</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a07468b1e6fb5862871de6fe4532e1bfb" name="a07468b1e6fb5862871de6fe4532e1bfb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07468b1e6fb5862871de6fe4532e1bfb">&#9670;&#160;</a></span>ReadExpansion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelBoneDispName.ReadExpansion </td>
-          <td>(</td>
-          <td class="paramtype">BinaryReader&#160;</td>
-          <td class="paramname"><em>reader</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1541</span>        {</div>
-<div class="line"><span class="lineno"> 1542</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#aa04a2a9d825dab378864f874791bb533">_boneDispNameEnglish</a> = PMDModel.GetString(reader.ReadBytes(50), <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno"> 1543</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a95760edbda7165370b2452d4dba1f77d" name="a95760edbda7165370b2452d4dba1f77d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95760edbda7165370b2452d4dba1f77d">&#9670;&#160;</a></span>Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelBoneDispName.Write </td>
-          <td>(</td>
-          <td class="paramtype">BinaryWriter&#160;</td>
-          <td class="paramname"><em>writer</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1546</span>        {</div>
-<div class="line"><span class="lineno"> 1547</span>            writer.Write(PMDModel.GetBytes(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#a4e39f4d2ad1a3efed77a08fc2a405eaf">_boneDispName</a>, 50));</div>
-<div class="line"><span class="lineno"> 1548</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a1b7a34286091e4e25ef933c286d6ba54" name="a1b7a34286091e4e25ef933c286d6ba54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b7a34286091e4e25ef933c286d6ba54">&#9670;&#160;</a></span>WriteExpansion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelBoneDispName.WriteExpansion </td>
-          <td>(</td>
-          <td class="paramtype">BinaryWriter&#160;</td>
-          <td class="paramname"><em>writer</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1551</span>        {</div>
-<div class="line"><span class="lineno"> 1552</span>            writer.Write(PMDModel.GetBytes(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp_name.html#aa04a2a9d825dab378864f874791bb533">_boneDispNameEnglish</a>, 50));</div>
-<div class="line"><span class="lineno"> 1553</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a4e39f4d2ad1a3efed77a08fc2a405eaf" name="a4e39f4d2ad1a3efed77a08fc2a405eaf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e39f4d2ad1a3efed77a08fc2a405eaf">&#9670;&#160;</a></span>_boneDispName</h2>

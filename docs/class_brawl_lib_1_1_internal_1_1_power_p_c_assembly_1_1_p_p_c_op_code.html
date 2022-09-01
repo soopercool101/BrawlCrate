@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.PowerPCAssembly.PPCOpCode Class Reference</div></div>
@@ -167,11 +166,6 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a25006d052f28cb48b4eff5c2c6c96540"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_1_1_p_p_c_operand.html">PPCOperand</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a></td></tr>
 <tr class="separator:a25006d052f28cb48b4eff5c2c6c96540"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:acd62b87f37e5b83345c0786799bf1c7d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#acd62b87f37e5b83345c0786799bf1c7d">PPCOpCode</a> (uint value)</td></tr>
-<tr class="separator:acd62b87f37e5b83345c0786799bf1c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a54a60438498de1397b7fb951c6fa2e04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43da">PPCMnemonic</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a54a60438498de1397b7fb951c6fa2e04">Operation</a><code> [get, set]</code></td></tr>
@@ -181,41 +175,6 @@ Properties</h2></td></tr>
 <tr class="memitem:ad4ad9f3a96fd8cd59940f718747946f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_1_1_p_p_c_operand.html">PPCOperand</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#ad4ad9f3a96fd8cd59940f718747946f5">Operands</a><code> [get]</code></td></tr>
 <tr class="separator:ad4ad9f3a96fd8cd59940f718747946f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="acd62b87f37e5b83345c0786799bf1c7d" name="acd62b87f37e5b83345c0786799bf1c7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd62b87f37e5b83345c0786799bf1c7d">&#9670;&#160;</a></span>PPCOpCode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BrawlLib.Internal.PowerPCAssembly.PPCOpCode.PPCOpCode </td>
-          <td>(</td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   30</span>        {</div>
-<div class="line"><span class="lineno">   31</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a21dde4f50b9af2b957d3d2bcaccb4bb8">_data</a> = value;</div>
-<div class="line"><span class="lineno">   32</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">_names</a> = <span class="keyword">new</span> List&lt;string&gt;();</div>
-<div class="line"><span class="lineno">   33</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">_operands</a> = <span class="keyword">new</span> List&lt;PPCOperand&gt;();</div>
-<div class="line"><span class="lineno">   34</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a21dde4f50b9af2b957d3d2bcaccb4bb8"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a21dde4f50b9af2b957d3d2bcaccb4bb8">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._data</a></div><div class="ttdeci">Bin32 _data</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:10</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a25006d052f28cb48b4eff5c2c6c96540"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._operands</a></div><div class="ttdeci">List&lt; PPCOperand &gt; _operands</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:13</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a614e7b0f9a08a82be3d0319b3ef4c66f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._names</a></div><div class="ttdeci">List&lt; string &gt; _names</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:12</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a34cfd2071a8779db7abc06db57b33c33" name="a34cfd2071a8779db7abc06db57b33c33"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34cfd2071a8779db7abc06db57b33c33">&#9670;&#160;</a></span>Clone()</h2>
@@ -274,6 +233,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   69</span> </div>
 <div class="line"><span class="lineno">   70</span>            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;, &quot;</span>, formatted);</div>
 <div class="line"><span class="lineno">   71</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a25006d052f28cb48b4eff5c2c6c96540"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a25006d052f28cb48b4eff5c2c6c96540">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._operands</a></div><div class="ttdeci">List&lt; PPCOperand &gt; _operands</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:13</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -309,6 +269,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   62</span> </div>
 <div class="line"><span class="lineno">   63</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;.word&quot;</span>;</div>
 <div class="line"><span class="lineno">   64</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a614e7b0f9a08a82be3d0319b3ef4c66f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a614e7b0f9a08a82be3d0319b3ef4c66f">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._names</a></div><div class="ttdeci">List&lt; string &gt; _names</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:12</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -597,6 +558,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   22</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a21dde4f50b9af2b957d3d2bcaccb4bb8">_data</a> |= (uint) value &amp; 0xFC000000;</div>
 <div class="line"><span class="lineno">   23</span>            }</div>
 <div class="line"><span class="lineno">   24</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code_html_a21dde4f50b9af2b957d3d2bcaccb4bb8"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_op_code.html#a21dde4f50b9af2b957d3d2bcaccb4bb8">BrawlLib.Internal.PowerPCAssembly.PPCOpCode._data</a></div><div class="ttdeci">Bin32 _data</div><div class="ttdef"><b>Definition:</b> PPCOpCode.cs:10</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly_html_ab11cb624056f55a0bed66d6e231e43da"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ab11cb624056f55a0bed66d6e231e43da">BrawlLib.Internal.PowerPCAssembly.PPCMnemonic</a></div><div class="ttdeci">PPCMnemonic</div><div class="ttdef"><b>Definition:</b> PPCInfo.cs:780</div></div>
 </div><!-- fragment -->
 </div>

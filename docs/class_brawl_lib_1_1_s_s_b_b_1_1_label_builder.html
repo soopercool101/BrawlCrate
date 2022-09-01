@@ -225,7 +225,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   35</span>        {</div>
-<div class="line"><span class="lineno">   36</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html">LABLHeader</a>* header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html">LABLHeader</a>*) address;</div>
+<div class="line"><span class="lineno">   36</span>            LABLHeader* header = (LABLHeader*) address;</div>
 <div class="line"><span class="lineno">   37</span>            <span class="keywordtype">int</span> count = _labels.Count;</div>
 <div class="line"><span class="lineno">   38</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dataAddr = address + 12 + count * 4;</div>
 <div class="line"><span class="lineno">   39</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* list = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) (address + 8);</div>
@@ -237,7 +237,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   45</span>            {</div>
 <div class="line"><span class="lineno">   46</span>                label = _labels[i++];</div>
 <div class="line"><span class="lineno">   47</span>                list[i] = (int) dataAddr - (<span class="keywordtype">int</span>) list;</div>
-<div class="line"><span class="lineno">   48</span>                ((<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_entry.html">LABLEntry</a>*) dataAddr)-&gt;Set(label.Tag, label.String);</div>
+<div class="line"><span class="lineno">   48</span>                ((LABLEntry*) dataAddr)-&gt;Set(label.Tag, label.String);</div>
 <div class="line"><span class="lineno">   49</span>                dataAddr += label.DataLen;</div>
 <div class="line"><span class="lineno">   50</span>            }</div>
 <div class="line"><span class="lineno">   51</span> </div>
@@ -247,13 +247,10 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   55</span>                *pad++ = 0;</div>
 <div class="line"><span class="lineno">   56</span>            }</div>
 <div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>            header-&gt;<a class="code hl_function" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html#a88b775b5e5dfe5c217cb5f978735a577">Set</a>(size, count);</div>
+<div class="line"><span class="lineno">   58</span>            header-&gt;Set(size, count);</div>
 <div class="line"><span class="lineno">   59</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:9</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_entry_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_entry.html">BrawlLib.SSBB.Types.Audio.LABLEntry</a></div><div class="ttdef"><b>Definition:</b> RSEQ.cs:302</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html">BrawlLib.SSBB.Types.Audio.LABLHeader</a></div><div class="ttdef"><b>Definition:</b> RSEQ.cs:260</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header_html_a88b775b5e5dfe5c217cb5f978735a577"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio_1_1_l_a_b_l_header.html#a88b775b5e5dfe5c217cb5f978735a577">BrawlLib.SSBB.Types.Audio.LABLHeader.Set</a></div><div class="ttdeci">void Set(int size, int count)</div><div class="ttdef"><b>Definition:</b> RSEQ.cs:267</div></div>
 </div><!-- fragment -->
 </div>
 </div>

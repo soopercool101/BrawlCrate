@@ -79,8 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="struct_brawl_lib_1_1_internal_1_1_matrix34-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Matrix34 Struct Reference</div></div>
@@ -161,20 +159,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a6746ab659e3abca58529aba88b87d526"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html">Matrix34</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a6746ab659e3abca58529aba88b87d526">Identity</a> = <a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ac32e48b52111c558658d94f79b96058b">ScaleMatrix</a>(1.0f, 1.0f, 1.0f)</td></tr>
 <tr class="separator:a6746ab659e3abca58529aba88b87d526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:ad92e1955a66c2644cd5888d92a046f6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ad92e1955a66c2644cd5888d92a046f6d">Rotate</a> (float x, float y, float z)</td></tr>
-<tr class="separator:ad92e1955a66c2644cd5888d92a046f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cc7c4041be2b773ccfab40456776f8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a8cc7c4041be2b773ccfab40456776f8c">Scale</a> (float x, float y, float z)</td></tr>
-<tr class="separator:a8cc7c4041be2b773ccfab40456776f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5e2e63353e916bc852d8e3b52fdfa26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af5e2e63353e916bc852d8e3b52fdfa26">Multiply</a> (float v)</td></tr>
-<tr class="separator:af5e2e63353e916bc852d8e3b52fdfa26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:af71fc048f55c403ccbc890d474236b1d"><td class="memItemLeft" align="right" valign="top">fixed float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a> [12]</td></tr>
-<tr class="separator:af71fc048f55c403ccbc890d474236b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a0a547fb60d04d2ee1d3636e96af485d1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a0a547fb60d04d2ee1d3636e96af485d1">this[int index]</a><code> [get, set]</code></td></tr>
@@ -205,7 +189,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   21</span>        {</div>
-<div class="line"><span class="lineno">   22</span>            fixed (<span class="keywordtype">float</span>* b = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno">   22</span>            fixed (<span class="keywordtype">float</span>* b = _data)</div>
 <div class="line"><span class="lineno">   23</span>            {</div>
 <div class="line"><span class="lineno">   24</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Math.Min(12, values.Length); i++)</div>
 <div class="line"><span class="lineno">   25</span>                {</div>
@@ -213,7 +197,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   27</span>                }</div>
 <div class="line"><span class="lineno">   28</span>            }</div>
 <div class="line"><span class="lineno">   29</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix34_html_af71fc048f55c403ccbc890d474236b1d"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">BrawlLib.Internal.Matrix34._data</a></div><div class="ttdeci">fixed float _data[12]</div><div class="ttdef"><b>Definition:</b> Matrix34.cs:18</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -243,7 +226,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1081</span>        {</div>
 <div class="line"><span class="lineno"> 1082</span>            <span class="keywordtype">float</span>* s = (<span class="keywordtype">float</span>*) m;</div>
-<div class="line"><span class="lineno"> 1083</span>            fixed (<span class="keywordtype">float</span>* d = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno"> 1083</span>            fixed (<span class="keywordtype">float</span>* d = _data)</div>
 <div class="line"><span class="lineno"> 1084</span>            {</div>
 <div class="line"><span class="lineno"> 1085</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
 <div class="line"><span class="lineno"> 1086</span>                {</div>
@@ -709,7 +692,7 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   68</span>        {</div>
 <div class="line"><span class="lineno">   69</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a53a5e44a833cdf6ca8010475354dce53">Matrix34</a> m = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a6746ab659e3abca58529aba88b87d526">Identity</a>;</div>
 <div class="line"><span class="lineno">   70</span>            <span class="keywordtype">float</span>* p = (<span class="keywordtype">float</span>*) &amp;m;</div>
-<div class="line"><span class="lineno">   71</span>            fixed (<span class="keywordtype">float</span>* s = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno">   71</span>            fixed (<span class="keywordtype">float</span>* s = _data)</div>
 <div class="line"><span class="lineno">   72</span>            {</div>
 <div class="line"><span class="lineno">   73</span>                p[3] = s[3];</div>
 <div class="line"><span class="lineno">   74</span>                p[7] = s[7];</div>
@@ -721,43 +704,8 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af5e2e63353e916bc852d8e3b52fdfa26" name="af5e2e63353e916bc852d8e3b52fdfa26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5e2e63353e916bc852d8e3b52fdfa26">&#9670;&#160;</a></span>Multiply() <span class="overload">[1/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Matrix34.Multiply </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1105</span>        {</div>
-<div class="line"><span class="lineno"> 1106</span>            fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
-<div class="line"><span class="lineno"> 1107</span>            {</div>
-<div class="line"><span class="lineno"> 1108</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
-<div class="line"><span class="lineno"> 1109</span>                {</div>
-<div class="line"><span class="lineno"> 1110</span>                    p[i] *= v;</div>
-<div class="line"><span class="lineno"> 1111</span>                }</div>
-<div class="line"><span class="lineno"> 1112</span>            }</div>
-<div class="line"><span class="lineno"> 1113</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a854867cb554fcdfe6af1343be3ebe69d" name="a854867cb554fcdfe6af1343be3ebe69d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a854867cb554fcdfe6af1343be3ebe69d">&#9670;&#160;</a></span>Multiply() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a854867cb554fcdfe6af1343be3ebe69d">&#9670;&#160;</a></span>Multiply() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -784,7 +732,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno"> 1040</span> </div>
 <div class="line"><span class="lineno"> 1041</span>            <span class="keywordtype">float</span>* s1 = (<span class="keywordtype">float</span>*) &amp;m2, s2 = (<span class="keywordtype">float</span>*) m;</div>
 <div class="line"><span class="lineno"> 1042</span> </div>
-<div class="line"><span class="lineno"> 1043</span>            fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno"> 1043</span>            fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno"> 1044</span>            {</div>
 <div class="line"><span class="lineno"> 1045</span>                <span class="keywordtype">int</span> index = 0;</div>
 <div class="line"><span class="lineno"> 1046</span>                <span class="keywordtype">float</span> val;</div>
@@ -811,7 +759,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <a id="aece9008bf034dbc86ad9a0d1b234260b" name="aece9008bf034dbc86ad9a0d1b234260b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aece9008bf034dbc86ad9a0d1b234260b">&#9670;&#160;</a></span>Multiply() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aece9008bf034dbc86ad9a0d1b234260b">&#9670;&#160;</a></span>Multiply() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -835,7 +783,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1068</span>        {</div>
 <div class="line"><span class="lineno"> 1069</span>            Vector3 nv = <span class="keyword">new</span> Vector3();</div>
-<div class="line"><span class="lineno"> 1070</span>            fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno"> 1070</span>            fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno"> 1071</span>            {</div>
 <div class="line"><span class="lineno"> 1072</span>                nv._x = p[0] * v._x + p[1] * v._y + p[2] * v._z + p[3];</div>
 <div class="line"><span class="lineno"> 1073</span>                nv._y = p[4] * v._x + p[5] * v._y + p[6] * v._z + p[7];</div>
@@ -1141,54 +1089,6 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ad92e1955a66c2644cd5888d92a046f6d" name="ad92e1955a66c2644cd5888d92a046f6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad92e1955a66c2644cd5888d92a046f6d">&#9670;&#160;</a></span>Rotate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Matrix34.Rotate </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   56</span>        {</div>
-<div class="line"><span class="lineno">   57</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a53a5e44a833cdf6ca8010475354dce53">Matrix34</a> m = <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ace2107488a58ba2072d63a8971e64904">RotationMatrix</a>(x, y, z);</div>
-<div class="line"><span class="lineno">   58</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a854867cb554fcdfe6af1343be3ebe69d">Multiply</a>(&amp;m);</div>
-<div class="line"><span class="lineno">   59</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix34_html_a854867cb554fcdfe6af1343be3ebe69d"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a854867cb554fcdfe6af1343be3ebe69d">BrawlLib.Internal.Matrix34.Multiply</a></div><div class="ttdeci">void Multiply(Matrix34 *m)</div><div class="ttdef"><b>Definition:</b> Matrix34.cs:1037</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix34_html_ace2107488a58ba2072d63a8971e64904"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ace2107488a58ba2072d63a8971e64904">BrawlLib.Internal.Matrix34.RotationMatrix</a></div><div class="ttdeci">static Matrix34 RotationMatrix(float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> Matrix34.cs:247</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a44f0edb5c35ccc651cd141dbb1432208" name="a44f0edb5c35ccc651cd141dbb1432208"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44f0edb5c35ccc651cd141dbb1432208">&#9670;&#160;</a></span>RotateX()</h2>
 
@@ -1217,7 +1117,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  175</span>            <span class="keywordtype">float</span> cosx = (float) Math.Cos(x / 180.0f * Math.PI);</div>
 <div class="line"><span class="lineno">  176</span>            <span class="keywordtype">float</span> sinx = (float) Math.Sin(x / 180.0f * Math.PI);</div>
 <div class="line"><span class="lineno">  177</span> </div>
-<div class="line"><span class="lineno">  178</span>            fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno">  178</span>            fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno">  179</span>            {</div>
 <div class="line"><span class="lineno">  180</span>                var1 = p[1];</div>
 <div class="line"><span class="lineno">  181</span>                var2 = p[2];</div>
@@ -1266,7 +1166,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  200</span>            <span class="keywordtype">float</span> cosy = (float) Math.Cos(y / 180.0f * Math.PI);</div>
 <div class="line"><span class="lineno">  201</span>            <span class="keywordtype">float</span> siny = (float) Math.Sin(y / 180.0f * Math.PI);</div>
 <div class="line"><span class="lineno">  202</span> </div>
-<div class="line"><span class="lineno">  203</span>            fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno">  203</span>            fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno">  204</span>            {</div>
 <div class="line"><span class="lineno">  205</span>                var1 = p[0];</div>
 <div class="line"><span class="lineno">  206</span>                var2 = p[2];</div>
@@ -1315,7 +1215,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  225</span>            <span class="keywordtype">float</span> cosz = (float) Math.Cos(z / 180.0f * Math.PI);</div>
 <div class="line"><span class="lineno">  226</span>            <span class="keywordtype">float</span> sinz = (float) Math.Sin(z / 180.0f * Math.PI);</div>
 <div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>            fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno">  228</span>            fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno">  229</span>            {</div>
 <div class="line"><span class="lineno">  230</span>                var1 = p[0];</div>
 <div class="line"><span class="lineno">  231</span>                var2 = p[1];</div>
@@ -1420,6 +1320,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  290</span> </div>
 <div class="line"><span class="lineno">  291</span>            <span class="keywordflow">return</span> m;</div>
 <div class="line"><span class="lineno">  292</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix34_html_a854867cb554fcdfe6af1343be3ebe69d"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a854867cb554fcdfe6af1343be3ebe69d">BrawlLib.Internal.Matrix34.Multiply</a></div><div class="ttdeci">void Multiply(Matrix34 *m)</div><div class="ttdef"><b>Definition:</b> Matrix34.cs:1037</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1589,53 +1490,6 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a8cc7c4041be2b773ccfab40456776f8c" name="a8cc7c4041be2b773ccfab40456776f8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cc7c4041be2b773ccfab40456776f8c">&#9670;&#160;</a></span>Scale()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Matrix34.Scale </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   62</span>        {</div>
-<div class="line"><span class="lineno">   63</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a53a5e44a833cdf6ca8010475354dce53">Matrix34</a> m = <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ac32e48b52111c558658d94f79b96058b">ScaleMatrix</a>(x, y, z);</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#a854867cb554fcdfe6af1343be3ebe69d">Multiply</a>(&amp;m);</div>
-<div class="line"><span class="lineno">   65</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix34_html_ac32e48b52111c558658d94f79b96058b"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#ac32e48b52111c558658d94f79b96058b">BrawlLib.Internal.Matrix34.ScaleMatrix</a></div><div class="ttdeci">static Matrix34 ScaleMatrix(float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> Matrix34.cs:81</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ac32e48b52111c558658d94f79b96058b" name="ac32e48b52111c558658d94f79b96058b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac32e48b52111c558658d94f79b96058b">&#9670;&#160;</a></span>ScaleMatrix()</h2>
 
@@ -1711,7 +1565,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1093</span>        {</div>
 <div class="line"><span class="lineno"> 1094</span>            <span class="keywordtype">float</span>* s = (<span class="keywordtype">float</span>*) m;</div>
-<div class="line"><span class="lineno"> 1095</span>            fixed (<span class="keywordtype">float</span>* d = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno"> 1095</span>            fixed (<span class="keywordtype">float</span>* d = _data)</div>
 <div class="line"><span class="lineno"> 1096</span>            {</div>
 <div class="line"><span class="lineno"> 1097</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
 <div class="line"><span class="lineno"> 1098</span>                {</div>
@@ -1783,7 +1637,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1179</span>        {</div>
-<div class="line"><span class="lineno"> 1180</span>            fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno"> 1180</span>            fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno"> 1181</span>            {</div>
 <div class="line"><span class="lineno"> 1182</span>                <span class="keywordflow">return</span> CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(<span class="stringliteral">&quot;,&quot;</span>)</div>
 <div class="line"><span class="lineno"> 1183</span>                    ? $<span class="stringliteral">&quot;({p[0]} {p[1]} {p[2]} {p[3]})({p[4]} {p[5]} {p[6]} {p[7]})({p[8]} {p[9]} {p[10]} {p[11]})&quot;</span></div>
@@ -1960,28 +1814,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af71fc048f55c403ccbc890d474236b1d" name="af71fc048f55c403ccbc890d474236b1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af71fc048f55c403ccbc890d474236b1d">&#9670;&#160;</a></span>_data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">fixed float BrawlLib.Internal.Matrix34._data[12]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a6746ab659e3abca58529aba88b87d526" name="a6746ab659e3abca58529aba88b87d526"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6746ab659e3abca58529aba88b87d526">&#9670;&#160;</a></span>Identity</h2>
 
@@ -2027,14 +1859,14 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   32</span>        {</div>
 <div class="line"><span class="lineno">   33</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">   34</span>            {</div>
-<div class="line"><span class="lineno">   35</span>                fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno">   35</span>                fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno">   36</span>                {</div>
 <div class="line"><span class="lineno">   37</span>                    <span class="keywordflow">return</span> p[index];</div>
 <div class="line"><span class="lineno">   38</span>                }</div>
 <div class="line"><span class="lineno">   39</span>            }</div>
 <div class="line"><span class="lineno">   40</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">   41</span>            {</div>
-<div class="line"><span class="lineno">   42</span>                fixed (<span class="keywordtype">float</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix34.html#af71fc048f55c403ccbc890d474236b1d">_data</a>)</div>
+<div class="line"><span class="lineno">   42</span>                fixed (<span class="keywordtype">float</span>* p = _data)</div>
 <div class="line"><span class="lineno">   43</span>                {</div>
 <div class="line"><span class="lineno">   44</span>                    p[index] = value;</div>
 <div class="line"><span class="lineno">   45</span>                }</div>

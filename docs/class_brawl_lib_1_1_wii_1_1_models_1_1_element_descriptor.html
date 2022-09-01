@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Models.ElementDescriptor Class Reference</div></div>
 </div><!--header-->
@@ -125,11 +124,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a7d0204eb2f161ea470fbd05fb33afed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bcd4c8a537bda573623215a5b54a50a"><td class="memItemLeft" align="right" valign="top">List&lt; List&lt; <a class="el" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html">Facepoint</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a6bcd4c8a537bda573623215a5b54a50a">_points</a></td></tr>
 <tr class="separator:a6bcd4c8a537bda573623215a5b54a50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:ae2bc7e31705f6311d55c45a570ac74d1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">Vertex3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#ae2bc7e31705f6311d55c45a570ac74d1">Finish</a> (<a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> *pVert, <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a>[] nodeTable)</td></tr>
-<tr class="separator:ae2bc7e31705f6311d55c45a570ac74d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a5ca79fff15b572849d0c15f35ce99e07" name="a5ca79fff15b572849d0c15f35ce99e07"></a>
@@ -204,90 +198,6 @@ Package Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae2bc7e31705f6311d55c45a570ac74d1" name="ae2bc7e31705f6311d55c45a570ac74d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2bc7e31705f6311d55c45a570ac74d1">&#9670;&#160;</a></span>Finish()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt; <a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">Vertex3</a> &gt; BrawlLib.Wii.Models.ElementDescriptor.Finish </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> *&#160;</td>
-          <td class="paramname"><em>pVert</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a>[]&#160;</td>
-          <td class="paramname"><em>nodeTable</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  797</span>        {</div>
-<div class="line"><span class="lineno">  798</span>            <span class="comment">//Create vertex list from remap table</span></div>
-<div class="line"><span class="lineno">  799</span>            List&lt;Vertex3&gt; list = <span class="keyword">new</span> List&lt;Vertex3&gt;(<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a7d0204eb2f161ea470fbd05fb33afed0">RemapTable</a>.Count);</div>
-<div class="line"><span class="lineno">  800</span> </div>
-<div class="line"><span class="lineno">  801</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#aeef3df4093c585f0b27baa3ccfcc477c">Weighted</a>)</div>
-<div class="line"><span class="lineno">  802</span>            {</div>
-<div class="line"><span class="lineno">  803</span>                <span class="comment">//Add vertex to list using raw value.</span></div>
-<div class="line"><span class="lineno">  804</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a7d0204eb2f161ea470fbd05fb33afed0">RemapTable</a>.Count; i++)</div>
-<div class="line"><span class="lineno">  805</span>                {</div>
-<div class="line"><span class="lineno">  806</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">Vertex3</a> v = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">Vertex3</a>(pVert[<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a7d0204eb2f161ea470fbd05fb33afed0">RemapTable</a>[i]]) {Facepoints = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a6bcd4c8a537bda573623215a5b54a50a">_points</a>[i]};</div>
-<div class="line"><span class="lineno">  807</span>                    <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html">Facepoint</a> f <span class="keywordflow">in</span> v.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a1bf17c2c22140a7f364143d7cb1ee8d9">Facepoints</a>)</div>
-<div class="line"><span class="lineno">  808</span>                    {</div>
-<div class="line"><span class="lineno">  809</span>                        f._vertex = v;</div>
-<div class="line"><span class="lineno">  810</span>                    }</div>
-<div class="line"><span class="lineno">  811</span> </div>
-<div class="line"><span class="lineno">  812</span>                    list.Add(v);</div>
-<div class="line"><span class="lineno">  813</span>                }</div>
-<div class="line"><span class="lineno">  814</span>            }</div>
-<div class="line"><span class="lineno">  815</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nodeTable != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  816</span>            {</div>
-<div class="line"><span class="lineno">  817</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a7d0204eb2f161ea470fbd05fb33afed0">RemapTable</a>.Count; i++)</div>
-<div class="line"><span class="lineno">  818</span>                {</div>
-<div class="line"><span class="lineno">  819</span>                    <span class="keywordtype">int</span> x = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a7d0204eb2f161ea470fbd05fb33afed0">RemapTable</a>[i];</div>
-<div class="line"><span class="lineno">  820</span>                    <span class="comment">//Create new vertex, assigning the value + influence from the remap table</span></div>
-<div class="line"><span class="lineno">  821</span>                    <span class="keywordtype">int</span> node = (x &gt;&gt; 16) &amp; 0xFFFF;</div>
-<div class="line"><span class="lineno">  822</span>                    <a class="code hl_interface" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a> mtx = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  823</span>                    <span class="keywordflow">if</span> (node &lt; nodeTable.Length &amp;&amp; node &gt;= 0)</div>
-<div class="line"><span class="lineno">  824</span>                    {</div>
-<div class="line"><span class="lineno">  825</span>                        mtx = nodeTable[node];</div>
-<div class="line"><span class="lineno">  826</span>                    }</div>
-<div class="line"><span class="lineno">  827</span> </div>
-<div class="line"><span class="lineno">  828</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">Vertex3</a> v = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">Vertex3</a>(pVert[x &amp; 0xFFFF], mtx) {Facepoints = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_element_descriptor.html#a6bcd4c8a537bda573623215a5b54a50a">_points</a>[i]};</div>
-<div class="line"><span class="lineno">  829</span>                    <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_modeling_1_1_facepoint.html">Facepoint</a> f <span class="keywordflow">in</span> v.<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a1bf17c2c22140a7f364143d7cb1ee8d9">Facepoints</a>)</div>
-<div class="line"><span class="lineno">  830</span>                    {</div>
-<div class="line"><span class="lineno">  831</span>                        f._vertex = v;</div>
-<div class="line"><span class="lineno">  832</span>                    }</div>
-<div class="line"><span class="lineno">  833</span> </div>
-<div class="line"><span class="lineno">  834</span>                    <span class="comment">//Add vertex to list</span></div>
-<div class="line"><span class="lineno">  835</span>                    list.Add(v);</div>
-<div class="line"><span class="lineno">  836</span>                }</div>
-<div class="line"><span class="lineno">  837</span>            }</div>
-<div class="line"><span class="lineno">  838</span> </div>
-<div class="line"><span class="lineno">  839</span>            <span class="keywordflow">return</span> list;</div>
-<div class="line"><span class="lineno">  840</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_facepoint_html"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_facepoint.html">BrawlLib.Modeling.Facepoint</a></div><div class="ttdef"><b>Definition:</b> Face.cs:10</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html">BrawlLib.Modeling.Vertex3</a></div><div class="ttdef"><b>Definition:</b> Vertex.cs:13</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_a1bf17c2c22140a7f364143d7cb1ee8d9"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a1bf17c2c22140a7f364143d7cb1ee8d9">BrawlLib.Modeling.Vertex3.Facepoints</a></div><div class="ttdeci">List&lt; Facepoint &gt; Facepoints</div><div class="ttdef"><b>Definition:</b> Vertex.cs:35</div></div>
-<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">BrawlLib.Modeling.IMatrixNode</a></div><div class="ttdef"><b>Definition:</b> IMatrixNode.cs:9</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="adc4742148aa70b869c9f6904d5fa9199" name="adc4742148aa70b869c9f6904d5fa9199"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc4742148aa70b869c9f6904d5fa9199">&#9670;&#160;</a></span>Run()</h2>
 
@@ -530,6 +440,7 @@ Package Functions</h2></td></tr>
 <div class="line"><span class="lineno">  769</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_v_quant_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_v_quant.html">BrawlLib.Internal.VQuant</a></div><div class="ttdef"><b>Definition:</b> VQuant.cs:4</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_v_quant_html_ac4363249bf900b1179aa2fd964df925d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_v_quant.html#ac4363249bf900b1179aa2fd964df925d">BrawlLib.Internal.VQuant.DeQuantTable</a></div><div class="ttdeci">static float[] DeQuantTable</div><div class="ttdef"><b>Definition:</b> VQuant.cs:5</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_facepoint_html"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_facepoint.html">BrawlLib.Modeling.Facepoint</a></div><div class="ttdef"><b>Definition:</b> Face.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_facepoint_html_a44266853253e8d04fbe88902d2a87896"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#a44266853253e8d04fbe88902d2a87896">BrawlLib.Modeling.Facepoint._colorIndices</a></div><div class="ttdeci">int[] _colorIndices</div><div class="ttdef"><b>Definition:</b> Face.cs:31</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_facepoint_html_acb669bc9b609c4d86049e99d798818b5"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_facepoint.html#acb669bc9b609c4d86049e99d798818b5">BrawlLib.Modeling.Facepoint._UVIndices</a></div><div class="ttdeci">int[] _UVIndices</div><div class="ttdef"><b>Definition:</b> Face.cs:32</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_primitive_group_html_a8ad7d76270e7178551e9e259549571ba"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_primitive_group.html#a8ad7d76270e7178551e9e259549571ba">BrawlLib.Modeling.PrimitiveGroup._facePoints</a></div><div class="ttdeci">List&lt; List&lt; Facepoint &gt; &gt; _facePoints</div><div class="ttdef"><b>Definition:</b> Face.cs:134</div></div>

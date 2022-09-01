@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Graphics.CPElementSpec Struct Reference</div></div>
@@ -96,13 +95,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a25a351b40fbd3b0bd72b4653e89cc454"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79a8517d5e296f53686cfb3cb9aa88d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a79a8517d5e296f53686cfb3cb9aa88d8">SetUVDef</a> (int index, <a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html">CPElementDef</a> def)</td></tr>
 <tr class="separator:a79a8517d5e296f53686cfb3cb9aa88d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a3a0eb15cc240d287592facef7351e319"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a></td></tr>
-<tr class="separator:a3a0eb15cc240d287592facef7351e319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6048e363992d6d5305f83e02ecb6ea04"><td class="memItemLeft" align="right" valign="top">ulong&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a6048e363992d6d5305f83e02ecb6ea04">_grp12</a></td></tr>
-<tr class="separator:a6048e363992d6d5305f83e02ecb6ea04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -156,11 +148,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  255</span>        {</div>
-<div class="line"><span class="lineno">  256</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> = grp0;</div>
-<div class="line"><span class="lineno">  257</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a6048e363992d6d5305f83e02ecb6ea04">_grp12</a> = ((ulong) grp2 &lt;&lt; 31) | grp1;</div>
+<div class="line"><span class="lineno">  256</span>            _grp0 = grp0;</div>
+<div class="line"><span class="lineno">  257</span>            _grp12 = ((ulong) grp2 &lt;&lt; 31) | grp1;</div>
 <div class="line"><span class="lineno">  258</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec_html_a3a0eb15cc240d287592facef7351e319"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">BrawlLib.Wii.Graphics.CPElementSpec._grp0</a></div><div class="ttdeci">uint _grp0</div><div class="ttdef"><b>Definition:</b> CP.cs:227</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec_html_a6048e363992d6d5305f83e02ecb6ea04"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a6048e363992d6d5305f83e02ecb6ea04">BrawlLib.Wii.Graphics.CPElementSpec._grp12</a></div><div class="ttdeci">ulong _grp12</div><div class="ttdef"><b>Definition:</b> CP.cs:228</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -189,7 +179,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  261</span>        {</div>
-<div class="line"><span class="lineno">  262</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> CPElementDef((<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &gt;&gt; (index * 4 + 13)) &amp; 0xF);</div>
+<div class="line"><span class="lineno">  262</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> CPElementDef((_grp0 &gt;&gt; (index * 4 + 13)) &amp; 0xF);</div>
 <div class="line"><span class="lineno">  263</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -220,10 +210,10 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  271</span>        {</div>
 <div class="line"><span class="lineno">  272</span>            <span class="keywordflow">if</span> (index == 0)</div>
 <div class="line"><span class="lineno">  273</span>            {</div>
-<div class="line"><span class="lineno">  274</span>                <span class="keywordflow">return</span> <span class="keyword">new</span> CPElementDef((<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &gt;&gt; 21) &amp; 0x1FF);</div>
+<div class="line"><span class="lineno">  274</span>                <span class="keywordflow">return</span> <span class="keyword">new</span> CPElementDef((_grp0 &gt;&gt; 21) &amp; 0x1FF);</div>
 <div class="line"><span class="lineno">  275</span>            }</div>
 <div class="line"><span class="lineno">  276</span> </div>
-<div class="line"><span class="lineno">  277</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> CPElementDef((uint) ((<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a6048e363992d6d5305f83e02ecb6ea04">_grp12</a> &gt;&gt; (--index * 9)) &amp; 0x1FF));</div>
+<div class="line"><span class="lineno">  277</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> CPElementDef((uint) ((_grp12 &gt;&gt; (--index * 9)) &amp; 0x1FF));</div>
 <div class="line"><span class="lineno">  278</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -262,7 +252,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  266</span>        {</div>
-<div class="line"><span class="lineno">  267</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; ~((uint) 0xF &lt;&lt; (index * 4 + 13))) | ((def._data &amp; 0xF) &lt;&lt; (index * 4 + 13));</div>
+<div class="line"><span class="lineno">  267</span>            _grp0 = (_grp0 &amp; ~((uint) 0xF &lt;&lt; (index * 4 + 13))) | ((def._data &amp; 0xF) &lt;&lt; (index * 4 + 13));</div>
 <div class="line"><span class="lineno">  268</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -303,59 +293,14 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  281</span>        {</div>
 <div class="line"><span class="lineno">  282</span>            <span class="keywordflow">if</span> (index == 0)</div>
 <div class="line"><span class="lineno">  283</span>            {</div>
-<div class="line"><span class="lineno">  284</span>                <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0xC01FFFFF) | ((def._data &amp; 0x1FF) &lt;&lt; 21);</div>
+<div class="line"><span class="lineno">  284</span>                _grp0 = (_grp0 &amp; 0xC01FFFFF) | ((def._data &amp; 0x1FF) &lt;&lt; 21);</div>
 <div class="line"><span class="lineno">  285</span>            }</div>
 <div class="line"><span class="lineno">  286</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  287</span>            {</div>
-<div class="line"><span class="lineno">  288</span>                <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a6048e363992d6d5305f83e02ecb6ea04">_grp12</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a6048e363992d6d5305f83e02ecb6ea04">_grp12</a> &amp; ~((ulong) 0x1FF &lt;&lt; (--index * 9))) | (((ulong) def._data &amp; 0x1FF) &lt;&lt; (index * 9));</div>
+<div class="line"><span class="lineno">  288</span>                _grp12 = (_grp12 &amp; ~((ulong) 0x1FF &lt;&lt; (--index * 9))) | (((ulong) def._data &amp; 0x1FF) &lt;&lt; (index * 9));</div>
 <div class="line"><span class="lineno">  289</span>            }</div>
 <div class="line"><span class="lineno">  290</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a3a0eb15cc240d287592facef7351e319" name="a3a0eb15cc240d287592facef7351e319"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a0eb15cc240d287592facef7351e319">&#9670;&#160;</a></span>_grp0</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint BrawlLib.Wii.Graphics.CPElementSpec._grp0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6048e363992d6d5305f83e02ecb6ea04" name="a6048e363992d6d5305f83e02ecb6ea04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6048e363992d6d5305f83e02ecb6ea04">&#9670;&#160;</a></span>_grp12</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ulong BrawlLib.Wii.Graphics.CPElementSpec._grp12</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
@@ -379,8 +324,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  231</span>        {</div>
-<div class="line"><span class="lineno">  232</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0x40000000) != 0;</div>
-<div class="line"><span class="lineno">  233</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0xBFFFFFFF) | (uint) (value ? 0x40000000 : 0);</div>
+<div class="line"><span class="lineno">  232</span>            <span class="keyword">get</span> =&gt; (_grp0 &amp; 0x40000000) != 0;</div>
+<div class="line"><span class="lineno">  233</span>            <span class="keyword">set</span> =&gt; _grp0 = (_grp0 &amp; 0xBFFFFFFF) | (uint) (value ? 0x40000000 : 0);</div>
 <div class="line"><span class="lineno">  234</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -405,8 +350,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  249</span>        {</div>
-<div class="line"><span class="lineno">  250</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> CPElementDef((<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &gt;&gt; 9) &amp; 0xF);</div>
-<div class="line"><span class="lineno">  251</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0xFFFFE1FF) | ((value._data &amp; 0xF) &lt;&lt; 9);</div>
+<div class="line"><span class="lineno">  250</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> CPElementDef((_grp0 &gt;&gt; 9) &amp; 0xF);</div>
+<div class="line"><span class="lineno">  251</span>            <span class="keyword">set</span> =&gt; _grp0 = (_grp0 &amp; 0xFFFFE1FF) | ((value._data &amp; 0xF) &lt;&lt; 9);</div>
 <div class="line"><span class="lineno">  252</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -431,8 +376,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  237</span>        {</div>
-<div class="line"><span class="lineno">  238</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0x80000000) != 0;</div>
-<div class="line"><span class="lineno">  239</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0x7FFFFFFF) | (value ? 0x80000000 : 0);</div>
+<div class="line"><span class="lineno">  238</span>            <span class="keyword">get</span> =&gt; (_grp0 &amp; 0x80000000) != 0;</div>
+<div class="line"><span class="lineno">  239</span>            <span class="keyword">set</span> =&gt; _grp0 = (_grp0 &amp; 0x7FFFFFFF) | (value ? 0x80000000 : 0);</div>
 <div class="line"><span class="lineno">  240</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -457,8 +402,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  243</span>        {</div>
-<div class="line"><span class="lineno">  244</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> CPElementDef(<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0x1FF);</div>
-<div class="line"><span class="lineno">  245</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_spec.html#a3a0eb15cc240d287592facef7351e319">_grp0</a> &amp; 0xFFFFFE00) | (value._data &amp; 0x1FF);</div>
+<div class="line"><span class="lineno">  244</span>            <span class="keyword">get</span> =&gt; <span class="keyword">new</span> CPElementDef(_grp0 &amp; 0x1FF);</div>
+<div class="line"><span class="lineno">  245</span>            <span class="keyword">set</span> =&gt; _grp0 = (_grp0 &amp; 0xFFFFFE00) | (value._data &amp; 0x1FF);</div>
 <div class="line"><span class="lineno">  246</span>        }</div>
 </div><!-- fragment -->
 </div>

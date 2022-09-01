@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Models.Influence Class Reference</div></div>
@@ -131,17 +130,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a5e621cfee40e6b3c30e4ec6286fd7470"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2812c7117ba1b5ddb25472c35b5e0a80"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a2812c7117ba1b5ddb25472c35b5e0a80">operator!=</a> (<a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a> i1, <a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a> i2)</td></tr>
 <tr class="separator:a2812c7117ba1b5ddb25472c35b5e0a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a1d7a9eb903951c92de6669ce0d3106fd"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_i_matrix_node_user.html">IMatrixNodeUser</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a1d7a9eb903951c92de6669ce0d3106fd">_references</a> = new List&lt;<a class="el" href="interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_i_matrix_node_user.html">IMatrixNodeUser</a>&gt;()</td></tr>
-<tr class="separator:a1d7a9eb903951c92de6669ce0d3106fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98741e10029621631d93e4f5ab3da33c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a98741e10029621631d93e4f5ab3da33c">_index</a></td></tr>
-<tr class="separator:a98741e10029621631d93e4f5ab3da33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a065a02e2d459b5bbbe91f531c846bedd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a065a02e2d459b5bbbe91f531c846bedd">_matrix</a></td></tr>
-<tr class="separator:a065a02e2d459b5bbbe91f531c846bedd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab986f37a3c7eafa1c5988f23b46f6ee3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a></td></tr>
-<tr class="separator:ab986f37a3c7eafa1c5988f23b46f6ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -334,23 +322,21 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  272</span>        {</div>
 <div class="line"><span class="lineno">  273</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a86dc1afd1ff6a6a11179daf43a8fdd9d">IsWeighted</a>)</div>
 <div class="line"><span class="lineno">  274</span>            {</div>
-<div class="line"><span class="lineno">  275</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a065a02e2d459b5bbbe91f531c846bedd">_matrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a312528590d40fd7b847e904c3e44d636">InfluenceMatrix</a>(_weights);</div>
-<div class="line"><span class="lineno">  276</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a881d95f5697da266e3d5a47a300c6831">ReverseInfluenceMatrix</a>(_weights);</div>
+<div class="line"><span class="lineno">  275</span>                _matrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a312528590d40fd7b847e904c3e44d636">InfluenceMatrix</a>(_weights);</div>
+<div class="line"><span class="lineno">  276</span>                _invMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a881d95f5697da266e3d5a47a300c6831">ReverseInfluenceMatrix</a>(_weights);</div>
 <div class="line"><span class="lineno">  277</span>            }</div>
 <div class="line"><span class="lineno">  278</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (_weights.Count == 1 &amp;&amp; <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a4c3b62e415d55e742a288694aef5ecb4">Bone</a> != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  279</span>            {</div>
-<div class="line"><span class="lineno">  280</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a065a02e2d459b5bbbe91f531c846bedd">_matrix</a> = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a4c3b62e415d55e742a288694aef5ecb4">Bone</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a25ed1bab1a63b1fe76186b433e10d935">Matrix</a>;</div>
-<div class="line"><span class="lineno">  281</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a> = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a4c3b62e415d55e742a288694aef5ecb4">Bone</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#aae67afaee586e0a3d3b52496b1a53b29">InverseMatrix</a>;</div>
+<div class="line"><span class="lineno">  280</span>                _matrix = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a4c3b62e415d55e742a288694aef5ecb4">Bone</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a25ed1bab1a63b1fe76186b433e10d935">Matrix</a>;</div>
+<div class="line"><span class="lineno">  281</span>                _invMatrix = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a4c3b62e415d55e742a288694aef5ecb4">Bone</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#aae67afaee586e0a3d3b52496b1a53b29">InverseMatrix</a>;</div>
 <div class="line"><span class="lineno">  282</span>            }</div>
 <div class="line"><span class="lineno">  283</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  284</span>            {</div>
-<div class="line"><span class="lineno">  285</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a065a02e2d459b5bbbe91f531c846bedd">_matrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
+<div class="line"><span class="lineno">  285</span>                _invMatrix = _matrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><span class="lineno">  286</span>            }</div>
 <div class="line"><span class="lineno">  287</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_influence_html_a065a02e2d459b5bbbe91f531c846bedd"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a065a02e2d459b5bbbe91f531c846bedd">BrawlLib.Wii.Models.Influence._matrix</a></div><div class="ttdeci">Matrix _matrix</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:104</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_influence_html_a4c3b62e415d55e742a288694aef5ecb4"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a4c3b62e415d55e742a288694aef5ecb4">BrawlLib.Wii.Models.Influence.Bone</a></div><div class="ttdeci">IBoneNode Bone</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:229</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_influence_html_a86dc1afd1ff6a6a11179daf43a8fdd9d"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a86dc1afd1ff6a6a11179daf43a8fdd9d">BrawlLib.Wii.Models.Influence.IsWeighted</a></div><div class="ttdeci">bool IsWeighted</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:228</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_influence_html_ab986f37a3c7eafa1c5988f23b46f6ee3"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">BrawlLib.Wii.Models.Influence._invMatrix</a></div><div class="ttdeci">Matrix? _invMatrix</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:105</div></div>
 <div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html_a25ed1bab1a63b1fe76186b433e10d935"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a25ed1bab1a63b1fe76186b433e10d935">BrawlLib.Modeling.IMatrixNode.Matrix</a></div><div class="ttdeci">Matrix Matrix</div><div class="ttdef"><b>Definition:</b> IMatrixNode.cs:12</div></div>
 <div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_matrix_node_html_aae67afaee586e0a3d3b52496b1a53b29"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#aae67afaee586e0a3d3b52496b1a53b29">BrawlLib.Modeling.IMatrixNode.InverseMatrix</a></div><div class="ttdeci">Matrix InverseMatrix</div><div class="ttdef"><b>Definition:</b> IMatrixNode.cs:13</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html">BrawlLib.Internal.Matrix</a></div><div class="ttdef"><b>Definition:</b> Matrix.cs:14</div></div>
@@ -821,95 +807,6 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a98741e10029621631d93e4f5ab3da33c" name="a98741e10029621631d93e4f5ab3da33c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98741e10029621631d93e4f5ab3da33c">&#9670;&#160;</a></span>_index</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BrawlLib.Wii.Models.Influence._index</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab986f37a3c7eafa1c5988f23b46f6ee3" name="ab986f37a3c7eafa1c5988f23b46f6ee3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab986f37a3c7eafa1c5988f23b46f6ee3">&#9670;&#160;</a></span>_invMatrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>? BrawlLib.Wii.Models.Influence._invMatrix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a065a02e2d459b5bbbe91f531c846bedd" name="a065a02e2d459b5bbbe91f531c846bedd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a065a02e2d459b5bbbe91f531c846bedd">&#9670;&#160;</a></span>_matrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a> BrawlLib.Wii.Models.Influence._matrix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1d7a9eb903951c92de6669ce0d3106fd" name="a1d7a9eb903951c92de6669ce0d3106fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d7a9eb903951c92de6669ce0d3106fd">&#9670;&#160;</a></span>_references</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;<a class="el" href="interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_i_matrix_node_user.html">IMatrixNodeUser</a>&gt; BrawlLib.Wii.Models.Influence._references = new List&lt;<a class="el" href="interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_i_matrix_node_user.html">IMatrixNodeUser</a>&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a4c3b62e415d55e742a288694aef5ecb4" name="a4c3b62e415d55e742a288694aef5ecb4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c3b62e415d55e742a288694aef5ecb4">&#9670;&#160;</a></span>Bone</h2>
@@ -957,19 +854,19 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  208</span>        {</div>
 <div class="line"><span class="lineno">  209</span>            <span class="keyword">get</span></div>
 <div class="line"><span class="lineno">  210</span>            {</div>
-<div class="line"><span class="lineno">  211</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  211</span>                <span class="keywordflow">if</span> (_invMatrix == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  212</span>                {</div>
 <div class="line"><span class="lineno">  213</span>                    <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  214</span>                    {</div>
-<div class="line"><span class="lineno">  215</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a9efa360e7c296b6b273bb2323d5353a3">Invert</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a065a02e2d459b5bbbe91f531c846bedd">_matrix</a>);</div>
+<div class="line"><span class="lineno">  215</span>                        _invMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a9efa360e7c296b6b273bb2323d5353a3">Invert</a>(_matrix);</div>
 <div class="line"><span class="lineno">  216</span>                    }</div>
 <div class="line"><span class="lineno">  217</span>                    <span class="keywordflow">catch</span></div>
 <div class="line"><span class="lineno">  218</span>                    {</div>
-<div class="line"><span class="lineno">  219</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a> = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
+<div class="line"><span class="lineno">  219</span>                        _invMatrix = <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a>;</div>
 <div class="line"><span class="lineno">  220</span>                    }</div>
 <div class="line"><span class="lineno">  221</span>                }</div>
 <div class="line"><span class="lineno">  222</span> </div>
-<div class="line"><span class="lineno">  223</span>                <span class="keywordflow">return</span> (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>) <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#ab986f37a3c7eafa1c5988f23b46f6ee3">_invMatrix</a>;</div>
+<div class="line"><span class="lineno">  223</span>                <span class="keywordflow">return</span> (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>) _invMatrix;</div>
 <div class="line"><span class="lineno">  224</span>            }</div>
 <div class="line"><span class="lineno">  225</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a9efa360e7c296b6b273bb2323d5353a3"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a9efa360e7c296b6b273bb2323d5353a3">BrawlLib.Internal.Matrix.Invert</a></div><div class="ttdeci">Matrix Invert()</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1474</div></div>
@@ -1092,10 +989,9 @@ Properties</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">BrawlLib.Modeling.IMatrixNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  114</span>        {</div>
-<div class="line"><span class="lineno">  115</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a1d7a9eb903951c92de6669ce0d3106fd">_references</a>;</div>
-<div class="line"><span class="lineno">  116</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a1d7a9eb903951c92de6669ce0d3106fd">_references</a> = value;</div>
+<div class="line"><span class="lineno">  115</span>            <span class="keyword">get</span> =&gt; _references;</div>
+<div class="line"><span class="lineno">  116</span>            <span class="keyword">set</span> =&gt; _references = value;</div>
 <div class="line"><span class="lineno">  117</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_influence_html_a1d7a9eb903951c92de6669ce0d3106fd"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html#a1d7a9eb903951c92de6669ce0d3106fd">BrawlLib.Wii.Models.Influence._references</a></div><div class="ttdeci">List&lt; IMatrixNodeUser &gt; _references</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:102</div></div>
 </div><!-- fragment -->
 </div>
 </div>

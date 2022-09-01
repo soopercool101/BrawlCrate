@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_crate_1_1_u_i_1_1_main_form-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.UI.MainForm Class Reference</div></div>
@@ -148,11 +147,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a879a86bf4b6fd12a66571ee97448c92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up any resources being used.   <a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a879a86bf4b6fd12a66571ee97448c92c">More...</a><br /></td></tr>
 <tr class="separator:a879a86bf4b6fd12a66571ee97448c92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a2ec7b5de6f42ff9dbfaffdd33b206399"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a2ec7b5de6f42ff9dbfaffdd33b206399">CheckUpdates</a> (bool manual)</td></tr>
-<tr class="separator:a2ec7b5de6f42ff9dbfaffdd33b206399"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:ac31238e8420903855e77a7289986aece"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a><code> [get]</code></td></tr>
@@ -195,82 +189,6 @@ Properties</h2></td></tr>
 <tr class="separator:a9de0377221b8e6dea40780df0b813bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2ec7b5de6f42ff9dbfaffdd33b206399" name="a2ec7b5de6f42ff9dbfaffdd33b206399"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ec7b5de6f42ff9dbfaffdd33b206399">&#9670;&#160;</a></span>CheckUpdates()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlCrate.UI.MainForm.CheckUpdates </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>manual</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  195</span>        {</div>
-<div class="line"><span class="lineno">  196</span>            <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  197</span>            {</div>
-<div class="line"><span class="lineno">  198</span>                <span class="keywordflow">if</span> (Program.CanRunGithubApp(manual, out <span class="keywordtype">string</span> path))</div>
-<div class="line"><span class="lineno">  199</span>                {</div>
-<div class="line"><span class="lineno">  200</span><span class="preprocessor">#if CANARY</span></div>
-<div class="line"><span class="lineno">  201</span>                    <a class="code hl_class" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html">UpdaterHelper</a>.<a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a79623e771223af4a235249cd344a9c2e">CheckCanaryUpdate</a>(<span class="keyword">true</span>, Program.RootPath ?? <span class="stringliteral">&quot;&lt;null&gt;&quot;</span>, manual, <span class="keyword">false</span>,</div>
-<div class="line"><span class="lineno">  202</span>                        Properties.Settings.Default.APIAutoUpdate);</div>
-<div class="line"><span class="lineno">  203</span>                    <span class="keywordflow">if</span> (File.Exists(Program.AppPath + <span class="stringliteral">&quot;\\Canary\\Old&quot;</span>))</div>
-<div class="line"><span class="lineno">  204</span>                    {</div>
-<div class="line"><span class="lineno">  205</span>                        Process changelog = Process.Start(<span class="keyword">new</span> ProcessStartInfo()</div>
-<div class="line"><span class="lineno">  206</span>                        {</div>
-<div class="line"><span class="lineno">  207</span>                            FileName = path,</div>
-<div class="line"><span class="lineno">  208</span>                            WindowStyle = ProcessWindowStyle.Hidden,</div>
-<div class="line"><span class="lineno">  209</span>                            Arguments = <span class="stringliteral">&quot;-canarylog&quot;</span></div>
-<div class="line"><span class="lineno">  210</span>                        });</div>
-<div class="line"><span class="lineno">  211</span>                        changelog?.WaitForExit();</div>
-<div class="line"><span class="lineno">  212</span>                    }</div>
-<div class="line"><span class="lineno">  213</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno">  214</span>                    <a class="code hl_class" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html">UpdaterHelper</a>.<a class="code hl_function" href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#af42b8e57719800ff43b91acc15908417">CheckUpdate</a>(manual, <span class="keyword">true</span>,</div>
-<div class="line"><span class="lineno">  215</span>                        Program.TagName, manual, Program.RootPath ?? <span class="stringliteral">&quot;&lt;null&gt;&quot;</span>,</div>
-<div class="line"><span class="lineno">  216</span>                        _docUpdates, !manual &amp;&amp; _autoUpdate, Properties.Settings.Default.APIAutoUpdate);</div>
-<div class="line"><span class="lineno">  217</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  218</span>                    <span class="keywordflow">if</span> (Properties.Settings.Default.APIAutoUpdate)</div>
-<div class="line"><span class="lineno">  219</span>                    {</div>
-<div class="line"><span class="lineno">  220</span>                        APISubscriptionManager.GetNewFiles();</div>
-<div class="line"><span class="lineno">  221</span>                    }</div>
-<div class="line"><span class="lineno">  222</span>                }</div>
-<div class="line"><span class="lineno">  223</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  224</span>                {</div>
-<div class="line"><span class="lineno">  225</span>                    <span class="keywordflow">if</span> (manual)</div>
-<div class="line"><span class="lineno">  226</span>                    {</div>
-<div class="line"><span class="lineno">  227</span>                        MessageBox.Show(<span class="stringliteral">&quot;The updater could not be found.&quot;</span>);</div>
-<div class="line"><span class="lineno">  228</span>                    }</div>
-<div class="line"><span class="lineno">  229</span> </div>
-<div class="line"><span class="lineno">  230</span>                    checkForUpdatesToolStripMenuItem.Enabled =</div>
-<div class="line"><span class="lineno">  231</span>                        checkForUpdatesToolStripMenuItem.Visible = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  232</span>                }</div>
-<div class="line"><span class="lineno">  233</span>            }</div>
-<div class="line"><span class="lineno">  234</span>            <span class="keywordflow">catch</span> (Exception e)</div>
-<div class="line"><span class="lineno">  235</span>            {</div>
-<div class="line"><span class="lineno">  236</span>                <span class="keywordflow">if</span> (manual)</div>
-<div class="line"><span class="lineno">  237</span>                {</div>
-<div class="line"><span class="lineno">  238</span>                    MessageBox.Show(e.Message, <span class="stringliteral">&quot;Error&quot;</span>, MessageBoxButtons.OK, MessageBoxIcon.Error);</div>
-<div class="line"><span class="lineno">  239</span>                }</div>
-<div class="line"><span class="lineno">  240</span>            }</div>
-<div class="line"><span class="lineno">  241</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_updater_helper_html"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html">BrawlCrate.ExternalInterfacing.UpdaterHelper</a></div><div class="ttdef"><b>Definition:</b> UpdaterHelper.cs:7</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_updater_helper_html_a79623e771223af4a235249cd344a9c2e"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#a79623e771223af4a235249cd344a9c2e">BrawlCrate.ExternalInterfacing.UpdaterHelper.CheckCanaryUpdate</a></div><div class="ttdeci">static void CheckCanaryUpdate(bool waitForExit, string openFile, bool manual, bool force, bool checkForAPI)</div><div class="ttdef"><b>Definition:</b> UpdaterHelper.cs:22</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_external_interfacing_1_1_updater_helper_html_af42b8e57719800ff43b91acc15908417"><div class="ttname"><a href="class_brawl_crate_1_1_external_interfacing_1_1_updater_helper.html#af42b8e57719800ff43b91acc15908417">BrawlCrate.ExternalInterfacing.UpdaterHelper.CheckUpdate</a></div><div class="ttdeci">static void CheckUpdate(bool waitForExit, bool overwrite)</div><div class="ttdef"><b>Definition:</b> UpdaterHelper.cs:10</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a879a86bf4b6fd12a66571ee97448c92c" name="a879a86bf4b6fd12a66571ee97448c92c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a879a86bf4b6fd12a66571ee97448c92c">&#9670;&#160;</a></span>Dispose()</h2>
 
@@ -469,13 +387,11 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno"> 1425</span>        {</div>
-<div class="line"><span class="lineno"> 1426</span>            <a class="code hl_class" href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i_internal.html">BrawlAPIInternal</a>.<a class="code hl_property" href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i_internal.html#a5d0ab689c4b3d606462cfb662fa43e5a">Plugins</a>.Clear();</div>
+<div class="line"><span class="lineno"> 1426</span>            BrawlAPIInternal.Plugins.Clear();</div>
 <div class="line"><span class="lineno"> 1427</span>            pluginToolStripMenuItem.DropDown.Items.Clear();</div>
 <div class="line"><span class="lineno"> 1428</span>            AddPlugins(pluginToolStripMenuItem, Program.ApiPluginPath);</div>
 <div class="line"><span class="lineno"> 1429</span>            pluginToolStripMenuItem.Enabled = pluginToolStripMenuItem.HasDropDownItems;</div>
 <div class="line"><span class="lineno"> 1430</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i_internal_html"><div class="ttname"><a href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i_internal.html">BrawlCrate.API.BrawlAPIInternal</a></div><div class="ttdef"><b>Definition:</b> BrawlAPIInternal.cs:23</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i_internal_html_a5d0ab689c4b3d606462cfb662fa43e5a"><div class="ttname"><a href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i_internal.html#a5d0ab689c4b3d606462cfb662fa43e5a">BrawlCrate.API.BrawlAPIInternal.Plugins</a></div><div class="ttdeci">static List&lt; PluginScript &gt; Plugins</div><div class="ttdef"><b>Definition:</b> BrawlAPIInternal.cs:85</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1444,10 +1360,9 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  522</span>        {</div>
 <div class="line"><span class="lineno">  523</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a30af21bc3f6d64ed2a35fca2d1924897">RootNode</a> != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  524</span>            {</div>
-<div class="line"><span class="lineno">  525</span>                resourceTree.SelectedNode = <a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a30af21bc3f6d64ed2a35fca2d1924897">RootNode</a>.<a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a377cdde988b120ccc6f1fbf0bd3c7309">FindResource</a>(n, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  525</span>                resourceTree.SelectedNode = <a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a30af21bc3f6d64ed2a35fca2d1924897">RootNode</a>.FindResource(n, <span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">  526</span>            }</div>
 <div class="line"><span class="lineno">  527</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_a377cdde988b120ccc6f1fbf0bd3c7309"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a377cdde988b120ccc6f1fbf0bd3c7309">BrawlCrate.NodeWrappers.BaseWrapper.FindResource</a></div><div class="ttdeci">BaseWrapper FindResource(ResourceNode n, bool searchChildren)</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:373</div></div>
 </div><!-- fragment -->
 </div>
 </div>

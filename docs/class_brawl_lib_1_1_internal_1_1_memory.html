@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_memory-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Memory Class Reference</div></div>
 </div><!--header-->
@@ -87,92 +86,8 @@ $(function() {
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a22c0cb3641b22e5ce664d45ad2f10132"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a> (<a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dst, <a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> src, uint size)</td></tr>
 <tr class="separator:a22c0cb3641b22e5ce664d45ad2f10132"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-static-methods" name="pac-static-methods"></a>
-Static Package Functions</h2></td></tr>
-<tr class="memitem:aa2bc2004fc7bdc6c3cccadf8806e11cb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory.html#aa2bc2004fc7bdc6c3cccadf8806e11cb">Fill</a> (<a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> dest, uint length, byte value)</td></tr>
-<tr class="separator:aa2bc2004fc7bdc6c3cccadf8806e11cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa2bc2004fc7bdc6c3cccadf8806e11cb" name="aa2bc2004fc7bdc6c3cccadf8806e11cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2bc2004fc7bdc6c3cccadf8806e11cb">&#9670;&#160;</a></span>Fill()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.Internal.Memory.Fill </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td>
-          <td class="paramname"><em>dest</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint&#160;</td>
-          <td class="paramname"><em>length</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   37</span>        {</div>
-<div class="line"><span class="lineno">   38</span>            <span class="keywordflow">switch</span> (Environment.OSVersion.Platform)</div>
-<div class="line"><span class="lineno">   39</span>            {</div>
-<div class="line"><span class="lineno">   40</span>                <span class="keywordflow">case</span> PlatformID.Win32NT:</div>
-<div class="line"><span class="lineno">   41</span>                {</div>
-<div class="line"><span class="lineno">   42</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_win32.html#a3eeeed9da3158678ce8122a223477c97">FillMemory</a>(dest, length, value);</div>
-<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   44</span>                }</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">case</span> PlatformID.MacOSX:</div>
-<div class="line"><span class="lineno">   47</span>                {</div>
-<div class="line"><span class="lineno">   48</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_o_s_x.html">OSX</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_o_s_x.html#a1a7c1c4fa81f5b43480494fa256d88c5">memset</a>(dest, value, length);</div>
-<div class="line"><span class="lineno">   49</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   50</span>                }</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>                <span class="keywordflow">case</span> PlatformID.Unix:</div>
-<div class="line"><span class="lineno">   53</span>                {</div>
-<div class="line"><span class="lineno">   54</span>                    <span class="keywordflow">if</span> (Directory.Exists(<span class="stringliteral">&quot;/Applications&quot;</span>)</div>
-<div class="line"><span class="lineno">   55</span>                        &amp; Directory.Exists(<span class="stringliteral">&quot;/System&quot;</span>)</div>
-<div class="line"><span class="lineno">   56</span>                        &amp; Directory.Exists(<span class="stringliteral">&quot;/Users&quot;</span>)</div>
-<div class="line"><span class="lineno">   57</span>                        &amp; Directory.Exists(<span class="stringliteral">&quot;/Volumes&quot;</span>))</div>
-<div class="line"><span class="lineno">   58</span>                    {</div>
-<div class="line"><span class="lineno">   59</span>                        <span class="keywordflow">goto</span> <span class="keywordflow">case</span> PlatformID.MacOSX;</div>
-<div class="line"><span class="lineno">   60</span>                    }</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_linux.html">Linux</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_linux.html#a7ed7e7fed1deaf628ffdbe6d3fea53f6">memset</a>(dest, value, length);</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   65</span>                }</div>
-<div class="line"><span class="lineno">   66</span>            }</div>
-<div class="line"><span class="lineno">   67</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_linux_html"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_linux.html">BrawlLib.Platform.Linux</a></div><div class="ttdef"><b>Definition:</b> Linux.cs:7</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_linux_html_a7ed7e7fed1deaf628ffdbe6d3fea53f6"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_linux.html#a7ed7e7fed1deaf628ffdbe6d3fea53f6">BrawlLib.Platform.Linux.memset</a></div><div class="ttdeci">static void memset(void *dest, byte value, uint length)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_o_s_x_html"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_o_s_x.html">BrawlLib.Platform.OSX</a></div><div class="ttdef"><b>Definition:</b> OSX.cs:7</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_o_s_x_html_a1a7c1c4fa81f5b43480494fa256d88c5"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_o_s_x.html#a1a7c1c4fa81f5b43480494fa256d88c5">BrawlLib.Platform.OSX.memset</a></div><div class="ttdeci">static void memset(void *dest, byte value, uint length)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html">BrawlLib.Platform.Win32</a></div><div class="ttdef"><b>Definition:</b> Win32.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_a3eeeed9da3158678ce8122a223477c97"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#a3eeeed9da3158678ce8122a223477c97">BrawlLib.Platform.Win32.FillMemory</a></div><div class="ttdeci">static void FillMemory(VoidPtr dest, uint length, byte value)</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a22c0cb3641b22e5ce664d45ad2f10132" name="a22c0cb3641b22e5ce664d45ad2f10132"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a22c0cb3641b22e5ce664d45ad2f10132">&#9670;&#160;</a></span>Move()</h2>
 
@@ -216,10 +131,10 @@ Static Package Functions</h2></td></tr>
 <div class="line"><span class="lineno">   11</span>            <span class="keywordflow">switch</span> (Environment.OSVersion.Platform)</div>
 <div class="line"><span class="lineno">   12</span>            {</div>
 <div class="line"><span class="lineno">   13</span>                <span class="keywordflow">case</span> PlatformID.Win32NT:</div>
-<div class="line"><span class="lineno">   14</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_win32.html">Win32</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_win32.html#a80fe83f6fbbb1bcdd2317c750a0210cd">MoveMemory</a>(dst, src, size);</div>
+<div class="line"><span class="lineno">   14</span>                    Win32.MoveMemory(dst, src, size);</div>
 <div class="line"><span class="lineno">   15</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   16</span>                <span class="keywordflow">case</span> PlatformID.MacOSX:</div>
-<div class="line"><span class="lineno">   17</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_o_s_x.html">OSX</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_o_s_x.html#ad0eb15fd5392a465c36347717490a312">memmove</a>(dst, src, size);</div>
+<div class="line"><span class="lineno">   17</span>                    OSX.memmove(dst, src, size);</div>
 <div class="line"><span class="lineno">   18</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   19</span>                <span class="keywordflow">case</span> PlatformID.Unix:</div>
 <div class="line"><span class="lineno">   20</span>                    <span class="keywordflow">if</span> (Directory.Exists(<span class="stringliteral">&quot;/Applications&quot;</span>)</div>
@@ -231,15 +146,12 @@ Static Package Functions</h2></td></tr>
 <div class="line"><span class="lineno">   26</span>                    }</div>
 <div class="line"><span class="lineno">   27</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   28</span>                    {</div>
-<div class="line"><span class="lineno">   29</span>                        <a class="code hl_class" href="class_brawl_lib_1_1_platform_1_1_linux.html">Linux</a>.<a class="code hl_function" href="class_brawl_lib_1_1_platform_1_1_linux.html#a544d294334df36013bd8c76936567893">memmove</a>(dst, src, size);</div>
+<div class="line"><span class="lineno">   29</span>                        Linux.memmove(dst, src, size);</div>
 <div class="line"><span class="lineno">   30</span>                    }</div>
 <div class="line"><span class="lineno">   31</span> </div>
 <div class="line"><span class="lineno">   32</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">   33</span>            }</div>
 <div class="line"><span class="lineno">   34</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_linux_html_a544d294334df36013bd8c76936567893"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_linux.html#a544d294334df36013bd8c76936567893">BrawlLib.Platform.Linux.memmove</a></div><div class="ttdeci">static void memmove(void *dst, void *src, uint length)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_o_s_x_html_ad0eb15fd5392a465c36347717490a312"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_o_s_x.html#ad0eb15fd5392a465c36347717490a312">BrawlLib.Platform.OSX.memmove</a></div><div class="ttdeci">static void memmove(void *dst, void *src, uint length)</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_platform_1_1_win32_html_a80fe83f6fbbb1bcdd2317c750a0210cd"><div class="ttname"><a href="class_brawl_lib_1_1_platform_1_1_win32.html#a80fe83f6fbbb1bcdd2317c750a0210cd">BrawlLib.Platform.Win32.MoveMemory</a></div><div class="ttdeci">static void MoveMemory(VoidPtr dest, VoidPtr src, uint size)</div></div>
 </div><!-- fragment -->
 </div>
 </div>

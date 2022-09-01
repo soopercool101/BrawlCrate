@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_model_vertex-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.ModelVertex Class Reference</div></div>
 </div><!--header-->
@@ -103,13 +102,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab65f067c3c31acb18d168f2734567890"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83202af5a0af1186fb6755ec405274c6"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a83202af5a0af1186fb6755ec405274c6">_edgeFlag</a></td></tr>
 <tr class="separator:a83202af5a0af1186fb6755ec405274c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:ae0e21183f880b8ef8844a955724a1f70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ae0e21183f880b8ef8844a955724a1f70">Read</a> (BinaryReader reader, float CoordZ)</td></tr>
-<tr class="separator:ae0e21183f880b8ef8844a955724a1f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb507f7ceaa78dea6e74da407fbbfa5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#acb507f7ceaa78dea6e74da407fbbfa5b">Write</a> (BinaryWriter writer, float CoordZ)</td></tr>
-<tr class="separator:acb507f7ceaa78dea6e74da407fbbfa5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2db37f820c2ac38ed010f9afca9beae4" name="a2db37f820c2ac38ed010f9afca9beae4"></a>
@@ -150,124 +142,6 @@ Package Functions</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_vertex_html_ac4d12b46881a641ff8b544b99e0bf1c1"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">BrawlLib.Modeling.ModelVertex._normal</a></div><div class="ttdeci">Vector3 _normal</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1317</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html">BrawlLib.Internal.Vector2</a></div><div class="ttdef"><b>Definition:</b> Vector2.cs:10</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html">BrawlLib.Internal.Vector3</a></div><div class="ttdef"><b>Definition:</b> Vector3.cs:40</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae0e21183f880b8ef8844a955724a1f70" name="ae0e21183f880b8ef8844a955724a1f70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0e21183f880b8ef8844a955724a1f70">&#9670;&#160;</a></span>Read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelVertex.Read </td>
-          <td>(</td>
-          <td class="paramtype">BinaryReader&#160;</td>
-          <td class="paramname"><em>reader</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>CoordZ</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1334</span>        {</div>
-<div class="line"><span class="lineno"> 1335</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>();</div>
-<div class="line"><span class="lineno"> 1336</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>();</div>
-<div class="line"><span class="lineno"> 1337</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a4f2fc8a90eb56f8445ca8c204876151e">_texCoord</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>();</div>
-<div class="line"><span class="lineno"> 1338</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a63e865fdd9c5cc52f68c74390807d6a0">_boneIndex</a> = <span class="keyword">new</span> ushort[2];</div>
-<div class="line"><span class="lineno"> 1339</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(BitConverter.ToSingle(reader.ReadBytes(4), 0),</div>
-<div class="line"><span class="lineno"> 1340</span>                BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0));</div>
-<div class="line"><span class="lineno"> 1341</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>(BitConverter.ToSingle(reader.ReadBytes(4), 0),</div>
-<div class="line"><span class="lineno"> 1342</span>                BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0));</div>
-<div class="line"><span class="lineno"> 1343</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a4f2fc8a90eb56f8445ca8c204876151e">_texCoord</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a>(BitConverter.ToSingle(reader.ReadBytes(4), 0),</div>
-<div class="line"><span class="lineno"> 1344</span>                BitConverter.ToSingle(reader.ReadBytes(4), 0));</div>
-<div class="line"><span class="lineno"> 1345</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a63e865fdd9c5cc52f68c74390807d6a0">_boneIndex</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1346</span>            {</div>
-<div class="line"><span class="lineno"> 1347</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a63e865fdd9c5cc52f68c74390807d6a0">_boneIndex</a>[i] = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1348</span>            }</div>
-<div class="line"><span class="lineno"> 1349</span> </div>
-<div class="line"><span class="lineno"> 1350</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ab65f067c3c31acb18d168f2734567890">_boneWeight</a> = reader.ReadByte();</div>
-<div class="line"><span class="lineno"> 1351</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a83202af5a0af1186fb6755ec405274c6">_edgeFlag</a> = reader.ReadByte();</div>
-<div class="line"><span class="lineno"> 1352</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a>[2] = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a>[2] * CoordZ;</div>
-<div class="line"><span class="lineno"> 1353</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a>[2] = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a>[2] * CoordZ;</div>
-<div class="line"><span class="lineno"> 1354</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="acb507f7ceaa78dea6e74da407fbbfa5b" name="acb507f7ceaa78dea6e74da407fbbfa5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb507f7ceaa78dea6e74da407fbbfa5b">&#9670;&#160;</a></span>Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelVertex.Write </td>
-          <td>(</td>
-          <td class="paramtype">BinaryWriter&#160;</td>
-          <td class="paramname"><em>writer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>CoordZ</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1357</span>        {</div>
-<div class="line"><span class="lineno"> 1358</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a>[2] = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a>[2] * CoordZ;</div>
-<div class="line"><span class="lineno"> 1359</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a>[2] = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a>[2] * CoordZ;</div>
-<div class="line"><span class="lineno"> 1360</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>);</div>
-<div class="line"><span class="lineno"> 1361</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a>);</div>
-<div class="line"><span class="lineno"> 1362</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a407dc3aea0a7a0337f0884823d578161">_position</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>);</div>
-<div class="line"><span class="lineno"> 1363</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">_x</a>);</div>
-<div class="line"><span class="lineno"> 1364</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">_y</a>);</div>
-<div class="line"><span class="lineno"> 1365</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ac4d12b46881a641ff8b544b99e0bf1c1">_normal</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">_z</a>);</div>
-<div class="line"><span class="lineno"> 1366</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a4f2fc8a90eb56f8445ca8c204876151e">_texCoord</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>);</div>
-<div class="line"><span class="lineno"> 1367</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a4f2fc8a90eb56f8445ca8c204876151e">_texCoord</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>);</div>
-<div class="line"><span class="lineno"> 1368</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a63e865fdd9c5cc52f68c74390807d6a0">_boneIndex</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1369</span>            {</div>
-<div class="line"><span class="lineno"> 1370</span>                writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a63e865fdd9c5cc52f68c74390807d6a0">_boneIndex</a>[i]);</div>
-<div class="line"><span class="lineno"> 1371</span>            }</div>
-<div class="line"><span class="lineno"> 1372</span> </div>
-<div class="line"><span class="lineno"> 1373</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#ab65f067c3c31acb18d168f2734567890">_boneWeight</a>);</div>
-<div class="line"><span class="lineno"> 1374</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_vertex.html#a83202af5a0af1186fb6755ec405274c6">_edgeFlag</a>);</div>
-<div class="line"><span class="lineno"> 1375</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html_a0aa4d3af7f7435a1aa2ce201bd820f7d"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">BrawlLib.Internal.Vector2._y</a></div><div class="ttdeci">float _y</div><div class="ttdef"><b>Definition:</b> Vector2.cs:17</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html_a24bcf2e094ccbb655b910d019e248b4c"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">BrawlLib.Internal.Vector2._x</a></div><div class="ttdeci">float _x</div><div class="ttdef"><b>Definition:</b> Vector2.cs:11</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_a4276974d2dfb63b5312ada6fe5da98e1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a4276974d2dfb63b5312ada6fe5da98e1">BrawlLib.Internal.Vector3._y</a></div><div class="ttdeci">float _y</div><div class="ttdef"><b>Definition:</b> Vector3.cs:41</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_a757349307af35a4b08e79a2f294184b9"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#a757349307af35a4b08e79a2f294184b9">BrawlLib.Internal.Vector3._z</a></div><div class="ttdeci">float _z</div><div class="ttdef"><b>Definition:</b> Vector3.cs:41</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html_ab80d8220f1b53ae9d5956954abc98ecd"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html#ab80d8220f1b53ae9d5956954abc98ecd">BrawlLib.Internal.Vector3._x</a></div><div class="ttdeci">float _x</div><div class="ttdef"><b>Definition:</b> Vector3.cs:41</div></div>
 </div><!-- fragment -->
 </div>
 </div>

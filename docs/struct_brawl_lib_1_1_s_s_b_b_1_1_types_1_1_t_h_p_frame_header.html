@@ -102,8 +102,6 @@ Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a21c8980449441202e00e76ddf0e9426b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#a21c8980449441202e00e76ddf0e9426b">CompAddr</a><code> [get]</code></td></tr>
 <tr class="separator:a21c8980449441202e00e76ddf0e9426b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada7f71d6b7376e54773c86779b7dbedb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#ada7f71d6b7376e54773c86779b7dbedb">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ada7f71d6b7376e54773c86779b7dbedb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3a5dc4163e11f4a4865d3a1c4b674c8f" name="a3a5dc4163e11f4a4865d3a1c4b674c8f"></a>
@@ -146,10 +144,9 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   86</span>                offset += <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#a21c8980449441202e00e76ddf0e9426b">CompAddr</a>[i];</div>
 <div class="line"><span class="lineno">   87</span>            }</div>
 <div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">return</span> <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#ada7f71d6b7376e54773c86779b7dbedb">Address</a> + offset;</div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">return</span> Address + offset;</div>
 <div class="line"><span class="lineno">   90</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header_html_a21c8980449441202e00e76ddf0e9426b"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#a21c8980449441202e00e76ddf0e9426b">BrawlLib.SSBB.Types.THPFrameHeader.CompAddr</a></div><div class="ttdeci">buint * CompAddr</div><div class="ttdef"><b>Definition:</b> THP.cs:79</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header_html_ada7f71d6b7376e54773c86779b7dbedb"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_t_h_p_frame_header.html#ada7f71d6b7376e54773c86779b7dbedb">BrawlLib.SSBB.Types.THPFrameHeader.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> THP.cs:93</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -197,37 +194,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ada7f71d6b7376e54773c86779b7dbedb" name="ada7f71d6b7376e54773c86779b7dbedb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada7f71d6b7376e54773c86779b7dbedb">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.THPFrameHeader.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   93</span>        {</div>
-<div class="line"><span class="lineno">   94</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">   95</span>            {</div>
-<div class="line"><span class="lineno">   96</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">   97</span>                {</div>
-<div class="line"><span class="lineno">   98</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">   99</span>                }</div>
-<div class="line"><span class="lineno">  100</span>            }</div>
-<div class="line"><span class="lineno">  101</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a21c8980449441202e00e76ddf0e9426b" name="a21c8980449441202e00e76ddf0e9426b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21c8980449441202e00e76ddf0e9426b">&#9670;&#160;</a></span>CompAddr</h2>
 

@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.BrawlManagers.StageManager.NameCreator Class Reference</div></div>
 </div><!--header-->
@@ -91,11 +90,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a17e0a1a44c530b1c2a7c6f31b7fe9629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8cbe89a744ce97ea718c236bbd7ffa9"><td class="memItemLeft" align="right" valign="top">static Bitmap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator.html#ab8cbe89a744ce97ea718c236bbd7ffa9">createImage</a> (<a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator_settings.html">NameCreatorSettings</a> fontData, string line1, string line2)</td></tr>
 <tr class="separator:ab8cbe89a744ce97ea718c236bbd7ffa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-static-methods" name="pac-static-methods"></a>
-Static Package Functions</h2></td></tr>
-<tr class="memitem:a83422304b2371ba43d726cfc003a6bc4"><td class="memItemLeft" align="right" valign="top">static Bitmap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator.html#a83422304b2371ba43d726cfc003a6bc4">putMessageInBottomRow</a> (Font font, Bitmap frombmp, string entryText)</td></tr>
-<tr class="separator:a83422304b2371ba43d726cfc003a6bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab8cbe89a744ce97ea718c236bbd7ffa9" name="ab8cbe89a744ce97ea718c236bbd7ffa9"></a>
@@ -215,57 +209,6 @@ Static Package Functions</h2></td></tr>
 <div class="line"><span class="lineno">   48</span>            <span class="keywordflow">return</span> b;</div>
 <div class="line"><span class="lineno">   49</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator_html_a17e0a1a44c530b1c2a7c6f31b7fe9629"><div class="ttname"><a href="class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_name_creator.html#a17e0a1a44c530b1c2a7c6f31b7fe9629">BrawlCrate.BrawlManagers.StageManager.NameCreator.createImage</a></div><div class="ttdeci">static Bitmap createImage(NameCreatorSettings fontData, string text)</div><div class="ttdef"><b>Definition:</b> NameCreator.cs:26</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a83422304b2371ba43d726cfc003a6bc4" name="a83422304b2371ba43d726cfc003a6bc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83422304b2371ba43d726cfc003a6bc4">&#9670;&#160;</a></span>putMessageInBottomRow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static Bitmap BrawlCrate.BrawlManagers.StageManager.NameCreator.putMessageInBottomRow </td>
-          <td>(</td>
-          <td class="paramtype">Font&#160;</td>
-          <td class="paramname"><em>font</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Bitmap&#160;</td>
-          <td class="paramname"><em>frombmp</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>entryText</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   72</span>        {</div>
-<div class="line"><span class="lineno">   73</span>            Bitmap b = <span class="keyword">new</span> Bitmap(frombmp.Width, frombmp.Height);</div>
-<div class="line"><span class="lineno">   74</span>            Graphics g = Graphics.FromImage(b);</div>
-<div class="line"><span class="lineno">   75</span>            g.DrawImage(frombmp, 0, 0);</div>
-<div class="line"><span class="lineno">   76</span>            SizeF stringSize = g.MeasureString(entryText, font);</div>
-<div class="line"><span class="lineno">   77</span>            g.FillRectangle(Brushes.Black, 0, b.Height - 15, stringSize.Width, 15);</div>
-<div class="line"><span class="lineno">   78</span>            g.DrawString(entryText, font, Brushes.White, 0, b.Height - 15);</div>
-<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">return</span> b;</div>
-<div class="line"><span class="lineno">   80</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

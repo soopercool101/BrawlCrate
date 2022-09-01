@@ -152,7 +152,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   53</span>            m_StripID = 0;</div>
 <div class="line"><span class="lineno">   54</span>            m_FirstRun = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   55</span>            m_PrimitivesVector = <span class="keyword">new</span> List&lt;Primitive&gt;();</div>
-<div class="line"><span class="lineno">   56</span>            m_TriHeap = <span class="keyword">new</span> HeapArray(<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_modeling_1_1_triangle___converter.html#ae34e3c1f833e38115b23176bcd004e54">CompareType</a>.Less);</div>
+<div class="line"><span class="lineno">   56</span>            m_TriHeap = <span class="keyword">new</span> HeapArray(CompareType.Less);</div>
 <div class="line"><span class="lineno">   57</span>            m_Candidates = <span class="keyword">new</span> List&lt;uint&gt;();</div>
 <div class="line"><span class="lineno">   58</span>            m_Cache = <span class="keyword">new</span> CacheSimulator();</div>
 <div class="line"><span class="lineno">   59</span>            m_BackCache = <span class="keyword">new</span> CacheSimulator();</div>
@@ -168,7 +168,6 @@ Static Public Member Functions</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper_html_a5413b628bc8844dc7823a049a90fb94d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper.html#a5413b628bc8844dc7823a049a90fb94d">BrawlLib.Modeling.Triangle_Converter.TriStripper.SetPushCacheHits</a></div><div class="ttdeci">void SetPushCacheHits(bool Enabled=true)</div><div class="ttdef"><b>Definition:</b> TriStripper.cs:131</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper_html_a5893e6b707a75a05f8f5d4bca8bf2c66"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper.html#a5893e6b707a75a05f8f5d4bca8bf2c66">BrawlLib.Modeling.Triangle_Converter.TriStripper.SetBackwardSearch</a></div><div class="ttdeci">void SetBackwardSearch(bool Enabled=false)</div><div class="ttdef"><b>Definition:</b> TriStripper.cs:122</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper_html_a86e71a45e402b8c71240eaf98763c6f1"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper.html#a86e71a45e402b8c71240eaf98763c6f1">BrawlLib.Modeling.Triangle_Converter.TriStripper.SetMinStripSize</a></div><div class="ttdeci">void SetMinStripSize(uint MinStripSize=2)</div><div class="ttdef"><b>Definition:</b> TriStripper.cs:104</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_modeling_1_1_triangle___converter_html_ae34e3c1f833e38115b23176bcd004e54"><div class="ttname"><a href="namespace_brawl_lib_1_1_modeling_1_1_triangle___converter.html#ae34e3c1f833e38115b23176bcd004e54">BrawlLib.Modeling.Triangle_Converter.CompareType</a></div><div class="ttdeci">CompareType</div><div class="ttdef"><b>Definition:</b> HeapArray.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -270,10 +269,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   97</span>        {</div>
-<div class="line"><span class="lineno">   98</span>            m_Cache.<a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator.html#aa40138da6462e9ef530cc9cc49ae70b4">Resize</a>(CacheSize);</div>
-<div class="line"><span class="lineno">   99</span>            m_BackCache.<a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator.html#aa40138da6462e9ef530cc9cc49ae70b4">Resize</a>(CacheSize);</div>
+<div class="line"><span class="lineno">   98</span>            m_Cache.Resize(CacheSize);</div>
+<div class="line"><span class="lineno">   99</span>            m_BackCache.Resize(CacheSize);</div>
 <div class="line"><span class="lineno">  100</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator_html_aa40138da6462e9ef530cc9cc49ae70b4"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator.html#aa40138da6462e9ef530cc9cc49ae70b4">BrawlLib.Modeling.Triangle_Converter.CacheSimulator.Resize</a></div><div class="ttdeci">void Resize(uint Size)</div><div class="ttdef"><b>Definition:</b> CacheSimulator.cs:29</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -337,9 +335,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  132</span>        {</div>
-<div class="line"><span class="lineno">  133</span>            m_Cache.<a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator.html#a0677018ec184ceb5ada1c1863bf6dead">PushCacheHits</a>(Enabled);</div>
+<div class="line"><span class="lineno">  133</span>            m_Cache.PushCacheHits(Enabled);</div>
 <div class="line"><span class="lineno">  134</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator_html_a0677018ec184ceb5ada1c1863bf6dead"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator.html#a0677018ec184ceb5ada1c1863bf6dead">BrawlLib.Modeling.Triangle_Converter.CacheSimulator.PushCacheHits</a></div><div class="ttdeci">void PushCacheHits(bool Enabled=true)</div><div class="ttdef"><b>Definition:</b> CacheSimulator.cs:52</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -370,8 +367,8 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   75</span>            {</div>
 <div class="line"><span class="lineno">   76</span>                <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper.html#aab8d733667a0f85bbeab17366cd9d707">UnmarkNodes</a>(m_Triangles);</div>
 <div class="line"><span class="lineno">   77</span>                ResetStripIDs();</div>
-<div class="line"><span class="lineno">   78</span>                m_Cache.<a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator.html#a5761310ca7bc25b3805b619f26d6dbe4">Reset</a>();</div>
-<div class="line"><span class="lineno">   79</span>                m_TriHeap.<a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_heap_array.html#a8b4aa515dc80b17ee4439f5ea2849703">Clear</a>();</div>
+<div class="line"><span class="lineno">   78</span>                m_Cache.Reset();</div>
+<div class="line"><span class="lineno">   79</span>                m_TriHeap.Clear();</div>
 <div class="line"><span class="lineno">   80</span>                m_Candidates.Clear();</div>
 <div class="line"><span class="lineno">   81</span>                m_StripID = 0;</div>
 <div class="line"><span class="lineno">   82</span>            }</div>
@@ -384,8 +381,6 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   89</span>            m_FirstRun = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   90</span>            <span class="keywordflow">return</span> m_PrimitivesVector.ToList();</div>
 <div class="line"><span class="lineno">   91</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator_html_a5761310ca7bc25b3805b619f26d6dbe4"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_cache_simulator.html#a5761310ca7bc25b3805b619f26d6dbe4">BrawlLib.Modeling.Triangle_Converter.CacheSimulator.Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition:</b> CacheSimulator.cs:40</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_heap_array_html_a8b4aa515dc80b17ee4439f5ea2849703"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_heap_array.html#a8b4aa515dc80b17ee4439f5ea2849703">BrawlLib.Modeling.Triangle_Converter.HeapArray.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> HeapArray.cs:44</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper_html_aab8d733667a0f85bbeab17366cd9d707"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_tri_stripper.html#aab8d733667a0f85bbeab17366cd9d707">BrawlLib.Modeling.Triangle_Converter.TriStripper.UnmarkNodes</a></div><div class="ttdeci">void UnmarkNodes(GraphArray&lt; Triangle &gt; G)</div><div class="ttdef"><b>Definition:</b> TriStripper.cs:644</div></div>
 </div><!-- fragment -->
 </div>

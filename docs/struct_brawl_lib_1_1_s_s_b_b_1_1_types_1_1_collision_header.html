@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.Types.CollisionHeader Struct Reference</div></div>
@@ -112,11 +111,6 @@ Public Attributes</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:af7d1ea8693372ac582daa171c3d83c9a"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#af7d1ea8693372ac582daa171c3d83c9a">Size</a> = 0x28</td></tr>
 <tr class="separator:af7d1ea8693372ac582daa171c3d83c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a5437ac0c79f4a2632a23f050ceedb5fd"><td class="memItemLeft" align="right" valign="top">fixed int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a5437ac0c79f4a2632a23f050ceedb5fd">_pad</a> [5]</td></tr>
-<tr class="separator:a5437ac0c79f4a2632a23f050ceedb5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -182,7 +176,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   29</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a146e45aa0fceda194c5b4f45bfbf4f38">_planeOffset</a> = 0x28 + numPoints * 8;</div>
 <div class="line"><span class="lineno">   30</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a02aad5d0108cb09e3c6ac6bbaaebfb40">_objectOffset</a> = 0x28 + numPoints * 8 + numPlanes * ColPlane.Size;</div>
 <div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>            fixed (<span class="keywordtype">int</span>* p = <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a5437ac0c79f4a2632a23f050ceedb5fd">_pad</a>)</div>
+<div class="line"><span class="lineno">   32</span>            fixed (<span class="keywordtype">int</span>* p = _pad)</div>
 <div class="line"><span class="lineno">   33</span>            {</div>
 <div class="line"><span class="lineno">   34</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 5; i++)</div>
 <div class="line"><span class="lineno">   35</span>                {</div>
@@ -193,7 +187,6 @@ Properties</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header_html_a02aad5d0108cb09e3c6ac6bbaaebfb40"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a02aad5d0108cb09e3c6ac6bbaaebfb40">BrawlLib.SSBB.Types.CollisionHeader._objectOffset</a></div><div class="ttdeci">bint _objectOffset</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:19</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header_html_a146e45aa0fceda194c5b4f45bfbf4f38"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a146e45aa0fceda194c5b4f45bfbf4f38">BrawlLib.SSBB.Types.CollisionHeader._planeOffset</a></div><div class="ttdeci">bint _planeOffset</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:18</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header_html_a353bd90b495036e63a8827fd0e576f32"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a353bd90b495036e63a8827fd0e576f32">BrawlLib.SSBB.Types.CollisionHeader._numPlanes</a></div><div class="ttdeci">bshort _numPlanes</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:14</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header_html_a5437ac0c79f4a2632a23f050ceedb5fd"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a5437ac0c79f4a2632a23f050ceedb5fd">BrawlLib.SSBB.Types.CollisionHeader._pad</a></div><div class="ttdeci">fixed int _pad[5]</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:20</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header_html_a5604c3a200056f5a6701ce0f4854ad75"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#a5604c3a200056f5a6701ce0f4854ad75">BrawlLib.SSBB.Types.CollisionHeader._numPoints</a></div><div class="ttdeci">bshort _numPoints</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:13</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header_html_ad41be5189f0fe97cfbf459656c6b8e5d"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#ad41be5189f0fe97cfbf459656c6b8e5d">BrawlLib.SSBB.Types.CollisionHeader._numObjects</a></div><div class="ttdeci">bshort _numObjects</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:15</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header_html_ae94e5ad9a92ad4078ca15b93b32091d3"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_collision_header.html#ae94e5ad9a92ad4078ca15b93b32091d3">BrawlLib.SSBB.Types.CollisionHeader._unk1</a></div><div class="ttdeci">bshort _unk1</div><div class="ttdef"><b>Definition:</b> CollisionDef.cs:16</div></div>
@@ -254,28 +247,6 @@ Properties</h2></td></tr>
           <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a> BrawlLib.SSBB.Types.CollisionHeader._objectOffset</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5437ac0c79f4a2632a23f050ceedb5fd" name="a5437ac0c79f4a2632a23f050ceedb5fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5437ac0c79f4a2632a23f050ceedb5fd">&#9670;&#160;</a></span>_pad</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">fixed int BrawlLib.SSBB.Types.CollisionHeader._pad[5]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

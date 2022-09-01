@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.ModelRigidBody Class Reference</div></div>
 </div><!--header-->
@@ -123,13 +122,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a385da45b8095a13ec6fe5661deb3af78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae13b6fcda8a987dfcda3cb5aec60c7d5"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#ae13b6fcda8a987dfcda3cb5aec60c7d5">_type</a></td></tr>
 <tr class="separator:ae13b6fcda8a987dfcda3cb5aec60c7d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:afe2094a786e07b7f5c28f24d9d73bb0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#afe2094a786e07b7f5c28f24d9d73bb0c">ReadExpansion</a> (BinaryReader reader, float CoordZ)</td></tr>
-<tr class="separator:afe2094a786e07b7f5c28f24d9d73bb0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c8792b2c61232c8122084137cbbe4bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a2c8792b2c61232c8122084137cbbe4bf">WriteExpansion</a> (BinaryWriter writer, float CoordZ)</td></tr>
-<tr class="separator:a2c8792b2c61232c8122084137cbbe4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5377b3086a9cf67ffe4528d9a3dda088" name="a5377b3086a9cf67ffe4528d9a3dda088"></a>
@@ -160,151 +152,6 @@ Package Functions</h2></td></tr>
 <div class="line"><span class="lineno"> 1850</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a80d169453b01d0f4917e10cc087919dc"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a80d169453b01d0f4917e10cc087919dc">BrawlLib.Modeling.ModelRigidBody._position</a></div><div class="ttdeci">float[] _position</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1837</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a9810b3f3565568c6beccb3f92cfd238c"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">BrawlLib.Modeling.ModelRigidBody._rotation</a></div><div class="ttdeci">float[] _rotation</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1838</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="afe2094a786e07b7f5c28f24d9d73bb0c" name="afe2094a786e07b7f5c28f24d9d73bb0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe2094a786e07b7f5c28f24d9d73bb0c">&#9670;&#160;</a></span>ReadExpansion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelRigidBody.ReadExpansion </td>
-          <td>(</td>
-          <td class="paramtype">BinaryReader&#160;</td>
-          <td class="paramname"><em>reader</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>CoordZ</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1853</span>        {</div>
-<div class="line"><span class="lineno"> 1854</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a177588e3df9fb4346beab06dfaec3039">_name</a> = PMDModel.GetString(reader.ReadBytes(20));</div>
-<div class="line"><span class="lineno"> 1855</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#abb864f98af92110c33df18d0e6a3730b">_relatedBoneIndex</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1856</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#af5eeaca0a9b6c16e72e53585ef014dba">_groupIndex</a> = reader.ReadByte();</div>
-<div class="line"><span class="lineno"> 1857</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#aea0215e94d9e9b70ec00156dc64df325">_groupTarget</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1858</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a0653946c2121f0790a396e2735e58af8">_shapeType</a> = reader.ReadByte();</div>
-<div class="line"><span class="lineno"> 1859</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a8a1305683cafaf32302e4e6e2643448d">_shapeWidth</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1860</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a1f13e2369f8b28f773f3f535b306d919">_shapeHeight</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1861</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a00cc6baf39648a83b648f9519d433592">_shapeDepth</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1862</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a80d169453b01d0f4917e10cc087919dc">_position</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1863</span>            {</div>
-<div class="line"><span class="lineno"> 1864</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a80d169453b01d0f4917e10cc087919dc">_position</a>[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1865</span>            }</div>
-<div class="line"><span class="lineno"> 1866</span> </div>
-<div class="line"><span class="lineno"> 1867</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1868</span>            {</div>
-<div class="line"><span class="lineno"> 1869</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1870</span>            }</div>
-<div class="line"><span class="lineno"> 1871</span> </div>
-<div class="line"><span class="lineno"> 1872</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a997d08f939528b59365af70ce2ac6352">_weight</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1873</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9eedbef932a63bb7c7fa84f214435265">_linearDamping</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1874</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a3bf75df6490cffc3d4c6df96575dcd8c">_angularDamping</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1875</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9c8278c6cf989b9738e9070fa2cba4e4">_restitution</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1876</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a385da45b8095a13ec6fe5661deb3af78">_friction</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1877</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#ae13b6fcda8a987dfcda3cb5aec60c7d5">_type</a> = reader.ReadByte();</div>
-<div class="line"><span class="lineno"> 1878</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a80d169453b01d0f4917e10cc087919dc">_position</a>[2] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1879</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>[0] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1880</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>[1] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1881</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a00cc6baf39648a83b648f9519d433592"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a00cc6baf39648a83b648f9519d433592">BrawlLib.Modeling.ModelRigidBody._shapeDepth</a></div><div class="ttdeci">float _shapeDepth</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1836</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a0653946c2121f0790a396e2735e58af8"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a0653946c2121f0790a396e2735e58af8">BrawlLib.Modeling.ModelRigidBody._shapeType</a></div><div class="ttdeci">byte _shapeType</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1833</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a177588e3df9fb4346beab06dfaec3039"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a177588e3df9fb4346beab06dfaec3039">BrawlLib.Modeling.ModelRigidBody._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1829</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a1f13e2369f8b28f773f3f535b306d919"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a1f13e2369f8b28f773f3f535b306d919">BrawlLib.Modeling.ModelRigidBody._shapeHeight</a></div><div class="ttdeci">float _shapeHeight</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1835</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a385da45b8095a13ec6fe5661deb3af78"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a385da45b8095a13ec6fe5661deb3af78">BrawlLib.Modeling.ModelRigidBody._friction</a></div><div class="ttdeci">float _friction</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1843</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a3bf75df6490cffc3d4c6df96575dcd8c"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a3bf75df6490cffc3d4c6df96575dcd8c">BrawlLib.Modeling.ModelRigidBody._angularDamping</a></div><div class="ttdeci">float _angularDamping</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1841</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a8a1305683cafaf32302e4e6e2643448d"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a8a1305683cafaf32302e4e6e2643448d">BrawlLib.Modeling.ModelRigidBody._shapeWidth</a></div><div class="ttdeci">float _shapeWidth</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1834</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a997d08f939528b59365af70ce2ac6352"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a997d08f939528b59365af70ce2ac6352">BrawlLib.Modeling.ModelRigidBody._weight</a></div><div class="ttdeci">float _weight</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1839</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a9c8278c6cf989b9738e9070fa2cba4e4"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9c8278c6cf989b9738e9070fa2cba4e4">BrawlLib.Modeling.ModelRigidBody._restitution</a></div><div class="ttdeci">float _restitution</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1842</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_a9eedbef932a63bb7c7fa84f214435265"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9eedbef932a63bb7c7fa84f214435265">BrawlLib.Modeling.ModelRigidBody._linearDamping</a></div><div class="ttdeci">float _linearDamping</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1840</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_abb864f98af92110c33df18d0e6a3730b"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#abb864f98af92110c33df18d0e6a3730b">BrawlLib.Modeling.ModelRigidBody._relatedBoneIndex</a></div><div class="ttdeci">ushort _relatedBoneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1830</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_ae13b6fcda8a987dfcda3cb5aec60c7d5"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#ae13b6fcda8a987dfcda3cb5aec60c7d5">BrawlLib.Modeling.ModelRigidBody._type</a></div><div class="ttdeci">byte _type</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1844</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_aea0215e94d9e9b70ec00156dc64df325"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#aea0215e94d9e9b70ec00156dc64df325">BrawlLib.Modeling.ModelRigidBody._groupTarget</a></div><div class="ttdeci">ushort _groupTarget</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1832</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_rigid_body_html_af5eeaca0a9b6c16e72e53585ef014dba"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#af5eeaca0a9b6c16e72e53585ef014dba">BrawlLib.Modeling.ModelRigidBody._groupIndex</a></div><div class="ttdeci">byte _groupIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1831</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a2c8792b2c61232c8122084137cbbe4bf" name="a2c8792b2c61232c8122084137cbbe4bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c8792b2c61232c8122084137cbbe4bf">&#9670;&#160;</a></span>WriteExpansion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelRigidBody.WriteExpansion </td>
-          <td>(</td>
-          <td class="paramtype">BinaryWriter&#160;</td>
-          <td class="paramname"><em>writer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>CoordZ</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1884</span>        {</div>
-<div class="line"><span class="lineno"> 1885</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a80d169453b01d0f4917e10cc087919dc">_position</a>[2] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1886</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>[0] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1887</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>[1] *= CoordZ;</div>
-<div class="line"><span class="lineno"> 1888</span>            writer.Write(PMDModel.GetBytes(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a177588e3df9fb4346beab06dfaec3039">_name</a>, 20));</div>
-<div class="line"><span class="lineno"> 1889</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#abb864f98af92110c33df18d0e6a3730b">_relatedBoneIndex</a>);</div>
-<div class="line"><span class="lineno"> 1890</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#af5eeaca0a9b6c16e72e53585ef014dba">_groupIndex</a>);</div>
-<div class="line"><span class="lineno"> 1891</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#aea0215e94d9e9b70ec00156dc64df325">_groupTarget</a>);</div>
-<div class="line"><span class="lineno"> 1892</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a0653946c2121f0790a396e2735e58af8">_shapeType</a>);</div>
-<div class="line"><span class="lineno"> 1893</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a8a1305683cafaf32302e4e6e2643448d">_shapeWidth</a>);</div>
-<div class="line"><span class="lineno"> 1894</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a1f13e2369f8b28f773f3f535b306d919">_shapeHeight</a>);</div>
-<div class="line"><span class="lineno"> 1895</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a00cc6baf39648a83b648f9519d433592">_shapeDepth</a>);</div>
-<div class="line"><span class="lineno"> 1896</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a80d169453b01d0f4917e10cc087919dc">_position</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1897</span>            {</div>
-<div class="line"><span class="lineno"> 1898</span>                writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a80d169453b01d0f4917e10cc087919dc">_position</a>[i]);</div>
-<div class="line"><span class="lineno"> 1899</span>            }</div>
-<div class="line"><span class="lineno"> 1900</span> </div>
-<div class="line"><span class="lineno"> 1901</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1902</span>            {</div>
-<div class="line"><span class="lineno"> 1903</span>                writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9810b3f3565568c6beccb3f92cfd238c">_rotation</a>[i]);</div>
-<div class="line"><span class="lineno"> 1904</span>            }</div>
-<div class="line"><span class="lineno"> 1905</span> </div>
-<div class="line"><span class="lineno"> 1906</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a997d08f939528b59365af70ce2ac6352">_weight</a>);</div>
-<div class="line"><span class="lineno"> 1907</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9eedbef932a63bb7c7fa84f214435265">_linearDamping</a>);</div>
-<div class="line"><span class="lineno"> 1908</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a3bf75df6490cffc3d4c6df96575dcd8c">_angularDamping</a>);</div>
-<div class="line"><span class="lineno"> 1909</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a9c8278c6cf989b9738e9070fa2cba4e4">_restitution</a>);</div>
-<div class="line"><span class="lineno"> 1910</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#a385da45b8095a13ec6fe5661deb3af78">_friction</a>);</div>
-<div class="line"><span class="lineno"> 1911</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_rigid_body.html#ae13b6fcda8a987dfcda3cb5aec60c7d5">_type</a>);</div>
-<div class="line"><span class="lineno"> 1912</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

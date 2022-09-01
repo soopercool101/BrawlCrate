@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Forms.EditRSARFileDialog Class Reference</div></div>
@@ -104,11 +103,6 @@ Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ab9ea4f22e94fae21b4a5e421f216bdad"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#ab9ea4f22e94fae21b4a5e421f216bdad">OnClosing</a> (System.ComponentModel.CancelEventArgs e)</td></tr>
 <tr class="separator:ab9ea4f22e94fae21b4a5e421f216bdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:ab827b9794d7fc79863365ac543b27f4b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#ab827b9794d7fc79863365ac543b27f4b">OnUpdateCurrControl</a> (object sender, EventArgs e)</td></tr>
-<tr class="separator:ab827b9794d7fc79863365ac543b27f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -175,45 +169,6 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ab827b9794d7fc79863365ac543b27f4b" name="ab827b9794d7fc79863365ac543b27f4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab827b9794d7fc79863365ac543b27f4b">&#9670;&#160;</a></span>OnUpdateCurrControl()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void BrawlLib.Internal.Windows.Forms.EditRSARFileDialog.OnUpdateCurrControl </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">EventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   74</span>        {</div>
-<div class="line"><span class="lineno">   75</span>            soundsListBox_SelectedIndexChanged(<span class="keyword">this</span>, <span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">   76</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="aa15dbfcedbc6a5a3d99d751a2e1c9d17" name="aa15dbfcedbc6a5a3d99d751a2e1c9d17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa15dbfcedbc6a5a3d99d751a2e1c9d17">&#9670;&#160;</a></span>ShowDialog()</h2>
 
@@ -249,11 +204,10 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   53</span>        {</div>
 <div class="line"><span class="lineno">   54</span>            <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#ac65df730621228e2d7bcc60feb35387a">TargetNode</a> = node;</div>
-<div class="line"><span class="lineno">   55</span>            TargetNode.UpdateControl += <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#ab827b9794d7fc79863365ac543b27f4b">OnUpdateCurrControl</a>;</div>
+<div class="line"><span class="lineno">   55</span>            TargetNode.UpdateControl += OnUpdateCurrControl;</div>
 <div class="line"><span class="lineno">   56</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#aa15dbfcedbc6a5a3d99d751a2e1c9d17">ShowDialog</a>();</div>
 <div class="line"><span class="lineno">   57</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog_html_aa15dbfcedbc6a5a3d99d751a2e1c9d17"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#aa15dbfcedbc6a5a3d99d751a2e1c9d17">BrawlLib.Internal.Windows.Forms.EditRSARFileDialog.ShowDialog</a></div><div class="ttdeci">DialogResult ShowDialog(IWin32Window owner, RSARFileNode node)</div><div class="ttdef"><b>Definition:</b> EditRSARFileDialog.cs:52</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog_html_ab827b9794d7fc79863365ac543b27f4b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#ab827b9794d7fc79863365ac543b27f4b">BrawlLib.Internal.Windows.Forms.EditRSARFileDialog.OnUpdateCurrControl</a></div><div class="ttdeci">virtual void OnUpdateCurrControl(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> EditRSARFileDialog.cs:73</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog_html_ac65df730621228e2d7bcc60feb35387a"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_edit_r_s_a_r_file_dialog.html#ac65df730621228e2d7bcc60feb35387a">BrawlLib.Internal.Windows.Forms.EditRSARFileDialog.TargetNode</a></div><div class="ttdeci">RSARFileNode TargetNode</div><div class="ttdef"><b>Definition:</b> EditRSARFileDialog.cs:37</div></div>
 </div><!-- fragment -->
 </div>

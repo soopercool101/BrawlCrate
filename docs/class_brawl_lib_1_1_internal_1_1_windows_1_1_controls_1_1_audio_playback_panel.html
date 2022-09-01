@@ -153,14 +153,13 @@ Events</h2></td></tr>
 <div class="line"><span class="lineno">  303</span> </div>
 <div class="line"><span class="lineno">  304</span>            chkLoop.CheckedChanged += (o, e) =&gt;</div>
 <div class="line"><span class="lineno">  305</span>            {</div>
-<div class="line"><span class="lineno">  306</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_audio_playback_panel.html#abf7fd275b597edba5d47706da0ee8487">chkLoop</a>.Checked &amp;&amp; _provider is <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html">alAudioProvider</a>)</div>
+<div class="line"><span class="lineno">  306</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_audio_playback_panel.html#abf7fd275b597edba5d47706da0ee8487">chkLoop</a>.Checked &amp;&amp; _provider is alAudioProvider)</div>
 <div class="line"><span class="lineno">  307</span>                {</div>
 <div class="line"><span class="lineno">  308</span>                    chkLoop.Checked = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  309</span>                    MessageBox.Show(<span class="stringliteral">&quot;Looping audio with the OpenAL audio backend is not currently supported.&quot;</span>);</div>
 <div class="line"><span class="lineno">  310</span>                }</div>
 <div class="line"><span class="lineno">  311</span>            };</div>
 <div class="line"><span class="lineno">  312</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_audio_1_1al_audio_provider.html">BrawlLib.Internal.Audio.alAudioProvider</a></div><div class="ttdef"><b>Definition:</b> alAudioProvider.cs:7</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_audio_playback_panel_html_ab99e36175752d7c2eb7294b32385caa8"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_audio_playback_panel.html#ab99e36175752d7c2eb7294b32385caa8">BrawlLib.Internal.Windows.Controls.AudioPlaybackPanel.VolumePercent</a></div><div class="ttdeci">double? VolumePercent</div><div class="ttdoc">Sets Volume appropriately. Range: above .00001, below or at 1. Anything lower than ....</div><div class="ttdef"><b>Definition:</b> AudioPlaybackPanel.cs:257</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_audio_playback_panel_html_abf7fd275b597edba5d47706da0ee8487"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_audio_playback_panel.html#abf7fd275b597edba5d47706da0ee8487">BrawlLib.Internal.Windows.Controls.AudioPlaybackPanel.chkLoop</a></div><div class="ttdeci">CheckBox chkLoop</div><div class="ttdef"><b>Definition:</b> AudioPlaybackPanel.cs:21</div></div>
 </div><!-- fragment -->

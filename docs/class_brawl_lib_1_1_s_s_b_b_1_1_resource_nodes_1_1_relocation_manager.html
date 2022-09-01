@@ -79,8 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.RelocationManager Class Reference</div></div>
@@ -198,16 +196,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a9c4b7484b12d8e3894a5223f66d182e1"><td class="memItemLeft" align="right" valign="top">static Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9c4b7484b12d8e3894a5223f66d182e1">clrBranch</a> = Color.FromArgb(241, 180, 241)</td></tr>
 <tr class="separator:a9c4b7484b12d8e3894a5223f66d182e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a4106aa3dc4484f775d2c85f8b5147916"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a4106aa3dc4484f775d2c85f8b5147916">ClearCommands</a> ()</td></tr>
-<tr class="separator:a4106aa3dc4484f775d2c85f8b5147916"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a9390d49ac993d8bf96198ce4b9092d4f"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html">RelCommand</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a></td></tr>
-<tr class="separator:a9390d49ac993d8bf96198ce4b9092d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a647981644d807a240f099d5cfec3d5ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html">ModuleDataNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">DataNode</a><code> [get]</code></td></tr>
@@ -248,7 +236,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   42</span>                _linkedBranches = <span class="keyword">new</span> Dictionary&lt;int, List&lt;RelocationTarget&gt;&gt;();</div>
 <div class="line"><span class="lineno">   43</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#aed9ec8bfdf9dbf50a55de2ae7997c21a">_targetRelocations</a> = <span class="keyword">new</span> Dictionary&lt;int, RelocationTarget&gt;();</div>
 <div class="line"><span class="lineno">   44</span>                _tags = <span class="keyword">new</span> Dictionary&lt;int, List&lt;string&gt;&gt;();</div>
-<div class="line"><span class="lineno">   45</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a> = <span class="keyword">new</span> Dictionary&lt;int, RelCommand&gt;();</div>
+<div class="line"><span class="lineno">   45</span>                _commands = <span class="keyword">new</span> Dictionary&lt;int, RelCommand&gt;();</div>
 <div class="line"><span class="lineno">   46</span>                _colors = <span class="keyword">new</span> Dictionary&lt;int, SolidBrush&gt;();</div>
 <div class="line"><span class="lineno">   47</span>            }</div>
 <div class="line"><span class="lineno">   48</span>            <span class="keywordflow">else</span></div>
@@ -258,13 +246,12 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   52</span>                _linkedBranches = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">DataNode</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">_manager</a>._linkedBranches;</div>
 <div class="line"><span class="lineno">   53</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#aed9ec8bfdf9dbf50a55de2ae7997c21a">_targetRelocations</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">DataNode</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">_manager</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#aed9ec8bfdf9dbf50a55de2ae7997c21a">_targetRelocations</a>;</div>
 <div class="line"><span class="lineno">   54</span>                _tags = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">DataNode</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">_manager</a>._tags;</div>
-<div class="line"><span class="lineno">   55</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a> = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">DataNode</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">_manager</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>;</div>
+<div class="line"><span class="lineno">   55</span>                _commands = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">DataNode</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">_manager</a>._commands;</div>
 <div class="line"><span class="lineno">   56</span>                _colors = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">DataNode</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">_manager</a>._colors;</div>
 <div class="line"><span class="lineno">   57</span>            }</div>
 <div class="line"><span class="lineno">   58</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node_html_a62567eaadb88877b869f77b580b08742"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">BrawlLib.SSBB.ResourceNodes.ModuleDataNode._manager</a></div><div class="ttdeci">RelocationManager _manager</div><div class="ttdef"><b>Definition:</b> ModuleDataNode.cs:9</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_a647981644d807a240f099d5cfec3d5ca"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a647981644d807a240f099d5cfec3d5ca">BrawlLib.SSBB.ResourceNodes.RelocationManager.DataNode</a></div><div class="ttdeci">ModuleDataNode DataNode</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:15</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_a9390d49ac993d8bf96198ce4b9092d4f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">BrawlLib.SSBB.ResourceNodes.RelocationManager._commands</a></div><div class="ttdeci">Dictionary&lt; int, RelCommand &gt; _commands</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:21</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_a98080b8b7bbbd17ff51829041e4d188f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a98080b8b7bbbd17ff51829041e4d188f">BrawlLib.SSBB.ResourceNodes.RelocationManager._linkedCommands</a></div><div class="ttdeci">SortedList&lt; int, List&lt; RelocationTarget &gt; &gt; _linkedCommands</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:17</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_aed9ec8bfdf9dbf50a55de2ae7997c21a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#aed9ec8bfdf9dbf50a55de2ae7997c21a">BrawlLib.SSBB.ResourceNodes.RelocationManager._targetRelocations</a></div><div class="ttdeci">Dictionary&lt; int, RelocationTarget &gt; _targetRelocations</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:19</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_af50cc54c2250fd258123c96c7ea6f373"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#af50cc54c2250fd258123c96c7ea6f373">BrawlLib.SSBB.ResourceNodes.RelocationManager._data</a></div><div class="ttdeci">ModuleDataNode _data</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:13</div></div>
@@ -528,34 +515,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  281</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a1dc1cbc472068d5d8f4df8a90772726d">SetCommand</a>(index, <span class="keyword">null</span>);</div>
 <div class="line"><span class="lineno">  282</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager_html_a1dc1cbc472068d5d8f4df8a90772726d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a1dc1cbc472068d5d8f4df8a90772726d">BrawlLib.SSBB.ResourceNodes.RelocationManager.SetCommand</a></div><div class="ttdeci">void SetCommand(int index, RelCommand cmd)</div><div class="ttdef"><b>Definition:</b> RelocationManager.cs:194</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a4106aa3dc4484f775d2c85f8b5147916" name="a4106aa3dc4484f775d2c85f8b5147916"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4106aa3dc4484f775d2c85f8b5147916">&#9670;&#160;</a></span>ClearCommands()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.SSBB.ResourceNodes.RelocationManager.ClearCommands </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  535</span>        {</div>
-<div class="line"><span class="lineno">  536</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a> = <span class="keyword">new</span> Dictionary&lt;int, RelCommand&gt;();</div>
-<div class="line"><span class="lineno">  537</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -858,9 +817,9 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  183</span>                <span class="keywordflow">return</span> _reference.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_module_data_node.html#a62567eaadb88877b869f77b580b08742">_manager</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a6022b9827ed0a56763482b0b1a17963b">GetCommand</a>(index + _referenceIndex);</div>
 <div class="line"><span class="lineno">  184</span>            }</div>
 <div class="line"><span class="lineno">  185</span> </div>
-<div class="line"><span class="lineno">  186</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>.ContainsKey(index))</div>
+<div class="line"><span class="lineno">  186</span>            <span class="keywordflow">if</span> (_commands.ContainsKey(index))</div>
 <div class="line"><span class="lineno">  187</span>            {</div>
-<div class="line"><span class="lineno">  188</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>[index];</div>
+<div class="line"><span class="lineno">  188</span>                <span class="keywordflow">return</span> _commands[index];</div>
 <div class="line"><span class="lineno">  189</span>            }</div>
 <div class="line"><span class="lineno">  190</span> </div>
 <div class="line"><span class="lineno">  191</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
@@ -892,7 +851,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   27</span>        {</div>
-<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>.OrderBy(x =&gt; x.Key).ToArray();</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span> _commands.OrderBy(x =&gt; x.Key).ToArray();</div>
 <div class="line"><span class="lineno">   29</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -1024,12 +983,12 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  518</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a57b1ac1fc78214a96fe1ba0db04ff326">clrBlr</a>;</div>
 <div class="line"><span class="lineno">  519</span>            }</div>
 <div class="line"><span class="lineno">  520</span> </div>
-<div class="line"><span class="lineno">  521</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a12ec3000834148e8d9b2d32f860113e9">GetCode</a>(index) is <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_branch.html">PPCBranch</a> &amp;&amp; !<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>.ContainsKey(index))</div>
+<div class="line"><span class="lineno">  521</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a12ec3000834148e8d9b2d32f860113e9">GetCode</a>(index) is <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_power_p_c_assembly_1_1_p_p_c_branch.html">PPCBranch</a> &amp;&amp; !_commands.ContainsKey(index))</div>
 <div class="line"><span class="lineno">  522</span>            {</div>
 <div class="line"><span class="lineno">  523</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9c4b7484b12d8e3894a5223f66d182e1">clrBranch</a>;</div>
 <div class="line"><span class="lineno">  524</span>            }</div>
 <div class="line"><span class="lineno">  525</span> </div>
-<div class="line"><span class="lineno">  526</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>.ContainsKey(index))</div>
+<div class="line"><span class="lineno">  526</span>            <span class="keywordflow">if</span> (!_commands.ContainsKey(index))</div>
 <div class="line"><span class="lineno">  527</span>            {</div>
 <div class="line"><span class="lineno">  528</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#aed591f78a4f08104ce6fa8d56f555038">clrNotRelocated</a>;</div>
 <div class="line"><span class="lineno">  529</span>            }</div>
@@ -1575,23 +1534,23 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  199</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  200</span>            }</div>
 <div class="line"><span class="lineno">  201</span> </div>
-<div class="line"><span class="lineno">  202</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>.ContainsKey(index))</div>
+<div class="line"><span class="lineno">  202</span>            <span class="keywordflow">if</span> (_commands.ContainsKey(index))</div>
 <div class="line"><span class="lineno">  203</span>            {</div>
 <div class="line"><span class="lineno">  204</span>                <span class="keywordflow">if</span> (cmd != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  205</span>                {</div>
 <div class="line"><span class="lineno">  206</span>                    LinkCommand(index, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  207</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>[index] = cmd;</div>
+<div class="line"><span class="lineno">  207</span>                    _commands[index] = cmd;</div>
 <div class="line"><span class="lineno">  208</span>                    LinkCommand(index, <span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">  209</span>                }</div>
 <div class="line"><span class="lineno">  210</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  211</span>                {</div>
 <div class="line"><span class="lineno">  212</span>                    LinkCommand(index, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  213</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>.Remove(index);</div>
+<div class="line"><span class="lineno">  213</span>                    _commands.Remove(index);</div>
 <div class="line"><span class="lineno">  214</span>                }</div>
 <div class="line"><span class="lineno">  215</span>            }</div>
 <div class="line"><span class="lineno">  216</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmd != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  217</span>            {</div>
-<div class="line"><span class="lineno">  218</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_relocation_manager.html#a9390d49ac993d8bf96198ce4b9092d4f">_commands</a>.Add(index, cmd);</div>
+<div class="line"><span class="lineno">  218</span>                _commands.Add(index, cmd);</div>
 <div class="line"><span class="lineno">  219</span>                LinkCommand(index, <span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">  220</span>            }</div>
 <div class="line"><span class="lineno">  221</span>        }</div>
@@ -1857,28 +1816,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9390d49ac993d8bf96198ce4b9092d4f" name="a9390d49ac993d8bf96198ce4b9092d4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9390d49ac993d8bf96198ce4b9092d4f">&#9670;&#160;</a></span>_commands</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;int, <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_rel_command.html">RelCommand</a>&gt; BrawlLib.SSBB.ResourceNodes.RelocationManager._commands</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac98604d26c3da8742ce5da1665d739eb" name="ac98604d26c3da8742ce5da1665d739eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac98604d26c3da8742ce5da1665d739eb">&#9670;&#160;</a></span>_constructorIndex</h2>
 

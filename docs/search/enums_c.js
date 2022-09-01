@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['lightingchannelflags_0',['LightingChannelFlags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a348bd827a1b40990cca2f3599f6953f7',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['lightkeyframemode_1',['LightKeyframeMode',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a8b764d0e0d58bc3ac84aaa3832fd8df9',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['lighttype_2',['LightType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a839c83e646de19484389c155b654c3ee',1,'BrawlLib::SSBB::Types']]],
-  ['listvalue_3',['ListValue',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a8c18b53425c4a4bec5191cd32b3db5d9',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['lmbinbonerenderflags_4',['LMBinBoneRenderFlags',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a63e85ffa5f8f614b9425ad4e4c836be9',1,'BrawlLib::SSBB::Types']]]
+  ['mappingmethod_0',['MappingMethod',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a99493b011074649073ea84c7f88e24f9',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['matanisotropy_1',['MatAnisotropy',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a1d5c33d432048c0514926ffc1c8a2df7',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['matchanlights_2',['MatChanLights',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#ab5f5e2cf756212b1902ffe32f383bbeb',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['matchtypeenum_3',['MatchTypeEnum',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_event_match_node.html#af59a45343068107b3d8a512da53816a1',1,'BrawlLib::SSBB::ResourceNodes::EventMatchNode']]],
+  ['mattexturemagfilter_4',['MatTextureMagFilter',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a555214f10de806b0ed5be99ad89a12e8',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['mattextureminfilter_5',['MatTextureMinFilter',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a1036195b4e97203c50fdfb60d9eefdc3',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['matusageflags_6',['MatUsageFlags',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_m_d_l0_material.html#a254e86fcfd559f1ac2ef58596f4a4fbc',1,'BrawlLib::SSBB::Types::MDL0Material']]],
+  ['matwrapmode_7',['MatWrapMode',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a66b4fa1f30bca615b98ca86271440f1f',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['mdlenvelopematrixmode_8',['MDLEnvelopeMatrixMode',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#ae26875bce89a02d25d4f594bcaf11a67',1,'BrawlLib::SSBB::Types']]],
+  ['mdlresourcetype_9',['MDLResourceType',['../namespace_brawl_lib_1_1_wii_1_1_models.html#a0a6bfaac1bc782504be7d79af8fa6d0b',1,'BrawlLib::Wii::Models']]],
+  ['mdlscalingrule_10',['MDLScalingRule',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a2d03db82d9344bdbbc910a105ee9e43b',1,'BrawlLib::SSBB::Types']]],
+  ['mdltype_11',['MDLType',['../class_brawl_lib_1_1_modeling_1_1_collada_1_1_collada_1_1_import_options.html#aaaad2eebcba0c045cb5c598fdcf70e3b',1,'BrawlLib::Modeling::Collada::Collada::ImportOptions']]],
+  ['mml_12',['Mml',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a1b49ec2ec8df942685327795dd74ab7a',1,'BrawlLib::SSBB::Types::Audio']]],
+  ['mmlex_13',['MmlEx',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a01128f6710147872e1cbf570ae151261',1,'BrawlLib::SSBB::Types::Audio']]],
+  ['mode_14',['Mode',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_lighting.html#af3ec3ddc6d51a3e0e9fea6a1da1f71bb',1,'BrawlLib::SSBB::Types::Lighting']]],
+  ['motionetctypes_15',['MotionEtcTypes',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#ab76ad821df60e882c574faee598290f4',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]]
 ];

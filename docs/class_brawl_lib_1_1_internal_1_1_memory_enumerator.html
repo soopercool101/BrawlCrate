@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_memory_enumerator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.MemoryEnumerator&lt; T &gt; Class Template Reference</div></div>
@@ -99,58 +98,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaf132dc2f6f66db7d0e6bd255f34a705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#aaf132dc2f6f66db7d0e6bd255f34a705">Reset</a> ()</td></tr>
 <tr class="separator:aaf132dc2f6f66db7d0e6bd255f34a705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a5c6044292ed7de4db22d6049899fb01e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a5c6044292ed7de4db22d6049899fb01e">MemoryEnumerator</a> (void *address, int count)</td></tr>
-<tr class="separator:a5c6044292ed7de4db22d6049899fb01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a9087a6ca58279e50154d5c45c5811305"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html#a9087a6ca58279e50154d5c45c5811305">Current</a><code> [get]</code></td></tr>
 <tr class="separator:a9087a6ca58279e50154d5c45c5811305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5c6044292ed7de4db22d6049899fb01e" name="a5c6044292ed7de4db22d6049899fb01e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c6044292ed7de4db22d6049899fb01e">&#9670;&#160;</a></span>MemoryEnumerator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html">BrawlLib.Internal.MemoryEnumerator</a>&lt; T &gt;.<a class="el" href="class_brawl_lib_1_1_internal_1_1_memory_enumerator.html">MemoryEnumerator</a> </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   15</span>        {</div>
-<div class="line"><span class="lineno">   16</span>            _stride = Marshal.SizeOf(typeof(T));</div>
-<div class="line"><span class="lineno">   17</span>            _current = _base = (<span class="keywordtype">byte</span>*) address;</div>
-<div class="line"><span class="lineno">   18</span>            _ceil = _base + _stride * count;</div>
-<div class="line"><span class="lineno">   19</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a10be6bb8fe934a00b4bec34e3f03cf1a" name="a10be6bb8fe934a00b4bec34e3f03cf1a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a10be6bb8fe934a00b4bec34e3f03cf1a">&#9670;&#160;</a></span>Dispose()</h2>

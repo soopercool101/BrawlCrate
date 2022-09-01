@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor Class Reference</div></div>
@@ -104,11 +103,6 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:af4d0eb62b5f44ca478a0c557d85b060f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html">ModelEditorBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#af4d0eb62b5f44ca478a0c557d85b060f">_mainWindow</a></td></tr>
 <tr class="separator:af4d0eb62b5f44ca478a0c557d85b060f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a890f45d2de1905e9f29529f9e7c719c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a890f45d2de1905e9f29529f9e7c719c5">TexChanged</a> (object sender, EventArgs e)</td></tr>
-<tr class="separator:a890f45d2de1905e9f29529f9e7c719c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -153,119 +147,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a890f45d2de1905e9f29529f9e7c719c5" name="a890f45d2de1905e9f29529f9e7c719c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a890f45d2de1905e9f29529f9e7c719c5">&#9670;&#160;</a></span>TexChanged()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor.TexChanged </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">EventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  269</span>        {</div>
-<div class="line"><span class="lineno">  270</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html">MDL0MaterialRefNode</a> mr = <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#ab18888ae9d6546e67c0db18130330a81">TargetTexRef</a>;</div>
-<div class="line"><span class="lineno">  271</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html">PAT0TextureNode</a> node;</div>
-<div class="line"><span class="lineno">  272</span> </div>
-<div class="line"><span class="lineno">  273</span>            <span class="keywordflow">if</span> (mr == <span class="keyword">null</span> || _updating)</div>
-<div class="line"><span class="lineno">  274</span>            {</div>
-<div class="line"><span class="lineno">  275</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  276</span>            }</div>
-<div class="line"><span class="lineno">  277</span> </div>
-<div class="line"><span class="lineno">  278</span>            <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a66645273c18a0edaf7db735d6dfdf268">SelectedAnimation</a> != <span class="keyword">null</span> &amp;&amp; <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a59559ba7685edf9ed0e88147f13860d3">CurrentFrame</a> &gt; 0)</div>
-<div class="line"><span class="lineno">  279</span>            {</div>
-<div class="line"><span class="lineno">  280</span>                node = <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a66645273c18a0edaf7db735d6dfdf268">SelectedAnimation</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac984e176395153b333dfb8e2a565286d">FindChild</a>(mr.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a390294b21218af6211793dc142907447">_parent</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">Name</a> + <span class="stringliteral">&quot;/Texture&quot;</span> + mr.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abf66d99943b69f99b65b96e94b1ba617">Index</a>, <span class="keyword">true</span>) as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html">PAT0TextureNode</a>;</div>
-<div class="line"><span class="lineno">  281</span> </div>
-<div class="line"><span class="lineno">  282</span>                <span class="keywordflow">if</span> (node != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  283</span>                {</div>
-<div class="line"><span class="lineno">  284</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html">PAT0TextureEntryNode</a> tex = node.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html#a32e2929e926259b13277451a88de321e">GetEntry</a>(<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a59559ba7685edf9ed0e88147f13860d3">CurrentFrame</a> - 1);</div>
-<div class="line"><span class="lineno">  285</span>                    <span class="keywordflow">if</span> (tex == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  286</span>                    {</div>
-<div class="line"><span class="lineno">  287</span>                        <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(texBox.Text) || !<span class="keywordtype">string</span>.IsNullOrEmpty(pltBox.Text))</div>
-<div class="line"><span class="lineno">  288</span>                        {</div>
-<div class="line"><span class="lineno">  289</span>                            tex = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html">PAT0TextureEntryNode</a></div>
-<div class="line"><span class="lineno">  290</span>                            {</div>
-<div class="line"><span class="lineno">  291</span>                                _frame = <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a59559ba7685edf9ed0e88147f13860d3">CurrentFrame</a> - 1</div>
-<div class="line"><span class="lineno">  292</span>                            };</div>
-<div class="line"><span class="lineno">  293</span>                            <span class="keywordflow">if</span> (node.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count &gt; 0)</div>
-<div class="line"><span class="lineno">  294</span>                            {</div>
-<div class="line"><span class="lineno">  295</span>                                node.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4deb065d8c17c60adcf25165090a8db2">InsertChild</a>(tex, <span class="keyword">true</span>, node.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html#ab25d3f2b80bea536b05d0848c8f1a918">GetPrevious</a>(<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a59559ba7685edf9ed0e88147f13860d3">CurrentFrame</a> - 1).<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abf66d99943b69f99b65b96e94b1ba617">Index</a> + 1);</div>
-<div class="line"><span class="lineno">  296</span>                            }</div>
-<div class="line"><span class="lineno">  297</span>                            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  298</span>                            {</div>
-<div class="line"><span class="lineno">  299</span>                                node.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(tex, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  300</span>                            }</div>
-<div class="line"><span class="lineno">  301</span> </div>
-<div class="line"><span class="lineno">  302</span>                            tex.Texture = texBox.Text;</div>
-<div class="line"><span class="lineno">  303</span>                            tex.Palette = pltBox.Text;</div>
-<div class="line"><span class="lineno">  304</span>                        }</div>
-<div class="line"><span class="lineno">  305</span>                    }</div>
-<div class="line"><span class="lineno">  306</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  307</span>                    {</div>
-<div class="line"><span class="lineno">  308</span>                        <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(texBox.Text) || !<span class="keywordtype">string</span>.IsNullOrEmpty(pltBox.Text))</div>
-<div class="line"><span class="lineno">  309</span>                        {</div>
-<div class="line"><span class="lineno">  310</span>                            tex.Texture = texBox.Text;</div>
-<div class="line"><span class="lineno">  311</span>                            tex.Palette = pltBox.Text;</div>
-<div class="line"><span class="lineno">  312</span>                        }</div>
-<div class="line"><span class="lineno">  313</span>                        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  314</span>                        {</div>
-<div class="line"><span class="lineno">  315</span>                            tex.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a1700c52a0317bc414e5f7e0183fbe4c0">Remove</a>();</div>
-<div class="line"><span class="lineno">  316</span>                        }</div>
-<div class="line"><span class="lineno">  317</span>                    }</div>
-<div class="line"><span class="lineno">  318</span>                }</div>
-<div class="line"><span class="lineno">  319</span>            }</div>
-<div class="line"><span class="lineno">  320</span> </div>
-<div class="line"><span class="lineno">  321</span>            <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#aa9745271d81d0500f7409ff036ab486b">TargetModel</a>.<a class="code hl_function" href="interface_brawl_lib_1_1_modeling_1_1_i_model.html#a45fbd517b9886042b5f0cc07628ee81a">ApplyPAT</a>(<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a66645273c18a0edaf7db735d6dfdf268">SelectedAnimation</a>, <a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a59559ba7685edf9ed0e88147f13860d3">CurrentFrame</a>);</div>
-<div class="line"><span class="lineno">  322</span>            ResetTexture();</div>
-<div class="line"><span class="lineno">  323</span>            ResetPalette();</div>
-<div class="line"><span class="lineno">  324</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#af4d0eb62b5f44ca478a0c557d85b060f">_mainWindow</a>.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#aa60f9d46b2845ff32bd65b7f49a42c2a">ModelPanel</a>.Invalidate();</div>
-<div class="line"><span class="lineno">  325</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor_html_a59559ba7685edf9ed0e88147f13860d3"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a59559ba7685edf9ed0e88147f13860d3">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor.CurrentFrame</a></div><div class="ttdeci">int CurrentFrame</div><div class="ttdef"><b>Definition:</b> PAT0Editor.cs:164</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor_html_a66645273c18a0edaf7db735d6dfdf268"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#a66645273c18a0edaf7db735d6dfdf268">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor.SelectedAnimation</a></div><div class="ttdeci">PAT0Node SelectedAnimation</div><div class="ttdef"><b>Definition:</b> PAT0Editor.cs:180</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor_html_aa9745271d81d0500f7409ff036ab486b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#aa9745271d81d0500f7409ff036ab486b">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor.TargetModel</a></div><div class="ttdeci">IModel TargetModel</div><div class="ttdef"><b>Definition:</b> PAT0Editor.cs:172</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor_html_ab18888ae9d6546e67c0db18130330a81"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#ab18888ae9d6546e67c0db18130330a81">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor.TargetTexRef</a></div><div class="ttdeci">MDL0MaterialRefNode TargetTexRef</div><div class="ttdef"><b>Definition:</b> PAT0Editor.cs:156</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor_html_af4d0eb62b5f44ca478a0c557d85b060f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#af4d0eb62b5f44ca478a0c557d85b060f">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor._mainWindow</a></div><div class="ttdeci">ModelEditorBase _mainWindow</div><div class="ttdef"><b>Definition:</b> PAT0Editor.cs:138</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base_html_aa60f9d46b2845ff32bd65b7f49a42c2a"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#aa60f9d46b2845ff32bd65b7f49a42c2a">BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase.ModelPanel</a></div><div class="ttdeci">virtual ModelPanel ModelPanel</div><div class="ttdef"><b>Definition:</b> Properties.cs:224</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_material_ref_node.html">BrawlLib.SSBB.ResourceNodes.MDL0MaterialRefNode</a></div><div class="ttdef"><b>Definition:</b> MDL0MaterialRefNode.cs:17</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_entry_node.html">BrawlLib.SSBB.ResourceNodes.PAT0TextureEntryNode</a></div><div class="ttdef"><b>Definition:</b> PAT0Node.cs:1206</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html">BrawlLib.SSBB.ResourceNodes.PAT0TextureNode</a></div><div class="ttdef"><b>Definition:</b> PAT0Node.cs:806</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node_html_a32e2929e926259b13277451a88de321e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html#a32e2929e926259b13277451a88de321e">BrawlLib.SSBB.ResourceNodes.PAT0TextureNode.GetEntry</a></div><div class="ttdeci">PAT0TextureEntryNode GetEntry(float index)</div><div class="ttdoc">Gets the texture entry at the index, if there is one.</div><div class="ttdef"><b>Definition:</b> PAT0Node.cs:934</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node_html_ab25d3f2b80bea536b05d0848c8f1a918"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_p_a_t0_texture_node.html#ab25d3f2b80bea536b05d0848c8f1a918">BrawlLib.SSBB.ResourceNodes.PAT0TextureNode.GetPrevious</a></div><div class="ttdeci">PAT0TextureEntryNode GetPrevious(float index)</div><div class="ttdoc">Gets the last applied texture entry before or at the index.</div><div class="ttdef"><b>Definition:</b> PAT0Node.cs:909</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a1700c52a0317bc414e5f7e0183fbe4c0"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a1700c52a0317bc414e5f7e0183fbe4c0">BrawlLib.SSBB.ResourceNodes.ResourceNode.Remove</a></div><div class="ttdeci">virtual void Remove()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:743</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a390294b21218af6211793dc142907447"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a390294b21218af6211793dc142907447">BrawlLib.SSBB.ResourceNodes.ResourceNode._parent</a></div><div class="ttdeci">ResourceNode _parent</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:142</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a4deb065d8c17c60adcf25165090a8db2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4deb065d8c17c60adcf25165090a8db2">BrawlLib.SSBB.ResourceNodes.ResourceNode.InsertChild</a></div><div class="ttdeci">virtual void InsertChild(ResourceNode child, int index)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:776</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abf66d99943b69f99b65b96e94b1ba617"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abf66d99943b69f99b65b96e94b1ba617">BrawlLib.SSBB.ResourceNodes.ResourceNode.Index</a></div><div class="ttdeci">int Index</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:304</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abfa51c429fe706bd4af8810b7fe320fc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">BrawlLib.SSBB.ResourceNodes.ResourceNode.Name</a></div><div class="ttdeci">virtual string Name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:223</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac3b33c6e8495209753fbc3774709172a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">BrawlLib.SSBB.ResourceNodes.ResourceNode.AddChild</a></div><div class="ttdeci">virtual void AddChild(ResourceNode child)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:759</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac984e176395153b333dfb8e2a565286d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac984e176395153b333dfb8e2a565286d">BrawlLib.SSBB.ResourceNodes.ResourceNode.FindChild</a></div><div class="ttdeci">ResourceNode FindChild(string path, bool searchChildren)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1344</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
-<div class="ttc" id="ainterface_brawl_lib_1_1_modeling_1_1_i_model_html_a45fbd517b9886042b5f0cc07628ee81a"><div class="ttname"><a href="interface_brawl_lib_1_1_modeling_1_1_i_model.html#a45fbd517b9886042b5f0cc07628ee81a">BrawlLib.Modeling.IModel.ApplyPAT</a></div><div class="ttdeci">void ApplyPAT(PAT0Node node, float index)</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ac5a1e1ce98b5047feb708b666bcdc13a" name="ac5a1e1ce98b5047feb708b666bcdc13a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac5a1e1ce98b5047feb708b666bcdc13a">&#9670;&#160;</a></span>UpdateBoxes()</h2>
 
@@ -325,9 +206,12 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  362</span>                }</div>
 <div class="line"><span class="lineno">  363</span>            }</div>
 <div class="line"><span class="lineno">  364</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor_html_aa9745271d81d0500f7409ff036ab486b"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#aa9745271d81d0500f7409ff036ab486b">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor.TargetModel</a></div><div class="ttdeci">IModel TargetModel</div><div class="ttdef"><b>Definition:</b> PAT0Editor.cs:172</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor_html_af4d0eb62b5f44ca478a0c557d85b060f"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_editors_1_1_p_a_t0_editor.html#af4d0eb62b5f44ca478a0c557d85b060f">BrawlLib.Internal.Windows.Controls.ModelViewer.Editors.PAT0Editor._mainWindow</a></div><div class="ttdeci">ModelEditorBase _mainWindow</div><div class="ttdef"><b>Definition:</b> PAT0Editor.cs:138</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base_html_aae78f1a9ecea50363cf120ecea1760de"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#aae78f1a9ecea50363cf120ecea1760de">BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase._openedFiles</a></div><div class="ttdeci">BindingList&lt; ResourceNode &gt; _openedFiles</div><div class="ttdef"><b>Definition:</b> Variables.cs:51</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:129</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a4393baed04bc1ef2c7db67f39adcea3b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4393baed04bc1ef2c7db67f39adcea3b">BrawlLib.SSBB.ResourceNodes.ResourceNode.FindChildrenByType</a></div><div class="ttdeci">ResourceNode[] FindChildrenByType(string path, ResourceType type)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1426</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abfa51c429fe706bd4af8810b7fe320fc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">BrawlLib.SSBB.ResourceNodes.ResourceNode.Name</a></div><div class="ttdeci">virtual string Name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:223</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_html_a57416f79e39a4c4dd86a4334e94ee180"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">BrawlLib.SSBB.ResourceNodes.ResourceType</a></div><div class="ttdeci">ResourceType</div><div class="ttdef"><b>Definition:</b> ResourceType.cs:6</div></div>
 </div><!-- fragment -->
 </div>

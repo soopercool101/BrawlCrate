@@ -128,9 +128,9 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  182</span>                ColorPalette palette = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  183</span>                PixelFormat format;</div>
 <div class="line"><span class="lineno">  184</span>                ColorParser cParser;</div>
-<div class="line"><span class="lineno">  185</span>                switch (header-&gt;imageType &amp; (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>) 0x3)</div>
+<div class="line"><span class="lineno">  185</span>                switch (header-&gt;imageType &amp; (TGAImageType) 0x3)</div>
 <div class="line"><span class="lineno">  186</span>                {</div>
-<div class="line"><span class="lineno">  187</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>.UncompressedColorMapped:</div>
+<div class="line"><span class="lineno">  187</span>                    <span class="keywordflow">case</span> TGAImageType.UncompressedColorMapped:</div>
 <div class="line"><span class="lineno">  188</span>                    {</div>
 <div class="line"><span class="lineno">  189</span>                        <span class="keywordtype">int</span> mapBpp = header-&gt;colorMapSpecification.entrySize;</div>
 <div class="line"><span class="lineno">  190</span>                        <span class="keywordflow">if</span> (entryBpp == 4)</div>
@@ -195,7 +195,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  249</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  250</span>                    }</div>
 <div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>.UncompressedTrueColor:</div>
+<div class="line"><span class="lineno">  252</span>                    <span class="keywordflow">case</span> TGAImageType.UncompressedTrueColor:</div>
 <div class="line"><span class="lineno">  253</span>                    {</div>
 <div class="line"><span class="lineno">  254</span>                        <span class="keywordflow">if</span> (entryBpp == 15 || entryBpp == 16 &amp;&amp; alphaBits == 0)</div>
 <div class="line"><span class="lineno">  255</span>                        {</div>
@@ -237,7 +237,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  291</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  292</span>                    }</div>
 <div class="line"><span class="lineno">  293</span> </div>
-<div class="line"><span class="lineno">  294</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>.UncompressedGreyscale:</div>
+<div class="line"><span class="lineno">  294</span>                    <span class="keywordflow">case</span> TGAImageType.UncompressedGreyscale:</div>
 <div class="line"><span class="lineno">  295</span>                    {</div>
 <div class="line"><span class="lineno">  296</span>                        <span class="keywordflow">if</span> (entryBpp == 8)</div>
 <div class="line"><span class="lineno">  297</span>                        {</div>
@@ -305,7 +305,6 @@ Static Public Member Functions</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> FileMap.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ad16926b6ffda7cc52f6636d26a338511"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">BrawlLib.Internal.IO.FileMap.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> FileMap.cs:16</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_afba027ce44ffc040eaa8b0eb4c813bac"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#afba027ce44ffc040eaa8b0eb4c813bac">BrawlLib.Internal.IO.FileMap.FromFile</a></div><div class="ttdeci">static FileMap FromFile(string path)</div><div class="ttdef"><b>Definition:</b> FileMap.cs:48</div></div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_imaging_html_a2bc45223fae4eb191d42b9b0b47d7b6b"><div class="ttname"><a href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">BrawlLib.Imaging.TGAImageType</a></div><div class="ttdeci">TGAImageType</div><div class="ttdef"><b>Definition:</b> TGAImage.cs:109</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging_html_a1d8a53aa2a8c2b44a748fbb264d60a70"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_drawing_1_1_imaging.html#a1d8a53aa2a8c2b44a748fbb264d60a70">BrawlLib.Internal.Drawing.Imaging.ColorPaletteFlags</a></div><div class="ttdeci">ColorPaletteFlags</div><div class="ttdef"><b>Definition:</b> ColorPaletteExtension.cs:12</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_internal_1_1_i_o_html_a7ca8f806766fe4589f545c9d78381218"><div class="ttname"><a href="namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218">BrawlLib.Internal.IO.FileMapProtect</a></div><div class="ttdeci">FileMapProtect</div><div class="ttdef"><b>Definition:</b> FileMap.cs:175</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
@@ -401,7 +400,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  368</span> </div>
 <div class="line"><span class="lineno">  369</span>            header.imageSpecification.width = (ushort) w;</div>
 <div class="line"><span class="lineno">  370</span>            header.imageSpecification.height = (ushort) h;</div>
-<div class="line"><span class="lineno">  371</span>            header.imageType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>.UncompressedTrueColor;</div>
+<div class="line"><span class="lineno">  371</span>            header.imageType = TGAImageType.UncompressedTrueColor;</div>
 <div class="line"><span class="lineno">  372</span>            <span class="keywordflow">switch</span> (bmp.PixelFormat)</div>
 <div class="line"><span class="lineno">  373</span>            {</div>
 <div class="line"><span class="lineno">  374</span>                <span class="keywordflow">case</span> PixelFormat.Format4bppIndexed:</div>
@@ -410,7 +409,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  377</span>                    pal = bmp.Palette;</div>
 <div class="line"><span class="lineno">  378</span> </div>
 <div class="line"><span class="lineno">  379</span>                    header.colorMapType = 1;</div>
-<div class="line"><span class="lineno">  380</span>                    header.imageType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_imaging.html#a2bc45223fae4eb191d42b9b0b47d7b6b">TGAImageType</a>.UncompressedColorMapped;</div>
+<div class="line"><span class="lineno">  380</span>                    header.imageType = TGAImageType.UncompressedColorMapped;</div>
 <div class="line"><span class="lineno">  381</span>                    header.colorMapSpecification.length = (ushort) pal.Entries.Length;</div>
 <div class="line"><span class="lineno">  382</span>                    header.colorMapSpecification.entrySize = 24;</div>
 <div class="line"><span class="lineno">  383</span>                    header.imageSpecification.pixelDepth = 8;</div>

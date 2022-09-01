@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.RawDataNode2 Class Reference</div></div>
 </div><!--header-->
@@ -118,11 +117,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a452f82312f13a2968b2ac9d057b7efe8 inherit pro_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c1faaddcb2a32b080cbd369ed249fda inherit pro_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a7c1faaddcb2a32b080cbd369ed249fda">PostProcess</a> (<a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_lookup_manager.html">LookupManager</a> lookupOffsets)</td></tr>
 <tr class="separator:a7c1faaddcb2a32b080cbd369ed249fda inherit pro_methods_class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:afc2bdd55e66e402e240e0a28e282f269"><td class="memItemLeft" align="right" valign="top">byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a></td></tr>
-<tr class="separator:afc2bdd55e66e402e240e0a28e282f269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -254,9 +248,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#ac9d12aa46d3b679e3b1ae0428334f2fe">BrawlLib.SSBB.ResourceNodes.SakuraiEntryNode</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  121</span>        {</div>
-<div class="line"><span class="lineno">  122</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a848fd6892cfefcf987ad5a2baf96522f">_entryLength</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a>.Length;</div>
+<div class="line"><span class="lineno">  122</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a848fd6892cfefcf987ad5a2baf96522f">_entryLength</a> = _data.Length;</div>
 <div class="line"><span class="lineno">  123</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2_html_afc2bdd55e66e402e240e0a28e282f269"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">BrawlLib.SSBB.ResourceNodes.RawDataNode2._data</a></div><div class="ttdeci">byte[] _data</div><div class="ttdef"><b>Definition:</b> SakuraiGeneral.cs:99</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node_html_a848fd6892cfefcf987ad5a2baf96522f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a848fd6892cfefcf987ad5a2baf96522f">BrawlLib.SSBB.ResourceNodes.SakuraiEntryNode._entryLength</a></div><div class="ttdeci">int _entryLength</div><div class="ttdef"><b>Definition:</b> SakuraiEntryNode.cs:100</div></div>
 </div><!-- fragment -->
 </div>
@@ -291,16 +284,16 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  104</span> </div>
 <div class="line"><span class="lineno">  105</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#aa0603990d467e9a59b3f66e94e16adc8">_initSize</a> &gt; 0)</div>
 <div class="line"><span class="lineno">  106</span>            {</div>
-<div class="line"><span class="lineno">  107</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a> = <span class="keyword">new</span> <span class="keywordtype">byte</span>[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#aa0603990d467e9a59b3f66e94e16adc8">_initSize</a>];</div>
+<div class="line"><span class="lineno">  107</span>                _data = <span class="keyword">new</span> <span class="keywordtype">byte</span>[<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#aa0603990d467e9a59b3f66e94e16adc8">_initSize</a>];</div>
 <div class="line"><span class="lineno">  108</span>                <span class="keywordtype">byte</span>* b = (<span class="keywordtype">byte</span>*) address;</div>
-<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a>.Length; i++)</div>
+<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _data.Length; i++)</div>
 <div class="line"><span class="lineno">  110</span>                {</div>
-<div class="line"><span class="lineno">  111</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a>[i] = b[i];</div>
+<div class="line"><span class="lineno">  111</span>                    _data[i] = b[i];</div>
 <div class="line"><span class="lineno">  112</span>                }</div>
 <div class="line"><span class="lineno">  113</span>            }</div>
 <div class="line"><span class="lineno">  114</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  115</span>            {</div>
-<div class="line"><span class="lineno">  116</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a> = <span class="keyword">new</span> <span class="keywordtype">byte</span>[0];</div>
+<div class="line"><span class="lineno">  116</span>                _data = <span class="keyword">new</span> <span class="keywordtype">byte</span>[0];</div>
 <div class="line"><span class="lineno">  117</span>            }</div>
 <div class="line"><span class="lineno">  118</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node_html_a7190e69e7f0f0697454dea39f55457b9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a7190e69e7f0f0697454dea39f55457b9">BrawlLib.SSBB.ResourceNodes.SakuraiEntryNode._offset</a></div><div class="ttdeci">int _offset</div><div class="ttdef"><b>Definition:</b> SakuraiEntryNode.cs:90</div></div>
@@ -337,39 +330,16 @@ Additional Inherited Members</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  126</span>        {</div>
 <div class="line"><span class="lineno">  127</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a301a3d2b26d05f2c17789550a52aafc1">RebuildAddress</a> = address;</div>
 <div class="line"><span class="lineno">  128</span>            <span class="keywordtype">byte</span>* header = (<span class="keywordtype">byte</span>*) address;</div>
-<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">if</span> (_data != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  130</span>            {</div>
-<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a>.Length; i++)</div>
+<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _data.Length; i++)</div>
 <div class="line"><span class="lineno">  132</span>                {</div>
-<div class="line"><span class="lineno">  133</span>                    header[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_raw_data_node2.html#afc2bdd55e66e402e240e0a28e282f269">_data</a>[i];</div>
+<div class="line"><span class="lineno">  133</span>                    header[i] = _data[i];</div>
 <div class="line"><span class="lineno">  134</span>                }</div>
 <div class="line"><span class="lineno">  135</span>            }</div>
 <div class="line"><span class="lineno">  136</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node_html_a301a3d2b26d05f2c17789550a52aafc1"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_sakurai_entry_node.html#a301a3d2b26d05f2c17789550a52aafc1">BrawlLib.SSBB.ResourceNodes.SakuraiEntryNode.RebuildAddress</a></div><div class="ttdeci">VoidPtr RebuildAddress</div><div class="ttdoc">This is where the data for this node was written during the last rebuild. Don't forget to set this wh...</div><div class="ttdef"><b>Definition:</b> SakuraiEntryNode.cs:58</div></div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="afc2bdd55e66e402e240e0a28e282f269" name="afc2bdd55e66e402e240e0a28e282f269"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc2bdd55e66e402e240e0a28e282f269">&#9670;&#160;</a></span>_data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">byte [] BrawlLib.SSBB.ResourceNodes.RawDataNode2._data</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

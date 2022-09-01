@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels_1_1_model_playback_panel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.ModelViewer.Panels.ModelPlaybackPanel Class Reference</div></div>
 </div><!--header-->
@@ -137,11 +136,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a9c42e38470002217884b7fb3702e7598"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17d70a2e231755409ad8d0a7b8921d0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html">ModelEditorBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels_1_1_model_playback_panel.html#a17d70a2e231755409ad8d0a7b8921d0e">_mainWindow</a></td></tr>
 <tr class="separator:a17d70a2e231755409ad8d0a7b8921d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:ad6de59d3b442cea9f735311e88caf1d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels_1_1_model_playback_panel.html#ad6de59d3b442cea9f735311e88caf1d8">UpdateInterface</a> (int animFrame, int loopMax)</td></tr>
-<tr class="separator:ad6de59d3b442cea9f735311e88caf1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7154204c3237e8898f46973bc19443a1" name="a7154204c3237e8898f46973bc19443a1"></a>
@@ -545,54 +539,6 @@ Package Functions</h2></td></tr>
 <div class="line"><span class="lineno">  318</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels_1_1_model_playback_panel.html#a17d70a2e231755409ad8d0a7b8921d0e">_mainWindow</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#aff0f280e6a8f94287c75476bee4adb2d">numTotalFrames_ValueChanged</a>(sender, e);</div>
 <div class="line"><span class="lineno">  319</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base_html_aff0f280e6a8f94287c75476bee4adb2d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#aff0f280e6a8f94287c75476bee4adb2d">BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase.numTotalFrames_ValueChanged</a></div><div class="ttdeci">virtual void numTotalFrames_ValueChanged(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> Misc.cs:256</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad6de59d3b442cea9f735311e88caf1d8" name="ad6de59d3b442cea9f735311e88caf1d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6de59d3b442cea9f735311e88caf1d8">&#9670;&#160;</a></span>UpdateInterface()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Windows.Controls.ModelViewer.Panels.ModelPlaybackPanel.UpdateInterface </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>animFrame</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>loopMax</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  322</span>        {</div>
-<div class="line"><span class="lineno">  323</span>            btnNextFrame.Enabled = animFrame &lt; loopMax;</div>
-<div class="line"><span class="lineno">  324</span>            btnPrevFrame.Enabled = animFrame &gt; 0;</div>
-<div class="line"><span class="lineno">  325</span> </div>
-<div class="line"><span class="lineno">  326</span>            btnLast.Enabled = animFrame != loopMax;</div>
-<div class="line"><span class="lineno">  327</span>            btnFirst.Enabled = animFrame &gt; 1;</div>
-<div class="line"><span class="lineno">  328</span> </div>
-<div class="line"><span class="lineno">  329</span>            <span class="keywordflow">if</span> (animFrame &lt;= (<span class="keywordtype">float</span>) <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels_1_1_model_playback_panel.html#a36eaa2e240cb215dabb36ed0d9a6ef95">numFrameIndex</a>.Maximum)</div>
-<div class="line"><span class="lineno">  330</span>            {</div>
-<div class="line"><span class="lineno">  331</span>                numFrameIndex.Value = animFrame;</div>
-<div class="line"><span class="lineno">  332</span>            }</div>
-<div class="line"><span class="lineno">  333</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

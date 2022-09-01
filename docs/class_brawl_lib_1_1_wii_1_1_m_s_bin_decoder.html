@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.MSBinDecoder Class Reference</div></div>
 </div><!--header-->
@@ -89,127 +88,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a754373d19a2e9ee020dce3b85945432d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7db421d77b9bb517f270dcdff968f407"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a7db421d77b9bb517f270dcdff968f407">GetStringSize</a> (string s)</td></tr>
 <tr class="separator:a7db421d77b9bb517f270dcdff968f407"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-static-methods" name="pac-static-methods"></a>
-Static Package Functions</h2></td></tr>
-<tr class="memitem:a38e20b617728e663730fa3a970e5772a"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_m_s_bin_decoder.html#a38e20b617728e663730fa3a970e5772a">DecodeString</a> (byte *sPtr, int len)</td></tr>
-<tr class="separator:a38e20b617728e663730fa3a970e5772a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a38e20b617728e663730fa3a970e5772a" name="a38e20b617728e663730fa3a970e5772a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38e20b617728e663730fa3a970e5772a">&#9670;&#160;</a></span>DecodeString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static string BrawlLib.Wii.MSBinDecoder.DecodeString </td>
-          <td>(</td>
-          <td class="paramtype">byte *&#160;</td>
-          <td class="paramname"><em>sPtr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   10</span>        {</div>
-<div class="line"><span class="lineno">   11</span>            <span class="keywordflow">if</span> (len == 0)</div>
-<div class="line"><span class="lineno">   12</span>            {</div>
-<div class="line"><span class="lineno">   13</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   14</span>            }</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>            <span class="keywordtype">byte</span>* buffer = stackalloc <span class="keywordtype">byte</span>[1024];</div>
-<div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>            <span class="keywordtype">byte</span>* dPtr = buffer;</div>
-<div class="line"><span class="lineno">   19</span>            <span class="keywordtype">byte</span>* ceil = sPtr + len;</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>            <span class="keywordtype">byte</span> b;</div>
-<div class="line"><span class="lineno">   22</span>            <span class="keywordtype">int</span> bits;</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">while</span> (sPtr &lt; ceil)</div>
-<div class="line"><span class="lineno">   25</span>            {</div>
-<div class="line"><span class="lineno">   26</span>                <span class="keywordflow">switch</span> (b = *sPtr++)</div>
-<div class="line"><span class="lineno">   27</span>                {</div>
-<div class="line"><span class="lineno">   28</span>                    <span class="keywordflow">case</span> 0x0A:</div>
-<div class="line"><span class="lineno">   29</span>                        *dPtr++ = 0x0D; <span class="comment">// \r</span></div>
-<div class="line"><span class="lineno">   30</span>                        *dPtr++ = 0x0A; <span class="comment">// \n</span></div>
-<div class="line"><span class="lineno">   31</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>                    <span class="keywordflow">case</span> 0x11:</div>
-<div class="line"><span class="lineno">   34</span>                        *dPtr++ = 0x5B; <span class="comment">// [</span></div>
-<div class="line"><span class="lineno">   35</span>                        WriteString(ref dPtr, <span class="stringliteral">&quot;border=&quot;</span>);</div>
-<div class="line"><span class="lineno">   36</span>                        WriteHex(ref dPtr, ref sPtr, 4);</div>
-<div class="line"><span class="lineno">   37</span>                        *dPtr++ = 0x5D; <span class="comment">// ]</span></div>
-<div class="line"><span class="lineno">   38</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>                    <span class="keywordflow">case</span> 0x12:</div>
-<div class="line"><span class="lineno">   41</span>                        *dPtr++ = 0x3C; <span class="comment">// &lt;</span></div>
-<div class="line"><span class="lineno">   42</span>                        bits = (*sPtr++).CountBits();</div>
-<div class="line"><span class="lineno">   43</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; bits; i++)</div>
-<div class="line"><span class="lineno">   44</span>                        {</div>
-<div class="line"><span class="lineno">   45</span>                            <span class="keywordflow">if</span> (i != 0)</div>
-<div class="line"><span class="lineno">   46</span>                            {</div>
-<div class="line"><span class="lineno">   47</span>                                *dPtr++ = 0x2C; <span class="comment">// ,</span></div>
-<div class="line"><span class="lineno">   48</span>                            }</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>                            <span class="keywordflow">switch</span> (*sPtr++)</div>
-<div class="line"><span class="lineno">   51</span>                            {</div>
-<div class="line"><span class="lineno">   52</span>                                <span class="keywordflow">case</span> 0x0C: <span class="comment">//color</span></div>
-<div class="line"><span class="lineno">   53</span>                                    WriteString(ref dPtr, <span class="stringliteral">&quot;color=&quot;</span>);</div>
-<div class="line"><span class="lineno">   54</span>                                    WriteHex(ref dPtr, ref sPtr, 4);</div>
-<div class="line"><span class="lineno">   55</span>                                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>                                <span class="keywordflow">case</span> 0x0D: <span class="comment">//flags</span></div>
-<div class="line"><span class="lineno">   58</span>                                    WriteString(ref dPtr, <span class="stringliteral">&quot;size=&quot;</span>);</div>
-<div class="line"><span class="lineno">   59</span>                                    WriteHex(ref dPtr, ref sPtr, 2);</div>
-<div class="line"><span class="lineno">   60</span>                                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   61</span>                            }</div>
-<div class="line"><span class="lineno">   62</span>                        }</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>                        *dPtr++ = 0x3E; <span class="comment">// &gt;</span></div>
-<div class="line"><span class="lineno">   65</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>                    <span class="keywordflow">case</span> 0x13:</div>
-<div class="line"><span class="lineno">   68</span>                        WriteString(ref dPtr, <span class="stringliteral">&quot;&lt;/end&gt;&quot;</span>);</div>
-<div class="line"><span class="lineno">   69</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">   72</span>                        *dPtr++ = b;</div>
-<div class="line"><span class="lineno">   73</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   74</span>                }</div>
-<div class="line"><span class="lineno">   75</span>            }</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>            <span class="keywordtype">int</span> input_count = (int) dPtr - (<span class="keywordtype">int</span>) buffer;</div>
-<div class="line"><span class="lineno">   78</span>            <span class="keywordtype">int</span> output_count = Encoding.UTF8.GetDecoder().GetCharCount(buffer, input_count, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   79</span>            <span class="keywordtype">char</span>[] buffer2 = <span class="keyword">new</span> <span class="keywordtype">char</span>[output_count];</div>
-<div class="line"><span class="lineno">   80</span>            fixed (<span class="keywordtype">char</span>* ptr = buffer2)</div>
-<div class="line"><span class="lineno">   81</span>            {</div>
-<div class="line"><span class="lineno">   82</span>                Encoding.UTF8.GetDecoder().GetChars(buffer, input_count,</div>
-<div class="line"><span class="lineno">   83</span>                    ptr, output_count, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   84</span>            }</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> string(buffer2);</div>
-<div class="line"><span class="lineno">   87</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a754373d19a2e9ee020dce3b85945432d" name="a754373d19a2e9ee020dce3b85945432d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a754373d19a2e9ee020dce3b85945432d">&#9670;&#160;</a></span>EncodeString()</h2>
 

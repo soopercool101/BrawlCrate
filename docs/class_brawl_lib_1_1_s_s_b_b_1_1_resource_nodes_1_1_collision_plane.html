@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.SSBB.ResourceNodes.CollisionPlane Class Reference</div></div>
@@ -128,11 +127,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a3270dd29f5687b572d2f3751e5c58b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfe6222a6d509f010a341c85f63601fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html">CollisionObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#abfe6222a6d509f010a341c85f63601fd">_parent</a></td></tr>
 <tr class="separator:abfe6222a6d509f010a341c85f63601fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a69389eebe2fe2f02e29cc5b4260d78e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a69389eebe2fe2f02e29cc5b4260d78e5">Render</a> ()</td></tr>
-<tr class="separator:a69389eebe2fe2f02e29cc5b4260d78e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -529,136 +523,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno"> 1012</span>            }</div>
 <div class="line"><span class="lineno"> 1013</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane_html_a951631fd3270766409716adda3958732"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a951631fd3270766409716adda3958732">BrawlLib.SSBB.ResourceNodes.CollisionPlane.Type</a></div><div class="ttdeci">CollisionPlaneType Type</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:929</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a69389eebe2fe2f02e29cc5b4260d78e5" name="a69389eebe2fe2f02e29cc5b4260d78e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69389eebe2fe2f02e29cc5b4260d78e5">&#9670;&#160;</a></span>Render()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.SSBB.ResourceNodes.CollisionPlane.Render </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1309</span>        {</div>
-<div class="line"><span class="lineno"> 1310</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a3270dd29f5687b572d2f3751e5c58b13">_render</a> || <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a13d37a1f330ea4a7cd59162563dd26b7">LinkLeft</a> == <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#ae1cc35d4fb65764d150a99056879ed08">LinkRight</a>)</div>
-<div class="line"><span class="lineno"> 1311</span>            {</div>
-<div class="line"><span class="lineno"> 1312</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno"> 1313</span>            }</div>
-<div class="line"><span class="lineno"> 1314</span> </div>
-<div class="line"><span class="lineno"> 1315</span>            <span class="keywordtype">float</span> alpha = 0.8f;</div>
-<div class="line"><span class="lineno"> 1316</span> </div>
-<div class="line"><span class="lineno"> 1317</span>            <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a35776e082e6ae1799fa19ea8db617e90">CollidableByCharacters</a>)</div>
-<div class="line"><span class="lineno"> 1318</span>            {</div>
-<div class="line"><span class="lineno"> 1319</span>                alpha = 0.5f;</div>
-<div class="line"><span class="lineno"> 1320</span>            }</div>
-<div class="line"><span class="lineno"> 1321</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#ad58fadfebee1c825ecec701a3cd4685d">IsSuperSoft</a>)</div>
-<div class="line"><span class="lineno"> 1322</span>            {</div>
-<div class="line"><span class="lineno"> 1323</span>                alpha = 0.65f;</div>
-<div class="line"><span class="lineno"> 1324</span>            }</div>
-<div class="line"><span class="lineno"> 1325</span> </div>
-<div class="line"><span class="lineno"> 1326</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a> l = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#ae167ba0b6040f5e72935744b947456a9">_linkLeft</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a1c5dd2544a419ef853280b652898621a">Value</a>;</div>
-<div class="line"><span class="lineno"> 1327</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector2.html">Vector2</a> r = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a99ba3d11062704469780796d04290c24">_linkRight</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a1c5dd2544a419ef853280b652898621a">Value</a>;</div>
-<div class="line"><span class="lineno"> 1328</span> </div>
-<div class="line"><span class="lineno"> 1329</span>            <span class="keywordtype">int</span> lev = 0;</div>
-<div class="line"><span class="lineno"> 1330</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#ae167ba0b6040f5e72935744b947456a9">_linkLeft</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a6c394e1c430b4e986eb1517c483ec925">_highlight</a>)</div>
-<div class="line"><span class="lineno"> 1331</span>            {</div>
-<div class="line"><span class="lineno"> 1332</span>                lev++;</div>
-<div class="line"><span class="lineno"> 1333</span>            }</div>
-<div class="line"><span class="lineno"> 1334</span> </div>
-<div class="line"><span class="lineno"> 1335</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a99ba3d11062704469780796d04290c24">_linkRight</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a6c394e1c430b4e986eb1517c483ec925">_highlight</a>)</div>
-<div class="line"><span class="lineno"> 1336</span>            {</div>
-<div class="line"><span class="lineno"> 1337</span>                lev++;</div>
-<div class="line"><span class="lineno"> 1338</span>            }</div>
-<div class="line"><span class="lineno"> 1339</span> </div>
-<div class="line"><span class="lineno"> 1340</span>            <span class="keywordflow">if</span> (lev == 1)</div>
-<div class="line"><span class="lineno"> 1341</span>            {</div>
-<div class="line"><span class="lineno"> 1342</span>                GL.Color4(1.0f, 0.5f, 0.5f, alpha);</div>
-<div class="line"><span class="lineno"> 1343</span>            }</div>
-<div class="line"><span class="lineno"> 1344</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lev != 0)</div>
-<div class="line"><span class="lineno"> 1345</span>            {</div>
-<div class="line"><span class="lineno"> 1346</span>                GL.Color4(0.9f, 0.0f, 0.9f, alpha);</div>
-<div class="line"><span class="lineno"> 1347</span>            }</div>
-<div class="line"><span class="lineno"> 1348</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a674e5611750bde1823ee21c48f96ef8e">IsFallThrough</a>)</div>
-<div class="line"><span class="lineno"> 1349</span>            {</div>
-<div class="line"><span class="lineno"> 1350</span>                <span class="keywordflow">switch</span> (<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a0268520c50a2fec1061cd84a131acf44">GetCurrentType</a>())</div>
-<div class="line"><span class="lineno"> 1351</span>                {</div>
-<div class="line"><span class="lineno"> 1352</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.None:</div>
-<div class="line"><span class="lineno"> 1353</span>                        GL.Color4(1.0f, 1.0f, 1.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1354</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1355</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.Floor:</div>
-<div class="line"><span class="lineno"> 1356</span>                        GL.Color4(0.0f, 0.9f, 0.9f, alpha);</div>
-<div class="line"><span class="lineno"> 1357</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1358</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.Ceiling:</div>
-<div class="line"><span class="lineno"> 1359</span>                        GL.Color4(0.9f, 0.0f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1360</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1361</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.LeftWall:</div>
-<div class="line"><span class="lineno"> 1362</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.RightWall:</div>
-<div class="line"><span class="lineno"> 1363</span>                        GL.Color4(0.0f, 0.9f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1364</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1365</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno"> 1366</span>                        GL.Color4(0.0f, 0.0f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1367</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1368</span>                }</div>
-<div class="line"><span class="lineno"> 1369</span>            }</div>
-<div class="line"><span class="lineno"> 1370</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1371</span>            {</div>
-<div class="line"><span class="lineno"> 1372</span>                <span class="keywordflow">switch</span> (<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a0268520c50a2fec1061cd84a131acf44">GetCurrentType</a>())</div>
-<div class="line"><span class="lineno"> 1373</span>                {</div>
-<div class="line"><span class="lineno"> 1374</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.None:</div>
-<div class="line"><span class="lineno"> 1375</span>                        GL.Color4(0.65f, 0.65f, 0.35f, alpha);</div>
-<div class="line"><span class="lineno"> 1376</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1377</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.Floor:</div>
-<div class="line"><span class="lineno"> 1378</span>                        GL.Color4(1.0f, 1.0f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1379</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1380</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.Ceiling:</div>
-<div class="line"><span class="lineno"> 1381</span>                        GL.Color4(0.9f, 0.3f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1382</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1383</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.LeftWall:</div>
-<div class="line"><span class="lineno"> 1384</span>                    <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57184f2999ad004d886224bb7f4a563f">CollisionPlaneType</a>.RightWall:</div>
-<div class="line"><span class="lineno"> 1385</span>                        GL.Color4(0.45f, 1.0f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1386</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1387</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno"> 1388</span>                        GL.Color4(0.5f, 0.5f, 0.0f, alpha);</div>
-<div class="line"><span class="lineno"> 1389</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1390</span>                }</div>
-<div class="line"><span class="lineno"> 1391</span>            }</div>
-<div class="line"><span class="lineno"> 1392</span> </div>
-<div class="line"><span class="lineno"> 1393</span>            GL.Begin(BeginMode.Quads);</div>
-<div class="line"><span class="lineno"> 1394</span>            GL.Vertex3(l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, 10.0f);</div>
-<div class="line"><span class="lineno"> 1395</span>            GL.Vertex3(l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, -10.0f);</div>
-<div class="line"><span class="lineno"> 1396</span>            GL.Vertex3(r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, -10.0f);</div>
-<div class="line"><span class="lineno"> 1397</span>            GL.Vertex3(r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, 10.0f);</div>
-<div class="line"><span class="lineno"> 1398</span>            GL.End();</div>
-<div class="line"><span class="lineno"> 1399</span> </div>
-<div class="line"><span class="lineno"> 1400</span>            GL.Begin(BeginMode.Lines);</div>
-<div class="line"><span class="lineno"> 1401</span>            GL.Vertex3(l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, 10.0f);</div>
-<div class="line"><span class="lineno"> 1402</span>            GL.Vertex3(r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, 10.0f);</div>
-<div class="line"><span class="lineno"> 1403</span>            GL.Vertex3(l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, l.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, -10.0f);</div>
-<div class="line"><span class="lineno"> 1404</span>            GL.Vertex3(r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a24bcf2e094ccbb655b910d019e248b4c">_x</a>, r.<a class="code hl_variable" href="struct_brawl_lib_1_1_internal_1_1_vector2.html#a0aa4d3af7f7435a1aa2ce201bd820f7d">_y</a>, -10.0f);</div>
-<div class="line"><span class="lineno"> 1405</span>            GL.End();</div>
-<div class="line"><span class="lineno"> 1406</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link_html_a6c394e1c430b4e986eb1517c483ec925"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_link.html#a6c394e1c430b4e986eb1517c483ec925">BrawlLib.SSBB.ResourceNodes.CollisionLink._highlight</a></div><div class="ttdeci">bool _highlight</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:603</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane_html_a0268520c50a2fec1061cd84a131acf44"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a0268520c50a2fec1061cd84a131acf44">BrawlLib.SSBB.ResourceNodes.CollisionPlane.GetCurrentType</a></div><div class="ttdeci">CollisionPlaneType? GetCurrentType()</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:1015</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane_html_a3270dd29f5687b572d2f3751e5c58b13"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a3270dd29f5687b572d2f3751e5c58b13">BrawlLib.SSBB.ResourceNodes.CollisionPlane._render</a></div><div class="ttdeci">bool _render</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:924</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane_html_a35776e082e6ae1799fa19ea8db617e90"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a35776e082e6ae1799fa19ea8db617e90">BrawlLib.SSBB.ResourceNodes.CollisionPlane.CollidableByCharacters</a></div><div class="ttdeci">bool CollidableByCharacters</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:1044</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane_html_a674e5611750bde1823ee21c48f96ef8e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#a674e5611750bde1823ee21c48f96ef8e">BrawlLib.SSBB.ResourceNodes.CollisionPlane.IsFallThrough</a></div><div class="ttdeci">bool IsFallThrough</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:1122</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane_html_ad58fadfebee1c825ecec701a3cd4685d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_plane.html#ad58fadfebee1c825ecec701a3cd4685d">BrawlLib.SSBB.ResourceNodes.CollisionPlane.IsSuperSoft</a></div><div class="ttdeci">bool IsSuperSoft</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:1160</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector2_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector2.html">BrawlLib.Internal.Vector2</a></div><div class="ttdef"><b>Definition:</b> Vector2.cs:10</div></div>
 </div><!-- fragment -->
 </div>
 </div>

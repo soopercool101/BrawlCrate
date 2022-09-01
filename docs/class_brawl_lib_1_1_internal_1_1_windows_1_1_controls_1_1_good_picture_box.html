@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-static-attribs">Static Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.GoodPictureBox Class Reference</div></div>
@@ -100,11 +99,6 @@ Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae186a976317e1bd479b066ae589a3944"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#ae186a976317e1bd479b066ae589a3944">OnPaint</a> (PaintEventArgs e)</td></tr>
 <tr class="separator:ae186a976317e1bd479b066ae589a3944"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-static-attribs" name="pac-static-attribs"></a>
-Static Package Attributes</h2></td></tr>
-<tr class="memitem:a2c9c879a3e12575c0ca929e93e836980"><td class="memItemLeft" align="right" valign="top">static HatchBrush&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#a2c9c879a3e12575c0ca929e93e836980">_brush</a></td></tr>
-<tr class="separator:a2c9c879a3e12575c0ca929e93e836980"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -197,7 +191,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   67</span> </div>
 <div class="line"><span class="lineno">   68</span>            <span class="comment">//g.SetClip(bounds);</span></div>
 <div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>            g.FillRectangle(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#a2c9c879a3e12575c0ca929e93e836980">_brush</a>, bounds);</div>
+<div class="line"><span class="lineno">   70</span>            g.FillRectangle(_brush, bounds);</div>
 <div class="line"><span class="lineno">   71</span>            g.DrawImage(_target, bounds);</div>
 <div class="line"><span class="lineno">   72</span>            <span class="comment">//g.TranslateTransform(bounds.X, bounds.Y);</span></div>
 <div class="line"><span class="lineno">   73</span>            <span class="comment">//g.ScaleTransform(scale, scale);</span></div>
@@ -207,32 +201,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   77</span> </div>
 <div class="line"><span class="lineno">   78</span>            g.Flush();</div>
 <div class="line"><span class="lineno">   79</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box_html_a2c9c879a3e12575c0ca929e93e836980"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_picture_box.html#a2c9c879a3e12575c0ca929e93e836980">BrawlLib.Internal.Windows.Controls.GoodPictureBox._brush</a></div><div class="ttdeci">static HatchBrush _brush</div><div class="ttdef"><b>Definition:</b> GoodPictureBox.cs:9</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2c9c879a3e12575c0ca929e93e836980" name="a2c9c879a3e12575c0ca929e93e836980"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c9c879a3e12575c0ca929e93e836980">&#9670;&#160;</a></span>_brush</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">HatchBrush BrawlLib.Internal.Windows.Controls.GoodPictureBox._brush</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">            <span class="keyword">new</span> HatchBrush(HatchStyle.LargeCheckerBoard, Color.LightGray, Color.GhostWhite)</div>
 </div><!-- fragment -->
 </div>
 </div>

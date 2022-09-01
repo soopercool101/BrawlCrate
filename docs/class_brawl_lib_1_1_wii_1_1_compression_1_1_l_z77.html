@@ -250,7 +250,7 @@ Static Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   57</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a8811ffea22e2c00e9479cf563c2bbc3f">PatternLength</a> = extFmt ? 0xFFFF + 0xFF + 0xF + 3 : 0xF + 3;</div>
 <div class="line"><span class="lineno">   58</span> </div>
 <div class="line"><span class="lineno">   59</span>            <span class="comment">//Initialize</span></div>
-<div class="line"><span class="lineno">   60</span>            <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#aa2bc2004fc7bdc6c3cccadf8806e11cb">Fill</a>(_First, 0x40000, 0xFF);</div>
+<div class="line"><span class="lineno">   60</span>            <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.Fill(_First, 0x40000, 0xFF);</div>
 <div class="line"><span class="lineno">   61</span>            _wIndex = _wLength = 0;</div>
 <div class="line"><span class="lineno">   62</span> </div>
 <div class="line"><span class="lineno">   63</span>            <span class="comment">//Write header</span></div>
@@ -340,7 +340,6 @@ Static Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  147</span>            <span class="keywordflow">return</span> dstLen;</div>
 <div class="line"><span class="lineno">  148</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> Memory.cs:8</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_aa2bc2004fc7bdc6c3cccadf8806e11cb"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#aa2bc2004fc7bdc6c3cccadf8806e11cb">BrawlLib.Internal.Memory.Fill</a></div><div class="ttdeci">static void Fill(VoidPtr dest, uint length, byte value)</div><div class="ttdef"><b>Definition:</b> Memory.cs:36</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77_html_a8811ffea22e2c00e9479cf563c2bbc3f"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a8811ffea22e2c00e9479cf563c2bbc3f">BrawlLib.Wii.Compression.LZ77.PatternLength</a></div><div class="ttdeci">int PatternLength</div><div class="ttdef"><b>Definition:</b> LZ77.cs:16</div></div>
 <div class="ttc" id="ainterface_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_i_progress_tracker_html_a453073158a2f627186e8e1302e17a0a5"><div class="ttname"><a href="interface_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_i_progress_tracker.html#a453073158a2f627186e8e1302e17a0a5">BrawlLib.Internal.Windows.Forms.IProgressTracker.Begin</a></div><div class="ttdeci">void Begin(float min, float max, float current)</div></div>
 <div class="ttc" id="ainterface_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_i_progress_tracker_html_a9b13104caf8e4a90b26ae3835d7f6c36"><div class="ttname"><a href="interface_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_i_progress_tracker.html#a9b13104caf8e4a90b26ae3835d7f6c36">BrawlLib.Internal.Windows.Forms.IProgressTracker.Finish</a></div><div class="ttdeci">void Finish()</div></div>

@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.Hex_Editor.SectionEditor Class Reference</div></div>
@@ -151,11 +150,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ad77f19d5b7d042406013e0ebfe4f9205"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#ad77f19d5b7d042406013e0ebfe4f9205">Dispose</a> (bool disposing)</td></tr>
 <tr class="memdesc:ad77f19d5b7d042406013e0ebfe4f9205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean up any resources being used.   <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#ad77f19d5b7d042406013e0ebfe4f9205">More...</a><br /></td></tr>
 <tr class="separator:ad77f19d5b7d042406013e0ebfe4f9205"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a7eac9662e88fa5bf4dfabe9833068f07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_find_options.html">FindOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#a7eac9662e88fa5bf4dfabe9833068f07">_findOptions</a> = new <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_find_options.html">FindOptions</a>()</td></tr>
-<tr class="separator:a7eac9662e88fa5bf4dfabe9833068f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -324,12 +318,12 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  907</span>        {</div>
-<div class="line"><span class="lineno">  908</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#a7eac9662e88fa5bf4dfabe9833068f07">_findOptions</a>.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_find_options.html#a4f035e1b9bdbc00d187d86a9f630ee69">IsValid</a>)</div>
+<div class="line"><span class="lineno">  908</span>            <span class="keywordflow">if</span> (!_findOptions.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_find_options.html#a4f035e1b9bdbc00d187d86a9f630ee69">IsValid</a>)</div>
 <div class="line"><span class="lineno">  909</span>            {</div>
 <div class="line"><span class="lineno">  910</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  911</span>            }</div>
 <div class="line"><span class="lineno">  912</span> </div>
-<div class="line"><span class="lineno">  913</span>            <span class="keywordtype">long</span> res = backwards ? <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#aea91f67d970e7252f5bdae40fbbf5745">hexBox1</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a1db17be9239cd7d14120339f3defc94d">FindPrev</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#a7eac9662e88fa5bf4dfabe9833068f07">_findOptions</a>) : <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#aea91f67d970e7252f5bdae40fbbf5745">hexBox1</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a88b46b695577e9c7fb5e959b4e6c4bb2">FindNext</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#a7eac9662e88fa5bf4dfabe9833068f07">_findOptions</a>);</div>
+<div class="line"><span class="lineno">  913</span>            <span class="keywordtype">long</span> res = backwards ? <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#aea91f67d970e7252f5bdae40fbbf5745">hexBox1</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a1db17be9239cd7d14120339f3defc94d">FindPrev</a>(_findOptions) : <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#aea91f67d970e7252f5bdae40fbbf5745">hexBox1</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a88b46b695577e9c7fb5e959b4e6c4bb2">FindNext</a>(_findOptions);</div>
 <div class="line"><span class="lineno">  914</span> </div>
 <div class="line"><span class="lineno">  915</span>            <span class="keywordflow">if</span> (res == -1) <span class="comment">// -1 = no match</span></div>
 <div class="line"><span class="lineno">  916</span>            {</div>
@@ -352,7 +346,6 @@ Properties</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box_html_a1db17be9239cd7d14120339f3defc94d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a1db17be9239cd7d14120339f3defc94d">BrawlLib.Internal.Windows.Controls.Hex_Editor.HexBox.FindPrev</a></div><div class="ttdeci">long FindPrev(FindOptions options)</div><div class="ttdoc">Searches the current ByteProvider</div><div class="ttdef"><b>Definition:</b> HexBox.cs:2337</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box_html_a46b6803f4c6903c87648069923b2a0f6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a46b6803f4c6903c87648069923b2a0f6">BrawlLib.Internal.Windows.Controls.Hex_Editor.HexBox._ki</a></div><div class="ttdeci">KeyInterpreter _ki</div><div class="ttdoc">Contains the default key interpreter</div><div class="ttdef"><b>Definition:</b> HexBox.cs:1429</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box_html_a88b46b695577e9c7fb5e959b4e6c4bb2"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a88b46b695577e9c7fb5e959b4e6c4bb2">BrawlLib.Internal.Windows.Controls.Hex_Editor.HexBox.FindNext</a></div><div class="ttdeci">long FindNext(FindOptions options)</div><div class="ttdoc">Searches the current ByteProvider</div><div class="ttdef"><b>Definition:</b> HexBox.cs:2231</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor_html_a7eac9662e88fa5bf4dfabe9833068f07"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#a7eac9662e88fa5bf4dfabe9833068f07">BrawlLib.Internal.Windows.Controls.Hex_Editor.SectionEditor._findOptions</a></div><div class="ttdeci">FindOptions _findOptions</div><div class="ttdef"><b>Definition:</b> SectionEditor.cs:860</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor_html_aea91f67d970e7252f5bdae40fbbf5745"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_section_editor.html#aea91f67d970e7252f5bdae40fbbf5745">BrawlLib.Internal.Windows.Controls.Hex_Editor.SectionEditor.hexBox1</a></div><div class="ttdeci">HexBox hexBox1</div><div class="ttdef"><b>Definition:</b> SectionEditor.Designer.cs:1154</div></div>
 </div><!-- fragment -->
 </div>
@@ -609,28 +602,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7eac9662e88fa5bf4dfabe9833068f07" name="a7eac9662e88fa5bf4dfabe9833068f07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7eac9662e88fa5bf4dfabe9833068f07">&#9670;&#160;</a></span>_findOptions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_find_options.html">FindOptions</a> BrawlLib.Internal.Windows.Controls.Hex_Editor.SectionEditor._findOptions = new <a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_find_options.html">FindOptions</a>()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="af6d4de3ceb94e71c3c1abae65a5c426f" name="af6d4de3ceb94e71c3c1abae65a5c426f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6d4de3ceb94e71c3c1abae65a5c426f">&#9670;&#160;</a></span>_manager</h2>
 

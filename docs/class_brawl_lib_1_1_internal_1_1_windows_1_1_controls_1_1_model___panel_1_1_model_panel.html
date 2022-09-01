@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel-members.html">List of all members</a>  </div>
@@ -268,13 +267,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a2b5019a35808fe8e9187b21602572bf4 inherit pro_methods_class_brawl_lib_1_1_open_g_l_1_1_g_l_panel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2790270bac1f3d49159845deb5b28f5f inherit pro_methods_class_brawl_lib_1_1_open_g_l_1_1_g_l_panel"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a2790270bac1f3d49159845deb5b28f5f">OnRenderViewport</a> (PaintEventArgs e, <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html">GLViewport</a> v)</td></tr>
 <tr class="separator:a2790270bac1f3d49159845deb5b28f5f inherit pro_methods_class_brawl_lib_1_1_open_g_l_1_1_g_l_panel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:ac7e1ad5b9e096991077724199d1044c0"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#ac7e1ad5b9e096991077724199d1044c0">OnInit</a> (<a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a> ctx)</td></tr>
-<tr class="separator:ac7e1ad5b9e096991077724199d1044c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8ba3e87dbb8a4242e827318fd306976"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ad8ba3e87dbb8a4242e827318fd306976">OnInit</a> (<a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a> ctx)</td></tr>
-<tr class="separator:ad8ba3e87dbb8a4242e827318fd306976"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -624,13 +616,12 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  127</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a> != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  128</span>            {</div>
 <div class="line"><span class="lineno">  129</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a>.<a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a8a251157a84921bb1b7fd8dfd50140b4">Unbind</a>();</div>
-<div class="line"><span class="lineno">  130</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a>[<span class="stringliteral">&quot;_Node_Refs&quot;</span>] = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#ab01d50c0eee6e3ec1ffffc10a2a62b75">_resourceList</a>;</div>
+<div class="line"><span class="lineno">  130</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">_ctx</a>._states[<span class="stringliteral">&quot;_Node_Refs&quot;</span>] = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#ab01d50c0eee6e3ec1ffffc10a2a62b75">_resourceList</a>;</div>
 <div class="line"><span class="lineno">  131</span>            }</div>
 <div class="line"><span class="lineno">  132</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_html_a431c68cdd9867135b6d4ddbafe21566e"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#a431c68cdd9867135b6d4ddbafe21566e">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel.ClearReferences</a></div><div class="ttdeci">void ClearReferences()</div><div class="ttdef"><b>Definition:</b> ModelPanel.cs:269</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_html_ac5e1e9bcc01bec42e6e17b77577974e5"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#ac5e1e9bcc01bec42e6e17b77577974e5">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel.ClearTargets</a></div><div class="ttdeci">void ClearTargets()</div><div class="ttdef"><b>Definition:</b> ModelPanel.cs:229</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_panel_html_a9c69bddd6d4050ded1074d127ec456d8"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">BrawlLib.OpenGL.GLPanel._ctx</a></div><div class="ttdeci">TKContext _ctx</div><div class="ttdef"><b>Definition:</b> GLPanel.cs:44</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_a673bdd9a22999efd598702dfedd2edd6"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">BrawlLib.OpenGL.TKContext._states</a></div><div class="ttdeci">Dictionary&lt; string, object &gt; _states</div><div class="ttdef"><b>Definition:</b> TKContext.cs:25</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_a8a251157a84921bb1b7fd8dfd50140b4"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a8a251157a84921bb1b7fd8dfd50140b4">BrawlLib.OpenGL.TKContext.Unbind</a></div><div class="ttdeci">void Unbind()</div><div class="ttdef"><b>Definition:</b> TKContext.cs:44</div></div>
 </div><!-- fragment -->
 </div>
@@ -909,70 +900,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  772</span> </div>
 <div class="line"><span class="lineno">  773</span>            MDL0TextureNode._folderWatcher.SynchronizingObject = isNowCurrent ? this : <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  774</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ac7e1ad5b9e096991077724199d1044c0" name="ac7e1ad5b9e096991077724199d1044c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7e1ad5b9e096991077724199d1044c0">&#9670;&#160;</a></span>OnInit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel.OnInit </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a>&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ad8ba3e87dbb8a4242e827318fd306976">BrawlLib.OpenGL.GLPanel</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  619</span>        {</div>
-<div class="line"><span class="lineno">  620</span>            Vector3 v = (Vector3) BackColor;</div>
-<div class="line"><span class="lineno">  621</span>            GL.ClearColor(v._x, v._y, v._z, 0.0f);</div>
-<div class="line"><span class="lineno">  622</span>            GL.ClearDepth(1.0);</div>
-<div class="line"><span class="lineno">  623</span> </div>
-<div class="line"><span class="lineno">  624</span>            GL.Enable(EnableCap.DepthTest);</div>
-<div class="line"><span class="lineno">  625</span>            GL.DepthFunc(DepthFunction.Less);</div>
-<div class="line"><span class="lineno">  626</span> </div>
-<div class="line"><span class="lineno">  627</span>            GL.ShadeModel(ShadingModel.Smooth);</div>
-<div class="line"><span class="lineno">  628</span> </div>
-<div class="line"><span class="lineno">  629</span>            GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);</div>
-<div class="line"><span class="lineno">  630</span>            GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);</div>
-<div class="line"><span class="lineno">  631</span>            GL.Hint(HintTarget.PointSmoothHint, HintMode.Nicest);</div>
-<div class="line"><span class="lineno">  632</span>            GL.Hint(HintTarget.PolygonSmoothHint, HintMode.Nicest);</div>
-<div class="line"><span class="lineno">  633</span>            GL.Hint(HintTarget.GenerateMipmapHint, HintMode.Nicest);</div>
-<div class="line"><span class="lineno">  634</span> </div>
-<div class="line"><span class="lineno">  635</span>            GL.Enable(EnableCap.Blend);</div>
-<div class="line"><span class="lineno">  636</span>            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);</div>
-<div class="line"><span class="lineno">  637</span> </div>
-<div class="line"><span class="lineno">  638</span>            GL.Enable(EnableCap.AlphaTest);</div>
-<div class="line"><span class="lineno">  639</span>            GL.AlphaFunc(AlphaFunction.Gequal, 0.1f);</div>
-<div class="line"><span class="lineno">  640</span> </div>
-<div class="line"><span class="lineno">  641</span>            GL.Enable(EnableCap.Lighting);</div>
-<div class="line"><span class="lineno">  642</span>            GL.Enable(EnableCap.Light0);</div>
-<div class="line"><span class="lineno">  643</span> </div>
-<div class="line"><span class="lineno">  644</span>            GL.PointSize(3.0f);</div>
-<div class="line"><span class="lineno">  645</span>            GL.LineWidth(2.0f);</div>
-<div class="line"><span class="lineno">  646</span>            GL.Disable(EnableCap.PointSmooth);</div>
-<div class="line"><span class="lineno">  647</span>            GL.Disable(EnableCap.PolygonSmooth);</div>
-<div class="line"><span class="lineno">  648</span>            GL.Disable(EnableCap.LineSmooth);</div>
-<div class="line"><span class="lineno">  649</span> </div>
-<div class="line"><span class="lineno">  650</span>            GL.Enable(EnableCap.Normalize);</div>
-<div class="line"><span class="lineno">  651</span> </div>
-<div class="line"><span class="lineno">  652</span>            <span class="comment">//Set client states</span></div>
-<div class="line"><span class="lineno">  653</span>            ctx.<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a>[<span class="stringliteral">&quot;_Node_Refs&quot;</span>] = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#ab01d50c0eee6e3ec1ffffc10a2a62b75">_resourceList</a>;</div>
-<div class="line"><span class="lineno">  654</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1521,7 +1448,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  602</span>            }</div>
 <div class="line"><span class="lineno">  603</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Enabled &amp;&amp; m.Msg == 0x100)</div>
 <div class="line"><span class="lineno">  604</span>            {</div>
-<div class="line"><span class="lineno">  605</span>                <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#a913a572bdddbe42d2d13259619081451">CurrentViewport</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#aff7842cdb4f44dd305552f828d7a46c0">ProcessKeys</a>((Keys) m.WParam, ModifierKeys))</div>
+<div class="line"><span class="lineno">  605</span>                <span class="keywordflow">if</span> (<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#a913a572bdddbe42d2d13259619081451">CurrentViewport</a>.ProcessKeys((Keys) m.WParam, ModifierKeys))</div>
 <div class="line"><span class="lineno">  606</span>                {</div>
 <div class="line"><span class="lineno">  607</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  608</span>                }</div>
@@ -1530,7 +1457,6 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  611</span>            <span class="keywordflow">return</span> base.ProcessKeyMessage(ref m);</div>
 <div class="line"><span class="lineno">  612</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_html_a13c2bf4e10ae334d9ee51e0acf91ffdf"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel.html#a13c2bf4e10ae334d9ee51e0acf91ffdf">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanel.EventProcessKeyMessage</a></div><div class="ttdeci">KeyMessageEventHandler EventProcessKeyMessage</div><div class="ttdef"><b>Definition:</b> ModelPanel.cs:595</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport_html_aff7842cdb4f44dd305552f828d7a46c0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model___panel_1_1_model_panel_viewport.html#aff7842cdb4f44dd305552f828d7a46c0">BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.ProcessKeys</a></div><div class="ttdeci">bool ProcessKeys(Keys keys, Keys mod)</div><div class="ttdef"><b>Definition:</b> modelpanelviewport.cs:1020</div></div>
 </div><!-- fragment -->
 </div>
 </div>

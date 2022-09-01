@@ -591,7 +591,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  266</span>            {</div>
 <div class="line"><span class="lineno">  267</span>                <span class="comment">//Write colors</span></div>
 <div class="line"><span class="lineno">  268</span>                <span class="keywordtype">byte</span>* sPtr;</div>
-<div class="line"><span class="lineno">  269</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> i <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#ad027b94bfd94c3cb3555a657988acaf1">_remapData</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">_impTable</a>)</div>
+<div class="line"><span class="lineno">  269</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> i <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#ad027b94bfd94c3cb3555a657988acaf1">_remapData</a>._impTable)</div>
 <div class="line"><span class="lineno">  270</span>                {</div>
 <div class="line"><span class="lineno">  271</span>                    sPtr = (<span class="keywordtype">byte</span>*) (_pData + i);</div>
 <div class="line"><span class="lineno">  272</span>                    enc(ref sPtr, ref pOut);</div>
@@ -608,7 +608,6 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  283</span>                <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#a7dc54bf2862a8a6028576b36d96b91b6">Dispose</a>();</div>
 <div class="line"><span class="lineno">  284</span>            }</div>
 <div class="line"><span class="lineno">  285</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_remapper_html_a068198797f2c92c8c2442c4b8215ff28"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">BrawlLib.Internal.Remapper._impTable</a></div><div class="ttdeci">int[] _impTable</div><div class="ttdef"><b>Definition:</b> Remapper.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_color_codec_html_a7dc54bf2862a8a6028576b36d96b91b6"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#a7dc54bf2862a8a6028576b36d96b91b6">BrawlLib.Wii.Models.ColorCodec.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> ColorCodec.cs:173</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_color_codec_html_ad027b94bfd94c3cb3555a657988acaf1"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#ad027b94bfd94c3cb3555a657988acaf1">BrawlLib.Wii.Models.ColorCodec._remapData</a></div><div class="ttdeci">Remapper _remapData</div><div class="ttdef"><b>Definition:</b> ColorCodec.cs:151</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_color_codec_html_ae0f5b2894811084bcbf64d22adb342e0"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#ae0f5b2894811084bcbf64d22adb342e0">BrawlLib.Wii.Models.ColorCodec._dataLen</a></div><div class="ttdeci">int _dataLen</div><div class="ttdef"><b>Definition:</b> ColorCodec.cs:143</div></div>
@@ -649,7 +648,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  288</span>        {</div>
-<div class="line"><span class="lineno">  289</span>            <span class="keywordtype">byte</span>* sPtr = (<span class="keywordtype">byte</span>*) (_pData + <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#ad027b94bfd94c3cb3555a657988acaf1">_remapData</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">_impTable</a>[index]);</div>
+<div class="line"><span class="lineno">  289</span>            <span class="keywordtype">byte</span>* sPtr = (<span class="keywordtype">byte</span>*) (_pData + <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_color_codec.html#ad027b94bfd94c3cb3555a657988acaf1">_remapData</a>._impTable[index]);</div>
 <div class="line"><span class="lineno">  290</span>            enc(ref sPtr, ref pOut);</div>
 <div class="line"><span class="lineno">  291</span>        }</div>
 </div><!-- fragment -->

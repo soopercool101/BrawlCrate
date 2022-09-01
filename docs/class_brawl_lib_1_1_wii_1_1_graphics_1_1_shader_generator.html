@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_graphics_1_1_shader_generator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Graphics.ShaderGenerator Class Reference</div></div>
@@ -124,11 +123,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a835bc2ac29df42c06fcecaed339fcefc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d25452e7abad51f8bfe4f595fe39312"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_graphics_1_1_shader_generator.html#a6d25452e7abad51f8bfe4f595fe39312">NewLine</a> = &quot;\n&quot;</td></tr>
 <tr class="separator:a6d25452e7abad51f8bfe4f595fe39312"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-static-methods" name="pac-static-methods"></a>
-Static Package Functions</h2></td></tr>
-<tr class="memitem:a250c1b289dca7770c6040a86550157cb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_graphics_1_1_shader_generator.html#a250c1b289dca7770c6040a86550157cb">TryCompile</a> (int programHandle, int shaderHandle, string source)</td></tr>
-<tr class="separator:a250c1b289dca7770c6040a86550157cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -937,74 +931,6 @@ Properties</h2></td></tr>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_animations_1_1_fog_animation_frame_html_a9a5e4988541c3923873d4a22c86a47c0"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_animations_1_1_fog_animation_frame.html#a9a5e4988541c3923873d4a22c86a47c0">BrawlLib.Wii.Animations.FogAnimationFrame.Color</a></div><div class="ttdeci">Vector3 Color</div><div class="ttdef"><b>Definition:</b> AnimationFrame.cs:311</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_animations_1_1_fog_animation_frame_html_a9de06b902d47ae73a12a4cfba08732d9"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_animations_1_1_fog_animation_frame.html#a9de06b902d47ae73a12a4cfba08732d9">BrawlLib.Wii.Animations.FogAnimationFrame.Start</a></div><div class="ttdeci">float Start</div><div class="ttdef"><b>Definition:</b> AnimationFrame.cs:309</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_animations_1_1_fog_animation_frame_html_ab7aa7468702aa25d96c43c37cac9485e"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_animations_1_1_fog_animation_frame.html#ab7aa7468702aa25d96c43c37cac9485e">BrawlLib.Wii.Animations.FogAnimationFrame.Type</a></div><div class="ttdeci">FogType Type</div><div class="ttdef"><b>Definition:</b> AnimationFrame.cs:312</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a250c1b289dca7770c6040a86550157cb" name="a250c1b289dca7770c6040a86550157cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a250c1b289dca7770c6040a86550157cb">&#9670;&#160;</a></span>TryCompile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void BrawlLib.Wii.Graphics.ShaderGenerator.TryCompile </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>programHandle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>shaderHandle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>source</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1558</span>        {</div>
-<div class="line"><span class="lineno"> 1559</span>            GL.ShaderSource(shaderHandle, source);</div>
-<div class="line"><span class="lineno"> 1560</span>            GL.CompileShader(shaderHandle);</div>
-<div class="line"><span class="lineno"> 1561</span> </div>
-<div class="line"><span class="lineno"> 1562</span><span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><span class="lineno"> 1563</span>            GL.GetShader(shaderHandle, ShaderParameter.CompileStatus, out <span class="keywordtype">int</span> status);</div>
-<div class="line"><span class="lineno"> 1564</span>            <span class="keywordflow">if</span> (status == 0 || AlwaysOutputShader ||</div>
-<div class="line"><span class="lineno"> 1565</span>                System.Windows.Forms.Control.ModifierKeys == System.Windows.Forms.Keys.Control)</div>
-<div class="line"><span class="lineno"> 1566</span>            {</div>
-<div class="line"><span class="lineno"> 1567</span>                GL.GetShaderInfoLog(shaderHandle, out <span class="keywordtype">string</span> info);</div>
-<div class="line"><span class="lineno"> 1568</span>                Console.WriteLine(info + <span class="stringliteral">&quot;\n\n&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1569</span> </div>
-<div class="line"><span class="lineno"> 1570</span>                <span class="comment">//Split the source by new lines</span></div>
-<div class="line"><span class="lineno"> 1571</span>                <span class="keywordtype">string</span>[] s = source.Split(<span class="keyword">new</span>[] {<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_graphics_1_1_shader_generator.html#a6d25452e7abad51f8bfe4f595fe39312">NewLine</a>}, StringSplitOptions.None);</div>
-<div class="line"><span class="lineno"> 1572</span> </div>
-<div class="line"><span class="lineno"> 1573</span>                <span class="comment">//Add the line number to the source so we can go right to errors on specific lines</span></div>
-<div class="line"><span class="lineno"> 1574</span>                <span class="keywordtype">int</span> lineNumber = 1;</div>
-<div class="line"><span class="lineno"> 1575</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> line <span class="keywordflow">in</span> s)</div>
-<div class="line"><span class="lineno"> 1576</span>                {</div>
-<div class="line"><span class="lineno"> 1577</span>                    Console.WriteLine($<span class="stringliteral">&quot;{(lineNumber++).ToString().PadLeft(s.Length.ToString().Length, &#39;0&#39;)}: {line}&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1578</span>                }</div>
-<div class="line"><span class="lineno"> 1579</span> </div>
-<div class="line"><span class="lineno"> 1580</span>                Console.WriteLine(<span class="stringliteral">&quot;\n\n&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1581</span>            }</div>
-<div class="line"><span class="lineno"> 1582</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno"> 1583</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

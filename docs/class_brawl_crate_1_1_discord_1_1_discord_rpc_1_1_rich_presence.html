@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlCrate.Discord.DiscordRpc.RichPresence Class Reference</div></div>
 </div><!--header-->
@@ -115,119 +114,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a29fa9eb85df3246cb8a5952a7d6db704"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f8d6781f4fe488af61b57567adaf38a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a1f8d6781f4fe488af61b57567adaf38a">instance</a></td></tr>
 <tr class="separator:a1f8d6781f4fe488af61b57567adaf38a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a53c2a8e55e7a0a6274a969377a181f35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a53c2a8e55e7a0a6274a969377a181f35">GetStruct</a> ()</td></tr>
-<tr class="memdesc:a53c2a8e55e7a0a6274a969377a181f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a> reprensentation of this instance   <a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a53c2a8e55e7a0a6274a969377a181f35">More...</a><br /></td></tr>
-<tr class="separator:a53c2a8e55e7a0a6274a969377a181f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9026608364daaeb19e6e6c83c9f58f63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a9026608364daaeb19e6e6c83c9f58f63">FreeMem</a> ()</td></tr>
-<tr class="memdesc:a9026608364daaeb19e6e6c83c9f58f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the allocated memory for conversion to <a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a>   <a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a9026608364daaeb19e6e6c83c9f58f63">More...</a><br /></td></tr>
-<tr class="separator:a9026608364daaeb19e6e6c83c9f58f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9026608364daaeb19e6e6c83c9f58f63" name="a9026608364daaeb19e6e6c83c9f58f63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9026608364daaeb19e6e6c83c9f58f63">&#9670;&#160;</a></span>FreeMem()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlCrate.Discord.DiscordRpc.RichPresence.FreeMem </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Free the allocated memory for conversion to <a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a>  </p>
-<div class="fragment"><div class="line"><span class="lineno">  218</span>            {</div>
-<div class="line"><span class="lineno">  219</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = _buffers.Count - 1; i &gt;= 0; i--)</div>
-<div class="line"><span class="lineno">  220</span>                {</div>
-<div class="line"><span class="lineno">  221</span>                    Marshal.FreeHGlobal(_buffers[i]);</div>
-<div class="line"><span class="lineno">  222</span>                    _buffers.RemoveAt(i);</div>
-<div class="line"><span class="lineno">  223</span>                }</div>
-<div class="line"><span class="lineno">  224</span>            }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a53c2a8e55e7a0a6274a969377a181f35" name="a53c2a8e55e7a0a6274a969377a181f35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53c2a8e55e7a0a6274a969377a181f35">&#9670;&#160;</a></span>GetStruct()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a> BrawlCrate.Discord.DiscordRpc.RichPresence.GetStruct </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the <a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a> reprensentation of this instance  </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_struct.html">RichPresenceStruct</a> reprensentation of this instance</dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  127</span>            {</div>
-<div class="line"><span class="lineno">  128</span>                <span class="keywordflow">if</span> (_buffers.Count &gt; 0)</div>
-<div class="line"><span class="lineno">  129</span>                {</div>
-<div class="line"><span class="lineno">  130</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a9026608364daaeb19e6e6c83c9f58f63">FreeMem</a>();</div>
-<div class="line"><span class="lineno">  131</span>                }</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>                _presence.state = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a95eca3489e506e75e0d982fabe088dc4">state</a>, 128);</div>
-<div class="line"><span class="lineno">  134</span>                _presence.details = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a15bf907a49c04f807507fdff00aa32fe">details</a>, 128);</div>
-<div class="line"><span class="lineno">  135</span>                _presence.startTimestamp = <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ae49274e75d5aead308051bb728ede83a">startTimestamp</a>;</div>
-<div class="line"><span class="lineno">  136</span>                _presence.endTimestamp = <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ac7359d921fbdc2620c011c01b7d6d1c5">endTimestamp</a>;</div>
-<div class="line"><span class="lineno">  137</span>                _presence.largeImageKey = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a5da218433b7c67a4d284b73ab17c7982">largeImageKey</a>, 32);</div>
-<div class="line"><span class="lineno">  138</span>                _presence.largeImageText = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a14efaeda30ecf8364fbafbabe3655baf">largeImageText</a>, 128);</div>
-<div class="line"><span class="lineno">  139</span>                _presence.smallImageKey = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a209788b3bdbab687ecb318b144d368e6">smallImageKey</a>, 32);</div>
-<div class="line"><span class="lineno">  140</span>                _presence.smallImageText = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a929f4b97dbb47cb493fd10535fc64175">smallImageText</a>, 128);</div>
-<div class="line"><span class="lineno">  141</span>                _presence.partyId = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a591686d7a34204109bf0b03371a22780">partyId</a>, 128);</div>
-<div class="line"><span class="lineno">  142</span>                _presence.partySize = <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a391d8632815e835d377ea1f35974ff6e">partySize</a>;</div>
-<div class="line"><span class="lineno">  143</span>                _presence.partyMax = <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ad6509930a9715ac42b3f268b7c5eae31">partyMax</a>;</div>
-<div class="line"><span class="lineno">  144</span>                _presence.matchSecret = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a98008999e61f903b0813bd96efc78506">matchSecret</a>, 128);</div>
-<div class="line"><span class="lineno">  145</span>                _presence.joinSecret = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ad6204ef90d915724a2aac64b5c44497d">joinSecret</a>, 128);</div>
-<div class="line"><span class="lineno">  146</span>                _presence.spectateSecret = StrToPtr(<a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a29fa9eb85df3246cb8a5952a7d6db704">spectateSecret</a>, 128);</div>
-<div class="line"><span class="lineno">  147</span>                _presence.instance = <a class="code hl_variable" href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a1f8d6781f4fe488af61b57567adaf38a">instance</a>;</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>                <span class="keywordflow">return</span> _presence;</div>
-<div class="line"><span class="lineno">  150</span>            }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a14efaeda30ecf8364fbafbabe3655baf"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a14efaeda30ecf8364fbafbabe3655baf">BrawlCrate.Discord.DiscordRpc.RichPresence.largeImageText</a></div><div class="ttdeci">string largeImageText</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:111</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a15bf907a49c04f807507fdff00aa32fe"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a15bf907a49c04f807507fdff00aa32fe">BrawlCrate.Discord.DiscordRpc.RichPresence.details</a></div><div class="ttdeci">string details</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:107</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a1f8d6781f4fe488af61b57567adaf38a"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a1f8d6781f4fe488af61b57567adaf38a">BrawlCrate.Discord.DiscordRpc.RichPresence.instance</a></div><div class="ttdeci">bool instance</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:120</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a209788b3bdbab687ecb318b144d368e6"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a209788b3bdbab687ecb318b144d368e6">BrawlCrate.Discord.DiscordRpc.RichPresence.smallImageKey</a></div><div class="ttdeci">string smallImageKey</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:112</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a29fa9eb85df3246cb8a5952a7d6db704"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a29fa9eb85df3246cb8a5952a7d6db704">BrawlCrate.Discord.DiscordRpc.RichPresence.spectateSecret</a></div><div class="ttdeci">string spectateSecret</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:119</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a391d8632815e835d377ea1f35974ff6e"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a391d8632815e835d377ea1f35974ff6e">BrawlCrate.Discord.DiscordRpc.RichPresence.partySize</a></div><div class="ttdeci">int partySize</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:115</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a591686d7a34204109bf0b03371a22780"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a591686d7a34204109bf0b03371a22780">BrawlCrate.Discord.DiscordRpc.RichPresence.partyId</a></div><div class="ttdeci">string partyId</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:114</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a5da218433b7c67a4d284b73ab17c7982"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a5da218433b7c67a4d284b73ab17c7982">BrawlCrate.Discord.DiscordRpc.RichPresence.largeImageKey</a></div><div class="ttdeci">string largeImageKey</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:110</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a9026608364daaeb19e6e6c83c9f58f63"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a9026608364daaeb19e6e6c83c9f58f63">BrawlCrate.Discord.DiscordRpc.RichPresence.FreeMem</a></div><div class="ttdeci">void FreeMem()</div><div class="ttdoc">Free the allocated memory for conversion to RichPresenceStruct</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:217</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a929f4b97dbb47cb493fd10535fc64175"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a929f4b97dbb47cb493fd10535fc64175">BrawlCrate.Discord.DiscordRpc.RichPresence.smallImageText</a></div><div class="ttdeci">string smallImageText</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:113</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a95eca3489e506e75e0d982fabe088dc4"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a95eca3489e506e75e0d982fabe088dc4">BrawlCrate.Discord.DiscordRpc.RichPresence.state</a></div><div class="ttdeci">string state</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:106</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_a98008999e61f903b0813bd96efc78506"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#a98008999e61f903b0813bd96efc78506">BrawlCrate.Discord.DiscordRpc.RichPresence.matchSecret</a></div><div class="ttdeci">string matchSecret</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:117</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_ac7359d921fbdc2620c011c01b7d6d1c5"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ac7359d921fbdc2620c011c01b7d6d1c5">BrawlCrate.Discord.DiscordRpc.RichPresence.endTimestamp</a></div><div class="ttdeci">long endTimestamp</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:109</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_ad6204ef90d915724a2aac64b5c44497d"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ad6204ef90d915724a2aac64b5c44497d">BrawlCrate.Discord.DiscordRpc.RichPresence.joinSecret</a></div><div class="ttdeci">string joinSecret</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:118</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_ad6509930a9715ac42b3f268b7c5eae31"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ad6509930a9715ac42b3f268b7c5eae31">BrawlCrate.Discord.DiscordRpc.RichPresence.partyMax</a></div><div class="ttdeci">int partyMax</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:116</div></div>
-<div class="ttc" id="aclass_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence_html_ae49274e75d5aead308051bb728ede83a"><div class="ttname"><a href="class_brawl_crate_1_1_discord_1_1_discord_rpc_1_1_rich_presence.html#ae49274e75d5aead308051bb728ede83a">BrawlCrate.Discord.DiscordRpc.RichPresence.startTimestamp</a></div><div class="ttdeci">long startTimestamp</div><div class="ttdef"><b>Definition:</b> DiscordRpc.cs:108</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a15bf907a49c04f807507fdff00aa32fe" name="a15bf907a49c04f807507fdff00aa32fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15bf907a49c04f807507fdff00aa32fe">&#9670;&#160;</a></span>details</h2>

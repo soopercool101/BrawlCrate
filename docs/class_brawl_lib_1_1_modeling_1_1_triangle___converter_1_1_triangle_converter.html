@@ -216,9 +216,9 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   34</span> </div>
 <div class="line"><span class="lineno">   35</span>                <span class="comment">//Set up tristripper with remapped point ids</span></div>
 <div class="line"><span class="lineno">   36</span>                TriStripper stripper = <span class="keyword">new</span> TriStripper(</div>
-<div class="line"><span class="lineno">   37</span>                    remapData.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a9bdc2a3f0e75c0e14303e19f344a7f50">_remapTable</a>.Select(x =&gt; (uint) x).ToArray(),</div>
+<div class="line"><span class="lineno">   37</span>                    remapData._remapTable.Select(x =&gt; (uint) x).ToArray(),</div>
 <div class="line"><span class="lineno">   38</span>                    points.Select(x =&gt; x.NodeID).ToArray(),</div>
-<div class="line"><span class="lineno">   39</span>                    remapData.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">_impTable</a>);</div>
+<div class="line"><span class="lineno">   39</span>                    remapData._impTable);</div>
 <div class="line"><span class="lineno">   40</span>                stripper.SetCacheSize(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_triangle_converter.html#a4a565b7960228e321b292d811e083db1">_cacheSize</a>);</div>
 <div class="line"><span class="lineno">   41</span>                stripper.SetMinStripSize(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_triangle_converter.html#ade4d6fbaf28a6b7e60c5c87e44f8fedb">_minStripLen</a>);</div>
 <div class="line"><span class="lineno">   42</span>                stripper.SetPushCacheHits(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_triangle___converter_1_1_triangle_converter.html#adfdb3315c1fedd2b41a2767a355cf3b6">_pushCacheHits</a>);</div>
@@ -241,16 +241,16 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   59</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r = 0; r &lt; count; r++)</div>
 <div class="line"><span class="lineno">   60</span>                        {</div>
 <div class="line"><span class="lineno">   61</span>                            fpPrimitives.Add(<span class="keyword">new</span> PointTriangle(</div>
-<div class="line"><span class="lineno">   62</span>                                points[remapData.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">_impTable</a>[p.Indices[r * 3 + 0]]],</div>
-<div class="line"><span class="lineno">   63</span>                                points[remapData.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">_impTable</a>[p.Indices[r * 3 + 1]]],</div>
-<div class="line"><span class="lineno">   64</span>                                points[remapData.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">_impTable</a>[p.Indices[r * 3 + 2]]]));</div>
+<div class="line"><span class="lineno">   62</span>                                points[remapData._impTable[p.Indices[r * 3 + 0]]],</div>
+<div class="line"><span class="lineno">   63</span>                                points[remapData._impTable[p.Indices[r * 3 + 1]]],</div>
+<div class="line"><span class="lineno">   64</span>                                points[remapData._impTable[p.Indices[r * 3 + 2]]]));</div>
 <div class="line"><span class="lineno">   65</span>                        }</div>
 <div class="line"><span class="lineno">   66</span>                    }</div>
 <div class="line"><span class="lineno">   67</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   68</span>                    {</div>
 <div class="line"><span class="lineno">   69</span>                        faceCount += p.Indices.Count - 2;</div>
 <div class="line"><span class="lineno">   70</span>                        fpPrimitives.Add(<span class="keyword">new</span> PointTriangleStrip</div>
-<div class="line"><span class="lineno">   71</span>                            {_points = p.Indices.Select(x =&gt; points[remapData.<a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">_impTable</a>[x]]).ToList()});</div>
+<div class="line"><span class="lineno">   71</span>                            {_points = p.Indices.Select(x =&gt; points[remapData._impTable[x]]).ToList()});</div>
 <div class="line"><span class="lineno">   72</span>                    }</div>
 <div class="line"><span class="lineno">   73</span> </div>
 <div class="line"><span class="lineno">   74</span>                    pointCount += p.Indices.Count;</div>
@@ -293,8 +293,6 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  111</span>            <span class="keywordflow">return</span> groups;</div>
 <div class="line"><span class="lineno">  112</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_remapper_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_remapper.html">BrawlLib.Internal.Remapper</a></div><div class="ttdef"><b>Definition:</b> Remapper.cs:8</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_remapper_html_a068198797f2c92c8c2442c4b8215ff28"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_remapper.html#a068198797f2c92c8c2442c4b8215ff28">BrawlLib.Internal.Remapper._impTable</a></div><div class="ttdeci">int[] _impTable</div><div class="ttdef"><b>Definition:</b> Remapper.cs:10</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_remapper_html_a9bdc2a3f0e75c0e14303e19f344a7f50"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_remapper.html#a9bdc2a3f0e75c0e14303e19f344a7f50">BrawlLib.Internal.Remapper._remapTable</a></div><div class="ttdeci">int[] _remapTable</div><div class="ttdef"><b>Definition:</b> Remapper.cs:11</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_modeling_1_1_triangle___converter_html_a5451e2f65ad9e3d7ce309e496cb1f044"><div class="ttname"><a href="namespace_brawl_lib_1_1_modeling_1_1_triangle___converter.html#a5451e2f65ad9e3d7ce309e496cb1f044">BrawlLib.Modeling.Triangle_Converter.PrimType</a></div><div class="ttdeci">PrimType</div><div class="ttdef"><b>Definition:</b> TriStripper.cs:13</div></div>
 </div><!-- fragment -->
 </div>

@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Graphics.CPElementDef Struct Reference</div></div>
@@ -94,11 +93,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af48788ff31daa44558df59a01b5e0bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e36f8385708a7de8b6a5611ad7f2249"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#a2e36f8385708a7de8b6a5611ad7f2249">ToString</a> ()</td></tr>
 <tr class="separator:a2e36f8385708a7de8b6a5611ad7f2249"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:abef56ff90818972f3a463b7604d6ff9b"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a></td></tr>
-<tr class="separator:abef56ff90818972f3a463b7604d6ff9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -136,9 +130,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  322</span>        {</div>
-<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> = raw;</div>
+<div class="line"><span class="lineno">  323</span>            _data = raw;</div>
 <div class="line"><span class="lineno">  324</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def_html_abef56ff90818972f3a463b7604d6ff9b"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">BrawlLib.Wii.Graphics.CPElementDef._data</a></div><div class="ttdeci">uint _data</div><div class="ttdef"><b>Definition:</b> CP.cs:295</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -182,7 +175,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  327</span>        {</div>
-<div class="line"><span class="lineno">  328</span>            <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> = (uint) (((scale &amp; 0x1F) &lt;&lt; 4) | ((format &amp; 0x7) &lt;&lt; 1) | (isSpecial ? 1 : 0));</div>
+<div class="line"><span class="lineno">  328</span>            _data = (uint) (((scale &amp; 0x1F) &lt;&lt; 4) | ((format &amp; 0x7) &lt;&lt; 1) | (isSpecial ? 1 : 0));</div>
 <div class="line"><span class="lineno">  329</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -246,29 +239,6 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="abef56ff90818972f3a463b7604d6ff9b" name="abef56ff90818972f3a463b7604d6ff9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abef56ff90818972f3a463b7604d6ff9b">&#9670;&#160;</a></span>_data</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint BrawlLib.Wii.Graphics.CPElementDef._data</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="aa249584b382c6e16f5b2bb29ab258658" name="aa249584b382c6e16f5b2bb29ab258658"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa249584b382c6e16f5b2bb29ab258658">&#9670;&#160;</a></span>ColorFormat</h2>
@@ -319,8 +289,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  310</span>        {</div>
-<div class="line"><span class="lineno">  311</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a37e23d9f04f9f5724b4483c9f8a783b1">WiiVertexComponentType</a>) ((<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> &gt;&gt; 1) &amp; 7);</div>
-<div class="line"><span class="lineno">  312</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> &amp; 0xFFFFFFF1) | ((uint) value &lt;&lt; 1);</div>
+<div class="line"><span class="lineno">  311</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_models.html#a37e23d9f04f9f5724b4483c9f8a783b1">WiiVertexComponentType</a>) ((_data &gt;&gt; 1) &amp; 7);</div>
+<div class="line"><span class="lineno">  312</span>            <span class="keyword">set</span> =&gt; _data = (_data &amp; 0xFFFFFFF1) | ((uint) value &lt;&lt; 1);</div>
 <div class="line"><span class="lineno">  313</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -345,8 +315,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  298</span>        {</div>
-<div class="line"><span class="lineno">  299</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> &amp; 1) != 0;</div>
-<div class="line"><span class="lineno">  300</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> &amp; 0xFFFFFFFE) | (uint) (value ? 1 : 0);</div>
+<div class="line"><span class="lineno">  299</span>            <span class="keyword">get</span> =&gt; (_data &amp; 1) != 0;</div>
+<div class="line"><span class="lineno">  300</span>            <span class="keyword">set</span> =&gt; _data = (_data &amp; 0xFFFFFFFE) | (uint) (value ? 1 : 0);</div>
 <div class="line"><span class="lineno">  301</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -371,8 +341,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  304</span>        {</div>
-<div class="line"><span class="lineno">  305</span>            <span class="keyword">get</span> =&gt; (int) ((<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> &gt;&gt; 4) &amp; 0x1F);</div>
-<div class="line"><span class="lineno">  306</span>            <span class="keyword">set</span> =&gt; <a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> = (<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_graphics_1_1_c_p_element_def.html#abef56ff90818972f3a463b7604d6ff9b">_data</a> &amp; 0xFFFFFE0F) | (uint) (value &lt;&lt; 4);</div>
+<div class="line"><span class="lineno">  305</span>            <span class="keyword">get</span> =&gt; (int) ((_data &gt;&gt; 4) &amp; 0x1F);</div>
+<div class="line"><span class="lineno">  306</span>            <span class="keyword">set</span> =&gt; _data = (_data &amp; 0xFFFFFE0F) | (uint) (value &lt;&lt; 4);</div>
 <div class="line"><span class="lineno">  307</span>        }</div>
 </div><!-- fragment -->
 </div>

@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Windows.Controls.GLTexturePanel Class Reference</div></div>
@@ -182,13 +181,6 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a2790270bac1f3d49159845deb5b28f5f inherit pro_methods_class_brawl_lib_1_1_open_g_l_1_1_g_l_panel"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a2790270bac1f3d49159845deb5b28f5f">OnRenderViewport</a> (PaintEventArgs e, <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html">GLViewport</a> v)</td></tr>
 <tr class="separator:a2790270bac1f3d49159845deb5b28f5f inherit pro_methods_class_brawl_lib_1_1_open_g_l_1_1_g_l_panel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a7a5981d8c5106f03400585697dfb3d5c"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel.html#a7a5981d8c5106f03400585697dfb3d5c">OnInit</a> (<a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a> ctx)</td></tr>
-<tr class="separator:a7a5981d8c5106f03400585697dfb3d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8ba3e87dbb8a4242e827318fd306976"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ad8ba3e87dbb8a4242e827318fd306976">OnInit</a> (<a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a> ctx)</td></tr>
-<tr class="separator:ad8ba3e87dbb8a4242e827318fd306976"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:ab0fd4c73a793660cdeb87bf25dc6cd51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_texture.html">GLTexture</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel.html#ab0fd4c73a793660cdeb87bf25dc6cd51">Texture</a><code> [get, set]</code></td></tr>
@@ -282,47 +274,6 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a7a5981d8c5106f03400585697dfb3d5c" name="a7a5981d8c5106f03400585697dfb3d5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a5981d8c5106f03400585697dfb3d5c">&#9670;&#160;</a></span>OnInit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void BrawlLib.Internal.Windows.Controls.GLTexturePanel.OnInit </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html">TKContext</a>&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#ad8ba3e87dbb8a4242e827318fd306976">BrawlLib.OpenGL.GLPanel</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>        {</div>
-<div class="line"><span class="lineno">   30</span>            <span class="comment">//Set caps</span></div>
-<div class="line"><span class="lineno">   31</span>            GL.Enable(EnableCap.Blend);</div>
-<div class="line"><span class="lineno">   32</span>            GL.Enable(EnableCap.Texture2D);</div>
-<div class="line"><span class="lineno">   33</span>            GL.Disable(EnableCap.DepthTest);</div>
-<div class="line"><span class="lineno">   34</span>            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>            GL.MatrixMode(MatrixMode.Modelview);</div>
-<div class="line"><span class="lineno">   37</span>            GL.LoadIdentity();</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>            <a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel.html#a6a13a5eb1a87407a69474cfe1b146d20">UpdateProjection</a>();</div>
-<div class="line"><span class="lineno">   40</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel_html_a6a13a5eb1a87407a69474cfe1b146d20"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel.html#a6a13a5eb1a87407a69474cfe1b146d20">BrawlLib.Internal.Windows.Controls.GLTexturePanel.UpdateProjection</a></div><div class="ttdeci">void UpdateProjection()</div><div class="ttdef"><b>Definition:</b> GLTexturePanel.cs:56</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="acaf7aa26bfc02a0b9189c3a62d235913" name="acaf7aa26bfc02a0b9189c3a62d235913"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acaf7aa26bfc02a0b9189c3a62d235913">&#9670;&#160;</a></span>OnRender()</h2>
 
@@ -385,6 +336,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   52</span> </div>
 <div class="line"><span class="lineno">   53</span>            Invalidate();</div>
 <div class="line"><span class="lineno">   54</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel_html_a6a13a5eb1a87407a69474cfe1b146d20"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_g_l_texture_panel.html#a6a13a5eb1a87407a69474cfe1b146d20">BrawlLib.Internal.Windows.Controls.GLTexturePanel.UpdateProjection</a></div><div class="ttdeci">void UpdateProjection()</div><div class="ttdef"><b>Definition:</b> GLTexturePanel.cs:56</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_panel_html_a9c69bddd6d4050ded1074d127ec456d8"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html#a9c69bddd6d4050ded1074d127ec456d8">BrawlLib.OpenGL.GLPanel._ctx</a></div><div class="ttdeci">TKContext _ctx</div><div class="ttdef"><b>Definition:</b> GLPanel.cs:44</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_a6b1b041939a52eb7fb0ddb68a3a7f9e7"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a6b1b041939a52eb7fb0ddb68a3a7f9e7">BrawlLib.OpenGL.TKContext.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> TKContext.cs:208</div></div>
 </div><!-- fragment -->

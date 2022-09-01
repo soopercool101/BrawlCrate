@@ -136,19 +136,18 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   54</span>        {</div>
-<div class="line"><span class="lineno">   55</span>            Delegate del = Delegate.CreateDelegate(typeof(<a class="code hl_function" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a00a514d9554d98e964f739a48a7b6bae">ResourceParser</a>), t, <span class="stringliteral">&quot;TryParse&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   55</span>            Delegate del = Delegate.CreateDelegate(typeof(ResourceParser), t, <span class="stringliteral">&quot;TryParse&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">   56</span>            <span class="keywordflow">if</span> (del != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   57</span>            {</div>
-<div class="line"><span class="lineno">   58</span>                _parsers.Add(del as <a class="code hl_function" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a00a514d9554d98e964f739a48a7b6bae">ResourceParser</a>);</div>
+<div class="line"><span class="lineno">   58</span>                _parsers.Add(del as ResourceParser);</div>
 <div class="line"><span class="lineno">   59</span>            }</div>
 <div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>            Delegate del2 = Delegate.CreateDelegate(typeof(<a class="code hl_function" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a00a514d9554d98e964f739a48a7b6bae">ResourceParser</a>), t, <span class="stringliteral">&quot;TryParseGeneric&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   61</span>            Delegate del2 = Delegate.CreateDelegate(typeof(ResourceParser), t, <span class="stringliteral">&quot;TryParseGeneric&quot;</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">   62</span>            <span class="keywordflow">if</span> (del2 != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">   63</span>            {</div>
-<div class="line"><span class="lineno">   64</span>                _parsersGeneric.Add(del2 as <a class="code hl_function" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a00a514d9554d98e964f739a48a7b6bae">ResourceParser</a>);</div>
+<div class="line"><span class="lineno">   64</span>                _parsersGeneric.Add(del2 as ResourceParser);</div>
 <div class="line"><span class="lineno">   65</span>            }</div>
 <div class="line"><span class="lineno">   66</span>        }</div>
-<div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_html_a00a514d9554d98e964f739a48a7b6bae"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a00a514d9554d98e964f739a48a7b6bae">BrawlLib.SSBB.ResourceNodes.ResourceParser</a></div><div class="ttdeci">delegate ResourceNode ResourceParser(DataSource source, ResourceNode parent)</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -726,7 +725,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  201</span>        {</div>
 <div class="line"><span class="lineno">  202</span>            ResourceNode n;</div>
 <div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>            <span class="keywordflow">foreach</span> (<a class="code hl_function" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a00a514d9554d98e964f739a48a7b6bae">ResourceParser</a> d <span class="keywordflow">in</span> _parsers)</div>
+<div class="line"><span class="lineno">  204</span>            <span class="keywordflow">foreach</span> (ResourceParser d <span class="keywordflow">in</span> _parsers)</div>
 <div class="line"><span class="lineno">  205</span>            {</div>
 <div class="line"><span class="lineno">  206</span>                <span class="keywordflow">if</span> ((n = d(source, parent)) != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  207</span>                {</div>
@@ -734,7 +733,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  209</span>                }</div>
 <div class="line"><span class="lineno">  210</span>            }</div>
 <div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>            <span class="keywordflow">foreach</span> (<a class="code hl_function" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a00a514d9554d98e964f739a48a7b6bae">ResourceParser</a> d <span class="keywordflow">in</span> _parsersGeneric)</div>
+<div class="line"><span class="lineno">  212</span>            <span class="keywordflow">foreach</span> (ResourceParser d <span class="keywordflow">in</span> _parsersGeneric)</div>
 <div class="line"><span class="lineno">  213</span>            {</div>
 <div class="line"><span class="lineno">  214</span>                <span class="keywordflow">if</span> ((n = d(source, parent)) != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  215</span>                {</div>

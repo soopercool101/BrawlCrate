@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_model_i_k-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.ModelIK Class Reference</div></div>
 </div><!--header-->
@@ -95,95 +94,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a573a6452485e8c2e2c0d32636ddb8ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7d2cc6ff63e21ac292d449dc8958694"><td class="memItemLeft" align="right" valign="top">ushort[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#aa7d2cc6ff63e21ac292d449dc8958694">_IKChildBoneIndex</a></td></tr>
 <tr class="separator:aa7d2cc6ff63e21ac292d449dc8958694"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a16d4c73e86b09624a1505c1d049d57e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a16d4c73e86b09624a1505c1d049d57e6">Read</a> (BinaryReader reader)</td></tr>
-<tr class="separator:a16d4c73e86b09624a1505c1d049d57e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac11c45589fc9c3aae903aaf6ca71fc34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#ac11c45589fc9c3aae903aaf6ca71fc34">Write</a> (BinaryWriter writer)</td></tr>
-<tr class="separator:ac11c45589fc9c3aae903aaf6ca71fc34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a16d4c73e86b09624a1505c1d049d57e6" name="a16d4c73e86b09624a1505c1d049d57e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16d4c73e86b09624a1505c1d049d57e6">&#9670;&#160;</a></span>Read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelIK.Read </td>
-          <td>(</td>
-          <td class="paramtype">BinaryReader&#160;</td>
-          <td class="paramname"><em>reader</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1715</span>        {</div>
-<div class="line"><span class="lineno"> 1716</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a04be02297535f275bf497c25d565f788">_IKBoneIndex</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1717</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a0dd4bc3661b26f6e16a4348c50ebab2c">_IKTargetBoneIndex</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1718</span>            <span class="keywordtype">byte</span> ik_chain_length = reader.ReadByte();</div>
-<div class="line"><span class="lineno"> 1719</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#ae52361198613f985ca141bc8d6029745">_iterations</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1720</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a573a6452485e8c2e2c0d32636ddb8ba4">_angleLimit</a> = BitConverter.ToSingle(reader.ReadBytes(4), 0);</div>
-<div class="line"><span class="lineno"> 1721</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#aa7d2cc6ff63e21ac292d449dc8958694">_IKChildBoneIndex</a> = <span class="keyword">new</span> ushort[ik_chain_length];</div>
-<div class="line"><span class="lineno"> 1722</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ik_chain_length; i++)</div>
-<div class="line"><span class="lineno"> 1723</span>            {</div>
-<div class="line"><span class="lineno"> 1724</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#aa7d2cc6ff63e21ac292d449dc8958694">_IKChildBoneIndex</a>[i] = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1725</span>            }</div>
-<div class="line"><span class="lineno"> 1726</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_i_k_html_a04be02297535f275bf497c25d565f788"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a04be02297535f275bf497c25d565f788">BrawlLib.Modeling.ModelIK._IKBoneIndex</a></div><div class="ttdeci">ushort _IKBoneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1708</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_i_k_html_a0dd4bc3661b26f6e16a4348c50ebab2c"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a0dd4bc3661b26f6e16a4348c50ebab2c">BrawlLib.Modeling.ModelIK._IKTargetBoneIndex</a></div><div class="ttdeci">ushort _IKTargetBoneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1709</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_i_k_html_a573a6452485e8c2e2c0d32636ddb8ba4"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a573a6452485e8c2e2c0d32636ddb8ba4">BrawlLib.Modeling.ModelIK._angleLimit</a></div><div class="ttdeci">float _angleLimit</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1711</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_i_k_html_aa7d2cc6ff63e21ac292d449dc8958694"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#aa7d2cc6ff63e21ac292d449dc8958694">BrawlLib.Modeling.ModelIK._IKChildBoneIndex</a></div><div class="ttdeci">ushort[] _IKChildBoneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1712</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_i_k_html_ae52361198613f985ca141bc8d6029745"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#ae52361198613f985ca141bc8d6029745">BrawlLib.Modeling.ModelIK._iterations</a></div><div class="ttdeci">ushort _iterations</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1710</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ac11c45589fc9c3aae903aaf6ca71fc34" name="ac11c45589fc9c3aae903aaf6ca71fc34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac11c45589fc9c3aae903aaf6ca71fc34">&#9670;&#160;</a></span>Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelIK.Write </td>
-          <td>(</td>
-          <td class="paramtype">BinaryWriter&#160;</td>
-          <td class="paramname"><em>writer</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1729</span>        {</div>
-<div class="line"><span class="lineno"> 1730</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a04be02297535f275bf497c25d565f788">_IKBoneIndex</a>);</div>
-<div class="line"><span class="lineno"> 1731</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a0dd4bc3661b26f6e16a4348c50ebab2c">_IKTargetBoneIndex</a>);</div>
-<div class="line"><span class="lineno"> 1732</span>            writer.Write((<span class="keywordtype">byte</span>) <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#aa7d2cc6ff63e21ac292d449dc8958694">_IKChildBoneIndex</a>.Length);</div>
-<div class="line"><span class="lineno"> 1733</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#ae52361198613f985ca141bc8d6029745">_iterations</a>);</div>
-<div class="line"><span class="lineno"> 1734</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#a573a6452485e8c2e2c0d32636ddb8ba4">_angleLimit</a>);</div>
-<div class="line"><span class="lineno"> 1735</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#aa7d2cc6ff63e21ac292d449dc8958694">_IKChildBoneIndex</a>.Length; i++)</div>
-<div class="line"><span class="lineno"> 1736</span>            {</div>
-<div class="line"><span class="lineno"> 1737</span>                writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_i_k.html#aa7d2cc6ff63e21ac292d449dc8958694">_IKChildBoneIndex</a>[i]);</div>
-<div class="line"><span class="lineno"> 1738</span>            }</div>
-<div class="line"><span class="lineno"> 1739</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a573a6452485e8c2e2c0d32636ddb8ba4" name="a573a6452485e8c2e2c0d32636ddb8ba4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a573a6452485e8c2e2c0d32636ddb8ba4">&#9670;&#160;</a></span>_angleLimit</h2>

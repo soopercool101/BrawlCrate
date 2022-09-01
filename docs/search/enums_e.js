@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['normaltype_0',['NormalType',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_normal_node.html#afe23950ffc20e820ec958d7ae1c5596a',1,'BrawlLib::SSBB::ResourceNodes::MDL0NormalNode']]],
-  ['noteofftype_1',['NoteOffType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a7ed96d678c4779438c217fac02f49af5',1,'BrawlLib::SSBB::Types::Audio']]],
-  ['nw4ranimtype_2',['NW4RAnimType',['../namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base.html#ac7cbf8caf9f94017699671b5e23d74ee',1,'BrawlLib::Internal::Windows::Controls::ModelViewer::MainWindowBase']]]
+  ['objflag_0',['ObjFlag',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#aee48afce3162f75d9f96bd4acb5bd0f5',1,'BrawlLib::SSBB::Types']]],
+  ['offsetdisplay_1',['OffsetDisplay',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor_1_1_hex_box.html#a8df442cb4bb2e8dbe391a7f5b887f2d6',1,'BrawlLib::Internal::Windows::Controls::Hex_Editor::HexBox']]],
+  ['operandtype_2',['OperandType',['../namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#ad6e0e3039e7bb1238a1d6d757f0893b0',1,'BrawlLib::Internal::PowerPCAssembly']]]
 ];

@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.ModelBoneDisp Class Reference</div></div>
 </div><!--header-->
@@ -89,77 +88,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a60f0be7b39baabb8e223bf449d32a967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28258655112354cc2bb2a82fde68bafc"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a28258655112354cc2bb2a82fde68bafc">_boneDispFrameIndex</a></td></tr>
 <tr class="separator:a28258655112354cc2bb2a82fde68bafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a3ad82e2d8031ebd02ad3bb4c8d20c1ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a3ad82e2d8031ebd02ad3bb4c8d20c1ef">Read</a> (BinaryReader reader)</td></tr>
-<tr class="separator:a3ad82e2d8031ebd02ad3bb4c8d20c1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a959f607d1c29d6a05e7416d084c7dd94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a959f607d1c29d6a05e7416d084c7dd94">Write</a> (BinaryWriter writer)</td></tr>
-<tr class="separator:a959f607d1c29d6a05e7416d084c7dd94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3ad82e2d8031ebd02ad3bb4c8d20c1ef" name="a3ad82e2d8031ebd02ad3bb4c8d20c1ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ad82e2d8031ebd02ad3bb4c8d20c1ef">&#9670;&#160;</a></span>Read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelBoneDisp.Read </td>
-          <td>(</td>
-          <td class="paramtype">BinaryReader&#160;</td>
-          <td class="paramname"><em>reader</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1517</span>        {</div>
-<div class="line"><span class="lineno"> 1518</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a60f0be7b39baabb8e223bf449d32a967">_boneIndex</a> = BitConverter.ToUInt16(reader.ReadBytes(2), 0);</div>
-<div class="line"><span class="lineno"> 1519</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a28258655112354cc2bb2a82fde68bafc">_boneDispFrameIndex</a> = reader.ReadByte();</div>
-<div class="line"><span class="lineno"> 1520</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_disp_html_a28258655112354cc2bb2a82fde68bafc"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a28258655112354cc2bb2a82fde68bafc">BrawlLib.Modeling.ModelBoneDisp._boneDispFrameIndex</a></div><div class="ttdeci">byte _boneDispFrameIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1514</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_model_bone_disp_html_a60f0be7b39baabb8e223bf449d32a967"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a60f0be7b39baabb8e223bf449d32a967">BrawlLib.Modeling.ModelBoneDisp._boneIndex</a></div><div class="ttdeci">ushort _boneIndex</div><div class="ttdef"><b>Definition:</b> PMDModel.cs:1513</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a959f607d1c29d6a05e7416d084c7dd94" name="a959f607d1c29d6a05e7416d084c7dd94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a959f607d1c29d6a05e7416d084c7dd94">&#9670;&#160;</a></span>Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Modeling.ModelBoneDisp.Write </td>
-          <td>(</td>
-          <td class="paramtype">BinaryWriter&#160;</td>
-          <td class="paramname"><em>writer</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1523</span>        {</div>
-<div class="line"><span class="lineno"> 1524</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a60f0be7b39baabb8e223bf449d32a967">_boneIndex</a>);</div>
-<div class="line"><span class="lineno"> 1525</span>            writer.Write(<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_model_bone_disp.html#a28258655112354cc2bb2a82fde68bafc">_boneDispFrameIndex</a>);</div>
-<div class="line"><span class="lineno"> 1526</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a28258655112354cc2bb2a82fde68bafc" name="a28258655112354cc2bb2a82fde68bafc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28258655112354cc2bb2a82fde68bafc">&#9670;&#160;</a></span>_boneDispFrameIndex</h2>

@@ -110,10 +110,6 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ac336833a1c61e9fbf3563d92c9cccb85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#ac336833a1c61e9fbf3563d92c9cccb85">Address</a><code> [get]</code></td></tr>
-<tr class="separator:ac336833a1c61e9fbf3563d92c9cccb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588a33ec097e8669d21ae0babe28e76a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a588a33ec097e8669d21ae0babe28e76a">Audio</a><code> [get]</code></td></tr>
-<tr class="separator:a588a33ec097e8669d21ae0babe28e76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a326ad2246e4d81a84ecab7e026b94ab6"><td class="memItemLeft" align="right" valign="top">short[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a326ad2246e4d81a84ecab7e026b94ab6">Coefs1</a><code> [get]</code></td></tr>
 <tr class="separator:a326ad2246e4d81a84ecab7e026b94ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92de562aa363457bd44c2ba99344c562"><td class="memItemLeft" align="right" valign="top">short[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a92de562aa363457bd44c2ba99344c562">Coefs2</a><code> [get]</code></td></tr>
@@ -144,9 +140,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  142</span>        {</div>
-<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">return</span> (<span class="keywordtype">byte</span>*) <a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a588a33ec097e8669d21ae0babe28e76a">Audio</a> + (uint) (channel * <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a820af503d43e31755b859ea3ddd390d6">_blockSize</a>);</div>
+<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">return</span> (<span class="keywordtype">byte</span>*) Audio + (uint) (channel * <a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a820af503d43e31755b859ea3ddd390d6">_blockSize</a>);</div>
 <div class="line"><span class="lineno">  144</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header_html_a588a33ec097e8669d21ae0babe28e76a"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a588a33ec097e8669d21ae0babe28e76a">BrawlLib.SSBB.Types.ThpAudioFrameHeader.Audio</a></div><div class="ttdeci">VoidPtr Audio</div><div class="ttdef"><b>Definition:</b> THP.cs:139</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header_html_a820af503d43e31755b859ea3ddd390d6"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_thp_audio_frame_header.html#a820af503d43e31755b859ea3ddd390d6">BrawlLib.SSBB.Types.ThpAudioFrameHeader._blockSize</a></div><div class="ttdeci">buint _blockSize</div><div class="ttdef"><b>Definition:</b> THP.cs:117</div></div>
 </div><!-- fragment -->
 </div>
@@ -265,59 +260,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ac336833a1c61e9fbf3563d92c9cccb85" name="ac336833a1c61e9fbf3563d92c9cccb85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac336833a1c61e9fbf3563d92c9cccb85">&#9670;&#160;</a></span>Address</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.ThpAudioFrameHeader.Address</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  129</span>        {</div>
-<div class="line"><span class="lineno">  130</span>            <span class="keyword">get</span></div>
-<div class="line"><span class="lineno">  131</span>            {</div>
-<div class="line"><span class="lineno">  132</span>                fixed (<span class="keywordtype">void</span>* ptr = &amp;<span class="keyword">this</span>)</div>
-<div class="line"><span class="lineno">  133</span>                {</div>
-<div class="line"><span class="lineno">  134</span>                    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><span class="lineno">  135</span>                }</div>
-<div class="line"><span class="lineno">  136</span>            }</div>
-<div class="line"><span class="lineno">  137</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a588a33ec097e8669d21ae0babe28e76a" name="a588a33ec097e8669d21ae0babe28e76a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a588a33ec097e8669d21ae0babe28e76a">&#9670;&#160;</a></span>Audio</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> BrawlLib.SSBB.Types.ThpAudioFrameHeader.Audio</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a326ad2246e4d81a84ecab7e026b94ab6" name="a326ad2246e4d81a84ecab7e026b94ab6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a326ad2246e4d81a84ecab7e026b94ab6">&#9670;&#160;</a></span>Coefs1</h2>
 

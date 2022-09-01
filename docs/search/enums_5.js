@@ -1,11 +1,16 @@
 var searchData=
 [
-  ['emitformtype_0',['EmitFormType',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_emitter_desc.html#aeeba0bd1654be389204ec48a64844291',1,'BrawlLib::SSBB::Types::EmitterDesc']]],
-  ['emittercommonflag_1',['EmitterCommonFlag',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_emitter_desc.html#a9d39d2ed94ee1dcffd0b76bc94cf31b4',1,'BrawlLib::SSBB::Types::EmitterDesc']]],
-  ['emitterinheritsettingflag_2',['EmitterInheritSettingFlag',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_emitter_inherit_setting.html#ac6c1f21f235219fd6f7c342c8c2d29bf',1,'BrawlLib::SSBB::Types::EmitterInheritSetting']]],
-  ['endian_3',['Endian',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a7c43134908e46e1aa0e3f615e97440ff',1,'BrawlLib::SSBB::Types']]],
-  ['enemylist_4',['EnemyList',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a8ee16394b7d4914ccae85a71954c0fe9',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['entryflag_5',['EntryFlag',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations.html#a4d3274777b3d5a1d4020b173860af412',1,'BrawlLib::SSBB::Types::Animations']]],
-  ['entryresultloadflags_6',['EntryResultLoadFlags',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#abfa6c21fc16fbbd6063afbeebb82b75a',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]],
-  ['entrytarget_7',['EntryTarget',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_animations.html#aece6d13e790705c04010eb5905d945fb',1,'BrawlLib::SSBB::Types::Animations']]]
+  ['face_0',['Face',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a2481617352728ece56c6a7def19dd0cb',1,'BrawlLib::SSBB::Types']]],
+  ['filemapprotect_1',['FileMapProtect',['../namespace_brawl_lib_1_1_internal_1_1_i_o.html#a7ca8f806766fe4589f545c9d78381218',1,'BrawlLib::Internal::IO']]],
+  ['fileoperationflags_2',['FileOperationFlags',['../class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#ac419a7464e4ccea9543c7d2290cb4642',1,'BrawlLib::BrawlManagerLib::FileOperations']]],
+  ['fileoperationtype_3',['FileOperationType',['../class_brawl_lib_1_1_brawl_manager_lib_1_1_file_operations.html#a6ff99b07c54f175bf46a0f9d5e3e1036',1,'BrawlLib::BrawlManagerLib::FileOperations']]],
+  ['finalloadflags_4',['FinalLoadFlags',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#a127f5843fa29dd8489b38de6745df8a3',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]],
+  ['finalloadflagsv1_5',['FinalLoadFlagsV1',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#a5a311f73e51c5c8c65feed8627701746',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]],
+  ['findtype_6',['FindType',['../namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_hex___editor.html#aee624a5d480988500ed9d4a5f33e24b8',1,'BrawlLib::Internal::Windows::Controls::Hex_Editor']]],
+  ['fixedflags_7',['FixedFlags',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_light_node.html#a7aabfc925d37687dabc58b1b89707ebb',1,'BrawlLib::SSBB::ResourceNodes::SCN0LightNode']]],
+  ['flags_8',['Flags',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1hk_class_member.html#a431cec4e3245fcf62b886e2ed08222ee',1,'BrawlLib::SSBB::Types::hkClassMember']]],
+  ['flagsenum_9',['FlagsEnum',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1hk_array.html#a494602b83e4544da2e569da6753a5ecb',1,'BrawlLib::SSBB::Types::hkArray']]],
+  ['fogtype_10',['FogType',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a96537ab6e16fc4e3f9286d7e2f07b652',1,'BrawlLib::Wii::Graphics']]],
+  ['frameflag_11',['FrameFlag',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a029fefb872c91146103c9b6a24b479c6',1,'BrawlLib::SSBB::Types']]],
+  ['frametype_12',['FrameType',['../namespace_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_panels.html#a6d5b7585874e984d83c5cd31fb3c8ab8',1,'BrawlLib::Internal::Windows::Controls::ModelViewer::Panels']]]
 ];

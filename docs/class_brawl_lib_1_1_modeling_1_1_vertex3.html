@@ -78,7 +78,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_modeling_1_1_vertex3-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Modeling.Vertex3 Class Reference</div></div>
@@ -151,19 +150,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a1bf17c2c22140a7f364143d7cb1ee8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a883548840f99bbe753cc4b4b785aeffa"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a883548840f99bbe753cc4b4b785aeffa">HighlightColor</a> = Color.Transparent</td></tr>
 <tr class="separator:a883548840f99bbe753cc4b4b785aeffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a981e26d8958b116d53e61c9cbbf5b947"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a></td></tr>
-<tr class="separator:a981e26d8958b116d53e61c9cbbf5b947"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab52b653daf5a99659d90f85a59d6643a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ab52b653daf5a99659d90f85a59d6643a">_baseWeight</a> = 0</td></tr>
-<tr class="separator:ab52b653daf5a99659d90f85a59d6643a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86d12c385faaf426d7f08504acef34f3"><td class="memItemLeft" align="right" valign="top">float[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a86d12c385faaf426d7f08504acef34f3">_weights</a></td></tr>
-<tr class="separator:a86d12c385faaf426d7f08504acef34f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0ab587aeddc13bde6924339585ff575"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_vertex_node.html">MDL0VertexNode</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae0ab587aeddc13bde6924339585ff575">_nodes</a></td></tr>
-<tr class="separator:ae0ab587aeddc13bde6924339585ff575"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb0ef42884db2989bf7fae01f3551564"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#adb0ef42884db2989bf7fae01f3551564">_bCenter</a> = new <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>()</td></tr>
-<tr class="separator:adb0ef42884db2989bf7fae01f3551564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -430,9 +416,8 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  383</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  384</span>            }</div>
 <div class="line"><span class="lineno">  385</span> </div>
-<div class="line"><span class="lineno">  386</span>            <span class="keywordflow">return</span> <a class="code hl_property" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae2e4f9c64e783d5821364a035fa95a98">Position</a> == v.Position &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a> == v._matrixNode;</div>
+<div class="line"><span class="lineno">  386</span>            <span class="keywordflow">return</span> <a class="code hl_property" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae2e4f9c64e783d5821364a035fa95a98">Position</a> == v.Position &amp;&amp; _matrixNode == v._matrixNode;</div>
 <div class="line"><span class="lineno">  387</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_a981e26d8958b116d53e61c9cbbf5b947"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">BrawlLib.Modeling.Vertex3._matrixNode</a></div><div class="ttdeci">IMatrixNode _matrixNode</div><div class="ttdef"><b>Definition:</b> Vertex.cs:16</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -622,12 +607,12 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  340</span>        {</div>
 <div class="line"><span class="lineno">  341</span>            <span class="keywordtype">float</span> weight = -1.0f;</div>
-<div class="line"><span class="lineno">  342</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a> == <span class="keyword">null</span> || targetBone == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  342</span>            <span class="keywordflow">if</span> (_matrixNode == <span class="keyword">null</span> || targetBone == <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  343</span>            {</div>
 <div class="line"><span class="lineno">  344</span>                <span class="keywordflow">return</span> Color.Transparent;</div>
 <div class="line"><span class="lineno">  345</span>            }</div>
 <div class="line"><span class="lineno">  346</span> </div>
-<div class="line"><span class="lineno">  347</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a> is <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html">MDL0BoneNode</a> mNode)</div>
+<div class="line"><span class="lineno">  347</span>            <span class="keywordflow">if</span> (_matrixNode is <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html">MDL0BoneNode</a> mNode)</div>
 <div class="line"><span class="lineno">  348</span>            {</div>
 <div class="line"><span class="lineno">  349</span>                <span class="keywordflow">if</span> (mNode == targetBone)</div>
 <div class="line"><span class="lineno">  350</span>                {</div>
@@ -640,7 +625,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  357</span>            }</div>
 <div class="line"><span class="lineno">  358</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  359</span>            {</div>
-<div class="line"><span class="lineno">  360</span>                <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html">BoneWeight</a> b <span class="keywordflow">in</span> ((<a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a>) <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a>).Weights)</div>
+<div class="line"><span class="lineno">  360</span>                <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html">BoneWeight</a> b <span class="keywordflow">in</span> ((<a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a>) _matrixNode).Weights)</div>
 <div class="line"><span class="lineno">  361</span>                {</div>
 <div class="line"><span class="lineno">  362</span>                    <span class="keywordflow">if</span> (b.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_bone_weight.html#a79e9bc7dd3ac659e6766195d95dcb1be">Bone</a> == targetBone)</div>
 <div class="line"><span class="lineno">  363</span>                    {</div>
@@ -892,12 +877,12 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  271</span>            <span class="comment">//Distribute weights for the position across all vertex set influences</span></div>
 <div class="line"><span class="lineno">  272</span>            <span class="keywordflow">if</span> (updateVertexSets)</div>
 <div class="line"><span class="lineno">  273</span>            {</div>
-<div class="line"><span class="lineno">  274</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a86d12c385faaf426d7f08504acef34f3">_weights</a> != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae0ab587aeddc13bde6924339585ff575">_nodes</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  274</span>                <span class="keywordflow">if</span> (_weights != <span class="keyword">null</span> &amp;&amp; _nodes != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  275</span>                {</div>
-<div class="line"><span class="lineno">  276</span>                    <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> trans = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a8f2feb2524521b586d0419ec288ac2ae">_weightedPosition</a> - <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#adb0ef42884db2989bf7fae01f3551564">_bCenter</a>;</div>
-<div class="line"><span class="lineno">  277</span>                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae0ab587aeddc13bde6924339585ff575">_nodes</a>.Length; i++)</div>
+<div class="line"><span class="lineno">  276</span>                    <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> trans = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a8f2feb2524521b586d0419ec288ac2ae">_weightedPosition</a> - _bCenter;</div>
+<div class="line"><span class="lineno">  277</span>                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _nodes.Length; i++)</div>
 <div class="line"><span class="lineno">  278</span>                    {</div>
-<div class="line"><span class="lineno">  279</span>                        <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_vertex_node.html">MDL0VertexNode</a> <span class="keyword">set</span> = <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae0ab587aeddc13bde6924339585ff575">_nodes</a>[i];</div>
+<div class="line"><span class="lineno">  279</span>                        <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_vertex_node.html">MDL0VertexNode</a> <span class="keyword">set</span> = _nodes[i];</div>
 <div class="line"><span class="lineno">  280</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a41c2b72232111dc56f53cc79dae54636">SetPosition</a>(<span class="keyword">set</span>,</div>
 <div class="line"><span class="lineno">  281</span>                            <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#acc7377d20d71324a228fea5ed072eee1">GetInvMatrix</a>() * (<a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a149717c42837c40ce5f3e2ff046b5768">GetMatrix</a>() * <span class="keyword">set</span>.Vertices[<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a1bf17c2c22140a7f364143d7cb1ee8d9">Facepoints</a>[0]._vertexIndex] + trans));</div>
 <div class="line"><span class="lineno">  282</span>                    }</div>
@@ -913,11 +898,8 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">  292</span>            }</div>
 <div class="line"><span class="lineno">  293</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_a149717c42837c40ce5f3e2ff046b5768"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a149717c42837c40ce5f3e2ff046b5768">BrawlLib.Modeling.Vertex3.GetMatrix</a></div><div class="ttdeci">Matrix GetMatrix()</div><div class="ttdef"><b>Definition:</b> Vertex.cs:47</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_a86d12c385faaf426d7f08504acef34f3"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a86d12c385faaf426d7f08504acef34f3">BrawlLib.Modeling.Vertex3._weights</a></div><div class="ttdeci">float[] _weights</div><div class="ttdef"><b>Definition:</b> Vertex.cs:296</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_a8701eaae17b9a2d12c0e9ee2e0cacc12"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a8701eaae17b9a2d12c0e9ee2e0cacc12">BrawlLib.Modeling.Vertex3.WeightedPosition</a></div><div class="ttdeci">Vector3 WeightedPosition</div><div class="ttdef"><b>Definition:</b> Vertex.cs:222</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_acc7377d20d71324a228fea5ed072eee1"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#acc7377d20d71324a228fea5ed072eee1">BrawlLib.Modeling.Vertex3.GetInvMatrix</a></div><div class="ttdeci">Matrix GetInvMatrix()</div><div class="ttdef"><b>Definition:</b> Vertex.cs:58</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_adb0ef42884db2989bf7fae01f3551564"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#adb0ef42884db2989bf7fae01f3551564">BrawlLib.Modeling.Vertex3._bCenter</a></div><div class="ttdeci">Vector3 _bCenter</div><div class="ttdef"><b>Definition:</b> Vertex.cs:298</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_modeling_1_1_vertex3_html_ae0ab587aeddc13bde6924339585ff575"><div class="ttname"><a href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae0ab587aeddc13bde6924339585ff575">BrawlLib.Modeling.Vertex3._nodes</a></div><div class="ttdeci">MDL0VertexNode[] _nodes</div><div class="ttdef"><b>Definition:</b> Vertex.cs:297</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_object_node_html_a4dab468c71ad7d19e8b34624ab3d9fdb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_object_node.html#a4dab468c71ad7d19e8b34624ab3d9fdb">BrawlLib.SSBB.ResourceNodes.MDL0ObjectNode._vertexNode</a></div><div class="ttdeci">MDL0VertexNode _vertexNode</div><div class="ttdef"><b>Definition:</b> MDL0ObjectNode.cs:216</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_vector3_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_vector3.html">BrawlLib.Internal.Vector3</a></div><div class="ttdef"><b>Definition:</b> Vector3.cs:40</div></div>
 </div><!-- fragment -->
@@ -948,8 +930,8 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  258</span>        {</div>
 <div class="line"><span class="lineno">  259</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a8f2feb2524521b586d0419ec288ac2ae">_weightedPosition</a> = <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a149717c42837c40ce5f3e2ff046b5768">GetMatrix</a>() * <a class="code hl_property" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae2e4f9c64e783d5821364a035fa95a98">Position</a>;</div>
 <div class="line"><span class="lineno">  260</span> </div>
-<div class="line"><span class="lineno">  261</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a86d12c385faaf426d7f08504acef34f3">_weights</a> = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  262</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#ae0ab587aeddc13bde6924339585ff575">_nodes</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  261</span>            _weights = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  262</span>            _nodes = <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  263</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -991,94 +973,6 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab52b653daf5a99659d90f85a59d6643a" name="ab52b653daf5a99659d90f85a59d6643a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab52b653daf5a99659d90f85a59d6643a">&#9670;&#160;</a></span>_baseWeight</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float BrawlLib.Modeling.Vertex3._baseWeight = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adb0ef42884db2989bf7fae01f3551564" name="adb0ef42884db2989bf7fae01f3551564"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb0ef42884db2989bf7fae01f3551564">&#9670;&#160;</a></span>_bCenter</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> BrawlLib.Modeling.Vertex3._bCenter = new <a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a981e26d8958b116d53e61c9cbbf5b947" name="a981e26d8958b116d53e61c9cbbf5b947"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a981e26d8958b116d53e61c9cbbf5b947">&#9670;&#160;</a></span>_matrixNode</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html">IMatrixNode</a> BrawlLib.Modeling.Vertex3._matrixNode</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae0ab587aeddc13bde6924339585ff575" name="ae0ab587aeddc13bde6924339585ff575"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0ab587aeddc13bde6924339585ff575">&#9670;&#160;</a></span>_nodes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_vertex_node.html">MDL0VertexNode</a> [] BrawlLib.Modeling.Vertex3._nodes</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a12cc27f594493ec46023531a0d4adc7d" name="a12cc27f594493ec46023531a0d4adc7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a12cc27f594493ec46023531a0d4adc7d">&#9670;&#160;</a></span>_position</h2>
 
@@ -1103,28 +997,6 @@ Properties</h2></td></tr>
           <td class="memname"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> BrawlLib.Modeling.Vertex3._weightedPosition</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a86d12c385faaf426d7f08504acef34f3" name="a86d12c385faaf426d7f08504acef34f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86d12c385faaf426d7f08504acef34f3">&#9670;&#160;</a></span>_weights</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float [] BrawlLib.Modeling.Vertex3._weights</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -1216,24 +1088,24 @@ Properties</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_i_matrix_node_user.html#adf5849776dbbf85fd048db03af6ca31c">BrawlLib.SSBB.ResourceNodes.IMatrixNodeUser</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  195</span>        {</div>
-<div class="line"><span class="lineno">  196</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a>;</div>
+<div class="line"><span class="lineno">  196</span>            <span class="keyword">get</span> =&gt; _matrixNode;</div>
 <div class="line"><span class="lineno">  197</span>            <span class="keyword">set</span></div>
 <div class="line"><span class="lineno">  198</span>            {</div>
-<div class="line"><span class="lineno">  199</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a> == value)</div>
+<div class="line"><span class="lineno">  199</span>                <span class="keywordflow">if</span> (_matrixNode == value)</div>
 <div class="line"><span class="lineno">  200</span>                {</div>
 <div class="line"><span class="lineno">  201</span>                    <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  202</span>                }</div>
 <div class="line"><span class="lineno">  203</span> </div>
 <div class="line"><span class="lineno">  204</span>                <a class="code hl_function" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a0ae66dc83dc3edbf8f9409d3698b0555">ChangeInfluence</a>(value);</div>
 <div class="line"><span class="lineno">  205</span> </div>
-<div class="line"><span class="lineno">  206</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a> != <span class="keyword">null</span> &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Contains(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  206</span>                <span class="keywordflow">if</span> (_matrixNode != <span class="keyword">null</span> &amp;&amp; _matrixNode.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Contains(<span class="keyword">this</span>))</div>
 <div class="line"><span class="lineno">  207</span>                {</div>
-<div class="line"><span class="lineno">  208</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Remove(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  208</span>                    _matrixNode.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Remove(<span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">  209</span>                }</div>
 <div class="line"><span class="lineno">  210</span> </div>
-<div class="line"><span class="lineno">  211</span>                <span class="keywordflow">if</span> ((<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a> = value) != <span class="keyword">null</span> &amp;&amp; !<a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Contains(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  211</span>                <span class="keywordflow">if</span> ((_matrixNode = value) != <span class="keyword">null</span> &amp;&amp; !_matrixNode.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Contains(<span class="keyword">this</span>))</div>
 <div class="line"><span class="lineno">  212</span>                {</div>
-<div class="line"><span class="lineno">  213</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_modeling_1_1_vertex3.html#a981e26d8958b116d53e61c9cbbf5b947">_matrixNode</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Add(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  213</span>                    _matrixNode.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_matrix_node.html#a71d896ab87e89555d79786a398b11bdc">Users</a>.Add(<span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">  214</span>                }</div>
 <div class="line"><span class="lineno">  215</span>            }</div>
 <div class="line"><span class="lineno">  216</span>        }</div>

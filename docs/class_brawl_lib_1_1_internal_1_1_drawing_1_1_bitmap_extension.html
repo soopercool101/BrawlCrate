@@ -235,25 +235,25 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  265</span>            {</div>
 <div class="line"><span class="lineno">  266</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.I4:</div>
 <div class="line"><span class="lineno">  267</span>                {</div>
-<div class="line"><span class="lineno">  268</span>                    clmp = p =&gt; { *p = ((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel.html">I4Pixel</a>) (*p))[0]; };</div>
+<div class="line"><span class="lineno">  268</span>                    clmp = p =&gt; { *p = ((I4Pixel) (*p))[0]; };</div>
 <div class="line"><span class="lineno">  269</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  270</span>                }</div>
 <div class="line"><span class="lineno">  271</span> </div>
 <div class="line"><span class="lineno">  272</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.I8:</div>
 <div class="line"><span class="lineno">  273</span>                {</div>
-<div class="line"><span class="lineno">  274</span>                    clmp = p =&gt; { *p = (<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>) (<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel.html">I8Pixel</a>) (*p); };</div>
+<div class="line"><span class="lineno">  274</span>                    clmp = p =&gt; { *p = (<a class="code hl_struct" href="struct_brawl_lib_1_1_imaging_1_1_a_r_g_b_pixel.html">ARGBPixel</a>) (I8Pixel) (*p); };</div>
 <div class="line"><span class="lineno">  275</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  276</span>                }</div>
 <div class="line"><span class="lineno">  277</span> </div>
 <div class="line"><span class="lineno">  278</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.IA4:</div>
 <div class="line"><span class="lineno">  279</span>                {</div>
-<div class="line"><span class="lineno">  280</span>                    clmp = p =&gt; { *p = (<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a4_pixel.html">IA4Pixel</a>) (*p); };</div>
+<div class="line"><span class="lineno">  280</span>                    clmp = p =&gt; { *p = (IA4Pixel) (*p); };</div>
 <div class="line"><span class="lineno">  281</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  282</span>                }</div>
 <div class="line"><span class="lineno">  283</span> </div>
 <div class="line"><span class="lineno">  284</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">WiiPixelFormat</a>.IA8:</div>
 <div class="line"><span class="lineno">  285</span>                {</div>
-<div class="line"><span class="lineno">  286</span>                    clmp = p =&gt; { *p = (<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">IA8Pixel</a>) (*p); };</div>
+<div class="line"><span class="lineno">  286</span>                    clmp = p =&gt; { *p = (IA8Pixel) (*p); };</div>
 <div class="line"><span class="lineno">  287</span>                    <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  288</span>                }</div>
 <div class="line"><span class="lineno">  289</span> </div>
@@ -285,10 +285,6 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  315</span>            bmp.UnlockBits(data);</div>
 <div class="line"><span class="lineno">  316</span>        }</div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_wii_1_1_textures_html_a31c9a00637753a146132a789b0ab5796"><div class="ttname"><a href="namespace_brawl_lib_1_1_wii_1_1_textures.html#a31c9a00637753a146132a789b0ab5796">BrawlLib.Wii.Textures.WiiPixelFormat</a></div><div class="ttdeci">WiiPixelFormat</div><div class="ttdef"><b>Definition:</b> Enum.cs:4</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i4_pixel.html">BrawlLib.Wii.Textures.I4Pixel</a></div><div class="ttdef"><b>Definition:</b> I4.cs:48</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i8_pixel.html">BrawlLib.Wii.Textures.I8Pixel</a></div><div class="ttdef"><b>Definition:</b> I8.cs:45</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a4_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a4_pixel.html">BrawlLib.Wii.Textures.IA4Pixel</a></div><div class="ttdef"><b>Definition:</b> IA4.cs:46</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1_i_a8_pixel.html">BrawlLib.Wii.Textures.IA8Pixel</a></div><div class="ttdef"><b>Definition:</b> IA8.cs:46</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b565_pixel.html">BrawlLib.Wii.Textures.wRGB565Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:100</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_textures_1_1w_r_g_b5_a3_pixel.html">BrawlLib.Wii.Textures.wRGB5A3Pixel</a></div><div class="ttdef"><b>Definition:</b> PixelTypes.cs:231</div></div>
 </div><!-- fragment -->
@@ -469,15 +465,12 @@ Static Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  319</span>        {</div>
 <div class="line"><span class="lineno">  320</span>            <span class="keywordtype">int</span> w = Math.Min(bmp.Width, dest.Width);</div>
 <div class="line"><span class="lineno">  321</span>            <span class="keywordtype">int</span> h = Math.Min(bmp.Height, dest.Height);</div>
-<div class="line"><span class="lineno">  322</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html">DIB</a> dib = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html">DIB</a>(w, h, dest.PixelFormat))</div>
+<div class="line"><span class="lineno">  322</span>            <span class="keyword">using</span> (DIB dib = <span class="keyword">new</span> DIB(w, h, dest.PixelFormat))</div>
 <div class="line"><span class="lineno">  323</span>            {</div>
-<div class="line"><span class="lineno">  324</span>                dib.<a class="code hl_function" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a966be78a7a45fb4794297d9ed5d326ea">ReadBitmap</a>(bmp, w, h);</div>
-<div class="line"><span class="lineno">  325</span>                dib.<a class="code hl_function" href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a9ee5eecf091f505bda64d037bf462133">WriteBitmap</a>(dest, w, h);</div>
+<div class="line"><span class="lineno">  324</span>                dib.ReadBitmap(bmp, w, h);</div>
+<div class="line"><span class="lineno">  325</span>                dib.WriteBitmap(dest, w, h);</div>
 <div class="line"><span class="lineno">  326</span>            }</div>
 <div class="line"><span class="lineno">  327</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html">BrawlLib.Imaging.DIB</a></div><div class="ttdef"><b>Definition:</b> DIB.cs:10</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a966be78a7a45fb4794297d9ed5d326ea"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a966be78a7a45fb4794297d9ed5d326ea">BrawlLib.Imaging.DIB.ReadBitmap</a></div><div class="ttdeci">void ReadBitmap(Bitmap src)</div><div class="ttdef"><b>Definition:</b> DIB.cs:133</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_d_i_b_html_a9ee5eecf091f505bda64d037bf462133"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_d_i_b.html#a9ee5eecf091f505bda64d037bf462133">BrawlLib.Imaging.DIB.WriteBitmap</a></div><div class="ttdeci">void WriteBitmap(Bitmap dst, int width, int height)</div><div class="ttdef"><b>Definition:</b> DIB.cs:160</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1111,9 +1104,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  145</span>        {</div>
-<div class="line"><span class="lineno">  146</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">MedianCut</a>.Quantize(bmp, numColors, texFormat, palFormat, progress);</div>
+<div class="line"><span class="lineno">  146</span>            <span class="keywordflow">return</span> MedianCut.Quantize(bmp, numColors, texFormat, palFormat, progress);</div>
 <div class="line"><span class="lineno">  147</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_imaging_1_1_median_cut_html"><div class="ttname"><a href="class_brawl_lib_1_1_imaging_1_1_median_cut.html">BrawlLib.Imaging.MedianCut</a></div><div class="ttdef"><b>Definition:</b> MedianCut.cs:18</div></div>
 </div><!-- fragment -->
 </div>
 </div>

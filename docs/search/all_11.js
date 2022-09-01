@@ -1,7 +1,7 @@
 var searchData=
 [
   ['quantizationalgorithm_0',['QuantizationAlgorithm',['../namespace_brawl_lib_1_1_internal_1_1_drawing.html#a859efba01f19b13631ad10e9dceb5193',1,'BrawlLib::Internal::Drawing']]],
-  ['quantize_1',['Quantize',['../class_brawl_lib_1_1_imaging_1_1_median_cut.html#a4057e56e58a76d1f0f4c02e2e2187f57',1,'BrawlLib.Imaging.MedianCut.Quantize()'],['../class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a0ed0b281218fc41aada0f8bdceee6d21',1,'BrawlLib.Internal.Drawing.BitmapExtension.Quantize()']]],
+  ['quantize_1',['Quantize',['../class_brawl_lib_1_1_internal_1_1_drawing_1_1_bitmap_extension.html#a0ed0b281218fc41aada0f8bdceee6d21',1,'BrawlLib::Internal::Drawing::BitmapExtension']]],
   ['quanttable_2',['QuantTable',['../class_brawl_lib_1_1_internal_1_1_v_quant.html#a6179c99ad5f1de85e24fa0dd77da03f4',1,'BrawlLib::Internal::VQuant']]],
   ['quaternion_3',['Quaternion',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1cm_q_s_transform_node.html#a2c769ec398f2f58fda2ed3e6395c1c77',1,'BrawlLib::SSBB::ResourceNodes::cmQSTransformNode']]],
   ['quaternionstringconverter_4',['QuaternionStringConverter',['../class_brawl_lib_1_1_internal_1_1_quaternion_string_converter.html',1,'BrawlLib::Internal']]],

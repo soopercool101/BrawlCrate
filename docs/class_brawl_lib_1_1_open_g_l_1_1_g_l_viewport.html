@@ -79,8 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
 <a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport-members.html">List of all members</a>  </div>
@@ -177,18 +175,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a2bd9a786fce9a90a13327533cc3a5e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e4f8eaaae57d534819fca7f089a4b6a"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6e4f8eaaae57d534819fca7f089a4b6a">_backColor</a> = Color.FromKnownColor(KnownColor.Control)</td></tr>
 <tr class="separator:a6e4f8eaaae57d534819fca7f089a4b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a5b5a73e73243cc8a8801d0987c248de7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a5b5a73e73243cc8a8801d0987c248de7">SetPercentageIndex</a> (int p, float v, bool resize=true)</td></tr>
-<tr class="separator:a5b5a73e73243cc8a8801d0987c248de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a852ba26f76ce05025076e54dade78575"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html">GLPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a852ba26f76ce05025076e54dade78575">_owner</a></td></tr>
-<tr class="separator:a852ba26f76ce05025076e54dade78575"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6741d0db4176756e4c8a766d16e9311c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6741d0db4176756e4c8a766d16e9311c">_type</a></td></tr>
-<tr class="separator:a6741d0db4176756e4c8a766d16e9311c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -593,13 +579,12 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  183</span>        {</div>
-<div class="line"><span class="lineno">  184</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a852ba26f76ce05025076e54dade78575">_owner</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  184</span>            <span class="keywordflow">if</span> (_owner != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  185</span>            {</div>
-<div class="line"><span class="lineno">  186</span>                <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a20285b45023ca33e6a3e3abdd20b2b0e">Resize</a>(<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a852ba26f76ce05025076e54dade78575">_owner</a>.Width, <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a852ba26f76ce05025076e54dade78575">_owner</a>.Height);</div>
+<div class="line"><span class="lineno">  186</span>                <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a20285b45023ca33e6a3e3abdd20b2b0e">Resize</a>(_owner.Width, _owner.Height);</div>
 <div class="line"><span class="lineno">  187</span>            }</div>
 <div class="line"><span class="lineno">  188</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_viewport_html_a20285b45023ca33e6a3e3abdd20b2b0e"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a20285b45023ca33e6a3e3abdd20b2b0e">BrawlLib.OpenGL.GLViewport.Resize</a></div><div class="ttdeci">void Resize()</div><div class="ttdef"><b>Definition:</b> GLViewport.cs:182</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_viewport_html_a852ba26f76ce05025076e54dade78575"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a852ba26f76ce05025076e54dade78575">BrawlLib.OpenGL.GLViewport._owner</a></div><div class="ttdeci">GLPanel _owner</div><div class="ttdef"><b>Definition:</b> GLViewport.cs:11</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -648,56 +633,6 @@ Events</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_camera_html_a8bf7717faefff260508cee93e78f80ad"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_camera.html#a8bf7717faefff260508cee93e78f80ad">BrawlLib.OpenGL.GLCamera.SetDimensions</a></div><div class="ttdeci">void SetDimensions(float width, float height)</div><div class="ttdef"><b>Definition:</b> GLCamera.cs:288</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_viewport_html_a64fa683b598a2de9d495c16c69006f4d"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a64fa683b598a2de9d495c16c69006f4d">BrawlLib.OpenGL.GLViewport._percentages</a></div><div class="ttdeci">Vector4 _percentages</div><div class="ttdef"><b>Definition:</b> GLViewport.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_viewport_html_ac9663b6c15944257f7cd49070d7485e8"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ac9663b6c15944257f7cd49070d7485e8">BrawlLib.OpenGL.GLViewport._region</a></div><div class="ttdeci">Rectangle _region</div><div class="ttdef"><b>Definition:</b> GLViewport.cs:17</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a5b5a73e73243cc8a8801d0987c248de7" name="a5b5a73e73243cc8a8801d0987c248de7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b5a73e73243cc8a8801d0987c248de7">&#9670;&#160;</a></span>SetPercentageIndex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.OpenGL.GLViewport.SetPercentageIndex </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>v</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>resize</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  111</span>        {</div>
-<div class="line"><span class="lineno">  112</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a64fa683b598a2de9d495c16c69006f4d">_percentages</a>[p.Clamp(0, 3)] = v.Clamp(0.0f, 1.0f);</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>            <span class="keywordflow">if</span> (resize)</div>
-<div class="line"><span class="lineno">  115</span>            {</div>
-<div class="line"><span class="lineno">  116</span>                <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a20285b45023ca33e6a3e3abdd20b2b0e">Resize</a>();</div>
-<div class="line"><span class="lineno">  117</span>            }</div>
-<div class="line"><span class="lineno">  118</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -823,12 +758,12 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  207</span>        {</div>
-<div class="line"><span class="lineno">  208</span>            <span class="keywordtype">bool</span> diff = type == ViewportProjection.Orthographic &amp;&amp; <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6741d0db4176756e4c8a766d16e9311c">_type</a> != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Perspective;</div>
+<div class="line"><span class="lineno">  208</span>            <span class="keywordtype">bool</span> diff = type == ViewportProjection.Orthographic &amp;&amp; _type != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Perspective;</div>
 <div class="line"><span class="lineno">  209</span> </div>
-<div class="line"><span class="lineno">  210</span>            Camera.Orthographic = (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6741d0db4176756e4c8a766d16e9311c">_type</a> = type) != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Perspective;</div>
+<div class="line"><span class="lineno">  210</span>            Camera.Orthographic = (_type = type) != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Perspective;</div>
 <div class="line"><span class="lineno">  211</span>            <a class="code hl_property" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a1d00195161448b63bd35e0ce639bb4c5">Camera</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_camera.html#ac1af8679917cba8d453f293d15d0fff9">_defaultTranslate</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>();</div>
 <div class="line"><span class="lineno">  212</span> </div>
-<div class="line"><span class="lineno">  213</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6741d0db4176756e4c8a766d16e9311c">_type</a> == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Perspective)</div>
+<div class="line"><span class="lineno">  213</span>            <span class="keywordflow">if</span> (_type == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Perspective)</div>
 <div class="line"><span class="lineno">  214</span>            {</div>
 <div class="line"><span class="lineno">  215</span>                Camera._nearZ = 1;</div>
 <div class="line"><span class="lineno">  216</span>                Camera._farZ = 200000;</div>
@@ -844,7 +779,7 @@ Events</h2></td></tr>
 <div class="line"><span class="lineno">  226</span>                Camera._farZ = 100000;</div>
 <div class="line"><span class="lineno">  227</span>                Camera._ortho = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  228</span>                Camera._restrictXRot =</div>
-<div class="line"><span class="lineno">  229</span>                    Camera._restrictYRot = <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6741d0db4176756e4c8a766d16e9311c">_type</a> != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Orthographic;</div>
+<div class="line"><span class="lineno">  229</span>                    Camera._restrictYRot = _type != <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a>.Orthographic;</div>
 <div class="line"><span class="lineno">  230</span>                Camera._defaultScale = <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6d1c80ee5ee363453071a9b24384a1e9">GetDefaultScale</a>();</div>
 <div class="line"><span class="lineno">  231</span>                Camera._defaultRotate = <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a12f0a4c9e4f0ab7e3372b9b6b3f4bf24">GetDefaultRotate</a>();</div>
 <div class="line"><span class="lineno">  232</span>            }</div>
@@ -860,7 +795,6 @@ Events</h2></td></tr>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_camera_html_a19b872ad0f36b08764c50f12e99e05c3"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_camera.html#a19b872ad0f36b08764c50f12e99e05c3">BrawlLib.OpenGL.GLCamera.CalculateProjection</a></div><div class="ttdeci">void CalculateProjection()</div><div class="ttdef"><b>Definition:</b> GLCamera.cs:272</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_camera_html_ac1af8679917cba8d453f293d15d0fff9"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_camera.html#ac1af8679917cba8d453f293d15d0fff9">BrawlLib.OpenGL.GLCamera._defaultTranslate</a></div><div class="ttdeci">Vector3 _defaultTranslate</div><div class="ttdef"><b>Definition:</b> GLCamera.cs:29</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_viewport_html_a33410d78953dc917f108cd02a4aaf34f"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a33410d78953dc917f108cd02a4aaf34f">BrawlLib.OpenGL.GLViewport.Invalidate</a></div><div class="ttdeci">void Invalidate()</div><div class="ttdef"><b>Definition:</b> GLViewport.cs:177</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_viewport_html_a6741d0db4176756e4c8a766d16e9311c"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6741d0db4176756e4c8a766d16e9311c">BrawlLib.OpenGL.GLViewport._type</a></div><div class="ttdeci">ViewportProjection _type</div><div class="ttdef"><b>Definition:</b> GLViewport.cs:16</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1273,28 +1207,6 @@ Events</h2></td></tr>
 
 </div>
 </div>
-<a id="a852ba26f76ce05025076e54dade78575" name="a852ba26f76ce05025076e54dade78575"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a852ba26f76ce05025076e54dade78575">&#9670;&#160;</a></span>_owner</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_panel.html">GLPanel</a> BrawlLib.OpenGL.GLViewport._owner</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a64fa683b598a2de9d495c16c69006f4d" name="a64fa683b598a2de9d495c16c69006f4d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a64fa683b598a2de9d495c16c69006f4d">&#9670;&#160;</a></span>_percentages</h2>
 
@@ -1349,28 +1261,6 @@ Events</h2></td></tr>
           <td class="memname">bool BrawlLib.OpenGL.GLViewport._scrolling = false</td>
         </tr>
       </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6741d0db4176756e4c8a766d16e9311c" name="a6741d0db4176756e4c8a766d16e9311c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6741d0db4176756e4c8a766d16e9311c">&#9670;&#160;</a></span>_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespace_brawl_lib_1_1_open_g_l.html#af217d152351b608b3a21fd7a2f943e4b">ViewportProjection</a> BrawlLib.OpenGL.GLViewport._type</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -1900,7 +1790,7 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   36</span>        {</div>
-<div class="line"><span class="lineno">   37</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#a6741d0db4176756e4c8a766d16e9311c">_type</a>;</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keyword">get</span> =&gt; _type;</div>
 <div class="line"><span class="lineno">   38</span>            <span class="keyword">set</span> =&gt; <a class="code hl_function" href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad907a2ec26a958a2b363a3349c678301">SetProjectionType</a>(value);</div>
 <div class="line"><span class="lineno">   39</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_g_l_viewport_html_ad907a2ec26a958a2b363a3349c678301"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#ad907a2ec26a958a2b363a3349c678301">BrawlLib.OpenGL.GLViewport.SetProjectionType</a></div><div class="ttdeci">void SetProjectionType(ViewportProjection type)</div><div class="ttdef"><b>Definition:</b> GLViewport.cs:206</div></div>

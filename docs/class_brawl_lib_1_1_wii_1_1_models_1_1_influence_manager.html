@@ -77,7 +77,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Models.InfluenceManager Class Reference</div></div>
@@ -99,11 +98,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a60a474cb598850070e82122c5f7f5120"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d27f5e3715fcf74d591c8c039d91c02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a5d27f5e3715fcf74d591c8c039d91c02">Sort</a> ()</td></tr>
 <tr class="separator:a5d27f5e3715fcf74d591c8c039d91c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a1c3a416a4fc8b78cfc38d228e8a9baa4"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a> = new List&lt;<a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a>&gt;()</td></tr>
-<tr class="separator:a1c3a416a4fc8b78cfc38d228e8a9baa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -141,9 +135,9 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   74</span>            <span class="keywordtype">int</span> i = 0;</div>
 <div class="line"><span class="lineno">   75</span>            <span class="keywordflow">while</span> (i &lt; <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#ae8c51c9d9a37ac343ba7431c84513c0b">Count</a>)</div>
 <div class="line"><span class="lineno">   76</span>            {</div>
-<div class="line"><span class="lineno">   77</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>[i].Users.Count &lt;= 0)</div>
+<div class="line"><span class="lineno">   77</span>                <span class="keywordflow">if</span> (_influences[i].Users.Count &lt;= 0)</div>
 <div class="line"><span class="lineno">   78</span>                {</div>
-<div class="line"><span class="lineno">   79</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>.RemoveAt(i);</div>
+<div class="line"><span class="lineno">   79</span>                    _influences.RemoveAt(i);</div>
 <div class="line"><span class="lineno">   80</span>                }</div>
 <div class="line"><span class="lineno">   81</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   82</span>                {</div>
@@ -151,7 +145,6 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   84</span>                }</div>
 <div class="line"><span class="lineno">   85</span>            }</div>
 <div class="line"><span class="lineno">   86</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager_html_a1c3a416a4fc8b78cfc38d228e8a9baa4"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">BrawlLib.Wii.Models.InfluenceManager._influences</a></div><div class="ttdeci">List&lt; Influence &gt; _influences</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:17</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager_html_ae8c51c9d9a37ac343ba7431c84513c0b"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#ae8c51c9d9a37ac343ba7431c84513c0b">BrawlLib.Wii.Models.InfluenceManager.Count</a></div><div class="ttdeci">int Count</div><div class="ttdef"><b>Definition:</b> InfluenceManager.cs:37</div></div>
 </div><!-- fragment -->
 </div>
@@ -181,7 +174,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   21</span>        {</div>
 <div class="line"><span class="lineno">   22</span>            <span class="comment">//Search for influence in list. If it exists, return it.</span></div>
-<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">foreach</span> (Influence i <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>)</div>
+<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">foreach</span> (Influence i <span class="keywordflow">in</span> _influences)</div>
 <div class="line"><span class="lineno">   24</span>            {</div>
 <div class="line"><span class="lineno">   25</span>                <span class="keywordflow">if</span> (i.Equals(inf))</div>
 <div class="line"><span class="lineno">   26</span>                {</div>
@@ -190,7 +183,7 @@ Properties</h2></td></tr>
 <div class="line"><span class="lineno">   29</span>            }</div>
 <div class="line"><span class="lineno">   30</span> </div>
 <div class="line"><span class="lineno">   31</span>            <span class="comment">//Not found, add it to the list.</span></div>
-<div class="line"><span class="lineno">   32</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>.Add(inf);</div>
+<div class="line"><span class="lineno">   32</span>            _influences.Add(inf);</div>
 <div class="line"><span class="lineno">   33</span> </div>
 <div class="line"><span class="lineno">   34</span>            <span class="keywordflow">return</span> inf;</div>
 <div class="line"><span class="lineno">   35</span>        }</div>
@@ -220,8 +213,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   58</span>        {</div>
-<div class="line"><span class="lineno">   59</span>            List&lt;Influence&gt; list = <span class="keyword">new</span> List&lt;Influence&gt;(<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>.Count);</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keywordflow">foreach</span> (Influence i <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>)</div>
+<div class="line"><span class="lineno">   59</span>            List&lt;Influence&gt; list = <span class="keyword">new</span> List&lt;Influence&gt;(_influences.Count);</div>
+<div class="line"><span class="lineno">   60</span>            <span class="keywordflow">foreach</span> (Influence i <span class="keywordflow">in</span> _influences)</div>
 <div class="line"><span class="lineno">   61</span>            {</div>
 <div class="line"><span class="lineno">   62</span>                <span class="keywordflow">if</span> (i.IsWeighted)</div>
 <div class="line"><span class="lineno">   63</span>                {</div>
@@ -270,12 +263,12 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   40</span>        {</div>
 <div class="line"><span class="lineno">   41</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#ae8c51c9d9a37ac343ba7431c84513c0b">Count</a>; i++)</div>
 <div class="line"><span class="lineno">   42</span>            {</div>
-<div class="line"><span class="lineno">   43</span>                <span class="keywordflow">if</span> (ReferenceEquals(<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>[i], inf) &amp;&amp; inf.Users.Contains(user))</div>
+<div class="line"><span class="lineno">   43</span>                <span class="keywordflow">if</span> (ReferenceEquals(_influences[i], inf) &amp;&amp; inf.Users.Contains(user))</div>
 <div class="line"><span class="lineno">   44</span>                {</div>
 <div class="line"><span class="lineno">   45</span>                    inf.Users.Remove(user);</div>
 <div class="line"><span class="lineno">   46</span>                    <span class="keywordflow">if</span> (inf.Users.Count &lt;= 0)</div>
 <div class="line"><span class="lineno">   47</span>                    {</div>
-<div class="line"><span class="lineno">   48</span>                        <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>.RemoveAt(i);</div>
+<div class="line"><span class="lineno">   48</span>                        _influences.RemoveAt(i);</div>
 <div class="line"><span class="lineno">   49</span>                    }</div>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>                    <span class="keywordflow">break</span>;</div>
@@ -308,32 +301,9 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   90</span>        {</div>
-<div class="line"><span class="lineno">   91</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence_manager.html#a1c3a416a4fc8b78cfc38d228e8a9baa4">_influences</a>.Sort(Influence.Compare);</div>
+<div class="line"><span class="lineno">   91</span>            _influences.Sort(Influence.Compare);</div>
 <div class="line"><span class="lineno">   92</span>        }</div>
 </div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1c3a416a4fc8b78cfc38d228e8a9baa4" name="a1c3a416a4fc8b78cfc38d228e8a9baa4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c3a416a4fc8b78cfc38d228e8a9baa4">&#9670;&#160;</a></span>_influences</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;<a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a>&gt; BrawlLib.Wii.Models.InfluenceManager._influences = new List&lt;<a class="el" href="class_brawl_lib_1_1_wii_1_1_models_1_1_influence.html">Influence</a>&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

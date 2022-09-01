@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="struct_brawl_lib_1_1_internal_1_1_matrix-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Internal.Matrix Struct Reference</div></div>
@@ -246,17 +245,6 @@ Static Public Member Functions</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a8bd9d798743493583f030ab636c5cfe1"><td class="memItemLeft" align="right" valign="top">static readonly <a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8bd9d798743493583f030ab636c5cfe1">Identity</a> = <a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">ScaleMatrix</a>(1.0f, 1.0f, 1.0f)</td></tr>
 <tr class="separator:a8bd9d798743493583f030ab636c5cfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a8159f3abffbfb6d32feae184dbe0d62b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8159f3abffbfb6d32feae184dbe0d62b">Scale</a> (<a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> v)</td></tr>
-<tr class="separator:a8159f3abffbfb6d32feae184dbe0d62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48b45403f7c913c0c899b69c3c608fb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a48b45403f7c913c0c899b69c3c608fb3">Scale</a> (float x, float y, float z)</td></tr>
-<tr class="separator:a48b45403f7c913c0c899b69c3c608fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b603f62290f3ade152ba56b03335852"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8b603f62290f3ade152ba56b03335852">Rotate</a> (<a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a> v)</td></tr>
-<tr class="separator:a8b603f62290f3ade152ba56b03335852"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7be7286512e0920a01b4fefba53bdea2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a7be7286512e0920a01b4fefba53bdea2">Rotate</a> (float x, float y, float z)</td></tr>
-<tr class="separator:a7be7286512e0920a01b4fefba53bdea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -3184,84 +3172,6 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a7be7286512e0920a01b4fefba53bdea2" name="a7be7286512e0920a01b4fefba53bdea2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7be7286512e0920a01b4fefba53bdea2">&#9670;&#160;</a></span>Rotate() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Matrix.Rotate </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1048</span>        {</div>
-<div class="line"><span class="lineno"> 1049</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">RotationMatrix</a>(x, y, z);</div>
-<div class="line"><span class="lineno"> 1050</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acc809f16e7d86526d2251a277fa1ce56">Multiply</a>(m);</div>
-<div class="line"><span class="lineno"> 1051</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a61702fcc9e5f56b90846a0761c6e2ee5"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">BrawlLib.Internal.Matrix.RotationMatrix</a></div><div class="ttdeci">static Matrix RotationMatrix(Vector3 angles)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:465</div></div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_acc809f16e7d86526d2251a277fa1ce56"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acc809f16e7d86526d2251a277fa1ce56">BrawlLib.Internal.Matrix.Multiply</a></div><div class="ttdeci">Vector3 Multiply(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:541</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a8b603f62290f3ade152ba56b03335852" name="a8b603f62290f3ade152ba56b03335852"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b603f62290f3ade152ba56b03335852">&#9670;&#160;</a></span>Rotate() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Matrix.Rotate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1043</span>        {</div>
-<div class="line"><span class="lineno"> 1044</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8b603f62290f3ade152ba56b03335852">Rotate</a>(v._x, v._y, v._z);</div>
-<div class="line"><span class="lineno"> 1045</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8b603f62290f3ade152ba56b03335852"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8b603f62290f3ade152ba56b03335852">BrawlLib.Internal.Matrix.Rotate</a></div><div class="ttdeci">void Rotate(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1042</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ac6780e70c9c429f6556a70b7fa6abdd6" name="ac6780e70c9c429f6556a70b7fa6abdd6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6780e70c9c429f6556a70b7fa6abdd6">&#9670;&#160;</a></span>RotateX()</h2>
 
@@ -3626,83 +3536,7 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  466</span>        {</div>
 <div class="line"><span class="lineno">  467</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">RotationMatrix</a>(angles._x, angles._y, angles._z);</div>
 <div class="line"><span class="lineno">  468</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a48b45403f7c913c0c899b69c3c608fb3" name="a48b45403f7c913c0c899b69c3c608fb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48b45403f7c913c0c899b69c3c608fb3">&#9670;&#160;</a></span>Scale() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Matrix.Scale </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1037</span>        {</div>
-<div class="line"><span class="lineno"> 1038</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ab0b09f6b4e966c85aa146fe0b7042cef">Matrix</a> m = <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">ScaleMatrix</a>(x, y, z);</div>
-<div class="line"><span class="lineno"> 1039</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#acc809f16e7d86526d2251a277fa1ce56">Multiply</a>(m);</div>
-<div class="line"><span class="lineno"> 1040</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_ad47698246e93b51c683829ba7d0d3ab1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">BrawlLib.Internal.Matrix.ScaleMatrix</a></div><div class="ttdeci">static Matrix ScaleMatrix(Vector3 scale)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:337</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a8159f3abffbfb6d32feae184dbe0d62b" name="a8159f3abffbfb6d32feae184dbe0d62b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8159f3abffbfb6d32feae184dbe0d62b">&#9670;&#160;</a></span>Scale() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Internal.Matrix.Scale </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_brawl_lib_1_1_internal_1_1_vector3.html">Vector3</a>&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno"> 1032</span>        {</div>
-<div class="line"><span class="lineno"> 1033</span>            <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8159f3abffbfb6d32feae184dbe0d62b">Scale</a>(v._x, v._y, v._z);</div>
-<div class="line"><span class="lineno"> 1034</span>        }</div>
-<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a8159f3abffbfb6d32feae184dbe0d62b"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a8159f3abffbfb6d32feae184dbe0d62b">BrawlLib.Internal.Matrix.Scale</a></div><div class="ttdeci">void Scale(Vector3 v)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:1031</div></div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_a61702fcc9e5f56b90846a0761c6e2ee5"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#a61702fcc9e5f56b90846a0761c6e2ee5">BrawlLib.Internal.Matrix.RotationMatrix</a></div><div class="ttdeci">static Matrix RotationMatrix(Vector3 angles)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:465</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3783,6 +3617,7 @@ Properties</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  338</span>        {</div>
 <div class="line"><span class="lineno">  339</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">ScaleMatrix</a>(scale._x, scale._y, scale._z);</div>
 <div class="line"><span class="lineno">  340</span>        }</div>
+<div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_matrix_html_ad47698246e93b51c683829ba7d0d3ab1"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_matrix.html#ad47698246e93b51c683829ba7d0d3ab1">BrawlLib.Internal.Matrix.ScaleMatrix</a></div><div class="ttdeci">static Matrix ScaleMatrix(Vector3 scale)</div><div class="ttdef"><b>Definition:</b> Matrix.cs:337</div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -79,7 +79,6 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pac-methods">Package Functions</a> &#124;
 <a href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BrawlLib.Wii.Audio.RSAREntryList Class Reference</div></div>
 </div><!--header-->
@@ -115,11 +114,6 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae6ab398e654988d765cf6be3c3192649"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a366f0afb68dfbfd9eeb1e2d12655e649"><td class="memItemLeft" align="right" valign="top">BindingList&lt; <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_file_node.html">RSARFileNode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a366f0afb68dfbfd9eeb1e2d12655e649">_files</a></td></tr>
 <tr class="separator:a366f0afb68dfbfd9eeb1e2d12655e649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-methods" name="pac-methods"></a>
-Package Functions</h2></td></tr>
-<tr class="memitem:a6adc87c6fc8dde2dd2ae14858085ed45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a6adc87c6fc8dde2dd2ae14858085ed45">SortStrings</a> ()</td></tr>
-<tr class="separator:a6adc87c6fc8dde2dd2ae14858085ed45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab49003d4df0d6a34adde9596a88317bf" name="ab49003d4df0d6a34adde9596a88317bf"></a>
@@ -289,101 +283,6 @@ Package Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  544</span>        {</div>
 <div class="line"><span class="lineno">  545</span>            <span class="keywordflow">return</span> n2._infoIndex &lt; n1._infoIndex ? 1 : n2._infoIndex &gt; n1._infoIndex ? -1 : 0;</div>
 <div class="line"><span class="lineno">  546</span>        }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6adc87c6fc8dde2dd2ae14858085ed45" name="a6adc87c6fc8dde2dd2ae14858085ed45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6adc87c6fc8dde2dd2ae14858085ed45">&#9670;&#160;</a></span>SortStrings()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BrawlLib.Wii.Audio.RSAREntryList.SortStrings </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  475</span>        {</div>
-<div class="line"><span class="lineno">  476</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a1dab66ede5925eb3f154965ca4c3655b">_stringLength</a> = 0;</div>
-<div class="line"><span class="lineno">  477</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a5f67fb6a66851ae5e56a95a17babc71d">_strings</a> = <span class="keyword">new</span> List&lt;string&gt;();</div>
-<div class="line"><span class="lineno">  478</span> </div>
-<div class="line"><span class="lineno">  479</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 4; ++i)</div>
-<div class="line"><span class="lineno">  480</span>            {</div>
-<div class="line"><span class="lineno">  481</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a5f67fb6a66851ae5e56a95a17babc71d">_strings</a>.AddRange(<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a0e7268bcbb369591035cde51f5e61b01">_tempStrings</a></div>
-<div class="line"><span class="lineno">  482</span>                    .Where(x =&gt; x._type == i)</div>
-<div class="line"><span class="lineno">  483</span>                    .OrderBy(x =&gt; x._index)</div>
-<div class="line"><span class="lineno">  484</span>                    .Select(x =&gt; x._name</div>
-<div class="line"><span class="lineno">  485</span>                        .ToString()));</div>
-<div class="line"><span class="lineno">  486</span>            }</div>
-<div class="line"><span class="lineno">  487</span> </div>
-<div class="line"><span class="lineno">  488</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a5f67fb6a66851ae5e56a95a17babc71d">_strings</a>)</div>
-<div class="line"><span class="lineno">  489</span>            {</div>
-<div class="line"><span class="lineno">  490</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a1dab66ede5925eb3f154965ca4c3655b">_stringLength</a> += s.Length + 1;</div>
-<div class="line"><span class="lineno">  491</span>            }</div>
-<div class="line"><span class="lineno">  492</span> </div>
-<div class="line"><span class="lineno">  493</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a3524f9532a68823001b883343cd30225">_sounds</a>)</div>
-<div class="line"><span class="lineno">  494</span>            {</div>
-<div class="line"><span class="lineno">  495</span>                s._rebuildStringId = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a5f67fb6a66851ae5e56a95a17babc71d">_strings</a>.IndexOf(s.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html#a0784480589e2c198eaacf1bee90b1f1d">_fullPath</a>);</div>
-<div class="line"><span class="lineno">  496</span>            }</div>
-<div class="line"><span class="lineno">  497</span> </div>
-<div class="line"><span class="lineno">  498</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a8a3f949958ef98931fb6932127ccf63b">_playerInfo</a>)</div>
-<div class="line"><span class="lineno">  499</span>            {</div>
-<div class="line"><span class="lineno">  500</span>                s._rebuildStringId = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a5f67fb6a66851ae5e56a95a17babc71d">_strings</a>.IndexOf(s.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html#a0784480589e2c198eaacf1bee90b1f1d">_fullPath</a>);</div>
-<div class="line"><span class="lineno">  501</span>            }</div>
-<div class="line"><span class="lineno">  502</span> </div>
-<div class="line"><span class="lineno">  503</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#af94325671c09a13bcd65b7628d1d29e0">_groups</a>)</div>
-<div class="line"><span class="lineno">  504</span>            {</div>
-<div class="line"><span class="lineno">  505</span>                s._rebuildStringId = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a5f67fb6a66851ae5e56a95a17babc71d">_strings</a>.IndexOf(s.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html#a0784480589e2c198eaacf1bee90b1f1d">_fullPath</a>);</div>
-<div class="line"><span class="lineno">  506</span>            }</div>
-<div class="line"><span class="lineno">  507</span> </div>
-<div class="line"><span class="lineno">  508</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ae6ab398e654988d765cf6be3c3192649">_banks</a>)</div>
-<div class="line"><span class="lineno">  509</span>            {</div>
-<div class="line"><span class="lineno">  510</span>                s._rebuildStringId = <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a5f67fb6a66851ae5e56a95a17babc71d">_strings</a>.IndexOf(s.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html#a0784480589e2c198eaacf1bee90b1f1d">_fullPath</a>);</div>
-<div class="line"><span class="lineno">  511</span>            }</div>
-<div class="line"><span class="lineno">  512</span> </div>
-<div class="line"><span class="lineno">  513</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a3524f9532a68823001b883343cd30225">_sounds</a>.Sort(<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ad0e59e19dedcc878af4b1c5fd527059f">Compare</a>);</div>
-<div class="line"><span class="lineno">  514</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a8a3f949958ef98931fb6932127ccf63b">_playerInfo</a>.Sort(<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ad0e59e19dedcc878af4b1c5fd527059f">Compare</a>);</div>
-<div class="line"><span class="lineno">  515</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#af94325671c09a13bcd65b7628d1d29e0">_groups</a>.Sort(<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ad0e59e19dedcc878af4b1c5fd527059f">Compare</a>);</div>
-<div class="line"><span class="lineno">  516</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ae6ab398e654988d765cf6be3c3192649">_banks</a>.Sort(<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ad0e59e19dedcc878af4b1c5fd527059f">Compare</a>);</div>
-<div class="line"><span class="lineno">  517</span> </div>
-<div class="line"><span class="lineno">  518</span>            <span class="keywordtype">int</span> m = 0;</div>
-<div class="line"><span class="lineno">  519</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> r <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a3524f9532a68823001b883343cd30225">_sounds</a>)</div>
-<div class="line"><span class="lineno">  520</span>            {</div>
-<div class="line"><span class="lineno">  521</span>                r._rebuildIndex = m++;</div>
-<div class="line"><span class="lineno">  522</span>            }</div>
-<div class="line"><span class="lineno">  523</span> </div>
-<div class="line"><span class="lineno">  524</span>            m = 0;</div>
-<div class="line"><span class="lineno">  525</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> r <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#a8a3f949958ef98931fb6932127ccf63b">_playerInfo</a>)</div>
-<div class="line"><span class="lineno">  526</span>            {</div>
-<div class="line"><span class="lineno">  527</span>                r._rebuildIndex = m++;</div>
-<div class="line"><span class="lineno">  528</span>            }</div>
-<div class="line"><span class="lineno">  529</span> </div>
-<div class="line"><span class="lineno">  530</span>            m = 0;</div>
-<div class="line"><span class="lineno">  531</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> r <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#af94325671c09a13bcd65b7628d1d29e0">_groups</a>)</div>
-<div class="line"><span class="lineno">  532</span>            {</div>
-<div class="line"><span class="lineno">  533</span>                r._rebuildIndex = m++;</div>
-<div class="line"><span class="lineno">  534</span>            }</div>
-<div class="line"><span class="lineno">  535</span> </div>
-<div class="line"><span class="lineno">  536</span>            m = 0;</div>
-<div class="line"><span class="lineno">  537</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">RSAREntryNode</a> r <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ae6ab398e654988d765cf6be3c3192649">_banks</a>)</div>
-<div class="line"><span class="lineno">  538</span>            {</div>
-<div class="line"><span class="lineno">  539</span>                r._rebuildIndex = m++;</div>
-<div class="line"><span class="lineno">  540</span>            }</div>
-<div class="line"><span class="lineno">  541</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html">BrawlLib.SSBB.ResourceNodes.RSAREntryNode</a></div><div class="ttdef"><b>Definition:</b> RSAREntryNode.cs:9</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node_html_a0784480589e2c198eaacf1bee90b1f1d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_a_r_entry_node.html#a0784480589e2c198eaacf1bee90b1f1d">BrawlLib.SSBB.ResourceNodes.RSAREntryNode._fullPath</a></div><div class="ttdeci">string _fullPath</div><div class="ttdef"><b>Definition:</b> RSAREntryNode.cs:148</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list_html_ad0e59e19dedcc878af4b1c5fd527059f"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_audio_1_1_r_s_a_r_entry_list.html#ad0e59e19dedcc878af4b1c5fd527059f">BrawlLib.Wii.Audio.RSAREntryList.Compare</a></div><div class="ttdeci">static int Compare(RSAREntryNode n1, RSAREntryNode n2)</div><div class="ttdef"><b>Definition:</b> RSARConverter.cs:543</div></div>
 </div><!-- fragment -->
 </div>
 </div>

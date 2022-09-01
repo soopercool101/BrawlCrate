@@ -80,7 +80,6 @@ $(function() {
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#events">Events</a> &#124;
 <a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context-members.html">List of all members</a>  </div>
@@ -181,11 +180,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:afd1060d1108fa08f927c35eb57fbb54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cb51445a5c33e9fa8d17cb5310917bb"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a5cb51445a5c33e9fa8d17cb5310917bb">_anyContextInitialized</a></td></tr>
 <tr class="separator:a5cb51445a5c33e9fa8d17cb5310917bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pac-attribs" name="pac-attribs"></a>
-Package Attributes</h2></td></tr>
-<tr class="memitem:a673bdd9a22999efd598702dfedd2edd6"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, object &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a> = new Dictionary&lt;string, object&gt;()</td></tr>
-<tr class="separator:a673bdd9a22999efd598702dfedd2edd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -1019,16 +1013,15 @@ Events</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>                <span class="keywordflow">return</span> <span class="keywordflow">default</span>(T);</div>
 <div class="line"><span class="lineno">   32</span>            }</div>
 <div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff">CurrentContext</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a>.ContainsKey(name))</div>
+<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff">CurrentContext</a>._states.ContainsKey(name))</div>
 <div class="line"><span class="lineno">   35</span>            {</div>
-<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">return</span> (T) <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff">CurrentContext</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a>[name];</div>
+<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">return</span> (T) <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff">CurrentContext</a>._states[name];</div>
 <div class="line"><span class="lineno">   37</span>            }</div>
 <div class="line"><span class="lineno">   38</span> </div>
 <div class="line"><span class="lineno">   39</span>            T obj = handler();</div>
-<div class="line"><span class="lineno">   40</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff">CurrentContext</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a>[name] = obj;</div>
+<div class="line"><span class="lineno">   40</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff">CurrentContext</a>._states[name] = obj;</div>
 <div class="line"><span class="lineno">   41</span>            <span class="keywordflow">return</span> obj;</div>
 <div class="line"><span class="lineno">   42</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_open_g_l_1_1_t_k_context_html_a673bdd9a22999efd598702dfedd2edd6"><div class="ttname"><a href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">BrawlLib.OpenGL.TKContext._states</a></div><div class="ttdeci">Dictionary&lt; string, object &gt; _states</div><div class="ttdef"><b>Definition:</b> TKContext.cs:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1419,7 +1412,7 @@ Events</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   45</span>        {</div>
 <div class="line"><span class="lineno">   46</span>            <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">   47</span>            {</div>
-<div class="line"><span class="lineno">   48</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">object</span> o <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a>.Values)</div>
+<div class="line"><span class="lineno">   48</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">object</span> o <span class="keywordflow">in</span> _states.Values)</div>
 <div class="line"><span class="lineno">   49</span>                {</div>
 <div class="line"><span class="lineno">   50</span>                    <span class="keywordflow">if</span> (o is GLDisplayList)</div>
 <div class="line"><span class="lineno">   51</span>                    {</div>
@@ -1436,7 +1429,7 @@ Events</h2></td></tr>
 <div class="line"><span class="lineno">   62</span>                <span class="comment">// ignored</span></div>
 <div class="line"><span class="lineno">   63</span>            }</div>
 <div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a673bdd9a22999efd598702dfedd2edd6">_states</a>.Clear();</div>
+<div class="line"><span class="lineno">   65</span>            _states.Clear();</div>
 <div class="line"><span class="lineno">   66</span>        }</div>
 </div><!-- fragment -->
 </div>
@@ -1533,28 +1526,6 @@ Events</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a673bdd9a22999efd598702dfedd2edd6" name="a673bdd9a22999efd598702dfedd2edd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a673bdd9a22999efd598702dfedd2edd6">&#9670;&#160;</a></span>_states</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;string, object&gt; BrawlLib.OpenGL.TKContext._states = new Dictionary&lt;string, object&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
