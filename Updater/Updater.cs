@@ -17,7 +17,7 @@ using DLProgressWindow = Updater.UI.DLProgressWindow;
 
 namespace Updater
 {
-    public static class Updater
+    internal static class Updater
     {
         public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 

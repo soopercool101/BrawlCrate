@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Updater.UI
 {
-    public class DLProgressBar : UserControl
+    internal class DLProgressBar : UserControl
     {
         private float _current;
 

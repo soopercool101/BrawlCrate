@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Updater.UI
 {
-    public partial class CanaryChangelogViewer : Form
+    internal partial class CanaryChangelogViewer : Form
     {
         public CanaryChangelogViewer(string commitID, string changelog)
         {

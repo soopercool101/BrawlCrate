@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Updater.UI
 {
-    public partial class DLProgressWindow : Form
+    internal partial class DLProgressWindow : Form
     {
         public static bool started;
         public static bool finished;

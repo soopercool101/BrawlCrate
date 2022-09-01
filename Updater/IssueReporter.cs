@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Updater
 {
-    public static class IssueReporter
+    internal static class IssueReporter
     {
         public static async Task CreateIssue(
             string TagName,

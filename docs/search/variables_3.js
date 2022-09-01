@@ -107,12 +107,9 @@ var searchData=
   ['csslist_104',['cssList',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_s_t_c_node.html#a6808961d9d23d1a63ce1839f89d2e12a',1,'BrawlLib::SSBB::ResourceNodes::RSTCNode']]],
   ['cssslotidindex_105',['cssSlotIDIndex',['../class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a5f7480c43b3a357714b1af3a1805024e',1,'BrawlLib::CustomLists::FighterNameGenerators']]],
   ['cssslotidlist_106',['cssSlotIDList',['../class_brawl_lib_1_1_custom_lists_1_1_fighter_name_generators.html#a962711adefb381a030cce6e383691c34',1,'BrawlLib::CustomLists::FighterNameGenerators']]],
-  ['currentbranch_107',['currentBranch',['../class_updater_1_1_updater.html#a2f954d019152a4f8ee1e4053ff08aa60',1,'Updater::Updater']]],
-  ['currentcontext_108',['CurrentContext',['../class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff',1,'BrawlLib::OpenGL::TKContext']]],
-  ['currentframe_109',['currentFrame',['../class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abad6551dc0aefe09af4c494427be0d32',1,'BrawlLib::Imaging::GIF::GifDecoder']]],
-  ['currentimage_110',['CurrentImage',['../class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_single_use_dialogs_1_1_confirm_icon_replace_dialog.html#a111e8902faf82008eb6d1b49ffa8fef0',1,'BrawlCrate::BrawlManagers::StageManager::SingleUseDialogs::ConfirmIconReplaceDialog']]],
-  ['currentmodel_111',['CurrentModel',['../class_brawl_lib_1_1_modeling_1_1_collada_1_1_collada.html#a24306919fc8d77d728ccb8d4617b61c6',1,'BrawlLib::Modeling::Collada::Collada']]],
-  ['currentrepo_112',['currentRepo',['../class_updater_1_1_updater.html#a45e10c88921bdbac279bae531791c478',1,'Updater::Updater']]],
-  ['currentvalue_113',['CurrentValue',['../class_updater_1_1_u_i_1_1_d_l_progress_window.html#a87866ea6d8af97dc72f2e21f4838dad4',1,'Updater::UI::DLProgressWindow']]],
-  ['curveflag_114',['curveFlag',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_anim_curve_header.html#a89aef893daf241608ee1436b0e99628d',1,'BrawlLib::SSBB::Types::AnimCurveHeader']]]
+  ['currentcontext_107',['CurrentContext',['../class_brawl_lib_1_1_open_g_l_1_1_t_k_context.html#a69b12cd8625d60e106e0e1dc550809ff',1,'BrawlLib::OpenGL::TKContext']]],
+  ['currentframe_108',['currentFrame',['../class_brawl_lib_1_1_imaging_1_1_g_i_f_1_1_gif_decoder.html#abad6551dc0aefe09af4c494427be0d32',1,'BrawlLib::Imaging::GIF::GifDecoder']]],
+  ['currentimage_109',['CurrentImage',['../class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_single_use_dialogs_1_1_confirm_icon_replace_dialog.html#a111e8902faf82008eb6d1b49ffa8fef0',1,'BrawlCrate::BrawlManagers::StageManager::SingleUseDialogs::ConfirmIconReplaceDialog']]],
+  ['currentmodel_110',['CurrentModel',['../class_brawl_lib_1_1_modeling_1_1_collada_1_1_collada.html#a24306919fc8d77d728ccb8d4617b61c6',1,'BrawlLib::Modeling::Collada::Collada']]],
+  ['curveflag_111',['curveFlag',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_anim_curve_header.html#a89aef893daf241608ee1436b0e99628d',1,'BrawlLib::SSBB::Types::AnimCurveHeader']]]
 ];

@@ -68,7 +68,7 @@ var searchData=
   ['pausecamzoomdefault_65',['PauseCamZoomDefault',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_entry_node.html#a8ee75f0843c346801af225088f49a134',1,'BrawlLib::SSBB::ResourceNodes::STPMEntryNode']]],
   ['pausecamzoomin_66',['PauseCamZoomIn',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_entry_node.html#a7c28e21332b7136231487c4714d37a39',1,'BrawlLib::SSBB::ResourceNodes::STPMEntryNode']]],
   ['pausecamzoomout_67',['PauseCamZoomOut',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_entry_node.html#ad67ddef7a93a3a11a7db658742462615',1,'BrawlLib::SSBB::ResourceNodes::STPMEntryNode']]],
-  ['percent_68',['Percent',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_progress_bar.html#a3bdb761aa61c201520af49011e2b389d',1,'BrawlLib.Internal.Windows.Controls.GoodProgressBar.Percent()'],['../class_updater_1_1_u_i_1_1_d_l_progress_bar.html#a7a6f05db871fb3d057c960c920a82395',1,'Updater.UI.DLProgressBar.Percent()']]],
+  ['percent_68',['Percent',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_good_progress_bar.html#a3bdb761aa61c201520af49011e2b389d',1,'BrawlLib::Internal::Windows::Controls::GoodProgressBar']]],
   ['percentage_69',['Percentage',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_h_p0_keyframe.html#ae1223647678faa66808f55fa68a28ad4',1,'BrawlLib::SSBB::ResourceNodes::SHP0Keyframe']]],
   ['percentages_70',['Percentages',['../class_brawl_lib_1_1_open_g_l_1_1_g_l_viewport.html#aa2d4ba85485ef4d3634b77874b50faf5',1,'BrawlLib::OpenGL::GLViewport']]],
   ['percostumeetc_71',['PerCostumeEtc',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#aacaad95789a8e410e92ec253df478df0',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]],

@@ -20,10 +20,9 @@ var searchData=
   ['unksection5node_17',['UnkSection5Node',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_unk_section5_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
   ['unsafebuffer_18',['UnsafeBuffer',['../class_brawl_lib_1_1_internal_1_1_unsafe_buffer.html',1,'BrawlLib::Internal']]],
   ['unsafestream_19',['UnsafeStream',['../class_brawl_lib_1_1_internal_1_1_i_o_1_1_unsafe_stream.html',1,'BrawlLib::Internal::IO']]],
-  ['updater_20',['Updater',['../class_updater_1_1_updater.html',1,'Updater']]],
-  ['userdata_21',['UserData',['../struct_brawl_lib_1_1_s_s_b_b_1_1_user_data.html',1,'BrawlLib::SSBB']]],
-  ['userdataclass_22',['UserDataClass',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html',1,'BrawlLib::SSBB']]],
-  ['userdatacollection_23',['UserDataCollection',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html',1,'BrawlLib::SSBB']]],
-  ['userdatacollectionpropertydescriptor_24',['UserDataCollectionPropertyDescriptor',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html',1,'BrawlLib::SSBB']]],
-  ['userdataentry_25',['UserDataEntry',['../struct_brawl_lib_1_1_s_s_b_b_1_1_user_data_entry.html',1,'BrawlLib::SSBB']]]
+  ['userdata_20',['UserData',['../struct_brawl_lib_1_1_s_s_b_b_1_1_user_data.html',1,'BrawlLib::SSBB']]],
+  ['userdataclass_21',['UserDataClass',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_class.html',1,'BrawlLib::SSBB']]],
+  ['userdatacollection_22',['UserDataCollection',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection.html',1,'BrawlLib::SSBB']]],
+  ['userdatacollectionpropertydescriptor_23',['UserDataCollectionPropertyDescriptor',['../class_brawl_lib_1_1_s_s_b_b_1_1_user_data_collection_property_descriptor.html',1,'BrawlLib::SSBB']]],
+  ['userdataentry_24',['UserDataEntry',['../struct_brawl_lib_1_1_s_s_b_b_1_1_user_data_entry.html',1,'BrawlLib::SSBB']]]
 ];
