@@ -923,11 +923,11 @@ Private Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  507</span>        {</div>
 <div class="line"><span class="lineno">  508</span>            <span class="keywordflow">if</span> (bmp.PixelFormat == PixelFormat.Format32bppArgb)</div>
 <div class="line"><span class="lineno">  509</span>            {</div>
-<div class="line"><span class="lineno">  510</span>                Bitmap <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a> = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppArgb);</div>
+<div class="line"><span class="lineno">  510</span>                Bitmap output = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppArgb);</div>
 <div class="line"><span class="lineno">  511</span> </div>
 <div class="line"><span class="lineno">  512</span>                Rectangle rect = <span class="keyword">new</span> Rectangle(0, 0, bmp.Width, bmp.Height);</div>
 <div class="line"><span class="lineno">  513</span>                BitmapData inData = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
-<div class="line"><span class="lineno">  514</span>                BitmapData outData = <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
+<div class="line"><span class="lineno">  514</span>                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
 <div class="line"><span class="lineno">  515</span> </div>
 <div class="line"><span class="lineno">  516</span>                uint* inPtr = (uint*) inData.Scan0;</div>
 <div class="line"><span class="lineno">  517</span>                uint* outPtr = (uint*) outData.Scan0;</div>
@@ -940,28 +940,27 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  524</span>                }</div>
 <div class="line"><span class="lineno">  525</span> </div>
 <div class="line"><span class="lineno">  526</span>                bmp.UnlockBits(inData);</div>
-<div class="line"><span class="lineno">  527</span>                <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.UnlockBits(outData);</div>
+<div class="line"><span class="lineno">  527</span>                output.UnlockBits(outData);</div>
 <div class="line"><span class="lineno">  528</span> </div>
-<div class="line"><span class="lineno">  529</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>;</div>
+<div class="line"><span class="lineno">  529</span>                <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">  530</span>            }</div>
 <div class="line"><span class="lineno">  531</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  532</span>            {</div>
 <div class="line"><span class="lineno">  533</span>                <span class="comment">// Slower, but works for any input pixel format</span></div>
-<div class="line"><span class="lineno">  534</span>                Bitmap <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a> = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height);</div>
+<div class="line"><span class="lineno">  534</span>                Bitmap output = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height);</div>
 <div class="line"><span class="lineno">  535</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; bmp.Width; x++)</div>
 <div class="line"><span class="lineno">  536</span>                {</div>
 <div class="line"><span class="lineno">  537</span>                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; bmp.Height; y++)</div>
 <div class="line"><span class="lineno">  538</span>                    {</div>
 <div class="line"><span class="lineno">  539</span>                        Color c = bmp.GetPixel(x, y);</div>
 <div class="line"><span class="lineno">  540</span>                        c = Color.FromArgb((<span class="keywordtype">byte</span>) ~c.A, c);</div>
-<div class="line"><span class="lineno">  541</span>                        <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.SetPixel(x, y, c);</div>
+<div class="line"><span class="lineno">  541</span>                        output.SetPixel(x, y, c);</div>
 <div class="line"><span class="lineno">  542</span>                    }</div>
 <div class="line"><span class="lineno">  543</span>                }</div>
 <div class="line"><span class="lineno">  544</span> </div>
-<div class="line"><span class="lineno">  545</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>;</div>
+<div class="line"><span class="lineno">  545</span>                <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">  546</span>            }</div>
 <div class="line"><span class="lineno">  547</span>        }</div>
-<div class="ttc" id="anamespace_check_01_all_01_b_l_o_c_html_adbd9afdae21b8f12f4abe88e8135204a"><div class="ttname"><a href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">Check All BLOC.output</a></div><div class="ttdeci">string output</div><div class="ttdef"><b>Definition:</b> Check All BLOC.py:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -991,11 +990,11 @@ Private Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  464</span>        {</div>
 <div class="line"><span class="lineno">  465</span>            <span class="keywordflow">if</span> (bmp.PixelFormat == PixelFormat.Format32bppArgb)</div>
 <div class="line"><span class="lineno">  466</span>            {</div>
-<div class="line"><span class="lineno">  467</span>                Bitmap <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a> = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppArgb);</div>
+<div class="line"><span class="lineno">  467</span>                Bitmap output = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppArgb);</div>
 <div class="line"><span class="lineno">  468</span> </div>
 <div class="line"><span class="lineno">  469</span>                Rectangle rect = <span class="keyword">new</span> Rectangle(0, 0, bmp.Width, bmp.Height);</div>
 <div class="line"><span class="lineno">  470</span>                BitmapData inData = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
-<div class="line"><span class="lineno">  471</span>                BitmapData outData = <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
+<div class="line"><span class="lineno">  471</span>                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
 <div class="line"><span class="lineno">  472</span> </div>
 <div class="line"><span class="lineno">  473</span>                uint* inPtr = (uint*) inData.Scan0;</div>
 <div class="line"><span class="lineno">  474</span>                uint* outPtr = (uint*) outData.Scan0;</div>
@@ -1008,25 +1007,25 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  481</span>                }</div>
 <div class="line"><span class="lineno">  482</span> </div>
 <div class="line"><span class="lineno">  483</span>                bmp.UnlockBits(inData);</div>
-<div class="line"><span class="lineno">  484</span>                <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.UnlockBits(outData);</div>
+<div class="line"><span class="lineno">  484</span>                output.UnlockBits(outData);</div>
 <div class="line"><span class="lineno">  485</span> </div>
-<div class="line"><span class="lineno">  486</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>;</div>
+<div class="line"><span class="lineno">  486</span>                <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">  487</span>            }</div>
 <div class="line"><span class="lineno">  488</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  489</span>            {</div>
 <div class="line"><span class="lineno">  490</span>                <span class="comment">// Slower, but works for any input pixel format</span></div>
-<div class="line"><span class="lineno">  491</span>                Bitmap <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a> = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height);</div>
+<div class="line"><span class="lineno">  491</span>                Bitmap output = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height);</div>
 <div class="line"><span class="lineno">  492</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; bmp.Width; x++)</div>
 <div class="line"><span class="lineno">  493</span>                {</div>
 <div class="line"><span class="lineno">  494</span>                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; bmp.Height; y++)</div>
 <div class="line"><span class="lineno">  495</span>                    {</div>
 <div class="line"><span class="lineno">  496</span>                        Color c = bmp.GetPixel(x, y);</div>
 <div class="line"><span class="lineno">  497</span>                        c = Color.FromArgb(c.A, (<span class="keywordtype">byte</span>) ~c.R, (<span class="keywordtype">byte</span>) ~c.G, (<span class="keywordtype">byte</span>) ~c.B);</div>
-<div class="line"><span class="lineno">  498</span>                        <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.SetPixel(x, y, c);</div>
+<div class="line"><span class="lineno">  498</span>                        output.SetPixel(x, y, c);</div>
 <div class="line"><span class="lineno">  499</span>                    }</div>
 <div class="line"><span class="lineno">  500</span>                }</div>
 <div class="line"><span class="lineno">  501</span> </div>
-<div class="line"><span class="lineno">  502</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>;</div>
+<div class="line"><span class="lineno">  502</span>                <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">  503</span>            }</div>
 <div class="line"><span class="lineno">  504</span>        }</div>
 </div><!-- fragment -->
@@ -1327,11 +1326,11 @@ Private Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  557</span>        {</div>
 <div class="line"><span class="lineno">  558</span>            <span class="keywordflow">if</span> (bmp.PixelFormat == PixelFormat.Format32bppArgb)</div>
 <div class="line"><span class="lineno">  559</span>            {</div>
-<div class="line"><span class="lineno">  560</span>                Bitmap <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a> = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppArgb);</div>
+<div class="line"><span class="lineno">  560</span>                Bitmap output = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppArgb);</div>
 <div class="line"><span class="lineno">  561</span> </div>
 <div class="line"><span class="lineno">  562</span>                Rectangle rect = <span class="keyword">new</span> Rectangle(0, 0, bmp.Width, bmp.Height);</div>
 <div class="line"><span class="lineno">  563</span>                BitmapData inData = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
-<div class="line"><span class="lineno">  564</span>                BitmapData outData = <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
+<div class="line"><span class="lineno">  564</span>                BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);</div>
 <div class="line"><span class="lineno">  565</span> </div>
 <div class="line"><span class="lineno">  566</span>                uint* inPtr = (uint*) inData.Scan0;</div>
 <div class="line"><span class="lineno">  567</span>                uint* outPtr = (uint*) outData.Scan0;</div>
@@ -1358,15 +1357,15 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  588</span>                <span class="keywordflow">finally</span></div>
 <div class="line"><span class="lineno">  589</span>                {</div>
 <div class="line"><span class="lineno">  590</span>                    bmp.UnlockBits(inData);</div>
-<div class="line"><span class="lineno">  591</span>                    <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.UnlockBits(outData);</div>
+<div class="line"><span class="lineno">  591</span>                    output.UnlockBits(outData);</div>
 <div class="line"><span class="lineno">  592</span>                }</div>
 <div class="line"><span class="lineno">  593</span> </div>
-<div class="line"><span class="lineno">  594</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>;</div>
+<div class="line"><span class="lineno">  594</span>                <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">  595</span>            }</div>
 <div class="line"><span class="lineno">  596</span>            <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  597</span>            {</div>
 <div class="line"><span class="lineno">  598</span>                <span class="comment">// Slower, but works for any input pixel format</span></div>
-<div class="line"><span class="lineno">  599</span>                Bitmap <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a> = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height);</div>
+<div class="line"><span class="lineno">  599</span>                Bitmap output = <span class="keyword">new</span> Bitmap(bmp.Width, bmp.Height);</div>
 <div class="line"><span class="lineno">  600</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; bmp.Width; x++)</div>
 <div class="line"><span class="lineno">  601</span>                {</div>
 <div class="line"><span class="lineno">  602</span>                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; bmp.Height; y++)</div>
@@ -1379,11 +1378,11 @@ Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  609</span>                        }</div>
 <div class="line"><span class="lineno">  610</span> </div>
 <div class="line"><span class="lineno">  611</span>                        c = Color.FromArgb(c.R, c.A, c.A, c.A);</div>
-<div class="line"><span class="lineno">  612</span>                        <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.SetPixel(x, y, c);</div>
+<div class="line"><span class="lineno">  612</span>                        output.SetPixel(x, y, c);</div>
 <div class="line"><span class="lineno">  613</span>                    }</div>
 <div class="line"><span class="lineno">  614</span>                }</div>
 <div class="line"><span class="lineno">  615</span> </div>
-<div class="line"><span class="lineno">  616</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>;</div>
+<div class="line"><span class="lineno">  616</span>                <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">  617</span>            }</div>
 <div class="line"><span class="lineno">  618</span>        }</div>
 </div><!-- fragment -->

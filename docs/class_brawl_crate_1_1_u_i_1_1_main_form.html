@@ -832,10 +832,10 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1456</span>            DirectoryInfo dir = Directory.CreateDirectory(path);</div>
 <div class="line"><span class="lineno"> 1457</span>            <span class="keywordflow">foreach</span> (DirectoryInfo d <span class="keywordflow">in</span> dir.GetDirectories())</div>
 <div class="line"><span class="lineno"> 1458</span>            {</div>
-<div class="line"><span class="lineno"> 1459</span>                ToolStripMenuItem <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#ab4a53af4e5ba49f4ab62123179949d72">folder</a> = <span class="keyword">new</span> ToolStripMenuItem();</div>
+<div class="line"><span class="lineno"> 1459</span>                ToolStripMenuItem folder = <span class="keyword">new</span> ToolStripMenuItem();</div>
 <div class="line"><span class="lineno"> 1460</span>                folder.Name = folder.Text = d.Name;</div>
 <div class="line"><span class="lineno"> 1461</span>                <a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a8a5463f1e721d51b77d2d9b6a9461500">AddPlugins</a>(folder, d.FullName);</div>
-<div class="line"><span class="lineno"> 1462</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#ab4a53af4e5ba49f4ab62123179949d72">folder</a>.DropDownItems.Count == 0)</div>
+<div class="line"><span class="lineno"> 1462</span>                <span class="keywordflow">if</span> (folder.DropDownItems.Count == 0)</div>
 <div class="line"><span class="lineno"> 1463</span>                {</div>
 <div class="line"><span class="lineno"> 1464</span>                    <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno"> 1465</span>                }</div>
@@ -853,7 +853,6 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1477</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_a8a5463f1e721d51b77d2d9b6a9461500"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#a8a5463f1e721d51b77d2d9b6a9461500">BrawlCrate.UI.MainForm.AddPlugins</a></div><div class="ttdeci">void AddPlugins(ToolStripMenuItem menu, string path)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:1454</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html_aa9d1a830a295d3922698fc084cea1159"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html#aa9d1a830a295d3922698fc084cea1159">BrawlCrate.UI.MainForm.onPluginClicked</a></div><div class="ttdeci">void onPluginClicked(object sender, EventArgs e)</div><div class="ttdef"><b>Definition:</b> MainForm.cs:1404</div></div>
-<div class="ttc" id="anamespace_check_01_all_01_b_l_o_c_html_ab4a53af4e5ba49f4ab62123179949d72"><div class="ttname"><a href="namespace_check_01_all_01_b_l_o_c.html#ab4a53af4e5ba49f4ab62123179949d72">Check All BLOC.folder</a></div><div class="ttdeci">folder</div><div class="ttdef"><b>Definition:</b> Check All BLOC.py:7</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1460,7 +1459,7 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno"> 1436</span> </div>
 <div class="line"><span class="lineno"> 1437</span>            <span class="keywordflow">foreach</span> (DirectoryInfo d <span class="keywordflow">in</span> dir.GetDirectories())</div>
 <div class="line"><span class="lineno"> 1438</span>            {</div>
-<div class="line"><span class="lineno"> 1439</span>                ToolStripMenuItem <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#ab4a53af4e5ba49f4ab62123179949d72">folder</a> = <span class="keyword">new</span> ToolStripMenuItem();</div>
+<div class="line"><span class="lineno"> 1439</span>                ToolStripMenuItem folder = <span class="keyword">new</span> ToolStripMenuItem();</div>
 <div class="line"><span class="lineno"> 1440</span>                folder.Name = folder.Text = d.Name;</div>
 <div class="line"><span class="lineno"> 1441</span>                scripts.AddRange(<a class="code hl_function" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac2355e6b5aa880017aee19f1881071f8">GetScripts</a>(d.FullName));</div>
 <div class="line"><span class="lineno"> 1442</span>            }</div>

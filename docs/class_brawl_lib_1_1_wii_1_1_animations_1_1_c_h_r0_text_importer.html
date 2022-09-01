@@ -316,7 +316,7 @@ Static Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   28</span>        {</div>
-<div class="line"><span class="lineno">   29</span>            Coords <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a> = <span class="keyword">new</span> Coords();</div>
+<div class="line"><span class="lineno">   29</span>            Coords output = <span class="keyword">new</span> Coords();</div>
 <div class="line"><span class="lineno">   30</span>            <span class="keywordflow">for</span> (line = reader.ReadLine();</div>
 <div class="line"><span class="lineno">   31</span>                line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0 &amp;&amp;</div>
 <div class="line"><span class="lineno">   32</span>                (line.CompareTo(<span class="stringliteral">&quot;X&quot;</span>) == 0 || line.CompareTo(<span class="stringliteral">&quot;Y&quot;</span>) == 0 || line.CompareTo(<span class="stringliteral">&quot;Z&quot;</span>) == 0);</div>
@@ -328,7 +328,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   38</span>                        line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0;</div>
 <div class="line"><span class="lineno">   39</span>                        line = reader.ReadLine())</div>
 <div class="line"><span class="lineno">   40</span>                    {</div>
-<div class="line"><span class="lineno">   41</span>                        <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.x.Add(<span class="keywordtype">float</span>.Parse(line));</div>
+<div class="line"><span class="lineno">   41</span>                        output.x.Add(<span class="keywordtype">float</span>.Parse(line));</div>
 <div class="line"><span class="lineno">   42</span>                    }</div>
 <div class="line"><span class="lineno">   43</span>                }</div>
 <div class="line"><span class="lineno">   44</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;Y&quot;</span>) == 0)</div>
@@ -337,7 +337,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   47</span>                        line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0;</div>
 <div class="line"><span class="lineno">   48</span>                        line = reader.ReadLine())</div>
 <div class="line"><span class="lineno">   49</span>                    {</div>
-<div class="line"><span class="lineno">   50</span>                        <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.y.Add(<span class="keywordtype">float</span>.Parse(line));</div>
+<div class="line"><span class="lineno">   50</span>                        output.y.Add(<span class="keywordtype">float</span>.Parse(line));</div>
 <div class="line"><span class="lineno">   51</span>                    }</div>
 <div class="line"><span class="lineno">   52</span>                }</div>
 <div class="line"><span class="lineno">   53</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line.CompareTo(<span class="stringliteral">&quot;Z&quot;</span>) == 0)</div>
@@ -346,14 +346,13 @@ Static Private Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   56</span>                        line != <span class="keyword">null</span> &amp;&amp; line.CompareTo(<span class="stringliteral">&quot;    &quot;</span>) != 0;</div>
 <div class="line"><span class="lineno">   57</span>                        line = reader.ReadLine())</div>
 <div class="line"><span class="lineno">   58</span>                    {</div>
-<div class="line"><span class="lineno">   59</span>                        <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>.z.Add(<span class="keywordtype">float</span>.Parse(line));</div>
+<div class="line"><span class="lineno">   59</span>                        output.z.Add(<span class="keywordtype">float</span>.Parse(line));</div>
 <div class="line"><span class="lineno">   60</span>                    }</div>
 <div class="line"><span class="lineno">   61</span>                }</div>
 <div class="line"><span class="lineno">   62</span>            }</div>
 <div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">output</a>;</div>
+<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">return</span> output;</div>
 <div class="line"><span class="lineno">   65</span>        }</div>
-<div class="ttc" id="anamespace_check_01_all_01_b_l_o_c_html_adbd9afdae21b8f12f4abe88e8135204a"><div class="ttname"><a href="namespace_check_01_all_01_b_l_o_c.html#adbd9afdae21b8f12f4abe88e8135204a">Check All BLOC.output</a></div><div class="ttdeci">string output</div><div class="ttdef"><b>Definition:</b> Check All BLOC.py:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
