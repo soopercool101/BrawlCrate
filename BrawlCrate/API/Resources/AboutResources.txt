@@ -1,0 +1,4 @@
+﻿BrawlAPI Resources
+
+The resources folder can contain any various item that needs to be accessed by an API script.
+Nothing in this folder will be automatically loaded by the program (unlike the Lib/Loaders/Plugins folders), so it is up to script authors how to make use of this.
