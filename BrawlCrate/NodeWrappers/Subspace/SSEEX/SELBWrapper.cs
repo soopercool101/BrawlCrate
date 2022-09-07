@@ -17,7 +17,7 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
 
-        public static readonly int MaxEntries = 5;
+        public static readonly int MaxEntries = 10;
 
         private bool CanAddEntries()
         {
