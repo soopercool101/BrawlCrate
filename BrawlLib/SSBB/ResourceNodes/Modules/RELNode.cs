@@ -297,6 +297,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Dispose()
         {
+            while (!_populated)
+            {
+                // Do nothing until population is complete, fixing API enumeration errors
+            }
             _files.Remove(ModuleID);
             base.Dispose();
         }
@@ -368,6 +372,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private int[] _itemIDOffsets;
 
+        private bool _populated = false;
         public override void OnPopulate()
         {
             _sections = new ModuleSectionNode[_numSections];
@@ -450,6 +455,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 watch.Stop();
                 Console.WriteLine("Took {0} seconds to relocate {1} module", watch.ElapsedMilliseconds / 1000d, Name);
+                _populated = true;
             };
 
             using (BackgroundWorker b = new BackgroundWorker())
