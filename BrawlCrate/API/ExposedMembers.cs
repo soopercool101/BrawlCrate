@@ -1345,6 +1345,15 @@ namespace BrawlCrate.API
             MainForm.Instance.resourceTree_SelectionChanged(null, null);
         }
 
+        /// <summary>
+        ///     Causes the current thread to sleep for a number of milliseconds.
+        /// </summary>
+        /// <param name="milliseconds">The amount of time to wait, in milliseconds</param>
+        public static void Wait(int milliseconds)
+        {
+            System.Threading.Thread.Sleep(milliseconds);
+        }
+
         #endregion
 
         #region Parsing
