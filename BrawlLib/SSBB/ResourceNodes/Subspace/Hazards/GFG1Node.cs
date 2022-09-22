@@ -203,10 +203,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Fighter Info")]
         public CostumeTypes CostumeType
         {
-            get => (CostumeTypes)_playerNumber;
+            get => (CostumeTypes)_costumeType;
             set
             {
-                _playerNumber = (byte)value;
+                _costumeType = (byte)value;
                 SignalPropertyChange();
             }
         }
