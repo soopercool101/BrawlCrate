@@ -22,41 +22,37 @@ namespace BrawlLib.SSBB.ResourceNodes
         //public override ResourceType ResourceType { get { return ResourceType.GFG1ENTRY; } }
 
         public byte _fighterID;
-        public byte _unknown0x01;
-        public byte _unknown0x02;
+        public byte _stockCount;
+        public byte _costumeID;
         public byte _unknown0x03;
         public byte _unknown0x04;
-        public byte _unknown0x05;
+        public byte _isTeamMember;
         public byte _unknown0x06;
-        public byte _unknown0x07;
+        public byte _isMetal;
         public byte _unknown0x08;
-        public byte _unknown0x09;
-        public byte _unknown0x0A;
-        public byte _unknown0x0B;
+        public byte _isSpyCloak;
+        public byte _isLowGravity;
+        public byte _isNoVoice;
         public byte _unknown0x0C;
         public byte _unknown0x0D;
         public byte _unknown0x0E;
         public byte _unknown0x0F;
-        public byte _unknown0x10;
+        public byte _displayStaminaHP;
         public byte _unknown0x11;
-        public byte _costumeID; // 0x12
-        public byte _flag0x13;
-        public byte _unknown0x14;
-        public byte _unknown0x15;
+        public byte _cpuType;
+        public byte _cpuRank;
+        public byte _playerNumber;
+        public byte _costumeType;
         public byte _unknown0x16;
         public byte _unknown0x17;
-        public byte _unknown0x18;
-        public byte _unknown0x19;
-        public byte _unknown0x1A;
-        public byte _unknown0x1B;
+        public short _startDamage;
+        public short _hitPointMax;
         public byte _unknown0x1C;
         public byte _unknown0x1D;
         public byte _unknown0x1E;
         public byte _unknown0x1F;
-        public byte _unknown0x20;
-        public byte _unknown0x21;
-        public byte _unknown0x22;
-        public byte _unknown0x23;
+        public short _glowAttack;
+        public short _glowDefense;
         public float _offenseKBMult; // 0x24
         public float _defenseKBMult; // 0x28
         public float _scale;         // 0x2C
@@ -92,10 +88,73 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte _unknown0x4D;
         public byte _unknown0x4E;
         public byte _unknown0x4F;
-        public byte _unknown0x50;
-        public byte _unknown0x51;
-        public byte _unknown0x52;
-        public byte _unknown0x53;
+        public uint _triggerData;
+
+        [Category("Fighter Flags")]
+        public bool IsTeamMember
+        {
+            get => _isTeamMember == 1;
+            set
+            {
+                _isTeamMember = (byte)(value ? 1 : 0);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Flags")]
+        public bool IsMetal
+        {
+            get => _isMetal == 1;
+            set
+            {
+                _isMetal = (byte)(value ? 1 : 0);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Flags")]
+        public bool IsSpyCloak
+        {
+            get => _isSpyCloak == 1;
+            set
+            {
+                _isSpyCloak = (byte)(value ? 1 : 0);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Flags")]
+        public bool IsLowGravity
+        {
+            get => _isLowGravity == 1;
+            set
+            {
+                _isLowGravity = (byte)(value ? 1 : 0);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Flags")]
+        public bool IsNoVoice
+        {
+            get => _isNoVoice == 1;
+            set
+            {
+                _isNoVoice = (byte)(value ? 1 : 0);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Flags")]
+        public bool DisplayStaminaHP
+        {
+            get => _displayStaminaHP == 1;
+            set
+            {
+                _displayStaminaHP = (byte)(value ? 1 : 0);
+                SignalPropertyChange();
+            }
+        }
 
         [Category("Fighter Info")]
         [TypeConverter(typeof(DropDownListBrawlExSlotIDs))]
@@ -109,6 +168,89 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Name = FighterNameGenerators.FromID(_fighterID,
                     FighterNameGenerators.slotIDIndex, "+S") + $" [{Index}]";
 
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
+        public byte StockCount
+        {
+            get => _stockCount;
+            set
+            {
+                _stockCount = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
+        public byte PlayerNumber
+        {
+            get => _playerNumber;
+            set
+            {
+                _playerNumber = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public enum CostumeTypes : byte
+        {
+            Normal = 0,
+            Dark = 1,
+            Fake = 2
+        }
+        [Category("Fighter Info")]
+        public CostumeTypes CostumeType
+        {
+            get => (CostumeTypes)_playerNumber;
+            set
+            {
+                _playerNumber = (byte)value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
+        public short StartDamage
+        {
+            get => _startDamage;
+            set
+            {
+                _startDamage = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
+        public short HitPointMax
+        {
+            get => _hitPointMax;
+            set
+            {
+                _hitPointMax = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
+        public short GlowAttack
+        {
+            get => _glowAttack;
+            set
+            {
+                _glowAttack = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
+        public short GlowDefense
+        {
+            get => _glowDefense;
+            set
+            {
+                _glowDefense = value;
                 SignalPropertyChange();
             }
         }
@@ -161,14 +303,26 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x13")]
-        public byte Flag0x13
+        [Category("Fighter Info")]
+        [DisplayName("CPU Type")]
+        public byte CPUType
         {
-            get => _flag0x13;
+            get => _cpuType;
             set
             {
-                _flag0x13 = value;
+                _cpuType = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Fighter Info")]
+        [DisplayName("CPU Rank")]
+        public byte CPURank
+        {
+            get => _cpuRank;
+            set
+            {
+                _cpuRank = value;
                 SignalPropertyChange();
             }
         }
@@ -176,41 +330,37 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             _fighterID = Header->_fighterID;
-            _unknown0x01 = Header->_unknown0x01;
-            _unknown0x02 = Header->_unknown0x02;
+            _stockCount = Header->_stockCount;
+            _costumeID = Header->_costumeID;
             _unknown0x03 = Header->_unknown0x03;
             _unknown0x04 = Header->_unknown0x04;
-            _unknown0x05 = Header->_unknown0x05;
+            _isTeamMember = Header->_isTeamMember;
             _unknown0x06 = Header->_unknown0x06;
-            _unknown0x07 = Header->_unknown0x07;
+            _isMetal = Header->_isMetal;
             _unknown0x08 = Header->_unknown0x08;
-            _unknown0x09 = Header->_unknown0x09;
-            _unknown0x0A = Header->_unknown0x0A;
-            _unknown0x0B = Header->_unknown0x0B;
+            _isSpyCloak = Header->_isSpyCloak;
+            _isLowGravity = Header->_isLowGravity;
+            _isNoVoice = Header->_isNoVoice;
             _unknown0x0C = Header->_unknown0x0C;
             _unknown0x0D = Header->_unknown0x0D;
             _unknown0x0E = Header->_unknown0x0E;
             _unknown0x0F = Header->_unknown0x0F;
-            _unknown0x10 = Header->_unknown0x10;
+            _displayStaminaHP = Header->_displayStaminaHP;
             _unknown0x11 = Header->_unknown0x11;
-            _costumeID = Header->_costumeID;
-            _flag0x13 = Header->_flag0x13;
-            _unknown0x14 = Header->_unknown0x14;
-            _unknown0x15 = Header->_unknown0x15;
+            _cpuType = Header->_cpuType;
+            _cpuRank = Header->_cpuRank;
+            _playerNumber = Header->_playerNumber;
+            _costumeType = Header->_costumeType;
             _unknown0x16 = Header->_unknown0x16;
             _unknown0x17 = Header->_unknown0x17;
-            _unknown0x18 = Header->_unknown0x18;
-            _unknown0x19 = Header->_unknown0x19;
-            _unknown0x1A = Header->_unknown0x1A;
-            _unknown0x1B = Header->_unknown0x1B;
+            _startDamage = Header->_startDamage;
+            _hitPointMax = Header->_hitPointMax;
             _unknown0x1C = Header->_unknown0x1C;
             _unknown0x1D = Header->_unknown0x1D;
             _unknown0x1E = Header->_unknown0x1E;
             _unknown0x1F = Header->_unknown0x1F;
-            _unknown0x20 = Header->_unknown0x20;
-            _unknown0x21 = Header->_unknown0x21;
-            _unknown0x22 = Header->_unknown0x22;
-            _unknown0x23 = Header->_unknown0x23;
+            _glowAttack = Header->_glowAttack;
+            _glowDefense = Header->_glowDefense;
             _offenseKBMult = Header->_offenseKBMult;
             _defenseKBMult = Header->_defenseKBMult;
             _scale = Header->_scale;
@@ -246,10 +396,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x4D = Header->_unknown0x4D;
             _unknown0x4E = Header->_unknown0x4E;
             _unknown0x4F = Header->_unknown0x4F;
-            _unknown0x50 = Header->_unknown0x50;
-            _unknown0x51 = Header->_unknown0x51;
-            _unknown0x52 = Header->_unknown0x52;
-            _unknown0x53 = Header->_unknown0x53;
+            _triggerData = Header->_triggerData;
             if (_name == null)
             {
                 _name = FighterNameGenerators.FromID(_fighterID,
@@ -268,41 +415,37 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             GFG1Entry* hdr = (GFG1Entry*) address;
             hdr->_fighterID = _fighterID;
-            hdr->_unknown0x01 = _unknown0x01;
-            hdr->_unknown0x02 = _unknown0x02;
+            hdr->_stockCount = _stockCount;
+            hdr->_costumeID = _costumeID;
             hdr->_unknown0x03 = _unknown0x03;
             hdr->_unknown0x04 = _unknown0x04;
-            hdr->_unknown0x05 = _unknown0x05;
+            hdr->_isTeamMember = _isTeamMember;
             hdr->_unknown0x06 = _unknown0x06;
-            hdr->_unknown0x07 = _unknown0x07;
+            hdr->_isMetal = _isMetal;
             hdr->_unknown0x08 = _unknown0x08;
-            hdr->_unknown0x09 = _unknown0x09;
-            hdr->_unknown0x0A = _unknown0x0A;
-            hdr->_unknown0x0B = _unknown0x0B;
+            hdr->_isSpyCloak = _isSpyCloak;
+            hdr->_isLowGravity = _isLowGravity;
+            hdr->_isNoVoice = _isNoVoice;
             hdr->_unknown0x0C = _unknown0x0C;
             hdr->_unknown0x0D = _unknown0x0D;
             hdr->_unknown0x0E = _unknown0x0E;
             hdr->_unknown0x0F = _unknown0x0F;
-            hdr->_unknown0x10 = _unknown0x10;
+            hdr->_displayStaminaHP = _displayStaminaHP;
             hdr->_unknown0x11 = _unknown0x11;
-            hdr->_costumeID = _costumeID;
-            hdr->_flag0x13 = _flag0x13;
-            hdr->_unknown0x14 = _unknown0x14;
-            hdr->_unknown0x15 = _unknown0x15;
+            hdr->_cpuType = _cpuType;
+            hdr->_cpuRank = _cpuRank;
+            hdr->_playerNumber = _playerNumber;
+            hdr->_costumeType = _costumeType;
             hdr->_unknown0x16 = _unknown0x16;
             hdr->_unknown0x17 = _unknown0x17;
-            hdr->_unknown0x18 = _unknown0x18;
-            hdr->_unknown0x19 = _unknown0x19;
-            hdr->_unknown0x1A = _unknown0x1A;
-            hdr->_unknown0x1B = _unknown0x1B;
+            hdr->_startDamage = _startDamage;
+            hdr->_hitPointMax = _hitPointMax;
             hdr->_unknown0x1C = _unknown0x1C;
             hdr->_unknown0x1D = _unknown0x1D;
             hdr->_unknown0x1E = _unknown0x1E;
             hdr->_unknown0x1F = _unknown0x1F;
-            hdr->_unknown0x20 = _unknown0x20;
-            hdr->_unknown0x21 = _unknown0x21;
-            hdr->_unknown0x22 = _unknown0x22;
-            hdr->_unknown0x23 = _unknown0x23;
+            hdr->_glowAttack = _glowAttack;
+            hdr->_glowDefense = _glowDefense;
             hdr->_offenseKBMult = _offenseKBMult;
             hdr->_defenseKBMult = _defenseKBMult;
             hdr->_scale = _scale;
@@ -338,10 +481,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_unknown0x4D = _unknown0x4D;
             hdr->_unknown0x4E = _unknown0x4E;
             hdr->_unknown0x4F = _unknown0x4F;
-            hdr->_unknown0x50 = _unknown0x50;
-            hdr->_unknown0x51 = _unknown0x51;
-            hdr->_unknown0x52 = _unknown0x52;
-            hdr->_unknown0x53 = _unknown0x53;
+            hdr->_triggerData = _triggerData;
         }
     }
 }
