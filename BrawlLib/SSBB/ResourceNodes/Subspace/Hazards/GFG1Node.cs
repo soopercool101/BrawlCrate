@@ -234,28 +234,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Fighter Info")]
-        public short GlowAttack
-        {
-            get => _glowAttack;
-            set
-            {
-                _glowAttack = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Fighter Info")]
-        public short GlowDefense
-        {
-            get => _glowDefense;
-            set
-            {
-                _glowDefense = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Fighter Info")]
         [DisplayName("Costume ID")]
         public byte CostumeID
         {
@@ -279,7 +257,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Fighter Info")]
+        [Category("Difficulty")]
         [DisplayName("Offensive Knockback Multiplier")]
         public float OffensiveKBMult
         {
@@ -291,7 +269,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Fighter Info")]
+        [Category("Difficulty")]
         [DisplayName("Defensive Knockback Multiplier")]
         public float DefensiveKBMult
         {
@@ -303,7 +281,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Fighter Info")]
+        [Category("Difficulty")]
         [DisplayName("CPU Type")]
         public byte CPUType
         {
@@ -315,7 +293,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Fighter Info")]
+        [Category("Difficulty")]
         [DisplayName("CPU Rank")]
         public byte CPURank
         {
@@ -323,6 +301,28 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 _cpuRank = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Difficulty")]
+        public short GlowAttack
+        {
+            get => _glowAttack;
+            set
+            {
+                _glowAttack = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Difficulty")]
+        public short GlowDefense
+        {
+            get => _glowDefense;
+            set
+            {
+                _glowDefense = value;
                 SignalPropertyChange();
             }
         }
