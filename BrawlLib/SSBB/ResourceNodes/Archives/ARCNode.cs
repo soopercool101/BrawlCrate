@@ -900,7 +900,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("ARC Entry")]
         public short FileIndex
         {
-            get => _fileIndex;
+            get => Parent is ARCNode ? _fileIndex : (short)Index;
             set
             {
                 _fileIndex = value;
@@ -914,7 +914,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("ARC Entry")]
         public byte GroupID
         {
-            get => _group;
+            get => Parent is ARCNode ? _group : (byte)0;
             set
             {
                 _group = value;
@@ -932,7 +932,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("ARC Entry")]
         public short RedirectIndex
         {
-            get => _redirectIndex;
+            get => Parent is ARCNode ? _redirectIndex : (short)-1;
             set
             {
                 if (value == _redirectIndex)
@@ -1023,7 +1023,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 #if DEBUG
         [Browsable(true)]
 #endif
-        public ResourceNode RedirectNode => redirectTargetNode;
+        public ResourceNode RedirectNode => Parent is ARCNode ? redirectTargetNode : null;
 
         protected ResourceNode redirectTargetNode;
 
@@ -1037,7 +1037,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// </returns>
         private ResourceNode UpdateRedirectTarget()
         {
-            if (RedirectIndex < 0 || Parent == null || Parent.Children.Count <= RedirectIndex)
+            if (RedirectIndex < 0 || Parent == null || !(Parent is ARCNode) || Parent.Children.Count <= RedirectIndex)
             {
                 redirectTargetNode = null;
                 UpdateProperties();
@@ -1052,6 +1052,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected virtual string GetName()
         {
+            if (!(Parent is ARCNode))
+            {
+                return _name;
+            }
             return GetName(_fileType.ToString());
         }
 
@@ -1110,7 +1114,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _name = GetName();
                 }
             }
-            else if (parent != null && !(parent is FileScanNode) && !(parent is FolderNode))
+            else if (parent != null && parent is ARCNode)
             {
                 ARCFileHeader* header = (ARCFileHeader*) (origSource.Address - 0x20);
                 _fileType = header->FileType;
