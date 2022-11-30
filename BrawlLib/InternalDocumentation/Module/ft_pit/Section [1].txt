@@ -1,0 +1,6 @@
+ft_pit Section [1]: 0x00010EC8
+Changing to 00 results in Final Smash Centurions not dying when hitting an opponent
+
+Default: 0x82
+	/EndDescription
+0100    // Flags for which bytes are underlined
