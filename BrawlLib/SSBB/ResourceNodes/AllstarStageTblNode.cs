@@ -158,7 +158,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private byte _fighterID, _unknown01, _unknown02, _unknown03;
         private float _unknown04;
 
-        [TypeConverter(typeof(DropDownListFighterIDs))]
+        [TypeConverter(typeof(DropDownListBrawlExSlotIDsSinglePlayer))]
         public byte FighterID
         {
             get => _fighterID;

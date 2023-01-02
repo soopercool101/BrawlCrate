@@ -418,6 +418,60 @@ namespace BrawlLib.Internal
         }
     }
 
+    // Used for single-player modes, includes +s flag list items
+    public class DropDownListBrawlExSlotIDsSinglePlayer : ByteConverter
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+
+        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            return new StandardValuesCollection(FighterNameGenerators.singlePlayerSlotIDList
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name)
+                .ToList());
+        }
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value.GetType() == typeof(string))
+            {
+                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase)
+                    ? 16
+                    : 10;
+                return Convert.ToByte(field0, fromBase);
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+                                         Type destinationType)
+        {
+            if (destinationType == typeof(string) && value.GetType() == typeof(byte))
+            {
+                SSBB.Fighter fighter = FighterNameGenerators.singlePlayerSlotIDList
+                    .Where(s => s.ID == (byte)value).FirstOrDefault();
+                return "0x" + ((byte)value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
+            }
+
+            if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
+                value.GetType() == typeof(string))
+            {
+                return 0;
+            }
+
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
+
     // Used by SLTC
     public class DropDownListBrawlExFighterIDsLong : ByteConverter
     {

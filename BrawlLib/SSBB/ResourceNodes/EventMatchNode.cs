@@ -141,7 +141,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private EventMatchFighterHeader data;
 
-        [TypeConverter(typeof(DropDownListFighterIDs))]
+        [TypeConverter(typeof(DropDownListBrawlExSlotIDsSinglePlayer))]
         public byte FighterID
         {
             get => data._fighterID;

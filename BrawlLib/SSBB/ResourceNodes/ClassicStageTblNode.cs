@@ -348,7 +348,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Invisible = 2
         }
 
-        [TypeConverter(typeof(DropDownListBrawlExSlotIDs))]
+        [TypeConverter(typeof(DropDownListBrawlExSlotIDsSinglePlayer))]
         [Category("Fighter")]
         [DisplayName("Fighter ID")]
         public byte FighterID
