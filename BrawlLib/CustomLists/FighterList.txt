@@ -59,7 +59,7 @@ Flag   |SlotID |FighterID  |CSSSlotID  |CosmeticID |Internal Name   |Fighter Nam
        |0x31   |0x35       |0x3B       |0x3B       |ZakoBall        |Green Alloy (Don't use in event matches)
        |0x32   |0x27       |0x2D       |0x2D       |Roy             |Roy (Project M Only) // IDs are based on PMEX
        |0x33   |0x26       |0x2E       |0x2E       |Mewtwo          |Mewtwo (Project M Only) // IDs are based on PMEX
-       |0x35   |0x2D       |0x2F       |0x2F       |Knuckles        |Knuckles (Project+ Only) // IDs are based on P+
+       |0x35   |0x2D       |0x2A       |0x2F       |Knuckles        |Knuckles (Project+ Only) // IDs are based on P+
 X      |       |0x24       |           |           |pramai          |Plusle/Minun (Unused)
 X      |       |0x26       |           |           |mewtwo          |Mewtwo (Unused)
 X      |       |0x27       |           |           |roy             |Roy (Unused)
