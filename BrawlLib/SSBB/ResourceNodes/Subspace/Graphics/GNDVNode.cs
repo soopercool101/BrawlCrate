@@ -20,7 +20,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         protected internal GNDVEntry* Entry => (GNDVEntry*) WorkingUncompressed.Address;
 
         [Category("General")]
-        public uint Unk1
+        public uint ModelDataFileIndex
         {
             get => _unk1;
             set
@@ -116,7 +116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             GNDVEntry* header = (GNDVEntry*) address;
             *header = new GNDVEntry();
-            header->_unk1 = Unk1;
+            header->_unk1 = ModelDataFileIndex;
             header->BoneName = BoneName;
             header->_sfx = SFXInfoIndex;
             header->_gfx = Graphic;
