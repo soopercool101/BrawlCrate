@@ -1,4 +1,5 @@
-﻿using BrawlCrate.UI;
+﻿using BrawlCrate.ExternalInterfacing;
+using BrawlCrate.UI;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
@@ -18,6 +19,9 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
+        private static readonly ToolStripMenuItem ColorSmashImportToolStripMenuItem =
+            new ToolStripMenuItem("Color Smashable Textures", null, ImportColorSmashTextureAction);
 
         private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
             new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
@@ -52,7 +56,7 @@ namespace BrawlCrate.NodeWrappers
             ));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
                 new ToolStripMenuItem("Textures", null, ImportTextureAction),
-                new ToolStripMenuItem("Color Smashable Textures", null, ImportColorSmashTextureAction),
+                ColorSmashImportToolStripMenuItem,
                 new ToolStripMenuItem("Models", null, ImportModelAction),
                 new ToolStripMenuItem("Model Animations (CHR)", null, ImportChrAction),
                 new ToolStripMenuItem("Texture Animations (SRT)", null, ImportSrtAction),
@@ -236,6 +240,8 @@ namespace BrawlCrate.NodeWrappers
         {
             DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
+            ColorSmashImportToolStripMenuItem.Enabled = true;
+            ColorSmashImportToolStripMenuItem.ToolTipText = null;
             RestoreToolStripMenuItem.Enabled = true;
             MoveUpToolStripMenuItem.Enabled = true;
             MoveDownToolStripMenuItem.Enabled = true;
@@ -248,6 +254,11 @@ namespace BrawlCrate.NodeWrappers
 
             DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
+            ColorSmashImportToolStripMenuItem.Enabled = ColorSmash.CanRunColorSmash;
+            if(!ColorSmash.CanRunColorSmash)
+            {
+                ColorSmashImportToolStripMenuItem.ToolTipText = "color_smash.exe cannot be found, likely due to antivirus software. Please reinstall BrawlCrate.";
+            }
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
             MoveDownToolStripMenuItem.Enabled = w.NextNode != null;

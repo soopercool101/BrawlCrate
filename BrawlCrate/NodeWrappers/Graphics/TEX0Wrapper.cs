@@ -131,6 +131,7 @@ namespace BrawlCrate.NodeWrappers
         private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             ColorSmashSelectedToolStripMenuItem.Enabled = true;
+            ColorSmashSelectedToolStripMenuItem.ToolTipText = null;
             DeleteSelectedToolStripMenuItem.Visible = true;
             DeleteSelectedToolStripMenuItem.Enabled = true;
         }
@@ -141,6 +142,7 @@ namespace BrawlCrate.NodeWrappers
             if (!ColorSmash.CanRunColorSmash)
             {
                 ColorSmashSelectedToolStripMenuItem.Enabled = false;
+                ColorSmashSelectedToolStripMenuItem.ToolTipText = "color_smash.exe cannot be found, likely due to antivirus software. Please reinstall BrawlCrate.";
             }
 
             foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
