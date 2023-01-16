@@ -68,6 +68,7 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Collision", null, ImportCollisionAction),
                 new ToolStripMenuItem("Havok Data", null, ImportHavokAction),
                 new ToolStripMenuItem("MSBin", null, ImportMSBinAction),
+                new ToolStripMenuItem("Raw Binary Data", null, ImportBinaryAction),
                 new ToolStripMenuItem("Stage Collision Attributes", null, ImportSCLAAction),
                 new ToolStripMenuItem("Stage Parameters", null, ImportSTPMAction),
                 new ToolStripMenuItem("Stage Table", null,
@@ -180,6 +181,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void ImportMSBinAction(object sender, EventArgs e)
         {
             GetInstance<ARCWrapper>().ImportMSBin();
+        }
+
+        protected static void ImportBinaryAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportBinary();
         }
 
         protected static void ImportSCLAAction(object sender, EventArgs e)
@@ -473,6 +479,20 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     NewMSBin().Replace(path);
+                }
+            }
+        }
+
+        public void ImportBinary()
+        {
+            if (Program.OpenFiles(FileFilters.Raw, out string[] paths) > 0)
+            {
+                foreach (string path in paths)
+                {
+                    ARCEntryNode r = new ARCEntryNode { FileType = ARCFileType.MiscData };
+                    Resource.AddChild(r);
+                    r.Replace(path);
+                    r.Name = "Misc Data [0]";
                 }
             }
         }
