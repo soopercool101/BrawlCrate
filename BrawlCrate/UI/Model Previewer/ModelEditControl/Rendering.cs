@@ -1,4 +1,5 @@
-﻿using BrawlLib.Internal;
+﻿using BrawlCrate.API;
+using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase;
 using BrawlLib.OpenGL;
@@ -210,6 +211,11 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                 GL.Vertex2(deathBone0._x, deathBone0._y);
                 GL.Vertex2(camBone0._x, camBone0._y);
                 GL.End();
+            }
+
+            foreach (PathingMiscDataEntryNode p in BrawlAPI.NodeListOfType<PathingMiscDataEntryNode>())
+            {
+                p.Render();
             }
 
             #endregion

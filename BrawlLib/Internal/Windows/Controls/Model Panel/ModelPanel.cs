@@ -187,6 +187,21 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             }
         }
 
+        public void AddTarget(PathingMiscDataNode target, bool invalidate)
+        {
+            if (_pathing.Contains(target))
+            {
+                return;
+            }
+
+            _pathing.Add(target);
+
+            if (invalidate)
+            {
+                Invalidate();
+            }
+        }
+
         public void RemoveTarget(IRenderedObject target, bool refreshReferences = true)
         {
             if (!_renderList.Contains(target))
@@ -236,6 +251,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             _renderList.Clear();
             _drawCalls.Clear();
             _collisions.Clear();
+            _pathing.Clear();
         }
 
         public void AddReference(ResourceNode node, bool refreshReferences = true)
@@ -654,6 +670,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         }
 
         public List<CollisionNode> _collisions = new List<CollisionNode>();
+        public List<PathingMiscDataNode> _pathing = new List<PathingMiscDataNode>();
 
         protected override void OnRenderViewport(PaintEventArgs e, GLViewport v)
         {

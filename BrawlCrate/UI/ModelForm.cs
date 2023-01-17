@@ -57,6 +57,7 @@ namespace BrawlCrate.UI
 
         private List<IModel> _models = new List<IModel>();
         private List<CollisionNode> _collisions = new List<CollisionNode>();
+        private List<PathingMiscDataNode> _pathing = new List<PathingMiscDataNode>();
 
         public DialogResult ShowDialog(List<IModel> models)
         {
@@ -64,10 +65,11 @@ namespace BrawlCrate.UI
         }
 
         public DialogResult ShowDialog(IWin32Window owner, List<IModel> models,
-                                       List<CollisionNode> collisions = null)
+                                       List<CollisionNode> collisions = null, List<PathingMiscDataNode> pathings = null)
         {
             _models = models;
             _collisions = collisions ?? _collisions;
+            _pathing = pathings ?? _pathing;
             try
             {
                 return ShowDialog(owner);
@@ -97,10 +99,11 @@ namespace BrawlCrate.UI
         }
 
         public void Show(IWin32Window owner, List<IModel> models,
-                         List<CollisionNode> collisions = null)
+                         List<CollisionNode> collisions = null, List<PathingMiscDataNode> pathings = null)
         {
             _models = models;
             _collisions = collisions ?? _collisions;
+            _pathing = pathings ?? _pathing;
             Show(owner);
         }
 
@@ -213,6 +216,11 @@ namespace BrawlCrate.UI
                         }
                     }
                 }
+            }
+
+            foreach(PathingMiscDataNode p in _pathing)
+            {
+                modelEditControl1.AppendTarget(p);
             }
 
             modelEditControl1.ModelPanel.Capture();

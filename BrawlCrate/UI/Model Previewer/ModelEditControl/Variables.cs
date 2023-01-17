@@ -12,6 +12,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
     public partial class ModelEditControl : ModelEditorBase
     {
         public List<CollisionNode> _collisions = new List<CollisionNode>();
+        public List<PathingMiscDataNode> _pathing = new List<PathingMiscDataNode>();
         private CollisionNode _targetCollision;
 
         private bool _syncTexToObj;

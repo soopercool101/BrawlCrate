@@ -2136,6 +2136,14 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
             chkCollisions.Visible = _collisions.Count > 0;
         }
 
+        public void AppendTarget(PathingMiscDataNode pathing)
+        {
+            if (!_pathing.Contains(pathing))
+            {
+                _pathing.Add(pathing);
+            }
+        }
+
         public override void LoadModels(ResourceNode node)
         {
             base.LoadModels(node);
