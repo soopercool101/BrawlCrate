@@ -170,7 +170,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            return 0x38;
+            return GWATEntry.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
