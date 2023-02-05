@@ -19,43 +19,63 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GMOTEntryNode : ResourceNode
     {
+        internal GMOTEntry Data;
         internal GMOTEntry* Header => (GMOTEntry*) WorkingUncompressed.Address;
         public override bool supportsCompression => false;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         [Category("Animated Object")]
         [DisplayName("Model Index")]
-        public int ModelIndex => *(byte*) (WorkingUncompressed.Address + 0x3C);
-
-        [Category("Animated Object")]
-        [DisplayName("Collision Index")]
-        public int CollisionIndex
+        public byte ModelIndex
         {
-            get
+            get => Data._modelDataIndex;
+            set
             {
-                int CID = *(byte*) (WorkingUncompressed.Address + 0x3D);
-                if (CID == 0xFF)
-                {
-                    return -1;
-                }
-
-                return CID;
+                Data._modelDataIndex = value;
+                SignalPropertyChange();
             }
         }
 
-        [Category("Sound")]
+        [Category("Animated Object")]
+        [DisplayName("Collision Index")]
+        public byte CollisionIndex
+        {
+            get => Data._collisionDataIndex;
+            set
+            {
+                Data._collisionDataIndex = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Animated Object")]
         [DisplayName("Info Index")]
-        public bint InfoIndex => *(bint*) (WorkingUncompressed.Address + 0x118);
+        public int SoundInfoIndex
+        {
+            get => Data._soundInfoIndex;
+            set
+            {
+                Data._soundInfoIndex = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return GMOTEntry.Size;
+        }
 
         public override bool OnInitialize()
         {
-            base.OnInitialize();
-            if (_name == null)
-            {
-                _name = $"Object [{Index}]";
-            }
+            Data = *Header;
 
             return false;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            GMOTEntry* hdr = (GMOTEntry*)address;
+            *hdr = Data;
         }
     }
 }
