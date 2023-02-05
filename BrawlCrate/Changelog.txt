@@ -1,6 +1,6 @@
 
-BrawlCrate - v0.38
-Copyright © 2018 - 2022 soopercool101, Simon381, Onium
+BrawlCrate - v0.39
+Copyright © 2018 - 2023 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
@@ -15,6 +15,21 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.39 - (2/5/2023)
+ . P+ Knuckles has been added to the default Fighters List
+ . Add support for importing any filetype to ARCNode
+ . Subspace BLOC parsing has been greatly improved
+   - Added support for GEPT, GFT2, GCAT, and GSAV
+   - Improved parsing for GFG1, GMOT, GNDV
+ . ADPM: Parse TimeLimitSeconds
+ . SELB now allows for up to 10 max entries rather than 5
+ . Collision Merge function now allows merging multiple collisions at once and appends original collision's name to the object name temporarily
+ . Fix bug in which Color Smash Import showed as enabled when color_smash.exe is missing
+   - When color_smash.exe is missing, add a tooltip to explain this to the user
+ . Fix bug in which TBGC 0x0 would always save as 0
+ . Fix bug in which duplicate names in STEX would corrupt the file on save
+ . Fix bug in which a RELNode could be closed before it fully populated
  
  - BrawlCrate v0.38 - (8/31/2022)
  . Add support for SSEEX structures (SELC and SELB)

@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.38";
+        public static readonly string TagName = "v0.39";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,10 +41,10 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.38! Here's what's new in this release:
-- Add support for SSEEX structures, as well as various other SSE updates
-- Stability improvements for BRSAR
-- Fix various bugs
+            @"Updated to BrawlCrate v0.39! Here's what's new in this release:
+- Add Knuckles (P+) to default fighterlist
+- Various SSE improvements
+- Various bugfixes
 
 Full changelog and documentation can be viewed from the help menu.";
 

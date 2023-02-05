@@ -1,10 +1,13 @@
-Documentation_v0.38
+Documentation_v0.39
 
  =============================================================
 |************ BrawlCrate Documentation Change Log ************|
  =============================================================
  
  Current BrawlCrate Documentation contributors: soopercool101, Syvkal, MarioDox, Pyro, HyperL!nk, Cahalan, Eon, WTails358, RedipsTheCooler, Escope12
+ 
+ - Documentation v0.39
+ . Added module annotations for Pit (Section [1])
  
  - Documentation v0.38
  . Added module annotations for Diddy Kong (Section [1])
