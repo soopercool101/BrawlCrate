@@ -79,6 +79,7 @@
             new Fighter(0x31, "Green Alloy (don't use in event matches)"),
             new Fighter(0x32, "Roy (PM)"),
             new Fighter(0x33, "Mewtwo (PM)"),
+            new Fighter(0x33, "Knuckles (P+)"),
             new Fighter(0x3F, "ExFighter3F"),
             new Fighter(0x40, "ExFighter40"),
             new Fighter(0x41, "ExFighter41"),
