@@ -251,31 +251,43 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.PostProcess(bresAddress, dataAddress, dataLength, stringTable);
 
-            SHP0v3* header = (SHP0v3*) dataAddress;
+            ResourceGroup* group;
             if (_version == 4)
             {
-                ((SHP0v4*) dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
-                if (!string.IsNullOrEmpty(_originalPath))
-                {
-                    ((SHP0v4*) dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
-                }
-            }
-            else
-            {
+                SHP0v4* header = (SHP0v4*)dataAddress;
                 header->ResourceStringAddress = stringTable[Name] + 4;
                 if (!string.IsNullOrEmpty(_originalPath))
                 {
                     header->OrigPathAddress = stringTable[_originalPath] + 4;
                 }
-            }
 
-            bint* stringPtr = header->StringEntries;
-            for (int i = 0; i < header->_numEntries; i++)
+                bint* stringPtr = header->StringEntries;
+                for (int i = 0; i < header->_numEntries; i++)
+                {
+                    stringPtr[i] = (int)stringTable[_strings[i]] + 4 - (int)stringPtr;
+                }
+
+                group = header->Group;
+            }
+            else
             {
-                stringPtr[i] = (int) stringTable[_strings[i]] + 4 - (int) stringPtr;
+                SHP0v3* header = (SHP0v3*)dataAddress;
+                header->ResourceStringAddress = stringTable[Name] + 4;
+                if (!string.IsNullOrEmpty(_originalPath))
+                {
+                    header->OrigPathAddress = stringTable[_originalPath] + 4;
+                }
+
+                bint* stringPtr = header->StringEntries;
+                for (int i = 0; i < header->_numEntries; i++)
+                {
+                    stringPtr[i] = (int)stringTable[_strings[i]] + 4 - (int)stringPtr;
+                }
+
+                group = header->Group;
             }
 
-            ResourceGroup* group = header->Group;
+
             group->_first = new ResourceEntry(0xFFFF, 0, 0, 0, 0);
 
             ResourceEntry* rEntry = group->First;
