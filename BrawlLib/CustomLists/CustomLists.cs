@@ -139,9 +139,10 @@ namespace BrawlLib.CustomLists
             }
         }
 
-        private static readonly byte[][] outDatedHashes = {
+        private static readonly byte[][] outdatedHashes = {
             new byte[]{ 0xD2, 0x03, 0xA9, 0x9E, 0x92, 0xD4, 0xCC, 0xCB, 0xD4, 0xBD, 0x85, 0x28, 0xD8, 0x7C, 0x72, 0xB4 },
-            new byte[]{ 0xC3, 0x85, 0x7E, 0xAF, 0x8A, 0xA0, 0xFD, 0x59, 0x8B, 0x12, 0xD9, 0xCF, 0x06, 0x7D, 0x80, 0x23 }
+            new byte[]{ 0xC3, 0x85, 0x7E, 0xAF, 0x8A, 0xA0, 0xFD, 0x59, 0x8B, 0x12, 0xD9, 0xCF, 0x06, 0x7D, 0x80, 0x23 },
+            new byte[]{ 0xFD, 0xC2, 0x26, 0xB4, 0x66, 0xC7, 0xE1, 0xC0, 0x49, 0x7A, 0xF4, 0xCB, 0xB7, 0xFA, 0x9E, 0x75 }
         };
 
         public static bool GenerateLists()
@@ -156,21 +157,7 @@ namespace BrawlLib.CustomLists
                     using (FileStream stream = File.OpenRead(listName))
                     {
                         byte[] hash = md5.ComputeHash(stream);
-                        foreach(var oldHash in outDatedHashes)
-                        {
-                            if (hash.Length == oldHash.Length)
-                            {
-                                fileOutdated = true;
-                                for (int i = 0; i < hash.Length; i++)
-                                {
-                                    if (hash[i] != oldHash[i])
-                                    {
-                                        fileOutdated = false;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        fileOutdated = outdatedHashes.Any(o => o.Length == hash.Length && o.SequenceEqual(hash));
                     }
                 }
             }
