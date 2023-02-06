@@ -736,9 +736,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  392</span>                offset += address.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html#a97b7fa82f86e1c1e3a8edf49ef3cda8c">WriteUTF8String</a>(<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_project_plus_1_1_s_t_e_x_node.html#a00a59eca6e398f07c951a11525fd53e3">Module</a>, <span class="keyword">true</span>, offset);</div>
 <div class="line"><span class="lineno">  393</span>            }</div>
 <div class="line"><span class="lineno">  394</span> </div>
-<div class="line"><span class="lineno">  395</span>            <span class="keywordflow">foreach</span> (ResourceNode n <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
+<div class="line"><span class="lineno">  395</span>            <span class="keywordflow">foreach</span> (var name <span class="keywordflow">in</span> names)</div>
 <div class="line"><span class="lineno">  396</span>            {</div>
-<div class="line"><span class="lineno">  397</span>                offset += address.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html#a97b7fa82f86e1c1e3a8edf49ef3cda8c">WriteUTF8String</a>(n.Name, <span class="keyword">true</span>, offset);</div>
+<div class="line"><span class="lineno">  397</span>                offset += address.<a class="code hl_function" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html#a97b7fa82f86e1c1e3a8edf49ef3cda8c">WriteUTF8String</a>(name.Key, <span class="keyword">true</span>, offset);</div>
 <div class="line"><span class="lineno">  398</span>            }</div>
 <div class="line"><span class="lineno">  399</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html_a97b7fa82f86e1c1e3a8edf49ef3cda8c"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html#a97b7fa82f86e1c1e3a8edf49ef3cda8c">BrawlLib.Internal.VoidPtr.WriteUTF8String</a></div><div class="ttdeci">uint WriteUTF8String(string s)</div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:231</div></div>

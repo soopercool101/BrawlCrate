@@ -442,15 +442,15 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  416</span>        {</div>
-<div class="line"><span class="lineno">  417</span>            None = 0,</div>
-<div class="line"><span class="lineno">  418</span>            Unknown = 1,</div>
-<div class="line"><span class="lineno">  419</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">Independent</a> = 2,</div>
-<div class="line"><span class="lineno">  420</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#acf4a15e0809af39cbc8cb2a0a9338919">ModuleControlled</a> = 4,</div>
-<div class="line"><span class="lineno">  421</span>            SSEUnknown = 8</div>
-<div class="line"><span class="lineno">  422</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a40ea3eaf4ee4a89d948ff6582fc083ed"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">BrawlLib.SSBB.ResourceNodes.CollisionObject.Independent</a></div><div class="ttdeci">bool Independent</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:371</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_acf4a15e0809af39cbc8cb2a0a9338919"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#acf4a15e0809af39cbc8cb2a0a9338919">BrawlLib.SSBB.ResourceNodes.CollisionObject.ModuleControlled</a></div><div class="ttdeci">bool ModuleControlled</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:382</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  421</span>        {</div>
+<div class="line"><span class="lineno">  422</span>            None = 0,</div>
+<div class="line"><span class="lineno">  423</span>            Unknown = 1,</div>
+<div class="line"><span class="lineno">  424</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">Independent</a> = 2,</div>
+<div class="line"><span class="lineno">  425</span>            <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#acf4a15e0809af39cbc8cb2a0a9338919">ModuleControlled</a> = 4,</div>
+<div class="line"><span class="lineno">  426</span>            SSEUnknown = 8</div>
+<div class="line"><span class="lineno">  427</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a40ea3eaf4ee4a89d948ff6582fc083ed"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">BrawlLib.SSBB.ResourceNodes.CollisionObject.Independent</a></div><div class="ttdeci">bool Independent</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:376</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_acf4a15e0809af39cbc8cb2a0a9338919"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#acf4a15e0809af39cbc8cb2a0a9338919">BrawlLib.SSBB.ResourceNodes.CollisionObject.ModuleControlled</a></div><div class="ttdeci">bool ModuleControlled</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:387</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -477,8 +477,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  430</span>        {</div>
-<div class="line"><span class="lineno">  431</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  435</span>        {</div>
+<div class="line"><span class="lineno">  436</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -508,18 +508,18 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a0d20c06f93b5bbadd05a1f98a5689faf">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  533</span>        {</div>
-<div class="line"><span class="lineno">  534</span>            <span class="keywordflow">if</span> (outPath.EndsWith(<span class="stringliteral">&quot;.coll&quot;</span>, StringComparison.OrdinalIgnoreCase))</div>
-<div class="line"><span class="lineno">  535</span>            {</div>
-<div class="line"><span class="lineno">  536</span>                CollisionNode node = <span class="keyword">new</span> CollisionNode();</div>
-<div class="line"><span class="lineno">  537</span>                node.Children.Add(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  538</span>                node.SignalPropertyChange();</div>
-<div class="line"><span class="lineno">  539</span>                node.Export(outPath);</div>
-<div class="line"><span class="lineno">  540</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  541</span>            }</div>
-<div class="line"><span class="lineno">  542</span> </div>
-<div class="line"><span class="lineno">  543</span>            base.Export(outPath);</div>
-<div class="line"><span class="lineno">  544</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  538</span>        {</div>
+<div class="line"><span class="lineno">  539</span>            <span class="keywordflow">if</span> (outPath.EndsWith(<span class="stringliteral">&quot;.coll&quot;</span>, StringComparison.OrdinalIgnoreCase))</div>
+<div class="line"><span class="lineno">  540</span>            {</div>
+<div class="line"><span class="lineno">  541</span>                CollisionNode node = <span class="keyword">new</span> CollisionNode();</div>
+<div class="line"><span class="lineno">  542</span>                node.Children.Add(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  543</span>                node.SignalPropertyChange();</div>
+<div class="line"><span class="lineno">  544</span>                node.Export(outPath);</div>
+<div class="line"><span class="lineno">  545</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  546</span>            }</div>
+<div class="line"><span class="lineno">  547</span> </div>
+<div class="line"><span class="lineno">  548</span>            base.Export(outPath);</div>
+<div class="line"><span class="lineno">  549</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -546,10 +546,10 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  549</span>        {</div>
-<div class="line"><span class="lineno">  550</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a207b5b0135d3dca428e6bd15ff88dae8">FindLink</a>(l._rawValue);</div>
-<div class="line"><span class="lineno">  551</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a207b5b0135d3dca428e6bd15ff88dae8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a207b5b0135d3dca428e6bd15ff88dae8">BrawlLib.SSBB.ResourceNodes.CollisionObject.FindLink</a></div><div class="ttdeci">CollisionLink FindLink(CollisionLink l)</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:548</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  554</span>        {</div>
+<div class="line"><span class="lineno">  555</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a207b5b0135d3dca428e6bd15ff88dae8">FindLink</a>(l._rawValue);</div>
+<div class="line"><span class="lineno">  556</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a207b5b0135d3dca428e6bd15ff88dae8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a207b5b0135d3dca428e6bd15ff88dae8">BrawlLib.SSBB.ResourceNodes.CollisionObject.FindLink</a></div><div class="ttdeci">CollisionLink FindLink(CollisionLink l)</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:553</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -576,18 +576,18 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  554</span>        {</div>
-<div class="line"><span class="lineno">  555</span>            <span class="keywordflow">foreach</span> (CollisionLink l <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a8fb63f04de77b1d74abad2159e510dbc">_points</a>)</div>
-<div class="line"><span class="lineno">  556</span>            {</div>
-<div class="line"><span class="lineno">  557</span>                <span class="keywordflow">if</span> (l.Value == position)</div>
-<div class="line"><span class="lineno">  558</span>                {</div>
-<div class="line"><span class="lineno">  559</span>                    <span class="keywordflow">return</span> l;</div>
-<div class="line"><span class="lineno">  560</span>                }</div>
-<div class="line"><span class="lineno">  561</span>            }</div>
-<div class="line"><span class="lineno">  562</span> </div>
-<div class="line"><span class="lineno">  563</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  564</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a8fb63f04de77b1d74abad2159e510dbc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a8fb63f04de77b1d74abad2159e510dbc">BrawlLib.SSBB.ResourceNodes.CollisionObject._points</a></div><div class="ttdeci">List&lt; CollisionLink &gt; _points</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:427</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  559</span>        {</div>
+<div class="line"><span class="lineno">  560</span>            <span class="keywordflow">foreach</span> (CollisionLink l <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a8fb63f04de77b1d74abad2159e510dbc">_points</a>)</div>
+<div class="line"><span class="lineno">  561</span>            {</div>
+<div class="line"><span class="lineno">  562</span>                <span class="keywordflow">if</span> (l.Value == position)</div>
+<div class="line"><span class="lineno">  563</span>                {</div>
+<div class="line"><span class="lineno">  564</span>                    <span class="keywordflow">return</span> l;</div>
+<div class="line"><span class="lineno">  565</span>                }</div>
+<div class="line"><span class="lineno">  566</span>            }</div>
+<div class="line"><span class="lineno">  567</span> </div>
+<div class="line"><span class="lineno">  568</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  569</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a8fb63f04de77b1d74abad2159e510dbc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a8fb63f04de77b1d74abad2159e510dbc">BrawlLib.SSBB.ResourceNodes.CollisionObject._points</a></div><div class="ttdeci">List&lt; CollisionLink &gt; _points</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:432</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -613,34 +613,34 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  567</span>        {</div>
-<div class="line"><span class="lineno">  568</span>            <span class="keywordflow">foreach</span> (CollisionPlane p <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a96a81e08b566906271a31280ed3fa6d5">_planes</a>.Where(o =&gt; o.IsFloor &amp;&amp; o.IsLedge))</div>
-<div class="line"><span class="lineno">  569</span>            {</div>
-<div class="line"><span class="lineno">  570</span>                <span class="keywordflow">if</span> (p.IsLeftLedge)</div>
-<div class="line"><span class="lineno">  571</span>                {</div>
-<div class="line"><span class="lineno">  572</span>                    <span class="keywordflow">foreach</span> (CollisionPlane p2 <span class="keywordflow">in</span> p.LinkLeft._members.Where(o =&gt; !o.Equals(p)))</div>
-<div class="line"><span class="lineno">  573</span>                    {</div>
-<div class="line"><span class="lineno">  574</span>                        <span class="keywordflow">if</span> (!p2.IsLeftWall &amp;&amp; !p2.IsCeiling)</div>
-<div class="line"><span class="lineno">  575</span>                        {</div>
-<div class="line"><span class="lineno">  576</span>                            p.IsLeftLedge = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  577</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  578</span>                        }</div>
-<div class="line"><span class="lineno">  579</span>                    }</div>
-<div class="line"><span class="lineno">  580</span>                }</div>
-<div class="line"><span class="lineno">  581</span>                <span class="keywordflow">if</span> (p.IsRightLedge)</div>
-<div class="line"><span class="lineno">  582</span>                {</div>
-<div class="line"><span class="lineno">  583</span>                    <span class="keywordflow">foreach</span> (CollisionPlane p2 <span class="keywordflow">in</span> p.LinkRight._members.Where(o =&gt; !o.Equals(p)))</div>
-<div class="line"><span class="lineno">  584</span>                    {</div>
-<div class="line"><span class="lineno">  585</span>                        <span class="keywordflow">if</span> (!p2.IsRightWall &amp;&amp; !p2.IsCeiling)</div>
-<div class="line"><span class="lineno">  586</span>                        {</div>
-<div class="line"><span class="lineno">  587</span>                            p.IsRightLedge = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  588</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  589</span>                        }</div>
-<div class="line"><span class="lineno">  590</span>                    }</div>
-<div class="line"><span class="lineno">  591</span>                }</div>
-<div class="line"><span class="lineno">  592</span>            }</div>
-<div class="line"><span class="lineno">  593</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a96a81e08b566906271a31280ed3fa6d5"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a96a81e08b566906271a31280ed3fa6d5">BrawlLib.SSBB.ResourceNodes.CollisionObject._planes</a></div><div class="ttdeci">List&lt; CollisionPlane &gt; _planes</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:408</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  572</span>        {</div>
+<div class="line"><span class="lineno">  573</span>            <span class="keywordflow">foreach</span> (CollisionPlane p <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a96a81e08b566906271a31280ed3fa6d5">_planes</a>.Where(o =&gt; o.IsFloor &amp;&amp; o.IsLedge))</div>
+<div class="line"><span class="lineno">  574</span>            {</div>
+<div class="line"><span class="lineno">  575</span>                <span class="keywordflow">if</span> (p.IsLeftLedge)</div>
+<div class="line"><span class="lineno">  576</span>                {</div>
+<div class="line"><span class="lineno">  577</span>                    <span class="keywordflow">foreach</span> (CollisionPlane p2 <span class="keywordflow">in</span> p.LinkLeft._members.Where(o =&gt; !o.Equals(p)))</div>
+<div class="line"><span class="lineno">  578</span>                    {</div>
+<div class="line"><span class="lineno">  579</span>                        <span class="keywordflow">if</span> (!p2.IsLeftWall &amp;&amp; !p2.IsCeiling)</div>
+<div class="line"><span class="lineno">  580</span>                        {</div>
+<div class="line"><span class="lineno">  581</span>                            p.IsLeftLedge = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  582</span>                            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  583</span>                        }</div>
+<div class="line"><span class="lineno">  584</span>                    }</div>
+<div class="line"><span class="lineno">  585</span>                }</div>
+<div class="line"><span class="lineno">  586</span>                <span class="keywordflow">if</span> (p.IsRightLedge)</div>
+<div class="line"><span class="lineno">  587</span>                {</div>
+<div class="line"><span class="lineno">  588</span>                    <span class="keywordflow">foreach</span> (CollisionPlane p2 <span class="keywordflow">in</span> p.LinkRight._members.Where(o =&gt; !o.Equals(p)))</div>
+<div class="line"><span class="lineno">  589</span>                    {</div>
+<div class="line"><span class="lineno">  590</span>                        <span class="keywordflow">if</span> (!p2.IsRightWall &amp;&amp; !p2.IsCeiling)</div>
+<div class="line"><span class="lineno">  591</span>                        {</div>
+<div class="line"><span class="lineno">  592</span>                            p.IsRightLedge = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  593</span>                            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  594</span>                        }</div>
+<div class="line"><span class="lineno">  595</span>                    }</div>
+<div class="line"><span class="lineno">  596</span>                }</div>
+<div class="line"><span class="lineno">  597</span>            }</div>
+<div class="line"><span class="lineno">  598</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a96a81e08b566906271a31280ed3fa6d5"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a96a81e08b566906271a31280ed3fa6d5">BrawlLib.SSBB.ResourceNodes.CollisionObject._planes</a></div><div class="ttdeci">List&lt; CollisionPlane &gt; _planes</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:413</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -668,62 +668,62 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aca8bfdd04f5339dd3135a9daf03495a8">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  436</span>        {</div>
-<div class="line"><span class="lineno">  437</span>            CollisionNode parentColl = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a> as CollisionNode;</div>
-<div class="line"><span class="lineno">  438</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = $<span class="stringliteral">&quot;Collision Object [{Parent.Children.Count}]&quot;</span>;</div>
-<div class="line"><span class="lineno">  439</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = Header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a3aaece3ed259dc3566dd3c025efb260b">ModelName</a>;</div>
-<div class="line"><span class="lineno">  440</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = Header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ad579a60a58ae9ac491b357d955bf7691">BoneName</a>;</div>
-<div class="line"><span class="lineno">  441</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a4f4759528635fdf3dcb6f335f6fc514f">_unk1</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#abeca8da3f78ae011c252f0732e9b7145">_unk1</a>;</div>
-<div class="line"><span class="lineno">  442</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a59b3b58299890bff9839474495c04d72">_unk2</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ac1a74024c72ecf1d0d9ad604cbac3aa0">_unk2</a>;</div>
-<div class="line"><span class="lineno">  443</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a27fba9ac214aa5f20dfb67a9f8194002">_unk3</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ae20d0f9830ad10ed2313148be8c9150c">_unk3</a>;</div>
-<div class="line"><span class="lineno">  444</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>) (ushort) Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a1703964eb6fbcd549d781016c7f1eb35">_flags</a>;</div>
-<div class="line"><span class="lineno">  445</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a58824ab76a2210c64bd6c7e4690aa48a">_unk5</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a5807fba07f0f79dc6b182f5ec8539f3d">_unk5</a>;</div>
-<div class="line"><span class="lineno">  446</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ae4d2aa671295e8fc27425f68e1a370b7">_unk6</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a63200549d2dcb5fb45a0d15c5cca6cf9">_unk6</a>;</div>
-<div class="line"><span class="lineno">  447</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a682de7eee4f6eba667023ca820d55c06">_boneIndex</a>;</div>
-<div class="line"><span class="lineno">  448</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a60ac3aa42bd5c85c1c985cd87d8edffa">_boxMax</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a6bf57e69133ac573aea3cc82d7e613dc">_boxMax</a>;</div>
-<div class="line"><span class="lineno">  449</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a181a76baeb9cf67e1f5cdd3c4bb5c713">_boxMin</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a6c6fcea410eaea465920e33e96c2022a">_boxMin</a>;</div>
-<div class="line"><span class="lineno">  450</span> </div>
-<div class="line"><span class="lineno">  451</span>            <span class="keywordtype">int</span> pointCount = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a6cd51426c0e1e816a6f4992df34895cb">_pointCount</a>;</div>
-<div class="line"><span class="lineno">  452</span>            <span class="keywordtype">int</span> pointOffset = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ad6ea2e9ac0d7b13003bbfd3a6e5f7043">_pointOffset</a>;</div>
-<div class="line"><span class="lineno">  453</span>            <span class="keywordtype">int</span> planeCount = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a15e5797b8c6f55b026ff77f1ec63e17d">_planeCount</a>;</div>
-<div class="line"><span class="lineno">  454</span>            <span class="keywordtype">int</span> planeOffset = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a41daf98bac998c84086b3bfe59805d09">_planeIndex</a>;</div>
+<div class="fragment"><div class="line"><span class="lineno">  441</span>        {</div>
+<div class="line"><span class="lineno">  442</span>            CollisionNode parentColl = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a> as CollisionNode;</div>
+<div class="line"><span class="lineno">  443</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">_name</a> = $<span class="stringliteral">&quot;Collision Object [{Parent.Children.Count}]&quot;</span>;</div>
+<div class="line"><span class="lineno">  444</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = Header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a3aaece3ed259dc3566dd3c025efb260b">ModelName</a>;</div>
+<div class="line"><span class="lineno">  445</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = Header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ad579a60a58ae9ac491b357d955bf7691">BoneName</a>;</div>
+<div class="line"><span class="lineno">  446</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a4f4759528635fdf3dcb6f335f6fc514f">_unk1</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#abeca8da3f78ae011c252f0732e9b7145">_unk1</a>;</div>
+<div class="line"><span class="lineno">  447</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a59b3b58299890bff9839474495c04d72">_unk2</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ac1a74024c72ecf1d0d9ad604cbac3aa0">_unk2</a>;</div>
+<div class="line"><span class="lineno">  448</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a27fba9ac214aa5f20dfb67a9f8194002">_unk3</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ae20d0f9830ad10ed2313148be8c9150c">_unk3</a>;</div>
+<div class="line"><span class="lineno">  449</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>) (ushort) Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a1703964eb6fbcd549d781016c7f1eb35">_flags</a>;</div>
+<div class="line"><span class="lineno">  450</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a58824ab76a2210c64bd6c7e4690aa48a">_unk5</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a5807fba07f0f79dc6b182f5ec8539f3d">_unk5</a>;</div>
+<div class="line"><span class="lineno">  451</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ae4d2aa671295e8fc27425f68e1a370b7">_unk6</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a63200549d2dcb5fb45a0d15c5cca6cf9">_unk6</a>;</div>
+<div class="line"><span class="lineno">  452</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a682de7eee4f6eba667023ca820d55c06">_boneIndex</a>;</div>
+<div class="line"><span class="lineno">  453</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a60ac3aa42bd5c85c1c985cd87d8edffa">_boxMax</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a6bf57e69133ac573aea3cc82d7e613dc">_boxMax</a>;</div>
+<div class="line"><span class="lineno">  454</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a181a76baeb9cf67e1f5cdd3c4bb5c713">_boxMin</a> = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a6c6fcea410eaea465920e33e96c2022a">_boxMin</a>;</div>
 <div class="line"><span class="lineno">  455</span> </div>
-<div class="line"><span class="lineno">  456</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_plane.html">ColPlane</a>* pPlane = &amp;parentColl.Header-&gt;Planes[planeOffset];</div>
-<div class="line"><span class="lineno">  457</span> </div>
-<div class="line"><span class="lineno">  458</span>            <span class="comment">//Decode points</span></div>
-<div class="line"><span class="lineno">  459</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_b_vec2.html">BVec2</a>* pPtr = &amp;parentColl.Header-&gt;Points[pointOffset];</div>
-<div class="line"><span class="lineno">  460</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; pointCount; i++)</div>
-<div class="line"><span class="lineno">  461</span>            {</div>
-<div class="line"><span class="lineno">  462</span>                <span class="keyword">new</span> CollisionLink(<span class="keyword">this</span>, *pPtr++);</div>
-<div class="line"><span class="lineno">  463</span>            }</div>
-<div class="line"><span class="lineno">  464</span> </div>
-<div class="line"><span class="lineno">  465</span>            <span class="comment">//CollisionPlane plane;</span></div>
-<div class="line"><span class="lineno">  466</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; planeCount; i++)</div>
-<div class="line"><span class="lineno">  467</span>            {</div>
-<div class="line"><span class="lineno">  468</span>                <span class="keyword">new</span> CollisionPlane(<span class="keyword">this</span>, pPlane, pointOffset);</div>
-<div class="line"><span class="lineno">  469</span>                <span class="keywordflow">if</span> (pPlane-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_plane.html#a0a293c8ff584d0cff45d0f63a6c1d10a">_point1</a> == pPlane-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_plane.html#a9d5186149fb5073987725fe69765effa">_point2</a>)</div>
-<div class="line"><span class="lineno">  470</span>                {</div>
-<div class="line"><span class="lineno">  471</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#af07ac63666ae1d42cdd428f7f786701a">hasSingleLinkedCollisions</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  472</span>                }</div>
-<div class="line"><span class="lineno">  473</span> </div>
-<div class="line"><span class="lineno">  474</span>                ++pPlane;</div>
-<div class="line"><span class="lineno">  475</span>            }</div>
-<div class="line"><span class="lineno">  476</span> </div>
-<div class="line"><span class="lineno">  477</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  478</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a181a76baeb9cf67e1f5cdd3c4bb5c713"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a181a76baeb9cf67e1f5cdd3c4bb5c713">BrawlLib.SSBB.ResourceNodes.CollisionObject._boxMin</a></div><div class="ttdeci">Vector2 _boxMin</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:404</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a27fba9ac214aa5f20dfb67a9f8194002"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a27fba9ac214aa5f20dfb67a9f8194002">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk3</a></div><div class="ttdeci">int _unk3</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:405</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a2db8f6f2a28a4188139c9da318389529"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">BrawlLib.SSBB.ResourceNodes.CollisionObject._flags</a></div><div class="ttdeci">ColObjFlags _flags</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:406</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a4f4759528635fdf3dcb6f335f6fc514f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a4f4759528635fdf3dcb6f335f6fc514f">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk1</a></div><div class="ttdeci">int _unk1</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:405</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a58824ab76a2210c64bd6c7e4690aa48a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a58824ab76a2210c64bd6c7e4690aa48a">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk5</a></div><div class="ttdeci">int _unk5</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:405</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a59b3b58299890bff9839474495c04d72"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a59b3b58299890bff9839474495c04d72">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk2</a></div><div class="ttdeci">int _unk2</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:405</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a60ac3aa42bd5c85c1c985cd87d8edffa"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a60ac3aa42bd5c85c1c985cd87d8edffa">BrawlLib.SSBB.ResourceNodes.CollisionObject._boxMax</a></div><div class="ttdeci">Vector2 _boxMax</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:404</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a86665fb3bf471f5815c21bed7189a8e9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">BrawlLib.SSBB.ResourceNodes.CollisionObject._boneName</a></div><div class="ttdeci">string _boneName</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a9d8bde16e409cdfacd73c50dff8e7204"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">BrawlLib.SSBB.ResourceNodes.CollisionObject.ColObjFlags</a></div><div class="ttdeci">ColObjFlags</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:416</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_ad9c16a2c81638eb419d07d8242492639"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">BrawlLib.SSBB.ResourceNodes.CollisionObject._modelName</a></div><div class="ttdeci">string _modelName</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_ae4d2aa671295e8fc27425f68e1a370b7"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ae4d2aa671295e8fc27425f68e1a370b7">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk6</a></div><div class="ttdeci">int _unk6</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:405</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_af07ac63666ae1d42cdd428f7f786701a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#af07ac63666ae1d42cdd428f7f786701a">BrawlLib.SSBB.ResourceNodes.CollisionObject.hasSingleLinkedCollisions</a></div><div class="ttdeci">bool hasSingleLinkedCollisions</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:412</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_afb9ef07c0c4d084f2ff507eeb14467e2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">BrawlLib.SSBB.ResourceNodes.CollisionObject._boneIndex</a></div><div class="ttdeci">int _boneIndex</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:405</div></div>
+<div class="line"><span class="lineno">  456</span>            <span class="keywordtype">int</span> pointCount = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a6cd51426c0e1e816a6f4992df34895cb">_pointCount</a>;</div>
+<div class="line"><span class="lineno">  457</span>            <span class="keywordtype">int</span> pointOffset = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#ad6ea2e9ac0d7b13003bbfd3a6e5f7043">_pointOffset</a>;</div>
+<div class="line"><span class="lineno">  458</span>            <span class="keywordtype">int</span> planeCount = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a15e5797b8c6f55b026ff77f1ec63e17d">_planeCount</a>;</div>
+<div class="line"><span class="lineno">  459</span>            <span class="keywordtype">int</span> planeOffset = Header-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_object.html#a41daf98bac998c84086b3bfe59805d09">_planeIndex</a>;</div>
+<div class="line"><span class="lineno">  460</span> </div>
+<div class="line"><span class="lineno">  461</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_plane.html">ColPlane</a>* pPlane = &amp;parentColl.Header-&gt;Planes[planeOffset];</div>
+<div class="line"><span class="lineno">  462</span> </div>
+<div class="line"><span class="lineno">  463</span>            <span class="comment">//Decode points</span></div>
+<div class="line"><span class="lineno">  464</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_b_vec2.html">BVec2</a>* pPtr = &amp;parentColl.Header-&gt;Points[pointOffset];</div>
+<div class="line"><span class="lineno">  465</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; pointCount; i++)</div>
+<div class="line"><span class="lineno">  466</span>            {</div>
+<div class="line"><span class="lineno">  467</span>                <span class="keyword">new</span> CollisionLink(<span class="keyword">this</span>, *pPtr++);</div>
+<div class="line"><span class="lineno">  468</span>            }</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>            <span class="comment">//CollisionPlane plane;</span></div>
+<div class="line"><span class="lineno">  471</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; planeCount; i++)</div>
+<div class="line"><span class="lineno">  472</span>            {</div>
+<div class="line"><span class="lineno">  473</span>                <span class="keyword">new</span> CollisionPlane(<span class="keyword">this</span>, pPlane, pointOffset);</div>
+<div class="line"><span class="lineno">  474</span>                <span class="keywordflow">if</span> (pPlane-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_plane.html#a0a293c8ff584d0cff45d0f63a6c1d10a">_point1</a> == pPlane-&gt;<a class="code hl_variable" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_col_plane.html#a9d5186149fb5073987725fe69765effa">_point2</a>)</div>
+<div class="line"><span class="lineno">  475</span>                {</div>
+<div class="line"><span class="lineno">  476</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#af07ac63666ae1d42cdd428f7f786701a">hasSingleLinkedCollisions</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  477</span>                }</div>
+<div class="line"><span class="lineno">  478</span> </div>
+<div class="line"><span class="lineno">  479</span>                ++pPlane;</div>
+<div class="line"><span class="lineno">  480</span>            }</div>
+<div class="line"><span class="lineno">  481</span> </div>
+<div class="line"><span class="lineno">  482</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  483</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a181a76baeb9cf67e1f5cdd3c4bb5c713"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a181a76baeb9cf67e1f5cdd3c4bb5c713">BrawlLib.SSBB.ResourceNodes.CollisionObject._boxMin</a></div><div class="ttdeci">Vector2 _boxMin</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:409</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a27fba9ac214aa5f20dfb67a9f8194002"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a27fba9ac214aa5f20dfb67a9f8194002">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk3</a></div><div class="ttdeci">int _unk3</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a2db8f6f2a28a4188139c9da318389529"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">BrawlLib.SSBB.ResourceNodes.CollisionObject._flags</a></div><div class="ttdeci">ColObjFlags _flags</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:411</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a4f4759528635fdf3dcb6f335f6fc514f"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a4f4759528635fdf3dcb6f335f6fc514f">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk1</a></div><div class="ttdeci">int _unk1</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a58824ab76a2210c64bd6c7e4690aa48a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a58824ab76a2210c64bd6c7e4690aa48a">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk5</a></div><div class="ttdeci">int _unk5</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a59b3b58299890bff9839474495c04d72"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a59b3b58299890bff9839474495c04d72">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk2</a></div><div class="ttdeci">int _unk2</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a60ac3aa42bd5c85c1c985cd87d8edffa"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a60ac3aa42bd5c85c1c985cd87d8edffa">BrawlLib.SSBB.ResourceNodes.CollisionObject._boxMax</a></div><div class="ttdeci">Vector2 _boxMax</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:409</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a86665fb3bf471f5815c21bed7189a8e9"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">BrawlLib.SSBB.ResourceNodes.CollisionObject._boneName</a></div><div class="ttdeci">string _boneName</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:415</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_a9d8bde16e409cdfacd73c50dff8e7204"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">BrawlLib.SSBB.ResourceNodes.CollisionObject.ColObjFlags</a></div><div class="ttdeci">ColObjFlags</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:421</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_ad9c16a2c81638eb419d07d8242492639"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">BrawlLib.SSBB.ResourceNodes.CollisionObject._modelName</a></div><div class="ttdeci">string _modelName</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:415</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_ae4d2aa671295e8fc27425f68e1a370b7"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ae4d2aa671295e8fc27425f68e1a370b7">BrawlLib.SSBB.ResourceNodes.CollisionObject._unk6</a></div><div class="ttdeci">int _unk6</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_af07ac63666ae1d42cdd428f7f786701a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#af07ac63666ae1d42cdd428f7f786701a">BrawlLib.SSBB.ResourceNodes.CollisionObject.hasSingleLinkedCollisions</a></div><div class="ttdeci">bool hasSingleLinkedCollisions</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:417</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_afb9ef07c0c4d084f2ff507eeb14467e2"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">BrawlLib.SSBB.ResourceNodes.CollisionObject._boneIndex</a></div><div class="ttdeci">int _boneIndex</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:410</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a941e2d3ccfa83b9201a3414af61be9d8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a941e2d3ccfa83b9201a3414af61be9d8">BrawlLib.SSBB.ResourceNodes.ResourceNode._name</a></div><div class="ttdeci">string _name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:139</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_aa2ac75c861a66d004f89ae1186256310"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">BrawlLib.SSBB.ResourceNodes.ResourceNode.Parent</a></div><div class="ttdeci">ResourceNode Parent</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:245</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_b_vec2_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_b_vec2.html">BrawlLib.Internal.BVec2</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:336</div></div>
@@ -993,14 +993,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  371</span>        {</div>
-<div class="line"><span class="lineno">  372</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Independent) != 0;</div>
-<div class="line"><span class="lineno">  373</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  374</span>            {</div>
-<div class="line"><span class="lineno">  375</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.Independent) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Independent : 0);</div>
-<div class="line"><span class="lineno">  376</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  377</span>            }</div>
-<div class="line"><span class="lineno">  378</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  376</span>        {</div>
+<div class="line"><span class="lineno">  377</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Independent) != 0;</div>
+<div class="line"><span class="lineno">  378</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  379</span>            {</div>
+<div class="line"><span class="lineno">  380</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.Independent) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Independent : 0);</div>
+<div class="line"><span class="lineno">  381</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  382</span>            }</div>
+<div class="line"><span class="lineno">  383</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7d6d973b631a29f1f86bff9500bbb7eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">BrawlLib.SSBB.ResourceNodes.ResourceNode.SignalPropertyChange</a></div><div class="ttdeci">virtual void SignalPropertyChange()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:315</div></div>
 </div><!-- fragment -->
 </div>
@@ -1024,14 +1024,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  348</span>        {</div>
-<div class="line"><span class="lineno">  349</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a>;</div>
-<div class="line"><span class="lineno">  350</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  351</span>            {</div>
-<div class="line"><span class="lineno">  352</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = value;</div>
-<div class="line"><span class="lineno">  353</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  354</span>            }</div>
-<div class="line"><span class="lineno">  355</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  353</span>        {</div>
+<div class="line"><span class="lineno">  354</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a>;</div>
+<div class="line"><span class="lineno">  355</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  356</span>            {</div>
+<div class="line"><span class="lineno">  357</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = value;</div>
+<div class="line"><span class="lineno">  358</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  359</span>            }</div>
+<div class="line"><span class="lineno">  360</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1054,14 +1054,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  336</span>        {</div>
-<div class="line"><span class="lineno">  337</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a>;</div>
-<div class="line"><span class="lineno">  338</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  339</span>            {</div>
-<div class="line"><span class="lineno">  340</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = value;</div>
-<div class="line"><span class="lineno">  341</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  342</span>            }</div>
-<div class="line"><span class="lineno">  343</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  341</span>        {</div>
+<div class="line"><span class="lineno">  342</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a>;</div>
+<div class="line"><span class="lineno">  343</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  344</span>            {</div>
+<div class="line"><span class="lineno">  345</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = value;</div>
+<div class="line"><span class="lineno">  346</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  347</span>            }</div>
+<div class="line"><span class="lineno">  348</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1084,27 +1084,27 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  300</span>        {</div>
-<div class="line"><span class="lineno">  301</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>;</div>
-<div class="line"><span class="lineno">  302</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  303</span>            {</div>
-<div class="line"><span class="lineno">  304</span>                <span class="keywordflow">if</span> ((<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a> = value) != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  305</span>                {</div>
-<div class="line"><span class="lineno">  306</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a5dddc6a0ca3d4064927fe76062ac3da0">BoneIndex</a>;</div>
-<div class="line"><span class="lineno">  307</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">Name</a>;</div>
-<div class="line"><span class="lineno">  308</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node.html#a7bd37352de90b8c033d064dd3fc2cb78">Model</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">Name</a>;</div>
-<div class="line"><span class="lineno">  309</span>                    <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">Independent</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  310</span>                }</div>
-<div class="line"><span class="lineno">  311</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  312</span>                {</div>
-<div class="line"><span class="lineno">  313</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = -1;</div>
-<div class="line"><span class="lineno">  314</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  315</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  316</span>                    <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">Independent</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  317</span>                }</div>
-<div class="line"><span class="lineno">  318</span>            }</div>
-<div class="line"><span class="lineno">  319</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_ad7950c18ff2cedb260c98959effd96ab"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">BrawlLib.SSBB.ResourceNodes.CollisionObject._linkedBone</a></div><div class="ttdeci">MDL0BoneNode _linkedBone</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:402</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  305</span>        {</div>
+<div class="line"><span class="lineno">  306</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>;</div>
+<div class="line"><span class="lineno">  307</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  308</span>            {</div>
+<div class="line"><span class="lineno">  309</span>                <span class="keywordflow">if</span> ((<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a> = value) != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  310</span>                {</div>
+<div class="line"><span class="lineno">  311</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a5dddc6a0ca3d4064927fe76062ac3da0">BoneIndex</a>;</div>
+<div class="line"><span class="lineno">  312</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>.<a class="code hl_property" href="interface_brawl_lib_1_1_modeling_1_1_i_bone_node.html#a7f79faca14836a08f06119e84e70fd76">Name</a>;</div>
+<div class="line"><span class="lineno">  313</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">_linkedBone</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node.html#a7bd37352de90b8c033d064dd3fc2cb78">Model</a>.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">Name</a>;</div>
+<div class="line"><span class="lineno">  314</span>                    <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">Independent</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  315</span>                }</div>
+<div class="line"><span class="lineno">  316</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  317</span>                {</div>
+<div class="line"><span class="lineno">  318</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#afb9ef07c0c4d084f2ff507eeb14467e2">_boneIndex</a> = -1;</div>
+<div class="line"><span class="lineno">  319</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a86665fb3bf471f5815c21bed7189a8e9">_boneName</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  320</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  321</span>                    <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a40ea3eaf4ee4a89d948ff6582fc083ed">Independent</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  322</span>                }</div>
+<div class="line"><span class="lineno">  323</span>            }</div>
+<div class="line"><span class="lineno">  324</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object_html_ad7950c18ff2cedb260c98959effd96ab"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad7950c18ff2cedb260c98959effd96ab">BrawlLib.SSBB.ResourceNodes.CollisionObject._linkedBone</a></div><div class="ttdeci">MDL0BoneNode _linkedBone</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:407</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node_html_a5dddc6a0ca3d4064927fe76062ac3da0"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_bone_node.html#a5dddc6a0ca3d4064927fe76062ac3da0">BrawlLib.SSBB.ResourceNodes.MDL0BoneNode.BoneIndex</a></div><div class="ttdeci">int BoneIndex</div><div class="ttdef"><b>Definition:</b> MDL0BoneNode.cs:252</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node_html_a7bd37352de90b8c033d064dd3fc2cb78"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_d_l0_entry_node.html#a7bd37352de90b8c033d064dd3fc2cb78">BrawlLib.SSBB.ResourceNodes.MDL0EntryNode.Model</a></div><div class="ttdeci">MDL0Node Model</div><div class="ttdef"><b>Definition:</b> MDL0GroupNode.cs:28</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_abfa51c429fe706bd4af8810b7fe320fc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#abfa51c429fe706bd4af8810b7fe320fc">BrawlLib.SSBB.ResourceNodes.ResourceNode.Name</a></div><div class="ttdeci">virtual string Name</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:223</div></div>
@@ -1131,14 +1131,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  324</span>        {</div>
-<div class="line"><span class="lineno">  325</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a>;</div>
-<div class="line"><span class="lineno">  326</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  327</span>            {</div>
-<div class="line"><span class="lineno">  328</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = value;</div>
-<div class="line"><span class="lineno">  329</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  330</span>            }</div>
-<div class="line"><span class="lineno">  331</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  329</span>        {</div>
+<div class="line"><span class="lineno">  330</span>            <span class="keyword">get</span> =&gt; <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a>;</div>
+<div class="line"><span class="lineno">  331</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  332</span>            {</div>
+<div class="line"><span class="lineno">  333</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#ad9c16a2c81638eb419d07d8242492639">_modelName</a> = value;</div>
+<div class="line"><span class="lineno">  334</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  335</span>            }</div>
+<div class="line"><span class="lineno">  336</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1161,14 +1161,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  382</span>        {</div>
-<div class="line"><span class="lineno">  383</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.ModuleControlled) != 0;</div>
-<div class="line"><span class="lineno">  384</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  385</span>            {</div>
-<div class="line"><span class="lineno">  386</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.ModuleControlled) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.ModuleControlled : 0);</div>
-<div class="line"><span class="lineno">  387</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  388</span>            }</div>
-<div class="line"><span class="lineno">  389</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  387</span>        {</div>
+<div class="line"><span class="lineno">  388</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.ModuleControlled) != 0;</div>
+<div class="line"><span class="lineno">  389</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  390</span>            {</div>
+<div class="line"><span class="lineno">  391</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.ModuleControlled) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.ModuleControlled : 0);</div>
+<div class="line"><span class="lineno">  392</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  393</span>            }</div>
+<div class="line"><span class="lineno">  394</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1235,14 +1235,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  359</span>        {</div>
-<div class="line"><span class="lineno">  360</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Unknown) != 0;</div>
-<div class="line"><span class="lineno">  361</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  362</span>            {</div>
-<div class="line"><span class="lineno">  363</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.Unknown) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Unknown : 0);</div>
-<div class="line"><span class="lineno">  364</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  365</span>            }</div>
-<div class="line"><span class="lineno">  366</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  364</span>        {</div>
+<div class="line"><span class="lineno">  365</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Unknown) != 0;</div>
+<div class="line"><span class="lineno">  366</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  367</span>            {</div>
+<div class="line"><span class="lineno">  368</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.Unknown) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.Unknown : 0);</div>
+<div class="line"><span class="lineno">  369</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  370</span>            }</div>
+<div class="line"><span class="lineno">  371</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1265,14 +1265,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  393</span>        {</div>
-<div class="line"><span class="lineno">  394</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.SSEUnknown) != 0;</div>
-<div class="line"><span class="lineno">  395</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  396</span>            {</div>
-<div class="line"><span class="lineno">  397</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.SSEUnknown) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.SSEUnknown : 0);</div>
-<div class="line"><span class="lineno">  398</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  399</span>            }</div>
-<div class="line"><span class="lineno">  400</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  398</span>        {</div>
+<div class="line"><span class="lineno">  399</span>            <span class="keyword">get</span> =&gt; (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.SSEUnknown) != 0;</div>
+<div class="line"><span class="lineno">  400</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  401</span>            {</div>
+<div class="line"><span class="lineno">  402</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> = (<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a2db8f6f2a28a4188139c9da318389529">_flags</a> &amp; ~ColObjFlags.SSEUnknown) | (value ? <a class="code hl_enumeration" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_object.html#a9d8bde16e409cdfacd73c50dff8e7204">ColObjFlags</a>.SSEUnknown : 0);</div>
+<div class="line"><span class="lineno">  403</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  404</span>            }</div>
+<div class="line"><span class="lineno">  405</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -133,6 +133,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad4ef5cbdcbfa58abfe62b55796a3527f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9976c4a2fccd85cb8de6022390945cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#ac9976c4a2fccd85cb8de6022390945cf">ImportMSBin</a> ()</td></tr>
 <tr class="separator:ac9976c4a2fccd85cb8de6022390945cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2414b2c1685ba1682a7b5edb9bf22f01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a2414b2c1685ba1682a7b5edb9bf22f01">ImportBinary</a> ()</td></tr>
+<tr class="separator:a2414b2c1685ba1682a7b5edb9bf22f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43aa2f19e3a86d544c42b2d9acb9fcd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a43aa2f19e3a86d544c42b2d9acb9fcd1">ImportSCLA</a> ()</td></tr>
 <tr class="separator:a43aa2f19e3a86d544c42b2d9acb9fcd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af46199b40b3c66f5c7922391cc313a58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af46199b40b3c66f5c7922391cc313a58">ImportSTPM</a> ()</td></tr>
@@ -242,6 +244,8 @@ Static Protected Member Functions</h2></td></tr>
 <tr class="separator:ae55a2c93cdd8a05fc2ad2a9c50181d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd9a5c3f81f5da1ecb7b49b53dc24a32"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#acd9a5c3f81f5da1ecb7b49b53dc24a32">ImportMSBinAction</a> (object sender, EventArgs e)</td></tr>
 <tr class="separator:acd9a5c3f81f5da1ecb7b49b53dc24a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a134471a76f6cf10d1f6dbdab42f5d5cb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a134471a76f6cf10d1f6dbdab42f5d5cb">ImportBinaryAction</a> (object sender, EventArgs e)</td></tr>
+<tr class="separator:a134471a76f6cf10d1f6dbdab42f5d5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf4a00645ab6363ff5261d4319c783fe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#abf4a00645ab6363ff5261d4319c783fe">ImportSCLAAction</a> (object sender, EventArgs e)</td></tr>
 <tr class="separator:abf4a00645ab6363ff5261d4319c783fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae01200fbd0f4c5cf4d3efd34405cff9e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#ae01200fbd0f4c5cf4d3efd34405cff9e">ImportSTDTAction</a> (object sender, EventArgs e)</td></tr>
@@ -376,9 +380,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  288</span>        {</div>
-<div class="line"><span class="lineno">  289</span>            ContextMenuStrip = _menu;</div>
-<div class="line"><span class="lineno">  290</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  294</span>        {</div>
+<div class="line"><span class="lineno">  295</span>            ContextMenuStrip = _menu;</div>
+<div class="line"><span class="lineno">  296</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -405,28 +409,28 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  646</span>        {</div>
-<div class="line"><span class="lineno">  647</span>            <span class="keywordtype">string</span> path = Program.ChooseFolder();</div>
-<div class="line"><span class="lineno">  648</span>            <span class="keywordflow">if</span> (path == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  649</span>            {</div>
-<div class="line"><span class="lineno">  650</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  651</span>            }</div>
-<div class="line"><span class="lineno">  652</span>            var hasTextures = <a class="code hl_property" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a12ccdbf802f85529d36ad5d9d6aef024">Resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ab06896725122f72fda7eb704fe3f819c">GetChildrenRecursive</a>().Any(c =&gt; c is <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>);</div>
-<div class="line"><span class="lineno">  653</span>            <span class="keywordflow">if</span> (hasTextures)</div>
-<div class="line"><span class="lineno">  654</span>            {</div>
-<div class="line"><span class="lineno">  655</span>                <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html">ExportAllFormatDialog</a> dialog =</div>
-<div class="line"><span class="lineno">  656</span>                    <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html">ExportAllFormatDialog</a>(<span class="stringliteral">&quot;Export All&quot;</span>, typeof(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>), <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a0b921ff93a12b8554a60e6f2bb2dc3f2">TEX0</a>);</div>
-<div class="line"><span class="lineno">  657</span> </div>
-<div class="line"><span class="lineno">  658</span>                <span class="keywordflow">if</span> (dialog.ShowDialog() == DialogResult.OK)</div>
-<div class="line"><span class="lineno">  659</span>                {</div>
-<div class="line"><span class="lineno">  660</span>                    ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>)<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).ExtractToFolder(path, dialog.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a022fa259741abc7f456adb05d37a078f">SelectedExtension</a>);</div>
-<div class="line"><span class="lineno">  661</span>                }</div>
-<div class="line"><span class="lineno">  662</span>            }</div>
-<div class="line"><span class="lineno">  663</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  664</span>            {</div>
-<div class="line"><span class="lineno">  665</span>                ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>)<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).ExtractToFolder(path);</div>
-<div class="line"><span class="lineno">  666</span>            }</div>
-<div class="line"><span class="lineno">  667</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  666</span>        {</div>
+<div class="line"><span class="lineno">  667</span>            <span class="keywordtype">string</span> path = Program.ChooseFolder();</div>
+<div class="line"><span class="lineno">  668</span>            <span class="keywordflow">if</span> (path == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  669</span>            {</div>
+<div class="line"><span class="lineno">  670</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  671</span>            }</div>
+<div class="line"><span class="lineno">  672</span>            var hasTextures = <a class="code hl_property" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a12ccdbf802f85529d36ad5d9d6aef024">Resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ab06896725122f72fda7eb704fe3f819c">GetChildrenRecursive</a>().Any(c =&gt; c is <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>);</div>
+<div class="line"><span class="lineno">  673</span>            <span class="keywordflow">if</span> (hasTextures)</div>
+<div class="line"><span class="lineno">  674</span>            {</div>
+<div class="line"><span class="lineno">  675</span>                <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html">ExportAllFormatDialog</a> dialog =</div>
+<div class="line"><span class="lineno">  676</span>                    <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html">ExportAllFormatDialog</a>(<span class="stringliteral">&quot;Export All&quot;</span>, typeof(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_t_e_x0_node.html">TEX0Node</a>), <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a0b921ff93a12b8554a60e6f2bb2dc3f2">TEX0</a>);</div>
+<div class="line"><span class="lineno">  677</span> </div>
+<div class="line"><span class="lineno">  678</span>                <span class="keywordflow">if</span> (dialog.ShowDialog() == DialogResult.OK)</div>
+<div class="line"><span class="lineno">  679</span>                {</div>
+<div class="line"><span class="lineno">  680</span>                    ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>)<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).ExtractToFolder(path, dialog.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html#a022fa259741abc7f456adb05d37a078f">SelectedExtension</a>);</div>
+<div class="line"><span class="lineno">  681</span>                }</div>
+<div class="line"><span class="lineno">  682</span>            }</div>
+<div class="line"><span class="lineno">  683</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  684</span>            {</div>
+<div class="line"><span class="lineno">  685</span>                ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>)<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).ExtractToFolder(path);</div>
+<div class="line"><span class="lineno">  686</span>            }</div>
+<div class="line"><span class="lineno">  687</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_a12ccdbf802f85529d36ad5d9d6aef024"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a12ccdbf802f85529d36ad5d9d6aef024">BrawlCrate.NodeWrappers.BaseWrapper.Resource</a></div><div class="ttdeci">ResourceNode Resource</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:77</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_a1b93fbf028c9099c4b8892c87311ccaa"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">BrawlCrate.NodeWrappers.BaseWrapper._resource</a></div><div class="ttdeci">ResourceNode _resource</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:76</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_export_all_format_dialog.html">BrawlLib.Internal.Windows.Forms.ExportAllFormatDialog</a></div><div class="ttdef"><b>Definition:</b> ExportAllAskFormat.cs:7</div></div>
@@ -472,9 +476,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  251</span>        {</div>
-<div class="line"><span class="lineno">  252</span>            GetInstance&lt;ARCWrapper&gt;().ExportAll();</div>
-<div class="line"><span class="lineno">  253</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  257</span>        {</div>
+<div class="line"><span class="lineno">  258</span>            GetInstance&lt;ARCWrapper&gt;().ExportAll();</div>
+<div class="line"><span class="lineno">  259</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -500,16 +504,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  602</span>        {</div>
-<div class="line"><span class="lineno">  603</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a5d0421474e5105532d6978f06794018e">ADSJ</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  604</span>            {</div>
-<div class="line"><span class="lineno">  605</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  606</span>                {</div>
-<div class="line"><span class="lineno">  607</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#ae064c229b21cd404f1c0d79c9da10fb4">NewADSJ</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  608</span>                }</div>
-<div class="line"><span class="lineno">  609</span>            }</div>
-<div class="line"><span class="lineno">  610</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_ae064c229b21cd404f1c0d79c9da10fb4"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#ae064c229b21cd404f1c0d79c9da10fb4">BrawlCrate.NodeWrappers.ARCWrapper.NewADSJ</a></div><div class="ttdeci">ADSJNode NewADSJ()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:369</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  622</span>        {</div>
+<div class="line"><span class="lineno">  623</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a5d0421474e5105532d6978f06794018e">ADSJ</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  624</span>            {</div>
+<div class="line"><span class="lineno">  625</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  626</span>                {</div>
+<div class="line"><span class="lineno">  627</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#ae064c229b21cd404f1c0d79c9da10fb4">NewADSJ</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  628</span>                }</div>
+<div class="line"><span class="lineno">  629</span>            }</div>
+<div class="line"><span class="lineno">  630</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_ae064c229b21cd404f1c0d79c9da10fb4"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#ae064c229b21cd404f1c0d79c9da10fb4">BrawlCrate.NodeWrappers.ARCWrapper.NewADSJ</a></div><div class="ttdeci">ADSJNode NewADSJ()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:375</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a5d0421474e5105532d6978f06794018e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a5d0421474e5105532d6978f06794018e">BrawlLib.SSBB.FileFilters.ADSJ</a></div><div class="ttdeci">static string ADSJ</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:154</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a4fa2bfbdd581f1ad04c90661879eafcb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">BrawlLib.SSBB.ResourceNodes.ResourceNode.Replace</a></div><div class="ttdeci">virtual void Replace(string fileName)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:831</div></div>
 </div><!-- fragment -->
@@ -548,9 +552,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  201</span>        {</div>
-<div class="line"><span class="lineno">  202</span>            GetInstance&lt;ARCWrapper&gt;().ImportADSJ();</div>
-<div class="line"><span class="lineno">  203</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  207</span>        {</div>
+<div class="line"><span class="lineno">  208</span>            GetInstance&lt;ARCWrapper&gt;().ImportADSJ();</div>
+<div class="line"><span class="lineno">  209</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -576,16 +580,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  426</span>        {</div>
-<div class="line"><span class="lineno">  427</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad2d9c74bb14650c2a0094df51b2eb57d">ARCImport</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  428</span>            {</div>
-<div class="line"><span class="lineno">  429</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  430</span>                {</div>
-<div class="line"><span class="lineno">  431</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a0a2209455f2bd0bbb0ed4e6d5280244c">NewARC</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  432</span>                }</div>
-<div class="line"><span class="lineno">  433</span>            }</div>
-<div class="line"><span class="lineno">  434</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a0a2209455f2bd0bbb0ed4e6d5280244c"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a0a2209455f2bd0bbb0ed4e6d5280244c">BrawlCrate.NodeWrappers.ARCWrapper.NewARC</a></div><div class="ttdeci">ARCNode NewARC()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:292</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  432</span>        {</div>
+<div class="line"><span class="lineno">  433</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad2d9c74bb14650c2a0094df51b2eb57d">ARCImport</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  434</span>            {</div>
+<div class="line"><span class="lineno">  435</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  436</span>                {</div>
+<div class="line"><span class="lineno">  437</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a0a2209455f2bd0bbb0ed4e6d5280244c">NewARC</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  438</span>                }</div>
+<div class="line"><span class="lineno">  439</span>            }</div>
+<div class="line"><span class="lineno">  440</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a0a2209455f2bd0bbb0ed4e6d5280244c"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a0a2209455f2bd0bbb0ed4e6d5280244c">BrawlCrate.NodeWrappers.ARCWrapper.NewARC</a></div><div class="ttdeci">ARCNode NewARC()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:298</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_ad2d9c74bb14650c2a0094df51b2eb57d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad2d9c74bb14650c2a0094df51b2eb57d">BrawlLib.SSBB.FileFilters.ARCImport</a></div><div class="ttdeci">static string ARCImport</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:13</div></div>
 </div><!-- fragment -->
 </div>
@@ -623,9 +627,88 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  166</span>        {</div>
-<div class="line"><span class="lineno">  167</span>            GetInstance&lt;ARCWrapper&gt;().ImportARC();</div>
-<div class="line"><span class="lineno">  168</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>        {</div>
+<div class="line"><span class="lineno">  168</span>            GetInstance&lt;ARCWrapper&gt;().ImportARC();</div>
+<div class="line"><span class="lineno">  169</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2414b2c1685ba1682a7b5edb9bf22f01" name="a2414b2c1685ba1682a7b5edb9bf22f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2414b2c1685ba1682a7b5edb9bf22f01">&#9670;&#160;</a></span>ImportBinary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BrawlCrate.NodeWrappers.ARCWrapper.ImportBinary </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  487</span>        {</div>
+<div class="line"><span class="lineno">  488</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a6336087308f6d41146d15e549d1a8510">Raw</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  489</span>            {</div>
+<div class="line"><span class="lineno">  490</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  491</span>                {</div>
+<div class="line"><span class="lineno">  492</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">ARCEntryNode</a> r = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">ARCEntryNode</a> { FileType = ARCFileType.MiscData };</div>
+<div class="line"><span class="lineno">  493</span>                    <a class="code hl_property" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a12ccdbf802f85529d36ad5d9d6aef024">Resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(r);</div>
+<div class="line"><span class="lineno">  494</span>                    r.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  495</span>                    r.Name = <span class="stringliteral">&quot;Misc Data [0]&quot;</span>;</div>
+<div class="line"><span class="lineno">  496</span>                }</div>
+<div class="line"><span class="lineno">  497</span>            }</div>
+<div class="line"><span class="lineno">  498</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a6336087308f6d41146d15e549d1a8510"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a6336087308f6d41146d15e549d1a8510">BrawlLib.SSBB.FileFilters.Raw</a></div><div class="ttdeci">static string Raw</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:167</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">BrawlLib.SSBB.ResourceNodes.ARCEntryNode</a></div><div class="ttdef"><b>Definition:</b> ARCNode.cs:872</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac3b33c6e8495209753fbc3774709172a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">BrawlLib.SSBB.ResourceNodes.ResourceNode.AddChild</a></div><div class="ttdeci">virtual void AddChild(ResourceNode child)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:759</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a134471a76f6cf10d1f6dbdab42f5d5cb" name="a134471a76f6cf10d1f6dbdab42f5d5cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134471a76f6cf10d1f6dbdab42f5d5cb">&#9670;&#160;</a></span>ImportBinaryAction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void BrawlCrate.NodeWrappers.ARCWrapper.ImportBinaryAction </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">EventArgs&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  187</span>        {</div>
+<div class="line"><span class="lineno">  188</span>            GetInstance&lt;ARCWrapper&gt;().ImportBinary();</div>
+<div class="line"><span class="lineno">  189</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -651,16 +734,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  448</span>        {</div>
-<div class="line"><span class="lineno">  449</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a94ce9b3a006c3f34a43df186708b7b2e">BLOC</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  450</span>            {</div>
-<div class="line"><span class="lineno">  451</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  452</span>                {</div>
-<div class="line"><span class="lineno">  453</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a3897d583122d56c120cc3607ec43f0a8">NewBLOC</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  454</span>                }</div>
-<div class="line"><span class="lineno">  455</span>            }</div>
-<div class="line"><span class="lineno">  456</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a3897d583122d56c120cc3607ec43f0a8"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a3897d583122d56c120cc3607ec43f0a8">BrawlCrate.NodeWrappers.ARCWrapper.NewBLOC</a></div><div class="ttdeci">BLOCNode NewBLOC()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:325</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  454</span>        {</div>
+<div class="line"><span class="lineno">  455</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a94ce9b3a006c3f34a43df186708b7b2e">BLOC</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  456</span>            {</div>
+<div class="line"><span class="lineno">  457</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  458</span>                {</div>
+<div class="line"><span class="lineno">  459</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a3897d583122d56c120cc3607ec43f0a8">NewBLOC</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  460</span>                }</div>
+<div class="line"><span class="lineno">  461</span>            }</div>
+<div class="line"><span class="lineno">  462</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a3897d583122d56c120cc3607ec43f0a8"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a3897d583122d56c120cc3607ec43f0a8">BrawlCrate.NodeWrappers.ARCWrapper.NewBLOC</a></div><div class="ttdeci">BLOCNode NewBLOC()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:331</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a94ce9b3a006c3f34a43df186708b7b2e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a94ce9b3a006c3f34a43df186708b7b2e">BrawlLib.SSBB.FileFilters.BLOC</a></div><div class="ttdeci">static string BLOC</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:116</div></div>
 </div><!-- fragment -->
 </div>
@@ -698,9 +781,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  171</span>        {</div>
-<div class="line"><span class="lineno">  172</span>            GetInstance&lt;ARCWrapper&gt;().ImportBLOC();</div>
-<div class="line"><span class="lineno">  173</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  172</span>        {</div>
+<div class="line"><span class="lineno">  173</span>            GetInstance&lt;ARCWrapper&gt;().ImportBLOC();</div>
+<div class="line"><span class="lineno">  174</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -726,16 +809,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  437</span>        {</div>
-<div class="line"><span class="lineno">  438</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a433c731327ae9004e4eafbd18531c1e4">BRES</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  439</span>            {</div>
-<div class="line"><span class="lineno">  440</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  441</span>                {</div>
-<div class="line"><span class="lineno">  442</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af0c34df5427a3ac4eb3442a4a048f8b8">NewBRES</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  443</span>                }</div>
-<div class="line"><span class="lineno">  444</span>            }</div>
-<div class="line"><span class="lineno">  445</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_af0c34df5427a3ac4eb3442a4a048f8b8"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af0c34df5427a3ac4eb3442a4a048f8b8">BrawlCrate.NodeWrappers.ARCWrapper.NewBRES</a></div><div class="ttdeci">BRRESNode NewBRES()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:303</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  443</span>        {</div>
+<div class="line"><span class="lineno">  444</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a433c731327ae9004e4eafbd18531c1e4">BRES</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  445</span>            {</div>
+<div class="line"><span class="lineno">  446</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  447</span>                {</div>
+<div class="line"><span class="lineno">  448</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af0c34df5427a3ac4eb3442a4a048f8b8">NewBRES</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  449</span>                }</div>
+<div class="line"><span class="lineno">  450</span>            }</div>
+<div class="line"><span class="lineno">  451</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_af0c34df5427a3ac4eb3442a4a048f8b8"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af0c34df5427a3ac4eb3442a4a048f8b8">BrawlCrate.NodeWrappers.ARCWrapper.NewBRES</a></div><div class="ttdeci">BRRESNode NewBRES()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:309</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a433c731327ae9004e4eafbd18531c1e4"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a433c731327ae9004e4eafbd18531c1e4">BrawlLib.SSBB.FileFilters.BRES</a></div><div class="ttdeci">static string BRES</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:28</div></div>
 </div><!-- fragment -->
 </div>
@@ -773,9 +856,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  161</span>        {</div>
-<div class="line"><span class="lineno">  162</span>            GetInstance&lt;ARCWrapper&gt;().ImportBRES();</div>
-<div class="line"><span class="lineno">  163</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  162</span>        {</div>
+<div class="line"><span class="lineno">  163</span>            GetInstance&lt;ARCWrapper&gt;().ImportBRES();</div>
+<div class="line"><span class="lineno">  164</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -801,16 +884,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  459</span>        {</div>
-<div class="line"><span class="lineno">  460</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a4d30213aec81ce94179d5e912a329907">CollisionDef</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  461</span>            {</div>
-<div class="line"><span class="lineno">  462</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  463</span>                {</div>
-<div class="line"><span class="lineno">  464</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a66e99c2ca7dd3bb2e7916a580f2fdc8d">NewCollision</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  465</span>                }</div>
-<div class="line"><span class="lineno">  466</span>            }</div>
-<div class="line"><span class="lineno">  467</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a66e99c2ca7dd3bb2e7916a580f2fdc8d"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a66e99c2ca7dd3bb2e7916a580f2fdc8d">BrawlCrate.NodeWrappers.ARCWrapper.NewCollision</a></div><div class="ttdeci">CollisionNode NewCollision()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:314</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  465</span>        {</div>
+<div class="line"><span class="lineno">  466</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a4d30213aec81ce94179d5e912a329907">CollisionDef</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  467</span>            {</div>
+<div class="line"><span class="lineno">  468</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  469</span>                {</div>
+<div class="line"><span class="lineno">  470</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a66e99c2ca7dd3bb2e7916a580f2fdc8d">NewCollision</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  471</span>                }</div>
+<div class="line"><span class="lineno">  472</span>            }</div>
+<div class="line"><span class="lineno">  473</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a66e99c2ca7dd3bb2e7916a580f2fdc8d"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a66e99c2ca7dd3bb2e7916a580f2fdc8d">BrawlCrate.NodeWrappers.ARCWrapper.NewCollision</a></div><div class="ttdeci">CollisionNode NewCollision()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:320</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a4d30213aec81ce94179d5e912a329907"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a4d30213aec81ce94179d5e912a329907">BrawlLib.SSBB.FileFilters.CollisionDef</a></div><div class="ttdeci">static string CollisionDef</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:95</div></div>
 </div><!-- fragment -->
 </div>
@@ -848,9 +931,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  176</span>        {</div>
-<div class="line"><span class="lineno">  177</span>            GetInstance&lt;ARCWrapper&gt;().ImportCollision();</div>
-<div class="line"><span class="lineno">  178</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>        {</div>
+<div class="line"><span class="lineno">  178</span>            GetInstance&lt;ARCWrapper&gt;().ImportCollision();</div>
+<div class="line"><span class="lineno">  179</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -876,16 +959,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  591</span>        {</div>
-<div class="line"><span class="lineno">  592</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#afca00d8fc00b0e7eb661e901d4b8b92e">Havok</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  593</span>            {</div>
-<div class="line"><span class="lineno">  594</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  595</span>                {</div>
-<div class="line"><span class="lineno">  596</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a51ce9796896c17c3753c54c4a2ebb4f6">NewHavok</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html#aea271f712c53bb2021ceb437788ec488">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  597</span>                }</div>
-<div class="line"><span class="lineno">  598</span>            }</div>
-<div class="line"><span class="lineno">  599</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a51ce9796896c17c3753c54c4a2ebb4f6"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a51ce9796896c17c3753c54c4a2ebb4f6">BrawlCrate.NodeWrappers.ARCWrapper.NewHavok</a></div><div class="ttdeci">HavokNode NewHavok()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:401</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  611</span>        {</div>
+<div class="line"><span class="lineno">  612</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#afca00d8fc00b0e7eb661e901d4b8b92e">Havok</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  613</span>            {</div>
+<div class="line"><span class="lineno">  614</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  615</span>                {</div>
+<div class="line"><span class="lineno">  616</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a51ce9796896c17c3753c54c4a2ebb4f6">NewHavok</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html#aea271f712c53bb2021ceb437788ec488">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  617</span>                }</div>
+<div class="line"><span class="lineno">  618</span>            }</div>
+<div class="line"><span class="lineno">  619</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a51ce9796896c17c3753c54c4a2ebb4f6"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a51ce9796896c17c3753c54c4a2ebb4f6">BrawlCrate.NodeWrappers.ARCWrapper.NewHavok</a></div><div class="ttdeci">HavokNode NewHavok()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:407</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_afca00d8fc00b0e7eb661e901d4b8b92e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#afca00d8fc00b0e7eb661e901d4b8b92e">BrawlLib.SSBB.FileFilters.Havok</a></div><div class="ttdeci">static string Havok</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:175</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node_html_aea271f712c53bb2021ceb437788ec488"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html#aea271f712c53bb2021ceb437788ec488">BrawlLib.SSBB.ResourceNodes.HavokNode.Replace</a></div><div class="ttdeci">override void Replace(string fileName, FileMapProtect prot, FileOptions options)</div><div class="ttdef"><b>Definition:</b> HavokNode.cs:404</div></div>
 </div><!-- fragment -->
@@ -924,9 +1007,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  241</span>        {</div>
-<div class="line"><span class="lineno">  242</span>            GetInstance&lt;ARCWrapper&gt;().ImportHavok();</div>
-<div class="line"><span class="lineno">  243</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  247</span>        {</div>
+<div class="line"><span class="lineno">  248</span>            GetInstance&lt;ARCWrapper&gt;().ImportHavok();</div>
+<div class="line"><span class="lineno">  249</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -952,16 +1035,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  470</span>        {</div>
-<div class="line"><span class="lineno">  471</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a1e152454239f6f2fa26f0ed54afc9aaf">MSBin</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  472</span>            {</div>
-<div class="line"><span class="lineno">  473</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  474</span>                {</div>
-<div class="line"><span class="lineno">  475</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#abffea19ce991c7e0fa93f05c41c00b8a">NewMSBin</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html#a38150806f1981909e2cb4c70e824e9cc">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  476</span>                }</div>
-<div class="line"><span class="lineno">  477</span>            }</div>
-<div class="line"><span class="lineno">  478</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_abffea19ce991c7e0fa93f05c41c00b8a"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#abffea19ce991c7e0fa93f05c41c00b8a">BrawlCrate.NodeWrappers.ARCWrapper.NewMSBin</a></div><div class="ttdeci">MSBinNode NewMSBin()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:336</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  476</span>        {</div>
+<div class="line"><span class="lineno">  477</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a1e152454239f6f2fa26f0ed54afc9aaf">MSBin</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  478</span>            {</div>
+<div class="line"><span class="lineno">  479</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  480</span>                {</div>
+<div class="line"><span class="lineno">  481</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#abffea19ce991c7e0fa93f05c41c00b8a">NewMSBin</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html#a38150806f1981909e2cb4c70e824e9cc">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  482</span>                }</div>
+<div class="line"><span class="lineno">  483</span>            }</div>
+<div class="line"><span class="lineno">  484</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_abffea19ce991c7e0fa93f05c41c00b8a"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#abffea19ce991c7e0fa93f05c41c00b8a">BrawlCrate.NodeWrappers.ARCWrapper.NewMSBin</a></div><div class="ttdeci">MSBinNode NewMSBin()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:342</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a1e152454239f6f2fa26f0ed54afc9aaf"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a1e152454239f6f2fa26f0ed54afc9aaf">BrawlLib.SSBB.FileFilters.MSBin</a></div><div class="ttdeci">static string MSBin</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:68</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node_html_a38150806f1981909e2cb4c70e824e9cc"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html#a38150806f1981909e2cb4c70e824e9cc">BrawlLib.SSBB.ResourceNodes.MSBinNode.Replace</a></div><div class="ttdeci">override void Replace(string fileName)</div><div class="ttdef"><b>Definition:</b> MSBinNode.cs:119</div></div>
 </div><!-- fragment -->
@@ -1000,9 +1083,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  181</span>        {</div>
-<div class="line"><span class="lineno">  182</span>            GetInstance&lt;ARCWrapper&gt;().ImportMSBin();</div>
-<div class="line"><span class="lineno">  183</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  182</span>        {</div>
+<div class="line"><span class="lineno">  183</span>            GetInstance&lt;ARCWrapper&gt;().ImportMSBin();</div>
+<div class="line"><span class="lineno">  184</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1028,16 +1111,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  481</span>        {</div>
-<div class="line"><span class="lineno">  482</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ae9480d206d1a2726b5d5d76d207e6a9a">SCLA</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  483</span>            {</div>
-<div class="line"><span class="lineno">  484</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  485</span>                {</div>
-<div class="line"><span class="lineno">  486</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af117cb7f410ef3862248dbf0682daea8">NewSCLA</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  487</span>                }</div>
-<div class="line"><span class="lineno">  488</span>            }</div>
-<div class="line"><span class="lineno">  489</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_af117cb7f410ef3862248dbf0682daea8"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af117cb7f410ef3862248dbf0682daea8">BrawlCrate.NodeWrappers.ARCWrapper.NewSCLA</a></div><div class="ttdeci">SCLANode NewSCLA()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:347</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  501</span>        {</div>
+<div class="line"><span class="lineno">  502</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ae9480d206d1a2726b5d5d76d207e6a9a">SCLA</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  503</span>            {</div>
+<div class="line"><span class="lineno">  504</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  505</span>                {</div>
+<div class="line"><span class="lineno">  506</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af117cb7f410ef3862248dbf0682daea8">NewSCLA</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  507</span>                }</div>
+<div class="line"><span class="lineno">  508</span>            }</div>
+<div class="line"><span class="lineno">  509</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_af117cb7f410ef3862248dbf0682daea8"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#af117cb7f410ef3862248dbf0682daea8">BrawlCrate.NodeWrappers.ARCWrapper.NewSCLA</a></div><div class="ttdeci">SCLANode NewSCLA()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:353</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_ae9480d206d1a2726b5d5d76d207e6a9a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ae9480d206d1a2726b5d5d76d207e6a9a">BrawlLib.SSBB.FileFilters.SCLA</a></div><div class="ttdeci">static string SCLA</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:129</div></div>
 </div><!-- fragment -->
 </div>
@@ -1075,9 +1158,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  186</span>        {</div>
-<div class="line"><span class="lineno">  187</span>            GetInstance&lt;ARCWrapper&gt;().ImportSCLA();</div>
-<div class="line"><span class="lineno">  188</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  192</span>        {</div>
+<div class="line"><span class="lineno">  193</span>            GetInstance&lt;ARCWrapper&gt;().ImportSCLA();</div>
+<div class="line"><span class="lineno">  194</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1103,15 +1186,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  503</span>        {</div>
-<div class="line"><span class="lineno">  504</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a171231021a614e8d0db95f675a8f2802">STDT</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  505</span>            {</div>
-<div class="line"><span class="lineno">  506</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  507</span>                {</div>
-<div class="line"><span class="lineno">  508</span>                    NewStageTable&lt;STDTNode&gt;().Replace(path);</div>
-<div class="line"><span class="lineno">  509</span>                }</div>
-<div class="line"><span class="lineno">  510</span>            }</div>
-<div class="line"><span class="lineno">  511</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  523</span>        {</div>
+<div class="line"><span class="lineno">  524</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a171231021a614e8d0db95f675a8f2802">STDT</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  525</span>            {</div>
+<div class="line"><span class="lineno">  526</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  527</span>                {</div>
+<div class="line"><span class="lineno">  528</span>                    NewStageTable&lt;STDTNode&gt;().Replace(path);</div>
+<div class="line"><span class="lineno">  529</span>                }</div>
+<div class="line"><span class="lineno">  530</span>            }</div>
+<div class="line"><span class="lineno">  531</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a171231021a614e8d0db95f675a8f2802"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a171231021a614e8d0db95f675a8f2802">BrawlLib.SSBB.FileFilters.STDT</a></div><div class="ttdeci">static string STDT</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:126</div></div>
 </div><!-- fragment -->
 </div>
@@ -1149,9 +1232,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  191</span>        {</div>
-<div class="line"><span class="lineno">  192</span>            GetInstance&lt;ARCWrapper&gt;().ImportSTDT();</div>
-<div class="line"><span class="lineno">  193</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  197</span>        {</div>
+<div class="line"><span class="lineno">  198</span>            GetInstance&lt;ARCWrapper&gt;().ImportSTDT();</div>
+<div class="line"><span class="lineno">  199</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1177,16 +1260,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  492</span>        {</div>
-<div class="line"><span class="lineno">  493</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a6d818eb4fc25883b281ed1dddfbdf3e4">STPM</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  494</span>            {</div>
-<div class="line"><span class="lineno">  495</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  496</span>                {</div>
-<div class="line"><span class="lineno">  497</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a27eb88fcb825cbd7f5377b5667517066">NewSTPM</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
-<div class="line"><span class="lineno">  498</span>                }</div>
-<div class="line"><span class="lineno">  499</span>            }</div>
-<div class="line"><span class="lineno">  500</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a27eb88fcb825cbd7f5377b5667517066"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a27eb88fcb825cbd7f5377b5667517066">BrawlCrate.NodeWrappers.ARCWrapper.NewSTPM</a></div><div class="ttdeci">STPMNode NewSTPM()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:358</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  512</span>        {</div>
+<div class="line"><span class="lineno">  513</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a6d818eb4fc25883b281ed1dddfbdf3e4">STPM</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  514</span>            {</div>
+<div class="line"><span class="lineno">  515</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  516</span>                {</div>
+<div class="line"><span class="lineno">  517</span>                    <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a27eb88fcb825cbd7f5377b5667517066">NewSTPM</a>().<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a4fa2bfbdd581f1ad04c90661879eafcb">Replace</a>(path);</div>
+<div class="line"><span class="lineno">  518</span>                }</div>
+<div class="line"><span class="lineno">  519</span>            }</div>
+<div class="line"><span class="lineno">  520</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a27eb88fcb825cbd7f5377b5667517066"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a27eb88fcb825cbd7f5377b5667517066">BrawlCrate.NodeWrappers.ARCWrapper.NewSTPM</a></div><div class="ttdeci">STPMNode NewSTPM()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:364</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a6d818eb4fc25883b281ed1dddfbdf3e4"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a6d818eb4fc25883b281ed1dddfbdf3e4">BrawlLib.SSBB.FileFilters.STPM</a></div><div class="ttdeci">static string STPM</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:123</div></div>
 </div><!-- fragment -->
 </div>
@@ -1224,9 +1307,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  196</span>        {</div>
-<div class="line"><span class="lineno">  197</span>            GetInstance&lt;ARCWrapper&gt;().ImportSTPM();</div>
-<div class="line"><span class="lineno">  198</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>        {</div>
+<div class="line"><span class="lineno">  203</span>            GetInstance&lt;ARCWrapper&gt;().ImportSTPM();</div>
+<div class="line"><span class="lineno">  204</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1252,15 +1335,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  514</span>        {</div>
-<div class="line"><span class="lineno">  515</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a13fa88a55c1e5de56b4b12a062d6e811">TBCL</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  516</span>            {</div>
-<div class="line"><span class="lineno">  517</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  518</span>                {</div>
-<div class="line"><span class="lineno">  519</span>                    <span class="comment">//NewStageTable&lt;TBCLNode&gt;().Replace(path);</span></div>
-<div class="line"><span class="lineno">  520</span>                }</div>
-<div class="line"><span class="lineno">  521</span>            }</div>
-<div class="line"><span class="lineno">  522</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  534</span>        {</div>
+<div class="line"><span class="lineno">  535</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a13fa88a55c1e5de56b4b12a062d6e811">TBCL</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  536</span>            {</div>
+<div class="line"><span class="lineno">  537</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  538</span>                {</div>
+<div class="line"><span class="lineno">  539</span>                    <span class="comment">//NewStageTable&lt;TBCLNode&gt;().Replace(path);</span></div>
+<div class="line"><span class="lineno">  540</span>                }</div>
+<div class="line"><span class="lineno">  541</span>            }</div>
+<div class="line"><span class="lineno">  542</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a13fa88a55c1e5de56b4b12a062d6e811"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a13fa88a55c1e5de56b4b12a062d6e811">BrawlLib.SSBB.FileFilters.TBCL</a></div><div class="ttdeci">static string TBCL</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:132</div></div>
 </div><!-- fragment -->
 </div>
@@ -1298,9 +1381,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  206</span>        {</div>
-<div class="line"><span class="lineno">  207</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBCL();</div>
-<div class="line"><span class="lineno">  208</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  212</span>        {</div>
+<div class="line"><span class="lineno">  213</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBCL();</div>
+<div class="line"><span class="lineno">  214</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1326,15 +1409,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  525</span>        {</div>
-<div class="line"><span class="lineno">  526</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a0ee957ab8a6af7ef02515240a396cf8b">TBGC</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  527</span>            {</div>
-<div class="line"><span class="lineno">  528</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  529</span>                {</div>
-<div class="line"><span class="lineno">  530</span>                    <span class="comment">//NewStageTable&lt;TBGCNode&gt;().Replace(path);</span></div>
-<div class="line"><span class="lineno">  531</span>                }</div>
-<div class="line"><span class="lineno">  532</span>            }</div>
-<div class="line"><span class="lineno">  533</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  545</span>        {</div>
+<div class="line"><span class="lineno">  546</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a0ee957ab8a6af7ef02515240a396cf8b">TBGC</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  547</span>            {</div>
+<div class="line"><span class="lineno">  548</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  549</span>                {</div>
+<div class="line"><span class="lineno">  550</span>                    <span class="comment">//NewStageTable&lt;TBGCNode&gt;().Replace(path);</span></div>
+<div class="line"><span class="lineno">  551</span>                }</div>
+<div class="line"><span class="lineno">  552</span>            }</div>
+<div class="line"><span class="lineno">  553</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a0ee957ab8a6af7ef02515240a396cf8b"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a0ee957ab8a6af7ef02515240a396cf8b">BrawlLib.SSBB.FileFilters.TBGC</a></div><div class="ttdeci">static string TBGC</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:135</div></div>
 </div><!-- fragment -->
 </div>
@@ -1372,9 +1455,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  211</span>        {</div>
-<div class="line"><span class="lineno">  212</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBGC();</div>
-<div class="line"><span class="lineno">  213</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  217</span>        {</div>
+<div class="line"><span class="lineno">  218</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBGC();</div>
+<div class="line"><span class="lineno">  219</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1400,15 +1483,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  536</span>        {</div>
-<div class="line"><span class="lineno">  537</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad86e9e3c0ff1e91f65db0abc750693a8">TBGD</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  538</span>            {</div>
-<div class="line"><span class="lineno">  539</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  540</span>                {</div>
-<div class="line"><span class="lineno">  541</span>                    <span class="comment">//NewStageTable&lt;TBGDNode&gt;().Replace(path);</span></div>
-<div class="line"><span class="lineno">  542</span>                }</div>
-<div class="line"><span class="lineno">  543</span>            }</div>
-<div class="line"><span class="lineno">  544</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  556</span>        {</div>
+<div class="line"><span class="lineno">  557</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad86e9e3c0ff1e91f65db0abc750693a8">TBGD</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  558</span>            {</div>
+<div class="line"><span class="lineno">  559</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  560</span>                {</div>
+<div class="line"><span class="lineno">  561</span>                    <span class="comment">//NewStageTable&lt;TBGDNode&gt;().Replace(path);</span></div>
+<div class="line"><span class="lineno">  562</span>                }</div>
+<div class="line"><span class="lineno">  563</span>            }</div>
+<div class="line"><span class="lineno">  564</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_ad86e9e3c0ff1e91f65db0abc750693a8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad86e9e3c0ff1e91f65db0abc750693a8">BrawlLib.SSBB.FileFilters.TBGD</a></div><div class="ttdeci">static string TBGD</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:138</div></div>
 </div><!-- fragment -->
 </div>
@@ -1446,9 +1529,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  216</span>        {</div>
-<div class="line"><span class="lineno">  217</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBGD();</div>
-<div class="line"><span class="lineno">  218</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  222</span>        {</div>
+<div class="line"><span class="lineno">  223</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBGD();</div>
+<div class="line"><span class="lineno">  224</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1474,15 +1557,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  547</span>        {</div>
-<div class="line"><span class="lineno">  548</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#abba7b7e00cf915963861358d0fd9f674">TBGM</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  549</span>            {</div>
-<div class="line"><span class="lineno">  550</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  551</span>                {</div>
-<div class="line"><span class="lineno">  552</span>                    <span class="comment">//NewStageTable&lt;TBGMNode&gt;().Replace(path);</span></div>
-<div class="line"><span class="lineno">  553</span>                }</div>
-<div class="line"><span class="lineno">  554</span>            }</div>
-<div class="line"><span class="lineno">  555</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  567</span>        {</div>
+<div class="line"><span class="lineno">  568</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#abba7b7e00cf915963861358d0fd9f674">TBGM</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  569</span>            {</div>
+<div class="line"><span class="lineno">  570</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  571</span>                {</div>
+<div class="line"><span class="lineno">  572</span>                    <span class="comment">//NewStageTable&lt;TBGMNode&gt;().Replace(path);</span></div>
+<div class="line"><span class="lineno">  573</span>                }</div>
+<div class="line"><span class="lineno">  574</span>            }</div>
+<div class="line"><span class="lineno">  575</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_abba7b7e00cf915963861358d0fd9f674"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#abba7b7e00cf915963861358d0fd9f674">BrawlLib.SSBB.FileFilters.TBGM</a></div><div class="ttdeci">static string TBGM</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:141</div></div>
 </div><!-- fragment -->
 </div>
@@ -1520,9 +1603,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  221</span>        {</div>
-<div class="line"><span class="lineno">  222</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBGM();</div>
-<div class="line"><span class="lineno">  223</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  227</span>        {</div>
+<div class="line"><span class="lineno">  228</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBGM();</div>
+<div class="line"><span class="lineno">  229</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1548,15 +1631,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  558</span>        {</div>
-<div class="line"><span class="lineno">  559</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a048f671e64b452f42e1f610666c4cf56">TBLV</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  560</span>            {</div>
-<div class="line"><span class="lineno">  561</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  562</span>                {</div>
-<div class="line"><span class="lineno">  563</span>                    <span class="comment">//NewStageTable&lt;TBLVNode&gt;().Replace(path);</span></div>
-<div class="line"><span class="lineno">  564</span>                }</div>
-<div class="line"><span class="lineno">  565</span>            }</div>
-<div class="line"><span class="lineno">  566</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  578</span>        {</div>
+<div class="line"><span class="lineno">  579</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a048f671e64b452f42e1f610666c4cf56">TBLV</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  580</span>            {</div>
+<div class="line"><span class="lineno">  581</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  582</span>                {</div>
+<div class="line"><span class="lineno">  583</span>                    <span class="comment">//NewStageTable&lt;TBLVNode&gt;().Replace(path);</span></div>
+<div class="line"><span class="lineno">  584</span>                }</div>
+<div class="line"><span class="lineno">  585</span>            }</div>
+<div class="line"><span class="lineno">  586</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_a048f671e64b452f42e1f610666c4cf56"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a048f671e64b452f42e1f610666c4cf56">BrawlLib.SSBB.FileFilters.TBLV</a></div><div class="ttdeci">static string TBLV</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:144</div></div>
 </div><!-- fragment -->
 </div>
@@ -1594,9 +1677,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  226</span>        {</div>
-<div class="line"><span class="lineno">  227</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBLV();</div>
-<div class="line"><span class="lineno">  228</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  232</span>        {</div>
+<div class="line"><span class="lineno">  233</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBLV();</div>
+<div class="line"><span class="lineno">  234</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1622,15 +1705,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  569</span>        {</div>
-<div class="line"><span class="lineno">  570</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#afa739ea8b13cb681a635301ca13b4b64">TBRM</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  571</span>            {</div>
-<div class="line"><span class="lineno">  572</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  573</span>                {</div>
-<div class="line"><span class="lineno">  574</span>                    <span class="comment">//NewStageTable&lt;TBRMNode&gt;().Replace(path);</span></div>
-<div class="line"><span class="lineno">  575</span>                }</div>
-<div class="line"><span class="lineno">  576</span>            }</div>
-<div class="line"><span class="lineno">  577</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  589</span>        {</div>
+<div class="line"><span class="lineno">  590</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#afa739ea8b13cb681a635301ca13b4b64">TBRM</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  591</span>            {</div>
+<div class="line"><span class="lineno">  592</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  593</span>                {</div>
+<div class="line"><span class="lineno">  594</span>                    <span class="comment">//NewStageTable&lt;TBRMNode&gt;().Replace(path);</span></div>
+<div class="line"><span class="lineno">  595</span>                }</div>
+<div class="line"><span class="lineno">  596</span>            }</div>
+<div class="line"><span class="lineno">  597</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_afa739ea8b13cb681a635301ca13b4b64"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#afa739ea8b13cb681a635301ca13b4b64">BrawlLib.SSBB.FileFilters.TBRM</a></div><div class="ttdeci">static string TBRM</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:147</div></div>
 </div><!-- fragment -->
 </div>
@@ -1668,9 +1751,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  231</span>        {</div>
-<div class="line"><span class="lineno">  232</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBRM();</div>
-<div class="line"><span class="lineno">  233</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  237</span>        {</div>
+<div class="line"><span class="lineno">  238</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBRM();</div>
+<div class="line"><span class="lineno">  239</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1696,15 +1779,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  580</span>        {</div>
-<div class="line"><span class="lineno">  581</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#af73644b660b43601ea2292991331d8ee">TBST</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
-<div class="line"><span class="lineno">  582</span>            {</div>
-<div class="line"><span class="lineno">  583</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
-<div class="line"><span class="lineno">  584</span>                {</div>
-<div class="line"><span class="lineno">  585</span>                    <span class="comment">//NewStageTable&lt;TBSTNode&gt;().Replace(path);</span></div>
-<div class="line"><span class="lineno">  586</span>                }</div>
-<div class="line"><span class="lineno">  587</span>            }</div>
-<div class="line"><span class="lineno">  588</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  600</span>        {</div>
+<div class="line"><span class="lineno">  601</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#af73644b660b43601ea2292991331d8ee">TBST</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
+<div class="line"><span class="lineno">  602</span>            {</div>
+<div class="line"><span class="lineno">  603</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
+<div class="line"><span class="lineno">  604</span>                {</div>
+<div class="line"><span class="lineno">  605</span>                    <span class="comment">//NewStageTable&lt;TBSTNode&gt;().Replace(path);</span></div>
+<div class="line"><span class="lineno">  606</span>                }</div>
+<div class="line"><span class="lineno">  607</span>            }</div>
+<div class="line"><span class="lineno">  608</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_file_filters_html_af73644b660b43601ea2292991331d8ee"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#af73644b660b43601ea2292991331d8ee">BrawlLib.SSBB.FileFilters.TBST</a></div><div class="ttdeci">static string TBST</div><div class="ttdef"><b>Definition:</b> FileFilters.cs:150</div></div>
 </div><!-- fragment -->
 </div>
@@ -1742,9 +1825,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  236</span>        {</div>
-<div class="line"><span class="lineno">  237</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBST();</div>
-<div class="line"><span class="lineno">  238</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  242</span>        {</div>
+<div class="line"><span class="lineno">  243</span>            GetInstance&lt;ARCWrapper&gt;().ImportTBST();</div>
+<div class="line"><span class="lineno">  244</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1787,30 +1870,30 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  613</span>        {</div>
-<div class="line"><span class="lineno">  614</span>            <span class="keywordflow">switch</span> (node.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a50b07cfaeeed1385ad2829b2d6250e18">ResourceFileType</a>)</div>
-<div class="line"><span class="lineno">  615</span>            {</div>
-<div class="line"><span class="lineno">  616</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.ARC:</div>
-<div class="line"><span class="lineno">  617</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.MRG:</div>
-<div class="line"><span class="lineno">  618</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.U8:</div>
-<div class="line"><span class="lineno">  619</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.U8Folder:</div>
-<div class="line"><span class="lineno">  620</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.BRES:</div>
-<div class="line"><span class="lineno">  621</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.BRESGroup:</div>
-<div class="line"><span class="lineno">  622</span>                    <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> n <span class="keywordflow">in</span> node.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
-<div class="line"><span class="lineno">  623</span>                    {</div>
-<div class="line"><span class="lineno">  624</span>                        <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#aeaa1592d4cddfc9821a365b784a3820b">LoadModels</a>(n, models, collisions);</div>
-<div class="line"><span class="lineno">  625</span>                    }</div>
-<div class="line"><span class="lineno">  626</span> </div>
-<div class="line"><span class="lineno">  627</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  628</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.MDL0:</div>
-<div class="line"><span class="lineno">  629</span>                    models.Add((<a class="code hl_interface" href="interface_brawl_lib_1_1_modeling_1_1_i_model.html">IModel</a>) node);</div>
-<div class="line"><span class="lineno">  630</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  631</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.CollisionDef:</div>
-<div class="line"><span class="lineno">  632</span>                    collisions.Add((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html">CollisionNode</a>) node);</div>
-<div class="line"><span class="lineno">  633</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  634</span>            }</div>
-<div class="line"><span class="lineno">  635</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_aeaa1592d4cddfc9821a365b784a3820b"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#aeaa1592d4cddfc9821a365b784a3820b">BrawlCrate.NodeWrappers.ARCWrapper.LoadModels</a></div><div class="ttdeci">void LoadModels(ResourceNode node, List&lt; IModel &gt; models, List&lt; CollisionNode &gt; collisions)</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:612</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  633</span>        {</div>
+<div class="line"><span class="lineno">  634</span>            <span class="keywordflow">switch</span> (node.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a50b07cfaeeed1385ad2829b2d6250e18">ResourceFileType</a>)</div>
+<div class="line"><span class="lineno">  635</span>            {</div>
+<div class="line"><span class="lineno">  636</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.ARC:</div>
+<div class="line"><span class="lineno">  637</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.MRG:</div>
+<div class="line"><span class="lineno">  638</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.U8:</div>
+<div class="line"><span class="lineno">  639</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.U8Folder:</div>
+<div class="line"><span class="lineno">  640</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.BRES:</div>
+<div class="line"><span class="lineno">  641</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.BRESGroup:</div>
+<div class="line"><span class="lineno">  642</span>                    <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> n <span class="keywordflow">in</span> node.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
+<div class="line"><span class="lineno">  643</span>                    {</div>
+<div class="line"><span class="lineno">  644</span>                        <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#aeaa1592d4cddfc9821a365b784a3820b">LoadModels</a>(n, models, collisions);</div>
+<div class="line"><span class="lineno">  645</span>                    }</div>
+<div class="line"><span class="lineno">  646</span> </div>
+<div class="line"><span class="lineno">  647</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  648</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.MDL0:</div>
+<div class="line"><span class="lineno">  649</span>                    models.Add((<a class="code hl_interface" href="interface_brawl_lib_1_1_modeling_1_1_i_model.html">IModel</a>) node);</div>
+<div class="line"><span class="lineno">  650</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  651</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.CollisionDef:</div>
+<div class="line"><span class="lineno">  652</span>                    collisions.Add((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html">CollisionNode</a>) node);</div>
+<div class="line"><span class="lineno">  653</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  654</span>            }</div>
+<div class="line"><span class="lineno">  655</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_aeaa1592d4cddfc9821a365b784a3820b"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#aeaa1592d4cddfc9821a365b784a3820b">BrawlCrate.NodeWrappers.ARCWrapper.LoadModels</a></div><div class="ttdeci">void LoadModels(ResourceNode node, List&lt; IModel &gt; models, List&lt; CollisionNode &gt; collisions)</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:632</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html">BrawlLib.SSBB.ResourceNodes.CollisionNode</a></div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:15</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:129</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a50b07cfaeeed1385ad2829b2d6250e18"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a50b07cfaeeed1385ad2829b2d6250e18">BrawlLib.SSBB.ResourceNodes.ResourceNode.ResourceFileType</a></div><div class="ttdeci">virtual ResourceType ResourceFileType</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:193</div></div>
@@ -1842,18 +1925,17 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  370</span>        {</div>
-<div class="line"><span class="lineno">  371</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_s_j_node.html">ADSJNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_s_j_node.html">ADSJNode</a> { FileType = ARCFileType.MiscData };</div>
-<div class="line"><span class="lineno">  372</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  373</span> </div>
-<div class="line"><span class="lineno">  374</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  375</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  376</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  377</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  378</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  376</span>        {</div>
+<div class="line"><span class="lineno">  377</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_s_j_node.html">ADSJNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_s_j_node.html">ADSJNode</a> { FileType = ARCFileType.MiscData };</div>
+<div class="line"><span class="lineno">  378</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  379</span> </div>
+<div class="line"><span class="lineno">  380</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  381</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  382</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  383</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  384</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_acf0f32bbb4a0e8465b5d5d4dce8e7c99"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BrawlCrate.NodeWrappers.BaseWrapper.BaseWrapper</a></div><div class="ttdeci">BaseWrapper()</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:79</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_s_j_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_d_s_j_node.html">BrawlLib.SSBB.ResourceNodes.ADSJNode</a></div><div class="ttdef"><b>Definition:</b> ADSJNode.cs:8</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac3b33c6e8495209753fbc3774709172a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">BrawlLib.SSBB.ResourceNodes.ResourceNode.AddChild</a></div><div class="ttdeci">virtual void AddChild(ResourceNode child)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:759</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1890,9 +1972,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  140</span>        {</div>
-<div class="line"><span class="lineno">  141</span>            GetInstance&lt;ARCWrapper&gt;().NewADSJ();</div>
-<div class="line"><span class="lineno">  142</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  141</span>        {</div>
+<div class="line"><span class="lineno">  142</span>            GetInstance&lt;ARCWrapper&gt;().NewADSJ();</div>
+<div class="line"><span class="lineno">  143</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1918,15 +2000,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  293</span>        {</div>
-<div class="line"><span class="lineno">  294</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a> {Name = <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a80bbab374362a5a1fcd68e1274aca757">FindName</a>(<span class="stringliteral">&quot;NewARChive&quot;</span>), FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  295</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  296</span> </div>
-<div class="line"><span class="lineno">  297</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  298</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  299</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  300</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  301</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  299</span>        {</div>
+<div class="line"><span class="lineno">  300</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a> {Name = <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a80bbab374362a5a1fcd68e1274aca757">FindName</a>(<span class="stringliteral">&quot;NewARChive&quot;</span>), FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  301</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  304</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  305</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  306</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  307</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a80bbab374362a5a1fcd68e1274aca757"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a80bbab374362a5a1fcd68e1274aca757">BrawlLib.SSBB.ResourceNodes.ResourceNode.FindName</a></div><div class="ttdeci">unsafe string FindName(string name)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1570</div></div>
 <div class="ttc" id="anamespace_brawl_lib_1_1_s_s_b_b_1_1_types_html_a57606938d06f854a5a4a568f5d455e8d"><div class="ttname"><a href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">BrawlLib.SSBB.Types.ARCFileType</a></div><div class="ttdeci">ARCFileType</div><div class="ttdef"><b>Definition:</b> ARC.cs:144</div></div>
 </div><!-- fragment -->
@@ -1965,9 +2047,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  110</span>        {</div>
-<div class="line"><span class="lineno">  111</span>            GetInstance&lt;ARCWrapper&gt;().NewARC();</div>
-<div class="line"><span class="lineno">  112</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>        {</div>
+<div class="line"><span class="lineno">  112</span>            GetInstance&lt;ARCWrapper&gt;().NewARC();</div>
+<div class="line"><span class="lineno">  113</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1993,15 +2075,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  326</span>        {</div>
-<div class="line"><span class="lineno">  327</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html">BLOCNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html">BLOCNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  328</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  329</span> </div>
-<div class="line"><span class="lineno">  330</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  331</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  332</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  333</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  334</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  332</span>        {</div>
+<div class="line"><span class="lineno">  333</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html">BLOCNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html">BLOCNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  334</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  335</span> </div>
+<div class="line"><span class="lineno">  336</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  337</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  338</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  339</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  340</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_l_o_c_node.html">BrawlLib.SSBB.ResourceNodes.BLOCNode</a></div><div class="ttdef"><b>Definition:</b> BLOCNode.cs:11</div></div>
 </div><!-- fragment -->
 </div>
@@ -2039,9 +2121,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  125</span>        {</div>
-<div class="line"><span class="lineno">  126</span>            GetInstance&lt;ARCWrapper&gt;().NewBLOC();</div>
-<div class="line"><span class="lineno">  127</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>        {</div>
+<div class="line"><span class="lineno">  127</span>            GetInstance&lt;ARCWrapper&gt;().NewBLOC();</div>
+<div class="line"><span class="lineno">  128</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2067,15 +2149,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  304</span>        {</div>
-<div class="line"><span class="lineno">  305</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  306</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  307</span> </div>
-<div class="line"><span class="lineno">  308</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  309</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  310</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  311</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  312</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  310</span>        {</div>
+<div class="line"><span class="lineno">  311</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BRRESNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  312</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  313</span> </div>
+<div class="line"><span class="lineno">  314</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  315</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  316</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  317</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  318</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_b_r_r_e_s_node.html">BrawlLib.SSBB.ResourceNodes.BRRESNode</a></div><div class="ttdef"><b>Definition:</b> BRRESNode.cs:19</div></div>
 </div><!-- fragment -->
 </div>
@@ -2113,9 +2195,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  105</span>        {</div>
-<div class="line"><span class="lineno">  106</span>            GetInstance&lt;ARCWrapper&gt;().NewBRES();</div>
-<div class="line"><span class="lineno">  107</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  106</span>        {</div>
+<div class="line"><span class="lineno">  107</span>            GetInstance&lt;ARCWrapper&gt;().NewBRES();</div>
+<div class="line"><span class="lineno">  108</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2141,15 +2223,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  315</span>        {</div>
-<div class="line"><span class="lineno">  316</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html">CollisionNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html">CollisionNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  317</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  318</span> </div>
-<div class="line"><span class="lineno">  319</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  320</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  321</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  322</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  323</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  321</span>        {</div>
+<div class="line"><span class="lineno">  322</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html">CollisionNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html">CollisionNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  324</span> </div>
+<div class="line"><span class="lineno">  325</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  326</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  327</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  328</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  329</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2186,9 +2268,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  120</span>        {</div>
-<div class="line"><span class="lineno">  121</span>            GetInstance&lt;ARCWrapper&gt;().NewCollision();</div>
-<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  121</span>        {</div>
+<div class="line"><span class="lineno">  122</span>            GetInstance&lt;ARCWrapper&gt;().NewCollision();</div>
+<div class="line"><span class="lineno">  123</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2214,15 +2296,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  402</span>        {</div>
-<div class="line"><span class="lineno">  403</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a> {Name = <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a80bbab374362a5a1fcd68e1274aca757">FindName</a>(<span class="stringliteral">&quot;NewHavokData&quot;</span>), FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  404</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  405</span> </div>
-<div class="line"><span class="lineno">  406</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  407</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  408</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  409</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  410</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  408</span>        {</div>
+<div class="line"><span class="lineno">  409</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">HavokNode</a> {Name = <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a80bbab374362a5a1fcd68e1274aca757">FindName</a>(<span class="stringliteral">&quot;NewHavokData&quot;</span>), FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  410</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  411</span> </div>
+<div class="line"><span class="lineno">  412</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  413</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  414</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  415</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  416</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_havok_node.html">BrawlLib.SSBB.ResourceNodes.HavokNode</a></div><div class="ttdef"><b>Definition:</b> HavokNode.cs:13</div></div>
 </div><!-- fragment -->
 </div>
@@ -2249,15 +2331,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  337</span>        {</div>
-<div class="line"><span class="lineno">  338</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html">MSBinNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html">MSBinNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  339</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  340</span> </div>
-<div class="line"><span class="lineno">  341</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  342</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  343</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  344</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  345</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  343</span>        {</div>
+<div class="line"><span class="lineno">  344</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html">MSBinNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html">MSBinNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  345</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  346</span> </div>
+<div class="line"><span class="lineno">  347</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  348</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  349</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  350</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  351</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_s_bin_node.html">BrawlLib.SSBB.ResourceNodes.MSBinNode</a></div><div class="ttdef"><b>Definition:</b> MSBinNode.cs:9</div></div>
 </div><!-- fragment -->
 </div>
@@ -2295,9 +2377,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  115</span>        {</div>
-<div class="line"><span class="lineno">  116</span>            GetInstance&lt;ARCWrapper&gt;().NewMSBin();</div>
-<div class="line"><span class="lineno">  117</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>        {</div>
+<div class="line"><span class="lineno">  117</span>            GetInstance&lt;ARCWrapper&gt;().NewMSBin();</div>
+<div class="line"><span class="lineno">  118</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2323,18 +2405,17 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  413</span>        {</div>
-<div class="line"><span class="lineno">  414</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">ARCEntryNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">ARCEntryNode</a></div>
-<div class="line"><span class="lineno">  415</span>                {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData, _resourceType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.Redirect};</div>
-<div class="line"><span class="lineno">  416</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  417</span>            node.RedirectIndex = 0;</div>
-<div class="line"><span class="lineno">  418</span> </div>
-<div class="line"><span class="lineno">  419</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  420</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  421</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  422</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  423</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">BrawlLib.SSBB.ResourceNodes.ARCEntryNode</a></div><div class="ttdef"><b>Definition:</b> ARCNode.cs:872</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  419</span>        {</div>
+<div class="line"><span class="lineno">  420</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">ARCEntryNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_entry_node.html">ARCEntryNode</a></div>
+<div class="line"><span class="lineno">  421</span>                {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData, _resourceType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes.html#a57416f79e39a4c4dd86a4334e94ee180">ResourceType</a>.Redirect};</div>
+<div class="line"><span class="lineno">  422</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  423</span>            node.RedirectIndex = 0;</div>
+<div class="line"><span class="lineno">  424</span> </div>
+<div class="line"><span class="lineno">  425</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  426</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  427</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  428</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  429</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2371,9 +2452,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  156</span>        {</div>
-<div class="line"><span class="lineno">  157</span>            GetInstance&lt;ARCWrapper&gt;().NewRedirect();</div>
-<div class="line"><span class="lineno">  158</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  157</span>        {</div>
+<div class="line"><span class="lineno">  158</span>            GetInstance&lt;ARCWrapper&gt;().NewRedirect();</div>
+<div class="line"><span class="lineno">  159</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2399,15 +2480,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  348</span>        {</div>
-<div class="line"><span class="lineno">  349</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html">SCLANode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html">SCLANode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  350</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  351</span> </div>
-<div class="line"><span class="lineno">  352</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  353</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  354</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  355</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  356</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  354</span>        {</div>
+<div class="line"><span class="lineno">  355</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html">SCLANode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html">SCLANode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  356</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  357</span> </div>
+<div class="line"><span class="lineno">  358</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  359</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  360</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  361</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  362</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_l_a_node.html">BrawlLib.SSBB.ResourceNodes.SCLANode</a></div><div class="ttdef"><b>Definition:</b> SCLANode.cs:8</div></div>
 </div><!-- fragment -->
 </div>
@@ -2445,9 +2526,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  130</span>        {</div>
-<div class="line"><span class="lineno">  131</span>            GetInstance&lt;ARCWrapper&gt;().NewSCLA();</div>
-<div class="line"><span class="lineno">  132</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  131</span>        {</div>
+<div class="line"><span class="lineno">  132</span>            GetInstance&lt;ARCWrapper&gt;().NewSCLA();</div>
+<div class="line"><span class="lineno">  133</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2482,11 +2563,11 @@ Additional Inherited Members</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno">  380</span>                                            : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html">StageTableNode</a>, <span class="keyword">new</span>()</div>
-<div class="line"><span class="lineno">  381</span>        {</div>
-<div class="line"><span class="lineno">  382</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a1e66afdacfe23c93e57745b3b8a8d0cb">NewStageTable&lt;T&gt;</a>(0);</div>
-<div class="line"><span class="lineno">  383</span>        }</div>
-<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a1e66afdacfe23c93e57745b3b8a8d0cb"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a1e66afdacfe23c93e57745b3b8a8d0cb">BrawlCrate.NodeWrappers.ARCWrapper.NewStageTable&lt; T &gt;</a></div><div class="ttdeci">T NewStageTable&lt; T &gt;()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:380</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  386</span>                                            : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html">StageTableNode</a>, <span class="keyword">new</span>()</div>
+<div class="line"><span class="lineno">  387</span>        {</div>
+<div class="line"><span class="lineno">  388</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a1e66afdacfe23c93e57745b3b8a8d0cb">NewStageTable&lt;T&gt;</a>(0);</div>
+<div class="line"><span class="lineno">  389</span>        }</div>
+<div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper_html_a1e66afdacfe23c93e57745b3b8a8d0cb"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#a1e66afdacfe23c93e57745b3b8a8d0cb">BrawlCrate.NodeWrappers.ARCWrapper.NewStageTable&lt; T &gt;</a></div><div class="ttdeci">T NewStageTable&lt; T &gt;()</div><div class="ttdef"><b>Definition:</b> ARCWrapper.cs:386</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html">BrawlLib.SSBB.ResourceNodes.StageTableNode</a></div><div class="ttdef"><b>Definition:</b> StageTableNode.cs:13</div></div>
 </div><!-- fragment -->
 </div>
@@ -2523,21 +2604,21 @@ Additional Inherited Members</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno">  385</span>                                                          : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html">StageTableNode</a>, <span class="keyword">new</span>()</div>
-<div class="line"><span class="lineno">  386</span>        {</div>
-<div class="line"><span class="lineno">  387</span>            T node = <span class="keyword">new</span> T {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  388</span>            <span class="keywordflow">while</span> (node.NumEntries &lt; numEntries)</div>
-<div class="line"><span class="lineno">  389</span>            {</div>
-<div class="line"><span class="lineno">  390</span>                node.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html#a3331596382d55743b7ee34e3e5913c85">EntryList</a>.Add(0);</div>
-<div class="line"><span class="lineno">  391</span>            }</div>
-<div class="line"><span class="lineno">  392</span> </div>
-<div class="line"><span class="lineno">  393</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  394</span> </div>
-<div class="line"><span class="lineno">  395</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  396</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  397</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  398</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  399</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  391</span>                                                          : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html">StageTableNode</a>, <span class="keyword">new</span>()</div>
+<div class="line"><span class="lineno">  392</span>        {</div>
+<div class="line"><span class="lineno">  393</span>            T node = <span class="keyword">new</span> T {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  394</span>            <span class="keywordflow">while</span> (node.NumEntries &lt; numEntries)</div>
+<div class="line"><span class="lineno">  395</span>            {</div>
+<div class="line"><span class="lineno">  396</span>                node.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html#a3331596382d55743b7ee34e3e5913c85">EntryList</a>.Add(0);</div>
+<div class="line"><span class="lineno">  397</span>            }</div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  400</span> </div>
+<div class="line"><span class="lineno">  401</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  402</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  403</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  404</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  405</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node_html_a3331596382d55743b7ee34e3e5913c85"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html#a3331596382d55743b7ee34e3e5913c85">BrawlLib.SSBB.ResourceNodes.StageTableNode.EntryList</a></div><div class="ttdeci">List&lt; byte &gt; EntryList</div><div class="ttdef"><b>Definition:</b> StageTableNode.cs:77</div></div>
 </div><!-- fragment -->
 </div>
@@ -2584,16 +2665,16 @@ Additional Inherited Members</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>                                                                                         : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html">StageTableNode</a>, <span class="keyword">new</span>()</div>
-<div class="line"><span class="lineno">  145</span>        {</div>
-<div class="line"><span class="lineno">  146</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a> entryCount = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a>())</div>
-<div class="line"><span class="lineno">  147</span>            {</div>
-<div class="line"><span class="lineno">  148</span>                <span class="keywordflow">if</span> (entryCount.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">ShowDialog</a>($<span class="stringliteral">&quot;{typeof(T).Name} Generation&quot;</span>, <span class="stringliteral">&quot;Number of Entries:&quot;</span>) == DialogResult.OK)</div>
-<div class="line"><span class="lineno">  149</span>                {</div>
-<div class="line"><span class="lineno">  150</span>                    GetInstance&lt;ARCWrapper&gt;().NewStageTable&lt;T&gt;(entryCount.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">NewValue</a>);</div>
-<div class="line"><span class="lineno">  151</span>                }</div>
-<div class="line"><span class="lineno">  152</span>            }</div>
-<div class="line"><span class="lineno">  153</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  145</span>                                                                                         : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_stage_table_node.html">StageTableNode</a>, <span class="keyword">new</span>()</div>
+<div class="line"><span class="lineno">  146</span>        {</div>
+<div class="line"><span class="lineno">  147</span>            <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a> entryCount = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">NumericInputForm</a>())</div>
+<div class="line"><span class="lineno">  148</span>            {</div>
+<div class="line"><span class="lineno">  149</span>                <span class="keywordflow">if</span> (entryCount.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">ShowDialog</a>($<span class="stringliteral">&quot;{typeof(T).Name} Generation&quot;</span>, <span class="stringliteral">&quot;Number of Entries:&quot;</span>) == DialogResult.OK)</div>
+<div class="line"><span class="lineno">  150</span>                {</div>
+<div class="line"><span class="lineno">  151</span>                    GetInstance&lt;ARCWrapper&gt;().NewStageTable&lt;T&gt;(entryCount.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">NewValue</a>);</div>
+<div class="line"><span class="lineno">  152</span>                }</div>
+<div class="line"><span class="lineno">  153</span>            }</div>
+<div class="line"><span class="lineno">  154</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html">BrawlLib.Internal.Windows.Forms.NumericInputForm</a></div><div class="ttdef"><b>Definition:</b> NumericInputForm.cs:7</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form_html_a3357fe21b6c9d62d03af01e3aacff7e6"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a3357fe21b6c9d62d03af01e3aacff7e6">BrawlLib.Internal.Windows.Forms.NumericInputForm.ShowDialog</a></div><div class="ttdeci">new DialogResult ShowDialog()</div><div class="ttdef"><b>Definition:</b> NumericInputForm.cs:20</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form_html_a9e8299c7f01bc764c58a02811df1925c"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_numeric_input_form.html#a9e8299c7f01bc764c58a02811df1925c">BrawlLib.Internal.Windows.Forms.NumericInputForm.NewValue</a></div><div class="ttdeci">int NewValue</div><div class="ttdef"><b>Definition:</b> NumericInputForm.cs:16</div></div>
@@ -2622,15 +2703,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  359</span>        {</div>
-<div class="line"><span class="lineno">  360</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html">STPMNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html">STPMNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
-<div class="line"><span class="lineno">  361</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
-<div class="line"><span class="lineno">  362</span> </div>
-<div class="line"><span class="lineno">  363</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  364</span>            w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  365</span>            w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  366</span>            <span class="keywordflow">return</span> node;</div>
-<div class="line"><span class="lineno">  367</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  365</span>        {</div>
+<div class="line"><span class="lineno">  366</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html">STPMNode</a> node = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html">STPMNode</a> {FileType = <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d">ARCFileType</a>.MiscData};</div>
+<div class="line"><span class="lineno">  367</span>            <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(node);</div>
+<div class="line"><span class="lineno">  368</span> </div>
+<div class="line"><span class="lineno">  369</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(node, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  370</span>            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  371</span>            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  372</span>            <span class="keywordflow">return</span> node;</div>
+<div class="line"><span class="lineno">  373</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_t_p_m_node.html">BrawlLib.SSBB.ResourceNodes.STPMNode</a></div><div class="ttdef"><b>Definition:</b> STPMNode.cs:9</div></div>
 </div><!-- fragment -->
 </div>
@@ -2668,9 +2749,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  135</span>        {</div>
-<div class="line"><span class="lineno">  136</span>            GetInstance&lt;ARCWrapper&gt;().NewSTPM();</div>
-<div class="line"><span class="lineno">  137</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>        {</div>
+<div class="line"><span class="lineno">  137</span>            GetInstance&lt;ARCWrapper&gt;().NewSTPM();</div>
+<div class="line"><span class="lineno">  138</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2696,12 +2777,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  638</span>        {</div>
-<div class="line"><span class="lineno">  639</span>            List&lt;IModel&gt; models = <span class="keyword">new</span> List&lt;IModel&gt;();</div>
-<div class="line"><span class="lineno">  640</span>            List&lt;CollisionNode&gt; collisions = <span class="keyword">new</span> List&lt;CollisionNode&gt;();</div>
-<div class="line"><span class="lineno">  641</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#aeaa1592d4cddfc9821a365b784a3820b">LoadModels</a>(<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>, models, collisions);</div>
-<div class="line"><span class="lineno">  642</span>            <span class="keyword">new</span> ModelForm().Show(<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#aea03c00f2dbea81cd012066e4d5afb1f">_owner</a>, models, collisions);</div>
-<div class="line"><span class="lineno">  643</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  658</span>        {</div>
+<div class="line"><span class="lineno">  659</span>            List&lt;IModel&gt; models = <span class="keyword">new</span> List&lt;IModel&gt;();</div>
+<div class="line"><span class="lineno">  660</span>            List&lt;CollisionNode&gt; collisions = <span class="keyword">new</span> List&lt;CollisionNode&gt;();</div>
+<div class="line"><span class="lineno">  661</span>            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_a_r_c_wrapper.html#aeaa1592d4cddfc9821a365b784a3820b">LoadModels</a>(<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>, models, collisions);</div>
+<div class="line"><span class="lineno">  662</span>            <span class="keyword">new</span> ModelForm().Show(<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#aea03c00f2dbea81cd012066e4d5afb1f">_owner</a>, models, collisions);</div>
+<div class="line"><span class="lineno">  663</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_aea03c00f2dbea81cd012066e4d5afb1f"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#aea03c00f2dbea81cd012066e4d5afb1f">BrawlCrate.NodeWrappers.BaseWrapper._owner</a></div><div class="ttdeci">static IWin32Window _owner</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:398</div></div>
 </div><!-- fragment -->
 </div>
@@ -2739,9 +2820,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  246</span>        {</div>
-<div class="line"><span class="lineno">  247</span>            GetInstance&lt;ARCWrapper&gt;().PreviewAll();</div>
-<div class="line"><span class="lineno">  248</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  252</span>        {</div>
+<div class="line"><span class="lineno">  253</span>            GetInstance&lt;ARCWrapper&gt;().PreviewAll();</div>
+<div class="line"><span class="lineno">  254</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2767,15 +2848,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  676</span>        {</div>
-<div class="line"><span class="lineno">  677</span>            <span class="keywordtype">string</span> path = Program.ChooseFolder();</div>
-<div class="line"><span class="lineno">  678</span>            <span class="keywordflow">if</span> (path == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  679</span>            {</div>
-<div class="line"><span class="lineno">  680</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  681</span>            }</div>
-<div class="line"><span class="lineno">  682</span> </div>
-<div class="line"><span class="lineno">  683</span>            ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>) <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).ReplaceFromFolder(path);</div>
-<div class="line"><span class="lineno">  684</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  696</span>        {</div>
+<div class="line"><span class="lineno">  697</span>            <span class="keywordtype">string</span> path = Program.ChooseFolder();</div>
+<div class="line"><span class="lineno">  698</span>            <span class="keywordflow">if</span> (path == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  699</span>            {</div>
+<div class="line"><span class="lineno">  700</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  701</span>            }</div>
+<div class="line"><span class="lineno">  702</span> </div>
+<div class="line"><span class="lineno">  703</span>            ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>) <a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).ReplaceFromFolder(path);</div>
+<div class="line"><span class="lineno">  704</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2812,9 +2893,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  256</span>        {</div>
-<div class="line"><span class="lineno">  257</span>            GetInstance&lt;ARCWrapper&gt;().ReplaceAll();</div>
-<div class="line"><span class="lineno">  258</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  262</span>        {</div>
+<div class="line"><span class="lineno">  263</span>            GetInstance&lt;ARCWrapper&gt;().ReplaceAll();</div>
+<div class="line"><span class="lineno">  264</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2840,10 +2921,10 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  670</span>        {</div>
-<div class="line"><span class="lineno">  671</span>            ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>)<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).SortChildrenByFileIndex();</div>
-<div class="line"><span class="lineno">  672</span>            RefreshView(<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>);</div>
-<div class="line"><span class="lineno">  673</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  690</span>        {</div>
+<div class="line"><span class="lineno">  691</span>            ((<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_r_c_node.html">ARCNode</a>)<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>).SortChildrenByFileIndex();</div>
+<div class="line"><span class="lineno">  692</span>            RefreshView(<a class="code hl_variable" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a1b93fbf028c9099c4b8892c87311ccaa">_resource</a>);</div>
+<div class="line"><span class="lineno">  693</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

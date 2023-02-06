@@ -133,27 +133,27 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  332</span>        {</div>
-<div class="line"><span class="lineno">  333</span>            <span class="keywordflow">if</span> (!generated)</div>
-<div class="line"><span class="lineno">  334</span>            {</div>
-<div class="line"><span class="lineno">  335</span>                generated = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
-<div class="line"><span class="lineno">  336</span>            }</div>
-<div class="line"><span class="lineno">  337</span> </div>
-<div class="line"><span class="lineno">  338</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
-<div class="line"><span class="lineno">  339</span>            {</div>
-<div class="line"><span class="lineno">  340</span>                <span class="keywordflow">if</span> (s.Length &gt;= minimumLength &amp;&amp;</div>
-<div class="line"><span class="lineno">  341</span>                    s.ToUpper().Substring(idIndex).StartsWith(<span class="stringliteral">&quot;0X&quot;</span> + <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X2&quot;</span>).ToUpper()) &amp;&amp;</div>
-<div class="line"><span class="lineno">  342</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
-<div class="line"><span class="lineno">  343</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
-<div class="line"><span class="lineno">  344</span>                {</div>
-<div class="line"><span class="lineno">  345</span>                    <span class="keywordflow">return</span> s.Substring(nameIndex).Trim(trimChars);</div>
-<div class="line"><span class="lineno">  346</span>                }</div>
-<div class="line"><span class="lineno">  347</span>            }</div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Stage 0x&quot;</span> + <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X2&quot;</span>);</div>
-<div class="line"><span class="lineno">  350</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4ec7609464439a8351977b77d99bb70f"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">BrawlLib.CustomLists.StageNameGenerators.GenerateList</a></div><div class="ttdeci">static bool GenerateList()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:417</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ad3e594f29a67c01c94b3009c31e30987"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">BrawlLib.CustomLists.StageNameGenerators.fileList</a></div><div class="ttdeci">static List&lt; string &gt; fileList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:317</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  324</span>        {</div>
+<div class="line"><span class="lineno">  325</span>            <span class="keywordflow">if</span> (!generated)</div>
+<div class="line"><span class="lineno">  326</span>            {</div>
+<div class="line"><span class="lineno">  327</span>                generated = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
+<div class="line"><span class="lineno">  328</span>            }</div>
+<div class="line"><span class="lineno">  329</span> </div>
+<div class="line"><span class="lineno">  330</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
+<div class="line"><span class="lineno">  331</span>            {</div>
+<div class="line"><span class="lineno">  332</span>                <span class="keywordflow">if</span> (s.Length &gt;= minimumLength &amp;&amp;</div>
+<div class="line"><span class="lineno">  333</span>                    s.ToUpper().Substring(idIndex).StartsWith(<span class="stringliteral">&quot;0X&quot;</span> + <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X2&quot;</span>).ToUpper()) &amp;&amp;</div>
+<div class="line"><span class="lineno">  334</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  335</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
+<div class="line"><span class="lineno">  336</span>                {</div>
+<div class="line"><span class="lineno">  337</span>                    <span class="keywordflow">return</span> s.Substring(nameIndex).Trim(trimChars);</div>
+<div class="line"><span class="lineno">  338</span>                }</div>
+<div class="line"><span class="lineno">  339</span>            }</div>
+<div class="line"><span class="lineno">  340</span> </div>
+<div class="line"><span class="lineno">  341</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Stage 0x&quot;</span> + <span class="keywordtype">id</span>.ToString(<span class="stringliteral">&quot;X2&quot;</span>);</div>
+<div class="line"><span class="lineno">  342</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a4ec7609464439a8351977b77d99bb70f"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">BrawlLib.CustomLists.StageNameGenerators.GenerateList</a></div><div class="ttdeci">static bool GenerateList()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:409</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_ad3e594f29a67c01c94b3009c31e30987"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">BrawlLib.CustomLists.StageNameGenerators.fileList</a></div><div class="ttdeci">static List&lt; string &gt; fileList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:309</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -180,31 +180,31 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  353</span>        {</div>
-<div class="line"><span class="lineno">  354</span>            <span class="keywordflow">if</span> (!generated)</div>
-<div class="line"><span class="lineno">  355</span>            {</div>
-<div class="line"><span class="lineno">  356</span>                generated = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
+<div class="fragment"><div class="line"><span class="lineno">  345</span>        {</div>
+<div class="line"><span class="lineno">  346</span>            <span class="keywordflow">if</span> (!generated)</div>
+<div class="line"><span class="lineno">  347</span>            {</div>
+<div class="line"><span class="lineno">  348</span>                generated = <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a4ec7609464439a8351977b77d99bb70f">GenerateList</a>();</div>
+<div class="line"><span class="lineno">  349</span>            }</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>            <span class="keywordtype">string</span> exID = <span class="stringliteral">&quot;NULL&quot;</span>;</div>
+<div class="line"><span class="lineno">  352</span>            <span class="keywordtype">bool</span> isExStage = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  353</span>            <span class="keywordflow">if</span> (pacName.ToUpper().StartsWith(<span class="stringliteral">&quot;CUSTOM&quot;</span>))</div>
+<div class="line"><span class="lineno">  354</span>            {</div>
+<div class="line"><span class="lineno">  355</span>                exID = pacName.ToUpper().Substring(6);</div>
+<div class="line"><span class="lineno">  356</span>                isExStage = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  357</span>            }</div>
 <div class="line"><span class="lineno">  358</span> </div>
-<div class="line"><span class="lineno">  359</span>            <span class="keywordtype">string</span> exID = <span class="stringliteral">&quot;NULL&quot;</span>;</div>
-<div class="line"><span class="lineno">  360</span>            <span class="keywordtype">bool</span> isExStage = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  361</span>            <span class="keywordflow">if</span> (pacName.ToUpper().StartsWith(<span class="stringliteral">&quot;CUSTOM&quot;</span>))</div>
-<div class="line"><span class="lineno">  362</span>            {</div>
-<div class="line"><span class="lineno">  363</span>                exID = pacName.ToUpper().Substring(6);</div>
-<div class="line"><span class="lineno">  364</span>                isExStage = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  365</span>            }</div>
-<div class="line"><span class="lineno">  366</span> </div>
-<div class="line"><span class="lineno">  367</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
-<div class="line"><span class="lineno">  368</span>            {</div>
-<div class="line"><span class="lineno">  369</span>                <span class="keywordflow">if</span> (s.ToUpper().Substring(internalNameIndex).StartsWith(pacName.ToUpper()) ||</div>
-<div class="line"><span class="lineno">  370</span>                    isExStage &amp;&amp; s.ToUpper().Substring(internalNameIndex).StartsWith(<span class="stringliteral">&quot;EX&quot;</span> + exID))</div>
-<div class="line"><span class="lineno">  371</span>                {</div>
-<div class="line"><span class="lineno">  372</span>                    <span class="keywordflow">return</span> s.Substring(nameIndex).Trim(trimChars);</div>
-<div class="line"><span class="lineno">  373</span>                }</div>
-<div class="line"><span class="lineno">  374</span>            }</div>
-<div class="line"><span class="lineno">  375</span> </div>
-<div class="line"><span class="lineno">  376</span>            <span class="keywordflow">return</span> pacName.ToUpper();</div>
-<div class="line"><span class="lineno">  377</span>        }</div>
+<div class="line"><span class="lineno">  359</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
+<div class="line"><span class="lineno">  360</span>            {</div>
+<div class="line"><span class="lineno">  361</span>                <span class="keywordflow">if</span> (s.ToUpper().Substring(internalNameIndex).StartsWith(pacName.ToUpper()) ||</div>
+<div class="line"><span class="lineno">  362</span>                    isExStage &amp;&amp; s.ToUpper().Substring(internalNameIndex).StartsWith(<span class="stringliteral">&quot;EX&quot;</span> + exID))</div>
+<div class="line"><span class="lineno">  363</span>                {</div>
+<div class="line"><span class="lineno">  364</span>                    <span class="keywordflow">return</span> s.Substring(nameIndex).Trim(trimChars);</div>
+<div class="line"><span class="lineno">  365</span>                }</div>
+<div class="line"><span class="lineno">  366</span>            }</div>
+<div class="line"><span class="lineno">  367</span> </div>
+<div class="line"><span class="lineno">  368</span>            <span class="keywordflow">return</span> pacName.ToUpper();</div>
+<div class="line"><span class="lineno">  369</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -230,43 +230,43 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  380</span>        {</div>
-<div class="line"><span class="lineno">  381</span>            Assembly assembly = Assembly.GetExecutingAssembly();</div>
-<div class="line"><span class="lineno">  382</span>            <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  383</span>            {</div>
-<div class="line"><span class="lineno">  384</span>                <span class="keywordtype">string</span> resourceName = <span class="stringliteral">&quot;BrawlLib.CustomLists.&quot;</span> +</div>
-<div class="line"><span class="lineno">  385</span>                                      (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)</div>
-<div class="line"><span class="lineno">  386</span>                                          .Equals(<span class="stringliteral">&quot;en&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
-<div class="line"><span class="lineno">  387</span>                                          ? <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  388</span>                                          : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()</div>
-<div class="line"><span class="lineno">  389</span>                                              .Substring(0, 2).ToLower() + <span class="charliteral">&#39;.&#39;</span>) + <span class="stringliteral">&quot;StageList.txt&quot;</span>;</div>
-<div class="line"><span class="lineno">  390</span>                <span class="keywordtype">string</span> listDefault = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  391</span>                <span class="keyword">using</span> (Stream stream = assembly.GetManifestResourceStream(resourceName))</div>
-<div class="line"><span class="lineno">  392</span>                {</div>
-<div class="line"><span class="lineno">  393</span>                    <span class="keyword">using</span> (StreamReader reader = <span class="keyword">new</span> StreamReader(stream))</div>
-<div class="line"><span class="lineno">  394</span>                    {</div>
-<div class="line"><span class="lineno">  395</span>                        listDefault = reader.ReadToEnd();</div>
-<div class="line"><span class="lineno">  396</span>                    }</div>
-<div class="line"><span class="lineno">  397</span>                }</div>
-<div class="line"><span class="lineno">  398</span> </div>
-<div class="line"><span class="lineno">  399</span>                File.WriteAllText(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>, listDefault);</div>
-<div class="line"><span class="lineno">  400</span>            }</div>
-<div class="line"><span class="lineno">  401</span>            <span class="keywordflow">catch</span></div>
-<div class="line"><span class="lineno">  402</span>            {</div>
-<div class="line"><span class="lineno">  403</span>                <span class="keywordtype">string</span> resourceName = <span class="stringliteral">&quot;BrawlLib.CustomLists.StageList.txt&quot;</span>;</div>
-<div class="line"><span class="lineno">  404</span>                <span class="keywordtype">string</span> listDefault = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  405</span>                <span class="keyword">using</span> (Stream stream = assembly.GetManifestResourceStream(resourceName))</div>
-<div class="line"><span class="lineno">  406</span>                {</div>
-<div class="line"><span class="lineno">  407</span>                    <span class="keyword">using</span> (StreamReader reader = <span class="keyword">new</span> StreamReader(stream))</div>
-<div class="line"><span class="lineno">  408</span>                    {</div>
-<div class="line"><span class="lineno">  409</span>                        listDefault = reader.ReadToEnd();</div>
-<div class="line"><span class="lineno">  410</span>                    }</div>
-<div class="line"><span class="lineno">  411</span>                }</div>
-<div class="line"><span class="lineno">  412</span> </div>
-<div class="line"><span class="lineno">  413</span>                File.WriteAllText(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>, listDefault);</div>
-<div class="line"><span class="lineno">  414</span>            }</div>
-<div class="line"><span class="lineno">  415</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a641199c797ea90bae15d8119959c0f23"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">BrawlLib.CustomLists.StageNameGenerators.listName</a></div><div class="ttdeci">static string listName</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:320</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  372</span>        {</div>
+<div class="line"><span class="lineno">  373</span>            Assembly assembly = Assembly.GetExecutingAssembly();</div>
+<div class="line"><span class="lineno">  374</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  375</span>            {</div>
+<div class="line"><span class="lineno">  376</span>                <span class="keywordtype">string</span> resourceName = <span class="stringliteral">&quot;BrawlLib.CustomLists.&quot;</span> +</div>
+<div class="line"><span class="lineno">  377</span>                                      (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)</div>
+<div class="line"><span class="lineno">  378</span>                                          .Equals(<span class="stringliteral">&quot;en&quot;</span>, StringComparison.OrdinalIgnoreCase)</div>
+<div class="line"><span class="lineno">  379</span>                                          ? <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  380</span>                                          : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()</div>
+<div class="line"><span class="lineno">  381</span>                                              .Substring(0, 2).ToLower() + <span class="charliteral">&#39;.&#39;</span>) + <span class="stringliteral">&quot;StageList.txt&quot;</span>;</div>
+<div class="line"><span class="lineno">  382</span>                <span class="keywordtype">string</span> listDefault = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  383</span>                <span class="keyword">using</span> (Stream stream = assembly.GetManifestResourceStream(resourceName))</div>
+<div class="line"><span class="lineno">  384</span>                {</div>
+<div class="line"><span class="lineno">  385</span>                    <span class="keyword">using</span> (StreamReader reader = <span class="keyword">new</span> StreamReader(stream))</div>
+<div class="line"><span class="lineno">  386</span>                    {</div>
+<div class="line"><span class="lineno">  387</span>                        listDefault = reader.ReadToEnd();</div>
+<div class="line"><span class="lineno">  388</span>                    }</div>
+<div class="line"><span class="lineno">  389</span>                }</div>
+<div class="line"><span class="lineno">  390</span> </div>
+<div class="line"><span class="lineno">  391</span>                File.WriteAllText(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>, listDefault);</div>
+<div class="line"><span class="lineno">  392</span>            }</div>
+<div class="line"><span class="lineno">  393</span>            <span class="keywordflow">catch</span></div>
+<div class="line"><span class="lineno">  394</span>            {</div>
+<div class="line"><span class="lineno">  395</span>                <span class="keywordtype">string</span> resourceName = <span class="stringliteral">&quot;BrawlLib.CustomLists.StageList.txt&quot;</span>;</div>
+<div class="line"><span class="lineno">  396</span>                <span class="keywordtype">string</span> listDefault = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  397</span>                <span class="keyword">using</span> (Stream stream = assembly.GetManifestResourceStream(resourceName))</div>
+<div class="line"><span class="lineno">  398</span>                {</div>
+<div class="line"><span class="lineno">  399</span>                    <span class="keyword">using</span> (StreamReader reader = <span class="keyword">new</span> StreamReader(stream))</div>
+<div class="line"><span class="lineno">  400</span>                    {</div>
+<div class="line"><span class="lineno">  401</span>                        listDefault = reader.ReadToEnd();</div>
+<div class="line"><span class="lineno">  402</span>                    }</div>
+<div class="line"><span class="lineno">  403</span>                }</div>
+<div class="line"><span class="lineno">  404</span> </div>
+<div class="line"><span class="lineno">  405</span>                File.WriteAllText(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>, listDefault);</div>
+<div class="line"><span class="lineno">  406</span>            }</div>
+<div class="line"><span class="lineno">  407</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a641199c797ea90bae15d8119959c0f23"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">BrawlLib.CustomLists.StageNameGenerators.listName</a></div><div class="ttdeci">static string listName</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:312</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -292,50 +292,50 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  418</span>        {</div>
-<div class="line"><span class="lineno">  419</span>            Directory.CreateDirectory(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a788ac5a9d92744743240504e72f18f29">directory</a>);</div>
-<div class="line"><span class="lineno">  420</span>            <span class="keywordflow">if</span> (!File.Exists(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>))</div>
-<div class="line"><span class="lineno">  421</span>            {</div>
-<div class="line"><span class="lineno">  422</span>                <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a29af3e15d8d59aad8fbfef61e2bd701b">GenerateDefaultList</a>();</div>
-<div class="line"><span class="lineno">  423</span>            }</div>
-<div class="line"><span class="lineno">  424</span> </div>
-<div class="line"><span class="lineno">  425</span>            <span class="keywordflow">if</span> (!File.Exists(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>))</div>
-<div class="line"><span class="lineno">  426</span>            {</div>
-<div class="line"><span class="lineno">  427</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  428</span>            }</div>
-<div class="line"><span class="lineno">  429</span> </div>
-<div class="line"><span class="lineno">  430</span>            generated = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  431</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a> = <span class="keyword">new</span> List&lt;string&gt;(File.ReadAllLines(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>));</div>
-<div class="line"><span class="lineno">  432</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a> = <span class="keyword">new</span> List&lt;Stage&gt;();</div>
-<div class="line"><span class="lineno">  433</span>            <span class="comment">// Remove descriptor strings and unecessary spaces</span></div>
-<div class="line"><span class="lineno">  434</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>.Count; i++)</div>
-<div class="line"><span class="lineno">  435</span>            {</div>
-<div class="line"><span class="lineno">  436</span>                <span class="keywordtype">int</span> commentIndex = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].IndexOf(<span class="stringliteral">&quot;//&quot;</span>);</div>
-<div class="line"><span class="lineno">  437</span>                <span class="keywordflow">if</span> (commentIndex &gt; 0)</div>
-<div class="line"><span class="lineno">  438</span>                {</div>
-<div class="line"><span class="lineno">  439</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].Substring(0, commentIndex);</div>
-<div class="line"><span class="lineno">  440</span>                }</div>
-<div class="line"><span class="lineno">  441</span> </div>
-<div class="line"><span class="lineno">  442</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].TrimEnd(trimChars);</div>
-<div class="line"><span class="lineno">  443</span>            }</div>
-<div class="line"><span class="lineno">  444</span> </div>
-<div class="line"><span class="lineno">  445</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
-<div class="line"><span class="lineno">  446</span>            {</div>
-<div class="line"><span class="lineno">  447</span>                <span class="keywordflow">if</span> (s.Length &gt;= minimumLength &amp;&amp; s.ToUpper().Substring(idIndex).StartsWith(<span class="stringliteral">&quot;0X&quot;</span>) &amp;&amp;</div>
-<div class="line"><span class="lineno">  448</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
-<div class="line"><span class="lineno">  449</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
-<div class="line"><span class="lineno">  450</span>                {</div>
-<div class="line"><span class="lineno">  451</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a>.Add(<span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a>(Convert.ToByte(s.Substring(idIndex + 2, 2), 16), <span class="keyword">true</span>));</div>
-<div class="line"><span class="lineno">  452</span>                }</div>
-<div class="line"><span class="lineno">  453</span>            }</div>
-<div class="line"><span class="lineno">  454</span> </div>
-<div class="line"><span class="lineno">  455</span>            <span class="comment">// Order the list by IDs</span></div>
-<div class="line"><span class="lineno">  456</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a>.OrderBy(o =&gt; o.ID).ToList();</div>
-<div class="line"><span class="lineno">  457</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  458</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a2416d7dce9e785d285168449a9aede53"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">BrawlLib.CustomLists.StageNameGenerators.stageList</a></div><div class="ttdeci">static List&lt; Stage &gt; stageList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:318</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a29af3e15d8d59aad8fbfef61e2bd701b"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a29af3e15d8d59aad8fbfef61e2bd701b">BrawlLib.CustomLists.StageNameGenerators.GenerateDefaultList</a></div><div class="ttdeci">static void GenerateDefaultList()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:379</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a788ac5a9d92744743240504e72f18f29"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a788ac5a9d92744743240504e72f18f29">BrawlLib.CustomLists.StageNameGenerators.directory</a></div><div class="ttdeci">static string directory</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:319</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  410</span>        {</div>
+<div class="line"><span class="lineno">  411</span>            Directory.CreateDirectory(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a788ac5a9d92744743240504e72f18f29">directory</a>);</div>
+<div class="line"><span class="lineno">  412</span>            <span class="keywordflow">if</span> (!File.Exists(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>))</div>
+<div class="line"><span class="lineno">  413</span>            {</div>
+<div class="line"><span class="lineno">  414</span>                <a class="code hl_function" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a29af3e15d8d59aad8fbfef61e2bd701b">GenerateDefaultList</a>();</div>
+<div class="line"><span class="lineno">  415</span>            }</div>
+<div class="line"><span class="lineno">  416</span> </div>
+<div class="line"><span class="lineno">  417</span>            <span class="keywordflow">if</span> (!File.Exists(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>))</div>
+<div class="line"><span class="lineno">  418</span>            {</div>
+<div class="line"><span class="lineno">  419</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  420</span>            }</div>
+<div class="line"><span class="lineno">  421</span> </div>
+<div class="line"><span class="lineno">  422</span>            generated = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  423</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a> = <span class="keyword">new</span> List&lt;string&gt;(File.ReadAllLines(<a class="code hl_property" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a641199c797ea90bae15d8119959c0f23">listName</a>));</div>
+<div class="line"><span class="lineno">  424</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a> = <span class="keyword">new</span> List&lt;Stage&gt;();</div>
+<div class="line"><span class="lineno">  425</span>            <span class="comment">// Remove descriptor strings and unecessary spaces</span></div>
+<div class="line"><span class="lineno">  426</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>.Count; i++)</div>
+<div class="line"><span class="lineno">  427</span>            {</div>
+<div class="line"><span class="lineno">  428</span>                <span class="keywordtype">int</span> commentIndex = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].IndexOf(<span class="stringliteral">&quot;//&quot;</span>);</div>
+<div class="line"><span class="lineno">  429</span>                <span class="keywordflow">if</span> (commentIndex &gt; 0)</div>
+<div class="line"><span class="lineno">  430</span>                {</div>
+<div class="line"><span class="lineno">  431</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].Substring(0, commentIndex);</div>
+<div class="line"><span class="lineno">  432</span>                }</div>
+<div class="line"><span class="lineno">  433</span> </div>
+<div class="line"><span class="lineno">  434</span>                <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i] = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>[i].TrimEnd(trimChars);</div>
+<div class="line"><span class="lineno">  435</span>            }</div>
+<div class="line"><span class="lineno">  436</span> </div>
+<div class="line"><span class="lineno">  437</span>            <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> s <span class="keywordflow">in</span> <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#ad3e594f29a67c01c94b3009c31e30987">fileList</a>)</div>
+<div class="line"><span class="lineno">  438</span>            {</div>
+<div class="line"><span class="lineno">  439</span>                <span class="keywordflow">if</span> (s.Length &gt;= minimumLength &amp;&amp; s.ToUpper().Substring(idIndex).StartsWith(<span class="stringliteral">&quot;0X&quot;</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  440</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;X&quot;</span>) &amp;&amp;</div>
+<div class="line"><span class="lineno">  441</span>                    !s.ToUpper().Substring(flagIndex).StartsWith(<span class="stringliteral">&quot;-S&quot;</span>))</div>
+<div class="line"><span class="lineno">  442</span>                {</div>
+<div class="line"><span class="lineno">  443</span>                    <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a>.Add(<span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">Stage</a>(Convert.ToByte(s.Substring(idIndex + 2, 2), 16), <span class="keyword">true</span>));</div>
+<div class="line"><span class="lineno">  444</span>                }</div>
+<div class="line"><span class="lineno">  445</span>            }</div>
+<div class="line"><span class="lineno">  446</span> </div>
+<div class="line"><span class="lineno">  447</span>            <span class="comment">// Order the list by IDs</span></div>
+<div class="line"><span class="lineno">  448</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">stageList</a>.OrderBy(o =&gt; o.ID).ToList();</div>
+<div class="line"><span class="lineno">  449</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  450</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a2416d7dce9e785d285168449a9aede53"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a2416d7dce9e785d285168449a9aede53">BrawlLib.CustomLists.StageNameGenerators.stageList</a></div><div class="ttdeci">static List&lt; Stage &gt; stageList</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:310</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a29af3e15d8d59aad8fbfef61e2bd701b"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a29af3e15d8d59aad8fbfef61e2bd701b">BrawlLib.CustomLists.StageNameGenerators.GenerateDefaultList</a></div><div class="ttdeci">static void GenerateDefaultList()</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:371</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_custom_lists_1_1_stage_name_generators_html_a788ac5a9d92744743240504e72f18f29"><div class="ttname"><a href="class_brawl_lib_1_1_custom_lists_1_1_stage_name_generators.html#a788ac5a9d92744743240504e72f18f29">BrawlLib.CustomLists.StageNameGenerators.directory</a></div><div class="ttdeci">static string directory</div><div class="ttdef"><b>Definition:</b> CustomLists.cs:311</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_stage_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_stage.html">BrawlLib.SSBB.Stage</a></div><div class="ttdef"><b>Definition:</b> Stage.cs:7</div></div>
 </div><!-- fragment -->
 </div>

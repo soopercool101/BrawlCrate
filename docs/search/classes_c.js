@@ -238,9 +238,12 @@ var searchData=
   ['msbinpreviewlabel_235',['MSBinPreviewLabel',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_m_s_bin_preview_label.html',1,'BrawlLib::Internal::Windows::Controls']]],
   ['msbinviewer_236',['MSBinViewer',['../class_brawl_crate_1_1_brawl_managers_1_1_stage_manager_1_1_m_s_bin_viewer.html',1,'BrawlCrate::BrawlManagers::StageManager']]],
   ['msbinwrapper_237',['MSBinWrapper',['../class_brawl_crate_1_1_node_wrappers_1_1_m_s_bin_wrapper.html',1,'BrawlCrate::NodeWrappers']]],
-  ['multipleinterpretationattributegrid_238',['MultipleInterpretationAttributeGrid',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html',1,'BrawlLib::Internal::Windows::Controls']]],
-  ['multipleinterpretationiattributelist_239',['MultipleInterpretationIAttributeList',['../interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_multiple_interpretation_i_attribute_list.html',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['multiselectablewrapper_240',['MultiSelectableWrapper',['../interface_brawl_crate_1_1_node_wrappers_1_1_multi_selectable_wrapper.html',1,'BrawlCrate::NodeWrappers']]],
-  ['mvpmentrynode_241',['MVPMEntryNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_v_p_m_entry_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['mvpmnode_242',['MVPMNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_v_p_m_node.html',1,'BrawlLib::SSBB::ResourceNodes']]]
+  ['muevent_238',['MuEvent',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_mu_event.html',1,'BrawlLib::SSBB::Types']]],
+  ['mueventnode_239',['MuEventNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_mu_event_node.html',1,'BrawlLib::SSBB']]],
+  ['mueventtblnode_240',['MuEventTblNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_mu_event_tbl_node.html',1,'BrawlLib::SSBB']]],
+  ['multipleinterpretationattributegrid_241',['MultipleInterpretationAttributeGrid',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_multiple_interpretation_attribute_grid.html',1,'BrawlLib::Internal::Windows::Controls']]],
+  ['multipleinterpretationiattributelist_242',['MultipleInterpretationIAttributeList',['../interface_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_multiple_interpretation_i_attribute_list.html',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['multiselectablewrapper_243',['MultiSelectableWrapper',['../interface_brawl_crate_1_1_node_wrappers_1_1_multi_selectable_wrapper.html',1,'BrawlCrate::NodeWrappers']]],
+  ['mvpmentrynode_244',['MVPMEntryNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_v_p_m_entry_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
+  ['mvpmnode_245',['MVPMNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_m_v_p_m_node.html',1,'BrawlLib::SSBB::ResourceNodes']]]
 ];

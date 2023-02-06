@@ -24,6 +24,7 @@ var searchData=
   ['controlspeedtype_21',['ControlSpeedType',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_post_field_info.html#a45ef19b90e423680ee100b39e2cfa3a7',1,'BrawlLib::SSBB::Types::PostFieldInfo']]],
   ['coordinatetype_22',['CoordinateType',['../class_brawl_lib_1_1_internal_1_1_windows_1_1_controls_1_1_model_viewer_1_1_main_window_base_1_1_model_editor_base.html#a266bdad62898296a9d2a96c7eaccb9e6',1,'BrawlLib.Internal.Windows.Controls.ModelViewer.MainWindowBase.ModelEditorBase.CoordinateType()'],['../class_brawl_lib_1_1_modeling_1_1_p_m_d_model.html#aefc67d6b8024408cf09e4ba7444f3a7c',1,'BrawlLib.Modeling.PMDModel.CoordinateType()']]],
   ['costumeloadflags_23',['CostumeLoadFlags',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#a500db1364f2c0f69ca00a4c1eda86779',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]],
-  ['cpcommand_24',['CPCommand',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a9e4932e3ae3bb09e2a2d8e54aadc3a19',1,'BrawlLib::Wii::Graphics']]],
-  ['cullmode_25',['CullMode',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#aaad761010924c80f010fe1ed40c6d4e6',1,'BrawlLib::SSBB::Types']]]
+  ['costumetypes_24',['CostumeTypes',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_f_g1_entry_node.html#adf4af3956eb6875599ebcbba86ef5ff5',1,'BrawlLib::SSBB::ResourceNodes::GFG1EntryNode']]],
+  ['cpcommand_25',['CPCommand',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#a9e4932e3ae3bb09e2a2d8e54aadc3a19',1,'BrawlLib::Wii::Graphics']]],
+  ['cullmode_26',['CullMode',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#aaad761010924c80f010fe1ed40c6d4e6',1,'BrawlLib::SSBB::Types']]]
 ];

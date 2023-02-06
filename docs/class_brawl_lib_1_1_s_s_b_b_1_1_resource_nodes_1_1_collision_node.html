@@ -628,17 +628,21 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">  268</span>            OpenFileDialog o = <span class="keyword">new</span> OpenFileDialog</div>
 <div class="line"><span class="lineno">  269</span>            {</div>
 <div class="line"><span class="lineno">  270</span>                Filter = FileFilters.CollisionDef,</div>
-<div class="line"><span class="lineno">  271</span>                Title = <span class="stringliteral">&quot;Please select a collision to merge with&quot;</span></div>
-<div class="line"><span class="lineno">  272</span>            };</div>
-<div class="line"><span class="lineno">  273</span>            <span class="keywordflow">if</span> (o.ShowDialog() == DialogResult.OK)</div>
-<div class="line"><span class="lineno">  274</span>            {</div>
-<div class="line"><span class="lineno">  275</span>                CollisionNode external = (CollisionNode) NodeFactory.FromFile(<span class="keyword">null</span>, o.FileName, typeof(CollisionNode));</div>
-<div class="line"><span class="lineno">  276</span>                <span class="keywordflow">if</span> (external != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  271</span>                Multiselect = <span class="keyword">true</span>,</div>
+<div class="line"><span class="lineno">  272</span>                Title = <span class="stringliteral">&quot;Please select a collision to merge with&quot;</span></div>
+<div class="line"><span class="lineno">  273</span>            };</div>
+<div class="line"><span class="lineno">  274</span>            <span class="keywordflow">if</span> (o.ShowDialog() == DialogResult.OK)</div>
+<div class="line"><span class="lineno">  275</span>            {</div>
+<div class="line"><span class="lineno">  276</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> f <span class="keywordflow">in</span> o.FileNames)</div>
 <div class="line"><span class="lineno">  277</span>                {</div>
-<div class="line"><span class="lineno">  278</span>                    <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html#a6658849426e69b0176be9499643f7b8e">MergeWith</a>(external);</div>
-<div class="line"><span class="lineno">  279</span>                }</div>
-<div class="line"><span class="lineno">  280</span>            }</div>
-<div class="line"><span class="lineno">  281</span>        }</div>
+<div class="line"><span class="lineno">  278</span>                    CollisionNode external = (CollisionNode)NodeFactory.FromFile(<span class="keyword">null</span>, f, typeof(CollisionNode));</div>
+<div class="line"><span class="lineno">  279</span>                    <span class="keywordflow">if</span> (external != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  280</span>                    {</div>
+<div class="line"><span class="lineno">  281</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html#a6658849426e69b0176be9499643f7b8e">MergeWith</a>(external);</div>
+<div class="line"><span class="lineno">  282</span>                    }</div>
+<div class="line"><span class="lineno">  283</span>                }</div>
+<div class="line"><span class="lineno">  284</span>            }</div>
+<div class="line"><span class="lineno">  285</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node_html_a6658849426e69b0176be9499643f7b8e"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_collision_node.html#a6658849426e69b0176be9499643f7b8e">BrawlLib.SSBB.ResourceNodes.CollisionNode.MergeWith</a></div><div class="ttdeci">void MergeWith()</div><div class="ttdef"><b>Definition:</b> CollisionNode.cs:266</div></div>
 </div><!-- fragment -->
 </div>
@@ -666,14 +670,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  284</span>        {</div>
-<div class="line"><span class="lineno">  285</span>            <span class="keywordflow">foreach</span> (ResourceNode co <span class="keywordflow">in</span> external.Children)</div>
-<div class="line"><span class="lineno">  286</span>            {</div>
-<div class="line"><span class="lineno">  287</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(co);</div>
-<div class="line"><span class="lineno">  288</span>            }</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
-<div class="line"><span class="lineno">  291</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  288</span>        {</div>
+<div class="line"><span class="lineno">  289</span>            <span class="keywordflow">foreach</span> (ResourceNode co <span class="keywordflow">in</span> external.Children)</div>
+<div class="line"><span class="lineno">  290</span>            {</div>
+<div class="line"><span class="lineno">  291</span>                co.Name = $<span class="stringliteral">&quot;{external.Name} {co.Name}&quot;</span>;</div>
+<div class="line"><span class="lineno">  292</span>                <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">AddChild</a>(co);</div>
+<div class="line"><span class="lineno">  293</span>            }</div>
+<div class="line"><span class="lineno">  294</span> </div>
+<div class="line"><span class="lineno">  295</span>            <a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">SignalPropertyChange</a>();</div>
+<div class="line"><span class="lineno">  296</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_a7d6d973b631a29f1f86bff9500bbb7eb"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a7d6d973b631a29f1f86bff9500bbb7eb">BrawlLib.SSBB.ResourceNodes.ResourceNode.SignalPropertyChange</a></div><div class="ttdeci">virtual void SignalPropertyChange()</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:315</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac3b33c6e8495209753fbc3774709172a"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac3b33c6e8495209753fbc3774709172a">BrawlLib.SSBB.ResourceNodes.ResourceNode.AddChild</a></div><div class="ttdeci">virtual void AddChild(ResourceNode child)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:759</div></div>
 </div><!-- fragment -->

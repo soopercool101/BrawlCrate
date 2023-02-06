@@ -63,7 +63,7 @@ var searchData=
   ['subspace_60',['Subspace',['../namespace_brawl_crate_1_1_node_wrappers_1_1_subspace.html',1,'BrawlCrate.NodeWrappers.Subspace'],['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_subspace.html',1,'BrawlLib.SSBB.ResourceNodes.Subspace'],['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace.html',1,'BrawlLib.SSBB.Types.Subspace']]],
   ['textures_61',['Textures',['../namespace_brawl_lib_1_1_wii_1_1_textures.html',1,'BrawlLib::Wii']]],
   ['triangle_5fconverter_62',['Triangle_Converter',['../namespace_brawl_lib_1_1_modeling_1_1_triangle___converter.html',1,'BrawlLib::Modeling']]],
-  ['triggers_63',['Triggers',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_triggers.html',1,'BrawlLib::SSBB::Types::Subspace']]],
+  ['triggers_63',['Triggers',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_subspace_1_1_triggers.html',1,'BrawlLib.SSBB.ResourceNodes.Subspace.Triggers'],['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_triggers.html',1,'BrawlLib.SSBB.Types.Subspace.Triggers']]],
   ['types_64',['Types',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html',1,'BrawlLib::SSBB']]],
   ['ui_65',['UI',['../namespace_brawl_crate_1_1_u_i.html',1,'BrawlCrate']]],
   ['wii_66',['Wii',['../namespace_brawl_lib_1_1_wii.html',1,'BrawlLib']]],

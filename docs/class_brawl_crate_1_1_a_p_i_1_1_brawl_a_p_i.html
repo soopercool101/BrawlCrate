@@ -238,6 +238,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a26970f4e8a1e050a7f84c6400d6baa81"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i.html#a26970f4e8a1e050a7f84c6400d6baa81">RefreshPreview</a> ()</td></tr>
 <tr class="memdesc:a26970f4e8a1e050a7f84c6400d6baa81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refreshes the preview on the main window.   <a href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i.html#a26970f4e8a1e050a7f84c6400d6baa81">More...</a><br /></td></tr>
 <tr class="separator:a26970f4e8a1e050a7f84c6400d6baa81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acef70ac45314e1437ae254187849da98"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i.html#acef70ac45314e1437ae254187849da98">Wait</a> (int milliseconds)</td></tr>
+<tr class="memdesc:acef70ac45314e1437ae254187849da98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Causes the current thread to sleep for a number of milliseconds.   <a href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i.html#acef70ac45314e1437ae254187849da98">More...</a><br /></td></tr>
+<tr class="separator:acef70ac45314e1437ae254187849da98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c6833825edd019000dd505ca6477851"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i.html#a2c6833825edd019000dd505ca6477851">AddResourceParser</a> (<a class="el" href="interface_brawl_crate_1_1_a_p_i_1_1_plugin_resource_parser.html">PluginResourceParser</a> resourceParser)</td></tr>
 <tr class="memdesc:a2c6833825edd019000dd505ca6477851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds parsing for a specific user-defined file type.  <a href="class_brawl_crate_1_1_a_p_i_1_1_brawl_a_p_i.html#a2c6833825edd019000dd505ca6477851">More...</a><br /></td></tr>
 <tr class="separator:a2c6833825edd019000dd505ca6477851"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -697,9 +700,9 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno"> 1361</span>        {</div>
-<div class="line"><span class="lineno"> 1362</span>            BrawlAPIInternal.ResourceParsers.Add(resourceParser);</div>
-<div class="line"><span class="lineno"> 1363</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1370</span>        {</div>
+<div class="line"><span class="lineno"> 1371</span>            BrawlAPIInternal.ResourceParsers.Add(resourceParser);</div>
+<div class="line"><span class="lineno"> 1372</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -745,9 +748,9 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno"> 1378</span>        {</div>
-<div class="line"><span class="lineno"> 1379</span>            NodeWrapperAttribute.AddWrapper(resourceType, wrapper);</div>
-<div class="line"><span class="lineno"> 1380</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1387</span>        {</div>
+<div class="line"><span class="lineno"> 1388</span>            NodeWrapperAttribute.AddWrapper(resourceType, wrapper);</div>
+<div class="line"><span class="lineno"> 1389</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -796,10 +799,10 @@ Properties</h2></td></tr>
 </dd>
 </dl>
 </div>
-<div class="fragment"><div class="line"><span class="lineno"> 1394</span>                                                                                      : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a></div>
-<div class="line"><span class="lineno"> 1395</span>        {</div>
-<div class="line"><span class="lineno"> 1396</span>            NodeWrapperAttribute.AddWrapper&lt;TypeNode&gt;(wrapper);</div>
-<div class="line"><span class="lineno"> 1397</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1403</span>                                                                                      : <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a></div>
+<div class="line"><span class="lineno"> 1404</span>        {</div>
+<div class="line"><span class="lineno"> 1405</span>            NodeWrapperAttribute.AddWrapper&lt;TypeNode&gt;(wrapper);</div>
+<div class="line"><span class="lineno"> 1406</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:129</div></div>
 </div><!-- fragment -->
 </div>
@@ -2998,6 +3001,43 @@ Properties</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="acef70ac45314e1437ae254187849da98" name="acef70ac45314e1437ae254187849da98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acef70ac45314e1437ae254187849da98">&#9670;&#160;</a></span>Wait()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void BrawlCrate.API.BrawlAPI.Wait </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>milliseconds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Causes the current thread to sleep for a number of milliseconds.  </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">milliseconds</td><td>The amount of time to wait, in milliseconds</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno"> 1353</span>        {</div>
+<div class="line"><span class="lineno"> 1354</span>            System.Threading.Thread.Sleep(milliseconds);</div>
+<div class="line"><span class="lineno"> 1355</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="acb519a76648613b981360c9f9351d4d2" name="acb519a76648613b981360c9f9351d4d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb519a76648613b981360c9f9351d4d2">&#9670;&#160;</a></span>WriteToConsole()</h2>
 
@@ -3029,15 +3069,15 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno"> 1413</span>        {</div>
-<div class="line"><span class="lineno"> 1414</span><span class="preprocessor">#if DEBUG</span></div>
-<div class="line"><span class="lineno"> 1415</span>            Console.WriteLine(msg);</div>
-<div class="line"><span class="lineno"> 1416</span>            System.Diagnostics.Debug.WriteLine(msg);</div>
-<div class="line"><span class="lineno"> 1417</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno"> 1418</span><span class="preprocessor">#if TRACE</span></div>
-<div class="line"><span class="lineno"> 1419</span>            System.Diagnostics.Trace.WriteLine(msg);</div>
-<div class="line"><span class="lineno"> 1420</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno"> 1421</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno"> 1422</span>        {</div>
+<div class="line"><span class="lineno"> 1423</span><span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><span class="lineno"> 1424</span>            Console.WriteLine(msg);</div>
+<div class="line"><span class="lineno"> 1425</span>            System.Diagnostics.Debug.WriteLine(msg);</div>
+<div class="line"><span class="lineno"> 1426</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno"> 1427</span><span class="preprocessor">#if TRACE</span></div>
+<div class="line"><span class="lineno"> 1428</span>            System.Diagnostics.Trace.WriteLine(msg);</div>
+<div class="line"><span class="lineno"> 1429</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno"> 1430</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

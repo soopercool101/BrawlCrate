@@ -456,17 +456,17 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a827da2b5393280f05854efd78e273152">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  208</span>        {</div>
-<div class="line"><span class="lineno">  209</span>            <span class="keywordtype">int</span> size = <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>);</div>
-<div class="line"><span class="lineno">  210</span>            <span class="keywordflow">foreach</span> (ResourceNode node <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
-<div class="line"><span class="lineno">  211</span>            {</div>
-<div class="line"><span class="lineno">  212</span>                size += node.CalculateSize(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  213</span>                size += Encoding.UTF8.GetByteCount(node.Name) + 1;</div>
-<div class="line"><span class="lineno">  214</span>            }</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>            size += _offCount * 4 + Children.Count * 8;</div>
-<div class="line"><span class="lineno">  217</span>            <span class="keywordflow">return</span> size;</div>
-<div class="line"><span class="lineno">  218</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  209</span>        {</div>
+<div class="line"><span class="lineno">  210</span>            <span class="keywordtype">int</span> size = <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>);</div>
+<div class="line"><span class="lineno">  211</span>            <span class="keywordflow">foreach</span> (ResourceNode node <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
+<div class="line"><span class="lineno">  212</span>            {</div>
+<div class="line"><span class="lineno">  213</span>                size += node.CalculateSize(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  214</span>                size += Encoding.UTF8.GetByteCount(node.Name) + 1;</div>
+<div class="line"><span class="lineno">  215</span>            }</div>
+<div class="line"><span class="lineno">  216</span> </div>
+<div class="line"><span class="lineno">  217</span>            size += _offCount * 4 + Children.Count * 8;</div>
+<div class="line"><span class="lineno">  218</span>            <span class="keywordflow">return</span> size;</div>
+<div class="line"><span class="lineno">  219</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac9fe20e01ee816de58d8b2fa8d50f6f8"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">BrawlLib.SSBB.ResourceNodes.ResourceNode.Children</a></div><div class="ttdeci">List&lt; ResourceNode &gt; Children</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:262</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">BrawlLib.SSBB.Types.Common2TblHeader</a></div><div class="ttdef"><b>Definition:</b> Common2Tbl.cs:8</div></div>
 </div><!-- fragment -->
@@ -571,13 +571,14 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   78</span>                    name.StartsWith(<span class="stringliteral">&quot;eventStage&quot;</span>) ? <span class="keyword">new</span> EventMatchNode()</div>
 <div class="line"><span class="lineno">   79</span>                    : name.StartsWith(<span class="stringliteral">&quot;allstar&quot;</span>) ? new AllstarStageTblNode()</div>
 <div class="line"><span class="lineno">   80</span>                    : name.StartsWith(<span class="stringliteral">&quot;simpleStage&quot;</span>) ? new ClassicStageTblNode()</div>
-<div class="line"><span class="lineno">   81</span>                    : name == <span class="stringliteral">&quot;sndBgmTitleData&quot;</span> ? new SndBgmTitleDataNode()</div>
-<div class="line"><span class="lineno">   82</span>                    : (ResourceNode) new ClassicStageTblSizeTblNode();</div>
-<div class="line"><span class="lineno">   83</span>                node.Initialize(<span class="keyword">this</span>, source);</div>
-<div class="line"><span class="lineno">   84</span>                node.Name = name;</div>
-<div class="line"><span class="lineno">   85</span>                node.HasChanged = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   86</span>            }</div>
-<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="line"><span class="lineno">   81</span>                    : name.StartsWith(<span class="stringliteral">&quot;muEventTbl&quot;</span>) ? new MuEventTblNode()</div>
+<div class="line"><span class="lineno">   82</span>                    : name == <span class="stringliteral">&quot;sndBgmTitleData&quot;</span> ? new SndBgmTitleDataNode()</div>
+<div class="line"><span class="lineno">   83</span>                    : (ResourceNode) new ClassicStageTblSizeTblNode();</div>
+<div class="line"><span class="lineno">   84</span>                node.Initialize(<span class="keyword">this</span>, source);</div>
+<div class="line"><span class="lineno">   85</span>                node.Name = name;</div>
+<div class="line"><span class="lineno">   86</span>                node.HasChanged = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   87</span>            }</div>
+<div class="line"><span class="lineno">   88</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1_void_ptr_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">BrawlLib.Internal.VoidPtr</a></div><div class="ttdef"><b>Definition:</b> VoidPtr.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1bint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1bint.html">BrawlLib.Internal.bint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:9</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header_html_a9731ffa118b95c1bf51cb92cdf097111"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html#a9731ffa118b95c1bf51cb92cdf097111">BrawlLib.SSBB.Types.Common2TblHeader._DataTable</a></div><div class="ttdeci">bint _DataTable</div><div class="ttdef"><b>Definition:</b> Common2Tbl.cs:14</div></div>
@@ -626,122 +627,122 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#a041a23bb933e6da8b0e03fdf664ba5db">BrawlLib.SSBB.ResourceNodes.ResourceNode</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   90</span>        {</div>
-<div class="line"><span class="lineno">   91</span>            <span class="comment">// Update base address for children.</span></div>
-<div class="line"><span class="lineno">   92</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> baseAddress = address + <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>);</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>            <span class="comment">// Initiate header struct</span></div>
-<div class="line"><span class="lineno">   95</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>* Header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>*) address;</div>
-<div class="line"><span class="lineno">   96</span>            *Header = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>();</div>
-<div class="line"><span class="lineno">   97</span>            Header-&gt;_OffCount = _offCount;</div>
-<div class="line"><span class="lineno">   98</span>            Header-&gt;_DataTable = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count;</div>
-<div class="line"><span class="lineno">   99</span>            Header-&gt;_pad0 = Header-&gt;_pad1 =</div>
-<div class="line"><span class="lineno">  100</span>                Header-&gt;_pad2 = Header-&gt;_pad3 = 0;</div>
-<div class="line"><span class="lineno">  101</span> </div>
-<div class="line"><span class="lineno">  102</span>            Dictionary&lt;ResourceNode, VoidPtr&gt; dataLocations = <span class="keyword">new</span> Dictionary&lt;ResourceNode, VoidPtr&gt;();</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> ptr = baseAddress;</div>
-<div class="line"><span class="lineno">  105</span>            <span class="keywordflow">foreach</span> (ResourceNode child <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
-<div class="line"><span class="lineno">  106</span>            {</div>
-<div class="line"><span class="lineno">  107</span>                <span class="keywordtype">int</span> size = child.CalculateSize(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  108</span>                dataLocations.Add(child, ptr);</div>
-<div class="line"><span class="lineno">  109</span>                <span class="keywordflow">if</span> (child is ClassicStageTblSizeTblNode &amp;&amp; size == 48)</div>
-<div class="line"><span class="lineno">  110</span>                {</div>
-<div class="line"><span class="lineno">  111</span>                    <span class="comment">// Rebuild</span></div>
-<div class="line"><span class="lineno">  112</span>                    Dictionary&lt;string, int&gt; sizes = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.ToDictionary(c =&gt; c.Name, c =&gt;</div>
-<div class="line"><span class="lineno">  113</span>                    {</div>
-<div class="line"><span class="lineno">  114</span>                        int fullSize = c.CalculateSize(false);</div>
-<div class="line"><span class="lineno">  115</span>                        int paddingInts = (c as ClassicStageTblNode)?.Padding?.Length ?? 0;</div>
-<div class="line"><span class="lineno">  116</span>                        return fullSize - sizeof(bint) * paddingInts;</div>
-<div class="line"><span class="lineno">  117</span>                    });</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>                    <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>[] newTbl = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>[12];</div>
-<div class="line"><span class="lineno">  120</span>                    fixed (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* newTblPtr = newTbl)</div>
-<div class="line"><span class="lineno">  121</span>                    {</div>
-<div class="line"><span class="lineno">  122</span>                        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> key <span class="keywordflow">in</span> <span class="keyword">new</span>[]</div>
-<div class="line"><span class="lineno">  123</span>                        {</div>
-<div class="line"><span class="lineno">  124</span>                            <span class="stringliteral">&quot;simpleStageB1Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  125</span>                            <span class="stringliteral">&quot;simpleStageB2Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  126</span>                            <span class="stringliteral">&quot;simpleStage11Tbl&quot;</span></div>
-<div class="line"><span class="lineno">  127</span>                        })</div>
-<div class="line"><span class="lineno">  128</span>                        {</div>
-<div class="line"><span class="lineno">  129</span>                            <span class="keywordflow">if</span> (!sizes.TryGetValue(key, out <span class="keywordtype">int</span> s) || s != 0x104)</div>
-<div class="line"><span class="lineno">  130</span>                            {</div>
-<div class="line"><span class="lineno">  131</span>                                MessageBox.Show(</div>
-<div class="line"><span class="lineno">  132</span>                                    $<span class="stringliteral">&quot;Changing the size of {key} may not work properly (BrawlCrate doesn&#39;t know yet which size entry to update)&quot;</span>);</div>
-<div class="line"><span class="lineno">  133</span>                            }</div>
-<div class="line"><span class="lineno">  134</span>                        }</div>
-<div class="line"><span class="lineno">  135</span> </div>
-<div class="line"><span class="lineno">  136</span>                        <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* bptr = newTblPtr;</div>
-<div class="line"><span class="lineno">  137</span>                        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> key <span class="keywordflow">in</span> <span class="keyword">new</span>[]</div>
-<div class="line"><span class="lineno">  138</span>                        {</div>
-<div class="line"><span class="lineno">  139</span>                            <span class="stringliteral">&quot;simpleStage1Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  140</span>                            <span class="stringliteral">&quot;simpleStage2Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  141</span>                            <span class="stringliteral">&quot;simpleStage3Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  142</span>                            <span class="stringliteral">&quot;simpleStage4Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  143</span>                            <span class="stringliteral">&quot;simpleStageB1Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  144</span>                            <span class="stringliteral">&quot;simpleStage5Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  145</span>                            <span class="stringliteral">&quot;simpleStage6Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  146</span>                            <span class="stringliteral">&quot;simpleStage7Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  147</span>                            <span class="stringliteral">&quot;simpleStage8Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  148</span>                            <span class="stringliteral">&quot;simpleStage9Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  149</span>                            <span class="stringliteral">&quot;simpleStage10Tbl&quot;</span>,</div>
-<div class="line"><span class="lineno">  150</span>                            <span class="stringliteral">&quot;simpleStageB2Tbl&quot;</span></div>
-<div class="line"><span class="lineno">  151</span>                        })</div>
-<div class="line"><span class="lineno">  152</span>                        {</div>
-<div class="line"><span class="lineno">  153</span>                            <span class="keywordflow">if</span> (sizes.TryGetValue(key, out <span class="keywordtype">int</span> s))</div>
-<div class="line"><span class="lineno">  154</span>                            {</div>
-<div class="line"><span class="lineno">  155</span>                                *bptr = s;</div>
-<div class="line"><span class="lineno">  156</span>                            }</div>
-<div class="line"><span class="lineno">  157</span>                            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  158</span>                            {</div>
-<div class="line"><span class="lineno">  159</span>                                MessageBox.Show($<span class="stringliteral">&quot;Cannot get size of {key}&quot;</span>);</div>
-<div class="line"><span class="lineno">  160</span>                            }</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>                            bptr++;</div>
-<div class="line"><span class="lineno">  163</span>                        }</div>
-<div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>                        child.ReplaceRaw(newTblPtr, 48);</div>
-<div class="line"><span class="lineno">  166</span>                    }</div>
-<div class="line"><span class="lineno">  167</span>                }</div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>                child.Rebuild(ptr, size, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  170</span>                ptr += size;</div>
-<div class="line"><span class="lineno">  171</span>            }</div>
-<div class="line"><span class="lineno">  172</span> </div>
-<div class="line"><span class="lineno">  173</span>            Header-&gt;_DataLength = ptr - baseAddress;</div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* dataPointers = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) ptr;</div>
-<div class="line"><span class="lineno">  176</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* stringPointers = dataPointers + 1;</div>
-<div class="line"><span class="lineno">  177</span>            <span class="keywordtype">byte</span>* strings = (<span class="keywordtype">byte</span>*) (dataPointers + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count);</div>
-<div class="line"><span class="lineno">  178</span>            <span class="keywordtype">byte</span>* currentString = strings;</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>            List&lt;ResourceNode&gt; childrenAlphabetical = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.OrderBy(o =&gt; o.Name).ToList();</div>
-<div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>            <span class="keywordflow">foreach</span> (ResourceNode child <span class="keywordflow">in</span> childrenAlphabetical)</div>
-<div class="line"><span class="lineno">  183</span>            {</div>
-<div class="line"><span class="lineno">  184</span>                *dataPointers = dataLocations[child] - baseAddress;</div>
-<div class="line"><span class="lineno">  185</span>                dataPointers += 2;</div>
-<div class="line"><span class="lineno">  186</span>                *stringPointers = (int) (currentString - strings);</div>
-<div class="line"><span class="lineno">  187</span>                stringPointers += 2;</div>
-<div class="line"><span class="lineno">  188</span> </div>
-<div class="line"><span class="lineno">  189</span>                <span class="keywordtype">byte</span>[] text = Encoding.UTF8.GetBytes(child.Name);</div>
-<div class="line"><span class="lineno">  190</span>                fixed (<span class="keywordtype">byte</span>* from = text)</div>
-<div class="line"><span class="lineno">  191</span>                {</div>
-<div class="line"><span class="lineno">  192</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(currentString, from, (uint) text.Length);</div>
-<div class="line"><span class="lineno">  193</span>                    currentString += text.Length;</div>
-<div class="line"><span class="lineno">  194</span>                    *currentString = 0;</div>
-<div class="line"><span class="lineno">  195</span>                    currentString++;</div>
-<div class="line"><span class="lineno">  196</span>                }</div>
-<div class="line"><span class="lineno">  197</span>            }</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>            <span class="keywordflow">if</span> (currentString - address &gt; length)</div>
-<div class="line"><span class="lineno">  200</span>            {</div>
-<div class="line"><span class="lineno">  201</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;Wrong amount of memory allocated for rebuild of common2 data (Expected: {currentString - address} | Actual: {length})&quot;</span>);</div>
-<div class="line"><span class="lineno">  202</span>            }</div>
-<div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>            Header-&gt;_Length = length;</div>
-<div class="line"><span class="lineno">  205</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>        {</div>
+<div class="line"><span class="lineno">   92</span>            <span class="comment">// Update base address for children.</span></div>
+<div class="line"><span class="lineno">   93</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> baseAddress = address + <span class="keyword">sizeof</span>(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>);</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>            <span class="comment">// Initiate header struct</span></div>
+<div class="line"><span class="lineno">   96</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>* Header = (<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>*) address;</div>
+<div class="line"><span class="lineno">   97</span>            *Header = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_common2_tbl_header.html">Common2TblHeader</a>();</div>
+<div class="line"><span class="lineno">   98</span>            Header-&gt;_OffCount = _offCount;</div>
+<div class="line"><span class="lineno">   99</span>            Header-&gt;_DataTable = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count;</div>
+<div class="line"><span class="lineno">  100</span>            Header-&gt;_pad0 = Header-&gt;_pad1 =</div>
+<div class="line"><span class="lineno">  101</span>                Header-&gt;_pad2 = Header-&gt;_pad3 = 0;</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>            Dictionary&lt;ResourceNode, VoidPtr&gt; dataLocations = <span class="keyword">new</span> Dictionary&lt;ResourceNode, VoidPtr&gt;();</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1_void_ptr.html">VoidPtr</a> ptr = baseAddress;</div>
+<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">foreach</span> (ResourceNode child <span class="keywordflow">in</span> <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>)</div>
+<div class="line"><span class="lineno">  107</span>            {</div>
+<div class="line"><span class="lineno">  108</span>                <span class="keywordtype">int</span> size = child.CalculateSize(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  109</span>                dataLocations.Add(child, ptr);</div>
+<div class="line"><span class="lineno">  110</span>                <span class="keywordflow">if</span> (child is ClassicStageTblSizeTblNode &amp;&amp; size == 48)</div>
+<div class="line"><span class="lineno">  111</span>                {</div>
+<div class="line"><span class="lineno">  112</span>                    <span class="comment">// Rebuild</span></div>
+<div class="line"><span class="lineno">  113</span>                    Dictionary&lt;string, int&gt; sizes = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.ToDictionary(c =&gt; c.Name, c =&gt;</div>
+<div class="line"><span class="lineno">  114</span>                    {</div>
+<div class="line"><span class="lineno">  115</span>                        int fullSize = c.CalculateSize(false);</div>
+<div class="line"><span class="lineno">  116</span>                        int paddingInts = (c as ClassicStageTblNode)?.Padding?.Length ?? 0;</div>
+<div class="line"><span class="lineno">  117</span>                        return fullSize - sizeof(bint) * paddingInts;</div>
+<div class="line"><span class="lineno">  118</span>                    });</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>                    <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>[] newTbl = <span class="keyword">new</span> <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>[12];</div>
+<div class="line"><span class="lineno">  121</span>                    fixed (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* newTblPtr = newTbl)</div>
+<div class="line"><span class="lineno">  122</span>                    {</div>
+<div class="line"><span class="lineno">  123</span>                        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> key <span class="keywordflow">in</span> <span class="keyword">new</span>[]</div>
+<div class="line"><span class="lineno">  124</span>                        {</div>
+<div class="line"><span class="lineno">  125</span>                            <span class="stringliteral">&quot;simpleStageB1Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  126</span>                            <span class="stringliteral">&quot;simpleStageB2Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  127</span>                            <span class="stringliteral">&quot;simpleStage11Tbl&quot;</span></div>
+<div class="line"><span class="lineno">  128</span>                        })</div>
+<div class="line"><span class="lineno">  129</span>                        {</div>
+<div class="line"><span class="lineno">  130</span>                            <span class="keywordflow">if</span> (!sizes.TryGetValue(key, out <span class="keywordtype">int</span> s) || s != 0x104)</div>
+<div class="line"><span class="lineno">  131</span>                            {</div>
+<div class="line"><span class="lineno">  132</span>                                MessageBox.Show(</div>
+<div class="line"><span class="lineno">  133</span>                                    $<span class="stringliteral">&quot;Changing the size of {key} may not work properly (BrawlCrate doesn&#39;t know yet which size entry to update)&quot;</span>);</div>
+<div class="line"><span class="lineno">  134</span>                            }</div>
+<div class="line"><span class="lineno">  135</span>                        }</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>                        <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* bptr = newTblPtr;</div>
+<div class="line"><span class="lineno">  138</span>                        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> key <span class="keywordflow">in</span> <span class="keyword">new</span>[]</div>
+<div class="line"><span class="lineno">  139</span>                        {</div>
+<div class="line"><span class="lineno">  140</span>                            <span class="stringliteral">&quot;simpleStage1Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  141</span>                            <span class="stringliteral">&quot;simpleStage2Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  142</span>                            <span class="stringliteral">&quot;simpleStage3Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  143</span>                            <span class="stringliteral">&quot;simpleStage4Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  144</span>                            <span class="stringliteral">&quot;simpleStageB1Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  145</span>                            <span class="stringliteral">&quot;simpleStage5Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  146</span>                            <span class="stringliteral">&quot;simpleStage6Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  147</span>                            <span class="stringliteral">&quot;simpleStage7Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  148</span>                            <span class="stringliteral">&quot;simpleStage8Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  149</span>                            <span class="stringliteral">&quot;simpleStage9Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  150</span>                            <span class="stringliteral">&quot;simpleStage10Tbl&quot;</span>,</div>
+<div class="line"><span class="lineno">  151</span>                            <span class="stringliteral">&quot;simpleStageB2Tbl&quot;</span></div>
+<div class="line"><span class="lineno">  152</span>                        })</div>
+<div class="line"><span class="lineno">  153</span>                        {</div>
+<div class="line"><span class="lineno">  154</span>                            <span class="keywordflow">if</span> (sizes.TryGetValue(key, out <span class="keywordtype">int</span> s))</div>
+<div class="line"><span class="lineno">  155</span>                            {</div>
+<div class="line"><span class="lineno">  156</span>                                *bptr = s;</div>
+<div class="line"><span class="lineno">  157</span>                            }</div>
+<div class="line"><span class="lineno">  158</span>                            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  159</span>                            {</div>
+<div class="line"><span class="lineno">  160</span>                                MessageBox.Show($<span class="stringliteral">&quot;Cannot get size of {key}&quot;</span>);</div>
+<div class="line"><span class="lineno">  161</span>                            }</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>                            bptr++;</div>
+<div class="line"><span class="lineno">  164</span>                        }</div>
+<div class="line"><span class="lineno">  165</span> </div>
+<div class="line"><span class="lineno">  166</span>                        child.ReplaceRaw(newTblPtr, 48);</div>
+<div class="line"><span class="lineno">  167</span>                    }</div>
+<div class="line"><span class="lineno">  168</span>                }</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>                child.Rebuild(ptr, size, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  171</span>                ptr += size;</div>
+<div class="line"><span class="lineno">  172</span>            }</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>            Header-&gt;_DataLength = ptr - baseAddress;</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* dataPointers = (<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>*) ptr;</div>
+<div class="line"><span class="lineno">  177</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1bint.html">bint</a>* stringPointers = dataPointers + 1;</div>
+<div class="line"><span class="lineno">  178</span>            <span class="keywordtype">byte</span>* strings = (<span class="keywordtype">byte</span>*) (dataPointers + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count + <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.Count);</div>
+<div class="line"><span class="lineno">  179</span>            <span class="keywordtype">byte</span>* currentString = strings;</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>            List&lt;ResourceNode&gt; childrenAlphabetical = <a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac9fe20e01ee816de58d8b2fa8d50f6f8">Children</a>.OrderBy(o =&gt; o.Name).ToList();</div>
+<div class="line"><span class="lineno">  182</span> </div>
+<div class="line"><span class="lineno">  183</span>            <span class="keywordflow">foreach</span> (ResourceNode child <span class="keywordflow">in</span> childrenAlphabetical)</div>
+<div class="line"><span class="lineno">  184</span>            {</div>
+<div class="line"><span class="lineno">  185</span>                *dataPointers = dataLocations[child] - baseAddress;</div>
+<div class="line"><span class="lineno">  186</span>                dataPointers += 2;</div>
+<div class="line"><span class="lineno">  187</span>                *stringPointers = (int) (currentString - strings);</div>
+<div class="line"><span class="lineno">  188</span>                stringPointers += 2;</div>
+<div class="line"><span class="lineno">  189</span> </div>
+<div class="line"><span class="lineno">  190</span>                <span class="keywordtype">byte</span>[] text = Encoding.UTF8.GetBytes(child.Name);</div>
+<div class="line"><span class="lineno">  191</span>                fixed (<span class="keywordtype">byte</span>* from = text)</div>
+<div class="line"><span class="lineno">  192</span>                {</div>
+<div class="line"><span class="lineno">  193</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_memory.html">Memory</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">Move</a>(currentString, from, (uint) text.Length);</div>
+<div class="line"><span class="lineno">  194</span>                    currentString += text.Length;</div>
+<div class="line"><span class="lineno">  195</span>                    *currentString = 0;</div>
+<div class="line"><span class="lineno">  196</span>                    currentString++;</div>
+<div class="line"><span class="lineno">  197</span>                }</div>
+<div class="line"><span class="lineno">  198</span>            }</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>            <span class="keywordflow">if</span> (currentString - address &gt; length)</div>
+<div class="line"><span class="lineno">  201</span>            {</div>
+<div class="line"><span class="lineno">  202</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;Wrong amount of memory allocated for rebuild of common2 data (Expected: {currentString - address} | Actual: {length})&quot;</span>);</div>
+<div class="line"><span class="lineno">  203</span>            }</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>            Header-&gt;_Length = length;</div>
+<div class="line"><span class="lineno">  206</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html">BrawlLib.Internal.Memory</a></div><div class="ttdef"><b>Definition:</b> Memory.cs:8</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_memory_html_a22c0cb3641b22e5ce664d45ad2f10132"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_memory.html#a22c0cb3641b22e5ce664d45ad2f10132">BrawlLib.Internal.Memory.Move</a></div><div class="ttdeci">static void Move(VoidPtr dst, VoidPtr src, uint size)</div><div class="ttdef"><b>Definition:</b> Memory.cs:9</div></div>
 </div><!-- fragment -->
