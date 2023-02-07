@@ -670,6 +670,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         [Category("GBC")]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint EnterCannonTrigger
         {
             get => Data._enterCannonTrigger;
@@ -681,6 +682,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         [Category("GBC")]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint MotionPathTrigger
         {
             get => Data._motionPathTrigger;
@@ -692,6 +694,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         [Category("GBC")]
+        [TypeConverter(typeof(HexUIntConverter))]
         public uint IsValidTrigger
         {
             get => Data._isValidTrigger;
