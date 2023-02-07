@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Triggers
         public const int Size = 0xC;
 
         public bfloat _unknown0x00;
-        public buint _trigger1; // 0x04
-        public buint _trigger2; // 0x08
+        public TriggerData _trigger1; // 0x04
+        public TriggerData _trigger2; // 0x08
     }
 }

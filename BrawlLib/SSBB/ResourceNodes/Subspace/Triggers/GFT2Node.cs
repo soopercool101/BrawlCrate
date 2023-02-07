@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool supportsCompression => false;
 
         public float _unknown0x00;
-        [Category("GFT2 Entry")]
+        [Category("Unknown")]
         public float Unknown0x00
         {
             get => _unknown0x00;
@@ -32,11 +32,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public uint _trigger1; // 0x04
+        public TriggerDataClass _trigger1;
 
-        [Category("GFT2 Entry")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger1
+        [Category("GFT2")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger1
         {
             get => _trigger1;
             set
@@ -46,11 +46,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public uint _trigger2; // 0x08
+        public TriggerDataClass _trigger2;
 
-        [Category("GFT2 Entry")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger2
+        [Category("GFT2")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger2
         {
             get => _trigger2;
             set
@@ -58,6 +58,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _trigger2 = value;
                 SignalPropertyChange();
             }
+        }
+
+        public GFT2EntryNode()
+        {
+            _trigger1 = new TriggerDataClass(this);
+            _trigger2 = new TriggerDataClass(this);
         }
 
         public override int OnCalculateSize(bool force)
@@ -68,8 +74,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             _unknown0x00 = Header->_unknown0x00;
-            _trigger1 = Header->_trigger1;
-            _trigger2 = Header->_trigger2;
+            _trigger1 = new TriggerDataClass(this, Header->_trigger1);
+            _trigger2 = new TriggerDataClass(this, Header->_trigger2);
 
             return false;
         }

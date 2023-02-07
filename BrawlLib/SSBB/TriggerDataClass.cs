@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB
 {
-    internal class TriggerDataClass
+    public class TriggerDataClass
     {
         private ResourceNode _parent;
         private TriggerData Data = new TriggerData();
@@ -39,6 +39,11 @@ namespace BrawlLib.SSBB
                 Data._unknown0x3 = value;
                 _parent?.SignalPropertyChange();
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Empty;
         }
 
         public TriggerDataClass(ResourceNode parent)

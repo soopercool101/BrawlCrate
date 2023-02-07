@@ -22,26 +22,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal GCATEntry Data;
         public override bool supportsCompression => false;
 
-
-
-        [Category("Unknown")]
-        public float Unknown0x00
+        private MotionPathDataClass _motionPathData;
+        [Category("GCAT")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public MotionPathDataClass MotionPathData
         {
-            get => Data._unknown0x00;
+            get => _motionPathData;
             set
             {
-                Data._unknown0x00 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public uint Unknown0x04
-        {
-            get => Data._unknown0x04;
-            set
-            {
-                Data._unknown0x04 = value;
+                _motionPathData = value;
                 SignalPropertyChange();
             }
         }
@@ -112,57 +101,39 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x20
+        [Category("GCAT")]
+        [TypeConverter(typeof(Vector2StringConverter))]
+        public Vector2 AreaOffsetPosition
         {
-            get => Data._unknown0x20;
+            get => new Vector2(Data._areaOffsetPosX, Data._areaOffsetPosY);
             set
             {
-                Data._unknown0x20 = value;
+                Data._areaOffsetPosX = value.X;
+                Data._areaOffsetPosY = value.Y;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x24
+        [Category("GCAT")]
+        [TypeConverter(typeof(Vector2StringConverter))]
+        public Vector2 AreaRange
         {
-            get => Data._unknown0x24;
+            get => new Vector2(Data._areaRangeX, Data._areaRangeY);
             set
             {
-                Data._unknown0x24 = value;
+                Data._areaRangeX = value.X;
+                Data._areaRangeY = value.Y;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x28
+        [Category("GCAT")]
+        public float FramesBeforeStartMove
         {
-            get => Data._unknown0x28;
+            get => Data._framesBeforeStartMove;
             set
             {
-                Data._unknown0x28 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x2C
-        {
-            get => Data._unknown0x2C;
-            set
-            {
-                Data._unknown0x2C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x30
-        {
-            get => Data._unknown0x30;
-            set
-            {
-                Data._unknown0x30 = value;
+                Data._framesBeforeStartMove = value;
                 SignalPropertyChange();
             }
         }
@@ -189,13 +160,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x3C
+        [Category("GCAT")]
+        public float LaunchAngle
         {
-            get => Data._unknown0x3C;
+            get => Data._vector;
             set
             {
-                Data._unknown0x3C = value;
+                Data._vector = value;
                 SignalPropertyChange();
             }
         }
@@ -255,24 +226,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public byte Unknown0x51
+        [Category("GCAT")]
+        public bool IsFaceLeft
         {
-            get => Data._unknown0x51;
+            get => Data._isFaceLeft == 1;
             set
             {
-                Data._unknown0x51 = value;
+                Data._isFaceLeft = value ? (byte)1 : (byte)0;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public byte Unknown0x52
+        [Category("GCAT")]
+        public bool UseNoHelperWarp
         {
-            get => Data._unknown0x52;
+            get => Data._useNoHelperWarp == 1;
             set
             {
-                Data._unknown0x52 = value;
+                Data._useNoHelperWarp = value ? (byte)1 : (byte)0;
                 SignalPropertyChange();
             }
         }
@@ -291,6 +262,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public GCATEntryNode()
         {
             Data = new GCATEntry();
+            _motionPathData = new MotionPathDataClass(this);
         }
 
         public override int OnCalculateSize(bool force)
@@ -301,6 +273,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             Data = *Header;
+            _motionPathData = new MotionPathDataClass(this, Data._motionPathData);
 
             return false;
         }
