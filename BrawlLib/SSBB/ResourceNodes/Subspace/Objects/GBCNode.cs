@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Objects;
 using System;
 using System.ComponentModel;
@@ -615,7 +615,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         [Category("GBC")]
-        public byte ModelIndex
+        public byte ModelDataIndex
         {
             get => Data._mdlIndex;
             set
