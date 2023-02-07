@@ -1,14 +1,7 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.Types.Subspace.Hazards;
 using BrawlLib.SSBB.Types.Subspace.Objects;
-using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Markup;
 
 namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 {
@@ -178,7 +171,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 1")]
         public float DifficultyRotateSpeed1
         {
             get => Data._difficultyRotateSpeed1;
@@ -189,7 +183,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 2")]
         public float DifficultyRotateSpeed2
         {
             get => Data._difficultyRotateSpeed2;
@@ -200,7 +195,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 3")]
         public float DifficultyRotateSpeed3
         {
             get => Data._difficultyRotateSpeed3;
@@ -211,7 +207,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 4")]
         public float DifficultyRotateSpeed4
         {
             get => Data._difficultyRotateSpeed4;
@@ -222,7 +219,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 5")]
         public float DifficultyRotateSpeed5
         {
             get => Data._difficultyRotateSpeed5;
@@ -233,7 +231,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 6")]
         public float DifficultyRotateSpeed6
         {
             get => Data._difficultyRotateSpeed6;
@@ -244,7 +243,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 7")]
         public float DifficultyRotateSpeed7
         {
             get => Data._difficultyRotateSpeed7;
@@ -255,7 +255,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 8")]
         public float DifficultyRotateSpeed8
         {
             get => Data._difficultyRotateSpeed8;
@@ -266,7 +267,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 9")]
         public float DifficultyRotateSpeed9
         {
             get => Data._difficultyRotateSpeed9;
@@ -277,7 +279,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 10")]
         public float DifficultyRotateSpeed10
         {
             get => Data._difficultyRotateSpeed10;
@@ -288,7 +291,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 11")]
         public float DifficultyRotateSpeed11
         {
             get => Data._difficultyRotateSpeed11;
@@ -299,7 +303,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 12")]
         public float DifficultyRotateSpeed12
         {
             get => Data._difficultyRotateSpeed12;
@@ -310,7 +315,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 13")]
         public float DifficultyRotateSpeed13
         {
             get => Data._difficultyRotateSpeed13;
@@ -321,7 +327,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 14")]
         public float DifficultyRotateSpeed14
         {
             get => Data._difficultyRotateSpeed14;
@@ -332,7 +339,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Rotate Speed")]
+        [DisplayName("Difficulty 15")]
         public float DifficultyRotateSpeed15
         {
             get => Data._difficultyRotateSpeed15;
@@ -343,7 +351,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 1")]
         public float DifficultyMotionRatio1
         {
             get => Data._difficultyMotionRatio1;
@@ -354,7 +363,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 2")]
         public float DifficultyMotionRatio2
         {
             get => Data._difficultyMotionRatio2;
@@ -365,7 +375,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 3")]
         public float DifficultyMotionRatio3
         {
             get => Data._difficultyMotionRatio3;
@@ -376,7 +387,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 4")]
         public float DifficultyMotionRatio4
         {
             get => Data._difficultyMotionRatio4;
@@ -387,7 +399,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 5")]
         public float DifficultyMotionRatio5
         {
             get => Data._difficultyMotionRatio5;
@@ -398,7 +411,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 6")]
         public float DifficultyMotionRatio6
         {
             get => Data._difficultyMotionRatio6;
@@ -409,7 +423,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 7")]
         public float DifficultyMotionRatio7
         {
             get => Data._difficultyMotionRatio7;
@@ -420,7 +435,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 8")]
         public float DifficultyMotionRatio8
         {
             get => Data._difficultyMotionRatio8;
@@ -431,7 +447,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 9")]
         public float DifficultyMotionRatio9
         {
             get => Data._difficultyMotionRatio9;
@@ -442,7 +459,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 10")]
         public float DifficultyMotionRatio10
         {
             get => Data._difficultyMotionRatio10;
@@ -453,7 +471,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 11")]
         public float DifficultyMotionRatio11
         {
             get => Data._difficultyMotionRatio11;
@@ -464,7 +483,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 12")]
         public float DifficultyMotionRatio12
         {
             get => Data._difficultyMotionRatio12;
@@ -475,7 +496,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 13")]
         public float DifficultyMotionRatio13
         {
             get => Data._difficultyMotionRatio13;
@@ -486,7 +509,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 14")]
         public float DifficultyMotionRatio14
         {
             get => Data._difficultyMotionRatio14;
@@ -497,7 +522,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("GBC")]
+        [Category("Motion Ratio")]
+        [DisplayName("Difficulty 15")]
         public float DifficultyMotionRatio15
         {
             get => Data._difficultyMotionRatio15;
@@ -703,6 +729,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         public override bool OnInitialize()
         {
             Data = *((GBCHeader*)WorkingUncompressed.Address);
+
             _motionPathData = new MotionPathDataClass(this, Data._motionPathData);
             _attackData = new AttackDataClass(this, Data._attackData);
 
