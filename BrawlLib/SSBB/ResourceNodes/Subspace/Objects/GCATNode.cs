@@ -288,6 +288,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public GCATEntryNode()
+        {
+            Data = new GCATEntry();
+        }
 
         public override int OnCalculateSize(bool force)
         {
