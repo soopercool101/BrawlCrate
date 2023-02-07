@@ -299,6 +299,12 @@ namespace BrawlLib.SSBB
             }
         }
 
+        public AttackDataClass(ResourceNode parent)
+        {
+            _parent = parent;
+            Data = new AttackData();
+        }
+
         public AttackDataClass(ResourceNode parent, AttackData data)
         {
             _parent = parent;

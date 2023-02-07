@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
 {
     public class GEPTNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GEPTEntryNode);
+        public override Type SubEntryType => typeof(GEPTEntryNode);
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
@@ -103,6 +103,11 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
                 Data._trigger7 = value;
                 SignalPropertyChange();
             }
+        }
+
+        public GEPTEntryNode()
+        {
+            Data = new GEPTEntry();
         }
 
         public override int OnCalculateSize(bool force)

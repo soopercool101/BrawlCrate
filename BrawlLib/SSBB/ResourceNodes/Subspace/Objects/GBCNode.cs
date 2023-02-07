@@ -1,4 +1,5 @@
 using BrawlLib.Internal;
+using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Objects;
 using System;
 using System.ComponentModel;
@@ -7,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 {
     public unsafe class GBC1Node : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GBC1EntryNode);
+        public override Type SubEntryType => typeof(GBC1EntryNode);
         protected override string baseName => "Pathed Barrel Cannon";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
@@ -18,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 
     public unsafe class GBC2Node : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GBC2EntryNode);
+        public override Type SubEntryType => typeof(GBC2EntryNode);
         protected override string baseName => "Static Barrel Cannon";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
@@ -729,6 +730,15 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
+        public GBCEntryNode()
+        {
+            Data = new GBCHeader();
+            Data._unknown0x00C = 0x12;
+            Data._unknown0x0CE = 0x08;
+            _attackData = new AttackDataClass(this);
+            _motionPathData = new MotionPathDataClass(this);
+        }
+
         public override bool OnInitialize()
         {
             Data = *((GBCHeader*)WorkingUncompressed.Address);
@@ -759,6 +769,11 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
                 _shootMotionPathData = value;
                 SignalPropertyChange();
             }
+        }
+
+        public GBC1EntryNode() : base()
+        {
+            _shootMotionPathData = new MotionPathDataClass(this, new MotionPathData());
         }
 
         public override int OnCalculateSize(bool force)

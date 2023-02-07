@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GSAVNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GSAVEntryNode);
+        public override Type SubEntryType => typeof(GSAVEntryNode);
         protected override string baseName => "Save Points";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)

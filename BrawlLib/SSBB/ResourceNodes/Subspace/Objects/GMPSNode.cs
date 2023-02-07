@@ -5,7 +5,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GMPSNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GMPSEntryNode);
+        public override Type SubEntryType => typeof(GMPSEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GMPS;
         protected override string baseName => "Trackballs";
 

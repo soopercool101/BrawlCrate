@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GEG1Node : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GEG1EntryNode);
+        public override Type SubEntryType => typeof(GEG1EntryNode);
         public override ResourceType ResourceFileType => ResourceType.GEG1;
         protected override string baseName => "Subspace Enemies";
 

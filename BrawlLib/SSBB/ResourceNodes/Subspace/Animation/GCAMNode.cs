@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GCAMNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GCAMEntryNode);
+        public override Type SubEntryType => typeof(GCAMEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GCAM;
         protected override string baseName => "Animated Camera";
 

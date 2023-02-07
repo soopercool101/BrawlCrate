@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GWATNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GWATEntryNode);
+        public override Type SubEntryType => typeof(GWATEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GWAT;
         protected override string baseName => "Swimmable Water";
 

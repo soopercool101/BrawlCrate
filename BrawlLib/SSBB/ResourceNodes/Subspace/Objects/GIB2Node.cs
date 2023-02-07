@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GIB2Node : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GIB2EntryNode);
+        public override Type SubEntryType => typeof(GIB2EntryNode);
         public override ResourceType ResourceFileType => ResourceType.GIB2;
         protected override string baseName => "Item Boxes";
 

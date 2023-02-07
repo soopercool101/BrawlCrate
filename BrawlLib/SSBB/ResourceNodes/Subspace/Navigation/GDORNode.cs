@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GDORNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GDOREntryNode);
+        public override Type SubEntryType => typeof(GDOREntryNode);
         public override ResourceType ResourceFileType => ResourceType.GDOR;
         protected override string baseName => "Subspace Doors";
 

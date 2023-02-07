@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GBLKNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GBLKEntryNode);
+        public override Type SubEntryType => typeof(GBLKEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GBLK;
         protected override string baseName => "Breakable Blocks";
 

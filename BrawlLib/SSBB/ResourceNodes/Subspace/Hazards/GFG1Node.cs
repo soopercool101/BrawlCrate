@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GFG1Node : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GFG1EntryNode);
+        public override Type SubEntryType => typeof(GFG1EntryNode);
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {

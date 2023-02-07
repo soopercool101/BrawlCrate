@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GCATNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GCATEntryNode);
+        public override Type SubEntryType => typeof(GCATEntryNode);
         protected override string baseName => "Catapults";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)

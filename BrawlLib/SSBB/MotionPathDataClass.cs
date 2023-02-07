@@ -64,6 +64,12 @@ namespace BrawlLib.SSBB
             }
         }
 
+        public MotionPathDataClass(ResourceNode parent)
+        {
+            _parent = parent;
+            Data = new MotionPathData();
+        }
+
         public MotionPathDataClass(ResourceNode parent, MotionPathData data)
         {
             _parent = parent;

@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GLOKNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GLK2EntryNode);
+        public override Type SubEntryType => typeof(GLK2EntryNode);
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         protected override string baseName => "Camera Scroll Locks";
 

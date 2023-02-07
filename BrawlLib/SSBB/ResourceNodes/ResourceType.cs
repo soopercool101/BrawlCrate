@@ -182,6 +182,7 @@
 
         //Subspace Emmisary
         ADPM,
+        BLOCEntry,
         GDOR,
         GEG1,
         ENEMY,

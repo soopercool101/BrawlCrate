@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GITMNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GITMEntryNode);
+        public override Type SubEntryType => typeof(GITMEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GITM;
         protected override string baseName => "Fighter Trophies";
 

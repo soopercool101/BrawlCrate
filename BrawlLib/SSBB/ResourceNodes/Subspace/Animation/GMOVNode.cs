@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GMOVNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GMOVEntryNode);
+        public override Type SubEntryType => typeof(GMOVEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GMOV;
         protected override string baseName => "Movable Platforms";
 

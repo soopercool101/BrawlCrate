@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GSNDNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GSNDEntryNode);
+        public override Type SubEntryType => typeof(GSNDEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GSND;
         protected override string baseName => "Sound Effects";
 

@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GET1Node : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GET1EntryNode);
+        public override Type SubEntryType => typeof(GET1EntryNode);
         protected override string baseName => "Area Triggers";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)

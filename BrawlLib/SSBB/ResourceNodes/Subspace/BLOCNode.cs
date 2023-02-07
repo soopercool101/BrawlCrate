@@ -112,6 +112,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class BLOCEntryNode : ResourceNode
     {
         internal BLOCEntry* Header => (BLOCEntry*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.BLOCEntry;
         public override bool supportsCompression => false;
 
 #if !DEBUG
@@ -128,7 +129,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => base.Name = value;
         }
 
-        protected virtual Type SubEntryType => typeof(RawDataNode);
+        public virtual Type SubEntryType => typeof(RawDataNode);
 
         public override Type[] AllowedChildTypes =>
             SubEntryType == typeof(RawDataNode) ? new Type[] { } : new[] {SubEntryType};

@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class GMOTNode : BLOCEntryNode
     {
-        protected override Type SubEntryType => typeof(GMOTEntryNode);
+        public override Type SubEntryType => typeof(GMOTEntryNode);
         public override ResourceType ResourceFileType => ResourceType.GMOT;
         protected override string baseName => "Animated Objects";
 
@@ -1389,6 +1389,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Data._unknown0x1E0 = value;
                 SignalPropertyChange();
             }
+        }
+
+        public GMOTEntryNode()
+        {
+            Data = new GMOTEntry();
         }
         
         public override int OnCalculateSize(bool force)
