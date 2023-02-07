@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB
     {
         private ResourceNode _parent;
         private AttackData Data;
-            
+
         [Category("Attack Data")]
         public float Damage
         {
