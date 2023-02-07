@@ -70,6 +70,11 @@ namespace BrawlLib.SSBB
             Data = data;
         }
 
+        public override string ToString()
+        {
+            return string.Empty;
+        }
+
         public static implicit operator MotionPathData(MotionPathDataClass val)
         {
             return val.Data;

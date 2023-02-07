@@ -305,6 +305,11 @@ namespace BrawlLib.SSBB
             Data = data;
         }
 
+        public override string ToString()
+        {
+            return string.Empty;
+        }
+
         public static implicit operator AttackData(AttackDataClass val)
         {
             return val.Data;
