@@ -615,7 +615,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         [Category("GBC")]
-        public byte MiddleIndex
+        public byte ModelIndex
         {
             get => Data._mdlIndex;
             set
