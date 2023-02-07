@@ -43,7 +43,7 @@ namespace BrawlLib.SSBB
         }
 
         [Category("Motion Path Data")]
-        public byte ModelIndex
+        public byte ModelDataIndex
         {
             get => Data._modelIndex;
             set
