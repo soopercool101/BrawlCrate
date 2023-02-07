@@ -10,6 +10,7 @@ Plugins listed here can be easily installed via the subscription service. In Bra
 - [Mawwwk's Plugins](https://github.com/markymawk/BrawlCratePlugins)
 - [BrawlInstaller](https://github.com/squidgy617/BrawlInstallerPlugins)
 - [BrawlCrate MKWii Animation Plugin](https://github.com/HEJ0/BrawlCrate-MKWii-Animation-Plugin)
+- [BrawlCrate Plugins by Squidgy](https://github.com/squidgy617/SquidgyBrawlCratePlugins)
 
 ### BrawlBox*
 - Official ([Plugins](https://github.com/libertyernie/brawltools/tree/master/BrawlBox/Plugins)) ([Loaders](https://github.com/libertyernie/brawltools/tree/master/BrawlBox/Loaders))
