@@ -1000,6 +1000,7 @@ namespace BrawlLib.SSBB.Types
     {
         //Update target: ParticleParam
         //curveFlag = 0(u8) or 3(f32)
+        ZERO = 0,
         COLOR0PRI = 1,
         ALPHA0PRI = 2,
         COLOR0SEC = 3,
@@ -1094,20 +1095,20 @@ namespace BrawlLib.SSBB.Types
     {
         public const int Size = 0x20;
 
-        public byte magic; //0xAC
-        public byte kindType;
-        public byte curveFlag;
-        public Bin8 kindEnable;
-        public byte processFlag;
-        public byte loopCount;
-        public bushort randomSeed;
-        public bushort frameLength;
-        public bushort padding;
-        public buint keyTable;
-        public buint rangeTable;
-        public buint randomTable;
-        public buint nameTable;
-        public buint infoTable;
+        public byte identifier;         // 0x00 - 0xAB: Particle | 0xAC: Emitter
+        public byte kindType;           // 0x01
+        public byte curveFlag;          // 0x02
+        public Bin8 dimensionFlags;     // 0x03 - (1 = X, 2 = Y, 4 = Z. None being active disables the animation)
+        public byte processFlag;        // 0x04 - often 0
+        public byte loopCount;          // 0x05 - often 0
+        public bushort randomSeed;      // 0x06
+        public bushort frameLength;     // 0x08
+        public bushort padding;         // 0x0A
+        public buint keyTableSize;      // 0x0C
+        public buint rangeTableSize;    // 0x10 - Offset = KeyTable
+        public buint randomTableSize;   // 0x14 - Offset = KeyTable + RangeTable
+        public buint nameTableSize;     // 0x18 - Offset = KeyTable + RangeTable + RandomTable
+        public buint infoTableSize;     // 0x1C - Offset = KeyTable + RangeTable + RandomTable + NameTable
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             addr += PtclTrackCount; //skip nulled pointers to size list
             for (int i = 0; i < PtclTrackCount; i++)
             {
-                new REFFAnimationNode {_isPtcl = true}.Initialize(this, First + offset, (int) *addr);
+                new REFFAnimationNode {AnimationType = REFFAnimationNode.AnimType.Particle}.Initialize(this, First + offset, (int) *addr);
                 offset += (int) *addr++;
             }
 
@@ -57,7 +57,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             size += Children.Count * 8;
             foreach (REFFAnimationNode e in Children)
             {
-                if (e._isPtcl)
+                if (e.AnimationType == REFFAnimationNode.AnimType.Particle)
                 {
                     ptcl++;
                 }
@@ -80,7 +80,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             addr += ptcl + 1;
             foreach (REFFAnimationNode e in Children)
             {
-                if (e._isPtcl)
+                if (e.AnimationType == REFFAnimationNode.AnimType.Particle)
                 {
                     *addr++ = (uint) e._calcSize;
                 }
@@ -91,7 +91,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             addr += emit + 1;
             foreach (REFFAnimationNode e in Children)
             {
-                if (!e._isPtcl)
+                if (e.AnimationType != REFFAnimationNode.AnimType.Particle)
                 {
                     *addr++ = (uint) e._calcSize;
                 }
@@ -100,7 +100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             VoidPtr ptr = addr;
             foreach (REFFAnimationNode e in Children)
             {
-                if (e._isPtcl)
+                if (e.AnimationType == REFFAnimationNode.AnimType.Particle)
                 {
                     e.Rebuild(ptr, e._calcSize, true);
                     ptr += e._calcSize;
@@ -109,7 +109,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             foreach (REFFAnimationNode e in Children)
             {
-                if (!e._isPtcl)
+                if (e.AnimationType != REFFAnimationNode.AnimType.Particle)
                 {
                     e.Rebuild(ptr, e._calcSize, true);
                     ptr += e._calcSize;
@@ -121,365 +121,174 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFAnimationNode : ResourceNode
     {
         internal AnimCurveHeader* Header => (AnimCurveHeader*) WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.REFFAnimationList;
-
-        internal AnimCurveHeader _hdr;
-
-        public bool _isPtcl;
-
-        public enum AnimType
+        internal AnimCurveHeader Data = new AnimCurveHeader();
+        
+        public enum AnimType : byte
         {
-            Particle,
-            Emitter
+            Particle = 0xAB,
+            Emitter = 0xAC
         }
 
-        [Category("Effect Animation")]
-        public AnimType Type
+        [Browsable(false)]
+        public AnimType AnimationType
         {
-            get => _isPtcl ? AnimType.Particle : AnimType.Emitter;
+            get => (AnimType)Data.identifier;
             set
             {
-                _isPtcl = value == AnimType.Particle;
+                Data.identifier = (byte)value;
                 SignalPropertyChange();
             }
         }
 
-        //[Category("Animation")]
-        //public byte Magic { get { return _hdr.magic; } }
-        [Category("Effect Animation")]
-        [TypeConverter(typeof(DropDownListReffAnimType))]
-        public string KindType
+        //public byte identifier;         // 0x00 - 0xAB: Particle | 0xAC: Emitter
+        //public byte kindType;           // 0x01
+        public enum AnimKind : byte
         {
-            get
-            {
-                if (((REFFNode) Parent.Parent.Parent).VersionMinor == 9)
-                {
-                    switch (CurveFlag)
-                    {
-                        case AnimCurveType.ParticleByte:
-                        case AnimCurveType.ParticleFloat:
-                            return ((v9AnimCurveTargetByteFloat) _hdr.kindType).ToString();
-                        case AnimCurveType.ParticleRotate:
-                            return ((v9AnimCurveTargetRotateFloat) _hdr.kindType).ToString();
-                        case AnimCurveType.ParticleTexture:
-                            return ((v9AnimCurveTargetPtclTex) _hdr.kindType).ToString();
-                        case AnimCurveType.Child:
-                            return ((v9AnimCurveTargetChild) _hdr.kindType).ToString();
-                        case AnimCurveType.Field:
-                            return ((v9AnimCurveTargetField) _hdr.kindType).ToString();
-                        case AnimCurveType.PostField:
-                            return ((v9AnimCurveTargetPostField) _hdr.kindType).ToString();
-                        case AnimCurveType.EmitterFloat:
-                            return ((v9AnimCurveTargetEmitterFloat) _hdr.kindType).ToString();
-                    }
-                }
-                else
-                {
-                    return ((AnimCurveTarget7) _hdr.kindType).ToString();
-                }
+            ZERO = 0x00,
+            COLOR0PRI = 0x01,
+            ALPHA0PRI = 0x02,
+            SCALE = 0x0A,
+            ACMPREF0 = 0x0B,
+            ACMPREF1 = 0x0C,
+            TEXTURE1ROTATE = 0x0E,
+            CHILD = 0x1A,
+            FIELD_RANDOM = 0x21
+        }
 
-                //switch (CurveFlag)
-                //{
-                //    case AnimCurveType.ParticleByte:
-                //    case AnimCurveType.ParticleFloat:
-                //        return ((v7AnimCurveTargetByteFloat)_hdr.kindType).ToString();
-                //    case AnimCurveType.ParticleRotate:
-                //        return ((v7AnimCurveTargetRotateFloat)_hdr.kindType).ToString();
-                //    case AnimCurveType.ParticleTexture:
-                //        return ((v7AnimCurveTargetPtclTex)_hdr.kindType).ToString();
-                //    case AnimCurveType.Child:
-                //        return ((v7AnimCurveTargetChild)_hdr.kindType).ToString();
-                //    case AnimCurveType.Field:
-                //        return ((v7AnimCurveTargetField)_hdr.kindType).ToString();
-                //    case AnimCurveType.PostField:
-                //        return ((v7AnimCurveTargetPostField)_hdr.kindType).ToString();
-                //    case AnimCurveType.EmitterFloat:
-                //        return ((v7AnimCurveTargetEmitterFloat)_hdr.kindType).ToString();
-                //}
-                return null;
-            }
+        public AnimKind Kind
+        {
+            get => (AnimKind)Data.kindType;
             set
             {
-                int i = 0;
-                if (((REFFNode) Parent.Parent.Parent).VersionMinor == 9)
-                {
-                    switch (CurveFlag)
-                    {
-                        case AnimCurveType.ParticleByte:
-                        case AnimCurveType.ParticleFloat:
-                            v9AnimCurveTargetByteFloat a;
-                            if (Enum.TryParse(value, true, out a))
-                            {
-                                _hdr.kindType = (byte) a;
-                            }
-                            else if (int.TryParse(value, out i))
-                            {
-                                _hdr.kindType = (byte) i;
-                            }
-
-                            break;
-                        case AnimCurveType.ParticleRotate:
-                            v9AnimCurveTargetRotateFloat b;
-                            if (Enum.TryParse(value, true, out b))
-                            {
-                                _hdr.kindType = (byte) b;
-                            }
-                            else if (int.TryParse(value, out i))
-                            {
-                                _hdr.kindType = (byte) i;
-                            }
-
-                            break;
-                        case AnimCurveType.ParticleTexture:
-                            v9AnimCurveTargetPtclTex c;
-                            if (Enum.TryParse(value, true, out c))
-                            {
-                                _hdr.kindType = (byte) c;
-                            }
-                            else if (int.TryParse(value, out i))
-                            {
-                                _hdr.kindType = (byte) i;
-                            }
-
-                            break;
-                        case AnimCurveType.Child:
-                            v9AnimCurveTargetChild d;
-                            if (Enum.TryParse(value, true, out d))
-                            {
-                                _hdr.kindType = (byte) d;
-                            }
-                            else if (int.TryParse(value, out i))
-                            {
-                                _hdr.kindType = (byte) i;
-                            }
-
-                            break;
-                        case AnimCurveType.Field:
-                            v9AnimCurveTargetField e;
-                            if (Enum.TryParse(value, true, out e))
-                            {
-                                _hdr.kindType = (byte) e;
-                            }
-                            else if (int.TryParse(value, out i))
-                            {
-                                _hdr.kindType = (byte) i;
-                            }
-
-                            break;
-                        case AnimCurveType.PostField:
-                            v9AnimCurveTargetPostField f;
-                            if (Enum.TryParse(value, true, out f))
-                            {
-                                _hdr.kindType = (byte) f;
-                            }
-                            else if (int.TryParse(value, out i))
-                            {
-                                _hdr.kindType = (byte) i;
-                            }
-
-                            break;
-                        case AnimCurveType.EmitterFloat:
-                            v9AnimCurveTargetEmitterFloat g;
-                            if (Enum.TryParse(value, true, out g))
-                            {
-                                _hdr.kindType = (byte) g;
-                            }
-                            else if (int.TryParse(value, out i))
-                            {
-                                _hdr.kindType = (byte) i;
-                            }
-
-                            break;
-                    }
-                }
-                else
-                {
-                    if (int.TryParse(value, out i))
-                    {
-                        _hdr.kindType = (byte) i;
-                    }
-                }
-
+                Data.kindType = (byte)value;
+                Name = value.ToString();
                 SignalPropertyChange();
             }
         }
 
-        [Category("Effect Animation")]
-        public AnimCurveType CurveFlag =>
-            (AnimCurveType) _hdr.curveFlag; //set { hdr.curveFlag = (byte)value; SignalPropertyChange(); } }
+        //public byte curveFlag;          // 0x02
+        public byte CurveType
+        {
+            get => Data.curveFlag;
+            set
+            {
+                Data.curveFlag = value;
+                SignalPropertyChange();
+            }
+        }
 
-        [Category("Effect Animation")] public byte KindEnable => _hdr.kindEnable;
+        //public Bin8 dimensionFlags;     // 0x03 - (1 = X, 2 = Y, 4 = Z. None being active disables the animation)
+        public bool DimensionX
+        {
+            get => Data.dimensionFlags[0];
+            set
+            {
+                Data.dimensionFlags[0] = value;
+            }
+        }
+        public bool DimensionY
+        {
+            get => Data.dimensionFlags[1];
+            set
+            {
+                Data.dimensionFlags[1] = value;
+            }
+        }
+        public bool DimensionZ
+        {
+            get => Data.dimensionFlags[2];
+            set
+            {
+                Data.dimensionFlags[2] = value;
+            }
+        }
 
-        [Category("Effect Animation")]
-        public AnimCurveHeaderProcessFlagType ProcessFlag => (AnimCurveHeaderProcessFlagType) _hdr.processFlag;
+        //public byte processFlag;        // 0x04 - often 0
+        public byte ProcessFlag
+        {
+            get => Data.processFlag;
+            set
+            {
+                Data.processFlag = value;
+                SignalPropertyChange();
+            }
+        }
 
-        [Category("Effect Animation")] public byte LoopCount => _hdr.loopCount;
+        //public byte loopCount;          // 0x05 - often 0
+        public byte LoopCount
+        {
+            get => Data.loopCount;
+            set
+            {
+                Data.loopCount = value;
+                SignalPropertyChange();
+            }
+        }
 
-        [Category("Effect Animation")]
+        //public bushort randomSeed;      // 0x06
+        [TypeConverter(typeof(HexUShortConverter))]
         public ushort RandomSeed
         {
-            get => _hdr.randomSeed;
+            get => Data.randomSeed;
             set
             {
-                _random = new Random(_hdr.randomSeed = value);
+                Data.randomSeed = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Effect Animation")]
-        public ushort FrameCount
+        //public bushort frameLength;     // 0x08
+        public ushort FrameLength
         {
-            get => _hdr.frameLength;
+            get => Data.frameLength;
             set
             {
-                _hdr.frameLength = value;
+                Data.frameLength = value;
                 SignalPropertyChange();
             }
         }
-        //[Category("Animation")]
-        //public ushort Padding { get { return _hdr.padding; } }
 
-        [Category("Effect Animation")] public uint KeyTableSize => _hdr.keyTable;
-        [Category("Effect Animation")] public uint RangeTableSize => _hdr.rangeTable;
-        [Category("Effect Animation")] public uint RandomTableSize => _hdr.randomTable;
-        [Category("Effect Animation")] public uint NameTableSize => _hdr.nameTable;
-        [Category("Effect Animation")] public uint InfoTableSize => _hdr.infoTable;
-
-        private Random _random;
-
-        [Category("Name Table")]
-        public string[] Names
+        //public bushort padding;         // 0x0A
+        public ushort Unknown0x0A
         {
-            get => _names.ToArray();
+            get => Data.padding;
             set
             {
-                _names = value.ToList();
+                Data.padding = value;
                 SignalPropertyChange();
             }
         }
 
-        public List<string> _names = new List<string>();
+        //public buint keyTableSize;      // 0x0C
+        //public buint rangeTableSize;    // 0x10 - Offset = KeyTable
+        //public buint randomTableSize;   // 0x14 - Offset = KeyTable + RangeTable
+        //public buint nameTableSize;     // 0x18 - Offset = KeyTable + RangeTable + RandomTable
+        //public buint infoTableSize;
 
         public override bool OnInitialize()
         {
-            _hdr = *Header;
-            _name = KindType;
-            _random = new Random(RandomSeed);
-
-            Bin8 enabled = Header->kindEnable;
-            List<int> enabledIndices = new List<int>();
-            for (int i = 0; i < 8; i++)
-            {
-                if (enabled[i])
-                {
-                    enabledIndices.Add(i);
-                }
-            }
-
-            int size = 0;
-            switch (CurveFlag)
-            {
-                case AnimCurveType.ParticleByte:
-                    size = 1;
-                    break;
-                case AnimCurveType.ParticleFloat:
-                    size = 4;
-                    break;
-                case AnimCurveType.ParticleRotate:
-                    size = 1;
-                    break;
-                case AnimCurveType.ParticleTexture:
-                    break;
-                case AnimCurveType.Child:
-                    break;
-                case AnimCurveType.EmitterFloat:
-                    break;
-                case AnimCurveType.Field:
-                    break;
-                case AnimCurveType.PostField:
-                    break;
-            }
-
-            VoidPtr offset = (VoidPtr) Header + 0x20;
-            if (KeyTableSize > 4)
-            {
-                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
-                AnimCurveKeyHeader* key = hdr->First;
-                for (int i = 0; i < hdr->_count; i++, key = key->Next(enabledIndices.Count, size))
-                {
-                    key->GetFrameIndex(enabledIndices.Count, size);
-                }
-            }
-
-            offset += KeyTableSize;
-            if (RangeTableSize > 4)
-            {
-                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
-            }
-
-            offset += RangeTableSize;
-            if (RandomTableSize > 4)
-            {
-                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
-            }
-
-            offset += RandomTableSize;
-            if (NameTableSize > 4)
-            {
-                if (offset + NameTableSize <= size)
-                {
-                    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
-
-                    _names = new List<string>();
-                    bushort* addr = (bushort*) ((VoidPtr) hdr + 4 + hdr->_count * 4);
-                    for (int i = 0; i < hdr->_count; i++, addr = (bushort*) ((VoidPtr) addr + 2 + *addr))
-                    {
-                        _names.Add(new string((sbyte*) addr + 2));
-                    }
-
-                    offset += NameTableSize;
-                }
-            }
-            else
-            {
-                offset += NameTableSize;
-            }
-
-            if (InfoTableSize > 4)
-            {
-                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
-                //switch ((v9AnimCurveTargetField)_hdr.kindType)
-                //{
-
-                //}
-            }
-
-#if DEBUG
-            if (CurveFlag == AnimCurveType.EmitterFloat || CurveFlag == AnimCurveType.PostField)
-            {
-                System.Windows.Forms.MessageBox.Show(TreePath);
-            }
-#endif
-
-            switch (CurveFlag)
-            {
-                case AnimCurveType.ParticleByte:
-                    break;
-                case AnimCurveType.ParticleFloat:
-                    break;
-                case AnimCurveType.ParticleRotate:
-                    break;
-                case AnimCurveType.ParticleTexture:
-                    break;
-                case AnimCurveType.Child:
-                    break;
-            }
-
-            return false;
+            Data = *Header;
+            _name = Kind.ToString();
+            return WorkingUncompressed.Length > 0x20;
         }
 
         public override void OnPopulate()
         {
+            var offset = 0x20;
+            ResourceNode n = NodeFactory.FromSource(this, new DataSource(WorkingUncompressed.Address + offset, (int)Data.keyTableSize), typeof(RawDataNode), false);
+            n._name = "KeyTable";
+            offset += (int)Data.keyTableSize;
+            n = NodeFactory.FromSource(this, new DataSource(WorkingUncompressed.Address + offset, (int)Data.rangeTableSize), typeof(RawDataNode), false);
+            n._name = "RangeTable";
+            offset += (int)Data.rangeTableSize;
+            n = NodeFactory.FromSource(this, new DataSource(WorkingUncompressed.Address + offset, (int)Data.randomTableSize), typeof(RawDataNode), false);
+            n._name = "RandomTable";
+            offset += (int)Data.randomTableSize;
+            n = NodeFactory.FromSource(this, new DataSource(WorkingUncompressed.Address + offset, (int)Data.nameTableSize), typeof(RawDataNode), false);
+            n._name = "NameTable";
+            offset += (int)Data.nameTableSize;
+            n = NodeFactory.FromSource(this, new DataSource(WorkingUncompressed.Address + offset, (int)Data.infoTableSize), typeof(RawDataNode), false);
+            n._name = "InfoTable";
         }
 
         public override int OnCalculateSize(bool force)

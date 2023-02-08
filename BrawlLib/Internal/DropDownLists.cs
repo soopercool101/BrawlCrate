@@ -551,7 +551,7 @@ namespace BrawlLib.Internal
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFAnimationNode node = context.Instance as REFFAnimationNode;
-            switch (node.CurveFlag)
+            switch ((AnimCurveType)node.CurveType)
             {
                 case AnimCurveType.ParticleByte:
                 case AnimCurveType.ParticleFloat:
