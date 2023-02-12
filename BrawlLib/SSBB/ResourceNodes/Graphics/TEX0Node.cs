@@ -219,7 +219,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnInitialize();
             _headerLen = Header1->_headerLen;
 
-            _sharesData = _headerLen > HeaderSize();
+            _sharesData = _headerLen != 96 && _headerLen > HeaderSize();
             if (_sharesData)
             {
                 SetSizeInternal(ExclusiveEntrySize());
