@@ -68,7 +68,7 @@ namespace BrawlLib.Wii.Animations
                         file.WriteLine("animData {");
                         file.WriteLine("  input time;");
                         file.WriteLine($"  output {(index > 2 && index < 6 ? "angular" : "linear")};");
-                        file.WriteLine("  weighted 1;");
+                        file.WriteLine("  weighted 0;");
                         file.WriteLine("  preInfinity constant;");
                         file.WriteLine("  postInfinity constant;");
                         file.WriteLine("  keys {");
