@@ -2,10 +2,6 @@
 using BrawlLib.SSBB.Types.Subspace.Navigation;
 using System.ComponentModel;
 using System;
-using BrawlLib.SSBB.Types.Subspace.Triggers;
-using BrawlLib.SSBB.Types;
-using System.Diagnostics;
-using System.Windows.Markup;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
