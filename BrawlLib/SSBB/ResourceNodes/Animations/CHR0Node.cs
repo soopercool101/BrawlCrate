@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling.Collada;
@@ -1010,6 +1010,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal int _entryLen;
         internal VoidPtr _dataAddr;
 
+        public bool Equals(CHR0EntryNode obj)
+        {
+            RegenCode();
+            obj.RegenCode();
+
+            if (Flags != obj.Flags || _entryLen != obj._entryLen || _dataLen != obj._dataLen)
+            {
+                return false;
+            }
+            
+            return Keyframes.Equals(obj.Keyframes);
+        }
+
         public override int OnCalculateSize(bool force)
         {
             _dataLen = AnimationConverter.CalculateCHR0Size(Keyframes, out _entryLen, out _code);
@@ -1060,17 +1073,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override void OnRebuild(VoidPtr address, int length, bool force)
+        public void RegenCode()
         {
-            //#if DEBUG
             _code.UseModelScale = _useModelScale;
             _code.UseModelRot = _useModelRotate;
             _code.UseModelTrans = _useModelTranslate;
             _code.ScaleCompApply = _scaleCompApply;
             _code.ScaleCompParent = _scaleCompParent;
             _code.ClassicScaleOff = _classicScaleOff;
-            //#endif
+        }
 
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            RegenCode();
             AnimationConverter.EncodeCHR0Keyframes(_keyframes, address, _dataAddr, _code);
         }
 

@@ -12,6 +12,7 @@ namespace BrawlLib.Internal
 
         public byte Byte => *(byte*) address;
         public sbyte SByte => *(sbyte*) address;
+        public char Char => *(char*)address;
         public ushort UShort => *(bushort*) address;
         public short Short => *(bshort*) address;
         public uint UInt => *(buint*) address;

@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using System;
 using System.Collections.Generic;
 
@@ -155,6 +155,27 @@ namespace BrawlLib.Wii.Animations
             return removed;
         }
 
+        public bool Equals(KeyframeCollection obj)
+        {
+            if (!(obj is KeyframeCollection k))
+            {
+                return false;
+            }
+
+            if (k.ArrayCount != ArrayCount)
+                return false;
+
+            for (int i = 0; i < ArrayCount; i++)
+            {
+                if (!_keyArrays[i].Equals(k._keyArrays[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public int ArrayCount => _keyArrays.Length;
 
         public IEnumerator<KeyframeArray> GetEnumerator()
@@ -175,6 +196,11 @@ namespace BrawlLib.Wii.Animations
 
         public float _value;
         public float _tangent;
+
+        public bool Equals(KeyframeEntry obj)
+        {
+            return obj is KeyframeEntry entry && _index == entry._index && _value == entry._value && _tangent == entry._tangent;
+        }
 
         public KeyframeEntry Second
         {
@@ -346,7 +372,7 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            return $"Prev={_prev}, Next={_next}, Value={_value}";
+            return $"Value={_value}";
         }
     }
 
@@ -615,6 +641,26 @@ namespace BrawlLib.Wii.Animations
                     _keyCount--;
                 }
             }
+        }
+
+        public bool Equals(KeyframeArray obj)
+        {
+            if(obj._keyCount != _keyCount)
+                return false;
+
+            KeyframeEntry comp1 = _keyRoot;
+            KeyframeEntry comp2 = obj._keyRoot;
+
+            for (int i = 0; i < _keyCount; i++)
+            {
+                if(!comp1.Equals(comp2))
+                    return false;
+
+                comp1 = comp1._next;
+                comp2 = comp2._next;
+            }
+
+            return true;
         }
     }
 }
