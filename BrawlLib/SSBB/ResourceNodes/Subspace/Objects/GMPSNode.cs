@@ -482,7 +482,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public GMPSEntryNode()
         {
-
             _motionPathData = new MotionPathDataClass(this);
             _sliderPathData = new MotionPathDataClass(this);
             _hitData = new HitDataClass(this);

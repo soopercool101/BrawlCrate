@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB
     public class TriggerDataClass
     {
         private ResourceNode _parent;
-        private TriggerData Data = new TriggerData();
+        private TriggerData Data;
 
         public ushort TriggerID
         {
@@ -22,10 +22,10 @@ namespace BrawlLib.SSBB
 
         public bool IsValid
         {
-            get => Data._isValid == 1;
+            get => Data._isValid;
             set
             {
-                Data._isValid = value ? (byte)1 : (byte)0;
+                Data._isValid = value;
                 _parent?.SignalPropertyChange();
             }
         }
@@ -43,7 +43,8 @@ namespace BrawlLib.SSBB
 
         public override string ToString()
         {
-            return string.Empty;
+            string validState = IsValid ? "Valid" : "Invalid";
+            return $"Trigger #{TriggerID} [{validState}]";
         }
 
         public TriggerDataClass(ResourceNode parent)

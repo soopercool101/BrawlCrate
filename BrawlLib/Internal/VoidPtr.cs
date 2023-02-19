@@ -249,6 +249,11 @@ namespace BrawlLib.Internal
             return WriteUTF8String(s, nullTerminated, offset, (uint)(s.UTF8Length() + (nullTerminated ? 1 : 0)));
         }
 
+        public uint WriteUTF8String(string s, uint offset, uint size)
+        {
+            return WriteUTF8String(s, false, offset, size);
+        }
+
         public uint WriteUTF8String(string s, bool nullTerminated, uint offset, uint size)
         {
             byte* ptr = (byte*)(this + offset);

@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Triggers
         public const int Size = 4;
 
         public bushort _triggerId;  // 0x0
-        public byte _isValid;       // 0x2
+        public bool8 _isValid;      // 0x2
         public byte _unknown0x3;
     }
 }
