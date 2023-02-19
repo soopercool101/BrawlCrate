@@ -299,13 +299,13 @@ namespace Updater
                     changelog += "\n\n========================================================\n\n";
                     try
                     {
-                        string s = "#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '\\' + currentBranch + " by " +
+                        string s = "#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '/' + currentBranch + " by " +
                                    c.Author.Login + "\n";
                         changelog += s;
                     }
                     catch
                     {
-                        changelog += "#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '\\' + currentBranch + "\n";
+                        changelog += "#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '/' + currentBranch + "\n";
                     }
 
                     changelog += c.Commit.Message;
