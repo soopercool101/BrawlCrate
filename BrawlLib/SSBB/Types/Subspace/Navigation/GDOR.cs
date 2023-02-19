@@ -82,9 +82,57 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
         public const int Size = 0xA0;
 
         public GDOREntry _doorHeader;
-        public TriggerData _trigger1;
-        public TriggerData _trigger2;
-        public TriggerData _trigger3;
-        public TriggerData _trigger4;
+        public TriggerData _unlockTrigger;
+        public TriggerData _pinTrigger1;
+        public TriggerData _pinTrigger2;
+        public TriggerData _pinTrigger3;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct GDBSEntry
+    {
+        public const int Size = 0x130;
+
+        public GDOREntry _doorHeader;
+        public TriggerData _unlockTrigger1;
+        public TriggerData _unlockTrigger2;
+        public TriggerData _unlockTrigger3;
+        public TriggerData _unlockTrigger4;
+        public TriggerData _unlockTrigger5;
+        public TriggerData _unlockTrigger6;
+        public TriggerData _unlockTrigger7;
+        public TriggerData _unlockTrigger8;
+        public TriggerData _unlockTrigger9;
+        public TriggerData _unlockTrigger10;
+        public TriggerData _unlockTrigger11;
+        public TriggerData _unlockTrigger12;
+        public TriggerData _unlockTrigger13;
+        public TriggerData _unlockTrigger14;
+        public TriggerData _unlockTrigger15;
+        public TriggerData _unlockTrigger16;
+        public TriggerData _unlockTrigger17;
+        public TriggerData _unlockTrigger18;
+        public TriggerData _unlockTrigger19;
+        public TriggerData _unlockTrigger20;
+        public TriggerData _unlockTrigger21;
+        public TriggerData _unlockTrigger22;
+        public TriggerData _unlockTrigger23;
+        public TriggerData _unlockTrigger24;
+        public TriggerData _unlockTrigger25;
+        public TriggerData _unlockTrigger26;
+        public TriggerData _unlockTrigger27;
+        public TriggerData _unlockTrigger28;
+        public TriggerData _unlockTrigger29;
+        public TriggerData _unlockTrigger30;
+        public TriggerData _unlockTrigger31;
+        public TriggerData _unlockTrigger32;
+        public TriggerData _unlockTrigger33;
+        public TriggerData _unlockTrigger34;
+        public TriggerData _unlockTrigger35;
+        public TriggerData _unlockTrigger36;
+        public TriggerData _unlockTrigger37;
+        public TriggerData _unlockTrigger38;
+        public TriggerData _unlockTrigger39;
+        public TriggerData _unlockTrigger40;
     }
 }

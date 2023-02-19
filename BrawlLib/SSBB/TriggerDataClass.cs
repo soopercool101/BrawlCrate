@@ -44,7 +44,8 @@ namespace BrawlLib.SSBB
         public override string ToString()
         {
             string validState = IsValid ? "Valid" : "Invalid";
-            return $"Trigger #{TriggerID} [{validState}]";
+            string unknownValue = Unknown0x3 == 0 ? "" : $" 0x{Unknown0x3:X2}";
+            return $"Trigger #{TriggerID} [{validState}]{unknownValue}";
         }
 
         public TriggerDataClass(ResourceNode parent)
