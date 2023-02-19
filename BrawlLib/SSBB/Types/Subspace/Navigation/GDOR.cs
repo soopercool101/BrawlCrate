@@ -26,7 +26,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GDOREntry
+    public struct GDOREntry
     {
         public const int Size = 0x90;
 
@@ -74,5 +74,17 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
         public bfloat _difficultyMotionRatio13; // 0x84
         public bfloat _difficultyMotionRatio14; // 0x88
         public bfloat _difficultyMotionRatio15; // 0x8C
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct GDTPEntry
+    {
+        public const int Size = 0xA0;
+
+        public GDOREntry _doorHeader;
+        public TriggerData _trigger1;
+        public TriggerData _trigger2;
+        public TriggerData _trigger3;
+        public TriggerData _trigger4;
     }
 }

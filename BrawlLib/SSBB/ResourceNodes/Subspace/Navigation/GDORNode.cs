@@ -5,6 +5,7 @@ using System;
 using BrawlLib.SSBB.Types.Subspace.Triggers;
 using BrawlLib.SSBB.Types;
 using System.Diagnostics;
+using System.Windows.Markup;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -28,6 +29,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal new static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "GDBF" ? new GDBFNode() : null;
+        }
+    }
+
+    public class GDTPNode : BLOCEntryNode
+    {
+        public override Type SubEntryType => typeof(GDTPEntryNode);
+        protected override string baseName => "Three-Pin Doors";
+
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
+        {
+            return source.Tag == "GDTP" ? new GDTPNode() : null;
         }
     }
 
@@ -556,16 +568,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _name = $"Door [{Data._doorIndex}]";
             }
-#if DEBUG
-            if (Parent is GDBFNode)
-            {
-                Debug.Assert(DoorTypeByte == 0x07 || DoorTypeByte == 0x06);
-            }
-            else if (Parent is GDORNode)
-            {
-                Debug.Assert(DoorTypeByte != 0x07 && DoorTypeByte != 0x06);
-            }
-#endif
+
             return false;
         }
 
@@ -582,6 +585,112 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int OnCalculateSize(bool force)
         {
             return GDOREntry.Size;
+        }
+    }
+
+    public unsafe class GDTPEntryNode : GDOREntryNode
+    {
+
+        public TriggerDataClass _trigger1;
+
+        [Category("GDTP")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger1
+        {
+            get => _trigger1;
+            set
+            {
+                _trigger1 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public TriggerDataClass _trigger2;
+
+        [Category("GDTP")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger2
+        {
+            get => _trigger2;
+            set
+            {
+                _trigger2 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public TriggerDataClass _trigger3;
+
+        [Category("GDTP")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger3
+        {
+            get => _trigger3;
+            set
+            {
+                _trigger3 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public TriggerDataClass _trigger4;
+
+        [Category("GDTP")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger4
+        {
+            get => _trigger4;
+            set
+            {
+                _trigger4 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public GDTPEntryNode()
+        {
+            _trigger1 = new TriggerDataClass(this);
+            _trigger2 = new TriggerDataClass(this);
+            _trigger3 = new TriggerDataClass(this);
+            _trigger4 = new TriggerDataClass(this);
+        }
+        
+        public override bool OnInitialize()
+        {
+            GDTPEntry data = *(GDTPEntry*) WorkingUncompressed.Address;
+            _trigger1 = new TriggerDataClass(this, data._trigger1);
+            _trigger2 = new TriggerDataClass(this, data._trigger2);
+            _trigger3 = new TriggerDataClass(this, data._trigger3);
+            _trigger4 = new TriggerDataClass(this, data._trigger4);
+
+            if (_name == null)
+            {
+                _name = $"Three-Pin Door [{data._doorHeader._doorIndex}]";
+            }
+
+            base.OnInitialize();
+
+            return false;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            GDTPEntry* header = (GDTPEntry*)address;
+            Data._motionPathData = _motionPathData;
+            Data._openDoorTrigger = _openDoorTrigger;
+            Data._motionPathTrigger = _motionPathTrigger;
+            Data._isValidTrigger = _isValidTrigger;
+            GDTPEntry gdtp = new GDTPEntry { _doorHeader = Data };
+            gdtp._trigger1 = _trigger1;
+            gdtp._trigger2 = _trigger2;
+            gdtp._trigger3 = _trigger3;
+            gdtp._trigger4 = _trigger4;
+            *header = gdtp;
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return GDTPEntry.Size;
         }
     }
 }
