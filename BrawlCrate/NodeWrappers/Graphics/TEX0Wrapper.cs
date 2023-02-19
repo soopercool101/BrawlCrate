@@ -3,7 +3,6 @@ using BrawlCrate.UI;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBB.Types.Animations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

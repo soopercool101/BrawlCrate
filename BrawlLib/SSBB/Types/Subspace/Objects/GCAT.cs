@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Subspace.Objects
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GCATEntry
+    public struct GCATEntry
     {
         public const int Size = 0x54;
 

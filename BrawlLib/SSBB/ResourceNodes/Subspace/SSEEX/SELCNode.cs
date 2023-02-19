@@ -214,7 +214,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.SSEEX
         }
     }
 
-    public unsafe class SELCTeamNode : ResourceNode
+    public class SELCTeamNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.SELCTeam;
         public override Type[] AllowedChildTypes => new[] { typeof(SELCEntryNode) };

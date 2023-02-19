@@ -1,10 +1,9 @@
-﻿using BrawlLib.Internal;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Triggers
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GEPTEntry
+    public struct GEPTEntry
     {
         public const int Size = 0x1C;
 

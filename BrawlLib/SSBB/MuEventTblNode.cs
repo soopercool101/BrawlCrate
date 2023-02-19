@@ -2,15 +2,11 @@
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.Types;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Markup;
 
 namespace BrawlLib.SSBB
 {
-    public unsafe class MuEventTblNode : ResourceNode
+    public class MuEventTblNode : ResourceNode
     {
         public override Type[] AllowedChildTypes => new [] { typeof(MuEventNode) };
 

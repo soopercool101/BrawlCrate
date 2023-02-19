@@ -1373,7 +1373,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class TySealVertListNode : TyEntryNode
+    public class TySealVertListNode : TyEntryNode
     {
         public override bool OnInitialize()
         {

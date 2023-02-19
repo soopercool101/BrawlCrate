@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 {
-    public unsafe class GBC1Node : BLOCEntryNode
+    public class GBC1Node : BLOCEntryNode
     {
         public override Type SubEntryType => typeof(GBC1EntryNode);
         protected override string baseName => "Pathed Barrel Cannon";
@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
     }
 
-    public unsafe class GBC2Node : BLOCEntryNode
+    public class GBC2Node : BLOCEntryNode
     {
         public override Type SubEntryType => typeof(GBC2EntryNode);
         protected override string baseName => "Static Barrel Cannon";

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types.Subspace.Objects
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GBCHeader
+    public struct GBCHeader
     {
         public const int Size = 0x140;
 
@@ -75,7 +75,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GBC1Entry
+    public struct GBC1Entry
     {
         public const int Size = GBCHeader.Size + MotionPathData.Size;
         
@@ -84,7 +84,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct GBC2Entry
+    public struct GBC2Entry
     {
         public const int Size = GBCHeader.Size + 0x10;
 

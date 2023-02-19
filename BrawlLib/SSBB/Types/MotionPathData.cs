@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct MotionPathData
+    public struct MotionPathData
     {
         public const int Size = 8;
 

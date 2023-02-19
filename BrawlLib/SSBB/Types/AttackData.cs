@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct AttackData
+    public struct AttackData
     {
         public const int Size = 0x58;
 

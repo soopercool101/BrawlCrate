@@ -28,7 +28,7 @@ namespace BrawlLib.SSBB.Types.Subspace.SSEEX
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct SELBEntry
+    public struct SELBEntry
     {
         public const int Size = 0x14;
 
