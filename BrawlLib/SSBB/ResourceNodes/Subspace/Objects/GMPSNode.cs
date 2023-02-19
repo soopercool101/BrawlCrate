@@ -17,6 +17,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
+    public class GPS2Node : BLOCEntryNode
+    {
+        public override Type SubEntryType => typeof(GMPSEntryNode);
+        protected override string baseName => "Moving Trackballs";
+
+        internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
+        {
+            return source.Tag == "GPS2" ? new GPS2Node() : null;
+        }
+    }
+
     public unsafe class GMPSEntryNode : ResourceNode
     {
         internal GMPSEntry Data;
