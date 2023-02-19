@@ -48,7 +48,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
         public DoorGimmickKind _doorGimmick;    // 0x34
         public byte _unknown0x35;
         public byte _modelIndex;                // 0x36
-        public byte _unknown0x37;
+        public bool8 _playDoorTypeEffect;
         public bfloat _positionX;               // 0x38
         public bfloat _positionY;               // 0x3C
         public TriggerData _openDoorTrigger;    // 0x40

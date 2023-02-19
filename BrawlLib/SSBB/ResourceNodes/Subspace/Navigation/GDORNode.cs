@@ -227,13 +227,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         
-        [Category("Unknown")]
-        public byte Unknown0x37
+        [Category("Door")]
+        public bool PlayDoorTypeEffect
         {
-            get => Data._unknown0x37;
+            get => Data._playDoorTypeEffect;
             set
             {
-                Data._unknown0x37 = value;
+                Data._playDoorTypeEffect = value;
                 SignalPropertyChange();
             }
         }
