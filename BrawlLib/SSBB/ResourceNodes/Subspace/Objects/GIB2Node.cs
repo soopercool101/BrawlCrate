@@ -78,9 +78,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public short _unkflag9;
         public byte _unkflag10;
         public byte _unkflag11;
-        public uint _trigger1;
-        public uint _trigger2;
-        public uint _trigger3;
+        public TriggerDataClass _trigger1;
+        public TriggerDataClass _trigger2;
+        public TriggerDataClass _trigger3;
 
         [Category("Item Box")]
         [DisplayName("Unk0")]
@@ -219,8 +219,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Box")]
         [DisplayName("Trigger1")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger1
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger1
         {
             get => _trigger1;
             set
@@ -232,8 +232,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Box")]
         [DisplayName("Trigger2")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger2
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger2
         {
             get => _trigger2;
             set
@@ -245,8 +245,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Box")]
         [DisplayName("Trigger3")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger3
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger3
         {
             get => _trigger3;
             set
@@ -254,6 +254,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _trigger3 = value;
                 SignalPropertyChange();
             }
+        }
+
+        public GIB2EntryNode()
+        {
+            _trigger1 = new TriggerDataClass(this);
+            _trigger2 = new TriggerDataClass(this);
+            _trigger3 = new TriggerDataClass(this);
         }
 
         public override bool OnInitialize()
@@ -313,9 +320,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unkflag9 = Header->_unkflag9;
             _unkflag10 = Header->_unkflag10;
             _unkflag11 = Header->_unkflag11;
-            _trigger1 = Header->_trigger1;
-            _trigger2 = Header->_trigger2;
-            _trigger3 = Header->_trigger3;
+            _trigger1 = new TriggerDataClass(this, Header->_trigger1);
+            _trigger2 = new TriggerDataClass(this, Header->_trigger2);
+            _trigger3 = new TriggerDataClass(this, Header->_trigger3);
 
             if (_name == null)
             {

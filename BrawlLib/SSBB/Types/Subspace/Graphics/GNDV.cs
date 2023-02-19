@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System;
 using System.Runtime.InteropServices;
 
@@ -13,7 +14,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Graphics
         private fixed sbyte _boneName[0x20];
         public bint _sfx;
         public buint _gfx;
-        public buint _triggerID;
+        public TriggerData _trigger;
 
         public string BoneName
         {

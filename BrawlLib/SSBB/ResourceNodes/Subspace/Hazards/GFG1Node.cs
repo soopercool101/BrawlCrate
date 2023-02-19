@@ -88,7 +88,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte _unknown0x4D;
         public byte _unknown0x4E;
         public byte _unknown0x4F;
-        public uint _triggerData;
+        public TriggerDataClass _trigger;
 
         [Category("Fighter Flags")]
         public bool IsTeamMember
@@ -327,6 +327,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+
+        [Category("Fighter Info")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger
+        {
+            get => _trigger;
+            set
+            {
+                _trigger = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public GFG1EntryNode()
+        {
+            _trigger = new TriggerDataClass(this);
+        }
+
         public override bool OnInitialize()
         {
             _fighterID = Header->_fighterID;
@@ -396,7 +414,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x4D = Header->_unknown0x4D;
             _unknown0x4E = Header->_unknown0x4E;
             _unknown0x4F = Header->_unknown0x4F;
-            _triggerData = Header->_triggerData;
+            _trigger = new TriggerDataClass(this, Header->_trigger);
             if (_name == null)
             {
                 _name = FighterNameGenerators.FromID(_fighterID,
@@ -481,7 +499,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_unknown0x4D = _unknown0x4D;
             hdr->_unknown0x4E = _unknown0x4E;
             hdr->_unknown0x4F = _unknown0x4F;
-            hdr->_triggerData = _triggerData;
+            hdr->_trigger = _trigger;
         }
     }
 }

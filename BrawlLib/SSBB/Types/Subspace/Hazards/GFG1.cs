@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Hazards
@@ -73,7 +74,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Hazards
         public byte _unknown0x4D;
         public byte _unknown0x4E;
         public byte _unknown0x4F;
-        public buint _triggerData;
+        public TriggerData _trigger;
 
         private VoidPtr Address
         {

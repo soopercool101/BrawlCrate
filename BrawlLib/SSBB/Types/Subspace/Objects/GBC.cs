@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Objects
@@ -66,9 +67,9 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public bushort _unknown0x0CE;
         public buint _unknown0x0D0;
         public buint _unknown0x0D4;
-        public buint _enterCannonTrigger;       // 0x0D8
-        public buint _motionPathTrigger;        // 0x0DC
-        public buint _isValidTrigger;           // 0x0E0
+        public TriggerData _enterCannonTrigger; // 0x0D8
+        public TriggerData _motionPathTrigger;  // 0x0DC
+        public TriggerData _isValidTrigger;     // 0x0E0
         public AttackData _attackData;          // 0x0E4
         public buint _unknown0x13C;
     }

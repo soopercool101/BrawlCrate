@@ -27,12 +27,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         private byte _unkflag2;
         private byte _unkflag3;
         private byte _unkflag4;
-        private uint _trigger1;
-        private uint _trigger2;
-        private uint _trigger3;
-        private uint _trigger4;
+        private TriggerDataClass _trigger1;
+        private TriggerDataClass _trigger2;
+        private TriggerDataClass _trigger3;
+        private TriggerDataClass _trigger4;
 
-        [Category("Camera")]
+        [Category("Unknown")]
         public int Unk1
         {
             get => _unknown0x00;
@@ -55,7 +55,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Camera")]
+        [Category("Unknown")]
         public byte Unk2
         {
             get => _unkflag2;
@@ -66,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Camera")]
+        [Category("Unknown")]
         public byte Unk3
         {
             get => _unkflag3;
@@ -77,7 +77,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Camera")]
+        [Category("Unknown")]
         public byte Unk4
         {
             get => _unkflag4;
@@ -89,8 +89,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Camera")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger1
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger1
         {
             get => _trigger1;
             set
@@ -101,8 +101,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Camera")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger2
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger2
         {
             get => _trigger2;
             set
@@ -113,8 +113,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Camera")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger3
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger3
         {
             get => _trigger3;
             set
@@ -125,8 +125,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Camera")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger4
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger4
         {
             get => _trigger4;
             set
@@ -136,6 +136,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public GLK2EntryNode()
+        {
+            _trigger1 = new TriggerDataClass(this);
+            _trigger2 = new TriggerDataClass(this);
+            _trigger3 = new TriggerDataClass(this);
+            _trigger4 = new TriggerDataClass(this);
+        }
+
         public override bool OnInitialize()
         {
             _unknown0x00 = Header->_unknown0x00;
@@ -143,10 +151,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unkflag2 = Header->_unkflag2;
             _unkflag3 = Header->_unkflag3;
             _unkflag4 = Header->_unkflag4;
-            _trigger1 = Header->_trigger1;
-            _trigger2 = Header->_trigger2;
-            _trigger3 = Header->_trigger3;
-            _trigger4 = Header->_trigger4;
+            _trigger1 = new TriggerDataClass(this, Header->_trigger1);
+            _trigger2 = new TriggerDataClass(this, Header->_trigger2);
+            _trigger3 = new TriggerDataClass(this, Header->_trigger3);
+            _trigger4 = new TriggerDataClass(this, Header->_trigger4);
 
             if (_name == null)
             {
