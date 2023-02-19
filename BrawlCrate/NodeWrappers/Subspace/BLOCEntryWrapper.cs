@@ -6,6 +6,8 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.BLOCEntry)]
+    [NodeWrapper(ResourceType.GDOR)]
+    [NodeWrapper(ResourceType.GDBF)]
     public class BLOCEntryWrapper : GenericWrapper
     {
         #region Menu
@@ -61,8 +63,11 @@ namespace BrawlCrate.NodeWrappers
             ResourceNode node = Activator.CreateInstance((_resource as BLOCEntryNode)?.SubEntryType) as ResourceNode;
             if(node != null)
             {
+                if (node._name == null)
+                {
+                    node.Name = "Entry [" + _resource.Children.Count + "]";
+                }
                 _resource.AddChild(node);
-                node.Name = "Entry [" + node.Index + "]";
             }
         }
 
