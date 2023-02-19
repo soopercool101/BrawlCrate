@@ -48,30 +48,17 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
 
         public string BoneName
         {
+            get => Address.GetUTF8String(0x0FC);
+            set => Address.WriteUTF8String(value, false, 0x0FC, 0x20);
+        }
+        
+        private VoidPtr Address
+        {
             get
             {
-                string s = "";
-                for(int i = 0; i < 0x20; i++)
+                fixed (void* ptr = &this)
                 {
-                    char c = (char)_boneName[i];
-                    if (c == '\0')
-                        break;
-                    s += c;
-                }
-                return s;
-            }
-            set
-            {
-                for (int i = 0; i < 0x20; i++)
-                {
-                    if (value.Length > i)
-                    {
-                        _boneName[i] = (byte)value[i];
-                    }
-                    else
-                    {
-                        _boneName[i] = 0;
-                    }
+                    return ptr;
                 }
             }
         }
