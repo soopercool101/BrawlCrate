@@ -1015,7 +1015,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             RegenCode();
             obj.RegenCode();
 
-            if (Flags != obj.Flags || _entryLen != obj._entryLen || _dataLen != obj._dataLen)
+            if (_code != obj._code || _entryLen != obj._entryLen || _dataLen != obj._dataLen)
             {
                 return false;
             }
