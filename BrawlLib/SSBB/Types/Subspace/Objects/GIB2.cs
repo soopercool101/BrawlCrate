@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Objects
@@ -64,9 +65,9 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
         public bshort _unkflag9;
         public byte _unkflag10;
         public byte _unkflag11;
-        public buint _trigger1;
-        public buint _trigger2;
-        public buint _trigger3;
+        public TriggerData _trigger1;
+        public TriggerData _trigger2;
+        public TriggerData _trigger3;
 
         private VoidPtr Address
         {

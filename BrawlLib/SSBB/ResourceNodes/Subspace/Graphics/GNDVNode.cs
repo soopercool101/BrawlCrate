@@ -77,19 +77,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         private uint _gfx;
 
         [Category("Triggers")]
-        [DisplayName("TriggerID")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint TriggerID
+        [DisplayName("Trigger")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger
         {
-            get => _triggerID;
+            get => _trigger;
             set
             {
-                _triggerID = value;
+                _trigger = value;
                 SignalPropertyChange();
             }
         }
 
-        private uint _triggerID;
+        private TriggerDataClass _trigger;
+
+        public GNDVEntryNode()
+        {
+            _trigger = new TriggerDataClass(this);
+        }
 
         public override bool OnInitialize()
         {
@@ -97,7 +102,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _boneName = Entry->BoneName;
             _sfx = Entry->_sfx;
             _gfx = Entry->_gfx;
-            _triggerID = Entry->_triggerID;
+            _trigger = new TriggerDataClass(this, Entry->_trigger);
 
             if (_name == null)
             {
@@ -120,7 +125,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->BoneName = BoneName;
             header->_sfx = SFXInfoIndex;
             header->_gfx = Graphic;
-            header->_triggerID = TriggerID;
+            header->_trigger = Trigger;
         }
     }
 }

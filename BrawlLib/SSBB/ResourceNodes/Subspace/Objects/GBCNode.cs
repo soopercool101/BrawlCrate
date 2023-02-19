@@ -670,38 +670,44 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
+        public TriggerDataClass _enterCannonTrigger;
+
         [Category("GBC")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint EnterCannonTrigger
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass EnterCannonTrigger
         {
-            get => Data._enterCannonTrigger;
+            get => _enterCannonTrigger;
             set
             {
-                Data._enterCannonTrigger = value;
+                _enterCannonTrigger = value;
                 SignalPropertyChange();
             }
         }
 
+        public TriggerDataClass _motionPathTrigger;
+
         [Category("GBC")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint MotionPathTrigger
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass MotionPathTrigger
         {
-            get => Data._motionPathTrigger;
+            get => _motionPathTrigger;
             set
             {
-                Data._motionPathTrigger = value;
+                _motionPathTrigger = value;
                 SignalPropertyChange();
             }
         }
 
+        public TriggerDataClass _isValidTrigger;
+
         [Category("GBC")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint IsValidTrigger
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass IsValidTrigger
         {
-            get => Data._isValidTrigger;
+            get => _isValidTrigger;
             set
             {
-                Data._isValidTrigger = value;
+                _isValidTrigger = value;
                 SignalPropertyChange();
             }
         }
@@ -737,6 +743,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             Data._unknown0x0CE = 0x08;
             _attackData = new AttackDataClass(this);
             _motionPathData = new MotionPathDataClass(this);
+            _enterCannonTrigger = new TriggerDataClass(this);
+            _motionPathTrigger = new TriggerDataClass(this);
+            _isValidTrigger = new TriggerDataClass(this);
         }
 
         public override bool OnInitialize()
@@ -745,6 +754,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 
             _motionPathData = new MotionPathDataClass(this, Data._motionPathData);
             _attackData = new AttackDataClass(this, Data._attackData);
+            _enterCannonTrigger = new TriggerDataClass(this, Data._enterCannonTrigger);
+            _motionPathTrigger = new TriggerDataClass(this, Data._motionPathTrigger);
+            _isValidTrigger = new TriggerDataClass(this, Data._isValidTrigger);
 
             return false;
         }
@@ -753,6 +765,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         {
             Data._motionPathData = MotionPathData;
             Data._attackData = AttackData;
+            Data._enterCannonTrigger = EnterCannonTrigger;
+            Data._motionPathTrigger = MotionPathTrigger;
+            Data._isValidTrigger = IsValidTrigger;
         }
     }
 

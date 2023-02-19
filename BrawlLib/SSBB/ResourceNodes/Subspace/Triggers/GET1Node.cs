@@ -19,9 +19,10 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GET1EntryNode : ResourceNode
     {
         protected internal GET1Entry* Entry => (GET1Entry*) WorkingUncompressed.Address;
-
+        
         [Category("General")]
         [DisplayName("Activation Coord 1")]
+        [TypeConverter(typeof(Vector2StringConverter))]
         public Vector2 Point1
         {
             get => _p1;
@@ -36,6 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("General")]
         [DisplayName("Activation Coord 2")]
+        [TypeConverter(typeof(Vector2StringConverter))]
         public Vector2 Point2
         {
             get => _p2;
@@ -50,8 +52,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Triggers")]
         [DisplayName("Trigger1")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger1
         {
             get => _trigger1;
             set
@@ -61,12 +63,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private uint _trigger1 = 0x0;
+        private TriggerDataClass _trigger1;
 
         [Category("Triggers")]
         [DisplayName("Trigger2")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Trigger2
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger2
         {
             get => _trigger2;
             set
@@ -76,7 +78,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private uint _trigger2 = 0x0;
+        private TriggerDataClass _trigger2;
+
+        public GET1EntryNode()
+        {
+            _trigger1 = new TriggerDataClass(this);
+            _trigger2 = new TriggerDataClass(this);
+        }
 
         public override bool OnInitialize()
         {
@@ -85,10 +93,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _name = $"Area [{Index}]";
             }
 
-            _trigger1 = Entry->_trigger1;
+            _trigger1 = new TriggerDataClass(this, Entry->_trigger1);
             _p1 = new Vector2(Entry->_x1, Entry->_y1);
             _p2 = new Vector2(Entry->_x2, Entry->_y2);
-            _trigger2 = Entry->_trigger2;
+            _trigger2 = new TriggerDataClass(this, Entry->_trigger2);
 
             return false;
         }
@@ -102,7 +110,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             GET1Entry* header = (GET1Entry*) address;
             *header = new GET1Entry();
-            header->_trigger1 = Trigger;
+            header->_trigger1 = Trigger1;
             header->_x1 = Point1._x;
             header->_y1 = Point1._y;
             header->_x2 = Point2._x;
