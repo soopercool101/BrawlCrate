@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GET1EntryNode : ResourceNode
     {
         protected internal GET1Entry* Entry => (GET1Entry*) WorkingUncompressed.Address;
-        
+
         [Category("General")]
         [DisplayName("Activation Coord 1")]
         [TypeConverter(typeof(Vector2StringConverter))]
