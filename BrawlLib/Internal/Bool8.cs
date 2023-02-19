@@ -5,11 +5,11 @@ namespace BrawlLib.Internal
     [StructLayout(LayoutKind.Sequential)]
     public struct bool8
     {
-        public byte _data;
+        public Bin8 _data;
 
         public static implicit operator bool(bool8 val)
         {
-            return val._data == 1;
+            return val._data[0];
         }
 
         public static implicit operator bool8(bool val)
@@ -21,7 +21,12 @@ namespace BrawlLib.Internal
         {
             return new bool8 { _data = val };
         }
-        
+
+        public static explicit operator bool8(Bin8 val)
+        {
+            return new bool8 { _data = val };
+        }
+
         public bool Value => this;
     }
 }
