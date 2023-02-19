@@ -18,7 +18,6 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
     public unsafe class GEPTEntryNode : ResourceNode
     {
         internal GEPTEntry* Header => (GEPTEntry*)WorkingUncompressed.Address;
-        internal GEPTEntry Data;
         public override bool supportsCompression => false;
 
         public TriggerDataClass _trigger1;
