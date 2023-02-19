@@ -188,19 +188,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 Data._doorIndex = value;
-                Name = $"Door [{value}]";
-                SignalPropertyChange();
-            }
-        }
-        
-        [Category("Door")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint JumpData
-        {
-            get => Data._jumpData;
-            set
-            {
-                Data._jumpData = value;
                 SignalPropertyChange();
             }
         }
@@ -274,20 +261,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
-
-#if DEBUG
-        [Category("Door")]
-        [TypeConverter(typeof(HexByteConverter))]
-        public byte DoorTypeByte
-        {
-            get => (byte)Data._doorType;
-            set
-            {
-                Data._doorType = (DoorType)value;
-                SignalPropertyChange();
-            }
-        }
-#endif
+        
         [Category("Door")]
         public DoorType DoorType
         {
@@ -559,8 +533,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             _openDoorTrigger = new TriggerDataClass(this);
             _motionPathTrigger = new TriggerDataClass(this);
             _isValidTrigger = new TriggerDataClass(this);
-
-            _name = "Door [0]";
         }
 
         public override bool OnInitialize()
@@ -573,7 +545,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = $"Door [{Data._doorIndex}]";
+                _name = $"Door [{Index}]";
             }
 
             return false;
@@ -668,11 +640,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             _pinTrigger1 = new TriggerDataClass(this, data._pinTrigger1);
             _pinTrigger2 = new TriggerDataClass(this, data._pinTrigger2);
             _pinTrigger3 = new TriggerDataClass(this, data._pinTrigger3);
-
-            if (_name == null)
-            {
-                _name = $"Three-Pin Door [{data._doorHeader._doorIndex}]";
-            }
 
             base.OnInitialize();
 
@@ -1350,11 +1317,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unlockTrigger38 = new TriggerDataClass(this, data._unlockTrigger38);
             _unlockTrigger39 = new TriggerDataClass(this, data._unlockTrigger39);
             _unlockTrigger40 = new TriggerDataClass(this, data._unlockTrigger40);
-
-            if (_name == null)
-            {
-                _name = $"Door [{data._doorHeader._doorIndex}]";
-            }
 
             base.OnInitialize();
 

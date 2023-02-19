@@ -36,15 +36,15 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
         public buint _unknown0x10;
         public buint _unknown0x14;
         public buint _unknown0x18;
-        public bfloat _areaOffsetPosX;          // 0x1C
-        public bfloat _areaOffsetPosY;          // 0x20
-        public bfloat _areaRangeX;              // 0x24
-        public bfloat _areaRangeY;              // 0x28
-        public byte _levelId;                   // 0x2C
-        public byte _levelSequenceId;           // 0x2D
-        public byte _levelSegmentId;            // 0x2E
-        public byte _doorIndex;                 // 0x2F
-        public buint _jumpData;                 // 0x30
+        public buint _unknown0x1C;
+        public bfloat _areaOffsetPosX;          // 0x20
+        public bfloat _areaOffsetPosY;          // 0x24
+        public bfloat _areaRangeX;              // 0x28
+        public bfloat _areaRangeY;              // 0x2C
+        public byte _levelId;                   // 0x30
+        public byte _levelSequenceId;           // 0x31
+        public byte _levelSegmentId;            // 0x32
+        public byte _doorIndex;                 // 0x33
         public DoorGimmickKind _doorGimmick;    // 0x34
         public byte _unknown0x35;
         public byte _modelIndex;                // 0x36
