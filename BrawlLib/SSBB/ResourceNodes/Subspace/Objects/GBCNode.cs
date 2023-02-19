@@ -28,7 +28,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
     }
 
-    public unsafe abstract class GBCEntryNode : ResourceNode
+    public abstract unsafe class GBCEntryNode : ResourceNode
     {
         internal GBCHeader Data;
 
