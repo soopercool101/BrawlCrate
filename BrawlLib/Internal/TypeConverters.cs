@@ -168,20 +168,7 @@ namespace BrawlLib.Internal
         {
             if (destinationType == typeof(string))
             {
-                switch (value)
-                {
-                    case uint _:
-                    case int _:
-                        return $"{value:X8}";
-                    case ushort _:
-                    case short _:
-                        return $"{value:X4}";
-                    case byte _:
-                    case sbyte _:
-                        return $"{value:X2}";
-                    default:
-                        return base.ConvertTo(context, culture, value, destinationType);
-                }
+                return $"{value:X}";
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }
