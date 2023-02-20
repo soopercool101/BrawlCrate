@@ -196,7 +196,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Door")]
-        public string JumpDoorID => $"{LevelID:X2}{LevelSequenceID:X2}{LevelSegmentID:X2}{DoorIndex:X2}"
+        public string JumpDoorID => $"{LevelID:X2}{LevelSequenceID:X2}{LevelSegmentID:X2}{DoorIndex:X2}";
 
         [Category("Door")]
         public DoorGimmickKind DoorGimmick
