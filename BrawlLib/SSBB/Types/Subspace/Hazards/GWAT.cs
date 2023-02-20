@@ -33,7 +33,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Hazards
         public byte _unknown0x16;
         public byte _unknown0x17;
         public bfloat _posX;      // 0x18
-        public bfloat _float0x1C; // 0x1C
+        public bfloat _depth; // 0x1C
         public bfloat _width;     // 0x20
         public bfloat _float0x24; // 0x24
         public bfloat _posY;      // 0x28

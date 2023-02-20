@@ -47,7 +47,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte _unknown0x16;
         public byte _unknown0x17;
         public float _posX;      // 0x18
-        public float _float0x1C; // 0x1C
+        public float _depth; // 0x1C
         public float _width;     // 0x20
         public float _float0x24; // 0x24
         public float _posY;      // 0x28
@@ -95,10 +95,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [DisplayName("Depth")]
         public float WaterDepth
         {
-            get => _float0x1C;
+            get => _depth;
             set
             {
-                _float0x1C = value;
+                _depth = value;
                 SignalPropertyChange();
             }
         }
@@ -142,7 +142,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unknown0x16 = Header->_unknown0x16;
             _unknown0x17 = Header->_unknown0x17;
             _posX = Header->_posX;
-            _float0x1C = Header->_float0x1C;
+            _depth = Header->_depth;
             _width = Header->_width;
             _float0x24 = Header->_float0x24;
             _posY = Header->_posY;
@@ -201,7 +201,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_unknown0x16 = _unknown0x16;
             hdr->_unknown0x17 = _unknown0x17;
             hdr->_posX = _waterPos._x;
-            hdr->_float0x1C = _float0x1C;
+            hdr->_depth = _depth;
             hdr->_width = _width;
             hdr->_float0x24 = _float0x24;
             hdr->_posY = _waterPos._y;

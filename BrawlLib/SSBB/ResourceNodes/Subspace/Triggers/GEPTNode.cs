@@ -8,6 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
     public class GEPTNode : BLOCEntryNode
     {
         public override Type SubEntryType => typeof(GEPTEntryNode);
+        protected override string baseName => "Plural Trigger";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
@@ -17,116 +18,145 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
 
     public unsafe class GEPTEntryNode : ResourceNode
     {
-        internal GEPTEntry* Header => (GEPTEntry*)WorkingUncompressed.Address;
+        internal GEPTEntry Data;
         public override bool supportsCompression => false;
 
-        public TriggerDataClass _trigger1;
+        public TriggerDataClass _activateTrigger;
 
         [Category("GEPT")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public TriggerDataClass Trigger1
+        public TriggerDataClass ActivateTrigger
         {
-            get => _trigger1;
+            get => _activateTrigger;
             set
             {
-                _trigger1 = value;
+                _activateTrigger = value;
                 SignalPropertyChange();
             }
         }
 
-        public TriggerDataClass _trigger2;
+        public TriggerDataClass _referenceTrigger1;
 
         [Category("GEPT")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public TriggerDataClass Trigger2
+        public TriggerDataClass ReferenceTrigger1
         {
-            get => _trigger2;
+            get => _referenceTrigger1;
             set
             {
-                _trigger2 = value;
+                _referenceTrigger1 = value;
                 SignalPropertyChange();
             }
         }
 
-        public TriggerDataClass _trigger3;
+        public TriggerDataClass _referenceTrigger2;
 
         [Category("GEPT")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public TriggerDataClass Trigger3
+        public TriggerDataClass ReferenceTrigger2
         {
-            get => _trigger3;
+            get => _referenceTrigger2;
             set
             {
-                _trigger3 = value;
+                _referenceTrigger2 = value;
                 SignalPropertyChange();
             }
         }
 
-        public TriggerDataClass _trigger4;
+        public TriggerDataClass _referenceTrigger3;
 
         [Category("GEPT")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public TriggerDataClass Trigger4
+        public TriggerDataClass ReferenceTrigger3
         {
-            get => _trigger4;
+            get => _referenceTrigger3;
             set
             {
-                _trigger4 = value;
+                _referenceTrigger3 = value;
                 SignalPropertyChange();
             }
         }
 
-        public TriggerDataClass _trigger5;
+        public TriggerDataClass _referenceTrigger4;
 
         [Category("GEPT")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public TriggerDataClass Trigger5
+        public TriggerDataClass ReferenceTrigger4
         {
-            get => _trigger5;
+            get => _referenceTrigger4;
             set
             {
-                _trigger5 = value;
+                _referenceTrigger4 = value;
                 SignalPropertyChange();
             }
         }
 
-        public TriggerDataClass _trigger6;
+        public TriggerDataClass _referenceTrigger5;
 
         [Category("GEPT")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public TriggerDataClass Trigger6
+        public TriggerDataClass ReferenceTrigger5
         {
-            get => _trigger6;
+            get => _referenceTrigger5;
             set
             {
-                _trigger6 = value;
+                _referenceTrigger5 = value;
                 SignalPropertyChange();
             }
         }
 
-        public TriggerDataClass _trigger7;
-
-        [Category("GEPT")]
-        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public TriggerDataClass Trigger7
+        [Category("Unknown")]
+        public bool Unknown0x18
         {
-            get => _trigger7;
+            get => Data._unknown0x18;
             set
             {
-                _trigger7 = value;
+                Data._unknown0x18 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0x19
+        {
+            get => Data._unknown0x19;
+            set
+            {
+                Data._unknown0x19 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x1A
+        {
+            get => Data._unknown0x1A;
+            set
+            {
+                Data._unknown0x1A = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x1B
+        {
+            get => Data._unknown0x1B;
+            set
+            {
+                Data._unknown0x1B = value;
                 SignalPropertyChange();
             }
         }
 
         public GEPTEntryNode()
         {
-            _trigger1 = new TriggerDataClass(this);
-            _trigger2 = new TriggerDataClass(this);
-            _trigger3 = new TriggerDataClass(this);
-            _trigger4 = new TriggerDataClass(this);
-            _trigger5 = new TriggerDataClass(this);
-            _trigger6 = new TriggerDataClass(this);
-            _trigger7 = new TriggerDataClass(this);
+            _activateTrigger = new TriggerDataClass(this);
+            _referenceTrigger1 = new TriggerDataClass(this);
+            _referenceTrigger2 = new TriggerDataClass(this);
+            _referenceTrigger3 = new TriggerDataClass(this);
+            _referenceTrigger4 = new TriggerDataClass(this);
+            _referenceTrigger5 = new TriggerDataClass(this);
         }
 
         public override int OnCalculateSize(bool force)
@@ -136,13 +166,14 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
 
         public override bool OnInitialize()
         {
-            _trigger1 = new TriggerDataClass(this, Header->_trigger1);
-            _trigger2 = new TriggerDataClass(this, Header->_trigger2);
-            _trigger3 = new TriggerDataClass(this, Header->_trigger3);
-            _trigger4 = new TriggerDataClass(this, Header->_trigger4);
-            _trigger5 = new TriggerDataClass(this, Header->_trigger5);
-            _trigger6 = new TriggerDataClass(this, Header->_trigger6);
-            _trigger7 = new TriggerDataClass(this, Header->_trigger7);
+            Data = *(GEPTEntry*)WorkingUncompressed.Address;
+
+            _activateTrigger = new TriggerDataClass(this, Data._activateTrigger);
+            _referenceTrigger1 = new TriggerDataClass(this, Data._referenceTrigger1);
+            _referenceTrigger2 = new TriggerDataClass(this, Data._referenceTrigger2);
+            _referenceTrigger3 = new TriggerDataClass(this, Data._referenceTrigger3);
+            _referenceTrigger4 = new TriggerDataClass(this, Data._referenceTrigger4);
+            _referenceTrigger5 = new TriggerDataClass(this, Data._referenceTrigger5);
 
             return false;
         }
@@ -151,13 +182,12 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
         {
             GEPTEntry* hdr = (GEPTEntry*)address;
 
-            hdr->_trigger1 = _trigger1;
-            hdr->_trigger2 = _trigger2;
-            hdr->_trigger3 = _trigger3;
-            hdr->_trigger4 = _trigger4;
-            hdr->_trigger5 = _trigger5;
-            hdr->_trigger6 = _trigger6;
-            hdr->_trigger7 = _trigger7;
+            hdr->_activateTrigger = _activateTrigger;
+            hdr->_referenceTrigger1 = _referenceTrigger1;
+            hdr->_referenceTrigger2 = _referenceTrigger2;
+            hdr->_referenceTrigger3 = _referenceTrigger3;
+            hdr->_referenceTrigger4 = _referenceTrigger4;
+            hdr->_referenceTrigger5 = _referenceTrigger5;
         }
     }
 }

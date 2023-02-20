@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using BrawlLib.Internal;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Triggers
 {
@@ -7,12 +8,15 @@ namespace BrawlLib.SSBB.Types.Subspace.Triggers
     {
         public const int Size = 0x1C;
 
-        public TriggerData _trigger1; // 0x00
-        public TriggerData _trigger2; // 0x04
-        public TriggerData _trigger3; // 0x08
-        public TriggerData _trigger4; // 0x0C
-        public TriggerData _trigger5; // 0x10
-        public TriggerData _trigger6; // 0x14
-        public TriggerData _trigger7; // 0x18
+        public TriggerData _activateTrigger;    // 0x00
+        public TriggerData _referenceTrigger1;  // 0x04
+        public TriggerData _referenceTrigger2;  // 0x08
+        public TriggerData _referenceTrigger3;  // 0x0C
+        public TriggerData _referenceTrigger4;  // 0x10
+        public TriggerData _referenceTrigger5;  // 0x14
+        public bool8 _unknown0x18;
+        public bool8 _unknown0x19;
+        public byte _unknown0x1A;
+        public byte _unknown0x1B;
     }
 }
