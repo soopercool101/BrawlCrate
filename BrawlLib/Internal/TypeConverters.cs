@@ -162,6 +162,45 @@ namespace BrawlLib.Internal
         }
     }
 
+    internal class HexOnlyConverterBase : HexConverterBase
+    {
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        {
+            if (destinationType == typeof(string))
+            {
+                switch (value)
+                {
+                    case uint _:
+                    case int _:
+                        return $"{value:X8}";
+                    case ushort _:
+                    case short _:
+                        return $"{value:X4}";
+                    case byte _:
+                    case sbyte _:
+                        return $"{value:X2}";
+                    default:
+                        return base.ConvertTo(context, culture, value, destinationType);
+                }
+            }
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+
+    }
+
+    internal class HexOnlyByteConverter : HexConverterBase
+    {
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is string input)
+            {
+                return Convert.ToByte(input, 16);
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+    }
+
     internal class UserDataConverter : ExpandableObjectConverter
     {
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
