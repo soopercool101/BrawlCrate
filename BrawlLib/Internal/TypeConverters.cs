@@ -1,4 +1,4 @@
-﻿using BrawlLib.SSBB;
+using BrawlLib.SSBB;
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -188,7 +188,7 @@ namespace BrawlLib.Internal
 
     }
 
-    internal class HexOnlyByteConverter : HexConverterBase
+    internal class HexOnlyByteConverter : HexOnlyConverterBase
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
