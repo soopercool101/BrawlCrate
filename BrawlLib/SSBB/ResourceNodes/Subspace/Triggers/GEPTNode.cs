@@ -181,13 +181,16 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             GEPTEntry* hdr = (GEPTEntry*)address;
-
             hdr->_activateTrigger = _activateTrigger;
             hdr->_referenceTrigger1 = _referenceTrigger1;
             hdr->_referenceTrigger2 = _referenceTrigger2;
             hdr->_referenceTrigger3 = _referenceTrigger3;
             hdr->_referenceTrigger4 = _referenceTrigger4;
             hdr->_referenceTrigger5 = _referenceTrigger5;
+            hdr->_unknown0x18 = Unknown0x18;
+            hdr->_unknown0x19 = Unknown0x19;
+            hdr->_unknown0x1A = Unknown0x1A;
+            hdr->_unknown0x1B = Unknown0x1B;
         }
     }
 }
