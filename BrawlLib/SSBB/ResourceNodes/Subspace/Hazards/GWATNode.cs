@@ -20,7 +20,6 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GWATEntryNode : ResourceNode
     {
         internal GWATEntry Data;
-        internal GWATEntry* Header => (GWATEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         [Category("Unknown")]
