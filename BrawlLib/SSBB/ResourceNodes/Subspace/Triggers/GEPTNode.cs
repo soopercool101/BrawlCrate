@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Triggers
     public class GEPTNode : BLOCEntryNode
     {
         public override Type SubEntryType => typeof(GEPTEntryNode);
-        protected override string baseName => "Plural Trigger";
+        protected override string baseName => "Plural Triggers";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
