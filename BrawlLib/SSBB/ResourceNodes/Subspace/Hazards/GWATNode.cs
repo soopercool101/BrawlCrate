@@ -19,147 +19,191 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GWATEntryNode : ResourceNode
     {
+        internal GWATEntry Data;
         internal GWATEntry* Header => (GWATEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        public byte _unknown0x00;
-        public byte _unknown0x01;
-        public byte _unknown0x02;
-        public byte _unknown0x03;
-        public byte _unknown0x04;
-        public byte _unknown0x05;
-        public byte _unknown0x06;
-        public byte _unknown0x07;
-        public byte _unknown0x08;
-        public byte _unknown0x09;
-        public byte _unknown0x0A;
-        public byte _unknown0x0B;
-        public byte _unknown0x0C;
-        public byte _unknown0x0D;
-        public byte _unknown0x0E;
-        public byte _unknown0x0F;
-        public byte _unknown0x10;
-        public byte _unknown0x11;
-        public byte _unknown0x12;
-        public byte _unknown0x13;
-        public byte _unknown0x14;
-        public byte _unknown0x15;
-        public byte _unknown0x16;
-        public byte _unknown0x17;
-        public float _posX;      // 0x18
-        public float _depth; // 0x1C
-        public float _width;     // 0x20
-        public float _float0x24; // 0x24
-        public float _posY;      // 0x28
-        public byte _unknown0x2C;
-        public byte _unknown0x2D;
-        public byte _unknown0x2E;
-        public byte _unknown0x2F;
-        public byte _unknown0x30;
-        public byte _unknown0x31;
-        public byte _unknown0x32;
-        public byte _unknown0x33;
-        public byte _unknown0x34;
-        public byte _unknown0x35;
-        public byte _unknown0x36;
-        public byte _unknown0x37;
+        [Category("Unknown")]
+        public uint Unknown0x00
+        {
+            get => Data._unknown0x00;
+            set
+            {
+                Data._unknown0x00 = value;
+                SignalPropertyChange();
+            }
+        }
 
-        public Vector2 _waterPos;
+        [Category("Unknown")]
+        public uint Unknown0x04
+        {
+            get => Data._unknown0x04;
+            set
+            {
+                Data._unknown0x04 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x08
+        {
+            get => Data._unknown0x08;
+            set
+            {
+                Data._unknown0x08 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x0C
+        {
+            get => Data._unknown0x0C;
+            set
+            {
+                Data._unknown0x0C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x10
+        {
+            get => Data._unknown0x10;
+            set
+            {
+                Data._unknown0x10 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x14
+        {
+            get => Data._unknown0x14;
+            set
+            {
+                Data._unknown0x14 = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Category("Swimmable Water")]
-        [DisplayName("Position")]
         [TypeConverter(typeof(Vector2StringConverter))]
-        public Vector2 WaterPosition
+        public Vector2 Position
         {
-            get => _waterPos;
+            get => new Vector2(Data._posX, Data._posY);
             set
             {
-                _waterPos = value;
+                Data._posX = value.X;
+                Data._posY = value.Y;
                 SignalPropertyChange();
             }
         }
 
         [Category("Swimmable Water")]
-        [DisplayName("Width")]
-        public float WaterWidth
+        public float Depth
         {
-            get => _width;
+            get => Data._depth;
             set
             {
-                _width = value;
+                Data._depth = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Swimmable Water")]
-        [DisplayName("Depth")]
-        public float WaterDepth
+        public float Width
         {
-            get => _depth;
+            get => Data._width;
             set
             {
-                _depth = value;
+                Data._width = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0x24
+        {
+            get => Data._unknown0x24;
+            set
+            {
+                Data._unknown0x24 = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Swimmable Water")]
-        [DisplayName("Float 0x24")]
-        public float Float0x24
+        public bool CanDrown
         {
-            get => _float0x24;
+            get => Data._canDrown;
             set
             {
-                _float0x24 = value;
+                Data._canDrown = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x2D
+        {
+            get => Data._unknown0x2D;
+            set
+            {
+                Data._unknown0x2D = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x2E
+        {
+            get => Data._unknown0x2E;
+            set
+            {
+                Data._unknown0x2E = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x2F
+        {
+            get => Data._unknown0x2F;
+            set
+            {
+                Data._unknown0x2F = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Swimmable Water")]
+        public float CurrentSpeed
+        {
+            get => Data._currentSpeed;
+            set
+            {
+                Data._currentSpeed = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x34
+        {
+            get => Data._unknown0x34;
+            set
+            {
+                Data._unknown0x34 = value;
                 SignalPropertyChange();
             }
         }
 
         public override bool OnInitialize()
         {
-            _unknown0x00 = Header->_unknown0x00;
-            _unknown0x01 = Header->_unknown0x01;
-            _unknown0x02 = Header->_unknown0x02;
-            _unknown0x03 = Header->_unknown0x03;
-            _unknown0x04 = Header->_unknown0x04;
-            _unknown0x05 = Header->_unknown0x05;
-            _unknown0x06 = Header->_unknown0x06;
-            _unknown0x07 = Header->_unknown0x07;
-            _unknown0x08 = Header->_unknown0x08;
-            _unknown0x09 = Header->_unknown0x09;
-            _unknown0x0A = Header->_unknown0x0A;
-            _unknown0x0B = Header->_unknown0x0B;
-            _unknown0x0C = Header->_unknown0x0C;
-            _unknown0x0D = Header->_unknown0x0D;
-            _unknown0x0E = Header->_unknown0x0E;
-            _unknown0x0F = Header->_unknown0x0F;
-            _unknown0x10 = Header->_unknown0x10;
-            _unknown0x11 = Header->_unknown0x11;
-            _unknown0x12 = Header->_unknown0x12;
-            _unknown0x13 = Header->_unknown0x13;
-            _unknown0x14 = Header->_unknown0x14;
-            _unknown0x15 = Header->_unknown0x15;
-            _unknown0x16 = Header->_unknown0x16;
-            _unknown0x17 = Header->_unknown0x17;
-            _posX = Header->_posX;
-            _depth = Header->_depth;
-            _width = Header->_width;
-            _float0x24 = Header->_float0x24;
-            _posY = Header->_posY;
-            _unknown0x2C = Header->_unknown0x2C;
-            _unknown0x2D = Header->_unknown0x2D;
-            _unknown0x2E = Header->_unknown0x2E;
-            _unknown0x2F = Header->_unknown0x2F;
-            _unknown0x30 = Header->_unknown0x30;
-            _unknown0x31 = Header->_unknown0x31;
-            _unknown0x32 = Header->_unknown0x32;
-            _unknown0x33 = Header->_unknown0x33;
-            _unknown0x34 = Header->_unknown0x34;
-            _unknown0x35 = Header->_unknown0x35;
-            _unknown0x36 = Header->_unknown0x36;
-            _unknown0x37 = Header->_unknown0x37;
-            _waterPos._x = _posX;
-            _waterPos._y = _posY;
+            Data = *(GWATEntry*)WorkingUncompressed.Address;
             if (_name == null)
             {
                 _name = "Water [" + Index + "]";
@@ -176,47 +220,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             GWATEntry* hdr = (GWATEntry*) address;
-            hdr->_unknown0x00 = _unknown0x00;
-            hdr->_unknown0x01 = _unknown0x01;
-            hdr->_unknown0x02 = _unknown0x02;
-            hdr->_unknown0x03 = _unknown0x03;
-            hdr->_unknown0x04 = _unknown0x04;
-            hdr->_unknown0x05 = _unknown0x05;
-            hdr->_unknown0x06 = _unknown0x06;
-            hdr->_unknown0x07 = _unknown0x07;
-            hdr->_unknown0x08 = _unknown0x08;
-            hdr->_unknown0x09 = _unknown0x09;
-            hdr->_unknown0x0A = _unknown0x0A;
-            hdr->_unknown0x0B = _unknown0x0B;
-            hdr->_unknown0x0C = _unknown0x0C;
-            hdr->_unknown0x0D = _unknown0x0D;
-            hdr->_unknown0x0E = _unknown0x0E;
-            hdr->_unknown0x0F = _unknown0x0F;
-            hdr->_unknown0x10 = _unknown0x10;
-            hdr->_unknown0x11 = _unknown0x11;
-            hdr->_unknown0x12 = _unknown0x12;
-            hdr->_unknown0x13 = _unknown0x13;
-            hdr->_unknown0x14 = _unknown0x14;
-            hdr->_unknown0x15 = _unknown0x15;
-            hdr->_unknown0x16 = _unknown0x16;
-            hdr->_unknown0x17 = _unknown0x17;
-            hdr->_posX = _waterPos._x;
-            hdr->_depth = _depth;
-            hdr->_width = _width;
-            hdr->_float0x24 = _float0x24;
-            hdr->_posY = _waterPos._y;
-            hdr->_unknown0x2C = _unknown0x2C;
-            hdr->_unknown0x2D = _unknown0x2D;
-            hdr->_unknown0x2E = _unknown0x2E;
-            hdr->_unknown0x2F = _unknown0x2F;
-            hdr->_unknown0x30 = _unknown0x30;
-            hdr->_unknown0x31 = _unknown0x31;
-            hdr->_unknown0x32 = _unknown0x32;
-            hdr->_unknown0x33 = _unknown0x33;
-            hdr->_unknown0x34 = _unknown0x34;
-            hdr->_unknown0x35 = _unknown0x35;
-            hdr->_unknown0x36 = _unknown0x36;
-            hdr->_unknown0x37 = _unknown0x37;
+            *hdr = Data;
         }
     }
 }

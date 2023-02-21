@@ -58,9 +58,8 @@ namespace BrawlCrate.NodeWrappers
         {
             GWATEntryNode node = new GWATEntryNode
             {
-                _unknown0x07 = 0x12,
-                _unknown0x2C = 0x01,
-                _float0x24 = 300
+                Unknown0x04 = 0x12,
+                Unknown0x24 = 300
             };
             _resource.AddChild(node);
             node.Name = "Water [" + node.Index + "]";
