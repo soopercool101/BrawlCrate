@@ -172,365 +172,28 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             }
         }
 
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 1")]
-        public float DifficultyRotateSpeed1
+        public DifficultyRatiosClass _difficultyRotateSpeeds;
+        [Category("GBC")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public DifficultyRatiosClass DifficultyRotateSpeeds
         {
-            get => Data._difficultyRotateSpeed1;
+            get => _difficultyRotateSpeeds;
             set
             {
-                Data._difficultyRotateSpeed1 = value;
+                _difficultyRotateSpeeds = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 2")]
-        public float DifficultyRotateSpeed2
+        public DifficultyRatiosClass _difficultyMotionRatios;
+        [Category("GBC")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public DifficultyRatiosClass DifficultyMotionRatios
         {
-            get => Data._difficultyRotateSpeed2;
+            get => _difficultyMotionRatios;
             set
             {
-                Data._difficultyRotateSpeed2 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 3")]
-        public float DifficultyRotateSpeed3
-        {
-            get => Data._difficultyRotateSpeed3;
-            set
-            {
-                Data._difficultyRotateSpeed3 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 4")]
-        public float DifficultyRotateSpeed4
-        {
-            get => Data._difficultyRotateSpeed4;
-            set
-            {
-                Data._difficultyRotateSpeed4 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 5")]
-        public float DifficultyRotateSpeed5
-        {
-            get => Data._difficultyRotateSpeed5;
-            set
-            {
-                Data._difficultyRotateSpeed5 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 6")]
-        public float DifficultyRotateSpeed6
-        {
-            get => Data._difficultyRotateSpeed6;
-            set
-            {
-                Data._difficultyRotateSpeed6 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 7")]
-        public float DifficultyRotateSpeed7
-        {
-            get => Data._difficultyRotateSpeed7;
-            set
-            {
-                Data._difficultyRotateSpeed7 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 8")]
-        public float DifficultyRotateSpeed8
-        {
-            get => Data._difficultyRotateSpeed8;
-            set
-            {
-                Data._difficultyRotateSpeed8 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 9")]
-        public float DifficultyRotateSpeed9
-        {
-            get => Data._difficultyRotateSpeed9;
-            set
-            {
-                Data._difficultyRotateSpeed9 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 10")]
-        public float DifficultyRotateSpeed10
-        {
-            get => Data._difficultyRotateSpeed10;
-            set
-            {
-                Data._difficultyRotateSpeed10 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 11")]
-        public float DifficultyRotateSpeed11
-        {
-            get => Data._difficultyRotateSpeed11;
-            set
-            {
-                Data._difficultyRotateSpeed11 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 12")]
-        public float DifficultyRotateSpeed12
-        {
-            get => Data._difficultyRotateSpeed12;
-            set
-            {
-                Data._difficultyRotateSpeed12 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 13")]
-        public float DifficultyRotateSpeed13
-        {
-            get => Data._difficultyRotateSpeed13;
-            set
-            {
-                Data._difficultyRotateSpeed13 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 14")]
-        public float DifficultyRotateSpeed14
-        {
-            get => Data._difficultyRotateSpeed14;
-            set
-            {
-                Data._difficultyRotateSpeed14 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Rotate Speed")]
-        [DisplayName("Difficulty 15")]
-        public float DifficultyRotateSpeed15
-        {
-            get => Data._difficultyRotateSpeed15;
-            set
-            {
-                Data._difficultyRotateSpeed15 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 1")]
-        public float DifficultyMotionRatio1
-        {
-            get => Data._difficultyMotionRatio1;
-            set
-            {
-                Data._difficultyMotionRatio1 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 2")]
-        public float DifficultyMotionRatio2
-        {
-            get => Data._difficultyMotionRatio2;
-            set
-            {
-                Data._difficultyMotionRatio2 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 3")]
-        public float DifficultyMotionRatio3
-        {
-            get => Data._difficultyMotionRatio3;
-            set
-            {
-                Data._difficultyMotionRatio3 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 4")]
-        public float DifficultyMotionRatio4
-        {
-            get => Data._difficultyMotionRatio4;
-            set
-            {
-                Data._difficultyMotionRatio4 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 5")]
-        public float DifficultyMotionRatio5
-        {
-            get => Data._difficultyMotionRatio5;
-            set
-            {
-                Data._difficultyMotionRatio5 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 6")]
-        public float DifficultyMotionRatio6
-        {
-            get => Data._difficultyMotionRatio6;
-            set
-            {
-                Data._difficultyMotionRatio6 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 7")]
-        public float DifficultyMotionRatio7
-        {
-            get => Data._difficultyMotionRatio7;
-            set
-            {
-                Data._difficultyMotionRatio7 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 8")]
-        public float DifficultyMotionRatio8
-        {
-            get => Data._difficultyMotionRatio8;
-            set
-            {
-                Data._difficultyMotionRatio8 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 9")]
-        public float DifficultyMotionRatio9
-        {
-            get => Data._difficultyMotionRatio9;
-            set
-            {
-                Data._difficultyMotionRatio9 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 10")]
-        public float DifficultyMotionRatio10
-        {
-            get => Data._difficultyMotionRatio10;
-            set
-            {
-                Data._difficultyMotionRatio10 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 11")]
-        public float DifficultyMotionRatio11
-        {
-            get => Data._difficultyMotionRatio11;
-            set
-            {
-                Data._difficultyMotionRatio11 = value;
-                SignalPropertyChange();
-            }
-        }
-
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 12")]
-        public float DifficultyMotionRatio12
-        {
-            get => Data._difficultyMotionRatio12;
-            set
-            {
-                Data._difficultyMotionRatio12 = value;
-                SignalPropertyChange();
-            }
-        }
-
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 13")]
-        public float DifficultyMotionRatio13
-        {
-            get => Data._difficultyMotionRatio13;
-            set
-            {
-                Data._difficultyMotionRatio13 = value;
-                SignalPropertyChange();
-            }
-        }
-
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 14")]
-        public float DifficultyMotionRatio14
-        {
-            get => Data._difficultyMotionRatio14;
-            set
-            {
-                Data._difficultyMotionRatio14 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 15")]
-        public float DifficultyMotionRatio15
-        {
-            get => Data._difficultyMotionRatio15;
-            set
-            {
-                Data._difficultyMotionRatio15 = value;
+                _difficultyMotionRatios = value;
                 SignalPropertyChange();
             }
         }
@@ -671,7 +334,6 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         public TriggerDataClass _enterCannonTrigger;
-
         [Category("GBC")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public TriggerDataClass EnterCannonTrigger
@@ -685,7 +347,6 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         public TriggerDataClass _motionPathTrigger;
-
         [Category("GBC")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public TriggerDataClass MotionPathTrigger
@@ -699,7 +360,6 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
 
         public TriggerDataClass _isValidTrigger;
-
         [Category("GBC")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public TriggerDataClass IsValidTrigger
@@ -746,6 +406,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             _enterCannonTrigger = new TriggerDataClass(this);
             _motionPathTrigger = new TriggerDataClass(this);
             _isValidTrigger = new TriggerDataClass(this);
+            _difficultyMotionRatios = new DifficultyRatiosClass(this);
+            _difficultyRotateSpeeds = new DifficultyRatiosClass(this);
         }
 
         public override bool OnInitialize()
@@ -757,6 +419,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             _enterCannonTrigger = new TriggerDataClass(this, Data._enterCannonTrigger);
             _motionPathTrigger = new TriggerDataClass(this, Data._motionPathTrigger);
             _isValidTrigger = new TriggerDataClass(this, Data._isValidTrigger);
+            _difficultyRotateSpeeds = new DifficultyRatiosClass(this, Data._difficultyRotateSpeeds);
+            _difficultyMotionRatios = new DifficultyRatiosClass(this, Data._difficultyMotionRatios);
 
             return false;
         }
@@ -768,6 +432,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
             Data._enterCannonTrigger = EnterCannonTrigger;
             Data._motionPathTrigger = MotionPathTrigger;
             Data._isValidTrigger = IsValidTrigger;
+            Data._difficultyRotateSpeeds = _difficultyRotateSpeeds;
+            Data._difficultyMotionRatios = _difficultyMotionRatios;
         }
     }
 

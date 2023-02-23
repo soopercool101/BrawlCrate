@@ -1,4 +1,4 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Objects;
 using System;
 using System.ComponentModel;
@@ -185,185 +185,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 1")]
-        public float DifficultyMotionRatio1
+        public DifficultyRatiosClass _difficultyMotionRatios;
+        [Category("GMPS")]
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public DifficultyRatiosClass DifficultyMotionRatios
         {
-            get => Data._difficultyMotionRatio1;
+            get => _difficultyMotionRatios;
             set
             {
-                Data._difficultyMotionRatio1 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 2")]
-        public float DifficultyMotionRatio2
-        {
-            get => Data._difficultyMotionRatio2;
-            set
-            {
-                Data._difficultyMotionRatio2 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 3")]
-        public float DifficultyMotionRatio3
-        {
-            get => Data._difficultyMotionRatio3;
-            set
-            {
-                Data._difficultyMotionRatio3 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 4")]
-        public float DifficultyMotionRatio4
-        {
-            get => Data._difficultyMotionRatio4;
-            set
-            {
-                Data._difficultyMotionRatio4 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 5")]
-        public float DifficultyMotionRatio5
-        {
-            get => Data._difficultyMotionRatio5;
-            set
-            {
-                Data._difficultyMotionRatio5 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 6")]
-        public float DifficultyMotionRatio6
-        {
-            get => Data._difficultyMotionRatio6;
-            set
-            {
-                Data._difficultyMotionRatio6 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 7")]
-        public float DifficultyMotionRatio7
-        {
-            get => Data._difficultyMotionRatio7;
-            set
-            {
-                Data._difficultyMotionRatio7 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 8")]
-        public float DifficultyMotionRatio8
-        {
-            get => Data._difficultyMotionRatio8;
-            set
-            {
-                Data._difficultyMotionRatio8 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 9")]
-        public float DifficultyMotionRatio9
-        {
-            get => Data._difficultyMotionRatio9;
-            set
-            {
-                Data._difficultyMotionRatio9 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 10")]
-        public float DifficultyMotionRatio10
-        {
-            get => Data._difficultyMotionRatio10;
-            set
-            {
-                Data._difficultyMotionRatio10 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 11")]
-        public float DifficultyMotionRatio11
-        {
-            get => Data._difficultyMotionRatio11;
-            set
-            {
-                Data._difficultyMotionRatio11 = value;
-                SignalPropertyChange();
-            }
-        }
-
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 12")]
-        public float DifficultyMotionRatio12
-        {
-            get => Data._difficultyMotionRatio12;
-            set
-            {
-                Data._difficultyMotionRatio12 = value;
-                SignalPropertyChange();
-            }
-        }
-
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 13")]
-        public float DifficultyMotionRatio13
-        {
-            get => Data._difficultyMotionRatio13;
-            set
-            {
-                Data._difficultyMotionRatio13 = value;
-                SignalPropertyChange();
-            }
-        }
-
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 14")]
-        public float DifficultyMotionRatio14
-        {
-            get => Data._difficultyMotionRatio14;
-            set
-            {
-                Data._difficultyMotionRatio14 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Motion Ratio")]
-        [DisplayName("Difficulty 15")]
-        public float DifficultyMotionRatio15
-        {
-            get => Data._difficultyMotionRatio15;
-            set
-            {
-                Data._difficultyMotionRatio15 = value;
+                _difficultyMotionRatios = value;
                 SignalPropertyChange();
             }
         }
@@ -487,6 +317,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _hitData = new HitDataClass(this);
             _attackData = new AttackDataClass(this);
             _triggerData = new TriggerDataClass(this);
+            _difficultyMotionRatios = new DifficultyRatiosClass(this);
         }
 
         public override bool OnInitialize()
@@ -497,6 +328,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _hitData = new HitDataClass(this, Data._hitData);
             _attackData = new AttackDataClass(this, Data._attackData);
             _triggerData = new TriggerDataClass(this, Data._triggerData);
+            _difficultyMotionRatios = new DifficultyRatiosClass(this, Data._difficultyMotionRatios);
 
             return false;
         }
@@ -514,6 +346,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Data._hitData = _hitData;
             Data._attackData = _attackData;
             Data._triggerData = _triggerData;
+            Data._difficultyMotionRatios = _difficultyMotionRatios;
             *hdr = Data;
         }
     }
