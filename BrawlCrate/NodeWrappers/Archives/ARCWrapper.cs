@@ -85,8 +85,8 @@ namespace BrawlCrate.NodeWrappers
             ));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Preview All Models", null, PreviewAllAction));
-            _menu.Items.Add(new ToolStripMenuItem("Export All", null, ExportAllAction));
-            _menu.Items.Add(new ToolStripMenuItem("Replace All", null, ReplaceAllAction));
+            _menu.Items.Add(new ToolStripMenuItem("Export All", null, ExportAllAction, Keys.Control | Keys.Shift | Keys.E));
+            _menu.Items.Add(new ToolStripMenuItem("Replace All", null, ReplaceAllAction, Keys.Control | Keys.Shift | Keys.R));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
