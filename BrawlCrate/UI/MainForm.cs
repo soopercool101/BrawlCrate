@@ -752,7 +752,7 @@ namespace BrawlCrate.UI
                          (node is IRenderedObject io && io.DrawCalls.Count > 0 ||
                           ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
                           ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0 ||
-                          node is IRenderedLink))
+                          node is IRenderedLink || node is ARCEntryNode n && n.RedirectNode != null))
                 {
                     newControl = modelPanel1;
                     if (!RenderSelected(node))
