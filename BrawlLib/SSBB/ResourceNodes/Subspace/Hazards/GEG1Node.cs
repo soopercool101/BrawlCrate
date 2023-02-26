@@ -1,7 +1,11 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -82,9 +86,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         CrazyHand = 60
     }
 
-    public unsafe class GEG1EntryNode : ResourceNode
+    public unsafe class GEG1EntryNode : ResourceNode, IRenderedLink
     {
         internal GEG1Entry* Header => (GEG1Entry*) WorkingUncompressed.Address;
+        public List<ResourceNode> RenderTargets
+        {
+            get
+            {
+                List<ResourceNode> _targets = new List<ResourceNode>();
+                if (Parent?.Parent?.Parent?.Parent?.Children.FirstOrDefault(o => o is ARCEntryNode ae && ae.FileType == ARCFileType.MiscData && ae.FileIndex == 0) is ARCNode a)
+                {
+                    ResourceNode model = a.Children.FirstOrDefault(c => c is ARCEntryNode ae && ae.FileType == ARCFileType.MiscData && ae.FileIndex == EnemyBrresID);
+                    if (model != null)
+                        _targets.Add(model);
+                }
+                return _targets;
+            }
+        }
         public override ResourceType ResourceFileType => ResourceType.ENEMY;
 
         public void RegenName()

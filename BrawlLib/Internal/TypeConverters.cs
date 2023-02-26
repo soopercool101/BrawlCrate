@@ -85,6 +85,12 @@ namespace BrawlLib.Internal
             {
                 switch (value)
                 {
+                    case uint _:
+                    case int _:
+                        return $"0x{value:X8}";
+                    case ushort _:
+                    case short _:
+                        return $"0x{value:X4}";
                     case byte _:
                     case sbyte _:
                         return $"0x{value:X2}";

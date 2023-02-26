@@ -1,6 +1,7 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
 using BrawlLib.Modeling;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 
@@ -28,6 +29,11 @@ namespace BrawlLib.OpenGL
         public virtual void Bind()
         {
         }
+    }
+
+    public interface IRenderedLink
+    {
+        List<ResourceNode> RenderTargets { get; }
     }
 
     public interface IRenderedObject

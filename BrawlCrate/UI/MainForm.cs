@@ -737,19 +737,6 @@ namespace BrawlCrate.UI
                         newControl = audioPlaybackPanel1;
                     }
                 }
-                else if (node is CollisionNode || node is CollisionObject || node is TBCLEntryNode || !CompatibilityMode &&
-                    (node is IRenderedObject io && io.DrawCalls.Count > 0 ||
-                     ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
-                     ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0))
-                {
-                    newControl = modelPanel1;
-                    RenderSelected(node);
-                }
-                else if (node is IImageSource i && i.ImageCount > 0)
-                {
-                    previewPanel2.RenderingTarget = i;
-                    newControl = previewPanel2;
-                }
                 else if (node is MultipleInterpretationIAttributeList table && table.NumEntries > 0)
                 {
                     attributeGrid1.AddRange(table.GetPossibleInterpretations());
@@ -760,6 +747,20 @@ namespace BrawlCrate.UI
                 {
                     aslIndicator1.TargetNode = aslsEntry;
                     newControl = aslIndicator1;
+                }
+                else if (node is CollisionNode || node is CollisionObject || !CompatibilityMode &&
+                         (node is IRenderedObject io && io.DrawCalls.Count > 0 ||
+                          ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
+                          ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0 ||
+                          node is IRenderedLink))
+                {
+                    newControl = modelPanel1;
+                    if (!RenderSelected(node))
+                        newControl = null;
+                }
+                if (newControl == null && node is IImageSource i && i.ImageCount > 0) {
+                    previewPanel2.RenderingTarget = i;
+                    newControl = previewPanel2;
                 }
 
                 if (node is IColorSource source && !disable2nd)
@@ -874,62 +875,55 @@ namespace BrawlCrate.UI
 
         #region Rendering
 
-        public static void RenderSelected(ResourceNode node)
+        public bool RenderSelected(ResourceNode node)
         {
-            float? minX = null;
-            float? minY = null;
-            float? minZ = null;
-            float? maxX = null;
-            float? maxY = null;
-            float? maxZ = null;
             if (node == null)
             {
-                return;
+                return false;
             }
+            RenderSelected(node, true, out float? f1, out _, out _, out _, out _, out _);
+            return f1.HasValue;
+        }
 
-            Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Perspective);
+        public void RenderSelected(ResourceNode node, bool firstRun, out float? minX, out float? minY, out float? minZ, out float? maxX, out float? maxY, out float? maxZ)
+        {
+            minX = null;
+            minY = null;
+            minZ = null;
+            maxX = null;
+            maxY = null;
+            maxZ = null;
+            if (node == null)
+                return;
+            if (firstRun)
+                modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Perspective);
             switch (node)
             {
                 case CollisionNode collNode:
-                    Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
-                    Instance.modelPanel1.AddTarget(collNode, false);
+                    if(firstRun)
+                        modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
+                    modelPanel1.AddTarget(collNode, false);
                     collNode.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
                     break;
                 case CollisionObject collObj:
                     CollisionNode collNodeTemp = new CollisionNode();
                     collNodeTemp.Children.Add(collObj);
-                    Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
-                    Instance.modelPanel1.AddTarget(collNodeTemp, false);
+                    if(firstRun)
+                        modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
+                    modelPanel1.AddTarget(collNodeTemp, false);
                     collNodeTemp.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
                     break;
-                case TBCLEntryNode tbclEntry:
-                    if (tbclEntry.Parent?.Parent != null)
-                    {
-                        try
-                        {
-                            CollisionNode coll =
-                                tbclEntry.Parent.Parent.FindChildrenByClassType("", typeof(CollisionNode))[0] as CollisionNode;
-                            CollisionNode temp = new CollisionNode();
-                            for (int i = 0; i < tbclEntry.Count; i++)
-                            {
-                                temp.AddChild(coll.Children[(int)tbclEntry.CollisionObjects[i]]);
-                            }
-                            Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
-                            Instance.modelPanel1.AddTarget(temp, false);
-                            temp.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
-                        }
-                        catch
-                        {
-                            // ignore
-                        }
-                    }
-
-                    break;
                 case ARCNode arcNode:
-                    RenderARC(arcNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+                    if (ShowARCPreviews)
+                        RenderARC(arcNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
                     break;
                 case BRRESNode brresNode:
-                    RenderBRRES(brresNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+                    if(ShowBRRESPreviews)
+                        RenderBRRES(brresNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+                    break;
+                case ARCEntryNode arcEntryNode:
+                    if (arcEntryNode.RedirectNode != null && arcEntryNode.RedirectIndex != arcEntryNode.Index)
+                        RenderSelected(arcEntryNode.RedirectNode, false, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
                     break;
                 case IRenderedObject o:
                     //Model panel has to be loaded first to display model correctly
@@ -943,16 +937,42 @@ namespace BrawlCrate.UI
                         m.ResetToBindState();
                     }
 
-                    Instance.modelPanel1.AddTarget(o, false);
-                    Instance.modelPanel1.SetCamWithBox(o.GetBox());
+                    modelPanel1.AddTarget(o, false);
+                    Box b = o.GetBox();
+                    modelPanel1.SetCamWithBox(b);
+                    minX = b.Min._x;
+                    minY = b.Min._y;
+                    minZ = b.Min._z;
+                    maxX = b.Max._x;
+                    maxY = b.Max._y;
+                    maxZ = b.Max._z;
                     return;
+                case IRenderedLink l:
+                    foreach (var obj in l.RenderTargets)
+                    {
+                        RenderSelected(obj, false, out float? newMinX, out float? newMinY, out float? newMinZ, out float? newMaxX, out float? newMaxY, out float? newMaxZ);
+                        if (newMinX.HasValue && (!minX.HasValue || minX > newMinX))
+                            minX = newMinX;
+                        if (newMinY.HasValue && (!minY.HasValue || minY > newMinY))
+                            minY = newMinY;
+                        if (newMinZ.HasValue && (!minZ.HasValue || minZ > newMinZ))
+                            minZ = newMinZ;
+                        if (newMaxX.HasValue && (!maxX.HasValue || maxX < newMaxX))
+                            maxX = newMaxX;
+                        if (newMaxY.HasValue && (!maxY.HasValue || maxY < newMaxY))
+                            maxY = newMaxY;
+                        if (newMaxZ.HasValue && (!maxZ.HasValue || maxZ < newMaxZ))
+                            maxZ = newMaxZ;
+                    }
+
+                    break;
             }
 
-            Instance.modelPanel1.SetCamWithBox(new Vector3(minX ?? 0, minY ?? 0, minZ ?? 0),
-                new Vector3(maxX ?? 0, maxY ?? 0, maxZ ?? 0));
+            if(firstRun)
+                modelPanel1.SetCamWithBox(new Vector3(minX ?? 0, minY ?? 0, minZ ?? 0), new Vector3(maxX ?? 0, maxY ?? 0, maxZ ?? 0));
         }
 
-        public static void RenderARC(ARCNode arcNode, out float? minX, out float? minY, out float? minZ,
+        public void RenderARC(ARCNode arcNode, out float? minX, out float? minY, out float? minZ,
                                      out float? maxX,
                                      out float? maxY, out float? maxZ)
         {
@@ -1054,7 +1074,7 @@ namespace BrawlCrate.UI
                 }
                 else if (resource is CollisionNode collNode)
                 {
-                    Instance.modelPanel1.AddTarget(collNode, false);
+                    modelPanel1.AddTarget(collNode, false);
                 }
             }
 
@@ -1075,7 +1095,7 @@ namespace BrawlCrate.UI
             }
         }
 
-        public static void RenderBRRES(BRRESNode brresNode, out float? minX, out float? minY, out float? minZ,
+        public void RenderBRRES(BRRESNode brresNode, out float? minX, out float? minY, out float? minZ,
                                        out float? maxX,
                                        out float? maxY, out float? maxZ)
         {
@@ -1095,7 +1115,7 @@ namespace BrawlCrate.UI
 
                 model.ResetToBindState();
 
-                Instance.modelPanel1.AddTarget(model, false);
+                modelPanel1.AddTarget(model, false);
                 Box b = model.GetBox();
 
                 if (minX == null || b.Min._x < minX)

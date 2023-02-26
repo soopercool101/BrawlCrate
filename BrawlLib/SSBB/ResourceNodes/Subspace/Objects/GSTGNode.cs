@@ -1,7 +1,11 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Objects;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
 {
@@ -16,9 +20,27 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Objects
         }
     }
 
-    public unsafe class GSTGEntryNode : ResourceNode
+    public unsafe class GSTGEntryNode : ResourceNode, IRenderedLink
     {
         internal GSTGEntry Data;
+        public List<ResourceNode> RenderTargets
+        {
+            get
+            {
+                List<ResourceNode> _targets = new List<ResourceNode>();
+                if (Parent?.Parent?.Parent is ARCNode a)
+                {
+                    if (ModelDataIndex != byte.MaxValue)
+                    {
+                        ResourceNode model = a.Children.FirstOrDefault(c => c is ARCEntryNode ae && ae.FileType == ARCFileType.ModelData && ae.FileIndex == ModelDataIndex);
+                        if (model != null)
+                            _targets.Add(model);
+                    }
+                }
+                return _targets;
+            }
+        }
+
         public override bool supportsCompression => false;
 
         [Category("GSTG")]

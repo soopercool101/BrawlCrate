@@ -1,7 +1,11 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Animation;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -17,12 +21,36 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class GMOTEntryNode : ResourceNode
+    public unsafe class GMOTEntryNode : ResourceNode, IRenderedLink
     {
         internal GMOTEntry Data;
         internal GMOTEntry* Header => (GMOTEntry*) WorkingUncompressed.Address;
         public override bool supportsCompression => false;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
+        
+        public List<ResourceNode> RenderTargets
+        {
+            get
+            {
+                List<ResourceNode> _targets = new List<ResourceNode>();
+                if (Parent?.Parent?.Parent is ARCNode a)
+                {
+                    if (ModelDataIndex != byte.MaxValue)
+                    {
+                        ResourceNode model = a.Children.FirstOrDefault(c => c is ARCEntryNode ae && ae.FileType == ARCFileType.ModelData && ae.FileIndex == ModelDataIndex);
+                        if (model != null)
+                            _targets.Add(model);
+                    }
+                    if (CollisionDataIndex != byte.MaxValue)
+                    {
+                        ResourceNode coll = a.Children.FirstOrDefault(c => c is CollisionNode ae && ae.FileType == ARCFileType.MiscData && ae.FileIndex == CollisionDataIndex);
+                        if (coll != null)
+                            _targets.Add(coll);
+                    }
+                }
+                return _targets;
+            }
+        }
 
         [Category("GMOT")]
         public byte ModelDataIndex

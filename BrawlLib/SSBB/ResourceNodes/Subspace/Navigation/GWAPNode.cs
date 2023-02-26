@@ -1,7 +1,11 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Navigation;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes.Subspace.Navigation
 {
@@ -16,9 +20,26 @@ namespace BrawlLib.SSBB.ResourceNodes.Subspace.Navigation
         }
     }
 
-    public unsafe class GWAPEntryNode : ResourceNode
+    public unsafe class GWAPEntryNode : ResourceNode, IRenderedLink
     {
         public GWAPEntry Data;
+        public List<ResourceNode> RenderTargets
+        {
+            get
+            {
+                List<ResourceNode> _targets = new List<ResourceNode>();
+                if (Parent?.Parent?.Parent is ARCNode a)
+                {
+                    if (ModelDataIndex != byte.MaxValue)
+                    {
+                        ResourceNode model = a.Children.FirstOrDefault(c => c is ARCEntryNode ae && ae.FileType == ARCFileType.ModelData && ae.FileIndex == ModelDataIndex);
+                        if (model != null)
+                            _targets.Add(model);
+                    }
+                }
+                return _targets;
+            }
+        }
 
         public MotionPathDataClass _motionPathData;
         [Category("Warp Zone")]
