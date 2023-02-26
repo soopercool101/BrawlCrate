@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Objects
 
         public string BoneName
         {
-            get => Address.GetUTF8String(0x34);
+            get => Address.GetUTF8String(0x34, 0x20);
             set => Address.WriteUTF8String(value, 0x34, 0x20);
         }
 

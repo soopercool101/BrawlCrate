@@ -17,67 +17,90 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GNDVEntryNode : ResourceNode
     {
-        protected internal GNDVEntry* Entry => (GNDVEntry*) WorkingUncompressed.Address;
+        private GNDVEntry Data;
 
-        [Category("General")]
-        public uint ModelDataFileIndex
+        [Category("GNDV")]
+        public byte ModelDataFileIndex
         {
-            get => _unk1;
+            get => Data._modelDataFileIndex;
             set
             {
-                _unk1 = value;
+                Data._modelDataFileIndex = value;
                 SignalPropertyChange();
             }
         }
 
-        private uint _unk1 = 0;
+        [Category("Unknown")]
+        public byte Unknown0x01
+        {
+            get => Data._unknown0x01;
+            set
+            {
+                Data._unknown0x01 = value;
+                SignalPropertyChange();
+            }
+        }
 
-        [Category("General")]
-        [DisplayName("Target Bone Name")]
+        [Category("Unknown")]
+        public byte Unknown0x02
+        {
+            get => Data._unknown0x02;
+            set {
+                Data._unknown0x02 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x03
+        {
+            get => Data._unknown0x03;
+            set
+            {
+                Data._unknown0x03 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GNDV")]
         public string BoneName
         {
-            get => _boneName;
+            get => Data.BoneName;
             set
             {
-                _boneName = value;
-                Name = value;
+                Data.BoneName = value;
+                Name = Data.BoneName;
                 SignalPropertyChange();
             }
         }
 
-        private string _boneName = string.Empty;
-
-        [Category("General")]
-        [DisplayName("SFX Info Index")]
+        [Category("GNDV")]
+        [TypeConverter(typeof(HexIntConverter))]
         public int SFXInfoIndex
         {
-            get => _sfx;
+            get => Data._sfx;
             set
             {
-                _sfx = value;
+                Data._sfx = value;
                 SignalPropertyChange();
             }
         }
 
-        private int _sfx;
-
-        [Category("General")]
-        [DisplayName("Graphic ID")]
+        [Category("GNDV")]
         [TypeConverter(typeof(HexUIntConverter))]
-        public uint Graphic
+        public uint GraphicId
         {
-            get => _gfx;
+            get => Data._gfx;
             set
             {
-                _gfx = value;
+                Data._gfx = value;
                 SignalPropertyChange();
             }
         }
 
-        private uint _gfx;
+        private TriggerDataClass _trigger;
 
-        [Category("Triggers")]
-        [DisplayName("Trigger")]
+        [Category("GNDV")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public TriggerDataClass Trigger
         {
@@ -89,7 +112,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private TriggerDataClass _trigger;
+        public override string Name
+        {
+            get => base.Name;
+            set
+            {
+                BoneName = value;
+                base.Name = BoneName;
+            }
+        }
+
+        public override int MaxNameLength => 0x20;
 
         public GNDVEntryNode()
         {
@@ -98,11 +131,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            _unk1 = Entry->_unk1;
-            _boneName = Entry->BoneName;
-            _sfx = Entry->_sfx;
-            _gfx = Entry->_gfx;
-            _trigger = new TriggerDataClass(this, Entry->_trigger);
+            Data = *(GNDVEntry*)WorkingUncompressed.Address;
+            _trigger = new TriggerDataClass(this, Data._trigger);
 
             if (_name == null)
             {
@@ -114,18 +144,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            return GNDVEntry.SIZE;
+            return GNDVEntry.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             GNDVEntry* header = (GNDVEntry*) address;
-            *header = new GNDVEntry();
-            header->_unk1 = ModelDataFileIndex;
-            header->BoneName = BoneName;
-            header->_sfx = SFXInfoIndex;
-            header->_gfx = Graphic;
-            header->_trigger = Trigger;
+            Data._trigger = _trigger;
+            *header = Data;
         }
     }
 }

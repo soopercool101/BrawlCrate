@@ -131,7 +131,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         {
             _buttonFlags = Header->_buttonFlags;
             _name = Parent.WorkingUncompressed.Address.GetUTF8String(
-                ((ASLSNode) Parent).Header->_nameOffset + Header->_nameOffset);
+                (uint)((ASLSNode) Parent).Header->_nameOffset + Header->_nameOffset);
             return false;
         }
     }

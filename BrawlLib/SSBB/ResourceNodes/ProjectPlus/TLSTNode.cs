@@ -286,12 +286,12 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         {
             if (Header->_title != 0xFFFF)
             {
-                _name = Parent.WorkingUncompressed.Address.GetUTF8String(((TLSTNode)Parent).Header->_nameOffset + Header->_title);
+                _name = Parent.WorkingUncompressed.Address.GetUTF8String((uint)(((TLSTNode)Parent).Header->_nameOffset + Header->_title));
             }
 
             if (Header->_fileName != 0xFFFF)
             {
-                _fileName = Parent.WorkingUncompressed.Address.GetUTF8String(((TLSTNode)Parent).Header->_nameOffset + Header->_fileName);
+                _fileName = Parent.WorkingUncompressed.Address.GetUTF8String((uint)((TLSTNode)Parent).Header->_nameOffset + Header->_fileName);
             }
 
             _songID = Header->_songID;
@@ -304,7 +304,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
                 }
                 catch
                 {
-
+                    // ignore
                 }
             }
 

@@ -8,38 +8,21 @@ namespace BrawlLib.SSBB.Types.Subspace.Graphics
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GNDVEntry
     {
-        public const int SIZE = 0x30;
+        public const int Size = 0x30;
 
-        public buint _unk1;
-        private fixed sbyte _boneName[0x20];
-        public bint _sfx;
-        public buint _gfx;
-        public TriggerData _trigger;
+        public byte _modelDataFileIndex;        // 0x00
+        public byte _unknown0x01;
+        public byte _unknown0x02;
+        public byte _unknown0x03;
+        private fixed sbyte _boneName[0x20];    // 0x04
+        public bint _sfx;                       // 0x24
+        public buint _gfx;                      // 0x28
+        public TriggerData _trigger;            // 0x2C
 
         public string BoneName
         {
-            get => new string((sbyte*) Address + 0x4);
-            set
-            {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
-                fixed (sbyte* ptr = _boneName)
-                {
-                    int i = 0;
-                    while (i <= 0x29 && i < value.Length)
-                    {
-                        ptr[i] = (sbyte) value[i++];
-                    }
-
-                    while (i <= 0x30)
-                    {
-                        ptr[i++] = 0;
-                    }
-                }
-            }
+            get => Address.GetUTF8String(0x4, 0x20);
+            set => Address.WriteUTF8String(value, false, 0x4, 0x20);
         }
 
         private VoidPtr Address

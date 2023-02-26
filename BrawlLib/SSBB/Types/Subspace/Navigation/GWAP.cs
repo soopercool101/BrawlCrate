@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
 
         public string BoneName
         {
-            get => Address.GetUTF8String(0x30);
+            get => Address.GetUTF8String(0x30, 0x20);
             set => Address.WriteUTF8String(value, 0x30, 0x20);
         }
 
