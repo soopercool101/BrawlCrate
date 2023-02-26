@@ -24,9 +24,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool supportsCompression => false;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        [Category("Animated Object")]
-        [DisplayName("Model Index")]
-        public byte ModelIndex
+        [Category("GMOT")]
+        public byte ModelDataIndex
         {
             get => Data._modelDataIndex;
             set
@@ -36,9 +35,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Animated Object")]
-        [DisplayName("Collision Index")]
-        public byte CollisionIndex
+        [Category("GMOT")]
+        [TypeConverter(typeof(NullableByteConverter))]
+        public byte CollisionDataIndex
         {
             get => Data._collisionDataIndex;
             set
@@ -48,8 +47,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Animated Object")]
+        [Category("GMOT")]
         [DisplayName("Sound Info Index")]
+        [TypeConverter(typeof(HexIntConverter))]
         public int SoundInfoIndex
         {
             get => Data._soundInfoIndex;
@@ -248,7 +248,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x040
+        public int Unknown0x040
         {
             get => Data._unknown0x040;
             set
@@ -259,7 +259,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x044
+        public int Unknown0x044
         {
             get => Data._unknown0x044;
             set
@@ -270,7 +270,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x048
+        public int Unknown0x048
         {
             get => Data._unknown0x048;
             set
@@ -281,7 +281,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x04C
+        public int Unknown0x04C
         {
             get => Data._unknown0x04C;
             set
@@ -292,7 +292,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x050
+        public int Unknown0x050
         {
             get => Data._unknown0x050;
             set
@@ -303,7 +303,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x054
+        public int Unknown0x054
         {
             get => Data._unknown0x054;
             set
@@ -314,7 +314,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x058
+        public int Unknown0x058
         {
             get => Data._unknown0x058;
             set
@@ -325,7 +325,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x05C
+        public int Unknown0x05C
         {
             get => Data._unknown0x05C;
             set
@@ -336,7 +336,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x060
+        public int Unknown0x060
         {
             get => Data._unknown0x060;
             set
@@ -347,7 +347,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x064
+        public int Unknown0x064
         {
             get => Data._unknown0x064;
             set
@@ -358,7 +358,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x068
+        public int Unknown0x068
         {
             get => Data._unknown0x068;
             set
@@ -369,7 +369,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x06C
+        public int Unknown0x06C
         {
             get => Data._unknown0x06C;
             set
@@ -380,7 +380,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x070
+        public int Unknown0x070
         {
             get => Data._unknown0x070;
             set
@@ -391,7 +391,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x074
+        public int Unknown0x074
         {
             get => Data._unknown0x074;
             set
@@ -402,7 +402,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x078
+        public int Unknown0x078
         {
             get => Data._unknown0x078;
             set
@@ -413,7 +413,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x07C
+        public int Unknown0x07C
         {
             get => Data._unknown0x07C;
             set
@@ -424,7 +424,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x080
+        public int Unknown0x080
         {
             get => Data._unknown0x080;
             set
@@ -435,7 +435,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x084
+        public int Unknown0x084
         {
             get => Data._unknown0x084;
             set
@@ -446,7 +446,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x088
+        public int Unknown0x088
         {
             get => Data._unknown0x088;
             set
@@ -457,7 +457,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x08C
+        public int Unknown0x08C
         {
             get => Data._unknown0x08C;
             set
@@ -468,7 +468,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x090
+        public int Unknown0x090
         {
             get => Data._unknown0x090;
             set
@@ -479,7 +479,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x094
+        public int Unknown0x094
         {
             get => Data._unknown0x094;
             set
@@ -490,7 +490,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x098
+        public int Unknown0x098
         {
             get => Data._unknown0x098;
             set
@@ -501,7 +501,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x09C
+        public int Unknown0x09C
         {
             get => Data._unknown0x09C;
             set
@@ -512,7 +512,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0A0
+        public int Unknown0x0A0
         {
             get => Data._unknown0x0A0;
             set
@@ -523,7 +523,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0A4
+        public int Unknown0x0A4
         {
             get => Data._unknown0x0A4;
             set
@@ -534,7 +534,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0A8
+        public int Unknown0x0A8
         {
             get => Data._unknown0x0A8;
             set
@@ -545,7 +545,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0AC
+        public int Unknown0x0AC
         {
             get => Data._unknown0x0AC;
             set
@@ -556,7 +556,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0B0
+        public int Unknown0x0B0
         {
             get => Data._unknown0x0B0;
             set
@@ -567,7 +567,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0B4
+        public int Unknown0x0B4
         {
             get => Data._unknown0x0B4;
             set
@@ -578,7 +578,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0B8
+        public int Unknown0x0B8
         {
             get => Data._unknown0x0B8;
             set
@@ -589,7 +589,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0BC
+        public int Unknown0x0BC
         {
             get => Data._unknown0x0BC;
             set
@@ -600,7 +600,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0C0
+        public int Unknown0x0C0
         {
             get => Data._unknown0x0C0;
             set
@@ -611,7 +611,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0C4
+        public int Unknown0x0C4
         {
             get => Data._unknown0x0C4;
             set
@@ -622,7 +622,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0C8
+        public int Unknown0x0C8
         {
             get => Data._unknown0x0C8;
             set
@@ -633,7 +633,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0CC
+        public int Unknown0x0CC
         {
             get => Data._unknown0x0CC;
             set
@@ -644,7 +644,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0D0
+        public int Unknown0x0D0
         {
             get => Data._unknown0x0D0;
             set
@@ -655,7 +655,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0D4
+        public int Unknown0x0D4
         {
             get => Data._unknown0x0D4;
             set
@@ -666,7 +666,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0D8
+        public int Unknown0x0D8
         {
             get => Data._unknown0x0D8;
             set
@@ -677,7 +677,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0DC
+        public int Unknown0x0DC
         {
             get => Data._unknown0x0DC;
             set
@@ -688,7 +688,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0E0
+        public int Unknown0x0E0
         {
             get => Data._unknown0x0E0;
             set
@@ -699,7 +699,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0E4
+        public int Unknown0x0E4
         {
             get => Data._unknown0x0E4;
             set
@@ -710,7 +710,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0E8
+        public int Unknown0x0E8
         {
             get => Data._unknown0x0E8;
             set
@@ -721,7 +721,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0EC
+        public int Unknown0x0EC
         {
             get => Data._unknown0x0EC;
             set
@@ -732,7 +732,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0F0
+        public int Unknown0x0F0
         {
             get => Data._unknown0x0F0;
             set
@@ -743,7 +743,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0F4
+        public int Unknown0x0F4
         {
             get => Data._unknown0x0F4;
             set
@@ -754,7 +754,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0F8
+        public int Unknown0x0F8
         {
             get => Data._unknown0x0F8;
             set
@@ -765,7 +765,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x0FC
+        public int Unknown0x0FC
         {
             get => Data._unknown0x0FC;
             set
@@ -776,7 +776,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x100
+        public int Unknown0x100
         {
             get => Data._unknown0x100;
             set
@@ -787,7 +787,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x104
+        public int Unknown0x104
         {
             get => Data._unknown0x104;
             set
@@ -798,7 +798,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x108
+        public int Unknown0x108
         {
             get => Data._unknown0x108;
             set
@@ -809,7 +809,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x10C
+        public int Unknown0x10C
         {
             get => Data._unknown0x10C;
             set
@@ -820,7 +820,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x110
+        public int Unknown0x110
         {
             get => Data._unknown0x110;
             set
@@ -831,7 +831,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x114
+        public int Unknown0x114
         {
             get => Data._unknown0x114;
             set
@@ -842,7 +842,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x11C
+        public int Unknown0x11C
         {
             get => Data._unknown0x11C;
             set
@@ -853,7 +853,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x120
+        public int Unknown0x120
         {
             get => Data._unknown0x120;
             set
@@ -864,7 +864,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x124
+        public int Unknown0x124
         {
             get => Data._unknown0x124;
             set
@@ -875,7 +875,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x128
+        public int Unknown0x128
         {
             get => Data._unknown0x128;
             set
@@ -886,7 +886,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x12C
+        public int Unknown0x12C
         {
             get => Data._unknown0x12C;
             set
@@ -897,7 +897,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x130
+        public int Unknown0x130
         {
             get => Data._unknown0x130;
             set
@@ -908,7 +908,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x134
+        public int Unknown0x134
         {
             get => Data._unknown0x134;
             set
@@ -919,7 +919,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x138
+        public int Unknown0x138
         {
             get => Data._unknown0x138;
             set
@@ -930,7 +930,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x13C
+        public int Unknown0x13C
         {
             get => Data._unknown0x13C;
             set
@@ -941,7 +941,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x140
+        public int Unknown0x140
         {
             get => Data._unknown0x140;
             set
@@ -952,7 +952,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x144
+        public int Unknown0x144
         {
             get => Data._unknown0x144;
             set
@@ -963,7 +963,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x148
+        public int Unknown0x148
         {
             get => Data._unknown0x148;
             set
@@ -974,7 +974,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x14C
+        public int Unknown0x14C
         {
             get => Data._unknown0x14C;
             set
@@ -985,7 +985,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x150
+        public int Unknown0x150
         {
             get => Data._unknown0x150;
             set
@@ -996,7 +996,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x154
+        public int Unknown0x154
         {
             get => Data._unknown0x154;
             set
@@ -1007,7 +1007,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x158
+        public int Unknown0x158
         {
             get => Data._unknown0x158;
             set
@@ -1018,7 +1018,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x15C
+        public int Unknown0x15C
         {
             get => Data._unknown0x15C;
             set
@@ -1029,7 +1029,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x160
+        public int Unknown0x160
         {
             get => Data._unknown0x160;
             set
@@ -1040,7 +1040,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x164
+        public int Unknown0x164
         {
             get => Data._unknown0x164;
             set
@@ -1051,7 +1051,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x168
+        public int Unknown0x168
         {
             get => Data._unknown0x168;
             set
@@ -1062,7 +1062,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x16C
+        public int Unknown0x16C
         {
             get => Data._unknown0x16C;
             set
@@ -1073,7 +1073,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x170
+        public int Unknown0x170
         {
             get => Data._unknown0x170;
             set
@@ -1084,7 +1084,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x174
+        public int Unknown0x174
         {
             get => Data._unknown0x174;
             set
@@ -1095,7 +1095,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x178
+        public int Unknown0x178
         {
             get => Data._unknown0x178;
             set
@@ -1106,7 +1106,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x17C
+        public int Unknown0x17C
         {
             get => Data._unknown0x17C;
             set
@@ -1117,7 +1117,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x180
+        public int Unknown0x180
         {
             get => Data._unknown0x180;
             set
@@ -1128,7 +1128,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x184
+        public int Unknown0x184
         {
             get => Data._unknown0x184;
             set
@@ -1139,7 +1139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x188
+        public int Unknown0x188
         {
             get => Data._unknown0x188;
             set
@@ -1150,7 +1150,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x18C
+        public int Unknown0x18C
         {
             get => Data._unknown0x18C;
             set
@@ -1161,7 +1161,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x190
+        public int Unknown0x190
         {
             get => Data._unknown0x190;
             set
@@ -1172,7 +1172,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x194
+        public int Unknown0x194
         {
             get => Data._unknown0x194;
             set
@@ -1183,7 +1183,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x198
+        public int Unknown0x198
         {
             get => Data._unknown0x198;
             set
@@ -1194,7 +1194,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x19C
+        public int Unknown0x19C
         {
             get => Data._unknown0x19C;
             set
@@ -1205,7 +1205,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1A0
+        public int Unknown0x1A0
         {
             get => Data._unknown0x1A0;
             set
@@ -1216,7 +1216,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1A4
+        public int Unknown0x1A4
         {
             get => Data._unknown0x1A4;
             set
@@ -1227,7 +1227,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1A8
+        public int Unknown0x1A8
         {
             get => Data._unknown0x1A8;
             set
@@ -1238,7 +1238,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1AC
+        public int Unknown0x1AC
         {
             get => Data._unknown0x1AC;
             set
@@ -1249,7 +1249,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1B0
+        public int Unknown0x1B0
         {
             get => Data._unknown0x1B0;
             set
@@ -1260,7 +1260,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1B4
+        public int Unknown0x1B4
         {
             get => Data._unknown0x1B4;
             set
@@ -1271,7 +1271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1B8
+        public int Unknown0x1B8
         {
             get => Data._unknown0x1B8;
             set
@@ -1282,7 +1282,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1BC
+        public int Unknown0x1BC
         {
             get => Data._unknown0x1BC;
             set
@@ -1293,7 +1293,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1C0
+        public int Unknown0x1C0
         {
             get => Data._unknown0x1C0;
             set
@@ -1304,7 +1304,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1C4
+        public int Unknown0x1C4
         {
             get => Data._unknown0x1C4;
             set
@@ -1315,7 +1315,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1C8
+        public int Unknown0x1C8
         {
             get => Data._unknown0x1C8;
             set
@@ -1326,7 +1326,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1CC
+        public int Unknown0x1CC
         {
             get => Data._unknown0x1CC;
             set
@@ -1337,7 +1337,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1D0
+        public int Unknown0x1D0
         {
             get => Data._unknown0x1D0;
             set
@@ -1348,7 +1348,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public uint Unknown0x1D4
+        public int Unknown0x1D4
         {
             get => Data._unknown0x1D4;
             set
@@ -1358,35 +1358,40 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public uint Unknown0x1D8
+        private TriggerDataClass _trigger1;
+        [Category("GMOT")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger1
         {
-            get => Data._unknown0x1D8;
+            get => _trigger1;
             set
             {
-                Data._unknown0x1D8 = value;
+                _trigger1 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public uint Unknown0x1DC
+        private TriggerDataClass _trigger2;
+        [Category("GMOT")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger2
         {
-            get => Data._unknown0x1DC;
-            set
-            {
-                Data._unknown0x1DC = value;
+            get => _trigger2;
+            set {
+                _trigger2 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public uint Unknown0x1E0
+        private TriggerDataClass _trigger3;
+        [Category("GMOT")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass Trigger3
         {
-            get => Data._unknown0x1E0;
+            get => _trigger3;
             set
             {
-                Data._unknown0x1E0 = value;
+                _trigger3 = value;
                 SignalPropertyChange();
             }
         }
@@ -1394,6 +1399,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public GMOTEntryNode()
         {
             Data = new GMOTEntry();
+            _trigger1 = new TriggerDataClass(this);
+            _trigger2 = new TriggerDataClass(this);
+            _trigger3 = new TriggerDataClass(this);
         }
         
         public override int OnCalculateSize(bool force)
@@ -1404,13 +1412,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             Data = *Header;
-
+            _trigger1 = new TriggerDataClass(this, Data._trigger1);
+            _trigger2 = new TriggerDataClass(this, Data._trigger2);
+            _trigger3 = new TriggerDataClass(this, Data._trigger3);
             return false;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             GMOTEntry* hdr = (GMOTEntry*)address;
+            Data._trigger1 = _trigger1;
+            Data._trigger2 = _trigger2;
+            Data._trigger3 = _trigger3;
             *hdr = Data;
         }
     }

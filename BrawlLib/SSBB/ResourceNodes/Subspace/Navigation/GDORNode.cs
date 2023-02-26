@@ -314,6 +314,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
         
         [Category("Door")]
+        [TypeConverter(typeof(HexIntConverter))]
         public int SoundID
         {
             get => Data._soundId;
