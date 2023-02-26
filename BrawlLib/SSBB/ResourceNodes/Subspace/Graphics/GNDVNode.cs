@@ -8,6 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public class GNDVNode : BLOCEntryNode
     {
         public override Type SubEntryType => typeof(GNDVEntryNode);
+        protected override string baseName => "Node Visibility";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
