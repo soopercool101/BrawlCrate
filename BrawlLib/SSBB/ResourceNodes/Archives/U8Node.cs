@@ -96,7 +96,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     while (t != null)
                     {
                         t.Parent = x;
-                        if (t._u8Index + 1 < nodes.Count && t.ChildEndIndex != nodes[t._u8Index + 1]._u8Index)
+                        if (t._u8Index + 1 < nodes.Count && x.ChildEndIndex - 1 != nodes[t._u8Index + 1]._u8Index)
                         {
                             t = nodes[t._u8Index + 1];
                         }
@@ -172,11 +172,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                     parentIndex = ((U8EntryNode) node.Parent)._u8Index;
                 }
 
-                if (index < node.Parent?.Children.Count)
-                {
-                    if (node.Parent.Children[index] is U8EntryNode u8en)
+                ResourceNode nextParent = node.Parent;
+                int curIndex = index;
+                while (nextParent != null && nextParent != this)
+                { 
+                    if (curIndex < nextParent?.Children.Count && nextParent.Children[curIndex] is U8EntryNode u8en)
                     {
                         endIndex = u8en._u8Index;
+                        break;
+                    }
+                    else
+                    {
+                        curIndex = ((U8EntryNode)nextParent)._u8Index - 1;
+                        nextParent = nextParent.Parent;
                     }
                 }
 
