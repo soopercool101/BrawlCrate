@@ -1052,6 +1052,10 @@ namespace BrawlCrate.UI
                         maxZ = aMaxZ;
                     }
                 }
+                else if (resource is CollisionNode collNode)
+                {
+                    Instance.modelPanel1.AddTarget(collNode, false);
+                }
             }
 
             // Use stage position to determine boundaries programatically
