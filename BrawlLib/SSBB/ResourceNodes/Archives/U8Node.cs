@@ -183,7 +183,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                     else
                     {
-                        curIndex = ((U8EntryNode)nextParent).Index - 1;
+                        curIndex = ((U8EntryNode)nextParent).Index + 1;
                         nextParent = nextParent.Parent;
                     }
                 }
