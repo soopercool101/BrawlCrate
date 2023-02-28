@@ -36,7 +36,7 @@ namespace BrawlCrate.NodeWrappers
         static REFTWrapper()
         {
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("Import Texture", null, NewEntryAction, Keys.Control | Keys.I));
+            _menu.Items.Add(new ToolStripMenuItem("Import Textures", null, NewEntryAction, Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -90,16 +90,19 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportTexture()
         {
-            if (Program.OpenFile(FileFilters.Images, out string path))
+            if (Program.OpenFiles(FileFilters.Images, out string[] paths) > 0)
             {
-                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                foreach (string path in paths)
                 {
-                    dlg.ImageSource = path;
-                    if (dlg.ShowDialog(MainForm.Instance, Resource as REFTNode) == DialogResult.OK)
+                    using (TextureConverterDialog dlg = new TextureConverterDialog())
                     {
-                        BaseWrapper w = FindResource(dlg.REFTTextureNode, true);
-                        w.EnsureVisible();
-                        w.TreeView.SelectedNode = w;
+                        dlg.ImageSource = path;
+                        if (dlg.ShowDialog(MainForm.Instance, Resource as REFTNode) == DialogResult.OK)
+                        {
+                            BaseWrapper w = FindResource(dlg.REFTTextureNode, true);
+                            w.EnsureVisible();
+                            w.TreeView.SelectedNode = w;
+                        }
                     }
                 }
             }
