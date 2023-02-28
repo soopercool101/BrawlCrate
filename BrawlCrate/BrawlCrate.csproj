@@ -292,7 +292,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="IronPython" Version="2.7.11" />
+    <PackageReference Include="IronPython" Version="3.4.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
