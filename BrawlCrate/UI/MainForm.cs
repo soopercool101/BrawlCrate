@@ -1445,6 +1445,11 @@ namespace BrawlCrate.UI
             }
         }
 
+        private void openApiFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(Program.ApiPath);
+        }
+
         public void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BrawlAPIInternal.Plugins.Clear();
@@ -1594,6 +1599,7 @@ namespace BrawlCrate.UI
             this.stageManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorAPI = new System.Windows.Forms.ToolStripSeparator();
             this.runScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openApiFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1920,6 +1926,7 @@ namespace BrawlCrate.UI
                 this.managersToolStripMenuItem,
                 this.toolStripSeparatorAPI,
                 this.runScriptToolStripMenuItem,
+                this.openApiFolderToolStripMenuItem,
                 this.reloadPluginsToolStripMenuItem
             });
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
@@ -1987,6 +1994,13 @@ namespace BrawlCrate.UI
             this.runScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.runScriptToolStripMenuItem.Text = "Run Script...";
             this.runScriptToolStripMenuItem.Click += new System.EventHandler(this.runScriptToolStripMenuItem_Click);
+            // 
+            // openApiFolderToolStripMenuItem
+            // 
+            this.openApiFolderToolStripMenuItem.Name = "openApiFolderToolStripMenuItem";
+            this.openApiFolderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openApiFolderToolStripMenuItem.Text = "Open API Folder";
+            this.openApiFolderToolStripMenuItem.Click += new System.EventHandler(this.openApiFolderToolStripMenuItem_Click);
             // 
             // reloadPluginsToolStripMenuItem
             // 
@@ -2466,6 +2480,7 @@ namespace BrawlCrate.UI
         private ToolStripMenuItem pluginToolStripMenuItem;
         private ToolStripSeparator toolStripSeparatorAPI;
         private ToolStripMenuItem runScriptToolStripMenuItem;
+        private ToolStripMenuItem openApiFolderToolStripMenuItem;
         private ToolStripMenuItem reloadPluginsToolStripMenuItem;
         private ToolStripMenuItem showChangelogToolStripMenuItem;
 
