@@ -1338,9 +1338,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             return null;
         }
 
+        public ResourceNode FindChild(string path)
+        {
+            return FindChild(path, false);
+        }
+
         public ResourceNode FindChild(string path, bool searchChildren)
         {
             return FindChild(path, searchChildren, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public ResourceNode FindChild(string path, StringComparison compare)
+        {
+            return FindChild(path, false, compare);
         }
 
         public ResourceNode FindChild(string path, bool searchChildren, StringComparison compare)
