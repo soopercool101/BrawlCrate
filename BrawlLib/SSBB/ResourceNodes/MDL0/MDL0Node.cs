@@ -1,5 +1,4 @@
-﻿using Assimp;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
 using BrawlLib.Internal;
 using BrawlLib.Internal.IO;
 using BrawlLib.Internal.Windows.Controls.Model_Panel;
@@ -2645,17 +2644,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static MDL0Node FromFile(string path, FileOptions options = FileOptions.RandomAccess)
         {
-            switch (Path.GetExtension(path).ToLower())
+            if (path.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
             {
-                case ".fbx":
-                case ".dae":
-                    AssimpContext importer = new AssimpContext();
-                    Scene model = importer.ImportFile(path);
-                    var s = importer.GetSupportedExportFormats();
-                    var converted = $"C:\\git\\{Path.GetFileNameWithoutExtension(path)}.dae";
-                    importer.ExportFile(model, converted, "collada");
-                    return new Collada { Text = $"Import Settings - {Path.GetFileName(path)}" }.ShowDialog(converted,
-                        Collada.ImportType.MDL0) as MDL0Node;
+                return new Collada {Text = $"Import Settings - {Path.GetFileName(path)}"}.ShowDialog(path,
+                    Collada.ImportType.MDL0) as MDL0Node;
             }
 
             if (path.EndsWith(".pmd", StringComparison.OrdinalIgnoreCase))
