@@ -2467,7 +2467,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enableExtents = props->_enableExtents != 0;
                 _envMtxMode = props->_envMtxMode;
 
-                if (props->_origPathOffset > 0 && props->_origPathOffset > header->_header._size)
+                if (props->_origPathOffset > 0 && props->_origPathOffset < WorkingUncompressed.Length)
                 {
                     _originalPath = props->OrigPath;
                 }
