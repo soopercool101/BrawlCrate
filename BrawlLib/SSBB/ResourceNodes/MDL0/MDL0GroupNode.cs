@@ -133,7 +133,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            //Special handling for bones and objects
+            //Special handling for bones, objects, and materials
             if (_type == MDLResourceType.Bones)
             {
                 //Bones have been parsed from raw data as a flat list.
@@ -448,6 +448,35 @@ namespace BrawlLib.SSBB.ResourceNodes
                     //    ((MDL0Node)Parent)._errors.Add("Object " + m.Index + " has texture matrices and non-float vertices, meaning it will explode in-game.");
                     //    m.SignalPropertyChange();
                     //}
+                }
+            }
+            else if (_type == MDLResourceType.Materials)
+            {
+                foreach (var mat in Children)
+                {
+                    foreach (var matEntry in mat.Children)
+                    {
+                        if (matEntry is MDL0MaterialRefNode mRef)
+                        {
+                            bool foundError = false;
+                            if (mRef.Scale.X == 0)
+                            {
+                                mRef.Scale = new Vector2(1, mRef.Scale.Y);
+                                foundError = true;
+                            }
+
+                            if (mRef.Scale.Y == 0)
+                            {
+                                mRef.Scale = new Vector2(mRef.Scale.X, 1);
+                                foundError = true;
+                            }
+
+                            if (foundError)
+                            {
+                                model._errors.Add($"Material Reference {mRef.Name} had incorrect texture scale");
+                            }
+                        }
+                    }
                 }
             }
         }
