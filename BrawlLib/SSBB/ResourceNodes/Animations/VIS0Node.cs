@@ -16,6 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.VIS0;
         public override Type[] AllowedChildTypes => new Type[] {typeof(VIS0EntryNode)};
         public override int[] SupportedVersions => new int[] {3, 4};
+        public override string Tag => "VIS0";
 
         public VIS0Node()
         {

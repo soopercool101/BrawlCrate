@@ -20,6 +20,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.CHR0;
         public override Type[] AllowedChildTypes => new Type[] {typeof(CHR0EntryNode)};
         public override int[] SupportedVersions => new int[] {4, 5};
+        public override string Tag => "CHR0";
 
         public CHR0Node()
         {

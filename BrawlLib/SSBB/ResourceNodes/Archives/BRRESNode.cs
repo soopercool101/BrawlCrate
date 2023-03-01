@@ -1040,6 +1040,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public virtual int[] SupportedVersions => new int[0];
 
+        public virtual string Tag { get; }
+
         public int _version;
         public string _originalPath;
         internal UserDataCollection _userEntries = new UserDataCollection();
@@ -1107,6 +1109,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             _userEntries = new UserDataCollection();
             _version = CommonHeader->_version;
             SetSizeInternal(CommonHeader->_size);
+            if (!string.IsNullOrEmpty(Tag) && !WorkingUncompressed.Tag.Equals(Tag))
+            {
+                SignalPropertyChange();
+            }
             return false;
         }
 

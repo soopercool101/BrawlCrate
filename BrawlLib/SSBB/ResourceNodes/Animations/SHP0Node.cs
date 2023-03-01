@@ -19,6 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.SHP0;
         public override Type[] AllowedChildTypes => new Type[] {typeof(SHP0EntryNode)};
         public override int[] SupportedVersions => new int[] {3, 4};
+        public override string Tag => "SHP0";
 
         public SHP0Node()
         {

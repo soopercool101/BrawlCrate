@@ -16,6 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.PLT0;
         public override int DataAlign => 0x20;
         public override int[] SupportedVersions => new int[] {1, 3};
+        public override string Tag => "PLT0";
 
         public PLT0Node()
         {

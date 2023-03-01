@@ -26,6 +26,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => SharesData ? ResourceType.SharedTEX0 : ResourceType.TEX0;
         public override int DataAlign => 0x20;
         public override int[] SupportedVersions => new int[] {1, 2, 3};
+        public override string Tag => "TEX0";
 
         public TEX0Node()
         {

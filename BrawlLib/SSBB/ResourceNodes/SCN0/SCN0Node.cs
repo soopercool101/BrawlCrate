@@ -11,6 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal SCN0v5* Header5 => (SCN0v5*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SCN0;
         public override int[] SupportedVersions => new int[] {4, 5};
+        public override string Tag => "SCN0";
 
         public SCN0Node()
         {

@@ -18,6 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.SRT0;
         public override Type[] AllowedChildTypes => new Type[] {typeof(SRT0EntryNode)};
         public override int[] SupportedVersions => new int[] {4, 5};
+        public override string Tag => "SRT0";
 
         public SRT0Node()
         {

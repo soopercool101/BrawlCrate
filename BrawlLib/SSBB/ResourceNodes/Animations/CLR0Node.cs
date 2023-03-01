@@ -17,6 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.CLR0;
         public override Type[] AllowedChildTypes => new Type[] {typeof(CLR0MaterialNode)};
         public override int[] SupportedVersions => new int[] {3, 4};
+        public override string Tag => "CLR0";
 
         public CLR0Node()
         {

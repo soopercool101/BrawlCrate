@@ -19,6 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.PAT0;
         public override Type[] AllowedChildTypes => new Type[] {typeof(PAT0EntryNode)};
         public override int[] SupportedVersions => new int[] {3, 4};
+        public override string Tag => "PAT0";
 
         internal List<string> _textureFiles = new List<string>();
         internal List<string> _paletteFiles = new List<string>();
