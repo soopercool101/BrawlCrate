@@ -887,57 +887,47 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void GetFileType()
         {
-            if (_name == "Textures(NW4R)" || Children[0] is TEX0Node)
+            if (_name == "Textures(NW4R)" || (Children.Count > 0 && Children[0] is TEX0Node))
             {
                 Type = BRESGroupType.Textures;
             }
-
-            if (_name == "Palettes(NW4R)" || Children[0] is PLT0Node)
+            else if (_name == "Palettes(NW4R)" || (Children.Count > 0 && Children[0] is PLT0Node))
             {
                 Type = BRESGroupType.Palettes;
             }
-
-            if (_name == "3DModels(NW4R)" || Children[0] is MDL0Node)
+            else if (_name == "3DModels(NW4R)" || (Children.Count > 0 && Children[0] is MDL0Node))
             {
                 Type = BRESGroupType.Models;
             }
-
-            if (_name == "AnmChr(NW4R)" || Children[0] is CHR0Node)
+            else if (_name == "AnmChr(NW4R)" || (Children.Count > 0 && Children[0] is CHR0Node))
             {
                 Type = BRESGroupType.CHR0;
             }
-
-            if (_name == "AnmClr(NW4R)" || Children[0] is CLR0Node)
+            else if (_name == "AnmClr(NW4R)" || (Children.Count > 0 && Children[0] is CLR0Node))
             {
                 Type = BRESGroupType.CLR0;
             }
-
-            if (_name == "AnmTexSrt(NW4R)" || Children[0] is SRT0Node)
+            else if (_name == "AnmTexSrt(NW4R)" || (Children.Count > 0 && Children[0] is SRT0Node))
             {
                 Type = BRESGroupType.SRT0;
             }
-
-            if (_name == "AnmShp(NW4R)" || Children[0] is SHP0Node)
+            else if (_name == "AnmShp(NW4R)" || (Children.Count > 0 && Children[0] is SHP0Node))
             {
                 Type = BRESGroupType.SHP0;
             }
-
-            if (_name == "AnmVis(NW4R)" || Children[0] is VIS0Node)
+            else if (_name == "AnmVis(NW4R)" || (Children.Count > 0 && Children[0] is VIS0Node))
             {
                 Type = BRESGroupType.VIS0;
             }
-
-            if (_name == "AnmScn(NW4R)" || Children[0] is SCN0Node)
+            else if (_name == "AnmScn(NW4R)" || (Children.Count > 0 && Children[0] is SCN0Node))
             {
                 Type = BRESGroupType.SCN0;
             }
-
-            if (_name == "AnmPat(NW4R)" || Children[0] is PAT0Node)
+            else if (_name == "AnmPat(NW4R)" || (Children.Count > 0 && Children[0] is PAT0Node))
             {
                 Type = BRESGroupType.PAT0;
             }
-
-            if (_name == "External" || Children[0] is RASDNode)
+            else if (_name == "External" || (Children.Count > 0 && Children[0] is RASDNode))
             {
                 Type = BRESGroupType.External;
             }
@@ -951,7 +941,42 @@ namespace BrawlLib.SSBB.ResourceNodes
                 BRESCommonHeader* hdr = (BRESCommonHeader*) group->First[i].DataAddress;
                 if (NodeFactory.FromAddress(this, hdr, hdr->_size) == null)
                 {
-                    new BRESEntryNode().Initialize(this, hdr, hdr->_size);
+                    switch (Type)
+                    {
+                        case BRESGroupType.Textures:
+                            new TEX0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.Models:
+                            new MDL0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.Palettes:
+                            new PLT0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.CHR0:
+                            new CHR0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.CLR0:
+                            new CLR0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.SHP0:
+                            new SHP0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.VIS0:
+                            new VIS0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.PAT0:
+                            new PAT0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.SCN0:
+                            new SCN0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        case BRESGroupType.SRT0:
+                            new SRT0Node().Initialize(this, hdr, hdr->_size);
+                            break;
+                        default:
+                            new BRESEntryNode().Initialize(this, hdr, hdr->_size);
+                            break;
+                    }
                 }
             }
 
