@@ -2471,6 +2471,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     _originalPath = props->OrigPath;
                 }
+                else if (props->_origPathOffset > 0)
+                {
+                    _errors.Add("Original path was found to be out of range");
+                }
             }
 
             (_userEntries = new UserDataCollection()).Read(header->UserData);

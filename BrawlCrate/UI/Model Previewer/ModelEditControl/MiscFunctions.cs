@@ -583,7 +583,7 @@ namespace BrawlCrate.UI.Model_Previewer.ModelEditControl
                     {
                         foreach (CollisionPlane plane in obj._planes)
                         {
-                            if (plane._type == CollisionPlaneType.Floor && plane.IsCharacters)
+                            if (plane._type == CollisionPlaneType.Floor && (plane.IsCharacters || (!plane.IsPokemonTrainer && !plane.IsItems)))
                             {
                                 if (plane.PointLeft._x <= v2._x && plane.PointRight._x >= v2._x)
                                 {
