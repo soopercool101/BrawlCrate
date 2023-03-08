@@ -459,11 +459,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                         if (matEntry is MDL0MaterialRefNode mRef)
                         {
                             bool foundError = false;
-                            if (mRef.Scale.X == 0)
-                            {
-                                mRef.Scale = new Vector2(1, mRef.Scale.Y);
-                                foundError = true;
-                            }
 
                             if (mRef.Scale.Y == 0)
                             {
