@@ -111,16 +111,12 @@ Default (Float): 960 (0x44700000)
 	/EndDescription
 0
 
-Rain Minimum Timer
-(Float) The minimum number of frames before rain can start.
-
+Onion Min Frames
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-Rain Maximum Timer
-(Float) The maximum number of frames before rain will start.
-
+Onion Max Frames
 Default (Float): 900 (0x44610000)
 	/EndDescription
 0
@@ -155,12 +151,12 @@ Default (Float): 30 (0x41F00000)
 	/EndDescription
 0
 
-0x07C
+Onion Leave Min Frames
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x080
+Onion Leave Max Frames
 Default (Float): 900 (0x44610000)
 	/EndDescription
 0
@@ -250,22 +246,22 @@ Default (Float): 180 (0x43340000)
 	/EndDescription
 0
 
-0x0C8
+Initial Rain Start Min Frames
 Default (Float): 1200 (0x44960000)
 	/EndDescription
 0
 
-0x0CC
+Initial Rain Start Max Frames
 Default (Float): 1800 (0x44E10000)
 	/EndDescription
 0
 
-0x0D0
+Rain Start Min Frames
 Default (Float): 1500 (0x44BB8000)
 	/EndDescription
 0
 
-0x0D4
+Rain Start Max Frames
 Default (Float): 2100 (0x45034000)
 	/EndDescription
 0
@@ -275,7 +271,7 @@ Default (Float): 0.65 (0x3F266666)
 	/EndDescription
 0
 
-0x0DC
+River Start Frames
 Default (Float): 120 (0x42F00000)
 	/EndDescription
 0
@@ -290,12 +286,12 @@ Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x0E8
+River Duration Min Frames
 Default (Float): 600 (0x44160000)
 	/EndDescription
 0
 
-0x0EC
+River Duration Max Frames
 Default (Float): 900 (0x44610000)
 	/EndDescription
 0
