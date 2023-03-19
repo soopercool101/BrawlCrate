@@ -161,35 +161,52 @@ namespace BrawlLib.SSBB.ResourceNodes
         private void RebuildNode(VoidPtr header, U8EntryNode node, ref U8Entry* entry, VoidPtr sTableStart,
                                  ref VoidPtr dataAddr, bool force)
         {
-            entry->_type = (byte) (node is U8FolderNode ? 1 : 0);
-            entry->_stringOffset.Value = checked((uint) ( _stringTable[node.Name] - sTableStart));
+            entry->_type = (byte)(node is U8FolderNode ? 1 : 0);
+            entry->_stringOffset.Value = checked((uint)(_stringTable[node.Name] - sTableStart));
             if (entry->_type == 1)
             {
                 int index = node.Index + 1, parentIndex = 0, endIndex = _entrySize / 12;
 
                 if (node.Parent != this && node.Parent != null)
                 {
-                    parentIndex = ((U8EntryNode) node.Parent)._u8Index;
+                    parentIndex = ((U8EntryNode)node.Parent)._u8Index;
                 }
 
                 ResourceNode nextParent = node.Parent;
+                ResourceNode rootFolder = nextParent;
                 int curIndex = index;
                 while (nextParent != null && nextParent != this)
-                { 
-                    if (curIndex < nextParent?.Children.Count && nextParent.Children[curIndex] is U8EntryNode u8en)
-                    {
-                        endIndex = u8en._u8Index;
-                        break;
-                    }
-                    else
-                    {
-                        curIndex = ((U8EntryNode)nextParent).Index + 1;
-                        nextParent = nextParent.Parent;
-                    }
+                {
+                    if (curIndex < nextParent?.Children.Count && nextParent.Children[curIndex] is U8EntryNode u8en) break;
+
+                    curIndex = ((U8EntryNode)nextParent).Index + 1;
+                    rootFolder = nextParent;
+                    nextParent = nextParent.Parent;
+
                 }
 
-                entry->_dataLength = (uint) endIndex;
-                entry->_dataOffset = (uint) parentIndex;
+                int folderIndex = index;
+                if (node.Parent.Children.Count == index)
+                {
+                    if (node.Parent is U8FolderNode)
+                    {
+                        folderIndex = rootFolder.Index + 1;
+                    }
+                    if (folderIndex < nextParent.Children.Count)
+                    {
+                        if (nextParent.Children[folderIndex] != null)
+                        {
+                            endIndex = ((U8EntryNode)nextParent.Children[folderIndex])._u8Index;
+                        }
+                    }
+                }
+                else
+                {
+                    endIndex = ((U8EntryNode)node.NextSibling())._u8Index;
+                }
+
+                entry->_dataLength = (uint)endIndex;
+                entry->_dataOffset = (uint)parentIndex;
                 entry++;
 
                 foreach (ResourceNode b in node.Children)
@@ -202,8 +219,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                entry->_dataOffset = checked((uint) (dataAddr - header));
-                entry->_dataLength = checked((uint) node._calcSize);
+                entry->_dataOffset = checked((uint)(dataAddr - header));
+                entry->_dataLength = checked((uint)node._calcSize);
                 entry++;
 
                 node.Rebuild(dataAddr, node._calcSize, force);
