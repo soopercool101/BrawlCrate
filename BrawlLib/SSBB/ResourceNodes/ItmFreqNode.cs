@@ -407,9 +407,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private short _action;
 
-        [DisplayName("Start Action")]
+        [DisplayName("Minimum to Spawn")]
         [Category("Item")]
-        [Description("Possible the spawning action of the item.")]
         public short Action
         {
             get => _action;
@@ -422,7 +421,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private short _subaction;
 
-        [DisplayName("Start Subaction")]
+        [DisplayName("Maximum to Spawn")]
         [Category("Item")]
         [Description("Possible the spawning subaction of the item.")]
         public short Subaction
