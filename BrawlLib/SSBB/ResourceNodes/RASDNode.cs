@@ -16,7 +16,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             //SetSizeInternal(Header->_header._length);
-            _name = "RASD" + Index;
             return false;
         }
 
