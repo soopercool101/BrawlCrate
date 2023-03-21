@@ -299,6 +299,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);
+        [TypeConverter(typeof(HexIntConverter))] [DisplayName("Index (Hex)")] public int HexIndex => Index;
         [Browsable(false)] public bool IsCompressed => _compression != CompressionType.None;
 
         //Properties or compression have changed
