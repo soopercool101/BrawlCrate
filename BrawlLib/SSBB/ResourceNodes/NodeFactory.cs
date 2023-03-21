@@ -199,6 +199,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode GetRaw(DataSource source, ResourceNode parent)
         {
+            if (source.Length <= 0)
+            {
+                return null;
+            }
             ResourceNode n;
 
             foreach (ResourceParser d in _parsers)

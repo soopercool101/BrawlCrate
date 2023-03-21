@@ -197,16 +197,19 @@ namespace BrawlLib.Internal.IO
                 mAccess = Win32._FileMapAccess.Read;
             }
 
-            using (Win32.SafeHandle h = Win32.CreateFileMapping(hFile, null, mProtect, maxHigh, maxLow, null))
+            if (length > 0)
             {
-                h.ErrorCheck();
-                _addr = Win32.MapViewOfFile(h.Handle, mAccess, (uint) (offset >> 32), (uint) offset, length);
-                if (!_addr)
+                using (Win32.SafeHandle h = Win32.CreateFileMapping(hFile, null, mProtect, maxHigh, maxLow, null))
                 {
-                    Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
-                }
+                    h.ErrorCheck();
+                    _addr = Win32.MapViewOfFile(h.Handle, mAccess, (uint)(offset >> 32), (uint)offset, length);
+                    if (!_addr)
+                    {
+                        Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
+                    }
 
-                _length = (int) length;
+                    _length = (int)length;
+                }
             }
         }
 

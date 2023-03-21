@@ -61,6 +61,10 @@ namespace BrawlLib.Wii
 
         public static CompressionType GetAlgorithm(VoidPtr addr, int length)
         {
+            if (length < 4)
+            {
+                return CompressionType.None;
+            }
             BinTag compTag = *(BinTag*) addr;
             if (compTag == YAZ0.Tag)
             {
