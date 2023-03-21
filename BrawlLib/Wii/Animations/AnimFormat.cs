@@ -72,71 +72,21 @@ namespace BrawlLib.Wii.Animations
                         file.WriteLine("  preInfinity constant;");
                         file.WriteLine("  postInfinity constant;");
                         file.WriteLine("  keys {");
-                        bool isOutFrame = false;
                         for (KeyframeEntry entry = array._keyRoot._next; entry != array._keyRoot; entry = entry._next)
                         {
-                            // skip if already used as Out tangent/value for previous entry
-                            if (isOutFrame)
-                            {
-                                isOutFrame = false;
-                                continue;
-                            }
-
-                            var value = entry._value;
-                            var valueOut = value;
-                            float angle = (float)Math.Atan(entry._tangent) * Maths._rad2degf;
-                            float angleOut = angle;
-
-                            // Two tangents same value
-                            if (entry._index == entry._next._index && entry._value == entry._next._value)
-                            {
-                                // Unique in and out tangents, same value
-                                angleOut = (float)Math.Atan(entry._next._tangent) * Maths._rad2degf;
-                                isOutFrame = true;
-                            }
-
-                            if (entry._index == entry._next._index && entry._value != entry._next._value)
-                            {
-                                // Unique in and out values
-                                valueOut = entry._next._value;
-                                angleOut = (float)Math.Atan(entry._next._tangent) * Maths._rad2degf;
-                                isOutFrame = true;
-
-                                file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8};",
-                                    entry._index,
-                                    value.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "fixed",
-                                    "linear",
-                                    "1",
-                                    "1",
-                                    "0",
-                                    angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "1");
-                                file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8};",
-                                    entry._index + ".001",
-                                    valueOut.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "linear",
-                                    "fixed",
-                                    "1",
-                                    "1",
-                                    "0",
-                                    angleOut.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "1");
-                            } else {
-                                // standard tangents
-                                file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
-                                    entry._index,
-                                    value.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "fixed",
-                                    "fixed",
-                                    "1",
-                                    "1",
-                                    "0",
-                                    angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "1",
-                                    angleOut.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "1");
-                            }
+                            float angle = (float) Math.Atan(entry._tangent) * Maths._rad2degf;
+                            file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
+                                entry._index,
+                                entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
+                                "fixed",
+                                "fixed",
+                                "1",
+                                "1",
+                                "0",
+                                angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
+                                "1",
+                                angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
+                                "1");
                         }
 
                         file.WriteLine("  }");
