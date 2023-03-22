@@ -276,7 +276,7 @@ namespace BrawlLib.Internal
             }
             else if (nullTerminated)
             {
-                ptr[name.Length - 1] = 0;
+                ptr[size - 1] = 0;
             }
 
             for (int j = name.Length; j < size; j++)
