@@ -73,100 +73,102 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ADSJEntryNode : ResourceNode
     {
-        internal ADSJEntry* Header => (ADSJEntry*) WorkingUncompressed.Address;
+        internal ADSJEntry Data;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        private string _doorID;
+        public override int MaxNameLength => 0x1F;
+        [Browsable(false)]
+        public override string Name
+        {
+            get => string.IsNullOrEmpty(JumpBone) ? "<null>" : JumpBone;
+            set
+            {
+                if (JumpBone == value)
+                {
+                    return;
+                }
+
+                JumpBone = value;
+            }
+        }
 
         [Category("Jump Info")]
         [DisplayName("Corrosponding GDOR")]
         public string DoorID
         {
-            get => _doorID;
+            get => Data.DoorID;
             set
             {
-                _doorID = value;
+                Data.DoorID = value;
                 SignalPropertyChange();
             }
         }
-
-        private string _sendingID;
 
         [Category("Jump Info")]
         [DisplayName("File ID (hex)")]
         public string SendingID
         {
-            get => _sendingID;
+            get => Data.SendStage;
             set
             {
-                _sendingID = value;
+                Data.SendStage = value;
                 SignalPropertyChange();
             }
         }
-
-        private string _jumpBone;
-
+        
         [Category("Jump Info")]
-        [DisplayName("Jump Bone?")]
+        [DisplayName("Jump Bone")]
         public string JumpBone
         {
-            get => _jumpBone;
+            get => Data.JumpBone;
             set
             {
-                _jumpBone = value;
-                Name = value;
+                Data.JumpBone = value;
                 SignalPropertyChange();
+                OnRenamed();
             }
         }
-
-        private byte _flag0;
-
+        
         [Category("Jump Flags")]
         public byte Flag0
         {
-            get => _flag0;
+            get => Data._unk0;
             set
             {
-                _flag0 = value;
+                Data._unk0 = value;
                 SignalPropertyChange();
             }
         }
-
-        private byte _flag1;
-
+        
         [Category("Jump Flags")]
         public byte Flag1
         {
-            get => _flag1;
+            get => Data._unk1;
             set
             {
-                _flag1 = value;
+                Data._unk1 = value;
                 SignalPropertyChange();
             }
         }
-
-        private byte _flag2;
 
         [Category("Jump Flags")]
         public byte Flag2
         {
-            get => _flag2;
+            get => Data._unk2;
             set
             {
-                _flag2 = value;
+                Data._unk2 = value;
                 SignalPropertyChange();
             }
         }
 
-        private sbyte _flag3;
-
         [Category("Jump Flags")]
         public sbyte Flag3
         {
-            get => _flag3;
+            get => Data._unk3;
             set
             {
-                _flag3 = value;
+                Data._unk3 = value;
                 SignalPropertyChange();
             }
         }
@@ -174,19 +176,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            _doorID = Header->DoorID;
-            _sendingID = Header->SendStage;
-            _jumpBone = Header->JumpBone;
-            _flag0 = Header->_unk0;
-            _flag1 = Header->_unk1;
-            _flag2 = Header->_unk2;
-            _flag3 = Header->_unk3;
-
-            if (_name == null)
-            {
-                _name = JumpBone;
-            }
-
+            Data = *(ADSJEntry*) WorkingUncompressed.Address;
             return false;
         }
 
@@ -198,14 +188,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             ADSJEntry* header = (ADSJEntry*) address;
-            *header = new ADSJEntry();
-            header->_unk0 = _flag0;
-            header->_unk1 = _flag1;
-            header->_unk2 = _flag2;
-            header->_unk3 = _flag3;
-            header->JumpBone = _jumpBone;
-            header->DoorID = _doorID;
-            header->SendStage = _sendingID;
+            *header = Data;
         }
     }
 }

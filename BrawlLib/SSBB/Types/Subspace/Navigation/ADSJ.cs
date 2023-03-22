@@ -130,28 +130,8 @@ namespace BrawlLib.SSBB.Types.Subspace.Navigation
 
         public string JumpBone
         {
-            get => new string((sbyte*) Address + 0x0C);
-            set
-            {
-                if (value == null)
-                {
-                    value = "";
-                }
-
-                fixed (sbyte* ptr = _jumpBone)
-                {
-                    int i = 0;
-                    while (i < 0x19 && i < value.Length)
-                    {
-                        ptr[i] = (sbyte) value[i++];
-                    }
-
-                    while (i < 0x20)
-                    {
-                        ptr[i++] = 0;
-                    }
-                }
-            }
+            get => Address.GetUTF8String(0x0C, 0x20);
+            set => Address.WriteUTF8String(value, true, 0x0C, 0x20);
         }
 
         public ADSJEntry(string Stage, string SendingID, string Bone)
