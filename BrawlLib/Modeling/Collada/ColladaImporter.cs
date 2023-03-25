@@ -69,7 +69,7 @@ namespace BrawlLib.Modeling.Collada
                     //Extract images, removing duplicates
                     foreach (ImageEntry img in shell._images)
                     {
-                        string name = !string.IsNullOrEmpty(img._path.Trim())
+                        string name = !string.IsNullOrEmpty(img._path?.Trim())
                             ? Path.GetFileNameWithoutExtension(img._path.Trim())
                             : img._name ?? img._id;
 
