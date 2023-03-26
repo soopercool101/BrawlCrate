@@ -120,6 +120,7 @@ namespace BrawlCrate.UI
             {ResourceType.MDef, Resources.MDef},
             {ResourceType.NoEditFolder, Resources.Folder},
             {ResourceType.NoEditEntry, Resources.Folder},
+            {ResourceType.NoEditItem, Resources.Unknown},
             {ResourceType.MDefAction, Resources.MDefAction},
             {ResourceType.MDefActionGroup, Resources.Folder},
             {ResourceType.MDefSubActionGroup, Resources.Folder},

@@ -83,12 +83,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return null;
             }
 
-            if (!header->GetEntryName(0).StartsWith("ty"))
-            {
-                return null;
-            }
-
-            return new TyDataNode();
+            return header->GetEntryName(0).StartsWith("ty") ? new TyDataNode() : null;
         }
 
         public override int OnCalculateSize(bool force)

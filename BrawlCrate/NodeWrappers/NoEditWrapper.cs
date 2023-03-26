@@ -5,6 +5,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.NoEditEntry)]
+    [NodeWrapper(ResourceType.NoEditItem)]
     public class NoEditEntryWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
