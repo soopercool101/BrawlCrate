@@ -495,7 +495,6 @@ namespace BrawlCrate.NodeWrappers
                         r.FileType = ARCFileType.MiscData;
                     }
                     Resource.AddChild(n);
-                    n.Replace(path);
                     n.Name = "Misc Data [0]";
                 }
             }
