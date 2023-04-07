@@ -243,7 +243,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             Data = *(TBCLEntry*) WorkingUncompressed.Address;
-            
+
             return false;
         }
 
