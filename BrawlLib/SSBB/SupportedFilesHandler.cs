@@ -116,6 +116,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Stage Tracklist", "tlst"),
             new SupportedFileInfo(true, "Adventure Character Selection B", "selb"),
             new SupportedFileInfo(true, "Adventure Character Selection C", "selc"),
+            new SupportedFileInfo(true, "Item Override", "itov"),
 
             //The following files are not for direct editing
 

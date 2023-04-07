@@ -42,7 +42,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return null;
                 }
 
-                return new string((sbyte*) Address);
+                return Address.GetUTF8String(0, 4);
             }
         }
 
