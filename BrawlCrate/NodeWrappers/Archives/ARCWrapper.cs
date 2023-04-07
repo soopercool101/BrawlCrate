@@ -489,10 +489,14 @@ namespace BrawlCrate.NodeWrappers
             {
                 foreach (string path in paths)
                 {
-                    ARCEntryNode r = new ARCEntryNode { FileType = ARCFileType.MiscData };
-                    Resource.AddChild(r);
-                    r.Replace(path);
-                    r.Name = "Misc Data [0]";
+                    ResourceNode n = NodeFactory.FromFile(null, path);
+                    if (n is ARCEntryNode r)
+                    {
+                        r.FileType = ARCFileType.MiscData;
+                    }
+                    Resource.AddChild(n);
+                    n.Replace(path);
+                    n.Name = "Misc Data [0]";
                 }
             }
         }
