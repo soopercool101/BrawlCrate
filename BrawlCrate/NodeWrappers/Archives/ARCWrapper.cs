@@ -3,6 +3,7 @@ using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
@@ -45,20 +46,12 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("BLOC", null, NewBLOCAction),
                 new ToolStripMenuItem("BRResource Pack", null, NewBRESAction),
                 new ToolStripMenuItem("Collision", null, NewCollisionAction),
+                new ToolStripMenuItem("Item Override", null, NewITOVAction),
                 new ToolStripMenuItem("MSBin", null, NewMSBinAction),
                 new ToolStripMenuItem("Redirect", null, NewRedirectAction),
                 new ToolStripMenuItem("Stage Collision Attributes", null, NewSCLAAction),
                 new ToolStripMenuItem("Stage Parameters", null, NewSTPMAction),
-                new ToolStripMenuItem("Stage Table", null,
-                    new ToolStripMenuItem("STDT", null, NewStageTableAction<STDTNode>)
-                    //new ToolStripMenuItem("TBCL", null, NewStageTableAction<TBCLNode>),
-                    //new ToolStripMenuItem("TBGC", null, NewStageTableAction<TBGCNode>),
-                    //new ToolStripMenuItem("TBGD", null, NewStageTableAction<TBGDNode>),
-                    //new ToolStripMenuItem("TBGM", null, NewStageTableAction<TBGMNode>),
-                    //new ToolStripMenuItem("TBLV", null, NewStageTableAction<TBLVNode>),
-                    //new ToolStripMenuItem("TBRM", null, NewStageTableAction<TBRMNode>),
-                    //new ToolStripMenuItem("TBST", null, NewStageTableAction<TBSTNode>)
-                ),
+                new ToolStripMenuItem("STDT", null, NewStageTableAction<STDTNode>),
                 new ToolStripMenuItem("Stepjump", null, NewADSJAction)
             ));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
@@ -67,20 +60,12 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("BRResource Pack", null, ImportBRESAction),
                 new ToolStripMenuItem("Collision", null, ImportCollisionAction),
                 new ToolStripMenuItem("Havok Data", null, ImportHavokAction),
+                new ToolStripMenuItem("Item Override", null, ImportITOVAction),
                 new ToolStripMenuItem("MSBin", null, ImportMSBinAction),
                 new ToolStripMenuItem("Raw Binary Data", null, ImportBinaryAction),
                 new ToolStripMenuItem("Stage Collision Attributes", null, ImportSCLAAction),
                 new ToolStripMenuItem("Stage Parameters", null, ImportSTPMAction),
-                new ToolStripMenuItem("Stage Table", null,
-                    new ToolStripMenuItem("STDT", null, ImportSTDTAction)
-                    //new ToolStripMenuItem("TBCL", null, ImportTBCLAction),
-                    //new ToolStripMenuItem("TBGC", null, ImportTBGCAction),
-                    //new ToolStripMenuItem("TBGD", null, ImportTBGDAction),
-                    //new ToolStripMenuItem("TBGM", null, ImportTBGMAction),
-                    //new ToolStripMenuItem("TBLV", null, ImportTBLVAction),
-                    //new ToolStripMenuItem("TBRM", null, ImportTBRMAction),
-                    //new ToolStripMenuItem("TBST", null, ImportTBSTAction)
-                ),
+                new ToolStripMenuItem("STDT", null, ImportSTDTAction),
                 new ToolStripMenuItem("Stepjump", null, ImportADSJAction)
             ));
             _menu.Items.Add(new ToolStripSeparator());
@@ -140,6 +125,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void NewADSJAction(object sender, EventArgs e)
         {
             GetInstance<ARCWrapper>().NewADSJ();
+        }
+
+        protected static void NewITOVAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewITOV();
         }
 
         protected static void NewStageTableAction<T>(object sender, EventArgs e) where T : StageTableNode, new()
@@ -248,6 +238,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<ARCWrapper>().ImportHavok();
         }
 
+        protected static void ImportITOVAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportITOV();
+        }
+
         protected static void PreviewAllAction(object sender, EventArgs e)
         {
             GetInstance<ARCWrapper>().PreviewAll();
@@ -310,6 +305,7 @@ namespace BrawlCrate.NodeWrappers
         {
             BRRESNode node = new BRRESNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
+            node.UpdateName();
 
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
@@ -321,6 +317,7 @@ namespace BrawlCrate.NodeWrappers
         {
             CollisionNode node = new CollisionNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
+            node.UpdateName();
 
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
@@ -332,6 +329,7 @@ namespace BrawlCrate.NodeWrappers
         {
             BLOCNode node = new BLOCNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
+            node.UpdateName();
 
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
@@ -343,6 +341,7 @@ namespace BrawlCrate.NodeWrappers
         {
             MSBinNode node = new MSBinNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
+            node.UpdateName();
 
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
@@ -354,6 +353,7 @@ namespace BrawlCrate.NodeWrappers
         {
             SCLANode node = new SCLANode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
+            node.UpdateName();
 
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
@@ -365,6 +365,7 @@ namespace BrawlCrate.NodeWrappers
         {
             STPMNode node = new STPMNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
+            node.UpdateName();
 
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
@@ -376,6 +377,19 @@ namespace BrawlCrate.NodeWrappers
         {
             ADSJNode node = new ADSJNode { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
+            node.UpdateName();
+
+            BaseWrapper w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public ITOVNode NewITOV()
+        {
+            ITOVNode node = new ITOVNode { FileType = ARCFileType.MiscData, FileIndex = 20000 };
+            _resource.AddChild(node);
+            node.UpdateName();
 
             BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
@@ -496,6 +510,10 @@ namespace BrawlCrate.NodeWrappers
                     }
                     Resource.AddChild(n);
                     n.Name = "Misc Data [0]";
+
+                    BaseWrapper w = FindResource(n, false);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
                 }
             }
         }
@@ -628,6 +646,17 @@ namespace BrawlCrate.NodeWrappers
                 foreach (string path in paths)
                 {
                     NewADSJ().Replace(path);
+                }
+            }
+        }
+
+        public void ImportITOV()
+        {
+            if (Program.OpenFiles(FileFilters.ITOV, out string[] paths) > 0)
+            {
+                foreach (string path in paths)
+                {
+                    NewITOV().Replace(path);
                 }
             }
         }

@@ -211,6 +211,9 @@ namespace BrawlLib.SSBB
         public static string TLST =
             SupportedFilesHandler.GetCompleteFilter("tlst");
 
+        public static string ITOV =
+            SupportedFilesHandler.GetCompleteFilter("itov");
+
         public static string APIScripts =
             SupportedFilesHandler.GetCompleteFilter("py", "fsx");
 
