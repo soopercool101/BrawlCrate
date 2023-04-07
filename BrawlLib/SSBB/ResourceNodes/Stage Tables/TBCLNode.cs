@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.ProjectPlus;
 using BrawlLib.SSBB.Types.Stage_Tables;
 using System;
 using System.ComponentModel;
@@ -18,290 +19,220 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TBCLEntryNode : ResourceNode
     {
-        public byte _count;
+        public TBCLEntry Data = new TBCLEntry
+        {
+            _unknown0x04 = -1,
+            _unknown0x08 = -1,
+            _unknown0x0C = -1,
+            _unknown0x10 = -1,
+            _unknown0x14 = -1,
+            _unknown0x18 = -1,
+            _unknown0x1C = -1,
+            _unknown0x20 = -1,
+            _unknown0x24 = -1,
+            _unknown0x28 = -1,
+            _unknown0x2C = -1,
+            _unknown0x30 = -1,
+            _unknown0x34 = -1,
+            _unknown0x38 = -1
+        };
 
         [Category("TBCL Entry")]
         public byte Count
         {
-            get => _count;
+            get => Data._count;
             set
             {
-                _count = value;
+                Data._count = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj1;
+        
+        [Category("TBCL Entry")]
+        public float Unknown0x04
+        {
+            get => Data._unknown0x04;
+            set
+            {
+                Data._unknown0x04 = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 1")]
-        public float CollisionObject1
+        public float Unknown0x08
         {
-            get => _collObj1;
+            get => Data._unknown0x08;
             set
             {
-                _collObj1 = value;
+                Data._unknown0x08 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj2;
+        
+        [Category("TBCL Entry")]
+        public float Unknown0x0C
+        {
+            get => Data._unknown0x0C;
+            set
+            {
+                Data._unknown0x0C = value;
+                SignalPropertyChange();
+            }
+        }
+        
+        [Category("TBCL Entry")]
+        public float Unknown0x10
+        {
+            get => Data._unknown0x10;
+            set
+            {
+                Data._unknown0x10 = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 2")]
-        public float CollisionObject2
+        public float Unknown0x14
         {
-            get => _collObj2;
+            get => Data._unknown0x14;
             set
             {
-                _collObj2 = value;
+                Data._unknown0x14 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj3;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 3")]
-        public float CollisionObject3
+        public float Unknown0x18
         {
-            get => _collObj3;
+            get => Data._unknown0x18;
             set
             {
-                _collObj3 = value;
+                Data._unknown0x18 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj4;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 4")]
-        public float CollisionObject4
+        public float Unknown0x1C
         {
-            get => _collObj4;
+            get => Data._unknown0x1C;
             set
             {
-                _collObj4 = value;
+                Data._unknown0x1C = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj5;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 5")]
-        public float CollisionObject5
+        public float Unknown0x20
         {
-            get => _collObj5;
+            get => Data._unknown0x20;
             set
             {
-                _collObj5 = value;
+                Data._unknown0x20 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj6;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 6")]
-        public float CollisionObject6
+        public float Unknown0x24
         {
-            get => _collObj6;
+            get => Data._unknown0x24;
             set
             {
-                _collObj6 = value;
+                Data._unknown0x24 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj7;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 7")]
-        public float CollisionObject7
+        public float Unknown0x28
         {
-            get => _collObj7;
+            get => Data._unknown0x28;
             set
             {
-                _collObj7 = value;
+                Data._unknown0x28 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj8;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 8")]
-        public float CollisionObject8
+        public float Unknown0x2C
         {
-            get => _collObj8;
+            get => Data._unknown0x2C;
             set
             {
-                _collObj8 = value;
+                Data._unknown0x2C = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj9;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 9")]
-        public float CollisionObject9
+        public float Unknown0x30
         {
-            get => _collObj9;
+            get => Data._unknown0x30;
             set
             {
-                _collObj9 = value;
+                Data._unknown0x30 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj10;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 10")]
-        public float CollisionObject10
+        public float Unknown0x34
         {
-            get => _collObj10;
+            get => Data._unknown0x34;
             set
             {
-                _collObj10 = value;
+                Data._unknown0x34 = value;
                 SignalPropertyChange();
             }
         }
-
-        public float _collObj11;
 
         [Category("TBCL Entry")]
-        [DisplayName("Collision Object 11")]
-        public float CollisionObject11
+        public float Unknown0x38
         {
-            get => _collObj11;
+            get => Data._unknown0x38;
             set
             {
-                _collObj11 = value;
+                Data._unknown0x38 = value;
                 SignalPropertyChange();
             }
         }
 
-        public float _collObj12;
-
-        [Category("TBCL Entry")]
-        [DisplayName("Collision Object 12")]
-        public float CollisionObject12
+        [Category("Unknown")]
+        public byte Unknown0x01
         {
-            get => _collObj12;
+            get => Data._unknown0x01;
             set
             {
-                _collObj12 = value;
+                Data._unknown0x01 = value;
                 SignalPropertyChange();
             }
         }
 
-        public float _collObj13;
-
-        [Category("TBCL Entry")]
-        [DisplayName("Collision Object 13")]
-        public float CollisionObject13
+        [Category("Unknown")]
+        public byte Unknown0x02
         {
-            get => _collObj13;
+            get => Data._unknown0x02;
             set
             {
-                _collObj13 = value;
+                Data._unknown0x02 = value;
                 SignalPropertyChange();
             }
         }
 
-        public float _collObj14;
-
-        [Category("TBCL Entry")]
-        [DisplayName("Collision Object 14")]
-        public float CollisionObject14
+        [Category("Unknown")]
+        public byte Unknown0x03
         {
-            get => _collObj14;
+            get => Data._unknown0x03;
             set
             {
-                _collObj14 = value;
+                Data._unknown0x03 = value;
                 SignalPropertyChange();
             }
-        }
-
-        [Browsable(false)]
-        public float[] CollisionObjects =>
-            new[]
-            {
-                CollisionObject1,
-                CollisionObject2,
-                CollisionObject3,
-                CollisionObject4,
-                CollisionObject5,
-                CollisionObject6,
-                CollisionObject7,
-                CollisionObject8,
-                CollisionObject9,
-                CollisionObject10,
-                CollisionObject11,
-                CollisionObject12,
-                CollisionObject13,
-                CollisionObject14
-            };
-
-        public byte _unk0x1;
-
-        [Category("TBCL Entry")]
-        public byte Unknown0x1
-        {
-            get => _unk0x1;
-            set
-            {
-                _unk0x1 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public byte _unk0x2;
-
-        [Category("TBCL Entry")]
-        public byte Unknown0x2
-        {
-            get => _unk0x2;
-            set
-            {
-                _unk0x2 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public byte _unk0x3;
-
-        [Category("TBCL Entry")]
-        public byte Unknown0x3
-        {
-            get => _unk0x3;
-            set
-            {
-                _unk0x3 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public TBCLEntryNode()
-        {
-            _collObj1 = -1;
-            _collObj2 = -1;
-            _collObj3 = -1;
-            _collObj4 = -1;
-            _collObj5 = -1;
-            _collObj6 = -1;
-            _collObj7 = -1;
-            _collObj8 = -1;
-            _collObj9 = -1;
-            _collObj10 = -1;
-            _collObj11 = -1;
-            _collObj12 = -1;
-            _collObj13 = -1;
-            _collObj14 = -1;
         }
 
         public override int OnCalculateSize(bool force)
@@ -311,51 +242,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            TBCLEntry* header = (TBCLEntry*) WorkingUncompressed.Address;
-
-            _count = header->_count;
-            _unk0x1 = header->_unk0x1;
-            _unk0x2 = header->_unk0x2;
-            _unk0x3 = header->_unk0x3;
-            _collObj1 = header->_collObj1;
-            _collObj2 = header->_collObj2;
-            _collObj3 = header->_collObj3;
-            _collObj4 = header->_collObj4;
-            _collObj5 = header->_collObj5;
-            _collObj6 = header->_collObj6;
-            _collObj7 = header->_collObj7;
-            _collObj8 = header->_collObj8;
-            _collObj9 = header->_collObj9;
-            _collObj10 = header->_collObj10;
-            _collObj11 = header->_collObj11;
-            _collObj12 = header->_collObj12;
-            _collObj13 = header->_collObj13;
-            _collObj14 = header->_collObj14;
-
+            Data = *(TBCLEntry*) WorkingUncompressed.Address;
+            
             return false;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            TBCLEntry* hdr = (TBCLEntry*) address;
-            hdr->_count = _count;
-            hdr->_unk0x1 = _unk0x1;
-            hdr->_unk0x2 = _unk0x2;
-            hdr->_unk0x3 = _unk0x3;
-            hdr->_collObj1 = _collObj1;
-            hdr->_collObj2 = _collObj2;
-            hdr->_collObj3 = _collObj3;
-            hdr->_collObj4 = _collObj4;
-            hdr->_collObj5 = _collObj5;
-            hdr->_collObj6 = _collObj6;
-            hdr->_collObj7 = _collObj7;
-            hdr->_collObj8 = _collObj8;
-            hdr->_collObj9 = _collObj9;
-            hdr->_collObj10 = _collObj10;
-            hdr->_collObj11 = _collObj11;
-            hdr->_collObj12 = _collObj12;
-            hdr->_collObj13 = _collObj13;
-            hdr->_collObj14 = _collObj14;
+            *(TBCLEntry*) address = Data;
         }
     }
 }

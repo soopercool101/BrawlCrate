@@ -8,23 +8,23 @@ namespace BrawlLib.SSBB.Types.Stage_Tables
     {
         public const int Size = 0x3C;
 
-        public byte _count;       // 0x0
-        public byte _unk0x1;      // 0x1
-        public byte _unk0x2;      // 0x2
-        public byte _unk0x3;      // 0x3
-        public bfloat _collObj1;  // 0x4
-        public bfloat _collObj2;  // 0x8
-        public bfloat _collObj3;  // 0xC
-        public bfloat _collObj4;  // 0x10
-        public bfloat _collObj5;  // 0x10
-        public bfloat _collObj6;  // 0x14
-        public bfloat _collObj7;  // 0x18
-        public bfloat _collObj8;  // 0x1C
-        public bfloat _collObj9;  // 0x20
-        public bfloat _collObj10; // 0x24
-        public bfloat _collObj11; // 0x28
-        public bfloat _collObj12; // 0x2C
-        public bfloat _collObj13; // 0x30
-        public bfloat _collObj14; // 0x34
+        public byte _count;         // 0x00
+        public byte _unknown0x01;   // 0x01
+        public byte _unknown0x02;   // 0x02
+        public byte _unknown0x03;   // 0x03
+        public bfloat _unknown0x04; // 0x04
+        public bfloat _unknown0x08; // 0x08
+        public bfloat _unknown0x0C; // 0x0C
+        public bfloat _unknown0x10; // 0x10
+        public bfloat _unknown0x14; // 0x14
+        public bfloat _unknown0x18; // 0x18
+        public bfloat _unknown0x1C; // 0x1C
+        public bfloat _unknown0x20; // 0x20
+        public bfloat _unknown0x24; // 0x24
+        public bfloat _unknown0x28; // 0x28
+        public bfloat _unknown0x2C; // 0x2C
+        public bfloat _unknown0x30; // 0x30
+        public bfloat _unknown0x34; // 0x34
+        public bfloat _unknown0x38; // 0x38
     }
 }
