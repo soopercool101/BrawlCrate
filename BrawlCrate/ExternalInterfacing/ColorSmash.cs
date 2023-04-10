@@ -1,5 +1,6 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlCrate.UI;
+using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;
@@ -29,6 +30,7 @@ namespace BrawlCrate.ExternalInterfacing
             }
 
             short paletteCount = 0;
+            int mipCount = 1;
             foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
             {
                 if (n is TEX0Wrapper tw)
@@ -46,6 +48,11 @@ namespace BrawlCrate.ExternalInterfacing
                             paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
                         }
                     }
+
+                    if (t.LevelOfDetail > mipCount)
+                    {
+                        mipCount = t.LevelOfDetail;
+                    }
                 }
             }
 
@@ -58,7 +65,7 @@ namespace BrawlCrate.ExternalInterfacing
             {
                 if (frm.ShowDialog("Color Smasher", "How many colors?", paletteCount) == DialogResult.OK)
                 {
-                    ColorSmashTex0(frm.NewValue);
+                    ColorSmashTex0(frm.NewValue, mipCount);
                 }
             }
         }
@@ -68,7 +75,7 @@ namespace BrawlCrate.ExternalInterfacing
             ColorSmashTex0(-1);
         }
 
-        public static void ColorSmashTex0(int paletteCount)
+        public static void ColorSmashTex0(int paletteCount, int mipCount = 1)
         {
             // If this was selected via keycode when it's invalid, return without error
             if (!CanRunColorSmash || MainForm.Instance.resourceTree.SelectedNodes.Count <= 1)
@@ -171,7 +178,7 @@ namespace BrawlCrate.ExternalInterfacing
                 t.Remove(true);
             }
 
-            ColorSmasher(paletteCount, b, index, names);
+            ColorSmasher(paletteCount, b, index, names, mipCount);
         }
 
         public static void ColorSmashImport(BRRESNode b)
@@ -203,7 +210,7 @@ namespace BrawlCrate.ExternalInterfacing
             ColorSmasher(colors, b, b.ImageCount, names);
         }
 
-        public static void ColorSmasher(int paletteCount, BRRESNode b, int index, Dictionary<int, string> names)
+        public static void ColorSmasher(int paletteCount, BRRESNode b, int index, Dictionary<int, string> names, int mips = 1)
         {
             Process cSmash = Process.Start(new ProcessStartInfo
             {
@@ -224,6 +231,7 @@ namespace BrawlCrate.ExternalInterfacing
                 {
                     dlg.ImageSource = f.FullName;
                     dlg.ChkImportPalette.Checked = true;
+                    dlg.numLOD.Value = mips;
                     dlg.Automatic = true;
                     dlg.StartingFormat = WiiPixelFormat.CI8;
 
@@ -270,6 +278,7 @@ namespace BrawlCrate.ExternalInterfacing
                     using (TextureConverterDialog dlg = new TextureConverterDialog())
                     {
                         dlg.ImageSource = f.FullName;
+                        dlg.numLOD.Value = mips;
                         dlg.Automatic = true;
 
                         if (dlg.ShowDialog(MainForm.Instance, b) != DialogResult.OK)

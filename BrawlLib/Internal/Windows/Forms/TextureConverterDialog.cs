@@ -1084,7 +1084,7 @@ namespace BrawlLib.Internal.Windows.Forms
         private CheckBox chkPreview;
         private GroupBox groupBox1;
         private Button btnRecommend;
-        private NumericUpDown numLOD;
+        public NumericUpDown numLOD;
         private Label label5;
         public ComboBox cboFormat;
         private Label label4;

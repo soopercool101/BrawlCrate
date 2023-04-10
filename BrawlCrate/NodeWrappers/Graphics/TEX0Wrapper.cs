@@ -138,26 +138,21 @@ namespace BrawlCrate.NodeWrappers
         private static void MultiMenuOpening(object sender, CancelEventArgs e)
         {
             TEX0Wrapper w = GetInstance<TEX0Wrapper>();
+
+            bool selectedCheck = MainForm.Instance.resourceTree.SelectedNodes.All(o => ((TEX0Wrapper)o)?._resource.Parent != null);
+
+            DeleteSelectedToolStripMenuItem.Visible = DeleteSelectedToolStripMenuItem.Enabled = selectedCheck;
+            
             if (!ColorSmash.CanRunColorSmash)
             {
                 ColorSmashSelectedToolStripMenuItem.Enabled = false;
-                ColorSmashSelectedToolStripMenuItem.ToolTipText = "color_smash.exe cannot be found, likely due to antivirus software. Please reinstall BrawlCrate.";
+                ColorSmashSelectedToolStripMenuItem.ToolTipText = @"color_smash.exe cannot be found, likely due to antivirus software. Please reinstall BrawlCrate.";
             }
-
-            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+            else
             {
-                if (((TEX0Wrapper) n)?._resource.Parent == null)
-                {
-                    DeleteSelectedToolStripMenuItem.Visible = false;
-                    DeleteSelectedToolStripMenuItem.Enabled = false;
-                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
-                    break;
-                }
-
-                if (((TEX0Wrapper) n)._resource.Parent != w._resource.Parent)
-                {
-                    ColorSmashSelectedToolStripMenuItem.Enabled = false;
-                }
+                ColorSmashSelectedToolStripMenuItem.Enabled = ColorSmashSelectedToolStripMenuItem.Visible =
+                    selectedCheck && MainForm.Instance.resourceTree.SelectedNodes.All(o =>
+                        ((TEX0Wrapper) o)?._resource.Parent == w._resource.Parent);
             }
         }
 
