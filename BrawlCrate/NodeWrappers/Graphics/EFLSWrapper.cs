@@ -83,7 +83,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            EFLSEntryNode node = new EFLSEntryNode {Name = "<null>"};
+            EFLSEntryNode node = new EFLSEntryNode {Name = "<null>", UseBrres = false};
             _resource.AddChild(node);
         }
 

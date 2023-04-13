@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -10,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal EFLSHeader* Header => (EFLSHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.EFLS;
 
-        private int _brresCount, _unk1, _unk2;
+        private int _unk1, _unk2;
 
         //[Category("Effect List")]
         //public int BrresCount { get { return _brresCount; } set { _brresCount = value; SignalPropertyChange(); } }
@@ -40,7 +41,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
 
-            _brresCount = Header->_numBrres;
             _unk1 = Header->_unk1;
             _unk2 = Header->_unk2;
 
@@ -52,14 +52,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int OnCalculateSize(bool force)
         {
             int size = 0x10, re3dSize = 0;
-            _brresCount = 0;
             foreach (EFLSEntryNode e in Children)
             {
-                if (e.UseBrres)
-                {
-                    _brresCount++;
-                }
-
                 if (string.Equals(e._name, "<null>", StringComparison.OrdinalIgnoreCase))
                 {
                     size += 0x10;
@@ -104,7 +98,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             EFLSHeader* header = (EFLSHeader*) address;
             RE3D* RE3DAddr = (RE3D*) ((VoidPtr) header + RE3DOffset);
-            *header = new EFLSHeader(count, _brresCount, _unk1, _unk2);
+            *header = new EFLSHeader(count, Children.Count(o => o is EFLSEntryNode e && e.UseBrres), _unk1, _unk2);
 
             EFLSEntry* entry = (EFLSEntry*) ((int) header + 0x10);
             sbyte* dPtr = (sbyte*) entry + count * 0x10;
