@@ -98,6 +98,32 @@ namespace BrawlLib.SSBB.ResourceNodes
             return null;
         }
 
+        internal static ResourceNode TryParseGeneric(DataSource source, ResourceNode parent)
+        {
+            int length = source.Length;
+            bint* offsets = (bint*)source.Address;
+            int index, last, current;
+
+            for (index = 0, last = 0; last != length; index++)
+            {
+                if (index * 4 > source.Length)
+                {
+                    return null;
+                }
+
+                current = offsets[index];
+                if (current < last || current > length)
+                {
+                    return null;
+                }
+
+                last = current;
+            }
+
+            // Don't check for bitshifts here
+            return new MSBinNode();
+        }
+
         public override void Export(string outPath)
         {
             if (outPath.EndsWith(".txt"))
