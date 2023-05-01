@@ -65,9 +65,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int length = source.Length;
             bint* offsets = (bint*) source.Address;
-            int index, last, current;
+            int index, last, current, offsetCount;
 
-            for (index = 0, last = 0; last != length; index++)
+            for (index = 0, last = 0, offsetCount = 0, current = 0; last != length; index++)
             {
                 if (index * 4 > source.Length)
                 {
@@ -75,6 +75,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 current = offsets[index];
+                offsetCount++;
                 if (current < last || current > length)
                 {
                     return null;
@@ -83,28 +84,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 last = current;
             }
 
-            // Ensure the offset is correctly bitshifted
-            int offset = offsets[0];
-            int offsetCheck = 0;
-            for (int i = 2; offsetCheck <= offset; i++)
-            {
-                offsetCheck = index << i;
-                if (offsetCheck == offset)
-                {
-                    return new MSBinNode();
-                }
-            }
-
-            return null;
-        }
-
-        internal static ResourceNode TryParseGeneric(DataSource source, ResourceNode parent)
-        {
-            int length = source.Length;
-            bint* offsets = (bint*)source.Address;
-            int index, last, current;
-
-            for (index = 0, last = 0; last != length; index++)
+            for (; last == current; index++)
             {
                 if (index * 4 > source.Length)
                 {
@@ -112,16 +92,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 current = offsets[index];
-                if (current < last || current > length)
-                {
-                    return null;
-                }
-
-                last = current;
+                if(last == current)
+                    offsetCount++;
             }
 
-            // Don't check for bitshifts here
-            return new MSBinNode();
+            return offsets[0] == offsetCount*4 ? new MSBinNode() : null;
         }
 
         public override void Export(string outPath)
