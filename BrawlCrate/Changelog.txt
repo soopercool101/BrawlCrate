@@ -1,5 +1,5 @@
 
-BrawlCrate - v0.39 Hotfix 1
+BrawlCrate - v0.40
 Copyright © 2018 - 2023 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,26 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.40 - (5/12/2023)
+ . Further improvements to Subspace parsing
+   - Add support to GBC1, GBC2, GMPS, GLAD, GPS2, GDTP, GDBS, GTRR, GASD, GWAP, GNDV, GSTG
+   - Improve support for GMOT, GDOR, GDBF, ADSJ
+   - Improve support for certain repeating data structures, such as Triggers
+ . Add basic support for ItmParam editing
+ . Add support for "ITOV" Item Override files
+ . Add support for Color Smashing with MIPs
+ . Improve detection of MSBin
+ . Anti-DRM measures from previously uneditable/intentionally broken mods
+   - Fix issue where BRES entries wouldn't be read correctly if their magic is tampered with
+   - Fix issue where texture scale of 0 would result in a different result in-game versus in-previewer
+   - Fix issue where broken offsets for original path would result in a crash when viewing certain MDL0 files
+ . Fix raw binary import for ARC not correctly recognizing filetype until reopen
+ . Fix incorrect labelling for ItmFreqNode
+ . Fix various corruption issues for U8 archives
+ . Fix bug in which certain TEX0 files would detect themselves as Color Smashed when they weren't
+ . Fix bug in which SHP0 v4 would corrupt itself on save
+ . Fix crash when opening files less than 4 bytes
  
  - BrawlCrate v0.39 Hotfix 1 - (2/5/2023)
  . Fix bug in which outdated fighters lists would not necessarily update properly

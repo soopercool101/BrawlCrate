@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.39h1";
+        public static readonly string TagName = "v0.40";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,10 +41,11 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.39! Here's what's new in this release:
-- Add Knuckles (P+) to default fighterlist (Hotfix 1: Ensure default fighterlist is regenerated as needed)
+            @"Updated to BrawlCrate v0.40! Here's what's new in this release:
 - Various SSE improvements
-- Various bugfixes
+- Support for ItemEx
+- General fixes to U8 archives
+- Fix bugs with SHP0 v4
 
 Full changelog and documentation can be viewed from the help menu.";
 
