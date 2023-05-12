@@ -510,6 +510,10 @@ Full changelog and documentation can be viewed from the help menu.";
 
                 Application.Run(MainForm.Instance);
             }
+            catch(Exception x)
+            {
+                throw x; // This is necessary to catch DLL errors properly
+            }
             finally
             {
                 Close(true);
