@@ -299,10 +299,38 @@ Full changelog and documentation can be viewed from the help menu.";
             d.Dispose();
         }
 
+        private static bool ExceptionIsDLLMissing(Exception ex)
+        {
+            return ex is FileNotFoundException && ex.Message.Contains(", Version=") &&
+                   ex.Message.Contains(", Culture=") && ex.Message.Contains(", PublicKeyToken=");
+        }
+
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             if (e.ExceptionObject is Exception ex)
             {
+                if (ExceptionIsDLLMissing(ex))
+                {
+                    if (CanRunGithubApp(false, out _))
+                    {
+                        MessageBox.Show(
+                            "One or more key installation files are missing, likely due to antivirus software. The latest version will now be reinstalled. Please add your installation folder to your antivirus's exceptions list.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+#if CANARY
+                        ForceDownloadCanary();
+#else
+                        ForceDownloadStable();
+#endif
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "One or more key installation files are missing, including the automatic updater. This is likely due to antivirus software. Please reinstall and add your installation folder to your antivirus's exceptions list.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    return;
+                }
                 List<ResourceNode> dirty = GetDirtyFiles();
                 IssueDialog d = new IssueDialog(ex, dirty);
                 d.ShowDialog();
@@ -481,17 +509,6 @@ Full changelog and documentation can be viewed from the help menu.";
 #endif
 
                 Application.Run(MainForm.Instance);
-            }
-            catch (FileNotFoundException x)
-            {
-                if (x.Message.Contains("Could not load file or assembly"))
-                {
-                    MessageBox.Show(x.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    throw;
-                }
             }
             finally
             {
