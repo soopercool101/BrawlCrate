@@ -15,5 +15,6 @@ var searchData=
   ['mml_12',['Mml',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a1b49ec2ec8df942685327795dd74ab7a',1,'BrawlLib::SSBB::Types::Audio']]],
   ['mmlex_13',['MmlEx',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_audio.html#a01128f6710147872e1cbf570ae151261',1,'BrawlLib::SSBB::Types::Audio']]],
   ['mode_14',['Mode',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_lighting.html#af3ec3ddc6d51a3e0e9fea6a1da1f71bb',1,'BrawlLib::SSBB::Types::Lighting']]],
-  ['motionetctypes_15',['MotionEtcTypes',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#ab76ad821df60e882c574faee598290f4',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]]
+  ['motionetctypes_15',['MotionEtcTypes',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_f_c_f_g_node.html#ab76ad821df60e882c574faee598290f4',1,'BrawlLib::SSBB::ResourceNodes::FCFGNode']]],
+  ['motionpathmode_16',['MotionPathMode',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a88def200c2bf5fe0cc6438843ffa1473',1,'BrawlLib::SSBB::Types']]]
 ];

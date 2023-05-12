@@ -18,9 +18,8 @@ var searchData=
   ['xmaxrange_15',['XMaxRange',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_t_k_d_entry_node.html#a03729de51979af1bfdae39c2ea6646dc',1,'BrawlLib::SSBB::ResourceNodes::ATKDEntryNode']]],
   ['xminrange_16',['XMinRange',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_t_k_d_entry_node.html#a9d43e4744181c609d9d7cc00f331e602',1,'BrawlLib::SSBB::ResourceNodes::ATKDEntryNode']]],
   ['xmlreader_17',['XmlReader',['../class_brawl_lib_1_1_internal_1_1_i_o_1_1_xml_reader.html',1,'BrawlLib.Internal.IO.XmlReader'],['../class_brawl_lib_1_1_internal_1_1_i_o_1_1_xml_reader.html#ab34b4131c4c80670436901ac8bd381dd',1,'BrawlLib.Internal.IO.XmlReader.XmlReader()']]],
-  ['xposition_18',['XPosition',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_d_o_r_entry_node.html#a9a83b0cda74f4b6652c4f57e8e2f6680',1,'BrawlLib::SSBB::ResourceNodes::GDOREntryNode']]],
-  ['xrb_19',['XRB',['../struct_brawl_lib_1_1_wii_1_1_graphics_1_1_k_sel.html#adeb5698da6ab3769c9a7cba62e2b6be4',1,'BrawlLib::Wii::Graphics::KSel']]],
-  ['xy_20',['XY',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_ledgegrab_node.html#a739b0d6da2b431c6d1d032f0295864af',1,'BrawlLib.SSBB.ResourceNodes.MoveDefLedgegrabNode.XY()'],['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sections_unk1_node_entry.html#ae723922192f4f3f085869e9e2ce15b82',1,'BrawlLib.SSBB.ResourceNodes.MoveDefSectionsUnk1NodeEntry.XY()']]],
-  ['xytransform_21',['xyTransform',['../class_brawl_crate_1_1_u_i_1_1xy_transform.html',1,'BrawlCrate::UI']]],
-  ['xyzpixel_22',['XYZPixel',['../struct_brawl_lib_1_1_imaging_1_1_x_y_z_pixel.html',1,'BrawlLib.Imaging.XYZPixel'],['../struct_brawl_lib_1_1_imaging_1_1_x_y_z_pixel.html#aa935f5bb1615636a67c72c6a6d8779b1',1,'BrawlLib.Imaging.XYZPixel.XYZPixel()']]]
+  ['xrb_18',['XRB',['../struct_brawl_lib_1_1_wii_1_1_graphics_1_1_k_sel.html#adeb5698da6ab3769c9a7cba62e2b6be4',1,'BrawlLib::Wii::Graphics::KSel']]],
+  ['xy_19',['XY',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_ledgegrab_node.html#a739b0d6da2b431c6d1d032f0295864af',1,'BrawlLib.SSBB.ResourceNodes.MoveDefLedgegrabNode.XY()'],['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_move_def_sections_unk1_node_entry.html#ae723922192f4f3f085869e9e2ce15b82',1,'BrawlLib.SSBB.ResourceNodes.MoveDefSectionsUnk1NodeEntry.XY()']]],
+  ['xytransform_20',['xyTransform',['../class_brawl_crate_1_1_u_i_1_1xy_transform.html',1,'BrawlCrate::UI']]],
+  ['xyzpixel_21',['XYZPixel',['../struct_brawl_lib_1_1_imaging_1_1_x_y_z_pixel.html',1,'BrawlLib.Imaging.XYZPixel'],['../struct_brawl_lib_1_1_imaging_1_1_x_y_z_pixel.html#aa935f5bb1615636a67c72c6a6d8779b1',1,'BrawlLib.Imaging.XYZPixel.XYZPixel()']]]
 ];

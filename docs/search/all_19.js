@@ -7,6 +7,5 @@ var searchData=
   ['ymaxrange_4',['YMaxRange',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_t_k_d_entry_node.html#a23fedbf8c1cc41d71fd2380f51d4439c',1,'BrawlLib::SSBB::ResourceNodes::ATKDEntryNode']]],
   ['yminrange_5',['YMinRange',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_a_t_k_d_entry_node.html#a6474f861397089639c2047fbbf6f2a06',1,'BrawlLib::SSBB::ResourceNodes::ATKDEntryNode']]],
   ['yoshi9_6',['Yoshi9',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_yoshi9.html',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['yoshiextraparams9_7',['YoshiExtraParams9',['../struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_yoshi_extra_params9.html',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['yposition_8',['YPosition',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_g_d_o_r_entry_node.html#a3f780a9da885a164ac6598351dce812e',1,'BrawlLib::SSBB::ResourceNodes::GDOREntryNode']]]
+  ['yoshiextraparams9_7',['YoshiExtraParams9',['../struct_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_yoshi_extra_params9.html',1,'BrawlLib::SSBB::ResourceNodes']]]
 ];

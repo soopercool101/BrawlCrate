@@ -5,6 +5,8 @@ var searchData=
   ['directionalpivot_2',['DirectionalPivot',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a2cec183def8371318e642a0d56aabffc',1,'BrawlLib::SSBB::Types']]],
   ['displaytype_3',['DisplayType',['../namespace_brawl_lib_1_1_internal_1_1_power_p_c_assembly.html#abd4035567657b3cf2d32d5cfdf83565b',1,'BrawlLib::Internal::PowerPCAssembly']]],
   ['distattnfn_4',['DistAttnFn',['../namespace_brawl_lib_1_1_wii_1_1_graphics.html#aeb374782375a13838997928e91d392e2',1,'BrawlLib::Wii::Graphics']]],
-  ['drawflag_5',['DrawFlag',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a6f6ef1bcab4d48f81c9a1ec9275adff8',1,'BrawlLib::SSBB::Types']]],
-  ['drawpasstype_6',['DrawPassType',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_draw_call.html#a42ca5709b1aaa9f5f9b6a6cb05696dec',1,'BrawlLib::SSBB::ResourceNodes::DrawCall']]]
+  ['doorgimmickkind_5',['DoorGimmickKind',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_navigation.html#affdf10b5273ead4a7412b2e3849dceb5',1,'BrawlLib::SSBB::Types::Subspace::Navigation']]],
+  ['doortype_6',['DoorType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_subspace_1_1_navigation.html#a5551d197f6156af45ec0c64724ab71e7',1,'BrawlLib::SSBB::Types::Subspace::Navigation']]],
+  ['drawflag_7',['DrawFlag',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a6f6ef1bcab4d48f81c9a1ec9275adff8',1,'BrawlLib::SSBB::Types']]],
+  ['drawpasstype_8',['DrawPassType',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_draw_call.html#a42ca5709b1aaa9f5f9b6a6cb05696dec',1,'BrawlLib::SSBB::ResourceNodes::DrawCall']]]
 ];

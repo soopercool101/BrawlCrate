@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.39</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -121,7 +121,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">  338</span>        {</div>
 <div class="line"><span class="lineno">  339</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_node.html">SCN0Node</a> node = (context.Instance as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html">SCN0EntryNode</a>).Parent.<a class="code hl_property" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">Parent</a> as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_node.html">SCN0Node</a>;</div>
-<div class="line"><span class="lineno">  340</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> n = node.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac984e176395153b333dfb8e2a565286d">FindChild</a>(<span class="stringliteral">&quot;AmbLights(NW4R)&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  340</span>            <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">ResourceNode</a> n = node.<a class="code hl_function" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aefed1fc2c71ec7b0bc5ce12643a91b58">FindChild</a>(<span class="stringliteral">&quot;AmbLights(NW4R)&quot;</span>, <span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">  341</span>            <span class="keywordflow">if</span> (n != <span class="keyword">null</span>)</div>
 <div class="line"><span class="lineno">  342</span>            {</div>
 <div class="line"><span class="lineno">  343</span>                <span class="keywordflow">return</span> <span class="keyword">new</span> StandardValuesCollection(n.Children.Select(r =&gt; r.ToString()).ToList());</div>
@@ -131,7 +131,7 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  347</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html">BrawlLib.SSBB.ResourceNodes.ResourceNode</a></div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:129</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_aa2ac75c861a66d004f89ae1186256310"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aa2ac75c861a66d004f89ae1186256310">BrawlLib.SSBB.ResourceNodes.ResourceNode.Parent</a></div><div class="ttdeci">ResourceNode Parent</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:245</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_ac984e176395153b333dfb8e2a565286d"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#ac984e176395153b333dfb8e2a565286d">BrawlLib.SSBB.ResourceNodes.ResourceNode.FindChild</a></div><div class="ttdeci">ResourceNode FindChild(string path, bool searchChildren)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1344</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node_html_aefed1fc2c71ec7b0bc5ce12643a91b58"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_resource_node.html#aefed1fc2c71ec7b0bc5ce12643a91b58">BrawlLib.SSBB.ResourceNodes.ResourceNode.FindChild</a></div><div class="ttdeci">ResourceNode FindChild(string path)</div><div class="ttdef"><b>Definition:</b> ResourceNode.cs:1342</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_entry_node.html">BrawlLib.SSBB.ResourceNodes.SCN0EntryNode</a></div><div class="ttdef"><b>Definition:</b> SCN0GroupNode.cs:236</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_node_html"><div class="ttname"><a href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_s_c_n0_node.html">BrawlLib.SSBB.ResourceNodes.SCN0Node</a></div><div class="ttdef"><b>Definition:</b> SCN0Node.cs:9</div></div>
 </div><!-- fragment -->

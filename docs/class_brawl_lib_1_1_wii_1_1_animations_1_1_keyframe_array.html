@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.39</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -101,6 +101,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6436e4cfe5c720d4baa8ef3c4d89d8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad893cb7738e54adfa5f51a6a0ae7db0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#ad893cb7738e54adfa5f51a6a0ae7db0d">Delete</a> (int index)</td></tr>
 <tr class="separator:ad893cb7738e54adfa5f51a6a0ae7db0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a538bd72db7fd6209b231f023e9a814de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a538bd72db7fd6209b231f023e9a814de">Equals</a> (<a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html">KeyframeArray</a> obj)</td></tr>
+<tr class="separator:a538bd72db7fd6209b231f023e9a814de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -145,10 +147,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  389</span>        {</div>
-<div class="line"><span class="lineno">  390</span>            _frameLimit = limit;</div>
-<div class="line"><span class="lineno">  391</span>            _keyRoot = <span class="keyword">new</span> KeyframeEntry(-1, defaultValue);</div>
-<div class="line"><span class="lineno">  392</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  415</span>        {</div>
+<div class="line"><span class="lineno">  416</span>            _frameLimit = limit;</div>
+<div class="line"><span class="lineno">  417</span>            _keyRoot = <span class="keyword">new</span> KeyframeEntry(-1, defaultValue);</div>
+<div class="line"><span class="lineno">  418</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -175,58 +177,58 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  397</span>        {</div>
-<div class="line"><span class="lineno">  398</span>            <span class="keywordtype">int</span> flag, res, removed = 0;</div>
-<div class="line"><span class="lineno">  399</span>            KeyframeEntry entry;</div>
-<div class="line"><span class="lineno">  400</span> </div>
-<div class="line"><span class="lineno">  401</span>            <span class="comment">//Eliminate redundant values</span></div>
-<div class="line"><span class="lineno">  402</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot; entry = entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>)</div>
-<div class="line"><span class="lineno">  403</span>            {</div>
-<div class="line"><span class="lineno">  404</span>                flag = res = 0;</div>
-<div class="line"><span class="lineno">  405</span> </div>
-<div class="line"><span class="lineno">  406</span>                <span class="keywordflow">if</span> (entry._prev == _keyRoot)</div>
-<div class="line"><span class="lineno">  407</span>                {</div>
-<div class="line"><span class="lineno">  408</span>                    <span class="keywordflow">if</span> (entry._next != _keyRoot)</div>
-<div class="line"><span class="lineno">  409</span>                    {</div>
-<div class="line"><span class="lineno">  410</span>                        flag = 1;</div>
-<div class="line"><span class="lineno">  411</span>                    }</div>
-<div class="line"><span class="lineno">  412</span>                }</div>
-<div class="line"><span class="lineno">  413</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (entry._next == _keyRoot)</div>
-<div class="line"><span class="lineno">  414</span>                {</div>
-<div class="line"><span class="lineno">  415</span>                    flag = 2;</div>
-<div class="line"><span class="lineno">  416</span>                }</div>
-<div class="line"><span class="lineno">  417</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  418</span>                {</div>
-<div class="line"><span class="lineno">  419</span>                    flag = 3;</div>
-<div class="line"><span class="lineno">  420</span>                }</div>
-<div class="line"><span class="lineno">  421</span> </div>
-<div class="line"><span class="lineno">  422</span>                <span class="keywordflow">if</span> ((flag &amp; 1) != 0)</div>
-<div class="line"><span class="lineno">  423</span>                {</div>
-<div class="line"><span class="lineno">  424</span>                    res |= Math.Abs(entry._next._value - entry._value) &lt;= _cleanDistance ? 1 : 0;</div>
-<div class="line"><span class="lineno">  425</span>                }</div>
+<div class="fragment"><div class="line"><span class="lineno">  423</span>        {</div>
+<div class="line"><span class="lineno">  424</span>            <span class="keywordtype">int</span> flag, res, removed = 0;</div>
+<div class="line"><span class="lineno">  425</span>            KeyframeEntry entry;</div>
 <div class="line"><span class="lineno">  426</span> </div>
-<div class="line"><span class="lineno">  427</span>                <span class="keywordflow">if</span> ((flag &amp; 2) != 0)</div>
-<div class="line"><span class="lineno">  428</span>                {</div>
-<div class="line"><span class="lineno">  429</span>                    res |= Math.Abs(entry._prev._value - entry._value) &lt;= _cleanDistance ? 2 : 0;</div>
-<div class="line"><span class="lineno">  430</span>                }</div>
+<div class="line"><span class="lineno">  427</span>            <span class="comment">//Eliminate redundant values</span></div>
+<div class="line"><span class="lineno">  428</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot; entry = entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>)</div>
+<div class="line"><span class="lineno">  429</span>            {</div>
+<div class="line"><span class="lineno">  430</span>                flag = res = 0;</div>
 <div class="line"><span class="lineno">  431</span> </div>
-<div class="line"><span class="lineno">  432</span>                <span class="keywordflow">if</span> (flag == res &amp;&amp; res != 0)</div>
+<div class="line"><span class="lineno">  432</span>                <span class="keywordflow">if</span> (entry._prev == _keyRoot)</div>
 <div class="line"><span class="lineno">  433</span>                {</div>
-<div class="line"><span class="lineno">  434</span>                    entry = entry._prev;</div>
-<div class="line"><span class="lineno">  435</span>                    entry._next.Remove();</div>
-<div class="line"><span class="lineno">  436</span> </div>
-<div class="line"><span class="lineno">  437</span>                    entry.GenerateTangent();</div>
-<div class="line"><span class="lineno">  438</span>                    entry._next.GenerateTangent();</div>
-<div class="line"><span class="lineno">  439</span>                    entry._prev.GenerateTangent();</div>
-<div class="line"><span class="lineno">  440</span> </div>
-<div class="line"><span class="lineno">  441</span>                    _keyCount--;</div>
-<div class="line"><span class="lineno">  442</span>                    removed++;</div>
-<div class="line"><span class="lineno">  443</span>                }</div>
-<div class="line"><span class="lineno">  444</span>            }</div>
-<div class="line"><span class="lineno">  445</span> </div>
-<div class="line"><span class="lineno">  446</span>            <span class="keywordflow">return</span> removed;</div>
-<div class="line"><span class="lineno">  447</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_af89389da5087e8c243418f56288a8e86"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">BrawlLib.Wii.Animations.KeyframeEntry._next</a></div><div class="ttdeci">KeyframeEntry _next</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:174</div></div>
+<div class="line"><span class="lineno">  434</span>                    <span class="keywordflow">if</span> (entry._next != _keyRoot)</div>
+<div class="line"><span class="lineno">  435</span>                    {</div>
+<div class="line"><span class="lineno">  436</span>                        flag = 1;</div>
+<div class="line"><span class="lineno">  437</span>                    }</div>
+<div class="line"><span class="lineno">  438</span>                }</div>
+<div class="line"><span class="lineno">  439</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (entry._next == _keyRoot)</div>
+<div class="line"><span class="lineno">  440</span>                {</div>
+<div class="line"><span class="lineno">  441</span>                    flag = 2;</div>
+<div class="line"><span class="lineno">  442</span>                }</div>
+<div class="line"><span class="lineno">  443</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  444</span>                {</div>
+<div class="line"><span class="lineno">  445</span>                    flag = 3;</div>
+<div class="line"><span class="lineno">  446</span>                }</div>
+<div class="line"><span class="lineno">  447</span> </div>
+<div class="line"><span class="lineno">  448</span>                <span class="keywordflow">if</span> ((flag &amp; 1) != 0)</div>
+<div class="line"><span class="lineno">  449</span>                {</div>
+<div class="line"><span class="lineno">  450</span>                    res |= Math.Abs(entry._next._value - entry._value) &lt;= _cleanDistance ? 1 : 0;</div>
+<div class="line"><span class="lineno">  451</span>                }</div>
+<div class="line"><span class="lineno">  452</span> </div>
+<div class="line"><span class="lineno">  453</span>                <span class="keywordflow">if</span> ((flag &amp; 2) != 0)</div>
+<div class="line"><span class="lineno">  454</span>                {</div>
+<div class="line"><span class="lineno">  455</span>                    res |= Math.Abs(entry._prev._value - entry._value) &lt;= _cleanDistance ? 2 : 0;</div>
+<div class="line"><span class="lineno">  456</span>                }</div>
+<div class="line"><span class="lineno">  457</span> </div>
+<div class="line"><span class="lineno">  458</span>                <span class="keywordflow">if</span> (flag == res &amp;&amp; res != 0)</div>
+<div class="line"><span class="lineno">  459</span>                {</div>
+<div class="line"><span class="lineno">  460</span>                    entry = entry._prev;</div>
+<div class="line"><span class="lineno">  461</span>                    entry._next.Remove();</div>
+<div class="line"><span class="lineno">  462</span> </div>
+<div class="line"><span class="lineno">  463</span>                    entry.GenerateTangent();</div>
+<div class="line"><span class="lineno">  464</span>                    entry._next.GenerateTangent();</div>
+<div class="line"><span class="lineno">  465</span>                    entry._prev.GenerateTangent();</div>
+<div class="line"><span class="lineno">  466</span> </div>
+<div class="line"><span class="lineno">  467</span>                    _keyCount--;</div>
+<div class="line"><span class="lineno">  468</span>                    removed++;</div>
+<div class="line"><span class="lineno">  469</span>                }</div>
+<div class="line"><span class="lineno">  470</span>            }</div>
+<div class="line"><span class="lineno">  471</span> </div>
+<div class="line"><span class="lineno">  472</span>            <span class="keywordflow">return</span> removed;</div>
+<div class="line"><span class="lineno">  473</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_af89389da5087e8c243418f56288a8e86"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">BrawlLib.Wii.Animations.KeyframeEntry._next</a></div><div class="ttdeci">KeyframeEntry _next</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:195</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -253,20 +255,64 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  607</span>        {</div>
-<div class="line"><span class="lineno">  608</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  609</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &gt;= index; entry = entry._prev)</div>
-<div class="line"><span class="lineno">  610</span>            {</div>
-<div class="line"><span class="lineno">  611</span>                <span class="keywordflow">if</span> (entry._index == index || --entry._index &lt; 0)</div>
-<div class="line"><span class="lineno">  612</span>                {</div>
-<div class="line"><span class="lineno">  613</span>                    entry = entry._next;</div>
-<div class="line"><span class="lineno">  614</span>                    entry._prev.Remove();</div>
-<div class="line"><span class="lineno">  615</span>                    _keyCount--;</div>
-<div class="line"><span class="lineno">  616</span>                }</div>
-<div class="line"><span class="lineno">  617</span>            }</div>
-<div class="line"><span class="lineno">  618</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a464c0883066d12d3b1fae0a5a8dfce5f"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">BrawlLib.Wii.Animations.KeyframeEntry._prev</a></div><div class="ttdeci">KeyframeEntry _prev</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:174</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a576ceb224dcc8bfb6b4a36cc6635217c"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">BrawlLib.Wii.Animations.KeyframeEntry._index</a></div><div class="ttdeci">int _index</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:173</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  633</span>        {</div>
+<div class="line"><span class="lineno">  634</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  635</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &gt;= index; entry = entry._prev)</div>
+<div class="line"><span class="lineno">  636</span>            {</div>
+<div class="line"><span class="lineno">  637</span>                <span class="keywordflow">if</span> (entry._index == index || --entry._index &lt; 0)</div>
+<div class="line"><span class="lineno">  638</span>                {</div>
+<div class="line"><span class="lineno">  639</span>                    entry = entry._next;</div>
+<div class="line"><span class="lineno">  640</span>                    entry._prev.Remove();</div>
+<div class="line"><span class="lineno">  641</span>                    _keyCount--;</div>
+<div class="line"><span class="lineno">  642</span>                }</div>
+<div class="line"><span class="lineno">  643</span>            }</div>
+<div class="line"><span class="lineno">  644</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a464c0883066d12d3b1fae0a5a8dfce5f"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">BrawlLib.Wii.Animations.KeyframeEntry._prev</a></div><div class="ttdeci">KeyframeEntry _prev</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:195</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a576ceb224dcc8bfb6b4a36cc6635217c"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">BrawlLib.Wii.Animations.KeyframeEntry._index</a></div><div class="ttdeci">int _index</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:194</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a538bd72db7fd6209b231f023e9a814de" name="a538bd72db7fd6209b231f023e9a814de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a538bd72db7fd6209b231f023e9a814de">&#9670;&#160;</a></span>Equals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BrawlLib.Wii.Animations.KeyframeArray.Equals </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html">KeyframeArray</a>&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  647</span>        {</div>
+<div class="line"><span class="lineno">  648</span>            <span class="keywordflow">if</span>(obj._keyCount != _keyCount)</div>
+<div class="line"><span class="lineno">  649</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  650</span> </div>
+<div class="line"><span class="lineno">  651</span>            KeyframeEntry comp1 = _keyRoot;</div>
+<div class="line"><span class="lineno">  652</span>            KeyframeEntry comp2 = obj._keyRoot;</div>
+<div class="line"><span class="lineno">  653</span> </div>
+<div class="line"><span class="lineno">  654</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _keyCount; i++)</div>
+<div class="line"><span class="lineno">  655</span>            {</div>
+<div class="line"><span class="lineno">  656</span>                <span class="keywordflow">if</span>(!comp1.Equals(comp2))</div>
+<div class="line"><span class="lineno">  657</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  658</span> </div>
+<div class="line"><span class="lineno">  659</span>                comp1 = comp1.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>;</div>
+<div class="line"><span class="lineno">  660</span>                comp2 = comp2.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>;</div>
+<div class="line"><span class="lineno">  661</span>            }</div>
+<div class="line"><span class="lineno">  662</span> </div>
+<div class="line"><span class="lineno">  663</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  664</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -303,72 +349,72 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  466</span>        {</div>
-<div class="line"><span class="lineno">  467</span>            KeyframeEntry entry;</div>
-<div class="line"><span class="lineno">  468</span> </div>
-<div class="line"><span class="lineno">  469</span>            <span class="keywordflow">if</span> (index &gt; _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>)</div>
-<div class="line"><span class="lineno">  470</span>            {</div>
-<div class="line"><span class="lineno">  471</span>                <span class="comment">//If the frame is greater than the last keyframe&#39;s frame index</span></div>
-<div class="line"><span class="lineno">  472</span>                <span class="keywordflow">if</span> (_looped)</div>
-<div class="line"><span class="lineno">  473</span>                {</div>
-<div class="line"><span class="lineno">  474</span>                    <span class="keywordtype">float</span> span = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) +</div>
-<div class="line"><span class="lineno">  475</span>                                 _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>);</div>
-<div class="line"><span class="lineno">  476</span>                    <span class="keywordtype">float</span> offset =</div>
-<div class="line"><span class="lineno">  477</span>                        index &gt; _keyRoot._prev._index &amp;&amp; index &lt; <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a></div>
-<div class="line"><span class="lineno">  478</span>                            ? index - _keyRoot._prev._index</div>
-<div class="line"><span class="lineno">  479</span>                            : <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot._prev._index + index;</div>
-<div class="line"><span class="lineno">  480</span> </div>
-<div class="line"><span class="lineno">  481</span>                    <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a81d53406c3690a26afe8693daf83ae37">Interpolate</a>(offset, span, _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>);</div>
-<div class="line"><span class="lineno">  482</span>                }</div>
-<div class="line"><span class="lineno">  483</span> </div>
-<div class="line"><span class="lineno">  484</span>                <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a71010e425cc2b8b9a4f1d5c2ae1f77b2">_value</a>;</div>
-<div class="line"><span class="lineno">  485</span>            }</div>
-<div class="line"><span class="lineno">  486</span> </div>
-<div class="line"><span class="lineno">  487</span>            <span class="keywordflow">if</span> (index &lt; _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>)</div>
-<div class="line"><span class="lineno">  488</span>            {</div>
-<div class="line"><span class="lineno">  489</span>                <span class="comment">//If the frame is less than the first keyframe&#39;s frame index</span></div>
-<div class="line"><span class="lineno">  490</span>                <span class="keywordflow">if</span> (_looped)</div>
-<div class="line"><span class="lineno">  491</span>                {</div>
-<div class="line"><span class="lineno">  492</span>                    <span class="keywordtype">float</span> span = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) +</div>
-<div class="line"><span class="lineno">  493</span>                                 _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>);</div>
-<div class="line"><span class="lineno">  494</span>                    <span class="keywordtype">float</span> offset =</div>
-<div class="line"><span class="lineno">  495</span>                        index &gt; _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) &amp;&amp; index &lt; <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a></div>
-<div class="line"><span class="lineno">  496</span>                            ? index - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>)</div>
-<div class="line"><span class="lineno">  497</span>                            : <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) + index;</div>
-<div class="line"><span class="lineno">  498</span> </div>
-<div class="line"><span class="lineno">  499</span>                    <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a81d53406c3690a26afe8693daf83ae37">Interpolate</a>(offset, span, _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>);</div>
-<div class="line"><span class="lineno">  500</span>                }</div>
-<div class="line"><span class="lineno">  501</span> </div>
-<div class="line"><span class="lineno">  502</span>                <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a71010e425cc2b8b9a4f1d5c2ae1f77b2">_value</a>;</div>
-<div class="line"><span class="lineno">  503</span>            }</div>
-<div class="line"><span class="lineno">  504</span> </div>
-<div class="line"><span class="lineno">  505</span>            <span class="comment">//Find the entry just before the specified index</span></div>
-<div class="line"><span class="lineno">  506</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; <span class="comment">//Get the first entry</span></div>
-<div class="line"><span class="lineno">  507</span>                entry != _keyRoot &amp;&amp;     <span class="comment">//Make sure it&#39;s not the root</span></div>
-<div class="line"><span class="lineno">  508</span>                entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt;= index;   <span class="comment">//Its index must be less than or equal to the current index</span></div>
-<div class="line"><span class="lineno">  509</span>                entry = entry._next)     <span class="comment">//Get the next entry</span></div>
-<div class="line"><span class="lineno">  510</span>            {</div>
-<div class="line"><span class="lineno">  511</span>                <span class="keywordflow">if</span> (entry._index == index)</div>
-<div class="line"><span class="lineno">  512</span>                {</div>
-<div class="line"><span class="lineno">  513</span>                    <span class="comment">//The index is a keyframe</span></div>
-<div class="line"><span class="lineno">  514</span>                    <span class="keywordflow">if</span> (returnOutValue)</div>
-<div class="line"><span class="lineno">  515</span>                    {</div>
-<div class="line"><span class="lineno">  516</span>                        <span class="keywordflow">while</span> (entry._next != <span class="keyword">null</span> &amp;&amp; entry._next._index == entry._index)</div>
-<div class="line"><span class="lineno">  517</span>                        {</div>
-<div class="line"><span class="lineno">  518</span>                            entry = entry._next;</div>
-<div class="line"><span class="lineno">  519</span>                        }</div>
-<div class="line"><span class="lineno">  520</span>                    }</div>
-<div class="line"><span class="lineno">  521</span> </div>
-<div class="line"><span class="lineno">  522</span>                    <span class="keywordflow">return</span> entry._value; <span class="comment">//Return the value of the keyframe.</span></div>
-<div class="line"><span class="lineno">  523</span>                }</div>
-<div class="line"><span class="lineno">  524</span>            }</div>
-<div class="line"><span class="lineno">  525</span> </div>
-<div class="line"><span class="lineno">  526</span>            <span class="comment">//Frame lies between two keyframes. Interpolate between them</span></div>
-<div class="line"><span class="lineno">  527</span>            <span class="keywordflow">return</span> entry._prev.Interpolate(index - entry._prev._index);</div>
-<div class="line"><span class="lineno">  528</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a90b0efc840fc5e77a8523c8af40fe9e7"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">BrawlLib.Wii.Animations.KeyframeArray.FrameLimit</a></div><div class="ttdeci">int FrameLimit</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:369</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a71010e425cc2b8b9a4f1d5c2ae1f77b2"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a71010e425cc2b8b9a4f1d5c2ae1f77b2">BrawlLib.Wii.Animations.KeyframeEntry._value</a></div><div class="ttdeci">float _value</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:176</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a81d53406c3690a26afe8693daf83ae37"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a81d53406c3690a26afe8693daf83ae37">BrawlLib.Wii.Animations.KeyframeEntry.Interpolate</a></div><div class="ttdeci">float Interpolate(float offset, float span, KeyframeEntry next, bool forceLinear=false)</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:233</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  492</span>        {</div>
+<div class="line"><span class="lineno">  493</span>            KeyframeEntry entry;</div>
+<div class="line"><span class="lineno">  494</span> </div>
+<div class="line"><span class="lineno">  495</span>            <span class="keywordflow">if</span> (index &gt; _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>)</div>
+<div class="line"><span class="lineno">  496</span>            {</div>
+<div class="line"><span class="lineno">  497</span>                <span class="comment">//If the frame is greater than the last keyframe&#39;s frame index</span></div>
+<div class="line"><span class="lineno">  498</span>                <span class="keywordflow">if</span> (_looped)</div>
+<div class="line"><span class="lineno">  499</span>                {</div>
+<div class="line"><span class="lineno">  500</span>                    <span class="keywordtype">float</span> span = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) +</div>
+<div class="line"><span class="lineno">  501</span>                                 _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>);</div>
+<div class="line"><span class="lineno">  502</span>                    <span class="keywordtype">float</span> offset =</div>
+<div class="line"><span class="lineno">  503</span>                        index &gt; _keyRoot._prev._index &amp;&amp; index &lt; <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a></div>
+<div class="line"><span class="lineno">  504</span>                            ? index - _keyRoot._prev._index</div>
+<div class="line"><span class="lineno">  505</span>                            : <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot._prev._index + index;</div>
+<div class="line"><span class="lineno">  506</span> </div>
+<div class="line"><span class="lineno">  507</span>                    <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a81d53406c3690a26afe8693daf83ae37">Interpolate</a>(offset, span, _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>);</div>
+<div class="line"><span class="lineno">  508</span>                }</div>
+<div class="line"><span class="lineno">  509</span> </div>
+<div class="line"><span class="lineno">  510</span>                <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a71010e425cc2b8b9a4f1d5c2ae1f77b2">_value</a>;</div>
+<div class="line"><span class="lineno">  511</span>            }</div>
+<div class="line"><span class="lineno">  512</span> </div>
+<div class="line"><span class="lineno">  513</span>            <span class="keywordflow">if</span> (index &lt; _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>)</div>
+<div class="line"><span class="lineno">  514</span>            {</div>
+<div class="line"><span class="lineno">  515</span>                <span class="comment">//If the frame is less than the first keyframe&#39;s frame index</span></div>
+<div class="line"><span class="lineno">  516</span>                <span class="keywordflow">if</span> (_looped)</div>
+<div class="line"><span class="lineno">  517</span>                {</div>
+<div class="line"><span class="lineno">  518</span>                    <span class="keywordtype">float</span> span = <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) +</div>
+<div class="line"><span class="lineno">  519</span>                                 _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>);</div>
+<div class="line"><span class="lineno">  520</span>                    <span class="keywordtype">float</span> offset =</div>
+<div class="line"><span class="lineno">  521</span>                        index &gt; _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) &amp;&amp; index &lt; <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a></div>
+<div class="line"><span class="lineno">  522</span>                            ? index - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>)</div>
+<div class="line"><span class="lineno">  523</span>                            : <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a> - _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a>.Clamp(0, <a class="code hl_property" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">FrameLimit</a>) + index;</div>
+<div class="line"><span class="lineno">  524</span> </div>
+<div class="line"><span class="lineno">  525</span>                    <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a81d53406c3690a26afe8693daf83ae37">Interpolate</a>(offset, span, _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>);</div>
+<div class="line"><span class="lineno">  526</span>                }</div>
+<div class="line"><span class="lineno">  527</span> </div>
+<div class="line"><span class="lineno">  528</span>                <span class="keywordflow">return</span> _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a71010e425cc2b8b9a4f1d5c2ae1f77b2">_value</a>;</div>
+<div class="line"><span class="lineno">  529</span>            }</div>
+<div class="line"><span class="lineno">  530</span> </div>
+<div class="line"><span class="lineno">  531</span>            <span class="comment">//Find the entry just before the specified index</span></div>
+<div class="line"><span class="lineno">  532</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; <span class="comment">//Get the first entry</span></div>
+<div class="line"><span class="lineno">  533</span>                entry != _keyRoot &amp;&amp;     <span class="comment">//Make sure it&#39;s not the root</span></div>
+<div class="line"><span class="lineno">  534</span>                entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt;= index;   <span class="comment">//Its index must be less than or equal to the current index</span></div>
+<div class="line"><span class="lineno">  535</span>                entry = entry._next)     <span class="comment">//Get the next entry</span></div>
+<div class="line"><span class="lineno">  536</span>            {</div>
+<div class="line"><span class="lineno">  537</span>                <span class="keywordflow">if</span> (entry._index == index)</div>
+<div class="line"><span class="lineno">  538</span>                {</div>
+<div class="line"><span class="lineno">  539</span>                    <span class="comment">//The index is a keyframe</span></div>
+<div class="line"><span class="lineno">  540</span>                    <span class="keywordflow">if</span> (returnOutValue)</div>
+<div class="line"><span class="lineno">  541</span>                    {</div>
+<div class="line"><span class="lineno">  542</span>                        <span class="keywordflow">while</span> (entry._next != <span class="keyword">null</span> &amp;&amp; entry._next._index == entry._index)</div>
+<div class="line"><span class="lineno">  543</span>                        {</div>
+<div class="line"><span class="lineno">  544</span>                            entry = entry._next;</div>
+<div class="line"><span class="lineno">  545</span>                        }</div>
+<div class="line"><span class="lineno">  546</span>                    }</div>
+<div class="line"><span class="lineno">  547</span> </div>
+<div class="line"><span class="lineno">  548</span>                    <span class="keywordflow">return</span> entry._value; <span class="comment">//Return the value of the keyframe.</span></div>
+<div class="line"><span class="lineno">  549</span>                }</div>
+<div class="line"><span class="lineno">  550</span>            }</div>
+<div class="line"><span class="lineno">  551</span> </div>
+<div class="line"><span class="lineno">  552</span>            <span class="comment">//Frame lies between two keyframes. Interpolate between them</span></div>
+<div class="line"><span class="lineno">  553</span>            <span class="keywordflow">return</span> entry._prev.Interpolate(index - entry._prev._index);</div>
+<div class="line"><span class="lineno">  554</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a90b0efc840fc5e77a8523c8af40fe9e7"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a90b0efc840fc5e77a8523c8af40fe9e7">BrawlLib.Wii.Animations.KeyframeArray.FrameLimit</a></div><div class="ttdeci">int FrameLimit</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:395</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a71010e425cc2b8b9a4f1d5c2ae1f77b2"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a71010e425cc2b8b9a4f1d5c2ae1f77b2">BrawlLib.Wii.Animations.KeyframeEntry._value</a></div><div class="ttdeci">float _value</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:197</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a81d53406c3690a26afe8693daf83ae37"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a81d53406c3690a26afe8693daf83ae37">BrawlLib.Wii.Animations.KeyframeEntry.Interpolate</a></div><div class="ttdeci">float Interpolate(float offset, float span, KeyframeEntry next, bool forceLinear=false)</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:259</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -395,20 +441,20 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  450</span>        {</div>
-<div class="line"><span class="lineno">  451</span>            KeyframeEntry entry;</div>
-<div class="line"><span class="lineno">  452</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt; index; entry = entry._next)</div>
-<div class="line"><span class="lineno">  453</span>            {</div>
-<div class="line"><span class="lineno">  454</span>                ;</div>
-<div class="line"><span class="lineno">  455</span>            }</div>
-<div class="line"><span class="lineno">  456</span> </div>
-<div class="line"><span class="lineno">  457</span>            <span class="keywordflow">if</span> (entry._index == index)</div>
-<div class="line"><span class="lineno">  458</span>            {</div>
-<div class="line"><span class="lineno">  459</span>                <span class="keywordflow">return</span> entry;</div>
-<div class="line"><span class="lineno">  460</span>            }</div>
-<div class="line"><span class="lineno">  461</span> </div>
-<div class="line"><span class="lineno">  462</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  463</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  476</span>        {</div>
+<div class="line"><span class="lineno">  477</span>            KeyframeEntry entry;</div>
+<div class="line"><span class="lineno">  478</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt; index; entry = entry._next)</div>
+<div class="line"><span class="lineno">  479</span>            {</div>
+<div class="line"><span class="lineno">  480</span>                ;</div>
+<div class="line"><span class="lineno">  481</span>            }</div>
+<div class="line"><span class="lineno">  482</span> </div>
+<div class="line"><span class="lineno">  483</span>            <span class="keywordflow">if</span> (entry._index == index)</div>
+<div class="line"><span class="lineno">  484</span>            {</div>
+<div class="line"><span class="lineno">  485</span>                <span class="keywordflow">return</span> entry;</div>
+<div class="line"><span class="lineno">  486</span>            }</div>
+<div class="line"><span class="lineno">  487</span> </div>
+<div class="line"><span class="lineno">  488</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  489</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -435,18 +481,18 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  593</span>        {</div>
-<div class="line"><span class="lineno">  594</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  595</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &gt;= index; entry = entry._prev)</div>
-<div class="line"><span class="lineno">  596</span>            {</div>
-<div class="line"><span class="lineno">  597</span>                <span class="keywordflow">if</span> (++entry._index &gt;= _frameLimit)</div>
-<div class="line"><span class="lineno">  598</span>                {</div>
-<div class="line"><span class="lineno">  599</span>                    entry = entry._next;</div>
-<div class="line"><span class="lineno">  600</span>                    entry._prev.Remove();</div>
-<div class="line"><span class="lineno">  601</span>                    _keyCount--;</div>
-<div class="line"><span class="lineno">  602</span>                }</div>
-<div class="line"><span class="lineno">  603</span>            }</div>
-<div class="line"><span class="lineno">  604</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  619</span>        {</div>
+<div class="line"><span class="lineno">  620</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  621</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &gt;= index; entry = entry._prev)</div>
+<div class="line"><span class="lineno">  622</span>            {</div>
+<div class="line"><span class="lineno">  623</span>                <span class="keywordflow">if</span> (++entry._index &gt;= _frameLimit)</div>
+<div class="line"><span class="lineno">  624</span>                {</div>
+<div class="line"><span class="lineno">  625</span>                    entry = entry._next;</div>
+<div class="line"><span class="lineno">  626</span>                    entry._prev.Remove();</div>
+<div class="line"><span class="lineno">  627</span>                    _keyCount--;</div>
+<div class="line"><span class="lineno">  628</span>                }</div>
+<div class="line"><span class="lineno">  629</span>            }</div>
+<div class="line"><span class="lineno">  630</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -473,25 +519,25 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  572</span>        {</div>
-<div class="line"><span class="lineno">  573</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  574</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt; index; entry = entry._next)</div>
-<div class="line"><span class="lineno">  575</span>            {</div>
-<div class="line"><span class="lineno">  576</span>                ;</div>
-<div class="line"><span class="lineno">  577</span>            }</div>
-<div class="line"><span class="lineno">  578</span> </div>
-<div class="line"><span class="lineno">  579</span>            <span class="keywordflow">if</span> (entry._index == index)</div>
-<div class="line"><span class="lineno">  580</span>            {</div>
-<div class="line"><span class="lineno">  581</span>                entry.Remove();</div>
-<div class="line"><span class="lineno">  582</span>                _keyCount--;</div>
-<div class="line"><span class="lineno">  583</span>            }</div>
-<div class="line"><span class="lineno">  584</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  585</span>            {</div>
-<div class="line"><span class="lineno">  586</span>                entry = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  587</span>            }</div>
-<div class="line"><span class="lineno">  588</span> </div>
-<div class="line"><span class="lineno">  589</span>            <span class="keywordflow">return</span> entry;</div>
-<div class="line"><span class="lineno">  590</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  598</span>        {</div>
+<div class="line"><span class="lineno">  599</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  600</span>            <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt; index; entry = entry._next)</div>
+<div class="line"><span class="lineno">  601</span>            {</div>
+<div class="line"><span class="lineno">  602</span>                ;</div>
+<div class="line"><span class="lineno">  603</span>            }</div>
+<div class="line"><span class="lineno">  604</span> </div>
+<div class="line"><span class="lineno">  605</span>            <span class="keywordflow">if</span> (entry._index == index)</div>
+<div class="line"><span class="lineno">  606</span>            {</div>
+<div class="line"><span class="lineno">  607</span>                entry.Remove();</div>
+<div class="line"><span class="lineno">  608</span>                _keyCount--;</div>
+<div class="line"><span class="lineno">  609</span>            }</div>
+<div class="line"><span class="lineno">  610</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  611</span>            {</div>
+<div class="line"><span class="lineno">  612</span>                entry = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  613</span>            }</div>
+<div class="line"><span class="lineno">  614</span> </div>
+<div class="line"><span class="lineno">  615</span>            <span class="keywordflow">return</span> entry;</div>
+<div class="line"><span class="lineno">  616</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -534,45 +580,45 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  531</span>        {</div>
-<div class="line"><span class="lineno">  532</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  533</span>            <span class="keywordflow">if</span> (_keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a> == _keyRoot || _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt; index)</div>
-<div class="line"><span class="lineno">  534</span>            {</div>
-<div class="line"><span class="lineno">  535</span>                entry = _keyRoot;</div>
-<div class="line"><span class="lineno">  536</span>            }</div>
-<div class="line"><span class="lineno">  537</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  538</span>            {</div>
-<div class="line"><span class="lineno">  539</span>                <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt;= index; entry = entry._next)</div>
-<div class="line"><span class="lineno">  540</span>                {</div>
-<div class="line"><span class="lineno">  541</span>                    ;</div>
-<div class="line"><span class="lineno">  542</span>                }</div>
-<div class="line"><span class="lineno">  543</span>            }</div>
-<div class="line"><span class="lineno">  544</span> </div>
-<div class="line"><span class="lineno">  545</span>            entry = entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>;</div>
-<div class="line"><span class="lineno">  546</span>            <span class="keywordflow">if</span> (entry._index != index)</div>
-<div class="line"><span class="lineno">  547</span>            {</div>
-<div class="line"><span class="lineno">  548</span>                _keyCount++;</div>
-<div class="line"><span class="lineno">  549</span>                entry.InsertAfter(entry = <span class="keyword">new</span> KeyframeEntry(index, value));</div>
-<div class="line"><span class="lineno">  550</span>            }</div>
-<div class="line"><span class="lineno">  551</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  552</span>            {</div>
-<div class="line"><span class="lineno">  553</span>                <span class="comment">//There can be up to two keyframes with the same index.</span></div>
-<div class="line"><span class="lineno">  554</span>                <span class="keywordflow">if</span> (!parsing)</div>
-<div class="line"><span class="lineno">  555</span>                {</div>
-<div class="line"><span class="lineno">  556</span>                    entry._value = value; <span class="comment">//Do this when editing</span></div>
-<div class="line"><span class="lineno">  557</span>                }</div>
-<div class="line"><span class="lineno">  558</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  559</span>                {</div>
-<div class="line"><span class="lineno">  560</span>                    <span class="comment">//And this when parsing</span></div>
-<div class="line"><span class="lineno">  561</span>                    _keyCount++;</div>
-<div class="line"><span class="lineno">  562</span>                    KeyframeEntry temp = <span class="keyword">new</span> KeyframeEntry(index, value);</div>
-<div class="line"><span class="lineno">  563</span>                    entry.InsertAfter(temp);</div>
-<div class="line"><span class="lineno">  564</span>                    entry = temp;</div>
-<div class="line"><span class="lineno">  565</span>                }</div>
-<div class="line"><span class="lineno">  566</span>            }</div>
-<div class="line"><span class="lineno">  567</span> </div>
-<div class="line"><span class="lineno">  568</span>            <span class="keywordflow">return</span> entry;</div>
-<div class="line"><span class="lineno">  569</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  557</span>        {</div>
+<div class="line"><span class="lineno">  558</span>            KeyframeEntry entry = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  559</span>            <span class="keywordflow">if</span> (_keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a> == _keyRoot || _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt; index)</div>
+<div class="line"><span class="lineno">  560</span>            {</div>
+<div class="line"><span class="lineno">  561</span>                entry = _keyRoot;</div>
+<div class="line"><span class="lineno">  562</span>            }</div>
+<div class="line"><span class="lineno">  563</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  564</span>            {</div>
+<div class="line"><span class="lineno">  565</span>                <span class="keywordflow">for</span> (entry = _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#af89389da5087e8c243418f56288a8e86">_next</a>; entry != _keyRoot &amp;&amp; entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &lt;= index; entry = entry._next)</div>
+<div class="line"><span class="lineno">  566</span>                {</div>
+<div class="line"><span class="lineno">  567</span>                    ;</div>
+<div class="line"><span class="lineno">  568</span>                }</div>
+<div class="line"><span class="lineno">  569</span>            }</div>
+<div class="line"><span class="lineno">  570</span> </div>
+<div class="line"><span class="lineno">  571</span>            entry = entry.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>;</div>
+<div class="line"><span class="lineno">  572</span>            <span class="keywordflow">if</span> (entry._index != index)</div>
+<div class="line"><span class="lineno">  573</span>            {</div>
+<div class="line"><span class="lineno">  574</span>                _keyCount++;</div>
+<div class="line"><span class="lineno">  575</span>                entry.InsertAfter(entry = <span class="keyword">new</span> KeyframeEntry(index, value));</div>
+<div class="line"><span class="lineno">  576</span>            }</div>
+<div class="line"><span class="lineno">  577</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  578</span>            {</div>
+<div class="line"><span class="lineno">  579</span>                <span class="comment">//There can be up to two keyframes with the same index.</span></div>
+<div class="line"><span class="lineno">  580</span>                <span class="keywordflow">if</span> (!parsing)</div>
+<div class="line"><span class="lineno">  581</span>                {</div>
+<div class="line"><span class="lineno">  582</span>                    entry._value = value; <span class="comment">//Do this when editing</span></div>
+<div class="line"><span class="lineno">  583</span>                }</div>
+<div class="line"><span class="lineno">  584</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  585</span>                {</div>
+<div class="line"><span class="lineno">  586</span>                    <span class="comment">//And this when parsing</span></div>
+<div class="line"><span class="lineno">  587</span>                    _keyCount++;</div>
+<div class="line"><span class="lineno">  588</span>                    KeyframeEntry temp = <span class="keyword">new</span> KeyframeEntry(index, value);</div>
+<div class="line"><span class="lineno">  589</span>                    entry.InsertAfter(temp);</div>
+<div class="line"><span class="lineno">  590</span>                    entry = temp;</div>
+<div class="line"><span class="lineno">  591</span>                }</div>
+<div class="line"><span class="lineno">  592</span>            }</div>
+<div class="line"><span class="lineno">  593</span> </div>
+<div class="line"><span class="lineno">  594</span>            <span class="keywordflow">return</span> entry;</div>
+<div class="line"><span class="lineno">  595</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -596,19 +642,19 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  369</span>        {</div>
-<div class="line"><span class="lineno">  370</span>            <span class="keyword">get</span> =&gt; _frameLimit;</div>
-<div class="line"><span class="lineno">  371</span>            <span class="keyword">set</span></div>
-<div class="line"><span class="lineno">  372</span>            {</div>
-<div class="line"><span class="lineno">  373</span>                _frameLimit = value;</div>
-<div class="line"><span class="lineno">  374</span>                <span class="keywordflow">while</span> (_keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &gt;= value)</div>
-<div class="line"><span class="lineno">  375</span>                {</div>
-<div class="line"><span class="lineno">  376</span>                    _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a45c6439b172c594ae6d596d67679d453">Remove</a>();</div>
-<div class="line"><span class="lineno">  377</span>                    _keyCount--;</div>
-<div class="line"><span class="lineno">  378</span>                }</div>
-<div class="line"><span class="lineno">  379</span>            }</div>
-<div class="line"><span class="lineno">  380</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a45c6439b172c594ae6d596d67679d453"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a45c6439b172c594ae6d596d67679d453">BrawlLib.Wii.Animations.KeyframeEntry.Remove</a></div><div class="ttdeci">void Remove()</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:227</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  395</span>        {</div>
+<div class="line"><span class="lineno">  396</span>            <span class="keyword">get</span> =&gt; _frameLimit;</div>
+<div class="line"><span class="lineno">  397</span>            <span class="keyword">set</span></div>
+<div class="line"><span class="lineno">  398</span>            {</div>
+<div class="line"><span class="lineno">  399</span>                _frameLimit = value;</div>
+<div class="line"><span class="lineno">  400</span>                <span class="keywordflow">while</span> (_keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a576ceb224dcc8bfb6b4a36cc6635217c">_index</a> &gt;= value)</div>
+<div class="line"><span class="lineno">  401</span>                {</div>
+<div class="line"><span class="lineno">  402</span>                    _keyRoot.<a class="code hl_variable" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a464c0883066d12d3b1fae0a5a8dfce5f">_prev</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a45c6439b172c594ae6d596d67679d453">Remove</a>();</div>
+<div class="line"><span class="lineno">  403</span>                    _keyCount--;</div>
+<div class="line"><span class="lineno">  404</span>                }</div>
+<div class="line"><span class="lineno">  405</span>            }</div>
+<div class="line"><span class="lineno">  406</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry_html_a45c6439b172c594ae6d596d67679d453"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_entry.html#a45c6439b172c594ae6d596d67679d453">BrawlLib.Wii.Animations.KeyframeEntry.Remove</a></div><div class="ttdeci">void Remove()</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:253</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -631,10 +677,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  361</span>        {</div>
-<div class="line"><span class="lineno">  362</span>            <span class="keyword">get</span> =&gt; _looped;</div>
-<div class="line"><span class="lineno">  363</span>            <span class="keyword">set</span> =&gt; _looped = value;</div>
-<div class="line"><span class="lineno">  364</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  387</span>        {</div>
+<div class="line"><span class="lineno">  388</span>            <span class="keyword">get</span> =&gt; _looped;</div>
+<div class="line"><span class="lineno">  389</span>            <span class="keyword">set</span> =&gt; _looped = value;</div>
+<div class="line"><span class="lineno">  390</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -657,12 +703,12 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  383</span>        {</div>
-<div class="line"><span class="lineno">  384</span>            <span class="keyword">get</span> =&gt; <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a46f5b8677f10a43909582747883e8966">GetFrameValue</a>(index);</div>
-<div class="line"><span class="lineno">  385</span>            <span class="keyword">set</span> =&gt; <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a399ab7d5204e935ba163d1a32bf412f6">SetFrameValue</a>(index, value);</div>
-<div class="line"><span class="lineno">  386</span>        }</div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a399ab7d5204e935ba163d1a32bf412f6"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a399ab7d5204e935ba163d1a32bf412f6">BrawlLib.Wii.Animations.KeyframeArray.SetFrameValue</a></div><div class="ttdeci">KeyframeEntry SetFrameValue(int index, float value, bool parsing=false)</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:530</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a46f5b8677f10a43909582747883e8966"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a46f5b8677f10a43909582747883e8966">BrawlLib.Wii.Animations.KeyframeArray.GetFrameValue</a></div><div class="ttdeci">float GetFrameValue(float index, bool returnOutValue=false)</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:465</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  409</span>        {</div>
+<div class="line"><span class="lineno">  410</span>            <span class="keyword">get</span> =&gt; <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a46f5b8677f10a43909582747883e8966">GetFrameValue</a>(index);</div>
+<div class="line"><span class="lineno">  411</span>            <span class="keyword">set</span> =&gt; <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a399ab7d5204e935ba163d1a32bf412f6">SetFrameValue</a>(index, value);</div>
+<div class="line"><span class="lineno">  412</span>        }</div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a399ab7d5204e935ba163d1a32bf412f6"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a399ab7d5204e935ba163d1a32bf412f6">BrawlLib.Wii.Animations.KeyframeArray.SetFrameValue</a></div><div class="ttdeci">KeyframeEntry SetFrameValue(int index, float value, bool parsing=false)</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:556</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array_html_a46f5b8677f10a43909582747883e8966"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_animations_1_1_keyframe_array.html#a46f5b8677f10a43909582747883e8966">BrawlLib.Wii.Animations.KeyframeArray.GetFrameValue</a></div><div class="ttdeci">float GetFrameValue(float index, bool returnOutValue=false)</div><div class="ttdef"><b>Definition:</b> KeyframeCollection.cs:491</div></div>
 </div><!-- fragment -->
 </div>
 </div>

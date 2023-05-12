@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.39</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -280,20 +280,23 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   92</span>        {</div>
-<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">if</span> (Program.OpenFile(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad7017693ab118bf88f0a155dbf1a4b86">Images</a>, out <span class="keywordtype">string</span> path))</div>
+<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">if</span> (Program.OpenFiles(<a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html">FileFilters</a>.<a class="code hl_variable" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#ad7017693ab118bf88f0a155dbf1a4b86">Images</a>, out <span class="keywordtype">string</span>[] paths) &gt; 0)</div>
 <div class="line"><span class="lineno">   94</span>            {</div>
-<div class="line"><span class="lineno">   95</span>                <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a> dlg = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a>())</div>
+<div class="line"><span class="lineno">   95</span>                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> path <span class="keywordflow">in</span> paths)</div>
 <div class="line"><span class="lineno">   96</span>                {</div>
-<div class="line"><span class="lineno">   97</span>                    dlg.ImageSource = path;</div>
-<div class="line"><span class="lineno">   98</span>                    <span class="keywordflow">if</span> (dlg.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#a06d84530672b848a25f613f25bef274d">ShowDialog</a>(<a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>, <a class="code hl_property" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a12ccdbf802f85529d36ad5d9d6aef024">Resource</a> as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_f_t_node.html">REFTNode</a>) == DialogResult.OK)</div>
-<div class="line"><span class="lineno">   99</span>                    {</div>
-<div class="line"><span class="lineno">  100</span>                        <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(dlg.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#ab0d2e30637bfda7f96caa67e273ca614">REFTTextureNode</a>, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  101</span>                        w.EnsureVisible();</div>
-<div class="line"><span class="lineno">  102</span>                        w.TreeView.SelectedNode = w;</div>
-<div class="line"><span class="lineno">  103</span>                    }</div>
-<div class="line"><span class="lineno">  104</span>                }</div>
-<div class="line"><span class="lineno">  105</span>            }</div>
-<div class="line"><span class="lineno">  106</span>        }</div>
+<div class="line"><span class="lineno">   97</span>                    <span class="keyword">using</span> (<a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a> dlg = <span class="keyword">new</span> <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html">TextureConverterDialog</a>())</div>
+<div class="line"><span class="lineno">   98</span>                    {</div>
+<div class="line"><span class="lineno">   99</span>                        dlg.ImageSource = path;</div>
+<div class="line"><span class="lineno">  100</span>                        <span class="keywordflow">if</span> (dlg.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#a06d84530672b848a25f613f25bef274d">ShowDialog</a>(<a class="code hl_class" href="class_brawl_crate_1_1_u_i_1_1_main_form.html">MainForm</a>.<a class="code hl_property" href="class_brawl_crate_1_1_u_i_1_1_main_form.html#ac31238e8420903855e77a7289986aece">Instance</a>, <a class="code hl_property" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a12ccdbf802f85529d36ad5d9d6aef024">Resource</a> as <a class="code hl_class" href="class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_r_e_f_t_node.html">REFTNode</a>) == DialogResult.OK)</div>
+<div class="line"><span class="lineno">  101</span>                        {</div>
+<div class="line"><span class="lineno">  102</span>                            <a class="code hl_function" href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BaseWrapper</a> w = FindResource(dlg.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_windows_1_1_forms_1_1_texture_converter_dialog.html#ab0d2e30637bfda7f96caa67e273ca614">REFTTextureNode</a>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  103</span>                            w.EnsureVisible();</div>
+<div class="line"><span class="lineno">  104</span>                            w.TreeView.SelectedNode = w;</div>
+<div class="line"><span class="lineno">  105</span>                        }</div>
+<div class="line"><span class="lineno">  106</span>                    }</div>
+<div class="line"><span class="lineno">  107</span>                }</div>
+<div class="line"><span class="lineno">  108</span>            }</div>
+<div class="line"><span class="lineno">  109</span>        }</div>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_a12ccdbf802f85529d36ad5d9d6aef024"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#a12ccdbf802f85529d36ad5d9d6aef024">BrawlCrate.NodeWrappers.BaseWrapper.Resource</a></div><div class="ttdeci">ResourceNode Resource</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:77</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_node_wrappers_1_1_base_wrapper_html_acf0f32bbb4a0e8465b5d5d4dce8e7c99"><div class="ttname"><a href="class_brawl_crate_1_1_node_wrappers_1_1_base_wrapper.html#acf0f32bbb4a0e8465b5d5d4dce8e7c99">BrawlCrate.NodeWrappers.BaseWrapper.BaseWrapper</a></div><div class="ttdeci">BaseWrapper()</div><div class="ttdef"><b>Definition:</b> BaseWrapper.cs:79</div></div>
 <div class="ttc" id="aclass_brawl_crate_1_1_u_i_1_1_main_form_html"><div class="ttname"><a href="class_brawl_crate_1_1_u_i_1_1_main_form.html">BrawlCrate.UI.MainForm</a></div><div class="ttdef"><b>Definition:</b> MainForm.cs:34</div></div>

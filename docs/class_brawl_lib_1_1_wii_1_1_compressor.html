@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.39</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -155,40 +155,40 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  231</span>        {</div>
-<div class="line"><span class="lineno">  232</span>            <span class="keywordflow">switch</span> (type)</div>
-<div class="line"><span class="lineno">  233</span>            {</div>
-<div class="line"><span class="lineno">  234</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.LZ77:</div>
-<div class="line"><span class="lineno">  235</span>                {</div>
-<div class="line"><span class="lineno">  236</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html">LZ77</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a1de1680aa07f49c908ceb6506bde7827">Compact</a>(srcAddr, srcLen, outStream, r, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  237</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  238</span>                }</div>
-<div class="line"><span class="lineno">  239</span> </div>
-<div class="line"><span class="lineno">  240</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.ExtendedLZ77:</div>
-<div class="line"><span class="lineno">  241</span>                {</div>
-<div class="line"><span class="lineno">  242</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html">LZ77</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a1de1680aa07f49c908ceb6506bde7827">Compact</a>(srcAddr, srcLen, outStream, r, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  243</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  244</span>                }</div>
-<div class="line"><span class="lineno">  245</span> </div>
-<div class="line"><span class="lineno">  246</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLength:</div>
-<div class="line"><span class="lineno">  247</span>                {</div>
-<div class="line"><span class="lineno">  248</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#af2f5b932c57ca86b41741db4ec1425c1">Compact</a>(srcAddr, srcLen, outStream, r);</div>
-<div class="line"><span class="lineno">  249</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  250</span>                }</div>
-<div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAZ0:</div>
-<div class="line"><span class="lineno">  253</span>                {</div>
-<div class="line"><span class="lineno">  254</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a773403cb2edfc9cec491adb67420ecfd">CompactYAZ0</a>(srcAddr, srcLen, outStream, r);</div>
-<div class="line"><span class="lineno">  255</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  256</span>                }</div>
-<div class="line"><span class="lineno">  257</span> </div>
-<div class="line"><span class="lineno">  258</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAY0:</div>
-<div class="line"><span class="lineno">  259</span>                {</div>
-<div class="line"><span class="lineno">  260</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a2aad2f6a545ca92875c275686cc08bb2">CompactYAY0</a>(srcAddr, srcLen, outStream, r);</div>
-<div class="line"><span class="lineno">  261</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  262</span>                }</div>
-<div class="line"><span class="lineno">  263</span>            }</div>
-<div class="line"><span class="lineno">  264</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>        {</div>
+<div class="line"><span class="lineno">  236</span>            <span class="keywordflow">switch</span> (type)</div>
+<div class="line"><span class="lineno">  237</span>            {</div>
+<div class="line"><span class="lineno">  238</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.LZ77:</div>
+<div class="line"><span class="lineno">  239</span>                {</div>
+<div class="line"><span class="lineno">  240</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html">LZ77</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a1de1680aa07f49c908ceb6506bde7827">Compact</a>(srcAddr, srcLen, outStream, r, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  241</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  242</span>                }</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.ExtendedLZ77:</div>
+<div class="line"><span class="lineno">  245</span>                {</div>
+<div class="line"><span class="lineno">  246</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html">LZ77</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a1de1680aa07f49c908ceb6506bde7827">Compact</a>(srcAddr, srcLen, outStream, r, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  247</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  248</span>                }</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLength:</div>
+<div class="line"><span class="lineno">  251</span>                {</div>
+<div class="line"><span class="lineno">  252</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#af2f5b932c57ca86b41741db4ec1425c1">Compact</a>(srcAddr, srcLen, outStream, r);</div>
+<div class="line"><span class="lineno">  253</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  254</span>                }</div>
+<div class="line"><span class="lineno">  255</span> </div>
+<div class="line"><span class="lineno">  256</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAZ0:</div>
+<div class="line"><span class="lineno">  257</span>                {</div>
+<div class="line"><span class="lineno">  258</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a773403cb2edfc9cec491adb67420ecfd">CompactYAZ0</a>(srcAddr, srcLen, outStream, r);</div>
+<div class="line"><span class="lineno">  259</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  260</span>                }</div>
+<div class="line"><span class="lineno">  261</span> </div>
+<div class="line"><span class="lineno">  262</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAY0:</div>
+<div class="line"><span class="lineno">  263</span>                {</div>
+<div class="line"><span class="lineno">  264</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a2aad2f6a545ca92875c275686cc08bb2">CompactYAY0</a>(srcAddr, srcLen, outStream, r);</div>
+<div class="line"><span class="lineno">  265</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  266</span>                }</div>
+<div class="line"><span class="lineno">  267</span>            }</div>
+<div class="line"><span class="lineno">  268</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html">BrawlLib.Wii.Compression.LZ77</a></div><div class="ttdef"><b>Definition:</b> LZ77.cs:13</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77_html_a1de1680aa07f49c908ceb6506bde7827"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#a1de1680aa07f49c908ceb6506bde7827">BrawlLib.Wii.Compression.LZ77.Compact</a></div><div class="ttdeci">static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r, bool extendedFormat)</div><div class="ttdef"><b>Definition:</b> LZ77.cs:250</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_run_length_html"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">BrawlLib.Wii.Compression.RunLength</a></div><div class="ttdef"><b>Definition:</b> RunLength.cs:14</div></div>
@@ -238,28 +238,28 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  196</span>        {</div>
-<div class="line"><span class="lineno">  197</span>            <span class="keywordflow">switch</span> (header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#ac57dfbc4e052d72d46828aa94f0b1899">Algorithm</a>)</div>
-<div class="line"><span class="lineno">  198</span>            {</div>
-<div class="line"><span class="lineno">  199</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.LZ77:</div>
-<div class="line"><span class="lineno">  200</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.ExtendedLZ77:</div>
-<div class="line"><span class="lineno">  201</span>                {</div>
-<div class="line"><span class="lineno">  202</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html">LZ77</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#aea54d364a56078fd239c868030b810da">Expand</a>(header, dstAddr, dstLen);</div>
-<div class="line"><span class="lineno">  203</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  204</span>                }</div>
-<div class="line"><span class="lineno">  205</span> </div>
-<div class="line"><span class="lineno">  206</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLength:</div>
-<div class="line"><span class="lineno">  207</span>                {</div>
-<div class="line"><span class="lineno">  208</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a235c2b8f1b596af36c907df0dd20739c">Expand</a>(header, dstAddr, dstLen);</div>
-<div class="line"><span class="lineno">  209</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  210</span>                }</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>                <span class="comment">//case CompressionType.Huffman: { Huffman.Expand(header, dstAddr, dstLen); break; }</span></div>
-<div class="line"><span class="lineno">  213</span>                <span class="comment">//case CompressionType.Differential: { Differential.Expand(header, dstAddr, dstLen); break; }</span></div>
-<div class="line"><span class="lineno">  214</span>                <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  215</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidCompressionException(<span class="stringliteral">&quot;Unknown compression type.&quot;</span>);</div>
-<div class="line"><span class="lineno">  216</span>            }</div>
-<div class="line"><span class="lineno">  217</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  200</span>        {</div>
+<div class="line"><span class="lineno">  201</span>            <span class="keywordflow">switch</span> (header-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#ac57dfbc4e052d72d46828aa94f0b1899">Algorithm</a>)</div>
+<div class="line"><span class="lineno">  202</span>            {</div>
+<div class="line"><span class="lineno">  203</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.LZ77:</div>
+<div class="line"><span class="lineno">  204</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.ExtendedLZ77:</div>
+<div class="line"><span class="lineno">  205</span>                {</div>
+<div class="line"><span class="lineno">  206</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html">LZ77</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#aea54d364a56078fd239c868030b810da">Expand</a>(header, dstAddr, dstLen);</div>
+<div class="line"><span class="lineno">  207</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  208</span>                }</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLength:</div>
+<div class="line"><span class="lineno">  211</span>                {</div>
+<div class="line"><span class="lineno">  212</span>                    <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a235c2b8f1b596af36c907df0dd20739c">Expand</a>(header, dstAddr, dstLen);</div>
+<div class="line"><span class="lineno">  213</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  214</span>                }</div>
+<div class="line"><span class="lineno">  215</span> </div>
+<div class="line"><span class="lineno">  216</span>                <span class="comment">//case CompressionType.Huffman: { Huffman.Expand(header, dstAddr, dstLen); break; }</span></div>
+<div class="line"><span class="lineno">  217</span>                <span class="comment">//case CompressionType.Differential: { Differential.Expand(header, dstAddr, dstLen); break; }</span></div>
+<div class="line"><span class="lineno">  218</span>                <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  219</span>                    <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidCompressionException(<span class="stringliteral">&quot;Unknown compression type.&quot;</span>);</div>
+<div class="line"><span class="lineno">  220</span>            }</div>
+<div class="line"><span class="lineno">  221</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77_html_aea54d364a56078fd239c868030b810da"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_l_z77.html#aea54d364a56078fd239c868030b810da">BrawlLib.Wii.Compression.LZ77.Expand</a></div><div class="ttdeci">static void Expand(CompressionHeader *header, VoidPtr dstAddress, int dstLen)</div><div class="ttdef"><b>Definition:</b> LZ77.cs:263</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_run_length_html_a235c2b8f1b596af36c907df0dd20739c"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a235c2b8f1b596af36c907df0dd20739c">BrawlLib.Wii.Compression.RunLength.Expand</a></div><div class="ttdeci">static void Expand(CompressionHeader *header, VoidPtr dstAddress, int dstLen)</div><div class="ttdef"><b>Definition:</b> RunLength.cs:345</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header_html_ac57dfbc4e052d72d46828aa94f0b1899"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#ac57dfbc4e052d72d46828aa94f0b1899">BrawlLib.Wii.Compression.CompressionHeader.Algorithm</a></div><div class="ttdeci">CompressionType Algorithm</div><div class="ttdef"><b>Definition:</b> CompressionHeader.cs:30</div></div>
@@ -305,9 +305,9 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  225</span>        {</div>
-<div class="line"><span class="lineno">  226</span>            <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a206cf744072f690106af540bd49d493e">ExpandYAY0</a>(header, dstAddr, dstLen);</div>
-<div class="line"><span class="lineno">  227</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  229</span>        {</div>
+<div class="line"><span class="lineno">  230</span>            <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a206cf744072f690106af540bd49d493e">ExpandYAY0</a>(header, dstAddr, dstLen);</div>
+<div class="line"><span class="lineno">  231</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_run_length_html_a206cf744072f690106af540bd49d493e"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a206cf744072f690106af540bd49d493e">BrawlLib.Wii.Compression.RunLength.ExpandYAY0</a></div><div class="ttdeci">static void ExpandYAY0(YAY0 *header, VoidPtr dstAddress, int dstLen)</div><div class="ttdef"><b>Definition:</b> RunLength.cs:335</div></div>
 </div><!-- fragment -->
 </div>
@@ -351,9 +351,9 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  220</span>        {</div>
-<div class="line"><span class="lineno">  221</span>            <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a5372b9563084cce88c3ae1256ea90b39">ExpandYAZ0</a>(header, dstAddr, dstLen);</div>
-<div class="line"><span class="lineno">  222</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  224</span>        {</div>
+<div class="line"><span class="lineno">  225</span>            <a class="code hl_class" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html">RunLength</a>.<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a5372b9563084cce88c3ae1256ea90b39">ExpandYAZ0</a>(header, dstAddr, dstLen);</div>
+<div class="line"><span class="lineno">  226</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compression_1_1_run_length_html_a5372b9563084cce88c3ae1256ea90b39"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compression_1_1_run_length.html#a5372b9563084cce88c3ae1256ea90b39">BrawlLib.Wii.Compression.RunLength.ExpandYAZ0</a></div><div class="ttdeci">static void ExpandYAZ0(YAZ0 *header, VoidPtr dstAddress, int dstLen)</div><div class="ttdef"><b>Definition:</b> RunLength.cs:330</div></div>
 </div><!-- fragment -->
 </div>
@@ -424,37 +424,41 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <div class="fragment"><div class="line"><span class="lineno">   63</span>        {</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a> compTag = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a>*) addr;</div>
-<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html#a9181d5833c887c27f2639b049cde5a42">Tag</a>)</div>
-<div class="line"><span class="lineno">   66</span>            {</div>
-<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAZ0;</div>
-<div class="line"><span class="lineno">   68</span>            }</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html#a04881358ea3f711cab4b5ab9fa938d2a">Tag</a>)</div>
-<div class="line"><span class="lineno">   71</span>            {</div>
-<div class="line"><span class="lineno">   72</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAY0;</div>
-<div class="line"><span class="lineno">   73</span>            }</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>* cmpr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>*) addr;</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>            <span class="keywordflow">if</span> (cmpr-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#a14ac5f51b4116d240b0c73e025c55a54">ExpandedSize</a> &lt; length)</div>
-<div class="line"><span class="lineno">   78</span>            {</div>
-<div class="line"><span class="lineno">   79</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.None;</div>
-<div class="line"><span class="lineno">   80</span>            }</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">if</span> (!cmpr-&gt;<a class="code hl_function" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#aeb8a4e7daaaed3a4e0b91a002a214e9d">HasLegitCompression</a>())</div>
-<div class="line"><span class="lineno">   83</span>            {</div>
-<div class="line"><span class="lineno">   84</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.None;</div>
-<div class="line"><span class="lineno">   85</span>            }</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>            <span class="comment">//Check to make sure we&#39;re not reading a tag</span></div>
-<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">if</span> (IsTag((<span class="keywordtype">byte</span>*) addr))</div>
-<div class="line"><span class="lineno">   89</span>            {</div>
-<div class="line"><span class="lineno">   90</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.None;</div>
-<div class="line"><span class="lineno">   91</span>            }</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>            <span class="keywordflow">return</span> cmpr-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#ac57dfbc4e052d72d46828aa94f0b1899">Algorithm</a>;</div>
-<div class="line"><span class="lineno">   94</span>        }</div>
+<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">if</span> (length &lt; 4)</div>
+<div class="line"><span class="lineno">   65</span>            {</div>
+<div class="line"><span class="lineno">   66</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.None;</div>
+<div class="line"><span class="lineno">   67</span>            }</div>
+<div class="line"><span class="lineno">   68</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a> compTag = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a>*) addr;</div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html#a9181d5833c887c27f2639b049cde5a42">Tag</a>)</div>
+<div class="line"><span class="lineno">   70</span>            {</div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAZ0;</div>
+<div class="line"><span class="lineno">   72</span>            }</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html#a04881358ea3f711cab4b5ab9fa938d2a">Tag</a>)</div>
+<div class="line"><span class="lineno">   75</span>            {</div>
+<div class="line"><span class="lineno">   76</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAY0;</div>
+<div class="line"><span class="lineno">   77</span>            }</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>* cmpr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>*) addr;</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">if</span> (cmpr-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#a14ac5f51b4116d240b0c73e025c55a54">ExpandedSize</a> &lt; length)</div>
+<div class="line"><span class="lineno">   82</span>            {</div>
+<div class="line"><span class="lineno">   83</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.None;</div>
+<div class="line"><span class="lineno">   84</span>            }</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">if</span> (!cmpr-&gt;<a class="code hl_function" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#aeb8a4e7daaaed3a4e0b91a002a214e9d">HasLegitCompression</a>())</div>
+<div class="line"><span class="lineno">   87</span>            {</div>
+<div class="line"><span class="lineno">   88</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.None;</div>
+<div class="line"><span class="lineno">   89</span>            }</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>            <span class="comment">//Check to make sure we&#39;re not reading a tag</span></div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span> (IsTag((<span class="keywordtype">byte</span>*) addr))</div>
+<div class="line"><span class="lineno">   93</span>            {</div>
+<div class="line"><span class="lineno">   94</span>                <span class="keywordflow">return</span> <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.None;</div>
+<div class="line"><span class="lineno">   95</span>            }</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>            <span class="keywordflow">return</span> cmpr-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#ac57dfbc4e052d72d46828aa94f0b1899">Algorithm</a>;</div>
+<div class="line"><span class="lineno">   98</span>        }</div>
 <div class="ttc" id="astruct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag_html"><div class="ttname"><a href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BrawlLib.SSBB.Types.BinTag</a></div><div class="ttdef"><b>Definition:</b> Common.cs:14</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header_html"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">BrawlLib.Wii.Compression.CompressionHeader</a></div><div class="ttdef"><b>Definition:</b> CompressionHeader.cs:24</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header_html_a14ac5f51b4116d240b0c73e025c55a54"><div class="ttname"><a href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#a14ac5f51b4116d240b0c73e025c55a54">BrawlLib.Wii.Compression.CompressionHeader.ExpandedSize</a></div><div class="ttdeci">uint ExpandedSize</div><div class="ttdef"><b>Definition:</b> CompressionHeader.cs:72</div></div>
@@ -499,20 +503,20 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   97</span>        {</div>
-<div class="line"><span class="lineno">   98</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a> compTag = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a>*) addr;</div>
-<div class="line"><span class="lineno">   99</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html#a9181d5833c887c27f2639b049cde5a42">Tag</a>)</div>
-<div class="line"><span class="lineno">  100</span>            {</div>
-<div class="line"><span class="lineno">  101</span>                <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>*) addr)-&gt;_unCompDataLen;</div>
-<div class="line"><span class="lineno">  102</span>            }</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html#a04881358ea3f711cab4b5ab9fa938d2a">Tag</a>)</div>
-<div class="line"><span class="lineno">  105</span>            {</div>
-<div class="line"><span class="lineno">  106</span>                <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>*) addr)-&gt;_unCompDataLen;</div>
-<div class="line"><span class="lineno">  107</span>            }</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>            <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>*) addr)-&gt;ExpandedSize;</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>        {</div>
+<div class="line"><span class="lineno">  102</span>            <a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a> compTag = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_bin_tag.html">BinTag</a>*) addr;</div>
+<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html#a9181d5833c887c27f2639b049cde5a42">Tag</a>)</div>
+<div class="line"><span class="lineno">  104</span>            {</div>
+<div class="line"><span class="lineno">  105</span>                <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>*) addr)-&gt;_unCompDataLen;</div>
+<div class="line"><span class="lineno">  106</span>            }</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">if</span> (compTag == <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>.<a class="code hl_variable" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html#a04881358ea3f711cab4b5ab9fa938d2a">Tag</a>)</div>
+<div class="line"><span class="lineno">  109</span>            {</div>
+<div class="line"><span class="lineno">  110</span>                <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>*) addr)-&gt;_unCompDataLen;</div>
+<div class="line"><span class="lineno">  111</span>            }</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>            <span class="keywordflow">return</span> ((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>*) addr)-&gt;ExpandedSize;</div>
+<div class="line"><span class="lineno">  114</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -578,53 +582,53 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  152</span>        {</div>
-<div class="line"><span class="lineno">  153</span>            <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a> decompressedMap = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  154</span>            <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a> algorithm = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a36c30b06daf8bbc89c0bf7b0fed090b7">GetAlgorithm</a>(source);</div>
-<div class="line"><span class="lineno">  155</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a384529c631b5fc16d9feec9be9b63717">Supports</a>(source.Compression = algorithm))</div>
-<div class="line"><span class="lineno">  156</span>            {</div>
-<div class="line"><span class="lineno">  157</span>                <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  158</span>                {</div>
-<div class="line"><span class="lineno">  159</span>                    <span class="keywordflow">if</span> (doTest &amp;&amp; !Test(algorithm, source.Address))</div>
-<div class="line"><span class="lineno">  160</span>                    {</div>
-<div class="line"><span class="lineno">  161</span>                        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  162</span>                    }</div>
-<div class="line"><span class="lineno">  163</span> </div>
-<div class="line"><span class="lineno">  164</span>                    uint len = 0;</div>
-<div class="line"><span class="lineno">  165</span>                    <span class="keywordflow">if</span> (algorithm == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAZ0)</div>
-<div class="line"><span class="lineno">  166</span>                    {</div>
-<div class="line"><span class="lineno">  167</span>                        len = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (source.Address + 4);</div>
-<div class="line"><span class="lineno">  168</span>                        decompressedMap = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">FromTempFile</a>((<span class="keywordtype">int</span>) len);</div>
-<div class="line"><span class="lineno">  169</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">Expand</a>((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>*) source.Address, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2caf13e64ec2cf1469e2c3c54fd02cac">Length</a>);</div>
-<div class="line"><span class="lineno">  170</span>                    }</div>
-<div class="line"><span class="lineno">  171</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (algorithm == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAY0)</div>
-<div class="line"><span class="lineno">  172</span>                    {</div>
-<div class="line"><span class="lineno">  173</span>                        len = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (source.Address + 4);</div>
-<div class="line"><span class="lineno">  174</span>                        decompressedMap = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">FromTempFile</a>((<span class="keywordtype">int</span>) len);</div>
-<div class="line"><span class="lineno">  175</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">Expand</a>((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>*) source.Address, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2caf13e64ec2cf1469e2c3c54fd02cac">Length</a>);</div>
-<div class="line"><span class="lineno">  176</span>                    }</div>
-<div class="line"><span class="lineno">  177</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  178</span>                    {</div>
-<div class="line"><span class="lineno">  179</span>                        <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>* hdr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>*) source.Address;</div>
-<div class="line"><span class="lineno">  180</span>                        len = hdr-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#a14ac5f51b4116d240b0c73e025c55a54">ExpandedSize</a>;</div>
-<div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>                        decompressedMap = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">FromTempFile</a>((<span class="keywordtype">int</span>) len);</div>
-<div class="line"><span class="lineno">  183</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">Expand</a>(hdr, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2caf13e64ec2cf1469e2c3c54fd02cac">Length</a>);</div>
-<div class="line"><span class="lineno">  184</span>                    }</div>
-<div class="line"><span class="lineno">  185</span>                }</div>
-<div class="line"><span class="lineno">  186</span>                <span class="keywordflow">catch</span> (InvalidCompressionException e)</div>
-<div class="line"><span class="lineno">  187</span>                {</div>
-<div class="line"><span class="lineno">  188</span>                    MessageBox.Show(e.ToString());</div>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>        {</div>
+<div class="line"><span class="lineno">  157</span>            <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a> decompressedMap = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  158</span>            <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a> algorithm = <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a36c30b06daf8bbc89c0bf7b0fed090b7">GetAlgorithm</a>(source);</div>
+<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a384529c631b5fc16d9feec9be9b63717">Supports</a>(source.Compression = algorithm))</div>
+<div class="line"><span class="lineno">  160</span>            {</div>
+<div class="line"><span class="lineno">  161</span>                <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  162</span>                {</div>
+<div class="line"><span class="lineno">  163</span>                    <span class="keywordflow">if</span> (doTest &amp;&amp; !Test(algorithm, source.Address))</div>
+<div class="line"><span class="lineno">  164</span>                    {</div>
+<div class="line"><span class="lineno">  165</span>                        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  166</span>                    }</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>                    uint len = 0;</div>
+<div class="line"><span class="lineno">  169</span>                    <span class="keywordflow">if</span> (algorithm == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAZ0)</div>
+<div class="line"><span class="lineno">  170</span>                    {</div>
+<div class="line"><span class="lineno">  171</span>                        len = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (source.Address + 4);</div>
+<div class="line"><span class="lineno">  172</span>                        decompressedMap = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">FromTempFile</a>((<span class="keywordtype">int</span>) len);</div>
+<div class="line"><span class="lineno">  173</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">Expand</a>((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_z0.html">YAZ0</a>*) source.Address, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2caf13e64ec2cf1469e2c3c54fd02cac">Length</a>);</div>
+<div class="line"><span class="lineno">  174</span>                    }</div>
+<div class="line"><span class="lineno">  175</span>                    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (algorithm == <a class="code hl_enumeration" href="namespace_brawl_lib_1_1_wii_1_1_compression.html#a650883f83462880bfa587832ba342815">CompressionType</a>.RunLengthYAY0)</div>
+<div class="line"><span class="lineno">  176</span>                    {</div>
+<div class="line"><span class="lineno">  177</span>                        len = *(<a class="code hl_struct" href="struct_brawl_lib_1_1_internal_1_1buint.html">buint</a>*) (source.Address + 4);</div>
+<div class="line"><span class="lineno">  178</span>                        decompressedMap = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">FromTempFile</a>((<span class="keywordtype">int</span>) len);</div>
+<div class="line"><span class="lineno">  179</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">Expand</a>((<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_y_a_y0.html">YAY0</a>*) source.Address, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2caf13e64ec2cf1469e2c3c54fd02cac">Length</a>);</div>
+<div class="line"><span class="lineno">  180</span>                    }</div>
+<div class="line"><span class="lineno">  181</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  182</span>                    {</div>
+<div class="line"><span class="lineno">  183</span>                        <a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>* hdr = (<a class="code hl_struct" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html">CompressionHeader</a>*) source.Address;</div>
+<div class="line"><span class="lineno">  184</span>                        len = hdr-&gt;<a class="code hl_property" href="struct_brawl_lib_1_1_wii_1_1_compression_1_1_compression_header.html#a14ac5f51b4116d240b0c73e025c55a54">ExpandedSize</a>;</div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>                        decompressedMap = <a class="code hl_class" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">FileMap</a>.<a class="code hl_function" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">FromTempFile</a>((<span class="keywordtype">int</span>) len);</div>
+<div class="line"><span class="lineno">  187</span>                        <a class="code hl_function" href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">Expand</a>(hdr, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">Address</a>, decompressedMap.<a class="code hl_property" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2caf13e64ec2cf1469e2c3c54fd02cac">Length</a>);</div>
+<div class="line"><span class="lineno">  188</span>                    }</div>
 <div class="line"><span class="lineno">  189</span>                }</div>
-<div class="line"><span class="lineno">  190</span>            }</div>
-<div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>            <span class="keywordflow">return</span> decompressedMap;</div>
-<div class="line"><span class="lineno">  193</span>        }</div>
+<div class="line"><span class="lineno">  190</span>                <span class="keywordflow">catch</span> (InvalidCompressionException e)</div>
+<div class="line"><span class="lineno">  191</span>                {</div>
+<div class="line"><span class="lineno">  192</span>                    MessageBox.Show(e.ToString());</div>
+<div class="line"><span class="lineno">  193</span>                }</div>
+<div class="line"><span class="lineno">  194</span>            }</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>            <span class="keywordflow">return</span> decompressedMap;</div>
+<div class="line"><span class="lineno">  197</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html">BrawlLib.Internal.IO.FileMap</a></div><div class="ttdef"><b>Definition:</b> FileMap.cs:10</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a2caf13e64ec2cf1469e2c3c54fd02cac"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a2caf13e64ec2cf1469e2c3c54fd02cac">BrawlLib.Internal.IO.FileMap.Length</a></div><div class="ttdeci">int Length</div><div class="ttdef"><b>Definition:</b> FileMap.cs:19</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a798735b7141405d82cb670ae6790baea"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a798735b7141405d82cb670ae6790baea">BrawlLib.Internal.IO.FileMap.FromTempFile</a></div><div class="ttdeci">static FileMap FromTempFile(int length)</div><div class="ttdef"><b>Definition:</b> FileMap.cs:96</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ad16926b6ffda7cc52f6636d26a338511"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ad16926b6ffda7cc52f6636d26a338511">BrawlLib.Internal.IO.FileMap.Address</a></div><div class="ttdeci">VoidPtr Address</div><div class="ttdef"><b>Definition:</b> FileMap.cs:16</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compressor_html_a2bc9b8039c43f041f12152725e0f598b"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">BrawlLib.Wii.Compressor.Expand</a></div><div class="ttdeci">static void Expand(CompressionHeader *header, VoidPtr dstAddr, int dstLen)</div><div class="ttdef"><b>Definition:</b> Compressor.cs:195</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compressor_html_a2bc9b8039c43f041f12152725e0f598b"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compressor.html#a2bc9b8039c43f041f12152725e0f598b">BrawlLib.Wii.Compressor.Expand</a></div><div class="ttdeci">static void Expand(CompressionHeader *header, VoidPtr dstAddr, int dstLen)</div><div class="ttdef"><b>Definition:</b> Compressor.cs:199</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_wii_1_1_compressor_html_a384529c631b5fc16d9feec9be9b63717"><div class="ttname"><a href="class_brawl_lib_1_1_wii_1_1_compressor.html#a384529c631b5fc16d9feec9be9b63717">BrawlLib.Wii.Compressor.Supports</a></div><div class="ttdeci">static bool Supports(CompressionType type)</div><div class="ttdef"><b>Definition:</b> Compressor.cs:50</div></div>
 <div class="ttc" id="astruct_brawl_lib_1_1_internal_1_1buint_html"><div class="ttname"><a href="struct_brawl_lib_1_1_internal_1_1buint.html">BrawlLib.Internal.buint</a></div><div class="ttdef"><b>Definition:</b> BigEndianTypes.cs:59</div></div>
 </div><!-- fragment -->

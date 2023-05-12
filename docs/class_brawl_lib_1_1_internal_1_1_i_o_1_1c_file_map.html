@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.39</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -196,20 +196,20 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  233</span>        {</div>
-<div class="line"><span class="lineno">  234</span>            MemoryMappedFileAccess cProtect = protect == FileMapProtect.ReadWrite</div>
-<div class="line"><span class="lineno">  235</span>                ? MemoryMappedFileAccess.ReadWrite</div>
-<div class="line"><span class="lineno">  236</span>                : MemoryMappedFileAccess.Read;</div>
-<div class="line"><span class="lineno">  237</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">_length</a> = length;</div>
-<div class="line"><span class="lineno">  238</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">_mappedFile</a> = MemoryMappedFile.CreateFromFile(stream, stream.Name, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">_length</a>, cProtect, <span class="keyword">null</span>,</div>
-<div class="line"><span class="lineno">  239</span>                HandleInheritability.None, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  240</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">_mappedFileAccessor</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">_mappedFile</a>.CreateViewAccessor(offset, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">_length</a>, cProtect);</div>
-<div class="line"><span class="lineno">  241</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">_mappedFileAccessor</a>.SafeMemoryMappedViewHandle.DangerousGetHandle();</div>
-<div class="line"><span class="lineno">  242</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  236</span>        {</div>
+<div class="line"><span class="lineno">  237</span>            MemoryMappedFileAccess cProtect = protect == FileMapProtect.ReadWrite</div>
+<div class="line"><span class="lineno">  238</span>                ? MemoryMappedFileAccess.ReadWrite</div>
+<div class="line"><span class="lineno">  239</span>                : MemoryMappedFileAccess.Read;</div>
+<div class="line"><span class="lineno">  240</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">_length</a> = length;</div>
+<div class="line"><span class="lineno">  241</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">_mappedFile</a> = MemoryMappedFile.CreateFromFile(stream, stream.Name, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">_length</a>, cProtect, <span class="keyword">null</span>,</div>
+<div class="line"><span class="lineno">  242</span>                HandleInheritability.None, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  243</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">_mappedFileAccessor</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">_mappedFile</a>.CreateViewAccessor(offset, <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">_length</a>, cProtect);</div>
+<div class="line"><span class="lineno">  244</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">_addr</a> = <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">_mappedFileAccessor</a>.SafeMemoryMappedViewHandle.DangerousGetHandle();</div>
+<div class="line"><span class="lineno">  245</span>        }</div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_a4a4c95bfa86ea2a2f7276d73128f209e"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#a4a4c95bfa86ea2a2f7276d73128f209e">BrawlLib.Internal.IO.FileMap._addr</a></div><div class="ttdeci">VoidPtr _addr</div><div class="ttdef"><b>Definition:</b> FileMap.cs:11</div></div>
 <div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map_html_ac61ac90ba661af602ab93b34a32bf24d"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ac61ac90ba661af602ab93b34a32bf24d">BrawlLib.Internal.IO.FileMap._length</a></div><div class="ttdeci">int _length</div><div class="ttdef"><b>Definition:</b> FileMap.cs:12</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map_html_a11b6e2613ee20435f2983a107e5940f0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">BrawlLib.Internal.IO.cFileMap._mappedFile</a></div><div class="ttdeci">MemoryMappedFile _mappedFile</div><div class="ttdef"><b>Definition:</b> FileMap.cs:229</div></div>
-<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map_html_aeb13a1586ca427f88a8a86b7b84091ad"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">BrawlLib.Internal.IO.cFileMap._mappedFileAccessor</a></div><div class="ttdeci">MemoryMappedViewAccessor _mappedFileAccessor</div><div class="ttdef"><b>Definition:</b> FileMap.cs:230</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map_html_a11b6e2613ee20435f2983a107e5940f0"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">BrawlLib.Internal.IO.cFileMap._mappedFile</a></div><div class="ttdeci">MemoryMappedFile _mappedFile</div><div class="ttdef"><b>Definition:</b> FileMap.cs:232</div></div>
+<div class="ttc" id="aclass_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map_html_aeb13a1586ca427f88a8a86b7b84091ad"><div class="ttname"><a href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">BrawlLib.Internal.IO.cFileMap._mappedFileAccessor</a></div><div class="ttdeci">MemoryMappedViewAccessor _mappedFileAccessor</div><div class="ttdef"><b>Definition:</b> FileMap.cs:233</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -238,13 +238,13 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1_file_map.html#ae8ece53e34a2e446cdb98a3f0a244133">BrawlLib.Internal.IO.FileMap</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  245</span>        {</div>
-<div class="line"><span class="lineno">  246</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">_mappedFile</a>?.Dispose();</div>
-<div class="line"><span class="lineno">  247</span> </div>
-<div class="line"><span class="lineno">  248</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">_mappedFileAccessor</a>?.Dispose();</div>
-<div class="line"><span class="lineno">  249</span> </div>
-<div class="line"><span class="lineno">  250</span>            base.Dispose();</div>
-<div class="line"><span class="lineno">  251</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">  248</span>        {</div>
+<div class="line"><span class="lineno">  249</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#a11b6e2613ee20435f2983a107e5940f0">_mappedFile</a>?.Dispose();</div>
+<div class="line"><span class="lineno">  250</span> </div>
+<div class="line"><span class="lineno">  251</span>            <a class="code hl_variable" href="class_brawl_lib_1_1_internal_1_1_i_o_1_1c_file_map.html#aeb13a1586ca427f88a8a86b7b84091ad">_mappedFileAccessor</a>?.Dispose();</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>            base.Dispose();</div>
+<div class="line"><span class="lineno">  254</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

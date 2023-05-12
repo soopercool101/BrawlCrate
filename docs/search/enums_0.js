@@ -17,5 +17,6 @@ var searchData=
   ['arcfiletype_14',['ARCFileType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a57606938d06f854a5a4a568f5d455e8d',1,'BrawlLib::SSBB::Types']]],
   ['argvartype_15',['ArgVarType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#adda4e9bf7a50500f549c8db6c875dce6',1,'BrawlLib::SSBB::Types']]],
   ['assist_16',['Assist',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3a1585cb0b55e48ba8cd168818710df8',1,'BrawlLib::SSBB::Types']]],
-  ['audioprovidertype_17',['AudioProviderType',['../class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_provider.html#a3ab3496203ad68fb90fe0f58ea1e6251',1,'BrawlLib::Internal::Audio::AudioProvider']]]
+  ['attackelementtype_17',['AttackElementType',['../namespace_brawl_lib_1_1_s_s_b_b_1_1_types.html#a3ec5de5c20edf01fc6254f9454562ee7',1,'BrawlLib::SSBB::Types']]],
+  ['audioprovidertype_18',['AudioProviderType',['../class_brawl_lib_1_1_internal_1_1_audio_1_1_audio_provider.html#a3ab3496203ad68fb90fe0f58ea1e6251',1,'BrawlLib::Internal::Audio::AudioProvider']]]
 ];

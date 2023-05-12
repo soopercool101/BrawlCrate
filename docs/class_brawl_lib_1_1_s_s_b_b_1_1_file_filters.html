@@ -22,7 +22,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="BrawlCrateIcon55px.png"/></td>
   <td id="projectalign">
-   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.39</span>
+   <div id="projectname">BrawlCrate<span id="projectnumber">&#160;v0.40</span>
    </div>
    <div id="projectbrief">Wii File Editor</div>
   </td>
@@ -220,6 +220,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a23a20eed2f6f1643995783b7b417560e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a2eac5c4fe808bcbba391bfbb837ca8"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a4a2eac5c4fe808bcbba391bfbb837ca8">TLST</a></td></tr>
 <tr class="separator:a4a2eac5c4fe808bcbba391bfbb837ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80dab9a6166348a2d39b4a0e49f4dac1"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a80dab9a6166348a2d39b4a0e49f4dac1">ITOV</a></td></tr>
+<tr class="separator:a80dab9a6166348a2d39b4a0e49f4dac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a513d62bc5daf2ddab2e3019073eab8e6"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_brawl_lib_1_1_s_s_b_b_1_1_file_filters.html#a513d62bc5daf2ddab2e3019073eab8e6">APIScripts</a></td></tr>
 <tr class="separator:a513d62bc5daf2ddab2e3019073eab8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -247,25 +249,25 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  255</span>        {</div>
-<div class="line"><span class="lineno">  256</span>            <span class="keywordtype">string</span> ext = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">  257</span>            <span class="keywordflow">while</span> (type != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  258</span>            {</div>
-<div class="line"><span class="lineno">  259</span>                <span class="keywordflow">if</span> (DefaultExportAllExtensions.TryGetValue(type, out ext))</div>
-<div class="line"><span class="lineno">  260</span>                {</div>
-<div class="line"><span class="lineno">  261</span>                    <span class="keywordflow">if</span> (!ext.StartsWith(<span class="stringliteral">&quot;.&quot;</span>))</div>
-<div class="line"><span class="lineno">  262</span>                    {</div>
-<div class="line"><span class="lineno">  263</span>                        ext = <span class="stringliteral">&quot;.&quot;</span> + ext;</div>
-<div class="line"><span class="lineno">  264</span>                    }</div>
-<div class="line"><span class="lineno">  265</span> </div>
-<div class="line"><span class="lineno">  266</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  267</span>                }</div>
+<div class="fragment"><div class="line"><span class="lineno">  258</span>        {</div>
+<div class="line"><span class="lineno">  259</span>            <span class="keywordtype">string</span> ext = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  260</span>            <span class="keywordflow">while</span> (type != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  261</span>            {</div>
+<div class="line"><span class="lineno">  262</span>                <span class="keywordflow">if</span> (DefaultExportAllExtensions.TryGetValue(type, out ext))</div>
+<div class="line"><span class="lineno">  263</span>                {</div>
+<div class="line"><span class="lineno">  264</span>                    <span class="keywordflow">if</span> (!ext.StartsWith(<span class="stringliteral">&quot;.&quot;</span>))</div>
+<div class="line"><span class="lineno">  265</span>                    {</div>
+<div class="line"><span class="lineno">  266</span>                        ext = <span class="stringliteral">&quot;.&quot;</span> + ext;</div>
+<div class="line"><span class="lineno">  267</span>                    }</div>
 <div class="line"><span class="lineno">  268</span> </div>
-<div class="line"><span class="lineno">  269</span>                type = type.BaseType;</div>
-<div class="line"><span class="lineno">  270</span>            }</div>
+<div class="line"><span class="lineno">  269</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  270</span>                }</div>
 <div class="line"><span class="lineno">  271</span> </div>
-<div class="line"><span class="lineno">  272</span>            <span class="keywordflow">return</span> ext ?? <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  273</span>        }</div>
+<div class="line"><span class="lineno">  272</span>                type = type.BaseType;</div>
+<div class="line"><span class="lineno">  273</span>            }</div>
+<div class="line"><span class="lineno">  274</span> </div>
+<div class="line"><span class="lineno">  275</span>            <span class="keywordflow">return</span> ext ?? <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  276</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -797,6 +799,30 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">            SupportedFilesHandler.GetCompleteFilter(<span class="stringliteral">&quot;png&quot;</span>, <span class="stringliteral">&quot;tga&quot;</span>, <span class="stringliteral">&quot;tif&quot;</span>, <span class="stringliteral">&quot;bmp&quot;</span>, <span class="stringliteral">&quot;jpg&quot;</span>, <span class="stringliteral">&quot;gif&quot;</span>)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a80dab9a6166348a2d39b4a0e49f4dac1" name="a80dab9a6166348a2d39b4a0e49f4dac1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80dab9a6166348a2d39b4a0e49f4dac1">&#9670;&#160;</a></span>ITOV</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string BrawlLib.SSBB.FileFilters.ITOV</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            SupportedFilesHandler.GetCompleteFilter(<span class="stringliteral">&quot;itov&quot;</span>)</div>
 </div><!-- fragment -->
 </div>
 </div>
