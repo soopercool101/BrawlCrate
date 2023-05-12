@@ -294,6 +294,28 @@ Full changelog and documentation can be viewed from the help menu.";
         {
             List<ResourceNode> dirty = GetDirtyFiles();
             Exception ex = e.Exception;
+            if (ExceptionIsDLLMissing(ex) || ExceptionIsDLLMissing(ex.InnerException))
+            {
+                if (CanRunGithubApp(false, out _))
+                {
+                    MessageBox.Show(
+                        "One or more key installation files are missing, likely due to antivirus software. The latest version will now be reinstalled. Please add your installation folder to your antivirus's exceptions list.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+#if CANARY
+                        ForceDownloadCanary();
+#else
+                    ForceDownloadStable();
+#endif
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "One or more key installation files are missing, including the automatic updater. This is likely due to antivirus software. Please reinstall and add your installation folder to your antivirus's exceptions list.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return;
+            }
             IssueDialog d = new IssueDialog(ex, dirty);
             d.ShowDialog();
             d.Dispose();
@@ -309,7 +331,7 @@ Full changelog and documentation can be viewed from the help menu.";
         {
             if (e.ExceptionObject is Exception ex)
             {
-                if (ExceptionIsDLLMissing(ex))
+                if (ExceptionIsDLLMissing(ex) || ExceptionIsDLLMissing(ex.InnerException))
                 {
                     if (CanRunGithubApp(false, out _))
                     {
@@ -510,7 +532,7 @@ Full changelog and documentation can be viewed from the help menu.";
 
                 Application.Run(MainForm.Instance);
             }
-            catch(Exception x)
+            catch(FileNotFoundException x)
             {
                 throw x; // This is necessary to catch DLL errors properly
             }
