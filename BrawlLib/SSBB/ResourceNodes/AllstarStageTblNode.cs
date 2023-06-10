@@ -30,9 +30,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
-
-        [Category("Unknown")]
-        public byte Unknown02
+        
+        public byte AiLevel
         {
             get => data._unknown02;
             set
