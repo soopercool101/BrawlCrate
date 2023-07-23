@@ -227,6 +227,8 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal RE3DEntry* Header => (RE3DEntry*) WorkingUncompressed.Address;
 
+        public override bool AllowDuplicateNames => true;
+
         internal int _stringOffset;
         internal int _unk1;
         internal short _unk2;
