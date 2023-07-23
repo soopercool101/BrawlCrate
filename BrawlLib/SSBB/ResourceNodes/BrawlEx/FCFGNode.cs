@@ -330,11 +330,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("\tAbilities")]
-        [Description("Specifies whether the fighter can angle their forward tilt attack.")]
-        [DisplayName("Can Angle Forward Tilt")]
-        public bool CanFTilt
+        [Description("Specifies how many forward tilts the fighter has.")]
+        [DisplayName("Forward Tilt Count")]
+        public byte CanFTilt
         {
-            get => Convert.ToBoolean(_canTilt);
+            get => Convert.ToByte(_canTilt);
             set
             {
                 _canTilt = Convert.ToUInt32(value);
