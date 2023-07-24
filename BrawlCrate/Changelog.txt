@@ -1,5 +1,5 @@
 
-BrawlCrate - v0.40
+BrawlCrate - v0.40a
 Copyright © 2018 - 2023 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -15,6 +15,13 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.40a - (7/23/2023)
+ . Add support for version 2 of the ITOV (Item Override) format
+ . FCFG: Change "Can Angle Forward Tilt" bool to "Forward Tilt Count" byte to reflect latest understanding
+ . RE3D: Fix bug in which two child RE3D nodes could not have the same name
+ . AllStarDifficultyNode: "Unknown02" -> "AiLevel"
+ . Fix bug in which a new ITOV would generate without a header, leading to BrawlCrate being unable to read it properly
  
  - BrawlCrate v0.40 - (5/12/2023)
  . Further improvements to Subspace parsing
@@ -35,6 +42,7 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which certain TEX0 files would detect themselves as Color Smashed when they weren't
  . Fix bug in which SHP0 v4 would corrupt itself on save
  . Fix crash when opening files less than 4 bytes
+ . [Silent Hotfix] When booting up with missing DLL files, attempt to warn the user and redownload the latest release
  
  - BrawlCrate v0.39 Hotfix 1 - (2/5/2023)
  . Fix bug in which outdated fighters lists would not necessarily update properly

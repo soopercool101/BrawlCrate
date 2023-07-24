@@ -32,7 +32,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "v0.40";
+        public static readonly string TagName = "v0.40a";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
@@ -41,11 +41,10 @@ namespace BrawlCrate
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage =
-            @"Updated to BrawlCrate v0.40! Here's what's new in this release:
-- Various SSE improvements
-- Support for ItemEx
-- General fixes to U8 archives
-- Fix bugs with SHP0 v4
+            @"Updated to BrawlCrate v0.40a! Here's what's new in this release:
+- Add support for Version 2 of ITOV files
+- Fix various naming issues to more properly reflect what values do
+- Fix bug in which RE3D nodes would not allow the same name as another in the same group
 
 Full changelog and documentation can be viewed from the help menu.";
 
@@ -302,7 +301,7 @@ Full changelog and documentation can be viewed from the help menu.";
                         "One or more key installation files are missing, likely due to antivirus software. The latest version will now be reinstalled. Please add your installation folder to your antivirus's exceptions list.",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 #if CANARY
-                        ForceDownloadCanary();
+                    ForceDownloadCanary();
 #else
                     ForceDownloadStable();
 #endif
