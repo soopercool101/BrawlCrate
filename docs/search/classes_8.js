@@ -63,7 +63,9 @@ var searchData=
   ['itmparamnode_60',['ItmParamNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_param_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
   ['itmtablegroupnode_61',['ItmTableGroupNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_table_group_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
   ['itmtablenode_62',['ItmTableNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_itm_table_node.html',1,'BrawlLib::SSBB::ResourceNodes']]],
-  ['itov_63',['ITOV',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_project_plus_1_1_i_t_o_v.html',1,'BrawlLib::SSBB::Types::ProjectPlus']]],
+  ['itovheader_63',['ITOVHeader',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_project_plus_1_1_i_t_o_v_header.html',1,'BrawlLib::SSBB::Types::ProjectPlus']]],
   ['itovnode_64',['ITOVNode',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_project_plus_1_1_i_t_o_v_node.html',1,'BrawlLib::SSBB::ResourceNodes::ProjectPlus']]],
-  ['ivideo_65',['IVideo',['../interface_brawl_lib_1_1_imaging_1_1_i_video.html',1,'BrawlLib::Imaging']]]
+  ['itovv1node_65',['ITOVv1Node',['../class_brawl_lib_1_1_s_s_b_b_1_1_resource_nodes_1_1_project_plus_1_1_i_t_o_vv1_node.html',1,'BrawlLib::SSBB::ResourceNodes::ProjectPlus']]],
+  ['itovv2_66',['ITOVv2',['../struct_brawl_lib_1_1_s_s_b_b_1_1_types_1_1_project_plus_1_1_i_t_o_vv2.html',1,'BrawlLib::SSBB::Types::ProjectPlus']]],
+  ['ivideo_67',['IVideo',['../interface_brawl_lib_1_1_imaging_1_1_i_video.html',1,'BrawlLib::Imaging']]]
 ];
