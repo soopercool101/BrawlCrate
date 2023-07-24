@@ -86,6 +86,17 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         }
 
         [Category("ITOV")]
+        public string StageItemFolder
+        {
+            get => Data.StageItemFolder;
+            set
+            {
+                Data.StageItemFolder = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("ITOV")]
         [Description("Adds this number to the default maximum Pokémon (5 in vBrawl) which can spawn at one time")]
         public sbyte PokemonOverload
         {
@@ -98,17 +109,6 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         {
             get => Data._overrideCommon;
             set => Data._overrideCommon = value;
-        }
-
-        [Category("ITOV")]
-        public string StageItemFolder
-        {
-            get => Data.StageItemFolder;
-            set
-            {
-                Data.StageItemFolder = value;
-                SignalPropertyChange();
-            }
         }
 
         [Category("ITOV Pokémon Override Settings")]
