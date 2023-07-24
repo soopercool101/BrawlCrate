@@ -48,7 +48,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct ITOVv2
     {
-        public const int Size = 0x6E;
+        public const int Size = 0x7A;
         public ITOVHeader _header;
         public sbyte _pokemonOverload;
         public ItemOverrideSetting _overrideCommon;
@@ -132,7 +132,7 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
         public ItemOverrideSetting _overrideWaluigi;
         public ItemOverrideSetting _overrideDrWright;
         public ItemOverrideSetting _overrideDrWrightBuilding;
-        public fixed byte _stageItemFolder[12]; // 0x62
+        public fixed byte _stageItemFolder[12];
 
         private VoidPtr Address
         {
@@ -159,8 +159,8 @@ namespace BrawlLib.SSBB.Types.ProjectPlus
 
         public string StageItemFolder
         {
-            get => Address.GetUTF8String(0x62, 12);
-            set => Address.WriteUTF8String(value, true, 0x62, 12);
+            get => Address.GetUTF8String(0x6E, 12);
+            set => Address.WriteUTF8String(value, true, 0x6E, 12);
         }
     }
 }
