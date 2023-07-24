@@ -49,6 +49,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             *(ITOVHeader*) address = Data;
+            address.WriteUTF8String("ITOV", false, 0, 4);
         }
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
@@ -689,6 +690,7 @@ namespace BrawlLib.SSBB.ResourceNodes.ProjectPlus
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             *(ITOVv2*)address = Data;
+            address.WriteUTF8String("ITOV", false, 0, 4);
         }
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
