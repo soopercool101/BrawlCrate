@@ -508,6 +508,12 @@ namespace BrawlCrate.NodeWrappers
                     {
                         r.FileType = ARCFileType.MiscData;
                     }
+                    else
+                    {
+                        n.Dispose();
+                        n = NodeFactory.FromFile(null, path, typeof(ARCEntryNode));
+                        ((ARCEntryNode)n).FileType = ARCFileType.MiscData;
+                    }
                     Resource.AddChild(n);
                     n.Name = "Misc Data [0]";
 
