@@ -83,6 +83,13 @@ namespace BrawlCrate.ExternalInterfacing
                 return;
             }
 
+            ColorSmashTex0(MainForm.Instance.resourceTree.SelectedNodes.Where(o => o is TEX0Wrapper).Select(o => ((TEX0Wrapper)o).Resource as TEX0Node).ToArray(), paletteCount,
+                mipCount);
+        }
+
+        public static void ColorSmashTex0(TEX0Node[] nodes, int paletteCount, int mipCount = 1)
+        {
+
             // Clear the directories. If they aren't empty, the implementation WILL NOT work
             ClearDirectories();
 
@@ -116,46 +123,36 @@ namespace BrawlCrate.ExternalInterfacing
                 paletteCount = 0;
             }
 
-            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+            foreach (TEX0Node t in nodes)
             {
-                // If this was selected via keycode when it's invalid, return without error
-                if (!(n is TEX0Wrapper))
+                if (t.BRESNode != b)
                 {
+                    MessageBox.Show("Color Smash is only supported for nodes in the same BRRES", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ClearDirectories();
                     return;
                 }
 
-                if (((TEX0Wrapper) n).Resource is TEX0Node t)
+                textureList.Add(t);
+                int placement = t.Parent.Children.IndexOf(t);
+                names.Add(placement, t.Name);
+                if (placement < index)
                 {
-                    if (t.BRESNode != b)
+                    index = placement;
+                }
+
+                t.Export($"{InputDir.FullName}\\{placement:D5}.png");
+
+                if (detectPalettes && paletteCount < 256)
+                {
+                    if (!t.HasPalette || t.GetPaletteNode() == null)
                     {
-                        MessageBox.Show("Color Smash is only supported for nodes in the same BRRES", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ClearDirectories();
-                        return;
+                        paletteCount = 256;
                     }
-
-                    textureList.Add(t);
-                    int placement = t.Parent.Children.IndexOf(t);
-                    names.Add(placement, t.Name);
-                    if (placement < index)
+                    else if (t.HasPalette && t.GetPaletteNode() != null &&
+                             t.GetPaletteNode().Palette.Entries.Length > paletteCount)
                     {
-                        index = placement;
-                    }
-
-                    t.Export($"{InputDir.FullName}\\{placement:D5}.png");
-
-                    if (detectPalettes && paletteCount < 256)
-                    {
-                        if (!t.HasPalette || t.GetPaletteNode() == null)
-                        {
-                            paletteCount = 256;
-                        }
-                        else if (t.HasPalette && t.GetPaletteNode() != null &&
-                                 t.GetPaletteNode().Palette.Entries.Length > paletteCount)
-                        {
-                            paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
-                        }
+                        paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
                     }
                 }
             }

@@ -50,48 +50,50 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool SharesData
         {
             get => _sharesData;
-            set
+            set => SetSharesData(value, true);
+        }
+
+        public void SetSharesData(bool value, bool showMessages)
+        {
+            Bitmap bmp = GetImage(0);
+            bool disableRevert = false;
+            TEX0Node t = PrevSibling() as TEX0Node;
+            if (!_revertingCS && !value)
             {
-                Bitmap bmp = GetImage(0);
-                bool disableRevert = false;
-                TEX0Node t = PrevSibling() as TEX0Node;
-                if (!_revertingCS && !value)
-                {
-                    if (MessageBox.Show(
+                if (!showMessages || MessageBox.Show(
                         "Would you like to revert color smashing for the node and all nodes that share data above it? (If your preview looks correct now, say yes. If your preview looks bugged, say no)",
                         "Warning", MessageBoxButtons.YesNo) != DialogResult.Yes)
-                    {
-                        _sharesData = value;
-                        SignalPropertyChange();
-                        return;
-                    }
-
-                    _revertingCS = true;
-                    disableRevert = true;
-                }
-
-                _sharesData = value;
-                SignalPropertyChange();
-                if (!value)
                 {
-                    if (t != null && t.SharesData)
-                    {
-                        t.SharesData = false;
-                    }
-
-                    using (TextureConverterDialog dlg = new TextureConverterDialog())
-                    {
-                        dlg.Automatic = true;
-                        dlg.cboFormat.SelectedItem =
-                            dlg.LoadImages(bmp);
-                        dlg.ShowDialog(null, this);
-                    }
+                    _sharesData = value;
+                    SignalPropertyChange();
+                    return;
                 }
 
-                if (disableRevert)
+                _revertingCS = true;
+                disableRevert = true;
+            }
+
+            _sharesData = value;
+            SignalPropertyChange();
+            if (!value)
+            {
+                if (t != null && t.SharesData)
                 {
-                    _revertingCS = false;
+                    t.SharesData = false;
                 }
+
+                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                {
+                    dlg.Automatic = true;
+                    dlg.cboFormat.SelectedItem =
+                        dlg.LoadImages(bmp);
+                    dlg.ShowDialog(null, this);
+                }
+            }
+
+            if (disableRevert)
+            {
+                _revertingCS = false;
             }
         }
 
