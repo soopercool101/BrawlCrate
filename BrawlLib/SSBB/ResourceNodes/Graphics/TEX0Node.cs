@@ -222,7 +222,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnInitialize();
             _headerLen = Header1->_headerLen;
 
-            _sharesData = _headerLen > HeaderSize() && new string((sbyte*)WorkingUncompressed.Address + HeaderSize()).StartsWith("TEX0");
+            _sharesData = _headerLen > HeaderSize() && new string((sbyte*)WorkingUncompressed.Address + HeaderSize()).StartsWith("TEX0") || WorkingUncompressed.Map != null && _headerLen >= WorkingUncompressed.Map.Length;
             if (_sharesData)
             {
                 SetSizeInternal(ExclusiveEntrySize());
