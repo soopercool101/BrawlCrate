@@ -2,10 +2,12 @@
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
+using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Markup;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -21,7 +23,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public enum EnemyList : byte
+    public enum EnemyList : ushort
     {
         Goomba = 0,
         Poppant = 1,
@@ -88,7 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GEG1EntryNode : ResourceNode, IRenderedLink
     {
-        internal GEG1Entry* Header => (GEG1Entry*) WorkingUncompressed.Address;
+        internal GEG1Entry Data;
         public List<ResourceNode> RenderTargets
         {
             get
@@ -110,685 +112,525 @@ namespace BrawlLib.SSBB.ResourceNodes
             Name = EnemyNameList();
         }
 
-        // I believe these are constant values for the Header
-        public const uint Header1 = 0x0000803F; // 0x00
-
-        public const uint Header2 = 0x00FF0100; // 0x04
-
-        // Headers are known
-        public uint _header1;
-
-        public uint _header2;
-
-        // Some form of byte flags
-        public byte _extrahealth;
-        public byte _flag0x09;
-        public byte _flag0x0A;
-
-        public byte _flag0x0B;
-
-        // Another byte flag
-        public byte _flag0x0C;
-
-        // Another byte flag (Possibly unstable?)
-        public byte _connectedenemyid;
-        public byte _flag0x0E;
-        public byte _flag0x0F;
-        public byte _unknown0x10;
-        public byte _unknown0x11;
-        public byte _unknown0x12;
-        public byte _unknown0x13;
-        public byte _unknown0x14;
-        public byte _unknown0x15;
-        public byte _unknown0x16;
-        public byte _unknown0x17;
-        public byte _unknown0x18;
-        public byte _unknown0x19;
-        public byte _unknown0x1A;
-        public byte _unknown0x1B;
-
-        public byte _unknown0x1C;
-
-        // EnemyID is known
-        public byte _enemyID;
-        public byte _unknown0x1E;
-        public byte _unknown0x1F;
-        public byte _unknown0x20;
-        public byte _unknown0x21;
-
-        public byte _unknown0x22;
-
-        // Some form of byte flag
-        public byte _startingaction;
-        public byte _unknown0x24;
-        public byte _unknown0x25;
-        public byte _unknown0x26;
-
-        public byte _unknown0x27;
-
-        // Spawn Position is known
-        public Vector2 _spawnPos;
-        public byte _unknown0x30;
-        public byte _unknown0x31;
-        public byte _unknown0x32;
-        public byte _unknown0x33;
-        public byte _unknown0x34;
-        public byte _unknown0x35;
-        public byte _unknown0x36;
-        public byte _unknown0x37;
-        public byte _unknown0x38;
-        public byte _unknown0x39;
-        public byte _unknown0x3A;
-        public byte _unknown0x3B;
-        public byte _unknown0x3C;
-        public byte _unknown0x3D;
-        public byte _unknown0x3E;
-        public byte _unknown0x3F;
-        public byte _unknown0x40;
-        public byte _unknown0x41;
-        public byte _unknown0x42;
-        public byte _unknown0x43;
-        public byte _unknown0x44;
-        public byte _unknown0x45;
-        public byte _unknown0x46;
-        public byte _unknown0x47;
-        public byte _unknown0x48;
-        public byte _unknown0x49;
-        public byte _unknown0x4A;
-        public byte _unknown0x4B;
-        public byte _unknown0x4C;
-        public byte _unknown0x4D;
-        public byte _unknown0x4E;
-        public byte _unknown0x4F;
-        public byte _unknown0x50;
-        public byte _unknown0x51;
-        public byte _unknown0x52;
-        public byte _unknown0x53;
-        public byte _unknown0x54;
-        public byte _unknown0x55;
-        public byte _unknown0x56;
-        public byte _unknown0x57;
-        public byte _unknown0x58;
-        public byte _unknown0x59;
-        public byte _unknown0x5A;
-        public byte _unknown0x5B;
-        public byte _unknown0x5C;
-        public byte _unknown0x5D;
-        public byte _unknown0x5E;
-        public byte _unknown0x5F;
-        public byte _unknown0x60;
-        public byte _unknown0x61;
-        public byte _unknown0x62;
-
-        public byte _unknown0x63;
-
-        // Another flag
-        public byte _flag0x64;
-        public byte _unknown0x65;
-
-        public byte _unknown0x66;
-
-        // Another flag?
-        public byte _flag0x67;
-        public byte _unknown0x68;
-        public byte _unknown0x69;
-        public byte _unknown0x6A;
-        public byte _unknown0x6B;
-        public byte _unknown0x6C;
-        public byte _unknown0x6D;
-        public byte _unknown0x6E;
-        public byte _unknown0x6F;
-        public byte _unknown0x70;
-        public byte _unknown0x71;
-        public byte _unknown0x72;
-        public byte _unknown0x73;
-        public byte _unknown0x74;
-        public byte _unknown0x75;
-        public byte _unknown0x76;
-        public byte _unknown0x77;
-        public byte _unknown0x78;
-        public byte _unknown0x79;
-        public byte _unknown0x7A;
-        public byte _unknown0x7B;
-
-        public byte _unknown0x7C;
-
-        // Spawn ID
-        public byte _spawnid;
-        public byte _flag0x7E;
-        public byte _flag0x7F;
-        public byte _flag0x80;
-        public byte _flag0x81;
-        public byte _flag0x82;
-        public byte _flag0x83;
-
-        [Browsable(true)]
-        [Category("Enemy Info")]
-        [DisplayName("Enemy Type")]
-        public EnemyList EnemyName
+        internal MotionPathDataClass _motionPathData;
+        [Category("GEG1")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public MotionPathDataClass MotionPathData
         {
-            get => (EnemyList) _enemyID;
+            get => _motionPathData;
             set
             {
-                _enemyID = (byte) value;
-                RegenName();
+                _motionPathData = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Enemy Info")]
-        [DisplayName("Enemy ID")]
-        public byte EnemyID => _enemyID;
+        [Category("GEG1")]
+        public short EpbmIndex
+        {
+            get => Data._epbmIndex;
+            set
+            {
+                Data._epbmIndex = value;
+                SignalPropertyChange();
+            }
+        }
 
-        [Category("Enemy Info")]
+        [Category("GEG1")]
+        public short EpspIndex
+        {
+            get => Data._epspIndex;
+            set
+            {
+                Data._epspIndex = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GEG1")]
+        public ushort ConnectedEnemyID
+        {
+            get => Data._connectedEnemyID;
+            set
+            {
+                Data._connectedEnemyID = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public short Unknown0x0E
+        {
+            get => Data._unknown0x0E;
+            set
+            {
+                Data._unknown0x0E = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x10
+        {
+            get => Data._unknown0x10;
+            set
+            {
+                Data._unknown0x10 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x14
+        {
+            get => Data._unknown0x14;
+            set
+            {
+                Data._unknown0x14 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x18
+        {
+            get => Data._unknown0x18;
+            set
+            {
+                Data._unknown0x18 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GEG1")]
+        public ushort EnemyID
+        {
+            get => Data._enemyID;
+            set
+            {
+                Data._enemyID = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GEG1")]
         [DisplayName("Enemy ARC ID")]
-        public int EnemyArcID => _enemyID * 2;
+        public int EnemyArcID => EnemyID * 2;
 
-        [Category("Enemy Info")]
+        [Category("GEG1")]
         [DisplayName("Enemy BRRES ARC ID")]
-        public int EnemyBrresID => _enemyID * 2 + 1;
+        public int EnemyBrresID => EnemyID * 2 + 1;
 
-        [Browsable(true)]
-        [Category("Spawn Info")]
-        [DisplayName("Spawn Position")]
-        [TypeConverter(typeof(Vector2StringConverter))]
-        public Vector2 EnemySpawnPos
+        [Category("Unknown")]
+        public short Unknown0x1E
         {
-            get => _spawnPos;
+            get => Data._unknown0x1E;
             set
             {
-                _spawnPos = value;
+                Data._unknown0x1E = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Spawn Info")]
-        [DisplayName("Spawn ID")]
-        public byte SpawnID
+        [Category("GEG1")]
+        public uint StartingAction
         {
-            get => _spawnid;
+            get => Data._startingAction;
             set
             {
-                _spawnid = value;
+                Data._startingAction = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Enemy Info")]
-        [DisplayName("Additional HP")]
-        public byte ExtraHealth
+        [Category("Unknown")]
+        public uint Unknown0x24
         {
-            get => _extrahealth;
+            get => Data._unknown0x24;
             set
             {
-                _extrahealth = value;
+                Data._unknown0x24 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x09")]
-        public byte Flag0x09
+        [Category("GEG1")]
+        public Vector3 SpawnPos
         {
-            get => _flag0x09;
+            get => new Vector3(Data._spawnPosX, Data._spawnPosY, Data._spawnPosZ);
             set
             {
-                _flag0x09 = value;
+                Data._spawnPosX = value._x;
+                Data._spawnPosY = value._y;
+                Data._spawnPosZ = value._z;
+                SignalPropertyChange();
+            }
+        }
+        
+        [Category("Unknown")]
+        public float Unknown0x34
+        {
+            get => Data._unknown0x34;
+            set
+            {
+                Data._unknown0x34 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x0A")]
-        public byte Flag0x0A
+        [Category("GEG1")]
+        public float PosX1
         {
-            get => _flag0x0A;
+            get => Data._posX1;
             set
             {
-                _flag0x0A = value;
+                Data._posX1 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x0B")]
-        public byte Flag0x0B
+        [Category("GEG1")]
+        public float PosX2
         {
-            get => _flag0x0B;
+            get => Data._posX2;
             set
             {
-                _flag0x0B = value;
+                Data._posX2 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x0C")]
-        public byte Flag0x0C
+        [Category("GEG1")]
+        public float PosY1
         {
-            get => _flag0x0C;
+            get => Data._posY1;
             set
             {
-                _flag0x0C = value;
+                Data._posY1 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Spawn Info")]
-        [DisplayName("Connected Enemy ID")]
-        public byte ConnectedEnemyID
+        [Category("GEG1")]
+        public float PosY2
         {
-            get => _connectedenemyid;
+            get => Data._posY2;
             set
             {
-                _connectedenemyid = value;
+                Data._posY2 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x0E")]
-        public byte Flag0x0E
+        [Category("Unknown")]
+        public float Unknown0x48
         {
-            get => _flag0x0E;
+            get => Data._unknown0x48;
             set
             {
-                _flag0x0E = value;
+                Data._unknown0x48 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x0F")]
-        public byte Flag0x0F
+        [Category("Unknown")]
+        public float Unknown0x4C
         {
-            get => _flag0x0F;
+            get => Data._unknown0x4C;
             set
             {
-                _flag0x0F = value;
+                Data._unknown0x4C = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Spawn Info")]
-        [DisplayName("Starting Action")]
-        public byte StartingAction
+        [Category("Unknown")]
+        public float Unknown0x50
         {
-            get => _startingaction;
+            get => Data._unknown0x50;
             set
             {
-                _startingaction = value;
+                Data._unknown0x50 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x64")]
-        public byte Flag0x64
+        [Category("Unknown")]
+        public uint Unknown0x54
         {
-            get => _flag0x64;
+            get => Data._unknown0x54;
             set
             {
-                _flag0x64 = value;
+                Data._unknown0x54 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x67")]
-        public byte Flag0x67
+        [Category("Unknown")]
+        public float Unknown0x58
         {
-            get => _flag0x67;
+            get => Data._unknown0x58;
             set
             {
-                _flag0x67 = value;
+                Data._unknown0x58 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x7E")]
-        public byte Flag0x7E
+        [Category("Unknown")]
+        public float Unknown0x5C
         {
-            get => _flag0x7E;
+            get => Data._unknown0x5C;
             set
             {
-                _flag0x7E = value;
+                Data._unknown0x5C = value;
                 SignalPropertyChange();
             }
         }
 
-
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x80")]
-        public byte Flag0x80
+        [Category("Unknown")]
+        public float Unknown0x60
         {
-            get => _flag0x80;
+            get => Data._unknown0x60;
             set
             {
-                _flag0x80 = value;
+                Data._unknown0x60 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x81")]
-        public byte Flag0x81
+        [Category("Unknown")]
+        public byte Unknown0x64
         {
-            get => _flag0x81;
+            get => Data._unknown0x64;
             set
             {
-                _flag0x81 = value;
+                Data._unknown0x64 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x82")]
-        public byte Flag0x82
+        [Category("Unknown")]
+        public byte Unknown0x65
         {
-            get => _flag0x82;
+            get => Data._unknown0x65;
             set
             {
-                _flag0x82 = value;
+                Data._unknown0x65 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Browsable(true)]
-        [Category("Special Flags")]
-        [DisplayName("Flag 0x83")]
-        public byte Flag0x83
+        [Category("Unknown")]
+        public byte Unknown0x66
         {
-            get => _flag0x83;
+            get => Data._unknown0x66;
             set
             {
-                _flag0x83 = value;
+                Data._unknown0x66 = value;
                 SignalPropertyChange();
             }
+        }
+
+        [Category("GEG1")]
+        public bool IsFacingRight
+        {
+            get => Data._isFacingRight;
+            set
+            {
+                Data._isFacingRight = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x68
+        {
+            get => Data._unknown0x68;
+            set
+            {
+                Data._unknown0x68 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x69
+        {
+            get => Data._unknown0x69;
+            set
+            {
+                Data._unknown0x69 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x6A
+        {
+            get => Data._unknown0x6A;
+            set
+            {
+                Data._unknown0x6A = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x6B
+        {
+            get => Data._unknown0x6B;
+            set
+            {
+                Data._unknown0x6B = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GEG1")]
+        public int ItemDropGenParamId
+        {
+            get => Data._itemDropGenParamId;
+            set
+            {
+                Data._itemDropGenParamId = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GEG1")]
+        public int RareItemDropGenParamId
+        {
+            get => Data._rareItemDropGenParamId;
+            set
+            {
+                Data._rareItemDropGenParamId = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x74
+        {
+            get => Data._unknown0x74;
+            set
+            {
+                Data._unknown0x74 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x75
+        {
+            get => Data._unknown0x75;
+            set
+            {
+                Data._unknown0x75 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x76
+        {
+            get => Data._unknown0x76;
+            set
+            {
+                Data._unknown0x76 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x77
+        {
+            get => Data._unknown0x77;
+            set
+            {
+                Data._unknown0x77 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public uint Unknown0x78
+        {
+            get => Data._unknown0x78;
+            set
+            {
+                Data._unknown0x78 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        internal TriggerDataClass _spawnTrigger;
+        [Category("GEG1")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass SpawnTrigger
+        {
+            get => _spawnTrigger;
+            set
+            {
+                _spawnTrigger = value;
+                SignalPropertyChange();
+            }
+        }
+
+        internal TriggerDataClass _defeatTrigger;
+        [Category("GEG1")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public TriggerDataClass DefeatTrigger
+        {
+            get => _defeatTrigger;
+            set
+            {
+                _defeatTrigger = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public GEG1EntryNode()
+        {
+            _motionPathData = new MotionPathDataClass(this);
+            _spawnTrigger = new TriggerDataClass(this);
+            _defeatTrigger = new TriggerDataClass(this);
         }
 
         public override bool OnInitialize()
         {
-            _header1 = Header->_header1;
-            _header2 = Header->_header2;
-            _extrahealth = Header->_extrahealth;
-            _flag0x09 = Header->_flag0x09;
-            _flag0x0A = Header->_flag0x0A;
-            _flag0x0B = Header->_flag0x0B;
-            _flag0x0C = Header->_flag0x0C;
-            _connectedenemyid = Header->_connectedenemyid;
-            _flag0x0E = Header->_flag0x0E;
-            _flag0x0F = Header->_flag0x0F;
-            _unknown0x10 = Header->_unknown0x10;
-            _unknown0x11 = Header->_unknown0x11;
-            _unknown0x12 = Header->_unknown0x12;
-            _unknown0x13 = Header->_unknown0x13;
-            _unknown0x14 = Header->_unknown0x14;
-            _unknown0x15 = Header->_unknown0x15;
-            _unknown0x16 = Header->_unknown0x16;
-            _unknown0x17 = Header->_unknown0x17;
-            _unknown0x18 = Header->_unknown0x18;
-            _unknown0x19 = Header->_unknown0x19;
-            _unknown0x1A = Header->_unknown0x1A;
-            _unknown0x1B = Header->_unknown0x1B;
-            _unknown0x1C = Header->_unknown0x1C;
-            _enemyID = Header->_enemyID;
-            _unknown0x1E = Header->_unknown0x1E;
-            _unknown0x1F = Header->_unknown0x1F;
-            _unknown0x20 = Header->_unknown0x20;
-            _unknown0x21 = Header->_unknown0x21;
-            _unknown0x22 = Header->_unknown0x22;
-            _startingaction = Header->_startingaction;
-            _unknown0x24 = Header->_unknown0x24;
-            _unknown0x25 = Header->_unknown0x25;
-            _unknown0x26 = Header->_unknown0x26;
-            _unknown0x27 = Header->_unknown0x27;
-            _spawnPos._x = Header->_spawnX;
-            _spawnPos._y = Header->_spawnY;
-            _unknown0x30 = Header->_unknown0x30;
-            _unknown0x31 = Header->_unknown0x31;
-            _unknown0x32 = Header->_unknown0x32;
-            _unknown0x33 = Header->_unknown0x33;
-            _unknown0x34 = Header->_unknown0x34;
-            _unknown0x35 = Header->_unknown0x35;
-            _unknown0x36 = Header->_unknown0x36;
-            _unknown0x37 = Header->_unknown0x37;
-            _unknown0x38 = Header->_unknown0x38;
-            _unknown0x39 = Header->_unknown0x39;
-            _unknown0x3A = Header->_unknown0x3A;
-            _unknown0x3B = Header->_unknown0x3B;
-            _unknown0x3C = Header->_unknown0x3C;
-            _unknown0x3D = Header->_unknown0x3D;
-            _unknown0x3E = Header->_unknown0x3E;
-            _unknown0x3F = Header->_unknown0x3F;
-            _unknown0x40 = Header->_unknown0x40;
-            _unknown0x41 = Header->_unknown0x41;
-            _unknown0x42 = Header->_unknown0x42;
-            _unknown0x43 = Header->_unknown0x43;
-            _unknown0x44 = Header->_unknown0x44;
-            _unknown0x45 = Header->_unknown0x45;
-            _unknown0x46 = Header->_unknown0x46;
-            _unknown0x47 = Header->_unknown0x47;
-            _unknown0x48 = Header->_unknown0x48;
-            _unknown0x49 = Header->_unknown0x49;
-            _unknown0x4A = Header->_unknown0x4A;
-            _unknown0x4B = Header->_unknown0x4B;
-            _unknown0x4C = Header->_unknown0x4C;
-            _unknown0x4D = Header->_unknown0x4D;
-            _unknown0x4E = Header->_unknown0x4E;
-            _unknown0x4F = Header->_unknown0x4F;
-            _unknown0x50 = Header->_unknown0x50;
-            _unknown0x51 = Header->_unknown0x51;
-            _unknown0x52 = Header->_unknown0x52;
-            _unknown0x53 = Header->_unknown0x53;
-            _unknown0x54 = Header->_unknown0x54;
-            _unknown0x55 = Header->_unknown0x55;
-            _unknown0x56 = Header->_unknown0x56;
-            _unknown0x57 = Header->_unknown0x57;
-            _unknown0x58 = Header->_unknown0x58;
-            _unknown0x59 = Header->_unknown0x59;
-            _unknown0x5A = Header->_unknown0x5A;
-            _unknown0x5B = Header->_unknown0x5B;
-            _unknown0x5C = Header->_unknown0x5C;
-            _unknown0x5D = Header->_unknown0x5D;
-            _unknown0x5E = Header->_unknown0x5E;
-            _unknown0x5F = Header->_unknown0x5F;
-            _unknown0x60 = Header->_unknown0x60;
-            _unknown0x61 = Header->_unknown0x61;
-            _unknown0x62 = Header->_unknown0x62;
-            _unknown0x63 = Header->_unknown0x63;
-            _flag0x64 = Header->_flag0x64;
-            _unknown0x65 = Header->_unknown0x65;
-            _unknown0x66 = Header->_unknown0x66;
-            _flag0x67 = Header->_flag0x67;
-            _unknown0x68 = Header->_unknown0x68;
-            _unknown0x69 = Header->_unknown0x69;
-            _unknown0x6A = Header->_unknown0x6A;
-            _unknown0x6B = Header->_unknown0x6B;
-            _unknown0x6C = Header->_unknown0x6C;
-            _unknown0x6D = Header->_unknown0x6D;
-            _unknown0x6E = Header->_unknown0x6E;
-            _unknown0x6F = Header->_unknown0x6F;
-            _unknown0x70 = Header->_unknown0x70;
-            _unknown0x71 = Header->_unknown0x71;
-            _unknown0x72 = Header->_unknown0x72;
-            _unknown0x73 = Header->_unknown0x73;
-            _unknown0x74 = Header->_unknown0x74;
-            _unknown0x75 = Header->_unknown0x75;
-            _unknown0x76 = Header->_unknown0x76;
-            _unknown0x77 = Header->_unknown0x77;
-            _unknown0x78 = Header->_unknown0x78;
-            _unknown0x79 = Header->_unknown0x79;
-            _unknown0x7A = Header->_unknown0x7A;
-            _unknown0x7B = Header->_unknown0x7B;
-            _unknown0x7C = Header->_unknown0x7C;
-            _spawnid = Header->_spawnid;
-            _flag0x7E = Header->_flag0x7E;
-            _flag0x7F = Header->_flag0x7F;
-            _flag0x80 = Header->_flag0x80;
-            _flag0x81 = Header->_flag0x81;
-            _flag0x82 = Header->_flag0x82;
-            _flag0x83 = Header->_flag0x83;
+            Data = *(GEG1Entry*)WorkingUncompressed.Address;
             if (_name == null)
             {
                 _name = EnemyNameList();
             }
+
+            _motionPathData = new MotionPathDataClass(this, Data._motionPathData);
+            _spawnTrigger = new TriggerDataClass(this, Data._spawnTrigger);
+            _defeatTrigger = new TriggerDataClass(this, Data._defeatTrigger);
 
             return false;
         }
 
         public override int OnCalculateSize(bool force)
         {
-            return 0x84;
+            return GEG1Entry.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            GEG1Entry* hdr = (GEG1Entry*) address;
-            hdr->_header1 = _header1;
-            hdr->_header2 = _header2;
-            hdr->_extrahealth = _extrahealth;
-            hdr->_flag0x09 = _flag0x09;
-            hdr->_flag0x0A = _flag0x0A;
-            hdr->_flag0x0B = _flag0x0B;
-            hdr->_flag0x0C = _flag0x0C;
-            hdr->_connectedenemyid = _connectedenemyid;
-            hdr->_flag0x0E = _flag0x0E;
-            hdr->_flag0x0F = _flag0x0F;
-            hdr->_unknown0x10 = _unknown0x10;
-            hdr->_unknown0x11 = _unknown0x11;
-            hdr->_unknown0x12 = _unknown0x12;
-            hdr->_unknown0x13 = _unknown0x13;
-            hdr->_unknown0x14 = _unknown0x14;
-            hdr->_unknown0x15 = _unknown0x15;
-            hdr->_unknown0x16 = _unknown0x16;
-            hdr->_unknown0x17 = _unknown0x17;
-            hdr->_unknown0x18 = _unknown0x18;
-            hdr->_unknown0x19 = _unknown0x19;
-            hdr->_unknown0x1A = _unknown0x1A;
-            hdr->_unknown0x1B = _unknown0x1B;
-            hdr->_unknown0x1C = _unknown0x1C;
-            hdr->_enemyID = _enemyID;
-            hdr->_unknown0x1E = _unknown0x1E;
-            hdr->_unknown0x1F = _unknown0x1F;
-            hdr->_unknown0x20 = _unknown0x20;
-            hdr->_unknown0x21 = _unknown0x21;
-            hdr->_unknown0x22 = _unknown0x22;
-            hdr->_startingaction = _startingaction;
-            hdr->_unknown0x24 = _unknown0x24;
-            hdr->_unknown0x25 = _unknown0x25;
-            hdr->_unknown0x26 = _unknown0x26;
-            hdr->_unknown0x27 = _unknown0x27;
-            hdr->_spawnX = _spawnPos._x;
-            hdr->_spawnY = _spawnPos._y;
-            hdr->_unknown0x30 = _unknown0x30;
-            hdr->_unknown0x31 = _unknown0x31;
-            hdr->_unknown0x32 = _unknown0x32;
-            hdr->_unknown0x33 = _unknown0x33;
-            hdr->_unknown0x34 = _unknown0x34;
-            hdr->_unknown0x35 = _unknown0x35;
-            hdr->_unknown0x36 = _unknown0x36;
-            hdr->_unknown0x37 = _unknown0x37;
-            hdr->_unknown0x38 = _unknown0x38;
-            hdr->_unknown0x39 = _unknown0x39;
-            hdr->_unknown0x3A = _unknown0x3A;
-            hdr->_unknown0x3B = _unknown0x3B;
-            hdr->_unknown0x3C = _unknown0x3C;
-            hdr->_unknown0x3D = _unknown0x3D;
-            hdr->_unknown0x3E = _unknown0x3E;
-            hdr->_unknown0x3F = _unknown0x3F;
-            hdr->_unknown0x40 = _unknown0x40;
-            hdr->_unknown0x41 = _unknown0x41;
-            hdr->_unknown0x42 = _unknown0x42;
-            hdr->_unknown0x43 = _unknown0x43;
-            hdr->_unknown0x44 = _unknown0x44;
-            hdr->_unknown0x45 = _unknown0x45;
-            hdr->_unknown0x46 = _unknown0x46;
-            hdr->_unknown0x47 = _unknown0x47;
-            hdr->_unknown0x48 = _unknown0x48;
-            hdr->_unknown0x49 = _unknown0x49;
-            hdr->_unknown0x4A = _unknown0x4A;
-            hdr->_unknown0x4B = _unknown0x4B;
-            hdr->_unknown0x4C = _unknown0x4C;
-            hdr->_unknown0x4D = _unknown0x4D;
-            hdr->_unknown0x4E = _unknown0x4E;
-            hdr->_unknown0x4F = _unknown0x4F;
-            hdr->_unknown0x50 = _unknown0x50;
-            hdr->_unknown0x51 = _unknown0x51;
-            hdr->_unknown0x52 = _unknown0x52;
-            hdr->_unknown0x53 = _unknown0x53;
-            hdr->_unknown0x54 = _unknown0x54;
-            hdr->_unknown0x55 = _unknown0x55;
-            hdr->_unknown0x56 = _unknown0x56;
-            hdr->_unknown0x57 = _unknown0x57;
-            hdr->_unknown0x58 = _unknown0x58;
-            hdr->_unknown0x59 = _unknown0x59;
-            hdr->_unknown0x5A = _unknown0x5A;
-            hdr->_unknown0x5B = _unknown0x5B;
-            hdr->_unknown0x5C = _unknown0x5C;
-            hdr->_unknown0x5D = _unknown0x5D;
-            hdr->_unknown0x5E = _unknown0x5E;
-            hdr->_unknown0x5F = _unknown0x5F;
-            hdr->_unknown0x60 = _unknown0x60;
-            hdr->_unknown0x61 = _unknown0x61;
-            hdr->_unknown0x62 = _unknown0x62;
-            hdr->_unknown0x63 = _unknown0x63;
-            hdr->_flag0x64 = _flag0x64;
-            hdr->_unknown0x65 = _unknown0x65;
-            hdr->_unknown0x66 = _unknown0x66;
-            hdr->_flag0x67 = _flag0x67;
-            hdr->_unknown0x68 = _unknown0x68;
-            hdr->_unknown0x69 = _unknown0x69;
-            hdr->_unknown0x6A = _unknown0x6A;
-            hdr->_unknown0x6B = _unknown0x6B;
-            hdr->_unknown0x6C = _unknown0x6C;
-            hdr->_unknown0x6D = _unknown0x6D;
-            hdr->_unknown0x6E = _unknown0x6E;
-            hdr->_unknown0x6F = _unknown0x6F;
-            hdr->_unknown0x70 = _unknown0x70;
-            hdr->_unknown0x71 = _unknown0x71;
-            hdr->_unknown0x72 = _unknown0x72;
-            hdr->_unknown0x73 = _unknown0x73;
-            hdr->_unknown0x74 = _unknown0x74;
-            hdr->_unknown0x75 = _unknown0x75;
-            hdr->_unknown0x76 = _unknown0x76;
-            hdr->_unknown0x77 = _unknown0x77;
-            hdr->_unknown0x78 = _unknown0x78;
-            hdr->_unknown0x79 = _unknown0x79;
-            hdr->_unknown0x7A = _unknown0x7A;
-            hdr->_unknown0x7B = _unknown0x7B;
-            hdr->_unknown0x7C = _unknown0x7C;
-            hdr->_spawnid = _spawnid;
-            hdr->_flag0x7E = _flag0x7E;
-            hdr->_flag0x7F = _flag0x7F;
-            hdr->_flag0x80 = _flag0x80;
-            hdr->_flag0x81 = _flag0x81;
-            hdr->_flag0x82 = _flag0x82;
-            hdr->_flag0x83 = _flag0x83;
+            Data._motionPathData = _motionPathData;
+            Data._spawnTrigger = _spawnTrigger;
+            Data._defeatTrigger = _defeatTrigger;
+            GEG1Entry* hdr = (GEG1Entry*)address;
+            *hdr = Data;
         }
 
         private string EnemyNameList()
         {
-            if (Enum.IsDefined(typeof(EnemyList), _enemyID))
+            if (Enum.IsDefined(typeof(EnemyList), EnemyID))
             {
-                switch (_enemyID)
+                switch (EnemyID)
                 {
                     case 0:
                         return "Goomba [" + Index + "]";

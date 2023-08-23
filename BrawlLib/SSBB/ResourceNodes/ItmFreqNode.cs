@@ -252,7 +252,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _unk0;
 
         [Category("Group Node")]
-        public int Unknown0
+        public int Id
         {
             get => _unk0;
             set
