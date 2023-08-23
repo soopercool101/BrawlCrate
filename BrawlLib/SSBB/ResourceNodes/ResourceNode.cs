@@ -1675,7 +1675,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// </summary>
         public virtual unsafe byte[] MD5()
         {
-            DataSource data = OriginalSource;
+            DataSource data = WorkingSource;
             if (data.Address == null || data.Length == 0)
             {
                 return null;
