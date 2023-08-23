@@ -2,12 +2,10 @@
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.Types;
 using BrawlLib.SSBB.Types.Subspace.Hazards;
-using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Markup;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {

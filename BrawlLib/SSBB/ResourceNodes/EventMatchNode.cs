@@ -136,7 +136,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             Normal = 0,
             Metal = 1,
-            Clear = 2
+            Clear = 2,
+            PMTurbo = 3
         }
 
         private EventMatchFighterHeader data;
