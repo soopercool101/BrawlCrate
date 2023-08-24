@@ -19,57 +19,348 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GBLKEntryNode : ResourceNode
     {
-        internal GBLKEntry* Header => (GBLKEntry*) WorkingUncompressed.Address;
+        internal GBLKEntry Data;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
-
-        [Category("Block Info")]
-        [DisplayName("Hurtbox Size")]
-        public bfloat Hurtbox => *(bfloat*) (WorkingUncompressed.Address + 0x18);
-
-        [Category("Block Info")]
-        [DisplayName("Base Model Index")]
-        public int BMID => *(byte*) (WorkingUncompressed.Address + 0x29);
-
-        [Category("Block Info")]
-        [DisplayName("Position Model Index")]
-        public int PMID => *(byte*) (WorkingUncompressed.Address + 0x2C);
-
-
-        [Category("Block Info")]
-        [DisplayName("Collision Index")]
-        public int CID
+        
+        [Category("Unknown")]
+        public float Unknown0x00
         {
-            get
+            get => Data._unknown0x00;
+            set
             {
-                int CID = *(byte*) (WorkingUncompressed.Address + 0x2D);
-                if (CID == 0xFF)
-                {
-                    return -1;
-                }
-
-                return CID;
+                Data._unknown0x00 = value;
+                SignalPropertyChange();
             }
         }
 
-        [Category("Flags")] public byte Flag1 => *(byte*) (Header + 0x24);
-        [Category("Flags")] public byte Flag2 => *(byte*) (Header + 0x25);
-        [Category("Flags")] public byte Flag3 => *(byte*) (Header + 0x26);
-        [Category("Flags")] public byte Flag4 => *(byte*) (Header + 0x27);
+        [Category("Unknown")]
+        public float Unknown0x04
+        {
+            get => Data._unknown0x04;
+            set
+            {
+                Data._unknown0x04 = value;
+                SignalPropertyChange();
+            }
+        }
 
-        [Category("Misc")] public int unk0 => *(byte*) (WorkingUncompressed.Address + 0x28);
-        [Category("Misc")] public bfloat unk1 => *(bfloat*) (WorkingUncompressed.Address + 0x04);
-        [Category("Misc")] public bfloat unk2 => *(bfloat*) (WorkingUncompressed.Address + 0x10);
-        [Category("Misc")] public byte unk3 => *(byte*) (WorkingUncompressed.Address + 0x23);
+        [Category("Unknown")]
+        public float Unknown0x08
+        {
+            get => Data._unknown0x08;
+            set
+            {
+                Data._unknown0x08 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0x0C
+        {
+            get => Data._unknown0x0C;
+            set
+            {
+                Data._unknown0x0C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0x10
+        {
+            get => Data._unknown0x10;
+            set
+            {
+                Data._unknown0x10 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0x14
+        {
+            get => Data._unknown0x14;
+            set
+            {
+                Data._unknown0x14 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GBLK")]
+        public float HurtboxSize
+        {
+            get => Data._hurtboxSize;
+            set
+            {
+                Data._hurtboxSize = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x1C
+        {
+            get => Data._unknown0x1C;
+            set
+            {
+                Data._unknown0x1C = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x1D
+        {
+            get => Data._unknown0x1D;
+            set
+            {
+                Data._unknown0x1D = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x1E
+        {
+            get => Data._unknown0x1E;
+            set
+            {
+                Data._unknown0x1E = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x1F
+        {
+            get => Data._unknown0x1F;
+            set
+            {
+                Data._unknown0x1F = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0x20
+        {
+            get => Data._unknown0x20;
+            set
+            {
+                Data._unknown0x20 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x24
+        {
+            get => Data._unknown0x24;
+            set
+            {
+                Data._unknown0x24 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x25
+        {
+            get => Data._unknown0x25;
+            set
+            {
+                Data._unknown0x25 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x26
+        {
+            get => Data._unknown0x26;
+            set
+            {
+                Data._unknown0x26 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x27
+        {
+            get => Data._unknown0x27;
+            set
+            {
+                Data._unknown0x27 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x28
+        {
+            get => Data._unknown0x28;
+            set
+            {
+                Data._unknown0x28 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GBLK")]
+        public byte BaseModelIndex
+        {
+            get => Data._baseModelIndex;
+            set
+            {
+                Data._baseModelIndex = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x2A
+        {
+            get => Data._unknown0x2A;
+            set
+            {
+                Data._unknown0x2A = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x2B
+        {
+            get => Data._unknown0x2B;
+            set
+            {
+                Data._unknown0x2B = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GBLK")]
+        public byte PositionModelIndex
+        {
+            get => Data._positionModelIndex;
+            set
+            {
+                Data._positionModelIndex = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("GBLK")]
+        public byte CollisionModelIndex
+        {
+            get => Data._collisionModelIndex;
+            set
+            {
+                Data._collisionModelIndex = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x2E
+        {
+            get => Data._unknown0x2E;
+            set
+            {
+                Data._unknown0x2E = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0x2F
+        {
+            get => Data._unknown0x2F;
+            set
+            {
+                Data._unknown0x2F = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0x30
+        {
+            get => Data._unknown0x30;
+            set
+            {
+                Data._unknown0x30 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0x34
+        {
+            get => Data._unknown0x34;
+            set
+            {
+                Data._unknown0x34 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public short Unknown0x38
+        {
+            get => Data._unknown0x38;
+            set
+            {
+                Data._unknown0x38 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public short Unknown0x3A
+        {
+            get => Data._unknown0x3A;
+            set
+            {
+                Data._unknown0x3A = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0x3C
+        {
+            get => Data._unknown0x3C;
+            set
+            {
+                Data._unknown0x3C = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
-            base.OnInitialize();
+            Data = *(GBLKEntry*)WorkingUncompressed.Address;
             if (_name == null)
             {
                 _name = $"Block Group [{Index}]";
             }
 
             return false;
+        }
+
+        public override int OnCalculateSize(bool force)
+        {
+            return GBLKEntry.Size;
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            GBLKEntry* hdr = (GBLKEntry*)address;
+            *hdr = Data;
         }
     }
 }
