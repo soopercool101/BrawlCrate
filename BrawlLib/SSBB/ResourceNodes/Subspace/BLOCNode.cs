@@ -12,6 +12,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.BLOC;
         internal BLOC* Header => (BLOC*) WorkingUncompressed.Address;
 
+        public override Type[] AllowedChildTypes => new[] {typeof(BLOCEntryNode)};
+
         public int Version
         {
             get => _version;

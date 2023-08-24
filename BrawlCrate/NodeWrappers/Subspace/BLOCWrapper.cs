@@ -43,6 +43,7 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("GCAM Animated Camera File", null, NewGCAMAction),
                 new ToolStripMenuItem("GITM Fighter Trophy File", null, NewGITMAction)
             ));
+            _menu.Items.Add(new ToolStripMenuItem("&Import", null, ImportAction, Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -93,6 +94,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<BLOCWrapper>().NewGITM();
         }
 
+        protected static void ImportAction(object sender, EventArgs e)
+        {
+            GetInstance<BLOCWrapper>().Import();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             DuplicateToolStripMenuItem.Enabled = true;
@@ -122,6 +128,35 @@ namespace BrawlCrate.NodeWrappers
         public BLOCWrapper()
         {
             ContextMenuStrip = _menu;
+        }
+
+        public void Import()
+        {
+            if (Program.OpenFiles(FileFilters.Raw, out string[] paths) > 0)
+            {
+                ResourceNode currentNode = null;
+                foreach (string path in paths)
+                {
+                    var node = NodeFactory.FromFile(null, path);
+                    if (!(node is BLOCEntryNode))
+                    {
+                        node = NodeFactory.FromFile(null, path, typeof(BLOCEntryNode));
+                    }
+
+                    if (node is BLOCEntryNode)
+                    {
+                        _resource.AddChild(node);
+                        currentNode = node;
+                    }
+                }
+
+                if (currentNode != null)
+                {
+                    BaseWrapper w = FindResource(currentNode, false);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
+            }
         }
 
         public GSNDNode NewGSND()
