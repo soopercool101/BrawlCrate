@@ -1247,6 +1247,33 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             return list;
         }
 
+        /// <summary>
+        /// Find the MD5 checksum of this node's data.
+        /// Basically, don't check string offset and instead hash the name itself
+        /// </summary>
+        public override byte[] MD5()
+        {
+            if (WorkingUncompressed.Address == null || WorkingUncompressed.Length == 0)
+            {
+                // skip fix. This should probably never happen but whatever
+                return base.MD5();
+            }
+
+            int size = WorkingUncompressed.Length + Name.UTF8Length();
+            byte[] data = new byte[size];
+            fixed (byte* ptr = data)
+            {
+                // Write the initial data
+                Memory.Move(ptr, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
+                // Write the name string
+                ((VoidPtr) ptr).WriteUTF8String(Name, false, (uint)WorkingUncompressed.Length);
+            }
+            // 0 out the name offset
+            data[0x8] = data[0x9] = data[0xA] = data[0xB] = 0;
+
+            return MD5Provider.ComputeHash(data);
+        }
+
         [Browsable(false)] public List<Influence> LinkedInfluences => _linkedInfluences;
 
         private readonly List<Influence> _linkedInfluences = new List<Influence>();
