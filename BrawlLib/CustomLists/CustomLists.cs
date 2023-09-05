@@ -1,4 +1,5 @@
 ﻿using BrawlLib.SSBB;
+using BrawlCrate.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -106,22 +107,39 @@ namespace BrawlLib.CustomLists
             Assembly assembly = Assembly.GetExecutingAssembly();
             try
             {
-                string resourceName = "BrawlLib.CustomLists." +
-                                      (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)
-                                          .Equals("en", StringComparison.OrdinalIgnoreCase)
-                                          ? ""
-                                          : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()
-                                              .Substring(0, 2).ToLower() + '.') + "FighterList.txt";
-                string listDefault = "";
-                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                try
                 {
-                    using (StreamReader reader = new StreamReader(stream))
+                    string resourceName = MainForm.BuildPath + "FighterList.txt";
+                    string listDefault = "";
+                    using (Stream stream = assembly.GetManifestResourceStream(resourceName))
                     {
-                        listDefault = reader.ReadToEnd();
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            listDefault = reader.ReadToEnd();
+                        }
                     }
-                }
 
-                File.WriteAllText(listName, listDefault);
+                    File.WriteAllText(listName, listDefault);
+                }
+                catch
+                {
+                    string resourceName = "BrawlLib.CustomLists." +
+                                          (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)
+                                              .Equals("en", StringComparison.OrdinalIgnoreCase)
+                                              ? ""
+                                              : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()
+                                                  .Substring(0, 2).ToLower() + '.') + "FighterList.txt";
+                    string listDefault = "";
+                    using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            listDefault = reader.ReadToEnd();
+                        }
+                    }
+
+                    File.WriteAllText(listName, listDefault);
+                }
             }
             catch
             {
