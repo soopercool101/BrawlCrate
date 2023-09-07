@@ -206,6 +206,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Door")]
+        [TypeConverter(typeof(HexOnlyByteConverter))]
         public byte DoorIndex
         {
             get => Data._doorIndex;
