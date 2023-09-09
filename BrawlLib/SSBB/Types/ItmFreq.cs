@@ -87,12 +87,11 @@ namespace BrawlLib.SSBB.Types
     {
         public const int Size = 0x14;
 
-        public bint _unknown0;
-        public bint _unknown1;
-        public bint _unknown2;
-        public buint _entryOffset;
-        public buint _entryCount;
-        public bint _unknown3;
+        public bint _unknown0;      // 0x00
+        public bint _unknown1;      // 0x04
+        public bint _unknown2;      // 0x08
+        public buint _entryOffset;  // 0x0C
+        public buint _entryCount;   // 0x10
 
         public VoidPtr Address
         {

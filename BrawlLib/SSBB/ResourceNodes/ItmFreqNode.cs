@@ -288,19 +288,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int _unk3;
-
-        [Category("Group Node")]
-        public int Unknown3
-        {
-            get => _unk3;
-            set
-            {
-                _unk3 = value;
-                SignalPropertyChange();
-            }
-        }
-
         public override bool OnInitialize()
         {
             if (_name == null)
@@ -311,7 +298,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unk0 = Header->_unknown0;
             _unk1 = Header->_unknown1;
             _unk2 = Header->_unknown2;
-            _unk3 = Header->_unknown3;
 
             return Header->_entryCount > 0;
         }
@@ -337,7 +323,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_unknown0 = _unk0;
             header->_unknown1 = _unk1;
             header->_unknown2 = _unk2;
-            header->_unknown3 = _unk3;
         }
 
         public override int OnCalculateSize(bool force)
