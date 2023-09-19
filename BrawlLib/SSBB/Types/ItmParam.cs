@@ -51,7 +51,7 @@ namespace BrawlLib.SSBB.Types
         public bfloat _unknown0xA0;
         public bfloat _unknown0xA4;
         public bint _unknown0xA8;
-        public bool32 _unknown0xAC;
+        public bool32 _isHeavy;
         public bint _unknown0xB0;
         public bint _unknown0xB4;
         public bint _unknown0xB8;

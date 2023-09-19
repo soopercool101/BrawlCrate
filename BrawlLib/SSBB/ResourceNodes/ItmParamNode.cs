@@ -678,12 +678,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        public bool Unknown0xAC
+        [Description("Set to true for the Barrel, Crate, Rolling Crate, and Party Ball. Causes the heavy carrying animation")]
+        public bool IsHeavy
         {
-            get => Data._unknown0xAC;
+            get => Data._isHeavy;
             set
             {
-                Data._unknown0xAC = value;
+                Data._isHeavy = value;
                 SignalPropertyChange();
             }
         }
