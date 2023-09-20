@@ -53,8 +53,11 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown0xA8;
         public bool32 _isHeavy;
         public bint _unknown0xB0;
-        public bint _unknown0xB4;
-        public bint _unknown0xB8;
+        public Bin8 _unknown0xB4;
+        public Bin8 _unknown0xB5;
+        public Bin8 _unknown0xB6;
+        public Bin8 _unknown0xB7;
+        public buint _unknown0xB8;
         public bool32 _unknown0xBC;
         public bint _unknown0xC0;
         public bool32 _unknown0xC4;

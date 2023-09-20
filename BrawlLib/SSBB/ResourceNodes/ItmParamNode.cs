@@ -700,21 +700,385 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+#if DEBUG
         [Category("Unknown")]
-        [TypeConverter(typeof(HexIntConverter))]
-        public int Unknown0xB4
+        [TypeConverter(typeof(HexByteConverter))]
+        public byte Unknown0xB4 => Data._unknown0xB4;
+#endif
+
+        [Category("Unknown")]
+        public bool Unknown0xB4a
         {
-            get => Data._unknown0xB4;
+            get => Data._unknown0xB4[0];
             set
             {
-                Data._unknown0xB4 = value;
+                Data._unknown0xB4[0] = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Unknown")]
-        [TypeConverter(typeof(HexIntConverter))]
-        public int Unknown0xB8
+        public bool Unknown0xB4b
+        {
+            get => Data._unknown0xB4[1];
+            set
+            {
+                Data._unknown0xB4[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB4c
+        {
+            get => Data._unknown0xB4[2];
+            set
+            {
+                Data._unknown0xB4[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB4d
+        {
+            get => Data._unknown0xB4[3];
+            set
+            {
+                Data._unknown0xB4[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB4e
+        {
+            get => Data._unknown0xB4[4];
+            set
+            {
+                Data._unknown0xB4[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB4f
+        {
+            get => Data._unknown0xB4[5];
+            set
+            {
+                Data._unknown0xB4[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB4g
+        {
+            get => Data._unknown0xB4[6];
+            set
+            {
+                Data._unknown0xB4[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB4h
+        {
+            get => Data._unknown0xB4[7];
+            set
+            {
+                Data._unknown0xB4[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+#if DEBUG
+        [Category("Unknown")]
+        [TypeConverter(typeof(HexByteConverter))]
+        public byte Unknown0xB5 => Data._unknown0xB5;
+#endif
+
+        [Category("Unknown")]
+        public bool Unknown0xB5a
+        {
+            get => Data._unknown0xB5[0];
+            set
+            {
+                Data._unknown0xB5[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB5b
+        {
+            get => Data._unknown0xB5[1];
+            set
+            {
+                Data._unknown0xB5[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB5c
+        {
+            get => Data._unknown0xB5[2];
+            set
+            {
+                Data._unknown0xB5[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB5d
+        {
+            get => Data._unknown0xB5[3];
+            set
+            {
+                Data._unknown0xB5[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB5e
+        {
+            get => Data._unknown0xB5[4];
+            set
+            {
+                Data._unknown0xB5[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB5f
+        {
+            get => Data._unknown0xB5[5];
+            set
+            {
+                Data._unknown0xB5[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB5g
+        {
+            get => Data._unknown0xB5[6];
+            set
+            {
+                Data._unknown0xB5[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB5h
+        {
+            get => Data._unknown0xB5[7];
+            set
+            {
+                Data._unknown0xB5[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+#if DEBUG
+        [Category("Unknown")]
+        [TypeConverter(typeof(HexByteConverter))]
+        public byte Unknown0xB6 => Data._unknown0xB6;
+#endif
+
+        [Category("Unknown")]
+        public bool Unknown0xB6a
+        {
+            get => Data._unknown0xB6[0];
+            set
+            {
+                Data._unknown0xB6[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB6b
+        {
+            get => Data._unknown0xB6[1];
+            set
+            {
+                Data._unknown0xB6[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB6c
+        {
+            get => Data._unknown0xB6[2];
+            set
+            {
+                Data._unknown0xB6[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB6d
+        {
+            get => Data._unknown0xB6[3];
+            set
+            {
+                Data._unknown0xB6[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB6e
+        {
+            get => Data._unknown0xB6[4];
+            set
+            {
+                Data._unknown0xB6[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB6f
+        {
+            get => Data._unknown0xB6[5];
+            set
+            {
+                Data._unknown0xB6[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB6g
+        {
+            get => Data._unknown0xB6[6];
+            set
+            {
+                Data._unknown0xB6[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB6h
+        {
+            get => Data._unknown0xB6[7];
+            set
+            {
+                Data._unknown0xB6[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+#if DEBUG
+        [Category("Unknown")]
+        [TypeConverter(typeof(HexByteConverter))]
+        public byte Unknown0xB7 => Data._unknown0xB7;
+#endif
+
+        [Category("Unknown")]
+        public bool Unknown0xB7a
+        {
+            get => Data._unknown0xB7[0];
+            set
+            {
+                Data._unknown0xB7[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB7b
+        {
+            get => Data._unknown0xB7[1];
+            set
+            {
+                Data._unknown0xB7[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB7c
+        {
+            get => Data._unknown0xB7[2];
+            set
+            {
+                Data._unknown0xB7[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB7d
+        {
+            get => Data._unknown0xB7[3];
+            set
+            {
+                Data._unknown0xB7[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB7e
+        {
+            get => Data._unknown0xB7[4];
+            set
+            {
+                Data._unknown0xB7[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB7f
+        {
+            get => Data._unknown0xB7[5];
+            set
+            {
+                Data._unknown0xB7[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB7g
+        {
+            get => Data._unknown0xB7[6];
+            set
+            {
+                Data._unknown0xB7[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xB7h
+        {
+            get => Data._unknown0xB7[7];
+            set
+            {
+                Data._unknown0xB7[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        [TypeConverter(typeof(HexUIntConverter))]
+        public uint Unknown0xB8
         {
             get => Data._unknown0xB8;
             set
