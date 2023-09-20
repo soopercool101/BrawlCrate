@@ -700,11 +700,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-#if DEBUG
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
         public byte Unknown0xB4 => Data._unknown0xB4;
-#endif
 
         [Category("Unknown")]
         public bool Unknown0xB4a
@@ -794,11 +792,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-#if DEBUG
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
         public byte Unknown0xB5 => Data._unknown0xB5;
-#endif
 
         [Category("Unknown")]
         public bool Unknown0xB5a
@@ -888,11 +884,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-#if DEBUG
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
         public byte Unknown0xB6 => Data._unknown0xB6;
-#endif
 
         [Category("Unknown")]
         public bool Unknown0xB6a
@@ -982,11 +976,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-#if DEBUG
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
         public byte Unknown0xB7 => Data._unknown0xB7;
-#endif
 
         [Category("Unknown")]
         public bool Unknown0xB7a
