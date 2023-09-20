@@ -3,6 +3,7 @@ using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -59,9 +60,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Blast Box" , 0x509C },
             { "Ray Gun" , 0x2B1C },
             { "Ray Gun Shot" , 0x2C0C },
-            { "Lipstick" , 0x347C },
-            { "Lipstick Flower" , 0x365C },
-            { "Lipstick Shot" , 0x356C },
+            { "Lip's Stick" , 0x347C },
+            { "Lip's Stick Flower" , 0x365C },
+            { "Lip's Stick Shot" , 0x356C },
             { "Sandbag" , 0x149C },
             { "Screw Attack" , 0x4A0C },
             { "Sticker" , 0x21BC },
@@ -76,13 +77,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Soccer Ball" , 0x4BEC },
             { "Super Scope" , 0x2CFC },
             { "Super Scope shot" , 0x2DEC },
-            { "Star" , 0x248C },
+            { "Starman / Super Star" , 0x248C },
             { "Food" , 0x176C },
             { "Team Healer" , 0x482C },
             { "Lightning" , 0x257C },
             { "Unira" , 0x4CDC },
             { "Bunny Hood" , 0x4AFC },
-            { "Warpstar" , 0x266C },
+            { "Warp Star" , 0x266C },
             { "Key" , 0x40AC },
             { "Trophy Stand" , 0x455C },
             { "Stock Ball" , 0x239C },
@@ -148,9 +149,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Andross Shot" , 0x617C },
             { "Barbara" , 0x626C },
             { "Gray Fox" , 0x662C },
-            { "Ray MKII" , 0x635C },
-            { "Ray MKII Bomb" , 0x653C },
-            { "Ray MKII Gun Shot" , 0x644C },
+            { "Ray MK III" , 0x635C },
+            { "Ray MK III Bomb" , 0x653C },
+            { "Ray MK III Gun Shot" , 0x644C },
             { "Samurai Goroh" , 0x68FC },
             { "Devil" , 0x671C },
             { "Excitebike" , 0x680C },
@@ -644,13 +645,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0xA0
+        [Category("Item Parameters")]
+        [Description("Scales model and hitbox. ECB and grab range must be changed separately")]
+        public float ItemScale
         {
-            get => Data._unknown0xA0;
+            get => Data._itemScale;
             set
             {
-                Data._unknown0xA0 = value;
+                Data._itemScale = value;
                 SignalPropertyChange();
             }
         }
