@@ -24,28 +24,44 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte Unknown0x00
         {
             get => Data._unknown0x00;
-            set => Data._unknown0x00 = value;
+            set
+            {
+                Data._unknown0x00 = value;
+                SignalPropertyChange();
+            }
         }
 
         [Category("Unknown")]
         public byte Unknown0x01
         {
             get => Data._unknown0x01;
-            set => Data._unknown0x01 = value;
+            set
+            {
+                Data._unknown0x01 = value;
+                SignalPropertyChange();
+            }
         }
 
         [Category("Unknown")]
         public byte Unknown0x02
         {
             get => Data._unknown0x02;
-            set => Data._unknown0x02 = value;
+            set
+            {
+                Data._unknown0x02 = value;
+                SignalPropertyChange();
+            }
         }
 
         [Category("Unknown")]
         public byte Unknown0x03
         {
             get => Data._unknown0x03;
-            set => Data._unknown0x03 = value;
+            set
+            {
+                Data._unknown0x03 = value;
+                SignalPropertyChange();
+            }
         }
 
         [Category("GET2")]
