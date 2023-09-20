@@ -211,6 +211,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 EntryList[curIndex] = values[i];
             }
+            SignalPropertyChange();
         }
 
         public string GetBytes(int index)
