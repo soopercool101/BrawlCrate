@@ -700,7 +700,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Item Parameters")]
+        [Category("Unknown")]
         [TypeConverter(typeof(HexIntConverter))]
         public int Unknown0xB4
         {
@@ -712,7 +712,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Item Parameters")]
+        [Category("Unknown")]
         [TypeConverter(typeof(HexIntConverter))]
         public int Unknown0xB8
         {
@@ -845,7 +845,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Item Parameters")]
+        [Category("Unknown")]
         [TypeConverter(typeof(HexIntConverter))]
         public int Unknown0xE8
         {
@@ -857,7 +857,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Item Parameters")]
+        [Category("Unknown")]
         [TypeConverter(typeof(HexIntConverter))]
         public int Unknown0xEC
         {
