@@ -33,8 +33,8 @@ namespace BrawlLib.SSBB.Types
         public bfloat _unknown0x58;
         public bfloat _slideAngle;
         public bfloat _slideGravity;
-        public bfloat _unknown0x64;
-        public bfloat _unknown0x68;
+        public bfloat _floorBounceSpeedMultiplierX;
+        public bfloat _floorBounceSpeedMultiplierY;
         public bfloat _unknown0x6C;
         public bfloat _wallBounceSpeedMultiplierX;
         public bfloat _wallBounceSpeedMultiplierY;

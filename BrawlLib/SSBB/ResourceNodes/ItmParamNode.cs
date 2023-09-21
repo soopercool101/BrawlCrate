@@ -788,24 +788,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        [Description("Ground velocity following horizontal aerial landing")]
-        public float GroundVelocity
+        [TypeConverter(typeof(Vector2StringConverter))]
+        public Vector2 FloorBounceSpeedMultiplier
         {
-            get => Data._unknown0x64;
+            get => new Vector2(Data._floorBounceSpeedMultiplierX, Data._floorBounceSpeedMultiplierY);
             set
             {
-                Data._unknown0x64 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Item Parameters")]
-        public float BounceRecoilMultiplier
-        {
-            get => Data._unknown0x68;
-            set
-            {
-                Data._unknown0x68 = value;
+                Data._floorBounceSpeedMultiplierX = value._x;
+                Data._floorBounceSpeedMultiplierY= value._y;
                 SignalPropertyChange();
             }
         }
@@ -984,7 +974,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Type6 = 6
         }
 
-        [Category("Unknown")]
+        [Category("Item Parameters")]
         public GrabType PickupType
         {
             get => (GrabType) (int)Data._pickupType;
@@ -1021,8 +1011,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB4c
+        [Category("Item Parameters")]
+        [Description("If true, flips upsidedown when facing the opposite direction. Used by some projectiles.")]
+        public bool FlipTurn
         {
             get => Data._flags0xB4[2];
             set
@@ -1124,8 +1115,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5d
+        [Category("Item Parameters")]
+        public bool IsInedibleNormalItem
         {
             get => Data._flags0xB5[3];
             set
@@ -1218,7 +1209,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        [Description("Disables Kirby/Dedede inhalation (among possible other effects), used by Pokémon and Mr. Saturn")]
         public bool IsPokemon
         {
             get => Data._flags0xB6[3];
@@ -1263,8 +1253,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB6h
+        [Category("Item Parameters")]
+        [Description("When true, Kirby/Dedede/Wario will take damage when inhaling this item")]
+        public bool ExplosiveInhale
         {
             get => Data._flags0xB6[7];
             set
