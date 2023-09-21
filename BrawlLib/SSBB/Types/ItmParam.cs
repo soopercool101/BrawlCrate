@@ -49,7 +49,7 @@ namespace BrawlLib.SSBB.Types
         public bfloat _unknown0x98;
         public bfloat _unknown0x9C;
         public bfloat _itemScale;
-        public bfloat _unknown0xA4;
+        public bfloat _itemHealth;
         public bint _unknown0xA8;
         public bool32 _isHeavy;
         public bint _unknown0xB0;

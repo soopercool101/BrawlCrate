@@ -831,8 +831,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Item Parameters")]
-        public bool IsHammer
+        [Category("Unknown")]
+        public bool Unknown0xB5d
         {
             get => Data._flags0xB5[3];
             set
@@ -843,8 +843,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        [Description("Diddy's Edible Peanut is not spawned directly by him, and is the only case this is set to false when CharacterItem is set to true")]
-        public bool SpawnedByCharacter
+        public bool IsHammer
         {
             get => Data._flags0xB5[4];
             set
@@ -855,7 +854,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        public bool CharacterItem
+        [Description("Diddy's Edible Peanut is not spawned directly by him, and is the only case this is set to false when CharacterItem is set to true")]
+        public bool SpawnedByCharacter
         {
             get => Data._flags0xB5[5];
             set
@@ -865,9 +865,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Item Parameters")]
-        [Description("Also set to true for Mr. Saturn, for some reason?")]
-        public bool IsPokemon
+        [Category("Unknown")]
+        public bool Unknown0xB5g
         {
             get => Data._flags0xB5[6];
             set
@@ -877,8 +876,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Item Parameters")]
-        public bool IsAssistSummon
+        [Category("Unknown")]
+        public bool Unknown0xB5h
         {
             get => Data._flags0xB5[7];
             set
@@ -914,8 +913,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB6c
+        [Category("Item Parameters")]
+        public bool IsAssistSummon
         {
             get => Data._flags0xB6[2];
             set
@@ -925,8 +924,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB6d
+        [Category("Item Parameters")]
+        public bool IsPokemon
         {
             get => Data._flags0xB6[3];
             set
@@ -936,8 +935,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB6e
+        [Category("Item Parameters")]
+        public bool CharacterItem
         {
             get => Data._flags0xB6[4];
             set
@@ -999,7 +998,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Parameters")]
         [Description("Used for held items that fire projectiles")]
-        public bool IsGun
+        public bool IsFiringWeapon
         {
             get => Data._flags0xB7[1];
             set
