@@ -1106,6 +1106,8 @@ namespace BrawlCrate.UI
             maxY = null;
             maxZ = null;
             BRESGroupNode modelGroup = brresNode.GetFolder<MDL0Node>();
+            if (modelGroup == null)
+                return;
             foreach (MDL0Node model in modelGroup.Children)
             {
                 if (model._children == null)
