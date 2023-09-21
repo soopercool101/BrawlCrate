@@ -642,46 +642,30 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x28
+        [Category("Item Parameters")]
+        [TypeConverter(typeof(Vector2StringConverter))]
+        [Description("Affects the box around which characters push away the item")]
+        public Vector2 CharacterColliderY
         {
-            get => Data._unknown0x28;
+            get => new Vector2(Data._characterColliderY1, Data._characterColliderY2);
             set
             {
-                Data._unknown0x28 = value;
+                Data._characterColliderY1 = value._x;
+                Data._characterColliderY2 = value._y;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x2C
+        [Category("Item Parameters")]
+        [TypeConverter(typeof(Vector2StringConverter))]
+        [Description("Affects the box around which characters push away the item")]
+        public Vector2 CharacterColliderX
         {
-            get => Data._unknown0x2C;
+            get => new Vector2(Data._characterColliderX1, Data._characterColliderX2);
             set
             {
-                Data._unknown0x2C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x30
-        {
-            get => Data._unknown0x30;
-            set
-            {
-                Data._unknown0x30 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x34
-        {
-            get => Data._unknown0x34;
-            set
-            {
-                Data._unknown0x34 = value;
+                Data._characterColliderX1 = value._x;
+                Data._characterColliderX2 = value._y;
                 SignalPropertyChange();
             }
         }
@@ -803,8 +787,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x64
+        [Category("Item Parameters")]
+        [Description("Ground velocity following horizontal aerial landing")]
+        public float GroundVelocity
         {
             get => Data._unknown0x64;
             set
@@ -814,8 +799,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x68
+        [Category("Item Parameters")]
+        public float BounceRecoilMultiplier
         {
             get => Data._unknown0x68;
             set
@@ -919,24 +904,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x98
+        [Category("Item Parameters")]
+        public float BaseDamageMultiplier
         {
-            get => Data._unknown0x98;
+            get => Data._baseDamageMultiplier;
             set
             {
-                Data._unknown0x98 = value;
+                Data._baseDamageMultiplier = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x9C
+        [Category("Item Parameters")]
+        public float SpeedDamageMultiplier
         {
-            get => Data._unknown0x9C;
+            get => Data._speedDamageMultiplier;
             set
             {
-                Data._unknown0x9C = value;
+                Data._speedDamageMultiplier = value;
                 SignalPropertyChange();
             }
         }
@@ -988,13 +973,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown0xB0
+        public enum GrabType : int
         {
-            get => Data._unknown0xB0;
+            NotGrabbable = 0,
+            AutomaticPickup = 1,
+            Type2 = 2,
+            Type3 = 3,
+            Type4 = 4,
+            Type5 = 5,
+            Type6 = 6
+        }
+
+        [Category("Unknown")]
+        public GrabType PickupType
+        {
+            get => (GrabType) (int)Data._pickupType;
             set
             {
-                Data._unknown0xB0 = value;
+                Data._pickupType = (int)value;
                 SignalPropertyChange();
             }
         }
@@ -1222,6 +1218,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
+        [Description("Disables Kirby/Dedede inhalation (among possible other effects), used by Pokémon and Mr. Saturn")]
         public bool IsPokemon
         {
             get => Data._flags0xB6[3];
