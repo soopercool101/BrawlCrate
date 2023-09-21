@@ -390,31 +390,30 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private short _action;
+        private short _min;
 
         [DisplayName("Minimum to Spawn")]
         [Category("Item")]
-        public short Action
+        public short Minimum
         {
-            get => _action;
+            get => _min;
             set
             {
-                _action = value;
+                _min = value;
                 SignalPropertyChange();
             }
         }
 
-        private short _subaction;
+        private short _max;
 
         [DisplayName("Maximum to Spawn")]
         [Category("Item")]
-        [Description("Possible the spawning subaction of the item.")]
-        public short Subaction
+        public short Maximum
         {
-            get => _subaction;
+            get => _max;
             set
             {
-                _subaction = value;
+                _max = value;
                 SignalPropertyChange();
             }
         }
@@ -425,8 +424,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _id = Header->_ID;
             _costumeID = Header->_subItem;
             _frequency = Header->_frequency;
-            _action = Header->_action;
-            _subaction = Header->_subaction;
+            _min = Header->_min;
+            _max = Header->_max;
 
             if (_name == null)
             {
@@ -440,10 +439,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             ItmFreqEntry* _header = (ItmFreqEntry*) address;
             *_header = new ItmFreqEntry();
-            _header->_action = _action;
+            _header->_max = _max;
             _header->_frequency = _frequency;
             _header->_ID = _id;
-            _header->_subaction = _subaction;
+            _header->_min = _min;
             _header->_subItem = _costumeID;
         }
 

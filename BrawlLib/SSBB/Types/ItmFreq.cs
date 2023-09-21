@@ -40,8 +40,8 @@ namespace BrawlLib.SSBB.Types
         public bint _ID;
         public bint _subItem;
         public bfloat _frequency;
-        public bshort _subaction;
-        public bshort _action;
+        public bshort _min;
+        public bshort _max;
 
         private VoidPtr Address
         {
