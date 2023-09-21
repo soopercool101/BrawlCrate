@@ -789,7 +789,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Item Parameters")]
         [TypeConverter(typeof(Vector2StringConverter))]
-        public Vector2 FloorBounceSpeedMultiplier
+        public Vector2 FloorBounceSpeedMultipliers
         {
             get => new Vector2(Data._floorBounceSpeedMultiplierX, Data._floorBounceSpeedMultiplierY);
             set
