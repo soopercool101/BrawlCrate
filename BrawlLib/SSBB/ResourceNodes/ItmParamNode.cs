@@ -190,8 +190,295 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Wright Buildings" , 0x88DC }
         };
 
+        private float[] _usedFloats = new float[16];
+        private int[] _usedInts = new int[9];
+        
+        [Category("Item Parameters")]
+        public float StickerSpawnRate
+        {
+            get => _usedFloats[0];
+            set
+            {
+                _usedFloats[0] = value;
+                SignalPropertyChange();
+            }
+        }
+        
+        [Category("Item Parameters")]
+        public float CDSpawnRate
+        {
+            get => _usedFloats[1];
+            set
+            {
+                _usedFloats[1] = value;
+                SignalPropertyChange();
+            }
+        }
+        
+        [Category("Item Parameters")]
+        public float MythicalPokemonSpawnRate
+        {
+            get => _usedFloats[2];
+            set
+            {
+                _usedFloats[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6D0
+        {
+            get => _usedFloats[3];
+            set
+            {
+                _usedFloats[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6D4
+        {
+            get => _usedFloats[4];
+            set
+            {
+                _usedFloats[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6D8
+        {
+            get => _usedFloats[5];
+            set
+            {
+                _usedFloats[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6DC
+        {
+            get => _usedFloats[6];
+            set
+            {
+                _usedFloats[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6E0
+        {
+            get => _usedFloats[7];
+            set
+            {
+                _usedFloats[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6E4
+        {
+            get => _usedFloats[8];
+            set
+            {
+                _usedFloats[8] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6E8
+        {
+            get => _usedFloats[9];
+            set
+            {
+                _usedFloats[9] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6EC
+        {
+            get => _usedFloats[10];
+            set
+            {
+                _usedFloats[10] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6F0
+        {
+            get => _usedFloats[11];
+            set
+            {
+                _usedFloats[11] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6F4
+        {
+            get => _usedFloats[12];
+            set
+            {
+                _usedFloats[12] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6F8
+        {
+            get => _usedFloats[13];
+            set
+            {
+                _usedFloats[13] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB6FC
+        {
+            get => _usedFloats[14];
+            set
+            {
+                _usedFloats[14] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public float Unknown0xB700
+        {
+            get => _usedFloats[15];
+            set
+            {
+                _usedFloats[15] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB704
+        {
+            get => _usedInts[0];
+            set
+            {
+                _usedInts[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB708
+        {
+            get => _usedInts[1];
+            set
+            {
+                _usedInts[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB70C
+        {
+            get => _usedInts[2];
+            set
+            {
+                _usedInts[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB710
+        {
+            get => _usedInts[3];
+            set
+            {
+                _usedInts[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB714
+        {
+            get => _usedInts[4];
+            set
+            {
+                _usedInts[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB718
+        {
+            get => _usedInts[5];
+            set
+            {
+                _usedInts[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB71C
+        {
+            get => _usedInts[6];
+            set
+            {
+                _usedInts[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB720
+        {
+            get => _usedInts[7];
+            set
+            {
+                _usedInts[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public int Unknown0xB724
+        {
+            get => _usedInts[8];
+            set
+            {
+                _usedInts[8] = value;
+                SignalPropertyChange();
+            }
+        }
+
         public override bool OnInitialize()
         {
+            for (int i = 0; i < _usedFloats.Length; i++)
+            {
+                _usedFloats[i] = *(bfloat*)(WorkingUncompressed.Address + 0xB6C4 + (i * 4));
+            }
+            for (int i = 0; i < _usedInts.Length; i++)
+            {
+                _usedInts[i] = *(bint*)(WorkingUncompressed.Address + 0xB704 + (i * 4));
+            }
+
             return true;
         }
 
@@ -226,6 +513,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (ResourceNode child in Children.Where(child => ItemOffsets.ContainsKey(child.Name)))
             {
                 child.OnRebuild(address + ItemOffsets[child.Name], ItmParamEntry.Size, true);
+            }
+
+            for (int i = 0; i < _usedFloats.Length; i++)
+            {
+                *(bfloat*)(address + 0xB6C4 + (i * 4)) = _usedFloats[i];
+            }
+
+            for (int i = 0; i < _usedInts.Length; i++)
+            {
+                *(bint*)(address + 0xB704 + (i * 4)) = _usedInts[i];
             }
         }
     }
