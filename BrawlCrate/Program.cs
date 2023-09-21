@@ -163,7 +163,16 @@ Full changelog and documentation can be viewed from the help menu.";
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = Path.GetDirectoryName(FullPath);
 #if CANARY
-            AssemblyTitleFull = "BrawlCrate Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+            try
+            {
+                AssemblyTitleFull = "BrawlCrate Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+            }
+            catch
+            {
+                AssemblyTitleFull = "BrawlCrate Canary";
+                MessageBox.Show("An error was found in the Canary installation. Redownloading.");
+                ForceDownloadCanary();
+            }
             if (BrawlLib.BrawlCrate.PerSessionSettings.ProgramBirthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");

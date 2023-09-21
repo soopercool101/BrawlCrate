@@ -110,16 +110,25 @@ namespace Updater
             string oldBranch;
             string newRepo;
             string oldRepo;
-            string Filename = AppPath + "\\Canary\\Old";
+            string newFile = AppPath + "\\Canary\\New";
+            string oldFile = AppPath + "\\Canary\\Old";
             bool showErrors = true;
+            if (!File.Exists(oldFile))
+                return;
+            if (!File.Exists(newFile))
+            {
+                MessageBox.Show("An error was detected with the Canary installation. Redownloading.");
+                ForceDownloadCanary(string.Empty);
+            }
+
             try
             {
-                newSha = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
-                oldSha = File.ReadAllLines(AppPath + "\\Canary\\Old")[2];
+                newSha = File.ReadAllLines(newFile)[2];
+                oldSha = File.ReadAllLines(oldFile)[2];
                 try
                 {
-                    newBranch = File.ReadAllLines(AppPath + "\\Canary\\New")[3];
-                    oldBranch = File.ReadAllLines(AppPath + "\\Canary\\Old")[3];
+                    newBranch = File.ReadAllLines(newFile)[3];
+                    oldBranch = File.ReadAllLines(oldFile)[3];
                 }
                 catch
                 {
@@ -130,8 +139,8 @@ namespace Updater
 
                 try
                 {
-                    newRepo = File.ReadAllLines(AppPath + "\\Canary\\New")[4];
-                    oldRepo = File.ReadAllLines(AppPath + "\\Canary\\Old")[4];
+                    newRepo = File.ReadAllLines(newFile)[4];
+                    oldRepo = File.ReadAllLines(oldFile)[4];
                 }
                 catch
                 {
@@ -143,11 +152,11 @@ namespace Updater
             {
                 try
                 {
-                    newSha = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+                    newSha = File.ReadAllLines(newFile)[2];
                     oldSha = "";
                     try
                     {
-                        newBranch = File.ReadAllLines(AppPath + "\\Canary\\New")[3];
+                        newBranch = File.ReadAllLines(newFile)[3];
                         oldBranch = newBranch;
                     }
                     catch
@@ -159,7 +168,7 @@ namespace Updater
 
                     try
                     {
-                        newRepo = File.ReadAllLines(AppPath + "\\Canary\\New")[4];
+                        newRepo = File.ReadAllLines(newFile)[4];
                         oldRepo = newRepo;
                     }
                     catch
@@ -182,9 +191,9 @@ namespace Updater
             if (newSha == oldSha)
             {
                 MessageBox.Show("Welcome to BrawlCrate Canary! You were already on the latest commit.");
-                if (File.Exists(Filename))
+                if (File.Exists(oldFile))
                 {
-                    File.Delete(Filename);
+                    File.Delete(oldFile);
                 }
 
                 return;
@@ -196,9 +205,9 @@ namespace Updater
                                 " branch of the " + newRepo + " repository instead of the " + oldBranch +
                                 " branch of the " + oldRepo +
                                 " repository. Canary changelog is not supported when switching repositories, so please check online to see differences.");
-                if (File.Exists(Filename))
+                if (File.Exists(oldFile))
                 {
-                    File.Delete(Filename);
+                    File.Delete(oldFile);
                 }
 
                 return;
@@ -209,9 +218,9 @@ namespace Updater
                 MessageBox.Show("Welcome to BrawlCrate Canary! You are now tracking the " + newBranch +
                                 " branch instead of the " + oldBranch +
                                 " branch. Canary changelog is not supported when switching branches, so please check the Discord for what's been changed.");
-                if (File.Exists(Filename))
+                if (File.Exists(oldFile))
                 {
-                    File.Delete(Filename);
+                    File.Delete(oldFile);
                 }
 
                 return;
@@ -328,9 +337,9 @@ namespace Updater
                 logWindow.ShowDialog();
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
                 CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-                if (File.Exists(Filename))
+                if (File.Exists(oldFile))
                 {
-                    File.Delete(Filename);
+                    File.Delete(oldFile);
                 }
             }
             catch (Exception e)
@@ -637,7 +646,8 @@ namespace Updater
                 Console.WriteLine(e.Message);
                 if (manual)
                 {
-                    MessageBox.Show("ERROR: Current Canary version could not be found. Updates have been disabled.");
+                    MessageBox.Show("ERROR: Current Canary version could not be found. Redownloading.");
+                    await ForceDownloadCanary(openFile);
                 }
             }
         }
@@ -1143,6 +1153,20 @@ namespace Updater
             // get Release
             IReadOnlyList<Release> releases = (await Program.Github.Repository.Release.GetAll(repoOwner, repoName))
                 .Where(r => !r.Prerelease).ToList();
+            if (releases.Count > 0)
+            {
+                await DownloadRelease(releases[0], true, true, false, false, openFile);
+            }
+        }
+
+        public static async Task ForceDownloadCanary(string openFile)
+        {
+            SetCanaryActive();
+            string repoOwner = mainRepo.Split('/')[0];
+            string repoName = mainRepo.Split('/')[1];
+            // get Release
+            IReadOnlyList<Release> releases = (await Program.Github.Repository.Release.GetAll(repoOwner, repoName))
+                .Where(r => r.TagName == $"Canary-{mainBranch}").ToList();
             if (releases.Count > 0)
             {
                 await DownloadRelease(releases[0], true, true, false, false, openFile);
