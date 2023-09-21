@@ -656,13 +656,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0xA4
+        [Category("Item Parameters")]
+        [Description("If an item is breakable with damage, this is the amount of damage it will take")]
+        public float ItemHealth
         {
-            get => Data._unknown0xA4;
+            get => Data._itemHealth;
             set
             {
-                Data._unknown0xA4 = value;
+                Data._itemHealth = value;
                 SignalPropertyChange();
             }
         }
