@@ -3,7 +3,6 @@ using BrawlLib.SSBB.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -47,7 +46,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Hammer Head" , 0x31AC },
             { "Fan" , 0x329C },
             { "Heart Container" , 0x158C },
-            { "Homerun Bat" , 0x338C },
+            { "Home-Run Bat" , 0x338C },
             { "Party Ball" , 0x11CC },
             { "Manaphy Heart" , 0x9F5C },
             { "Maxim Tomato" , 0x167C },
@@ -56,7 +55,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Metal Box" , 0x1EEC },
             { "Hothead" , 0x419C },
             { "Pitfall" , 0x428C },
-            { "Pokeball" , 0x12BC },
+            { "Poké Ball" , 0x12BC },
             { "Blast Box" , 0x509C },
             { "Ray Gun" , 0x2B1C },
             { "Ray Gun Shot" , 0x2C0C },
@@ -97,9 +96,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Snake's Box" , 0x527C },
             { "Diddy's Peanut" , 0x536C },
             { "Link's Bomb" , 0x545C },
-            { "Peach's Turnup" , 0x554C },
+            { "Peach's Turnip" , 0x554C },
             { "R.O.B.'s Gyro" , 0x563C },
-            { "Seed" , 0x572C },
+            { "Diddy's Edible Peanut" , 0x572C },
             { "Snake's Grenade" , 0x581C },
             { "Samus's Armor piece" , 0x5F9C },
             { "Toon Link's Bomb" , 0x590C },
@@ -185,7 +184,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             { "Tank" , 0x833C },
             { "Tank Shot" , 0x842C },
             { "Tingle" , 0x851C },
-            { "togezo" , 0x860C },
+            { "Spiny" , 0x860C },
             { "Waluigi" , 0x86FC },
             { "Dr. Wright" , 0x87EC },
             { "Wright Buildings" , 0x88DC }
@@ -704,15 +703,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
-        public byte Unknown0xB4 => Data._unknown0xB4;
+        public byte Flags0xB4 => Data._flags0xB4;
 
         [Category("Unknown")]
         public bool Unknown0xB4a
         {
-            get => Data._unknown0xB4[0];
+            get => Data._flags0xB4[0];
             set
             {
-                Data._unknown0xB4[0] = value;
+                Data._flags0xB4[0] = value;
                 SignalPropertyChange();
             }
         }
@@ -720,10 +719,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB4b
         {
-            get => Data._unknown0xB4[1];
+            get => Data._flags0xB4[1];
             set
             {
-                Data._unknown0xB4[1] = value;
+                Data._flags0xB4[1] = value;
                 SignalPropertyChange();
             }
         }
@@ -731,10 +730,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB4c
         {
-            get => Data._unknown0xB4[2];
+            get => Data._flags0xB4[2];
             set
             {
-                Data._unknown0xB4[2] = value;
+                Data._flags0xB4[2] = value;
                 SignalPropertyChange();
             }
         }
@@ -742,10 +741,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB4d
         {
-            get => Data._unknown0xB4[3];
+            get => Data._flags0xB4[3];
             set
             {
-                Data._unknown0xB4[3] = value;
+                Data._flags0xB4[3] = value;
                 SignalPropertyChange();
             }
         }
@@ -753,10 +752,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB4e
         {
-            get => Data._unknown0xB4[4];
+            get => Data._flags0xB4[4];
             set
             {
-                Data._unknown0xB4[4] = value;
+                Data._flags0xB4[4] = value;
                 SignalPropertyChange();
             }
         }
@@ -764,10 +763,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB4f
         {
-            get => Data._unknown0xB4[5];
+            get => Data._flags0xB4[5];
             set
             {
-                Data._unknown0xB4[5] = value;
+                Data._flags0xB4[5] = value;
                 SignalPropertyChange();
             }
         }
@@ -775,10 +774,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB4g
         {
-            get => Data._unknown0xB4[6];
+            get => Data._flags0xB4[6];
             set
             {
-                Data._unknown0xB4[6] = value;
+                Data._flags0xB4[6] = value;
                 SignalPropertyChange();
             }
         }
@@ -786,117 +785,119 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB4h
         {
-            get => Data._unknown0xB4[7];
+            get => Data._flags0xB4[7];
             set
             {
-                Data._unknown0xB4[7] = value;
+                Data._flags0xB4[7] = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
-        public byte Unknown0xB5 => Data._unknown0xB5;
+        public byte Flags0xB5 => Data._flags0xB5;
 
-        [Category("Unknown")]
-        public bool Unknown0xB5a
+        [Category("Item Parameters")]
+        public bool SubspaceEnemy
         {
-            get => Data._unknown0xB5[0];
+            get => Data._flags0xB5[0];
             set
             {
-                Data._unknown0xB5[0] = value;
+                Data._flags0xB5[0] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5b
+        [Category("Item Parameters")]
+        public bool StageItem
         {
-            get => Data._unknown0xB5[1];
+            get => Data._flags0xB5[1];
             set
             {
-                Data._unknown0xB5[1] = value;
+                Data._flags0xB5[1] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5c
+        [Category("Item Parameters")]
+        public bool Equippable1
         {
-            get => Data._unknown0xB5[2];
+            get => Data._flags0xB5[2];
             set
             {
-                Data._unknown0xB5[2] = value;
+                Data._flags0xB5[2] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5d
+        [Category("Item Parameters")]
+        public bool IsHammer
         {
-            get => Data._unknown0xB5[3];
+            get => Data._flags0xB5[3];
             set
             {
-                Data._unknown0xB5[3] = value;
+                Data._flags0xB5[3] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5e
+        [Category("Item Parameters")]
+        [Description("Diddy's Edible Peanut is not spawned directly by him, and is the only case this is set to false when CharacterItem is set to true")]
+        public bool SpawnedByCharacter
         {
-            get => Data._unknown0xB5[4];
+            get => Data._flags0xB5[4];
             set
             {
-                Data._unknown0xB5[4] = value;
+                Data._flags0xB5[4] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5f
+        [Category("Item Parameters")]
+        public bool CharacterItem
         {
-            get => Data._unknown0xB5[5];
+            get => Data._flags0xB5[5];
             set
             {
-                Data._unknown0xB5[5] = value;
+                Data._flags0xB5[5] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5g
+        [Category("Item Parameters")]
+        [Description("Also set to true for Mr. Saturn, for some reason?")]
+        public bool IsPokemon
         {
-            get => Data._unknown0xB5[6];
+            get => Data._flags0xB5[6];
             set
             {
-                Data._unknown0xB5[6] = value;
+                Data._flags0xB5[6] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB5h
+        [Category("Item Parameters")]
+        public bool IsAssistSummon
         {
-            get => Data._unknown0xB5[7];
+            get => Data._flags0xB5[7];
             set
             {
-                Data._unknown0xB5[7] = value;
+                Data._flags0xB5[7] = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
-        public byte Unknown0xB6 => Data._unknown0xB6;
+        public byte Flags0xB6 => Data._flags0xB6;
 
         [Category("Unknown")]
         public bool Unknown0xB6a
         {
-            get => Data._unknown0xB6[0];
+            get => Data._flags0xB6[0];
             set
             {
-                Data._unknown0xB6[0] = value;
+                Data._flags0xB6[0] = value;
                 SignalPropertyChange();
             }
         }
@@ -904,10 +905,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB6b
         {
-            get => Data._unknown0xB6[1];
+            get => Data._flags0xB6[1];
             set
             {
-                Data._unknown0xB6[1] = value;
+                Data._flags0xB6[1] = value;
                 SignalPropertyChange();
             }
         }
@@ -915,10 +916,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB6c
         {
-            get => Data._unknown0xB6[2];
+            get => Data._flags0xB6[2];
             set
             {
-                Data._unknown0xB6[2] = value;
+                Data._flags0xB6[2] = value;
                 SignalPropertyChange();
             }
         }
@@ -926,10 +927,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB6d
         {
-            get => Data._unknown0xB6[3];
+            get => Data._flags0xB6[3];
             set
             {
-                Data._unknown0xB6[3] = value;
+                Data._flags0xB6[3] = value;
                 SignalPropertyChange();
             }
         }
@@ -937,21 +938,22 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB6e
         {
-            get => Data._unknown0xB6[4];
+            get => Data._flags0xB6[4];
             set
             {
-                Data._unknown0xB6[4] = value;
+                Data._flags0xB6[4] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB6f
+        [Category("Item Parameters")]
+        [Description("Causes the food eating animation to be played on pickup")]
+        public bool Edible
         {
-            get => Data._unknown0xB6[5];
+            get => Data._flags0xB6[5];
             set
             {
-                Data._unknown0xB6[5] = value;
+                Data._flags0xB6[5] = value;
                 SignalPropertyChange();
             }
         }
@@ -959,10 +961,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB6g
         {
-            get => Data._unknown0xB6[6];
+            get => Data._flags0xB6[6];
             set
             {
-                Data._unknown0xB6[6] = value;
+                Data._flags0xB6[6] = value;
                 SignalPropertyChange();
             }
         }
@@ -970,58 +972,60 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB6h
         {
-            get => Data._unknown0xB6[7];
+            get => Data._flags0xB6[7];
             set
             {
-                Data._unknown0xB6[7] = value;
+                Data._flags0xB6[7] = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Unknown")]
         [TypeConverter(typeof(HexByteConverter))]
-        public byte Unknown0xB7 => Data._unknown0xB7;
+        public byte Flags0xB7 => Data._flags0xB7;
 
-        [Category("Unknown")]
-        public bool Unknown0xB7a
+        [Category("Item Parameters")]
+        [Description("Set to true for things like Poké Balls and Crates")]
+        public bool SpawnsItem
         {
-            get => Data._unknown0xB7[0];
+            get => Data._flags0xB7[0];
             set
             {
-                Data._unknown0xB7[0] = value;
+                Data._flags0xB7[0] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB7b
+        [Category("Item Parameters")]
+        [Description("Used for held items that fire projectiles")]
+        public bool IsGun
         {
-            get => Data._unknown0xB7[1];
+            get => Data._flags0xB7[1];
             set
             {
-                Data._unknown0xB7[1] = value;
+                Data._flags0xB7[1] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB7c
+        [Category("Item Parameters")]
+        public bool IsBatteringWeapon
         {
-            get => Data._unknown0xB7[2];
+            get => Data._flags0xB7[2];
             set
             {
-                Data._unknown0xB7[2] = value;
+                Data._flags0xB7[2] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB7d
+        [Category("Item Parameters")]
+        public bool IsThrowingWeapon
         {
-            get => Data._unknown0xB7[3];
+            get => Data._flags0xB7[3];
             set
             {
-                Data._unknown0xB7[3] = value;
+                Data._flags0xB7[3] = value;
                 SignalPropertyChange();
             }
         }
@@ -1029,43 +1033,44 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Unknown")]
         public bool Unknown0xB7e
         {
-            get => Data._unknown0xB7[4];
+            get => Data._flags0xB7[4];
             set
             {
-                Data._unknown0xB7[4] = value;
+                Data._flags0xB7[4] = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Unknown")]
+        [Description("Possibly used on contact? Not set for lightning, However")]
         public bool Unknown0xB7f
         {
-            get => Data._unknown0xB7[5];
+            get => Data._flags0xB7[5];
             set
             {
-                Data._unknown0xB7[5] = value;
+                Data._flags0xB7[5] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB7g
+        [Category("Item Parameters")]
+        public bool Equippable2
         {
-            get => Data._unknown0xB7[6];
+            get => Data._flags0xB7[6];
             set
             {
-                Data._unknown0xB7[6] = value;
+                Data._flags0xB7[6] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB7h
+        [Category("Item Parameters")]
+        public bool Consumable
         {
-            get => Data._unknown0xB7[7];
+            get => Data._flags0xB7[7];
             set
             {
-                Data._unknown0xB7[7] = value;
+                Data._flags0xB7[7] = value;
                 SignalPropertyChange();
             }
         }
@@ -1203,6 +1208,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        // Padding
+        [Browsable(false)]
         [Category("Unknown")]
         [TypeConverter(typeof(HexIntConverter))]
         public int Unknown0xE8
@@ -1215,6 +1222,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        // Padding
+        [Browsable(false)]
         [Category("Unknown")]
         [TypeConverter(typeof(HexIntConverter))]
         public int Unknown0xEC
