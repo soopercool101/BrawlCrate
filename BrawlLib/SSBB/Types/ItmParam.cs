@@ -11,9 +11,9 @@ namespace BrawlLib.SSBB.Types
         public bfloat _hurtboxSize;
         public bfloat _throwSpeedMultiplier;
         public bfloat _unknown0x08;
-        public bfloat _unknown0x0C;
-        public bfloat _unknown0x10;
-        public bfloat _unknown0x14;
+        public bfloat _throwSpinRateX;
+        public bfloat _throwSpinRateY;
+        public bfloat _throwSpinRateZ;
         public bfloat _unknown0x18;
         public bfloat _gravity;
         public bfloat _terminalVelocity;
@@ -22,8 +22,8 @@ namespace BrawlLib.SSBB.Types
         public bfloat _characterColliderY2;
         public bfloat _characterColliderX1;
         public bfloat _characterColliderX2;
-        public bfloat _unknown0x38;
-        public bfloat _unknown0x3C;
+        public bfloat _grabRangeOffsetX;
+        public bfloat _grabRangeOffsetY;
         public bfloat _grabRangeDistanceX;
         public bfloat _grabRangeDistanceY;
         public bfloat _ecbHeight;
@@ -42,8 +42,8 @@ namespace BrawlLib.SSBB.Types
         public bfloat _ceilingBounceSpeedMultiplierY;
         public bfloat _fighterBounceSpeedMultiplierX;
         public bfloat _fighterBounceSpeedMultiplierY;
-        public bfloat _unknown0x88;
-        public bfloat _unknown0x8C;
+        public bfloat _knockbackAirFriction;
+        public bfloat _knockbackGroundFriction;
         public bfloat _unknown0x90;
         public bfloat _unknown0x94;
         public bfloat _baseDamageMultiplier;

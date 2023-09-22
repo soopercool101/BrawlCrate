@@ -565,35 +565,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x0C
+        [Category("Item Parameters")]
+        [TypeConverter(typeof(Vector3StringConverter))]
+        public Vector3 ThrowSpinRate
         {
-            get => Data._unknown0x0C;
+            get => new Vector3(Data._throwSpinRateX, Data._throwSpinRateY, Data._throwSpinRateZ);
             set
             {
-                Data._unknown0x0C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x10
-        {
-            get => Data._unknown0x10;
-            set
-            {
-                Data._unknown0x10 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x14
-        {
-            get => Data._unknown0x14;
-            set
-            {
-                Data._unknown0x14 = value;
+                Data._throwSpinRateX = value._x;
+                Data._throwSpinRateY = value._y;
+                Data._throwSpinRateZ = value._z;
                 SignalPropertyChange();
             }
         }
@@ -670,24 +651,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x38
+        [Category("Item Parameters")]
+        [TypeConverter(typeof(Vector2StringConverter))]
+        public Vector2 GrabRangeOffset
         {
-            get => Data._unknown0x38;
+            get => new Vector2(Data._grabRangeOffsetX, Data._grabRangeOffsetY);
             set
             {
-                Data._unknown0x38 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x3C
-        {
-            get => Data._unknown0x3C;
-            set
-            {
-                Data._unknown0x3C = value;
+                Data._grabRangeOffsetX = value._x;
+                Data._grabRangeOffsetY = value._y;
                 SignalPropertyChange();
             }
         }
@@ -851,23 +823,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public float Unknown0x88
+        public float KnockbackAirFriction
         {
-            get => Data._unknown0x88;
+            get => Data._knockbackAirFriction;
             set
             {
-                Data._unknown0x88 = value;
+                Data._knockbackAirFriction = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Unknown")]
-        public float Unknown0x8C
+        public float KnockbackGroundFriction
         {
-            get => Data._unknown0x8C;
+            get => Data._knockbackGroundFriction;
             set
             {
-                Data._unknown0x8C = value;
+                Data._knockbackGroundFriction = value;
                 SignalPropertyChange();
             }
         }
