@@ -822,7 +822,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
+        [Category("Item Parameters")]
         public float KnockbackAirFriction
         {
             get => Data._knockbackAirFriction;
@@ -833,7 +833,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
+        [Category("Item Parameters")]
         public float KnockbackGroundFriction
         {
             get => Data._knockbackGroundFriction;
