@@ -118,7 +118,8 @@ namespace Updater
             if (!File.Exists(newFile))
             {
                 MessageBox.Show("An error was detected with the Canary installation. Redownloading.");
-                ForceDownloadCanary(string.Empty);
+                await ForceDownloadCanary(string.Empty);
+                return;
             }
 
             try

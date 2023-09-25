@@ -92,8 +92,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private Vector2 _p2 = new Vector2();
-
         [Category("GET2")]
         [TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public TriggerDataClass Trigger

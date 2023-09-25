@@ -64,8 +64,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private TriggerDataClass _trigger;
-
         public override bool OnInitialize()
         {
             Data = *(GFINEntry*)WorkingUncompressed.Address;
