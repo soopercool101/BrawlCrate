@@ -1043,6 +1043,90 @@ namespace BrawlLib.Internal
         }
     }
 
+    public class VillagerDropdown : UserInputHexByteEnumDropdown<TBGCEntryNode.VillagerIDs> { }
+
+    public class UserInputByteEnumDropdown<T> : ByteConverter where T : struct, Enum
+    {
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+
+        public virtual string FormattedNumericalValue(T val)
+        {
+            return $"{Convert.ToByte(val)}";
+        }
+        public virtual string FormattedNumericalValue(byte b)
+        {
+            return $"{b}";
+        }
+
+        public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+        {
+            var enumList = new List<string>();
+            foreach (var enumVal in Enum.GetValues(typeof(T)).Cast<T>())
+            {
+                enumList.Add($"{FormattedNumericalValue(enumVal)} - {enumVal.GetDescription()}");
+            }
+            return new StandardValuesCollection(enumList);
+        }
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value.GetType() == typeof(string))
+            {
+                string field0 = (value.ToString() ?? "").Split(' ')[0];
+                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase)
+                    ? 16
+                    : 10;
+                return Convert.ToByte(field0, fromBase);
+            }
+
+            return base.ConvertFrom(context, culture, value);
+        }
+
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+                                         Type destinationType)
+        {
+            if (destinationType == typeof(string) && value != null)
+            {
+                if (value is T enumObj)
+                {
+                    return FormattedNumericalValue(enumObj) + " - " + enumObj.GetDescription();
+                }
+                if (value is byte b)
+                {
+                    var enumVals = Enum.GetValues(typeof(T)).Cast<T>();
+                    if (enumVals.Any(o => Convert.ToByte(o) == b))
+                        return $"{FormattedNumericalValue(b)} - {Enum.GetValues(typeof(T)).Cast<T>().First(o => Convert.ToByte(o) == b).GetDescription()}";
+                    return FormattedNumericalValue(b);
+                }
+
+                if (value is string s)
+                    return s;
+            }
+
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
+
+    public class UserInputHexByteEnumDropdown<T> : UserInputByteEnumDropdown<T> where T : struct, Enum
+    {
+        public override string FormattedNumericalValue(T val)
+        {
+            return $"0x{Convert.ToByte(val):X2}";
+        }
+        public override string FormattedNumericalValue(byte b)
+        {
+            return $"0x{b:X2}";
+        }
+    }
+
     public class DropDownListByteItemIDs : ByteConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)

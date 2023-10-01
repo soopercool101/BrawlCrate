@@ -1,6 +1,5 @@
 ﻿using BrawlLib.Internal;
 using BrawlLib.SSBB.Types.Subspace.Objects;
-using BrawlLib.SSBB.Types.Subspace.Triggers;
 using System;
 using System.ComponentModel;
 
