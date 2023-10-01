@@ -1043,7 +1043,6 @@ namespace BrawlLib.Internal
         }
     }
 
-    public class VillagerDropdown : UserInputHexByteEnumDropdown<TBGCEntryNode.VillagerIDs> { }
 
     public class UserInputByteEnumDropdown<T> : ByteConverter where T : struct, Enum
     {

@@ -10,6 +10,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.TBGC;
         public override Type SubEntryType => typeof(TBGCEntryNode);
 
+        protected override string GetName()
+        {
+            return base.GetName("Smashville Cameos");
+        }
+
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
             return source.Tag == "TBGC" ? new TBGCNode() : null;
@@ -103,9 +108,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             None = 0xFA
         }
 
-        [Category("TBGCEntry")]
+        public class VillagerDropdown : UserInputHexByteEnumDropdown<VillagerIDs> { }
+
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager1
+        public byte Cameo1
         {
             get => Data._unk0x00;
             set
@@ -115,9 +122,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("TBGCEntry")]
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager2
+        public byte Cameo2
         {
             get => Data._unk0x01;
             set
@@ -127,9 +134,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         
-        [Category("TBGCEntry")]
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager3
+        public byte Cameo3
         {
             get => Data._unk0x02;
             set
@@ -139,9 +146,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("TBGCEntry")]
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager4
+        public byte Cameo4
         {
             get => Data._unk0x03;
             set
@@ -151,9 +158,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("TBGCEntry")]
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager5
+        public byte Cameo5
         {
             get => Data._unk0x04;
             set
@@ -163,9 +170,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("TBGCEntry")]
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager6
+        public byte Cameo6
         {
             get => Data._unk0x05;
             set
@@ -175,9 +182,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("TBGCEntry")]
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager7
+        public byte Cameo7
         {
             get => Data._unk0x06;
             set
@@ -187,9 +194,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("TBGCEntry")]
+        [Category("Cameos")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte Villager8
+        public byte Cameo8
         {
             get => Data._unk0x07;
             set
@@ -207,6 +214,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             Data = *(TBGCEntry*)WorkingUncompressed.Address;
+
+            if (_name == null)
+            {
+                _name = $"Cameo List [{Index}]";
+            }
 
             return false;
         }
