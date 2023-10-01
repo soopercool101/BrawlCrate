@@ -7,13 +7,13 @@ namespace BrawlLib.SSBB.Types.Stage_Tables
     {
         public const int Size = 0x8;
 
-        public byte _unk0x00;
-        public byte _unk0x01;
-        public byte _unk0x02;
-        public byte _unk0x03;
-        public byte _unk0x04;
-        public byte _unk0x05;
-        public byte _unk0x06;
-        public byte _unk0x07;
+        public byte _cameo1;
+        public byte _cameo2;
+        public byte _cameo3;
+        public byte _cameo4;
+        public byte _cameo5;
+        public byte _cameo6;
+        public byte _cameo7;
+        public byte _cameo8;
     }
 }

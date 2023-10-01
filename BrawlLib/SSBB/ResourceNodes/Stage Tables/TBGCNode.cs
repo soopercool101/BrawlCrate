@@ -111,97 +111,105 @@ namespace BrawlLib.SSBB.ResourceNodes
         public class VillagerDropdown : UserInputHexByteEnumDropdown<VillagerIDs> { }
 
         [Category("Cameos")]
+        [Description("Spawns at the transLeftChrA bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo1
         {
-            get => Data._unk0x00;
+            get => Data._cameo1;
             set
             {
-                Data._unk0x00 = value;
+                Data._cameo1 = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Cameos")]
+        [Description("Spawns at the transLeftChrB bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo2
         {
-            get => Data._unk0x01;
+            get => Data._cameo2;
             set
             {
-                Data._unk0x01 = value;
+                Data._cameo2 = value;
                 SignalPropertyChange();
             }
         }
         
         [Category("Cameos")]
+        [Description("Spawns at the transCenterChrA bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo3
         {
-            get => Data._unk0x02;
+            get => Data._cameo3;
             set
             {
-                Data._unk0x02 = value;
+                Data._cameo3 = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Cameos")]
+        [Description("Spawns at the transCenterChrB bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo4
         {
-            get => Data._unk0x03;
+            get => Data._cameo4;
             set
             {
-                Data._unk0x03 = value;
+                Data._cameo4 = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Cameos")]
+        [Description("Spawns at the transGreas bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo5
         {
-            get => Data._unk0x04;
+            get => Data._cameo5;
             set
             {
-                Data._unk0x04 = value;
+                Data._cameo5 = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Cameos")]
+        [Description("Spawns at the transGreasCar bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo6
         {
-            get => Data._unk0x05;
+            get => Data._cameo6;
             set
             {
-                Data._unk0x05 = value;
+                Data._cameo6 = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Cameos")]
+        [Description("Spawns at the transHatoNoSu bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo7
         {
-            get => Data._unk0x06;
+            get => Data._cameo7;
             set
             {
-                Data._unk0x06 = value;
+                Data._cameo7 = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Cameos")]
+        [Description("Spawns at the transMaster bone on the StgVillageMainStage model")]
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Cameo8
         {
-            get => Data._unk0x07;
+            get => Data._cameo8;
             set
             {
-                Data._unk0x07 = value;
+                Data._cameo8 = value;
                 SignalPropertyChange();
             }
         }
