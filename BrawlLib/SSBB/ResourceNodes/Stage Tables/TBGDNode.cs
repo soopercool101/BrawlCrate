@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.Types.Stage_Tables;
 using System;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -9,6 +10,11 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public override ResourceType ResourceFileType => ResourceType.TBGD;
         public override Type SubEntryType => typeof(TBGDEntryNode);
+
+        protected override string GetName()
+        {
+            return base.GetName("Smashville Cameo Attributes");
+        }
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
@@ -20,9 +26,9 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public TBGDEntry Data;
 
-        [Category("TBGD")]
+        [Category("Cameo Attributes")]
         [TypeConverter(typeof(VillagerDropdown))]
-        public byte VillagerID
+        public byte Villager
         {
             get => Data._unk0x00;
             set
@@ -65,145 +71,157 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public float Unknown0x04
+        [Category("Cameo Attributes")]
+        public float AnimationPlaybackSpeed
         {
-            get => Data._unk0x04;
+            get => Data._animationPlaybackSpeed;
             set
             {
-                Data._unk0x04 = value;
+                Data._animationPlaybackSpeed = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x08
+        [DisplayName("Use StgVillageCommonWait")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim1
         {
-            get => Data._unk0x08;
+            get => Data._playAnim1;
             set
             {
-                Data._unk0x08 = value;
+                Data._playAnim1 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x09
+        [DisplayName("Use StgVillageCommonHear")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim2
         {
-            get => Data._unk0x09;
+            get => Data._playAnim2;
             set
             {
-                Data._unk0x09 = value;
+                Data._playAnim2 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x0A
+        [DisplayName("Use StgVillageCommonClaps")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim3
         {
-            get => Data._unk0x0A;
+            get => Data._playAnim3;
             set
             {
-                Data._unk0x0A = value;
+                Data._playAnim3 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x0B
+        [DisplayName("Use StgVillageCommonKomari")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim4
         {
-            get => Data._unk0x0B;
+            get => Data._playAnim4;
             set
             {
-                Data._unk0x0B = value;
+                Data._playAnim4 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x0C
+        [DisplayName("Use StgVillageCommonMusu")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim5
         {
-            get => Data._unk0x0C;
+            get => Data._playAnim5;
             set
             {
-                Data._unk0x0C = value;
+                Data._playAnim5 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x0D
+        [DisplayName("Use StgVillageCommonNiko")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim6
         {
-            get => Data._unk0x0D;
+            get => Data._playAnim6;
             set
             {
-                Data._unk0x0D = value;
+                Data._playAnim6 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x0E
+        [DisplayName("Use StgVillageCommonWalk")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim7
         {
-            get => Data._unk0x0E;
+            get => Data._playAnim7;
             set
             {
-                Data._unk0x0E = value;
+                Data._playAnim7 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x0F
+        [DisplayName("Use StgVillageCommonRun")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim8
         {
-            get => Data._unk0x0F;
+            get => Data._playAnim8;
             set
             {
-                Data._unk0x0F = value;
+                Data._playAnim8 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x10
+        [DisplayName("Use StgVillageCommonSleep")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim9
         {
-            get => Data._unk0x10;
+            get => Data._playAnim9;
             set
             {
-                Data._unk0x10 = value;
+                Data._playAnim9 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x11
+        [DisplayName("Use StgVillageCommonSit")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim10
         {
-            get => Data._unk0x11;
+            get => Data._playAnim10;
             set
             {
-                Data._unk0x11 = value;
+                Data._playAnim10 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x12
+        [DisplayName("Use StgVillageCommonPoseWait")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim11
         {
-            get => Data._unk0x12;
+            get => Data._playAnim11;
             set
             {
-                Data._unk0x12 = value;
+                Data._playAnim11 = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0x13
+        [DisplayName("Use StgVillageCommonMonbanWait")]
+        [Category("Cameo Attributes")]
+        public bool PlayAnim12
         {
-            get => Data._unk0x13;
+            get => Data._playAnim12;
             set
             {
-                Data._unk0x13 = value;
+                Data._playAnim12 = value;
                 SignalPropertyChange();
             }
         }
@@ -216,6 +234,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             Data = *(TBGDEntry*)WorkingUncompressed.Address;
+
+            if (_name == null)
+            {
+                if (Enum.GetValues(typeof(VillagerID)).Cast<VillagerID>().Any(o => (byte) o == Villager))
+                {
+                    var villagerName = ((VillagerNameAttribute) ((VillagerID)Villager).GetType().GetField(((VillagerID)Villager).ToString()).GetCustomAttributes(true)
+                        .FirstOrDefault(a => a is VillagerNameAttribute))?.Name ?? ((VillagerID)Villager).ToString();
+                    _name = $"{villagerName} [{Index}]";
+                }
+                else
+                {
+                    _name = $"Villager0x{Villager:X2} [{Index}]";
+                }
+            }
 
             return false;
         }

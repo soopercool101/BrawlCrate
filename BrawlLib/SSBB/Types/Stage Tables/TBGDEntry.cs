@@ -12,18 +12,18 @@ namespace BrawlLib.SSBB.Types.Stage_Tables
         public byte _unk0x01;   // Padding?
         public byte _unk0x02;   // Padding?
         public byte _unk0x03;   // Padding?
-        public bfloat _unk0x04; // Probability?
-        public bool8 _unk0x08;  // Everything from here onwards appears to be a byte boolean
-        public bool8 _unk0x09;
-        public bool8 _unk0x0A;
-        public bool8 _unk0x0B;
-        public bool8 _unk0x0C;
-        public bool8 _unk0x0D;
-        public bool8 _unk0x0E;
-        public bool8 _unk0x0F;
-        public bool8 _unk0x10;
-        public bool8 _unk0x11;
-        public bool8 _unk0x12;
-        public bool8 _unk0x13;
+        public bfloat _animationPlaybackSpeed;
+        public bool8 _playAnim1;
+        public bool8 _playAnim2;
+        public bool8 _playAnim3;
+        public bool8 _playAnim4;
+        public bool8 _playAnim5;
+        public bool8 _playAnim6;
+        public bool8 _playAnim7;
+        public bool8 _playAnim8;
+        public bool8 _playAnim9;
+        public bool8 _playAnim10;
+        public bool8 _playAnim11;
+        public bool8 _playAnim12;
     }
 }
