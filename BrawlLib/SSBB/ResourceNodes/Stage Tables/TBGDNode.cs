@@ -30,10 +30,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(VillagerDropdown))]
         public byte Villager
         {
-            get => Data._unk0x00;
+            get => Data._villagerId;
             set
             {
-                Data._unk0x00 = value;
+                Data._villagerId = value;
                 SignalPropertyChange();
             }
         }
