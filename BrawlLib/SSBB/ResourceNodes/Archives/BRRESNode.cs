@@ -1109,7 +1109,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _userEntries = new UserDataCollection();
             _version = CommonHeader->_version;
             SetSizeInternal(CommonHeader->_size);
-            if (!string.IsNullOrEmpty(Tag) && !WorkingUncompressed.Tag.Equals(Tag))
+            if (WorkingUncompressed.Length >= 4 && !string.IsNullOrEmpty(Tag) && !WorkingUncompressed.Tag.Equals(Tag))
             {
                 SignalPropertyChange();
             }
