@@ -101,7 +101,7 @@ namespace BrawlLib.SSBB
                 }
                 else
                 {
-                    d._entries.Add(new string((sbyte*) addr));
+                    d._entries.Add(addr.GetUTF8String());
                 }
 
                 Add(d);
