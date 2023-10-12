@@ -1,6 +1,5 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlCrate.UI;
-using BrawlLib.Internal;
 using BrawlLib.Internal.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;

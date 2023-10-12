@@ -447,7 +447,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _spotFunc = Data->_spotFunc;
 
             //Read user data
-            (_userEntries = new UserDataCollection()).Read(Data->UserData);
+            (_userEntries = new UserDataCollection()).Read(Data->UserData, WorkingUncompressed);
 
             //Don't bother reading data if the entry is null
             if (Name == "<null>")

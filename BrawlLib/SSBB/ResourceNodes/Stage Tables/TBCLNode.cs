@@ -1,5 +1,4 @@
 ﻿using BrawlLib.Internal;
-using BrawlLib.SSBB.Types.ProjectPlus;
 using BrawlLib.SSBB.Types.Stage_Tables;
 using System;
 using System.ComponentModel;

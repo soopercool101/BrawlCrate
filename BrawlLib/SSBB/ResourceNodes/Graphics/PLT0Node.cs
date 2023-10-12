@@ -65,7 +65,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_version == 3)
             {
-                (_userEntries = new UserDataCollection()).Read(Header3->UserData);
+                (_userEntries = new UserDataCollection()).Read(Header3->UserData, WorkingUncompressed);
             }
 
             return false;

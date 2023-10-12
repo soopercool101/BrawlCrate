@@ -2477,7 +2477,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            (_userEntries = new UserDataCollection()).Read(header->UserData);
+            (_userEntries = new UserDataCollection()).Read(header->UserData, WorkingUncompressed);
 
             return true;
         }

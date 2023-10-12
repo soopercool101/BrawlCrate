@@ -175,7 +175,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _originalPath = header->OrigPath;
                 }
 
-                (_userEntries = new UserDataCollection()).Read(header->UserData);
+                (_userEntries = new UserDataCollection()).Read(header->UserData, WorkingUncompressed);
 
                 //Get texture strings
                 for (int i = 0; i < texPtr; i++)

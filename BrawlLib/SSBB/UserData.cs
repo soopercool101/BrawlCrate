@@ -1,4 +1,5 @@
 ﻿using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.Types;
 using System;
 using System.Collections;
@@ -60,7 +61,7 @@ namespace BrawlLib.SSBB
 
     public unsafe class UserDataCollection : CollectionBase, ICustomTypeDescriptor
     {
-        public void Read(VoidPtr userDataAddr)
+        public void Read(VoidPtr userDataAddr, DataSource src)
         {
             if (userDataAddr == null)
             {
@@ -73,7 +74,11 @@ namespace BrawlLib.SSBB
             int count = group->_numEntries;
             for (int i = 0; i < count; i++, pEntry++)
             {
+                if (pEntry->_dataOffset > src.Length)
+                    break;
                 UserDataEntry* entry = (UserDataEntry*) ((VoidPtr) group + pEntry->_dataOffset);
+                if (pEntry->_dataOffset + entry->_dataOffset > src.Length)
+                    break;
                 UserDataClass d = new UserDataClass {_name = new string((sbyte*) group + pEntry->_stringOffset)};
                 VoidPtr addr = (VoidPtr) entry + entry->_dataOffset;
                 d._type = entry->Type;
