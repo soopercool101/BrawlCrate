@@ -79,7 +79,7 @@ namespace BrawlLib.SSBB
                 UserDataEntry* entry = (UserDataEntry*) ((VoidPtr) group + pEntry->_dataOffset);
                 if (pEntry->_dataOffset + entry->_dataOffset > src.Length)
                     break;
-                UserDataClass d = new UserDataClass {_name = new string((sbyte*) group + pEntry->_stringOffset)};
+                UserDataClass d = new UserDataClass {_name = ((VoidPtr) group + pEntry->_stringOffset).GetUTF8String()};
                 VoidPtr addr = (VoidPtr) entry + entry->_dataOffset;
                 d._type = entry->Type;
                 if (d._type != UserValueType.String)
