@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using BrawlLib.Internal;
+using System.ComponentModel;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.Types;
 
@@ -43,6 +44,7 @@ namespace BrawlLib.SSBB
         }
 
         [Category("Motion Path Data")]
+        [TypeConverter(typeof(NullableByteConverter))]
         public byte ModelDataIndex
         {
             get => Data._modelIndex;
