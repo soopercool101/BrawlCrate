@@ -5,37 +5,48 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public class GITMNode : BLOCEntryNode
+    public class GFIMNode : BLOCEntryNode
     {
-        public override Type SubEntryType => typeof(GITMEntryNode);
-        protected override string baseName => "Item Spawns";
+        public override Type SubEntryType => typeof(GFIMEntryNode);
+        protected override string baseName => "Fixed Item Spawns";
 
         internal static ResourceNode TryParse(DataSource source, ResourceNode parent)
         {
-            return source.Tag == "GITM" ? new GITMNode() : null;
+            return source.Tag == "GFIM" ? new GFIMNode() : null;
         }
     }
 
-    public unsafe class GITMEntryNode : ResourceNode
+    public unsafe class GFIMEntryNode : ResourceNode
     {
-        protected internal GITMEntry Data;
+        protected internal GFIMEntry Data;
 
-        [Category("Item")]
-        [TypeConverter(typeof(Vector2StringConverter))]
-        public Vector2 Position
+        [DisplayName("Unknown0x00 (float)")]
+        [Category("Unknown")]
+        public float Unknown0x00
         {
-            get => new Vector2(Data._positionX, Data._positionY);
+            get => Data._unknown0x00;
             set
             {
-                Data._positionX = value.X;
-                Data._positionY = value.Y;
+                Data._unknown0x00 = value;
                 SignalPropertyChange();
             }
         }
 
-        [DisplayName("Unknown0x08 (uint)")]
+        [DisplayName("Unknown0x04 (float)")]
         [Category("Unknown")]
-        public uint Unknown0x08
+        public float Unknown0x04
+        {
+            get => Data._unknown0x04;
+            set
+            {
+                Data._unknown0x04 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [DisplayName("Unknown0x08 (float)")]
+        [Category("Unknown")]
+        public float Unknown0x08
         {
             get => Data._unknown0x08;
             set
@@ -45,16 +56,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public TriggerDataClass _unknown0x0C;
-        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        [DisplayName("Unknown0x0C (TriggerData)")]
+        [DisplayName("Unknown0x0C (uint)")]
         [Category("Unknown")]
-        public TriggerDataClass Unknown0x0C
+        public uint Unknown0x0C
         {
-            get => _unknown0x0C ?? new TriggerDataClass(this);
+            get => Data._unknown0x0C;
             set
             {
-                _unknown0x0C = value;
                 Data._unknown0x0C = value;
                 SignalPropertyChange();
             }
@@ -75,9 +83,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x14 (bool)")]
+        [DisplayName("Unknown0x14 (short)")]
         [Category("Unknown")]
-        public bool Unknown0x14
+        public short Unknown0x14
         {
             get => Data._unknown0x14;
             set
@@ -87,21 +95,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x15 (byte)")]
+        [DisplayName("Unknown0x16 (short)")]
         [Category("Unknown")]
-        public byte Unknown0x15
-        {
-            get => Data._unknown0x15;
-            set
-            {
-                Data._unknown0x15 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x16 (byte)")]
-        [Category("Unknown")]
-        public byte Unknown0x16
+        public short Unknown0x16
         {
             get => Data._unknown0x16;
             set
@@ -111,32 +107,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x17 (byte)")]
-        [Category("Unknown")]
-        public byte Unknown0x17
-        {
-            get => Data._unknown0x17;
-            set
-            {
-                Data._unknown0x17 = value;
-                SignalPropertyChange();
-            }
-        }
-
         public override int OnCalculateSize(bool force)
         {
-            return GITMEntry.Size;
+            return GFIMEntry.Size;
         }
 
         public override bool OnInitialize()
         {
-            Data = *(GITMEntry*) WorkingUncompressed.Address;
-            _unknown0x0C = new TriggerDataClass(this, Data._unknown0x0C);
+            Data = *(GFIMEntry*) WorkingUncompressed.Address;
             _unknown0x10 = new TriggerDataClass(this, Data._unknown0x10);
 
             if (_name == null)
             {
-                _name = $"Item [{Index}]";
+                _name = $"Fixed Item [{Index}]";
             }
 
             return base.OnInitialize();
@@ -144,8 +127,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            GITMEntry* hdr = (GITMEntry*)address;
-            Data._unknown0x0C = _unknown0x0C;
+            GFIMEntry* hdr = (GFIMEntry*)address;
             Data._unknown0x10 = _unknown0x10;
             *hdr = Data;
         }

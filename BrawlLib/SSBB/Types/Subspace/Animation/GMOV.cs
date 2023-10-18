@@ -1,18 +1,216 @@
-﻿using BrawlLib.Internal;
+using BrawlLib.Internal;
+using BrawlLib.SSBB.Types.Subspace.Triggers;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.Types.Subspace.Animation
 {
-    public unsafe struct GMOVEntry
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct GMOVEntry
     {
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public const int Size = 0x1EC;
+
+        public MotionPathData _motionPath; // 0x000
+        public DifficultyRatios _difficultyRatio; // 0x008
+        public byte _modelIndex; // 0x044
+        public byte _collisionIndex; // 0x045
+        public byte _unknown0x046;
+        public byte _unknown0x047;
+        public bint _unknown0x048;
+        public byte _unknown0x04C;
+        public bool8 _unknown0x04D;
+        public byte _unknown0x04E;
+        public byte _unknown0x04F;
+        public buint _unknown0x050;
+        public bint _unknown0x054;
+        public byte _unknown0x058;
+        public bool8 _unknown0x059;
+        public byte _unknown0x05A;
+        public byte _unknown0x05B;
+        public buint _unknown0x05C;
+        public bint _unknown0x060;
+        public byte _unknown0x064;
+        public bool8 _unknown0x065;
+        public byte _unknown0x066;
+        public byte _unknown0x067;
+        public buint _unknown0x068;
+        public buint _unknown0x06C;
+        public byte _unknown0x070;
+        public bool8 _unknown0x071;
+        public byte _unknown0x072;
+        public byte _unknown0x073;
+        public buint _unknown0x074;
+        public buint _unknown0x078;
+        public byte _unknown0x07C;
+        public bool8 _unknown0x07D;
+        public byte _unknown0x07E;
+        public byte _unknown0x07F;
+        public buint _unknown0x080;
+        public buint _unknown0x084;
+        public byte _unknown0x088;
+        public bool8 _unknown0x089;
+        public byte _unknown0x08A;
+        public byte _unknown0x08B;
+        public buint _unknown0x08C;
+        public bint _unknown0x090;
+        public byte _unknown0x094;
+        public bool8 _unknown0x095;
+        public byte _unknown0x096;
+        public byte _unknown0x097;
+        public buint _unknown0x098;
+        public bint _unknown0x09C;
+        public byte _unknown0x0A0;
+        public bool8 _unknown0x0A1;
+        public byte _unknown0x0A2;
+        public byte _unknown0x0A3;
+        public buint _unknown0x0A4;
+        public bint _unknown0x0A8;
+        public byte _unknown0x0AC;
+        public bool8 _unknown0x0AD;
+        public byte _unknown0x0AE;
+        public byte _unknown0x0AF;
+        public buint _unknown0x0B0;
+        public buint _unknown0x0B4;
+        public byte _unknown0x0B8;
+        public bool8 _unknown0x0B9;
+        public byte _unknown0x0BA;
+        public byte _unknown0x0BB;
+        public buint _unknown0x0BC;
+        public buint _unknown0x0C0;
+        public byte _unknown0x0C4;
+        public bool8 _unknown0x0C5;
+        public byte _unknown0x0C6;
+        public byte _unknown0x0C7;
+        public buint _unknown0x0C8;
+        public buint _unknown0x0CC;
+        public byte _unknown0x0D0;
+        public bool8 _unknown0x0D1;
+        public byte _unknown0x0D2;
+        public byte _unknown0x0D3;
+        public buint _unknown0x0D4;
+        public bint _unknown0x0D8;
+        public byte _unknown0x0DC;
+        public bool8 _unknown0x0DD;
+        public byte _unknown0x0DE;
+        public byte _unknown0x0DF;
+        public buint _unknown0x0E0;
+        public bint _unknown0x0E4;
+        public byte _unknown0x0E8;
+        public bool8 _unknown0x0E9;
+        public byte _unknown0x0EA;
+        public byte _unknown0x0EB;
+        public buint _unknown0x0EC;
+        public bint _unknown0x0F0;
+        public byte _unknown0x0F4;
+        public bool8 _unknown0x0F5;
+        public byte _unknown0x0F6;
+        public byte _unknown0x0F7;
+        public buint _unknown0x0F8;
+        public buint _unknown0x0FC;
+        public byte _unknown0x100;
+        public bool8 _unknown0x101;
+        public byte _unknown0x102;
+        public byte _unknown0x103;
+        public buint _unknown0x104;
+        public buint _unknown0x108;
+        public byte _unknown0x10C;
+        public bool8 _unknown0x10D;
+        public byte _unknown0x10E;
+        public byte _unknown0x10F;
+        public buint _unknown0x110;
+        public buint _unknown0x114;
+        public byte _unknown0x118;
+        public bool8 _unknown0x119;
+        public byte _unknown0x11A;
+        public byte _unknown0x11B;
+        public buint _unknown0x11C;
+        public bint _unknown0x120;
+        public bshort _unknown0x124;
+        public bshort _unknown0x126;
+        public bshort _unknown0x128;
+        public bshort _unknown0x12A;
+        public bint _unknown0x12C;
+        public bshort _unknown0x130;
+        public bshort _unknown0x132;
+        public bshort _unknown0x134;
+        public bshort _unknown0x136;
+        public bint _unknown0x138;
+        public bshort _unknown0x13C;
+        public bshort _unknown0x13E;
+        public bshort _unknown0x140;
+        public bshort _unknown0x142;
+        public bint _unknown0x144;
+        public bshort _unknown0x148;
+        public bshort _unknown0x14A;
+        public buint _unknown0x14C;
+        public bint _unknown0x150;
+        public buint _unknown0x154;
+        public buint _unknown0x158;
+        public bool8 _unknown0x15C;
+        public byte _unknown0x15D;
+        public byte _unknown0x15E;
+        public byte _unknown0x15F;
+        public bshort _unknown0x160;
+        public bshort _unknown0x162;
+        public bshort _unknown0x164;
+        public bshort _unknown0x166;
+        public bool8 _unknown0x168;
+        public byte _unknown0x169;
+        public byte _unknown0x16A;
+        public byte _unknown0x16B;
+        public bshort _unknown0x16C;
+        public bshort _unknown0x16E;
+        public bshort _unknown0x170;
+        public bshort _unknown0x172;
+        public buint _unknown0x174;
+        public byte _unknown0x178;
+        public bool8 _unknown0x179;
+        public byte _unknown0x17A;
+        public byte _unknown0x17B;
+        public buint _unknown0x17C;
+        public buint _unknown0x180;
+        public buint _unknown0x184;
+        public buint _unknown0x188;
+        public buint _unknown0x18C;
+        public buint _unknown0x190;
+        public buint _unknown0x194;
+        public bint _unknown0x198;
+        public byte _unknown0x19C;
+        public bool8 _unknown0x19D;
+        public byte _unknown0x19E;
+        public byte _unknown0x19F;
+        public buint _unknown0x1A0;
+        public bint _unknown0x1A4;
+        public byte _unknown0x1A8;
+        public bool8 _unknown0x1A9;
+        public byte _unknown0x1AA;
+        public byte _unknown0x1AB;
+        public buint _unknown0x1AC;
+        public bint _unknown0x1B0;
+        public byte _unknown0x1B4;
+        public bool8 _unknown0x1B5;
+        public byte _unknown0x1B6;
+        public byte _unknown0x1B7;
+        public buint _unknown0x1B8;
+        public buint _unknown0x1BC;
+        public byte _unknown0x1C0;
+        public bool8 _unknown0x1C1;
+        public byte _unknown0x1C2;
+        public byte _unknown0x1C3;
+        public buint _unknown0x1C4;
+        public buint _unknown0x1C8;
+        public byte _unknown0x1CC;
+        public bool8 _unknown0x1CD;
+        public byte _unknown0x1CE;
+        public byte _unknown0x1CF;
+        public buint _unknown0x1D0;
+        public buint _unknown0x1D4;
+        public byte _unknown0x1D8;
+        public bool8 _unknown0x1D9;
+        public byte _unknown0x1DA;
+        public byte _unknown0x1DB;
+        public buint _unknown0x1DC;
+        public TriggerData _unknown0x1E0;
+        public TriggerData _unknown0x1E4;
+        public TriggerData _unknown0x1E8;
     }
 }
