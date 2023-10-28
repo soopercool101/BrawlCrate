@@ -9,26 +9,8 @@ namespace BrawlLib.SSBB.Types.Subspace.Hazards
     {
         public const int Size = 0x258;
 
-        public bfloat _unknown0x000;
-        public byte _unknown0x004;
-        public byte _unknown0x005;
-        public byte _unknown0x006;
-        public byte _unknown0x007;
-        public bfloat _unknown0x008;
-        public bfloat _unknown0x00C;
-        public bfloat _unknown0x010;
-        public bfloat _unknown0x014;
-        public bfloat _unknown0x018;
-        public bfloat _unknown0x01C;
-        public bfloat _unknown0x020;
-        public bfloat _unknown0x024;
-        public bfloat _unknown0x028;
-        public bfloat _unknown0x02C;
-        public bfloat _unknown0x030;
-        public bfloat _unknown0x034;
-        public bfloat _unknown0x038;
-        public bfloat _unknown0x03C;
-        public bfloat _unknown0x040;
+        public MotionPathData _motionData; // 0x000
+        public DifficultyRatios _difficultyMotionRatios; // 0x008
         public byte _unknown0x044;
         public byte _unknown0x045;
         public byte _unknown0x046;

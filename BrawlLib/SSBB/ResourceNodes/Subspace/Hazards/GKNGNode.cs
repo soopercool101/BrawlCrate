@@ -20,242 +20,30 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         protected internal GKNGEntry Data;
 
-        [DisplayName("Unknown0x000 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x000
+        public MotionPathDataClass _motionData;
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [Category("Porky Statue")]
+        public MotionPathDataClass MotionData
         {
-            get => Data._unknown0x000;
+            get => _motionData ?? new MotionPathDataClass(this);
             set
             {
-                Data._unknown0x000 = value;
+                _motionData = value;
+                Data._motionData = value;
                 SignalPropertyChange();
             }
         }
 
-        [DisplayName("Unknown0x004 (byte)")]
-        [Category("Unknown")]
-        public byte Unknown0x004
+        public DifficultyRatiosClass _difficultyMotionRatios;
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [Category("Porky Statue")]
+        public DifficultyRatiosClass DifficultyMotionRatios
         {
-            get => Data._unknown0x004;
+            get => _difficultyMotionRatios ?? new DifficultyRatiosClass(this);
             set
             {
-                Data._unknown0x004 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x005 (byte)")]
-        [Category("Unknown")]
-        public byte Unknown0x005
-        {
-            get => Data._unknown0x005;
-            set
-            {
-                Data._unknown0x005 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x006 (byte)")]
-        [Category("Unknown")]
-        public byte Unknown0x006
-        {
-            get => Data._unknown0x006;
-            set
-            {
-                Data._unknown0x006 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x007 (byte)")]
-        [Category("Unknown")]
-        public byte Unknown0x007
-        {
-            get => Data._unknown0x007;
-            set
-            {
-                Data._unknown0x007 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x008 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x008
-        {
-            get => Data._unknown0x008;
-            set
-            {
-                Data._unknown0x008 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x00C (float)")]
-        [Category("Unknown")]
-        public float Unknown0x00C
-        {
-            get => Data._unknown0x00C;
-            set
-            {
-                Data._unknown0x00C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x010 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x010
-        {
-            get => Data._unknown0x010;
-            set
-            {
-                Data._unknown0x010 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x014 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x014
-        {
-            get => Data._unknown0x014;
-            set
-            {
-                Data._unknown0x014 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x018 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x018
-        {
-            get => Data._unknown0x018;
-            set
-            {
-                Data._unknown0x018 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x01C (float)")]
-        [Category("Unknown")]
-        public float Unknown0x01C
-        {
-            get => Data._unknown0x01C;
-            set
-            {
-                Data._unknown0x01C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x020 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x020
-        {
-            get => Data._unknown0x020;
-            set
-            {
-                Data._unknown0x020 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x024 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x024
-        {
-            get => Data._unknown0x024;
-            set
-            {
-                Data._unknown0x024 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x028 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x028
-        {
-            get => Data._unknown0x028;
-            set
-            {
-                Data._unknown0x028 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x02C (float)")]
-        [Category("Unknown")]
-        public float Unknown0x02C
-        {
-            get => Data._unknown0x02C;
-            set
-            {
-                Data._unknown0x02C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x030 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x030
-        {
-            get => Data._unknown0x030;
-            set
-            {
-                Data._unknown0x030 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x034 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x034
-        {
-            get => Data._unknown0x034;
-            set
-            {
-                Data._unknown0x034 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x038 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x038
-        {
-            get => Data._unknown0x038;
-            set
-            {
-                Data._unknown0x038 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x03C (float)")]
-        [Category("Unknown")]
-        public float Unknown0x03C
-        {
-            get => Data._unknown0x03C;
-            set
-            {
-                Data._unknown0x03C = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [DisplayName("Unknown0x040 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x040
-        {
-            get => Data._unknown0x040;
-            set
-            {
-                Data._unknown0x040 = value;
+                _difficultyMotionRatios = value;
+                Data._difficultyMotionRatios = value;
                 SignalPropertyChange();
             }
         }
@@ -2206,6 +1994,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             Data = *(GKNGEntry*) WorkingUncompressed.Address;
+            _motionData = new MotionPathDataClass(this, Data._motionData);
+            _difficultyMotionRatios = new DifficultyRatiosClass(this, Data._difficultyMotionRatios);
             _unknown0x1E0 = new TriggerDataClass(this, Data._unknown0x1E0);
             _unknown0x1E4 = new TriggerDataClass(this, Data._unknown0x1E4);
 
@@ -2220,6 +2010,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             GKNGEntry* hdr = (GKNGEntry*)address;
+            Data._motionData = _motionData;
+            Data._difficultyMotionRatios = _difficultyMotionRatios;
             Data._unknown0x1E0 = _unknown0x1E0;
             Data._unknown0x1E4 = _unknown0x1E4;
             *hdr = Data;
