@@ -116,11 +116,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x20 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x20
+        [Category("Wind")]
+        public float WindWidth
         {
-            get => Data._unknown0x20;
+            get => Data._unknown0x20; 
             set
             {
                 Data._unknown0x20 = value;
@@ -140,9 +139,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x28 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x28
+        [Category("Wind")]
+        public float WindCenterX
         {
             get => Data._unknown0x28;
             set
