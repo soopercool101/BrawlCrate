@@ -188,9 +188,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x38 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x38
+        [Category("Wind")]
+        public float WindAngle
         {
             get => Data._unknown0x38;
             set
