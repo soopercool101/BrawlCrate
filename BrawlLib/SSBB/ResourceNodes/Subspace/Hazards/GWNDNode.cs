@@ -127,9 +127,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x24 (float)")]
-        [Category("Unknown")]
-        public float Unknown0x24
+        [Category("Wind")]
+        public float WindHeight 
         {
             get => Data._unknown0x24;
             set
@@ -150,9 +149,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [DisplayName("Unknown0x2C (float)")]
-        [Category("Unknown")]
-        public float Unknown0x2C
+        [Category("Wind")]
+        public float WindCenterY //WindHeight divided by 2 is the distance the windbox extends vertically in both directions from the center
         {
             get => Data._unknown0x2C;
             set
