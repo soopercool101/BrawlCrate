@@ -269,9 +269,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             int index = 1;
             foreach (CLR0MaterialNode n in Children)
             {
-                dataAddress = (VoidPtr) group + (rEntry++)->_dataOffset;
-                ResourceEntry.Build(group, index++, dataAddress, (BRESString*) stringTable[n.Name]);
-                n.PostProcess(dataAddress, stringTable);
+                VoidPtr materialDataAddress = (VoidPtr) group + (rEntry++)->_dataOffset;
+                ResourceEntry.Build(group, index++, materialDataAddress, (BRESString*) stringTable[n.Name]);
+                n.PostProcess(materialDataAddress, stringTable);
             }
 
             if (_version == 4)
