@@ -29,6 +29,9 @@ namespace BrawlCrate.API
         {
             try
             {
+#if DEBUG
+                Code = BrawlAPIInternal.Engine.CreateScriptSourceFromFile(ScriptPath).Compile();
+#endif
                 Code.Execute(Scope);
             }
             catch (Exception e)
