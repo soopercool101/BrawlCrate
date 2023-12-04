@@ -1435,10 +1435,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Item Parameters")]
         public bool SuffersHitstun
         {
-            get => Data._unknown0xDC;
+            get => Data._suffersHitstun;
             set
             {
-                Data._unknown0xDC = value;
+                Data._suffersHitstun = value;
                 SignalPropertyChange();
             }
         }

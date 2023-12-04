@@ -66,7 +66,7 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown0xD0;
         public bint _unknown0xD4;
         public bint _unknown0xD8;
-        public bint _unknown0xDC;
+        public bool32 _suffersHitstun;
         public bint _unknown0xE0;
         public bint _unknown0xE4;
         public bint _unknown0xE8;
