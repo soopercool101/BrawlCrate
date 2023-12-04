@@ -1432,8 +1432,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown0xDC
+        [Category("Item Parameters")]
+        public bool SuffersHitstun
         {
             get => Data._unknown0xDC;
             set
