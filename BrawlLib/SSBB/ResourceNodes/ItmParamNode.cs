@@ -1399,13 +1399,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown0xD0
+        [Category("Item Parameters")]
+        public bool CanReflect
         {
-            get => Data._unknown0xD0;
+            get => Data._canReflect;
             set
             {
-                Data._unknown0xD0 = value;
+                Data._canReflect = value;
                 SignalPropertyChange();
             }
         }
