@@ -253,6 +253,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("GEG1")]
+        [TypeConverter(typeof(Vector3StringConverter))]
         public Vector3 SpawnPos
         {
             get => new Vector3(Data._spawnPosX, Data._spawnPosY, Data._spawnPosZ);
