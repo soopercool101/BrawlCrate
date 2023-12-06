@@ -28,32 +28,40 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public virtual void GetName()
+        public string ClosestMatching
         {
-            string closestMatch = "";
-            foreach (string s in GroupRefs)
+            get
             {
-                if (closestMatch == "")
+                string closestMatch = "";
+                foreach (string s in GroupRefs)
                 {
-                    closestMatch = s;
-                }
-                else
-                {
-                    int one = closestMatch.Length;
-                    int two = s.Length;
-                    int min = Math.Min(one, two);
-                    for (int i = 0; i < min; i++)
+                    if (closestMatch == "")
                     {
-                        if (char.ToLower(s[i]) != char.ToLower(closestMatch[i]) && i > 1)
+                        closestMatch = s;
+                    }
+                    else
+                    {
+                        int one = closestMatch.Length;
+                        int two = s.Length;
+                        int min = Math.Min(one, two);
+                        for (int i = 0; i < min; i++)
                         {
-                            closestMatch = closestMatch.Substring(0, i - 1);
-                            break;
+                            if (char.ToLower(s[i]) != char.ToLower(closestMatch[i]) && i > 1)
+                            {
+                                closestMatch = closestMatch.Substring(0, i - 1);
+                                break;
+                            }
                         }
                     }
                 }
-            }
 
-            _name = $"[{_fileIndex}] {closestMatch}";
+                return closestMatch;
+            }
+        }
+
+        public virtual void GetName()
+        {
+            _name = $"[{_fileIndex}] {ClosestMatching}";
         }
 
         public List<RSARGroupNode> _groupRefs = new List<RSARGroupNode>();
