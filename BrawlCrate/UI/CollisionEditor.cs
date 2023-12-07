@@ -1944,6 +1944,7 @@ namespace BrawlCrate.UI
             {
                 bool create = ModifierKeys == Keys.Alt;
                 bool add = ModifierKeys == Keys.Shift;
+                bool createAndAdd = ModifierKeys == (Keys.Alt | Keys.Shift);
                 bool subtract = ModifierKeys == Keys.Control;
                 bool move = ModifierKeys == (Keys.Control | Keys.Shift);
 
@@ -2100,6 +2101,24 @@ namespace BrawlCrate.UI
                 target = Vector3.IntersectZ(target, _modelPanel.CurrentViewport.UnProject(e.X, e.Y, 0.0f), 0.0f);
                 point = (Vector2) target;
 
+                if (this is AdvancedCollisionEditor && createAndAdd && _selectedLinks.Count == 0)
+                {
+                    if (_selectedObject == null)
+                    {
+                        return;
+                    }
+
+                    //Create a single linked collision
+                    CollisionLink point1 = new CollisionLink(_selectedObject, point);
+
+                    _selectedLinks.Add(point1);
+                    point1._highlight = true;
+                    _selectedPlanes.Add(new CollisionPlane(_selectedObject, point1, point1));
+                    SelectionModified();
+                    BeginHover(target);
+                    _modelPanel.Invalidate();
+                    return;
+                }
                 if (create)
                 {
                     if (_selectedLinks.Count == 0)
