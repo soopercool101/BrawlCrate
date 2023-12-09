@@ -28,10 +28,22 @@ namespace BrawlLib.SSBB.Types
         public bushort _stageID;
         public bint _flags20; // 0x00?00000 --> ?/2 is the number of players on the screen
         public bint _unknown24;
-        public bint _unknown28;
-        public bint _unknown2c;
-        public bint _unknown30;
-        public bint _unknown34;
+        public Bin8 _itemExFlags0x28;
+        public Bin8 _itemExFlags0x29;
+        public Bin8 _itemExFlags0x2A;
+        public Bin8 _itemExFlags0x2B;
+        public Bin8 _itemExFlags0x2C;
+        public Bin8 _itemExFlags0x2D;
+        public Bin8 _itemExFlags0x2E;
+        public Bin8 _itemExFlags0x2F;
+        public Bin8 _itemExFlags0x30;
+        public Bin8 _itemExFlags0x31;
+        public Bin8 _itemExFlags0x32;
+        public Bin8 _itemExFlags0x33;
+        public Bin8 _itemExFlags0x34;
+        public Bin8 _itemExFlags0x35;
+        public Bin8 _itemExFlags0x36;
+        public Bin8 _itemExFlags0x37;
         public bfloat _gameSpeed;
         public bfloat _cameraShakeControl;
         public bint _flags40;

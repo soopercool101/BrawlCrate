@@ -361,9 +361,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private EventMatchTblHeader _header;
 
-        [DisplayName("Event Extension")] public bint EventExtension => _header._eventExtension;
+        [Category("Event Match")]
+        [DisplayName("Event Extension")]
+        public bint EventExtension => _header._eventExtension;
 
-        [DisplayName("Event Match Number")] public int EventNumber => Index + 1;
+        [Category("Event Match")]
+        [DisplayName("Event Match Number")]
+        public int EventNumber => Index + 1;
 
         [Category("Unknown")]
         public int Unknown04
@@ -372,6 +376,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _header._unknown04 = value;
         }
 
+        [Category("Event Match")]
         [DisplayName("Match Type")]
         public MatchTypeEnum MatchType
         {
@@ -416,6 +421,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Time Limit")]
         public int TimeLimit
         {
@@ -427,6 +433,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Timer Visible")]
         public bool TimerVisible
         {
@@ -445,6 +452,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Hide Countdown")]
         public bool HideCountdown
         {
@@ -492,6 +500,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Hide Damage Values")]
         public bool HideDamageValues
         {
@@ -510,6 +519,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Team Match")]
         public bool IsTeamGame
         {
@@ -521,6 +531,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Item Level")]
         public ItemLevelEnum ItemLevel
         {
@@ -554,6 +565,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Stage")]
         [TypeConverter(typeof(DropDownListStageIDs))]
         public int StageID
@@ -566,6 +578,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Players On Screen")]
         public int PlayersOnScreen
         {
@@ -607,50 +620,1415 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown28
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Extra3
         {
-            get => _header._unknown28;
+            get => _header._itemExFlags0x28[0];
             set
             {
-                _header._unknown28 = value;
+                _header._itemExFlags0x28[0] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown2c
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Extra2
         {
-            get => _header._unknown2c;
+            get => _header._itemExFlags0x28[1];
             set
             {
-                _header._unknown2c = value;
+                _header._itemExFlags0x28[1] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown30
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Extra1
         {
-            get => _header._unknown30;
+            get => _header._itemExFlags0x28[2];
             set
             {
-                _header._unknown30 = value;
+                _header._itemExFlags0x28[2] = value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Unknown")]
-        public int Unknown34
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool PartyBalls
         {
-            get => _header._unknown34;
+            get => _header._itemExFlags0x28[3];
             set
             {
-                _header._unknown34 = value;
+                _header._itemExFlags0x28[3] = value;
                 SignalPropertyChange();
             }
         }
 
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool RollingCrates
+        {
+            get => _header._itemExFlags0x28[4];
+            set
+            {
+                _header._itemExFlags0x28[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Crates
+        {
+            get => _header._itemExFlags0x28[5];
+            set
+            {
+                _header._itemExFlags0x28[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Barrels
+        {
+            get => _header._itemExFlags0x28[6];
+            set
+            {
+                _header._itemExFlags0x28[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Capsule
+        {
+            get => _header._itemExFlags0x28[7];
+            set
+            {
+                _header._itemExFlags0x28[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool ContainerExplode
+        {
+            get => _header._itemExFlags0x29[0];
+            set
+            {
+                _header._itemExFlags0x29[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool ContainerEnemies
+        {
+            get => _header._itemExFlags0x29[1];
+            set
+            {
+                _header._itemExFlags0x29[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool ContainerItems
+        {
+            get => _header._itemExFlags0x29[2];
+            set
+            {
+                _header._itemExFlags0x29[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool PassiveAggression
+        {
+            get => _header._itemExFlags0x29[3];
+            set
+            {
+                _header._itemExFlags0x29[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Mayhem
+        {
+            get => _header._itemExFlags0x29[4];
+            set
+            {
+                _header._itemExFlags0x29[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool ExtraItems
+        {
+            get => _header._itemExFlags0x29[5];
+            set
+            {
+                _header._itemExFlags0x29[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool StageItems
+        {
+            get => _header._itemExFlags0x29[6];
+            set
+            {
+                _header._itemExFlags0x29[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool ScrewAttack
+        {
+            get => _header._itemExFlags0x29[7];
+            set
+            {
+                _header._itemExFlags0x29[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool FranklinBadge
+        {
+            get => _header._itemExFlags0x2A[0];
+            set
+            {
+                _header._itemExFlags0x2A[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool TeamHealer
+        {
+            get => _header._itemExFlags0x2A[1];
+            set
+            {
+                _header._itemExFlags0x2A[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SoccerBall
+        {
+            get => _header._itemExFlags0x2A[2];
+            set
+            {
+                _header._itemExFlags0x2A[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Unira
+        {
+            get => _header._itemExFlags0x2A[3];
+            set
+            {
+                _header._itemExFlags0x2A[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Spring
+        {
+            get => _header._itemExFlags0x2A[4];
+            set
+            {
+                _header._itemExFlags0x2A[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Bumper
+        {
+            get => _header._itemExFlags0x2A[5];
+            set
+            {
+                _header._itemExFlags0x2A[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool BananaPeel
+        {
+            get => _header._itemExFlags0x2A[6];
+            set
+            {
+                _header._itemExFlags0x2A[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool GreenShell
+        {
+            get => _header._itemExFlags0x2A[7];
+            set
+            {
+                _header._itemExFlags0x2A[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool MrSaturn
+        {
+            get => _header._itemExFlags0x2B[0];
+            set
+            {
+                _header._itemExFlags0x2B[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Hothead
+        {
+            get => _header._itemExFlags0x2B[1];
+            set
+            {
+                _header._itemExFlags0x2B[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool PitBall
+        {
+            get => _header._itemExFlags0x2B[2];
+            set
+            {
+                _header._itemExFlags0x2B[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SmokeBall
+        {
+            get => _header._itemExFlags0x2B[3];
+            set
+            {
+                _header._itemExFlags0x2B[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Freezie
+        {
+            get => _header._itemExFlags0x2B[4];
+            set
+            {
+                _header._itemExFlags0x2B[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool DekuNut
+        {
+            get => _header._itemExFlags0x2B[5];
+            set
+            {
+                _header._itemExFlags0x2B[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SmartBomb
+        {
+            get => _header._itemExFlags0x2B[6];
+            set
+            {
+                _header._itemExFlags0x2B[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool GooeyBomb
+        {
+            get => _header._itemExFlags0x2B[7];
+            set
+            {
+                _header._itemExFlags0x2B[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool MotionSensorBomb
+        {
+            get => _header._itemExFlags0x2C[0];
+            set
+            {
+                _header._itemExFlags0x2C[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool BobOmb
+        {
+            get => _header._itemExFlags0x2C[1];
+            set
+            {
+                _header._itemExFlags0x2C[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool CrackerLauncher
+        {
+            get => _header._itemExFlags0x2C[2];
+            set
+            {
+                _header._itemExFlags0x2C[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool FireFlower
+        {
+            get => _header._itemExFlags0x2C[3];
+            set
+            {
+                _header._itemExFlags0x2C[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool RayGun
+        {
+            get => _header._itemExFlags0x2C[4];
+            set
+            {
+                _header._itemExFlags0x2C[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SuperScope
+        {
+            get => _header._itemExFlags0x2C[5];
+            set
+            {
+                _header._itemExFlags0x2C[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool GoldenHammer
+        {
+            get => _header._itemExFlags0x2C[6];
+            set
+            {
+                _header._itemExFlags0x2C[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Hammer
+        {
+            get => _header._itemExFlags0x2C[7];
+            set
+            {
+                _header._itemExFlags0x2C[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool StarRod
+        {
+            get => _header._itemExFlags0x2D[0];
+            set
+            {
+                _header._itemExFlags0x2D[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool LipStick
+        {
+            get => _header._itemExFlags0x2D[1];
+            set
+            {
+                _header._itemExFlags0x2D[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Fan
+        {
+            get => _header._itemExFlags0x2D[2];
+            set
+            {
+                _header._itemExFlags0x2D[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool HomeRunBat
+        {
+            get => _header._itemExFlags0x2D[3];
+            set
+            {
+                _header._itemExFlags0x2D[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool BeamSword
+        {
+            get => _header._itemExFlags0x2D[4];
+            set
+            {
+                _header._itemExFlags0x2D[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Lightning
+        {
+            get => _header._itemExFlags0x2D[5];
+            set
+            {
+                _header._itemExFlags0x2D[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Timer
+        {
+            get => _header._itemExFlags0x2D[6];
+            set
+            {
+                _header._itemExFlags0x2D[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SuperspicyCurry
+        {
+            get => _header._itemExFlags0x2D[7];
+            set
+            {
+                _header._itemExFlags0x2D[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool BunnyHood
+        {
+            get => _header._itemExFlags0x2E[0];
+            set
+            {
+                _header._itemExFlags0x2E[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool MetalBox
+        {
+            get => _header._itemExFlags0x2E[1];
+            set
+            {
+                _header._itemExFlags0x2E[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Starman
+        {
+            get => _header._itemExFlags0x2E[2];
+            set
+            {
+                _header._itemExFlags0x2E[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool WarpStar
+        {
+            get => _header._itemExFlags0x2E[3];
+            set
+            {
+                _header._itemExFlags0x2E[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool PoisonMushroom
+        {
+            get => _header._itemExFlags0x2E[4];
+            set
+            {
+                _header._itemExFlags0x2E[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SuperMushroom
+        {
+            get => _header._itemExFlags0x2E[5];
+            set
+            {
+                _header._itemExFlags0x2E[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool DragoonParts
+        {
+            get => _header._itemExFlags0x2E[6];
+            set
+            {
+                _header._itemExFlags0x2E[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool HeartContainer
+        {
+            get => _header._itemExFlags0x2E[7];
+            set
+            {
+                _header._itemExFlags0x2E[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool MaximTomato
+        {
+            get => _header._itemExFlags0x2F[0];
+            set
+            {
+                _header._itemExFlags0x2F[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Food
+        {
+            get => _header._itemExFlags0x2F[1];
+            set
+            {
+                _header._itemExFlags0x2F[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SandBag
+        {
+            get => _header._itemExFlags0x2F[2];
+            set
+            {
+                _header._itemExFlags0x2F[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool BlastBox
+        {
+            get => _header._itemExFlags0x2F[3];
+            set
+            {
+                _header._itemExFlags0x2F[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool Containers
+        {
+            get => _header._itemExFlags0x2F[4];
+            set
+            {
+                _header._itemExFlags0x2F[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool PokeBall
+        {
+            get => _header._itemExFlags0x2F[5];
+            set
+            {
+                _header._itemExFlags0x2F[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool AssistTrophy
+        {
+            get => _header._itemExFlags0x2F[6];
+            set
+            {
+                _header._itemExFlags0x2F[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        public bool SmashBall
+        {
+            get => _header._itemExFlags0x2F[7];
+            set
+            {
+                _header._itemExFlags0x2F[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool PokeBallUncapped
+        {
+            get => _header._itemExFlags0x30[0];
+            set
+            {
+                _header._itemExFlags0x30[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool PokeBallExtra4
+        {
+            get => _header._itemExFlags0x30[1];
+            set
+            {
+                _header._itemExFlags0x30[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool PokeBallExtra3
+        {
+            get => _header._itemExFlags0x30[2];
+            set
+            {
+                _header._itemExFlags0x30[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool PokeBallExtra2
+        {
+            get => _header._itemExFlags0x30[3];
+            set
+            {
+                _header._itemExFlags0x30[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool PokeBallExtra1
+        {
+            get => _header._itemExFlags0x30[4];
+            set
+            {
+                _header._itemExFlags0x30[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Bonsly
+        {
+            get => _header._itemExFlags0x30[5];
+            set
+            {
+                _header._itemExFlags0x30[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Suicune
+        {
+            get => _header._itemExFlags0x30[6];
+            set
+            {
+                _header._itemExFlags0x30[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Wobuffet
+        {
+            get => _header._itemExFlags0x30[7];
+            set
+            {
+                _header._itemExFlags0x30[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Gardevoir
+        {
+            get => _header._itemExFlags0x31[0];
+            set
+            {
+                _header._itemExFlags0x31[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Goldeen
+        {
+            get => _header._itemExFlags0x31[1];
+            set
+            {
+                _header._itemExFlags0x31[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Togepi
+        {
+            get => _header._itemExFlags0x31[2];
+            set
+            {
+                _header._itemExFlags0x31[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Piplup
+        {
+            get => _header._itemExFlags0x31[3];
+            set
+            {
+                _header._itemExFlags0x31[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Meowth
+        {
+            get => _header._itemExFlags0x31[4];
+            set
+            {
+                _header._itemExFlags0x31[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Metagross
+        {
+            get => _header._itemExFlags0x31[5];
+            set
+            {
+                _header._itemExFlags0x31[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Electrode
+        {
+            get => _header._itemExFlags0x31[6];
+            set
+            {
+                _header._itemExFlags0x31[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Weavile
+        {
+            get => _header._itemExFlags0x31[7];
+            set
+            {
+                _header._itemExFlags0x31[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Manaphy
+        {
+            get => _header._itemExFlags0x32[0];
+            set
+            {
+                _header._itemExFlags0x32[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Lugia
+        {
+            get => _header._itemExFlags0x32[1];
+            set
+            {
+                _header._itemExFlags0x32[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool LatiasLatios
+        {
+            get => _header._itemExFlags0x32[2];
+            set
+            {
+                _header._itemExFlags0x32[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Kyogre
+        {
+            get => _header._itemExFlags0x32[3];
+            set
+            {
+                _header._itemExFlags0x32[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Bellosom
+        {
+            get => _header._itemExFlags0x32[4];
+            set
+            {
+                _header._itemExFlags0x32[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Snorlax
+        {
+            get => _header._itemExFlags0x32[5];
+            set
+            {
+                _header._itemExFlags0x32[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool HoOh
+        {
+            get => _header._itemExFlags0x32[6];
+            set
+            {
+                _header._itemExFlags0x32[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Staryu
+        {
+            get => _header._itemExFlags0x32[7];
+            set
+            {
+                _header._itemExFlags0x32[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Gulpin
+        {
+            get => _header._itemExFlags0x33[0];
+            set
+            {
+                _header._itemExFlags0x33[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Groudon
+        {
+            get => _header._itemExFlags0x33[1];
+            set
+            {
+                _header._itemExFlags0x33[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Deoxys
+        {
+            get => _header._itemExFlags0x33[2];
+            set
+            {
+                _header._itemExFlags0x33[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Munchlax
+        {
+            get => _header._itemExFlags0x33[3];
+            set
+            {
+                _header._itemExFlags0x33[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Moltres
+        {
+            get => _header._itemExFlags0x33[4];
+            set
+            {
+                _header._itemExFlags0x33[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Entei
+        {
+            get => _header._itemExFlags0x33[5];
+            set
+            {
+                _header._itemExFlags0x33[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Chikorita
+        {
+            get => _header._itemExFlags0x33[6];
+            set
+            {
+                _header._itemExFlags0x33[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        public bool Torchic
+        {
+            get => _header._itemExFlags0x33[7];
+            set
+            {
+                _header._itemExFlags0x33[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool AssistTrophyUncapped
+        {
+            get => _header._itemExFlags0x34[0];
+            set
+            {
+                _header._itemExFlags0x34[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool AssistTrophyExtra4
+        {
+            get => _header._itemExFlags0x34[1];
+            set
+            {
+                _header._itemExFlags0x34[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool AssistTrophyExtra3
+        {
+            get => _header._itemExFlags0x34[2];
+            set
+            {
+                _header._itemExFlags0x34[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool AssistTrophyExtra2
+        {
+            get => _header._itemExFlags0x34[3];
+            set
+            {
+                _header._itemExFlags0x34[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool AssistTrophyExtra1
+        {
+            get => _header._itemExFlags0x34[4];
+            set
+            {
+                _header._itemExFlags0x34[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool DrWright
+        {
+            get => _header._itemExFlags0x34[5];
+            set
+            {
+                _header._itemExFlags0x34[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Waluigi
+        {
+            get => _header._itemExFlags0x34[6];
+            set
+            {
+                _header._itemExFlags0x34[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Tingle
+        {
+            get => _header._itemExFlags0x34[7];
+            set
+            {
+                _header._itemExFlags0x34[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool InfantryTank
+        {
+            get => _header._itemExFlags0x35[0];
+            set
+            {
+                _header._itemExFlags0x35[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Starfy
+        {
+            get => _header._itemExFlags0x35[1];
+            set
+            {
+                _header._itemExFlags0x35[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Shadow
+        {
+            get => _header._itemExFlags0x35[2];
+            set
+            {
+                _header._itemExFlags0x35[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Saki
+        {
+            get => _header._itemExFlags0x35[3];
+            set
+            {
+                _header._itemExFlags0x35[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Isaac
+        {
+            get => _header._itemExFlags0x35[4];
+            set
+            {
+                _header._itemExFlags0x35[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool MrResetti
+        {
+            get => _header._itemExFlags0x35[5];
+            set
+            {
+                _header._itemExFlags0x35[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Nintendog
+        {
+            get => _header._itemExFlags0x35[6];
+            set
+            {
+                _header._itemExFlags0x35[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Metroid
+        {
+            get => _header._itemExFlags0x35[7];
+            set
+            {
+                _header._itemExFlags0x35[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool LittleMac
+        {
+            get => _header._itemExFlags0x36[0];
+            set
+            {
+                _header._itemExFlags0x36[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Lyn
+        {
+            get => _header._itemExFlags0x36[1];
+            set
+            {
+                _header._itemExFlags0x36[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool JillDozer
+        {
+            get => _header._itemExFlags0x36[2];
+            set
+            {
+                _header._itemExFlags0x36[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool KatAna
+        {
+            get => _header._itemExFlags0x36[3];
+            set
+            {
+                _header._itemExFlags0x36[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Helirin
+        {
+            get => _header._itemExFlags0x36[4];
+            set
+            {
+                _header._itemExFlags0x36[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool HammerBro
+        {
+            get => _header._itemExFlags0x36[5];
+            set
+            {
+                _header._itemExFlags0x36[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool KnuckleJoe
+        {
+            get => _header._itemExFlags0x36[6];
+            set
+            {
+                _header._itemExFlags0x36[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Lakitu
+        {
+            get => _header._itemExFlags0x36[7];
+            set
+            {
+                _header._itemExFlags0x36[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Jeff
+        {
+            get => _header._itemExFlags0x37[0];
+            set
+            {
+                _header._itemExFlags0x37[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Excitebike
+        {
+            get => _header._itemExFlags0x37[1];
+            set
+            {
+                _header._itemExFlags0x37[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Devil
+        {
+            get => _header._itemExFlags0x37[2];
+            set
+            {
+                _header._itemExFlags0x37[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool SamuraiGoroh
+        {
+            get => _header._itemExFlags0x37[3];
+            set
+            {
+                _header._itemExFlags0x37[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool RayMKII
+        {
+            get => _header._itemExFlags0x37[4];
+            set
+            {
+                _header._itemExFlags0x37[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool GrayFox
+        {
+            get => _header._itemExFlags0x37[5];
+            set
+            {
+                _header._itemExFlags0x37[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Barbara
+        {
+            get => _header._itemExFlags0x37[6];
+            set
+            {
+                _header._itemExFlags0x37[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        public bool Andross
+        {
+            get => _header._itemExFlags0x37[7];
+            set
+            {
+                _header._itemExFlags0x37[7] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match")]
         [DisplayName("Game Speed")]
         public float GameSpeed
         {
@@ -662,6 +2040,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Camera Shake Control")]
         public float CameraShakeControl
         {
@@ -691,6 +2070,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Song ID")]
         public int SongID
         {
@@ -702,6 +2082,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Global Offense Ratio")]
         public short GlobalOffenseRatio
         {
@@ -713,6 +2094,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Event Match")]
         [DisplayName("Global Defense Ratio")]
         public short GlobalDefenseRatio
         {
