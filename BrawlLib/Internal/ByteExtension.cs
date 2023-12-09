@@ -2,6 +2,26 @@
 {
     public static class ByteExtension
     {
+        public static byte GetUpper(this byte b)
+        {
+            return (byte) ((b & 0xF0) / 0x10);
+        }
+
+        public static void SetUpper(ref this byte b, byte value)
+        {
+            b = (byte)(value * 0x10 + b.GetLower());
+        }
+
+        public static byte GetLower(this byte b)
+        {
+            return (byte) (b & 0x0F);
+        }
+
+        public static void SetLower(ref this byte b, byte value)
+        {
+            b = (byte)(value + b.GetUpper() * 0x10);
+        }
+
         public static int CompareBits(this byte b1, byte b2)
         {
             for (int i = 8, b = 0x80; i-- != 0; b >>= 1)

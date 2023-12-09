@@ -26,7 +26,9 @@ namespace BrawlLib.SSBB.Types
         public byte _unknown1c;
         public byte _unknown1d;
         public bushort _stageID;
-        public bint _flags20; // 0x00?00000 --> ?/2 is the number of players on the screen
+        public Bin8 _flags20;
+        public byte _flags21; // 0x?0 --> ?/2 is the number of players on the screen
+        public bushort _stageExASL;
         public bint _unknown24;
         public Bin8 _itemExFlags0x28;
         public Bin8 _itemExFlags0x29;

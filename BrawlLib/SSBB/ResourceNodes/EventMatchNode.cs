@@ -1,5 +1,6 @@
 ﻿using BrawlLib.CustomLists;
 using BrawlLib.Internal;
+using BrawlLib.SSBB.ResourceNodes.ProjectPlus;
 using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
@@ -580,32 +581,229 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Event Match")]
         [DisplayName("Players On Screen")]
-        public int PlayersOnScreen
+        public byte PlayersOnScreen
         {
-            get => (_header._flags20 >> 21) & 7;
+            get => (byte) (_header._flags21.GetUpper() / 2);
             set
             {
+                _header._flags21.SetUpper((byte)(value * 2));
                 SignalPropertyChange();
-                _header._flags20 &= ~0xE00000;
-                _header._flags20 |= (value & 7) << 21;
             }
         }
 
         [Category("Unknown")]
         public bool UnknownFlag_20_10000000
         {
-            get => (_header._flags20 & 0x10000000) != 0;
+            get => _header._flags20[4];
             set
             {
+                _header._flags20[4] = value;
                 SignalPropertyChange();
+            }
+        }
+
+
+        [TypeConverter(typeof(HexUShortConverter))]
+        [Category("Event Match: ASL (Requires StageEx)")]
+        public ushort ButtonFlags
+        {
+            get => _header._stageExASL;
+            set
+            {
+                _header._stageExASL = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("Left")]
+        public bool ASL_Left
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.Left) == (ushort)ASLSEntryNode.GameCubeButtons.Left;
+            set
+            {
+                if (value == ASL_Left)
+                    return;
                 if (value)
-                {
-                    _header._flags20 |= unchecked((int) 0x10000000);
-                }
+                    ButtonFlags += (ushort) ASLSEntryNode.GameCubeButtons.Left;
                 else
-                {
-                    _header._flags20 &= ~unchecked((int) 0x10000000);
-                }
+                    ButtonFlags -= (ushort) ASLSEntryNode.GameCubeButtons.Left;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("Right")]
+        public bool ASL_Right
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.Right) == (ushort)ASLSEntryNode.GameCubeButtons.Right;
+            set
+            {
+                if (value == ASL_Right)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.Right;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.Right;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("Down")]
+        public bool ASL_Down
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.Down) == (ushort)ASLSEntryNode.GameCubeButtons.Down;
+            set
+            {
+                if (value == ASL_Down)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.Down;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.Down;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("Up")]
+        public bool ASL_Up
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.Up) == (ushort)ASLSEntryNode.GameCubeButtons.Up;
+            set
+            {
+                if (value == ASL_Up)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.Up;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.Up;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("Z")]
+        public bool ASL_Z
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.Z) == (ushort)ASLSEntryNode.GameCubeButtons.Z;
+            set
+            {
+                if (value == ASL_Z)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.Z;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.Z;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("R")]
+        public bool ASL_R
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.R) == (ushort)ASLSEntryNode.GameCubeButtons.R;
+            set
+            {
+                if (value == ASL_R)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.R;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.R;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("L")]
+        public bool ASL_L
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.L) == (ushort)ASLSEntryNode.GameCubeButtons.L;
+            set
+            {
+                if (value == ASL_L)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.L;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.L;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("A")]
+        public bool ASL_A
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.A) == (ushort)ASLSEntryNode.GameCubeButtons.A;
+            set
+            {
+                if (value == ASL_A)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.A;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.A;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("B")]
+        public bool ASL_B
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.B) == (ushort)ASLSEntryNode.GameCubeButtons.B;
+            set
+            {
+                if (value == ASL_B)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.B;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.B;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("X")]
+        public bool ASL_X
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.X) == (ushort)ASLSEntryNode.GameCubeButtons.X;
+            set
+            {
+                if (value == ASL_X)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.X;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.X;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("Y")]
+        public bool ASL_Y
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.Y) == (ushort)ASLSEntryNode.GameCubeButtons.Y;
+            set
+            {
+                if (value == ASL_Y)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.Y;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.Y;
+            }
+        }
+
+        [Category("Event Match: ASL (Requires StageEx)")]
+        [DisplayName("Start")]
+        public bool ASL_Start
+        {
+            get => (ButtonFlags & (ushort)ASLSEntryNode.GameCubeButtons.Start) == (ushort)ASLSEntryNode.GameCubeButtons.Start;
+            set
+            {
+                if (value == ASL_Start)
+                    return;
+                if (value)
+                    ButtonFlags += (ushort)ASLSEntryNode.GameCubeButtons.Start;
+                else
+                    ButtonFlags -= (ushort)ASLSEntryNode.GameCubeButtons.Start;
             }
         }
 
@@ -907,7 +1105,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Event Match: Item Switch (Requires ItemEx)")]
-        public bool PitBall
+        public bool Pitfall
         {
             get => _header._itemExFlags0x2B[5];
             set
