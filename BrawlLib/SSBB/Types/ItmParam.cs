@@ -42,8 +42,8 @@ namespace BrawlLib.SSBB.Types
         public bfloat _ceilingBounceSpeedMultiplierY;
         public bfloat _fighterBounceSpeedMultiplierX;
         public bfloat _fighterBounceSpeedMultiplierY;
-        public bfloat _knockbackAirFriction;
-        public bfloat _knockbackGroundFriction;
+        public bfloat _airFriction;
+        public bfloat _groundFriction;
         public bfloat _unknown0x90;
         public bfloat _unknown0x94;
         public bfloat _baseDamageMultiplier;

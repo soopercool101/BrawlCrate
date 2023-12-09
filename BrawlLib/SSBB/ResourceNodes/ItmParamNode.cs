@@ -823,23 +823,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        public float KnockbackAirFriction
+        public float AirFriction
         {
-            get => Data._knockbackAirFriction;
+            get => Data._airFriction;
             set
             {
-                Data._knockbackAirFriction = value;
+                Data._airFriction = value;
                 SignalPropertyChange();
             }
         }
 
         [Category("Item Parameters")]
-        public float KnockbackGroundFriction
+        public float GroundFriction
         {
-            get => Data._knockbackGroundFriction;
+            get => Data._groundFriction;
             set
             {
-                Data._knockbackGroundFriction = value;
+                Data._groundFriction = value;
                 SignalPropertyChange();
             }
         }
