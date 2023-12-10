@@ -1214,8 +1214,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xB6g
+        [Category("Item Parameters")]
+        [Description("When true, vanish gfx are disabled and item disappears instantly when timer ends no matter what")]
+        public bool IsProjectile
         {
             get => Data._flags0xB6[6];
             set
@@ -1366,13 +1367,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Unknown")]
-        public bool Unknown0xC4
+        [Category("Item Parameters")]
+        public bool BlinkBeforeDisappearing
         {
-            get => Data._unknown0xC4;
+            get => Data._blinkBeforeDisappearing;
             set
             {
-                Data._unknown0xC4 = value;
+                Data._blinkBeforeDisappearing = value;
                 SignalPropertyChange();
             }
         }

@@ -60,7 +60,7 @@ namespace BrawlLib.SSBB.Types
         public buint _unknown0xB8;
         public bool32 _unknown0xBC;
         public bint _unknown0xC0;
-        public bool32 _unknown0xC4;
+        public bool32 _blinkBeforeDisappearing;
         public bint _unknown0xC8;
         public bint _unknown0xCC;
         public bool32 _canReflect;
