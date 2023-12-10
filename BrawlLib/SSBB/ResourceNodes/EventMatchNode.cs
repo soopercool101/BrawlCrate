@@ -350,7 +350,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             Low = 1,
             Medium = 2,
             High = 3,
-            Raining = 4
+            VeryHighProjectPlus = 4,
+            IntenseProjectPlus = 5,
+            BombRainProjectPlus = 6
         }
 
         public enum MatchTypeEnum : byte
