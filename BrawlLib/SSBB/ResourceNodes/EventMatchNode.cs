@@ -818,7 +818,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Extra3
         {
             get => _header._itemExFlags0x28[7];
@@ -829,7 +829,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Extra2
         {
             get => _header._itemExFlags0x28[6];
@@ -840,7 +840,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Extra1
         {
             get => _header._itemExFlags0x28[5];
@@ -851,7 +851,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool PartyBalls
         {
             get => _header._itemExFlags0x28[4];
@@ -862,7 +862,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool RollingCrates
         {
             get => _header._itemExFlags0x28[3];
@@ -873,7 +873,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Crates
         {
             get => _header._itemExFlags0x28[2];
@@ -884,7 +884,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Barrels
         {
             get => _header._itemExFlags0x28[1];
@@ -895,7 +895,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Capsule
         {
             get => _header._itemExFlags0x28[0];
@@ -906,7 +906,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool ContainerExplode
         {
             get => _header._itemExFlags0x29[7];
@@ -917,7 +917,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool ContainerEnemies
         {
             get => _header._itemExFlags0x29[6];
@@ -928,7 +928,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool ContainerItems
         {
             get => _header._itemExFlags0x29[5];
@@ -939,7 +939,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool PassiveAggression
         {
             get => _header._itemExFlags0x29[4];
@@ -950,7 +950,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Mayhem
         {
             get => _header._itemExFlags0x29[3];
@@ -961,7 +961,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool ExtraItems
         {
             get => _header._itemExFlags0x29[2];
@@ -972,7 +972,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool StageItems
         {
             get => _header._itemExFlags0x29[1];
@@ -983,7 +983,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool ScrewAttack
         {
             get => _header._itemExFlags0x29[0];
@@ -994,7 +994,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool FranklinBadge
         {
             get => _header._itemExFlags0x2A[7];
@@ -1005,7 +1005,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool TeamHealer
         {
             get => _header._itemExFlags0x2A[6];
@@ -1016,7 +1016,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SoccerBall
         {
             get => _header._itemExFlags0x2A[5];
@@ -1027,7 +1027,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Unira
         {
             get => _header._itemExFlags0x2A[4];
@@ -1038,7 +1038,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Spring
         {
             get => _header._itemExFlags0x2A[3];
@@ -1049,7 +1049,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Bumper
         {
             get => _header._itemExFlags0x2A[2];
@@ -1060,7 +1060,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool BananaPeel
         {
             get => _header._itemExFlags0x2A[1];
@@ -1071,7 +1071,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool GreenShell
         {
             get => _header._itemExFlags0x2A[0];
@@ -1082,7 +1082,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool MrSaturn
         {
             get => _header._itemExFlags0x2B[7];
@@ -1093,7 +1093,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Hothead
         {
             get => _header._itemExFlags0x2B[6];
@@ -1104,7 +1104,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Pitfall
         {
             get => _header._itemExFlags0x2B[5];
@@ -1115,7 +1115,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SmokeBall
         {
             get => _header._itemExFlags0x2B[4];
@@ -1126,7 +1126,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Freezie
         {
             get => _header._itemExFlags0x2B[3];
@@ -1137,7 +1137,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool DekuNut
         {
             get => _header._itemExFlags0x2B[2];
@@ -1148,7 +1148,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SmartBomb
         {
             get => _header._itemExFlags0x2B[1];
@@ -1159,7 +1159,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool GooeyBomb
         {
             get => _header._itemExFlags0x2B[0];
@@ -1170,7 +1170,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool MotionSensorBomb
         {
             get => _header._itemExFlags0x2C[7];
@@ -1181,7 +1181,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool BobOmb
         {
             get => _header._itemExFlags0x2C[6];
@@ -1192,7 +1192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool CrackerLauncher
         {
             get => _header._itemExFlags0x2C[5];
@@ -1203,7 +1203,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool FireFlower
         {
             get => _header._itemExFlags0x2C[4];
@@ -1214,7 +1214,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool RayGun
         {
             get => _header._itemExFlags0x2C[3];
@@ -1225,7 +1225,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SuperScope
         {
             get => _header._itemExFlags0x2C[2];
@@ -1236,7 +1236,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool GoldenHammer
         {
             get => _header._itemExFlags0x2C[1];
@@ -1247,7 +1247,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Hammer
         {
             get => _header._itemExFlags0x2C[0];
@@ -1258,7 +1258,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool StarRod
         {
             get => _header._itemExFlags0x2D[7];
@@ -1269,7 +1269,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool LipStick
         {
             get => _header._itemExFlags0x2D[6];
@@ -1280,7 +1280,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Fan
         {
             get => _header._itemExFlags0x2D[5];
@@ -1291,7 +1291,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool HomeRunBat
         {
             get => _header._itemExFlags0x2D[4];
@@ -1302,7 +1302,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool BeamSword
         {
             get => _header._itemExFlags0x2D[3];
@@ -1313,7 +1313,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Lightning
         {
             get => _header._itemExFlags0x2D[2];
@@ -1324,7 +1324,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Timer
         {
             get => _header._itemExFlags0x2D[1];
@@ -1335,7 +1335,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SuperspicyCurry
         {
             get => _header._itemExFlags0x2D[0];
@@ -1346,7 +1346,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool BunnyHood
         {
             get => _header._itemExFlags0x2E[7];
@@ -1357,7 +1357,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool MetalBox
         {
             get => _header._itemExFlags0x2E[6];
@@ -1368,7 +1368,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Starman
         {
             get => _header._itemExFlags0x2E[5];
@@ -1379,7 +1379,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool WarpStar
         {
             get => _header._itemExFlags0x2E[4];
@@ -1390,7 +1390,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool PoisonMushroom
         {
             get => _header._itemExFlags0x2E[3];
@@ -1401,7 +1401,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SuperMushroom
         {
             get => _header._itemExFlags0x2E[2];
@@ -1412,7 +1412,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool DragoonParts
         {
             get => _header._itemExFlags0x2E[1];
@@ -1423,7 +1423,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool HeartContainer
         {
             get => _header._itemExFlags0x2E[0];
@@ -1434,7 +1434,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool MaximTomato
         {
             get => _header._itemExFlags0x2F[7];
@@ -1445,7 +1445,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Food
         {
             get => _header._itemExFlags0x2F[6];
@@ -1456,7 +1456,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SandBag
         {
             get => _header._itemExFlags0x2F[5];
@@ -1467,7 +1467,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool BlastBox
         {
             get => _header._itemExFlags0x2F[4];
@@ -1478,7 +1478,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool Containers
         {
             get => _header._itemExFlags0x2F[3];
@@ -1489,7 +1489,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool PokeBall
         {
             get => _header._itemExFlags0x2F[2];
@@ -1500,7 +1500,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool AssistTrophy
         {
             get => _header._itemExFlags0x2F[1];
@@ -1511,7 +1511,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Item Switch (Requires ItemEx)")]
+        [Category("Event Match: Item Toggles (Requires ItemEx)")]
         public bool SmashBall
         {
             get => _header._itemExFlags0x2F[0];
@@ -1522,7 +1522,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool PokeBallUncapped
         {
             get => _header._itemExFlags0x30[7];
@@ -1533,7 +1533,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool PokeBallExtra4
         {
             get => _header._itemExFlags0x30[6];
@@ -1544,7 +1544,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool PokeBallExtra3
         {
             get => _header._itemExFlags0x30[5];
@@ -1555,7 +1555,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool PokeBallExtra2
         {
             get => _header._itemExFlags0x30[4];
@@ -1566,7 +1566,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool PokeBallExtra1
         {
             get => _header._itemExFlags0x30[3];
@@ -1577,7 +1577,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Bonsly
         {
             get => _header._itemExFlags0x30[2];
@@ -1588,7 +1588,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Suicune
         {
             get => _header._itemExFlags0x30[1];
@@ -1599,7 +1599,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Wobuffet
         {
             get => _header._itemExFlags0x30[0];
@@ -1610,7 +1610,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Gardevoir
         {
             get => _header._itemExFlags0x31[7];
@@ -1621,7 +1621,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Goldeen
         {
             get => _header._itemExFlags0x31[6];
@@ -1632,7 +1632,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Togepi
         {
             get => _header._itemExFlags0x31[5];
@@ -1643,7 +1643,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Piplup
         {
             get => _header._itemExFlags0x31[4];
@@ -1654,7 +1654,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Meowth
         {
             get => _header._itemExFlags0x31[3];
@@ -1665,7 +1665,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Metagross
         {
             get => _header._itemExFlags0x31[2];
@@ -1676,7 +1676,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Electrode
         {
             get => _header._itemExFlags0x31[1];
@@ -1687,7 +1687,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Weavile
         {
             get => _header._itemExFlags0x31[0];
@@ -1698,7 +1698,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Manaphy
         {
             get => _header._itemExFlags0x32[7];
@@ -1709,7 +1709,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Lugia
         {
             get => _header._itemExFlags0x32[6];
@@ -1720,7 +1720,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool LatiasLatios
         {
             get => _header._itemExFlags0x32[5];
@@ -1731,7 +1731,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Kyogre
         {
             get => _header._itemExFlags0x32[4];
@@ -1742,7 +1742,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Bellosom
         {
             get => _header._itemExFlags0x32[3];
@@ -1753,7 +1753,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Snorlax
         {
             get => _header._itemExFlags0x32[2];
@@ -1764,7 +1764,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool HoOh
         {
             get => _header._itemExFlags0x32[1];
@@ -1775,7 +1775,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Staryu
         {
             get => _header._itemExFlags0x32[0];
@@ -1786,7 +1786,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Gulpin
         {
             get => _header._itemExFlags0x33[7];
@@ -1797,7 +1797,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Groudon
         {
             get => _header._itemExFlags0x33[6];
@@ -1808,7 +1808,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Deoxys
         {
             get => _header._itemExFlags0x33[5];
@@ -1819,7 +1819,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Munchlax
         {
             get => _header._itemExFlags0x33[4];
@@ -1830,7 +1830,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Moltres
         {
             get => _header._itemExFlags0x33[3];
@@ -1841,7 +1841,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Entei
         {
             get => _header._itemExFlags0x33[2];
@@ -1852,7 +1852,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Chikorita
         {
             get => _header._itemExFlags0x33[1];
@@ -1863,7 +1863,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Poké Ball Pokémon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Poké Ball) Toggles (Requires ItemEx)")]
         public bool Torchic
         {
             get => _header._itemExFlags0x33[0];
@@ -1874,7 +1874,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool AssistTrophyUncapped
         {
             get => _header._itemExFlags0x34[7];
@@ -1885,7 +1885,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool AssistTrophyExtra4
         {
             get => _header._itemExFlags0x34[6];
@@ -1896,7 +1896,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool AssistTrophyExtra3
         {
             get => _header._itemExFlags0x34[5];
@@ -1907,7 +1907,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool AssistTrophyExtra2
         {
             get => _header._itemExFlags0x34[4];
@@ -1918,7 +1918,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool AssistTrophyExtra1
         {
             get => _header._itemExFlags0x34[3];
@@ -1929,7 +1929,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool DrWright
         {
             get => _header._itemExFlags0x34[2];
@@ -1940,7 +1940,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Waluigi
         {
             get => _header._itemExFlags0x34[1];
@@ -1951,7 +1951,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Tingle
         {
             get => _header._itemExFlags0x34[0];
@@ -1962,7 +1962,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool InfantryTank
         {
             get => _header._itemExFlags0x35[7];
@@ -1973,7 +1973,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Starfy
         {
             get => _header._itemExFlags0x35[6];
@@ -1984,7 +1984,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Shadow
         {
             get => _header._itemExFlags0x35[5];
@@ -1995,7 +1995,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Saki
         {
             get => _header._itemExFlags0x35[4];
@@ -2006,7 +2006,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Isaac
         {
             get => _header._itemExFlags0x35[3];
@@ -2017,7 +2017,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool MrResetti
         {
             get => _header._itemExFlags0x35[2];
@@ -2028,7 +2028,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Nintendog
         {
             get => _header._itemExFlags0x35[1];
@@ -2039,7 +2039,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Metroid
         {
             get => _header._itemExFlags0x35[0];
@@ -2050,7 +2050,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool LittleMac
         {
             get => _header._itemExFlags0x36[7];
@@ -2061,7 +2061,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Lyn
         {
             get => _header._itemExFlags0x36[6];
@@ -2072,7 +2072,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool JillDozer
         {
             get => _header._itemExFlags0x36[5];
@@ -2083,7 +2083,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool KatAna
         {
             get => _header._itemExFlags0x36[4];
@@ -2094,7 +2094,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Helirin
         {
             get => _header._itemExFlags0x36[3];
@@ -2105,7 +2105,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool HammerBro
         {
             get => _header._itemExFlags0x36[2];
@@ -2116,7 +2116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool KnuckleJoe
         {
             get => _header._itemExFlags0x36[1];
@@ -2127,7 +2127,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Lakitu
         {
             get => _header._itemExFlags0x36[0];
@@ -2138,7 +2138,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Jeff
         {
             get => _header._itemExFlags0x37[7];
@@ -2149,7 +2149,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Excitebike
         {
             get => _header._itemExFlags0x37[6];
@@ -2160,7 +2160,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Devil
         {
             get => _header._itemExFlags0x37[5];
@@ -2171,7 +2171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool SamuraiGoroh
         {
             get => _header._itemExFlags0x37[4];
@@ -2182,7 +2182,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool RayMKII
         {
             get => _header._itemExFlags0x37[3];
@@ -2193,7 +2193,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool GrayFox
         {
             get => _header._itemExFlags0x37[2];
@@ -2204,7 +2204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Barbara
         {
             get => _header._itemExFlags0x37[1];
@@ -2215,7 +2215,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Event Match: Assist Trophy Summon Switch (Requires ItemEx)")]
+        [Category("Event Match: Summon (Assist Trophy) Toggles (Requires ItemEx)")]
         public bool Andross
         {
             get => _header._itemExFlags0x37[0];
