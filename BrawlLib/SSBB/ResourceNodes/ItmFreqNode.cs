@@ -380,12 +380,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         [DisplayName("Frequency")]
         [Category("Item Frequency")]
         [Description("The spawn frequency of the selected item. Higher values mean a higher spawn rate.")]
-        public string Frequency
+        public float Frequency
         {
-            get => _frequency.ToString("0.00");
+            get => _frequency;
             set
             {
-                _frequency = float.Parse(value);
+                _frequency = value;
                 SignalPropertyChange();
             }
         }
