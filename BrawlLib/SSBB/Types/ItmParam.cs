@@ -9,12 +9,12 @@ namespace BrawlLib.SSBB.Types
         public const int Size = 0xF0;
 
         public bfloat _hurtboxSize;
-        public bfloat _throwSpeedMultiplier;
-        public bfloat _unknown0x08;
-        public bfloat _throwSpinRateX;
-        public bfloat _throwSpinRateY;
-        public bfloat _throwSpinRateZ;
-        public bfloat _unknown0x18;
+        public bfloat _throwSpeedX;
+        public bfloat _throwSpeedY;
+        public bfloat _throwSpeedZ;
+        public bfloat _spinRateX;
+        public bfloat _spinRateY;
+        public bfloat _spinRateZ;
         public bfloat _gravity;
         public bfloat _terminalVelocity;
         public bfloat _unknown0x24;
@@ -57,7 +57,10 @@ namespace BrawlLib.SSBB.Types
         public Bin8 _flags0xB5;
         public Bin8 _flags0xB6;
         public Bin8 _flags0xB7;
-        public buint _unknown0xB8;
+        public byte _unknown0xB8;
+        public byte _unknown0xB9;
+        public byte _unknown0xBA;
+        public Bin8 _flags0xBB;
         public bool32 _unknown0xBC;
         public bint _unknown0xC0;
         public bool32 _blinkBeforeDisappearing;

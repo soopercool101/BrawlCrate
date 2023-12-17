@@ -544,48 +544,29 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
-        public float ThrowSpeedMultiplier
+        [TypeConverter(typeof(Vector3StringConverter))]
+        public Vector3 ThrowSpeed
         {
-            get => Data._throwSpeedMultiplier;
+            get => new Vector3(Data._throwSpeedX, Data._throwSpeedY, Data._throwSpeedZ);
             set
             {
-                Data._throwSpeedMultiplier = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x08
-        {
-            get => Data._unknown0x08;
-            set
-            {
-                Data._unknown0x08 = value;
+                Data._throwSpeedX = value._x;
+                Data._throwSpeedY = value._y;
+                Data._throwSpeedZ = value._z;
                 SignalPropertyChange();
             }
         }
 
         [Category("Item Parameters")]
         [TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 ThrowSpinRate
+        public Vector3 SpinRate
         {
-            get => new Vector3(Data._throwSpinRateX, Data._throwSpinRateY, Data._throwSpinRateZ);
+            get => new Vector3(Data._spinRateX, Data._spinRateY, Data._spinRateZ);
             set
             {
-                Data._throwSpinRateX = value._x;
-                Data._throwSpinRateY = value._y;
-                Data._throwSpinRateZ = value._z;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Unknown")]
-        public float Unknown0x18
-        {
-            get => Data._unknown0x18;
-            set
-            {
-                Data._unknown0x18 = value;
+                Data._spinRateX = value._x;
+                Data._spinRateY = value._y;
+                Data._spinRateZ = value._z;
                 SignalPropertyChange();
             }
         }
@@ -1170,6 +1151,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
+        [Description("When true, activates Assist Trophy despawn effects when despawning")]
         public bool IsAssistSummon
         {
             get => Data._flags0xB6[2];
@@ -1181,6 +1163,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Item Parameters")]
+        [Description("When true, activates Pokémon despawn effects when despawning")]
         public bool IsPokemon
         {
             get => Data._flags0xB6[3];
@@ -1334,13 +1317,126 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        [TypeConverter(typeof(HexUIntConverter))]
-        public uint Unknown0xB8
+        public byte Unknown0xB8
         {
             get => Data._unknown0xB8;
             set
             {
                 Data._unknown0xB8 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0xB9
+        {
+            get => Data._unknown0xB9;
+            set
+            {
+                Data._unknown0xB9 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public byte Unknown0xBA
+        {
+            get => Data._unknown0xBA;
+            set
+            {
+                Data._unknown0xBA = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        [TypeConverter(typeof(HexByteConverter))]
+        public byte Flags0xBB => Data._flags0xBB;
+
+        [Category("Item Parameters")]
+        public bool BounceAgainstFloors
+        {
+            get => Data._flags0xBB[0];
+            set
+            {
+                Data._flags0xBB[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xBBb
+        {
+            get => Data._flags0xBB[1];
+            set
+            {
+                Data._flags0xBB[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Item Parameters")]
+        public bool BounceAgainstWalls
+        {
+            get => Data._flags0xBB[2];
+            set
+            {
+                Data._flags0xBB[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Item Parameters")]
+        public bool BounceAgainstCeilings
+        {
+            get => Data._flags0xBB[3];
+            set
+            {
+                Data._flags0xBB[3] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Item Parameters")]
+        public bool BounceAgainstHurtboxes
+        {
+            get => Data._flags0xBB[4];
+            set
+            {
+                Data._flags0xBB[4] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xBBf
+        {
+            get => Data._flags0xBB[5];
+            set
+            {
+                Data._flags0xBB[5] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xBBg
+        {
+            get => Data._flags0xBB[6];
+            set
+            {
+                Data._flags0xBB[6] = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Unknown")]
+        public bool Unknown0xBBh
+        {
+            get => Data._flags0xBB[7];
+            set
+            {
+                Data._flags0xBB[7] = value;
                 SignalPropertyChange();
             }
         }
