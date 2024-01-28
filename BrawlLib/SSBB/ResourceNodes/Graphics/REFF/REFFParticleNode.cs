@@ -314,8 +314,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr = *Params;
             desc = hdr.paramDesc;
 
-            if (Params->paramDesc.textureNames.Address > WorkingUncompressed.Length)
-                return false;
             VoidPtr addr = Params->paramDesc.textureNames.Address;
             for (int i = 0; i < 3; i++)
             {
