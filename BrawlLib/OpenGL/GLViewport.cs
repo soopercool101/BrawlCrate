@@ -203,7 +203,7 @@ namespace BrawlLib.OpenGL
             return Camera.Orthographic ? ViewportProjection.Orthographic : ViewportProjection.Perspective;
         }
 
-        public void SetProjectionType(ViewportProjection type)
+        public virtual void SetProjectionType(ViewportProjection type)
         {
             bool diff = type == ViewportProjection.Orthographic && _type != ViewportProjection.Perspective;
 

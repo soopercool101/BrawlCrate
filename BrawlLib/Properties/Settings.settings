@@ -11,7 +11,7 @@
     <Setting Name="SaveGCTWithInfo" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ColladaImportOptions" Type="BrawlLib.Modeling.Collada.ImportOptions" Scope="User">
+    <Setting Name="ColladaImportOptions" Type="BrawlLib.Modeling.Collada.Collada.ImportOptions" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CompatibilityMode" Type="System.Boolean" Scope="User">
@@ -45,6 +45,30 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ParseMoveDef" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CameraControlMode" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraControlMode" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CameraRightMouse" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CameraMiddleMouse" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CameraCtrlRMB" Type="BrawlLib.Internal.Windows.Controls.Model_Panel.ModelPanelViewport.CameraDragAction" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CameraPanInvertX" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CameraPanInvertY" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CameraRotateInvertX" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CameraRotateInvertY" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

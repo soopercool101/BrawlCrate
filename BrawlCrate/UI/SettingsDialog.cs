@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Windows.Forms;
+using BrawlLib.Internal.Windows.Controls.Model_Panel;
+
 #if !MONO
 using BrawlLib.Internal.Windows.Forms.Ookii.Dialogs;
 
@@ -115,6 +117,26 @@ namespace BrawlCrate.UI
         private Button btnManageSubscriptions;
         private CheckBox chkBoxUpdateAPI;
         private CheckBox chkBoxParseMoveDef;
+        private TabPage tabCamera;
+        private GroupBox grpBoxCamControlMode;
+        private RadioButton rdoFlyCam;
+        private RadioButton rdoTurntable;
+        private GroupBox grpBoxButtonAssignments;
+        private Label lblRightMouseButton;
+        private ComboBox cmbBoxMiddleMouseButton;
+        private Label lblMiddleMouseButton;
+        private ComboBox cmbBoxRightMouseButton;
+        private ComboBox cmbBoxCtrlRightMouse;
+        private Label lblCtrlRMB;
+        private ComboBox cmbBoxCtrlAltRMB;
+        private Label lblCtrlAltRMB;
+        private GroupBox grpBoxCameraInvert;
+        private CheckBox chkBoxCamPanInvertY;
+        private CheckBox chkBoxCamPanInvertX;
+        private GroupBox grpBoxCamPanning;
+        private GroupBox grpBoxCamRotating;
+        private CheckBox chkBoxCamRotateInvertX;
+        private CheckBox chkBoxCamRotateInvertY;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -332,6 +354,16 @@ namespace BrawlCrate.UI
             rdoAPILoaderWhitelist.Checked = Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
             rdoAPILoaderBlacklist.Checked = !Properties.Settings.Default.APIOnlyAllowLoadersFromWhitelist;
             chkBoxUpdateAPI.Checked = Properties.Settings.Default.APIAutoUpdate;
+            rdoFlyCam.Checked = BrawlLib.Properties.Settings.Default.CameraControlMode == ModelPanelViewport.CameraControlMode.Flycam;
+            rdoTurntable.Checked = BrawlLib.Properties.Settings.Default.CameraControlMode == ModelPanelViewport.CameraControlMode.Turntable;
+            cmbBoxRightMouseButton.SelectedIndex = (int)BrawlLib.Properties.Settings.Default.CameraRightMouse;
+            cmbBoxMiddleMouseButton.SelectedIndex = (int)BrawlLib.Properties.Settings.Default.CameraMiddleMouse;
+            cmbBoxCtrlRightMouse.SelectedIndex = (int)BrawlLib.Properties.Settings.Default.CameraCtrlRMB;
+            cmbBoxCtrlAltRMB.SelectedIndex = (int)BrawlLib.Properties.Settings.Default.CameraCtrlAltRMB;
+            chkBoxCamPanInvertX.Checked = BrawlLib.Properties.Settings.Default.CameraPanInvertX;
+            chkBoxCamPanInvertY.Checked = BrawlLib.Properties.Settings.Default.CameraPanInvertY;
+            chkBoxCamRotateInvertX.Checked = BrawlLib.Properties.Settings.Default.CameraRotateInvertX;
+            chkBoxCamRotateInvertY.Checked = BrawlLib.Properties.Settings.Default.CameraRotateInvertY;
             RefreshLoaderList();
             grpBoxLoaderBehavior.Enabled = chkBoxEnableAPI.Checked;
             grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
@@ -448,6 +480,26 @@ namespace BrawlCrate.UI
             grpBoxFileNameDisplayGeneral = new GroupBox();
             rdoShowShortName = new RadioButton();
             rdoShowFullPath = new RadioButton();
+            tabCamera = new TabPage();
+            grpBoxCameraInvert = new GroupBox();
+            grpBoxCamRotating = new GroupBox();
+            chkBoxCamRotateInvertX = new CheckBox();
+            chkBoxCamRotateInvertY = new CheckBox();
+            grpBoxCamPanning = new GroupBox();
+            chkBoxCamPanInvertX = new CheckBox();
+            chkBoxCamPanInvertY = new CheckBox();
+            grpBoxButtonAssignments = new GroupBox();
+            cmbBoxCtrlAltRMB = new ComboBox();
+            lblCtrlAltRMB = new Label();
+            cmbBoxCtrlRightMouse = new ComboBox();
+            lblCtrlRMB = new Label();
+            cmbBoxMiddleMouseButton = new ComboBox();
+            lblMiddleMouseButton = new Label();
+            cmbBoxRightMouseButton = new ComboBox();
+            lblRightMouseButton = new Label();
+            grpBoxCamControlMode = new GroupBox();
+            rdoFlyCam = new RadioButton();
+            rdoTurntable = new RadioButton();
             tabCompression = new TabPage();
             groupBoxModuleCompression = new GroupBox();
             chkBoxModuleCompress = new CheckBox();
@@ -511,6 +563,12 @@ namespace BrawlCrate.UI
             grpBoxAudioGeneral.SuspendLayout();
             grpBoxMainFormGeneral.SuspendLayout();
             grpBoxFileNameDisplayGeneral.SuspendLayout();
+            tabCamera.SuspendLayout();
+            grpBoxCameraInvert.SuspendLayout();
+            grpBoxCamRotating.SuspendLayout();
+            grpBoxCamPanning.SuspendLayout();
+            grpBoxButtonAssignments.SuspendLayout();
+            grpBoxCamControlMode.SuspendLayout();
             tabCompression.SuspendLayout();
             groupBoxModuleCompression.SuspendLayout();
             groupBoxStageCompression.SuspendLayout();
@@ -580,6 +638,7 @@ namespace BrawlCrate.UI
             // tabControl1
             // 
             tabControl1.Controls.Add(tabGeneral);
+            tabControl1.Controls.Add(tabCamera);
             tabControl1.Controls.Add(tabCompression);
             tabControl1.Controls.Add(tabFileAssociations);
             tabControl1.Controls.Add(tabBrawlAPI);
@@ -822,6 +881,242 @@ namespace BrawlCrate.UI
             rdoShowFullPath.Text = "Show full path";
             rdoShowFullPath.UseVisualStyleBackColor = true;
             rdoShowFullPath.CheckedChanged += new EventHandler(RdoPathDisplay_CheckedChanged);
+            // 
+            // tabCamera
+            // 
+            tabCamera.Controls.Add(grpBoxCameraInvert);
+            tabCamera.Controls.Add(grpBoxButtonAssignments);
+            tabCamera.Controls.Add(grpBoxCamControlMode);
+            tabCamera.Location = new System.Drawing.Point(4, 28);
+            tabCamera.Name = "tabCamera";
+            tabCamera.Padding = new Padding(3);
+            tabCamera.Size = new System.Drawing.Size(365, 479);
+            tabCamera.TabIndex = 6;
+            tabCamera.Text = "Camera";
+            tabCamera.UseVisualStyleBackColor = true;
+            // 
+            // grpBoxCameraInvert
+            // 
+            grpBoxCameraInvert.Controls.Add(grpBoxCamRotating);
+            grpBoxCameraInvert.Controls.Add(grpBoxCamPanning);
+            grpBoxCameraInvert.Location = new System.Drawing.Point(8, 255);
+            grpBoxCameraInvert.Name = "grpBoxCameraInvert";
+            grpBoxCameraInvert.Size = new System.Drawing.Size(351, 175);
+            grpBoxCameraInvert.TabIndex = 4;
+            grpBoxCameraInvert.TabStop = false;
+            grpBoxCameraInvert.Text = "Drag Settings";
+            // 
+            // grpBoxCamRotating
+            // 
+            grpBoxCamRotating.Controls.Add(chkBoxCamRotateInvertX);
+            grpBoxCamRotating.Controls.Add(chkBoxCamRotateInvertY);
+            grpBoxCamRotating.Location = new System.Drawing.Point(9, 85);
+            grpBoxCamRotating.Name = "grpBoxCamRotating";
+            grpBoxCamRotating.Size = new System.Drawing.Size(332, 55);
+            grpBoxCamRotating.TabIndex = 5;
+            grpBoxCamRotating.TabStop = false;
+            grpBoxCamRotating.Text = "Rotating";
+            // 
+            // chkBoxCamRotateInvertX
+            // 
+            chkBoxCamRotateInvertX.AutoSize = true;
+            chkBoxCamRotateInvertX.Location = new System.Drawing.Point(11, 24);
+            chkBoxCamRotateInvertX.Name = "chkBoxCamRotateInvertX";
+            chkBoxCamRotateInvertX.Size = new System.Drawing.Size(93, 22);
+            chkBoxCamRotateInvertX.TabIndex = 0;
+            chkBoxCamRotateInvertX.Text = "Invert X";
+            chkBoxCamRotateInvertX.UseVisualStyleBackColor = true;
+            chkBoxCamRotateInvertX.CheckedChanged += new EventHandler(chkBoxCamRotateInvertX_CheckedChanged);
+            // 
+            // chkBoxCamRotateInvertY
+            // 
+            chkBoxCamRotateInvertY.AutoSize = true;
+            chkBoxCamRotateInvertY.Location = new System.Drawing.Point(171, 24);
+            chkBoxCamRotateInvertY.Name = "chkBoxCamRotateInvertY";
+            chkBoxCamRotateInvertY.Size = new System.Drawing.Size(93, 22);
+            chkBoxCamRotateInvertY.TabIndex = 1;
+            chkBoxCamRotateInvertY.Text = "Invert Y";
+            chkBoxCamRotateInvertY.UseVisualStyleBackColor = true;
+            chkBoxCamRotateInvertY.CheckedChanged += new EventHandler(chkBoxCamRotateInvertY_CheckedChanged);
+            // 
+            // grpBoxCamPanning
+            // 
+            grpBoxCamPanning.Controls.Add(chkBoxCamPanInvertX);
+            grpBoxCamPanning.Controls.Add(chkBoxCamPanInvertY);
+            grpBoxCamPanning.Location = new System.Drawing.Point(9, 24);
+            grpBoxCamPanning.Name = "grpBoxCamPanning";
+            grpBoxCamPanning.Size = new System.Drawing.Size(332, 55);
+            grpBoxCamPanning.TabIndex = 4;
+            grpBoxCamPanning.TabStop = false;
+            grpBoxCamPanning.Text = "Panning";
+            // 
+            // chkBoxCamPanInvertX
+            // 
+            chkBoxCamPanInvertX.AutoSize = true;
+            chkBoxCamPanInvertX.Location = new System.Drawing.Point(11, 24);
+            chkBoxCamPanInvertX.Name = "chkBoxCamPanInvertX";
+            chkBoxCamPanInvertX.Size = new System.Drawing.Size(93, 22);
+            chkBoxCamPanInvertX.TabIndex = 0;
+            chkBoxCamPanInvertX.Text = "Invert X";
+            chkBoxCamPanInvertX.UseVisualStyleBackColor = true;
+            chkBoxCamPanInvertX.CheckedChanged += new EventHandler(chkBoxCamPanInvertX_CheckedChanged);
+            // 
+            // chkBoxCamPanInvertY
+            // 
+            chkBoxCamPanInvertY.AutoSize = true;
+            chkBoxCamPanInvertY.Location = new System.Drawing.Point(171, 24);
+            chkBoxCamPanInvertY.Name = "chkBoxCamPanInvertY";
+            chkBoxCamPanInvertY.Size = new System.Drawing.Size(93, 22);
+            chkBoxCamPanInvertY.TabIndex = 1;
+            chkBoxCamPanInvertY.Text = "Invert Y";
+            chkBoxCamPanInvertY.UseVisualStyleBackColor = true;
+            chkBoxCamPanInvertY.CheckedChanged += new EventHandler(chkBoxCamPanInvertY_CheckedChanged);
+            // 
+            // grpBoxButtonAssignments
+            // 
+            grpBoxButtonAssignments.Controls.Add(cmbBoxCtrlAltRMB);
+            grpBoxButtonAssignments.Controls.Add(lblCtrlAltRMB);
+            grpBoxButtonAssignments.Controls.Add(cmbBoxCtrlRightMouse);
+            grpBoxButtonAssignments.Controls.Add(lblCtrlRMB);
+            grpBoxButtonAssignments.Controls.Add(cmbBoxMiddleMouseButton);
+            grpBoxButtonAssignments.Controls.Add(lblMiddleMouseButton);
+            grpBoxButtonAssignments.Controls.Add(cmbBoxRightMouseButton);
+            grpBoxButtonAssignments.Controls.Add(lblRightMouseButton);
+            grpBoxButtonAssignments.Location = new System.Drawing.Point(8, 97);
+            grpBoxButtonAssignments.Name = "grpBoxButtonAssignments";
+            grpBoxButtonAssignments.Size = new System.Drawing.Size(351, 152);
+            grpBoxButtonAssignments.TabIndex = 3;
+            grpBoxButtonAssignments.TabStop = false;
+            grpBoxButtonAssignments.Text = "Button Assignments";
+            // 
+            // cmbBoxCtrlAltRMB
+            // 
+            cmbBoxCtrlAltRMB.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxCtrlAltRMB.FormattingEnabled = true;
+            cmbBoxCtrlAltRMB.Items.AddRange(new object[] {
+            "Rotate",
+            "Pan",
+            "Zoom",
+            "Roll"});
+            cmbBoxCtrlAltRMB.Location = new System.Drawing.Point(168, 112);
+            cmbBoxCtrlAltRMB.Name = "cmbBoxCtrlAltRMB";
+            cmbBoxCtrlAltRMB.Size = new System.Drawing.Size(177, 26);
+            cmbBoxCtrlAltRMB.TabIndex = 8;
+            cmbBoxCtrlAltRMB.SelectedIndexChanged += new EventHandler(cmbBoxCtrlAltRMB_SelectedIndexChanged);
+            // 
+            // lblCtrlAltRMB
+            // 
+            lblCtrlAltRMB.AutoSize = true;
+            lblCtrlAltRMB.Location = new System.Drawing.Point(6, 115);
+            lblCtrlAltRMB.Name = "lblCtrlAltRMB";
+            lblCtrlAltRMB.Size = new System.Drawing.Size(130, 18);
+            lblCtrlAltRMB.TabIndex = 7;
+            lblCtrlAltRMB.Text = "Ctrl + Alt + RMB";
+            // 
+            // cmbBoxCtrlRightMouse
+            // 
+            cmbBoxCtrlRightMouse.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxCtrlRightMouse.FormattingEnabled = true;
+            cmbBoxCtrlRightMouse.Items.AddRange(new object[] {
+            "Rotate",
+            "Pan",
+            "Zoom",
+            "Roll"});
+            cmbBoxCtrlRightMouse.Location = new System.Drawing.Point(168, 80);
+            cmbBoxCtrlRightMouse.Name = "cmbBoxCtrlRightMouse";
+            cmbBoxCtrlRightMouse.Size = new System.Drawing.Size(177, 26);
+            cmbBoxCtrlRightMouse.TabIndex = 5;
+            cmbBoxCtrlRightMouse.SelectedIndexChanged += new EventHandler(cmbBoxCtrlRightMouse_SelectedIndexChanged);
+            // 
+            // lblCtrlRMB
+            // 
+            lblCtrlRMB.AutoSize = true;
+            lblCtrlRMB.Location = new System.Drawing.Point(6, 83);
+            lblCtrlRMB.Name = "lblCtrlRMB";
+            lblCtrlRMB.Size = new System.Drawing.Size(90, 18);
+            lblCtrlRMB.TabIndex = 4;
+            lblCtrlRMB.Text = "Ctrl + RMB";
+            // 
+            // cmbBoxMiddleMouseButton
+            // 
+            cmbBoxMiddleMouseButton.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxMiddleMouseButton.FormattingEnabled = true;
+            cmbBoxMiddleMouseButton.Items.AddRange(new object[] {
+            "Rotate",
+            "Pan",
+            "Zoom",
+            "Roll"});
+            cmbBoxMiddleMouseButton.Location = new System.Drawing.Point(168, 48);
+            cmbBoxMiddleMouseButton.Name = "cmbBoxMiddleMouseButton";
+            cmbBoxMiddleMouseButton.Size = new System.Drawing.Size(177, 26);
+            cmbBoxMiddleMouseButton.TabIndex = 3;
+            cmbBoxMiddleMouseButton.SelectedIndexChanged += new EventHandler(cmbBoxMiddleMouseButton_SelectedIndexChanged);
+            // 
+            // lblMiddleMouseButton
+            // 
+            lblMiddleMouseButton.AutoSize = true;
+            lblMiddleMouseButton.Location = new System.Drawing.Point(6, 51);
+            lblMiddleMouseButton.Name = "lblMiddleMouseButton";
+            lblMiddleMouseButton.Size = new System.Drawing.Size(164, 18);
+            lblMiddleMouseButton.TabIndex = 2;
+            lblMiddleMouseButton.Text = "Middle Mouse Button";
+            // 
+            // cmbBoxRightMouseButton
+            // 
+            cmbBoxRightMouseButton.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbBoxRightMouseButton.FormattingEnabled = true;
+            cmbBoxRightMouseButton.Items.AddRange(new object[] {
+            "Rotate",
+            "Pan",
+            "Zoom",
+            "Roll"});
+            cmbBoxRightMouseButton.Location = new System.Drawing.Point(168, 18);
+            cmbBoxRightMouseButton.Name = "cmbBoxRightMouseButton";
+            cmbBoxRightMouseButton.Size = new System.Drawing.Size(177, 26);
+            cmbBoxRightMouseButton.TabIndex = 1;
+            cmbBoxRightMouseButton.SelectedIndexChanged += new EventHandler(cmbBoxRightMouseButton_SelectedIndexChanged);
+            // 
+            // lblRightMouseButton
+            // 
+            lblRightMouseButton.AutoSize = true;
+            lblRightMouseButton.Location = new System.Drawing.Point(6, 21);
+            lblRightMouseButton.Name = "lblRightMouseButton";
+            lblRightMouseButton.Size = new System.Drawing.Size(154, 18);
+            lblRightMouseButton.TabIndex = 0;
+            lblRightMouseButton.Text = "Right Mouse Button";
+            // 
+            // grpBoxCamControlMode
+            // 
+            grpBoxCamControlMode.Controls.Add(rdoFlyCam);
+            grpBoxCamControlMode.Controls.Add(rdoTurntable);
+            grpBoxCamControlMode.Location = new System.Drawing.Point(8, 6);
+            grpBoxCamControlMode.Name = "grpBoxCamControlMode";
+            grpBoxCamControlMode.Size = new System.Drawing.Size(351, 85);
+            grpBoxCamControlMode.TabIndex = 2;
+            grpBoxCamControlMode.TabStop = false;
+            grpBoxCamControlMode.Text = "Control Mode";
+            // 
+            // rdoFlyCam
+            // 
+            rdoFlyCam.AutoSize = true;
+            rdoFlyCam.Location = new System.Drawing.Point(6, 24);
+            rdoFlyCam.Name = "rdoFlyCam";
+            rdoFlyCam.Size = new System.Drawing.Size(87, 22);
+            rdoFlyCam.TabIndex = 0;
+            rdoFlyCam.Text = "Flycam";
+            rdoFlyCam.UseVisualStyleBackColor = true;
+            rdoFlyCam.CheckedChanged += new EventHandler(rdoCamControlMode_CheckedChanged);
+            // 
+            // rdoTurntable
+            // 
+            rdoTurntable.AutoSize = true;
+            rdoTurntable.Location = new System.Drawing.Point(6, 52);
+            rdoTurntable.Name = "rdoTurntable";
+            rdoTurntable.Size = new System.Drawing.Size(105, 22);
+            rdoTurntable.TabIndex = 1;
+            rdoTurntable.Text = "Turntable";
+            rdoTurntable.UseVisualStyleBackColor = true;
+            rdoTurntable.CheckedChanged += new EventHandler(rdoCamControlMode_CheckedChanged);
             // 
             // tabCompression
             // 
@@ -1529,6 +1824,16 @@ namespace BrawlCrate.UI
             grpBoxMainFormGeneral.PerformLayout();
             grpBoxFileNameDisplayGeneral.ResumeLayout(false);
             grpBoxFileNameDisplayGeneral.PerformLayout();
+            tabCamera.ResumeLayout(false);
+            grpBoxCameraInvert.ResumeLayout(false);
+            grpBoxCamRotating.ResumeLayout(false);
+            grpBoxCamRotating.PerformLayout();
+            grpBoxCamPanning.ResumeLayout(false);
+            grpBoxCamPanning.PerformLayout();
+            grpBoxButtonAssignments.ResumeLayout(false);
+            grpBoxButtonAssignments.PerformLayout();
+            grpBoxCamControlMode.ResumeLayout(false);
+            grpBoxCamControlMode.PerformLayout();
             tabCompression.ResumeLayout(false);
             groupBoxModuleCompression.ResumeLayout(false);
             groupBoxModuleCompression.PerformLayout();
@@ -2060,6 +2365,105 @@ namespace BrawlCrate.UI
             }
 
             BrawlLib.Properties.Settings.Default.ParseMoveDef = chkBoxParseMoveDef.Checked;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void rdoCamControlMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraControlMode = rdoFlyCam.Checked ? ModelPanelViewport.CameraControlMode.Flycam : ModelPanelViewport.CameraControlMode.Turntable;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void cmbBoxRightMouseButton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraRightMouse = (ModelPanelViewport.CameraDragAction)cmbBoxRightMouseButton.SelectedIndex;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void cmbBoxMiddleMouseButton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraMiddleMouse = (ModelPanelViewport.CameraDragAction)cmbBoxMiddleMouseButton.SelectedIndex;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void cmbBoxCtrlRightMouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraCtrlRMB = (ModelPanelViewport.CameraDragAction)cmbBoxCtrlRightMouse.SelectedIndex;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void cmbBoxCtrlAltRMB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraCtrlAltRMB = (ModelPanelViewport.CameraDragAction)cmbBoxCtrlAltRMB.SelectedIndex;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void chkBoxCamPanInvertX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraPanInvertX = chkBoxCamPanInvertX.Checked;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void chkBoxCamPanInvertY_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraPanInvertY = chkBoxCamPanInvertY.Checked;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void chkBoxCamRotateInvertX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraRotateInvertX = chkBoxCamRotateInvertX.Checked;
+            BrawlLib.Properties.Settings.Default.Save();
+        }
+
+        private void chkBoxCamRotateInvertY_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            BrawlLib.Properties.Settings.Default.CameraRotateInvertY = chkBoxCamRotateInvertY.Checked;
             BrawlLib.Properties.Settings.Default.Save();
         }
     }
