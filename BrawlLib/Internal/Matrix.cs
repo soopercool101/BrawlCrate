@@ -984,7 +984,7 @@ namespace BrawlLib.Internal
                     }
                     else
                     {
-                        x = (float) Math.Atan2(p[4], -p[8]);
+                        x = (float) Math.Atan2(-p[4], -p[8]);
                     }
                 }
                 else
