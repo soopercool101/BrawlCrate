@@ -50,7 +50,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                 _spotExponent = _spotExponent,
                 _transFactor = _transFactor,
                 _type = _type,
-                _viewDistance = _viewDistance,
+                //_viewDistance = _viewDistance,
                 _zoomFactor = _zoomFactor,
                 _allowSelection = _allowSelection,
                 _showCamCoords = _showCamCoords,
@@ -1276,6 +1276,12 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
                 out xy, out yz, out xz);
         }
 
+        public override void ResetCamera()
+        {
+            _viewDistance = 0;
+            base.ResetCamera();
+        }
+
         public override void SetProjectionType(ViewportProjection type)
         {
             _viewDistance = 0;
@@ -1462,7 +1468,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
         public float _rotFactor = 0.4f;
         public float _transFactor = 0.05f;
         public float _zoomFactor = 2.5f;
-        public float _viewDistance = 5.0f;
+        public float _viewDistance = 0.0f;
         public float _spotCutoff = 180.0f;
         public float _spotExponent = 100.0f;
         private const float v = 1.0f / 255.0f;
@@ -1519,7 +1525,7 @@ namespace BrawlLib.Internal.Windows.Controls.Model_Panel
             v._spotCutoff = _spotCutoff;
             v._spotExponent = _spotExponent;
             v._transFactor = _transFactor;
-            v._viewDistance = _viewDistance;
+            //v._viewDistance = _viewDistance;
             v._zoomFactor = _zoomFactor;
             v._lightEnabled = _lightEnabled;
             v._renderSCN0Controls = _renderSCN0Controls;

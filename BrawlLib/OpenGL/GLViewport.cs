@@ -117,7 +117,7 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        public void ResetCamera()
+        public virtual void ResetCamera()
         {
             _camera.Reset();
         }
