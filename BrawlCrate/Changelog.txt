@@ -1,6 +1,6 @@
 
-BrawlCrate - v0.40a
-Copyright © 2018 - 2023 soopercool101, Simon381, Onium
+BrawlCrate - v0.41
+Copyright © 2018 - 2024 soopercool101, Simon381, Onium
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
 https://github.com/soopercool101/BrawlCrate
@@ -15,6 +15,29 @@ they be held accountable for the manner in which it is used.
  ===============================================
 |************ BrawlCrate Change Log ************|
  ===============================================
+ 
+ - BrawlCrate v0.41 - (2/6/2024)
+ . Vastly improve subspace BLOC parsing:
+   - BLOC now supports proper import and Drag/Drop
+   - All BLOC entry types can now be edited with full save support
+   - Added known values to many BLOC entry types
+ . TBGC and TBGD files are now properly parsed
+ . Update parsing for Item Parameters to reflect newly discovered values
+ . Add PMTurbo to Event Match fighter status
+ . UserEntries now properly store and load as UTF8 encoded
+ . Add StageEx and ItemEx support to EventMatchNode, as well as Project+'s new Item Levels
+ . Add support to add a single-linked collision via Shift+Alt+Click in the Advanced Collision Editor
+ . Improve float conversion for Item Frequency
+ . Fix bug in which a corrupted TEX0 would prevent loading a BRRES (or entire file) properly
+ . Fix bug in which minimum and maximum were swapped for Item Frequency
+ . Fix bug in which editing an STDT entry as bytes would not enable saving without further edits
+ . Fix bug in which resizing an STDT would result in a different size than intended
+ . Fix ItemFreqGroup accessing invalid memory
+ . Fix crash caused by invalid UserEntries pointers
+ . Fix crash when importing a TEX0 that was originally color smashed
+ . Fix crash when viewing a redirect to a BRRES with no models
+ . Fix bug in which raw binary import for Brawl ARC files would result in crashes on save
+ . Fix bug in which a corrupted installation would prevent updating without warning
  
  - BrawlCrate v0.40a - (7/23/2023)
  . Add support for version 2 of the ITOV (Item Override) format

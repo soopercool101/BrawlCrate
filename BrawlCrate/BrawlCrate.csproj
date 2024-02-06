@@ -19,16 +19,16 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <AssemblyTitle>BrawlCrate v0.40a</AssemblyTitle>
+    <AssemblyTitle>BrawlCrate v0.41</AssemblyTitle>
     <Product>BrawlCrate</Product>
     <Description>This program is provided as-is without any warranty, implied or otherwise. By using this program, the end user agrees to take full responsibility regarding its proper and lawful use. The authors/hosts/distributors cannot be held responsible for any damage resulting in the use of this program, nor can they be held accountable for the manner in which it is used.</Description>
     <Copyright>
-      Copyright © 2018 - 2023 soopercool101, Simon381, Onium
+      Copyright © 2018 - 2024 soopercool101, Simon381, Onium
       BrawlBox Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky
       Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory
     </Copyright>
-    <AssemblyVersion>0.40.1.0</AssemblyVersion>
-    <FileVersion>0.40.1.0</FileVersion>
+    <AssemblyVersion>0.41.0.0</AssemblyVersion>
+    <FileVersion>0.41.0.0</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Configurations>Debug;Release;Mono;Canary;Doxygen;Documentation</Configurations>
@@ -185,7 +185,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BrawlCrate.Program</StartupObject>
-    <Version>40.1.0</Version>
+    <Version>41.0.0</Version>
     <Authors>soopercool101, NuclearNecrosis, Simon381, Onium, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
     <Company>BrawlCrate</Company>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
